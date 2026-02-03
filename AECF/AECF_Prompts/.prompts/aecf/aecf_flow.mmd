@@ -1,0 +1,15 @@
+flowchart TD
+    A[DISCOVERY<br/>legacy only] -->|Scope defined| B[PLAN]
+
+    B --> C{AUDIT PLAN}
+    C -->|NO-GO| B
+    C -->|GO| D[IMPLEMENT]
+
+    D --> E{AUDIT CODE}
+
+    E -->|NO-GO| F[FIX PLAN]
+    F --> G[FIX CODE]
+    G --> E
+
+    E -->|GO CONDITIONAL| H[PRODUCTION<br/>Residual Risk Accepted]
+    E -->|GO| I[PRODUCTION]
