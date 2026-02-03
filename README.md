@@ -1,0 +1,2 @@
+# AI_CONSULTING
+Metodologías de AI: SEVEN_G, SPAD y AECF
