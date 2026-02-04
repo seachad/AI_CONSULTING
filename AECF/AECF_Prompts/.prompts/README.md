@@ -118,24 +118,32 @@ aunque vaya a ser modificada, extendida o auditada.
 ### Flujo obligatorio
 
 ```
-DISCOVERY
- → PLAN
-   → AUDIT-PLAN
-     → (GO / NO-GO)
-       → IMPLEMENT
-         → AUDIT-CODE
-           → (GO / NO-GO)
-             → FIX-CODE
+[EXISTING_FUNCTIONALLITY (opcional)]
+ → DISCOVERY
+   → PLAN
+     → AUDIT-PLAN
+       → (GO / NO-GO)
+         → IMPLEMENT
+           → AUDIT-CODE
+             → (GO / NO-GO)
+               → FIX-CODE
 ```
 
 ### Reglas importantes
 
+- **EXISTING_FUNCTIONALLITY** es una fase previa **opcional** que extrae documentación técnica factual del código existente **antes de DISCOVERY**.
+- EXISTING_FUNCTIONALLITY **no diseña**, **no refactoriza**, **no recomienda**.
+- EXISTING_FUNCTIONALLITY produce:
+  - `AECF_<NN>_DOCUMENTATION.md` (scope, entry points, flujo técnico, dependencias, I/O, riesgos observados, known unknowns)
+  - `AECF_<NN>_FLOW.mmd` (diagramas high-level y técnico en formato mermaid)
+- El output de EXISTING_FUNCTIONALLITY puede servir como **entrada enriquecida** para DISCOVERY.
 - DISCOVERY **no diseña** ni evalúa calidad.
 - DISCOVERY **solo localiza y delimita**.
 - El output de DISCOVERY se usa como **contexto congelado** del PLAN.
 - No existe `PLAN_LEGACY`.
 - PLAN es único y soberano para todo el sistema.
 
+EXISTING_FUNCTIONALLITY **documenta** el estado actual.  
 DISCOVERY **prepara** el PLAN.  
 PLAN **toma decisiones**.
 
@@ -149,9 +157,13 @@ PLAN **toma decisiones**.
 3. No saltes fases
 
 ### Funcionalidad existente (legacy)
-1. Comienza por `PROMPT_WRAPPER - 00 - DISCOVERY_LEGACY`
-2. Usa el resultado como entrada al PLAN
-3. Continúa el flujo AECF normal
+1. (Opcional) Comienza por `00_EXISTING_FUNCTIONALLITY` para extraer documentación técnica factual
+   - Genera `AECF_<NN>_DOCUMENTATION.md` (scope, entry points, flujo, dependencias, I/O, riesgos)
+   - Genera `AECF_<NN>_FLOW.mmd` (diagramas high-level y técnico)
+   - Sirve como entrada enriquecida para DISCOVERY
+2. Comienza o continúa por `PROMPT_WRAPPER - 00 - DISCOVERY_LEGACY`
+3. Usa el resultado como entrada al PLAN
+4. Continúa el flujo AECF normal
 
 ---
 

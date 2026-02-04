@@ -83,7 +83,8 @@ AECF exists to **separate thinking, validation, and execution**.
 
 ## The AECF flow
 
-DISCOVERY (optional, legacy code)  
+EXISTING_FUNCTIONALLITY (optional, pre-DISCOVERY, legacy code only)  
+→ DISCOVERY (optional, legacy code)  
 → PLAN  
 → AUDIT PLAN (GO / NO-GO)  
 → IMPLEMENT  
@@ -93,7 +94,15 @@ DISCOVERY (optional, legacy code)
 → AUDIT CODE  
 → PRODUCTION
 
-Skipping a phase invalidates the result.
+**EXISTING_FUNCTIONALLITY** is an optional preliminary phase that extracts factual technical documentation from existing code **before DISCOVERY**.
+
+- Does **not** design, refactor, or recommend.
+- Produces:
+  - `AECF_<NN>_DOCUMENTATION.md` (scope, entry points, technical flow, dependencies, I/O, observed risks, known unknowns)
+  - `AECF_<NN>_FLOW.mmd` (high-level and technical diagrams in mermaid format)
+- Output can serve as **enriched input** for DISCOVERY.
+
+Skipping a mandatory phase invalidates the result.
 
 ---
 

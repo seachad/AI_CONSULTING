@@ -1,7 +1,7 @@
 Consideraciones globales a tener en cuenta para cualquier proyecto
 
 ## 1. Non-Negotiable Rules
-- todos los documentos que generes como resultado de la ejecución de una phase en un chat los generes en documentation/<chat_title>/AECF_<num>_<nombre_documento>, de tal manera que chat_title es el titulo del chat que estamos manteniendo y nombre_documento es el nombre del documento que generas como respuesta a la phase de AECF en que estemos. <num> es el numero correlativo de documento
+- todos los documentos que generes como resultado de la ejecución de una phase en un chat los generes en documentation/AECF_<chat_title>/AECF_<num>_<nombre_documento>, de tal manera que chat_title es el titulo del chat que estamos manteniendo y nombre_documento es el nombre del documento que generas como respuesta a la phase de AECF en que estemos. <num> es el numero correlativo de documento
 - No global state unless justified
 - No magic behavior
 - Deterministic outputs
@@ -23,3 +23,6 @@ Consideraciones globales a tener en cuenta para cualquier proyecto
 - **.md documentation**: la documentación con extensión .md siempre irá al directorio documentation, los documentos generadors por los AECF prompts 
 - **commit**: los mensajes de commit deben ser claros y descriptivos, siguiendo las mejores prácticas de git. Incluyelo cuando te lo pida para incluirlo en github cuando haga el commit. La orden será commit_message. si generas un commit_message.md hazlo siempre con un nombre descriptivo despues de commit_message y lo generas en documentation/commit_messages
 - **TESTS**: siempre que generes código que pueda ser testeado, tienes que generar también los tests correspondientes en el directorio tests, siguiendo la estructura y convenciones de los tests ya existentes en el proyecto. Los tests deben cubrir tanto casos normales como casos límite para asegurar la robustez del código.
+
+## 3. documents generated
+- para cada documento que generes haz un resumen ejecutivo que evite la necesidad de leer todo el documento generado. El resto se sigue generando igual pero se usará para el resto de fases de AECF y para consulta si es necesario profundizar.

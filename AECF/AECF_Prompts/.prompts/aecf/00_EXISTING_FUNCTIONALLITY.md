@@ -91,7 +91,8 @@ Diagram 2 — Technical Flow
 Use `flowchart TD`.
 No inferred behavior.
 
-────────────────────────
+Generate mermaid diagrams as .mmd files with the same conventions as documentation. Each diagram needs to have an AECF_<nn>_DIAGRAM_<name_diagram>
+
 EXIT CONDITION
 ────────────────────────
 
@@ -101,5 +102,5 @@ This phase is COMPLETE when:
 - Known unknowns are listed
 
 The output of this phase becomes:
-➡ Input for DISCOVERY
+➡ Input for DISCOVERY_LEGACY
 ➡ Input for PLAN

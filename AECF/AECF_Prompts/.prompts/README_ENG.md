@@ -93,13 +93,22 @@ PLAN
 ### Legacy functionality
 
 ```
-DISCOVERY
- → PLAN
-   → AUDIT-PLAN (GO / NO-GO)
-     → IMPLEMENT
-       → AUDIT-CODE (GO / GO CONDITIONAL / NO-GO)
-         → FIX-CODE
+[EXISTING_FUNCTIONALLITY (optional)]
+ → DISCOVERY
+   → PLAN
+     → AUDIT-PLAN (GO / NO-GO)
+       → IMPLEMENT
+         → AUDIT-CODE (GO / GO CONDITIONAL / NO-GO)
+           → FIX-CODE
 ```
+
+**EXISTING_FUNCTIONALLITY** is an optional preliminary phase that extracts factual technical documentation from existing code **before DISCOVERY**.
+
+- Does **not** design, refactor, or recommend.
+- Produces:
+  - `AECF_<NN>_DOCUMENTATION.md` (scope, entry points, technical flow, dependencies, I/O, observed risks, known unknowns)
+  - `AECF_<NN>_FLOW.mmd` (high-level and technical diagrams in mermaid format)
+- Output can serve as **enriched input** for DISCOVERY.
 
 Skipping a phase **invalidates the result**.
 
