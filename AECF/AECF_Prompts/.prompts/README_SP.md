@@ -12,6 +12,30 @@ Es un **flujo de ingeniería controlado**, diseñado para generar código **segu
 
 ---
 
+## Contexto obligatorio (CONTEXT_GENERICS / CONTEXT_PROJECT)
+
+Antes de ejecutar cualquier fase AECF, se debe cargar y respetar:
+
+- [\.prompts/aecf/00_CONTEXT_GENERICS.md](.prompts/aecf/00_CONTEXT_GENERICS.md)
+- [\.prompts/aecf/00_CONTEXT_PROJECT.md](.prompts/aecf/00_CONTEXT_PROJECT.md)
+
+Puntos clave:
+
+- **Precondición dura**: aplicar primero el contexto genérico.
+- **Entrega de documentos**: cualquier artefacto de fase debe generarse en documentation/<chat_title>/AECF_<num>_<nombre_documento>.
+- **Determinismo y claridad**: sin estado global injustificado, sin comportamiento “mágico”, salidas deterministas.
+- **Compatibilidad multi-instancia / HAProxy**: toda escritura compartida debe estar protegida contra condiciones de carrera.
+- **Threads/queues**: cualquier ejecución con thread debe poder hacerse con queue; variables CM_ controlan el modo. Threads: T_*, queues: Q_*.
+- **Debug en producción**: funciones de debug deben usar el decorator `function_not_for_production`.
+- **Variables CM_**: deben existir en production_env_overrides.json con la misma estructura y no ir por defecto en .env.
+- **Documentación .md**: siempre en documentation.
+- **Tests**: todo código testeable debe incluir tests en tests/.
+- **Mermaid**: los flows se generan en documentation con extensión .mmd y sin comentarios markdown.
+
+El contrato de contexto de proyecto define además el dominio, restricciones arquitectónicas, seguridad/compliance, expectativas de output y posibles overrides.
+
+---
+
 ## Por qué existe AECF
 
 Los modelos de lenguaje son muy buenos generando código plausible, pero no son fiables para:

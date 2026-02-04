@@ -1,0 +1,208 @@
+A tener en cuenta para este proyecto en AECF
+
+REGLAS GENERALES:
+todos los documentos que generes como resultado de la ejecución de una phase en un chat los generes en documentation/<chat_title>/AECF_<num>_<nombre_documento>, de tal manera que chat_title es el titulo del chat que estamos manteniendo y nombre_documento es el nombre del documento que generas como respuesta a la phase de AECF en que estemos. <num> es el numero correlativo de documento
+
+# Copilot Instructions for API_ROBOT_Flask_Dashboards
+
+## Project Architecture Overview
+- **Hybrid API/Dashboard System**: Flask-based multi-tenant dashboard platform with integrated API_ROBOT task processing engine
+- **Key Components**: [flask_dashboards.py](flask_dashboards.py) (web app), [apirobot.py](apirobot.py) (task processor), [apirobot_external_integration.py](apirobot_external_integration.py) (bridge module)
+- **Deployment Model**: Production uses PostgreSQL with Hypercorn/HAProxy for concurrency, development uses `.bat` database creation scripts
+- **Multi-tenant SSO**: Microsoft Azure SSO with role-based authentication logic and tenant-specific configurations
+- **Massive Monolith**: [app/__init__.py](app/__init__.py) contains 37K+ lines and is the main application factory - expect complex initialization patterns
+
+## Critical Environment Configuration
+- **Dynamic Environment Loading**: Uses `CM_DOTENV_SUFFIX` to load environment-specific `.env` files (default: `.env-seachad-minimum`)
+- **Production Overrides**: `configuration/production_overrides.py` applies environment-specific settings from `production_env_overrides.json`
+- **Database Configuration**: PostgreSQL with optional pgbouncer (port 6432), controlled via `CM_PGBOUNCER_ACTIVE` environment variable
+- **Configuration Discovery**: [config.py](config.py) contains `config_dict` mapping deploy modes to configuration classes
+- **Global Access Pattern**: Global `access` dict in `builtins` provides configuration to all modules via [apirobot_external_integration.py](apirobot_external_integration.py)
+
+## Key Development Workflows
+- **Environment Setup**: 
+  ```bash
+  pip install -e git+https://github.com/Seachad-TEAM/API_ROBOT.git@main#egg=apirobot_libraries&subdirectory=src/apirobot-libraries
+  pip install -r requirements_SSO_python_3_13.txt  # or requirements_SSO_python_3_14.txt
+  ```
+- **Database Creation**: Run `create_databases_DevelopmentConfig.bat` (or ProductionConfig/TestConfig variants)  
+- **Development Server**: Use [flask_dashboards_SSO.py](flask_dashboards_SSO.py) entry point for SSO debugging
+- **Multi-Process Execution**: [apirobot.py](apirobot.py) supports `-m /K|/C` multiprocessing flags for task execution
+- **Server Trace Debugging**: Controlled via `CM_LOG_DEBUG_SERVER_TRACE_LOG_ENABLED` environment variable
+- **SQL Parsing Performance**: Uses [app/sql_parsing_optimizer.py](app/sql_parsing_optimizer.py) with configurable libraries (`CM_SQL_PARSING_LIBRARY`, `CM_CACHE_SQL_PARSING_ENABLED`)
+
+## Authentication & Security Patterns
+- **Role-Based SSO Logic**: Users with `HDN_` or `OFS_` email prefixes bypass SSO; admin roles (`admin`, `admin_secondary`) show password fields
+- **Tenant Resolution**: Multi-tenant login via `ABMC_Tenant` table; single tenant auto-selects
+- **Session Management**: Integrates with API_ROBOT session creation (`-s True` flag) for MongoDB audits and process control
+- **Access Dictionary**: Global `access` dict in `builtins` provides configuration to all modules via `apirobot_external_integration.py`
+
+## Integration Architecture
+- **External Library Bridge**: `apirobot_external_integration.py` constructs global `access` configuration from multiple sources (.env, apirobot.json, system registry)
+- **API_ROBOT Integration**: Task processing engine with JSON-based process definitions, supports audit trails and MongoDB connectivity
+- **Cache Layer**: Redis integration via `apirobot_libraries.cache_REDIS` with qualified cache keys
+- **Notifications System**: Three modes - SSE (real-time), POOLING (10s intervals), NEW_PAGE (on reload), controlled by `CM_NOTIFICATIONS_ENABLED`
+
+## Monitoring & Observability
+- **OpenTelemetry**: Full instrumentation in `app/telemetry.py` with buffered span export and admin panel integration
+- **Prometheus Metrics**: Configured for Grafana dashboards (see README for setup instructions)
+- **Concurrency Monitoring**: `app/concurrency_usage_logger.py` tracks multi-process resource usage
+- **Distributed State**: `app/distributed_shared_state.py` handles cross-instance coordination
+
+## Testing & Performance
+- **Test Organization**: `tests/` contains functional, performance, unit, and interaction tests with Edge browser automation scripts
+- **SQL Parsing Tests**: Recent focus on [tests/test_sql_caching_fix.py](tests/test_sql_caching_fix.py) for AST-returning function optimizations
+- **Performance Profiling**: Built-in profiler outputs (`.prof` files) and SQL query compilation cache ([app/sql_compile_cache.py](app/sql_compile_cache.py))
+- **Test Execution**: Use `python -m pytest tests/test_*.py -v` for specific test files 
+- **Concurrent Protection**: [app/concurrent_protection.py](app/concurrent_protection.py) manages resource locks across multiple instances
+
+## Project-Specific Conventions
+- **Configuration Precedence**: Environment variables → production overrides → .env files → system registry
+- **Module Naming**: `*_integration.py` for cross-system bridges, `prueba_*.py` for ad-hoc tests, `zzz_*` for external program loading
+- **Database Patterns**: Dynamic database creation via `config_dict` mapping, separate configs for Development/Production/Test
+- **Background Tasks**: Uses `app/background.py` with executor patterns, notification dispatching via Redis pub/sub
+
+## Critical File Locations
+- **Entry Points**: [flask_dashboards.py](flask_dashboards.py), [flask_dashboards_SSO.py](flask_dashboards_SSO.py)
+- **Configuration**: [config.py](config.py), [apirobot_external_integration.py](apirobot_external_integration.py) 
+- **App Core**: [app/__init__.py](app/__init__.py) (36K+ lines - main application factory)
+- **Database Scripts**: `create_databases_*.bat` files for environment-specific database setup
+
+# IMPORTANT CONSIDERATIONS
+- **CM_ Variables**: cualquier variable introducida del tipo CM_ debe aparecer en production_env_overrides.json manteniendo la estructura que tiene el resto
+- **.md documentation**: la documentación con extensión .md siempre irá al directorio documentation
+- **commit**: los mensajes de commit deben ser claros y descriptivos, siguiendo las mejores prácticas de git. Incluyelo cuando te lo pida para incluirlo en github cuando haga el commit. La orden será commit_message. si generas un commit_message.md hazlo siempre con un nombre descriptivo despues de commit_message y lo generas en documentation/commit_messages
+- **TESTS**: siempre que generes código que pueda ser testeado, tienes que generar también los tests correspondientes en el directorio tests, siguiendo la estructura y convenciones de los tests ya existentes en el proyecto. Los tests deben cubrir tanto casos normales como casos límite para asegurar la robustez del código.
+
+# TEMPORAL FILES
+# todos los archivos temporales, trazas, logs, etc... se hará siempre el directorio producido por dot_flask_dashboards("<nombre_sub_directorio>", "<nombre_archivo>"), nunca rutas hardcodeadas ni relativas, de esta manera se garantiza que funcionará en cualquier entorno y con múltiples instancias
+# para logs el subdirectorio siempre será logs, para otros tipos de ficheros se usará otro subdirectorio adecuado, las trazas irán dentro de server_trace/<subdirectorio_especcífico_traza>, hay ejemplos en el código existente...
+
+# VARIABLES DE ENTORNO:
+----------------------------
+Siempre se documentan, se pone su valor por defecto en el .env correspondiente
+Siempre van en mayúsculas y empiezan por CM_
+Siempre que te pida que creemos una variable de entorno la crearás al final de la sección DEVELOPMENT AND DEBUGGING STD (salvo que explícitamente se ponga en una sección diferente), la pondrá con su valor por defecto y pondrás una descripción de para qué vale y su valor por defecto
+se incluirá automáticamente  production_env_overrides.json en su zona correspondiente con su valor por defecto
+si alguna variable de entorno no sabes dónde ponerla que se agregue a la sección NEW_VARIABLES STD
+Las variables CM_ nuevas nunca se añaden automáticamente a ningún .env*.* , solo a production_env_overrides.json y a la documentación, la inclusión en los .env*.* se hará manualmente después por parte del usuario. no se incluye automaticamente en .env-seachad tampoco
+
+# OPTIONS en fd_setup:
+------------------------
+fijate siempre como se hacen las opciones en fd_setup, el cuerpo de la función hay que ponerlo en setup_2 hasta que decidamos que se hará en otro setup_x para que no crezcan tanto los scripts, por otro lado los parámetros siempre serán title y kargs (no kwargs) y cuando se pidan valores siempre se usará _input, inspírate en cualquier función que los use para no cometer errores porque sueles hacer la implementación errónea
+
+# CODIGO:
+----------
+cuando generes las respuestas, aparte del summary que contiene las decisiones, quiero que pongas una sección de analisis dónde expliqué qué has visto y porqué has tomado esas decisiones
+documenta siempre todo el código que hagas con el objetivo de que un programador pueda entenderlo y mantenerlo en el futuro si es necesario, no solo documentes la cabecera de la función con un pequeño docstring, quiero el formato largo parecido a esto:
+cuando hagas funciones hazlo de la manera más sencilla y documentada posible, evita, si es posible, hacer funciones dentro de funciones porque hace el código más oscuro y debe ser mantenido por un humano
+def execute_in_parallel(module_name, function_name, 
+                        args=None, 
+                        kwargs=None, 
+                        console_or_thread='thread', 
+                        wait_for_thread=False, 
+                        callback=None):
+    """
+    execute_in_parallel
+    Ejecuta la función especificada dentro de un módulo dado, ya sea abriendo una consola de Windows o
+    mediante la creación de un hilo en el proceso actual. Para Windows se cierrra la consola al finalizar.
+    Para el hilo se puede indicar si se espera a que finalice, y opcionalmente, pasar un callback
+    que reciba el resultado de la función.
+
+    Params:
+        module_name (str): Nombre del módulo donde reside la función a ejecutar.
+        function_name (str): Nombre de la función a ejecutar dentro del módulo.
+        args (list): Lista de parámetros posicionales para la función.
+        kwargs (dict): Diccionario de parámetros con nombre para la función.
+        console_or_thread (str): "console" para ejecutar en una consola de Windows (no retorna resultado),
+                                 "thread" para ejecutar como hilo.
+        wait_for_thread (bool): True para esperar a que el hilo termine y retornar su resultado.
+                                False para no bloquear la ejecución principal (retornará None).
+        callback (callable): Función que se llamará (en el hilo) con el resultado de la función
+                             cuando termine. Se ignora si no se provee.
+
+    Ejemplo de uso:
+    >>> from nombre_de_tu_archivo import execute_in_parallel
+    >>> # Ejecución en consola, se cierra al terminar:
+    >>> execute_in_parallel("mi_modulo", "mi_funcion", args=[1, 2], kwargs={"key": "value"}, console_or_thread="console")
+
+    >>> # Ejecución en hilo, sin bloquear la ejecución (no esperamos resultado, usamos callback):
+    >>> def mi_callback(resultado):
+    ...     print("El hilo terminó, resultado =", resultado)
+    ...
+    >>> execute_in_parallel("mi_modulo", "mi_funcion", args=[1, 2],
+    ...                     kwargs={"key": "value"},
+    ...                     console_or_thread="thread",
+    ...                     wait_for_thread=False,
+    ...                     callback=mi_callback)
+
+    >>> # Ejecución en hilo, esperando la finalización y obteniendo su resultado directamente:
+    >>> result = execute_in_parallel("mi_modulo", "mi_funcion", args=[1, 2],
+    ...                              kwargs={"key": "value"},
+    ...                              console_or_thread="thread",
+    ...                              wait_for_thread=True)
+    >>> print("Resultado hilo:", result)
+
+    Generado por chatGPT, owner Seachad - (FGV)
+    """
+además es importante que generes documentación interna en el código que escribas que explique qué es lo que hace cada sección o codigo importante
+cualquier código que se haga tiene que ser compatible con usar varias sesiones con haproxy, si se graban ficheros, se protegerán con lock pero se tendrá un sistema que garantice que no hay errores o cuelgue de la plataforma con condiciones de carrera
+si algo se puede hacer con thread, también se podrá hacer con queue y se pondrá, para ello, una variable CM_ que determinará si "thread" o "queue", los nombres de los threads comenzarán con T_ y los de las queues con Q_ (verás ejemplos en el código existente)
+cualquier función cuyo objetivo sea hacer debug debe tener el decorator function_not_for_production, como verás que ya hay funciones que lo llevan, esto me ayuda a saber qué se está ejecutando código que por debug, log o lo que sea, puede afectar al performance del sistema en producción
+
+MERMAID:
+------------
+cuando te pida creación de un flow de mermaid
+tiene que tener extensión .mmd
+no debe contener comentarios de markdown
+inspírate en un flow sencillo como el de flowchart TD.mmd en documentation
+lo generas en documentation
+
+
+
+-----------------------------------------------------------------------------------------------------------
+
+# AECF – Project Context Contract
+
+## 1. Domain
+- Application type: 
+- Business domain:
+- Regulated / non-regulated:
+
+## 2. Architectural Constraints
+- Language versions
+- Frameworks allowed / forbidden
+- Runtime environment - flask_dashboards_sso_ptyhon_3_13_dependabot
+- Async / sync constraints
+
+## 3. Security & Compliance
+- Data sensitivity
+- Auth model
+- Forbidden patterns
+
+## 4. Non-Negotiable Rules
+- No global state unless justified
+- No magic behavior
+- Deterministic outputs
+- es importante que generes documentación interna en el código que escribas que explique qué es lo que hace cada sección o codigo importante
+- cualquier código que se haga tiene que ser compatible con usar varias sesiones con haproxy, si se graban ficheros, se protegerán con lock pero se tendrá un sistema que garantice que no hay errores o cuelgue de la plataforma con condiciones de carrera
+- si algo se puede hacer con thread, también se podrá hacer con queue y se pondrá, para ello, una variable CM_ que determinará si "thread" o "queue", los nombres de los threads comenzarán con T_ y los de las queues con Q_ (verás ejemplos en el código existente)
+- cualquier función cuyo objetivo sea hacer debug debe tener el decorator function_not_for_production, como verás que ya hay funciones que lo llevan, esto me ayuda a saber qué se está ejecutando código que por debug, log o lo que sea, puede afectar al performance del sistema en producción
+-   MERMAID:
+    ------------
+    cuando te pida creación de un flow de mermaid
+    tiene que tener extensión .mmd
+    no debe contener comentarios de markdown
+    inspírate en un flow sencillo como el de flowchart TD.mmd en documentation
+    lo generas en documentation
+-   HAPROXY:
+    ------------
+    Cualquier variable o función, escritura en ficheros o json comunes, tiene que estar preparado para waitress y para múltiples instancias con haproxy, protegido contra condiciones de carrera, sobreescrituras, etc...
+
+## 5. Output Expectations
+- Format rules
+- Naming conventions
+- Documentation level
+
+## 6. AECF Overrides
+- What CANNOT be changed even if requested

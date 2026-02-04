@@ -1,5 +1,7 @@
 MODO: LEGACY
 
+HARD PRECONDITION: Load and enforce ./00_CONTEXT_PROJECT.md before executing this prompt.
+
 FASE: DISCOVERY
 
 Objetivo:

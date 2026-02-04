@@ -1,5 +1,6 @@
 # AECF — FIX PLAN
 
+HARD PRECONDITION: Load and enforce ./00_CONTEXT_PROJECT.md before executing this prompt.
 
 Actúa como Senior Software Architect.
 

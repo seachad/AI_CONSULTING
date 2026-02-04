@@ -12,6 +12,30 @@ AECF is a **controlled engineering workflow** designed to produce **secure, audi
 
 ---
 
+## Mandatory context (CONTEXT_GENERICS / CONTEXT_PROJECT)
+
+Before running any AECF phase, load and enforce:
+
+- [\.prompts/aecf/00_CONTEXT_GENERICS.md](.prompts/aecf/00_CONTEXT_GENERICS.md)
+- [\.prompts/aecf/00_CONTEXT_PROJECT.md](.prompts/aecf/00_CONTEXT_PROJECT.md)
+
+Key points:
+
+- **Hard precondition**: apply the generic context first.
+- **Document delivery**: every phase artefact must be generated at documentation/<chat_title>/AECF_<num>_<document_name>.
+- **Determinism & clarity**: no unjustified global state, no “magic” behavior, deterministic outputs.
+- **Multi-instance / HAProxy compatibility**: shared writes must be race-safe.
+- **Threads/queues**: any thread-based execution must also support queue-based execution; CM_ variables switch modes. Threads: T_*, queues: Q_*.
+- **Production debug**: debug functions must use the `function_not_for_production` decorator.
+- **CM_ variables**: must exist in production_env_overrides.json with the same structure and never be defaulted in .env.
+- **.md documentation**: always under documentation.
+- **Tests**: all testable code must include tests in tests/.
+- **Mermaid**: flows go in documentation with .mmd extension and no markdown comments.
+
+The project context contract additionally defines domain, architectural constraints, security/compliance, output expectations, and any overrides.
+
+---
+
 ## Why AECF exists
 
 LLMs are excellent at generating plausible code, but they are weak at:

@@ -1,5 +1,7 @@
 # AECF — FIX CODE
 
+HARD PRECONDITION: Load and enforce ./00_CONTEXT_PROJECT.md before executing this prompt.
+
 Este prompt está sujeto a auditoría.
 El incumplimiento del flujo invalida la respuesta.
 

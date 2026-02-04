@@ -1,5 +1,7 @@
 # AECF — AUDIT CODE
 
+HARD PRECONDITION: Load and enforce ./00_CONTEXT_PROJECT.md before executing this prompt.
+
 Actúa como Principal Software Engineer y Code Auditor independiente.
 
 Trabaja sobre el codigo generado para la funcionalidad solicitada:
