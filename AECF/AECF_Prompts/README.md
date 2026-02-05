@@ -5,7 +5,7 @@
 - comprobación (tras cerrar y abrir la terminal): gh --version
 - login: gh auth login (hago login con seachad usando el browser)
 - comprobacion; gh auth status
-- arrancarlo: gh copilot chat
+- arrancarlo: copilot -i "chat"
 
 # AECF Prompts — Guía de uso
 
