@@ -100,6 +100,7 @@ This phase is COMPLETE when:
 - Entry points are clearly identified
 - Technical flow is explicit
 - Known unknowns are listed
+- md document is generated following conventions described
 
 The output of this phase becomes:
 ➡ Input for DISCOVERY_LEGACY

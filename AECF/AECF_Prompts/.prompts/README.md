@@ -119,7 +119,7 @@ aunque vaya a ser modificada, extendida o auditada.
 
 ```
 [EXISTING_FUNCTIONALLITY (opcional)]
- → DISCOVERY
+ → DISCOVERY-LEGACY
    → PLAN
      → AUDIT-PLAN
        → (GO / NO-GO)
