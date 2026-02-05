@@ -49,5 +49,9 @@ Formato obligatorio:
 ## Flujo funcional identificado
 ## Límites del alcance
 
+Output de esta fase:
+- genera el documento md que servirá de entrada para la siguiente fase: PLAN
+
 Finaliza con EXACTAMENTE:
 FUNCIONALIDAD DELIMITADA PARA AECF
+
