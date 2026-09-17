@@ -1,0 +1,3261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gate and audit criteria</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Gate and audit criteria"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/21_SEVEN-G_Criterios_de_gate_y_auditoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 21 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 21 &#183; Gate and audit criteria</p>
+    <h1>Gate and audit criteria</h1>
+    <p class="entradilla">What must be met at each decision gate, how it is verified and how it is audited</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>8</b><span>decision gates</span></div><div class="cifra"><b>128</b><span>coded criteria</span></div><div class="cifra"><b>4</b><span>sign-offs with veto at G5</span></div><div class="cifra"><b>3</b><span>audit outcomes</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/21_SEVEN-G_Criterios_de_gate_y_auditoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/21_SEVEN-G_Criterios_de_gate_y_auditoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/21_SEVEN-G_Criterios_de_gate_y_auditoria.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#how-to-read-the-criteria"><span>02</span>How to read the criteria</a></li><li><a href="#rules-common-to-all-gates"><span>03</span>Rules common to all gates</a></li><li><a href="#valid-evidence"><span>04</span>Valid evidence</a></li><li><a href="#degree-of-compliance-and-decision-rule"><span>05</span>Degree of compliance and decision rule</a></li><li><a href="#criteria-per-gate"><span>06</span>Criteria per gate</a></li><li><a href="#criteria-differentiated-by-ambition-level"><span>07</span>Criteria differentiated by ambition level</a></li><li><a href="#specific-criteria-for-generative-ai-agents-and-third-parties"><span>08</span>Specific criteria for generative AI, agents and third parties</a></li><li><a href="#multi-level-go-live-sign-off-g5"><span>09</span>Multi-level go-live sign-off (G5)</a></li><li><a href="#audit-criteria"><span>10</span>Audit criteria</a></li><li><a href="#gate-decision-record-p29"><span>11</span>Gate decision record (P29)</a></li><li><a href="#associated-tools-and-templates"><span>12</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>13</span>Related documents</a></li><li><a href="#version-control"><span>14</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<p>This document sets out the <strong>criteria that must be met to pass each decision gate</strong> of the SEVEN-G lifecycle (G0, G1, G2, G3, G4, G5, R6 and G7), the rules for verifying evidence, the calculation of the degree of compliance, the multi-level go-live sign-off and the <strong>criteria used to audit</strong> that the gates have been applied correctly.</p>
+<p>It develops section 7 of document 01 (Foundational methodology) and may not contradict it. The checklists in document 22 turn each criterion in this document into a binary control with <strong>the same code</strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Applies to</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In-house AI initiatives</td>
+<td>All applicable criteria according to intensity, ambition and technology.</td>
+</tr>
+<tr>
+<td>Third-party AI integrated into processes</td>
+<td>All criteria; those marked [TER] are added, and those relating to design and construction are read as selection, integration, contract and supplier controls.</td>
+</tr>
+<tr>
+<td>Corporate use of general-purpose AI</td>
+<td>Only if it meets any Enterprise criterion (01 §9.2); otherwise it is governed through the inventory, policy and technical controls.</td>
+</tr>
+<tr>
+<td>Systems in production prior to the adoption of the framework</td>
+<td>Review equivalent to G7 (01 §14) with the G7 criteria, supplemented by the criteria marked ◆ in G4, G5 and R6 that are applicable.</td>
+</tr>
+</tbody>
+</table></div>
+<p>This document does not constitute legal advice. The regulatory references were consulted in September 2026; the application dates of some obligations under the EU AI Act have been the subject of amendment proposals, so their applicability must be verified in each case.</p>
+<hr />
+<h2 id="how-to-read-the-criteria"><span class="antetitulo">02</span>How to read the criteria</h2>
+<h3 id="2-1-table-columns">2.1 Table columns</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Code</strong></td>
+<td><code>G&lt;n&gt;.&lt;nn&gt;</code> for the gates and <code>R6.&lt;nn&gt;</code> for the continuity review. It is the same code used by document 22, the <em>gate</em> manager (T03) and the decision record (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>). A code is not reused even if the criterion is withdrawn.</td>
+</tr>
+<tr>
+<td><strong>Criterion</strong></td>
+<td>Verifiable condition. The initial tags delimit its scope (section 2.3).</td>
+</tr>
+<tr>
+<td><strong>Evidence</strong></td>
+<td>Template (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) or tool (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–T22) where the proof must be found.</td>
+</tr>
+<tr>
+<td><strong>Mandatory</strong></td>
+<td>Nature of the criterion (section 2.2).</td>
+</tr>
+<tr>
+<td><strong>Lite · Enterprise</strong></td>
+<td>Whether it applies at each intensity: <strong>Yes</strong> (in full), <strong>Simpl.</strong> (with a simplified template), <strong>Rec.</strong> (recommended at that intensity) or <strong>—</strong> (not applicable at that intensity).</td>
+</tr>
+<tr>
+<td><strong>Optimise / Augment / Transform</strong></td>
+<td>How the criterion changes according to the ambition level. &quot;—&quot; indicates that it does not change.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-2-mandatory-nature">2.2 Mandatory nature</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Effect on the decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Yes</strong></td>
+<td>Mandatory and <strong>not conditionable</strong>.</td>
+<td>Must be <em>Met</em> (or justified <em>Not applicable</em>) to <strong>Proceed</strong> or <strong>Proceed with conditions</strong>.</td>
+</tr>
+<tr>
+<td><strong>Yes ◆</strong></td>
+<td>Mandatory, not conditionable and also a <strong>critical control for security, legal compliance or human oversight</strong> (01 §7.3).</td>
+<td>Same as <em>Yes</em>. It is never accepted as a condition. At Enterprise G5 it grounds the veto. Its absence in a system in production is a major or critical nonconformity.</td>
+</tr>
+<tr>
+<td><strong>Conditionable</strong></td>
+<td>Mandatory. If it is not fully met, the shortfall is not critical and the evidence exists, it allows <strong>Proceed with conditions</strong>.</td>
+<td>The condition carries a time limit, an owner and a means of verification, and is checked at the latest at the next <em>gate</em>.</td>
+</tr>
+<tr>
+<td><strong>Recommended</strong></td>
+<td>&quot;Should&quot; (01 §1.3).</td>
+<td>May be omitted with a recorded justification. It does not block. Omitting it without justification is an audit observation.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-3-scope-tags">2.3 Scope tags</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Applies when</th>
+<th>If it does not apply</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>[GEN]</strong></td>
+<td>The registered technology is <em>Generative AI</em> or <em>Agent</em>.</td>
+<td><em>Not applicable</em>, justified by the technology tag in the register.</td>
+</tr>
+<tr>
+<td><strong>[AG]</strong></td>
+<td>The system executes actions or prepares them for human validation (autonomy A1, A2 or A3). Section 8.2 indicates what each level requires.</td>
+<td><em>Not applicable</em>, justified by the approved autonomy level (A0).</td>
+</tr>
+<tr>
+<td><strong>[TER]</strong></td>
+<td>An AI supplier is involved: model, platform or software with AI functions.</td>
+<td><em>Not applicable</em>, justified by the suppliers field in the register.</td>
+</tr>
+<tr>
+<td><strong>Transform / Scale / Retire / Iterate</strong></td>
+<td>Only for that ambition level or for that proposed outcome.</td>
+<td><em>Not applicable</em> without further justification.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-4-status-of-each-criterion">2.4 Status of each criterion</h3>
+<p>Each criterion is recorded in T03 with one of the four statuses in document 03 §3.4: <strong>Met</strong> · <strong>Not met</strong> · <strong>Not applicable</strong> · <strong>Pending</strong>. <em>Not applicable</em> requires a justification, which the verifier validates; an unjustified <em>Not applicable</em> is treated as <em>Not met</em>.</p>
+<hr />
+<h2 id="rules-common-to-all-gates"><span class="antetitulo">03</span>Rules common to all gates</h2>
+<h3 id="3-1-dual-validation">3.1 Dual validation</h3>
+<p>A criterion is only <em>Met</em> if both conditions in 01 §7.2 are satisfied at the same time, and the verifier records them separately:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Question</th>
+<th>Example of failure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R · Result</strong></td>
+<td>Do the actual data, tests or results demonstrate what the criterion requires?</td>
+<td>The hypothesis canvas is complete, but the baseline has not been measured.</td>
+</tr>
+<tr>
+<td><strong>D · Documentation</strong></td>
+<td>Does the evidence exist, is it valid (section 4) and has it been verified?</td>
+<td>The pilot reached the threshold, but there is no dated report or version of the results.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Results without documentation, or documentation without results, leave the criterion <em>Not met</em> or <em>Pending</em>.</p>
+<h3 id="3-2-decision-rules">3.2 Decision rules</h3>
+<p>The seven rules in 01 §7.4 apply, with these operational clarifications:</p>
+<ol>
+<li><strong>Segregation of duties.</strong> The author of a piece of evidence does not verify it or decide on it. The verifier does not decide. If the decision-maker provided evidence, they must abstain, and the substitute provided for in the governance model (document 30) decides.</li>
+<li><strong>No evidence, no decision.</strong> If the verification concludes <em>Nonconformant</em> (section 10.2), the request goes back to the team and does not reach the deciding body.</li>
+<li><strong>Prior existence.</strong> All evidence must be dated before the <em>gate</em> request. Corrections requested by the verifier generate a new version before the decision.</li>
+<li><strong>Conditions.</strong> Only on <em>Conditionable</em> criteria. Each condition has a time limit, an owner, a linked criterion and a means of verification. An expired condition turns the outcome into <strong>Iterate</strong>.</li>
+<li><strong>Iterations.</strong> After two iterations at the same <em>gate</em>, the third decision is taken by the higher body defined in document 30.</li>
+<li><strong>Stop criteria.</strong> They are not relaxed without the approval of the body that authorised the initiative, recorded before the affected decision.</li>
+<li><strong>Record.</strong> Every decision is documented in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> and generates the corresponding events in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</li>
+</ol>
+<h3 id="3-3-meeting-the-criteria-is-necessary-not-sufficient">3.3 Meeting the criteria is necessary, not sufficient</h3>
+<p>All criteria being <em>Met</em> allows <strong>Proceed</strong>, but does not require it. The competent body may decide to <strong>Iterate</strong>, <strong>Pivot</strong> or <strong>Stop</strong> with a recorded reason (for example, a change in strategic priority). Conversely, no body may record <strong>Proceed</strong> with a <em>Yes</em> or <em>Yes ◆</em> criterion that is <em>Not met</em> or <em>Pending</em>.</p>
+<h3 id="3-4-grouped-gates-in-lite">3.4 Grouped gates in Lite</h3>
+<p>At Lite intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5 (01 §7.5). Grouping does not merge criteria: each gate keeps its own list, its status per criterion and its section in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, and each piece of evidence is verified.</p>
+<h3 id="3-5-board-decisions-in-transform">3.5 Board decisions in Transform</h3>
+<p>Transform initiatives are always Enterprise (01 §9.2) and require express approval by the board or its board committee at <strong>G2</strong> (authorisation of the bet, criterion G2.12) and at <strong>G7</strong> when the decision is to scale (criterion G7.09). The approval is recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> with a reference to the minutes or to the register of recommendations and decisions (document 62).</p>
+<hr />
+<h2 id="valid-evidence"><span class="antetitulo">04</span>Valid evidence</h2>
+<h3 id="4-1-rules">4.1 Rules</h3>
+<p>A piece of evidence is valid if it passes the following fourteen rules. Document 22 turns them into the cross-cutting checklist LV-EV, with the same codes.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Rule</th>
+<th>What is checked</th>
+<th>If not met</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EV.01</strong></td>
+<td>Identification</td>
+<td>Initiative code, template (P) or source record, and title.</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td><strong>EV.02</strong></td>
+<td>Author</td>
+<td>Person and role who prepares it.</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td><strong>EV.03</strong></td>
+<td>Date</td>
+<td>Date of preparation and of last modification.</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td><strong>EV.04</strong></td>
+<td>Version</td>
+<td>Version number; the verified version is the one linked in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>. A subsequent change requires new verification.</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td><strong>EV.05</strong></td>
+<td>Prior existence</td>
+<td>Dated before the <em>gate</em> request, and the activity described predates the decision. Documentation prepared after the fact to justify progress already made invalidates the <em>gate</em> (01 §7.4).</td>
+<td>Not valid · major nonconformity</td>
+</tr>
+<tr>
+<td><strong>EV.06</strong></td>
+<td>Integrity and traceability</td>
+<td>Stored in the document repository with version history; link accessible to the verifier and the auditor from <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or T03.</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td><strong>EV.07</strong></td>
+<td>Relevance</td>
+<td>It refers to this initiative, its scope and the system version. Reuse of evidence from another initiative is justified.</td>
+<td>Not valid</td>
+</tr>
+<tr>
+<td><strong>EV.08</strong></td>
+<td>Real data</td>
+<td>Where the criterion requires results: reproducible source, period and method; amounts with a formula and status (validated, declared or estimated).</td>
+<td>Not valid</td>
+</tr>
+<tr>
+<td><strong>EV.09</strong></td>
+<td>Approval and segregation</td>
+<td>Approved by the appropriate person; author, verifier and decision-maker are different people.</td>
+<td>Not valid · major nonconformity if there is self-approval</td>
+</tr>
+<tr>
+<td><strong>EV.10</strong></td>
+<td>Completeness</td>
+<td>Mandatory fields of the template filled in; in Lite, those not marked <em>(Enterprise)</em>. Missing data are shown as &quot;no data&quot;, not as zero.</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td><strong>EV.11</strong></td>
+<td>Consistency</td>
+<td>Figures and statements match across evidence (for example, value in <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> and <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and controls in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>).</td>
+<td>Not met until clarified</td>
+</tr>
+<tr>
+<td><strong>EV.12</strong></td>
+<td>Information protection</td>
+<td>It contains no unnecessary personal data; access restricted according to its classification.</td>
+<td>Observation or nonconformity, depending on the case</td>
+</tr>
+<tr>
+<td><strong>EV.13</strong></td>
+<td>System-generated evidence</td>
+<td>Dated export or time-stamped link to logs, dashboards or test results. A screenshot with no date or source is not valid.</td>
+<td>Not valid</td>
+</tr>
+<tr>
+<td><strong>EV.14</strong></td>
+<td>Third-party evidence</td>
+<td>Identifiable issuer, validity and a scope that covers the contracted service (reports, certifications, supplier documentation).</td>
+<td>Not valid</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-2-evidence-accepted-with-shortfalls">4.2 Evidence accepted with shortfalls</h3>
+<p>The verifier may accept a piece of evidence with minor shortfalls (rules EV.01–EV.04, EV.06 or EV.10) only if they do not affect a <em>Yes</em> or <em>Yes ◆</em> criterion and are corrected before the decision. Rules EV.05 and EV.09 admit no exception.</p>
+<hr />
+<h2 id="degree-of-compliance-and-decision-rule"><span class="antetitulo">05</span>Degree of compliance and decision rule</h2>
+<h3 id="5-1-calculation">5.1 Calculation</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Formula</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Applicable criteria</strong></td>
+<td>Total criteria for the gate − criteria that are justified <em>Not applicable</em>.</td>
+<td>Basis for the calculation.</td>
+</tr>
+<tr>
+<td><strong>Degree of compliance</strong></td>
+<td>Criteria <em>Met</em> ÷ applicable criteria × 100.</td>
+<td>Indicator in the register and in the funnel metrics (03 §3.5).</td>
+</tr>
+<tr>
+<td><strong>Blocking criteria</strong></td>
+<td><em>Yes</em> or <em>Yes ◆</em> criteria that are <em>Not met</em> or <em>Pending</em>.</td>
+<td>If greater than zero, neither Proceed nor Proceed with conditions is possible.</td>
+</tr>
+<tr>
+<td><strong>Open conditionable criteria</strong></td>
+<td><em>Conditionable</em> criteria that are <em>Not met</em> or <em>Pending</em>.</td>
+<td>If greater than zero and there are no blocking criteria, at most Proceed with conditions is possible.</td>
+</tr>
+<tr>
+<td><strong>Omitted recommended criteria</strong></td>
+<td><em>Recommended</em> criteria not met, with or without justification.</td>
+<td>Without justification, they give rise to an observation.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The degree of compliance is <strong>informative</strong>: no percentage threshold allows a gate to be passed with blocking criteria.</p>
+<p><em>Illustrative example (fictitious data):</em> Enterprise G3 with no supplier and no generative AI: 22 criteria, 6 not applicable, 16 applicable. 14 are met; G3.14 is <em>Pending</em> and G3.10 is <em>Not met</em>, both <em>Conditionable</em>. Degree: 87.5%. No blocking criteria: at most, Proceed with conditions verifiable at G4.</p>
+<h3 id="5-2-from-the-status-of-the-criteria-to-the-outcome">5.2 From the status of the criteria to the outcome</h3>
+<figure class="grafico"><div class="g-titulo">From the status of the criteria to the possible outcome</div><div class="g-sub">The body decides within what the criteria allow</div><div class="g-lienzo"><pre class="mermaid">flowchart TD
+  V{"Verification of evidence"} -->|"Nonconformant"| R["Goes back to the team without a decision"]
+  V -->|"Conformant or with observations"| B{"Are there blocking criteria?"}
+  B -->|"Yes"| X["Only Iterate, Pivot or Stop"]
+  B -->|"No"| C{"Are there open conditionable criteria?"}
+  C -->|"Yes"| CC["At most Proceed with conditions"]
+  C -->|"No"| OK["Proceed allowed"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class OK ok
+  class CC,R med
+  class X ko
+</pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
+<h3 id="5-3-outcomes-allowed-per-gate">5.3 Outcomes allowed per gate</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Allowed outcomes</th>
+<th>Mandatory outcomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0</td>
+<td>Proceed · Proceed with conditions · Iterate · Stop</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1, G2, G3</td>
+<td>Proceed · Proceed with conditions · Iterate · Pivot · Stop</td>
+<td>G3: <strong>Stop</strong> if there is a prohibited practice (G3.08).</td>
+</tr>
+<tr>
+<td>G4, G5</td>
+<td>Proceed · Proceed with conditions · Iterate · Stop</td>
+<td>G5: no proceeding with a veto in force (section 9).</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Proceed with operation · Proceed with conditions · Bring G7 forward</td>
+<td><strong>Bring G7 forward</strong> if any deviation in section 6.7 occurs.</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Scale · Iterate · Retire</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>At R6, the immediate suspension of a system is not an outcome of the review: it is triggered at any time by the incident or nonconformity process (document 37). At G7, keeping the system in operation without changes is recorded as <strong>Iterate</strong>, with a return to phase 6 and the date of the next R6.</p>
+<hr />
+<h2 id="criteria-per-gate"><span class="antetitulo">06</span>Criteria per gate</h2>
+<p>Each gate includes its purpose, who verifies and who decides (01 §7.5), the evidence examined and the table of criteria. The ambition column develops 01 §7.6; section 7 summarises it.</p>
+<h3 id="6-1-g0-authorisation">6.1 G0 · Authorisation</h3>
+<p><strong>Purpose.</strong> Formally authorise the initiative and set the framework within which it will be developed. Without an approved G0 the initiative is not authorised: it may not consume budget or access production data.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verifies</strong></td>
+<td>AI Office</td>
+<td>AI Auditor</td>
+</tr>
+<tr>
+<td><strong>Decides</strong></td>
+<td>Sponsor</td>
+<td>AI Committee</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Evidence:</strong> <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> · <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> · <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> · <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> · <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> · record in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. <strong>Decision:</strong> <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Criterion</th>
+<th>Evidence</th>
+<th>Mandatory</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Optimise / Augment / Transform (if different)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0.01</td>
+<td>The charter defines the business problem or objective, the scope, the budget for phases 1 to 3 and the signed commitment of the sponsor.</td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a></td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>Transform: senior management sponsor.</td>
+</tr>
+<tr>
+<td>G0.02</td>
+<td>The initiative fits the AI thesis and the portfolio approved in C2 and C3, with a reference to the sphere and the priority assigned.</td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Transform: it appears in the portfolio with a board decision expected at G2.</td>
+</tr>
+<tr>
+<td>G0.03</td>
+<td>The context statement sets out the regulatory (including sector-specific), ethical, data, budgetary and time constraints.</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G0.04</td>
+<td>The preliminary screening rules out the initiative pursuing a practice prohibited by applicable regulation.</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G0.05</td>
+<td>The roles are assigned by name: in Lite, at least sponsor, product, technical and risk (operations, at the latest, at G4); in Enterprise, the six roles in 01 §8.1.</td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G0.06</td>
+<td>The assignment respects the incompatibilities in 01 §8.2 and the AI auditor does not report hierarchically to the sponsor.</td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G0.07</td>
+<td>The intensity is determined with the eight Enterprise criteria in 01 §9.2, with a justified answer to each one.</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> · T04</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Transform: always Enterprise.</td>
+</tr>
+<tr>
+<td>G0.08</td>
+<td>The initiative is registered in the register with code IA-AAAA-NNN, and the planned systems appear in the inventory with technology, exposure and supplier.</td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T02</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G0.09</td>
+<td>No construction budget has been consumed and no production data have been accessed before the decision.</td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G0.10</td>
+<td>If personal data are expected to be processed, the data protection function has been informed.</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
+<td>Conditionable</td>
+<td>Rec.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Specific rules.</strong> A breach of G0.09 detected after G0 is a major nonconformity and, if production personal data were accessed without a legal basis, it is assessed as critical. G0.04 in <em>Not met</em> leads to <strong>Stop</strong>.</p>
+<h3 id="6-2-g1-opportunity">6.2 G1 · Opportunity</h3>
+<p><strong>Purpose.</strong> Confirm that there is a business opportunity that requires AI and that its potential value justifies formulating a hypothesis.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verifies</strong></td>
+<td>AI Office</td>
+<td>AI Auditor</td>
+</tr>
+<tr>
+<td><strong>Decides</strong></td>
+<td>Sponsor</td>
+<td>Sponsor, informing the committee</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Evidence:</strong> <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a> · <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> · <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> · <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> (if revised). <strong>Decision:</strong> <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Criterion</th>
+<th>Evidence</th>
+<th>Mandatory</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Optimise / Augment / Transform (if different)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1.01</td>
+<td>The opportunity arises from a specific business need: affected process or decision, responsible area and described problem.</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1.02</td>
+<td>The use case sheet explains what it is and what it is used for in language understandable to a non-specialist.</td>
+<td><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1.03</td>
+<td>Non-AI alternatives have been analysed and it is justified what AI provides that those alternatives do not.</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1.04</td>
+<td>The screening notes record the discarded opportunities and the reason.</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1.05</td>
+<td>The potential value is estimated as an order of magnitude, with explicit assumptions and &quot;estimated&quot; status.</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1.06</td>
+<td>The sphere and the ambition level are proposed using the five questions of the classifier.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> · T05</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Transform: the proposal is communicated to the AI Committee before phase 2 begins.</td>
+</tr>
+<tr>
+<td>G1.07</td>
+<td>The screening of the specific opportunity rules out prohibited practices, and the intensity has been reviewed if decisions about people, specially protected data or direct exposure have emerged.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> · <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1.08</td>
+<td>It has been checked on a preliminary basis that the necessary data exist, who owns them and that their use is plausibly lawful.</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1.09</td>
+<td>[TER] If buying or partnering is envisaged, the supplier option and a preliminary requirement level (N1–N3) are identified.</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td>Conditionable</td>
+<td>Rec.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G1.10</td>
+<td>The affected roles and teams are identified in order to anticipate the impact on people.</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: recommended.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Specific rules.</strong> <strong>Pivot</strong> at G1 leads to formulating a different hypothesis in phase 2 while keeping the context approved at G0.</p>
+<h3 id="6-3-g2-hypothesis">6.3 G2 · Hypothesis</h3>
+<p><strong>Purpose.</strong> Approve a measurable and falsifiable value hypothesis, with a baseline, attribution method and stop criteria defined before investing.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verifies</strong></td>
+<td>AI Office</td>
+<td>AI Auditor</td>
+</tr>
+<tr>
+<td><strong>Decides</strong></td>
+<td>Sponsor</td>
+<td>AI Committee; in addition, the board in Transform</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Evidence:</strong> <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> · <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (adoption target) · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (board approval). <strong>Tool:</strong> T11.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Criterion</th>
+<th>Evidence</th>
+<th>Mandatory</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Optimise / Augment / Transform (if different)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G2.01</td>
+<td>The hypothesis is falsifiable: it states what changes, in which metric, by how much, within what time frame and which result would refute it.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · T11</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Transform: allows greater uncertainty if G2.11 is met.</td>
+</tr>
+<tr>
+<td>G2.02</td>
+<td>The main and secondary metrics have a definition, formula, data source and measurement owner.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G2.03</td>
+<td>The baseline is measured with real data (period, source and method); if it is estimated, this is justified and approved by the decision-maker.</td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: cost, time or errors. Augment: performance and cost. Transform: starting position of the market or customer, where it exists.</td>
+</tr>
+<tr>
+<td>G2.04</td>
+<td>The target and the success threshold are explicit and quantified.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G2.05</td>
+<td>The attribution method is chosen and justified; in Enterprise, a control group or the reason why one is not possible.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G2.06</td>
+<td>The expected value is expressed in money with a formula (units × unit value), is incremental, separates efficiencies, return and recurring cost, and declares the allocation if another case shares the result.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · T11</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: expected savings with a formula. Augment: economic effect of performance and cost. Transform: staged return hypothesis.</td>
+</tr>
+<tr>
+<td>G2.07</td>
+<td>Released capacity is reported separately from savings, with the planned way of realising or reallocating it.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G2.08</td>
+<td>The stop criteria are defined before investing, with a threshold and an evaluation date or milestone.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Transform: stop criteria per stage.</td>
+</tr>
+<tr>
+<td>G2.09</td>
+<td>The ambition level is confirmed with evidence, and any change with respect to G1 is explained.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> · T05</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G2.10</td>
+<td>There is an adoption target: expected users, use and frequency.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: recommended.</td>
+</tr>
+<tr>
+<td>G2.11</td>
+<td>Transform: the hypothesis includes learning milestones, an investment limit per stage and stop criteria per stage.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>Yes</td>
+<td>—</td>
+<td>Yes</td>
+<td>Transform only.</td>
+</tr>
+<tr>
+<td>G2.12</td>
+<td>Transform: the board or its board committee has expressly approved the bet and this is recorded in the register.</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Yes</td>
+<td>—</td>
+<td>Yes</td>
+<td>Transform only.</td>
+</tr>
+<tr>
+<td>G2.13</td>
+<td>The estimated investment up to G5 and the preliminary additional net value per euro are calculated.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · T11</td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>Transform: per stage.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Specific rules.</strong> If the confirmed ambition becomes Transform, the intensity becomes Enterprise and G2.11 and G2.12 apply before deciding. If an initiative approved as Transform is reclassified to a lower level, the board is informed.</p>
+<h3 id="6-4-g3-feasibility">6.4 G3 · Feasibility</h3>
+<p><strong>Purpose.</strong> Decide whether the initiative is technically, economically, regulatorily and organisationally feasible with an acceptable risk. It is the <strong>main stop gate</strong> of the lifecycle.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verifies</strong></td>
+<td>AI Office</td>
+<td>AI Auditor</td>
+</tr>
+<tr>
+<td><strong>Decides</strong></td>
+<td>Sponsor with risk clearance</td>
+<td>AI Committee</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Evidence:</strong> <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> (if there is a supplier) · <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> (review) · updated <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>. <strong>Tools:</strong> T06 · T07 · T09 · T13.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Criterion</th>
+<th>Evidence</th>
+<th>Mandatory</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Optimise / Augment / Transform (if different)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G3.01</td>
+<td>Technical feasibility is demonstrated with the company's real data (technical proof or analysis on a representative sample), not only with assumptions.</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Transform: feasibility of the first stage.</td>
+</tr>
+<tr>
+<td>G3.02</td>
+<td>The data are available, with assessed quality (completeness, representativeness, timeliness and known biases) and an identified owner.</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.03</td>
+<td>The legal basis for processing personal data and data minimisation are confirmed by the data protection function.</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.04</td>
+<td>Full costs are estimated by category: construction, recurring (licences, model consumption, compute, operation) and adoption.</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> · T13</td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.05</td>
+<td>The expected net value is consistent with the risk appetite and the return horizon set in C2.</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> · <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: positive expected annual net value within the horizon. Augment: in addition, feasibility of adoption and of the role change. Transform: feasibility of the first stage, stop criteria per stage and documented option value.</td>
+</tr>
+<tr>
+<td>G3.06</td>
+<td>The stop criteria approved at G2 remain in force and have not been relaxed without the approval of the body that authorised the initiative.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.07</td>
+<td>The regulatory classification has been carried out with qualified legal judgement, is dated and signed, and states the company's role (provider or deployer).</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> · T07</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.08</td>
+<td>There is no prohibited practice. If there is one, the only possible outcome is Stop.</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.09</td>
+<td>It has been determined which impact assessments are required (data protection, fundamental rights, sector-specific), and those required before processing have been carried out or started with completion expected before G4.</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.10</td>
+<td>The applicable regulatory obligations are linked to phase, role and evidence.</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.11</td>
+<td>The risks are identified in the applicable categories and assessed using the scale in document 33 (probability × impact, inherent and residual).</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · T06</td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.12</td>
+<td>No Critical residual risk lacks the express approval of the board or its board committee within the risk appetite; High risks are accepted by the AI Committee and Medium risks by the sponsor with risk clearance.</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.13</td>
+<td>Each High or Critical residual risk has a mitigation and contingency plan with a control, owner and time limit.</td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.14</td>
+<td>Medium risks have a decided response (avoid, mitigate, transfer or accept) and an owner.</td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.15</td>
+<td>The intensity has been reviewed with the information from phase 3.</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> · T04</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.16</td>
+<td>The impact on people has been assessed: affected roles and tasks, required capabilities and, where appropriate, information to or consultation with workers' representatives.</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>Optimise: impact on tasks. Augment: feasibility of the role change. Transform: impact on the operating model.</td>
+</tr>
+<tr>
+<td>G3.17</td>
+<td>[GEN] The RT-GEN and RT-SEG typical risks are assessed: direct and indirect prompt injection, information leakage, erroneous or fabricated content, excessive permissions and unauthorised actions.</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.18</td>
+<td>[GEN] The target autonomy level (A0–A3) is proposed and justified; if it is A2 or A3 with an effect on third parties, money, personal data or production systems, the intensity is Enterprise.</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.19</td>
+<td>[GEN] The evaluation approach is defined: representative test sets, quality and security metrics and acceptance thresholds.</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.20</td>
+<td>[TER] Each supplier is assessed at the requirement level that corresponds to it (N1–N3): security, processing and location of data, use of data for training, intellectual property, continuity, dependency and exit strategy.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · T09</td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.21</td>
+<td>[TER] The minimum contractual terms are set as a procurement requirement: confidentiality, prohibition on using the data for other purposes, incident notification, right to audit or equivalent reports (N2–N3) and return or deletion of data on termination.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G3.22</td>
+<td>[TER] The supplier provides, or undertakes to provide, the documentation that regulation requires of it and that the company needs to meet its own obligations.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Conditionable</td>
+<td>Rec.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Specific rules.</strong> Prohibited practices never get past this phase (01 §6.5). A Critical residual risk without the approval in G3.12 blocks G3. <strong>Pivot</strong> is admissible when the hypothesis does not hold but a reasonable alternative exists.</p>
+<h3 id="6-5-g4-design">6.5 G4 · Design</h3>
+<p><strong>Purpose.</strong> Approve a design that is controllable, supervisable and reversible, that covers the controls required by the risk classification, and in which each risk from phase 3 has a designed control.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verifies</strong></td>
+<td>AI Office</td>
+<td>AI Auditor</td>
+</tr>
+<tr>
+<td><strong>Decides</strong></td>
+<td>Sponsor with risk clearance</td>
+<td>AI Committee</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Evidence:</strong> <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> · <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> (test and pilot plan) · updated <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>. <strong>Tools:</strong> T10 · T20.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Criterion</th>
+<th>Evidence</th>
+<th>Mandatory</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Optimise / Augment / Transform (if different)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G4.01</td>
+<td>The architecture record describes components, integrations, environments, third-party dependencies and decisions with their alternatives.</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.02</td>
+<td>The architecture guarantees traceability: automatic logging of inputs, outputs, versions and relevant decisions, with a defined retention period.</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td>Yes ◆</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.03</td>
+<td>The lineage documents data sources and transformations, model versions, training or fine-tuning data and third-party foundation models.</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.04</td>
+<td>The human oversight design sets out what the system decides, what a person validates and what is never delegated, and designates who intervenes, with what authority and with what means.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.05</td>
+<td>The transparency obligations are designed: notice of interaction with AI or of generated content where appropriate, and information and a route to human review in automated decisions about people.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.06</td>
+<td>Each Medium or higher risk from phase 3 has a designed control that is traceable to the risk register.</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.07</td>
+<td>The security design covers identity and access, encryption, environment segregation, secrets management and AI-specific threats (data poisoning, model extraction, evasion).</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td>Yes ◆</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.08</td>
+<td>Monitoring is defined (performance, degradation, bias, cost, security and use) with thresholds, alerts and an assigned operations owner.</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> · <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.09</td>
+<td>There is a stop mechanism (deactivation or switch to manual mode) with an owner and a target activation time.</td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.10</td>
+<td>The rollback plan defines activation criteria, procedure, owner, operational alternative and treatment of data, and provides for its testing in phase 5.</td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.11</td>
+<td>There is an adoption plan with training, communication, support and measurement of use.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · T20</td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>Optimise: how released capacity will be realised. Augment: role change and capacity reallocation. Transform: change in the operating model for the first stage.</td>
+</tr>
+<tr>
+<td>G4.12</td>
+<td>The test plan (functional, performance, bias, robustness and security) and the pilot design with the approved attribution method have acceptance criteria.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>Transform: the pilot measures the planned market or customer evidence.</td>
+</tr>
+<tr>
+<td>G4.13</td>
+<td>The required impact assessments are completed and their measures incorporated into the design.</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.14</td>
+<td>If the system is high-risk, the obligations corresponding to the company's role (risk management, data governance, technical documentation, logs, instructions for use, human oversight, accuracy and robustness) are planned with an owner.</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> · <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td>Yes ◆</td>
+<td>—</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.15</td>
+<td>[AG] The agent has its own identity, distinct from that of any person, with managed, rotated and revocable credentials.</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · T10</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.16</td>
+<td>[AG] Permissions are minimal and the limits of action are explicit: permitted tools, operations, systems, amounts, recipients and volumes.</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · T10</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.17</td>
+<td>[AG] There is intent-based access control: each action is linked to the instruction and purpose that originate it and, if it is sensitive, is checked against the authorised purpose before being executed.</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · T10</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.18</td>
+<td>[AG] There is a kill switch that immediately stops the agent and revokes its credentials, with an owner and a planned test.</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.19</td>
+<td>[AG] Sensitive or irreversible actions require prior human validation according to the approved autonomy level.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.20</td>
+<td>[GEN] There are defences against prompt injection and information leakage: separation between instructions and data, external content treated as untrusted, input and output filtering and restriction of tools.</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · T10</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.21</td>
+<td>[GEN] The evaluation set and its thresholds (quality, grounding of responses, harmful content and security) are approved before building.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G4.22</td>
+<td>[TER] The clauses required in G3.21 are incorporated into the contract or the draft under negotiation, and the integration with the supplier is documented.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Specific rules.</strong> In Lite, G4 and G5 may be resolved in the same session if each criterion is assessed and recorded separately. High-risk classification implies Enterprise intensity, which is why G4.14 has no Lite column.</p>
+<h3 id="6-6-g5-go-live">6.6 G5 · Go-live</h3>
+<p><strong>Purpose.</strong> Authorise go-live when the solution works, delivers value under real conditions, the critical controls operate and operations are prepared.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verifies</strong></td>
+<td>AI Office</td>
+<td>AI Auditor</td>
+</tr>
+<tr>
+<td><strong>Decides</strong></td>
+<td>Sponsor with risk clearance</td>
+<td>AI Committee after multi-level sign-off</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Evidence:</strong> <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> (test) · updated <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> (contract). <strong>Tools:</strong> T03 · T08 · T10 · T11 · T12.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Criterion</th>
+<th>Evidence</th>
+<th>Mandatory</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Optimise / Augment / Transform (if different)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G5.01</td>
+<td>The delivery report describes what has been built or integrated and the deviations from the design approved at G4, with their approval.</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.02</td>
+<td>The functional and performance tests meet the acceptance criteria.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.03</td>
+<td>If the system affects people, the bias and non-discrimination tests have been carried out and the results are within the thresholds.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.04</td>
+<td>The robustness and security tests have been carried out and no critical or high vulnerabilities remain open.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>Yes ◆</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.05</td>
+<td>[GEN] The evaluations on the approved set reach the thresholds, and direct and indirect prompt injection and information leakage tests have been passed.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · T10</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.06</td>
+<td>[AG] The tests demonstrate that the limits of action and intent-based access control block unauthorised actions and that the kill switch stops the agent and revokes its credentials.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> · T10</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.07</td>
+<td>[AG] The autonomy level authorised for production is the one tested; any subsequent increase requires returning to G4 and G5.</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.08</td>
+<td>The pilot has been run with the approved attribution method and its results reach the success threshold or do so with accepted conditions.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · T11</td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: efficiency validated against the baseline. Augment: actual adoption and performance improvement measured. Transform: market or customer evidence (use, conversion, initial revenue or verified operational change).</td>
+</tr>
+<tr>
+<td>G5.09</td>
+<td>No stop criterion has been reached or, if one has been reached, the body that authorised the initiative has expressly decided to proceed.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.10</td>
+<td>There is a plan to realise or reallocate the released capacity, with an owner and a date.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: realise. Augment: reallocate. Transform: only if there is released capacity.</td>
+</tr>
+<tr>
+<td>G5.11</td>
+<td>The rollback plan has been tested and the actual rollback time meets the target.</td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.12</td>
+<td>The risk register is updated with the test results, and the acceptances of residual risk are recorded at the corresponding level (G3.12).</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · T06</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.13</td>
+<td>The critical security, compliance and human oversight controls are active and verified in the production environment, not only designed.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.14</td>
+<td>The people who exercise human oversight are designated, trained and have the authority and means to intervene.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.15</td>
+<td>The regulatory obligations prior to putting into service are met according to the company's role (for example, for high-risk: conformity assessment, registration and instructions for use where applicable; transparency in all applicable cases).</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.16</td>
+<td>Monitoring and alerts are configured and tested.</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.17</td>
+<td>The incident response plan defines severities S1–S4, escalation and applicable regulatory notifications (serious AI incident, data protection, DORA or NIS2) with their time limits.</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> · T08</td>
+<td>Yes ◆</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.18</td>
+<td>The operations manual is available and accepted by the operations owner.</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.19</td>
+<td>Users are trained and there is evidence of AI literacy among the staff who use or oversee the system.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.20</td>
+<td>[TER] The contract is signed with the required clauses and the supplier appears in the supplier register.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · T09</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.21</td>
+<td>Value tracking is configured (frequency, source and validation owner) and the pilot results are recorded with their status (validated, declared or estimated).</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · T12</td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.22</td>
+<td>The conditions from previous <em>gates</em> are closed or, if they do not affect critical controls, within their time limit.</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · T03</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G5.23</td>
+<td>Go-live is signed off: in Lite, with risk clearance; in Enterprise, with multi-level sign-off and no veto in force (section 9).</td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> · T03</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Specific rules.</strong> A system in production without an approved G5 is a critical nonconformity (01 §12). The sign-offs in <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> refer to a specific version of the system: a significant change between sign-off and go-live requires signing off again.</p>
+<h3 id="6-7-r6-continuity-review">6.7 R6 · Continuity review</h3>
+<p><strong>Purpose.</strong> Periodically check that the system continues to work, deliver value and remain under control, and bring G7 forward if there are relevant deviations. Minimum frequency: <strong>quarterly in Enterprise and half-yearly in Lite</strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verifies</strong></td>
+<td>AI Office</td>
+<td>AI Auditor</td>
+</tr>
+<tr>
+<td><strong>Decides</strong></td>
+<td>Sponsor</td>
+<td>AI Committee</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Evidence:</strong> <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> · <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>. <strong>Tools:</strong> T08 · T10 · T12.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Criterion</th>
+<th>Evidence</th>
+<th>Mandatory</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Optimise / Augment / Transform (if different)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R6.01</td>
+<td>The review is carried out within its frequency.</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.02</td>
+<td>The realised value is measured against the hypothesis, with validation status and proportion of validated value.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · T12</td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>Optimise: realised savings or reassigned capacity. Augment: sustained performance and adoption. Transform: progress against the stage milestones.</td>
+</tr>
+<tr>
+<td>R6.03</td>
+<td>Actual costs are compared with estimated costs and deviations are explained.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · T13</td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.04</td>
+<td>Performance is within thresholds and model changes or retraining are recorded.</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.05</td>
+<td>If the system affects people, the monitored bias is within thresholds.</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.06</td>
+<td>Incidents are recorded with severity, containment and closure, and notifiable incidents were notified on time.</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · T08</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.07</td>
+<td>Significant changes (purpose, model, data, autonomy, supplier or scope) have been assessed and, where appropriate, have gone through G4 and G5.</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.08</td>
+<td>The regulatory classification, the impact assessments and the intensity remain valid in the light of changes in use or regulation.</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> · <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.09</td>
+<td>The risk register is updated and new risks are assessed and accepted at the corresponding level.</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · T06</td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.10</td>
+<td>There is evidence that the critical controls work: human oversight exercised, logs retained and stop mechanism available.</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.11</td>
+<td>[AG] Permissions and credentials, intent logs and blocked or anomalous actions have been reviewed, and the kill switch has been tested in the period.</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · T10</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.12</td>
+<td>[TER] Supplier changes (model, terms, sub-processors), its incidents and compliance with the contract have been reviewed.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · T09</td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.13</td>
+<td>Post-market monitoring is carried out where regulation requires it.</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Yes ◆</td>
+<td>—</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.14</td>
+<td>Adoption is measured against the target.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: recommended.</td>
+</tr>
+<tr>
+<td>R6.15</td>
+<td>Open conditions and nonconformities are within their time limit.</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · T08</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R6.16</td>
+<td>It has been assessed whether any deviation requiring G7 to be brought forward has occurred, and the conclusion is recorded in the register.</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Deviations that require G7 to be brought forward</strong> (criterion R6.16):</p>
+<ul>
+<li>A stop criterion has been reached.</li>
+<li>The realised value falls below the success threshold in two consecutive reviews.</li>
+<li>The residual risk of any risk rises to High or Critical without acceptance at the corresponding level.</li>
+<li>An S1 incident has occurred, or recurrent S2 incidents with the same cause.</li>
+<li>The regulatory classification or the intensity changes.</li>
+<li>The supplier ceases to meet conditions required as not conditionable or announces the withdrawal of the service.</li>
+</ul>
+<h3 id="6-8-g7-scale-or-retire">6.8 G7 · Scale or retire</h3>
+<p><strong>Purpose.</strong> Decide with evidence whether the initiative is scaled, iterated or retired.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verifies</strong></td>
+<td>AI Office</td>
+<td>AI Auditor</td>
+</tr>
+<tr>
+<td><strong>Decides</strong></td>
+<td>Sponsor</td>
+<td>AI Committee; in addition, the board to scale in Transform</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Evidence:</strong> <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> · <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>. <strong>Tools:</strong> T05 · T12 · T22.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Criterion</th>
+<th>Evidence</th>
+<th>Mandatory</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Optimise / Augment / Transform (if different)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G7.01</td>
+<td>The realised value is consolidated with its validation status; to Scale, the value that justifies it is validated.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · T12</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Optimise: realised savings, not just released capacity. Augment: sustained performance and reassigned capacity. Transform: measured return and verified change in the operating model or the offering.</td>
+</tr>
+<tr>
+<td>G7.02</td>
+<td>There is an explicit conclusion on the hypothesis (confirmed, partially confirmed or refuted) against the threshold and the stop criteria.</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.03</td>
+<td>The actual ambition has been reviewed with the classifier and any difference from the declared ambition is recorded in the register.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> · T05</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.04</td>
+<td>The accumulated risks, incidents and nonconformities for the period have been assessed.</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>Yes</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.05</td>
+<td>The total actual costs, the actual annual net value and, if scaling is proposed, the additional net value per euro of the additional investment are recorded.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.06</td>
+<td>The lessons learned are recorded.</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Conditionable</td>
+<td>Simpl.</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.07</td>
+<td>Scale: the extended scope, the additional investment and the new risks are described, and a new phase 0 will be opened.</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.08</td>
+<td>Scale: operations have demonstrated stability (no open S1 or S2 incidents) and capacity for the new volume.</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>Conditionable</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.09</td>
+<td>Scale in Transform: the board or its board committee has expressly approved it.</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Yes</td>
+<td>—</td>
+<td>Yes</td>
+<td>Transform only.</td>
+</tr>
+<tr>
+<td>G7.10</td>
+<td>Iterate: the phase to return to, the reason and the time limit are defined.</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.11</td>
+<td>Retire: the retirement plan records the date, coded reason, deciding body, replacement, treatment of data and models (retention and deletion), revocation of access and credentials, communication to those affected and update of the inventory.</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> · T22</td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>G7.12</td>
+<td>[TER] Retire: termination with the supplier includes the return or certified deletion of data and the removal of access.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Yes ◆</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Specific rules.</strong> The criteria for an outcome that is not proposed (for example, G7.07 to G7.09 when Retire is proposed) are recorded as <em>Not applicable</em>. Scale opens a new phase 0 for the extended scope; it does not by itself authorise the extension.</p>
+<hr />
+<h2 id="criteria-differentiated-by-ambition-level"><span class="antetitulo">07</span>Criteria differentiated by ambition level</h2>
+<h3 id="7-1-summary">7.1 Summary</h3>
+<p>This table develops 01 §7.6 and brings together the differences that the tables in section 6 set out criterion by criterion.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Optimise</th>
+<th>Augment</th>
+<th>Transform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>G1</strong></td>
+<td>Impact on people recommended (G1.10).</td>
+<td>Affected roles and teams identified (G1.10).</td>
+<td>Proposal communicated to the AI Committee (G1.06); senior management sponsor (G0.01).</td>
+</tr>
+<tr>
+<td><strong>G2</strong></td>
+<td>Baseline for cost, time or errors (G2.03); expected savings with a formula (G2.06); adoption target recommended (G2.10).</td>
+<td>Baseline for performance and cost (G2.03); adoption target mandatory (G2.10).</td>
+<td>Learning milestones, investment limit and stop criteria per stage (G2.08, G2.11); board approval (G2.12).</td>
+</tr>
+<tr>
+<td><strong>G3</strong></td>
+<td>Positive expected annual net value within the C2 horizon (G3.05).</td>
+<td>Expected net value and feasibility of adoption and of the role change (G3.05, G3.16).</td>
+<td>Feasibility of the first stage, stop criteria per stage and documented option value (G3.01, G3.05); impact on the operating model (G3.16).</td>
+</tr>
+<tr>
+<td><strong>G4</strong></td>
+<td>Plan for realising released capacity (G4.11).</td>
+<td>Plan for role change and reallocation (G4.11).</td>
+<td>Change in the operating model for the first stage; pilot that measures market or customer evidence (G4.11, G4.12).</td>
+</tr>
+<tr>
+<td><strong>G5</strong></td>
+<td>Efficiency validated against the baseline; plan to realise released capacity (G5.08, G5.10).</td>
+<td>Actual adoption and performance improvement measured; reallocation plan (G5.08, G5.10).</td>
+<td>Market or customer evidence: use, conversion, initial revenue or verified operational change (G5.08).</td>
+</tr>
+<tr>
+<td><strong>R6</strong></td>
+<td>Realised savings or reassigned capacity (R6.02); adoption recommended (R6.14).</td>
+<td>Sustained performance and adoption (R6.02, R6.14).</td>
+<td>Progress against the stage milestones (R6.02).</td>
+</tr>
+<tr>
+<td><strong>G7</strong></td>
+<td>Realised savings, not just released capacity (G7.01).</td>
+<td>Sustained performance and reassigned capacity (G7.01).</td>
+<td>Measured return and verified change in the operating model or the offering (G7.01); board approval to scale (G7.09).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-2-application-rules">7.2 Application rules</h3>
+<ol>
+<li><strong>The confirmed level applies.</strong> Ambition is proposed at G1, confirmed at G2 and reviewed at G7 (00 §5.2). Between G2 and G7 the criteria are assessed with the level confirmed at G2.</li>
+<li><strong>Criteria are not mixed.</strong> An Optimise initiative cannot justify G3 with option value; a Transform initiative is not required to show positive net value within the C2 horizon at G3, but it is required to have an investment limit and stop criteria per stage.</li>
+<li><strong>Reclassification has effects.</strong> Moving up to Transform requires Enterprise intensity and board approval before continuing. Moving down from Transform is reported to the board, and the criteria of the new level apply from that moment.</li>
+<li><strong>Transform stages are controlled.</strong> Before committing the investment for a new stage, the AI Committee should record in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> that the learning milestones of the previous stage have been reached and that no stop criterion has been triggered, informing the board.</li>
+<li><strong>Released capacity is not savings.</strong> At no level is released capacity that has not been realised or reallocated accepted as realised value at G7 (measurement rule 3, 00 §6).</li>
+</ol>
+<hr />
+<h2 id="specific-criteria-for-generative-ai-agents-and-third-parties"><span class="antetitulo">08</span>Specific criteria for generative AI, agents and third parties</h2>
+<h3 id="8-1-map-of-criteria-by-topic">8.1 Map of criteria by topic</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>G3</th>
+<th>G4</th>
+<th>G5</th>
+<th>R6</th>
+<th>G7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Generative AI evaluations</strong></td>
+<td>G3.19</td>
+<td>G4.21</td>
+<td>G5.05</td>
+<td>R6.04</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Prompt injection and information leakage</strong></td>
+<td>G3.17</td>
+<td>G4.20</td>
+<td>G5.05</td>
+<td>R6.06</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Autonomy level</strong></td>
+<td>G3.18</td>
+<td>G4.19</td>
+<td>G5.07</td>
+<td>R6.07</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Agent identity and permissions</strong></td>
+<td>G3.17</td>
+<td>G4.15, G4.16</td>
+<td>G5.06</td>
+<td>R6.11</td>
+<td>G7.11</td>
+</tr>
+<tr>
+<td><strong>Intent-based access control</strong></td>
+<td>—</td>
+<td>G4.17</td>
+<td>G5.06</td>
+<td>R6.11</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Kill switch</strong></td>
+<td>—</td>
+<td>G4.18</td>
+<td>G5.06</td>
+<td>R6.11</td>
+<td>G7.11</td>
+</tr>
+<tr>
+<td><strong>AI suppliers</strong></td>
+<td>G3.20, G3.21, G3.22</td>
+<td>G4.22</td>
+<td>G5.20</td>
+<td>R6.12</td>
+<td>G7.12</td>
+</tr>
+</tbody>
+</table></div>
+<p>The LV-AG checklist in document 22 brings together these criteria for agents and provides the content for tool T10.</p>
+<h3 id="8-2-requirements-by-autonomy-level">8.2 Requirements by autonomy level</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>A0 · Assistance</th>
+<th>A1 · Recommendation</th>
+<th>A2 · Supervised action</th>
+<th>A3 · Autonomous action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intensity</td>
+<td>According to 01 §9.2</td>
+<td>According to 01 §9.2</td>
+<td>Enterprise if there is an effect on third parties, money, personal data or production</td>
+<td>Enterprise if there is an effect on third parties, money, personal data or production</td>
+</tr>
+<tr>
+<td>Own identity and minimal permissions (G4.15, G4.16)</td>
+<td>Not applicable</td>
+<td>If it accesses systems</td>
+<td>Mandatory</td>
+<td>Mandatory</td>
+</tr>
+<tr>
+<td>Intent-based access control (G4.17)</td>
+<td>Not applicable</td>
+<td>Recommended</td>
+<td>Mandatory</td>
+<td>Mandatory</td>
+</tr>
+<tr>
+<td>Prior human validation (G4.19)</td>
+<td>The person decides and executes</td>
+<td>For each action</td>
+<td>For sensitive or irreversible actions</td>
+<td>For actions outside the approved limits</td>
+</tr>
+<tr>
+<td>Kill switch (G4.18, G5.06)</td>
+<td>General stop mechanism (G4.09)</td>
+<td>Recommended</td>
+<td>Mandatory and tested</td>
+<td>Mandatory, tested and checked at each R6</td>
+</tr>
+<tr>
+<td>Oversight</td>
+<td>Review of the content by the person</td>
+<td>Record of the recommendation and of the human decision</td>
+<td>After-the-fact review by sampling</td>
+<td>Oversight of aggregates with alerts on the limits</td>
+</tr>
+<tr>
+<td>Approval of the level</td>
+<td>At G4</td>
+<td>At G4</td>
+<td>At G4 and G5</td>
+<td>Express at G4 and G5, with quantitative limits</td>
+</tr>
+</tbody>
+</table></div>
+<p>Increasing the autonomy level of a system in production is a significant change: it requires returning to G4 and G5 (G5.07, R6.07).</p>
+<h3 id="8-3-third-party-ai-by-requirement-level">8.3 Third-party AI by requirement level</h3>
+<p>The detail of levels N1–N3 is in document 36. For the purposes of the <em>gates</em>:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>G3</th>
+<th>G4–G5</th>
+<th>R6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N1 · Standard</strong></td>
+<td>Simplified <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; data use terms reviewed (G3.20, G3.21).</td>
+<td>Terms accepted and recorded (G5.20).</td>
+<td>Review of changes to the service (R6.12).</td>
+</tr>
+<tr>
+<td><strong>N2 · Enhanced</strong></td>
+<td>Full <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; right to audit or equivalent reports and incident notification (G3.21).</td>
+<td>Clauses in a signed contract (G4.22, G5.20).</td>
+<td>Review of incidents and contractual compliance.</td>
+</tr>
+<tr>
+<td><strong>N3 · Critical</strong></td>
+<td>In addition, exit strategy and DORA or NIS2 requirements where applicable (G3.20).</td>
+<td>In addition, continuity or exit test where appropriate.</td>
+<td>Review at each R6 with a dependency assessment.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="multi-level-go-live-sign-off-g5"><span class="antetitulo">09</span>Multi-level go-live sign-off (G5)</h2>
+<h3 id="9-1-who-signs-off-and-what-they-check">9.1 Who signs off and what they check</h3>
+<p>In Enterprise, go-live requires <strong>multi-level sign-off with veto power</strong> (01 §6.7). Each sign-off is recorded in <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> and in T03 with the date, system version and criteria reviewed.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Signatory</th>
+<th>What they check as a minimum</th>
+<th>Reference criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Technical owner</strong></td>
+<td>Solution delivered in accordance with the design, functional and performance tests, rollback tested, operational traceability.</td>
+<td>G5.01, G5.02, G5.11, G4.02</td>
+</tr>
+<tr>
+<td><strong>Risk and compliance</strong></td>
+<td>Residual risk accepted at the corresponding level, prior regulatory obligations met, human oversight operational, stop criteria.</td>
+<td>G5.09, G5.12, G5.14, G5.15</td>
+</tr>
+<tr>
+<td><strong>Information security</strong></td>
+<td>Security tests with no critical or high vulnerabilities, agent and injection controls, incident plan.</td>
+<td>G5.04, G5.05, G5.06, G5.07, G5.17</td>
+</tr>
+<tr>
+<td><strong>Data protection</strong></td>
+<td>Legal basis, impact assessments, transparency and rights, contract with the supplier as regards data.</td>
+<td>G3.03, G4.05, G4.13, G5.20</td>
+</tr>
+</tbody>
+</table></div>
+<p>The operations owner should also record their acceptance of operations (G5.18), which does not carry veto power. In <strong>Lite</strong>, risk clearance is sufficient (01 §9.3); if the system processes personal data, the risk owner should obtain the opinion of data protection before issuing it.</p>
+<h3 id="9-2-sign-off-and-veto-rules">9.2 Sign-off and veto rules</h3>
+<ol>
+<li><strong>Three possible positions.</strong> Each signatory issues a <em>favourable sign-off</em>, a <em>sign-off with reservations</em> (only on <em>Conditionable</em> criteria, which become conditions) or a <em>veto</em>.</li>
+<li><strong>The veto is reasoned.</strong> It indicates the codes of the criteria affected and what must be corrected.</li>
+<li><strong>The veto blocks.</strong> With a veto in force, neither Proceed nor Proceed with conditions is possible. The AI Committee cannot lift a veto by majority; it can only decide to <strong>Iterate</strong> or <strong>Stop</strong>.</li>
+<li><strong>Only the person who issued the veto can lift it</strong>, or their formal substitute in the second line, after checking the correction on a new version of the evidence.</li>
+<li><strong>Disagreement.</strong> If the sponsor disagrees with the veto, they may escalate the matter to the board committee, which may request an independent opinion. A veto based on security, legal compliance or data protection cannot be replaced by a risk acceptance.</li>
+<li><strong>Segregation.</strong> No signatory may have taken part in building the solution. If one person holds two sign-off functions, they sign off for each one and the auditor checks that there is no incompatibility.</li>
+<li><strong>Validity.</strong> The sign-offs refer to a version of the system. A significant change, or the lapse of the maximum period set in C2 without putting the system into production, requires signing off again.</li>
+<li><strong>Order.</strong> The AI Auditor verifies the evidence before the sign-offs; the committee decides after all of them.</li>
+</ol>
+<hr />
+<h2 id="audit-criteria"><span class="antetitulo">10</span>Audit criteria</h2>
+<h3 id="10-1-two-points-of-control">10.1 Two points of control</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Who</th>
+<th>Subject</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verification at the <em>gate</em></strong></td>
+<td>Verifier under 01 §7.5 (AI Auditor in Enterprise)</td>
+<td>Evidence and status of each criterion before the decision.</td>
+<td>Verification opinion (10.2) that accompanies the request.</td>
+</tr>
+<tr>
+<td><strong>Subsequent audit</strong></td>
+<td>AI Auditor or third line, according to the audit plan (document 38)</td>
+<td>Sample of <em>gates</em>, decisions, conditions, operational records and retirements for a period.</td>
+<td>Report with an outcome per audited item and classified findings (10.5).</td>
+</tr>
+</tbody>
+</table></div>
+<p>The AI Auditor may not have taken part in the design, construction or operation of the initiative, nor report hierarchically to its sponsor (01 §8.1).</p>
+<h3 id="10-2-outcomes">10.2 Outcomes</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>In the verification of a <em>gate</em></th>
+<th>In a subsequent audit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Conformant</strong></td>
+<td>Complete and valid evidence; criterion statuses correctly assigned. The request goes to the deciding body.</td>
+<td>Criteria correctly assessed, valid evidence and a decision consistent with the rules. No findings, except opportunities for improvement.</td>
+</tr>
+<tr>
+<td><strong>Conformant with observations</strong></td>
+<td>Shortfalls that do not affect <em>Yes</em> criteria or the validity of the evidence. The request goes to the decision-maker with the observations, which may become conditions.</td>
+<td>Findings that do not invalidate the decision: observations and minor nonconformities.</td>
+</tr>
+<tr>
+<td><strong>Nonconformant</strong></td>
+<td>Some mandatory evidence is missing or some evidence is not valid. The request goes back to the team without a decision.</td>
+<td>At least one major or critical nonconformity.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A <em>Conformant</em> opinion does not mean that the initiative should proceed: it means that the body can decide on a verified basis.</p>
+<h3 id="10-3-what-is-sampled">10.3 What is sampled</h3>
+<p>The sizes are <strong>indicative</strong>; the company sets them in C2 or in its audit plan and recalibrates them in C5.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Subject</th>
+<th>Population</th>
+<th>Selection</th>
+<th>Indicative size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lite <em>gates</em></strong></td>
+<td>Lite <em>gates</em> decided in the half-year.</td>
+<td>Random and targeted.</td>
+<td>At least 10% with a minimum of three, including at least one G5.</td>
+</tr>
+<tr>
+<td><strong>Enterprise <em>gates</em></strong></td>
+<td>Enterprise <em>gates</em> decided in the period (already verified by the auditor).</td>
+<td>Targeted and random.</td>
+<td>All G5s and at least 25% of the rest.</td>
+</tr>
+<tr>
+<td><strong>Criteria within a <em>gate</em></strong></td>
+<td>All the criteria for the gate.</td>
+<td>All <em>Yes</em> and <em>Yes ◆</em>; a sample of <em>Conditionable</em> and <em>Recommended</em>; all <em>Not applicable</em> on ◆ criteria.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Evidence</strong></td>
+<td>Evidence linked to the selected criteria.</td>
+<td>Rules EV.01–EV.14 on all evidence for <em>Yes ◆</em> criteria; EV.05 and EV.09 on all evidence.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Conditions</strong></td>
+<td>Conditions open and closed in the period.</td>
+<td>All expired conditions and a sample of the closed ones.</td>
+<td>At least 25% of the closed ones.</td>
+</tr>
+<tr>
+<td><strong>Operational records</strong></td>
+<td>Incidents, changes, human interventions and agent actions of systems in production.</td>
+<td>Targeted at S1, S2 and significant changes; random for the rest.</td>
+<td>According to the audit plan.</td>
+</tr>
+<tr>
+<td><strong>Stops and retirements</strong></td>
+<td>Initiatives stopped or retired in the period.</td>
+<td>Random.</td>
+<td>At least one per quarter, if any.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Targeted selection.</strong> Priority is given to: initiatives with two or more iterations at a <em>gate</em>; expired conditions; reference time limits exceeded; changes of intensity from Enterprise to Lite; <em>Not applicable</em> on ◆ criteria; decisions taken on the same day as the request; High residual risks; Transform initiatives; A2 or A3 agents; N3 suppliers; systems with incidents in the period.</p>
+<h3 id="10-4-audit-tests">10.4 Audit tests</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What the auditor does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inspection</strong></td>
+<td>Examines the evidence against the criterion and the EV rules.</td>
+<td>Checks that the baseline in <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> has a period, source and method.</td>
+</tr>
+<tr>
+<td><strong>Time traceability</strong></td>
+<td>Compares the dates of the evidence with the events in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Detects a pilot report dated after the G5 decision.</td>
+</tr>
+<tr>
+<td><strong>Re-performance</strong></td>
+<td>Repeats a calculation or a check.</td>
+<td>Recalculates the net value in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; compares an agent's actual permissions with those approved in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>.</td>
+</tr>
+<tr>
+<td><strong>Observation</strong></td>
+<td>Witnesses the performance of a control.</td>
+<td>Attends the kill switch or rollback test.</td>
+</tr>
+<tr>
+<td><strong>Interview</strong></td>
+<td>Checks what is documented with the people involved.</td>
+<td>Asks the person who exercises human oversight how they intervene and when they have done so.</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>Compares pieces of evidence with each other.</td>
+<td>Risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> against controls in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>; value in <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> against <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> and <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-5-classification-of-findings">10.5 Classification of findings</h3>
+<p>Findings are classified using the nonconformity scale in 01 §12, preceded by the observation, which is not a breach.</p>
+<figure class="grafico">
+  <div class="g-titulo">Nonconformity management</div>
+  <div class="g-sub">A single process for all deviations. Only the AI Auditor can close a nonconformity</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 980 210" role="img" aria-label="Six-step nonconformity management process with re-audit and closure">
+  <defs>
+    <marker id="nc-fl-en" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="sv-flecha"/></marker>
+  </defs>
+  <g font-weight="700">
+    <path d="M10,40 H132 L146,77 L132,114 H10 Z" fill="#0a3d73"/>
+    <text x="24" y="66" class="sv-blanco" font-size="12" opacity=".7">1</text><text x="24" y="90" class="sv-blanco" font-size="14">Detection</text>
+    <path d="M144,40 H266 L280,77 L266,114 H144 L158,77 Z" fill="#0f5499"/>
+    <text x="168" y="66" class="sv-blanco" font-size="12" opacity=".7">2</text><text x="168" y="86" class="sv-blanco" font-size="14">Classifi-</text><text x="168" y="103" class="sv-blanco" font-size="14">cation</text>
+    <path d="M278,40 H400 L414,77 L400,114 H278 L292,77 Z" fill="#990f3d"/>
+    <text x="302" y="66" class="sv-blanco" font-size="12" opacity=".7">3</text><text x="302" y="90" class="sv-blanco" font-size="14">Containment</text>
+    <path d="M412,40 H534 L548,77 L534,114 H412 L426,77 Z" fill="#0b6a73"/>
+    <text x="436" y="66" class="sv-blanco" font-size="12" opacity=".7">4</text><text x="436" y="86" class="sv-blanco" font-size="14">Root cause</text><text x="436" y="103" class="sv-blanco" font-size="14">analysis</text>
+    <path d="M546,40 H668 L682,77 L668,114 H546 L560,77 Z" fill="#0d7680"/>
+    <text x="570" y="66" class="sv-blanco" font-size="12" opacity=".7">5</text><text x="570" y="86" class="sv-blanco" font-size="14">Corrective</text><text x="570" y="103" class="sv-blanco" font-size="14">action</text>
+    <path d="M680,40 H802 L816,77 L802,114 H680 L694,77 Z" fill="#593380"/>
+    <text x="704" y="66" class="sv-blanco" font-size="12" opacity=".7">6</text><text x="704" y="90" class="sv-blanco" font-size="14">Re-audit</text>
+  </g>
+  <line x1="818" y1="77" x2="846" y2="77" class="sv-regla" stroke-width="1.5" marker-end="url(#nc-fl-en)"/>
+  <text x="832" y="30" text-anchor="middle" class="sv-t2" font-size="11.5" font-weight="700">Effective</text>
+  <rect x="850" y="40" width="130" height="74" fill="#1a1817"/>
+  <text x="864" y="72" class="sv-blanco" font-size="14" font-weight="700">Closure by</text>
+  <text x="864" y="90" class="sv-blanco" font-size="14" font-weight="700">AI Auditor</text>
+  <path d="M748,116 V160 H480 V120" class="sv-regla" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#nc-fl-en)"/>
+  <text x="614" y="182" text-anchor="middle" class="sv-t2" font-size="12.5" font-weight="700">Not effective: return to root cause analysis</text>
+</svg>
+  </div>
+  <div class="g-fuente">Source: SEVEN-G · SEACHAD</div>
+</figure>
+
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Definition</th>
+<th>Examples in <em>gates</em> and audits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Observation</strong></td>
+<td>Opportunity for improvement without a breach of a requirement.</td>
+<td>Recommended criterion omitted without justification; evidence that is correct but difficult to locate.</td>
+</tr>
+<tr>
+<td><strong>Minor nonconformity</strong></td>
+<td>Breach with no impact on the decision.</td>
+<td>Incomplete evidence on a <em>Conditionable</em> criterion that does not change the outcome; delay in updating <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; <em>Not applicable</em> with insufficient justification on a non-◆ criterion.</td>
+</tr>
+<tr>
+<td><strong>Major nonconformity</strong></td>
+<td>Breach that invalidates the decision or affects a relevant control.</td>
+<td>Evidence prepared after the fact; self-approval or omitted verification; Proceed recorded with a blocking criterion; stop criteria relaxed without approval; expired condition on a relevant control; R6 omitted; Transform without board approval at G2; unjustified <em>Not applicable</em> on a <em>Yes</em> criterion; third iteration without escalation.</td>
+</tr>
+<tr>
+<td><strong>Critical nonconformity</strong></td>
+<td>Breach with an immediate risk to people, legal compliance or the company.</td>
+<td>System in production without an approved G5; prohibited practice; serious incident not notified; critical control deactivated or non-existent in production (human oversight, logs, kill switch); agent operating above its approved autonomy level; go-live with a veto in force; Critical residual risk in production without board approval.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Classification rules</strong></p>
+<ol>
+<li>Classification is based on the most serious effect on the decision, people or compliance.</li>
+<li>A breach of a <em>Yes ◆</em> criterion in a system in production is, at a minimum, a major nonconformity.</li>
+<li>Any finding that invalidates a <em>gate</em> decision is, at a minimum, a major nonconformity.</li>
+<li>A minor nonconformity that recurs three times in twelve months in the same initiative or process is raised to major (37 §3.3).</li>
+<li>The deliberate concealment or alteration of evidence is, at a minimum, a major nonconformity and is reported to the board committee.</li>
+</ol>
+<h3 id="10-6-effects-on-the-decision-and-time-limits">10.6 Effects on the decision and time limits</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Effect on the <em>gate</em></th>
+<th>Containment</th>
+<th>Action plan</th>
+<th>Reported to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>The <em>gate</em> is invalidated.</td>
+<td>Immediate (maximum 48 hours), including stopping the system if necessary.</td>
+<td>Maximum 10 days.</td>
+<td>AI Committee and board committee.</td>
+</tr>
+<tr>
+<td><strong>Major</strong></td>
+<td>If it invalidates the decision, the initiative returns to <em>Awaiting gate</em> and is verified again. If it is already in production, the committee decides whether to maintain operation with containment measures.</td>
+<td>Maximum 10 days.</td>
+<td>Maximum 30 days.</td>
+<td>AI Committee.</td>
+</tr>
+<tr>
+<td><strong>Minor</strong></td>
+<td>The decision stands.</td>
+<td>Not required.</td>
+<td>Before the next <em>gate</em> or review.</td>
+<td>AI Office.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The time limits are reference values and the company may adjust them in C2 without exceeding those established by applicable regulation (01 §12). Each nonconformity is recorded with code NC-AAAA-NNN in T08 and managed through the process in document 37.</p>
+<h3 id="10-7-minimum-content-of-the-audit-report">10.7 Minimum content of the audit report</h3>
+<p>Scope and period · population and sample with selection criterion · tests performed · outcome per audited item (Conformant, Conformant with observations or Nonconformant) · findings with the code of the affected criterion or EV rule, classification, cause and owner · open nonconformities in T08 · follow-up of previous findings · conclusion on the functioning of the gates in the period.</p>
+<hr />
+<h2 id="gate-decision-record-p29"><span class="antetitulo">11</span><em>Gate</em> decision record (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</h2>
+<p>Every <em>gate</em> decision and every continuity review is documented in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> and reflected in T03. The record must contain, as a minimum:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Fields</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identification</strong></td>
+<td>Initiative code (IA-AAAA-NNN); gate; iteration number; intensity; ambition level; technology; autonomy level; suppliers.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Dates</strong></td>
+<td>Request, verification and decision; deadline according to the reference time limit.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Evidence submitted</strong></td>
+<td>For each piece of evidence: P code, version, author, date, link and result of the EV rules.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Status of the criteria</strong></td>
+<td>For each criterion: code, status (Met, Not met, Not applicable or Pending), R and D dimensions, linked evidence, comment and justification for <em>Not applicable</em>.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Summary</strong></td>
+<td>Applicable criteria, degree of compliance, blocking criteria and open conditionable criteria.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Verification</strong></td>
+<td>Verifier, opinion (Conformant, Conformant with observations or Nonconformant), observations and declaration of absence of conflict.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Sign-offs (G5)</strong></td>
+<td>In Enterprise: each signatory, position (favourable, with reservations or veto), reason and date. In Lite: risk clearance.</td>
+<td>Yes at G5</td>
+</tr>
+<tr>
+<td><strong>Decision</strong></td>
+<td>Outcome; reason; coded reason from the taxonomy if Stop or Retire; body and people deciding; abstentions; dissenting positions.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Conditions</strong></td>
+<td>For each condition: identifier, description, linked criterion, owner, time limit, means of verification and consequence on expiry (Iterate).</td>
+<td>If there are conditions</td>
+</tr>
+<tr>
+<td><strong>Higher approvals</strong></td>
+<td>Approval by the board or the board committee (Transform at G2 and G7; Critical residual risk) with a reference to the minutes or to the register of recommendations and decisions.</td>
+<td>Where applicable</td>
+</tr>
+<tr>
+<td><strong>Pivot</strong></td>
+<td>Hypothesis discarded, alternative chosen and alternatives considered.</td>
+<td>If pivoting</td>
+</tr>
+<tr>
+<td><strong>Next step</strong></td>
+<td>Next phase or phase returned to; planned date of the next <em>gate</em> or R6.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Lessons</strong></td>
+<td>Lessons learned in stops and retirements.</td>
+<td>If Stop or Retire</td>
+</tr>
+</tbody>
+</table></div>
+<p>No weighted scoring is used: criteria are either met or not, with evidence, and no average compensates for a blocking criterion.</p>
+<hr />
+<h2 id="associated-tools-and-templates"><span class="antetitulo">12</span>Associated tools and templates</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Use in this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T03</strong></td>
+<td><em>Gate</em> manager</td>
+<td>Criteria with code and applicability; statuses, R and D dimensions, verification, sign-offs, decision and conditions; calculation of the degree of compliance and blocking of Proceed when there are blocking criteria.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T02, T04–T13, T20, T22</strong></td>
+<td>Other tools in document 03</td>
+<td>Time traceability and evidence for the criteria, according to the <em>Evidence</em> column.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></strong></td>
+<td>Go-live sign-off</td>
+<td>Multi-level sign-off and veto (section 9).</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></strong></td>
+<td><em>Gate</em> decision record</td>
+<td>Format in section 11.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></strong></td>
+<td>Block H templates</td>
+<td>Evidence for each criterion.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">13</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Foundational methodology</strong></td>
+<td>Normative reference: phases, gates, decision rules, roles, intensity and nonconformities.</td>
+</tr>
+<tr>
+<td><strong>03 · Tools and initiative register</strong></td>
+<td>Criterion statuses, funnel metrics and tool T03.</td>
+</tr>
+<tr>
+<td><strong>20 · Phase manuals</strong></td>
+<td>Activities that produce the evidence assessed here.</td>
+</tr>
+<tr>
+<td><strong>22 · <em>Gate</em> checklists</strong></td>
+<td>Binary controls with the same codes, and the LV-EV and LV-AG checklists.</td>
+</tr>
+<tr>
+<td><strong>30 · Governance model</strong></td>
+<td>Higher bodies, substitutions and escalation after two iterations.</td>
+</tr>
+<tr>
+<td><strong>33 · AI risk methodology</strong></td>
+<td>Scales, acceptance levels and typical risks.</td>
+</tr>
+<tr>
+<td><strong>34 · Regulatory mapping</strong></td>
+<td>Obligations linked to G3.10, G4.14 and G5.15.</td>
+</tr>
+<tr>
+<td><strong>35 · AI and agent security</strong></td>
+<td>Autonomy levels and agent controls.</td>
+</tr>
+<tr>
+<td><strong>36 · AI third parties and suppliers</strong></td>
+<td>Requirement levels N1–N3.</td>
+</tr>
+<tr>
+<td><strong>37 · Nonconformities and incidents</strong></td>
+<td>Process for managing findings and severities.</td>
+</tr>
+<tr>
+<td><strong>38 · AI audit framework</strong></td>
+<td>Audit plan, auditor competence and sampling.</td>
+</tr>
+<tr>
+<td><strong>40 · Value measurement rules</strong></td>
+<td>Amount statuses, formulas and attribution.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">14</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Merges the two versions of the <em>gate</em> and audit criteria in the previous material with the current model in 01: 128 criteria coded by gate, intensity and ambition, with criteria for generative AI, agents and third parties; valid evidence, degree of compliance, multi-level sign-off with veto, audit and decision record. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":true},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

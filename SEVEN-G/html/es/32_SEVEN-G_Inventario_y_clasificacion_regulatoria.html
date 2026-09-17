@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventario de sistemas de IA y clasificaci&#243;n regulatoria</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Inventario de sistemas de IA y clasificación regulatoria"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 32 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 32 &#183; Inventario y clasificaci&#243;n regulatoria</p>
+    <h1>Inventario de sistemas de IA y clasificaci&#243;n regulatoria</h1>
+    <p class="entradilla">Qu&#233; se inventar&#237;a, con qu&#233; campos, c&#243;mo se clasifica seg&#250;n el Reglamento Europeo de IA y qu&#233; evaluaciones se derivan</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>4</b><span>tipos de uso inventariados</span></div><div class="cifra"><b>9</b><span>pasos del &#225;rbol de clasificaci&#243;n</span></div><div class="cifra"><b>3</b><span>evaluaciones derivadas</span></div><div class="cifra"><b>8</b><span>indicadores de calidad del inventario</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#que-se-inventaria"><span>02</span>Qué se inventaría</a></li><li><a href="#campos-del-inventario"><span>03</span>Campos del inventario</a></li><li><a href="#roles-de-la-compania-segun-el-reglamento-de-ia"><span>04</span>Roles de la compañía según el Reglamento de IA</a></li><li><a href="#arbol-de-clasificacion-regulatoria"><span>05</span>Árbol de clasificación regulatoria</a></li><li><a href="#evaluaciones-que-se-derivan"><span>06</span>Evaluaciones que se derivan</a></li><li><a href="#procedimientos-de-alta-revision-y-baja"><span>07</span>Procedimientos de alta, revisión y baja</a></li><li><a href="#calidad-del-inventario"><span>08</span>Calidad del inventario</a></li><li><a href="#deteccion-de-sistemas-no-inventariados"><span>09</span>Detección de sistemas no inventariados</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>10</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>11</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>12</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>El inventario de sistemas de IA es la <strong>base de todo el gobierno</strong>: sin saber qué sistemas existen, quién responde de ellos y cómo se clasifican, no se pueden gestionar riesgos, cumplir obligaciones, auditar ni informar al consejo. La metodología fundacional lo exige en C1 (01 §5.1), en la fase 0 (alta en el inventario) y como condición para declarar que se aplica SEVEN-G (01 §14, condición 2).</p>
+<p>Este documento define:</p>
+<ul>
+<li>Qué se inventaría y qué no (sección 2).</li>
+<li>Los campos del inventario, coherentes con la taxonomía controlada del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> (sección 3).</li>
+<li>Los roles que puede tener la compañía según el Reglamento (UE) 2024/1689 (sección 4).</li>
+<li>El árbol de clasificación regulatoria paso a paso (sección 5).</li>
+<li>Las evaluaciones que se derivan de la clasificación (sección 6).</li>
+<li>Los procedimientos de alta, revisión y baja (sección 7).</li>
+<li>La calidad del inventario y la detección de sistemas no inventariados (secciones 8 y 9).</li>
+</ul>
+<p>La clasificación regulatoria que aquí se describe es un <strong>método de trabajo</strong> para ordenar el análisis. No sustituye el criterio jurídico cualificado que exige 01 §6.5. La clasificación y las obligaciones que se derivan son orientativas: la responsabilidad de la clasificación regulatoria de cada sistema y del cumplimiento, incluida la regulación sectorial aplicable, es de la organización (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</p>
+<h3 id="1-1-estado-regulatorio-a-la-fecha-de-consulta">1.1 Estado regulatorio a la fecha de consulta</h3>
+<p>Consulta realizada el 16-09-2026 en fuentes oficiales de la Unión Europea (EUR-Lex y páginas de la Comisión Europea sobre el Reglamento de IA).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Fecha</th>
+<th>Qué se aplica</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-8-2024</td>
+<td>Entrada en vigor del Reglamento (UE) 2024/1689.</td>
+<td>Artículo 113</td>
+</tr>
+<tr>
+<td>2-2-2025</td>
+<td>Disposiciones generales (incluida la alfabetización en IA) y prácticas prohibidas.</td>
+<td>Artículo 113</td>
+</tr>
+<tr>
+<td>2-8-2025</td>
+<td>Obligaciones de los proveedores de modelos de IA de uso general; gobernanza.</td>
+<td>Artículo 113</td>
+</tr>
+<tr>
+<td>2-8-2026</td>
+<td>Obligaciones de transparencia del artículo 50 y resto de disposiciones de aplicación general no aplazadas.</td>
+<td>Artículo 113; Reglamento (UE) 2026/1744</td>
+</tr>
+<tr>
+<td>2-12-2026</td>
+<td>Nueva práctica prohibida relativa a sistemas que generan contenido sexual explícito no consentido o material de abuso sexual infantil; fin del periodo transitorio del artículo 50.2 para sistemas ya comercializados.</td>
+<td>Reglamento (UE) 2026/1744</td>
+</tr>
+<tr>
+<td>2-12-2027</td>
+<td>Obligaciones de los sistemas de alto riesgo del anexo III.</td>
+<td>Reglamento (UE) 2026/1744</td>
+</tr>
+<tr>
+<td>2-8-2028</td>
+<td>Obligaciones de los sistemas de alto riesgo vinculados a productos del anexo I.</td>
+<td>Reglamento (UE) 2026/1744</td>
+</tr>
+</tbody>
+</table></div>
+<p>El Reglamento (UE) 2026/1744 (Ómnibus digital sobre IA) se publicó en el Diario Oficial el 24-07-2026 y entró en vigor el 27-07-2026. Modifica además el artículo 4 (alfabetización), simplifica la información que deben registrar los proveedores que aplican la excepción del artículo 6.3 y amplía la base para tratar categorías especiales de datos con el fin de detectar y corregir sesgos. <strong>Antes de aplicar este documento debe consultarse el texto consolidado vigente</strong>, porque la numeración y el contenido de algunos apartados pueden haber cambiado.</p>
+<hr />
+<h2 id="que-se-inventaria"><span class="antetitulo">02</span>Qué se inventaría</h2>
+<h3 id="2-1-los-cuatro-tipos-de-uso">2.1 Los cuatro tipos de uso</h3>
+<p>Se inventarían <strong>todos los sistemas de IA</strong> de los cuatro tipos de uso de 01 §1.2, con independencia de su riesgo o de quién los haya desarrollado.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo de uso</th>
+<th>Qué se registra</th>
+<th>Unidad de registro</th>
+<th>Nivel de detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Iniciativa de IA</strong></td>
+<td>Cada sistema que forma parte de una iniciativa propia: modelos predictivos, soluciones de IA generativa, agentes, automatizaciones con IA desarrolladas o adaptadas por la compañía.</td>
+<td>Un registro por sistema desplegado. Una iniciativa puede tener varios sistemas y un sistema puede servir a varias iniciativas.</td>
+<td>Completo.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros integrada en procesos</strong></td>
+<td>Software de un proveedor con funciones de IA que intervienen en decisiones, operaciones o relación con clientes.</td>
+<td>Un registro por función de IA con finalidad diferenciada dentro del producto.</td>
+<td>Completo.</td>
+</tr>
+<tr>
+<td><strong>Uso corporativo de IA de propósito general</strong></td>
+<td>Asistentes, suites de productividad y herramientas del catálogo autorizado (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+<td>Un registro por herramienta autorizada; los usos concretos no se registran individualmente salvo que pasen al ciclo completo.</td>
+<td>Reducido, con licencias y condiciones.</td>
+</tr>
+<tr>
+<td><strong>Uso no autorizado</strong></td>
+<td>Herramientas detectadas sin aprobación.</td>
+<td>Un registro por herramienta y ámbito de detección.</td>
+<td>Mínimo, hasta su regularización.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-2-casos-frontera">2.2 Casos frontera</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>¿Se inventaría?</th>
+<th>Criterio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reglas de negocio deterministas sin inferencia</td>
+<td>Sí, como &quot;Reglas (no es IA)&quot;, cuando se hayan presentado o percibido como IA.</td>
+<td>Evita discusiones recurrentes y documenta la conclusión del paso 1 del árbol.</td>
+</tr>
+<tr>
+<td>Sistema de IA en pruebas en un entorno aislado sin datos reales</td>
+<td>Sí, con estado &quot;En evaluación&quot;.</td>
+<td>Permite detectar el paso a uso real sin <em>gate</em>.</td>
+</tr>
+<tr>
+<td>Modelo de IA de uso general contratado por API, sin sistema construido encima</td>
+<td>Se registra como componente del proveedor en T09 y se vincula a los sistemas que lo usan.</td>
+<td>El modelo no es por sí mismo un sistema de IA; los sistemas que lo integran sí.</td>
+</tr>
+<tr>
+<td>Función de IA de un producto contratado que está desactivada</td>
+<td>Sí, con estado &quot;En evaluación&quot; o &quot;Retirado&quot; según la decisión, para controlar su activación futura.</td>
+<td>Documento 31 §5.6.</td>
+</tr>
+<tr>
+<td>IA usada por un proveedor para prestar un servicio externalizado a la compañía</td>
+<td>Sí, cuando interviene en decisiones sobre clientes o empleados de la compañía o trata sus datos.</td>
+<td>Riesgo de terceros (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</td>
+</tr>
+<tr>
+<td>Herramientas de seguridad con IA (detección de amenazas)</td>
+<td>Sí.</td>
+<td>Tratan datos y pueden tomar acciones automáticas.</td>
+</tr>
+<tr>
+<td>Uso personal fuera del trabajo</td>
+<td>No.</td>
+<td>Fuera del ámbito de la compañía.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="campos-del-inventario"><span class="antetitulo">03</span>Campos del inventario</h2>
+<h3 id="3-1-convenciones">3.1 Convenciones</h3>
+<ul>
+<li><strong>Tipo</strong>: Texto · Texto largo · Lista (un valor) · Lista múltiple · Fecha (<code>AAAA-MM-DD</code> en la herramienta; <code>DD-MM-AAAA</code> en documentos) · Número · Importe (€) · Persona · Referencia (código de otra entidad) · Sí/No.</li>
+<li><strong>Obligatorio</strong>: <strong>Sí</strong> siempre · <strong>Cond.</strong> según la condición indicada · <strong>Ent.</strong> obligatorio en Enterprise y opcional en Lite · <strong>No</strong>.</li>
+<li>&quot;Sin dato&quot; no es cero ni &quot;No&quot;: un campo obligatorio sin información se registra como pendiente y cuenta en los indicadores de calidad (sección 8).</li>
+<li><strong>Código del sistema</strong>: se propone el formato <code>SIA-AAAA-NNN</code> (AAAA = año de alta; NNN = número correlativo que no se reinicia ni se reutiliza). <em>Propuesta pendiente de incorporar a la especificación común (§5.9).</em></li>
+</ul>
+<h3 id="3-2-identificacion-y-responsables">3.2 Identificación y responsables</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+<th>Tipo</th>
+<th>Obligatorio</th>
+<th>Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Código del sistema</td>
+<td>Identificador persistente.</td>
+<td>Texto</td>
+<td>Sí</td>
+<td><code>SIA-AAAA-NNN</code></td>
+</tr>
+<tr>
+<td>Nombre</td>
+<td>Nombre usado en la compañía.</td>
+<td>Texto</td>
+<td>Sí</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Qué es y para qué se usa</td>
+<td>Explicación comprensible para quien no es especialista (regla 10 de medición).</td>
+<td>Texto largo</td>
+<td>Sí</td>
+<td>Una o dos frases</td>
+</tr>
+<tr>
+<td>Tipo de uso</td>
+<td>Tipo de 01 §1.2.</td>
+<td>Lista</td>
+<td>Sí</td>
+<td>Iniciativa de IA · IA de terceros integrada en procesos · Uso corporativo de IA de propósito general · Uso no autorizado</td>
+</tr>
+<tr>
+<td>Iniciativas vinculadas</td>
+<td>Iniciativas del registro que usan el sistema.</td>
+<td>Referencia múltiple</td>
+<td>Cond.: tipos iniciativa e IA de terceros integrada</td>
+<td><code>IA-AAAA-NNN</code></td>
+</tr>
+<tr>
+<td>Área responsable</td>
+<td>Unidad que usa el sistema y responde de él.</td>
+<td>Lista (catálogo de la compañía)</td>
+<td>Sí</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sociedad</td>
+<td>Sociedad del grupo que lo despliega.</td>
+<td>Lista</td>
+<td>Cond.: grupos</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Fecha de alta</td>
+<td>Fecha de registro en el inventario.</td>
+<td>Fecha</td>
+<td>Sí</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Origen del alta</td>
+<td>Cómo llegó al inventario.</td>
+<td>Lista</td>
+<td>Sí</td>
+<td>Fase 0 · Diagnóstico C1 · Compras o renovación · Detección técnica · Comunicación interna · Auditoría · Aviso del proveedor</td>
+</tr>
+<tr>
+<td>Responsable del sistema</td>
+<td>Persona que responde del uso: el responsable de producto de la iniciativa o, en uso corporativo, el propietario designado del servicio.</td>
+<td>Persona</td>
+<td>Sí (salvo uso no autorizado: responsable de la regularización)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Patrocinador</td>
+<td>Patrocinador de IA.</td>
+<td>Persona</td>
+<td>Cond.: tipos iniciativa e IA de terceros integrada</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Responsable técnico</td>
+<td>Responsable técnico de IA.</td>
+<td>Persona</td>
+<td>Cond.: en desarrollo o producción</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Responsable de operación</td>
+<td>Responsable de operación de IA.</td>
+<td>Persona</td>
+<td>Cond.: en producción</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Responsable de riesgos</td>
+<td>Responsable de riesgos de IA.</td>
+<td>Persona</td>
+<td>Sí, desde la clasificación provisional</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-3-descripcion-tecnica-y-de-uso">3.3 Descripción técnica y de uso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+<th>Tipo</th>
+<th>Obligatorio</th>
+<th>Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estado del sistema</td>
+<td>Situación del sistema (distinta del estado de la iniciativa en 03 §3.2).</td>
+<td>Lista</td>
+<td>Sí</td>
+<td>En evaluación · En desarrollo · Piloto · En producción · Suspendido · Retirado · Bloqueado</td>
+</tr>
+<tr>
+<td>Tecnología</td>
+<td>Taxonomía de 03 §3.3.</td>
+<td>Lista múltiple</td>
+<td>Sí</td>
+<td>ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA)</td>
+</tr>
+<tr>
+<td>Exposición</td>
+<td>Taxonomía de 03 §3.3.</td>
+<td>Lista</td>
+<td>Sí</td>
+<td>Interna · Empleados · Clientes de forma indirecta · Clientes o personas externas de forma directa</td>
+</tr>
+<tr>
+<td>Esfera principal</td>
+<td>Taxonomía de 03 §3.3.</td>
+<td>Lista</td>
+<td>Cond.: tipos iniciativa e IA de terceros integrada</td>
+<td>01 Cliente … 09 Gobierno de la IA</td>
+</tr>
+<tr>
+<td>Intensidad</td>
+<td>Lite o Enterprise (01 §9).</td>
+<td>Lista</td>
+<td>Cond.: tipos iniciativa e IA de terceros integrada</td>
+<td>Lite · Enterprise</td>
+</tr>
+<tr>
+<td>Autonomía</td>
+<td>Nivel de la especificación común (§5.4).</td>
+<td>Lista</td>
+<td>Sí</td>
+<td>A0 Asistencia · A1 Recomendación · A2 Actuación supervisada · A3 Actuación autónoma</td>
+</tr>
+<tr>
+<td>Acciones que puede ejecutar</td>
+<td>Para A2 y A3.</td>
+<td>Lista múltiple</td>
+<td>Cond.: A2 o A3</td>
+<td>Lectura · Escritura en sistemas · Comunicaciones externas · Pagos o compromisos económicos · Cambios en sistemas de producción</td>
+</tr>
+<tr>
+<td>Decisiones sobre personas</td>
+<td>Si el resultado influye de forma significativa en decisiones que afectan a personas.</td>
+<td>Sí/No</td>
+<td>Sí</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ámbito de la decisión sobre personas</td>
+<td>Para qué decisiones.</td>
+<td>Lista múltiple</td>
+<td>Cond.: decisiones sobre personas = Sí</td>
+<td>Empleo y relaciones laborales · Crédito · Seguros · Acceso a servicios esenciales · Educación · Sanidad · Otras (especificar)</td>
+</tr>
+<tr>
+<td>Supervisión humana</td>
+<td>Tipo de supervisión definida en el diseño (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Lista</td>
+<td>Cond.: en producción</td>
+<td>Validación de cada resultado · Revisión por muestreo · Supervisión de agregados con interruptor de parada · Ninguna</td>
+</tr>
+<tr>
+<td>Interruptor de parada</td>
+<td>Existe mecanismo probado para detener el sistema.</td>
+<td>Lista</td>
+<td>Cond.: en producción</td>
+<td>Sí, probado · Sí, sin probar · No · No aplica</td>
+</tr>
+<tr>
+<td>Fecha de puesta en producción</td>
+<td>Fecha de G5 o de inicio de uso real.</td>
+<td>Fecha</td>
+<td>Cond.: en producción</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Usuarios o volumen</td>
+<td>Usuarios activos o volumen de uso.</td>
+<td>Número</td>
+<td>Ent.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Licencias asignadas y activas</td>
+<td>Solo uso corporativo.</td>
+<td>Número</td>
+<td>Cond.: uso corporativo</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Categoría en el catálogo</td>
+<td>Solo uso corporativo (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §4.2).</td>
+<td>Lista</td>
+<td>Cond.: uso corporativo</td>
+<td>Autorizada · Autorizada con restricciones · No autorizada</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-4-clasificacion-regulatoria">3.4 Clasificación regulatoria</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+<th>Tipo</th>
+<th>Obligatorio</th>
+<th>Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Es sistema de IA?</td>
+<td>Resultado del paso 1 del árbol.</td>
+<td>Lista</td>
+<td>Sí</td>
+<td>Sí · No · Dudoso (requiere revisión jurídica)</td>
+</tr>
+<tr>
+<td>Exclusión de ámbito</td>
+<td>Resultado del paso 2.</td>
+<td>Lista</td>
+<td>Cond.: es sistema de IA</td>
+<td>Ninguna · Seguridad nacional o defensa · Investigación científica · Investigación y desarrollo previos a la comercialización · Otra (especificar)</td>
+</tr>
+<tr>
+<td>Clasificación regulatoria</td>
+<td>Taxonomía de 03 §3.3. Si concurren varias, se registra la <strong>más exigente</strong> y las demás en los campos siguientes.</td>
+<td>Lista</td>
+<td>Sí</td>
+<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar</td>
+</tr>
+<tr>
+<td>Estado de la clasificación</td>
+<td>Provisional (fase 0) o definitiva (fase 3).</td>
+<td>Lista</td>
+<td>Sí</td>
+<td>Provisional · Definitiva · En revisión</td>
+</tr>
+<tr>
+<td>Base de alto riesgo</td>
+<td>Por qué es de alto riesgo.</td>
+<td>Lista</td>
+<td>Cond.: alto riesgo</td>
+<td>Anexo I (componente de seguridad o producto) · Anexo III</td>
+</tr>
+<tr>
+<td>Punto del anexo III</td>
+<td>Ámbito concreto.</td>
+<td>Lista</td>
+<td>Cond.: base anexo III, o excepción del artículo 6.3</td>
+<td>1 Biometría · 2 Infraestructuras críticas · 3 Educación y formación profesional · 4 Empleo, gestión de trabajadores y acceso al autoempleo · 5 Acceso a servicios privados esenciales y a servicios y prestaciones públicos esenciales · 6 Garantía del cumplimiento del Derecho · 7 Migración, asilo y control fronterizo · 8 Administración de justicia y procesos democráticos (con letra)</td>
+</tr>
+<tr>
+<td>Excepción del artículo 6.3</td>
+<td>Condición aplicada para concluir que un sistema del anexo III no es de alto riesgo.</td>
+<td>Lista</td>
+<td>Cond.: anexo III no alto riesgo</td>
+<td>a) Tarea de procedimiento limitada · b) Mejora del resultado de una actividad humana previa · c) Detección de patrones sin sustituir ni influir la valoración humana previa · d) Tarea preparatoria</td>
+</tr>
+<tr>
+<td>Elaboración de perfiles</td>
+<td>Si el sistema elabora perfiles de personas físicas (impide aplicar la excepción del artículo 6.3).</td>
+<td>Sí/No</td>
+<td>Cond.: anexo III</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Obligaciones de transparencia</td>
+<td>Apartados del artículo 50 aplicables, también si el sistema es de alto riesgo.</td>
+<td>Lista múltiple</td>
+<td>Sí</td>
+<td>Ninguna · 50.1 Interacción con personas · 50.2 Marcado de contenido sintético · 50.3 Reconocimiento de emociones o categorización biométrica · 50.4 Ultrasuplantaciones y textos de interés público</td>
+</tr>
+<tr>
+<td>Rol de la compañía</td>
+<td>Rol según el Reglamento (sección 4).</td>
+<td>Lista múltiple</td>
+<td>Cond.: dentro de ámbito</td>
+<td>Proveedor · Responsable del despliegue · Importador · Distribuidor · Representante autorizado · Fabricante del producto</td>
+</tr>
+<tr>
+<td>Posible asunción del rol de proveedor</td>
+<td>Supuesto del artículo 25.1 que puede convertir a la compañía en proveedor de un sistema de alto riesgo.</td>
+<td>Lista</td>
+<td>Cond.: alto riesgo de un tercero</td>
+<td>No · Nombre o marca propios · Modificación sustancial · Cambio de finalidad prevista</td>
+</tr>
+<tr>
+<td>Modelo de IA de uso general subyacente</td>
+<td>Modelo y proveedor.</td>
+<td>Texto</td>
+<td>Cond.: tecnología IA generativa o agente</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Relación con el modelo de uso general</td>
+<td>Qué hace la compañía con el modelo.</td>
+<td>Lista</td>
+<td>Cond.: hay modelo de uso general</td>
+<td>Uso por API o servicio · Ajuste o modificación del modelo · Desarrollo propio del modelo · Comercialización del modelo</td>
+</tr>
+<tr>
+<td>Modelo con riesgo sistémico</td>
+<td>Según la información del proveedor o la designación de la Comisión.</td>
+<td>Lista</td>
+<td>Cond.: hay modelo de uso general</td>
+<td>Sí · No · Sin dato</td>
+</tr>
+<tr>
+<td>Fecha de aplicación de obligaciones</td>
+<td>Fecha desde la que son exigibles las obligaciones principales (sección 1.1).</td>
+<td>Fecha</td>
+<td>Cond.: dentro de ámbito</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Justificación de la clasificación</td>
+<td>Razonamiento por pasos del árbol, con referencias.</td>
+<td>Texto largo</td>
+<td>Sí</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Revisión jurídica</td>
+<td>Si la clasificación ha contado con criterio jurídico cualificado.</td>
+<td>Sí/No</td>
+<td>Sí para la clasificación definitiva</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Clasificado por · fecha</td>
+<td>Responsable de riesgos y fecha.</td>
+<td>Persona · Fecha</td>
+<td>Sí</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Próxima revisión</td>
+<td>Fecha de revisión programada.</td>
+<td>Fecha</td>
+<td>Sí</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-5-evaluaciones-y-obligaciones">3.5 Evaluaciones y obligaciones</h3>
+<p>Estados comunes: <strong>Hecho · Pendiente · No aplica</strong>, coherentes con el esquema de datos del panel del consejo. Cada evaluación en estado Hecho enlaza a su evidencia, versión y fecha (03 §2, principio 4).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+<th>Tipo</th>
+<th>Obligatorio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evaluación de impacto en protección de datos (RGPD, artículo 35)</td>
+<td>Estado, fecha, enlace.</td>
+<td>Lista · Fecha · Referencia</td>
+<td>Sí si trata datos personales</td>
+</tr>
+<tr>
+<td>Evaluación de impacto en derechos fundamentales (artículo 27)</td>
+<td>Estado, fecha, enlace, fecha de notificación a la autoridad.</td>
+<td>Lista · Fecha · Referencia</td>
+<td>Cond.: supuestos de la sección 6.2</td>
+</tr>
+<tr>
+<td>Evaluación de conformidad (artículo 43)</td>
+<td>Estado; procedimiento (control interno u organismo notificado); declaración UE de conformidad.</td>
+<td>Lista · Referencia</td>
+<td>Cond.: la compañía es proveedor de un sistema de alto riesgo</td>
+</tr>
+<tr>
+<td>Documentación de la excepción del artículo 6.3</td>
+<td>Evaluación documentada antes de la comercialización o puesta en servicio.</td>
+<td>Lista · Referencia</td>
+<td>Cond.: excepción aplicada como proveedor</td>
+</tr>
+<tr>
+<td>Registro en la base de datos de la UE (artículo 49)</td>
+<td>Estado y referencia de registro.</td>
+<td>Lista · Texto</td>
+<td>Cond.: alto riesgo del anexo III, excepción del artículo 6.3 como proveedor, o responsable del despliegue que sea autoridad pública</td>
+</tr>
+<tr>
+<td>Información a trabajadores y a su representación</td>
+<td>Artículo 26.7 del Reglamento y, en España, artículo 64.4.d) del Estatuto de los Trabajadores.</td>
+<td>Lista · Fecha</td>
+<td>Cond.: uso en el ámbito laboral</td>
+</tr>
+<tr>
+<td>Evaluación de seguridad</td>
+<td>Documento 35; incluye pruebas de inyección de instrucciones en IA generativa y agentes.</td>
+<td>Lista · Fecha</td>
+<td>Ent.; Sí si A2 o A3</td>
+</tr>
+<tr>
+<td>Evaluación del proveedor</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>.</td>
+<td>Lista · Referencia</td>
+<td>Cond.: hay proveedor</td>
+</tr>
+<tr>
+<td>Instrucciones de uso del proveedor</td>
+<td>Disponibles y aplicadas (artículo 26.1).</td>
+<td>Lista</td>
+<td>Cond.: responsable del despliegue de alto riesgo</td>
+</tr>
+<tr>
+<td>Conservación de registros</td>
+<td>Periodo de conservación de los registros generados automáticamente (al menos seis meses para responsables del despliegue de alto riesgo, artículo 26.6, salvo otra norma).</td>
+<td>Número (meses)</td>
+<td>Cond.: alto riesgo</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-6-datos-terceros-riesgo-y-ciclo">3.6 Datos, terceros, riesgo y ciclo</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+<th>Tipo</th>
+<th>Obligatorio</th>
+<th>Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Categorías de información tratada</td>
+<td>Nivel más alto de información que trata.</td>
+<td>Lista múltiple</td>
+<td>Sí</td>
+<td>Sin datos personales · Datos personales · Categorías especiales de datos · Información [Confidencial] · Información [Restringida]</td>
+</tr>
+<tr>
+<td>Base jurídica del tratamiento</td>
+<td>Para datos personales.</td>
+<td>Texto</td>
+<td>Cond.: datos personales</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Uso de datos por el proveedor para entrenamiento</td>
+<td>Condición contractual.</td>
+<td>Lista</td>
+<td>Cond.: hay proveedor</td>
+<td>No · Sí · Sin dato</td>
+</tr>
+<tr>
+<td>Localización del tratamiento</td>
+<td>Dónde se tratan los datos.</td>
+<td>Lista</td>
+<td>Cond.: hay proveedor</td>
+<td>Espacio Económico Europeo · Fuera con garantías adecuadas · Sin dato</td>
+</tr>
+<tr>
+<td>Proveedores</td>
+<td>Terceros que intervienen.</td>
+<td>Referencia múltiple (T09)</td>
+<td>Cond.: hay proveedor</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Nivel de exigencia al tercero</td>
+<td>Especificación común §5.6.</td>
+<td>Lista</td>
+<td>Cond.: hay proveedor</td>
+<td>N1 Estándar · N2 Reforzado · N3 Crítico</td>
+</tr>
+<tr>
+<td>Riesgo residual principal</td>
+<td>Especificación común §5.1.</td>
+<td>Lista</td>
+<td>Cond.: clasificación definitiva</td>
+<td>Bajo · Medio · Alto · Crítico</td>
+</tr>
+<tr>
+<td>No conformidades abiertas</td>
+<td>Número y enlace a T08.</td>
+<td>Número · Referencia</td>
+<td>Sí (0 si no hay)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Incidentes en los últimos 12 meses</td>
+<td>Número por severidad.</td>
+<td>Número</td>
+<td>Cond.: en producción</td>
+<td>S1 · S2 · S3 · S4</td>
+</tr>
+<tr>
+<td>Última revisión de continuidad (R6)</td>
+<td>Fecha.</td>
+<td>Fecha</td>
+<td>Cond.: en producción</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Próxima revisión de continuidad</td>
+<td>Trimestral en Enterprise, semestral en Lite.</td>
+<td>Fecha</td>
+<td>Cond.: en producción</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Coste recurrente anual</td>
+<td>Referencia al cálculo por caso (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>).</td>
+<td>Importe (€) con estado</td>
+<td>Ent.</td>
+<td>Validado · Declarado · Estimado</td>
+</tr>
+<tr>
+<td>Fecha de baja</td>
+<td>Fecha de retirada o bloqueo.</td>
+<td>Fecha</td>
+<td>Cond.: retirado o bloqueado</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Motivo de baja</td>
+<td>Taxonomía de 03 §3.3.</td>
+<td>Lista</td>
+<td>Cond.: retirado</td>
+<td>Sin valor plausible · Hipótesis refutada · Datos insuficientes · Inviable técnicamente · Coste superior al valor · Riesgo inaceptable · Regulación · Sin adopción · Sustituida por otra solución · Cambio de prioridad estratégica</td>
+</tr>
+<tr>
+<td>Decisor de la baja · sustituto</td>
+<td>Órgano que decide y sistema que lo sustituye.</td>
+<td>Persona u órgano · Referencia</td>
+<td>Cond.: retirado</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Tratamiento de datos y modelos en la baja</td>
+<td>Conservación, borrado o transferencia; confirmación del proveedor.</td>
+<td>Texto largo</td>
+<td>Cond.: retirado</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-7-campos-minimos-por-tipo-de-uso">3.7 Campos mínimos por tipo de uso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Iniciativa</th>
+<th>IA de terceros integrada</th>
+<th>Uso corporativo</th>
+<th>Uso no autorizado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificación y responsables</td>
+<td>Completo</td>
+<td>Completo</td>
+<td>Sin patrocinador</td>
+<td>Código, nombre, qué es, tipo, área, alta, origen, responsable de la regularización</td>
+</tr>
+<tr>
+<td>Descripción técnica y de uso</td>
+<td>Completo</td>
+<td>Completo</td>
+<td>Estado, tecnología, exposición, autonomía, licencias, categoría</td>
+<td>Estado, tecnología, autonomía</td>
+</tr>
+<tr>
+<td>Clasificación regulatoria</td>
+<td>Completo</td>
+<td>Completo</td>
+<td>Es IA, clasificación, transparencia, rol, modelo de uso general</td>
+<td>Clasificación provisional</td>
+</tr>
+<tr>
+<td>Evaluaciones</td>
+<td>Según clasificación</td>
+<td>Según clasificación</td>
+<td>Protección de datos, proveedor, seguridad</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Datos, terceros, riesgo y ciclo</td>
+<td>Completo</td>
+<td>Completo</td>
+<td>Información tratada, uso de datos por el proveedor, localización, proveedor, nivel</td>
+<td>Información expuesta, proveedor, no conformidad</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-8-correspondencia-con-el-esquema-del-panel-del-consejo">3.8 Correspondencia con el esquema del panel del consejo</h3>
+<p>El inventario alimenta el panel (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>). Correspondencias principales con el esquema de datos del panel: <code>reporte_compania.clasificacion_ria</code> (prohibido, alto_riesgo, transparencia, minimo, no_es_ia) se obtiene de <em>Clasificación regulatoria</em> (Fuera de ámbito por no ser IA → <code>no_es_ia</code>); <code>reporte_compania.controles</code> (<code>RIA</code>, <code>FRIA</code>, <code>DPIA</code>, <code>seguridad</code>…) de la sección 3.5; <code>tags.exposicion</code> y <code>tags.tecnologia</code> de la sección 3.3; <code>estado</code> del caso (En uso, En desarrollo, POC, Desenganchado) de <em>Estado del sistema</em> (En producción → En uso; En desarrollo → En desarrollo; Piloto → POC; Retirado → Desenganchado). Las diferencias de nomenclatura se resolverán al adaptar <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, ola 1).</p>
+<hr />
+<h2 id="roles-de-la-compania-segun-el-reglamento-de-ia"><span class="antetitulo">04</span>Roles de la compañía según el Reglamento de IA</h2>
+<p>Las obligaciones dependen del <strong>rol</strong> que la compañía tenga respecto de cada sistema, no del sistema en abstracto. Una misma compañía puede tener roles distintos en sistemas distintos, y más de un rol en el mismo sistema.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Definición resumida (artículo 3)</th>
+<th>Situación típica en una compañía</th>
+<th>Obligaciones principales si el sistema es de alto riesgo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proveedor</strong> (3.3)</td>
+<td>Quien desarrolla un sistema de IA o un modelo de uso general, o lo hace desarrollar, y lo introduce en el mercado o lo pone en servicio con su propio nombre o marca, de forma onerosa o gratuita.</td>
+<td>La compañía desarrolla un sistema propio —también sobre un modelo de uso general de un tercero— y lo pone en servicio para uso interno o para sus clientes.</td>
+<td>Requisitos del capítulo III, sección 2 (gestión de riesgos, datos, documentación técnica, registros, transparencia, supervisión humana, precisión, robustez y ciberseguridad); sistema de gestión de la calidad; evaluación de conformidad; declaración UE de conformidad y marcado CE; registro; vigilancia posterior a la comercialización; notificación de incidentes graves (artículos 16, 17, 43, 47–49, 72 y 73).</td>
+</tr>
+<tr>
+<td><strong>Responsable del despliegue</strong> (3.4)</td>
+<td>Quien usa un sistema de IA bajo su propia autoridad, salvo en una actividad personal no profesional.</td>
+<td>La compañía usa software de un proveedor con IA, o un sistema desarrollado por otra sociedad del grupo.</td>
+<td>Uso conforme a las instrucciones; supervisión humana por personas competentes; control de los datos de entrada; vigilancia del funcionamiento e información al proveedor; conservación de registros; información a trabajadores; información a las personas afectadas; evaluación de impacto en derechos fundamentales cuando aplique (artículos 26 y 27); explicación de decisiones individuales cuando proceda (artículo 86).</td>
+</tr>
+<tr>
+<td><strong>Importador</strong> (3.6)</td>
+<td>Persona establecida en la Unión que introduce en el mercado un sistema con nombre o marca de una persona establecida fuera de la Unión.</td>
+<td>Filial europea que comercializa un sistema de su matriz extracomunitaria.</td>
+<td>Verificaciones previas a la comercialización (artículo 23).</td>
+</tr>
+<tr>
+<td><strong>Distribuidor</strong> (3.7)</td>
+<td>Persona de la cadena de suministro, distinta del proveedor y del importador, que comercializa un sistema en la Unión.</td>
+<td>Compañía que revende a sus clientes software de terceros con IA.</td>
+<td>Verificaciones de marcado, documentación e instrucciones (artículo 24).</td>
+</tr>
+<tr>
+<td><strong>Representante autorizado</strong></td>
+<td>Persona establecida en la Unión con mandato escrito de un proveedor de fuera de la Unión.</td>
+<td>Poco frecuente en compañías usuarias.</td>
+<td>Tareas del mandato (artículo 22).</td>
+</tr>
+<tr>
+<td><strong>Fabricante del producto</strong></td>
+<td>Fabricante que introduce en el mercado un producto del anexo I con un sistema de IA como componente de seguridad con su nombre o marca.</td>
+<td>Fabricantes industriales, de maquinaria o de productos sanitarios.</td>
+<td>Se considera proveedor del sistema de alto riesgo (artículo 25.3).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-1-cuando-un-responsable-del-despliegue-pasa-a-ser-proveedor">4.1 Cuándo un responsable del despliegue pasa a ser proveedor</h3>
+<p>Según el artículo 25.1, un distribuidor, importador, responsable del despliegue u otro tercero se considera <strong>proveedor de un sistema de alto riesgo</strong> cuando:</p>
+<ul>
+<li>
+<ol type="a">
+<li>pone su nombre o marca en un sistema de alto riesgo ya introducido en el mercado o puesto en servicio;</li>
+</ol>
+</li>
+<li>
+<ol type="a" start="2">
+<li>realiza una modificación sustancial de un sistema de alto riesgo de manera que siga siendo de alto riesgo;</li>
+</ol>
+</li>
+<li>
+<ol type="a" start="3">
+<li>modifica la finalidad prevista de un sistema que no era de alto riesgo de forma que pase a serlo.</li>
+</ol>
+</li>
+</ul>
+<p>Este análisis es especialmente relevante cuando la compañía <strong>adapta</strong> software de terceros o <strong>reutiliza</strong> un sistema para una finalidad distinta. Se registra en el campo <em>Posible asunción del rol de proveedor</em> y se revisa en cada cambio.</p>
+<h3 id="4-2-modelos-de-ia-de-uso-general">4.2 Modelos de IA de uso general</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Rol habitual</th>
+<th>Consecuencias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La compañía usa un modelo de uso general de un tercero por API para construir un sistema propio.</td>
+<td>Proveedor <strong>del sistema</strong> (si lo pone en servicio con su nombre) y usuario del modelo.</td>
+<td>Las obligaciones del proveedor del modelo (artículos 53 y 55) recaen en el tercero; la compañía responde del sistema según su clasificación. Debería obtener del proveedor del modelo la información necesaria para cumplir.</td>
+</tr>
+<tr>
+<td>La compañía ajusta o modifica un modelo de uso general.</td>
+<td>Puede pasar a ser proveedor del modelo modificado en la medida de la modificación, según los criterios y directrices de la Comisión vigentes.</td>
+<td>Requiere análisis jurídico específico.</td>
+</tr>
+<tr>
+<td>La compañía desarrolla y comercializa su propio modelo de uso general.</td>
+<td>Proveedor del modelo.</td>
+<td>Obligaciones de los artículos 53 y, si tiene riesgo sistémico, 55.</td>
+</tr>
+<tr>
+<td>La compañía usa un asistente de propósito general de un proveedor (uso corporativo).</td>
+<td>Responsable del despliegue del sistema.</td>
+<td>Normalmente riesgo mínimo o transparencia; alto riesgo solo si se usa para una finalidad del anexo III.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Las obligaciones de los proveedores de modelos de uso general se aplican desde el 2-8-2025. La compañía que integra modelos de terceros debería registrar en T09 la documentación puesta a su disposición por el proveedor del modelo.</p>
+<hr />
+<h2 id="arbol-de-clasificacion-regulatoria"><span class="antetitulo">05</span>Árbol de clasificación regulatoria</h2>
+<h3 id="5-1-representacion-grafica">5.1 Representación gráfica</h3>
+<figure class="grafico"><div class="g-titulo">&#193;rbol de clasificaci&#243;n seg&#250;n el Reglamento de IA</div><div class="g-sub">Cada respuesta debe quedar justificada en el inventario</div><div class="g-lienzo"><pre class="mermaid">flowchart TD
+  P1{"1. ¿Es un sistema de IA según el artículo 3.1?"}
+  P1 -->|"No"| NOIA["Fuera de ámbito: registrar como Reglas o no IA"]
+  P1 -->|"Sí"| P2{"2. ¿Aplica una exclusión del artículo 2?"}
+  P2 -->|"Sí"| EXC["Fuera de ámbito: documentar la exclusión"]
+  P2 -->|"No"| P3{"3. ¿Es una práctica prohibida del artículo 5?"}
+  P3 -->|"Sí"| PRO["Prohibido: no pasa de la fase 3"]
+  P3 -->|"No"| P4{"4. ¿Es componente de seguridad o producto del anexo I con evaluación de terceros?"}
+  P4 -->|"Sí"| AR["Alto riesgo"]
+  P4 -->|"No"| P5{"5. ¿Su finalidad está en el anexo III?"}
+  P5 -->|"No"| P7{"7. ¿Tiene obligaciones del artículo 50?"}
+  P5 -->|"Sí"| P6{"6. ¿Cumple una condición del artículo 6.3 y no elabora perfiles?"}
+  P6 -->|"No"| AR
+  P6 -->|"Sí, documentado"| P7
+  AR -.->|"Comprobar también"| P7
+  P7 -->|"Sí"| TRA["Obligaciones de transparencia"]
+  P7 -->|"No"| MIN["Riesgo mínimo"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class NOIA,EXC,MIN ok
+  class TRA med
+  class AR,PRO ko
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<p>Tras los pasos 1 a 7, el árbol continúa con dos pasos que no cambian la categoría pero sí las obligaciones: <strong>8. Rol de la compañía</strong> (sección 4) y <strong>9. Evaluaciones derivadas</strong> (sección 6).</p>
+<h3 id="5-2-tabla-del-arbol">5.2 Tabla del árbol</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Pregunta</th>
+<th>Cómo se responde</th>
+<th>Evidencia en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>¿Es un <strong>sistema de IA</strong> según el artículo 3.1?</td>
+<td>Comprobar si es un sistema basado en máquinas que, con algún nivel de autonomía, <strong>infiere</strong> a partir de la información de entrada cómo generar resultados (predicciones, contenidos, recomendaciones o decisiones) que pueden influir en entornos físicos o virtuales. Usar las directrices de la Comisión sobre la definición de sistema de IA. Los sistemas basados exclusivamente en reglas definidas por personas para ejecutar operaciones automáticamente no suelen cumplir la definición.</td>
+<td>Descripción del funcionamiento; técnica utilizada; conclusión motivada.</td>
+<td>No → <strong>Fuera de ámbito</strong> (tecnología &quot;Reglas (no es IA)&quot;). Dudoso → revisión jurídica. Sí → paso 2.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>¿Aplica una <strong>exclusión</strong> del artículo 2?</td>
+<td>Revisar, entre otras: fines exclusivamente militares, de defensa o de seguridad nacional (2.3); investigación y desarrollo científicos como única finalidad (2.6); actividades de investigación, prueba o desarrollo antes de la introducción en el mercado o puesta en servicio, salvo pruebas en condiciones reales (2.8); licencias libres y de código abierto con las salvedades del artículo 2.12.</td>
+<td>Exclusión aplicada y motivo.</td>
+<td>Sí → <strong>Fuera de ámbito</strong> (se mantiene en el inventario y se revisa si cambia el uso). No → paso 3.</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>¿Es una <strong>práctica prohibida</strong> del artículo 5?</td>
+<td>Contrastar con cada supuesto del artículo 5.1: técnicas subliminales, manipuladoras o engañosas que alteren el comportamiento causando perjuicios; explotación de vulnerabilidades por edad, discapacidad o situación social o económica; puntuación social con trato perjudicial; predicción del riesgo de delinquir basada únicamente en perfiles o rasgos de personalidad; creación o ampliación de bases de datos de reconocimiento facial mediante extracción no selectiva; inferencia de emociones en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad; categorización biométrica para inferir características sensibles; identificación biométrica remota en tiempo real en espacios públicos con fines policiales fuera de los supuestos permitidos; y la prohibición añadida por el Reglamento (UE) 2026/1744 sobre generación de contenido sexual explícito no consentido o material de abuso sexual infantil (aplicable desde el 2-12-2026). Usar las directrices de la Comisión sobre prácticas prohibidas.</td>
+<td>Análisis de cada letra con conclusión.</td>
+<td>Sí → <strong>Prohibido</strong>: la iniciativa no pasa de la fase 3; si el sistema está en uso, suspensión inmediata y no conformidad crítica. No → paso 4.</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>¿Es de <strong>alto riesgo por el anexo I</strong> (artículo 6.1)?</td>
+<td>Dos condiciones acumulativas: el sistema es componente de seguridad de un producto, o es en sí un producto, cubierto por la legislación de armonización del anexo I; y ese producto debe someterse a una evaluación de conformidad de terceros según esa legislación.</td>
+<td>Legislación aplicable y procedimiento de evaluación del producto.</td>
+<td>Sí → <strong>Alto riesgo</strong> (anexo I; obligaciones desde el 2-8-2028) y paso 7. No → paso 5.</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>¿Su <strong>finalidad prevista</strong> está en el <strong>anexo III</strong> (artículo 6.2)?</td>
+<td>Contrastar la finalidad con los ocho ámbitos del anexo III y sus letras. Atención en compañías privadas a: 1 (biometría), 2 (componentes de seguridad de infraestructuras críticas), 3 (educación y formación profesional), 4 (contratación y selección; decisiones sobre condiciones laborales, promoción, extinción, asignación de tareas por comportamiento o rasgos, y seguimiento y evaluación del rendimiento), 5.b (solvencia y calificación crediticia, salvo detección de fraude financiero), 5.c (evaluación de riesgos y fijación de precios en seguros de vida y salud).</td>
+<td>Punto y letra del anexo III, o conclusión de que no aplica.</td>
+<td>No → paso 7. Sí → paso 6.</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>¿Aplica la <strong>excepción del artículo 6.3</strong>?</td>
+<td>El sistema del anexo III no se considera de alto riesgo si no plantea un riesgo importante de daño para la salud, la seguridad o los derechos fundamentales, incluido por no influir sustancialmente en el resultado de la decisión, y cumple al menos una condición: a) tarea de procedimiento limitada; b) mejora del resultado de una actividad humana previamente realizada; c) detección de patrones de decisión o desviaciones sin sustituir ni influir en la valoración humana previa sin la debida revisión humana; d) tarea preparatoria de una evaluación relevante para los casos del anexo III. <strong>Nunca</strong> aplica si el sistema elabora perfiles de personas físicas. Usar las directrices de la Comisión sobre la aplicación del artículo 6 previstas en su apartado 5, cuando estén disponibles en su versión vigente.</td>
+<td>Condición aplicada, análisis de influencia en la decisión, confirmación de ausencia de perfiles. Si la compañía es proveedor: evaluación documentada antes de la puesta en servicio y registro (artículos 6.4 y 49.2).</td>
+<td>No → <strong>Alto riesgo</strong> (anexo III; obligaciones desde el 2-12-2027) y paso 7. Sí → paso 7 con la excepción documentada.</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>¿Tiene <strong>obligaciones de transparencia</strong> del artículo 50?</td>
+<td>50.1: el proveedor garantiza que las personas saben que interactúan con un sistema de IA, salvo que resulte evidente. 50.2: el proveedor marca en formato legible por máquina el contenido sintético de audio, imagen, vídeo o texto. 50.3: el responsable del despliegue informa a las personas expuestas a reconocimiento de emociones o categorización biométrica. 50.4: el responsable del despliegue revela que imágenes, audio o vídeo son ultrasuplantaciones, y que los textos publicados para informar al público sobre asuntos de interés público han sido generados o manipulados, salvo revisión humana o control editorial con responsabilidad editorial. Se comprueba <strong>también para sistemas de alto riesgo</strong>.</td>
+<td>Apartados aplicables y rol obligado.</td>
+<td>Sí → <strong>Obligaciones de transparencia</strong> (si no es de alto riesgo). No → <strong>Riesgo mínimo</strong>.</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>¿Qué <strong>rol</strong> tiene la compañía?</td>
+<td>Sección 4, incluido el artículo 25 y la relación con modelos de uso general.</td>
+<td>Rol o roles y justificación.</td>
+<td>Determina qué obligaciones corresponden.</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>¿Qué <strong>evaluaciones</strong> se derivan?</td>
+<td>Sección 6.</td>
+<td>Evaluaciones exigidas con estado.</td>
+<td>Plan de evaluaciones en fase 3.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-3-reglas-de-aplicacion">5.3 Reglas de aplicación</h3>
+<ol>
+<li><strong>Clasificación provisional en fase 0 y definitiva en fase 3.</strong> La provisional orienta la intensidad y los roles; la definitiva requiere criterio jurídico cualificado y es condición de G3.</li>
+<li><strong>La finalidad prevista manda.</strong> Se clasifica por el uso previsto y por el uso razonablemente previsible, no por la tecnología.</li>
+<li><strong>Ante la duda, se aplica la categoría más exigente</strong> mientras se resuelve, y se registra como &quot;En revisión&quot; con fecha límite.</li>
+<li><strong>Una sola categoría principal</strong>, la más exigente, más los apartados del artículo 50 que concurran (sección 3.4).</li>
+<li><strong>&quot;Pendiente de clasificar&quot; tiene plazo.</strong> Ningún sistema puede pasar G3 ni seguir en producción más allá del plazo aprobado en C2 con clasificación pendiente.</li>
+<li><strong>Las fechas de aplicación no retrasan la clasificación.</strong> Un sistema de alto riesgo del anexo III se clasifica como tal desde hoy, aunque sus obligaciones sean exigibles desde el 2-12-2027; así el diseño incorpora los requisitos a tiempo. Para sistemas ya en servicio antes de esas fechas, debe analizarse el régimen transitorio del artículo 111 en su versión vigente.</li>
+<li><strong>La excepción del artículo 6.3 se aplica de forma restrictiva</strong> y se revisa si cambia el grado de influencia del sistema en la decisión.</li>
+<li><strong>Otras normas se evalúan en paralelo.</strong> El árbol cubre el Reglamento de IA; la protección de datos, la normativa sectorial, DORA o NIS2 se mapean en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> y pueden exigir controles aunque el sistema sea de riesgo mínimo.</li>
+</ol>
+<h3 id="5-4-ejemplos-ilustrativos">5.4 Ejemplos ilustrativos</h3>
+<p><em>Casos ficticios con fines didácticos. La clasificación real depende del análisis concreto.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Sistema ilustrativo</th>
+<th>Análisis resumido</th>
+<th>Clasificación orientativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asistente interno que resume documentación técnica para empleados</td>
+<td>IA; sin exclusión; no prohibido; no anexo I ni III; no interactúa con personas externas; el proveedor del asistente ya informa de que es IA.</td>
+<td>Riesgo mínimo</td>
+</tr>
+<tr>
+<td>Asistente conversacional de atención al cliente en la web</td>
+<td>IA; no anexo III; interacción directa con personas (50.1).</td>
+<td>Obligaciones de transparencia</td>
+</tr>
+<tr>
+<td>Sistema que ordena y filtra candidaturas en un proceso de selección</td>
+<td>Anexo III, punto 4.a; filtra y evalúa candidatos; elabora perfiles. Excepción 6.3 no aplicable.</td>
+<td>Alto riesgo</td>
+</tr>
+<tr>
+<td>Herramienta que corrige la redacción de ofertas de empleo ya escritas por una persona</td>
+<td>Relacionada con el punto 4.a, pero mejora el resultado de una actividad humana previa sin evaluar personas (6.3.b), sin perfiles.</td>
+<td>Riesgo mínimo con excepción documentada (revisión jurídica)</td>
+</tr>
+<tr>
+<td>Modelo de tarificación de seguros de salud para personas físicas</td>
+<td>Anexo III, punto 5.c.</td>
+<td>Alto riesgo; evaluación de impacto en derechos fundamentales como responsable del despliegue</td>
+</tr>
+<tr>
+<td>Detección de fraude en pagos</td>
+<td>Excluido expresamente del punto 5.b; no otras categorías.</td>
+<td>Riesgo mínimo (con otras normas aplicables)</td>
+</tr>
+<tr>
+<td>Análisis de emociones de empleados en llamadas para evaluar su desempeño</td>
+<td>Inferencia de emociones en el lugar de trabajo sin motivo médico o de seguridad.</td>
+<td>Prohibido</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="evaluaciones-que-se-derivan"><span class="antetitulo">06</span>Evaluaciones que se derivan</h2>
+<h3 id="6-1-evaluacion-de-impacto-en-proteccion-de-datos-rgpd-articulo-35">6.1 Evaluación de impacto en protección de datos (RGPD, artículo 35)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cuándo es obligatoria</strong></td>
+<td>Cuando sea probable que un tratamiento, en particular si usa nuevas tecnologías, entrañe un alto riesgo para los derechos y libertades. El artículo 35.3 la exige en particular ante: a) evaluación sistemática y exhaustiva de aspectos personales basada en tratamiento automatizado, incluida la elaboración de perfiles, que sirva de base para decisiones con efectos jurídicos o significativos; b) tratamiento a gran escala de categorías especiales de datos o de datos relativos a condenas e infracciones; c) observación sistemática a gran escala de una zona de acceso público. Deben consultarse además las listas de tratamientos que requieren evaluación publicadas por la autoridad de control competente (en España, la Agencia Española de Protección de Datos).</td>
+</tr>
+<tr>
+<td><strong>Quién la realiza</strong></td>
+<td>El responsable del tratamiento, con el asesoramiento del delegado de protección de datos. En SEVEN-G, coordinada por el responsable de riesgos de IA.</td>
+</tr>
+<tr>
+<td><strong>Cuándo en el ciclo</strong></td>
+<td>Fase 3 (antes de G3) y actualización en fase 4 con el diseño. Siempre antes de iniciar el tratamiento.</td>
+</tr>
+<tr>
+<td><strong>Relación con el Reglamento de IA</strong></td>
+<td>El responsable del despliegue de un sistema de alto riesgo usa la información del proveedor (artículo 13) para realizarla (artículo 26.9). La evaluación de impacto en derechos fundamentales la complementa (artículo 27.4).</td>
+</tr>
+<tr>
+<td><strong>Consulta previa</strong></td>
+<td>Si el riesgo residual sigue siendo alto, consulta a la autoridad de control (RGPD, artículo 36). En SEVEN-G, además, riesgo residual Alto o Crítico con su nivel de aceptación (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.2).</td>
+</tr>
+<tr>
+<td><strong>Plantilla</strong></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, bloque de evaluaciones de impacto (puede enlazar a la metodología propia de la compañía).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-2-evaluacion-de-impacto-en-derechos-fundamentales-reglamento-de-ia-articulo-27">6.2 Evaluación de impacto en derechos fundamentales (Reglamento de IA, artículo 27)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quién debe realizarla</strong></td>
+<td>Antes de desplegar un sistema de alto riesgo del artículo 6.2 (anexo III), <strong>salvo</strong> los del punto 2 (infraestructuras críticas): los responsables del despliegue que sean <strong>organismos de Derecho público</strong> o <strong>entidades privadas que prestan servicios públicos</strong>, y los responsables del despliegue de sistemas del anexo III, <strong>puntos 5.b</strong> (solvencia y calificación crediticia) y <strong>5.c</strong> (evaluación de riesgos y precios en seguros de vida y salud).</td>
+</tr>
+<tr>
+<td><strong>Contenido mínimo</strong></td>
+<td>a) descripción de los procesos en los que se usará el sistema conforme a su finalidad; b) periodo y frecuencia de uso; c) categorías de personas y colectivos afectados; d) riesgos específicos de perjuicio para esas personas, teniendo en cuenta la información del proveedor; e) medidas de supervisión humana según las instrucciones de uso; f) medidas si los riesgos se materializan, incluidos gobierno interno y mecanismos de reclamación.</td>
+</tr>
+<tr>
+<td><strong>Cuándo</strong></td>
+<td>Antes del primer uso; se actualiza si cambian los elementos evaluados. En SEVEN-G: fase 3, revisada en fase 5 y en R6.</td>
+</tr>
+<tr>
+<td><strong>Notificación</strong></td>
+<td>El responsable del despliegue notifica los resultados a la autoridad de vigilancia del mercado, con el modelo que facilite la Oficina Europea de IA, en los términos del artículo 27.3.</td>
+</tr>
+<tr>
+<td><strong>Aplicabilidad temporal</strong></td>
+<td>Ligada a la aplicación de las obligaciones del anexo III (2-12-2027 tras el Reglamento (UE) 2026/1744). SEVEN-G recomienda realizarla desde el diseño para los sistemas afectados.</td>
+</tr>
+<tr>
+<td><strong>Uso voluntario</strong></td>
+<td>Cuando no es obligatoria, la compañía <strong>puede</strong> usar su estructura para sistemas con decisiones significativas sobre personas. Puede apoyarse en ISO/IEC 42005:2025 (evaluación de impacto de sistemas de IA).</td>
+</tr>
+<tr>
+<td><strong>Plantilla</strong></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-3-evaluacion-de-conformidad-y-obligaciones-del-proveedor">6.3 Evaluación de conformidad y obligaciones del proveedor</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quién</strong></td>
+<td>La compañía cuando es <strong>proveedor</strong> de un sistema de alto riesgo, directamente o por el artículo 25.</td>
+</tr>
+<tr>
+<td><strong>Cuándo</strong></td>
+<td>Antes de introducirlo en el mercado o ponerlo en servicio. En SEVEN-G, preparada en fases 4–5 y completada antes de G5. Se repite ante modificaciones sustanciales.</td>
+</tr>
+<tr>
+<td><strong>Procedimiento</strong></td>
+<td>Artículo 43: para los sistemas del anexo III, puntos 2 a 8, procedimiento de control interno (anexo VI); para los del punto 1 (biometría), control interno o intervención de organismo notificado según se apliquen normas armonizadas o especificaciones comunes; para los del anexo I, el procedimiento de la legislación sectorial correspondiente.</td>
+</tr>
+<tr>
+<td><strong>Resultado</strong></td>
+<td>Documentación técnica, sistema de gestión de la calidad, declaración UE de conformidad (artículo 47), marcado CE (artículo 48), registro (artículo 49), plan de vigilancia posterior a la comercialización (artículo 72).</td>
+</tr>
+<tr>
+<td><strong>Si la compañía es solo responsable del despliegue</strong></td>
+<td>No realiza la evaluación de conformidad, pero debe verificar en la evaluación del proveedor (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) que el sistema dispone de ella y de instrucciones de uso, y cumplir sus obligaciones del artículo 26.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-4-matriz-de-evaluaciones-por-clasificacion-y-rol">6.4 Matriz de evaluaciones por clasificación y rol</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Clasificación</th>
+<th>Proveedor</th>
+<th>Responsable del despliegue</th>
+<th>Siempre (SEVEN-G)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prohibido</strong></td>
+<td>No se desarrolla.</td>
+<td>No se usa.</td>
+<td>No conformidad crítica si existe.</td>
+</tr>
+<tr>
+<td><strong>Alto riesgo</strong></td>
+<td>Requisitos del capítulo III, evaluación de conformidad, registro, vigilancia posterior a la comercialización, notificación de incidentes graves.</td>
+<td>Artículo 26; evaluación de impacto en derechos fundamentales en los supuestos de 6.2; evaluación del proveedor.</td>
+<td>Intensidad Enterprise; riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>); seguridad; evaluación de impacto en protección de datos si trata datos personales.</td>
+</tr>
+<tr>
+<td><strong>Excepción del artículo 6.3</strong></td>
+<td>Evaluación documentada y registro.</td>
+<td>Verificar la documentación del proveedor.</td>
+<td>Revisión jurídica; revisión en R6.</td>
+</tr>
+<tr>
+<td><strong>Obligaciones de transparencia</strong></td>
+<td>50.1 y 50.2.</td>
+<td>50.3 y 50.4.</td>
+<td>Verificación en G5 del mecanismo de transparencia.</td>
+</tr>
+<tr>
+<td><strong>Riesgo mínimo</strong></td>
+<td>—</td>
+<td>—</td>
+<td>Riesgos proporcionales; evaluación de impacto en protección de datos si procede; alfabetización (artículo 4).</td>
+</tr>
+<tr>
+<td><strong>Fuera de ámbito</strong></td>
+<td>—</td>
+<td>—</td>
+<td>Justificación registrada; otras normas aplicables.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="procedimientos-de-alta-revision-y-baja"><span class="antetitulo">07</span>Procedimientos de alta, revisión y baja</h2>
+<h3 id="7-1-alta">7.1 Alta</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Actividad</th>
+<th>Responsable</th>
+<th>Plazo de referencia</th>
+<th>Evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Identificar el sistema (fase 0, compras, detección técnica, comunicación, auditoría, aviso del proveedor).</td>
+<td>Quien lo identifica</td>
+<td>—</td>
+<td>Solicitud o detección registrada</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Crear el registro con los campos mínimos del tipo de uso y asignar código <code>SIA-AAAA-NNN</code>.</td>
+<td>Oficina de IA</td>
+<td>5 días hábiles desde la identificación</td>
+<td>Ficha <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> en T02</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Designar responsable del sistema y responsable de riesgos.</td>
+<td>Área y segunda línea</td>
+<td>Con el alta</td>
+<td>Ficha <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Clasificación provisional (pasos 1–7 del árbol) con T07.</td>
+<td>Responsable de riesgos</td>
+<td>10 días hábiles desde el alta</td>
+<td>Clasificación provisional en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Determinar intensidad (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>) y vincular con la iniciativa, si procede.</td>
+<td>Patrocinador, verificado</td>
+<td>En fase 0</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Si es uso no autorizado: abrir no conformidad y plan de regularización (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §5).</td>
+<td>Oficina de IA</td>
+<td>Con el alta</td>
+<td>Registro en T08</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Clasificación definitiva con revisión jurídica y plan de evaluaciones.</td>
+<td>Responsable de riesgos</td>
+<td>Antes de G3</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> definitiva</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Verificación de la ficha.</td>
+<td>Auditor de IA (Enterprise) u Oficina de IA (Lite)</td>
+<td>En G0 y G3</td>
+<td>Registro de verificación</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-2-revision">7.2 Revisión</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo de revisión</th>
+<th>Cuándo</th>
+<th>Qué se revisa</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Programada</strong></td>
+<td>En cada R6 (trimestral Enterprise, semestral Lite) y al menos anualmente para uso corporativo.</td>
+<td>Vigencia de todos los campos; clasificación; evaluaciones; responsables.</td>
+<td>Responsable del sistema con responsable de riesgos</td>
+</tr>
+<tr>
+<td><strong>Por evento</strong></td>
+<td>Cambio de finalidad, de datos, de autonomía, de exposición, de proveedor o de modelo subyacente; modificación sustancial; incidente S1 o S2; nueva versión del proveedor con funciones de IA; cambio normativo o nuevas directrices de la Comisión.</td>
+<td>Clasificación, rol (artículo 25) y evaluaciones afectadas.</td>
+<td>Responsable de riesgos</td>
+</tr>
+<tr>
+<td><strong>Anual del inventario</strong></td>
+<td>C1 / C5.</td>
+<td>Completitud y calidad del inventario (sección 8); conciliación con compras, arquitectura y seguridad (sección 9).</td>
+<td>Oficina de IA</td>
+</tr>
+<tr>
+<td><strong>Por auditoría</strong></td>
+<td>Según plan (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>).</td>
+<td>Muestra de fichas frente a la realidad.</td>
+<td>Auditor de IA</td>
+</tr>
+</tbody>
+</table></div>
+<p>Todo cambio de clasificación genera un <strong>evento</strong> en el registro (03 §3.3) con fecha, autor y motivo. Un cambio a Alto riesgo durante la operación obliga a revisar la intensidad y puede adelantar G7 (01 §6.8).</p>
+<h3 id="7-3-baja">7.3 Baja</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Actividad</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Decisión de retirada en G7 o bloqueo en la regularización de uso no autorizado.</td>
+<td>Órgano competente (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ejecutar el plan de retirada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>, T22): desactivación, sustituto, comunicación a afectados.</td>
+<td>Responsable de operación</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Tratamiento de datos y modelos: conservación de registros y documentación durante los plazos legales, borrado o devolución por el proveedor con confirmación.</td>
+<td>Responsable técnico con protección de datos</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Actualizar la ficha: estado Retirado o Bloqueado, fecha, motivo codificado, decisor, sustituto.</td>
+<td>Oficina de IA</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Actualizar registros externos cuando proceda (por ejemplo, la base de datos de la UE).</td>
+<td>Responsable de riesgos</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Verificar que el sistema ya no se usa (prueba técnica y consulta a usuarios).</td>
+<td>Auditor de IA u Oficina de IA</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>El registro de un sistema retirado no se borra.</strong> Se conserva con su historial para trazabilidad, auditoría y aprendizaje (motivos de retirada).</p>
+<hr />
+<h2 id="calidad-del-inventario"><span class="antetitulo">08</span>Calidad del inventario</h2>
+<h3 id="8-1-indicadores">8.1 Indicadores</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Indicador</th>
+<th>Fórmula</th>
+<th>Objetivo orientativo</th>
+<th>Frecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1</td>
+<td><strong>Completitud</strong></td>
+<td>Fichas con todos los campos obligatorios de su tipo ÷ fichas activas</td>
+<td>≥ 95 %</td>
+<td>Mensual</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td><strong>Clasificación a tiempo</strong></td>
+<td>Sistemas con clasificación &quot;Pendiente de clasificar&quot; o &quot;En revisión&quot; fuera de plazo</td>
+<td>0</td>
+<td>Mensual</td>
+</tr>
+<tr>
+<td>Q3</td>
+<td><strong>Clasificación definitiva con revisión jurídica</strong></td>
+<td>Sistemas en producción con clasificación definitiva y revisión jurídica ÷ sistemas en producción</td>
+<td>100 %</td>
+<td>Trimestral</td>
+</tr>
+<tr>
+<td>Q4</td>
+<td><strong>Evaluaciones al día</strong></td>
+<td>Evaluaciones exigidas en estado Hecho y vigentes ÷ evaluaciones exigidas</td>
+<td>100 % en producción</td>
+<td>Trimestral</td>
+</tr>
+<tr>
+<td>Q5</td>
+<td><strong>Actualidad</strong></td>
+<td>Fichas revisadas dentro de su periodicidad ÷ fichas activas</td>
+<td>≥ 95 %</td>
+<td>Mensual</td>
+</tr>
+<tr>
+<td>Q6</td>
+<td><strong>Exactitud</strong></td>
+<td>Fichas sin discrepancias relevantes en la muestra de auditoría ÷ fichas de la muestra</td>
+<td>≥ 90 %</td>
+<td>Anual o por auditoría</td>
+</tr>
+<tr>
+<td>Q7</td>
+<td><strong>Cobertura</strong></td>
+<td>Sistemas detectados por fuentes externas al inventario (sección 9) que no estaban inventariados ÷ total de sistemas conocidos al cierre</td>
+<td>Tendencia decreciente; objetivo &lt; 5 %</td>
+<td>Trimestral</td>
+</tr>
+<tr>
+<td>Q8</td>
+<td><strong>Tiempo de alta</strong></td>
+<td>Mediana de días entre identificación y alta; entre alta y clasificación provisional</td>
+<td>≤ 5 y ≤ 10 días hábiles</td>
+<td>Trimestral</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los objetivos son de referencia para empezar; la compañía los fija en C2 y los recalibra en C5.</p>
+<h3 id="8-2-reglas-de-calidad">8.2 Reglas de calidad</h3>
+<ol>
+<li><strong>Un sistema en producción sin ficha completa y clasificación definitiva</strong> es una no conformidad mayor; si además es de alto riesgo o prohibido, crítica.</li>
+<li><strong>Las fichas no se rellenan con estimaciones no declaradas.</strong> &quot;Sin dato&quot; se registra como tal.</li>
+<li><strong>Conciliación obligatoria</strong> entre T02 (sistemas) y <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (iniciativas): toda iniciativa en fases 4–7 debe tener al menos un sistema vinculado, y todo sistema de tipo iniciativa debe tener una iniciativa.</li>
+<li><strong>Responsable nominal</strong>, no área genérica.</li>
+<li><strong>Historial conservado</strong>: los cambios no sobrescriben sin registrar el valor anterior.</li>
+</ol>
+<hr />
+<h2 id="deteccion-de-sistemas-no-inventariados"><span class="antetitulo">09</span>Detección de sistemas no inventariados</h2>
+<p>El inventario solo es fiable si se contrasta con fuentes independientes. La Oficina de IA debe realizar, al menos <strong>trimestralmente</strong>, una conciliación con las fuentes siguientes y registrar las diferencias.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Qué buscar</th>
+<th>Responsable de aportar la información</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registro de aplicaciones y arquitectura empresarial</td>
+<td>Aplicaciones con componentes de IA no inventariados.</td>
+<td>Tecnología</td>
+</tr>
+<tr>
+<td>Contratos, compras y renovaciones</td>
+<td>Productos y servicios con funciones de IA; cláusulas sobre IA o uso de datos para entrenamiento.</td>
+<td>Compras</td>
+</tr>
+<tr>
+<td>Registro de proveedores de IA (T09) y registro de proveedores TIC (DORA, cuando aplique)</td>
+<td>Proveedores con servicios de IA sin sistema vinculado.</td>
+<td>Segunda línea</td>
+</tr>
+<tr>
+<td>Facturación de nube y consumo de APIs de modelos</td>
+<td>Consumo de servicios de modelos o de plataformas de IA sin iniciativa asociada.</td>
+<td>Finanzas y tecnología</td>
+</tr>
+<tr>
+<td>Repositorios de código y plataformas de datos</td>
+<td>Proyectos que usan bibliotecas o servicios de IA, modelos desplegados.</td>
+<td>Tecnología</td>
+</tr>
+<tr>
+<td>Registro de actividades de tratamiento (RGPD, artículo 30)</td>
+<td>Tratamientos que mencionan perfiles, puntuaciones, automatización o IA.</td>
+<td>Protección de datos</td>
+</tr>
+<tr>
+<td>Registros de navegación, prevención de fuga de datos y gestión de dispositivos</td>
+<td>Uso no autorizado (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §5.2).</td>
+<td>Seguridad</td>
+</tr>
+<tr>
+<td>Notas de gasto y tarjetas corporativas</td>
+<td>Suscripciones individuales.</td>
+<td>Finanzas</td>
+</tr>
+<tr>
+<td>Notas de versión de proveedores relevantes</td>
+<td>Nuevas funciones de IA en software contratado.</td>
+<td>Propietarios de sistemas</td>
+</tr>
+<tr>
+<td>Comunicaciones internas, encuestas y auditorías</td>
+<td>Usos declarados o detectados.</td>
+<td>Oficina de IA y auditoría interna</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Tratamiento de lo detectado</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Tratamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema de IA autorizado por otra vía pero no inventariado</td>
+<td>Alta inmediata; no conformidad menor o mayor según su estado y clasificación.</td>
+</tr>
+<tr>
+<td>Sistema en producción sin <em>gate</em></td>
+<td>No conformidad crítica (01 §12); contención; regularización mediante revisión equivalente a G7.</td>
+</tr>
+<tr>
+<td>Función de IA embebida activada sin decisión</td>
+<td>Proceso de 31 §5.6; no conformidad según datos y exposición.</td>
+</tr>
+<tr>
+<td>Uso no autorizado</td>
+<td>Proceso de 31 §5.</td>
+</tr>
+<tr>
+<td>Falso positivo (no es IA)</td>
+<td>Registro como &quot;Reglas (no es IA)&quot; si es recurrente; si no, se documenta la conclusión en el informe de conciliación.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El resultado de la conciliación alimenta el indicador Q7 y se informa al comité de IA dentro del monitor de uso corporativo (T21) y del informe de C4.</p>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">10</span>Herramientas y plantillas asociadas</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre</th>
+<th>Uso en este documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T02</strong></td>
+<td>Inventario de sistemas de IA</td>
+<td>Implementa los campos de la sección 3, los procedimientos de la sección 7 y los indicadores de la sección 8.</td>
+</tr>
+<tr>
+<td><strong>T07</strong></td>
+<td>Clasificador regulatorio</td>
+<td>Cuestionario guiado con los pasos 1 a 9 del árbol; genera la clasificación provisional y el plan de evaluaciones, y registra justificación y fecha. Debe actualizarse cuando cambie el texto consolidado del Reglamento o las directrices de la Comisión.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></strong></td>
+<td>Ficha de inventario del sistema de IA</td>
+<td>Evidencia del alta en el inventario (fase 0).</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></strong></td>
+<td>Clasificación regulatoria y evaluaciones de impacto</td>
+<td>Evidencia de la clasificación (fase 3) y de las evaluaciones derivadas.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td>Registro de iniciativas</td>
+<td>Vinculación sistema–iniciativa y eventos de cambio de clasificación.</td>
+</tr>
+<tr>
+<td><strong>T04</strong></td>
+<td>Determinación de intensidad</td>
+<td>Usa la clasificación y la autonomía del inventario.</td>
+</tr>
+<tr>
+<td><strong>T09</strong></td>
+<td>Registro de proveedores de IA</td>
+<td>Proveedores y modelos de uso general vinculados.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td>Panel de IA para el consejo</td>
+<td>Recibe la clasificación y el estado de controles (sección 3.8).</td>
+</tr>
+<tr>
+<td><strong>T21</strong></td>
+<td>Monitor de uso corporativo de IA</td>
+<td>Recibe usos corporativos y no autorizados, e indicador Q7.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">11</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Metodología fundacional</strong></td>
+<td>Tipos de uso (§1.2), fase 0 y fase 3, criterios Enterprise, declaración de aplicación (§14).</td>
+</tr>
+<tr>
+<td><strong>03 · Herramientas y registro de iniciativas</strong></td>
+<td>Taxonomía controlada, modelo de datos y eventos.</td>
+</tr>
+<tr>
+<td><strong>21 · Criterios de <em>gate</em> y auditoría</strong></td>
+<td>Criterios de G0 y G3 sobre inventario y clasificación.</td>
+</tr>
+<tr>
+<td><strong>30 · Modelo de gobierno</strong></td>
+<td>Responsabilidades sobre el inventario y la clasificación.</td>
+</tr>
+<tr>
+<td><strong>31 · Política corporativa y uso aceptable</strong></td>
+<td>Uso corporativo, IA embebida y uso no autorizado.</td>
+</tr>
+<tr>
+<td><strong>33 · Metodología de riesgos de IA</strong></td>
+<td>Riesgo residual principal.</td>
+</tr>
+<tr>
+<td><strong>34 · Mapeo regulatorio</strong></td>
+<td>Obligaciones detalladas por artículo, rol y fase.</td>
+</tr>
+<tr>
+<td><strong>35 · Seguridad de IA y agentes</strong></td>
+<td>Autonomía y evaluación de seguridad.</td>
+</tr>
+<tr>
+<td><strong>36 · Terceros y proveedores de IA</strong></td>
+<td>Evaluación de proveedores y modelos de uso general.</td>
+</tr>
+<tr>
+<td><strong>37 · No conformidades e incidentes</strong></td>
+<td>Tratamiento de sistemas no inventariados y mal clasificados.</td>
+</tr>
+<tr>
+<td><strong>38 · Marco de auditoría de IA</strong></td>
+<td>El inventario como universo auditable.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Este documento no constituye asesoramiento jurídico. La clasificación regulatoria de cada sistema debe realizarse con criterio jurídico cualificado y con el texto consolidado vigente del Reglamento (UE) 2024/1689 y de las directrices de la Comisión Europea.</p>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">12</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>Primera versión. Define el alcance del inventario por tipo de uso, los campos con tipo, obligatoriedad y listas de valores coherentes con la taxonomía de 03, los roles del Reglamento de IA (incluidos el artículo 25 y los modelos de uso general), el árbol de clasificación en nueve pasos, las evaluaciones derivadas (protección de datos, derechos fundamentales, conformidad), los procedimientos de alta, revisión y baja, los indicadores de calidad y la conciliación para detectar sistemas no inventariados. Incorpora las fechas de aplicación modificadas por el Reglamento (UE) 2026/1744 (consulta de 16-09-2026). Propone el código <code>SIA-AAAA-NNN</code>.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve a las empresas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":true},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

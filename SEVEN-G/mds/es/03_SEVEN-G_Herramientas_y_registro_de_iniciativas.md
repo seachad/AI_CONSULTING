@@ -1,0 +1,300 @@
+# Herramientas de SEVEN-G y registro de iniciativas
+
+**La cartera de IA gestionada como un embudo: fases, tiempos, cumplimiento y etiquetas**
+
+| | |
+|---|---|
+| Documento | Documento 03 · Herramientas y registro de iniciativas |
+| Versión | 0.1 (borrador de trabajo) |
+| Fecha | 16-09-2026 |
+| Autor | Fernando García · SEACHAD |
+| Estado | Borrador para revisión. Catálogo vivo: se actualiza cada vez que se construye o se modifica una herramienta. |
+
+<!-- cifras: 1 | modelo de datos común ; 8 | fases trazadas con fecha ; 22 | herramientas catalogadas ; 3 | olas de construcción -->
+
+---
+
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+
+## 1. Objeto
+
+Este documento cumple dos funciones:
+
+1. Define el **registro de iniciativas**, la herramienta central de SEVEN-G. Gestiona cada iniciativa de IA como un comercial gestiona una oportunidad en un CRM: sabe en qué fase está, cuánto tiempo lleva en ella, qué criterios cumple y cuáles no, qué valor se espera y por qué se detuvo si no avanzó.
+2. Mantiene el **catálogo de herramientas** del marco: qué herramientas existen o se necesitan, para qué sirven, en qué momento del ciclo se usan, de qué documento dependen y cuándo deben construirse.
+
+---
+
+## 2. Principios de diseño de las herramientas
+
+| # | Principio | Qué significa |
+|---|---|---|
+| 1 | **Un único modelo de datos** | Todas las herramientas leen y escriben sobre el mismo modelo (sección 4). El panel del consejo, los informes y las alertas se alimentan del registro, sin volver a introducir datos. |
+| 2 | **Todo cambio es un evento con fecha** | Las entradas y salidas de fase, las decisiones y los cambios de clasificación quedan registrados con fecha, autor y motivo. Sin historial no hay medición de tiempos ni auditoría. |
+| 3 | **Taxonomía controlada** | Las etiquetas principales usan listas cerradas definidas en el marco, para que la cartera pueda filtrarse, compararse y agregarse. Las etiquetas libres se permiten como complemento. |
+| 4 | **Evidencia enlazada, no copiada** | Las herramientas registran el enlace, la versión y el estado de verificación de cada evidencia; el documento vive en el repositorio documental de la compañía. |
+| 5 | **Portabilidad** | Las herramientas de referencia funcionan sin servidor, en HTML con datos en JSON, y exportan a hoja de cálculo. El modelo de datos puede implantarse en el CRM, la herramienta de gestión de riesgos o la plataforma de gestión de proyectos que ya use la compañía. |
+| 6 | **Los datos son de la compañía** | Las herramientas no envían datos a terceros. Las demostraciones usan siempre datos ficticios. |
+| 7 | **"Sin dato" no es cero** | Un valor ausente se muestra como ausente y nunca se sustituye por una estimación no declarada. |
+
+---
+
+## 3. El registro de iniciativas
+
+### 3.1 La analogía con un CRM
+
+| En un CRM comercial | En el registro de iniciativas de SEVEN-G |
+|---|---|
+| Oportunidad | **Iniciativa de IA** |
+| Etapa del embudo | **Fase del ciclo de vida** (0–7) |
+| Paso de etapa | **Puerta de decisión** (*gate*) con resultado registrado |
+| Días en la etapa | **Tiempo en fase** y tiempo de decisión de cada puerta |
+| Requisitos para avanzar | **Criterios del gate**: cumple, no cumple, no aplica o pendiente, con evidencia |
+| Importe de la oportunidad | **Valor esperado**; después, valor declarado, estimado y validado |
+| Probabilidad de cierre | **Probabilidad histórica de llegar a producción** desde cada fase, calculada con los datos propios |
+| Previsión de ventas | **Valor ponderado de la cartera** |
+| Motivo de pérdida | **Motivo de parada o de retirada**, codificado |
+| Propietario | **Patrocinador y responsable de producto** |
+| Cuenta o segmento | **Área, esfera, nivel de ambición, tecnología** y demás etiquetas |
+| Actividades | **Evidencias, decisiones, condiciones, riesgos e incidentes** vinculados |
+| Oportunidades estancadas | **Iniciativas que superan el plazo de referencia** de su fase |
+
+### 3.2 Estados de una iniciativa
+
+Además de la fase, cada iniciativa tiene un estado que indica qué está ocurriendo con ella.
+
+<!-- grafico: Estados de una iniciativa | La fase indica dónde está; el estado, qué le ocurre -->
+```mermaid
+flowchart LR
+  REG["Registrada"] --> FASE["En fase"]
+  FASE --> GATE["Pendiente de gate"]
+  GATE --> FASE
+  FASE --> ESP["En espera"]
+  ESP --> FASE
+  GATE --> PAR["Parada"]
+  GATE --> PROD["En producción"]
+  PROD --> G7["Pendiente de G7"]
+  G7 --> RET["Retirada"]
+  classDef prod fill:#0d7680,stroke:#0d7680,color:#ffffff
+  classDef fin fill:#990f3d,stroke:#990f3d,color:#ffffff
+  classDef espera fill:#f2dfce,stroke:#807973,color:#1a1817,stroke-dasharray:4 3
+  class PROD prod
+  class PAR,RET fin
+  class ESP espera
+```
+
+| Estado | Significado | Cuenta tiempo en fase |
+|---|---|---|
+| **Registrada** | Idea dada de alta, todavía sin fase 0 aprobada. | No |
+| **En fase** | Se están realizando las actividades de la fase. | Sí |
+| **Pendiente de gate** | Evidencias presentadas; a la espera de verificación y decisión. | Sí, y además cuenta el tiempo de decisión |
+| **En espera** | Detenida por una causa externa registrada (presupuesto, dependencia, proveedor, datos). Requiere motivo y fecha prevista de reanudación. | Se mide aparte |
+| **En producción** | Superado G5; en operación con revisiones de continuidad. | Se mide el tiempo en producción |
+| **Pendiente de G7** | En decisión de escalado, iteración o retirada. | Sí |
+| **Parada** | Detenida en un *gate* con motivo codificado. | Cierre |
+| **Retirada** | Retirada tras G7 con plan de retirada ejecutado. | Cierre |
+
+### 3.3 Qué se registra
+
+**Ficha de la iniciativa**
+
+| Bloque | Campos principales |
+|---|---|
+| **Identificación** | Código único (IA-AAAA-NNN), nombre, descripción comprensible de qué es y para qué se usa, área, fecha de registro. |
+| **Responsables** | Patrocinador, responsable de producto, técnico, de operación, de riesgos y auditor asignado. |
+| **Clasificación** | Esfera principal y secundaria; nivel de ambición propuesto, confirmado y real; intensidad; clasificación regulatoria; tecnología; exposición; proveedores. |
+| **Ciclo de vida** | Fase actual, estado, fecha de entrada en la fase, plazo de referencia, iteración en curso. |
+| **Valor** | Valor esperado (eficiencias, retorno, coste recurrente) con fórmula; valor realizado con estado validado, declarado o estimado; inversión realizada y pendiente. |
+| **Riesgo y cumplimiento** | Nivel de riesgo residual principal, evaluaciones de impacto realizadas, condiciones abiertas, no conformidades abiertas, incidentes. |
+| **Etiquetas libres** | Programa, iniciativa estratégica, cliente interno u otras agrupaciones propias. |
+
+**Taxonomía controlada**
+
+| Etiqueta | Valores |
+|---|---|
+| **Esfera** | 01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA |
+| **Nivel de ambición** | Optimizar · Aumentar · Transformar |
+| **Intensidad** | Lite · Enterprise |
+| **Clasificación regulatoria** | Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar |
+| **Tecnología** | ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA) |
+| **Exposición** | Interna · Empleados · Clientes de forma indirecta · Clientes o personas externas de forma directa |
+| **Tipo de valor** | Eficiencia · Retorno · Riesgo evitado · Cumplimiento |
+| **Motivo de parada o retirada** | Sin valor plausible · Hipótesis refutada · Datos insuficientes · Inviable técnicamente · Coste superior al valor · Riesgo inaceptable · Regulación · Sin adopción · Sustituida por otra solución · Cambio de prioridad estratégica |
+
+**Eventos**
+
+Cada uno de los siguientes hechos genera un evento con fecha, autor y comentario: alta; entrada y salida de fase; solicitud de *gate*; verificación; decisión con resultado; creación, cumplimiento o vencimiento de condiciones; paso a espera y reanudación; cambio de clasificación (ambición, intensidad, regulatoria); incidente; no conformidad; parada; retirada.
+
+### 3.4 Cumplimiento de las puertas de decisión
+
+Cada *gate* se registra como una lista de criterios. Cada criterio tiene uno de cuatro estados:
+
+| Estado | Significado |
+|---|---|
+| **Cumple** | El criterio se cumple y la evidencia enlazada está verificada. |
+| **No cumple** | El criterio no se cumple o la evidencia no es válida. |
+| **No aplica** | El criterio no aplica por la intensidad, la tecnología o la clasificación, con justificación. |
+| **Pendiente** | Falta la evidencia o la verificación. |
+
+A partir de estos estados, el registro calcula el **grado de cumplimiento del gate** (criterios que cumplen sobre los aplicables), muestra **qué criterios bloquean** la decisión e impide registrar **Continuar** si hay criterios obligatorios en *No cumple* o *Pendiente*. Las condiciones de un **Continuar con condiciones** se registran con plazo y responsable, y generan alerta al vencer.
+
+### 3.5 Métricas del embudo
+
+<!-- figura: embudo -->
+
+| Métrica | Definición | Para qué sirve | Quién la usa |
+|---|---|---|---|
+| **Tiempo en fase** | Días entre la entrada y la salida de la fase, sin contar el tiempo en espera. Mediana y percentil 80. | Detectar cuellos de botella. | Oficina de IA, comité |
+| **Tiempo de decisión** | Días entre la solicitud del *gate* y la decisión. | Medir la agilidad del propio gobierno. | Comité, consejo |
+| **Tiempo hasta producción** | Días desde el registro hasta G5; desglosado en idea → aprobación de viabilidad (G3) → producción. | Medir la velocidad real de la cartera. | Comité, consejo |
+| **Conversión por gate** | Porcentaje de iniciativas que continúan en cada *gate* frente a las que iteran, pivotan o paran. | Saber dónde se filtra la cartera y si el filtro está en el sitio correcto. | Comité |
+| **Iteraciones por gate** | Número medio de iteraciones antes de la decisión. | Detectar evidencias mal preparadas o criterios poco claros. | Oficina de IA |
+| **Iniciativas estancadas** | Iniciativas que superan el plazo de referencia de su fase. | Actuar antes de que se conviertan en coste sin retorno. | Comité |
+| **Tiempo en espera** | Días en espera y motivos. | Distinguir retrasos propios de dependencias externas. | Comité |
+| **Motivos de parada y retirada** | Distribución de los motivos codificados. | Aprender qué tipo de iniciativas no deben entrar en la cartera. | Comité, C5 |
+| **Cumplimiento de gates** | Grado de cumplimiento medio y criterios que más bloquean. | Mejorar la preparación de evidencias. | Oficina de IA |
+| **Condiciones vencidas** | Condiciones abiertas fuera de plazo. | Evitar que "con condiciones" se convierta en "sin control". | Comité, auditoría |
+| **Valor por fase** | Valor esperado de las iniciativas en cada fase. | Ver dónde está el valor de la cartera. | Comité, consejo |
+| **Valor ponderado** | Suma del valor esperado por la probabilidad histórica de llegar a producción desde la fase actual. Solo se muestra cuando hay historial suficiente. | Estimar con prudencia el valor futuro de la cartera. | Consejo |
+| **Mezcla de ambición por fase** | Distribución de Optimizar, Aumentar y Transformar en cada fase. | Detectar si las apuestas de transformación se quedan atascadas antes de producción (señal del índice de transformación). | Consejo |
+| **Cohortes** | Las métricas anteriores por trimestre de registro. | Comprobar si el sistema mejora con el tiempo. | C5 |
+
+Todas las métricas se pueden segmentar por cualquier etiqueta de la taxonomía: esfera, ambición, intensidad, tecnología, área o proveedor.
+
+### 3.6 Plazos de referencia por fase
+
+Los plazos permiten identificar iniciativas estancadas. La compañía los aprueba en C2 y los recalibra en C5 con sus propios datos. Los valores siguientes son **orientativos para empezar**:
+
+| Fase | Lite | Enterprise |
+|---|---|---|
+| 0 · Contexto y restricciones | 10 días | 20 días |
+| 1 · Descubrimiento | 20 días | 30 días |
+| 2 · Hipótesis de valor | 20 días | 30 días |
+| 3 · Viabilidad y riesgo | 20 días | 45 días |
+| 4 · Diseño de la solución | 20 días | 45 días |
+| 5 · Entrega y validación | 60 días | 90 días |
+| 7 · Evolución o retirada | 15 días | 30 días |
+| **Decisión de un gate** (desde la solicitud) | 5 días hábiles | 10 días hábiles |
+
+La fase 6 no tiene plazo; se controla con la periodicidad de la revisión de continuidad.
+
+### 3.7 Vistas
+
+| Vista | Qué muestra |
+|---|---|
+| **Embudo** | Iniciativas por fase y estado, con alertas de plazo; filtrable por etiquetas. |
+| **Tablero** | Tarjetas por fase que se mueven al registrar la decisión del *gate*. |
+| **Ficha** | Datos de la iniciativa, línea de tiempo de eventos, criterios del *gate* en curso, condiciones, riesgos y valor. |
+| **Gates pendientes** | Solicitudes a la espera de verificación o decisión, con días transcurridos. |
+| **Alertas** | Estancadas, condiciones vencidas, revisiones de continuidad caducadas, evidencias pendientes de verificación. |
+| **Análisis** | Métricas del embudo, cohortes y segmentación. |
+| **Exportación al panel del consejo** | Datos agregados en el formato del panel de supervisión. |
+
+---
+
+## 4. Modelo de datos común
+
+El modelo es la base de todas las herramientas. Su especificación completa (campos, tipos, listas y reglas de validación) se publicará como esquema junto con la primera versión del registro.
+
+| Entidad | Qué representa | Se relaciona con |
+|---|---|---|
+| **Iniciativa** | La unidad que recorre el ciclo de vida. | Todas las demás |
+| **Sistema de IA** | Cada sistema en el inventario, propio o de terceros, incluido el uso corporativo. | Iniciativas, proveedores, riesgos, incidentes |
+| **Evento** | Cualquier cambio con fecha, autor y motivo. | Iniciativa |
+| **Decisión de gate** | Solicitud, verificación, decisión, resultado e iteración. | Iniciativa, criterios, condiciones |
+| **Criterio evaluado** | Estado de cada criterio en una decisión de *gate*. | Decisión de gate, evidencia |
+| **Condición** | Condición impuesta con plazo, responsable y estado. | Decisión de gate |
+| **Evidencia** | Enlace, tipo, versión, autor, fecha y verificación. | Criterios, iniciativa |
+| **Valor** | Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación y periodo. | Iniciativa |
+| **Riesgo** | Riesgo con probabilidad, impacto, nivel inherente y residual, responsable y controles. | Iniciativa, sistema |
+| **No conformidad** | Tipo, detección, contención, causa raíz, acción, cierre. | Iniciativa, sistema |
+| **Incidente** | Fecha, severidad, detección, contención, notificaciones. | Sistema, iniciativa |
+| **Proveedor** | Tercero, servicios, criticidad, contrato, evaluación. | Sistemas, iniciativas |
+| **Recomendación** | Recomendación del consejo con identificador persistente, destinatario, estado y evidencia. | Iniciativas, sistemas |
+
+---
+
+## 5. Catálogo de herramientas
+
+**Prioridad:** 1 = núcleo, se construye primero · 2 = necesaria para el gobierno completo · 3 = complemento.
+**Estado:** Disponible (aplicación HTML en `herramientas/`) · Se aplica con plantillas o documentos (sin aplicación propia; la plantilla o el documento indicado contiene el procedimiento completo).
+
+### 5.1 Gestión de la cartera y del ciclo de vida
+
+| Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
+|---|---|---|---|---|---|---|---|
+| **T01** | **Registro de iniciativas** | Embudo tipo CRM: fases, estados, eventos, etiquetas, valor y métricas. | Todo el ciclo; C3 y C4 | HTML + JSON; exportación a hoja de cálculo | 01, 02 | 1 | Disponible v0.1 |
+| **T02** | Inventario de sistemas de IA | Registro de todos los sistemas, incluidos los de terceros y el uso corporativo. | C1, fase 0, C4 | Módulo de T01 | 01, 32 | 1 | Disponible v0.1 |
+| **T03** | Gestor de gates | Criterios con estado, evidencias, verificación, decisión y condiciones. | Todos los *gates* | Módulo de T01 | 01, 21, 22 | 1 | Disponible v0.1 (128 criterios del documento 21) |
+| **T04** | Determinación de intensidad | Cuestionario Lite o Enterprise con resultado registrado. | Fase 0, G3, R6 | Módulo de T01 | 01 | 1 | Disponible v0.1 |
+| **T05** | Clasificador de ambición | Cinco preguntas para Optimizar, Aumentar o Transformar. | Fases 1, 2 y 7 | Módulo de T01 | 00, 12 | 1 | Disponible v0.1 |
+
+### 5.2 Riesgo, seguridad y cumplimiento
+
+| Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
+|---|---|---|---|---|---|---|---|
+| **T06** | Matriz y registro de riesgos | Evaluación de probabilidad e impacto, mapa de calor, riesgo inherente y residual, controles. | Fase 3, fase 6, cartera | Módulo de T01 y plantilla de hoja de cálculo | 33 | 2 | Se aplica con P12 y P13 |
+| **T07** | Clasificador regulatorio | Cuestionario guiado de clasificación según el Reglamento de IA y evaluaciones requeridas. | Fases 0 y 3 | HTML | 34 | 2 | Se aplica con P11 |
+| **T08** | Registro de no conformidades e incidentes | Proceso completo con plazos y alertas. | Fase 6, C4 | Módulo de T01 | 37 | 2 | Se aplica con P26 y P27 |
+| **T09** | Registro de proveedores de IA | Terceros, criticidad, contratos, evaluación y dependencia. | Fases 3–4, C4 | Módulo de T01 | 36 | 3 | Se aplica con P14 |
+| **T10** | Evaluación de seguridad de agentes | Identidad, permisos, control de intención, interruptor de parada, pruebas de inyección. | Fases 4–6 | Lista de verificación en T03 | 35 | 3 | Se aplica con P18 y los criterios [AG] del documento 22 |
+
+### 5.3 Valor y medición
+
+| Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
+|---|---|---|---|---|---|---|---|
+| **T11** | Lienzo y calculadora de hipótesis de valor | Línea base, fórmula, método de atribución, criterios de parada. | Fase 2 | HTML y plantilla de hoja de cálculo | 40 | 2 | Se aplica con P08 y P09 |
+| **T12** | Seguimiento de realización de valor | Valor validado, declarado y estimado por periodo y por caso. | Fases 6–7, C4 | Módulo de T01 | 40, 43 | 2 | Se aplica con P28 |
+| **T13** | Calculadora de costes por caso | Reparto analítico de licencias, consumo de modelos, cómputo y personas. | Fases 3 y 6 | Plantilla de hoja de cálculo | 42 | 3 | Se aplica con el documento 42 |
+| **T14** | Calculadora del índice de transformación | Ocho señales, perfil de la compañía y evolución. | C1, C5 | HTML | 12 | 2 | Se aplica con el documento 12 |
+
+### 5.4 Estrategia y consejo
+
+| Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
+|---|---|---|---|---|---|---|---|
+| **T15** | Diagnóstico de madurez | Cuestionario 0–5 por dimensión con evidencias e informe. | C1, C5 | HTML con informe | 11 | 2 | Se aplica con el documento 11 |
+| **T16** | Mapa de esferas de la cartera | Mapa de calor esferas × niveles de ambición con inversión y valor. | C2, C3 | Vista del panel del consejo | 10 | 2 | Se aplica con el documento 10 |
+| **T17** | Panel de IA para el consejo | Supervisión: valor, coste, riesgo, cumplimiento, incidentes, agilidad, adopción. | C4 | HTML completo y móvil + JSON | 60 | 1 | Disponible. Se alimenta de T01 mediante el conector `herramientas/T17_panel_consejo` (v0.1); los cambios internos del motor siguen pendientes en su proyecto de origen |
+| **T18** | Registro de recomendaciones del consejo | Recomendaciones con identificador persistente, estado, evidencia y valoración. | C4 | HTML + JSON | 62 | 1 | Disponible. El conector de T17 genera el registro a partir de las recomendaciones de T01 |
+| **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión del consejo, con umbrales y plazos de referencia. | C2 | Plantilla de documento | 13 | 3 | Se aplica con el documento 13 |
+
+### 5.5 Personas y operación
+
+| Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
+|---|---|---|---|---|---|---|---|
+| **T20** | Plan de adopción y capacidad | Adopción, formación y reasignación de la capacidad liberada. | Fases 4–7 | Plantilla y módulo de T01 | 23, 50 | 3 | Se aplica con P20 |
+| **T21** | Monitor de uso corporativo de IA | Licencias asignadas y activas, uso no autorizado, controles de fuga de datos. | C4 | Vista del panel del consejo | 31 | 3 | Se aplica con el documento 31 |
+| **T22** | Gestor de retiradas | Plan de retirada, sustituto, datos y modelos, comunicación. | Fase 7 | Módulo de T01 | 14 | 3 | Se aplica con P30 |
+
+---
+
+## 6. Orden de construcción
+
+| Ola | Herramientas | Cuándo | Resultado |
+|---|---|---|---|
+| **Ola 1 · Núcleo** | T01 con T02, T03, T04 y T05; adaptación de T17 y T18 para alimentarse del registro. | Tras el documento 02 (Glosario), que fija nombres y listas. | Cartera gestionada como embudo, con *gates* trazados y panel del consejo conectado. |
+| **Ola 2 · Gobierno completo** | T06, T07, T08, T11, T12, T14, T15, T16. | A medida que se terminan los documentos 11, 12, 33, 34, 37 y 40. | Riesgo, cumplimiento, valor, madurez e índice de transformación operativos. |
+| **Ola 3 · Complementos** | T09, T10, T13, T19, T20, T21, T22. | Con los documentos 13, 14, 23, 31, 35, 36, 42 y 50. | Cobertura completa del marco. |
+
+Regla de trabajo: **cada documento que define un proceso con registro, cálculo o cuestionario indica la herramienta asociada**, y la herramienta se construye o actualiza al cerrar ese documento.
+
+---
+
+## 7. Documentos relacionados
+
+| Documento | Relación |
+|---|---|
+| **01 · Metodología fundacional** | Fases, estados, *gates*, roles e intensidad que el registro traza. |
+| **02 · Glosario** | Nombres y listas de la taxonomía controlada. |
+| **12 · Índice de transformación** | Señales que se calculan con los datos del registro. |
+| **21 y 22 · Criterios de gate y listas de verificación** | Contenido del gestor de *gates*. |
+| **40 · Reglas de medición del valor** | Reglas que aplican los módulos de valor. |
+| **60 y 62 · Paquete del consejo y registro de recomendaciones** | Salidas hacia el consejo. |
+
+---
+
+## 8. Control de versiones
+
+| Versión | Fecha | Cambios |
+|---|---|---|
+| 0.1 | 16-09-2026 | Primera versión. Define el registro de iniciativas como embudo gestionado, su taxonomía, eventos, métricas y plazos de referencia; el modelo de datos común; el catálogo de 22 herramientas y el orden de construcción. |

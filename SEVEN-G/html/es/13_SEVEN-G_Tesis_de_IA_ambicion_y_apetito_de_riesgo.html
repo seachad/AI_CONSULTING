@@ -1,0 +1,3059 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesis de IA, ambici&#243;n y apetito de riesgo</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Tesis de IA, ambición y apetito de riesgo"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 13 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 13 &#183; Tesis de IA, ambici&#243;n y apetito de riesgo</p>
+    <h1>Tesis de IA, ambici&#243;n y apetito de riesgo</h1>
+    <p class="entradilla">Lo que el consejo decide en C2: d&#243;nde jugar, con qu&#233; ambici&#243;n, con qu&#233; riesgo y dentro de qu&#233; l&#237;mites</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>12</b><span>componentes de la decisi&#243;n de C2</span></div><div class="cifra"><b>10</b><span>categor&#237;as de riesgo con apetito</span></div><div class="cifra"><b>4</b><span>grados de apetito</span></div><div class="cifra"><b>1</b><span>documento de decisi&#243;n del consejo</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#la-decision-de-c2-en-conjunto"><span>02</span>La decisión de C2 en conjunto</a></li><li><a href="#tesis-de-ia"><span>03</span>Tesis de IA</a></li><li><a href="#ambicion-por-esfera"><span>04</span>Ambición por esfera</a></li><li><a href="#apetito-de-riesgo"><span>05</span>Apetito de riesgo</a></li><li><a href="#umbral-de-inversion-enterprise-y-umbrales-de-materialidad"><span>06</span>Umbral de inversión Enterprise y umbrales de materialidad</a></li><li><a href="#horizonte-de-retorno-por-nivel-de-ambicion"><span>07</span>Horizonte de retorno por nivel de ambición</a></li><li><a href="#equilibrio-objetivo-de-cartera-por-ambicion"><span>08</span>Equilibrio objetivo de cartera por ambición</a></li><li><a href="#plazos-de-referencia"><span>09</span>Plazos de referencia</a></li><li><a href="#plazos-de-no-conformidades-e-incidentes"><span>10</span>Plazos de no conformidades e incidentes</a></li><li><a href="#lineas-rojas"><span>11</span>Líneas rojas</a></li><li><a href="#presupuesto-marco"><span>12</span>Presupuesto marco</a></li><li><a href="#revision-anual-y-revision-extraordinaria"><span>13</span>Revisión anual y revisión extraordinaria</a></li><li><a href="#criterios-de-calidad-de-la-decision-de-c2"><span>14</span>Criterios de calidad de la decisión de C2</a></li><li><a href="#anexo-plantilla-de-documento-de-decision-del-consejo-t19"><span>15</span>Anexo · Plantilla de documento de decisión del consejo (T19)</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>16</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>17</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>18</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>Este documento define el contenido de la etapa <strong>C2 · Dirección</strong> del ciclo corporativo (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 5.1): la decisión con la que el consejo fija la tesis de IA de la compañía, la ambición por esfera, el apetito de riesgo y los umbrales, plazos, límites y presupuesto que el resto del marco usa para decidir.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quién prepara</strong></td>
+<td>Alta dirección, con el apoyo de la oficina de IA, riesgos, cumplimiento, control de gestión y personas.</td>
+</tr>
+<tr>
+<td><strong>Con qué información</strong></td>
+<td>Resultados de C1: inventario, madurez con evidencia, mapa de esferas actual, perfil del índice de transformación, valor validado y coste actuales.</td>
+</tr>
+<tr>
+<td><strong>Quién aprueba</strong></td>
+<td>Consejo de administración, que puede delegar la preparación en una comisión.</td>
+</tr>
+<tr>
+<td><strong>Cuándo</strong></td>
+<td>En la primera implantación, dentro de los noventa días iniciales (<a href="90_SEVEN-G_Guia_de_implantacion.html">documento 90</a>). Después, anualmente tras C5, y de forma extraordinaria cuando se produzca un desencadenante (sección 13).</td>
+</tr>
+<tr>
+<td><strong>Resultado</strong></td>
+<td>Un único <strong>documento de decisión del consejo</strong>, con la estructura del anexo (herramienta T19).</td>
+</tr>
+</tbody>
+</table></div>
+<p>El documento también contiene contenido regulatorio de referencia. <strong>Este documento no constituye asesoramiento jurídico.</strong> Las referencias normativas se han consultado en septiembre de 2026 y deben verificarse antes de su uso, porque existen propuestas de modificación en tramitación que pueden afectar a fechas de aplicación y obligaciones.</p>
+<hr />
+<h2 id="la-decision-de-c2-en-conjunto"><span class="antetitulo">02</span>La decisión de C2 en conjunto</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Componente</th>
+<th>Qué fija</th>
+<th>Quién lo usa después</th>
+<th>Sección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Tesis de IA</strong></td>
+<td>Por qué y para qué usa la compañía la IA, y qué no hará.</td>
+<td>Todas las iniciativas (encaje en G0); C3; C5.</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Ambición por esfera</strong></td>
+<td>Prioridad y ambición objetivo en las esferas 01–07; grado objetivo en 08 y 09.</td>
+<td>C3; mapa de calor (T16); índice (condición IT-D1).</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Apetito de riesgo</strong></td>
+<td>Apetito por categoría, métricas de tolerancia y escalado.</td>
+<td>Fase 3; aceptación de riesgos; comité de IA; C4.</td>
+<td>5</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Umbrales de impacto económico</strong></td>
+<td>Escala económica de impacto 1–5 proporcionada al tamaño.</td>
+<td>Matriz de riesgos (T06, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</td>
+<td>5.4</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Umbral de inversión Enterprise</strong> y de materialidad</td>
+<td>Cuándo una iniciativa es Enterprise por inversión y cuándo se informa individualmente al consejo.</td>
+<td>Fase 0 (T04); C4.</td>
+<td>6</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Horizonte de retorno</strong></td>
+<td>Plazo de retorno exigible por nivel de ambición.</td>
+<td>G2, G3, G5, G7.</td>
+<td>7</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Equilibrio objetivo de cartera</strong></td>
+<td>Bandas de inversión por nivel de ambición.</td>
+<td>C3; C4; <a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>.</td>
+<td>8</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Plazos de referencia</strong></td>
+<td>Plazo por fase y de decisión de <em>gate</em>; periodicidad de R6; regularización.</td>
+<td>Registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>); alertas de estancamiento.</td>
+<td>9</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Plazos de no conformidades e incidentes</strong></td>
+<td>Contención, plan de acción y comunicación interna.</td>
+<td>Documento 37; T08.</td>
+<td>10</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Líneas rojas</strong></td>
+<td>Prácticas prohibidas, decisiones que no se delegan nunca y líneas propias.</td>
+<td>Fases 0, 3 y 4; T07; T10.</td>
+<td>11</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Presupuesto marco</strong></td>
+<td>Importe anual, sobres y reglas de reasignación.</td>
+<td>C3; comité de IA.</td>
+<td>12</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Revisión</strong></td>
+<td>Fecha de revisión anual y desencadenantes de revisión extraordinaria.</td>
+<td>C5.</td>
+<td>13</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="grafico"><div class="g-titulo">De la direcci&#243;n a la decisi&#243;n</div><div class="g-sub">Lo que el consejo aprueba en C2 se convierte en criterios que aplican la cartera y cada puerta de decisi&#243;n</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  C1["C1 · Diagnóstico"] --> C2["C2 · Decisión del consejo"]
+  C2 --> TA["Tesis y ambición por esfera"]
+  C2 --> AR["Apetito de riesgo y umbrales"]
+  C2 --> PL["Plazos, líneas rojas y presupuesto"]
+  TA --> C3["C3 · Cartera"]
+  AR --> G["Fase 0 y gates G2 a G7"]
+  PL --> G
+  PL --> C3
+  C3 --> C4["C4 · Supervisión"]
+  G --> C4
+  C4 --> C5["C5 · Revisión"]
+  C5 --> C2
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  class C2 ok
+  class TA,AR,PL med
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<hr />
+<h2 id="tesis-de-ia"><span class="antetitulo">03</span>Tesis de IA</h2>
+<h3 id="3-1-que-es">3.1 Qué es</h3>
+<p>La tesis de IA es una declaración breve (de dos a cuatro páginas) con la que el consejo explica <strong>por qué la IA importa a la compañía, dónde quiere usarla, con qué ambición y qué no hará</strong>. No es un plan de proyectos ni un catálogo de tecnologías. Debe poder leerse en diez minutos y usarse para decir que no a una iniciativa.</p>
+<h3 id="3-2-estructura">3.2 Estructura</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Apartado</th>
+<th>Contenido</th>
+<th>Pregunta que responde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Contexto</strong></td>
+<td>Cómo cambia la IA las reglas del sector y la posición competitiva de la compañía.</td>
+<td>¿Por qué ahora?</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Papel de la IA en la estrategia</strong></td>
+<td>Relación con los objetivos del plan estratégico. La IA como palanca de eficiencia, de crecimiento, de cambio del modelo operativo o de varias, con peso relativo.</td>
+<td>¿Para qué?</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Dónde jugamos</strong></td>
+<td>Esferas prioritarias y ambición objetivo (sección 4).</td>
+<td>¿Dónde?</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Qué no haremos</strong></td>
+<td>Renuncias explícitas: esferas no prioritarias, tipos de uso descartados, líneas rojas propias.</td>
+<td>¿Qué descartamos?</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Posición sobre las personas</strong></td>
+<td>Si la IA sustituye, aumenta o reorganiza el trabajo, en qué ámbitos, y con qué compromisos de formación, reasignación y diálogo.</td>
+<td>¿Qué pasa con las personas?</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Condiciones habilitantes</strong></td>
+<td>Datos, conocimiento, capacidades, plataforma, gobierno y proveedores que la ambición exige.</td>
+<td>¿Qué necesitamos para lograrlo?</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Principios</strong></td>
+<td>Principios de uso responsable, que la política corporativa (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) convierte en normas.</td>
+<td>¿Cómo lo haremos?</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Cómo sabremos que funciona</strong></td>
+<td>Perfil objetivo del índice de transformación, madurez objetivo por dimensión, proporción de valor validado y valor neto anual objetivo, con horizonte.</td>
+<td>¿Cómo lo mediremos?</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-3-criterios-de-calidad">3.3 Criterios de calidad</h3>
+<p>Una tesis de IA es adecuada si:</p>
+<ul>
+<li><strong>Contiene renuncias.</strong> Una tesis que declara prioritarias todas las esferas no orienta ninguna decisión.</li>
+<li><strong>Es coherente con el presupuesto.</strong> Una ambición de Transformar sin sobre de inversión para apuestas por etapas es una declaración sin respaldo (y activa la condición IT-D1 del <a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a> sin evidencia que la sostenga).</li>
+<li><strong>Es verificable.</strong> El apartado 8 usa indicadores del marco con valor actual, objetivo y horizonte.</li>
+<li><strong>Es coherente con la capacidad.</strong> La ambición en las esferas de valor no supera lo que las esferas habilitadoras pueden soportar en el horizonte, o incluye las iniciativas que cierran esa brecha.</li>
+<li><strong>Toma posición sobre las personas.</strong> Evitar la pregunta no la resuelve: la delega en cada proyecto.</li>
+</ul>
+<h3 id="3-4-extracto-ilustrativo">3.4 Extracto ilustrativo</h3>
+<p><em>Ejemplo ficticio, abreviado.</em></p>
+<blockquote>
+<p><strong>Papel de la IA.</strong> La compañía usará la IA prioritariamente para sostener su margen operativo (esfera 04, Optimizar) y para construir una línea de servicios digitales sobre sus productos (esfera 02, Transformar), que financiará con los ahorros validados de la primera. <strong>Qué no haremos.</strong> No usaremos sistemas de IA que tomen decisiones sobre el empleo sin revisión humana significativa, ni agentes que actúen directamente ante clientes con autonomía A3 en el horizonte de esta tesis. <strong>Personas.</strong> La capacidad liberada en Operaciones se reasignará prioritariamente a servicio técnico y a la nueva línea de servicios; las reducciones de plantilla, si se plantean, se decidirán de forma explícita por la dirección y no como consecuencia de un proyecto. <strong>Cómo sabremos que funciona.</strong> En 24 meses: perfil Eficiencia a escala sin declaración no evidenciada; ingresos habilitados por IA del 0,5 %; valor validado del 60 %.</p>
+</blockquote>
+<hr />
+<h2 id="ambicion-por-esfera"><span class="antetitulo">04</span>Ambición por esfera</h2>
+<h3 id="4-1-contenido">4.1 Contenido</h3>
+<p>Para cada esfera de valor y habilitadora (01 a 07):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valores</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prioridad</strong></td>
+<td>Alta · Media · Baja · No prioritaria</td>
+<td>Debería haber como mucho tres esferas de prioridad alta.</td>
+</tr>
+<tr>
+<td><strong>Ambición objetivo</strong></td>
+<td>Optimizar · Aumentar · Transformar</td>
+<td>Máximo nivel que la compañía quiere alcanzar en la esfera dentro del horizonte.</td>
+</tr>
+<tr>
+<td><strong>Horizonte</strong></td>
+<td>Meses</td>
+<td>Plazo para tener al menos una iniciativa del nivel objetivo en producción.</td>
+</tr>
+<tr>
+<td><strong>Indicador principal</strong></td>
+<td>Un indicador del <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a></td>
+<td>Con valor actual (o &quot;sin dato&quot;) y valor objetivo.</td>
+</tr>
+<tr>
+<td><strong>Responsable</strong></td>
+<td>Miembro de la alta dirección</td>
+<td>Responde ante el consejo de la ambición en la esfera.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Para las esferas 08 y 09, en lugar de ambición se fija el <strong>grado objetivo por dimensión</strong> (Ausente, Básico, Sistemático o Avanzado), con horizonte, indicador y responsable. Nunca se fija Optimizar, Aumentar o Transformar para 08 o 09 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>, sección 4.2).</p>
+<h3 id="4-2-reglas">4.2 Reglas</h3>
+<ol>
+<li>La ambición objetivo <strong>debe</strong> apoyarse en el mapa de esferas actual de C1: se indica el nivel alcanzado y el nivel en cartera de cada esfera.</li>
+<li>Una esfera con ambición <strong>Transformar</strong> debe tener sobre en el presupuesto marco y, en el horizonte, al menos una iniciativa candidata.</li>
+<li>Una ambición de Aumentar o Transformar en esferas de valor <strong>debería</strong> ir acompañada de un grado o una ambición suficientes en las esferas habilitadoras de las que depende.</li>
+<li>Las esferas 08 y 09 <strong>deben</strong> tener como mínimo grado objetivo <strong>Sistemático</strong> en Cumplimiento y en Estructura cuando la compañía tenga sistemas de alto riesgo o iniciativas Enterprise.</li>
+<li>Las esferas &quot;No prioritarias&quot; pueden tener iniciativas, pero su coste conjunto no debería superar el límite de inversión fuera de tesis fijado en el apetito estratégico (sección 5.3).</li>
+</ol>
+<h3 id="4-3-ejemplo-ilustrativo">4.3 Ejemplo ilustrativo</h3>
+<p><em>Compañía ficticia, coherente con los ejemplos de los documentos 10 y 12.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Esfera</th>
+<th>Prioridad</th>
+<th>Ambición objetivo</th>
+<th>Horizonte</th>
+<th>Indicador principal (actual → objetivo)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 · Cliente</td>
+<td>Media</td>
+<td>Aumentar</td>
+<td>18 meses</td>
+<td>IE01.05 Conversión incremental: 0,12 M€ → 0,60 M€</td>
+</tr>
+<tr>
+<td>02 · Producto y servicio</td>
+<td>Alta</td>
+<td>Transformar</td>
+<td>24 meses</td>
+<td>IE02.01 Ingresos habilitados por IA: 0,01 % → 0,5 %</td>
+</tr>
+<tr>
+<td>03 · Personas</td>
+<td>Alta</td>
+<td>Aumentar</td>
+<td>18 meses</td>
+<td>IE03.03 Capacidad reasignada: 20 % → 50 %</td>
+</tr>
+<tr>
+<td>04 · Operaciones</td>
+<td>Alta</td>
+<td>Optimizar</td>
+<td>12 meses</td>
+<td>IE04.06 Ahorro materializado validado: 1,80 M€ → 2,50 M€</td>
+</tr>
+<tr>
+<td>05 · Datos</td>
+<td>Media</td>
+<td>Aumentar</td>
+<td>18 meses</td>
+<td>IE05.06 Iniciativas bloqueadas por datos: sin dato → &lt; 20 %</td>
+</tr>
+<tr>
+<td>06 · Conocimiento</td>
+<td>Media</td>
+<td>Aumentar</td>
+<td>24 meses</td>
+<td>IE06.02 Concentración del conocimiento: sin dato → &lt; 30 %</td>
+</tr>
+<tr>
+<td>07 · Decisión</td>
+<td>Baja</td>
+<td>Optimizar</td>
+<td>24 meses</td>
+<td>IE07.01 Decisiones con autonomía asignada: sin dato → 100 %</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Esfera</th>
+<th>Dimensión</th>
+<th>Grado actual → objetivo</th>
+<th>Horizonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>08</td>
+<td>Cumplimiento · Anticipación · Liderazgo ético</td>
+<td>Sistemático → Sistemático · Básico → Sistemático · Básico → Básico</td>
+<td>12 meses</td>
+</tr>
+<tr>
+<td>09</td>
+<td>Estructura · Velocidad y control · Ecosistema</td>
+<td>Sistemático → Sistemático · Básico → Sistemático · Ausente → Básico</td>
+<td>12 meses</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="apetito-de-riesgo"><span class="antetitulo">05</span>Apetito de riesgo</h2>
+<h3 id="5-1-conceptos">5.1 Conceptos</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Definición en SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Apetito de riesgo</strong></td>
+<td>Cantidad y tipo de riesgo que la compañía está dispuesta a asumir para lograr sus objetivos con IA. Se declara por categoría.</td>
+</tr>
+<tr>
+<td><strong>Métrica de tolerancia</strong></td>
+<td>Indicador con fórmula que permite comprobar si la compañía está dentro de su apetito.</td>
+</tr>
+<tr>
+<td><strong>Tolerancia (ámbar)</strong></td>
+<td>Valor a partir del cual se requiere análisis y plan por parte del comité de IA.</td>
+</tr>
+<tr>
+<td><strong>Límite (rojo)</strong></td>
+<td>Valor que no debe superarse. Superarlo exige escalado al consejo o a su comisión delegada y acción inmediata.</td>
+</tr>
+</tbody>
+</table></div>
+<p>La escala de probabilidad, impacto y nivel de riesgo (Bajo, Medio, Alto, Crítico) y las respuestas (Evitar, Mitigar, Transferir, Aceptar) son las del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>. Este documento no las modifica: fija dónde se sitúa la compañía dentro de ellas.</p>
+<h3 id="5-2-grados-de-apetito-y-aceptacion-del-riesgo-residual">5.2 Grados de apetito y aceptación del riesgo residual</h3>
+<p>La regla general de aceptación del riesgo residual es: <strong>Bajo</strong> → responsable de producto, con registro · <strong>Medio</strong> → patrocinador con conformidad del responsable de riesgos · <strong>Alto</strong> → comité de IA · <strong>Crítico</strong> → no se acepta; excepcionalmente, solo el consejo o su comisión delegada, dentro del apetito aprobado en C2. El grado de apetito de cada categoría puede <strong>endurecer</strong> esa regla, nunca relajarla.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Grado de apetito</th>
+<th>Significado</th>
+<th>Máximo riesgo residual dentro del apetito</th>
+<th>Aceptación fuera de ese máximo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Averso</strong></td>
+<td>Se evita el riesgo aunque suponga renunciar a oportunidades.</td>
+<td>Bajo</td>
+<td>Medio o Alto: comité de IA, informando a la comisión delegada. Crítico: no se acepta.</td>
+</tr>
+<tr>
+<td><strong>Cauteloso</strong></td>
+<td>Se acepta un riesgo limitado con controles sólidos.</td>
+<td>Medio</td>
+<td>Alto: comité de IA, informando a la comisión delegada. Crítico: no se acepta.</td>
+</tr>
+<tr>
+<td><strong>Moderado</strong></td>
+<td>Se acepta riesgo a cambio de valor, con controles proporcionados.</td>
+<td>Alto</td>
+<td>Crítico: no se acepta.</td>
+</tr>
+<tr>
+<td><strong>Abierto</strong></td>
+<td>Se aceptan riesgos elevados en apuestas acotadas por etapas.</td>
+<td>Alto</td>
+<td>Crítico: solo excepcionalmente, por el consejo o su comisión delegada, para una etapa concreta, con límite de inversión y plan de salida. <strong>No se admite en LEG ni en SEG.</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Un riesgo residual Crítico sin la aprobación excepcional prevista <strong>bloquea G3 y G5</strong>.</p>
+<h3 id="5-3-declaracion-por-categoria">5.3 Declaración por categoría</h3>
+<p><em>Grados recomendados como punto de partida y métricas con valores iniciales ilustrativos. La compañía fija los suyos en C2.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Categoría</th>
+<th>Grado de partida</th>
+<th>Declaración tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EST</strong></td>
+<td>Estratégico</td>
+<td>Moderado (Abierto en apuestas de Transformar por etapas)</td>
+<td>Asumimos riesgo para construir ventaja, siempre dentro de la tesis y con capacidad de parar.</td>
+</tr>
+<tr>
+<td><strong>TEC</strong></td>
+<td>Técnico</td>
+<td>Moderado</td>
+<td>Aceptamos imperfecciones en sistemas con supervisión humana; no en sistemas que actúan sin ella.</td>
+</tr>
+<tr>
+<td><strong>DAT</strong></td>
+<td>Datos</td>
+<td>Cauteloso</td>
+<td>No usamos datos sin base legal ni sin responsable de calidad.</td>
+</tr>
+<tr>
+<td><strong>ECO</strong></td>
+<td>Económico</td>
+<td>Moderado</td>
+<td>Aceptamos que algunas iniciativas no generen valor, pero no que continúen sin evidencia.</td>
+</tr>
+<tr>
+<td><strong>LEG</strong></td>
+<td>Legal y cumplimiento</td>
+<td>Averso</td>
+<td>Tolerancia cero con prácticas prohibidas y con obligaciones regulatorias incumplidas.</td>
+</tr>
+<tr>
+<td><strong>ORG</strong></td>
+<td>Organizativo</td>
+<td>Moderado</td>
+<td>Aceptamos el esfuerzo del cambio; no aceptamos cambios sin plan para las personas.</td>
+</tr>
+<tr>
+<td><strong>REP</strong></td>
+<td>Reputacional</td>
+<td>Cauteloso</td>
+<td>No exponemos a clientes a sistemas que no podamos explicar, supervisar y corregir.</td>
+</tr>
+<tr>
+<td><strong>GEN</strong></td>
+<td>IA generativa y agentes</td>
+<td>Cauteloso</td>
+<td>Usamos IA generativa y agentes con evaluación previa, límites de actuación y trazabilidad.</td>
+</tr>
+<tr>
+<td><strong>SEG</strong></td>
+<td>Seguridad e IA ofensiva</td>
+<td>Averso</td>
+<td>Ningún sistema con capacidad de actuar sin identidad, permisos mínimos e interruptor de parada.</td>
+</tr>
+<tr>
+<td><strong>TER</strong></td>
+<td>Terceros</td>
+<td>Cauteloso</td>
+<td>No dependemos de un proveedor crítico sin estrategia de salida.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Métricas de tolerancia</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Categoría</th>
+<th>Métrica</th>
+<th>Fórmula</th>
+<th>Tolerancia (ámbar)</th>
+<th>Límite (rojo)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EST</td>
+<td>Inversión fuera de tesis</td>
+<td>Coste en esferas no prioritarias ÷ coste de la cartera × 100</td>
+<td>&gt; 10 %</td>
+<td>&gt; 20 %</td>
+</tr>
+<tr>
+<td>EST</td>
+<td>Concentración en una iniciativa</td>
+<td>Coste de la mayor iniciativa ÷ coste de la cartera × 100</td>
+<td>&gt; 25 %</td>
+<td>&gt; 40 %</td>
+</tr>
+<tr>
+<td>EST</td>
+<td>Desviación del equilibrio de cartera</td>
+<td>Trimestres consecutivos fuera de las bandas de la sección 8</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>TEC</td>
+<td>Degradación sin acción</td>
+<td>Sistemas en producción por debajo de su umbral de rendimiento durante más de 30 días sin acción registrada</td>
+<td>1</td>
+<td>2, o 1 Enterprise</td>
+</tr>
+<tr>
+<td>TEC</td>
+<td>Incidentes técnicos graves</td>
+<td>Incidentes S1 o S2 de causa técnica en el trimestre</td>
+<td>1 S2</td>
+<td>1 S1 o 3 S2</td>
+</tr>
+<tr>
+<td>TEC</td>
+<td>Reversión probada</td>
+<td>Sistemas Enterprise con plan de reversión probado ÷ sistemas Enterprise × 100</td>
+<td>&lt; 100 %</td>
+<td>&lt; 90 %</td>
+</tr>
+<tr>
+<td>DAT</td>
+<td>Datos personales sin base legal</td>
+<td>Conjuntos usados en IA sin base legal documentada (IE05.03)</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+<tr>
+<td>DAT</td>
+<td>Linaje en Enterprise</td>
+<td>Sistemas Enterprise con linaje verificado ÷ sistemas Enterprise × 100</td>
+<td>&lt; 100 %</td>
+<td>&lt; 90 %</td>
+</tr>
+<tr>
+<td>DAT</td>
+<td>Bloqueo por datos</td>
+<td>IE05.06</td>
+<td>&gt; 25 %</td>
+<td>&gt; 40 %</td>
+</tr>
+<tr>
+<td>ECO</td>
+<td>Desviación de coste recurrente</td>
+<td>Iniciativas con coste recurrente real &gt; 115 % del aprobado en G3</td>
+<td>1</td>
+<td>1 con desviación &gt; 130 %</td>
+</tr>
+<tr>
+<td>ECO</td>
+<td>Valor validado</td>
+<td>Condición B2 del <a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a></td>
+<td>&lt; 50 %</td>
+<td>&lt; 30 %</td>
+</tr>
+<tr>
+<td>ECO</td>
+<td>Neto negativo sin decisión</td>
+<td>Iniciativas con neto anual negativo más de 12 meses después de G5 sin decisión de G7</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>LEG</td>
+<td>Prácticas prohibidas</td>
+<td>Sistemas o iniciativas que constituyan una práctica prohibida</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+<tr>
+<td>LEG</td>
+<td>Evaluaciones exigidas</td>
+<td>Sistemas de alto riesgo en producción sin las evaluaciones exigidas</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+<tr>
+<td>LEG</td>
+<td>Clasificación pendiente</td>
+<td>Sistemas &quot;Pendiente de clasificar&quot; más de 90 días</td>
+<td>1</td>
+<td>3, o 1 en producción</td>
+</tr>
+<tr>
+<td>LEG</td>
+<td>No conformidades críticas</td>
+<td>No conformidades críticas abiertas fuera de plazo</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+<tr>
+<td>ORG</td>
+<td>Adopción</td>
+<td>Adopción efectiva seis meses después de G5 ÷ objetivo de la hipótesis × 100</td>
+<td>&lt; 80 %</td>
+<td>&lt; 50 %</td>
+</tr>
+<tr>
+<td>ORG</td>
+<td>Plan de adopción</td>
+<td>Iniciativas de Aumentar o Transformar en fase 4 o posterior sin plan de adopción</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+<tr>
+<td>ORG</td>
+<td>Capacidad no convertida</td>
+<td>Capacidad liberada hace más de 12 meses sin materializar ni reasignar ÷ capacidad liberada × 100</td>
+<td>&gt; 50 %</td>
+<td>&gt; 70 %</td>
+</tr>
+<tr>
+<td>REP</td>
+<td>Incidentes visibles</td>
+<td>Incidentes S1 o S2 con exposición a clientes o pública en el trimestre</td>
+<td>1 S2</td>
+<td>1 S1 o 2 S2</td>
+</tr>
+<tr>
+<td>REP</td>
+<td>Reclamaciones por IA</td>
+<td>Variación trimestral de IE01.06</td>
+<td>&gt; +25 %</td>
+<td>&gt; +50 %</td>
+</tr>
+<tr>
+<td>REP</td>
+<td>Transparencia</td>
+<td>Sistemas con exposición directa sin la información al usuario exigible</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+<tr>
+<td>GEN</td>
+<td>Evaluación previa</td>
+<td>Sistemas generativos con exposición directa sin evaluaciones antes de G5 y periódicas</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+<tr>
+<td>GEN</td>
+<td>Inyección de instrucciones</td>
+<td>Tasa de éxito en las pruebas de inyección del último ciclo</td>
+<td>&gt; 2 %</td>
+<td>&gt; 5 %</td>
+</tr>
+<tr>
+<td>GEN</td>
+<td>Trazabilidad de acciones</td>
+<td>Acciones de agentes registradas con intención ÷ acciones de agentes × 100</td>
+<td>&lt; 100 %</td>
+<td>&lt; 95 %</td>
+</tr>
+<tr>
+<td>SEG</td>
+<td>Interruptor de parada</td>
+<td>Sistemas A2 o A3 sin interruptor de parada probado (IE07.04)</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+<tr>
+<td>SEG</td>
+<td>Permisos excesivos</td>
+<td>Identidades de agentes con permisos excesivos detectadas</td>
+<td>1, corregida en &lt; 30 días</td>
+<td>1 sin corregir en 30 días</td>
+</tr>
+<tr>
+<td>SEG</td>
+<td>Credenciales sin rotar</td>
+<td>Credenciales de agentes fuera del periodo de rotación fijado</td>
+<td>1 en A0–A1</td>
+<td>1 en A2–A3</td>
+</tr>
+<tr>
+<td>TER</td>
+<td>Concentración de proveedor</td>
+<td>IE09.07</td>
+<td>&gt; 60 %</td>
+<td>&gt; 80 %</td>
+</tr>
+<tr>
+<td>TER</td>
+<td>Estrategia de salida</td>
+<td>IE09.08</td>
+<td>&lt; 100 %</td>
+<td>&lt; 80 %</td>
+</tr>
+<tr>
+<td>TER</td>
+<td>Cláusulas contractuales</td>
+<td>Proveedores N2 o N3 sin cláusulas mínimas de uso de datos y propiedad intelectual</td>
+<td>—</td>
+<td>≥ 1</td>
+</tr>
+</tbody>
+</table></div>
+<p>&quot;—&quot; en la columna ámbar indica <strong>tolerancia cero</strong>: el primer caso ya supera el límite.</p>
+<h3 id="5-4-umbrales-de-impacto-economico">5.4 Umbrales de impacto económico</h3>
+<p>El impacto se valora en cinco ejes (económico, personas y derechos, regulatorio, operativo, reputacional) y se toma el mayor (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>). El eje económico se fija <strong>en proporción al tamaño</strong> de la compañía sobre una magnitud de referencia estable:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Magnitud de referencia</th>
+<th>Cuándo usarla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Resultado bruto de explotación (EBITDA)</strong></td>
+<td>Opción por defecto en compañías con resultado positivo y estable.</td>
+</tr>
+<tr>
+<td><strong>Ingresos</strong></td>
+<td>Si el resultado es negativo o muy volátil.</td>
+</tr>
+<tr>
+<td><strong>Recursos propios</strong></td>
+<td>Entidades financieras y aseguradoras, si lo prefieren por coherencia con su marco de riesgos.</td>
+</tr>
+<tr>
+<td><strong>Presupuesto anual</strong></td>
+<td>Sector público y entidades sin ánimo de lucro.</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Ejemplo ilustrativo: compañía ficticia con 400 M€ de ingresos y 50 M€ de EBITDA.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Impacto</th>
+<th>Nombre</th>
+<th>Proporción sobre EBITDA</th>
+<th>Importe equivalente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Insignificante</td>
+<td>Menos del 0,1 %</td>
+<td>Menos de 50 k€</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Menor</td>
+<td>Del 0,1 % al 0,5 %</td>
+<td>De 50 k€ a 250 k€</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Moderado</td>
+<td>Del 0,5 % al 2 %</td>
+<td>De 250 k€ a 1 M€</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Grave</td>
+<td>Del 2 % al 5 %</td>
+<td>De 1 M€ a 2,5 M€</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Crítico</td>
+<td>Más del 5 %</td>
+<td>Más de 2,5 M€</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los importes se redondean y se revisan anualmente en C5. Los anclajes de los otros cuatro ejes se definen en el <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> y no dependen del tamaño.</p>
+<h3 id="5-5-escalado-al-superar-una-tolerancia">5.5 Escalado al superar una tolerancia</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Actuación</th>
+<th>Plazo orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Métrica en <strong>ámbar</strong></td>
+<td>La oficina de IA lo señala en el panel; el comité de IA analiza causa y aprueba plan con responsable.</td>
+<td>Siguiente comité mensual.</td>
+</tr>
+<tr>
+<td>Métrica en <strong>ámbar</strong> dos trimestres seguidos</td>
+<td>Se informa al consejo o a su comisión delegada en C4.</td>
+<td>Siguiente sesión trimestral.</td>
+</tr>
+<tr>
+<td>Métrica en <strong>rojo</strong></td>
+<td>El comité de IA adopta medidas inmediatas (incluida la parada del sistema si procede) y se informa a la comisión delegada.</td>
+<td>Comunicación en 5 días hábiles; en tolerancia cero, en 48 horas.</td>
+</tr>
+<tr>
+<td>Métrica en <strong>rojo</strong> en LEG o SEG</td>
+<td>Además, se abre no conformidad crítica si concurre alguno de sus supuestos (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 12).</td>
+<td>Contención en 48 horas como máximo.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="umbral-de-inversion-enterprise-y-umbrales-de-materialidad"><span class="antetitulo">06</span>Umbral de inversión Enterprise y umbrales de materialidad</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Umbral</th>
+<th>Definición</th>
+<th>Regla ilustrativa</th>
+<th>Ejemplo (EBITDA 50 M€)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Umbral de inversión Enterprise</strong></td>
+<td>Coste total a tres años de la iniciativa: construcción + coste recurrente previsto de los tres primeros años. Si lo supera, la iniciativa es Enterprise (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 9.2).</td>
+<td>0,5 % del EBITDA</td>
+<td>250 k€</td>
+</tr>
+<tr>
+<td><strong>Materialidad para el consejo</strong></td>
+<td>Iniciativas que se informan individualmente en el panel del consejo, además de todas las de Transformar y las que tengan riesgo residual Alto.</td>
+<td>2 % del EBITDA</td>
+<td>1 M€</td>
+</tr>
+<tr>
+<td><strong>Aprobación del consejo por importe</strong> (opcional)</td>
+<td>La compañía <strong>puede</strong> exigir aprobación del consejo por encima de un importe, de acuerdo con sus reglas internas de delegación.</td>
+<td>Según reglas internas</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Escala mínima en producción (B3)</strong></td>
+<td>Número de iniciativas en producción que el índice de transformación exige para Eficiencia a escala (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>).</td>
+<td>5 por defecto; ajustable al tamaño</td>
+<td>5</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas:</p>
+<ul>
+<li><strong>Agregación.</strong> Las iniciativas que comparten objetivo, patrocinador y plataforma, o que son etapas de una misma apuesta, se suman para aplicar los umbrales. Fragmentar una iniciativa para quedar por debajo de un umbral es una <strong>no conformidad mayor</strong>.</li>
+<li><strong>Revisión.</strong> Si durante la ejecución el coste total a tres años supera el umbral, la intensidad se revisa en el siguiente <em>gate</em> o en R6.</li>
+<li><strong>Intensidad mínima.</strong> El umbral económico solo añade un criterio: una iniciativa por debajo del umbral puede ser Enterprise por cualquier otro criterio.</li>
+</ul>
+<hr />
+<h2 id="horizonte-de-retorno-por-nivel-de-ambicion"><span class="antetitulo">07</span>Horizonte de retorno por nivel de ambición</h2>
+<p><em>Valores iniciales ilustrativos, a aprobar por el consejo en C2. &quot;Neto anual&quot;, &quot;VAN&quot; y &quot;plazo de recuperación&quot; siguen las definiciones del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> (F2, F7 y F9): neto anual = eficiencias materializadas + retorno − coste recurrente. El único criterio económico de viabilidad en G3 es VAN ≥ 0 con el horizonte y la tasa fijados en C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, sección 8.3; 01 §7.6); el plazo de recuperación de referencia es informativo y no es umbral de G3.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Criterio en G2</th>
+<th>Criterio en G3</th>
+<th>Criterio en G5</th>
+<th>Criterio en G7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Ahorro esperado con fórmula sobre línea base medida.</td>
+<td>Neto anual esperado positivo en el primer año completo en producción; VAN ≥ 0 en el horizonte de evaluación del VAN y con la tasa fijados en C2; plazo de recuperación de referencia, informativo: 18 meses.</td>
+<td>Eficiencia validada frente a la línea base y plan para materializar la capacidad liberada.</td>
+<td>Ahorro materializado dentro de los 12 meses siguientes a G5.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Métricas de rendimiento y de coste; objetivo de adopción.</td>
+<td>Neto anual esperado positivo en los 24 meses siguientes a G5; VAN ≥ 0 en el horizonte de evaluación del VAN y con la tasa fijados en C2; plazo de recuperación de referencia, informativo: 30 meses; viabilidad de la adopción.</td>
+<td>Adopción real y mejora de rendimiento medidas; hito de adopción a seis meses definido.</td>
+<td>Rendimiento sostenido y capacidad reasignada en los 24 meses siguientes a G5.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Hipótesis de retorno con hitos de aprendizaje; límite de inversión por etapa; aprobación del consejo.</td>
+<td>No se exige VAN ≥ 0 del conjunto (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, sección 8.3). Viabilidad de la primera etapa, que no debería superar el 25 % de la inversión total estimada; hitos de aprendizaje como máximo cada seis meses; criterios de parada por etapa; valor de opción documentado.</td>
+<td>Evidencia de mercado o de cliente: uso, conversión, ingresos iniciales o cambio operativo verificado.</td>
+<td>Retorno medido en los 36 meses siguientes a G5, o decisión explícita del consejo de ampliar el plazo con nueva etapa y límite.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas:</p>
+<ul>
+<li>El horizonte se aplica al <strong>nivel confirmado</strong> en G2. Si la ambición real resulta inferior, en G7 se aplica el horizonte del nivel real (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>, sección 3.6).</li>
+<li>Un horizonte vencido sin cumplir el criterio <strong>adelanta G7</strong>.</li>
+<li>Las iniciativas de cumplimiento obligatorio o de reducción de un riesgo relevante pueden justificarse por <strong>riesgo evitado</strong> o <strong>cumplimiento</strong>, que no se suman al valor salvo que se traduzcan a dinero con fórmula.</li>
+</ul>
+<hr />
+<h2 id="equilibrio-objetivo-de-cartera-por-ambicion"><span class="antetitulo">08</span>Equilibrio objetivo de cartera por ambición</h2>
+<p>El equilibrio se expresa como <strong>bandas</strong> de proporción del coste de la cartera (inversión ejecutada más coste recurrente de los últimos 12 meses, sin las iniciativas de esfera principal 08 o 09), con la misma fórmula que la señal 1 del índice de transformación.</p>
+<p><em>Posturas de referencia ilustrativas. La compañía elige una o fija sus propias bandas.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Postura</th>
+<th>Optimizar</th>
+<th>Aumentar</th>
+<th>Transformar</th>
+<th>Lectura esperable de la señal 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prudente</strong></td>
+<td>70–85 %</td>
+<td>10–25 %</td>
+<td>0–10 %</td>
+<td>1 o 2</td>
+</tr>
+<tr>
+<td><strong>Equilibrada</strong></td>
+<td>55–70 %</td>
+<td>20–30 %</td>
+<td>10–20 %</td>
+<td>2 o 3</td>
+</tr>
+<tr>
+<td><strong>Ambiciosa</strong></td>
+<td>40–55 %</td>
+<td>25–35 %</td>
+<td>20–30 %</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas:</p>
+<ol>
+<li>Si la tesis fija <strong>Transformar</strong> como ambición objetivo en alguna esfera, la banda de Transformar <strong>no puede empezar en 0 %</strong> más allá del primer año, o la compañía estará declarando una transformación sin financiarla.</li>
+<li>El equilibrio se mide trimestralmente en C4. Estar fuera de banda un trimestre es ámbar; dos trimestres, rojo (métrica EST de la sección 5.3).</li>
+<li>La corrección se hace en C3 priorizando iniciativas, no reclasificando las existentes. Reclasificar para entrar en banda sin evidencia es una no conformidad mayor (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>, sección 3.6).</li>
+<li>La inversión en habilitación de gobierno y cumplimiento (esferas 08 y 09) se presupuesta en un sobre propio (sección 12).</li>
+</ol>
+<hr />
+<h2 id="plazos-de-referencia"><span class="antetitulo">09</span>Plazos de referencia</h2>
+<p>El consejo aprueba los plazos de referencia del ciclo de vida, que el registro de iniciativas usa para señalar iniciativas estancadas. Los valores orientativos de partida están en el <strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, sección 3.6</strong>, y se recalibran en C5 con datos propios. La decisión de C2 recoge:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Plazo</th>
+<th>Valor orientativo</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plazo por fase (0, 1, 2, 3, 4, 5 y 7), Lite y Enterprise</td>
+<td>Tabla del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, sección 3.6</td>
+<td>03</td>
+</tr>
+<tr>
+<td>Decisión de un <em>gate</em> desde la solicitud</td>
+<td>5 días hábiles (Lite) · 10 días hábiles (Enterprise)</td>
+<td>03</td>
+</tr>
+<tr>
+<td>Periodicidad de la revisión de continuidad (R6)</td>
+<td>Al menos semestral (Lite) · al menos trimestral (Enterprise)</td>
+<td>01, sección 6.8</td>
+</tr>
+<tr>
+<td>Regularización de iniciativas en producción anteriores a la adopción del marco</td>
+<td>12 meses (valor ilustrativo)</td>
+<td>01, sección 14</td>
+</tr>
+<tr>
+<td>Clasificación regulatoria de un sistema inventariado</td>
+<td>90 días (valor ilustrativo)</td>
+<td>Sección 5.3</td>
+</tr>
+<tr>
+<td>Plazo máximo de una condición de <em>gate</em></td>
+<td>Hasta el siguiente <em>gate</em>; 90 días en R6 (valor ilustrativo)</td>
+<td>01, sección 7.4</td>
+</tr>
+</tbody>
+</table></div>
+<p>La compañía puede <strong>acortar</strong> las periodicidades mínimas de R6, pero no alargarlas.</p>
+<hr />
+<h2 id="plazos-de-no-conformidades-e-incidentes"><span class="antetitulo">10</span>Plazos de no conformidades e incidentes</h2>
+<h3 id="10-1-no-conformidades">10.1 No conformidades</h3>
+<p>Los plazos de referencia son los del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 12. La compañía puede ajustarlos en C2, sin superar los que establezca la regulación aplicable, y <strong>no debería</strong> alargar los de las no conformidades críticas.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Contención (referencia)</th>
+<th>Plan de acción (referencia)</th>
+<th>Informa a</th>
+<th>Valor aprobado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Crítica</strong></td>
+<td>Inmediata, máximo 48 horas</td>
+<td>Máximo 10 días</td>
+<td>Comité de IA y comisión delegada</td>
+<td>A completar</td>
+</tr>
+<tr>
+<td><strong>Mayor</strong></td>
+<td>Máximo 10 días</td>
+<td>Máximo 30 días</td>
+<td>Comité de IA</td>
+<td>A completar</td>
+</tr>
+<tr>
+<td><strong>Menor</strong></td>
+<td>No requerida</td>
+<td>Antes del siguiente <em>gate</em> o revisión</td>
+<td>Oficina de IA</td>
+<td>A completar</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-2-incidentes">10.2 Incidentes</h3>
+<p>La severidad (S1 a S4) se define en el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>. La decisión de C2 fija los <strong>plazos de comunicación interna</strong>; los plazos de notificación a autoridades los establece la regulación y prevalecen siempre.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Severidad</th>
+<th>Comunicación interna (valor ilustrativo)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 · Crítica</strong></td>
+<td>Comité de IA en 24 horas; comisión delegada en 72 horas.</td>
+</tr>
+<tr>
+<td><strong>S2 · Alta</strong></td>
+<td>Comité de IA en 72 horas.</td>
+</tr>
+<tr>
+<td><strong>S3 · Media</strong></td>
+<td>Oficina de IA en 5 días hábiles.</td>
+</tr>
+<tr>
+<td><strong>S4 · Baja</strong></td>
+<td>Registro en T08.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Referencias regulatorias que condicionan estos plazos, cuando apliquen (consultadas en septiembre de 2026; verificar vigencia):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Norma</th>
+<th>Obligación de referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RGPD, artículo 33</td>
+<td>Notificación de violaciones de seguridad de datos personales a la autoridad de control sin dilación indebida y, cuando sea posible, en 72 horas.</td>
+</tr>
+<tr>
+<td>Reglamento Europeo de IA, artículo 73</td>
+<td>Notificación de incidentes graves de sistemas de alto riesgo, con un plazo máximo general de 15 días y plazos más cortos en supuestos específicos.</td>
+</tr>
+<tr>
+<td>Directiva NIS2, artículo 23</td>
+<td>Alerta temprana en 24 horas, notificación en 72 horas e informe final en un mes para incidentes significativos.</td>
+</tr>
+<tr>
+<td>DORA, artículo 19</td>
+<td>Notificación de incidentes graves relacionados con las TIC en los plazos fijados por sus normas técnicas de desarrollo.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="lineas-rojas"><span class="antetitulo">11</span>Líneas rojas</h2>
+<h3 id="11-1-practicas-prohibidas">11.1 Prácticas prohibidas</h3>
+<p>El artículo 5 del Reglamento Europeo de IA prohíbe determinadas prácticas, aplicables desde el 2 de febrero de 2025. En términos generales, incluyen:</p>
+<ul>
+<li>Técnicas subliminales, manipuladoras o engañosas que alteren de forma sustancial el comportamiento y causen o puedan causar perjuicios significativos.</li>
+<li>Explotación de vulnerabilidades por edad, discapacidad o situación social o económica.</li>
+<li>Puntuación social que provoque tratos perjudiciales o desproporcionados.</li>
+<li>Evaluación del riesgo de que una persona cometa un delito basada únicamente en la elaboración de perfiles o en rasgos de personalidad.</li>
+<li>Creación o ampliación de bases de datos de reconocimiento facial mediante extracción no selectiva de imágenes de internet o de cámaras de vigilancia.</li>
+<li>Inferencia de emociones en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad.</li>
+<li>Categorización biométrica para inferir raza, opiniones políticas, afiliación sindical, convicciones religiosas o filosóficas, vida sexual u orientación sexual, con las excepciones previstas.</li>
+<li>Identificación biométrica remota en tiempo real en espacios de acceso público con fines de garantía del cumplimiento del Derecho, salvo las excepciones previstas.</li>
+</ul>
+<p>Tratamiento en SEVEN-G: <strong>tolerancia cero</strong>. Ninguna iniciativa que pueda constituir una práctica prohibida supera la fase 3 (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 6.5); si se detecta en producción, es una no conformidad crítica con parada del sistema. La interpretación de cada supuesto requiere criterio jurídico cualificado.</p>
+<h3 id="11-2-lo-que-no-se-delega-nunca-en-ia">11.2 Lo que no se delega nunca en IA</h3>
+<p>Mínimo común de SEVEN-G. La compañía puede ampliarlo, no reducirlo. Los niveles de autonomía son los del <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> (A0 asistencia · A1 recomendación · A2 actuación supervisada · A3 actuación autónoma).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Decisión o acción</th>
+<th>Autonomía máxima de un sistema de IA</th>
+<th>Motivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aprobación de la tesis, el apetito de riesgo, el presupuesto marco y las líneas rojas</td>
+<td>A0</td>
+<td>Responsabilidad indelegable del consejo.</td>
+</tr>
+<tr>
+<td>Decisiones de <em>gate</em>, aceptación de riesgos residuales, firma de puesta en producción y cierre de no conformidades</td>
+<td>A0</td>
+<td>Separación de funciones y rendición de cuentas.</td>
+</tr>
+<tr>
+<td>Decisiones con efectos jurídicos o significativos sobre personas (empleo, crédito, seguros, acceso a servicios esenciales, entre otras)</td>
+<td>A1, con revisión humana significativa por una persona con autoridad y competencia para cambiar la decisión</td>
+<td>Protección de derechos; RGPD, artículo 22, y regulación aplicable.</td>
+</tr>
+<tr>
+<td>Despidos y medidas disciplinarias</td>
+<td>A0</td>
+<td>Impacto sobre las personas y responsabilidad de la dirección.</td>
+</tr>
+<tr>
+<td>Notificaciones a autoridades y comunicaciones institucionales en nombre del consejo o de la dirección</td>
+<td>A1 (redacción asistida; validación y envío por personas)</td>
+<td>Responsabilidad legal y reputacional.</td>
+</tr>
+<tr>
+<td>Pagos o compromisos económicos por encima del límite aprobado para el sistema</td>
+<td>A1</td>
+<td>Límite de actuación de los agentes.</td>
+</tr>
+<tr>
+<td>Modificación de sus propios permisos, límites, credenciales u objetivos</td>
+<td>Prohibido</td>
+<td>Pérdida de control.</td>
+</tr>
+<tr>
+<td>Desactivación de registros, controles de seguridad o del interruptor de parada</td>
+<td>Prohibido</td>
+<td>Pérdida de trazabilidad y de capacidad de parar.</td>
+</tr>
+<tr>
+<td>Tratamiento de categorías especiales de datos fuera de la finalidad y la base legal documentadas</td>
+<td>Prohibido</td>
+<td>Protección de datos.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="11-3-lineas-rojas-propias">11.3 Líneas rojas propias</h3>
+<p>Además del mínimo, el consejo <strong>puede</strong> aprobar líneas rojas voluntarias, que forman parte de la dimensión Liderazgo ético de la esfera 08. <em>Ejemplos ilustrativos:</em></p>
+<ul>
+<li>No usar sistemas que simulen ser una persona sin informar de forma clara al interlocutor, aunque la regulación no lo exija en ese caso.</li>
+<li>No usar datos de clientes para entrenar modelos de terceros.</li>
+<li>No desplegar agentes con autonomía A3 en interacción directa con clientes.</li>
+<li>No usar reconocimiento de emociones en la relación con clientes.</li>
+</ul>
+<p>Las líneas rojas se incorporan a los cuestionarios de intensidad (T04), clasificación regulatoria (T07) y seguridad de agentes (T10). Solo el consejo puede modificarlas, en C2 o en una revisión extraordinaria.</p>
+<hr />
+<h2 id="presupuesto-marco"><span class="antetitulo">12</span>Presupuesto marco</h2>
+<p>El presupuesto marco es el importe anual que el consejo autoriza para la IA y las reglas con las que se asigna. No sustituye al presupuesto de cada iniciativa, que se aprueba en su <em>gate</em>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Sobre</th>
+<th>Contenido</th>
+<th>Regla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Construcción de iniciativas de optimización.</td>
+<td>Dentro de la banda de la sección 8.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Construcción y adopción de iniciativas de aumento.</td>
+<td>Dentro de la banda de la sección 8.</td>
+</tr>
+<tr>
+<td><strong>Transformar por etapas</strong></td>
+<td>Etapas aprobadas de las apuestas de transformación.</td>
+<td>Se libera etapa a etapa tras la decisión del órgano competente sobre los hitos.</td>
+</tr>
+<tr>
+<td><strong>Habilitación</strong></td>
+<td>Datos, plataforma común, gobierno y cumplimiento (incluidas las iniciativas de esferas 08 y 09).</td>
+<td>Se justifica por las esferas que habilita.</td>
+</tr>
+<tr>
+<td><strong>Coste recurrente comprometido</strong></td>
+<td>Operación de los sistemas en producción.</td>
+<td>Se presupuesta completo; no compite con la construcción.</td>
+</tr>
+<tr>
+<td><strong>Adopción y formación</strong></td>
+<td>Alfabetización en IA, formación por rol y gestión del cambio no imputada a iniciativas.</td>
+<td>Debería ser explícito, no residual.</td>
+</tr>
+<tr>
+<td><strong>Contingencia</strong></td>
+<td>Imprevistos y oportunidades no previstas.</td>
+<td>Asignación por el comité de IA con registro.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El gasto se informa además por las <strong>categorías de coste</strong> del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>: licencias · consumo de modelos · cómputo e infraestructura · datos · personas de construcción · personas de operación · proveedores y servicios · control y cumplimiento · adopción y formación.</p>
+<p>Reglas de reasignación (valores ilustrativos):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Movimiento</th>
+<th>Quién decide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dentro de un sobre</td>
+<td>Comité de IA.</td>
+</tr>
+<tr>
+<td>Entre sobres, hasta el 10 % del presupuesto marco en el año</td>
+<td>Comité de IA, informando al consejo en C4.</td>
+</tr>
+<tr>
+<td>Entre sobres por encima del 10 %, o cualquier reducción del sobre de Transformar</td>
+<td>Consejo.</td>
+</tr>
+<tr>
+<td>Remanente al cierre del ejercicio</td>
+<td>No se traslada automáticamente; se decide en C2 del ciclo siguiente.</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Ejemplo ilustrativo (presupuesto marco de 5,0 M€):</em> Optimizar 1,6 · Aumentar 0,7 · Transformar por etapas 0,6 · Habilitación 0,6 · Coste recurrente comprometido 1,1 · Adopción y formación 0,2 · Contingencia 0,2.</p>
+<hr />
+<h2 id="revision-anual-y-revision-extraordinaria"><span class="antetitulo">13</span>Revisión anual y revisión extraordinaria</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Cuándo</th>
+<th>Qué se revisa</th>
+<th>Quién</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anual</strong></td>
+<td>Tras C5</td>
+<td>Cumplimiento de la tesis y de la ambición por esfera; evolución del índice y de la madurez; métricas de tolerancia; calibración de umbrales, horizontes, bandas y plazos; líneas rojas; presupuesto del ciclo siguiente.</td>
+<td>Preparan alta dirección y oficina de IA; aprueba el consejo.</td>
+</tr>
+<tr>
+<td><strong>Extraordinaria</strong></td>
+<td>Cuando se produce un desencadenante</td>
+<td>Los componentes afectados.</td>
+<td>Igual que la anual.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Desencadenantes de revisión extraordinaria:</p>
+<ul>
+<li>Cambio regulatorio con efecto relevante sobre sistemas de la compañía.</li>
+<li>Incidente S1 o no conformidad crítica con causa en un límite mal fijado.</li>
+<li>Métrica de tolerancia en rojo durante dos trimestres consecutivos.</li>
+<li>Operación corporativa, reorganización relevante o cambio del plan estratégico.</li>
+<li>Cambio sustancial de la tecnología o del mercado que invalide un supuesto de la tesis.</li>
+<li>Perfil &quot;Transformación declarada, no evidenciada&quot; en dos cálculos formales consecutivos.</li>
+</ul>
+<p>Cada versión del documento de decisión se identifica con número de versión y fecha, se conserva la anterior y se registra en el registro de recomendaciones y decisiones (T18). Tras su aprobación se comunica a los órganos y responsables afectados y se actualizan los parámetros en las herramientas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T04, T06, T14, T16, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
+<hr />
+<h2 id="criterios-de-calidad-de-la-decision-de-c2"><span class="antetitulo">14</span>Criterios de calidad de la decisión de C2</h2>
+<p>El auditor de IA o la auditoría interna comprueban, antes de la aprobación:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Criterio</th>
+<th>Cumple si</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Base diagnóstica</td>
+<td>Cada componente cita los resultados de C1 en los que se apoya, con &quot;sin dato&quot; explícito.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Completitud</td>
+<td>Están los doce componentes de la sección 2, o se justifica la ausencia.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Renuncias</td>
+<td>La tesis incluye qué no se hará y hay esferas no prioritarias o de prioridad baja.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Coherencia ambición–presupuesto</td>
+<td>Toda esfera con Transformar tiene sobre y candidata; las bandas son compatibles con la tesis.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>No mezcla de niveles</td>
+<td>Las esferas 08 y 09 tienen grados, no niveles de ambición.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Apetito medible</td>
+<td>Cada categoría tiene grado, declaración y al menos una métrica con fórmula, tolerancia y límite.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Proporcionalidad</td>
+<td>Los umbrales económicos están expresados sobre una magnitud de referencia y en euros.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Límites regulatorios</td>
+<td>Los plazos aprobados no superan los regulatorios; las líneas rojas incluyen el mínimo de la sección 11.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Responsables</td>
+<td>Cada esfera y cada categoría tiene responsable de la alta dirección.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Revisión</td>
+<td>Hay fecha de revisión anual y desencadenantes de revisión extraordinaria.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="anexo-plantilla-de-documento-de-decision-del-consejo-t19"><span class="antetitulo">15</span>Anexo · Plantilla de documento de decisión del consejo (T19)</h2>
+<p><strong>Instrucciones de uso.</strong> La plantilla se rellena en C2, la prepara la alta dirección con la oficina de IA, la verifica el auditor de IA o la auditoría interna con los criterios de la sección 14 y la aprueba el consejo. Los campos marcados <strong>(Enterprise)</strong> pueden omitirse en organizaciones que solo aplican la intensidad Lite, justificándolo. Donde se indica &quot;valor orientativo&quot;, se parte del valor de este documento y se sustituye por el aprobado.</p>
+<h3 id="a-identificacion">A. Identificación</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compañía o grupo</td>
+<td></td>
+<td>Perímetro societario al que aplica la decisión.</td>
+</tr>
+<tr>
+<td>Órgano que aprueba</td>
+<td></td>
+<td>Consejo de administración o comisión con facultades delegadas.</td>
+</tr>
+<tr>
+<td>Fecha de la sesión</td>
+<td></td>
+<td>DD-MM-AAAA.</td>
+</tr>
+<tr>
+<td>Versión del documento</td>
+<td></td>
+<td>1.0 en la primera aprobación; se incrementa en cada revisión.</td>
+</tr>
+<tr>
+<td>Identificador en el registro de decisiones (T18)</td>
+<td></td>
+<td>Identificador persistente del registro.</td>
+</tr>
+<tr>
+<td>Preparado por</td>
+<td></td>
+<td>Nombre y cargo.</td>
+</tr>
+<tr>
+<td>Verificado por</td>
+<td></td>
+<td>Auditor de IA o auditoría interna; distinto de quien prepara.</td>
+</tr>
+<tr>
+<td>Informe de C1 de referencia</td>
+<td></td>
+<td>Fecha y versión del diagnóstico.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="b-acuerdos-propuestos">B. Acuerdos propuestos</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nº</th>
+<th>Acuerdo</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Se aprueba la tesis de IA del apartado C.</td>
+<td>Un acuerdo por componente, en forma &quot;Se aprueba…&quot;.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Se aprueba la ambición por esfera del apartado D.</td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="c-tesis-de-ia">C. Tesis de IA</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contexto</td>
+<td></td>
+<td>Sección 3.2, apartado 1.</td>
+</tr>
+<tr>
+<td>Papel de la IA en la estrategia</td>
+<td></td>
+<td>Peso relativo de eficiencia, crecimiento y modelo operativo.</td>
+</tr>
+<tr>
+<td>Dónde jugamos</td>
+<td></td>
+<td>Remite al apartado D.</td>
+</tr>
+<tr>
+<td>Qué no haremos</td>
+<td></td>
+<td>Al menos tres renuncias concretas.</td>
+</tr>
+<tr>
+<td>Posición sobre las personas</td>
+<td></td>
+<td>Sustituir, aumentar o reorganizar, por ámbito, con compromisos.</td>
+</tr>
+<tr>
+<td>Condiciones habilitantes</td>
+<td></td>
+<td>Datos, conocimiento, capacidades, plataforma, proveedores.</td>
+</tr>
+<tr>
+<td>Principios</td>
+<td></td>
+<td>Remite a la política corporativa (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+</tr>
+<tr>
+<td>Cómo sabremos que funciona</td>
+<td></td>
+<td>Perfil objetivo, madurez objetivo, valor validado y valor neto con horizonte.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="d-ambicion-por-esfera">D. Ambición por esfera</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Esfera</th>
+<th>Prioridad</th>
+<th>Nivel alcanzado (C1)</th>
+<th>Ambición objetivo</th>
+<th>Horizonte</th>
+<th>Indicador principal (actual → objetivo)</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 · Cliente</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>02 · Producto y servicio</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>03 · Personas</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>04 · Operaciones</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>05 · Datos</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>06 · Conocimiento</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>07 · Decisión</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Esfera</th>
+<th>Dimensión</th>
+<th>Grado actual</th>
+<th>Grado objetivo</th>
+<th>Horizonte</th>
+<th>Indicador</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>08</td>
+<td>Cumplimiento</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>08</td>
+<td>Anticipación</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>08</td>
+<td>Liderazgo ético</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>09</td>
+<td>Estructura</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>09</td>
+<td>Velocidad y control</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>09</td>
+<td>Ecosistema de proveedores</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="e-apetito-de-riesgo-por-categoria">E. Apetito de riesgo por categoría</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Categoría</th>
+<th>Grado (Averso · Cauteloso · Moderado · Abierto)</th>
+<th>Declaración</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EST</td>
+<td>Estratégico</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TEC</td>
+<td>Técnico</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DAT</td>
+<td>Datos</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ECO</td>
+<td>Económico</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LEG</td>
+<td>Legal y cumplimiento</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ORG</td>
+<td>Organizativo</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>REP</td>
+<td>Reputacional</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GEN</td>
+<td>IA generativa y agentes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SEG</td>
+<td>Seguridad e IA ofensiva</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TER</td>
+<td>Terceros</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="f-metricas-de-tolerancia">F. Métricas de tolerancia</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Categoría</th>
+<th>Métrica</th>
+<th>Fórmula</th>
+<th>Tolerancia (ámbar)</th>
+<th>Límite (rojo)</th>
+<th>Fuente</th>
+<th>Frecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>Ejemplo ilustrativo:</em> TER</td>
+<td>Concentración de proveedor</td>
+<td>Gasto en proveedor principal de modelos ÷ gasto total en modelos × 100</td>
+<td>&gt; 60 %</td>
+<td>&gt; 80 %</td>
+<td>T09, T13</td>
+<td>Trimestral</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="g-umbrales-de-impacto-economico">G. Umbrales de impacto económico</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magnitud de referencia y valor</td>
+<td></td>
+<td>EBITDA, ingresos, recursos propios o presupuesto; ejercicio de referencia.</td>
+</tr>
+<tr>
+<td>Impacto 1 · Insignificante</td>
+<td></td>
+<td>Proporción y euros.</td>
+</tr>
+<tr>
+<td>Impacto 2 · Menor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Impacto 3 · Moderado</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Impacto 4 · Grave</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Impacto 5 · Crítico</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h-umbrales-de-inversion-y-materialidad">H. Umbrales de inversión y materialidad</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Umbral de inversión Enterprise</td>
+<td></td>
+<td>Coste total a tres años; valor orientativo 0,5 % del EBITDA.</td>
+</tr>
+<tr>
+<td>Materialidad para información individual al consejo</td>
+<td></td>
+<td>Valor orientativo 2 % del EBITDA.</td>
+</tr>
+<tr>
+<td>Umbral de aprobación del consejo por importe (Enterprise)</td>
+<td></td>
+<td>Opcional, según reglas de delegación.</td>
+</tr>
+<tr>
+<td>Escala mínima en producción (B3)</td>
+<td></td>
+<td>Valor orientativo 5.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="i-horizonte-de-retorno">I. Horizonte de retorno</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Criterio en G3</th>
+<th>Plazo en G7</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimizar</td>
+<td></td>
+<td></td>
+<td>Valores orientativos de la sección 7.</td>
+</tr>
+<tr>
+<td>Aumentar</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Transformar</td>
+<td></td>
+<td></td>
+<td>Límite de la primera etapa y frecuencia de hitos.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="j-equilibrio-objetivo-de-cartera">J. Equilibrio objetivo de cartera</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Postura</td>
+<td></td>
+<td>Prudente, Equilibrada, Ambiciosa o propia.</td>
+</tr>
+<tr>
+<td>Banda de Optimizar</td>
+<td></td>
+<td>Porcentaje mínimo y máximo.</td>
+</tr>
+<tr>
+<td>Banda de Aumentar</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Banda de Transformar</td>
+<td></td>
+<td>No puede empezar en 0 % si hay Transformar en la tesis (salvo el primer año).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="k-plazos-de-referencia">K. Plazos de referencia</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Plazo</th>
+<th>Lite</th>
+<th>Enterprise</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fase 0</td>
+<td></td>
+<td></td>
+<td>Valores orientativos del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, sección 3.6.</td>
+</tr>
+<tr>
+<td>Fase 1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fase 2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fase 3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fase 4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fase 5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fase 7</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Decisión de <em>gate</em></td>
+<td></td>
+<td></td>
+<td>Días hábiles.</td>
+</tr>
+<tr>
+<td>Periodicidad de R6</td>
+<td></td>
+<td></td>
+<td>No más larga que semestral (Lite) o trimestral (Enterprise).</td>
+</tr>
+<tr>
+<td>Regularización de iniciativas anteriores</td>
+<td></td>
+<td></td>
+<td>Meses.</td>
+</tr>
+<tr>
+<td>Clasificación regulatoria pendiente</td>
+<td></td>
+<td></td>
+<td>Días.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="l-plazos-de-no-conformidades-e-incidentes">L. Plazos de no conformidades e incidentes</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contención</th>
+<th>Plan de acción o comunicación</th>
+<th>Informa a</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No conformidad crítica</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Referencia: 48 horas y 10 días.</td>
+</tr>
+<tr>
+<td>No conformidad mayor</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Referencia: 10 y 30 días.</td>
+</tr>
+<tr>
+<td>No conformidad menor</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Antes del siguiente <em>gate</em>.</td>
+</tr>
+<tr>
+<td>Incidente S1</td>
+<td>—</td>
+<td></td>
+<td></td>
+<td>Sin perjuicio de los plazos regulatorios.</td>
+</tr>
+<tr>
+<td>Incidente S2</td>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Incidente S3 (Enterprise)</td>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="m-lineas-rojas">M. Líneas rojas</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confirmación del mínimo SEVEN-G</td>
+<td>Sí / No</td>
+<td>Prácticas prohibidas y tabla de la sección 11.2.</td>
+</tr>
+<tr>
+<td>Ampliaciones de la tabla de decisiones no delegables</td>
+<td></td>
+<td>Decisión, autonomía máxima y motivo.</td>
+</tr>
+<tr>
+<td>Líneas rojas propias</td>
+<td></td>
+<td>Ejemplos en la sección 11.3.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="n-presupuesto-marco">N. Presupuesto marco</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Sobre</th>
+<th>Importe</th>
+<th>% del total</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimizar</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Aumentar</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Transformar por etapas</td>
+<td></td>
+<td></td>
+<td>Etapas aprobadas y pendientes de liberar.</td>
+</tr>
+<tr>
+<td>Habilitación</td>
+<td></td>
+<td></td>
+<td>Incluye esferas 08 y 09.</td>
+</tr>
+<tr>
+<td>Coste recurrente comprometido</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Adopción y formación</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Contingencia</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td>100 %</td>
+<td></td>
+</tr>
+<tr>
+<td>Reglas de reasignación</td>
+<td></td>
+<td></td>
+<td>Límites del comité y del consejo.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="o-objetivos-de-seguimiento">O. Objetivos de seguimiento</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Valor actual</th>
+<th>Objetivo</th>
+<th>Horizonte</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perfil del índice de transformación</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Documento 12.</td>
+</tr>
+<tr>
+<td>Nivel global de madurez y dimensiones prioritarias</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Documento 11.</td>
+</tr>
+<tr>
+<td>Proporción de valor validado</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Condición B2.</td>
+</tr>
+<tr>
+<td>Valor neto anual de la cartera</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Documento 40.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="p-revision-y-vigencia">P. Revisión y vigencia</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vigencia</td>
+<td></td>
+<td>Hasta la aprobación de la siguiente versión.</td>
+</tr>
+<tr>
+<td>Fecha prevista de revisión anual</td>
+<td></td>
+<td>Tras C5.</td>
+</tr>
+<tr>
+<td>Desencadenantes adicionales de revisión extraordinaria</td>
+<td></td>
+<td>Además de los de la sección 13.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="q-aprobacion-y-verificacion">Q. Aprobación y verificación</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Nombre y cargo</th>
+<th>Fecha</th>
+<th>Observaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prepara</td>
+<td></td>
+<td></td>
+<td>Alta dirección.</td>
+</tr>
+<tr>
+<td>Verifica</td>
+<td></td>
+<td></td>
+<td>Auditor de IA o auditoría interna. Resultado: Conforme · Conforme con observaciones · No conforme.</td>
+</tr>
+<tr>
+<td>Aprueba</td>
+<td></td>
+<td></td>
+<td>Consejo; referencia del acta.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">16</span>Herramientas y plantillas asociadas</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre</th>
+<th>Uso en este documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T19</strong></td>
+<td>Plantilla de tesis de IA y apetito de riesgo</td>
+<td>Documento de decisión del consejo (anexo).</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td>Registro de iniciativas</td>
+<td>Recibe plazos de referencia, bandas de cartera y horizontes.</td>
+</tr>
+<tr>
+<td><strong>T04</strong></td>
+<td>Determinación de intensidad</td>
+<td>Recibe el umbral de inversión Enterprise y las líneas rojas.</td>
+</tr>
+<tr>
+<td><strong>T06</strong></td>
+<td>Matriz y registro de riesgos</td>
+<td>Recibe los umbrales de impacto económico y los grados de apetito.</td>
+</tr>
+<tr>
+<td><strong>T08</strong></td>
+<td>Registro de no conformidades e incidentes</td>
+<td>Recibe los plazos aprobados.</td>
+</tr>
+<tr>
+<td><strong>T14</strong></td>
+<td>Calculadora del índice de transformación</td>
+<td>Recibe la condición IT-D1 y el umbral B3.</td>
+</tr>
+<tr>
+<td><strong>T16</strong></td>
+<td>Mapa de esferas de la cartera</td>
+<td>Recibe la ambición por esfera y los grados objetivo.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td>Panel de IA para el consejo</td>
+<td>Muestra métricas de tolerancia, equilibrio de cartera y presupuesto.</td>
+</tr>
+<tr>
+<td><strong>T18</strong></td>
+<td>Registro de recomendaciones del consejo</td>
+<td>Registra la decisión de C2 y sus revisiones.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></strong></td>
+<td>Determinación de intensidad</td>
+<td>Aplica el umbral de inversión Enterprise.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></strong></td>
+<td>Clasificación de esfera y ambición</td>
+<td>Comprueba el encaje con la ambición por esfera.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
+<td>Matriz y registro de riesgos</td>
+<td>Aplica umbrales de impacto y aceptación.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">17</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Metodología fundacional</strong></td>
+<td>Etapa C2, criterios Enterprise, criterios de <em>gate</em> por ambición, plazos de no conformidades.</td>
+</tr>
+<tr>
+<td><strong>03 · Herramientas y registro de iniciativas</strong></td>
+<td>Plazos de referencia orientativos (sección 3.6) y herramienta T19.</td>
+</tr>
+<tr>
+<td><strong>10 · Mapa de esferas y niveles de ambición</strong></td>
+<td>Esferas, niveles, grados de 08 y 09 e indicadores principales.</td>
+</tr>
+<tr>
+<td><strong>11 · Modelo de madurez</strong></td>
+<td>Madurez objetivo en la tesis.</td>
+</tr>
+<tr>
+<td><strong>12 · Índice de transformación</strong></td>
+<td>Perfil objetivo, condición IT-D1, umbral B3 y señal 1.</td>
+</tr>
+<tr>
+<td><strong>14 · Gestión de cartera</strong></td>
+<td>Aplicación del equilibrio y del presupuesto marco en C3.</td>
+</tr>
+<tr>
+<td><strong>31 · Política corporativa y uso aceptable</strong></td>
+<td>Desarrollo de los principios y de las líneas rojas.</td>
+</tr>
+<tr>
+<td><strong>33 · Metodología de riesgos de IA</strong></td>
+<td>Escalas de probabilidad e impacto y riesgos tipo por categoría.</td>
+</tr>
+<tr>
+<td><strong>34 · Mapeo regulatorio</strong></td>
+<td>Detalle de prácticas prohibidas y obligaciones.</td>
+</tr>
+<tr>
+<td><strong>35 · Seguridad de IA y agentes</strong></td>
+<td>Niveles de autonomía A0–A3 y controles de agentes.</td>
+</tr>
+<tr>
+<td><strong>37 · No conformidades e incidentes</strong></td>
+<td>Severidades y procesos.</td>
+</tr>
+<tr>
+<td><strong>40 · Reglas de medición del valor</strong> y <strong>42 · Costes de IA</strong></td>
+<td>Neto anual, VAN, plazo de recuperación (informativo) y categorías de coste.</td>
+</tr>
+<tr>
+<td><strong>60 · Paquete para el consejo</strong></td>
+<td>Presentación de la decisión y de su seguimiento.</td>
+</tr>
+<tr>
+<td><strong>90 · Guía de implantación</strong></td>
+<td>C2 dentro de los primeros noventa días.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">18</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>Primera versión. Define los doce componentes de la decisión de C2: estructura de la tesis de IA, ambición por esfera, grados de apetito y métricas de tolerancia para las diez categorías de riesgo, umbrales de impacto económico proporcionados, umbral de inversión Enterprise y de materialidad, horizonte de retorno por nivel, bandas de equilibrio de cartera, plazos, líneas rojas, presupuesto marco y revisión. Incluye como anexo la plantilla de documento de decisión del consejo (T19).</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve a las empresas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":true},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

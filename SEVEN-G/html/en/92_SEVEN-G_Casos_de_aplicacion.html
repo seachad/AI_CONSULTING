@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Application cases</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Application cases"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/92_SEVEN-G_Casos_de_aplicacion.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/92_SEVEN-G_Casos_de_aplicacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/92_SEVEN-G_Casos_de_aplicacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/92_SEVEN-G_Casos_de_aplicacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 92 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 92 &#183; Application cases</p>
+    <h1>Application cases</h1>
+    <p class="entradilla">Five fictitious companies go through the corporate cycle and the lifecycle of their initiatives</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>5</b><span>fictitious cases</span></div><div class="cifra"><b>15</b><span>initiatives taken through their gates</span></div><div class="cifra"><b>5</b><span>well-founded stops</span></div><div class="cifra"><b>4</b><span>recorded retirements</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/92_SEVEN-G_Casos_de_aplicacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/92_SEVEN-G_Casos_de_aplicacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/92_SEVEN-G_Casos_de_aplicacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#summary-of-the-cases"><span>02</span>Summary of the cases</a></li><li><a href="#case-1-energy-group-e-fictitious"><span>03</span>Case 1 · Energy group E (fictitious)</a></li><li><a href="#case-2-logistics-operator-l-fictitious"><span>04</span>Case 2 · Logistics operator L (fictitious)</a></li><li><a href="#case-3-hospital-group-h-fictitious"><span>05</span>Case 3 · Hospital group H (fictitious)</a></li><li><a href="#case-4-retail-group-r-fictitious"><span>06</span>Case 4 · Retail group R (fictitious)</a></li><li><a href="#case-5-regional-administration-p-fictitious"><span>07</span>Case 5 · Regional administration P (fictitious)</a></li><li><a href="#cross-cutting-lessons-and-use-in-workshops"><span>08</span>Cross-cutting lessons and use in workshops</a></li><li><a href="#associated-tools-and-templates"><span>09</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>10</span>Related documents</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<blockquote>
+<p><strong>NOTICE: ALL THE CONTENT OF THIS DOCUMENT IS FICTITIOUS.</strong>
+The companies, their bodies, people, systems, initiatives, decisions, dates and figures are <strong>invented</strong> to illustrate how SEVEN-G is applied. They do not describe any real organisation, do not come from client engagements and <strong>are not market references, benchmarks or expected results</strong>. The cases are consistent with the sectors of the board dashboard demonstrations (energy, logistics, healthcare, retail and public sector), but do not reproduce their data. Any resemblance to a real organisation is coincidental.</p>
+</blockquote>
+<hr />
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<p>This document uses five fictitious cases to show how the components of SEVEN-G are applied in practice: maturity diagnosis, transformation index, board decisions, the progression of initiatives through their <em>gates</em>, value measurement with formulas and statuses, stops and retirements.</p>
+<p>It is used to:</p>
+<ul>
+<li>Train boards, AI Committees and AI Offices.</li>
+<li>Explain the framework with complete examples whose calculations can be verified.</li>
+<li>Prepare workshops (section 8).</li>
+</ul>
+<p>Conventions used in the cases:</p>
+<ul>
+<li><strong>Fictitious period:</strong> 2027–2028. Quarters are shown as Q1 27, Q2 27…</li>
+<li><strong>Codes:</strong> each company has its own numbering (IA-AAAA-NNN, DEC-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN); codes are not related across cases.</li>
+<li><strong>Maturity:</strong> overall level = average of the seven dimensions rounded down and capped at the lower of D1 or D6 plus one (common specification §5.2), with equal weights.</li>
+<li><strong>Transformation index:</strong> eight signals scored from 0 to 3; the thresholds in document 12 are pending calibration, so the scores are illustrative.</li>
+<li><strong>Value:</strong> annual net value = efficiencies + return − recurring cost; released capacity that has not materialised is reported separately and is not added.</li>
+</ul>
+<hr />
+<h2 id="summary-of-the-cases"><span class="antetitulo">02</span>Summary of the cases</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Fictitious company</th>
+<th>Initial overall maturity</th>
+<th>Initial profile</th>
+<th>Initiatives in the case</th>
+<th>Notable <em>gate</em> outcomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Energy group E</td>
+<td>2</td>
+<td>Tactical efficiency</td>
+<td>3</td>
+<td>Scale · Stop at G3 (Transform) · Retire</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Logistics operator L</td>
+<td>2</td>
+<td>Efficiency at scale</td>
+<td>3</td>
+<td>Scale · Stop at G5 (Transform) · Iterate at G3</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Hospital group H</td>
+<td>2</td>
+<td>Declared but unevidenced transformation</td>
+<td>3</td>
+<td>Iterate at G7 · Retire due to bias · Stop at G3 due to regulation</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Retail group R</td>
+<td>3</td>
+<td>Transformation under way</td>
+<td>3</td>
+<td>Scale (Transform) · Stop at G3 due to data · Retire</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Regional administration P</td>
+<td>1</td>
+<td>Scattered exploration</td>
+<td>3</td>
+<td>Retire after critical nonconformity · Proceed · Stop at G3</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="case-1-energy-group-e-fictitious"><span class="antetitulo">03</span>Case 1 · Energy group E (fictitious)</h2>
+<h3 id="3-1-initial-situation">3.1 Initial situation</h3>
+<p>Fictitious group with electricity distribution, renewable generation, a retail supplier and field services. It has used AI for years in grid operations, with strong technical teams. Every year the board receives a list of projects with &quot;value generated&quot; of €9.8M that nobody has validated. When the inventory is carried out, 19 AI systems come to light, seven more than technology had registered, two of them embedded in supplier software.</p>
+<h3 id="3-2-diagnosis-c1-q1-27">3.2 Diagnosis (C1, Q1 27)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Level</th>
+<th>Main evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 · Strategy and governance</td>
+<td>2</td>
+<td>Data committee with minutes, without a mandate over AI or an approved thesis.</td>
+</tr>
+<tr>
+<td>D2 · Value and portfolio</td>
+<td>2</td>
+<td>List of projects with value declared by the business areas; no prioritisation or retirement criteria.</td>
+</tr>
+<tr>
+<td>D3 · Data and knowledge</td>
+<td>3</td>
+<td>Grid and customer data owners appointed; catalogue with lineage in the main domains.</td>
+</tr>
+<tr>
+<td>D4 · Technology and operations</td>
+<td>3</td>
+<td>Common model platform with degradation monitoring in most use cases in production.</td>
+</tr>
+<tr>
+<td>D5 · People and adoption</td>
+<td>2</td>
+<td>Occasional training; no adoption plans.</td>
+</tr>
+<tr>
+<td>D6 · Risk, security and compliance</td>
+<td>2</td>
+<td>Strong cybersecurity in the control network, but no complete AI inventory or regulatory classification.</td>
+</tr>
+<tr>
+<td>D7 · Measurement and evidence</td>
+<td>1</td>
+<td>Declared value with no baseline or attribution method.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Overall level:</strong> average 15 ÷ 7 = 2.14 → 2; cap: minimum of D1 and D6 (2) + 1 = 3. <strong>Overall level 2.</strong></p>
+<p><strong>Transformation index:</strong> investment mix 1 · value mix 1 · materialisation 1 · depth of change 1 · operating model 0 · AI-enabled revenue 0 · progression to production 1 · board decision 0. <strong>Profile: Tactical efficiency.</strong></p>
+<h3 id="3-3-board-decisions">3.3 Board decisions</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Body</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEC-2027-002</td>
+<td>Full board (C2, Q2 27)</td>
+<td>AI thesis: Optimise in 04 Operations; Augment in 01 Customer; explore Transform in 02 Product and service with a stage limit. Risk appetite: systems with autonomous action (A3) over grid operations or the market are not accepted without the express approval of the board. Investment threshold for Enterprise intensity: €300,000.</td>
+</tr>
+<tr>
+<td>REC-2027-001</td>
+<td>Board committee</td>
+<td>Have management control validate the value of the five use cases with the highest declared value before the end of the financial year.</td>
+</tr>
+<tr>
+<td>DEC-2027-004</td>
+<td>Full board (Q2 27)</td>
+<td>Authorise stage 1 of IA-2027-007 with a limit of €250,000.</td>
+</tr>
+<tr>
+<td>DEC-2027-009</td>
+<td>Full board (Q3 27)</td>
+<td>Take note of the stop of IA-2027-007 at G3.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-4-initiatives">3.4 Initiatives</h3>
+<p><strong>IA-2027-003 · Transformer failure prediction.</strong> Optimise · Enterprise (critical function) · Autonomy A1: the system recommends which transformers to replace and planning decides.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0</td>
+<td>Q1 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Fit with the thesis; roles without incompatibilities.</td>
+</tr>
+<tr>
+<td>G1</td>
+<td>Q1 27</td>
+<td>Proceed</td>
+<td>Sponsor, informing the committee</td>
+<td>Unplanned failures are the largest avoidable maintenance cost.</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Baseline measured: 118 unplanned failures a year in the pilot zone; comparable control zone.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Sufficient telemetry data; Medium residual risk.</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Q3 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Rollback plan: return to the age-based replacement schedule.</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Q4 27</td>
+<td>Proceed with conditions</td>
+<td>AI Committee after multi-level sign-off</td>
+<td>Condition: measure for twelve months against the control zone (deadline Q4 28; owner: management control).</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Quarterly 2028</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Stable; no incidents.</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Q4 28</td>
+<td><strong>Scale</strong></td>
+<td>AI Committee</td>
+<td>Savings materialised and validated; new phase 0 for the remaining zones.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Value after twelve months in production:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Formula</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Efficiencies</td>
+<td>36 failures avoided (74 actual versus 110 expected according to the control zone) × €31,000 difference between an unplanned failure and a scheduled replacement</td>
+<td>€1,116,000</td>
+<td>Validated by management control</td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>Licences, compute and operations staff</td>
+<td>€210,000</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td><strong>Annual net value</strong></td>
+<td>1,116,000 − 210,000</td>
+<td><strong>€906,000</strong></td>
+<td>Validated</td>
+</tr>
+<tr>
+<td>Scaling</td>
+<td>Expected additional net value €1,300,000 ÷ additional investment €650,000</td>
+<td><strong>€2.0 per euro</strong></td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>IA-2027-007 · Autonomous battery management with bids in the electricity market.</strong> Transform (new flexibility service) · Enterprise · Planned autonomy A3.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G1</td>
+<td>Q1 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Opportunity aligned with sphere 02.</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee and <strong>full board</strong> (DEC-2027-004)</td>
+<td>Stage 1 with a limit of €250,000; stop criterion: Critical residual risk not acceptable within the appetite.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q3 27</td>
+<td><strong>Stop</strong></td>
+<td>AI Committee</td>
+<td>Orders executed in the market cannot be reversed. Residual risk with controls: likelihood 4 × impact 4 = 16, <strong>Critical</strong>, outside the approved appetite. Coded reason: <em>Unacceptable risk</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Investment consumed: €85,000 of the €250,000 for the stage. The idea of optimising battery charging was registered as a separate initiative, IA-2027-014, at the Optimise level and with autonomy A1 (the system recommends and the operator decides), with a different value hypothesis and a different sponsor.</p>
+<p><strong>IA-2027-001 · Conversational assistant for outages (version 1).</strong> System in production before the framework was adopted; regularised with a review equivalent to G7 (01 §14).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Data point</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversations resolved without referral to a person</td>
+<td>18 %</td>
+</tr>
+<tr>
+<td>Value declared by the area</td>
+<td>€240,000 of &quot;calls avoided&quot;, with no baseline (declared)</td>
+</tr>
+<tr>
+<td>Management control estimate based on a sample</td>
+<td>9,500 calls avoided × €4.20 per call = €39,900 (estimated)</td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>€95,000 (validated)</td>
+</tr>
+<tr>
+<td>Annual net value with the estimate</td>
+<td>39,900 − 95,000 = <strong>−€55,100</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G7</td>
+<td>Q2 27</td>
+<td><strong>Retire</strong></td>
+<td>AI Committee</td>
+<td>Coded reason: <em>Cost exceeds value</em>. Replacement: recognition of the supply point number in the telephone channel (not AI). Conversations retained in accordance with the retention policy and then deleted. Notice on the website for thirty days.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-5-annual-review-c5-q4-28">3.5 Annual review (C5, Q4 28)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>D1</th>
+<th>D2</th>
+<th>D3</th>
+<th>D4</th>
+<th>D5</th>
+<th>D6</th>
+<th>D7</th>
+<th>Average</th>
+<th>Cap</th>
+<th>Overall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>20 ÷ 7 = 2.86 → 2</td>
+<td>3 + 1 = 4</td>
+<td><strong>2</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>D1, D2 and D6 rise by one level and D7 by two, but the overall level does not change because of the rounding-down rule: D5 remains at 2. The profile moves to <strong>Efficiency at scale</strong>: validated value in the main use cases and materialised savings.</p>
+<h3 id="3-6-lessons">3.6 Lessons</h3>
+<ol>
+<li><strong>Stopping a Transform bet at G3 is an outcome of the method.</strong> €85,000 was consumed and committing the rest was avoided; the viable part continued as another initiative.</li>
+<li><strong>Regularising legacy systems reveals negative values.</strong> The outage assistant only seemed profitable because its value was declared.</li>
+<li><strong>The overall level is read together with the dimensions.</strong> An overall level that does not move can hide real progress and a lagging dimension.</li>
+</ol>
+<hr />
+<h2 id="case-2-logistics-operator-l-fictitious"><span class="antetitulo">04</span>Case 2 · Logistics operator L (fictitious)</h2>
+<h3 id="4-1-initial-situation">4.1 Initial situation</h3>
+<p>Fictitious operator with road transport, warehouses, last-mile delivery and customs. It has a deeply rooted efficiency culture: routes, warehouses and fleet maintenance are measured rigorously. The board wants to know whether AI can open a growth line, not just reduce costs.</p>
+<h3 id="4-2-diagnosis-c1-q1-27">4.2 Diagnosis (C1, Q1 27)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Level</th>
+<th>Main evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 · Strategy and governance</td>
+<td>3</td>
+<td>Digital operations committee with a mandate and minutes; approved portfolio.</td>
+</tr>
+<tr>
+<td>D2 · Value and portfolio</td>
+<td>3</td>
+<td>Use cases prioritised with value and cost; retirement criteria documented.</td>
+</tr>
+<tr>
+<td>D3 · Data and knowledge</td>
+<td>2</td>
+<td>Good telemetry data; scattered commercial data.</td>
+</tr>
+<tr>
+<td>D4 · Technology and operations</td>
+<td>3</td>
+<td>Monitoring and rollback plans in the planning systems.</td>
+</tr>
+<tr>
+<td>D5 · People and adoption</td>
+<td>2</td>
+<td>Training for planners; no position on the effect on drivers.</td>
+</tr>
+<tr>
+<td>D6 · Risk, security and compliance</td>
+<td>2</td>
+<td>Complete inventory; regulatory classification pending for systems that affect employees.</td>
+</tr>
+<tr>
+<td>D7 · Measurement and evidence</td>
+<td>3</td>
+<td>Pilots with control depots; validation by management control.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Overall level:</strong> average 18 ÷ 7 = 2.57 → 2; cap: minimum of D1 and D6 (2) + 1 = 3. <strong>Overall level 2.</strong> D6 constrains the result.</p>
+<p><strong>Transformation index:</strong> 1 · 1 · 2 · 2 · 1 · 0 · 1 · 1. <strong>Profile: Efficiency at scale.</strong></p>
+<h3 id="4-3-board-decisions">4.3 Board decisions</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Body</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEC-2027-011</td>
+<td>Full board (C2, Q2 27)</td>
+<td>Thesis: Optimise in 04 Operations; Transform in 02 Product and service with a transport capacity booking service. Appetite: agents with supervised action (A2) with a financial limit per transaction approved by the committee; no A3 in transactions involving third-party money.</td>
+</tr>
+<tr>
+<td>REC-2027-012</td>
+<td>Full board</td>
+<td>Present the company's position on the use of telemetry to evaluate drivers before extending any system that does so.</td>
+</tr>
+<tr>
+<td>DEC-2027-015</td>
+<td>Full board (Q2 27)</td>
+<td>Authorise stage 1 of IA-2027-015 with a limit of €180,000 and stop criteria.</td>
+</tr>
+<tr>
+<td>DEC-2028-003</td>
+<td>Full board (Q1 28)</td>
+<td>Take note of the stop of IA-2027-015; do not relax the stop criteria.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-4-initiatives">4.4 Initiatives</h3>
+<p><strong>IA-2027-012 · Last-mile route optimisation.</strong> Optimise · Lite · Autonomy A1.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G2 (grouped)</td>
+<td>Q1 27</td>
+<td>Proceed</td>
+<td>Sponsor</td>
+<td>Baseline of kilometres and hours in two pilot depots and two control depots.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q1 27</td>
+<td>Proceed</td>
+<td>Sponsor with risk clearance</td>
+<td>Low residual risk.</td>
+</tr>
+<tr>
+<td>G4–G5 (grouped)</td>
+<td>Q3 27</td>
+<td>Proceed</td>
+<td>Sponsor with risk clearance</td>
+<td>Pilot exceeds the threshold; rollback to the manual plan tested.</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Q1 28</td>
+<td>Proceed</td>
+<td>Sponsor</td>
+<td>Stable.</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Q3 28</td>
+<td><strong>Scale</strong></td>
+<td>Sponsor</td>
+<td>New phase 0 for six more depots.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Value after twelve months:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Formula</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Efficiencies (kilometres)</td>
+<td>610,000 km avoided × €0.62 per km</td>
+<td>€378,200</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td>Efficiencies (materialised hours)</td>
+<td>6,200 fewer hours of overtime and subcontracting × €24 per hour</td>
+<td>€148,800</td>
+<td>Declared by operations; validation planned</td>
+</tr>
+<tr>
+<td>Released capacity not materialised</td>
+<td>17,500 h released − 6,200 h materialised</td>
+<td>11,300 h</td>
+<td>Reported separately; <strong>not added</strong></td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>Licences, compute and support</td>
+<td>€120,000</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td><strong>Annual net value</strong></td>
+<td>378,200 + 148,800 − 120,000</td>
+<td><strong>€407,000</strong></td>
+<td>Validated proportion: 378,200 ÷ 527,000 = 71.8 %</td>
+</tr>
+<tr>
+<td>Scaling</td>
+<td>Expected additional net value €1,100,000 ÷ additional investment €280,000</td>
+<td><strong>€3.9 per euro</strong></td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>IA-2027-015 · Load booking agent on freight exchanges.</strong> Transform (new on-demand capacity service for customers) · Enterprise · Autonomy A2 with a limit of €2,500 per load; above that, a person decides.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G1</td>
+<td>Q1 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Fit with the thesis.</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee and <strong>full board</strong> (DEC-2027-015)</td>
+<td>Learning milestone: 400 loads. Stop criteria: improvement in margin per load of less than 1.0 point against the control group, or more than 2 % of loads with errors in the terms.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q2 27</td>
+<td>Proceed with conditions</td>
+<td>AI Committee</td>
+<td>Non-critical condition: agreements signed with two freight exchanges before G5.</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Q3 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Limit per load, action log and kill switch designed.</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Q1 28</td>
+<td><strong>Stop</strong></td>
+<td>AI Committee</td>
+<td>Pilot with random assignment: 520 loads with the agent and 510 in the control group. Margin improvement: 0.6 points (below 1.0). Errors: 0.8 %. Coded reason: <em>Hypothesis refuted</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Return measured in the pilot: 520 loads × €1,900 average revenue × 0.6 % = €5,928 (validated). Investment consumed: €165,000. The team asked for one more iteration with a threshold of 0.5 points; the committee escalated it to the full board because stop criteria can only be relaxed by the body that authorised the initiative (01 §7.4, rule 6), and the full board decided not to relax them (DEC-2028-003).</p>
+<p><strong>IA-2027-018 · Assessment of risky driving using telemetry.</strong> Augment · Enterprise (decisions about people) · Autonomy A1: recommends training, no sanctions.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G2</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Baseline: 212 own-damage accidents a year in the pilot fleet.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q3 27</td>
+<td><strong>Iterate</strong></td>
+<td>AI Committee</td>
+<td>The regulatory classification with legal judgement (possibly high-risk because it evaluates workers), the data protection impact assessment and information to workers' representatives were missing. Proceeding with conditions on legal compliance is not permitted.</td>
+</tr>
+<tr>
+<td>G3 (2nd)</td>
+<td>Q4 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Assessments complete; position approved in response to REC-2027-012.</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Q1 28</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>No automatic sanctions; the traffic manager decides.</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Q2 28</td>
+<td>Proceed</td>
+<td>AI Committee after multi-level sign-off</td>
+<td>Pilot with a result within the threshold.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Value declared at six months, annualised: 29 fewer accidents × €3,400 average repair cost = €98,600 (declared by fleet); recurring cost €80,000 (validated); net value €18,600 (declared). Validation planned at twelve months.</p>
+<h3 id="4-5-lessons">4.5 Lessons</h3>
+<ol>
+<li><strong>Stop criteria set in advance protect the board from its own enthusiasm.</strong> The growth bet was stopped at €165,000 with documented learning.</li>
+<li><strong>An efficient company does not need to look transformative.</strong> Efficiency at scale is a good profile; transformation is attempted knowingly and within limits.</li>
+<li><strong>Iterating at G3 is faster than correcting in production.</strong> One quarter of iteration avoided launching an employee assessment system without its assessments.</li>
+</ol>
+<hr />
+<h2 id="case-3-hospital-group-h-fictitious"><span class="antetitulo">05</span>Case 3 · Hospital group H (fictitious)</h2>
+<h3 id="5-1-initial-situation">5.1 Initial situation</h3>
+<p>Fictitious private hospital group with a referral hospital, a network of clinics and a laboratory. Its external communications speak of a &quot;hospital transformed by AI&quot;. It has a very strong patient safety and compliance culture, but hardly measures value at all.</p>
+<h3 id="5-2-diagnosis-c1-q1-27">5.2 Diagnosis (C1, Q1 27)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Level</th>
+<th>Main evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 · Strategy and governance</td>
+<td>3</td>
+<td>Clinical AI committee with physicians and ethics representation; approved mandate.</td>
+</tr>
+<tr>
+<td>D2 · Value and portfolio</td>
+<td>2</td>
+<td>Portfolio with no value in money and no retirement criteria.</td>
+</tr>
+<tr>
+<td>D3 · Data and knowledge</td>
+<td>3</td>
+<td>Clinical data governance with owners and access controls.</td>
+</tr>
+<tr>
+<td>D4 · Technology and operations</td>
+<td>3</td>
+<td>Monitoring and rollback in clinical systems.</td>
+</tr>
+<tr>
+<td>D5 · People and adoption</td>
+<td>3</td>
+<td>Adoption plans with clinical training.</td>
+</tr>
+<tr>
+<td>D6 · Risk, security and compliance</td>
+<td>4</td>
+<td>Complete inventory, classification with legal judgement, impact assessments and drills.</td>
+</tr>
+<tr>
+<td>D7 · Measurement and evidence</td>
+<td>1</td>
+<td>Clinical and economic benefits declared, with no baseline or control group.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Overall level:</strong> average 19 ÷ 7 = 2.71 → 2; cap: minimum of D1 and D6 (3) + 1 = 4. <strong>Overall level 2.</strong></p>
+<p><strong>Transformation index:</strong> investment mix 1 · value mix <strong>no data</strong> (scores 0 and is shown as no data) · materialisation 0 · depth of change 1 · operating model 1 · AI-enabled revenue 0 · progression to production 1 · board decision 0. <strong>Profile: Declared but unevidenced transformation.</strong></p>
+<h3 id="5-3-board-decisions">5.3 Board decisions</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Body</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEC-2027-021</td>
+<td>Full board (C2, Q2 27)</td>
+<td>Thesis: Augment in 03 People and in 01 Customer (patient). No Transform bets in clinical diagnosis are approved until D7 reaches level 3. External communications are aligned with what has been evidenced.</td>
+</tr>
+<tr>
+<td>REC-2027-020</td>
+<td>Board committee</td>
+<td>Measure the value of automatic clinical documentation with a control group and validate the reassigned hours.</td>
+</tr>
+<tr>
+<td>REC-2027-022</td>
+<td>Board committee</td>
+<td>Weekly sampling of generated notes, reviewed by a second physician, with the correction rate reported to the committee.</td>
+</tr>
+<tr>
+<td>DEC-2027-025</td>
+<td>Full board (Q3 27)</td>
+<td>Authorise stage 1 of IA-2027-026 with a limit of €150,000, as a bounded exception to the thesis because it is not clinical diagnosis.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-4-initiatives">5.4 Initiatives</h3>
+<p><strong>IA-2027-021 · Automatic clinical documentation during consultations.</strong> Augment · Enterprise (health data) · Autonomy A0: the system drafts the note; the physician reviews and signs it. Regulatory classification carried out with legal judgement.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G2</td>
+<td>Q1 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Baseline: 7.5 minutes of documentation per consultation.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Impact assessments complete; Medium residual risk.</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Mandatory physician signature; kill switch that reverts to manual drafting.</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Q3 27</td>
+<td>Proceed with conditions</td>
+<td>AI Committee after multi-level sign-off</td>
+<td>Non-critical condition: capacity reassignment plan approved by medical management within 90 days.</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Q4 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>INC-2027-006 (S3): a draft attributed a medication to another patient; detected during review before signature. Action: verification of the patient's identity when recording starts.</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Q3 28</td>
+<td><strong>Iterate</strong></td>
+<td>AI Committee</td>
+<td>No scaling without validated return: back to phase 5 to measure with a control group in four clinics.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Value after twelve months:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Formula</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Released capacity</td>
+<td>3.4 minutes × 310,000 consultations = 17,567 h × €52</td>
+<td>€913,484</td>
+<td><strong>Not added</strong></td>
+</tr>
+<tr>
+<td>Efficiencies</td>
+<td>2,100 h of documentation overtime eliminated × €52</td>
+<td>€109,200</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td>Return</td>
+<td>6,400 h reassigned × 4 consultations per hour × €22 contribution margin</td>
+<td>€563,200</td>
+<td>Declared by medical management; it remains to be demonstrated that the consultations are additional</td>
+</tr>
+<tr>
+<td>Capacity not materialised</td>
+<td>17,567 − 2,100 − 6,400</td>
+<td>9,067 h</td>
+<td>Reported separately</td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>Licences, model consumption, support and review</td>
+<td>€480,000</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td><strong>Annual net value</strong></td>
+<td>109,200 + 563,200 − 480,000</td>
+<td><strong>€192,400</strong></td>
+<td>Validated proportion: 109,200 ÷ 672,400 = 16.2 %</td>
+</tr>
+<tr>
+<td>Net value with validated amounts only</td>
+<td>109,200 − 480,000</td>
+<td><strong>−€370,800</strong></td>
+<td>Validated</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>IA-2027-002 · Readmission risk prediction (version 1).</strong> System predating the adoption of the framework · Enterprise · Autonomy A1.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R6</td>
+<td>Q2 27</td>
+<td>Brings G7 forward</td>
+<td>AI Committee</td>
+<td>First bias test: sensitivity of 0.71 overall, but 0.52 in patients over 80, the group with the most readmissions.</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Q2 27</td>
+<td><strong>Retire</strong></td>
+<td>AI Committee</td>
+<td>Coded reason: <em>Unacceptable risk</em>. Temporary replacement: telephone follow-up based on nursing judgement. Model archived with no possibility of reuse. Communication to the clinical units. New initiative IA-2027-024 in phase 2 with the age bias test as a G5 criterion.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The value attributed to the system (€1.4M of readmissions avoided) never had a control group and was recorded as declared.</p>
+<p><strong>IA-2027-026 · Symptom guidance for patients before their appointment.</strong> Transform (new digital patient service) · Enterprise · Direct exposure.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G1</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Patient demand identified.</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Q3 27</td>
+<td>Proceed</td>
+<td>AI Committee and <strong>full board</strong> (DEC-2027-025)</td>
+<td>Stage 1 with a limit of €150,000.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q4 27</td>
+<td><strong>Stop</strong></td>
+<td>AI Committee</td>
+<td>Legal counsel concluded that the service could be considered a medical device, with a conformity assessment incompatible with the stage's time limit and budget limit; in addition, High residual risk to patient safety due to incorrect referrals. Coded reason: <em>Regulation</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Investment consumed: €40,000.</p>
+<h3 id="5-5-lessons">5.5 Lessons</h3>
+<ol>
+<li><strong>Excellent compliance is no substitute for measurement.</strong> D6 at level 4 and D7 at level 1 give an overall level of 2 and a profile the board did not expect.</li>
+<li><strong>Released capacity is not value.</strong> With validated amounts only, automatic documentation has a negative net value; the reassignment of hours is what determines whether it deserves to be scaled.</li>
+<li><strong>The continuity review must be able to retire.</strong> The readmission model had been in use for years and only a bias test called it into question.</li>
+<li><strong>G3 is the main stop gate.</strong> The regulatory question was resolved before building.</li>
+</ol>
+<hr />
+<h2 id="case-4-retail-group-r-fictitious"><span class="antetitulo">06</span>Case 4 · Retail group R (fictitious)</h2>
+<h3 id="6-1-initial-situation">6.1 Initial situation</h3>
+<p>Fictitious food retail group with supermarkets, an online store and its own logistics. It has had formal AI governance for two years. The board wants to check whether its bet on a new service is working and where to invest the next euro.</p>
+<h3 id="6-2-diagnosis-c1-q1-27">6.2 Diagnosis (C1, Q1 27)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Level</th>
+<th>Main evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 · Strategy and governance</td>
+<td>3</td>
+<td>Approved AI thesis; AI Committee with recorded decisions.</td>
+</tr>
+<tr>
+<td>D2 · Value and portfolio</td>
+<td>3</td>
+<td>Portfolio prioritised by additional net value per euro.</td>
+</tr>
+<tr>
+<td>D3 · Data and knowledge</td>
+<td>3</td>
+<td>Sales and customer data governed; procurement data incomplete.</td>
+</tr>
+<tr>
+<td>D4 · Technology and operations</td>
+<td>3</td>
+<td>Monitoring, rollback and incident management.</td>
+</tr>
+<tr>
+<td>D5 · People and adoption</td>
+<td>3</td>
+<td>Adoption plans in stores and head offices.</td>
+</tr>
+<tr>
+<td>D6 · Risk, security and compliance</td>
+<td>3</td>
+<td>Inventory, classification and assessments up to date.</td>
+</tr>
+<tr>
+<td>D7 · Measurement and evidence</td>
+<td>3</td>
+<td>Control groups in the main use cases.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Overall level:</strong> average 21 ÷ 7 = 3; cap: 3 + 1 = 4. <strong>Overall level 3.</strong></p>
+<p><strong>Transformation index:</strong> 2 · 2 · 2 · 2 · 2 · 2 · 2 · 3. <strong>Profile: Transformation under way.</strong></p>
+<h3 id="6-3-board-decisions">6.3 Board decisions</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Body</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEC-2027-031</td>
+<td>Full board (C2)</td>
+<td>Thesis: Transform in 02 Product and service (recurring subscription basket); Optimise in 04 Operations (replenishment and shrinkage); Augment in 03 People. Appetite: prices with minimums by category and human review of changes greater than 10 %.</td>
+</tr>
+<tr>
+<td>DEC-2027-032</td>
+<td>Full board (Q1 27)</td>
+<td>Authorise stage 1 of IA-2027-031 with a limit of €600,000.</td>
+</tr>
+<tr>
+<td>REC-2027-035</td>
+<td>Board committee</td>
+<td>Create a data initiative to structure the terms of supplier agreements before proposing new procurement agents.</td>
+</tr>
+<tr>
+<td>DEC-2028-030</td>
+<td>Full board (Q4 28)</td>
+<td>Scale IA-2027-031 to all regions and extend fresh produce demand forecasting, in that order of execution.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-4-initiatives">6.4 Initiatives</h3>
+<p><strong>IA-2027-031 · Personalised recurring subscription basket.</strong> Transform · Enterprise · Autonomy A1: the system proposes the basket and the customer confirms it.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G2</td>
+<td>Q1 27</td>
+<td>Proceed</td>
+<td>AI Committee and <strong>full board</strong> (DEC-2027-032)</td>
+<td>Milestones: 10,000 active subscribers at nine months; incremental margin ≥ €4 per order against the control group. Stop: fewer than 5,000 subscribers or margin below €2.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Medium residual risk (data protection and personalisation).</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Control group of 5 % of customers designed.</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Q4 27</td>
+<td>Proceed</td>
+<td>AI Committee after multi-level sign-off</td>
+<td>Market evidence: 12,300 active subscribers at nine months.</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Quarterly 2028</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>No relevant incidents.</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Q4 28</td>
+<td><strong>Scale</strong></td>
+<td>AI Committee and <strong>full board</strong> (DEC-2028-030)</td>
+<td>Return measured and validated.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Value in 2028:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Formula</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Return</td>
+<td>18,400 average active subscribers × 11.2 orders a year × €6.10 incremental margin per order, net of cannibalisation against the control group</td>
+<td>€1,257,088</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>Platform, consumption, operations and customer service staff</td>
+<td>€390,000</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td><strong>Annual net value</strong></td>
+<td>1,257,088 − 390,000</td>
+<td><strong>€867,088</strong></td>
+<td>Validated</td>
+</tr>
+<tr>
+<td>Scaling</td>
+<td>Expected additional net value €1,500,000 ÷ additional investment €1,200,000</td>
+<td><strong>€1.25 per euro</strong></td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table></div>
+<p>The extension of fresh produce demand forecasting (IA-2027-036) offered €3.1 per euro (estimated). The board approved both and decided to execute the fresh produce initiative first: additional net value per euro sets the order of execution, and the recurring basket was kept because of its role in the thesis. The decision and its reason were recorded.</p>
+<p><strong>IA-2027-034 · Supplier renegotiation agent.</strong> Augment · Enterprise · Planned autonomy A2: it would record terms in the procurement system.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G2</td>
+<td>Q2 27</td>
+<td>Proceed</td>
+<td>AI Committee</td>
+<td>Hypothesis of improved terms with a baseline from the latest negotiations.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q3 27</td>
+<td><strong>Stop</strong></td>
+<td>AI Committee</td>
+<td>Only 22 % of agreements from the last three years have structured terms; the agent would negotiate with an incomplete history. High residual risk of agreements outside the procurement policy. Coded reason: <em>Insufficient data</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Investment consumed: €60,000. In response to REC-2027-035, IA-2027-039 was registered, at the Optimise level in sphere 05, to structure the terms of the agreements.</p>
+<p><strong>IA-2027-029 · Dynamic pricing of fresh produce close to expiry (version 1).</strong> System predating adoption · Optimise · Enterprise in the regularisation: it changes selling prices without individual review (autonomy A2).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Data point</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shrinkage avoided declared by the area</td>
+<td>€420,000 (declared)</td>
+</tr>
+<tr>
+<td>Shrinkage avoided measured with control stores</td>
+<td>€60,000 (validated)</td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>€230,000 (validated)</td>
+</tr>
+<tr>
+<td>Validated annual net value</td>
+<td>60,000 − 230,000 = <strong>−€170,000</strong></td>
+</tr>
+<tr>
+<td>Customer complaints about price changes during shopping</td>
+<td>1,150 in the year</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R6</td>
+<td>Q1 27</td>
+<td>Brings G7 forward</td>
+<td>AI Committee</td>
+<td>Negative net value and reputational effect.</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Q2 27</td>
+<td><strong>Retire</strong></td>
+<td>AI Committee</td>
+<td>Coded reason: <em>Cost exceeds value</em>. Replacement: fixed markdown rules by expiry date (not AI). Electronic shelf labels reused. In-store notice.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-5-lessons">6.5 Lessons</h3>
+<ol>
+<li><strong>Transforming with milestones and a control group produces a defensible return.</strong> Scaling was approved on validated amounts, not on promises.</li>
+<li><strong>Additional net value per euro sets the order, but does not replace the thesis.</strong> The board decided knowingly and recorded the reason.</li>
+<li><strong>Aggregates hide negatives.</strong> Dynamic pricing seemed profitable within the portfolio total.</li>
+<li><strong>An agent without data is a risk, not an opportunity.</strong> The stop gave rise to a data initiative.</li>
+</ol>
+<hr />
+<h2 id="case-5-regional-administration-p-fictitious"><span class="antetitulo">07</span>Case 5 · Regional administration P (fictitious)</h2>
+<h3 id="7-1-initial-situation">7.1 Initial situation</h3>
+<p>Fictitious regional administration with citizen services, taxation, urban planning and social services. In this case, the role of the board is taken on by its <strong>collegiate governing body</strong>, and that of the AI Committee by a digital transformation commission with an extended mandate. The initial inventory finds eleven AI-enabled tools; four had been contracted by different departments without the knowledge of the technology area, including a conversational assistant on the website.</p>
+<h3 id="7-2-diagnosis-c1-q2-27-first-month-of-the-90-day-implementation">7.2 Diagnosis (C1, Q2 27, first month of the 90-day implementation)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Level</th>
+<th>Main evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 · Strategy and governance</td>
+<td>1</td>
+<td>Isolated initiatives by department; no body with a mandate over AI.</td>
+</tr>
+<tr>
+<td>D2 · Value and portfolio</td>
+<td>1</td>
+<td>No portfolio.</td>
+</tr>
+<tr>
+<td>D3 · Data and knowledge</td>
+<td>2</td>
+<td>Data owners in taxation and the municipal register of residents.</td>
+</tr>
+<tr>
+<td>D4 · Technology and operations</td>
+<td>2</td>
+<td>Stable operation of in-house systems; supplier tools without control.</td>
+</tr>
+<tr>
+<td>D5 · People and adoption</td>
+<td>1</td>
+<td>No AI training.</td>
+</tr>
+<tr>
+<td>D6 · Risk, security and compliance</td>
+<td>1</td>
+<td>No prior inventory or classification.</td>
+</tr>
+<tr>
+<td>D7 · Measurement and evidence</td>
+<td>0</td>
+<td>No value measured.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Overall level:</strong> average 8 ÷ 7 = 1.14 → 1; cap: minimum of D1 and D6 (1) + 1 = 2. <strong>Overall level 1.</strong></p>
+<p><strong>Transformation index:</strong> investment mix <strong>no data</strong> · value mix <strong>no data</strong> · materialisation 0 · depth of change 1 · operating model 0 · AI-enabled revenue 0 (signal to be adapted for the public sector in document 12) · progression to production 0 · governing body decision 0. <strong>Profile: Scattered exploration.</strong></p>
+<h3 id="7-3-governing-body-decisions">7.3 Governing body decisions</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Body</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEC-2027-041</td>
+<td>Governing body (third month, Q3 27)</td>
+<td>Thesis: Optimise in 04 Operations (case processing). Systems that influence decisions about people are not deployed until D6 reaches level 3, except with an impact assessment and an understandable individual statement of reasons. Digital transformation commission with the functions of an AI Committee.</td>
+</tr>
+<tr>
+<td>REC-2028-004</td>
+<td>Governing body</td>
+<td>Include in the tender specifications for AI-enabled systems the supplier's obligation to allow results to be explained to each affected person and to facilitate bias testing.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-4-initiatives">7.4 Initiatives</h3>
+<p><strong>IA-2027-040 · Website conversational assistant (version 0).</strong> Contracted by a department and in production without a <em>gate</em>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Timing</th>
+<th>Event</th>
+<th>Decides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q2 27</td>
+<td><strong>NC-2027-001, critical</strong>: system in production without an approved <em>gate</em> and without a notice that users are talking to an AI. Containment within 48 hours: visible notice and restriction to general information without personal data.</td>
+<td>Digital transformation commission; board committee informed</td>
+</tr>
+<tr>
+<td>Q2 27</td>
+<td>Sample of 400 conversations: 9 % of answers incorrect about procedural time limits. Contract without clauses on the use of data by the supplier.</td>
+<td>AI Office</td>
+</tr>
+<tr>
+<td>Q3 27 · G7</td>
+<td><strong>Retire.</strong> Coded reason: <em>Unacceptable risk</em>. Replacement: reviewed frequently asked questions. Conversations deleted in accordance with the retention policy. Recurring cost avoided: €70,000 a year. New initiative IA-2027-047 in phase 1, through the full cycle.</td>
+<td>Digital transformation commission</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>IA-2027-041 · Classification and routing of documents submitted to the registry.</strong> Optimise · Lite · Autonomy A1: it proposes the competent department and registry staff confirm it; low-confidence documents are reviewed one by one.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G2 (grouped)</td>
+<td>Q3 27</td>
+<td>Proceed</td>
+<td>Sponsor</td>
+<td>Baseline: external classification service and 1.7 minutes of internal review per document.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q3 27</td>
+<td>Proceed</td>
+<td>Sponsor with risk clearance</td>
+<td>Medium residual risk: an error delays a procedure with statutory time limits; low-confidence control.</td>
+</tr>
+<tr>
+<td>G4–G5 (grouped)</td>
+<td>Q4 27</td>
+<td>Proceed</td>
+<td>Sponsor with risk clearance</td>
+<td>Pilot with accuracy within the threshold; rollback to manual routing tested.</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Q2 28</td>
+<td>Proceed</td>
+<td>Sponsor</td>
+<td>Stable.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Value after twelve months:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Formula</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Efficiencies</td>
+<td>External classification contract not renewed</td>
+<td>€145,000</td>
+<td>Validated by the internal comptroller</td>
+</tr>
+<tr>
+<td>Released capacity</td>
+<td>210,000 documents × 1.7 minutes = 5,950 h</td>
+<td>—</td>
+<td>Separate; <strong>not added</strong></td>
+</tr>
+<tr>
+<td>Reassigned capacity</td>
+<td>4,000 h expressly assigned to processing licence applications</td>
+<td>—</td>
+<td>Separate; effect on time limits not quantified in money</td>
+</tr>
+<tr>
+<td>Capacity not materialised</td>
+<td>5,950 − 4,000</td>
+<td>1,950 h</td>
+<td>Separate</td>
+</tr>
+<tr>
+<td>Service improvement</td>
+<td>Average time to reach the competent department: from 3.1 to 0.4 days</td>
+<td>Not quantified</td>
+<td>It is stated that it could not be translated into money (rule 7)</td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>Licence and support</td>
+<td>€60,000</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td><strong>Annual net value</strong></td>
+<td>145,000 − 60,000</td>
+<td><strong>€85,000</strong></td>
+<td>Validated</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>IA-2027-043 · Matching of jobseekers and job offers.</strong> Augment · Enterprise (decisions about people) · Classified as high-risk with legal judgement in this fictitious case.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>Timing</th>
+<th>Outcome</th>
+<th>Decides</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0–G2</td>
+<td>Q4 27</td>
+<td>Proceed</td>
+<td>Digital transformation commission</td>
+<td>Hypothesis: more people placed per employment adviser.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Q1 28</td>
+<td><strong>Stop</strong></td>
+<td>Digital transformation commission</td>
+<td>The supplier's product did not allow each person to be told why an offer was or was not proposed to them, nor access to the data to test for bias. Residual risk: likelihood 4 × impact 5 (people and rights) = 20, <strong>Critical</strong>. Coded reason: <em>Unacceptable risk</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Investment consumed: €30,000. The stop gave rise to REC-2028-004 on tender specifications.</p>
+<h3 id="7-5-lessons">7.5 Lessons</h3>
+<ol>
+<li><strong>The inventory is the first control.</strong> Without it, the website assistant would have remained in production without a notice or an assessment.</li>
+<li><strong>Starting with case processing is a legitimate decision.</strong> With an overall level of 1, the prudent thesis was to optimise internal processes before making decisions about people.</li>
+<li><strong>Not everything translates into money, but it is stated.</strong> The improvement in time limits is real and is reported as not quantified, without inventing an amount.</li>
+<li><strong>A stop can change the way procurement is done.</strong> The lesson from one supplier became a requirement for all of them.</li>
+</ol>
+<hr />
+<h2 id="cross-cutting-lessons-and-use-in-workshops"><span class="antetitulo">08</span>Cross-cutting lessons and use in workshops</h2>
+<h3 id="8-1-cross-cutting-lessons">8.1 Cross-cutting lessons</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Lesson</th>
+<th>Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Well-founded stops avoid investment and generate recorded learning.</td>
+<td>1, 2, 3, 4, 5</td>
+</tr>
+<tr>
+<td>Regularising systems that predate the framework often reveals unfounded declared value or unassessed risks.</td>
+<td>1, 3, 4, 5</td>
+</tr>
+<tr>
+<td>Released capacity is only value when it materialises or is expressly reassigned.</td>
+<td>2, 3, 5</td>
+</tr>
+<tr>
+<td>The overall maturity level is capped by the weakest governance or risk dimension and is read together with the dimensions.</td>
+<td>1, 2, 3</td>
+</tr>
+<tr>
+<td>Transform bets need milestones, a stage limit and stop criteria that can only be relaxed by whoever authorised them.</td>
+<td>1, 2, 3, 4</td>
+</tr>
+<tr>
+<td>At G3 there is no proceeding with conditions on legal compliance: the initiative iterates or stops.</td>
+<td>2, 3, 5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-2-questions-for-working-on-the-cases">8.2 Questions for working on the cases</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Question for discussion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>What would have happened if the board had accepted the Critical risk of the batteries so as not to miss the opportunity? What should have been recorded in that decision?</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The load agent team asked for the stop criterion to be lowered to 0.5 points. What arguments would the board have for and against?</td>
+</tr>
+<tr>
+<td>3</td>
+<td>With a negative validated net value and a positive total net value, would you scale automatic clinical documentation? Under what condition?</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Is it consistent to fund first the initiative with the lower additional net value per euro? How is this explained to the market and to the workforce?</td>
+</tr>
+<tr>
+<td>5</td>
+<td>How would you adapt the &quot;AI-enabled revenue&quot; signal of the transformation index to a public administration?</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="associated-tools-and-templates"><span class="antetitulo">09</span>Associated tools and templates</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Use in the cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Initiative register</td>
+<td>Progression through <em>gates</em>, statuses and coded reasons.</td>
+</tr>
+<tr>
+<td>T02</td>
+<td>AI system inventory</td>
+<td>Initial findings in cases 1 and 5.</td>
+</tr>
+<tr>
+<td>T03</td>
+<td><em>Gate</em> manager</td>
+<td>Decisions and conditions.</td>
+</tr>
+<tr>
+<td>T05</td>
+<td>Ambition classifier</td>
+<td>Ambition level of each initiative.</td>
+</tr>
+<tr>
+<td>T12</td>
+<td>Value realisation tracking</td>
+<td>Value tables with status.</td>
+</tr>
+<tr>
+<td>T14</td>
+<td>Transformation index calculator</td>
+<td>Profiles of each company.</td>
+</tr>
+<tr>
+<td>T15</td>
+<td>Maturity diagnosis</td>
+<td>D1–D7 tables.</td>
+</tr>
+<tr>
+<td>T18</td>
+<td>Board recommendations register</td>
+<td>REC and DEC codes.</td>
+</tr>
+<tr>
+<td>T22</td>
+<td>Retirement manager</td>
+<td>Retirements in cases 1, 3, 4 and 5.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><em>Gate</em> decision record</td>
+<td>Each row of the <em>gate</em> tables.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Scale or retirement decision</td>
+<td>G7 decisions.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">10</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>00 · What SEVEN-G is and how it helps companies</strong></td>
+<td>Measurement rules, ambition levels and profiles.</td>
+</tr>
+<tr>
+<td><strong>01 · Foundational methodology</strong></td>
+<td><em>Gates</em>, decision rules, intensity and regularisation.</td>
+</tr>
+<tr>
+<td><strong>11 · Maturity model</strong></td>
+<td>Calculation rule for the overall level.</td>
+</tr>
+<tr>
+<td><strong>12 · Transformation index</strong></td>
+<td>Signals and thresholds pending calibration.</td>
+</tr>
+<tr>
+<td><strong>33 · AI risk methodology</strong></td>
+<td>Inherent and residual risk levels.</td>
+</tr>
+<tr>
+<td><strong>40 · Value measurement rules</strong></td>
+<td>Formulas and statuses.</td>
+</tr>
+<tr>
+<td><strong>60 · Board pack</strong></td>
+<td>How these cases would be presented to the board.</td>
+</tr>
+<tr>
+<td><strong>61 · Board conversation guide</strong></td>
+<td>Answer format and selection of cases.</td>
+</tr>
+<tr>
+<td><strong>62 · Recommendations and decisions register</strong></td>
+<td>REC and DEC codes.</td>
+</tr>
+<tr>
+<td><strong>91 · Guide for consultants</strong></td>
+<td>Use of fictitious cases in third-party services.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">11</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Five fictitious cases (energy, logistics, healthcare, retail and public sector) with maturity diagnosis, transformation index, board decisions, the progression of fifteen initiatives through their <em>gates</em>, value with formulas and statuses, five stops, four retirements and lessons. Replaces the example cases in the previous material, which contained undemonstrable results.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":true},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+
+</body>
+</html>

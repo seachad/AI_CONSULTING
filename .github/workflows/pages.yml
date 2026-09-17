@@ -1,0 +1,57 @@
+# Publica en GitHub Pages SOLO la parte pública de este repositorio (portada + SEVEN-G generado).
+# Nunca publica _trabajo, _legacy, .claude, build/, SPAD ni Espheres (fuentes de trabajo).
+# Requisito: en Settings → Pages, "Source" = "GitHub Actions". En un repositorio privado, Pages
+# requiere un plan de GitHub que lo admita (Pro, Team o Enterprise); el sitio resultante es público.
+name: Publicar sitio (GitHub Pages)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copiar solo lo publicable
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p sitio
+          cp index.html LICENSE LICENCIA_CONTENIDOS.md sitio/
+          mkdir -p sitio/en && cp en/index.html sitio/en/
+          for c in html pdf herramientas; do
+            [ -d "SEVEN-G/$c" ] || continue
+            rsync -a --exclude '_trabajo' --exclude '_legacy' --exclude '_*' --exclude '__pycache__' "SEVEN-G/$c" sitio/SEVEN-G/
+          done
+          touch sitio/.nojekyll
+      - name: Verificar que no hay textos internos
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -rIl -e '_trabajo' -e 'notas_internas' -e 'C:\\SEACHAD' -e 'OneDrive' sitio --include='*.html' --include='*.md' --include='*.json' ; then
+            echo 'Textos internos detectados: no se publica.' >&2; exit 1
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: sitio
+
+  publicar:
+    needs: preparar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

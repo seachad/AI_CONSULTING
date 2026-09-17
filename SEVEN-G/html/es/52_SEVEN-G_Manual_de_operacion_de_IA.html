@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual de operaci&#243;n de IA</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Manual de operación de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/52_SEVEN-G_Manual_de_operacion_de_IA.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/52_SEVEN-G_Manual_de_operacion_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/52_SEVEN-G_Manual_de_operacion_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/52_SEVEN-G_Manual_de_operacion_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 52 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 52 &#183; Manual de operaci&#243;n de IA</p>
+    <h1>Manual de operaci&#243;n de IA</h1>
+    <p class="entradilla">Operaci&#243;n de ML predictivo, IA generativa, agentes e IA de terceros: monitorizaci&#243;n, cambios, incidentes, continuidad, registros y retirada</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>4</b><span>tipos de sistema con operaci&#243;n diferenciada</span></div><div class="cifra"><b>9</b><span>capas de monitorizaci&#243;n</span></div><div class="cifra"><b>3</b><span>clases de cambio con regla de gate</span></div><div class="cifra"><b>4</b><span>plantillas de operaci&#243;n [P24](plantillas/P24_SEVEN-G_Manual_de_operacion.html)–[P27](plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html)</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/52_SEVEN-G_Manual_de_operacion_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/52_SEVEN-G_Manual_de_operacion_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/52_SEVEN-G_Manual_de_operacion_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#principios-de-operacion"><span>02</span>Principios de operación</a></li><li><a href="#modelo-de-operacion"><span>03</span>Modelo de operación</a></li><li><a href="#operacion-por-tipo-de-sistema"><span>04</span>Operación por tipo de sistema</a></li><li><a href="#monitorizacion-y-alertas-p25"><span>05</span>Monitorización y alertas (P25)</a></li><li><a href="#gestion-de-cambios"><span>06</span>Gestión de cambios</a></li><li><a href="#gestion-de-incidentes"><span>07</span>Gestión de incidentes</a></li><li><a href="#revision-de-continuidad-r6"><span>08</span>Revisión de continuidad R6</a></li><li><a href="#vigilancia-posterior-a-la-comercializacion"><span>09</span>Vigilancia posterior a la comercialización</a></li><li><a href="#continuidad-y-reversion"><span>10</span>Continuidad y reversión</a></li><li><a href="#registros-y-trazabilidad"><span>11</span>Registros y trazabilidad</a></li><li><a href="#retirada-tecnica"><span>12</span>Retirada técnica</a></li><li><a href="#indicadores-de-operacion"><span>13</span>Indicadores de operación</a></li><li><a href="#operacion-lite-y-enterprise"><span>14</span>Operación Lite y Enterprise</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>15</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>16</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>17</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>Este documento desarrolla la <strong>fase 6 · Operación y gobierno</strong> del ciclo de vida (01 §6.8) y fija cómo se operan los sistemas de IA en producción para que <strong>sigan funcionando, aportando valor y bajo control</strong>. Es genérico: cada sistema concreta lo que aquí se establece en su manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</p>
+<p>Cubre:</p>
+<ul>
+<li>La operación específica de cada tipo de sistema: <strong>ML predictivo, IA generativa, agentes e IA de terceros embebida</strong>.</li>
+<li>La <strong>monitorización y las alertas</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), con métricas y umbrales tipo.</li>
+<li>La <strong>gestión de cambios</strong> y qué cambios obligan a volver a un <em>gate</em>.</li>
+<li>La <strong>gestión de incidentes</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), con la escala S1–S4, que se desarrolla en el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</li>
+<li>La preparación de la <strong>revisión de continuidad R6</strong>.</li>
+<li>La <strong>vigilancia posterior a la comercialización</strong> que exige la regulación.</li>
+<li>La <strong>continuidad y la reversión</strong>.</li>
+<li>Los <strong>registros y la trazabilidad</strong>, incluida su conservación.</li>
+<li>La <strong>retirada técnica</strong>.</li>
+</ul>
+<p><strong>Destinatarios.</strong> Responsables de operación y técnicos de IA, equipos de plataforma y seguridad, responsables de riesgos y auditores de IA.</p>
+<p><strong>No cubre</strong> la construcción de soluciones (<a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a>), los controles de seguridad en detalle (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>) ni la gestión contractual de proveedores (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</p>
+<p>Este documento contiene referencias regulatorias y no constituye asesoramiento jurídico.</p>
+<hr />
+<h2 id="principios-de-operacion"><span class="antetitulo">02</span>Principios de operación</h2>
+<ol>
+<li><strong>Un sistema de IA puede fallar sin caerse:</strong> se vigilan calidad, deriva, sesgo, coste y acciones, no solo la disponibilidad.</li>
+<li><strong>Sin responsable no hay producción:</strong> todo sistema tiene un responsable de operación localizable según su nivel de servicio.</li>
+<li><strong>Toda alerta tiene dueño y acción;</strong> si no, es ruido y se corrige.</li>
+<li><strong>Cambiar es volver a validar,</strong> en proporción al efecto del cambio.</li>
+<li><strong>Parar es siempre posible,</strong> con un procedimiento probado; los agentes tienen interruptor de parada.</li>
+<li><strong>Lo que no está registrado no ocurrió.</strong></li>
+<li><strong>El proveedor también cambia,</strong> y sus cambios se tratan como propios.</li>
+</ol>
+<hr />
+<h2 id="modelo-de-operacion"><span class="antetitulo">03</span>Modelo de operación</h2>
+<h3 id="3-1-responsabilidades">3.1 Responsabilidades</h3>
+<p>En la fase 6 el <strong>responsable de operación de IA</strong> responde y realiza (01 §8.4). El <strong>responsable técnico</strong> realiza reentrenamientos, evaluaciones y cambios y responde del campeón/retador; el <strong>responsable de producto</strong> responde del valor y la adopción en R6; el <strong>responsable de riesgos</strong> emite conformidad en cambios significativos Enterprise; <strong>seguridad</strong> responde de la revisión de permisos de agentes; el <strong>auditor de IA</strong> verifica pruebas, permisos, R6 y retiradas.</p>
+<h3 id="3-2-preparacion-para-operar">3.2 Preparación para operar</h3>
+<p>G5 no puede resolverse con <em>Continuar</em> si no existen, verificados, el <strong>manual de operación</strong> (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>), la <strong>configuración de monitorización y alertas</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>) con alertas probadas, el <strong>plan de respuesta a incidentes</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) y el <strong>registro de incidentes y cambios</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>) abierto, además del <strong>plan de reversión probado</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>). El responsable de operación <strong>debe</strong> haber participado en la fase 5 y aceptar formalmente el traspaso.</p>
+<h3 id="3-3-requisitos-de-operacion-por-nivel-de-autonomia">3.3 Requisitos de operación por nivel de autonomía</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Requisitos mínimos adicionales de operación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A0 · Asistencia</strong></td>
+<td>Calidad de resultados y coste; canal de reporte de errores.</td>
+</tr>
+<tr>
+<td><strong>A1 · Recomendación</strong></td>
+<td>Más registro de recomendación y decisión humana; tasa de modificación humana (PER-10).</td>
+</tr>
+<tr>
+<td><strong>A2 · Actuación supervisada</strong></td>
+<td>Más registro de cada acción con su intención; límites técnicos; interruptor probado; revisión por muestreo.</td>
+</tr>
+<tr>
+<td><strong>A3 · Actuación autónoma</strong></td>
+<td>Más detección de anomalías en tiempo real; umbrales sobre agregados; permisos revisados trimestralmente; guardia con capacidad de parada.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="operacion-por-tipo-de-sistema"><span class="antetitulo">04</span>Operación por tipo de sistema</h2>
+<h3 id="4-1-ml-predictivo">4.1 ML predictivo</h3>
+<h4 id="deriva">4.1.1 Deriva</h4>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Qué cambia</th>
+<th>Cómo se detecta</th>
+<th>Dificultad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deriva de datos</strong></td>
+<td>La distribución de las variables de entrada respecto a la de entrenamiento o validación.</td>
+<td>Comparación de distribuciones por variable y en conjunto (por ejemplo, índice de estabilidad de la población o distancias entre distribuciones).</td>
+<td>Se detecta pronto y sin etiquetas, pero no toda deriva de datos degrada el modelo.</td>
+</tr>
+<tr>
+<td><strong>Deriva de predicciones</strong></td>
+<td>La distribución de los resultados del modelo.</td>
+<td>Comparación con la distribución de referencia.</td>
+<td>Señal temprana útil cuando las etiquetas tardan.</td>
+</tr>
+<tr>
+<td><strong>Deriva de concepto</strong></td>
+<td>La relación entre las variables y lo que se predice.</td>
+<td>Rendimiento frente a etiquetas reales; indicadores de negocio como aproximación.</td>
+<td>Requiere etiquetas, que pueden llegar con semanas o meses de retraso.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Regla.</strong> <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> <strong>debe</strong> declarar, para cada modelo, el <strong>retraso de las etiquetas</strong> y qué indicadores aproximados se usan mientras tanto. Un modelo sin forma de medir su rendimiento real en un plazo razonable no <strong>debería</strong> superar G5.</p>
+<h4 id="reentrenamiento">4.1.2 Reentrenamiento</h4>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Modalidad</th>
+<th>Cuándo</th>
+<th>Condiciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Programado</strong></td>
+<td>Con periodicidad fija definida en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>.</td>
+<td>Mismos datos de origen, variables y método validados; pasa por campeón/retador.</td>
+</tr>
+<tr>
+<td><strong>Por disparador</strong></td>
+<td>Cuando una alerta de deriva o de rendimiento lo justifica.</td>
+<td>Antes se analiza la causa: reentrenar no corrige un error de datos de entrada ni un cambio de proceso.</td>
+</tr>
+<tr>
+<td><strong>Automático</strong></td>
+<td>Canalización que reentrena y propone sin intervención.</td>
+<td>Solo si la canalización está validada, los criterios de promoción están predefinidos y la promoción a producción la aprueba una persona en Enterprise.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Todo reentrenamiento: usa datos que superan los controles de calidad (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>), congela y versiona el conjunto, actualiza <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y se registra en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> como cambio.</p>
+<h4 id="validacion-campeonretador">4.1.3 Validación campeón/retador</h4>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Actividad</th>
+<th>Criterio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · Evaluación fuera de línea</td>
+<td>El modelo nuevo (retador) y el vigente (campeón) se evalúan sobre el mismo conjunto de prueba reciente, no usado en el entrenamiento.</td>
+<td>Métrica principal y secundarias definidas en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>.</td>
+</tr>
+<tr>
+<td>2 · Segmentos y sesgo</td>
+<td>Comparación por segmentos relevantes y pruebas de sesgo.</td>
+<td>El retador no empeora por encima de la tolerancia en ningún segmento protegido.</td>
+</tr>
+<tr>
+<td>3 · Modo sombra</td>
+<td>El retador recibe datos reales y produce resultados sin efecto.</td>
+<td>Estabilidad, latencia, coste y concordancia con el campeón dentro de lo esperado.</td>
+</tr>
+<tr>
+<td>4 · Despliegue gradual</td>
+<td>Una parte del tráfico pasa al retador, o prueba controlada cuando el diseño lo permite.</td>
+<td>Sin alertas críticas durante el periodo definido.</td>
+</tr>
+<tr>
+<td>5 · Decisión</td>
+<td>Promoción, rechazo o prolongación de la prueba.</td>
+<td>Criterios de promoción <strong>fijados antes</strong> de la evaluación; registro del decisor.</td>
+</tr>
+<tr>
+<td>6 · Conservación</td>
+<td>El campeón anterior queda disponible para reversión.</td>
+<td>Durante el periodo definido en <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En Lite pueden omitirse los pasos 3 y 4 si el sistema es A0 y sin exposición directa, con justificación en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</p>
+<h3 id="4-2-ia-generativa">4.2 IA generativa</h3>
+<h4 id="evaluaciones-continuas">4.2.1 Evaluaciones continuas</h4>
+<ul>
+<li><strong>Conjunto de evaluación de referencia:</strong> casos representativos, difíciles, sensibles y adversos (incluida la inyección de instrucciones), versionado y ampliado con cada incidente y fallo detectado.</li>
+<li><strong>Evaluación de regresión</strong> completa ante cualquier cambio de modelo, instrucciones, fuentes, filtros o parámetros; sin resultado conforme, el cambio no se promociona.</li>
+<li><strong>Evaluación periódica</strong> aunque no haya cambios propios, para detectar cambios silenciosos del proveedor.</li>
+<li><strong>Muestreo de producción</strong> con revisión humana; tamaño y frecuencia en <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</li>
+<li><strong>Modelo evaluador</strong> solo si se ha medido su acuerdo con evaluadores humanos y se recalibra periódicamente.</li>
+</ul>
+<h4 id="calidad-de-las-respuestas-y-alucinaciones">4.2.2 Calidad de las respuestas y alucinaciones</h4>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>Métrica tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fidelidad</strong> a fuentes o datos proporcionados</td>
+<td>Respuestas sin afirmaciones no soportadas (OPE-09; <a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, CNC-04).</td>
+</tr>
+<tr>
+<td><strong>Corrección</strong></td>
+<td>Respuestas correctas en el conjunto de referencia.</td>
+</tr>
+<tr>
+<td><strong>Pertinencia y completitud</strong></td>
+<td>Valoración por criterios.</td>
+</tr>
+<tr>
+<td><strong>Rechazo adecuado</strong></td>
+<td>Tasa de rechazos indebidos y de respuestas indebidas.</td>
+</tr>
+<tr>
+<td><strong>Formato y tono</strong></td>
+<td>Cumplimiento de reglas.</td>
+</tr>
+<tr>
+<td><strong>Seguridad del contenido</strong></td>
+<td>Hallazgos de contenido dañino, datos personales o confidenciales por cada mil interacciones.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Se denomina <strong>alucinación</strong> a la afirmación presentada como cierta que no está soportada por los datos o fuentes disponibles o es falsa. Su gestión combina diseño (recuperación de fuentes, cita obligatoria, instrucciones), filtros, supervisión humana en usos sensibles y medición continua. Una alucinación con efecto sobre clientes o decisiones es un <strong>incidente</strong>.</p>
+<h4 id="filtros">4.2.3 Filtros</h4>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Filtro</th>
+<th>Qué controla</th>
+<th>Qué se monitoriza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>De entrada</strong></td>
+<td>Intentos de inyección de instrucciones, datos personales o confidenciales, contenido prohibido.</td>
+<td>Tasa de activación y su variación brusca (posible ataque o cambio de uso).</td>
+</tr>
+<tr>
+<td><strong>De salida</strong></td>
+<td>Datos personales, contenido dañino, afirmaciones prohibidas (por ejemplo, promesas contractuales), formato.</td>
+<td>Tasa de activación, falsos positivos reportados.</td>
+</tr>
+<tr>
+<td><strong>De contexto recuperado</strong></td>
+<td>Instrucciones incrustadas en documentos o páginas (inyección indirecta).</td>
+<td>Detecciones y fuentes de origen.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los filtros son <strong>controles críticos</strong>: su desactivación es un cambio sustancial (sección 6) y su fallo, un incidente.</p>
+<h4 id="costes-por-consumo">4.2.4 Costes por consumo</h4>
+<ul>
+<li><strong>Unidad:</strong> coste por transacción útil (consulta resuelta, documento procesado), no solo volumen de consumo.</li>
+<li><strong>Presupuesto</strong> mensual por sistema, con alertas al 80 % y al 100 % como referencia inicial.</li>
+<li><strong>Límites</strong> por usuario, sesión y periodo; tamaño máximo de contexto; llamadas máximas por tarea.</li>
+<li><strong>Anomalías:</strong> coste por transacción creciente sin cambio de uso (bucles, contexto excesivo, abuso).</li>
+<li><strong>Al alcanzar el límite:</strong> degradación controlada definida en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>; corte total solo si no afecta a una función crítica.</li>
+<li><strong>Imputación</strong> en la categoría <em>consumo de modelos</em> (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>) y seguimiento en T13.</li>
+</ul>
+<h4 id="versiones-del-modelo-del-proveedor">4.2.5 Versiones del modelo del proveedor</h4>
+<ol>
+<li>Fijar la <strong>versión exacta</strong> del modelo en producción (no alias a la &quot;última versión&quot;) y registrarla en <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</li>
+<li>Registrar las <strong>fechas de obsolescencia</strong> anunciadas e iniciar la migración con margen para evaluación completa y campeón/retador.</li>
+<li>Detectar <strong>cambios de comportamiento sin cambio de versión</strong> con la evaluación periódica y consultas de control diarias.</li>
+<li>Revisar los avisos sobre <strong>uso de datos y ubicación del tratamiento</strong> y reevaluar en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
+</ol>
+<p>La migración a una nueva versión del mismo proveedor es un <strong>cambio significativo</strong>; a otra familia de modelos o a otro proveedor, un <strong>cambio sustancial</strong> (sección 6).</p>
+<h3 id="4-3-agentes">4.3 Agentes</h3>
+<p>Los controles de diseño de agentes (identidad, permisos, control de intención, interruptor de parada) se definen en el <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> y se evalúan con T10. Este apartado fija su operación.</p>
+<h4 id="monitorizacion-de-acciones">4.3.1 Monitorización de acciones</h4>
+<p>Cada acción de un agente <strong>debe</strong> registrar: identidad propia del agente (no compartida con personas) y versión; usuario o proceso en cuyo nombre actúa; <strong>intención declarada</strong> (objetivo de la tarea y justificación de la acción); herramienta, operación y datos usados; resultado y efecto; validación humana previa y quién la dio, si aplica; marca temporal e identificador de correlación para reconstruir la secuencia.</p>
+<h4 id="limites">4.3.2 Límites</h4>
+<ul>
+<li><strong>Por acción:</strong> importe, número de destinatarios, tipos de datos.</li>
+<li><strong>Por periodo:</strong> número de acciones, gasto acumulado, operaciones sobre un mismo cliente o registro.</li>
+<li><strong>De alcance:</strong> sistemas, entornos y funciones permitidos.</li>
+<li><strong>De ejecución:</strong> pasos, tiempo y reintentos máximos por tarea.</li>
+<li><strong>De escalado:</strong> acciones que siempre requieren validación humana, sea cual sea la autonomía.</li>
+</ul>
+<p>Los límites se aplican <strong>técnicamente fuera del agente</strong> (en las herramientas, pasarelas o permisos), no solo mediante instrucciones al modelo. Una acción bloqueada por un límite se registra y, según <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, genera alerta.</p>
+<h4 id="anomalias-de-intencion">4.3.3 Anomalías de intención</h4>
+<p>Una <strong>anomalía de intención</strong> es una acción o secuencia que no es coherente con el objetivo declarado de la tarea.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Señal</th>
+<th>Respuesta tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Herramientas que no corresponden a la tarea (posible inyección o error de planificación).</td>
+<td>Bloqueo de la acción y revisión.</td>
+</tr>
+<tr>
+<td>Acceso a datos o sistemas fuera de alcance.</td>
+<td>Bloqueo, alerta crítica, revisión de seguridad.</td>
+</tr>
+<tr>
+<td>Instrucciones procedentes de contenido externo procesado (inyección indirecta).</td>
+<td>Bloqueo y análisis de la fuente.</td>
+</tr>
+<tr>
+<td>Bucles o repetición de la misma acción.</td>
+<td>Corte por límite de ejecución.</td>
+</tr>
+<tr>
+<td>Crecimiento brusco del volumen de acciones o del coste.</td>
+<td>Pausa del agente y revisión.</td>
+</tr>
+<tr>
+<td>Intento de ampliar sus permisos o modificar sus límites.</td>
+<td>Parada del agente; incidente de al menos S2.</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="interruptor-de-parada">4.3.4 Interruptor de parada</h4>
+<ul>
+<li><strong>Niveles:</strong> por acción, sesión, agente y conjunto de agentes de un tipo.</li>
+<li><strong>Quién lo activa:</strong> responsable de operación, supervisor humano designado y seguridad, <strong>sin aprobación previa</strong>.</li>
+<li><strong>Efecto:</strong> detiene nuevas acciones, cancela las pendientes, revoca credenciales temporales y deja los sistemas en el estado coherente definido en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, en un tiempo objetivo fijado en <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</li>
+<li><strong>Pruebas:</strong> trimestral en Enterprise, semestral en Lite y tras cada cambio significativo o sustancial (OPE-12).</li>
+<li><strong>Reactivación:</strong> tras análisis de causa, con aprobación del responsable de operación y, si hubo incidente S1 o S2, del responsable de riesgos.</li>
+</ul>
+<h4 id="revision-de-permisos">4.3.5 Revisión de permisos</h4>
+<ol>
+<li>Inventario de <strong>identidades no humanas</strong> de cada agente, con propietario.</li>
+<li><strong>Mínimo privilegio</strong>: cada permiso se justifica por una tarea del agente.</li>
+<li><strong>Credenciales de corta duración</strong> siempre que la plataforma lo permita.</li>
+<li>Revisión <strong>trimestral</strong> para A2–A3 y <strong>semestral</strong> para A0–A1 (OPE-13).</li>
+<li>Retirada de permisos <strong>no usados</strong> en el periodo definido (referencia inicial: 90 días).</li>
+<li>Toda ampliación de permisos que permita <strong>nuevos efectos</strong> sobre terceros, dinero, datos personales o sistemas de producción es un <strong>cambio sustancial</strong>.</li>
+</ol>
+<h3 id="4-4-ia-de-terceros-embebida">4.4 IA de terceros embebida</h3>
+<p>Software de un proveedor con funciones de IA que intervienen en procesos de la compañía (01 §1.2).</p>
+<ul>
+<li><strong>Funciones de IA nuevas activadas por el proveedor</strong>, a veces por defecto: revisión de notas de actualización, verificación de la configuración tras cada versión y desactivación hasta su evaluación cuando el contrato lo permite.</li>
+<li><strong>Cambios de modelo o de comportamiento sin aviso:</strong> indicadores de resultado del proceso, muestreo y pruebas de regresión antes de actualizaciones relevantes.</li>
+<li><strong>Falta de registros:</strong> exigencia contractual de acceso a registros y soporte en incidentes (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
+<li><strong>Cambios en el tratamiento de datos</strong> (ubicación, subencargados, entrenamiento): reevaluación en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</li>
+<li><strong>Incidentes del proveedor:</strong> canal y plazos de notificación en <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>.</li>
+</ul>
+<p>La intensidad de estos controles depende del nivel de exigencia al tercero: <strong>N1 Estándar · N2 Reforzado · N3 Crítico</strong> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</p>
+<hr />
+<h2 id="monitorizacion-y-alertas-p25"><span class="antetitulo">05</span>Monitorización y alertas (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</h2>
+<h3 id="5-1-capas-de-monitorizacion">5.1 Capas de monitorización</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Qué se vigila</th>
+<th>Aplica a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · Disponibilidad e infraestructura</td>
+<td>Disponibilidad, latencia, errores, capacidad.</td>
+<td>Todos</td>
+</tr>
+<tr>
+<td>2 · Calidad de datos de entrada</td>
+<td>Nulos, rangos, esquema, actualidad, volumen.</td>
+<td>Todos</td>
+</tr>
+<tr>
+<td>3 · Deriva</td>
+<td>Datos, predicciones, concepto.</td>
+<td>ML predictivo</td>
+</tr>
+<tr>
+<td>4 · Rendimiento del modelo</td>
+<td>Métricas frente a la validación de G5, por segmento.</td>
+<td>ML predictivo</td>
+</tr>
+<tr>
+<td>5 · Calidad de respuestas</td>
+<td>Fidelidad, corrección, rechazo adecuado, vigencia de fuentes.</td>
+<td>IA generativa</td>
+</tr>
+<tr>
+<td>6 · Acciones y límites</td>
+<td>Acciones, bloqueos, anomalías de intención, permisos.</td>
+<td>Agentes</td>
+</tr>
+<tr>
+<td>7 · Seguridad</td>
+<td>Activación de filtros, intentos de inyección, accesos indebidos.</td>
+<td>Todos, con énfasis en IA generativa y agentes</td>
+</tr>
+<tr>
+<td>8 · Coste</td>
+<td>Consumo, coste por transacción, presupuesto.</td>
+<td>Todos, con énfasis en IA generativa y agentes</td>
+</tr>
+<tr>
+<td>9 · Supervisión humana, uso y valor</td>
+<td>Tasa de modificación humana, adopción, indicadores de la hipótesis de valor, sesgo.</td>
+<td>Todos</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-2-metricas-y-umbrales-tipo">5.2 Métricas y umbrales tipo</h3>
+<p>Los valores son <strong>ilustrativos y a calibrar</strong> por sistema en la fase 5 a partir de su línea base. La severidad indicada es la inicial del incidente si se confirma efecto; la clasificación final sigue la sección 7.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Métrica</th>
+<th>Aviso</th>
+<th>Crítico</th>
+<th>Severidad inicial si hay efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Disponibilidad mensual frente al nivel de servicio</td>
+<td>Por debajo del objetivo en el periodo parcial</td>
+<td>Incumplimiento del nivel de servicio</td>
+<td>S3; S2 si es función crítica</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Latencia en percentil 95</td>
+<td>&gt; objetivo durante 15 min</td>
+<td>&gt; 2 × objetivo durante 15 min</td>
+<td>S4–S3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Proporción de nulos en variables críticas</td>
+<td>&gt; 2 × media de 30 días</td>
+<td>&gt; umbral de calidad de la fase 3</td>
+<td>S3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Antigüedad de los datos de entrada</td>
+<td>&gt; plazo de actualización previsto</td>
+<td>&gt; 2 × plazo</td>
+<td>S3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Índice de estabilidad de la población por variable</td>
+<td>&gt; 0,1</td>
+<td>&gt; 0,25</td>
+<td>S4–S3 (convención habitual en la práctica; a calibrar)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Métrica principal frente a validación de G5</td>
+<td>Caída relativa &gt; 5 %</td>
+<td>Caída relativa &gt; 10 %</td>
+<td>S3; S2 si afecta a decisiones sobre personas o clientes</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ratio de impacto adverso entre grupos</td>
+<td>&lt; umbral de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> + margen</td>
+<td>&lt; umbral de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>S2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fidelidad a las fuentes en muestreo</td>
+<td>&lt; objetivo − 2 puntos</td>
+<td>&lt; objetivo − 5 puntos</td>
+<td>S3; S2 con exposición directa</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Respuestas con contenido caducado</td>
+<td>&gt; 0 en temas regulados o contractuales</td>
+<td>Repetición tras corrección</td>
+<td>S3–S2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Acciones bloqueadas por límites</td>
+<td>&gt; 2 × media de 7 días</td>
+<td>Cualquier intento de superar límite de importe o alcance</td>
+<td>S3; S2 si hay intento de ampliar permisos</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Anomalías de intención</td>
+<td>Cualquier anomalía no explicada</td>
+<td>Anomalía con efecto sobre terceros, dinero, datos personales o producción</td>
+<td>S2; S1 si hay daño material</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Activación de filtros de entrada</td>
+<td>&gt; 3 × media de 7 días</td>
+<td>Patrón sostenido de ataque</td>
+<td>S3–S2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Exposición de datos personales o confidenciales</td>
+<td>—</td>
+<td>Cualquier caso confirmado</td>
+<td>S2; S1 si es masiva o de categorías especiales</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Coste mensual frente a presupuesto</td>
+<td>≥ 80 %</td>
+<td>≥ 100 %</td>
+<td>S4–S3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Coste por transacción</td>
+<td>&gt; 1,5 × media de 30 días</td>
+<td>&gt; 3 × media de 30 días</td>
+<td>S3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tasa de modificación humana</td>
+<td>Próxima a 0 % durante 30 días</td>
+<td>—</td>
+<td>Revisión en R6</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Indicador principal de valor</td>
+<td>Por debajo de la hipótesis dos periodos seguidos</td>
+<td>Por debajo del criterio de parada</td>
+<td>Revisión en R6; adelanta G7</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-3-reglas-de-diseno-de-alertas">5.3 Reglas de diseño de alertas</h3>
+<ol>
+<li>Cada alerta tiene <strong>responsable</strong>, <strong>procedimiento</strong> en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y <strong>severidad inicial</strong>.</li>
+<li>Las alertas críticas llegan a una persona localizable en el horario de actuación del sistema.</li>
+<li>Se <strong>prueban</strong> antes de G5 y tras cada cambio que las afecte.</li>
+<li>Se mide el <strong>ruido</strong> (OPE-16) y se revisan los umbrales en cada R6.</li>
+<li>Una alerta desactivada o silenciada se registra en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> con motivo, responsable y fecha de reactivación.</li>
+</ol>
+<hr />
+<h2 id="gestion-de-cambios"><span class="antetitulo">06</span>Gestión de cambios</h2>
+<h3 id="6-1-clases-de-cambio">6.1 Clases de cambio</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Clase</th>
+<th>Definición</th>
+<th>Ejemplos</th>
+<th>Qué exige</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Menor</strong></td>
+<td>No altera el comportamiento del sistema ni sus controles.</td>
+<td>Escalado de infraestructura; parche de seguridad sin cambio funcional; corrección de un panel.</td>
+<td>Pruebas estándar; aprobación del responsable de operación; registro en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
+</tr>
+<tr>
+<td><strong>Significativo</strong></td>
+<td>Altera el comportamiento dentro de la finalidad, el alcance, la autonomía y los riesgos aprobados.</td>
+<td>Reentrenamiento con los mismos datos de origen y método; nueva versión del modelo del mismo proveedor y familia; cambio de instrucciones de sistema; nuevas fuentes de conocimiento del mismo tipo y permisos; ajuste de umbrales dentro de rangos aprobados.</td>
+<td>Evaluación de regresión o campeón/retador; actualización de <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>; conformidad del responsable de riesgos en Enterprise; informe en la siguiente R6; verificación por muestreo del auditor.</td>
+</tr>
+<tr>
+<td><strong>Sustancial</strong></td>
+<td>Altera la finalidad, el alcance, la autonomía, los datos, los controles críticos o el perfil de riesgo aprobados.</td>
+<td>Ver tabla 6.2.</td>
+<td><strong>Vuelta a <em>gate</em></strong> según la tabla 6.2.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En caso de duda entre dos clases, se aplica la <strong>superior</strong>.</p>
+<h3 id="6-2-cambios-sustanciales-y-gate-al-que-se-vuelve">6.2 Cambios sustanciales y <em>gate</em> al que se vuelve</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Cambio</th>
+<th>Se vuelve a</th>
+<th>Motivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nueva finalidad o nuevo uso del sistema</td>
+<td><strong>G3</strong></td>
+<td>Cambian valor, riesgo y posiblemente la clasificación regulatoria.</td>
+</tr>
+<tr>
+<td>Ampliación a nuevos colectivos, países, canales o clientes</td>
+<td><strong>G3</strong> (o nueva fase 0 si se decide como escalado en G7)</td>
+<td>Cambian exposición, regulación y efecto sobre personas.</td>
+</tr>
+<tr>
+<td>Aumento del nivel de autonomía (por ejemplo, de A1 a A2)</td>
+<td><strong>G4 y G5</strong></td>
+<td>Cambian supervisión humana, límites y seguridad.</td>
+</tr>
+<tr>
+<td>Nuevas herramientas o permisos de agente con efectos sobre terceros, dinero, datos personales o producción</td>
+<td><strong>G4 y G5</strong></td>
+<td>Cambia la superficie de actuación.</td>
+</tr>
+<tr>
+<td>Nuevas categorías de datos personales, categorías especiales o nuevas fuentes con datos personales</td>
+<td><strong>G3</strong></td>
+<td>Base legal y evaluación de impacto.</td>
+</tr>
+<tr>
+<td>Cambio de variables en sistemas que deciden sobre personas</td>
+<td><strong>G4 y G5</strong></td>
+<td>Pruebas de sesgo e información a la representación (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>).</td>
+</tr>
+<tr>
+<td>Cambio de proveedor o de familia de modelos</td>
+<td><strong>G5</strong> (y <strong>G3</strong> si cambia el nivel de exigencia del tercero)</td>
+<td>Evaluación completa y evaluación del proveedor.</td>
+</tr>
+<tr>
+<td>Desactivación o sustitución de un control crítico (filtros, supervisión humana, límites)</td>
+<td><strong>G4 y G5</strong></td>
+<td>Controles críticos no admiten condiciones (01 §7.3).</td>
+</tr>
+<tr>
+<td>Cambio que puede alterar la clasificación regulatoria o la intensidad</td>
+<td><strong>G3</strong></td>
+<td>Nueva clasificación (T07) y determinación de intensidad (T04).</td>
+</tr>
+<tr>
+<td>Modificación que pueda considerarse sustancial según el Reglamento Europeo de IA en un sistema de alto riesgo</td>
+<td><strong>G3</strong>, con análisis jurídico</td>
+<td>Puede exigir una nueva evaluación de la conformidad y, en determinados supuestos, convertir al responsable del despliegue en proveedor (arts. 3.23 y 25; <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="grafico"><div class="g-titulo">Clasificaci&#243;n de un cambio</div><div class="g-sub">La clase decide la validaci&#243;n; los cambios sustanciales vuelven a un gate</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  C["Cambio propuesto"] --> Q1{"¿Altera finalidad, alcance, autonomía, datos, controles críticos o riesgo?"}
+  Q1 -->|"Sí"| SUS["Sustancial: vuelta a G3, G4 o G5"]
+  Q1 -->|"No"| Q2{"¿Altera el comportamiento del sistema?"}
+  Q2 -->|"Sí"| SIG["Significativo: regresión o campeón/retador y conformidad"]
+  Q2 -->|"No"| MEN["Menor: pruebas estándar y registro"]
+  SUS --> REG["Registro en [P27](plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html) y actualización de [P16](plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html) y [P24](plantillas/P24_SEVEN-G_Manual_de_operacion.html)"]
+  SIG --> REG
+  MEN --> REG
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class MEN,REG ok
+  class SIG med
+  class SUS ko
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<h3 id="6-3-cambios-de-emergencia">6.3 Cambios de emergencia</h3>
+<ul>
+<li>Se admiten para <strong>contener un incidente</strong>. Pueden aplicarse antes de su aprobación ordinaria.</li>
+<li><strong>Solo pueden reducir</strong> funcionalidad, autonomía, alcance o permisos (parada, reversión, desactivación de una función, límites más estrictos). Nunca ampliarlos.</li>
+<li>Se registran en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> en un plazo máximo de 24 horas y se revisan en 5 días hábiles, con decisión sobre si se consolidan, se revierten o se tramitan como cambio ordinario.</li>
+</ul>
+<h3 id="6-4-reglas">6.4 Reglas</h3>
+<ol>
+<li>Un cambio sustancial aplicado sin volver al <em>gate</em> correspondiente es una <strong>no conformidad mayor</strong>; si afecta a un control crítico o a un sistema de alto riesgo, <strong>crítica</strong> (01 §12).</li>
+<li>Todo cambio de un sistema que afecta a condiciones de trabajo revisa si debe actualizarse la información a la representación de los trabajadores (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>, sección 7).</li>
+<li>Los cambios del proveedor se clasifican con las mismas reglas que los propios.</li>
+</ol>
+<hr />
+<h2 id="gestion-de-incidentes"><span class="antetitulo">07</span>Gestión de incidentes</h2>
+<p>El proceso completo, los plazos definitivos y la relación con las no conformidades se fijan en el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>. Este apartado establece lo necesario para operar.</p>
+<h3 id="7-1-que-es-un-incidente-de-ia">7.1 Qué es un incidente de IA</h3>
+<p>Cualquier hecho que produce o puede producir un efecto no deseado por el funcionamiento o el uso de un sistema de IA, <strong>aunque el sistema esté disponible</strong>: resultados erróneos con efecto, sesgos, alucinaciones con consecuencias, acciones no autorizadas de agentes, exposición de información, costes anómalos, fallos de controles, ataques y caídas.</p>
+<h3 id="7-2-severidad">7.2 Severidad</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Severidad</th>
+<th>Criterio</th>
+<th>Ejemplos ilustrativos</th>
+<th>Tiempos de respuesta orientativos (37 §4.3)</th>
+<th>Informa a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 · Crítica</strong></td>
+<td>Posible incidente grave según el Reglamento Europeo de IA; incidente grave según DORA o NIS2 cuando apliquen; daño material significativo a personas, clientes, dinero o derechos; o pérdida de control de un sistema que actúa.</td>
+<td>Agente que ejecuta pagos o comunicaciones no autorizadas a clientes; discriminación sistemática en decisiones sobre personas; exposición masiva de datos personales.</td>
+<td>Triaje en 1 hora, a cualquier hora; coordinador inmediato; comité de IA en 4 horas; comisión delegada en 24 horas.</td>
+<td>Comité de IA y comisión delegada del consejo; autoridades cuando proceda.</td>
+</tr>
+<tr>
+<td><strong>S2 · Alta</strong></td>
+<td>Impacto 4 en algún eje; brecha de datos personales notificable a la autoridad sin alto riesgo para las personas; errores repetidos visibles para clientes; compromiso de una identidad de agente contenido antes de causar efecto; fallo de un control crítico sin daño; incidente relevante de un proveedor N3.</td>
+<td>Respuestas erróneas sobre condiciones contractuales a clientes; interruptor de parada que no funciona en prueba; intento de ampliar permisos por un agente.</td>
+<td>Triaje en 4 horas; coordinador inmediato; comité de IA en 24 horas; comisión delegada en el informe trimestral.</td>
+<td>Comité de IA (24 horas); comisión delegada del consejo (informe trimestral).</td>
+</tr>
+<tr>
+<td><strong>S3 · Media</strong></td>
+<td>Impacto 3; degradación fuera de umbral en un proceso relevante; inyección de instrucciones con éxito sin acción sensible; fuga interna limitada sin riesgo para las personas.</td>
+<td>Deriva crítica con revisión humana que corrige los resultados; filtro que falla en casos aislados.</td>
+<td>Triaje en 1 día hábil; resolución planificada; comité de IA en el informe mensual; comisión delegada en el informe trimestral.</td>
+<td>Comité de IA (informe mensual); comisión delegada del consejo (informe trimestral).</td>
+</tr>
+<tr>
+<td><strong>S4 · Baja</strong></td>
+<td>Sin efecto en usuarios ni en decisiones.</td>
+<td>Alertas de aviso; defectos menores de formato.</td>
+<td>Triaje en 5 días hábiles; análisis en R6.</td>
+<td>Registro en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; comité de IA (informe mensual).</td>
+</tr>
+</tbody>
+</table></div>
+<p>La severidad se asigna al <strong>detectar</strong> con el criterio más grave que se cumpla (basta uno; ejes de impacto del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> §4.2, criterios de 37 §4.2) y se revisa al conocer el alcance. Ante la duda, se asigna la superior.</p>
+<h3 id="7-3-flujo">7.3 Flujo</h3>
+<figure class="grafico"><div class="g-titulo">Flujo de un incidente de IA</div><div class="g-sub">Contener primero, notificar a tiempo y aprender siempre</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  D["Detección: alerta, usuario, proveedor o auditoría"] --> CL["Clasificación S1–S4"]
+  CL --> CO["Contención: parada, reversión, límite o desactivación"]
+  CO --> N{"¿Obligación de notificar?"}
+  N -->|"Sí"| NT["Notificación en plazo a autoridades, proveedor o afectados"]
+  N -->|"No"| AN["Análisis de causa raíz"]
+  NT --> AN
+  AN --> AC["Acción correctiva y cambio registrado"]
+  AC --> CI["Cierre, lecciones y ampliación del conjunto de evaluación"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class CI ok
+  class CL,AN,AC med
+  class CO,NT ko
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<h3 id="7-4-notificaciones-regulatorias">7.4 Notificaciones regulatorias</h3>
+<p>Consulta realizada en septiembre de 2026; los plazos y supuestos se detallan en los documentos 34 y 37.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Norma</th>
+<th>Supuesto</th>
+<th>Referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reglamento Europeo de IA</strong></td>
+<td>Incidentes graves de sistemas de alto riesgo: notificación del proveedor a la autoridad de vigilancia del mercado, con un plazo general máximo de 15 días desde que se tiene conocimiento y plazos más cortos en los supuestos más graves. El responsable del despliegue que detecta un incidente grave informa de inmediato al proveedor.</td>
+<td>Arts. 73 y 26.5</td>
+</tr>
+<tr>
+<td><strong>RGPD</strong></td>
+<td>Violación de la seguridad de datos personales: notificación a la autoridad de control sin dilación indebida y, cuando sea posible, en 72 horas; comunicación a los interesados si hay alto riesgo.</td>
+<td>Arts. 33 y 34</td>
+</tr>
+<tr>
+<td><strong>NIS2</strong> (según su transposición)</td>
+<td>Incidentes significativos: alerta temprana en 24 horas y notificación en 72 horas.</td>
+<td>Art. 23 de la Directiva (UE) 2022/2555</td>
+</tr>
+<tr>
+<td><strong>DORA</strong></td>
+<td>Incidentes graves relacionados con las TIC en entidades financieras, con los plazos de sus normas técnicas.</td>
+<td>Reglamento (UE) 2022/2554</td>
+</tr>
+<tr>
+<td><strong>Normativa sectorial</strong></td>
+<td>Según la declaración de contexto.</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> <strong>debe</strong> identificar, para cada sistema, qué notificaciones pueden aplicar, quién decide si procede notificar y quién notifica.</p>
+<h3 id="7-5-relacion-con-las-no-conformidades">7.5 Relación con las no conformidades</h3>
+<p>Un incidente puede revelar un incumplimiento del marco (por ejemplo, un cambio sustancial sin <em>gate</em> o un control crítico desactivado). En ese caso se abre además una <strong>no conformidad</strong> con su propia escala: menor, mayor o crítica (01 §12). Ambos se registran en T08 y se enlazan.</p>
+<hr />
+<h2 id="revision-de-continuidad-r6"><span class="antetitulo">08</span>Revisión de continuidad R6</h2>
+<h3 id="8-1-periodicidad">8.1 Periodicidad</h3>
+<p>Al menos <strong>trimestral en Enterprise</strong> y <strong>semestral en Lite</strong> (01 §6.8). Se adelanta tras un incidente S1 o S2, un cambio sustancial o un cambio relevante del proveedor.</p>
+<h3 id="8-2-paquete-de-r6">8.2 Paquete de R6</h3>
+<p>El responsable de producto y el responsable de operación preparan, con los datos del periodo:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Valor</strong> (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, T12)</td>
+<td>Valor realizado frente a hipótesis con su estado; criterios de parada.</td>
+</tr>
+<tr>
+<td><strong>Capacidad liberada</strong> (T20)</td>
+<td>Horas liberadas, materializadas, reasignadas y sin decisión.</td>
+</tr>
+<tr>
+<td><strong>Coste</strong> (T13)</td>
+<td>Coste real frente a presupuesto; coste por transacción.</td>
+</tr>
+<tr>
+<td><strong>Estabilidad, rendimiento y calidad</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</td>
+<td>Disponibilidad, alertas críticas y ruido; métricas del modelo o de respuestas; deriva; sesgo.</td>
+</tr>
+<tr>
+<td><strong>Incidentes y cambios</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, T08)</td>
+<td>Incidentes por severidad y acciones; no conformidades abiertas; cambios por clase y del proveedor.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, T10)</td>
+<td>Acciones bloqueadas, anomalías, prueba del interruptor, revisión de permisos.</td>
+</tr>
+<tr>
+<td><strong>Supervisión humana y adopción</strong> (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>)</td>
+<td>Tasa de modificación humana, adopción, formación de supervisores.</td>
+</tr>
+<tr>
+<td><strong>Riesgo y cumplimiento</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, T04, T07)</td>
+<td>Riesgos; vigencia de clasificación, intensidad y evaluaciones de impacto; información a la representación.</td>
+</tr>
+<tr>
+<td><strong>Continuidad</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
+<td>Última prueba de reversión; situación del proveedor.</td>
+</tr>
+<tr>
+<td><strong>Propuesta</strong></td>
+<td>Continuar la operación, Continuar con condiciones o Adelantar G7 (01 §7.3), con motivos.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los criterios <code>R6.&lt;nn&gt;</code> se codifican en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>.</p>
+<h3 id="8-3-resultados">8.3 Resultados</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Cuándo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Continuar la operación</strong></td>
+<td>Valor, estabilidad, riesgo y cumplimiento dentro de lo aprobado.</td>
+</tr>
+<tr>
+<td><strong>Continuar con condiciones</strong></td>
+<td>Desviaciones no críticas con acción, plazo y responsable. No se admite para controles críticos, cumplimiento legal o supervisión humana.</td>
+</tr>
+<tr>
+<td><strong>Adelantar G7</strong></td>
+<td>Desviación relevante de valor (criterio de parada alcanzado), aumento del riesgo o alternativa mejor.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si en G7 se decide mantener el sistema sin cambios, se registra como <em>Iterar</em> con vuelta a la fase 6 (21 §5.3). Si durante la revisión se detecta un riesgo inaceptable, no se espera a G7: se activa el procedimiento de incidentes y, si procede, la parada.</p>
+<p>Omitir una R6 es una <strong>no conformidad mayor</strong> (01 §12).</p>
+<hr />
+<h2 id="vigilancia-posterior-a-la-comercializacion"><span class="antetitulo">09</span>Vigilancia posterior a la comercialización</h2>
+<p>El Reglamento Europeo de IA exige a los <strong>proveedores</strong> de sistemas de alto riesgo establecer y documentar un <strong>sistema de vigilancia posterior a la comercialización</strong>, basado en un plan, que recopile y analice de forma activa y sistemática datos sobre el funcionamiento del sistema durante su vida útil para evaluar el cumplimiento continuo (art. 72). Los <strong>responsables del despliegue</strong> deben vigilar el funcionamiento conforme a las instrucciones de uso, informar al proveedor cuando proceda y, si consideran que el uso puede presentar un riesgo, informar y suspender el uso (art. 26.5). Las obligaciones de alto riesgo se aplican desde el 2 de diciembre de 2027 (anexo III) y el 2 de agosto de 2028 (anexo I), tras el Reglamento (UE) 2026/1744; el calendario y las demás modificaciones se tratan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
+<ul>
+<li><strong>Como proveedor</strong> (también si lo pasa a ser por modificación sustancial o cambio de finalidad): plan de vigilancia integrado en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, con los datos que se recogen, su análisis periódico y la conexión con riesgos, cambios, incidentes y R6.</li>
+<li><strong>Como responsable del despliegue:</strong> monitorización conforme a las instrucciones del proveedor, canal para informarle, criterio de suspensión y conservación de registros (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
+<li><strong>Sistemas que no son de alto riesgo:</strong> la monitorización de la sección 5 cumple una función equivalente.</li>
+</ul>
+<p>Este documento no constituye asesoramiento jurídico.</p>
+<hr />
+<h2 id="continuidad-y-reversion"><span class="antetitulo">10</span>Continuidad y reversión</h2>
+<h3 id="10-1-modos-de-funcionamiento-degradado">10.1 Modos de funcionamiento degradado</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Modo</th>
+<th>Cuándo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Versión anterior</strong> validada (modelo, instrucciones, configuración)</td>
+<td>Degradación tras un cambio.</td>
+</tr>
+<tr>
+<td><strong>Alternativa sin IA</strong> (reglas, proceso manual, sistema anterior)</td>
+<td>Fallo del sistema o del proveedor; incidente S1–S2.</td>
+</tr>
+<tr>
+<td><strong>Autonomía reducida</strong> (de A2–A3 a A1)</td>
+<td>Anomalías de intención; dudas sobre límites.</td>
+</tr>
+<tr>
+<td><strong>Alcance reducido</strong> a casos o canales de menor riesgo</td>
+<td>Problemas en un segmento.</td>
+</tr>
+<tr>
+<td><strong>Proveedor alternativo</strong> previamente evaluado; si no lo está, es un cambio sustancial</td>
+<td>Indisponibilidad prolongada o retirada del proveedor.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-2-reglas">10.2 Reglas</h3>
+<ol>
+<li>El <strong>plan de reversión</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) se prueba antes de G5 y <strong>periódicamente</strong> en producción: al menos anual en Lite y semestral en Enterprise, y tras cada cambio sustancial (OPE-15).</li>
+<li>El plan identifica las <strong>personas y capacidades</strong> necesarias para operar sin el sistema y se coordina con el <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> (sección 5.4).</li>
+<li>Para sistemas que soportan una <strong>función crítica o importante</strong>, el tiempo máximo de recuperación y la pérdida máxima de datos admisible se fijan en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y se alinean con el plan de continuidad de negocio y, cuando aplique, con DORA.</li>
+<li>La <strong>dependencia de un proveedor</strong> se valora en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> con una estrategia de salida (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
+</ol>
+<hr />
+<h2 id="registros-y-trazabilidad"><span class="antetitulo">11</span>Registros y trazabilidad</h2>
+<h3 id="11-1-que-se-registra">11.1 Qué se registra</h3>
+<ul>
+<li><strong>Todos los sistemas:</strong> entradas (o su referencia) y resultados con versión de modelo e instrucciones y marca temporal, con minimización; alertas y acción; cambios e incidentes (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, T08); resultados de evaluaciones y de campeón/retador.</li>
+<li><strong>A1–A3 y decisiones sobre personas:</strong> recomendación, decisión humana, quién decide y motivo de la modificación.</li>
+<li><strong>Agentes A2–A3:</strong> campos de la sección 4.3.1.</li>
+<li><strong>IA generativa:</strong> fuentes y versiones recuperadas en cada respuesta; activaciones de filtros y bloqueos.</li>
+</ul>
+<h3 id="11-2-conservacion">11.2 Conservación</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Referencia</th>
+<th>Qué establece</th>
+<th>Regla en SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reglamento Europeo de IA, arts. 12, 19 y 26.6</strong></td>
+<td>Los sistemas de alto riesgo permiten el registro automático de eventos. Proveedores y responsables del despliegue conservan los registros generados automáticamente que estén bajo su control durante un periodo adecuado a la finalidad prevista, <strong>de al menos seis meses</strong>, salvo que otra norma aplicable disponga otra cosa.</td>
+<td>Mínimo de seis meses para sistemas de alto riesgo, ampliable según la finalidad, la normativa sectorial y los plazos de reclamación.</td>
+</tr>
+<tr>
+<td><strong>Reglamento Europeo de IA, art. 18</strong></td>
+<td>Los proveedores de sistemas de alto riesgo conservan la documentación técnica y otra documentación durante diez años desde la introducción en el mercado o la puesta en servicio.</td>
+<td>Aplica cuando la compañía es proveedor.</td>
+</tr>
+<tr>
+<td><strong>RGPD, art. 5.1.c y e</strong></td>
+<td>Minimización y limitación del plazo de conservación.</td>
+<td>Los registros con datos personales se limitan a lo necesario, con seudonimización cuando sea posible y plazo definido.</td>
+</tr>
+<tr>
+<td><strong>Normativa sectorial y mercantil</strong></td>
+<td>Plazos propios (por ejemplo, en servicios financieros).</td>
+<td>Se incorporan en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</td>
+</tr>
+<tr>
+<td><strong>Plazos de reclamación y prescripción</strong></td>
+<td>Periodos durante los que puede ser necesario acreditar una decisión.</td>
+<td>Se consideran con asesoría jurídica para decisiones sobre personas y clientes.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Reglas de integridad.</strong> Los registros se protegen frente a modificación, con acceso restringido y trazado; su eliminación al vencer el plazo es automática y registrada. En caso de incidente, reclamación o investigación, se <strong>bloquea la eliminación</strong> de los registros afectados.</p>
+<p>Este documento no constituye asesoramiento jurídico.</p>
+<hr />
+<h2 id="retirada-tecnica"><span class="antetitulo">12</span>Retirada técnica</h2>
+<p>La decisión de retirar se toma en G7 y se documenta en <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; la gestión se apoya en T22. Este apartado fija la ejecución técnica.</p>
+<ol>
+<li><strong>Preparación:</strong> sustituto o alternativa sin IA operativos, personas capacitadas y comunicación realizada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</li>
+<li><strong>Congelación:</strong> sin cambios salvo emergencias; captura del estado final y de las métricas (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</li>
+<li><strong>Desconexión progresiva:</strong> retirada del tráfico y de las integraciones y procesos que consumen resultados.</li>
+<li><strong>Agentes:</strong> interruptor de parada, cancelación de tareas y <strong>revocación de todas las credenciales e identidades no humanas</strong>, con registro.</li>
+<li><strong>Datos:</strong> eliminación, anonimización o archivo según G7 y los plazos de retención (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, sección 4.5), con registro de eliminación.</li>
+<li><strong>Modelos, instrucciones e índices:</strong> archivo de la versión final cuando proceda; eliminación de índices derivados de fuentes con datos personales; <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> en estado <em>retirado</em>.</li>
+<li><strong>Registros:</strong> se conservan hasta el fin de su plazo (sección 11.2); nunca se eliminan con la retirada.</li>
+<li><strong>Proveedores:</strong> baja de servicios, confirmación de eliminación de datos por el proveedor, cierre de licencias y consumos (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
+<li><strong>Inventario y registro:</strong> estado <em>Retirada</em> en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y T02 con fecha, motivo codificado, órgano que decide y sustituto.</li>
+<li><strong>Verificación posterior:</strong> tras un periodo definido, comprobar que no quedan accesos, costes ni procesos dependientes; nota de cierre verificada por el auditor de IA en Enterprise.</li>
+</ol>
+<hr />
+<h2 id="indicadores-de-operacion"><span class="antetitulo">13</span>Indicadores de operación</h2>
+<p>Los códigos son provisionales hasta su consolidación en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>. Los umbrales son <strong>orientativos y a calibrar</strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Indicador</th>
+<th>Fórmula</th>
+<th>Frecuencia</th>
+<th>Referencia orientativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OPE-01</strong></td>
+<td>Disponibilidad</td>
+<td>Tiempo disponible ÷ tiempo comprometido en el nivel de servicio</td>
+<td>Mensual</td>
+<td>Según nivel de servicio</td>
+</tr>
+<tr>
+<td><strong>OPE-02</strong></td>
+<td>Cobertura de monitorización</td>
+<td>Sistemas en producción con <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> vigente y alertas probadas ÷ sistemas en producción</td>
+<td>Trimestral</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td><strong>OPE-03</strong></td>
+<td>Tiempo medio de detección</td>
+<td>Σ (momento de detección − momento de inicio) ÷ número de incidentes</td>
+<td>Trimestral</td>
+<td>Tendencia decreciente</td>
+</tr>
+<tr>
+<td><strong>OPE-04</strong></td>
+<td>Tiempo medio de contención</td>
+<td>Σ (momento de contención − momento de detección) ÷ número de incidentes, por severidad</td>
+<td>Trimestral</td>
+<td>Dentro de las referencias de 7.2</td>
+</tr>
+<tr>
+<td><strong>OPE-05</strong></td>
+<td>Incidentes por severidad</td>
+<td>Incidentes S1, S2, S3 y S4 ÷ sistemas en producción, por trimestre</td>
+<td>Trimestral</td>
+<td>Tendencia</td>
+</tr>
+<tr>
+<td><strong>OPE-06</strong></td>
+<td>Cambios sustanciales sin <em>gate</em></td>
+<td>Cambios sustanciales aplicados sin volver al <em>gate</em> ÷ cambios sustanciales</td>
+<td>Trimestral</td>
+<td>0 %</td>
+</tr>
+<tr>
+<td><strong>OPE-07</strong></td>
+<td>Tasa de cambios fallidos</td>
+<td>Cambios revertidos o que originan un incidente ÷ cambios aplicados</td>
+<td>Trimestral</td>
+<td>Tendencia decreciente</td>
+</tr>
+<tr>
+<td><strong>OPE-08</strong></td>
+<td>Deriva sin tratar</td>
+<td>Modelos con deriva en nivel crítico sin acción registrada en el plazo de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> ÷ modelos monitorizados</td>
+<td>Mensual</td>
+<td>0 %</td>
+</tr>
+<tr>
+<td><strong>OPE-09</strong></td>
+<td>Respuestas con afirmaciones no soportadas</td>
+<td>Respuestas evaluadas con al menos una afirmación no soportada ÷ respuestas evaluadas</td>
+<td>Mensual</td>
+<td>Umbral por sistema</td>
+</tr>
+<tr>
+<td><strong>OPE-10</strong></td>
+<td>Coste por transacción y desviación</td>
+<td>Coste de operación del periodo ÷ transacciones útiles; y coste real ÷ presupuesto</td>
+<td>Mensual</td>
+<td>Según hipótesis y presupuesto</td>
+</tr>
+<tr>
+<td><strong>OPE-11</strong></td>
+<td>Acciones de agente bloqueadas</td>
+<td>Acciones bloqueadas por límites ÷ acciones intentadas; y anomalías de intención revisadas ÷ detectadas</td>
+<td>Mensual</td>
+<td>100 % de anomalías revisadas</td>
+</tr>
+<tr>
+<td><strong>OPE-12</strong></td>
+<td>Interruptor de parada probado</td>
+<td>Agentes A2–A3 con prueba del interruptor en plazo y superada ÷ agentes A2–A3</td>
+<td>Trimestral</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td><strong>OPE-13</strong></td>
+<td>Permisos de agentes revisados</td>
+<td>Identidades de agentes con revisión en plazo ÷ identidades de agentes</td>
+<td>Trimestral</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td><strong>OPE-14</strong></td>
+<td>R6 en plazo</td>
+<td>Revisiones de continuidad realizadas en plazo ÷ revisiones debidas</td>
+<td>Trimestral</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td><strong>OPE-15</strong></td>
+<td>Reversión probada</td>
+<td>Sistemas con prueba de reversión en plazo ÷ sistemas en producción</td>
+<td>Semestral</td>
+<td>100 %</td>
+</tr>
+<tr>
+<td><strong>OPE-16</strong></td>
+<td>Ruido de alertas</td>
+<td>Alertas cerradas sin acción ÷ alertas generadas</td>
+<td>Mensual</td>
+<td>Tendencia decreciente</td>
+</tr>
+<tr>
+<td><strong>OPE-17</strong></td>
+<td>Versiones de proveedor en riesgo</td>
+<td>Sistemas cuya versión de modelo de proveedor tiene obsolescencia anunciada sin plan de migración ÷ sistemas con modelo de proveedor</td>
+<td>Mensual</td>
+<td>0 %</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="operacion-lite-y-enterprise"><span class="antetitulo">14</span>Operación Lite y Enterprise</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>Simplificado</td>
+<td>Completo</td>
+</tr>
+<tr>
+<td>Capas de monitorización</td>
+<td>1, 2, 5 u 4 según tipo, 8 y 9</td>
+<td>Todas las aplicables</td>
+</tr>
+<tr>
+<td>Evaluación continua de IA generativa</td>
+<td>Periódica y ante cambios</td>
+<td>Periódica, ante cambios y con muestreo de producción</td>
+</tr>
+<tr>
+<td>Campeón/retador</td>
+<td>Pasos 1, 2, 5 y 6</td>
+<td>Completo</td>
+</tr>
+<tr>
+<td>Cambios significativos</td>
+<td>Aprobación del responsable de operación</td>
+<td>Conformidad del responsable de riesgos</td>
+</tr>
+<tr>
+<td>Guardia</td>
+<td>Horario laboral, salvo A2–A3</td>
+<td>Según horario de actuación del sistema</td>
+</tr>
+<tr>
+<td>Prueba del interruptor de parada</td>
+<td>Semestral</td>
+<td>Trimestral</td>
+</tr>
+<tr>
+<td>Revisión de permisos de agentes</td>
+<td>Semestral</td>
+<td>Trimestral</td>
+</tr>
+<tr>
+<td>Prueba de reversión</td>
+<td>Anual</td>
+<td>Semestral</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Semestral</td>
+<td>Trimestral</td>
+</tr>
+<tr>
+<td>Verificación</td>
+<td>Oficina de IA; auditor por muestreo</td>
+<td>Auditor de IA</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">15</span>Herramientas y plantillas asociadas</h2>
+<h3 id="15-1-plantillas-de-operacion">15.1 Plantillas de operación</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Plantilla</th>
+<th>Contenido mínimo</th>
+<th>Se revisa en</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></strong></td>
+<td>Manual de operación</td>
+<td>Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas.</td>
+<td>G5, R6, tras cambios significativos y sustanciales</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
+<td>Configuración de monitorización y alertas</td>
+<td>Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; conjunto de evaluación de referencia y muestreo; resultado de la prueba de alertas.</td>
+<td>G5, R6</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></strong></td>
+<td>Plan de respuesta a incidentes</td>
+<td>Criterios S1–S4 aplicados al sistema; contactos y escalado; acciones de contención preaprobadas; notificaciones aplicables con responsable y plazo; comunicación a usuarios, afectados y proveedor; relación con el plan de continuidad.</td>
+<td>G5, R6, tras cada incidente S1–S2</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong></td>
+<td>Registro de incidentes y cambios</td>
+<td>Cambios: clase, descripción, validación, aprobación, <em>gate</em> si procede, fecha. Incidentes: severidad, cronología, contención, notificaciones, causa raíz, acciones, cierre, enlace a no conformidad.</td>
+<td>Continuo; R6</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="15-2-otras-herramientas-y-plantillas">15.2 Otras herramientas y plantillas</h3>
+<ul>
+<li><strong>Herramientas:</strong> T08 (incidentes y no conformidades, soporte de <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), T10 (seguridad de agentes), T13 (costes de operación), T12 (valor en R6), T22 (retiradas), T02, T04 y T07 (vigencia de inventario, intensidad y clasificación).</li>
+<li><strong>Plantillas:</strong> <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> (linaje, se actualiza con cada cambio), <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> (reversión), <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (valor en R6), <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (resultado de R6 y vueltas a <em>gate</em>), <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> (retirada).</li>
+</ul>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">16</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 y 03 · Metodología y registro</strong></td>
+<td>Fase 6, R6, reglas de <em>gate</em>, no conformidades; estados y eventos.</td>
+</tr>
+<tr>
+<td><strong>21 y 33 · Criterios de <em>gate</em> y riesgos</strong></td>
+<td>Criterios R6 y G5; registro de riesgos en operación.</td>
+</tr>
+<tr>
+<td><strong>34 · Mapeo regulatorio</strong></td>
+<td>Vigilancia posterior a la comercialización, registros, incidentes graves y modificación sustancial.</td>
+</tr>
+<tr>
+<td><strong>35 y 36 · Seguridad y terceros</strong></td>
+<td>Diseño de controles de agentes; niveles N1–N3 y estrategia de salida.</td>
+</tr>
+<tr>
+<td><strong>37 · No conformidades e incidentes</strong></td>
+<td>Proceso completo, escala S1–S4 y plazos definitivos.</td>
+</tr>
+<tr>
+<td><strong>41 y 42 · Indicadores y costes</strong></td>
+<td>Indicadores OPE; costes de operación y consumo.</td>
+</tr>
+<tr>
+<td><strong>50 y 51 · Personas; datos y conocimiento</strong></td>
+<td>Supervisión humana y capacidades; calidad, vigencia, linaje y retención.</td>
+</tr>
+<tr>
+<td><strong>53 · Construcción de soluciones con IA</strong></td>
+<td>Lo que la operación recibe en G5.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">17</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>Primera versión. Define la operación de ML predictivo (deriva, reentrenamiento, campeón/retador), IA generativa (evaluaciones continuas, calidad, alucinaciones, filtros, costes, versiones del proveedor), agentes (acciones, límites, anomalías de intención, interruptor de parada, permisos) e IA de terceros embebida; nueve capas de monitorización con umbrales tipo; tres clases de cambio con tabla de vuelta a <em>gate</em>; operación de incidentes S1–S4 con notificaciones regulatorias; paquete y resultados de R6; vigilancia posterior a la comercialización; continuidad y reversión; registros y conservación; retirada técnica; diecisiete indicadores y el contenido mínimo de <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>–<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve a las empresas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":true},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

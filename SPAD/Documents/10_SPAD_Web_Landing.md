@@ -1,5 +1,7 @@
-# 06 — SEVEN-G + SPAD
+# 10 — SPAD
 ## Web / Landing Page Content
+
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
 
 ---
 
@@ -28,7 +30,7 @@ It is built around **skills**, not tools.
 
 ## The Core Skill: SPAD
 
-SPAD (Structured Prompt-Driven Engineering) is the foundational SEVEN-G skill.
+SPAD (Structured Prompt-Driven Engineering) is an independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI).
 
 It enforces:
 - separation of thinking and execution

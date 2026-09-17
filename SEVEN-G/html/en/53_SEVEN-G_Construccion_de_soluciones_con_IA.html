@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building solutions with AI</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Building solutions with AI"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 53 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 53 &#183; Building solutions with AI</p>
+    <h1>Building solutions with AI</h1>
+    <p class="entradilla">How design, code and tests generated with AI assistance are governed in phases 4 and 5, and how SPAD is used</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>2</b><span>phases in which it applies (4 and 5)</span></div><div class="cifra"><b>6</b><span>minimum requirements for AI-generated code</span></div><div class="cifra"><b>7</b><span>SPAD roles mapped</span></div><div class="cifra"><b>0</b><span>approvals an AI can give</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/53_SEVEN-G_Construccion_de_soluciones_con_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/53_SEVEN-G_Construccion_de_soluciones_con_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#relationship-between-seven-g-and-spad"><span>02</span>Relationship between SEVEN-G and SPAD</a></li><li><a href="#where-spad-fits-in-the-lifecycle"><span>03</span>Where SPAD fits in the lifecycle</a></li><li><a href="#mapping-of-spad-phases-to-seven-g-evidence"><span>04</span>Mapping of SPAD phases to SEVEN-G evidence</a></li><li><a href="#roles-ai-reviewer-versus-ai-auditor"><span>05</span>Roles: AI Reviewer versus AI Auditor</a></li><li><a href="#spad-validation-policy-and-how-it-fits-into-seven-g"><span>06</span>SPAD validation policy and how it fits into SEVEN-G</a></li><li><a href="#seven-g-minimum-requirements-for-ai-generated-code"><span>07</span>SEVEN-G minimum requirements for AI-generated code</a></li><li><a href="#verification-at-the-gates"><span>08</span>Verification at the gates</a></li><li><a href="#associated-tools-and-templates"><span>09</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>10</span>Related documents</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote>
+<p>This document does not constitute legal advice. Intellectual property, licensing and data protection matters must be validated with qualified legal counsel.</p>
+</blockquote>
+<hr />
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<h3 id="1-1-what-it-governs">1.1 What it governs</h3>
+<p>More and more solutions are <strong>built with AI assistance</strong>: coding assistants, agents that write and execute code, models that generate tests, configurations, queries or documentation. This happens whether or not the resulting solution is an AI system.</p>
+<p>This document sets out:</p>
+<ol>
+<li>The <strong>minimum requirements</strong> that SEVEN-G imposes on every AI-generated artefact that forms part of a solution (section 7).</li>
+<li>How <strong>SPAD</strong> is used as an engineering method in phases 4 and 5, and how its phases, roles and validation policy produce SEVEN-G evidence (sections 3 to 6).</li>
+<li>The distinction between the <strong>AI Reviewer</strong> (a tool) and the <strong>AI Auditor</strong> (an independent person) (section 5).</li>
+</ol>
+<h3 id="1-2-what-it-does-not-govern">1.2 What it does not govern</h3>
+<ul>
+<li>The governance of the initiative, its <em>gates</em> and its value: these are set by document 01.</li>
+<li>Corporate use of AI assistants outside projects: document 31.</li>
+<li>The security of agents in production: document 35.</li>
+<li>The assessment of AI tool suppliers: document 36 and <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</li>
+</ul>
+<h3 id="1-3-two-distinct-objects">1.3 Two distinct objects</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Object</th>
+<th>What it is</th>
+<th>Where it is governed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The system being built</strong></td>
+<td>The initiative's solution (which may or may not be an AI system).</td>
+<td>Lifecycle 0–7, regulatory classification (document 34), <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>.</td>
+</tr>
+<tr>
+<td><strong>The AI tools that help build it</strong></td>
+<td>Assistants, agents and models used by the team.</td>
+<td>Inventory (T02) as corporate or team use; policy (document 31); supplier (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>); this document.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A build tool with the ability to execute actions on repositories, environments or systems is an <strong>agent</strong> and is classified under autonomy levels A0–A3 (document 35). If it acts on production systems or personal data at level A2 or A3, the initiative meets the Enterprise criterion in 01 §9.2.</p>
+<hr />
+<h2 id="relationship-between-seven-g-and-spad"><span class="antetitulo">02</span>Relationship between SEVEN-G and SPAD</h2>
+<h3 id="2-1-position-of-spad">2.1 Position of SPAD</h3>
+<p><strong>SPAD</strong> (<em>Structured Prompt-Driven Engineering</em>) is an <strong>independent methodology</strong> for AI-assisted engineering, referenced from SEVEN-G and not integrated into it (decision D09). It is not a brand, a component or a &quot;capability&quot; of SEVEN-G. SEVEN-G can be applied with SPAD or with another engineering method that meets the requirements of section 7.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>SEVEN-G</th>
+<th>SPAD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What it governs</td>
+<td>The initiative: value, risk, compliance, decision.</td>
+<td>AI-assisted engineering work within the build.</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>Initiative (IA-AAAA-NNN) and AI system.</td>
+<td>Work topic (<em>TOPIC</em>): feature, fix or change.</td>
+</tr>
+<tr>
+<td>Gates</td>
+<td><em>Gates</em> G0–G5, R6, G7 with a decision by a body.</td>
+<td>Technical verdicts per phase (GO, GO with changes, NO-GO).</td>
+</tr>
+<tr>
+<td>Who decides</td>
+<td>People and bodies with segregation of duties.</td>
+<td>The human orchestrator validates; the AIs produce and review.</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Verified templates <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>.</td>
+<td>Artefacts per phase grouped by topic.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-2-rules-for-using-spad-within-seven-g">2.2 Rules for using SPAD within SEVEN-G</h3>
+<ol>
+<li>SPAD verdicts <strong>do not replace</strong> any <em>gate</em> or the AI Auditor's verification.</li>
+<li>SPAD artefacts <strong>are inputs</strong> to SEVEN-G evidence; they are not evidence in themselves until they are referenced in the corresponding template with a human author, date, version and verification (01 §7.2).</li>
+<li>Some SPAD materials predating decision D09 present SPAD as part of SEVEN-G. That relationship is superseded by the one set out in this document.</li>
+<li>SPAD materials include improvement figures (reductions in rework, incidents or lead times) and return expectations. <strong>SEVEN-G neither uses nor endorses them</strong>, because they lack verifiable support; the value of an initiative is measured with the rules in 00 §6.</li>
+<li>The internal certification associated with SPAD is not SEVEN-G evidence and does not exempt from any <em>gate</em>.</li>
+<li>AECF, an application of SPAD to a specific technology, has the same status as a related methodology.</li>
+</ol>
+<h3 id="2-3-when-to-use-spad">2.3 When to use SPAD</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use of SPAD</th>
+<th>Minimum requirements (section 7)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enterprise initiative with AI-assisted build</td>
+<td>SPAD or another equivalent documented method <strong>should</strong> be used.</td>
+<td>They <strong>must</strong> be met.</td>
+</tr>
+<tr>
+<td>Lite initiative with AI-assisted build</td>
+<td>SPAD <strong>may</strong> be used, in its reduced version (section 4.3).</td>
+<td>They <strong>must</strong> be met in their Lite version.</td>
+</tr>
+<tr>
+<td>Urgent fix in production (phase 6)</td>
+<td>SPAD's urgent fix flow <strong>may</strong> be used.</td>
+<td>They <strong>must</strong> be met, with a documented subsequent review.</td>
+</tr>
+<tr>
+<td>Modification of legacy code</td>
+<td>Prior documentation of the existing code <strong>should</strong> be applied.</td>
+<td>They <strong>must</strong> be met.</td>
+</tr>
+<tr>
+<td>Throwaway prototype with no real data or production access</td>
+<td>Not necessary.</td>
+<td>Only 7.6 (data and confidentiality).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="where-spad-fits-in-the-lifecycle"><span class="antetitulo">03</span>Where SPAD fits in the lifecycle</h2>
+<p>SPAD is used mainly in <strong>phases 4 (Solution design) and 5 (Delivery and validation)</strong>, with occasional support in phases 3 and 6. Phase numbering varies across SPAD documents; this document uses their <strong>names</strong>.</p>
+<figure class="grafico"><div class="g-titulo">SPAD within the SEVEN-G cycle</div><div class="g-sub">Technical verdicts feed evidence; gates are decided by people</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  F3["Phase 3: feasibility"] --> G3{"G3"}
+  G3 --> PL["PLAN and plan review"]
+  PL --> CP["Implementation rules and test strategy"]
+  CP --> G4{"G4 · Design"}
+  G4 --> IM["Implementation and testing"]
+  IM --> RV["Test, code and security review"]
+  RV -->|"Findings"| FX["Minimal fixes"]
+  FX --> IM
+  RV -->|"No blocking findings"| VE["Release"]
+  VE --> G5{"G5 · Go-live"}
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class G3,G4,G5 ok
+  class PL,CP,IM,RV,VE,FX med
+</pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
+<h3 id="3-1-spad-contexts-and-seven-g-evidence">3.1 SPAD contexts and SEVEN-G evidence</h3>
+<p>SPAD requires two contexts to be loaded before any phase. In SEVEN-G those contexts <strong>are derived</strong> from existing evidence; they are not drafted afresh.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>SPAD context</th>
+<th>Content</th>
+<th>SEVEN-G source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global context</td>
+<td>Common rules for artefacts, testing, versions, security and prohibitions.</td>
+<td>Document 31 (acceptable use), document 35 (security), the company's technical standards.</td>
+</tr>
+<tr>
+<td>Project context</td>
+<td>Technology, architecture, business rules, compliance and justified exceptions.</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> (context and constraints), <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> (regulatory classification), <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> (architecture), <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> (human oversight), <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> (security).</td>
+</tr>
+<tr>
+<td>Exceptions to the global context</td>
+<td>Must be justified, have their risk assessed and be approved in the plan review.</td>
+<td>In addition, they are recorded as a risk in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and, if they affect a critical control, require clearance from the AI Risk Owner.</td>
+</tr>
+<tr>
+<td>Work topic (<em>TOPIC</em>)</td>
+<td>Identifier that groups the artefacts.</td>
+<td>Must include or reference the initiative code (IA-AAAA-NNN) and be linked from <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (03 §2, principle 4).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="mapping-of-spad-phases-to-seven-g-evidence"><span class="antetitulo">04</span>Mapping of SPAD phases to SEVEN-G evidence</h2>
+<h3 id="4-1-main-flow">4.1 Main flow</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>SPAD phase</th>
+<th>What it produces</th>
+<th>SEVEN-G phase</th>
+<th>SEVEN-G evidence (P-code)</th>
+<th>Relationship to the <em>gate</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Context and objective</td>
+<td>Problem, scope, constraints, success criteria.</td>
+<td>3–4</td>
+<td>Taken from <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> and <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>Entry condition for phase 4 (G3 passed).</td>
+</tr>
+<tr>
+<td>PLAN</td>
+<td>Logical architecture, components, data flows, explicit decisions, risks.</td>
+<td>4</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> (architecture and decisions); <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> (data flows); <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> (new technical risks)</td>
+<td>Input to G4.</td>
+</tr>
+<tr>
+<td>Plan review (AUDIT_PLAN)</td>
+<td>Findings and technical verdict.</td>
+<td>4</td>
+<td>Annex to <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>; clearance or conditions in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Input to the G4 verification; it is not the verification.</td>
+</tr>
+<tr>
+<td>Implementation rules (CODE_PRIMER)</td>
+<td>Structure, conventions, contracts, anti-patterns.</td>
+<td>4</td>
+<td>Annex to <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td>Input to G4.</td>
+</tr>
+<tr>
+<td>Test strategy (TEST_STRATEGY)</td>
+<td>Cases, minimum coverage, test layers, test data.</td>
+<td>4</td>
+<td>Test plan in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> (planning section)</td>
+<td>Must exist before G4 in Enterprise.</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Code generated according to the rules.</td>
+<td>5</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> (delivery report)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Test implementation</td>
+<td>Tests, test data and execution instructions.</td>
+<td>5</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Test review (AUDIT_TESTS)</td>
+<td>Actual versus expected coverage, quality, edge cases.</td>
+<td>5</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>Input to G5.</td>
+</tr>
+<tr>
+<td>Code review (AUDIT_CODE)</td>
+<td>Fidelity to the plan and the rules, technical risks, debt.</td>
+<td>5</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td>Input to G5.</td>
+</tr>
+<tr>
+<td>Minimal fixes (FIX_PRIMERS)</td>
+<td>Problem, minimal change, justification, impact.</td>
+<td>5</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> (fix log)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Release management</td>
+<td>Version number, changes, incompatibilities, migration, fallback plan.</td>
+<td>5</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>; <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> (rollback plan); <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> (change log, from production onwards)</td>
+<td>Input to G5 and to the <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> sign-off.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-2-complementary-flows">4.2 Complementary flows</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>SPAD flow</th>
+<th>SEVEN-G phase</th>
+<th>SEVEN-G evidence</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentation of existing code and impact analysis (legacy code)</td>
+<td>3 (feasibility) and 4</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Security review (SECURITY_AUDIT)</td>
+<td>5; also for relevant changes in 6</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; critical and high findings block G5</td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Incident diagnosis (DEBUG)</td>
+<td>6</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> (root cause analysis)</td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Urgent fix (HOTFIX) and subsequent review</td>
+<td>6</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>; definitive plan as a recorded change</td>
+<td>T08</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-3-reduced-version-for-lite">4.3 Reduced version for Lite</h3>
+<p>In Lite, SEVEN-G allows the plan, its review, the rules and the test strategy to be grouped into a single artefact, and the implementation, the tests and their review into another, provided that the mandatory contents of section 7 are maintained and the human review is recorded.</p>
+<h3 id="4-4-technical-verdicts-and-gate-outcomes">4.4 Technical verdicts and <em>gate</em> outcomes</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>SPAD verdict</th>
+<th>Technical meaning</th>
+<th>Treatment in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GO</strong></td>
+<td>The technical phase can continue.</td>
+<td>The team can prepare the <em>gate</em> evidence. It does not imply <strong>Proceed</strong>.</td>
+</tr>
+<tr>
+<td><strong>GO with changes</strong></td>
+<td>Changes must be applied and reviewed again.</td>
+<td>If changes are still pending when the <em>gate</em> is reached, the body may decide <strong>Proceed with conditions</strong> or <strong>Iterate</strong>, never by default.</td>
+</tr>
+<tr>
+<td><strong>NO-GO</strong></td>
+<td>The artefact is not acceptable.</td>
+<td>The <em>gate</em> is not requested. If it recurs, it is a signal to <strong>Iterate</strong> or <strong>Pivot</strong> at the corresponding <em>gate</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="roles-ai-reviewer-versus-ai-auditor"><span class="antetitulo">05</span>Roles: AI Reviewer versus AI Auditor</h2>
+<h3 id="5-1-role-mapping">5.1 Role mapping</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Role in SPAD</th>
+<th>Name in SEVEN-G</th>
+<th>Nature</th>
+<th>Accountable human role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Human orchestrator</td>
+<td>Orchestrator</td>
+<td>Team member</td>
+<td>AI Technical Owner (or a team member designated by them in <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>).</td>
+</tr>
+<tr>
+<td>Planner AI (<em>Planner</em>)</td>
+<td>Planner AI</td>
+<td>Tool</td>
+<td>AI Technical Owner.</td>
+</tr>
+<tr>
+<td>Builder AI (<em>Builder</em>)</td>
+<td>Builder AI</td>
+<td>Tool</td>
+<td>AI Technical Owner.</td>
+</tr>
+<tr>
+<td>Fixer AI (<em>Fixer</em>)</td>
+<td>Fixer AI</td>
+<td>Tool</td>
+<td>AI Technical Owner.</td>
+</tr>
+<tr>
+<td>Analyst AI (<em>Analyst</em>)</td>
+<td>Analyst AI</td>
+<td>Tool</td>
+<td>AI Technical Owner.</td>
+</tr>
+<tr>
+<td>Diagnostic AI (<em>SRE</em>)</td>
+<td>Diagnostic AI</td>
+<td>Tool</td>
+<td>AI Operations Owner.</td>
+</tr>
+<tr>
+<td><strong>AI Auditor</strong> and security auditor AI</td>
+<td><strong>AI Reviewer</strong> and <strong>Security AI Reviewer</strong></td>
+<td>Tool</td>
+<td>AI Technical Owner; information security for the security review.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-2-why-the-role-is-renamed">5.2 Why the role is renamed</h3>
+<p>In SEVEN-G, <strong>AI Auditor</strong> is a human control role (01 §8.1): it verifies evidence at the <em>gates</em>, closes nonconformities, is independent of the team that builds and does not report to the sponsor. Calling a tool that works within the build team an &quot;auditor&quot; would lead to confusing a technical review with an independent verification. For this reason, in all SEVEN-G documents, templates and tools, SPAD's <em>AI Auditor</em> role is named <strong>AI Reviewer</strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>AI Reviewer</th>
+<th>AI Auditor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nature</td>
+<td>AI tool configured to review.</td>
+<td>Person (or team) from the third line or external.</td>
+</tr>
+<tr>
+<td>Belongs to</td>
+<td>The function that <strong>builds</strong>.</td>
+<td>The function that <strong>controls</strong>.</td>
+</tr>
+<tr>
+<td>What it reviews</td>
+<td>Plans, code, tests and security within a technical phase.</td>
+<td>That the <em>gate</em> evidence exists, is valid and was produced before the <em>gate</em>.</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>Findings and technical verdict.</td>
+<td><em>Gate</em> verification; opening and closing of nonconformities.</td>
+</tr>
+<tr>
+<td>Can approve</td>
+<td>Nothing. Its output is an input.</td>
+<td>Does not decide the <em>gate</em>, but without its verification there is no decision in Enterprise (01 §7.5).</td>
+</tr>
+<tr>
+<td>Independence</td>
+<td>Relative: it may share biases with the AI that generated the artefact.</td>
+<td>Required by 01 §8.2.</td>
+</tr>
+<tr>
+<td>Accountable to</td>
+<td>The AI Technical Owner, who validates its output.</td>
+<td>The competent body and the third line.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The person acting as human reviewer in SPAD's internal certification is not, by that fact alone, the SEVEN-G AI Auditor either; they may only be so if they satisfy the incompatibilities in 01 §8.2.</p>
+<h3 id="5-3-segregation-of-duties-applied-to-ai">5.3 Segregation of duties applied to AI</h3>
+<ol>
+<li>The same AI configuration <strong>must not</strong> generate and review the same artefact in the same phase (a SPAD rule that SEVEN-G adopts).</li>
+<li>In Enterprise, the AI Reviewer <strong>should</strong> use a model, supplier or configuration different from the AI that generated the artefact, and record which ones were used.</li>
+<li><strong>No AI approves.</strong> Every acceptance of an artefact is recorded by an identified person.</li>
+<li>The person who orchestrated the generation of a critical component <strong>must not</strong> be the only one who approves its merge into the main branch.</li>
+<li>The AI Auditor may consult the AI Reviewer's outputs, but <strong>must not</strong> base their verification solely on them.</li>
+</ol>
+<hr />
+<h2 id="spad-validation-policy-and-how-it-fits-into-seven-g"><span class="antetitulo">06</span>SPAD validation policy and how it fits into SEVEN-G</h2>
+<p>SPAD declares invalid, and requires the discarding and repetition of, any AI response that breaches the process, even if its result appears correct. SEVEN-G adopts that principle, which is consistent with dual validation (01 §7.2): <strong>complying with the process is a condition for the result to count</strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Cause of invalidity in SPAD</th>
+<th>Treatment in SPAD</th>
+<th>Additional treatment in SEVEN-G</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase violation (for example, a plan that includes code or a review that makes fixes)</td>
+<td>Discard and repeat the phase.</td>
+<td>Record of the incident in Enterprise.</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+</tr>
+<tr>
+<td>Mandatory artefacts missing or altered</td>
+<td>Discard and repeat.</td>
+<td>Without complete artefacts, the <em>gate</em> is not requested.</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+</tr>
+<tr>
+<td>Decisions outside the approved plan</td>
+<td>Discard and return to the plan.</td>
+<td>If the decision affects architecture, data, security or human oversight, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> are updated before G4 or G5.</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+</tr>
+<tr>
+<td>Implementation without a prior plan or review</td>
+<td>Discard the generated code.</td>
+<td>If that code reaches production, it is a <strong>major nonconformity</strong>; if it affects a critical control, <strong>critical</strong> (01 §12).</td>
+<td>T08</td>
+</tr>
+<tr>
+<td>AI self-approval</td>
+<td>Immediate discard; serious breach.</td>
+<td>Any approval without an identified person is null and void. If it was used to advance a <em>gate</em>, major nonconformity.</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, T08</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Breach log.</strong> SPAD considers it optional. In SEVEN-G it <strong>should</strong> be maintained in Enterprise, within <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, with date, work topic, phase, type of breach, tool or model and action. Repeated patterns feed lessons learned (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>) and, if they reveal an unsuitable tool, the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</p>
+<hr />
+<h2 id="seven-g-minimum-requirements-for-ai-generated-code"><span class="antetitulo">07</span>SEVEN-G minimum requirements for AI-generated code</h2>
+<p>They apply to all code, configuration, queries, infrastructure as code, tests or technical documentation generated wholly or partly with AI that forms part of an initiative's solution, regardless of the engineering method.</p>
+<h3 id="7-1-human-review">7.1 Human review</h3>
+<ul>
+<li>Every AI-generated artefact <strong>must</strong> be reviewed by a competent person before being merged into the main branch or a shared environment.</li>
+<li>The review <strong>must</strong> be recorded with an identified reviewer, date and outcome (for example, in the version control tool).</li>
+<li>Critical components (authentication, authorisation, personal data, payments, human oversight controls, agent limits of action, calculation of decisions about people) <strong>must</strong> have a second human review in Enterprise.</li>
+<li>Automated review, including that of the AI Reviewer, <strong>does not replace</strong> human review.</li>
+</ul>
+<h3 id="7-2-traceability">7.2 Traceability</h3>
+<ul>
+<li>It <strong>must</strong> be possible to identify which parts of the solution were generated with AI, with which tool and in which work topic or initiative (for example, through metadata in the changes or in the delivery report).</li>
+<li>Design decisions <strong>must</strong> be recorded in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, not only in conversations with the tool.</li>
+<li>In Enterprise, the relevant prompts and the accepted outputs of the plan and review phases <strong>should</strong> be retained, in line with the company's retention policy and without unnecessary personal data.</li>
+<li>The version of each delivery <strong>must</strong> be linked to its rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</li>
+</ul>
+<h3 id="7-3-testing">7.3 Testing</h3>
+<ul>
+<li>The test strategy <strong>must</strong> be defined before implementation, with minimum coverage and critical cases.</li>
+<li>AI-generated tests <strong>must</strong> be reviewed to check that they verify the expected behaviour and do not merely reproduce the generated code.</li>
+<li>If the solution is an AI system, the tests <strong>must</strong> include the performance, bias, robustness and security testing required in phase 5 (01 §6.7), including prompt injection testing for generative AI and agents.</li>
+<li>The results <strong>must</strong> be recorded in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> before G5.</li>
+</ul>
+<h3 id="7-4-security">7.4 Security</h3>
+<ul>
+<li>Static security analysis, secret detection and dependency analysis <strong>must</strong> be run on the generated code before G5; in Enterprise, on every change.</li>
+<li>Dependencies proposed by the AI <strong>must</strong> be verified (existence, provenance, maintenance and known vulnerabilities) before being incorporated, given the risk of non-existent or malicious packages suggested by the tool.</li>
+<li>A software bill of materials for the solution <strong>should</strong> be generated in Enterprise.</li>
+<li>Build agents <strong>must</strong> operate with least privilege, without production credentials and with logging of their actions; their autonomy is classified under A0–A3 and assessed with T10 (document 35).</li>
+<li>The OWASP Top 10 and the OWASP Top 10 for Large Language Model Applications lists may be used as technical references.</li>
+<li>Critical and high findings <strong>block</strong> G5 unless there is formal risk acceptance in accordance with 33 and 01 §7.3 (&quot;Proceed with conditions&quot; is not permitted for critical security controls).</li>
+</ul>
+<h3 id="7-5-intellectual-property-and-licences">7.5 Intellectual property and licences</h3>
+<ul>
+<li>The AI tool <strong>must</strong> be approved by the company, with reviewed contractual terms on ownership and use of outputs, use of input data for training and, where applicable, warranties or indemnities (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, document 36).</li>
+<li>Where the tool offers them, filters or notices of matches with public code <strong>should</strong> be enabled, and flagged matches reviewed.</li>
+<li>The licences of dependencies and of fragments identified as originating from third parties <strong>must</strong> be checked against the company's licensing policy.</li>
+<li>Copyright protection for content generated with little human creative input may be limited or uncertain depending on the jurisdiction. Where ownership of the code is relevant to the business (for example, a marketable product), legal counsel's opinion <strong>must</strong> be obtained and documented in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> or <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>.</li>
+</ul>
+<h3 id="7-6-data-and-confidentiality">7.6 Data and confidentiality</h3>
+<ul>
+<li>Personal data, secrets, credentials or confidential information <strong>must not</strong> be entered into tools not approved for that level of information (document 31).</li>
+<li>Test data <strong>should</strong> be synthetic or anonymised; if personal data are used, the legal basis and measures of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> apply.</li>
+<li>The tool's configuration regarding data retention and use <strong>must</strong> be verified before it is used in the initiative.</li>
+</ul>
+<h3 id="7-7-intensity">7.7 Intensity</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Human review (7.1)</td>
+<td>One recorded review</td>
+<td>One review; two for critical components</td>
+</tr>
+<tr>
+<td>Traceability (7.2)</td>
+<td>Identification of tool and scope in <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td>In addition, key prompts and outputs retained; breach log</td>
+</tr>
+<tr>
+<td>Testing (7.3)</td>
+<td>Simplified strategy and results in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>Full strategy before G4; test review</td>
+</tr>
+<tr>
+<td>Security (7.4)</td>
+<td>Static analysis, secrets and dependencies before G5</td>
+<td>On every change; software bill of materials; security review; T10 for agents</td>
+</tr>
+<tr>
+<td>Intellectual property (7.5)</td>
+<td>Approved tool; dependency licences</td>
+<td>In addition, match filters and legal opinion where appropriate</td>
+</tr>
+<tr>
+<td>Data (7.6)</td>
+<td>Mandatory</td>
+<td>Mandatory</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>SPAD optional</td>
+<td>SPAD or another equivalent documented method recommended</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-8-relationship-with-regulation">7.8 Relationship with regulation</h3>
+<ul>
+<li>Build evidence supports the <strong>technical documentation</strong> (Art. 11 and Annex IV), the <strong>quality management system</strong> (Art. 17) and the <strong>cybersecurity</strong> (Art. 15) of providers of high-risk AI systems under the EU AI Act (document 34, sections 3.7 and 3.8).</li>
+<li>Coding assistance tools are not, in general, high-risk systems by virtue of their intended purpose, but they must be inventoried and comply with the use policy (document 31). Their specific classification is confirmed with T07.</li>
+<li>If the company manufactures products with digital elements, Regulation (EU) 2024/2847 on cyber resilience (Cyber Resilience Act) must be assessed, with reporting obligations from 11-09-2026 and main obligations from 11-12-2027 (verify applicability; document 35).</li>
+<li>For entities subject to DORA, the development of and changes to ICT systems are integrated into their ICT risk management framework (document 34, section 7.1).</li>
+</ul>
+<hr />
+<h2 id="verification-at-the-gates"><span class="antetitulo">08</span>Verification at the <em>gates</em></h2>
+<p>The formal criteria will be incorporated into document 21. In the meantime, the verifier should check:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th><em>Gate</em></th>
+<th>What is checked regarding AI-assisted build</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>G4 · Design</strong></td>
+<td>AI build tools identified and approved; autonomy of build agents classified; plan and implementation rules reflected in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>; test strategy defined; exceptions to the global context recorded as risks.</td>
+</tr>
+<tr>
+<td><strong>G5 · Go-live</strong></td>
+<td>Human review recorded; traceability of AI-generated content; test and security results in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> with no open critical or high findings; licences checked; version linked to a tested rollback plan; breach log reviewed in Enterprise.</td>
+</tr>
+<tr>
+<td><strong>R6 · Continuity</strong></td>
+<td>Subsequent AI-generated changes recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> with the same requirements; urgent fixes with subsequent review closed.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="associated-tools-and-templates"><span class="antetitulo">09</span>Associated tools and templates</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Use in this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register</td>
+<td>Linking of work topic artefacts to the initiative.</td>
+</tr>
+<tr>
+<td>T02 · AI system inventory</td>
+<td>Registration of AI build tools.</td>
+</tr>
+<tr>
+<td>T03 · <em>Gate</em> manager</td>
+<td>Verification at G4, G5 and R6.</td>
+</tr>
+<tr>
+<td>T06 · Risk matrix and register</td>
+<td>Technical risks and exceptions to the global context.</td>
+</tr>
+<tr>
+<td>T08 · Nonconformity and incident register</td>
+<td>Implementation without review, self-approval, urgent fixes.</td>
+</tr>
+<tr>
+<td>T09 · AI supplier register</td>
+<td>Terms of the build tools.</td>
+</tr>
+<tr>
+<td>T10 · Agent security assessment</td>
+<td>Build agents and security review.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td>Designation of the orchestrator and the human reviewer.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> · <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td>Risks · tool supplier · plan, rules and decisions · data flows · security.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>Rollback · delivery report with fix and breach log · tests and reviews · go-live sign-off.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Incidents · changes and root cause · <em>gate</em> decision · lessons learned.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">10</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Foundational methodology</strong></td>
+<td>Phases 4 and 5, dual validation, roles and incompatibilities.</td>
+</tr>
+<tr>
+<td><strong>20 · Phase manuals</strong></td>
+<td>Detailed activities of phases 4 and 5.</td>
+</tr>
+<tr>
+<td><strong>21 · <em>Gate</em> criteria</strong></td>
+<td>Will incorporate the criteria in section 8.</td>
+</tr>
+<tr>
+<td><strong>30 · Governance model</strong></td>
+<td>AI Auditor role and segregation of duties.</td>
+</tr>
+<tr>
+<td><strong>31 · Corporate policy and acceptable use</strong></td>
+<td>Approved tools and permitted data.</td>
+</tr>
+<tr>
+<td><strong>34 · Regulatory mapping</strong></td>
+<td>Technical documentation, quality and cybersecurity required by regulation.</td>
+</tr>
+<tr>
+<td><strong>35 · AI and agent security</strong></td>
+<td>A0–A3 autonomy and controls for build agents.</td>
+</tr>
+<tr>
+<td><strong>36 · AI third parties and suppliers</strong></td>
+<td>Contracts for AI tools.</td>
+</tr>
+<tr>
+<td><strong>37 · Nonconformities and incidents</strong></td>
+<td>Handling of serious breaches.</td>
+</tr>
+<tr>
+<td><strong>SPAD</strong> (related methodology)</td>
+<td>AI-assisted engineering method referenced in this document.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">11</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Defines the relationship with SPAD as an independent methodology (D09), the mapping of phases, roles and validation policy to SEVEN-G evidence, the renaming of SPAD's <em>AI Auditor</em> role to <strong>AI Reviewer</strong> and the minimum requirements for AI-generated artefacts.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":true},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

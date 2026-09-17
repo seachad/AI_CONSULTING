@@ -1,5 +1,7 @@
-# SEVEN-G Official Skill — SPAD
+# Official Skill — SPAD
 ## Structured Prompt-Driven Engineering
+
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
 
 ---
 
@@ -38,12 +40,15 @@ SPAD is designed to convert AI usage from **ad-hoc assistance** into **governed 
 
 ---
 
-## 1. Skill definition (SEVEN-G)
+## 1. Skill definition
 
 **Skill name:**  
 SPAD — Structured Prompt-Driven Engineering
 
-**SEVEN-G family:**  
+**Relationship with SEVEN-G:**  
+Independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI)
+
+**Family:**  
 Core Engineering & AI Governance
 
 **Purpose:**  
@@ -83,7 +88,7 @@ SPAD is **mandatory** within SEVEN-G when:
 - **AI Planner**
   - Designs architecture and logic (no code)
 
-- **AI Auditor**
+- **AI Reviewer**
   - Independently audits plans and code
 
 - **AI Builder**
@@ -243,7 +248,7 @@ Final output:
 ---
 
 ### Phase SECURITY_AUDIT (Sensitive Code)
-**Responsible:** AI Security Auditor
+**Responsible:** AI Security Reviewer
 
 **Evaluates:**
 - vulnerabilities (CRITICAL/HIGH/MEDIUM/LOW)
@@ -284,13 +289,13 @@ Final output:
 flowchart TD
     A[Human: Context]
     B[AI Planner: PLAN]
-    C[AI Auditor: AUDIT_PLAN]
+    C[AI Reviewer: AUDIT_PLAN]
     D[AI Planner: CODE_PRIMER]
     TS[AI Planner: TEST_STRATEGY]
     E[AI Builder: IMPLEMENTATION]
     TI[AI Builder: TEST_IMPLEMENTATION]
-    AT[AI Auditor: AUDIT_TESTS]
-    F[AI Auditor: AUDIT_CODE]
+    AT[AI Reviewer: AUDIT_TESTS]
+    F[AI Reviewer: AUDIT_CODE]
     G[AI Fixer: FIX_PRIMERS]
     V[AI Planner: VERSION_MANAGEMENT]
     H[Stable System]
@@ -453,7 +458,7 @@ SECURITY_AUDIT → FIX_CRITICAL → FIX_HIGH → DOCUMENT_RISKS
 2. Each phase must be executed using its dedicated prompt.
 3. Phases may not be merged into a single interaction.
 4. All outputs must be preserved as evidence.
-5. The auditor role must remain independent from the builder role.
+5. The AI Reviewer role must remain independent from the builder role.
 6. The process only ends when AUDIT_CODE returns OK and VERSION is complete.
 7. **Context loading is mandatory:** GLOBAL_CONTEXT + PROJECT_CONTEXT before any phase.
 8. **TOPIC must be established:** At the beginning of any workflow.
@@ -470,7 +475,7 @@ SECURITY_AUDIT → FIX_CRITICAL → FIX_HIGH → DOCUMENT_RISKS
 2. **All output is auditable** - Explicit and traceable artifacts
 3. **All decisions are explicit** - No implicit decisions
 4. **Code executes, doesn't decide** - Builder doesn't make design decisions
-5. **Independent audits** - Auditor is not the implementer
+5. **Independent audits** - AI Reviewer is not the implementer
 6. **Minimal corrections** - Surgical fixes, not refactors
 7. **Mandatory testing** - Minimum coverage defined in TEST_STRATEGY
 8. **Security by design** - Sensitive code requires SECURITY_AUDIT
@@ -487,6 +492,6 @@ transforming LLMs from informal helpers into **reliable engineering collaborator
 ---
 
 **Skill owner:** Seachad (FGV)  
-**Framework:** SEVEN-G  
+**Relationship:** Independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI)  
 **Status:** Official Skill  
 **Generated with assistance from ChatGPT**

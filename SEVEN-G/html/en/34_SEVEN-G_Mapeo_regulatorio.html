@@ -1,0 +1,3544 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regulatory mapping</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Regulatory mapping"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/34_SEVEN-G_Mapeo_regulatorio.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/34_SEVEN-G_Mapeo_regulatorio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/34_SEVEN-G_Mapeo_regulatorio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/34_SEVEN-G_Mapeo_regulatorio.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 34 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 34 &#183; Regulatory mapping</p>
+    <h1>Regulatory mapping</h1>
+    <p class="entradilla">Each obligation linked to a SEVEN-G phase, role, evidence item and tool</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>7</b><span>regulatory references mapped</span></div><div class="cifra"><b>2-12-2027</b><span>application of Annex III high-risk requirements</span></div><div class="cifra"><b>13</b><span>stages and phases in the summary matrix</span></div><div class="cifra"><b>1</b><span>procedure for maintaining the mapping</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/34_SEVEN-G_Mapeo_regulatorio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/34_SEVEN-G_Mapeo_regulatorio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/34_SEVEN-G_Mapeo_regulatorio.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#determinations-prior-to-any-mapping"><span>02</span>Determinations prior to any mapping</a></li><li><a href="#eu-ai-act"><span>03</span>EU AI Act</a></li><li><a href="#iso-iec-42001-2023"><span>04</span>ISO/IEC 42001:2023</a></li><li><a href="#nist-ai-rmf-1-0-and-nist-ai-600-1-generative-ai-profile"><span>05</span>NIST AI RMF 1.0 and NIST AI 600-1 generative AI profile</a></li><li><a href="#gdpr-and-edpb-guidelines"><span>06</span>GDPR and EDPB guidelines</a></li><li><a href="#dora-and-nis2"><span>07</span>DORA and NIS2</a></li><li><a href="#spanish-legislation-and-aesia"><span>08</span>Spanish legislation and AESIA</a></li><li><a href="#summary-matrix-stages-and-phases-references"><span>09</span>Summary matrix: stages and phases × references</a></li><li><a href="#mapping-maintenance-procedure"><span>10</span>Mapping maintenance procedure</a></li><li><a href="#annex-a-other-jurisdictions-for-guidance"><span>11</span>Annex A · Other jurisdictions (for guidance)</a></li><li><a href="#annex-b-sector-references-for-guidance"><span>12</span>Annex B · Sector references (for guidance)</a></li><li><a href="#annex-c-sources-consulted-and-verification-status"><span>13</span>Annex C · Sources consulted and verification status</a></li><li><a href="#associated-tools-and-templates"><span>14</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>15</span>Related documents</a></li><li><a href="#version-control"><span>16</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<blockquote>
+<p><strong>Scope and responsibility.</strong> This mapping is <strong>for guidance only</strong> and does not constitute legal advice. It reflects the state of the legislation as consulted on 16 September 2026 (consultation date) and is not updated automatically. Both general regulation (EU AI Act, GDPR, DORA, NIS2 or national legislation) and <strong>regulation specific to each industry</strong> (banking, insurance, healthcare, energy, public sector, among others) change: dates of application, articles and texts in the legislative process are amended, and their scope depends on the interpretation, guidelines and supervisory positions of the competent authorities. The sector references annex (section 12) and the other jurisdictions annex (section 11) are for guidance only and do not identify all applicable obligations. Before using any row in a decision, verify that it is still in force in the official source. <strong>The user organisation is solely responsible for identifying the regulation that applies to it, carrying out the regulatory classification of each system (01 §13) and verifying and certifying its compliance with qualified legal advice</strong>; neither the author nor SEACHAD accepts that responsibility (document 93, section 11).</p>
+</blockquote>
+<h3 id="1-1-principle-seven-g-maps-it-does-not-embed">1.1 Principle: SEVEN-G maps, it does not embed</h3>
+<p>SEVEN-G does not reproduce regulation within its phases. It links each obligation to <strong>a phase or stage, an accountable role, an evidence item and a tool</strong>. When a regulation changes, the affected row of this document and tool T07 are updated, without redoing the lifecycle, the <em>gates</em> or the templates.</p>
+<p>This document develops section 13 of document 01 and covers: Regulation (EU) 2024/1689 (EU AI Act) as amended by Regulation (EU) 2026/1744 (section 3); ISO/IEC 42001:2023 (section 4); NIST AI RMF 1.0 and NIST AI 600-1 (section 5); the GDPR and the EDPB guidelines (section 6); DORA and NIS2 where applicable (section 7); Spanish legislation and AESIA (Spanish Agency for the Supervision of Artificial Intelligence) (section 8); and, for guidance purposes, other jurisdictions and sectors (sections 11 and 12).</p>
+<h3 id="1-2-what-this-document-does-not-do">1.2 What this document does not do</h3>
+<p>It does not classify specific systems (that is done in phase 3 with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and T07), it does not replace the text of the regulations or the authorities' guidelines, it does not assert unverified sector-specific requirements and it does not reproduce the text of ISO/IEC standards: it only identifies clauses and groups of controls by number and topic.</p>
+<h3 id="1-3-how-to-read-the-mapping-tables">1.3 How to read the mapping tables</h3>
+<p>All mapping tables use the same columns:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Obligation / requirement</strong></td>
+<td>Our own summary of the obligation, not a literal quotation.</td>
+</tr>
+<tr>
+<td><strong>Article or clause</strong></td>
+<td>Exact reference in the regulation or standard.</td>
+</tr>
+<tr>
+<td><strong>Applies to</strong></td>
+<td>Operator or obliged organisation (for example, provider, deployer, controller, financial entity).</td>
+</tr>
+<tr>
+<td><strong>SEVEN-G phase or stage</strong></td>
+<td>Lifecycle phase (0–7), gate (G0–G5, R6, G7) or corporate cycle stage (C1–C5).</td>
+</tr>
+<tr>
+<td><strong>Accountable role</strong></td>
+<td>SEVEN-G initiative role or body (01 §8; document 30). Legal counsel and the data protection officer form part of the second line.</td>
+</tr>
+<tr>
+<td><strong>Evidence</strong></td>
+<td>Template <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> or library document where the proof is held.</td>
+</tr>
+<tr>
+<td><strong>Tool</strong></td>
+<td>Tool <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–T22 where it is recorded (document 03).</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Terminology note.</strong> SEVEN-G's <em>AI Office</em> is an internal body of the company (01 §8.3). For the European Commission body provided for in the AI Act, <em>European AI Office</em> is always used.</p>
+<h3 id="1-4-verification-status">1.4 Verification status</h3>
+<p>Every statement about dates or recent changes implicitly carries one of these statuses, detailed in section 13:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verified (official)</strong></td>
+<td>Confirmed in an official source: EUR-Lex, European Commission, European Parliament, BOE (Official State Gazette), Congreso de los Diputados (Congress of Deputies), AESIA, ISO, NIST or EDPB.</td>
+</tr>
+<tr>
+<td><strong>Verified (secondary)</strong></td>
+<td>Confirmed in official sources in essence and detailed with published legal analyses; pending literal comparison with the text published in the Official Journal.</td>
+</tr>
+<tr>
+<td><strong>Pending confirmation</strong></td>
+<td>Could not be confirmed as at the consultation date. Must not be used without prior verification.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="determinations-prior-to-any-mapping"><span class="antetitulo">02</span>Determinations prior to any mapping</h2>
+<p>Before applying the tables, each system must have four questions resolved. They are recorded provisionally in phase 0 (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>) and confirmed in phase 3 (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Reference</th>
+<th>Possible outcome</th>
+<th>Phase</th>
+<th>Evidence</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Is it an AI system or a general-purpose AI model?</td>
+<td>AI Act, Art. 3(1) and 3(63); Commission guidelines on the definition of an AI system (February 2025)</td>
+<td>AI system · General-purpose model · Not AI (tag <em>Rules (not AI)</em>)</td>
+<td>0, confirmed in 3</td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T02, T07</td>
+</tr>
+<tr>
+<td>Is it within the scope of the Regulation?</td>
+<td>Art. 2 (exclusions: defence and national security, scientific research, purely personal non-professional activity, among others)</td>
+<td>Within scope · Out of scope</td>
+<td>0, confirmed in 3</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>What role does the company have in relation to that system?</td>
+<td>Art. 3(3) to 3(8) (provider, deployer, authorised representative, importer, distributor, operator) and Art. 25</td>
+<td>One or more roles per system</td>
+<td>0, confirmed in 3 and reviewed in R6</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>T02, T07, T09</td>
+</tr>
+<tr>
+<td>Which risk category does it fall into?</td>
+<td>Arts. 5, 6, 50 and Annexes I and III</td>
+<td>Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification (taxonomy in 03 §3.3)</td>
+<td>3; review in R6 and G7</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07, T02</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Change of role (Art. 25).</strong> A company acting as deployer takes on provider obligations if it puts its name or trademark on a high-risk AI system, makes a substantial modification to it or changes its intended purpose in such a way that it becomes high-risk. The role must therefore be reviewed at G4 (design), at G5 (before production) and at every relevant change recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</p>
+<figure class="grafico"><div class="g-titulo">Regulatory classification in phase 3</div><div class="g-sub">Sequence followed by the T07 classifier</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  A["AI system within scope?"] -->|"No"| FA["Out of scope"]
+  A -->|"Yes"| B{"Prohibited practice under Art. 5?"}
+  B -->|"Yes"| P["Prohibited: Stop at G3"]
+  B -->|"No"| C{"High risk under Art. 6(1) or Annex III?"}
+  C -->|"Annex III with documented Art. 6(3) exception"| T{"Art. 50 obligations?"}
+  C -->|"Yes"| AR["High risk: requirements of Arts. 9-15 and of the role"]
+  C -->|"No"| T
+  T -->|"Yes"| TR["Transparency obligations"]
+  T -->|"No"| RM["Minimal risk"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class RM,FA ok
+  class AR,TR med
+  class P ko
+</pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
+<p>The categories are not mutually exclusive: T07 must record all those that apply.</p>
+<hr />
+<h2 id="eu-ai-act"><span class="antetitulo">03</span>EU AI Act</h2>
+<h3 id="3-1-verified-timeline-of-application">3.1 Verified timeline of application</h3>
+<p>Regulation (EU) 2024/1689 entered into force on 1 August 2024 and applies in stages. <strong>Regulation (EU) 2026/1744 (Digital Omnibus on AI)</strong>, proposed by the Commission on 19 November 2025, with political agreement on 7 May 2026, adopted by the European Parliament on 16 June and by the Council on 29 June 2026, signed on 8 July, published in the Official Journal on 24 July and <strong>in force since 27 July 2026</strong>, has amended several dates.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>What applies</th>
+<th>Verification status</th>
+<th>Consequence in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1-08-2024</strong></td>
+<td>Entry into force of the Regulation.</td>
+<td>Verified (official)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2-02-2025</strong></td>
+<td>General provisions (definitions and AI literacy, Art. 4) and prohibited practices (Art. 5).</td>
+<td>Verified (official)</td>
+<td>No initiative involving a prohibited practice passes G3. Training and use policy (documents 31 and 50).</td>
+</tr>
+<tr>
+<td><strong>2-08-2025</strong></td>
+<td>Obligations of providers of general-purpose AI models (Chapter V); governance; national competent authorities; penalties regime (except fines on providers of general-purpose AI models).</td>
+<td>Verified (official)</td>
+<td>Information requirements for model providers (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, T09).</td>
+</tr>
+<tr>
+<td><strong>2-08-2026</strong></td>
+<td>General application of the Regulation, including the transparency obligations of Art. 50 and the Commission's enforcement powers over general-purpose AI models.</td>
+<td>Verified (official)</td>
+<td>Art. 50 obligations enforceable for systems in production: review in R6.</td>
+</tr>
+<tr>
+<td><strong>2-12-2026</strong></td>
+<td>New prohibitions added to Art. 5 by the omnibus (generation of non-consensual intimate material and child sexual abuse material). End of the transitional period for the machine-readable marking of Art. 50(2) for systems placed on the market before 2-08-2026.</td>
+<td>Verified (official) as to date and general content; paragraph numbering pending confirmation</td>
+<td>Incorporate into the T07 questionnaire and into phase 5 testing of generative systems.</td>
+</tr>
+<tr>
+<td><strong>2-08-2027</strong></td>
+<td>Obligation for Member States to have at least one national AI regulatory sandbox operational (previously 2-08-2026). Deadline for general-purpose AI models placed on the market before 2-08-2025 (Art. 111(3)).</td>
+<td>Verified (official) for the sandbox; Art. 111(3) according to the original text, with no known changes</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2-12-2027</strong></td>
+<td>Requirements and obligations for <strong>high-risk AI systems under Art. 6(2) and Annex III</strong> (previously 2-08-2026).</td>
+<td>Verified (official)</td>
+<td>Initiatives with go-live planned after this date must already be designed with the requirements (G4).</td>
+</tr>
+<tr>
+<td><strong>2-08-2028</strong></td>
+<td>Requirements for <strong>high-risk AI systems under Art. 6(1) and Annex I</strong> (regulated products; previously 2-08-2027).</td>
+<td>Verified (official)</td>
+<td>Likewise for regulated products.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Systems already on the market.</strong> Under Art. 111, high-risk AI systems predating the date of application are only subject to the Regulation if they undergo significant changes in their design, with specific rules for public authorities; the transitional dates following the omnibus are <strong>pending comparison with the published text</strong>. SEVEN-G does not use this exception to lower controls (01 §14).</p>
+<h3 id="3-2-changes-in-the-digital-omnibus-on-ai-relevant-to-seven-g">3.2 Changes in the Digital Omnibus on AI relevant to SEVEN-G</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Provision affected</th>
+<th>Application</th>
+<th>Status</th>
+<th>Effect in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Postponement of high-risk requirements</td>
+<td>Art. 113</td>
+<td>2-12-2027 (Annex III) and 2-08-2028 (Annex I)</td>
+<td>Verified (official)</td>
+<td>Updates T07 and the dates column of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>. Does not change the <em>gates</em>.</td>
+</tr>
+<tr>
+<td>AI literacy: the obligation becomes one of supporting the development of staff AI literacy, without requiring a specific level; the role of the Commission and the Member States is strengthened</td>
+<td>Art. 4</td>
+<td>From the entry into force of the omnibus</td>
+<td>Verified (official) in essence; literal wording verified (secondary)</td>
+<td>The policy and training plan remain evidence (documents 31 and 50). Deployers of high-risk AI systems retain the requirement of competence for those who exercise oversight (Art. 26(2)).</td>
+</tr>
+<tr>
+<td>New prohibited practices: systems that generate or manipulate non-consensual intimate material or child sexual abuse material, including systems in which that outcome is reasonably foreseeable in the absence of adequate safeguards</td>
+<td>Art. 5</td>
+<td>2-12-2026</td>
+<td>Verified (official)</td>
+<td>New question in T07 and specific test in phase 5 of generative systems (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
+</tr>
+<tr>
+<td>Transitional period for marking synthetic content</td>
+<td>Art. 50(2)</td>
+<td>2-12-2026 for systems placed on the market before 2-08-2026</td>
+<td>Verified (official)</td>
+<td>Compliance plan in R6 for existing systems.</td>
+</tr>
+<tr>
+<td>Processing of special categories of data to detect and correct bias, extended beyond high risk under a strict necessity criterion</td>
+<td>Art. 10 and associated provision</td>
+<td>From the entry into force of the omnibus</td>
+<td>Verified (official) in essence; exact article verified (secondary)</td>
+<td>Requires a documented GDPR legal basis and safeguards (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, data protection impact assessment in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+</tr>
+<tr>
+<td>Registration in the EU database: maintained, with simplified information, for Annex III systems that the provider considers not to be high-risk</td>
+<td>Arts. 6(3), 49(2) and Annex VIII</td>
+<td>With the high-risk requirements</td>
+<td>Verified (secondary)</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> retains the documentation of the Art. 6(3) exception.</td>
+</tr>
+<tr>
+<td>SME support measures extended to small mid-cap enterprises</td>
+<td>Various provisions</td>
+<td>From the entry into force of the omnibus</td>
+<td>Verified (official); thresholds verified (secondary)</td>
+<td>Relevant to the intensity of documentation; does not lower SEVEN-G criteria.</td>
+</tr>
+<tr>
+<td>Enhanced supervision by the European AI Office of systems based on general-purpose AI models from the same provider and of systems integrated into very large online platforms and search engines</td>
+<td>Art. 75</td>
+<td>From the entry into force of the omnibus</td>
+<td>Verified (official) in essence</td>
+<td>Identify the competent authority in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+</tr>
+<tr>
+<td>AI regulatory sandboxes: national deadline moved to 2-08-2027 and possible EU-level sandbox</td>
+<td>Art. 57</td>
+<td>2-08-2027</td>
+<td>Verified (official)</td>
+<td>Option for initiatives in phases 3–5 (section 8).</td>
+</tr>
+<tr>
+<td>Machinery: AI systems in machinery come to be dealt with mainly through Regulation (EU) 2023/1230; narrower definition of safety component</td>
+<td>Art. 3(14), Annex I and Regulation (EU) 2023/1230</td>
+<td>Exact date pending confirmation</td>
+<td>Verified (secondary)</td>
+<td>Relevant only to product manufacturers.</td>
+</tr>
+<tr>
+<td>Template for the post-market monitoring plan</td>
+<td>Art. 72(3)</td>
+<td>—</td>
+<td>Pending confirmation of whether the implementing act is maintained or replaced by guidance</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> and <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> do not depend on the final format.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-3-commission-guidelines-codes-of-practice-and-templates">3.3 Commission guidelines, codes of practice and templates</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Date</th>
+<th>Status as at 16-09-2026</th>
+<th>Use in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Guidelines on prohibited AI practices</td>
+<td>February 2025</td>
+<td>Published (non-binding)</td>
+<td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+</tr>
+<tr>
+<td>Guidelines on the definition of an AI system</td>
+<td>February 2025</td>
+<td>Published (non-binding)</td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, T02</td>
+</tr>
+<tr>
+<td>General-Purpose AI Code of Practice</td>
+<td>July 2025</td>
+<td>Published (voluntary)</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>: ask whether the provider has signed it</td>
+</tr>
+<tr>
+<td>Guidelines on the scope of obligations for general-purpose AI models</td>
+<td>July 2025</td>
+<td>Published</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, section 3.12</td>
+</tr>
+<tr>
+<td>Template for the public summary of training content of general-purpose AI models</td>
+<td>July 2025</td>
+<td>Published</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+</tr>
+<tr>
+<td>Draft guidance and template on serious incident reporting (Art. 73)</td>
+<td>Consultation in 2025</td>
+<td>Final version pending confirmation</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, T08</td>
+</tr>
+<tr>
+<td>Draft guidelines on the classification of high-risk AI systems (Art. 6)</td>
+<td>Draft published on 19-05-2026; targeted consultation</td>
+<td>Draft; final adoption pending</td>
+<td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+</tr>
+<tr>
+<td>Code of practice on marking and labelling of AI-generated content</td>
+<td>2026</td>
+<td>Published (voluntary)</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+</tr>
+<tr>
+<td>Guidelines on transparency obligations (Art. 50)</td>
+<td>20-07-2026</td>
+<td>Published</td>
+<td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+</tr>
+<tr>
+<td>Harmonised standards (CEN-CENELEC JTC 21)</td>
+<td>In preparation</td>
+<td>Publication in the Official Journal pending confirmation</td>
+<td>Section 10: regulatory watch</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-4-prohibited-practices-art-5">3.4 Prohibited practices (Art. 5)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Do not use subliminal, manipulative or deceptive techniques that materially distort behaviour and cause significant harm</td>
+<td>Art. 5(1)(a)</td>
+<td>All operators</td>
+<td>1 (screening), 3 (classification)</td>
+<td>AI Product Owner; AI Risk Owner with legal counsel</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Do not exploit vulnerabilities due to age, disability or social or economic situation</td>
+<td>Art. 5(1)(b)</td>
+<td>All operators</td>
+<td>1, 3</td>
+<td>AI Product Owner; AI Risk Owner</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Do not carry out social scoring leading to detrimental or disproportionate treatment</td>
+<td>Art. 5(1)(c)</td>
+<td>All operators</td>
+<td>1, 3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Do not assess the risk of a person committing a criminal offence based solely on profiling or personality traits</td>
+<td>Art. 5(1)(d)</td>
+<td>All operators</td>
+<td>3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Do not create or expand facial recognition databases through untargeted scraping of images</td>
+<td>Art. 5(1)(e)</td>
+<td>All operators</td>
+<td>3; data controls in 4</td>
+<td>AI Technical Owner; AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Do not infer emotions in the workplace or in educational institutions, except for medical or safety reasons</td>
+<td>Art. 5(1)(f)</td>
+<td>All operators</td>
+<td>3</td>
+<td>AI Risk Owner; second line</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Do not use biometric categorisation to deduce race, political opinions, trade union membership, beliefs, sex life or sexual orientation</td>
+<td>Art. 5(1)(g)</td>
+<td>All operators</td>
+<td>3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Do not use real-time remote biometric identification in publicly accessible spaces for law enforcement purposes, except in strictly defined cases</td>
+<td>Art. 5(1)(h) and 5(2)–5(7)</td>
+<td>Law enforcement authorities</td>
+<td>3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Do not place on the market or use systems that generate non-consensual intimate material or child sexual abuse material, or systems lacking reasonable safeguards against that foreseeable outcome</td>
+<td>Art. 5 as amended by Regulation (EU) 2026/1744 (paragraph pending confirmation); application 2-12-2026</td>
+<td>Providers and deployers</td>
+<td>3; testing in 5; review in R6</td>
+<td>AI Technical Owner; AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T07, T10</td>
+</tr>
+<tr>
+<td>Detect and stop any prohibited practice in systems in production or in unauthorised use</td>
+<td>Art. 5; 01 §6.5 and §12</td>
+<td>Entire company</td>
+<td>6, C4</td>
+<td>AI Operations Owner; AI Committee; board committee</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; critical nonconformity (document 37)</td>
+<td>T08, T21</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>SEVEN-G rule.</strong> A prohibited practice never progresses beyond phase 3 (01 §6.5). Its detection in production is a critical nonconformity with immediate containment and E-4 escalation under document 30.</p>
+<h3 id="3-5-ai-literacy-art-4">3.5 AI literacy (Art. 4)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Take measures to support the development of AI literacy among staff and others operating or using systems on the company's behalf, taking into account their knowledge, experience and context of use</td>
+<td>Art. 4 (wording of Regulation (EU) 2026/1744)</td>
+<td>Providers and deployers</td>
+<td>C2 (policy), C3 (plan), phases 4–6 per initiative</td>
+<td>Senior management; AI Office; Head of People</td>
+<td>Document 31 (policy), document 50, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>T20</td>
+</tr>
+<tr>
+<td>Specific training for those who use or oversee each system</td>
+<td>Art. 4; Art. 26(2) for high risk</td>
+<td>Deployers</td>
+<td>4 (design), 5 (user training)</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td>T20</td>
+</tr>
+<tr>
+<td>Monitoring of training coverage and corporate use of AI</td>
+<td>Art. 4</td>
+<td>Providers and deployers</td>
+<td>C4</td>
+<td>AI Office</td>
+<td>Board dashboard (document 60)</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, T21</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-6-high-risk-classification-art-6-and-annexes-i-and-iii">3.6 High-risk classification (Art. 6 and Annexes I and III)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Determine whether the system is a safety component of a product, or is itself a product, covered by the Annex I legislation and subject to third-party conformity assessment</td>
+<td>Art. 6(1) and Annex I (Sections A and B)</td>
+<td>Providers; product manufacturers</td>
+<td>3</td>
+<td>AI Risk Owner; AI Technical Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Determine whether the intended purpose is listed in Annex III</td>
+<td>Art. 6(2) and Annex III</td>
+<td>Providers and deployers</td>
+<td>1 (early signal), 3 (classification)</td>
+<td>AI Product Owner; AI Risk Owner</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Document, before placing on the market, the exception where an Annex III system does not pose a significant risk (narrow procedural task, improvement of a previously completed human activity, detection of patterns without replacing human assessment, or preparatory task); not available where profiling is performed</td>
+<td>Art. 6(3) and 6(4)</td>
+<td>Providers</td>
+<td>3; review at G4 and R6</td>
+<td>AI Risk Owner with legal counsel; verification by the AI Auditor</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07, T03</td>
+</tr>
+<tr>
+<td>Register the exception in the EU database</td>
+<td>Art. 49(2)</td>
+<td>Providers</td>
+<td>5 (before G5)</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T02</td>
+</tr>
+<tr>
+<td>Review the classification in the event of changes in purpose, scope, data or autonomy</td>
+<td>Arts. 6 and 25</td>
+<td>Providers and deployers</td>
+<td>R6, G7 and every change</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T07, T08</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Annex III areas</strong> (warning signs in phase 1): 1 biometrics · 2 critical infrastructure · 3 education and vocational training · 4 employment, workers' management and access to self-employment · 5 access to and enjoyment of essential private services and essential public services and benefits (including creditworthiness assessment and credit scoring, except fraud detection, and risk assessment and pricing in life and health insurance) · 6 law enforcement · 7 migration, asylum and border control management · 8 administration of justice and democratic processes. Any initiative with one of these signals must be treated as Enterprise from phase 0 until <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> concludes otherwise (01 §9.2).</p>
+<h3 id="3-7-requirements-for-high-risk-ai-systems-arts-9-to-15">3.7 Requirements for high-risk AI systems (Arts. 9 to 15)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Continuous risk management system throughout the entire lifecycle, with testing against defined metrics and thresholds</td>
+<td>Art. 9</td>
+<td>Providers</td>
+<td>3 (assessment), 4 (controls), 5 (testing), 6 (monitoring)</td>
+<td>AI Risk Owner; AI Technical Owner</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; document 33</td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Governance and quality of training, validation and testing data: relevance, representativeness, freedom from errors to the extent possible, examination of biases</td>
+<td>Art. 10</td>
+<td>Providers</td>
+<td>3 (availability), 4 (lineage), 5 (bias testing)</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; document 51</td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Technical documentation in accordance with Annex IV, drawn up before placing on the market and kept up to date</td>
+<td>Art. 11 and Annex IV</td>
+<td>Providers</td>
+<td>4 and 5; maintenance in 6</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>; document 53</td>
+<td>T03</td>
+</tr>
+<tr>
+<td>Automatic recording of events (<em>logs</em>) enabling traceability</td>
+<td>Art. 12</td>
+<td>Providers (design); deployers (retention, Art. 26(6))</td>
+<td>4 (design), 6 (retention)</td>
+<td>AI Technical Owner; AI Operations Owner</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Transparency and instructions for use for deployers</td>
+<td>Art. 13</td>
+<td>Providers</td>
+<td>4, 5</td>
+<td>AI Product Owner; AI Technical Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Effective human oversight: measures proportionate to risk and autonomy, ability to interpret, not use, override or stop the system</td>
+<td>Art. 14</td>
+<td>Providers (design) and deployers (implementation)</td>
+<td>4 (design), 5 (testing), 6 (operation)</td>
+<td>AI Technical Owner; AI Product Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Appropriate accuracy, robustness and cybersecurity, including resilience against manipulation of data, models and inputs</td>
+<td>Art. 15</td>
+<td>Providers</td>
+<td>4 (design), 5 (testing), 6 (monitoring)</td>
+<td>AI Technical Owner; information security</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>; document 35</td>
+<td>T10</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-8-obligations-of-providers-and-along-the-value-chain-arts-16-to-25">3.8 Obligations of providers and along the value chain (Arts. 16 to 25)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ensure compliance with the requirements of Arts. 9–15 and indicate their identity on the system or its documentation</td>
+<td>Art. 16(a) and 16(b)</td>
+<td>Providers</td>
+<td>4, 5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T03</td>
+</tr>
+<tr>
+<td>Documented quality management system (compliance strategy, design, development, testing, data management, risks, post-market monitoring, incidents, responsibilities)</td>
+<td>Art. 17</td>
+<td>Providers</td>
+<td>C2 (framework), 4–6 (implementation)</td>
+<td>AI Office; AI Technical Owner</td>
+<td>Documents 01, 20, 21, 53; section 4 of this document</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+</tr>
+<tr>
+<td>Keep the documentation for ten years after placing on the market</td>
+<td>Art. 18</td>
+<td>Providers</td>
+<td>5–7</td>
+<td>AI Technical Owner; AI Office</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Keep automatically generated logs under their control for at least six months</td>
+<td>Art. 19</td>
+<td>Providers</td>
+<td>6</td>
+<td>AI Operations Owner</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Conformity assessment, EU declaration of conformity and CE marking</td>
+<td>Arts. 16(f)–(h), 43, 47 and 48</td>
+<td>Providers</td>
+<td>5 (before G5)</td>
+<td>AI Technical Owner; second line</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T03</td>
+</tr>
+<tr>
+<td>Registration in the EU database</td>
+<td>Arts. 16(i) and 49</td>
+<td>Providers</td>
+<td>5 (before G5)</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T02</td>
+</tr>
+<tr>
+<td>Corrective actions, withdrawal or recall, and informing distributors, deployers and authorities where the system is not in conformity</td>
+<td>Art. 20</td>
+<td>Providers</td>
+<td>6; G7 if withdrawal is appropriate</td>
+<td>AI Operations Owner; AI Committee</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>T08, T22</td>
+</tr>
+<tr>
+<td>Cooperate with the authorities and provide documentation and logs</td>
+<td>Art. 21</td>
+<td>Providers</td>
+<td>6, C4</td>
+<td>AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; document 37</td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Appoint an authorised representative where the provider is established outside the EU</td>
+<td>Art. 22</td>
+<td>Providers established in third countries</td>
+<td>3 (supplier assessment)</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Importer and distributor verifications before making available on the market</td>
+<td>Arts. 23 and 24</td>
+<td>Importers and distributors</td>
+<td>3, 5</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Take on provider obligations when putting a name or trademark on the system, making a substantial modification or changing the purpose to high risk; written agreements with component suppliers</td>
+<td>Art. 25</td>
+<td>Deployers, distributors, importers and other third parties</td>
+<td>3, 4 and every change (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>)</td>
+<td>AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; document 36</td>
+<td>T07, T09</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-9-obligations-of-deployers-art-26">3.9 Obligations of deployers (Art. 26)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use the system in accordance with the instructions for use, with appropriate technical and organisational measures</td>
+<td>Art. 26(1)</td>
+<td>Deployers of high-risk AI systems</td>
+<td>4, 6</td>
+<td>AI Operations Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Assign human oversight to persons who have the necessary competence, training, authority and support</td>
+<td>Art. 26(2)</td>
+<td>Deployers of high-risk AI systems</td>
+<td>4 (design), 5 (training), 6</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>T20</td>
+</tr>
+<tr>
+<td>Ensure that input data under their control are relevant and sufficiently representative</td>
+<td>Art. 26(4)</td>
+<td>Deployers of high-risk AI systems</td>
+<td>4, 6</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Monitor operation, inform the provider, suspend use in the event of risk and report serious incidents</td>
+<td>Art. 26(5)</td>
+<td>Deployers of high-risk AI systems</td>
+<td>6</td>
+<td>AI Operations Owner</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Keep logs under their control for at least six months, unless otherwise provided</td>
+<td>Art. 26(6)</td>
+<td>Deployers of high-risk AI systems</td>
+<td>6</td>
+<td>AI Operations Owner</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Inform workers' representatives and affected workers before putting a high-risk AI system into use in the workplace</td>
+<td>Art. 26(7)</td>
+<td>Employers deploying high-risk AI systems</td>
+<td>4 (plan), before G5</td>
+<td>AI Sponsor; Head of People</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>; document 50</td>
+<td>T20</td>
+</tr>
+<tr>
+<td>Registration in the EU database where the deployer is a public authority</td>
+<td>Art. 26(8) and Art. 49(3)</td>
+<td>Public authorities and bodies</td>
+<td>5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T02</td>
+</tr>
+<tr>
+<td>Use the provider's information for the data protection impact assessment</td>
+<td>Art. 26(9); GDPR Art. 35</td>
+<td>Deployers</td>
+<td>3</td>
+<td>AI Risk Owner; data protection officer</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Inform natural persons that they are subject to the use of an Annex III system that makes decisions or assists in making them</td>
+<td>Art. 26(11)</td>
+<td>Deployers of high-risk AI systems</td>
+<td>4 (design), 6</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Explanation of individual decisions to the affected person, where applicable</td>
+<td>Art. 86</td>
+<td>Deployers of Annex III high-risk AI systems</td>
+<td>4 (design), 6 (handling of requests)</td>
+<td>AI Product Owner; second line</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Cooperate with the authorities</td>
+<td>Art. 26(12)</td>
+<td>Deployers</td>
+<td>6, C4</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Financial entities.</strong> Some obligations are deemed fulfilled through the internal governance required by financial services legislation (for example, Arts. 17(4) and 26(5)); <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> must identify which sector-specific evidence covers each one.</p>
+<h3 id="3-10-fundamental-rights-impact-assessment-art-27">3.10 Fundamental rights impact assessment (Art. 27)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carry out the assessment before first use: processes, period and frequency of use, affected persons and groups, specific risks, human oversight measures and measures to be taken if risks materialise</td>
+<td>Art. 27(1)</td>
+<td>Bodies governed by public law, private entities providing public services and deployers of systems under Annex III, point 5(b) and (c); does not apply to Annex III area 2</td>
+<td>3 (assessment), updated in 4</td>
+<td>AI Risk Owner; second line; AI Product Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Update the assessment when any of its elements change</td>
+<td>Art. 27(2)</td>
+<td>Same</td>
+<td>R6 and every change</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T07, T08</td>
+</tr>
+<tr>
+<td>Notify the market surveillance authority of the results using the prescribed form</td>
+<td>Art. 27(3)</td>
+<td>Same</td>
+<td>5 (before G5)</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Complement, without duplicating, the data protection impact assessment</td>
+<td>Art. 27(4); GDPR Art. 35</td>
+<td>Same</td>
+<td>3</td>
+<td>AI Risk Owner; data protection officer</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+</tbody>
+</table></div>
+<p>It applies together with the high-risk requirements (2-12-2027 for Annex III); the European AI Office template is <strong>pending confirmation</strong>. Every Enterprise initiative involving decisions about people should apply this content in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> even if not obliged to do so.</p>
+<h3 id="3-11-transparency-art-50">3.11 Transparency (Art. 50)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inform people that they are interacting with an AI system, unless this is obvious</td>
+<td>Art. 50(1)</td>
+<td>Providers of systems that interact with people</td>
+<td>4 (design), 5 (testing)</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Mark synthetic audio, image, video or text content in a machine-readable format</td>
+<td>Art. 50(2) (transitional period until 2-12-2026 for systems predating 2-08-2026)</td>
+<td>Providers of generative systems</td>
+<td>4, 5; compliance plan in R6</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T07, T10</td>
+</tr>
+<tr>
+<td>Inform people exposed to emotion recognition or biometric categorisation systems</td>
+<td>Art. 50(3)</td>
+<td>Deployers</td>
+<td>4, 6</td>
+<td>AI Product Owner; data protection officer</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Disclose that content is a deep fake, and that text published to inform the public on matters of public interest has been generated or manipulated, unless subject to human review with editorial responsibility</td>
+<td>Art. 50(4)</td>
+<td>Deployers</td>
+<td>4, 6</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Provide the information clearly and at the latest at the time of the first interaction or exposure</td>
+<td>Art. 50(5)</td>
+<td>Providers and deployers</td>
+<td>5 (testing)</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>Supporting references: Commission guidelines on Art. 50 (20-07-2026) and code of practice on marking and labelling (section 3.3).</p>
+<h3 id="3-12-general-purpose-ai-models-arts-51-to-55-for-those-who-integrate-them">3.12 General-purpose AI models (Arts. 51 to 55) for those who integrate them</h3>
+<p>Most companies are <strong>downstream providers</strong> or deployers of systems built on third-party models: they are affected by the information they must receive and by the risk of becoming providers.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Obtain from the model provider the information and documentation for downstream providers (capabilities, limitations, integration)</td>
+<td>Art. 53(1)(b) and Annex XII</td>
+<td>Obligation of the model provider; the integrating company must demand it</td>
+<td>3 (supplier assessment), 4 (architecture)</td>
+<td>AI Technical Owner; AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Check that the provider has a copyright policy and a public summary of training content</td>
+<td>Art. 53(1)(c) and 53(1)(d)</td>
+<td>Obligation of the model provider</td>
+<td>3</td>
+<td>AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; document 36</td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Know whether the model is classified as having systemic risk and which evaluations, mitigations and incident reporting its provider applies</td>
+<td>Arts. 51, 52 and 55</td>
+<td>Obligation of the model provider</td>
+<td>3, 6</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>T06, T09</td>
+</tr>
+<tr>
+<td>Assess whether the company's own modifications (for example, significant retraining or fine-tuning) make it the provider of the modified model, using the criteria of the Commission guidelines of July 2025</td>
+<td>Arts. 3(63), 3(66), 3(68) and 53; guidelines on general-purpose AI models</td>
+<td>Companies that modify models</td>
+<td>4 (design), every change</td>
+<td>AI Technical Owner with legal counsel</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>If the system built on the model is high-risk, comply with all the obligations of the system provider</td>
+<td>Arts. 6, 16 and 25</td>
+<td>Downstream providers</td>
+<td>3–6</td>
+<td>AI Technical Owner; AI Risk Owner</td>
+<td>Sections 3.7 and 3.8</td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Consider the provider's adherence to the code of practice as an element of the assessment, not as a guarantee</td>
+<td>Art. 56; code of July 2025</td>
+<td>Integrating companies</td>
+<td>3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>T09</td>
+</tr>
+</tbody>
+</table></div>
+<p>Timeline: obligations of model providers from 2-08-2025; Commission enforcement powers from 2-08-2026; models placed on the market before 2-08-2025, until 2-08-2027.</p>
+<h3 id="3-13-registration-in-the-eu-database-arts-49-and-71">3.13 Registration in the EU database (Arts. 49 and 71)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Register the provider and the Annex III high-risk AI system (except area 2, which is registered at national level) before placing it on the market or putting it into service</td>
+<td>Art. 49(1), Art. 71 and Annex VIII</td>
+<td>Providers</td>
+<td>5, before G5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T02, T03</td>
+</tr>
+<tr>
+<td>Register Annex III systems that the provider considers not to be high-risk under Art. 6(3), with the simplified information laid down in the amended text</td>
+<td>Art. 49(2) (as amended by Regulation (EU) 2026/1744)</td>
+<td>Providers</td>
+<td>5, before G5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T02</td>
+</tr>
+<tr>
+<td>Register and select the system in the database where the deployer is a public authority</td>
+<td>Art. 49(3)</td>
+<td>Public authorities and bodies</td>
+<td>5, before G5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T02</td>
+</tr>
+<tr>
+<td>Keep the registered information up to date</td>
+<td>Arts. 49 and 71</td>
+<td>Providers and public authorities</td>
+<td>6, R6, G7</td>
+<td>AI Operations Owner</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>T02, T08</td>
+</tr>
+</tbody>
+</table></div>
+<p>Registration in the internal inventory (<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, T02) is mandatory from phase 0 for every system; EU registration is distinct and is verified at G5.</p>
+<h3 id="3-14-post-market-monitoring-art-72">3.14 Post-market monitoring (Art. 72)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Establish and document a proportionate post-market monitoring system that collects and analyses performance data throughout the entire lifetime</td>
+<td>Art. 72(1) and 72(2)</td>
+<td>Providers of high-risk AI systems</td>
+<td>4 (design), 6 (execution)</td>
+<td>AI Operations Owner; AI Technical Owner</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td>T12</td>
+</tr>
+<tr>
+<td>Post-market monitoring plan as part of the technical documentation</td>
+<td>Art. 72(3) and Annex IV</td>
+<td>Providers of high-risk AI systems</td>
+<td>4, verified at G5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>T03</td>
+</tr>
+<tr>
+<td>Integrate monitoring into existing systems where equivalent sector-specific legislation exists</td>
+<td>Art. 72(4)</td>
+<td>Providers subject to Annex I, Section A, and financial entities</td>
+<td>4</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Periodically review the monitoring results and the continued validity of the classification</td>
+<td>Art. 72; 01 §6.8</td>
+<td>Providers</td>
+<td>R6</td>
+<td>AI Auditor verifies; AI Committee decides in Enterprise</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>T03</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-15-serious-incidents-art-73">3.15 Serious incidents (Art. 73)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classify whether an incident is a &quot;serious incident&quot; (death or serious harm to health; serious and irreversible disruption of critical infrastructure; infringement of obligations under Union law intended to protect fundamental rights; serious harm to property or the environment)</td>
+<td>Art. 3(49)</td>
+<td>Providers and deployers</td>
+<td>6</td>
+<td>AI Operations Owner; AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Report to the market surveillance authority as soon as the causal link or its reasonable likelihood has been established and, at the latest, within 15 days of becoming aware</td>
+<td>Art. 73(1) and 73(2)</td>
+<td>Providers of high-risk AI systems</td>
+<td>6 (severity S1)</td>
+<td>AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Shorter time limits: immediately and no later than 2 days for widespread infringements or serious disruption of critical infrastructure; no later than 10 days in the event of death</td>
+<td>Art. 73(3) and 73(4)</td>
+<td>Providers of high-risk AI systems</td>
+<td>6 (S1)</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Investigate, assess the risk and take corrective action without altering the system in a way that could affect the evaluation of the causes before informing the authorities</td>
+<td>Art. 73(6)</td>
+<td>Providers of high-risk AI systems</td>
+<td>6; G7 if appropriate</td>
+<td>AI Operations Owner; AI Technical Owner</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; document 37</td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Inform the provider without delay and, where applicable, the authorities when the deployer identifies a serious incident</td>
+<td>Art. 26(5)</td>
+<td>Deployers</td>
+<td>6</td>
+<td>AI Operations Owner</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Treat every possible serious incident as severity S1 and E-4 escalation</td>
+<td>Documents 30 and 37</td>
+<td>Entire company</td>
+<td>6, C4</td>
+<td>AI Committee; board committee</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Commission's guidance and template on serious incidents were published in draft in 2025; the final version is <strong>pending confirmation</strong>. The reporting obligation applies together with the high-risk obligations.</p>
+<h3 id="3-16-penalties-art-99-for-information-purposes">3.16 Penalties (Art. 99), for information purposes</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Infringement</th>
+<th>Article</th>
+<th>Maximum amount</th>
+<th>Use in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prohibited practices</td>
+<td>Art. 99(3)</td>
+<td>EUR 35 million or 7 % of total worldwide annual turnover, whichever is higher</td>
+<td>Impact 5 (Critical) on the regulatory axis (document 33)</td>
+</tr>
+<tr>
+<td>Other obligations of operators (including Arts. 16, 22–24, 26 and 50)</td>
+<td>Art. 99(4)</td>
+<td>EUR 15 million or 3 %</td>
+<td>Impact 4 or 5 depending on the case</td>
+</tr>
+<tr>
+<td>Incorrect, incomplete or misleading information to authorities</td>
+<td>Art. 99(5)</td>
+<td>EUR 7.5 million or 1 %</td>
+<td>Impact 3 or 4</td>
+</tr>
+<tr>
+<td>SMEs and start-ups</td>
+<td>Art. 99(6)</td>
+<td>The lower of the two amounts</td>
+<td>The extension to small mid-cap enterprises is <strong>pending confirmation</strong></td>
+</tr>
+<tr>
+<td>Providers of general-purpose AI models (Commission fines)</td>
+<td>Art. 101</td>
+<td>EUR 15 million or 3 %</td>
+<td>Provider risk in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>The Spanish penalties regime is in the legislative process (section 8). Penalties are cited only to assess regulatory impact.</p>
+<hr />
+<h2 id="iso-iec-42001-2023"><span class="antetitulo">04</span>ISO/IEC 42001:2023</h2>
+<p>ISO/IEC 42001:2023 (published in December 2023; under systematic review according to ISO as at the consultation date) specifies the requirements for an AI management system. In SEVEN-G, <strong>the C1–C5 corporate cycle acts as the management system</strong> and the 0–7 lifecycle as the operational process (01 §13). Certification is not part of SEVEN-G, but a company applying the framework should be able to provide the evidence in this section.</p>
+<h3 id="4-1-clauses-4-to-10">4.1 Clauses 4 to 10</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Understand the organisation and its context, including its role with respect to AI systems</td>
+<td>4.1</td>
+<td>Organisation implementing the management system</td>
+<td>C1</td>
+<td>AI Office</td>
+<td>Document 11 (diagnosis); inventory</td>
+<td>T02, T15</td>
+</tr>
+<tr>
+<td>Needs and expectations of interested parties</td>
+<td>4.2</td>
+<td>Same</td>
+<td>C1, C2</td>
+<td>AI Office; senior management</td>
+<td>Document 13</td>
+<td>T19</td>
+</tr>
+<tr>
+<td>Scope of the management system</td>
+<td>4.3</td>
+<td>Same</td>
+<td>C2</td>
+<td>Senior management</td>
+<td>Documents 13 and 31</td>
+<td>T19</td>
+</tr>
+<tr>
+<td>Establish the management system</td>
+<td>4.4</td>
+<td>Same</td>
+<td>C2–C5</td>
+<td>AI Committee</td>
+<td>Document 01</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Leadership and commitment of top management</td>
+<td>5.1</td>
+<td>Top management</td>
+<td>C2, C4</td>
+<td>Board; senior management</td>
+<td>Documents 13 and 60</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, T18</td>
+</tr>
+<tr>
+<td>AI policy</td>
+<td>5.2</td>
+<td>Top management</td>
+<td>C2</td>
+<td>Senior management; approved by the board</td>
+<td>Document 31</td>
+<td>T19</td>
+</tr>
+<tr>
+<td>Roles, responsibilities and authorities</td>
+<td>5.3</td>
+<td>Top management</td>
+<td>C2; phase 0</td>
+<td>AI Committee</td>
+<td>Document 30; <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Actions to address risks and opportunities</td>
+<td>6.1.1</td>
+<td>Organisation</td>
+<td>C2, C3</td>
+<td>AI Committee</td>
+<td>Documents 13 and 14</td>
+<td>T06</td>
+</tr>
+<tr>
+<td>AI risk assessment</td>
+<td>6.1.2</td>
+<td>Organisation</td>
+<td>C2 (criteria), phase 3 (assessment)</td>
+<td>AI Risk Owner</td>
+<td>Document 33; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>AI risk treatment and statement of applicability of controls</td>
+<td>6.1.3</td>
+<td>Organisation</td>
+<td>C2 (statement), phases 3–4</td>
+<td>AI Office; AI Risk Owner</td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>; section 4.2 as the basis for the statement</td>
+<td>T06</td>
+</tr>
+<tr>
+<td>AI system impact assessment</td>
+<td>6.1.4</td>
+<td>Organisation</td>
+<td>Phase 3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>AI objectives and planning to achieve them</td>
+<td>6.2</td>
+<td>Organisation</td>
+<td>C2, C3; phase 2</td>
+<td>Senior management; AI Product Owner</td>
+<td>Documents 13 and 14; <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>T11, T19</td>
+</tr>
+<tr>
+<td>Planning of changes</td>
+<td>6.3</td>
+<td>Organisation</td>
+<td>C3, C5</td>
+<td>AI Committee</td>
+<td>Document 14; <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Resources</td>
+<td>7.1</td>
+<td>Organisation</td>
+<td>C3</td>
+<td>AI Committee</td>
+<td>Document 14</td>
+<td>T13</td>
+</tr>
+<tr>
+<td>Competence</td>
+<td>7.2</td>
+<td>Organisation</td>
+<td>C3; phases 4–5</td>
+<td>Head of People; AI Office</td>
+<td>Document 50; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>T20</td>
+</tr>
+<tr>
+<td>Awareness</td>
+<td>7.3</td>
+<td>Organisation</td>
+<td>C2–C4</td>
+<td>AI Office</td>
+<td>Documents 31 and 50</td>
+<td>T20, T21</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>7.4</td>
+<td>Organisation</td>
+<td>C4</td>
+<td>AI Office</td>
+<td>Document 60</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+</tr>
+<tr>
+<td>Documented information</td>
+<td>7.5</td>
+<td>Organisation</td>
+<td>All</td>
+<td>AI Office</td>
+<td>Evidence register (03 §4)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+</tr>
+<tr>
+<td>Operational planning and control</td>
+<td>8.1</td>
+<td>Organisation</td>
+<td>Phases 0–7</td>
+<td>Initiative owners</td>
+<td>Document 20; <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+</tr>
+<tr>
+<td>AI risk assessment at planned intervals</td>
+<td>8.2</td>
+<td>Organisation</td>
+<td>Phase 3; R6</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>AI risk treatment</td>
+<td>8.3</td>
+<td>Organisation</td>
+<td>Phases 3–6</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>AI system impact assessment at planned intervals</td>
+<td>8.4</td>
+<td>Organisation</td>
+<td>Phase 3; R6</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Monitoring, measurement, analysis and evaluation</td>
+<td>9.1</td>
+<td>Organisation</td>
+<td>C4; phase 6</td>
+<td>AI Office</td>
+<td>Documents 40 and 41; <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td>T12, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+</tr>
+<tr>
+<td>Internal audit</td>
+<td>9.2</td>
+<td>Organisation</td>
+<td>C4, C5</td>
+<td>Third line; AI Auditor</td>
+<td>Document 38</td>
+<td>T03</td>
+</tr>
+<tr>
+<td>Management review</td>
+<td>9.3</td>
+<td>Top management</td>
+<td>C5</td>
+<td>Board; senior management</td>
+<td>Document 60; document 11</td>
+<td>T15, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+</tr>
+<tr>
+<td>Continual improvement</td>
+<td>10.1</td>
+<td>Organisation</td>
+<td>C5</td>
+<td>AI Office</td>
+<td>Lessons learned (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Nonconformity and corrective action</td>
+<td>10.2</td>
+<td>Organisation</td>
+<td>All</td>
+<td>AI Auditor; AI Committee</td>
+<td>Document 37</td>
+<td>T08</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-2-annex-a-controls-by-group">4.2 Annex A: controls by group</h3>
+<p>Annex A groups the reference controls into nine groups. The table states the objective of each group in our own words and where SEVEN-G covers it. The company's statement of applicability must be checked against the purchased text of the standard.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policies related to AI: documented policy, aligned with other policies and reviewed</td>
+<td>A.2</td>
+<td>Organisation</td>
+<td>C2, C5</td>
+<td>Senior management; AI Office</td>
+<td>Document 31</td>
+<td>T19</td>
+</tr>
+<tr>
+<td>Internal organisation: roles and responsibilities; channel for reporting concerns</td>
+<td>A.3</td>
+<td>Organisation</td>
+<td>C2; phase 0</td>
+<td>AI Committee</td>
+<td>Document 30; <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>; reporting channel in document 31</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Resources for AI systems: documentation of data, tooling, computing and human resources</td>
+<td>A.4</td>
+<td>Organisation</td>
+<td>Phases 3–4</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T13</td>
+</tr>
+<tr>
+<td>Assessing impacts: process, documentation, impact on individuals or groups and societal impact</td>
+<td>A.5</td>
+<td>Organisation</td>
+<td>Phase 3; R6</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>AI system lifecycle: objectives and processes for responsible development, requirements, design, verification and validation, deployment, operation and monitoring, technical documentation, event logging</td>
+<td>A.6</td>
+<td>Organisation</td>
+<td>Phases 2–6</td>
+<td>AI Technical Owner; AI Operations Owner</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>; document 53</td>
+<td>T03, T10</td>
+</tr>
+<tr>
+<td>Data for AI systems: development data, acquisition, quality, provenance and preparation</td>
+<td>A.7</td>
+<td>Organisation</td>
+<td>Phases 3–5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; document 51</td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Information for interested parties: user documentation, external communication, incident communication</td>
+<td>A.8</td>
+<td>Organisation</td>
+<td>Phases 4–6</td>
+<td>AI Product Owner; AI Operations Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Use of AI systems: processes and objectives for responsible use, intended use</td>
+<td>A.9</td>
+<td>Organisation</td>
+<td>C2; phases 4–6</td>
+<td>AI Product Owner; AI Office</td>
+<td>Document 31; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>T21</td>
+</tr>
+<tr>
+<td>Third-party and customer relationships: allocation of responsibilities, suppliers and customers</td>
+<td>A.10</td>
+<td>Organisation</td>
+<td>Phases 3–4; C4</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; document 36</td>
+<td>T09</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-3-related-standards">4.3 Related standards</h3>
+<p>ISO/IEC 42005:2025 (AI system impact assessment) is the methodological reference for <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>; ISO/IEC 23894:2023 (AI risk management), for document 33; and ISO/IEC 42006:2025 (audit and certification bodies), for document 38.</p>
+<hr />
+<h2 id="nist-ai-rmf-1-0-and-nist-ai-600-1-generative-ai-profile"><span class="antetitulo">05</span>NIST AI RMF 1.0 and NIST AI 600-1 generative AI profile</h2>
+<p>The NIST AI RMF 1.0 (January 2023) is a voluntary framework. As at the consultation date, NIST indicates that it is under revision; the NIST AI 600-1 profile was published on 26 July 2024. SEVEN-G uses them as a good practice reference, not as an obligation.</p>
+<h3 id="5-1-ai-rmf-functions-and-categories">5.1 AI RMF functions and categories</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI risk management policies, processes and procedures</td>
+<td>GOVERN 1</td>
+<td>Organisations that design, develop, deploy or use AI (voluntary)</td>
+<td>C2</td>
+<td>Senior management; AI Office</td>
+<td>Documents 01, 31 and 33</td>
+<td>T19</td>
+</tr>
+<tr>
+<td>Accountability structures</td>
+<td>GOVERN 2</td>
+<td>Same</td>
+<td>C2; phase 0</td>
+<td>AI Committee</td>
+<td>Document 30; <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Workforce diversity and inclusion in risk management</td>
+<td>GOVERN 3</td>
+<td>Same</td>
+<td>C3; phase 0</td>
+<td>Head of People</td>
+<td>Document 50; <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Risk management and communication culture</td>
+<td>GOVERN 4</td>
+<td>Same</td>
+<td>C2, C4</td>
+<td>AI Office</td>
+<td>Documents 31 and 60</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+</tr>
+<tr>
+<td>Engagement with external actors and affected parties</td>
+<td>GOVERN 5</td>
+<td>Same</td>
+<td>Phases 1, 3 and 6</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Third-party and supply chain risks</td>
+<td>GOVERN 6</td>
+<td>Same</td>
+<td>Phase 3; C4</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; document 36</td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Establish and understand the context</td>
+<td>MAP 1</td>
+<td>Same</td>
+<td>Phases 0–1</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>, <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Categorise the AI system</td>
+<td>MAP 2</td>
+<td>Same</td>
+<td>Phases 1 and 3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T05, T07</td>
+</tr>
+<tr>
+<td>Capabilities, intended use, goals, benefits and costs</td>
+<td>MAP 3</td>
+<td>Same</td>
+<td>Phases 2–3</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>T11, T13</td>
+</tr>
+<tr>
+<td>Risks and benefits of all components, including third-party ones</td>
+<td>MAP 4</td>
+<td>Same</td>
+<td>Phase 3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>T06, T09</td>
+</tr>
+<tr>
+<td>Impacts on individuals, groups, organisations and society</td>
+<td>MAP 5</td>
+<td>Same</td>
+<td>Phase 3</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Appropriate methods and metrics</td>
+<td>MEASURE 1</td>
+<td>Same</td>
+<td>Phases 2 and 5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T11</td>
+</tr>
+<tr>
+<td>Evaluation of trustworthiness characteristics (validity, safety, resilience, transparency, explainability, privacy, fairness)</td>
+<td>MEASURE 2</td>
+<td>Same</td>
+<td>Phase 5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Tracking of risks over time</td>
+<td>MEASURE 3</td>
+<td>Same</td>
+<td>Phase 6</td>
+<td>AI Operations Owner</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T06, T08</td>
+</tr>
+<tr>
+<td>Feedback on the efficacy of measurement</td>
+<td>MEASURE 4</td>
+<td>Same</td>
+<td>R6, C5</td>
+<td>AI Office</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; document 41</td>
+<td>T12</td>
+</tr>
+<tr>
+<td>Prioritise and respond to risks</td>
+<td>MANAGE 1</td>
+<td>Same</td>
+<td>Phases 3 and 6</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Strategies to maximise benefits and minimise negative impacts</td>
+<td>MANAGE 2</td>
+<td>Same</td>
+<td>Phases 4–7</td>
+<td>AI Product Owner; AI Committee</td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>T22</td>
+</tr>
+<tr>
+<td>Manage third-party risks</td>
+<td>MANAGE 3</td>
+<td>Same</td>
+<td>Phases 3–6</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Documented and monitored risk treatments, including response, recovery and communication</td>
+<td>MANAGE 4</td>
+<td>Same</td>
+<td>Phase 6</td>
+<td>AI Operations Owner</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-2-generative-ai-profile-nist-ai-600-1">5.2 Generative AI profile (NIST AI 600-1)</h3>
+<p>The profile describes risks that are unique to or exacerbated by generative AI and suggested actions associated with the AI RMF categories. SEVEN-G incorporates them as typical risks in the <strong>GEN</strong> category (and <strong>SEG</strong>, <strong>TER</strong> where applicable) of document 33.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chemical, biological, radiological or nuclear information or capabilities</td>
+<td>NIST AI 600-1, risk &quot;CBRN&quot;</td>
+<td>Voluntary</td>
+<td>Phase 3 (only if relevant to the use)</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Confabulation (erroneous content presented confidently)</td>
+<td>Risk &quot;Confabulation&quot;</td>
+<td>Voluntary</td>
+<td>Phases 3, 5 and 6</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Dangerous, violent or hateful content</td>
+<td>Risk &quot;Dangerous, violent or hateful content&quot;</td>
+<td>Voluntary</td>
+<td>Phases 4–5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Data privacy</td>
+<td>Risk &quot;Data privacy&quot;</td>
+<td>Voluntary</td>
+<td>Phases 3–4</td>
+<td>AI Risk Owner; data protection officer</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Environmental impacts</td>
+<td>Risk &quot;Environmental impacts&quot;</td>
+<td>Voluntary</td>
+<td>Phase 3; C4</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>; document 42</td>
+<td>T13</td>
+</tr>
+<tr>
+<td>Harmful bias and homogenisation</td>
+<td>Risk &quot;Harmful bias and homogenization&quot;</td>
+<td>Voluntary</td>
+<td>Phases 3 and 5</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Human–AI configuration (overreliance, anthropomorphisation)</td>
+<td>Risk &quot;Human-AI configuration&quot;</td>
+<td>Voluntary</td>
+<td>Phase 4</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>T20</td>
+</tr>
+<tr>
+<td>Information integrity</td>
+<td>Risk &quot;Information integrity&quot;</td>
+<td>Voluntary</td>
+<td>Phases 4–5</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Information security (including prompt injection)</td>
+<td>Risk &quot;Information security&quot;</td>
+<td>Voluntary</td>
+<td>Phases 4–6</td>
+<td>AI Technical Owner; information security</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; document 35</td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Intellectual property</td>
+<td>Risk &quot;Intellectual property&quot;</td>
+<td>Voluntary</td>
+<td>Phases 3–5</td>
+<td>AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; document 53</td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Obscene, degrading or abusive content</td>
+<td>Risk &quot;Obscene, degrading and/or abusive content&quot;</td>
+<td>Voluntary</td>
+<td>Phases 3–5 (related to the new Art. 5 prohibitions)</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T07, T10</td>
+</tr>
+<tr>
+<td>Value chain and component integration</td>
+<td>Risk &quot;Value chain and component integration&quot;</td>
+<td>Voluntary</td>
+<td>Phases 3–4</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T09</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="gdpr-and-edpb-guidelines"><span class="antetitulo">06</span>GDPR and EDPB guidelines</h2>
+<h3 id="6-1-gdpr-articles">6.1 GDPR articles</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Principles: lawfulness, fairness and transparency; purpose limitation; data minimisation; accuracy; storage limitation; integrity and confidentiality; accountability</td>
+<td>Art. 5</td>
+<td>Controllers and processors</td>
+<td>Phases 3–4; verification at G3 and G4</td>
+<td>AI Risk Owner; data protection officer (advises)</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Legal basis for processing in training, testing and use</td>
+<td>Art. 6</td>
+<td>Controllers</td>
+<td>Phase 3</td>
+<td>AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Conditions for processing special categories of data, including processing to detect and correct bias permitted by the AI Act</td>
+<td>Art. 9; AI Act Art. 10 as amended</td>
+<td>Controllers</td>
+<td>Phases 3–5</td>
+<td>AI Risk Owner; data protection officer</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Information to data subjects, including the existence of automated decision-making and meaningful information about the logic involved</td>
+<td>Arts. 13(2)(f) and 14(2)(g)</td>
+<td>Controllers</td>
+<td>Phase 4 (design), phase 6</td>
+<td>AI Product Owner</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Right of access, including information on automated decision-making</td>
+<td>Art. 15(1)(h)</td>
+<td>Controllers</td>
+<td>Phase 6</td>
+<td>AI Operations Owner; data protection officer</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Right not to be subject to decisions based solely on automated processing producing legal or similarly significant effects, save for exceptions with safeguards (human intervention, expressing one's point of view, contesting the decision)</td>
+<td>Art. 22</td>
+<td>Controllers</td>
+<td>Phase 3 (classification), phase 4 (human oversight), phase 6</td>
+<td>AI Product Owner; AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Data protection by design and by default</td>
+<td>Art. 25</td>
+<td>Controllers</td>
+<td>Phase 4; verified at G4</td>
+<td>AI Technical Owner</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Records of processing activities</td>
+<td>Art. 30</td>
+<td>Controllers and processors</td>
+<td>Phase 4, before G5</td>
+<td>Data protection officer; AI Technical Owner</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T02</td>
+</tr>
+<tr>
+<td>Notification of personal data breaches to the supervisory authority within 72 hours and, where there is a high risk, to data subjects</td>
+<td>Arts. 33 and 34</td>
+<td>Controllers</td>
+<td>Phase 6 (S1–S2)</td>
+<td>AI Operations Owner; data protection officer</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Data protection impact assessment where a high risk is likely (in particular, systematic and extensive evaluation based on automated processing) and prior consultation where appropriate</td>
+<td>Arts. 35 and 36</td>
+<td>Controllers</td>
+<td>Phase 3; updated in 4 and R6</td>
+<td>AI Risk Owner; data protection officer (advises and monitors)</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-2-edpb-guidelines-and-case-law-relevant-to-ai">6.2 EDPB guidelines and case law relevant to AI</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Date</th>
+<th>Status</th>
+<th>Use in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Guidelines on automated individual decision-making and profiling (WP251 rev.01, endorsed by the EDPB)</td>
+<td>2018</td>
+<td>In force</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+</tr>
+<tr>
+<td>Guidelines on data protection impact assessment (WP248 rev.01, endorsed by the EDPB)</td>
+<td>2017</td>
+<td>In force</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+</tr>
+<tr>
+<td>Guidelines 4/2019 on Article 25 (data protection by design and by default)</td>
+<td>2020 (version 2.0)</td>
+<td>In force</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+</tr>
+<tr>
+<td>Statement 3/2024 on data protection authorities' role in the AI Act framework</td>
+<td>July 2024</td>
+<td>Published</td>
+<td>Section 8</td>
+</tr>
+<tr>
+<td>Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models (model anonymity, legitimate interest, consequences of unlawful processing)</td>
+<td>December 2024</td>
+<td>Published</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+</tr>
+<tr>
+<td>Guidelines 01/2025 on pseudonymisation</td>
+<td>January 2025</td>
+<td>Final version pending confirmation</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+</tr>
+<tr>
+<td>Guidelines 02/2026 on anonymisation and Guidelines 03/2026 on web scraping in the context of generative AI</td>
+<td>Adopted in July 2026</td>
+<td>In public consultation until 30-10-2026</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+</tr>
+<tr>
+<td>CJEU judgment C-634/21 (SCHUFA): a score that determines third-party decisions may constitute an automated decision under Art. 22</td>
+<td>7-12-2023</td>
+<td>Final</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> (scoring systems)</td>
+</tr>
+<tr>
+<td>CJEU judgment C-203/22 (Dun &amp; Bradstreet Austria) on the scope of meaningful information about the logic involved</td>
+<td>27-02-2025</td>
+<td>Final</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Proposed amendment to the GDPR.</strong> The digital omnibus package of November 2025 includes, in addition to the AI part already adopted, a proposal amending the GDPR (among other aspects, the definition of personal data, legitimate interest for AI development and breach notification). As at the consultation date, that part <strong>is still in the legislative process and has not been adopted</strong>; its final content is pending confirmation. It is not applied in this mapping.</p>
+<hr />
+<h2 id="dora-and-nis2"><span class="antetitulo">07</span>DORA and NIS2</h2>
+<p>They apply only to companies within their scope: DORA to the financial entities in Art. 2 of Regulation (EU) 2022/2554, applicable since 17-01-2025; NIS2 to the essential and important entities defined in Directive (EU) 2022/2555 and in its national transposition. Where they apply, an AI system supporting a critical or important function is an Enterprise criterion (01 §9.2).</p>
+<h3 id="7-1-dora">7.1 DORA</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Responsibility of the management body for ICT risk</td>
+<td>Art. 5</td>
+<td>Financial entities</td>
+<td>C2, C4</td>
+<td>Board; board committee</td>
+<td>Documents 13 and 60</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+</tr>
+<tr>
+<td>ICT risk management framework that includes AI systems</td>
+<td>Art. 6</td>
+<td>Financial entities</td>
+<td>C2; phases 3–6</td>
+<td>Second line; AI Risk Owner</td>
+<td>Documents 33 and 35; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Identification, protection, detection, response and recovery, backups, learning</td>
+<td>Arts. 8 to 13</td>
+<td>Financial entities</td>
+<td>Phases 4–6</td>
+<td>AI Technical Owner; AI Operations Owner</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Process for managing, classifying and reporting major ICT-related incidents, within the time limits of the relevant technical standards</td>
+<td>Arts. 17 to 19</td>
+<td>Financial entities</td>
+<td>Phase 6</td>
+<td>AI Operations Owner; second line</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; document 37</td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Digital operational resilience testing</td>
+<td>Arts. 24 to 27</td>
+<td>Financial entities (advanced testing only for designated entities)</td>
+<td>Phase 5; C4</td>
+<td>AI Technical Owner; information security</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Management of ICT third-party risk, register of information and assessment of concentration risk</td>
+<td>Arts. 28 and 29</td>
+<td>Financial entities</td>
+<td>Phase 3; C4</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; document 36</td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Key contractual provisions with ICT third-party service providers (including providers of AI models and platforms)</td>
+<td>Art. 30</td>
+<td>Financial entities</td>
+<td>Phases 3–4</td>
+<td>AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; document 36</td>
+<td>T09</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-2-nis2">7.2 NIS2</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Approval and oversight of cybersecurity measures by management bodies and training of their members</td>
+<td>Art. 20</td>
+<td>Essential and important entities</td>
+<td>C2, C4</td>
+<td>Board; senior management</td>
+<td>Documents 13, 35 and 60</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+</tr>
+<tr>
+<td>Cybersecurity risk-management measures, including supply chain security</td>
+<td>Art. 21 (in particular 21(2)(d))</td>
+<td>Essential and important entities</td>
+<td>Phases 3–6</td>
+<td>Information security; AI Technical Owner</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>; document 35</td>
+<td>T09, T10</td>
+</tr>
+<tr>
+<td>Reporting of significant incidents: early warning within 24 hours, incident notification within 72 hours and final report within one month</td>
+<td>Art. 23</td>
+<td>Essential and important entities</td>
+<td>Phase 6 (S1–S2)</td>
+<td>AI Operations Owner; information security</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Transposition in Spain.</strong> As at the consultation date, the law transposing NIS2 (Anteproyecto de Ley de Coordinación y Gobernanza de la Ciberseguridad (Draft Law on Cybersecurity Coordination and Governance), approved at first reading in January 2025) <strong>does not appear as published in the BOE</strong>; exact status of the legislative process pending confirmation.</p>
+<p><strong>Products with digital elements.</strong> If the company manufactures products with digital elements that incorporate AI, Regulation (EU) 2024/2847 on cyber resilience (Cyber Resilience Act) must also be assessed (reporting obligations from 11-09-2026 and main obligations from 11-12-2027). This is developed in document 35.</p>
+<hr />
+<h2 id="spanish-legislation-and-aesia"><span class="antetitulo">08</span>Spanish legislation and AESIA</h2>
+<h3 id="8-1-status-as-at-the-consultation-date">8.1 Status as at the consultation date</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Regulation or action</th>
+<th>Reference</th>
+<th>Status as at 16-09-2026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Statute of the Agencia Española de Supervisión de Inteligencia Artificial (AESIA)</td>
+<td>Real Decreto (Royal Decree) 729/2023, of 22 August (BOE-A-2023-18911)</td>
+<td>In force. AESIA acts as market surveillance authority and single point of contact.</td>
+</tr>
+<tr>
+<td>Controlled testing environment for testing compliance with the AI Act</td>
+<td>Real Decreto (Royal Decree) 817/2023, of 8 November (BOE-A-2023-22767)</td>
+<td>In force. The Government announced the conclusion of the first sandbox in June 2026; new calls pending confirmation.</td>
+</tr>
+<tr>
+<td>Guides supporting compliance with the AI Act</td>
+<td>AESIA, 16-12-2025: two introductory guides, thirteen technical requirements guides and checklists, derived from the sandbox</td>
+<td>Published; non-binding.</td>
+</tr>
+<tr>
+<td>Proyecto de Ley Orgánica para el buen uso y la gobernanza de la inteligencia artificial (Draft Organic Law for the proper use and governance of artificial intelligence)</td>
+<td>Approved by the Council of Ministers on 26-05-2026; BOCG (Official Gazette of the Cortes Generales), Congreso, series A, no. 97-1, of 12-06-2026; file 121/000096</td>
+<td><strong>In the legislative process</strong>: amendments stage in the Comisión de Economía, Comercio y Transformación Digital (Committee on Economy, Trade and Digital Transformation), with the deadline successively extended (last known extension until 23-09-2026). Final content and date of approval pending.</td>
+</tr>
+<tr>
+<td>Instrucción 2/2026 del CGPJ (Instruction 2/2026 of the General Council of the Judiciary) on the use of AI systems in judicial activity</td>
+<td>BOE-A-2026-2205</td>
+<td>Published. Relevant only to the judicial sphere.</td>
+</tr>
+<tr>
+<td>Regional legislation</td>
+<td>For example, Ley 2/2025, de 2 de abril, para el desarrollo e impulso de la IA en Galicia (Law 2/2025 of 2 April on the development and promotion of AI in Galicia)</td>
+<td>In force within its territory; review according to the company's territorial presence.</td>
+</tr>
+<tr>
+<td>Guides of the AEPD (Spanish Data Protection Agency) on processing operations that incorporate AI and on auditing such processing</td>
+<td>AEPD</td>
+<td>Published; reference for <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>According to the text of the bill sent to the Cortes Generales and the published analyses of it, the law would designate several market surveillance authorities (including AESIA, the AEPD, the Banco de España and the CNMV (National Securities Market Commission)), a regime of minor, serious and very serious infringements, rules for the public sector and regulation of AI regulatory sandboxes. <strong>All of this is pending confirmation in the text finally approved.</strong></p>
+<h3 id="8-2-mapping">8.2 Mapping</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Obligation / requirement</th>
+<th>Article or clause</th>
+<th>Applies to</th>
+<th>SEVEN-G phase or stage</th>
+<th>Accountable role</th>
+<th>Evidence (P-code or document)</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identify the competent market surveillance authority for each system (AESIA or sector authority)</td>
+<td>RD 729/2023; draft organic law (pending)</td>
+<td>Providers and deployers in Spain</td>
+<td>Phase 3</td>
+<td>AI Risk Owner; legal counsel</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Channel serious incident reports and fundamental rights impact assessments to the competent authority</td>
+<td>AI Act Arts. 27(3) and 73; national legislation pending</td>
+<td>Providers and deployers</td>
+<td>Phases 5–6</td>
+<td>AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Consider participation in an AI regulatory sandbox where the initiative is high-risk and regulatory feasibility is uncertain</td>
+<td>RD 817/2023; AI Act Arts. 57–59</td>
+<td>Providers and deployers</td>
+<td>Phase 3 (decision), phases 4–5 (execution)</td>
+<td>AI Sponsor; AI Risk Owner</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Use the AESIA guides as a reference for technical requirements</td>
+<td>AESIA guides (December 2025)</td>
+<td>Providers and deployers</td>
+<td>Phases 3–6</td>
+<td>AI Technical Owner; AI Risk Owner</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T07, T03</td>
+</tr>
+<tr>
+<td>Monitor the legislative process of the organic law and update this mapping when it is published in the BOE</td>
+<td>File 121/000096</td>
+<td>AI Office</td>
+<td>Section 10</td>
+<td>AI Office; legal counsel</td>
+<td>Document 34</td>
+<td>T07</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="summary-matrix-stages-and-phases-references"><span class="antetitulo">09</span>Summary matrix: stages and phases × references</h2>
+<p>How to read it: what each reference requires at each stage of the corporate cycle and in each phase of the lifecycle. &quot;—&quot; indicates that there is no main obligation at that point.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Stage or phase</th>
+<th>AI Act</th>
+<th>ISO/IEC 42001</th>
+<th>NIST AI RMF / 600-1</th>
+<th>GDPR</th>
+<th>DORA / NIS2 (if applicable)</th>
+<th>Spanish legislation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C1 · Diagnosis</strong></td>
+<td>Inventory and role per system (Arts. 3, 25)</td>
+<td>4.1, 4.2</td>
+<td>MAP 1</td>
+<td>Existing records of processing activities (Art. 30)</td>
+<td>ICT inventory and third-party register (DORA Art. 28)</td>
+<td>Competent authorities identified</td>
+</tr>
+<tr>
+<td><strong>C2 · Direction</strong></td>
+<td>AI literacy (Art. 4); policy on prohibited practices</td>
+<td>4.3, 5.1–5.3, 6.1–6.2, A.2, A.3</td>
+<td>GOVERN 1–4</td>
+<td>Accountability (Art. 5(2))</td>
+<td>Responsibility of the management body (DORA Art. 5; NIS2 Art. 20)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>C3 · Portfolio</strong></td>
+<td>High-risk signals in the portfolio</td>
+<td>6.3, 7.1–7.2</td>
+<td>GOVERN 2, 6</td>
+<td>—</td>
+<td>Concentration risk (DORA Art. 29)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>C4 · Oversight</strong></td>
+<td>Serious incidents and aggregated monitoring</td>
+<td>9.1, 9.2</td>
+<td>MEASURE 3–4</td>
+<td>Personal data breaches (Arts. 33–34)</td>
+<td>Major incidents (DORA Arts. 17–19; NIS2 Art. 23)</td>
+<td>Monitoring of the organic law</td>
+</tr>
+<tr>
+<td><strong>C5 · Review</strong></td>
+<td>Review of the mapping and of classifications</td>
+<td>9.3, 10.1, 10.2</td>
+<td>MEASURE 4; MANAGE 4</td>
+<td>—</td>
+<td>Learning (DORA Art. 13)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>0 · Context</strong></td>
+<td>Scope, role and provisional classification</td>
+<td>5.3, 8.1</td>
+<td>MAP 1</td>
+<td>Identify whether there are personal data</td>
+<td>Identify whether it supports a critical function</td>
+<td>Possible sandbox</td>
+</tr>
+<tr>
+<td><strong>1 · Discovery</strong></td>
+<td>Screening for prohibited practices and Annex III signals</td>
+<td>A.9</td>
+<td>MAP 1, MAP 3</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2 · Hypothesis</strong></td>
+<td>—</td>
+<td>6.2</td>
+<td>MAP 3; MEASURE 1</td>
+<td>Minimisation and purpose (Art. 5)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>3 · Feasibility and risk</strong></td>
+<td>Classification (Arts. 5, 6, 50); risk management (Art. 9); fundamental rights impact assessment (Art. 27); general-purpose AI models (Art. 53)</td>
+<td>6.1.2–6.1.4, 8.2–8.4, A.5, A.7, A.10</td>
+<td>MAP 2–5; GOVERN 6; 600-1 risks</td>
+<td>Legal basis (Arts. 6, 9); impact assessment (Art. 35); Art. 22</td>
+<td>Third-party risk and contracts (DORA Arts. 28–30; NIS2 Art. 21)</td>
+<td>Competent authority; AESIA guides</td>
+</tr>
+<tr>
+<td><strong>4 · Design</strong></td>
+<td>Data (Art. 10), documentation (Art. 11), logs (Art. 12), instructions (Art. 13), human oversight (Art. 14), cybersecurity (Art. 15), transparency (Art. 50)</td>
+<td>8.1, A.4, A.6, A.7, A.8</td>
+<td>MANAGE 2; 600-1 controls</td>
+<td>Data protection by design (Art. 25); information (Arts. 13–14)</td>
+<td>Protection and detection (DORA Arts. 8–10)</td>
+<td>AESIA guides</td>
+</tr>
+<tr>
+<td><strong>5 · Delivery and validation</strong></td>
+<td>Testing (Arts. 9, 15), conformity, declaration and CE marking (Arts. 43, 47, 48), registration (Art. 49), information to workers (Art. 26(7)), notification of the impact assessment (Art. 27(3))</td>
+<td>A.6, A.8</td>
+<td>MEASURE 1–2</td>
+<td>Updated records of processing activities (Art. 30)</td>
+<td>Resilience testing (DORA Arts. 24–27)</td>
+<td>Notifications to the competent authority</td>
+</tr>
+<tr>
+<td><strong>6 · Operation</strong></td>
+<td>Deployer obligations (Art. 26), post-market monitoring (Art. 72), serious incidents (Art. 73), explanation (Art. 86)</td>
+<td>8.2–8.4, 9.1, A.6, A.8</td>
+<td>MEASURE 3; MANAGE 1, 4</td>
+<td>Rights (Arts. 15, 22); breaches (Arts. 33–34)</td>
+<td>Incidents and recovery (DORA Arts. 11, 17–19; NIS2 Art. 23)</td>
+<td>Notifications and requests</td>
+</tr>
+<tr>
+<td><strong>7 · Evolution or retirement</strong></td>
+<td>Corrective actions and withdrawal (Art. 20); retention of documentation (Art. 18); update of registration (Art. 49)</td>
+<td>10.1, 10.2</td>
+<td>MANAGE 2, 4</td>
+<td>Retention and erasure of data (Art. 5(1)(e))</td>
+<td>Supplier exit strategy (DORA Art. 28)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="mapping-maintenance-procedure"><span class="antetitulo">10</span>Mapping maintenance procedure</h2>
+<h3 id="10-1-responsibilities">10.1 Responsibilities</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Role or body</th>
+<th>Responsibility for the mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI Office</strong></td>
+<td>Owns document 34 and tool T07. Maintains regulatory watch, prepares change proposals and communicates approved changes.</td>
+</tr>
+<tr>
+<td><strong>Second line</strong> (compliance, legal counsel, data protection officer, information security)</td>
+<td>Validates the legal content of each change and its interpretation. No change of date, article or criterion is published without its validation.</td>
+</tr>
+<tr>
+<td><strong>AI Committee</strong></td>
+<td>Approves changes with an impact on initiatives, <em>gates</em> or intensity, and decides portfolio reclassifications.</td>
+</tr>
+<tr>
+<td><strong>Board committee</strong></td>
+<td>Receives a quarterly summary of relevant regulatory changes (C4).</td>
+</tr>
+<tr>
+<td><strong>Third line</strong></td>
+<td>Verifies at least once a year that the mapping is up to date and that the changes have been applied to the affected initiatives.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-2-triggers-and-frequency">10.2 Triggers and frequency</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Examples</th>
+<th>Analysis time limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Publication of a regulation or amendment in the Official Journal of the EU or in the BOE</td>
+<td>New amending regulation; Spanish organic law; NIS2 transposition</td>
+<td>10 working days from publication</td>
+</tr>
+<tr>
+<td>Commission guidelines, codes of practice, templates or implementing acts</td>
+<td>Final guidelines on high risk; serious incident template</td>
+<td>20 working days</td>
+</tr>
+<tr>
+<td>Harmonised standards or revisions of technical standards</td>
+<td>CEN-CENELEC JTC 21 standards; revision of ISO/IEC 42001; revision of the NIST AI RMF</td>
+<td>30 working days</td>
+</tr>
+<tr>
+<td>Guidance from national authorities or the EDPB; CJEU judgments</td>
+<td>AESIA guides; final EDPB guidelines</td>
+<td>20 working days</td>
+</tr>
+<tr>
+<td>Upcoming date of application</td>
+<td>Six months before each date in the timeline in section 3.1</td>
+<td>Review of the affected initiatives</td>
+</tr>
+<tr>
+<td>Ordinary review</td>
+<td>Monthly watch; formal quarterly review (C4); full annual review (C5)</td>
+<td>According to schedule</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-3-steps">10.3 Steps</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What is done</th>
+<th>Responsible</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Detect the change and record it with the official source and consultation date</td>
+<td>AI Office</td>
+<td>Entry in the mapping change log</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Analyse the impact: affected rows, T07 questions, <em>gate</em> criteria (document 21), templates and inventory systems</td>
+<td>AI Office with the second line</td>
+<td>Impact note</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Validate the legal interpretation</td>
+<td>Second line</td>
+<td>Recorded clearance</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Approve the change if it affects initiatives, intensity or <em>gates</em></td>
+<td>AI Committee</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> or committee minutes</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Update document 34 (new version), T07 and, where applicable, the templates</td>
+<td>AI Office</td>
+<td>Version control</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Reclassify the affected systems and open actions in the initiatives (classification change event in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>)</td>
+<td>AI Risk Owners of each initiative</td>
+<td>Updated <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>; event in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Communicate to the teams and, if relevant, to the board committee</td>
+<td>AI Office</td>
+<td>C4 report</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Verify implementation at the next annual review</td>
+<td>Third line</td>
+<td>Audit report (document 38)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A regulatory change that turns a previously compliant situation into non-compliance is not in itself a nonconformity; failing to act within the time limits above or letting an applicable obligation fall due unmet is (document 37).</p>
+<hr />
+<h2 id="annex-a-other-jurisdictions-for-guidance"><span class="antetitulo">11</span>Annex A · Other jurisdictions (for guidance)</h2>
+<p>It serves only to detect possible obligations outside the EU; it does not analyse requirements and requires local advice.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Indicative situation as at the consultation date</th>
+<th>Treatment in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>United Kingdom</strong></td>
+<td>Principles-based approach applied by sector regulators, without a general AI law equivalent to the EU Regulation (possible legislative initiatives pending confirmation). Data protection follows its own regime, with recent reforms concerning automated decision-making (details pending confirmation).</td>
+<td>Declare it as a constraint in <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> and consult local counsel in phase 3.</td>
+</tr>
+<tr>
+<td><strong>United States</strong></td>
+<td>No general federal AI law; voluntary frameworks (NIST AI RMF), action by sector agencies and state laws whose scopes and dates of application have changed and must be verified case by case.</td>
+<td>Declare it in <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>; use section 5 as a good practice reference.</td>
+</tr>
+<tr>
+<td><strong>International instruments</strong></td>
+<td>OECD AI Principles; Council of Europe Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law (opened for signature in 2024; ratification status pending confirmation).</td>
+<td>Reference for the corporate policy (document 31).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="annex-b-sector-references-for-guidance"><span class="antetitulo">12</span>Annex B · Sector references (for guidance)</h2>
+<p>It does not assert sector-specific requirements; it points out interactions that the second line must analyse in <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> and <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>. It is for guidance only: responsibility for identifying the applicable sector regulation, for the regulatory classification and for compliance lies with the organisation, with qualified advice.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>Points of contact with the AI Act</th>
+<th>Sector references to review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Banking and payments</strong></td>
+<td>Creditworthiness assessment and credit scoring of natural persons (Annex III, point 5(b), except fraud detection); integration of obligations into internal governance (Arts. 17(4) and 26(5)); DORA (section 7.1).</td>
+<td>EBA exercise on the implications of the AI Act (November 2025), with no immediate need for new guidelines; EBA guidelines on loan origination; role of the Banco de España as authority (pending the organic law).</td>
+</tr>
+<tr>
+<td><strong>Insurance</strong></td>
+<td>Risk assessment and pricing in life and health insurance (Annex III, point 5(c)); DORA.</td>
+<td>EIOPA Opinion on AI governance and risk management (6-08-2025), addressed to supervisors, which does not create new requirements and excludes high-risk and prohibited systems; Solvency II and the Insurance Distribution Directive.</td>
+</tr>
+<tr>
+<td><strong>Healthcare</strong></td>
+<td>Medical devices and <em>in vitro</em> diagnostic medical devices with AI as high-risk under Art. 6(1) and Annex I (application 2-08-2028); emergency call triage and access to public benefits (Annex III, point 5); special categories of data (GDPR Art. 9).</td>
+<td>Regulations (EU) 2017/745 and 2017/746; European Health Data Space Regulation (exact reference and timeline pending confirmation); national health legislation.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="annex-c-sources-consulted-and-verification-status"><span class="antetitulo">13</span>Annex C · Sources consulted and verification status</h2>
+<p>Consultation date for all sources: 16-09-2026.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Source</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Omnibus: legislative process, entry into force (27-07-2026), high-risk dates, Art. 50(2) and new prohibitions</td>
+<td>European Commission (digital-strategy.ec.europa.eu; AI Act Service Desk); European Parliament, procedure 2025/0359(COD)</td>
+<td>Verified (official)</td>
+</tr>
+<tr>
+<td>Text of Regulation (EU) 2026/1744 and details of Arts. 4, 10, 49 and 3(14) and small mid-cap enterprise thresholds</td>
+<td>EUR-Lex (the text could not be read automatically) and published legal analyses</td>
+<td>Verified (secondary): check against EUR-Lex</td>
+</tr>
+<tr>
+<td>Commission guidelines and codes</td>
+<td>European Commission</td>
+<td>Verified (official); final versions on high risk and serious incidents pending</td>
+</tr>
+<tr>
+<td>ISO/IEC 42001, 42005 and 42006; NIST AI RMF and AI 600-1; EDPB</td>
+<td>iso.org; nist.gov; edpb.europa.eu</td>
+<td>Verified (official)</td>
+</tr>
+<tr>
+<td>Part of the omnibus amending the GDPR</td>
+<td>European Parliament and published analyses</td>
+<td>In the legislative process; pending confirmation</td>
+</tr>
+<tr>
+<td>RD 729/2023, RD 817/2023, AESIA guides, draft organic law</td>
+<td>boe.es; aesia.digital.gob.es; La Moncloa; congreso.es</td>
+<td>Verified (official); status after 16-09-2026 pending</td>
+</tr>
+<tr>
+<td>NIS2 transposition in Spain; United Kingdom; United States; European Health Data Space</td>
+<td>Secondary sources</td>
+<td>Pending confirmation; for guidance</td>
+</tr>
+<tr>
+<td>Cyber resilience; EBA; EIOPA</td>
+<td>European Commission; eba.europa.eu; eiopa.europa.eu</td>
+<td>Verified (official)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="associated-tools-and-templates"><span class="antetitulo">14</span>Associated tools and templates</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Use in this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T07 · Regulatory classifier</strong></td>
+<td>Main tool: determinations in section 2, questions on Arts. 5, 6 and 50, required assessments and dates in section 3.1. Updated using the procedure in section 10.</td>
+</tr>
+<tr>
+<td>T02 · T03 · T06 · T08 · T09 · T10</td>
+<td>Inventory and EU registration · verification at <em>gates</em> · risks · incidents and notifications · value chain and third parties · cybersecurity and human oversight.</td>
+</tr>
+<tr>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · T20 · T21</td>
+<td>Reporting to the board, training and corporate use.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> · Regulatory classification and impact assessments</strong></td>
+<td>Main evidence of phase 3.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>–<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>–<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Provisional classification · design requirements · conformity, operation and incidents · decisions and mapping changes.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">15</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Foundational methodology</strong></td>
+<td>Section 13, which this document develops.</td>
+</tr>
+<tr>
+<td><strong>03 · Tools</strong></td>
+<td>Catalogue and regulatory taxonomy.</td>
+</tr>
+<tr>
+<td><strong>21 · <em>Gate</em> criteria</strong></td>
+<td>Verification of regulatory evidence.</td>
+</tr>
+<tr>
+<td><strong>30 · Governance model</strong></td>
+<td>Second line, escalation and notifications.</td>
+</tr>
+<tr>
+<td><strong>31 · Corporate policy</strong></td>
+<td>AI literacy and corporate use.</td>
+</tr>
+<tr>
+<td><strong>32 · Inventory and classification</strong></td>
+<td>Classification procedure.</td>
+</tr>
+<tr>
+<td><strong>33 · AI risks</strong></td>
+<td>Regulatory impact and typical risks.</td>
+</tr>
+<tr>
+<td><strong>35 · AI and agent security</strong></td>
+<td>Cybersecurity and cyber resilience.</td>
+</tr>
+<tr>
+<td><strong>36 · Third parties</strong></td>
+<td>Value chain and DORA.</td>
+</tr>
+<tr>
+<td><strong>37 · Nonconformities and incidents</strong></td>
+<td>Serious incidents.</td>
+</tr>
+<tr>
+<td><strong>38 · AI audit</strong></td>
+<td>Annual verification of the mapping.</td>
+</tr>
+<tr>
+<td><strong>53 · Building with AI</strong></td>
+<td>Development evidence.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">16</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Maps the EU AI Act as amended by Regulation (EU) 2026/1744 (timeline verified as at 16-09-2026), ISO/IEC 42001:2023, NIST AI RMF 1.0 and NIST AI 600-1, the GDPR and EDPB guidelines, DORA, NIS2 and Spanish legislation; adds a summary matrix, a maintenance procedure and indicative annexes on other jurisdictions and sectors. Legal notice and user responsibility for regulatory compliance.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":true},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

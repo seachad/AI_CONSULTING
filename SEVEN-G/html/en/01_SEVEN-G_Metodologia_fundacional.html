@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEVEN-G foundational methodology</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G foundational methodology"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/01_SEVEN-G_Metodologia_fundacional.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/01_SEVEN-G_Metodologia_fundacional.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/01_SEVEN-G_Metodologia_fundacional.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/01_SEVEN-G_Metodologia_fundacional.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 01 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 01 &#183; Foundational methodology</p>
+    <h1>SEVEN-G foundational methodology</h1>
+    <p class="entradilla">Model, principles, governance cycles, decision gates and roles</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>10</b><span>principles</span></div><div class="cifra"><b>2</b><span>governance levels</span></div><div class="cifra"><b>8</b><span>phases per initiative</span></div><div class="cifra"><b>6</b><span>roles with segregation of duties</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/01_SEVEN-G_Metodologia_fundacional.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/01_SEVEN-G_Metodologia_fundacional.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/01_SEVEN-G_Metodologia_fundacional.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#the-seven-g-model"><span>02</span>The SEVEN-G model</a></li><li><a href="#principles"><span>03</span>Principles</a></li><li><a href="#basic-concepts"><span>04</span>Basic concepts</a></li><li><a href="#company-level-corporate-cycle"><span>05</span>Company level · Corporate cycle</a></li><li><a href="#initiative-level-lifecycle"><span>06</span>Initiative level · Lifecycle</a></li><li><a href="#decision-gates"><span>07</span>Decision gates</a></li><li><a href="#roles-bodies-and-segregation-of-duties"><span>08</span>Roles, bodies and segregation of duties</a></li><li><a href="#application-intensity-lite-and-enterprise"><span>09</span>Application intensity: Lite and Enterprise</a></li><li><a href="#risks"><span>10</span>Risks</a></li><li><a href="#measurement"><span>11</span>Measurement</a></li><li><a href="#nonconformities"><span>12</span>Nonconformities</a></li><li><a href="#regulation-and-reference-standards"><span>13</span>Regulation and reference standards</a></li><li><a href="#how-to-declare-that-seven-g-is-applied"><span>14</span>How to declare that SEVEN-G is applied</a></li><li><a href="#related-documents"><span>15</span>Related documents</a></li><li><a href="#version-control"><span>16</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<p>This document defines the SEVEN-G model and the rules that an organisation must apply in order to declare that it governs its artificial intelligence with this framework. It is the normative reference for all the other documents: the manuals, criteria, templates and tools develop what is established here and cannot contradict it.</p>
+<h3 id="1-1-what-it-contains">1.1 What it contains</h3>
+<ul>
+<li>The framework model: governance levels, components and the relationship between them.</li>
+<li>The principles and how they are verified.</li>
+<li>The corporate cycle, which governs AI in the company.</li>
+<li>The lifecycle of each initiative, with its phases, evidence and decision gates.</li>
+<li>The decision rules, including the differences by ambition level.</li>
+<li>Roles, bodies and segregation of duties.</li>
+<li>The application intensity (Lite or Enterprise) and how it is determined.</li>
+<li>The integration of risk, measurement, nonconformities and regulation.</li>
+</ul>
+<p>The operational detail of each topic is developed in the related documents (section 15).</p>
+<h3 id="1-2-compatibility-and-modular-adoption">1.2 Compatibility and modular adoption</h3>
+<p>SEVEN-G is compatible with governance structures that are already in place, with in-house or external consulting teams, and with pre-existing corporate frameworks for risk, control, technology or transformation. The framework does not require replacement; its function is to provide a common language, decision traceability and verifiable evidence to coordinate what the company already does with what it needs to strengthen.</p>
+<p>Its design is modular: it can be implemented in full or by components. An organisation may start with one specific element (for example inventory, <em>gates</em>, measurement or board oversight) and progressively expand scope without breaking methodological coherence.</p>
+<h3 id="1-3-what-is-governed-with-seven-g">1.3 What is governed with SEVEN-G</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type of AI use</th>
+<th>Examples</th>
+<th>Treatment in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI initiatives</strong></td>
+<td>Predictive models, generative AI solutions, agents, AI-enabled automations developed or adapted by the company.</td>
+<td>Full lifecycle (phases 0–7) at the appropriate intensity.</td>
+</tr>
+<tr>
+<td><strong>Third-party AI embedded in processes</strong></td>
+<td>Supplier software with AI functions that play a part in decisions, operations or customer relationships.</td>
+<td>Full lifecycle; the design and delivery phases focus on the selection, integration, contract and controls of the supplier.</td>
+</tr>
+<tr>
+<td><strong>Corporate use of general-purpose AI</strong></td>
+<td>AI-enabled assistants and productivity suites used by employees.</td>
+<td>Inventory, acceptable use policy, training and technical controls. It moves to the full cycle if it meets any Enterprise criterion (section 9).</td>
+</tr>
+<tr>
+<td><strong>Unauthorised use</strong></td>
+<td>AI tools used without approval.</td>
+<td>It is detected, recorded and regularised (authorisation, replacement or blocking) as a nonconformity.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="1-4-language-conventions">1.4 Language conventions</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>must</strong></td>
+<td>Mandatory requirement. Failure to meet it is a nonconformity.</td>
+</tr>
+<tr>
+<td><strong>should</strong></td>
+<td>Recommendation. It may be omitted if the omission is justified and recorded.</td>
+</tr>
+<tr>
+<td><strong>may</strong></td>
+<td>Permitted option.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="the-seven-g-model"><span class="antetitulo">02</span>The SEVEN-G model</h2>
+<p><strong>SEVEN-G</strong> stands for <em>Seven-phase Enterprise Value &amp; Governance</em>. The name expresses the three ideas of the framework:</p>
+<ul>
+<li><strong>Seven value phases</strong> that each initiative goes through, preceded by a phase 0 that authorises it.</li>
+<li><strong>Enterprise value</strong> as the criterion for all decisions.</li>
+<li><strong>Governance</strong> present in every phase and in the company as a whole.</li>
+</ul>
+<figure class="grafico">
+  <div class="g-titulo">SEVEN-G architecture</div>
+  <div class="g-sub">Two connected levels of governance and four cross-cutting components</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 960 560" role="img" aria-label="SEVEN-G architecture: corporate cycle, initiative lifecycle with decision gates and cross-cutting components">
+  <defs>
+    <marker id="arq-flecha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="sv-flecha"/></marker>
+  </defs>
+
+  <!-- Nivel compañía -->
+  <rect x="0" y="10" width="730" height="196" class="sv-panel"/>
+  <rect x="0" y="10" width="730" height="3" fill="#1a1817"/>
+  <text x="22" y="46" class="sv-t sv-serif" font-size="21" font-weight="600">Company level · Corporate cycle</text>
+  <text x="22" y="68" class="sv-t2" font-size="13">Board and senior management · annual, with quarterly oversight</text>
+  <g font-size="14">
+    <g transform="translate(22,88)"><path d="M0,0 H116 L132,32 L116,64 H0 Z" fill="#0a3d73"/><text x="14" y="26" class="sv-blanco" font-size="11" font-weight="700" opacity=".75">C1</text><text x="14" y="46" class="sv-blanco" font-weight="600">Diagnosis</text></g>
+    <g transform="translate(160,88)"><path d="M0,0 H116 L132,32 L116,64 H0 L16,32 Z" fill="#0f5499"/><text x="26" y="26" class="sv-blanco" font-size="11" font-weight="700" opacity=".75">C2</text><text x="26" y="46" class="sv-blanco" font-weight="600">Direction</text></g>
+    <g transform="translate(298,88)"><path d="M0,0 H116 L132,32 L116,64 H0 L16,32 Z" fill="#2a67ab"/><text x="26" y="26" class="sv-blanco" font-size="11" font-weight="700" opacity=".75">C3</text><text x="26" y="46" class="sv-blanco" font-weight="600">Portfolio</text></g>
+    <g transform="translate(436,88)"><path d="M0,0 H116 L132,32 L116,64 H0 L16,32 Z" fill="#0d7680"/><text x="26" y="26" class="sv-blanco" font-size="11" font-weight="700" opacity=".75">C4</text><text x="26" y="46" class="sv-blanco" font-weight="600">Oversight</text></g>
+    <g transform="translate(574,88)"><path d="M0,0 H134 V64 H0 L16,32 Z" fill="#593380"/><text x="26" y="26" class="sv-blanco" font-size="11" font-weight="700" opacity=".75">C5</text><text x="26" y="46" class="sv-blanco" font-weight="600">Review</text></g>
+  </g>
+  <path d="M640,156 C640,192 96,192 88,158" class="sv-regla" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arq-flecha)"/>
+  <text x="365" y="198" text-anchor="middle" class="sv-t3" font-size="12">new cycle</text>
+
+  <!-- Conexiones -->
+  <line x1="190" y1="210" x2="190" y2="274" class="sv-regla" stroke-width="2" marker-end="url(#arq-flecha)"/>
+  <text x="202" y="248" class="sv-t" font-size="13" font-weight="700">authorises and funds</text>
+  <line x1="560" y1="274" x2="560" y2="210" class="sv-regla" stroke-width="2" marker-end="url(#arq-flecha)"/>
+  <text x="572" y="248" class="sv-t" font-size="13" font-weight="700">reports evidence</text>
+
+  <!-- Nivel iniciativa -->
+  <rect x="0" y="280" width="730" height="270" class="sv-panel" opacity=".55"/>
+  <rect x="0" y="280" width="730" height="3" fill="#1a1817"/>
+  <text x="22" y="316" class="sv-t sv-serif" font-size="21" font-weight="600">Initiative level · Lifecycle with decision gates</text>
+  <text x="22" y="338" class="sv-t2" font-size="13">Each AI initiative · enabling phase 0 and seven value phases</text>
+  <g font-size="13.5">
+    <rect x="22" y="358" width="152" height="68" fill="#1a1817"/><text x="36" y="384" class="sv-blanco" font-size="12" font-weight="700" opacity=".7">0</text><text x="36" y="407" class="sv-blanco" font-weight="600">Context</text>
+    <rect x="198" y="358" width="152" height="68" class="sv-caja" stroke-width="1.5"/><text x="212" y="384" class="sv-t2" font-size="12" font-weight="700">1</text><text x="212" y="407" class="sv-t" font-weight="600">Discovery</text>
+    <rect x="374" y="358" width="152" height="68" class="sv-caja" stroke-width="1.5"/><text x="388" y="384" class="sv-t2" font-size="12" font-weight="700">2</text><text x="388" y="407" class="sv-t" font-weight="600">Value hypothesis</text>
+    <rect x="550" y="358" width="158" height="68" fill="#990f3d"/><text x="564" y="384" class="sv-blanco" font-size="12" font-weight="700" opacity=".8">3 · STOP</text><text x="564" y="407" class="sv-blanco" font-weight="600">Feasibility &amp; risk</text>
+    <g fill="#990f3d">
+      <rect x="180" y="386" width="12" height="12" transform="rotate(45 186 392)"/>
+      <rect x="356" y="386" width="12" height="12" transform="rotate(45 362 392)"/>
+      <rect x="532" y="386" width="12" height="12" transform="rotate(45 538 392)"/>
+      <rect x="356" y="440" width="12" height="12" transform="rotate(45 362 446)"/>
+      <rect x="180" y="492" width="12" height="12" transform="rotate(45 186 498)"/>
+      <rect x="356" y="492" width="12" height="12" transform="rotate(45 362 498)"/>
+      <rect x="532" y="492" width="12" height="12" transform="rotate(45 538 498)"/>
+    </g>
+    <path d="M629,426 V446 H98 V460" class="sv-regla" stroke-width="1.5" marker-end="url(#arq-flecha)"/>
+    <rect x="22" y="464" width="152" height="68" class="sv-caja" stroke-width="1.5"/><text x="36" y="490" class="sv-t2" font-size="12" font-weight="700">4</text><text x="36" y="513" class="sv-t" font-weight="600">Design</text>
+    <rect x="198" y="464" width="152" height="68" class="sv-caja" stroke-width="1.5"/><text x="212" y="490" class="sv-t2" font-size="12" font-weight="700">5</text><text x="212" y="513" class="sv-t" font-weight="600" font-size="13">Delivery &amp; validation</text>
+    <rect x="374" y="464" width="152" height="68" class="sv-caja" stroke-width="1.5"/><text x="388" y="490" class="sv-t2" font-size="12" font-weight="700">6</text><text x="388" y="513" class="sv-t" font-weight="600">Operation</text>
+    <rect x="550" y="464" width="158" height="68" fill="#0d7680"/><text x="564" y="490" class="sv-blanco" font-size="12" font-weight="700" opacity=".8">7</text><text x="564" y="513" class="sv-blanco" font-weight="600" font-size="12">Evolution or retirement</text>
+  </g>
+
+  <!-- Componentes transversales -->
+  <text x="760" y="30" class="sv-t2" font-size="11" font-weight="700" letter-spacing="1.2">COMPONENTS</text>
+  <g>
+    <rect x="760" y="44" width="196" height="118" class="sv-panel"/><rect x="760" y="44" width="196" height="3" fill="#0f5499"/>
+    <text x="776" y="80" class="sv-serif" font-size="28" font-weight="700" fill="#0f5499">A</text><text x="776" y="106" class="sv-t" font-size="14" font-weight="700">Impact map</text><text x="776" y="126" class="sv-t2" font-size="12">9 spheres ×</text><text x="776" y="142" class="sv-t2" font-size="12">3 ambition levels</text>
+    <rect x="760" y="172" width="196" height="118" class="sv-panel"/><rect x="760" y="172" width="196" height="3" fill="#1a1817"/>
+    <text x="776" y="208" class="sv-t sv-serif" font-size="28" font-weight="700">B</text><text x="776" y="234" class="sv-t" font-size="14" font-weight="700">Governance</text><text x="776" y="254" class="sv-t2" font-size="12">Roles, risks,</text><text x="776" y="270" class="sv-t2" font-size="12">regulation, third parties</text>
+    <rect x="760" y="300" width="196" height="118" class="sv-panel"/><rect x="760" y="300" width="196" height="3" fill="#0d7680"/>
+    <text x="776" y="336" class="sv-serif" font-size="28" font-weight="700" fill="#0d7680">C</text><text x="776" y="362" class="sv-t" font-size="14" font-weight="700">Measurement</text><text x="776" y="382" class="sv-t2" font-size="12">Value rules, maturity,</text><text x="776" y="398" class="sv-t2" font-size="12">transformation index</text>
+    <rect x="760" y="428" width="196" height="122" class="sv-panel"/><rect x="760" y="428" width="196" height="3" fill="#593380"/>
+    <text x="776" y="464" class="sv-serif" font-size="28" font-weight="700" fill="#593380">D</text><text x="776" y="490" class="sv-t" font-size="14" font-weight="700">Tools</text><text x="776" y="510" class="sv-t2" font-size="12">Templates, board</text><text x="776" y="526" class="sv-t2" font-size="12">dashboard, register</text>
+  </g>
+</svg>
+  </div>
+  <div class="g-fuente">The diamonds represent the decision gates (<i>gates</i>). Source: SEVEN-G · SEACHAD</div>
+</figure>
+
+<p>The framework is organised into <strong>two governance levels</strong> and <strong>four cross-cutting components</strong>:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>What it is</th>
+<th>Who uses it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Corporate cycle</strong></td>
+<td>Diagnosis, direction, portfolio, oversight and review of AI in the company.</td>
+<td>Board, senior management, AI Committee.</td>
+</tr>
+<tr>
+<td><strong>Initiative lifecycle</strong></td>
+<td>Phases 0–7 with auditable decision gates.</td>
+<td>Initiative teams, risk, AI Auditor, AI Committee.</td>
+</tr>
+<tr>
+<td><strong>A · Impact map</strong></td>
+<td>Nine spheres of impact and three ambition levels.</td>
+<td>Board and management to decide where and how much to bet; teams to classify initiatives.</td>
+</tr>
+<tr>
+<td><strong>B · Governance system</strong></td>
+<td>Roles, bodies, risks, regulation, third parties and nonconformities.</td>
+<td>All levels.</td>
+</tr>
+<tr>
+<td><strong>C · Measurement system</strong></td>
+<td>Value rules, indicators, maturity and transformation index.</td>
+<td>Board, AI Committee, management control, teams.</td>
+</tr>
+<tr>
+<td><strong>D · Tools</strong></td>
+<td>Templates, checklists, board dashboard and register of recommendations.</td>
+<td>All levels.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The two cycles are connected: <strong>the corporate cycle authorises and funds</strong> initiatives within a portfolio, and <strong>each initiative reports evidence</strong> that feeds oversight and the annual review.</p>
+<hr />
+<h2 id="principles"><span class="antetitulo">03</span>Principles</h2>
+<p>The principles guide decisions in situations that the rules do not cover. Each principle has a way of being verified.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principle</th>
+<th>What it means in practice</th>
+<th>How it is verified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Value before technology</strong></td>
+<td>Every initiative starts from a business problem or opportunity and is linked to a measurable outcome.</td>
+<td>An approved value hypothesis exists before investing in construction.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Governance is not optional</strong></td>
+<td>Controls are designed in from the start and make it possible to move faster with less risk.</td>
+<td>No initiative under construction lacks an approved phase 0.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Production is the only truth</strong></td>
+<td>Value is demonstrated under real conditions, not in proofs of concept.</td>
+<td>Value declared in production has a validation status.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Reversibility</strong></td>
+<td>Every solution can be stopped, rolled back or retired without compromising operations.</td>
+<td>A tested rollback plan exists before go-live.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Risk is systemic</strong></td>
+<td>Risk is managed at portfolio level, as well as case by case.</td>
+<td>The AI Committee reviews the concentration of risks in the portfolio.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Evolve or retire</strong></td>
+<td>No initiative remains without evidence to justify it.</td>
+<td>All initiatives in production have a current continuity review.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Segregation of duties</strong></td>
+<td>Whoever builds does not control, and no one approves their own work.</td>
+<td><em>Gate</em> decisions record a decision-maker and a verifier who are not part of the team.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Evidence, not declaration</strong></td>
+<td>What is not documented and verified is not considered done.</td>
+<td>Evidence has an author, date, version and verification.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>A conscious decision on ambition</strong></td>
+<td>Efficiency and transformation are chosen, measured and decided separately.</td>
+<td>Every initiative has a classified and confirmed ambition level.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>People at the centre of change</strong></td>
+<td>AI is also assessed by its effect on work, capabilities and responsibilities.</td>
+<td>Augment and Transform initiatives have an adoption and people plan.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="basic-concepts"><span class="antetitulo">04</span>Basic concepts</h2>
+<p>The full definitions are in document 02 (Glossary).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI system</strong></td>
+<td>A machine-based system that, with varying levels of autonomy, infers from the input it receives how to generate outputs —predictions, content, recommendations or decisions— that can influence physical or virtual environments. It is aligned with the definition in the EU AI Act.</td>
+</tr>
+<tr>
+<td><strong>Initiative</strong></td>
+<td>A body of work that pursues a value hypothesis through one or more AI systems. It is the unit that goes through the lifecycle.</td>
+</tr>
+<tr>
+<td><strong>Use case</strong></td>
+<td>A specific application of an AI system to a process or decision. An initiative may include several use cases.</td>
+</tr>
+<tr>
+<td><strong>Portfolio</strong></td>
+<td>The set of authorised initiatives, with their budget, priority and balance of ambition.</td>
+</tr>
+<tr>
+<td><strong>Sphere</strong></td>
+<td>A domain of AI impact in the organisation. There are nine (document 10).</td>
+</tr>
+<tr>
+<td><strong>Ambition level</strong></td>
+<td>Type of bet: Optimise, Augment or Transform.</td>
+</tr>
+<tr>
+<td><strong>Intensity</strong></td>
+<td>The degree of rigour with which the cycle is applied: Lite or Enterprise.</td>
+</tr>
+<tr>
+<td><strong>Gate</strong></td>
+<td>A decision gate at the end of a phase, at which it is decided whether the initiative proceeds and under what conditions.</td>
+</tr>
+<tr>
+<td><strong>Evidence</strong></td>
+<td>A verifiable document, record or result that demonstrates that a criterion has been met.</td>
+</tr>
+<tr>
+<td><strong>Dual validation</strong></td>
+<td>The rule whereby a <em>gate</em> requires both tangible results and verified documentation.</td>
+</tr>
+<tr>
+<td><strong>Nonconformity</strong></td>
+<td>Failure to meet a requirement of the framework, classified as minor, major or critical.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="company-level-corporate-cycle"><span class="antetitulo">05</span>Company level · Corporate cycle</h2>
+<p>The corporate cycle is the mechanism through which the board and senior management exercise their responsibility for AI. It runs annually, with continuous oversight.</p>
+<h3 id="5-1-stages">5.1 Stages</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Objective</th>
+<th>Mandatory outputs</th>
+<th>Owner</th>
+<th>Approves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C1 · Diagnosis</strong></td>
+<td>Understand the real situation of AI in the company.</td>
+<td>AI system inventory; maturity assessment with evidence; current sphere map; transformation index profile; current validated value and cost.</td>
+<td>AI Office</td>
+<td>AI Committee; presented to the board</td>
+</tr>
+<tr>
+<td><strong>C2 · Direction</strong></td>
+<td>Decide where to play, with what ambition and with what risk appetite.</td>
+<td>AI thesis; ambition level per sphere; risk appetite and thresholds (including those for Enterprise intensity and the return horizon); corporate AI policy; framework budget.</td>
+<td>Senior management</td>
+<td>Board</td>
+</tr>
+<tr>
+<td><strong>C3 · Portfolio</strong></td>
+<td>Select, prioritise and balance initiatives.</td>
+<td>Prioritised portfolio with ambition level, sphere, intensity, budget and owners; retirement criteria; available capacity.</td>
+<td>AI Committee</td>
+<td>AI Committee; the board approves Transform initiatives</td>
+</tr>
+<tr>
+<td><strong>C4 · Oversight</strong></td>
+<td>Check that what was decided is being delivered and act on deviations.</td>
+<td>Board dashboard; register of recommendations and decisions; outcomes of relevant <em>gates</em>; incidents and nonconformities; main portfolio risks.</td>
+<td>AI Office</td>
+<td>AI Committee (monthly); board or board committee (quarterly)</td>
+</tr>
+<tr>
+<td><strong>C5 · Review</strong></td>
+<td>Assess progress and adjust direction.</td>
+<td>Review of maturity and the transformation index; delivery against the thesis; lessons learned; proposed adjustments for the new cycle.</td>
+<td>AI Office with internal audit</td>
+<td>Board</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-2-governance-calendar">5.2 Governance calendar</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Body</th>
+<th>Frequency</th>
+<th>What it reviews</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Board of directors</strong></td>
+<td>Annual (C2, C5) and quarterly (C4)</td>
+<td>Thesis, ambition, risk appetite, Transform initiatives, board dashboard, transformation profile.</td>
+</tr>
+<tr>
+<td><strong>Board committee</strong> (audit, risk or technology)</td>
+<td>Quarterly</td>
+<td>Risks, regulatory compliance, incidents, major and critical nonconformities, audits.</td>
+</tr>
+<tr>
+<td><strong>AI Committee</strong></td>
+<td>Monthly</td>
+<td>Portfolio, Enterprise <em>gates</em>, value and cost deviations, concentrated risks, retirements.</td>
+</tr>
+<tr>
+<td><strong>AI Office</strong></td>
+<td>Continuous</td>
+<td>Inventory, methodology, consolidation of measurement, support for teams, preparation of information.</td>
+</tr>
+<tr>
+<td><strong>AI Auditor</strong></td>
+<td>At every Enterprise <em>gate</em> and by sampling in Lite</td>
+<td>Verification of evidence and closure of nonconformities.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-3-first-implementation">5.3 First implementation</h3>
+<p>An organisation adopting SEVEN-G for the first time should concentrate C1 to C3 into ninety days:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Objective</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Month 1</strong></td>
+<td>Diagnosis</td>
+<td>Initial inventory, maturity with evidence and transformation profile.</td>
+</tr>
+<tr>
+<td><strong>Month 2</strong></td>
+<td>Risks and opportunities</td>
+<td>Main risks and opportunities by sphere, with owner, economic impact and timeframe.</td>
+</tr>
+<tr>
+<td><strong>Month 3</strong></td>
+<td>Governance structure</td>
+<td>Bodies, roles, thresholds, <em>gates</em>, metrics and reporting cadence approved.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The detail is in document 90 (Implementation guide).</p>
+<hr />
+<h2 id="initiative-level-lifecycle"><span class="antetitulo">06</span>Initiative level · Lifecycle</h2>
+<p>Each initiative goes through eight phases. At the end of each one there is a decision gate (<em>gate</em>); in phase 6 the gate is replaced by a periodic continuity review.</p>
+<figure class="grafico">
+  <div class="g-titulo">Initiative lifecycle</div>
+  <div class="g-sub">Eight phases with auditable decision gates and a real capacity to stop</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 980 250" role="img" aria-label="Initiative lifecycle in eight phases with decision gates">
+  <g font-size="11.5" font-weight="700" letter-spacing="1">
+    <path d="M12,40 V30 H134 V40" class="sv-regla"/><text x="73" y="20" text-anchor="middle" class="sv-t2">AUTHORISE</text>
+    <path d="M132,40 V30 H488 V40" class="sv-regla"/><text x="310" y="20" text-anchor="middle" class="sv-t2">DECIDE</text>
+    <path d="M486,40 V30 H724 V40" class="sv-regla"/><text x="605" y="20" text-anchor="middle" class="sv-t2">BUILD AND DEMONSTRATE</text>
+    <path d="M722,40 V30 H962 V40" class="sv-regla"/><text x="842" y="20" text-anchor="middle" class="sv-t2">OPERATE AND EVOLVE</text>
+  </g>
+  <g font-weight="700">
+    <path d="M10,54 H122 L136,91 L122,128 H10 Z" fill="#1a1817"/>
+    <text x="24" y="80" class="sv-blanco" font-size="12" opacity=".7">0</text><text x="24" y="104" class="sv-blanco" font-size="13.5">Context</text>
+    <path d="M128,54 H240 L254,91 L240,128 H128 L142,91 Z" fill="#0a3d73"/>
+    <text x="150" y="80" class="sv-blanco" font-size="12" opacity=".7">1</text><text x="150" y="100" class="sv-blanco" font-size="13.5">Opportunity</text><text x="150" y="116" class="sv-blanco" font-size="13.5">discovery</text>
+    <path d="M246,54 H358 L372,91 L358,128 H246 L260,91 Z" fill="#0f5499"/>
+    <text x="268" y="80" class="sv-blanco" font-size="12" opacity=".7">2</text><text x="268" y="100" class="sv-blanco" font-size="13.5">Value</text><text x="268" y="116" class="sv-blanco" font-size="13.5">hypothesis</text>
+    <path d="M364,54 H476 L490,91 L476,128 H364 L378,91 Z" fill="#990f3d"/>
+    <text x="386" y="80" class="sv-blanco" font-size="12" opacity=".8">3 · STOP</text><text x="386" y="100" class="sv-blanco" font-size="13.5">Feasibility</text><text x="386" y="116" class="sv-blanco" font-size="13.5">and risk</text>
+    <path d="M482,54 H594 L608,91 L594,128 H482 L496,91 Z" fill="#0b6a73"/>
+    <text x="504" y="80" class="sv-blanco" font-size="12" opacity=".7">4</text><text x="504" y="104" class="sv-blanco" font-size="13.5">Design</text>
+    <path d="M600,54 H712 L726,91 L712,128 H600 L614,91 Z" fill="#0d7680"/>
+    <text x="622" y="80" class="sv-blanco" font-size="12" opacity=".7">5</text><text x="622" y="100" class="sv-blanco" font-size="13.5">Delivery and</text><text x="622" y="116" class="sv-blanco" font-size="13.5">validation</text>
+    <path d="M718,54 H830 L844,91 L830,128 H718 L732,91 Z" fill="#4a2a6b"/>
+    <text x="740" y="80" class="sv-blanco" font-size="12" opacity=".7">6</text><text x="740" y="104" class="sv-blanco" font-size="13.5">Operation</text>
+    <path d="M836,54 H962 V128 H836 L850,91 Z" fill="#593380"/>
+    <text x="858" y="80" class="sv-blanco" font-size="12" opacity=".7">7</text><text x="858" y="100" class="sv-blanco" font-size="13.5">Evolution or</text><text x="858" y="116" class="sv-blanco" font-size="13.5">retirement</text>
+  </g>
+  <line x1="20" y1="156" x2="956" y2="156" class="sv-regla" stroke-width="1"/>
+  <g class="sv-t">
+    <rect x="119" y="150" width="12" height="12" transform="rotate(45 125 156)" style="fill:var(--tinta)"/>
+    <rect x="237" y="150" width="12" height="12" transform="rotate(45 243 156)" style="fill:var(--tinta)"/>
+    <rect x="355" y="150" width="12" height="12" transform="rotate(45 361 156)" style="fill:var(--tinta)"/>
+    <rect x="471" y="148" width="16" height="16" transform="rotate(45 479 156)" fill="#990f3d"/>
+    <rect x="591" y="150" width="12" height="12" transform="rotate(45 597 156)" style="fill:var(--tinta)"/>
+    <rect x="709" y="150" width="12" height="12" transform="rotate(45 715 156)" style="fill:var(--tinta)"/>
+    <rect x="827" y="150" width="12" height="12" transform="rotate(45 833 156)" style="fill:var(--tinta)"/>
+    <rect x="950" y="150" width="12" height="12" transform="rotate(45 956 156)" style="fill:var(--tinta)"/>
+  </g>
+  <g font-size="13">
+    <text x="20" y="194" class="sv-t" font-weight="700">◆ Gate</text>
+    <text x="84" y="194" class="sv-t2">Proceed · Proceed with conditions · Iterate · Pivot · Stop</text>
+    <text x="956" y="194" text-anchor="end" class="sv-t2">Phase 7: Scale · Iterate · Retire</text>
+    <text x="20" y="226" font-weight="700" style="fill:var(--claret)" font-family="Libre Franklin, Segoe UI, sans-serif">Phase 3 is the main stop gate: without technical, economic and risk feasibility, nothing is designed.</text>
+  </g>
+</svg>
+  </div>
+  <div class="g-fuente">Source: SEVEN-G · SEACHAD</div>
+</figure>
+
+<h3 id="6-1-summary-of-phases-and-gates">6.1 Summary of phases and gates</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Name</th>
+<th>Question it answers</th>
+<th>Decision gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><strong>Context and constraints</strong></td>
+<td>Is the initiative authorised, and within what framework?</td>
+<td>G0 · Authorisation</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>Opportunity discovery</strong></td>
+<td>Is there a business opportunity that requires AI?</td>
+<td>G1 · Opportunity</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Value hypothesis</strong></td>
+<td>What value do we expect, how will we measure it and how will we know it has failed?</td>
+<td>G2 · Hypothesis</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Feasibility and risk</strong></td>
+<td>Is it technically, economically, regulatorily and organisationally feasible, with acceptable risk?</td>
+<td>G3 · Feasibility (main stop gate)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Solution design</strong></td>
+<td>How is it built with control, human oversight and reversibility?</td>
+<td>G4 · Design</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Delivery and validation</strong></td>
+<td>Does it work and deliver value under real conditions?</td>
+<td>G5 · Go-live</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Operation and governance</strong></td>
+<td>Is it still working, delivering value and under control?</td>
+<td>R6 · Continuity review (periodic)</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Evolution or retirement</strong></td>
+<td>Do we scale, iterate or retire?</td>
+<td>G7 · Scale or retire</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-2-phase-0-context-and-constraints">6.2 Phase 0 · Context and constraints</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Formally authorise the initiative and set the framework within which it will be developed.</td>
+</tr>
+<tr>
+<td><strong>Activities</strong></td>
+<td>Identify the strategic objective and the sphere; declare regulatory, ethical, data, budgetary and time constraints; assign the roles; determine the intensity (Lite or Enterprise); register the initiative in the inventory.</td>
+</tr>
+<tr>
+<td><strong>Mandatory evidence</strong></td>
+<td>Initiative charter · Context and constraints statement · Role assignment record · Intensity determination · Inventory registration.</td>
+</tr>
+<tr>
+<td><strong>Exit criterion</strong></td>
+<td>Committed sponsor, roles assigned without incompatibilities, fit with the AI thesis and the portfolio, and known constraints.</td>
+</tr>
+<tr>
+<td><strong>Specific rule</strong></td>
+<td>Without an approved G0, the initiative is not authorised: it cannot consume budget or access production data.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-3-phase-1-opportunity-discovery">6.3 Phase 1 · Opportunity discovery</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Identify opportunities from the business and discard those that do not require AI or have no plausible value.</td>
+</tr>
+<tr>
+<td><strong>Activities</strong></td>
+<td>Analyse the affected process or decision; identify non-AI alternatives; estimate the order of magnitude of the value; propose a sphere and ambition level using the criteria in document 12.</td>
+</tr>
+<tr>
+<td><strong>Mandatory evidence</strong></td>
+<td>Opportunity portfolio with screening notes · Non-AI alternatives considered · Proposed sphere and ambition level.</td>
+</tr>
+<tr>
+<td><strong>Exit criterion</strong></td>
+<td>The opportunity arises from a business need, AI contributes something that the alternatives do not, and the potential value justifies formulating a hypothesis.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-4-phase-2-value-hypothesis">6.4 Phase 2 · Value hypothesis</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Formulate a measurable and falsifiable value hypothesis. A hypothesis that cannot fail is not valid.</td>
+</tr>
+<tr>
+<td><strong>Activities</strong></td>
+<td>Define the primary and secondary metrics; measure the baseline; set the target and the success threshold; choose the attribution method (control group, before and after, or another justified method); estimate value in money with a formula; confirm the ambition level; define the stop criteria.</td>
+</tr>
+<tr>
+<td><strong>Mandatory evidence</strong></td>
+<td>Value hypothesis canvas · Baseline metrics · Attribution method · Ambition level confirmation · Stop criteria.</td>
+</tr>
+<tr>
+<td><strong>Exit criterion</strong></td>
+<td>Falsifiable hypothesis, measured baseline (not estimated unless justified), value expressed in money with a formula, and stop criteria defined before investing.</td>
+</tr>
+<tr>
+<td><strong>Specific rule</strong></td>
+<td>In Transform initiatives, the hypothesis may carry greater uncertainty, but must include learning milestones, an investment limit per stage and an explicit decision by the board.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-5-phase-3-feasibility-and-risk">6.5 Phase 3 · Feasibility and risk</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Decide whether the initiative is feasible with acceptable risk. This is the main stop gate of the cycle.</td>
+</tr>
+<tr>
+<td><strong>Activities</strong></td>
+<td>Assess technical feasibility and the availability and quality of the data; estimate full costs (build, recurring and adoption); classify the initiative under the applicable regulation; carry out the relevant impact assessments (data protection, fundamental rights); identify and assess risks; assess suppliers; assess the impact on people.</td>
+</tr>
+<tr>
+<td><strong>Mandatory evidence</strong></td>
+<td>Feasibility assessment · Regulatory classification · Applicable impact assessments · Risk matrix and register · Mitigation and contingency plan · Supplier assessment, where there are suppliers.</td>
+</tr>
+<tr>
+<td><strong>Exit criterion</strong></td>
+<td>Feasibility demonstrated with real data; no critical risk without accepted mitigation; regulatory classification carried out with legal judgement; expected net value consistent with the risk appetite and the horizon set in C2.</td>
+</tr>
+<tr>
+<td><strong>Specific rule</strong></td>
+<td>Practices prohibited by regulation do not proceed beyond this phase under any circumstances.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-6-phase-4-solution-design">6.6 Phase 4 · Solution design</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Design a solution that is controllable, subject to oversight and reversible.</td>
+</tr>
+<tr>
+<td><strong>Activities</strong></td>
+<td>Define the architecture; document data and model lineage; design human oversight (what the system decides, what a person validates and what is never delegated); design security controls, including agent identity, permissions and limits of action; define monitoring; prepare the rollback plan; design adoption.</td>
+</tr>
+<tr>
+<td><strong>Mandatory evidence</strong></td>
+<td>Architecture record · Data and model lineage · Governance and human oversight design · Security design · Rollback plan · Adoption plan.</td>
+</tr>
+<tr>
+<td><strong>Exit criterion</strong></td>
+<td>The design covers the controls required by the risk classification; human oversight is defined; a stop mechanism exists; the phase 3 risks have a designed control.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-7-phase-5-delivery-and-validation">6.7 Phase 5 · Delivery and validation</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Build, test and demonstrate value under real conditions before final go-live.</td>
+</tr>
+<tr>
+<td><strong>Activities</strong></td>
+<td>Build or integrate the solution; carry out functional, performance, bias, robustness and security testing (including prompt injection testing for generative AI and agents); run a pilot with measurement according to the attribution method; test the rollback plan; train users.</td>
+</tr>
+<tr>
+<td><strong>Mandatory evidence</strong></td>
+<td>Delivery report · Validation and test results · Pilot results against the hypothesis · Rollback plan test · Updated risk register · Go-live sign-off record.</td>
+</tr>
+<tr>
+<td><strong>Exit criterion</strong></td>
+<td>The pilot results meet the success threshold, or do so with accepted conditions; critical controls work; operations are ready.</td>
+</tr>
+<tr>
+<td><strong>Specific rule</strong></td>
+<td>The go-live of an Enterprise initiative requires <strong>multi-level sign-off with veto power</strong>: technical owner, risk and compliance, information security and data protection. Each sign-off is recorded.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-8-phase-6-operation-and-governance">6.8 Phase 6 · Operation and governance</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Operate stably, maintain control and keep measuring value.</td>
+</tr>
+<tr>
+<td><strong>Activities</strong></td>
+<td>Monitor performance, degradation, bias, costs and security; manage incidents; carry out the post-market monitoring required by regulation; measure realised value; manage changes.</td>
+</tr>
+<tr>
+<td><strong>Mandatory evidence</strong></td>
+<td>Operations manual · Monitoring and alerting configuration · Incident response plan · Incident and change log · Value realisation tracking.</td>
+</tr>
+<tr>
+<td><strong>Continuity review (R6)</strong></td>
+<td>At least quarterly in Enterprise and half-yearly in Lite. It checks realised value against the hypothesis, stability, incidents, compliance and whether the risk classification is still valid. If it detects significant deviations, it brings forward the G7 <em>gate</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-9-phase-7-evolution-or-retirement">6.9 Phase 7 · Evolution or retirement</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Decide, on the basis of evidence, whether the initiative is scaled, iterated or retired.</td>
+</tr>
+<tr>
+<td><strong>Activities</strong></td>
+<td>Consolidate realised value and its validation status; review the actual ambition level against the declared one; assess accumulated risks; if it is retired, plan the retirement.</td>
+</tr>
+<tr>
+<td><strong>Mandatory evidence</strong></td>
+<td>Value realisation tracking · Scaling or retirement decision record · Lessons learned · Retirement plan, where applicable.</td>
+</tr>
+<tr>
+<td><strong>Possible outcomes</strong></td>
+<td><strong>Scale</strong> (new phase 0 for the extended scope), <strong>Iterate</strong> (return to the relevant phase; if kept unchanged, return to phase 6) or <strong>Retire</strong>.</td>
+</tr>
+<tr>
+<td><strong>Specific rule</strong></td>
+<td>Every retirement records the date, reason, deciding body, replacement if any, treatment of data and models, and communication to those affected.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-10-evidence-map">6.10 Evidence map</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Mandatory evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Initiative charter · Context and constraints statement · Role assignment record · Intensity determination · Inventory registration</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Opportunity portfolio and screening notes · Non-AI alternatives · Proposed sphere and ambition level</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Value hypothesis canvas · Baseline · Attribution method · Ambition confirmation · Stop criteria</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Feasibility assessment · Regulatory classification · Impact assessments · Risk matrix and register · Mitigation and contingency plan · Supplier assessment</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Architecture record · Data and model lineage · Governance and human oversight design · Security design · Rollback plan · Adoption plan</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Delivery report · Validation and test results · Pilot results · Rollback test · Updated risk register · Go-live sign-off</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Operations manual · Monitoring and alerting · Incident response plan · Incident and change log · Value tracking</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Value realisation tracking · Scaling or retirement decision · Lessons learned · Retirement plan</td>
+</tr>
+</tbody>
+</table></div>
+<p>The templates for each piece of evidence form part of block H of the documentation library.</p>
+<h3 id="6-11-lifecycle-traceability">6.11 Lifecycle traceability</h3>
+<p>The AI portfolio is managed as a funnel, in the same way that a sales organisation manages its opportunities. To this end, every initiative must be registered in the <strong>initiative register</strong> (document 03, tool <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), and the register must retain, as a minimum:</p>
+<ul>
+<li>The <strong>entry and exit date of each phase</strong>, and the periods on hold with their reason.</li>
+<li>The <strong>request, verification and decision for each <em>gate</em></strong>, with its outcome, iteration, decision-maker and verifier.</li>
+<li>The <strong>status of each <em>gate</em> criterion</strong> (met, not met, not applicable or pending) with the linked evidence.</li>
+<li>The <strong>conditions</strong> imposed, with deadline, owner and status.</li>
+<li>The <strong>controlled taxonomy tags</strong>: sphere, ambition level, intensity, regulatory classification, technology, exposure and value type.</li>
+<li>The <strong>coded reason</strong> for every stop or retirement.</li>
+</ul>
+<p>In C2 the company approves the <strong>reference time limits per phase</strong> and the maximum decision time for a <em>gate</em>. Initiatives that exceed them are flagged as stalled and reviewed by the AI Committee.</p>
+<hr />
+<h2 id="decision-gates"><span class="antetitulo">07</span>Decision gates</h2>
+<h3 id="7-1-how-a-gate-works">7.1 How a gate works</h3>
+<p>Each <em>gate</em> follows the same sequence: the team provides the evidence, the verifier checks that it is complete and valid, and the competent body decides.</p>
+<figure class="grafico"><div class="g-titulo">Logic of a decision gate</div><div class="g-sub">Decisions are only taken on verified evidence</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  E["Phase evidence"] --> V{"Verification"}
+  V -->|"Incomplete or invalid"| NC["Completed before deciding"]
+  V -->|"Complete and valid"| D{"Decision by the competent body"}
+  D --> C["Proceed"]
+  D --> CC["Proceed with conditions"]
+  D --> I["Iterate: the phase is repeated"]
+  D --> P["Pivot: new hypothesis in phase 2"]
+  D --> S["Stop"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class C ok
+  class CC,I,P,NC med
+  class S ko
+</pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
+<h3 id="7-2-dual-validation">7.2 Dual validation</h3>
+<p>A <em>gate</em> can only be passed if two conditions are met at the same time:</p>
+<ol>
+<li><strong>Tangible results</strong>: the phase criteria are met with real data, tests or results.</li>
+<li><strong>Verified documentation</strong>: the mandatory evidence exists, is traceable (author, date and version) and has been verified by the appropriate person.</li>
+</ol>
+<p>Results without documentation, or documentation without results, do not pass the <em>gate</em>.</p>
+<h3 id="7-3-possible-outcomes">7.3 Possible outcomes</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>When it applies</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proceed</strong></td>
+<td>All criteria are met and all evidence is verified.</td>
+<td>The initiative moves on to the next phase.</td>
+</tr>
+<tr>
+<td><strong>Proceed with conditions</strong></td>
+<td>The essential criteria are met and non-critical aspects remain pending.</td>
+<td>It moves on to the next phase with explicit conditions, a deadline and an owner. The conditions are verified at the next <em>gate</em>. Not permitted for critical security, legal compliance or human oversight controls.</td>
+</tr>
+<tr>
+<td><strong>Iterate</strong></td>
+<td>The results are insufficient but the hypothesis remains plausible.</td>
+<td>The phase activities are repeated and the initiative returns to the same <em>gate</em>.</td>
+</tr>
+<tr>
+<td><strong>Pivot</strong></td>
+<td>The hypothesis does not hold, but a reasonable alternative exists. Only at G1, G2 and G3.</td>
+<td>The initiative returns to phase 2 with a new hypothesis, keeping the approved context.</td>
+</tr>
+<tr>
+<td><strong>Stop</strong></td>
+<td>There is no plausible value, feasibility is not demonstrated or the risk is unacceptable.</td>
+<td>The initiative is closed, lessons learned are recorded and resources are released.</td>
+</tr>
+<tr>
+<td><strong>Scale</strong></td>
+<td>Only at G7: value demonstrated and risk under control.</td>
+<td>New phase 0 for the extended scope.</td>
+</tr>
+<tr>
+<td><strong>Retire</strong></td>
+<td>Only at G7: the value is not sustained, the risk has increased or a better alternative exists.</td>
+<td>Planned and recorded retirement.</td>
+</tr>
+<tr>
+<td><strong>Proceed with operation · Proceed with conditions · Bring G7 forward</strong></td>
+<td>Only at R6: the initiative keeps delivering value under control, does so with correctable deviations, or shows relevant deviations in value, risk or compliance.</td>
+<td>Remains in production; with conditions, deadline and owner; or G7 is opened without waiting for the schedule.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A well-founded decision to <strong>stop</strong> is a valid outcome of the method. Avoiding a bad investment also creates value.</p>
+<h3 id="7-4-decision-rules">7.4 Decision rules</h3>
+<ol>
+<li><strong>No one decides on their own work.</strong> Whoever provides evidence neither verifies it nor decides on it.</li>
+<li><strong>No mandatory evidence, no decision.</strong> The competent body cannot decide on incomplete evidence.</li>
+<li><strong>Evidence must exist before the <em>gate</em>.</strong> Documentation produced after the fact to justify progress already made invalidates the <em>gate</em> and constitutes a major nonconformity.</li>
+<li><strong>Conditions have a deadline and an owner.</strong> A condition that expires unmet turns the outcome into <strong>Iterate</strong>.</li>
+<li><strong>Iteration limit.</strong> After two iterations at the same <em>gate</em>, the decision is escalated to the higher body.</li>
+<li><strong>Stop criteria are set in advance.</strong> They cannot be relaxed during the phase to avoid a decision to stop without the approval of the body that authorised the initiative.</li>
+<li><strong>Every decision is recorded</strong> in the <em>gate</em> decision record, with outcome, reason, conditions, decision-maker and verifier.</li>
+</ol>
+<h3 id="7-5-who-verifies-and-who-decides">7.5 Who verifies and who decides</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Verifies (Lite)</th>
+<th>Decides (Lite)</th>
+<th>Verifies (Enterprise)</th>
+<th>Decides (Enterprise)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>G0 · Authorisation</strong></td>
+<td>AI Office</td>
+<td>Sponsor</td>
+<td>AI Auditor</td>
+<td>AI Committee</td>
+</tr>
+<tr>
+<td><strong>G1 · Opportunity</strong></td>
+<td>AI Office</td>
+<td>Sponsor</td>
+<td>AI Auditor</td>
+<td>Sponsor, informing the committee</td>
+</tr>
+<tr>
+<td><strong>G2 · Hypothesis</strong></td>
+<td>AI Office</td>
+<td>Sponsor</td>
+<td>AI Auditor</td>
+<td>AI Committee</td>
+</tr>
+<tr>
+<td><strong>G3 · Feasibility</strong></td>
+<td>AI Office</td>
+<td>Sponsor with risk clearance</td>
+<td>AI Auditor</td>
+<td>AI Committee</td>
+</tr>
+<tr>
+<td><strong>G4 · Design</strong></td>
+<td>AI Office</td>
+<td>Sponsor with risk clearance</td>
+<td>AI Auditor</td>
+<td>AI Committee</td>
+</tr>
+<tr>
+<td><strong>G5 · Go-live</strong></td>
+<td>AI Office</td>
+<td>Sponsor with risk clearance</td>
+<td>AI Auditor</td>
+<td>AI Committee after multi-level sign-off</td>
+</tr>
+<tr>
+<td><strong>R6 · Continuity</strong></td>
+<td>AI Office</td>
+<td>Sponsor</td>
+<td>AI Auditor</td>
+<td>AI Committee</td>
+</tr>
+<tr>
+<td><strong>G7 · Scale or retire</strong></td>
+<td>AI Office</td>
+<td>Sponsor</td>
+<td>AI Auditor</td>
+<td>AI Committee</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Transform</strong> initiatives additionally require board approval at G2 (authorisation of the bet) and at G7 when the decision is to scale. At <strong>Lite</strong> intensity, G0, G1 and G2 may be resolved in a single session, as may G4 and G5, provided that each piece of evidence is verified.</p>
+<h3 id="7-6-criteria-differentiated-by-ambition-level">7.6 Criteria differentiated by ambition level</h3>
+<p>Applying the same return criteria to an efficiency initiative and to a transformation bet blocks the latter or inflates the former. That is why the key <em>gates</em> are assessed differently:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Optimise</th>
+<th>Augment</th>
+<th>Transform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>G2 · Hypothesis</strong></td>
+<td>Baseline for cost, time or errors; expected savings with a formula.</td>
+<td>Performance and cost metrics; adoption target.</td>
+<td>Return hypothesis with learning milestones; investment limit per stage; board approval.</td>
+</tr>
+<tr>
+<td><strong>G3 · Feasibility</strong></td>
+<td>Positive expected annual net value and NPV ≥ 0 within the horizon and at the rate set in C2 (document 40).</td>
+<td>Feasibility of adoption and of the role change, in addition to the expected net value.</td>
+<td>Feasibility of the first stage; stop criteria per stage; documented option value.</td>
+</tr>
+<tr>
+<td><strong>G5 · Go-live</strong></td>
+<td>Efficiency validated against the baseline; plan to realise the released capacity.</td>
+<td>Actual adoption and performance improvement measured.</td>
+<td>Market or customer evidence: usage, conversion, initial revenue or verified operational change.</td>
+</tr>
+<tr>
+<td><strong>G7 · Scale or retire</strong></td>
+<td>Realised savings, not just released capacity.</td>
+<td>Sustained performance and reassigned capacity.</td>
+<td>Measured return and verified change in the operating model or the offering.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="roles-bodies-and-segregation-of-duties"><span class="antetitulo">08</span>Roles, bodies and segregation of duties</h2>
+<h3 id="8-1-initiative-roles">8.1 Initiative roles</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Function</th>
+<th>Responsibility</th>
+<th>Cannot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI Sponsor</strong></td>
+<td>Decides</td>
+<td>Accountable for value and investment; champions the initiative before the decision-making bodies.</td>
+<td>Verify evidence or act as risk owner or auditor of their own initiative.</td>
+</tr>
+<tr>
+<td><strong>AI Product Owner</strong></td>
+<td>Builds</td>
+<td>Accountable for the value hypothesis, actual use and adoption.</td>
+<td>Verify evidence or decide <em>gates</em> for their own initiative.</td>
+</tr>
+<tr>
+<td><strong>AI Technical Owner</strong></td>
+<td>Builds</td>
+<td>Accountable for the solution, the data, the models and their technical documentation.</td>
+<td>Verify evidence or decide <em>gates</em> for their own initiative.</td>
+</tr>
+<tr>
+<td><strong>AI Operations Owner</strong></td>
+<td>Builds</td>
+<td>Accountable for stability, monitoring, incidents and changes in production.</td>
+<td>Verify evidence of their own operations.</td>
+</tr>
+<tr>
+<td><strong>AI Risk Owner</strong></td>
+<td>Controls</td>
+<td>Accountable for the assessment and monitoring of risk and compliance, and issues clearance.</td>
+<td>Be part of the team that builds the initiative.</td>
+</tr>
+<tr>
+<td><strong>AI Auditor</strong></td>
+<td>Controls</td>
+<td>Verifies evidence at Enterprise <em>gates</em> and closes nonconformities.</td>
+<td>Take part in the design, construction or operation of the initiative, or report hierarchically to the sponsor.</td>
+</tr>
+</tbody>
+</table></div>
+<p>One person may take on more than one role if the roles are not incompatible (section 8.2). In small organisations, the AI Auditor may be external or come from internal audit.</p>
+<h3 id="8-2-incompatibilities">8.2 Incompatibilities</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th>Sponsor</th>
+<th>Product</th>
+<th>Technical</th>
+<th>Operations</th>
+<th>Risk</th>
+<th>Auditor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sponsor</strong></td>
+<td>—</td>
+<td>Compatible in Lite</td>
+<td>Compatible in Lite</td>
+<td>Compatible in Lite</td>
+<td>Incompatible</td>
+<td>Incompatible</td>
+</tr>
+<tr>
+<td><strong>Product</strong></td>
+<td></td>
+<td>—</td>
+<td>Compatible</td>
+<td>Compatible</td>
+<td>Incompatible</td>
+<td>Incompatible</td>
+</tr>
+<tr>
+<td><strong>Technical</strong></td>
+<td></td>
+<td></td>
+<td>—</td>
+<td>Compatible</td>
+<td>Incompatible</td>
+<td>Incompatible</td>
+</tr>
+<tr>
+<td><strong>Operations</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>—</td>
+<td>Incompatible</td>
+<td>Incompatible</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>—</td>
+<td>Incompatible in Enterprise</td>
+</tr>
+<tr>
+<td><strong>Auditor</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-3-company-bodies">8.3 Company bodies</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Body</th>
+<th>Indicative composition</th>
+<th>Functions in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Board of directors</strong> or board committee</td>
+<td>Directors; may be supported by a director or adviser with AI experience.</td>
+<td>Approves the AI thesis, the ambition, the risk appetite and Transform initiatives; exercises quarterly oversight; reviews progress annually.</td>
+</tr>
+<tr>
+<td><strong>AI Committee</strong></td>
+<td>Senior management from business, technology, data, risk, compliance, security, data protection and people.</td>
+<td>Manages the portfolio; decides Enterprise <em>gates</em>; reviews portfolio risks; decides retirements; escalates to the board as appropriate.</td>
+</tr>
+<tr>
+<td><strong>AI Office</strong></td>
+<td>Small methodology, portfolio and measurement team.</td>
+<td>Maintains the inventory and the methodology; verifies in Lite; consolidates measurement; prepares information for the bodies.</td>
+</tr>
+<tr>
+<td><strong>Second line</strong></td>
+<td>Risk, compliance, information security, data protection.</td>
+<td>Provides the risk owners; issues clearances; signs off Enterprise go-live.</td>
+</tr>
+<tr>
+<td><strong>Third line</strong></td>
+<td>Internal audit or external auditor.</td>
+<td>Provides or supervises the AI Auditors; audits compliance with the framework.</td>
+</tr>
+</tbody>
+</table></div>
+<p>SEVEN-G does not create a parallel governance structure: the bodies may be existing committees with an extended mandate.</p>
+<h3 id="8-4-responsibilities-by-phase">8.4 Responsibilities by phase</h3>
+<p><strong>A</strong> is accountable for the outcome · <strong>R</strong> does the work · <strong>C</strong> is consulted · <strong>I</strong> is informed · <strong>V</strong> verifies the evidence at the <em>gate</em>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Sponsor</th>
+<th>Product</th>
+<th>Technical</th>
+<th>Operations</th>
+<th>Risk</th>
+<th>Auditor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 · Context</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>V</td>
+</tr>
+<tr>
+<td>1 · Discovery</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>V</td>
+</tr>
+<tr>
+<td>2 · Value hypothesis</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>V</td>
+</tr>
+<tr>
+<td>3 · Feasibility and risk</td>
+<td>A</td>
+<td>R</td>
+<td>R</td>
+<td>C</td>
+<td>R</td>
+<td>V</td>
+</tr>
+<tr>
+<td>4 · Design</td>
+<td>I</td>
+<td>C</td>
+<td>A/R</td>
+<td>C</td>
+<td>C</td>
+<td>V</td>
+</tr>
+<tr>
+<td>5 · Delivery and validation</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>V</td>
+</tr>
+<tr>
+<td>6 · Operation</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>A/R</td>
+<td>C</td>
+<td>V</td>
+</tr>
+<tr>
+<td>7 · Evolution or retirement</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>V</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="application-intensity-lite-and-enterprise"><span class="antetitulo">09</span>Application intensity: Lite and Enterprise</h2>
+<h3 id="9-1-how-it-is-determined">9.1 How it is determined</h3>
+<p>Intensity is determined in phase 0 and reviewed at G3 and at every continuity review. Meeting a single Enterprise criterion is enough for that intensity to apply.</p>
+<figure class="grafico">
+  <div class="g-titulo">Determining the intensity</div>
+  <div class="g-sub">Assessed in phase 0 and reviewed at G3 and at each continuity review. A single “yes” is enough to apply Enterprise</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 980 480" role="img" aria-label="Decision tree to determine the Lite or Enterprise intensity of an initiative">
+  <defs>
+    <marker id="int-fl-en" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="sv-flecha"/></marker>
+  </defs>
+  <!-- Inicio -->
+  <rect x="0" y="10" width="300" height="52" fill="#1a1817"/>
+  <text x="18" y="42" class="sv-blanco" font-size="15" font-weight="700">New AI initiative or use of AI</text>
+  <line x1="40" y1="62" x2="40" y2="88" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/>
+
+  <!-- Preguntas -->
+  <g font-size="14.5">
+    <rect x="0" y="90" width="640" height="56" class="sv-panel"/>
+    <circle cx="40" cy="118" r="15" fill="#990f3d"/><text x="40" y="123" text-anchor="middle" class="sv-blanco" font-size="13" font-weight="700">1</text>
+    <text x="70" y="123" class="sv-t" font-weight="600">Is it a practice prohibited by regulation?</text>
+
+    <rect x="0" y="170" width="640" height="56" class="sv-panel"/>
+    <circle cx="40" cy="198" r="15" fill="#0f5499"/><text x="40" y="203" text-anchor="middle" class="sv-blanco" font-size="13" font-weight="700">2</text>
+    <text x="70" y="203" class="sv-t" font-weight="600">High regulatory risk or significant effect on people?</text>
+
+    <rect x="0" y="250" width="640" height="56" class="sv-panel"/>
+    <circle cx="40" cy="278" r="15" fill="#0f5499"/><text x="40" y="283" text-anchor="middle" class="sv-blanco" font-size="13" font-weight="700">3</text>
+    <text x="70" y="273" class="sv-t" font-weight="600">Direct exposure to customers, agents that execute actions</text>
+    <text x="70" y="292" class="sv-t" font-weight="600">or specially protected data?</text>
+
+    <rect x="0" y="330" width="640" height="56" class="sv-panel"/>
+    <circle cx="40" cy="358" r="15" fill="#0f5499"/><text x="40" y="363" text-anchor="middle" class="sv-blanco" font-size="13" font-weight="700">4</text>
+    <text x="70" y="353" class="sv-t" font-weight="600">Critical function, Transform level or investment above</text>
+    <text x="70" y="372" class="sv-t" font-weight="600">the threshold set by the board in C2?</text>
+  </g>
+
+  <!-- Flechas "No" -->
+  <g font-size="12.5" font-weight="700">
+    <line x1="40" y1="146" x2="40" y2="168" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="52" y="162" class="sv-t2">No</text>
+    <line x1="40" y1="226" x2="40" y2="248" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="52" y="242" class="sv-t2">No</text>
+    <line x1="40" y1="306" x2="40" y2="328" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="52" y="322" class="sv-t2">No</text>
+    <line x1="40" y1="386" x2="40" y2="412" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="52" y="404" class="sv-t2">No</text>
+  </g>
+
+  <!-- Flechas "Sí" -->
+  <g font-size="12.5" font-weight="700">
+    <line x1="640" y1="118" x2="716" y2="118" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="668" y="110" class="sv-t2">Yes</text>
+    <line x1="640" y1="198" x2="716" y2="198" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="668" y="190" class="sv-t2">Yes</text>
+    <line x1="640" y1="278" x2="716" y2="278" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="668" y="270" class="sv-t2">Yes</text>
+    <line x1="640" y1="358" x2="716" y2="358" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="668" y="350" class="sv-t2">Yes</text>
+  </g>
+
+  <!-- Resultados -->
+  <rect x="720" y="90" width="260" height="56" fill="#990f3d"/>
+  <text x="740" y="115" class="sv-blanco" font-size="15" font-weight="700">Not authorised</text>
+  <text x="740" y="134" class="sv-blanco" font-size="12" opacity=".85">Never proceeds beyond phase 3</text>
+
+  <rect x="720" y="170" width="260" height="216" fill="#0f5499"/>
+  <text x="740" y="230" class="sv-blanco" font-size="12" font-weight="700" letter-spacing="1" opacity=".8">INTENSITY</text>
+  <text x="740" y="258" class="sv-blanco sv-serif" font-size="28" font-weight="700">Enterprise</text>
+  <text x="740" y="290" class="sv-blanco" font-size="12.5" opacity=".9">All gates held separately</text>
+  <text x="740" y="308" class="sv-blanco" font-size="12.5" opacity=".9">AI Auditor at every gate</text>
+  <text x="740" y="326" class="sv-blanco" font-size="12.5" opacity=".9">Multi-level go-live sign-off</text>
+  <text x="740" y="344" class="sv-blanco" font-size="12.5" opacity=".9">Quarterly review</text>
+
+  <rect x="0" y="414" width="640" height="56" fill="#0d7680"/>
+  <text x="18" y="437" class="sv-blanco" font-size="12" font-weight="700" letter-spacing="1" opacity=".8">INTENSITY</text>
+  <text x="18" y="459" class="sv-blanco sv-serif" font-size="21" font-weight="700">Lite</text>
+  <text x="80" y="459" class="sv-blanco" font-size="12.5" opacity=".9">Gates can be grouped · simplified templates · half-yearly review</text>
+</svg>
+  </div>
+  <div class="g-fuente">Source: SEVEN-G · SEACHAD</div>
+</figure>
+
+<h3 id="9-2-enterprise-criteria">9.2 Enterprise criteria</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>High regulatory risk</strong></td>
+<td>The system is classified as high-risk under the applicable regulation.</td>
+</tr>
+<tr>
+<td><strong>Decisions about people</strong></td>
+<td>The output significantly influences decisions that affect people (employment, credit, insurance, access to services, among others).</td>
+</tr>
+<tr>
+<td><strong>Direct exposure</strong></td>
+<td>Customers, patients, citizens or other external persons interact directly with the system.</td>
+</tr>
+<tr>
+<td><strong>Agents with the ability to act</strong></td>
+<td>The system executes actions —writing to systems, sending communications, making payments— without a person validating each action before it is executed (autonomy A2 or A3, document 35), and those actions affect third parties, money, personal data or production systems.</td>
+</tr>
+<tr>
+<td><strong>Specially protected data</strong></td>
+<td>It processes special categories of personal data or critical confidential information.</td>
+</tr>
+<tr>
+<td><strong>Critical function</strong></td>
+<td>It supports a critical or important business function, or one subject to sector-specific operational resilience regulation.</td>
+</tr>
+<tr>
+<td><strong>Transform level</strong></td>
+<td>The initiative is classified as Transform.</td>
+</tr>
+<tr>
+<td><strong>Investment</strong></td>
+<td>The investment exceeds the threshold approved by the board in C2.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-3-what-changes-between-intensities">9.3 What changes between intensities</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Gates</strong></td>
+<td>G0–G2 and G4–G5 may be grouped</td>
+<td>All separately</td>
+</tr>
+<tr>
+<td><strong>Evidence</strong></td>
+<td>Simplified templates</td>
+<td>Full templates</td>
+</tr>
+<tr>
+<td><strong>Verification</strong></td>
+<td>AI Office; AI Auditor by sampling</td>
+<td>AI Auditor at all <em>gates</em></td>
+</tr>
+<tr>
+<td><strong>Decision</strong></td>
+<td>Sponsor, with risk clearance at G3, G4 and G5</td>
+<td>AI Committee; board for Transform</td>
+</tr>
+<tr>
+<td><strong>Go-live</strong></td>
+<td>Risk clearance</td>
+<td>Multi-level sign-off with veto</td>
+</tr>
+<tr>
+<td><strong>Continuity review</strong></td>
+<td>Half-yearly</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>Visibility</strong></td>
+<td>Aggregated board dashboard</td>
+<td>Board dashboard by initiative</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="risks"><span class="antetitulo">10</span>Risks</h2>
+<p>SEVEN-G manages risks at two levels: in each initiative (phase 3 and continuous monitoring) and in the portfolio (AI Committee). The full methodology is in document 33.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Strategic</strong></td>
+<td>Misalignment with the AI thesis; dependence on a single bet; missed opportunity.</td>
+</tr>
+<tr>
+<td><strong>Technical</strong></td>
+<td>Insufficient performance; degradation; lack of robustness; hallucinations in generative AI.</td>
+</tr>
+<tr>
+<td><strong>Data</strong></td>
+<td>Quality, availability, bias, legal basis for use.</td>
+</tr>
+<tr>
+<td><strong>Economic</strong></td>
+<td>Cost overruns; unrealised value; rising recurring costs.</td>
+</tr>
+<tr>
+<td><strong>Legal and compliance</strong></td>
+<td>Incorrect regulatory classification; failure to meet transparency, oversight or data protection obligations.</td>
+</tr>
+<tr>
+<td><strong>Organisational</strong></td>
+<td>Lack of adoption; loss of knowledge; unmanaged effect on people.</td>
+</tr>
+<tr>
+<td><strong>Reputational</strong></td>
+<td>Discriminatory outcomes; errors visible to customers; use perceived as inappropriate.</td>
+</tr>
+</tbody>
+</table></div>
+<p>These categories are complemented by three areas that require specific controls:</p>
+<ul>
+<li><strong>Generative AI and agents</strong>: prompt injection, information leakage, excessive permissions, unauthorised actions, lack of traceability of the intent behind each action.</li>
+<li><strong>Exposure to attacks that use AI</strong>: impersonation, attack automation, accelerated exploitation of vulnerabilities. The detail is in document 35.</li>
+<li><strong>AI third parties and suppliers</strong>: technological dependency, use of data by the supplier, uncommunicated model changes, concentration and exit. The detail is in document 36.</li>
+</ul>
+<hr />
+<h2 id="measurement"><span class="antetitulo">11</span>Measurement</h2>
+<p>Measurement is integrated into the lifecycle and the corporate cycle. The value measurement rules (document 00, section 6, and document 40) apply in all cases.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Moment</th>
+<th>What is measured</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 2</strong></td>
+<td>Baseline, target and success threshold; expected value in money with a formula.</td>
+<td>Make the hypothesis falsifiable.</td>
+</tr>
+<tr>
+<td><strong>Phase 3</strong></td>
+<td>Full costs and expected net value.</td>
+<td>Decide on economic feasibility.</td>
+</tr>
+<tr>
+<td><strong>Phase 5</strong></td>
+<td>Pilot results using the attribution method.</td>
+<td>Demonstrate value before production.</td>
+</tr>
+<tr>
+<td><strong>Phase 6</strong></td>
+<td>Realised value, actual costs, performance, incidents, adoption.</td>
+<td>Maintain control and detect deviations.</td>
+</tr>
+<tr>
+<td><strong>Phase 7</strong></td>
+<td>Validated realised value; actual versus declared ambition.</td>
+<td>Decide on scaling or retirement.</td>
+</tr>
+<tr>
+<td><strong>C1 and C5</strong></td>
+<td>Maturity with evidence; transformation index; portfolio value and cost.</td>
+<td>Diagnose and review direction.</td>
+</tr>
+<tr>
+<td><strong>C4</strong></td>
+<td>Board dashboard; decision agility (time from idea to approval and to production).</td>
+<td>Oversee.</td>
+</tr>
+<tr>
+<td><strong>Continuous</strong></td>
+<td>Funnel metrics: time in phase, decision time, conversion per <em>gate</em>, iterations, stalled initiatives, expired conditions and stop reasons (document 03).</td>
+<td>Manage the portfolio as a funnel and detect bottlenecks.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every declared amount has one of three statuses: <strong>validated</strong> (by management control or audit), <strong>declared</strong> (by the responsible area) or <strong>estimated</strong> (by the committee, the board or the assessment team).</p>
+<hr />
+<h2 id="nonconformities"><span class="antetitulo">12</span>Nonconformities</h2>
+<p>A nonconformity is any failure to meet a mandatory requirement of the framework. It is managed through a single process; the detail is in document 37.</p>
+<figure class="grafico">
+  <div class="g-titulo">Nonconformity management</div>
+  <div class="g-sub">A single process for all deviations. Only the AI Auditor can close a nonconformity</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 980 210" role="img" aria-label="Six-step nonconformity management process with re-audit and closure">
+  <defs>
+    <marker id="nc-fl-en" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="sv-flecha"/></marker>
+  </defs>
+  <g font-weight="700">
+    <path d="M10,40 H132 L146,77 L132,114 H10 Z" fill="#0a3d73"/>
+    <text x="24" y="66" class="sv-blanco" font-size="12" opacity=".7">1</text><text x="24" y="90" class="sv-blanco" font-size="14">Detection</text>
+    <path d="M144,40 H266 L280,77 L266,114 H144 L158,77 Z" fill="#0f5499"/>
+    <text x="168" y="66" class="sv-blanco" font-size="12" opacity=".7">2</text><text x="168" y="86" class="sv-blanco" font-size="14">Classifi-</text><text x="168" y="103" class="sv-blanco" font-size="14">cation</text>
+    <path d="M278,40 H400 L414,77 L400,114 H278 L292,77 Z" fill="#990f3d"/>
+    <text x="302" y="66" class="sv-blanco" font-size="12" opacity=".7">3</text><text x="302" y="90" class="sv-blanco" font-size="14">Containment</text>
+    <path d="M412,40 H534 L548,77 L534,114 H412 L426,77 Z" fill="#0b6a73"/>
+    <text x="436" y="66" class="sv-blanco" font-size="12" opacity=".7">4</text><text x="436" y="86" class="sv-blanco" font-size="14">Root cause</text><text x="436" y="103" class="sv-blanco" font-size="14">analysis</text>
+    <path d="M546,40 H668 L682,77 L668,114 H546 L560,77 Z" fill="#0d7680"/>
+    <text x="570" y="66" class="sv-blanco" font-size="12" opacity=".7">5</text><text x="570" y="86" class="sv-blanco" font-size="14">Corrective</text><text x="570" y="103" class="sv-blanco" font-size="14">action</text>
+    <path d="M680,40 H802 L816,77 L802,114 H680 L694,77 Z" fill="#593380"/>
+    <text x="704" y="66" class="sv-blanco" font-size="12" opacity=".7">6</text><text x="704" y="90" class="sv-blanco" font-size="14">Re-audit</text>
+  </g>
+  <line x1="818" y1="77" x2="846" y2="77" class="sv-regla" stroke-width="1.5" marker-end="url(#nc-fl-en)"/>
+  <text x="832" y="30" text-anchor="middle" class="sv-t2" font-size="11.5" font-weight="700">Effective</text>
+  <rect x="850" y="40" width="130" height="74" fill="#1a1817"/>
+  <text x="864" y="72" class="sv-blanco" font-size="14" font-weight="700">Closure by</text>
+  <text x="864" y="90" class="sv-blanco" font-size="14" font-weight="700">AI Auditor</text>
+  <path d="M748,116 V160 H480 V120" class="sv-regla" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#nc-fl-en)"/>
+  <text x="614" y="182" text-anchor="middle" class="sv-t2" font-size="12.5" font-weight="700">Not effective: return to root cause analysis</text>
+</svg>
+  </div>
+  <div class="g-fuente">Source: SEVEN-G · SEACHAD</div>
+</figure>
+
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Examples</th>
+<th>Containment</th>
+<th>Action plan</th>
+<th>Reports to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>System in production without an approved <em>gate</em>; prohibited practice; unreported serious incident; critical control disabled.</td>
+<td>Immediate (within 48 hours at most), including shutting down the system if necessary.</td>
+<td>Within 10 days at most.</td>
+<td>AI Committee and board committee.</td>
+</tr>
+<tr>
+<td><strong>Major</strong></td>
+<td>Evidence produced after the fact; self-approval; expired condition on a relevant control; omitted continuity review.</td>
+<td>Within 10 days at most.</td>
+<td>Within 30 days at most.</td>
+<td>AI Committee.</td>
+</tr>
+<tr>
+<td><strong>Minor</strong></td>
+<td>Incomplete evidence with no impact on the decision; delay in updating records.</td>
+<td>Not required.</td>
+<td>Before the next <em>gate</em> or review.</td>
+<td>AI Office.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The time limits are for reference and the company may adjust them in C2, without exceeding those set by the applicable regulation.</p>
+<hr />
+<h2 id="regulation-and-reference-standards"><span class="antetitulo">13</span>Regulation and reference standards</h2>
+<p>SEVEN-G <strong>maps</strong> regulation instead of embedding it: each obligation is linked to a phase, a role and a piece of evidence. In this way, when a regulation changes, the mapping is updated without rebuilding the framework. The detailed mapping is in document 34.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Main fit in SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EU AI Act</strong></td>
+<td>Classification by risk level and prohibited practices (phase 3); risk management, data governance, technical documentation, record-keeping, transparency, human oversight, accuracy and robustness (phases 3 to 6); AI literacy of staff (C2 and people); post-market monitoring and reporting of serious incidents (phase 6).</td>
+</tr>
+<tr>
+<td><strong>ISO/IEC 42001</strong> (AI management system)</td>
+<td>The corporate cycle acts as the management system: context and leadership (C1–C2), planning (C2–C3), operation (lifecycle), performance evaluation (C4–C5) and improvement (C5 and nonconformities).</td>
+</tr>
+<tr>
+<td><strong>NIST AI RMF</strong></td>
+<td>Govern (corporate cycle and roles), map (phases 1–3), measure (phases 2, 5 and 6) and manage (phases 3–7).</td>
+</tr>
+<tr>
+<td><strong>GDPR</strong></td>
+<td>Legal basis and data minimisation (phase 3), data protection impact assessment (phases 3–4), data subject rights and automated decisions (phases 4–6).</td>
+</tr>
+<tr>
+<td><strong>DORA and NIS2</strong>, where applicable</td>
+<td>Technology supplier risk (phases 3–4), incident management and reporting (phase 6), resilience of critical functions (Enterprise criterion).</td>
+</tr>
+<tr>
+<td><strong>Sector-specific regulation</strong></td>
+<td>Incorporated into the context statement (phase 0) and the company's regulatory mapping.</td>
+</tr>
+</tbody>
+</table></div>
+<p>This document does not constitute legal advice. The regulatory classification of each system must be carried out with qualified legal judgement.</p>
+<hr />
+<h2 id="how-to-declare-that-seven-g-is-applied"><span class="antetitulo">14</span>How to declare that SEVEN-G is applied</h2>
+<p>An organisation may declare that it applies SEVEN-G when it meets, as a minimum, the following conditions:</p>
+<ol>
+<li>It has completed C1 and C2, and the board has approved the AI thesis, the ambition per sphere and the risk appetite.</li>
+<li>It maintains an AI system inventory with regulatory classification, intensity and owner, and an initiative register with the traceability described in section 6.11.</li>
+<li>It has assigned the roles and bodies in line with the incompatibilities in section 8.2.</li>
+<li>All new initiatives go through the lifecycle with their <em>gates</em> recorded.</li>
+<li>All initiatives in production have a current continuity review.</li>
+<li>It applies the value measurement rules and reports to the board with the oversight dashboard.</li>
+<li>It manages nonconformities using the process in section 12.</li>
+</ol>
+<p>Initiatives in production that predate the adoption of the framework must be regularised within a time limit approved in C2, by undergoing a continuity review equivalent to G7.</p>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">15</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship to this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>00 · What SEVEN-G is and how it helps companies</strong></td>
+<td>Framework overview and value measurement rules.</td>
+</tr>
+<tr>
+<td><strong>02 · Glossary</strong></td>
+<td>Full definitions of the terms.</td>
+</tr>
+<tr>
+<td><strong>03 · Tools and initiative register</strong></td>
+<td>Initiative register, funnel metrics, data model and tool catalogue.</td>
+</tr>
+<tr>
+<td><strong>10 · Sphere map and ambition levels</strong></td>
+<td>Component A.</td>
+</tr>
+<tr>
+<td><strong>11 · Maturity model</strong></td>
+<td>Diagnosis in C1 and C5.</td>
+</tr>
+<tr>
+<td><strong>12 · Transformation index</strong></td>
+<td>Ambition classification and company profile.</td>
+</tr>
+<tr>
+<td><strong>13 · AI thesis and risk appetite</strong></td>
+<td>C2 outputs.</td>
+</tr>
+<tr>
+<td><strong>14 · Portfolio management</strong></td>
+<td>C3 outputs and retirement criteria.</td>
+</tr>
+<tr>
+<td><strong>20 · Phase manuals</strong></td>
+<td>Operational development of phases 0–7.</td>
+</tr>
+<tr>
+<td><strong>21 · <em>Gate</em> and audit criteria</strong></td>
+<td>Detailed criteria by gate, intensity and ambition.</td>
+</tr>
+<tr>
+<td><strong>22 · Checklists</strong></td>
+<td>Binary controls per <em>gate</em>.</td>
+</tr>
+<tr>
+<td><strong>30 · Governance model</strong></td>
+<td>Development of roles, bodies and escalation.</td>
+</tr>
+<tr>
+<td><strong>33 · AI risk methodology</strong></td>
+<td>Matrix, register and typical risks.</td>
+</tr>
+<tr>
+<td><strong>34 · Regulatory mapping</strong></td>
+<td>Obligation by obligation.</td>
+</tr>
+<tr>
+<td><strong>35 · AI and agent security</strong></td>
+<td>Agent-specific controls and exposure to attacks.</td>
+</tr>
+<tr>
+<td><strong>37 · Nonconformities and incidents</strong></td>
+<td>Development of the process in section 12.</td>
+</tr>
+<tr>
+<td><strong>40 · Value measurement rules</strong></td>
+<td>Development of the measurement system.</td>
+</tr>
+<tr>
+<td><strong>90 · Implementation guide</strong></td>
+<td>First ninety days and regularisation.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">16</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Consolidates the previous foundational methodology and the <em>gate</em> criteria into a single model; incorporates the corporate cycle, the criteria differentiated by ambition level, intensity determination, multi-level go-live sign-off, the incompatibility table, nonconformity time limits, regulatory fit and lifecycle traceability as a funnel.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":true},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

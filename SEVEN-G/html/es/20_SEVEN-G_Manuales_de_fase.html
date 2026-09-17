@@ -1,0 +1,2805 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manuales de fase</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Manuales de fase"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/20_SEVEN-G_Manuales_de_fase.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/20_SEVEN-G_Manuales_de_fase.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/20_SEVEN-G_Manuales_de_fase.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/20_SEVEN-G_Manuales_de_fase.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 20 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 20 &#183; Manuales de fase</p>
+    <h1>Manuales de fase</h1>
+    <p class="entradilla">C&#243;mo se ejecuta cada fase del ciclo de vida de una iniciativa de IA, desde la autorizaci&#243;n hasta la evoluci&#243;n o la retirada</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>8</b><span>manuales de fase</span></div><div class="cifra"><b>13</b><span>apartados por manual</span></div><div class="cifra"><b>4</b><span>perfiles tecnol&#243;gicos</span></div><div class="cifra"><b>31</b><span>plantillas de evidencia enlazadas</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/20_SEVEN-G_Manuales_de_fase.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/20_SEVEN-G_Manuales_de_fase.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/20_SEVEN-G_Manuales_de_fase.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#como-usar-los-manuales"><span>02</span>Cómo usar los manuales</a></li><li><a href="#fase-0-contexto-y-restricciones"><span>03</span>Fase 0 · Contexto y restricciones</a></li><li><a href="#fase-1-descubrimiento-de-oportunidades"><span>04</span>Fase 1 · Descubrimiento de oportunidades</a></li><li><a href="#fase-2-hipotesis-de-valor"><span>05</span>Fase 2 · Hipótesis de valor</a></li><li><a href="#fase-3-viabilidad-y-riesgo"><span>06</span>Fase 3 · Viabilidad y riesgo</a></li><li><a href="#fase-4-diseno-de-la-solucion"><span>07</span>Fase 4 · Diseño de la solución</a></li><li><a href="#fase-5-entrega-y-validacion"><span>08</span>Fase 5 · Entrega y validación</a></li><li><a href="#fase-6-operacion-y-gobierno"><span>09</span>Fase 6 · Operación y gobierno</a></li><li><a href="#fase-7-evolucion-o-retirada"><span>10</span>Fase 7 · Evolución o retirada</a></li><li><a href="#transiciones-entre-fases"><span>11</span>Transiciones entre fases</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>12</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>13</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>Este documento convierte el ciclo de vida de la iniciativa definido en el <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> (sección 6) en instrucciones de trabajo. Para cada fase, de la 0 a la 7, indica qué hay que hacer, en qué orden, quién lo hace, qué evidencias deben existir antes de la puerta de decisión y cómo se prepara esa puerta. Incluye las diferencias por intensidad (Lite o Enterprise), por nivel de ambición y por tecnología, y las transiciones entre fases.</p>
+<p><strong>Qué no cubre y dónde se encuentra</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Criterios de cada <em>gate</em> (<code>G&lt;n&gt;.&lt;nn&gt;</code>, <code>R6.&lt;nn&gt;</code>) y listas de verificación (<code>LV-G0</code>…)</td>
+<td>21 y 22</td>
+</tr>
+<tr>
+<td>Adopción, capacidad liberada y formación</td>
+<td>23</td>
+</tr>
+<tr>
+<td>Órganos, roles y escalado de decisiones</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Riesgos, regulación, seguridad de agentes, terceros e incidentes</td>
+<td>33, 34, 35, 36 y 37</td>
+</tr>
+<tr>
+<td>Contenido de cada evidencia</td>
+<td>Plantillas <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ámbito.</strong> Iniciativas de IA e IA de terceros integrada en procesos (01 §1.2). El uso corporativo de IA de propósito general solo recorre estos manuales si cumple algún criterio Enterprise (01 §9.2); en otro caso se gobierna con el inventario, la política de uso aceptable y la formación (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</p>
+<p>Este documento no constituye asesoramiento jurídico. Las referencias regulatorias se han consultado en septiembre de 2026 y su vigencia debe verificarse en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>.</p>
+<hr />
+<h2 id="como-usar-los-manuales"><span class="antetitulo">02</span>Cómo usar los manuales</h2>
+<h3 id="2-1-estructura-comun">2.1 Estructura común</h3>
+<p>Las secciones 3 a 10 desarrollan una fase cada una con trece apartados fijos: <strong>1</strong> objetivo · <strong>2</strong> cuándo empieza y cuándo termina · <strong>3</strong> entradas · <strong>4</strong> actividades paso a paso · <strong>5</strong> roles · <strong>6</strong> evidencias obligatorias · <strong>7</strong> diferencias entre Lite y Enterprise · <strong>8</strong> diferencias por nivel de ambición · <strong>9</strong> particularidades por tecnología · <strong>10</strong> plazo de referencia · <strong>11</strong> preparación del <em>gate</em> · <strong>12</strong> errores frecuentes · <strong>13</strong> eventos en el registro.</p>
+<p>El responsable de producto los usa como guía de trabajo; el responsable técnico, en las fases 3 a 5; el de operación, en la 6; el patrocinador, para saber qué exigir antes de un <em>gate</em>; riesgos, para sus actividades y conformidades; el auditor y la oficina de IA, para saber qué evidencias y qué errores buscar al verificar.</p>
+<h3 id="2-2-vision-de-conjunto">2.2 Visión de conjunto</h3>
+<figure class="grafico">
+  <div class="g-titulo">Ciclo de vida de la iniciativa</div>
+  <div class="g-sub">Ocho fases con puertas de decisión auditables y capacidad real de parar</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 980 250" role="img" aria-label="Ciclo de vida de la iniciativa en ocho fases con puertas de decisión">
+  <g font-size="11.5" font-weight="700" letter-spacing="1">
+    <path d="M12,40 V30 H134 V40" class="sv-regla"/><text x="73" y="20" text-anchor="middle" class="sv-t2">AUTORIZAR</text>
+    <path d="M132,40 V30 H488 V40" class="sv-regla"/><text x="310" y="20" text-anchor="middle" class="sv-t2">DECIDIR</text>
+    <path d="M486,40 V30 H724 V40" class="sv-regla"/><text x="605" y="20" text-anchor="middle" class="sv-t2">CONSTRUIR Y DEMOSTRAR</text>
+    <path d="M722,40 V30 H962 V40" class="sv-regla"/><text x="842" y="20" text-anchor="middle" class="sv-t2">OPERAR Y EVOLUCIONAR</text>
+  </g>
+  <g font-weight="700">
+    <path d="M10,54 H122 L136,91 L122,128 H10 Z" fill="#1a1817"/>
+    <text x="24" y="80" class="sv-blanco" font-size="12" opacity=".7">0</text><text x="24" y="104" class="sv-blanco" font-size="13.5">Contexto</text>
+    <path d="M128,54 H240 L254,91 L240,128 H128 L142,91 Z" fill="#0a3d73"/>
+    <text x="150" y="80" class="sv-blanco" font-size="12" opacity=".7">1</text><text x="150" y="100" class="sv-blanco" font-size="13.5">Descubri-</text><text x="150" y="116" class="sv-blanco" font-size="13.5">miento</text>
+    <path d="M246,54 H358 L372,91 L358,128 H246 L260,91 Z" fill="#0f5499"/>
+    <text x="268" y="80" class="sv-blanco" font-size="12" opacity=".7">2</text><text x="268" y="100" class="sv-blanco" font-size="13.5">Hipótesis</text><text x="268" y="116" class="sv-blanco" font-size="13.5">de valor</text>
+    <path d="M364,54 H476 L490,91 L476,128 H364 L378,91 Z" fill="#990f3d"/>
+    <text x="386" y="80" class="sv-blanco" font-size="12" opacity=".8">3 · PARADA</text><text x="386" y="100" class="sv-blanco" font-size="13.5">Viabilidad</text><text x="386" y="116" class="sv-blanco" font-size="13.5">y riesgo</text>
+    <path d="M482,54 H594 L608,91 L594,128 H482 L496,91 Z" fill="#0b6a73"/>
+    <text x="504" y="80" class="sv-blanco" font-size="12" opacity=".7">4</text><text x="504" y="104" class="sv-blanco" font-size="13.5">Diseño</text>
+    <path d="M600,54 H712 L726,91 L712,128 H600 L614,91 Z" fill="#0d7680"/>
+    <text x="622" y="80" class="sv-blanco" font-size="12" opacity=".7">5</text><text x="622" y="100" class="sv-blanco" font-size="13.5">Entrega y</text><text x="622" y="116" class="sv-blanco" font-size="13.5">validación</text>
+    <path d="M718,54 H830 L844,91 L830,128 H718 L732,91 Z" fill="#4a2a6b"/>
+    <text x="740" y="80" class="sv-blanco" font-size="12" opacity=".7">6</text><text x="740" y="104" class="sv-blanco" font-size="13.5">Operación</text>
+    <path d="M836,54 H962 V128 H836 L850,91 Z" fill="#593380"/>
+    <text x="858" y="80" class="sv-blanco" font-size="12" opacity=".7">7</text><text x="858" y="100" class="sv-blanco" font-size="13.5">Evolución</text><text x="858" y="116" class="sv-blanco" font-size="13.5">o retirada</text>
+  </g>
+  <line x1="20" y1="156" x2="956" y2="156" class="sv-regla" stroke-width="1"/>
+  <g class="sv-t">
+    <rect x="119" y="150" width="12" height="12" transform="rotate(45 125 156)" style="fill:var(--tinta)"/>
+    <rect x="237" y="150" width="12" height="12" transform="rotate(45 243 156)" style="fill:var(--tinta)"/>
+    <rect x="355" y="150" width="12" height="12" transform="rotate(45 361 156)" style="fill:var(--tinta)"/>
+    <rect x="471" y="148" width="16" height="16" transform="rotate(45 479 156)" fill="#990f3d"/>
+    <rect x="591" y="150" width="12" height="12" transform="rotate(45 597 156)" style="fill:var(--tinta)"/>
+    <rect x="709" y="150" width="12" height="12" transform="rotate(45 715 156)" style="fill:var(--tinta)"/>
+    <rect x="827" y="150" width="12" height="12" transform="rotate(45 833 156)" style="fill:var(--tinta)"/>
+    <rect x="950" y="150" width="12" height="12" transform="rotate(45 956 156)" style="fill:var(--tinta)"/>
+  </g>
+  <g font-size="13">
+    <text x="20" y="194" class="sv-t" font-weight="700">◆ Gate</text>
+    <text x="84" y="194" class="sv-t2">Continuar · Continuar con condiciones · Iterar · Pivotar · Parar</text>
+    <text x="956" y="194" text-anchor="end" class="sv-t2">Fase 7: Escalar · Iterar · Retirar</text>
+    <text x="20" y="226" font-weight="700" style="fill:var(--claret)" font-family="Libre Franklin, Segoe UI, sans-serif">La fase 3 es la principal puerta de parada: sin viabilidad técnica, económica y de riesgo, no se diseña.</text>
+  </g>
+</svg>
+  </div>
+  <div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div>
+</figure>
+
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Puerta</th>
+<th>Responde (A)</th>
+<th>Plantillas</th>
+<th>Plazo Lite / Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0 · Contexto y restricciones</strong></td>
+<td>G0 · Autorización</td>
+<td>Patrocinador</td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
+<td>10 / 20 días</td>
+</tr>
+<tr>
+<td><strong>1 · Descubrimiento de oportunidades</strong></td>
+<td>G1 · Oportunidad</td>
+<td>Patrocinador</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
+<td>20 / 30 días</td>
+</tr>
+<tr>
+<td><strong>2 · Hipótesis de valor</strong></td>
+<td>G2 · Hipótesis</td>
+<td>Patrocinador</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
+<td>20 / 30 días</td>
+</tr>
+<tr>
+<td><strong>3 · Viabilidad y riesgo</strong></td>
+<td>G3 · Viabilidad</td>
+<td>Patrocinador</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>–<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>20 / 45 días</td>
+</tr>
+<tr>
+<td><strong>4 · Diseño de la solución</strong></td>
+<td>G4 · Diseño</td>
+<td>Responsable técnico</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>20 / 45 días</td>
+</tr>
+<tr>
+<td><strong>5 · Entrega y validación</strong></td>
+<td>G5 · Puesta en producción</td>
+<td>Responsable de producto</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>–<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>60 / 90 días</td>
+</tr>
+<tr>
+<td><strong>6 · Operación y gobierno</strong></td>
+<td>R6 · Revisión de continuidad</td>
+<td>Responsable de operación</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>–<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td>Sin plazo; R6 semestral / trimestral</td>
+</tr>
+<tr>
+<td><strong>7 · Evolución o retirada</strong></td>
+<td>G7 · Escalado o retirada</td>
+<td>Patrocinador</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>15 / 30 días</td>
+</tr>
+</tbody>
+</table></div>
+<p>Toda decisión se documenta con el <strong>registro de decisión de <em>gate</em> (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</strong> en el gestor de <em>gates</em> (T03). La <strong>ficha de caso de uso (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>)</strong> se abre en la fase 1 y se mantiene hasta la retirada.</p>
+<h3 id="2-3-convenciones">2.3 Convenciones</h3>
+<ul>
+<li><strong>Responsabilidades.</strong> Letras de 01 §8.4: <strong>A</strong> responde, <strong>R</strong> realiza, <strong>C</strong> consultado, <strong>I</strong> informado, <strong>V</strong> verifica. En las tablas de actividades, <em>Realiza</em> indica quién ejecuta cada paso; quien responde de toda la fase es el rol <strong>A</strong> del apartado 5. Nombres cortos: <em>Patrocinador</em>, <em>Producto</em>, <em>Técnico</em>, <em>Operación</em>, <em>Riesgos</em>, <em>Auditor</em>.</li>
+<li><strong>Funciones de la compañía.</strong> <em>Participan</em> incluye funciones que no son roles del marco (control de gestión, asesoría jurídica, delegado de protección de datos, seguridad de la información, personas, compras, área usuaria). No sustituyen a los roles ni alteran la separación de funciones.</li>
+<li><strong>Verificación y decisión.</strong> Según 01 §7.5. En Enterprise verifica siempre el auditor de IA.</li>
+<li><strong>Perfiles tecnológicos.</strong> Cuatro perfiles: ML predictivo, IA generativa, agentes e IA de terceros embebida. <em>Procesamiento de lenguaje y documentos</em> sigue el de IA generativa si usa modelos generativos y el de ML predictivo en otro caso; <em>Visión</em> y <em>Optimización</em>, el de ML predictivo; <em>Reglas (no es IA)</em> no recorre el ciclo. Si se combinan perfiles, se aplican todos.</li>
+<li><strong>Plazos.</strong> Se cuentan desde la entrada en la fase hasta la decisión de su puerta, sin el tiempo en espera. El tiempo de decisión (de la solicitud a la decisión) se controla además aparte: 5 días hábiles en Lite y 10 en Enterprise. Son orientativos (03 §3.6); la compañía los aprueba en C2 y los recalibra en C5.</li>
+<li><strong>Vocabulario.</strong> <strong>Debe</strong>, obligatorio; <strong>debería</strong>, recomendado; <strong>puede</strong>, opcional (01 §1.3).</li>
+</ul>
+<h3 id="2-4-reglas-comunes-a-todas-las-fases">2.4 Reglas comunes a todas las fases</h3>
+<ol>
+<li><strong>Las evidencias existen antes de solicitar el <em>gate</em></strong>, con autor, fecha y versión. La documentación a posteriori invalida el <em>gate</em> y es no conformidad mayor (01 §7.4).</li>
+<li><strong>Quien aporta evidencias no las verifica ni decide.</strong></li>
+<li><strong>Sin evidencia obligatoria no hay decisión.</strong> T03 no permite registrar <em>Continuar</em> con criterios obligatorios en <em>No cumple</em> o <em>Pendiente</em>.</li>
+<li><strong>Las condiciones tienen plazo y responsable</strong> y no se admiten para controles críticos de seguridad, cumplimiento legal o supervisión humana. Vencidas, el resultado pasa a <em>Iterar</em>.</li>
+<li><strong>Tras dos iteraciones en el mismo <em>gate</em></strong>, la decisión se eleva al órgano superior.</li>
+<li><strong>Los criterios de parada no se relajan</strong> sin aprobación del órgano que autorizó la iniciativa.</li>
+<li><strong>La intensidad solo sube sin esperar a un <em>gate</em>.</strong> Se determina en la fase 0 y se revisa en G3 y en cada R6. Si aparece antes un criterio Enterprise (por ejemplo, ambición Transformar o un agente con capacidad de actuar), la iniciativa pasa a Enterprise en ese momento. La vuelta a Lite solo se decide en G3 o R6.</li>
+<li><strong>Todo importe tiene fórmula y estado</strong>, y la capacidad liberada se informa aparte (reglas 1, 2 y 3 de medición). <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> se mantiene en lenguaje comprensible (regla 10).</li>
+<li><strong>Agrupar no es omitir.</strong> Cuando en Lite se agrupan G0–G2 o G4–G5, cada puerta se registra como decisión separada en T03 y cada evidencia se verifica.</li>
+</ol>
+<h3 id="2-5-registro-en-t01">2.5 Registro en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></h3>
+<p>Tipos de evento (03 §3.3): alta; entrada y salida de fase; solicitud de <em>gate</em>; verificación; decisión con resultado; creación, cumplimiento o vencimiento de condiciones; paso a espera y reanudación; cambio de clasificación (ambición, intensidad o regulatoria); incidente; no conformidad; parada; retirada. Todos llevan fecha, autor y comentario. El apartado 13 de cada manual recoge los propios de la fase; espera, condiciones y no conformidades pueden darse en cualquiera.</p>
+<hr />
+<h2 id="fase-0-contexto-y-restricciones"><span class="antetitulo">03</span>Fase 0 · Contexto y restricciones</h2>
+<h3 id="3-1-objetivo">3.1 Objetivo</h3>
+<p>Autorizar formalmente la iniciativa y fijar su marco: objetivo estratégico, esfera, restricciones, roles, intensidad y alta en el inventario. Pregunta: <em>¿está autorizada la iniciativa y en qué marco?</em></p>
+<h3 id="3-2-cuando-empieza-y-cuando-termina">3.2 Cuándo empieza y cuándo termina</h3>
+<ul>
+<li><strong>Empieza</strong> cuando una idea registrada en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (estado <em>Registrada</em>) tiene un patrocinador que acepta promoverla y un responsable de producto designado, o cuando G7 decide <strong>Escalar</strong> (sección 11.5).</li>
+<li><strong>Termina</strong> con G0: <em>Continuar</em>, <em>Continuar con condiciones</em>, <em>Iterar</em> o <em>Parar</em>.</li>
+<li><strong>Regla:</strong> sin G0 la iniciativa no está autorizada; no consume presupuesto ni accede a datos de producción (01 §6.2).</li>
+</ul>
+<h3 id="3-3-entradas">3.3 Entradas</h3>
+<p>Idea registrada con descripción comprensible (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) · tesis de IA, ambición por esfera y apetito de riesgo (C2, <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>) · cartera, presupuesto marco y umbral de inversión Enterprise (C3, <a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>) · política corporativa y de uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) · inventario e iniciativas existentes (T02, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) · mapeo regulatorio y normativa sectorial (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>) · si procede de un escalado, decisión de G7 y lecciones aprendidas (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</p>
+<h3 id="3-4-actividades-paso-a-paso">3.4 Actividades paso a paso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Describir la necesidad de negocio y el objetivo estratégico sin presuponer la solución; identificar la esfera principal y la secundaria.</td>
+<td>Producto</td>
+<td>Técnico, área usuaria</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Comprobar el encaje con la tesis, la ambición de la esfera y la cartera; buscar en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y T02 iniciativas o sistemas similares.</td>
+<td>Producto</td>
+<td>Oficina de IA</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Declarar restricciones regulatorias, éticas, de datos (disponibilidad, base legal preliminar, categorías especiales), presupuestarias, de plazo, tecnológicas y de proveedores.</td>
+<td>Producto</td>
+<td>Riesgos, Técnico, asesoría jurídica</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Identificación regulatoria preliminar con T07 (posible práctica prohibida, alto riesgo, transparencia); si no puede concluirse, <em>Pendiente de clasificar</em>.</td>
+<td>Producto</td>
+<td>Riesgos</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Asignar los seis roles, comprobar incompatibilidades (01 §8.2) y obtener la aceptación expresa. El auditor lo designa la tercera línea, no el patrocinador.</td>
+<td>Producto</td>
+<td>Oficina de IA, tercera línea</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Determinar la intensidad con T04; si hay agentes, declarar el nivel de autonomía previsto (A0–A3).</td>
+<td>Producto</td>
+<td>Riesgos</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Fijar el presupuesto y el límite de gasto autorizados hasta G3.</td>
+<td>Producto</td>
+<td>Control de gestión</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Dar de alta en T02 los sistemas previstos, aunque aún no existan.</td>
+<td>Producto</td>
+<td>Técnico</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Redactar la carta, reunir evidencias y solicitar G0 en T03.</td>
+<td>Producto</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-5-roles">3.5 Roles</h3>
+<p>Patrocinador <strong>A</strong> · Producto <strong>R</strong> · Técnico <strong>C</strong> · Operación <strong>I</strong> · Riesgos <strong>C</strong> · Auditor <strong>V</strong> (en Lite verifica la oficina de IA).</p>
+<h3 id="3-6-evidencias-obligatorias">3.6 Evidencias obligatorias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidencia</th>
+<th>Plantilla</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carta de la iniciativa</td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Declaración de contexto y restricciones</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Registro de asignación de roles</td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Determinación de intensidad</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
+<td>T04</td>
+</tr>
+<tr>
+<td>Alta en el inventario</td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
+<td>T02</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-7-diferencias-entre-lite-y-enterprise">3.7 Diferencias entre Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plantillas</td>
+<td>Se omiten los campos marcados <em>(Enterprise)</em>.</td>
+<td>Completas.</td>
+</tr>
+<tr>
+<td>Verificación y decisión</td>
+<td>Oficina de IA; patrocinador.</td>
+<td>Auditor de IA; comité de IA.</td>
+</tr>
+<tr>
+<td>Agrupación</td>
+<td>G0, G1 y G2 en una sola sesión.</td>
+<td>Por separado.</td>
+</tr>
+<tr>
+<td>Identificación regulatoria</td>
+<td>Con T07.</td>
+<td>Con T07 y revisión de la asesoría jurídica.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-8-diferencias-por-nivel-de-ambicion">3.8 Diferencias por nivel de ambición</h3>
+<p>La ambición se propone en la fase 1; en la fase 0 la carta solo recoge la <strong>prevista</strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Carta centrada en un proceso y un área; suele bastar el encaje en la cartera del área.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Se identifican desde el inicio los colectivos cuyo trabajo cambiará y se consulta a la función de personas.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Debería proceder de una apuesta prevista en C2 o C3. Intensidad Enterprise desde el inicio, patrocinador de la alta dirección y carta con etapas y límite de inversión de la primera.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-9-particularidades-por-tecnologia">3.9 Particularidades por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Declarar si el resultado influirá en decisiones sobre personas (criterio Enterprise) e identificar los datos históricos y su titular.</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Declarar exposición, tipo de contenido generado, uso de modelos de terceros y si entrarán datos personales o confidenciales.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Declarar autonomía prevista y sistemas alcanzables. A2 o A3 con efecto sobre terceros, dinero, datos personales o sistemas de producción implica Enterprise.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>Identificar proveedor, producto y función; si viene activada por defecto y qué datos recibe el proveedor. El alta en inventario es obligatoria. Nivel de exigencia preliminar N1–N3.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-10-plazo-de-referencia">3.10 Plazo de referencia</h3>
+<p>10 días en Lite y 20 en Enterprise.</p>
+<h3 id="3-11-preparacion-del-gate-g0">3.11 Preparación del <em>gate</em> G0</h3>
+<ul>
+<li><strong>Se presenta:</strong> <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> a <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>; la carta sirve de resumen.</li>
+<li><strong>Verifica y decide:</strong> Lite, oficina de IA y patrocinador; Enterprise, auditor de IA y comité de IA.</li>
+<li><strong>Criterios:</strong> G0.nn (ver <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) y <code>LV-G0</code> (<a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>), que desarrollan 01 §6.2: patrocinador comprometido, roles sin incompatibilidades, encaje con tesis y cartera, restricciones conocidas.</li>
+<li><strong>Consejo:</strong> solicitar con antelación suficiente para que el verificador disponga del plazo completo.</li>
+</ul>
+<h3 id="3-12-errores-frecuentes">3.12 Errores frecuentes</h3>
+<ul>
+<li>Acceder a datos, contratar proveedores o prototipar antes de G0.</li>
+<li>Carta que describe una tecnología (<em>implantar un asistente</em>) y no una necesidad.</li>
+<li>Roles nominales, sin disponibilidad ni aceptación, o auditor elegido por el patrocinador.</li>
+<li>Rebajar la intensidad omitiendo la exposición a clientes o la capacidad de actuar de un agente.</li>
+<li>Excluir la IA de terceros porque <em>es una funcionalidad del software que ya tenemos</em>.</li>
+<li>Restricciones genéricas (<em>cumplir la normativa</em>) sin identificar normas.</li>
+</ul>
+<h3 id="3-13-eventos-en-el-registro">3.13 Eventos en el registro</h3>
+<p>Alta · entrada en fase 0 · alta del sistema en T02 · primera clasificación de intensidad y regulatoria preliminar · solicitud, verificación y decisión de G0 · condiciones · salida o parada con motivo codificado.</p>
+<hr />
+<h2 id="fase-1-descubrimiento-de-oportunidades"><span class="antetitulo">04</span>Fase 1 · Descubrimiento de oportunidades</h2>
+<h3 id="4-1-objetivo">4.1 Objetivo</h3>
+<p>Identificar oportunidades desde el negocio dentro del ámbito autorizado, descartar las que no requieren IA o no tienen valor plausible y proponer esfera y nivel de ambición. Pregunta: <em>¿hay una oportunidad de negocio que requiere IA?</em></p>
+<h3 id="4-2-cuando-empieza-y-cuando-termina">4.2 Cuándo empieza y cuándo termina</h3>
+<ul>
+<li><strong>Empieza</strong> con <em>Continuar</em> o <em>Continuar con condiciones</em> en G0.</li>
+<li><strong>Termina</strong> con G1: <em>Continuar</em>, <em>Continuar con condiciones</em>, <em>Iterar</em>, <em>Pivotar</em> (sección 11.2) o <em>Parar</em>.</li>
+</ul>
+<h3 id="4-3-entradas">4.3 Entradas</h3>
+<p>Evidencias y condiciones de G0 (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, T03) · datos del proceso o decisión: volúmenes, tiempos, costes, errores (área usuaria, control de gestión) · iniciativas paradas o retiradas con motivos comparables (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) · mapa de esferas y criterios de ambición (documentos 10 y 12, T05).</p>
+<h3 id="4-4-actividades-paso-a-paso">4.4 Actividades paso a paso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Analizar el proceso o la decisión: pasos, volúmenes, tiempos, costes, errores, puntos de decisión y personas.</td>
+<td>Producto</td>
+<td>Técnico, área usuaria</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Registrar las oportunidades en <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a> con problema, usuario o cliente afectado y resultado esperado.</td>
+<td>Producto</td>
+<td>Área usuaria</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Identificar y comparar alternativas sin IA: rediseño del proceso, reglas, automatización convencional, formación, cambio de política.</td>
+<td>Producto</td>
+<td>Técnico</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Estimar el orden de magnitud del valor con fórmula (unidades × valor unitario), marcado <em>estimado</em>, y del esfuerzo.</td>
+<td>Producto</td>
+<td>Técnico, control de gestión</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Anotar por qué cada oportunidad avanza o se descarta.</td>
+<td>Producto</td>
+<td>Riesgos</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Proponer esfera y ambición con las cinco preguntas de 00 §5.2 (T05, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
+<td>Producto</td>
+<td>Oficina de IA</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Redactar la ficha de caso de uso (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) de la oportunidad seleccionada.</td>
+<td>Producto</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Revisar la intensidad si aparece un criterio Enterprise; solicitar G1.</td>
+<td>Producto</td>
+<td>Riesgos</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-5-roles">4.5 Roles</h3>
+<p>Patrocinador <strong>A</strong> · Producto <strong>R</strong> · Técnico <strong>C</strong> · Operación <strong>I</strong> · Riesgos <strong>C</strong> · Auditor <strong>V</strong> (en Lite verifica la oficina de IA).</p>
+<h3 id="4-6-evidencias-obligatorias">4.6 Evidencias obligatorias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidencia</th>
+<th>Plantilla</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cartera de oportunidades y notas de filtrado</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Alternativas sin IA consideradas</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Esfera y nivel de ambición propuestos</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
+<td>T05</td>
+</tr>
+<tr>
+<td>Descripción comprensible del caso</td>
+<td><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-7-diferencias-entre-lite-y-enterprise">4.7 Diferencias entre Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cartera</td>
+<td>Puede limitarse a una oportunidad con sus alternativas.</td>
+<td>Varias oportunidades comparadas cuando el ámbito lo permita.</td>
+</tr>
+<tr>
+<td>Verificación y decisión</td>
+<td>Oficina de IA; patrocinador.</td>
+<td>Auditor de IA; patrocinador, informando al comité.</td>
+</tr>
+<tr>
+<td>Agrupación</td>
+<td>Con G0 y G2.</td>
+<td>Por separado.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-8-diferencias-por-nivel-de-ambicion">4.8 Diferencias por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Comparación rigurosa con las alternativas sin IA: si una regla o un rediseño logra lo mismo, se descarta.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Se identifican los roles y decisiones que cambiarían y qué podrán hacer las personas que hoy no pueden.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Se explora con clientes, mercado o modelo operativo; no se descarta por falta de retorno a corto plazo; se documenta la hipótesis de cambio de oferta o de competencia. Pasa a Enterprise.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-9-particularidades-por-tecnologia">4.9 Particularidades por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Comprobar que hay histórico y que el resultado real es observable; si nunca se sabrá si la predicción acertó, la hipótesis no será falsable.</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Distinguir productividad individual (uso corporativo, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) de integración en un proceso. Priorizar tareas con error detectable o tolerable.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Enumerar las acciones del agente y si son reversibles; considerar empezar con menos autonomía.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>Revisar en T02 si una herramienta ya licenciada ofrece la función; plantear construir, comprar o aliarse.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-10-plazo-de-referencia">4.10 Plazo de referencia</h3>
+<p>20 días en Lite y 30 en Enterprise.</p>
+<h3 id="4-11-preparacion-del-gate-g1">4.11 Preparación del <em>gate</em> G1</h3>
+<ul>
+<li><strong>Se presenta:</strong> <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a> con alternativas y notas de filtrado, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> y <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>.</li>
+<li><strong>Verifica y decide:</strong> Lite, oficina de IA y patrocinador; Enterprise, auditor de IA y patrocinador, informando al comité de IA.</li>
+<li><strong>Criterios:</strong> G1.nn (ver <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) y <code>LV-G1</code>, que desarrollan 01 §6.3: necesidad de negocio, aportación de la IA frente a las alternativas y valor potencial suficiente para formular una hipótesis.</li>
+</ul>
+<h3 id="4-12-errores-frecuentes">4.12 Errores frecuentes</h3>
+<ul>
+<li>Partir de la tecnología disponible y buscarle un problema.</li>
+<li>Alternativas sin IA descritas de trámite.</li>
+<li>Contar todo el tiempo del proceso como valor, cuando la IA cambia solo una parte.</li>
+<li>Clasificar como Transformar para ganar visibilidad, o como Optimizar para evitar al consejo.</li>
+<li>No registrar los descartes ni su motivo.</li>
+</ul>
+<h3 id="4-13-eventos-en-el-registro">4.13 Eventos en el registro</h3>
+<p>Entrada en fase 1 · ambición propuesta · cambio de intensidad, si procede · solicitud, verificación y decisión de G1 · condiciones · salida, pivote o parada con motivo codificado.</p>
+<hr />
+<h2 id="fase-2-hipotesis-de-valor"><span class="antetitulo">05</span>Fase 2 · Hipótesis de valor</h2>
+<h3 id="5-1-objetivo">5.1 Objetivo</h3>
+<p>Formular una hipótesis de valor medible y falsable, con línea base, objetivo, umbral de éxito, método de atribución y criterios de parada definidos antes de invertir en construcción. Pregunta: <em>¿qué valor esperamos, cómo lo mediremos y cómo sabremos que ha fallado?</em></p>
+<h3 id="5-2-cuando-empieza-y-cuando-termina">5.2 Cuándo empieza y cuándo termina</h3>
+<ul>
+<li><strong>Empieza</strong> con <em>Continuar</em> en G1 o con <em>Pivotar</em> en G1, G2 o G3.</li>
+<li><strong>Termina</strong> con G2. En Transformar, G2 requiere además la aprobación del consejo, que se registra como parte de la decisión.</li>
+</ul>
+<h3 id="5-3-entradas">5.3 Entradas</h3>
+<p><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> y <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> aprobados · datos operativos del periodo de línea base (área usuaria, sistemas) · valores unitarios como coste por hora, margen o coste por error (control de gestión) · horizonte de retorno y umbrales (C2) · reglas de medición e indicadores (documentos 40 y 41) · si hay pivote, evidencias previas y motivo (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</p>
+<h3 id="5-4-actividades-paso-a-paso">5.4 Actividades paso a paso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Formular la hipótesis: <em>si se introduce [cambio], [métrica] pasará de [línea base] a [objetivo] en [plazo] para [población], medido con [método]</em>.</td>
+<td>Producto</td>
+<td>Técnico</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Definir métrica principal, secundarias y de salvaguarda (calidad, reclamaciones, errores, equidad) que no deben empeorar.</td>
+<td>Producto</td>
+<td>Técnico, Riesgos</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Medir la línea base con datos reales de un periodo representativo, con fuente, extracción y calidad documentadas (<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>). Una estimación solo se admite justificada y marcada.</td>
+<td>Producto</td>
+<td>Técnico, área usuaria</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fijar objetivo y umbral de éxito: el resultado mínimo que justifica continuar.</td>
+<td>Producto</td>
+<td>Control de gestión</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Elegir el método de atribución: grupo de control, despliegue escalonado, antes y después con corrección de estacionalidad u otro justificado.</td>
+<td>Producto</td>
+<td>Técnico, oficina de IA</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Expresar el valor esperado en dinero con fórmula, separando eficiencias, retorno y coste recurrente preliminar; capacidad liberada aparte (T11).</td>
+<td>Producto</td>
+<td>Control de gestión</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Confirmar el nivel de ambición con la hipótesis formulada (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
+<td>Producto</td>
+<td>Oficina de IA</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Definir criterios de parada (resultados, plazos o costes); en Transformar, hitos de aprendizaje y límite de inversión por etapa.</td>
+<td>Producto</td>
+<td>Riesgos</td>
+</tr>
+<tr>
+<td>9</td>
+<td>En Aumentar y Transformar, fijar el objetivo de adopción (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>). Actualizar <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> y solicitar G2.</td>
+<td>Producto</td>
+<td>Área usuaria</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-5-roles">5.5 Roles</h3>
+<p>Patrocinador <strong>A</strong> · Producto <strong>R</strong> · Técnico <strong>C</strong> · Operación <strong>I</strong> · Riesgos <strong>C</strong> · Auditor <strong>V</strong> (en Lite verifica la oficina de IA). El patrocinador acepta el umbral de éxito y los criterios de parada y se compromete a respetarlos.</p>
+<h3 id="5-6-evidencias-obligatorias">5.6 Evidencias obligatorias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidencia</th>
+<th>Plantilla</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lienzo de hipótesis de valor, método de atribución y criterios de parada</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td>T11</td>
+</tr>
+<tr>
+<td>Métricas de línea base</td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
+<td>T11</td>
+</tr>
+<tr>
+<td>Confirmación del nivel de ambición</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
+<td>T05</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-7-diferencias-entre-lite-y-enterprise">5.7 Diferencias entre Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Línea base</td>
+<td>Puede basarse en informes de gestión existentes si son verificables.</td>
+<td>Extracción reproducible con fuente y consulta documentadas.</td>
+</tr>
+<tr>
+<td>Atribución</td>
+<td>Antes y después admisible con justificación.</td>
+<td>Grupo de control o despliegue escalonado cuando sea factible.</td>
+</tr>
+<tr>
+<td>Verificación y decisión</td>
+<td>Oficina de IA; patrocinador.</td>
+<td>Auditor de IA; comité de IA; consejo en Transformar.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-8-diferencias-por-nivel-de-ambicion">5.8 Diferencias por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué se exige en G2 (01 §7.6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Línea base de coste, tiempo o errores y ahorro esperado con fórmula, separado de la capacidad liberada.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Métricas de rendimiento (productividad, calidad, conversión) y de coste, y objetivo de adopción.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Hipótesis de retorno con hitos de aprendizaje, límite de inversión por etapa y aprobación del consejo. Se admite más incertidumbre, no la ausencia de criterios de parada.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-9-particularidades-por-tecnologia">5.9 Particularidades por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Separar métricas de negocio y del modelo; traducir el umbral de negocio al rendimiento mínimo del modelo. La línea base es el proceso actual (reglas o criterio experto).</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Medir por muestreo tiempo y calidad del trabajo actual con una rúbrica explícita; incluir el coste variable por consumo.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Métricas por tarea: completadas correctamente, escaladas a una persona, acciones erróneas y coste por tarea.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>Los beneficios anunciados por el proveedor no son línea base ni hipótesis; se mide con datos propios y se incluyen licencias y consumos.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-10-plazo-de-referencia">5.10 Plazo de referencia</h3>
+<p>20 días en Lite y 30 en Enterprise. En Transformar, la espera a la sesión del consejo cuenta como tiempo de decisión.</p>
+<h3 id="5-11-preparacion-del-gate-g2">5.11 Preparación del <em>gate</em> G2</h3>
+<ul>
+<li><strong>Se presenta:</strong> <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> confirmado y <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> actualizado.</li>
+<li><strong>Verifica y decide:</strong> Lite, oficina de IA y patrocinador; Enterprise, auditor de IA y comité de IA. En Transformar, el comité eleva la propuesta al consejo con el formato del <a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>.</li>
+<li><strong>Criterios:</strong> G2.nn (ver <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) y <code>LV-G2</code>, que desarrollan 01 §6.4: hipótesis falsable, línea base medida, valor en dinero con fórmula y criterios de parada previos a la inversión.</li>
+</ul>
+<h3 id="5-12-errores-frecuentes">5.12 Errores frecuentes</h3>
+<ul>
+<li>Hipótesis no falsable (<em>mejorar la experiencia del cliente</em>) o sin plazo.</li>
+<li>Línea base estimada sin justificar o tomada del proveedor.</li>
+<li>Sumar la capacidad liberada como ahorro.</li>
+<li>Métricas del modelo en lugar de métricas de negocio.</li>
+<li>Criterios de parada tan laxos que nunca se activan.</li>
+<li>Atribuir un resultado que también declara otra iniciativa (regla 5 de medición).</li>
+</ul>
+<h3 id="5-13-eventos-en-el-registro">5.13 Eventos en el registro</h3>
+<p>Entrada en fase 2 (marcando el pivote, si lo hay) · ambición confirmada · solicitud, verificación y decisión de G2 · aprobación del consejo en Transformar · condiciones · salida, pivote o parada.</p>
+<hr />
+<h2 id="fase-3-viabilidad-y-riesgo"><span class="antetitulo">06</span>Fase 3 · Viabilidad y riesgo</h2>
+<h3 id="6-1-objetivo">6.1 Objetivo</h3>
+<p>Decidir si la iniciativa es viable técnica, económica, regulatoria y organizativamente con un riesgo aceptable. Es la <strong>principal puerta de parada</strong>: lo que no se detiene aquí se detiene después a un coste mayor.</p>
+<h3 id="6-2-cuando-empieza-y-cuando-termina">6.2 Cuándo empieza y cuándo termina</h3>
+<ul>
+<li><strong>Empieza</strong> con <em>Continuar</em> en G2.</li>
+<li><strong>Termina</strong> con G3: <em>Continuar</em>, <em>Continuar con condiciones</em>, <em>Iterar</em>, <em>Pivotar</em> o <em>Parar</em>.</li>
+<li><strong>Regla:</strong> las prácticas prohibidas no pasan de esta fase en ningún caso (01 §6.5).</li>
+</ul>
+<h3 id="6-3-entradas">6.3 Entradas</h3>
+<p><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> y <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> aprobados · apetito de riesgo, umbrales y horizonte (C2) · escalas y riesgos tipo <code>RT-&lt;CAT&gt;-NN</code> (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>) · mapeo regulatorio (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>, T07) · acceso autorizado a muestras reales de datos dentro de las restricciones de <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> · documentación y ofertas de proveedores · estándares de arquitectura y seguridad.</p>
+<h3 id="6-4-actividades-paso-a-paso">6.4 Actividades paso a paso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Evaluar disponibilidad, calidad, representatividad y base legal de los datos con datos reales.</td>
+<td>Técnico</td>
+<td>Riesgos, delegado de protección de datos</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Evaluar la viabilidad técnica, si hace falta con una prueba acotada en alcance, plazo y gasto que no se convierte en construcción.</td>
+<td>Técnico</td>
+<td>Producto</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Estimar costes de construcción y recurrentes por categoría (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>, T13), incluidos control, cumplimiento, adopción y formación.</td>
+<td>Técnico y Producto</td>
+<td>Control de gestión, Operación</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Calcular neto anual esperado y neto adicional por euro y contrastarlos con el horizonte de C2.</td>
+<td>Producto</td>
+<td>Control de gestión</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Clasificar el sistema con criterio jurídico (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, T07), incluido el papel de la compañía (proveedor o responsable del despliegue).</td>
+<td>Riesgos</td>
+<td>Asesoría jurídica</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Realizar las evaluaciones de impacto exigibles: en protección de datos (art. 35 del RGPD) y en derechos fundamentales (art. 27 del Reglamento Europeo de IA) en los supuestos previstos.</td>
+<td>Riesgos</td>
+<td>Delegado de protección de datos, Producto</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Identificar y valorar riesgos inherentes y residuales con la escala 5 × 5 (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, T06), incluidos IA generativa, agentes, seguridad y terceros.</td>
+<td>Riesgos, Producto y Técnico</td>
+<td>Operación</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Definir respuestas, plan de mitigación y contingencia (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>) y aceptación del riesgo residual en el nivel que corresponda.</td>
+<td>Riesgos</td>
+<td>Producto, Técnico</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Evaluar proveedores con su nivel de exigencia N1–N3 (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, T09).</td>
+<td>Técnico</td>
+<td>Riesgos, compras</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Valorar el impacto en las personas con el análisis preliminar de roles y tareas (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>).</td>
+<td>Producto</td>
+<td>Personas, área usuaria</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Revisar la intensidad (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>), actualizar <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> y solicitar G3.</td>
+<td>Producto</td>
+<td>Riesgos</td>
+</tr>
+</tbody>
+</table></div>
+<p>Aceptación del riesgo residual: Bajo, responsable de producto con registro; Medio, patrocinador con conformidad de riesgos; Alto, comité de IA; Crítico, no se acepta salvo aprobación excepcional del consejo o su comisión delegada dentro del apetito de C2.</p>
+<h3 id="6-5-roles">6.5 Roles</h3>
+<p>Patrocinador <strong>A</strong> · Producto <strong>R</strong> · Técnico <strong>R</strong> · Operación <strong>C</strong> · Riesgos <strong>R</strong> · Auditor <strong>V</strong> (en Lite verifica la oficina de IA). Construcción y control trabajan a la vez, pero la conformidad de riesgos sigue siendo independiente de lo que aportan producto y técnico.</p>
+<h3 id="6-6-evidencias-obligatorias">6.6 Evidencias obligatorias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidencia</th>
+<th>Plantilla</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evaluación de viabilidad (datos, técnica, costes, neto)</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>T13</td>
+</tr>
+<tr>
+<td>Clasificación regulatoria y evaluaciones de impacto</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>T07</td>
+</tr>
+<tr>
+<td>Matriz y registro de riesgos</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Plan de mitigación y contingencia</td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Evaluación de proveedores, si los hay</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Revisión de intensidad</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
+<td>T04</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-7-diferencias-entre-lite-y-enterprise">6.7 Diferencias entre Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clasificación regulatoria</td>
+<td>Obligatoria; Lite simplifica la plantilla, no la obligación.</td>
+<td>Obligatoria, con informe jurídico.</td>
+</tr>
+<tr>
+<td>Evaluaciones de impacto</td>
+<td>Las exigibles por ley, sea cual sea la intensidad.</td>
+<td>Las exigibles y las que decida el comité.</td>
+</tr>
+<tr>
+<td>Costes</td>
+<td>Categorías principales.</td>
+<td>Todas las categorías del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>.</td>
+</tr>
+<tr>
+<td>Verificación y decisión</td>
+<td>Oficina de IA; patrocinador con conformidad de riesgos.</td>
+<td>Auditor de IA; comité de IA.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-8-diferencias-por-nivel-de-ambicion">6.8 Diferencias por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué se exige en G3 (01 §7.6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Neto anual esperado positivo dentro del horizonte de C2.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Viabilidad de la adopción y del cambio de rol, además del neto esperado.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Viabilidad de la primera etapa, criterios de parada por etapa y valor de opción documentado: qué aprendizaje o posición se obtiene aunque no se financie la etapa siguiente.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-9-particularidades-por-tecnologia">6.9 Particularidades por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Sesgos del histórico, representatividad, variables objetivo aproximadas y necesidad de explicabilidad para la supervisión.</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Conjunto de casos de prueba representativo con casos adversos; riesgos de contenido incorrecto o no fundamentado y de fuga de información; escenarios de coste por consumo; condiciones de uso de datos del proveedor; transparencia (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Inventario de acciones y sistemas alcanzables; impacto de la peor acción posible; permisos excesivos, acciones no autorizadas e inyección indirecta de instrucciones; justificación del nivel de autonomía.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>Nivel N1–N3, dependencia y sustituibilidad, uso de datos para entrenar, localización, derecho de auditoría, aviso de cambios de modelo y plan de salida; DORA o NIS2 cuando apliquen.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-10-plazo-de-referencia">6.10 Plazo de referencia</h3>
+<p>20 días en Lite y 45 en Enterprise.</p>
+<h3 id="6-11-preparacion-del-gate-g3">6.11 Preparación del <em>gate</em> G3</h3>
+<ul>
+<li><strong>Se presenta:</strong> <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> a <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> y un resumen de una página con neto esperado, riesgos residuales Altos y Críticos y clasificación regulatoria.</li>
+<li><strong>Verifica y decide:</strong> Lite, oficina de IA y patrocinador con conformidad de riesgos; Enterprise, auditor de IA y comité de IA.</li>
+<li><strong>Criterios:</strong> G3.nn (ver <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) y <code>LV-G3</code>, que desarrollan 01 §6.5: viabilidad con datos reales, ningún riesgo crítico sin mitigación aceptada, clasificación con criterio jurídico (no puede quedar <em>Pendiente de clasificar</em>) y neto coherente con C2.</li>
+<li><strong>Bloqueos:</strong> un riesgo residual Crítico sin aprobación del consejo bloquea G3; no hay condiciones sobre controles de cumplimiento legal.</li>
+</ul>
+<h3 id="6-12-errores-frecuentes">6.12 Errores frecuentes</h3>
+<ul>
+<li>Demostrar la viabilidad con datos de ejemplo, sintéticos o del proveedor.</li>
+<li>Clasificar sin criterio jurídico o dar por hecho que un sistema de terceros <em>ya cumple</em>.</li>
+<li>Olvidar costes recurrentes, de operación y de adopción.</li>
+<li>Evaluar solo riesgos técnicos.</li>
+<li>Aceptar un riesgo residual en un nivel inferior al que corresponde.</li>
+<li>Continuar por el coste ya incurrido y no por el valor esperado.</li>
+<li>Dejar que la prueba de viabilidad se convierta en construcción encubierta.</li>
+</ul>
+<h3 id="6-13-eventos-en-el-registro">6.13 Eventos en el registro</h3>
+<p>Entrada en fase 3 · clasificación regulatoria definitiva · revisión de intensidad · alta de proveedores en T09 · solicitud, verificación y decisión de G3 · condiciones · espera (frecuente por datos o proveedores) · salida, pivote o parada (datos insuficientes, inviable técnicamente, coste superior al valor, riesgo inaceptable, regulación).</p>
+<hr />
+<h2 id="fase-4-diseno-de-la-solucion"><span class="antetitulo">07</span>Fase 4 · Diseño de la solución</h2>
+<h3 id="7-1-objetivo">7.1 Objetivo</h3>
+<p>Diseñar una solución controlable, supervisable y reversible, en la que cada riesgo aceptado en G3 tenga un control diseñado y la adopción y la medición estén previstas desde el diseño. Pregunta: <em>¿cómo se construye con control, supervisión humana y reversibilidad?</em></p>
+<h3 id="7-2-cuando-empieza-y-cuando-termina">7.2 Cuándo empieza y cuándo termina</h3>
+<ul>
+<li><strong>Empieza</strong> con <em>Continuar</em> en G3.</li>
+<li><strong>Termina</strong> con G4: <em>Continuar</em>, <em>Continuar con condiciones</em>, <em>Iterar</em> o <em>Parar</em>.</li>
+<li><strong>Agrupación Lite:</strong> si G4 y G5 se resuelven juntos, las evidencias de diseño deben estar terminadas y versionadas <strong>antes de empezar a construir</strong>. El verificador comprueba las fechas.</li>
+</ul>
+<h3 id="7-3-entradas">7.3 Entradas</h3>
+<p>Riesgos, respuestas y controles requeridos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>) · obligaciones de la clasificación regulatoria (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>) · métricas, línea base y atribución (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>) · condiciones de proveedores (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) · análisis preliminar de impacto en personas (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) · estándares de arquitectura, seguridad y datos (documentos 35 y 51).</p>
+<h3 id="7-4-actividades-paso-a-paso">7.4 Actividades paso a paso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Definir la arquitectura y registrar las decisiones con las opciones consideradas (<a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>).</td>
+<td>Técnico</td>
+<td>Operación, seguridad de la información</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Documentar el linaje de datos y modelos: orígenes, transformaciones, versiones, conjuntos de entrenamiento y evaluación, modelos de terceros (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Técnico</td>
+<td>Delegado de protección de datos</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Diseñar la supervisión humana (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>): qué decide el sistema, qué valida una persona, qué no se delega nunca, criterios de intervención, cómo se anula un resultado e información a los afectados.</td>
+<td>Técnico</td>
+<td>Producto, Riesgos, área usuaria</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Diseñar la seguridad (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, T10): identidad y permisos, mínimo privilegio, protección frente a inyección, registro de actividad y, en agentes, control de intención e interruptor de parada.</td>
+<td>Técnico</td>
+<td>Riesgos, seguridad de la información</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Trazar cada riesgo de <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> a un control y a la prueba que lo comprobará en la fase 5.</td>
+<td>Técnico</td>
+<td>Riesgos</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Diseñar la instrumentación de la medición de valor y adopción según el método de atribución.</td>
+<td>Técnico</td>
+<td>Producto, control de gestión</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Definir la monitorización (rendimiento, degradación, sesgo, costes, seguridad, uso) y los umbrales iniciales de alerta.</td>
+<td>Técnico</td>
+<td>Operación</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Preparar el plan de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>): disparadores, procedimiento, responsable, tiempo objetivo, vuelta al proceso anterior, datos y forma de probarlo.</td>
+<td>Técnico</td>
+<td>Operación, área usuaria</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Diseñar la adopción (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>): impacto en roles, formación, comunicación y destino de la capacidad liberada.</td>
+<td>Producto</td>
+<td>Personas, área usuaria</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Definir el plan de pruebas y de piloto (población, duración, grupo de control, criterios de interrupción) y solicitar G4.</td>
+<td>Técnico</td>
+<td>Producto, Riesgos</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-5-roles">7.5 Roles</h3>
+<p>Patrocinador <strong>I</strong> · Producto <strong>C</strong> · Técnico <strong>A/R</strong> · Operación <strong>C</strong> · Riesgos <strong>C</strong> · Auditor <strong>V</strong> (en Lite verifica la oficina de IA). Producto realiza el diseño de la adopción porque responde de ella (01 §8.1); operación asegura que la solución se podrá operar y revertir.</p>
+<h3 id="7-6-evidencias-obligatorias">7.6 Evidencias obligatorias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidencia</th>
+<th>Plantilla</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registro de arquitectura</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Linaje de datos y modelos</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Diseño de gobierno y supervisión humana</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Diseño de seguridad</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td>T10</td>
+</tr>
+<tr>
+<td>Plan de reversión</td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Plan de adopción</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>T20</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-7-diferencias-entre-lite-y-enterprise">7.7 Diferencias entre Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revisión del diseño</td>
+<td>Par técnico no implicado.</td>
+<td>Revisión formal con seguridad de la información y protección de datos.</td>
+</tr>
+<tr>
+<td>Plan de adopción</td>
+<td>Formación y destino de la capacidad liberada.</td>
+<td>Todos los bloques de <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+</tr>
+<tr>
+<td>Verificación y decisión</td>
+<td>Oficina de IA; patrocinador con conformidad de riesgos. Agrupable con G5.</td>
+<td>Auditor de IA; comité de IA.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-8-diferencias-por-nivel-de-ambicion">7.8 Diferencias por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Se minimiza el cambio del proceso y se prevé cómo se materializará la capacidad liberada (a quién, cuándo, con qué mecanismo).</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>El rediseño de roles y la supervisión humana son el núcleo; la experiencia de uso se prueba con usuarios reales.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Diseño por etapas con puntos de decisión y arquitectura que permite parar al final de cada etapa conservando el aprendizaje; cambios de modelo operativo (roles, derechos de decisión) y experimentos con clientes.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-9-particularidades-por-tecnologia">7.9 Particularidades por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Versionado de modelos y datos, reentrenamiento como cambio controlado, umbrales de decisión, explicaciones útiles para el supervisor y detección de deriva.</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Fuentes autorizadas para la recuperación de contenidos, filtros de entrada y salida, instrucciones de sistema versionadas, conservación de conversaciones conforme a protección de datos, evaluaciones automáticas y límites de consumo.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Identidad propia, permisos mínimos por herramienta, lista cerrada de acciones, validación humana de acciones sensibles, control de intención, registro de intención y acción, límites de volumen e importe e interruptor de parada.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>Configuración de la función de IA, cláusulas contractuales traducidas a controles técnicos, gestión de versiones del proveedor y alternativa si cambia o retira la función.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-10-plazo-de-referencia">7.10 Plazo de referencia</h3>
+<p>20 días en Lite y 45 en Enterprise.</p>
+<h3 id="7-11-preparacion-del-gate-g4">7.11 Preparación del <em>gate</em> G4</h3>
+<ul>
+<li><strong>Se presenta:</strong> <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> a <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y la trazabilidad riesgo → control → prueba.</li>
+<li><strong>Verifica y decide:</strong> Lite, oficina de IA y patrocinador con conformidad de riesgos (el responsable técnico forma parte del equipo y no decide, 01 §8.1); Enterprise, auditor de IA y comité de IA.</li>
+<li><strong>Criterios:</strong> G4.nn (ver <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) y <code>LV-G4</code>, que desarrollan 01 §6.6: controles exigidos por la clasificación, supervisión humana definida, mecanismo de parada y control diseñado para cada riesgo de la fase 3.</li>
+<li><strong>Bloqueos:</strong> no hay condiciones sobre supervisión humana ni controles críticos de seguridad.</li>
+</ul>
+<h3 id="7-12-errores-frecuentes">7.12 Errores frecuentes</h3>
+<ul>
+<li>Supervisión humana nominal: una persona <em>en el bucle</em> sin tiempo, información ni autoridad para intervenir.</li>
+<li>Plan de reversión teórico, sin procedimiento ni responsable.</li>
+<li>Olvidar la instrumentación: la solución funciona, pero el valor no se puede medir.</li>
+<li>Permisos amplios a un agente <em>para simplificar la integración</em>.</li>
+<li>Reducir la adopción a un curso al final.</li>
+<li>Documentar el diseño después de construir.</li>
+</ul>
+<h3 id="7-13-eventos-en-el-registro">7.13 Eventos en el registro</h3>
+<p>Entrada en fase 4 · verificación de condiciones de G3 · cambio de intensidad si el diseño altera autonomía, exposición o datos · solicitud, verificación y decisión de G4 · condiciones · salida o parada.</p>
+<hr />
+<h2 id="fase-5-entrega-y-validacion"><span class="antetitulo">08</span>Fase 5 · Entrega y validación</h2>
+<h3 id="8-1-objetivo">8.1 Objetivo</h3>
+<p>Construir o integrar la solución, probarla y demostrar el valor en condiciones reales antes de la puesta en producción definitiva. Los resultados teóricos no bastan. Pregunta: <em>¿funciona y aporta valor en condiciones reales?</em></p>
+<h3 id="8-2-cuando-empieza-y-cuando-termina">8.2 Cuándo empieza y cuándo termina</h3>
+<ul>
+<li><strong>Empieza</strong> con <em>Continuar</em> en G4.</li>
+<li><strong>Termina</strong> con G5. Con <em>Continuar</em> o <em>Continuar con condiciones</em>, la iniciativa pasa a <em>En producción</em> y a la fase 6.</li>
+<li><strong>Regla:</strong> la puesta en producción Enterprise requiere firma multinivel con capacidad de veto (01 §6.7).</li>
+</ul>
+<h3 id="8-3-entradas">8.3 Entradas</h3>
+<p>Diseño aprobado y condiciones de G4 (<a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>) · plan de pruebas y de piloto · entornos, accesos y datos autorizados · contratos firmados con proveedores · materiales de formación y comunicación (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</p>
+<h3 id="8-4-actividades-paso-a-paso">8.4 Actividades paso a paso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Construir o integrar según el diseño, registrando desviaciones y su aprobación. Si se construye con asistencia de IA, aplicar el <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a>.</td>
+<td>Técnico</td>
+<td>Operación</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ejecutar pruebas funcionales, de rendimiento, sesgo, robustez y seguridad, incluidas las de inyección de instrucciones en IA generativa y agentes.</td>
+<td>Técnico</td>
+<td>Riesgos, seguridad de la información</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Probar cada control crítico de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> y <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> y registrar el resultado.</td>
+<td>Técnico</td>
+<td>Riesgos</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Formar a usuarios y supervisores del piloto <strong>antes</strong> de que usen el sistema.</td>
+<td>Producto</td>
+<td>Personas, área usuaria</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ejecutar el piloto con el método de atribución, registrando indicadores de valor y adopción.</td>
+<td>Producto</td>
+<td>Técnico, Operación</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Analizar resultados frente a la hipótesis y el umbral, con el estado de cada importe (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
+<td>Producto</td>
+<td>Control de gestión</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Probar el plan de reversión en condiciones realistas y registrar tiempo y resultado (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
+<td>Técnico</td>
+<td>Operación</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Actualizar el registro de riesgos con lo observado (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
+<td>Técnico y Producto</td>
+<td>Riesgos</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Preparar la operación: manual, monitorización y alertas configuradas, plan de respuesta a incidentes y traspaso.</td>
+<td>Técnico</td>
+<td>Operación</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Elaborar el informe de entrega (<a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>).</td>
+<td>Técnico</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Obtener la firma de puesta en producción (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>): en Enterprise, técnico, riesgos y cumplimiento, seguridad de la información y protección de datos, cada una con veto; en Lite, conformidad de riesgos. Solicitar G5.</td>
+<td>Producto</td>
+<td>Firmantes</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-5-roles">8.5 Roles</h3>
+<p>Patrocinador <strong>I</strong> · Producto <strong>A</strong> · Técnico <strong>R</strong> · Operación <strong>C</strong> · Riesgos <strong>C</strong> · Auditor <strong>V</strong> (en Lite verifica la oficina de IA). El patrocinador decide G5 en Lite, con conformidad de riesgos.</p>
+<h3 id="8-6-evidencias-obligatorias">8.6 Evidencias obligatorias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidencia</th>
+<th>Plantilla</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Informe de entrega</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Resultados de validación, pruebas y piloto</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>T11</td>
+</tr>
+<tr>
+<td>Prueba del plan de reversión</td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Registro de riesgos actualizado</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>T06</td>
+</tr>
+<tr>
+<td>Firma de puesta en producción</td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td>T03</td>
+</tr>
+<tr>
+<td>Plan de adopción con la formación realizada</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>T20</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-7-diferencias-entre-lite-y-enterprise">8.7 Diferencias entre Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Piloto</td>
+<td>Un equipo o volumen reducido.</td>
+<td>Población y duración suficientes para el método de atribución.</td>
+</tr>
+<tr>
+<td>Puesta en producción</td>
+<td>Conformidad de riesgos.</td>
+<td>Firma multinivel con veto.</td>
+</tr>
+<tr>
+<td>Verificación y decisión</td>
+<td>Oficina de IA; patrocinador con conformidad de riesgos.</td>
+<td>Auditor de IA; comité de IA tras la firma.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-8-diferencias-por-nivel-de-ambicion">8.8 Diferencias por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué se exige en G5 (01 §7.6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Eficiencia validada frente a la línea base y plan para materializar la capacidad liberada.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Adopción real y mejora de rendimiento medidas.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Evidencia de mercado o de cliente: uso, conversión, ingresos iniciales o cambio operativo verificado.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los criterios de adopción en G5 se detallan en el <a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>.</p>
+<h3 id="8-9-particularidades-por-tecnologia">8.9 Particularidades por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Validación con datos recientes no usados en el entrenamiento, sesgo por grupos, calibración del umbral y comparación con el proceso actual.</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Conjunto de casos de prueba más revisión humana de una muestra; tasa de respuestas incorrectas o no fundamentadas; pruebas de inyección y fuga; coste real por transacción; transparencia cuando aplique.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Pruebas en entorno aislado; piloto con menos autonomía que la objetivo (por ejemplo, A1 antes de A2); prueba real del interruptor de parada; inyección indirecta y límites.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>Pruebas de aceptación con datos propios; comprobación de que la configuración desplegada es la contratada; la reversión incluye desactivar la función de IA.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-10-plazo-de-referencia">8.10 Plazo de referencia</h3>
+<p>60 días en Lite y 90 en Enterprise. Si el método de atribución exige un piloto más largo, el plazo se fija en G4 y se registra.</p>
+<h3 id="8-11-preparacion-del-gate-g5">8.11 Preparación del <em>gate</em> G5</h3>
+<ul>
+<li><strong>Se presenta:</strong> <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> con la prueba, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> firmado, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y la documentación de operación.</li>
+<li><strong>Verifica y decide:</strong> Lite, oficina de IA y patrocinador con conformidad de riesgos; Enterprise, auditor de IA y comité de IA tras la firma multinivel.</li>
+<li><strong>Criterios:</strong> G5.nn (ver <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) y <code>LV-G5</code>, que desarrollan 01 §6.7: resultados que cumplen el umbral o lo hacen con condiciones aceptadas, controles críticos que funcionan y operación preparada.</li>
+<li><strong>Bloqueos:</strong> un veto en la firma o un riesgo residual Crítico sin aprobación del consejo.</li>
+</ul>
+<h3 id="8-12-errores-frecuentes">8.12 Errores frecuentes</h3>
+<ul>
+<li>Piloto sin grupo de control ni línea base comparable.</li>
+<li>Declarar el éxito con métricas técnicas y no con el umbral de negocio.</li>
+<li>Ampliar el piloto hasta convertirlo en producción de hecho sin G5 (no conformidad crítica).</li>
+<li>No probar la reversión o probarla en un entorno que no se parece a producción.</li>
+<li>Formar a los usuarios después del despliegue.</li>
+<li>Cambiar el umbral de éxito tras ver los resultados.</li>
+</ul>
+<h3 id="8-13-eventos-en-el-registro">8.13 Eventos en el registro</h3>
+<p>Entrada en fase 5 · verificación de condiciones de G4 · incidentes en pruebas y piloto (T08) · firmas · solicitud, verificación y decisión de G5 · paso a <em>En producción</em> o parada (hipótesis refutada, sin adopción, riesgo inaceptable…).</p>
+<hr />
+<h2 id="fase-6-operacion-y-gobierno"><span class="antetitulo">09</span>Fase 6 · Operación y gobierno</h2>
+<h3 id="9-1-objetivo">9.1 Objetivo</h3>
+<p>Operar con estabilidad, mantener el control, responder a los incidentes y seguir midiendo el valor. Pregunta: <em>¿sigue funcionando, aportando valor y bajo control?</em> La puerta se sustituye por la <strong>revisión periódica de continuidad (R6)</strong>.</p>
+<h3 id="9-2-cuando-empieza-y-cuando-termina">9.2 Cuándo empieza y cuándo termina</h3>
+<ul>
+<li><strong>Empieza</strong> con <em>Continuar</em> o <em>Continuar con condiciones</em> en G5 (estado <em>En producción</em>).</li>
+<li><strong>No tiene final fijo.</strong> Pasa a la fase 7 cuando se solicita G7: en el momento previsto en el seguimiento de valor (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), cuando una R6 detecta desviaciones relevantes o cuando el comité de IA lo decide por un cambio de estrategia o una alternativa mejor.</li>
+<li><strong>Periodicidad de R6:</strong> al menos trimestral en Enterprise y semestral en Lite (01 §6.8).</li>
+</ul>
+<h3 id="9-3-entradas">9.3 Entradas</h3>
+<p>Solución en producción con informe de entrega y firmas (<a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>) · documentación de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>–<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) · plan de reversión probado (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) · hipótesis y atribución (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>) · plan de adopción y destino de la capacidad liberada (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>) · proceso de incidentes y no conformidades (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>, T08).</p>
+<h3 id="9-4-actividades-paso-a-paso">9.4 Actividades paso a paso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Operar según el manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>): procedimientos, accesos, mantenimiento y continuidad.</td>
+<td>Operación</td>
+<td>Técnico</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Monitorizar rendimiento, degradación, sesgo, costes, seguridad y uso, con alertas y responsables de atención (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>).</td>
+<td>Operación</td>
+<td>Técnico</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gestionar incidentes (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>), registrarlos con severidad S1–S4 (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, T08) y notificar cuando proceda, incluidos posibles incidentes graves según el Reglamento Europeo de IA, DORA o NIS2 (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</td>
+<td>Operación</td>
+<td>Riesgos, Técnico</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gestionar cambios de modelo, datos, instrucciones, versión del proveedor o permisos con evaluación de impacto. Si alteran clasificación, autonomía o intensidad, decide el órgano competente (sección 11.7).</td>
+<td>Operación</td>
+<td>Técnico, Riesgos</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Realizar la vigilancia posterior a la comercialización que exija la regulación (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
+<td>Operación</td>
+<td>Riesgos</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Medir el valor realizado con su estado y los costes reales por periodo (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, T12, T13).</td>
+<td>Producto</td>
+<td>Control de gestión</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Seguir la adopción y la materialización o reasignación de la capacidad liberada (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>).</td>
+<td>Producto</td>
+<td>Área usuaria, personas</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Mantener el registro de riesgos y la vigencia de la clasificación regulatoria y de la intensidad.</td>
+<td>Riesgos</td>
+<td>Producto</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Preparar la R6 y, si detecta desviaciones relevantes, proponer adelantar G7.</td>
+<td>Operación y Producto</td>
+<td>Riesgos, Patrocinador</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-5-roles">9.5 Roles</h3>
+<p>Patrocinador <strong>I</strong> · Producto <strong>C</strong> · Técnico <strong>C</strong> · Operación <strong>A/R</strong> · Riesgos <strong>C</strong> · Auditor <strong>V</strong> (en Lite verifica la oficina de IA). El responsable de producto sigue midiendo valor y adopción; el patrocinador decide la R6 en Lite.</p>
+<h3 id="9-6-evidencias-obligatorias">9.6 Evidencias obligatorias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidencia</th>
+<th>Plantilla</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manual de operación</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Monitorización y alertas</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Plan de respuesta a incidentes</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Registro de incidentes y cambios</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>T08</td>
+</tr>
+<tr>
+<td>Seguimiento de valor</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td>T12</td>
+</tr>
+<tr>
+<td>Registro de riesgos y revisión de intensidad en cada R6</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
+<td>T06, T04</td>
+</tr>
+<tr>
+<td>Seguimiento de adopción y capacidad</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>T20</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-7-diferencias-entre-lite-y-enterprise">9.7 Diferencias entre Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R6</td>
+<td>Semestral; oficina de IA y patrocinador.</td>
+<td>Trimestral; auditor de IA y comité de IA.</td>
+</tr>
+<tr>
+<td>Monitorización</td>
+<td>Rendimiento, coste y uso.</td>
+<td>Completa, con sesgo, seguridad y guardia definida.</td>
+</tr>
+<tr>
+<td>Visibilidad</td>
+<td>Panel del consejo agregado.</td>
+<td>Panel del consejo por iniciativa.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-8-diferencias-por-nivel-de-ambicion">9.8 Diferencias por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>El seguimiento se centra en convertir la capacidad liberada en ahorro materializado; si no ocurre, la R6 lo registra como desviación.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Rendimiento y adopción sostenidos, supervisión humana eficaz (tasa de anulación dentro de la banda prevista) y capacidad reasignada.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Cada R6 revisa hitos de aprendizaje, consumo del límite de inversión de la etapa y primeros retornos. Superar el límite aprobado requiere decisión expresa del órgano que lo aprobó, en general como G7 (<em>Escalar</em>).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-9-particularidades-por-tecnologia">9.9 Particularidades por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Deriva de datos y de concepto, reentrenamiento como cambio controlado, sesgo por grupos y comparación de resultados predichos y reales.</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Evaluaciones periódicas con un conjunto fijo, muestreo humano de salidas, cambios de versión del modelo del proveedor como cambios, coste por consumo y reclamaciones.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Revisión de registros de intención y acción, retirada de permisos no usados, prueba periódica del interruptor, alertas por acciones anómalas y supervisión de agregados en A3.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>Cambios, incidentes y niveles de servicio del proveedor; revisión del nivel de exigencia; renovaciones contractuales como puntos de decisión.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-10-plazo-de-referencia">9.10 Plazo de referencia</h3>
+<p>Sin plazo (03 §3.6). Se controla con la periodicidad de R6, cuya decisión se toma en 5 o 10 días hábiles desde la solicitud. Una R6 vencida genera alerta en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</p>
+<h3 id="9-11-preparacion-de-la-revision-r6">9.11 Preparación de la revisión R6</h3>
+<ul>
+<li><strong>Se presenta:</strong> valor realizado frente a la hipótesis con su estado (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), estabilidad y alertas (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), incidentes y cambios (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>), vigencia de la clasificación e intensidad (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>) y adopción y capacidad (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</li>
+<li><strong>Verifica y decide:</strong> Lite, oficina de IA y patrocinador; Enterprise, auditor de IA y comité de IA.</li>
+<li><strong>Criterios:</strong> R6.nn (ver <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) y <code>LV-R6</code>, que desarrollan 01 §6.8.</li>
+<li><strong>Resultados (01 §7.3):</strong> <em>Continuar la operación</em>, <em>Continuar con condiciones</em> o <em>Adelantar G7</em>. Si un incidente exige detener el sistema no se espera a la R6: se aplican el plan de respuesta y, si procede, el de reversión.</li>
+</ul>
+<h3 id="9-12-errores-frecuentes">9.12 Errores frecuentes</h3>
+<ul>
+<li>Tratar la puesta en producción como el final del proyecto y retirar al equipo sin traspaso.</li>
+<li>Monitorizar solo la disponibilidad técnica.</li>
+<li>Dejar de medir el valor tras los primeros meses.</li>
+<li>Cambiar modelo, instrucciones o versión del proveedor sin evaluación ni registro.</li>
+<li>Omitir la R6 (no conformidad mayor).</li>
+<li>Ignorar incidentes menores repetidos o costes de consumo crecientes.</li>
+</ul>
+<h3 id="9-13-eventos-en-el-registro">9.13 Eventos en el registro</h3>
+<p>Incidentes y severidad · cambios · no conformidades · cambios de clasificación · solicitud, verificación y decisión de cada R6 · condiciones · adelanto de G7 (estado <em>Pendiente de G7</em>).</p>
+<hr />
+<h2 id="fase-7-evolucion-o-retirada"><span class="antetitulo">10</span>Fase 7 · Evolución o retirada</h2>
+<h3 id="10-1-objetivo">10.1 Objetivo</h3>
+<p>Decidir con evidencia si la iniciativa se escala, se itera o se retira, y comprobar la ambición real frente a la declarada. Pregunta: <em>¿escalamos, iteramos o retiramos?</em></p>
+<h3 id="10-2-cuando-empieza-y-cuando-termina">10.2 Cuándo empieza y cuándo termina</h3>
+<ul>
+<li><strong>Empieza</strong> cuando se solicita G7 (estado <em>Pendiente de G7</em>): en el momento previsto en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, por adelanto desde una R6 o por decisión del comité de IA.</li>
+<li><strong>Termina</strong> con G7. <strong>Escalar:</strong> nueva fase 0 para el alcance ampliado (sección 11.5), y la solución actual sigue operando con sus R6. <strong>Iterar:</strong> vuelta a la fase que corresponda (sección 11.1); mantener la solución sin cambios es <em>Iterar</em> con vuelta a la fase 6. <strong>Retirar:</strong> la fase se cierra cuando el plan de retirada se ha ejecutado y verificado.</li>
+</ul>
+<h3 id="10-3-entradas">10.3 Entradas</h3>
+<p>Valor realizado con estado y costes reales (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, T12, T13) · incidentes, cambios y no conformidades (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, T08) · riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>) · adopción y capacidad (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>) · ambición declarada (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>) · tesis y cartera vigentes (C2, C3) · alternativas internas o de mercado.</p>
+<h3 id="10-4-actividades-paso-a-paso">10.4 Actividades paso a paso</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Consolidar el valor realizado por tipo con su estado y la proporción validada, y compararlo con la hipótesis y el umbral.</td>
+<td>Producto</td>
+<td>Control de gestión</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Calcular el neto anual realizado y, para escalar, el neto adicional por euro de inversión adicional.</td>
+<td>Producto</td>
+<td>Control de gestión, Técnico</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Revisar la ambición real con las cinco preguntas y la evidencia de producción (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, T05).</td>
+<td>Producto</td>
+<td>Oficina de IA</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Evaluar riesgos acumulados, incidentes, no conformidades, vigencia regulatoria, adopción y capacidad liberada.</td>
+<td>Producto</td>
+<td>Riesgos, Operación, área usuaria</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Analizar opciones: escalar (alcance, inversión, nueva hipótesis), iterar (a qué fase y por qué; mantener sin cambios es iterar a la fase 6) o retirar (motivo y sustituto).</td>
+<td>Producto</td>
+<td>Técnico, Operación</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Registrar las lecciones aprendidas.</td>
+<td>Producto</td>
+<td>Todos los roles</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Si se propone retirar, preparar el plan (T22): fecha, motivo, órgano, sustituto, datos y modelos conforme a las obligaciones de conservación, revocación de accesos e identidades de agentes, contratos, proceso alternativo y comunicación a los afectados.</td>
+<td>Producto y Operación</td>
+<td>Riesgos, delegado de protección de datos</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Preparar la decisión (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>), solicitar G7 y, tras decidir, ejecutarla: registrar la nueva iniciativa, devolver la iniciativa a su fase o ejecutar y verificar la retirada.</td>
+<td>Producto</td>
+<td>Oficina de IA</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-5-roles">10.5 Roles</h3>
+<p>Patrocinador <strong>A</strong> · Producto <strong>R</strong> · Técnico <strong>C</strong> · Operación <strong>C</strong> · Riesgos <strong>C</strong> · Auditor <strong>V</strong> (en Lite verifica la oficina de IA). Operación participa en la ejecución de la retirada.</p>
+<h3 id="10-6-evidencias-obligatorias">10.6 Evidencias obligatorias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Evidencia</th>
+<th>Plantilla</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seguimiento de realización de valor</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td>T12</td>
+</tr>
+<tr>
+<td>Decisión de escalado o retirada, lecciones aprendidas y plan de retirada si procede</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>T22</td>
+</tr>
+<tr>
+<td>Ambición real frente a la declarada</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
+<td>T05</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-7-diferencias-entre-lite-y-enterprise">10.7 Diferencias entre Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verificación y decisión</td>
+<td>Oficina de IA; patrocinador.</td>
+<td>Auditor de IA; comité de IA; consejo para escalar Transformar.</td>
+</tr>
+<tr>
+<td>Plan de retirada</td>
+<td>Datos, accesos y comunicación.</td>
+<td>Completo, con verificación de su ejecución por el auditor.</td>
+</tr>
+<tr>
+<td>Lecciones aprendidas</td>
+<td>Registro breve en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Sesión con todos los roles y registro en <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-8-diferencias-por-nivel-de-ambicion">10.8 Diferencias por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué se exige en G7 (01 §7.6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Ahorro materializado, no solo capacidad liberada.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Rendimiento sostenido y capacidad reasignada.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Retorno medido y cambio del modelo operativo o de la oferta verificado; el escalado requiere aprobación del consejo.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si la ambición real es inferior a la declarada, se reclasifica en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. La diferencia alimenta el índice de transformación (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>) y es una señal del perfil <em>Transformación declarada, no evidenciada</em>.</p>
+<h3 id="10-9-particularidades-por-tecnologia">10.9 Particularidades por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Qué cambia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Vida útil del modelo, coste de mantenerlo y validez del escalado a poblaciones distintas de las del piloto.</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Comparación con modelos alternativos; un cambio de modelo al escalar es un cambio significativo.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Aumentar la autonomía (por ejemplo, de A2 a A3) no es una iteración menor: se tramita como <em>Escalar</em> o como <em>Iterar</em> a la fase 4, con nueva evaluación de riesgos e intensidad.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>La retirada incluye terminación o modificación del contrato, devolución o borrado certificado de datos y desactivación de la función; el escalado suele exigir renegociación.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-10-plazo-de-referencia">10.10 Plazo de referencia</h3>
+<p>15 días en Lite y 30 en Enterprise hasta la decisión. La ejecución de la retirada se controla con las fechas de su plan en T22.</p>
+<h3 id="10-11-preparacion-del-gate-g7">10.11 Preparación del <em>gate</em> G7</h3>
+<ul>
+<li><strong>Se presenta:</strong> <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> consolidado, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> con la opción propuesta y sus alternativas, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> con la ambición real y un resumen de riesgos, incidentes y adopción.</li>
+<li><strong>Verifica y decide:</strong> Lite, oficina de IA y patrocinador; Enterprise, auditor de IA y comité de IA; consejo para escalar Transformar.</li>
+<li><strong>Criterios:</strong> G7.nn (ver <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) y <code>LV-G7</code>, que desarrollan 01 §6.9: decisión basada en valor realizado y validado y, si se retira, plan con fecha, motivo, órgano, sustituto, datos y modelos, y comunicación.</li>
+</ul>
+<h3 id="10-12-errores-frecuentes">10.12 Errores frecuentes</h3>
+<ul>
+<li>Escalar con valor declarado o estimado, sin validar.</li>
+<li>Confundir capacidad liberada con ahorro materializado.</li>
+<li>Mantener un sistema en producción por inercia, sin decisión expresa.</li>
+<li>Retirar sin plan: datos sin base para conservarse, accesos de agentes activos, contratos vigentes, usuarios sin informar.</li>
+<li>Ampliar el alcance sin nueva fase 0 porque <em>ya estaba aprobado</em>.</li>
+<li>Mantener la ambición declarada pese a la evidencia.</li>
+</ul>
+<h3 id="10-13-eventos-en-el-registro">10.13 Eventos en el registro</h3>
+<p><em>Pendiente de G7</em> · ambición real · solicitud, verificación y decisión de G7 · aprobación del consejo cuando proceda · alta de la iniciativa vinculada (Escalar) · vuelta a fase (Iterar) · retirada con motivo codificado.</p>
+<hr />
+<h2 id="transiciones-entre-fases"><span class="antetitulo">11</span>Transiciones entre fases</h2>
+<p>El ciclo no es lineal: cada puerta puede devolver la iniciativa a una fase anterior, detenerla o abrir un ciclo nuevo.</p>
+<figure class="grafico"><div class="g-titulo">Transiciones entre fases</div><div class="g-sub">Qu&#233; ocurre con la iniciativa seg&#250;n el resultado de cada puerta</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  F["Fase en curso"] --> G{"Gate"}
+  G -->|"Continuar o con condiciones"| S["Fase siguiente"]
+  G -->|"Iterar (máximo 2 antes de elevar)"| F
+  G -->|"Pivotar (solo G1, G2 y G3)"| F2["Fase 2 con nueva hipótesis"]
+  G -->|"Parar"| P["Parada"]
+  F -.->|"Causa externa registrada"| E["En espera"]
+  E -.->|"Reanudación"| F
+  S -.->|"Tras superar G5"| PR["En producción con R6"]
+  PR -->|"Momento previsto o desviación"| G7{"G7"}
+  G7 -->|"Escalar"| N0["Nueva fase 0"]
+  G7 -->|"Iterar"| FX["Fase que corresponda (6 si se mantiene sin cambios)"]
+  G7 -->|"Retirar"| R["Retirada"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  classDef espera fill:#f2dfce,stroke:#807973,color:#1a1817,stroke-dasharray:4 3
+  class S,PR,N0 ok
+  class F2,FX med
+  class P,R ko
+  class E espera
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<p><strong>Continuar con condiciones.</strong> Cada condición se registra en T03 con plazo, responsable y <em>gate</em> en que se verificará. Si vence sin cumplirse, el resultado pasa a <em>Iterar</em> y la iniciativa vuelve a la fase del <em>gate</em> que la impuso; si ya está en producción, se trata en la R6 siguiente o se adelanta G7.</p>
+<h3 id="11-1-iterar">11.1 Iterar</h3>
+<ul>
+<li><strong>Cuándo:</strong> resultados insuficientes con hipótesis todavía plausible; en G7, cuando valor o riesgo justifican rehacer una parte.</li>
+<li><strong>Qué se hace:</strong> se repiten las actividades que no alcanzaron el criterio, se versionan de nuevo las evidencias y se vuelve al mismo <em>gate</em>. Desde G7 se vuelve a la fase 2 si cambia la hipótesis, a la 4 si cambia el diseño, a la 5 si solo cambia la construcción o a la 6 si se mantiene la solución sin cambios.</li>
+<li><strong>Límite:</strong> tras dos iteraciones en el mismo <em>gate</em>, decide el órgano superior según el <a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> (en Lite, por ejemplo, del patrocinador al comité de IA).</li>
+<li><strong>Registro:</strong> el tiempo en fase sigue contando y <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> incrementa el contador de iteraciones.</li>
+</ul>
+<h3 id="11-2-pivotar">11.2 Pivotar</h3>
+<ul>
+<li><strong>Cuándo:</strong> solo en G1, G2 y G3, cuando la hipótesis no se sostiene pero hay una alternativa razonable.</li>
+<li><strong>Qué se hace:</strong> la iniciativa entra en la fase 2 con una nueva hipótesis y conserva el contexto de G0. Desde G1, la alternativa debe figurar en <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a> con sus notas de filtrado; desde G3, se conservan los hallazgos de viabilidad y riesgo que sigan siendo válidos.</li>
+<li><strong>Límites:</strong> si el pivote cambia esfera, restricciones, roles o intensidad, se actualizan <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> a <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> y se verifican en G2. Los criterios de parada no se trasladan relajados. Un segundo pivote en la misma iniciativa debería elevarse al comité de IA.</li>
+</ul>
+<h3 id="11-3-parar">11.3 Parar</h3>
+<ul>
+<li><strong>Cuándo:</strong> no hay valor plausible, la viabilidad no se demuestra, el riesgo es inaceptable o se activa un criterio de parada.</li>
+<li><strong>Qué se hace:</strong> se cierran los trabajos y se liberan presupuesto y personas; se revocan accesos a datos e identidades técnicas; se actualiza o da de baja la ficha de T02; se retira cualquier piloto con su plan de reversión; se informa a los participantes y se registran las lecciones aprendidas.</li>
+<li><strong>Motivo codificado</strong> (03 §3.3): sin valor plausible · hipótesis refutada · datos insuficientes · inviable técnicamente · coste superior al valor · riesgo inaceptable · regulación · sin adopción · sustituida por otra solución · cambio de prioridad estratégica.</li>
+<li><strong>Reactivación:</strong> una iniciativa parada no se reanuda. Si cambian las circunstancias, se registra como iniciativa nueva vinculada a la parada, con su fase 0 y reutilizando las evidencias válidas.</li>
+</ul>
+<h3 id="11-4-en-espera">11.4 En espera</h3>
+<ul>
+<li><strong>Cuándo:</strong> una causa externa impide avanzar (presupuesto, dependencia de otro proyecto, proveedor, datos, personas clave). No es un resultado de <em>gate</em>.</li>
+<li><strong>Qué se hace:</strong> producto registra motivo y fecha prevista de reanudación, con conocimiento del patrocinador; se mantienen los controles sobre lo ya construido. El tiempo en espera se mide aparte.</li>
+<li><strong>Vencimiento:</strong> si llega la fecha sin reanudar, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> genera una alerta y el comité de IA (el patrocinador en Lite) decide reanudar, fijar nueva fecha o parar.</li>
+<li><strong>Reanudación:</strong> se comprueba la vigencia de línea base, clasificación regulatoria, evaluación de proveedores y asignación de roles; lo caducado se actualiza antes del siguiente <em>gate</em>.</li>
+</ul>
+<p>Un sistema en producción no pasa a <em>En espera</em>: su suspensión se gestiona con el plan de respuesta a incidentes o el de reversión (documentos 37 y 52) y se analiza en la R6 siguiente o en un G7 adelantado.</p>
+<h3 id="11-5-escalado-como-nueva-fase-0">11.5 Escalado como nueva fase 0</h3>
+<ul>
+<li><strong>Cuándo:</strong> G7 decide ampliar el alcance (áreas, poblaciones, países, canales, volúmenes) o aumentar la autonomía o la ambición.</li>
+<li><strong>Qué se hace:</strong> el alcance ampliado se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> como <strong>iniciativa nueva, con código propio, vinculada a la de origen</strong>, y recorre el ciclo desde la fase 0. Puede reutilizar evidencias de la iniciativa de origen, identificadas con su versión y verificadas de nuevo. La intensidad se determina otra vez.</li>
+<li><strong>Iniciativa de origen:</strong> sigue operando con sus R6 hasta que la nueva la absorba o sustituya; entonces se decide en G7 su retirada o integración.</li>
+<li><strong>Valor:</strong> la nueva iniciativa solo declara el valor incremental del alcance ampliado (regla 5 de medición).</li>
+</ul>
+<h3 id="11-6-retirada">11.6 Retirada</h3>
+<p>Se decide en G7 y se ejecuta con <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> y T22. Registra fecha, motivo, órgano que decide, sustituto, tratamiento de datos y modelos y comunicación a los afectados (01 §6.9). El estado <em>Retirada</em> solo se registra cuando el auditor de IA (Enterprise) o la oficina de IA (Lite) verifican la ejecución del plan, incluidas la revocación de accesos y la actualización del inventario.</p>
+<h3 id="11-7-cambios-de-clasificacion-durante-el-ciclo">11.7 Cambios de clasificación durante el ciclo</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Cambio</th>
+<th>Tratamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intensidad de Lite a Enterprise</strong></td>
+<td>Inmediato al aparecer el criterio; lo pendiente se completa con plantillas Enterprise y los <em>gates</em> siguientes se resuelven con verificador y decisor Enterprise.</td>
+</tr>
+<tr>
+<td><strong>Intensidad de Enterprise a Lite</strong></td>
+<td>Solo en G3 o R6, con justificación registrada.</td>
+</tr>
+<tr>
+<td><strong>Ambición</strong></td>
+<td>Se propone en fase 1, se confirma en fase 2 y se revisa en fase 7. Un cambio a Transformar en otro momento exige intensidad Enterprise y aprobación del consejo antes de continuar.</td>
+</tr>
+<tr>
+<td><strong>Clasificación regulatoria</strong></td>
+<td>Si pasa a alto riesgo o se detecta una posible práctica prohibida, la iniciativa vuelve a la fase 3 o, si está en producción, se adelanta G7.</td>
+</tr>
+<tr>
+<td><strong>Autonomía de agentes</strong></td>
+<td>Todo aumento es un cambio significativo: nueva evaluación de riesgos, revisión de intensidad y decisión del órgano competente antes de aplicarlo.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="11-8-iniciativas-anteriores-a-la-adopcion-del-marco">11.8 Iniciativas anteriores a la adopción del marco</h3>
+<p>Se regularizan en el plazo aprobado en C2 con una revisión equivalente a G7 (01 §14). Se preparan las evidencias de las fases 6 y 7 y las imprescindibles de fases anteriores (clasificación regulatoria, riesgos, plan de reversión), identificadas expresamente como elaboradas en la regularización, por lo que no constituyen documentación a posteriori en el sentido de 01 §7.4.</p>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">12</span>Herramientas y plantillas asociadas</h2>
+<p>Las plantillas de cada fase están en la tabla de la sección 2.2 y en el apartado 6 de cada manual; <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (registro de decisión de <em>gate</em>) se usa en todas las puertas y <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (ficha de caso de uso) de la fase 1 a la 7.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Herramienta</th>
+<th>Fases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T03</td>
+<td>Registro de iniciativas · Gestor de <em>gates</em></td>
+<td>Todas</td>
+</tr>
+<tr>
+<td>T02 · T04 · T07</td>
+<td>Inventario · Determinación de intensidad · Clasificador regulatorio</td>
+<td>0, 3, 6</td>
+</tr>
+<tr>
+<td>T05</td>
+<td>Clasificador de ambición</td>
+<td>1, 2, 7</td>
+</tr>
+<tr>
+<td>T06 · T09 · T13</td>
+<td>Riesgos · Proveedores · Costes por caso</td>
+<td>3–7</td>
+</tr>
+<tr>
+<td>T08 · T10</td>
+<td>Incidentes y no conformidades · Seguridad de agentes</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td>T11 · T12</td>
+<td>Hipótesis de valor · Seguimiento de realización de valor</td>
+<td>2, 5, 6, 7</td>
+</tr>
+<tr>
+<td>T20 · T22</td>
+<td>Plan de adopción y capacidad · Gestor de retiradas</td>
+<td>4–7</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">13</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Metodología fundacional</strong></td>
+<td>Referencia normativa que estos manuales desarrollan.</td>
+</tr>
+<tr>
+<td><strong>03 · Herramientas y registro de iniciativas</strong></td>
+<td>Estados, eventos, plazos y herramientas.</td>
+</tr>
+<tr>
+<td><strong>12 · Índice de transformación</strong></td>
+<td>Criterios de ambición y efecto de la ambición real.</td>
+</tr>
+<tr>
+<td><strong>13 y 14 · Tesis de IA y gestión de cartera</strong></td>
+<td>Umbrales, horizonte, plazos y criterios de retirada.</td>
+</tr>
+<tr>
+<td><strong>21 y 22 · Criterios de <em>gate</em> y listas de verificación</strong></td>
+<td>Criterios <code>G&lt;n&gt;.&lt;nn&gt;</code>, <code>R6.&lt;nn&gt;</code> y controles <code>LV-</code>.</td>
+</tr>
+<tr>
+<td><strong>23 · Adopción y cambio</strong></td>
+<td>Plan de adopción, capacidad liberada y criterios de adopción.</td>
+</tr>
+<tr>
+<td><strong>30 · Modelo de gobierno</strong></td>
+<td>Órganos y escalado de decisiones.</td>
+</tr>
+<tr>
+<td><strong>33 a 37 · Riesgo, regulación, seguridad, terceros e incidentes</strong></td>
+<td>Escalas, obligaciones y controles aplicados en las fases 3 a 6.</td>
+</tr>
+<tr>
+<td><strong>40 a 43 · Medición y valor</strong></td>
+<td>Reglas, indicadores, costes y realización de beneficios.</td>
+</tr>
+<tr>
+<td><strong>52 y 53 · Operación y construcción</strong></td>
+<td>Operación en la fase 6 y construcción asistida por IA en las fases 4 y 5.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">14</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>Primera versión. Desarrolla las fases 0–7 del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> con trece apartados comunes, diferencias por intensidad, ambición y tecnología, enlace a plantillas <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> y herramientas de 03, y reglas de transición (iterar, pivotar, parar, en espera, escalado, retirada, cambios de clasificación y regularización). Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve a las empresas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":true},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

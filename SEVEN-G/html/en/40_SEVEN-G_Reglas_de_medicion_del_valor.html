@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Value measurement rules</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Value measurement rules"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/40_SEVEN-G_Reglas_de_medicion_del_valor.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/40_SEVEN-G_Reglas_de_medicion_del_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/40_SEVEN-G_Reglas_de_medicion_del_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/40_SEVEN-G_Reglas_de_medicion_del_valor.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 40 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 40 &#183; Value measurement rules</p>
+    <h1>Value measurement rules</h1>
+    <p class="entradilla">How the value of AI is measured, validated and presented so that it withstands an audit</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>10</b><span>measurement rules</span></div><div class="cifra"><b>3</b><span>amount statuses</span></div><div class="cifra"><b>5</b><span>attribution methods</span></div><div class="cifra"><b>1</b><span>single economic criterion based on net benefit</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/40_SEVEN-G_Reglas_de_medicion_del_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/40_SEVEN-G_Reglas_de_medicion_del_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/40_SEVEN-G_Reglas_de_medicion_del_valor.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#measurement-principles"><span>02</span>Measurement principles</a></li><li><a href="#the-ten-measurement-rules"><span>03</span>The ten measurement rules</a></li><li><a href="#amount-statuses"><span>04</span>Amount statuses</a></li><li><a href="#types-of-value"><span>05</span>Types of value</a></li><li><a href="#official-formulas"><span>06</span>Official formulas</a></li><li><a href="#attribution-methods"><span>07</span>Attribution methods</a></li><li><a href="#horizon-discounting-and-single-economic-criterion"><span>08</span>Horizon, discounting and single economic criterion</a></li><li><a href="#agility-of-the-decision-making-system"><span>09</span>Agility of the decision-making system</a></li><li><a href="#common-errors-that-inflate-value"><span>10</span>Common errors that inflate value</a></li><li><a href="#presentation-to-the-board"><span>11</span>Presentation to the board</a></li><li><a href="#responsibilities-in-measurement"><span>12</span>Responsibilities in measurement</a></li><li><a href="#associated-tools-and-templates"><span>13</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>14</span>Related documents</a></li><li><a href="#version-control"><span>15</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<p>This document develops the ten SEVEN-G value measurement rules (document 00, section 6) and sets out the definitions, formulas and procedures that all initiatives, the portfolio and reports to the board must apply.</p>
+<p>It applies to every initiative recorded in the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), in all phases, and to every value figure presented to the AI Committee or the board. The indicators derived from these rules are in document 41; the calculation of costs, in document 42; and the benefits realisation process, in document 43.</p>
+<p>The figures in the examples are <strong>fictitious and illustrative</strong>. They are not market benchmarks.</p>
+<hr />
+<h2 id="measurement-principles"><span class="antetitulo">02</span>Measurement principles</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Incrementality</strong></td>
+<td>Only the effect that would not have occurred without the initiative counts. What would have happened anyway (trend, seasonality, other initiatives) is not value of the use case.</td>
+</tr>
+<tr>
+<td><strong>Annual basis</strong></td>
+<td>Efficiencies, return and recurring cost are expressed in euros per year. The build investment and the initial adoption investment, which are incurred once, are presented separately.</td>
+</tr>
+<tr>
+<td><strong>Expected versus realised</strong></td>
+<td><strong>Expected</strong> value is the hypothesis (phases 2 and 3). <strong>Realised</strong> value is the value measured over a closed period (phases 5, 6 and 7). They are different magnitudes and are never added together.</td>
+</tr>
+<tr>
+<td><strong>Asymmetric prudence</strong></td>
+<td>Costs are charged in full from day one, regardless of their status. Value is only considered validated when it is validated by whoever is responsible for doing so.</td>
+</tr>
+<tr>
+<td><strong>Segregation of duties</strong></td>
+<td>Whoever benefits from the figure does not validate it. The area declares; management control or audit validate (principle 7 in 01 §3).</td>
+</tr>
+<tr>
+<td><strong>Traceability</strong></td>
+<td>Every figure can be reconstructed from its formula, its sources and its period, and is linked to the evidence in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="the-ten-measurement-rules"><span class="antetitulo">03</span>The ten measurement rules</h2>
+<p>The numbering is that of document 00, section 6, and is not modified.</p>
+<h3 id="3-1-rule-1-every-amount-has-a-formula-and-is-incremental">3.1 Rule 1 · Every amount has a formula and is incremental</h3>
+<blockquote>
+<p>Every amount has a formula (units × unit value) and is incremental against a baseline or a control group.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>An amount without a formula cannot be reviewed or updated, and a non-incremental amount attributes to AI what would have happened anyway.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>Each value line is broken down into a measurable physical magnitude (hours, cases, errors, customers, units sold) and a unit value with a source (fully loaded hourly cost, cost per error, margin per unit). The physical magnitude is the difference against the baseline measured in phase 2 or against the control group (formula F1, section 6).</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>Baseline: 9,000 instances of rework per year. Control group over the same period: 8,800 (downward trend unrelated to AI). With AI: 5,800. Incremental rework avoided: 8,800 − 5,800 = 3,000. Unit cost of an instance of rework according to cost accounting: €42. <strong>Efficiency = 3,000 × €42 = €126,000/year.</strong></td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;AI saves 30% of the team's time, around €200,000 a year.&quot; There are no units, no baseline, no comparison and no source for the unit value.</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td>The formula exists in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; the units come from an identified system; the baseline was measured before G2 (01 §6.4); the unit value has a source and a date; the attribution method applied is the one approved at G2.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-2-rule-2-every-amount-has-a-status-and-the-board-sees-the-validated-proportion">3.2 Rule 2 · Every amount has a status and the board sees the validated proportion</h3>
+<blockquote>
+<p>Every amount has a status: validated, declared or estimated. Reports to the board always show the proportion of validated value.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>An aggregate figure that mixes verified value with declared value conveys a certainty that it does not have. The board needs to know how much of what it sees has been verified.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>Each amount of realised value carries one of the three statuses in section 4. Every value total presented to the committee or the board shows the validated proportion alongside it (formula F6). An amount without a status is treated as estimated and generates an alert.</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>Gross realised value for the year: €540,000, of which €210,000 is validated, €250,000 declared and €80,000 estimated. <strong>Validated proportion: 210,000 ÷ 540,000 = 38.9%.</strong></td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;Value delivered by AI in the year: €540,000&quot;, with no breakdown by status.</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td>No amount in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or T12 has an empty status; all totals in the board pack show the validated proportion; validated amounts have a validator, a date and evidence.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-3-rule-3-released-capacity-is-not-counted-until-it-is-materialised-or-reassigned">3.3 Rule 3 · Released capacity is not counted until it is materialised or reassigned</h3>
+<blockquote>
+<p>Released capacity is not counted as savings until it is materialised (lower actual cost) or explicitly reassigned. It is reported separately.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>Releasing hours does not in itself reduce any cost. If people remain on the payroll doing the same work with more slack, the income statement does not change. Adding up released hours as savings is the main source of inflated figures in efficiency initiatives.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>Net released hours are valued (formula F4) and reported on a separate line. They only become an <strong>efficiency</strong> when there is a verifiable actual cost reduction (outsourcing not renewed, overtime eliminated, budgeted vacancy not filled) or when they are <strong>explicitly reassigned</strong> to an identified activity, with an owner and a date. Capacity reassigned to an activity that avoids a planned and budgeted cost counts as an efficiency; capacity reassigned to a new activity is reported as reassigned capacity, and its value is only accounted for through the measured result of that activity (section 5.3).</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>20,000 cases per year × 15 net minutes saved = 5,000 net released hours; at a fully loaded hourly cost of €32 = €160,000 of released capacity. Destination: 2,000 hours cover outsourcing that is not renewed (contract reduction: €76,000, <strong>materialised efficiency</strong>); 1,000 hours are reassigned to quality review (€32,000, <strong>reassigned capacity</strong>, reported separately); 2,000 hours have no destination (€64,000, <strong>unmaterialised released capacity</strong>, reported separately). Materialisation rate: 2,000 ÷ 5,000 = 40%.</td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;Savings of €160,000 a year from the released hours.&quot;</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td>Materialised efficiency is reflected in the accounts (lower expenditure in the cost centre) or there is evidence of the budgeted avoided cost; unmaterialised capacity is not included in net value; a materialisation plan exists before G5 in Optimise (01 §7.6).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-4-rule-4-a-potential-without-investment-hypothesis-and-timeframe-is-not-a-data-point">3.4 Rule 4 · A potential without investment, hypothesis and timeframe is not a data point</h3>
+<blockquote>
+<p>A potential without its additional investment, its hypothesis and its timeframe is not a data point.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>Potentials without cost or timeframe are promises. When compared with realised values, they distort prioritisation in favour of whoever promises the most.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>All potential value is recorded with four elements: potential annual net value, additional investment required to achieve it, explicit hypotheses (volume, usage rate, price, expected effect) and timeframe. If any of these is missing, the potential is not shown in reports or used for prioritisation.</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>&quot;Potential annual net value of €180,000 by extending the use case to the three remaining regions. Additional investment: €120,000. Hypotheses: usage rate of 70% or more and 45,000 requests per year. Timeframe: 9 months from the new phase 0.&quot;</td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;Potential of €2M if scaled to the whole company.&quot;</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td>In <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> the potential has all four fields completed; the board pack does not show incomplete potentials; the potential is reviewed at G7 against what has been realised.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-5-rule-5-each-euro-is-attributed-to-a-single-use-case">3.5 Rule 5 · Each euro is attributed to a single use case</h3>
+<blockquote>
+<p>Each euro is attributed to a single use case. When several use cases share an outcome, the allocation is declared.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>When two initiatives act on the same process or the same customer, each tends to claim the full effect. The portfolio total then exceeds the actual effect.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>In phase 2, each initiative declares which other use cases it shares a metric, process or population with. The combined effect is measured once and allocated using a declared key (document 43, section 6). The key is approved by management control and recorded in both use cases.</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>Two use cases reduce the cost of the same process. Combined effect measured: €400,000. Effects declared separately: €280,000 and €220,000 (total €500,000). Proportional allocation: 400,000 × 280/500 = <strong>€224,000</strong> and 400,000 × 220/500 = <strong>€176,000</strong>. Total: €400,000.</td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>Each use case reports its figure separately and the portfolio shows €500,000.</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td>Use cases with a declared overlap have a recorded allocation key; the sum of the allocated amounts does not exceed the combined effect measured; the AI Office reviews overlaps by process and population when consolidating.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-6-rule-6-efficiencies-return-and-recurring-cost-are-kept-separate">3.6 Rule 6 · Efficiencies, return and recurring cost are kept separate</h3>
+<blockquote>
+<p>Efficiencies, return and recurring cost are kept separate. Annual net value is the sum of efficiencies and return minus recurring cost.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>Efficiencies and return carry different risks, are validated differently and have a different strategic reading (efficiency versus transformation, document 00 §5). Mixing them, or offsetting costs within efficiencies, makes the portfolio impossible to read.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>Each use case records three separate blocks and calculates annual net value using formula F2. Recurring cost is the full cost defined in document 42, including allocated shared costs. The build and adoption investment does not form part of annual net value; it is used in the economic criterion in section 8.</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>Materialised efficiencies: €76,000. Return: €95,000. Recurring cost: €60,000. <strong>Annual net value = 76,000 + 95,000 − 60,000 = €111,000.</strong></td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;Benefit of €171,000 a year&quot;, without deducting the recurring cost; or &quot;net efficiencies of €16,000&quot;, deducting the cost within the efficiencies.</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> has all three blocks with separate amounts; the net value is recalculated automatically and matches the value reported; the recurring cost reconciles with T13.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-7-rule-7-every-magnitude-is-translated-into-money">3.7 Rule 7 · Every magnitude is translated into money</h3>
+<blockquote>
+<p>Every magnitude is translated into money. Improvements in retention, quality or satisfaction are converted into their economic effect, or it is stated that they could not be quantified.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>Non-monetary indicators cannot be compared with cost or used for prioritisation. But converting them using undeclared assumptions is worse than not converting them at all.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>Each non-monetary improvement is translated through an explicit chain: incremental physical magnitude × unit economic value with a source. If there is no demonstrable relationship, the amount is recorded as <strong>not quantified</strong>, with the physical metric and the reason. A non-quantified value is not zero and is not estimated without saying so (rule 8).</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>300 incremental customers retained against the control group × €450 average annual margin per customer = <strong>€135,000/year of return</strong>. Satisfaction improvement of 4 points: <strong>not quantified</strong>; there is no demonstrated relationship between that metric and purchasing behaviour in the company.</td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;Satisfaction rises by 4 points, which is equivalent to €1M of brand value&quot;, with no formula; or &quot;retention improves by 2 points&quot;, with no economic translation and no indication that it has not been quantified.</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td>Each non-monetary metric in the hypothesis has an amount with a formula or a not-quantified flag with a reason; unit values have a source.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-8-rule-8-quot-no-data-quot-is-not-zero">3.8 Rule 8 · &quot;No data&quot; is not zero</h3>
+<blockquote>
+<p>&quot;No data&quot; is not zero. Missing data is shown as missing and is never estimated without saying so.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>A zero hides the absence of measurement and makes an unmeasured use case look like a use case with no value, or an unknown cost look like no cost.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>Fields with no data are recorded as null and shown as &quot;no data&quot;. Totals indicate how many use cases provide no data. If missing data is replaced by an estimate, the estimate carries the <strong>estimated</strong> status, an author and a formula. A recurring cost with no data prevents the net value from being calculated: the net value is shown as &quot;no data&quot;, not as the gross value.</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>&quot;Return: no data (the area has not provided the attributed sales for the period). Annual net value: no data. 3 of the 11 use cases in production provide no return data.&quot;</td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;Return: €0&quot;; or a return estimated by the AI Office presented without an estimate flag.</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> distinguishes null from zero; the dashboard shows &quot;no data&quot;; totals report the number of use cases with no data; no estimate lacks a status.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-9-rule-9-prioritisation-uses-additional-net-value-per-euro">3.9 Rule 9 · Prioritisation uses additional net value per euro</h3>
+<blockquote>
+<p>Prioritisation uses additional net value per additional euro invested, not aggregate indicators that hide use cases with negative value.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>The relevant decision is where the next euro yields the most. Aggregate indicators (portfolio ROI, total value) mix excellent use cases with use cases that destroy value, and do not say where to invest.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>Each proposal for additional investment (new initiative, extension, scaling) calculates the additional net value per euro (formula F3). The portfolio is ranked by that indicator, subject to risk, capacity and ambition balance constraints (document 14). Use cases with negative annual net value are always shown individually.</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>Use case X: current net value €31,000, potential net value €151,000, additional investment €200,000 → (151,000 − 31,000) ÷ 200,000 = <strong>€0.60</strong> of annual net value per euro. Use case Y: additional net value €90,000, additional investment €60,000 → <strong>€1.50</strong>. Y is prioritised.</td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;The portfolio has an ROI of 85%; it is proposed to increase investment in all use cases&quot;, without showing that one use case has an annual net value of −€40,000.</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td>Investment proposals to the committee include F3; use cases with negative net value appear individually in the board pack; C3 decisions record the prioritisation order.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-10-rule-10-each-use-case-explains-what-it-is-and-what-it-is-used-for">3.10 Rule 10 · Each use case explains what it is and what it is used for</h3>
+<blockquote>
+<p>Each use case explains what it is and what it is used for, in language that non-specialists can understand.</p>
+</blockquote>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rationale</strong></td>
+<td>Anyone who does not understand what a use case does cannot judge whether its value is plausible or its risk acceptable. It is the precondition for oversight.</td>
+</tr>
+<tr>
+<td><strong>How it is applied</strong></td>
+<td>Each use case has a one- or two-sentence description that answers: what it does, who uses it, which process or decision it acts on and what role the person plays. It is recorded in the use case record (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) and in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Without a description, the use case is not presented to the board.</td>
+</tr>
+<tr>
+<td><strong>Correct example</strong> <em>(illustrative)</em></td>
+<td>&quot;It proposes the accounting classification and cost centre for each invoice received. A member of the accounts payable team reviews the proposal before it is posted.&quot;</td>
+</tr>
+<tr>
+<td><strong>Incorrect example</strong></td>
+<td>&quot;Generative AI solution with retrieval-augmented generation and multi-agent orchestration on a foundation model.&quot;</td>
+</tr>
+<tr>
+<td><strong>How it is verified</strong></td>
+<td>The description field in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> is completed and reviewed by the AI Office; a person from outside the area understands the use case on reading it.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="amount-statuses"><span class="antetitulo">04</span>Amount statuses</h2>
+<h3 id="4-1-definition-owners-and-evidence">4.1 Definition, owners and evidence</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Who may assign it</th>
+<th>Minimum evidence requirements</th>
+<th>Indicative expiry</th>
+<th>Permitted use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Validated</strong></td>
+<td>Management control (or the equivalent finance function) or internal or external audit. Never the area that benefits from the figure or the initiative team.</td>
+<td>Complete formula; measured baseline; attribution method approved and applied (section 7); data traceable to source systems or to the accounts; closed period; for efficiencies, reflection in the accounts or evidence of the avoided cost; validator's signature with date; evidence linked in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td><strong>12 months</strong> from the close of the validated period. It expires earlier if there is a material change: model, process, scope, population, price or volume outside the range of the hypothesis.</td>
+<td>All reports and <em>gates</em>. The only status that evidences &quot;materialised savings&quot; or &quot;measured return&quot; at G7 (01 §7.6).</td>
+</tr>
+<tr>
+<td><strong>Declared</strong></td>
+<td>The area responsible for the benefit (business owner in document 43), with the sponsor's agreement.</td>
+<td>Formula; source of the units and of the unit value; period; attribution method used; author and date.</td>
+<td><strong>6 months</strong> without being submitted for validation. After that period it is shown as &quot;declared, pending validation&quot; with an alert.</td>
+<td>Reports and R6, always identified as such. At G5 and G7 it does not replace validation when the criterion requires validated value.</td>
+</tr>
+<tr>
+<td><strong>Estimated</strong></td>
+<td>The AI Committee, the board or whoever advises them, or an assessment team (for example, the AI Office), when the area does not provide data or when a declared figure is being corroborated.</td>
+<td>Formula; explicit hypotheses; source of the parameters; author and date; reason for the estimate.</td>
+<td><strong>6 months</strong> or until the area declares the figure, whichever occurs first.</td>
+<td>Reports, always identified as such. It does not evidence compliance with any realised value <em>gate</em> criterion.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Supplementary rules:</p>
+<ol>
+<li>The status is assigned <strong>per amount and per period</strong>, not per use case. A use case may have validated efficiency and declared return.</li>
+<li><strong>Expected value is not validated.</strong> The amounts in the hypothesis (phases 2 and 3) are estimated or declared; management control may review their calculation, but the validated status only applies to value realised over a closed period.</li>
+<li><strong>Cost is not discounted by status.</strong> Recurring cost is charged in full even if it has not been validated; if it is unknown, the net value is &quot;no data&quot; (rule 8).</li>
+<li><strong>Downgrading, not deletion.</strong> A validated amount that expires becomes declared until it is revalidated; a declared amount rejected by the validator is corrected or becomes estimated, with a reason. Every status change is an event in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</li>
+<li><strong>Recurring value is revalidated every year.</strong> Validating one year does not validate the following years.</li>
+<li>The expiry periods are <strong>indicative</strong> and are set by the company in C2 (document 13). They may not be extended for a specific initiative.</li>
+</ol>
+<figure class="grafico"><div class="g-titulo">Status cycle of an amount</div><div class="g-sub">The status improves with evidence and is downgraded over time or with material changes</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  EST["Estimated · committee, board or assessor"] -->|"The area provides data with a formula"| DEC["Declared · responsible area"]
+  DEC -->|"Management control or audit verifies"| VAL["Validated · closed period"]
+  DEC -->|"Rejected by the validator"| EST
+  VAL -->|"Expires or material change"| DEC
+  DEC -->|"Not validated in time"| ALR["Declared, pending validation · alert"]
+  ALR -->|"Subsequent validation"| VAL
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class VAL ok
+  class DEC,EST med
+  class ALR ko
+</pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
+<h3 id="4-2-what-the-validator-checks">4.2 What the validator checks</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Question</th>
+<th>Typical evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Occurrence</strong></td>
+<td>Did the effect occur during the period?</td>
+<td>Extract from the source system with a date and a reproducible query.</td>
+</tr>
+<tr>
+<td><strong>Incrementality</strong></td>
+<td>Is it compared with the approved baseline or control group?</td>
+<td>Attribution method report with data from both groups.</td>
+</tr>
+<tr>
+<td><strong>Valuation</strong></td>
+<td>Is the unit value correct and current?</td>
+<td>Cost accounting, rates, contracts, margin per product.</td>
+</tr>
+<tr>
+<td><strong>Materialisation</strong></td>
+<td>For efficiencies, is there a lower actual cost or a budgeted avoided cost?</td>
+<td>General ledger, amended contract, headcount budget.</td>
+</tr>
+<tr>
+<td><strong>Exclusivity</strong></td>
+<td>Is the effect not already attributed to another use case?</td>
+<td>Overlap register and allocation key.</td>
+</tr>
+<tr>
+<td><strong>Cut-off and cost</strong></td>
+<td>Does the amount correspond to the period, is it not repeated, and is the recurring cost complete?</td>
+<td>Reconciliation with previous periods in T12 and with T13.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="types-of-value"><span class="antetitulo">05</span>Types of value</h2>
+<h3 id="5-1-additive-types">5.1 Additive types</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it includes</th>
+<th>Examples of items</th>
+<th>Condition for adding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Efficiencies</strong></td>
+<td>Lower actual cost or budgeted avoided cost.</td>
+<td>Lower people or outsourcing cost (materialised); tools or licences retired; losses avoided (fraud, shrinkage, bad debts); other operating costs avoided; errors and penalties avoided.</td>
+<td>Incremental, with a formula and, to be validated, reflected in the accounts or with evidence of the avoided cost.</td>
+</tr>
+<tr>
+<td><strong>Return</strong></td>
+<td>More revenue or more margin.</td>
+<td>New sales; cross-selling; retention (margin from incremental customers retained); price and margin; recovered collections; new services.</td>
+<td>Incremental, valued at <strong>margin</strong> where the company can calculate it; if revenue is used, this is stated. Margin and revenue are never mixed in the same total.</td>
+</tr>
+<tr>
+<td><strong>Recurring cost</strong></td>
+<td>Full annual cost of operating the use case.</td>
+<td>The nine categories in document 42, in their recurring portion, including allocated shared costs.</td>
+<td>Always deducted, in full, regardless of its status.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-2-non-additive-types-unless-translated-into-money-with-a-formula">5.2 Non-additive types unless translated into money with a formula</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it is</th>
+<th>How it is reported</th>
+<th>When it becomes additive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Risk avoided</strong></td>
+<td>Reduction in the likelihood or impact of an adverse event.</td>
+<td>Separately, with the risk metric (inherent and residual level, document 33) and, if calculated, the expected loss avoided as an estimate.</td>
+<td>When it translates into a lower observable and attributable cost (operational losses, penalties, premiums, provisions) measured using a method in section 7. It is then recorded as an <strong>efficiency</strong>.</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Ability to meet a regulatory or contractual obligation.</td>
+<td>Separately, linked to the obligation (document 34).</td>
+<td>When it replaces an actual compliance cost (hours of manual control, external service) measured with a formula. It is then an <strong>efficiency</strong>.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-3-magnitudes-that-are-reported-separately-and-never-counted-in-net-value">5.3 Magnitudes that are reported separately and never counted in net value</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Magnitude</th>
+<th>Why it is not added</th>
+<th>How it is reported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unmaterialised released capacity</strong></td>
+<td>It does not reduce any cost (rule 3).</td>
+<td>In euros (F4) and in hours, with its materialisation rate (F5).</td>
+</tr>
+<tr>
+<td><strong>Capacity reassigned to a new activity</strong></td>
+<td>Its value, if any, appears in the result of the destination activity; adding it would be double counting.</td>
+<td>In hours and euros, with destination activity, owner and date.</td>
+</tr>
+<tr>
+<td><strong>Potential value</strong></td>
+<td>It has not occurred (rule 4).</td>
+<td>With additional investment, hypothesis and timeframe; for prioritisation only (F3).</td>
+</tr>
+<tr>
+<td><strong>Option value</strong></td>
+<td>Transform bets whose value depends on future decisions.</td>
+<td>Qualitative description documented at G3 (01 §7.6), learning milestones and investment cap per stage.</td>
+</tr>
+<tr>
+<td><strong>Non-quantified value</strong></td>
+<td>There is no demonstrable economic relationship (rule 7).</td>
+<td>Physical metric and reason.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="official-formulas"><span class="antetitulo">06</span>Official formulas</h2>
+<p>These formulas are the only valid ones in SEVEN-G. Documents 41, 42 and 43, the templates and the tools refer to them by their code.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Magnitude</th>
+<th>Formula</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F1</strong></td>
+<td>Amount of a value line</td>
+<td>Amount = incremental units × unit value</td>
+<td>Incremental units = result with AI − reference result (adjusted baseline or control group).</td>
+</tr>
+<tr>
+<td><strong>F2</strong></td>
+<td><strong>Annual net value</strong></td>
+<td><strong>Annual net value = efficiencies + return − recurring cost</strong></td>
+<td>Materialised efficiencies only. Unmaterialised released capacity excluded. Calculated for realised (current) value and for potential value.</td>
+</tr>
+<tr>
+<td><strong>F2v</strong></td>
+<td>Validated net value</td>
+<td>Validated net value = validated efficiencies + validated return − recurring cost</td>
+<td>Cost is deducted in full. It may be negative even if F2 is positive.</td>
+</tr>
+<tr>
+<td><strong>F3</strong></td>
+<td><strong>Additional net value per euro</strong></td>
+<td><strong>Additional net value per euro = (potential annual net value − current annual net value) ÷ additional investment required</strong></td>
+<td>Unit: euros of annual net value per euro invested. If the additional investment is zero or does not exist, it is not calculated and prioritisation is based on absolute additional net value.</td>
+</tr>
+<tr>
+<td><strong>F4</strong></td>
+<td><strong>Released capacity</strong></td>
+<td>Net released hours = volume processed with AI × (reference unit time − unit time with AI) · Released capacity (€) = net released hours × fully loaded hourly cost</td>
+<td>The time with AI includes human review, exceptions and corrections. The fully loaded hourly cost is set by management control.</td>
+</tr>
+<tr>
+<td><strong>F5</strong></td>
+<td><strong>Materialisation</strong></td>
+<td>Materialisation rate = materialised hours ÷ net released hours · Reassignment rate = hours reassigned to a new activity ÷ net released hours</td>
+<td>Materialised hours: those that translate into lower actual cost or budgeted avoided cost. Calculated in hours so as not to mix internal and external rates.</td>
+</tr>
+<tr>
+<td><strong>F6</strong></td>
+<td><strong>Validated proportion</strong></td>
+<td>Validated proportion = validated value ÷ (validated + declared + estimated value)</td>
+<td>Based on gross realised value (materialised efficiencies + return) for the period. Amounts with no data are not included in the denominator and are reported separately.</td>
+</tr>
+<tr>
+<td><strong>F7</strong></td>
+<td>Net present value</td>
+<td>NPV = −I + Σ (annual net value in year t ÷ (1 + r)^t), for t = 1…H</td>
+<td>I, r and H as per section 8.</td>
+</tr>
+<tr>
+<td><strong>F8</strong></td>
+<td>Return on investment</td>
+<td>ROI(H) = (Σ annual net value in year t − I) ÷ I, for t = 1…H</td>
+<td>Always based on annual net value (F2), never on gross value.</td>
+</tr>
+<tr>
+<td><strong>F9</strong></td>
+<td>Payback period</td>
+<td>First year in which the cumulative Σ annual net value ≥ I, linearly interpolated within the year</td>
+<td>With a constant annual net value, it is equivalent to I ÷ annual net value.</td>
+</tr>
+<tr>
+<td><strong>F10</strong></td>
+<td>Value realisation</td>
+<td>Realisation = realised value for the period ÷ expected value for the period according to the realisation plan</td>
+<td>Document 43. Calculated in total and using validated value only.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cost per unit of outcome</strong> (recurring cost for the period ÷ units of useful outcome) is defined in document 42.</p>
+<hr />
+<h2 id="attribution-methods"><span class="antetitulo">07</span>Attribution methods</h2>
+<p>The attribution method is chosen in phase 2, approved at G2 and not changed without the approval of the body that decided G2 (01 §7.4, rule 6). It determines the maximum status that the value can reach.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>What it consists of</th>
+<th>When to use it</th>
+<th>Requirements</th>
+<th>Maximum status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Randomised control group</strong></td>
+<td>Units (customers, cases, branches) are randomly assigned to a group with AI and a group without AI over the same period.</td>
+<td>Whenever it is ethically, legally and operationally possible. Preferred method for return (conversion, retention, price).</td>
+<td>Sufficient size to detect the expected effect; recorded assignment; no contamination between groups; duration covering the business cycle.</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td><strong>A/B test</strong></td>
+<td>Variant of the above in digital channels or high-volume processes, with continuous splitting of traffic between versions.</td>
+<td>Digital interactions, recommendations, content, customer-facing assistants.</td>
+<td>Primary metric set in advance; minimum period set in advance; the test is not stopped on seeing a favourable result.</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td><strong>Difference-in-differences</strong></td>
+<td>The evolution of a treated group is compared with that of a comparable untreated group, before and after implementation.</td>
+<td>Phased roll-outs (regions, branches, business lines) where randomisation is not possible.</td>
+<td>Parallel trends verified in the prior period; absence of other changes affecting only one group.</td>
+<td>Validated</td>
+</tr>
+<tr>
+<td><strong>Adjusted before-and-after</strong></td>
+<td>The subsequent period is compared with the baseline, correcting for volume, seasonality, mix and prices.</td>
+<td>Internal processes with no comparable group; Optimise initiatives with a large and rapid effect.</td>
+<td>Baseline covering at least one full cycle; adjustments documented and approved by management control; record of other changes during the period.</td>
+<td>Validated if the adjustments are documented and there were no relevant concurrent changes; otherwise, declared</td>
+</tr>
+<tr>
+<td><strong>Expert estimate</strong></td>
+<td>People with knowledge of the process estimate the effect using a structured procedure.</td>
+<td><strong>Last resort</strong>: when there is no data and no possibility of comparison, or for the initial hypothesis in phase 2.</td>
+<td>At least two experts independent of the team; explicit hypotheses; a range, not a point estimate; a plan to replace it with a measurement method.</td>
+<td>Declared or estimated. <strong>Never validated</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Selection criteria, in this order:</p>
+<ol>
+<li>If randomisation is possible, randomise.</li>
+<li>If the roll-out is staggered, design it to allow difference-in-differences.</li>
+<li>If there is no comparable group, use adjusted before-and-after, with a measured baseline.</li>
+<li>Expert estimates are only accepted with a plan and a date for replacing them. In Optimise they cannot evidence G5 or G7; in Augment and Transform they may support the G2 hypothesis, but not realised value.</li>
+</ol>
+<p>In <strong>Transform</strong> initiatives, attribution is applied by stage and focuses on the market or customer evidence required at G5 (01 §7.6): usage, conversion, initial revenue or verified operational change.</p>
+<hr />
+<h2 id="horizon-discounting-and-single-economic-criterion"><span class="antetitulo">08</span>Horizon, discounting and single economic criterion</h2>
+<h3 id="8-1-the-problem-it-solves">8.1 The problem it solves</h3>
+<p>The material prior to SEVEN-G combined several return thresholds (target ROI percentages over different timeframes and a maximum payback period) with two different ROI formulas: one divided gross value by investment and the other divided net benefit by cost. With that mix, the same use case could be approved or rejected depending on the threshold and formula chosen. SEVEN-G replaces this with <strong>a single economic criterion based on net benefit</strong>.</p>
+<h3 id="8-2-definitions">8.2 Definitions</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>I · Initial investment</strong></td>
+<td>Build cost plus initial adoption cost (document 42), incurred once. It does not include recurring cost, which is already deducted in annual net value.</td>
+</tr>
+<tr>
+<td><strong>Annual net value in year t</strong></td>
+<td>Annual net value (F2) expected or realised in year t, with the adoption curve (ramp-up) set out in the realisation plan. If a retirement cost is foreseen, it is deducted in the year in which it is incurred.</td>
+</tr>
+<tr>
+<td><strong>H · Horizon</strong></td>
+<td>Number of years of evaluation. It is set by the company in C2 (01 §5.1). It may not exceed the expected useful life of the solution.</td>
+</tr>
+<tr>
+<td><strong>r · Discount rate</strong></td>
+<td>Annual rate set by the finance function in C2. If the company does not set one, r = 0.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-3-rule">8.3 Rule</h3>
+<ol>
+<li><strong>There is a single economic feasibility criterion: NPV (F7) ≥ 0 with the H and r approved in C2.</strong> With r = 0, this is equivalent to recovering the initial investment within the horizon.</li>
+<li><strong>ROI (F8) and payback period (F9) are for information only.</strong> They are always calculated using the same I, H and annual net value, and have no thresholds of their own.</li>
+<li><strong>A return is never calculated on gross value.</strong> Every return is based on annual net value.</li>
+<li><strong>F3 is used to prioritise between use cases</strong> (rule 9), not NPV or ROI.</li>
+<li><strong>By ambition level</strong> (01 §7.6):
+<ul>
+<li><strong>Optimise</strong>: NPV ≥ 0 at G3 with expected values; at G7 it is recalculated with validated realised values.</li>
+<li><strong>Augment</strong>: the same criterion, plus the feasibility of adoption and of the role change.</li>
+<li><strong>Transform</strong>: NPV ≥ 0 for the whole is not required at G3. The investment cap for the stage, stop criteria per stage and documented option value are required. NPV is calculated for information when there are return hypotheses.</li>
+</ul>
+</li>
+<li><strong>Market thresholds are not used.</strong> No ROI percentage from outside the company replaces the C2 criterion.</li>
+</ol>
+<h3 id="8-4-illustrative-example">8.4 Illustrative example</h3>
+<p>Build: €150,000. Initial adoption: €30,000. <strong>I = €180,000.</strong> Horizon approved in C2: H = 3 years. Discount rate: r = 8%. Expected annual net value with ramp-up: year 1, €40,000; year 2, €110,000; year 3, €120,000.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual net value</th>
+<th>Discount factor</th>
+<th>Present value</th>
+<th>Undiscounted cumulative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>−€180,000</td>
+<td>1.000000</td>
+<td>−€180,000.00</td>
+<td>−€180,000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>€40,000</td>
+<td>1.080000</td>
+<td>€37,037.04</td>
+<td>−€140,000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>€110,000</td>
+<td>1.166400</td>
+<td>€94,307.27</td>
+<td>−€30,000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>€120,000</td>
+<td>1.259712</td>
+<td>€95,259.87</td>
+<td>€90,000</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>NPV</strong> = −180,000.00 + 37,037.04 + 94,307.27 + 95,259.87 = <strong>€46,604.18</strong> → meets the criterion.</li>
+<li><strong>ROI(3)</strong> = (40,000 + 110,000 + 120,000 − 180,000) ÷ 180,000 = 90,000 ÷ 180,000 = <strong>50%</strong> (for information).</li>
+<li><strong>Payback period</strong> = 2 + 30,000 ÷ 120,000 = <strong>2.25 years</strong> (for information).</li>
+</ul>
+<hr />
+<h2 id="agility-of-the-decision-making-system"><span class="antetitulo">09</span>Agility of the decision-making system</h2>
+<h3 id="9-1-what-is-measured">9.1 What is measured</h3>
+<p>Agility measures how long the governance system takes to decide and to move into production, not the speed of the technical teams. It is calculated from the events in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (03 §3.3).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>From</th>
+<th>To</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Idea → approval</strong></td>
+<td>Registration of the initiative</td>
+<td>G3 decision with a Proceed or Proceed with conditions outcome</td>
+<td>Agility in launching a bet.</td>
+</tr>
+<tr>
+<td><strong>Approval → production</strong></td>
+<td>Favourable G3 decision</td>
+<td>Favourable G5 decision</td>
+<td>Agility in delivering it.</td>
+</tr>
+<tr>
+<td><strong>Idea → production</strong></td>
+<td>Registration</td>
+<td>Favourable G5 decision</td>
+<td>Total time to production (03 §3.5).</td>
+</tr>
+<tr>
+<td><strong>Decision time</strong></td>
+<td>Request for a <em>gate</em></td>
+<td>Decision</td>
+<td>Agility of the decision-making body itself.</td>
+</tr>
+</tbody>
+</table></div>
+<p>All segments exclude time on hold for a recorded external reason, which is reported separately. They are shown as the <strong>median and 80th percentile</strong>, never as the mean alone.</p>
+<h3 id="9-2-segmentation-by-risk-and-ambition">9.2 Segmentation by risk and ambition</h3>
+<p>Times are always segmented by <strong>residual risk level</strong> (Low, Medium, High, document 33), by <strong>ambition level</strong> and by <strong>intensity</strong>. Agile governance takes little time over simple matters and devotes time to what carries risk; taking the same time over everything is a sign of a process that does not discriminate.</p>
+<p>Initial benchmarks, calculated as the sum of the reference time limits per phase in document 03 §3.6 (indicative, not including decision times):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Idea → approval (phases 0 to 3)</td>
+<td>70 days</td>
+<td>125 days</td>
+</tr>
+<tr>
+<td>Approval → production (phases 4 and 5)</td>
+<td>80 days</td>
+<td>135 days</td>
+</tr>
+<tr>
+<td>Idea → production</td>
+<td>150 days</td>
+<td>260 days</td>
+</tr>
+<tr>
+<td>Decision on a <em>gate</em></td>
+<td>5 working days</td>
+<td>10 working days</td>
+</tr>
+</tbody>
+</table></div>
+<p>The company approves its benchmarks in C2 and may set a <strong>fast track</strong> for Lite initiatives with Low residual risk (for example, grouping G0–G2 and G4–G5, 01 §7.5). The benchmarks are recalibrated in C5 using the company's own data.</p>
+<h3 id="9-3-reading-rules">9.3 Reading rules</h3>
+<ol>
+<li><strong>Agility is read together with quality.</strong> A shortening of time limits accompanied by more incidents in the first months of production, more expired conditions or more nonconformities is not an improvement.</li>
+<li><strong>Transform bets are compared with the rest.</strong> If they take much longer to reach production, or do not reach it, this is signal 7 of the transformation index (00 §5.3).</li>
+<li><strong>Decision time is the responsibility of the body</strong>, not the team. It is reported to the AI Committee and the board.</li>
+</ol>
+<hr />
+<h2 id="common-errors-that-inflate-value"><span class="antetitulo">10</span>Common errors that inflate value</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Error</th>
+<th>How it is detected</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Adding up released hours as savings.</td>
+<td>&quot;People&quot; efficiencies with no reflection in the accounts and no budgeted avoided cost.</td>
+<td>Reclassify as released capacity (F4) and require a materialisation plan.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gross value without deducting recurring cost.</td>
+<td>&quot;Benefit&quot; totals that do not reconcile with F2.</td>
+<td>Apply F2 with the full cost in document 42.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Attributing the trend to AI.</td>
+<td>Unadjusted before-and-after in a period with changes in volume, price or seasonality.</td>
+<td>Method in section 7 with adjustment or a control group.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Double counting between use cases.</td>
+<td>Several use cases claiming the effect on the same process or population.</td>
+<td>Combined measurement and allocation key (rule 5).</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Valuing return at gross revenue instead of margin.</td>
+<td>Return equal to attributed sales.</td>
+<td>Value at margin or state this expressly without mixing them.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Time with AI that omits human review.</td>
+<td>Unit saving equal to the time of the original task.</td>
+<td>Measure the actual time including review, exceptions and corrections.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Extrapolating the pilot to the whole company.</td>
+<td>Potential calculated by multiplying the pilot result with no adoption or investment hypothesis.</td>
+<td>Apply rule 4 with usage rate and extension cost.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Charging only direct costs.</td>
+<td>Costs of shared licences, platform or common teams not allocated.</td>
+<td>Cost allocation as per document 42.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Using the gross amount declared by a supplier.</td>
+<td>&quot;Recovered&quot; or &quot;detected&quot; figures taken from the supplier's report.</td>
+<td>Measure the increase against what was already being detected or recovered.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Changing the metric or threshold after seeing the results.</td>
+<td>Differences between the hypothesis approved at G2 and the one measured at G5.</td>
+<td>Revert to the approved hypothesis; any change requires approval (01 §7.4).</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Presenting expected value as realised.</td>
+<td>Amounts from the hypothesis canvas in production reports.</td>
+<td>Separate expected from realised; expected value is never validated.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Counting risk avoided as savings.</td>
+<td>Expected losses avoided added to net value.</td>
+<td>Report it separately unless translated into observable cost (section 5.2).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Presenting to the committee or the board as validated an amount that is not validated constitutes a <strong>major nonconformity</strong> (document 37). Relaxing stop criteria or changing the attribution method without approval is dealt with in accordance with 01 §7.4 and §12.</p>
+<hr />
+<h2 id="presentation-to-the-board"><span class="antetitulo">11</span>Presentation to the board</h2>
+<h3 id="11-1-rules">11.1 Rules</h3>
+<ol>
+<li><strong>The validated proportion is always visible</strong> next to each value total, in the full dashboard, in the mobile version and in any document in the board pack (document 60).</li>
+<li><strong>Efficiencies, return and recurring cost are shown separately</strong>, with annual net value (F2) and validated net value (F2v).</li>
+<li><strong>Unmaterialised released capacity and reassigned capacity are shown on separate lines</strong>, outside net value.</li>
+<li><strong>Use cases with negative annual net value are identified individually.</strong></li>
+<li><strong>&quot;No data&quot; is shown as such</strong>, with the number of use cases affected.</li>
+<li><strong>Potentials only appear when complete</strong> (rule 4) and separately from realised value.</li>
+<li><strong>A comparison is made with the previous period</strong> and relevant variations are explained, including changes in status.</li>
+<li><strong>Each use case presented in detail includes its understandable description</strong> (rule 10). A maximum of three use cases are presented in detail per session, and answers follow the formats of the common specification: &quot;Yes&quot;, &quot;Yes, with one condition: …&quot;, &quot;Not yet, because … is missing&quot; or &quot;No, because …&quot;.</li>
+<li><strong>The composition of value by ambition level</strong> (efficiencies versus return) is shown to feed signals 1 and 2 of the transformation index.</li>
+</ol>
+<h3 id="11-2-value-summary-template">11.2 Value summary template</h3>
+<p><em>Illustrative data.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Annual amount</th>
+<th>Validated</th>
+<th>Validated proportion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Materialised efficiencies</td>
+<td>€620,000</td>
+<td>€380,000</td>
+<td>61.3%</td>
+</tr>
+<tr>
+<td>Return</td>
+<td>€410,000</td>
+<td>€90,000</td>
+<td>22.0%</td>
+</tr>
+<tr>
+<td><strong>Gross realised value</strong></td>
+<td><strong>€1,030,000</strong></td>
+<td><strong>€470,000</strong></td>
+<td><strong>45.6%</strong></td>
+</tr>
+<tr>
+<td>Recurring cost</td>
+<td>€520,000</td>
+<td>—</td>
+<td>Deducted in full</td>
+</tr>
+<tr>
+<td><strong>Annual net value (F2)</strong></td>
+<td><strong>€510,000</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Validated net value (F2v)</strong></td>
+<td><strong>−€50,000</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Unmaterialised released capacity (not added)</td>
+<td>€290,000</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Use cases with negative annual net value</td>
+<td>2 of 11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Use cases with no return data</td>
+<td>3 of 11</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Reading for the board: the portfolio generates a positive annual net value according to what has been declared, but <strong>on the basis of the value validated to date it does not cover its recurring cost</strong>. The priority is to validate the declared return and materialise the released capacity before approving new extensions.</p>
+<hr />
+<h2 id="responsibilities-in-measurement"><span class="antetitulo">12</span>Responsibilities in measurement</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Responsible</th>
+<th>Verifies or validates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value hypothesis, baseline and attribution method</td>
+<td>AI Product Owner, with the business owner of the benefit</td>
+<td>AI Office (Lite) or AI Auditor (Enterprise) at G2</td>
+</tr>
+<tr>
+<td>Declaration of realised value</td>
+<td>Business owner of the benefit</td>
+<td>Management control</td>
+</tr>
+<tr>
+<td>Validation of value</td>
+<td>Management control or audit</td>
+<td>AI Auditor by sampling</td>
+</tr>
+<tr>
+<td>Full cost and allocation</td>
+<td>Management control with the AI Office (document 42)</td>
+<td>Internal audit</td>
+</tr>
+<tr>
+<td>Portfolio consolidation and elimination of double counting</td>
+<td>AI Office</td>
+<td>Management control</td>
+</tr>
+<tr>
+<td>Presentation to the board</td>
+<td>AI Office and sponsor</td>
+<td>AI Committee</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="associated-tools-and-templates"><span class="antetitulo">13</span>Associated tools and templates</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Use in this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td>Initiative register</td>
+<td>Amounts, statuses, status change events, dates for agility.</td>
+</tr>
+<tr>
+<td><strong>T11</strong></td>
+<td>Value hypothesis canvas and calculator</td>
+<td>Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method.</td>
+</tr>
+<tr>
+<td><strong>T12</strong></td>
+<td>Value realisation tracking</td>
+<td>Statuses per period, expiries, F5, F6 and F10.</td>
+</tr>
+<tr>
+<td><strong>T13</strong></td>
+<td>Cost calculator per use case</td>
+<td>Full recurring cost and initial investment.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td>Board AI dashboard</td>
+<td>Presentation with the validated proportion visible.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></strong></td>
+<td>Value hypothesis canvas</td>
+<td>Hypothesis, attribution method and stop criteria.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></strong></td>
+<td>Baseline</td>
+<td>Reference measurement.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
+<td>Validation and pilot results</td>
+<td>Value measured against the hypothesis at G5.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
+<td>Value realisation tracking</td>
+<td>Value per period and status.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></strong></td>
+<td>Use case record</td>
+<td>Understandable description (rule 10).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">14</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>00 · What SEVEN-G is and how it helps companies</strong></td>
+<td>Source of the ten rules (§6) and of the transformation signals (§5.3).</td>
+</tr>
+<tr>
+<td><strong>01 · Foundational methodology</strong></td>
+<td>Criteria by ambition (§7.6), measurement in the cycle (§11) and decision rules (§7.4).</td>
+</tr>
+<tr>
+<td><strong>03 · Tools and initiative register</strong></td>
+<td>Events, funnel metrics and reference time limits.</td>
+</tr>
+<tr>
+<td><strong>13 · AI thesis and risk appetite</strong></td>
+<td>Horizon, discount rate, expiry periods and agility benchmarks approved in C2.</td>
+</tr>
+<tr>
+<td><strong>14 · Portfolio management</strong></td>
+<td>Prioritisation using additional net value per euro.</td>
+</tr>
+<tr>
+<td><strong>37 · Nonconformities and incidents</strong></td>
+<td>Treatment of breaches of these rules.</td>
+</tr>
+<tr>
+<td><strong>41 · Indicator catalogue</strong></td>
+<td>Indicators derived from the official formulas.</td>
+</tr>
+<tr>
+<td><strong>42 · AI costs</strong></td>
+<td>Full recurring cost, initial investment and cost per unit of outcome.</td>
+</tr>
+<tr>
+<td><strong>43 · Benefits realisation</strong></td>
+<td>Realisation plan, tracking, double counting, materialisation and audit of value.</td>
+</tr>
+<tr>
+<td><strong>60 · Board pack</strong></td>
+<td>Application of the presentation rules.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">15</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Develops the ten measurement rules and sets out the amount statuses with owners, evidence and expiry, the official formulas F1–F10, the attribution methods with their maximum status, the single economic criterion based on net benefit (NPV with the C2 horizon and rate; ROI and payback period for information only), the measurement of agility by risk and ambition, the value inflation errors and the rules for presentation to the board.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":true},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

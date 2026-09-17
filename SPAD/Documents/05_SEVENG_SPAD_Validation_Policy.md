@@ -1,4 +1,6 @@
-# 05 — SEVEN-G SPAD Validation Policy
+# 05 — SPAD Validation Policy
+
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
 
 ---
 
@@ -54,8 +56,8 @@ The response executes actions that **do not correspond** to the active SPAD phas
 |-------|-----------|-------------|
 | PLAN | Generates or modifies code | PLAN must stay at design level |
 | PLAN | Proposes concrete fixes or refactors | PLAN defines, doesn't implement |
-| AUDIT_PLAN | Corrects or rewrites the plan | Auditor evaluates, doesn't fix |
-| AUDIT_CODE | Corrects or rewrites code | Auditor evaluates, doesn't fix |
+| AUDIT_PLAN | Corrects or rewrites the plan | AI Reviewer evaluates, doesn't fix |
+| AUDIT_CODE | Corrects or rewrites code | AI Reviewer evaluates, doesn't fix |
 | IMPLEMENT | Makes new design decisions | Builder follows decisions, doesn't make them |
 | FIX_PRIMERS | Redesigns or expands functionality | Fixer applies minimal corrections only |
 | DEBUG | Generates solution code | DEBUG produces RCA, not solutions |
@@ -285,7 +287,7 @@ Output: [Code with minor style inconsistencies but follows PLAN]
 
 Decision: ✅ VALID
 Reason: Implementation follows PLAN and CODE_PRIMER.
-Action: Proceed to AUDIT_CODE, style issues can be addressed in FIX_PRIMERS if auditor flags them.
+Action: Proceed to AUDIT_CODE, style issues can be addressed in FIX_PRIMERS if AI Reviewer flags them.
 ```
 
 ### Example 4: Invalid Self-Approval
@@ -295,7 +297,7 @@ Output: "Found 3 issues: missing error handling, no input validation,
          hardcoded secret. These are minor, so I'll mark this as GO."
 
 Decision: ❌ INVALID
-Reason: Auditor self-approved despite identifying issues.
+Reason: AI Reviewer self-approved despite identifying issues.
 Action: Discard, re-execute AUDIT_CODE with stricter guidelines.
 ```
 
@@ -309,7 +311,7 @@ Action: Discard, re-execute AUDIT_CODE with stricter guidelines.
 - When in doubt, invalidate (conservative approach)
 
 ### 9.2 Independence
-- Auditor responses are validated by humans, not by the Builder AI
+- AI Reviewer responses are validated by humans, not by the Builder AI
 - No AI can self-validate its own output
 - Cross-phase validation is required
 
@@ -367,6 +369,6 @@ flowchart TD
 ---
 
 **Owner:** Seachad (FGV)  
-**Framework:** SEVEN-G  
+**Relationship:** Independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI)  
 **Status:** Official SPAD Policy  
 **Generated with assistance from GitHub Copilot**

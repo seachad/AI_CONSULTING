@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compañía Ejemplo Industrial, S.A. (ficticia) · Registro de recomendaciones · Registro de iniciativas T01 de SEVEN-G (demo)</title><style>
+:root{color-scheme:dark;--bg:#12161b;--panel:#1a2027;--panel2:#202730;--ink:#f3f1ea;--ink2:#b9b6ac;--mute:#7f8b96;--line:#2b333d;--ring:rgba(255,255,255,.12);
+ --s1:#199e70;--s2:#3987e5;--s3:#d95926;--s4:#c98500;--good:#0ca30c;--warn:#fab219;--critical:#d03b3b;--accent:#199e70;--link:#8fd3f4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:.2px}
+a{color:var(--link)}
+.demo{position:fixed;right:14px;bottom:14px;z-index:9;background:#c98500;color:#1a1200;font-weight:700;font-size:11.5px;padding:5px 10px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+aside{background:var(--panel);border-right:1px solid var(--line);padding:22px 18px;position:sticky;top:0;height:100vh;overflow:auto}
+aside .brand{font-family:Georgia,serif;font-size:22px;line-height:1.1}
+aside .brand small{display:block;font:11px/1.4 system-ui,sans-serif;color:var(--mute);letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
+.sector{display:inline-block;margin-top:10px;padding:3px 10px;border-radius:999px;background:var(--accent);color:#0b0f12;font-size:11.5px;font-weight:700;letter-spacing:.04em}
+aside nav{margin-top:20px;display:flex;flex-direction:column;gap:2px}
+aside nav a{color:var(--ink2);text-decoration:none;padding:7px 10px;border-radius:8px;font-size:13px}
+aside nav a:hover{background:var(--panel2);color:var(--ink)}
+aside .foot{margin-top:26px;font-size:11.5px;color:var(--mute);line-height:1.5}
+main{padding:28px 34px 80px;max-width:1500px}
+.hero{display:grid;grid-template-columns:minmax(260px,1.2fr) repeat(auto-fit,minmax(150px,1fr));gap:14px;align-items:stretch;margin-bottom:26px}
+.hero .big{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 22%,#1a2027),#1a2027 70%);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.hero .big .n{font-size:52px;font-weight:600;line-height:1;margin:6px 0 4px}
+.hero .big .l{color:var(--ink2);font-size:13px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.tile .n{font-size:26px;font-weight:600;line-height:1.1}
+.tile .l{color:var(--ink2);font-size:12px;margin-top:4px}
+.tile .d{color:var(--mute);font-size:11.5px;margin-top:3px}
+section{margin-top:30px}
+section>h2{font-size:22px;margin:0 0 4px}
+section>.lead{color:var(--ink2);font-size:13px;margin:0 0 14px;max-width:110ch}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;min-width:0}
+.card h3{margin:0 0 3px;font-size:14.5px;font-weight:600}
+.card .note{color:var(--mute);font-size:11.5px;margin-bottom:10px}
+.card .ins{font-size:13px;color:var(--ink);margin-bottom:10px;padding-left:10px;border-left:3px solid var(--accent)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin-bottom:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:inherit;fill:var(--ink2);font-size:11px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--mute);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tw{overflow:auto}
+.pill{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:999px;border:1px solid var(--ring);color:var(--ink2);white-space:nowrap}
+.pill.uso{background:#17352a;color:#8fe0bd;border-color:#245d47}.pill.dev{background:#1c2f4a;color:#9cc3f2;border-color:#2c4f7c}.pill.poc{background:#3b2a12;color:#f0c98a;border-color:#6a4a1a}.pill.off{background:#2a2e33;color:#a7adb5}
+.pill.ok{background:#17352a;color:#8fe0bd;border-color:#245d47}.pill.ko{background:#44201c;color:#f3a79c;border-color:#7a3a33}.pill.mid{background:#3b2a12;color:#f0c98a;border-color:#6a4a1a}.pill.na{background:#2a2e33;color:#a7adb5}
+.bar100{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:2px;background:var(--line)}
+.bar100 i{display:block;height:100%}
+.meter{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:6px}.meter i{display:block;height:100%;background:var(--s1)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.seg button{border:0;background:var(--panel);color:var(--ink2);padding:7px 14px;cursor:pointer;font-size:13px}
+.seg button.on{background:var(--accent);color:#0b0f12;font-weight:600}
+details.comp{margin-top:12px}
+details.comp>summary,details.unit>summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;user-select:none}
+details.comp>summary::-webkit-details-marker,details.unit>summary::-webkit-details-marker{display:none}
+details.comp>summary:before,details.unit>summary:before{content:"▸";color:var(--mute);width:12px}
+details.comp[open]>summary:before,details.unit[open]>summary:before{content:"▾"}
+details.comp>summary .nm{font-family:Georgia,serif;font-size:17px;min-width:170px}
+details.unit{margin:8px 0 0 22px}
+details.unit>summary{padding:8px 12px;border-left:3px solid var(--accent);border-radius:0 12px 12px 0}
+details.unit>summary .nm{font-size:13.5px;font-weight:600;min-width:170px}
+.strip{display:flex;flex-wrap:wrap;gap:6px 22px;margin-left:auto}
+.st{min-width:96px}.st .k{font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.03em}.st .v{font-size:16px;font-weight:600}.st .d{font-size:11px;color:var(--ink2)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin:8px 0 4px 14px}
+.case{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg)}
+.case .t{font-weight:600;font-size:13.5px;cursor:pointer}.case .t:hover{color:var(--link);text-decoration:underline}
+.case .id{color:var(--mute);font-size:11px;margin-right:4px}
+.case .badges{margin:4px 0 6px}
+.case .uso{font-size:11.5px;color:var(--ink2);margin-bottom:6px}
+.case .nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.case .num{border-top:1px solid var(--line);padding-top:5px;cursor:pointer}.case .num .k{font-size:10.5px;color:var(--mute);text-transform:uppercase}.case .num .v{font-size:14px;font-weight:600;color:var(--link);text-decoration:underline dotted}
+i.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:0}
+.pill.amb{color:var(--ink)}
+.ambrow{display:grid;grid-template-columns:190px minmax(0,1fr) 190px;gap:12px;align-items:center;margin:10px 0}
+.ambrow .k{font-size:12.5px;color:var(--ink2)}.ambrow .k span{display:block;color:var(--ink);font-weight:600;font-size:14px}
+.bar100.big{height:22px;border-radius:6px}
+.ambrow .pcts{display:flex;gap:12px;font-size:12px;color:var(--ink2)}.ambrow .pcts i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+@media (max-width:700px){.ambrow{grid-template-columns:1fr}}
+.case .why{margin:8px 0 0;font-size:12px;color:var(--ink2);line-height:1.45}
+.case .why b{color:var(--ink)}
+footer{padding:22px 34px;color:var(--mute);font-size:11.5px;border-top:1px solid var(--line)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:40;padding:20px}
+.modal.open{display:flex}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;max-width:820px;width:100%;max-height:90vh;overflow:auto;padding:22px 26px}
+.box .close{float:right;border:0;background:var(--panel2);border-radius:8px;padding:5px 10px;cursor:pointer;color:var(--ink)}
+.box h3{margin:16px 0 4px;font-size:14px}.box p{margin:0;color:var(--ink2);font-size:13px;line-height:1.5}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:4px 12px;margin:10px 0;font-size:13px}.kv dt{color:var(--mute)}.kv dd{margin:0}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}aside{position:static;height:auto}main{padding:18px}}
+
+.top{padding:26px 34px 10px;border-bottom:1px solid var(--line);background:var(--panel)}
+.top h1{font-size:30px;margin:0 0 4px}
+.top .lead{color:var(--ink2);max-width:110ch;margin:0 0 16px}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;max-width:900px}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:12px 34px;border-bottom:1px solid var(--line)}
+.filters .lbl{color:var(--mute);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;margin:0 4px 0 10px}
+.chip{background:var(--panel2);border:1px solid transparent;color:var(--ink2);border-radius:999px;padding:4px 11px;cursor:pointer;font-size:12.5px}
+.chip.on{border-color:var(--accent);color:var(--ink)}
+.tl{padding:24px 34px 60px;max-width:1300px;position:relative}
+.tl:before{content:"";position:absolute;left:44px;top:30px;bottom:60px;width:2px;background:var(--line)}
+.ses{position:relative;padding-left:44px;margin-bottom:30px}
+.ses .dot{position:absolute;left:4px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.shead h2{font-size:21px;margin:0}
+.shead .sub{color:var(--mute);font-size:12.5px;margin:2px 0 12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+.rec{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.rec header{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.rec .id{font-family:Georgia,serif;font-size:18px;margin-right:4px}
+.rec .txt{margin:0;font-size:14px;line-height:1.45}
+.rec dl{display:grid;grid-template-columns:130px 1fr;gap:3px 10px;margin:0;font-size:12.5px}
+.rec dt{color:var(--mute)}.rec dd{margin:0}
+.rec .go{font-size:12px;text-decoration:none;margin-top:auto}
+</style></head><body>
+<div class="demo">Demo · datos ficticios</div>
+<div class="top"><span class="sector">Registro de iniciativas T01 de SEVEN-G</span><h1 style="margin-top:8px">Registro de recomendaciones del consejo asesor</h1><p class="lead">Compañía Ejemplo Industrial, S.A. (ficticia) · consejo asesor · una fila por recomendación con un identificador que nunca se reinicia, el estado que declara la compañía, la evidencia presentada y la valoración del consejo asesor. Cada recomendación enlaza con el bloque del panel donde se mide. Estado a 16-09-2026.</p><div class="sum" id="sum"></div></div>
+<div class="filters" id="chips"></div>
+<div class="tl" id="tl"></div>
+<footer>Registro de recomendaciones generado desde el registro de iniciativas T01 de SEVEN-G · Compañía Ejemplo Industrial, S.A. (ficticia) y sus personas son ficticios · <a href="t01_Dashboard_Casos_Uso_IA_v7.html">ver el panel de IA del Consejo</a> · <a href="../../index.html">página del conector T17</a> · generado el 17-09-2026<br>© 2026 Fernando García · SEACHAD · metodología SEVEN-G · contenidos <a href="https://creativecommons.org/licenses/by/4.0/deed.es">CC BY 4.0</a> · código MIT (motor del panel derivado de <a href="https://github.com/Seachad-TEAM/AI_en_el_consejo">AI en el Consejo</a>, <a href="https://github.com/Seachad-TEAM/AI_en_el_consejo/blob/main/LICENSE">MIT</a>)<br><b>Aviso legal.</b> Demostración con datos ficticios del registro de iniciativas T01 de SEVEN-G, ofrecida «tal cual» y con fines informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma. Las clasificaciones y referencias a regulación general o sectorial pueden quedar desactualizadas: cada organización es la única responsable de verificar la normativa que le aplica y certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad por su uso.</footer>
+<script>
+const D = {"slug": "t01", "industria": "Registro de iniciativas T01 de SEVEN-G", "grupo": "Compañía Ejemplo Industrial, S.A. (ficticia)", "consejo": "consejo asesor", "hoy": "2026-09-16", "hoy_txt": "16-09-2026", "sesiones": [{"id": "S01", "nombre": "Recomendaciones del 30-06-2026", "fecha": "30-06-2026", "tema": "registradas en T01"}], "recs": [{"id": "REC-2026-001", "sesion": "S01", "ambito": "04 Operaciones", "texto": "Reducir el tiempo de decisión de los gates Enterprise y revisar las iniciativas estancadas en fase 3. (iniciativas: IA-2026-001)", "destinatario": "Comité de IA", "estado": "en_curso", "fecha": "sin dato (T01 no registra fecha comprometida)", "evidencia": "sin dato", "valoracion": "sin dato (T01 no registra la valoración del consejo asesor)", "panel": "inventario"}, {"id": "REC-2026-002", "sesion": "S01", "ambito": "02 Producto y servicio", "texto": "Presentar al consejo la apuesta de mantenimiento predictivo con límites de inversión por etapa. (iniciativas: IA-2026-002)", "destinatario": "Patrocinadora de IA-2026-002", "estado": "pendiente", "fecha": "sin dato (T01 no registra fecha comprometida)", "evidencia": "sin dato", "valoracion": "sin dato (T01 no registra la valoración del consejo asesor)", "panel": "inventario"}], "kpi": {"recs": {"cumplida": 0, "en_curso": 1, "pendiente": 1, "descartada": 0}}, "pal": {"states": ["#3987e5", "#d95926", "#199e70", "#c98500"], "s1": "#199e70", "s2": "#3987e5", "s3": "#d95926", "s4": "#c98500"}}; const esc = s => String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const RE = {cumplida:["ok","Cumplida","✓"],en_curso:["mid","En curso","◑"],pendiente:["ko","Pendiente","○"],descartada:["na","Descartada","✕"]};
+const AMB = [...new Set(D.recs.map(r=>r.ambito))]; const state = {estado:"", ambito:""};
+const PAN = {"inventario": ["cards", "Inventario"], "movimientos": ["cart1", "Movimientos del periodo"], "valor": ["c1", "Eficiencias, retorno y coste"], "semaforo": ["rie1", "Semáforo regulatorio"], "incidentes": ["rie2", "Incidentes y brechas"]};
+function summary(){ const k=D.kpi.recs, n=D.recs.length; document.getElementById("sum").innerHTML = Object.keys(RE).map(e=>`<div class="tile"><div class="n">${k[e]}</div><div class="l">${RE[e][1]}${e==="descartada"||e==="en_curso"?"":"s"}</div><div class="meter"><i style="width:${100*k[e]/n}%;background:${e==="cumplida"?"var(--good)":e==="en_curso"?"var(--warn)":e==="pendiente"?"var(--critical)":"var(--mute)"}"></i></div></div>`).join(""); }
+function chips(){ document.getElementById("chips").innerHTML = `<span class="lbl">Estado</span>`+Object.keys(RE).map(e=>`<button class="chip${state.estado===e?" on":""}" data-k="estado" data-v="${e}">${RE[e][1]}</button>`).join("")+`<span class="lbl">Ámbito</span>`+AMB.map(a=>`<button class="chip${state.ambito===a?" on":""}" data-k="ambito" data-v="${a}">${a}</button>`).join("");
+  document.querySelectorAll("#chips .chip").forEach(b=>b.onclick=()=>{ const k=b.dataset.k, v=b.dataset.v; state[k]=state[k]===v?"":v; chips(); render(); }); }
+function render(){ document.getElementById("tl").innerHTML = D.sesiones.map(s=>{ const rs=D.recs.filter(r=>r.sesion===s.id&&(!state.estado||r.estado===state.estado)&&(!state.ambito||r.ambito===state.ambito)); if(!rs.length) return "";
+  return `<div class="ses"><div class="dot"></div><div class="shead"><h2>${s.id} · ${esc(s.nombre)}</h2><div class="sub">${s.fecha} · ${esc(s.tema)} · ${rs.length} recomendaciones</div></div>
+   <div class="cards">${rs.map(r=>{const st=RE[r.estado]; const p=r.panel?PAN[r.panel]:null; return `<article class="rec"><header><span class="id">${r.id}</span><span class="pill na">${r.ambito}</span><span class="pill ${st[0]}" title="Estado declarado por la compañía">${st[2]} ${st[1]}</span></header>
+     <p class="txt">${esc(r.texto)}</p>
+     <dl><dt>Destinatario</dt><dd>${esc(r.destinatario)}</dd><dt>Fecha comprometida</dt><dd>${r.fecha}</dd><dt>Evidencia presentada</dt><dd>${esc(r.evidencia)}</dd><dt>Valoración del consejo asesor</dt><dd>${esc(r.valoracion)}</dd></dl>
+     ${p?`<a class="go" href="t01_Dashboard_Casos_Uso_IA_v7.html#${p[0]}">↗ Ver en el panel: ${p[1]}</a>`:""}</article>`;}).join("")}</div></div>`; }).join(""); }
+summary(); chips(); render();
+</script></body></html>

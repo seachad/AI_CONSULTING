@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marco de auditor&#237;a de IA</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Marco de auditoría de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/38_SEVEN-G_Marco_de_auditoria_de_IA.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/38_SEVEN-G_Marco_de_auditoria_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/38_SEVEN-G_Marco_de_auditoria_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/38_SEVEN-G_Marco_de_auditoria_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 38 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 38 &#183; Marco de auditor&#237;a de IA</p>
+    <h1>Marco de auditor&#237;a de IA</h1>
+    <p class="entradilla">Tipos de auditor&#237;a, independencia, plan basado en riesgo, t&#233;cnicas, hallazgos e informe</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>5</b><span>tipos de auditor&#237;a</span></div><div class="cifra"><b>3</b><span>resultados posibles</span></div><div class="cifra"><b>3</b><span>clases de no conformidad</span></div><div class="cifra"><b>7</b><span>condiciones auditables de la declaraci&#243;n de aplicaci&#243;n</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/38_SEVEN-G_Marco_de_auditoria_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/38_SEVEN-G_Marco_de_auditoria_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/38_SEVEN-G_Marco_de_auditoria_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#principios-de-la-auditoria-de-ia"><span>02</span>Principios de la auditoría de IA</a></li><li><a href="#independencia-y-competencias-del-auditor-de-ia"><span>03</span>Independencia y competencias del auditor de IA</a></li><li><a href="#tipos-de-auditoria"><span>04</span>Tipos de auditoría</a></li><li><a href="#universo-auditable-y-plan-anual-basado-en-riesgo"><span>05</span>Universo auditable y plan anual basado en riesgo</a></li><li><a href="#proceso-y-programa-de-trabajo-tipo"><span>06</span>Proceso y programa de trabajo tipo</a></li><li><a href="#tecnicas-de-auditoria"><span>07</span>Técnicas de auditoría</a></li><li><a href="#resultados-y-clasificacion-de-hallazgos"><span>08</span>Resultados y clasificación de hallazgos</a></li><li><a href="#informe-de-auditoria"><span>09</span>Informe de auditoría</a></li><li><a href="#seguimiento-y-reauditoria"><span>10</span>Seguimiento y reauditoría</a></li><li><a href="#auditoria-de-la-declaracion-de-aplicacion-de-seven-g"><span>11</span>Auditoría de la declaración de aplicación de SEVEN-G</a></li><li><a href="#relacion-con-iso-iec-42001-y-con-la-auditoria-interna-corporativa"><span>12</span>Relación con ISO/IEC 42001 y con la auditoría interna corporativa</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>13</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>14</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>Este documento define cómo se audita la inteligencia artificial en una compañía que aplica SEVEN-G. Su finalidad es dar <strong>aseguramiento objetivo</strong> de que:</p>
+<ul>
+<li>las iniciativas cumplen el ciclo de vida, las evidencias obligatorias y las reglas de decisión;</li>
+<li>los sistemas en producción siguen bajo control y aportan el valor declarado con el estado de validación correcto;</li>
+<li>el marco está implantado en la compañía y funciona de forma eficaz;</li>
+<li>los terceros que prestan servicios de IA cumplen lo exigido;</li>
+<li>la declaración de aplicación de SEVEN-G (01 §14) está respaldada por evidencia.</li>
+</ul>
+<p>Se aplica a los auditores de IA, a la función de auditoría interna y a los auditores externos que actúen en el marco. No define los criterios concretos de cada <em>gate</em> (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) ni las listas de verificación (<a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>), ni el proceso de gestión de no conformidades (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>), a los que remite.</p>
+<h3 id="1-1-que-no-es-este-marco">1.1 Qué no es este marco</h3>
+<ul>
+<li><strong>No es una auditoría de cuentas</strong> ni sustituye a la auditoría legal.</li>
+<li><strong>No es una certificación.</strong> SEVEN-G no certifica. La certificación de un sistema de gestión de IA según ISO/IEC 42001 la emiten entidades de certificación conforme a ISO/IEC 17021-1 e ISO/IEC 42006.</li>
+<li><strong>No es la evaluación de conformidad</strong> del Reglamento (UE) 2024/1689, que corresponde al proveedor del sistema de alto riesgo (artículo 43) y, en su caso, a un organismo notificado.</li>
+<li><strong>No es asesoramiento.</strong> El auditor no diseña los controles que después audita.</li>
+</ul>
+<hr />
+<h2 id="principios-de-la-auditoria-de-ia"><span class="antetitulo">02</span>Principios de la auditoría de IA</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principio</th>
+<th>Qué implica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Independencia</strong></td>
+<td>El auditor no participa en lo que audita ni depende de quien lo patrocina (sección 3).</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Evidencia suficiente y adecuada</strong></td>
+<td>Las conclusiones se apoyan en evidencias verificables, fechadas y conservadas en el expediente.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Validación dual</strong></td>
+<td>Se comprueban a la vez los resultados tangibles y la documentación (01 §7.2). Documentación sin resultados, o resultados sin documentación, no son conformes.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Anterioridad de la evidencia</strong></td>
+<td>Se verifica que las evidencias existían antes de la decisión. La documentación elaborada a posteriori invalida el <em>gate</em> y es no conformidad mayor (01 §7.4).</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Enfoque basado en riesgo</strong></td>
+<td>Se audita más, y con más profundidad, donde el riesgo es mayor (sección 5).</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Escepticismo profesional</strong></td>
+<td>Las métricas de un modelo, las cifras de valor y las declaraciones de un proveedor se contrastan, no se aceptan por su presentación.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Proporcionalidad técnica</strong></td>
+<td>Las pruebas técnicas se ajustan a la tecnología, la autonomía y la clasificación del sistema.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Trazabilidad del hallazgo</strong></td>
+<td>Todo hallazgo identifica el requisito incumplido, la evidencia, la causa, el efecto y la clasificación.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Confidencialidad</strong></td>
+<td>El auditor accede a lo necesario y protege la información, especialmente datos personales y secretos empresariales.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="independencia-y-competencias-del-auditor-de-ia"><span class="antetitulo">03</span>Independencia y competencias del auditor de IA</h2>
+<h3 id="3-1-independencia">3.1 Independencia</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Requisito</th>
+<th>Cómo se comprueba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Organizativa</strong></td>
+<td>La función que aporta auditores de IA depende funcionalmente de la comisión delegada del consejo (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §3.6), no de áreas que patrocinen iniciativas.</td>
+<td>Estatuto de auditoría interna; organigrama.</td>
+</tr>
+<tr>
+<td><strong>Individual</strong></td>
+<td>El auditor no ha tenido rol en la iniciativa ni en el diseño, construcción u operación del sistema; no depende jerárquicamente del patrocinador; no ha asesorado sobre los controles auditados en los doce meses anteriores (30, incompatibilidad I-10).</td>
+<td>Declaración de independencia firmada antes de cada encargo.</td>
+</tr>
+<tr>
+<td><strong>Económica</strong></td>
+<td>Un auditor externo no audita soluciones que ha diseñado, implantado o vendido, ni productos de empresas vinculadas (30, I-11). La retribución no depende del resultado.</td>
+<td>Declaración de relaciones con proveedores; revisión de contratos.</td>
+</tr>
+<tr>
+<td><strong>Rotación</strong></td>
+<td>Se recomienda que un mismo auditor principal no audite el mismo sistema Enterprise más de [tres] ejercicios consecutivos.</td>
+<td>Registro de asignaciones en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+</tr>
+<tr>
+<td><strong>Expertos técnicos</strong></td>
+<td>El auditor puede apoyarse en expertos (ciencia de datos, seguridad ofensiva, jurídico). Los expertos deben cumplir los mismos requisitos de independencia respecto del objeto auditado y trabajan bajo la dirección del auditor, que responde de la conclusión.</td>
+<td>Declaración del experto; programa de trabajo con su alcance.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Amenazas a la independencia y salvaguardas</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Amenaza</th>
+<th>Ejemplo ilustrativo</th>
+<th>Salvaguarda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autorrevisión</td>
+<td>El auditor participó en el diseño del plan de reversión.</td>
+<td>Sustitución del auditor para esa iniciativa.</td>
+</tr>
+<tr>
+<td>Interés propio</td>
+<td>Objetivos del auditor ligados al número de iniciativas en producción.</td>
+<td>Objetivos basados en calidad y cobertura del plan.</td>
+</tr>
+<tr>
+<td>Familiaridad</td>
+<td>El auditor lleva años trabajando con el equipo técnico.</td>
+<td>Rotación; revisión de calidad por otro auditor.</td>
+</tr>
+<tr>
+<td>Intimidación</td>
+<td>Presión del patrocinador para cerrar un <em>gate</em> antes de una fecha.</td>
+<td>Escalado a la comisión delegada (30, E-13); plazos de verificación protegidos.</td>
+</tr>
+<tr>
+<td>Dependencia del auditado para la evidencia técnica</td>
+<td>El auditor solo dispone de las métricas que calcula el equipo.</td>
+<td>Reejecución independiente o acceso directo a datos y registros.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si la independencia se ve comprometida, el auditor lo comunica antes de iniciar o en cuanto lo detecta, y el responsable de auditoría de IA lo sustituye. Un <em>gate</em> verificado por un auditor no independiente debe verificarse de nuevo.</p>
+<h3 id="3-2-competencias">3.2 Competencias</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Área de competencia</th>
+<th>Auditor de <em>gate</em></th>
+<th>Auditor principal (marco, temáticas)</th>
+<th>Experto técnico de apoyo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Técnicas de auditoría, muestreo y documentación del trabajo</td>
+<td>Sólida</td>
+<td>Avanzada</td>
+<td>Básica</td>
+</tr>
+<tr>
+<td>Marco SEVEN-G (ciclo, <em>gates</em>, roles, medición)</td>
+<td>Sólida</td>
+<td>Avanzada</td>
+<td>Básica</td>
+</tr>
+<tr>
+<td>Reglamento de IA, RGPD y normativa sectorial aplicable</td>
+<td>Suficiente para identificar obligaciones por clasificación y rol</td>
+<td>Sólida</td>
+<td>Según especialidad</td>
+</tr>
+<tr>
+<td>Gestión de riesgos y control interno</td>
+<td>Sólida</td>
+<td>Avanzada</td>
+<td>Básica</td>
+</tr>
+<tr>
+<td>Ciclo de vida de modelos (datos, entrenamiento, validación, degradación)</td>
+<td>Suficiente para leer evaluaciones críticamente</td>
+<td>Sólida</td>
+<td>Avanzada</td>
+</tr>
+<tr>
+<td>IA generativa y agentes (evaluaciones, inyección de instrucciones, permisos, registro de acciones)</td>
+<td>Suficiente</td>
+<td>Sólida</td>
+<td>Avanzada</td>
+</tr>
+<tr>
+<td>Seguridad de la información</td>
+<td>Básica</td>
+<td>Suficiente</td>
+<td>Según especialidad</td>
+</tr>
+<tr>
+<td>Medición del valor (reglas de 00 §6, atribución, estados)</td>
+<td>Sólida</td>
+<td>Avanzada</td>
+<td>Básica</td>
+</tr>
+<tr>
+<td>Gestión de terceros y contratos de IA</td>
+<td>Suficiente</td>
+<td>Sólida</td>
+<td>Según especialidad</td>
+</tr>
+<tr>
+<td>ISO/IEC 42001 y auditoría de sistemas de gestión (ISO 19011)</td>
+<td>Básica</td>
+<td>Sólida</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Comunicación de hallazgos a dirección y consejo</td>
+<td>Suficiente</td>
+<td>Avanzada</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Formación y mantenimiento.</strong> Los auditores de IA siguen el perfil F6 del programa de alfabetización (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §6.2) y deberían dedicar horas anuales específicas a formación en IA, fijadas por la función de auditoría. Las credenciales profesionales de auditoría, de sistemas de información o de gestión de IA son un indicio útil, pero no sustituyen la comprobación de competencia práctica.</p>
+<hr />
+<h2 id="tipos-de-auditoria"><span class="antetitulo">04</span>Tipos de auditoría</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Objeto</th>
+<th>Cuándo</th>
+<th>Quién</th>
+<th>Criterios</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>De <em>gate</em></strong></td>
+<td>Evidencias y resultados de una fase antes de la decisión.</td>
+<td>En todos los <em>gates</em> Enterprise; por muestreo en Lite.</td>
+<td>Auditor de IA asignado a la iniciativa.</td>
+<td>Criterios <code>G&lt;n&gt;.&lt;nn&gt;</code> del <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> y listas <code>LV-G&lt;n&gt;</code> del <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</td>
+<td>Resultado de verificación que se aporta al órgano que decide.</td>
+</tr>
+<tr>
+<td><strong>De continuidad</strong></td>
+<td>Funcionamiento eficaz de los controles de un sistema en producción durante un periodo, y veracidad de la información de R6.</td>
+<td>En las R6 Enterprise (al menos una al año en profundidad) y según el plan en Lite.</td>
+<td>Auditor de IA.</td>
+<td>Criterios <code>R6.&lt;nn&gt;</code> del <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; manual de operación; hipótesis de valor.</td>
+<td>Resultado que se aporta a R6 o adelanta G7.</td>
+</tr>
+<tr>
+<td><strong>Del marco en la compañía</strong></td>
+<td>Diseño y eficacia del gobierno de la IA: órganos, inventario, registro, políticas, riesgos, medición, no conformidades. Incluye la auditoría de la declaración de aplicación (sección 11).</td>
+<td>Anual, en C5; antes de la primera declaración de aplicación.</td>
+<td>Auditoría interna o auditor externo.</td>
+<td>01 completo; documentos 30, 31, 32, 33, 37 y 40; política corporativa aprobada.</td>
+<td>Informe a la comisión delegada y al consejo.</td>
+</tr>
+<tr>
+<td><strong>Temática</strong></td>
+<td>Un riesgo o control transversal a varias iniciativas.</td>
+<td>Según el plan anual.</td>
+<td>Auditor principal con expertos.</td>
+<td>Requisitos del tema en la biblioteca SEVEN-G y regulación aplicable.</td>
+<td>Informe con conclusión por tema y hallazgos por sistema.</td>
+</tr>
+<tr>
+<td><strong>De proveedor</strong></td>
+<td>Cumplimiento por un tercero de los requisitos contractuales y del nivel de exigencia N1–N3.</td>
+<td>N3: al menos anual; N2: según riesgo; N1: por excepción.</td>
+<td>Auditor de IA o de terceros; puede apoyarse en informes independientes.</td>
+<td>Contrato; <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>; evaluación <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Informe que alimenta la reevaluación del proveedor.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Además, se realizan <strong>auditorías de seguimiento</strong> (verificación de acciones correctivas) y <strong>reauditorías</strong> (repetición total o parcial tras un resultado No conforme), descritas en la sección 10.</p>
+<h3 id="4-1-ejemplos-de-auditorias-tematicas">4.1 Ejemplos de auditorías temáticas</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Preguntas de auditoría</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uso no autorizado de IA</td>
+<td>¿Las fuentes de detección están implantadas? ¿Los usos detectados se regularizan en plazo? ¿Coincide T21 con la realidad observada?</td>
+</tr>
+<tr>
+<td>Agentes con capacidad de actuar</td>
+<td>¿Tienen identidad propia, mínimo privilegio, control de intención, registro completo de acciones e interruptor de parada probado?</td>
+</tr>
+<tr>
+<td>Calidad del valor declarado</td>
+<td>¿Los importes tienen fórmula, línea base y estado correcto? ¿Se suma capacidad liberada como ahorro? ¿Hay doble atribución?</td>
+</tr>
+<tr>
+<td>Clasificación regulatoria de la cartera</td>
+<td>¿Las clasificaciones son correctas, justificadas y revisadas con criterio jurídico? ¿Se han aplicado bien las excepciones del artículo 6.3?</td>
+</tr>
+<tr>
+<td>Supervisión humana en decisiones sobre personas</td>
+<td>¿Los supervisores tienen formación, autoridad y tiempo? ¿Hay evidencia de que discrepan del sistema cuando procede?</td>
+</tr>
+<tr>
+<td>Retiradas</td>
+<td>¿Los sistemas retirados están realmente desactivados? ¿Se han tratado datos y modelos según el plan?</td>
+</tr>
+<tr>
+<td>Costes de IA</td>
+<td>¿El coste recurrente registrado coincide con la facturación? ¿El reparto por caso es razonable?</td>
+</tr>
+<tr>
+<td>Alfabetización en IA</td>
+<td>¿Las condiciones de acceso (F1, F3, F4) se cumplen? ¿El programa es eficaz?</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="universo-auditable-y-plan-anual-basado-en-riesgo"><span class="antetitulo">05</span>Universo auditable y plan anual basado en riesgo</h2>
+<h3 id="5-1-universo-auditable">5.1 Universo auditable</h3>
+<p>El universo auditable se construye a partir del <strong>inventario de sistemas de IA</strong> (T02, <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>) y del <strong>registro de iniciativas</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), y se completa con:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Unidad auditable</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cada sistema de IA en desarrollo, piloto o producción</td>
+<td>T02</td>
+</tr>
+<tr>
+<td>Cada iniciativa con <em>gates</em> previstos en el ejercicio</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>Cada proveedor de IA con nivel N2 o N3</td>
+<td>T09</td>
+</tr>
+<tr>
+<td>Los procesos del marco: ciclo corporativo, gestión de cartera, inventario, riesgos, medición, no conformidades, políticas y alfabetización</td>
+<td>Documentos 01, 14, 31, 32, 33, 37, 40</td>
+</tr>
+<tr>
+<td>Los temas transversales identificados por la segunda línea o por incidentes</td>
+<td>Informes de riesgos; T08</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un universo que omite sistemas no inventariados es incompleto: por eso el plan incluye la conciliación del inventario (32 §9) como prueba recurrente de la auditoría del marco.</p>
+<h3 id="5-2-priorizacion-de-sistemas">5.2 Priorización de sistemas</h3>
+<p>Cada sistema del universo se puntúa con los factores siguientes. La tabla es <strong>de referencia</strong> y la compañía puede ajustarla al aprobar el plan.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clasificación regulatoria</td>
+<td>Riesgo mínimo o fuera de ámbito</td>
+<td>Obligaciones de transparencia o excepción del artículo 6.3</td>
+<td>Alto riesgo</td>
+</tr>
+<tr>
+<td>Intensidad</td>
+<td>Lite</td>
+<td>—</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>Autonomía</td>
+<td>A0</td>
+<td>A1</td>
+<td>A2 o A3</td>
+</tr>
+<tr>
+<td>Exposición</td>
+<td>Interna</td>
+<td>Empleados o clientes indirectamente</td>
+<td>Clientes o personas externas directamente</td>
+</tr>
+<tr>
+<td>Riesgo residual principal</td>
+<td>Bajo</td>
+<td>Medio</td>
+<td>Alto o Crítico</td>
+</tr>
+<tr>
+<td>Incidentes y no conformidades en 12 meses</td>
+<td>Ninguno</td>
+<td>S3–S4 o no conformidades menores</td>
+<td>S1–S2 o no conformidades mayores o críticas</td>
+</tr>
+<tr>
+<td>Cambios relevantes desde la última auditoría</td>
+<td>Ninguno</td>
+<td>Cambios menores</td>
+<td>Nuevo modelo, proveedor, finalidad, datos o autonomía</td>
+</tr>
+<tr>
+<td>Materialidad económica (coste recurrente o valor declarado)</td>
+<td>Baja según umbral C2</td>
+<td>Media</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Tiempo desde la última auditoría</td>
+<td>Menos de 12 meses</td>
+<td>12–24 meses</td>
+<td>Más de 24 meses o nunca</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Puntuación</strong> = suma de factores (9 a 27).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Prioridad</th>
+<th>Puntuación</th>
+<th>Cobertura orientativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alta</strong></td>
+<td>21–27, o cualquier sistema de alto riesgo en producción, o con A3 y exposición directa</td>
+<td>Auditoría de continuidad en profundidad al menos anual</td>
+</tr>
+<tr>
+<td><strong>Media</strong></td>
+<td>15–20</td>
+<td>Auditoría de continuidad al menos cada dos años; incluida en temáticas</td>
+</tr>
+<tr>
+<td><strong>Baja</strong></td>
+<td>9–14</td>
+<td>Por muestreo en temáticas o auditoría del marco; al menos cada tres años</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-3-contenido-del-plan-anual">5.3 Contenido del plan anual</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Contenido</th>
+<th>Regla de cobertura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auditorías de <em>gate</em> Enterprise</td>
+<td>Previsión de <em>gates</em> por iniciativa según <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>100 %.</td>
+</tr>
+<tr>
+<td>Auditorías de <em>gate</em> Lite</td>
+<td>Muestra de <em>gates</em> Lite del ejercicio.</td>
+<td>Según la sección 7.4.</td>
+</tr>
+<tr>
+<td>Auditorías de continuidad</td>
+<td>Sistemas de prioridad Alta y los de prioridad Media que corresponda por rotación.</td>
+<td>Sección 5.2.</td>
+</tr>
+<tr>
+<td>Auditoría del marco</td>
+<td>Incluye la declaración de aplicación.</td>
+<td>Anual.</td>
+</tr>
+<tr>
+<td>Temáticas</td>
+<td>Entre una y tres al año según tamaño y riesgos.</td>
+<td>Según riesgos de cartera e incidentes.</td>
+</tr>
+<tr>
+<td>Proveedores</td>
+<td>Proveedores N3 y los N2 seleccionados.</td>
+<td>Sección 4.</td>
+</tr>
+<tr>
+<td>Seguimiento</td>
+<td>Verificación de acciones de hallazgos abiertos.</td>
+<td>100 % de no conformidades mayores y críticas.</td>
+</tr>
+<tr>
+<td>Reserva</td>
+<td>Capacidad no asignada para auditorías no previstas (incidentes S1, requerimientos).</td>
+<td>Orientativamente, entre el 10 % y el 20 % de la capacidad.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Aprobación y seguimiento.</strong> Auditoría interna propone el plan; la comisión delegada lo aprueba (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.5) y recibe su grado de ejecución cada trimestre. Si la capacidad no alcanza para cubrir los sistemas de prioridad Alta, la limitación se comunica expresamente a la comisión, que decide si amplía recursos o acepta el riesgo.</p>
+<hr />
+<h2 id="proceso-y-programa-de-trabajo-tipo"><span class="antetitulo">06</span>Proceso y programa de trabajo tipo</h2>
+<figure class="grafico"><div class="g-titulo">Proceso de una auditor&#237;a de IA</div><div class="g-sub">Del plan al cierre verificado de los hallazgos</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  PL["Planificación y alcance"] --> CA["Trabajo de campo y pruebas"]
+  CA --> HA["Hallazgos contrastados con el auditado"]
+  HA --> IN["Informe y resultado"]
+  IN --> R{"Resultado"}
+  R -->|"Conforme"| CI["Cierre del expediente"]
+  R -->|"Conforme con observaciones"| SE["Seguimiento de acciones"]
+  R -->|"No conforme"| RA["Acciones y reauditoría"]
+  SE --> CI
+  RA --> CA
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class CI ok
+  class PL,CA,HA,IN,SE med
+  class RA ko
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<h3 id="6-1-programa-de-trabajo-tipo">6.1 Programa de trabajo tipo</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Actividades</th>
+<th>Producto</th>
+<th>Plazo orientativo (auditoría de continuidad o temática)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Planificación</strong></td>
+<td>Confirmar independencia; delimitar objetivo, alcance, periodo y criterios; revisar ficha de inventario, registro de riesgos, incidentes, auditorías previas; identificar riesgos clave; diseñar pruebas y muestras; solicitar información.</td>
+<td>Memorando de planificación y programa de pruebas</td>
+<td>1–2 semanas</td>
+</tr>
+<tr>
+<td><strong>2. Reunión de apertura</strong></td>
+<td>Presentar alcance, calendario, necesidades de acceso y contactos.</td>
+<td>Acta breve</td>
+<td>1 día</td>
+</tr>
+<tr>
+<td><strong>3. Trabajo de campo</strong></td>
+<td>Ejecutar las pruebas de la sección 7; documentar cada prueba con objetivo, población, muestra, procedimiento, resultado y conclusión.</td>
+<td>Papeles de trabajo</td>
+<td>1–4 semanas</td>
+</tr>
+<tr>
+<td><strong>4. Contraste de hallazgos</strong></td>
+<td>Comunicar cada hallazgo al responsable para confirmar hechos (no para negociar la clasificación).</td>
+<td>Hallazgos contrastados</td>
+<td>Continuo; cierre en 3 días hábiles</td>
+</tr>
+<tr>
+<td><strong>5. Reunión de cierre</strong></td>
+<td>Presentar hallazgos, clasificación y resultado provisional.</td>
+<td>Acta</td>
+<td>1 día</td>
+</tr>
+<tr>
+<td><strong>6. Informe</strong></td>
+<td>Borrador; respuesta de la dirección con acciones, responsables y plazos; informe final.</td>
+<td>Informe (sección 9)</td>
+<td>Borrador: 10 días hábiles tras el cierre · Respuesta: 10 días hábiles · Final: 5 días hábiles</td>
+</tr>
+<tr>
+<td><strong>7. Registro</strong></td>
+<td>Alta de no conformidades en T08; resultado en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>/T03; archivo del expediente.</td>
+<td>Registros</td>
+<td>Con el informe final</td>
+</tr>
+<tr>
+<td><strong>8. Seguimiento</strong></td>
+<td>Verificación de acciones (sección 10).</td>
+<td>Nota de seguimiento</td>
+<td>Según plazos de las acciones</td>
+</tr>
+</tbody>
+</table></div>
+<p>En las <strong>auditorías de <em>gate</em></strong>, las etapas se comprimen para respetar el plazo de decisión del <em>gate</em> (03 §3.6: 5 días hábiles en Lite y 10 en Enterprise desde la solicitud). Como referencia, la verificación Enterprise debería concluir en un máximo de 7 días hábiles desde que las evidencias están completas, para que el órgano decida en plazo. Si las evidencias están incompletas, el plazo no empieza a contar (01 §7.1).</p>
+<h3 id="6-2-programa-de-la-auditoria-de-gate">6.2 Programa de la auditoría de <em>gate</em></h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Prueba</th>
+<th>Qué se comprueba</th>
+<th>Técnica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Completitud</td>
+<td>Todas las evidencias obligatorias de la fase (01 §6.10) existen, o su ausencia está justificada como No aplica.</td>
+<td>Revisión de evidencias contra <code>LV-G&lt;n&gt;</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Trazabilidad</td>
+<td>Cada evidencia tiene autor, fecha, versión y verificación.</td>
+<td>Revisión de metadatos</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Anterioridad</td>
+<td>Las evidencias existían antes de la solicitud del <em>gate</em> y no se crearon para justificar un avance ya producido.</td>
+<td>Historial de versiones del repositorio; comparación con eventos de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; entrevistas</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Resultados tangibles</td>
+<td>Los resultados declarados (métricas de piloto, línea base, pruebas) se sostienen con datos.</td>
+<td>Reejecución o recálculo sobre muestra</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Criterios del <em>gate</em></td>
+<td>Cada criterio <code>G&lt;n&gt;.&lt;nn&gt;</code> aplicable está en Cumple con evidencia válida.</td>
+<td>Revisión y pruebas según 21</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Criterios por ambición</td>
+<td>Se aplican los criterios de Optimizar, Aumentar o Transformar (01 §7.6).</td>
+<td>Revisión</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Separación de funciones</td>
+<td>Autor, verificador y decisor son personas distintas y sin incompatibilidades (30 §5).</td>
+<td>Revisión de <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> y T03</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Condiciones previas</td>
+<td>Las condiciones del <em>gate</em> anterior están cumplidas o se ha aplicado la regla de condición vencida.</td>
+<td>Revisión de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Clasificación y riesgo</td>
+<td>Clasificación regulatoria e intensidad vigentes; riesgos residuales aceptados por el nivel correcto (30 §7.2).</td>
+<td>Revisión de <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> y <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Controles críticos</td>
+<td>En G4 y G5: supervisión humana, mecanismo de parada, seguridad y reversión diseñados o probados.</td>
+<td>Revisión, observación, reejecución</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Firma multinivel</td>
+<td>En G5 Enterprise: firmas de técnico, riesgos y cumplimiento, seguridad y protección de datos, sin veto pendiente.</td>
+<td>Revisión de <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-3-programa-de-la-auditoria-de-continuidad">6.3 Programa de la auditoría de continuidad</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Área</th>
+<th>Pruebas principales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Inventario</td>
+<td>La ficha refleja la realidad (versión, proveedor, datos, autonomía, responsables).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Clasificación</td>
+<td>La clasificación y la intensidad siguen siendo válidas ante los cambios del periodo.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Monitorización</td>
+<td>Las alertas configuradas existen, se disparan en pruebas y se atienden en plazo (muestra de alertas).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Rendimiento y degradación</td>
+<td>Reejecución de métricas en una muestra reciente frente a los umbrales aprobados.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Supervisión humana</td>
+<td>Muestra de decisiones: la supervisión definida se ejerce; hay evidencia de revisión y de discrepancias cuando procede.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Incidentes y cambios</td>
+<td>Muestra de incidentes y cambios: registrados, clasificados, gestionados y comunicados según 37 y el control de cambios.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Agentes</td>
+<td>Permisos frente a mínimo privilegio; completitud del registro de acciones; interruptor de parada probado en el periodo.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Valor</td>
+<td>Recálculo del valor realizado; estado de validación correcto; capacidad liberada no sumada como ahorro.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Coste</td>
+<td>Conciliación del coste recurrente con facturación y reparto.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Cumplimiento</td>
+<td>Obligaciones vigentes según clasificación y rol (por ejemplo, transparencia implantada, registros conservados el periodo exigido, información a trabajadores).</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Revisiones R6</td>
+<td>Se han realizado en plazo y sus conclusiones son coherentes con la evidencia.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="tecnicas-de-auditoria"><span class="antetitulo">07</span>Técnicas de auditoría</h2>
+<h3 id="7-1-tecnicas-generales">7.1 Técnicas generales</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Descripción</th>
+<th>Uso típico</th>
+<th>Fuerza de la evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Revisión de evidencias</strong></td>
+<td>Examen de documentos y registros frente a criterios.</td>
+<td>Completitud, trazabilidad, coherencia.</td>
+<td>Media; alta si la fuente es independiente del auditado.</td>
+</tr>
+<tr>
+<td><strong>Indagación</strong></td>
+<td>Entrevistas con el equipo y los usuarios.</td>
+<td>Entender el proceso; detectar discrepancias.</td>
+<td>Baja por sí sola; debe corroborarse.</td>
+</tr>
+<tr>
+<td><strong>Observación</strong></td>
+<td>Presenciar la ejecución de un control o proceso.</td>
+<td>Prueba de reversión, activación del interruptor, supervisión humana.</td>
+<td>Media; limitada al momento observado.</td>
+</tr>
+<tr>
+<td><strong>Inspección de configuraciones</strong></td>
+<td>Revisión directa de permisos, parámetros, alertas, versiones.</td>
+<td>Agentes, monitorización, controles de acceso.</td>
+<td>Alta.</td>
+</tr>
+<tr>
+<td><strong>Reejecución</strong></td>
+<td>El auditor ejecuta de nuevo, con sus propios medios, un cálculo, prueba o control.</td>
+<td>Métricas de modelos, cálculos de valor, pruebas de seguridad.</td>
+<td>Alta.</td>
+</tr>
+<tr>
+<td><strong>Análisis de datos</strong></td>
+<td>Análisis del total de la población con herramientas (registros, eventos, facturación).</td>
+<td>Completitud del registro de acciones, tiempos de <em>gate</em>, uso no autorizado.</td>
+<td>Alta; evita el riesgo de muestreo.</td>
+</tr>
+<tr>
+<td><strong>Confirmación externa</strong></td>
+<td>Información obtenida directamente de un tercero.</td>
+<td>Proveedores, condiciones de uso de datos, subencargados.</td>
+<td>Alta si la fuente es fiable.</td>
+</tr>
+<tr>
+<td><strong>Análisis forense de versiones</strong></td>
+<td>Revisión de historiales de edición y metadatos.</td>
+<td>Detectar documentación elaborada a posteriori.</td>
+<td>Alta si los registros son íntegros.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-2-muestreo">7.2 Muestreo</h3>
+<p>Siempre que sea posible, el auditor <strong>analiza la población completa</strong> con técnicas de análisis de datos. Cuando no lo es, usa muestreo con tamaños justificados.</p>
+<p><strong>Muestreo de atributos para controles</strong> (¿el control se cumple en cada elemento?). Con la hipótesis de <strong>cero desviaciones esperadas</strong>, el tamaño mínimo para concluir con un nivel de confianza <em>C</em> que la tasa real de incumplimiento no supera una tasa tolerable <em>T</em> es:</p>
+<p><em>n = ln(1 − C) ÷ ln(1 − T)</em>, redondeado al alza.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Confianza</th>
+<th>Tasa tolerable</th>
+<th>Tamaño de muestra</th>
+<th>Uso orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90 %</td>
+<td>20 %</td>
+<td>11</td>
+<td><em>Gates</em> Lite de bajo riesgo; controles de riesgo bajo</td>
+</tr>
+<tr>
+<td>95 %</td>
+<td>20 %</td>
+<td>14</td>
+<td>Controles de riesgo moderado con población reducida</td>
+</tr>
+<tr>
+<td>90 %</td>
+<td>10 %</td>
+<td>22</td>
+<td>Fichas de inventario de uso corporativo</td>
+</tr>
+<tr>
+<td>95 %</td>
+<td>10 %</td>
+<td>29</td>
+<td>Controles relevantes: fichas de sistemas en producción, decisiones con supervisión humana, alertas</td>
+</tr>
+<tr>
+<td>95 %</td>
+<td>5 %</td>
+<td>59</td>
+<td>Controles críticos: acciones de agentes con efecto externo, accesos privilegiados</td>
+</tr>
+<tr>
+<td>99 %</td>
+<td>5 %</td>
+<td>90</td>
+<td>Controles críticos con alta exposición o antecedentes de incidentes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas:</p>
+<ol>
+<li><strong>Poblaciones pequeñas.</strong> Si la población <em>N</em> es reducida, puede aplicarse la corrección <em>n' = n ÷ (1 + (n − 1) ÷ N)</em>, redondeada al alza. Por ejemplo, con <em>n</em> = 29 y <em>N</em> = 100, <em>n'</em> = 23. Si <em>N</em> es igual o menor que la muestra, se revisa la población completa.</li>
+<li><strong>Si aparece una desviación</strong> en una muestra diseñada con cero desviaciones esperadas, el auditor no puede concluir que el control funciona al nivel planificado. Evalúa la causa y la naturaleza de la desviación: si es sistemática, es hallazgo; ampliar la muestra solo es válido si se replanifica con una tasa esperada distinta de cero y se documenta.</li>
+<li><strong>Selección aleatoria</strong> o sistemática con arranque aleatorio, documentando la semilla o el método. La selección por criterio (casos de mayor riesgo) es válida para detectar problemas, pero no permite extrapolar.</li>
+<li><strong>Controles periódicos</strong> (por ejemplo, revisiones trimestrales o mensuales): como referencia práctica habitual, no estadística, se revisan 1 de 1 anual, 2 de 4 trimestrales, 2 a 5 de 12 mensuales, 5 a 15 semanales y 20 a 40 diarias o múltiples al día. El auditor puede aumentar estos tamaños según el riesgo.</li>
+</ol>
+<p><strong>Muestreo para estimar proporciones en resultados de modelos</strong> (por ejemplo, porcentaje de respuestas incorrectas de un asistente de IA generativa revisadas por personas). Para estimar una proporción con un margen de error <em>e</em> y confianza del 95 %, en el caso más desfavorable (proporción del 50 %):</p>
+<p><em>n = 1,96² × 0,5 × 0,5 ÷ e²</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Margen de error</th>
+<th>Tamaño de muestra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>± 10 puntos</td>
+<td>97</td>
+</tr>
+<tr>
+<td>± 5 puntos</td>
+<td>385</td>
+</tr>
+<tr>
+<td>± 3 puntos</td>
+<td>1.068</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si se dispone de una estimación previa de la proporción, el tamaño se reduce. Para detectar diferencias entre grupos (por ejemplo, en pruebas de sesgo) debe calcularse el tamaño por grupo, no solo el total.</p>
+<h3 id="7-3-pruebas-tecnicas-de-modelos-y-agentes">7.3 Pruebas técnicas de modelos y agentes</h3>
+<p>Las pruebas técnicas deben realizarse <strong>sin alterar la producción</strong>: en entornos de prueba equivalentes o con autorización expresa, con datos minimizados y con conocimiento del responsable de operación. El auditor documenta la versión exacta del sistema probado.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tecnología</th>
+<th>Prueba</th>
+<th>Qué se busca</th>
+<th>Referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Reejecución de métricas en un conjunto reservado que el equipo no ha usado para ajustar el modelo, o en una muestra reciente de producción con resultado conocido.</td>
+<td>Que el rendimiento declarado se reproduce y cumple los umbrales aprobados en G5.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Análisis de deriva de datos y de rendimiento en el periodo.</td>
+<td>Degradación no detectada o no atendida.</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Métricas de rendimiento por grupos relevantes.</td>
+<td>Diferencias no justificadas entre grupos, con los umbrales definidos en el diseño.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Reproducibilidad: versión de datos, código y modelo.</td>
+<td>Que el modelo en producción es el validado.</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Conjunto de evaluación propio del auditor (casos representativos y adversariales), con revisión humana ciega de una muestra (tamaños de 7.2).</td>
+<td>Exactitud, fundamentación en fuentes, respuestas inventadas, contenido inadecuado, coherencia con la política.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Pruebas de fuga de información.</td>
+<td>Revelación de instrucciones de sistema, datos de otros usuarios o información confidencial.</td>
+<td>Documento 35</td>
+</tr>
+<tr>
+<td></td>
+<td>Pruebas de inyección de instrucciones directas e indirectas (a través de documentos, correos o páginas).</td>
+<td>Que las defensas diseñadas funcionan.</td>
+<td>Documento 35, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Transparencia.</td>
+<td>Que se informa de la interacción con IA y se marca el contenido cuando aplica (artículo 50).</td>
+<td>Documento 32</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Inventario de identidades, credenciales y permisos frente a las acciones necesarias.</td>
+<td>Permisos excesivos; credenciales compartidas o sin rotar.</td>
+<td>Documento 35, T10</td>
+</tr>
+<tr>
+<td></td>
+<td>Completitud del registro de acciones: acciones registradas frente a acciones ejecutadas según los sistemas destino.</td>
+<td>Acciones sin trazabilidad o sin intención registrada.</td>
+<td>Documento 35</td>
+</tr>
+<tr>
+<td></td>
+<td>Prueba del control de intención con solicitudes fuera de mandato.</td>
+<td>Que el agente rechaza o eleva lo que no está autorizado.</td>
+<td>Documento 35</td>
+</tr>
+<tr>
+<td></td>
+<td>Prueba del interruptor de parada.</td>
+<td>Que detiene el agente en el tiempo diseñado y deja un estado consistente.</td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Muestra de acciones sensibles.</td>
+<td>Que existe validación humana cuando el diseño la exige.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+</tr>
+<tr>
+<td><strong>Todas</strong></td>
+<td>Prueba de reversión observada o evidencia de su ejecución en el periodo.</td>
+<td>Que la reversión es posible en el tiempo previsto.</td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Conciliación de consumo y coste.</td>
+<td>Coste real frente a registrado.</td>
+<td>Documento 42</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cuando las pruebas requieran capacidades especializadas (por ejemplo, pruebas de intrusión sobre agentes), el auditor puede <strong>basarse en el trabajo de un tercero</strong> si comprueba su independencia, competencia, alcance y fecha, y revisa sus resultados. No puede basarse en pruebas realizadas por el propio equipo constructor sin reejecutar al menos una parte.</p>
+<hr />
+<h2 id="resultados-y-clasificacion-de-hallazgos"><span class="antetitulo">08</span>Resultados y clasificación de hallazgos</h2>
+<h3 id="8-1-clases-de-hallazgo">8.1 Clases de hallazgo</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Clase</th>
+<th>Definición</th>
+<th>Ejemplos ilustrativos</th>
+<th>Tratamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Observación</strong></td>
+<td>No es un incumplimiento; es un riesgo de incumplimiento futuro o una oportunidad de mejora.</td>
+<td>Plantilla correcta pero difícil de mantener; alerta con umbral poco sensible aunque dentro de lo aprobado.</td>
+<td>Recomendación; la dirección decide si actúa. Se revisa en la siguiente auditoría.</td>
+</tr>
+<tr>
+<td><strong>No conformidad menor</strong></td>
+<td>Incumplimiento de un requisito obligatorio sin impacto en la decisión ni en el control del riesgo.</td>
+<td>Evidencia incompleta sin efecto en la decisión; retraso en la actualización del inventario; ficha con un campo obligatorio vacío.</td>
+<td>Acción antes del siguiente <em>gate</em> o revisión (01 §12).</td>
+</tr>
+<tr>
+<td><strong>No conformidad mayor</strong></td>
+<td>Incumplimiento que afecta a la validez de una decisión, a la eficacia de un control relevante o a la fiabilidad de la información.</td>
+<td>Evidencias elaboradas a posteriori; autoaprobación; condición vencida en un control relevante; revisión de continuidad omitida; valor declarado como validado sin validación; excepción vencida.</td>
+<td>Contención en 10 días; plan en 30 días (01 §12).</td>
+</tr>
+<tr>
+<td><strong>No conformidad crítica</strong></td>
+<td>Incumplimiento que expone a la compañía a un daño grave, a un incumplimiento legal relevante o a la pérdida de control de un sistema.</td>
+<td>Sistema en producción sin <em>gate</em> aprobado; práctica prohibida; incidente grave sin notificar; control crítico desactivado; agente con capacidad de actuar sin interruptor de parada.</td>
+<td>Contención inmediata, máximo 48 horas, incluida la parada si es necesario; plan en 10 días; informe a la comisión delegada (01 §12).</td>
+</tr>
+</tbody>
+</table></div>
+<p>La clasificación definitiva y el proceso de contención, causa raíz, acción correctiva y cierre se rigen por el <strong><a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a></strong>. Los plazos son de referencia y la compañía puede ajustarlos en C2 sin superar los que fije la regulación.</p>
+<p><strong>Reglas de agregación</strong></p>
+<ol>
+<li>Varias no conformidades menores sobre <strong>el mismo requisito en el mismo sistema</strong> que, en conjunto, afectan a la decisión o al control, se clasifican como una <strong>mayor</strong>.</li>
+<li>La misma no conformidad menor repetida en <strong>tres o más iniciativas</strong> en un ejercicio indica un fallo del marco y se registra, además, como <strong>mayor en la auditoría del marco</strong>.</li>
+<li>Una no conformidad mayor <strong>no corregida en plazo</strong> se reclasifica como crítica si el riesgo que controla es Alto o Crítico.</li>
+<li><strong>Reincidencia:</strong> una no conformidad menor que se repite <strong>tres veces en doce meses</strong> en la misma iniciativa o proceso se clasifica como <strong>mayor</strong> (37 §3.3).</li>
+</ol>
+<h3 id="8-2-resultado-de-la-auditoria">8.2 Resultado de la auditoría</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Cuándo</th>
+<th>Consecuencia en un <em>gate</em></th>
+<th>Consecuencia en otras auditorías</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Conforme</strong></td>
+<td>Sin no conformidades. Puede haber observaciones.</td>
+<td>El órgano puede decidir cualquier resultado, incluido Continuar.</td>
+<td>Cierre del expediente.</td>
+</tr>
+<tr>
+<td><strong>Conforme con observaciones</strong></td>
+<td>Solo no conformidades menores, con o sin observaciones.</td>
+<td>El órgano puede decidir Continuar o Continuar con condiciones; las no conformidades menores se convierten en condiciones con plazo y responsable.</td>
+<td>Seguimiento de acciones.</td>
+</tr>
+<tr>
+<td><strong>No conforme</strong></td>
+<td>Al menos una no conformidad mayor o crítica; en la verificación de un <em>gate</em>, falta alguna evidencia obligatoria o alguna evidencia no es válida.</td>
+<td>La solicitud vuelve al equipo <strong>sin decisión</strong> (01 §7.4, regla 2; 21 §10.2): el órgano no decide Continuar, Continuar con condiciones, Iterar, Pivotar ni Parar sobre evidencias no verificadas, salvo que el equipo retire la solicitud y proponga parar.</td>
+<td>Plan de acción y reauditoría. En R6, adelanta G7 si afecta a controles del sistema.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Además de lo anterior, y aunque el resultado sea Conforme con observaciones, <strong>no se admite Continuar con condiciones</strong> cuando la no conformidad menor afecta a controles críticos de seguridad, cumplimiento legal o supervisión humana (01 §7.3); en ese caso el auditor lo indica expresamente.</p>
+<p>El resultado de auditoría <strong>no es la decisión del <em>gate</em></strong>: es la verificación sobre la que decide el órgano competente. El auditor no recomienda si la iniciativa debe continuar por su valor de negocio.</p>
+<hr />
+<h2 id="informe-de-auditoria"><span class="antetitulo">09</span>Informe de auditoría</h2>
+<h3 id="9-1-estructura">9.1 Estructura</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sección</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Identificación</strong></td>
+<td>Código de auditoría (se propone <code>AUD-AAAA-NNN</code>), tipo, objeto (sistema <code>SIA-AAAA-NNN</code>, iniciativa <code>IA-AAAA-NNN</code>, proveedor o proceso), periodo auditado, fechas, auditor principal, expertos, destinatarios, versión del informe.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Resumen para la dirección</strong></td>
+<td>Resultado (Conforme, Conforme con observaciones, No conforme); número de hallazgos por clase; tres mensajes principales en lenguaje no técnico; riesgos para la compañía si no se actúa.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Objetivo, alcance y criterios</strong></td>
+<td>Qué se auditó y qué no; criterios aplicados (códigos <code>G&lt;n&gt;.&lt;nn&gt;</code>, <code>R6.&lt;nn&gt;</code>, documentos y normas).</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Limitaciones</strong></td>
+<td>Información no disponible, accesos denegados, pruebas no realizadas y su efecto en la conclusión.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Metodología</strong></td>
+<td>Técnicas, poblaciones, tamaños de muestra y método de selección; pruebas técnicas realizadas y versión del sistema.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Hallazgos</strong></td>
+<td>Tabla por hallazgo (9.2).</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Observaciones</strong></td>
+<td>Relación de observaciones y recomendaciones.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Seguimiento de hallazgos anteriores</strong></td>
+<td>Estado de las acciones de auditorías previas.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Respuesta de la dirección</strong></td>
+<td>Acciones, responsables y plazos por hallazgo; discrepancias, si las hay, con la posición del auditor.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Conclusión</strong></td>
+<td>Opinión del auditor y resultado.</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Anexos</strong></td>
+<td>Evidencias revisadas, muestras, resultados de pruebas técnicas, declaración de independencia.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Para las <strong>auditorías de <em>gate</em></strong> se usa una versión abreviada integrada en el registro de decisión (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>) y en T03: resultado, criterios en No cumple o Pendiente, hallazgos y limitaciones.</p>
+<h3 id="9-2-ficha-de-hallazgo">9.2 Ficha de hallazgo</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Código</td>
+<td><code>H-01</code>, <code>H-02</code>… dentro del informe; las no conformidades se registran además en T08 con código <code>NC-AAAA-NNN</code>.</td>
+</tr>
+<tr>
+<td>Título</td>
+<td>Frase breve y descriptiva.</td>
+</tr>
+<tr>
+<td>Condición</td>
+<td>Qué se ha encontrado, con hechos y cifras.</td>
+</tr>
+<tr>
+<td>Criterio</td>
+<td>Requisito incumplido, con su referencia exacta.</td>
+</tr>
+<tr>
+<td>Causa</td>
+<td>Por qué ocurre (análisis preliminar; el análisis de causa raíz completo corresponde al proceso de 37).</td>
+</tr>
+<tr>
+<td>Efecto</td>
+<td>Consecuencia real o potencial: decisión afectada, riesgo, cumplimiento, valor.</td>
+</tr>
+<tr>
+<td>Evidencia</td>
+<td>Referencias a papeles de trabajo.</td>
+</tr>
+<tr>
+<td>Clasificación</td>
+<td>Observación · No conformidad menor · mayor · crítica.</td>
+</tr>
+<tr>
+<td>Recomendación</td>
+<td>Qué debería corregirse (no cómo diseñarlo en detalle).</td>
+</tr>
+<tr>
+<td>Acción de la dirección</td>
+<td>Acción, responsable y plazo.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-3-distribucion">9.3 Distribución</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo de auditoría</th>
+<th>Destinatarios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De <em>gate</em></td>
+<td>Órgano que decide el <em>gate</em>, patrocinador, responsable de producto, responsable de riesgos, Oficina de IA.</td>
+</tr>
+<tr>
+<td>De continuidad</td>
+<td>Patrocinador, responsable de operación, responsable de riesgos, comité de IA si el resultado es No conforme.</td>
+</tr>
+<tr>
+<td>Del marco</td>
+<td>Comité de IA, comisión delegada; resumen al consejo en C5.</td>
+</tr>
+<tr>
+<td>Temática</td>
+<td>Comité de IA, comisión delegada, responsables de los sistemas afectados.</td>
+</tr>
+<tr>
+<td>De proveedor</td>
+<td>Responsable de la relación con el proveedor, segunda línea, comité de IA si es N3.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Toda no conformidad crítica se comunica <strong>antes del informe</strong>, en cuanto se confirma, por la vía de escalado del <a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> (E-5).</p>
+<hr />
+<h2 id="seguimiento-y-reauditoria"><span class="antetitulo">10</span>Seguimiento y reauditoría</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Actividad</th>
+<th>Quién</th>
+<th>Cuándo</th>
+<th>Criterio de cierre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Observación</strong></td>
+<td>Revisión en la siguiente auditoría.</td>
+<td>Auditor de IA</td>
+<td>Siguiente auditoría del objeto</td>
+<td>La dirección ha decidido y registrado si actúa.</td>
+</tr>
+<tr>
+<td><strong>No conformidad menor</strong></td>
+<td>Verificación documental de la acción.</td>
+<td>Auditor de IA u Oficina de IA en Lite</td>
+<td>Antes del siguiente <em>gate</em> o revisión</td>
+<td>Evidencia de la corrección.</td>
+</tr>
+<tr>
+<td><strong>No conformidad mayor</strong></td>
+<td>Verificación de la acción y de su <strong>eficacia</strong>.</td>
+<td>Auditor de IA</td>
+<td>Al vencer el plazo del plan</td>
+<td>Corrección, acción sobre la causa raíz y evidencia de que el control funciona durante un periodo razonable.</td>
+</tr>
+<tr>
+<td><strong>No conformidad crítica</strong></td>
+<td>Verificación de la contención inmediata y, después, de la acción y su eficacia.</td>
+<td>Auditor de IA; cierre por el comité de IA (30 §7.5)</td>
+<td>Contención: en cuanto se comunique; acción: al vencer el plan</td>
+<td>Igual que la mayor, con prueba técnica cuando proceda.</td>
+</tr>
+<tr>
+<td><strong>Resultado No conforme</strong></td>
+<td><strong>Reauditoría</strong> de las áreas afectadas y de las relacionadas.</td>
+<td>Auditor de IA, preferentemente el mismo</td>
+<td>Cuando la dirección comunique que las acciones están implantadas</td>
+<td>Nuevo resultado Conforme o Conforme con observaciones.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas:</p>
+<ol>
+<li><strong>Cerrar no es implantar.</strong> Una acción implantada sin evidencia de eficacia no cierra una no conformidad mayor o crítica.</li>
+<li><strong>Acciones vencidas.</strong> Se escalan según 30 §8.2 y figuran en el informe trimestral a la comisión delegada.</li>
+<li><strong>Aceptación del riesgo en lugar de corregir.</strong> Solo es posible si el órgano con nivel suficiente (30 §7.2) acepta expresamente el riesgo residual y el incumplimiento no es legal; el auditor registra la aceptación y cierra el hallazgo como &quot;riesgo aceptado&quot;, no como &quot;corregido&quot;.</li>
+<li><strong>Reauditoría en <em>gates</em>.</strong> Tras un No conforme en un <em>gate</em>, la solicitud vuelve al equipo sin decisión y, una vez corregidas las evidencias, la iniciativa vuelve a solicitar el <em>gate</em>; la nueva verificación cuenta como iteración (01 §7.4, regla 5).</li>
+</ol>
+<hr />
+<h2 id="auditoria-de-la-declaracion-de-aplicacion-de-seven-g"><span class="antetitulo">11</span>Auditoría de la declaración de aplicación de SEVEN-G</h2>
+<p>Una compañía puede declarar que aplica SEVEN-G cuando cumple las condiciones mínimas de 01 §14. La declaración es <strong>responsabilidad de la compañía</strong> y no constituye una certificación. Este marco establece cómo auditarla para que sea creíble.</p>
+<h3 id="11-1-cuando-y-quien">11.1 Cuándo y quién</h3>
+<ul>
+<li><strong>Antes de la primera declaración</strong> y, después, <strong>anualmente en C5</strong>.</li>
+<li>Por <strong>auditoría interna</strong> o por un <strong>auditor externo independiente</strong> que no haya participado en la implantación del marco en la compañía en los doce meses anteriores.</li>
+<li>Si la compañía comunica la declaración a terceros (clientes, supervisores, inversores), SEVEN-G recomienda que la auditoría sea externa o que auditoría interna cuente con revisión de calidad externa.</li>
+</ul>
+<h3 id="11-2-criterios-evidencias-y-pruebas">11.2 Criterios, evidencias y pruebas</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Condición de 01 §14</th>
+<th>Evidencias requeridas</th>
+<th>Pruebas mínimas</th>
+<th>Clasificación si no se cumple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1.</strong> C1 y C2 completados; tesis, ambición por esfera y apetito de riesgo aprobados por el consejo.</td>
+<td>Actas del consejo; documento de tesis y apetito (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>); diagnóstico de C1.</td>
+<td>Revisión de actas y fechas; coherencia de los umbrales usados en la cartera con los aprobados.</td>
+<td>Crítica (no puede declararse)</td>
+</tr>
+<tr>
+<td><strong>2.</strong> Inventario con clasificación regulatoria, intensidad y responsable; registro de iniciativas con trazabilidad de 01 §6.11.</td>
+<td>T02 y <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; indicadores de calidad (32 §8).</td>
+<td>Conciliación del inventario con fuentes independientes (32 §9); muestra de fichas (95 %/10 %: 29) frente a la realidad; muestra de iniciativas con eventos de fase y <em>gate</em>.</td>
+<td>Mayor; crítica si hay sistemas de alto riesgo sin inventariar</td>
+</tr>
+<tr>
+<td><strong>3.</strong> Roles y órganos asignados con las incompatibilidades de 01 §8.2.</td>
+<td>Mandatos (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a>); <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> de las iniciativas.</td>
+<td>Revisión de mandatos; análisis del total de asignaciones en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> para detectar incompatibilidades.</td>
+<td>Mayor</td>
+</tr>
+<tr>
+<td><strong>4.</strong> Todas las iniciativas nuevas recorren el ciclo con <em>gates</em> registrados.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>Análisis del total: iniciativas dadas de alta tras la adopción sin G0 o con saltos de fase; muestra de <em>gates</em> con pruebas de la sección 6.2 (incluida anterioridad).</td>
+<td>Mayor; crítica si hay sistemas en producción sin G5</td>
+</tr>
+<tr>
+<td><strong>5.</strong> Todas las iniciativas en producción tienen revisión de continuidad vigente.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; actas de R6.</td>
+<td>Análisis del total de fechas de R6 frente a la periodicidad; muestra de R6 para comprobar su contenido.</td>
+<td>Mayor</td>
+</tr>
+<tr>
+<td><strong>6.</strong> Aplica las reglas de medición del valor y reporta al consejo con el panel.</td>
+<td>Panel del consejo; T12; actas.</td>
+<td>Muestra de casos: fórmula, estado de validación, capacidad liberada, atribución única (reglas de 00 §6); comprobación de que el consejo recibe el panel en C4.</td>
+<td>Mayor</td>
+</tr>
+<tr>
+<td><strong>7.</strong> Gestiona las no conformidades con el proceso de 01 §12.</td>
+<td>T08; informes a la comisión delegada.</td>
+<td>Análisis del total de no conformidades: clasificación, plazos de contención y plan, cierre con eficacia.</td>
+<td>Mayor</td>
+</tr>
+</tbody>
+</table></div>
+<p>Adicionalmente, se verifica la <strong>regularización de las iniciativas anteriores</strong> a la adopción en el plazo aprobado en C2 (01 §14, último párrafo).</p>
+<h3 id="11-3-conclusion-y-uso-de-la-declaracion">11.3 Conclusión y uso de la declaración</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Significado</th>
+<th>Qué puede declarar la compañía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Conforme</strong></td>
+<td>Se cumplen las siete condiciones.</td>
+<td>Que aplica SEVEN-G, con alcance (sociedades y tipos de uso), fecha, versión del marco y referencia a la auditoría.</td>
+</tr>
+<tr>
+<td><strong>Conforme con observaciones</strong></td>
+<td>Se cumplen las siete condiciones con no conformidades menores.</td>
+<td>Lo mismo, indicando que existen acciones de mejora en curso.</td>
+</tr>
+<tr>
+<td><strong>No conforme</strong></td>
+<td>Alguna condición no se cumple (no conformidad mayor o crítica en ella).</td>
+<td>No puede declarar que aplica SEVEN-G hasta corregir y superar una reauditoría. Puede comunicar que está en proceso de implantación.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Contenido mínimo de la declaración</strong>: denominación de la compañía; alcance; versión de SEVEN-G aplicada; fecha; resultado y fecha de la última auditoría y tipo de auditor (interno o externo); excepciones vigentes relevantes; mención de que la declaración no es una certificación. Conforme a la licencia de los contenidos (CC BY 4.0), se debe reconocer la autoría del marco.</p>
+<hr />
+<h2 id="relacion-con-iso-iec-42001-y-con-la-auditoria-interna-corporativa"><span class="antetitulo">12</span>Relación con ISO/IEC 42001 y con la auditoría interna corporativa</h2>
+<h3 id="12-1-iso-iec-42001">12.1 ISO/IEC 42001</h3>
+<p>ISO/IEC 42001:2023 establece requisitos para un sistema de gestión de la IA. Su <strong>cláusula 9.2 (auditoría interna)</strong> exige realizar auditorías internas a intervalos planificados para determinar si el sistema de gestión es conforme con los requisitos propios de la organización y con la norma, y si se implementa y mantiene eficazmente; establecer un programa de auditoría (frecuencia, métodos, responsabilidades, requisitos de planificación e informe) que considere la importancia de los procesos y los resultados de auditorías previas; definir criterios y alcance de cada auditoría; seleccionar auditores que aseguren la objetividad e imparcialidad; informar de los resultados a la dirección pertinente; y conservar información documentada.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Requisito de ISO/IEC 42001</th>
+<th>Cómo lo cubre SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9.2 Programa de auditoría interna</td>
+<td>Plan anual basado en riesgo (sección 5), aprobado por la comisión delegada.</td>
+</tr>
+<tr>
+<td>9.2 Criterios y alcance</td>
+<td>Criterios de 21 y 22; programas de trabajo tipo (sección 6).</td>
+</tr>
+<tr>
+<td>9.2 Objetividad e imparcialidad</td>
+<td>Independencia (sección 3.1) e incompatibilidades (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §5).</td>
+</tr>
+<tr>
+<td>9.2 Informe a la dirección</td>
+<td>Informe (sección 9) y distribución.</td>
+</tr>
+<tr>
+<td>9.2 Información documentada</td>
+<td>Expedientes de auditoría, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03 y T08.</td>
+</tr>
+<tr>
+<td>9.3 Revisión por la dirección</td>
+<td>Etapa C5 del ciclo corporativo con los resultados de auditoría.</td>
+</tr>
+<tr>
+<td>10.2 No conformidad y acción correctiva</td>
+<td>Documento 37 y seguimiento (sección 10).</td>
+</tr>
+<tr>
+<td>8.2 a 8.4 Evaluación y tratamiento de riesgos, y evaluación de impacto de sistemas de IA</td>
+<td>Documentos 32 y 33; auditados en <em>gates</em> G3 y en continuidad.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Diferencias que hay que tener presentes</strong></p>
+<ul>
+<li>Una compañía que quiera <strong>certificarse</strong> en ISO/IEC 42001 debe cumplir todos los requisitos de la norma, incluidos los controles del anexo A que declare aplicables. Aplicar SEVEN-G facilita la certificación, pero no la garantiza.</li>
+<li>La auditoría de certificación la realiza una entidad de certificación conforme a ISO/IEC 17021-1 e ISO/IEC 42006. Las auditorías de SEVEN-G son auditorías internas de primera parte o, si se contratan, de segunda parte.</li>
+<li>Para la conducción de auditorías de sistemas de gestión, ISO 19011 ofrece directrices que son compatibles con este marco.</li>
+</ul>
+<h3 id="12-2-auditoria-interna-corporativa">12.2 Auditoría interna corporativa</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Criterio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Integración</strong></td>
+<td>La auditoría de IA forma parte del plan de auditoría interna corporativa, no es un plan paralelo. La comisión delegada lo aprueba de forma conjunta o coordinada.</td>
+</tr>
+<tr>
+<td><strong>Normas profesionales</strong></td>
+<td>Cuando la función de auditoría interna se rige por las Normas Globales de Auditoría Interna del IIA (en vigor desde enero de 2025), la auditoría de IA las aplica; este marco las concreta para la IA.</td>
+</tr>
+<tr>
+<td><strong>Auditores de IA externos</strong></td>
+<td>Trabajan bajo supervisión de auditoría interna, que responde de la calidad y de la independencia.</td>
+</tr>
+<tr>
+<td><strong>Coordinación con otras funciones de aseguramiento</strong></td>
+<td>Seguridad de la información, protección de datos, validación de modelos y cumplimiento realizan revisiones propias. Auditoría interna puede basarse en su trabajo si evalúa su objetividad, competencia y calidad, y lo documenta. Se debe evitar que un mismo equipo sea auditado varias veces sobre lo mismo en el mismo periodo.</td>
+</tr>
+<tr>
+<td><strong>Auditoría de cuentas y supervisores</strong></td>
+<td>Los informes de auditoría de IA pueden ponerse a disposición del auditor de cuentas o de las autoridades supervisoras cuando lo requieran, con la gestión de confidencialidad que corresponda.</td>
+</tr>
+<tr>
+<td><strong>Revisión de calidad de la función</strong></td>
+<td>Las auditorías de IA se incluyen en el programa de aseguramiento y mejora de la calidad de auditoría interna.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">13</span>Herramientas y plantillas asociadas</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre</th>
+<th>Uso en este documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T02</strong></td>
+<td>Inventario de sistemas de IA</td>
+<td>Universo auditable y priorización.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td>Registro de iniciativas</td>
+<td>Previsión de <em>gates</em>, eventos, asignación y rotación de auditores.</td>
+</tr>
+<tr>
+<td><strong>T03</strong></td>
+<td>Gestor de <em>gates</em></td>
+<td>Resultado de verificación por criterio y bloqueo de decisiones ante No conforme.</td>
+</tr>
+<tr>
+<td><strong>T08</strong></td>
+<td>Registro de no conformidades e incidentes</td>
+<td>Alta y seguimiento de no conformidades derivadas de auditoría.</td>
+</tr>
+<tr>
+<td><strong>T09</strong></td>
+<td>Registro de proveedores de IA</td>
+<td>Universo y resultados de auditorías de proveedor.</td>
+</tr>
+<tr>
+<td><strong>T10</strong></td>
+<td>Evaluación de seguridad de agentes</td>
+<td>Pruebas técnicas de agentes.</td>
+</tr>
+<tr>
+<td><strong>T12</strong></td>
+<td>Seguimiento de realización de valor</td>
+<td>Recálculo y validación del valor.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></strong></td>
+<td>Registro de decisión de <em>gate</em></td>
+<td>Resultado de auditoría de <em>gate</em> abreviado.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
+<td>Resultados de validación y del piloto</td>
+<td>Base de la reejecución de métricas.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></strong></td>
+<td>Firma de puesta en producción</td>
+<td>Verificación de la firma multinivel.</td>
+</tr>
+<tr>
+<td><strong><code>LV-G0</code>… <code>LV-G7</code></strong></td>
+<td>Listas de verificación por <em>gate</em> (<a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>)</td>
+<td>Programa de la auditoría de <em>gate</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Requisitos para las herramientas derivados de este documento:</strong> T03 debe impedir registrar una decisión de <em>gate</em> con un resultado de verificación No conforme, salvo Parar cuando el equipo retira la solicitud y propone parar; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> debe registrar auditor, declaración de independencia y fecha de verificación; T08 debe vincular cada no conformidad a su auditoría de origen y controlar los plazos de la sección 10.</p>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">14</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Metodología fundacional</strong></td>
+<td>Validación dual, reglas de decisión, no conformidades y declaración de aplicación (§14).</td>
+</tr>
+<tr>
+<td><strong>03 · Herramientas y registro de iniciativas</strong></td>
+<td>Plazos de decisión de <em>gate</em> y datos del registro.</td>
+</tr>
+<tr>
+<td><strong>21 · Criterios de <em>gate</em> y auditoría</strong></td>
+<td>Criterios <code>G&lt;n&gt;.&lt;nn&gt;</code> y <code>R6.&lt;nn&gt;</code> que se verifican.</td>
+</tr>
+<tr>
+<td><strong>22 · Listas de verificación por <em>gate</em></strong></td>
+<td>Controles binarios <code>LV-G&lt;n&gt;</code>.</td>
+</tr>
+<tr>
+<td><strong>30 · Modelo de gobierno</strong></td>
+<td>Independencia de la tercera línea, incompatibilidades, escalado.</td>
+</tr>
+<tr>
+<td><strong>31 · Política corporativa y uso aceptable</strong></td>
+<td>Objeto de auditorías temáticas; perfil de formación F6.</td>
+</tr>
+<tr>
+<td><strong>32 · Inventario y clasificación regulatoria</strong></td>
+<td>Universo auditable y conciliación.</td>
+</tr>
+<tr>
+<td><strong>33 · Metodología de riesgos de IA</strong></td>
+<td>Riesgo residual para priorizar.</td>
+</tr>
+<tr>
+<td><strong>35 · Seguridad de IA y agentes</strong></td>
+<td>Pruebas técnicas de agentes.</td>
+</tr>
+<tr>
+<td><strong>36 · Terceros y proveedores de IA</strong></td>
+<td>Auditorías de proveedor.</td>
+</tr>
+<tr>
+<td><strong>37 · No conformidades e incidentes</strong></td>
+<td>Gestión de los hallazgos.</td>
+</tr>
+<tr>
+<td><strong>40 · Reglas de medición del valor</strong></td>
+<td>Criterios para auditar el valor.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Este documento no constituye asesoramiento jurídico.</p>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">15</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>Primera versión. Sustituye el esquema del material anterior (puntuación 0–5 y resultados de aprobado, condicionado o suspenso) por los resultados Conforme, Conforme con observaciones y No conforme, y las no conformidades menor, mayor y crítica de 01. Define cinco tipos de auditoría, independencia y competencias, universo y plan basado en riesgo, programas de trabajo tipo, técnicas con tamaños de muestra justificados, pruebas técnicas de modelos y agentes, informe, seguimiento, auditoría de la declaración de aplicación y relación con ISO/IEC 42001 y la auditoría interna. Propone el código <code>AUD-AAAA-NNN</code>.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve a las empresas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":true},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

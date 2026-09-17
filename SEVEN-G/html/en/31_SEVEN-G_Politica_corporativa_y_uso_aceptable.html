@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corporate AI policy and acceptable use policy</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Corporate AI policy and acceptable use policy"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 31 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 31 &#183; Corporate policy and acceptable use</p>
+    <h1>Corporate AI policy and acceptable use policy</h1>
+    <p class="entradilla">Two templates ready to adapt, covering AI that is not a project and an AI literacy programme</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>2</b><span>policy templates</span></div><div class="cifra"><b>4</b><span>types of AI use covered</span></div><div class="cifra"><b>3</b><span>regularisation decisions</span></div><div class="cifra"><b>8</b><span>AI literacy profiles</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#regulatory-references-used"><span>02</span>Regulatory references used</a></li><li><a href="#corporate-ai-policy-template"><span>03</span>Corporate AI policy template</a></li><li><a href="#ai-acceptable-use-policy-template"><span>04</span>AI acceptable use policy template</a></li><li><a href="#ai-that-is-not-a-project"><span>05</span>AI that is not a project</a></li><li><a href="#ai-literacy"><span>06</span>AI literacy</a></li><li><a href="#corporate-ai-use-monitor-t21"><span>07</span>Corporate AI use monitor (T21)</a></li><li><a href="#relationship-with-the-lifecycle-and-the-gates"><span>08</span>Relationship with the lifecycle and the gates</a></li><li><a href="#associated-tools-and-templates"><span>09</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>10</span>Related documents</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<p>This document provides the company with two policy templates that the board and senior management can adapt and approve at stage C2 of the corporate cycle:</p>
+<ol>
+<li><strong>Corporate AI policy</strong> (section 3): sets out the principles, responsibilities, classification, mandatory lifecycle, red lines and the regime for exceptions and breaches. It is approved by the board.</li>
+<li><strong>AI acceptable use policy for employees</strong> (section 4): translates the corporate policy into rules of conduct for anyone who uses AI in their work. It is approved by the AI Committee under delegation from the board (document 30 §7.5).</li>
+</ol>
+<p>In addition, the document develops two topics that the foundational methodology sets out and that no other document covers:</p>
+<ul>
+<li>The treatment of <strong>AI that is not a project</strong> (section 5): AI embedded in third-party software, AI-enabled productivity suites, individual use and unauthorised use (<em>shadow AI</em>), with its detection, recording, regularisation and treatment as a nonconformity.</li>
+<li>The <strong>AI literacy programme</strong> (section 6), linked to Article 4 of Regulation (EU) 2024/1689.</li>
+</ul>
+<p>Text in <strong>[square brackets]</strong> must be customised. The templates are drafted for a generic company; their adaptation should be reviewed by legal counsel and, insofar as it affects labour relations, by the people function, with such involvement of workers' representatives as may be appropriate. The templates and the regulatory obligations they reflect are for guidance only: responsibility for the regulatory classification of its systems and for compliance with the applicable general and sector-specific regulation lies with the organisation (document 93, section 11).</p>
+<h3 id="1-1-how-to-use-the-templates">1.1 How to use the templates</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Activity</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Replace the square brackets and delete the options that do not apply.</td>
+<td>AI Office</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cross-check against existing policies (information security, data protection, use of technology resources, procurement, code of ethics) to avoid contradictions and duplication.</td>
+<td>Second line</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Legal and employment law review.</td>
+<td>Legal counsel and people</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Approval: corporate policy by the board; acceptable use policy by the AI Committee.</td>
+<td>Bodies (document 30)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Communication, training and express acceptance of the acceptable use policy.</td>
+<td>AI Office and people</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Annual review in C5, or earlier if regulation changes.</td>
+<td>AI Office</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="regulatory-references-used"><span class="antetitulo">02</span>Regulatory references used</h2>
+<p>Consulted on 16-09-2026. Dates and articles must be verified before approving the policies.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Content relevant to the policies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Regulation (EU) 2024/1689</strong> (AI Act)</td>
+<td>Article 4 (AI literacy); Article 5 (prohibited practices); Article 26 (obligations of deployers of high-risk AI systems, including informing workers, paragraph 7); Article 50 (transparency obligations).</td>
+</tr>
+<tr>
+<td><strong>Regulation (EU) 2026/1744</strong> (Digital Omnibus on AI)</td>
+<td>Published in the Official Journal on 24-07-2026 and in force since 27-07-2026. Among other things, it amends Article 4, which now requires providers and deployers <strong>to take measures to support the development</strong> of AI literacy among their staff, without requiring them to ensure a specific level; it adds a prohibition on systems that generate non-consensual sexually explicit content or child sexual abuse material, applicable from 2-12-2026; and it postpones the high-risk obligations of Annex III to 2-12-2027 and those of Annex I to 2-8-2028. The transparency obligations of Article 50 apply from 2-8-2026, with a transitional period until 2-12-2026 for the marking under Article 50(2) of systems already placed on the market.</td>
+</tr>
+<tr>
+<td><strong>Regulation (EU) 2016/679</strong> (GDPR)</td>
+<td>Principles in Article 5; automated individual decision-making (Article 22); impact assessment (Article 35); personal data breaches (Articles 33 and 34).</td>
+</tr>
+<tr>
+<td><strong>Organic Law 3/2018</strong> (LOPDGDD), Spain</td>
+<td>Article 87: criteria for the use of digital devices in the workplace, with the involvement of workers' representatives.</td>
+</tr>
+<tr>
+<td><strong>Workers' Statute</strong> (Estatuto de los Trabajadores), Spain</td>
+<td>Article 64.4.d): right of the works council to be informed of the parameters, rules and instructions of the algorithms or AI systems that affect decisions on working conditions, access to and retention of employment, including profiling.</td>
+</tr>
+<tr>
+<td><strong>Law 2/2023</strong>, Spain</td>
+<td>Internal reporting system and protection of whistleblowers.</td>
+</tr>
+<tr>
+<td><strong>Directive (EU) 2022/2555 (NIS2)</strong> and <strong>Regulation (EU) 2022/2554 (DORA)</strong>, where applicable</td>
+<td>ICT, third-party and incident risk management.</td>
+</tr>
+</tbody>
+</table></div>
+<p>References to Spanish legislation are included as an example jurisdiction; a company in another Member State must replace them with the equivalent provisions.</p>
+<hr />
+<h2 id="corporate-ai-policy-template"><span class="antetitulo">03</span>Corporate AI policy template</h2>
+<blockquote>
+<p><strong>ARTIFICIAL INTELLIGENCE CORPORATE POLICY OF [COMPANY NAME]</strong></p>
+<p>Approved by the Board of Directors on [date]. Version [n]. Responsible for maintenance: [AI Office]. Next review: [date, no later than twelve months].</p>
+</blockquote>
+<h3 id="3-1-purpose">3.1 Purpose</h3>
+<p>This policy establishes the principles, responsibilities and rules under which [the Company] implements, governs and measures artificial intelligence, so that its use:</p>
+<ol type="a">
+<li>generates measurable business value consistent with the AI thesis approved by the Board;</li>
+<li>respects the law, people's rights and the values of [the Company];</li>
+<li>remains within the approved risk appetite;</li>
+<li>is capable of oversight, reversible and auditable.</li>
+</ol>
+<p>[The Company] adopts SEVEN-G (<em>Seven-phase Enterprise Value &amp; Governance</em>) and its supporting documents as its reference framework.</p>
+<h3 id="3-2-scope">3.2 Scope</h3>
+<ol>
+<li><strong>Personal scope.</strong> It applies to [the Company] and [the companies in its group over which it exercises control], to their directors, executives and employees, and to persons acting on their behalf, including suppliers and collaborators when they use AI systems on behalf of [the Company].</li>
+<li><strong>Material scope.</strong> It applies to every <strong>AI system</strong>, understood as a machine-based system that, with varying levels of autonomy, infers from the input it receives how to generate outputs —predictions, content, recommendations or decisions— that can influence physical or virtual environments, regardless of whether:
+<ul>
+<li>it is developed by [the Company] or by a third party;</li>
+<li>it is integrated into other software or a service;</li>
+<li>it is used for internal processes, with customers or with third parties;</li>
+<li>its use is authorised or not.</li>
+</ul>
+</li>
+<li><strong>Types of use.</strong> For the purposes of this policy, four types of use are distinguished, with the treatment set out in paragraph 3.6: (i) AI initiatives; (ii) third-party AI embedded in processes; (iii) corporate use of general-purpose AI; (iv) unauthorised use.</li>
+<li><strong>Exclusions.</strong> [Indicate, where appropriate, justified exclusions, for example research activities without real data in isolated environments, which must nonetheless be recorded.]</li>
+</ol>
+<h3 id="3-3-principles">3.3 Principles</h3>
+<p>[The Company] adopts the ten principles of SEVEN-G and specifies them as follows:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principle</th>
+<th>Commitment of [the Company]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Value before technology</td>
+<td>No investment is made in construction without an approved value hypothesis.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Governance is not optional</td>
+<td>No AI system is used in business processes unless it is in the inventory and receives the treatment corresponding to its type of use.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Production is the only truth</td>
+<td>Value is reported with its status: validated, declared or estimated.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Reversibility</td>
+<td>Every system in production has a stop mechanism and a tested rollback plan.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Risk is systemic</td>
+<td>Risks are managed per system and at portfolio level.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Evolve or retire</td>
+<td>Every system in production has a current continuity review.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Segregation of duties</td>
+<td>Whoever builds does not verify or decide on their own work.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Evidence, not declaration</td>
+<td>What is not documented and verified is not considered done.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>A conscious decision on ambition</td>
+<td>Every initiative is classified as Optimise, Augment or Transform, and Transform initiatives are approved by the Board.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>People at the centre of change</td>
+<td>The effect of AI on work is assessed; workers' representatives are informed and, where appropriate, consulted; people are trained.</td>
+</tr>
+</tbody>
+</table></div>
+<p>In addition, [the Company] commits to: <strong>lawfulness</strong> (complying with applicable regulation, in particular Regulation (EU) 2024/1689 and data protection legislation); <strong>human oversight</strong> proportionate to the impact; <strong>transparency</strong> towards people who interact with AI systems or are subject to their outputs; <strong>fairness</strong> (preventing bias and discrimination); <strong>security</strong> against misuse and attacks; and <strong>accountability</strong> (each system has an identified owner).</p>
+<h3 id="3-4-organisation-and-responsibilities">3.4 Organisation and responsibilities</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Body or role</th>
+<th>Responsibility under this policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Board of Directors</strong></td>
+<td>Approves this policy, the AI thesis, the ambition per sphere and the risk appetite; oversees compliance.</td>
+</tr>
+<tr>
+<td><strong>[Audit / Risk / Technology Committee]</strong></td>
+<td>Oversees risks, compliance, incidents, major and critical nonconformities and AI audits.</td>
+</tr>
+<tr>
+<td><strong>AI Committee</strong></td>
+<td>Manages the portfolio; decides Enterprise <em>gates</em>; approves the acceptable use policy and the exceptions at its level.</td>
+</tr>
+<tr>
+<td><strong>AI Office</strong></td>
+<td>Maintains the inventory, the methodology and the literacy programme; detects and regularises unauthorised use.</td>
+</tr>
+<tr>
+<td><strong>[Risk, Compliance, Information Security, Data Protection]</strong></td>
+<td>Assess risks and compliance, issue clearances and sign off Enterprise go-live.</td>
+</tr>
+<tr>
+<td><strong>[Internal Audit]</strong></td>
+<td>Verifies independently and audits compliance with this policy.</td>
+</tr>
+<tr>
+<td><strong>Heads of business areas</strong></td>
+<td>Ensure that the AI systems in their area are inventoried and used in accordance with this policy.</td>
+</tr>
+<tr>
+<td><strong>Employees and collaborators</strong></td>
+<td>Comply with the acceptable use policy and report incidents and misuse.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The roles of each initiative (sponsor, product, technical, operations, risk and auditor) and their incompatibilities are governed by [the Company's AI governance model, based on SEVEN-G document 30].</p>
+<h3 id="3-5-classification">3.5 Classification</h3>
+<p>Every AI system is classified in the inventory with at least:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Classification</th>
+<th>Values</th>
+<th>Who determines it</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type of use</strong></td>
+<td>AI initiative · Third-party AI embedded in processes · Corporate use of general-purpose AI · Unauthorised use</td>
+<td>AI Office</td>
+<td>Inventory registration</td>
+</tr>
+<tr>
+<td><strong>Regulatory classification</strong></td>
+<td>Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification</td>
+<td>AI Risk Owner with legal input</td>
+<td>Phase 0 (provisional) and phase 3 (final)</td>
+</tr>
+<tr>
+<td><strong>Intensity</strong></td>
+<td>Lite · Enterprise</td>
+<td>Sponsor, verified in accordance with the governance model</td>
+<td>Phase 0; review at G3 and R6</td>
+</tr>
+<tr>
+<td><strong>Ambition level</strong></td>
+<td>Optimise · Augment · Transform</td>
+<td>AI Product Owner; confirmed by the <em>gate</em> body</td>
+<td>Phases 1, 2 and 7</td>
+</tr>
+<tr>
+<td><strong>Autonomy</strong></td>
+<td>A0 Assistance · A1 Recommendation · A2 Supervised action · A3 Autonomous action</td>
+<td>AI Technical Owner with security</td>
+<td>Phase 4; review upon changes</td>
+</tr>
+<tr>
+<td><strong>Main residual risk level</strong></td>
+<td>Low · Medium · High · Critical</td>
+<td>AI Risk Owner</td>
+<td>Phase 3; ongoing monitoring</td>
+</tr>
+<tr>
+<td><strong>Third-party requirement level</strong></td>
+<td>N1 Standard · N2 Enhanced · N3 Critical</td>
+<td>Second line</td>
+<td>Phase 3, if there is a supplier</td>
+</tr>
+</tbody>
+</table></div>
+<p>Meeting any one of the following criteria is sufficient to apply <strong>Enterprise</strong> intensity: high regulatory risk; significant decisions about people; direct exposure to external persons; agents with the ability to act (A2 or A3 with an effect on third parties, money, personal data or production systems); specially protected data; critical function; Transform level; investment above [threshold approved by the Board].</p>
+<h3 id="3-6-mandatory-lifecycle">3.6 Mandatory lifecycle</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type of use</th>
+<th>Mandatory treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI initiatives</strong></td>
+<td>Full lifecycle (phases 0–7) with its <em>gates</em>, at the appropriate intensity. Without an approved G0, no budget is spent and no production data is accessed. Without an approved G5, nothing goes into production.</td>
+</tr>
+<tr>
+<td><strong>Third-party AI embedded in processes</strong></td>
+<td>Full lifecycle; phases 4 and 5 focus on the selection, integration, contract and controls of the supplier.</td>
+</tr>
+<tr>
+<td><strong>Corporate use of general-purpose AI</strong></td>
+<td>Prior authorisation of the tool, inventory registration, subjection to the acceptable use policy, training and technical controls. It moves to the full cycle if it meets an Enterprise criterion.</td>
+</tr>
+<tr>
+<td><strong>Unauthorised use</strong></td>
+<td>Detection, recording, regularisation (authorise, replace or block) and treatment as a nonconformity, in accordance with section 5 of SEVEN-G document 31.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Initiatives in production that predate this policy are regularised before [date approved by the Board] by means of a continuity review equivalent to G7.</p>
+<h3 id="3-7-red-lines">3.7 Red lines</h3>
+<p>Regardless of their expected value, [the Company] <strong>does not develop, procure, deploy or use</strong> AI systems that:</p>
+<ol>
+<li>Constitute a practice prohibited by Article 5 of Regulation (EU) 2024/1689, including those added by its amendments.</li>
+<li>Take decisions based solely on automated processing that produce legal effects concerning a person or similarly significantly affect them, outside the cases and without the safeguards of Article 22 of the GDPR.</li>
+<li>Are used to <strong>monitor employees</strong> or infer their emotions, except for uses permitted by law, notified in advance and approved by [the AI Committee with clearance from Data Protection and People].</li>
+<li>Generate or disseminate content that impersonates real people or simulates communications from [the Company] without being identified as AI-generated where required by law or by this policy.</li>
+<li>Act as agents with the ability to execute actions (A2 or A3) on customers, payments, personal data or production systems <strong>without</strong> their own identity, least privilege, action logging, intent-based access control and a kill switch.</li>
+<li>Process <strong>special categories of personal data, trade secrets or information classified as [Restricted]</strong> in tools not authorised for that level of information.</li>
+<li>Are put into production without an approved <em>gate</em> or with a Critical residual risk not accepted by the Board or [the Committee].</li>
+<li>[Add red lines specific to the sector or to the Company's values, for example: use of AI in decisions on [area] without individual human review.]</li>
+</ol>
+<p>The red lines <strong>admit no exceptions</strong>.</p>
+<h3 id="3-8-exceptions">3.8 Exceptions</h3>
+<ol>
+<li>Any other requirement of this policy may be temporarily waived by means of a reasoned request that includes: the requirement affected, justification, risk, compensating measures, time limit and owner.</li>
+<li>Exceptions are approved by the bodies indicated in [the delegation matrix of the Governance model]. Whoever proposes does not approve.</li>
+<li>Exceptions have a maximum term of [six months], are recorded with a code and are reported quarterly to [the Committee].</li>
+<li>An expired exception that has not been closed is treated as a major nonconformity.</li>
+</ol>
+<h3 id="3-9-breach">3.9 Breach</h3>
+<ol>
+<li>Any breach of this policy is a <strong>nonconformity</strong> and is classified as minor, major or critical using the SEVEN-G criteria (document 37).</li>
+<li>In the event of a critical nonconformity, [the Company] will adopt containment measures within a maximum of 48 hours, including suspension of the system if necessary.</li>
+<li>Treatment as a nonconformity <strong>does not preclude</strong> such disciplinary measures as may be appropriate under [the applicable disciplinary regime / collective agreement], nor action against third parties under contract.</li>
+<li>[The Company] encourages early reporting: anyone who reports in good faith a misuse, their own error or an incident will not suffer retaliation. Reports may be made to [the AI Office] or through [the Internal reporting system].</li>
+<li>Voluntary and early reporting of one's own error without harm will be considered a mitigating circumstance.</li>
+</ol>
+<h3 id="3-10-review">3.10 Review</h3>
+<p>This policy is reviewed at least once a year at stage C5 and, in addition, when: applicable regulation changes; the AI thesis or risk appetite is modified; an S1 incident or a critical nonconformity reveals a gap; or an audit recommends it. The AI Office proposes the changes and the Board approves them.</p>
+<blockquote>
+<p>End of the corporate policy template.</p>
+</blockquote>
+<hr />
+<h2 id="ai-acceptable-use-policy-template"><span class="antetitulo">04</span>AI acceptable use policy template</h2>
+<blockquote>
+<p><strong>ARTIFICIAL INTELLIGENCE ACCEPTABLE USE POLICY OF [COMPANY NAME]</strong></p>
+<p>Approved by the AI Committee on [date], implementing the Corporate AI policy. Version [n]. Applicable from [date]. Requires express acceptance.</p>
+</blockquote>
+<h3 id="4-1-what-this-policy-is-for">4.1 What this policy is for</h3>
+<p>This policy tells you how you may use artificial intelligence in your work at [the Company]: which tools you may use, what information you must never enter, how you must review what AI produces and what you must do if something goes wrong. It applies to employees, executives, interns and external collaborators who work with information or systems of [the Company].</p>
+<h3 id="4-2-authorised-tools">4.2 Authorised tools</h3>
+<ol>
+<li>For work purposes, you may only use the AI tools listed in the <strong>catalogue of authorised tools</strong> published at [intranet link], with your corporate account and under the conditions indicated for each one.</li>
+<li>The catalogue classifies each tool as follows:</li>
+</ol>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Meaning</th>
+<th>Examples of conditions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Authorised</strong></td>
+<td>May be used for the stated purposes with information up to the [Confidential] level.</td>
+<td>Corporate account; no use of the data by the supplier for training; logs retained by [the Company].</td>
+</tr>
+<tr>
+<td><strong>Authorised with restrictions</strong></td>
+<td>Only for certain uses, groups or information levels.</td>
+<td>Only [Public or Internal] information; only team [X]; not connected to email or documents.</td>
+</tr>
+<tr>
+<td><strong>Not authorised</strong></td>
+<td>May not be used for work.</td>
+<td>Free or personal versions of assistants; AI-enabled browser extensions; unapproved transcription applications.</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="3">
+<li><strong>Do not use personal accounts</strong> of AI tools for tasks of [the Company], even if the corporate version of the tool is listed in the catalogue.</li>
+<li><strong>Do not install</strong> extensions, plug-ins, desktop or mobile applications with AI functions, or <strong>enable AI functions</strong> in corporate software in which they are disabled, without authorisation from [Technology / the AI Office].</li>
+<li>If you need a tool that is not in the catalogue, request it through [channel]. The AI Office will respond within an indicative period of [15 working days].</li>
+</ol>
+<h3 id="4-3-information-that-is-never-entered">4.3 Information that is never entered</h3>
+<p>Unless the catalogue expressly states that the tool is authorised for that type of information, <strong>never enter</strong> into an AI tool:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Type of information</th>
+<th>Illustrative examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Credentials and secrets</td>
+<td>Passwords, API keys, tokens, certificates, access codes.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Special categories of personal data</td>
+<td>Health, ethnic origin, political opinions, religious beliefs, trade union membership, genetic or biometric data, sex life or sexual orientation.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Personal data of customers, employees or third parties</td>
+<td>Names with contact details, identifiers, financial data, case files.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Information classified as [Restricted]</td>
+<td>Unpublished strategic plans, corporate transactions, inside information, results before their publication.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Trade secrets and sensitive intellectual property</td>
+<td>Source code of [critical systems], proprietary algorithms, formulas, internal prices.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Third-party information subject to confidentiality</td>
+<td>Customer or supplier documents protected by contract or by professional secrecy.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Security information</td>
+<td>Systems architecture, vulnerabilities, security configurations.</td>
+</tr>
+</tbody>
+</table></div>
+<p>If in doubt, <strong>do not enter it</strong> and consult [the AI Office / Data Protection]. Anonymising personal data requires appropriate techniques: removing the name is usually not enough.</p>
+<h3 id="4-4-human-verification-of-outputs">4.4 Human verification of outputs</h3>
+<ol>
+<li><strong>You are responsible</strong> for the work you deliver, even if it was prepared by an AI tool.</li>
+<li>Before using an AI output, <strong>verify</strong> its accuracy, its sources, its calculations and its suitability for the context. Generative AI tools can invent plausible-looking data, quotations, regulations or references.</li>
+<li>The degree of verification depends on the use:</li>
+</ol>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Use of the output</th>
+<th>Minimum verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal support use (summarising, organising ideas, drafting internal drafts)</td>
+<td>Critical reading before using it.</td>
+</tr>
+<tr>
+<td>Internal document that others will use to make decisions</td>
+<td>Checking of data, figures and sources; review by the person responsible for the document.</td>
+</tr>
+<tr>
+<td>Communication to customers, suppliers, authorities or the public</td>
+<td>Full review by a competent person and, where appropriate, approval under the usual procedure for that type of communication.</td>
+</tr>
+<tr>
+<td>Code to be incorporated into systems of [the Company]</td>
+<td>Code review, testing and security analysis in accordance with [the development standard].</td>
+</tr>
+<tr>
+<td>Legal, tax, medical, financial or technical advice with effects for third parties</td>
+<td>Review and sign-off by a qualified professional. AI does not replace that judgement.</td>
+</tr>
+<tr>
+<td>Decisions about people (recruitment, evaluation, credit, complaints, among others)</td>
+<td>Only with systems approved through the lifecycle and with the human oversight defined in their design.</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="4">
+<li><strong>Do not use general-purpose AI tools to take decisions about people.</strong></li>
+</ol>
+<h3 id="4-5-transparency-towards-customers-and-third-parties">4.5 Transparency towards customers and third parties</h3>
+<ol>
+<li>When an external person <strong>interacts directly</strong> with an AI system of [the Company] (for example, a conversational assistant), they must know that they are interacting with AI, unless this is obvious. This is ensured by the design of the system; do not disable it.</li>
+<li>If you disseminate externally <strong>images, audio or video generated or manipulated with AI</strong> that may appear authentic, you must disclose that they have been artificially generated or manipulated, in accordance with [the communication guide].</li>
+<li>AI-generated text published to inform the public on matters of public interest must be identified as such, unless it has undergone human review or editorial control and a person holds responsibility for its publication.</li>
+<li>Do not present AI-generated content as the opinion or personal work of a professional when the recipient has a legitimate expectation to the contrary (for example, [expert reports, signed opinions]).</li>
+<li>If a customer asks whether AI has been used in a service, answer truthfully in accordance with [the response guide].</li>
+</ol>
+<h3 id="4-6-intellectual-property">4.6 Intellectual property</h3>
+<ol>
+<li>Do not enter protected third-party content (books, paid reports, databases, code under a restrictive licence) into AI tools unless the licence permits it.</li>
+<li>Do not ask AI to reproduce protected works, imitate third-party brands or generate content that impersonates real people.</li>
+<li>Check that generated code does not incorporate fragments under licences incompatible with its use at [the Company], using the available analysis tools.</li>
+<li>The outputs you generate with AI tools in the performance of your duties belong to [the Company] under the terms of [your contract / the applicable legislation]. Intellectual property protection for AI-generated content may be limited; consult [Legal Counsel] before registering or licensing this type of content.</li>
+<li>Do not use the brands, logos or image of [the Company] in AI-generated content outside authorised channels.</li>
+</ol>
+<h3 id="4-7-personal-agents-and-automations">4.7 Personal agents and automations</h3>
+<p>A <strong>personal agent</strong> is an AI tool that acts on your behalf: it reads and sends emails, manages your calendar, fills in forms, makes purchases, executes code or interacts with other systems.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Autonomy level</th>
+<th>What you may do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A0 Assistance</strong> (informs, summarises, drafts)</td>
+<td>Permitted with authorised tools.</td>
+</tr>
+<tr>
+<td><strong>A1 Recommendation</strong> (proposes an action that you validate and execute)</td>
+<td>Permitted with authorised tools. Review each proposal before acting.</td>
+</tr>
+<tr>
+<td><strong>A2 Supervised action</strong> (executes actions within limits and you supervise)</td>
+<td>Only with tools expressly authorised for A2 and within the actions permitted in the catalogue.</td>
+</tr>
+<tr>
+<td><strong>A3 Autonomous action</strong> (executes sequences without individual review)</td>
+<td>Not permitted for personal agents. Requires an initiative approved through the lifecycle.</td>
+</tr>
+</tbody>
+</table></div>
+<p>In addition:</p>
+<ol>
+<li><strong>Do not share your credentials</strong> with an agent or grant it broader permissions than necessary. Use the delegated authorisation mechanisms enabled by [Technology].</li>
+<li>An agent <strong>may not</strong>, without your express validation of each action: send external communications, accept terms, make payments or financial commitments, modify data in production systems or share documents outside [the Company].</li>
+<li>You are responsible for what an agent acting on your behalf does. If you detect an unexpected action, deactivate it and report it (paragraph 4.8).</li>
+<li>Automations that use AI and affect other employees, customers or shared processes must be registered as an initiative.</li>
+<li>Be wary of instructions contained in emails, documents or web pages processed by the agent: they may attempt to manipulate it (prompt injection).</li>
+</ol>
+<h3 id="4-8-reporting-incidents-and-misuse">4.8 Reporting incidents and misuse</h3>
+<p>Report <strong>immediately</strong> to [channel: security operations centre / AI Office / email / telephone]:</p>
+<ul>
+<li>That you have mistakenly entered information referred to in paragraph 4.3 into a tool not authorised for it.</li>
+<li>An AI output that has caused or may cause harm to a customer, to a person or to [the Company].</li>
+<li>Unexpected behaviour of an AI system or agent (unrequested actions, discriminatory responses, disclosure of information).</li>
+<li>An attempt to manipulate an AI system or an attack that appears to rely on AI (voice or image impersonation of executives, highly personalised fraudulent messages).</li>
+<li>The use by other people of unauthorised tools with sensitive information.</li>
+</ul>
+<p>Reporting your own error early and in good faith is what is expected of you and is regarded as a mitigating factor. No one will suffer retaliation for reporting in good faith.</p>
+<h3 id="4-9-training-and-acceptance">4.9 Training and acceptance</h3>
+<ol>
+<li>Before using corporate AI tools, you must complete the basic training [course name] and accept this policy.</li>
+<li>If your role uses high-risk AI systems, oversees AI systems or takes part in initiatives, you must complete the specific training for your profile.</li>
+<li>[The Company] may log the use of corporate AI tools for security, compliance and service improvement purposes, with the safeguards and information provided for in [the policy on the use of technology resources], in accordance with data protection and employment legislation.</li>
+</ol>
+<h3 id="4-10-breach">4.10 Breach</h3>
+<p>Breach of this policy is dealt with in accordance with paragraph 3.9 of the Corporate AI policy.</p>
+<blockquote>
+<p><strong>Acceptance.</strong> I have read and understand the AI Acceptable Use Policy of [the Company] and undertake to comply with it. Name: [ ] · Date: [ ] · Signature or electronic acceptance: [ ]</p>
+</blockquote>
+<blockquote>
+<p>End of the acceptable use policy template.</p>
+</blockquote>
+<hr />
+<h2 id="ai-that-is-not-a-project"><span class="antetitulo">05</span>AI that is not a project</h2>
+<p>A growing share of AI use in companies does not originate as an initiative: it arrives with an update to software already under contract, with the licence for a productivity suite or with an individual employee's decision. SEVEN-G governs it through a common process of <strong>detection, recording, assessment and regularisation</strong>, proportionate to its risk.</p>
+<h3 id="5-1-types-and-treatment">5.1 Types and treatment</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Characteristic risks</th>
+<th>Baseline treatment</th>
+<th>Moves to the full cycle if…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI embedded in third-party software</strong></td>
+<td>AI functions that a supplier incorporates into a product already under contract (CRM, ERP, people management, customer service, cybersecurity).</td>
+<td>Activation by default without assessment; use of company data by the supplier; changes in behaviour with each version; decisions about people built into the process.</td>
+<td>Registration in T02 as third-party AI; proportionate supplier assessment (document 36); express decision on whether or not to activate; contractual review.</td>
+<td>It plays a part in decisions, operations or customer relationships with any Enterprise criterion: it is then <strong>third-party AI embedded in processes</strong> (01 §1.2).</td>
+</tr>
+<tr>
+<td><strong>AI-enabled productivity suites</strong></td>
+<td>Assistants integrated into corporate email, office software, meetings and storage.</td>
+<td>Assistant access to documents with excessive permissions (information overexposure); transcription of meetings without informing participants; log retention; cost of unused licences.</td>
+<td>Authorisation as corporate use; secure configuration of the environment; prior review of permissions; sensitivity labelling; acceptable use policy; training; adoption measurement.</td>
+<td>It is configured to act (A2 or A3) or is integrated into processes with an Enterprise criterion.</td>
+</tr>
+<tr>
+<td><strong>Authorised individual use</strong></td>
+<td>Employees who use catalogue tools for their work.</td>
+<td>Inappropriate data; unverified outputs; dependency.</td>
+<td>Acceptable use policy; training; technical controls; T21.</td>
+<td>It becomes a shared process or affects third parties.</td>
+</tr>
+<tr>
+<td><strong>Unauthorised use (<em>shadow AI</em>)</strong></td>
+<td>Tools used without approval, personal accounts, extensions, enabling of functions without permission.</td>
+<td>Information leakage; breach of data protection; contractual commitments; unverified outputs in decisions; hidden cost.</td>
+<td>Detection, recording, regularisation and nonconformity (sections 5.2 to 5.6).</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-2-detection">5.2 Detection</h3>
+<p>The AI Office, together with information security, must maintain a detection plan with complementary sources. No single source is sufficient on its own.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>What it detects</th>
+<th>Owner</th>
+<th>Indicative frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browsing, proxy or cloud access security broker logs</td>
+<td>Access to uncatalogued AI services and volume of use.</td>
+<td>Information security</td>
+<td>Continuous, monthly report</td>
+</tr>
+<tr>
+<td>Data loss prevention tools</td>
+<td>Sending of sensitive information to AI services.</td>
+<td>Information security</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td>Device and browser extension management</td>
+<td>Installed AI-enabled applications and extensions.</td>
+<td>Technology</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Corporate application administration console</td>
+<td>Third-party applications with permissions over email, documents or calendar; AI functions enabled.</td>
+<td>Technology</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Expense claims, corporate cards and procurement</td>
+<td>Subscriptions to AI tools paid for by employees or areas.</td>
+<td>Finance and procurement</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td>Review of supplier contracts and release notes</td>
+<td>AI functions added to contracted software; changes in the use of data.</td>
+<td>Procurement with system owners</td>
+<td>At each renewal and relevant update</td>
+</tr>
+<tr>
+<td>Anonymous usage survey</td>
+<td>Tools used and unmet needs.</td>
+<td>AI Office</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>Reports from employees and from the internal reporting system</td>
+<td>Specific cases.</td>
+<td>AI Office</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td>Uninventoried use in audited areas.</td>
+<td>Internal audit</td>
+<td>According to plan (document 38)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Safeguards.</strong> Monitoring of the use of technology resources must be proportionate, provided for in the company's policy on the use of technology resources, notified to employees in advance and compliant with data protection and employment legislation (in Spain, among others, Article 87 of the LOPDGDD and Article 20.3 of the Workers' Statute). Detection focuses on <strong>tools and information flows</strong>, not on monitoring the content of individual activity beyond what is necessary. Data protection should assess whether an impact assessment of the monitoring system itself is required.</p>
+<h3 id="5-3-recording">5.3 Recording</h3>
+<p>Every detected use is recorded in the inventory (T02) with the type of use <strong>&quot;Unauthorised use&quot;</strong> and the minimum fields of document 32: tool and supplier, area or users (in aggregate unless it is necessary to identify them), apparent purpose, type of information exposed, detection date, detection source and owner of the regularisation. The record automatically generates a <strong>nonconformity</strong> in T08.</p>
+<h3 id="5-4-assessment-and-classification-as-a-nonconformity">5.4 Assessment and classification as a nonconformity</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Classification</th>
+<th>Criteria (any one is sufficient)</th>
+<th>Containment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>Exposure of special categories of data, trade secrets or [Restricted] information; use in decisions about people; possible prohibited practice; unauthorised agent with the ability to act on customers, payments or production systems; possible notifiable personal data breach.</td>
+<td>Within 48 hours at most: blocking, revocation of permissions, request for deletion to the supplier where possible, assessment of notification.</td>
+</tr>
+<tr>
+<td><strong>Major</strong></td>
+<td>Exposure of non-special personal data or [Confidential] information; systematic use by an area; enabling of AI functions in third-party software with customer data without assessment; repeat occurrence after a regularisation.</td>
+<td>Within 10 days at most.</td>
+</tr>
+<tr>
+<td><strong>Minor</strong></td>
+<td>Occasional use with [Public or Internal] information; extension installed without sensitive data; individual subscription without company data.</td>
+<td>Not required; regularisation within 30 days.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The classification is adjusted using the criteria of document 37. The time limits are reference time limits (01 §12) and the company may adjust them in C2.</p>
+<h3 id="5-5-regularisation">5.5 Regularisation</h3>
+<p>The AI Office proposes, and the corresponding body decides, one of three outcomes:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>When</th>
+<th>What it involves</th>
+<th>Decided by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Authorise</strong></td>
+<td>The tool meets a real need, the supplier passes the assessment and the risks are acceptable.</td>
+<td>Corporate procurement, secure configuration, addition to the catalogue with category and conditions, user training and migration from personal accounts.</td>
+<td>AI Office, or AI Committee if it meets an Enterprise criterion (document 30 §7.5).</td>
+</tr>
+<tr>
+<td><strong>Replace</strong></td>
+<td>The need is real but an equivalent authorised tool already exists, or the detected tool does not pass the assessment.</td>
+<td>Communication of the alternative, migration support, time limit to stop using the unauthorised tool, subsequent blocking.</td>
+<td>AI Office.</td>
+</tr>
+<tr>
+<td><strong>Block</strong></td>
+<td>The tool is not acceptable (risk, supplier, data use conditions) and there is no need that justifies an alternative.</td>
+<td>Technical blocking, communication to users with the reason and a reminder of the policy.</td>
+<td>Information security with the AI Office.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Initial regularisation period.</strong> When approving the policy for the first time, the company may open a period of [60–90 days] during which voluntarily declared uses are regularised without disciplinary consequences, except in cases of harm or bad faith. This period brings actual use to the surface and feeds the catalogue with genuine needs.</p>
+<p><strong>Closure.</strong> The nonconformity is closed when the decision has been executed and verified (for example, the blocking is effective or personal accounts have been migrated), and the root cause has been analysed: if the unauthorised use responds to an unmet need, the corrective action includes meeting it.</p>
+<h3 id="5-6-enabling-ai-functions-in-third-party-software">5.6 Enabling AI functions in third-party software</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Activity</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Detect the new function (release notes, renewal, supplier notice, administration console).</td>
+<td>System owner and procurement</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Keep it <strong>disabled</strong> until the decision, if the product allows it.</td>
+<td>System owner</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Register in T02 and carry out a preliminary classification (type of use, data, exposure, autonomy, possible high risk).</td>
+<td>AI Office</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Review contractual terms: use of data by the supplier, training, location, sub-processors, logs, liability.</td>
+<td>Procurement, legal and data protection</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Decide: do not activate · activate as corporate use with conditions · treat as third-party AI embedded in processes (full cycle).</td>
+<td>AI Office or AI Committee</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Configure, inform users and, where appropriate, workers' representatives; train.</td>
+<td>System owner</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Include in the periodic supplier review.</td>
+<td>Second line</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-7-productivity-suites-minimum-controls-before-deployment">5.7 Productivity suites: minimum controls before deployment</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review of permissions and overexposure</td>
+<td>Identify and correct shared spaces with excessive access before the assistant can search them.</td>
+</tr>
+<tr>
+<td>Sensitivity labelling</td>
+<td>Labels applied to [Confidential] and [Restricted] information and rules limiting its use by the assistant.</td>
+</tr>
+<tr>
+<td>Data use conditions</td>
+<td>Contractual confirmation that data are not used to train general models, and of their location.</td>
+</tr>
+<tr>
+<td>Logs and retention</td>
+<td>Retention of prompts and responses in accordance with the retention policy and incident investigation requirements.</td>
+</tr>
+<tr>
+<td>Transcription and recording</td>
+<td>Configuration that informs participants and complies with applicable legislation.</td>
+</tr>
+<tr>
+<td>Agentic functions</td>
+<td>Disabled by default; enabled per group and with the permitted autonomy level (paragraph 4.7).</td>
+</tr>
+<tr>
+<td>Licence assignment</td>
+<td>Based on need and with a quarterly review of active use (T21).</td>
+</tr>
+<tr>
+<td>Prior training</td>
+<td>Basic training and accepted policy before the licence is assigned.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="ai-literacy"><span class="antetitulo">06</span>AI literacy</h2>
+<h3 id="6-1-regulatory-basis-and-seven-g-requirement">6.1 Regulatory basis and SEVEN-G requirement</h3>
+<p>Article 4 of Regulation (EU) 2024/1689 has applied since 2-2-2025. Following its amendment by Regulation (EU) 2026/1744 (in force since 27-07-2026), it requires providers and deployers of AI systems <strong>to take measures to support the development of AI literacy</strong> among their staff and other persons dealing with the operation and use of AI systems on their behalf, taking into account their technical knowledge, experience, education and training, the context of use and the persons affected, without requiring them to ensure a specific level for each person. <em>Paraphrase; consult the official consolidated text.</em></p>
+<p>Regardless of that legal minimum, <strong>SEVEN-G requires</strong> the company to have a literacy programme by profile, with a record of participation and an assessment of effectiveness, because without capable people there is no real human oversight, verification of outputs or detection of misuse. In addition, Article 26(2) requires deployers of high-risk AI systems to assign human oversight to natural persons who have the necessary competence, training and authority.</p>
+<h3 id="6-2-programme-by-profile">6.2 Programme by profile</h3>
+<p>Durations are <strong>indicative</strong> as a starting point and must be adjusted to the size of the company and the actual use of AI.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Profile</th>
+<th>Objective</th>
+<th>Minimum content</th>
+<th>Format and indicative duration</th>
+<th>Frequency</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td><strong>All employees and collaborators with AI tools</strong></td>
+<td>Use AI in a useful, secure and compliant way.</td>
+<td>What AI is and is not; limitations of generative AI; acceptable use policy; information that is never entered; verification of outputs; incident reporting; AI-enabled attacks (impersonation).</td>
+<td>Online, 60–90 minutes, with assessment.</td>
+<td>On joining and annually (brief update).</td>
+<td>Record of completion and acceptance of the policy.</td>
+</tr>
+<tr>
+<td>F2</td>
+<td><strong>Power users and users of personal agents</strong></td>
+<td>Obtain value with control.</td>
+<td>Usage techniques; assessment of output quality; agents and autonomy levels; prompt injection; protection of information in automated flows.</td>
+<td>Practical workshop, 3–4 hours.</td>
+<td>When the licence or permission is assigned; annually.</td>
+<td>Record and practical exercise.</td>
+</tr>
+<tr>
+<td>F3</td>
+<td><strong>Human overseers of systems in production</strong> (including high-risk systems)</td>
+<td>Exercise the human oversight defined in the design.</td>
+<td>Operation and limits of the specific system; instructions for use; automation bias; when and how not to follow the recommendation; activation of the kill switch; recording and reporting of anomalies.</td>
+<td>System-specific training, 2–8 hours, with practice.</td>
+<td>Before go-live; upon relevant changes; annually.</td>
+<td>Record per system; condition for G5 when human oversight is a control.</td>
+</tr>
+<tr>
+<td>F4</td>
+<td><strong>Initiative roles</strong> (sponsor, product, technical, operations)</td>
+<td>Apply the SEVEN-G lifecycle.</td>
+<td>Phases, <em>gates</em> and evidence; value hypothesis and measurement rules; risk and regulatory classification; segregation of duties; templates.</td>
+<td>1 day plus support on the first initiative.</td>
+<td>On taking up the role; update with each relevant version of the framework.</td>
+<td>Record linked to <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+</tr>
+<tr>
+<td>F5</td>
+<td><strong>Technical construction</strong> (data science, engineering, AI-assisted development)</td>
+<td>Build compliant and secure systems.</td>
+<td>Technical requirements according to classification; documentation; evaluation of models and agents; bias and robustness testing; AI and agent security (document 35); data lineage; use of AI in development.</td>
+<td>2–3 days, with technology-specific modules.</td>
+<td>On joining; annually.</td>
+<td>Record and exercises.</td>
+</tr>
+<tr>
+<td>F6</td>
+<td><strong>Second and third line</strong> (risk, compliance, security, data protection, internal audit)</td>
+<td>Challenge and verify with sound judgement.</td>
+<td>AI Act and regulatory mapping; classification; impact assessments; specific risks of generative AI and agents; AI audit techniques (document 38).</td>
+<td>2 days and continuous training.</td>
+<td>Annually, and upon regulatory changes.</td>
+<td>Record; AI Auditor competence plan.</td>
+</tr>
+<tr>
+<td>F7</td>
+<td><strong>Board and senior management</strong></td>
+<td>Oversee and decide.</td>
+<td>Thesis, ambition and risk appetite; efficiency versus transformation; reading the board dashboard; regulatory responsibilities; oversight questions; reputational and security risks.</td>
+<td>2–3 hour session.</td>
+<td>Annually and on joining the body.</td>
+<td>Minutes or attendance record.</td>
+</tr>
+<tr>
+<td>F8</td>
+<td><strong>People, labour relations and workers' representatives</strong></td>
+<td>Manage the effect of AI on work.</td>
+<td>Impact on roles and capabilities; information and consultation; rights in automated decisions; high-risk systems in the employment domain.</td>
+<td>2–3 hour session.</td>
+<td>Annually.</td>
+<td>Attendance record.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-3-programme-management">6.3 Programme management</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Owner</strong></td>
+<td>AI Office, with the people function.</td>
+</tr>
+<tr>
+<td><strong>Annual plan</strong></td>
+<td>Approved in C2 together with the policy; includes groups, priorities and budget (cost category &quot;adoption and training&quot;).</td>
+</tr>
+<tr>
+<td><strong>Record</strong></td>
+<td>Per person: assigned profiles, completed training, dates, assessments and expiry dates. The record is linked to T21 and <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+</tr>
+<tr>
+<td><strong>Access conditions</strong></td>
+<td>F1 before receiving AI licences; F3 before overseeing a system in production; F4 before taking up a role in an initiative.</td>
+</tr>
+<tr>
+<td><strong>Effectiveness</strong></td>
+<td>Measured by outcomes, not just attendance: assessments passed, incidents caused by misuse, detections of unauthorised use, verifications of outputs in sampling.</td>
+</tr>
+<tr>
+<td><strong>Updating</strong></td>
+<td>Content reviewed at least annually and upon changes in regulation, tools or relevant incidents.</td>
+</tr>
+<tr>
+<td><strong>Suppliers and collaborators</strong></td>
+<td>Contracts with those who operate systems on behalf of the company should require training equivalent to the corresponding profile.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-4-programme-indicators">6.4 Programme indicators</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Formula</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1 coverage</td>
+<td>People with current F1 ÷ people with access to AI tools</td>
+<td>Access condition; target close to 100 %.</td>
+</tr>
+<tr>
+<td>Overseer coverage</td>
+<td>Overseers with current F3 ÷ overseers assigned to systems in production</td>
+<td>Control at G5 and R6.</td>
+</tr>
+<tr>
+<td>Role coverage</td>
+<td>People with an initiative role and F4 ÷ people with a role</td>
+<td>Verification at G0.</td>
+</tr>
+<tr>
+<td>Expired training</td>
+<td>People with expired mandatory training</td>
+<td>Monthly alert to the AI Office.</td>
+</tr>
+<tr>
+<td>Pass rate</td>
+<td>Assessments passed ÷ assessments taken, by profile</td>
+<td>Content quality.</td>
+</tr>
+<tr>
+<td>Incidents due to misuse</td>
+<td>Incidents and nonconformities with root cause &quot;lack of awareness of the policy&quot;</td>
+<td>Programme effectiveness.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="corporate-ai-use-monitor-t21"><span class="antetitulo">07</span>Corporate AI use monitor (T21)</h2>
+<p>Tool T21 (document 03) consolidates the information from this policy for the AI Committee and for the board dashboard.</p>
+<h3 id="7-1-content">7.1 Content</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Indicators</th>
+<th>Source</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Licences and use</strong></td>
+<td>Licences assigned per tool; active licences (use in the last 30 days) ÷ assigned; cost of unused licences.</td>
+<td>Administration consoles; procurement</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>Catalogue</strong></td>
+<td>Authorised, restricted and unauthorised tools; pending requests and average response time.</td>
+<td>AI Office</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>Unauthorised use</strong></td>
+<td>Detections by source; users or areas affected (aggregated); nonconformities by classification; regularisation decisions (authorise, replace, block); time to regularisation.</td>
+<td>T02, T08</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>Embedded AI</strong></td>
+<td>AI functions detected in third-party software; enabled, disabled and pending decision.</td>
+<td>T02, procurement</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td><strong>Technical controls</strong></td>
+<td>Data loss prevention events towards AI services; blocked extensions; authorised personal agents by level.</td>
+<td>Security</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>Literacy</strong></td>
+<td>Indicators in section 6.4.</td>
+<td>Training record</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>Exceptions</strong></td>
+<td>Current and expired use exceptions.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-2-presentation-rules">7.2 Presentation rules</h3>
+<ul>
+<li>Data are presented <strong>aggregated by area</strong> unless the management of a nonconformity requires individuals to be identified, and with restricted access.</li>
+<li>&quot;No data&quot; is shown as no data (measurement rule 8); if a detection source has not been implemented, the monitor states so expressly instead of showing zero detections.</li>
+<li>The board dashboard receives the adoption and unauthorised use block with the <code>seguimiento.adopcion</code> fields of the dashboard data schema.</li>
+</ul>
+<hr />
+<h2 id="relationship-with-the-lifecycle-and-the-gates"><span class="antetitulo">08</span>Relationship with the lifecycle and the <em>gates</em></h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Moment</th>
+<th>What is checked from this policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C2</strong></td>
+<td>Corporate policy approved by the board; acceptable use policy approved; annual literacy plan.</td>
+</tr>
+<tr>
+<td><strong>G0</strong></td>
+<td>Roles with F4 training or a plan to obtain it; no red lines in the proposal.</td>
+</tr>
+<tr>
+<td><strong>G3</strong></td>
+<td>Regulatory classification with no prohibited practice; no red line affected.</td>
+</tr>
+<tr>
+<td><strong>G5</strong></td>
+<td>Overseers with F3; transparency towards users implemented where applicable; compliance with 4.5.</td>
+</tr>
+<tr>
+<td><strong>R6</strong></td>
+<td>Compliant use in production; overseers with current training; no unauthorised uses associated with the process.</td>
+</tr>
+<tr>
+<td><strong>C4</strong></td>
+<td>T21 monitor reviewed by the AI Committee; exceptions reported to the board committee.</td>
+</tr>
+<tr>
+<td><strong>C5</strong></td>
+<td>Annual review of both policies and of the literacy programme.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The specific <em>gate</em> criteria are set out in document 21.</p>
+<hr />
+<h2 id="associated-tools-and-templates"><span class="antetitulo">09</span>Associated tools and templates</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Use in this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T21</strong></td>
+<td>Corporate AI use monitor</td>
+<td>Licences, unauthorised use, embedded AI, technical controls and literacy.</td>
+</tr>
+<tr>
+<td><strong>T02</strong></td>
+<td>AI system inventory</td>
+<td>Registration of authorised tools, embedded AI and unauthorised uses.</td>
+</tr>
+<tr>
+<td><strong>T08</strong></td>
+<td>Nonconformity and incident register</td>
+<td>Nonconformities due to unauthorised use and incidents reported by employees.</td>
+</tr>
+<tr>
+<td><strong>T09</strong></td>
+<td>AI supplier register</td>
+<td>Assessment of suppliers of tools and of software with embedded AI.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td>Initiative register</td>
+<td>Exceptions and move to the full cycle.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></strong></td>
+<td>AI system inventory record</td>
+<td>Registration of tools and uses.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></strong></td>
+<td>AI supplier assessment</td>
+<td>Before authorising a tool or enabling embedded AI.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
+<td>Adoption and capacity plan</td>
+<td>Training of overseers and users of initiatives.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">10</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Foundational methodology</strong></td>
+<td>Types of use (§1.2), Enterprise criteria (§9.2), nonconformities (§12).</td>
+</tr>
+<tr>
+<td><strong>13 · AI thesis, ambition and risk appetite</strong></td>
+<td>The corporate policy is approved together with the thesis in C2.</td>
+</tr>
+<tr>
+<td><strong>23 · Adoption and change</strong></td>
+<td>Training and adoption in each initiative.</td>
+</tr>
+<tr>
+<td><strong>30 · Governance model</strong></td>
+<td>Bodies that approve the policies and exceptions.</td>
+</tr>
+<tr>
+<td><strong>32 · Inventory and regulatory classification</strong></td>
+<td>Inventory fields and classification.</td>
+</tr>
+<tr>
+<td><strong>34 · Regulatory mapping</strong></td>
+<td>Obligations under Articles 4, 5, 26 and 50 of the AI Act.</td>
+</tr>
+<tr>
+<td><strong>35 · AI and agent security</strong></td>
+<td>Autonomy levels and agent controls.</td>
+</tr>
+<tr>
+<td><strong>36 · AI third parties and suppliers</strong></td>
+<td>Supplier assessment and embedded AI.</td>
+</tr>
+<tr>
+<td><strong>37 · Nonconformities and incidents</strong></td>
+<td>Classification and time limits.</td>
+</tr>
+<tr>
+<td><strong>50 · People and organisation</strong></td>
+<td>Effect on work and information to workers' representatives.</td>
+</tr>
+</tbody>
+</table></div>
+<p>This document does not constitute legal advice. The policy templates must be adapted, with qualified legal and employment law advice, to the situation of each company and jurisdiction.</p>
+<hr />
+<h2 id="version-control"><span class="antetitulo">11</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Templates for the corporate AI policy and the acceptable use policy; treatment of embedded AI, productivity suites, individual use and unauthorised use with detection, recording, classification as a nonconformity and regularisation; AI literacy programme across eight profiles with the wording of Article 4 as amended by Regulation (EU) 2026/1744; content of the T21 monitor.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":true},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+
+</body>
+</html>

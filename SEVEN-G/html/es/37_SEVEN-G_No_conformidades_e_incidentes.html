@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No conformidades, incidentes de IA y remediaci&#243;n</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · No conformidades, incidentes de IA y remediación"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/37_SEVEN-G_No_conformidades_e_incidentes.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/37_SEVEN-G_No_conformidades_e_incidentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/37_SEVEN-G_No_conformidades_e_incidentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/37_SEVEN-G_No_conformidades_e_incidentes.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 37 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 37 &#183; No conformidades e incidentes</p>
+    <h1>No conformidades, incidentes de IA y remediaci&#243;n</h1>
+    <p class="entradilla">C&#243;mo se detectan, contienen, analizan, notifican y corrigen los incumplimientos del marco y los incidentes de los sistemas de IA</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>3</b><span>tipos de no conformidad</span></div><div class="cifra"><b>4</b><span>niveles de severidad de incidentes</span></div><div class="cifra"><b>4</b><span>reg&#237;menes de notificaci&#243;n analizados</span></div><div class="cifra"><b>8</b><span>fases de respuesta a un incidente</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/37_SEVEN-G_No_conformidades_e_incidentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/37_SEVEN-G_No_conformidades_e_incidentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/37_SEVEN-G_No_conformidades_e_incidentes.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#principios"><span>02</span>Principios</a></li><li><a href="#proceso-de-no-conformidades"><span>03</span>Proceso de no conformidades</a></li><li><a href="#proceso-de-incidentes-de-ia"><span>04</span>Proceso de incidentes de IA</a></li><li><a href="#notificaciones-regulatorias"><span>05</span>Notificaciones regulatorias</a></li><li><a href="#relacion-entre-incidentes-y-no-conformidades"><span>06</span>Relación entre incidentes y no conformidades</a></li><li><a href="#registros"><span>07</span>Registros</a></li><li><a href="#indicadores"><span>08</span>Indicadores</a></li><li><a href="#informacion-al-consejo"><span>09</span>Información al consejo</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>10</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>11</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>12</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>Este documento establece dos procesos conectados:</p>
+<ol>
+<li>El <strong>proceso de no conformidades</strong>, que trata cualquier incumplimiento de un requisito obligatorio del marco (01 §12).</li>
+<li>El <strong>proceso de incidentes de IA</strong>, que trata cualquier suceso en el que un sistema de IA causa, o puede causar, un daño o una interrupción, incluidos los que obligan a notificar a autoridades.</li>
+</ol>
+<p>Se aplica a todos los sistemas del inventario —propios, de terceros y de uso corporativo— y a todas las iniciativas, con independencia de su intensidad. Complementa, sin sustituirlos, los procesos corporativos de gestión de incidentes de seguridad, de brechas de datos personales y de continuidad de negocio: cuando un incidente de IA es también un incidente de seguridad o una brecha, se gestiona <strong>una sola vez</strong>, con un único coordinador y con las especificidades de IA de este documento.</p>
+<h3 id="1-1-definiciones">1.1 Definiciones</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Definición en SEVEN-G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No conformidad</strong></td>
+<td>Incumplimiento de un requisito obligatorio del marco (&quot;debe&quot;), clasificado como menor, mayor o crítico.</td>
+</tr>
+<tr>
+<td><strong>Incidente de IA</strong></td>
+<td>Suceso en el que un sistema de IA, por su funcionamiento, fallo, manipulación o uso, causa o puede causar daño a personas, a la compañía o a terceros, o interrumpe o degrada un proceso.</td>
+</tr>
+<tr>
+<td><strong>Cuasi incidente</strong></td>
+<td>Suceso que pudo causar daño y no lo causó gracias a un control o por azar. Se registra como S4.</td>
+</tr>
+<tr>
+<td><strong>Incidente grave</strong> (Reglamento de IA)</td>
+<td>Incidente o defecto de funcionamiento de un sistema de IA que, directa o indirectamente, causa el fallecimiento o un perjuicio grave para la salud de una persona; una alteración grave e irreversible de la gestión o el funcionamiento de infraestructuras críticas; el incumplimiento de obligaciones del Derecho de la Unión destinadas a proteger los derechos fundamentales; o daños graves a la propiedad o al medio ambiente (art. 3.49).</td>
+</tr>
+<tr>
+<td><strong>Brecha de datos personales</strong></td>
+<td>Violación de la seguridad que ocasiona la destrucción, pérdida o alteración accidental o ilícita de datos personales, o su comunicación o acceso no autorizados (RGPD art. 4.12).</td>
+</tr>
+<tr>
+<td><strong>Incidente grave relacionado con las TIC</strong></td>
+<td>Incidente que cumple los criterios de clasificación de DORA (art. 18 y su desarrollo).</td>
+</tr>
+<tr>
+<td><strong>Incidente significativo</strong></td>
+<td>Incidente que cumple los criterios del art. 23.3 de NIS2 según su transposición nacional.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="1-2-referencias">1.2 Referencias</h3>
+<p>Consultadas en septiembre de 2026; deben verificarse en su versión vigente antes de aplicarse:</p>
+<ul>
+<li><strong>Reglamento (UE) 2024/1689</strong> (Reglamento de IA), arts. 3.49, 26.5, 72 y 73, modificado por el Reglamento (UE) 2026/1744 (Ómnibus digital sobre IA), que no altera el art. 73 pero aplaza al 2 de diciembre de 2027 las obligaciones de los sistemas de alto riesgo del anexo III.</li>
+<li><strong>Reglamento (UE) 2016/679 (RGPD)</strong>, arts. 33 y 34.</li>
+<li><strong>Reglamento (UE) 2022/2554 (DORA)</strong>, arts. 17 a 19, y Reglamento Delegado (UE) 2025/301 sobre contenido y plazos de las notificaciones.</li>
+<li><strong>Directiva (UE) 2022/2555 (NIS2)</strong>, art. 23. En España, la ley de transposición seguía en tramitación en la última información consultada (julio de 2026).</li>
+<li><strong>ISO/IEC 42001</strong>, requisito de no conformidad y acción correctiva (cláusula 10.2).</li>
+</ul>
+<p>Este documento no constituye asesoramiento jurídico. La decisión de notificar y su contenido deben validarse con asesoría jurídica y con el delegado de protección de datos cuando corresponda. Los criterios de clasificación y las obligaciones de notificación descritos son orientativos: la responsabilidad de la clasificación regulatoria de cada incidente y del cumplimiento, incluidos los regímenes sectoriales aplicables, es de la organización (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</p>
+<hr />
+<h2 id="principios"><span class="antetitulo">02</span>Principios</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principio</th>
+<th>Consecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Primero contener, después explicar</strong></td>
+<td>La contención no espera al análisis de causa; incluye parar el sistema si es necesario.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Ante la duda, severidad mayor</strong></td>
+<td>Se clasifica al alza y se rebaja con evidencia.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Los relojes regulatorios empiezan pronto</strong></td>
+<td>Los plazos se cuentan desde que se tiene constancia, no desde que se termina el análisis.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Sin culpables, con responsables</strong></td>
+<td>El análisis busca causas sistémicas; &quot;error humano&quot; no es una causa raíz final.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Quien causó no cierra</strong></td>
+<td>Solo el auditor de IA cierra una no conformidad; quien la origina no verifica su corrección.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Corregir aquí y en todas partes</strong></td>
+<td>Toda acción correctiva valora si el mismo fallo existe en otros sistemas.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Las evidencias se conservan</strong></td>
+<td>Registros, versiones y datos del momento del incidente se preservan antes de cambiar el sistema.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="proceso-de-no-conformidades"><span class="antetitulo">03</span>Proceso de no conformidades</h2>
+<figure class="grafico">
+  <div class="g-titulo">Gestión de no conformidades</div>
+  <div class="g-sub">Un único proceso para todas las desviaciones. Solo el auditor de IA puede cerrar una no conformidad</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 980 210" role="img" aria-label="Proceso de gestión de no conformidades en seis pasos con reauditoría y cierre">
+  <defs>
+    <marker id="nc-fl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="sv-flecha"/></marker>
+  </defs>
+  <g font-weight="700">
+    <path d="M10,40 H132 L146,77 L132,114 H10 Z" fill="#0a3d73"/>
+    <text x="24" y="66" class="sv-blanco" font-size="12" opacity=".7">1</text><text x="24" y="90" class="sv-blanco" font-size="14">Detección</text>
+    <path d="M144,40 H266 L280,77 L266,114 H144 L158,77 Z" fill="#0f5499"/>
+    <text x="168" y="66" class="sv-blanco" font-size="12" opacity=".7">2</text><text x="168" y="90" class="sv-blanco" font-size="14">Clasificación</text>
+    <path d="M278,40 H400 L414,77 L400,114 H278 L292,77 Z" fill="#990f3d"/>
+    <text x="302" y="66" class="sv-blanco" font-size="12" opacity=".7">3</text><text x="302" y="90" class="sv-blanco" font-size="14">Contención</text>
+    <path d="M412,40 H534 L548,77 L534,114 H412 L426,77 Z" fill="#0b6a73"/>
+    <text x="436" y="66" class="sv-blanco" font-size="12" opacity=".7">4</text><text x="436" y="86" class="sv-blanco" font-size="14">Análisis de</text><text x="436" y="103" class="sv-blanco" font-size="14">causa raíz</text>
+    <path d="M546,40 H668 L682,77 L668,114 H546 L560,77 Z" fill="#0d7680"/>
+    <text x="570" y="66" class="sv-blanco" font-size="12" opacity=".7">5</text><text x="570" y="86" class="sv-blanco" font-size="14">Acción</text><text x="570" y="103" class="sv-blanco" font-size="14">correctiva</text>
+    <path d="M680,40 H802 L816,77 L802,114 H680 L694,77 Z" fill="#593380"/>
+    <text x="704" y="66" class="sv-blanco" font-size="12" opacity=".7">6</text><text x="704" y="90" class="sv-blanco" font-size="14">Reauditoría</text>
+  </g>
+  <line x1="818" y1="77" x2="846" y2="77" class="sv-regla" stroke-width="1.5" marker-end="url(#nc-fl)"/>
+  <text x="832" y="30" text-anchor="middle" class="sv-t2" font-size="11.5" font-weight="700">Eficaz</text>
+  <rect x="850" y="40" width="130" height="74" fill="#1a1817"/>
+  <text x="864" y="72" class="sv-blanco" font-size="14" font-weight="700">Cierre por el</text>
+  <text x="864" y="90" class="sv-blanco" font-size="14" font-weight="700">auditor de IA</text>
+  <path d="M748,116 V160 H480 V120" class="sv-regla" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#nc-fl)"/>
+  <text x="614" y="182" text-anchor="middle" class="sv-t2" font-size="12.5" font-weight="700">No eficaz: se vuelve al análisis de causa raíz</text>
+</svg>
+  </div>
+  <div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div>
+</figure>
+
+<h3 id="3-1-deteccion">3.1 Detección</h3>
+<p>Una no conformidad puede detectarse en: verificaciones de <em>gate</em> por el auditor de IA o la oficina de IA; revisiones de continuidad (R6); auditorías internas o externas; alertas del registro de iniciativas (condiciones vencidas, evidencias pendientes, revisiones caducadas); pruebas de eficacia de controles (33 §5.3); análisis de incidentes; detección de uso no autorizado de IA; comunicaciones de empleados, clientes, proveedores o supervisores. Cualquier persona <strong>puede</strong> comunicar una posible no conformidad; la oficina de IA <strong>debe</strong> registrarla o motivar por qué no lo es.</p>
+<h3 id="3-2-registro">3.2 Registro</h3>
+<p>Toda no conformidad se registra en <strong>T08</strong> con el código <strong>NC-AAAA-NNN</strong> (año de detección y número correlativo que no se reinicia dentro del año).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Código</td>
+<td>NC-AAAA-NNN</td>
+</tr>
+<tr>
+<td>Requisito incumplido</td>
+<td>Documento, sección y texto del requisito; criterio de <em>gate</em> (<code>G&lt;n&gt;.&lt;nn&gt;</code>) o control (SEG, AG) si aplica.</td>
+</tr>
+<tr>
+<td>Descripción</td>
+<td>Qué se ha observado, con evidencia objetiva.</td>
+</tr>
+<tr>
+<td>Alcance</td>
+<td>Iniciativa (IA-AAAA-NNN), sistema, proveedor, área.</td>
+</tr>
+<tr>
+<td>Detección</td>
+<td>Fecha, fuente y persona que detecta.</td>
+</tr>
+<tr>
+<td>Tipo</td>
+<td>Menor, mayor o crítica, con justificación (3.3).</td>
+</tr>
+<tr>
+<td>Responsable de la acción</td>
+<td>Persona nominal, distinta del auditor que cerrará.</td>
+</tr>
+<tr>
+<td>Contención</td>
+<td>Acciones, fecha y efecto.</td>
+</tr>
+<tr>
+<td>Causa raíz</td>
+<td>Método usado y conclusión (3.5).</td>
+</tr>
+<tr>
+<td>Acciones</td>
+<td>Correctivas y preventivas, con responsable, plazo y estado (3.6).</td>
+</tr>
+<tr>
+<td>Verificación de eficacia</td>
+<td>Criterio, fecha, resultado y evidencia (3.7).</td>
+</tr>
+<tr>
+<td>Cierre</td>
+<td>Fecha y auditor de IA (3.8).</td>
+</tr>
+<tr>
+<td>Vínculos</td>
+<td>Incidentes (INC-AAAA-NNN), riesgos, decisiones de <em>gate</em>, recomendaciones del consejo.</td>
+</tr>
+<tr>
+<td>Estado e historial</td>
+<td>Estado actual y eventos con fecha, autor y motivo.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Estados:</strong> Abierta · Contenida · En análisis · Plan aprobado · En ejecución · Pendiente de verificación · Cerrada · Reabierta. Cualquier estado distinto de Cerrada con un plazo superado genera la marca <strong>Vencida</strong>.</p>
+<h3 id="3-3-clasificacion">3.3 Clasificación</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Criterio (basta uno)</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Crítica</strong></td>
+<td>El incumplimiento expone a la compañía o a personas a un daño grave inmediato, a una infracción legal grave o anula el control del marco sobre un sistema en producción.</td>
+<td>Sistema en producción sin <em>gate</em> aprobado; práctica prohibida; incidente grave o brecha notificable sin notificar; control crítico de agentes desactivado (35 §5.4); riesgo residual Crítico sin aprobación del consejo; interruptor de parada inoperante en un sistema A2 o A3.</td>
+</tr>
+<tr>
+<td><strong>Mayor</strong></td>
+<td>El incumplimiento afecta a la validez de una decisión, a la separación de funciones o a un control relevante, sin daño grave inmediato.</td>
+<td>Evidencias elaboradas a posteriori; autoaprobación; condición vencida en un control relevante; revisión de continuidad omitida; clasificación regulatoria no revisada tras un cambio de finalidad; proveedor N3 sin contrato con las cláusulas del nivel; control de riesgo Alto ineficaz.</td>
+</tr>
+<tr>
+<td><strong>Menor</strong></td>
+<td>Incumplimiento puntual sin impacto en decisiones ni en controles relevantes.</td>
+<td>Evidencia incompleta sin impacto en la decisión; retraso en la actualización de registros; campo obligatorio vacío en el inventario.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas de clasificación:</p>
+<ul>
+<li><strong>Reincidencia:</strong> una no conformidad menor que se repite tres veces en doce meses en la misma iniciativa o proceso se clasifica como mayor; una mayor repetida en doce meses, como crítica si afecta a sistemas en producción.</li>
+<li><strong>Acumulación:</strong> varias no conformidades de la misma causa se tratan con un único análisis, pero se registran por separado.</li>
+<li><strong>Uso no autorizado de IA:</strong> se clasifica según los datos y usos implicados; es mayor, como mínimo, si implica datos personales o confidenciales.</li>
+<li>El tipo lo propone quien detecta y lo confirma el auditor de IA; la discrepancia la resuelve el comité de IA.</li>
+</ul>
+<h3 id="3-4-contencion">3.4 Contención</h3>
+<p>La contención limita el efecto mientras se analiza la causa. Opciones, de menor a mayor intensidad: restricción de uso o de alcance; validación humana adicional temporal; bajada del nivel de autonomía; suspensión de una capacidad con el interruptor de parada; suspensión del sistema con proceso alternativo; retirada de producción. Si la no conformidad invalida un <em>gate</em>, la iniciativa vuelve al estado anterior a ese <em>gate</em> hasta su corrección. Toda contención queda registrada con fecha, decisor y efecto.</p>
+<h3 id="3-5-analisis-de-causa-raiz">3.5 Análisis de causa raíz</h3>
+<p>El análisis es obligatorio en las no conformidades mayores y críticas y recomendado en las menores repetidas. Se aplica uno de estos métodos, o ambos:</p>
+<p><strong>Cinco porqués.</strong> Se pregunta sucesivamente por qué ocurrió cada causa hasta llegar a una causa sobre la que se puede actuar y que explica el fallo del sistema de gestión, no solo el hecho. <em>Ejemplo ilustrativo:</em> un sistema pasó a producción sin <em>gate</em> → porque el equipo lo consideró un cambio menor → porque no había criterio de qué es un cambio relevante → porque el manual de operación no lo definía → porque la plantilla no lo pedía. Causa raíz: la plantilla <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> no exige criterios de cambio relevante. Acción: corregir la plantilla y revisar los sistemas afectados.</p>
+<p><strong>Diagrama de causa y efecto (Ishikawa).</strong> Se exploran las causas posibles en categorías adaptadas a la IA:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Categoría</th>
+<th>Preguntas guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Personas y capacidades</strong></td>
+<td>¿Conocían el requisito? ¿Tenían formación y tiempo? ¿Había presión para avanzar?</td>
+</tr>
+<tr>
+<td><strong>Proceso y método</strong></td>
+<td>¿El requisito estaba claro? ¿La plantilla o la lista de verificación lo recogía? ¿El flujo permitía saltarlo?</td>
+</tr>
+<tr>
+<td><strong>Datos</strong></td>
+<td>¿Cambiaron los datos, su calidad o su origen? ¿Había linaje?</td>
+</tr>
+<tr>
+<td><strong>Modelo y tecnología</strong></td>
+<td>¿Cambió el modelo, las instrucciones o la configuración? ¿Falló la monitorización?</td>
+</tr>
+<tr>
+<td><strong>Proveedores</strong></td>
+<td>¿Hubo cambios del proveedor no notificados? ¿El contrato lo cubría?</td>
+</tr>
+<tr>
+<td><strong>Gobierno y controles</strong></td>
+<td>¿Había separación de funciones? ¿El control estaba diseñado y probado? ¿El registro alertó?</td>
+</tr>
+<tr>
+<td><strong>Entorno</strong></td>
+<td>¿Cambió la regulación, el uso, el volumen o apareció un atacante?</td>
+</tr>
+</tbody>
+</table></div>
+<p>Una causa raíz es válida cuando: explica todos los hechos observados; al eliminarla, el fallo no se habría producido o se habría detectado; es accionable; y no se limita a atribuir la responsabilidad a una persona.</p>
+<h3 id="3-6-accion-correctiva-y-preventiva">3.6 Acción correctiva y preventiva</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Objetivo</th>
+<th>Ejemplo ilustrativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Corrección</strong></td>
+<td>Subsanar el hecho concreto.</td>
+<td>Completar la evidencia; revocar el permiso excesivo.</td>
+</tr>
+<tr>
+<td><strong>Acción correctiva</strong></td>
+<td>Eliminar la causa raíz para que no se repita.</td>
+<td>Añadir el criterio de cambio relevante a <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y a T03.</td>
+</tr>
+<tr>
+<td><strong>Acción preventiva</strong></td>
+<td>Evitar que la misma causa produzca el fallo en otros sistemas o iniciativas.</td>
+<td>Revisar todos los sistemas en producción con la nueva definición.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cada acción tiene responsable, plazo, criterio de eficacia y evidencia esperada. El plan lo aprueba el comité de IA en las críticas, el responsable de riesgos de IA en las mayores y la oficina de IA en las menores. Una acción que depende de otra área se acuerda con su responsable antes de aprobar el plan.</p>
+<h3 id="3-7-verificacion-de-eficacia">3.7 Verificación de eficacia</h3>
+<p>La eficacia se verifica tras un periodo de funcionamiento suficiente para demostrar que la causa no se repite: por ejemplo, el siguiente <em>gate</em> o R6, una muestra de operaciones o una prueba del control. El criterio de eficacia se fija al aprobar el plan, no al verificar. Si la acción no es eficaz, la no conformidad vuelve a <strong>En análisis</strong>.</p>
+<h3 id="3-8-cierre">3.8 Cierre</h3>
+<p><strong>Solo el auditor de IA cierra una no conformidad.</strong> En intensidad Lite, puede cerrar las menores sobre la verificación documental de la oficina de IA. El cierre exige: contención realizada, causa raíz documentada (mayores y críticas), acciones ejecutadas, eficacia verificada con evidencia y registro actualizado. Una no conformidad cerrada que reaparece por la misma causa en doce meses se <strong>reabre</strong>, no se registra como nueva.</p>
+<h3 id="3-9-reauditoria">3.9 Reauditoría</h3>
+<p>Las no conformidades críticas y mayores se reauditan: el auditor de IA comprueba, en una fecha posterior al cierre (orientativamente entre tres y seis meses), que la corrección sigue operando. Las menores se reauditan por muestreo en la auditoría del marco (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>).</p>
+<h3 id="3-10-plazos">3.10 Plazos</h3>
+<p>Los plazos son de referencia; la compañía puede ajustarlos en C2 sin superar los que establezca la regulación aplicable (01 §12). Se cuentan desde la detección salvo indicación.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Crítica</th>
+<th>Mayor</th>
+<th>Menor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Registro</strong></td>
+<td>Mismo día</td>
+<td>2 días hábiles</td>
+<td>5 días hábiles</td>
+</tr>
+<tr>
+<td><strong>Contención</strong></td>
+<td>Inmediata, máximo 48 horas, incluida la parada del sistema si es necesario</td>
+<td>Máximo 10 días</td>
+<td>No requerida</td>
+</tr>
+<tr>
+<td><strong>Causa raíz y plan de acción</strong></td>
+<td>Máximo 10 días</td>
+<td>Máximo 30 días</td>
+<td>Antes del siguiente <em>gate</em> o revisión</td>
+</tr>
+<tr>
+<td><strong>Ejecución de acciones</strong></td>
+<td>Según plan; orientativamente 60 días</td>
+<td>Según plan; orientativamente 90 días</td>
+<td>Antes del siguiente <em>gate</em> o revisión</td>
+</tr>
+<tr>
+<td><strong>Verificación de eficacia</strong></td>
+<td>En el plazo fijado en el plan</td>
+<td>En el plazo fijado en el plan</td>
+<td>En el siguiente <em>gate</em> o revisión</td>
+</tr>
+<tr>
+<td><strong>Reauditoría</strong></td>
+<td>Obligatoria</td>
+<td>Obligatoria</td>
+<td>Por muestreo</td>
+</tr>
+<tr>
+<td><strong>Informa a</strong></td>
+<td>Comité de IA y comisión delegada del consejo</td>
+<td>Comité de IA</td>
+<td>Oficina de IA</td>
+</tr>
+</tbody>
+</table></div>
+<p>Una no conformidad vencida se eleva un nivel en la línea de información: las menores vencidas, al comité de IA; las mayores vencidas, a la comisión delegada.</p>
+<hr />
+<h2 id="proceso-de-incidentes-de-ia"><span class="antetitulo">04</span>Proceso de incidentes de IA</h2>
+<figure class="grafico"><div class="g-titulo">Ciclo de un incidente de IA</div><div class="g-sub">La contenci&#243;n y la valoraci&#243;n de notificaciones empiezan a la vez</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  D["Detección"] --> T{"Triaje y severidad"}
+  T --> C["Contención, incluida la parada"]
+  T --> N["Valoración de notificaciones"]
+  C --> R["Erradicación y recuperación"]
+  N --> NR["Notificaciones en plazo"]
+  R --> CI["Cierre técnico"]
+  NR --> CI
+  CI --> A["Análisis posterior"]
+  A --> L["Lecciones, riesgos y no conformidades"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class D,T med
+  class C,N ko
+  class R,NR,CI,A,L ok
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<h3 id="4-1-tipos-de-incidente-de-ia">4.1 Tipos de incidente de IA</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rendimiento y degradación</strong></td>
+<td>Deriva fuera de umbral; aumento de errores; confabulación con efecto en decisiones.</td>
+</tr>
+<tr>
+<td><strong>Resultado dañino</strong></td>
+<td>Decisiones discriminatorias; contenido ofensivo o peligroso; recomendaciones erróneas con perjuicio.</td>
+</tr>
+<tr>
+<td><strong>Fuga de información</strong></td>
+<td>Datos personales o confidenciales en respuestas, registros o hacia terceros.</td>
+</tr>
+<tr>
+<td><strong>Acción no autorizada</strong></td>
+<td>Un agente ejecuta una acción sin intención autorizada o fuera de límites.</td>
+</tr>
+<tr>
+<td><strong>Manipulación</strong></td>
+<td>Inyección de instrucciones con éxito; envenenamiento; extracción.</td>
+</tr>
+<tr>
+<td><strong>Compromiso de identidad</strong></td>
+<td>Robo o abuso de credenciales de agentes o de identidades no humanas.</td>
+</tr>
+<tr>
+<td><strong>Indisponibilidad</strong></td>
+<td>Caída del sistema, del modelo o del proveedor con efecto en el proceso.</td>
+</tr>
+<tr>
+<td><strong>Incidente de proveedor</strong></td>
+<td>Incidente de seguridad, cambio no notificado o fallo de un tercero que afecta al sistema.</td>
+</tr>
+<tr>
+<td><strong>Ataque con IA ofensiva</strong></td>
+<td>Fraude con suplantación sintética, <em>phishing</em> generado, explotación acelerada.</td>
+</tr>
+<tr>
+<td><strong>Uso indebido</strong></td>
+<td>Uso para una finalidad no autorizada o por personas no autorizadas.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-2-severidad">4.2 Severidad</h3>
+<p>La severidad se asigna en el triaje con el criterio más grave que se cumpla y se revisa durante el incidente. Los ejes de impacto son los del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> §4.2.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Severidad</th>
+<th>Criterios (basta uno)</th>
+<th>Ejemplos ilustrativos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 · Crítica</strong></td>
+<td>Posible incidente grave según el Reglamento de IA; posible incidente grave de DORA o significativo de NIS2 cuando apliquen; brecha de datos personales con probable alto riesgo para las personas; acción no autorizada de un agente con efecto sobre dinero, terceros, datos personales o sistemas de producción; daño a personas o discriminación a escala; interrupción de una función crítica fuera de su tolerancia; impacto 5 en cualquier eje.</td>
+<td>Un agente emite pagos no autorizados; un sistema de selección descarta sistemáticamente a un colectivo; fuga masiva de datos de clientes por la recuperación de información; fraude consumado mediante videollamada suplantada.</td>
+</tr>
+<tr>
+<td><strong>S2 · Alta</strong></td>
+<td>Impacto 4 en algún eje; brecha de datos personales notificable a la autoridad sin alto riesgo para las personas; errores repetidos visibles para clientes; compromiso de una identidad de agente contenido antes de causar efecto; fallo de un control crítico sin daño; incidente relevante de un proveedor N3.</td>
+<td>Credencial de un agente expuesta y revocada sin uso detectado; asistente a clientes con respuestas erróneas sobre condiciones durante horas.</td>
+</tr>
+<tr>
+<td><strong>S3 · Media</strong></td>
+<td>Impacto 3; degradación fuera de umbral en un proceso relevante; inyección de instrucciones con éxito sin acción sensible; fuga interna limitada sin riesgo para las personas.</td>
+<td>Deriva que eleva los errores de clasificación de documentos internos; un usuario obtiene las instrucciones del sistema.</td>
+</tr>
+<tr>
+<td><strong>S4 · Baja</strong></td>
+<td>Impacto 1–2; cuasi incidentes; intentos bloqueados que revelan una amenaza nueva.</td>
+<td>Intentos de inyección bloqueados por el control de intención; indisponibilidad breve sin efecto.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-3-tiempos-de-respuesta-orientativos">4.3 Tiempos de respuesta orientativos</h3>
+<p>Se aprueban en C2 y deben ser compatibles con los plazos regulatorios de la sección 5.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Actividad</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+<th>S4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Triaje y severidad desde la detección</td>
+<td>1 hora</td>
+<td>4 horas</td>
+<td>1 día hábil</td>
+<td>5 días hábiles</td>
+</tr>
+<tr>
+<td>Coordinador de incidente designado</td>
+<td>Inmediato</td>
+<td>Inmediato</td>
+<td>En el triaje</td>
+<td>No requerido</td>
+</tr>
+<tr>
+<td>Valoración de notificaciones regulatorias</td>
+<td>Inmediata, en paralelo a la contención</td>
+<td>En 24 horas</td>
+<td>En el triaje</td>
+<td>En el triaje</td>
+</tr>
+<tr>
+<td>Información al comité de IA</td>
+<td>4 horas</td>
+<td>24 horas</td>
+<td>Informe mensual</td>
+<td>Informe mensual</td>
+</tr>
+<tr>
+<td>Información a la comisión delegada del consejo</td>
+<td>24 horas</td>
+<td>Informe trimestral</td>
+<td>Informe trimestral</td>
+<td>Agregado</td>
+</tr>
+<tr>
+<td>Análisis posterior</td>
+<td>10 días hábiles tras el cierre técnico</td>
+<td>20 días hábiles</td>
+<td>30 días, simplificado</td>
+<td>En R6</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-4-roles-durante-el-incidente">4.4 Roles durante el incidente</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Quién</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Coordinador del incidente</strong></td>
+<td>Responsable de operación de IA o gestor de incidentes corporativo</td>
+<td>Dirige la respuesta, decide la contención dentro de su autoridad, mantiene la cronología.</td>
+</tr>
+<tr>
+<td><strong>Responsable técnico</strong></td>
+<td>Responsable técnico de IA</td>
+<td>Diagnóstico, contención técnica, recuperación, conservación de evidencias.</td>
+</tr>
+<tr>
+<td><strong>Seguridad de la información</strong></td>
+<td>Equipo de seguridad</td>
+<td>Incidentes con componente de ataque, compromiso de identidades, forense.</td>
+</tr>
+<tr>
+<td><strong>Riesgos y cumplimiento</strong></td>
+<td>Responsable de riesgos de IA y cumplimiento</td>
+<td>Valoración regulatoria y de notificaciones; conexión con no conformidades.</td>
+</tr>
+<tr>
+<td><strong>Protección de datos</strong></td>
+<td>Delegado de protección de datos</td>
+<td>Brechas de datos personales; notificación a la autoridad de control y comunicación a interesados.</td>
+</tr>
+<tr>
+<td><strong>Jurídico</strong></td>
+<td>Asesoría jurídica</td>
+<td>Validación de notificaciones, relación con autoridades, proveedores y afectados.</td>
+</tr>
+<tr>
+<td><strong>Comunicación</strong></td>
+<td>Comunicación corporativa</td>
+<td>Comunicación interna y externa coordinada.</td>
+</tr>
+<tr>
+<td><strong>Decisor de parada</strong></td>
+<td>Patrocinador de IA o, en S1 fuera de horario, el responsable de operación con ratificación posterior</td>
+<td>Autoriza la parada del sistema cuando excede la autoridad del coordinador.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-5-fases">4.5 Fases</h3>
+<p><strong>1. Detección.</strong> Fuentes: monitorización y alertas (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), controles de agentes (bloqueos, límites, anomalías), usuarios y clientes, supervisión humana, proveedores, equipo de seguridad, auditoría, autoridades o terceros. Toda posible incidencia se registra en T08 con fecha y hora de detección: es el inicio de los relojes regulatorios.</p>
+<p><strong>2. Triaje.</strong> Confirmar el incidente, asignar tipo y severidad, identificar sistemas, datos, personas y proveedores afectados, designar coordinador y abrir la valoración de notificaciones.</p>
+<p><strong>3. Contención.</strong> Limitar el daño de inmediato. Criterios para <strong>parar el sistema</strong> (total o por capacidad con el interruptor de parada):</p>
+<ul>
+<li>Daño en curso a personas, dinero, datos o terceros que los controles no detienen.</li>
+<li>Acción no autorizada de un agente o sospecha de agente comprometido.</li>
+<li>Fuga de datos activa.</li>
+<li>Resultados discriminatorios o peligrosos que siguen produciéndose.</li>
+<li>Imposibilidad de determinar en poco tiempo si el sistema es seguro.</li>
+</ul>
+<p>La parada activa el proceso alternativo previsto en el plan de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) y el manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>). Antes de modificar el sistema se <strong>conservan las evidencias</strong>: registros, versiones de modelo e instrucciones, configuraciones, entradas y salidas relevantes. El Reglamento de IA exige que el proveedor de un sistema de alto riesgo no altere el sistema de forma que pueda afectar a la evaluación posterior de las causas antes de informar a las autoridades (art. 73.6).</p>
+<p><strong>4. Erradicación y recuperación.</strong> Eliminar la causa inmediata (revocar credenciales, corregir configuración, retirar contenido envenenado, revertir versión), validar que el sistema funciona dentro de umbrales con pruebas —incluidas pruebas adversarias si hubo manipulación— y reanudar con autorización del decisor. Tras un S1 o S2 relacionado con la autonomía de un agente, la reanudación se hace con un nivel de autonomía inferior hasta completar el análisis posterior (35 §5.2).</p>
+<p><strong>5. Comunicación.</strong> Interna, al comité de IA y al consejo según 4.3; a afectados y clientes cuando proceda o lo exija la regulación; a proveedores implicados. Toda comunicación externa la valida jurídico y comunicación.</p>
+<p><strong>6. Notificaciones regulatorias.</strong> Según la sección 5, en paralelo a la contención.</p>
+<p><strong>7. Análisis posterior.</strong> Cronología; causa inmediata y causa raíz (3.5); eficacia de controles y de la respuesta; cumplimiento de plazos; daño y coste con su estado de validación; riesgos del registro que debían haberlo previsto; acciones. Se realiza sin buscar culpables y lo revisa el responsable de riesgos de IA.</p>
+<p><strong>8. Lecciones.</strong> Actualización del registro de riesgos (33), de los controles (35), de los proveedores (36), de las plantillas y de los escenarios de prueba; apertura de no conformidades cuando proceda (sección 6); comunicación de lecciones a otras iniciativas con tecnología o proveedores comunes.</p>
+<hr />
+<h2 id="notificaciones-regulatorias"><span class="antetitulo">05</span>Notificaciones regulatorias</h2>
+<p>Un mismo incidente puede activar varios regímenes a la vez. El responsable de riesgos y cumplimiento <strong>debe</strong> valorarlos todos en paralelo y registrar tanto las notificaciones realizadas como la <strong>decisión motivada de no notificar</strong>. Se admite, y es preferible, una notificación inicial incompleta en plazo a una completa fuera de plazo, cuando la norma lo prevé.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Régimen</th>
+<th>Quién notifica</th>
+<th>Qué</th>
+<th>A quién</th>
+<th>Plazos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reglamento de IA, art. 73</strong></td>
+<td>Proveedor del sistema de alto riesgo. El responsable del despliegue que detecta un incidente grave informa <strong>inmediatamente</strong> primero al proveedor y después al importador o distribuidor y a las autoridades de vigilancia del mercado (art. 26.5).</td>
+<td>Incidente grave (art. 3.49).</td>
+<td>Autoridad de vigilancia del mercado del Estado miembro donde se produjo. Tras el Ómnibus, los proveedores de sistemas de competencia de la Oficina de IA notifican a esta.</td>
+<td>Inmediatamente después de establecer un vínculo causal o una probabilidad razonable de tal vínculo y, en todo caso, <strong>no más tarde de 15 días</strong> desde que se tiene conocimiento. <strong>2 días</strong> si hay infracción generalizada o alteración grave e irreversible de infraestructuras críticas. <strong>10 días</strong> en caso de fallecimiento. Se puede presentar un informe inicial incompleto y completarlo después.</td>
+</tr>
+<tr>
+<td><strong>RGPD, arts. 33 y 34</strong></td>
+<td>Responsable del tratamiento. El encargado notifica al responsable sin dilación indebida.</td>
+<td>Brecha de datos personales, salvo que sea improbable que constituya un riesgo para los derechos y libertades.</td>
+<td>Autoridad de control competente (en España, la Agencia Española de Protección de Datos, salvo tratamientos transfronterizos con otra autoridad principal). Comunicación a los interesados si es probable un alto riesgo.</td>
+<td>Autoridad: sin dilación indebida y, a más tardar, <strong>72 horas</strong> desde que se tiene constancia; fuera de plazo, con motivación; información por fases si no está disponible. Interesados: sin dilación indebida. Todas las brechas se documentan, se notifiquen o no.</td>
+</tr>
+<tr>
+<td><strong>DORA, art. 19</strong></td>
+<td>Entidad financiera sujeta a DORA.</td>
+<td>Incidente grave relacionado con las TIC; notificación voluntaria de ciberamenazas significativas.</td>
+<td>Autoridad competente. Información a clientes cuando el incidente afecta a sus intereses financieros.</td>
+<td>Notificación inicial en <strong>4 horas</strong> desde la clasificación como grave y no más tarde de <strong>24 horas</strong> desde que se tiene conocimiento; informe intermedio en <strong>72 horas</strong> desde la notificación inicial; informe final <strong>un mes</strong> después del último informe intermedio (Reglamento Delegado (UE) 2025/301).</td>
+</tr>
+<tr>
+<td><strong>NIS2, art. 23</strong></td>
+<td>Entidad esencial o importante según la transposición nacional.</td>
+<td>Incidente significativo.</td>
+<td>CSIRT o autoridad competente. Destinatarios del servicio cuando proceda.</td>
+<td>Alerta temprana en <strong>24 horas</strong>; notificación del incidente en <strong>72 horas</strong>; informe final <strong>un mes</strong> después de la notificación; informes intermedios a petición. Verificar la norma nacional de transposición.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas adicionales:</p>
+<ul>
+<li><strong>DORA y NIS2.</strong> Para las entidades financieras, DORA actúa como norma sectorial específica respecto de NIS2 en la notificación de incidentes; se confirma el régimen aplicable en el mapeo regulatorio (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</li>
+<li><strong>Aplicabilidad del art. 73.</strong> Afecta a los sistemas de alto riesgo, cuyas obligaciones del anexo III se aplican desde el 2 de diciembre de 2027. Hasta entonces, la compañía <strong>debería</strong> aplicar el criterio de incidente grave como umbral interno de S1 y documentar su valoración. El art. 73 prevé un régimen limitado cuando existen obligaciones sectoriales de notificación equivalentes (art. 73.9 y 73.10).</li>
+<li><strong>Modelos de propósito general con riesgo sistémico.</strong> Sus proveedores tienen obligaciones propias de notificación a la Oficina de IA (art. 55); la compañía, como usuaria, colabora a través del contrato (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
+<li><strong>Regulación sectorial y contractual.</strong> Supervisores sectoriales, esquemas de seguridad del sector público y contratos con clientes pueden imponer notificaciones adicionales. Se recogen en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>) y en el plan de respuesta (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
+<li><strong>Proveedores.</strong> Los contratos N2 y N3 deben asegurar que el proveedor notifica en un plazo que permita cumplir estos plazos (36 §6, cláusula 7).</li>
+<li><strong>Ensayo.</strong> Las notificaciones se ensayan, como mínimo, una vez al año en un simulacro de incidente S1.</li>
+</ul>
+<p>Omitir o retrasar una notificación obligatoria es una no conformidad crítica (01 §12).</p>
+<hr />
+<h2 id="relacion-entre-incidentes-y-no-conformidades"><span class="antetitulo">06</span>Relación entre incidentes y no conformidades</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Tratamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El incidente revela que un requisito del marco no se cumplía (control no implantado, <em>gate</em> omitido, contrato sin cláusula).</td>
+<td>Se abre una no conformidad vinculada al incidente. El tipo se determina por el requisito incumplido, no por la severidad del incidente.</td>
+</tr>
+<tr>
+<td>El incidente ocurre con todos los requisitos cumplidos.</td>
+<td>No hay no conformidad. Las lecciones actualizan riesgos, controles y, si procede, el propio marco.</td>
+</tr>
+<tr>
+<td>La gestión del incidente incumple el proceso (notificación fuera de plazo, evidencias no conservadas, análisis posterior omitido).</td>
+<td>No conformidad de la gestión, además de las que revele el incidente.</td>
+</tr>
+<tr>
+<td>Una no conformidad crítica se detecta antes de causar daño.</td>
+<td>Se registra un cuasi incidente S4 si hubo exposición real, además de la no conformidad.</td>
+</tr>
+<tr>
+<td>Un riesgo registrado se materializa.</td>
+<td>Incidente; el riesgo pasa a estado <em>Materializado</em> y se revalora (33 §7.2).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un incidente se cierra cuando se completan el análisis posterior y la asignación de acciones; las acciones se siguen en las no conformidades o en el registro de riesgos, sin mantener el incidente abierto.</p>
+<hr />
+<h2 id="registros"><span class="antetitulo">07</span>Registros</h2>
+<h3 id="7-1-registro-de-incidentes">7.1 Registro de incidentes</h3>
+<p>Se implanta con la plantilla <strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong> y la herramienta <strong>T08</strong>, con el código <strong>INC-AAAA-NNN</strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Campos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identificación</strong></td>
+<td>Código; título; descripción comprensible; sistema e iniciativa; proveedor implicado.</td>
+</tr>
+<tr>
+<td><strong>Clasificación</strong></td>
+<td>Tipo (4.1); severidad inicial y final con justificación; origen (atacante externo, agente propio manipulado, proveedor, interno, fallo técnico).</td>
+</tr>
+<tr>
+<td><strong>Tiempos</strong></td>
+<td>Fecha y hora de inicio estimado, detección, triaje, contención, recuperación y cierre; horas hasta detectar, contener y resolver.</td>
+</tr>
+<tr>
+<td><strong>Afectación</strong></td>
+<td>Personas afectadas (número y tipo); datos personales afectados (sí o no, categorías); procesos y funciones; impacto por eje (33 §4.2).</td>
+</tr>
+<tr>
+<td><strong>Respuesta</strong></td>
+<td>Coordinador; acciones de contención; activación del interruptor de parada (sí o no, hora, tiempo de efecto); reversión; proceso alternativo.</td>
+</tr>
+<tr>
+<td><strong>Notificaciones</strong></td>
+<td>Por régimen: aplica o no con motivo; fecha y hora; autoridad; referencia; plazo cumplido. Comunicaciones a afectados.</td>
+</tr>
+<tr>
+<td><strong>Análisis</strong></td>
+<td>Causa inmediata; causa raíz; controles que fallaron o funcionaron; riesgos del registro vinculados.</td>
+</tr>
+<tr>
+<td><strong>Coste</strong></td>
+<td>Daño y coste de respuesta, con estado validado, declarado o estimado.</td>
+</tr>
+<tr>
+<td><strong>Seguimiento</strong></td>
+<td>No conformidades abiertas (NC-AAAA-NNN); acciones; lecciones; estado.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Estados:</strong> Detectado · En triaje · En contención · Contenido · En recuperación · Resuelto · Cerrado.</p>
+<h3 id="7-2-registro-de-cambios">7.2 Registro de cambios</h3>
+<p>La plantilla <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> incluye también el registro de cambios relevantes en producción, porque muchos incidentes de IA se originan en cambios: fecha, sistema, tipo de cambio (modelo, versión del proveedor, instrucciones, herramientas, permisos, nivel de autonomía, datos, umbrales), motivo, evaluación previa realizada, aprobador, resultado y vínculo con incidentes posteriores.</p>
+<hr />
+<h2 id="indicadores"><span class="antetitulo">08</span>Indicadores</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Definición</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Incidentes por severidad y tipo</td>
+<td>Número por periodo, sistema, proveedor y tipo.</td>
+<td>Tendencia y focos.</td>
+</tr>
+<tr>
+<td>Tiempo hasta detectar</td>
+<td>Mediana de horas entre inicio estimado y detección.</td>
+<td>Eficacia de la monitorización.</td>
+</tr>
+<tr>
+<td>Tiempo hasta contener</td>
+<td>Mediana de horas entre detección y contención, por severidad.</td>
+<td>Eficacia de la respuesta y del interruptor de parada.</td>
+</tr>
+<tr>
+<td>Notificaciones en plazo</td>
+<td>Porcentaje de notificaciones regulatorias dentro de plazo.</td>
+<td>Objetivo: 100 %.</td>
+</tr>
+<tr>
+<td>Incidentes sin riesgo previo</td>
+<td>Porcentaje de incidentes cuyo riesgo no estaba en el registro.</td>
+<td>Calidad de la identificación de riesgos.</td>
+</tr>
+<tr>
+<td>Recurrencia</td>
+<td>Incidentes con la misma causa raíz en doce meses.</td>
+<td>Eficacia de las acciones correctivas.</td>
+</tr>
+<tr>
+<td>No conformidades abiertas</td>
+<td>Por tipo y antigüedad.</td>
+<td>Carga de corrección.</td>
+</tr>
+<tr>
+<td>No conformidades vencidas</td>
+<td>Por tipo.</td>
+<td>Disciplina de corrección.</td>
+</tr>
+<tr>
+<td>Eficacia a la primera</td>
+<td>Porcentaje de no conformidades cerradas sin volver a análisis.</td>
+<td>Calidad del análisis de causa.</td>
+</tr>
+<tr>
+<td>Reaperturas</td>
+<td>No conformidades reabiertas en doce meses.</td>
+<td>Solidez de los cierres.</td>
+</tr>
+<tr>
+<td>Tiempo medio de cierre</td>
+<td>Días desde la detección hasta el cierre, por tipo.</td>
+<td>Agilidad.</td>
+</tr>
+<tr>
+<td>Simulacros</td>
+<td>Simulacros de S1 realizados y hallazgos.</td>
+<td>Preparación.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="informacion-al-consejo"><span class="antetitulo">09</span>Información al consejo</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Incidente S1</strong></td>
+<td>Comunicación a la comisión delegada en 24 horas: qué ha ocurrido, a quién afecta, qué se ha contenido, qué notificaciones se han hecho o están en plazo, qué decisiones pueden requerirse.</td>
+</tr>
+<tr>
+<td><strong>Trimestral</strong></td>
+<td>Incidentes S1 y S2 con estado; notificaciones regulatorias y su cumplimiento; no conformidades críticas y mayores abiertas y vencidas; tendencias de los indicadores; lecciones sistémicas; incidentes de proveedores; decisiones solicitadas.</td>
+</tr>
+<tr>
+<td><strong>Anual (C5)</strong></td>
+<td>Eficacia de los procesos de incidentes y no conformidades; recurrencias; resultados de simulacros; ajustes propuestos a plazos y umbrales.</td>
+</tr>
+</tbody>
+</table></div>
+<p>La información al consejo usa el formato del <a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a> y distingue siempre hechos confirmados de valoraciones en curso.</p>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">10</span>Herramientas y plantillas asociadas</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></strong></td>
+<td>Plan de respuesta a incidentes</td>
+<td>Tipos y severidad aplicables al sistema; contactos y roles; criterios y procedimiento de parada; conservación de evidencias; matriz de notificaciones con plazos y responsables; plantillas de comunicación; calendario de simulacros. Fase 6; se prepara antes de G5.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong></td>
+<td>Registro de incidentes y cambios</td>
+<td>Campos de la sección 7. Fase 6.</td>
+</tr>
+<tr>
+<td><strong>T08</strong></td>
+<td>Registro de no conformidades e incidentes</td>
+<td>Registro de NC-AAAA-NNN e INC-AAAA-NNN con estados, plazos, relojes de notificación, alertas de vencimiento, vínculos con riesgos y <em>gates</em>, e indicadores de la sección 8. Módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>Plan de reversión · Manual de operación · Monitorización y alertas</td>
+<td>Proceso alternativo, interruptor de parada y detección.</td>
+</tr>
+<tr>
+<td>T06 · T09 · <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td>Riesgos · Proveedores · Panel del consejo</td>
+<td>Riesgos materializados, incidentes de terceros e información al consejo.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">11</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Metodología fundacional</strong></td>
+<td>Sección 12 (no conformidades), reglas de <em>gate</em> y firma multinivel.</td>
+</tr>
+<tr>
+<td><strong>21 · Criterios de <em>gate</em> y auditoría</strong> · <strong>38 · Marco de auditoría de IA</strong></td>
+<td>Detección de no conformidades en <em>gates</em> y auditorías; reauditoría.</td>
+</tr>
+<tr>
+<td><strong>33 · Metodología de riesgos de IA</strong></td>
+<td>Ejes de impacto, riesgos materializados y controles ineficaces.</td>
+</tr>
+<tr>
+<td><strong>34 · Mapeo regulatorio</strong></td>
+<td>Regímenes de notificación aplicables a cada sistema.</td>
+</tr>
+<tr>
+<td><strong>35 · Seguridad de IA y agentes</strong></td>
+<td>Controles críticos, interruptor de parada e incidentes de seguridad.</td>
+</tr>
+<tr>
+<td><strong>36 · Terceros y proveedores de IA</strong></td>
+<td>Notificación de incidentes por proveedores.</td>
+</tr>
+<tr>
+<td><strong>52 · Manual de operación de IA</strong></td>
+<td>Operación diaria de la detección y la respuesta.</td>
+</tr>
+<tr>
+<td><strong>60 · Paquete para el consejo</strong></td>
+<td>Formato de la información al consejo.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">12</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>Primera versión. Desarrolla el proceso de no conformidades de 01 §12 con registro, clasificación, contención, análisis de causa raíz, acciones, verificación, cierre por el auditor de IA, reauditoría y plazos; define el proceso de incidentes de IA con severidad S1–S4, tiempos de respuesta, criterios de parada y conservación de evidencias; analiza las notificaciones del Reglamento de IA, el RGPD, DORA y NIS2; y fija registros, indicadores e información al consejo.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve a las empresas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":true},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>
