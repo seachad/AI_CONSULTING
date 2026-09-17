@@ -1,6 +1,8 @@
-# 03 — SEVEN-G Skills Map (Execution Order: THIRD)
+# 03 — SPAD Skills Map (Execution Order: THIRD)
 
-SPAD is the foundational skill in the SEVEN-G framework.
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
+
+SPAD is an independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI).
 
 ## SPAD as Foundation
 
@@ -35,7 +37,7 @@ All other SEVEN-G skills depend on SPAD core capabilities:
 - Autonomous action governance
 
 **Why SPAD is required:**  
-Agent behavior without prior architectural planning leads to unsafe autonomy. SPAD guarantees reasoning separation and auditability.
+Agent behavior without prior architectural planning leads to unsafe autonomy. SPAD is designed to enforce reasoning separation and auditability.
 
 **Example:** An autonomous trading agent requires PLAN to define risk boundaries, AUDIT to validate safety mechanisms, and SECURITY_AUDIT to ensure it can't exceed authorization limits.
 
@@ -162,7 +164,7 @@ DevOps without quality gates deploys bugs faster. SPAD phases become automated g
 - Audit report generation
 - Gap analysis
 - Remediation tracking
-- Certification support
+- Evidence support for the organization's own external certification processes (SPAD itself does not certify)
 
 **Why SPAD is required:**  
 Compliance requires full traceability. SPAD artifacts provide evidence of: design decisions, security measures, testing rigor, and change control.
@@ -245,5 +247,5 @@ Growing library of validated skills.
 
 **Status:** Official SEVEN-G Skills Map  
 **Owner:** Seachad (FGV)  
-**Framework:** SEVEN-G  
+**Relationship:** Independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI)  
 **Generated with assistance from GitHub Copilot**

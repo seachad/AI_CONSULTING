@@ -1,4 +1,6 @@
-# 04 — SEVEN-G SPAD Context & TOPIC Management
+# 04 — SPAD Context & TOPIC Management
+
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
 
 ---
 
@@ -107,7 +109,7 @@ When GLOBAL_CONTEXT and PROJECT_CONTEXT conflict:
 1. **PROJECT_CONTEXT prevails** - if conflict is explicitly justified
 2. **Justification is mandatory** - must document why the override is necessary
 3. **Risk assessment required** - document the risk of deviating from global rule
-4. **Auditor approval needed** - AUDIT_PLAN must explicitly approve the override
+4. **AI Reviewer approval needed** - AUDIT_PLAN must explicitly approve the override
 
 **Example of valid override:**
 ```markdown
@@ -122,7 +124,7 @@ legacy code coverage increases 10% per sprint.
 
 Risk: Lower coverage in short term, mitigated by phased approach.
 
-Auditor: APPROVED (AUDIT_PLAN Phase 2, 2026-02-10)
+AI Reviewer: APPROVED (AUDIT_PLAN Phase 2, 2026-02-10)
 ```
 
 ---
@@ -298,6 +300,6 @@ Before starting any SPAD workflow:
 ---
 
 **Owner:** Seachad (FGV)  
-**Framework:** SEVEN-G  
+**Relationship:** Independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI)  
 **Status:** Official SPAD Documentation  
 **Generated with assistance from GitHub Copilot**

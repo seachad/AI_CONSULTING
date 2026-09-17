@@ -1,6 +1,8 @@
 # SPAD — Structured Prompt-Driven AI Engineering
 ## Executive Overview for Clients
 
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
+
 ---
 
 ## What is SPAD?
@@ -10,7 +12,7 @@
 ### The Problem SPAD Solves
 
 When organizations use AI to generate code without structure:
-- 🚨 **60-80% of AI-generated code requires significant rework**
+- 🚨 **AI-generated code frequently requires significant rework**
 - 🚨 **Design decisions are hidden or undocumented**
 - 🚨 **Security vulnerabilities are introduced silently**
 - 🚨 **Technical debt accumulates rapidly**
@@ -27,7 +29,7 @@ SPAD enforces a **rigorous workflow** where AI:
 - ✅ **Generates tests automatically** - Quality is built-in
 - ✅ **Documents everything** - Full traceability for compliance
 
-**Result:** Production-ready code, lower technical debt, faster time-to-market, compliance-ready documentation.
+**Intended outcome:** Production-ready code, lower technical debt, faster time-to-market, compliance-ready documentation (to be measured by each organization against its own baseline).
 
 ---
 
@@ -40,7 +42,7 @@ SPAD enforces a **rigorous workflow** where AI:
 - **Predictable outcomes** through structured process
 
 ### 2. Cost Reduction
-- **70% less rework** by catching issues in design phase
+- **Less rework** by catching issues in design phase (improvement to be measured against each organization's baseline)
 - **Lower technical debt** through disciplined approach
 - **Faster onboarding** with clear methodology
 - **Reduced debugging time** with proper testing
@@ -88,7 +90,7 @@ Each phase:
 ## SPAD Workflows for Different Scenarios
 
 ### 1. New Feature Development
-**Time:** 2-5 hours for typical feature  
+**Time:** indicative; depends on the team and the scope  
 **Output:** Fully tested, documented, versioned code ready for production
 
 **Phases:**
@@ -104,7 +106,7 @@ Each phase:
 ---
 
 ### 2. Legacy Code Modernization
-**Time:** 1-3 hours for analysis + standard development  
+**Time:** analysis + standard development; indicative, depends on the team and the scope  
 **Output:** Documented legacy behavior + safe modernization plan
 
 **Phases:**
@@ -118,7 +120,7 @@ Each phase:
 ---
 
 ### 3. Production Incidents (Hotfix)
-**Time:** 1-3 hours for P1/P2 incidents  
+**Time:** indicative for P1/P2 incidents; depends on the team and the scope  
 **Output:** Root cause analysis + validated fix + post-mortem
 
 **Phases:**
@@ -134,7 +136,7 @@ Each phase:
 ---
 
 ### 4. Security Review
-**Time:** 1-6 hours depending on code complexity  
+**Time:** indicative; depends on the team, the scope and code complexity  
 **Output:** Vulnerability report + fixes + risk documentation
 
 **Phases:**
@@ -149,18 +151,18 @@ Each phase:
 
 ## SPAD Success Metrics
 
-Organizations using SPAD typically see:
+SPAD pursues the following objectives. They are hypotheses to be measured, not observed results: each organization must establish its own baseline and measure any change.
 
-| Metric | Improvement |
+| Metric | Objective |
 |--------|-------------|
-| Rework Required | ↓ 70% |
-| Time to Production | ↓ 40% |
-| Production Incidents | ↓ 60% |
-| Technical Debt | ↓ 50% |
-| Audit Preparation Time | ↓ 80% |
-| Developer Onboarding | ↓ 50% |
-| Code Review Time | ↓ 40% |
-| Test Coverage | ↑ 200% |
+| Rework Required | ↓ Reduce |
+| Time to Production | ↓ Reduce |
+| Production Incidents | ↓ Reduce |
+| Technical Debt | ↓ Reduce |
+| Audit Preparation Time | ↓ Reduce |
+| Developer Onboarding | ↓ Reduce |
+| Code Review Time | ↓ Reduce |
+| Test Coverage | ↑ Increase |
 
 ---
 
@@ -206,7 +208,7 @@ All artifacts grouped by feature/bug. This enables:
 - Efficient knowledge retrieval
 
 ### 5. Validation Policy
-Human-enforced rules for AI responses. This guarantees:
+Human-enforced rules for AI responses. This is intended to ensure:
 - Process compliance over output quality
 - No shortcuts or violations
 - Continuous process improvement
@@ -221,16 +223,16 @@ Human-enforced rules for AI responses. This guarantees:
 - **Process Integration:** 2-4 weeks for adoption
 
 ### Ongoing Cost
-- **Minimal overhead:** 10-15% slower initially
-- **Becomes faster:** After team familiarity (2-3 weeks)
-- **Net improvement:** 30-40% faster with higher quality
+- **Initial overhead:** slower at first, while the team learns the phases
+- **Expected to become faster:** after team familiarity (hypothesis to be measured)
+- **Intended net improvement:** faster delivery with higher quality (hypothesis to be measured)
 
-### ROI Timeline
-- **Week 1-2:** Slower (learning curve)
-- **Week 3-4:** Break-even (same speed, better quality)
-- **Month 2+:** 30-40% faster with 70% less rework
+### Expected Return (hypothesis)
+- **Early adoption:** slower (learning curve)
+- **After familiarity:** break-even is expected, with better quality
+- **Later:** faster delivery with less rework is expected
 
-**Typical ROI:** 300-500% in first year
+No return on investment figure is claimed. Any ROI must be measured by each organization against its own baseline.
 
 ---
 
@@ -284,21 +286,22 @@ Human-enforced rules for AI responses. This guarantees:
 
 ---
 
-## SPAD Certification
+## SPAD Self-Assessment of Conformity
 
-Organizations can achieve **SPAD-Compliant™ certification** for:
+Organizations can carry out a **SPAD self-assessment of conformity** for:
 - Individual projects
 - Products
 - Teams
 - Entire organizations
 
-**Certification provides:**
-- Formal quality assurance
-- Reduced operational risk
-- Easier external audits
+This is not a certification: it is performed by the organization itself and is not issued or endorsed by Seachad or any third party.
+
+**The self-assessment is intended to provide:**
+- Internal evidence of quality practices
+- Help in reducing operational risk
+- Better-prepared evidence for external audits
 - Strong accountability
 - Clear definition of "done"
-- Marketing differentiation (internal use)
 
 ---
 
@@ -315,7 +318,7 @@ Organizations can achieve **SPAD-Compliant™ certification** for:
 - Customized contexts
 - Hands-on training
 - Pilot project support
-- Certification path
+- Support for conformity self-assessment (not a certification)
 
 ### Option 3: Full Partnership
 - Complete implementation
@@ -328,13 +331,13 @@ Organizations can achieve **SPAD-Compliant™ certification** for:
 
 ## Why Choose SPAD?
 
-**Proven:** Based on software engineering best practices  
-**Practical:** Used in production systems today  
+**Grounded:** Based on software engineering best practices  
+**Practical:** Designed for production use  
 **Flexible:** Adapts to your tech stack and domain  
 **Comprehensive:** Covers full development lifecycle  
 **Safe:** Reduces risk while increasing speed  
 **Auditable:** Compliance-ready by design  
-**Scalable:** Works for team of 5 or 500  
+**Scalable:** Designed to scale from small to large teams  
 
 ---
 
@@ -364,11 +367,10 @@ Organizations can achieve **SPAD-Compliant™ certification** for:
 
 ## Contact & More Information
 
-**SPAD** is developed and maintained by **Seachad (SEVEN-G Framework)**
+**SPAD** is developed and maintained by **Seachad**. It is an independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI).
 
 For more information:
 - Technical documentation available in repository
-- Case studies and examples available
 - Training materials and workshops available
 - Custom implementation support available
 
@@ -386,5 +388,5 @@ For more information:
 
 ---
 
-*This document is part of the SEVEN-G Framework by Seachad*  
+*SPAD is an independent methodology by Seachad, related to SEVEN-G and referenced from its document 53 (building solutions with AI)*  
 *Generated with assistance from GitHub Copilot*

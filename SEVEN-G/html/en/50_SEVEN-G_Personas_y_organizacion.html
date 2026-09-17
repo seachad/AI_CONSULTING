@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People and organisation</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · People and organisation"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/50_SEVEN-G_Personas_y_organizacion.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/50_SEVEN-G_Personas_y_organizacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/50_SEVEN-G_Personas_y_organizacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/50_SEVEN-G_Personas_y_organizacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 50 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 50 &#183; People and organisation</p>
+    <h1>People and organisation</h1>
+    <p class="entradilla">Effect of AI on work, capabilities, released capacity, labour relations and decisions about people</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>3</b><span>effects on work: replaces, augments, reorganises</span></div><div class="cifra"><b>5</b><span>possible destinations for released capacity</span></div><div class="cifra"><b>15</b><span>indicators with a formula</span></div><div class="cifra"><b>6</b><span>profiles in the literacy plan</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/50_SEVEN-G_Personas_y_organizacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/50_SEVEN-G_Personas_y_organizacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/50_SEVEN-G_Personas_y_organizacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#sphere-03-people"><span>02</span>Sphere 03 · People</a></li><li><a href="#effect-of-ai-on-work"><span>03</span>Effect of AI on work</a></li><li><a href="#new-roles-and-capabilities"><span>04</span>New roles and capabilities</a></li><li><a href="#capability-plan-and-literacy-by-profile"><span>05</span>Capability plan and literacy by profile</a></li><li><a href="#reassignment-of-released-capacity"><span>06</span>Reassignment of released capacity</a></li><li><a href="#labour-relations-information-and-consultation-algorithmic-transparency"><span>07</span>Labour relations, information and consultation, algorithmic transparency</a></li><li><a href="#use-of-ai-in-decisions-about-people"><span>08</span>Use of AI in decisions about people</a></li><li><a href="#wellbeing-autonomy-and-oversight"><span>09</span>Wellbeing, autonomy and oversight</a></li><li><a href="#internal-communication"><span>10</span>Internal communication</a></li><li><a href="#indicators"><span>11</span>Indicators</a></li><li><a href="#organisational-risks"><span>12</span>Organisational risks</a></li><li><a href="#what-is-checked-at-the-decision-gates"><span>13</span>What is checked at the decision gates</a></li><li><a href="#associated-tools-and-templates"><span>14</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>15</span>Related documents</a></li><li><a href="#version-control"><span>16</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<p>This document develops <strong>sphere 03 · People</strong> of the impact map and principle 10 of the framework (<em>people at the centre of change</em>). It sets out how an organisation applying SEVEN-G must:</p>
+<ul>
+<li>Assess, initiative by initiative, whether AI <strong>replaces, augments or reorganises</strong> work.</li>
+<li>Define the <strong>roles and capabilities</strong> that AI requires, from the board to the teams.</li>
+<li>Plan <strong>AI literacy</strong> and capabilities by profile.</li>
+<li>Decide, record and track the destination of <strong>released capacity</strong>.</li>
+<li>Comply with the <strong>information and consultation</strong> rights of workers' representatives and be transparent with employees about the algorithms that affect them.</li>
+<li>Control the use of AI in <strong>decisions about people</strong> (recruitment, appraisal, promotion, discipline, dismissal).</li>
+<li>Protect <strong>wellbeing, autonomy</strong> and the quality of human oversight.</li>
+<li>Communicate internally in a consistent manner and measure all of the above with <strong>indicators with a formula</strong>.</li>
+</ul>
+<p><strong>Scope.</strong> It applies to all AI initiatives and to corporate uses of general-purpose AI that affect employees' work, their working conditions or decisions about candidates and employees. Change management and adoption are developed in document 23; the rules for acceptable use of AI by employees, in document 31. This document does not repeat them: it sets out what is specific to people and to the organisation.</p>
+<p><strong>Limits.</strong> The labour law references are limited to Spain and the European Union, with the consultation date indicated. <strong>Other jurisdictions have different rules</strong> and must be incorporated into the context statement (phase 0). This document does not constitute legal advice.</p>
+<hr />
+<h2 id="sphere-03-people"><span class="antetitulo">02</span>Sphere 03 · People</h2>
+<h3 id="2-1-reference-question">2.1 Reference question</h3>
+<blockquote>
+<p><strong>Does AI replace, augment or reorganise people's work?</strong></p>
+</blockquote>
+<p>The answer is not technical. It defines the culture, the employee value proposition, the ability to attract and retain talent and the relationship with workers' representatives. That is why SEVEN-G requires the company to adopt at <strong>C2</strong> an <strong>explicit position</strong> on the effect it seeks on work (document 13) and requires each initiative to respect it or justify the exception.</p>
+<h3 id="2-2-the-three-roles-of-the-employee-in-relation-to-ai">2.2 The three roles of the employee in relation to AI</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>What it means</th>
+<th>What it requires of the company</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recipient</strong></td>
+<td>AI changes their tools, processes and productivity expectations without them having chosen it.</td>
+<td>Training, support, time to learn and channels to flag problems (document 23).</td>
+</tr>
+<tr>
+<td><strong>Subject</strong></td>
+<td>AI may restructure, reassign or eliminate tasks or jobs, or intervene in decisions about their employment.</td>
+<td>Effect assessment, information and consultation, controls on decisions about people and fair treatment in the transition (sections 3, 7 and 8).</td>
+</tr>
+<tr>
+<td><strong>Promoter</strong></td>
+<td>They know their process better than anyone and can propose uses of AI that no outsider would see.</td>
+<td>Proposal channel connected to the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), recognition and clear rules of use (document 31).</td>
+</tr>
+</tbody>
+</table></div>
+<p>The same employee may occupy all three roles at once. People plans must address all three and not only the first.</p>
+<h3 id="2-3-ambition-levels-in-sphere-03">2.3 Ambition levels in sphere 03</h3>
+<p>The examples are <strong>illustrative</strong> and do not imply a recommendation.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>What changes for people</th>
+<th>Illustrative examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimise</strong></td>
+<td>Tasks are eliminated or accelerated; the job and the organisation do not change.</td>
+<td>Automating reports, data capture and triage; speeding up onboarding with knowledge assistants; training adapted to each employee's level.</td>
+</tr>
+<tr>
+<td><strong>Augment</strong></td>
+<td>People do what they could not do before; the role changes.</td>
+<td>Specialised assistants by function; employees who propose and deploy uses of AI in their area under control; continuous reskilling linked to the new role.</td>
+</tr>
+<tr>
+<td><strong>Transform</strong></td>
+<td>The structure, the roles or who decides what change.</td>
+<td>Redesign of teams and hierarchical levels; disappearance of functions and creation of new ones; people who move from executing to overseeing systems that act (autonomy A2 or A3).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-4-what-is-assessed-in-sphere-03">2.4 What is assessed in sphere 03</h3>
+<p>Seven dimensions are assessed, each with its evidence and indicators (section 11): <strong>position</strong> approved at C2; <strong>effect per initiative</strong> (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, PER-01); <strong>capabilities</strong> (PER-02, PER-03); <strong>released capacity</strong> (PER-04 to PER-06); <strong>labour relations</strong> (PER-08); <strong>decisions about people</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, PER-09 to PER-12); and <strong>wellbeing</strong> (PER-15).</p>
+<p>The indicators in section 11 feed the <strong>D5 People and adoption</strong> dimension of the maturity model (document 11) and signals <strong>3 · Materialisation</strong> and <strong>5 · Operating model</strong> of the transformation index (document 12).</p>
+<hr />
+<h2 id="effect-of-ai-on-work"><span class="antetitulo">03</span>Effect of AI on work</h2>
+<h3 id="3-1-three-effects">3.1 Three effects</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Effect</th>
+<th>Definition in SEVEN-G</th>
+<th>Typical signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Replaces</strong></td>
+<td>The system performs tasks that a person used to perform, and the person stops performing them.</td>
+<td>Hours released on specific tasks; lower staffing need for the same volume.</td>
+</tr>
+<tr>
+<td><strong>Augments</strong></td>
+<td>The person continues to do the work, but with greater quality, reach or speed thanks to the system.</td>
+<td>Improved performance per person; new tasks that were previously impossible.</td>
+</tr>
+<tr>
+<td><strong>Reorganises</strong></td>
+<td>Roles, the process sequence, the team structure or the allocation of decisions between people and systems change.</td>
+<td>New job descriptions; changes in reporting lines; new human oversight points.</td>
+</tr>
+</tbody>
+</table></div>
+<p>An initiative usually combines effects. <strong>The effect on each task</strong> and the <strong>dominant effect</strong> on each affected group are recorded.</p>
+<p>The effect on work <strong>is not the same as the ambition level</strong>. An Optimise initiative may replace many tasks; a Transform initiative may not reduce staffing at all. The two classifications are recorded separately.</p>
+<h3 id="3-2-unit-of-analysis">3.2 Unit of analysis</h3>
+<p>The effect is assessed at three levels, from the specific to the aggregate:</p>
+<ol>
+<li><strong>Task.</strong> Which tasks in the process change, how much time they take today (baseline, phase 2) and what the system will do.</li>
+<li><strong>Job or role.</strong> What proportion of the job's time is affected and how its responsibilities, autonomy and supervision change.</li>
+<li><strong>Group and organisation.</strong> How many people, in which areas, sites and job categories, and with what foreseeable effect on staffing, structure, required qualifications and working conditions.</li>
+</ol>
+<h3 id="3-3-how-it-is-assessed-per-initiative">3.3 How it is assessed per initiative</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Activity</th>
+<th>Recorded result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Identify affected groups and foreseeable effect.</td>
+<td>Opportunity record (<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Measure the baseline of time per task and people; declare whether the value depends on released capacity.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>.</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Complete <strong>effect on work assessment</strong> (section 3.4), with the people function and clearance from the AI Risk Owner.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> / T20; RT-ORG risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Redesign roles and human oversight; capability and communication plan; planned destination of released capacity.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Measure the actual effect in the pilot; train users and overseers; inform workers' representatives where appropriate.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; information record.</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>Track adoption, released capacity, wellbeing and incidents; review at R6.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; released capacity record.</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>Compare the actual effect with the declared effect; anticipate the effect of scaling or of returning to the previous process if the system is retired.</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The AI Product Owner carries out the assessment; the AI Sponsor is accountable for it.</p>
+<h3 id="3-4-effect-assessment-questions">3.4 Effect assessment questions</h3>
+<ol>
+<li>Which tasks does a person stop performing and which appear, including oversight of the system?</li>
+<li>How many people and which jobs are affected, and in what proportion of their time?</li>
+<li>Do pace, working hours, objectives, monitoring, autonomy or location change? (sections 7 and 9)</li>
+<li>Does the system intervene in decisions about candidates or employees? (section 8)</li>
+<li>What new capabilities are required and who has them today? (section 5)</li>
+<li>What capacity is released, when and with what planned destination? (section 6)</li>
+<li>What knowledge is lost or becomes concentrated? (document 51, section 10)</li>
+<li>Is the ability to return to the manual process retained? (document 52, section 10)</li>
+<li>Is it consistent with the C2 position? If not, the exception is escalated to the AI Committee.</li>
+</ol>
+<h3 id="3-5-intensity-rule">3.5 Intensity rule</h3>
+<p>The effect on work does not in itself create an Enterprise criterion, but <strong>intensity must be reviewed</strong> (T04) when the assessment detects decisions about people, significant changes in working conditions or staffing reductions. In those cases the initiative <strong>should</strong> be treated as Enterprise even if it does not meet any other criterion, and if it remains Lite the justification is recorded.</p>
+<hr />
+<h2 id="new-roles-and-capabilities"><span class="antetitulo">04</span>New roles and capabilities</h2>
+<h3 id="4-1-from-the-board-to-the-teams">4.1 From the board to the teams</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Role with respect to people</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Board or board committee</strong></td>
+<td>Approves the position on the effect on work; oversees transformations that change the organisation; monitors labour and reputational risks.</td>
+</tr>
+<tr>
+<td><strong>Senior management</strong></td>
+<td>Translates the position into staffing, qualification and labour relations plans; decides relevant destinations of released capacity.</td>
+</tr>
+<tr>
+<td><strong>AI Committee</strong></td>
+<td>Together with the people function, reviews the aggregate effect across the portfolio and exceptions to the C2 position.</td>
+</tr>
+<tr>
+<td><strong>AI Office</strong></td>
+<td>Maintains the effect assessment method and consolidates indicators and the released capacity record.</td>
+</tr>
+<tr>
+<td><strong>People function</strong></td>
+<td>Jointly responsible for the effect assessment, the capability plan and the relationship with workers' representatives.</td>
+</tr>
+<tr>
+<td><strong>Middle managers</strong></td>
+<td>Redesign day-to-day work, lead mixed person–system teams and carry out reassignment.</td>
+</tr>
+<tr>
+<td><strong>Initiative teams</strong></td>
+<td>Build and operate with sound judgement about the effect on people.</td>
+</tr>
+<tr>
+<td><strong>Users and human overseers</strong></td>
+<td>Use the system and validate, correct or interrupt its outputs with authority to disagree.</td>
+</tr>
+<tr>
+<td><strong>Workers' representatives</strong></td>
+<td>Receive understandable information and take part in consultation where appropriate (section 7).</td>
+</tr>
+</tbody>
+</table></div>
+<p>The capabilities each level needs are specified in the profiles in section 5.</p>
+<h3 id="4-2-new-or-expanded-roles">4.2 New or expanded roles</h3>
+<p>The SEVEN-G roles (document 01 §8) do not change. The following functions <strong>may</strong> be assigned to existing people or created as new roles, depending on size and intensity:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>What it does</th>
+<th>Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Designated human overseer</strong> (user area)</td>
+<td>Validates, corrects or interrupts outputs of an A1–A3 system with competence, training and authority.</td>
+<td>Yes, in high-risk systems and in A2–A3.</td>
+</tr>
+<tr>
+<td><strong>Area AI champion</strong></td>
+<td>Questions, proposals and detection of unauthorised uses; liaison with the AI Office.</td>
+<td>Recommended.</td>
+</tr>
+<tr>
+<td><strong>Content or knowledge owner</strong></td>
+<td>Quality, validity and permissions of generative AI sources (document 51).</td>
+<td>Yes, with generative AI over internal sources.</td>
+</tr>
+<tr>
+<td><strong>Effect on work analyst</strong></td>
+<td>Effect assessment and released capacity record.</td>
+<td>Recommended in Enterprise.</td>
+</tr>
+<tr>
+<td><strong>Labour relations lead for AI</strong></td>
+<td>Information to workers' representatives and consultations.</td>
+<td>Recommended if there is legal workers' representation.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Authority rule.</strong> A human overseer without real authority to disagree with the system, or who is appraised on how quickly they accept its proposals, is <strong>not</strong> human oversight. The design of the overseer's objectives and incentives forms part of <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</p>
+<hr />
+<h2 id="capability-plan-and-literacy-by-profile"><span class="antetitulo">05</span>Capability plan and literacy by profile</h2>
+<h3 id="5-1-starting-obligation">5.1 Starting obligation</h3>
+<p>The EU AI Act requires providers and deployers to take measures to support the development of <strong>AI literacy</strong> among their staff and other persons operating or using AI systems on their behalf (Art. 4, applicable since 2 February 2025; under the wording of Regulation (EU) 2026/1744 no specific level is required, but the policy and the training plan remain evidence). For high-risk systems, deployers must assign human oversight to natural persons who have the <strong>necessary competence, training and authority</strong> (Art. 26(2)). The amendments introduced by Regulation (EU) 2026/1744 (Digital Omnibus on AI, in force since 27 July 2026) and the application timeline are detailed in document 34 (§3.1 and §3.2).</p>
+<p>SEVEN-G treats literacy as a <strong>C2 requirement</strong> (policy, document 31) and as <strong>evidence per initiative</strong> (capability plan in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</p>
+<h3 id="5-2-profiles-and-content">5.2 Profiles and content</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Minimum content</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PER-PA · Board and senior management</strong></td>
+<td>Types of AI and their limits; spheres and ambition; risks and regulation; board dashboard; effect on work.</td>
+<td>Recorded session; annual review.</td>
+</tr>
+<tr>
+<td><strong>PER-PB · Middle managers</strong></td>
+<td>The above applied to the area; effect assessment; human oversight; transition and communication.</td>
+<td>Training and participation in an effect assessment.</td>
+</tr>
+<tr>
+<td><strong>PER-PC · All employees</strong></td>
+<td>What AI is and is not; acceptable use (document 31); data that must not be entered; verifying outputs; reporting problems.</td>
+<td>Training before access; periodic renewal.</td>
+</tr>
+<tr>
+<td><strong>PER-PD · Users and overseers of a system</strong></td>
+<td>Purpose and limits; interpretation of outputs; automation bias; how to disagree or interrupt; incidents.</td>
+<td>System training and practical test before overseeing.</td>
+</tr>
+<tr>
+<td><strong>PER-PE · Teams that build and operate</strong></td>
+<td>SEVEN-G lifecycle; documents 35, 51 and 52; bias and robustness testing.</td>
+<td>Accredited application in an initiative.</td>
+</tr>
+<tr>
+<td><strong>PER-PF · Control and people functions</strong></td>
+<td>Risks; regulatory classification; decisions about people; audit; information to workers' representatives.</td>
+<td>Supervised participation in <em>gates</em>.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-3-capability-plan-per-initiative">5.3 Capability plan per initiative</h3>
+<p>The plan forms part of <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and <strong>must</strong> include, for each affected group: group and number of people; required capabilities (technical, oversight, process, customer relationship); measured current gap; action (training, supported practice, rotation, reskilling); hours reserved within working time; timing (users and overseers before the pilot, others before production); owner; and sufficiency criterion with its evidence.</p>
+<p><strong>Rule.</strong> A designated human overseer <strong>must not</strong> oversee an A1–A3 system in production without having completed and recorded the specific PER-PD profile training.</p>
+<h3 id="5-4-retention-of-critical-capabilities">5.4 Retention of critical capabilities</h3>
+<p>When a system replaces tasks that require expert judgement, the company <strong>should</strong> retain the capabilities needed to oversee the system, detect its errors and operate without it in the event of rollback. The plan identifies those capabilities and how they are maintained (periodic practice, manual review cases, rotation).</p>
+<hr />
+<h2 id="reassignment-of-released-capacity"><span class="antetitulo">06</span>Reassignment of released capacity</h2>
+<h3 id="6-1-principle">6.1 Principle</h3>
+<p><strong>Measurement rule 3</strong> (document 00 §6) establishes that released capacity <strong>is not counted as savings</strong> until it is materialised as a lower actual cost or explicitly reassigned. SEVEN-G turns that rule into a process: <strong>all released capacity has an explicit decision on its destination, a record and tracking</strong>. Without a decision, released capacity is shown as such and not as value.</p>
+<h3 id="6-2-possible-destinations">6.2 Possible destinations</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>What it means</th>
+<th>How it counts in measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PER-D1 · Materialise</strong></td>
+<td>Reduction in actual cost: less overtime, less external or temporary hiring, vacancies not filled, resizing.</td>
+<td>Efficiency, validated when the lower cost appears in management accounts.</td>
+</tr>
+<tr>
+<td><strong>PER-D2 · Reassign to a defined activity</strong></td>
+<td>The hours move to a specific activity with an owner and an outcome metric.</td>
+<td>Value measured in the outcome of the destination activity, attributed to a single use case (rule 5).</td>
+</tr>
+<tr>
+<td><strong>PER-D3 · Absorb growth</strong></td>
+<td>The same team handles more volume without increasing staffing.</td>
+<td>Avoided cost only if the growth is measured and the staffing need was documented beforehand.</td>
+</tr>
+<tr>
+<td><strong>PER-D4 · Reinvest in quality, service or compliance</strong></td>
+<td>More time per customer, more review, more control.</td>
+<td>Not additive unless translated into money with a formula (rule 7).</td>
+</tr>
+<tr>
+<td><strong>PER-D5 · No decision</strong></td>
+<td>The destination has not been decided.</td>
+<td><strong>Not counted.</strong> Reported separately, with an ageing alert.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Destinations may be combined, with declared percentages of the hours released.</p>
+<figure class="grafico"><div class="g-titulo">Destination of released capacity</div><div class="g-sub">Without an explicit decision, released capacity does not become value</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  M["Measured released capacity"] --> Q{"Decision recorded?"}
+  Q -->|"No"| D5["PER-D5 No decision: reported separately and not counted"]
+  Q -->|"Yes"| DEC["Destination decided"]
+  DEC --> D1["PER-D1 Materialise: lower actual cost"]
+  DEC --> D2["PER-D2 Reassign: activity with measured outcome"]
+  DEC --> D3["PER-D3 Absorb growth"]
+  DEC --> D4["PER-D4 Reinvest in quality or service"]
+  D1 --> V["Value with validation status"]
+  D2 --> V
+  D3 --> V
+  D4 --> NS["Value not additive unless formula"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class V ok
+  class DEC,D1,D2,D3,D4,NS med
+  class D5 ko
+</pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
+<h3 id="6-3-who-decides-and-when">6.3 Who decides and when</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Moment</th>
+<th>Decision</th>
+<th>Decides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 2</strong></td>
+<td>It is declared whether the value hypothesis depends on released capacity and with what planned destination.</td>
+<td>AI Sponsor</td>
+</tr>
+<tr>
+<td><strong>Phase 4</strong></td>
+<td>Planned destination by group, with percentages, timeframe and owner.</td>
+<td>AI Sponsor with the people function and management control</td>
+</tr>
+<tr>
+<td><strong>G5</strong></td>
+<td>In Optimise, plan to materialise the released capacity (01 §7.6); in Augment, reassignment plan.</td>
+<td><em>Gate</em> body</td>
+</tr>
+<tr>
+<td><strong>R6</strong></td>
+<td>Tracking: measured released hours against materialised and reassigned hours; decision on PER-D5 by age.</td>
+<td>AI Sponsor; AI Committee in Enterprise</td>
+</tr>
+<tr>
+<td><strong>G7</strong></td>
+<td>Optimise: materialised savings, not just released capacity. Augment: reassigned capacity and sustained performance.</td>
+<td><em>Gate</em> body</td>
+</tr>
+</tbody>
+</table></div>
+<p>When the destination involves <strong>staffing reductions, changes in duties or in working conditions</strong>, the decision rests with senior management together with the people function and <strong>must</strong> respect the applicable statutory and collectively agreed procedures. In Spain, the procedures that may come into play include, among others, substantial modification of working conditions (Article 41 of the Estatuto de los Trabajadores (Workers' Statute)) or collective dismissal (Article 51), in addition to the information and consultation rights in section 7. That assessment requires employment law expertise.</p>
+<h3 id="6-4-released-capacity-record">6.4 Released capacity record</h3>
+<p>The record is kept in T20 and feeds T12 (value tracking).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initiative (IA-AAAA-NNN) and period</td>
+<td>Month or quarter.</td>
+</tr>
+<tr>
+<td>Group or area</td>
+<td>Area, job category, site; no individual data.</td>
+</tr>
+<tr>
+<td>Measured released hours and full-time equivalent</td>
+<td>Time per task × volume against the baseline.</td>
+</tr>
+<tr>
+<td>Measurement status</td>
+<td>Validated · declared · estimated (rule 2).</td>
+</tr>
+<tr>
+<td>Destination (PER-D1–PER-D5) and percentage; decision-maker and date</td>
+<td>Nobody decides on their own work.</td>
+</tr>
+<tr>
+<td>Destination activity and owner (PER-D2)</td>
+<td>A specific activity, not generic &quot;higher-value tasks&quot;.</td>
+</tr>
+<tr>
+<td>Effective date; materialised or reassigned hours</td>
+<td>Actual for the period.</td>
+</tr>
+<tr>
+<td>Economic effect</td>
+<td>Amount with formula and status (rule 1).</td>
+</tr>
+<tr>
+<td>Information to or consultation with workers' representatives</td>
+<td>Date and reference, if applicable (section 7).</td>
+</tr>
+<tr>
+<td>Observations on people</td>
+<td>Reskilling, mobility, wellbeing.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-5-tracking-rules">6.5 Tracking rules</h3>
+<ol>
+<li><strong>Measured</strong> released hours are always reported, even if they have no destination.</li>
+<li>Capacity in <strong>PER-D5 for more than 90 days</strong> (indicative time limit, set at C2) triggers an alert in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and is reviewed at R6.</li>
+<li>A <strong>PER-D2 reassignment without a verifiable destination activity</strong> is reclassified as PER-D5.</li>
+<li>Reassignment cannot be presented as materialisation or counted twice (in the originating initiative and in the destination activity).</li>
+<li>Reports to the board show released, materialised, reassigned and undecided hours separately.</li>
+</ol>
+<hr />
+<h2 id="labour-relations-information-and-consultation-algorithmic-transparency"><span class="antetitulo">07</span>Labour relations, information and consultation, algorithmic transparency</h2>
+<h3 id="7-1-reference-framework-in-spain-and-the-european-union">7.1 Reference framework in Spain and the European Union</h3>
+<p>Consultation carried out in September 2026. Validity must be verified before applying it, and document 34 must be consulted.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Content relevant to this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Estatuto de los Trabajadores (Workers' Statute), Article 64.4.d)</strong> (introduced by Real Decreto-ley 9/2021 (Royal Decree-Law 9/2021) and Ley 12/2021 (Law 12/2021))</td>
+<td>The works council has the right to be informed by the company of <em>&quot;the parameters, rules and instructions on which the algorithms or artificial intelligence systems are based that affect decision-making that may have an impact on working conditions, access to and retention of employment, including profiling&quot;</em>. Trade union delegates may have equivalent rights under the terms of the Ley Orgánica de Libertad Sindical (Organic Law on Freedom of Association).</td>
+</tr>
+<tr>
+<td><strong>Estatuto de los Trabajadores, Article 64</strong> (remainder) and applicable collective agreement</td>
+<td>General information and consultation rights on changes in the organisation of work, which may be triggered by AI initiatives even if they are not decision-making algorithms. The collective agreement may extend obligations.</td>
+</tr>
+<tr>
+<td><strong>EU AI Act, Art. 26(7)</strong></td>
+<td>Before putting into service or using a high-risk AI system in the workplace, deployers who are employers must inform workers' representatives and the affected workers.</td>
+</tr>
+<tr>
+<td><strong>EU AI Act, Annex III, point 4</strong></td>
+<td>High-risk systems in employment and workers management (section 8).</td>
+</tr>
+<tr>
+<td><strong>EU AI Act, Art. 5(1)(f)</strong></td>
+<td>Prohibition of emotion recognition systems in the workplace, except for medical or safety reasons.</td>
+</tr>
+<tr>
+<td><strong>GDPR, Arts. 13, 14, 15, 22 and 88</strong></td>
+<td>Information to data subjects, right of access, automated individual decision-making and processing in the employment context.</td>
+</tr>
+<tr>
+<td><strong>Ley Orgánica 3/2018 (Organic Law 3/2018 on Personal Data Protection and Guarantee of Digital Rights, LOPDGDD), Arts. 87 to 91</strong></td>
+<td>Digital rights in the workplace: use of digital devices, digital disconnection, video surveillance, geolocation and collective bargaining on these rights.</td>
+</tr>
+<tr>
+<td><strong>Directive (EU) 2024/2831</strong> on improving working conditions in platform work</td>
+<td>Rules on algorithmic management (information, human monitoring and human review) for platform work. Transposition deadline: 2 December 2026. Verify the status of transposition.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Other jurisdictions differ.</strong> Outside the European Union, obligations may differ in content and in addressee; for example, some local regulations require independent bias audits of automated employment decision tools before they are used. Each company <strong>must</strong> identify the applicable regulations in each country where it has employees or candidates and incorporate them into the context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</p>
+<p>This document does not constitute legal advice.</p>
+<h3 id="7-2-information-and-consultation-process-in-seven-g">7.2 Information and consultation process in SEVEN-G</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Moment</th>
+<th>What is done</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · Identification</td>
+<td>Phase 3</td>
+<td>The effect assessment determines whether the system affects working conditions, access to or retention of employment, profiling, or whether it is high-risk in the workplace.</td>
+<td>Effect assessment (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
+</tr>
+<tr>
+<td>2 · Legal analysis</td>
+<td>Phase 3</td>
+<td>Labour relations and legal counsel determine the obligations of information and, where applicable, consultation, their content and their timing.</td>
+<td>Legal note linked in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+</tr>
+<tr>
+<td>3 · Preparation</td>
+<td>Phase 4</td>
+<td>The system information sheet for workers' representatives is prepared (section 7.3).</td>
+<td>Information sheet.</td>
+</tr>
+<tr>
+<td>4 · Information or consultation</td>
+<td>Before the pilot with real people and, in any case, before use in production</td>
+<td>The sheet is delivered and questions are answered; the consultation is documented where applicable.</td>
+<td>Record of delivery, minutes.</td>
+</tr>
+<tr>
+<td>5 · Update</td>
+<td>At each relevant change (document 52, section 6)</td>
+<td>If parameters, rules, purpose or groups change, the information is updated.</td>
+<td>New version of the sheet.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong><em>Gate</em> rule.</strong> For systems that require prior information, G5 <strong>cannot</strong> be resolved as <em>Proceed</em> without evidence that the information has been provided. This condition does not allow <em>Proceed with conditions</em>, because it is legal compliance (01 §7.3).</p>
+<h3 id="7-3-information-sheet-for-workers-representatives-and-employees">7.3 Information sheet for workers' representatives and employees</h3>
+<p>It must be understandable to non-specialists (measurement rule 10) and does not require disclosure of source code.</p>
+<ol>
+<li><strong>Identification:</strong> system, purpose, area, owner and supplier.</li>
+<li><strong>Decisions affected:</strong> which decisions it supports or makes, about whom and with what autonomy (A0–A3).</li>
+<li><strong>Data:</strong> categories, origin and period; exclusion or justification of special categories.</li>
+<li><strong>Parameters and rules:</strong> main variables and their relative importance in understandable terms; rules and thresholds; instructions given to the system.</li>
+<li><strong>Human intervention:</strong> who reviews, with what authority and how to disagree.</li>
+<li><strong>Controls:</strong> bias testing and summary result; monitoring; review.</li>
+<li><strong>Rights:</strong> how to request information, an explanation or human review; complaints channel.</li>
+<li><strong>Changes:</strong> version, date and changes.</li>
+</ol>
+<h3 id="7-4-algorithmic-transparency-towards-employees">7.4 Algorithmic transparency towards employees</h3>
+<p>In addition to the information provided to workers' representatives, the company <strong>should</strong> keep accessible to all employees an <strong>internal register of AI systems that affect them</strong>, derived from the inventory (T02), with a summarised version of the sheet in section 7.3. Employees affected by AI-supported decisions must be able to know that the system is used, for what purpose, and how to request human review.</p>
+<hr />
+<h2 id="use-of-ai-in-decisions-about-people"><span class="antetitulo">08</span>Use of AI in decisions about people</h2>
+<h3 id="8-1-why-it-is-treated-separately">8.1 Why it is treated separately</h3>
+<p>The EU AI Act classifies as <strong>high-risk</strong> (Annex III, point 4) systems intended to be used for:</p>
+<ul>
+<li>The <strong>recruitment or selection</strong> of natural persons, in particular to place targeted job advertisements, to analyse and filter job applications, and to evaluate candidates.</li>
+<li>Making <strong>decisions affecting the terms</strong> of work-related relationships, the <strong>promotion or termination</strong> of work-related contractual relationships, <strong>allocating tasks</strong> based on individual behaviour or personal traits, or <strong>monitoring and evaluating the performance and behaviour</strong> of persons.</li>
+</ul>
+<p>The obligations for these systems apply from 2 December 2027, following the postponement introduced by Regulation (EU) 2026/1744 (timeline in document 34 §3.1). The specific classification of each system and its exceptions require legal expertise (documents 32 and 34).</p>
+<p>Regardless of the regulatory classification, in SEVEN-G <strong>any initiative that significantly influences decisions about candidates or employees meets the &quot;decisions about people&quot; Enterprise criterion</strong> (01 §9.2).</p>
+<h3 id="8-2-maximum-autonomy-by-type-of-decision">8.2 Maximum autonomy by type of decision</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Maximum autonomy permitted</th>
+<th>Additional minimum controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dissemination of job offers and attraction</strong></td>
+<td>A2</td>
+<td>Bias testing of the reach of advertisements; periodic review of targeting criteria.</td>
+</tr>
+<tr>
+<td><strong>Screening and assessment of candidates</strong></td>
+<td>A1</td>
+<td>Human review of rejections; adverse impact testing by group; understandable explanation; prohibition on inferring non-relevant traits.</td>
+</tr>
+<tr>
+<td><strong>Allocation of shifts, tasks or routes</strong></td>
+<td>A2</td>
+<td>Working time and rest limits built in; complaints channel; prior information (section 7).</td>
+</tr>
+<tr>
+<td><strong>Performance and behaviour appraisal</strong></td>
+<td>A1</td>
+<td>The final appraisal is human; the person appraised knows which indicators are used; cross-check with the line manager.</td>
+</tr>
+<tr>
+<td><strong>Variable pay and promotion</strong></td>
+<td>A1</td>
+<td>Human review with authority; bias testing; traceability of the recommendation and of the decision.</td>
+</tr>
+<tr>
+<td><strong>Disciplinary measures and dismissal</strong></td>
+<td><strong>A0</strong></td>
+<td>The system may only provide information. The decision, its grounds and its communication are always human.</td>
+</tr>
+<tr>
+<td><strong>Emotion recognition in the workplace</strong></td>
+<td><strong>Not permitted</strong>, except for the medical or safety exceptions provided for in the Regulation.</td>
+<td>Prohibited practice: does not pass phase 3 (01 §6.5).</td>
+</tr>
+</tbody>
+</table></div>
+<p>The company may set stricter limits at C2, never more lenient ones.</p>
+<h3 id="8-3-mandatory-controls">8.3 Mandatory controls</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Control</th>
+<th>Phase</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Regulatory classification with legal expertise.</td>
+<td>3</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data protection impact assessment, where the processing requires it.</td>
+<td>3–4</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fundamental rights impact assessment, where required of the deployer.</td>
+<td>3–4</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Justification of the relevance of each variable and exclusion of variables that act as proxies for protected characteristics.</td>
+<td>4</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bias testing before the pilot and periodically in production, with metric, groups, threshold and action.</td>
+<td>5–6</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Human oversight with competence, training and authority; measurement of the human override rate (PER-10).</td>
+<td>4–6</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Understandable explanation to the affected person and a route to human review.</td>
+<td>4–6</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Information to workers' representatives and to those affected (section 7).</td>
+<td>4–5</td>
+<td>Information sheet</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Retention of recommendation and decision logs (document 52, section 11).</td>
+<td>6</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Supplier assessment if the system is third-party, with access to the information needed to meet the above controls.</td>
+<td>3</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>The EU AI Act also recognises, under certain conditions, the <strong>right to obtain an explanation</strong> of individual decisions taken on the basis of the output of Annex III high-risk systems (Art. 86). The design of <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> <strong>must</strong> provide for how this is handled.</p>
+<h3 id="8-4-bias-testing-in-decisions-about-people">8.4 Bias testing in decisions about people</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Groups</strong></td>
+<td>Those protected by the applicable anti-discrimination legislation, insofar as they can be lawfully analysed. The processing of special categories to detect bias has its own conditions (document 51, section 6).</td>
+</tr>
+<tr>
+<td><strong>Metrics</strong></td>
+<td>Selection rates by group, errors by group and adverse impact ratio (PER-11).</td>
+</tr>
+<tr>
+<td><strong>Threshold</strong></td>
+<td>Set per system in phase 4. A ratio below 0.8 between selection rates (known as the four-fifths rule in US practice) is frequently used as an <strong>indication</strong> of possible adverse impact. It is not a legal threshold in the European Union and does not in itself prove discrimination.</td>
+</tr>
+<tr>
+<td><strong>Action</strong></td>
+<td>Any result below the threshold is analysed, recorded in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and, if it is not explained by relevant factors, blocks G5 or triggers an incident in production.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="wellbeing-autonomy-and-oversight"><span class="antetitulo">09</span>Wellbeing, autonomy and oversight</h2>
+<h3 id="9-1-risks-to-people">9.1 Risks to people</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Warning signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Work intensification:</strong> AI raises the expected pace without reviewing objectives or workloads.</td>
+<td>More volume per person without a change in objectives; hours outside working time.</td>
+</tr>
+<tr>
+<td><strong>Excessive monitoring:</strong> usage data employed to monitor people beyond the declared purpose.</td>
+<td>Individual activity reports not provided for in the information sheet.</td>
+</tr>
+<tr>
+<td><strong>Loss of autonomy:</strong> the person executes what the system proposes with no room for judgement.</td>
+<td>Human override rate close to zero.</td>
+</tr>
+<tr>
+<td><strong>Deskilling:</strong> loss of the expertise needed to oversee or replace the system.</td>
+<td>Inability to operate without the system in rollback tests.</td>
+</tr>
+<tr>
+<td><strong>Automation bias:</strong> excessive reliance on the system's outputs; the EU AI Act expressly mentions it in relation to human oversight (Art. 14(4)(b)).</td>
+<td>System errors accepted without review.</td>
+</tr>
+<tr>
+<td><strong>Oversight workload:</strong> large volumes cause fatigue and superficial reviews.</td>
+<td>Very low or decreasing review time per case.</td>
+</tr>
+<tr>
+<td><strong>Job insecurity:</strong> ambiguous announcements cause anxiety and turnover.</td>
+<td>Climate and voluntary turnover in affected groups.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-2-controls">9.2 Controls</h3>
+<ol>
+<li><strong>Occupational risk assessment.</strong> When an initiative changes the pace, content or monitoring of work, the occupational risk assessment, including psychosocial risks, <strong>must</strong> be reviewed with the occupational health and safety service.</li>
+<li><strong>Purpose limitation.</strong> System usage data are not used to appraise people individually unless that purpose has been declared, is lawful and has been communicated.</li>
+<li><strong>Oversight design.</strong> <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> sets a reasonable maximum volume of reviews per person, a minimum expected time per case where appropriate, quality control sampling of reviews and rotation.</li>
+<li><strong>Room for judgement.</strong> It is documented when the person may depart from the system's proposal without having to justify it beyond a brief note, and anyone who does so in good faith is protected.</li>
+<li><strong>Digital disconnection.</strong> Agents and systems that generate tasks or notifications respect the digital disconnection policy (LOPDGDD, Art. 88, in Spain).</li>
+<li><strong>Periodic pulse.</strong> Short survey of affected groups in phase 5, three months into production and at each Enterprise R6 (PER-15).</li>
+</ol>
+<hr />
+<h2 id="internal-communication"><span class="antetitulo">10</span>Internal communication</h2>
+<p>Communication of adoption is developed in document 23. This section sets out what is specific to the effect on people.</p>
+<h3 id="10-1-principles">10.1 Principles</h3>
+<ol>
+<li><strong>Truth before enthusiasm:</strong> there is no promise that &quot;nobody will be affected&quot; if the effect assessment says otherwise.</li>
+<li><strong>Those affected first:</strong> affected groups and their representatives learn of the changes before everyone else and before the outside world.</li>
+<li><strong>Consistency with the C2 position</strong> at all levels.</li>
+<li><strong>Specificity:</strong> what changes, for whom, when, what support there will be and whom to ask.</li>
+<li><strong>Two-way:</strong> channels for questions and proposals, with recorded responses.</li>
+<li><strong>No individual data:</strong> results are communicated by group.</li>
+</ol>
+<h3 id="10-2-standard-timetable">10.2 Standard timetable</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Moment</th>
+<th>Audience</th>
+<th>Main message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C2 approved</td>
+<td>Whole organisation (senior management)</td>
+<td>Position on AI and work; acceptable use.</td>
+</tr>
+<tr>
+<td>Phases 3–4</td>
+<td>Managers and workers' representatives, where appropriate</td>
+<td>Effect assessment, timetable, capability plan.</td>
+</tr>
+<tr>
+<td>Before the pilot</td>
+<td>Affected groups</td>
+<td>What is being tested, how to take part, how it will be measured.</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Those affected and the organisation (AI Sponsor)</td>
+<td>What goes into production, training, channels, rights.</td>
+</tr>
+<tr>
+<td>R6, G7 and retirement</td>
+<td>Affected groups</td>
+<td>Results, destination of released capacity, replacement and changes in work.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="indicators"><span class="antetitulo">11</span>Indicators</h2>
+<p>The codes are provisional until they are consolidated in the indicator catalogue (document 41). Thresholds are <strong>indicative and to be calibrated</strong>. All are calculated without identifiable individual data and with a minimum group size set by the company.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Indicator</th>
+<th>Formula</th>
+<th>Frequency</th>
+<th>Source</th>
+<th>Indicative reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PER-01</strong></td>
+<td>Effect assessment coverage</td>
+<td>Initiatives in phase 3 or later with a recorded effect assessment ÷ initiatives in phase 3 or later</td>
+<td>Quarterly</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T20</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>PER-02</strong></td>
+<td>Literacy by profile</td>
+<td>People in the profile with current training ÷ people in the profile</td>
+<td>Quarterly</td>
+<td>Training system</td>
+<td>PER-PC ≥ 90%; PER-PA and PER-PD 100%</td>
+</tr>
+<tr>
+<td><strong>PER-03</strong></td>
+<td>Qualified overseers</td>
+<td>A1–A3 systems in production whose designated overseers have recorded PER-PD training ÷ A1–A3 systems in production</td>
+<td>Quarterly</td>
+<td>T02, training</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>PER-04</strong></td>
+<td>Released capacity materialised</td>
+<td>Released hours materialised (PER-D1) ÷ measured released hours</td>
+<td>Quarterly</td>
+<td>T20</td>
+<td>As per hypothesis</td>
+</tr>
+<tr>
+<td><strong>PER-05</strong></td>
+<td>Released capacity reassigned</td>
+<td>Reassigned hours (PER-D2) with a verified destination activity ÷ measured released hours</td>
+<td>Quarterly</td>
+<td>T20</td>
+<td>As per hypothesis</td>
+</tr>
+<tr>
+<td><strong>PER-06</strong></td>
+<td>Released capacity without a decision</td>
+<td>Hours in PER-D5 older than the C2 time limit ÷ measured released hours</td>
+<td>Quarterly</td>
+<td>T20</td>
+<td>Decreasing trend</td>
+</tr>
+<tr>
+<td><strong>PER-07</strong></td>
+<td>Effective adoption</td>
+<td>Active users according to the usage criterion defined in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> ÷ target users</td>
+<td>Monthly</td>
+<td>Usage logs</td>
+<td>As per hypothesis (document 23)</td>
+</tr>
+<tr>
+<td><strong>PER-08</strong></td>
+<td>Prior information to workers' representatives</td>
+<td>Systems with an effect on working conditions or employment reported before use ÷ systems with that effect</td>
+<td>Quarterly</td>
+<td>Information record</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>PER-09</strong></td>
+<td>Human review in decisions about people</td>
+<td>AI-assisted decisions about people with documented human review ÷ AI-assisted decisions about people</td>
+<td>Monthly</td>
+<td>System logs</td>
+<td>100% in A1</td>
+</tr>
+<tr>
+<td><strong>PER-10</strong></td>
+<td>Human override rate</td>
+<td>Recommendations modified or rejected by the overseer ÷ recommendations reviewed</td>
+<td>Monthly</td>
+<td>System logs</td>
+<td>Values close to 0% (possible automatic acceptance) and high values (possible poor performance) are monitored</td>
+</tr>
+<tr>
+<td><strong>PER-11</strong></td>
+<td>Adverse impact ratio</td>
+<td>Favourable outcome rate of the group with the lowest rate ÷ rate of the group with the highest rate</td>
+<td>At each validation and quarterly</td>
+<td>Bias testing</td>
+<td>Indication if &lt; 0.8 (section 8.4)</td>
+</tr>
+<tr>
+<td><strong>PER-12</strong></td>
+<td>Challenges to assisted decisions</td>
+<td>Review requests or complaints ÷ decisions communicated; and proportion upheld</td>
+<td>Quarterly</td>
+<td>Complaints channel</td>
+<td>Trend and causes</td>
+</tr>
+<tr>
+<td><strong>PER-13</strong></td>
+<td>Redesigned roles</td>
+<td>Affected jobs with updated description and objectives ÷ affected jobs according to the effect assessment</td>
+<td>Half-yearly</td>
+<td>People function</td>
+<td>100% before G7 in Augment and Transform</td>
+</tr>
+<tr>
+<td><strong>PER-14</strong></td>
+<td>Employee proposals</td>
+<td>Initiatives registered in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> originating from employee proposals ÷ registered initiatives; and G1 pass rate</td>
+<td>Half-yearly</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Trend</td>
+</tr>
+<tr>
+<td><strong>PER-15</strong></td>
+<td>Perception of affected groups</td>
+<td>Favourable responses to the questions on support, workload and autonomy ÷ valid responses</td>
+<td>In phase 5, at 3 months and at Enterprise R6</td>
+<td>Pulse survey</td>
+<td>Trend; action if it worsens</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Relationship with the transformation index.</strong> PER-04 and PER-05 feed signal 3 (materialisation); PER-13 feeds signal 5 (operating model).</p>
+<hr />
+<h2 id="organisational-risks"><span class="antetitulo">12</span>Organisational risks</h2>
+<p>The codes and names are those of the typical risk catalogue in document 33; some organisational risks appear there in other categories (ECO, REP, TEC). The three people-specific risks that had no equivalent (information and consultation, labour dispute and wellbeing) have been added to the catalogue in document 33 as RT-ORG-07, RT-ORG-08 and RT-ORG-09, related to RT-ORG-03. All are assessed with the common scale (likelihood × impact).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code (document 33)</th>
+<th>Risk</th>
+<th>Early signal</th>
+<th>Main controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-ORG-01</strong></td>
+<td>Lack of adoption</td>
+<td>PER-07 below hypothesis in the pilot.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, document 23, users involved in design.</td>
+</tr>
+<tr>
+<td><strong>RT-ECO-03</strong></td>
+<td>Unrealised value (released capacity not realised)</td>
+<td>PER-06 increasing.</td>
+<td>Section 6, alerts in T20, G7 criterion.</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-02</strong></td>
+<td>Dependence on key people (loss of critical knowledge)</td>
+<td>High dependence (document 51, CNC-06).</td>
+<td>Knowledge capture; section 5.4.</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-04</strong></td>
+<td>Ineffective human oversight (nominal oversight)</td>
+<td>PER-10 close to zero; PER-03 &lt; 100%.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; sections 4.2 and 9.2.</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-07</strong></td>
+<td>Failure to inform and consult</td>
+<td>PER-08 &lt; 100%.</td>
+<td>Section 7.2; G5 blocked.</td>
+</tr>
+<tr>
+<td><strong>RT-REP-01</strong></td>
+<td>Discriminatory outcomes (in decisions about people)</td>
+<td>PER-11 &lt; threshold; PER-12 increasing in a group.</td>
+<td>Sections 8.3 and 8.4.</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-08</strong></td>
+<td>Labour dispute</td>
+<td>Collective consultations or complaints.</td>
+<td>Sections 7 and 10; senior management decision on relevant PER-D1 destinations.</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-09</strong></td>
+<td>Deterioration of wellbeing</td>
+<td>PER-15 decreasing; sick leave or turnover in the group.</td>
+<td>Section 9.2.</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-05</strong></td>
+<td>Unauthorised use of AI (<em>shadow AI</em>)</td>
+<td>Detections in T21.</td>
+<td>Document 31; authorised tools; PER-PC training.</td>
+</tr>
+<tr>
+<td><strong>RT-TEC-08</strong></td>
+<td>Irreversibility (due to a lack of trained people)</td>
+<td>Rollback test failed due to a lack of trained people.</td>
+<td>Section 5.4; document 52, section 10.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The typical risk <strong>RT-ORG-03 · Unmanaged effect on people</strong> in document 33 covers the general effect on roles, workload and employment assessed in section 3.4, and <strong>RT-ORG-06 · Roles without segregation of duties</strong> is controlled with <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> and 01 §8.2.</p>
+<hr />
+<h2 id="what-is-checked-at-the-decision-gates"><span class="antetitulo">13</span>What is checked at the decision gates</h2>
+<p>The criteria coded <code>G&lt;n&gt;.&lt;nn&gt;</code> and <code>R6.&lt;nn&gt;</code> are set in document 21. This document provides their content as regards people.</p>
+<ul>
+<li><strong>G1:</strong> groups and foreseeable effect identified. <strong>G2:</strong> dependence of the value on released capacity and planned destination.</li>
+<li><strong>G3:</strong> effect assessment complete; decisions about people classified; information and consultation analysed; RT-ORG risks; intensity reviewed.</li>
+<li><strong>G4:</strong> roles redesigned; oversight with authority and a reasonable workload; capability and communication plan; planned destination.</li>
+<li><strong>G5:</strong> PER-PD training; prior information where mandatory (without conditions); bias tests passed; materialisation plan (Optimise) or reassignment plan (Augment).</li>
+<li><strong>R6:</strong> PER-04 to PER-06, PER-09, PER-10 and PER-15; update of the information to workers' representatives.</li>
+<li><strong>G7:</strong> materialised savings (Optimise), reassigned capacity (Augment), verified change in the operating model (Transform).</li>
+</ul>
+<hr />
+<h2 id="associated-tools-and-templates"><span class="antetitulo">14</span>Associated tools and templates</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Use in this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T20</strong></td>
+<td>Adoption and capacity plan</td>
+<td>Effect assessment, capability plan, released capacity record and tracking. Main tool of this document.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T02 · T04 · T12 · T21</strong></td>
+<td>Register, inventory, intensity, value and corporate use</td>
+<td>Alerts and proposals (PER-14); internal register of systems affecting employees; intensity review; realised and reassigned amounts; unauthorised use.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
+<td>Adoption and capacity plan</td>
+<td>Effect assessment, capability plan, planned destination of released capacity, communication.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></strong></td>
+<td>Regulatory classification and impact assessments</td>
+<td>Decisions about people and high risk.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
+<td>Risk matrix and register</td>
+<td>RT-ORG risks.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></strong></td>
+<td>Governance and human oversight design</td>
+<td>Maximum autonomy, authority and workload of the overseer, explanation and review.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
+<td>Validation and pilot results</td>
+<td>Bias testing and actual effect in the pilot.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
+<td>Value realisation tracking</td>
+<td>Released capacity materialised and reassigned.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
+<td>Scaling or retirement decision</td>
+<td>Actual versus declared effect and communication of the retirement.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <strong>information sheet for workers' representatives</strong> (section 7.3) is incorporated as an annex to <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> until it is decided whether it requires its own template.</p>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">15</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>00 and 01 · Overview and methodology</strong></td>
+<td>Sphere 03, measurement rule 3, principle 10, Enterprise criterion and G5 and G7 criteria by ambition.</td>
+</tr>
+<tr>
+<td><strong>10, 11 and 12 · Spheres, maturity and index</strong></td>
+<td>Sphere 03, dimension PER-D5 and signals 3 and 5.</td>
+</tr>
+<tr>
+<td><strong>13 · AI thesis and risk appetite</strong></td>
+<td>Position on the effect on work.</td>
+</tr>
+<tr>
+<td><strong>21 · <em>Gate</em> and audit criteria</strong></td>
+<td>Coding of section 13.</td>
+</tr>
+<tr>
+<td><strong>23 · Adoption and change</strong></td>
+<td>Change management, adoption and general communication.</td>
+</tr>
+<tr>
+<td><strong>31 · Corporate policy and acceptable use</strong></td>
+<td>Use of AI by employees and mandatory literacy.</td>
+</tr>
+<tr>
+<td><strong>32, 33 and 34 · Classification, risks and regulation</strong></td>
+<td>High-risk employment systems, RT-ORG risks and obligations in detail.</td>
+</tr>
+<tr>
+<td><strong>40, 41 and 43 · Measurement, indicators and benefits</strong></td>
+<td>Released capacity and PER indicators.</td>
+</tr>
+<tr>
+<td><strong>51 · Data and knowledge</strong></td>
+<td>Knowledge dependent on a few people; employee data.</td>
+</tr>
+<tr>
+<td><strong>52 · AI operations manual</strong></td>
+<td>Logs, changes and rollback.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">16</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Develops sphere 03 with indicators; the assessment of the effect on work per initiative; roles and capabilities from the board to the teams; the literacy plan by profile; the process for deciding, recording and tracking released capacity with five destinations; information and consultation with reference to Article 64.4.d) of the Estatuto de los Trabajadores and the EU AI Act; maximum autonomy and controls in decisions about people; wellbeing and oversight; internal communication; fifteen indicators with a formula and ten typical organisational risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in document 33; the three proposed risks are added to 33 as RT-ORG-07 to RT-ORG-09.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":true},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

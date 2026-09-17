@@ -1,0 +1,499 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://seachad.com/seven-g/herramientas/T01/esquema_registro.schema.json",
+  "title": "SEVEN-G · T01 Registro de iniciativas · Modelo de datos común",
+  "description": "Modelo de datos común de las herramientas SEVEN-G (documento 03 §4). Un único fichero JSON contiene la configuración, las personas y todas las entidades. null significa «sin dato» y nunca equivale a cero. Fechas AAAA-MM-DD. Importes en la moneda de meta.moneda.",
+  "type": "object",
+  "required": ["version_esquema", "meta", "personas", "iniciativas", "eventos", "decisiones_gate", "condiciones", "evidencias", "valores"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version_esquema": { "const": "0.1" },
+    "aviso_legal": { "type": "string", "description": "Aviso legal y exención de responsabilidad de SEVEN-G y de la herramienta (en el idioma de la interfaz al exportar). Opcional al importar; la exportación del JSON completo siempre lo incluye." },
+    "meta": { "$ref": "#/$defs/meta" },
+    "personas": { "type": "array", "items": { "$ref": "#/$defs/persona" } },
+    "iniciativas": { "type": "array", "items": { "$ref": "#/$defs/iniciativa" } },
+    "sistemas": { "type": "array", "items": { "$ref": "#/$defs/sistema" } },
+    "eventos": { "type": "array", "items": { "$ref": "#/$defs/evento" } },
+    "decisiones_gate": { "type": "array", "items": { "$ref": "#/$defs/decision_gate" } },
+    "condiciones": { "type": "array", "items": { "$ref": "#/$defs/condicion" } },
+    "evidencias": { "type": "array", "items": { "$ref": "#/$defs/evidencia" } },
+    "valores": { "type": "array", "items": { "$ref": "#/$defs/valor" } },
+    "riesgos": { "type": "array", "items": { "$ref": "#/$defs/riesgo" } },
+    "no_conformidades": { "type": "array", "items": { "$ref": "#/$defs/no_conformidad" } },
+    "incidentes": { "type": "array", "items": { "$ref": "#/$defs/incidente" } },
+    "proveedores": { "type": "array", "items": { "$ref": "#/$defs/proveedor" } },
+    "recomendaciones": { "type": "array", "items": { "$ref": "#/$defs/recomendacion" } }
+  },
+  "$defs": {
+    "fecha": { "type": "string", "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$" },
+    "fecha_o_nula": { "oneOf": [{ "$ref": "#/$defs/fecha" }, { "type": "null" }] },
+    "importe": { "type": ["number", "null"], "description": "null = sin dato (no es cero)." },
+    "texto_o_nulo": { "type": ["string", "null"] },
+    "id_iniciativa": { "type": "string", "pattern": "^IA-\\d{4}-\\d{3}$" },
+    "id_persona": { "type": "string", "pattern": "^PER-\\d{2,4}$" },
+    "id_persona_o_nula": { "oneOf": [{ "$ref": "#/$defs/id_persona" }, { "type": "null" }] },
+    "id_sistema": { "type": "string", "pattern": "^SIA-\\d{4}-\\d{3}$" },
+    "id_proveedor": { "type": "string", "pattern": "^PRV-\\d{3}$" },
+    "id_decision": { "type": "string", "pattern": "^DG-\\d{4}-\\d{3}$" },
+    "codigo_criterio": { "type": "string", "pattern": "^(G[0-57]|R6)\\.\\d{2}$" },
+    "fase": { "type": "integer", "minimum": 0, "maximum": 7 },
+    "esfera": { "enum": ["01", "02", "03", "04", "05", "06", "07", "08", "09"], "description": "01 Cliente · 02 Producto y servicio · 03 Personas · 04 Operaciones · 05 Datos · 06 Conocimiento · 07 Decisión · 08 Regulación, ética y responsabilidad · 09 Gobierno de la IA" },
+    "ambicion": { "enum": ["optimizar", "aumentar", "transformar"] },
+    "ambicion_o_nula": { "enum": ["optimizar", "aumentar", "transformar", null] },
+    "intensidad": { "enum": ["lite", "enterprise"] },
+    "regulatoria": { "enum": ["prohibido", "alto_riesgo", "transparencia", "riesgo_minimo", "fuera_ambito", "pendiente"], "description": "Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar" },
+    "tecnologia": { "enum": ["ml_predictivo", "ia_generativa", "agente", "lenguaje_documentos", "vision", "optimizacion", "ia_terceros_embebida", "reglas"], "description": "ML predictivo · IA generativa · Agente · Procesamiento de lenguaje y documentos · Visión · Optimización · IA de terceros embebida · Reglas (no es IA)" },
+    "exposicion": { "enum": ["interna", "empleados", "clientes_indirecta", "clientes_directa"] },
+    "tipo_valor": { "enum": ["eficiencia", "retorno", "riesgo_evitado", "cumplimiento"] },
+    "motivo_cierre": { "enum": ["sin_valor_plausible", "hipotesis_refutada", "datos_insuficientes", "inviable_tecnicamente", "coste_superior_valor", "riesgo_inaceptable", "regulacion", "sin_adopcion", "sustituida", "cambio_prioridad"], "description": "Sin valor plausible · Hipótesis refutada · Datos insuficientes · Inviable técnicamente · Coste superior al valor · Riesgo inaceptable · Regulación · Sin adopción · Sustituida por otra solución · Cambio de prioridad estratégica" },
+    "estado_iniciativa": { "enum": ["registrada", "en_fase", "pendiente_gate", "en_espera", "en_produccion", "pendiente_g7", "parada", "retirada"] },
+    "gate": { "enum": ["G0", "G1", "G2", "G3", "G4", "G5", "R6", "G7"] },
+    "resultado_gate": { "enum": ["continuar", "continuar_condiciones", "iterar", "pivotar", "parar", "escalar", "retirar", "continuar_operacion", "adelantar_g7"], "description": "G0–G5: continuar · continuar_condiciones · iterar · pivotar (solo G1–G3) · parar. R6: continuar_operacion · continuar_condiciones · adelantar_g7. G7: escalar · iterar · retirar." },
+    "estado_criterio": { "enum": ["cumple", "no_cumple", "no_aplica", "pendiente"] },
+    "autonomia": { "enum": ["A0", "A1", "A2", "A3", null] },
+    "nivel_riesgo_o_nulo": { "enum": ["bajo", "medio", "alto", "critico", null] },
+    "estado_importe": { "enum": ["validado", "declarado", "estimado"] },
+    "tipo_evento": { "enum": ["alta", "entrada_fase", "salida_fase", "solicitud_gate", "verificacion", "decision", "elevacion", "condicion_creada", "condicion_cumplida", "condicion_vencida", "espera_inicio", "espera_fin", "cambio_clasificacion", "incidente", "no_conformidad", "parada", "retirada", "edicion"] },
+    "plazos": {
+      "type": "object",
+      "required": ["0", "1", "2", "3", "4", "5", "7"],
+      "additionalProperties": false,
+      "properties": { "0": { "type": "integer" }, "1": { "type": "integer" }, "2": { "type": "integer" }, "3": { "type": "integer" }, "4": { "type": "integer" }, "5": { "type": "integer" }, "7": { "type": "integer" } }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["organizacion", "generado", "moneda", "datos_ilustrativos", "configuracion"],
+      "additionalProperties": false,
+      "properties": {
+        "organizacion": { "type": "string" },
+        "generado": { "$ref": "#/$defs/fecha" },
+        "fecha_referencia": { "$ref": "#/$defs/fecha_o_nula", "description": "Fecha de corte para calcular días y alertas. null = fecha del día." },
+        "moneda": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "datos_ilustrativos": { "type": "boolean" },
+        "areas": { "type": "array", "items": { "type": "string" } },
+        "nota": { "type": "string" },
+        "configuracion": {
+          "type": "object",
+          "required": ["plazos_fase", "plazo_decision_dias_habiles", "revision_continuidad_dias", "historial_minimo_ponderado"],
+          "additionalProperties": false,
+          "properties": {
+            "plazos_fase": { "type": "object", "required": ["lite", "enterprise"], "additionalProperties": false, "properties": { "lite": { "$ref": "#/$defs/plazos" }, "enterprise": { "$ref": "#/$defs/plazos" } } },
+            "plazo_decision_dias_habiles": { "type": "object", "required": ["lite", "enterprise"], "properties": { "lite": { "type": "integer" }, "enterprise": { "type": "integer" } } },
+            "revision_continuidad_dias": { "type": "object", "required": ["lite", "enterprise"], "properties": { "lite": { "type": "integer" }, "enterprise": { "type": "integer" } } },
+            "historial_minimo_ponderado": { "type": "integer", "minimum": 1, "description": "Iniciativas resueltas (en producción o cerradas) que han pasado por una fase necesarias para mostrar su probabilidad histórica y el valor ponderado." },
+            "umbral_inversion_enterprise": { "$ref": "#/$defs/importe" }
+          }
+        }
+      }
+    },
+    "persona": {
+      "type": "object",
+      "required": ["id", "nombre"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id_persona" },
+        "nombre": { "type": "string" },
+        "cargo": { "type": "string" },
+        "area": { "type": "string" },
+        "organo": { "enum": ["oficina_ia", "comite_ia", "consejo", "segunda_linea", "tercera_linea", null] }
+      }
+    },
+    "iniciativa": {
+      "type": "object",
+      "required": ["id", "nombre", "descripcion", "area", "fecha_registro", "responsables", "clasificacion", "ciclo"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id_iniciativa" },
+        "nombre": { "type": "string", "minLength": 3 },
+        "descripcion": { "type": "string", "description": "Qué es y para qué se usa, en lenguaje comprensible (regla 10 de medición)." },
+        "area": { "type": "string" },
+        "fecha_registro": { "$ref": "#/$defs/fecha" },
+        "responsables": {
+          "type": "object",
+          "required": ["patrocinador", "producto", "tecnico", "operacion", "riesgos", "auditor"],
+          "additionalProperties": false,
+          "properties": {
+            "patrocinador": { "$ref": "#/$defs/id_persona_o_nula" },
+            "producto": { "$ref": "#/$defs/id_persona_o_nula" },
+            "tecnico": { "$ref": "#/$defs/id_persona_o_nula" },
+            "operacion": { "$ref": "#/$defs/id_persona_o_nula" },
+            "riesgos": { "$ref": "#/$defs/id_persona_o_nula" },
+            "auditor": { "$ref": "#/$defs/id_persona_o_nula" }
+          }
+        },
+        "clasificacion": {
+          "type": "object",
+          "required": ["esfera_principal", "ambicion_propuesta", "intensidad", "regulatoria", "tecnologia", "exposicion"],
+          "additionalProperties": false,
+          "properties": {
+            "esfera_principal": { "$ref": "#/$defs/esfera" },
+            "esfera_secundaria": { "oneOf": [{ "$ref": "#/$defs/esfera" }, { "type": "null" }] },
+            "ambicion_propuesta": { "$ref": "#/$defs/ambicion_o_nula" },
+            "ambicion_confirmada": { "$ref": "#/$defs/ambicion_o_nula" },
+            "ambicion_real": { "$ref": "#/$defs/ambicion_o_nula" },
+            "intensidad": { "$ref": "#/$defs/intensidad" },
+            "regulatoria": { "$ref": "#/$defs/regulatoria" },
+            "tecnologia": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/tecnologia" } },
+            "autonomia": { "$ref": "#/$defs/autonomia" },
+            "exposicion": { "$ref": "#/$defs/exposicion" },
+            "tipo_valor": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/tipo_valor" } },
+            "proveedores": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_proveedor" } }
+          }
+        },
+        "determinacion_intensidad": {
+          "description": "Resultado de T04. Basta un criterio en true para Enterprise.",
+          "oneOf": [{ "type": "null" }, {
+            "type": "object",
+            "required": ["fecha", "autor", "criterios", "resultado"],
+            "additionalProperties": false,
+            "properties": {
+              "fecha": { "$ref": "#/$defs/fecha" },
+              "autor": { "$ref": "#/$defs/id_persona_o_nula" },
+              "momento": { "enum": ["fase_0", "G3", "R6", "otro"] },
+              "criterios": {
+                "type": "object",
+                "required": ["alto_riesgo", "decisiones_personas", "exposicion_directa", "agentes_actuar", "datos_protegidos", "funcion_critica", "transformar", "inversion"],
+                "additionalProperties": false,
+                "properties": {
+                  "alto_riesgo": { "type": ["boolean", "null"] },
+                  "decisiones_personas": { "type": ["boolean", "null"] },
+                  "exposicion_directa": { "type": ["boolean", "null"] },
+                  "agentes_actuar": { "type": ["boolean", "null"] },
+                  "datos_protegidos": { "type": ["boolean", "null"] },
+                  "funcion_critica": { "type": ["boolean", "null"] },
+                  "transformar": { "type": ["boolean", "null"] },
+                  "inversion": { "type": ["boolean", "null"] }
+                }
+              },
+              "resultado": { "$ref": "#/$defs/intensidad" },
+              "comentario": { "type": "string" }
+            }
+          }]
+        },
+        "clasificacion_ambicion": {
+          "description": "Resultado de T05 con las cinco preguntas de 00 §5.2.",
+          "oneOf": [{ "type": "null" }, {
+            "type": "object",
+            "required": ["fecha", "autor", "respuestas", "resultado"],
+            "additionalProperties": false,
+            "properties": {
+              "fecha": { "$ref": "#/$defs/fecha" },
+              "autor": { "$ref": "#/$defs/id_persona_o_nula" },
+              "momento": { "enum": ["fase_1", "fase_2", "fase_7", "otro"] },
+              "respuestas": {
+                "type": "object",
+                "required": ["p1", "p2", "p3", "p4", "p5"],
+                "additionalProperties": false,
+                "properties": { "p1": { "type": ["boolean", "null"] }, "p2": { "type": ["boolean", "null"] }, "p3": { "type": ["boolean", "null"] }, "p4": { "type": ["boolean", "null"] }, "p5": { "type": ["boolean", "null"] } }
+              },
+              "resultado": { "$ref": "#/$defs/ambicion" },
+              "justificacion": { "type": "string" }
+            }
+          }]
+        },
+        "ciclo": {
+          "type": "object",
+          "required": ["fase", "estado", "fecha_entrada_fase", "iteracion"],
+          "additionalProperties": false,
+          "properties": {
+            "fase": { "$ref": "#/$defs/fase" },
+            "estado": { "$ref": "#/$defs/estado_iniciativa" },
+            "fecha_entrada_fase": { "$ref": "#/$defs/fecha_o_nula" },
+            "iteracion": { "type": "integer", "minimum": 1, "description": "Iteración en curso en el gate de la fase actual." },
+            "espera": {
+              "oneOf": [{ "type": "null" }, {
+                "type": "object",
+                "required": ["motivo", "desde", "reanudacion_prevista"],
+                "additionalProperties": false,
+                "properties": {
+                  "motivo": { "enum": ["presupuesto", "dependencia", "proveedor", "datos", "otro"] },
+                  "desde": { "$ref": "#/$defs/fecha" },
+                  "reanudacion_prevista": { "$ref": "#/$defs/fecha" },
+                  "comentario": { "type": "string" }
+                }
+              }]
+            },
+            "proxima_revision": { "$ref": "#/$defs/fecha_o_nula" }
+          }
+        },
+        "cierre": {
+          "oneOf": [{ "type": "null" }, {
+            "type": "object",
+            "required": ["tipo", "fecha", "motivo", "organo"],
+            "additionalProperties": false,
+            "properties": {
+              "tipo": { "enum": ["parada", "retirada"] },
+              "fecha": { "$ref": "#/$defs/fecha" },
+              "motivo": { "$ref": "#/$defs/motivo_cierre" },
+              "organo": { "type": "string" },
+              "gate": { "$ref": "#/$defs/gate" },
+              "comentario": { "type": "string" },
+              "sustituto": { "$ref": "#/$defs/texto_o_nulo" },
+              "tratamiento_datos": { "$ref": "#/$defs/texto_o_nulo" },
+              "comunicacion": { "$ref": "#/$defs/texto_o_nulo" },
+              "lecciones": { "$ref": "#/$defs/texto_o_nulo" }
+            }
+          }]
+        },
+        "riesgo_residual_principal": { "$ref": "#/$defs/nivel_riesgo_o_nulo" },
+        "evaluaciones_impacto": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["tipo", "estado"],
+            "additionalProperties": false,
+            "properties": {
+              "tipo": { "enum": ["eipd", "eidf"], "description": "eipd = evaluación de impacto en protección de datos · eidf = evaluación de impacto en derechos fundamentales" },
+              "estado": { "enum": ["hecha", "pendiente", "no_aplica"] },
+              "fecha": { "$ref": "#/$defs/fecha_o_nula" }
+            }
+          }
+        },
+        "inversion": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": { "realizada": { "$ref": "#/$defs/importe" }, "pendiente": { "$ref": "#/$defs/importe" } }
+        },
+        "etiquetas_libres": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "sistemas": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_sistema" } }
+      }
+    },
+    "sistema": {
+      "type": "object",
+      "required": ["id", "nombre", "tipo", "estado", "regulatoria", "intensidad"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id_sistema" },
+        "nombre": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "tipo": { "enum": ["propio", "tercero", "uso_corporativo"] },
+        "estado": { "enum": ["en_desarrollo", "en_produccion", "retirado"] },
+        "iniciativas": { "type": "array", "items": { "$ref": "#/$defs/id_iniciativa" } },
+        "proveedores": { "type": "array", "items": { "$ref": "#/$defs/id_proveedor" } },
+        "tecnologia": { "type": "array", "items": { "$ref": "#/$defs/tecnologia" } },
+        "autonomia": { "$ref": "#/$defs/autonomia" },
+        "regulatoria": { "$ref": "#/$defs/regulatoria" },
+        "intensidad": { "$ref": "#/$defs/intensidad" },
+        "exposicion": { "$ref": "#/$defs/exposicion" },
+        "responsable": { "$ref": "#/$defs/id_persona_o_nula" },
+        "fecha_alta": { "$ref": "#/$defs/fecha_o_nula" },
+        "proxima_revision": { "$ref": "#/$defs/fecha_o_nula" }
+      }
+    },
+    "evento": {
+      "type": "object",
+      "required": ["id", "fecha", "tipo", "autor", "motivo"],
+      "anyOf": [{ "required": ["iniciativa"] }, { "required": ["sistema"] }],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^EVT-\\d{6}$" },
+        "iniciativa": { "$ref": "#/$defs/id_iniciativa" },
+        "sistema": { "$ref": "#/$defs/id_sistema" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "registrado": { "type": "string", "description": "Marca temporal ISO 8601 de la anotación en el registro." },
+        "tipo": { "$ref": "#/$defs/tipo_evento" },
+        "autor": { "type": "string", "description": "Identificador de persona (PER-nn) o nombre de quien registra." },
+        "motivo": { "type": "string", "minLength": 1 },
+        "fase": { "$ref": "#/$defs/fase" },
+        "gate": { "$ref": "#/$defs/gate" },
+        "decision": { "$ref": "#/$defs/id_decision" },
+        "resultado": { "$ref": "#/$defs/resultado_gate" },
+        "campo": { "type": "string" },
+        "antes": {},
+        "despues": {}
+      }
+    },
+    "criterio_evaluado": {
+      "type": "object",
+      "required": ["codigo", "estado"],
+      "additionalProperties": false,
+      "properties": {
+        "codigo": { "$ref": "#/$defs/codigo_criterio" },
+        "estado": { "$ref": "#/$defs/estado_criterio" },
+        "justificacion": { "type": "string", "description": "Obligatoria en No aplica." },
+        "evidencias": { "type": "array", "items": { "type": "string", "pattern": "^EVI-\\d{4}-\\d{4}$" } }
+      }
+    },
+    "decision_gate": {
+      "type": "object",
+      "required": ["id", "iniciativa", "gate", "iteracion", "intensidad", "fecha_solicitud", "criterios"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id_decision" },
+        "iniciativa": { "$ref": "#/$defs/id_iniciativa" },
+        "gate": { "$ref": "#/$defs/gate" },
+        "iteracion": { "type": "integer", "minimum": 1 },
+        "intensidad": { "$ref": "#/$defs/intensidad" },
+        "ambicion": { "$ref": "#/$defs/ambicion_o_nula" },
+        "fecha_solicitud": { "$ref": "#/$defs/fecha" },
+        "solicitante": { "$ref": "#/$defs/id_persona_o_nula" },
+        "verificador": { "$ref": "#/$defs/id_persona_o_nula" },
+        "fecha_verificacion": { "$ref": "#/$defs/fecha_o_nula" },
+        "resultado_verificacion": { "enum": ["conforme", "conforme_observaciones", "no_conforme", null] },
+        "decisor": { "$ref": "#/$defs/id_persona_o_nula" },
+        "organo": { "enum": ["patrocinador", "patrocinador_conformidad_riesgos", "patrocinador_informando_comite", "comite_ia", "comite_ia_firma_multinivel", "consejo", "organo_superior", null] },
+        "conformidad_riesgos": { "$ref": "#/$defs/id_persona_o_nula" },
+        "elevada": { "type": "boolean", "description": "true cuando la decisión se eleva al órgano superior (tras dos iteraciones)." },
+        "fecha_decision": { "$ref": "#/$defs/fecha_o_nula" },
+        "resultado": { "enum": ["continuar", "continuar_condiciones", "iterar", "pivotar", "parar", "escalar", "retirar", "continuar_operacion", "adelantar_g7", null] },
+        "resultado_propuesto": { "enum": ["continuar", "continuar_condiciones", "iterar", "pivotar", "parar", "escalar", "retirar", "continuar_operacion", "adelantar_g7", null], "description": "Resultado que el equipo propone; determina qué criterios de resultado (Escalar, Iterar, Retirar) aplican." },
+        "motivo": { "type": "string" },
+        "motivo_cierre": { "oneOf": [{ "$ref": "#/$defs/motivo_cierre" }, { "type": "null" }] },
+        "criterios": { "type": "array", "items": { "$ref": "#/$defs/criterio_evaluado" } },
+        "firmas": {
+          "type": "array",
+          "description": "Firma multinivel de G5 Enterprise.",
+          "items": {
+            "type": "object",
+            "required": ["rol", "persona", "sentido"],
+            "additionalProperties": false,
+            "properties": {
+              "rol": { "enum": ["tecnico", "riesgos_cumplimiento", "seguridad_informacion", "proteccion_datos"] },
+              "persona": { "$ref": "#/$defs/id_persona_o_nula" },
+              "fecha": { "$ref": "#/$defs/fecha_o_nula" },
+              "sentido": { "enum": ["conforme", "veto", "pendiente"] }
+            }
+          }
+        }
+      }
+    },
+    "condicion": {
+      "type": "object",
+      "required": ["id", "decision", "iniciativa", "descripcion", "responsable", "plazo", "estado"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^CND-\\d{4}-\\d{3}$" },
+        "decision": { "$ref": "#/$defs/id_decision" },
+        "iniciativa": { "$ref": "#/$defs/id_iniciativa" },
+        "criterio": { "$ref": "#/$defs/codigo_criterio" },
+        "descripcion": { "type": "string" },
+        "responsable": { "$ref": "#/$defs/id_persona" },
+        "plazo": { "$ref": "#/$defs/fecha" },
+        "verificacion": { "type": "string" },
+        "estado": { "enum": ["abierta", "cumplida", "vencida", "anulada"], "description": "Una condición abierta con plazo anterior a la fecha de referencia se trata como vencida." },
+        "fecha_cierre": { "$ref": "#/$defs/fecha_o_nula" }
+      }
+    },
+    "evidencia": {
+      "type": "object",
+      "required": ["id", "iniciativa", "titulo", "fecha", "verificada"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^EVI-\\d{4}-\\d{4}$" },
+        "iniciativa": { "$ref": "#/$defs/id_iniciativa" },
+        "plantilla": { "type": ["string", "null"], "pattern": "^(P\\d{2}|T\\d{2})$" },
+        "gate": { "$ref": "#/$defs/gate" },
+        "titulo": { "type": "string" },
+        "enlace": { "$ref": "#/$defs/texto_o_nulo" },
+        "version": { "$ref": "#/$defs/texto_o_nulo" },
+        "autor": { "$ref": "#/$defs/id_persona_o_nula" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "verificada": { "type": "boolean" },
+        "verificador": { "$ref": "#/$defs/id_persona_o_nula" },
+        "fecha_verificacion": { "$ref": "#/$defs/fecha_o_nula" }
+      }
+    },
+    "valor": {
+      "type": "object",
+      "required": ["id", "iniciativa", "momento", "tipo", "importe", "estado"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^VAL-\\d{4}$" },
+        "iniciativa": { "$ref": "#/$defs/id_iniciativa" },
+        "momento": { "enum": ["esperado", "realizado"] },
+        "tipo": { "enum": ["eficiencias", "retorno", "coste_recurrente", "inversion", "capacidad_liberada", "riesgo_evitado", "cumplimiento"], "description": "Anual salvo inversión. La capacidad liberada no suma en el neto (regla 3)." },
+        "importe": { "$ref": "#/$defs/importe" },
+        "formula": { "$ref": "#/$defs/texto_o_nulo" },
+        "estado": { "$ref": "#/$defs/estado_importe" },
+        "periodo": { "$ref": "#/$defs/texto_o_nulo" },
+        "fecha": { "$ref": "#/$defs/fecha_o_nula" },
+        "fuente": { "$ref": "#/$defs/texto_o_nulo" }
+      }
+    },
+    "riesgo": {
+      "type": "object",
+      "required": ["id", "iniciativa", "descripcion", "probabilidad", "impacto"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^IA-\\d{4}-\\d{3} · R\\d{2}$" },
+        "iniciativa": { "$ref": "#/$defs/id_iniciativa" },
+        "sistema": { "$ref": "#/$defs/id_sistema" },
+        "descripcion": { "type": "string" },
+        "categoria": { "enum": ["EST", "TEC", "DAT", "ECO", "LEG", "ORG", "REP", "GEN", "SEG", "TER"] },
+        "riesgo_tipo": { "type": "string", "pattern": "^RT-[A-Z]{3}-\\d{2}$" },
+        "probabilidad": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+        "impacto": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+        "nivel_inherente": { "$ref": "#/$defs/nivel_riesgo_o_nulo" },
+        "nivel_residual": { "$ref": "#/$defs/nivel_riesgo_o_nulo" },
+        "respuesta": { "enum": ["evitar", "mitigar", "transferir", "aceptar", null] },
+        "responsable": { "$ref": "#/$defs/id_persona_o_nula" },
+        "controles": { "type": "string" }
+      }
+    },
+    "no_conformidad": {
+      "type": "object",
+      "required": ["id", "tipo", "descripcion", "fecha_deteccion", "estado"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^NC-\\d{4}-\\d{3}$" },
+        "iniciativa": { "$ref": "#/$defs/id_iniciativa" },
+        "sistema": { "$ref": "#/$defs/id_sistema" },
+        "tipo": { "enum": ["menor", "mayor", "critica"] },
+        "descripcion": { "type": "string" },
+        "fecha_deteccion": { "$ref": "#/$defs/fecha" },
+        "contencion": { "$ref": "#/$defs/texto_o_nulo" },
+        "causa_raiz": { "$ref": "#/$defs/texto_o_nulo" },
+        "accion": { "$ref": "#/$defs/texto_o_nulo" },
+        "plazo_accion": { "$ref": "#/$defs/fecha_o_nula" },
+        "fecha_cierre": { "$ref": "#/$defs/fecha_o_nula" },
+        "estado": { "enum": ["abierta", "cerrada"] }
+      }
+    },
+    "incidente": {
+      "type": "object",
+      "required": ["id", "fecha", "severidad", "descripcion", "estado"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^INC-\\d{4}-\\d{3}$" },
+        "iniciativa": { "$ref": "#/$defs/id_iniciativa" },
+        "sistema": { "$ref": "#/$defs/id_sistema" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "severidad": { "enum": ["S1", "S2", "S3", "S4"] },
+        "descripcion": { "type": "string" },
+        "horas_detectar": { "type": ["number", "null"] },
+        "horas_contener": { "type": ["number", "null"] },
+        "notificaciones": { "$ref": "#/$defs/texto_o_nulo" },
+        "estado": { "enum": ["abierto", "cerrado"] }
+      }
+    },
+    "proveedor": {
+      "type": "object",
+      "required": ["id", "nombre", "exigencia"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id_proveedor" },
+        "nombre": { "type": "string" },
+        "servicios": { "type": "string" },
+        "exigencia": { "enum": ["N1", "N2", "N3"] },
+        "contrato": { "$ref": "#/$defs/texto_o_nulo" },
+        "fecha_evaluacion": { "$ref": "#/$defs/fecha_o_nula" },
+        "resultado_evaluacion": { "enum": ["favorable", "favorable_condiciones", "desfavorable", "pendiente", null] }
+      }
+    },
+    "recomendacion": {
+      "type": "object",
+      "required": ["id", "texto", "estado"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^REC-\\d{4}-\\d{3}$" },
+        "fecha": { "$ref": "#/$defs/fecha_o_nula" },
+        "texto": { "type": "string" },
+        "destinatario": { "type": "string" },
+        "estado": { "enum": ["abierta", "en_curso", "cerrada", "descartada"] },
+        "evidencia": { "$ref": "#/$defs/texto_o_nulo" },
+        "iniciativas": { "type": "array", "items": { "$ref": "#/$defs/id_iniciativa" } }
+      }
+    }
+  }
+}

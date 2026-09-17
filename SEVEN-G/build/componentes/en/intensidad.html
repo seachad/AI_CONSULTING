@@ -1,0 +1,71 @@
+<figure class="grafico">
+  <div class="g-titulo">Determining the intensity</div>
+  <div class="g-sub">Assessed in phase 0 and reviewed at G3 and at each continuity review. A single “yes” is enough to apply Enterprise</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 980 480" role="img" aria-label="Decision tree to determine the Lite or Enterprise intensity of an initiative">
+  <defs>
+    <marker id="int-fl-en" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="sv-flecha"/></marker>
+  </defs>
+  <!-- Inicio -->
+  <rect x="0" y="10" width="300" height="52" fill="#1a1817"/>
+  <text x="18" y="42" class="sv-blanco" font-size="15" font-weight="700">New AI initiative or use of AI</text>
+  <line x1="40" y1="62" x2="40" y2="88" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/>
+
+  <!-- Preguntas -->
+  <g font-size="14.5">
+    <rect x="0" y="90" width="640" height="56" class="sv-panel"/>
+    <circle cx="40" cy="118" r="15" fill="#990f3d"/><text x="40" y="123" text-anchor="middle" class="sv-blanco" font-size="13" font-weight="700">1</text>
+    <text x="70" y="123" class="sv-t" font-weight="600">Is it a practice prohibited by regulation?</text>
+
+    <rect x="0" y="170" width="640" height="56" class="sv-panel"/>
+    <circle cx="40" cy="198" r="15" fill="#0f5499"/><text x="40" y="203" text-anchor="middle" class="sv-blanco" font-size="13" font-weight="700">2</text>
+    <text x="70" y="203" class="sv-t" font-weight="600">High regulatory risk or significant effect on people?</text>
+
+    <rect x="0" y="250" width="640" height="56" class="sv-panel"/>
+    <circle cx="40" cy="278" r="15" fill="#0f5499"/><text x="40" y="283" text-anchor="middle" class="sv-blanco" font-size="13" font-weight="700">3</text>
+    <text x="70" y="273" class="sv-t" font-weight="600">Direct exposure to customers, agents that execute actions</text>
+    <text x="70" y="292" class="sv-t" font-weight="600">or specially protected data?</text>
+
+    <rect x="0" y="330" width="640" height="56" class="sv-panel"/>
+    <circle cx="40" cy="358" r="15" fill="#0f5499"/><text x="40" y="363" text-anchor="middle" class="sv-blanco" font-size="13" font-weight="700">4</text>
+    <text x="70" y="353" class="sv-t" font-weight="600">Critical function, Transform level or investment above</text>
+    <text x="70" y="372" class="sv-t" font-weight="600">the threshold set by the board in C2?</text>
+  </g>
+
+  <!-- Flechas "No" -->
+  <g font-size="12.5" font-weight="700">
+    <line x1="40" y1="146" x2="40" y2="168" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="52" y="162" class="sv-t2">No</text>
+    <line x1="40" y1="226" x2="40" y2="248" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="52" y="242" class="sv-t2">No</text>
+    <line x1="40" y1="306" x2="40" y2="328" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="52" y="322" class="sv-t2">No</text>
+    <line x1="40" y1="386" x2="40" y2="412" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="52" y="404" class="sv-t2">No</text>
+  </g>
+
+  <!-- Flechas "Sí" -->
+  <g font-size="12.5" font-weight="700">
+    <line x1="640" y1="118" x2="716" y2="118" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="668" y="110" class="sv-t2">Yes</text>
+    <line x1="640" y1="198" x2="716" y2="198" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="668" y="190" class="sv-t2">Yes</text>
+    <line x1="640" y1="278" x2="716" y2="278" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="668" y="270" class="sv-t2">Yes</text>
+    <line x1="640" y1="358" x2="716" y2="358" class="sv-regla" stroke-width="1.5" marker-end="url(#int-fl-en)"/><text x="668" y="350" class="sv-t2">Yes</text>
+  </g>
+
+  <!-- Resultados -->
+  <rect x="720" y="90" width="260" height="56" fill="#990f3d"/>
+  <text x="740" y="115" class="sv-blanco" font-size="15" font-weight="700">Not authorised</text>
+  <text x="740" y="134" class="sv-blanco" font-size="12" opacity=".85">Never proceeds beyond phase 3</text>
+
+  <rect x="720" y="170" width="260" height="216" fill="#0f5499"/>
+  <text x="740" y="230" class="sv-blanco" font-size="12" font-weight="700" letter-spacing="1" opacity=".8">INTENSITY</text>
+  <text x="740" y="258" class="sv-blanco sv-serif" font-size="28" font-weight="700">Enterprise</text>
+  <text x="740" y="290" class="sv-blanco" font-size="12.5" opacity=".9">All gates held separately</text>
+  <text x="740" y="308" class="sv-blanco" font-size="12.5" opacity=".9">AI Auditor at every gate</text>
+  <text x="740" y="326" class="sv-blanco" font-size="12.5" opacity=".9">Multi-level go-live sign-off</text>
+  <text x="740" y="344" class="sv-blanco" font-size="12.5" opacity=".9">Quarterly review</text>
+
+  <rect x="0" y="414" width="640" height="56" fill="#0d7680"/>
+  <text x="18" y="437" class="sv-blanco" font-size="12" font-weight="700" letter-spacing="1" opacity=".8">INTENSITY</text>
+  <text x="18" y="459" class="sv-blanco sv-serif" font-size="21" font-weight="700">Lite</text>
+  <text x="80" y="459" class="sv-blanco" font-size="12.5" opacity=".9">Gates can be grouped · simplified templates · half-yearly review</text>
+</svg>
+  </div>
+  <div class="g-fuente">Source: SEVEN-G · SEACHAD</div>
+</figure>

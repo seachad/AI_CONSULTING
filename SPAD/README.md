@@ -1,8 +1,10 @@
 # SPAD — Structured Prompt-Driven AI Engineering
 ## Professional Methodology for AI-Assisted Software Development
 
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
+
 **Version:** 2.0  
-**Framework:** SEVEN-G  
+**Relationship:** Independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI)  
 **Owner:** Seachad (FGV)  
 **Status:** Production Ready
 
@@ -11,23 +13,23 @@
 ## 📋 Quick Navigation
 
 ### For Business Leaders
-- **[Executive Summary](00_SPAD_Executive_Summary.md)** - Why SPAD matters for your business
-- **[Certification](11_SEVENG_SPAD_Compliant_Certification.md)** - SPAD-Compliant™ certification
+- **[Executive Summary](Documents/00_SPAD_Executive_Summary.md)** - Why SPAD matters for your business
+- **[Self-Assessment](Documents/11_SPAD_Compliant_Certification.md)** - SPAD self-assessment of conformity (not a certification)
 
 ### For Technical Teams
-- **[Methodology](0%20-%20SPAD_04_Metodologia_Operativa.md)** - Complete operational methodology (Spanish)
-- **[Official Skill](08%20-%20SEVENG_SPAD_Skill_Official_EN.md)** - SPAD as SEVEN-G skill (English)
-- **[Prompt Pack](01_SEVENG_SPAD_Prompt_Pack.md)** - Quick reference for all prompts
-- **[Flow Diagrams](07%20-%20SPAD_03_Flow_Diagram.md)** - Visual workflows
+- **[Methodology](Documents/0%20-%20SPAD_Metodologia_Operativa.md)** - Complete operational methodology (Spanish)
+- **[Official Skill](Documents/08_SPAD_Skill_Official_EN.md)** - Official SPAD skill (English)
+- **[Prompt Pack](Documents/01_SPAD_Prompt_Pack.md)** - Quick reference for all prompts
+- **[Flow Diagrams](Documents/07_SPAD_03_Flow_Diagram.md)** - Visual workflows
 
 ### For Implementation
-- **[Context Management](04_SEVENG_SPAD_Context_Management.md)** - Setup and organize contexts
-- **[Validation Policy](05_SEVENG_SPAD_Validation_Policy.md)** - Quality enforcement rules
+- **[Context Management](Documents/04_SPAD_Context_Management.md)** - Setup and organize contexts
+- **[Validation Policy](Documents/05_SEVENG_SPAD_Validation_Policy.md)** - Quality enforcement rules
 
 ### Additional Resources
-- **[Agent-Ready I/O](02_SEVENG_SPAD_Agent_Ready_IO.md)** - Machine-readable contracts
-- **[Skills Map](03_SEVENG_SPAD_Skills_Map.md)** - SPAD dependencies
-- **[Derived Skills](09_SEVENG_Derived_Skills.md)** - Advanced skills built on SPAD
+- **[Agent-Ready I/O](Documents/02_SPAD_Agent_Ready_IO.md)** - Machine-readable contracts
+- **[Skills Map](Documents/03_SPAD_Skills_Map.md)** - SPAD dependencies
+- **[Derived Skills](Documents/09_SPAD_Derived_Skills.md)** - Advanced skills built on SPAD
 
 ---
 
@@ -67,11 +69,13 @@ PLAN → AUDIT ✓ → IMPLEMENT → AUDIT ✓ → PRODUCTION
 
 ### 2. Role Separation
 - **Planner** - Designs architecture
-- **Auditor** - Validates independently
+- **AI Reviewer** - Validates independently
 - **Builder** - Implements following rules
 - **Fixer** - Applies minimal corrections
 
-One AI cannot be both Builder and Auditor in the same phase.
+One AI cannot be both Builder and AI Reviewer in the same phase.
+
+> **Note:** The AI role formerly called *AI Auditor* is now named *AI Reviewer* (*IA revisora*) to distinguish it from the human AI Auditor of SEVEN-G.
 
 ### 3. Context Layers
 - **GLOBAL_CONTEXT** - Universal rules for all projects
@@ -94,7 +98,7 @@ IMPLEMENT → TEST_IMPL → AUDIT_TESTS → AUDIT_CODE →
 VERSION → PRODUCTION
 ```
 
-**Time:** 2-5 hours  
+**Time:** indicative; depends on the team and the scope  
 **Output:** Production-ready code with tests and documentation
 
 ---
@@ -105,7 +109,7 @@ LEGACY CODE → DOCUMENT_EXISTING → DISCOVERY_LEGACY →
 [Continue with Core Workflow]
 ```
 
-**Time:** +1-3 hours for analysis  
+**Time:** additional analysis time; indicative, depends on the team and the scope  
 **Output:** Understanding before changing, risk mitigation
 
 ---
@@ -116,7 +120,7 @@ INCIDENT → DEBUG → HOTFIX_PLAN → AUDIT → IMPLEMENT →
 DEPLOY → MONITOR → POST-MORTEM
 ```
 
-**Time:** 1-3 hours  
+**Time:** indicative; depends on the team and the scope  
 **Output:** Root cause + fix + lessons learned
 
 ---
@@ -127,7 +131,7 @@ CODE → SECURITY_AUDIT → FIX_CRITICAL → FIX_HIGH →
 DOCUMENT_RISKS → CLEARED
 ```
 
-**Time:** 1-6 hours  
+**Time:** indicative; depends on the team and the scope  
 **Output:** Vulnerability report + fixes + compliance evidence
 
 ---
@@ -167,37 +171,37 @@ DOCUMENT_RISKS → CLEARED
 ## 🎓 Learning Path
 
 ### Beginner (1-2 days)
-1. Read [Executive Summary](00_SPAD_Executive_Summary.md)
-2. Review [Prompt Pack](01_SEVENG_SPAD_Prompt_Pack.md)
-3. Study [Flow Diagrams](07%20-%20SPAD_03_Flow_Diagram.md)
+1. Read [Executive Summary](Documents/00_SPAD_Executive_Summary.md)
+2. Review [Prompt Pack](Documents/01_SPAD_Prompt_Pack.md)
+3. Study [Flow Diagrams](Documents/07_SPAD_03_Flow_Diagram.md)
 4. Try simple PLAN → AUDIT → IMPLEMENT workflow
 
 ### Intermediate (1 week)
-1. Study [Methodology](0%20-%20SPAD_04_Metodologia_Operativa.md)
-2. Learn [Context Management](04_SEVENG_SPAD_Context_Management.md)
+1. Study [Methodology](Documents/0%20-%20SPAD_Metodologia_Operativa.md)
+2. Learn [Context Management](Documents/04_SPAD_Context_Management.md)
 3. Practice with real project
-4. Apply [Validation Policy](05_SEVENG_SPAD_Validation_Policy.md)
+4. Apply [Validation Policy](Documents/05_SEVENG_SPAD_Validation_Policy.md)
 
 ### Advanced (2-4 weeks)
 1. Master all workflows (core, legacy, debug, hotfix, security)
 2. Customize contexts for your organization
 3. Train team members
-4. Pursue [SPAD-Compliant™ Certification](11_SEVENG_SPAD_Compliant_Certification.md)
+4. Run a [SPAD self-assessment of conformity](Documents/11_SPAD_Compliant_Certification.md) (not a certification)
 
 ---
 
 ## 📈 Success Metrics
 
-Organizations using SPAD report:
+SPAD aims to help organizations:
 
-- **↓ 70%** rework required
-- **↓ 60%** production incidents
-- **↓ 50%** technical debt
-- **↓ 40%** time to production
-- **↓ 80%** audit preparation time
-- **↑ 200%** test coverage
+- reduce rework
+- reduce production incidents
+- reduce technical debt
+- shorten time to production
+- shorten audit preparation time
+- increase test coverage
 
-**Typical ROI:** 300-500% in first year
+These are objectives, not measured results. Any improvement, and any return on investment, must be measured by each organization against its own baseline.
 
 ---
 
@@ -290,28 +294,28 @@ Organizations using SPAD report:
 ## 📚 Document Index
 
 ### Core Documents (Read First)
-1. [00 - Executive Summary](00_SPAD_Executive_Summary.md) - Business overview
-2. [01 - Prompt Pack](01_SEVENG_SPAD_Prompt_Pack.md) - Quick reference
-3. [07 - Flow Diagrams](07%20-%20SPAD_03_Flow_Diagram.md) - Visual workflows
-4. [0 - Metodología Operativa](0%20-%20SPAD_04_Metodologia_Operativa.md) - Complete methodology
+1. [00 - Executive Summary](Documents/00_SPAD_Executive_Summary.md) - Business overview
+2. [01 - Prompt Pack](Documents/01_SPAD_Prompt_Pack.md) - Quick reference
+3. [07 - Flow Diagrams](Documents/07_SPAD_03_Flow_Diagram.md) - Visual workflows
+4. [0 - Metodología Operativa](Documents/0%20-%20SPAD_Metodologia_Operativa.md) - Complete methodology
 
 ### Implementation Guides
-5. [04 - Context Management](04_SEVENG_SPAD_Context_Management.md) - Setup contexts
-6. [05 - Validation Policy](05_SEVENG_SPAD_Validation_Policy.md) - Quality enforcement
+5. [04 - Context Management](Documents/04_SPAD_Context_Management.md) - Setup contexts
+6. [05 - Validation Policy](Documents/05_SEVENG_SPAD_Validation_Policy.md) - Quality enforcement
 
 ### Reference Documents
-7. [02 - Agent-Ready I/O](02_SEVENG_SPAD_Agent_Ready_IO.md) - Machine contracts
-8. [03 - Skills Map](03_SEVENG_SPAD_Skills_Map.md) - Dependencies
-9. [08 - Official Skill](08%20-%20SEVENG_SPAD_Skill_Official_EN.md) - SEVEN-G integration
-10. [09 - Derived Skills](09_SEVENG_Derived_Skills.md) - Advanced skills
-11. [10 - Web Landing](10_SEVENG_SPAD_Web_Landing.md) - Marketing materials
-12. [11 - Certification](11_SEVENG_SPAD_Compliant_Certification.md) - SPAD-Compliant™
+7. [02 - Agent-Ready I/O](Documents/02_SPAD_Agent_Ready_IO.md) - Machine contracts
+8. [03 - Skills Map](Documents/03_SPAD_Skills_Map.md) - Dependencies
+9. [08 - Official Skill](Documents/08_SPAD_Skill_Official_EN.md) - Official SPAD skill
+10. [09 - Derived Skills](Documents/09_SPAD_Derived_Skills.md) - Advanced skills
+11. [10 - Web Landing](Documents/10_SPAD_Web_Landing.md) - Marketing materials
+12. [11 - Self-Assessment](Documents/11_SPAD_Compliant_Certification.md) - SPAD self-assessment of conformity (not a certification)
 
 ---
 
 ## 🤝 Contributing
 
-SPAD is part of the SEVEN-G framework by Seachad.
+SPAD is an independent methodology by Seachad, related to SEVEN-G and referenced from its document 53 (building solutions with AI).
 
 ### Feedback Welcome
 - Bug reports in methodology
@@ -328,7 +332,7 @@ SPAD is part of the SEVEN-G framework by Seachad.
 
 ## 📜 License & Usage
 
-**SPAD** and **SPAD-Compliant™** are intellectual property of Seachad (FGV).
+**SPAD** is intellectual property of Seachad (FGV). There is no SPAD certification: conformity with SPAD can only be self-assessed by each organization and is not issued or endorsed by Seachad or any third party.
 
 **Permitted:**
 - Internal use within organizations
@@ -338,8 +342,8 @@ SPAD is part of the SEVEN-G framework by Seachad.
 
 **Requires Permission:**
 - Public redistribution of methodology
-- Use of SPAD-Compliant™ trademark
-- Training/certification services
+- Public statements of conformity with SPAD (always as a self-assessment, never as a certification)
+- Training services
 - Derivative methodologies
 
 ---
@@ -348,7 +352,7 @@ SPAD is part of the SEVEN-G framework by Seachad.
 
 ### AECF (AI Engineering Controlled Flow)
 A production implementation of SPAD for Python/Flask projects.
-See: `c:\SEACHAD\AECF_Prompts\`
+See: (ruta pendiente de confirmar)
 
 **Relationship:** AECF is SPAD applied to a specific tech stack and project.
 
@@ -369,7 +373,7 @@ A: Yes. SPAD phases fit within sprints. One TOPIC might be one story.
 A: Basic proficiency: 1-2 days. Mastery: 2-4 weeks of practice.
 
 **Q: Does SPAD slow down development?**  
-A: Initially yes (10-15%). After adoption, it speeds up development by 30-40%.
+A: Initially yes, while the team learns the phases. The hypothesis is that, after adoption, it speeds up development; this must be measured by each organization against its own baseline.
 
 **Q: Can I skip phases for urgent bugs?**  
 A: Use HOTFIX workflow, which is accelerated but still controlled.
@@ -382,13 +386,13 @@ A: Discard response, re-execute phase. See Validation Policy.
 ## 📞 Support & Contact
 
 **Documentation Issues:**  
-Check [Validation Policy](05_SEVENG_SPAD_Validation_Policy.md) for common problems.
+Check [Validation Policy](Documents/05_SEVENG_SPAD_Validation_Policy.md) for common problems.
 
 **Implementation Questions:**  
-Review [Context Management](04_SEVENG_SPAD_Context_Management.md) for setup guidance.
+Review [Context Management](Documents/04_SPAD_Context_Management.md) for setup guidance.
 
 **Business Inquiries:**  
-See [Executive Summary](00_SPAD_Executive_Summary.md) for engagement options.
+See [Executive Summary](Documents/00_SPAD_Executive_Summary.md) for engagement options.
 
 ---
 
@@ -407,11 +411,11 @@ See [Executive Summary](00_SPAD_Executive_Summary.md) for engagement options.
 - Initial release
 - Core workflow (PLAN → AUDIT → IMPLEMENT)
 - Basic role definitions
-- Certification framework
+- Conformity self-assessment framework (formerly called "certification")
 
 ---
 
 **SPAD: Professional AI Engineering for Production Systems**
 
-*Part of the SEVEN-G Framework by Seachad*  
+*Independent methodology by Seachad, related to SEVEN-G and referenced from its document 53 (building solutions with AI)*  
 *Generated with assistance from GitHub Copilot*

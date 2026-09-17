@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adopci&#243;n y cambio en la iniciativa</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Adopción y cambio en la iniciativa"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/23_SEVEN-G_Adopcion_y_cambio.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/23_SEVEN-G_Adopcion_y_cambio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/23_SEVEN-G_Adopcion_y_cambio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/23_SEVEN-G_Adopcion_y_cambio.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 23 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa</p>
+    <h1>Adopci&#243;n y cambio en la iniciativa</h1>
+    <p class="entradilla">C&#243;mo conseguir que la IA se use, que la capacidad liberada se convierta en valor y que las personas sepan trabajar con ella</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>4</b><span>fases con plan de adopci&#243;n</span></div><div class="cifra"><b>3</b><span>estados de la capacidad liberada</span></div><div class="cifra"><b>10</b><span>indicadores de adopci&#243;n con f&#243;rmula</span></div><div class="cifra"><b>2</b><span>gates con criterios de adopci&#243;n</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/23_SEVEN-G_Adopcion_y_cambio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/23_SEVEN-G_Adopcion_y_cambio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/23_SEVEN-G_Adopcion_y_cambio.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#por-que-el-valor-depende-de-la-adopcion"><span>02</span>Por qué el valor depende de la adopción</a></li><li><a href="#principios"><span>03</span>Principios</a></li><li><a href="#modelo-de-referencia-para-el-cambio"><span>04</span>Modelo de referencia para el cambio</a></li><li><a href="#analisis-de-impacto-en-roles-y-tareas"><span>05</span>Análisis de impacto en roles y tareas</a></li><li><a href="#plan-de-adopcion-por-fase"><span>06</span>Plan de adopción por fase</a></li><li><a href="#capacidad-liberada-medicion-materializacion-o-reasignacion"><span>07</span>Capacidad liberada: medición, materialización o reasignación</a></li><li><a href="#formacion-y-alfabetizacion-en-ia"><span>08</span>Formación y alfabetización en IA</a></li><li><a href="#comunicacion-y-participacion"><span>09</span>Comunicación y participación</a></li><li><a href="#indicadores-de-adopcion"><span>10</span>Indicadores de adopción</a></li><li><a href="#criterios-de-adopcion-en-g5-y-g7"><span>11</span>Criterios de adopción en G5 y G7</a></li><li><a href="#resistencia-al-cambio-y-riesgos-organizativos"><span>12</span>Resistencia al cambio y riesgos organizativos</a></li><li><a href="#responsabilidades-e-intensidad"><span>13</span>Responsabilidades e intensidad</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>14</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>15</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>16</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>Este documento define cómo se planifica, se mide y se decide la adopción de una iniciativa de IA. Cubre un hueco del material anterior del marco: la fase 5 validaba el valor, pero no trataba de forma explícita la adopción real, la reasignación de la capacidad liberada ni la formación, que son condiciones para que el valor se materialice.</p>
+<p><strong>Qué cubre</strong></p>
+<ul>
+<li>El análisis de impacto en roles y tareas.</li>
+<li>El plan de adopción de las fases 4 a 7, preparado desde las fases 2 y 3.</li>
+<li>La medición de la capacidad liberada y su materialización o reasignación explícita.</li>
+<li>La formación, la alfabetización en IA, la comunicación y la participación.</li>
+<li>Los indicadores de adopción y los criterios de adopción en G5 y G7.</li>
+<li>La resistencia al cambio y los riesgos organizativos.</li>
+</ul>
+<p><strong>Qué no cubre</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Política de personas, nuevos roles, capacidades y relaciones laborales en la compañía</td>
+<td>50 · Personas y organización</td>
+</tr>
+<tr>
+<td>Política corporativa de IA, uso aceptable y alfabetización general</td>
+<td>31 · Política corporativa y uso aceptable</td>
+</tr>
+<tr>
+<td>Obligaciones regulatorias en detalle</td>
+<td>34 · Mapeo regulatorio</td>
+</tr>
+<tr>
+<td>Reglas de medición y realización de beneficios</td>
+<td>40 · Reglas de medición del valor · 43 · Realización de beneficios</td>
+</tr>
+<tr>
+<td>Secuencia completa de cada fase</td>
+<td>20 · Manuales de fase</td>
+</tr>
+</tbody>
+</table></div>
+<p>Este documento no constituye asesoramiento jurídico. Las referencias normativas se han consultado en septiembre de 2026 y su vigencia debe verificarse en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>.</p>
+<hr />
+<h2 id="por-que-el-valor-depende-de-la-adopcion"><span class="antetitulo">02</span>Por qué el valor depende de la adopción</h2>
+<p>Un sistema de IA disponible no genera valor por sí mismo. El valor aparece solo cuando se recorre una cadena completa: el sistema se usa, se usa en el proceso para el que se diseñó, el trabajo cambia y ese cambio produce un resultado medido frente a la línea base. Cuando el cambio libera tiempo, además hay que decidir qué se hace con él.</p>
+<figure class="grafico"><div class="g-titulo">Cadena de la adopci&#243;n al valor</div><div class="g-sub">Cada eslab&#243;n puede romperse; el valor solo cuenta al final</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  D["Sistema disponible"] --> U["Uso"]
+  U --> UE["Uso efectivo en el proceso"]
+  UE --> RM["Resultado medido frente a la línea base"]
+  UE --> CL{"Capacidad liberada"}
+  CL -->|"Menor coste real"| MA["Materializada"]
+  CL -->|"Destino explícito"| RE["Reasignada"]
+  CL -->|"Sin destino"| NA["No aplicada: no suma"]
+  RM --> V["Valor con estado"]
+  MA --> V
+  RE -->|"Se mide en la actividad destino"| V
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class V,MA ok
+  class RE,CL med
+  class NA ko
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<p>Tres consecuencias para el gobierno de la iniciativa:</p>
+<ol>
+<li><strong>Disponibilidad no es adopción, y adopción no es valor.</strong> Los informes distinguen usuarios con acceso, usuarios activos, uso efectivo en el proceso y resultado medido.</li>
+<li><strong>La capacidad liberada no suma como ahorro</strong> hasta que se materializa o se reasigna de forma explícita (regla 3 de medición, 00 §6). Se informa por separado.</li>
+<li><strong>La materialización es una señal de transformación.</strong> La señal 3 del índice de transformación (00 §5.3) mide cuánta capacidad liberada se convierte en ahorro real o se reasigna; la señal 5 mide los cambios en roles y estructura. Sin datos de adopción, ambas quedan <em>sin dato</em>.</li>
+</ol>
+<hr />
+<h2 id="principios"><span class="antetitulo">03</span>Principios</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principio</th>
+<th>Qué implica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>La adopción se diseña, no se espera</strong></td>
+<td>El plan de adopción es una evidencia de la fase 4, no una actividad posterior al despliegue.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Responde quien responde del valor</strong></td>
+<td>El responsable de producto de IA responde de la adopción (01 §8.1); los mandos del área usuaria la ejecutan.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Se mide el uso en el proceso, no el acceso</strong></td>
+<td>Los indicadores se refieren a los casos elegibles del proceso, no al número de licencias.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>El destino de la capacidad liberada es una decisión explícita</strong></td>
+<td>Se decide y registra con responsable y fecha; nunca se presume.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Nadie usa el sistema sin formación</strong></td>
+<td>Usuarios y supervisores se forman antes de acceder, también en el piloto.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Se informa con la verdad sobre el impacto</strong></td>
+<td>La comunicación no promete lo que no está decidido ni oculta lo que ya lo está.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>La confianza se calibra</strong></td>
+<td>Se vigila tanto la desconfianza (no se usa) como el exceso de confianza (se acepta todo sin revisar).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="modelo-de-referencia-para-el-cambio"><span class="antetitulo">04</span>Modelo de referencia para el cambio</h2>
+<p>SEVEN-G no impone un modelo de gestión del cambio. Si la compañía ya usa uno, lo mantiene. Como referencia, este documento se apoya en <strong>ADKAR</strong>, modelo de gestión del cambio individual desarrollado por Prosci (ADKAR es marca de Prosci), que describe cinco condiciones sucesivas para que una persona cambie: conciencia de la necesidad, deseo de participar, conocimiento de cómo cambiar, habilidad para hacerlo y refuerzo para sostenerlo.</p>
+<p>La tabla muestra cómo cada condición se traduce en evidencias del marco. Lo exigible son las evidencias, no el modelo.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Condición (ADKAR)</th>
+<th>Pregunta práctica</th>
+<th>Evidencia en SEVEN-G</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conciencia</td>
+<td>¿Saben las personas afectadas qué cambia y por qué?</td>
+<td>Plan de comunicación de <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>4–5</td>
+</tr>
+<tr>
+<td>Deseo</td>
+<td>¿Tienen motivos para usarlo y se han atendido sus preocupaciones?</td>
+<td>Análisis de impacto en roles; participación de usuarios; incentivos revisados</td>
+<td>4–5</td>
+</tr>
+<tr>
+<td>Conocimiento</td>
+<td>¿Saben usarlo, conocen sus límites y cuándo no confiar?</td>
+<td>Plan y registro de formación</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Habilidad</td>
+<td>¿Lo usan bien en el trabajo real?</td>
+<td>Indicadores de uso efectivo, anulación y calidad en el piloto</td>
+<td>5–6</td>
+</tr>
+<tr>
+<td>Refuerzo</td>
+<td>¿Se sostiene el uso cuando termina el proyecto?</td>
+<td>Indicadores por periodo, R6, capacidad reasignada</td>
+<td>6–7</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="analisis-de-impacto-en-roles-y-tareas"><span class="antetitulo">05</span>Análisis de impacto en roles y tareas</h2>
+<h3 id="5-1-unidad-de-analisis">5.1 Unidad de análisis</h3>
+<p>El impacto se analiza <strong>por tarea dentro de cada rol</strong>, no por puesto completo. Un mismo rol puede ver tareas eliminadas, tareas asistidas y tareas nuevas, en especial las de supervisión humana definidas en <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rol y colectivo</td>
+<td>Nombre del rol, área y número de personas.</td>
+</tr>
+<tr>
+<td>Tarea</td>
+<td>Descripción observable.</td>
+</tr>
+<tr>
+<td>Volumen y tiempo actual</td>
+<td>Casos por periodo y tiempo unitario, tomados de la línea base (<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>).</td>
+</tr>
+<tr>
+<td>Tipo de cambio</td>
+<td><em>Sin cambio</em> · <em>Asistida</em> (la IA ayuda, la persona hace) · <em>Automatizada parcialmente</em> · <em>Automatizada</em> · <em>Nueva</em> (incluida la supervisión).</td>
+</tr>
+<tr>
+<td>Nivel de autonomía del sistema</td>
+<td>A0–A3 (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
+</tr>
+<tr>
+<td>Tiempo previsto tras el cambio</td>
+<td>Estimado en la fase 4, medido en la fase 5.</td>
+</tr>
+<tr>
+<td>Competencias nuevas</td>
+<td>Qué debe saber hacer la persona.</td>
+</tr>
+<tr>
+<td>Afecta a condiciones de trabajo</td>
+<td>Sí o no, con descripción (horario, control, evaluación del desempeño, carga).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-2-efecto-sobre-el-rol">5.2 Efecto sobre el rol</h3>
+<p>Con las tareas analizadas, se clasifica el efecto sobre cada rol:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Efecto</th>
+<th>Descripción</th>
+<th>Tratamiento mínimo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sin cambio relevante</strong></td>
+<td>Cambian herramientas, no tareas.</td>
+<td>Formación de uso.</td>
+</tr>
+<tr>
+<td><strong>Cambio de tareas</strong></td>
+<td>Cambia el reparto del tiempo dentro del rol.</td>
+<td>Formación, ajuste de objetivos y medición de capacidad liberada.</td>
+</tr>
+<tr>
+<td><strong>Cambio de rol</strong></td>
+<td>Cambian responsabilidades, decisiones o competencias exigidas.</td>
+<td>Además, participación de la función de personas y actualización de la descripción del rol.</td>
+</tr>
+<tr>
+<td><strong>Rol nuevo</strong></td>
+<td>Aparece un rol (por ejemplo, supervisión de agentes o curación de contenidos).</td>
+<td>Además, definición del rol, selección y plan de capacitación.</td>
+</tr>
+<tr>
+<td><strong>Rol reducido</strong></td>
+<td>El volumen de trabajo del rol disminuye de forma sustancial.</td>
+<td>Además, decisión explícita sobre la capacidad liberada y, cuando proceda, información y consulta a la representación de los trabajadores (sección 9.3).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-3-cuando-se-hace">5.3 Cuándo se hace</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Profundidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>Preliminar: colectivos afectados, tipo de efecto previsto y viabilidad organizativa (evidencia <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Completo, con tiempos estimados, dentro del plan de adopción (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Actualizado con tiempos y tareas medidos en el piloto.</td>
+</tr>
+<tr>
+<td>6–7</td>
+<td>Contrastado con la organización real resultante.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="plan-de-adopcion-por-fase"><span class="antetitulo">06</span>Plan de adopción por fase</h2>
+<h3 id="6-1-preparacion-en-las-fases-2-y-3">6.1 Preparación en las fases 2 y 3</h3>
+<ul>
+<li><strong>Fase 2:</strong> en Aumentar y Transformar se fija el <strong>objetivo de adopción</strong> (usuarios objetivo, uso efectivo esperado, plazo). En Optimizar, se estima la capacidad liberada por separado del ahorro.</li>
+<li><strong>Fase 3:</strong> análisis preliminar de impacto (sección 5.3), costes de adopción y formación en la evaluación de viabilidad, riesgos organizativos en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>. En Aumentar, G3 exige la viabilidad de la adopción y del cambio de rol (01 §7.6).</li>
+</ul>
+<h3 id="6-2-fase-4-diseno-de-la-adopcion">6.2 Fase 4 · Diseño de la adopción</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Actividad</th>
+<th>Realiza</th>
+<th>Participan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Completar el análisis de impacto en roles y tareas.</td>
+<td>Producto</td>
+<td>Área usuaria, personas</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fijar indicadores de adopción con fórmula, línea base, objetivo y umbral mínimo para G5 y G7 (sección 10).</td>
+<td>Producto</td>
+<td>Oficina de IA</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Decidir el destino previsto de la capacidad liberada: materialización, reasignación o combinación, con responsable y fecha (sección 7).</td>
+<td>Producto</td>
+<td>Patrocinador, dirección del área, control de gestión</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Diseñar la formación por público (sección 8).</td>
+<td>Producto</td>
+<td>Personas</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Diseñar la comunicación y la participación, incluida la representación de los trabajadores cuando proceda (sección 9).</td>
+<td>Producto</td>
+<td>Personas, comunicación interna</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Identificar usuarios clave para el diseño y el piloto.</td>
+<td>Producto</td>
+<td>Área usuaria</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Revisar incentivos y objetivos que premien el procedimiento anterior.</td>
+<td>Producto</td>
+<td>Dirección del área, personas</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Registrar riesgos organizativos en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> (sección 12).</td>
+<td>Producto</td>
+<td>Riesgos</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-3-fase-5-piloto-formacion-y-medicion-inicial">6.3 Fase 5 · Piloto, formación y medición inicial</h3>
+<ul>
+<li>Formar a usuarios y supervisores del piloto antes de su acceso y registrar la formación.</li>
+<li>Medir los indicadores de adopción del piloto con la misma disciplina que los de valor.</li>
+<li>Medir la capacidad liberada real (no la estimada) con el método de la sección 7.2.</li>
+<li>Recoger incidencias de uso, anulaciones y sus motivos, y ajustar diseño, formación o comunicación.</li>
+<li>Actualizar <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> con los resultados y con el plan de despliegue a toda la población objetivo.</li>
+</ul>
+<h3 id="6-4-fase-6-despliegue-refuerzo-y-materializacion">6.4 Fase 6 · Despliegue, refuerzo y materialización</h3>
+<ul>
+<li>Desplegar por oleadas cuando la población sea amplia, con formación previa a cada oleada.</li>
+<li>Medir los indicadores por periodo y presentarlos en cada R6.</li>
+<li>Ejecutar las decisiones de materialización o reasignación en las fechas previstas y registrar su evidencia.</li>
+<li>Mantener canales de soporte y de reporte de errores.</li>
+<li>Reforzar: retirar el procedimiento anterior cuando la adopción esté consolidada, ajustar objetivos e incorporar el nuevo trabajo en la descripción de los roles.</li>
+</ul>
+<h3 id="6-5-fase-7-consolidacion-y-decision">6.5 Fase 7 · Consolidación y decisión</h3>
+<ul>
+<li>Consolidar la adopción sostenida y la capacidad materializada y reasignada.</li>
+<li>Aplicar los criterios de adopción de G7 por nivel de ambición (sección 11).</li>
+<li>Registrar las lecciones sobre adopción para la cartera.</li>
+<li>En retirada: comunicar a los usuarios, restablecer el procedimiento alternativo y formar en él si ya no se conoce.</li>
+</ul>
+<hr />
+<h2 id="capacidad-liberada-medicion-materializacion-o-reasignacion"><span class="antetitulo">07</span>Capacidad liberada: medición, materialización o reasignación</h2>
+<h3 id="7-1-definiciones">7.1 Definiciones</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Capacidad liberada</strong></td>
+<td>Horas de trabajo que dejan de ser necesarias para atender el mismo volumen con la misma calidad, descontado el trabajo nuevo que introduce la IA.</td>
+</tr>
+<tr>
+<td><strong>Capacidad materializada</strong></td>
+<td>Parte de la capacidad liberada que se convierte en <strong>menor coste real</strong> verificable: horas extraordinarias eliminadas, contratos temporales o de servicios no renovados, subcontratación reducida, vacantes amortizadas o contrataciones previstas y presupuestadas que no se realizan.</td>
+</tr>
+<tr>
+<td><strong>Capacidad reasignada</strong></td>
+<td>Parte de la capacidad liberada que se asigna <strong>de forma explícita</strong> a actividades identificadas, con responsable, horas, fecha e indicador de resultado.</td>
+</tr>
+<tr>
+<td><strong>Capacidad no aplicada</strong></td>
+<td>Parte que no se ha materializado ni reasignado explícitamente. Suele diluirse sin efecto medible.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Por construcción: <strong>capacidad liberada = materializada + reasignada + no aplicada.</strong></p>
+<p>Estas tres partes agrupan los cinco destinos de la capacidad liberada del <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> (§6.2): PER-D1 (Materializar) es capacidad materializada; PER-D2 (Reasignar) y PER-D4 (Reinvertir en calidad, servicio o cumplimiento) son capacidad reasignada; PER-D3 (Absorber crecimiento) es materializada si la contratación estaba prevista y presupuestada y, si no, reasignada; PER-D5 (Sin decisión) es capacidad no aplicada. La correspondencia completa figura en la sección 10.5.</p>
+<h3 id="7-2-medicion">7.2 Medición</h3>
+<p>La capacidad liberada se mide, no se deduce del rendimiento del modelo:</p>
+<blockquote>
+<p><strong>Capacidad liberada (horas por periodo) = Σ tareas [volumen del periodo × (tiempo unitario de la línea base − tiempo unitario con IA)] − horas de supervisión y revisión − horas de corrección de errores del sistema − horas de gestión del sistema por el área usuaria</strong></p>
+</blockquote>
+<p>Reglas:</p>
+<ol>
+<li>Los tiempos de la línea base proceden de <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; los tiempos con IA se <strong>miden</strong> en el piloto (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) y en operación, no se estiman.</li>
+<li>El volumen es el realmente tratado con el sistema en el periodo, no el elegible.</li>
+<li>Las horas de supervisión y corrección se miden con registros del sistema o por muestreo documentado.</li>
+<li>La conversión a personas equivalentes usa las horas efectivas anuales por persona que fije la compañía y se declara.</li>
+<li>Toda cifra lleva estado: <em>validado</em>, <em>declarado</em> o <em>estimado</em> (regla 2 de medición).</li>
+</ol>
+<h3 id="7-3-materializacion">7.3 Materialización</h3>
+<ul>
+<li>Solo cuenta como <strong>eficiencia</strong> el importe del menor coste real, tomado de la contabilidad o del presupuesto aprobado, no las horas multiplicadas por un coste por hora.</li>
+<li>La valida control de gestión, que comprueba que el coste existía, que desaparece y que no reaparece en otra partida.</li>
+<li>Si la materialización consiste en absorber crecimiento de volumen sin contratar, se exige que la contratación estuviera prevista y presupuestada; de lo contrario, se trata como reasignación.</li>
+<li>Las decisiones que afectan al empleo se toman por la dirección con la función de personas y conforme a la normativa laboral y a los convenios aplicables (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>). SEVEN-G no prescribe el destino de la capacidad liberada; exige que sea explícito.</li>
+</ul>
+<h3 id="7-4-reasignacion-explicita">7.4 Reasignación explícita</h3>
+<p>Una reasignación solo se reconoce si registra en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Actividad destino</td>
+<td>Qué se hará con las horas y por qué es de mayor valor.</td>
+</tr>
+<tr>
+<td>Responsable</td>
+<td>Mando que responde de que las horas se dediquen a esa actividad.</td>
+</tr>
+<tr>
+<td>Horas y personas</td>
+<td>Cantidad asignada y colectivo.</td>
+</tr>
+<tr>
+<td>Fecha de inicio</td>
+<td>Cuándo empieza la reasignación.</td>
+</tr>
+<tr>
+<td>Indicador de resultado</td>
+<td>Cómo se sabrá que la actividad destino produce efecto (por ejemplo, casos complejos resueltos, visitas comerciales, tiempo de respuesta).</td>
+</tr>
+<tr>
+<td>Revisión</td>
+<td>En qué R6 se comprueba.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El valor de la actividad destino <strong>no se suma como eficiencia</strong> de la iniciativa. Si produce retorno medible, se registra como retorno en el caso al que se atribuya, una sola vez (regla 5 de medición).</p>
+<h3 id="7-5-tasas-e-informacion">7.5 Tasas e información</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Fórmula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tasa de materialización</td>
+<td>Horas materializadas ÷ horas liberadas medidas</td>
+</tr>
+<tr>
+<td>Tasa de reasignación</td>
+<td>Horas reasignadas explícitamente ÷ horas liberadas medidas</td>
+</tr>
+<tr>
+<td>Tasa de aplicación</td>
+<td>(Horas materializadas + horas reasignadas) ÷ horas liberadas medidas</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los informes al consejo muestran la capacidad liberada <strong>separada</strong> del ahorro y desglosada en materializada, reasignada y no aplicada. Estas tasas alimentan la señal 3 del índice de transformación; sus umbrales se fijan en el <a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>.</p>
+<h3 id="7-6-ejemplo-ilustrativo">7.6 Ejemplo ilustrativo</h3>
+<p><em>Datos ficticios.</em> Un equipo de gestión documental clasifica 4.000 documentos al mes. La línea base es de 12 minutos por documento; con el sistema, medido en el piloto, 5 minutos. Se revisa una muestra de 400 documentos a 3 minutos cada uno y se corrigen 80 errores del sistema a 10 minutos cada uno.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Cálculo</th>
+<th>Horas al mes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ahorro bruto</td>
+<td>4.000 × (12 − 5) min</td>
+<td>466,7</td>
+</tr>
+<tr>
+<td>Supervisión</td>
+<td>400 × 3 min</td>
+<td>− 20,0</td>
+</tr>
+<tr>
+<td>Corrección</td>
+<td>80 × 10 min</td>
+<td>− 13,3</td>
+</tr>
+<tr>
+<td><strong>Capacidad liberada</strong></td>
+<td></td>
+<td><strong>433,3</strong> (unas 5.200 horas al año)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Destino decidido en la fase 4 y ejecutado en la fase 6: no se renueva un contrato temporal equivalente a 1.600 horas anuales (materializadas); se reasignan 2.400 horas a la resolución de expedientes complejos, con su responsable e indicador; 1.200 horas quedan sin aplicar. Tasa de aplicación: (1.600 + 2.400) ÷ 5.200 = 77 %. La eficiencia que se declara es el coste real del contrato no renovado según contabilidad, validado por control de gestión, y no 5.200 horas por un coste por hora.</p>
+<hr />
+<h2 id="formacion-y-alfabetizacion-en-ia"><span class="antetitulo">08</span>Formación y alfabetización en IA</h2>
+<h3 id="8-1-marco-normativo">8.1 Marco normativo</h3>
+<p>El artículo 4 del Reglamento Europeo de IA obliga a proveedores y responsables del despliegue a adoptar medidas para garantizar, en la mayor medida posible, un nivel suficiente de alfabetización en IA de su personal y de otras personas que operen o usen sistemas de IA en su nombre, teniendo en cuenta sus conocimientos, experiencia y formación y el contexto de uso. Es aplicable desde el 2 de febrero de 2025. El Reglamento (UE) 2026/1744 (ómnibus digital sobre IA) ha modificado su redacción, que pasa a exigir medidas para <em>apoyar</em> el desarrollo de la alfabetización en IA sin fijar un nivel; el detalle y su estado de verificación, a fecha de consulta de septiembre de 2026, están en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.5).</p>
+<p>Con independencia de la evolución normativa, <strong>SEVEN-G exige formación en cada iniciativa porque el valor depende de ella</strong>. La alfabetización general de la plantilla se gobierna en el <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>; este documento trata la formación específica de la iniciativa.</p>
+<h3 id="8-2-formacion-por-publico">8.2 Formación por público</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Público</th>
+<th>Objetivo</th>
+<th>Contenido mínimo</th>
+<th>Cuándo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Personas afectadas del área</strong></td>
+<td>Entender qué cambia y por qué.</td>
+<td>Qué hace y qué no hace el sistema, efectos en su trabajo, calendario, a quién preguntar.</td>
+<td>Fase 4–5, antes del piloto.</td>
+</tr>
+<tr>
+<td><strong>Usuarios</strong></td>
+<td>Usar bien el sistema.</td>
+<td>Uso, límites conocidos, cuándo no confiar, cómo anular o corregir un resultado, cómo reportar errores e incidentes, datos que no deben introducirse.</td>
+<td>Antes de su acceso.</td>
+</tr>
+<tr>
+<td><strong>Supervisores humanos</strong></td>
+<td>Supervisar con eficacia (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Criterios de intervención, sesgo de automatización, revisión de muestras, uso del interruptor de parada cuando exista, escalado.</td>
+<td>Antes de su acceso.</td>
+</tr>
+<tr>
+<td><strong>Mandos del área</strong></td>
+<td>Gestionar el cambio y la capacidad.</td>
+<td>Indicadores de adopción, destino de la capacidad liberada, gestión de resistencias.</td>
+<td>Fase 4.</td>
+</tr>
+<tr>
+<td><strong>Equipo de operación</strong></td>
+<td>Operar el sistema (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
+<td>Monitorización, incidentes, cambios, reversión.</td>
+<td>Fase 5.</td>
+</tr>
+</tbody>
+</table></div>
+<p>La duración y el formato los fija la compañía. La comprensión de usuarios y supervisores <strong>debería</strong> evaluarse con una prueba breve o una práctica supervisada.</p>
+<h3 id="8-3-contenidos-por-tecnologia">8.3 Contenidos por tecnología</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Énfasis de la formación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML predictivo</strong></td>
+<td>Qué significa una puntuación o probabilidad, umbrales, incertidumbre, casos en los que el modelo no es fiable.</td>
+</tr>
+<tr>
+<td><strong>IA generativa</strong></td>
+<td>Verificación de las salidas, contenido incorrecto o no fundamentado, confidencialidad de la información introducida, buenas prácticas de instrucción.</td>
+</tr>
+<tr>
+<td><strong>Agentes</strong></td>
+<td>Acciones permitidas y prohibidas, lectura de registros de acción, validación de acciones sensibles, parada.</td>
+</tr>
+<tr>
+<td><strong>IA de terceros embebida</strong></td>
+<td>Qué funciones del producto usan IA, configuración autorizada, cómo detectar cambios introducidos por el proveedor.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-4-evidencia">8.4 Evidencia</h3>
+<p>Registro de formación en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> con persona o colectivo, contenido y versión, fecha, formato y resultado de la evaluación. Alimenta el indicador de cobertura de formación (sección 10).</p>
+<hr />
+<h2 id="comunicacion-y-participacion"><span class="antetitulo">09</span>Comunicación y participación</h2>
+<h3 id="9-1-plan-de-comunicacion">9.1 Plan de comunicación</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Públicos</td>
+<td>Personas afectadas, usuarios, mandos, representación de los trabajadores, otras áreas, personas externas afectadas.</td>
+</tr>
+<tr>
+<td>Mensajes</td>
+<td>Qué cambia y qué no, por qué, cómo afecta a cada colectivo, qué está decidido y qué no, calendario, canal de preguntas.</td>
+</tr>
+<tr>
+<td>Emisor</td>
+<td>Patrocinador y dirección del área para el porqué; responsable de producto para el cómo.</td>
+</tr>
+<tr>
+<td>Momentos</td>
+<td>Antes del piloto, al decidir G5, en cada oleada de despliegue y al decidir G7.</td>
+</tr>
+<tr>
+<td>Retorno</td>
+<td>Canal para dudas, objeciones y errores, con respuesta registrada.</td>
+</tr>
+</tbody>
+</table></div>
+<p>La comunicación debe ser coherente con las decisiones registradas. Anunciar que <em>nadie se verá afectado</em> cuando el análisis prevé un rol reducido, o anunciar reducciones no decididas, destruye la confianza y la adopción.</p>
+<h3 id="9-2-participacion-de-usuarios">9.2 Participación de usuarios</h3>
+<p>Los usuarios clave <strong>deberían</strong> participar en el diseño de la experiencia de uso, en la definición de la supervisión humana y en el piloto. Su participación se registra y sus aportaciones se responden.</p>
+<h3 id="9-3-representacion-de-los-trabajadores">9.3 Representación de los trabajadores</h3>
+<p>Cuando la iniciativa afecta a condiciones de trabajo, a decisiones sobre empleo o a la supervisión del desempeño, la compañía debe cumplir los derechos de información y consulta aplicables. Entre las referencias vigentes a la fecha de consulta:</p>
+<ul>
+<li>El <strong>artículo 26.7 del Reglamento Europeo de IA</strong>: los responsables del despliegue que sean empleadores informan a los representantes de los trabajadores y a los trabajadores afectados antes de poner en servicio o utilizar un sistema de IA de alto riesgo en el lugar de trabajo.</li>
+<li>En España, el <strong>artículo 64.4.d) del Estatuto de los Trabajadores</strong>: derecho del comité de empresa a ser informado de los parámetros, reglas e instrucciones de los algoritmos o sistemas de IA que afectan a decisiones que pueden incidir en las condiciones de trabajo, el acceso y mantenimiento del empleo, incluida la elaboración de perfiles.</li>
+<li>Lo que establezcan los convenios colectivos y la normativa de protección de datos en el ámbito laboral.</li>
+</ul>
+<p>El detalle, el calendario de información y consulta y la relación con la negociación colectiva se tratan en los documentos 34 y 50. En el plan de adopción se registra si procede, cuándo se ha informado o consultado y con qué resultado.</p>
+<hr />
+<h2 id="indicadores-de-adopcion"><span class="antetitulo">10</span>Indicadores de adopción</h2>
+<h3 id="10-1-reglas-de-medicion">10.1 Reglas de medición</h3>
+<ol>
+<li><strong>Se mide sobre la población y los casos del proceso.</strong> Los denominadores son los usuarios objetivo y los casos elegibles definidos en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, no las licencias ni los accesos.</li>
+<li><strong>El criterio de uso activo se fija en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong> antes del piloto (por ejemplo, al menos un uso con resultado incorporado al proceso por semana) y no se cambia durante la medición.</li>
+<li><strong>Sin datos individuales.</strong> Los indicadores se calculan por colectivo, con el tamaño mínimo de grupo que fije la compañía. Los datos de uso no se emplean para evaluar individualmente a las personas salvo que esa finalidad esté declarada, sea lícita y se haya informado (50 §9.2).</li>
+<li><strong>&quot;Sin dato&quot; no es cero</strong> (regla 8 de medición). Un indicador que no puede calcularse con su fórmula se muestra como <em>sin dato</em>.</li>
+<li><strong>Lectura por pares.</strong> Ningún indicador de uso se interpreta solo: se lee con los de calidad de la supervisión y de resultado (sección 10.3).</li>
+</ol>
+<h3 id="10-2-indicadores">10.2 Indicadores</h3>
+<p>Los códigos <code>IND-</code> son los del catálogo (<a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>); los <code>PER-</code> son los provisionales del <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>. Los indicadores sin código son <strong>propuestas para su consolidación en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a></strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Indicador</th>
+<th>Fórmula</th>
+<th>Código</th>
+<th>Per.</th>
+<th>Uso principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Despliegue del acceso</strong></td>
+<td>Usuarios objetivo con acceso habilitado ÷ usuarios objetivo</td>
+<td>Propuesta</td>
+<td>M</td>
+<td>Fases 5–6: avance de las oleadas.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Usuarios activos</strong></td>
+<td>Usuarios activos en el periodo, según el criterio de <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> ÷ usuarios objetivo</td>
+<td>IND-ADO-02 · PER-07</td>
+<td>M</td>
+<td>G5 y R6: extensión del uso.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Uso efectivo en el proceso</strong></td>
+<td>Casos tratados con el sistema ÷ casos elegibles del proceso</td>
+<td>IND-ADO-03</td>
+<td>M</td>
+<td>G5, R6 y G7: indicador principal de adopción.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Continuidad del uso</strong></td>
+<td>Usuarios activos en el periodo que también lo fueron en el anterior ÷ usuarios activos del periodo anterior</td>
+<td>Propuesta</td>
+<td>M</td>
+<td>Fase 6: refuerzo; detecta abandono tras el lanzamiento.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Tasa de anulación humana</strong></td>
+<td>Recomendaciones o resultados rechazados o modificados por la persona ÷ recomendaciones o resultados revisados</td>
+<td>PER-10 (complementa IND-ADO-04)</td>
+<td>M</td>
+<td>G5 y R6: calibración de la confianza.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Tiempo de revisión por caso</strong></td>
+<td>Mediana del tiempo de revisión humana por caso revisado, con percentil 80</td>
+<td>Propuesta</td>
+<td>M</td>
+<td>R6: detección de aprobación rutinaria (RT-ORG-04).</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Cobertura de formación</strong></td>
+<td>Personas con acceso o función de supervisión con formación registrada y evaluada antes del acceso ÷ personas con acceso o función de supervisión</td>
+<td>IND-ADO-05 (nivel iniciativa) · PER-02 · PER-03</td>
+<td>M</td>
+<td>G5 y R6: condición de acceso.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Percepción de los usuarios</strong></td>
+<td>Respuestas favorables en las preguntas de utilidad, carga y confianza ÷ respuestas válidas</td>
+<td>PER-15</td>
+<td>Fase 5, a los 3 meses y en R6 Enterprise</td>
+<td>Deseo y refuerzo; alerta temprana de rechazo.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Tasa de aplicación de la capacidad liberada</strong></td>
+<td>(Horas materializadas + horas reasignadas explícitamente) ÷ horas liberadas medidas</td>
+<td>IND-VAL-08 + IND-VAL-09 · PER-04 + PER-05</td>
+<td>T</td>
+<td>R6 y G7: conversión en valor (sección 7.5).</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Roles actualizados</strong></td>
+<td>Puestos afectados con descripción y objetivos actualizados ÷ puestos afectados según el análisis de impacto</td>
+<td>PER-13 · IND-ADO-06</td>
+<td>S</td>
+<td>G7 en Aumentar y Transformar; señal 5.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notas:</p>
+<ul>
+<li>El indicador 5 no tiene un valor bueno en abstracto. Una tasa próxima a cero puede indicar aceptación sin revisión; una tasa alta, bajo rendimiento del sistema o desconfianza. Se fija una <strong>banda esperada</strong> en la fase 4 con los resultados de validación y se analizan los motivos de anulación registrados.</li>
+<li>En IA generativa, el indicador 5 se calcula sobre la muestra de revisión humana y se lee con IND-OPE-08 (respuestas no fundamentadas). En agentes, se calcula sobre las acciones que requieren validación (AG-08, <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</li>
+<li>El indicador 7 tiene objetivo del <strong>100 %</strong> para supervisores designados: ninguna persona supervisa un sistema A1–A3 sin formación registrada (50 §5.3).</li>
+</ul>
+<h3 id="10-3-lectura-conjunta">10.3 Lectura conjunta</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Patrón observado</th>
+<th>Lectura probable</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Usuarios activos altos y uso efectivo bajo</td>
+<td>Uso marginal: se prueba el sistema, pero el trabajo sigue haciéndose por el procedimiento anterior.</td>
+<td>Revisar integración en el flujo de trabajo, incentivos y retirada del procedimiento anterior.</td>
+</tr>
+<tr>
+<td>Uso efectivo alto, anulación próxima a cero y tiempo de revisión decreciente</td>
+<td>Posible aceptación rutinaria o sesgo de automatización.</td>
+<td>Revisión de muestras por un tercero, ajuste de la carga de supervisión (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), refuerzo de la formación.</td>
+</tr>
+<tr>
+<td>Anulación alta y estable</td>
+<td>Rendimiento insuficiente en casos reales o desconfianza.</td>
+<td>Analizar motivos de anulación; separar errores del sistema de preferencias de los usuarios; iterar el diseño o la formación.</td>
+</tr>
+<tr>
+<td>Continuidad decreciente tras el lanzamiento</td>
+<td>Falta de refuerzo; el uso dependía del acompañamiento inicial.</td>
+<td>Soporte, referentes en el área, revisión de objetivos.</td>
+</tr>
+<tr>
+<td>Uso efectivo alto y tasa de aplicación de la capacidad baja</td>
+<td>Adopción sin conversión en valor (RT-ECO-03).</td>
+<td>Decisión explícita de destino en R6; alerta por antigüedad (50 §6.5).</td>
+</tr>
+<tr>
+<td>Percepción decreciente con uso estable</td>
+<td>Uso obligado sin aceptación; riesgo de bienestar o de conflicto.</td>
+<td>Escucha a los colectivos, revisión de carga y comunicación (sección 9).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-4-objetivos-y-umbrales">10.4 Objetivos y umbrales</h3>
+<ul>
+<li>El <strong>objetivo de adopción</strong> se fija en la fase 2 (G2.10): obligatorio en Aumentar, recomendado en Optimizar.</li>
+<li>En la fase 4 se fijan en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, para cada indicador seleccionado, la línea base, el objetivo, el plazo y el <strong>umbral mínimo</strong> para G5 y para G7. Los umbrales se fijan antes de conocer los resultados y no se relajan durante la fase sin aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).</li>
+<li>El seguimiento es mensual durante los primeros seis meses de producción y después se presenta en cada R6 (R6.14).</li>
+<li>Un uso efectivo inferior al umbral durante dos periodos consecutivos activa revisión en R6 y puede motivar adelantar G7. Si la iniciativa se para o se retira por esta causa, el motivo codificado es <strong>Sin adopción</strong> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>).</li>
+<li>Los umbrales son propios de cada iniciativa. SEVEN-G no fija valores de referencia de adopción.</li>
+</ul>
+<h3 id="10-5-correspondencia-con-los-documentos-40-41-y-50">10.5 Correspondencia con los documentos 40, 41 y 50</h3>
+<p>Los tres estados de la sección 7 y los cinco destinos del <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> (§6.2) describen la misma realidad con distinto nivel de detalle:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Destino (50 §6.2)</th>
+<th>Estado en este documento</th>
+<th>Cómo cuenta (40)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PER-D1 · Materializar</td>
+<td>Materializada</td>
+<td>Eficiencia validable con reflejo contable.</td>
+</tr>
+<tr>
+<td>PER-D2 · Reasignar a una actividad definida</td>
+<td>Reasignada</td>
+<td>Por el resultado de la actividad destino, atribuido a un solo caso.</td>
+</tr>
+<tr>
+<td>PER-D3 · Absorber crecimiento</td>
+<td>Materializada si la contratación estaba prevista y presupuestada; si no, reasignada</td>
+<td>Coste evitado solo con necesidad de dotación documentada antes.</td>
+</tr>
+<tr>
+<td>PER-D4 · Reinvertir en calidad, servicio o cumplimiento</td>
+<td>Reasignada, con actividad destino e indicador</td>
+<td>No sumable salvo traducción a dinero con fórmula (regla 7).</td>
+</tr>
+<tr>
+<td>PER-D5 · Sin decisión</td>
+<td>No aplicada</td>
+<td>No suma; se informa aparte con alerta por antigüedad.</td>
+</tr>
+</tbody>
+</table></div>
+<p>La fórmula de la sección 7.2 es equivalente a la fórmula F4 del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>: allí el tiempo unitario con IA incluye la revisión, las excepciones y las correcciones; aquí se descuentan de forma explícita para que el área usuaria vea cada componente. En ningún caso se descuentan dos veces.</p>
+<hr />
+<h2 id="criterios-de-adopcion-en-g5-y-g7"><span class="antetitulo">11</span>Criterios de adopción en G5 y G7</h2>
+<p>Los criterios codificados se fijan en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> y se aplican con las listas de verificación del <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>. Esta sección reúne lo que esos criterios exigen en materia de adopción y cómo se evidencia con este documento. No crea criterios nuevos.</p>
+<h3 id="11-1-criterios-comunes-a-todos-los-niveles">11.1 Criterios comunes a todos los niveles</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Puerta</th>
+<th>Criterio (21)</th>
+<th>Qué se comprueba en materia de adopción</th>
+<th>Evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G4</td>
+<td>G4.11</td>
+<td>Plan de adopción con formación, comunicación, apoyo, medición del uso y destino previsto de la capacidad liberada.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · T20</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>G5.14 ◆</td>
+<td>Supervisores designados, formados y con autoridad y medios para intervenir. No admite condiciones.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (registro de formación)</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>G5.19</td>
+<td>Usuarios formados y evidencia de alfabetización en IA de quienes usan o supervisan el sistema.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (indicador 7)</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>G5.10</td>
+<td>Plan para materializar o reasignar la capacidad liberada, con responsable y fecha.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (sección 7.4)</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>— (50 §7.2)</td>
+<td>Si la información previa a la representación de los trabajadores es obligatoria, consta realizada. No admite <em>Continuar con condiciones</em>.</td>
+<td>Registro de información</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>R6.14 · R6.02</td>
+<td>Adopción medida frente al objetivo; valor realizado con estado.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+</tr>
+<tr>
+<td>G7</td>
+<td>G7.01 · G7.02</td>
+<td>Valor consolidado con estado; conclusión explícita sobre la hipótesis, incluida la de adopción.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="11-2-g5-puesta-en-produccion-por-nivel-de-ambicion">11.2 G5 · Puesta en producción, por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Exigencia de adopción (G5.08, G5.10)</th>
+<th>Indicadores que la evidencian</th>
+<th>Si no se alcanza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Eficiencia validada frente a la línea base, lo que exige uso efectivo suficiente en el piloto para que la medición sea representativa. Plan para <strong>materializar</strong> la capacidad liberada.</td>
+<td>3, 5 y 7; capacidad liberada medida (sección 7.2).</td>
+<td><em>Iterar</em> el piloto o <em>Continuar con condiciones</em> sobre el plan de materialización, con plazo y responsable.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td><strong>Adopción real</strong> y mejora de rendimiento <strong>medidas</strong> en el piloto, por encima del umbral mínimo fijado en la fase 4. Plan de <strong>reasignación</strong> y de cambio de rol.</td>
+<td>2, 3, 5, 7 y 8; análisis de impacto actualizado.</td>
+<td><em>Iterar</em>; o <em>Continuar con condiciones</em> si la desviación es limitada, con nueva medición, plazo y responsable. La adopción es condición del valor en este nivel y no se sustituye por una estimación.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Evidencia de mercado o de cliente (uso, conversión, ingresos iniciales o cambio operativo verificado). Cuando los usuarios son internos, el cambio operativo verificado incluye su adopción. Plan de capacidad solo si hay capacidad liberada.</td>
+<td>3 y 5 sobre usuarios internos; indicadores de uso de clientes definidos en la hipótesis.</td>
+<td><em>Iterar</em> o parar la etapa según sus criterios de parada.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="11-3-g7-escalado-o-retirada-por-nivel-de-ambicion">11.3 G7 · Escalado o retirada, por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Exigencia (G7.01)</th>
+<th>Evidencia de adopción</th>
+<th>Lectura para la decisión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td><strong>Ahorro materializado</strong>, no solo capacidad liberada.</td>
+<td>Tasa de materialización con reflejo contable validado por control de gestión; uso efectivo sostenido.</td>
+<td>Sin materialización no hay valor realizado que justifique escalar, aunque la adopción sea alta.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td><strong>Rendimiento sostenido y capacidad reasignada.</strong></td>
+<td>Uso efectivo y continuidad sostenidos en los periodos de R6; reasignación registrada con indicador de resultado; roles actualizados.</td>
+<td>Una adopción que decae tras el lanzamiento no es rendimiento sostenido.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td><strong>Retorno medido y cambio verificado</strong> del modelo operativo o de la oferta; aprobación del consejo para escalar (G7.09).</td>
+<td>Roles y estructura rediseñados (indicador 10); uso sostenido por clientes o usuarios de la nueva oferta.</td>
+<td>El cambio del modelo operativo solo se verifica si las personas trabajan de la forma nueva.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="11-4-reglas-de-aplicacion">11.4 Reglas de aplicación</h3>
+<ol>
+<li><strong>Se aplica el nivel de ambición confirmado en G2</strong> (21 §7.2).</li>
+<li><strong>La capacidad no aplicada no es valor realizado</strong> en ningún nivel (21 §7.2, regla 5).</li>
+<li><strong>Para Escalar</strong>, la adopción que sostiene el valor debe estar medida en el alcance actual. La extrapolación a un alcance mayor lleva su propia hipótesis de adopción y su coste de extensión (regla 4 de medición).</li>
+<li><strong>Para Iterar por adopción</strong>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> registra la condición del cambio que ha fallado (sección 4), la acción y el plazo.</li>
+<li><strong>Para Retirar</strong>, se aplica la sección 6.5: comunicación a los usuarios, procedimiento alternativo restablecido y formación en él si ya no se conoce.</li>
+<li><strong>Intensidad.</strong> En Lite, los criterios marcados <em>Simpl.</em> en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> se evidencian con <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> simplificada; los criterios ◆ y la información previa a la representación no se simplifican.</li>
+</ol>
+<hr />
+<h2 id="resistencia-al-cambio-y-riesgos-organizativos"><span class="antetitulo">12</span>Resistencia al cambio y riesgos organizativos</h2>
+<h3 id="12-1-formas-de-resistencia">12.1 Formas de resistencia</h3>
+<p>La resistencia es información sobre el diseño, la formación o el impacto, no un defecto de las personas. Se diagnostica con la condición del cambio que falla (sección 4) y se trata en su causa.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Manifestación</th>
+<th>Señal observable</th>
+<th>Condición que suele fallar</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No uso o uso marginal</strong></td>
+<td>Indicadores 2 y 3 bajos.</td>
+<td>Conciencia o deseo.</td>
+<td>Explicar el porqué con datos del área; integrar el sistema en el flujo de trabajo; implicar a usuarios clave.</td>
+</tr>
+<tr>
+<td><strong>Trabajo en paralelo</strong></td>
+<td>El caso se trata con el sistema y además por el procedimiento anterior; el tiempo con IA no baja.</td>
+<td>Confianza o habilidad.</td>
+<td>Casos prácticos con resultados reales; retirar el procedimiento anterior cuando la calidad esté demostrada.</td>
+</tr>
+<tr>
+<td><strong>Anulación sistemática</strong></td>
+<td>Indicador 5 por encima de la banda sin motivo técnico.</td>
+<td>Conocimiento o deseo.</td>
+<td>Analizar motivos; corregir el sistema si procede; formación sobre límites y criterios.</td>
+</tr>
+<tr>
+<td><strong>Aceptación acrítica</strong></td>
+<td>Indicador 5 próximo a cero; indicador 6 decreciente.</td>
+<td>Conocimiento (exceso de confianza).</td>
+<td>Formación en sesgo de automatización; muestras de control; revisión de la carga de supervisión (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+</tr>
+<tr>
+<td><strong>Resistencia de mandos</strong></td>
+<td>Objetivos del área sin cambios; decisiones de destino de la capacidad aplazadas.</td>
+<td>Deseo o refuerzo.</td>
+<td>Objetivos e incentivos revisados (sección 6.2, actividad 7); indicadores de adopción en la revisión del área.</td>
+</tr>
+<tr>
+<td><strong>Temor por el empleo</strong></td>
+<td>Percepción baja; rumores; rotación en el colectivo.</td>
+<td>Deseo.</td>
+<td>Comunicación veraz de lo decidido y lo no decidido (sección 9.1); información y consulta cuando proceda.</td>
+</tr>
+<tr>
+<td><strong>Uso de herramientas no autorizadas</strong></td>
+<td>Detecciones en T21 en el área afectada.</td>
+<td>Utilidad percibida insuficiente del sistema aprobado.</td>
+<td>Revisar la solución aprobada; aplicar la política de uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="12-2-riesgos-tipo">12.2 Riesgos tipo</h3>
+<p>Los riesgos se registran en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> con la escala común de probabilidad e impacto y se aceptan al nivel que corresponde (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>). Los códigos son los del catálogo de riesgos tipo del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>; el <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> (§12) propone una relación ampliada de riesgos organizativos, pendiente de consolidación en el <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código (33)</th>
+<th>Riesgo</th>
+<th>Indicador de alerta (sección 10)</th>
+<th>Controles de este documento</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-ORG-01</strong></td>
+<td>Falta de adopción</td>
+<td>2, 3 y 4 por debajo del umbral.</td>
+<td>Plan de adopción (sección 6); participación de usuarios; formación; objetivo en G2 y umbral en G5.</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-03</strong></td>
+<td>Efecto no gestionado sobre las personas</td>
+<td>Análisis de impacto incompleto; indicador 8 decreciente; indicador 10 bajo.</td>
+<td>Análisis de impacto (sección 5); comunicación y participación (sección 9); <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>.</td>
+<td>2, 4</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-04</strong></td>
+<td>Supervisión humana ineficaz</td>
+<td>5 próximo a cero; 6 decreciente; 7 por debajo del 100 % en supervisores.</td>
+<td>Formación de supervisores (sección 8.2); diseño de la supervisión en <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; muestras de control.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-02</strong></td>
+<td>Dependencia de personas clave</td>
+<td>Conocimiento de uso concentrado en pocos usuarios avanzados.</td>
+<td>Formación por público; referentes del área; manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-05</strong></td>
+<td>Uso no autorizado de IA</td>
+<td>Detecciones en T21 en colectivos afectados.</td>
+<td>Formación; <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>.</td>
+<td>C1, C4</td>
+</tr>
+<tr>
+<td><strong>RT-ECO-03</strong></td>
+<td>Valor no materializado</td>
+<td>Indicador 9 bajo; capacidad sin destino con antigüedad.</td>
+<td>Destino explícito (sección 7); plan en G5; seguimiento en R6.</td>
+<td>5–7</td>
+</tr>
+<tr>
+<td><strong>RT-REP-05</strong></td>
+<td>Comunicación engañosa sobre la IA</td>
+<td>Mensajes que atribuyen resultados no validados o niegan efectos previstos.</td>
+<td>Coherencia de la comunicación con las decisiones registradas (sección 9.1).</td>
+<td>5, 7</td>
+</tr>
+</tbody>
+</table></div>
+<p>Todo riesgo Alto o Crítico en tratamiento tiene plan de contingencia (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>). En adopción, el disparador típico es el umbral mínimo de uso efectivo y la contingencia, la iteración del diseño o de la formación, el mantenimiento del procedimiento alternativo o la parada.</p>
+<h3 id="12-3-coste-de-la-adopcion">12.3 Coste de la adopción</h3>
+<p>La formación, la comunicación, el soporte, el tiempo de los usuarios durante el aprendizaje y la pérdida temporal de productividad son costes de la iniciativa. Se estiman en la fase 3 en la categoría <em>adopción y formación</em> del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a> y forman parte de la inversión inicial (40 §8.2). Omitirlos infla el valor neto esperado y es una causa frecuente de adopción insuficiente por falta de recursos.</p>
+<hr />
+<h2 id="responsabilidades-e-intensidad"><span class="antetitulo">13</span>Responsabilidades e intensidad</h2>
+<h3 id="13-1-responsabilidades">13.1 Responsabilidades</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Rol u órgano</th>
+<th>Responsabilidad en la adopción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Patrocinador de IA</strong></td>
+<td>Responde del valor; decide, con la dirección del área, el destino de la capacidad liberada; emite los mensajes sobre el porqué.</td>
+</tr>
+<tr>
+<td><strong>Responsable de producto de IA</strong></td>
+<td>Responde de la adopción (01 §8.1): elabora <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, mide los indicadores, coordina formación y comunicación.</td>
+</tr>
+<tr>
+<td><strong>Dirección y mandos del área usuaria</strong></td>
+<td>Ejecutan el cambio: organizan el trabajo, retiran el procedimiento anterior, ejecutan la reasignación y revisan objetivos.</td>
+</tr>
+<tr>
+<td><strong>Función de personas</strong></td>
+<td>Corresponsable del análisis de impacto, del plan de capacidades y de la relación con la representación de los trabajadores (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>).</td>
+</tr>
+<tr>
+<td><strong>Control de gestión</strong></td>
+<td>Valida la capacidad materializada y comprueba que el coste no reaparece en otra partida.</td>
+</tr>
+<tr>
+<td><strong>Responsable de riesgos de IA</strong></td>
+<td>Valora los riesgos organizativos y da conformidad en G3 y G5 según la intensidad.</td>
+</tr>
+<tr>
+<td><strong>Oficina de IA · auditor de IA</strong></td>
+<td>Verifican <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y los criterios de adopción en los <em>gates</em>; consolidan las lecciones sobre adopción para la cartera.</td>
+</tr>
+<tr>
+<td><strong>Comité de IA</strong></td>
+<td>Revisa la adopción agregada de la cartera y las decisiones de destino de capacidad pendientes.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nadie verifica ni decide sobre la adopción de su propia iniciativa (01 §7.4, regla 1).</p>
+<h3 id="13-2-lite-y-enterprise">13.2 Lite y Enterprise</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Lite</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Análisis de impacto</strong></td>
+<td>Por colectivo y tipo de efecto.</td>
+<td>Por tarea y rol, con tiempos (sección 5.1).</td>
+</tr>
+<tr>
+<td><strong>Indicadores</strong></td>
+<td>Como mínimo 3, 5 y 7, y 9 si hay capacidad liberada.</td>
+<td>Selección completa según la ambición y la tecnología.</td>
+</tr>
+<tr>
+<td><strong>Formación</strong></td>
+<td>Usuarios y supervisores, con registro.</td>
+<td>Todos los públicos de la sección 8.2, con evaluación de la comprensión.</td>
+</tr>
+<tr>
+<td><strong>Comunicación y participación</strong></td>
+<td>Plan simplificado en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td>Plan completo; percepción de los usuarios medida (indicador 8).</td>
+</tr>
+<tr>
+<td><strong>Información a la representación</strong></td>
+<td>Igual en ambas intensidades cuando es obligatoria.</td>
+<td>Igual en ambas intensidades cuando es obligatoria.</td>
+</tr>
+<tr>
+<td><strong>Seguimiento</strong></td>
+<td>Mensual en los primeros seis meses; después, en R6 semestral.</td>
+<td>Mensual en los primeros seis meses; después, en R6 trimestral, con informe al comité de IA.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Las iniciativas de Aumentar y Transformar tienen siempre plan de adopción y de personas, con independencia de la intensidad (01 §3, principio 10).</p>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">14</span>Herramientas y plantillas asociadas</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre</th>
+<th>Uso en este documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
+<td>Plan de adopción y capacidad</td>
+<td>Evidencia principal: análisis de impacto, objetivos e indicadores de adopción, formación, comunicación, destino de la capacidad liberada y seguimiento.</td>
+</tr>
+<tr>
+<td><strong>T20</strong></td>
+<td>Plan de adopción y capacidad</td>
+<td>Herramienta de la plantilla <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y registro de capacidad liberada; alimenta T12 y el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></strong></td>
+<td>Lienzo de hipótesis de valor · Línea base</td>
+<td>Objetivo de adopción (G2.10) y tiempos de referencia por tarea.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
+<td>Evaluación de viabilidad · Matriz y registro de riesgos</td>
+<td>Análisis preliminar de impacto, costes de adopción y riesgos organizativos.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></strong></td>
+<td>Diseño de gobierno y supervisión humana</td>
+<td>Supervisores designados, carga de supervisión y ficha informativa para la representación.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
+<td>Resultados del piloto · Seguimiento de realización de valor</td>
+<td>Adopción y capacidad medidas en el piloto; capacidad materializada y reasignada en operación.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
+<td>Registro de decisión de <em>gate</em> · Decisión de escalado o retirada</td>
+<td>Decisiones de G5, R6 y G7; lecciones sobre adopción y comunicación de la retirada.</td>
+</tr>
+<tr>
+<td><strong>T12 · T21</strong></td>
+<td>Seguimiento de valor · Monitor de uso corporativo</td>
+<td>Importes materializados; uso no autorizado en los colectivos afectados.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nota de coherencia: en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (sección 4), el indicador denominado <em>uso efectivo</em> corresponde a <strong>usuarios activos</strong> (IND-ADO-02) y la <em>cobertura del proceso</em>, a <strong>uso efectivo en el proceso</strong> (IND-ADO-03). La denominación de la plantilla se armonizará con este documento y con el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a> en su próxima versión.</p>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">15</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>00 · Qué es y para qué sirve</strong></td>
+<td>Regla 3 de medición y señales 3 y 5 del índice de transformación.</td>
+</tr>
+<tr>
+<td><strong>01 · Metodología fundacional</strong></td>
+<td>Principio 10, fases 4 a 7 (§6), criterios por nivel de ambición (§7.6) y responsabilidad del responsable de producto sobre la adopción (§8.1).</td>
+</tr>
+<tr>
+<td><strong>03 · Herramientas y registro de iniciativas</strong></td>
+<td>Herramienta T20 y motivo codificado <em>Sin adopción</em>.</td>
+</tr>
+<tr>
+<td><strong>11 · Modelo de madurez</strong></td>
+<td>Dimensión D5 Personas y adopción.</td>
+</tr>
+<tr>
+<td><strong>12 · Índice de transformación</strong></td>
+<td>Umbrales de las señales 3 (materialización) y 5 (modelo operativo).</td>
+</tr>
+<tr>
+<td><strong>20 · Manuales de fase</strong></td>
+<td>Secuencia completa de actividades de cada fase.</td>
+</tr>
+<tr>
+<td><strong>21 · Criterios de <em>gate</em> y auditoría</strong></td>
+<td>Criterios G2.10, G3.16, G4.11, G5.08, G5.10, G5.14, G5.19, R6.02, R6.14 y G7.01.</td>
+</tr>
+<tr>
+<td><strong>22 · Listas de verificación por <em>gate</em></strong></td>
+<td>Verificación de los criterios de adopción.</td>
+</tr>
+<tr>
+<td><strong>31 · Política corporativa y uso aceptable</strong></td>
+<td>Programa general de alfabetización en IA y uso no autorizado.</td>
+</tr>
+<tr>
+<td><strong>33 · Metodología de riesgos de IA</strong></td>
+<td>Escala común y riesgos tipo RT-ORG, RT-ECO-03 y RT-REP-05.</td>
+</tr>
+<tr>
+<td><strong>34 · Mapeo regulatorio</strong></td>
+<td>Artículo 4 (alfabetización en IA) en su redacción vigente, artículo 26 del Reglamento Europeo de IA y verificación de vigencia.</td>
+</tr>
+<tr>
+<td><strong>35 · Seguridad de IA y agentes</strong></td>
+<td>Niveles de autonomía A0–A3 y validación informada de acciones (AG-08).</td>
+</tr>
+<tr>
+<td><strong>40 · Reglas de medición del valor</strong></td>
+<td>Fórmulas F4 (capacidad liberada) y F5 (materialización); tratamiento de la capacidad reasignada.</td>
+</tr>
+<tr>
+<td><strong>41 · Catálogo de indicadores</strong></td>
+<td>Indicadores IND-ADO e IND-VAL-07 a 09; consolidación de los indicadores propuestos en la sección 10.</td>
+</tr>
+<tr>
+<td><strong>42 · Costes de IA</strong></td>
+<td>Categoría de coste <em>adopción y formación</em>.</td>
+</tr>
+<tr>
+<td><strong>43 · Realización de beneficios</strong></td>
+<td>Seguimiento de la materialización y de la reasignación.</td>
+</tr>
+<tr>
+<td><strong>50 · Personas y organización</strong></td>
+<td>Efecto sobre el trabajo, plan de capacidades por perfil, cinco destinos de la capacidad liberada, información y consulta, bienestar e indicadores PER.</td>
+</tr>
+<tr>
+<td><strong>52 · Manual de operación de IA</strong></td>
+<td>Reversión y capacidad de volver al procedimiento manual.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">16</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>Primera versión. Cadena de la adopción al valor; principios; ADKAR como modelo de referencia; análisis de impacto en roles y tareas; plan de adopción de las fases 4 a 7; medición, materialización y reasignación explícita de la capacidad liberada con correspondencia con los documentos 40 y 50; formación y alfabetización en IA por público y tecnología; comunicación y participación de la representación de los trabajadores; diez indicadores de adopción con fórmula; criterios de adopción en G5 y G7 por nivel de ambición; resistencia al cambio y riesgos organizativos; responsabilidades e intensidad.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve a las empresas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":true},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

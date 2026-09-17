@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodolog&#237;a de riesgos de IA</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Metodología de riesgos de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/33_SEVEN-G_Metodologia_de_riesgos_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/33_SEVEN-G_Metodologia_de_riesgos_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 33 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 33 &#183; Metodolog&#237;a de riesgos de IA</p>
+    <h1>Metodolog&#237;a de riesgos de IA</h1>
+    <p class="entradilla">C&#243;mo se identifican, valoran, tratan, siguen e informan los riesgos de la IA en cada iniciativa y en la cartera</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>10</b><span>categor&#237;as de riesgo</span></div><div class="cifra"><b>70</b><span>riesgos tipo catalogados</span></div><div class="cifra"><b>5 &#215; 5</b><span>matriz de probabilidad e impacto</span></div><div class="cifra"><b>5</b><span>ejes de impacto</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/33_SEVEN-G_Metodologia_de_riesgos_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/33_SEVEN-G_Metodologia_de_riesgos_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#principios"><span>02</span>Principios</a></li><li><a href="#el-proceso"><span>03</span>El proceso</a></li><li><a href="#escalas-de-valoracion"><span>04</span>Escalas de valoración</a></li><li><a href="#riesgo-inherente-controles-y-riesgo-residual"><span>05</span>Riesgo inherente, controles y riesgo residual</a></li><li><a href="#respuestas-al-riesgo"><span>06</span>Respuestas al riesgo</a></li><li><a href="#aceptacion-y-escalado"><span>07</span>Aceptación y escalado</a></li><li><a href="#registro-de-riesgos"><span>08</span>Registro de riesgos</a></li><li><a href="#catalogo-de-riesgos-tipo"><span>09</span>Catálogo de riesgos tipo</a></li><li><a href="#riesgo-de-cartera"><span>10</span>Riesgo de cartera</a></li><li><a href="#apetito-de-riesgo-e-indicadores-de-riesgo-clave"><span>11</span>Apetito de riesgo e indicadores de riesgo clave</a></li><li><a href="#informacion-de-riesgos"><span>12</span>Información de riesgos</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>13</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>14</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>Este documento define la metodología con la que una organización que aplica SEVEN-G gestiona los riesgos de sus sistemas e iniciativas de IA. Es la referencia de las escalas de riesgo del marco: los documentos 13 (apetito de riesgo), 14 (cartera), 21 (criterios de <em>gate</em>), 35 (seguridad), 36 (terceros), las plantillas <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> y <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> y la herramienta T06 usan exactamente las escalas y niveles que aquí se fijan.</p>
+<h3 id="1-1-que-cubre">1.1 Qué cubre</h3>
+<ul>
+<li>El proceso de gestión del riesgo en seis pasos: identificar, analizar, evaluar, tratar, seguir e informar.</li>
+<li>Su aplicación en los dos niveles del marco: la <strong>iniciativa</strong> (fases 0–7) y la <strong>cartera</strong> (ciclo corporativo C1–C5).</li>
+<li>Las escalas de probabilidad e impacto, la matriz 5 × 5 y los niveles de riesgo.</li>
+<li>El riesgo inherente y residual, y la valoración de la eficacia de los controles.</li>
+<li>La aceptación, el escalado y el registro de riesgos.</li>
+<li>El <strong>catálogo de riesgos tipo</strong> <code>RT-&lt;CAT&gt;-NN</code>, organizado en diez categorías.</li>
+<li>El riesgo de cartera: concentración, correlación y dependencia de proveedores.</li>
+<li>Los indicadores de riesgo clave.</li>
+</ul>
+<h3 id="1-2-que-no-cubre">1.2 Qué no cubre</h3>
+<ul>
+<li>El apetito y las tolerancias de la compañía, que se aprueban en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</li>
+<li>El detalle de los controles de seguridad y de agentes (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>), de terceros (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>) y de cumplimiento regulatorio (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</li>
+<li>La gestión de incidentes y no conformidades (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). Un riesgo materializado se gestiona como incidente; la metodología de riesgos recoge sus lecciones.</li>
+</ul>
+<h3 id="1-3-normas-de-referencia">1.3 Normas de referencia</h3>
+<p>La metodología es coherente con <strong>ISO/IEC 23894</strong> (orientación sobre la gestión del riesgo de la IA, que adapta el proceso de ISO 31000), con los requisitos de evaluación y tratamiento de riesgos de <strong>ISO/IEC 42001</strong>, con las funciones <em>Map</em>, <em>Measure</em> y <em>Manage</em> del <strong>NIST AI RMF</strong> y su perfil de IA generativa <strong>NIST AI 600-1</strong>, y con el sistema de gestión de riesgos que el <strong>Reglamento (UE) 2024/1689</strong> exige a los proveedores de sistemas de alto riesgo. SEVEN-G no sustituye el marco corporativo de riesgos de la compañía: lo especializa para la IA y debe integrarse en él (mismo lenguaje de niveles, mismos órganos, mismo informe).</p>
+<p>Este documento no constituye asesoramiento jurídico.</p>
+<hr />
+<h2 id="principios"><span class="antetitulo">02</span>Principios</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principio</th>
+<th>Consecuencia práctica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>El riesgo se valora antes de invertir</strong></td>
+<td>La evaluación completa es evidencia obligatoria de G3, la principal puerta de parada.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Un control no probado no reduce el riesgo</strong></td>
+<td>El riesgo residual solo se considera verificado cuando la eficacia del control tiene evidencia (normalmente en fase 5).</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Se valora el peor eje de impacto</strong></td>
+<td>El impacto es el mayor de los cinco ejes; no se promedia.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Todo riesgo tiene un responsable</strong></td>
+<td>Sin responsable nominal el riesgo no está registrado.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Quien construye no acepta su propio riesgo</strong></td>
+<td>La aceptación sigue la escala de la sección 7 y respeta la separación de funciones (01 §8).</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>El riesgo es sistémico</strong></td>
+<td>Además del riesgo de cada iniciativa, se gestiona la concentración y la correlación de la cartera (principio 5 de 01 §3).</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>El registro está vivo</strong></td>
+<td>Se actualiza en cada <em>gate</em>, en cada revisión de continuidad, tras cada incidente y ante cada cambio relevante.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="el-proceso"><span class="antetitulo">03</span>El proceso</h2>
+<figure class="grafico"><div class="g-titulo">Proceso de gesti&#243;n del riesgo de IA</div><div class="g-sub">Seis pasos que se repiten en cada gate y en cada revisi&#243;n</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  I["1. Identificar"] --> A["2. Analizar"]
+  A --> E["3. Evaluar"]
+  E --> T["4. Tratar"]
+  T --> S["5. Seguir"]
+  S --> R["6. Informar"]
+  R -->|"Cambio, incidente o revisión"| I
+  E -->|"Crítico sin aprobación"| P["Bloqueo de G3 o G5"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class I,A,E med
+  class T,S,R ok
+  class P ko
+</pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Qué se hace</th>
+<th>Resultado</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Identificar</strong></td>
+<td>Recorrer el catálogo de riesgos tipo (sección 9), el contexto de la fase 0, la clasificación regulatoria, la arquitectura y los proveedores. Describir cada riesgo como <strong>causa → evento → consecuencia</strong>.</td>
+<td>Lista de riesgos con código RT asociado.</td>
+<td>Responsable de producto con el responsable técnico; facilita el responsable de riesgos.</td>
+</tr>
+<tr>
+<td><strong>2. Analizar</strong></td>
+<td>Estimar probabilidad e impacto inherentes con las escalas de la sección 4, justificando el eje de impacto determinante. Identificar controles existentes.</td>
+<td>Nivel inherente por riesgo.</td>
+<td>Equipo de la iniciativa.</td>
+</tr>
+<tr>
+<td><strong>3. Evaluar</strong></td>
+<td>Comparar con el apetito y las tolerancias (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>). Decidir qué riesgos requieren tratamiento y en qué orden.</td>
+<td>Priorización y propuesta de respuesta.</td>
+<td>Responsable de riesgos de IA.</td>
+</tr>
+<tr>
+<td><strong>4. Tratar</strong></td>
+<td>Elegir la respuesta (evitar, mitigar, transferir, aceptar), diseñar y aplicar controles, estimar el residual objetivo y obtener la aceptación del residual.</td>
+<td>Plan de mitigación y contingencia (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>); decisión de aceptación.</td>
+<td>Responsable del riesgo; acepta quien corresponda según la sección 7.</td>
+</tr>
+<tr>
+<td><strong>5. Seguir</strong></td>
+<td>Verificar la eficacia de los controles, vigilar indicadores de riesgo clave, revisar con la periodicidad del nivel y ante disparadores.</td>
+<td>Registro actualizado; residual verificado.</td>
+<td>Responsable de operación y responsable del riesgo; verifica el auditor de IA en los <em>gates</em>.</td>
+</tr>
+<tr>
+<td><strong>6. Informar</strong></td>
+<td>Presentar el perfil de riesgo al órgano que decide el <em>gate</em> y, agregado, al comité de IA y al consejo.</td>
+<td>Información de riesgo en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
+<td>Oficina de IA con el responsable de riesgos.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-1-en-el-ciclo-de-vida-de-la-iniciativa">3.1 En el ciclo de vida de la iniciativa</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Fase o puerta</th>
+<th>Actividad de riesgo</th>
+<th>Evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0 · G0</strong></td>
+<td>Restricciones y riesgos evidentes (práctica prohibida, datos protegidos, función crítica). Determinación de intensidad.</td>
+<td>Declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>), intensidad (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+</tr>
+<tr>
+<td><strong>1 · G1</strong></td>
+<td>Identificación preliminar de riesgos que podrían descartar la oportunidad.</td>
+<td>Notas de filtrado (<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>).</td>
+</tr>
+<tr>
+<td><strong>2 · G2</strong></td>
+<td>Riesgos de la hipótesis de valor (RT-ECO, RT-EST) y criterios de parada vinculados a riesgo.</td>
+<td>Lienzo de hipótesis (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>).</td>
+</tr>
+<tr>
+<td><strong>3 · G3</strong></td>
+<td><strong>Evaluación completa</strong>: inherente, controles previstos, residual objetivo, aceptación. Ningún riesgo Crítico sin tratamiento aceptado.</td>
+<td>Matriz y registro (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>); plan de mitigación y contingencia (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>); evaluación de proveedor (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
+</tr>
+<tr>
+<td><strong>4 · G4</strong></td>
+<td>Cada riesgo Medio o superior tiene un control diseñado, con código cuando exista (SEG, AG del <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
+<td>Diseño de seguridad (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>), diseño de supervisión (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), registro actualizado.</td>
+</tr>
+<tr>
+<td><strong>5 · G5</strong></td>
+<td>Eficacia de los controles probada; <strong>residual verificado</strong>; aceptación ratificada.</td>
+<td>Resultados de validación (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>), registro actualizado, firma (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>).</td>
+</tr>
+<tr>
+<td><strong>6 · R6</strong></td>
+<td>Seguimiento, indicadores, incidentes, cambios; revisión de la clasificación.</td>
+<td>Registro actualizado; registro de incidentes (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+</tr>
+<tr>
+<td><strong>7 · G7</strong></td>
+<td>Riesgos acumulados y riesgos de la retirada (datos, modelos, dependencias).</td>
+<td>Decisión de escalado o retirada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-2-en-la-cartera">3.2 En la cartera</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Actividad de riesgo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C1 · Diagnóstico</strong></td>
+<td>Perfil de riesgo de los sistemas inventariados, incluidos los anteriores al marco y el uso corporativo de IA.</td>
+</tr>
+<tr>
+<td><strong>C2 · Dirección</strong></td>
+<td>Aprobación del apetito, tolerancias, umbral de materialidad económica y umbrales de los indicadores (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</td>
+</tr>
+<tr>
+<td><strong>C3 · Cartera</strong></td>
+<td>Concentración, correlación y dependencia de proveedores al priorizar (sección 10).</td>
+</tr>
+<tr>
+<td><strong>C4 · Supervisión</strong></td>
+<td>Informe mensual al comité de IA y trimestral al consejo o comisión delegada (sección 12).</td>
+</tr>
+<tr>
+<td><strong>C5 · Revisión</strong></td>
+<td>Eficacia del sistema de gestión de riesgos, riesgos materializados, lecciones y recalibración de escalas.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="escalas-de-valoracion"><span class="antetitulo">04</span>Escalas de valoración</h2>
+<h3 id="4-1-probabilidad">4.1 Probabilidad</h3>
+<p>La probabilidad se estima para el horizonte de la iniciativa o, en sistemas en producción, para los doce meses siguientes. Se usa la referencia de frecuencia para eventos recurrentes y la de porcentaje para eventos únicos.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Probabilidad</th>
+<th>Nombre</th>
+<th>Referencia orientativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Rara</td>
+<td>Menos de una vez en 5 años o &lt; 5 % en el horizonte de la iniciativa</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Improbable</td>
+<td>Una vez cada 2–5 años o 5–20 %</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Posible</td>
+<td>Una vez cada 1–2 años o 20–50 %</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Probable</td>
+<td>Varias veces al año o 50–80 %</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Casi segura</td>
+<td>Mensual o más, o &gt; 80 %</td>
+</tr>
+</tbody>
+</table></div>
+<p>Criterios de apoyo: antecedentes en la compañía o en el sector, resultados de pruebas y pilotos, exposición (usuarios, volumen, acceso externo), existencia de un atacante motivado, madurez de la tecnología. En amenazas de seguridad con atacante activo (RT-GEN, RT-SEG) y exposición externa, la probabilidad <strong>no debería</strong> valorarse por debajo de 3 sin evidencia de pruebas adversarias.</p>
+<h3 id="4-2-impacto-en-cinco-ejes">4.2 Impacto en cinco ejes</h3>
+<p>El impacto se valora en cinco ejes y se toma el <strong>mayor</strong>. Se registra el eje determinante y su justificación.</p>
+<p>M es el <strong>umbral de materialidad económica</strong> que la compañía aprueba en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>) en proporción a su tamaño. Los porcentajes de M son orientativos y se calibran en C2.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Impacto</th>
+<th>Económico</th>
+<th>Personas y derechos</th>
+<th>Regulatorio</th>
+<th>Operativo</th>
+<th>Reputacional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 · Insignificante</strong></td>
+<td>Menos del 1 % de M.</td>
+<td>Sin efecto apreciable sobre personas.</td>
+<td>Sin incumplimiento.</td>
+<td>Interrupción breve sin efecto en clientes ni en procesos relevantes.</td>
+<td>Sin trascendencia externa.</td>
+</tr>
+<tr>
+<td><strong>2 · Menor</strong></td>
+<td>Del 1 % al 5 % de M.</td>
+<td>Molestia a pocas personas, corregible de inmediato.</td>
+<td>Incumplimiento formal subsanable sin comunicación a autoridades.</td>
+<td>Degradación de horas en un proceso no crítico.</td>
+<td>Quejas aisladas.</td>
+</tr>
+<tr>
+<td><strong>3 · Moderado</strong></td>
+<td>Del 5 % al 20 % de M.</td>
+<td>Efecto adverso reversible sobre un grupo limitado (trato erróneo, retraso, información incorrecta).</td>
+<td>Incumplimiento que exige corrección formal y puede requerir comunicación al supervisor.</td>
+<td>Interrupción de un proceso relevante durante una jornada o degradación sostenida.</td>
+<td>Eco local o sectorial; quejas recurrentes.</td>
+</tr>
+<tr>
+<td><strong>4 · Grave</strong></td>
+<td>Del 20 % al 100 % de M.</td>
+<td>Daño significativo: decisiones erróneas sobre derechos o acceso a servicios, exposición de datos personales con riesgo para las personas.</td>
+<td>Notificación obligatoria, requerimiento formal o procedimiento sancionador probable.</td>
+<td>Interrupción de una función crítica dentro de su tolerancia, o de un proceso relevante durante varios días.</td>
+<td>Cobertura nacional; pérdida medible de clientes o socios.</td>
+</tr>
+<tr>
+<td><strong>5 · Crítico</strong></td>
+<td>Más de M.</td>
+<td>Daño grave o irreversible a la salud, discriminación sistemática o vulneración de derechos fundamentales.</td>
+<td>Práctica prohibida, posible incidente grave según el Reglamento de IA, sanción grave o pérdida de autorización.</td>
+<td>Interrupción de una función crítica fuera de su tolerancia de impacto.</td>
+<td>Daño duradero a la confianza; atención del supervisor y del consejo.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-3-nivel-de-riesgo-y-matriz-5-5">4.3 Nivel de riesgo y matriz 5 × 5</h3>
+<p><strong>Nivel = Probabilidad × Impacto</strong>, con cuatro niveles: <strong>Bajo</strong> 1–4 · <strong>Medio</strong> 5–9 · <strong>Alto</strong> 10–15 · <strong>Crítico</strong> 16–25.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Probabilidad \ Impacto</th>
+<th>1 · Insignificante</th>
+<th>2 · Menor</th>
+<th>3 · Moderado</th>
+<th>4 · Grave</th>
+<th>5 · Crítico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>5 · Casi segura</strong></td>
+<td>5 · Medio</td>
+<td>10 · Alto</td>
+<td>15 · Alto</td>
+<td>20 · Crítico</td>
+<td>25 · Crítico</td>
+</tr>
+<tr>
+<td><strong>4 · Probable</strong></td>
+<td>4 · Bajo</td>
+<td>8 · Medio</td>
+<td>12 · Alto</td>
+<td>16 · Crítico</td>
+<td>20 · Crítico</td>
+</tr>
+<tr>
+<td><strong>3 · Posible</strong></td>
+<td>3 · Bajo</td>
+<td>6 · Medio</td>
+<td>9 · Medio</td>
+<td>12 · Alto</td>
+<td>15 · Alto</td>
+</tr>
+<tr>
+<td><strong>2 · Improbable</strong></td>
+<td>2 · Bajo</td>
+<td>4 · Bajo</td>
+<td>6 · Medio</td>
+<td>8 · Medio</td>
+<td>10 · Alto</td>
+</tr>
+<tr>
+<td><strong>1 · Rara</strong></td>
+<td>1 · Bajo</td>
+<td>2 · Bajo</td>
+<td>3 · Bajo</td>
+<td>4 · Bajo</td>
+<td>5 · Medio</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas de uso:</p>
+<ol>
+<li>Se valoran números enteros. En caso de duda entre dos valores, se toma el mayor y se registra la duda.</li>
+<li><strong>Regla de impacto extremo:</strong> un riesgo con impacto 5 en el eje de personas y derechos o en el regulatorio se trata, a efectos de aceptación, como mínimo <strong>Alto</strong>, aunque su probabilidad sea 1. Evita que sucesos raros pero inaceptables queden aceptados por el responsable de producto.</li>
+<li>Las prácticas prohibidas por el Reglamento de IA no se valoran: se <strong>evitan</strong> (01 §6.5).</li>
+</ol>
+<hr />
+<h2 id="riesgo-inherente-controles-y-riesgo-residual"><span class="antetitulo">05</span>Riesgo inherente, controles y riesgo residual</h2>
+<h3 id="5-1-definiciones">5.1 Definiciones</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Riesgo inherente</strong></td>
+<td>Nivel del riesgo sin considerar controles específicos de la iniciativa. Los controles corporativos generales solo se consideran si están probados y documentados en la compañía.</td>
+</tr>
+<tr>
+<td><strong>Riesgo residual objetivo</strong></td>
+<td>Nivel esperado tras aplicar los controles previstos. Se usa en G3 y G4.</td>
+</tr>
+<tr>
+<td><strong>Riesgo residual verificado</strong></td>
+<td>Nivel tras comprobar con evidencia la eficacia de los controles. Es el que se exige en G5 y se sigue en R6.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-2-tipos-de-control">5.2 Tipos de control</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Actúa sobre</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Preventivo</strong></td>
+<td>Probabilidad</td>
+<td>Mínimo privilegio de agentes, validación de datos, cláusula contractual de no entrenamiento.</td>
+</tr>
+<tr>
+<td><strong>Detectivo</strong></td>
+<td>Impacto, al acortar el tiempo hasta la detección</td>
+<td>Monitorización de deriva, alertas de acciones anómalas, revisión de muestras.</td>
+</tr>
+<tr>
+<td><strong>Correctivo o de contención</strong></td>
+<td>Impacto</td>
+<td>Interruptor de parada, plan de reversión, proceso alternativo manual.</td>
+</tr>
+<tr>
+<td><strong>Transferencia</strong></td>
+<td>Impacto económico</td>
+<td>Seguro, indemnidad contractual. No transfiere la responsabilidad regulatoria ni el daño a personas.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="5-3-eficacia-de-los-controles">5.3 Eficacia de los controles</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Eficacia</th>
+<th>Criterio</th>
+<th>Reducción máxima admitida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Eficaz</strong></td>
+<td>Diseñado, implantado y probado con evidencia en el último periodo de revisión, sin excepciones relevantes.</td>
+<td>Hasta 2 niveles de probabilidad (preventivo) o de impacto (detectivo o correctivo).</td>
+</tr>
+<tr>
+<td><strong>Parcialmente eficaz</strong></td>
+<td>Implantado y probado con excepciones, cobertura incompleta o dependencia manual no supervisada.</td>
+<td>1 nivel.</td>
+</tr>
+<tr>
+<td><strong>Ineficaz</strong></td>
+<td>La prueba falla o el control no opera como se diseñó.</td>
+<td>Ninguna. Se abre acción correctiva.</td>
+</tr>
+<tr>
+<td><strong>No probado</strong></td>
+<td>Diseñado o implantado sin prueba de eficacia.</td>
+<td>Ninguna en el residual verificado. Puede usarse en el residual objetivo.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas:</p>
+<ul>
+<li>La reducción total no puede llevar la probabilidad por debajo de 1 ni el impacto por debajo del que produciría el evento con el control correctivo ya activado.</li>
+<li>Los controles de tipo transferencia solo reducen el eje económico; el impacto se sigue determinando por el mayor de los demás ejes.</li>
+<li>En IA generativa y agentes, la eficacia de los controles frente a inyección de instrucciones <strong>debe</strong> probarse con pruebas adversarias (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>, sección 8); una política o una instrucción al modelo no es por sí sola un control eficaz.</li>
+<li>Un control ineficaz en un riesgo residual Alto o Crítico es, además, una no conformidad (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</li>
+</ul>
+<hr />
+<h2 id="respuestas-al-riesgo"><span class="antetitulo">06</span>Respuestas al riesgo</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Respuesta</th>
+<th>Cuándo</th>
+<th>Condiciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Evitar</strong></td>
+<td>Riesgo inaceptable sin alternativa: práctica prohibida, Crítico sin tratamiento viable, coste del control superior al valor.</td>
+<td>Cambiar alcance, diseño, datos, proveedor o nivel de autonomía; o <strong>Parar</strong> en el <em>gate</em>.</td>
+</tr>
+<tr>
+<td><strong>Mitigar</strong></td>
+<td>Respuesta habitual para Medio, Alto y Crítico.</td>
+<td>Controles con responsable, plazo y residual objetivo. Plan en <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>.</td>
+</tr>
+<tr>
+<td><strong>Transferir</strong></td>
+<td>Impacto económico significativo con mercado de transferencia.</td>
+<td>Documentar qué se transfiere y qué no; revisar exclusiones de seguros y límites de indemnidad.</td>
+</tr>
+<tr>
+<td><strong>Aceptar</strong></td>
+<td>Residual dentro del apetito o coste de mitigación desproporcionado.</td>
+<td>Decisión del nivel competente (sección 7), con vigencia y condiciones de revisión.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Todo riesgo Alto o Crítico en tratamiento <strong>debe</strong> tener <strong>plan de contingencia</strong>: qué se hace si se materializa, quién lo activa y con qué disparador. En sistemas con capacidad de actuar, el plan incluye la activación del interruptor de parada o la reversión.</p>
+<hr />
+<h2 id="aceptacion-y-escalado"><span class="antetitulo">07</span>Aceptación y escalado</h2>
+<h3 id="7-1-quien-acepta-el-riesgo-residual">7.1 Quién acepta el riesgo residual</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel residual</th>
+<th>Acepta</th>
+<th>Condiciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bajo</strong></td>
+<td>Responsable de producto de IA</td>
+<td>Con registro.</td>
+</tr>
+<tr>
+<td><strong>Medio</strong></td>
+<td>Patrocinador de IA</td>
+<td>Con conformidad del responsable de riesgos de IA.</td>
+</tr>
+<tr>
+<td><strong>Alto</strong></td>
+<td>Comité de IA</td>
+<td>Con plan de tratamiento, indicadores y vigencia máxima de la aceptación hasta la siguiente revisión de continuidad.</td>
+</tr>
+<tr>
+<td><strong>Crítico</strong></td>
+<td><strong>No se acepta.</strong> Excepcionalmente, solo el consejo o su comisión delegada, dentro del apetito aprobado en C2.</td>
+<td>Motivación, límite temporal, controles compensatorios y seguimiento en cada sesión trimestral. <strong>Un residual Crítico sin esa aprobación bloquea G3 y G5.</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas:</p>
+<ul>
+<li>Nadie acepta un riesgo de una iniciativa en la que construye (01 §8.2).</li>
+<li>La aceptación caduca al cambiar el nivel, el sistema, el proveedor, el modelo, la clasificación regulatoria o el nivel de autonomía, y en todo caso en la fecha de vigencia registrada.</li>
+<li>Aceptar un riesgo no exime de cumplir la regulación: un incumplimiento legal no se acepta como riesgo, se corrige.</li>
+</ul>
+<h3 id="7-2-disparadores-de-escalado-y-revision-extraordinaria">7.2 Disparadores de escalado y revisión extraordinaria</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Disparador</th>
+<th>Acción</th>
+<th>Plazo orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nuevo riesgo residual Crítico</td>
+<td>Comunicación al comité de IA; evaluación de parada o suspensión.</td>
+<td>Mismo día hábil</td>
+</tr>
+<tr>
+<td>Nuevo riesgo residual Alto o subida de un nivel</td>
+<td>Comunicación al patrocinador y al responsable de riesgos; revisión en el siguiente comité.</td>
+<td>5 días hábiles</td>
+</tr>
+<tr>
+<td>Indicador de riesgo clave fuera de umbral</td>
+<td>Revisión del riesgo asociado y de sus controles.</td>
+<td>5 días hábiles</td>
+</tr>
+<tr>
+<td>Riesgo materializado</td>
+<td>Gestión como incidente (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>) y revaloración.</td>
+<td>Según severidad</td>
+</tr>
+<tr>
+<td>Control ineficaz en riesgo Alto o Crítico</td>
+<td>No conformidad y revaloración del residual.</td>
+<td>Según tipo de no conformidad</td>
+</tr>
+<tr>
+<td>Cambio de modelo, proveedor, datos, autonomía o regulación</td>
+<td>Revaloración de los riesgos afectados antes del cambio.</td>
+<td>Antes de desplegar</td>
+</tr>
+<tr>
+<td>Acción de tratamiento vencida</td>
+<td>Aviso al responsable; si es Alto o Crítico, al comité.</td>
+<td>Al vencer</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-3-frecuencia-de-revision">7.3 Frecuencia de revisión</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel residual</th>
+<th>En desarrollo (fases 0–5)</th>
+<th>En producción (fase 6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Crítico</strong> (aceptado excepcionalmente)</td>
+<td>Continua, con informe en cada comité</td>
+<td>Mensual y en cada sesión trimestral del consejo</td>
+</tr>
+<tr>
+<td><strong>Alto</strong></td>
+<td>En cada <em>gate</em> y, como mínimo, mensual</td>
+<td>Trimestral, coincidiendo con R6 Enterprise</td>
+</tr>
+<tr>
+<td><strong>Medio</strong></td>
+<td>En cada <em>gate</em></td>
+<td>Semestral o en cada R6</td>
+</tr>
+<tr>
+<td><strong>Bajo</strong></td>
+<td>En G3 y G5</td>
+<td>Anual o en R6</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="registro-de-riesgos"><span class="antetitulo">08</span>Registro de riesgos</h2>
+<p>El registro de riesgos es la evidencia &quot;Matriz y registro de riesgos&quot; de 01 §6.10. Se implanta con la plantilla <strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong> y con la herramienta <strong>T06</strong>, sobre la entidad <em>Riesgo</em> del modelo de datos común (03 §4).</p>
+<h3 id="8-1-campos">8.1 Campos</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Campo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identificación</strong></td>
+<td>Identificador</td>
+<td>Código de la iniciativa y número correlativo (ilustrativo: IA-2026-014 · R03); para riesgos de cartera, ámbito &quot;Cartera&quot;.</td>
+</tr>
+<tr>
+<td></td>
+<td>Riesgo tipo</td>
+<td>Código <code>RT-&lt;CAT&gt;-NN</code> del catálogo, o &quot;Específico&quot; si no hay equivalente.</td>
+</tr>
+<tr>
+<td></td>
+<td>Categoría</td>
+<td>EST, TEC, DAT, ECO, LEG, ORG, REP, GEN, SEG o TER.</td>
+</tr>
+<tr>
+<td></td>
+<td>Título y descripción</td>
+<td>Causa → evento → consecuencia, en lenguaje comprensible.</td>
+</tr>
+<tr>
+<td></td>
+<td>Sistemas y proveedores afectados</td>
+<td>Enlace al inventario (T02) y al registro de proveedores (T09).</td>
+</tr>
+<tr>
+<td></td>
+<td>Fecha y fase de identificación</td>
+<td>Fecha, fase y quién lo identificó.</td>
+</tr>
+<tr>
+<td><strong>Responsables</strong></td>
+<td>Responsable del riesgo</td>
+<td>Persona nominal con capacidad de actuar.</td>
+</tr>
+<tr>
+<td></td>
+<td>Responsable de riesgos de IA</td>
+<td>Segunda línea que da conformidad.</td>
+</tr>
+<tr>
+<td><strong>Análisis inherente</strong></td>
+<td>Probabilidad (1–5) y justificación</td>
+<td>Referencia usada y fuentes.</td>
+</tr>
+<tr>
+<td></td>
+<td>Impacto por eje (1–5)</td>
+<td>Económico, personas y derechos, regulatorio, operativo, reputacional; eje determinante.</td>
+</tr>
+<tr>
+<td></td>
+<td>Nivel inherente</td>
+<td>Calculado.</td>
+</tr>
+<tr>
+<td><strong>Controles</strong></td>
+<td>Controles</td>
+<td>Descripción, tipo, código (SEG, AG u otro), responsable.</td>
+</tr>
+<tr>
+<td></td>
+<td>Eficacia</td>
+<td>Eficaz, parcialmente eficaz, ineficaz o no probado; fecha y evidencia de la prueba.</td>
+</tr>
+<tr>
+<td><strong>Residual</strong></td>
+<td>Probabilidad e impacto residuales</td>
+<td>Objetivo y verificado.</td>
+</tr>
+<tr>
+<td></td>
+<td>Nivel residual</td>
+<td>Objetivo y verificado.</td>
+</tr>
+<tr>
+<td><strong>Tratamiento</strong></td>
+<td>Respuesta</td>
+<td>Evitar, mitigar, transferir o aceptar.</td>
+</tr>
+<tr>
+<td></td>
+<td>Plan</td>
+<td>Acciones, responsable, plazo y estado (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>).</td>
+</tr>
+<tr>
+<td></td>
+<td>Contingencia</td>
+<td>Disparador, acciones y responsable de activarla.</td>
+</tr>
+<tr>
+<td><strong>Aceptación</strong></td>
+<td>Decisión</td>
+<td>Quién acepta, fecha, vigencia, condiciones, enlace a <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> si se decidió en un <em>gate</em>.</td>
+</tr>
+<tr>
+<td><strong>Seguimiento</strong></td>
+<td>Indicador de riesgo clave</td>
+<td>Definición, umbral, valor actual y fecha.</td>
+</tr>
+<tr>
+<td></td>
+<td>Estado</td>
+<td>Identificado · En tratamiento · Aceptado · Materializado · Cerrado.</td>
+</tr>
+<tr>
+<td></td>
+<td>Tendencia y próxima revisión</td>
+<td>Sube, estable o baja; fecha.</td>
+</tr>
+<tr>
+<td><strong>Vínculos</strong></td>
+<td>Incidentes, no conformidades y criterios</td>
+<td>INC-AAAA-NNN, NC-AAAA-NNN, criterios de <em>gate</em> <code>G&lt;n&gt;.&lt;nn&gt;</code>.</td>
+</tr>
+<tr>
+<td><strong>Historial</strong></td>
+<td>Eventos</td>
+<td>Cambios de valoración con fecha, autor y motivo (03 §2, principio 2).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="8-2-calidad-del-registro">8.2 Calidad del registro</h3>
+<p>El verificador comprueba, como mínimo: que todos los riesgos Medio o superiores tienen responsable, control y residual; que la justificación de probabilidad e impacto es trazable; que las aceptaciones las firma quien corresponde y están vigentes; que los riesgos tipo aplicables a la tecnología y a la clasificación de la iniciativa se han considerado (incluidos o descartados con motivo); y que el registro existía antes del <em>gate</em> (01 §7.4, regla 3). Los criterios concretos están en los documentos 21 y 22.</p>
+<hr />
+<h2 id="catalogo-de-riesgos-tipo"><span class="antetitulo">09</span>Catálogo de riesgos tipo</h2>
+<p>El catálogo es una lista de partida, no exhaustiva. En la fase 3, el equipo <strong>debe</strong> revisar al menos los riesgos tipo de las categorías que aplican a su tecnología y exposición, y registrar los descartados con motivo. Cada compañía <strong>puede</strong> ampliar el catálogo con códigos correlativos y <strong>debe</strong> declarar los que añade.</p>
+<p>La columna <em>Fase</em> indica dónde se identifica y dónde se trata principalmente; los controles con código SEG o AG se describen en el <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</p>
+<h3 id="9-1-estrategico-est">9.1 Estratégico (EST)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-EST-01</strong></td>
+<td><strong>Desalineación con la tesis de IA.</strong> La iniciativa no contribuye a la ambición ni a las esferas aprobadas en C2.</td>
+<td>Origen tecnológico; patrocinio débil; ausencia de filtro.</td>
+<td>Encaje con la tesis en G0; clasificación de esfera (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>); priorización en C3.</td>
+<td>0–1</td>
+</tr>
+<tr>
+<td><strong>RT-EST-02</strong></td>
+<td><strong>Ambición declarada no evidenciada.</strong> Se presenta como Aumentar o Transformar lo que es Optimizar, y se decide con expectativas erróneas.</td>
+<td>Incentivos a &quot;transformar&quot;; criterios ambiguos.</td>
+<td>Cinco preguntas de clasificación (T05); confirmación en fase 2; revisión en G7.</td>
+<td>1, 2, 7</td>
+</tr>
+<tr>
+<td><strong>RT-EST-03</strong></td>
+<td><strong>Pérdida de oportunidad.</strong> El proceso de decisión es tan lento que la ventaja se pierde.</td>
+<td>Plazos de <em>gate</em> largos; mismo criterio de retorno para todas las apuestas.</td>
+<td>Plazos de referencia (03 §3.6); criterios por ambición (01 §7.6); métricas de agilidad.</td>
+<td>C3, todas</td>
+</tr>
+<tr>
+<td><strong>RT-EST-04</strong></td>
+<td><strong>Bloqueo tecnológico.</strong> Plataforma o modelo elegidos quedan superados y el cambio es costoso.</td>
+<td>Dependencia de funciones propietarias; arquitectura acoplada.</td>
+<td>Capa de abstracción de modelos; portabilidad de datos e instrucciones; revisión en R6.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-EST-05</strong></td>
+<td><strong>Retirada de patrocinio o de financiación.</strong> La iniciativa pierde apoyo antes de demostrar valor.</td>
+<td>Cambios de dirección; valor no visible a tiempo.</td>
+<td>Financiación por etapas; hitos de aprendizaje; criterios de parada previos.</td>
+<td>0, C3</td>
+</tr>
+<tr>
+<td><strong>RT-EST-06</strong></td>
+<td><strong>Concentración de la cartera en una apuesta.</strong> Una sola iniciativa o plataforma concentra inversión o valor esperado.</td>
+<td>Apuestas grandes sin límites por etapa.</td>
+<td>Límites de concentración en el apetito (13); revisión trimestral.</td>
+<td>C3, C4</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-2-tecnico-tec">9.2 Técnico (TEC)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-TEC-01</strong></td>
+<td><strong>Rendimiento insuficiente en condiciones reales.</strong> El sistema no alcanza el umbral fuera del entorno de prueba.</td>
+<td>Validación con datos no representativos; piloto sin método de atribución.</td>
+<td>Umbral de éxito previo; piloto en condiciones reales (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
+<td>3, 5</td>
+</tr>
+<tr>
+<td><strong>RT-TEC-02</strong></td>
+<td><strong>Degradación y deriva.</strong> El rendimiento cae por cambios en los datos, el entorno o el comportamiento de los usuarios.</td>
+<td>Entorno dinámico; sin monitorización.</td>
+<td>Monitorización de deriva y rendimiento (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>); umbrales de reentrenamiento o retirada.</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>RT-TEC-03</strong></td>
+<td><strong>Falta de robustez.</strong> Resultados erróneos ante entradas atípicas, ruido o casos límite.</td>
+<td>Pruebas limitadas a casos habituales.</td>
+<td>Pruebas de robustez y casos límite; derivación a persona fuera de dominio.</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td><strong>RT-TEC-04</strong></td>
+<td><strong>Confabulación.</strong> La IA generativa produce contenidos falsos presentados como ciertos.</td>
+<td>Ausencia de fuentes autorizadas; tareas fuera de alcance.</td>
+<td>Recuperación sobre fuentes autorizadas; citas; evaluaciones periódicas; aviso al usuario.</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td><strong>RT-TEC-05</strong></td>
+<td><strong>Resultados no explicables ni trazables.</strong> No puede reconstruirse por qué se produjo un resultado.</td>
+<td>Registros insuficientes; modelos opacos sin documentación.</td>
+<td>Registro de entradas, versiones y salidas; documentación del modelo; explicaciones proporcionales al uso.</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>RT-TEC-06</strong></td>
+<td><strong>Integración y capacidad insuficientes.</strong> Latencia, disponibilidad o volumen no soportan el proceso.</td>
+<td>Pruebas sin carga real; dependencias externas.</td>
+<td>Pruebas de carga; acuerdos de nivel de servicio; degradación controlada.</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td><strong>RT-TEC-07</strong></td>
+<td><strong>Cambio no gestionado.</strong> Cambios de modelo, instrucciones, parámetros o configuración sin evaluación previa.</td>
+<td>Cambios frecuentes; sin gestión de versiones.</td>
+<td>Gestión de cambios con evaluaciones de regresión; versionado de instrucciones.</td>
+<td>5, 6</td>
+</tr>
+<tr>
+<td><strong>RT-TEC-08</strong></td>
+<td><strong>Irreversibilidad.</strong> No es posible volver al estado anterior o al proceso sin IA.</td>
+<td>Plan de reversión inexistente o no probado; proceso manual desmantelado.</td>
+<td>Plan de reversión probado antes de G5 (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>); proceso alternativo mantenido.</td>
+<td>4, 5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-3-datos-dat">9.3 Datos (DAT)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-DAT-01</strong></td>
+<td><strong>Calidad insuficiente.</strong> Datos incompletos, erróneos o desactualizados.</td>
+<td>Sin control en origen; sistemas heredados.</td>
+<td>Perfilado de calidad en fase 3; reglas de validación; propietario del dato.</td>
+<td>3, 4</td>
+</tr>
+<tr>
+<td><strong>RT-DAT-02</strong></td>
+<td><strong>Datos no representativos y sesgo.</strong> Los datos no reflejan la población o reproducen discriminaciones históricas.</td>
+<td>Muestras sesgadas; variables sustitutivas de características protegidas.</td>
+<td>Análisis de representatividad; métricas de equidad; pruebas por grupo.</td>
+<td>3, 5</td>
+</tr>
+<tr>
+<td><strong>RT-DAT-03</strong></td>
+<td><strong>Falta de base legal o finalidad incompatible.</strong> Uso de datos personales sin base jurídica o para una finalidad distinta.</td>
+<td>Reutilización de datos operativos sin análisis.</td>
+<td>Análisis jurídico; evaluación de impacto en protección de datos; minimización.</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>RT-DAT-04</strong></td>
+<td><strong>Linaje desconocido.</strong> No se sabe de dónde vienen los datos, qué transformaciones han sufrido ni con qué licencia.</td>
+<td>Datos de terceros; procesos manuales.</td>
+<td>Linaje de datos y modelos (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>); licencias verificadas.</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>RT-DAT-05</strong></td>
+<td><strong>Exposición de datos en el ciclo de IA.</strong> Datos personales o confidenciales en entrenamiento, contexto, instrucciones o registros.</td>
+<td>Registros completos sin enmascarar; contexto excesivo.</td>
+<td>Minimización y enmascarado; retención limitada de registros; SEG-07.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-DAT-06</strong></td>
+<td><strong>Conocimiento obsoleto o contradictorio.</strong> La base documental que alimenta la IA generativa está desactualizada o sin propietario.</td>
+<td>Sin gobierno documental; duplicados.</td>
+<td>Propietario y fecha de vigencia por fuente; retirada automática de caducados.</td>
+<td>4, 6</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-4-economico-eco">9.4 Económico (ECO)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-ECO-01</strong></td>
+<td><strong>Sobrecoste de construcción.</strong> El coste supera lo aprobado.</td>
+<td>Alcance abierto; integración subestimada.</td>
+<td>Estimación con las categorías de coste (42); financiación por etapas; control de cambios.</td>
+<td>3, 5</td>
+</tr>
+<tr>
+<td><strong>RT-ECO-02</strong></td>
+<td><strong>Coste recurrente creciente o imprevisible.</strong> El consumo de modelos, cómputo o licencias crece más que el valor.</td>
+<td>Precio por uso; bucles de agentes; adopción no prevista.</td>
+<td>Presupuestos y límites de consumo; coste por transacción vigilado (T13); SEG-10.</td>
+<td>3, 6</td>
+</tr>
+<tr>
+<td><strong>RT-ECO-03</strong></td>
+<td><strong>Valor no materializado.</strong> La capacidad liberada no se convierte en ahorro ni se reasigna.</td>
+<td>Sin plan de materialización; resistencia organizativa.</td>
+<td>Regla 3 de medición (00 §6); plan de materialización en G5; seguimiento (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>).</td>
+<td>5–7</td>
+</tr>
+<tr>
+<td><strong>RT-ECO-04</strong></td>
+<td><strong>Valor inflado o doble contabilización.</strong> El mismo euro se atribuye a varios casos o se declara sin fórmula.</td>
+<td>Presión por resultados; sin validación independiente.</td>
+<td>Reglas 1, 2 y 5 de medición; validación por control de gestión.</td>
+<td>2, 6, 7</td>
+</tr>
+<tr>
+<td><strong>RT-ECO-05</strong></td>
+<td><strong>Coste de salida no previsto.</strong> Sustituir el proveedor o retirar el sistema cuesta más de lo estimado.</td>
+<td>Contratos sin cláusulas de salida; datos en formatos cerrados.</td>
+<td>Plan de salida (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>); coste de salida en la evaluación económica.</td>
+<td>3, 7</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-5-legal-y-cumplimiento-leg">9.5 Legal y cumplimiento (LEG)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-LEG-01</strong></td>
+<td><strong>Clasificación regulatoria errónea.</strong> Un sistema de alto riesgo se trata como de riesgo mínimo o fuera de ámbito.</td>
+<td>Clasificación sin criterio jurídico; cambio de finalidad.</td>
+<td>Clasificación con T07 y revisión jurídica; revisión en R6 y ante cambios (34).</td>
+<td>0, 3, 6</td>
+</tr>
+<tr>
+<td><strong>RT-LEG-02</strong></td>
+<td><strong>Práctica prohibida.</strong> El uso encaja en una práctica prohibida por el Reglamento de IA.</td>
+<td>Desconocimiento; evolución del uso.</td>
+<td>Filtro en G0 y G3; evitar siempre (01 §6.5).</td>
+<td>0, 3</td>
+</tr>
+<tr>
+<td><strong>RT-LEG-03</strong></td>
+<td><strong>Transparencia incumplida.</strong> Las personas no saben que interactúan con una IA o que un contenido es sintético.</td>
+<td>Diseño sin requisitos de transparencia.</td>
+<td>Requisitos del art. 50 del Reglamento de IA en el diseño; revisión de interfaces.</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td><strong>RT-LEG-04</strong></td>
+<td><strong>Decisiones automatizadas sin garantías.</strong> Decisiones con efectos significativos sin intervención humana efectiva ni derecho a impugnar.</td>
+<td>Supervisión nominal; automatización progresiva no revisada.</td>
+<td>Diseño de supervisión humana (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); análisis del art. 22 del RGPD.</td>
+<td>3, 4</td>
+</tr>
+<tr>
+<td><strong>RT-LEG-05</strong></td>
+<td><strong>Evaluaciones de impacto omitidas.</strong> No se realizan o no se actualizan la evaluación de impacto en protección de datos o la de derechos fundamentales.</td>
+<td>Desconocimiento del requisito; plazos.</td>
+<td>Clasificación (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>); evaluaciones como evidencia de G3.</td>
+<td>3, 6</td>
+</tr>
+<tr>
+<td><strong>RT-LEG-06</strong></td>
+<td><strong>Infracción de propiedad intelectual.</strong> Datos de entrenamiento o resultados vulneran derechos de terceros, o la titularidad de los resultados no está clara.</td>
+<td>Datos sin licencia; condiciones del proveedor no revisadas.</td>
+<td>Revisión de licencias; cláusulas de propiedad y de indemnidad (36).</td>
+<td>3, 4</td>
+</tr>
+<tr>
+<td><strong>RT-LEG-07</strong></td>
+<td><strong>Notificación de incidentes fuera de plazo.</strong> No se notifica a tiempo un incidente grave, una brecha de datos o un incidente DORA o NIS2.</td>
+<td>Sin criterios de severidad; sin responsable de notificación.</td>
+<td>Plan de respuesta (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); matriz de notificaciones (37).</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>RT-LEG-08</strong></td>
+<td><strong>Incumplimiento de obligaciones sectoriales o de resiliencia.</strong> Requisitos de supervisores sectoriales, DORA u otras normas no trasladados al sistema.</td>
+<td>Mapeo regulatorio incompleto.</td>
+<td>Mapeo regulatorio (34); declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</td>
+<td>0, 3</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-6-organizativo-org">9.6 Organizativo (ORG)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-ORG-01</strong></td>
+<td><strong>Falta de adopción.</strong> Los usuarios no usan el sistema o lo usan de forma marginal.</td>
+<td>Mala integración en el trabajo; desconfianza; formación insuficiente.</td>
+<td>Plan de adopción (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>); objetivo de adopción en G2 y G5.</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-02</strong></td>
+<td><strong>Dependencia de personas clave.</strong> El conocimiento del sistema está en pocas personas o en el proveedor.</td>
+<td>Documentación escasa; equipos pequeños.</td>
+<td>Documentación y manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>); suplencias; transferencia de conocimiento.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-03</strong></td>
+<td><strong>Efecto no gestionado sobre las personas.</strong> Cambios de rol, carga o empleo sin planificación ni diálogo.</td>
+<td>Visión solo de eficiencia; comunicación tardía.</td>
+<td>Plan de personas (50); consulta a la representación cuando proceda.</td>
+<td>2, 4</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-04</strong></td>
+<td><strong>Supervisión humana ineficaz.</strong> Las personas validan por rutina o sin información suficiente.</td>
+<td>Volumen alto de aprobaciones; sesgo de automatización.</td>
+<td>Diseño de la supervisión con muestreo, tiempos y rotación; medición de la tasa de rechazo.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-05</strong></td>
+<td><strong>Uso no autorizado de IA (<em>shadow AI</em>).</strong> Empleados usan herramientas no aprobadas con datos de la compañía.</td>
+<td>Falta de alternativas aprobadas; política desconocida.</td>
+<td>Política de uso aceptable (31); alternativas corporativas; detección (T21).</td>
+<td>C1, C4</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-06</strong></td>
+<td><strong>Roles sin separación de funciones.</strong> Quien construye verifica, acepta riesgos o decide.</td>
+<td>Equipos pequeños; roles no asignados.</td>
+<td>Registro de roles (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>); incompatibilidades (01 §8.2).</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-07</strong></td>
+<td><strong>Incumplimiento de información y consulta.</strong> La representación de los trabajadores o los trabajadores afectados no reciben, antes del uso, la información o la consulta exigibles sobre un sistema que incide en las condiciones de trabajo o en el empleo.</td>
+<td>Análisis jurídico tardío o ausente; cambios de parámetros, reglas o finalidad no comunicados.</td>
+<td>Proceso de información y consulta (50 §7.2) y ficha informativa (50 §7.3); G5 sin <em>Continuar</em> ni <em>Continuar con condiciones</em> sin evidencia de la información; IND-ADO-12 (41).</td>
+<td>3–5, 6</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-08</strong></td>
+<td><strong>Conflicto laboral.</strong> La introducción de la IA genera consultas, reclamaciones o conflictos colectivos que retrasan, condicionan o bloquean la iniciativa.</td>
+<td>Comunicación tardía o ambigua; efecto sobre el empleo sin diálogo; destinos de la capacidad liberada decididos sin participación.</td>
+<td>Posición sobre IA y trabajo aprobada en C2 (13); evaluación de efecto (50 §3.4); diálogo con la representación y comunicación interna (50 §7 y §10); decisión de la alta dirección en destinos PER-D1 relevantes.</td>
+<td>2–5, 7</td>
+</tr>
+<tr>
+<td><strong>RT-ORG-09</strong></td>
+<td><strong>Deterioro del bienestar.</strong> Intensificación del trabajo, vigilancia excesiva, pérdida de autonomía o carga de supervisión dañan la salud y el compromiso de las personas afectadas.</td>
+<td>Objetivos y cargas no revisados tras la IA; datos de uso empleados para controlar a personas; volúmenes de revisión excesivos.</td>
+<td>Revisión de la evaluación de riesgos laborales, incluidos los psicosociales, y limitación de finalidad (50 §9.2); diseño de la supervisión (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); encuesta de pulso (IND-ADO-15, 41).</td>
+<td>4–6</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-7-reputacional-rep">9.7 Reputacional (REP)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-REP-01</strong></td>
+<td><strong>Resultados discriminatorios.</strong> El sistema trata peor a grupos de personas.</td>
+<td>Sesgo en datos o en diseño; sin pruebas por grupo.</td>
+<td>Pruebas de sesgo antes de G5; monitorización por grupo; supervisión humana.</td>
+<td>3, 5, 6</td>
+</tr>
+<tr>
+<td><strong>RT-REP-02</strong></td>
+<td><strong>Errores visibles para clientes.</strong> Respuestas o decisiones erróneas con trascendencia pública.</td>
+<td>Exposición directa sin salvaguardas.</td>
+<td>Evaluaciones previas; derivación a persona; respuesta rápida a incidentes.</td>
+<td>5, 6</td>
+</tr>
+<tr>
+<td><strong>RT-REP-03</strong></td>
+<td><strong>Uso percibido como inadecuado o intrusivo.</strong> Uso legal pero contrario a las expectativas de clientes, empleados o sociedad.</td>
+<td>Sin análisis ético; comunicación insuficiente.</td>
+<td>Revisión ética en fase 3; transparencia; canal de quejas.</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>RT-REP-04</strong></td>
+<td><strong>Contenido dañino u ofensivo.</strong> La IA generativa produce contenido ofensivo, peligroso o impropio de la marca.</td>
+<td>Filtros insuficientes; manipulación del usuario.</td>
+<td>Filtros de entrada y salida (SEG-03); pruebas adversarias; supervisión de muestras.</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td><strong>RT-REP-05</strong></td>
+<td><strong>Comunicación engañosa sobre la IA.</strong> Se atribuyen a la IA capacidades o resultados que no tiene.</td>
+<td>Presión comercial; valor no validado.</td>
+<td>Revisión de comunicaciones; uso de valor validado (00 §6).</td>
+<td>5, 7</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-8-ia-generativa-y-agentes-gen">9.8 IA generativa y agentes (GEN)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-GEN-01</strong></td>
+<td><strong>Inyección directa de instrucciones y <em>jailbreak</em>.</strong> Un usuario manipula el sistema para saltarse sus restricciones.</td>
+<td>Restricciones basadas solo en instrucciones al modelo.</td>
+<td>SEG-02, SEG-03, SEG-11; límites fuera del modelo.</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td><strong>RT-GEN-02</strong></td>
+<td><strong>Inyección indirecta.</strong> Instrucciones maliciosas en correos, documentos, webs o respuestas de herramientas alteran la tarea.</td>
+<td>El sistema trata como instrucciones contenidos no confiables.</td>
+<td>SEG-02; AG-12; AG-05; pruebas específicas (AG-18).</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td><strong>RT-GEN-03</strong></td>
+<td><strong>Agencia excesiva.</strong> El sistema tiene más herramientas, permisos o autonomía de los necesarios.</td>
+<td>Permisos heredados; nivel de autonomía no justificado.</td>
+<td>AG-02; nivel de autonomía decidido en fase 4 (35 §5); AG-20.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-GEN-04</strong></td>
+<td><strong>Acción no autorizada o no trazable.</strong> Un agente ejecuta una acción que no responde a una intención autorizada, o no puede reconstruirse por qué.</td>
+<td>Sin control de intención; registros incompletos.</td>
+<td>AG-04, AG-05, AG-06, AG-10.</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td><strong>RT-GEN-05</strong></td>
+<td><strong>Fuga de información.</strong> Datos personales, confidenciales o instrucciones del sistema salen por respuestas, recuperación o herramientas.</td>
+<td>Recuperación sin permisos del usuario; secretos en instrucciones.</td>
+<td>SEG-05, SEG-06, SEG-07.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-GEN-06</strong></td>
+<td><strong>Tratamiento inseguro de salidas.</strong> La salida del modelo se ejecuta o se inserta en otros sistemas sin validar.</td>
+<td>Confianza en la salida; integraciones directas.</td>
+<td>SEG-04; AG-11.</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td><strong>RT-GEN-07</strong></td>
+<td><strong>Envenenamiento de memoria o contexto.</strong> Contenido manipulado persiste en la memoria o en la base de conocimiento y altera decisiones futuras.</td>
+<td>Memoria compartida sin control; ingesta sin validación.</td>
+<td>AG-14; SEG-08; RT-DAT-06.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-GEN-08</strong></td>
+<td><strong>Fallos en cascada y consumo sin límite.</strong> Bucles, reintentos o cadenas de agentes amplifican errores o costes.</td>
+<td>Sin límites de iteración ni disyuntores.</td>
+<td>AG-07, AG-16; SEG-10.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-GEN-09</strong></td>
+<td><strong>Explotación de la confianza humana.</strong> El sistema induce a una persona a aprobar una acción inadecuada.</td>
+<td>Aprobaciones sin contexto; exceso de confianza.</td>
+<td>AG-08 con información suficiente; RT-ORG-04.</td>
+<td>4, 6</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-9-seguridad-e-ia-ofensiva-seg">9.9 Seguridad e IA ofensiva (SEG)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-SEG-01</strong></td>
+<td><strong>Suplantación con voz o vídeo sintéticos.</strong> Fraude del CEO u órdenes falsas con apariencia legítima.</td>
+<td>Procesos de pago basados en reconocimiento de voz o imagen.</td>
+<td>SEG-16, SEG-17, SEG-18.</td>
+<td>C4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-SEG-02</strong></td>
+<td><strong>Phishing e ingeniería social generados con IA.</strong> Mensajes personalizados y convincentes a escala.</td>
+<td>Autenticación débil; exposición pública de información de empleados.</td>
+<td>SEG-15, SEG-17.</td>
+<td>C4</td>
+</tr>
+<tr>
+<td><strong>RT-SEG-03</strong></td>
+<td><strong>Explotación acelerada de vulnerabilidades.</strong> El tiempo entre publicación de una vulnerabilidad y su explotación se reduce.</td>
+<td>Parcheo lento; superficie expuesta desconocida.</td>
+<td>SEG-13, SEG-19.</td>
+<td>6, C4</td>
+</tr>
+<tr>
+<td><strong>RT-SEG-04</strong></td>
+<td><strong>Compromiso de identidades no humanas.</strong> Robo o abuso de credenciales de agentes, claves de servicio o <em>tokens</em>.</td>
+<td>Credenciales de larga duración; permisos excesivos.</td>
+<td>AG-01, AG-02, AG-03, AG-20.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-SEG-05</strong></td>
+<td><strong>Envenenamiento de datos o modelos.</strong> Manipulación de datos de entrenamiento, ajuste o evaluación.</td>
+<td>Fuentes abiertas; ingesta sin control.</td>
+<td>SEG-08; linaje (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>4, 5</td>
+</tr>
+<tr>
+<td><strong>RT-SEG-06</strong></td>
+<td><strong>Extracción de modelos y abuso del servicio.</strong> Consultas masivas para replicar el modelo, inferir datos o agotar recursos.</td>
+<td>Interfaces expuestas sin límites.</td>
+<td>SEG-10, SEG-12.</td>
+<td>4, 6</td>
+</tr>
+<tr>
+<td><strong>RT-SEG-07</strong></td>
+<td><strong>Compromiso de la cadena de suministro de IA.</strong> Modelos, bibliotecas, conectores o servidores de herramientas maliciosos o vulnerables.</td>
+<td>Componentes descargados sin verificación.</td>
+<td>SEG-09; AG-13; evaluación de proveedor (36).</td>
+<td>4, 6</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-10-terceros-ter">9.10 Terceros (TER)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Riesgo y descripción</th>
+<th>Causas típicas</th>
+<th>Controles tipo</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RT-TER-01</strong></td>
+<td><strong>Dependencia y bloqueo de proveedor.</strong> Cambiar de proveedor es inviable en plazo o coste razonables.</td>
+<td>Formatos cerrados; funciones propietarias.</td>
+<td>Estrategia de salida; portabilidad (36 §7).</td>
+<td>3, 4</td>
+</tr>
+<tr>
+<td><strong>RT-TER-02</strong></td>
+<td><strong>Uso de los datos por el proveedor.</strong> El proveedor usa datos, instrucciones o resultados para entrenar o para otros fines.</td>
+<td>Condiciones estándar no negociadas.</td>
+<td>Cláusula de no uso para entrenamiento; verificación de configuración (36 §6).</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>RT-TER-03</strong></td>
+<td><strong>Cambio unilateral de modelo o condiciones.</strong> El proveedor cambia versión, comportamiento, precio o retira el modelo.</td>
+<td>Servicios gestionados sin preaviso contractual.</td>
+<td>Preaviso y versiones fijadas; evaluaciones de regresión (RT-TEC-07).</td>
+<td>3, 6</td>
+</tr>
+<tr>
+<td><strong>RT-TER-04</strong></td>
+<td><strong>Subencargados y ubicación no controlados.</strong> Datos tratados por terceros o en ubicaciones no autorizadas.</td>
+<td>Cadena de subcontratación opaca.</td>
+<td>Lista de subencargados; autorización de cambios; ubicación contractual.</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>RT-TER-05</strong></td>
+<td><strong>Fallo o discontinuidad del proveedor.</strong> Indisponibilidad prolongada, insolvencia o salida del mercado.</td>
+<td>Proveedor pequeño o crítico sin alternativa.</td>
+<td>Continuidad y plan de salida; diligencia financiera; nivel N3 (36 §4).</td>
+<td>3, 6</td>
+</tr>
+<tr>
+<td><strong>RT-TER-06</strong></td>
+<td><strong>IA embebida no identificada.</strong> Software ya contratado incorpora funciones de IA sin evaluación.</td>
+<td>Actualizaciones del proveedor; activación por defecto.</td>
+<td>Cuestionario de IA embebida; revisión de actualizaciones (36 §8).</td>
+<td>C1, 6</td>
+</tr>
+<tr>
+<td><strong>RT-TER-07</strong></td>
+<td><strong>Concentración en proveedores comunes.</strong> Muchos sistemas dependen del mismo proveedor de modelos o de nube.</td>
+<td>Estandarización sin análisis de concentración.</td>
+<td>Análisis de concentración (sección 10); límites en el apetito.</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="riesgo-de-cartera"><span class="antetitulo">10</span>Riesgo de cartera</h2>
+<p>Los riesgos de las iniciativas no se suman: interactúan. El comité de IA <strong>debe</strong> revisar la cartera, al menos trimestralmente, con tres análisis.</p>
+<h3 id="10-1-concentracion">10.1 Concentración</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Qué se mide</th>
+<th>Señal de alerta orientativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proveedor de modelos</strong></td>
+<td>Sistemas en producción y valor esperado que dependen de un mismo proveedor o familia de modelos.</td>
+<td>Más de la mitad del valor validado depende de uno solo sin plan de salida probado.</td>
+</tr>
+<tr>
+<td><strong>Plataforma y nube</strong></td>
+<td>Sistemas sobre la misma plataforma de ejecución o de agentes.</td>
+<td>Función crítica sin alternativa de ejecución.</td>
+</tr>
+<tr>
+<td><strong>Función crítica</strong></td>
+<td>Funciones críticas o importantes soportadas por IA.</td>
+<td>Más de una función crítica sin proceso alternativo operativo.</td>
+</tr>
+<tr>
+<td><strong>Datos</strong></td>
+<td>Sistemas que dependen de la misma fuente de datos o base de conocimiento.</td>
+<td>Fuente sin propietario o con calidad no medida.</td>
+</tr>
+<tr>
+<td><strong>Personas</strong></td>
+<td>Sistemas que dependen de las mismas personas clave.</td>
+<td>Una persona es responsable técnico de varios sistemas Enterprise.</td>
+</tr>
+<tr>
+<td><strong>Esfera y ambición</strong></td>
+<td>Distribución de riesgo residual Alto por esfera y nivel de ambición.</td>
+<td>Riesgo concentrado en esferas de cliente o decisión sin supervisión reforzada.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los umbrales se fijan en el apetito de riesgo (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>); los de esta tabla son orientativos.</p>
+<h3 id="10-2-correlacion">10.2 Correlación</h3>
+<p>Dos riesgos están correlacionados cuando una misma causa los materializa a la vez. Causas comunes típicas: el mismo modelo base (un cambio de versión o una vulnerabilidad afecta a todos los sistemas que lo usan), la misma técnica de ataque (una inyección indirecta que funciona en un agente suele funcionar en otros con el mismo diseño), el mismo cambio regulatorio o la misma interpretación jurídica, y el mismo proveedor o subencargado.</p>
+<p>Para cada causa común, la oficina de IA <strong>debería</strong> construir un <strong>escenario de cartera</strong> y valorarlo con la matriz de la sección 4, sumando los impactos económicos de los sistemas afectados y tomando el peor impacto en los demás ejes. Escenarios mínimos recomendados:</p>
+<ol>
+<li>Indisponibilidad durante varios días del principal proveedor de modelos.</li>
+<li>Cambio de comportamiento de un modelo base usado por varios sistemas.</li>
+<li>Vulnerabilidad explotada en un componente común de agentes (conector, servidor de herramientas, biblioteca).</li>
+<li>Reclasificación regulatoria de un tipo de uso presente en varias iniciativas.</li>
+<li>Brecha de datos en una base de conocimiento compartida.</li>
+</ol>
+<h3 id="10-3-dependencia-de-proveedores">10.3 Dependencia de proveedores</h3>
+<p>La dependencia se evalúa con el nivel de exigencia N1–N3 del <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a> y con dos preguntas: cuánto tiempo y coste supone sustituir al proveedor, y qué funciones se detienen mientras tanto. Los riesgos de cartera se registran en T06 con ámbito &quot;Cartera&quot;, responsable en la oficina de IA y aceptación por el comité de IA o, si son Críticos, por el consejo.</p>
+<hr />
+<h2 id="apetito-de-riesgo-e-indicadores-de-riesgo-clave"><span class="antetitulo">11</span>Apetito de riesgo e indicadores de riesgo clave</h2>
+<h3 id="11-1-relacion-con-el-apetito">11.1 Relación con el apetito</h3>
+<p>El apetito de riesgo se aprueba en C2 y se desarrolla en el <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>. Esta metodología le exige, como mínimo:</p>
+<ul>
+<li>Una declaración por categoría de riesgo (por ejemplo, tolerancia nula a prácticas prohibidas y a discriminación no tratada).</li>
+<li>El umbral de materialidad económica M de la sección 4.2.</li>
+<li>Límites de cartera: número máximo de riesgos residuales Altos aceptados, ningún Crítico sin aprobación del consejo, límites de concentración.</li>
+<li>Umbrales de los indicadores de riesgo clave.</li>
+</ul>
+<h3 id="11-2-indicadores-de-riesgo-clave">11.2 Indicadores de riesgo clave</h3>
+<p>Los umbrales son orientativos y se aprueban en C2. Todos se calculan con los datos de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T06, T08 y T09.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Definición</th>
+<th>Umbral orientativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Residuales Críticos</td>
+<td>Riesgos residuales Críticos vigentes, con y sin aprobación del consejo.</td>
+<td>0 sin aprobación</td>
+</tr>
+<tr>
+<td>Residuales Altos</td>
+<td>Número y evolución de riesgos residuales Altos aceptados.</td>
+<td>Sin crecimiento dos trimestres seguidos</td>
+</tr>
+<tr>
+<td>Aceptaciones caducadas</td>
+<td>Aceptaciones con vigencia vencida sin revisar.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Controles no probados</td>
+<td>Porcentaje de controles de riesgos Alto o Crítico sin prueba de eficacia vigente.</td>
+<td>Menos del 10 %</td>
+</tr>
+<tr>
+<td>Acciones vencidas</td>
+<td>Acciones de tratamiento de riesgos Alto o Crítico fuera de plazo.</td>
+<td>0 con más de 30 días</td>
+</tr>
+<tr>
+<td>Riesgos materializados</td>
+<td>Incidentes vinculados a riesgos registrados frente a incidentes sin riesgo previo identificado.</td>
+<td>Tendencia a la baja de los no identificados</td>
+</tr>
+<tr>
+<td>Deriva</td>
+<td>Sistemas con métricas de deriva o rendimiento fuera de umbral.</td>
+<td>0 sin acción abierta</td>
+</tr>
+<tr>
+<td>Éxito de inyección</td>
+<td>Porcentaje de pruebas adversarias de inyección con éxito en la última campaña.</td>
+<td>Tendencia a la baja; 0 en acciones sensibles</td>
+</tr>
+<tr>
+<td>Agentes con permisos excesivos</td>
+<td>Identidades de agentes con permisos no justificados en la última revisión.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Concentración de proveedor</td>
+<td>Proporción del valor validado dependiente del principal proveedor de modelos.</td>
+<td>Según límite de C2</td>
+</tr>
+<tr>
+<td>Clasificación vencida</td>
+<td>Sistemas cuya clasificación regulatoria no se ha revisado en el plazo.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Uso no autorizado</td>
+<td>Casos de <em>shadow AI</em> detectados y no regularizados.</td>
+<td>Tendencia a la baja</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="informacion-de-riesgos"><span class="antetitulo">12</span>Información de riesgos</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Destinatario</th>
+<th>Frecuencia</th>
+<th>Contenido mínimo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Órgano que decide el <em>gate</em></strong></td>
+<td>En cada <em>gate</em></td>
+<td>Perfil inherente y residual, riesgos Alto y Crítico con controles y eficacia, aceptaciones requeridas, cambios desde el <em>gate</em> anterior.</td>
+</tr>
+<tr>
+<td><strong>Comité de IA</strong></td>
+<td>Mensual</td>
+<td>Mapa de calor residual de la cartera, riesgos nuevos y escalados, aceptaciones pendientes y caducadas, indicadores fuera de umbral, riesgos materializados.</td>
+</tr>
+<tr>
+<td><strong>Consejo o comisión delegada</strong></td>
+<td>Trimestral</td>
+<td>Residuales Críticos y Altos por esfera, concentración y escenarios de cartera, cumplimiento del apetito, incidentes significativos, exposición a IA ofensiva (35), decisiones solicitadas.</td>
+</tr>
+<tr>
+<td><strong>C5 · Revisión anual</strong></td>
+<td>Anual</td>
+<td>Eficacia del sistema de gestión de riesgos, recalibración de escalas y catálogo, lecciones aprendidas.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El informe al consejo usa lenguaje de negocio: qué puede pasar, a quién afecta, qué se hace y qué decisión se pide. No debería presentar listados técnicos de riesgos sin priorizar.</p>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">13</span>Herramientas y plantillas asociadas</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre</th>
+<th>Uso en este documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
+<td>Matriz y registro de riesgos</td>
+<td>Registro con los campos de la sección 8, mapa de calor inherente y residual. Fases 3, 5 y 6.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></strong></td>
+<td>Plan de mitigación y contingencia</td>
+<td>Acciones de tratamiento, residual objetivo, contingencias y disparadores (secciones 5–7). Fase 3.</td>
+</tr>
+<tr>
+<td><strong>T06</strong></td>
+<td>Matriz y registro de riesgos</td>
+<td>Cálculo de niveles, eficacia de controles, aceptaciones, alertas de vencimiento, indicadores y vista de cartera. Módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+</tr>
+<tr>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T02 · T08 · T09 · <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td>Registro de iniciativas, inventario, incidentes, proveedores y panel del consejo</td>
+<td>Fuentes y destinos de datos de riesgo.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">14</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Metodología fundacional</strong></td>
+<td>Sección 10 (riesgos) y reglas de <em>gate</em> que este documento desarrolla.</td>
+</tr>
+<tr>
+<td><strong>13 · Tesis de IA, ambición y apetito de riesgo</strong></td>
+<td>Apetito, tolerancias, umbral de materialidad y umbrales de indicadores.</td>
+</tr>
+<tr>
+<td><strong>14 · Gestión de cartera</strong></td>
+<td>Uso del riesgo de cartera en la priorización y la retirada.</td>
+</tr>
+<tr>
+<td><strong>21 · Criterios de <em>gate</em> y auditoría</strong> · <strong>22 · Listas de verificación</strong></td>
+<td>Criterios de G3, G4, G5 y R6 sobre el registro de riesgos.</td>
+</tr>
+<tr>
+<td><strong>34 · Mapeo regulatorio</strong></td>
+<td>Obligaciones que originan riesgos de la categoría LEG.</td>
+</tr>
+<tr>
+<td><strong>35 · Seguridad de IA y agentes</strong></td>
+<td>Controles SEG y AG citados en el catálogo.</td>
+</tr>
+<tr>
+<td><strong>36 · Terceros y proveedores de IA</strong></td>
+<td>Niveles N1–N3 y controles de los riesgos TER.</td>
+</tr>
+<tr>
+<td><strong>37 · No conformidades e incidentes</strong></td>
+<td>Tratamiento de riesgos materializados y de controles ineficaces.</td>
+</tr>
+<tr>
+<td><strong>42 · Costes de IA</strong></td>
+<td>Categorías de coste para los riesgos ECO.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">15</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>Primera versión. Fija las escalas comunes de probabilidad e impacto en cinco ejes, la matriz 5 × 5, el riesgo residual objetivo y verificado, la eficacia de controles, la aceptación por niveles, los campos del registro, el catálogo de 70 riesgos tipo en diez categorías, el análisis de riesgo de cartera y los indicadores de riesgo clave. Incorporados al catálogo los riesgos organizativos RT-ORG-07 (información y consulta), RT-ORG-08 (conflicto laboral) y RT-ORG-09 (bienestar), propuestos en el <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve a las empresas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":true},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

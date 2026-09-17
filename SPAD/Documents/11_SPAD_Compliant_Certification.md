@@ -1,27 +1,31 @@
-# 11 — SEVEN-G Certification
-## SPAD-Compliant™ Internal Certification
+# 11 — SPAD Self-Assessment of Conformity
+## Internal self-assessment of conformity with SPAD (not a certification)
+
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
+
+> **Note on the change of name.** This document was previously titled "SEVEN-G Certification — SPAD-Compliant™ Internal Certification". It has been renamed "SPAD self-assessment of conformity" because there is no certification body and no certification process issued by SEACHAD or by any third party. A self-assessment is carried out by the organisation itself, about its own work: it is not a certification, it is not issued or endorsed by SEACHAD or any third party, and it does not attest compliance with any law or standard. The file name is kept unchanged so that existing links keep working.
 
 ---
 
-## 11.1 Purpose of the Certification
+## 11.1 Purpose of the Self-Assessment
 
-The **SPAD-Compliant™ certification** formally validates that a system, project, agent,
-or team has been developed **in full compliance with the SPAD methodology**
-within the SEVEN-G framework.
+The **SPAD self-assessment of conformity** is a structured review, carried out by the
+organisation itself, to check whether a system, project, agent, or team has been developed
+**following the SPAD methodology**.
 
-This certification exists to:
-- guarantee methodological rigor,
-- reduce systemic and AI-related risk,
+This self-assessment exists to:
+- check methodological rigor,
+- help reduce systemic and AI-related risk,
 - provide auditable evidence of good engineering practice,
 - standardize quality across teams and projects.
 
-SPAD-Compliant™ is an **internal Seachad certification**, not a marketing label.
+The SPAD self-assessment is an **internal review tool**, not a certification and not a marketing label.
 
 ---
 
-## 11.2 What SPAD-Compliant™ means
+## 11.2 What a positive self-assessment means
 
-A SPAD-Compliant™ system guarantees that:
+A positive self-assessment records that the organisation has checked that:
 
 1. All architectural and logical decisions were made **before coding**.
 2. Each SPAD phase produced an explicit, auditable artifact.
@@ -32,9 +36,9 @@ A SPAD-Compliant™ system guarantees that:
 
 ---
 
-## 11.3 Scope of certification
+## 11.3 Scope of the self-assessment
 
-SPAD-Compliant™ may be granted to:
+A SPAD self-assessment may cover:
 
 - A software system
 - An AI or agent-based system
@@ -42,13 +46,13 @@ SPAD-Compliant™ may be granted to:
 - An internal team or capability
 - A reusable component or framework
 
-Each certification is **scope-specific** and time-bound.
+Each self-assessment is **scope-specific** and time-bound.
 
 ---
 
-## 11.4 Certification prerequisites
+## 11.4 Self-assessment prerequisites
 
-To apply for SPAD-Compliant™ certification, the following artifacts are mandatory:
+To carry out a SPAD self-assessment of conformity, the following artifacts are mandatory:
 
 1. Phase 0 — Context definition
 2. Phase 1 — PLAN document
@@ -58,17 +62,17 @@ To apply for SPAD-Compliant™ certification, the following artifacts are mandat
 6. Phase 5 — AUDIT_CODE report
 7. Phase 6 — FIX_PRIMERS (if applicable)
 
-Missing artifacts result in **automatic rejection**.
+Missing artifacts result in an **automatically negative self-assessment**.
 
 ---
 
-## 11.5 Certification process
+## 11.5 Self-assessment process
 
-### Step 1 — Submission
-The project owner submits all required SPAD artifacts.
+### Step 1 — Evidence collection
+The project owner gathers all required SPAD artifacts.
 
 ### Step 2 — Independent Review
-A certified SPAD Auditor reviews:
+A reviewer appointed by the organisation, independent from the builders, reviews:
 - completeness
 - consistency
 - phase integrity
@@ -84,14 +88,15 @@ Possible outcomes:
 Only FIX_PRIMERS may be used for remediation.
 No architectural redesign is allowed at this stage.
 
-### Step 5 — Certification Grant
-If approved, the project is declared **SPAD-Compliant™**.
+### Step 5 — Self-Assessment Record
+If approved, the organisation records the project as **conforming with SPAD (self-assessed)**.
+This record is not a certification.
 
 ---
 
 ## 11.6 Validity and renewal
 
-- Certification validity: **12 months**
+- Self-assessment validity: **12 months**
 - Renewal required if:
   - major architectural changes occur,
   - scope changes significantly,
@@ -101,42 +106,44 @@ If approved, the project is declared **SPAD-Compliant™**.
 
 ## 11.7 Governance rules
 
-- Certification decisions are final.
+- Self-assessment decisions are final within the organisation.
 - Auditors must be independent from builders.
 - Evidence must be retained for audit purposes.
-- Certification misuse is considered a governance breach.
+- Presenting a self-assessment as a certification, or otherwise misusing it, is considered a governance breach.
 
 ---
 
-## 11.8 Certification outcomes
+## 11.8 Self-assessment outcomes
 
-SPAD-Compliant™ certification provides:
+A SPAD self-assessment of conformity is intended to provide:
 
-- Formal assurance of engineering quality
-- Reduced operational and AI risk
-- Easier external audits
+- Documented internal evidence of engineering quality
+- Help in reducing operational and AI risk
+- Better-prepared evidence for external audits
 - Strong internal accountability
 - A shared definition of “done”
+
+It does not replace any external audit, certification or regulatory assessment.
 
 ---
 
 ## 11.9 Allowed usage
 
-The SPAD-Compliant™ label may be used:
+The result of a SPAD self-assessment may be referenced:
 - in internal documentation,
 - in architectural reviews,
 - in controlled client communications (approval required).
 
-It may **not** be used as a public marketing claim without authorization.
+It must always be described as a self-assessment, never as a certification, and it may **not** be used as a public marketing claim without authorization.
 
 ---
 
 ## 11.10 Status
 
-**Certification name:** SPAD-Compliant™  
-**Framework:** SEVEN-G  
+**Name:** SPAD self-assessment of conformity  
+**Methodology:** SPAD (independent methodology)  
 **Owner:** Seachad (FGV)  
-**Type:** Internal certification  
+**Type:** Internal self-assessment (not a certification)  
 **Status:** Active
 
 ---

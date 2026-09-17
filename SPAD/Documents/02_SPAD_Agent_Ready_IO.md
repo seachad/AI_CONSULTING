@@ -1,4 +1,6 @@
-# 02 — SEVEN-G SPAD Agent-Ready Specification (Execution Order: SECOND)
+# 02 — SPAD Agent-Ready Specification (Execution Order: SECOND)
+
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
 
 This document defines machine-readable I/O contracts for all SPAD phases.
 
@@ -637,5 +639,5 @@ This document defines machine-readable I/O contracts for all SPAD phases.
 
 **Status:** Official SPAD I/O Specification  
 **Owner:** Seachad (FGV)  
-**Framework:** SEVEN-G  
+**Relationship:** Independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI)  
 **Generated with assistance from GitHub Copilot**

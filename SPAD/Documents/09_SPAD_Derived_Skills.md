@@ -1,5 +1,7 @@
-# 05 — SEVEN-G Derived Skills
+# 09 — SPAD Derived Skills
 ## Built on top of SPAD
+
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
 
 This document defines the official **derived skills** that depend on SPAD.
 SPAD is mandatory as the foundational skill for all of them.
@@ -23,7 +25,7 @@ Design autonomous or semi-autonomous agents in a controlled and auditable way.
 
 **Why SPAD is required**
 Agent behavior without prior architectural planning leads to unsafe autonomy.
-SPAD guarantees reasoning separation and auditability.
+SPAD is designed to enforce reasoning separation and auditability.
 
 ---
 

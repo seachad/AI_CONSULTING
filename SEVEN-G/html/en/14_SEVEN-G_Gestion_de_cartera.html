@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio management</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+@page { @bottom-left { content: "SEVEN-G · Portfolio management"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SEVEN-G</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Go to document 00: What SEVEN-G is and how it helps companies" aria-label="Go to document 00: What SEVEN-G is and how it helps companies"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/14_SEVEN-G_Gestion_de_cartera.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/14_SEVEN-G_Gestion_de_cartera.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Document 14 · 16-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 14 &#183; Portfolio management</p>
+    <h1>Portfolio management</h1>
+    <p class="entradilla">How the company&#39;s AI initiatives are selected, prioritised, balanced, reviewed and retired</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
+    <div class="cifras"><div class="cifra"><b>3</b><span>ambition lanes with their own budget</span></div><div class="cifra"><b>6</b><span>prioritisation criteria</span></div><div class="cifra"><b>10</b><span>steps in the retirement procedure</span></div><div class="cifra"><b>6</b><span>programme traffic-light axes</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/14_SEVEN-G_Gestion_de_cartera.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#stage-c3-portfolio"><span>02</span>Stage C3 · Portfolio</a></li><li><a href="#entry-of-initiatives-into-the-portfolio"><span>03</span>Entry of initiatives into the portfolio</a></li><li><a href="#prioritisation-criteria"><span>04</span>Prioritisation criteria</a></li><li><a href="#balance-of-ambition-and-risk"><span>05</span>Balance of ambition and risk</a></li><li><a href="#capacity-and-staged-budget"><span>06</span>Capacity and staged budget</a></li><li><a href="#monthly-and-quarterly-review"><span>07</span>Monthly and quarterly review</a></li><li><a href="#stalled-initiatives-expired-conditions-and-initiatives-on-hold"><span>08</span>Stalled initiatives, expired conditions and initiatives on hold</a></li><li><a href="#risk-concentration-and-supplier-dependency"><span>09</span>Risk concentration and supplier dependency</a></li><li><a href="#retirement-procedure"><span>10</span>Retirement procedure</a></li><li><a href="#regularisation-of-initiatives-pre-dating-the-framework"><span>11</span>Regularisation of initiatives pre-dating the framework</a></li><li><a href="#programme-traffic-light"><span>12</span>Programme traffic light</a></li><li><a href="#associated-tools-and-templates"><span>13</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>14</span>Related documents</a></li><li><a href="#version-control"><span>15</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
+<p>This document develops stage <strong>C3 · Portfolio</strong> of the corporate cycle (01 §5.1) and ongoing portfolio management in <strong>C4 · Oversight</strong>. It defines how initiatives enter, how they are prioritised and funded, how the balance of ambition and risk is maintained, how the portfolio is reviewed, how stalled initiatives are handled, how an initiative is retired and how initiatives that pre-date the adoption of the framework are regularised.</p>
+<p>It applies to all initiatives in the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>): in-house initiatives, third-party AI embedded in processes and corporate use of general-purpose AI that meets any Enterprise criterion (01 §1.2). The main tools are <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register</strong>, <strong>T16 · Portfolio sphere map</strong> and <strong>T22 · Retirement manager</strong>.</p>
+<p>This document does not constitute legal advice.</p>
+<h3 id="1-1-portfolio-management-principles">1.1 Portfolio management principles</h3>
+<ol>
+<li><strong>The portfolio executes the thesis.</strong> What is funded is what fits the AI thesis, the ambition per sphere and the risk appetite approved in C2.</li>
+<li><strong>Each ambition competes with its peers.</strong> A transformation bet does not compete for the same budget or on the same criteria as an optimisation.</li>
+<li><strong>Funding is staged.</strong> Money is released <em>gate</em> by <em>gate</em>; no one receives the full budget on entry.</li>
+<li><strong>Finish before starting.</strong> Capacity is allocated first to advanced initiatives that meet their criteria.</li>
+<li><strong>Risk adds up.</strong> The portfolio has concentration limits, in addition to the limits of each initiative (principle 5 in 01 §3).</li>
+<li><strong>Retiring is managing.</strong> A planned retirement frees up resources and reduces risk; it is not a failure of the team.</li>
+</ol>
+<hr />
+<h2 id="stage-c3-portfolio"><span class="antetitulo">02</span>Stage C3 · Portfolio</h2>
+<h3 id="2-1-inputs-outputs-and-owners">2.1 Inputs, outputs and owners</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inputs from C1</strong></td>
+<td>Inventory, maturity (document 11), transformation index (12), current validated value and cost.</td>
+</tr>
+<tr>
+<td><strong>Inputs from C2</strong></td>
+<td>AI thesis, ambition per sphere, risk appetite, framework budget, return horizon, Enterprise investment threshold, reference time limits per phase and concentration limits (document 13).</td>
+</tr>
+<tr>
+<td><strong>Mandatory outputs</strong> (01 §5.1)</td>
+<td>Prioritised portfolio with ambition level, sphere, intensity, budget and owners; retirement criteria; available capacity.</td>
+</tr>
+<tr>
+<td><strong>Outputs of this document</strong></td>
+<td>Budget envelopes per lane; prioritisation table; capacity plan; concentration limits applied; regularisation plan; review calendar.</td>
+</tr>
+<tr>
+<td><strong>Owner</strong></td>
+<td>AI Committee, with preparation by the AI Office.</td>
+</tr>
+<tr>
+<td><strong>Approves</strong></td>
+<td>AI Committee. The board approves Transform initiatives and any transfer out of their envelope.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-2-calendar">2.2 Calendar</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Moment</th>
+<th>What is done</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Annual (C3)</strong></td>
+<td>Building or renewing the portfolio after C2 or C5: envelopes, full prioritisation, capacity, limits.</td>
+<td>AI Committee; board for Transform</td>
+</tr>
+<tr>
+<td><strong>Quarterly</strong></td>
+<td>Review of balance, concentration, programmes and retirements; report to the board in C4.</td>
+<td>AI Committee</td>
+</tr>
+<tr>
+<td><strong>Monthly</strong></td>
+<td>Monitoring of the funnel, stalled initiatives, expired conditions, holds and new entries.</td>
+<td>AI Committee</td>
+</tr>
+<tr>
+<td><strong>Continuous</strong></td>
+<td>Registration of initiatives, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> alerts, preparation of information.</td>
+<td>AI Office</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-3-responsibilities">2.3 Responsibilities</h3>
+<p><strong>A</strong> accountable · <strong>R</strong> responsible · <strong>C</strong> consulted · <strong>I</strong> informed.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Board</th>
+<th>AI Committee</th>
+<th>AI Office</th>
+<th>Sponsor</th>
+<th>AI Risk Owner</th>
+<th>Management control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Envelopes per lane</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Prioritisation and allocation</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Approval of Transform</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Monthly and quarterly review</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Concentration limits</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Retirements</td>
+<td>I</td>
+<td>A (Enterprise)</td>
+<td>R</td>
+<td>A (Lite)</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Regularisation</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="entry-of-initiatives-into-the-portfolio"><span class="antetitulo">03</span>Entry of initiatives into the portfolio</h2>
+<h3 id="3-1-channels">3.1 Channels</h3>
+<p>Initiatives may come from business areas, from challenges set by the board or management, from the AI Office or from supplier proposals. <strong>Every initiative needs a business sponsor</strong>: a supplier proposal without an internal sponsor does not enter.</p>
+<h3 id="3-2-minimum-entry-record">3.2 Minimum entry record</h3>
+<p>To move from <em>Registered</em> to phase 0 (03 §3.2), the initiative provides:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Understandable description</td>
+<td>What it is and what it is used for, without jargon (rule 10; <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+</tr>
+<tr>
+<td>AI Sponsor and AI Product Owner</td>
+<td>Appointed and without incompatibilities (01 §8.2).</td>
+</tr>
+<tr>
+<td>Proposed sphere and ambition</td>
+<td>Using the five questions in 00 §5.2 (T05).</td>
+</tr>
+<tr>
+<td>Order of magnitude of value</td>
+<td>With formula, marked as <em>estimated</em> (rule 4).</td>
+</tr>
+<tr>
+<td>Investment up to G3</td>
+<td>Amount of the discovery and feasibility tranche.</td>
+</tr>
+<tr>
+<td>Fit with the thesis</td>
+<td>Thesis objective to which it contributes.</td>
+</tr>
+<tr>
+<td>Foreseeable Enterprise criteria</td>
+<td>Intensity questionnaire (T04).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-3-preliminary-filters">3.3 Preliminary filters</h3>
+<p>The following do not enter the portfolio, and are recorded with the reason: <strong>practices prohibited</strong> by regulation; initiatives that <strong>duplicate</strong> an existing one (they are merged); those that <strong>do not require AI</strong> (they are referred to the alternative); those that fall <strong>outside the approved risk appetite</strong>; and <strong>Transform initiatives without senior management sponsorship</strong>.</p>
+<h3 id="3-4-entry-windows">3.4 Entry windows</h3>
+<ul>
+<li><strong>Optimise and Augment with Lite intensity:</strong> continuous entry; the AI Committee is made aware of them at its monthly meeting.</li>
+<li><strong>Enterprise and Transform:</strong> entry at the committee's monthly review, with full prioritisation (section 4). Transform initiatives are escalated to the board at its next quarterly session.</li>
+</ul>
+<hr />
+<h2 id="prioritisation-criteria"><span class="antetitulo">04</span>Prioritisation criteria</h2>
+<h3 id="4-1-four-step-method">4.1 Four-step method</h3>
+<ol>
+<li><strong>Eliminatory filters</strong> (section 3.3 and Critical residual risk without board approval).</li>
+<li><strong>Assignment to the confirmed ambition lane</strong>: Optimise, Augment or Transform.</li>
+<li><strong>Scoring</strong> with six criteria and weights specific to each lane (sections 4.2 and 4.3).</li>
+<li><strong>Allocation of budget and capacity</strong> in order of score within each lane, with a check on balance and concentration (sections 5 and 6).</li>
+</ol>
+<p>The committee may alter the resulting order with a written justification recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Changes affecting the Transform lane are reported to the board.</p>
+<h3 id="4-2-criteria-and-weights">4.2 Criteria and weights</h3>
+<p>The <strong>additional net value per euro</strong> (expected additional annual net value ÷ additional investment required; rule 9) is the main criterion in Optimise and Augment. In Transform it is always calculated and shown, but it is not decisive on its own (01 §7.6).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>What it assesses</th>
+<th>Optimise</th>
+<th>Augment</th>
+<th>Transform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Additional net value per euro</strong></td>
+<td>Expected return on the additional investment within the C2 horizon.</td>
+<td>40</td>
+<td>30</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Fit with the thesis</strong></td>
+<td>Contribution to an explicit objective of the AI thesis.</td>
+<td>15</td>
+<td>15</td>
+<td>25</td>
+</tr>
+<tr>
+<td><strong>Contribution to ambition per sphere</strong></td>
+<td>Whether it fills a gap between the ambition set per sphere and the actual portfolio.</td>
+<td>5</td>
+<td>10</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>Expected residual risk level (document 33).</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Data dependency</strong></td>
+<td>Availability, quality and legal basis of the data required.</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Capacity</strong></td>
+<td>Team, supplier and adoption capacity of the receiving area.</td>
+<td>10</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>100</strong></td>
+<td><strong>100</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Initiative score (0–100) = Σ (weight × criterion score) ÷ 5.</strong></p>
+<h3 id="4-3-scoring-scales">4.3 Scoring scales</h3>
+<p>All scales run from 1 to 5. A criterion <strong>with no data scores 0 and is shown as &quot;no data&quot;</strong> (rule 8); an initiative with no data on additional net value per euro cannot pass G2.</p>
+<p><strong>Additional net value per euro.</strong> The <strong>multiple over the horizon</strong> is used = additional net value per euro × C2 return horizon in years. A multiple of 1 means that the additional investment is recovered within the horizon, undiscounted. It is a <strong>prioritisation</strong> criterion, not a feasibility criterion: economic feasibility at G3 is decided solely by NPV ≥ 0 with the horizon and rate set in C2 (document 40, section 8.3; 01 §7.6).</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Multiple over the horizon</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 or more</td>
+<td>5</td>
+</tr>
+<tr>
+<td>From 2 to less than 3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>From 1.5 to less than 2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>From 1 to less than 1.5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Less than 1</td>
+<td>1. Does not by itself prevent passing G3: NPV ≥ 0 applies at G3 (document 40).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Initial thresholds, to be calibrated. If after G2 the amount is still only <em>estimated</em>, with no measured baseline, the score for this criterion cannot exceed 3.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Fit with the thesis</th>
+<th>Contribution to ambition</th>
+<th>Expected residual risk</th>
+<th>Data dependency</th>
+<th>Capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>5</strong></td>
+<td>Explicit thesis objective in a priority sphere.</td>
+<td>Fills a gap: sphere with a set ambition and no initiatives at that level.</td>
+<td>Low</td>
+<td>Data available, quality verified and legal basis confirmed.</td>
+<td>Team and supplier assigned; receiving area with adoption capacity.</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Explicit objective in a non-priority sphere.</td>
+<td>Reinforces a level below its target.</td>
+<td>—</td>
+<td>Available with minor adjustments.</td>
+<td>Team assigned; supplier being selected.</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Permitted sphere without an explicit objective.</td>
+<td>Neutral.</td>
+<td>Medium</td>
+<td>Require planned preparation within phase 3.</td>
+<td>Capacity available in the following quarter.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Indirect fit.</td>
+<td>Adds to a level already at its target.</td>
+<td>—</td>
+<td>Not available, but obtainable with identified data work.</td>
+<td>Capacity available in two quarters or dependent on hiring.</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>No fit; requires justification from the sponsor.</td>
+<td>Increases concentration in a level already above its target.</td>
+<td>High</td>
+<td>Non-existent or with a doubtful legal basis.</td>
+<td>No capacity identified within 12 months.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Critical residual risk is not scored: it is an eliminatory filter unless there is exceptional board approval within the risk appetite (document 33).</p>
+<h3 id="4-4-rules-to-prevent-return-from-blocking-transformation">4.4 Rules to prevent return from blocking transformation</h3>
+<ol>
+<li><strong>Separate envelopes.</strong> C2 sets the proportion of the framework budget for each lane. Initiatives compete only within their lane.</li>
+<li><strong>Own criteria.</strong> Transform initiatives are decided using the criteria in 01 §7.6: learning milestones, investment cap per stage, stop criteria and documented option value; not with a threshold of additional net value per euro.</li>
+<li><strong>No silent transfers.</strong> The Transform envelope is not reallocated to other lanes without board approval. The unused envelope is reported to the board, because it is a signal of the transformation index (signal 1).</li>
+<li><strong>Stopping on pre-agreed criteria.</strong> A Transform bet is stopped only on its stop criteria or on grounds of risk, not by being compared mid-stage with optimisations offering immediate return.</li>
+<li><strong>Market evidence at the right time.</strong> Transform is not required to have validated value before G5; at G5 it is required to provide market or customer evidence.</li>
+</ol>
+<p>And, conversely, to prevent &quot;Transform&quot; from becoming a refuge:</p>
+<ol start="6">
+<li><strong>Verified classification.</strong> An initiative presented as Transform that answers no to questions 1 to 4 in 00 §5.2 is reclassified and changes lane.</li>
+<li><strong>No milestones, no bet.</strong> A Transform proposal without learning milestones, a cap per stage and stop criteria does not enter prioritisation.</li>
+</ol>
+<h3 id="4-5-illustrative-example">4.5 Illustrative example</h3>
+<p><em>Illustrative data. Optimise lane; C2 return horizon: 2 years.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Initiative</th>
+<th>Additional net value per euro</th>
+<th>Multiple</th>
+<th>Net</th>
+<th>Thesis</th>
+<th>Ambition</th>
+<th>Risk</th>
+<th>Data</th>
+<th>Capacity</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IA-2026-014 Complaint classification</td>
+<td>1.6</td>
+<td>3.2</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td><strong>90</strong></td>
+</tr>
+<tr>
+<td>IA-2026-021 Invoice reconciliation</td>
+<td>0.9</td>
+<td>1.8</td>
+<td>3</td>
+<td>5</td>
+<td>3</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td><strong>78</strong></td>
+</tr>
+<tr>
+<td>IA-2026-009 Network incident forecasting</td>
+<td>1.2</td>
+<td>2.4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td><strong>63</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Calculation for IA-2026-014: (40 × 5 + 15 × 4 + 5 × 3 + 15 × 5 + 15 × 4 + 10 × 4) ÷ 5 = 450 ÷ 5 = <strong>90</strong>. IA-2026-009 has a better net value than IA-2026-021, but ranks behind it on risk, data and capacity: the score sets the order, and negative net value or no data is detected separately.</p>
+<hr />
+<h2 id="balance-of-ambition-and-risk"><span class="antetitulo">05</span>Balance of ambition and risk</h2>
+<h3 id="5-1-ambition-balance">5.1 Ambition balance</h3>
+<p>C2 sets the <strong>target distribution</strong> of investment across lanes and the <strong>ambition per sphere</strong>. SEVEN-G does not impose proportions: they depend on the thesis. The portfolio is compared with the target at each quarterly review using the spheres × ambition levels map (T16), with investment, recurring cost and value per cell.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Deviation from the C2 target</th>
+<th>Reading</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Up to 10 percentage points per lane</td>
+<td>Within tolerance.</td>
+<td>Monitoring.</td>
+</tr>
+<tr>
+<td>More than 10 points for one quarter</td>
+<td>Imbalance.</td>
+<td>The committee proposes measures: new entries, acceleration or reallocation within the rules in 4.4.</td>
+</tr>
+<tr>
+<td>More than 10 points for two quarters, or an empty Transform lane with a set ambition</td>
+<td>Persistent imbalance.</td>
+<td>The board is informed and confirms the ambition or modifies it in C2.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Proportions are measured on committed investment and also on the <strong>ambition mix by phase</strong> (03 §3.5): a portfolio that is balanced in phase 1 but with all its Transform bets halted before G5 is not balanced.</p>
+<h3 id="5-2-risk-balance">5.2 Risk balance</h3>
+<p>The C2 risk appetite is translated into <strong>portfolio limits</strong>, which the committee reviews quarterly. The values are set by each company; for reference:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Limit</th>
+<th>Example wording</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High residual risk</td>
+<td>Maximum number of initiatives in production with accepted High residual risk.</td>
+</tr>
+<tr>
+<td>High regulatory risk systems</td>
+<td>Maximum number simultaneously in phases 4–5, according to control capacity.</td>
+</tr>
+<tr>
+<td>Autonomy</td>
+<td>Agents with A2 or A3 autonomy in production only with level 3 in D4 and D6 (document 11).</td>
+</tr>
+<tr>
+<td>Direct exposure</td>
+<td>Maximum proportion of investment in systems with direct exposure without independent assessment.</td>
+</tr>
+<tr>
+<td>Suppliers</td>
+<td>See section 9.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Exceeding a limit does not stop initiatives under way, but it prevents new ones from entering the affected category until the committee approves a measure or the board modifies the appetite.</p>
+<hr />
+<h2 id="capacity-and-staged-budget"><span class="antetitulo">06</span>Capacity and staged budget</h2>
+<h3 id="6-1-structure-of-the-framework-budget">6.1 Structure of the framework budget</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Committed recurring cost</strong></td>
+<td>Operating cost of initiatives in production. It is reserved first: each go-live reduces the budget available for new initiatives in subsequent years.</td>
+</tr>
+<tr>
+<td><strong>Discovery reserve</strong></td>
+<td>Tranche 1 of all initiatives (phases 0–3).</td>
+</tr>
+<tr>
+<td><strong>Optimise envelope</strong></td>
+<td>Tranches 2 and 3 of its lane.</td>
+</tr>
+<tr>
+<td><strong>Augment envelope</strong></td>
+<td>Tranches 2 and 3 of its lane, including adoption.</td>
+</tr>
+<tr>
+<td><strong>Transform envelope</strong></td>
+<td>Stages approved by the board, each with its cap per stage.</td>
+</tr>
+<tr>
+<td><strong>Retirement and contingency reserve</strong></td>
+<td>Costs of retirements, regularisation and approved deviations.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-2-funding-tranches">6.2 Funding tranches</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tranche</th>
+<th>Phases funded</th>
+<th>Released after</th>
+<th>Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 · Discovery and feasibility</strong></td>
+<td>0–3</td>
+<td>G0</td>
+<td>Amount declared in the entry record.</td>
+</tr>
+<tr>
+<td><strong>2 · Design and delivery</strong></td>
+<td>4–5</td>
+<td>G3</td>
+<td>Build and pilot cost from the feasibility assessment (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>).</td>
+</tr>
+<tr>
+<td><strong>3 · Operation</strong></td>
+<td>6</td>
+<td>G5</td>
+<td>Annual recurring cost; renewed at each R6.</td>
+</tr>
+<tr>
+<td><strong>Scaling</strong></td>
+<td>New phase 0</td>
+<td>G7 with a Scale outcome</td>
+<td>New cycle with its own prioritisation.</td>
+</tr>
+</tbody>
+</table></div>
+<p>In Transform, each approved stage is a tranche with its learning milestone; the next stage is not released until the milestone has been met. A deviation of more than 10% over the approved tranche requires approval from the body that decided the <em>gate</em>.</p>
+<h3 id="6-3-capacity">6.3 Capacity</h3>
+<ul>
+<li>The AI Office maintains a <strong>capacity plan</strong> for scarce profiles: technical owners, data, risk, AI Auditor, security and adoption.</li>
+<li>The committee sets a <strong>limit on simultaneous initiatives in phases 3 to 5</strong> according to that capacity. Once the limit is exceeded, no new initiatives enter phase 4 until one passes G5 or is stopped.</li>
+<li>The capacity to <strong>verify and decide</strong> is also capacity: if the <em>gate</em> decision time exceeds its reference time limit (03 §3.6), the committee strengthens verification before admitting more initiatives.</li>
+</ul>
+<hr />
+<h2 id="monthly-and-quarterly-review"><span class="antetitulo">07</span>Monthly and quarterly review</h2>
+<h3 id="7-1-monthly-ai-committee-review">7.1 Monthly AI Committee review</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Source</th>
+<th>Possible decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New entries and Enterprise <em>gates</em></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+<td>Admit, prioritise, decide <em>gates</em>.</td>
+</tr>
+<tr>
+<td>Stalled initiatives, expired conditions and holds</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> alerts</td>
+<td>Section 8.</td>
+</tr>
+<tr>
+<td>Cost and value deviations</td>
+<td>T12, T13</td>
+<td>Conditions, early R6.</td>
+</tr>
+<tr>
+<td>Incidents and major or critical nonconformities</td>
+<td>T08</td>
+<td>Containment, stop, retirement.</td>
+</tr>
+<tr>
+<td>Funnel metrics: time in phase, decision time, conversion</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Measures on bottlenecks.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="7-2-quarterly-portfolio-review">7.2 Quarterly portfolio review</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Balance</td>
+<td>T16 map; ambition mix by phase; deviation from C2.</td>
+<td>Measures in section 5.1.</td>
+</tr>
+<tr>
+<td>Risk and concentration</td>
+<td>Limits in sections 5.2 and 9.</td>
+<td>Measures or escalation to the board.</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Value by phase, realised value against hypothesis, validated proportion, weighted value if there is a track record.</td>
+<td>Review of priorities.</td>
+</tr>
+<tr>
+<td>Programmes</td>
+<td>Traffic light in section 12.</td>
+<td>Recovery plans.</td>
+</tr>
+<tr>
+<td>Retirements</td>
+<td>Proposed retirements and those under way.</td>
+<td>G7 decisions.</td>
+</tr>
+<tr>
+<td>Budget and capacity</td>
+<td>Consumption by tranche and lane; capacity plan.</td>
+<td>Reallocations within the rules in 4.4.</td>
+</tr>
+<tr>
+<td>Report to the board (C4)</td>
+<td>Summary in the response format of documents 60 and 61.</td>
+<td>Recorded recommendations (T18).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="stalled-initiatives-expired-conditions-and-initiatives-on-hold"><span class="antetitulo">08</span>Stalled initiatives, expired conditions and initiatives on hold</h2>
+<p>The definitions and metrics are those in 03 §3.5 and §3.6.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Treatment</th>
+<th>Time limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stalled</strong> (exceeds the reference time limit for its phase)</td>
+<td>The AI Product Owner explains the cause and the plan. The committee decides: recovery plan with a date; new justified time limit (only once per phase); move to <em>On hold</em> with a reason; early <em>gate</em>; or stop.</td>
+<td>Explanation within 5 working days; decision at the next monthly meeting.</td>
+</tr>
+<tr>
+<td><strong>Second stall in the same phase</strong></td>
+<td>Early <em>gate</em> with the option of stopping explicitly considered.</td>
+<td>Next monthly meeting.</td>
+</tr>
+<tr>
+<td><strong>Expired condition</strong></td>
+<td>The <em>gate</em> outcome becomes <strong>Iterate</strong> (01 §7.4, rule 4). If the condition affects a significant control, a major nonconformity is raised (01 §12).</td>
+<td>Automatic on expiry.</td>
+</tr>
+<tr>
+<td><strong>On hold</strong></td>
+<td>Requires a coded reason and an expected resumption date. Time on hold does not count as time in phase, but the allocated capacity is released.</td>
+<td>Review at each monthly meeting.</td>
+</tr>
+<tr>
+<td><strong>Prolonged hold</strong> (more than 90 days or two postponements)</td>
+<td>The committee decides to resume with a firm date or to stop. The unspent tranche budget returns to its budget item.</td>
+<td>Next monthly meeting.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="risk-concentration-and-supplier-dependency"><span class="antetitulo">09</span>Risk concentration and supplier dependency</h2>
+<p>The committee analyses quarterly whether several initiatives could fail for the same cause.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type of concentration</th>
+<th>What is measured</th>
+<th>Warning signal (to be set in C2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Supplier</strong></td>
+<td>Proportion of initiatives in production, recurring cost and critical functions that depend on the same supplier.</td>
+<td>One supplier supports several critical functions or exceeds the set proportion.</td>
+</tr>
+<tr>
+<td><strong>Foundation model</strong></td>
+<td>Initiatives that depend on the same general-purpose AI model or its version.</td>
+<td>Announced change or withdrawal of the model affecting several initiatives.</td>
+</tr>
+<tr>
+<td><strong>Data</strong></td>
+<td>Initiatives that depend on the same dataset or knowledge source.</td>
+<td>Source with quality issues or a legal basis under review.</td>
+</tr>
+<tr>
+<td><strong>People</strong></td>
+<td>Initiatives that depend on the same key people.</td>
+<td>One person is indispensable to several initiatives.</td>
+</tr>
+<tr>
+<td><strong>Typical risk</strong></td>
+<td>High residual risks with the same <code>RT-XXX-NN</code> code.</td>
+<td>Same High risk in several initiatives.</td>
+</tr>
+<tr>
+<td><strong>Sphere or area</strong></td>
+<td>Concentrated investment and exposure.</td>
+<td>Deviation from the ambition per sphere.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Measures.</strong> Suppliers with requirement level <strong>N3</strong> (document 36) must have a tested exit plan or, at least, a documented one with an estimated cost, which is incorporated into the initiative's net value. In entities subject to DORA, ICT services supporting critical or important functions require exit strategies (Article 28 of Regulation (EU) 2022/2554). A significant change in the supplier or the foundation model triggers an extraordinary R6 of the affected initiatives.</p>
+<hr />
+<h2 id="retirement-procedure"><span class="antetitulo">10</span>Retirement procedure</h2>
+<p>Retirement is a G7 outcome (01 §6.9 and §7.3). Every retirement must record the date, reason, deciding body, replacement if any, treatment of data and models and communication to those affected (01 §6.9). This procedure also applies to <strong>partial retirement</strong> (reduction in scope, users or functions) and, with the adaptations in 10.10, to corporate use of AI.</p>
+<h3 id="10-1-retirement-criteria">10.1 Retirement criteria</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Indicative criterion</th>
+<th>Coded reason (03 §3.3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value not sustained</td>
+<td>Realised value below the hypothesis success threshold in two consecutive R6 reviews.</td>
+<td>Hypothesis refuted</td>
+</tr>
+<tr>
+<td>Cost exceeds value</td>
+<td>Negative annual net value over two R6 reviews without a credible correction plan.</td>
+<td>Cost exceeds value</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>Residual risk outside the appetite, repeated S1 or S2 incidents or a critical nonconformity with no viable remedy.</td>
+<td>Unacceptable risk</td>
+</tr>
+<tr>
+<td>Regulation</td>
+<td>Regulatory change that prohibits the use or imposes obligations that cannot be met in time.</td>
+<td>Regulation</td>
+</tr>
+<tr>
+<td>Adoption</td>
+<td>Actual use persistently below forecast after the measures in the adoption plan.</td>
+<td>No adoption</td>
+</tr>
+<tr>
+<td>Better alternative</td>
+<td>Another solution, with or without AI, delivers more net value or less risk.</td>
+<td>Replaced by another solution</td>
+</tr>
+<tr>
+<td>Technology or supplier</td>
+<td>End of support, withdrawal of the foundation model or unacceptable contractual change.</td>
+<td>Technically unfeasible</td>
+</tr>
+<tr>
+<td>Strategy</td>
+<td>The revised thesis no longer includes the sphere or objective.</td>
+<td>Change in strategic priority</td>
+</tr>
+</tbody>
+</table></div>
+<p>When risk so requires, the initiative is <strong>halted immediately</strong> using the kill switch or the rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) and the formal G7 is held afterwards, within a maximum of 10 working days.</p>
+<h3 id="10-2-owners">10.2 Owners</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Responsibility in the retirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI Sponsor</strong></td>
+<td>Proposes or accepts the retirement; decides in Lite; is accountable for the replacement and the financial close.</td>
+</tr>
+<tr>
+<td><strong>AI Committee</strong></td>
+<td>Decides in Enterprise; informs the board when a Transform initiative or one supporting a critical function is retired.</td>
+</tr>
+<tr>
+<td><strong>AI Product Owner</strong></td>
+<td>Draws up the retirement plan; leads the transition and communication to users.</td>
+</tr>
+<tr>
+<td><strong>AI Technical Owner</strong></td>
+<td>Deactivation, dismantling of integrations, archiving of models and documentation.</td>
+</tr>
+<tr>
+<td><strong>AI Operations Owner</strong></td>
+<td>Carries out the deactivation, revokes identities and permissions, monitors until closure.</td>
+</tr>
+<tr>
+<td><strong>AI Risk Owner</strong></td>
+<td>Regulatory and retention obligations; clearance of the plan.</td>
+</tr>
+<tr>
+<td><strong>Data protection and legal counsel</strong></td>
+<td>Processing of personal data; contractual close-out with suppliers.</td>
+</tr>
+<tr>
+<td><strong>AI Auditor or AI Office</strong></td>
+<td>Verifies closure (auditor in Enterprise, office in Lite).</td>
+</tr>
+<tr>
+<td><strong>AI Office</strong></td>
+<td>Recording in T22, updating of <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and T02, consolidation of lessons.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-3-flow">10.3 Flow</h3>
+<figure class="grafico"><div class="g-titulo">Retirement procedure</div><div class="g-sub">Ten steps from proposal to recording</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  A["1. Proposal"] --> B{"2. G7"}
+  B -->|"Scale or Iterate"| X["Remains in portfolio"]
+  B -->|"Retire"| C["3. Retirement plan"]
+  C --> D["4. Replacement and transition"]
+  D --> E["5. Communication"]
+  E --> F["6. Deactivation"]
+  F --> G["7. Data, models and access"]
+  G --> H["8. Contractual close-out"]
+  H --> I{"9. Closure verification"}
+  I -->|"Outstanding items"| G
+  I -->|"Conformant"| J["10. Lessons and recording"]
+  classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
+  classDef med fill:#f2dfce,stroke:#0f5499,color:#1a1817
+  classDef ko fill:#f3d3da,stroke:#990f3d,color:#1a1817
+  class J ok
+  class B,I med
+  class F ko
+</pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
+<p>Reference time limits: retirement plan approved within 15 days (Lite) or 30 days (Enterprise) of the decision, in line with the phase 7 time limits (03 §3.6); closure verification within 30 days of deactivation.</p>
+<h3 id="10-4-content-of-the-retirement-plan-p30">10.4 Content of the retirement plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decision</td>
+<td>Initiative code, G7 date, body, coded reason, scope (full or partial).</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>Change freeze date, parallel running period, deactivation date, closure date.</td>
+</tr>
+<tr>
+<td>Replacement</td>
+<td>Solution that takes over the function, acceptance criteria and capacity required (10.6).</td>
+</tr>
+<tr>
+<td>Those affected</td>
+<td>Users, customers or people affected, areas, suppliers, authorities where applicable.</td>
+</tr>
+<tr>
+<td>Data, models and access</td>
+<td>Treatment of each element (10.5).</td>
+</tr>
+<tr>
+<td>Contracts</td>
+<td>Notice periods, penalties, return or deletion of data by the supplier.</td>
+</tr>
+<tr>
+<td>Retirement cost</td>
+<td>Estimate and budget item (retirement reserve, section 6.1).</td>
+</tr>
+<tr>
+<td>Retirement risks</td>
+<td>Transition risks recorded using the scale in document 33.</td>
+</tr>
+<tr>
+<td>Verification</td>
+<td>Closure checklist and verifier.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-5-treatment-of-data-models-and-access">10.5 Treatment of data, models and access</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Personal data</strong></td>
+<td>Erasure or blocking according to the legal basis and retention periods (GDPR, Articles 5(1)(e) and 17); record of the deletion.</td>
+</tr>
+<tr>
+<td><strong>Data held by the supplier</strong></td>
+<td>Return or deletion in accordance with the contract, with a certificate.</td>
+</tr>
+<tr>
+<td><strong>Models, versions and configurations</strong></td>
+<td>Archiving with version and lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>) for as long as there is an obligation to retain documentation or a possibility of claims; thereafter, recorded destruction.</td>
+</tr>
+<tr>
+<td><strong>Technical documentation and activity logs</strong></td>
+<td>Retention in accordance with regulation. The EU AI Act sets, among other things, 10 years for the documentation of providers of high-risk systems (Article 18) and at least six months for automatically generated logs (Articles 19 and 26(6)). Verify that this is in force at the date of consultation (September 2026).</td>
+</tr>
+<tr>
+<td><strong>Instructions, knowledge bases and indexes</strong></td>
+<td>Archiving if they support decisions that may be challenged; otherwise, recorded deletion.</td>
+</tr>
+<tr>
+<td><strong>Identities, credentials and permissions of agents and integrations</strong></td>
+<td>Revocation <strong>before</strong> or at the same time as deactivation. No identity may remain active.</td>
+</tr>
+<tr>
+<td><strong>Decisions made with the system</strong></td>
+<td>Retention of the traceability needed to handle claims and the rights of individuals.</td>
+</tr>
+<tr>
+<td><strong>Inventory and register</strong></td>
+<td>T02 moves the system to &quot;retired&quot;; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> moves the initiative to <em>Retired</em> with the closure date.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-6-replacement-and-continuity">10.6 Replacement and continuity</h3>
+<ul>
+<li>Options: revert to the previous process, adopt another solution, or eliminate the activity. The choice is justified in the plan.</li>
+<li>If reverting to the previous process, it is checked that <strong>the capacity exists</strong> to take it on: the released capacity may have been materialised or reassigned.</li>
+<li>If the replacement is another AI system, it goes through its own lifecycle; it does not inherit the <em>gates</em> of the retired system.</li>
+<li>When the function is critical, a parallel running period with acceptance criteria is required before deactivation.</li>
+</ul>
+<h3 id="10-7-communication">10.7 Communication</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Recipient</th>
+<th>When</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Internal users</td>
+<td>On approval of the plan and before deactivation</td>
+<td>Dates, alternative, training, support.</td>
+</tr>
+<tr>
+<td>Customers or people affected</td>
+<td>With sufficient notice when there is direct exposure</td>
+<td>What changes, service channel, rights.</td>
+</tr>
+<tr>
+<td>Workers' representatives</td>
+<td>When required by law or agreements</td>
+<td>Effect on work.</td>
+</tr>
+<tr>
+<td>Suppliers</td>
+<td>In accordance with contractual notice periods</td>
+<td>Termination, return or deletion of data.</td>
+</tr>
+<tr>
+<td>Authorities</td>
+<td>If the system was registered or subject to regulatory notification</td>
+<td>Update in accordance with the applicable regulation.</td>
+</tr>
+<tr>
+<td>Committee, board and audit</td>
+<td>Decision and closure</td>
+<td>Reason, cost, lessons.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-8-lessons-learned">10.8 Lessons learned</h3>
+<p>Every retirement, and every stop at G3 or later, produces a lessons note with: initial hypothesis; what happened; coded reason; <strong>what early signal foreshadowed it and when it was noticed</strong>; total investment and cost against realised value; and what change is proposed to entry criteria, templates or thresholds. The AI Office consolidates them by reason and presents them in C5.</p>
+<h3 id="10-9-retirement-register-t22">10.9 Retirement register (T22)</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identification</td>
+<td>Code IA-AAAA-NNN, systems affected, full or partial scope.</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td>G7 date, body, decision-maker, verifier, coded reason, reference to <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> and <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+</tr>
+<tr>
+<td>Plan</td>
+<td>Planned and actual dates for freeze, parallel running, deactivation and closure.</td>
+</tr>
+<tr>
+<td>Replacement</td>
+<td>Solution, owner, acceptance criteria met.</td>
+</tr>
+<tr>
+<td>Data and models</td>
+<td>Status of each element in 10.5 with evidence.</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>Date of revocation of identities and permissions.</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Recipients and dates.</td>
+</tr>
+<tr>
+<td>Economics</td>
+<td>Total investment, recurring cost avoided, retirement cost, cumulative realised value with its status.</td>
+</tr>
+<tr>
+<td>Closure</td>
+<td>Verification date, result, outstanding items.</td>
+</tr>
+<tr>
+<td>Lessons</td>
+<td>Link to the lessons note.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-10-corporate-use-and-unauthorised-ai">10.10 Corporate use and unauthorised AI</h3>
+<p>The retirement of an AI tool for corporate use follows steps 3 to 10 with a simplified plan. Detected unauthorised use is regularised as a nonconformity (01 §1.2): authorisation, replacement or blocking; if it is blocked, 10.5 and 10.7 apply.</p>
+<hr />
+<h2 id="regularisation-of-initiatives-pre-dating-the-framework"><span class="antetitulo">11</span>Regularisation of initiatives pre-dating the framework</h2>
+<p>Initiatives in production prior to the adoption of SEVEN-G must be regularised within the time limit approved in C2, by undergoing a continuity review equivalent to G7 (01 §14).</p>
+<h3 id="11-1-steps">11.1 Steps</h3>
+<ol>
+<li><strong>Census.</strong> Registration in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and T02 of everything that exists, with its actual status: idea, pilot, under construction or in production.</li>
+<li><strong>Order by risk.</strong> First, those that meet any Enterprise criterion (01 §9.2), in particular high regulatory risk, decisions about people, direct exposure and agents that act; then the rest.</li>
+<li><strong>Treatment by status:</strong></li>
+</ol>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Actual status</th>
+<th>Treatment</th>
+<th>Possible outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>In production</strong></td>
+<td>Review equivalent to G7 with minimum evidence: description (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>), roles (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>), intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>), regulatory classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>), risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>), realised value with status (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), manual and monitoring (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
+<td>Continue in production with periodic R6; continue with conditions; iterate; retire.</td>
+</tr>
+<tr>
+<td><strong>Under construction</strong></td>
+<td>It is placed in the phase that corresponds to its actual evidence and must pass the next <em>gate</em> with all the evidence from the previous phases.</td>
+<td>Continue from that phase; pivot; stop.</td>
+</tr>
+<tr>
+<td><strong>Pilot</strong></td>
+<td>It is assessed at G3 with the pilot results.</td>
+<td>Continue; iterate; stop.</td>
+</tr>
+<tr>
+<td><strong>Idea</strong></td>
+<td>Ordinary entry (section 3).</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="4">
+<li><strong>Recording.</strong> Each regularised initiative carries the free tag &quot;Regularisation&quot; and the date of its review.</li>
+</ol>
+<h3 id="11-2-rules">11.2 Rules</h3>
+<ul>
+<li>Regularisation documentation is identified as such, with the date on which it is prepared. It does not attest to past <em>gates</em> and cannot be presented as earlier documentation: doing so is a major nonconformity (01 §7.4, rule 3).</li>
+<li>Reference time limit: initiatives with Enterprise criteria, six months from the approval of C2; the rest, 12 months. The company may set others in C2.</li>
+<li>An initiative in production that has not been regularised when the time limit expires is a major nonconformity; if it meets Enterprise criteria and has no regulatory classification, a critical one.</li>
+<li>The scope of the initiative is not extended during regularisation.</li>
+</ul>
+<hr />
+<h2 id="programme-traffic-light"><span class="antetitulo">12</span>Programme traffic light</h2>
+<p>A <strong>programme</strong> groups related initiatives using the free tag &quot;Programme&quot; (03 §3.3). The traffic light summarises its status for the committee and the board.</p>
+<h3 id="12-1-axes-and-initial-thresholds">12.1 Axes and initial thresholds</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Axis</th>
+<th>Green</th>
+<th>Amber</th>
+<th>Red</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Schedule</strong></td>
+<td>No stalled initiatives; milestones on schedule.</td>
+<td>One stalled initiative or a milestone delayed by up to one phase reference time limit.</td>
+<td>Several stalled initiatives or a critical milestone with a longer delay.</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Deviation over the approved tranches of up to 10%.</td>
+<td>From 10% to 25%.</td>
+<td>More than 25% or without approval.</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>Realised value equal to or above 90% of the amount forecast to date, with validated or declared status.</td>
+<td>From 60% to 90%, or estimated only.</td>
+<td>Less than 60%, or hypothesis refuted without a decision.</td>
+</tr>
+<tr>
+<td><strong>Risk</strong></td>
+<td>No residual risks outside the appetite and no open S1–S2 incidents.</td>
+<td>High risk with mitigation on schedule or an S2 incident being managed.</td>
+<td>Risk outside the appetite, S1 incident or open critical nonconformity.</td>
+</tr>
+<tr>
+<td><strong>Governance</strong></td>
+<td><em>Gates</em>, R6 and conditions up to date.</td>
+<td>One expired condition or an R6 delayed by less than one month.</td>
+<td>Expired major nonconformity, lapsed R6 in Enterprise or system in production without a <em>gate</em>.</td>
+</tr>
+<tr>
+<td><strong>Adoption</strong></td>
+<td>Actual use equal to or above 80% of forecast.</td>
+<td>From 50% to 80%.</td>
+<td>Less than 50% after the measures in the plan.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Initial thresholds, to be calibrated in C5.</p>
+<h3 id="12-2-traffic-light-rules">12.2 Traffic-light rules</h3>
+<ol>
+<li><strong>Programme colour = worst colour of its axes.</strong> One axis in red puts the programme in red.</li>
+<li><strong>No data is not green.</strong> An axis with no data is shown in grey and the programme cannot be green.</li>
+<li><strong>Red requires a plan.</strong> Every programme in red presents a recovery plan with an owner and date, or a proposal to stop or retire, at the next monthly review.</li>
+<li><strong>Two quarters in red</strong> lead the committee to decide explicitly between continuing with a revised plan, reducing scope, stopping or retiring, and the board is informed.</li>
+<li><strong>Visible trend.</strong> Each traffic light shows the colour for the previous quarter.</li>
+</ol>
+<hr />
+<h2 id="associated-tools-and-templates"><span class="antetitulo">13</span>Associated tools and templates</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Use in this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register</strong></td>
+<td>Entry record, prioritisation score, lanes and tranches, alerts for stalled initiatives, holds and conditions, &quot;Programme&quot; and &quot;Regularisation&quot; tags, traffic light.</td>
+</tr>
+<tr>
+<td><strong>T16 · Portfolio sphere map</strong></td>
+<td>Ambition balance per sphere with investment, recurring cost and value.</td>
+</tr>
+<tr>
+<td><strong>T22 · Retirement manager</strong></td>
+<td>Retirement plan, replacement, data and models, access, communication, closure verification and retirement register (section 10.9).</td>
+</tr>
+<tr>
+<td>T02, T03, T04, T05, T06, T08, T09, T12, T13, T14, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, T18</td>
+<td>Inventory, <em>gates</em>, intensity, ambition, risks, nonconformities, suppliers, value, costs, transformation index, dashboard and recommendations.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
+<td>Evidence used in entry, prioritisation and review.</td>
+</tr>
+<tr>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> · Scale or retirement decision</strong></td>
+<td>G7 decision, lessons learned and retirement plan.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">14</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>00 · What SEVEN-G is</strong></td>
+<td>Value measurement rules (§6) and ambition classification (§5.2).</td>
+</tr>
+<tr>
+<td><strong>01 · Foundational methodology</strong></td>
+<td>C3 (§5.1), phase 7 (§6.9), <em>gate</em> outcomes and rules (§7), principles, declaration of application (§14).</td>
+</tr>
+<tr>
+<td><strong>03 · Tools and initiative register</strong></td>
+<td>Statuses, taxonomy, coded reasons, funnel metrics and reference time limits.</td>
+</tr>
+<tr>
+<td><strong>10 · Sphere map</strong></td>
+<td>Ambition per sphere.</td>
+</tr>
+<tr>
+<td><strong>11 · Maturity model</strong></td>
+<td>Dimension D2 and maturity requirements for agents and Transform.</td>
+</tr>
+<tr>
+<td><strong>12 · Transformation index</strong></td>
+<td>Signals affected by the portfolio balance.</td>
+</tr>
+<tr>
+<td><strong>13 · AI thesis and risk appetite</strong></td>
+<td>Envelopes, horizon, limits and time limits used by this document.</td>
+</tr>
+<tr>
+<td><strong>33 · Risk methodology</strong></td>
+<td>Risk scale and typical risks.</td>
+</tr>
+<tr>
+<td><strong>36 · Third parties and suppliers</strong></td>
+<td>Levels N1–N3 and exit plans.</td>
+</tr>
+<tr>
+<td><strong>40–43 · Measurement and value</strong></td>
+<td>Additional net value per euro, costs and benefits realisation.</td>
+</tr>
+<tr>
+<td><strong>90 · Implementation guide</strong></td>
+<td>First portfolio and regularisation.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">15</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>16-09-2026</td>
+<td>First version. Develops C3; defines portfolio entry, prioritisation by ambition lanes with six criteria, rules to avoid blocking transformation, balance of ambition and risk, tranche-based budget, monthly and quarterly reviews, treatment of stalled initiatives and holds, concentration, full retirement procedure with register, regularisation and programme traffic light.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"SEVEN-G foundational methodology","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"SEVEN-G glossary and conventions","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"SEVEN-G tools and initiative register","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Sphere map and ambition levels","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Maturity model","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Transformation index","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"AI thesis, ambition and risk appetite","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Portfolio management","blockCode":"B","blockLabel":"B · Strategy and portfolio","active":true},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Phase manuals","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Gate and audit criteria","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Checklists by gate","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adoption and change in the initiative","blockCode":"C","blockLabel":"C · Initiative lifecycle","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Governance model","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Corporate AI policy and acceptable use policy","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"AI system inventory and regulatory classification","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"AI risk methodology","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Regulatory mapping","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"AI and agent security","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"AI third parties and suppliers","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"Nonconformities, AI incidents and remediation","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"AI audit framework","blockCode":"D","blockLabel":"D · Governance, risk and compliance","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Value measurement rules","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Indicator catalogue","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"AI costs and allocation per use case","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Benefits realisation","blockCode":"E","blockLabel":"E · Measurement and value","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"People and organisation","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Data and knowledge for AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"AI operations manual","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Building solutions with AI","blockCode":"F","blockLabel":"F · People, data and operations","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Board pack","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Board conversation guide","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Recommendations and decisions register","blockCode":"G","blockLabel":"G · Board","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"SEVEN-G implementation guide","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guide for consultants and support models","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Application cases","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licence, use by third parties and citation","blockCode":"J","blockLabel":"J · Framework adoption","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Initiative charter","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Context and constraints statement","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Role assignment record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Intensity determination","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"AI system inventory record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Opportunity portfolio and screening notes","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Sphere and ambition classification","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Value hypothesis canvas","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Baseline","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Feasibility assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Regulatory classification and impact assessments","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Mitigation and contingency plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"AI supplier assessment","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Architecture record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Data and model lineage","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Governance and human oversight design","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Security design (including agents)","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Rollback plan and test","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Adoption and capacity plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Delivery report","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Validation and pilot results","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Go-live sign-off","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Operations manual","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Monitoring and alerting configuration","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Incident response plan","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Incident and change log","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Value realisation tracking","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"*Gate* decision record","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Scale or retire decision","blockCode":"H","blockLabel":"H · Templates","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Use case record","blockCode":"H","blockLabel":"H · Templates","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>
