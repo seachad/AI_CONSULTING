@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Modelo de gobierno"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -428,7 +439,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <h3 id="1-2-nota-terminologica">1.2 Nota terminológica</h3>
-<p>En SEVEN-G, <strong>Oficina de IA</strong> designa la unidad interna de la compañía que da soporte metodológico, mantiene el inventario y consolida la medición. No debe confundirse con la <strong>Oficina Europea de IA</strong> de la Comisión Europea, prevista en el Reglamento (UE) 2024/1689. Si hay riesgo de confusión, la compañía puede llamarla &quot;Oficina corporativa de IA&quot; o &quot;Centro de excelencia de IA&quot;.</p>
+<p>En SEVEN-G, <strong>Oficina de IA</strong> designa la unidad interna de la compañía que da soporte metodológico, mantiene el inventario y consolida la medición. No debe confundirse con la <strong><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener" title="Oficina Europea de IA (Comisi&#243;n Europea)">Oficina Europea de IA</a></strong> de la Comisión Europea, prevista en el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a>. Si hay riesgo de confusión, la compañía puede llamarla &quot;Oficina corporativa de IA&quot; o &quot;Centro de excelencia de IA&quot;.</p>
 <hr />
 <h2 id="arquitectura-de-organos"><span class="antetitulo">02</span>Arquitectura de órganos</h2>
 <figure class="grafico"><div class="g-titulo">&#211;rganos de gobierno de la IA</div><div class="g-sub">Qui&#233;n fija la direcci&#243;n, qui&#233;n decide, qui&#233;n construye y qui&#233;n controla</div><div class="g-lienzo"><pre class="mermaid">flowchart TB
@@ -742,7 +753,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>Responsable técnico de IA</strong></td>
 <td>Responde de la solución, los datos, los modelos y la documentación técnica. Evalúa viabilidad técnica y de datos; diseña arquitectura, linaje, seguridad y reversión; dirige construcción o integración y pruebas. Forma parte del equipo: no verifica ni decide <em>gates</em> de su iniciativa (01 §8.1).</td>
-<td>Ingeniería de datos y modelos; evaluación de IA generativa y agentes; seguridad de aplicaciones; integración; requisitos técnicos del Reglamento de IA según clasificación.</td>
+<td>Ingeniería de datos y modelos; evaluación de IA generativa y agentes; seguridad de aplicaciones; integración; requisitos técnicos del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> según clasificación.</td>
 <td>Arquitecto o jefe técnico de tecnología o datos.</td>
 <td>20–50 % en fases 3–5 · 50–100 % en fases 3–5</td>
 </tr>
@@ -756,7 +767,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>Responsable de riesgos de IA</strong></td>
 <td>Responde de la evaluación y el seguimiento de riesgos y cumplimiento. Coordina clasificación regulatoria y evaluaciones de impacto; valora riesgos inherentes y residuales; emite conformidad en G3, G4 y G5 Lite (sin verificarlos, 01 §7.5); propone la aceptación al nivel que corresponde; coordina la firma multinivel.</td>
-<td>Gestión de riesgos; Reglamento de IA, RGPD y normativa sectorial; riesgos de IA generativa y agentes; independencia de criterio.</td>
+<td>Gestión de riesgos; Reglamento de IA, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> y normativa sectorial; riesgos de IA generativa y agentes; independencia de criterio.</td>
 <td>Segunda línea (riesgos, cumplimiento o protección de datos).</td>
 <td>1–3 días por iniciativa en fase 3 · 10–30 % en fases 3–5</td>
 </tr>
@@ -1407,7 +1418,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p>Reglas adicionales: (1) la aceptación caduca si cambian la clasificación regulatoria, la autonomía (A0–A3), la exposición o el proveedor principal; (2) la concentración de riesgos Altos aceptados en una esfera, proveedor o tecnología se revisa como riesgo de cartera y, si supera el apetito, se eleva al consejo; (3) una práctica prohibida por el artículo 5 del Reglamento (UE) 2024/1689 <strong>no es aceptable por ningún órgano</strong>.</p>
+<p>Reglas adicionales: (1) la aceptación caduca si cambian la clasificación regulatoria, la autonomía (A0–A3), la exposición o el proveedor principal; (2) la concentración de riesgos Altos aceptados en una esfera, proveedor o tecnología se revisa como riesgo de cartera y, si supera el apetito, se eleva al consejo; (3) una práctica prohibida por el artículo 5 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a> <strong>no es aceptable por ningún órgano</strong>.</p>
 <h3 id="7-3-suspensiones-paradas-y-retiradas">7.3 Suspensiones, paradas y retiradas</h3>
 <div class="tabla"><table>
 <thead>
@@ -1583,7 +1594,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li><strong>El plazo cuenta desde la detección</strong>, no desde la confirmación.</li>
 <li><strong>Se escala por el canal registrado</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> o T08) y, si el plazo es inferior a 24 horas, además por contacto directo con la persona designada.</li>
 <li><strong>La falta de respuesta en plazo escala automáticamente</strong> al siguiente nivel.</li>
-<li><strong>Nadie puede bloquear un escalado.</strong> Cualquier persona puede dirigirse a la segunda línea o al sistema interno de información de la compañía (en España, regulado por la Ley 2/2023, de 20 de febrero).</li>
+<li><strong>Nadie puede bloquear un escalado.</strong> Cualquier persona puede dirigirse a la segunda línea o al sistema interno de información de la compañía (en España, regulado por la <a class="ref-ext" href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener" title="Ley 2/2023, de 20 de febrero, reguladora de la protecci&#243;n de las personas que informen sobre infracciones normativas y de lucha contra la corrupci&#243;n">Ley 2/2023, de 20 de febrero</a>).</li>
 </ol>
 <h3 id="8-2-tabla-de-escalado">8.2 Tabla de escalado</h3>
 <p>Los plazos de incidentes son los tiempos de respuesta orientativos del <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> (§4.3); los de no conformidades, los de 01 §12. La compañía los aprueba en C2 sin superar los que fije la regulación.</p>
@@ -1621,7 +1632,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>E-4</td>
-<td>Posible <strong>práctica prohibida</strong> o posible <strong>incidente grave</strong> del Reglamento de IA</td>
+<td>Posible <strong>práctica prohibida</strong> o posible <strong>incidente grave</strong> del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a></td>
 <td>Responsable de riesgos, asesoría jurídica y presidencia del comité de IA</td>
 <td>Inmediato, máximo 24 horas</td>
 <td>Suspensión y análisis de obligaciones de notificación.</td>
@@ -1699,7 +1710,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <p>Se llevan además a la siguiente sesión del comité: valor realizado claramente inferior a la hipótesis en R6 (adelanta G7, 01 §6.8), coste recurrente por encima del presupuesto más la tolerancia de C2, R6 caducada, uso no autorizado con datos confidenciales o personales y dependencia excesiva de un proveedor.</p>
-<p>Las <strong>notificaciones a autoridades</strong> (Reglamento de IA, RGPD, NIS2, DORA y normativa sectorial) tienen plazos propios, no sustituyen al escalado interno y se desarrollan en los documentos 34 y 37 (§5).</p>
+<p>Las <strong>notificaciones a autoridades</strong> (Reglamento de IA, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> y normativa sectorial) tienen plazos propios, no sustituyen al escalado interno y se desarrollan en los documentos 34 y 37 (§5).</p>
 <h3 id="8-3-resolucion-de-desacuerdos-con-la-segunda-linea">8.3 Resolución de desacuerdos con la segunda línea</h3>
 <p>La segunda línea no vota las decisiones de negocio, pero su <strong>conformidad es necesaria</strong> en G3, G5, aceptaciones de riesgo y excepciones. Si la deniega:</p>
 <ol>
@@ -1768,7 +1779,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>El delegado de protección de datos participa en la evaluación de impacto</td>
-<td>Asesora y supervisa (RGPD, artículo 39); la evaluación la hace el responsable del tratamiento y el delegado no debería figurar como su autor.</td>
+<td>Asesora y supervisa (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, artículo 39); la evaluación la hace el responsable del tratamiento y el delegado no debería figurar como su autor.</td>
 </tr>
 <tr>
 <td>Seguridad opera controles y además firma</td>
@@ -2095,7 +2106,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener">Ley 2/2023, de 20 de febrero, reguladora de la protecci&#243;n de las personas que informen sobre infracciones normativas y de lucha contra la corrupci&#243;n</a><span> · Cortes Generales · 20-02-2023</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener">Oficina Europea de IA (Comisi&#243;n Europea)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

@@ -1,5 +1,7 @@
 Propuesta de evolución del motor del panel, que desde el 17-09-2026 se mantiene en esta carpeta (AI_CONSULTING). Pendiente de aplicar.
 
+Actualización del 17-09-2026: `motor/` es ya la versión 8 (embudo y ciclo de vida, umbrales configurables). Parte de lo que pedía esta propuesta queda resuelto sin tocar el motor: las fases de SEVEN-G llegan al panel como etapas del embudo mediante `config_panel.json` (`ciclo_vida`) y el historial de estados que el conector construye con los eventos de T01. Siguen pendientes las claves heredadas (`estimado_cati`, `acciones_estimadas_cati`), el aviso legal nativo en el panel móvil y la lectura del bloque `seveng` (intensidad, esferas, madurez e índice).
+
 # Propuesta de cambios del motor para SEVEN-G · v1
 
 Fecha: 16-09-2026 · Estado: propuesta, **no aplicada** · Ámbito: motor del panel (T17), ahora en `SEVEN-G/herramientas/T17_panel_consejo/motor/` (texto original: «en su proyecto de origen; después, republicar en `AI_en_el_consejo/motor/`»).

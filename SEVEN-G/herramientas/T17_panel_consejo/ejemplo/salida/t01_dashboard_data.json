@@ -10,7 +10,7 @@
    "anterior": null
   },
   "fuentes": {
-   "t01": "Registro de iniciativas T01 de SEVEN-G (esquema 0.1)"
+   "t01": "Registro de iniciativas T01 de SEVEN-G (esquema 0.2)"
   },
   "organizacion": "Compañía Ejemplo Industrial, S.A. (ficticia)",
   "consejo_sigla": "consejo asesor",
@@ -21,14 +21,20 @@
   "textos": {
    "aviso_previo": "<b>Aviso legal.</b> Demostración con datos ficticios del registro de iniciativas T01 de SEVEN-G, ofrecida «tal cual» y con fines informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma. Las clasificaciones y referencias a regulación general o sectorial pueden quedar desactualizadas: cada organización es la única responsable de verificar la normativa que le aplica y certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad por su uso. <b>Datos ficticios</b> del registro de iniciativas T01 de SEVEN-G. ",
    "aviso_valor": "Los importes salen del registro T01 con su estado: validado, declarado o estimado (en el panel, «estimado» figura como estimación del consejo asesor, pero en T01 lo estima el equipo de la iniciativa). Actual = realizado; potencial = esperado. Lo que T01 no registra queda «sin dato», nunca a cero.",
-   "pie": "Panel generado desde el registro de iniciativas T01 de SEVEN-G (corte 16-09-2026) con el conector T17 (t01_a_panel.py) · Compañía Ejemplo Industrial, S.A. (ficticia) y sus personas son ficticios · <a href=\"t01_Registro_Recomendaciones.html\">registro de recomendaciones</a> · <a href=\"../../index.html\">página del conector T17</a><br>© 2026 Fernando García · SEACHAD · metodología SEVEN-G · contenidos <a href=\"https://creativecommons.org/licenses/by/4.0/deed.es\">CC BY 4.0</a> · código MIT (motor del panel derivado de <a href=\"https://github.com/Seachad-TEAM/AI_en_el_consejo\">AI en el Consejo</a>, <a href=\"https://github.com/Seachad-TEAM/AI_en_el_consejo/blob/main/LICENSE\">MIT</a>)<br>Aviso legal: datos ficticios, «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma. Cada organización verifica la normativa que le aplica.",
+   "pie": "Panel generado desde el registro de iniciativas T01 de SEVEN-G (corte 16-09-2026) con el conector T17 (t01_a_panel.py) · Compañía Ejemplo Industrial, S.A. (ficticia) y sus personas son ficticios · <a href=\"../../../T01_registro_iniciativas/registro.html\">registro de iniciativas T01</a> · <a href=\"t01_Registro_Recomendaciones.html\">registro de recomendaciones</a> · <a href=\"../../index.html\">página del conector T17</a><br>© 2026 Fernando García · SEACHAD · metodología SEVEN-G · contenidos <a href=\"https://creativecommons.org/licenses/by/4.0/deed.es\">CC BY 4.0</a> · código MIT (motor del panel derivado de <a href=\"https://github.com/Seachad-TEAM/AI_en_el_consejo\">AI en el Consejo</a>, <a href=\"https://github.com/Seachad-TEAM/AI_en_el_consejo/blob/main/LICENSE\">MIT</a>)<br>Aviso legal: datos ficticios, «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma. Cada organización verifica la normativa que le aplica.",
    "movimientos_vacio": "El registro T01 no tiene altas, paradas, retiradas ni revisiones de continuidad.",
    "agilidad_sin_fechas": "Faltan fechas de registro, G3 o G5 en el registro T01: no se puede medir la agilidad.",
    "backlog_sin_dato": "T01 no registra el backlog pendiente de análisis.",
    "adopcion_sin_telemetria": "T01 no registra licencias ni uso de las suites de productividad: sin dato.",
    "sin_que_es": "Sin descripción en T01: completar qué es y para qué se usa",
-   "ret_otros": "Retorno (T01 no lo desglosa)",
-   "ef_operativo": "Eficiencias (T01 no las desglosa)"
+   "ef_operativo": "Otros costes operativos evitados (o eficiencias sin desglosar en T01)",
+   "ef_siniestros": "Fraude, recobros y sobrecostes evitados",
+   "ret_venta_nueva": "Venta nueva",
+   "ret_venta_cruzada": "Venta cruzada",
+   "ret_retencion": "Retención de clientes",
+   "ret_precio_margen": "Precio y margen",
+   "ret_cobros": "Cobros recuperados",
+   "ret_otros": "Otro retorno (o retorno sin desglosar en T01)"
   },
   "glosario_extra": [
    [
@@ -72,20 +78,94 @@
     "Optimizar, Aumentar o Transformar",
     "Nivel de ambición de la iniciativa: se usa la real si existe; si no, la confirmada; si no, la propuesta.",
     false
+   ],
+   [
+    "SEVEN-G",
+    "Embudo",
+    "Etapas del panel y fases de SEVEN-G",
+    "Propuesto = fases 0 y 1 · Hipótesis de valor = fase 2 · POC = fase 3 (viabilidad y riesgo) · En desarrollo = fases 4 y 5 · En uso = fases 6 y 7. Una parada en las fases 0-1 figura como No aprobado; en las fases 2-5, como Descartado; una retirada, como Desenganchado. Las fechas de cada cambio salen de los eventos de T01.",
+    false
    ]
   ],
   "demo": true,
   "industria": null,
+  "umbrales_kpi": {
+   "valor_validado_pct": {
+    "amarillo": 50,
+    "rojo": 20
+   },
+   "clasificados_compania_pct": {
+    "amarillo": 80,
+    "rojo": 50
+   },
+   "controles_completos_pct": {
+    "amarillo": 80,
+    "rojo": 50
+   }
+  },
+  "ciclo_vida": {
+   "fases_seven_g": {
+    "0": "Propuesto",
+    "1": "Propuesto",
+    "2": "Hipótesis de valor",
+    "3": "POC",
+    "4": "En desarrollo",
+    "5": "En desarrollo",
+    "6": "En uso",
+    "7": "En uso"
+   },
+   "embudo": [
+    "Propuesto",
+    "Hipótesis de valor",
+    "POC",
+    "En desarrollo",
+    "En uso"
+   ],
+   "ganado": "En uso",
+   "salidas": {
+    "No aprobado": [
+     "Propuesto"
+    ],
+    "Descartado": [
+     "Hipótesis de valor",
+     "POC",
+     "En desarrollo"
+    ],
+    "Desenganchado": [
+     "En uso"
+    ]
+   },
+   "fecha_de_estado": {
+    "Propuesto": "idea",
+    "En desarrollo": "inicio",
+    "En uso": "produccion",
+    "No aprobado": "retirada",
+    "Descartado": "retirada",
+    "Desenganchado": "retirada"
+   },
+   "dias_limite": {
+    "Propuesto": 50,
+    "Hipótesis de valor": 30,
+    "POC": 45,
+    "En desarrollo": {
+     "baja": 80,
+     "media": 135,
+     "alta": 180,
+     "sin_dato": 135
+    }
+   },
+   "aviso_pct_limite": 80
+  },
   "origen": {
    "herramienta": "SEVEN-G T01",
-   "version_esquema": "0.1",
+   "version_esquema": "0.2",
    "conector": "SEVEN-G/herramientas/T17_panel_consejo/t01_a_panel.py",
-   "version_conector": "1.0",
+   "version_conector": "2.0",
    "moneda": "EUR"
   },
-  "version_panel": 7,
-  "panel_completo": "t01_Dashboard_Casos_Uso_IA_v7.html",
-  "panel_movil": "t01_Dashboard_Movil_IA_v7.html"
+  "version_panel": 8,
+  "panel_completo": "t01_Dashboard_Casos_Uso_IA_v8.html",
+  "panel_movil": "t01_Dashboard_Movil_IA_v8.html"
  },
  "seguimiento": {
   "movimientos": [
@@ -346,7 +426,7 @@
     "exposicion": "Interno",
     "riesgo": "Riesgo mínimo",
     "funcion": "04 Operaciones",
-    "prioridad": null,
+    "prioridad": "Media",
     "ambicion": "Optimizar"
    },
    "detalle": {
@@ -415,7 +495,7 @@
     },
     "eficiencias": [
      {
-      "concepto": "operativo",
+      "concepto": "personas",
       "actual": {
        "importe": 138000,
        "formula": "5.520 h/año × 25 €/h materializadas en reducción de horas extra y externos",
@@ -437,7 +517,7 @@
      }
     ],
     "retorno": [],
-    "plazo_potencial": null,
+    "plazo_potencial": "2026-12",
     "hipotesis_potencial": "eficiencias: 6.000 h/año × 25 €/h · coste recurrente: Licencias y cómputo · inversion: Construcción e integración",
     "comparte_valor_con": [],
     "clave_reparto": null
@@ -460,15 +540,48 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2025-01-20",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2025-03-06",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2025-04-03",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "En desarrollo",
+      "fecha": "2025-05-05",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 4 (Diseño de la solución)"
+     },
+     {
+      "estado": "En uso",
+      "fecha": "2025-08-25",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 6 (Operación y gobierno)"
+     }
+    ],
+    "complejidad": "baja",
     "tier_riesgo": "bajo",
     "clasificacion_ria": "minimo",
     "controles": {
      "RIA": "hecho",
-     "FRIA": null,
+     "FRIA": "no_aplica",
      "DPIA": "no_aplica",
-     "seguridad": null,
-     "MUC": null,
-     "IA_ofensiva": null
+     "seguridad": "hecho",
+     "MUC": "hecho",
+     "IA_ofensiva": "no_aplica"
     },
     "valor_validado": {
      "base": null,
@@ -519,7 +632,7 @@
    "id": "IA-2025-002",
    "nombre": "Asistente conversacional de atención a clientes",
    "que_es": "Asistente de IA generativa en la web y la aplicación que responde dudas frecuentes de clientes sobre pedidos y devoluciones y deriva a una persona cuando no puede resolver.",
-   "descripcion": null,
+   "descripcion": "El retorno por retención sigue sin grupo de control: el consejo asesor recomienda medirlo antes de ampliar el alcance.",
    "area": "Atención al cliente",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Atención al cliente",
@@ -531,7 +644,7 @@
     "exposicion": "Cliente / persona externa (directa)",
     "riesgo": "Transparencia (art. 50)",
     "funcion": "01 Cliente",
-    "prioridad": null,
+    "prioridad": "Alta",
     "ambicion": "Aumentar"
    },
    "detalle": {
@@ -623,7 +736,7 @@
     ],
     "retorno": [
      {
-      "concepto": "otros",
+      "concepto": "retencion",
       "actual": {
        "importe": null,
        "formula": "Sin grupo de control todavía: no se ha podido cuantificar",
@@ -644,7 +757,7 @@
       }
      }
     ],
-    "plazo_potencial": null,
+    "plazo_potencial": "2027-06",
     "hipotesis_potencial": "eficiencias: 70.000 conversaciones/año × 6 € por contacto evitado · retorno: 0,3 p.p. de retención × 30 M€ de facturación recurrente · coste recurrente: Consumo de modelos, plataforma y operación · inversion: Construcción, integración y formación",
     "comparte_valor_con": [],
     "clave_reparto": null
@@ -667,15 +780,48 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2025-02-10",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2025-04-14",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2025-06-25",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "En desarrollo",
+      "fecha": "2025-08-13",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 4 (Diseño de la solución)"
+     },
+     {
+      "estado": "En uso",
+      "fecha": "2026-01-28",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 6 (Operación y gobierno)"
+     }
+    ],
+    "complejidad": "alta",
     "tier_riesgo": "medio",
     "clasificacion_ria": "transparencia",
     "controles": {
      "RIA": "hecho",
-     "FRIA": null,
+     "FRIA": "no_aplica",
      "DPIA": "hecho",
-     "seguridad": null,
-     "MUC": null,
-     "IA_ofensiva": null
+     "seguridad": "hecho",
+     "MUC": "hecho",
+     "IA_ofensiva": "pendiente"
     },
     "valor_validado": {
      "base": null,
@@ -738,7 +884,7 @@
     "exposicion": "Interno",
     "riesgo": "Riesgo mínimo",
     "funcion": "04 Operaciones",
-    "prioridad": null,
+    "prioridad": "Media",
     "ambicion": "Optimizar"
    },
    "detalle": {
@@ -821,7 +967,7 @@
      }
     ],
     "retorno": [],
-    "plazo_potencial": null,
+    "plazo_potencial": "2027-03",
     "hipotesis_potencial": "eficiencias: 1,3 M€ de stock reducido × 20 % de coste de mantenimiento · coste recurrente: Cómputo y mantenimiento del modelo · inversion: Construcción",
     "comparte_valor_con": [],
     "clave_reparto": null
@@ -844,15 +990,48 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2025-03-03",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2025-04-07",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2025-04-28",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "En desarrollo",
+      "fecha": "2025-06-09",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 4 (Diseño de la solución)"
+     },
+     {
+      "estado": "En uso",
+      "fecha": "2025-09-08",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 6 (Operación y gobierno)"
+     }
+    ],
+    "complejidad": "media",
     "tier_riesgo": "bajo",
     "clasificacion_ria": "minimo",
     "controles": {
      "RIA": "hecho",
-     "FRIA": null,
+     "FRIA": "no_aplica",
      "DPIA": "no_aplica",
-     "seguridad": null,
-     "MUC": null,
-     "IA_ofensiva": null
+     "seguridad": "hecho",
+     "MUC": "hecho",
+     "IA_ofensiva": "no_aplica"
     },
     "valor_validado": {
      "base": null,
@@ -901,11 +1080,11 @@
    "id": "IA-2025-004",
    "nombre": "Cribado de candidaturas en procesos de selección",
    "que_es": "Propuesta de sistema que ordenaría las candidaturas recibidas según su ajuste al puesto para que el equipo de selección priorice las entrevistas.",
-   "descripcion": null,
+   "descripcion": "Parada en G3 por sesgo no corregible: el consejo asesor pide aplicar la lección aprendida (calidad del histórico en la fase 1) al resto de la cartera.",
    "area": "Personas",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Personas",
-   "estado": "Desenganchado",
+   "estado": "Descartado",
    "inicio_estimado": "",
    "tags": {
     "tecnologia": "NLP / IDP",
@@ -981,13 +1160,40 @@
      "decisor": "Comité de IA",
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2025-04-14",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2025-07-01",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2025-08-06",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "Descartado",
+      "fecha": "2025-12-11",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Parada en G3 · Riesgo inaceptable"
+     }
+    ],
+    "complejidad": "alta",
     "tier_riesgo": "alto",
     "clasificacion_ria": "alto_riesgo",
     "controles": {
      "RIA": "hecho",
      "FRIA": "hecho",
      "DPIA": "hecho",
-     "seguridad": null,
+     "seguridad": "pendiente",
      "MUC": null,
      "IA_ofensiva": null
     },
@@ -1050,7 +1256,7 @@
     "exposicion": "Empleado",
     "riesgo": "Transparencia (art. 50)",
     "funcion": "06 Conocimiento",
-    "prioridad": null,
+    "prioridad": "Baja",
     "ambicion": "Optimizar"
    },
    "detalle": {
@@ -1118,15 +1324,54 @@
      "decisor": "Patrocinador",
      "sustituto": "Suite de productividad con asistente de IA (SIA-2026-001)"
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2025-01-13",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2025-02-21",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2025-03-14",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "En desarrollo",
+      "fecha": "2025-04-11",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 4 (Diseño de la solución)"
+     },
+     {
+      "estado": "En uso",
+      "fecha": "2025-06-06",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 6 (Operación y gobierno)"
+     },
+     {
+      "estado": "Desenganchado",
+      "fecha": "2026-02-27",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Retirada en G7 · Sustituida por otra solución"
+     }
+    ],
+    "complejidad": "baja",
     "tier_riesgo": "bajo",
     "clasificacion_ria": "transparencia",
     "controles": {
      "RIA": "hecho",
-     "FRIA": null,
+     "FRIA": "no_aplica",
      "DPIA": "hecho",
-     "seguridad": null,
-     "MUC": null,
-     "IA_ofensiva": null
+     "seguridad": "hecho",
+     "MUC": "hecho",
+     "IA_ofensiva": "no_aplica"
     },
     "valor_validado": {
      "base": null,
@@ -1175,7 +1420,7 @@
    "id": "IA-2025-006",
    "nombre": "Detección de fraude en solicitudes de reembolso",
    "que_es": "Modelo que puntúa cada solicitud de reembolso según su probabilidad de fraude para que el equipo antifraude revise primero las más sospechosas.",
-   "descripcion": null,
+   "descripcion": "Prioritaria por valor esperado; pendiente el manual de uso y control antes de G5.",
    "area": "Finanzas",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Finanzas",
@@ -1187,7 +1432,7 @@
     "exposicion": "Cliente (indirecta)",
     "riesgo": "Riesgo mínimo",
     "funcion": "07 Decisión",
-    "prioridad": null,
+    "prioridad": "Alta",
     "ambicion": "Aumentar"
    },
    "detalle": {
@@ -1248,7 +1493,7 @@
     },
     "eficiencias": [
      {
-      "concepto": "operativo",
+      "concepto": "personas",
       "actual": null,
       "potencial": {
        "importe": 120000,
@@ -1262,7 +1507,7 @@
      }
     ],
     "retorno": [],
-    "plazo_potencial": null,
+    "plazo_potencial": "2027-01",
     "hipotesis_potencial": "eficiencias: 4.000 h de revisión × 30 €/h · riesgo evitado: 0,4 % de fraude adicional detectado × 85 M€ reembolsados · coste recurrente: Plataforma y operación · inversion: Construcción y pruebas",
     "comparte_valor_con": [],
     "clave_reparto": null
@@ -1285,15 +1530,42 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2025-06-02",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2025-08-08",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2025-09-19",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "En desarrollo",
+      "fecha": "2025-12-03",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 4 (Diseño de la solución)"
+     }
+    ],
+    "complejidad": "alta",
     "tier_riesgo": "medio",
     "clasificacion_ria": "minimo",
     "controles": {
      "RIA": "hecho",
-     "FRIA": null,
+     "FRIA": "no_aplica",
      "DPIA": "hecho",
-     "seguridad": null,
-     "MUC": null,
-     "IA_ofensiva": null
+     "seguridad": "hecho",
+     "MUC": "pendiente",
+     "IA_ofensiva": "pendiente"
     },
     "valor_validado": {
      "base": null,
@@ -1342,7 +1614,7 @@
    "id": "IA-2026-001",
    "nombre": "Agente de conciliación bancaria con registro de asientos",
    "que_es": "Agente que concilia los movimientos bancarios con las facturas y registra por sí mismo los asientos de importe bajo, dentro de límites fijados; los casos dudosos pasan a una persona.",
-   "descripcion": null,
+   "descripcion": "Agente con capacidad de escritura en contabilidad: el consejo asesor pide validación humana de los asientos antes de G3.",
    "area": "Finanzas",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Finanzas",
@@ -1354,7 +1626,7 @@
     "exposicion": "Interno",
     "riesgo": "Riesgo mínimo",
     "funcion": "04 Operaciones",
-    "prioridad": null,
+    "prioridad": "Alta",
     "ambicion": "Optimizar"
    },
    "detalle": {
@@ -1430,15 +1702,36 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2026-01-12",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2026-03-16",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2026-04-22",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     }
+    ],
+    "complejidad": "alta",
     "tier_riesgo": "alto",
     "clasificacion_ria": "minimo",
     "controles": {
      "RIA": "hecho",
      "FRIA": null,
      "DPIA": "pendiente",
-     "seguridad": null,
-     "MUC": null,
-     "IA_ofensiva": null
+     "seguridad": "pendiente",
+     "MUC": "pendiente",
+     "IA_ofensiva": "pendiente"
     },
     "valor_validado": {
      "base": null,
@@ -1494,7 +1787,7 @@
    "area": "Servicios industriales",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Servicios industriales",
-   "estado": "POC",
+   "estado": "Hipótesis de valor",
    "inicio_estimado": null,
    "tags": {
     "tecnologia": "ML predictivo",
@@ -1502,7 +1795,7 @@
     "exposicion": "Cliente / persona externa (directa)",
     "riesgo": "Riesgo mínimo",
     "funcion": "02 Producto y servicio",
-    "prioridad": null,
+    "prioridad": "Media",
     "ambicion": "Transformar"
    },
    "detalle": {
@@ -1578,6 +1871,21 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2026-01-19",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2026-03-30",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     }
+    ],
+    "complejidad": "alta",
     "tier_riesgo": "medio",
     "clasificacion_ria": "minimo",
     "controles": {
@@ -1649,7 +1957,7 @@
     "exposicion": "Empleado",
     "riesgo": "Riesgo mínimo",
     "funcion": "06 Conocimiento",
-    "prioridad": null,
+    "prioridad": "Media",
     "ambicion": "Optimizar"
    },
    "detalle": {
@@ -1747,13 +2055,52 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2026-02-02",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2026-03-04",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2026-04-01",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2026-05-04",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2026-06-05",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "En desarrollo",
+      "fecha": "2026-07-06",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 4 (Diseño de la solución)"
+     }
+    ],
+    "complejidad": "media",
     "tier_riesgo": "medio",
     "clasificacion_ria": "minimo",
     "controles": {
      "RIA": "hecho",
-     "FRIA": null,
+     "FRIA": "no_aplica",
      "DPIA": "hecho",
-     "seguridad": null,
+     "seguridad": "pendiente",
      "MUC": null,
      "IA_ofensiva": null
     },
@@ -1819,7 +2166,7 @@
     "exposicion": "Interno",
     "riesgo": "Riesgo mínimo",
     "funcion": "04 Operaciones",
-    "prioridad": null,
+    "prioridad": "Alta",
     "ambicion": "Optimizar"
    },
    "detalle": {
@@ -1894,7 +2241,7 @@
      }
     ],
     "retorno": [],
-    "plazo_potencial": null,
+    "plazo_potencial": "2027-02",
     "hipotesis_potencial": "eficiencias: 0,6 % de mermas evitadas × 23 M€ de producción · coste recurrente: Mantenimiento y licencias · inversion: Cámaras, integración y modelo",
     "comparte_valor_con": [],
     "clave_reparto": null
@@ -1917,15 +2264,42 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2026-03-16",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2026-04-15",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     },
+     {
+      "estado": "POC",
+      "fecha": "2026-05-06",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)"
+     },
+     {
+      "estado": "En desarrollo",
+      "fecha": "2026-06-08",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 4 (Diseño de la solución)"
+     }
+    ],
+    "complejidad": "media",
     "tier_riesgo": "bajo",
     "clasificacion_ria": "minimo",
     "controles": {
      "RIA": "hecho",
-     "FRIA": null,
+     "FRIA": "no_aplica",
      "DPIA": "no_aplica",
-     "seguridad": null,
-     "MUC": null,
-     "IA_ofensiva": null
+     "seguridad": "hecho",
+     "MUC": "pendiente",
+     "IA_ofensiva": "no_aplica"
     },
     "valor_validado": {
      "base": null,
@@ -1978,7 +2352,7 @@
    "area": "Comercial",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Comercial",
-   "estado": "POC",
+   "estado": "Hipótesis de valor",
    "inicio_estimado": null,
    "tags": {
     "tecnologia": "GenAI",
@@ -1986,7 +2360,7 @@
     "exposicion": "Empleado",
     "riesgo": "Transparencia (art. 50)",
     "funcion": "01 Cliente",
-    "prioridad": null,
+    "prioridad": "Media",
     "ambicion": "Aumentar"
    },
    "detalle": {
@@ -2039,7 +2413,7 @@
     },
     "eficiencias": [
      {
-      "concepto": "operativo",
+      "concepto": "personas",
       "actual": null,
       "potencial": {
        "importe": 30000,
@@ -2054,7 +2428,7 @@
     ],
     "retorno": [
      {
-      "concepto": "otros",
+      "concepto": "venta_nueva",
       "actual": null,
       "potencial": {
        "importe": 250000,
@@ -2090,6 +2464,21 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2026-04-20",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2026-09-02",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)"
+     }
+    ],
+    "complejidad": "baja",
     "tier_riesgo": null,
     "clasificacion_ria": "transparencia",
     "controles": {
@@ -2151,7 +2540,7 @@
    "area": "Jurídico",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Jurídico",
-   "estado": "POC",
+   "estado": "Propuesto",
    "inicio_estimado": null,
    "tags": {
     "tecnologia": "GenAI",
@@ -2159,7 +2548,7 @@
     "exposicion": "Interno",
     "riesgo": "Riesgo mínimo",
     "funcion": "08 Regulación, ética y responsabilidad",
-    "prioridad": null,
+    "prioridad": "Baja",
     "ambicion": "Optimizar"
    },
    "detalle": {
@@ -2204,7 +2593,7 @@
     },
     "eficiencias": [
      {
-      "concepto": "operativo",
+      "concepto": "personas",
       "actual": null,
       "potencial": {
        "importe": 38000,
@@ -2241,6 +2630,15 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2026-06-15",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     }
+    ],
+    "complejidad": "baja",
     "tier_riesgo": null,
     "clasificacion_ria": "minimo",
     "controles": {
@@ -2300,7 +2698,7 @@
    "area": "Atención al cliente",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Atención al cliente",
-   "estado": "POC",
+   "estado": "Propuesto",
    "inicio_estimado": null,
    "tags": {
     "tecnologia": "Optimización",
@@ -2368,6 +2766,15 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2026-09-08",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     }
+    ],
+    "complejidad": null,
     "tier_riesgo": null,
     "clasificacion_ria": null,
     "controles": {
@@ -2427,7 +2834,7 @@
    "area": "Atención al cliente",
    "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
    "unidad": "Atención al cliente",
-   "estado": "POC",
+   "estado": "Propuesto",
    "inicio_estimado": null,
    "tags": {
     "tecnologia": "Agéntico",
@@ -2523,6 +2930,15 @@
      "decisor": null,
      "sustituto": null
     },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2026-07-20",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro"
+     }
+    ],
+    "complejidad": "alta",
     "tier_riesgo": null,
     "clasificacion_ria": null,
     "controles": {

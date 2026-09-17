@@ -188,7 +188,7 @@ Phase 6 has no time limit; it is controlled through the frequency of the continu
 | **Pending gates** | Requests awaiting verification or decision, with days elapsed. |
 | **Alerts** | Stalled initiatives, expired conditions, overdue continuity reviews, evidence awaiting verification. |
 | **Analysis** | Funnel metrics, cohorts and segmentation. |
-| **Export to the board dashboard** | Aggregated data in the oversight dashboard format. |
+| **Data** | Import of one or several JSON files (replacing or merging by code) and export of the full register. The full JSON is the input of the board dashboard (T17): the connector converts it into the dashboard JSON, with the funnel and the time spent in each stage taken from the phases and events of the register. |
 
 ---
 
@@ -254,7 +254,7 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 |---|---|---|---|---|---|---|---|
 | **T15** | Maturity diagnosis | 0–5 questionnaire by dimension with evidence and report. | C1, C5 | HTML with report | 11 | 2 | Applied with document 11 |
 | **T16** | Portfolio sphere map | Heat map of spheres × ambition levels with investment and value. | C2, C3 | Board dashboard view | 10 | 2 | Applied with document 10 |
-| **T17** | Board AI dashboard | Oversight: value, cost, risk, compliance, incidents, agility, adoption. | C4 | Full and mobile HTML + JSON | 60 | 1 | Available. Fed from T01 through the connector `herramientas/T17_panel_consejo` (v0.1); the engine's internal changes remain pending in its source project |
+| **T17** | Board AI dashboard | Oversight: value, cost, risk, compliance, incidents, agility, adoption. | C4 | Full and mobile HTML + JSON | 60 | 1 | Available. Fed from T01 through the connector `herramientas/T17_panel_consejo`: register (JSON) plus `config_panel.json` (indicator thresholds and lifecycle) → dashboard JSON → full and mobile dashboard, with a funnel and time per stage as in a CRM |
 | **T18** | Board recommendations register | Recommendations with persistent identifier, status, evidence and assessment. | C4 | HTML + JSON | 62 | 1 | Available. The T17 connector generates the register from the recommendations in T01 |
 | **T19** | AI thesis and risk appetite template | Board decision document, with thresholds and reference time limits. | C2 | Document template | 13 | 3 | Applied with document 13 |
 

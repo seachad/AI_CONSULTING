@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Adopción y cambio en la iniciativa"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -507,7 +518,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <hr />
 <h2 id="modelo-de-referencia-para-el-cambio"><span class="antetitulo">04</span>Modelo de referencia para el cambio</h2>
-<p>SEVEN-G no impone un modelo de gestión del cambio. Si la compañía ya usa uno, lo mantiene. Como referencia, este documento se apoya en <strong>ADKAR</strong>, modelo de gestión del cambio individual desarrollado por Prosci (ADKAR es marca de Prosci), que describe cinco condiciones sucesivas para que una persona cambie: conciencia de la necesidad, deseo de participar, conocimiento de cómo cambiar, habilidad para hacerlo y refuerzo para sostenerlo.</p>
+<p>SEVEN-G no impone un modelo de gestión del cambio. Si la compañía ya usa uno, lo mantiene. Como referencia, este documento se apoya en <strong><a class="ref-ext" href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener" title="Modelo ADKAR&#174; de Prosci (Awareness, Desire, Knowledge, Ability, Reinforcement)">ADKAR</a></strong>, modelo de gestión del cambio individual desarrollado por Prosci (ADKAR es marca de Prosci), que describe cinco condiciones sucesivas para que una persona cambie: conciencia de la necesidad, deseo de participar, conocimiento de cómo cambiar, habilidad para hacerlo y refuerzo para sostenerlo.</p>
 <p>La tabla muestra cómo cada condición se traduce en evidencias del marco. Lo exigible son las evidencias, no el modelo.</p>
 <div class="tabla"><table>
 <thead>
@@ -902,7 +913,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <hr />
 <h2 id="formacion-y-alfabetizacion-en-ia"><span class="antetitulo">08</span>Formación y alfabetización en IA</h2>
 <h3 id="8-1-marco-normativo">8.1 Marco normativo</h3>
-<p>El artículo 4 del Reglamento Europeo de IA obliga a proveedores y responsables del despliegue a adoptar medidas para garantizar, en la mayor medida posible, un nivel suficiente de alfabetización en IA de su personal y de otras personas que operen o usen sistemas de IA en su nombre, teniendo en cuenta sus conocimientos, experiencia y formación y el contexto de uso. Es aplicable desde el 2 de febrero de 2025. El Reglamento (UE) 2026/1744 (ómnibus digital sobre IA) ha modificado su redacción, que pasa a exigir medidas para <em>apoyar</em> el desarrollo de la alfabetización en IA sin fijar un nivel; el detalle y su estado de verificación, a fecha de consulta de septiembre de 2026, están en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.5).</p>
+<p>El artículo 4 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> obliga a proveedores y responsables del despliegue a adoptar medidas para garantizar, en la mayor medida posible, un nivel suficiente de alfabetización en IA de su personal y de otras personas que operen o usen sistemas de IA en su nombre, teniendo en cuenta sus conocimientos, experiencia y formación y el contexto de uso. Es aplicable desde el 2 de febrero de 2025. El Reglamento (UE) 2026/1744 (ómnibus digital sobre IA) ha modificado su redacción, que pasa a exigir medidas para <em>apoyar</em> el desarrollo de la alfabetización en IA sin fijar un nivel; el detalle y su estado de verificación, a fecha de consulta de septiembre de 2026, están en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.5).</p>
 <p>Con independencia de la evolución normativa, <strong>SEVEN-G exige formación en cada iniciativa porque el valor depende de ella</strong>. La alfabetización general de la plantilla se gobierna en el <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>; este documento trata la formación específica de la iniciativa.</p>
 <h3 id="8-2-formacion-por-publico">8.2 Formación por público</h3>
 <div class="tabla"><table>
@@ -1016,8 +1027,8 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="9-3-representacion-de-los-trabajadores">9.3 Representación de los trabajadores</h3>
 <p>Cuando la iniciativa afecta a condiciones de trabajo, a decisiones sobre empleo o a la supervisión del desempeño, la compañía debe cumplir los derechos de información y consulta aplicables. Entre las referencias vigentes a la fecha de consulta:</p>
 <ul>
-<li>El <strong>artículo 26.7 del Reglamento Europeo de IA</strong>: los responsables del despliegue que sean empleadores informan a los representantes de los trabajadores y a los trabajadores afectados antes de poner en servicio o utilizar un sistema de IA de alto riesgo en el lugar de trabajo.</li>
-<li>En España, el <strong>artículo 64.4.d) del Estatuto de los Trabajadores</strong>: derecho del comité de empresa a ser informado de los parámetros, reglas e instrucciones de los algoritmos o sistemas de IA que afectan a decisiones que pueden incidir en las condiciones de trabajo, el acceso y mantenimiento del empleo, incluida la elaboración de perfiles.</li>
+<li>El <strong>artículo 26.7 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a></strong>: los responsables del despliegue que sean empleadores informan a los representantes de los trabajadores y a los trabajadores afectados antes de poner en servicio o utilizar un sistema de IA de alto riesgo en el lugar de trabajo.</li>
+<li>En España, el <strong>artículo 64.4.d) del <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a></strong>: derecho del comité de empresa a ser informado de los parámetros, reglas e instrucciones de los algoritmos o sistemas de IA que afectan a decisiones que pueden incidir en las condiciones de trabajo, el acceso y mantenimiento del empleo, incluida la elaboración de perfiles.</li>
 <li>Lo que establezcan los convenios colectivos y la normativa de protección de datos en el ámbito laboral.</li>
 </ul>
 <p>El detalle, el calendario de información y consulta y la relación con la negociación colectiva se tratan en los documentos 34 y 50. En el plan de adopción se registra si procede, cuándo se ha informado o consultado y con qué resultado.</p>
@@ -1671,7 +1682,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>34 · Mapeo regulatorio</strong></td>
-<td>Artículo 4 (alfabetización en IA) en su redacción vigente, artículo 26 del Reglamento Europeo de IA y verificación de vigencia.</td>
+<td>Artículo 4 (alfabetización en IA) en su redacción vigente, artículo 26 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> y verificación de vigencia.</td>
 </tr>
 <tr>
 <td><strong>35 · Seguridad de IA y agentes</strong></td>
@@ -1717,11 +1728,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Cadena de la adopción al valor; principios; ADKAR como modelo de referencia; análisis de impacto en roles y tareas; plan de adopción de las fases 4 a 7; medición, materialización y reasignación explícita de la capacidad liberada con correspondencia con los documentos 40 y 50; formación y alfabetización en IA por público y tecnología; comunicación y participación de la representación de los trabajadores; diez indicadores de adopción con fórmula; criterios de adopción en G5 y G7 por nivel de ambición; resistencia al cambio y riesgos organizativos; responsabilidades e intensidad.</td>
+<td>Primera versión. Cadena de la adopción al valor; principios; <a class="ref-ext" href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener" title="Modelo ADKAR&#174; de Prosci (Awareness, Desire, Knowledge, Ability, Reinforcement)">ADKAR</a> como modelo de referencia; análisis de impacto en roles y tareas; plan de adopción de las fases 4 a 7; medición, materialización y reasignación explícita de la capacidad liberada con correspondencia con los documentos 40 y 50; formación y alfabetización en IA por público y tecnología; comunicación y participación de la representación de los trabajadores; diez indicadores de adopción con fórmula; criterios de adopción en G5 y G7 por nivel de ambición; resistencia al cambio y riesgos organizativos; responsabilidades e intensidad.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li><li><a href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener">Modelo ADKAR&#174; de Prosci (Awareness, Desire, Knowledge, Ability, Reinforcement)</a><span> · Prosci Inc.</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · AI risk methodology"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -407,7 +418,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li>The management of incidents and nonconformities (document 37). A materialised risk is managed as an incident; the risk methodology captures its lessons.</li>
 </ul>
 <h3 id="1-3-reference-standards">1.3 Reference standards</h3>
-<p>The methodology is consistent with <strong>ISO/IEC 23894</strong> (guidance on AI risk management, which adapts the ISO 31000 process), with the risk assessment and treatment requirements of <strong>ISO/IEC 42001</strong>, with the <em>Map</em>, <em>Measure</em> and <em>Manage</em> functions of the <strong>NIST AI RMF</strong> and its generative AI profile <strong>NIST AI 600-1</strong>, and with the risk management system that <strong>Regulation (EU) 2024/1689</strong> requires of providers of high-risk systems. SEVEN-G does not replace the company's corporate risk framework: it specialises it for AI and must be integrated into it (same level language, same bodies, same report).</p>
+<p>The methodology is consistent with <strong><a class="ref-ext" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener" title="ISO/IEC 23894:2023 Information technology — Artificial intelligence — Guidance on risk management">ISO/IEC 23894</a></strong> (guidance on AI risk management, which adapts the <a class="ref-ext" href="https://www.iso.org/standard/65694.html" target="_blank" rel="noopener" title="ISO 31000:2018 Risk management — Guidelines">ISO 31000</a> process), with the risk assessment and treatment requirements of <strong>ISO/IEC 42001</strong>, with the <em>Map</em>, <em>Measure</em> and <em>Manage</em> functions of the <strong><a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a></strong> and its generative AI profile <strong><a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)">NIST AI 600-1</a></strong>, and with the risk management system that <strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a></strong> requires of providers of high-risk systems. SEVEN-G does not replace the company's corporate risk framework: it specialises it for AI and must be integrated into it (same level language, same bodies, same report).</p>
 <p>This document does not constitute legal advice.</p>
 <hr />
 <h2 id="principles"><span class="antetitulo">02</span>Principles</h2>
@@ -697,7 +708,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td><strong>5 · Critical</strong></td>
 <td>More than M.</td>
 <td>Serious or irreversible harm to health, systematic discrimination or infringement of fundamental rights.</td>
-<td>Prohibited practice, possible serious incident under the AI Act, serious sanction or loss of authorisation.</td>
+<td>Prohibited practice, possible serious incident under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>, serious sanction or loss of authorisation.</td>
 <td>Interruption of a critical function beyond its impact tolerance.</td>
 <td>Lasting damage to trust; attention from the supervisor and the board.</td>
 </tr>
@@ -1407,7 +1418,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>RT-LEG-02</strong></td>
-<td><strong>Prohibited practice.</strong> The use falls within a practice prohibited by the AI Act.</td>
+<td><strong>Prohibited practice.</strong> The use falls within a practice prohibited by the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>.</td>
 <td>Lack of awareness; evolution of the use.</td>
 <td>Screening at G0 and G3; always avoid (01 §6.5).</td>
 <td>0, 3</td>
@@ -1423,7 +1434,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td><strong>RT-LEG-04</strong></td>
 <td><strong>Automated decisions without safeguards.</strong> Decisions with significant effects without effective human intervention or the right to contest.</td>
 <td>Nominal oversight; progressive automation not reviewed.</td>
-<td>Human oversight design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); analysis of Article 22 of the GDPR.</td>
+<td>Human oversight design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); analysis of Article 22 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>.</td>
 <td>3, 4</td>
 </tr>
 <tr>
@@ -1442,7 +1453,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>RT-LEG-07</strong></td>
-<td><strong>Late incident reporting.</strong> A serious incident, a data breach or a DORA or NIS2 incident is not reported in time.</td>
+<td><strong>Late incident reporting.</strong> A serious incident, a data breach or a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> incident is not reported in time.</td>
 <td>No severity criteria; no reporting owner.</td>
 <td>Response plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); reporting matrix (37).</td>
 <td>6</td>
@@ -2059,7 +2070,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)</a><span> · National Institute of Standards and Technology (NIST) · 26-07-2024</span></li><li><a href="https://www.iso.org/standard/65694.html" target="_blank" rel="noopener">ISO 31000:2018 Risk management — Guidelines</a><span> · ISO (ISO/TC 262) · 14-02-2018</span></li><li><a href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">ISO/IEC 23894:2023 Information technology — Artificial intelligence — Guidance on risk management</a><span> · ISO/IEC (JTC 1/SC 42) · 06-02-2023</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

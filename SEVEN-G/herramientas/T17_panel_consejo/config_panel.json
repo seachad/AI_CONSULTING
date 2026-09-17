@@ -1,0 +1,21 @@
+{
+ "_leeme": "Configuración general del panel del consejo (completo y móvil) de SEVEN-G. El conector t01_a_panel.py la copia en meta del JSON del panel (dashboard_data.json); después de cambiarla hay que regenerar los paneles. Las claves que empiezan por '_' son comentarios y no se copian.",
+ "umbrales_kpi": {
+  "_leeme": "Porcentajes. Por debajo de 'amarillo' el indicador se muestra en amarillo; por debajo de 'rojo', en rojo; en otro caso está en objetivo. 'rojo' debe ser menor que 'amarillo'. Valores de partida, a calibrar por cada organización.",
+  "valor_validado_pct": {"amarillo": 50, "rojo": 20, "_que_mide": "% del valor actual (eficiencias + retorno) con estado «validado» en T01"},
+  "clasificados_compania_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas con clasificación regulatoria registrada en T01 (distinta de «pendiente»)"},
+  "controles_completos_pct": {"amarillo": 80, "rojo": 50, "_que_mide": "% de iniciativas con todos los controles hechos o no aplicables"}
+ },
+ "ciclo_vida": {
+  "_leeme": "Ciclo de vida de las iniciativas como en un CRM. 'embudo': etapas en orden; la última es 'ganado' (en producción). 'salidas': estados de pérdida y desde qué etapas se llega a ellos. 'fecha_de_estado': fecha de reporte_compania.fechas que marca la entrada en cada estado si faltara el historial (el conector siempre lo aporta desde los eventos de T01). 'dias_limite': días máximos en cada estado (un número, o por complejidad: baja, media, alta y sin_dato); los estados sin límite (en producción y salidas) no se ponen. 'aviso_pct_limite': desde qué % del límite se marca en amarillo; por encima del límite, en rojo.",
+  "_fases_seven_g": "Etapa del embudo que corresponde a cada fase de SEVEN-G (0 a 7). La aplica el conector; el motor no la lee. Una iniciativa parada o retirada pasa a la salida prevista en «salidas» para la etapa en la que estaba: parada en fases 0-1 = No aprobado; en fases 2-5 = Descartado; retirada (o parada en fases 6-7) = Desenganchado.",
+  "fases_seven_g": {"0": "Propuesto", "1": "Propuesto", "2": "Hipótesis de valor", "3": "POC", "4": "En desarrollo", "5": "En desarrollo", "6": "En uso", "7": "En uso"},
+  "_dias_limite": "Valores de partida, a calibrar: suma de los plazos de referencia Enterprise de T01 (meta.configuracion.plazos_fase) de las fases de cada etapa; en desarrollo, por complejidad.",
+  "embudo": ["Propuesto", "Hipótesis de valor", "POC", "En desarrollo", "En uso"],
+  "ganado": "En uso",
+  "salidas": {"No aprobado": ["Propuesto"], "Descartado": ["Hipótesis de valor", "POC", "En desarrollo"], "Desenganchado": ["En uso"]},
+  "fecha_de_estado": {"Propuesto": "idea", "En desarrollo": "inicio", "En uso": "produccion", "No aprobado": "retirada", "Descartado": "retirada", "Desenganchado": "retirada"},
+  "dias_limite": {"Propuesto": 50, "Hipótesis de valor": 30, "POC": 45, "En desarrollo": {"baja": 80, "media": 135, "alta": 180, "sin_dato": 135}},
+  "aviso_pct_limite": 80
+ }
+}

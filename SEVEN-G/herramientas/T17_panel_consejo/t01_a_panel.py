@@ -9,9 +9,14 @@ referencias a regulación pueden quedar desactualizadas: cada organización es l
 que le aplica y certificar su propio cumplimiento. El autor y SEACHAD no asumen responsabilidad por su uso. Los datos de
 demostración son ficticios.
 
-Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, version 0.1) al JSON del
-panel (motor/ESQUEMA.md) y genera con el motor el panel completo y el movil; si T01 trae recomendaciones, genera tambien el
+Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, versiones 0.1 y 0.2) al JSON
+del panel (motor/ESQUEMA.md) y genera con el motor el panel completo y el movil; si T01 trae recomendaciones, genera tambien el
 registro de recomendaciones. Solo biblioteca estandar. La tabla de mapeo esta en README.md.
+
+Patron: registro T01 (JSON) + config_panel.json -> este conector -> dashboard_data.json -> motor -> panel completo y movil.
+El registro es la unica entrada de datos (cada iniciativa se da de alta como una oportunidad en un CRM); la configuracion general
+del panel (umbrales de los indicadores y ciclo de vida: etapas del embudo, salidas y limites de dias) esta en config_panel.json
+y se copia en meta. El ciclo de vida de cada caso (historial_estados) sale de los eventos de T01: nunca se estima.
 
 El motor del panel vive en la subcarpeta motor/ de esta herramienta (copia mantenida en AI_CONSULTING desde el 17-09-2026;
 origen: AI_en_el_consejo/motor, MIT, mismo autor) junto con demo_lib.py (plantilla de la pagina del registro). No hace falta
@@ -33,6 +38,7 @@ sys.dont_write_bytecode = True   # no dejar __pycache__
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 MOTOR_LOCAL = os.path.join(AQUI, "motor")
+CONFIG_PANEL = os.path.join(AQUI, "config_panel.json")
 T01_POR_DEFECTO = os.path.join(AQUI, "..", "T01_registro_iniciativas", "datos_demo.json")
 SALIDA_POR_DEFECTO = os.path.join(AQUI, "ejemplo", "salida")
 RUTA_CONECTOR = "SEVEN-G/herramientas/T17_panel_consejo/t01_a_panel.py"
@@ -69,8 +75,8 @@ def cargar_motor(panel=None):
     return panel
 
 
-VERSION_CONECTOR = "1.0"
-ESQUEMAS_T01 = ("0.1",)
+VERSION_CONECTOR = "2.0"
+ESQUEMAS_T01 = ("0.1", "0.2")
 FUENTE_T01 = "Registro de iniciativas T01"
 
 # ---------------------------------------------------------------- listas cerradas de T01 y su etiqueta en el panel
@@ -104,6 +110,19 @@ ORGANO = {"patrocinador": "Patrocinador", "patrocinador_conformidad_riesgos": "P
           "consejo": "Consejo", "organo_superior": "Órgano superior"}
 EVALUACION = {"hecha": "hecho", "pendiente": "pendiente", "no_aplica": "no_aplica"}
 RIESGO_TIER = {"bajo": "bajo", "medio": "medio", "alto": "alto", "critico": "alto"}
+# bloque opcional «panel» de cada iniciativa (esquema 0.2) y concepto de cada importe
+PRIORIDAD = {"alta": "Alta", "media": "Media", "baja": "Baja"}
+COMPLEJIDAD = ("baja", "media", "alta")
+CONTROL = ("hecho", "pendiente", "no_aplica")
+CONCEPTOS = {"eficiencias": ("personas", "herramientas", "siniestros", "operativo", "penalizaciones"),
+             "retorno": ("venta_nueva", "venta_cruzada", "retencion", "precio_margen", "cobros", "otros")}
+CONCEPTO_POR_DEFECTO = {"eficiencias": "operativo", "retorno": "otros"}
+# ciclo de vida por defecto (si falta config_panel.json): etapa del embudo de cada fase de SEVEN-G
+CICLO_POR_DEFECTO = {
+    "fases_seven_g": {"0": "Propuesto", "1": "Propuesto", "2": "Hipótesis de valor", "3": "POC", "4": "En desarrollo", "5": "En desarrollo", "6": "En uso", "7": "En uso"},
+    "embudo": ["Propuesto", "Hipótesis de valor", "POC", "En desarrollo", "En uso"], "ganado": "En uso",
+    "salidas": {"No aprobado": ["Propuesto"], "Descartado": ["Hipótesis de valor", "POC", "En desarrollo"], "Desenganchado": ["En uso"]},
+}
 CONTINUAN = ("continuar", "continuar_condiciones")
 # recomendaciones: estado de T01 -> estado del registro (T18)
 ESTADO_REC = {"abierta": "pendiente", "en_curso": "en_curso", "cerrada": "cumplida", "descartada": "descartada"}
@@ -116,6 +135,9 @@ GLOSARIO_SEVEN_G = [
     ["SEVEN-G", "G5", "Gate de paso a producción", "Puerta de decisión que autoriza operar. En este panel, su fecha es la de puesta en producción.", True],
     ["SEVEN-G", "R6", "Revisión de continuidad", "Revisión periódica de una iniciativa en producción: continuar, continuar con condiciones o adelantar G7. Cuenta como reevaluación.", False],
     ["SEVEN-G", "Ambición", "Optimizar, Aumentar o Transformar", "Nivel de ambición de la iniciativa: se usa la real si existe; si no, la confirmada; si no, la propuesta.", False],
+    ["SEVEN-G", "Embudo", "Etapas del panel y fases de SEVEN-G", "Propuesto = fases 0 y 1 · Hipótesis de valor = fase 2 · POC = fase 3 (viabilidad y riesgo) · En desarrollo = fases 4 y 5 · "
+     "En uso = fases 6 y 7. Una parada en las fases 0-1 figura como No aprobado; en las fases 2-5, como Descartado; una retirada, como Desenganchado. "
+     "Las fechas de cada cambio salen de los eventos de T01.", False],
 ]
 
 
@@ -128,16 +150,66 @@ def _euros(x):
     return f"{x:,.0f} €".replace(",", ".") if x is not None else "sin dato"
 
 
-def estado_panel(ini):
-    """Estado del panel a partir de la fase y el estado de T01 (tabla en README.md)."""
-    ciclo = ini["ciclo"]
-    if ciclo["estado"] in ("parada", "retirada") or ini.get("cierre"):
-        return "Desenganchado"
-    if ciclo["estado"] in ("en_produccion", "pendiente_g7") or ciclo["fase"] >= 6:
-        return "En uso"
-    if ciclo["fase"] >= 4:          # G3 superado: se construye
-        return "En desarrollo"
-    return "POC"                    # fases 0 a 3: exploración, hipótesis y viabilidad
+def _sin_comentarios(x):
+    """Quita las claves que empiezan por '_' (comentarios del JSON de configuración)."""
+    if isinstance(x, dict):
+        return {k: _sin_comentarios(v) for k, v in x.items() if not k.startswith("_")}
+    return [_sin_comentarios(v) for v in x] if isinstance(x, list) else x
+
+
+def cargar_config_panel(ruta=None):
+    """Configuración general del panel (config_panel.json, junto a este script): umbrales_kpi y ciclo_vida. Se copia en meta.
+    Si falta el fichero, el motor usa sus umbrales por defecto y el conector, el ciclo de vida de SEVEN-G por defecto."""
+    ruta = ruta or CONFIG_PANEL
+    cfg = _sin_comentarios(json.load(open(ruta, encoding="utf-8"))) if os.path.exists(ruta) else {}
+    cfg["ciclo_vida"] = {**CICLO_POR_DEFECTO, **(cfg.get("ciclo_vida") or {})}
+    ciclo = cfg["ciclo_vida"]
+    etapas = set(ciclo["embudo"])
+    assert set(ciclo["fases_seven_g"]) == {str(f) for f in range(8)} and set(ciclo["fases_seven_g"].values()) <= etapas, \
+        "config_panel.json: ciclo_vida.fases_seven_g debe asignar a cada fase (0 a 7) una etapa de ciclo_vida.embudo"
+    assert all(set(v) <= etapas for v in ciclo["salidas"].values()), "config_panel.json: ciclo_vida.salidas cita etapas que no están en el embudo"
+    return cfg
+
+
+def etapa_de_fase(ciclo_vida, fase):
+    return ciclo_vida["fases_seven_g"][str(fase)]
+
+
+def salida_de_etapa(ciclo_vida, etapa):
+    """Estado de pérdida previsto para una iniciativa que se cierra estando en esa etapa (la primera salida que la admite)."""
+    return next((s for s, origenes in ciclo_vida["salidas"].items() if etapa in origenes), None) or next(iter(ciclo_vida["salidas"]), etapa)
+
+
+def estado_panel(ini, ciclo_vida):
+    """Estado del panel a partir de la fase y el estado de T01 (tabla en README.md): la etapa del embudo de su fase o, si la
+    iniciativa está cerrada (parada o retirada), la salida prevista para esa etapa."""
+    etapa = etapa_de_fase(ciclo_vida, ini["ciclo"]["fase"])
+    if ini["ciclo"]["estado"] in ("parada", "retirada") or ini.get("cierre"):
+        return salida_de_etapa(ciclo_vida, etapa)
+    return etapa
+
+
+def historial_estados(ix, ini, ciclo_vida):
+    """Ciclo de vida del caso, como en un CRM: un cambio de estado por cada vez que la iniciativa entra en una etapa del embudo
+    (alta y eventos entrada_fase de T01, incluidas las vueltas atrás por pivotar o iterar) y, si está cerrada, su salida.
+    Las fechas son las de los eventos del registro: nunca se estiman. Entradas consecutivas en la misma etapa se agrupan."""
+    his = []
+
+    def entra(estado, fecha, nota):
+        if fecha and (not his or his[-1]["estado"] != estado):
+            his.append({"estado": estado, "fecha": fecha, "fuente": FUENTE_T01, "nota": nota})
+
+    entra(etapa_de_fase(ciclo_vida, 0), ini.get("fecha_registro"), "Alta en el registro")
+    for e in ix.eventos.get(ini["id"], []):
+        if e["tipo"] == "entrada_fase" and e.get("fase") is not None:
+            entra(etapa_de_fase(ciclo_vida, e["fase"]), e["fecha"], f"Entrada en la fase {e['fase']} ({FASES.get(e['fase'])})")
+    cierre = ini.get("cierre")
+    if cierre or ini["ciclo"]["estado"] in ("parada", "retirada"):
+        cierre = cierre or {}
+        que = "Parada" if (cierre.get("tipo") or ini["ciclo"]["estado"]) == "parada" else "Retirada"
+        entra(estado_panel(ini, ciclo_vida), cierre.get("fecha"), f"{que}{(' en ' + cierre['gate']) if cierre.get('gate') else ''}"
+              + (f" · {MOTIVO.get(cierre.get('motivo'), cierre.get('motivo'))}" if cierre.get("motivo") else ""))
+    return his
 
 
 def tecnologia_principal(tecs):
@@ -182,10 +254,25 @@ class Indice:
     def entrada_fase(self, iid, fase):
         return next((e["fecha"] for e in self.eventos.get(iid, []) if e["tipo"] == "entrada_fase" and e.get("fase") == fase), None)
 
-    def valor(self, iid, momento, tipo):
-        """El importe mas reciente de ese momento y tipo (por fecha y codigo)."""
-        vs = [v for v in self.valores.get(iid, []) if v["momento"] == momento and v["tipo"] == tipo]
+    def valor(self, iid, momento, tipo, concepto=None):
+        """El importe mas reciente de ese momento y tipo (por fecha y codigo); con concepto, solo los de ese concepto."""
+        vs = [v for v in self.valores.get(iid, []) if v["momento"] == momento and v["tipo"] == tipo
+              and (concepto is None or concepto_de(v) == concepto)]
         return sorted(vs, key=lambda v: (v.get("fecha") or "", v["id"]))[-1] if vs else None
+
+    def conceptos(self, iid, tipo):
+        """Conceptos con algun importe de ese tipo, en el orden del motor."""
+        usados = {concepto_de(v) for v in self.valores.get(iid, []) if v["tipo"] == tipo}
+        return [c for c in CONCEPTOS[tipo] if c in usados]
+
+
+def concepto_de(v):
+    """Concepto del panel de un importe de eficiencias o retorno (campo opcional «concepto», esquema 0.2); si falta o no es del
+    vocabulario del motor, el concepto genérico (operativo u otros)."""
+    tipo = v.get("tipo")
+    if tipo not in CONCEPTOS:
+        return None
+    return v.get("concepto") if v.get("concepto") in CONCEPTOS[tipo] else CONCEPTO_POR_DEFECTO[tipo]
 
 
 def item(v, hipotesis=None):
@@ -222,21 +309,27 @@ def economia(ix, ini, cerrado, moneda):
         inv["recurrente_potencial"] = item(V("esperado", "coste_recurrente"))
         if inv_ficha.get("pendiente") is not None:
             inv["adicional_potencial"] = ECO.item(inv_ficha["pendiente"], "Inversión pendiente según la ficha de la iniciativa", "declarado", FUENTE_T01)
-        for tipo, concepto, destino in (("eficiencias", "operativo", ef), ("capacidad_liberada", "capacidad_liberada", ef), ("retorno", "otros", rt)):
-            a, p = V("realizado", tipo), V("esperado", tipo)
-            if a or p:
+        # una línea por concepto (campo opcional «concepto» de cada importe; sin él, operativo u otros)
+        for tipo, destino in (("eficiencias", ef), ("retorno", rt)):
+            for concepto in ix.conceptos(iid, tipo):
+                a, p = ix.valor(iid, "realizado", tipo, concepto), ix.valor(iid, "esperado", tipo, concepto)
                 destino.append({"concepto": concepto, "actual": item(a), "potencial": item(p)})
+        a, p = V("realizado", "capacidad_liberada"), V("esperado", "capacidad_liberada")
+        if a or p:
+            ef.append({"concepto": "capacidad_liberada", "actual": item(a), "potencial": item(p)})
     hip = " · ".join(f"{v['tipo'].replace('_', ' ')}: {v['formula']}" for v in ix.valores.get(iid, []) if v["momento"] == "esperado" and v.get("formula"))
-    return {"moneda": moneda, "nota_caso": " · ".join(notas), "inversion": inv, "eficiencias": ef, "retorno": rt, "plazo_potencial": None,
+    return {"moneda": moneda, "nota_caso": " · ".join(notas), "inversion": inv, "eficiencias": ef, "retorno": rt,
+            "plazo_potencial": ((ini.get("panel") or {}).get("plazo_potencial") or None) if not cerrado else None,
             "hipotesis_potencial": (hip or None) if not cerrado else None, "comparte_valor_con": [], "clave_reparto": None}
 
 
 def valor_validado(ix, ini):
     """Suma de lo realizado y validado (eficiencias y retorno) y objetivo = valor esperado; lo demas, sin dato."""
     iid = ini["id"]
-    real = [ix.valor(iid, "realizado", t) for t in ("eficiencias", "retorno")]
+    lineas = [(t, c) for t in ("eficiencias", "retorno") for c in ix.conceptos(iid, t)]
+    real = [ix.valor(iid, "realizado", t, c) for t, c in lineas]
     val = [v for v in real if v and v["estado"] == "validado" and v.get("importe") is not None]
-    esp = [ix.valor(iid, "esperado", t) for t in ("eficiencias", "retorno")]
+    esp = [ix.valor(iid, "esperado", t, c) for t, c in lineas]
     esp = [v["importe"] for v in esp if v and v.get("importe") is not None]
     return {"base": None, "objetivo": sum(esp) if esp else None, "actual": sum(v["importe"] for v in val) if val else None,
             "metodo_atribucion": " · ".join(v["formula"] for v in val if v.get("formula")) or None,
@@ -244,10 +337,14 @@ def valor_validado(ix, ini):
             "fecha_validacion": max((v["fecha"] for v in val if v.get("fecha")), default=None), "recurrente": None}
 
 
-def caso(ix, ini, org, moneda):
+def caso(ix, ini, org, moneda, ciclo_vida):
     iid, cl, ciclo = ini["id"], ini["clasificacion"], ini["ciclo"]
-    estado = estado_panel(ini)
-    cerrado = estado == "Desenganchado"
+    estado = estado_panel(ini, ciclo_vida)
+    cerrado = estado in ciclo_vida["salidas"]
+    en_uso = estado == ciclo_vida["ganado"]
+    pan = ini.get("panel") or {}                       # bloque opcional del esquema 0.2: lo que el panel necesita y T01 no tenía
+    ctrl = pan.get("controles") or {}
+    control = lambda k: ctrl.get(k) if ctrl.get(k) in CONTROL else None
     tecs = cl.get("tecnologia") or []
     tp = tecnologia_principal(tecs)
     amb = ambicion(cl)
@@ -262,12 +359,12 @@ def caso(ix, ini, org, moneda):
     produccion = g5["fecha_decision"] if g5 else ix.entrada_fase(iid, 6)
     # T01 no estima años de producción: inicio_estimado es null. Excepción por el motor actual: en un caso «En uso» o «Desenganchado» sin
     # fecha de producción (p. ej., parada en G3) el panel escribiría «null (año estimado)»; con "" muestra «—» y no lo cuenta por año.
-    inicio_estimado = "" if (produccion is None and estado in ("En uso", "Desenganchado")) else None
+    inicio_estimado = "" if (produccion is None and (en_uso or cerrado)) else None
     return {
-        "id": iid, "nombre": ini["nombre"], "que_es": ini.get("descripcion") or None, "descripcion": None, "area": ini.get("area"),
+        "id": iid, "nombre": ini["nombre"], "que_es": ini.get("descripcion") or None, "descripcion": pan.get("observaciones_consejo") or None, "area": ini.get("area"),
         "compania": org, "unidad": ini.get("area"), "estado": estado, "inicio_estimado": inicio_estimado,
         "tags": {"tecnologia": TECNOLOGIA.get(tp), "naturaleza": NATURALEZA.get(tp), "exposicion": EXPOSICION.get(cl.get("exposicion")),
-                 "riesgo": REGULATORIA_TAG.get(reg), "funcion": ESFERAS.get(cl.get("esfera_principal")), "prioridad": None, "ambicion": AMBICION.get(amb)},
+                 "riesgo": REGULATORIA_TAG.get(reg), "funcion": ESFERAS.get(cl.get("esfera_principal")), "prioridad": PRIORIDAD.get(pan.get("prioridad")), "ambicion": AMBICION.get(amb)},
         "detalle": {"tipo": ", ".join(TECNOLOGIA_TXT.get(t, t) for t in tecs) or None, "decision": None, "datos": None, "aiact": REGULATORIA_TAG.get(reg),
                     "proveedores": proveedores, "valor_tipo": ", ".join(TIPO_VALOR.get(t, t) for t in cl.get("tipo_valor") or []) or None,
                     "es_ia": NATURALEZA.get(tp) if tp else None, "acciones_estimadas_cati": None},
@@ -285,10 +382,13 @@ def caso(ix, ini, org, moneda):
             "retirada": ({"motivo": f"{'Parada' if cierre['tipo'] == 'parada' else 'Retirada'}{(' en ' + cierre['gate']) if cierre.get('gate') else ''} · "
                                     f"{MOTIVO.get(cierre['motivo'], cierre['motivo'])}" + (f": {cierre['comentario']}" if cierre.get("comentario") else ""),
                           "decisor": cierre.get("organo"), "sustituto": cierre.get("sustituto")} if cierre else {"motivo": None, "decisor": None, "sustituto": None}),
+            # ciclo de vida como en un CRM: sale de los eventos de T01 (alta, entradas de fase y cierre); nunca se estima
+            "historial_estados": historial_estados(ix, ini, ciclo_vida),
+            "complejidad": pan.get("complejidad") if pan.get("complejidad") in COMPLEJIDAD else None,
             "tier_riesgo": RIESGO_TIER.get(ini.get("riesgo_residual_principal")),
             "clasificacion_ria": REGULATORIA_RIA.get(reg),
             "controles": {"RIA": None if reg is None else ("pendiente" if reg == "pendiente" else "hecho"), "FRIA": evals.get("eidf"), "DPIA": evals.get("eipd"),
-                          "seguridad": None, "MUC": None, "IA_ofensiva": None},
+                          "seguridad": control("seguridad"), "MUC": control("muc"), "IA_ofensiva": control("ia_ofensiva")},
             "valor_validado": valor_validado(ix, ini),
             "coste_real": {"anio": None, "acumulado": None, "fuente": None},
             "operacion": None, "agente": None, "proveedor_dora": None},
@@ -351,12 +451,14 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
     ix = Indice(t01)
     m = t01["meta"]
     org = organizacion or m.get("organizacion") or "la organización"
-    sigla = sigla or "consejo asesor"
+    sigla = sigla or (m.get("panel") or {}).get("consejo_sigla") or "consejo asesor"
+    config = cargar_config_panel()
+    ciclo_vida = config["ciclo_vida"]
     corte = m.get("fecha_referencia") or m.get("generado") or datetime.date.today().isoformat()
     anio = int(corte[:4])
     ficticio = bool(m.get("datos_ilustrativos")) if demo is None else demo
     moneda = m.get("moneda") or "EUR"
-    casos = [caso(ix, i, org, moneda) for i in t01["iniciativas"]]
+    casos = [caso(ix, i, org, moneda, ciclo_vida) for i in t01["iniciativas"]]
     aviso = PUB.AVISO_LEGAL if ficticio else PUB.AVISO_LEGAL_DATOS_PROPIOS
     textos = {
         "aviso_previo": ("<b>Datos ficticios</b> del registro de iniciativas T01 de SEVEN-G. " if ficticio else "Datos del registro de iniciativas T01 de SEVEN-G. "),
@@ -369,8 +471,15 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
         "backlog_sin_dato": "T01 no registra el backlog pendiente de análisis.",
         "adopcion_sin_telemetria": "T01 no registra licencias ni uso de las suites de productividad: sin dato.",
         "sin_que_es": "Sin descripción en T01: completar qué es y para qué se usa",
-        "ret_otros": "Retorno (T01 no lo desglosa)",
-        "ef_operativo": "Eficiencias (T01 no las desglosa)",
+        # rótulos de los conceptos, neutros respecto al sector (el motor trae por defecto los de su origen)
+        "ef_operativo": "Otros costes operativos evitados (o eficiencias sin desglosar en T01)",
+        "ef_siniestros": "Fraude, recobros y sobrecostes evitados",
+        "ret_venta_nueva": "Venta nueva",
+        "ret_venta_cruzada": "Venta cruzada",
+        "ret_retencion": "Retención de clientes",
+        "ret_precio_margen": "Precio y margen",
+        "ret_cobros": "Cobros recuperados",
+        "ret_otros": "Otro retorno (o retorno sin desglosar en T01)",
     }
     textos = PUB.textos_con_aviso(textos, aviso=aviso, aviso_corto=PUB.AVISO_LEGAL_CORTO if ficticio else
                                   "Aviso legal: «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma.")
@@ -380,6 +489,7 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
                  "fuentes": {"t01": f"Registro de iniciativas T01 de SEVEN-G (esquema {t01.get('version_esquema')})"},
                  "organizacion": org, "consejo_sigla": sigla, "compania_principal": org, "prefijo_ficheros": prefijo,
                  "mostrar_refs": False, "leer_json_servidor": False, "textos": textos, "glosario_extra": GLOSARIO_SEVEN_G, "demo": ficticio, "industria": None,
+                 **config,   # umbrales_kpi y ciclo_vida (config_panel.json), como en el patrón del panel: la configuración general viaja en meta
                  "origen": {"herramienta": "SEVEN-G T01", "version_esquema": t01.get("version_esquema"), "conector": RUTA_CONECTOR,
                             "version_conector": VERSION_CONECTOR, "moneda": moneda}},
         "seguimiento": {"movimientos": movimientos(ix), "incidentes": incidentes(ix), "adopcion": None, "agilidad": None, "ia_ofensiva": None, "cdm_compania": None},
@@ -417,12 +527,14 @@ def datos_registro(t01, panel_data, slug):
 
 
 # ---------------------------------------------------------------- generacion
-def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_", demo=None, enlace_portada=None, panel=None):
+def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_", demo=None, enlace_portada=None, panel=None, enlace_registro=None):
     """Convierte, genera panel completo y movil, JSON y, si hay recomendaciones, el registro. Devuelve un resumen.
-    enlace_portada: URL relativa (desde la carpeta de salida) de la pagina del conector, para enlazarla desde los pies."""
+    enlace_portada y enlace_registro: URL relativas (desde la carpeta de salida) de la pagina del conector y del registro de
+    iniciativas T01, para enlazarlas desde los pies."""
     cargar_motor(panel)
     reg_nombre = f"{prefijo}Registro_Recomendaciones.html" if t01.get("recomendaciones") else None
-    enlaces = " · ".join(x for x in ((f'<a href="{reg_nombre}">registro de recomendaciones</a>' if reg_nombre else ""),
+    enlaces = " · ".join(x for x in ((f'<a href="{enlace_registro}">registro de iniciativas T01</a>' if enlace_registro else ""),
+                                     (f'<a href="{reg_nombre}">registro de recomendaciones</a>' if reg_nombre else ""),
                                      (f'<a href="{enlace_portada}">página del conector T17</a>' if enlace_portada else "")) if x)
     data = convertir(t01, sigla, organizacion, prefijo, enlaces, demo)
     os.makedirs(salida, exist_ok=True)
@@ -464,7 +576,8 @@ def main(argv=None):
     t01 = json.load(open(a.t01, encoding="utf-8"))
     # la demo de ejemplo enlaza a la pagina del conector (index.html, dos niveles por encima de ejemplo/salida)
     es_demo = os.path.abspath(a.salida) == os.path.abspath(SALIDA_POR_DEFECTO)
-    r = generar_desde_t01(t01, a.salida, a.sigla, a.organizacion, a.prefijo, enlace_portada="../../index.html" if es_demo else None, panel=a.panel)
+    r = generar_desde_t01(t01, a.salida, a.sigla, a.organizacion, a.prefijo, enlace_portada="../../index.html" if es_demo else None, panel=a.panel,
+                          enlace_registro="../../../T01_registro_iniciativas/registro.html" if es_demo else None)
     print(f"motor del panel: {panel}\npanel completo:  {r['completo']}\npanel móvil:     {r['movil']}\ndatos:           {r['json']}\n"
           f"registro:        {r['registro'] or 'no se genera (T01 no trae recomendaciones)'}\n"
           f"{r['n']} casos · neto anual {_euros(r['neto'])} · neto potencial {_euros(r['neto_pot'])} · {r['nrecs']} recomendaciones · huella {r['huella']}")

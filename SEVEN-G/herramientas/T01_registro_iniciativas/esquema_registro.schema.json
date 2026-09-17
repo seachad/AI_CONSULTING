@@ -8,7 +8,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": { "type": "string" },
-    "version_esquema": { "const": "0.1" },
+    "version_esquema": { "enum": ["0.1", "0.2"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. Un fichero 0.1 es un 0.2 válido." },
     "aviso_legal": { "type": "string", "description": "Aviso legal y exención de responsabilidad de SEVEN-G y de la herramienta (en el idioma de la interfaz al exportar). Opcional al importar; la exportación del JSON completo siempre lo incluye." },
     "meta": { "$ref": "#/$defs/meta" },
     "personas": { "type": "array", "items": { "$ref": "#/$defs/persona" } },
@@ -73,6 +73,12 @@
         "datos_ilustrativos": { "type": "boolean" },
         "areas": { "type": "array", "items": { "type": "string" } },
         "nota": { "type": "string" },
+        "panel": {
+          "description": "Identidad del panel del consejo (T17). Opcional.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": { "consejo_sigla": { "$ref": "#/$defs/texto_o_nulo", "description": "Siglas o nombre del consejo asesor que figura en los textos del panel." } }
+        },
         "configuracion": {
           "type": "object",
           "required": ["plazos_fase", "plazo_decision_dias_habiles", "revision_continuidad_dias", "historial_minimo_ponderado"],
@@ -255,6 +261,27 @@
           "additionalProperties": false,
           "properties": { "realizada": { "$ref": "#/$defs/importe" }, "pendiente": { "$ref": "#/$defs/importe" } }
         },
+        "panel": {
+          "description": "Datos para el panel del consejo (T17) que el ciclo de vida no aporta. Opcional; null o ausente = sin dato. El estado del panel y su historial (ciclo de vida como en un CRM) no se escriben aquí: el conector los obtiene de la fase, el cierre y los eventos.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "complejidad": { "enum": ["baja", "media", "alta", null], "description": "Fija el límite de días en desarrollo del panel (config_panel.json, ciclo_vida.dias_limite)." },
+            "prioridad": { "enum": ["alta", "media", "baja", null] },
+            "plazo_potencial": { "type": ["string", "null"], "pattern": "^\\d{4}-(0[1-9]|1[0-2])$", "description": "Mes (AAAA-MM) en que se prevé alcanzar el valor esperado." },
+            "observaciones_consejo": { "$ref": "#/$defs/texto_o_nulo", "description": "Observaciones del consejo asesor sobre la iniciativa." },
+            "controles": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Controles que el panel sigue además de la clasificación regulatoria y de las evaluaciones de impacto (EIPD y EIDF).",
+              "properties": {
+                "seguridad": { "$ref": "#/$defs/estado_control" },
+                "muc": { "$ref": "#/$defs/estado_control", "description": "Manual de uso y control." },
+                "ia_ofensiva": { "$ref": "#/$defs/estado_control", "description": "El análisis de riesgo contempla ataques ejecutados con IA." }
+              }
+            }
+          }
+        },
         "etiquetas_libres": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
         "sistemas": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_sistema" } }
       }
@@ -408,9 +435,14 @@
         "estado": { "$ref": "#/$defs/estado_importe" },
         "periodo": { "$ref": "#/$defs/texto_o_nulo" },
         "fecha": { "$ref": "#/$defs/fecha_o_nula" },
-        "fuente": { "$ref": "#/$defs/texto_o_nulo" }
+        "fuente": { "$ref": "#/$defs/texto_o_nulo" },
+        "concepto": {
+          "description": "Línea del panel del consejo (T17) en la que suma el importe. Solo para eficiencias (personas, herramientas, siniestros, operativo, penalizaciones) y retorno (venta_nueva, venta_cruzada, retencion, precio_margen, cobros, otros). null o ausente = sin desglosar (operativo u otros).",
+          "enum": ["personas", "herramientas", "siniestros", "operativo", "penalizaciones", "venta_nueva", "venta_cruzada", "retencion", "precio_margen", "cobros", "otros", null]
+        }
       }
     },
+    "estado_control": { "enum": ["hecho", "pendiente", "no_aplica", null] },
     "riesgo": {
       "type": "object",
       "required": ["id", "iniciativa", "descripcion", "probabilidad", "impacto"],

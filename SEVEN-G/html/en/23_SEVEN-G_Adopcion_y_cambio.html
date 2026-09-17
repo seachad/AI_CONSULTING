@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Adoption and change in the initiative"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -507,7 +518,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <hr />
 <h2 id="reference-model-for-change"><span class="antetitulo">04</span>Reference model for change</h2>
-<p>SEVEN-G does not impose a change management model. If the company already uses one, it keeps it. As a reference, this document relies on <strong>ADKAR</strong>, an individual change management model developed by Prosci (ADKAR is a trademark of Prosci), which describes five successive conditions for a person to change: awareness of the need, desire to participate, knowledge of how to change, ability to do so and reinforcement to sustain it.</p>
+<p>SEVEN-G does not impose a change management model. If the company already uses one, it keeps it. As a reference, this document relies on <strong><a class="ref-ext" href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener" title="Prosci ADKAR&#174; Model (Awareness, Desire, Knowledge, Ability, Reinforcement)">ADKAR</a></strong>, an individual change management model developed by Prosci (ADKAR is a trademark of Prosci), which describes five successive conditions for a person to change: awareness of the need, desire to participate, knowledge of how to change, ability to do so and reinforcement to sustain it.</p>
 <p>The table shows how each condition translates into framework evidence. What is required is the evidence, not the model.</p>
 <div class="tabla"><table>
 <thead>
@@ -902,7 +913,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <hr />
 <h2 id="training-and-ai-literacy"><span class="antetitulo">08</span>Training and AI literacy</h2>
 <h3 id="8-1-regulatory-framework">8.1 Regulatory framework</h3>
-<p>Article 4 of the EU AI Act requires providers and deployers to take measures to ensure, to their best extent, a sufficient level of AI literacy among their staff and other persons dealing with the operation and use of AI systems on their behalf, taking into account their technical knowledge, experience, education and training and the context of use. It has applied since 2 February 2025. Regulation (EU) 2026/1744 (Digital Omnibus on AI) has amended its wording, which now requires measures to <em>support</em> the development of AI literacy without setting a level; the details and their verification status, as at the consultation date of September 2026, are in document 34 (§3.5).</p>
+<p>Article 4 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires providers and deployers to take measures to ensure, to their best extent, a sufficient level of AI literacy among their staff and other persons dealing with the operation and use of AI systems on their behalf, taking into account their technical knowledge, experience, education and training and the context of use. It has applied since 2 February 2025. Regulation (EU) 2026/1744 (Digital Omnibus on AI) has amended its wording, which now requires measures to <em>support</em> the development of AI literacy without setting a level; the details and their verification status, as at the consultation date of September 2026, are in document 34 (§3.5).</p>
 <p>Regardless of regulatory developments, <strong>SEVEN-G requires training in each initiative because value depends on it</strong>. General AI literacy across the workforce is governed in document 31; this document addresses training specific to the initiative.</p>
 <h3 id="8-2-training-by-audience">8.2 Training by audience</h3>
 <div class="tabla"><table>
@@ -1016,8 +1027,8 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="9-3-workers-representatives">9.3 Workers' representatives</h3>
 <p>When the initiative affects working conditions, decisions on employment or performance monitoring, the company must comply with the applicable information and consultation rights. Among the references in force at the consultation date:</p>
 <ul>
-<li><strong>Article 26(7) of the EU AI Act</strong>: deployers who are employers inform workers' representatives and the affected workers before putting into service or using a high-risk AI system in the workplace.</li>
-<li>In Spain, <strong>Article 64.4.d) of the Workers' Statute</strong> (Estatuto de los Trabajadores): the right of the works council to be informed of the parameters, rules and instructions on which the algorithms or AI systems are based that affect decisions that may have an impact on working conditions, access to and retention of employment, including profiling.</li>
+<li><strong>Article 26(7) of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a></strong>: deployers who are employers inform workers' representatives and the affected workers before putting into service or using a high-risk AI system in the workplace.</li>
+<li>In Spain, <strong>Article 64.4.d) of the <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)">Workers' Statute</a></strong> (Estatuto de los Trabajadores): the right of the works council to be informed of the parameters, rules and instructions on which the algorithms or AI systems are based that affect decisions that may have an impact on working conditions, access to and retention of employment, including profiling.</li>
 <li>The provisions of collective agreements and data protection regulations in the employment context.</li>
 </ul>
 <p>The details, the information and consultation timetable and the relationship with collective bargaining are addressed in documents 34 and 50. The adoption plan records whether it applies, when information or consultation took place and with what outcome.</p>
@@ -1671,7 +1682,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>34 · Regulatory mapping</strong></td>
-<td>Article 4 (AI literacy) in its current wording, Article 26 of the EU AI Act and verification of validity.</td>
+<td>Article 4 (AI literacy) in its current wording, Article 26 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> and verification of validity.</td>
 </tr>
 <tr>
 <td><strong>35 · AI and agent security</strong></td>
@@ -1717,11 +1728,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Chain from adoption to value; principles; ADKAR as reference model; analysis of the impact on roles and tasks; adoption plan for phases 4 to 7; measurement, materialisation and explicit reassignment of released capacity with correspondence to documents 40 and 50; training and AI literacy by audience and technology; communication and participation of workers' representatives; ten adoption indicators with a formula; adoption criteria at G5 and G7 by ambition level; resistance to change and organisational risks; responsibilities and intensity.</td>
+<td>First version. Chain from adoption to value; principles; <a class="ref-ext" href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener" title="Prosci ADKAR&#174; Model (Awareness, Desire, Knowledge, Ability, Reinforcement)">ADKAR</a> as reference model; analysis of the impact on roles and tasks; adoption plan for phases 4 to 7; measurement, materialisation and explicit reassignment of released capacity with correspondence to documents 40 and 50; training and AI literacy by audience and technology; communication and participation of workers' representatives; ten adoption indicators with a formula; adoption criteria at G5 and G7 by ambition level; resistance to change and organisational risks; responsibilities and intensity.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li><li><a href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener">Prosci ADKAR&#174; Model (Awareness, Desire, Knowledge, Ability, Reinforcement)</a><span> · Prosci Inc.</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "Glosario y convenciones de SEVEN-G"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -427,7 +438,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p>Las definiciones regulatorias (Reglamento Europeo de IA, RGPD, DORA, NIS2) se resumen para facilitar la lectura. En caso de duda prevalece siempre el texto oficial de la norma, cuya vigencia debe verificarse (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>; consulta realizada en septiembre de 2026). Este documento no constituye asesoramiento jurídico.</p>
+<p>Las definiciones regulatorias (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>) se resumen para facilitar la lectura. En caso de duda prevalece siempre el texto oficial de la norma, cuya vigencia debe verificarse (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>; consulta realizada en septiembre de 2026). Este documento no constituye asesoramiento jurídico.</p>
 <h3 id="1-4-principio-de-autoconsultoria-de-ia">1.4 Principio de autoconsultoría de IA</h3>
 <p>SEVEN-G aplica el principio de <strong>autoconsultoría de IA</strong>: la compañía debe poder gobernar, medir y corregir su uso de IA con sus propios equipos, usando un lenguaje común y evidencias verificables, sin depender de interpretaciones personales ni de un proveedor concreto.</p>
 <p>Este principio existe por cuatro razones prácticas:</p>
@@ -487,7 +498,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li><strong>Idioma y tono.</strong> Español de España, formal, claro y sin tono comercial. Frases cortas; tablas cuando ordenan mejor que el texto.</li>
 <li><strong>Mayúsculas.</strong> Llevan mayúscula inicial los valores de las escalas y listas cerradas cuando se usan como tales: resultados (<em>Continuar</em>, <em>Pivotar</em>), niveles de ambición (<em>Optimizar</em>), estados (<em>Cumple</em>, <em>En producción</em>), grados (<em>Sistemático</em>), niveles de riesgo (<em>Alto</em>). Los roles y órganos se escriben en minúscula en el texto corrido (&quot;el comité de IA&quot;, &quot;el responsable de riesgos&quot;) y con mayúscula inicial en encabezados, tablas y fichas.</li>
 <li><strong>Anglicismos.</strong> Se usa <em>gate</em> en cursiva como sinónimo de puerta de decisión. Otros anglicismos solo cuando no hay equivalente asentado y se indican en cursiva la primera vez (<em>shadow AI</em>).</li>
-<li><strong>Siglas.</strong> Se desarrollan la primera vez que aparecen en cada documento, salvo las de la sección 8 de uso general en el marco (IA, RGPD, UE).</li>
+<li><strong>Siglas.</strong> Se desarrollan la primera vez que aparecen en cada documento, salvo las de la sección 8 de uso general en el marco (IA, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, UE).</li>
 <li><strong>Ejemplos.</strong> Todo ejemplo, caso o cifra que no procede de una norma o de una fuente verificable se marca como <em>ilustrativo</em> o <em>ficticio</em>. No se usan datos ni rasgos reconocibles de clientes.</li>
 <li><strong>Cifras.</strong> No se incluyen cifras de mercado, porcentajes de mejora ni referencias de retorno sin fuente verificable. Los umbrales del marco se presentan como <em>orientativos</em> o <em>a calibrar</em> y los fija cada compañía en C2.</li>
 <li><strong>Normas.</strong> Solo se citan artículos y requisitos que existen, con fecha de consulta cuando haya cambios recientes o en tramitación. Todo documento con contenido regulatorio incluye la advertencia: <em>&quot;Este documento no constituye asesoramiento jurídico.&quot;</em></li>
@@ -632,7 +643,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Alfabetización en IA</strong></td>
-<td>Nivel suficiente de conocimiento sobre la IA del personal y de otras personas que operan o usan sistemas de IA en nombre de la compañía (Reglamento Europeo de IA, art. 4). En SEVEN-G es un requisito de C2 (política corporativa) y una evidencia por iniciativa (plan de capacidades en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>), organizada por perfiles (PER-PA a PER-PF, <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> §5.2).</td>
+<td>Nivel suficiente de conocimiento sobre la IA del personal y de otras personas que operan o usan sistemas de IA en nombre de la compañía (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, art. 4). En SEVEN-G es un requisito de C2 (política corporativa) y una evidencia por iniciativa (plan de capacidades en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>), organizada por perfiles (PER-PA a PER-PF, <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> §5.2).</td>
 <td>31 §6; 50 §5; 23 §8</td>
 <td>AI literacy</td>
 </tr>
@@ -1044,7 +1055,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Evaluación de impacto en protección de datos (EIPD)</strong></td>
-<td>Evaluación exigida por el RGPD (art. 35) cuando un tratamiento entraña probablemente un alto riesgo para los derechos y libertades de las personas.</td>
+<td>Evaluación exigida por el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> (art. 35) cuando un tratamiento entraña probablemente un alto riesgo para los derechos y libertades de las personas.</td>
 <td>32 §6.1; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 <td>data protection impact assessment (DPIA)</td>
 </tr>
@@ -1234,7 +1245,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Incidente grave relacionado con las TIC · incidente significativo</strong></td>
-<td>Incidentes que cumplen, respectivamente, los criterios de clasificación de DORA o del art. 23.3 de NIS2 según su transposición. Cuando aplican, son S1.</td>
+<td>Incidentes que cumplen, respectivamente, los criterios de clasificación de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o del art. 23.3 de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> según su transposición. Cuando aplican, son S1.</td>
 <td>37 §1.1</td>
 <td>major ICT-related incident · significant incident †</td>
 </tr>
@@ -1466,7 +1477,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Oficina de IA</strong></td>
-<td>Unidad interna, de metodología, cartera y medición, que mantiene el inventario, verifica en Lite, consolida la medición y prepara la información de los órganos. No debe confundirse con la Oficina Europea de IA.</td>
+<td>Unidad interna, de metodología, cartera y medición, que mantiene el inventario, verifica en Lite, consolida la medición y prepara la información de los órganos. No debe confundirse con la <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener" title="Oficina Europea de IA (Comisi&#243;n Europea)">Oficina Europea de IA</a>.</td>
 <td>01 §8.3; 30 §1.2</td>
 <td>AI Office</td>
 </tr>
@@ -2800,7 +2811,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>S1 · Crítica</strong></td>
-<td>Posible incidente grave según el Reglamento de IA; posible incidente grave de DORA o significativo de NIS2; brecha de datos personales con probable alto riesgo; acción no autorizada de un agente con efecto sobre dinero, terceros, datos personales o producción; daño a personas o discriminación a escala; función crítica fuera de su tolerancia; impacto 5 en cualquier eje.</td>
+<td>Posible incidente grave según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>; posible incidente grave de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o significativo de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>; brecha de datos personales con probable alto riesgo; acción no autorizada de un agente con efecto sobre dinero, terceros, datos personales o producción; daño a personas o discriminación a escala; función crítica fuera de su tolerancia; impacto 5 en cualquier eje.</td>
 <td>S1 Critical</td>
 </tr>
 <tr>
@@ -3987,9 +3998,9 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Según contexto.</td>
 </tr>
 <tr>
-<td><strong>CEPD</strong></td>
+<td><strong><a class="ref-ext" href="https://www.edpb.europa.eu/edpb_es" target="_blank" rel="noopener" title="Comit&#233; Europeo de Protecci&#243;n de Datos (CEPD)">CEPD</a></strong></td>
 <td>Comité Europeo de Protección de Datos</td>
-<td>Emite directrices y dictámenes sobre el RGPD aplicados a la IA.</td>
+<td>Emite directrices y dictámenes sobre el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> aplicados a la IA.</td>
 </tr>
 <tr>
 <td><strong>CRM</strong></td>
@@ -4002,7 +4013,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Fuente oficial de la regulación de la UE.</td>
 </tr>
 <tr>
-<td><strong>DORA</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a></strong></td>
 <td>Reglamento (UE) 2022/2554, de resiliencia operativa digital del sector financiero</td>
 <td>No se traduce.</td>
 </tr>
@@ -4032,7 +4043,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>No se traduce.</td>
 </tr>
 <tr>
-<td><strong>LOPDGDD</strong></td>
+<td><strong><a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales">LOPDGDD</a></strong></td>
 <td>Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales</td>
 <td>Normativa española (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 </tr>
@@ -4042,17 +4053,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Valor de tecnología &quot;ML predictivo&quot;.</td>
 </tr>
 <tr>
-<td><strong>MITRE ATLAS</strong></td>
+<td><strong><a class="ref-ext" href="https://atlas.mitre.org/" target="_blank" rel="noopener" title="MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems), base de conocimiento de t&#225;cticas y t&#233;cnicas adversarias contra sistemas de IA">MITRE ATLAS</a></strong></td>
 <td>Base de conocimiento de tácticas y técnicas de ataque a sistemas de IA</td>
 <td>Referencia de amenazas (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
 </tr>
 <tr>
-<td><strong>NIS2</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a></strong></td>
 <td>Directiva (UE) 2022/2555, relativa a medidas para un elevado nivel común de ciberseguridad</td>
 <td>No se traduce.</td>
 </tr>
 <tr>
-<td><strong>NIST AI RMF</strong></td>
+<td><strong><a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a></strong></td>
 <td>Marco de gestión de riesgos de IA del NIST (Instituto Nacional de Estándares y Tecnología de EE. UU.)</td>
 <td>No se traduce.</td>
 </tr>
@@ -4223,7 +4234,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://www.edpb.europa.eu/edpb_es" target="_blank" rel="noopener">Comit&#233; Europeo de Protecci&#243;n de Datos (CEPD)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener">Oficina Europea de IA (Comisi&#243;n Europea)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems), base de conocimiento de t&#225;cticas y t&#233;cnicas adversarias contra sistemas de IA</a><span> · The MITRE Corporation</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

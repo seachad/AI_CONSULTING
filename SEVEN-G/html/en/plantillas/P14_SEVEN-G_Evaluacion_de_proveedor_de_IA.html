@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · AI supplier assessment"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -548,7 +559,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td></td>
 </tr>
 <tr>
-<td>ICT third-party service provider supporting critical or important functions (DORA)</td>
+<td>ICT third-party service provider supporting critical or important functions (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>)</td>
 <td></td>
 <td>Yes · No · Not applicable. Only entities subject to DORA.</td>
 </tr>
@@ -616,7 +627,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Status as processor</td>
 <td></td>
 <td></td>
-<td>Data processing agreement in accordance with the GDPR when it processes personal data on behalf of the company.</td>
+<td>Data processing agreement in accordance with the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> when it processes personal data on behalf of the company.</td>
 </tr>
 <tr>
 <td>Location and international transfers</td>
@@ -665,7 +676,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Certifications and independent reports</td>
 <td></td>
 <td></td>
-<td>For example, ISO/IEC 27001 or ISO/IEC 42001, with a scope that covers the service.</td>
+<td>For example, <a class="ref-ext" href="https://www.iso.org/standard/27001" target="_blank" rel="noopener" title="ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection — Information security management systems — Requirements">ISO/IEC 27001</a> or ISO/IEC 42001, with a scope that covers the service.</td>
 </tr>
 <tr>
 <td>AI-specific controls</td>
@@ -699,7 +710,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td>Role of the supplier under the EU AI Act</td>
+<td>Role of the supplier under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a></td>
 <td></td>
 <td></td>
 <td>Provider of the system, provider of a general-purpose AI model or other.</td>
@@ -720,7 +731,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Sector-specific requirements <strong>(Enterprise)</strong></td>
 <td></td>
 <td></td>
-<td>DORA, NIS2 or other regulation applicable to the company.</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> or other regulation applicable to the company.</td>
 </tr>
 </tbody>
 </table></div>
@@ -858,7 +869,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>9</td>
 <td>Regulatory compliance</td>
-<td>Information and cooperation for the obligations under the EU AI Act and other regulations.</td>
+<td>Information and cooperation for the obligations under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> and other regulations.</td>
 <td>R</td>
 <td>M</td>
 <td>M</td>
@@ -929,7 +940,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p>For entities subject to DORA, contracts with ICT third-party service providers must include the key contractual provisions required by that regulation, enhanced when the service supports critical or important functions.</p>
+<p>For entities subject to <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, contracts with ICT third-party service providers must include the key contractual provisions required by that regulation, enhanced when the service supports critical or important functions.</p>
 <hr />
 <h2 id="conclusion"><span class="antetitulo">06</span>Conclusion</h2>
 <div class="tabla"><table>
@@ -1107,7 +1118,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection — Information security management systems — Requirements</a><span> · ISO/IEC (JTC 1/SC 27) · 25-10-2022</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

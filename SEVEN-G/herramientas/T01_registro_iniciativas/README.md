@@ -14,15 +14,37 @@ Especificación: documento 03 (§3 y §4), documento 01 (§6–§9), documento 0
 
 | Fichero | Contenido |
 |---|---|
-| `registro.html` | Aplicación completa en un único fichero (HTML, CSS y JavaScript sin dependencias). Lleva embebidos el catálogo de 128 criterios del documento 21 y los datos de demostración. |
-| `esquema_registro.schema.json` | JSON Schema 2020-12 del modelo de datos común (03 §4), con listas cerradas y patrones de código. |
-| `datos_demo.json` | Los mismos datos de demostración embebidos en la aplicación, válidos contra el esquema. |
+| `registro.html` | Aplicación completa en un único fichero (HTML, CSS y JavaScript sin dependencias). **Se genera** con `build_registro.ps1` a partir de los JSON; nunca se edita a mano. |
+| `datos_demo.json` | Fuente de los datos de demostración (ficticios) con los que se abre la aplicación, válidos contra el esquema. |
+| `catalogo_criterios.json` | Fuente del catálogo de 128 criterios de *gate* del documento 21, en español e inglés (un criterio por línea). |
+| `esquema_registro.schema.json` | JSON Schema 2020-12 del modelo de datos común (03 §4), con listas cerradas y patrones de código. Versión 0.2. |
+| `build_registro.ps1` | Construye `registro.html` incrustando los JSON en la plantilla. Comprueba las fuentes antes de generar. |
+| `_fuentes/registro.plantilla.html` | La aplicación sin datos: lo único que se edita a mano. No se publica. |
 | `README.md` · `README_en.md` | Este documento, en español e inglés. |
+
+## Cómo se construye: de los JSON al registro y del registro al panel
+
+El registro sigue el mismo patrón que el panel del consejo (T17): **los datos viven en JSON y el HTML se genera incrustándolos**, para que funcione abriendo el fichero desde el disco.
+
+```mermaid
+flowchart LR
+  A["datos_demo.json<br>catalogo_criterios.json<br>plantilla"] -->|build_registro.ps1| B["registro.html<br>(T01)"]
+  B -->|Exportar JSON completo| C["T01_registro_AAAA-MM-DD.json<br>(uno o varios)"]
+  C -->|Importar o fusionar| B
+  C --> D["t01_a_panel.py<br>(conector T17)"]
+  E["config_panel.json"] --> D
+  D --> F["JSON del panel"]
+  F --> G["Panel completo<br>y panel móvil"]
+```
+
+- `pwsh -File build_registro.ps1` genera `registro.html` con los datos de demostración. Con `-Datos mi_registro.json` la aplicación arranca con ese registro en lugar de la demostración, y con `-Salida` se elige el fichero de salida.
+- El script valida que los JSON se leen, que el catálogo no repite códigos, que iniciativas, eventos, importes y decisiones apuntan a entidades que existen y que el panel de ejemplo enlazado existe.
+- **Por qué importa.** El registro es la única entrada de datos: cada iniciativa se da de alta una vez, como una oportunidad en un CRM, y de ese mismo JSON salen el embudo del registro y el panel del consejo. No hay cifras escritas a mano en ningún HTML, de modo que el panel se puede reconstruir en cualquier momento desde el o los JSON del registro.
 
 ## Cómo se abre
 
 1. Doble clic en `registro.html`. Funciona desde el disco (`file://`), sin servidor, sin instalación y sin conexión.
-2. La primera vez se cargan los datos de demostración. A partir de ahí, cada cambio se guarda automáticamente en el almacenamiento local del navegador (`localStorage`), asociado a ese navegador y a esa ruta de fichero.
+2. La primera vez se cargan los datos de demostración: una banda avisa de que las **iniciativas son de ejemplo** y enlaza, igual que la cabecera, al **panel del consejo generado con esas mismas iniciativas** (T17). Con datos propios, el enlace lleva a la página del conector. A partir de ahí, cada cambio se guarda automáticamente en el almacenamiento local del navegador (`localStorage`), asociado a ese navegador y a esa ruta de fichero.
 3. Arriba a la derecha se elige idioma (ES/EN) y tema (automático, claro u oscuro). La preferencia se recuerda.
 4. En **Datos** se fija la *fecha de referencia* (fecha de corte para días y alertas). Los datos de demostración la fijan en 16-09-2026; vacía significa «hoy».
 
@@ -34,12 +56,12 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 |---|---|
 | **Embudo** | Indicadores de cartera, embudo por fase con desglose por estado, estancadas y valor esperado, y tabla de iniciativas con días en fase frente al plazo y alertas. Filtros por esfera, ambición, intensidad, clasificación regulatoria, tecnología, exposición, tipo de valor, área, estado, fase, proveedor, etiqueta libre y texto. |
 | **Tablero** | Tarjetas por fase (0–7) y columna de cerradas. Las tarjetas cambian de columna cuando se registra la decisión del *gate*. |
-| **Ficha** | Pestañas: resumen (identificación, responsables con incompatibilidades, clasificación, ciclo de vida, valor, riesgo y cumplimiento), *gate* en curso (T03), condiciones, valor (validado, declarado o estimado), línea de tiempo de eventos e historial de *gates* con sus criterios. |
+| **Ficha** | Pestañas: resumen (identificación, responsables con incompatibilidades, clasificación, ciclo de vida, valor, riesgo y cumplimiento, y datos para el panel del consejo), *gate* en curso (T03), condiciones, valor (validado, declarado o estimado), línea de tiempo de eventos e historial de *gates* con sus criterios. |
 | **Gates pendientes** | Solicitudes a la espera de verificación o decisión, con días hábiles frente al plazo, bloqueantes y evidencias sin verificar; revisiones de continuidad próximas o caducadas. |
 | **Alertas** | Estancadas, decisión fuera de plazo, condiciones vencidas, revisiones de continuidad caducadas, evidencias pendientes de verificación, tercera iteración (elevación), reanudación vencida, roles incompatibles y no conformidades fuera de plazo. |
 | **Análisis** | Métricas de 03 §3.5 segmentables con los filtros (ver más abajo). |
 | **Inventario (T02)** | Sistemas propios, de terceros y de uso corporativo, con clasificación, intensidad, autonomía, proveedores, responsable y revisión; avisos de coherencia con el registro. |
-| **Datos** | Importación y exportación, preferencias, plazos de referencia (C2/C5), personas y proveedores. |
+| **Datos** | Exportación, pasos para generar el panel del consejo, importación de uno o varios JSON (sustituir o fusionar), preferencias, plazos de referencia (C2/C5), personas y proveedores. |
 
 ## Reglas que aplica la herramienta
 
@@ -82,61 +104,69 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 
 ## Importar y exportar
 
-- **Exportar JSON completo**: todo el registro en el formato de `esquema_registro.schema.json`. Es la copia de seguridad y el medio para compartir datos. Incluye el campo raíz `aviso_legal` con el aviso legal en el idioma de la interfaz.
+- **Exportar JSON completo**: todo el registro en el formato de `esquema_registro.schema.json`. Es la copia de seguridad, el medio para compartir datos y **la entrada del panel del consejo (T17)**. Incluye el campo raíz `aviso_legal` con el aviso legal en el idioma de la interfaz.
 - **Exportar CSV de iniciativas**: una fila por iniciativa con clasificación, ciclo de vida, responsables, valor, condiciones, cierre y alertas. Separador punto y coma, UTF-8 con BOM; listas separadas por `|`; celda vacía = sin dato; los códigos de las listas cerradas se exportan sin traducir. **No incluye el aviso legal**: el CSV no admite líneas de comentario y una primera línea añadida rompería la cabecera al abrirlo en una hoja de cálculo o importarlo; quien distribuya el CSV debe acompañarlo del aviso.
-- **Exportar JSON para el panel del consejo**: estructura de `AI_en_el_consejo/motor/ESQUEMA.md` (ver correspondencia). Como el esquema del panel no prevé un campo raíz para el aviso, este va en `meta.textos.aviso_previo` (el panel lo muestra en su aviso inicial) y, además, en `seveng_t01.aviso_legal`; siempre en español, como el resto del panel.
-- **Importar JSON**: selector de fichero; se valida (estructura, patrones de código, listas cerradas, fechas, referencias y resultados admitidos por *gate*) y, si no hay errores, se pide confirmación y se sustituyen los datos actuales. No fusiona registros.
+- **Panel del consejo (T17)**: la vista indica los pasos (exportar el JSON completo y ejecutar el conector `t01_a_panel.py`) y enlaza al panel de ejemplo y a la página del conector. El JSON del panel no se construye en el navegador: hay una sola correspondencia T01 → panel, la del conector.
+- **Importar JSON**: selector de **uno o varios ficheros** (por ejemplo, un registro por área o por periodo). Cada fichero se valida (estructura, patrones de código, listas cerradas, fechas, referencias y resultados admitidos por *gate*); después se unen por código (si un código se repite, prevalece el del último fichero; `meta` es la del primero, con las áreas de todos) y se valida el resultado. **Validar e importar** sustituye los datos actuales; **Validar y fusionar** añade los ficheros a los datos actuales. Siempre se pide confirmación.
 - **Restaurar demostración** y **borrar datos locales** piden confirmación.
 
 ## Modelo de datos
 
-Un único objeto JSON con `version_esquema` (`0.1`), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
+Un único objeto JSON con `version_esquema` (`0.2`; los ficheros `0.1` se aceptan y se actualizan al cargarlos, porque `0.2` solo añade campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
 
 | Lista | Entidad | Código |
 |---|---|---|
-| `iniciativas` | Iniciativa: identificación, responsables, clasificación (taxonomía controlada), T04, T05, ciclo de vida (fase, estado, entrada, iteración, espera, próxima revisión), cierre, riesgo residual, evaluaciones de impacto, inversión, etiquetas libres, sistemas | `IA-AAAA-NNN` |
+| `iniciativas` | Iniciativa: identificación, responsables, clasificación (taxonomía controlada), T04, T05, ciclo de vida (fase, estado, entrada, iteración, espera, próxima revisión), cierre, riesgo residual, evaluaciones de impacto, inversión, datos para el panel (`panel`, opcional), etiquetas libres, sistemas | `IA-AAAA-NNN` |
 | `sistemas` | Sistema de IA (T02) | `SIA-AAAA-NNN` |
 | `eventos` | Evento con fecha, autor, motivo y cambio | `EVT-NNNNNN` |
 | `decisiones_gate` | Solicitud, verificación, decisión, órgano, elevación, resultado propuesto y resultado, firmas G5, criterios evaluados (`codigo`, `estado`, `justificacion`, `evidencias`) | `DG-AAAA-NNN` |
 | `condiciones` | Condición con decisión, criterio, responsable, plazo, verificación y estado | `CND-AAAA-NNN` |
 | `evidencias` | Enlace, plantilla, versión, autor, fecha y verificación (se enlaza, no se copia) | `EVI-AAAA-NNNN` |
-| `valores` | Importe esperado o realizado por tipo, fórmula, estado (validado, declarado, estimado), periodo y fuente | `VAL-NNNN` |
+| `valores` | Importe esperado o realizado por tipo, fórmula, estado (validado, declarado, estimado), periodo, fuente y concepto del panel (`concepto`, opcional) | `VAL-NNNN` |
 | `riesgos` · `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Entidades relacionadas (en esta versión se muestran y se exportan; su gestión completa corresponde a T06, T08, T09 y T18) | `IA-AAAA-NNN · Rnn` · `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
 | `personas` | Personas asignables a roles, verificación, decisión y condiciones | `PER-NN` |
 
 Listas cerradas (valores en el esquema): esfera `01`–`09`; ambición `optimizar · aumentar · transformar`; intensidad `lite · enterprise`; clasificación regulatoria `prohibido · alto_riesgo · transparencia · riesgo_minimo · fuera_ambito · pendiente`; tecnología `ml_predictivo · ia_generativa · agente · lenguaje_documentos · vision · optimizacion · ia_terceros_embebida · reglas`; exposición `interna · empleados · clientes_indirecta · clientes_directa`; tipo de valor `eficiencia · retorno · riesgo_evitado · cumplimiento`; motivo de parada o retirada (10 códigos); estados (8); resultados (9); estados de criterio (4); tipos de evento (18); autonomía `A0`–`A3`.
 
-## Correspondencia con el panel del consejo (T17)
+## Qué aporta el registro al panel del consejo (T17)
 
-| Panel (`ESQUEMA.md`) | Origen en T01 |
+El conector `../T17_panel_consejo/t01_a_panel.py` convierte el JSON completo de este registro en el JSON del panel y genera el panel completo y el móvil. La tabla de correspondencia campo a campo está en el [README de T17](../T17_panel_consejo/README.md). Lo esencial:
+
+| Qué muestra el panel | De dónde sale en T01 |
 |---|---|
-| `casos[].id`, `nombre`, `que_es`, `unidad` | `id`, `nombre`, `descripcion`, `area` |
-| `casos[].estado` | Aproximación: fase 6–7 → `En uso`; fase 5 → `POC`; fases 0–4 → `En desarrollo`; parada o retirada → `Desenganchado` |
-| `tags.tecnologia`, `exposicion`, `riesgo`, `funcion`, `ambicion` | Etiquetas de tecnología, exposición, clasificación regulatoria, esfera principal y ambición (confirmada o propuesta), en español |
-| `detalle.aiact`, `proveedores`, `valor_tipo`, `es_ia` | Clasificación regulatoria, nombres de proveedores, tipos de valor, tecnología distinta de «Reglas» |
-| `economia.inversion.construccion` / `recurrente_anual` / `recurrente_potencial` / `adicional_potencial` | Valor `inversion` (realizado o esperado) / `coste_recurrente` realizado / `coste_recurrente` esperado / `inversion.pendiente` |
-| `economia.eficiencias[]`, `retorno[]` | `eficiencias` → concepto `operativo`; `capacidad_liberada` → `capacidad_liberada`; `retorno` → `otros` (realizado = `actual`, esperado = `potencial`) |
-| Estado de cada importe | `validado` y `declarado` iguales; `estimado` → `estimado_cati` |
-| `reporte_compania.propietario_negocio`, `responsable_tecnico` | Patrocinador y responsable técnico |
-| `fechas.idea`, `inicio`, `aprobacion`, `piloto`, `produccion`, `ultima_revision`, `retirada` | Registro, G0 aprobado, G3 aprobado, entrada en fase 5, entrada en fase 6, última R6, fecha de retirada |
-| `retirada`, `tier_riesgo`, `clasificacion_ria`, `controles.DPIA`/`FRIA` | Cierre (motivo, órgano, sustituto), riesgo residual principal, clasificación (`fuera_ambito` → `no_es_ia`; `pendiente` → `null`), evaluaciones EIPD y de derechos fundamentales |
-| `seguimiento.movimientos[]` | Eventos `alta`, `parada`, `retirada` y `cambio_clasificacion` |
-| `seguimiento.incidentes[]` | `incidentes` (tipo = severidad S1–S4) |
+| **Estado del caso y embudo** (Propuesto → Hipótesis de valor → POC → En desarrollo → En uso; salidas: No aprobado, Descartado, Desenganchado) | Fase y cierre de la iniciativa: fases 0–1 → Propuesto; 2 → Hipótesis de valor; 3 → POC; 4–5 → En desarrollo; 6–7 → En uso. Parada en fases 0–1 → No aprobado; en fases 2–5 → Descartado; retirada → Desenganchado. La correspondencia se configura en `config_panel.json` de T17. |
+| **Ciclo de vida y tiempos por etapa**, como en un CRM (`historial_estados`) | Alta y eventos `entrada_fase` (incluidas las vueltas atrás por pivotar o iterar) y fecha del cierre. Nunca se estiman. |
+| **Inversión, eficiencias y retorno**, actual y potencial | `valores` realizados y esperados, con su estado (validado, declarado, estimado) y, si se informa, su `concepto` (línea del panel). |
+| **Clasificación y controles** | Clasificación regulatoria, evaluaciones de impacto (EIPD, EIDF) y `panel.controles` (seguridad, manual de uso y control, riesgo de ataques con IA). |
+| **Complejidad, prioridad, plazo del valor esperado y observaciones del consejo** | Bloque opcional `panel` de la iniciativa (en la ficha: «Datos para el panel del consejo»). |
+| **Movimientos, incidentes y recomendaciones (T18)** | Eventos de alta, parada, retirada y cambio de clasificación, revisiones R6, `incidentes` y `recomendaciones`. |
 
-**Lo que no mapea.**
-- Del panel, sin origen en T01 (se exportan `null` o vacíos): `descripcion` (observaciones del consejo), `inicio_estimado`, `tags.naturaleza` y `prioridad`, `detalle.tipo`, `decision`, `datos` y `acciones_estimadas_cati`, `desglose_recurrente`, `plazo_potencial`, `comparte_valor_con`, `clave_reparto`, `valor_validado` (base, objetivo, actual), `operacion`, `agente`, `proveedor_dora`, `controles.RIA`, `seguridad`, `MUC` e `IA_ofensiva`, `seguimiento.adopcion`, `agilidad`, `ia_ofensiva`, `cdm_compania` e `historico`.
-- De T01, sin campo en el panel: fase y estado SEVEN-G, iteraciones, decisiones y criterios de *gate*, condiciones, evidencias, eventos distintos de los movimientos, T04 y T05, plazos, estancadas, alertas, probabilidad histórica y valor ponderado, y los importes de `riesgo_evitado` y `cumplimiento`. Un resumen del embudo se añade en el bloque `seveng_t01`, que el panel actual no lee.
-- Los conceptos de eficiencias y retorno del panel son más finos que los tipos de T01; la exportación no los desglosa.
+**Campos añadidos en el esquema 0.2 para el panel** (todos opcionales; vacío = «sin dato»):
+
+| Campo | Valores | Uso en el panel |
+|---|---|---|
+| `iniciativas[].panel.complejidad` | `baja` · `media` · `alta` | Límite de días en desarrollo. |
+| `iniciativas[].panel.prioridad` | `alta` · `media` · `baja` | Etiqueta y filtro de prioridad. |
+| `iniciativas[].panel.plazo_potencial` | `AAAA-MM` | Plazo del valor potencial. |
+| `iniciativas[].panel.observaciones_consejo` | texto | Observaciones del consejo asesor en la ficha del caso. |
+| `iniciativas[].panel.controles` | `seguridad`, `muc`, `ia_ofensiva`: `hecho` · `pendiente` · `no_aplica` | Controles completos por caso. |
+| `valores[].concepto` | Eficiencias: `personas` · `herramientas` · `siniestros` · `operativo` · `penalizaciones`. Retorno: `venta_nueva` · `venta_cruzada` · `retencion` · `precio_margen` · `cobros` · `otros` | Línea del panel en la que suma el importe; sin concepto va a `operativo` u `otros`. |
+| `meta.panel.consejo_sigla` | texto | Nombre o siglas del consejo asesor en los textos del panel. |
+
+**Por qué importa.** Dar de alta una iniciativa en T01 equivale a registrar una oportunidad en un CRM: a partir de ahí, cada entrada de fase, decisión de *gate*, importe y cierre que se anota en el registro mueve el caso por el embudo del panel sin que nadie vuelva a escribir el dato. El consejo ve lo mismo que gestiona la Oficina de IA.
+
+Lo que T01 no registra (adopción de las suites de productividad, ficha de identidad y permisos de los agentes, proveedor DORA, métricas de operación) queda «sin dato» en el panel.
 
 ## Datos de demostración
 
-Compañía ficticia (*Compañía Ejemplo Industrial, S.A.*), 21 personas y 4 proveedores ficticios, 14 iniciativas registradas entre 2025 y 2026 en todas las fases (0–7) y en los ocho estados: una registrada, en fase, pendientes de *gate* (una en tercera iteración, elevada al órgano superior), una en espera con reanudación vencida, en producción (una con revisión de continuidad caducada), una pendiente de G7 adelantado por R6, una **parada** en G3 por riesgo inaceptable y una **retirada** tras G7 por sustitución. Hay iniciativas estancadas, dos **condiciones vencidas**, un pivotaje, decisiones con condiciones, una firma multinivel G5 Enterprise, importes validados, declarados, estimados y sin dato, 9 sistemas (incluido uno de uso corporativo), incidentes y no conformidades. Los datos son ilustrativos: cualquier parecido con una compañía o persona real es casual.
+Compañía ficticia (*Compañía Ejemplo Industrial, S.A.*), 21 personas y 4 proveedores ficticios, 14 iniciativas registradas entre 2025 y 2026 en todas las fases (0–7) y en los ocho estados: una registrada, en fase, pendientes de *gate* (una en tercera iteración, elevada al órgano superior), una en espera con reanudación vencida, en producción (una con revisión de continuidad caducada), una pendiente de G7 adelantado por R6, una **parada** en G3 por riesgo inaceptable y una **retirada** tras G7 por sustitución. Hay iniciativas estancadas, dos **condiciones vencidas**, un pivotaje, decisiones con condiciones, una firma multinivel G5 Enterprise, importes validados, declarados, estimados y sin dato, 9 sistemas (incluido uno de uso corporativo), incidentes y no conformidades. Trece iniciativas llevan datos para el panel del consejo (complejidad, prioridad, controles y, en cuatro, observaciones del consejo asesor) y una no, para que el panel muestre también el «sin dato»; los importes de eficiencias y retorno llevan su concepto salvo los que aún no tienen hipótesis. Con estos datos se genera el panel de ejemplo de T17. Los datos son ilustrativos: cualquier parecido con una compañía o persona real es casual.
 
 ## Limitaciones
 
 - Días hábiles de lunes a viernes, sin calendario de festivos. La periodicidad de R6 se aproxima en días (182 Lite y 91 Enterprise, configurable).
 - Herramienta monousuario y local: sin autenticación, control de acceso, firma electrónica ni sellado de tiempo; el autor de cada evento es declarativo. Los datos de `localStorage` no se comparten entre navegadores ni equipos; hay que exportar el JSON.
-- La importación sustituye el registro completo (no fusiona) y valida la estructura principal, no el JSON Schema completo.
+- La importación valida la estructura principal, no el JSON Schema completo. La fusión une entidades por código: sirve para registros con códigos distintos (por área o por periodo) o para versiones actualizadas de los mismos registros; si dos registros se han editado por separado desde una misma base, los códigos nuevos pueden coincidir y prevalece el del último fichero.
+- El panel del consejo mide el tiempo en cada etapa con las fechas de entrada en fase; no descuenta los periodos en espera, que sí descuenta el análisis del registro.
 - Riesgos (T06), no conformidades e incidentes (T08), proveedores (T09), realización de valor por periodos (T12), retiradas (T22) y recomendaciones (T18) se muestran, generan alertas y se exportan, pero su gestión completa corresponde a esas herramientas (olas 2 y 3).
 - Las puertas agrupadas en Lite (G0–G2, G4–G5) se registran como decisiones separadas del mismo día; no hay una sesión conjunta.
 - Escalar abre el alta de la nueva iniciativa con la etiqueta «Escalado de IA-…», sin vínculo formal entre ambas.

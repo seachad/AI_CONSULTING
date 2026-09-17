@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Regulatory mapping"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -389,11 +400,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </blockquote>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <blockquote>
-<p><strong>Scope and responsibility.</strong> This mapping is <strong>for guidance only</strong> and does not constitute legal advice. It reflects the state of the legislation as consulted on 16 September 2026 (consultation date) and is not updated automatically. Both general regulation (EU AI Act, GDPR, DORA, NIS2 or national legislation) and <strong>regulation specific to each industry</strong> (banking, insurance, healthcare, energy, public sector, among others) change: dates of application, articles and texts in the legislative process are amended, and their scope depends on the interpretation, guidelines and supervisory positions of the competent authorities. The sector references annex (section 12) and the other jurisdictions annex (section 11) are for guidance only and do not identify all applicable obligations. Before using any row in a decision, verify that it is still in force in the official source. <strong>The user organisation is solely responsible for identifying the regulation that applies to it, carrying out the regulatory classification of each system (01 §13) and verifying and certifying its compliance with qualified legal advice</strong>; neither the author nor SEACHAD accepts that responsibility (document 93, section 11).</p>
+<p><strong>Scope and responsibility.</strong> This mapping is <strong>for guidance only</strong> and does not constitute legal advice. It reflects the state of the legislation as consulted on 16 September 2026 (consultation date) and is not updated automatically. Both general regulation (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> or national legislation) and <strong>regulation specific to each industry</strong> (banking, insurance, healthcare, energy, public sector, among others) change: dates of application, articles and texts in the legislative process are amended, and their scope depends on the interpretation, guidelines and supervisory positions of the competent authorities. The sector references annex (section 12) and the other jurisdictions annex (section 11) are for guidance only and do not identify all applicable obligations. Before using any row in a decision, verify that it is still in force in the official source. <strong>The user organisation is solely responsible for identifying the regulation that applies to it, carrying out the regulatory classification of each system (01 §13) and verifying and certifying its compliance with qualified legal advice</strong>; neither the author nor SEACHAD accepts that responsibility (document 93, section 11).</p>
 </blockquote>
 <h3 id="1-1-principle-seven-g-maps-it-does-not-embed">1.1 Principle: SEVEN-G maps, it does not embed</h3>
 <p>SEVEN-G does not reproduce regulation within its phases. It links each obligation to <strong>a phase or stage, an accountable role, an evidence item and a tool</strong>. When a regulation changes, the affected row of this document and tool T07 are updated, without redoing the lifecycle, the <em>gates</em> or the templates.</p>
-<p>This document develops section 13 of document 01 and covers: Regulation (EU) 2024/1689 (EU AI Act) as amended by Regulation (EU) 2026/1744 (section 3); ISO/IEC 42001:2023 (section 4); NIST AI RMF 1.0 and NIST AI 600-1 (section 5); the GDPR and the EDPB guidelines (section 6); DORA and NIS2 where applicable (section 7); Spanish legislation and AESIA (Spanish Agency for the Supervision of Artificial Intelligence) (section 8); and, for guidance purposes, other jurisdictions and sectors (sections 11 and 12).</p>
+<p>This document develops section 13 of document 01 and covers: Regulation (EU) 2024/1689 (EU AI Act) as amended by Regulation (EU) 2026/1744 (section 3); ISO/IEC 42001:2023 (section 4); <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1">NIST AI RMF 1.0</a> and <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)">NIST AI 600-1</a> (section 5); the GDPR and the <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener" title="European Data Protection Board (EDPB)">EDPB</a> guidelines (section 6); DORA and NIS2 where applicable (section 7); Spanish legislation and AESIA (Spanish Agency for the Supervision of Artificial Intelligence) (section 8); and, for guidance purposes, other jurisdictions and sectors (sections 11 and 12).</p>
 <h3 id="1-2-what-this-document-does-not-do">1.2 What this document does not do</h3>
 <p>It does not classify specific systems (that is done in phase 3 with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and T07), it does not replace the text of the regulations or the authorities' guidelines, it does not assert unverified sector-specific requirements and it does not reproduce the text of ISO/IEC standards: it only identifies clauses and groups of controls by number and topic.</p>
 <h3 id="1-3-how-to-read-the-mapping-tables">1.3 How to read the mapping tables</h3>
@@ -436,7 +447,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Terminology note.</strong> SEVEN-G's <em>AI Office</em> is an internal body of the company (01 §8.3). For the European Commission body provided for in the AI Act, <em>European AI Office</em> is always used.</p>
+<p><strong>Terminology note.</strong> SEVEN-G's <em>AI Office</em> is an internal body of the company (01 §8.3). For the European Commission body provided for in the AI Act, <em><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener" title="European AI Office (European Commission)">European AI Office</a></em> is always used.</p>
 <h3 id="1-4-verification-status">1.4 Verification status</h3>
 <p>Every statement about dates or recent changes implicitly carries one of these statuses, detailed in section 13:</p>
 <div class="tabla"><table>
@@ -478,7 +489,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td>Is it an AI system or a general-purpose AI model?</td>
-<td>AI Act, Art. 3(1) and 3(63); Commission guidelines on the definition of an AI system (February 2025)</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>, Art. 3(1) and 3(63); <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener" title="Commission Guidelines on the definition of an artificial intelligence system established by Regulation (EU) 2024/1689 (AI Act)">Commission guidelines on the definition of an AI system</a> (February 2025)</td>
 <td>AI system · General-purpose model · Not AI (tag <em>Rules (not AI)</em>)</td>
 <td>0, confirmed in 3</td>
 <td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
@@ -532,7 +543,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <hr />
 <h2 id="eu-ai-act"><span class="antetitulo">03</span>EU AI Act</h2>
 <h3 id="3-1-verified-timeline-of-application">3.1 Verified timeline of application</h3>
-<p>Regulation (EU) 2024/1689 entered into force on 1 August 2024 and applies in stages. <strong>Regulation (EU) 2026/1744 (Digital Omnibus on AI)</strong>, proposed by the Commission on 19 November 2025, with political agreement on 7 May 2026, adopted by the European Parliament on 16 June and by the Council on 29 June 2026, signed on 8 July, published in the Official Journal on 24 July and <strong>in force since 27 July 2026</strong>, has amended several dates.</p>
+<p><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a> entered into force on 1 August 2024 and applies in stages. <strong>Regulation (EU) 2026/1744 (Digital Omnibus on AI)</strong>, proposed by the Commission on 19 November 2025, with political agreement on 7 May 2026, adopted by the European Parliament on 16 June and by the Council on 29 June 2026, signed on 8 July, published in the Official Journal on 24 July and <strong>in force since 27 July 2026</strong>, has amended several dates.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -639,7 +650,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Art. 10 and associated provision</td>
 <td>From the entry into force of the omnibus</td>
 <td>Verified (official) in essence; exact article verified (secondary)</td>
-<td>Requires a documented GDPR legal basis and safeguards (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, data protection impact assessment in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Requires a documented <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> legal basis and safeguards (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, data protection impact assessment in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
 </tr>
 <tr>
 <td>Registration in the EU database: maintained, with simplified information, for Annex III systems that the provider considers not to be high-risk</td>
@@ -656,7 +667,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Relevant to the intensity of documentation; does not lower SEVEN-G criteria.</td>
 </tr>
 <tr>
-<td>Enhanced supervision by the European AI Office of systems based on general-purpose AI models from the same provider and of systems integrated into very large online platforms and search engines</td>
+<td>Enhanced supervision by the <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener" title="European AI Office (European Commission)">European AI Office</a> of systems based on general-purpose AI models from the same provider and of systems integrated into very large online platforms and search engines</td>
 <td>Art. 75</td>
 <td>From the entry into force of the omnibus</td>
 <td>Verified (official) in essence</td>
@@ -670,7 +681,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Option for initiatives in phases 3–5 (section 8).</td>
 </tr>
 <tr>
-<td>Machinery: AI systems in machinery come to be dealt with mainly through Regulation (EU) 2023/1230; narrower definition of safety component</td>
+<td>Machinery: AI systems in machinery come to be dealt with mainly through <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2023/1230 of the European Parliament and of the Council of 14 June 2023 on machinery and repealing Directive 2006/42/EC and Council Directive 73/361/EEC">Regulation (EU) 2023/1230</a>; narrower definition of safety component</td>
 <td>Art. 3(14), Annex I and Regulation (EU) 2023/1230</td>
 <td>Exact date pending confirmation</td>
 <td>Verified (secondary)</td>
@@ -697,61 +708,61 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td>Guidelines on prohibited AI practices</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act" target="_blank" rel="noopener" title="Commission Guidelines on prohibited artificial intelligence practices established by Regulation (EU) 2024/1689 (AI Act)">Guidelines on prohibited AI practices</a></td>
 <td>February 2025</td>
 <td>Published (non-binding)</td>
 <td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 </tr>
 <tr>
-<td>Guidelines on the definition of an AI system</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener" title="Commission Guidelines on the definition of an artificial intelligence system established by Regulation (EU) 2024/1689 (AI Act)">Guidelines on the definition of an AI system</a></td>
 <td>February 2025</td>
 <td>Published (non-binding)</td>
 <td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, T02</td>
 </tr>
 <tr>
-<td>General-Purpose AI Code of Practice</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai" target="_blank" rel="noopener" title="The General-Purpose AI Code of Practice">General-Purpose AI Code of Practice</a></td>
 <td>July 2025</td>
 <td>Published (voluntary)</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>: ask whether the provider has signed it</td>
 </tr>
 <tr>
-<td>Guidelines on the scope of obligations for general-purpose AI models</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/guidelines-scope-obligations-providers-general-purpose-ai-models-under-ai-act" target="_blank" rel="noopener" title="Guidelines on the scope of obligations for providers of general-purpose AI models under the AI Act">Guidelines on the scope of obligations for general-purpose AI models</a></td>
 <td>July 2025</td>
 <td>Published</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, section 3.12</td>
 </tr>
 <tr>
-<td>Template for the public summary of training content of general-purpose AI models</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/explanatory-notice-and-template-public-summary-training-content-general-purpose-ai-models" target="_blank" rel="noopener" title="Explanatory Notice and Template for the Public Summary of Training Content for general-purpose AI models">Template for the public summary of training content of general-purpose AI models</a></td>
 <td>July 2025</td>
 <td>Published</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
 </tr>
 <tr>
-<td>Draft guidance and template on serious incident reporting (Art. 73)</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/consultations/ai-act-commission-issues-draft-guidance-and-reporting-template-serious-ai-incidents-and-seeks" target="_blank" rel="noopener" title="Draft guidance and reporting template on serious AI incidents (Article 73 AI Act)">Draft guidance and template on serious incident reporting</a> (Art. 73)</td>
 <td>Consultation in 2025</td>
 <td>Final version pending confirmation</td>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, T08</td>
 </tr>
 <tr>
-<td>Draft guidelines on the classification of high-risk AI systems (Art. 6)</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/draft-commission-guidelines-classification-high-risk-ai-systems" target="_blank" rel="noopener" title="Draft Commission guidelines on the classification of high-risk AI systems">Draft guidelines on the classification of high-risk AI systems</a> (Art. 6)</td>
 <td>Draft published on 19-05-2026; targeted consultation</td>
 <td>Draft; final adoption pending</td>
 <td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 </tr>
 <tr>
-<td>Code of practice on marking and labelling of AI-generated content</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener" title="Code of Practice on Transparency of AI-generated Content (marking and labelling)">Code of practice on marking and labelling of AI-generated content</a></td>
 <td>2026</td>
 <td>Published (voluntary)</td>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
 </tr>
 <tr>
-<td>Guidelines on transparency obligations (Art. 50)</td>
+<td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems" target="_blank" rel="noopener" title="Guidelines on the implementation of the transparency obligations for certain AI systems under Article 50 of the AI Act">Guidelines on transparency obligations</a> (Art. 50)</td>
 <td>20-07-2026</td>
 <td>Published</td>
 <td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 </tr>
 <tr>
-<td>Harmonised standards (CEN-CENELEC JTC 21)</td>
+<td>Harmonised standards (<a class="ref-ext" href="https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/" target="_blank" rel="noopener" title="CEN-CLC/JTC 21 &#39;Artificial Intelligence&#39;: European (harmonised) standards supporting the AI Act">CEN-CENELEC JTC 21</a>)</td>
 <td>In preparation</td>
 <td>Publication in the Official Journal pending confirmation</td>
 <td>Section 10: regulatory watch</td>
@@ -2048,10 +2059,10 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <h3 id="4-3-related-standards">4.3 Related standards</h3>
-<p>ISO/IEC 42005:2025 (AI system impact assessment) is the methodological reference for <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>; ISO/IEC 23894:2023 (AI risk management), for document 33; and ISO/IEC 42006:2025 (audit and certification bodies), for document 38.</p>
+<p><a class="ref-ext" href="https://www.iso.org/standard/42005" target="_blank" rel="noopener" title="ISO/IEC 42005:2025 Information technology — Artificial intelligence (AI) — AI system impact assessment">ISO/IEC 42005:2025</a> (AI system impact assessment) is the methodological reference for <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>; <a class="ref-ext" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener" title="ISO/IEC 23894:2023 Information technology — Artificial intelligence — Guidance on risk management">ISO/IEC 23894:2023</a> (AI risk management), for document 33; and <a class="ref-ext" href="https://www.iso.org/standard/42006" target="_blank" rel="noopener" title="ISO/IEC 42006:2025 Information technology — Artificial intelligence — Requirements for bodies providing audit and certification of artificial intelligence management systems">ISO/IEC 42006:2025</a> (audit and certification bodies), for document 38.</p>
 <hr />
 <h2 id="nist-ai-rmf-1-0-and-nist-ai-600-1-generative-ai-profile"><span class="antetitulo">05</span>NIST AI RMF 1.0 and NIST AI 600-1 generative AI profile</h2>
-<p>The NIST AI RMF 1.0 (January 2023) is a voluntary framework. As at the consultation date, NIST indicates that it is under revision; the NIST AI 600-1 profile was published on 26 July 2024. SEVEN-G uses them as a good practice reference, not as an obligation.</p>
+<p>The <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1">NIST AI RMF 1.0</a> (January 2023) is a voluntary framework. As at the consultation date, NIST indicates that it is under revision; the <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)">NIST AI 600-1</a> profile was published on 26 July 2024. SEVEN-G uses them as a good practice reference, not as an obligation.</p>
 <h3 id="5-1-ai-rmf-functions-and-categories">5.1 AI RMF functions and categories</h3>
 <div class="tabla"><table>
 <thead>
@@ -2399,7 +2410,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>T07</td>
 </tr>
 <tr>
-<td>Conditions for processing special categories of data, including processing to detect and correct bias permitted by the AI Act</td>
+<td>Conditions for processing special categories of data, including processing to detect and correct bias permitted by the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a></td>
 <td>Art. 9; AI Act Art. 10 as amended</td>
 <td>Controllers</td>
 <td>Phases 3–5</td>
@@ -2484,65 +2495,65 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td>Guidelines on automated individual decision-making and profiling (WP251 rev.01, endorsed by the EDPB)</td>
+<td><a class="ref-ext" href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/automated-decision-making-and-profiling_en" target="_blank" rel="noopener" title="Guidelines on Automated individual decision-making and Profiling for the purposes of Regulation 2016/679 (WP251rev.01), Article 29 Working Party, endorsed by the EDPB">Guidelines on automated individual decision-making and profiling</a> (WP251 rev.01, endorsed by the <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener" title="European Data Protection Board (EDPB)">EDPB</a>)</td>
 <td>2018</td>
 <td>In force</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 </tr>
 <tr>
-<td>Guidelines on data protection impact assessment (WP248 rev.01, endorsed by the EDPB)</td>
+<td><a class="ref-ext" href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/data-protection-impact-assessments-high-risk-processing_en" target="_blank" rel="noopener" title="Guidelines on Data Protection Impact Assessment (DPIA) and determining whether processing is &quot;likely to result in a high risk&quot; for the purposes of Regulation 2016/679 (WP248rev.01), Article 29 Working Party, endorsed by the EDPB">Guidelines on data protection impact assessment</a> (WP248 rev.01, endorsed by the EDPB)</td>
 <td>2017</td>
 <td>In force</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 </tr>
 <tr>
-<td>Guidelines 4/2019 on Article 25 (data protection by design and by default)</td>
+<td><a class="ref-ext" href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-42019-article-25-data-protection-design-and_en" target="_blank" rel="noopener" title="Guidelines 4/2019 on Article 25 Data Protection by Design and by Default (version 2.0)">Guidelines 4/2019 on Article 25</a> (data protection by design and by default)</td>
 <td>2020 (version 2.0)</td>
 <td>In force</td>
 <td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
 </tr>
 <tr>
-<td>Statement 3/2024 on data protection authorities' role in the AI Act framework</td>
+<td><a class="ref-ext" href="https://www.edpb.europa.eu/our-work-tools/our-documents/statements/statement-32024-data-protection-authorities-role-artificial_en" target="_blank" rel="noopener" title="Statement 3/2024 on data protection authorities&#39; role in the Artificial Intelligence Act framework">Statement 3/2024 on data protection authorities' role in the AI Act framework</a></td>
 <td>July 2024</td>
 <td>Published</td>
 <td>Section 8</td>
 </tr>
 <tr>
-<td>Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models (model anonymity, legitimate interest, consequences of unlawful processing)</td>
+<td><a class="ref-ext" href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en" target="_blank" rel="noopener" title="Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models">Opinion 28/2024</a> on certain data protection aspects related to the processing of personal data in the context of AI models (model anonymity, legitimate interest, consequences of unlawful processing)</td>
 <td>December 2024</td>
 <td>Published</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 </tr>
 <tr>
-<td>Guidelines 01/2025 on pseudonymisation</td>
+<td><a class="ref-ext" href="https://www.edpb.europa.eu/public-consultations/guidelines-012025-on-pseudonymisation_en" target="_blank" rel="noopener" title="Guidelines 01/2025 on Pseudonymisation (version 1.0 for public consultation)">Guidelines 01/2025 on pseudonymisation</a></td>
 <td>January 2025</td>
 <td>Final version pending confirmation</td>
 <td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 </tr>
 <tr>
-<td>Guidelines 02/2026 on anonymisation and Guidelines 03/2026 on web scraping in the context of generative AI</td>
+<td><a class="ref-ext" href="https://www.edpb.europa.eu/public-consultations/guidelines-022026-on-anonymisation_en" target="_blank" rel="noopener" title="Guidelines 02/2026 on Anonymisation (version 1.0 for public consultation)">Guidelines 02/2026 on anonymisation</a> and <a class="ref-ext" href="https://www.edpb.europa.eu/public-consultations/guidelines-032026-on-web-scraping-in-the-context-of-generative-ai_en" target="_blank" rel="noopener" title="Guidelines 03/2026 on web scraping in the context of generative AI (version 1.0 for public consultation)">Guidelines 03/2026 on web scraping in the context of generative AI</a></td>
 <td>Adopted in July 2026</td>
 <td>In public consultation until 30-10-2026</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 </tr>
 <tr>
-<td>CJEU judgment C-634/21 (SCHUFA): a score that determines third-party decisions may constitute an automated decision under Art. 22</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0634" target="_blank" rel="noopener" title="Judgment of the Court (First Chamber) of 7 December 2023, OQ v Land Hessen (SCHUFA Holding — Scoring), Case C-634/21, ECLI:EU:C:2023:957">CJEU judgment C-634/21 (SCHUFA)</a>: a score that determines third-party decisions may constitute an automated decision under Art. 22</td>
 <td>7-12-2023</td>
 <td>Final</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> (scoring systems)</td>
 </tr>
 <tr>
-<td>CJEU judgment C-203/22 (Dun &amp; Bradstreet Austria) on the scope of meaningful information about the logic involved</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62022CJ0203" target="_blank" rel="noopener" title="Judgment of the Court (First Chamber) of 27 February 2025, CK v Magistrat der Stadt Wien (Dun &amp; Bradstreet Austria), Case C-203/22, ECLI:EU:C:2025:117">CJEU judgment C-203/22 (Dun &amp; Bradstreet Austria)</a> on the scope of meaningful information about the logic involved</td>
 <td>27-02-2025</td>
 <td>Final</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Proposed amendment to the GDPR.</strong> The digital omnibus package of November 2025 includes, in addition to the AI part already adopted, a proposal amending the GDPR (among other aspects, the definition of personal data, legitimate interest for AI development and breach notification). As at the consultation date, that part <strong>is still in the legislative process and has not been adopted</strong>; its final content is pending confirmation. It is not applied in this mapping.</p>
+<p><strong><a class="ref-ext" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837" target="_blank" rel="noopener" title="Proposal for a Regulation of the European Parliament and of the Council amending Regulations (EU) 2016/679, (EU) 2018/1724, (EU) 2018/1725, (EU) 2023/2854 and Directives 2002/58/EC, (EU) 2022/2555 and (EU) 2022/2557 as regards the simplification of the digital legislative framework, and repealing Regulations (EU) 2018/1807, (EU) 2019/1150, (EU) 2022/868, and Directive (EU) 2019/1024 (Digital Omnibus) &#183; COM(2025) 837 final &#183; procedure 2025/0360(COD)">Proposed amendment to the GDPR</a>.</strong> The digital omnibus package of November 2025 includes, in addition to the AI part already adopted, a proposal amending the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> (among other aspects, the definition of personal data, legitimate interest for AI development and breach notification). As at the consultation date, that part <strong>is still in the legislative process and has not been adopted</strong>; its final content is pending confirmation. It is not applied in this mapping.</p>
 <hr />
 <h2 id="dora-and-nis2"><span class="antetitulo">07</span>DORA and NIS2</h2>
-<p>They apply only to companies within their scope: DORA to the financial entities in Art. 2 of Regulation (EU) 2022/2554, applicable since 17-01-2025; NIS2 to the essential and important entities defined in Directive (EU) 2022/2555 and in its national transposition. Where they apply, an AI system supporting a critical or important function is an Enterprise criterion (01 §9.2).</p>
+<p>They apply only to companies within their scope: <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> to the financial entities in Art. 2 of Regulation (EU) 2022/2554, applicable since 17-01-2025; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> to the essential and important entities defined in Directive (EU) 2022/2555 and in its national transposition. Where they apply, an AI system supporting a critical or important function is an Enterprise criterion (01 §9.2).</p>
 <h3 id="7-1-dora">7.1 DORA</h3>
 <div class="tabla"><table>
 <thead>
@@ -2665,8 +2676,8 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Transposition in Spain.</strong> As at the consultation date, the law transposing NIS2 (Anteproyecto de Ley de Coordinación y Gobernanza de la Ciberseguridad (Draft Law on Cybersecurity Coordination and Governance), approved at first reading in January 2025) <strong>does not appear as published in the BOE</strong>; exact status of the legislative process pending confirmation.</p>
-<p><strong>Products with digital elements.</strong> If the company manufactures products with digital elements that incorporate AI, Regulation (EU) 2024/2847 on cyber resilience (Cyber Resilience Act) must also be assessed (reporting obligations from 11-09-2026 and main obligations from 11-12-2027). This is developed in document 35.</p>
+<p><strong>Transposition in Spain.</strong> As at the consultation date, the law transposing NIS2 (<a class="ref-ext" href="https://www.dsn.gob.es/es/actualidad/sala-de-prensa/anteproyecto-ley-coordinacion-gobernanza-ciberseguridad" target="_blank" rel="noopener" title="Draft Law on Cybersecurity Coordination and Governance (Anteproyecto de Ley de Coordinaci&#243;n y Gobernanza de la Ciberseguridad), approved at first reading by the Spanish Council of Ministers on 14 January 2025">Anteproyecto de Ley de Coordinación y Gobernanza de la Ciberseguridad</a> (Draft Law on Cybersecurity Coordination and Governance), approved at first reading in January 2025) <strong>does not appear as published in the BOE</strong>; exact status of the legislative process pending confirmation.</p>
+<p><strong>Products with digital elements.</strong> If the company manufactures products with digital elements that incorporate AI, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)">Regulation (EU) 2024/2847 on cyber resilience (Cyber Resilience Act)</a> must also be assessed (reporting obligations from 11-09-2026 and main obligations from 11-12-2027). This is developed in document 35.</p>
 <hr />
 <h2 id="spanish-legislation-and-aesia"><span class="antetitulo">08</span>Spanish legislation and AESIA</h2>
 <h3 id="8-1-status-as-at-the-consultation-date">8.1 Status as at the consultation date</h3>
@@ -2681,42 +2692,42 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td>Statute of the Agencia Española de Supervisión de Inteligencia Artificial (AESIA)</td>
-<td>Real Decreto (Royal Decree) 729/2023, of 22 August (BOE-A-2023-18911)</td>
+<td><a class="ref-ext" href="https://www.boe.es/eli/es/rd/2023/08/22/729/con" target="_blank" rel="noopener" title="Royal Decree 729/2023 of 22 August approving the Statute of the Spanish Agency for the Supervision of Artificial Intelligence (unofficial translation)">Real Decreto (Royal Decree) 729/2023</a>, of 22 August (BOE-A-2023-18911)</td>
 <td>In force. AESIA acts as market surveillance authority and single point of contact.</td>
 </tr>
 <tr>
-<td>Controlled testing environment for testing compliance with the AI Act</td>
-<td>Real Decreto (Royal Decree) 817/2023, of 8 November (BOE-A-2023-22767)</td>
+<td>Controlled testing environment for testing compliance with the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a></td>
+<td><a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2023-22767" target="_blank" rel="noopener" title="Royal Decree 817/2023 of 8 November establishing a controlled testing environment for testing compliance with the proposal for a Regulation laying down harmonised rules on artificial intelligence (unofficial translation)">Real Decreto (Royal Decree) 817/2023</a>, of 8 November (BOE-A-2023-22767)</td>
 <td>In force. The Government announced the conclusion of the first sandbox in June 2026; new calls pending confirmation.</td>
 </tr>
 <tr>
-<td>Guides supporting compliance with the AI Act</td>
+<td><a class="ref-ext" href="https://aesia.digital.gob.es/en/guides" target="_blank" rel="noopener" title="Guides to support compliance with the AI Act (16 guides: 2 introductory, 13 technical and a checklist manual with compendium)">Guides supporting compliance with the AI Act</a></td>
 <td>AESIA, 16-12-2025: two introductory guides, thirteen technical requirements guides and checklists, derived from the sandbox</td>
 <td>Published; non-binding.</td>
 </tr>
 <tr>
-<td>Proyecto de Ley Orgánica para el buen uso y la gobernanza de la inteligencia artificial (Draft Organic Law for the proper use and governance of artificial intelligence)</td>
+<td><a class="ref-ext" href="https://www.congreso.es/es/proyectos-de-ley?p_p_id=iniciativas&amp;p_p_lifecycle=0&amp;p_p_state=normal&amp;p_p_mode=view&amp;_iniciativas_mode=mostrarDetalle&amp;_iniciativas_legislatura=XV&amp;_iniciativas_id=121%2F000096" target="_blank" rel="noopener" title="Draft Organic Law for the proper use and governance of artificial intelligence (file 121/000096) (unofficial translation)">Proyecto de Ley Orgánica para el buen uso y la gobernanza de la inteligencia artificial</a> (Draft Organic Law for the proper use and governance of artificial intelligence)</td>
 <td>Approved by the Council of Ministers on 26-05-2026; BOCG (Official Gazette of the Cortes Generales), Congreso, series A, no. 97-1, of 12-06-2026; file 121/000096</td>
 <td><strong>In the legislative process</strong>: amendments stage in the Comisión de Economía, Comercio y Transformación Digital (Committee on Economy, Trade and Digital Transformation), with the deadline successively extended (last known extension until 23-09-2026). Final content and date of approval pending.</td>
 </tr>
 <tr>
-<td>Instrucción 2/2026 del CGPJ (Instruction 2/2026 of the General Council of the Judiciary) on the use of AI systems in judicial activity</td>
+<td><a class="ref-ext" href="https://www.boe.es/eli/es/a/2026/01/28/(1)" target="_blank" rel="noopener" title="Agreement of 28 January 2026 of the Plenary of the General Council of the Judiciary approving Instruction 2/2026 on the use of artificial intelligence systems in the exercise of judicial activity (unofficial translation)">Instrucción 2/2026 del CGPJ (Instruction 2/2026 of the General Council of the Judiciary)</a> on the use of AI systems in judicial activity</td>
 <td>BOE-A-2026-2205</td>
 <td>Published. Relevant only to the judicial sphere.</td>
 </tr>
 <tr>
 <td>Regional legislation</td>
-<td>For example, Ley 2/2025, de 2 de abril, para el desarrollo e impulso de la IA en Galicia (Law 2/2025 of 2 April on the development and promotion of AI in Galicia)</td>
+<td>For example, <a class="ref-ext" href="https://www.boe.es/eli/es-ga/l/2025/04/02/2" target="_blank" rel="noopener" title="Law 2/2025 of 2 April on the development and promotion of artificial intelligence in Galicia (unofficial translation)">Ley 2/2025, de 2 de abril, para el desarrollo e impulso de la IA en Galicia</a> (Law 2/2025 of 2 April on the development and promotion of AI in Galicia)</td>
 <td>In force within its territory; review according to the company's territorial presence.</td>
 </tr>
 <tr>
-<td>Guides of the AEPD (Spanish Data Protection Agency) on processing operations that incorporate AI and on auditing such processing</td>
-<td>AEPD</td>
+<td><a class="ref-ext" href="https://www.aepd.es/en/areas/innovation-and-technology" target="_blank" rel="noopener" title="AEPD guides on processing that embeds AI: &#171;GDPR compliance of processing that embed Artificial Intelligence. An introduction&#187; (February 2020) and &#171;Audit Requirements for Personal Data Processing Activities involving AI&#187; (January 2021) &#183; &#171;Innovation and Technology&#187; page listing both">Guides of the AEPD (Spanish Data Protection Agency) on processing operations that incorporate AI and on auditing such processing</a></td>
+<td><a class="ref-ext" href="https://www.aepd.es/en" target="_blank" rel="noopener" title="Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)">AEPD</a></td>
 <td>Published; reference for <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
 </tr>
 </tbody>
 </table></div>
-<p>According to the text of the bill sent to the Cortes Generales and the published analyses of it, the law would designate several market surveillance authorities (including AESIA, the AEPD, the Banco de España and the CNMV (National Securities Market Commission)), a regime of minor, serious and very serious infringements, rules for the public sector and regulation of AI regulatory sandboxes. <strong>All of this is pending confirmation in the text finally approved.</strong></p>
+<p>According to the text of the bill sent to the Cortes Generales and the published analyses of it, the law would designate several market surveillance authorities (including AESIA, the AEPD, the <a class="ref-ext" href="https://www.bde.es/wbe/en/" target="_blank" rel="noopener" title="Banco de Espa&#241;a (Bank of Spain)">Banco de España</a> and the <a class="ref-ext" href="https://www.cnmv.es/portal/home?lang=en" target="_blank" rel="noopener" title="Comisi&#243;n Nacional del Mercado de Valores (CNMV, Spanish National Securities Market Commission)">CNMV (National Securities Market Commission)</a>), a regime of minor, serious and very serious infringements, rules for the public sector and regulation of AI regulatory sandboxes. <strong>All of this is pending confirmation in the text finally approved.</strong></p>
 <h3 id="8-2-mapping">8.2 Mapping</h3>
 <div class="tabla"><table>
 <thead>
@@ -2800,7 +2811,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>4.1, 4.2</td>
 <td>MAP 1</td>
 <td>Existing records of processing activities (Art. 30)</td>
-<td>ICT inventory and third-party register (DORA Art. 28)</td>
+<td>ICT inventory and third-party register (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> Art. 28)</td>
 <td>Competent authorities identified</td>
 </tr>
 <tr>
@@ -2809,7 +2820,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>4.3, 5.1–5.3, 6.1–6.2, A.2, A.3</td>
 <td>GOVERN 1–4</td>
 <td>Accountability (Art. 5(2))</td>
-<td>Responsibility of the management body (DORA Art. 5; NIS2 Art. 20)</td>
+<td>Responsibility of the management body (DORA Art. 5; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> Art. 20)</td>
 <td>—</td>
 </tr>
 <tr>
@@ -2873,7 +2884,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>MAP 2–5; GOVERN 6; 600-1 risks</td>
 <td>Legal basis (Arts. 6, 9); impact assessment (Art. 35); Art. 22</td>
 <td>Third-party risk and contracts (DORA Arts. 28–30; NIS2 Art. 21)</td>
-<td>Competent authority; AESIA guides</td>
+<td>Competent authority; <a class="ref-ext" href="https://aesia.digital.gob.es/en/guides" target="_blank" rel="noopener" title="Guides to support compliance with the AI Act (16 guides: 2 introductory, 13 technical and a checklist manual with compendium)">AESIA guides</a></td>
 </tr>
 <tr>
 <td><strong>4 · Design</strong></td>
@@ -2958,7 +2969,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td>Publication of a regulation or amendment in the Official Journal of the EU or in the BOE</td>
-<td>New amending regulation; Spanish organic law; NIS2 transposition</td>
+<td>New amending regulation; Spanish organic law; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> transposition</td>
 <td>10 working days from publication</td>
 </tr>
 <tr>
@@ -2968,12 +2979,12 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>Harmonised standards or revisions of technical standards</td>
-<td>CEN-CENELEC JTC 21 standards; revision of ISO/IEC 42001; revision of the NIST AI RMF</td>
+<td><a class="ref-ext" href="https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/" target="_blank" rel="noopener" title="CEN-CLC/JTC 21 &#39;Artificial Intelligence&#39;: European (harmonised) standards supporting the AI Act">CEN-CENELEC JTC 21</a> standards; revision of ISO/IEC 42001; revision of the <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a></td>
 <td>30 working days</td>
 </tr>
 <tr>
-<td>Guidance from national authorities or the EDPB; CJEU judgments</td>
-<td>AESIA guides; final EDPB guidelines</td>
+<td>Guidance from national authorities or the <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener" title="European Data Protection Board (EDPB)">EDPB</a>; CJEU judgments</td>
+<td><a class="ref-ext" href="https://aesia.digital.gob.es/en/guides" target="_blank" rel="noopener" title="Guides to support compliance with the AI Act (16 guides: 2 introductory, 13 technical and a checklist manual with compendium)">AESIA guides</a>; final EDPB guidelines</td>
 <td>20 working days</td>
 </tr>
 <tr>
@@ -3069,12 +3080,12 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>United States</strong></td>
-<td>No general federal AI law; voluntary frameworks (NIST AI RMF), action by sector agencies and state laws whose scopes and dates of application have changed and must be verified case by case.</td>
+<td>No general federal AI law; voluntary frameworks (<a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a>), action by sector agencies and state laws whose scopes and dates of application have changed and must be verified case by case.</td>
 <td>Declare it in <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>; use section 5 as a good practice reference.</td>
 </tr>
 <tr>
 <td><strong>International instruments</strong></td>
-<td>OECD AI Principles; Council of Europe Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law (opened for signature in 2024; ratification status pending confirmation).</td>
+<td><a class="ref-ext" href="https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0449" target="_blank" rel="noopener" title="OECD Recommendation of the Council on Artificial Intelligence (OECD/LEGAL/0449), OECD AI Principles, adopted 22 May 2019, amended 3 May 2024">OECD AI Principles</a>; Council of Europe Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law (opened for signature in 2024; ratification status pending confirmation).</td>
 <td>Reference for the corporate policy (document 31).</td>
 </tr>
 </tbody>
@@ -3093,18 +3104,18 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>Banking and payments</strong></td>
-<td>Creditworthiness assessment and credit scoring of natural persons (Annex III, point 5(b), except fraud detection); integration of obligations into internal governance (Arts. 17(4) and 26(5)); DORA (section 7.1).</td>
-<td>EBA exercise on the implications of the AI Act (November 2025), with no immediate need for new guidelines; EBA guidelines on loan origination; role of the Banco de España as authority (pending the organic law).</td>
+<td>Creditworthiness assessment and credit scoring of natural persons (Annex III, point 5(b), except fraud detection); integration of obligations into internal governance (Arts. 17(4) and 26(5)); <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> (section 7.1).</td>
+<td><a class="ref-ext" href="https://www.eba.europa.eu/sites/default/files/2025-11/d8b999ce-a1d9-4964-9606-971bbc2aaf89/AI%20Act%20implications%20for%20the%20EU%20banking%20sector.pdf" target="_blank" rel="noopener" title="EBA factsheet &#171;AI Act: implications for the EU banking and payments sector&#187; (21 November 2025), outcome of the EBA AI Act mapping exercise">EBA exercise on the implications of the AI Act</a> (November 2025), with no immediate need for new guidelines; <a class="ref-ext" href="https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/credit-risk/guidelines-loan-origination-and-monitoring" target="_blank" rel="noopener" title="EBA Guidelines on loan origination and monitoring (EBA/GL/2020/06), 29 May 2020">EBA guidelines on loan origination</a>; role of the <a class="ref-ext" href="https://www.bde.es/wbe/en/" target="_blank" rel="noopener" title="Banco de Espa&#241;a (Bank of Spain)">Banco de España</a> as authority (pending the organic law).</td>
 </tr>
 <tr>
 <td><strong>Insurance</strong></td>
 <td>Risk assessment and pricing in life and health insurance (Annex III, point 5(c)); DORA.</td>
-<td>EIOPA Opinion on AI governance and risk management (6-08-2025), addressed to supervisors, which does not create new requirements and excludes high-risk and prohibited systems; Solvency II and the Insurance Distribution Directive.</td>
+<td><a class="ref-ext" href="https://www.eiopa.europa.eu/publications/opinion-artificial-intelligence-governance-and-risk-management_en" target="_blank" rel="noopener" title="EIOPA Opinion on Artificial Intelligence governance and risk management (EIOPA-BoS-25-360), 6 August 2025">EIOPA Opinion on AI governance and risk management</a> (6-08-2025), addressed to supervisors, which does not create new requirements and excludes high-risk and prohibited systems; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2009/138/oj/eng" target="_blank" rel="noopener" title="Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (recast)">Solvency II</a> and the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2016/97/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2016/97 of the European Parliament and of the Council of 20 January 2016 on insurance distribution (recast)">Insurance Distribution Directive</a>.</td>
 </tr>
 <tr>
 <td><strong>Healthcare</strong></td>
-<td>Medical devices and <em>in vitro</em> diagnostic medical devices with AI as high-risk under Art. 6(1) and Annex I (application 2-08-2028); emergency call triage and access to public benefits (Annex III, point 5); special categories of data (GDPR Art. 9).</td>
-<td>Regulations (EU) 2017/745 and 2017/746; European Health Data Space Regulation (exact reference and timeline pending confirmation); national health legislation.</td>
+<td>Medical devices and <em>in vitro</em> diagnostic medical devices with AI as high-risk under Art. 6(1) and Annex I (application 2-08-2028); emergency call triage and access to public benefits (Annex III, point 5); special categories of data (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> Art. 9).</td>
+<td>Regulations (EU) <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2017/745/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2017/745 of the European Parliament and of the Council of 5 April 2017 on medical devices">2017/745</a> and <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2017/746/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2017/746 of the European Parliament and of the Council of 5 April 2017 on in vitro diagnostic medical devices">2017/746</a>; European Health Data Space Regulation (exact reference and timeline pending confirmation); national health legislation.</td>
 </tr>
 </tbody>
 </table></div>
@@ -3122,7 +3133,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td>Omnibus: legislative process, entry into force (27-07-2026), high-risk dates, Art. 50(2) and new prohibitions</td>
-<td>European Commission (digital-strategy.ec.europa.eu; AI Act Service Desk); European Parliament, procedure 2025/0359(COD)</td>
+<td>European Commission (digital-strategy.ec.europa.eu; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> Service Desk); European Parliament, procedure 2025/0359(COD)</td>
 <td>Verified (official)</td>
 </tr>
 <tr>
@@ -3136,22 +3147,22 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Verified (official); final versions on high risk and serious incidents pending</td>
 </tr>
 <tr>
-<td>ISO/IEC 42001, 42005 and 42006; NIST AI RMF and AI 600-1; EDPB</td>
+<td>ISO/IEC 42001, 42005 and 42006; <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a> and AI 600-1; <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener" title="European Data Protection Board (EDPB)">EDPB</a></td>
 <td>iso.org; nist.gov; edpb.europa.eu</td>
 <td>Verified (official)</td>
 </tr>
 <tr>
-<td>Part of the omnibus amending the GDPR</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837" target="_blank" rel="noopener" title="Proposal for a Regulation of the European Parliament and of the Council amending Regulations (EU) 2016/679, (EU) 2018/1724, (EU) 2018/1725, (EU) 2023/2854 and Directives 2002/58/EC, (EU) 2022/2555 and (EU) 2022/2557 as regards the simplification of the digital legislative framework, and repealing Regulations (EU) 2018/1807, (EU) 2019/1150, (EU) 2022/868, and Directive (EU) 2019/1024 (Digital Omnibus) &#183; COM(2025) 837 final &#183; procedure 2025/0360(COD)">Part of the omnibus amending the GDPR</a></td>
 <td>European Parliament and published analyses</td>
 <td>In the legislative process; pending confirmation</td>
 </tr>
 <tr>
-<td>RD 729/2023, RD 817/2023, AESIA guides, draft organic law</td>
+<td><a class="ref-ext" href="https://www.boe.es/eli/es/rd/2023/08/22/729/con" target="_blank" rel="noopener" title="Royal Decree 729/2023 of 22 August approving the Statute of the Spanish Agency for the Supervision of Artificial Intelligence (unofficial translation)">RD 729/2023</a>, <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2023-22767" target="_blank" rel="noopener" title="Royal Decree 817/2023 of 8 November establishing a controlled testing environment for testing compliance with the proposal for a Regulation laying down harmonised rules on artificial intelligence (unofficial translation)">RD 817/2023</a>, <a class="ref-ext" href="https://aesia.digital.gob.es/en/guides" target="_blank" rel="noopener" title="Guides to support compliance with the AI Act (16 guides: 2 introductory, 13 technical and a checklist manual with compendium)">AESIA guides</a>, draft organic law</td>
 <td>boe.es; aesia.digital.gob.es; La Moncloa; congreso.es</td>
 <td>Verified (official); status after 16-09-2026 pending</td>
 </tr>
 <tr>
-<td>NIS2 transposition in Spain; United Kingdom; United States; European Health Data Space</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> transposition in Spain; United Kingdom; United States; European Health Data Space</td>
 <td>Secondary sources</td>
 <td>Pending confirmation; for guidance</td>
 </tr>
@@ -3238,7 +3249,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>36 · Third parties</strong></td>
-<td>Value chain and DORA.</td>
+<td>Value chain and <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>.</td>
 </tr>
 <tr>
 <td><strong>37 · Nonconformities and incidents</strong></td>
@@ -3268,11 +3279,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Maps the EU AI Act as amended by Regulation (EU) 2026/1744 (timeline verified as at 16-09-2026), ISO/IEC 42001:2023, NIST AI RMF 1.0 and NIST AI 600-1, the GDPR and EDPB guidelines, DORA, NIS2 and Spanish legislation; adds a summary matrix, a maintenance procedure and indicative annexes on other jurisdictions and sectors. Legal notice and user responsibility for regulatory compliance.</td>
+<td>First version. Maps the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> as amended by Regulation (EU) 2026/1744 (timeline verified as at 16-09-2026), ISO/IEC 42001:2023, <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1">NIST AI RMF 1.0</a> and <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)">NIST AI 600-1</a>, the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> and <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener" title="European Data Protection Board (EDPB)">EDPB</a> guidelines, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> and Spanish legislation; adds a summary matrix, a maintenance procedure and indicative annexes on other jurisdictions and sectors. Legal notice and user responsibility for regulatory compliance.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2016/97/oj/eng" target="_blank" rel="noopener">Directive (EU) 2016/97 of the European Parliament and of the Council of 20 January 2016 on insurance distribution (recast)</a><span> · Parlamento Europeo y Consejo de la UE · 20-01-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2009/138/oj/eng" target="_blank" rel="noopener">Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (recast)</a><span> · Parlamento Europeo y Consejo de la UE · 25-11-2009</span></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837" target="_blank" rel="noopener">Proposal for a Regulation of the European Parliament and of the Council amending Regulations (EU) 2016/679, (EU) 2018/1724, (EU) 2018/1725, (EU) 2023/2854 and Directives 2002/58/EC, (EU) 2022/2555 and (EU) 2022/2557 as regards the simplification of the digital legislative framework, and repealing Regulations (EU) 2018/1807, (EU) 2019/1150, (EU) 2022/868, and Directive (EU) 2019/1024 (Digital Omnibus) &#183; COM(2025) 837 final &#183; procedure 2025/0360(COD)</a><span> · Comisi&#243;n Europea (propuesta); Parlamento Europeo y Consejo de la UE (tramitaci&#243;n) · 19-11-2025</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2017/745/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2017/745 of the European Parliament and of the Council of 5 April 2017 on medical devices</a><span> · Parlamento Europeo y Consejo de la UE · 05-04-2017</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2017/746/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2017/746 of the European Parliament and of the Council of 5 April 2017 on in vitro diagnostic medical devices</a><span> · Parlamento Europeo y Consejo de la UE · 05-04-2017</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2023/1230/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2023/1230 of the European Parliament and of the Council of 14 June 2023 on machinery and repealing Directive 2006/42/EC and Council Directive 73/361/EEC</a><span> · Parlamento Europeo y Consejo de la UE · 14-06-2023</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://www.boe.es/eli/es/a/2026/01/28/(1)" target="_blank" rel="noopener">Agreement of 28 January 2026 of the Plenary of the General Council of the Judiciary approving Instruction 2/2026 on the use of artificial intelligence systems in the exercise of judicial activity (unofficial translation)</a><span> · Consejo General del Poder Judicial (Pleno) · 28-01-2026</span></li><li><a href="https://www.dsn.gob.es/es/actualidad/sala-de-prensa/anteproyecto-ley-coordinacion-gobernanza-ciberseguridad" target="_blank" rel="noopener">Draft Law on Cybersecurity Coordination and Governance (Anteproyecto de Ley de Coordinaci&#243;n y Gobernanza de la Ciberseguridad), approved at first reading by the Spanish Council of Ministers on 14 January 2025</a><span> · Gobierno de Espa&#241;a (Consejo de Ministros; Departamento de Seguridad Nacional) · 14-01-2025</span></li><li><a href="https://www.congreso.es/es/proyectos-de-ley?p_p_id=iniciativas&amp;p_p_lifecycle=0&amp;p_p_state=normal&amp;p_p_mode=view&amp;_iniciativas_mode=mostrarDetalle&amp;_iniciativas_legislatura=XV&amp;_iniciativas_id=121%2F000096" target="_blank" rel="noopener">Draft Organic Law for the proper use and governance of artificial intelligence (file 121/000096) (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Consejo de Ministros); Congreso de los Diputados (tramitaci&#243;n) · 26-05-2026</span></li><li><a href="https://www.boe.es/eli/es-ga/l/2025/04/02/2" target="_blank" rel="noopener">Law 2/2025 of 2 April on the development and promotion of artificial intelligence in Galicia (unofficial translation)</a><span> · Comunidad Aut&#243;noma de Galicia (Parlamento de Galicia) · 02-04-2025</span></li><li><a href="https://www.boe.es/eli/es/rd/2023/08/22/729/con" target="_blank" rel="noopener">Royal Decree 729/2023 of 22 August approving the Statute of the Spanish Agency for the Supervision of Artificial Intelligence (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Hacienda y Funci&#243;n P&#250;blica) · 22-08-2023</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2023-22767" target="_blank" rel="noopener">Royal Decree 817/2023 of 8 November establishing a controlled testing environment for testing compliance with the proposal for a Regulation laying down harmonised rules on artificial intelligence (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Asuntos Econ&#243;micos y Transformaci&#243;n Digital) · 08-11-2023</span></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62022CJ0203" target="_blank" rel="noopener">Judgment of the Court (First Chamber) of 27 February 2025, CK v Magistrat der Stadt Wien (Dun &amp; Bradstreet Austria), Case C-203/22, ECLI:EU:C:2025:117</a><span> · Tribunal de Justicia de la Uni&#243;n Europea · 27-02-2025</span></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0634" target="_blank" rel="noopener">Judgment of the Court (First Chamber) of 7 December 2023, OQ v Land Hessen (SCHUFA Holding — Scoring), Case C-634/21, ECLI:EU:C:2023:957</a><span> · Tribunal de Justicia de la Uni&#243;n Europea · 07-12-2023</span></li><li><a href="https://www.bde.es/wbe/en/" target="_blank" rel="noopener">Banco de Espa&#241;a (Bank of Spain)</a><span> · Banco de Espa&#241;a</span></li><li><a href="https://www.cnmv.es/portal/home?lang=en" target="_blank" rel="noopener">Comisi&#243;n Nacional del Mercado de Valores (CNMV, Spanish National Securities Market Commission)</a><span> · Comisi&#243;n Nacional del Mercado de Valores</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European AI Office (European Commission)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener">European Data Protection Board (EDPB)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://www.aepd.es/en" target="_blank" rel="noopener">Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li><li><a href="https://www.aepd.es/en/areas/innovation-and-technology" target="_blank" rel="noopener">AEPD guides on processing that embeds AI: &#171;GDPR compliance of processing that embed Artificial Intelligence. An introduction&#187; (February 2020) and &#171;Audit Requirements for Personal Data Processing Activities involving AI&#187; (January 2021) &#183; &#171;Innovation and Technology&#187; page listing both</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)</a><span> · National Institute of Standards and Technology (NIST) · 26-07-2024</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content" target="_blank" rel="noopener">Code of Practice on Transparency of AI-generated Content (marking and labelling)</a><span> · Comisi&#243;n Europea (Oficina Europea de IA), elaborado por expertos independientes · 10-06-2026</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act" target="_blank" rel="noopener">Commission Guidelines on prohibited artificial intelligence practices established by Regulation (EU) 2024/1689 (AI Act)</a><span> · Comisi&#243;n Europea · 04-02-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener">Commission Guidelines on the definition of an artificial intelligence system established by Regulation (EU) 2024/1689 (AI Act)</a><span> · Comisi&#243;n Europea · 06-02-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/draft-commission-guidelines-classification-high-risk-ai-systems" target="_blank" rel="noopener">Draft Commission guidelines on the classification of high-risk AI systems</a><span> · Comisi&#243;n Europea · 19-05-2026</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/consultations/ai-act-commission-issues-draft-guidance-and-reporting-template-serious-ai-incidents-and-seeks" target="_blank" rel="noopener">Draft guidance and reporting template on serious AI incidents (Article 73 AI Act)</a><span> · Comisi&#243;n Europea · 26-09-2025</span></li><li><a href="https://www.eba.europa.eu/sites/default/files/2025-11/d8b999ce-a1d9-4964-9606-971bbc2aaf89/AI%20Act%20implications%20for%20the%20EU%20banking%20sector.pdf" target="_blank" rel="noopener">EBA factsheet &#171;AI Act: implications for the EU banking and payments sector&#187; (21 November 2025), outcome of the EBA AI Act mapping exercise</a><span> · Autoridad Bancaria Europea (EBA) · 21-11-2025</span></li><li><a href="https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/credit-risk/guidelines-loan-origination-and-monitoring" target="_blank" rel="noopener">EBA Guidelines on loan origination and monitoring (EBA/GL/2020/06), 29 May 2020</a><span> · Autoridad Bancaria Europea (EBA) · 29-05-2020</span></li><li><a href="https://www.eiopa.europa.eu/publications/opinion-artificial-intelligence-governance-and-risk-management_en" target="_blank" rel="noopener">EIOPA Opinion on Artificial Intelligence governance and risk management (EIOPA-BoS-25-360), 6 August 2025</a><span> · Autoridad Europea de Seguros y Pensiones de Jubilaci&#243;n (EIOPA) · 06-08-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/explanatory-notice-and-template-public-summary-training-content-general-purpose-ai-models" target="_blank" rel="noopener">Explanatory Notice and Template for the Public Summary of Training Content for general-purpose AI models</a><span> · Comisi&#243;n Europea (Oficina Europea de IA) · 24-07-2025</span></li><li><a href="https://www.edpb.europa.eu/public-consultations/guidelines-012025-on-pseudonymisation_en" target="_blank" rel="noopener">Guidelines 01/2025 on Pseudonymisation (version 1.0 for public consultation)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 16-01-2025</span></li><li><a href="https://www.edpb.europa.eu/public-consultations/guidelines-022026-on-anonymisation_en" target="_blank" rel="noopener">Guidelines 02/2026 on Anonymisation (version 1.0 for public consultation)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 07-07-2026</span></li><li><a href="https://www.edpb.europa.eu/public-consultations/guidelines-032026-on-web-scraping-in-the-context-of-generative-ai_en" target="_blank" rel="noopener">Guidelines 03/2026 on web scraping in the context of generative AI (version 1.0 for public consultation)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 07-07-2026</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-42019-article-25-data-protection-design-and_en" target="_blank" rel="noopener">Guidelines 4/2019 on Article 25 Data Protection by Design and by Default (version 2.0)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 20-10-2020</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/automated-decision-making-and-profiling_en" target="_blank" rel="noopener">Guidelines on Automated individual decision-making and Profiling for the purposes of Regulation 2016/679 (WP251rev.01), Article 29 Working Party, endorsed by the EDPB</a><span> · Grupo de Trabajo del Art&#237;culo 29; asumidas por el Comit&#233; Europeo de Protecci&#243;n de Datos (25-05-2018) · 06-02-2018</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/data-protection-impact-assessments-high-risk-processing_en" target="_blank" rel="noopener">Guidelines on Data Protection Impact Assessment (DPIA) and determining whether processing is &quot;likely to result in a high risk&quot; for the purposes of Regulation 2016/679 (WP248rev.01), Article 29 Working Party, endorsed by the EDPB</a><span> · Grupo de Trabajo del Art&#237;culo 29; asumidas por el Comit&#233; Europeo de Protecci&#243;n de Datos (25-05-2018) · 04-10-2017</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems" target="_blank" rel="noopener">Guidelines on the implementation of the transparency obligations for certain AI systems under Article 50 of the AI Act</a><span> · Comisi&#243;n Europea · 20-07-2026</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/guidelines-scope-obligations-providers-general-purpose-ai-models-under-ai-act" target="_blank" rel="noopener">Guidelines on the scope of obligations for providers of general-purpose AI models under the AI Act</a><span> · Comisi&#243;n Europea · 18-07-2025</span></li><li><a href="https://aesia.digital.gob.es/en/guides" target="_blank" rel="noopener">Guides to support compliance with the AI Act (16 guides: 2 introductory, 13 technical and a checklist manual with compendium)</a><span> · Agencia Espa&#241;ola de Supervisi&#243;n de Inteligencia Artificial (AESIA) · 16-12-2025</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en" target="_blank" rel="noopener">Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 17-12-2024</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/statements/statement-32024-data-protection-authorities-role-artificial_en" target="_blank" rel="noopener">Statement 3/2024 on data protection authorities&#39; role in the Artificial Intelligence Act framework</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 16-07-2024</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai" target="_blank" rel="noopener">The General-Purpose AI Code of Practice</a><span> · Comisi&#243;n Europea (Oficina Europea de IA), elaborado por expertos independientes · 10-07-2025</span></li><li><a href="https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/" target="_blank" rel="noopener">CEN-CLC/JTC 21 &#39;Artificial Intelligence&#39;: European (harmonised) standards supporting the AI Act</a><span> · CEN y CENELEC (Comit&#233; T&#233;cnico Conjunto 21), a petici&#243;n de normalizaci&#243;n de la Comisi&#243;n Europea</span></li><li><a href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">ISO/IEC 23894:2023 Information technology — Artificial intelligence — Guidance on risk management</a><span> · ISO/IEC (JTC 1/SC 42) · 06-02-2023</span></li><li><a href="https://www.iso.org/standard/42005" target="_blank" rel="noopener">ISO/IEC 42005:2025 Information technology — Artificial intelligence (AI) — AI system impact assessment</a><span> · ISO/IEC (JTC 1/SC 42) · 28-05-2025</span></li><li><a href="https://www.iso.org/standard/42006" target="_blank" rel="noopener">ISO/IEC 42006:2025 Information technology — Artificial intelligence — Requirements for bodies providing audit and certification of artificial intelligence management systems</a><span> · ISO/IEC (JTC 1/SC 42) · 07-07-2025</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0449" target="_blank" rel="noopener">OECD Recommendation of the Council on Artificial Intelligence (OECD/LEGAL/0449), OECD AI Principles, adopted 22 May 2019, amended 3 May 2024</a><span> · Organizaci&#243;n para la Cooperaci&#243;n y el Desarrollo Econ&#243;micos (OCDE) · 03-05-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Guide for consultants and support models"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -402,7 +413,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <hr />
 <h2 id="using-seven-g-as-a-third-party"><span class="antetitulo">02</span>Using SEVEN-G as a third party</h2>
 <h3 id="2-1-what-it-allows">2.1 What it allows</h3>
-<p>SEVEN-G content is published under a CC BY 4.0 licence (document 93). Any third party may use, adapt and apply it in professional services, including paid services, <strong>without needing authorisation or having to engage the author</strong>, provided that they give credit for authorship, indicate the changes and do not suggest that the author endorses their service.</p>
+<p>SEVEN-G content is published under a <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">CC BY 4.0</a> licence (document 93). Any third party may use, adapt and apply it in professional services, including paid services, <strong>without needing authorisation or having to engage the author</strong>, provided that they give credit for authorship, indicate the changes and do not suggest that the author endorses their service.</p>
 <h3 id="2-2-what-responsibilities-it-entails">2.2 What responsibilities it entails</h3>
 <div class="tabla"><table>
 <thead>
@@ -847,7 +858,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td>The service applies the essential rules (section 2.3) without relevant changes</td>
-<td>&quot;Service based on SEVEN-G (version 0.1), framework by Fernando García · SEACHAD, CC BY 4.0.&quot;</td>
+<td>&quot;Service based on SEVEN-G (version 0.1), framework by Fernando García · SEACHAD, <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">CC BY 4.0</a>.&quot;</td>
 </tr>
 <tr>
 <td>The service adapts the framework</td>
@@ -889,7 +900,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>The licence does not authorise suggesting endorsement by the author (document 93).</td>
 </tr>
 <tr>
-<td>&quot;AI Act compliance guaranteed by SEVEN-G&quot;</td>
+<td>&quot;<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> compliance guaranteed by SEVEN-G&quot;</td>
 <td>The framework maps obligations; it does not guarantee compliance with them.</td>
 </tr>
 <tr>
@@ -1048,7 +1059,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>&quot;You will be able to declare that you apply SEVEN-G and, if you wish, submit the declaration to an independent review.&quot;</td>
 </tr>
 <tr>
-<td>&quot;We guarantee compliance with the AI Act&quot;</td>
+<td>&quot;We guarantee compliance with the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>&quot;</td>
 <td>Compliance depends on the company and on legal interpretations; the framework maps obligations.</td>
 <td>&quot;We help you identify the obligations, assign them to phases, roles and evidence, and check their status.&quot;</td>
 </tr>
@@ -1085,7 +1096,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>&quot;Method validated by the author&quot; or &quot;approved by SEACHAD&quot;</td>
 <td>The licence does not allow endorsement to be suggested.</td>
-<td>&quot;Based on SEVEN-G, framework by Fernando García · SEACHAD, CC BY 4.0.&quot;</td>
+<td>&quot;Based on SEVEN-G, framework by Fernando García · SEACHAD, <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">CC BY 4.0</a>.&quot;</td>
 </tr>
 <tr>
 <td>&quot;With SEVEN-G you will not need an audit&quot;</td>
@@ -1228,7 +1239,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

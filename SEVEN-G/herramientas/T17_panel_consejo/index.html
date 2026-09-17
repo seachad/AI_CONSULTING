@@ -54,23 +54,26 @@
   <section id="es" lang="es">
     <span class="demo">Demo · datos ficticios</span>
     <h1>Conector del registro T01 al panel del consejo<small>T17 · Panel de IA para el Consejo y registro de recomendaciones (T18)</small></h1>
-    <p>Este conector toma el <strong>JSON completo</strong> que exporta el <a href="../T01_registro_iniciativas/registro.html">registro de iniciativas T01</a> de SEVEN-G y lo convierte, sin volver a introducir datos, en el <strong>panel de IA para el Consejo</strong> (completo y móvil, sincronizados) y, si el registro trae recomendaciones, en el <strong>registro de recomendaciones</strong>. Los paneles los genera el motor incluido en la carpeta <code>motor/</code> (copia mantenida aquí desde el 17-09-2026; origen: <em>AI en el Consejo</em>, MIT, mismo autor): no hace falta ningún otro repositorio.</p>
-    <p>Lo que T01 no registra queda «sin dato» y nunca se convierte en cero. La fase, el estado, la intensidad, las esferas y la ambición de SEVEN-G viajan en cada caso (bloque <code>seveng</code>) para cuando el motor los lea.</p>
+    <p>Este conector toma el <strong>JSON completo</strong> que exporta el <a href="../T01_registro_iniciativas/registro.html">registro de iniciativas T01</a> de SEVEN-G y lo convierte, sin volver a introducir datos, en el <strong>panel de IA para el Consejo</strong> (completo y móvil, sincronizados) y, si el registro trae recomendaciones, en el <strong>registro de recomendaciones</strong>. Los paneles los genera el motor incluido en la carpeta <code>motor/</code> (versión 8, con embudo y ciclo de vida; origen: <em>AI en el Consejo</em>, MIT, mismo autor): no hace falta ningún otro repositorio.</p>
+    <p><strong>El registro es la única entrada de datos</strong>: cada iniciativa se da de alta en T01 como una oportunidad en un CRM y el panel se reconstruye desde su JSON. Las etapas del embudo del panel (Propuesto, Hipótesis de valor, POC, En desarrollo, En uso) y sus salidas (No aprobado, Descartado, Desenganchado) corresponden a las fases 0–7 de SEVEN-G, y el tiempo en cada etapa sale de las fechas de los eventos del registro: nunca se estima. Los umbrales de los indicadores, las etapas y los límites de días se configuran en <code>config_panel.json</code>.</p>
 
-    <h2>Demo generada con los datos ficticios de T01</h2>
+    <h2>Panel de ejemplo, generado con las iniciativas ficticias de T01</h2>
     <ul class="enlaces">
-      <li><a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v7.html">Panel completo</a><span>Inventario, valor, riesgo, cumplimiento, incidentes y agilidad.</span></li>
-      <li><a href="ejemplo/salida/t01_Dashboard_Movil_IA_v7.html">Panel móvil</a><span>La misma huella de datos, en formato para el teléfono.</span></li>
+      <li><a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html">Panel completo</a><span>Cartera y valor, embudo y ciclo de vida, riesgo y cumplimiento, incidentes e inventario.</span></li>
+      <li><a href="ejemplo/salida/t01_Dashboard_Movil_IA_v8.html">Panel móvil</a><span>La misma huella de datos, en formato para el teléfono.</span></li>
       <li><a href="ejemplo/salida/t01_Registro_Recomendaciones.html">Registro de recomendaciones</a><span>Recomendaciones de T01 con su estado y evidencia (T18).</span></li>
       <li><a href="ejemplo/salida/t01_dashboard_data.json">JSON del panel</a><span>Datos convertidos al esquema del motor (<code>ESQUEMA.md</code>).</span></li>
+      <li><a href="../T01_registro_iniciativas/registro.html">Registro de iniciativas (T01)</a><span>Las iniciativas de ejemplo de las que sale este panel.</span></li>
+      <li><a href="config_panel.json">Configuración del panel</a><span>Umbrales de los indicadores, etapas del embudo y límites de días.</span></li>
     </ul>
     <p style="margin-top:12px;font-size:15px">Compañía, personas y proveedores son ficticios; cualquier parecido con una organización o persona real es casual. Los HTML generados nunca se editan a mano: se regeneran con el conector.</p>
 
     <h2>Cómo se usa</h2>
     <ol>
       <li>Requisitos: solo Python 3.11 o superior con <code>uv</code>. El motor del panel está incluido en <code>motor/</code>.</li>
-      <li>En T01: <strong>Datos → Exportar JSON completo</strong>.</li>
-      <li>Desde esta carpeta: <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta</code></pre>Sin argumentos genera esta demo en <code>ejemplo/salida/</code>. Opcionalmente, <code>--panel ruta</code> usa otro motor (un checkout de <em>AI en el Consejo</em>).</li>
+      <li>En T01: <strong>Datos → Exportar JSON completo</strong>. Si el registro está repartido en varios JSON, se fusionan antes en T01 (<strong>Datos → Validar y fusionar</strong>).</li>
+      <li>Desde esta carpeta: <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta</code></pre>Sin argumentos genera este ejemplo en <code>ejemplo/salida/</code>. Opcionalmente, <code>--panel ruta</code> usa otro motor (un checkout de <em>AI en el Consejo</em>).</li>
+      <li>Ajuste <code>config_panel.json</code> (umbrales, etapas y límites de días) y regenere. Al cierre de cada sesión del consejo, guarde una foto con <code>motor/snapshot.py</code> para ver la tendencia.</li>
     </ol>
 
     <h2>Documentación</h2>
@@ -95,23 +98,26 @@
   <section id="en" lang="en" hidden>
     <span class="demo">Demo · fictitious data</span>
     <h1>Connector from the T01 register to the board dashboard<small>T17 · AI dashboard for the board and recommendations log (T18)</small></h1>
-    <p>This connector takes the <strong>full JSON</strong> exported by the SEVEN-G <a href="../T01_registro_iniciativas/registro.html">T01 initiative register</a> and converts it, without re-entering any data, into the <strong>AI dashboard for the board</strong> (full and mobile, in sync) and, if the register contains recommendations, into the <strong>recommendations log</strong>. The dashboards are generated by the engine included in the <code>motor/</code> folder (copy maintained here since 17-09-2026; origin: <em>AI en el Consejo</em>, MIT, same author): no other repository is needed.</p>
-    <p>Anything T01 does not record is left as "no data" and is never turned into zero. SEVEN-G phase, status, intensity, spheres and ambition travel with each case (block <code>seveng</code>) for when the engine reads them. Field names and on-screen texts are in Spanish, as in the engine.</p>
+    <p>This connector takes the <strong>full JSON</strong> exported by the SEVEN-G <a href="../T01_registro_iniciativas/registro.html">T01 initiative register</a> and converts it, without re-entering any data, into the <strong>AI dashboard for the board</strong> (full and mobile, in sync) and, if the register contains recommendations, into the <strong>recommendations log</strong>. The dashboards are generated by the engine included in the <code>motor/</code> folder (version 8, with funnel and lifecycle; origin: <em>AI en el Consejo</em>, MIT, same author): no other repository is needed.</p>
+    <p><strong>The register is the single data entry point</strong>: each initiative is entered in T01 like an opportunity in a CRM and the dashboard is rebuilt from its JSON. The dashboard funnel stages (Propuesto, Hipótesis de valor, POC, En desarrollo, En uso) and its exits (No aprobado, Descartado, Desenganchado) map to SEVEN-G phases 0–7, and the time in each stage comes from the dates of the register events: it is never estimated. Indicator thresholds, stages and day limits are configured in <code>config_panel.json</code>.</p>
 
-    <h2>Demo generated from the T01 fictitious data</h2>
+    <h2>Example dashboard, generated from the T01 fictitious initiatives</h2>
     <ul class="enlaces">
-      <li><a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v7.html">Full dashboard</a><span>Inventory, value, risk, compliance, incidents and agility.</span></li>
-      <li><a href="ejemplo/salida/t01_Dashboard_Movil_IA_v7.html">Mobile dashboard</a><span>Same data fingerprint, laid out for the phone.</span></li>
+      <li><a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html">Full dashboard</a><span>Portfolio and value, funnel and lifecycle, risk and compliance, incidents and inventory.</span></li>
+      <li><a href="ejemplo/salida/t01_Dashboard_Movil_IA_v8.html">Mobile dashboard</a><span>Same data fingerprint, laid out for the phone.</span></li>
       <li><a href="ejemplo/salida/t01_Registro_Recomendaciones.html">Recommendations log</a><span>T01 recommendations with status and evidence (T18).</span></li>
       <li><a href="ejemplo/salida/t01_dashboard_data.json">Dashboard JSON</a><span>Data converted to the engine schema (<code>ESQUEMA.md</code>).</span></li>
+      <li><a href="../T01_registro_iniciativas/registro.html">Initiative register (T01)</a><span>The example initiatives this dashboard comes from.</span></li>
+      <li><a href="config_panel.json">Dashboard configuration</a><span>Indicator thresholds, funnel stages and day limits.</span></li>
     </ul>
     <p style="margin-top:12px;font-size:15px">Company, people and suppliers are fictitious; any resemblance to a real organisation or person is coincidental. Generated HTML files are never edited by hand: they are regenerated with the connector.</p>
 
     <h2>How to use it</h2>
     <ol>
       <li>Requirements: only Python 3.11 or later with <code>uv</code>. The dashboard engine is included in <code>motor/</code>.</li>
-      <li>In T01: <strong>Datos → Exportar JSON completo</strong> (Data → Export full JSON).</li>
-      <li>From this folder: <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida folder</code></pre>With no arguments it builds this demo in <code>ejemplo/salida/</code>. Optionally, <code>--panel path</code> uses another engine (a checkout of <em>AI en el Consejo</em>).</li>
+      <li>In T01: <strong>Datos → Exportar JSON completo</strong> (Data → Export full JSON). If the register is spread over several JSON files, merge them first in T01 (<strong>Data → Validate and merge</strong>).</li>
+      <li>From this folder: <pre><code>uv run python t01_a_panel.py --t01 export_t01.json --salida folder</code></pre>With no arguments it builds this example in <code>ejemplo/salida/</code>. Optionally, <code>--panel path</code> uses another engine (a checkout of <em>AI en el Consejo</em>).</li>
+      <li>Adjust <code>config_panel.json</code> (thresholds, stages and day limits) and regenerate. At the end of each board session, save a snapshot with <code>motor/snapshot.py</code> to see the trend.</li>
     </ol>
 
     <h2>Documentation</h2>

@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · AI operations manual"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1011,7 +1022,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>New classification (T07) and intensity determination (T04).</td>
 </tr>
 <tr>
-<td>Modification that may be considered substantial under the EU AI Act in a high-risk system</td>
+<td>Modification that may be considered substantial under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> in a high-risk system</td>
 <td><strong>G3</strong>, with legal analysis</td>
 <td>May require a new conformity assessment and, in certain cases, turn the deployer into a provider (Arts. 3(23) and 25; document 34).</td>
 </tr>
@@ -1064,7 +1075,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>S1 · Critical</strong></td>
-<td>Possible serious incident under the EU AI Act; serious incident under DORA or NIS2 where applicable; significant material harm to people, customers, money or rights; or loss of control of a system that acts.</td>
+<td>Possible serious incident under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>; serious incident under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> where applicable; significant material harm to people, customers, money or rights; or loss of control of a system that acts.</td>
 <td>Agent executing unauthorised payments or communications to customers; systematic discrimination in decisions about people; massive exposure of personal data.</td>
 <td>Triage within 1 hour, at any time; immediate coordinator; AI Committee within 4 hours; board committee within 24 hours.</td>
 <td>AI Committee and board committee; authorities where appropriate.</td>
@@ -1127,7 +1138,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Arts. 73 and 26(5)</td>
 </tr>
 <tr>
-<td><strong>GDPR</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a></strong></td>
 <td>Personal data breach: notification to the supervisory authority without undue delay and, where feasible, within 72 hours; communication to data subjects if there is a high risk.</td>
 <td>Arts. 33 and 34</td>
 </tr>
@@ -1235,7 +1246,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p>Omitting an R6 is a <strong>major nonconformity</strong> (01 §12).</p>
 <hr />
 <h2 id="post-market-monitoring"><span class="antetitulo">09</span>Post-market monitoring</h2>
-<p>The EU AI Act requires <strong>providers</strong> of high-risk systems to establish and document a <strong>post-market monitoring system</strong>, based on a plan, that actively and systematically collects and analyses data on the performance of the system throughout its lifetime in order to evaluate continuous compliance (Art. 72). <strong>Deployers</strong> must monitor operation in accordance with the instructions for use, inform the provider where appropriate and, if they consider that the use may present a risk, inform and suspend use (Art. 26(5)). High-risk obligations apply from 2 December 2027 (Annex III) and 2 August 2028 (Annex I), following Regulation (EU) 2026/1744; the timetable and the other amendments are addressed in document 34 (§3.1 and §3.2).</p>
+<p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers</strong> of high-risk systems to establish and document a <strong>post-market monitoring system</strong>, based on a plan, that actively and systematically collects and analyses data on the performance of the system throughout its lifetime in order to evaluate continuous compliance (Art. 72). <strong>Deployers</strong> must monitor operation in accordance with the instructions for use, inform the provider where appropriate and, if they consider that the use may present a risk, inform and suspend use (Art. 26(5)). High-risk obligations apply from 2 December 2027 (Annex III) and 2 August 2028 (Annex I), following Regulation (EU) 2026/1744; the timetable and the other amendments are addressed in document 34 (§3.1 and §3.2).</p>
 <ul>
 <li><strong>As a provider</strong> (including where it becomes one through substantial modification or change of purpose): monitoring plan integrated into <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, with the data collected, their periodic analysis and the connection with risks, changes, incidents and R6.</li>
 <li><strong>As a deployer:</strong> monitoring in accordance with the provider's instructions, a channel for informing the provider, a suspension criterion and retention of logs (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
@@ -1279,7 +1290,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <ol>
 <li>The <strong>rollback plan</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) is tested before G5 and <strong>periodically</strong> in production: at least annually at Lite and half-yearly at Enterprise, and after each substantial change (OPE-15).</li>
 <li>The plan identifies the <strong>people and capabilities</strong> needed to operate without the system and is coordinated with document 50 (section 5.4).</li>
-<li>For systems that support a <strong>critical or important function</strong>, the maximum recovery time and the maximum tolerable data loss are set in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and aligned with the business continuity plan and, where applicable, with DORA.</li>
+<li>For systems that support a <strong>critical or important function</strong>, the maximum recovery time and the maximum tolerable data loss are set in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and aligned with the business continuity plan and, where applicable, with <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>.</li>
 <li><strong>Dependence on a provider</strong> is assessed in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> with an exit strategy (document 36).</li>
 </ol>
 <hr />
@@ -1302,7 +1313,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td><strong>EU AI Act, Arts. 12, 19 and 26(6)</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>, Arts. 12, 19 and 26(6)</strong></td>
 <td>High-risk systems allow for the automatic recording of events. Providers and deployers keep the automatically generated logs under their control for a period appropriate to the intended purpose, <strong>of at least six months</strong>, unless otherwise provided by other applicable law.</td>
 <td>Minimum of six months for high-risk systems, extendable according to the purpose, sector-specific regulation and claim periods.</td>
 </tr>
@@ -1312,7 +1323,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Applies when the company is a provider.</td>
 </tr>
 <tr>
-<td><strong>GDPR, Art. 5(1)(c) and (e)</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Art. 5(1)(c) and (e)</strong></td>
 <td>Data minimisation and storage limitation.</td>
 <td>Logs containing personal data are limited to what is necessary, with pseudonymisation where possible and a defined retention period.</td>
 </tr>
@@ -1654,7 +1665,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

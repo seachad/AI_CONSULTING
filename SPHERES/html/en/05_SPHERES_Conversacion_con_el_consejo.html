@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conversation with the board</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+@page { @bottom-left { content: "SPHERES · Conversation with the board"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Document tools">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SPHERES</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SPHERES_Que_es_y_para_que_sirve.html" title="Go to document 00: What SPHERES is and how it helps" aria-label="Go to document 00: What SPHERES is and how it helps"><span aria-hidden="true">⌂</span><span class="oculto">Home</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Open the document library for the current language" aria-label="Open the document library for the current language"><span aria-hidden="true">≣</span><span class="oculto">Library</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Downloads" aria-label="Downloads"><span aria-hidden="true">↓</span><span class="oculto">Downloads</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="View navigation history for this language" aria-label="View navigation history for this language"><span aria-hidden="true">↺</span><span class="oculto">History</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Previous result" title="Previous result">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Next result" title="Next result">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Open section index for the current document" aria-label="Open section index for the current document"><span aria-hidden="true">☰</span><span class="oculto">Contents</span></button>
+    <label class="tema"><span class="oculto">Theme</span>
+      <select id="tema" aria-label="Theme">
+        <option value="salmon">Salmon</option>
+        <option value="claro">Light salmon</option>
+        <option value="noche">Night</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Language"><a href="../es/05_SPHERES_Conversacion_con_el_consejo.html" hreflang="es" lang="es">ES</a><span class="activo" aria-current="true">EN</span></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="Contents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Contents</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Close">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filter sections" aria-label="Filter sections" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documents" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documents</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filter documents" aria-label="Filter documents" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Navigation history" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Navigation history</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Downloads" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Downloads</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/05_SPHERES_Conversacion_con_el_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/05_SPHERES_Conversacion_con_el_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/05_SPHERES_Conversacion_con_el_consejo.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SPHERES</div><div class="cabecera-dato">Document 05 · 17-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Document 05 &#183; Conversation with the board</p>
+    <h1>Conversation with the board</h1>
+    <p class="entradilla">How to use the nine spheres and the three levels in a first sixty-minute session: preparation, script, questions, position on people and first ninety days</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1</span><span>17-09-2026</span><span>Under construction</span></div>
+    <div class="cifras"><div class="cifra"><b>60</b><span>minutes of session</span></div><div class="cifra"><b>6</b><span>blocks</span></div><div class="cifra"><b>9</b><span>reference questions</span></div><div class="cifra"><b>90</b><span>days of initial plan</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/05_SPHERES_Conversacion_con_el_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/05_SPHERES_Conversacion_con_el_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/05_SPHERES_Conversacion_con_el_consejo.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#what-this-conversation-is-for"><span>01</span>What this conversation is for</a></li><li><a href="#principles-of-the-conversation"><span>02</span>Principles of the conversation</a></li><li><a href="#preparation"><span>03</span>Preparation</a></li><li><a href="#sixty-minute-script"><span>04</span>Sixty-minute script</a></li><li><a href="#question-bank-by-sphere"><span>05</span>Question bank by sphere</a></li><li><a href="#the-position-on-people"><span>06</span>The position on people</a></li><li><a href="#first-ninety-days"><span>07</span>First ninety days</a></li><li><a href="#after-the-session"><span>08</span>After the session</a></li><li><a href="#the-role-of-the-person-supporting-the-board"><span>09</span>The role of the person supporting the board</a></li><li><a href="#frequent-mistakes"><span>10</span>Frequent mistakes</a></li><li><a href="#related-documents"><span>11</span>Related documents</a></li><li><a href="#version-control"><span>12</span>Version control</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Legal notice and disclaimer.</strong> SPHERES is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act) and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date. <strong>Each organisation that uses SPHERES is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
+</blockquote>
+<h2 id="what-this-conversation-is-for"><span class="antetitulo">01</span>What this conversation is for</h2>
+<p>A board of directors does not think in terms of &quot;AI use cases&quot;. It thinks in terms of <strong>risk, opportunity, accountability and competitive advantage</strong>. The conversation that SPHERES proposes translates AI into those terms and ends with specific decisions.</p>
+<p>It has four objectives:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Objective</th>
+<th>Outcome at the end of the session</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Understand the scope</strong></td>
+<td>The board understands that AI affects the whole organisation, not just technology.</td>
+</tr>
+<tr>
+<td><strong>Position the company</strong></td>
+<td>There is a first reading of where the company's AI stands on the map and with what ambition.</td>
+</tr>
+<tr>
+<td><strong>Take a position</strong></td>
+<td>The board has expressed its position, even if provisional, on priorities and on people.</td>
+</tr>
+<tr>
+<td><strong>Decide</strong></td>
+<td>There is a mandate with an owner and a date for the first ninety days.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Why it matters.</strong> Many board sessions on AI end with a sense of interest and no decision. The sphere map gives the conversation a structure that moves from the general to the specific and forces it to close with a mandate. Without that structure, AI returns to the agenda six months later at the same point.</p>
+</blockquote>
+<hr />
+<h2 id="principles-of-the-conversation"><span class="antetitulo">02</span>Principles of the conversation</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principle</th>
+<th>How it is applied</th>
+<th>What is avoided</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Business before technology.</strong></td>
+<td>The discussion is about customers, the offering, people, processes, risk and accountability. Technical terms are translated or omitted.</td>
+<td>A session about models, platforms or suppliers.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Questions before answers.</strong></td>
+<td>Each block puts a reference question to the board, and the board is listened to before anything is proposed.</td>
+<td>A sales presentation that the board only listens to.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>One example per level is enough.</strong></td>
+<td>In each sphere, one example of Optimise, one of Augment and one of Transform are chosen, preferably from the company itself or its sector.</td>
+<td>Going through catalogues of possibilities.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Honesty about gaps.</strong></td>
+<td>The enablers are presented with what is known and what is not; &quot;no data&quot; is said out loud.</td>
+<td>Hiding that there is no inventory or that nobody knows what data can be used.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>No unsupported figures.</strong></td>
+<td>Only figures from the company or from verifiable sources are used; examples are marked as illustrative.</td>
+<td>Market statistics without a source to create urgency.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>End with a decision.</strong></td>
+<td>The last block asks for an explicit mandate with an owner and a report-back date.</td>
+<td>&quot;We will look into it&quot;.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="preparation"><span class="antetitulo">03</span>Preparation</h2>
+<p>The quality of the session depends on the preparation. It is advisable to start two to three weeks beforehand.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>When</th>
+<th>What</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Two or three weeks before</strong></td>
+<td>Short interviews with the chair, the chief executive and senior business, people, technology and risk management. Preliminary list of known AI initiatives and systems.</td>
+<td>The presenter, with the AI Office if there is one</td>
+</tr>
+<tr>
+<td><strong>Two weeks before</strong></td>
+<td><strong>First preliminary map</strong>: each known initiative is placed in its primary sphere and at its ambition level (document 01). The approximate grades of spheres 08 and 09 are noted (document 04). The examples per level are chosen.</td>
+<td>The presenter</td>
+</tr>
+<tr>
+<td><strong>One week before</strong></td>
+<td>Two-page note for the board: session objective, nine spheres, three levels, the reference questions and the decision that will be requested at the end.</td>
+<td>Board secretariat</td>
+</tr>
+<tr>
+<td><strong>The day before</strong></td>
+<td>Timed rehearsal. Each block fits its time or is cut.</td>
+<td>The presenter</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="how-to-build-the-preliminary-map">How to build the preliminary map</h3>
+<ol>
+<li><strong>Gather the list</strong> of AI initiatives and systems from the interviews, the budgets and the contracts with suppliers. It is common to discover initiatives that management was not aware of.</li>
+<li><strong>Assign the primary sphere</strong> of each one: the sphere in which its main metric is measured, not the area that sponsors it.</li>
+<li><strong>Assign the ambition level</strong> with the five questions in document 01. In case of doubt, the lower level.</li>
+<li><strong>Diagnose the enablers</strong> with the five quick questions in document 03.</li>
+<li><strong>Estimate the grades</strong> of the dimensions of 08 and 09 with the evidence available.</li>
+<li><strong>Mark what is not known.</strong> A preliminary map with declared gaps is more useful than a complete, invented one.</li>
+</ol>
+<blockquote>
+<p><strong>Why it matters.</strong> Presenting the board with its own company on the map, even in preliminary form, changes the tone of the session: the discussion moves from AI in general to the company's own decisions. And the gaps in the map are often, in themselves, the first relevant finding.</p>
+</blockquote>
+<hr />
+<h2 id="sixty-minute-script"><span class="antetitulo">04</span>Sixty-minute script</h2>
+<figure class="grafico"><div class="g-titulo">Session script</div><div class="g-sub">Six blocks that go from framing to decision</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  B1["01 · Framing · 10 min"] --> B2["02 · Value spheres · 12 min"]
+  B2 --> B3["03 · Enablers · 10 min"]
+  B3 --> B4["04 · Regulation · 10 min"]
+  B4 --> B5["05 · People · 8 min"]
+  B5 --> B6["06 · Governance and 90 days · 10 min"]
+</pre></div><div class="g-fuente">Source: SPHERES · SEACHAD</div></figure>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Minutes</th>
+<th>Objective</th>
+<th>Reference question</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Strategic framing</strong></td>
+<td>0–10</td>
+<td>Position AI as a business issue and present the map.</td>
+<td>What business are we in and how does AI change its rules?</td>
+<td>Two or three priority spheres noted.</td>
+</tr>
+<tr>
+<td><strong>02 · Spheres where value is created</strong></td>
+<td>10–22</td>
+<td>See where the company's AI is today and where it could be.</td>
+<td>Are we using AI to protect the current business or to build the next one?</td>
+<td>First reading of the portfolio and of whether there is any Transform bet.</td>
+</tr>
+<tr>
+<td><strong>03 · Enabling spheres</strong></td>
+<td>22–32</td>
+<td>Diagnose real capability.</td>
+<td>Do we know what data we have, what knowledge depends on a few people and what decisions we have already delegated?</td>
+<td>Enabling gaps recognised.</td>
+</tr>
+<tr>
+<td><strong>04 · Regulation, ethics and accountability</strong></td>
+<td>32–42</td>
+<td>Find out whether the company governs proactively or reactively.</td>
+<td>Do we govern proactively or do we wait for the regulator to force us?</td>
+<td>Knowing whether there is an inventory with regulatory classification and who is accountable for it.</td>
+</tr>
+<tr>
+<td><strong>05 · Position on people</strong></td>
+<td>42–50</td>
+<td>Obtain an explicit position.</td>
+<td>Will AI replace, augment or reorganise people's work?</td>
+<td>Provisional position or assignment with a date.</td>
+</tr>
+<tr>
+<td><strong>06 · AI governance and first 90 days</strong></td>
+<td>50–60</td>
+<td>Close with a decision.</td>
+<td>Do we commission the diagnosis and the governance structure within ninety days?</td>
+<td>Mandate with an owner, the body that receives the result and a report-back date.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="block-01-strategic-framing">Block 01 · Strategic framing</h3>
+<p><strong>What is presented.</strong> Why AI is a board matter: risk, opportunity, accountability and competitive advantage. The nine spheres grouped into where value is created, enablers, boundaries and meta-sphere. The three ambition levels as types of bet, not as a ladder.</p>
+<p><strong>What the board is asked.</strong> Which two or three spheres concern you most today?</p>
+<p><strong>What to avoid.</strong> Starting with technology or with the evolution of models.</p>
+<h3 id="block-02-spheres-where-value-is-created">Block 02 · Spheres where value is created</h3>
+<p><strong>What is presented.</strong> Customer, Product and service, People and Operations, with one example per level in each. For example, in Customer: classifying and routing queries (Optimise), preparing each sales visit with the customer's likely needs (Augment), a main relationship channel handled by an assistant with oversight (Transform). Then, the company's preliminary map in these four spheres.</p>
+<p><strong>What the board is asked.</strong> Are we using AI to protect the current product or to build the next one? If a competitor knows our customers better, how long will it take us to lose relevance?</p>
+<p><strong>What to avoid.</strong> Going through every possible example or presenting efficiency as transformation.</p>
+<h3 id="block-03-enabling-spheres">Block 03 · Enabling spheres</h3>
+<p><strong>What is presented.</strong> Data, Knowledge and Decision, with the findings from the interviews: quality and legal basis of the data, dependence on the knowledge of a few people, decisions already delegated to systems without a defined autonomy level.</p>
+<p><strong>What the board is asked.</strong> Have we defined which decisions AI can take alone, which require human validation and which must never be delegated?</p>
+<p><strong>What to avoid.</strong> Turning the block into a review of the technology architecture.</p>
+<h3 id="block-04-regulation-ethics-and-accountability">Block 04 · Regulation, ethics and accountability</h3>
+<p><strong>What is presented.</strong> What the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires according to the risk level of each system, data protection in automated decisions and applicable sector regulation, always with the consultation date. The three dimensions: Compliance, Anticipation and Ethical leadership. It is often the topic that concerns the board most.</p>
+<p><strong>What the board is asked.</strong> Do we govern proactively or do we wait for the regulator to force us? Is there anyone with real power to say no to an initiative that is profitable but inappropriate?</p>
+<p><strong>What to avoid.</strong> Presenting regulation as a catalogue of penalties or treating as settled interpretations that require legal judgement.</p>
+<h3 id="block-05-position-on-people">Block 05 · Position on people</h3>
+<p>It is covered in section 6 of this document.</p>
+<h3 id="block-06-ai-governance-and-first-ninety-days">Block 06 · AI governance and first ninety days</h3>
+<p><strong>What is presented.</strong> The meta-sphere and its three dimensions: Structure, Balance between speed and control and Supplier ecosystem. The ninety-day plan in section 7.</p>
+<p><strong>What is asked of the board.</strong> An explicit decision: do we commission the diagnosis and the governance structure within ninety days, with which owner and with what date for reporting back to the board?</p>
+<p><strong>What to avoid.</strong> Ending without a decision.</p>
+<hr />
+<h2 id="question-bank-by-sphere"><span class="antetitulo">05</span>Question bank by sphere</h2>
+<p>Each sphere has a <strong>reference question</strong>, designed to open the conversation, and <strong>follow-up questions</strong> to go deeper when the board asks for it.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Sphere</th>
+<th>Reference question</th>
+<th>Follow-up questions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01 · Customer</strong></td>
+<td>If a competitor knows our customers better because it uses AI better, how long will it take us to lose relevance?</td>
+<td>What part of the customer relationship is already mediated by AI, and who is accountable for its quality? Do we know whether AI improves retention or only reduces the cost of serving?</td>
+</tr>
+<tr>
+<td><strong>02 · Product and service</strong></td>
+<td>Are we using AI to protect the current product or to build the next one?</td>
+<td>What part of our revenue comes from products that would not exist without AI? Do we know the AI cost per unit of service?</td>
+</tr>
+<tr>
+<td><strong>03 · People</strong></td>
+<td>Does AI replace, augment or reorganise people's work?</td>
+<td>What happens to released capacity? What proportion of initiatives originates from employees themselves?</td>
+</tr>
+<tr>
+<td><strong>04 · Operations</strong></td>
+<td>Do we know which processes are candidates for immediate automation and which need a complete redesign?</td>
+<td>Are we automating tasks or redesigning processes? What happens if a system supporting a critical operation fails?</td>
+</tr>
+<tr>
+<td><strong>05 · Data</strong></td>
+<td>Do we know what data we have, where it is, who is accountable for its quality and whether we can legally use it for AI?</td>
+<td>How many initiatives are delayed for lack of data? Is our data an advantage that is hard to replicate?</td>
+</tr>
+<tr>
+<td><strong>06 · Knowledge</strong></td>
+<td>If the people who know the most left tomorrow, what would be lost?</td>
+<td>Who verifies the answers from our assistants? Do we learn from what we decide or do we repeat mistakes?</td>
+</tr>
+<tr>
+<td><strong>07 · Decision</strong></td>
+<td>What does AI decide on its own, what requires human validation and what is never delegated?</td>
+<td>Can we reconstruct what the system recommended and what the person decided? Who can stop a system that acts?</td>
+</tr>
+<tr>
+<td><strong>08 · Regulation, ethics and accountability</strong></td>
+<td>Do we govern proactively or do we wait for the regulator to force us?</td>
+<td>Are all our systems classified? Who signs off that classification? Do we have principles that go beyond the law?</td>
+</tr>
+<tr>
+<td><strong>09 · AI governance</strong></td>
+<td>Does AI have corporate governance with the same formality as finance, risk or compliance?</td>
+<td>Who is ultimately accountable? Can we stop an initiative that is not working? Do we depend on a single model supplier?</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Why it matters.</strong> The reference questions are deliberately uncomfortable. Their purpose is not to obtain an immediate answer, but for the board to recognise that it does not have one and to commission the work needed to obtain it.</p>
+</blockquote>
+<hr />
+<h2 id="the-position-on-people"><span class="antetitulo">06</span>The position on people</h2>
+<p>Block 05 is the shortest and the most delicate. A single question is asked: <strong>will AI replace, augment or reorganise people's work in this company?</strong></p>
+<h3 id="the-three-positions">The three positions</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Position</th>
+<th>What it means</th>
+<th>What it implies for the company</th>
+<th>Risk if it is not managed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Replace</strong></td>
+<td>AI takes on work that people do today and the company reduces capacity.</td>
+<td>Explicit management decision, a responsible social plan, dialogue with employee representatives where appropriate and transparent communication.</td>
+<td>Internal rejection, loss of key talent and reputational risk.</td>
+</tr>
+<tr>
+<td><strong>Augment</strong></td>
+<td>AI extends what people can do; the workforce is maintained and its work changes.</td>
+<td>Training, role redesign, and assessment and pay consistent with the new work.</td>
+<td>Investment without return if there is no real adoption.</td>
+</tr>
+<tr>
+<td><strong>Reorganise</strong></td>
+<td>AI changes the structure: functions disappear and others appear.</td>
+<td>Transition plan, professional reskilling, new oversight and quality roles, and internal mobility criteria.</td>
+<td>Prolonged uncertainty and departure of the people with the most options.</td>
+</tr>
+</tbody>
+</table></div>
+<p>In practice, a company may adopt different positions by function. What must not happen is for there to be no position and for each project to decide it on its own.</p>
+<h3 id="the-three-roles-worth-recalling">The three roles worth recalling</h3>
+<p>Before asking for the position, it is recalled that people are at the same time <strong>recipients</strong> (their tools and expectations change), <strong>subjects</strong> (AI may change or eliminate their job) and <strong>promoters</strong> (whoever knows a process best identifies uses that no outsider would see). Document 02 develops them.</p>
+<h3 id="what-is-asked-of-the-board">What is asked of the board</h3>
+<p>An explicit position, even if provisional. If the board is not in a position to set it in the session, a proposal is commissioned with a date.</p>
+<blockquote>
+<p><strong>Why it matters.</strong> This answer defines the culture, the ability to attract and retain talent and the relationship with the workforce for years. Watering down the question to make it comfortable is a mistake: the people in the organisation perceive management's real position even if it is not stated, and the absence of a position is almost always interpreted as the worst of the three.</p>
+</blockquote>
+<hr />
+<h2 id="first-ninety-days"><span class="antetitulo">07</span>First ninety days</h2>
+<p>The session ends with a mandate for the first ninety days. The sphere map is the common thread of the three months.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Objective</th>
+<th>What is done with the map</th>
+<th>Outcome for the board</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Month 1</strong></td>
+<td>Diagnosis</td>
+<td>Complete inventory of initiatives and systems; current map by sphere and level; grades of 08 and 09 with evidence; diagnosis of the enablers.</td>
+<td>Map of the current situation with the &quot;no data&quot; items made explicit.</td>
+</tr>
+<tr>
+<td><strong>Month 2</strong></td>
+<td>Risks and opportunities</td>
+<td>Main risks and opportunities by sphere, with owner, estimated economic impact and time frame.</td>
+<td>Prioritised list of risks and opportunities by sphere.</td>
+</tr>
+<tr>
+<td><strong>Month 3</strong></td>
+<td>Governance structure</td>
+<td>Proposal of target ambition by sphere, target grades for 08 and 09, main indicators, bodies, roles and rhythm of reporting to the board.</td>
+<td>Ambition by sphere and governance structure for approval.</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="grafico"><div class="g-titulo">First ninety days</div><div class="g-sub">The map moves from preliminary to approved</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  S["Session with the board: mandate"] --> M1["Month 1: current map with evidence"]
+  M1 --> M2["Month 2: risks and opportunities by sphere"]
+  M2 --> M3["Month 3: ambition by sphere and governance"]
+  M3 --> C["Board: approval and quarterly follow-up"]
+</pre></div><div class="g-fuente">Source: SPHERES · SEACHAD</div></figure>
+<p>The detailed plan, with deliverables, owners and criteria, is in <a href="../../../SEVEN-G/html/en/90_SEVEN-G_Guia_de_implantacion.html">SEVEN-G 90 · Implementation guide</a>.</p>
+<blockquote>
+<p><strong>Why it matters.</strong> Ninety days is long enough to move from intuition to evidence and short enough for the board to keep its attention. At the end of the period, the map stops being a session exercise and becomes the tool with which the board oversees AI every quarter.</p>
+</blockquote>
+<hr />
+<h2 id="after-the-session"><span class="antetitulo">08</span>After the session</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Time limit</th>
+<th>Action</th>
+<th>Accountable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Two working days</strong></td>
+<td>Note of conclusions: priority spheres, readings of the map, position on people and decision adopted.</td>
+<td>The presenter</td>
+</tr>
+<tr>
+<td><strong>Five working days</strong></td>
+<td>Recording of decisions and assignments with owner and date.</td>
+<td>Board secretariat</td>
+</tr>
+<tr>
+<td><strong>Next session</strong></td>
+<td>First item on the agenda: status of what was decided and updated map.</td>
+<td>Designated AI owner</td>
+</tr>
+</tbody>
+</table></div>
+<p>From the diagnosis onwards, the map is reviewed <strong>every quarter</strong> in the board's oversight, with the gaps between target ambition and the portfolio, and <strong>every year</strong> in the review of the AI strategy. In SEVEN-G, the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>) shows the portfolio heat map, and the register of recommendations and decisions keeps what the board requests and its fulfilment.</p>
+<hr />
+<h2 id="the-role-of-the-person-supporting-the-board"><span class="antetitulo">09</span>The role of the person supporting the board</h2>
+<p>The session may be led by management, a director with AI experience or an internal or external adviser. In all cases, these rules should be respected:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Does</th>
+<th>Does not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Helps the board ask the right questions, interpret the evidence and follow up on what has been decided.</td>
+<td>Lead the AI Office or take decisions that belong to the board or to management.</td>
+</tr>
+<tr>
+<td>Translates technical issues into business language.</td>
+<td>Use market figures without a source to create urgency.</td>
+</tr>
+<tr>
+<td>Points out unsupported figures, undeclared omissions and unnecessary technical jargon.</td>
+<td>Recommend suppliers, products or services in which they have an interest.</td>
+</tr>
+<tr>
+<td>Declares their interests and relationships with suppliers.</td>
+<td>Oversee initiatives in which they or their organisation provide implementation services.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The detail of this role, its independence and the board's training in AI are in <a href="../../../SEVEN-G/html/en/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">SEVEN-G 61 · Board conversation guide</a>, section 10.</p>
+<blockquote>
+<p><strong>Why it matters.</strong> The usefulness of the sphere map depends on the board's trust in whoever presents it. If the conversation is perceived as the prelude to a sale, the board will distrust the diagnosis, however good it may be.</p>
+</blockquote>
+<hr />
+<h2 id="frequent-mistakes"><span class="antetitulo">10</span>Frequent mistakes</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Consequence</th>
+<th>How to avoid it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Starting with technology.</td>
+<td>The board disengages or delegates the subject to the IT area.</td>
+<td>Open with the business question and the map.</td>
+</tr>
+<tr>
+<td>Presenting only opportunities.</td>
+<td>The board approves ambition without knowing the gaps or the boundaries.</td>
+<td>Devote dedicated time to enablers, regulation and governance.</td>
+</tr>
+<tr>
+<td>Using market figures without a source.</td>
+<td>Loss of credibility as soon as a director asks where they come from.</td>
+<td>Use the company's own data or verifiable sources; mark examples as illustrative.</td>
+</tr>
+<tr>
+<td>Presenting a complete map without evidence.</td>
+<td>Decisions based on a false picture of the company.</td>
+<td>Declare the gaps and the &quot;no data&quot; items.</td>
+</tr>
+<tr>
+<td>Avoiding the question about people.</td>
+<td>The position is taken by projects one by one.</td>
+<td>Devote a dedicated block to it and ask for a position or an assignment.</td>
+</tr>
+<tr>
+<td>Ending without a decision.</td>
+<td>AI returns to the agenda at the same point months later.</td>
+<td>Prepare the decision that will be requested and put it forward in the last block.</td>
+</tr>
+<tr>
+<td>Not following up.</td>
+<td>The map remains a session document.</td>
+<td>Record decisions and review the map every quarter.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="related-documents"><span class="antetitulo">11</span>Related documents</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>document 00 · What SPHERES is and how it helps</strong></td>
+<td>Presentation of the map and a complete example of reading it.</td>
+</tr>
+<tr>
+<td><strong>document 01 · Ambition levels</strong></td>
+<td>Classification of initiatives for the preliminary map.</td>
+</tr>
+<tr>
+<td><strong>document 02 · Spheres where value is created</strong></td>
+<td>Examples and questions for blocks 02 and 05.</td>
+</tr>
+<tr>
+<td><strong>document 03 · Enabling spheres</strong></td>
+<td>Quick diagnosis for block 03.</td>
+</tr>
+<tr>
+<td><strong>document 04 · Regulation and AI governance</strong></td>
+<td>Dimensions and grades for blocks 04 and 06.</td>
+</tr>
+<tr>
+<td><a href="../../../SEVEN-G/html/en/61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">SEVEN-G 61 · Board conversation guide</a></td>
+<td>Full script, response formats, difficult questions and role of the director with AI experience.</td>
+</tr>
+<tr>
+<td><a href="../../../SEVEN-G/html/en/62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">SEVEN-G 62 · Recommendations and decisions register</a></td>
+<td>Register of what the board decides and recommends.</td>
+</tr>
+<tr>
+<td><a href="../../../SEVEN-G/html/en/90_SEVEN-G_Guia_de_implantacion.html">SEVEN-G 90 · Implementation guide</a></td>
+<td>Detailed plan for the first ninety days.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="version-control"><span class="antetitulo">12</span>Version control</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>17-09-2026</td>
+<td>First version. Develops the conversation with the board based on the sphere map: objectives, principles, preparation and preliminary map, sixty-minute script, question bank by sphere, position on people, first ninety days, follow-up, role of the person supporting the board and frequent mistakes.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SPHERES methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SPHERES_Que_es_y_para_que_sirve.html","title":"What SPHERES is and how it helps","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SPHERES_Niveles_de_ambicion.html","title":"Ambition levels","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SPHERES_Esferas_donde_se_genera_valor.html","title":"Spheres where value is created","blockCode":"B","blockLabel":"B · The spheres","active":false},{"href":"03_SPHERES_Esferas_habilitadoras.html","title":"Enabling spheres","blockCode":"B","blockLabel":"B · The spheres","active":false},{"href":"04_SPHERES_Regulacion_y_gobierno_de_la_IA.html","title":"Regulation and AI governance","blockCode":"B","blockLabel":"B · The spheres","active":false},{"href":"05_SPHERES_Conversacion_con_el_consejo.html","title":"Conversation with the board","blockCode":"C","blockLabel":"C · Board","active":true},{"href":"index.html","title":"SPHERES Library","blockCode":"A","blockLabel":"A · Foundations","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">No navigation recorded yet.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Time: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'No results'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

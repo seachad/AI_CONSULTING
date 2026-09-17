@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Inventario de sistemas de IA y clasificación regulatoria"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -393,7 +404,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <ul>
 <li>Qué se inventaría y qué no (sección 2).</li>
 <li>Los campos del inventario, coherentes con la taxonomía controlada del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> (sección 3).</li>
-<li>Los roles que puede tener la compañía según el Reglamento (UE) 2024/1689 (sección 4).</li>
+<li>Los roles que puede tener la compañía según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a> (sección 4).</li>
 <li>El árbol de clasificación regulatoria paso a paso (sección 5).</li>
 <li>Las evaluaciones que se derivan de la clasificación (sección 6).</li>
 <li>Los procedimientos de alta, revisión y baja (sección 7).</li>
@@ -936,7 +947,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td>Evaluación de impacto en protección de datos (RGPD, artículo 35)</td>
+<td>Evaluación de impacto en protección de datos (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, artículo 35)</td>
 <td>Estado, fecha, enlace.</td>
 <td>Lista · Fecha · Referencia</td>
 <td>Sí si trata datos personales</td>
@@ -967,7 +978,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>Información a trabajadores y a su representación</td>
-<td>Artículo 26.7 del Reglamento y, en España, artículo 64.4.d) del Estatuto de los Trabajadores.</td>
+<td>Artículo 26.7 del Reglamento y, en España, artículo 64.4.d) del <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a>.</td>
 <td>Lista · Fecha</td>
 <td>Cond.: uso en el ámbito laboral</td>
 </tr>
@@ -1321,7 +1332,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>1</strong></td>
 <td>¿Es un <strong>sistema de IA</strong> según el artículo 3.1?</td>
-<td>Comprobar si es un sistema basado en máquinas que, con algún nivel de autonomía, <strong>infiere</strong> a partir de la información de entrada cómo generar resultados (predicciones, contenidos, recomendaciones o decisiones) que pueden influir en entornos físicos o virtuales. Usar las directrices de la Comisión sobre la definición de sistema de IA. Los sistemas basados exclusivamente en reglas definidas por personas para ejecutar operaciones automáticamente no suelen cumplir la definición.</td>
+<td>Comprobar si es un sistema basado en máquinas que, con algún nivel de autonomía, <strong>infiere</strong> a partir de la información de entrada cómo generar resultados (predicciones, contenidos, recomendaciones o decisiones) que pueden influir en entornos físicos o virtuales. Usar las <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener" title="Directrices de la Comisi&#243;n sobre la definici&#243;n de sistema de inteligencia artificial establecida por el Reglamento (UE) 2024/1689 (Reglamento de IA)">directrices de la Comisión sobre la definición de sistema de IA</a>. Los sistemas basados exclusivamente en reglas definidas por personas para ejecutar operaciones automáticamente no suelen cumplir la definición.</td>
 <td>Descripción del funcionamiento; técnica utilizada; conclusión motivada.</td>
 <td>No → <strong>Fuera de ámbito</strong> (tecnología &quot;Reglas (no es IA)&quot;). Dudoso → revisión jurídica. Sí → paso 2.</td>
 </tr>
@@ -1335,7 +1346,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>3</strong></td>
 <td>¿Es una <strong>práctica prohibida</strong> del artículo 5?</td>
-<td>Contrastar con cada supuesto del artículo 5.1: técnicas subliminales, manipuladoras o engañosas que alteren el comportamiento causando perjuicios; explotación de vulnerabilidades por edad, discapacidad o situación social o económica; puntuación social con trato perjudicial; predicción del riesgo de delinquir basada únicamente en perfiles o rasgos de personalidad; creación o ampliación de bases de datos de reconocimiento facial mediante extracción no selectiva; inferencia de emociones en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad; categorización biométrica para inferir características sensibles; identificación biométrica remota en tiempo real en espacios públicos con fines policiales fuera de los supuestos permitidos; y la prohibición añadida por el Reglamento (UE) 2026/1744 sobre generación de contenido sexual explícito no consentido o material de abuso sexual infantil (aplicable desde el 2-12-2026). Usar las directrices de la Comisión sobre prácticas prohibidas.</td>
+<td>Contrastar con cada supuesto del artículo 5.1: técnicas subliminales, manipuladoras o engañosas que alteren el comportamiento causando perjuicios; explotación de vulnerabilidades por edad, discapacidad o situación social o económica; puntuación social con trato perjudicial; predicción del riesgo de delinquir basada únicamente en perfiles o rasgos de personalidad; creación o ampliación de bases de datos de reconocimiento facial mediante extracción no selectiva; inferencia de emociones en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad; categorización biométrica para inferir características sensibles; identificación biométrica remota en tiempo real en espacios públicos con fines policiales fuera de los supuestos permitidos; y la prohibición añadida por el Reglamento (UE) 2026/1744 sobre generación de contenido sexual explícito no consentido o material de abuso sexual infantil (aplicable desde el 2-12-2026). Usar las <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act" target="_blank" rel="noopener" title="Directrices de la Comisi&#243;n sobre pr&#225;cticas de inteligencia artificial prohibidas establecidas por el Reglamento (UE) 2024/1689 (Reglamento de IA)">directrices de la Comisión sobre prácticas prohibidas</a>.</td>
 <td>Análisis de cada letra con conclusión.</td>
 <td>Sí → <strong>Prohibido</strong>: la iniciativa no pasa de la fase 3; si el sistema está en uso, suspensión inmediata y no conformidad crítica. No → paso 4.</td>
 </tr>
@@ -1356,7 +1367,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>6</strong></td>
 <td>¿Aplica la <strong>excepción del artículo 6.3</strong>?</td>
-<td>El sistema del anexo III no se considera de alto riesgo si no plantea un riesgo importante de daño para la salud, la seguridad o los derechos fundamentales, incluido por no influir sustancialmente en el resultado de la decisión, y cumple al menos una condición: a) tarea de procedimiento limitada; b) mejora del resultado de una actividad humana previamente realizada; c) detección de patrones de decisión o desviaciones sin sustituir ni influir en la valoración humana previa sin la debida revisión humana; d) tarea preparatoria de una evaluación relevante para los casos del anexo III. <strong>Nunca</strong> aplica si el sistema elabora perfiles de personas físicas. Usar las directrices de la Comisión sobre la aplicación del artículo 6 previstas en su apartado 5, cuando estén disponibles en su versión vigente.</td>
+<td>El sistema del anexo III no se considera de alto riesgo si no plantea un riesgo importante de daño para la salud, la seguridad o los derechos fundamentales, incluido por no influir sustancialmente en el resultado de la decisión, y cumple al menos una condición: a) tarea de procedimiento limitada; b) mejora del resultado de una actividad humana previamente realizada; c) detección de patrones de decisión o desviaciones sin sustituir ni influir en la valoración humana previa sin la debida revisión humana; d) tarea preparatoria de una evaluación relevante para los casos del anexo III. <strong>Nunca</strong> aplica si el sistema elabora perfiles de personas físicas. Usar las <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/library/draft-commission-guidelines-classification-high-risk-ai-systems" target="_blank" rel="noopener" title="Proyecto de directrices de la Comisi&#243;n sobre la clasificaci&#243;n de los sistemas de IA de alto riesgo">directrices de la Comisión sobre la aplicación del artículo 6</a> previstas en su apartado 5, cuando estén disponibles en su versión vigente.</td>
 <td>Condición aplicada, análisis de influencia en la decisión, confirmación de ausencia de perfiles. Si la compañía es proveedor: evaluación documentada antes de la puesta en servicio y registro (artículos 6.4 y 49.2).</td>
 <td>No → <strong>Alto riesgo</strong> (anexo III; obligaciones desde el 2-12-2027) y paso 7. Sí → paso 7 con la excepción documentada.</td>
 </tr>
@@ -1392,7 +1403,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li><strong>&quot;Pendiente de clasificar&quot; tiene plazo.</strong> Ningún sistema puede pasar G3 ni seguir en producción más allá del plazo aprobado en C2 con clasificación pendiente.</li>
 <li><strong>Las fechas de aplicación no retrasan la clasificación.</strong> Un sistema de alto riesgo del anexo III se clasifica como tal desde hoy, aunque sus obligaciones sean exigibles desde el 2-12-2027; así el diseño incorpora los requisitos a tiempo. Para sistemas ya en servicio antes de esas fechas, debe analizarse el régimen transitorio del artículo 111 en su versión vigente.</li>
 <li><strong>La excepción del artículo 6.3 se aplica de forma restrictiva</strong> y se revisa si cambia el grado de influencia del sistema en la decisión.</li>
-<li><strong>Otras normas se evalúan en paralelo.</strong> El árbol cubre el Reglamento de IA; la protección de datos, la normativa sectorial, DORA o NIS2 se mapean en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> y pueden exigir controles aunque el sistema sea de riesgo mínimo.</li>
+<li><strong>Otras normas se evalúan en paralelo.</strong> El árbol cubre el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>; la protección de datos, la normativa sectorial, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> se mapean en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> y pueden exigir controles aunque el sistema sea de riesgo mínimo.</li>
 </ol>
 <h3 id="5-4-ejemplos-ilustrativos">5.4 Ejemplos ilustrativos</h3>
 <p><em>Casos ficticios con fines didácticos. La clasificación real depende del análisis concreto.</em></p>
@@ -1455,7 +1466,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>Cuándo es obligatoria</strong></td>
-<td>Cuando sea probable que un tratamiento, en particular si usa nuevas tecnologías, entrañe un alto riesgo para los derechos y libertades. El artículo 35.3 la exige en particular ante: a) evaluación sistemática y exhaustiva de aspectos personales basada en tratamiento automatizado, incluida la elaboración de perfiles, que sirva de base para decisiones con efectos jurídicos o significativos; b) tratamiento a gran escala de categorías especiales de datos o de datos relativos a condenas e infracciones; c) observación sistemática a gran escala de una zona de acceso público. Deben consultarse además las listas de tratamientos que requieren evaluación publicadas por la autoridad de control competente (en España, la Agencia Española de Protección de Datos).</td>
+<td>Cuando sea probable que un tratamiento, en particular si usa nuevas tecnologías, entrañe un alto riesgo para los derechos y libertades. El artículo 35.3 la exige en particular ante: a) evaluación sistemática y exhaustiva de aspectos personales basada en tratamiento automatizado, incluida la elaboración de perfiles, que sirva de base para decisiones con efectos jurídicos o significativos; b) tratamiento a gran escala de categorías especiales de datos o de datos relativos a condenas e infracciones; c) observación sistemática a gran escala de una zona de acceso público. Deben consultarse además las <a class="ref-ext" href="https://www.aepd.es/documento/listas-dpia-es-35-4.pdf" target="_blank" rel="noopener" title="Listas de tipos de tratamientos de datos que requieren evaluaci&#243;n de impacto relativa a la protecci&#243;n de datos (art. 35.4 RGPD)">listas de tratamientos que requieren evaluación</a> publicadas por la autoridad de control competente (en España, la <a class="ref-ext" href="https://www.aepd.es/" target="_blank" rel="noopener" title="Agencia Espa&#241;ola de Protecci&#243;n de Datos (AEPD)">Agencia Española de Protección de Datos</a>).</td>
 </tr>
 <tr>
 <td><strong>Quién la realiza</strong></td>
@@ -1466,12 +1477,12 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Fase 3 (antes de G3) y actualización en fase 4 con el diseño. Siempre antes de iniciar el tratamiento.</td>
 </tr>
 <tr>
-<td><strong>Relación con el Reglamento de IA</strong></td>
+<td><strong>Relación con el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a></strong></td>
 <td>El responsable del despliegue de un sistema de alto riesgo usa la información del proveedor (artículo 13) para realizarla (artículo 26.9). La evaluación de impacto en derechos fundamentales la complementa (artículo 27.4).</td>
 </tr>
 <tr>
 <td><strong>Consulta previa</strong></td>
-<td>Si el riesgo residual sigue siendo alto, consulta a la autoridad de control (RGPD, artículo 36). En SEVEN-G, además, riesgo residual Alto o Crítico con su nivel de aceptación (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.2).</td>
+<td>Si el riesgo residual sigue siendo alto, consulta a la autoridad de control (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, artículo 36). En SEVEN-G, además, riesgo residual Alto o Crítico con su nivel de aceptación (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.2).</td>
 </tr>
 <tr>
 <td><strong>Plantilla</strong></td>
@@ -1502,7 +1513,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Notificación</strong></td>
-<td>El responsable del despliegue notifica los resultados a la autoridad de vigilancia del mercado, con el modelo que facilite la Oficina Europea de IA, en los términos del artículo 27.3.</td>
+<td>El responsable del despliegue notifica los resultados a la autoridad de vigilancia del mercado, con el modelo que facilite la <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener" title="Oficina Europea de IA (Comisi&#243;n Europea)">Oficina Europea de IA</a>, en los términos del artículo 27.3.</td>
 </tr>
 <tr>
 <td><strong>Aplicabilidad temporal</strong></td>
@@ -1510,7 +1521,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Uso voluntario</strong></td>
-<td>Cuando no es obligatoria, la compañía <strong>puede</strong> usar su estructura para sistemas con decisiones significativas sobre personas. Puede apoyarse en ISO/IEC 42005:2025 (evaluación de impacto de sistemas de IA).</td>
+<td>Cuando no es obligatoria, la compañía <strong>puede</strong> usar su estructura para sistemas con decisiones significativas sobre personas. Puede apoyarse en <a class="ref-ext" href="https://www.iso.org/standard/42005" target="_blank" rel="noopener" title="ISO/IEC 42005:2025 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial (IA) — Evaluaci&#243;n de impacto de sistemas de IA">ISO/IEC 42005:2025</a> (evaluación de impacto de sistemas de IA).</td>
 </tr>
 <tr>
 <td><strong>Plantilla</strong></td>
@@ -1855,7 +1866,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Compras</td>
 </tr>
 <tr>
-<td>Registro de proveedores de IA (T09) y registro de proveedores TIC (DORA, cuando aplique)</td>
+<td>Registro de proveedores de IA (T09) y registro de proveedores TIC (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, cuando aplique)</td>
 <td>Proveedores con servicios de IA sin sistema vinculado.</td>
 <td>Segunda línea</td>
 </tr>
@@ -1870,7 +1881,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Tecnología</td>
 </tr>
 <tr>
-<td>Registro de actividades de tratamiento (RGPD, artículo 30)</td>
+<td>Registro de actividades de tratamiento (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, artículo 30)</td>
 <td>Tratamientos que mencionan perfiles, puntuaciones, automatización o IA.</td>
 <td>Protección de datos</td>
 </tr>
@@ -2042,7 +2053,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p>Este documento no constituye asesoramiento jurídico. La clasificación regulatoria de cada sistema debe realizarse con criterio jurídico cualificado y con el texto consolidado vigente del Reglamento (UE) 2024/1689 y de las directrices de la Comisión Europea.</p>
+<p>Este documento no constituye asesoramiento jurídico. La clasificación regulatoria de cada sistema debe realizarse con criterio jurídico cualificado y con el texto consolidado vigente del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a> y de las directrices de la Comisión Europea.</p>
 <hr />
 <h2 id="control-de-versiones"><span class="antetitulo">12</span>Control de versiones</h2>
 <div class="tabla"><table>
@@ -2057,11 +2068,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Define el alcance del inventario por tipo de uso, los campos con tipo, obligatoriedad y listas de valores coherentes con la taxonomía de 03, los roles del Reglamento de IA (incluidos el artículo 25 y los modelos de uso general), el árbol de clasificación en nueve pasos, las evaluaciones derivadas (protección de datos, derechos fundamentales, conformidad), los procedimientos de alta, revisión y baja, los indicadores de calidad y la conciliación para detectar sistemas no inventariados. Incorpora las fechas de aplicación modificadas por el Reglamento (UE) 2026/1744 (consulta de 16-09-2026). Propone el código <code>SIA-AAAA-NNN</code>.</td>
+<td>Primera versión. Define el alcance del inventario por tipo de uso, los campos con tipo, obligatoriedad y listas de valores coherentes con la taxonomía de 03, los roles del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> (incluidos el artículo 25 y los modelos de uso general), el árbol de clasificación en nueve pasos, las evaluaciones derivadas (protección de datos, derechos fundamentales, conformidad), los procedimientos de alta, revisión y baja, los indicadores de calidad y la conciliación para detectar sistemas no inventariados. Incorpora las fechas de aplicación modificadas por el Reglamento (UE) 2026/1744 (consulta de 16-09-2026). Propone el código <code>SIA-AAAA-NNN</code>.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li><li><a href="https://www.aepd.es/" target="_blank" rel="noopener">Agencia Espa&#241;ola de Protecci&#243;n de Datos (AEPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener">Oficina Europea de IA (Comisi&#243;n Europea)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener">Directrices de la Comisi&#243;n sobre la definici&#243;n de sistema de inteligencia artificial establecida por el Reglamento (UE) 2024/1689 (Reglamento de IA)</a><span> · Comisi&#243;n Europea · 06-02-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act" target="_blank" rel="noopener">Directrices de la Comisi&#243;n sobre pr&#225;cticas de inteligencia artificial prohibidas establecidas por el Reglamento (UE) 2024/1689 (Reglamento de IA)</a><span> · Comisi&#243;n Europea · 04-02-2025</span></li><li><a href="https://www.aepd.es/documento/listas-dpia-es-35-4.pdf" target="_blank" rel="noopener">Listas de tipos de tratamientos de datos que requieren evaluaci&#243;n de impacto relativa a la protecci&#243;n de datos (art. 35.4 RGPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos · 06-05-2019</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/library/draft-commission-guidelines-classification-high-risk-ai-systems" target="_blank" rel="noopener">Proyecto de directrices de la Comisi&#243;n sobre la clasificaci&#243;n de los sistemas de IA de alto riesgo</a><span> · Comisi&#243;n Europea · 19-05-2026</span></li><li><a href="https://www.iso.org/standard/42005" target="_blank" rel="noopener">ISO/IEC 42005:2025 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial (IA) — Evaluaci&#243;n de impacto de sistemas de IA</a><span> · ISO/IEC (JTC 1/SC 42) · 28-05-2025</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

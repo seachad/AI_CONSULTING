@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Personas y organización"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -659,7 +670,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <hr />
 <h2 id="plan-de-capacidades-y-alfabetizacion-por-perfil"><span class="antetitulo">05</span>Plan de capacidades y alfabetización por perfil</h2>
 <h3 id="5-1-obligacion-de-partida">5.1 Obligación de partida</h3>
-<p>El Reglamento Europeo de IA exige a proveedores y responsables del despliegue adoptar medidas para apoyar el desarrollo de la <strong>alfabetización en IA</strong> de su personal y de otras personas que operan o usan sistemas de IA en su nombre (art. 4, aplicable desde el 2 de febrero de 2025; con la redacción del Reglamento (UE) 2026/1744 no se exige un nivel concreto, pero la política y el plan de formación siguen siendo evidencia). Para los sistemas de alto riesgo, los responsables del despliegue deben encomendar la supervisión humana a personas con la <strong>competencia, formación y autoridad necesarias</strong> (art. 26.2). Las modificaciones del Reglamento (UE) 2026/1744 (ómnibus digital sobre IA, en vigor desde el 27 de julio de 2026) y el calendario de aplicación se detallan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
+<p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> exige a proveedores y responsables del despliegue adoptar medidas para apoyar el desarrollo de la <strong>alfabetización en IA</strong> de su personal y de otras personas que operan o usan sistemas de IA en su nombre (art. 4, aplicable desde el 2 de febrero de 2025; con la redacción del Reglamento (UE) 2026/1744 no se exige un nivel concreto, pero la política y el plan de formación siguen siendo evidencia). Para los sistemas de alto riesgo, los responsables del despliegue deben encomendar la supervisión humana a personas con la <strong>competencia, formación y autoridad necesarias</strong> (art. 26.2). Las modificaciones del Reglamento (UE) 2026/1744 (ómnibus digital sobre IA, en vigor desde el 27 de julio de 2026) y el calendario de aplicación se detallan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
 <p>SEVEN-G trata la alfabetización como un <strong>requisito de C2</strong> (política, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) y como una <strong>evidencia por iniciativa</strong> (plan de capacidades en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</p>
 <h3 id="5-2-perfiles-y-contenidos">5.2 Perfiles y contenidos</h3>
 <div class="tabla"><table>
@@ -806,7 +817,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p>Cuando el destino implica <strong>reducción de dotación, cambios de funciones o de condiciones de trabajo</strong>, la decisión corresponde a la alta dirección con la dirección de personas y <strong>debe</strong> respetar los procedimientos legales y convencionales aplicables. En España pueden entrar en juego, entre otros, los procedimientos de modificación sustancial de condiciones de trabajo (art. 41 del Estatuto de los Trabajadores) o de despido colectivo (art. 51), además de los derechos de información y consulta de la sección 7. Esa valoración requiere criterio jurídico laboral.</p>
+<p>Cuando el destino implica <strong>reducción de dotación, cambios de funciones o de condiciones de trabajo</strong>, la decisión corresponde a la alta dirección con la dirección de personas y <strong>debe</strong> respetar los procedimientos legales y convencionales aplicables. En España pueden entrar en juego, entre otros, los procedimientos de modificación sustancial de condiciones de trabajo (art. 41 del <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a>) o de despido colectivo (art. 51), además de los derechos de información y consulta de la sección 7. Esa valoración requiere criterio jurídico laboral.</p>
 <h3 id="6-4-registro-de-capacidad-liberada">6.4 Registro de capacidad liberada</h3>
 <p>El registro se mantiene en T20 y alimenta T12 (seguimiento de valor).</p>
 <div class="tabla"><table>
@@ -880,15 +891,15 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td><strong>Estatuto de los Trabajadores, art. 64.4.d)</strong> (introducido por el Real Decreto-ley 9/2021 y la Ley 12/2021)</td>
-<td>El comité de empresa tiene derecho a ser informado por la empresa de <em>&quot;los parámetros, reglas e instrucciones en los que se basan los algoritmos o sistemas de inteligencia artificial que afectan a la toma de decisiones que pueden incidir en las condiciones de trabajo, el acceso y mantenimiento del empleo, incluida la elaboración de perfiles&quot;</em>. Los delegados sindicales pueden tener derechos equivalentes en los términos de la Ley Orgánica de Libertad Sindical.</td>
+<td><strong><a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a>, art. 64.4.d)</strong> (introducido por el <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-7840" target="_blank" rel="noopener" title="Real Decreto-ley 9/2021, de 11 de mayo, por el que se modifica el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, para garantizar los derechos laborales de las personas dedicadas al reparto en el &#225;mbito de plataformas digitales">Real Decreto-ley 9/2021</a> y la <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-15767" target="_blank" rel="noopener" title="Ley 12/2021, de 28 de septiembre, por la que se modifica el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, para garantizar los derechos laborales de las personas dedicadas al reparto en el &#225;mbito de plataformas digitales">Ley 12/2021</a>)</td>
+<td>El comité de empresa tiene derecho a ser informado por la empresa de <em>&quot;los parámetros, reglas e instrucciones en los que se basan los algoritmos o sistemas de inteligencia artificial que afectan a la toma de decisiones que pueden incidir en las condiciones de trabajo, el acceso y mantenimiento del empleo, incluida la elaboración de perfiles&quot;</em>. Los delegados sindicales pueden tener derechos equivalentes en los términos de la <a class="ref-ext" href="https://www.boe.es/eli/es/lo/1985/08/02/11/con" target="_blank" rel="noopener" title="Ley Org&#225;nica 11/1985, de 2 de agosto, de Libertad Sindical">Ley Orgánica de Libertad Sindical</a>.</td>
 </tr>
 <tr>
 <td><strong>Estatuto de los Trabajadores, art. 64</strong> (resto) y convenio colectivo aplicable</td>
 <td>Derechos generales de información y consulta sobre cambios en la organización del trabajo, que pueden activarse por iniciativas de IA aunque no sean algoritmos de decisión. El convenio puede ampliar obligaciones.</td>
 </tr>
 <tr>
-<td><strong>Reglamento Europeo de IA, art. 26.7</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, art. 26.7</strong></td>
 <td>Antes de poner en servicio o utilizar un sistema de IA de alto riesgo en el lugar de trabajo, los responsables del despliegue que sean empleadores deben informar a los representantes de los trabajadores y a los trabajadores afectados.</td>
 </tr>
 <tr>
@@ -900,20 +911,20 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Prohibición de sistemas de reconocimiento de emociones en el lugar de trabajo, salvo por motivos médicos o de seguridad.</td>
 </tr>
 <tr>
-<td><strong>RGPD, arts. 13, 14, 15, 22 y 88</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, arts. 13, 14, 15, 22 y 88</strong></td>
 <td>Información a los interesados, derecho de acceso, decisiones individuales automatizadas y tratamiento en el ámbito laboral.</td>
 </tr>
 <tr>
-<td><strong>Ley Orgánica 3/2018 (LOPDGDD), arts. 87 a 91</strong></td>
+<td><strong><a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales">Ley Orgánica 3/2018</a> (LOPDGDD), arts. 87 a 91</strong></td>
 <td>Derechos digitales en el ámbito laboral: uso de dispositivos digitales, desconexión digital, videovigilancia, geolocalización y negociación colectiva de estos derechos.</td>
 </tr>
 <tr>
-<td><strong>Directiva (UE) 2024/2831</strong>, relativa a la mejora de las condiciones laborales en el trabajo en plataformas</td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2024/2831/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2024/2831 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativa a la mejora de las condiciones laborales en el trabajo en plataformas">Directiva (UE) 2024/2831</a></strong>, relativa a la mejora de las condiciones laborales en el trabajo en plataformas</td>
 <td>Reglas de gestión algorítmica (información, supervisión y revisión humanas) para el trabajo en plataformas. Plazo de transposición: 2 de diciembre de 2026. Verificar el estado de la transposición.</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Otras jurisdicciones difieren.</strong> Fuera de la Unión Europea las obligaciones pueden ser distintas en contenido y en destinatario; por ejemplo, algunas normas locales exigen auditorías independientes de sesgo de las herramientas automatizadas de selección antes de usarlas. Cada compañía <strong>debe</strong> identificar las normas aplicables en cada país donde tenga empleados o candidatos e incorporarlas en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</p>
+<p><strong>Otras jurisdicciones difieren.</strong> Fuera de la Unión Europea las obligaciones pueden ser distintas en contenido y en destinatario; por ejemplo, <a class="ref-ext" href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener" title="Ley Local 144 de 2021 de la ciudad de Nueva York sobre herramientas automatizadas de decisi&#243;n en el empleo (Int. 1894-2020), que exige una auditor&#237;a de sesgo independiente antes de su uso">algunas normas locales exigen auditorías independientes de sesgo</a> de las herramientas automatizadas de selección antes de usarlas. Cada compañía <strong>debe</strong> identificar las normas aplicables en cada país donde tenga empleados o candidatos e incorporarlas en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</p>
 <p>Este documento no constituye asesoramiento jurídico.</p>
 <h3 id="7-2-proceso-de-informacion-y-consulta-en-seven-g">7.2 Proceso de información y consulta en SEVEN-G</h3>
 <div class="tabla"><table>
@@ -976,7 +987,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <hr />
 <h2 id="uso-de-ia-en-decisiones-sobre-personas"><span class="antetitulo">08</span>Uso de IA en decisiones sobre personas</h2>
 <h3 id="8-1-por-que-se-trata-aparte">8.1 Por qué se trata aparte</h3>
-<p>El Reglamento Europeo de IA clasifica como de <strong>alto riesgo</strong> (anexo III, punto 4) los sistemas destinados a:</p>
+<p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> clasifica como de <strong>alto riesgo</strong> (anexo III, punto 4) los sistemas destinados a:</p>
 <ul>
 <li>La <strong>contratación o selección</strong> de personas, en particular para publicar anuncios dirigidos, analizar y filtrar solicitudes y evaluar a candidatos.</li>
 <li>Tomar <strong>decisiones que afecten a las condiciones</strong> de las relaciones laborales, a la <strong>promoción o rescisión</strong> de relaciones contractuales, <strong>asignar tareas</strong> a partir de comportamientos o rasgos personales, o <strong>supervisar y evaluar el rendimiento y el comportamiento</strong> de las personas.</li>
@@ -1124,7 +1135,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Umbral</strong></td>
-<td>Se fija por sistema en fase 4. Como <strong>indicio</strong> de posible impacto adverso se usa con frecuencia una ratio inferior a 0,8 entre tasas de selección (conocida como regla de los cuatro quintos en la práctica estadounidense). No es un umbral legal en la Unión Europea ni prueba por sí sola discriminación.</td>
+<td>Se fija por sistema en fase 4. Como <strong>indicio</strong> de posible impacto adverso se usa con frecuencia una ratio inferior a 0,8 entre tasas de selección (conocida como <a class="ref-ext" href="https://www.ecfr.gov/current/title-29/section-1607.4" target="_blank" rel="noopener" title="Uniform Guidelines on Employee Selection Procedures (1978), 29 CFR 1607.4(D): impacto adverso y &#171;regla de los cuatro quintos&#187;">regla de los cuatro quintos</a> en la práctica estadounidense). No es un umbral legal en la Unión Europea ni prueba por sí sola discriminación.</td>
 </tr>
 <tr>
 <td><strong>Acción</strong></td>
@@ -1160,7 +1171,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Incapacidad de operar sin el sistema en pruebas de reversión.</td>
 </tr>
 <tr>
-<td><strong>Sesgo de automatización:</strong> confianza excesiva en los resultados del sistema; el Reglamento Europeo de IA lo menciona expresamente en la supervisión humana (art. 14.4.b).</td>
+<td><strong>Sesgo de automatización:</strong> confianza excesiva en los resultados del sistema; el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> lo menciona expresamente en la supervisión humana (art. 14.4.b).</td>
 <td>Errores del sistema aceptados sin revisión.</td>
 </tr>
 <tr>
@@ -1179,7 +1190,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li><strong>Limitación de finalidad.</strong> Los datos de uso de los sistemas no se emplean para evaluar individualmente a las personas salvo que esa finalidad esté declarada, sea lícita y haya sido informada.</li>
 <li><strong>Diseño de la supervisión.</strong> <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> fija volumen máximo razonable de revisiones por persona, tiempo mínimo esperado por caso cuando proceda, muestreo de control de calidad de la revisión y rotación.</li>
 <li><strong>Margen de criterio.</strong> Se documenta cuándo la persona puede apartarse de la propuesta del sistema sin necesidad de justificarlo más que brevemente, y se protege a quien lo hace de buena fe.</li>
-<li><strong>Desconexión digital.</strong> Los agentes y sistemas que generan tareas o avisos respetan la política de desconexión digital (LOPDGDD, art. 88, en España).</li>
+<li><strong>Desconexión digital.</strong> Los agentes y sistemas que generan tareas o avisos respetan la política de desconexión digital (<a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales">LOPDGDD</a>, art. 88, en España).</li>
 <li><strong>Pulso periódico.</strong> Encuesta breve a los colectivos afectados en fase 5, a los tres meses de producción y en cada R6 Enterprise (PER-15).</li>
 </ol>
 <hr />
@@ -1581,11 +1592,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Desarrolla la esfera 03 con indicadores; la evaluación del efecto sobre el trabajo por iniciativa; roles y capacidades del consejo a los equipos; el plan de alfabetización por perfil; el proceso de decisión, registro y seguimiento de la capacidad liberada con cinco destinos; información y consulta con referencia al art. 64.4.d) del Estatuto de los Trabajadores y al Reglamento Europeo de IA; autonomía máxima y controles en decisiones sobre personas; bienestar y supervisión; comunicación interna; quince indicadores con fórmula y diez riesgos organizativos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>; los tres riesgos propuestos se incorporan a 33 como RT-ORG-07 a RT-ORG-09.</td>
+<td>Primera versión. Desarrolla la esfera 03 con indicadores; la evaluación del efecto sobre el trabajo por iniciativa; roles y capacidades del consejo a los equipos; el plan de alfabetización por perfil; el proceso de decisión, registro y seguimiento de la capacidad liberada con cinco destinos; información y consulta con referencia al art. 64.4.d) del <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a> y al <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>; autonomía máxima y controles en decisiones sobre personas; bienestar y supervisión; comunicación interna; quince indicadores con fórmula y diez riesgos organizativos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>; los tres riesgos propuestos se incorporan a 33 como RT-ORG-07 a RT-ORG-09.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2024/2831/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2024/2831 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativa a la mejora de las condiciones laborales en el trabajo en plataformas</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener">Ley Local 144 de 2021 de la ciudad de Nueva York sobre herramientas automatizadas de decisi&#243;n en el empleo (Int. 1894-2020), que exige una auditor&#237;a de sesgo independiente antes de su uso</a><span> · Consejo de la Ciudad de Nueva York; Department of Consumer and Worker Protection (DCWP) · 11-12-2021</span></li><li><a href="https://www.ecfr.gov/current/title-29/section-1607.4" target="_blank" rel="noopener">Uniform Guidelines on Employee Selection Procedures (1978), 29 CFR 1607.4(D): impacto adverso y &#171;regla de los cuatro quintos&#187;</a><span> · EEOC y agencias federales de EE. UU. (Code of Federal Regulations) · 25-08-1978</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-15767" target="_blank" rel="noopener">Ley 12/2021, de 28 de septiembre, por la que se modifica el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, para garantizar los derechos laborales de las personas dedicadas al reparto en el &#225;mbito de plataformas digitales</a><span> · Cortes Generales · 28-09-2021</span></li><li><a href="https://www.boe.es/eli/es/lo/1985/08/02/11/con" target="_blank" rel="noopener">Ley Org&#225;nica 11/1985, de 2 de agosto, de Libertad Sindical</a><span> · Cortes Generales · 02-08-1985</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-7840" target="_blank" rel="noopener">Real Decreto-ley 9/2021, de 11 de mayo, por el que se modifica el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, para garantizar los derechos laborales de las personas dedicadas al reparto en el &#225;mbito de plataformas digitales</a><span> · Gobierno de Espa&#241;a · 11-05-2021</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

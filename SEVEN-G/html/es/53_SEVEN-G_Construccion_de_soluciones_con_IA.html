@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Construcción de soluciones con IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -918,7 +929,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li>Las dependencias propuestas por la IA <strong>deben</strong> verificarse (existencia, procedencia, mantenimiento y vulnerabilidades conocidas) antes de incorporarse, dado el riesgo de paquetes inexistentes o maliciosos sugeridos por la herramienta.</li>
 <li><strong>Debería</strong> generarse una relación de componentes de software de la solución en Enterprise.</li>
 <li>Los agentes de construcción <strong>deben</strong> operar con mínimo privilegio, sin credenciales de producción y con registro de sus acciones; su autonomía se clasifica con A0–A3 y se evalúa con T10 (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</li>
-<li>Como referencias técnicas pueden usarse las listas OWASP Top 10 y OWASP Top 10 para aplicaciones con modelos de lenguaje.</li>
+<li>Como referencias técnicas pueden usarse las listas <a class="ref-ext" href="https://top10.owasp.org/2025/es/" target="_blank" rel="noopener" title="OWASP Top 10:2025 (riesgos de seguridad de aplicaciones web)">OWASP Top 10</a> y <a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener" title="OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tama&#241;o, edici&#243;n 2025 (OWASP Top 10 for LLM Applications 2025)">OWASP Top 10 para aplicaciones con modelos de lenguaje</a>.</li>
 <li>Los hallazgos críticos y altos <strong>bloquean</strong> G5 salvo aceptación formal del riesgo según 33 y 01 §7.3 (no se admite &quot;Continuar con condiciones&quot; en controles críticos de seguridad).</li>
 </ul>
 <h3 id="7-5-propiedad-intelectual-y-licencias">7.5 Propiedad intelectual y licencias</h3>
@@ -983,10 +994,10 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <h3 id="7-8-relacion-con-la-regulacion">7.8 Relación con la regulación</h3>
 <ul>
-<li>Las evidencias de construcción apoyan la <strong>documentación técnica</strong> (art. 11 y anexo IV), el <strong>sistema de gestión de la calidad</strong> (art. 17) y la <strong>ciberseguridad</strong> (art. 15) de los proveedores de sistemas de alto riesgo del Reglamento Europeo de IA (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>, secciones 3.7 y 3.8).</li>
+<li>Las evidencias de construcción apoyan la <strong>documentación técnica</strong> (art. 11 y anexo IV), el <strong>sistema de gestión de la calidad</strong> (art. 17) y la <strong>ciberseguridad</strong> (art. 15) de los proveedores de sistemas de alto riesgo del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>, secciones 3.7 y 3.8).</li>
 <li>Las herramientas de ayuda a la programación no son, en general, sistemas de alto riesgo por su uso previsto, pero deben inventariarse y cumplir la política de uso (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>). Su clasificación concreta se confirma con T07.</li>
-<li>Si la compañía fabrica productos con elementos digitales, debe valorarse el Reglamento (UE) 2024/2847 de ciberresiliencia, con obligaciones de notificación desde el 11-09-2026 y obligaciones principales desde el 11-12-2027 (verificar aplicabilidad; <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</li>
-<li>Para entidades sujetas a DORA, el desarrollo y los cambios de sistemas TIC se integran en su marco de gestión del riesgo TIC (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>, sección 7.1).</li>
+<li>Si la compañía fabrica productos con elementos digitales, debe valorarse el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/2847 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativo a los requisitos horizontales de ciberseguridad para los productos con elementos digitales (Reglamento de Ciberresiliencia)">Reglamento (UE) 2024/2847 de ciberresiliencia</a>, con obligaciones de notificación desde el 11-09-2026 y obligaciones principales desde el 11-12-2027 (verificar aplicabilidad; <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</li>
+<li>Para entidades sujetas a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, el desarrollo y los cambios de sistemas TIC se integran en su marco de gestión del riesgo TIC (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>, sección 7.1).</li>
 </ul>
 <hr />
 <h2 id="verificacion-en-los-gates"><span class="antetitulo">08</span>Verificación en los <em>gates</em></h2>
@@ -1139,7 +1150,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/2847 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativo a los requisitos horizontales de ciberseguridad para los productos con elementos digitales (Reglamento de Ciberresiliencia)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tama&#241;o, edici&#243;n 2025 (OWASP Top 10 for LLM Applications 2025)</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://top10.owasp.org/2025/es/" target="_blank" rel="noopener">OWASP Top 10:2025 (riesgos de seguridad de aplicaciones web)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

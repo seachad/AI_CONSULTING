@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · No conformidades, incidentes de IA y remediación"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -416,20 +427,20 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Suceso que pudo causar daño y no lo causó gracias a un control o por azar. Se registra como S4.</td>
 </tr>
 <tr>
-<td><strong>Incidente grave</strong> (Reglamento de IA)</td>
+<td><strong>Incidente grave</strong> (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>)</td>
 <td>Incidente o defecto de funcionamiento de un sistema de IA que, directa o indirectamente, causa el fallecimiento o un perjuicio grave para la salud de una persona; una alteración grave e irreversible de la gestión o el funcionamiento de infraestructuras críticas; el incumplimiento de obligaciones del Derecho de la Unión destinadas a proteger los derechos fundamentales; o daños graves a la propiedad o al medio ambiente (art. 3.49).</td>
 </tr>
 <tr>
 <td><strong>Brecha de datos personales</strong></td>
-<td>Violación de la seguridad que ocasiona la destrucción, pérdida o alteración accidental o ilícita de datos personales, o su comunicación o acceso no autorizados (RGPD art. 4.12).</td>
+<td>Violación de la seguridad que ocasiona la destrucción, pérdida o alteración accidental o ilícita de datos personales, o su comunicación o acceso no autorizados (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> art. 4.12).</td>
 </tr>
 <tr>
 <td><strong>Incidente grave relacionado con las TIC</strong></td>
-<td>Incidente que cumple los criterios de clasificación de DORA (art. 18 y su desarrollo).</td>
+<td>Incidente que cumple los criterios de clasificación de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> (art. 18 y su desarrollo).</td>
 </tr>
 <tr>
 <td><strong>Incidente significativo</strong></td>
-<td>Incidente que cumple los criterios del art. 23.3 de NIS2 según su transposición nacional.</td>
+<td>Incidente que cumple los criterios del art. 23.3 de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> según su transposición nacional.</td>
 </tr>
 </tbody>
 </table></div>
@@ -438,7 +449,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <ul>
 <li><strong>Reglamento (UE) 2024/1689</strong> (Reglamento de IA), arts. 3.49, 26.5, 72 y 73, modificado por el Reglamento (UE) 2026/1744 (Ómnibus digital sobre IA), que no altera el art. 73 pero aplaza al 2 de diciembre de 2027 las obligaciones de los sistemas de alto riesgo del anexo III.</li>
 <li><strong>Reglamento (UE) 2016/679 (RGPD)</strong>, arts. 33 y 34.</li>
-<li><strong>Reglamento (UE) 2022/2554 (DORA)</strong>, arts. 17 a 19, y Reglamento Delegado (UE) 2025/301 sobre contenido y plazos de las notificaciones.</li>
+<li><strong>Reglamento (UE) 2022/2554 (DORA)</strong>, arts. 17 a 19, y <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/spa" target="_blank" rel="noopener" title="Reglamento Delegado (UE) 2025/301 de la Comisi&#243;n, de 23 de octubre de 2024, por el que se completa el Reglamento (UE) 2022/2554 en lo que respecta a las normas t&#233;cnicas de regulaci&#243;n que especifican el contenido y los plazos para la notificaci&#243;n inicial y los informes intermedio y final sobre incidentes graves relacionados con las TIC, as&#237; como el contenido de la notificaci&#243;n voluntaria de ciberamenazas importantes">Reglamento Delegado (UE) 2025/301</a> sobre contenido y plazos de las notificaciones.</li>
 <li><strong>Directiva (UE) 2022/2555 (NIS2)</strong>, art. 23. En España, la ley de transposición seguía en tramitación en la última información consultada (julio de 2026).</li>
 <li><strong>ISO/IEC 42001</strong>, requisito de no conformidad y acción correctiva (cláusula 10.2).</li>
 </ul>
@@ -851,7 +862,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>S1 · Crítica</strong></td>
-<td>Posible incidente grave según el Reglamento de IA; posible incidente grave de DORA o significativo de NIS2 cuando apliquen; brecha de datos personales con probable alto riesgo para las personas; acción no autorizada de un agente con efecto sobre dinero, terceros, datos personales o sistemas de producción; daño a personas o discriminación a escala; interrupción de una función crítica fuera de su tolerancia; impacto 5 en cualquier eje.</td>
+<td>Posible incidente grave según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>; posible incidente grave de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o significativo de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> cuando apliquen; brecha de datos personales con probable alto riesgo para las personas; acción no autorizada de un agente con efecto sobre dinero, terceros, datos personales o sistemas de producción; daño a personas o discriminación a escala; interrupción de una función crítica fuera de su tolerancia; impacto 5 en cualquier eje.</td>
 <td>Un agente emite pagos no autorizados; un sistema de selección descarta sistemáticamente a un colectivo; fuga masiva de datos de clientes por la recuperación de información; fraude consumado mediante videollamada suplantada.</td>
 </tr>
 <tr>
@@ -1012,28 +1023,28 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td><strong>Reglamento de IA, art. 73</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>, art. 73</strong></td>
 <td>Proveedor del sistema de alto riesgo. El responsable del despliegue que detecta un incidente grave informa <strong>inmediatamente</strong> primero al proveedor y después al importador o distribuidor y a las autoridades de vigilancia del mercado (art. 26.5).</td>
 <td>Incidente grave (art. 3.49).</td>
 <td>Autoridad de vigilancia del mercado del Estado miembro donde se produjo. Tras el Ómnibus, los proveedores de sistemas de competencia de la Oficina de IA notifican a esta.</td>
 <td>Inmediatamente después de establecer un vínculo causal o una probabilidad razonable de tal vínculo y, en todo caso, <strong>no más tarde de 15 días</strong> desde que se tiene conocimiento. <strong>2 días</strong> si hay infracción generalizada o alteración grave e irreversible de infraestructuras críticas. <strong>10 días</strong> en caso de fallecimiento. Se puede presentar un informe inicial incompleto y completarlo después.</td>
 </tr>
 <tr>
-<td><strong>RGPD, arts. 33 y 34</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, arts. 33 y 34</strong></td>
 <td>Responsable del tratamiento. El encargado notifica al responsable sin dilación indebida.</td>
 <td>Brecha de datos personales, salvo que sea improbable que constituya un riesgo para los derechos y libertades.</td>
-<td>Autoridad de control competente (en España, la Agencia Española de Protección de Datos, salvo tratamientos transfronterizos con otra autoridad principal). Comunicación a los interesados si es probable un alto riesgo.</td>
+<td>Autoridad de control competente (en España, la <a class="ref-ext" href="https://www.aepd.es/" target="_blank" rel="noopener" title="Agencia Espa&#241;ola de Protecci&#243;n de Datos (AEPD)">Agencia Española de Protección de Datos</a>, salvo tratamientos transfronterizos con otra autoridad principal). Comunicación a los interesados si es probable un alto riesgo.</td>
 <td>Autoridad: sin dilación indebida y, a más tardar, <strong>72 horas</strong> desde que se tiene constancia; fuera de plazo, con motivación; información por fases si no está disponible. Interesados: sin dilación indebida. Todas las brechas se documentan, se notifiquen o no.</td>
 </tr>
 <tr>
-<td><strong>DORA, art. 19</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, art. 19</strong></td>
 <td>Entidad financiera sujeta a DORA.</td>
 <td>Incidente grave relacionado con las TIC; notificación voluntaria de ciberamenazas significativas.</td>
 <td>Autoridad competente. Información a clientes cuando el incidente afecta a sus intereses financieros.</td>
-<td>Notificación inicial en <strong>4 horas</strong> desde la clasificación como grave y no más tarde de <strong>24 horas</strong> desde que se tiene conocimiento; informe intermedio en <strong>72 horas</strong> desde la notificación inicial; informe final <strong>un mes</strong> después del último informe intermedio (Reglamento Delegado (UE) 2025/301).</td>
+<td>Notificación inicial en <strong>4 horas</strong> desde la clasificación como grave y no más tarde de <strong>24 horas</strong> desde que se tiene conocimiento; informe intermedio en <strong>72 horas</strong> desde la notificación inicial; informe final <strong>un mes</strong> después del último informe intermedio (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/spa" target="_blank" rel="noopener" title="Reglamento Delegado (UE) 2025/301 de la Comisi&#243;n, de 23 de octubre de 2024, por el que se completa el Reglamento (UE) 2022/2554 en lo que respecta a las normas t&#233;cnicas de regulaci&#243;n que especifican el contenido y los plazos para la notificaci&#243;n inicial y los informes intermedio y final sobre incidentes graves relacionados con las TIC, as&#237; como el contenido de la notificaci&#243;n voluntaria de ciberamenazas importantes">Reglamento Delegado (UE) 2025/301</a>).</td>
 </tr>
 <tr>
-<td><strong>NIS2, art. 23</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>, art. 23</strong></td>
 <td>Entidad esencial o importante según la transposición nacional.</td>
 <td>Incidente significativo.</td>
 <td>CSIRT o autoridad competente. Destinatarios del servicio cuando proceda.</td>
@@ -1331,11 +1342,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Desarrolla el proceso de no conformidades de 01 §12 con registro, clasificación, contención, análisis de causa raíz, acciones, verificación, cierre por el auditor de IA, reauditoría y plazos; define el proceso de incidentes de IA con severidad S1–S4, tiempos de respuesta, criterios de parada y conservación de evidencias; analiza las notificaciones del Reglamento de IA, el RGPD, DORA y NIS2; y fija registros, indicadores e información al consejo.</td>
+<td>Primera versión. Desarrolla el proceso de no conformidades de 01 §12 con registro, clasificación, contención, análisis de causa raíz, acciones, verificación, cierre por el auditor de IA, reauditoría y plazos; define el proceso de incidentes de IA con severidad S1–S4, tiempos de respuesta, criterios de parada y conservación de evidencias; analiza las notificaciones del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>, el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> y <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>; y fija registros, indicadores e información al consejo.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/spa" target="_blank" rel="noopener">Reglamento Delegado (UE) 2025/301 de la Comisi&#243;n, de 23 de octubre de 2024, por el que se completa el Reglamento (UE) 2022/2554 en lo que respecta a las normas t&#233;cnicas de regulaci&#243;n que especifican el contenido y los plazos para la notificaci&#243;n inicial y los informes intermedio y final sobre incidentes graves relacionados con las TIC, as&#237; como el contenido de la notificaci&#243;n voluntaria de ciberamenazas importantes</a><span> · Comisi&#243;n Europea · 23-10-2024</span></li><li><a href="https://www.aepd.es/" target="_blank" rel="noopener">Agencia Espa&#241;ola de Protecci&#243;n de Datos (AEPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

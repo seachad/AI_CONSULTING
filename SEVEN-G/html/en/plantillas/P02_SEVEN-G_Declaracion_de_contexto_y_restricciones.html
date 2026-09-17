@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Context and constraints statement"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -538,28 +549,28 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td>EU AI Act (Regulation (EU) 2024/1689)</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> (Regulation (EU) 2024/1689)</td>
 <td>Yes · No · To be determined</td>
 <td></td>
 <td>Classification and obligations according to the company's role (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
 <td></td>
 </tr>
 <tr>
-<td>GDPR (Regulation (EU) 2016/679) and national data protection legislation</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> (Regulation (EU) 2016/679) and national data protection legislation</td>
 <td></td>
 <td></td>
 <td>Legal basis, minimisation, data protection impact assessment, automated decision-making.</td>
 <td></td>
 </tr>
 <tr>
-<td>DORA (Regulation (EU) 2022/2554)</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> (Regulation (EU) 2022/2554)</td>
 <td></td>
 <td>Only financial entities within its scope.</td>
 <td>ICT third-party risk, incidents, critical or important functions.</td>
 <td></td>
 </tr>
 <tr>
-<td>NIS2 (Directive (EU) 2022/2555) and its national transposition</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> (Directive (EU) 2022/2555) and its national transposition</td>
 <td></td>
 <td>Essential or important entities.</td>
 <td>Cybersecurity risk management and incident notification.</td>
@@ -576,7 +587,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Employment legislation</td>
 <td></td>
 <td>If the system affects working conditions, access to employment or the evaluation of workers.</td>
-<td>Information to the workers' legal representatives (in Spain, Article 64.4.d of the Workers' Statute).</td>
+<td>Information to the workers' legal representatives (in Spain, Article 64.4.d of the <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)">Workers' Statute</a>).</td>
 <td></td>
 </tr>
 <tr>
@@ -596,7 +607,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>Accessibility <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Products or services covered by European accessibility legislation.</td>
+<td>Products or services covered by <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2019/882 of the European Parliament and of the Council of 17 April 2019 on the accessibility requirements for products and services (European Accessibility Act)">European accessibility legislation</a>.</td>
 <td></td>
 <td></td>
 </tr>
@@ -995,7 +1006,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng" target="_blank" rel="noopener">Directive (EU) 2019/882 of the European Parliament and of the Council of 17 April 2019 on the accessibility requirements for products and services (European Accessibility Act)</a><span> · Parlamento Europeo y Consejo de la UE · 17-04-2019</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

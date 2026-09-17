@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Modelo de madurez"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1041,7 +1052,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <h3 id="3-6-d5-personas-y-adopcion">3.6 D5 · Personas y adopción</h3>
 <p><strong>Alcance.</strong> Alfabetización en IA; formación por rol; planes de adopción; uso real; capacidad liberada materializada o reasignada; comunicación, información y consulta a la representación de los trabajadores; cambios en roles y estructuras; capacidades internas y dependencia de externos. <strong>Se entrevista a:</strong> recursos humanos, responsables de formación, responsables de producto, mandos de áreas usuarias, representación de los trabajadores cuando proceda.</p>
-<p>El artículo 4 del Reglamento Europeo de IA exige a proveedores y responsables del despliegue medidas para garantizar un nivel suficiente de alfabetización en IA de su personal; es aplicable desde el 2 de febrero de 2025. A la fecha de consulta (septiembre de 2026) existen propuestas de modificación del Reglamento en tramitación, por lo que debe verificarse la vigencia de esta y del resto de referencias regulatorias.</p>
+<p>El artículo 4 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> exige a proveedores y responsables del despliegue medidas para garantizar un nivel suficiente de alfabetización en IA de su personal; es aplicable desde el 2 de febrero de 2025. A la fecha de consulta (septiembre de 2026) existen propuestas de modificación del Reglamento en tramitación, por lo que debe verificarse la vigencia de esta y del resto de referencias regulatorias.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1846,7 +1857,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Governance model"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -428,7 +439,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <h3 id="1-2-terminology-note">1.2 Terminology note</h3>
-<p>In SEVEN-G, <strong>AI Office</strong> designates the company's internal unit that provides methodological support, maintains the inventory and consolidates measurement. It must not be confused with the European Commission's <strong>European AI Office</strong>, provided for in Regulation (EU) 2024/1689. If there is a risk of confusion, the company may call it the &quot;Corporate AI Office&quot; or &quot;AI Centre of Excellence&quot;.</p>
+<p>In SEVEN-G, <strong>AI Office</strong> designates the company's internal unit that provides methodological support, maintains the inventory and consolidates measurement. It must not be confused with the European Commission's <strong><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener" title="European AI Office (European Commission)">European AI Office</a></strong>, provided for in <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a>. If there is a risk of confusion, the company may call it the &quot;Corporate AI Office&quot; or &quot;AI Centre of Excellence&quot;.</p>
 <hr />
 <h2 id="architecture-of-bodies"><span class="antetitulo">02</span>Architecture of bodies</h2>
 <figure class="grafico"><div class="g-titulo">AI governance bodies</div><div class="g-sub">Who sets direction, who decides, who builds and who controls</div><div class="g-lienzo"><pre class="mermaid">flowchart TB
@@ -742,7 +753,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>AI Technical Owner</strong></td>
 <td>Accountable for the solution, data, models and technical documentation. Assesses technical and data feasibility; designs the architecture, lineage, security and rollback; leads build or integration and testing. Part of the team: does not verify or decide the <em>gates</em> of their initiative (01 §8.1).</td>
-<td>Data and model engineering; evaluation of generative AI and agents; application security; integration; technical requirements of the AI Act according to classification.</td>
+<td>Data and model engineering; evaluation of generative AI and agents; application security; integration; technical requirements of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> according to classification.</td>
 <td>Architect or technical lead from technology or data.</td>
 <td>20–50% in phases 3–5 · 50–100% in phases 3–5</td>
 </tr>
@@ -756,7 +767,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>AI Risk Owner</strong></td>
 <td>Accountable for the assessment and monitoring of risk and compliance. Coordinates regulatory classification and impact assessments; assesses inherent and residual risks; issues clearance at G3, G4 and G5 Lite (without verifying them, 01 §7.5); proposes acceptance at the appropriate level; coordinates the multi-level sign-off.</td>
-<td>Risk management; AI Act, GDPR and sector regulation; risks of generative AI and agents; independent judgement.</td>
+<td>Risk management; AI Act, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> and sector regulation; risks of generative AI and agents; independent judgement.</td>
 <td>Second line (risk, compliance or data protection).</td>
 <td>1–3 days per initiative in phase 3 · 10–30% in phases 3–5</td>
 </tr>
@@ -1407,7 +1418,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p>Additional rules: (1) acceptance lapses if the regulatory classification, autonomy (A0–A3), exposure or main supplier changes; (2) the concentration of accepted High risks in a sphere, supplier or technology is reviewed as a portfolio risk and, if it exceeds the appetite, is escalated to the board; (3) a practice prohibited by Article 5 of Regulation (EU) 2024/1689 <strong>cannot be accepted by any body</strong>.</p>
+<p>Additional rules: (1) acceptance lapses if the regulatory classification, autonomy (A0–A3), exposure or main supplier changes; (2) the concentration of accepted High risks in a sphere, supplier or technology is reviewed as a portfolio risk and, if it exceeds the appetite, is escalated to the board; (3) a practice prohibited by Article 5 of <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a> <strong>cannot be accepted by any body</strong>.</p>
 <h3 id="7-3-suspensions-stops-and-retirements">7.3 Suspensions, stops and retirements</h3>
 <div class="tabla"><table>
 <thead>
@@ -1583,7 +1594,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li><strong>The time limit runs from detection</strong>, not from confirmation.</li>
 <li><strong>Escalation is made through the recorded channel</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or T08) and, if the time limit is less than 24 hours, also by direct contact with the designated person.</li>
 <li><strong>Failure to respond within the time limit escalates automatically</strong> to the next level.</li>
-<li><strong>No one may block an escalation.</strong> Anyone may contact the second line or the company's internal reporting system (in Spain, regulated by Law 2/2023 of 20 February).</li>
+<li><strong>No one may block an escalation.</strong> Anyone may contact the second line or the company's internal reporting system (in Spain, regulated by <a class="ref-ext" href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener" title="Law 2/2023 of 20 February on the protection of persons who report regulatory breaches and on the fight against corruption (unofficial translation)">Law 2/2023 of 20 February</a>).</li>
 </ol>
 <h3 id="8-2-escalation-table">8.2 Escalation table</h3>
 <p>The incident time limits are the indicative response times in document 37 (§4.3); those for nonconformities are those in 01 §12. The company approves them in C2 without exceeding those set by regulation.</p>
@@ -1621,7 +1632,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>E-4</td>
-<td>Possible <strong>prohibited practice</strong> or possible <strong>serious incident</strong> under the AI Act</td>
+<td>Possible <strong>prohibited practice</strong> or possible <strong>serious incident</strong> under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a></td>
 <td>AI Risk Owner, legal counsel and chair of the AI Committee</td>
 <td>Immediate, 24 hours at most</td>
 <td>Suspension and analysis of reporting obligations.</td>
@@ -1699,7 +1710,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <p>The following are also brought to the next committee session: realised value clearly below the hypothesis at R6 (brings G7 forward, 01 §6.8), recurring cost above budget plus the C2 tolerance, lapsed R6, unauthorised use involving confidential or personal data, and excessive dependence on a supplier.</p>
-<p><strong>Reports to authorities</strong> (AI Act, GDPR, NIS2, DORA and sector regulation) have their own time limits, do not replace internal escalation and are developed in documents 34 and 37 (§5).</p>
+<p><strong>Reports to authorities</strong> (AI Act, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> and sector regulation) have their own time limits, do not replace internal escalation and are developed in documents 34 and 37 (§5).</p>
 <h3 id="8-3-resolving-disagreements-with-the-second-line">8.3 Resolving disagreements with the second line</h3>
 <p>The second line does not vote on business decisions, but its <strong>clearance is required</strong> at G3, G5, risk acceptances and exceptions. If it withholds clearance:</p>
 <ol>
@@ -1768,7 +1779,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>The data protection officer participates in the impact assessment</td>
-<td>Advises and monitors (GDPR, Article 39); the assessment is carried out by the controller and the officer should not appear as its author.</td>
+<td>Advises and monitors (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 39); the assessment is carried out by the controller and the officer should not appear as its author.</td>
 </tr>
 <tr>
 <td>Security operates controls and also signs off</td>
@@ -2095,7 +2106,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener">Law 2/2023 of 20 February on the protection of persons who report regulatory breaches and on the fight against corruption (unofficial translation)</a><span> · Cortes Generales · 20-02-2023</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European AI Office (European Commission)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

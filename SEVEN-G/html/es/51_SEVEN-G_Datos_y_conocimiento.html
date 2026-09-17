@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Datos y conocimiento para IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -393,7 +404,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <ul>
 <li>El gobierno del dato <strong>aplicado a la IA</strong>: propiedad, calidad, catálogo, base legal, minimización y retención.</li>
 <li>Los requisitos de datos en <strong>cada fase del ciclo de vida</strong>, con especial atención a la evaluación de disponibilidad y calidad en la fase 3.</li>
-<li>Los requisitos de gobernanza de datos del <strong>art. 10 del Reglamento Europeo de IA</strong> para sistemas de alto riesgo, en síntesis.</li>
+<li>Los requisitos de gobernanza de datos del <strong>art. 10 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a></strong> para sistemas de alto riesgo, en síntesis.</li>
 <li>El <strong>linaje de datos y modelos</strong> (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</li>
 <li>Los <strong>datos sintéticos</strong>.</li>
 <li>Los <strong>datos personales</strong> en entrenamiento, en instrucciones y en resultados.</li>
@@ -657,7 +668,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p>Los <strong>umbrales</strong> se fijan en la fase 3 para cada conjunto crítico y se convierten en controles de monitorización en la fase 6 (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 5).</p>
 <h3 id="4-4-base-legal-y-minimizacion">4.4 Base legal y minimización</h3>
 <ul>
-<li>El uso de datos personales para desarrollar u operar un sistema de IA es un tratamiento con <strong>finalidad propia</strong>. Debe tener base legal (RGPD, art. 6) y, si los datos se recogieron para otra finalidad, un análisis de <strong>compatibilidad</strong> (art. 6.4) o una base nueva.</li>
+<li>El uso de datos personales para desarrollar u operar un sistema de IA es un tratamiento con <strong>finalidad propia</strong>. Debe tener base legal (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, art. 6) y, si los datos se recogieron para otra finalidad, un análisis de <strong>compatibilidad</strong> (art. 6.4) o una base nueva.</li>
 <li>Las <strong>categorías especiales</strong> de datos (art. 9) requieren una excepción aplicable y controles reforzados.</li>
 <li>La <strong>minimización</strong> (art. 5.1.c) se aplica a atributos, registros y periodo. En IA se justifica por escrito cada atributo personal usado como variable.</li>
 <li>La <strong>protección de datos desde el diseño y por defecto</strong> (art. 25) se refleja en <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>.</li>
@@ -809,7 +820,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p><strong>Resultado.</strong> Cada bloque se califica como <em>suficiente</em>, <em>suficiente con acciones</em> (acción, coste, plazo y responsable) o <em>insuficiente</em>. Un bloque de legitimidad <em>insuficiente</em> impide continuar. Si otros bloques son insuficientes, el resultado esperado de G3 es <strong>Iterar</strong>, <strong>Pivotar</strong> o <strong>Parar</strong> con motivo codificado <em>Datos insuficientes</em> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, sección 3.3).</p>
 <hr />
 <h2 id="sistemas-de-alto-riesgo-art-10-del-reglamento-europeo-de-ia"><span class="antetitulo">06</span>Sistemas de alto riesgo: art. 10 del Reglamento Europeo de IA</h2>
-<p>Esta sección resume, sin detalle jurídico, lo que el art. 10 del Reglamento Europeo de IA exige a los conjuntos de datos de entrenamiento, validación y prueba de los <strong>sistemas de alto riesgo</strong>, y dónde se refleja en SEVEN-G. El análisis obligación por obligación, las fechas de aplicación (anexo III desde el 2 de diciembre de 2027 y anexo I desde el 2 de agosto de 2028, tras el Reglamento (UE) 2026/1744) y las demás modificaciones se tratan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
+<p>Esta sección resume, sin detalle jurídico, lo que el art. 10 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> exige a los conjuntos de datos de entrenamiento, validación y prueba de los <strong>sistemas de alto riesgo</strong>, y dónde se refleja en SEVEN-G. El análisis obligación por obligación, las fechas de aplicación (anexo III desde el 2 de diciembre de 2027 y anexo I desde el 2 de agosto de 2028, tras el Reglamento (UE) 2026/1744) y las demás modificaciones se tratan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1016,11 +1027,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Anonimización frente a seudonimización</strong></td>
-<td>Solo los datos efectivamente anonimizados quedan fuera del RGPD. La seudonimización reduce riesgo, pero los datos siguen siendo personales. La anonimización se justifica con un análisis de riesgo de reidentificación.</td>
+<td>Solo los datos efectivamente anonimizados quedan fuera del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>. La seudonimización reduce riesgo, pero los datos siguen siendo personales. La anonimización se justifica con un análisis de riesgo de reidentificación.</td>
 </tr>
 <tr>
 <td><strong>Memorización</strong></td>
-<td>Los modelos entrenados con datos personales pueden reproducirlos en sus resultados. Se prueba la extracción de datos en fase 5 cuando el modelo se entrena o ajusta con datos personales. El Comité Europeo de Protección de Datos ha analizado en su Dictamen 28/2024 cuándo un modelo de IA puede considerarse anónimo; se recomienda su consulta.</td>
+<td>Los modelos entrenados con datos personales pueden reproducirlos en sus resultados. Se prueba la extracción de datos en fase 5 cuando el modelo se entrena o ajusta con datos personales. El <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_es" target="_blank" rel="noopener" title="Comit&#233; Europeo de Protecci&#243;n de Datos (CEPD)">Comité Europeo de Protección de Datos</a> ha analizado en su <a class="ref-ext" href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_es" target="_blank" rel="noopener" title="Dictamen 28/2024 sobre determinados aspectos de la protecci&#243;n de datos relacionados con el tratamiento de datos personales en el contexto de los modelos de IA">Dictamen 28/2024</a> cuándo un modelo de IA puede considerarse anónimo; se recomienda su consulta.</td>
 </tr>
 <tr>
 <td><strong>Derechos de los interesados</strong></td>
@@ -1067,7 +1078,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="9-3-en-resultados">9.3 En resultados</h3>
 <p>Los sistemas de IA pueden <strong>inferir</strong> datos personales que nadie ha facilitado (por ejemplo, rasgos, preferencias o situaciones sensibles). Una inferencia sobre una persona identificada es un dato personal. Si la inferencia corresponde a una categoría especial, se aplican sus reglas. El diseño (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) <strong>debe</strong> identificar qué inferencias produce el sistema y si son necesarias y lícitas.</p>
 <h3 id="9-4-datos-para-detectar-sesgos">9.4 Datos para detectar sesgos</h3>
-<p>Detectar sesgos puede requerir datos sobre características protegidas que la compañía normalmente no trata. Para sistemas de alto riesgo, el Reglamento Europeo de IA admite de forma excepcional el tratamiento de categorías especiales con esa finalidad y con garantías estrictas (art. 10.5), y el Reglamento (UE) 2026/1744 extiende esa posibilidad más allá del alto riesgo con criterio de estricta necesidad (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> §3.2). En todo caso, la decisión se toma con el delegado de protección de datos y el análisis jurídico, se documenta en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y se aplican medidas como separación, seudonimización, acceso restringido y eliminación al terminar el análisis.</p>
+<p>Detectar sesgos puede requerir datos sobre características protegidas que la compañía normalmente no trata. Para sistemas de alto riesgo, el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> admite de forma excepcional el tratamiento de categorías especiales con esa finalidad y con garantías estrictas (art. 10.5), y el Reglamento (UE) 2026/1744 extiende esa posibilidad más allá del alto riesgo con criterio de estricta necesidad (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> §3.2). En todo caso, la decisión se toma con el delegado de protección de datos y el análisis jurídico, se documenta en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y se aplican medidas como separación, seudonimización, acceso restringido y eliminación al terminar el análisis.</p>
 <hr />
 <h2 id="conocimiento"><span class="antetitulo">10</span>Conocimiento</h2>
 <h3 id="10-1-fuentes-de-conocimiento-para-ia-generativa">10.1 Fuentes de conocimiento para IA generativa</h3>
@@ -1303,7 +1314,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Contenido obtenido de fuentes públicas en internet</strong></td>
-<td>Que un contenido sea accesible no significa que su uso sea libre. En la Unión Europea, la minería de textos y datos tiene excepciones con condiciones, y los titulares pueden reservarse ese uso para finalidades distintas de la investigación científica (Directiva (UE) 2019/790, arts. 3 y 4).</td>
+<td>Que un contenido sea accesible no significa que su uso sea libre. En la Unión Europea, la minería de textos y datos tiene excepciones con condiciones, y los titulares pueden reservarse ese uso para finalidades distintas de la investigación científica (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2019/790/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2019/790 del Parlamento Europeo y del Consejo, de 17 de abril de 2019, sobre los derechos de autor y derechos afines en el mercado &#250;nico digital">Directiva (UE) 2019/790</a>, arts. 3 y 4).</td>
 <td>Análisis jurídico previo; respeto de las reservas de derechos expresadas de forma adecuada; registro de fuentes.</td>
 </tr>
 <tr>
@@ -1313,7 +1324,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Secretos empresariales propios</strong></td>
-<td>Introducirlos en servicios de terceros puede comprometer las medidas razonables de protección exigidas para que sigan siendo secretos (Directiva (UE) 2016/943; en España, Ley 1/2019 de Secretos Empresariales).</td>
+<td>Introducirlos en servicios de terceros puede comprometer las medidas razonables de protección exigidas para que sigan siendo secretos (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2016/943/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2016/943 del Parlamento Europeo y del Consejo, de 8 de junio de 2016, relativa a la protecci&#243;n de los conocimientos t&#233;cnicos y la informaci&#243;n empresarial no divulgados (secretos comerciales) contra su obtenci&#243;n, utilizaci&#243;n y revelaci&#243;n il&#237;citas">Directiva (UE) 2016/943</a>; en España, Ley 1/2019 de Secretos Empresariales).</td>
 <td>Clasificación, herramientas autorizadas y condiciones contractuales.</td>
 </tr>
 <tr>
@@ -1324,7 +1335,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <h3 id="11-2-modelos-de-proposito-general-de-terceros">11.2 Modelos de propósito general de terceros</h3>
-<p>El Reglamento Europeo de IA obliga a los <strong>proveedores de modelos de IA de propósito general</strong> a establecer una política para cumplir la normativa de derechos de autor, incluidas las reservas de derechos, y a publicar un resumen suficientemente detallado del contenido usado para el entrenamiento (art. 53.1.c y d). La compañía que usa esos modelos <strong>debería</strong> pedir y conservar esa información en la evaluación del proveedor (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) y valorar las garantías contractuales frente a reclamaciones de terceros (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</p>
+<p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> obliga a los <strong>proveedores de modelos de IA de propósito general</strong> a establecer una política para cumplir la normativa de derechos de autor, incluidas las reservas de derechos, y a publicar un resumen suficientemente detallado del contenido usado para el entrenamiento (art. 53.1.c y d). La compañía que usa esos modelos <strong>debería</strong> pedir y conservar esa información en la evaluación del proveedor (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) y valorar las garantías contractuales frente a reclamaciones de terceros (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</p>
 <h3 id="11-3-resultados-generados">11.3 Resultados generados</h3>
 <div class="tabla"><table>
 <thead>
@@ -1589,7 +1600,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>7</td>
 <td>Tratar como anónimos datos seudonimizados o sintéticos.</td>
-<td>Incumplimiento del RGPD.</td>
+<td>Incumplimiento del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>.</td>
 <td>Secciones 8.2 y 9.1.</td>
 </tr>
 <tr>
@@ -1775,7 +1786,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>34 · Mapeo regulatorio</strong></td>
-<td>Art. 10 del Reglamento Europeo de IA, RGPD y propiedad intelectual en detalle.</td>
+<td>Art. 10 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> y propiedad intelectual en detalle.</td>
 </tr>
 <tr>
 <td><strong>35 · Seguridad de IA y agentes</strong></td>
@@ -1817,11 +1828,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Desarrolla las esferas 05 y 06 con indicadores; el gobierno del dato aplicado a la IA (roles, ficha de conjunto de datos, calidad, base legal, minimización y retención); los requisitos de datos por fase con la evaluación de fase 3 con datos reales; la síntesis del art. 10 del Reglamento Europeo de IA; el contenido de <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; datos sintéticos; datos personales en entrenamiento, instrucciones y resultados; fuentes de conocimiento para IA generativa, curación, vigencia, permisos y conocimiento crítico dependiente de pocas personas; propiedad intelectual; diecinueve indicadores con fórmula, doce errores frecuentes y ocho riesgos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>. Indicadores de conocimiento renombrados de CON- a CNC- para evitar la colisión con la familia IND-CON (consejo) del <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>.</td>
+<td>Primera versión. Desarrolla las esferas 05 y 06 con indicadores; el gobierno del dato aplicado a la IA (roles, ficha de conjunto de datos, calidad, base legal, minimización y retención); los requisitos de datos por fase con la evaluación de fase 3 con datos reales; la síntesis del art. 10 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>; el contenido de <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; datos sintéticos; datos personales en entrenamiento, instrucciones y resultados; fuentes de conocimiento para IA generativa, curación, vigencia, permisos y conocimiento crítico dependiente de pocas personas; propiedad intelectual; diecinueve indicadores con fórmula, doce errores frecuentes y ocho riesgos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>. Indicadores de conocimiento renombrados de CON- a CNC- para evitar la colisión con la familia IND-CON (consejo) del <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2016/943/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2016/943 del Parlamento Europeo y del Consejo, de 8 de junio de 2016, relativa a la protecci&#243;n de los conocimientos t&#233;cnicos y la informaci&#243;n empresarial no divulgados (secretos comerciales) contra su obtenci&#243;n, utilizaci&#243;n y revelaci&#243;n il&#237;citas</a><span> · Parlamento Europeo y Consejo de la UE · 08-06-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2019/790/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2019/790 del Parlamento Europeo y del Consejo, de 17 de abril de 2019, sobre los derechos de autor y derechos afines en el mercado &#250;nico digital</a><span> · Parlamento Europeo y Consejo de la UE · 17-04-2019</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.edpb.europa.eu/edpb_es" target="_blank" rel="noopener">Comit&#233; Europeo de Protecci&#243;n de Datos (CEPD)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_es" target="_blank" rel="noopener">Dictamen 28/2024 sobre determinados aspectos de la protecci&#243;n de datos relacionados con el tratamiento de datos personales en el contexto de los modelos de IA</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 17-12-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

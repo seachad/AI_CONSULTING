@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · AI and agent security"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -415,13 +426,13 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="1-2-references">1.2 References</h3>
 <p>The references were consulted in September 2026 and must be checked against their current version:</p>
 <ul>
-<li><strong>OWASP Top 10 for LLM Applications</strong>, 2025 version (risks LLM01 to LLM10).</li>
-<li><strong>OWASP Top 10 for Agentic Applications</strong> (OWASP GenAI Security Project, published on 9 December 2025; risks ASI01 to ASI10) and the <strong>Agentic AI – Threats and Mitigations</strong> guide from the same project.</li>
-<li><strong>MITRE ATLAS</strong>, the knowledge base of adversary tactics and techniques against AI systems, which is updated periodically.</li>
-<li><strong>NIST AI 600-1</strong>, the generative AI profile of the NIST AI RMF (July 2024), in particular the information security, data privacy and value chain and component integration risks.</li>
-<li><strong>ISO/IEC 42001</strong> and <strong>ISO/IEC 23894</strong> for the fit with the management system and with risk management.</li>
-<li><strong>Regulation (EU) 2024/1689</strong>, which requires high-risk systems to achieve an appropriate level of accuracy, robustness and cybersecurity, including resilience against the manipulation of data and models and against inputs designed to cause errors.</li>
-<li><strong>CCN-CERT BP/36</strong>, the good practice guide against offensive AI from the Spanish National Cryptologic Centre (Centro Criptológico Nacional) (June 2026).</li>
+<li><strong><a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener" title="OWASP Top 10 for Large Language Model Applications 2025">OWASP Top 10 for LLM Applications</a></strong>, 2025 version (risks LLM01 to LLM10).</li>
+<li><strong><a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener" title="OWASP Top 10 for Agentic Applications for 2026">OWASP Top 10 for Agentic Applications</a></strong> (OWASP GenAI Security Project, published on 9 December 2025; risks ASI01 to ASI10) and the <strong><a class="ref-ext" href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/" target="_blank" rel="noopener" title="Agentic AI – Threats and Mitigations, v1.0">Agentic AI – Threats and Mitigations</a></strong> guide from the same project.</li>
+<li><strong><a class="ref-ext" href="https://atlas.mitre.org/" target="_blank" rel="noopener" title="MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems)">MITRE ATLAS</a></strong>, the knowledge base of adversary tactics and techniques against AI systems, which is updated periodically.</li>
+<li><strong><a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)">NIST AI 600-1</a></strong>, the generative AI profile of the <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a> (July 2024), in particular the information security, data privacy and value chain and component integration risks.</li>
+<li><strong>ISO/IEC 42001</strong> and <strong><a class="ref-ext" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener" title="ISO/IEC 23894:2023 Information technology — Artificial intelligence — Guidance on risk management">ISO/IEC 23894</a></strong> for the fit with the management system and with risk management.</li>
+<li><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a></strong>, which requires high-risk systems to achieve an appropriate level of accuracy, robustness and cybersecurity, including resilience against the manipulation of data and models and against inputs designed to cause errors.</li>
+<li><strong><a class="ref-ext" href="https://www.ccn-cert.cni.es/es/informes/informes-de-buenas-practicas-bp/7469-ccn-cert-bp-36-buenas-practicas-ia-ofensiva/file.html" target="_blank" rel="noopener" title="CCN-CERT BP/36 &#183; Good practice guide against the offensive AI model (unofficial translation)">CCN-CERT BP/36</a></strong>, the good practice guide against offensive AI from the <a class="ref-ext" href="https://www.ccn.cni.es/index.php/en/" target="_blank" rel="noopener" title="National Cryptologic Centre (Centro Criptol&#243;gico Nacional, CCN) / CCN-CERT">Spanish National Cryptologic Centre (Centro Criptológico Nacional)</a> (June 2026).</li>
 </ul>
 <p>This document does not constitute legal advice.</p>
 <hr />
@@ -529,7 +540,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>Information leakage</strong></td>
 <td>Personal, confidential or secret data exposed in responses, logs, retrieval or tools.</td>
-<td>OWASP LLM02, LLM07, LLM08; NIST AI 600-1</td>
+<td>OWASP LLM02, LLM07, LLM08; <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)">NIST AI 600-1</a></td>
 <td>RT-GEN-05, RT-DAT-05</td>
 <td>SEG-05, SEG-06, SEG-07</td>
 </tr>
@@ -701,7 +712,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li>It is tested before G5 and periodically (section 5.3). Its time to take effect is measured.</li>
 </ul>
 <h3 id="4-8-action-log">4.8 Action log</h3>
-<p>A complete, tamper-protected log (AG-10) with, as a minimum: identity of the agent and of the represented user, intent, proposed action, decision of the decision point, human validation if any, tool, relevant parameters, result, model and prompt version, date and time. Retention respects personal data minimisation and the applicable regulatory periods; for deployers of high-risk systems, the AI Act requires automatically generated logs to be kept for at least six months, unless otherwise provided.</p>
+<p>A complete, tamper-protected log (AG-10) with, as a minimum: identity of the agent and of the represented user, intent, proposed action, decision of the decision point, human validation if any, tool, relevant parameters, result, model and prompt version, date and time. Retention respects personal data minimisation and the applicable regulatory periods; for deployers of high-risk systems, the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> requires automatically generated logs to be kept for at least six months, unless otherwise provided.</p>
 <h3 id="4-9-sandboxed-environments">4.9 Sandboxed environments</h3>
 <p>Code execution, web browsing, handling of external files and testing are carried out in sandboxed environments, with restricted network egress, without production credentials and destroyed on completion (AG-11).</p>
 <hr />
@@ -963,7 +974,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>SEG-01</strong></td>
 <td>AI threat modelling</td>
-<td>Threat analysis using OWASP LLM 2025, OWASP Agentic and MITRE ATLAS, linked to the risk register.</td>
+<td>Threat analysis using <a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener" title="OWASP Top 10 for Large Language Model Applications 2025">OWASP LLM 2025</a>, <a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener" title="OWASP Top 10 for Agentic Applications for 2026">OWASP Agentic</a> and <a class="ref-ext" href="https://atlas.mitre.org/" target="_blank" rel="noopener" title="MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems)">MITRE ATLAS</a>, linked to the risk register.</td>
 <td>Threat model in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>.</td>
 <td>IA</td>
 <td>3, 4</td>
@@ -1305,7 +1316,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p>Automated adversarial evaluations are versioned and run before every relevant change. A scenario that succeeds on a sensitive action is a finding that blocks G5 until it is remediated.</p>
 <hr />
 <h2 id="exposure-to-offensive-ai"><span class="antetitulo">09</span>Exposure to offensive AI</h2>
-<p>For the most part, AI does not create new types of attack, but it lowers their cost, increases their credibility and shortens timescales. The CCN-CERT BP/36 guide stresses this idea: the time between the existence of a vulnerability and its exploitation is shrinking, and one-off security reviews arrive too late. Exposure is managed as a corporate risk (C4), with an owner in information security and reporting to the board.</p>
+<p>For the most part, AI does not create new types of attack, but it lowers their cost, increases their credibility and shortens timescales. The <a class="ref-ext" href="https://www.ccn-cert.cni.es/es/informes/informes-de-buenas-practicas-bp/7469-ccn-cert-bp-36-buenas-practicas-ia-ofensiva/file.html" target="_blank" rel="noopener" title="CCN-CERT BP/36 &#183; Good practice guide against the offensive AI model (unofficial translation)">CCN-CERT BP/36</a> guide stresses this idea: the time between the existence of a vulnerability and its exploitation is shrinking, and one-off security reviews arrive too late. Exposure is managed as a corporate risk (C4), with an owner in information security and reporting to the board.</p>
 <h3 id="9-1-threats-and-corporate-controls">9.1 Threats and corporate controls</h3>
 <div class="tabla"><table>
 <thead>
@@ -1364,7 +1375,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="9-2-governance-measures">9.2 Governance measures</h3>
 <ul>
 <li><strong>Owner:</strong> information security, reporting to the AI Committee and the board committee.</li>
-<li><strong>Annual assessment</strong> of exposure to offensive AI covering the threats in 9.1 and, for entities within the scope of the Spanish National Security Framework (Esquema Nacional de Seguridad), using the self-assessment instruments published by the CCN.</li>
+<li><strong>Annual assessment</strong> of exposure to offensive AI covering the threats in 9.1 and, for entities within the scope of the <a class="ref-ext" href="https://www.boe.es/eli/es/rd/2022/05/03/311/con" target="_blank" rel="noopener" title="Royal Decree 311/2022 of 3 May regulating the National Security Framework (Esquema Nacional de Seguridad) (unofficial translation)">Spanish National Security Framework (Esquema Nacional de Seguridad)</a>, using the self-assessment instruments published by the CCN.</li>
 <li><strong>Annual exercise</strong>, as a minimum, of fraud using synthetic impersonation involving finance and senior management.</li>
 <li><strong>Payment processes</strong> reviewed so that no order depends solely on recognition of voice, image or writing style.</li>
 <li><strong>Remediation deadlines</strong> for vulnerabilities in exposed systems reviewed and approved, with monitoring of compliance.</li>
@@ -1566,11 +1577,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Defines the threats to AI systems with references to OWASP (LLM 2025 and agentic applications), MITRE ATLAS and NIST AI 600-1; the nine essential requirements for an agent; autonomy levels A0–A3 with minimum controls and frequencies; the SEG-01 to SEG-20 and AG-01 to AG-20 catalogues; testing by phase; exposure to offensive AI and the indicators for the board.</td>
+<td>First version. Defines the threats to AI systems with references to OWASP (LLM 2025 and agentic applications), <a class="ref-ext" href="https://atlas.mitre.org/" target="_blank" rel="noopener" title="MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems)">MITRE ATLAS</a> and <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)">NIST AI 600-1</a>; the nine essential requirements for an agent; autonomy levels A0–A3 with minimum controls and frequencies; the SEG-01 to SEG-20 and AG-01 to AG-20 catalogues; testing by phase; exposure to offensive AI and the indicators for the board.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/rd/2022/05/03/311/con" target="_blank" rel="noopener">Royal Decree 311/2022 of 3 May regulating the National Security Framework (Esquema Nacional de Seguridad) (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Asuntos Econ&#243;micos y Transformaci&#243;n Digital) · 03-05-2022</span></li><li><a href="https://www.ccn.cni.es/index.php/en/" target="_blank" rel="noopener">National Cryptologic Centre (Centro Criptol&#243;gico Nacional, CCN) / CCN-CERT</a><span> · Centro Criptol&#243;gico Nacional (adscrito al Centro Nacional de Inteligencia)</span></li><li><a href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/" target="_blank" rel="noopener">Agentic AI – Threats and Mitigations, v1.0</a><span> · OWASP GenAI Security Project (Agentic Security Initiative), OWASP Foundation · 17-02-2025</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)</a><span> · National Institute of Standards and Technology (NIST) · 26-07-2024</span></li><li><a href="https://www.ccn-cert.cni.es/es/informes/informes-de-buenas-practicas-bp/7469-ccn-cert-bp-36-buenas-practicas-ia-ofensiva/file.html" target="_blank" rel="noopener">CCN-CERT BP/36 &#183; Good practice guide against the offensive AI model (unofficial translation)</a><span> · Centro Criptol&#243;gico Nacional (CCN-CERT) · 2026-06</span></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener">OWASP Top 10 for Agentic Applications for 2026</a><span> · OWASP GenAI Security Project (Agentic Security Initiative), OWASP Foundation · 09-12-2025</span></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 for Large Language Model Applications 2025</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">ISO/IEC 23894:2023 Information technology — Artificial intelligence — Guidance on risk management</a><span> · ISO/IEC (JTC 1/SC 42) · 06-02-2023</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems)</a><span> · The MITRE Corporation</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

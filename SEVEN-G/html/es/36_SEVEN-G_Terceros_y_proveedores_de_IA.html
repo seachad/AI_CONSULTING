@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Terceros y proveedores de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -439,11 +450,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="1-2-normas-de-referencia">1.2 Normas de referencia</h3>
 <p>Consultadas en septiembre de 2026; deben verificarse en su versión vigente:</p>
 <ul>
-<li><strong>Reglamento (UE) 2024/1689</strong> (Reglamento Europeo de IA), en particular las responsabilidades a lo largo de la cadena de valor (art. 25), las obligaciones de los responsables del despliegue (art. 26) y las de los proveedores de modelos de propósito general (art. 53). Modificado por el Reglamento (UE) 2026/1744 (Ómnibus digital sobre IA), publicado en el Diario Oficial el 24 de julio de 2026, que aplaza las obligaciones de los sistemas de alto riesgo del anexo III al 2 de diciembre de 2027 y las del anexo I al 2 de agosto de 2028.</li>
-<li><strong>Reglamento (UE) 2022/2554 (DORA)</strong>, arts. 28 a 30 y su desarrollo: Reglamento Delegado (UE) 2024/1773 (política sobre acuerdos contractuales para funciones críticas o importantes), Reglamento de Ejecución (UE) 2024/2956 (registro de información) y Reglamento Delegado (UE) 2025/532 (subcontratación).</li>
-<li><strong>Reglamento (UE) 2016/679 (RGPD)</strong>, art. 28 (encargados del tratamiento) y capítulo V (transferencias internacionales).</li>
+<li><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a></strong> (Reglamento Europeo de IA), en particular las responsabilidades a lo largo de la cadena de valor (art. 25), las obligaciones de los responsables del despliegue (art. 26) y las de los proveedores de modelos de propósito general (art. 53). Modificado por el Reglamento (UE) 2026/1744 (Ómnibus digital sobre IA), publicado en el Diario Oficial el 24 de julio de 2026, que aplaza las obligaciones de los sistemas de alto riesgo del anexo III al 2 de diciembre de 2027 y las del anexo I al 2 de agosto de 2028.</li>
+<li><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">Reglamento (UE) 2022/2554 (DORA)</a></strong>, arts. 28 a 30 y su desarrollo: <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2024/1773/oj/spa" target="_blank" rel="noopener" title="Reglamento Delegado (UE) 2024/1773 de la Comisi&#243;n, de 13 de marzo de 2024, por el que se completa el Reglamento (UE) 2022/2554 mediante normas t&#233;cnicas de regulaci&#243;n que especifican el contenido detallado de la pol&#237;tica relativa a los acuerdos contractuales sobre el uso de servicios de TIC que sustenten funciones esenciales o importantes prestados por proveedores terceros de servicios de TIC">Reglamento Delegado (UE) 2024/1773</a> (política sobre acuerdos contractuales para funciones críticas o importantes), <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2956/oj/spa" target="_blank" rel="noopener" title="Reglamento de Ejecuci&#243;n (UE) 2024/2956 de la Comisi&#243;n, de 29 de noviembre de 2024, por el que se establecen normas t&#233;cnicas de ejecuci&#243;n para la aplicaci&#243;n del Reglamento (UE) 2022/2554 en lo que respecta a las plantillas normalizadas para el registro de informaci&#243;n">Reglamento de Ejecución (UE) 2024/2956</a> (registro de información) y <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2025/532/oj/spa" target="_blank" rel="noopener" title="Reglamento Delegado (UE) 2025/532 de la Comisi&#243;n, de 24 de marzo de 2025, por el que se completa el Reglamento (UE) 2022/2554 en lo que respecta a las normas t&#233;cnicas de regulaci&#243;n que especifican los elementos que debe determinar y evaluar una entidad financiera cuando subcontrata servicios de TIC que sustentan funciones esenciales o importantes">Reglamento Delegado (UE) 2025/532</a> (subcontratación).</li>
+<li><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">Reglamento (UE) 2016/679</a> (RGPD)</strong>, art. 28 (encargados del tratamiento) y capítulo V (transferencias internacionales).</li>
 <li><strong>ISO/IEC 42001</strong>, control A.10 del anexo A (relaciones con terceros y clientes).</li>
-<li><strong>Directiva (UE) 2022/2555 (NIS2)</strong> en lo relativo a la seguridad de la cadena de suministro, según su transposición nacional.</li>
+<li><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">Directiva (UE) 2022/2555 (NIS2)</a></strong> en lo relativo a la seguridad de la cadena de suministro, según su transposición nacional.</li>
 </ul>
 <p>Este documento no constituye asesoramiento jurídico. El contenido contractual debe revisarse con asesoría jurídica cualificada. Los niveles de exigencia y las obligaciones descritas son orientativos: la responsabilidad de la clasificación regulatoria de los terceros y de los sistemas y del cumplimiento, incluida la regulación sectorial aplicable, es de la organización (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</p>
 <hr />
@@ -594,7 +605,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li>La decisión se documenta en la evaluación de viabilidad (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) de la fase 3 con los criterios de la tabla y el coste total a tres años según las categorías del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>, incluido el <strong>coste de salida</strong>.</li>
 <li>En iniciativas de <strong>Optimizar</strong>, comprar debería ser la opción de partida salvo razón documentada. En <strong>Transformar</strong>, la dependencia de un tercero en la capacidad diferencial debe justificarse ante el órgano que aprueba la apuesta.</li>
 <li><strong>Construir sobre modelos de terceros no elimina la dependencia</strong>: se aplica este documento al proveedor del modelo.</li>
-<li>Si la compañía modifica sustancialmente un sistema de alto riesgo de un tercero, cambia su finalidad o lo comercializa con su nombre, puede pasar a ser <strong>proveedor</strong> a efectos del Reglamento de IA (art. 25.1), con las obligaciones correspondientes. Esta consecuencia se analiza antes de decidir adaptar.</li>
+<li>Si la compañía modifica sustancialmente un sistema de alto riesgo de un tercero, cambia su finalidad o lo comercializa con su nombre, puede pasar a ser <strong>proveedor</strong> a efectos del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> (art. 25.1), con las obligaciones correspondientes. Esta consecuencia se analiza antes de decidir adaptar.</li>
 </ol>
 <hr />
 <h2 id="niveles-de-exigencia-n1-n3"><span class="antetitulo">04</span>Niveles de exigencia N1–N3</h2>
@@ -614,7 +625,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td><strong>Criticidad del servicio</strong></td>
 <td>Proceso interno cuya interrupción tendría impacto 1–2 (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</td>
 <td>Proceso relevante con impacto 3; exposición directa a clientes; decisiones sobre personas.</td>
-<td>Función crítica o importante (incluida la definición de DORA cuando aplique); impacto 4–5; sistema de alto riesgo según el Reglamento de IA.</td>
+<td>Función crítica o importante (incluida la definición de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> cuando aplique); impacto 4–5; sistema de alto riesgo según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>.</td>
 </tr>
 <tr>
 <td><strong>Datos tratados</strong></td>
@@ -804,7 +815,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>2</td>
 <td><strong>Confidencialidad y tratamiento de datos</strong></td>
-<td>Confidencialidad; encargo de tratamiento conforme al art. 28 del RGPD cuando haya datos personales; retención limitada y borrado.</td>
+<td>Confidencialidad; encargo de tratamiento conforme al art. 28 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> cuando haya datos personales; retención limitada y borrado.</td>
 <td>Sí</td>
 <td>Sí</td>
 <td>Sí</td>
@@ -883,7 +894,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>12</td>
-<td><strong>Obligaciones del Reglamento de IA en la cadena de valor</strong></td>
+<td><strong>Obligaciones del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> en la cadena de valor</strong></td>
 <td>Reparto de roles; entrega de documentación técnica e instrucciones de uso; información sobre capacidades y limitaciones; cooperación en supervisión humana, registros, vigilancia posterior a la comercialización e incidentes graves; acuerdo escrito del art. 25.4 cuando el tercero suministra componentes a un sistema de alto riesgo.</td>
 <td>Rec.</td>
 <td>Sí</td>
@@ -952,7 +963,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <p>Las obligaciones de los sistemas de alto riesgo del anexo III son aplicables desde el 2 de diciembre de 2027, tras el Ómnibus digital sobre IA. Los contratos de larga duración firmados antes <strong>deberían</strong> incluir ya estas cláusulas.</p>
 <h3 id="6-2-dora-para-terceros-tic">6.2 DORA para terceros TIC</h3>
-<p>Aplica a las entidades financieras sujetas a DORA cuando el servicio de IA es un servicio TIC prestado por un tercero:</p>
+<p>Aplica a las entidades financieras sujetas a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> cuando el servicio de IA es un servicio TIC prestado por un tercero:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -964,12 +975,12 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td>Estrategia y política de riesgo de terceros TIC aprobada por el órgano de administración</td>
-<td>Art. 28.2; Reglamento Delegado (UE) 2024/1773</td>
+<td>Art. 28.2; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2024/1773/oj/spa" target="_blank" rel="noopener" title="Reglamento Delegado (UE) 2024/1773 de la Comisi&#243;n, de 13 de marzo de 2024, por el que se completa el Reglamento (UE) 2022/2554 mediante normas t&#233;cnicas de regulaci&#243;n que especifican el contenido detallado de la pol&#237;tica relativa a los acuerdos contractuales sobre el uso de servicios de TIC que sustenten funciones esenciales o importantes prestados por proveedores terceros de servicios de TIC">Reglamento Delegado (UE) 2024/1773</a></td>
 <td>Política corporativa (31) y C2.</td>
 </tr>
 <tr>
 <td>Registro de información de todos los acuerdos con terceros TIC</td>
-<td>Art. 28.3; Reglamento de Ejecución (UE) 2024/2956</td>
+<td>Art. 28.3; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2956/oj/spa" target="_blank" rel="noopener" title="Reglamento de Ejecuci&#243;n (UE) 2024/2956 de la Comisi&#243;n, de 29 de noviembre de 2024, por el que se establecen normas t&#233;cnicas de ejecuci&#243;n para la aplicaci&#243;n del Reglamento (UE) 2022/2554 en lo que respecta a las plantillas normalizadas para el registro de informaci&#243;n">Reglamento de Ejecución (UE) 2024/2956</a></td>
 <td>T09 alimenta el registro.</td>
 </tr>
 <tr>
@@ -984,7 +995,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>Evaluación del riesgo de concentración y de la subcontratación en cadena</td>
-<td>Art. 29; Reglamento Delegado (UE) 2025/532</td>
+<td>Art. 29; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2025/532/oj/spa" target="_blank" rel="noopener" title="Reglamento Delegado (UE) 2025/532 de la Comisi&#243;n, de 24 de marzo de 2025, por el que se completa el Reglamento (UE) 2022/2554 en lo que respecta a las normas t&#233;cnicas de regulaci&#243;n que especifican los elementos que debe determinar y evaluar una entidad financiera cuando subcontrata servicios de TIC que sustentan funciones esenciales o importantes">Reglamento Delegado (UE) 2025/532</a></td>
 <td>Sección 7; cláusula 5.</td>
 </tr>
 <tr>
@@ -993,7 +1004,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Sección 6; todo servicio N3 de una entidad financiera se revisa contra el art. 30.3.</td>
 </tr>
 <tr>
-<td>Proveedores terceros críticos designados por las Autoridades Europeas de Supervisión</td>
+<td>Proveedores terceros críticos designados por las <a class="ref-ext" href="https://www.eba.europa.eu/publications-and-media/press-releases/european-supervisory-authorities-designate-critical-ict-third-party-providers-under-digital" target="_blank" rel="noopener" title="Autoridades Europeas de Supervisi&#243;n (ABE/EBA, AESPJ/EIOPA y AEVM/ESMA): designaci&#243;n de proveedores terceros esenciales de servicios de TIC con arreglo a DORA (18 de noviembre de 2025)">Autoridades Europeas de Supervisión</a></td>
 <td>Arts. 31 y siguientes</td>
 <td>La supervisión europea del proveedor no sustituye la gestión del riesgo por la entidad. Las AES publicaron la primera lista de designados en noviembre de 2025; debe consultarse la vigente.</td>
 </tr>
@@ -1339,7 +1350,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>01 · Metodología fundacional</strong></td>
-<td>IA de terceros integrada en procesos (§1.2), criterios Enterprise (§9.2) y encaje de DORA (§13).</td>
+<td>IA de terceros integrada en procesos (§1.2), criterios Enterprise (§9.2) y encaje de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> (§13).</td>
 </tr>
 <tr>
 <td><strong>13 · Tesis de IA, ambición y apetito de riesgo</strong></td>
@@ -1355,7 +1366,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>34 · Mapeo regulatorio</strong></td>
-<td>Obligaciones de la cadena de valor del Reglamento de IA, RGPD y DORA.</td>
+<td>Obligaciones de la cadena de valor del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> y DORA.</td>
 </tr>
 <tr>
 <td><strong>35 · Seguridad de IA y agentes</strong></td>
@@ -1385,11 +1396,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Define los criterios para construir, comprar, adaptar o aliarse; los niveles de exigencia N1–N3 con cuatro factores y requisitos por nivel; el ciclo de vida del proveedor; dieciséis cláusulas contractuales clave, con las obligaciones del Reglamento de IA en la cadena de valor y DORA; la gestión de la dependencia y la concentración; el tratamiento de la IA embebida y los campos del registro de proveedores.</td>
+<td>Primera versión. Define los criterios para construir, comprar, adaptar o aliarse; los niveles de exigencia N1–N3 con cuatro factores y requisitos por nivel; el ciclo de vida del proveedor; dieciséis cláusulas contractuales clave, con las obligaciones del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> en la cadena de valor y <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>; la gestión de la dependencia y la concentración; el tratamiento de la IA embebida y los campos del registro de proveedores.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg_impl/2024/2956/oj/spa" target="_blank" rel="noopener">Reglamento de Ejecuci&#243;n (UE) 2024/2956 de la Comisi&#243;n, de 29 de noviembre de 2024, por el que se establecen normas t&#233;cnicas de ejecuci&#243;n para la aplicaci&#243;n del Reglamento (UE) 2022/2554 en lo que respecta a las plantillas normalizadas para el registro de informaci&#243;n</a><span> · Comisi&#243;n Europea · 29-11-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg_del/2024/1773/oj/spa" target="_blank" rel="noopener">Reglamento Delegado (UE) 2024/1773 de la Comisi&#243;n, de 13 de marzo de 2024, por el que se completa el Reglamento (UE) 2022/2554 mediante normas t&#233;cnicas de regulaci&#243;n que especifican el contenido detallado de la pol&#237;tica relativa a los acuerdos contractuales sobre el uso de servicios de TIC que sustenten funciones esenciales o importantes prestados por proveedores terceros de servicios de TIC</a><span> · Comisi&#243;n Europea · 13-03-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg_del/2025/532/oj/spa" target="_blank" rel="noopener">Reglamento Delegado (UE) 2025/532 de la Comisi&#243;n, de 24 de marzo de 2025, por el que se completa el Reglamento (UE) 2022/2554 en lo que respecta a las normas t&#233;cnicas de regulaci&#243;n que especifican los elementos que debe determinar y evaluar una entidad financiera cuando subcontrata servicios de TIC que sustentan funciones esenciales o importantes</a><span> · Comisi&#243;n Europea · 24-03-2025</span></li><li><a href="https://www.eba.europa.eu/publications-and-media/press-releases/european-supervisory-authorities-designate-critical-ict-third-party-providers-under-digital" target="_blank" rel="noopener">Autoridades Europeas de Supervisi&#243;n (ABE/EBA, AESPJ/EIOPA y AEVM/ESMA): designaci&#243;n de proveedores terceros esenciales de servicios de TIC con arreglo a DORA (18 de noviembre de 2025)</a><span> · Autoridades Europeas de Supervisi&#243;n (EBA, EIOPA, ESMA) · 18-11-2025</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

@@ -1,14 +1,17 @@
 ﻿<#
 .SYNOPSIS
-  Genera HTML y PDF de los documentos SEVEN-G en español e inglés a partir de las fuentes Markdown.
+  Genera HTML y PDF de las metodologías SEVEN-G y SPHERES en español e inglés a partir de las fuentes Markdown.
 
 .DESCRIPTION
-  Fuentes:      SEVEN-G/mds/<idioma>/**/*.md          (idiomas: es, en)
-  Salidas:      SEVEN-G/html/<idioma>/**/<nombre>.html (un solo fichero, con barra de herramientas)
-                SEVEN-G/html/<idioma>/index.html       (índice de la biblioteca por bloques A–J; sin PDF; excluye _trabajo)
-                SEVEN-G/pdf/<idioma>/**/<nombre>.pdf   (impreso con Edge o Chrome sin ventana)
-  Diseño:       build/plantilla.html + build/estilo.css (periódico económico en tonos salmón)
-  Componentes:  build/componentes/<idioma>/<nombre>.html
+  Metodologías: SEVEN-G (marco principal) y SPHERES (metodología de apoyo). Cada una vive en su carpeta de la raíz
+                del repositorio (<M> = SEVEN-G o SPHERES) con la misma jerarquía; este generador es común a ambas.
+  Fuentes:      <M>/mds/<idioma>/**/*.md          (idiomas: es, en)
+  Salidas:      <M>/html/<idioma>/**/<nombre>.html (un solo fichero, con barra de herramientas)
+                <M>/html/<idioma>/index.html       (índice de la biblioteca por bloques; sin PDF; excluye _trabajo)
+                <M>/pdf/<idioma>/**/<nombre>.pdf   (impreso con Edge o Chrome sin ventana)
+  Diseño:       build/plantilla.html + build/estilo.css (periódico económico en tonos salmón), comunes
+  Componentes:  <M>/build/componentes/<idioma>/<nombre>.html y, si no existe ahí, build/componentes/<idioma>/<nombre>.html
+  Herramientas: SEVEN-G/herramientas/ (SPHERES enlaza las de SEVEN-G)
   Traducción:   build/guia_traduccion_en.md (reglas y glosario obligatorio)
 
   Regla: todo documento existe en español y en inglés con el mismo nombre de fichero.
@@ -35,22 +38,68 @@
   Requisitos: PowerShell 7+ (ConvertFrom-Markdown) y Microsoft Edge o Google Chrome.
 
 .EXAMPLE
-  pwsh -File build/build.ps1                     # todos los documentos, ambos idiomas
-  pwsh -File build/build.ps1 -Filter 00_*        # solo los que coinciden
-  pwsh -File build/build.ps1 -Idiomas es         # solo un idioma
-  pwsh -File build/build.ps1 -SinPdf             # solo HTML
+  pwsh -File build/build.ps1                          # ambas metodologías, todos los documentos, ambos idiomas
+  pwsh -File build/build.ps1 -Metodologias SPHERES    # solo una metodología
+  pwsh -File build/build.ps1 -Filter 00_*             # solo los que coinciden
+  pwsh -File build/build.ps1 -Idiomas es              # solo un idioma
+  pwsh -File build/build.ps1 -SinPdf                  # solo HTML
 #>
 param(
+  [ValidateSet('SEVEN-G', 'SPHERES')]
+  [string[]]$Metodologias = @('SEVEN-G', 'SPHERES'),
   [string]$Filter = '*.md',
   [string[]]$Idiomas = @('es', 'en'),
   [switch]$SinPdf
 )
 
 $ErrorActionPreference = 'Stop'
-$root     = Split-Path -Parent $PSScriptRoot
+$repo     = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $template = Get-Content (Join-Path $PSScriptRoot 'plantilla.html') -Raw -Encoding utf8
 $css      = Get-Content (Join-Path $PSScriptRoot 'estilo.css') -Raw -Encoding utf8
 $todos    = @('es', 'en')
+$herrRaiz = Join-Path $repo 'SEVEN-G\herramientas'
+
+# ---- Configuración de cada metodología ----
+# bloques: bloques del índice y del panel de documentos; Bloque: bloque de un documento (ruta relativa) o $null si no entra en el índice.
+$configuracion = @{
+  'SEVEN-G' = @{
+    marca = 'SEVEN-G'
+    inicio = '00_SEVEN-G_Que_es_y_para_que_sirve'
+    todasHerramientas = '03_*'
+    es = @{ T_TT_INICIO = 'Ir al documento 00: Qué es SEVEN-G y para qué sirve'; T_METODOLOGIA = 'Metodología SEVEN-G'
+            Indice = 'Biblioteca SEVEN-G'; IndiceSub = 'Documentos, plantillas y herramientas del marco de valor, gobierno y transformación con IA' }
+    en = @{ T_TT_INICIO = 'Go to document 00: What SEVEN-G is and how it helps companies'; T_METODOLOGIA = 'SEVEN-G methodology'
+            Indice = 'SEVEN-G Library'; IndiceSub = 'Documents, templates and tools of the framework for value, governance and transformation with AI' }
+    bloques = @{
+      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Estrategia y cartera'; C = 'C · Ciclo de vida de la iniciativa'; D = 'D · Gobierno, riesgo y cumplimiento'; E = 'E · Medición y valor'; F = 'F · Personas, datos y operación'; G = 'G · Consejo'; H = 'H · Plantillas'; I = 'I · Herramientas'; J = 'J · Adopción del marco' }
+      en = [ordered]@{ A = 'A · Foundations'; B = 'B · Strategy and portfolio'; C = 'C · Initiative lifecycle'; D = 'D · Governance, risk and compliance'; E = 'E · Measurement and value'; F = 'F · People, data and operations'; G = 'G · Board'; H = 'H · Templates'; I = 'I · Tools'; J = 'J · Framework adoption' }
+    }
+    Bloque = {
+      param([string]$rel)
+      if ($rel -like 'plantillas/*') { return 'H' }
+      if ($rel -match '^(\d)\d_') { return @{ '0'='A'; '1'='B'; '2'='C'; '3'='D'; '4'='E'; '5'='F'; '6'='G'; '9'='J' }[$Matches[1]] }
+      return $null
+    }
+  }
+  'SPHERES' = @{
+    marca = 'SPHERES'
+    inicio = '00_SPHERES_Que_es_y_para_que_sirve'
+    todasHerramientas = $null
+    es = @{ T_TT_INICIO = 'Ir al documento 00: Qué es SPHERES y para qué sirve'; T_METODOLOGIA = 'Metodología SPHERES'
+            Indice = 'Biblioteca SPHERES'; IndiceSub = 'Documentos de la metodología de esferas de impacto y niveles de ambición de la IA' }
+    en = @{ T_TT_INICIO = 'Go to document 00: What SPHERES is and how it helps'; T_METODOLOGIA = 'SPHERES methodology'
+            Indice = 'SPHERES Library'; IndiceSub = 'Documents of the methodology of AI impact spheres and ambition levels' }
+    bloques = @{
+      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Las esferas'; C = 'C · Consejo' }
+      en = [ordered]@{ A = 'A · Foundations'; B = 'B · The spheres'; C = 'C · Board' }
+    }
+    Bloque = {
+      param([string]$rel)
+      if ($rel -match '^(\d{2})_') { $n = [int]$Matches[1]; if ($n -le 1) { return 'A' } elseif ($n -le 4) { return 'B' } else { return 'C' } }
+      return $null
+    }
+  }
+}
 
 $textos = @{
   es = @{
@@ -138,20 +187,15 @@ function Slug([string]$s) {
 }
 function Enc([string]$s) { [Net.WebUtility]::HtmlEncode($s) }
 function BloqueNavegacion([string]$rel) {
-  if ($rel -eq 'index.md') { return 'A' }
-  if ($rel -like 'plantillas/*') { return 'H' }
-  if ($rel -match '^([0-9])') {
-    return @{ '0'='A'; '1'='B'; '2'='C'; '3'='D'; '4'='E'; '5'='F'; '6'='G'; '9'='J' }[$Matches[1]]
-  }
-  return 'J'
+  $claves = @($bloquesIndice.es.Keys)
+  if ($rel -eq 'index.md') { return $claves[0] }
+  $b = & $cfg.Bloque $rel
+  if ($b) { return $b }
+  return $claves[-1]
 }
 
 # ---- Índice de la biblioteca (sustituye al antiguo Master Print Pack) ----
 # Se genera como Markdown temporal y pasa por el mismo proceso que el resto: html/<idioma>/index.html (sin PDF).
-$bloquesIndice = @{
-  es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Estrategia y cartera'; C = 'C · Ciclo de vida de la iniciativa'; D = 'D · Gobierno, riesgo y cumplimiento'; E = 'E · Medición y valor'; F = 'F · Personas, datos y operación'; G = 'G · Consejo'; H = 'H · Plantillas'; I = 'I · Herramientas'; J = 'J · Adopción del marco' }
-  en = [ordered]@{ A = 'A · Foundations'; B = 'B · Strategy and portfolio'; C = 'C · Initiative lifecycle'; D = 'D · Governance, risk and compliance'; E = 'E · Measurement and value'; F = 'F · People, data and operations'; G = 'G · Board'; H = 'H · Templates'; I = 'I · Tools'; J = 'J · Framework adoption' }
-}
 function Nuevo-Indice([string]$lang) {
   $en = $lang -eq 'en'
   $dir = Join-Path $root "mds\$lang"
@@ -159,7 +203,7 @@ function Nuevo-Indice([string]$lang) {
   $nDocs = 0; $nPlant = 0; $nHerr = 0
   foreach ($d in (Get-ChildItem $dir -Recurse -File -Filter '*.md' | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' } | Sort-Object FullName)) {
     $rel = [IO.Path]::GetRelativePath($dir, $d.FullName) -replace '\\', '/'
-    $b = if ($rel -like 'plantillas/*') { 'H' } elseif ($rel -match '^(\d)\d_') { @{ '0'='A'; '1'='B'; '2'='C'; '3'='D'; '4'='E'; '5'='F'; '6'='G'; '9'='J' }[$Matches[1]] } else { $null }
+    $b = & $cfg.Bloque $rel
     if (-not $b) { continue }
     $base = $rel -replace '\.md$', ''
     $h1 = Select-String -Path $d.FullName -Pattern '^#\s+(.+)$' -List -Encoding utf8
@@ -168,27 +212,33 @@ function Nuevo-Indice([string]$lang) {
     $grupos[$b].Add("| $num | [$tit]($base.html) | [HTML]($base.html) · [PDF](../../pdf/$lang/$base.pdf) |")
     if ($b -eq 'H') { $nPlant++ } else { $nDocs++ }
   }
-  $herrDir = Join-Path $root 'herramientas'
-  if (Test-Path $herrDir) {
-    foreach ($h in (Get-ChildItem $herrDir -Directory | Sort-Object Name)) {
+  if ($grupos.Contains('I') -and (Test-Path $herrRaiz)) {
+    foreach ($h in (Get-ChildItem $herrRaiz -Directory | Sort-Object Name)) {
       $app = Get-ChildItem $h.FullName -File -Filter '*.html' | Where-Object Name -notlike '_*' | Select-Object -First 1
       if (-not $app) { continue }
       $readme = Join-Path $h.FullName $(if ($en -and (Test-Path (Join-Path $h.FullName 'README_en.md'))) { 'README_en.md' } else { 'README.md' })
       $tit = $h.Name
       if (Test-Path $readme) { $l = Select-String -Path $readme -Pattern '^#\s+(.+)$' -List -Encoding utf8; if ($l) { $tit = $l.Matches[0].Groups[1].Value.Trim() } }
-      $grupos['I'].Add("| $(($h.Name -split '_')[0]) | [$tit](../../herramientas/$($h.Name)/$($app.Name)) | HTML |")
+      $hrefApp = [IO.Path]::GetRelativePath((Join-Path $root "html\$lang"), $app.FullName).Replace('\', '/')
+      $grupos['I'].Add("| $(($h.Name -split '_')[0]) | [$tit]($hrefApp) | HTML |")
       $nHerr++
     }
   }
+  $ti = $cfg[$lang]
+  $cifrasIndice = if ($cfg.marca -eq 'SEVEN-G') {
+    if ($en) { "$nDocs | documents ; $nPlant | templates ; $nHerr | tools ; 2 | languages" } else { "$nDocs | documentos ; $nPlant | plantillas ; $nHerr | herramientas ; 2 | idiomas" }
+  } else {
+    if ($en) { "$nDocs | documents ; 9 | spheres ; 3 | ambition levels ; 2 | languages" } else { "$nDocs | documentos ; 9 | esferas ; 3 | niveles de ambición ; 2 | idiomas" }
+  }
   $sb = [Text.StringBuilder]::new()
   if ($en) {
-    [void]$sb.AppendLine("# SEVEN-G Library`n`n**Documents, templates and tools of the framework for value, governance and transformation with AI**`n")
+    [void]$sb.AppendLine("# $($ti.Indice)`n`n**$($ti.IndiceSub)**`n")
     [void]$sb.AppendLine("| | |`n|---|---|`n| Document | Library index |`n| Date | $(Get-Date -Format 'dd-MM-yyyy') |`n| Author | Fernando García · SEACHAD |`n| Status | Living project. The index is regenerated with every build. |`n")
-    [void]$sb.AppendLine("<!-- cifras: $nDocs | documents ; $nPlant | templates ; $nHerr | tools ; 2 | languages -->`n`n---`n")
+    [void]$sb.AppendLine("<!-- cifras: $cifrasIndice -->`n`n---`n")
   } else {
-    [void]$sb.AppendLine("# Biblioteca SEVEN-G`n`n**Documentos, plantillas y herramientas del marco de valor, gobierno y transformación con IA**`n")
+    [void]$sb.AppendLine("# $($ti.Indice)`n`n**$($ti.IndiceSub)**`n")
     [void]$sb.AppendLine("| | |`n|---|---|`n| Documento | Índice de la biblioteca |`n| Fecha | $(Get-Date -Format 'dd-MM-yyyy') |`n| Autor | Fernando García · SEACHAD |`n| Estado | Proyecto vivo. El índice se regenera en cada generación. |`n")
-    [void]$sb.AppendLine("<!-- cifras: $nDocs | documentos ; $nPlant | plantillas ; $nHerr | herramientas ; 2 | idiomas -->`n`n---`n")
+    [void]$sb.AppendLine("<!-- cifras: $cifrasIndice -->`n`n---`n")
   }
   $i = 0
   foreach ($k in $grupos.Keys) {
@@ -200,7 +250,7 @@ function Nuevo-Indice([string]$lang) {
     foreach ($fila in $grupos[$k]) { [void]$sb.AppendLine($fila) }
     [void]$sb.AppendLine()
   }
-  $tmp = Join-Path $env:TEMP "seveng-indice\$lang\index.md"
+  $tmp = Join-Path $env:TEMP "seveng-indice\$($cfg.marca)\$lang\index.md"
   New-Item -ItemType Directory -Force (Split-Path $tmp) | Out-Null
   Set-Content -Path $tmp -Value $sb.ToString() -Encoding utf8
   $tmp
@@ -217,12 +267,11 @@ function ObtenerMapaReferencias([string]$lang) {
     $map[$clave] = if ($rel -like 'plantillas/*') { "plantillas/$base.html" } else { "$base.html" }
   }
 
-  $herrDir = Join-Path $root 'herramientas'
-  if (Test-Path $herrDir) {
-    foreach ($h in (Get-ChildItem $herrDir -Directory | Sort-Object Name)) {
+  if (Test-Path $herrRaiz) {
+    foreach ($h in (Get-ChildItem $herrRaiz -Directory | Sort-Object Name)) {
       $app = Get-ChildItem $h.FullName -File -Filter '*.html' | Where-Object Name -notlike '_*' | Select-Object -First 1
       if (-not $app) { continue }
-      $map[$h.Name.Split('_')[0]] = "../../herramientas/$($h.Name)/$($app.Name)"
+      $map[$h.Name.Split('_')[0]] = [IO.Path]::GetRelativePath((Join-Path $root "html\$lang"), $app.FullName).Replace('\', '/')
     }
   }
 
@@ -342,12 +391,19 @@ function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
   })
 }
 
+foreach ($metodologia in $Metodologias) {
+$cfg           = $configuracion[$metodologia]
+$root          = Join-Path $repo $metodologia
+$bloquesIndice = $cfg.bloques
+Write-Host "== $metodologia =="
+
 foreach ($lang in $Idiomas) {
-  $t       = $textos[$lang]
+  $t       = $textos[$lang].Clone()
+  foreach ($k in @('T_TT_INICIO', 'T_METODOLOGIA')) { $t[$k] = $cfg[$lang][$k] }
   $mdsDir  = Join-Path $root "mds\$lang"
   $htmlDir = Join-Path $root "html\$lang"
   $pdfDir  = Join-Path $root "pdf\$lang"
-  $compDir = Join-Path $PSScriptRoot "componentes\$lang"
+  $compDirs = @((Join-Path $root "build\componentes\$lang"), (Join-Path $PSScriptRoot "componentes\$lang")) | Select-Object -Unique
   if (-not (Test-Path $mdsDir)) { Write-Warning "No existe $mdsDir"; continue }
 
   $files = @(Get-ChildItem $mdsDir -Recurse -File -Filter $Filter | Where-Object Extension -eq '.md')
@@ -379,7 +435,6 @@ foreach ($lang in $Idiomas) {
 
   # Herramientas disponibles (carpeta herramientas/<código>_<nombre>/ con un HTML) y módulos que viven dentro de otra
   $herramientas = [ordered]@{}
-  $herrRaiz = Join-Path $root 'herramientas'
   if (Test-Path $herrRaiz) {
     foreach ($h in (Get-ChildItem $herrRaiz -Directory | Sort-Object Name)) {
       $app = Get-ChildItem $h.FullName -File -Filter '*.html' | Where-Object Name -notlike '_*' | Select-Object -First 1
@@ -444,7 +499,7 @@ foreach ($lang in $Idiomas) {
     }
     $portada = @"
 <header class="portada">
-  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">$(Enc $docCorto)$(if ($fecha) { ' · ' + (Enc $fecha) })</div></div>
+  <div class="cabecera"><div class="marca"><i></i>$($cfg.marca)</div><div class="cabecera-dato">$(Enc $docCorto)$(if ($fecha) { ' · ' + (Enc $fecha) })</div></div>
   <div class="portada-cuerpo">
     <p class="antetitulo">$(Enc $docRef)</p>
     <h1>$(Enc $titulo)</h1>
@@ -479,8 +534,8 @@ foreach ($lang in $Idiomas) {
     $body = [regex]::Replace($body, '<blockquote>(\s*<p><strong>(?:Aviso legal|Legal notice))', '<blockquote class="aviso-legal">$1')
     $body = [regex]::Replace($body, '<!--\s*figura:\s*([\w-]+)\s*-->', {
       param($c)
-      $ruta = Join-Path $compDir "$($c.Groups[1].Value).html"
-      if (Test-Path $ruta) { Get-Content $ruta -Raw -Encoding utf8 } else { Write-Warning "Componente no encontrado: $ruta"; $c.Value }
+      $ruta = $compDirs | ForEach-Object { Join-Path $_ "$($c.Groups[1].Value).html" } | Where-Object { Test-Path $_ } | Select-Object -First 1
+      if ($ruta) { (Get-Content $ruta -Raw -Encoding utf8).Replace('SEVEN-G · SEACHAD', "$($cfg.marca) · SEACHAD") } else { Write-Warning "Componente no encontrado: $($c.Groups[1].Value) en $($compDirs -join ' ; ')"; $c.Value }
     })
     $script:hayMermaid = $false
     $body = [regex]::Replace($body, '(?s)(?:<!--\s*grafico:\s*(.*?)-->\s*)?(?:<pre><code class="language-mermaid">(.*?)</code></pre>|<pre class="mermaid">(.*?)</pre>)', {
@@ -490,7 +545,7 @@ foreach ($lang in $Idiomas) {
         $partes = $c.Groups[1].Value -split '\|', 2
         $cab = "<div class=""g-titulo"">$(Enc $partes[0].Trim())</div>"
         if ($partes.Count -gt 1 -and $partes[1].Trim()) { $cab += "<div class=""g-sub"">$(Enc $partes[1].Trim())</div>" }
-        $fuente = "<div class=""g-fuente"">$(if ($lang -eq 'en') { 'Source' } else { 'Fuente' }): SEVEN-G · SEACHAD</div>"
+        $fuente = "<div class=""g-fuente"">$(if ($lang -eq 'en') { 'Source' } else { 'Fuente' }): $($cfg.marca) · SEACHAD</div>"
       }
       $codigo = if ($c.Groups[2].Success) { $c.Groups[2].Value } else { $c.Groups[3].Value }
       "<figure class=""grafico"">$cab<div class=""g-lienzo""><pre class=""mermaid"">$codigo</pre></div>$fuente</figure>"
@@ -519,7 +574,7 @@ foreach ($lang in $Idiomas) {
       }
     }) -join ''
 
-    $homeHtml = Join-Path $htmlDir '00_SEVEN-G_Que_es_y_para_que_sirve.html'
+    $homeHtml = Join-Path $htmlDir "$($cfg.inicio).html"
     $homeHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $homeHtml).Replace('\\', '/').Replace('\', '/')
 
     # ---- Zona de descargas y herramientas (visible bajo la portada y en el panel) ----
@@ -534,7 +589,8 @@ foreach ($lang in $Idiomas) {
     }
     if ($otroHtmlHref) { $enlacesDoc.Add("<a class=""dz-item"" href=""$otroHtmlHref"" hreflang=""$otroLang""><span class=""dz-tipo html"">HTML</span><b>$otroLabel</b></a>") }
 
-    $codigosHerr = if ($esIndice -or $rel -like '03_*') { @($herramientas.Keys) } else {
+    $todasHerr = $cfg.todasHerramientas -and ($esIndice -or $rel -like $cfg.todasHerramientas)
+    $codigosHerr = if ($todasHerr) { @($herramientas.Keys) } else {
       @([regex]::Matches($md, '(?<![\w/])T\d{2}(?!\d)') | ForEach-Object { $c = $_.Value; if ($aliasHerr.ContainsKey($c)) { $aliasHerr[$c] } else { $c } } | Select-Object -Unique)
     }
     $enlacesHerr = [Collections.Generic.List[string]]::new()
@@ -569,8 +625,8 @@ foreach ($lang in $Idiomas) {
     )
     $navItemsJson = $navItems | ConvertTo-Json -Depth 4 -Compress
 
-    $pie = $(if ($titulo -match 'SEVEN-G') { $titulo } else { "SEVEN-G · $titulo" }).Replace('"', "'")
-    $html = $template
+    $pie = $(if ($titulo -match [regex]::Escape($cfg.marca)) { $titulo } else { "$($cfg.marca) · $titulo" }).Replace('"', "'")
+    $html = $template.Replace('{{MARCA}}', $cfg.marca)
     foreach ($k in $t.Keys) { if ($k -like 'T_*') { $html = $html.Replace("{{$k}}", (Enc $t[$k])) } }
     $html = $html.Replace('{{LANG}}', $lang).
                   Replace('{{TITLE}}', (Enc $titulo)).
@@ -599,4 +655,5 @@ foreach ($lang in $Idiomas) {
       if (Test-Path $pdfOut) { Write-Host "PDF   [$lang] $rel" } else { Write-Warning "No se generó $pdfOut" }
     }
   }
+}
 }

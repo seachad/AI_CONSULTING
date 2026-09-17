@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Especificación común para redactar la biblioteca"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -707,7 +718,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <p>Criterio Enterprise &quot;agentes con capacidad de actuar&quot; (01 §9.2) = nivel <strong>A2 o A3</strong> cuando las acciones tienen efecto sobre terceros, dinero, datos personales o sistemas de producción.</p>
 <h3 id="5-5-incidentes-documento-37-lo-usan-52-35-60-p26-p27-t08">5.5 Incidentes (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>; lo usan 52, 35, 60, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, T08)</h3>
-<p>Severidad: <strong>S1 Crítica · S2 Alta · S3 Media · S4 Baja</strong>. S1 incluye cualquier posible &quot;incidente grave&quot; según el Reglamento Europeo de IA y los incidentes graves de DORA o NIS2 cuando apliquen. Las no conformidades mantienen su escala propia: <strong>menor · mayor · crítica</strong> (01 §12).</p>
+<p>Severidad: <strong>S1 Crítica · S2 Alta · S3 Media · S4 Baja</strong>. S1 incluye cualquier posible &quot;incidente grave&quot; según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> y los incidentes graves de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> cuando apliquen. Las no conformidades mantienen su escala propia: <strong>menor · mayor · crítica</strong> (01 §12).</p>
 <h3 id="5-6-terceros-documento-36-lo-usan-33-34-p14-t09">5.6 Terceros (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>; lo usan 33, 34, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, T09)</h3>
 <p>Niveles de exigencia: <strong>N1 Estándar · N2 Reforzado · N3 Crítico</strong>, según criticidad del servicio, datos tratados, autonomía y sustituibilidad.</p>
 <h3 id="5-7-valor-y-costes-documentos-40-43-lo-usan-13-14-60-p08-p09-p28-t11-t13">5.7 Valor y costes (documentos 40–43; lo usan 13, 14, 60, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, T11–T13)</h3>
@@ -1061,7 +1072,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 ## N. Control de versiones
 </code></pre>
 <p>Versión Lite: indicar en cada bloque con <strong>(Enterprise)</strong> los campos que Lite puede omitir.</p>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

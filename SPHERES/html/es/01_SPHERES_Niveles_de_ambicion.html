@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niveles de ambici&#243;n</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+@page { @bottom-left { content: "SPHERES · Niveles de ambición"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SPHERES</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SPHERES_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SPHERES y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SPHERES y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/01_SPHERES_Niveles_de_ambicion.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/01_SPHERES_Niveles_de_ambicion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SPHERES</div><div class="cabecera-dato">Documento 01 · 17-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 01 &#183; Niveles de ambici&#243;n</p>
+    <h1>Niveles de ambici&#243;n</h1>
+    <p class="entradilla">Optimizar, Aumentar y Transformar: tres tipos de apuesta con distinto coste, riesgo, plazo y resistencia, y c&#243;mo distinguirlos con evidencia</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1</span><span>17-09-2026</span><span>En construcci&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>3</b><span>niveles de ambici&#243;n</span></div><div class="cifra"><b>5</b><span>preguntas para clasificar</span></div><div class="cifra"><b>1</b><span>nivel por iniciativa</span></div><div class="cifra"><b>3</b><span>criterios de avance distintos</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/01_SPHERES_Niveles_de_ambicion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto"><span>01</span>Objeto</a></li><li><a href="#que-es-un-nivel-de-ambicion"><span>02</span>Qué es un nivel de ambición</a></li><li><a href="#optimizar"><span>03</span>Optimizar</a></li><li><a href="#aumentar"><span>04</span>Aumentar</a></li><li><a href="#transformar"><span>05</span>Transformar</a></li><li><a href="#comparacion-de-los-tres-niveles"><span>06</span>Comparación de los tres niveles</a></li><li><a href="#no-es-una-escalera"><span>07</span>No es una escalera</a></li><li><a href="#como-clasificar-una-iniciativa"><span>08</span>Cómo clasificar una iniciativa</a></li><li><a href="#casos-dudosos"><span>09</span>Casos dudosos</a></li><li><a href="#la-ambicion-de-una-esfera-y-el-equilibrio-de-la-cartera"><span>10</span>La ambición de una esfera y el equilibrio de la cartera</a></li><li><a href="#errores-frecuentes"><span>11</span>Errores frecuentes</a></li><li><a href="#documentos-relacionados"><span>12</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SPHERES es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. <strong>Cada organización que use SPHERES es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="objeto"><span class="antetitulo">01</span>Objeto</h2>
+<p>Este documento explica los <strong>tres niveles de ambición</strong> de SPHERES: qué significa cada uno, qué cambia en la organización, dónde está su valor, qué riesgos tiene, cómo se decide y cómo se reconoce con evidencia. También explica cómo clasificar una iniciativa y cuáles son los errores más frecuentes.</p>
+<p>Los niveles se aplican a las esferas <strong>01 a 07</strong>. Las esferas 08 y 09 se evalúan con grados propios (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">documento 04</a>).</p>
+<hr />
+<h2 id="que-es-un-nivel-de-ambicion"><span class="antetitulo">02</span>Qué es un nivel de ambición</h2>
+<p>Un nivel de ambición describe <strong>lo que una iniciativa de IA cambia en el negocio</strong>. No describe la tecnología que usa, lo que cuesta ni lo novedosa que parece.</p>
+<figure class="grafico">
+  <div class="g-titulo">Tres niveles de ambición</div>
+  <div class="g-sub">Tres tipos de apuesta, no una escalera: la inversión, la incertidumbre y la resistencia organizativa crecen de izquierda a derecha</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 900 430" role="img" aria-label="Comparación de los niveles de ambición Optimizar, Aumentar y Transformar por valor, inversión, incertidumbre, resistencia organizativa y quién decide">
+  <g>
+    <rect x="170" y="0" width="236" height="120" fill="#0f5499"/>
+    <rect x="414" y="0" width="236" height="120" fill="#0d7680"/>
+    <rect x="658" y="0" width="236" height="120" fill="#593380"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="288" y="40" class="sv-blanco sv-serif" font-size="23" font-weight="700">Optimizar</text>
+    <text x="288" y="70" class="sv-blanco" font-size="13.5">Hacer lo mismo más rápido,</text>
+    <text x="288" y="90" class="sv-blanco" font-size="13.5">más barato o con menos errores</text>
+    <text x="532" y="40" class="sv-blanco sv-serif" font-size="23" font-weight="700">Aumentar</text>
+    <text x="532" y="70" class="sv-blanco" font-size="13.5">Las personas hacen</text>
+    <text x="532" y="90" class="sv-blanco" font-size="13.5">lo que antes no podían</text>
+    <text x="776" y="40" class="sv-blanco sv-serif" font-size="23" font-weight="700">Transformar</text>
+    <text x="776" y="70" class="sv-blanco" font-size="13.5">Cambia qué se ofrece, cómo se</text>
+    <text x="776" y="90" class="sv-blanco" font-size="13.5">compite o cómo se organiza</text>
+  </g>
+
+  <rect x="0" y="132" width="894" height="54" class="sv-panel"/>
+  <rect x="0" y="248" width="894" height="54" class="sv-panel"/>
+  <rect x="0" y="364" width="894" height="54" class="sv-panel"/>
+
+  <g font-size="14.5" font-weight="700">
+    <text x="12" y="164" class="sv-t">Valor principal</text>
+    <text x="12" y="222" class="sv-t">Inversión</text>
+    <text x="12" y="280" class="sv-t">Incertidumbre</text>
+    <text x="12" y="330" class="sv-t">Resistencia</text>
+    <text x="12" y="348" class="sv-t">organizativa</text>
+    <text x="12" y="396" class="sv-t">Quién decide</text>
+  </g>
+
+  <g text-anchor="middle" font-size="13.5">
+    <text x="288" y="164" class="sv-t">Coste evitado</text>
+    <text x="532" y="164" class="sv-t">Coste y rendimiento</text>
+    <text x="776" y="156" class="sv-t">Nuevos ingresos y</text>
+    <text x="776" y="174" class="sv-t">modelo operativo</text>
+    <text x="288" y="396" class="sv-t">Dirección del área</text>
+    <text x="532" y="388" class="sv-t">Dirección, con el</text>
+    <text x="532" y="406" class="sv-t">comité de IA</text>
+    <text x="776" y="388" class="sv-t">Consejo o</text>
+    <text x="776" y="406" class="sv-t">alta dirección</text>
+  </g>
+
+  <!-- Inversión (y=217), incertidumbre (y=275), resistencia (y=333) -->
+  <g stroke-width="1.5">
+    <circle cx="262" cy="217" r="9" fill="#0f5499"/><circle cx="288" cy="217" r="9" class="sv-regla"/><circle cx="314" cy="217" r="9" class="sv-regla"/>
+    <circle cx="506" cy="217" r="9" fill="#0d7680"/><circle cx="532" cy="217" r="9" fill="#0d7680"/><circle cx="558" cy="217" r="9" class="sv-regla"/>
+    <circle cx="750" cy="217" r="9" fill="#593380"/><circle cx="776" cy="217" r="9" fill="#593380"/><circle cx="802" cy="217" r="9" fill="#593380"/>
+
+    <circle cx="262" cy="275" r="9" fill="#0f5499"/><circle cx="288" cy="275" r="9" class="sv-regla"/><circle cx="314" cy="275" r="9" class="sv-regla"/>
+    <circle cx="506" cy="275" r="9" fill="#0d7680"/><circle cx="532" cy="275" r="9" fill="#0d7680"/><circle cx="558" cy="275" r="9" class="sv-regla"/>
+    <circle cx="750" cy="275" r="9" fill="#593380"/><circle cx="776" cy="275" r="9" fill="#593380"/><circle cx="802" cy="275" r="9" fill="#593380"/>
+
+    <circle cx="262" cy="333" r="9" fill="#0f5499"/><circle cx="288" cy="333" r="9" class="sv-regla"/><circle cx="314" cy="333" r="9" class="sv-regla"/>
+    <circle cx="506" cy="333" r="9" fill="#0d7680"/><circle cx="532" cy="333" r="9" fill="#0d7680"/><circle cx="558" cy="333" r="9" class="sv-regla"/>
+    <circle cx="750" cy="333" r="9" fill="#593380"/><circle cx="776" cy="333" r="9" fill="#593380"/><circle cx="802" cy="333" r="9" fill="#593380"/>
+  </g>
+</svg>
+  </div>
+  <div class="g-fuente">Fuente: SPHERES · SEACHAD</div>
+</figure>
+
+<p>La misma tecnología puede servir a niveles distintos. Un agente de IA generativa que redacta borradores de respuesta para el equipo de atención es <strong>Optimizar</strong>: el servicio y el puesto son los mismos. Un modelo estadístico clásico que permite lanzar un seguro de uso por kilómetro es <strong>Transformar</strong>: el cliente recibe una oferta que antes no existía.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Si el nivel se asignara por la tecnología, cualquier programa con IA generativa se presentaría como transformación y la cartera parecería mucho más ambiciosa de lo que es. Definir el nivel por el efecto en el negocio es lo que permite al consejo saber si la compañía se transforma o solo se eficienta.</p>
+</blockquote>
+<hr />
+<h2 id="optimizar"><span class="antetitulo">03</span>Optimizar</h2>
+<p><strong>Definición.</strong> Hacer lo mismo que ya se hace, más rápido, más barato o con menos errores. No cambia qué se hace ni quién lo hace.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qué cambia</strong></td>
+<td>La eficiencia de una tarea o de un proceso.</td>
+</tr>
+<tr>
+<td><strong>Dónde está el valor</strong></td>
+<td>Principalmente en coste evitado, tiempo de ciclo y reducción de errores.</td>
+</tr>
+<tr>
+<td><strong>Incertidumbre</strong></td>
+<td>Baja: la situación de partida es conocida y el efecto se puede comparar.</td>
+</tr>
+<tr>
+<td><strong>Resistencia organizativa</strong></td>
+<td>Baja o localizada en los equipos afectados.</td>
+</tr>
+<tr>
+<td><strong>Cómo se decide</strong></td>
+<td>La dirección del área, dentro del marco de cartera aprobado.</td>
+</tr>
+<tr>
+<td><strong>Criterio para continuar</strong></td>
+<td>Beneficio neto anual positivo en el horizonte fijado por la dirección.</td>
+</tr>
+<tr>
+<td><strong>Si se retira</strong></td>
+<td>La compañía vuelve a hacer lo mismo con el coste y el tiempo anteriores.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ejemplos ilustrativos</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Esfera</th>
+<th>Ejemplo</th>
+<th>Por qué es Optimizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 · Cliente</td>
+<td>Clasificación y enrutamiento automático de las consultas que llegan por correo.</td>
+<td>El cliente recibe el mismo servicio; se reduce el tiempo de asignación.</td>
+</tr>
+<tr>
+<td>02 · Producto y servicio</td>
+<td>Pruebas automatizadas que detectan defectos antes del lanzamiento.</td>
+<td>El producto es el mismo; se produce con menos coste y menos fallos.</td>
+</tr>
+<tr>
+<td>03 · Personas</td>
+<td>Generación automática de informes periódicos que antes se hacían a mano.</td>
+<td>El puesto es el mismo; desaparece trabajo de bajo valor.</td>
+</tr>
+<tr>
+<td>04 · Operaciones</td>
+<td>Lectura automática de facturas y conciliación con pedidos.</td>
+<td>El proceso es el mismo; baja el coste unitario y la tasa de error.</td>
+</tr>
+<tr>
+<td>05 · Datos</td>
+<td>Detección y eliminación de registros duplicados de clientes.</td>
+<td>Los datos existentes se gestionan mejor con menos esfuerzo.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Riesgos propios de Optimizar</strong></p>
+<ul>
+<li><strong>Contar horas liberadas como ahorro.</strong> Si el tiempo liberado no se convierte en menor coste real o en una reasignación explícita, el ahorro no existe en la cuenta de resultados.</li>
+<li><strong>Desplazar el cuello de botella.</strong> Automatizar un paso aislado acelera la cola del paso siguiente sin mejorar el proceso completo.</li>
+<li><strong>Acumular dependencias invisibles.</strong> Muchas automatizaciones pequeñas acaban soportando procesos críticos sin que nadie lo haya decidido.</li>
+</ul>
+<blockquote>
+<p><strong>Por qué importa.</strong> Optimizar es la puerta de entrada natural a la IA y suele financiar lo demás. Pero una cartera hecha solo de Optimizar produce una compañía más eficiente con el mismo modelo de negocio, expuesta a que un competidor use la IA para cambiar las reglas del mercado.</p>
+</blockquote>
+<hr />
+<h2 id="aumentar"><span class="antetitulo">04</span>Aumentar</h2>
+<p><strong>Definición.</strong> Las personas hacen lo que antes no podían. El trabajo humano no desaparece: se amplía y el rol cambia.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qué cambia</strong></td>
+<td>El rol, las capacidades y a veces el diseño de un proceso completo. No cambia el modelo de negocio.</td>
+</tr>
+<tr>
+<td><strong>Dónde está el valor</strong></td>
+<td>Combinado: coste y rendimiento (productividad, calidad, conversión, calidad de las decisiones).</td>
+</tr>
+<tr>
+<td><strong>Incertidumbre</strong></td>
+<td>Media: el valor depende de que las personas adopten de verdad la nueva forma de trabajar.</td>
+</tr>
+<tr>
+<td><strong>Resistencia organizativa</strong></td>
+<td>Media: exige cambiar hábitos, formación y a veces la descripción del puesto.</td>
+</tr>
+<tr>
+<td><strong>Cómo se decide</strong></td>
+<td>La dirección, con visibilidad del comité de IA.</td>
+</tr>
+<tr>
+<td><strong>Criterio para continuar</strong></td>
+<td>Adopción real y mejora de rendimiento medida frente a la situación de partida.</td>
+</tr>
+<tr>
+<td><strong>Si se retira</strong></td>
+<td>Las personas pierden una capacidad que ya forma parte de su trabajo.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ejemplos ilustrativos</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Esfera</th>
+<th>Ejemplo</th>
+<th>Por qué es Aumentar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 · Cliente</td>
+<td>Los gestores comerciales reciben, antes de cada visita, un análisis de necesidades probables y de riesgo de abandono de cada cliente.</td>
+<td>Hacen una conversación comercial que antes no podían preparar.</td>
+</tr>
+<tr>
+<td>03 · Personas</td>
+<td>Un copiloto permite a los analistas de riesgos revisar operaciones complejas que antes derivaban a especialistas.</td>
+<td>Cambia el contenido del puesto; el negocio es el mismo.</td>
+</tr>
+<tr>
+<td>04 · Operaciones</td>
+<td>Los planificadores simulan escenarios de demanda y de suministro antes de decidir.</td>
+<td>Deciden con una capacidad de análisis que no tenían.</td>
+</tr>
+<tr>
+<td>06 · Conocimiento</td>
+<td>Un asistente jurídico interno da a los equipos de negocio acceso a criterios que solo conocían los expertos.</td>
+<td>Las personas acceden a conocimiento experto que antes no tenían.</td>
+</tr>
+<tr>
+<td>07 · Decisión</td>
+<td>El sistema presenta opciones con su riesgo y su probabilidad, y una persona elige y deja registro.</td>
+<td>Cambia cómo se decide, sin delegar la decisión.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Riesgos propios de Aumentar</strong></p>
+<ul>
+<li><strong>Medir licencias en lugar de uso.</strong> Repartir un copiloto a toda la plantilla no es aumentar a nadie si no se usa o se usa para lo mismo de antes.</li>
+<li><strong>Olvidar la formación y la gestión del cambio.</strong> Sin ellas, la adopción se estanca y la inversión queda como coste.</li>
+<li><strong>No actualizar el rol.</strong> Si el puesto sigue descrito, evaluado y retribuido como antes, las personas vuelven a la forma de trabajar anterior.</li>
+</ul>
+<blockquote>
+<p><strong>Por qué importa.</strong> Aumentar es el nivel en el que más valor se pierde en silencio. La tecnología funciona, pero el valor depende de las personas, y ese valor no aparece si no se mide la adopción real ni se rediseña el trabajo. Es también el nivel que mejor protege la cultura, porque trata a las personas como beneficiarias y no solo como coste.</p>
+</blockquote>
+<hr />
+<h2 id="transformar"><span class="antetitulo">05</span>Transformar</h2>
+<p><strong>Definición.</strong> Cambia de forma fundamental qué ofrece la compañía, cómo compite o cómo se organiza. Tiene el máximo potencial y el máximo riesgo.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qué cambia</strong></td>
+<td>La propuesta de valor, el modelo de ingresos o el modelo operativo.</td>
+</tr>
+<tr>
+<td><strong>Dónde está el valor</strong></td>
+<td>Principalmente en nuevos ingresos, nuevos mercados y cambios del modelo operativo.</td>
+</tr>
+<tr>
+<td><strong>Incertidumbre</strong></td>
+<td>Alta: depende del mercado, del cliente o de la propia organización.</td>
+</tr>
+<tr>
+<td><strong>Resistencia organizativa</strong></td>
+<td>Alta: afecta a estructuras, incentivos y poder de decisión.</td>
+</tr>
+<tr>
+<td><strong>Cómo se decide</strong></td>
+<td>Decisión explícita del consejo o de la alta dirección.</td>
+</tr>
+<tr>
+<td><strong>Criterio para continuar</strong></td>
+<td>Hitos de aprendizaje, límite de inversión por etapa y evidencia de mercado.</td>
+</tr>
+<tr>
+<td><strong>Si se retira</strong></td>
+<td>Se pierde una oferta, un canal o una forma de organizarse.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ejemplos ilustrativos</strong></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Esfera</th>
+<th>Ejemplo</th>
+<th>Por qué es Transformar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 · Cliente</td>
+<td>Un agente de IA se convierte en el punto de contacto principal con el cliente, con derivación a personas en los casos definidos.</td>
+<td>Cambia cómo se relaciona la compañía con sus clientes.</td>
+</tr>
+<tr>
+<td>02 · Producto y servicio</td>
+<td>Un fabricante de maquinaria deja de vender solo equipos y vende horas de funcionamiento garantizadas gracias al mantenimiento predictivo.</td>
+<td>Cambia qué se vende y cómo se cobra.</td>
+</tr>
+<tr>
+<td>03 · Personas</td>
+<td>La función de planificación se reorganiza: un sistema asigna recursos con supervisión y los planificadores gestionan excepciones.</td>
+<td>Cambian la estructura y el reparto del trabajo en una unidad completa.</td>
+</tr>
+<tr>
+<td>05 · Datos</td>
+<td>Los datos agregados y anonimizados de la operación se ofrecen como servicio de información a terceros.</td>
+<td>Los datos generan una línea de ingresos que no existía.</td>
+</tr>
+<tr>
+<td>07 · Decisión</td>
+<td>La función de precios se reorganiza: los precios de todo el catálogo se fijan de forma autónoma dentro de límites aprobados y el equipo de precios pasa a diseñar y supervisar las reglas.</td>
+<td>Cambian el proceso y los roles de una unidad completa: quién decide y cómo se organiza la decisión.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Riesgos propios de Transformar</strong></p>
+<ul>
+<li><strong>Llamar transformación a una automatización con buen discurso.</strong> Es el error más caro: se aprueban presupuestos y plazos de transformación para algo que no cambia el negocio.</li>
+<li><strong>Exigir retorno demasiado pronto.</strong> Medir una apuesta de Transformar con el plazo de retorno de una automatización la para antes de que pueda aportar evidencia de mercado.</li>
+<li><strong>Subestimar las habilitadoras.</strong> Transformar Cliente o Producto sin datos, conocimiento y reglas de decisión suficientes es una señal de riesgo, no de audacia.</li>
+<li><strong>Ignorar el efecto sobre las personas.</strong> Las transformaciones cambian roles y estructuras; decidirlo sin una posición explícita de la dirección genera rechazo y riesgo reputacional.</li>
+</ul>
+<blockquote>
+<p><strong>Por qué importa.</strong> Transformar es el único nivel que cambia la posición competitiva de la compañía. Por eso debe decidirlo quien responde de la estrategia, con criterios de avance por etapas y con la aceptación explícita de que algunas apuestas fracasarán. Sin ese tratamiento diferenciado, las apuestas de Transformar o no se aprueban nunca o se aprueban sin control.</p>
+</blockquote>
+<hr />
+<h2 id="comparacion-de-los-tres-niveles"><span class="antetitulo">06</span>Comparación de los tres niveles</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Optimizar</th>
+<th>Aumentar</th>
+<th>Transformar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pregunta clave</strong></td>
+<td>¿Lo hacemos mejor?</td>
+<td>¿Podemos hacer más?</td>
+<td>¿Hacemos algo distinto?</td>
+</tr>
+<tr>
+<td><strong>Qué cambia</strong></td>
+<td>Eficiencia de una tarea o proceso</td>
+<td>Rol y capacidades de las personas</td>
+<td>Propuesta de valor, ingresos u organización</td>
+</tr>
+<tr>
+<td><strong>Valor</strong></td>
+<td>Coste evitado</td>
+<td>Coste y rendimiento</td>
+<td>Nuevos ingresos y modelo operativo</td>
+</tr>
+<tr>
+<td><strong>Inversión relativa</strong></td>
+<td>Menor</td>
+<td>Media</td>
+<td>Mayor y por etapas</td>
+</tr>
+<tr>
+<td><strong>Incertidumbre</strong></td>
+<td>Baja</td>
+<td>Media</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Resistencia organizativa</strong></td>
+<td>Baja o localizada</td>
+<td>Media</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td><strong>Plazo hasta evidencia</strong></td>
+<td>Corto</td>
+<td>Medio: depende de la adopción</td>
+<td>Largo: depende del mercado</td>
+</tr>
+<tr>
+<td><strong>Quién decide</strong></td>
+<td>Dirección del área</td>
+<td>Dirección, con el comité de IA</td>
+<td>Consejo o alta dirección</td>
+</tr>
+<tr>
+<td><strong>Qué mide el avance</strong></td>
+<td>Beneficio neto</td>
+<td>Adopción y rendimiento</td>
+<td>Hitos de aprendizaje y evidencia de mercado</td>
+</tr>
+<tr>
+<td><strong>Error frecuente</strong></td>
+<td>Contar capacidad liberada como ahorro</td>
+<td>Medir licencias en lugar de uso</td>
+<td>Llamar transformación a una automatización</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="no-es-una-escalera"><span class="antetitulo">07</span>No es una escalera</h2>
+<p>Los niveles de ambición <strong>no describen la madurez</strong> de la compañía ni un camino obligatorio.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Idea equivocada</th>
+<th>Realidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;Primero hay que optimizar y después transformar.&quot;</td>
+<td>Una compañía puede empezar por una apuesta de Transformar en Producto mientras optimiza Operaciones. Lo que importa es que tenga capacidad habilitadora suficiente.</td>
+</tr>
+<tr>
+<td>&quot;Transformar es mejor que Optimizar.&quot;</td>
+<td>Son apuestas distintas. En una esfera no prioritaria, Optimizar puede ser exactamente la ambición correcta.</td>
+</tr>
+<tr>
+<td>&quot;Una compañía madura tiene todo en Transformar.&quot;</td>
+<td>Una cartera sana combina los tres niveles según la estrategia. La madurez se mide con otros criterios (documento 11 de SEVEN-G).</td>
+</tr>
+<tr>
+<td>&quot;Si el proyecto es grande, es Transformar.&quot;</td>
+<td>El importe de la inversión no determina el nivel. Una gran automatización sigue siendo Optimizar.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Por qué importa.</strong> Si los niveles se entendieran como una escalera, cada área intentaría subir de nivel para parecer más avanzada y la clasificación perdería todo valor como información para el consejo. Tratar los niveles como tipos de apuesta permite decidir la combinación adecuada para cada esfera.</p>
+</blockquote>
+<hr />
+<h2 id="como-clasificar-una-iniciativa"><span class="antetitulo">08</span>Cómo clasificar una iniciativa</h2>
+<p>La clasificación se hace con <strong>cinco preguntas</strong> que se responden sí o no, siempre con evidencia. Una respuesta afirmativa sin evidencia cuenta como no.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pregunta</th>
+<th>Apunta a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>¿Cambia la propuesta de valor que recibe el cliente o el usuario final?</td>
+<td>Transformar</td>
+</tr>
+<tr>
+<td>2</td>
+<td>¿Se rediseña el proceso de extremo a extremo, y no solo una tarea dentro del proceso?</td>
+<td>Aumentar o Transformar</td>
+</tr>
+<tr>
+<td>3</td>
+<td>¿Cambian los roles, la estructura organizativa o quién toma qué decisiones?</td>
+<td>Aumentar o Transformar</td>
+</tr>
+<tr>
+<td>4</td>
+<td>¿Genera ingresos, servicios o mercados que no existían?</td>
+<td>Transformar</td>
+</tr>
+<tr>
+<td>5</td>
+<td>¿Podría retirarse sin afectar al modelo de negocio, volviendo simplemente al coste anterior?</td>
+<td>Optimizar</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas básicas de lectura:</p>
+<ul>
+<li>Si las preguntas 1 a 4 son <strong>no</strong>, la iniciativa es <strong>Optimizar</strong>, se haya presentado como se haya presentado.</li>
+<li>Si la pregunta 1 o la 4 es <strong>sí</strong>, la iniciativa es <strong>Transformar</strong>.</li>
+<li>Si la pregunta 2 o la 3 es <strong>sí</strong>, la iniciativa es <strong>Aumentar</strong>, salvo que el cambio afecte a una unidad organizativa completa o a un proceso central del negocio, en cuyo caso es <strong>Transformar</strong>.</li>
+<li>La pregunta 5 sirve de <strong>contraste</strong>: si una iniciativa clasificada como Aumentar o Transformar podría retirarse sin más consecuencia que volver al coste anterior, las respuestas deben revisarse.</li>
+<li><strong>En caso de duda razonable, se asigna el nivel inferior</strong>, y quien propone el superior aporta la evidencia.</li>
+</ul>
+<figure class="grafico"><div class="g-titulo">Clasificaci&#243;n r&#225;pida</div><div class="g-sub">Las preguntas se responden con evidencia y el resultado se contrasta con la pregunta 5</div><div class="g-lienzo"><pre class="mermaid">flowchart TD
+  A["Preguntas 1 a 4 con evidencia"] --> B{"¿Todas son no?"}
+  B -->|"Sí"| O["Optimizar"]
+  B -->|"No"| C{"¿La 1 o la 4 es sí?"}
+  C -->|"Sí"| T["Transformar"]
+  C -->|"No"| D{"¿Afecta a una unidad completa o a un proceso central?"}
+  D -->|"Sí"| T
+  D -->|"No"| AU["Aumentar"]
+  T --> E{"Pregunta 5: ¿se retira sin afectar al negocio?"}
+  AU --> E
+  E -->|"Sí"| R["Revisar respuestas"]
+  E -->|"No"| F["Nivel confirmado; en caso de duda, el inferior"]
+</pre></div><div class="g-fuente">Fuente: SPHERES · SEACHAD</div></figure>
+<p>Las reglas completas, los casos de contraste y quién clasifica, confirma y revisa el nivel están en <a href="../../../SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html">SEVEN-G 12 · Índice de transformación</a>, sección 3. En SEVEN-G el nivel se propone al registrar la iniciativa, se confirma antes de invertir en su construcción y se comprueba con evidencia cuando la iniciativa ya produce resultados.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Cinco preguntas con evidencia sustituyen a la opinión. Dos áreas que presentan iniciativas parecidas obtienen el mismo nivel, y el consejo puede confiar en que el mapa describe la realidad y no el entusiasmo de cada patrocinador.</p>
+</blockquote>
+<hr />
+<h2 id="casos-dudosos"><span class="antetitulo">09</span>Casos dudosos</h2>
+<p><em>Ejemplos genéricos e ilustrativos.</em></p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Nivel</th>
+<th>Razonamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Licencias de un asistente de IA para toda la plantilla, sin plan de adopción.</td>
+<td><strong>Optimizar</strong></td>
+<td>No cambia ningún rol ni ningún proceso de forma demostrable (preguntas 2 y 3: no).</td>
+</tr>
+<tr>
+<td>El mismo asistente, con rediseño de las funciones de un equipo de análisis que pasa a asumir revisiones que antes externalizaba.</td>
+<td><strong>Aumentar</strong></td>
+<td>Cambia el contenido de los puestos (pregunta 3: sí).</td>
+</tr>
+<tr>
+<td>Automatización con agentes de un proceso de back office completo, con menos personas haciendo lo mismo.</td>
+<td><strong>Optimizar</strong></td>
+<td>Reducir el número de personas que hacen lo mismo no es cambio de rol. Si el proceso se rediseña pero los roles no cambian, sería Aumentar.</td>
+</tr>
+<tr>
+<td>Precio dinámico con IA dentro de las tarifas actuales.</td>
+<td><strong>Aumentar</strong></td>
+<td>La decisión pasa a un sistema con supervisión (pregunta 3: sí), pero el cliente recibe la misma oferta.</td>
+</tr>
+<tr>
+<td>Precio personalizado por uso que el cliente elige como nueva modalidad.</td>
+<td><strong>Transformar</strong></td>
+<td>El cliente recibe una forma de precio nueva (pregunta 1: sí).</td>
+</tr>
+<tr>
+<td>Plataforma común de datos para varias iniciativas.</td>
+<td><strong>Optimizar</strong> por defecto</td>
+<td>Se clasifica por su efecto propio; no hereda la ambición de las iniciativas que habilita.</td>
+</tr>
+<tr>
+<td>Piloto exploratorio de un nuevo servicio.</td>
+<td>Según lo que cambiaría a escala</td>
+<td>Se clasifica por su hipótesis; el nivel real se comprueba con evidencia.</td>
+</tr>
+<tr>
+<td>Iniciativa con un componente de Optimizar y otro de Transformar.</td>
+<td><strong>Se divide</strong> o se clasifica por el componente que concentra más de la mitad de la inversión</td>
+<td>Los niveles no se promedian.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="la-ambicion-de-una-esfera-y-el-equilibrio-de-la-cartera"><span class="antetitulo">10</span>La ambición de una esfera y el equilibrio de la cartera</h2>
+<p>Además de clasificar iniciativas, la dirección fija una <strong>ambición objetivo para cada esfera</strong> de la 01 a la 07. Esa ambición no se asigna por opinión: se expresa con las iniciativas que la ejecutan.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Qué es</th>
+<th>Ejemplo ilustrativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nivel alcanzado</strong></td>
+<td>El nivel más alto con al menos una iniciativa en producción y valor medido.</td>
+<td>En Cliente, Optimizar: hay un enrutador de consultas con ahorro validado.</td>
+</tr>
+<tr>
+<td><strong>Nivel en cartera</strong></td>
+<td>El nivel más alto con alguna iniciativa aprobada para construirse.</td>
+<td>En Cliente, Aumentar: está aprobado un asistente para gestores comerciales.</td>
+</tr>
+<tr>
+<td><strong>Ambición objetivo</strong></td>
+<td>El nivel que la dirección quiere para la esfera en el horizonte de su estrategia.</td>
+<td>En Cliente, Aumentar.</td>
+</tr>
+<tr>
+<td><strong>Brecha</strong></td>
+<td>La ambición objetivo no tiene ninguna iniciativa aprobada que la ejecute.</td>
+<td>En Datos, objetivo Aumentar y ninguna iniciativa aprobada de ese nivel.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Una cartera equilibrada <strong>no</strong> reparte la inversión por igual entre niveles. Refleja la estrategia: mucha eficiencia donde la compañía compite en coste, apuestas de Aumentar donde el talento es la ventaja y alguna apuesta de Transformar, acotada y por etapas, donde la compañía quiere cambiar su posición. La fijación y aprobación de la ambición por esfera se describe en <a href="../../../SEVEN-G/html/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">SEVEN-G 13 · Tesis de IA, ambición y apetito de riesgo</a>.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> La pregunta &quot;¿nos estamos transformando?&quot; solo tiene respuesta si se compara la ambición declarada con lo que la cartera realmente ejecuta. Esa comparación, esfera por esfera, es la que permite detectar la transformación declarada pero no evidenciada.</p>
+</blockquote>
+<hr />
+<h2 id="errores-frecuentes"><span class="antetitulo">11</span>Errores frecuentes</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Consecuencia</th>
+<th>Cómo evitarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clasificar por la tecnología (&quot;usa agentes, luego es Transformar&quot;).</td>
+<td>Cartera aparentemente ambiciosa y sin cambio real.</td>
+<td>Aplicar las cinco preguntas con evidencia.</td>
+</tr>
+<tr>
+<td>Clasificar por el importe o por la visibilidad del programa.</td>
+<td>Se aplican criterios de transformación a automatizaciones caras.</td>
+<td>Recordar que el importe no determina el nivel.</td>
+</tr>
+<tr>
+<td>Subir de nivel para conseguir financiación.</td>
+<td>El consejo aprueba expectativas que no se cumplirán.</td>
+<td>Revisión independiente del nivel y comprobación posterior con evidencia.</td>
+</tr>
+<tr>
+<td>Aplicar a todas las iniciativas el mismo criterio de retorno.</td>
+<td>Las apuestas de Transformar se paran antes de aprender.</td>
+<td>Criterios de avance distintos por nivel.</td>
+</tr>
+<tr>
+<td>Contar horas liberadas como ahorro en Optimizar.</td>
+<td>Ahorros que no aparecen en la cuenta de resultados.</td>
+<td>Distinguir capacidad liberada, materializada y reasignada.</td>
+</tr>
+<tr>
+<td>Medir el éxito de Aumentar por licencias asignadas.</td>
+<td>Inversión sin cambio en la forma de trabajar.</td>
+<td>Medir uso activo y mejora de rendimiento.</td>
+</tr>
+<tr>
+<td>Fijar la ambición de una esfera sin mirar las habilitadoras.</td>
+<td>Promesas que los datos o las reglas de decisión no sostienen.</td>
+<td>Leer el <a href="03_SPHERES_Esferas_habilitadoras.html">documento 03</a> antes de fijar una ambición alta.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">12</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html">documento 00</a> · Qué es SPHERES y para qué sirve</strong></td>
+<td>Presentación del mapa y de los niveles.</td>
+</tr>
+<tr>
+<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html">documento 02</a> · Esferas donde se genera valor</strong></td>
+<td>Ejemplos por nivel en Cliente, Producto y servicio, Personas y Operaciones.</td>
+</tr>
+<tr>
+<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html">documento 03</a> · Esferas habilitadoras</strong></td>
+<td>Ejemplos por nivel en Datos, Conocimiento y Decisión.</td>
+</tr>
+<tr>
+<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">documento 04</a> · Regulación y gobierno de la IA</strong></td>
+<td>Por qué las esferas 08 y 09 no usan niveles de ambición.</td>
+</tr>
+<tr>
+<td><a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10 · Mapa de esferas y niveles de ambición</a></td>
+<td>Reglas de esfera y nivel, indicadores y mapa de calor.</td>
+</tr>
+<tr>
+<td><a href="../../../SEVEN-G/html/es/12_SEVEN-G_Indice_de_transformacion.html">SEVEN-G 12 · Índice de transformación</a></td>
+<td>Reglas completas de clasificación y perfil de transformación de la compañía.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">13</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>17-09-2026</td>
+<td>Primera versión. Desarrolla los tres niveles de ambición con definición, valor, riesgos, ejemplos por esfera, comparación, clasificación con cinco preguntas, casos dudosos, ambición por esfera y errores frecuentes.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SPHERES</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SPHERES_Que_es_y_para_que_sirve.html","title":"Qué es SPHERES y para qué sirve","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SPHERES_Niveles_de_ambicion.html","title":"Niveles de ambición","blockCode":"A","blockLabel":"A · Fundamentos","active":true},{"href":"02_SPHERES_Esferas_donde_se_genera_valor.html","title":"Esferas donde se genera valor","blockCode":"B","blockLabel":"B · Las esferas","active":false},{"href":"03_SPHERES_Esferas_habilitadoras.html","title":"Esferas habilitadoras","blockCode":"B","blockLabel":"B · Las esferas","active":false},{"href":"04_SPHERES_Regulacion_y_gobierno_de_la_IA.html","title":"Regulación y gobierno de la IA","blockCode":"B","blockLabel":"B · Las esferas","active":false},{"href":"05_SPHERES_Conversacion_con_el_consejo.html","title":"Conversación con el consejo","blockCode":"C","blockLabel":"C · Consejo","active":false},{"href":"index.html","title":"Biblioteca SPHERES","blockCode":"A","blockLabel":"A · Fundamentos","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

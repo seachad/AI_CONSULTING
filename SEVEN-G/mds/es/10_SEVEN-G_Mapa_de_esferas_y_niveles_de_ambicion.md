@@ -617,6 +617,7 @@ Los **primeros noventa días** concentran C1 a C3 (documento 01, sección 5.3). 
 | **50 · Personas y organización** y **51 · Datos y conocimiento** | Desarrollo de las esferas 03, 05 y 06. |
 | **61 · Guía de conversación con el consejo** | Guion completo de sesenta minutos. |
 | **90 · Guía de implantación** | Plan detallado de los primeros noventa días. |
+| **SPHERES** · [Biblioteca SPHERES](../../../SPHERES/html/es/index.html) | Metodología de apoyo que explica con detalle y ejemplos las esferas, los niveles de ambición y la conversación con el consejo. |
 
 ---
 
