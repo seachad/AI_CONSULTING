@@ -229,6 +229,89 @@ function ObtenerMapaReferencias([string]$lang) {
   return $map
 }
 
+# ---- Fuentes externas verificadas (build/referencias/*.json) ----
+# Solo se enlazan las referencias con estado "verificado" y URL en ambos idiomas (D41).
+function CargarReferencias {
+  $dir = Join-Path $PSScriptRoot 'referencias'
+  $lista = [Collections.Generic.List[object]]::new()
+  if (Test-Path $dir) {
+    foreach ($j in (Get-ChildItem $dir -File -Filter '*.json' | Sort-Object Name)) {
+      foreach ($r in @(Get-Content $j.FullName -Raw -Encoding utf8 | ConvertFrom-Json)) {
+        if ($r.estado -eq 'verificado' -and $r.url_es -and $r.url_en) { $lista.Add($r) }
+      }
+    }
+  }
+  $lista
+}
+
+function EnlazarFuentes([string]$html, [string]$lang, $refs) {
+  $resultado = @{ html = $html; citadas = [ordered]@{} }
+  $porPatron = @{}
+  foreach ($r in $refs) {
+    $ps = if ($lang -eq 'en') { $r.patrones_en } else { $r.patrones_es }
+    foreach ($p in @($ps)) {
+      if (-not $p -or $p.Length -lt 3) { continue }
+      $pe = $p.Replace('&', '&amp;')
+      if (-not $porPatron.ContainsKey($pe)) { $porPatron[$pe] = $r }
+    }
+  }
+  if ($porPatron.Count -eq 0) { return $resultado }
+  $alt = ($porPatron.Keys | Sort-Object Length -Descending | ForEach-Object { [regex]::Escape($_) }) -join '|'
+  $rx = [regex]::new("(?<![\p{L}\p{N}_])(?:$alt)(?![\p{L}\p{N}_])")
+  $citadas = $resultado.citadas
+  $enSeccion = @{}
+  $saltar = 0
+  $pilaCita = [Collections.Generic.Stack[bool]]::new()
+  $sb = [Text.StringBuilder]::new()
+  foreach ($tk in [regex]::Split($html, '(<[^>]+>)')) {
+    if ($tk.StartsWith('<')) {
+      $m = [regex]::Match($tk, '^<(/?)([a-zA-Z0-9]+)')
+      if ($m.Success) {
+        $cierre = $m.Groups[1].Value -eq '/'; $tag = $m.Groups[2].Value.ToLowerInvariant()
+        if ($tag -eq 'h2' -and -not $cierre) { $enSeccion.Clear() }
+        if ($tag -eq 'blockquote') {
+          if ($cierre) { if ($pilaCita.Count -and $pilaCita.Pop()) { $saltar-- } }
+          else { $s = $tk -match 'aviso-legal'; $pilaCita.Push($s); if ($s) { $saltar++ } }
+        } elseif ($tag -in @('a', 'h1', 'h2', 'h3', 'h4', 'code', 'pre', 'svg', 'script', 'style', 'th', 'figure')) {
+          if ($cierre) { if ($saltar -gt 0) { $saltar-- } } elseif (-not $tk.EndsWith('/>')) { $saltar++ }
+        }
+      }
+      [void]$sb.Append($tk); continue
+    }
+    if ($saltar -gt 0 -or -not $tk.Trim()) { [void]$sb.Append($tk); continue }
+    [void]$sb.Append($rx.Replace($tk, {
+      param($mm)
+      $r = $porPatron[$mm.Value]
+      if (-not $r) { return $mm.Value }
+      $citadas[$r.id] = $r
+      if ($enSeccion.ContainsKey($r.id)) { return $mm.Value }
+      $enSeccion[$r.id] = 1
+      $url = $(if ($lang -eq 'en') { $r.url_en } else { $r.url_es }).Replace('&', '&amp;')
+      $tit = [Net.WebUtility]::HtmlEncode($(if ($lang -eq 'en') { $r.titulo_en } else { $r.titulo_es }))
+      "<a class=""ref-ext"" href=""$url"" target=""_blank"" rel=""noopener"" title=""$tit"">$($mm.Value)</a>"
+    }))
+  }
+  $resultado.html = $sb.ToString()
+  $resultado
+}
+
+function SeccionFuentes($citadas, [string]$lang) {
+  if (-not $citadas -or $citadas.Count -eq 0) { return '' }
+  $en = $lang -eq 'en'
+  $orden = @{ 'norma-ue' = 1; 'norma-internacional' = 2; 'norma-es' = 3; 'jurisprudencia' = 4; 'autoridad' = 5; 'guia' = 6; 'norma-tecnica' = 7; 'marco' = 8; 'licencia' = 9; 'web' = 10 }
+  $items = $citadas.Values | Sort-Object @{ e = { $o = $orden[$_.tipo]; if ($o) { $o } else { 99 } } }, @{ e = { if ($en) { $_.titulo_en } else { $_.titulo_es } } } | ForEach-Object {
+    $url = $(if ($en) { $_.url_en } else { $_.url_es }).Replace('&', '&amp;')
+    $tit = [Net.WebUtility]::HtmlEncode($(if ($en) { $_.titulo_en } else { $_.titulo_es }))
+    $extra = @()
+    if ($_.emisor) { $extra += [Net.WebUtility]::HtmlEncode($_.emisor) }
+    if ($_.fecha -match '^(\d{4})-(\d{2})-(\d{2})$') { $extra += "$($Matches[3])-$($Matches[2])-$($Matches[1])" } elseif ($_.fecha) { $extra += $_.fecha }
+    "<li><a href=""$url"" target=""_blank"" rel=""noopener"">$tit</a>$(if ($extra) { '<span> · ' + ($extra -join ' · ') + '</span>' })</li>"
+  }
+  $titulo = if ($en) { 'External sources cited' } else { 'Fuentes externas citadas' }
+  $nota = if ($en) { 'Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.' } else { 'Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.' }
+  "<h2 id=""$(if ($en) { 'external-sources' } else { 'fuentes-externas' })"">$titulo</h2><p class=""fuentes-nota"">$nota</p><ul class=""fuentes-externas"">$($items -join '')</ul>"
+}
+
 function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
   $patron = '(?<!\])(?<!\w)(?:(?<doc>documento\s+\d{2})|(?<tool>T\d{2})|(?<plt>P\d{2}))(?!(?:[A-Za-z0-9]))'
   return [regex]::Replace($md, $patron, {
@@ -292,6 +375,7 @@ foreach ($lang in $Idiomas) {
   $catalogo = @($catalogo | Sort-Object relMd)
 
   $mapaReferencias = ObtenerMapaReferencias $lang
+  $referencias = @(CargarReferencias)
 
   # Herramientas disponibles (carpeta herramientas/<código>_<nombre>/ con un HTML) y módulos que viven dentro de otra
   $herramientas = [ordered]@{}
@@ -411,6 +495,10 @@ foreach ($lang in $Idiomas) {
       $codigo = if ($c.Groups[2].Success) { $c.Groups[2].Value } else { $c.Groups[3].Value }
       "<figure class=""grafico"">$cab<div class=""g-lienzo""><pre class=""mermaid"">$codigo</pre></div>$fuente</figure>"
     })
+
+    # ---- Enlaces a fuentes externas verificadas y lista final ----
+    $enlaceFuentes = EnlazarFuentes $body $lang $referencias
+    $body = $enlaceFuentes.html + (SeccionFuentes $enlaceFuentes.citadas $lang)
 
     # ---- Selector de idioma ----
     $idiomasHtml = ($todos | ForEach-Object {
