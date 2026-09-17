@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Esferas habilitadoras</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+@media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+@page { @bottom-left { content: "SPHERES · Esferas habilitadoras"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="barra-marca" href="#top"><i></i>SPHERES</a>
+    <a class="btn btn-icono btn-enlace btn-nav" href="00_SPHERES_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SPHERES y para qu&#233; sirve" aria-label="Ir al documento 00: Qu&#233; es SPHERES y para qu&#233; sirve"><span aria-hidden="true">⌂</span><span class="oculto">Inicio</span></a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/03_SPHERES_Esferas_habilitadoras.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/03_SPHERES_Esferas_habilitadoras.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/03_SPHERES_Esferas_habilitadoras.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/03_SPHERES_Esferas_habilitadoras.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SPHERES</div><div class="cabecera-dato">Documento 03 · 17-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 03 &#183; Esferas habilitadoras</p>
+    <h1>Esferas habilitadoras</h1>
+    <p class="entradilla">Datos, Conocimiento y Decisi&#243;n: por qu&#233; condicionan todo el valor de la IA, ejemplos por nivel de ambici&#243;n y c&#243;mo diagnosticar la capacidad real</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1</span><span>17-09-2026</span><span>En construcci&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>3</b><span>esferas habilitadoras</span></div><div class="cifra"><b>4</b><span>niveles de autonom&#237;a</span></div><div class="cifra"><b>12</b><span>preguntas para el consejo</span></div><div class="cifra"><b>5</b><span>preguntas de diagn&#243;stico</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/03_SPHERES_Esferas_habilitadoras.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/03_SPHERES_Esferas_habilitadoras.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/03_SPHERES_Esferas_habilitadoras.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#que-son-las-esferas-habilitadoras"><span>01</span>Qué son las esferas habilitadoras</a></li><li><a href="#esfera-05-datos"><span>02</span>Esfera 05 · Datos</a></li><li><a href="#esfera-06-conocimiento"><span>03</span>Esfera 06 · Conocimiento</a></li><li><a href="#esfera-07-decision"><span>04</span>Esfera 07 · Decisión</a></li><li><a href="#diagnostico-rapido-de-las-habilitadoras"><span>05</span>Diagnóstico rápido de las habilitadoras</a></li><li><a href="#documentos-relacionados"><span>06</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>07</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SPHERES es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el RGPD) pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas. <strong>Cada organización que use SPHERES es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<h2 id="que-son-las-esferas-habilitadoras"><span class="antetitulo">01</span>Qué son las esferas habilitadoras</h2>
+<p>Las esferas <strong>05 Datos, 06 Conocimiento y 07 Decisión</strong> no generan valor por sí mismas: <strong>hacen posible o imposible</strong> el valor de las esferas 01 a 04.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Esfera</th>
+<th>Qué habilita</th>
+<th>Qué ocurre si falla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>05 · Datos</strong></td>
+<td>Que los sistemas de IA tengan materia prima disponible, fiable y de uso legítimo.</td>
+<td>Las iniciativas se retrasan, se paran o funcionan con datos que no deberían usar.</td>
+</tr>
+<tr>
+<td><strong>06 · Conocimiento</strong></td>
+<td>Que lo que sabe la organización esté accesible y no dependa de pocas personas.</td>
+<td>Los asistentes responden mal, y el saber crítico se pierde cuando alguien se va.</td>
+</tr>
+<tr>
+<td><strong>07 · Decisión</strong></td>
+<td>Que esté claro qué decide la IA, qué valida una persona y qué no se delega nunca.</td>
+<td>Se delega por defecto, sin supervisión real ni trazabilidad.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Es en estas esferas <strong>donde aparecen las preguntas incómodas</strong>. Hablar de oportunidades en Cliente o en Producto es fácil; reconocer que no se sabe qué datos se tienen, que el conocimiento crítico está en la cabeza de tres personas o que un sistema ya fija precios sin que nadie lo haya decidido, no lo es.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Una ambición de Transformar en una esfera de valor sin capacidad suficiente en Datos, Conocimiento y Decisión <strong>es una señal de riesgo, no de audacia</strong>. La mayor parte de los retrasos y fracasos de las iniciativas de IA no se deben al modelo, sino a datos no disponibles, conocimiento no documentado o decisiones sin reglas. Diagnosticar las habilitadoras antes de fijar la ambición evita prometer lo que la organización no puede sostener.</p>
+</blockquote>
+<h3 id="cuando-una-habilitadora-es-esfera-principal">Cuándo una habilitadora es esfera principal</h3>
+<p>Que una iniciativa <strong>use</strong> datos, conocimiento o decisiones no la sitúa en estas esferas: casi todas las iniciativas de IA los usan. Una habilitadora es la <strong>esfera principal</strong> solo cuando el resultado principal de la iniciativa es <strong>la propia capacidad habilitadora</strong>.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Iniciativa (ilustrativa)</th>
+<th>Esfera principal</th>
+<th>Motivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plataforma común de datos para varios casos de IA.</td>
+<td>05 · Datos</td>
+<td>El resultado es la capacidad; el valor de los casos que la usan se imputa a esos casos.</td>
+</tr>
+<tr>
+<td>Recomendador de productos que usa datos de comportamiento.</td>
+<td>01 · Cliente</td>
+<td>La métrica principal es la conversión, aunque dependa de los datos.</td>
+</tr>
+<tr>
+<td>Base de conocimiento jurídico consultable por toda la compañía.</td>
+<td>06 · Conocimiento</td>
+<td>El resultado es el acceso al conocimiento.</td>
+</tr>
+<tr>
+<td>Sistema que define y registra qué decisiones de crédito puede tomar un modelo y cuáles revisa una persona.</td>
+<td>07 · Decisión</td>
+<td>El resultado es el sistema de decisión y su trazabilidad.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="esfera-05-datos"><span class="antetitulo">02</span>Esfera 05 · Datos</h2>
+<p><strong>Lema:</strong> el sustrato material de toda la IA.</p>
+<h3 id="que-es">Qué es</h3>
+<p>La esfera Datos reúne la <strong>disponibilidad, calidad, catalogación, linaje, base legal y arquitectura</strong> de los datos que usan los sistemas de IA, y los <strong>datos como producto</strong>.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Sin datos adecuados, ningún sistema de IA funciona bien, por bueno que sea el modelo. Y sin base legal documentada, un sistema que funciona puede convertirse en un problema regulatorio y reputacional. La pregunta más útil que puede hacer un consejo sobre IA no es técnica: es si la compañía sabe qué datos tiene, dónde están, quién responde de su calidad y si puede usarlos legalmente para IA.</p>
+</blockquote>
+<h3 id="que-cubre-y-que-no">Qué cubre y qué no</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Cubre</th>
+<th>No cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventario y catálogo de los datos que usan los sistemas de IA.</td>
+<td>El uso de los datos para un fin de negocio concreto: es la esfera de ese fin (01 a 04).</td>
+</tr>
+<tr>
+<td>Calidad, vigilancia de la calidad y deriva de los datos.</td>
+<td>La protección de datos como obligación regulatoria: se evalúa en la esfera 08.</td>
+</tr>
+<tr>
+<td>Linaje: de dónde vienen los datos con los que decide cada sistema.</td>
+<td></td>
+</tr>
+<tr>
+<td>Base legal y condiciones de uso de los datos para IA.</td>
+<td></td>
+</tr>
+<tr>
+<td>Datos sintéticos, enriquecimiento con fuentes externas y consulta en lenguaje natural.</td>
+<td></td>
+</tr>
+<tr>
+<td>Datos como producto o servicio.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="ejemplos-por-nivel-de-ambicion">Ejemplos por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Ejemplos</th>
+<th>Qué lo distingue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Limpieza, normalización y eliminación de duplicados · Catalogación con metadatos generados por IA y linaje automatizado · Vigilancia continua de la calidad y de la deriva.</td>
+<td>Los datos existentes se gestionan mejor y con menos esfuerzo.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Datos sintéticos donde los reales son escasos · Enriquecimiento con fuentes externas · Consulta de datos en lenguaje natural por cualquier empleado autorizado.</td>
+<td>Más personas pueden usar más datos para decidir.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Datos convertidos en producto o servicio · Arquitectura de datos distribuida y gobernada por dominios · Representación viva de la operación alimentada en tiempo real.</td>
+<td>Los datos cambian el modelo de negocio o el modelo operativo.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="caso-ilustrativo">Caso ilustrativo</h3>
+<p><em>Aseguradora ficticia de ámbito regional.</em></p>
+<p>La dirección aprueba tres iniciativas de Cliente: un modelo de riesgo de abandono, un recomendador de coberturas y un asistente para agentes comerciales. A los cuatro meses, las tres están paradas en la misma fase. El motivo no es técnico: los datos de interacciones con clientes están repartidos en cuatro sistemas, no tienen responsable, y nadie ha confirmado si el consentimiento con el que se obtuvieron permite usarlos para estos fines. La compañía decide abrir una iniciativa con esfera principal <strong>Datos</strong> (nivel <strong>Optimizar</strong>): catálogo de los datos de clientes con responsable, reglas de calidad y base legal documentada para cada uso. Solo cuando esa iniciativa alcanza su primer hito se reanudan las de Cliente. En la siguiente revisión, el consejo fija <strong>Aumentar</strong> como ambición de la esfera Datos y pide un indicador trimestral de iniciativas bloqueadas por datos.</p>
+<h3 id="preguntas-para-el-consejo">Preguntas para el consejo</h3>
+<ul>
+<li>¿Sabemos qué datos tenemos, dónde están, quién responde de su calidad y si podemos usarlos legalmente para IA?</li>
+<li>¿Cuántas iniciativas se retrasan o se paran por falta de datos?</li>
+<li>¿Tenemos documentado de dónde vienen los datos con los que decide cada sistema en producción?</li>
+<li>¿Nuestros datos son una ventaja que un competidor no puede replicar?</li>
+</ul>
+<h3 id="senales-de-alerta">Señales de alerta</h3>
+<ul>
+<li>Iniciativas que llegan a la fase de construcción sin haber confirmado el acceso a los datos.</li>
+<li>Datos personales usados para entrenar o alimentar sistemas sin base legal documentada.</li>
+<li>Conjuntos de datos críticos sin responsable identificado.</li>
+<li>Sistemas en producción sin linaje de datos y modelos.</li>
+</ul>
+<h3 id="como-se-mide">Cómo se mide</h3>
+<p>Los indicadores de referencia son la cobertura del catálogo, la calidad de los datos críticos, la base legal documentada, el linaje documentado, el tiempo de acceso a los datos y las iniciativas bloqueadas por datos. Sus fórmulas están en <a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10 · Mapa de esferas y niveles de ambición</a>, sección 5.5, y su gobierno en <a href="../../../SEVEN-G/html/es/51_SEVEN-G_Datos_y_conocimiento.html">SEVEN-G 51 · Datos y conocimiento</a>.</p>
+<hr />
+<h2 id="esfera-06-conocimiento"><span class="antetitulo">03</span>Esfera 06 · Conocimiento</h2>
+<p><strong>Lema:</strong> memoria organizativa e inteligencia colectiva.</p>
+<h3 id="que-es-2">Qué es</h3>
+<p>La esfera Conocimiento reúne el <strong>conocimiento documentado y tácito</strong> de la organización, su <strong>memoria</strong>, la búsqueda y reutilización de lo que ya se sabe, los <strong>asistentes especializados por dominio</strong> y la capacidad de la organización para <strong>aprender</strong> de lo que hace y decide.</p>
+<p>La diferencia con la esfera Datos es de naturaleza: los datos registran hechos; el conocimiento explica <strong>cómo se hacen las cosas, por qué se decidió algo y qué funcionó o fracasó</strong>.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Una parte decisiva de lo que sabe una compañía no está escrita en ningún sitio: está en las personas con más experiencia. Si mañana se fueran las personas que más saben, ¿qué se perdería? La IA puede reducir esa brecha capturando y haciendo accesible ese conocimiento, pero <strong>solo si se empieza antes de que se vayan</strong>. Además, los asistentes de IA generativa responden con lo que encuentran: si el conocimiento está desordenado u obsoleto, responden mal con total seguridad.</p>
+</blockquote>
+<h3 id="que-cubre-y-que-no-2">Qué cubre y qué no</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Cubre</th>
+<th>No cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentación interna, procedimientos y criterios.</td>
+<td>Los datos estructurados de la operación: es la esfera 05.</td>
+</tr>
+<tr>
+<td>Conocimiento tácito de expertos y su captura.</td>
+<td>La formación de las personas como capacidad individual: es la esfera 03.</td>
+</tr>
+<tr>
+<td>Búsqueda semántica y asistentes de conocimiento por dominio.</td>
+<td></td>
+</tr>
+<tr>
+<td>Memoria de decisiones, proyectos y lecciones aprendidas.</td>
+<td></td>
+</tr>
+<tr>
+<td>Vigencia y exactitud de las fuentes que alimentan sistemas de IA.</td>
+<td></td>
+</tr>
+<tr>
+<td>Control de acceso a información confidencial a través de asistentes.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="ejemplos-por-nivel-de-ambicion-2">Ejemplos por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Ejemplos</th>
+<th>Qué lo distingue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Búsqueda semántica sobre documentación interna · Bases de preguntas frecuentes actualizadas con IA · Transcripción y resumen de reuniones con registro de decisiones.</td>
+<td>Se encuentra antes lo que ya estaba escrito.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Captura del conocimiento tácito de expertos · Asistentes de conocimiento por dominio (jurídico, técnico, regulatorio, producto) · Detección de patrones de éxito y fracaso en proyectos anteriores.</td>
+<td>Las personas acceden a conocimiento experto que antes no tenían.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>El conocimiento de la organización como sistema activo que propone y no solo responde · Conocimiento propio como ventaja competitiva difícil de replicar · La compañía conserva lo que ha hecho, decidido y aprendido.</td>
+<td>El conocimiento cambia cómo compite o se organiza la compañía.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="caso-ilustrativo-2">Caso ilustrativo</h3>
+<p><em>Ingeniería ficticia especializada en instalaciones industriales.</em></p>
+<p>La compañía identifica que el diseño de un tipo de instalación depende de dos ingenieros cercanos a la jubilación. Pone en marcha una iniciativa de <strong>Aumentar</strong> en Conocimiento: sesiones estructuradas en las que un asistente entrevista a los expertos sobre decisiones de diseño reales, las contrasta con los proyectos archivados y construye una base de criterios revisada por ellos mismos. El resultado es un asistente que los ingenieros más jóvenes consultan antes de cada diseño. La dirección establece dos condiciones: que una muestra de las respuestas sea revisada por expertos cada trimestre para medir su exactitud, y que el asistente respete los permisos de acceso a los proyectos de cada cliente.</p>
+<h3 id="preguntas-para-el-consejo-2">Preguntas para el consejo</h3>
+<ul>
+<li>¿Cuánto conocimiento crítico depende de pocas personas y no está disponible para la organización?</li>
+<li>Si se fueran mañana las personas que más saben, ¿qué se perdería? ¿Estamos empezando a capturarlo a tiempo?</li>
+<li>¿Son fiables las respuestas de nuestros asistentes de conocimiento y quién las verifica?</li>
+<li>¿Aprendemos de lo que hemos decidido y hecho, o repetimos errores?</li>
+</ul>
+<h3 id="senales-de-alerta-2">Señales de alerta</h3>
+<ul>
+<li>Asistentes de conocimiento sin evaluación de la exactitud de sus respuestas.</li>
+<li>Documentación obsoleta que alimenta sistemas de IA generativa.</li>
+<li>Dominios críticos que dependen de una o dos personas sin plan de captura.</li>
+<li>Acceso a información confidencial a través de asistentes sin control de permisos.</li>
+</ul>
+<h3 id="como-se-mide-2">Cómo se mide</h3>
+<p>Los indicadores de referencia son la cobertura del conocimiento crítico, la concentración del conocimiento en pocas personas, la exactitud verificada de los asistentes, la resolución útil, la vigencia de las fuentes y el tiempo hasta la autonomía de las personas incorporadas. Sus fórmulas están en <a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, sección 5.6.</p>
+<hr />
+<h2 id="esfera-07-decision"><span class="antetitulo">04</span>Esfera 07 · Decisión</h2>
+<p><strong>Lema:</strong> quién decide, con qué información y con cuánta delegación.</p>
+<h3 id="que-es-3">Qué es</h3>
+<p>La esfera Decisión reúne <strong>qué decisiones toman, recomiendan o ejecutan los sistemas de IA</strong>, con qué información, con qué <strong>nivel de autonomía</strong>, con qué <strong>supervisión humana</strong> y con qué <strong>trazabilidad</strong>.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Cada vez que un sistema de IA recomienda o ejecuta algo, se está repartiendo una decisión entre personas y máquinas. Si la compañía no ha definido qué decide la IA sola, qué requiere validación humana y qué no se delega nunca, <strong>está delegando por defecto</strong>. Y cuando algo sale mal, nadie puede reconstruir qué recomendó el sistema, qué decidió la persona y por qué.</p>
+</blockquote>
+<h3 id="los-cuatro-niveles-de-autonomia">Los cuatro niveles de autonomía</h3>
+<p>SPHERES usa la escala de autonomía de SEVEN-G para describir cuánto se delega en cada tipo de decisión:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Nombre</th>
+<th>Qué hace el sistema</th>
+<th>Qué hace la persona</th>
+<th>Ejemplo ilustrativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A0</strong></td>
+<td>Asistencia</td>
+<td>Informa, resume o genera contenido.</td>
+<td>Decide y ejecuta.</td>
+<td>Resumen de un expediente antes de que el analista lo revise.</td>
+</tr>
+<tr>
+<td><strong>A1</strong></td>
+<td>Recomendación</td>
+<td>Propone una decisión o acción concreta.</td>
+<td>Valida cada acción antes de ejecutarla.</td>
+<td>Propuesta de descuento que el gestor aprueba o rechaza.</td>
+</tr>
+<tr>
+<td><strong>A2</strong></td>
+<td>Actuación supervisada</td>
+<td>Ejecuta acciones dentro de límites definidos.</td>
+<td>Supervisa, puede interrumpir y revisa a posteriori.</td>
+<td>Reposición automática de existencias con revisión diaria de excepciones.</td>
+</tr>
+<tr>
+<td><strong>A3</strong></td>
+<td>Actuación autónoma</td>
+<td>Ejecuta secuencias de acciones sin revisión individual dentro de límites estrictos.</td>
+<td>Fija límites, supervisa agregados y dispone de interruptor de parada.</td>
+<td>Ajuste continuo de precios de un catálogo dentro de una banda aprobada.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El nivel de autonomía <strong>no es lo mismo que el nivel de ambición</strong>. Un sistema A0 que solo resume información puede formar parte de una apuesta de Transformar. A la inversa, que una decisión que tomaba una persona pase a un sistema A2 o A3 cambia quién decide, y eso apunta como mínimo a Aumentar (<a href="01_SPHERES_Niveles_de_ambicion.html">documento 01</a>, sección 8, pregunta 3).</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Asignar un nivel de autonomía a cada tipo de decisión convierte una discusión abstracta sobre &quot;confiar en la IA&quot; en una regla concreta que puede aprobarse, supervisarse y auditarse. Es también la base para saber qué sistemas necesitan un interruptor de parada y quién puede activarlo.</p>
+</blockquote>
+<h3 id="que-cubre-y-que-no-3">Qué cubre y qué no</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Cubre</th>
+<th>No cubre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventario de los tipos de decisión en los que interviene la IA.</td>
+<td>El resultado de negocio de cada decisión: es la esfera de ese resultado (01 a 04).</td>
+</tr>
+<tr>
+<td>Nivel de autonomía asignado a cada tipo de decisión.</td>
+<td>Las obligaciones legales sobre decisiones automatizadas: se evalúan en la esfera 08.</td>
+</tr>
+<tr>
+<td>Supervisión humana, anulación y escalado.</td>
+<td></td>
+</tr>
+<tr>
+<td>Trazabilidad de lo que recomendó el sistema y lo que decidió la persona.</td>
+<td></td>
+</tr>
+<tr>
+<td>Interruptores de parada y límites de actuación.</td>
+<td></td>
+</tr>
+<tr>
+<td>Calidad y velocidad de las decisiones asistidas.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="ejemplos-por-nivel-de-ambicion-3">Ejemplos por nivel de ambición</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Ejemplos</th>
+<th>Qué lo distingue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimizar</strong></td>
+<td>Paneles que priorizan la información relevante · Alertas predictivas antes de que un indicador se degrade · Automatización de decisiones de bajo riesgo y alta frecuencia.</td>
+<td>Las mismas decisiones, con menos esfuerzo o antes.</td>
+</tr>
+<tr>
+<td><strong>Aumentar</strong></td>
+<td>Opciones con análisis de riesgo y probabilidad entre las que elige una persona · Simulación de escenarios · Trazabilidad de lo que recomendó la IA y lo que decidió la persona.</td>
+<td>Quien decide cuenta con capacidades de análisis que no tenía.</td>
+</tr>
+<tr>
+<td><strong>Transformar</strong></td>
+<td>Decisiones autónomas en dominios acotados (precio dinámico, asignación de recursos) · Coordinación de decisiones entre sistemas con supervisión agregada · Directivos que supervisan sistemas de decisión en lugar de decidir cada caso.</td>
+<td>Cambia quién decide y cómo se organiza la toma de decisiones.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="caso-ilustrativo-3">Caso ilustrativo</h3>
+<p><em>Operador logístico ficticio.</em></p>
+<p>El operador descubre, en su primer diagnóstico, que un sistema de asignación de rutas que se instaló como &quot;herramienta de apoyo&quot; lleva meses ejecutando cambios de ruta sin revisión: en la práctica funciona como A2, pero nadie lo ha decidido ni existen límites escritos. La tasa de anulación por parte de los jefes de tráfico es prácticamente cero, lo que la dirección interpretaba como éxito. Al analizarlo, se comprueba que los jefes de tráfico no tienen forma sencilla de anular una decisión. La compañía define por escrito los tipos de decisión, asigna A2 con límites (distancia máxima de desvío, clientes prioritarios excluidos), habilita un interruptor de parada con responsable designado y registra cada recomendación y cada anulación. La tasa de anulación sube primero y se estabiliza después dentro de una banda que el responsable de producto considera razonable.</p>
+<h3 id="preguntas-para-el-consejo-3">Preguntas para el consejo</h3>
+<ul>
+<li>¿Qué decide la IA sola, qué requiere validación humana y qué no se delega nunca? Si no lo hemos definido, estamos delegando por defecto.</li>
+<li>¿Podemos reconstruir qué recomendó el sistema y qué decidió la persona en cada decisión relevante?</li>
+<li>¿Qué sistemas actúan con autonomía A2 o A3 y quién puede pararlos?</li>
+<li>¿Mejoran las decisiones con IA, o solo se toman más rápido?</li>
+</ul>
+<h3 id="senales-de-alerta-3">Señales de alerta</h3>
+<ul>
+<li>Sistemas que ejecutan acciones sin nivel de autonomía asignado ni interruptor de parada.</li>
+<li>Tasa de anulación humana cercana a cero durante meses: puede indicar supervisión nominal.</li>
+<li>Tasa de anulación muy alta: el sistema no está calibrado o no se confía en él.</li>
+<li>Decisiones con efectos significativos sobre personas sin revisión humana significativa.</li>
+</ul>
+<h3 id="como-se-mide-3">Cómo se mide</h3>
+<p>Los indicadores de referencia son las decisiones con autonomía asignada, la trazabilidad de las decisiones, la tasa de anulación humana, los interruptores de parada probados, la mejora de la calidad de la decisión y la latencia de decisión. Sus fórmulas están en <a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, sección 5.7, y la seguridad de los sistemas que actúan en <a href="../../../SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html">SEVEN-G 35 · Seguridad de IA y agentes</a>.</p>
+<hr />
+<h2 id="diagnostico-rapido-de-las-habilitadoras"><span class="antetitulo">05</span>Diagnóstico rápido de las habilitadoras</h2>
+<p>Antes de fijar una ambición de Aumentar o Transformar en cualquier esfera de valor, conviene responder a cinco preguntas. No sustituyen a un diagnóstico completo, pero detectan los bloqueos más frecuentes.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pregunta</th>
+<th>Esfera</th>
+<th>Si la respuesta es no</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>¿Están identificados, con responsable y base legal, los datos que necesita la ambición?</td>
+<td>05</td>
+<td>Abrir antes una iniciativa de Datos o reducir la ambición.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>¿Se ha comprobado la calidad de esos datos sobre una muestra real?</td>
+<td>05</td>
+<td>Fijar umbrales de calidad y medirlos antes de construir.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>¿Está documentado y accesible el conocimiento del que depende la iniciativa?</td>
+<td>06</td>
+<td>Capturar el conocimiento crítico y asignar quién verifica las respuestas.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>¿Está definido qué decisiones tomará o recomendará el sistema y con qué nivel de autonomía?</td>
+<td>07</td>
+<td>Definir tipos de decisión, nivel A0–A3 y supervisión antes de desplegar.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>¿Se puede reconstruir y, si hace falta, parar lo que haga el sistema?</td>
+<td>07</td>
+<td>Diseñar trazabilidad e interruptor de parada como requisitos, no como mejoras.</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="grafico"><div class="g-titulo">Coherencia entre ambici&#243;n y habilitadoras</div><div class="g-sub">Una ambici&#243;n alta en una esfera de valor se contrasta con la capacidad real de las habilitadoras</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  A["Ambición propuesta en una esfera de valor"] --> B{"¿Aumentar o Transformar?"}
+  B -->|"No"| OK["Seguir con el diagnóstico habitual"]
+  B -->|"Sí"| C["Cinco preguntas sobre Datos, Conocimiento y Decisión"]
+  C --> D{"¿Alguna respuesta es no?"}
+  D -->|"No"| OK2["Ambición sostenible"]
+  D -->|"Sí"| E["Iniciativa habilitadora previa o ambición menor"]
+</pre></div><div class="g-fuente">Fuente: SPHERES · SEACHAD</div></figure>
+<blockquote>
+<p><strong>Por qué importa.</strong> Este diagnóstico es barato y rápido, y evita el error más costoso de las carteras de IA: aprobar iniciativas ambiciosas que se paran meses después por causas que podían conocerse desde el primer día.</p>
+</blockquote>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">06</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html">documento 00</a> · Qué es SPHERES y para qué sirve</strong></td>
+<td>Presentación del mapa completo.</td>
+</tr>
+<tr>
+<td><strong><a href="01_SPHERES_Niveles_de_ambicion.html">documento 01</a> · Niveles de ambición</strong></td>
+<td>Diferencia entre nivel de ambición y nivel de autonomía.</td>
+</tr>
+<tr>
+<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html">documento 02</a> · Esferas donde se genera valor</strong></td>
+<td>Las esferas cuyo valor depende de estas.</td>
+</tr>
+<tr>
+<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">documento 04</a> · Regulación y gobierno de la IA</strong></td>
+<td>Protección de datos y decisiones automatizadas como obligación (esfera 08).</td>
+</tr>
+<tr>
+<td><a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10 · Mapa de esferas y niveles de ambición</a></td>
+<td>Reglas de clasificación e indicadores con fórmula.</td>
+</tr>
+<tr>
+<td><a href="../../../SEVEN-G/html/es/51_SEVEN-G_Datos_y_conocimiento.html">SEVEN-G 51 · Datos y conocimiento</a></td>
+<td>Gobierno y preparación de datos y conocimiento para IA.</td>
+</tr>
+<tr>
+<td><a href="../../../SEVEN-G/html/es/35_SEVEN-G_Seguridad_de_IA_y_agentes.html">SEVEN-G 35 · Seguridad de IA y agentes</a></td>
+<td>Niveles de autonomía y controles de los sistemas que actúan.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">07</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>17-09-2026</td>
+<td>Primera versión. Desarrolla las esferas 05 a 07 con qué son, por qué importan, cuándo son esfera principal, alcance, ejemplos por nivel, casos ilustrativos, preguntas para el consejo, señales de alerta y medición; incluye los niveles de autonomía A0–A3 y un diagnóstico rápido de cinco preguntas.</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SPHERES</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SPHERES_Que_es_y_para_que_sirve.html","title":"Qué es SPHERES y para qué sirve","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SPHERES_Niveles_de_ambicion.html","title":"Niveles de ambición","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SPHERES_Esferas_donde_se_genera_valor.html","title":"Esferas donde se genera valor","blockCode":"B","blockLabel":"B · Las esferas","active":false},{"href":"03_SPHERES_Esferas_habilitadoras.html","title":"Esferas habilitadoras","blockCode":"B","blockLabel":"B · Las esferas","active":true},{"href":"04_SPHERES_Regulacion_y_gobierno_de_la_IA.html","title":"Regulación y gobierno de la IA","blockCode":"B","blockLabel":"B · Las esferas","active":false},{"href":"05_SPHERES_Conversacion_con_el_consejo.html","title":"Conversación con el consejo","blockCode":"C","blockLabel":"C · Consejo","active":false},{"href":"index.html","title":"Biblioteca SPHERES","blockCode":"A","blockLabel":"A · Fundamentos","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

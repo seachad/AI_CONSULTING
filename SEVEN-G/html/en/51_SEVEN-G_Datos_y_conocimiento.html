@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Data and knowledge for AI"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -393,7 +404,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <ul>
 <li>Data governance <strong>applied to AI</strong>: ownership, quality, catalogue, legal basis, minimisation and retention.</li>
 <li>The data requirements in <strong>each phase of the lifecycle</strong>, with particular attention to the availability and quality assessment in phase 3.</li>
-<li>The data governance requirements of <strong>Article 10 of the EU AI Act</strong> for high-risk systems, in summary.</li>
+<li>The data governance requirements of <strong>Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a></strong> for high-risk systems, in summary.</li>
 <li><strong>Data and model lineage</strong> (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</li>
 <li><strong>Synthetic data</strong>.</li>
 <li><strong>Personal data</strong> in training, in prompts and in outputs.</li>
@@ -657,7 +668,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p><strong>Thresholds</strong> are set in phase 3 for each critical dataset and become monitoring controls in phase 6 (document 52, section 5).</p>
 <h3 id="4-4-legal-basis-and-minimisation">4.4 Legal basis and minimisation</h3>
 <ul>
-<li>The use of personal data to develop or operate an AI system is processing with <strong>its own purpose</strong>. It must have a legal basis (GDPR, Art. 6) and, if the data were collected for another purpose, a <strong>compatibility</strong> analysis (Art. 6(4)) or a new basis.</li>
+<li>The use of personal data to develop or operate an AI system is processing with <strong>its own purpose</strong>. It must have a legal basis (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Art. 6) and, if the data were collected for another purpose, a <strong>compatibility</strong> analysis (Art. 6(4)) or a new basis.</li>
 <li><strong>Special categories</strong> of data (Art. 9) require an applicable exception and enhanced controls.</li>
 <li><strong>Minimisation</strong> (Art. 5(1)(c)) applies to attributes, records and period. In AI, each personal attribute used as a variable is justified in writing.</li>
 <li><strong>Data protection by design and by default</strong> (Art. 25) is reflected in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> and <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>.</li>
@@ -809,7 +820,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p><strong>Result.</strong> Each block is rated as <em>sufficient</em>, <em>sufficient with actions</em> (action, cost, timeframe and owner) or <em>insufficient</em>. An <em>insufficient</em> legitimacy block prevents proceeding. If other blocks are insufficient, the expected outcome of G3 is <strong>Iterate</strong>, <strong>Pivot</strong> or <strong>Stop</strong> with the coded reason <em>Insufficient data</em> (document 03, section 3.3).</p>
 <hr />
 <h2 id="high-risk-systems-article-10-of-the-eu-ai-act"><span class="antetitulo">06</span>High-risk systems: Article 10 of the EU AI Act</h2>
-<p>This section summarises, without legal detail, what Article 10 of the EU AI Act requires of the training, validation and test datasets of <strong>high-risk systems</strong>, and where it is reflected in SEVEN-G. The obligation-by-obligation analysis, the application dates (Annex III from 2 December 2027 and Annex I from 2 August 2028, following Regulation (EU) 2026/1744) and the other amendments are dealt with in document 34 (§3.1 and §3.2).</p>
+<p>This section summarises, without legal detail, what Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires of the training, validation and test datasets of <strong>high-risk systems</strong>, and where it is reflected in SEVEN-G. The obligation-by-obligation analysis, the application dates (Annex III from 2 December 2027 and Annex I from 2 August 2028, following Regulation (EU) 2026/1744) and the other amendments are dealt with in document 34 (§3.1 and §3.2).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1016,11 +1027,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Anonymisation versus pseudonymisation</strong></td>
-<td>Only effectively anonymised data fall outside the GDPR. Pseudonymisation reduces risk, but the data remain personal. Anonymisation is justified with a re-identification risk analysis.</td>
+<td>Only effectively anonymised data fall outside the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>. Pseudonymisation reduces risk, but the data remain personal. Anonymisation is justified with a re-identification risk analysis.</td>
 </tr>
 <tr>
 <td><strong>Memorisation</strong></td>
-<td>Models trained with personal data may reproduce them in their outputs. Data extraction is tested in phase 5 when the model is trained or fine-tuned with personal data. The European Data Protection Board has analysed in its Opinion 28/2024 when an AI model can be considered anonymous; consulting it is recommended.</td>
+<td>Models trained with personal data may reproduce them in their outputs. Data extraction is tested in phase 5 when the model is trained or fine-tuned with personal data. The <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener" title="European Data Protection Board (EDPB)">European Data Protection Board</a> has analysed in its <a class="ref-ext" href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en" target="_blank" rel="noopener" title="Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models">Opinion 28/2024</a> when an AI model can be considered anonymous; consulting it is recommended.</td>
 </tr>
 <tr>
 <td><strong>Data subjects' rights</strong></td>
@@ -1067,7 +1078,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="9-3-in-outputs">9.3 In outputs</h3>
 <p>AI systems may <strong>infer</strong> personal data that nobody has provided (for example, traits, preferences or sensitive situations). An inference about an identified person is personal data. If the inference relates to a special category, its rules apply. The design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) <strong>must</strong> identify which inferences the system produces and whether they are necessary and lawful.</p>
 <h3 id="9-4-data-for-detecting-bias">9.4 Data for detecting bias</h3>
-<p>Detecting bias may require data on protected characteristics that the company does not normally process. For high-risk systems, the EU AI Act exceptionally allows the processing of special categories for that purpose and with strict safeguards (Art. 10(5)), and Regulation (EU) 2026/1744 extends that possibility beyond high risk subject to a strict necessity criterion (document 34 §3.2). In all cases, the decision is taken with the data protection officer and the legal analysis, documented in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, and measures such as separation, pseudonymisation, restricted access and deletion at the end of the analysis are applied.</p>
+<p>Detecting bias may require data on protected characteristics that the company does not normally process. For high-risk systems, the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> exceptionally allows the processing of special categories for that purpose and with strict safeguards (Art. 10(5)), and Regulation (EU) 2026/1744 extends that possibility beyond high risk subject to a strict necessity criterion (document 34 §3.2). In all cases, the decision is taken with the data protection officer and the legal analysis, documented in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, and measures such as separation, pseudonymisation, restricted access and deletion at the end of the analysis are applied.</p>
 <hr />
 <h2 id="knowledge"><span class="antetitulo">10</span>Knowledge</h2>
 <h3 id="10-1-knowledge-sources-for-generative-ai">10.1 Knowledge sources for generative AI</h3>
@@ -1303,7 +1314,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Content obtained from public sources on the internet</strong></td>
-<td>The fact that content is accessible does not mean its use is free. In the European Union, text and data mining is subject to exceptions with conditions, and rightholders may reserve that use for purposes other than scientific research (Directive (EU) 2019/790, Arts. 3 and 4).</td>
+<td>The fact that content is accessible does not mean its use is free. In the European Union, text and data mining is subject to exceptions with conditions, and rightholders may reserve that use for purposes other than scientific research (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2019/790/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2019/790 of the European Parliament and of the Council of 17 April 2019 on copyright and related rights in the Digital Single Market">Directive (EU) 2019/790</a>, Arts. 3 and 4).</td>
 <td>Prior legal analysis; respect for rights reservations expressed in an appropriate manner; source record.</td>
 </tr>
 <tr>
@@ -1313,7 +1324,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>The company's own trade secrets</strong></td>
-<td>Entering them into third-party services may compromise the reasonable protection measures required for them to remain secret (Directive (EU) 2016/943; in Spain, Ley 1/2019 de Secretos Empresariales (Law 1/2019 on Trade Secrets)).</td>
+<td>Entering them into third-party services may compromise the reasonable protection measures required for them to remain secret (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2016/943/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2016/943 of the European Parliament and of the Council of 8 June 2016 on the protection of undisclosed know-how and business information (trade secrets) against their unlawful acquisition, use and disclosure">Directive (EU) 2016/943</a>; in Spain, Ley 1/2019 de Secretos Empresariales (Law 1/2019 on Trade Secrets)).</td>
 <td>Classification, authorised tools and contractual terms.</td>
 </tr>
 <tr>
@@ -1324,7 +1335,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <h3 id="11-2-third-party-general-purpose-models">11.2 Third-party general-purpose models</h3>
-<p>The EU AI Act requires <strong>providers of general-purpose AI models</strong> to put in place a policy to comply with copyright law, including rights reservations, and to publish a sufficiently detailed summary of the content used for training (Art. 53(1)(c) and (d)). A company that uses those models <strong>should</strong> request and retain that information in the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) and assess the contractual safeguards against third-party claims (document 36).</p>
+<p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers of general-purpose AI models</strong> to put in place a policy to comply with copyright law, including rights reservations, and to publish a sufficiently detailed summary of the content used for training (Art. 53(1)(c) and (d)). A company that uses those models <strong>should</strong> request and retain that information in the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) and assess the contractual safeguards against third-party claims (document 36).</p>
 <h3 id="11-3-generated-outputs">11.3 Generated outputs</h3>
 <div class="tabla"><table>
 <thead>
@@ -1589,7 +1600,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>7</td>
 <td>Treating pseudonymised or synthetic data as anonymous.</td>
-<td>Breach of the GDPR.</td>
+<td>Breach of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>.</td>
 <td>Sections 8.2 and 9.1.</td>
 </tr>
 <tr>
@@ -1775,7 +1786,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>34 · Regulatory mapping</strong></td>
-<td>Article 10 of the EU AI Act, GDPR and intellectual property in detail.</td>
+<td>Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> and intellectual property in detail.</td>
 </tr>
 <tr>
 <td><strong>35 · AI and agent security</strong></td>
@@ -1817,11 +1828,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Develops spheres 05 and 06 with indicators; data governance applied to AI (roles, dataset record, quality, legal basis, minimisation and retention); data requirements by phase with the phase 3 assessment using real data; the summary of Article 10 of the EU AI Act; the content of <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; synthetic data; personal data in training, prompts and outputs; knowledge sources for generative AI, curation, validity, permissions and critical knowledge dependent on a few people; intellectual property; nineteen indicators with a formula, twelve common mistakes and eight typical risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in document 33. Knowledge indicators renamed from CON- to CNC- to avoid the clash with the IND-CON family (board) in document 41.</td>
+<td>First version. Develops spheres 05 and 06 with indicators; data governance applied to AI (roles, dataset record, quality, legal basis, minimisation and retention); data requirements by phase with the phase 3 assessment using real data; the summary of Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>; the content of <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; synthetic data; personal data in training, prompts and outputs; knowledge sources for generative AI, curation, validity, permissions and critical knowledge dependent on a few people; intellectual property; nineteen indicators with a formula, twelve common mistakes and eight typical risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in document 33. Knowledge indicators renamed from CON- to CNC- to avoid the clash with the IND-CON family (board) in document 41.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2016/943/oj/eng" target="_blank" rel="noopener">Directive (EU) 2016/943 of the European Parliament and of the Council of 8 June 2016 on the protection of undisclosed know-how and business information (trade secrets) against their unlawful acquisition, use and disclosure</a><span> · Parlamento Europeo y Consejo de la UE · 08-06-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2019/790/oj/eng" target="_blank" rel="noopener">Directive (EU) 2019/790 of the European Parliament and of the Council of 17 April 2019 on copyright and related rights in the Digital Single Market</a><span> · Parlamento Europeo y Consejo de la UE · 17-04-2019</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener">European Data Protection Board (EDPB)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en" target="_blank" rel="noopener">Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 17-12-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

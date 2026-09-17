@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · AI system inventory and regulatory classification"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -393,7 +404,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <ul>
 <li>What is and is not inventoried (section 2).</li>
 <li>The inventory fields, consistent with the controlled taxonomy of document 03 (section 3).</li>
-<li>The roles the company may have under Regulation (EU) 2024/1689 (section 4).</li>
+<li>The roles the company may have under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a> (section 4).</li>
 <li>The step-by-step regulatory classification tree (section 5).</li>
 <li>The assessments that follow from the classification (section 6).</li>
 <li>The registration, review and removal procedures (section 7).</li>
@@ -936,7 +947,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td>Data protection impact assessment (GDPR, Article 35)</td>
+<td>Data protection impact assessment (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 35)</td>
 <td>Status, date, link.</td>
 <td>List · Date · Reference</td>
 <td>Yes if it processes personal data</td>
@@ -967,7 +978,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>Information to workers and their representatives</td>
-<td>Article 26(7) of the Regulation and, in Spain, Article 64.4.d) of the Workers' Statute.</td>
+<td>Article 26(7) of the Regulation and, in Spain, Article 64.4.d) of the <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)">Workers' Statute</a>.</td>
 <td>List · Date</td>
 <td>Cond.: use in the employment context</td>
 </tr>
@@ -1321,7 +1332,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>1</strong></td>
 <td>Is it an <strong>AI system</strong> under Article 3(1)?</td>
-<td>Check whether it is a machine-based system that, with some level of autonomy, <strong>infers</strong> from the input it receives how to generate outputs (predictions, content, recommendations or decisions) that can influence physical or virtual environments. Use the Commission guidelines on the definition of an AI system. Systems based solely on rules defined by people to execute operations automatically do not usually meet the definition.</td>
+<td>Check whether it is a machine-based system that, with some level of autonomy, <strong>infers</strong> from the input it receives how to generate outputs (predictions, content, recommendations or decisions) that can influence physical or virtual environments. Use the <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener" title="Commission Guidelines on the definition of an artificial intelligence system established by Regulation (EU) 2024/1689 (AI Act)">Commission guidelines on the definition of an AI system</a>. Systems based solely on rules defined by people to execute operations automatically do not usually meet the definition.</td>
 <td>Description of how it works; technique used; reasoned conclusion.</td>
 <td>No → <strong>Out of scope</strong> (technology &quot;Rules (not AI)&quot;). Uncertain → legal review. Yes → step 2.</td>
 </tr>
@@ -1335,7 +1346,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>3</strong></td>
 <td>Is it a <strong>prohibited practice</strong> under Article 5?</td>
-<td>Compare against each case in Article 5(1): subliminal, manipulative or deceptive techniques that distort behaviour causing harm; exploitation of vulnerabilities due to age, disability or social or economic situation; social scoring leading to detrimental treatment; prediction of the risk of committing a criminal offence based solely on profiling or personality traits; creation or expansion of facial recognition databases through untargeted scraping; inference of emotions in the workplace or in educational institutions, except for medical or safety reasons; biometric categorisation to infer sensitive characteristics; real-time remote biometric identification in publicly accessible spaces for law enforcement purposes outside the permitted cases; and the prohibition added by Regulation (EU) 2026/1744 on the generation of non-consensual sexually explicit content or child sexual abuse material (applicable from 2-12-2026). Use the Commission guidelines on prohibited practices.</td>
+<td>Compare against each case in Article 5(1): subliminal, manipulative or deceptive techniques that distort behaviour causing harm; exploitation of vulnerabilities due to age, disability or social or economic situation; social scoring leading to detrimental treatment; prediction of the risk of committing a criminal offence based solely on profiling or personality traits; creation or expansion of facial recognition databases through untargeted scraping; inference of emotions in the workplace or in educational institutions, except for medical or safety reasons; biometric categorisation to infer sensitive characteristics; real-time remote biometric identification in publicly accessible spaces for law enforcement purposes outside the permitted cases; and the prohibition added by Regulation (EU) 2026/1744 on the generation of non-consensual sexually explicit content or child sexual abuse material (applicable from 2-12-2026). Use the <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act" target="_blank" rel="noopener" title="Commission Guidelines on prohibited artificial intelligence practices established by Regulation (EU) 2024/1689 (AI Act)">Commission guidelines on prohibited practices</a>.</td>
 <td>Analysis of each point with a conclusion.</td>
 <td>Yes → <strong>Prohibited</strong>: the initiative does not go beyond phase 3; if the system is in use, immediate suspension and critical nonconformity. No → step 4.</td>
 </tr>
@@ -1356,7 +1367,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>6</strong></td>
 <td>Does the <strong>Article 6(3) exception</strong> apply?</td>
-<td>The Annex III system is not considered high-risk if it does not pose a significant risk of harm to health, safety or fundamental rights, including by not materially influencing the outcome of decision-making, and it meets at least one condition: a) narrow procedural task; b) improvement of the result of a previously completed human activity; c) detection of decision-making patterns or deviations without replacing or influencing the previously completed human assessment without proper human review; d) preparatory task to an assessment relevant for the purposes of the Annex III use cases. It <strong>never</strong> applies if the system performs profiling of natural persons. Use the Commission guidelines on the application of Article 6 provided for in paragraph 5 thereof, when available in their current version.</td>
+<td>The Annex III system is not considered high-risk if it does not pose a significant risk of harm to health, safety or fundamental rights, including by not materially influencing the outcome of decision-making, and it meets at least one condition: a) narrow procedural task; b) improvement of the result of a previously completed human activity; c) detection of decision-making patterns or deviations without replacing or influencing the previously completed human assessment without proper human review; d) preparatory task to an assessment relevant for the purposes of the Annex III use cases. It <strong>never</strong> applies if the system performs profiling of natural persons. Use the <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/library/draft-commission-guidelines-classification-high-risk-ai-systems" target="_blank" rel="noopener" title="Draft Commission guidelines on the classification of high-risk AI systems">Commission guidelines on the application of Article 6</a> provided for in paragraph 5 thereof, when available in their current version.</td>
 <td>Condition applied, analysis of influence on the decision, confirmation that no profiling is performed. If the company is the provider: assessment documented before putting into service and registration (Articles 6(4) and 49(2)).</td>
 <td>No → <strong>High risk</strong> (Annex III; obligations from 2-12-2027) and step 7. Yes → step 7 with the exception documented.</td>
 </tr>
@@ -1392,7 +1403,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li><strong>&quot;Pending classification&quot; has a time limit.</strong> No system may pass G3 or remain in production beyond the time limit approved in C2 with a pending classification.</li>
 <li><strong>Application dates do not delay classification.</strong> An Annex III high-risk system is classified as such from today, even if its obligations apply from 2-12-2027; this way, the design incorporates the requirements in time. For systems already in service before those dates, the transitional regime of Article 111 in its current version must be analysed.</li>
 <li><strong>The Article 6(3) exception is applied restrictively</strong> and is reviewed if the degree of influence of the system on the decision changes.</li>
-<li><strong>Other legislation is assessed in parallel.</strong> The tree covers the AI Act; data protection, sector-specific regulation, DORA or NIS2 are mapped in document 34 and may require controls even if the system is minimal risk.</li>
+<li><strong>Other legislation is assessed in parallel.</strong> The tree covers the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>; data protection, sector-specific regulation, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> are mapped in document 34 and may require controls even if the system is minimal risk.</li>
 </ol>
 <h3 id="5-4-illustrative-examples">5.4 Illustrative examples</h3>
 <p><em>Fictitious cases for teaching purposes. The actual classification depends on the specific analysis.</em></p>
@@ -1455,7 +1466,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>When it is mandatory</strong></td>
-<td>Where a type of processing, in particular using new technologies, is likely to result in a high risk to rights and freedoms. Article 35(3) requires it in particular in the case of: a) a systematic and extensive evaluation of personal aspects based on automated processing, including profiling, on which decisions producing legal or similarly significant effects are based; b) large-scale processing of special categories of data or of data relating to criminal convictions and offences; c) systematic monitoring of a publicly accessible area on a large scale. The lists of processing operations requiring an assessment published by the competent supervisory authority (in Spain, the Spanish Data Protection Agency) must also be consulted.</td>
+<td>Where a type of processing, in particular using new technologies, is likely to result in a high risk to rights and freedoms. Article 35(3) requires it in particular in the case of: a) a systematic and extensive evaluation of personal aspects based on automated processing, including profiling, on which decisions producing legal or similarly significant effects are based; b) large-scale processing of special categories of data or of data relating to criminal convictions and offences; c) systematic monitoring of a publicly accessible area on a large scale. The <a class="ref-ext" href="https://www.aepd.es/documento/listas-dpia-en-35-4.pdf" target="_blank" rel="noopener" title="List of the types of data processing that require a data protection impact assessment (Art. 35(4) GDPR)">lists of processing operations requiring an assessment</a> published by the competent supervisory authority (in Spain, the <a class="ref-ext" href="https://www.aepd.es/en" target="_blank" rel="noopener" title="Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)">Spanish Data Protection Agency</a>) must also be consulted.</td>
 </tr>
 <tr>
 <td><strong>Who carries it out</strong></td>
@@ -1466,12 +1477,12 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Phase 3 (before G3) and updated in phase 4 with the design. Always before processing begins.</td>
 </tr>
 <tr>
-<td><strong>Relationship with the AI Act</strong></td>
+<td><strong>Relationship with the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a></strong></td>
 <td>The deployer of a high-risk system uses the information from the provider (Article 13) to carry it out (Article 26(9)). The fundamental rights impact assessment complements it (Article 27(4)).</td>
 </tr>
 <tr>
 <td><strong>Prior consultation</strong></td>
-<td>If the residual risk remains high, consultation of the supervisory authority (GDPR, Article 36). In SEVEN-G, in addition, High or Critical residual risk with its level of acceptance (document 30 §7.2).</td>
+<td>If the residual risk remains high, consultation of the supervisory authority (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 36). In SEVEN-G, in addition, High or Critical residual risk with its level of acceptance (document 30 §7.2).</td>
 </tr>
 <tr>
 <td><strong>Template</strong></td>
@@ -1502,7 +1513,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Notification</strong></td>
-<td>The deployer notifies the market surveillance authority of the results, using the template provided by the European AI Office, under the terms of Article 27(3).</td>
+<td>The deployer notifies the market surveillance authority of the results, using the template provided by the <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener" title="European AI Office (European Commission)">European AI Office</a>, under the terms of Article 27(3).</td>
 </tr>
 <tr>
 <td><strong>Temporal applicability</strong></td>
@@ -1510,7 +1521,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Voluntary use</strong></td>
-<td>Where it is not mandatory, the company <strong>may</strong> use its structure for systems involving significant decisions about people. It may draw on ISO/IEC 42005:2025 (AI system impact assessment).</td>
+<td>Where it is not mandatory, the company <strong>may</strong> use its structure for systems involving significant decisions about people. It may draw on <a class="ref-ext" href="https://www.iso.org/standard/42005" target="_blank" rel="noopener" title="ISO/IEC 42005:2025 Information technology — Artificial intelligence (AI) — AI system impact assessment">ISO/IEC 42005:2025</a> (AI system impact assessment).</td>
 </tr>
 <tr>
 <td><strong>Template</strong></td>
@@ -1855,7 +1866,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Procurement</td>
 </tr>
 <tr>
-<td>AI supplier register (T09) and ICT third-party provider register (DORA, where applicable)</td>
+<td>AI supplier register (T09) and ICT third-party provider register (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, where applicable)</td>
 <td>Suppliers with AI services without a linked system.</td>
 <td>Second line</td>
 </tr>
@@ -1870,7 +1881,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Technology</td>
 </tr>
 <tr>
-<td>Records of processing activities (GDPR, Article 30)</td>
+<td>Records of processing activities (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 30)</td>
 <td>Processing operations that mention profiling, scoring, automation or AI.</td>
 <td>Data protection</td>
 </tr>
@@ -2042,7 +2053,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p>This document does not constitute legal advice. The regulatory classification of each system must be carried out with qualified legal judgement and with the consolidated text in force of Regulation (EU) 2024/1689 and the guidelines of the European Commission.</p>
+<p>This document does not constitute legal advice. The regulatory classification of each system must be carried out with qualified legal judgement and with the consolidated text in force of <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a> and the guidelines of the European Commission.</p>
 <hr />
 <h2 id="version-control"><span class="antetitulo">12</span>Version control</h2>
 <div class="tabla"><table>
@@ -2057,11 +2068,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Defines the scope of the inventory by type of use, the fields with type, mandatory status and value lists consistent with the taxonomy in 03, the roles under the AI Act (including Article 25 and general-purpose models), the nine-step classification tree, the resulting assessments (data protection, fundamental rights, conformity), the registration, review and removal procedures, the quality indicators and the reconciliation to detect uninventoried systems. Incorporates the application dates amended by Regulation (EU) 2026/1744 (consulted on 16-09-2026). Proposes the code <code>SIA-AAAA-NNN</code>.</td>
+<td>First version. Defines the scope of the inventory by type of use, the fields with type, mandatory status and value lists consistent with the taxonomy in 03, the roles under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> (including Article 25 and general-purpose models), the nine-step classification tree, the resulting assessments (data protection, fundamental rights, conformity), the registration, review and removal procedures, the quality indicators and the reconciliation to detect uninventoried systems. Incorporates the application dates amended by Regulation (EU) 2026/1744 (consulted on 16-09-2026). Proposes the code <code>SIA-AAAA-NNN</code>.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European AI Office (European Commission)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.aepd.es/en" target="_blank" rel="noopener">Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act" target="_blank" rel="noopener">Commission Guidelines on prohibited artificial intelligence practices established by Regulation (EU) 2024/1689 (AI Act)</a><span> · Comisi&#243;n Europea · 04-02-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener">Commission Guidelines on the definition of an artificial intelligence system established by Regulation (EU) 2024/1689 (AI Act)</a><span> · Comisi&#243;n Europea · 06-02-2025</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/library/draft-commission-guidelines-classification-high-risk-ai-systems" target="_blank" rel="noopener">Draft Commission guidelines on the classification of high-risk AI systems</a><span> · Comisi&#243;n Europea · 19-05-2026</span></li><li><a href="https://www.aepd.es/documento/listas-dpia-en-35-4.pdf" target="_blank" rel="noopener">List of the types of data processing that require a data protection impact assessment (Art. 35(4) GDPR)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos · 06-05-2019</span></li><li><a href="https://www.iso.org/standard/42005" target="_blank" rel="noopener">ISO/IEC 42005:2025 Information technology — Artificial intelligence (AI) — AI system impact assessment</a><span> · ISO/IEC (JTC 1/SC 42) · 28-05-2025</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

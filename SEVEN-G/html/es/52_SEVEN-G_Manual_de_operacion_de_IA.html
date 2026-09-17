@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Manual de operación de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1011,7 +1022,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Nueva clasificación (T07) y determinación de intensidad (T04).</td>
 </tr>
 <tr>
-<td>Modificación que pueda considerarse sustancial según el Reglamento Europeo de IA en un sistema de alto riesgo</td>
+<td>Modificación que pueda considerarse sustancial según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> en un sistema de alto riesgo</td>
 <td><strong>G3</strong>, con análisis jurídico</td>
 <td>Puede exigir una nueva evaluación de la conformidad y, en determinados supuestos, convertir al responsable del despliegue en proveedor (arts. 3.23 y 25; <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 </tr>
@@ -1064,7 +1075,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>S1 · Crítica</strong></td>
-<td>Posible incidente grave según el Reglamento Europeo de IA; incidente grave según DORA o NIS2 cuando apliquen; daño material significativo a personas, clientes, dinero o derechos; o pérdida de control de un sistema que actúa.</td>
+<td>Posible incidente grave según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>; incidente grave según <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> cuando apliquen; daño material significativo a personas, clientes, dinero o derechos; o pérdida de control de un sistema que actúa.</td>
 <td>Agente que ejecuta pagos o comunicaciones no autorizadas a clientes; discriminación sistemática en decisiones sobre personas; exposición masiva de datos personales.</td>
 <td>Triaje en 1 hora, a cualquier hora; coordinador inmediato; comité de IA en 4 horas; comisión delegada en 24 horas.</td>
 <td>Comité de IA y comisión delegada del consejo; autoridades cuando proceda.</td>
@@ -1127,7 +1138,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Arts. 73 y 26.5</td>
 </tr>
 <tr>
-<td><strong>RGPD</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a></strong></td>
 <td>Violación de la seguridad de datos personales: notificación a la autoridad de control sin dilación indebida y, cuando sea posible, en 72 horas; comunicación a los interesados si hay alto riesgo.</td>
 <td>Arts. 33 y 34</td>
 </tr>
@@ -1235,7 +1246,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p>Omitir una R6 es una <strong>no conformidad mayor</strong> (01 §12).</p>
 <hr />
 <h2 id="vigilancia-posterior-a-la-comercializacion"><span class="antetitulo">09</span>Vigilancia posterior a la comercialización</h2>
-<p>El Reglamento Europeo de IA exige a los <strong>proveedores</strong> de sistemas de alto riesgo establecer y documentar un <strong>sistema de vigilancia posterior a la comercialización</strong>, basado en un plan, que recopile y analice de forma activa y sistemática datos sobre el funcionamiento del sistema durante su vida útil para evaluar el cumplimiento continuo (art. 72). Los <strong>responsables del despliegue</strong> deben vigilar el funcionamiento conforme a las instrucciones de uso, informar al proveedor cuando proceda y, si consideran que el uso puede presentar un riesgo, informar y suspender el uso (art. 26.5). Las obligaciones de alto riesgo se aplican desde el 2 de diciembre de 2027 (anexo III) y el 2 de agosto de 2028 (anexo I), tras el Reglamento (UE) 2026/1744; el calendario y las demás modificaciones se tratan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
+<p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> exige a los <strong>proveedores</strong> de sistemas de alto riesgo establecer y documentar un <strong>sistema de vigilancia posterior a la comercialización</strong>, basado en un plan, que recopile y analice de forma activa y sistemática datos sobre el funcionamiento del sistema durante su vida útil para evaluar el cumplimiento continuo (art. 72). Los <strong>responsables del despliegue</strong> deben vigilar el funcionamiento conforme a las instrucciones de uso, informar al proveedor cuando proceda y, si consideran que el uso puede presentar un riesgo, informar y suspender el uso (art. 26.5). Las obligaciones de alto riesgo se aplican desde el 2 de diciembre de 2027 (anexo III) y el 2 de agosto de 2028 (anexo I), tras el Reglamento (UE) 2026/1744; el calendario y las demás modificaciones se tratan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
 <ul>
 <li><strong>Como proveedor</strong> (también si lo pasa a ser por modificación sustancial o cambio de finalidad): plan de vigilancia integrado en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, con los datos que se recogen, su análisis periódico y la conexión con riesgos, cambios, incidentes y R6.</li>
 <li><strong>Como responsable del despliegue:</strong> monitorización conforme a las instrucciones del proveedor, canal para informarle, criterio de suspensión y conservación de registros (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
@@ -1279,7 +1290,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <ol>
 <li>El <strong>plan de reversión</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) se prueba antes de G5 y <strong>periódicamente</strong> en producción: al menos anual en Lite y semestral en Enterprise, y tras cada cambio sustancial (OPE-15).</li>
 <li>El plan identifica las <strong>personas y capacidades</strong> necesarias para operar sin el sistema y se coordina con el <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> (sección 5.4).</li>
-<li>Para sistemas que soportan una <strong>función crítica o importante</strong>, el tiempo máximo de recuperación y la pérdida máxima de datos admisible se fijan en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y se alinean con el plan de continuidad de negocio y, cuando aplique, con DORA.</li>
+<li>Para sistemas que soportan una <strong>función crítica o importante</strong>, el tiempo máximo de recuperación y la pérdida máxima de datos admisible se fijan en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y se alinean con el plan de continuidad de negocio y, cuando aplique, con <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>.</li>
 <li>La <strong>dependencia de un proveedor</strong> se valora en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> con una estrategia de salida (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
 </ol>
 <hr />
@@ -1302,7 +1313,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td><strong>Reglamento Europeo de IA, arts. 12, 19 y 26.6</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, arts. 12, 19 y 26.6</strong></td>
 <td>Los sistemas de alto riesgo permiten el registro automático de eventos. Proveedores y responsables del despliegue conservan los registros generados automáticamente que estén bajo su control durante un periodo adecuado a la finalidad prevista, <strong>de al menos seis meses</strong>, salvo que otra norma aplicable disponga otra cosa.</td>
 <td>Mínimo de seis meses para sistemas de alto riesgo, ampliable según la finalidad, la normativa sectorial y los plazos de reclamación.</td>
 </tr>
@@ -1312,7 +1323,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Aplica cuando la compañía es proveedor.</td>
 </tr>
 <tr>
-<td><strong>RGPD, art. 5.1.c y e</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, art. 5.1.c y e</strong></td>
 <td>Minimización y limitación del plazo de conservación.</td>
 <td>Los registros con datos personales se limitan a lo necesario, con seudonimización cuando sea posible y plazo definido.</td>
 </tr>
@@ -1654,7 +1665,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

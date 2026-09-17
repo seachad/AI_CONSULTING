@@ -617,6 +617,7 @@ The **first ninety days** concentrate C1 to C3 (document 01, section 5.3). The d
 | **50 · People and organisation** and **51 · Data and knowledge** | Development of spheres 03, 05 and 06. |
 | **61 · Board conversation guide** | Full sixty-minute script. |
 | **90 · Implementation guide** | Detailed plan for the first ninety days. |
+| **SPHERES** · [SPHERES Library](../../../SPHERES/html/en/index.html) | Supporting methodology that explains the spheres, the ambition levels and the conversation with the board in detail and with examples. |
 
 ---
 

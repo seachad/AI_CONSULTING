@@ -8,13 +8,31 @@ Todo lo que genera el conector (panel completo, panel móvil y registro de recom
 
 ---
 
-Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versión `0.1`) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
+Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1` y `0.2`) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
 
 - el **panel completo** y el **panel móvil** (T17), sincronizados (misma huella de datos);
 - el **JSON del panel**, para inspeccionarlo o guardarlo como foto con `motor/snapshot.py`;
 - el **registro de recomendaciones** (T18), si T01 trae recomendaciones.
 
 Especificación: documento 03 (§5.4, T17 y T18; §2, principios) y documento 60 (paquete del consejo).
+
+## Patrón: del registro al panel
+
+```mermaid
+flowchart LR
+  A["Registro T01<br>(uno o varios JSON)"] --> C["t01_a_panel.py<br>(conector)"]
+  B["config_panel.json<br>umbrales y ciclo de vida"] --> C
+  C --> D["dashboard_data.json<br>(JSON del panel)"]
+  D --> E["motor/<br>build_dashboard.py"]
+  E --> F["Panel completo"]
+  E --> G["Panel móvil"]
+  D --> H["motor/snapshot.py<br>foto de cada sesión"]
+```
+
+- **El registro T01 es la única entrada de datos.** Cada iniciativa se da de alta en T01 como una oportunidad en un CRM; el conector no añade ni estima nada.
+- **`config_panel.json` es la configuración general** del panel: umbrales del semáforo de los indicadores (`umbrales_kpi`) y reglas del ciclo de vida (`ciclo_vida`: etapas del embudo, salidas, límites de días por etapa y correspondencia con las fases 0–7 de SEVEN-G). El conector la copia en `meta`; las claves que empiezan por `_` son comentarios.
+- **Todo lo que muestra el panel sale del JSON del panel**; los HTML nunca se editan a mano y se pueden reconstruir en cualquier momento desde el registro.
+- **Por qué importa.** El consejo ve el mismo dato que gestiona la Oficina de IA: una iniciativa que entra en una fase, supera un *gate* o se para en T01 se mueve por el embudo del panel con la fecha real del evento, sin doble captura ni cifras escritas a mano.
 
 [English version](README_en.md) · [Página del conector](index.html)
 
@@ -23,7 +41,8 @@ Especificación: documento 03 (§5.4, T17 y T18; §2, principios) y documento 60
 | Fichero | Contenido |
 |---|---|
 | `t01_a_panel.py` | El conector: mapeo T01 → esquema del panel y generación con el motor. Solo biblioteca estándar. |
-| `motor/` | El motor del panel: `build_dashboard.py` (panel completo), `panel_movil.py`, `panel_core.py` (núcleo JavaScript común), `economia.py`, `glosario.py`, `snapshot.py`, `ESQUEMA.md` (esquema del JSON) y `demo_lib.py` (plantilla del registro de recomendaciones). Copia mantenida en AI_CONSULTING desde el 17-09-2026; origen: `AI_en_el_consejo/motor` (MIT, mismo autor). A partir de ahora el motor evoluciona aquí. |
+| `config_panel.json` | Configuración general del panel: `umbrales_kpi` y `ciclo_vida` (embudo, salidas, límites de días y etapa de cada fase de SEVEN-G). Valores de partida, a calibrar por cada organización. |
+| `motor/` | El motor del panel, **versión 8** (embudo y ciclo de vida, umbrales configurables): `build_dashboard.py` (panel completo), `panel_movil.py`, `panel_core.py` (núcleo JavaScript común), `economia.py`, `glosario.py`, `snapshot.py`, `ESQUEMA.md` (esquema del JSON) y `demo_lib.py` (plantilla del registro de recomendaciones). Copia mantenida en AI_CONSULTING; origen: `AI_en_el_consejo/motor` (MIT, mismo autor). |
 | `publicacion_panel.py` | Aviso legal, pie de autoría, inserción del aviso en el panel móvil y página del registro de recomendaciones. Lo importa el conector desde esta carpeta. |
 | `index.html` | Página del conector (ES/EN, sin servidor ni recursos externos) con los enlaces a la demo y el aviso legal. |
 | `ejemplo/salida/` | Demo generada con los datos ficticios de T01. Nunca se editan a mano los HTML: se regeneran con el conector. |
@@ -46,14 +65,14 @@ uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta [--sigla CA]
 
 | Opción | Qué hace |
 |---|---|
-| `--t01` | JSON completo exportado desde T01 (**Datos → Exportar JSON completo**). No sirve el CSV ni la exportación «para el panel». Por defecto, `../T01_registro_iniciativas/datos_demo.json` (datos ficticios). |
+| `--t01` | JSON completo exportado desde T01 (**Datos → Exportar JSON completo**). No sirve el CSV. Por defecto, `../T01_registro_iniciativas/datos_demo.json` (datos ficticios). |
 | `--salida` | Carpeta de salida. Se crea si no existe. Por defecto, `./ejemplo/salida`. |
 | `--sigla` | Siglas del consejo asesor que aparecen en los textos. Por defecto, «consejo asesor». |
 | `--organizacion` | Nombre de la organización. Por defecto, `meta.organizacion` de T01. |
 | `--prefijo` | Prefijo de los ficheros. Por defecto, `t01_`. |
 | `--panel` | Opcional: usar otro motor, indicando un checkout del repositorio *AI en el Consejo*. Por defecto, `./motor`. |
 
-Ficheros que genera: `<prefijo>Dashboard_Casos_Uso_IA_v7.html`, `<prefijo>Dashboard_Movil_IA_v7.html`, `<prefijo>dashboard_data.json` y, si hay recomendaciones, `<prefijo>Registro_Recomendaciones.html`.
+Ficheros que genera: `<prefijo>Dashboard_Casos_Uso_IA_v8.html`, `<prefijo>Dashboard_Movil_IA_v8.html`, `<prefijo>dashboard_data.json` y, si hay recomendaciones, `<prefijo>Registro_Recomendaciones.html`.
 
 Si `meta.datos_ilustrativos` de T01 es `true`, los textos dicen que los datos son ficticios; si no, llevan una versión del aviso legal para datos propios.
 
@@ -61,24 +80,35 @@ El conector no escribe `__pycache__` (`sys.dont_write_bytecode`).
 
 ## Demo
 
-`uv run python t01_a_panel.py` sin argumentos convierte `../T01_registro_iniciativas/datos_demo.json` (compañía, personas y proveedores ficticios) en `ejemplo/salida/` y enlaza los pies a `index.html`. Es la demo que abre la página del conector. Nunca se editan a mano los HTML generados.
+`uv run python t01_a_panel.py` sin argumentos convierte `../T01_registro_iniciativas/datos_demo.json` (compañía, personas y proveedores ficticios) en `ejemplo/salida/` y enlaza los pies a `index.html` y al registro T01. Es el panel de ejemplo que abren el registro de iniciativas (cabecera y banda de «iniciativas de ejemplo») y la página del conector. Si cambian los datos de demostración o `config_panel.json`, se regenera. Nunca se editan a mano los HTML generados.
 
 ## Principios del mapeo
 
 1. **«Sin dato» no es cero.** Lo que T01 no registra queda a `null` (o lista vacía) y el panel lo muestra como «sin dato» (documento 03 §2, principio 7).
-2. **El conector no modifica el motor.** Se usan sus claves heredadas: `estimado_cati` para los importes estimados y `acciones_estimadas_cati` (a `null`). Los cambios del motor (renombrar claves, leer `seveng`, aviso legal nativo) están propuestos en `PROPUESTA_MOTOR.md` y se aplicarán en `motor/`.
-3. **Una sola fuente.** Todo sale del JSON de T01; no se añaden estimaciones (documento 03 §2, principio 1).
+2. **El conector no modifica el motor.** Se usan sus claves heredadas: `estimado_cati` para los importes estimados y `acciones_estimadas_cati` (a `null`). Las etapas del embudo, los límites de días y los umbrales se adaptan a SEVEN-G con `config_panel.json`, sin tocar el motor. Los cambios internos pendientes (renombrar claves, leer `seveng`, aviso legal nativo) están propuestos en `PROPUESTA_MOTOR.md`.
+3. **Una sola fuente y una sola correspondencia.** Todo sale del JSON de T01; no se añaden estimaciones (documento 03 §2, principio 1). El registro no construye el JSON del panel en el navegador: la única correspondencia T01 → panel es la de este conector.
 
 ## Estado del panel
 
-El panel solo admite cuatro estados. Se derivan del estado y la fase de T01, en este orden:
+El estado de cada caso es una etapa del embudo o una salida, definidas en `config_panel.json` (`ciclo_vida`). Cada fase de SEVEN-G corresponde a una etapa (`ciclo_vida.fases_seven_g`):
 
-| Condición en T01 | Estado del panel | Por qué |
+| Fase en T01 | Etapa del embudo | Por qué |
 |---|---|---|
-| Estado `parada` o `retirada`, o iniciativa con `cierre` | `Desenganchado` | Cerrada: ya no consume ni aporta. |
-| Estado `en_produccion` o `pendiente_g7`, o fase 6–7 | `En uso` | Superado G5: está operando. |
-| Fase 4–5 (con cualquier otro estado: en fase, pendiente de *gate*, en espera) | `En desarrollo` | Superado G3: se diseña, construye y valida. |
-| Fase 0–3 (registrada, en fase, pendiente de *gate*, en espera) | `POC` | Antes de G3: exploración, hipótesis y viabilidad. |
+| 0 Contexto y restricciones · 1 Descubrimiento | `Propuesto` | La idea está registrada y se explora; aún no hay hipótesis de valor. |
+| 2 Hipótesis de valor | `Hipótesis de valor` | Superado G1: se formula y aprueba la hipótesis (G2). |
+| 3 Viabilidad y riesgo | `POC` | Superado G2: se comprueba que es viable (datos, técnica, riesgo) antes de construir. |
+| 4 Diseño de la solución · 5 Entrega y validación | `En desarrollo` | Superado G3: se diseña, construye y valida. |
+| 6 Operación y gobierno · 7 Evolución o retirada | `En uso` | Superado G5: está operando. Es la etapa «ganada» del embudo. |
+
+Una iniciativa cerrada (estado `parada` o `retirada`, o con `cierre`) pasa a la salida prevista para la etapa en la que estaba:
+
+| Cierre en T01 | Salida del panel |
+|---|---|
+| Parada en las fases 0–1 | `No aprobado` |
+| Parada en las fases 2–5 | `Descartado` |
+| Retirada (o parada) en las fases 6–7 | `Desenganchado` |
+
+**Ciclo de vida como en un CRM (`reporte_compania.historial_estados`).** El conector genera un cambio de estado por cada vez que la iniciativa entra en una etapa: el alta (fecha de registro), cada evento `entrada_fase` de T01 —incluidas las vueltas atrás por pivotar o iterar, que el panel señala— y, si está cerrada, la fecha del cierre. Las entradas consecutivas en la misma etapa se agrupan (fases 0 y 1, 4 y 5, 6 y 7). Con ese historial el panel calcula el tiempo en cada etapa (media, mediana y desviación de cada caso), la conversión a producción, los casos atascados frente a `ciclo_vida.dias_limite` y las entradas, ganados y perdidos por trimestre. El último estado del historial coincide siempre con el estado del caso.
 
 La fase y el estado originales se conservan en `casos[].seveng`.
 
@@ -89,12 +119,12 @@ La fase y el estado originales se conservan en `casos[].seveng`.
 | Panel | Origen en T01 | Nota |
 |---|---|---|
 | `organizacion`, `compania_principal` | `--organizacion` o `meta.organizacion` | |
-| `consejo_sigla` | `--sigla` | T01 no lo registra; por defecto «consejo asesor». |
+| `consejo_sigla` | `--sigla`; si no, `meta.panel.consejo_sigla` | Por defecto «consejo asesor». |
 | `generado`, `ejercicio_valor`, `periodo` | `meta.fecha_referencia` (o `meta.generado`) | Etiqueta «Registro de iniciativas T01 · corte dd-mm-aaaa»; trimestre calculado de la fecha. `periodo.anterior` sin dato. |
 | `prefijo_ficheros` | `--prefijo` | |
 | `demo` | `meta.datos_ilustrativos` | |
-| `textos` | Generados por el conector | Aviso legal, aviso de valor, pie con autoría y textos de «sin dato». |
-| `glosario_extra` | Generado por el conector | SEVEN-G, T01, G3, G5, R6 y ambición. |
+| `textos` | Generados por el conector | Aviso legal, aviso de valor, pie con autoría, textos de «sin dato» y rótulos de los conceptos de eficiencias y retorno neutros respecto al sector. |
+| `glosario_extra` | Generado por el conector | SEVEN-G, T01, G3, G5, R6, ambición y correspondencia entre etapas del embudo y fases. |
 | `origen` | `version_esquema` y versión del conector | Bloque propio; el panel no lo lee. |
 
 ### `casos[]` (una por iniciativa)
@@ -106,15 +136,15 @@ La fase y el estado originales se conservan en `casos[].seveng`.
 | `area`, `unidad` | `area` | |
 | `compania` | organización | T01 no tiene grupo de compañías. |
 | `estado` | `ciclo.fase` y `ciclo.estado` | Tabla anterior. |
-| `descripcion` | — | Sin dato: son observaciones del consejo asesor. |
-| `inicio_estimado` | — | Sin dato. Excepción técnica: `""` en casos «En uso» o «Desenganchado» sin fecha de producción, para que el motor actual no escriba «null (año estimado)». |
+| `descripcion` | `panel.observaciones_consejo` | Observaciones del consejo asesor; sin dato si no se informan. |
+| `inicio_estimado` | — | Sin dato. Excepción técnica: `""` en casos en uso o cerrados sin fecha de producción, para que el motor no escriba «null (año estimado)». |
 | `tags.tecnologia` | `clasificacion.tecnologia` | Una etiqueta para filtrar: `agente` si está; si no, `ia_generativa`; si no, la primera. Vocabulario del panel (`Agéntico`, `GenAI`, `ML predictivo`, `NLP / IDP`, `Visión artificial`, `Optimización`, `IA de tercero`, `Reglas (no es IA)`), que el motor usa para detectar agentes. |
 | `tags.naturaleza` | Derivada de la tecnología principal | |
 | `tags.exposicion` | `clasificacion.exposicion` | `interna` → Interno · `empleados` → Empleado · `clientes_indirecta` → Cliente (indirecta) · `clientes_directa` → Cliente / persona externa (directa). |
 | `tags.riesgo`, `detalle.aiact` | `clasificacion.regulatoria` | Prohibido · Alto riesgo · Transparencia (art. 50) · Riesgo mínimo · Fuera de ámbito · Por confirmar (`pendiente`). **Es la clasificación del registro**, no una estimación independiente del consejo asesor, aunque el panel la rotule así. |
 | `tags.funcion` | `clasificacion.esfera_principal` | «04 Operaciones», etc. |
 | `tags.ambicion` | `ambicion_real`, si no `ambicion_confirmada`, si no `ambicion_propuesta` | Optimizar · Aumentar · Transformar. |
-| `tags.prioridad` | — | Sin dato. |
+| `tags.prioridad` | `panel.prioridad` | Alta · Media · Baja; sin dato si no se informa. |
 | `detalle.tipo` | `clasificacion.tecnologia` (todas) | |
 | `detalle.proveedores` | `clasificacion.proveedores` → `proveedores[].nombre` | |
 | `detalle.valor_tipo` | `clasificacion.tipo_valor` | |
@@ -134,13 +164,13 @@ Cada importe de `valores` pasa a un *item* con `importe`, `formula`, `estado`, `
 | `inversion.recurrente_potencial` | Valor `coste_recurrente` esperado | |
 | `inversion.adicional_potencial` | `inversion.pendiente` de la ficha (declarado) | |
 | `inversion.desglose_recurrente` | — | Sin dato: T01 no desglosa el coste. |
-| `eficiencias[]` concepto `operativo` | Valores `eficiencias` (realizado → `actual`, esperado → `potencial`) | T01 no distingue personas, herramientas, siniestros, etc. |
+| `eficiencias[]`, una línea por concepto | Valores `eficiencias` (realizado → `actual`, esperado → `potencial`) agrupados por `concepto`: `personas`, `herramientas`, `siniestros` (fraude, recobros y sobrecostes), `operativo`, `penalizaciones` | Sin `concepto` (o en registros 0.1), todo va a `operativo`. |
 | `eficiencias[]` concepto `capacidad_liberada` | Valores `capacidad_liberada` | No suma en el neto. |
-| `retorno[]` concepto `otros` | Valores `retorno` | T01 no distingue venta nueva, retención, etc. |
+| `retorno[]`, una línea por concepto | Valores `retorno` agrupados por `concepto`: `venta_nueva`, `venta_cruzada`, `retencion`, `precio_margen`, `cobros`, `otros` | Sin `concepto`, todo va a `otros`. |
 | `hipotesis_potencial` | Fórmulas de los valores esperados | |
 | `nota_caso` | Fase y estado de T01; importes de `riesgo_evitado` y `cumplimiento` | Se informan como texto: no suman en el neto (regla de T01). |
 | `moneda` | `meta.moneda` | |
-| `plazo_potencial`, `clave_reparto` | — | Sin dato. `comparte_valor_con` vacío. |
+| `plazo_potencial` | `panel.plazo_potencial` (`AAAA-MM`) | Sin dato si no se informa o si la iniciativa está cerrada. |
 
 En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la construcción; sus demás importes se citan en `nota_caso` y no suman en el panel.
 
@@ -163,8 +193,8 @@ En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la constr
 | `controles.RIA` | `clasificacion.regulatoria` | `pendiente` → pendiente; cualquier otra → hecho. |
 | `controles.FRIA` | `evaluaciones_impacto` tipo `eidf` | hecha → hecho · pendiente · no_aplica. |
 | `controles.DPIA` | `evaluaciones_impacto` tipo `eipd` | Igual. |
-| `controles.seguridad`, `MUC`, `IA_ofensiva` | — | Sin dato. |
-| `valor_validado.actual`, `metodo_atribucion`, `validado_por`, `fecha_validacion` | Valores realizados validados de eficiencias y retorno | |
+| `controles.seguridad`, `MUC`, `IA_ofensiva` | `panel.controles.seguridad`, `muc`, `ia_ofensiva` | `hecho` · `pendiente` · `no_aplica`; sin dato si no se informan. |
+| `valor_validado.actual`, `metodo_atribucion`, `validado_por`, `fecha_validacion` | Valores realizados validados de eficiencias y retorno (todas las líneas) | |
 | `valor_validado.objetivo` | Suma de eficiencias y retorno esperados | |
 | `valor_validado.base`, `recurrente`; `coste_real` | — | Sin dato. |
 | `operacion`, `agente`, `proveedor_dora` | — | Sin dato. |
@@ -199,11 +229,11 @@ Vacío: T01 no guarda fotos del panel. Al cierre de cada sesión, desde esta car
 
 ## Qué de T01 no llega al panel
 
-Decisiones y criterios de *gate*, condiciones, evidencias, iteraciones, esperas, plazos y estancadas, T04 y T05, métricas del embudo (conversión, tiempo de decisión, valor ponderado, cohortes), riesgos, no conformidades, proveedores (salvo el nombre), sistemas (salvo su código en `seveng`) y personas (salvo los nombres de responsables y decisores). El motor actual no tiene dónde mostrarlos; la fase, el estado, la intensidad, las esferas y la ambición viajan en `casos[].seveng` para cuando el motor los lea (`PROPUESTA_MOTOR.md`).
+Decisiones y criterios de *gate*, condiciones, evidencias, iteraciones, esperas, plazos y estancadas, T04 y T05, métricas del embudo (conversión, tiempo de decisión, valor ponderado, cohortes), riesgos, no conformidades, proveedores (salvo el nombre), sistemas (salvo su código en `seveng`) y personas (salvo los nombres de responsables y decisores). El motor no tiene dónde mostrarlos. Las esperas tampoco: el panel cuenta el tiempo en cada etapa sin descontarlas, mientras que el análisis de T01 sí las descuenta. La fase, el estado, la intensidad, las esferas y la ambición viajan en `casos[].seveng` (`PROPUESTA_MOTOR.md`).
 
 ## Limitaciones conocidas
 
-- **Motor heredado.** `motor/` es la copia del motor publicado en *AI en el Consejo* a 17-09-2026 (versión de datos 6) y desde entonces evoluciona aquí, con independencia de aquel repositorio. Conserva claves y rótulos pensados para el consejo asesor; `PROPUESTA_MOTOR.md` recoge lo pendiente.
+- **Motor heredado.** `motor/` es la copia de la versión 8 del motor de *AI en el Consejo* (17-09-2026; versión de datos 6) y se mantiene aquí con independencia de aquel repositorio. Conserva claves y rótulos pensados para el consejo asesor (`estimado_cati`, magnitudes VNB y fraude, que aquí quedan sin dato); `PROPUESTA_MOTOR.md` recoge lo pendiente.
 - **Aviso legal en el móvil.** El motor no muestra `meta.textos` en el panel móvil. `publicacion_panel.py` añade el aviso al HTML ya generado, antes del pie, sin cambiar los datos ni la huella. En el panel completo el aviso va en la banda de avisos de la cabecera (`aviso_previo`) y, en versión corta, en el pie.
 - **`tags.riesgo`.** El panel la rotula como estimación del consejo asesor; aquí es la clasificación registrada en T01.
 - **Estado «estimado».** El panel lo atribuye al consejo asesor; en T01 lo estima el equipo. El aviso de valor lo aclara.

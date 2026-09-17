@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Governance and human oversight design"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -526,7 +537,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>Are there decisions based solely on automated processing with legal or similarly significant effects?</td>
 <td></td>
-<td>Yes · No · To be determined. If Yes or To be determined, data protection must analyse Article 22 of the GDPR.</td>
+<td>Yes · No · To be determined. If Yes or To be determined, data protection must analyse Article 22 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>.</td>
 </tr>
 <tr>
 <td>Consequence of a system error</td>
@@ -781,7 +792,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p>In high-risk systems, these requirements are checked against Article 14 of the EU AI Act (document 34).</p>
+<p>In high-risk systems, these requirements are checked against Article 14 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> (document 34).</p>
 <hr />
 <h2 id="transparency-and-rights-of-affected-persons"><span class="antetitulo">08</span>Transparency and rights of affected persons</h2>
 <div class="tabla"><table>
@@ -947,7 +958,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>7</td>
-<td>Data protection has reviewed the applicability of Article 22 of the GDPR where appropriate.</td>
+<td>Data protection has reviewed the applicability of Article 22 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> where appropriate.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1021,7 +1032,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

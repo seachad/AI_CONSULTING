@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Prepara la copia pública del sitio AI Consulting (portada + SEVEN-G) para GitHub Pages.
+  Prepara la copia pública del sitio AI Consulting (portada + SEVEN-G + SPHERES) para GitHub Pages.
 
 .DESCRIPTION
   El repositorio AI_CONSULTING es privado y contiene material interno. Este script copia SOLO lo publicable
@@ -9,12 +9,14 @@
 
     index.html                      portada en español (entrada del sitio)
     en/index.html                   portada en inglés
-    SEVEN-G/html/<idioma>/...       documentos e índice de la biblioteca
-    SEVEN-G/pdf/<idioma>/...        PDF
+    SEVEN-G/html/<idioma>/...       documentos e índice de la biblioteca SEVEN-G
+    SEVEN-G/pdf/<idioma>/...        PDF de SEVEN-G
     SEVEN-G/herramientas/...        herramientas sin servidor (T01…)
+    SPHERES/html/<idioma>/...       documentos e índice de la biblioteca SPHERES
+    SPHERES/pdf/<idioma>/...        PDF de SPHERES
     LICENSE, LICENCIA_CONTENIDOS.md, .nojekyll, README.md
 
-  Nunca copia `_trabajo`, `_legacy`, `.claude`, `build/`, las fuentes de SPAD o SPHERES ni ficheros que empiezan por `_`.
+  Nunca copia `_trabajo`, `_legacy`, `.claude`, `build/`, las fuentes Markdown (salvo -ConFuentes), SPAD ni ficheros que empiezan por `_`.
   Se detiene si encuentra textos internos (`_trabajo`, `notas_internas`, `OneDrive`, rutas `C:\SEACHAD`) o
   cualquiera de los términos prohibidos de la lista privada -TerminosProhibidos (un término por línea; p. ej.,
   nombres de clientes). Esa lista NO debe estar en ningún repositorio.
@@ -24,7 +26,7 @@
 .EXAMPLE
   pwsh -File SEVEN-G/build/publicar.ps1                      # genera todo y prepara la copia
   pwsh -File SEVEN-G/build/publicar.ps1 -SinGenerar          # usa las salidas ya generadas
-  pwsh -File SEVEN-G/build/publicar.ps1 -ConFuentes          # incluye también SEVEN-G/mds/es y en (sin _trabajo)
+  pwsh -File SEVEN-G/build/publicar.ps1 -ConFuentes          # incluye también <metodología>/mds/es y en (sin _trabajo)
 #>
 param(
   [string]$Destino = 'C:\SEACHAD\ai-consulting',
@@ -49,7 +51,7 @@ if (Test-Path $destinoAbs) {
 }
 
 if (-not $SinGenerar) {
-  Write-Host 'Generando HTML y PDF de SEVEN-G...'
+  Write-Host 'Generando HTML y PDF de SEVEN-G y SPHERES...'
   & pwsh -NoProfile -File (Join-Path $PSScriptRoot 'build.ps1')
   if ($LASTEXITCODE) { throw 'La generación ha fallado.' }
 }
@@ -70,14 +72,17 @@ foreach ($f in @('index.html', 'en\index.html', 'LICENSE', 'LICENCIA_CONTENIDOS.
   $o = Join-Path $raiz $f
   if (Test-Path $o) { Copiar $o $f } else { Write-Warning "No existe $f" }
 }
-$carpetas = @('html', 'pdf', 'herramientas'); if ($ConFuentes) { $carpetas += 'mds' }
-foreach ($c in $carpetas) {
-  $origen = Join-Path $sevenG $c
-  if (-not (Test-Path $origen)) { continue }
-  foreach ($f in (Get-ChildItem $origen -Recurse -File)) {
-    $rel = [IO.Path]::GetRelativePath($raiz, $f.FullName)
-    if ("\$rel" -match $excluir) { continue }
-    Copiar $f.FullName $rel
+$publicables = @{ 'SEVEN-G' = @('html', 'pdf', 'herramientas'); 'SPHERES' = @('html', 'pdf') }
+foreach ($metodologia in $publicables.Keys) {
+  $carpetas = $publicables[$metodologia]; if ($ConFuentes) { $carpetas += 'mds' }
+  foreach ($c in $carpetas) {
+    $origen = Join-Path $raiz "$metodologia\$c"
+    if (-not (Test-Path $origen)) { continue }
+    foreach ($f in (Get-ChildItem $origen -Recurse -File)) {
+      $rel = [IO.Path]::GetRelativePath($raiz, $f.FullName)
+      if ("\$rel" -match $excluir) { continue }
+      Copiar $f.FullName $rel
+    }
   }
 }
 Set-Content -Path (Join-Path $destinoAbs '.nojekyll') -Value '' -Encoding utf8

@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Nonconformities, AI incidents and remediation"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -416,20 +427,20 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Event that could have caused harm but did not, thanks to a control or by chance. It is recorded as S4.</td>
 </tr>
 <tr>
-<td><strong>Serious incident</strong> (AI Act)</td>
+<td><strong>Serious incident</strong> (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>)</td>
 <td>An incident or malfunctioning of an AI system that directly or indirectly leads to the death of a person or serious harm to a person's health; a serious and irreversible disruption of the management or operation of critical infrastructure; the infringement of obligations under Union law intended to protect fundamental rights; or serious harm to property or the environment (Art. 3(49)).</td>
 </tr>
 <tr>
 <td><strong>Personal data breach</strong></td>
-<td>A breach of security leading to the accidental or unlawful destruction, loss or alteration of, or unauthorised disclosure of, or access to, personal data (GDPR Art. 4(12)).</td>
+<td>A breach of security leading to the accidental or unlawful destruction, loss or alteration of, or unauthorised disclosure of, or access to, personal data (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> Art. 4(12)).</td>
 </tr>
 <tr>
 <td><strong>Major ICT-related incident</strong></td>
-<td>Incident that meets the DORA classification criteria (Art. 18 and its implementing measures).</td>
+<td>Incident that meets the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> classification criteria (Art. 18 and its implementing measures).</td>
 </tr>
 <tr>
 <td><strong>Significant incident</strong></td>
-<td>Incident that meets the criteria of Art. 23(3) of NIS2 as transposed into national law.</td>
+<td>Incident that meets the criteria of Art. 23(3) of <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> as transposed into national law.</td>
 </tr>
 </tbody>
 </table></div>
@@ -438,7 +449,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <ul>
 <li><strong>Regulation (EU) 2024/1689</strong> (AI Act), Arts. 3(49), 26(5), 72 and 73, as amended by Regulation (EU) 2026/1744 (Digital Omnibus on AI), which does not alter Art. 73 but postpones to 2 December 2027 the obligations for the high-risk systems listed in Annex III.</li>
 <li><strong>Regulation (EU) 2016/679 (GDPR)</strong>, Arts. 33 and 34.</li>
-<li><strong>Regulation (EU) 2022/2554 (DORA)</strong>, Arts. 17 to 19, and Commission Delegated Regulation (EU) 2025/301 on the content and time limits of reports.</li>
+<li><strong>Regulation (EU) 2022/2554 (DORA)</strong>, Arts. 17 to 19, and <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/eng" target="_blank" rel="noopener" title="Commission Delegated Regulation (EU) 2025/301 of 23 October 2024 supplementing Regulation (EU) 2022/2554 with regard to regulatory technical standards specifying the content and time limits for the initial notification of, and intermediate and final report on, major ICT-related incidents, and the content of the voluntary notification for significant cyber threats">Commission Delegated Regulation (EU) 2025/301</a> on the content and time limits of reports.</li>
 <li><strong>Directive (EU) 2022/2555 (NIS2)</strong>, Art. 23. In Spain, the transposition act was still going through the legislative process according to the latest information consulted (July 2026).</li>
 <li><strong>ISO/IEC 42001</strong>, nonconformity and corrective action requirement (clause 10.2).</li>
 </ul>
@@ -851,7 +862,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>S1 · Critical</strong></td>
-<td>Possible serious incident under the AI Act; possible major incident under DORA or significant incident under NIS2, where applicable; personal data breach likely to result in a high risk to individuals; unauthorised action by an agent affecting money, third parties, personal data or production systems; harm to people or discrimination at scale; disruption of a critical function beyond its tolerance; impact 5 on any axis.</td>
+<td>Possible serious incident under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>; possible major incident under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or significant incident under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>, where applicable; personal data breach likely to result in a high risk to individuals; unauthorised action by an agent affecting money, third parties, personal data or production systems; harm to people or discrimination at scale; disruption of a critical function beyond its tolerance; impact 5 on any axis.</td>
 <td>An agent issues unauthorised payments; a recruitment system systematically screens out a group of people; massive leakage of customer data through information retrieval; fraud carried out through an impersonated video call.</td>
 </tr>
 <tr>
@@ -1012,28 +1023,28 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td><strong>AI Act, Art. 73</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>, Art. 73</strong></td>
 <td>Provider of the high-risk system. A deployer that identifies a serious incident <strong>immediately</strong> informs first the provider and then the importer or distributor and the market surveillance authorities (Art. 26(5)).</td>
 <td>Serious incident (Art. 3(49)).</td>
-<td>Market surveillance authority of the Member State where the incident occurred. Following the Omnibus, providers of systems falling within the competence of the EU AI Office report to that Office.</td>
+<td>Market surveillance authority of the Member State where the incident occurred. Following the Omnibus, providers of systems falling within the competence of the <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener" title="European AI Office (European Commission)">EU AI Office</a> report to that Office.</td>
 <td>Immediately after a causal link, or the reasonable likelihood of such a link, has been established and, in any event, <strong>not later than 15 days</strong> after becoming aware. <strong>2 days</strong> in the event of a widespread infringement or a serious and irreversible disruption of critical infrastructure. <strong>10 days</strong> in the event of death. An incomplete initial report may be submitted and completed later.</td>
 </tr>
 <tr>
-<td><strong>GDPR, Arts. 33 and 34</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Arts. 33 and 34</strong></td>
 <td>Controller. The processor notifies the controller without undue delay.</td>
 <td>Personal data breach, unless it is unlikely to result in a risk to the rights and freedoms of natural persons.</td>
-<td>Competent supervisory authority (in Spain, the Spanish Data Protection Agency, except for cross-border processing with another lead authority). Communication to data subjects if a high risk is likely.</td>
+<td>Competent supervisory authority (in Spain, the <a class="ref-ext" href="https://www.aepd.es/en" target="_blank" rel="noopener" title="Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)">Spanish Data Protection Agency</a>, except for cross-border processing with another lead authority). Communication to data subjects if a high risk is likely.</td>
 <td>Authority: without undue delay and, where feasible, not later than <strong>72 hours</strong> after becoming aware; if later, with reasons for the delay; information in phases if not available. Data subjects: without undue delay. All breaches are documented, whether or not they are notified.</td>
 </tr>
 <tr>
-<td><strong>DORA, Art. 19</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, Art. 19</strong></td>
 <td>Financial entity subject to DORA.</td>
 <td>Major ICT-related incident; voluntary notification of significant cyber threats.</td>
 <td>Competent authority. Information to clients when the incident affects their financial interests.</td>
-<td>Initial notification within <strong>4 hours</strong> of classification as major and not later than <strong>24 hours</strong> after becoming aware; intermediate report within <strong>72 hours</strong> of the initial notification; final report <strong>one month</strong> after the latest intermediate report (Delegated Regulation (EU) 2025/301).</td>
+<td>Initial notification within <strong>4 hours</strong> of classification as major and not later than <strong>24 hours</strong> after becoming aware; intermediate report within <strong>72 hours</strong> of the initial notification; final report <strong>one month</strong> after the latest intermediate report (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/eng" target="_blank" rel="noopener" title="Commission Delegated Regulation (EU) 2025/301 of 23 October 2024 supplementing Regulation (EU) 2022/2554 with regard to regulatory technical standards specifying the content and time limits for the initial notification of, and intermediate and final report on, major ICT-related incidents, and the content of the voluntary notification for significant cyber threats">Delegated Regulation (EU) 2025/301</a>).</td>
 </tr>
 <tr>
-<td><strong>NIS2, Art. 23</strong></td>
+<td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>, Art. 23</strong></td>
 <td>Essential or important entity under the national transposition.</td>
 <td>Significant incident.</td>
 <td>CSIRT or competent authority. Recipients of the service where appropriate.</td>
@@ -1331,11 +1342,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Develops the nonconformity process of 01 §12 with recording, classification, containment, root cause analysis, actions, verification, closure by the AI Auditor, re-audit and time limits; defines the AI incident process with S1–S4 severity, response times, shutdown criteria and preservation of evidence; analyses reporting under the AI Act, the GDPR, DORA and NIS2; and sets out registers, indicators and reporting to the board.</td>
+<td>First version. Develops the nonconformity process of 01 §12 with recording, classification, containment, root cause analysis, actions, verification, closure by the AI Auditor, re-audit and time limits; defines the AI incident process with S1–S4 severity, response times, shutdown criteria and preservation of evidence; analyses reporting under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>, the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> and <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>; and sets out registers, indicators and reporting to the board.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/eng" target="_blank" rel="noopener">Commission Delegated Regulation (EU) 2025/301 of 23 October 2024 supplementing Regulation (EU) 2022/2554 with regard to regulatory technical standards specifying the content and time limits for the initial notification of, and intermediate and final report on, major ICT-related incidents, and the content of the voluntary notification for significant cyber threats</a><span> · Comisi&#243;n Europea · 23-10-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European AI Office (European Commission)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.aepd.es/en" target="_blank" rel="noopener">Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

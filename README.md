@@ -11,20 +11,35 @@ Marco de valor, gobierno y transformación con IA. Proyecto vivo.
 | `SEVEN-G/html/` | Documentos generados en HTML, con índice de la biblioteca por idioma |
 | `SEVEN-G/pdf/` | Documentos generados en PDF |
 | `SEVEN-G/herramientas/` | Herramientas sin servidor (T01 · Registro de iniciativas) |
-| `SEVEN-G/build/` | Generador, plantilla, estilo, componentes gráficos, guía de traducción y servidor local de revisión |
+| `SEVEN-G/build/` | Generador común (SEVEN-G y SPHERES), plantilla, estilo, componentes gráficos, guía de traducción y servidor local de revisión |
 | `SEVEN-G/_legacy/` | Materiales anteriores, no vigentes; solo como fuente de consulta |
 
-Generar todos los documentos (requiere PowerShell 7 y Microsoft Edge o Google Chrome):
+## SPHERES
+
+Metodología de apoyo de SEVEN-G (en construcción): nueve esferas de impacto y tres niveles de ambición de la IA. Misma jerarquía de carpetas que SEVEN-G.
+
+| Carpeta | Contenido |
+|---|---|
+| `SPHERES/mds/es/` · `SPHERES/mds/en/` | Fuentes Markdown en español e inglés: documentos 00–05 |
+| `SPHERES/html/` · `SPHERES/pdf/` | Documentos generados en HTML (con índice de la biblioteca) y PDF |
+| `SPHERES/build/componentes/` | Componentes gráficos propios de SPHERES (los comunes están en `SEVEN-G/build/componentes/`) |
+| `SPHERES/_legacy/` | Presentación original del marco de esferas; solo como fuente de consulta |
+
+## Generación y revisión
+
+Generar todos los documentos de ambas metodologías (requiere PowerShell 7 y Microsoft Edge o Google Chrome):
 
 ```
 pwsh -File SEVEN-G/build/build.ps1
 ```
 
+Solo una metodología: `pwsh -File SEVEN-G/build/build.ps1 -Metodologias SPHERES`. Revisión local del sitio completo: `pwsh -File SEVEN-G/build/servidor.ps1` y abrir `http://localhost:8765/`.
+
 Empieza por la portada del sitio, `index.html` (español) o `en/index.html` (inglés), que presenta SEVEN-G (marco principal) y las metodologías de apoyo SPHERES y SPAD (en construcción).
 
 ## Publicación (GitHub Pages)
 
-Este repositorio es privado y contiene material de trabajo (`_trabajo`, `_legacy`, `.claude`, fuentes de SPAD y Espheres) que **no se publica**. Solo se publican la portada (`index.html`, `en/index.html`), las licencias y `SEVEN-G/html`, `SEVEN-G/pdf` y `SEVEN-G/herramientas`.
+Este repositorio es privado y contiene material de trabajo (`_trabajo`, `_legacy`, `.claude`, fuentes de SPAD y fuentes Markdown) que **no se publica**. Solo se publican la portada (`index.html`, `en/index.html`), las licencias, `SEVEN-G/html`, `SEVEN-G/pdf`, `SEVEN-G/herramientas`, `SPHERES/html` y `SPHERES/pdf`.
 
 **Opción A · Desde este repositorio (recomendada).** El flujo `.github/workflows/pages.yml` copia solo lo publicable, comprueba que no haya textos internos y lo despliega en GitHub Pages en cada *push* a `main`. Pasos: (1) generar y confirmar las salidas (`pwsh -File SEVEN-G/build/build.ps1`, `git add`, `git commit`, `git push`); (2) en GitHub, *Settings → Pages → Source: GitHub Actions*. El sitio queda en `https://seachad.github.io/AI_CONSULTING/` (público, aunque el repositorio sea privado; Pages en repositorios privados requiere plan Pro, Team o Enterprise).
 

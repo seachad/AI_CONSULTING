@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Regulatory classification and impact assessments"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -385,7 +396,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#classification-tree"><span>03</span>Classification tree</a></li><li><a href="#definition-and-scope"><span>04</span>Definition and scope</a></li><li><a href="#prohibited-practices"><span>05</span>Prohibited practices</a></li><li><a href="#high-risk"><span>06</span>High risk</a></li><li><a href="#transparency-obligations"><span>07</span>Transparency obligations</a></li><li><a href="#classification-result"><span>08</span>Classification result</a></li><li><a href="#impact-assessments"><span>09</span>Impact assessments</a></li><li><a href="#resulting-obligations"><span>10</span>Resulting obligations</a></li><li><a href="#quality-criteria"><span>11</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>12</span>Approval and verification</a></li><li><a href="#version-control"><span>13</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote>
-<p><em>This document does not constitute legal advice.</em> The classification must be carried out with qualified legal judgement (01 §13). References consulted in September 2026. The EU AI Act (Regulation (EU) 2024/1689) applies in stages and there are initiatives to amend the timetable for some obligations: verify the timetable and the text in force.</p>
+<p><em>This document does not constitute legal advice.</em> The classification must be carried out with qualified legal judgement (01 §13). References consulted in September 2026. The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> (Regulation (EU) 2024/1689) applies in stages and there are initiatives to amend the timetable for some obligations: verify the timetable and the text in force.</p>
 </blockquote>
 <hr />
 <blockquote class="aviso-legal">
@@ -885,7 +896,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>Are decisions taken based solely on automated processing with legal or similarly significant effects?</td>
 <td></td>
-<td>If &quot;Yes&quot;, also review the GDPR safeguards on automated decision-making.</td>
+<td>If &quot;Yes&quot;, also review the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> safeguards on automated decision-making.</td>
 </tr>
 <tr>
 <td><strong>Result</strong></td>
@@ -905,7 +916,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <h3 id="9-2-fundamental-rights-impact-assessment">9.2 Fundamental rights impact assessment</h3>
-<p>It is required by the EU AI Act of certain deployers of high-risk systems, before their first use.</p>
+<p>It is required by the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> of certain deployers of high-risk systems, before their first use.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -939,7 +950,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <p>Minimum content when required: processes in which the system will be used; period and frequency of use; categories of persons affected; specific risks of harm; human oversight measures; measures to be taken if the risks materialise, including internal governance and complaint mechanisms. The results are notified to the market surveillance authority and it may complement the data protection impact assessment. Reference and date of the assessment: ____.</p>
 <h3 id="9-3-other-assessments-enterprise">9.3 Other assessments <strong>(Enterprise)</strong></h3>
-<p>State whether they are required and where they are recorded: ICT or third-party risk assessment (DORA, NIS2), internal ethics assessment, information to workers' representatives and sector-specific assessments.</p>
+<p>State whether they are required and where they are recorded: ICT or third-party risk assessment (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>), internal ethics assessment, information to workers' representatives and sector-specific assessments.</p>
 <hr />
 <h2 id="resulting-obligations"><span class="antetitulo">10</span>Resulting obligations</h2>
 <p>Each obligation is linked to a phase, a piece of evidence and an owner. The detailed mapping is in document 34.</p>
@@ -1128,11 +1139,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Classification tree under the EU AI Act, data protection impact assessment and fundamental rights impact assessment, with the taxonomy of 03 §3.3. References consulted in September 2026.</td>
+<td>First version. Classification tree under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>, data protection impact assessment and fundamental rights impact assessment, with the taxonomy of 03 §3.3. References consulted in September 2026.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

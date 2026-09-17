@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Análisis del estado actual, huecos y plan documental"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -444,7 +455,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Material reutilizable <strong>tras reescritura</strong>: Risk Matrix (el más sólido), GO/NO-GO Decision Record, Charter, Maturity Report, Runbook. Value Hypothesis Canvas es un esqueleto.</td>
 </tr>
 <tr>
-<td><code>Espheres/SEVENG - Marco_Esferas_IA_v2.pptx</code></td>
+<td><code>SPHERES/_legacy/SEVENG - Marco_Esferas_IA_v2.pptx</code></td>
 <td>ES</td>
 <td>9 esferas × 3 niveles, preguntas al consejo, guion de 60 minutos, plan de 90 días. No menciona SEVEN-G.</td>
 <td><strong>Componente A del marco.</strong> Integrar.</td>
@@ -467,7 +478,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </thead>
 <tbody>
 <tr>
-<td>Repositorio <code>AI_en_el_consejo</code> (motor de panel, 11 demostraciones sectoriales, registro de recomendaciones, esquema JSON, licencias MIT / CC BY 4.0)</td>
+<td>Repositorio <code>AI_en_el_consejo</code> (motor de panel, 11 demostraciones sectoriales, registro de recomendaciones, esquema JSON, licencias MIT / <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a>)</td>
 <td><strong>Componente D.</strong> Aporta las reglas de medición, la etiqueta de ambición, la separación eficiencias / retorno, la agilidad por riesgo y ambición, la exposición a IA ofensiva y los controles de agentes.</td>
 </tr>
 <tr>
@@ -566,7 +577,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>Nombres de marca</td>
-<td>SEVEN-G, SevenG, SEVENG, Espheres, SPHERES, Marco de Esferas.</td>
+<td>SEVEN-G, SevenG, SEVENG, SPHERES, Marco de Esferas.</td>
 <td>Paraguas único <strong>SEVEN-G</strong>; &quot;Mapa de esferas&quot; como componente. SPAD y AECF como piezas relacionadas, no marcas paralelas.</td>
 </tr>
 <tr>
@@ -615,12 +626,12 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><strong>Inventario y clasificación regulatoria</strong></td>
 <td>No existe.</td>
-<td>Obligación de facto para aplicar el Reglamento de IA.</td>
+<td>Obligación de facto para aplicar el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>.</td>
 </tr>
 <tr>
 <td><strong>Mapeo regulatorio</strong></td>
 <td>Doc 12 es un esqueleto; solo una mención al Reglamento de IA en todo el framework.</td>
-<td>Falta: artículos del Reglamento de IA (incluida alfabetización, art. 4; transparencia, art. 50; incidentes graves), ISO/IEC 42001, NIST AI RMF, RGPD, DORA, NIS2, normativa sectorial.</td>
+<td>Falta: artículos del Reglamento de IA (incluida alfabetización, art. 4; transparencia, art. 50; incidentes graves), ISO/IEC 42001, <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>, normativa sectorial.</td>
 </tr>
 <tr>
 <td><strong>Terceros y proveedores de IA</strong></td>
@@ -784,7 +795,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>23</td>
 <td>Adopción y cambio en la iniciativa (capacidad liberada, formación, comunicación)</td>
-<td>Engagement Guide (ADKAR)</td>
+<td>Engagement Guide (<a class="ref-ext" href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener" title="Modelo ADKAR&#174; de Prosci (Awareness, Desire, Knowledge, Ability, Reinforcement)">ADKAR</a>)</td>
 <td>Hecho v0.1 (ES/EN)</td>
 </tr>
 </tbody>
@@ -826,7 +837,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td>34</td>
-<td>Mapeo regulatorio: Reglamento de IA, ISO/IEC 42001, NIST AI RMF, RGPD, DORA, NIS2</td>
+<td>Mapeo regulatorio: <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>, ISO/IEC 42001, <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a></td>
 <td>Doc 12</td>
 <td>Hecho v0.1 (ES/EN)</td>
 </tr>
@@ -1042,7 +1053,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>5</td>
 <td><strong>Licencia</strong></td>
-<td>Contenidos (documentos, plantillas, criterios, componentes gráficos): <strong>CC BY 4.0</strong> (<code>LICENCIA_CONTENIDOS.md</code>). Código (scripts de generación): <strong>MIT</strong> (<code>LICENSE</code>). Autoría: © 2026 Fernando García · SEACHAD, metodología SEVEN-G.</td>
+<td>Contenidos (documentos, plantillas, criterios, componentes gráficos): <strong><a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a></strong> (<code>LICENCIA_CONTENIDOS.md</code>). Código (scripts de generación): <strong>MIT</strong> (<code>LICENSE</code>). Autoría: © 2026 Fernando García · SEACHAD, metodología SEVEN-G.</td>
 <td>Coherente con <code>AI_en_el_consejo</code> y con el criterio de publicación &quot;no exige contratar al autor para usarlo&quot;. Una cláusula no comercial (NC) generaría dudas precisamente en las empresas usuarias. El valor diferencial está en la aplicación y el acompañamiento, no en el texto.</td>
 </tr>
 <tr>
@@ -1267,14 +1278,14 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="7-5-pendiente-para-el-autor">7.5 Pendiente para el autor</h3>
 <ol>
 <li>Validar las decisiones marcadas &quot;a validar&quot; (D19, D20, D22, D25) y los umbrales iniciales marcados &quot;a calibrar&quot; (índice de transformación, apetito y materialidad, priorización, semáforo, caducidad de estados, alertas de consumo, tamaños de muestra de auditoría).</li>
-<li>Revisión jurídica del <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> y de las citas regulatorias de 31, 32, 37 y 50–52, en particular el texto del Reglamento (UE) 2026/1744 en el DOUE, la transposición española de NIS2 y el proyecto de Ley Orgánica de IA.</li>
+<li>Revisión jurídica del <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> y de las citas regulatorias de 31, 32, 37 y 50–52, en particular el texto del Reglamento (UE) 2026/1744 en el DOUE, la transposición española de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> y el proyecto de Ley Orgánica de IA.</li>
 <li><del>Incorporar a 33 los tres riesgos tipo propuestos en 50 (información y consulta, conflicto laboral, bienestar); dar código IND- a unos 60 indicadores provisionales del 41; resolver la colisión de prefijos CON- (conocimiento, 51) e IND-CON (consejo, 41).</del> <strong>Resuelto (16-09-2026):</strong> riesgos RT-ORG-07 (incumplimiento de información y consulta), RT-ORG-08 (conflicto laboral) y RT-ORG-09 (deterioro del bienestar) incorporados al catálogo de 33 (70 riesgos tipo) y enlazados desde 50 §12; los 50 códigos provisionales sin equivalente tienen código IND- en 41 §21 (47 indicadores nuevos, porque IE03.06 y PER-14, IE05.05 y DAT-10, e IE06.02 y CNC-06 comparten código), en las familias EMB, RIE, OPE, ADO, DAT y CLI y en la nueva familia PRO · Procesos y decisión (catálogo de 156 indicadores en 13 familias; conjunto Lite sin cambios, 26); los indicadores de conocimiento del 51 pasan de CON- a CNC- en 41, 50, 51, 52, 02 y la especificación común (§5.9).</li>
 <li><del>SPAD: revisar las afirmaciones con cifras de retorno y certificación.</del> <strong>Resuelto (16-09-2026):</strong> cifras sin respaldo sustituidas por objetivos a medir, &quot;certificación&quot; por autoevaluación de conformidad y aviso legal en todos los ficheros. Queda corregir en origen el PDF <code>05_SPAD_Skill_Methodology_Seachad.pdf</code>.</li>
 <li><del>Adaptar <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> y T18.</del> <strong>Resuelto sin tocar el motor (16-09-2026):</strong> conector <code>SEVEN-G/herramientas/[T17](../../herramientas/T17_panel_consejo/index.html)_panel_consejo/</code> con demo en <code>ejemplo/salida/</code>. Pendiente en el proyecto privado de origen del motor: renombrar claves heredadas (<code>estimado_cati</code>, <code>aap</code>) y añadir bloques de esferas, madurez, índice y embudo (propuesta en <code>PROPUESTA_MOTOR.md</code> de esa carpeta).</li>
 <li><strong>Aviso legal (D33):</strong> incluido en todos los documentos, plantillas, herramientas, paneles, demos y SPAD. Publicación preparada con <code>SEVEN-G/build/publicar.ps1</code> desde el propio repositorio <code>AI_CONSULTING</code> con <code>.github/workflows/pages.yml</code>, con portada en la raíz (D37); antes de publicar, crear la lista privada de términos prohibidos y pasar la verificación del proyecto de origen del motor.</li>
 <li>Construir las olas 2 y 3 de herramientas (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> §6).</li>
 </ol>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener">Modelo ADKAR&#174; de Prosci (Awareness, Desire, Knowledge, Ability, Reinforcement)</a><span> · Prosci Inc.</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

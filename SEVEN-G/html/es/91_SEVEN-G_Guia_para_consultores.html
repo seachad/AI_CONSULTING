@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Guía para consultores y modelos de acompañamiento"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -402,7 +413,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <hr />
 <h2 id="usar-seven-g-como-tercero"><span class="antetitulo">02</span>Usar SEVEN-G como tercero</h2>
 <h3 id="2-1-que-permite">2.1 Qué permite</h3>
-<p>Los contenidos de SEVEN-G se publican bajo licencia CC BY 4.0 (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>). Cualquier tercero puede usarlos, adaptarlos y aplicarlos en servicios profesionales, también remunerados, <strong>sin necesidad de autorización ni de contratar al autor</strong>, siempre que reconozca la autoría, indique los cambios y no sugiera que el autor respalda su servicio.</p>
+<p>Los contenidos de SEVEN-G se publican bajo licencia <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>). Cualquier tercero puede usarlos, adaptarlos y aplicarlos en servicios profesionales, también remunerados, <strong>sin necesidad de autorización ni de contratar al autor</strong>, siempre que reconozca la autoría, indique los cambios y no sugiera que el autor respalda su servicio.</p>
 <h3 id="2-2-que-responsabilidades-asume">2.2 Qué responsabilidades asume</h3>
 <div class="tabla"><table>
 <thead>
@@ -847,7 +858,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td>El servicio aplica las reglas esenciales (sección 2.3) sin cambios relevantes</td>
-<td>&quot;Servicio basado en SEVEN-G (versión 0.1), marco de Fernando García · SEACHAD, CC BY 4.0.&quot;</td>
+<td>&quot;Servicio basado en SEVEN-G (versión 0.1), marco de Fernando García · SEACHAD, <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a>.&quot;</td>
 </tr>
 <tr>
 <td>El servicio adapta el marco</td>
@@ -889,7 +900,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>La licencia no autoriza a sugerir respaldo del autor (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>).</td>
 </tr>
 <tr>
-<td>&quot;Cumplimiento del Reglamento de IA garantizado por SEVEN-G&quot;</td>
+<td>&quot;Cumplimiento del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> garantizado por SEVEN-G&quot;</td>
 <td>El marco mapea obligaciones; no garantiza su cumplimiento.</td>
 </tr>
 <tr>
@@ -1048,7 +1059,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>&quot;Podrá declarar que aplica SEVEN-G y, si lo desea, someter la declaración a una revisión independiente.&quot;</td>
 </tr>
 <tr>
-<td>&quot;Garantizamos el cumplimiento del Reglamento de IA&quot;</td>
+<td>&quot;Garantizamos el cumplimiento del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>&quot;</td>
 <td>El cumplimiento depende de la compañía y de interpretaciones jurídicas; el marco mapea obligaciones.</td>
 <td>&quot;Le ayudamos a identificar las obligaciones, asignarlas a fases, roles y evidencias, y a comprobar su estado.&quot;</td>
 </tr>
@@ -1085,7 +1096,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>&quot;Método validado por el autor&quot; o &quot;aprobado por SEACHAD&quot;</td>
 <td>La licencia no permite sugerir respaldo.</td>
-<td>&quot;Basado en SEVEN-G, marco de Fernando García · SEACHAD, CC BY 4.0.&quot;</td>
+<td>&quot;Basado en SEVEN-G, marco de Fernando García · SEACHAD, <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a>.&quot;</td>
 </tr>
 <tr>
 <td>&quot;Con SEVEN-G no hará falta auditoría&quot;</td>
@@ -1228,7 +1239,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

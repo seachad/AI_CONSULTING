@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Clasificación regulatoria y evaluaciones de impacto"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -385,7 +396,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#arbol-de-clasificacion"><span>03</span>Árbol de clasificación</a></li><li><a href="#definicion-y-ambito"><span>04</span>Definición y ámbito</a></li><li><a href="#practicas-prohibidas"><span>05</span>Prácticas prohibidas</a></li><li><a href="#alto-riesgo"><span>06</span>Alto riesgo</a></li><li><a href="#obligaciones-de-transparencia"><span>07</span>Obligaciones de transparencia</a></li><li><a href="#resultado-de-la-clasificacion"><span>08</span>Resultado de la clasificación</a></li><li><a href="#evaluaciones-de-impacto"><span>09</span>Evaluaciones de impacto</a></li><li><a href="#obligaciones-derivadas"><span>10</span>Obligaciones derivadas</a></li><li><a href="#criterios-de-calidad"><span>11</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>12</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote>
-<p><em>Este documento no constituye asesoramiento jurídico.</em> La clasificación debe realizarse con criterio jurídico cualificado (01 §13). Referencias consultadas en septiembre de 2026. El Reglamento Europeo de IA (Reglamento (UE) 2024/1689) se aplica de forma escalonada y existen iniciativas de modificación del calendario de algunas obligaciones: verifíquense el calendario y el texto vigentes.</p>
+<p><em>Este documento no constituye asesoramiento jurídico.</em> La clasificación debe realizarse con criterio jurídico cualificado (01 §13). Referencias consultadas en septiembre de 2026. El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (Reglamento (UE) 2024/1689) se aplica de forma escalonada y existen iniciativas de modificación del calendario de algunas obligaciones: verifíquense el calendario y el texto vigentes.</p>
 </blockquote>
 <hr />
 <blockquote class="aviso-legal">
@@ -885,7 +896,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>¿Se toman decisiones basadas únicamente en tratamiento automatizado con efectos jurídicos o significativos?</td>
 <td></td>
-<td>Si es &quot;Sí&quot;, revisar además las garantías del RGPD sobre decisiones automatizadas.</td>
+<td>Si es &quot;Sí&quot;, revisar además las garantías del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> sobre decisiones automatizadas.</td>
 </tr>
 <tr>
 <td><strong>Resultado</strong></td>
@@ -905,7 +916,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tbody>
 </table></div>
 <h3 id="9-2-evaluacion-de-impacto-en-derechos-fundamentales">9.2 Evaluación de impacto en derechos fundamentales</h3>
-<p>La exige el Reglamento Europeo de IA a determinados responsables del despliegue de sistemas de alto riesgo, antes de su primera utilización.</p>
+<p>La exige el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> a determinados responsables del despliegue de sistemas de alto riesgo, antes de su primera utilización.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -939,7 +950,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <p>Contenido mínimo cuando es requerida: procesos en los que se usará el sistema; periodo y frecuencia de uso; categorías de personas afectadas; riesgos específicos de perjuicio; medidas de supervisión humana; medidas si los riesgos se materializan, incluidos gobierno interno y reclamaciones. Se comunican los resultados a la autoridad de vigilancia del mercado y puede complementar la evaluación de impacto en protección de datos. Referencia y fecha de la evaluación: ____.</p>
 <h3 id="9-3-otras-evaluaciones-enterprise">9.3 Otras evaluaciones <strong>(Enterprise)</strong></h3>
-<p>Indique si se requieren y dónde constan: evaluación de riesgos TIC o de terceros (DORA, NIS2), evaluación ética interna, información a la representación de las personas trabajadoras y evaluaciones sectoriales.</p>
+<p>Indique si se requieren y dónde constan: evaluación de riesgos TIC o de terceros (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>), evaluación ética interna, información a la representación de las personas trabajadoras y evaluaciones sectoriales.</p>
 <hr />
 <h2 id="obligaciones-derivadas"><span class="antetitulo">10</span>Obligaciones derivadas</h2>
 <p>Cada obligación se vincula a una fase, una evidencia y un responsable. El mapeo detallado está en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>.</p>
@@ -1128,11 +1139,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Árbol de clasificación según el Reglamento Europeo de IA, evaluación de impacto en protección de datos y evaluación de impacto en derechos fundamentales, con la taxonomía de 03 §3.3. Referencias consultadas en septiembre de 2026.</td>
+<td>Primera versión. Árbol de clasificación según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, evaluación de impacto en protección de datos y evaluación de impacto en derechos fundamentales, con la taxonomía de 03 §3.3. Referencias consultadas en septiembre de 2026.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

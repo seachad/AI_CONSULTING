@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Building solutions with AI"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -918,7 +929,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <li>Dependencies proposed by the AI <strong>must</strong> be verified (existence, provenance, maintenance and known vulnerabilities) before being incorporated, given the risk of non-existent or malicious packages suggested by the tool.</li>
 <li>A software bill of materials for the solution <strong>should</strong> be generated in Enterprise.</li>
 <li>Build agents <strong>must</strong> operate with least privilege, without production credentials and with logging of their actions; their autonomy is classified under A0–A3 and assessed with T10 (document 35).</li>
-<li>The OWASP Top 10 and the OWASP Top 10 for Large Language Model Applications lists may be used as technical references.</li>
+<li>The <a class="ref-ext" href="https://top10.owasp.org/2025/" target="_blank" rel="noopener" title="OWASP Top 10:2025 (web application security risks)">OWASP Top 10</a> and the <a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener" title="OWASP Top 10 for Large Language Model Applications 2025">OWASP Top 10 for Large Language Model Applications</a> lists may be used as technical references.</li>
 <li>Critical and high findings <strong>block</strong> G5 unless there is formal risk acceptance in accordance with 33 and 01 §7.3 (&quot;Proceed with conditions&quot; is not permitted for critical security controls).</li>
 </ul>
 <h3 id="7-5-intellectual-property-and-licences">7.5 Intellectual property and licences</h3>
@@ -983,10 +994,10 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </table></div>
 <h3 id="7-8-relationship-with-regulation">7.8 Relationship with regulation</h3>
 <ul>
-<li>Build evidence supports the <strong>technical documentation</strong> (Art. 11 and Annex IV), the <strong>quality management system</strong> (Art. 17) and the <strong>cybersecurity</strong> (Art. 15) of providers of high-risk AI systems under the EU AI Act (document 34, sections 3.7 and 3.8).</li>
+<li>Build evidence supports the <strong>technical documentation</strong> (Art. 11 and Annex IV), the <strong>quality management system</strong> (Art. 17) and the <strong>cybersecurity</strong> (Art. 15) of providers of high-risk AI systems under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> (document 34, sections 3.7 and 3.8).</li>
 <li>Coding assistance tools are not, in general, high-risk systems by virtue of their intended purpose, but they must be inventoried and comply with the use policy (document 31). Their specific classification is confirmed with T07.</li>
-<li>If the company manufactures products with digital elements, Regulation (EU) 2024/2847 on cyber resilience (Cyber Resilience Act) must be assessed, with reporting obligations from 11-09-2026 and main obligations from 11-12-2027 (verify applicability; document 35).</li>
-<li>For entities subject to DORA, the development of and changes to ICT systems are integrated into their ICT risk management framework (document 34, section 7.1).</li>
+<li>If the company manufactures products with digital elements, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)">Regulation (EU) 2024/2847 on cyber resilience (Cyber Resilience Act)</a> must be assessed, with reporting obligations from 11-09-2026 and main obligations from 11-12-2027 (verify applicability; document 35).</li>
+<li>For entities subject to <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, the development of and changes to ICT systems are integrated into their ICT risk management framework (document 34, section 7.1).</li>
 </ul>
 <hr />
 <h2 id="verification-at-the-gates"><span class="antetitulo">08</span>Verification at the <em>gates</em></h2>
@@ -1139,7 +1150,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 for Large Language Model Applications 2025</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://top10.owasp.org/2025/" target="_blank" rel="noopener">OWASP Top 10:2025 (web application security risks)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

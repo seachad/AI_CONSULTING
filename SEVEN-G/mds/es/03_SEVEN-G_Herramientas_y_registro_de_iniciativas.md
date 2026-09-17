@@ -188,7 +188,7 @@ La fase 6 no tiene plazo; se controla con la periodicidad de la revisión de con
 | **Gates pendientes** | Solicitudes a la espera de verificación o decisión, con días transcurridos. |
 | **Alertas** | Estancadas, condiciones vencidas, revisiones de continuidad caducadas, evidencias pendientes de verificación. |
 | **Análisis** | Métricas del embudo, cohortes y segmentación. |
-| **Exportación al panel del consejo** | Datos agregados en el formato del panel de supervisión. |
+| **Datos** | Importación de uno o varios JSON (con sustitución o fusión por código) y exportación del registro completo. El JSON completo es la entrada del panel del consejo (T17): el conector lo convierte en el JSON del panel, con el embudo y los tiempos de cada etapa tomados de las fases y los eventos del registro. |
 
 ---
 
@@ -254,7 +254,7 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 |---|---|---|---|---|---|---|---|
 | **T15** | Diagnóstico de madurez | Cuestionario 0–5 por dimensión con evidencias e informe. | C1, C5 | HTML con informe | 11 | 2 | Se aplica con el documento 11 |
 | **T16** | Mapa de esferas de la cartera | Mapa de calor esferas × niveles de ambición con inversión y valor. | C2, C3 | Vista del panel del consejo | 10 | 2 | Se aplica con el documento 10 |
-| **T17** | Panel de IA para el consejo | Supervisión: valor, coste, riesgo, cumplimiento, incidentes, agilidad, adopción. | C4 | HTML completo y móvil + JSON | 60 | 1 | Disponible. Se alimenta de T01 mediante el conector `herramientas/T17_panel_consejo` (v0.1); los cambios internos del motor siguen pendientes en su proyecto de origen |
+| **T17** | Panel de IA para el consejo | Supervisión: valor, coste, riesgo, cumplimiento, incidentes, agilidad, adopción. | C4 | HTML completo y móvil + JSON | 60 | 1 | Disponible. Se alimenta de T01 mediante el conector `herramientas/T17_panel_consejo`: registro (JSON) más `config_panel.json` (umbrales de los indicadores y ciclo de vida) → JSON del panel → panel completo y móvil, con embudo y tiempos por etapa como en un CRM |
 | **T18** | Registro de recomendaciones del consejo | Recomendaciones con identificador persistente, estado, evidencia y valoración. | C4 | HTML + JSON | 62 | 1 | Disponible. El conector de T17 genera el registro a partir de las recomendaciones de T01 |
 | **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión del consejo, con umbrales y plazos de referencia. | C2 | Plantilla de documento | 13 | 3 | Se aplica con el documento 13 |
 

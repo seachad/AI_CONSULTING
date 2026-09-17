@@ -1,4 +1,4 @@
-# Copia mantenida en AI_CONSULTING (SEVEN-G, T17) desde 17-09-2026; origen: AI_en_el_consejo/motor (MIT, mismo autor).
+# Copia mantenida en AI_CONSULTING (SEVEN-G, T17); origen: AI_en_el_consejo/motor (MIT, mismo autor). Versión 8 del motor incorporada el 17-09-2026.
 # -*- coding: utf-8 -*-
 """Siglas y terminos de los paneles de IA del Consejo. Glosario generico: nada de una organizacion concreta.
 Los terminos propios de una organizacion se pasan desde los datos (meta.glosario_extra) y se fusionan al generar:
@@ -25,9 +25,14 @@ GLOSARIO = [
   ("Potencial", "", "Máximo al que puede llegar el caso con las hipótesis indicadas (cobertura, adopción, contención…), la inversión adicional y el plazo. Un potencial sin su coste no se considera dato."),
   ("Neto adicional por euro invertido", "", "Neto anual potencial menos neto actual, dividido por la inversión adicional. Indica dónde rinde más el siguiente euro."),
   ("Payback", "", "Tiempo en que el neto anual recupera la inversión de construcción."),
-  ("Estado del dato", "", "Validado (por Control de Gestión u Optimización de Costes), declarado (por la compañía, sin validar), estimado (por el consejo asesor) o imputado (sin dato: valor convencional). El panel indica qué parte del valor está validada."),
-  ("Valor imputado", "", "Valor convencional que el panel asigna a un caso con coste recurrente pero sin ningún valor reportado ni estimado: un múltiplo de su coste (por defecto 2). Se marca con ⚠ allí donde aparece: no es un dato de la compañía; solo evita que el caso figure a cero o deficitario hasta que se mida su valor."),
+  ("Estado del dato", "", "Validado (por Control de Gestión u Optimización de Costes), declarado (por la compañía, sin validar) o estimado (por el consejo asesor). El panel indica qué parte del valor está validada."),
   ("Clave de reparto", "", "Regla para imputar a cada caso el coste de una plataforma compartida: consumo medido (tokens, DBU, minutos) o usuarios para las herramientas de productividad."),
+  ("Embudo", "", "Vista del ciclo de vida de los casos, como en un CRM: etapas desde la propuesta hasta la producción, con los casos que alcanzaron cada etapa, los que están ahora en ella y las salidas (perdidos) en ramas."),
+  ("Historial de estados", "", "Cada cambio de estado de un caso con su fecha, aportado por la compañía. Si no lo hay, el recorrido se reconstruye con las fechas de sus hitos (idea, aprobación, piloto, inicio, producción, retirada); sin fechas no hay tiempos."),
+  ("Ganado / perdido", "", "Ganado: caso que llega a producción. Perdido: caso que sale del embudo sin seguir (no aprobado, descartado) o que se desengancha después de estar en producción."),
+  ("Límite de días", "", "Tiempo máximo que un caso puede estar en un estado (en desarrollo, según su complejidad). En producción no hay límite. A partir del porcentaje de aviso el caso se marca en amarillo y por encima del límite, en rojo (atascado)."),
+  ("Mediana", "", "Valor central de los tiempos ordenados: la mitad de las estancias dura menos y la otra mitad más. Resiste mejor que la media a unos pocos casos muy largos."),
+  ("Conversión a producción", "", "Casos que llegaron a producción divididos entre esos casos más los que se perdieron antes de llegar (no aprobados y descartados)."),
   ("Foto (histórico)", "", "Copia del estado del panel guardada al cierre de cada sesión (snapshot.py). Permite comparar, ver casos nuevos y retirados y dibujar la tendencia."),
   ("Puesta en producción", "", "Fecha en que el caso empieza a operar. Si la compañía no la aporta, el panel usa el año estimado por el consejo asesor y lo indica."),
   ("KPI", "Key Performance Indicator", "Indicador clave de rendimiento."),

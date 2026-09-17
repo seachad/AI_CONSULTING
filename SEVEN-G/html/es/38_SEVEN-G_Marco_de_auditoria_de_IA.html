@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Marco de auditoría de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -400,8 +411,8 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="1-1-que-no-es-este-marco">1.1 Qué no es este marco</h3>
 <ul>
 <li><strong>No es una auditoría de cuentas</strong> ni sustituye a la auditoría legal.</li>
-<li><strong>No es una certificación.</strong> SEVEN-G no certifica. La certificación de un sistema de gestión de IA según ISO/IEC 42001 la emiten entidades de certificación conforme a ISO/IEC 17021-1 e ISO/IEC 42006.</li>
-<li><strong>No es la evaluación de conformidad</strong> del Reglamento (UE) 2024/1689, que corresponde al proveedor del sistema de alto riesgo (artículo 43) y, en su caso, a un organismo notificado.</li>
+<li><strong>No es una certificación.</strong> SEVEN-G no certifica. La certificación de un sistema de gestión de IA según ISO/IEC 42001 la emiten entidades de certificación conforme a <a class="ref-ext" href="https://www.iso.org/standard/61651.html" target="_blank" rel="noopener" title="ISO/IEC 17021-1:2015 Evaluaci&#243;n de la conformidad — Requisitos para los organismos que realizan la auditor&#237;a y la certificaci&#243;n de sistemas de gesti&#243;n — Parte 1: Requisitos">ISO/IEC 17021-1</a> e <a class="ref-ext" href="https://www.iso.org/standard/42006" target="_blank" rel="noopener" title="ISO/IEC 42006:2025 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Requisitos para los organismos que realizan auditor&#237;a y certificaci&#243;n de sistemas de gesti&#243;n de IA">ISO/IEC 42006</a>.</li>
+<li><strong>No es la evaluación de conformidad</strong> del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a>, que corresponde al proveedor del sistema de alto riesgo (artículo 43) y, en su caso, a un organismo notificado.</li>
 <li><strong>No es asesoramiento.</strong> El auditor no diseña los controles que después audita.</li>
 </ul>
 <hr />
@@ -563,7 +574,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Básica</td>
 </tr>
 <tr>
-<td>Reglamento de IA, RGPD y normativa sectorial aplicable</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> y normativa sectorial aplicable</td>
 <td>Suficiente para identificar obligaciones por clasificación y rol</td>
 <td>Sólida</td>
 <td>Según especialidad</td>
@@ -605,7 +616,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Según especialidad</td>
 </tr>
 <tr>
-<td>ISO/IEC 42001 y auditoría de sistemas de gestión (ISO 19011)</td>
+<td>ISO/IEC 42001 y auditoría de sistemas de gestión (<a class="ref-ext" href="https://www.iso.org/standard/19011" target="_blank" rel="noopener" title="ISO 19011:2026 Directrices para la auditor&#237;a de los sistemas de gesti&#243;n">ISO 19011</a>)</td>
 <td>Básica</td>
 <td>Sólida</td>
 <td>—</td>
@@ -1763,7 +1774,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Contenido mínimo de la declaración</strong>: denominación de la compañía; alcance; versión de SEVEN-G aplicada; fecha; resultado y fecha de la última auditoría y tipo de auditor (interno o externo); excepciones vigentes relevantes; mención de que la declaración no es una certificación. Conforme a la licencia de los contenidos (CC BY 4.0), se debe reconocer la autoría del marco.</p>
+<p><strong>Contenido mínimo de la declaración</strong>: denominación de la compañía; alcance; versión de SEVEN-G aplicada; fecha; resultado y fecha de la última auditoría y tipo de auditor (interno o externo); excepciones vigentes relevantes; mención de que la declaración no es una certificación. Conforme a la licencia de los contenidos (<a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a>), se debe reconocer la autoría del marco.</p>
 <hr />
 <h2 id="relacion-con-iso-iec-42001-y-con-la-auditoria-interna-corporativa"><span class="antetitulo">12</span>Relación con ISO/IEC 42001 y con la auditoría interna corporativa</h2>
 <h3 id="12-1-iso-iec-42001">12.1 ISO/IEC 42001</h3>
@@ -1813,8 +1824,8 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p><strong>Diferencias que hay que tener presentes</strong></p>
 <ul>
 <li>Una compañía que quiera <strong>certificarse</strong> en ISO/IEC 42001 debe cumplir todos los requisitos de la norma, incluidos los controles del anexo A que declare aplicables. Aplicar SEVEN-G facilita la certificación, pero no la garantiza.</li>
-<li>La auditoría de certificación la realiza una entidad de certificación conforme a ISO/IEC 17021-1 e ISO/IEC 42006. Las auditorías de SEVEN-G son auditorías internas de primera parte o, si se contratan, de segunda parte.</li>
-<li>Para la conducción de auditorías de sistemas de gestión, ISO 19011 ofrece directrices que son compatibles con este marco.</li>
+<li>La auditoría de certificación la realiza una entidad de certificación conforme a <a class="ref-ext" href="https://www.iso.org/standard/61651.html" target="_blank" rel="noopener" title="ISO/IEC 17021-1:2015 Evaluaci&#243;n de la conformidad — Requisitos para los organismos que realizan la auditor&#237;a y la certificaci&#243;n de sistemas de gesti&#243;n — Parte 1: Requisitos">ISO/IEC 17021-1</a> e <a class="ref-ext" href="https://www.iso.org/standard/42006" target="_blank" rel="noopener" title="ISO/IEC 42006:2025 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Requisitos para los organismos que realizan auditor&#237;a y certificaci&#243;n de sistemas de gesti&#243;n de IA">ISO/IEC 42006</a>. Las auditorías de SEVEN-G son auditorías internas de primera parte o, si se contratan, de segunda parte.</li>
+<li>Para la conducción de auditorías de sistemas de gestión, <a class="ref-ext" href="https://www.iso.org/standard/19011" target="_blank" rel="noopener" title="ISO 19011:2026 Directrices para la auditor&#237;a de los sistemas de gesti&#243;n">ISO 19011</a> ofrece directrices que son compatibles con este marco.</li>
 </ul>
 <h3 id="12-2-auditoria-interna-corporativa">12.2 Auditoría interna corporativa</h3>
 <div class="tabla"><table>
@@ -1831,7 +1842,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Normas profesionales</strong></td>
-<td>Cuando la función de auditoría interna se rige por las Normas Globales de Auditoría Interna del IIA (en vigor desde enero de 2025), la auditoría de IA las aplica; este marco las concreta para la IA.</td>
+<td>Cuando la función de auditoría interna se rige por las <a class="ref-ext" href="https://www.theiia.org/globalassets/site/standards/editable-versions/global-internal-audit-standards-spanish.pdf" target="_blank" rel="noopener" title="Normas Globales de Auditor&#237;a Interna (Global Internal Audit Standards), Marco Internacional para la Pr&#225;ctica Profesional 2024">Normas Globales de Auditoría Interna del IIA</a> (en vigor desde enero de 2025), la auditoría de IA las aplica; este marco las concreta para la IA.</td>
 </tr>
 <tr>
 <td><strong>Auditores de IA externos</strong></td>
@@ -1999,7 +2010,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.iso.org/standard/19011" target="_blank" rel="noopener">ISO 19011:2026 Directrices para la auditor&#237;a de los sistemas de gesti&#243;n</a><span> · ISO (ISO/TMBG) · 27-05-2026</span></li><li><a href="https://www.iso.org/standard/61651.html" target="_blank" rel="noopener">ISO/IEC 17021-1:2015 Evaluaci&#243;n de la conformidad — Requisitos para los organismos que realizan la auditor&#237;a y la certificaci&#243;n de sistemas de gesti&#243;n — Parte 1: Requisitos</a><span> · ISO/IEC (ISO/CASCO) · 08-06-2015</span></li><li><a href="https://www.iso.org/standard/42006" target="_blank" rel="noopener">ISO/IEC 42006:2025 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Requisitos para los organismos que realizan auditor&#237;a y certificaci&#243;n de sistemas de gesti&#243;n de IA</a><span> · ISO/IEC (JTC 1/SC 42) · 07-07-2025</span></li><li><a href="https://www.theiia.org/globalassets/site/standards/editable-versions/global-internal-audit-standards-spanish.pdf" target="_blank" rel="noopener">Normas Globales de Auditor&#237;a Interna (Global Internal Audit Standards), Marco Internacional para la Pr&#225;ctica Profesional 2024</a><span> · The Institute of Internal Auditors (IIA), International Internal Audit Standards Board · 09-01-2024</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 

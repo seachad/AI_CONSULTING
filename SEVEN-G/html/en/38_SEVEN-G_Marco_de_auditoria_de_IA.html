@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · AI audit framework"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -400,8 +411,8 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="1-1-what-this-framework-is-not">1.1 What this framework is not</h3>
 <ul>
 <li><strong>It is not a financial statements audit</strong> and does not replace the statutory audit.</li>
-<li><strong>It is not a certification.</strong> SEVEN-G does not certify. Certification of an AI management system against ISO/IEC 42001 is issued by certification bodies in accordance with ISO/IEC 17021-1 and ISO/IEC 42006.</li>
-<li><strong>It is not the conformity assessment</strong> under Regulation (EU) 2024/1689, which is the responsibility of the provider of the high-risk system (Article 43) and, where applicable, of a notified body.</li>
+<li><strong>It is not a certification.</strong> SEVEN-G does not certify. Certification of an AI management system against ISO/IEC 42001 is issued by certification bodies in accordance with <a class="ref-ext" href="https://www.iso.org/standard/61651.html" target="_blank" rel="noopener" title="ISO/IEC 17021-1:2015 Conformity assessment — Requirements for bodies providing audit and certification of management systems — Part 1: Requirements">ISO/IEC 17021-1</a> and <a class="ref-ext" href="https://www.iso.org/standard/42006" target="_blank" rel="noopener" title="ISO/IEC 42006:2025 Information technology — Artificial intelligence — Requirements for bodies providing audit and certification of artificial intelligence management systems">ISO/IEC 42006</a>.</li>
+<li><strong>It is not the conformity assessment</strong> under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a>, which is the responsibility of the provider of the high-risk system (Article 43) and, where applicable, of a notified body.</li>
 <li><strong>It is not advisory work.</strong> The auditor does not design the controls that they subsequently audit.</li>
 </ul>
 <hr />
@@ -563,7 +574,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Basic</td>
 </tr>
 <tr>
-<td>AI Act, GDPR and applicable sector-specific regulation</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a> and applicable sector-specific regulation</td>
 <td>Sufficient to identify obligations by classification and role</td>
 <td>Solid</td>
 <td>Depending on specialism</td>
@@ -605,7 +616,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <td>Depending on specialism</td>
 </tr>
 <tr>
-<td>ISO/IEC 42001 and management system auditing (ISO 19011)</td>
+<td>ISO/IEC 42001 and management system auditing (<a class="ref-ext" href="https://www.iso.org/standard/19011" target="_blank" rel="noopener" title="ISO 19011:2026 Guidelines for auditing management systems">ISO 19011</a>)</td>
 <td>Basic</td>
 <td>Solid</td>
 <td>—</td>
@@ -1763,7 +1774,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Minimum content of the declaration</strong>: company name; scope; version of SEVEN-G applied; date; outcome and date of the last audit and type of auditor (internal or external); relevant exceptions in force; statement that the declaration is not a certification. In accordance with the content licence (CC BY 4.0), authorship of the framework must be acknowledged.</p>
+<p><strong>Minimum content of the declaration</strong>: company name; scope; version of SEVEN-G applied; date; outcome and date of the last audit and type of auditor (internal or external); relevant exceptions in force; statement that the declaration is not a certification. In accordance with the content licence (<a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">CC BY 4.0</a>), authorship of the framework must be acknowledged.</p>
 <hr />
 <h2 id="relationship-with-iso-iec-42001-and-with-corporate-internal-audit"><span class="antetitulo">12</span>Relationship with ISO/IEC 42001 and with corporate internal audit</h2>
 <h3 id="12-1-iso-iec-42001">12.1 ISO/IEC 42001</h3>
@@ -1813,8 +1824,8 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p><strong>Differences to bear in mind</strong></p>
 <ul>
 <li>A company that wishes to be <strong>certified</strong> against ISO/IEC 42001 must meet all the requirements of the standard, including the Annex A controls it declares applicable. Applying SEVEN-G facilitates certification but does not guarantee it.</li>
-<li>The certification audit is carried out by a certification body in accordance with ISO/IEC 17021-1 and ISO/IEC 42006. SEVEN-G audits are first-party internal audits or, if contracted, second-party audits.</li>
-<li>For conducting management system audits, ISO 19011 provides guidelines that are compatible with this framework.</li>
+<li>The certification audit is carried out by a certification body in accordance with <a class="ref-ext" href="https://www.iso.org/standard/61651.html" target="_blank" rel="noopener" title="ISO/IEC 17021-1:2015 Conformity assessment — Requirements for bodies providing audit and certification of management systems — Part 1: Requirements">ISO/IEC 17021-1</a> and <a class="ref-ext" href="https://www.iso.org/standard/42006" target="_blank" rel="noopener" title="ISO/IEC 42006:2025 Information technology — Artificial intelligence — Requirements for bodies providing audit and certification of artificial intelligence management systems">ISO/IEC 42006</a>. SEVEN-G audits are first-party internal audits or, if contracted, second-party audits.</li>
+<li>For conducting management system audits, <a class="ref-ext" href="https://www.iso.org/standard/19011" target="_blank" rel="noopener" title="ISO 19011:2026 Guidelines for auditing management systems">ISO 19011</a> provides guidelines that are compatible with this framework.</li>
 </ul>
 <h3 id="12-2-corporate-internal-audit">12.2 Corporate internal audit</h3>
 <div class="tabla"><table>
@@ -1831,7 +1842,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Professional standards</strong></td>
-<td>Where the internal audit function is governed by the IIA Global Internal Audit Standards (in force since January 2025), AI auditing applies them; this framework makes them specific to AI.</td>
+<td>Where the internal audit function is governed by the <a class="ref-ext" href="https://www.theiia.org/en/standards/2024-standards/global-internal-audit-standards/" target="_blank" rel="noopener" title="Global Internal Audit Standards, International Professional Practices Framework (IPPF) 2024">IIA Global Internal Audit Standards</a> (in force since January 2025), AI auditing applies them; this framework makes them specific to AI.</td>
 </tr>
 <tr>
 <td><strong>External AI Auditors</strong></td>
@@ -1999,7 +2010,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.iso.org/standard/19011" target="_blank" rel="noopener">ISO 19011:2026 Guidelines for auditing management systems</a><span> · ISO (ISO/TMBG) · 27-05-2026</span></li><li><a href="https://www.iso.org/standard/61651.html" target="_blank" rel="noopener">ISO/IEC 17021-1:2015 Conformity assessment — Requirements for bodies providing audit and certification of management systems — Part 1: Requirements</a><span> · ISO/IEC (ISO/CASCO) · 08-06-2015</span></li><li><a href="https://www.iso.org/standard/42006" target="_blank" rel="noopener">ISO/IEC 42006:2025 Information technology — Artificial intelligence — Requirements for bodies providing audit and certification of artificial intelligence management systems</a><span> · ISO/IEC (JTC 1/SC 42) · 07-07-2025</span></li><li><a href="https://www.theiia.org/en/standards/2024-standards/global-internal-audit-standards/" target="_blank" rel="noopener">Global Internal Audit Standards, International Professional Practices Framework (IPPF) 2024</a><span> · The Institute of Internal Auditors (IIA), International Internal Audit Standards Board · 09-01-2024</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · SEVEN-G methodology</span><span>Generated on 17-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under SEACHAD editorial supervision.</p></footer>
 

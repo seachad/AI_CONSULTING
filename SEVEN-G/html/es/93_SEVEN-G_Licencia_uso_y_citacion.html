@@ -303,6 +303,17 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
 @media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
 @page { @bottom-left { content: "SEVEN-G · Licencia, uso por terceros y citación"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -396,7 +407,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <p>Se aplica a todos los documentos, plantillas, criterios, reglas de medición, componentes gráficos y herramientas de SEVEN-G, y a las demostraciones del panel del consejo elaboradas con la metodología.</p>
 <hr />
 <h2 id="resumen"><span class="antetitulo">02</span>Resumen</h2>
-<p>Decisión D07 del registro de decisiones: <strong>contenidos bajo CC BY 4.0 y código bajo MIT</strong>.</p>
+<p>Decisión D07 del registro de decisiones: <strong>contenidos bajo <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y código <a class="ref-ext" href="https://opensource.org/license/mit" target="_blank" rel="noopener" title="Licencia MIT (The MIT License)">bajo MIT</a></strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -471,7 +482,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>Reconocimiento</strong></td>
-<td>Indicar el autor y el titular, el título de la obra, un aviso de licencia con enlace a CC BY 4.0 y, si es razonable, un enlace al material original. Puede hacerse de cualquier forma razonable según el medio.</td>
+<td>Indicar el autor y el titular, el título de la obra, un aviso de licencia con enlace a <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y, si es razonable, un enlace al material original. Puede hacerse de cualquier forma razonable según el medio.</td>
 </tr>
 <tr>
 <td><strong>Indicar los cambios</strong></td>
@@ -506,7 +517,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td>Usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar y vender copias del código, también con fines comerciales.</td>
-<td>Incluir el aviso de copyright y el texto de la licencia MIT en todas las copias o partes sustanciales del código.</td>
+<td>Incluir el aviso de copyright y el texto de la <a class="ref-ext" href="https://opensource.org/license/mit" target="_blank" rel="noopener" title="Licencia MIT (The MIT License)">licencia MIT</a> en todas las copias o partes sustanciales del código.</td>
 </tr>
 </tbody>
 </table></div>
@@ -516,7 +527,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="6-1-cita-del-marco">6.1 Cita del marco</h3>
 <p><strong>En español</strong></p>
 <blockquote>
-<p>«SEVEN-G, marco de valor, gobierno y transformación con IA», de Fernando García · SEACHAD, versión 0.1 (16-09-2026). Licencia CC BY 4.0.</p>
+<p>«SEVEN-G, marco de valor, gobierno y transformación con IA», de Fernando García · SEACHAD, versión 0.1 (16-09-2026). Licencia <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a>.</p>
 </blockquote>
 <p><strong>En inglés</strong></p>
 <blockquote>
@@ -558,7 +569,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <hr />
 <h2 id="uso-del-nombre-seven-g"><span class="antetitulo">07</span>Uso del nombre SEVEN-G</h2>
 <h3 id="7-1-principio">7.1 Principio</h3>
-<p>La licencia CC BY 4.0 permite usar los contenidos, <strong>no convierte al usuario en representante del marco ni implica respaldo ni certificación</strong>. Nombrar SEVEN-G para describir con exactitud lo que se ha usado es necesario para cumplir el reconocimiento; usarlo para sugerir aval, acreditación o certificación no está permitido.</p>
+<p>La licencia <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> permite usar los contenidos, <strong>no convierte al usuario en representante del marco ni implica respaldo ni certificación</strong>. Nombrar SEVEN-G para describir con exactitud lo que se ha usado es necesario para cumplir el reconocimiento; usarlo para sugerir aval, acreditación o certificación no está permitido.</p>
 <h3 id="7-2-usos-adecuados-y-no-adecuados">7.2 Usos adecuados y no adecuados</h3>
 <div class="tabla"><table>
 <thead>
@@ -604,7 +615,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 </tr>
 <tr>
 <td><strong>Adaptación que se comparte o publica</strong></td>
-<td>Permitida, con reconocimiento, indicación de los cambios y sin sugerir respaldo. Quien adapta puede licenciar sus aportaciones con los términos que elija, siempre que no impida a los destinatarios cumplir la licencia del material original. Se recomienda mantener CC BY 4.0 para facilitar la reutilización.</td>
+<td>Permitida, con reconocimiento, indicación de los cambios y sin sugerir respaldo. Quien adapta puede licenciar sus aportaciones con los términos que elija, siempre que no impida a los destinatarios cumplir la licencia del material original. Se recomienda mantener <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> para facilitar la reutilización.</td>
 </tr>
 <tr>
 <td><strong>Traducciones oficiales</strong></td>
@@ -636,7 +647,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h2 id="versiones-publicadas-y-cambios-de-licencia"><span class="antetitulo">10</span>Versiones publicadas y cambios de licencia</h2>
 <ul>
 <li><strong>Cada versión publicada conserva la licencia con la que se publicó.</strong> Las licencias Creative Commons no se pueden revocar para quien ya ha recibido el material, mientras cumpla sus condiciones.</li>
-<li>Si en el futuro se decidiera cambiar la licencia, el cambio solo afectaría a las <strong>versiones posteriores</strong>; las versiones ya publicadas bajo CC BY 4.0 y MIT seguirían disponibles en esas condiciones.</li>
+<li>Si en el futuro se decidiera cambiar la licencia, el cambio solo afectaría a las <strong>versiones posteriores</strong>; las versiones ya publicadas bajo <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y MIT seguirían disponibles en esas condiciones.</li>
 <li>Cada documento indica su versión y fecha en la ficha inicial y en el control de versiones. Al citar o adaptar, se debe indicar la versión usada.</li>
 </ul>
 <hr />
@@ -659,7 +670,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tbody>
 <tr>
 <td><strong>Identificar la normativa aplicable</strong></td>
-<td>Determinar la regulación general (por ejemplo, el Reglamento Europeo de IA, el RGPD, DORA o NIS2), la <strong>regulación específica de su industria</strong> (banca, seguros, sanidad, energía, telecomunicaciones, sector público, entre otras) y la de <strong>cada jurisdicción</strong> en la que opera, incluidas las directrices y los criterios de las autoridades competentes.</td>
+<td>Determinar la regulación general (por ejemplo, el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>), la <strong>regulación específica de su industria</strong> (banca, seguros, sanidad, energía, telecomunicaciones, sector público, entre otras) y la de <strong>cada jurisdicción</strong> en la que opera, incluidas las directrices y los criterios de las autoridades competentes.</td>
 </tr>
 <tr>
 <td><strong>Verificar su vigencia</strong></td>
@@ -683,7 +694,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <h3 id="11-7-terceros-que-usan-o-adaptan-el-marco">11.7 Terceros que usan o adaptan el marco</h3>
 <p>Las consultoras, auditores, formadores y demás terceros que usen, adapten o integren SEVEN-G en sus servicios lo hacen <strong>bajo su exclusiva responsabilidad</strong>. No pueden presentar su trabajo, sus entregables, sus adaptaciones ni sus conclusiones como <strong>validados, certificados, revisados o respaldados</strong> por el autor o por SEACHAD, ni declarar o certificar en nombre de SEVEN-G o del autor el cumplimiento regulatorio de un cliente (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 6.2). Deben trasladar el aviso legal a sus entregables.</p>
 <h3 id="11-8-como-encaja-con-las-licencias">11.8 Cómo encaja con las licencias</h3>
-<p>La sección 5 de la licencia CC BY 4.0 ya excluye las declaraciones y garantías sobre el material y limita la responsabilidad del licenciante en la medida permitida por la ley; la licencia MIT hace lo mismo con el código (sección 5 de este documento). Esta sección <strong>no añade restricciones</strong> a lo que las licencias permiten: explica y concreta esas exclusiones en el ámbito regulatorio, de modo que cualquier uso, copia o adaptación que cumpla la licencia sigue estando permitido. Además, la sección 3.a.1.A de CC BY 4.0 exige conservar el aviso que remite a la exclusión de garantías cuando el licenciante lo facilita con el material. En caso de discrepancia, prevalece el texto legal de cada licencia.</p>
+<p>La sección 5 de la licencia <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> ya excluye las declaraciones y garantías sobre el material y limita la responsabilidad del licenciante en la medida permitida por la ley; la <a class="ref-ext" href="https://opensource.org/license/mit" target="_blank" rel="noopener" title="Licencia MIT (The MIT License)">licencia MIT</a> hace lo mismo con el código (sección 5 de este documento). Esta sección <strong>no añade restricciones</strong> a lo que las licencias permiten: explica y concreta esas exclusiones en el ámbito regulatorio, de modo que cualquier uso, copia o adaptación que cumpla la licencia sigue estando permitido. Además, la sección 3.a.1.A de CC BY 4.0 exige conservar el aviso que remite a la exclusión de garantías cuando el licenciante lo facilita con el material. En caso de discrepancia, prevalece el texto legal de cada licencia.</p>
 <h3 id="11-9-aviso-que-deben-conservar-las-obras-derivadas">11.9 Aviso que deben conservar las obras derivadas</h3>
 <p>Quien distribuya una copia, adaptación o traducción de SEVEN-G debe conservar, junto al reconocimiento, al menos esta forma breve del aviso:</p>
 <blockquote class="aviso-legal">
@@ -707,7 +718,7 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
 <td>Panel de IA para el consejo</td>
-<td>Contenidos CC BY 4.0 y código MIT en el repositorio de demostraciones.</td>
+<td>Contenidos <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y código MIT en el repositorio de demostraciones.</td>
 </tr>
 <tr>
 <td>T18</td>
@@ -767,11 +778,11 @@ blockquote.aviso-legal strong { color: var(--negro); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Resume las licencias CC BY 4.0 (contenidos) y MIT (código), sus permisos y exigencias, la forma de cita en español e inglés, el uso del nombre SEVEN-G sin certificación, las obras derivadas y traducciones, los datos ficticios, la permanencia de la licencia de las versiones publicadas y el contacto. Aviso legal y responsabilidad del usuario sobre el cumplimiento regulatorio.</td>
+<td>Primera versión. Resume las licencias <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> (contenidos) y MIT (código), sus permisos y exigencias, la forma de cita en español e inglés, el uso del nombre SEVEN-G sin certificación, las obras derivadas y traducciones, los datos ficticios, la permanencia de la licencia de las versiones publicadas y el contacto. Aviso legal y responsabilidad del usuario sobre el cumplimiento regulatorio.</td>
 </tr>
 </tbody>
 </table></div>
-
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li><li><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Licencia MIT (The MIT License)</a><span> · Open Source Initiative (texto de licencia aprobado por la OSI; SPDX: MIT)</span></li></ul>
 </main>
 <footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 17-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 
