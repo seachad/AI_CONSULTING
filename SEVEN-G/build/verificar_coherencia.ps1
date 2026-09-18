@@ -73,6 +73,12 @@ try {
   foreach ($x in $sin) { Mal "sin aviso legal: $x" }
   if (-not $sin) { Ok "$($conAviso.Count) páginas con aviso legal" }
 
+  # aviso de versión en revisión (D58) en las páginas principales mientras el marco esté en la versión 0.x; se retira al pasar a la 1.x
+  $principales = @('index.html', 'en\index.html') + @(foreach ($met in 'SEVEN-G', 'SPHERES') { foreach ($lang in 'es', 'en') { "$met\html\$lang\index.html"; "$met\html\$lang\00_${met}_Que_es_y_para_que_sirve.html" } })
+  $sinRev = $principales | Where-Object { (Test-Path (Join-Path $repo $_)) -and -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Versión en revisión|Version under review' -Quiet) }
+  foreach ($x in $sinRev) { Mal "sin aviso de versión en revisión: $x" }
+  if (-not $sinRev) { Ok "$($principales.Count) páginas principales con el aviso de versión en revisión" }
+
   # ---- 4. portada
   Write-Host '4. Portada: orden de botones y enlaces'
   foreach ($p in 'index.html', 'en\index.html') {
