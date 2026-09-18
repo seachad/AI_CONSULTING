@@ -1,5 +1,5 @@
-# Publica en GitHub Pages SOLO la parte pública de este repositorio (portada + SEVEN-G y SPHERES generados).
-# Nunca publica _trabajo, _legacy, .claude, build/, fuentes Markdown ni SPAD (fuentes de trabajo).
+# Publica en GitHub Pages SOLO la parte pública de este repositorio (portada + SEVEN-G, SPHERES y SPAD generados).
+# Nunca publica _trabajo, _legacy, .claude, build/, fuentes Markdown ni SPAD/Documents (fuentes de trabajo).
 # Requisito: en Settings → Pages, "Source" = "GitHub Actions". En un repositorio privado, Pages
 # requiere un plan de GitHub que lo admita (Pro, Team o Enterprise); el sitio resultante es público.
 name: Publicar sitio (GitHub Pages)
@@ -34,10 +34,12 @@ jobs:
             [ -d "SEVEN-G/$c" ] || continue
             rsync -a --exclude '_trabajo' --exclude '_legacy' --exclude '_*' --exclude '__pycache__' "SEVEN-G/$c" sitio/SEVEN-G/
           done
-          for c in html pdf; do
-            [ -d "SPHERES/$c" ] || continue
-            mkdir -p sitio/SPHERES
-            rsync -a --exclude '_trabajo' --exclude '_legacy' --exclude '_*' "SPHERES/$c" sitio/SPHERES/
+          for m in SPHERES SPAD; do
+            for c in html pdf; do
+              [ -d "$m/$c" ] || continue
+              mkdir -p "sitio/$m"
+              rsync -a --exclude '_trabajo' --exclude '_legacy' --exclude '_*' "$m/$c" "sitio/$m/"
+            done
           done
           touch sitio/.nojekyll
       - name: Verificar que no hay textos internos

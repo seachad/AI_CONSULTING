@@ -1,6 +1,6 @@
 # Renderiza páginas de un PDF a PNG para revisión visual (usa Windows.Data.Pdf).
 # Ejecutar con Windows PowerShell 5.1:  powershell -File build/pdf_a_png.ps1 -Pdf <ruta> -Salida <carpeta> [-Paginas 1,2,3]
-param([Parameter(Mandatory)][string]$Pdf, [Parameter(Mandatory)][string]$Salida, [int[]]$Paginas)
+param([Parameter(Mandatory)][string]$Pdf, [Parameter(Mandatory)][string]$Salida, [int[]]$Paginas, [int]$Ancho = 1100)
 
 Add-Type -AssemblyName System.Runtime.WindowsRuntime
 $null = [Windows.Storage.StorageFile, Windows.Storage, ContentType = WindowsRuntime]
@@ -24,7 +24,7 @@ foreach ($n in $Paginas) {
   $page = $doc.GetPage($n - 1)
   $stream = New-Object Windows.Storage.Streams.InMemoryRandomAccessStream
   $opts = New-Object Windows.Data.Pdf.PdfPageRenderOptions
-  $opts.DestinationWidth = 1100
+  $opts.DestinationWidth = $Ancho
   AwaitAction ($page.RenderToStreamAsync($stream, $opts))
   $net = [System.IO.WindowsRuntimeStreamExtensions]::AsStreamForRead($stream.GetInputStreamAt(0))
   $out = Join-Path $Salida ("pagina_{0:D2}.png" -f $n)
