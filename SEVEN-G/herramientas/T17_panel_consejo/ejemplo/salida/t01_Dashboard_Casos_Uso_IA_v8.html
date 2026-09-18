@@ -944,7 +944,19 @@ function placeholder(txt, campo){ return `<div class="ph">${esc(txt)} <br>Campo 
 const pl = (n, s, p) => `<b>${n}</b> ${n===1?s:(p||s+"s")}`;
 const lista = a => a.length<=1 ? a.join("") : a.slice(0,-1).join(", ") + " y " + a[a.length-1];
 function setCard(id, title, note, insight, body){
-  document.getElementById(id).innerHTML = limpiaRefs(`<summary><h3>${title}</h3><div class="ins">${insight}</div></summary><div class="body">${note?`<div class="note">${note}</div>`:""}${body}</div>`);
+  const el = document.getElementById(id);
+  if (!el) return;
+  const raw = body == null ? "" : String(body);
+  const text = raw.replace(/<[^>]*>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+  const isPlaceholder = /class=["']ph["']|Campo del JSON:/i.test(raw) || /Ningún .* seleccionado|Sin .* reportados|sin dato/i.test(text) && !/\b(?:caso|casos|incidente|incidentes|movimiento|movimientos|riesgo|riesgos|brecha|brechas)\b/i.test(text);
+  if (!text || isPlaceholder) {
+    el.hidden = true;
+    el.open = false;
+    el.innerHTML = "";
+    return;
+  }
+  el.hidden = false;
+  el.innerHTML = limpiaRefs(`<summary><h3>${title}</h3><div class="ins">${insight}</div></summary><div class="body">${note?`<div class="note">${note}</div>`:""}${body}</div>`);
 }
 function miniTable(cols, rows, max=8){
   const body = rows.slice(0,max).map(r=>`<tr>${cols.map(c=>`<td class="${c[2]||''}">${c[1](r)}</td>`).join("")}</tr>`).join("");

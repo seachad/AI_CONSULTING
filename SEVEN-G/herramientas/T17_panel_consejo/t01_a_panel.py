@@ -118,6 +118,7 @@ CONCEPTOS = {"eficiencias": ("personas", "herramientas", "siniestros", "operativ
              "retorno": ("venta_nueva", "venta_cruzada", "retencion", "precio_margen", "cobros", "otros")}
 CONCEPTO_POR_DEFECTO = {"eficiencias": "operativo", "retorno": "otros"}
 # ciclo de vida por defecto (si falta config_panel.json): etapa del embudo de cada fase de SEVEN-G
+# Las dos terminales del embudo son paralelas: En uso (en producción) y Desenganchado (retirada tras paso a producción).
 CICLO_POR_DEFECTO = {
     "fases_seven_g": {"0": "Propuesto", "1": "Propuesto", "2": "Hipótesis de valor", "3": "POC", "4": "En desarrollo", "5": "En desarrollo", "6": "En uso", "7": "En uso"},
     "embudo": ["Propuesto", "Hipótesis de valor", "POC", "En desarrollo", "En uso"], "ganado": "En uso",

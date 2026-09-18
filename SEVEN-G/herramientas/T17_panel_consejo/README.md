@@ -98,9 +98,9 @@ El estado de cada caso es una etapa del embudo o una salida, definidas en `confi
 | 2 Hipótesis de valor | `Hipótesis de valor` | Superado G1: se formula y aprueba la hipótesis (G2). |
 | 3 Viabilidad y riesgo | `POC` | Superado G2: se comprueba que es viable (datos, técnica, riesgo) antes de construir. |
 | 4 Diseño de la solución · 5 Entrega y validación | `En desarrollo` | Superado G3: se diseña, construye y valida. |
-| 6 Operación y gobierno · 7 Evolución o retirada | `En uso` | Superado G5: está operando. Es la etapa «ganada» del embudo. |
+| 6 Operación y gobierno · 7 Evolución o retirada | `En uso` | Superado G5: está operando. Es una de las dos terminales paralelas del embudo, junto con `Desenganchado` cuando se retira. |
 
-Una iniciativa cerrada (estado `parada` o `retirada`, o con `cierre`) pasa a la salida prevista para la etapa en la que estaba:
+Una iniciativa cerrada (estado `parada` o `retirada`, o con `cierre`) pasa a la salida prevista para la etapa en la que estaba. En la práctica, `En uso` y `Desenganchado` son terminales paralelos del embudo: uno representa producción y el otro retirada, no una progresión lineal dentro del embudo:
 
 | Cierre en T01 | Salida del panel |
 |---|---|

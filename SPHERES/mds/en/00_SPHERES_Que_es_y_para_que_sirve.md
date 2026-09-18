@@ -8,7 +8,7 @@
 | Version | 0.1 |
 | Date | 17-09-2026 |
 | Author | Fernando García · SEACHAD |
-| Status | Under construction. Supporting methodology of SEVEN-G; its current operating rules are in SEVEN-G document 10. |
+| Status | Under construction. Supporting methodology of SEVEN-G and not released commercially; its current operating rules are in SEVEN-G document 10. |
 | Type | Methodology overview |
 
 <!-- cifras: 9 | impact spheres ; 3 | ambition levels ; 4 | sphere types ; 6 | documents -->
@@ -24,6 +24,8 @@
 The name comes from the English word *spheres*. It is not an acronym: it describes the central idea of the method, which is that AI is not a project for the technology area but a change that reaches customers, the offering, people, processes, data, knowledge, decisions, obligations and governance.
 
 SPHERES answers three questions that any board or management committee should be able to answer clearly:
+
+> **Public status and reuse.** SPHERES is offered as an open reference framework in development. It is not released as a final commercial deliverable or a closed product for clients. The content, templates and methodological explanation may be reused by any organisation for methodological use, unless a written and specific agreement sets different terms for modifications or proprietary developments; no client may claim exclusivity over the base framework by the mere use of SPHERES.
 
 | Question | What SPHERES contributes | Where it is developed |
 |---|---|---|

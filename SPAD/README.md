@@ -6,7 +6,7 @@
 **Version:** 2.0  
 **Relationship:** Independent methodology, related to SEVEN-G and referenced from its document 53 (building solutions with AI)  
 **Owner:** Seachad (FGV)  
-**Status:** Production Ready
+**Status:** Under construction / not yet released as a final commercial deliverable
 
 ---
 
