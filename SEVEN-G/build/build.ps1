@@ -109,6 +109,7 @@ $textos = @{
     T_HISTORIAL_TITULO = 'Historial de navegación'; T_FILTRAR_DOCUMENTOS = 'Filtrar documentos'; T_HISTORIAL_VACIO = 'Todavía no hay navegación registrada.'
     T_CERRAR_PANEL = 'Cerrar panel'; T_HORA = 'Hora'; T_DESCARGAS = 'Descargas'
     T_TT_INICIO = 'Ir al documento 00: Qué es SEVEN-G y para qué sirve'
+    T_PORTADA = 'Portada'; T_TT_PORTADA = 'Ir a la portada de AI Consulting · SEACHAD (todas las metodologías)'
     T_TT_BIBLIOTECA = 'Abrir biblioteca de documentos del idioma actual'
     T_TT_HISTORIAL = 'Ver historial de navegación de este idioma'
     T_TT_INDICE = 'Abrir índice de secciones del documento actual'
@@ -127,6 +128,7 @@ $textos = @{
     T_HISTORIAL_TITULO = 'Navigation history'; T_FILTRAR_DOCUMENTOS = 'Filter documents'; T_HISTORIAL_VACIO = 'No navigation recorded yet.'
     T_CERRAR_PANEL = 'Close panel'; T_HORA = 'Time'; T_DESCARGAS = 'Downloads'
     T_TT_INICIO = 'Go to document 00: What SEVEN-G is and how it helps companies'
+    T_PORTADA = 'Home'; T_TT_PORTADA = 'Go to the AI Consulting · SEACHAD home page (all methodologies)'
     T_TT_BIBLIOTECA = 'Open the document library for the current language'
     T_TT_HISTORIAL = 'View navigation history for this language'
     T_TT_INDICE = 'Open section index for the current document'
@@ -588,6 +590,9 @@ foreach ($lang in $Idiomas) {
 
     $homeHtml = Join-Path $htmlDir "$($cfg.inicio).html"
     $homeHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $homeHtml).Replace('\\', '/').Replace('\', '/')
+    # ⌂ lleva a la portada general del sitio (todas las metodologías), en el idioma del documento; la marca, al documento 00
+    $portadaHtml = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
+    $portadaHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $portadaHtml).Replace('\', '/')
 
     # ---- Zona de descargas y herramientas (visible bajo la portada y en el panel) ----
     $en = $lang -eq 'en'
@@ -646,6 +651,7 @@ foreach ($lang in $Idiomas) {
                   Replace('{{PIE}}', $pie).
                   Replace('{{IDIOMAS}}', $idiomasHtml).
                   Replace('{{HOME_HREF}}', $homeHref).
+                  Replace('{{PORTADA_HREF}}', $portadaHref).
                   Replace('{{NAV_ITEMS}}', $navItemsJson).
                   Replace('{{PORTADA}}', $portada).
                   Replace('{{INDICE}}', $indiceHtml).
