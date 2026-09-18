@@ -91,7 +91,7 @@ Se indican roles y canales; los datos personales de contacto se mantienen en el 
 | Revisar muestra de resultados (supervisión a posteriori) | Según P17 | Supervisores designados | P17 bloque 6 | |
 | Revisar registro de acciones del agente y bloqueos | Semanal | | P18 bloque 10 | |
 | Revisar consumo y coste frente a presupuesto | Mensual | | P25 | |
-| Revisar deriva y rendimiento frente a referencia | Mensual | | P25 | |
+| Revisar deriva (también de uso), sesgo y rendimiento frente a referencia | Mensual | | P25 | |
 | Revisar permisos e identidades del sistema | Trimestral | | P18 bloques 4 y 5 | |
 | Actualizar el seguimiento de valor | Según P28 | Responsable de producto de IA | P28 | |
 | Preparar la revisión de continuidad R6 | Trimestral (Enterprise) · Semestral (Lite) | Responsable de operación de IA | Bloque 10 | P29 |
@@ -116,10 +116,11 @@ Se indican roles y canales; los datos personales de contacto se mantienen en el 
 | Degradación del rendimiento | Alerta de rendimiento o aumento de anulaciones | Verificar datos de entrada y versión; valorar disparador de reversión | Responsable técnico de IA | P19 · P25 |
 | Datos de entrada ausentes o tardíos | Alerta de actualidad | Activar modo degradado si se superan los umbrales | Responsable del dato | P19 |
 | Proveedor de modelo no disponible | Errores de servicio | Aplicar alternativa prevista; informar a usuarios | Responsable de operación de IA | P14 · P19 |
-| Coste de consumo por encima del umbral | Alerta de coste | Revisar uso anómalo; aplicar límite | Responsable de producto de IA | P18 bloque 7 |
+| Coste de consumo por encima del umbral | Alerta de coste | Revisar uso anómalo; aplicar el nivel de la cascada de degradación por coste del bloque 8 | Responsable de producto de IA | P18 bloque 7 · documento 52 §10.3 |
+| Cambio en lo que piden los usuarios (deriva de uso) | Alerta de consultas fuera del alcance validado o de cambio de temas | Ampliar el conjunto de evaluación con los casos nuevos y evaluar; si el uso cae fuera de la finalidad, limitar el alcance | Responsable de producto de IA | P25 · documento 52 §4.2.6 |
 | Sospecha de inyección de instrucciones o acción anómala del agente | Bloqueos repetidos o acción fuera de finalidad | Valorar interruptor de parada; preservar registros | Seguridad de la información | P18 · P26 |
 | Reclamación de una persona afectada | Reclamación recibida | Registrar; activar revisión humana | Responsable de producto de IA | P17 bloque 8 |
-| Posible resultado discriminatorio | Alerta de equidad o reclamación | Tratar como incidente y clasificar severidad | Responsable de riesgos de IA | P26 |
+| Posible resultado discriminatorio | Alerta de equidad, de respuestas desiguales en pares contrafactuales o reclamación | Tratar como incidente y clasificar severidad | Responsable de riesgos de IA | P26 |
 | | | | | |
 
 ---
@@ -132,6 +133,8 @@ Se indican roles y canales; los datos personales de contacto se mantienen en el 
 | Proceso sin IA | | Quién lo ejecuta y con qué capacidad. |
 | Tiempo máximo sin servicio aceptable | | Coherente con P19. |
 | Recuperación tras el modo degradado | | Comprobaciones antes de volver al funcionamiento normal y quién autoriza. |
+| Cascada de degradación por coste | | Solo sistemas con consumo variable. Niveles aplicables (N1 optimización, N2 modelo de respaldo, N3 alcance reducido, N4 sin IA), disparador de cada uno (por ejemplo, N1 al 80 % y N2 al 100 % del presupuesto), quién los activa y usos excluidos de N2 (documento 52 §10.3). |
+| Modelo de respaldo | | Identificador en P16, resultado de su evaluación antes de G5 y calidad mínima exigida en P25. |
 
 ---
 
@@ -170,6 +173,7 @@ Criterios formales de G5 y R6 en el documento 21.
 | 4 | Las situaciones habituales tienen primera acción y escalado. | |
 | 5 | El modo degradado y el proceso sin IA están descritos y son coherentes con P19. | |
 | 6 | La fecha de la próxima R6 está fijada según la intensidad. | |
+| 7 | En sistemas con consumo variable, la cascada de degradación por coste está definida, no desactiva controles críticos y se ha probado. | |
 
 ---
 
@@ -191,3 +195,4 @@ Separación de funciones: el responsable de operación no verifica evidencias de
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión de la plantilla. |
+| 0.1 | 18-09-2026 | Cascada de degradación por coste y modelo de respaldo en el bloque 8; deriva de uso y pares contrafactuales en las situaciones habituales; criterio de calidad 7. |

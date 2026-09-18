@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Nonconformities, AI incidents and remediation"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -547,7 +551,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-1-detection">3.1 Detection</h3>
 <p>A nonconformity may be detected in: <em>gate</em> verifications by the AI Auditor or the AI Office; continuity reviews (R6); internal or external audits; initiative register alerts (expired conditions, pending evidence, overdue reviews); control effectiveness testing (33 §5.3); incident analyses; detection of unauthorised use of AI; reports from employees, customers, suppliers or supervisors. Anyone <strong>may</strong> report a possible nonconformity; the AI Office <strong>must</strong> record it or give reasons why it is not one.</p>
 <h3 id="3-2-recording">3.2 Recording</h3>
-<p>Every nonconformity is recorded in <strong>T08</strong> with the code <strong>NC-AAAA-NNN</strong> (year of detection and a sequential number that does not restart within the year).</p>
+<p>Every nonconformity is recorded in <strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></strong> with the code <strong>NC-AAAA-NNN</strong> (year of detection and a sequential number that does not restart within the year).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -712,7 +716,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Corrective action</strong></td>
 <td>Eliminate the root cause so that it does not recur.</td>
-<td>Add the relevant-change criterion to <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and T03.</td>
+<td>Add the relevant-change criterion to <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>.</td>
 </tr>
 <tr>
 <td><strong>Preventive action</strong></td>
@@ -998,7 +1002,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="4-5-phases">4.5 Phases</h3>
-<p><strong>1. Detection.</strong> Sources: monitoring and alerts (P25), agent controls (blocks, limits, anomalies), users and customers, human oversight, suppliers, the security team, audit, authorities or third parties. Every possible incident is recorded in T08 with the date and time of detection: this starts the regulatory clocks.</p>
+<p><strong>1. Detection.</strong> Sources: monitoring and alerts (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), agent controls (blocks, limits, anomalies), users and customers, human oversight, suppliers, the security team, audit, authorities or third parties. Every possible incident is recorded in <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> with the date and time of detection: this starts the regulatory clocks.</p>
 <p><strong>2. Triage.</strong> Confirm the incident, assign type and severity, identify the affected systems, data, people and suppliers, appoint a coordinator and open the assessment of reporting obligations.</p>
 <p><strong>3. Containment.</strong> Limit the harm immediately. Criteria for <strong>shutting down the system</strong> (fully or by capability with the kill switch):</p>
 <ul>
@@ -1008,7 +1012,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Discriminatory or dangerous outputs that continue to be produced.</li>
 <li>Inability to determine within a short time whether the system is safe.</li>
 </ul>
-<p>Shutdown activates the fallback process set out in the rollback plan (P19) and the operations manual (P24). Before the system is modified, <strong>evidence is preserved</strong>: logs, model and instruction versions, configurations, relevant inputs and outputs. The AI Act requires the provider of a high-risk system not to alter the system in a way that may affect any subsequent evaluation of the causes before informing the authorities (Art. 73(6)).</p>
+<p>Shutdown activates the fallback process set out in the rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) and the operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>). Before the system is modified, <strong>evidence is preserved</strong>: logs, model and instruction versions, configurations, relevant inputs and outputs. The AI Act requires the provider of a high-risk system not to alter the system in a way that may affect any subsequent evaluation of the causes before informing the authorities (Art. 73(6)).</p>
 <p><strong>4. Eradication and recovery.</strong> Eliminate the immediate cause (revoke credentials, correct the configuration, remove poisoned content, roll back the version), validate through testing that the system operates within thresholds —including adversarial testing if there was manipulation— and resume with the decision-maker's authorisation. After an S1 or S2 related to an agent's autonomy, operation resumes at a lower autonomy level until the post-incident analysis has been completed (35 §5.2).</p>
 <p><strong>5. Communication.</strong> Internal, to the AI Committee and the board as per 4.3; to affected parties and customers where appropriate or required by regulation; to the suppliers involved. All external communication is validated by Legal and Communications.</p>
 <p><strong>6. Regulatory reporting.</strong> As per section 5, in parallel with containment.</p>
@@ -1063,7 +1067,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>DORA and NIS2.</strong> For financial entities, DORA acts as sector-specific legislation with respect to NIS2 for incident reporting; the applicable regime is confirmed in the regulatory mapping (document 34).</li>
 <li><strong>Applicability of Art. 73.</strong> It concerns high-risk systems, whose Annex III obligations apply from 2 December 2027. Until then, the company <strong>should</strong> apply the serious incident criterion as its internal S1 threshold and document its assessment. Art. 73 provides for a limited regime where equivalent sector-specific reporting obligations exist (Art. 73(9) and 73(10)).</li>
 <li><strong>General-purpose AI models with systemic risk.</strong> Their providers have their own reporting obligations to the EU AI Office (Art. 55); the company, as a user, cooperates through the contract (document 36).</li>
-<li><strong>Sector-specific and contractual regulation.</strong> Sector supervisors, public sector security schemes and contracts with customers may impose additional reporting. These are captured in the context statement (P02) and in the response plan (P26).</li>
+<li><strong>Sector-specific and contractual regulation.</strong> Sector supervisors, public sector security schemes and contracts with customers may impose additional reporting. These are captured in the context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>) and in the response plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
 <li><strong>Suppliers.</strong> N2 and N3 contracts must ensure that the supplier reports within a time limit that allows these time limits to be met (36 §6, clause 7).</li>
 <li><strong>Rehearsal.</strong> Reporting is rehearsed at least once a year in an S1 incident drill.</li>
 </ul>
@@ -1104,7 +1108,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="registers"><span class="antetitulo">07</span>Registers</h2>
 <h3 id="7-1-incident-register">7.1 Incident register</h3>
-<p>It is implemented with template <strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong> and tool <strong>T08</strong>, using the code <strong>INC-AAAA-NNN</strong>.</p>
+<p>It is implemented with template <strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong> and tool <strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></strong>, using the code <strong>INC-AAAA-NNN</strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1274,7 +1278,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fields in section 7. Phase 6.</td>
 </tr>
 <tr>
-<td><strong>T08</strong></td>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Register of NC-AAAA-NNN and INC-AAAA-NNN with statuses, time limits, reporting clocks, overdue alerts, links to risks and <em>gates</em>, and the indicators in section 8. Module of <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
 </tr>
@@ -1284,7 +1288,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fallback process, kill switch and detection.</td>
 </tr>
 <tr>
-<td>T06 · T09 · <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a> · <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
 <td>Risks · Suppliers · Board dashboard</td>
 <td>Materialised risks, third-party incidents and reporting to the board.</td>
 </tr>

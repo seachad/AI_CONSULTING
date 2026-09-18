@@ -10,9 +10,12 @@
        la lista privada de términos prohibidos (~/.seveng/terminos_prohibidos.txt).
     3. Aviso legal presente en las herramientas y paneles publicados (D33).
     4. Portada: el primer botón de cada metodología es el que explica el marco (D46) y sus enlaces locales existen.
+    1e. Ninguna herramienta (Tnn) citada en los HTML generados queda sin enlace (D64).
     5. T01: registro.html coincide con lo que genera build_registro.ps1 (no se ha editado a mano ni está desfasado, D43).
+       T14: indice.html coincide con lo que genera build_indice.ps1 (D64).
     6. T17: el panel de ejemplo coincide con lo que genera el conector desde los datos de demostración (D43, D44); requiere uv.
-    7. Prueba de humo en Edge sin ventana: el registro, el panel completo y el panel móvil se dibujan (un error de JavaScript los deja vacíos).
+    7. Prueba de humo en Edge sin ventana: el registro, el panel completo y el panel móvil se dibujan (un error de JavaScript los deja vacíos),
+       y la calculadora T14 reproduce el ejemplo del documento 12 §9 (suma 12, transformación declarada no evidenciada).
     8. Registro de decisiones: numeración única y correlativa.
 #>
 param([switch]$SinNavegador)
@@ -97,6 +100,21 @@ try {
   if ($rotos.Count -gt 15) { Mal "… y $($rotos.Count - 15) enlaces rotos más" }
   if (-not $rotos.Count) { Ok "$nEnlaces enlaces locales comprobados, ninguno roto" }
 
+  # toda herramienta del catálogo (T01–T22) citada en el texto de un HTML generado lleva enlace: a su aplicación, al módulo de T01
+  # o al procedimiento con el que se aplica (D64). Se descartan enlaces, código, scripts, estilos, la cabecera y los rótulos de los
+  # diagramas (salen de un comentario «grafico:» y no admiten enlaces).
+  Write-Host '1e. Herramientas citadas sin enlace'
+  $sinEnlace = [Collections.Generic.List[string]]::new()
+  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html') -Recurse -File -Filter *.html -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+    $txt = [regex]::Replace([IO.File]::ReadAllText($f.FullName), '(?s)<head\b.*?</head>|<script\b.*?</script>|<style\b.*?</style>|<a\b.*?</a>|<code\b.*?</code>|<div class="g-(?:titulo|sub)">.*?</div>|<pre class="mermaid">.*?</pre>', ' ')
+    $txt = [regex]::Replace($txt, '<[^>]+>', ' ')
+    $cods = @([regex]::Matches($txt, '(?<![\w/\-])T(0[1-9]|1\d|2[0-2])(?![\w])') | ForEach-Object Value | Select-Object -Unique)
+    if ($cods.Count) { $sinEnlace.Add("$([IO.Path]::GetRelativePath($repo, $f.FullName)): $($cods -join ', ')") }
+  }
+  foreach ($x in ($sinEnlace | Select-Object -First 15)) { Mal "herramienta citada sin enlace: $x" }
+  if ($sinEnlace.Count -gt 15) { Mal "… y $($sinEnlace.Count - 15) páginas más con herramientas sin enlace" }
+  if (-not $sinEnlace.Count) { Ok 'todas las herramientas citadas llevan enlace' }
+
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
   $publicables = @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))
@@ -123,7 +141,7 @@ try {
   }
 
   Write-Host '3. Aviso legal en herramientas y paneles'
-  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html') +
+  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html') +
     @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter *.html | ForEach-Object { [IO.Path]::GetRelativePath($repo, $_.FullName) })
   $sin = $conAviso | Where-Object { -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Aviso legal|Legal notice' -Quiet) }
   foreach ($x in $sin) { Mal "sin aviso legal: $x" }
@@ -160,6 +178,14 @@ try {
   elseif (([IO.File]::ReadAllText($salida) -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText((Join-Path $t01 'registro.html')) -replace "`r`n", "`n")) { Mal 'registro.html no coincide con sus fuentes: ejecutar build_registro.ps1 (nunca editarlo a mano)' }
   else { Ok 'registro.html coincide con datos_demo.json, catalogo_criterios.json y la plantilla' }
 
+  # T14 generado desde sus fuentes (D64)
+  $t14 = Join-Path $repo 'SEVEN-G\herramientas\T14_indice_transformacion'
+  $salida14 = Join-Path $tmp 'indice.html'
+  & pwsh -NoProfile -File (Join-Path $t14 'build_indice.ps1') -Salida $salida14 | Out-Null
+  if ($LASTEXITCODE) { Mal 'build_indice.ps1 ha fallado' }
+  elseif (([IO.File]::ReadAllText($salida14) -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText((Join-Path $t14 'indice.html')) -replace "`r`n", "`n")) { Mal 'T14: indice.html no coincide con sus fuentes: ejecutar build_indice.ps1 (nunca editarlo a mano)' }
+  else { Ok 'T14: indice.html coincide con datos_demo.json y la plantilla' }
+
   # ---- 6. T17: panel de ejemplo al día
   Write-Host '6. T17: panel de ejemplo generado desde los datos de demostración'
   $t17 = Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo'
@@ -175,6 +201,11 @@ try {
       $a.meta.textos.pie = $null; $b.meta.textos.pie = $null
       if (($a | ConvertTo-Json -Depth 64 -Compress) -ne ($b | ConvertTo-Json -Depth 64 -Compress)) { Mal 'el panel de ejemplo está desfasado: ejecutar uv run python t01_a_panel.py en T17_panel_consejo' }
       else { Ok "panel de ejemplo al día ($($a.casos.Count) casos)" }
+      # D63: la demostración incluye una iniciativa transversal medida por unidad, y el panel la recibe con su bloque «alcance»
+      $trans = @($a.casos | Where-Object { $_.alcance -and $_.alcance.tipo -eq 'transversal' })
+      if (-not $trans.Count) { Mal 'D63: el panel de ejemplo no tiene ninguna iniciativa transversal con desglose por unidad (casos[].alcance)' }
+      elseif (-not @($trans[0].alcance.unidades | Where-Object { $_.unidad }).Count) { Mal 'D63: la iniciativa transversal del ejemplo no trae unidades de negocio' }
+      else { Ok "D63: iniciativa transversal medida por unidad ($(@($trans[0].alcance.unidades | Where-Object { $_.unidad }).Count) unidades)" }
       $plantilla = [IO.File]::ReadAllText((Join-Path $t01 '_fuentes\registro.plantilla.html'))
       if ($plantilla -match "const PANEL_DEMO = '([^']+)'" -and -not (Test-Path (Join-Path $t01 $Matches[1]))) { Mal "el registro enlaza a un panel de ejemplo que no existe: $($Matches[1])" }
     }
@@ -190,8 +221,10 @@ try {
     $salidaEj = Join-Path $t17 'ejemplo\salida'
     $pruebas = @(
       @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup'); que = 'panel completo' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan'); que = 'panel móvil' }
+      # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
+      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="escala"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="2"]', '#nav a[href="#/umbrales"]'); que = 'calculadora T14 (ejemplo del documento 12)' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr'); que = 'panel completo' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row'); que = 'panel móvil' }
     )
     foreach ($p in $pruebas) {
       $puerto = Get-Random -Minimum 20000 -Maximum 40000

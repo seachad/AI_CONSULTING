@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Corporate AI policy and acceptable use policy"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -986,7 +990,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>AI embedded in third-party software</strong></td>
 <td>AI functions that a supplier incorporates into a product already under contract (CRM, ERP, people management, customer service, cybersecurity).</td>
 <td>Activation by default without assessment; use of company data by the supplier; changes in behaviour with each version; decisions about people built into the process.</td>
-<td>Registration in T02 as third-party AI; proportionate supplier assessment (document 36); express decision on whether or not to activate; contractual review.</td>
+<td>Registration in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> as third-party AI; proportionate supplier assessment (document 36); express decision on whether or not to activate; contractual review.</td>
 <td>It plays a part in decisions, operations or customer relationships with any Enterprise criterion: it is then <strong>third-party AI embedded in processes</strong> (01 §1.2).</td>
 </tr>
 <tr>
@@ -1000,7 +1004,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Authorised individual use</strong></td>
 <td>Employees who use catalogue tools for their work.</td>
 <td>Inappropriate data; unverified outputs; dependency.</td>
-<td>Acceptable use policy; training; technical controls; T21.</td>
+<td>Acceptable use policy; training; technical controls; <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>.</td>
 <td>It becomes a shared process or affects third parties.</td>
 </tr>
 <tr>
@@ -1082,7 +1086,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p><strong>Safeguards.</strong> Monitoring of the use of technology resources must be proportionate, provided for in the company's policy on the use of technology resources, notified to employees in advance and compliant with data protection and employment legislation (in Spain, among others, Article 87 of the <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Organic Law 3/2018, of 5 December, on the Protection of Personal Data and Guarantee of Digital Rights (Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales)">LOPDGDD</a> and Article 20.3 of the <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)">Workers' Statute</a>). Detection focuses on <strong>tools and information flows</strong>, not on monitoring the content of individual activity beyond what is necessary. Data protection should assess whether an impact assessment of the monitoring system itself is required.</p>
 <h3 id="5-3-recording">5.3 Recording</h3>
-<p>Every detected use is recorded in the inventory (T02) with the type of use <strong>&quot;Unauthorised use&quot;</strong> and the minimum fields of document 32: tool and supplier, area or users (in aggregate unless it is necessary to identify them), apparent purpose, type of information exposed, detection date, detection source and owner of the regularisation. The record automatically generates a <strong>nonconformity</strong> in T08.</p>
+<p>Every detected use is recorded in the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) with the type of use <strong>&quot;Unauthorised use&quot;</strong> and the minimum fields of document 32: tool and supplier, area or users (in aggregate unless it is necessary to identify them), apparent purpose, type of information exposed, detection date, detection source and owner of the regularisation. The record automatically generates a <strong>nonconformity</strong> in <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>.</p>
 <h3 id="5-4-assessment-and-classification-as-a-nonconformity">5.4 Assessment and classification as a nonconformity</h3>
 <div class="tabla"><table>
 <thead>
@@ -1167,7 +1171,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Register in T02 and carry out a preliminary classification (type of use, data, exposure, autonomy, possible high risk).</td>
+<td>Register in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> and carry out a preliminary classification (type of use, data, exposure, autonomy, possible high risk).</td>
 <td>AI Office</td>
 </tr>
 <tr>
@@ -1227,7 +1231,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Licence assignment</td>
-<td>Based on need and with a quarterly review of active use (T21).</td>
+<td>Based on need and with a quarterly review of active use (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>).</td>
 </tr>
 <tr>
 <td>Prior training</td>
@@ -1348,7 +1352,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Record</strong></td>
-<td>Per person: assigned profiles, completed training, dates, assessments and expiry dates. The record is linked to T21 and <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+<td>Per person: assigned profiles, completed training, dates, assessments and expiry dates. The record is linked to <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> and <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
 </tr>
 <tr>
 <td><strong>Access conditions</strong></td>
@@ -1411,8 +1415,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="corporate-ai-use-monitor-t21"><span class="antetitulo">07</span>Corporate AI use monitor (T21)</h2>
-<p>Tool T21 (document 03) consolidates the information from this policy for the AI Committee and for the board dashboard.</p>
+<h2 id="corporate-ai-use-monitor-t21"><span class="antetitulo">07</span>Corporate AI use monitor (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>)</h2>
+<p>Tool <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> (document 03) consolidates the information from this policy for the AI Committee and for the board dashboard.</p>
 <h3 id="7-1-content">7.1 Content</h3>
 <div class="tabla"><table>
 <thead>
@@ -1439,13 +1443,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Unauthorised use</strong></td>
 <td>Detections by source; users or areas affected (aggregated); nonconformities by classification; regularisation decisions (authorise, replace, block); time to regularisation.</td>
-<td>T02, T08</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>Monthly</td>
 </tr>
 <tr>
 <td><strong>Embedded AI</strong></td>
 <td>AI functions detected in third-party software; enabled, disabled and pending decision.</td>
-<td>T02, procurement</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, procurement</td>
 <td>Quarterly</td>
 </tr>
 <tr>
@@ -1506,7 +1510,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>C4</strong></td>
-<td>T21 monitor reviewed by the AI Committee; exceptions reported to the board committee.</td>
+<td><a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> monitor reviewed by the AI Committee; exceptions reported to the board committee.</td>
 </tr>
 <tr>
 <td><strong>C5</strong></td>
@@ -1527,22 +1531,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T21</strong></td>
+<td><strong><a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></strong></td>
 <td>Corporate AI use monitor</td>
 <td>Licences, unauthorised use, embedded AI, technical controls and literacy.</td>
 </tr>
 <tr>
-<td><strong>T02</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Registration of authorised tools, embedded AI and unauthorised uses.</td>
 </tr>
 <tr>
-<td><strong>T08</strong></td>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Nonconformities due to unauthorised use and incidents reported by employees.</td>
 </tr>
 <tr>
-<td><strong>T09</strong></td>
+<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></strong></td>
 <td>AI supplier register</td>
 <td>Assessment of suppliers of tools and of software with embedded AI.</td>
 </tr>
@@ -1635,7 +1639,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Templates for the corporate AI policy and the acceptable use policy; treatment of embedded AI, productivity suites, individual use and unauthorised use with detection, recording, classification as a nonconformity and regularisation; AI literacy programme across eight profiles with the wording of Article 4 as amended by Regulation (EU) 2026/1744; content of the T21 monitor.</td>
+<td>First version. Templates for the corporate AI policy and the acceptable use policy; treatment of embedded AI, productivity suites, individual use and unauthorised use with detection, recording, classification as a nonconformity and regularisation; AI literacy programme across eight profiles with the wording of Article 4 as amended by Regulation (EU) 2026/1744; content of the <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> monitor.</td>
 </tr>
 </tbody>
 </table></div>

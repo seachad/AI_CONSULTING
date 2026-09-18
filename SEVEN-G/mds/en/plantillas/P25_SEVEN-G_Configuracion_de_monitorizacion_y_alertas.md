@@ -52,7 +52,7 @@ Rules:
 
 ## 3. Metrics catalogue
 
-**Category:** Model performance · Data drift · Input data quality · Bias and fairness · Availability and latency · Cost and consumption · Security · Agent behaviour · Human oversight · Adoption · Value.
+**Category:** Model performance · Data drift · Usage drift · Input data quality · Bias and fairness · Availability and latency · Cost and consumption · Security · Agent behaviour · Human oversight · Adoption · Value.
 
 | ID | Metric | Category | Definition and formula | Source | Calculation frequency | Reference value | Warning threshold | Critical threshold | Owner |
 |---|---|---|---|---|---|---|---|---|---|
@@ -73,7 +73,9 @@ Tick those that apply and link the ID from block 3.
 |---|---|---|---|---|
 | Performance against reference (with actual outcome when available) | ☐ | ☐ | ☐ | |
 | Drift in input variables | ☐ | | | |
+| Usage drift: distribution of topics or intents and queries outside the validated scope | | ☐ | ☐ | |
 | Performance differences between groups **(Enterprise)** | ☐ | ☐ | ☐ | |
+| Unequal responses in counterfactual pairs (mandatory if the system decides, recommends or communicates with people, or has direct exposure) | | ☐ | ☐ | |
 | Ungrounded responses or responses flagged as incorrect by users | | ☐ | ☐ | |
 | Detection of prompt injection attempts | | ☐ | ☐ | |
 | Detected leakage of confidential or personal data | | ☐ | ☐ | |
@@ -82,7 +84,17 @@ Tick those that apply and link the ID from block 3.
 | Human override rate and validation time | ☐ | ☐ | ☐ | |
 | Availability, latency and errors | ☐ | ☐ | ☐ | |
 | Consumption and infrastructure cost | ☐ | ☐ | ☐ | |
+| Days in cost-driven degraded mode and quality during the mode | | ☐ | ☐ | |
 | Effective use (adoption) | ☐ | ☐ | ☐ | |
+
+References for generative AI and agents (document 52 §4.2.6, §4.2.7 and §10.3):
+
+| Field | Content | Guidance |
+|---|---|---|
+| Usage reference | | Topics, intents and scope validated at G5, with their reference distribution (P16). |
+| Query classification | | Rules, classifier or human sampling; sample size and frequency. |
+| Counterfactual pairs | | Protected attributes or proxies tested (according to the impact assessment), number of pairs and what counts as a material difference (decision, amount, tone, refusal, completeness). Threshold in P17. |
+| Minimum quality in degraded mode | | Minimum value of the quality metric below which the system moves to the next level of the cascade; sampling at least doubled during the mode. |
 
 ---
 
@@ -95,6 +107,7 @@ Tick those that apply and link the ID from block 3.
 | AL-01 *(illustrative example)* | M-01 > 25% on two consecutive days | S2 High | AI Operations Owner | On-call tool | 2 working hours | Activate rollback trigger | D-01 |
 | AL-02 *(illustrative example)* | M-03: action executed outside limits | S1 Critical | Technical on-call and security | Immediate notification | 15 minutes | Kill switch and open incident | D-02 |
 | AL-03 *(illustrative example)* | Any critical metric with no data for more than one cycle | S3 Medium | Technical on-call | On-call tool | 4 working hours | Apply P24 procedure | — |
+| AL-04 *(illustrative example)* | Month-to-date cost ≥ 100% of the budget | S4 Low | AI Operations Owner | On-call tool | 4 working hours | Apply P24 procedure (cost-driven degradation cascade, level N2) | D-04 |
 | | | | | | | | |
 
 ---
@@ -145,6 +158,7 @@ Formal G4, G5 and R6 criteria in document 21.
 | 4 | The absence of data generates an alert. | |
 | 5 | Critical alerts have been tested and reach the recipient on time. | |
 | 6 | Threshold changes are recorded with their reason. | |
+| 7 | For generative AI and agents, the usage reference, the counterfactual pairs where applicable and the minimum quality in degraded mode are set. | |
 
 ---
 
@@ -167,3 +181,4 @@ Segregation of duties: the verifier is not part of the team that builds or opera
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version of the template. |
+| 0.1 | 18-09-2026 | Usage drift, unequal responses in counterfactual pairs and days in cost-driven degraded mode in the minimum metrics; references for generative AI and agents; example alert AL-04; quality criterion 7. |

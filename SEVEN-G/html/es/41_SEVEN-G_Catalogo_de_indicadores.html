@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Catálogo de indicadores"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -384,7 +388,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <strong>Descargas</strong>
     <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
   </div>
-  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/41_SEVEN-G_Catalogo_de_indicadores.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/41_SEVEN-G_Catalogo_de_indicadores.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
 </aside>
 
 <div id="top"></div>
@@ -395,10 +399,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <h1>Cat&#225;logo de indicadores</h1>
     <p class="entradilla">Indicadores con c&#243;digo, f&#243;rmula, fuente y responsable para medir la IA de la iniciativa al consejo</p>
     <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>16-09-2026</span><span>Borrador para revisi&#243;n</span></div>
-    <div class="cifras"><div class="cifra"><b>156</b><span>indicadores codificados</span></div><div class="cifra"><b>13</b><span>familias</span></div><div class="cifra"><b>4</b><span>niveles de uso</span></div><div class="cifra"><b>26</b><span>indicadores del conjunto m&#237;nimo Lite</span></div></div>
+    <div class="cifras"><div class="cifra"><b>159</b><span>indicadores codificados</span></div><div class="cifra"><b>13</b><span>familias</span></div><div class="cifra"><b>4</b><span>niveles de uso</span></div><div class="cifra"><b>26</b><span>indicadores del conjunto m&#237;nimo Lite</span></div></div>
   </div>
 </header>
-<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/41_SEVEN-G_Catalogo_de_indicadores.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/41_SEVEN-G_Catalogo_de_indicadores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/41_SEVEN-G_Catalogo_de_indicadores.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#reglas-de-uso"><span>02</span>Reglas de uso</a></li><li><a href="#leyenda"><span>03</span>Leyenda</a></li><li><a href="#familias"><span>04</span>Familias</a></li><li><a href="#ficha-de-un-indicador"><span>05</span>Ficha de un indicador</a></li><li><a href="#valor-val"><span>06</span>Valor · VAL</a></li><li><a href="#coste-cos"><span>07</span>Coste · COS</a></li><li><a href="#embudo-emb"><span>08</span>Embudo · EMB</a></li><li><a href="#agilidad-agi"><span>09</span>Agilidad · AGI</a></li><li><a href="#riesgo-y-cumplimiento-rie"><span>10</span>Riesgo y cumplimiento · RIE</a></li><li><a href="#operacion-y-calidad-de-modelos-ope"><span>11</span>Operación y calidad de modelos · OPE</a></li><li><a href="#adopcion-y-personas-ado"><span>12</span>Adopción y personas · ADO</a></li><li><a href="#datos-y-conocimiento-dat"><span>13</span>Datos y conocimiento · DAT</a></li><li><a href="#cliente-y-producto-cli"><span>14</span>Cliente y producto · CLI</a></li><li><a href="#transformacion-tra"><span>15</span>Transformación · TRA</a></li><li><a href="#madurez-mad"><span>16</span>Madurez · MAD</a></li><li><a href="#consejo-con"><span>17</span>Consejo · CON</a></li><li><a href="#procesos-y-decision-pro"><span>18</span>Procesos y decisión · PRO</a></li><li><a href="#conjunto-minimo-recomendado-para-lite"><span>19</span>Conjunto mínimo recomendado para Lite</a></li><li><a href="#seleccion-para-el-panel-del-consejo"><span>20</span>Selección para el panel del consejo</a></li><li><a href="#correspondencia-de-codigos-provisionales"><span>21</span>Correspondencia de códigos provisionales</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>22</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>23</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>24</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal">
@@ -410,7 +414,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Aplica las reglas de medición del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> y usa sus fórmulas oficiales (F1–F10).</li>
 <li>Recoge las métricas del embudo del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> §3.5 y las ocho señales del índice de transformación del <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a> §5.3.</li>
-<li>Alimenta el registro de iniciativas (T01), el seguimiento de valor (T12), la calculadora de costes (T13), el índice de transformación (T14), el diagnóstico de madurez (T15) y el panel del consejo (T17).</li>
+<li>Alimenta el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), el seguimiento de valor (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>), la calculadora de costes (<a href="42_SEVEN-G_Costes_de_IA.html">T13</a>), el índice de transformación (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>), el diagnóstico de madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a>) y el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</li>
 <li>Marca un <strong>conjunto mínimo recomendado para la intensidad Lite</strong>.</li>
 </ul>
 <p>Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según la tesis de IA, la cartera y la intensidad, y la selección se registra.</p>
@@ -419,7 +423,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Código persistente.</strong> El código <code>IND-&lt;FAMILIA&gt;-NN</code> no se reutiliza. Un indicador retirado se marca como retirado y conserva su código.</li>
 <li><strong>Toda fórmula es explícita.</strong> Si un indicador no puede calcularse con su fórmula, se muestra como &quot;sin dato&quot; (regla 8 del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>). No se sustituye por una aproximación sin indicarlo.</li>
-<li><strong>Los umbrales los fija la compañía.</strong> &quot;A fijar&quot; significa que la compañía lo aprueba en C2 (documento 13). Los únicos umbrales que aparecen como valor son los que derivan de reglas del propio marco (por ejemplo, cero sistemas en producción sin <em>gate</em>) o los plazos orientativos de 03 §3.6. Ninguno es una referencia de mercado.</li>
+<li><strong>Los umbrales los fija la compañía.</strong> &quot;A fijar&quot; significa que la compañía lo aprueba en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>). Los únicos umbrales que aparecen como valor son los que derivan de reglas del propio marco (por ejemplo, cero sistemas en producción sin <em>gate</em>) o los plazos orientativos de 03 §3.6. Ninguno es una referencia de mercado.</li>
 <li><strong>Los indicadores de valor heredan el estado.</strong> Todo indicador calculado sobre importes muestra su proporción validada o se calcula en dos versiones: total y solo validado.</li>
 <li><strong>Segmentación.</strong> Todos los indicadores de cartera se pueden segmentar por las etiquetas de la taxonomía controlada (03 §3.3): esfera, ambición, intensidad, tecnología, exposición, clasificación regulatoria, área y proveedor.</li>
 <li><strong>Medianas antes que medias</strong> en tiempos, con percentil 80.</li>
@@ -454,7 +458,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td>Herramienta del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> (T01–T22) y, cuando existe, campo del panel del consejo (T17) entre comillas invertidas.</td>
+<td>Herramienta del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>) y, cuando existe, campo del panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) entre comillas invertidas.</td>
 </tr>
 <tr>
 <td><strong>Lite</strong></td>
@@ -505,7 +509,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>OPE</strong></td>
 <td>Operación y calidad de modelos</td>
-<td>23</td>
+<td>26</td>
 </tr>
 <tr>
 <td><strong>ADO</strong></td>
@@ -545,7 +549,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td></td>
 <td><strong>Total</strong></td>
-<td><strong>156</strong></td>
+<td><strong>159</strong></td>
 </tr>
 </tbody>
 </table></div>
@@ -634,7 +638,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Valor neto anual.</strong> Valor que aporta el caso o la cartera tras restar su coste recurrente.</td>
 <td>Eficiencias materializadas + retorno − coste recurrente (40 F2)</td>
 <td>€/año</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T12 · <code>economia</code> (neto)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <code>economia</code> (neto)</td>
 <td>T</td>
 <td>PAT · OIA</td>
 <td>I · Ca · Cj</td>
@@ -647,7 +651,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Eficiencias materializadas.</strong> Menor coste real o coste evitado presupuestado.</td>
 <td>Σ unidades incrementales × valor unitario (40 F1), sin capacidad no materializada</td>
 <td>€/año</td>
-<td>T12 · <code>economia.eficiencias[]</code></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <code>economia.eficiencias[]</code></td>
 <td>T</td>
 <td>RN</td>
 <td>I · Ca</td>
@@ -660,7 +664,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Retorno.</strong> Más ingresos o margen atribuibles.</td>
 <td>Σ unidades incrementales × margen o ingreso unitario (40 F1)</td>
 <td>€/año</td>
-<td>T12 · <code>economia.retorno[]</code></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <code>economia.retorno[]</code></td>
 <td>T</td>
 <td>RN</td>
 <td>I · Ca</td>
@@ -673,7 +677,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Valor por estado.</strong> Valor bruto realizado desglosado por estado.</td>
 <td>Σ importes validados; Σ declarados; Σ estimados</td>
 <td>€</td>
-<td>T12 · <code>valor_por_estado</code></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <code>valor_por_estado</code></td>
 <td>T</td>
 <td>CG</td>
 <td>I · Ca · Cj</td>
@@ -686,7 +690,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Proporción validada.</strong> Parte del valor bruto realizado validada por control de gestión o auditoría.</td>
 <td>Validado ÷ (validado + declarado + estimado) (40 F6)</td>
 <td>%</td>
-<td>T12 · <code>valor_por_estado</code></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <code>valor_por_estado</code></td>
 <td>T</td>
 <td>CG</td>
 <td>Ca · Cj</td>
@@ -699,7 +703,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Valor neto validado.</strong> Neto con solo valor validado y coste completo.</td>
 <td>Eficiencias validadas + retorno validado − coste recurrente (40 F2v)</td>
 <td>€/año</td>
-<td>T12 · T13</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>T</td>
 <td>CG</td>
 <td>Ca · Cj</td>
@@ -712,7 +716,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Capacidad liberada.</strong> Horas netas liberadas y su valoración.</td>
 <td>Volumen × (tiempo de referencia − tiempo con IA); × coste horario completo (40 F4)</td>
 <td>h/año · €/año</td>
-<td>T12 · <code>eficiencias[capacidad_liberada]</code></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <code>eficiencias[capacidad_liberada]</code></td>
 <td>T</td>
 <td>RP</td>
 <td>I · Ca</td>
@@ -725,7 +729,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Tasa de materialización.</strong> Parte de la capacidad liberada convertida en menor coste o coste evitado.</td>
 <td>Horas materializadas ÷ horas liberadas netas (40 F5)</td>
 <td>%</td>
-<td>T12 · T20</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>T</td>
 <td>RN</td>
 <td>I · Ca</td>
@@ -738,7 +742,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Tasa de reasignación.</strong> Capacidad reasignada de forma explícita a actividades nuevas.</td>
 <td>Horas reasignadas ÷ horas liberadas netas (40 F5)</td>
 <td>%</td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>T</td>
 <td>RN</td>
 <td>I · Ca</td>
@@ -764,7 +768,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Valor actual neto.</strong> Criterio económico único de viabilidad.</td>
 <td>−I + Σ neto_t ÷ (1 + r)^t, t = 1…H (40 F7)</td>
 <td>€</td>
-<td>T11</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a></td>
 <td>G</td>
 <td>CG</td>
 <td>I</td>
@@ -777,7 +781,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>ROI.</strong> Retorno sobre la inversión inicial, informativo.</td>
 <td>(Σ neto_t − I) ÷ I (40 F8)</td>
 <td>%</td>
-<td>T11</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a></td>
 <td>G</td>
 <td>CG</td>
 <td>I</td>
@@ -790,7 +794,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Plazo de recuperación.</strong> Años hasta recuperar la inversión inicial, informativo.</td>
 <td>Primer año con neto acumulado ≥ I, interpolado (40 F9)</td>
 <td>años</td>
-<td>T11</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a></td>
 <td>G</td>
 <td>CG</td>
 <td>I</td>
@@ -803,7 +807,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Realización del valor.</strong> Valor realizado frente al esperado en el plan.</td>
 <td>Valor realizado del periodo ÷ valor esperado del periodo (40 F10)</td>
 <td>%</td>
-<td>T12 · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
 <td>T</td>
 <td>RN</td>
 <td>I · Ca</td>
@@ -842,7 +846,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Declarado pendiente de validar.</strong> Valor declarado que superó el plazo de validación.</td>
 <td>Declarado con antigüedad &gt; plazo (40 §4.1) ÷ declarado total</td>
 <td>% · €</td>
-<td>T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 <td>T</td>
 <td>CG</td>
 <td>Ca</td>
@@ -855,7 +859,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Solapes con reparto declarado.</strong> Casos con resultados compartidos que tienen clave de reparto aprobada.</td>
 <td>Casos con solape y clave aprobada ÷ casos con solape</td>
 <td>%</td>
-<td>T12 · <code>comparte_valor_con</code> · <code>clave_reparto</code></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <code>comparte_valor_con</code> · <code>clave_reparto</code></td>
 <td>T</td>
 <td>OIA</td>
 <td>Ca</td>
@@ -889,7 +893,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Coste recurrente anual.</strong> Coste completo anual del caso, directo y compartido repartido.</td>
 <td>Σ partes recurrentes de las nueve categorías (42 §4)</td>
 <td>€/año</td>
-<td>T13 · <code>economia.inversion.recurrente_anual</code></td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a> · <code>economia.inversion.recurrente_anual</code></td>
 <td>M · T</td>
 <td>CG</td>
 <td>I · Ca</td>
@@ -902,7 +906,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Inversión inicial.</strong> Construcción más adopción inicial.</td>
 <td>Coste de construcción + coste de adopción inicial (40 §8.2)</td>
 <td>€</td>
-<td>T13 · <code>economia.inversion.construccion</code></td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a> · <code>economia.inversion.construccion</code></td>
 <td>G</td>
 <td>CG</td>
 <td>I · Ca</td>
@@ -915,7 +919,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Coste total de propiedad.</strong> Coste del caso en todo el horizonte.</td>
 <td>I + Σ coste recurrente_t (t = 1…H) + coste de retirada (42 §5)</td>
 <td>€</td>
-<td>T13</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>G · A</td>
 <td>CG</td>
 <td>I</td>
@@ -928,7 +932,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Desviación presupuestaria.</strong> Diferencia entre coste real y presupuesto.</td>
 <td>(Coste real − presupuesto) ÷ presupuesto</td>
 <td>%</td>
-<td>T13 · contabilidad</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a> · contabilidad</td>
 <td>M</td>
 <td>CG</td>
 <td>I · Ca</td>
@@ -941,7 +945,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Coste por unidad de resultado.</strong> Coste de producir una unidad de resultado útil.</td>
 <td>Coste recurrente del periodo ÷ unidades de resultado útil (42 §9)</td>
 <td>€ por unidad</td>
-<td>T13 · sistema de origen</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a> · sistema de origen</td>
 <td>M</td>
 <td>RP</td>
 <td>I</td>
@@ -954,7 +958,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Consumo frente a presupuesto.</strong> Consumo de modelos y cómputo acumulado frente al presupuesto.</td>
 <td>Consumo acumulado ÷ presupuesto del periodo</td>
 <td>%</td>
-<td>T13 · facturación del proveedor</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a> · facturación del proveedor</td>
 <td>M (diario en agentes)</td>
 <td>RO</td>
 <td>I · Ca</td>
@@ -967,7 +971,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Coste etiquetado.</strong> Coste de nube e IA con etiqueta de iniciativa válida.</td>
 <td>Coste con etiqueta válida ÷ coste total de nube e IA</td>
 <td>%</td>
-<td>Facturación de nube · T13</td>
+<td>Facturación de nube · <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>M</td>
 <td>OIA</td>
 <td>Co</td>
@@ -980,7 +984,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Coste no atribuido.</strong> Coste de IA no imputado a casos ni a uso corporativo.</td>
 <td>Coste no atribuido ÷ coste total de IA</td>
 <td>%</td>
-<td>T13</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>T</td>
 <td>CG</td>
 <td>Co · Cj</td>
@@ -993,7 +997,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Coste de licencias ociosas.</strong> Licencias pagadas sin uso en el periodo.</td>
 <td>Licencias asignadas sin uso × coste unitario</td>
 <td>€</td>
-<td>T21 · <code>adopcion</code> (licencias)</td>
+<td><a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> · <code>adopcion</code> (licencias)</td>
 <td>M</td>
 <td>OIA</td>
 <td>Co</td>
@@ -1006,7 +1010,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Inversión evitada por paradas.</strong> Presupuesto aprobado no comprometido de iniciativas paradas o retiradas.</td>
 <td>Σ presupuesto aprobado − Σ comprometido, en iniciativas paradas (42 §10)</td>
 <td>€</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T13</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>T</td>
 <td>OIA</td>
 <td>Ca · Cj</td>
@@ -1019,7 +1023,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Coste de IA de la compañía.</strong> Coste total de IA, incluido el uso corporativo.</td>
 <td>Σ coste recurrente + Σ inversión del ejercicio de todos los sistemas</td>
 <td>€/año</td>
-<td>T13</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>T</td>
 <td>CG</td>
 <td>Co · Cj</td>
@@ -1079,7 +1083,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Conversión por gate.</strong> Proporción de decisiones favorables en cada <em>gate</em>.</td>
 <td>(Continuar + Continuar con condiciones) ÷ decisiones del <em>gate</em></td>
 <td>%</td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>T</td>
 <td>OIA</td>
 <td>Ca</td>
@@ -1092,7 +1096,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Iteraciones por gate.</strong> Iteraciones medias antes de la decisión.</td>
 <td>Σ iteraciones ÷ nº de decisiones del <em>gate</em></td>
 <td>nº</td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>T</td>
 <td>OIA</td>
 <td>Ca</td>
@@ -1131,7 +1135,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Cumplimiento de gates.</strong> Criterios que se cumplen sobre los aplicables.</td>
 <td>Criterios Cumple ÷ (criterios aplicables)</td>
 <td>%</td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>G</td>
 <td>AUD</td>
 <td>I · Ca</td>
@@ -1144,7 +1148,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Condiciones vencidas.</strong> Condiciones abiertas fuera de plazo.</td>
 <td>Nº de condiciones abiertas con fecha límite superada</td>
 <td>nº</td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>M</td>
 <td>CIA</td>
 <td>Ca · Cj</td>
@@ -1209,7 +1213,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Capacidad de parar.</strong> Iniciativas que se paran o retiran con motivo codificado frente a las que reciben decisión de <em>gate</em>.</td>
 <td>Iniciativas paradas o retiradas con motivo codificado en 12 meses ÷ iniciativas con decisión de <em>gate</em> en 12 meses</td>
 <td>%</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>A definir por la compañía</td>
 <td>A definir por la compañía</td>
 <td>Ca · Cj</td>
@@ -1283,7 +1287,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Tiempo de decisión.</strong> Días entre la solicitud y la decisión de un <em>gate</em>.</td>
 <td>Fecha de decisión − fecha de solicitud; mediana y P80</td>
 <td>días hábiles</td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>M</td>
 <td>CIA</td>
 <td>Ca · Cj</td>
@@ -1296,7 +1300,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Decisiones en plazo.</strong> Decisiones de <em>gate</em> tomadas dentro del plazo aprobado.</td>
 <td>Decisiones en plazo ÷ decisiones</td>
 <td>%</td>
-<td>T03 · <code>agilidad.sla_dias_por_tier</code></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> · <code>agilidad.sla_dias_por_tier</code></td>
 <td>T</td>
 <td>CIA</td>
 <td>Cj</td>
@@ -1309,7 +1313,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Pendientes de análisis de riesgo.</strong> Iniciativas registradas sin evaluación de riesgos iniciada dentro del plazo.</td>
 <td>Nº de iniciativas con días desde registro &gt; plazo y sin evaluación iniciada</td>
 <td>nº</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T06 · <code>agilidad.backlog_sin_analisis</code></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a> · <code>agilidad.backlog_sin_analisis</code></td>
 <td>M</td>
 <td>RR</td>
 <td>Ca · Cj</td>
@@ -1343,7 +1347,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Cobertura del inventario.</strong> Sistemas inventariados con clasificación regulatoria, intensidad y responsable.</td>
 <td>Sistemas con los tres campos ÷ sistemas inventariados</td>
 <td>%</td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 <td>T</td>
 <td>OIA</td>
 <td>Co · Cj</td>
@@ -1356,7 +1360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Sistemas en producción sin gate.</strong> Sistemas operando sin G5 aprobado ni regularización.</td>
 <td>Nº de sistemas en producción sin G5 ni revisión equivalente a G7 (01 §14)</td>
 <td>nº</td>
-<td>T02 · T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>M</td>
 <td>AUD</td>
 <td>Co · Cj</td>
@@ -1369,7 +1373,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Riesgos residuales altos y críticos.</strong> Riesgos abiertos con nivel residual Alto o Crítico.</td>
 <td>Nº de riesgos con P × I residual ≥ 10, por nivel (especificación §5.1)</td>
 <td>nº</td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 <td>M</td>
 <td>RR</td>
 <td>I · Ca · Cj</td>
@@ -1382,7 +1386,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Evaluaciones de impacto pendientes.</strong> Evaluaciones exigidas no completadas.</td>
 <td>Evaluaciones requeridas no completadas ÷ requeridas</td>
 <td>%</td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 <td>M</td>
 <td>RR</td>
 <td>Ca · Cj</td>
@@ -1395,7 +1399,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>No conformidades abiertas.</strong> No conformidades por tipo.</td>
 <td>Nº abiertas por tipo: menor, mayor, crítica</td>
 <td>nº</td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>M</td>
 <td>AUD</td>
 <td>Ca · Cj</td>
@@ -1408,7 +1412,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>No conformidades fuera de plazo.</strong> Contención o plan de acción vencidos.</td>
 <td>Nº de no conformidades con plazo de contención o de plan superado (01 §12)</td>
 <td>nº</td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>M</td>
 <td>AUD</td>
 <td>Ca · Cj</td>
@@ -1421,7 +1425,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Incidentes por severidad.</strong> Incidentes del periodo por sistema y severidad.</td>
 <td>Nº de incidentes S1, S2, S3 y S4</td>
 <td>nº</td>
-<td>T08 · <code>seguimiento.incidentes</code></td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> · <code>seguimiento.incidentes</code></td>
 <td>M</td>
 <td>RO</td>
 <td>I · Ca · Cj</td>
@@ -1434,7 +1438,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Detección y contención.</strong> Rapidez de respuesta a incidentes.</td>
 <td>Mediana de horas inicio → detección y detección → contención</td>
 <td>horas</td>
-<td>T08 · <code>horas_detectar</code> · <code>horas_contener</code></td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> · <code>horas_detectar</code> · <code>horas_contener</code></td>
 <td>T</td>
 <td>RO</td>
 <td>Ca · Cj</td>
@@ -1447,7 +1451,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Revisiones de continuidad caducadas.</strong> Sistemas en producción con R6 vencida.</td>
 <td>Sistemas con R6 vencida ÷ sistemas en producción</td>
 <td>%</td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>M</td>
 <td>OIA</td>
 <td>Ca · Cj</td>
@@ -1460,7 +1464,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Uso no autorizado.</strong> Herramientas o usos de IA sin aprobación detectados y regularizados.</td>
 <td>Nº detectados en el periodo; regularizados ÷ detectados</td>
 <td>nº · %</td>
-<td>T21 · <code>adopcion.shadow_ai_detectada</code></td>
+<td><a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> · <code>adopcion.shadow_ai_detectada</code></td>
 <td>T</td>
 <td>SEG</td>
 <td>Co · Cj</td>
@@ -1473,7 +1477,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Proveedores críticos evaluados.</strong> Proveedores de nivel N3 con evaluación y estrategia de salida vigentes.</td>
 <td>Proveedores N3 con evaluación vigente y estrategia de salida ÷ proveedores N3</td>
 <td>%</td>
-<td>T09 · <code>proveedor_dora</code></td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a> · <code>proveedor_dora</code></td>
 <td>S</td>
 <td>RR</td>
 <td>Co · Cj</td>
@@ -1625,7 +1629,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Cambios sustanciales sin gate.</strong> Cambios sustanciales aplicados sin volver al <em>gate</em> que corresponde.</td>
 <td>Cambios sustanciales aplicados sin volver al <em>gate</em> ÷ cambios sustanciales</td>
 <td>%</td>
-<td>Registro de cambios (documento 52 §6)</td>
+<td>Registro de cambios (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §6)</td>
 <td>T</td>
 <td>A definir por la compañía</td>
 <td>I · Ca</td>
@@ -1638,7 +1642,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Tasa de cambios fallidos.</strong> Cambios revertidos o que originan un incidente.</td>
 <td>Cambios revertidos o que originan un incidente ÷ cambios aplicados</td>
 <td>%</td>
-<td>Registro de cambios (documento 52 §6) · T08</td>
+<td>Registro de cambios (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §6) · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>T</td>
 <td>A definir por la compañía</td>
 <td>I · Ca</td>
@@ -1683,6 +1687,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Ca</td>
 <td>F6</td>
 <td>0 %</td>
+<td></td>
+</tr>
+<tr>
+<td>IND-OPE-26</td>
+<td><strong>Modo degradado por coste.</strong> Días en que el sistema funciona degradado por agotar el presupuesto de consumo y calidad durante el modo.</td>
+<td>Días del periodo en N1 o superior de la cascada (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §10.3), por nivel; y calidad medida en el modo ÷ calidad mínima de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>días · %</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>M</td>
+<td>RO</td>
+<td>I · Ca</td>
+<td>F6 · IA generativa, agentes</td>
+<td>Tendencia decreciente; calidad ≥ 100 % del mínimo</td>
 <td></td>
 </tr>
 </tbody>
@@ -1754,7 +1771,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>RR</td>
 <td>I</td>
 <td>F5–F6 · decisiones sobre personas</td>
-<td>A fijar (documento 33)</td>
+<td>A fijar (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>)</td>
 <td></td>
 </tr>
 <tr>
@@ -1834,12 +1851,38 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Éxito de inyección de instrucciones en pruebas.</strong> Ataques de prueba que logran alterar el comportamiento.</td>
 <td>Ataques con éxito ÷ ataques ejecutados</td>
 <td>%</td>
-<td>T10 · <code>ia_ofensiva</code></td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> · <code>ia_ofensiva</code></td>
 <td>S y en cada cambio</td>
 <td>SEG</td>
 <td>I · Cj</td>
 <td>F5–F6 · IA generativa, agentes</td>
 <td>0 en acciones con efecto</td>
+<td></td>
+</tr>
+<tr>
+<td>IND-OPE-24</td>
+<td><strong>Consultas fuera del alcance validado.</strong> Deriva de uso: consultas que no corresponden a los temas o tareas validados en G5.</td>
+<td>Consultas clasificadas fuera del alcance validado ÷ consultas del periodo</td>
+<td>%</td>
+<td>Clasificación de consultas o muestreo · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>M</td>
+<td>RO</td>
+<td>I</td>
+<td>F6 · IA generativa, agentes</td>
+<td>Según referencia de G5 (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §4.2.6)</td>
+<td></td>
+</tr>
+<tr>
+<td>IND-OPE-25</td>
+<td><strong>Respuestas desiguales en pares contrafactuales.</strong> Sesgo en las respuestas: pares de casos idénticos salvo en un atributo protegido con resultado materialmente distinto.</td>
+<td>Pares con diferencia material ÷ pares evaluados</td>
+<td>%</td>
+<td>Evaluaciones · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>En cada evaluación de regresión y periódica</td>
+<td>RR</td>
+<td>I · Cj</td>
+<td>F5–F6 · IA generativa con decisiones, comunicaciones o exposición directa a personas</td>
+<td>Umbral de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §4.2.7)</td>
 <td></td>
 </tr>
 </tbody>
@@ -1867,7 +1910,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Mínimo privilegio.</strong> Identidades de agente con permisos revisados y limitados a lo necesario.</td>
 <td>Identidades con revisión vigente de mínimo privilegio ÷ identidades de agente</td>
 <td>%</td>
-<td>T10 · <code>agente.minimo_privilegio</code></td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> · <code>agente.minimo_privilegio</code></td>
 <td>T</td>
 <td>SEG</td>
 <td>I · Co · Cj</td>
@@ -1906,12 +1949,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Prueba del interruptor de parada.</strong> Días desde la última prueba satisfactoria.</td>
 <td>Fecha de cálculo − fecha de la última prueba satisfactoria</td>
 <td>días</td>
-<td>T10 · <code>agente.kill_switch</code></td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> · <code>agente.kill_switch</code></td>
 <td>T</td>
 <td>RO</td>
 <td>I · Cj</td>
 <td>F5–F6 · agentes</td>
-<td>Según plan de prueba (P19, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>Según plan de prueba (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
 <td></td>
 </tr>
 <tr>
@@ -1966,7 +2009,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Licencias activas.</strong> Licencias de IA con uso en el periodo.</td>
 <td>Licencias con uso ÷ licencias asignadas</td>
 <td>%</td>
-<td>T21 · <code>adopcion</code> (licencias activas y asignadas)</td>
+<td><a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> · <code>adopcion</code> (licencias activas y asignadas)</td>
 <td>M</td>
 <td>OIA</td>
 <td>Co · Cj</td>
@@ -1979,7 +2022,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Usuarios activos.</strong> Usuarios con uso semanal frente a los usuarios objetivo.</td>
 <td>Usuarios activos semanales ÷ usuarios objetivo</td>
 <td>%</td>
-<td>T20 · <code>adopcion</code> (usuarios activos semanales)</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> · <code>adopcion</code> (usuarios activos semanales)</td>
 <td>M</td>
 <td>RP</td>
 <td>I</td>
@@ -2018,7 +2061,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Alfabetización en IA.</strong> Personas del colectivo obligado con formación completada.</td>
 <td>Personas formadas ÷ personas del colectivo obligado</td>
 <td>%</td>
-<td>T20 · función de personas</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> · función de personas</td>
 <td>T</td>
 <td>PER</td>
 <td>Co · Cj</td>
@@ -2031,7 +2074,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Roles rediseñados.</strong> Puestos con funciones rediseñadas formalmente por la IA.</td>
 <td>Puestos rediseñados ÷ puestos afectados por iniciativas en producción</td>
 <td>%</td>
-<td>T20 · función de personas</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> · función de personas</td>
 <td>S</td>
 <td>PER</td>
 <td>I · Co</td>
@@ -2070,7 +2113,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Cobertura de la evaluación de efecto.</strong> Iniciativas con evaluación del efecto sobre el trabajo registrada.</td>
 <td>Iniciativas en fase 3 o posterior con evaluación de efecto registrada ÷ iniciativas en fase 3 o posterior</td>
 <td>%</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T20</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>T</td>
 <td>A definir por la compañía</td>
 <td>Ca</td>
@@ -2083,7 +2126,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Supervisores cualificados.</strong> Sistemas cuyos supervisores designados tienen registrada la formación de supervisión.</td>
 <td>Sistemas A1–A3 en producción cuyos supervisores designados tienen formación PER-PD registrada ÷ sistemas A1–A3 en producción</td>
 <td>%</td>
-<td>T02 · sistema de formación</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · sistema de formación</td>
 <td>T</td>
 <td>A definir por la compañía</td>
 <td>I · Co</td>
@@ -2096,7 +2139,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Capacidad liberada sin decisión.</strong> Horas liberadas sin destino decidido fuera del plazo de C2.</td>
 <td>Horas en PER-D5 con antigüedad superior al plazo de C2 ÷ horas liberadas medidas</td>
 <td>%</td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>T</td>
 <td>A definir por la compañía</td>
 <td>I · Ca</td>
@@ -2109,7 +2152,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Información previa a la representación.</strong> Sistemas con efecto en condiciones de trabajo o empleo informados antes de su uso.</td>
 <td>Sistemas con efecto en condiciones de trabajo o empleo informados antes de su uso ÷ sistemas con ese efecto</td>
 <td>%</td>
-<td>Registro de información (documento 50 §7.2)</td>
+<td>Registro de información (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> §7.2)</td>
 <td>T</td>
 <td>A definir por la compañía</td>
 <td>Co · Cj</td>
@@ -2247,7 +2290,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Conocimiento crítico disponible.</strong> Procesos críticos con conocimiento documentado y accesible.</td>
 <td>Procesos críticos con conocimiento documentado ÷ procesos críticos identificados</td>
 <td>%</td>
-<td>Mapa de conocimiento (documento 51)</td>
+<td>Mapa de conocimiento (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>)</td>
 <td>S</td>
 <td>DAT</td>
 <td>Co</td>
@@ -2299,7 +2342,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Incidentes con causa en datos.</strong> Incidentes de IA cuya causa raíz está en los datos.</td>
 <td>Incidentes de IA cuya causa raíz es de datos ÷ incidentes de IA cerrados</td>
 <td>%</td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>T</td>
 <td>A definir por la compañía</td>
 <td>Ca · Co</td>
@@ -2364,7 +2407,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Exposición indebida de conocimiento.</strong> Accesos a contenido sin permiso detectados en pruebas o en producción.</td>
 <td>Hallazgos de acceso a contenido sin permiso detectados en pruebas o en producción, por periodo</td>
 <td>nº</td>
-<td>Pruebas de permisos · T08</td>
+<td>Pruebas de permisos · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>T</td>
 <td>A definir por la compañía</td>
 <td>I · Co</td>
@@ -2377,7 +2420,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Dependencia de conocimiento crítico.</strong> Dominios críticos que dependen de pocas personas y no tienen documentación utilizable.</td>
 <td>Dominios críticos con dos personas o menos que los dominan y sin documentación utilizable ÷ dominios críticos</td>
 <td>%</td>
-<td>Mapa de dependencia (documento 51 §10.6)</td>
+<td>Mapa de dependencia (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a> §10.6)</td>
 <td>A</td>
 <td>A definir por la compañía</td>
 <td>Co</td>
@@ -2602,7 +2645,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Señal 1 · Composición de la inversión.</strong> Peso de Aumentar y Transformar en el gasto de IA.</td>
 <td>(Coste recurrente + inversión) de Aum y Tra ÷ (coste recurrente + inversión) total</td>
 <td>%</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T13</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>A</td>
 <td>OIA</td>
 <td>Co · Cj</td>
@@ -2615,7 +2658,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Señal 2 · Composición del valor.</strong> Peso del retorno en el valor validado.</td>
 <td>Retorno validado ÷ (eficiencias validadas + retorno validado)</td>
 <td>%</td>
-<td>T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 <td>A</td>
 <td>CG</td>
 <td>Co · Cj</td>
@@ -2628,7 +2671,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Señal 3 · Materialización.</strong> Capacidad liberada convertida en ahorro o reasignada.</td>
 <td>(Horas materializadas + horas reasignadas) ÷ horas liberadas netas de la cartera</td>
 <td>%</td>
-<td>T12 · T20</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>A</td>
 <td>OIA</td>
 <td>Co · Cj</td>
@@ -2641,7 +2684,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Señal 4 · Profundidad del cambio.</strong> Iniciativas que rediseñan procesos de extremo a extremo.</td>
 <td>Iniciativas en producción con rediseño de extremo a extremo ÷ iniciativas en producción</td>
 <td>%</td>
-<td>T05 (pregunta 2)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a> (pregunta 2)</td>
 <td>A</td>
 <td>OIA</td>
 <td>Co · Cj</td>
@@ -2654,7 +2697,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Señal 5 · Modelo operativo.</strong> Iniciativas con cambio verificado de roles, estructura o decisiones.</td>
 <td>Iniciativas Aum y Tra en producción con cambio verificado y supervisión definida ÷ iniciativas Aum y Tra en producción</td>
 <td>%</td>
-<td>T05 (pregunta 3) · T20</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a> (pregunta 3) · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>A</td>
 <td>OIA</td>
 <td>Co · Cj</td>
@@ -2693,7 +2736,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Señal 8 · Decisión del consejo.</strong> Decisiones de transformación adoptadas y seguidas.</td>
 <td>Nº de decisiones de Tra adoptadas por el consejo con seguimiento en el registro</td>
 <td>nº</td>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>A</td>
 <td>SEC</td>
 <td>Cj</td>
@@ -2704,9 +2747,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>IND-TRA-09</td>
 <td><strong>Perfil de transformación.</strong> Posición de la compañía entre eficiencia y transformación.</td>
-<td>Puntuación 0–3 de cada señal y perfil resultante (documento 12)</td>
+<td>Puntuación 0–3 de cada señal y perfil resultante (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>)</td>
 <td>perfil</td>
-<td>T14</td>
+<td><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
 <td>A</td>
 <td>OIA</td>
 <td>Co · Cj</td>
@@ -2740,7 +2783,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Nivel global de madurez.</strong> Nivel de la compañía con la limitación por gobierno y riesgo.</td>
 <td>Mínimo entre ⌊media ponderada de D1–D7⌋ y (mínimo de D1 y D6) + 1</td>
 <td>nivel 0–5</td>
-<td>T15</td>
+<td><a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></td>
 <td>A</td>
 <td>OIA</td>
 <td>Co · Cj</td>
@@ -2753,7 +2796,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Nivel por dimensión.</strong> Nivel más alto con todos sus criterios y los inferiores cumplidos con evidencia.</td>
 <td>Máximo n tal que se cumplen los criterios de los niveles 1…n</td>
 <td>nivel 0–5</td>
-<td>T15</td>
+<td><a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></td>
 <td>A</td>
 <td>OIA</td>
 <td>Co</td>
@@ -2766,7 +2809,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Brecha de madurez.</strong> Distancia al objetivo por dimensión.</td>
 <td>Nivel objetivo de C2 − nivel actual</td>
 <td>niveles</td>
-<td>T15</td>
+<td><a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></td>
 <td>A</td>
 <td>OIA</td>
 <td>Cj</td>
@@ -2779,7 +2822,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Criterios con evidencia verificada.</strong> Solidez de la autoevaluación.</td>
 <td>Criterios con evidencia verificada ÷ criterios declarados cumplidos</td>
 <td>%</td>
-<td>T15</td>
+<td><a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></td>
 <td>A</td>
 <td>AUD</td>
 <td>Co</td>
@@ -2813,7 +2856,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Recomendaciones abiertas.</strong> Recomendaciones del consejo sin cerrar, por estado.</td>
 <td>Nº de recomendaciones abiertas por estado</td>
 <td>nº</td>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>T</td>
 <td>SEC</td>
 <td>Cj</td>
@@ -2826,7 +2869,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Recomendaciones vencidas.</strong> Recomendaciones con fecha comprometida superada.</td>
 <td>Abiertas con fecha superada ÷ abiertas</td>
 <td>%</td>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>T</td>
 <td>SEC</td>
 <td>Cj</td>
@@ -2839,7 +2882,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Cierres con valoración independiente.</strong> Cierres respaldados por evidencia y valoración independiente.</td>
 <td>Cerradas con evidencia y valoración independiente ÷ cerradas</td>
 <td>%</td>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>T</td>
 <td>AUD</td>
 <td>Cj</td>
@@ -2865,7 +2908,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Casos presentados en detalle.</strong> Número de casos tratados en detalle por sesión.</td>
 <td>Nº de casos presentados en detalle en la sesión</td>
 <td>nº</td>
-<td>Orden del día · T18</td>
+<td>Orden del día · <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>T</td>
 <td>OIA</td>
 <td>Cj</td>
@@ -2939,7 +2982,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Decisiones con autonomía asignada.</strong> Tipos de decisión con IA que tienen nivel de autonomía asignado y documentado.</td>
 <td>Tipos de decisión en los que interviene IA con nivel A0–A3 asignado y documentado ÷ tipos de decisión en los que interviene IA</td>
 <td>%</td>
-<td>T02 · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 <td>A definir por la compañía</td>
 <td>A definir por la compañía</td>
 <td>Ca · Co</td>
@@ -2952,7 +2995,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Mejora de la calidad de la decisión.</strong> Diferencia de resultado de las decisiones con IA frente al grupo de control, en dinero.</td>
 <td>Resultado medio de las decisiones con IA − resultado medio del grupo de control, traducido a dinero (por ejemplo, pérdida evitada)</td>
 <td>€</td>
-<td>T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 <td>A definir por la compañía</td>
 <td>A definir por la compañía</td>
 <td>I</td>
@@ -3042,9 +3085,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Cuando una iniciativa pasa a Enterprise se añaden, como mínimo, los indicadores de riesgo IND-RIE-03, 04 y 11 y, según la tecnología, los de las secciones 11.2 a 11.4.</p>
 <hr />
 <h2 id="seleccion-para-el-panel-del-consejo"><span class="antetitulo">20</span>Selección para el panel del consejo</h2>
-<p>El panel del consejo (T17) no muestra todo el catálogo. La selección se aprueba en C2 y debería incluir:</p>
+<p>El panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) no muestra todo el catálogo. La selección se aprueba en C2 y debería incluir:</p>
 <ol>
-<li><strong>Valor:</strong> IND-VAL-01, 04, 05, 06, 07 y 15, con la proporción validada junto a cada total (documento 40 §11).</li>
+<li><strong>Valor:</strong> IND-VAL-01, 04, 05, 06, 07 y 15, con la proporción validada junto a cada total (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §11).</li>
 <li><strong>Coste:</strong> IND-COS-11 y, por caso, IND-COS-01.</li>
 <li><strong>Agilidad:</strong> IND-AGI-01, 02 y 04, segmentados por riesgo y ambición.</li>
 <li><strong>Riesgo:</strong> IND-RIE-02, 03, 07, 09 y 10.</li>
@@ -3056,7 +3099,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="correspondencia-de-codigos-provisionales"><span class="antetitulo">21</span>Correspondencia de códigos provisionales</h2>
 <p>Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta tabla los relaciona con el código <code>IND-</code> del catálogo. &quot;Complementario&quot; indica que el indicador del catálogo mide lo contrario (por ejemplo, vencidas frente a en plazo); &quot;relacionado&quot; indica que lo cubre en parte; &quot;incorporado&quot; indica que el indicador, que no tenía equivalente, se ha añadido al catálogo con el nombre, la fórmula, la fuente, la periodicidad y el umbral de su documento de origen, y con &quot;A definir por la compañía&quot; en los datos que ese documento no fija. Cuando dos códigos provisionales miden lo mismo (IE03.06 y PER-14, IE05.05 y DAT-10, IE06.02 y CNC-06) comparten código. Los códigos provisionales de conocimiento del <a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a> usan el prefijo <code>CNC-</code> para no confundirse con la familia <code>IND-CON</code> (consejo).</p>
-<h3 id="21-1-indicadores-por-esfera-documento-10">21.1 Indicadores por esfera (documento 10)</h3>
+<h3 id="21-1-indicadores-por-esfera-documento-10">21.1 Indicadores por esfera (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -3685,6 +3728,24 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Versiones de proveedor en riesgo</td>
 <td>IND-OPE-23 (incorporado)</td>
 </tr>
+<tr>
+<td>OPE-18</td>
+<td>52</td>
+<td>Modo degradado por coste</td>
+<td>IND-OPE-26 (incorporado)</td>
+</tr>
+<tr>
+<td>OPE-19</td>
+<td>52</td>
+<td>Consultas fuera del alcance validado</td>
+<td>IND-OPE-24 (incorporado)</td>
+</tr>
+<tr>
+<td>OPE-20</td>
+<td>52</td>
+<td>Respuestas desiguales en pares contrafactuales</td>
+<td>IND-OPE-25 (incorporado)</td>
+</tr>
 </tbody>
 </table></div>
 <hr />
@@ -3704,32 +3765,32 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fuente principal: fases, eventos, etiquetas, valor.</td>
 </tr>
 <tr>
-<td><strong>T02 · T03</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td>Inventario · Gestor de <em>gates</em></td>
 <td>Cobertura, <em>gates</em>, condiciones, revisiones de continuidad.</td>
 </tr>
 <tr>
-<td><strong>T06 · T07 · T08 · T09 · T10</strong></td>
+<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></strong></td>
 <td>Riesgos · clasificador regulatorio · no conformidades e incidentes · proveedores · seguridad de agentes</td>
 <td>Indicadores RIE y OPE de agentes.</td>
 </tr>
 <tr>
-<td><strong>T11 · T12 · T13</strong></td>
+<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></strong></td>
 <td>Hipótesis de valor · seguimiento de valor · costes por caso</td>
 <td>Indicadores VAL y COS.</td>
 </tr>
 <tr>
-<td><strong>T14 · T15</strong></td>
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a> · <a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></strong></td>
 <td>Índice de transformación · diagnóstico de madurez</td>
 <td>Indicadores TRA y MAD.</td>
 </tr>
 <tr>
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · T18</strong></td>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></strong></td>
 <td>Panel del consejo · registro de recomendaciones</td>
 <td>Presentación e indicadores CON.</td>
 </tr>
 <tr>
-<td><strong>T20 · T21</strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> · <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></strong></td>
 <td>Plan de adopción y capacidad · monitor de uso corporativo</td>
 <td>Indicadores ADO, materialización y reasignación.</td>
 </tr>
@@ -3815,6 +3876,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>Primera versión. Catálogo de 156 indicadores en 13 familias con código, fórmula, unidad, fuente, periodicidad, responsable, nivel, aplicación y umbral orientativo; conjunto mínimo Lite de 26 indicadores; selección orientativa para el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; correspondencia de códigos provisionales de los documentos 10, 50, 51 y 52 (sección 21). Incorporados al catálogo los 47 indicadores provisionales que no tenían equivalente (familias EMB, RIE, OPE, ADO, DAT y CLI, y nueva familia PRO · Procesos y decisión, sección 18); prefijo provisional de conocimiento del <a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a> renombrado de CON- a CNC-.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Tres indicadores nuevos de operación (159 en total): IND-OPE-24 consultas fuera del alcance validado (deriva de uso), IND-OPE-25 respuestas desiguales en pares contrafactuales (sesgo en IA generativa) e IND-OPE-26 modo degradado por coste; correspondencia con OPE-18 a OPE-20 del <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>.</td>
 </tr>
 </tbody>
 </table></div>

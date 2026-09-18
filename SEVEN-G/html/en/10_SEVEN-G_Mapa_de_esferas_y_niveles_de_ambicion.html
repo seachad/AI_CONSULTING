@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Sphere map and ambition levels"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -384,7 +388,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <strong>Downloads</strong>
     <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
   </div>
-  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
 </aside>
 
 <div id="top"></div>
@@ -398,7 +402,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <div class="cifras"><div class="cifra"><b>9</b><span>impact spheres</span></div><div class="cifra"><b>3</b><span>ambition levels</span></div><div class="cifra"><b>60</b><span>indicators with a formula</span></div><div class="cifra"><b>2</b><span>spheres with their own levels</span></div></div>
   </div>
 </header>
-<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#the-impact-map"><span>02</span>The impact map</a></li><li><a href="#the-three-ambition-levels"><span>03</span>The three ambition levels</a></li><li><a href="#classification-rules-on-the-map"><span>04</span>Classification rules on the map</a></li><li><a href="#profiles-of-spheres-01-to-07"><span>05</span>Profiles of spheres 01 to 07</a></li><li><a href="#sphere-08-regulation-ethics-and-accountability"><span>06</span>Sphere 08 · Regulation, ethics and accountability</a></li><li><a href="#sphere-09-ai-governance"><span>07</span>Sphere 09 · AI governance</a></li><li><a href="#sphere-level-heat-map-t16"><span>08</span>Sphere × level heat map (T16)</a></li><li><a href="#use-of-the-map-in-the-two-cycles"><span>09</span>Use of the map in the two cycles</a></li><li><a href="#conversation-with-the-board-and-first-ninety-days"><span>10</span>Conversation with the board and first ninety days</a></li><li><a href="#associated-tools-and-templates"><span>11</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>12</span>Related documents</a></li><li><a href="#version-control"><span>13</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal">
@@ -411,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Indicators with a formula</strong> for each sphere, so that the map can be measured and not merely described.</li>
 <li>The <strong>classification rules</strong> for placing an initiative on the map: primary sphere, secondary sphere and ambition level.</li>
 <li>The <strong>specific rule for spheres 08 and 09</strong>, which are assessed on their own levels and must not be mixed with Optimise, Augment and Transform.</li>
-<li>The portfolio <strong>heat map</strong> (tool T16) and its use in the corporate cycle (C1 to C5) and in the lifecycle (phases 1, 2 and 7).</li>
+<li>The portfolio <strong>heat map</strong> (tool <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>) and its use in the corporate cycle (C1 to C5) and in the lifecycle (phases 1, 2 and 7).</li>
 </ul>
 <p>The detailed classification of an initiative's ambition level (five questions and decision rules) is in document 12. Setting the target ambition by sphere is an output of C2 and is documented with document 13.</p>
 <p>The indicator codes in this document (<code>IE01.01</code>…) are provisional. Document 41 (Indicator catalogue) consolidates them with the rest of the framework's indicators.</p>
@@ -612,7 +616,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="classification-rules-on-the-map"><span class="antetitulo">04</span>Classification rules on the map</h2>
 <h3 id="4-1-primary-sphere-and-secondary-sphere">4.1 Primary sphere and secondary sphere</h3>
-<p>Each initiative is recorded in the initiative register (T01) with a mandatory <strong>primary sphere</strong> and, at most, one <strong>secondary sphere</strong>.</p>
+<p>Each initiative is recorded in the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) with a mandatory <strong>primary sphere</strong> and, at most, one <strong>secondary sphere</strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -679,6 +683,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>05 Data</td>
 <td>—</td>
 <td>The outcome is the enabling capability; the value of the use cases that use it is allocated to those use cases.</td>
+</tr>
+<tr>
+<td>Generative assistant built into the office suite for several business units</td>
+<td>03 People</td>
+<td>06 Knowledge, if access to information is measured</td>
+<td>It is a cross-unit initiative: it is recorded once and measured by business unit (document 40 §7.2). It is not an enabling capability of spheres 05 to 07: its outcome falls on people's work.</td>
 </tr>
 <tr>
 <td>Copilot for risk analysts that enables them to review more complex transactions</td>
@@ -870,13 +880,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE01.04</td>
 <td>Incremental retention in monetary terms</td>
 <td>(Retention rate of the treated group − rate of the control group) × customers treated × average annual margin per customer</td>
-<td>T12, management control</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, management control</td>
 </tr>
 <tr>
 <td>IE01.05</td>
 <td>Incremental conversion in monetary terms</td>
 <td>(Conversion with AI − conversion of the control group) × opportunities treated × average margin per sale</td>
-<td>T12, sales CRM</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, sales CRM</td>
 </tr>
 <tr>
 <td>IE01.06</td>
@@ -944,7 +954,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE02.01</td>
 <td>AI-enabled revenue</td>
 <td>Revenue from products, services or channels that would not exist without AI ÷ total revenue × 100 (same definition as signal 6 in document 12)</td>
-<td>Management control, T12</td>
+<td>Management control, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 </tr>
 <tr>
 <td>IE02.02</td>
@@ -962,7 +972,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE02.04</td>
 <td>AI cost per unit of service</td>
 <td>Recurring AI cost allocated to the product ÷ units of service delivered</td>
-<td>T13, document 42</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a>, document 42</td>
 </tr>
 <tr>
 <td>IE02.05</td>
@@ -1063,19 +1073,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE03.01</td>
 <td>Effective adoption</td>
 <td>Users with active usage in the period (threshold of days of use set by the company) ÷ users with access × 100</td>
-<td>Telemetry, T21</td>
+<td>Telemetry, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></td>
 </tr>
 <tr>
 <td>IE03.02</td>
 <td>Realised released capacity</td>
 <td>Released hours converted into actual lower cost ÷ measured released hours × 100</td>
-<td>T12, T20</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>IE03.03</td>
 <td>Reassigned released capacity</td>
 <td>Hours explicitly reassigned to recorded activities ÷ measured released hours × 100</td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>IE03.04</td>
@@ -1087,7 +1097,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE03.05</td>
 <td>Redesigned roles</td>
 <td>Jobs with a description updated as a result of AI ÷ jobs affected by Augment or Transform initiatives × 100</td>
-<td>People, T20</td>
+<td>People, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>IE03.06</td>
@@ -1185,7 +1195,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE04.06</td>
 <td>Validated realised savings</td>
 <td>Σ efficiencies with validated status and an effect on actual cost in the period (€)</td>
-<td>T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1247,7 +1257,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE05.01</td>
 <td>Catalogue coverage</td>
 <td>Datasets used by AI systems in production that are catalogued and have an owner ÷ datasets used × 100</td>
-<td>Data catalogue, T02</td>
+<td>Data catalogue, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>IE05.02</td>
@@ -1264,8 +1274,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>IE05.04</td>
 <td>Documented lineage</td>
-<td>AI systems in production with verified data and model lineage (P16) ÷ AI systems in production × 100</td>
-<td>T02, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>AI systems in production with verified data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>) ÷ AI systems in production × 100</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 </tr>
 <tr>
 <td>IE05.05</td>
@@ -1431,7 +1441,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE07.01</td>
 <td>Decisions with assigned autonomy</td>
 <td>Decision types in which AI is involved with an assigned and documented A0–A3 level ÷ decision types in which AI is involved × 100</td>
-<td>T02, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 </tr>
 <tr>
 <td>IE07.02</td>
@@ -1449,13 +1459,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE07.04</td>
 <td>Tested kill switch</td>
 <td>A2 or A3 systems with a kill switch tested in the last 12 months ÷ A2 or A3 systems × 100</td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>IE07.05</td>
 <td>Improvement in decision quality</td>
 <td>Average outcome of decisions with AI − average outcome of the control group, converted into money (for example, loss avoided)</td>
-<td>T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 </tr>
 <tr>
 <td>IE07.06</td>
@@ -1662,7 +1672,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IE09.01</td>
 <td>Structure</td>
 <td>Register coverage</td>
-<td>Active AI initiatives and systems registered in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and T02 with roles assigned without incompatibilities ÷ known active initiatives and systems × 100</td>
+<td>Active AI initiatives and systems registered in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> with roles assigned without incompatibilities ÷ known active initiatives and systems × 100</td>
 </tr>
 <tr>
 <td>IE09.02</td>
@@ -1715,8 +1725,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="sphere-level-heat-map-t16"><span class="antetitulo">08</span>Sphere × level heat map (T16)</h2>
-<p>The heat map is the portfolio view over the impact map. It is generated from the initiative register (T01) and shown in the board dashboard (T17).</p>
+<h2 id="sphere-level-heat-map-t16"><span class="antetitulo">08</span>Sphere × level heat map (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>)</h2>
+<p>The heat map is the portfolio view over the impact map. It is generated from the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) and shown in the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
 <h3 id="8-1-construction">8.1 Construction</h3>
 <div class="tabla"><table>
 <thead>
@@ -2024,27 +2034,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Primary and secondary sphere fields, proposed, confirmed and actual ambition level, and contribution dimension for 08 and 09.</td>
 </tr>
 <tr>
-<td><strong>T02</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Basis for the data, decision, compliance and governance indicators.</td>
 </tr>
 <tr>
-<td><strong>T05</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
 <td>Ambition classifier</td>
 <td>Five questions from document 12, integrated with sphere selection.</td>
 </tr>
 <tr>
-<td><strong>T12</strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Indicator amounts converted into money.</td>
 </tr>
 <tr>
-<td><strong>T14</strong></td>
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Transformation index calculator</td>
 <td>Uses the enablement band to exclude spheres 08 and 09 from signals 1, 2 and 7.</td>
 </tr>
 <tr>
-<td><strong>T16</strong></td>
+<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></strong></td>
 <td>Portfolio sphere map</td>
 <td>Heat map in section 8.</td>
 </tr>
@@ -2090,7 +2100,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Tools and initiative register</strong></td>
-<td>Controlled taxonomy of spheres and levels; tools T05 and T16.</td>
+<td>Controlled taxonomy of spheres and levels; tools <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a> and <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>.</td>
 </tr>
 <tr>
 <td><strong>11 · Maturity model</strong></td>
@@ -2152,7 +2162,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Integrates the previous sphere framework into SEVEN-G: profiles of the nine spheres with questions, examples by level, warning signs and indicators with a formula; primary and secondary sphere rules; rule preventing spheres 08 and 09 from being mixed, with their own grades; heat map (T16) and its use in C1–C5 and in phases 1, 2 and 7.</td>
+<td>First version. Integrates the previous sphere framework into SEVEN-G: profiles of the nine spheres with questions, examples by level, warning signs and indicators with a formula; primary and secondary sphere rules; rule preventing spheres 08 and 09 from being mixed, with their own grades; heat map (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>) and its use in C1–C5 and in phases 1, 2 and 7.</td>
 </tr>
 </tbody>
 </table></div>

@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Marco de auditoría de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -413,7 +417,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>los terceros que prestan servicios de IA cumplen lo exigido;</li>
 <li>la declaración de aplicación de SEVEN-G (01 §14) está respaldada por evidencia.</li>
 </ul>
-<p>Se aplica a los auditores de IA, a la función de auditoría interna y a los auditores externos que actúen en el marco. No define los criterios concretos de cada <em>gate</em> (documento 21) ni las listas de verificación (documento 22), ni el proceso de gestión de no conformidades (documento 37), a los que remite.</p>
+<p>Se aplica a los auditores de IA, a la función de auditoría interna y a los auditores externos que actúen en el marco. No define los criterios concretos de cada <em>gate</em> (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>) ni las listas de verificación (<a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>), ni el proceso de gestión de no conformidades (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>), a los que remite.</p>
 <h3 id="1-1-que-no-es-este-marco">1.1 Qué no es este marco</h3>
 <ul>
 <li><strong>No es una auditoría de cuentas</strong> ni sustituye a la auditoría legal.</li>
@@ -493,7 +497,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Organizativa</strong></td>
-<td>La función que aporta auditores de IA depende funcionalmente de la comisión delegada del consejo (documento 30 §3.6), no de áreas que patrocinen iniciativas.</td>
+<td>La función que aporta auditores de IA depende funcionalmente de la comisión delegada del consejo (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §3.6), no de áreas que patrocinen iniciativas.</td>
 <td>Estatuto de auditoría interna; organigrama.</td>
 </tr>
 <tr>
@@ -635,7 +639,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Formación y mantenimiento.</strong> Los auditores de IA siguen el perfil F6 del programa de alfabetización (documento 31 §6.2) y deberían dedicar horas anuales específicas a formación en IA, fijadas por la función de auditoría. Las credenciales profesionales de auditoría, de sistemas de información o de gestión de IA son un indicio útil, pero no sustituyen la comprobación de competencia práctica.</p>
+<p><strong>Formación y mantenimiento.</strong> Los auditores de IA siguen el perfil F6 del programa de alfabetización (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §6.2) y deberían dedicar horas anuales específicas a formación en IA, fijadas por la función de auditoría. Las credenciales profesionales de auditoría, de sistemas de información o de gestión de IA son un indicio útil, pero no sustituyen la comprobación de competencia práctica.</p>
 <hr />
 <h2 id="tipos-de-auditoria"><span class="antetitulo">04</span>Tipos de auditoría</h2>
 <div class="tabla"><table>
@@ -704,7 +708,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Uso no autorizado de IA</td>
-<td>¿Las fuentes de detección están implantadas? ¿Los usos detectados se regularizan en plazo? ¿Coincide T21 con la realidad observada?</td>
+<td>¿Las fuentes de detección están implantadas? ¿Los usos detectados se regularizan en plazo? ¿Coincide <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> con la realidad observada?</td>
 </tr>
 <tr>
 <td>Agentes con capacidad de actuar</td>
@@ -739,7 +743,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="universo-auditable-y-plan-anual-basado-en-riesgo"><span class="antetitulo">05</span>Universo auditable y plan anual basado en riesgo</h2>
 <h3 id="5-1-universo-auditable">5.1 Universo auditable</h3>
-<p>El universo auditable se construye a partir del <strong>inventario de sistemas de IA</strong> (T02, <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>) y del <strong>registro de iniciativas</strong> (T01), y se completa con:</p>
+<p>El universo auditable se construye a partir del <strong>inventario de sistemas de IA</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>) y del <strong>registro de iniciativas</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), y se completa con:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -750,7 +754,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Cada sistema de IA en desarrollo, piloto o producción</td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Cada iniciativa con <em>gates</em> previstos en el ejercicio</td>
@@ -758,7 +762,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Cada proveedor de IA con nivel N2 o N3</td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Los procesos del marco: ciclo corporativo, gestión de cartera, inventario, riesgos, medición, no conformidades, políticas y alfabetización</td>
@@ -766,7 +770,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Los temas transversales identificados por la segunda línea o por incidentes</td>
-<td>Informes de riesgos; T08</td>
+<td>Informes de riesgos; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -918,7 +922,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Aprobación y seguimiento.</strong> Auditoría interna propone el plan; la comisión delegada lo aprueba (documento 30 §7.5) y recibe su grado de ejecución cada trimestre. Si la capacidad no alcanza para cubrir los sistemas de prioridad Alta, la limitación se comunica expresamente a la comisión, que decide si amplía recursos o acepta el riesgo.</p>
+<p><strong>Aprobación y seguimiento.</strong> Auditoría interna propone el plan; la comisión delegada lo aprueba (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.5) y recibe su grado de ejecución cada trimestre. Si la capacidad no alcanza para cubrir los sistemas de prioridad Alta, la limitación se comunica expresamente a la comisión, que decide si amplía recursos o acepta el riesgo.</p>
 <hr />
 <h2 id="proceso-y-programa-de-trabajo-tipo"><span class="antetitulo">06</span>Proceso y programa de trabajo tipo</h2>
 <figure class="grafico"><div class="g-titulo">Proceso de una auditor&#237;a de IA</div><div class="g-sub">Del plan al cierre verificado de los hallazgos</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
@@ -987,7 +991,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>7. Registro</strong></td>
-<td>Alta de no conformidades en T08; resultado en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>/T03; archivo del expediente.</td>
+<td>Alta de no conformidades en <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>; resultado en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>/T03; archivo del expediente.</td>
 <td>Registros</td>
 <td>Con el informe final</td>
 </tr>
@@ -1051,7 +1055,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>7</td>
 <td>Separación de funciones</td>
 <td>Autor, verificador y decisor son personas distintas y sin incompatibilidades (30 §5).</td>
-<td>Revisión de <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> y T03</td>
+<td>Revisión de <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>8</td>
@@ -1357,7 +1361,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Agentes</strong></td>
 <td>Inventario de identidades, credenciales y permisos frente a las acciones necesarias.</td>
 <td>Permisos excesivos; credenciales compartidas o sin rotar.</td>
-<td>Documento 35, T10</td>
+<td>Documento 35, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td></td>
@@ -1547,7 +1551,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Para las <strong>auditorías de <em>gate</em></strong> se usa una versión abreviada integrada en el registro de decisión (P29) y en T03: resultado, criterios en No cumple o Pendiente, hallazgos y limitaciones.</p>
+<p>Para las <strong>auditorías de <em>gate</em></strong> se usa una versión abreviada integrada en el registro de decisión (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>) y en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>: resultado, criterios en No cumple o Pendiente, hallazgos y limitaciones.</p>
 <h3 id="9-2-ficha-de-hallazgo">9.2 Ficha de hallazgo</h3>
 <div class="tabla"><table>
 <thead>
@@ -1559,7 +1563,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Código</td>
-<td><code>H-01</code>, <code>H-02</code>… dentro del informe; las no conformidades se registran además en T08 con código <code>NC-AAAA-NNN</code>.</td>
+<td><code>H-01</code>, <code>H-02</code>… dentro del informe; las no conformidades se registran además en <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> con código <code>NC-AAAA-NNN</code>.</td>
 </tr>
 <tr>
 <td>Título</td>
@@ -1710,25 +1714,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>1.</strong> C1 y C2 completados; tesis, ambición por esfera y apetito de riesgo aprobados por el consejo.</td>
-<td>Actas del consejo; documento de tesis y apetito (documento 13); diagnóstico de C1.</td>
+<td>Actas del consejo; documento de tesis y apetito (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>); diagnóstico de C1.</td>
 <td>Revisión de actas y fechas; coherencia de los umbrales usados en la cartera con los aprobados.</td>
 <td>Crítica (no puede declararse)</td>
 </tr>
 <tr>
 <td><strong>2.</strong> Inventario con clasificación regulatoria, intensidad y responsable; registro de iniciativas con trazabilidad de 01 §6.11.</td>
-<td>T02 y <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; indicadores de calidad (32 §8).</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; indicadores de calidad (32 §8).</td>
 <td>Conciliación del inventario con fuentes independientes (32 §9); muestra de fichas (95 %/10 %: 29) frente a la realidad; muestra de iniciativas con eventos de fase y <em>gate</em>.</td>
 <td>Mayor; crítica si hay sistemas de alto riesgo sin inventariar</td>
 </tr>
 <tr>
 <td><strong>3.</strong> Roles y órganos asignados con las incompatibilidades de 01 §8.2.</td>
-<td>Mandatos (documento 30); <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> de las iniciativas.</td>
+<td>Mandatos (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a>); <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> de las iniciativas.</td>
 <td>Revisión de mandatos; análisis del total de asignaciones en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> para detectar incompatibilidades.</td>
 <td>Mayor</td>
 </tr>
 <tr>
 <td><strong>4.</strong> Todas las iniciativas nuevas recorren el ciclo con <em>gates</em> registrados.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
 <td>Análisis del total: iniciativas dadas de alta tras la adopción sin G0 o con saltos de fase; muestra de <em>gates</em> con pruebas de la sección 6.2 (incluida anterioridad).</td>
 <td>Mayor; crítica si hay sistemas en producción sin G5</td>
 </tr>
@@ -1740,13 +1744,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>6.</strong> Aplica las reglas de medición del valor y reporta al consejo con el panel.</td>
-<td>Panel del consejo; T12; actas.</td>
+<td>Panel del consejo; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>; actas.</td>
 <td>Muestra de casos: fórmula, estado de validación, capacidad liberada, atribución única (reglas de 00 §6); comprobación de que el consejo recibe el panel en C4.</td>
 <td>Mayor</td>
 </tr>
 <tr>
 <td><strong>7.</strong> Gestiona las no conformidades con el proceso de 01 §12.</td>
-<td>T08; informes a la comisión delegada.</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>; informes a la comisión delegada.</td>
 <td>Análisis del total de no conformidades: clasificación, plazos de contención y plan, cierre con eficacia.</td>
 <td>Mayor</td>
 </tr>
@@ -1803,7 +1807,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>9.2 Objetividad e imparcialidad</td>
-<td>Independencia (sección 3.1) e incompatibilidades (documento 30 §5).</td>
+<td>Independencia (sección 3.1) e incompatibilidades (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §5).</td>
 </tr>
 <tr>
 <td>9.2 Informe a la dirección</td>
@@ -1811,7 +1815,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>9.2 Información documentada</td>
-<td>Expedientes de auditoría, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03 y T08.</td>
+<td>Expedientes de auditoría, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> y <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>.</td>
 </tr>
 <tr>
 <td>9.3 Revisión por la dirección</td>
@@ -1880,7 +1884,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T02</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>Inventario de sistemas de IA</td>
 <td>Universo auditable y priorización.</td>
 </tr>
@@ -1890,27 +1894,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Previsión de <em>gates</em>, eventos, asignación y rotación de auditores.</td>
 </tr>
 <tr>
-<td><strong>T03</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td>Gestor de <em>gates</em></td>
 <td>Resultado de verificación por criterio y bloqueo de decisiones ante No conforme.</td>
 </tr>
 <tr>
-<td><strong>T08</strong></td>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></strong></td>
 <td>Registro de no conformidades e incidentes</td>
 <td>Alta y seguimiento de no conformidades derivadas de auditoría.</td>
 </tr>
 <tr>
-<td><strong>T09</strong></td>
+<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></strong></td>
 <td>Registro de proveedores de IA</td>
 <td>Universo y resultados de auditorías de proveedor.</td>
 </tr>
 <tr>
-<td><strong>T10</strong></td>
+<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></strong></td>
 <td>Evaluación de seguridad de agentes</td>
 <td>Pruebas técnicas de agentes.</td>
 </tr>
 <tr>
-<td><strong>T12</strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Recálculo y validación del valor.</td>
 </tr>
@@ -1931,12 +1935,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong><code>LV-G0</code>… <code>LV-G7</code></strong></td>
-<td>Listas de verificación por <em>gate</em> (documento 22)</td>
+<td>Listas de verificación por <em>gate</em> (<a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>)</td>
 <td>Programa de la auditoría de <em>gate</em>.</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Requisitos para las herramientas derivados de este documento:</strong> T03 debe impedir registrar una decisión de <em>gate</em> con un resultado de verificación No conforme, salvo Parar cuando el equipo retira la solicitud y propone parar; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> debe registrar auditor, declaración de independencia y fecha de verificación; T08 debe vincular cada no conformidad a su auditoría de origen y controlar los plazos de la sección 10.</p>
+<p><strong>Requisitos para las herramientas derivados de este documento:</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> debe impedir registrar una decisión de <em>gate</em> con un resultado de verificación No conforme, salvo Parar cuando el equipo retira la solicitud y propone parar; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> debe registrar auditor, declaración de independencia y fecha de verificación; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> debe vincular cada no conformidad a su auditoría de origen y controlar los plazos de la sección 10.</p>
 <hr />
 <h2 id="documentos-relacionados"><span class="antetitulo">14</span>Documentos relacionados</h2>
 <div class="tabla"><table>

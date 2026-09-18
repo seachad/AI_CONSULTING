@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Licence, use by third parties and citation"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -696,7 +700,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="11-5-consultation-dates">11.5 Consultation dates</h3>
 <p>The regulatory and standards references in each document state their <strong>consultation date</strong>. They reflect the state of the sources on that date and are not updated automatically: regulatory changes, texts in the legislative process and later guidelines, positions or rulings of authorities and courts may render them incomplete or incorrect. The procedure for maintaining the mapping (document 34, section 10) is a recommendation for the user organisation, not an undertaking by the author to keep it updated.</p>
 <h3 id="11-6-tools-and-demonstrations">11.6 Tools and demonstrations</h3>
-<p>The tools (T01–T22), the demonstration dashboards and registers and the code are provided for illustrative purposes and use <strong>fictitious data</strong> (section 9). They are not validated for production use or for taking regulatory decisions, and their outputs, such as an indicative classification or a calculated indicator, must be verified by the organisation before being used.</p>
+<p>The tools (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>), the demonstration dashboards and registers and the code are provided for illustrative purposes and use <strong>fictitious data</strong> (section 9). They are not validated for production use or for taking regulatory decisions, and their outputs, such as an indicative classification or a calculated indicator, must be verified by the organisation before being used.</p>
 <h3 id="11-7-third-parties-that-use-or-adapt-the-framework">11.7 Third parties that use or adapt the framework</h3>
 <p>Consultancies, auditors, trainers and other third parties that use, adapt or integrate SEVEN-G in their services do so <strong>under their sole responsibility</strong>. They may not present their work, deliverables, adaptations or conclusions as <strong>validated, certified, reviewed or endorsed</strong> by the author or by SEACHAD, nor declare or certify a client's regulatory compliance on behalf of SEVEN-G or the author (document 91, section 6.2). They must pass the legal notice on in their deliverables.</p>
 <h3 id="11-8-how-this-fits-with-the-licences">11.8 How this fits with the licences</h3>
@@ -727,7 +731,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">CC BY 4.0</a> content and MIT code in the demonstrations repository.</td>
 </tr>
 <tr>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>Board recommendations register</td>
 <td>CC BY 4.0 content and MIT code in the demonstrations repository.</td>
 </tr>

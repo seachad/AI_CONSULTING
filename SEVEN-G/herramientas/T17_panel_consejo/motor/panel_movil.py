@@ -128,6 +128,9 @@ function alertas(){
   if (br.length) out.push([fuera?"bad":"", `<b>${br.length}</b> brecha${br.length===1?"":"s"} de datos personales en el periodo${fuera?`, <b>${fuera}</b> sin notificar a la AEPD en 72 h`:""}.`]);
   const agentesSinFicha = CASES.filter(c=>esAgente(c) && c.estado!=="Desenganchado" && (rc(c).agente||{}).acciones==null).length;
   if (agentesSinFicha) out.push(["", `<b>${agentesSinFicha}</b> ${agentesSinFicha===1?"agente o asistente generativo":"agentes y asistentes generativos"} sin ficha de identidad, permisos y control de intención.`]);
+  // iniciativas transversales: unidades en uso por debajo del umbral de adopción (licencias activas sobre asignadas)
+  const bajas = CASES.flatMap(c=>adopcionBaja(c).map(u=>`${esc(u.unidad)} (${Math.round(adopcionPct(u))} %)`));
+  if (bajas.length) out.push(["amarillo", `Adopción por debajo del umbral en ${bajas.join(", ")}: revisar el despliegue o reasignar licencias sin uso.`]);
   // casos atascados: superan el límite de días de su estado (misma regla que el embudo del panel completo)
   const pl = CASES.map(plazoDe), atasR = pl.filter(p=>p.nivel==="rojo").length, atasA = pl.filter(p=>p.nivel==="amarillo").length;
   if (atasR || atasA) out.push([atasR?"rojo":"amarillo", `<b>${atasR}</b> ${atasR===1?"caso supera":"casos superan"} el límite de días de su estado${atasA?` y <b>${atasA}</b> ${atasA===1?"está cerca":"están cerca"}`:""}.`]);
@@ -187,6 +190,19 @@ function render(){
 
   const cand = CASES.filter(c=>R(c).adicional && R(c).neto_adicional > 0).sort((a,b)=>R(b).rendimiento_adicional - R(a).rendimiento_adicional).slice(0,5);
   $("rinde").innerHTML = cand.length ? cand.map(c=>fila(c, `<b>${rend(R(c).rendimiento_adicional)}</b><div class="m">${fmt(R(c).adicional)} → +${fmt(R(c).neto_adicional)}/año</div>`, `plazo ${esc(eco(c).plazo_potencial||"sin fijar")}`)).join("") : `<div class="empty">Sin inversión adicional estimada.</div>`;
+
+  // iniciativas transversales y plataformas (casos[].alcance, opcional): por unidad, adopción, coste y valor materializado
+  const ts = CASES.filter(alcanceDe), tsec = $("transv-sec");
+  tsec.hidden = !ts.length;
+  if (ts.length){
+    const DSP = {previsto:"prevista", piloto:"piloto", en_uso:"en uso", retirado:"retirada"};
+    const netoSin = sum(CASES.filter(c=>!alcanceDe(c)).map(c=>R(c)[k("neto")]||0));
+    $("transv").innerHTML = `<div class="m" style="padding:0 2px 6px">Neto anual${pot?" potencial":""} de la cartera sin ${ts.length === 1 ? "ella" : "ellas"}: <b>${fmt(netoSin)}</b></div>` + ts.map(c=>{ const a = c.alcance;
+      const us = a.tipo === "plataforma" ? `<div class="m">la usan: ${(a.habilita||[]).map(h=>esc(h.id)).join(", ") || "ningún caso"}</div>`
+        : (a.unidades||[]).filter(u=>u.unidad != null).map(u=>{ const p = adopcionPct(u), bajo = a.umbral_adopcion_pct != null && u.estado === "en_uso" && p != null && p < a.umbral_adopcion_pct;
+            return `<div class="m">${esc(u.unidad)} · ${DSP[u.estado]||esc(u.estado||"")}${p!=null?` · <span class="${bajo?"badge rojo":""}">${Math.round(p)} % licencias</span>`:""}${u.coste_anual!=null?` · coste ${fmt(u.coste_anual)}`:""}${u.valor_materializado!=null?` · materializado ${fmt(u.valor_materializado)}`:""}</div>`; }).join("");
+      return `<div class="row" data-id="${c.id}"><div style="flex:1;min-width:0"><div class="n">${esc(c.nombre)}</div><div class="m">${esc(c.tags.alcance||"")} · neto ${fmt(R(c)[k("neto")])}</div>${us}</div></div>`; }).join("");
+  }
 
   const sec = $("novedades-sec");
   if (f){
@@ -252,6 +268,7 @@ HTML = """<!DOCTYPE html>
  <h2>Embudo de casos</h2><div class="list" id="embudo"></div>
  <h2>Casos que más aportan</h2><div class="list" id="top"></div>
  <h2>Dónde rinde más el siguiente euro</h2><div class="list" id="rinde"></div>
+ <section id="transv-sec" hidden><h2>Transversales y plataformas, por unidad</h2><div class="list" id="transv"></div></section>
  <section id="novedades-sec" hidden><h2 id="novedades-t">Novedades</h2><div class="list" id="novedades"></div></section>
  __GLOSARIO__
  <div class="foot" id="pie"></div>

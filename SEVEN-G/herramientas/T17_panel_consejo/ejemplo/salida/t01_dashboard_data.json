@@ -10,7 +10,7 @@
    "anterior": null
   },
   "fuentes": {
-   "t01": "Registro de iniciativas T01 de SEVEN-G (esquema 0.2)"
+   "t01": "Registro de iniciativas T01 de SEVEN-G (esquema 0.3)"
   },
   "organizacion": "Compañía Ejemplo Industrial, S.A. (ficticia)",
   "consejo_sigla": "consejo asesor",
@@ -84,6 +84,20 @@
     "Embudo",
     "Etapas del panel y fases de SEVEN-G",
     "Propuesto = fases 0 y 1 · Hipótesis de valor = fase 2 · POC = fase 3 (viabilidad y riesgo) · En desarrollo = fases 4 y 5 · En uso = fases 6 y 7. Una parada en las fases 0-1 figura como No aprobado; en las fases 2-5, como Descartado; una retirada, como Desenganchado. Las fechas de cada cambio salen de los eventos de T01.",
+    false
+   ],
+   [
+    "SEVEN-G",
+    "Transversal",
+    "Iniciativa transversal",
+    "Herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática). Se mide por unidad con una escalera: coste, adopción, capacidad liberada declarada (no suma) y valor materializado (documento 40 §7.2).",
+    true
+   ],
+   [
+    "SEVEN-G",
+    "Plataforma",
+    "Plataforma habilitadora",
+    "Capacidad común (datos, conocimiento, decisión) cuyo valor se imputa a los casos que la usan; en la plataforma solo cuenta su coste (documento 10 §4.1, regla 3).",
     false
    ]
   ],
@@ -164,9 +178,9 @@
   },
   "origen": {
    "herramienta": "SEVEN-G T01",
-   "version_esquema": "0.2",
+   "version_esquema": "0.3",
    "conector": "SEVEN-G/herramientas/T17_panel_consejo/t01_a_panel.py",
-   "version_conector": "2.0",
+   "version_conector": "2.1",
    "moneda": "EUR"
   },
   "version_panel": 8,
@@ -230,6 +244,14 @@
     "sustituto": null,
     "tipo": "reevaluacion",
     "motivo": "Cambio de ambicion_confirmada: sin dato → aumentar. Ambición confirmada en G2 con el clasificador T05."
+   },
+   {
+    "fecha": "2025-10-06",
+    "caso": "IA-2025-007 Asistente generativo en la suite ofimática corporativa",
+    "decisor": "Raúl Domínguez",
+    "sustituto": null,
+    "tipo": "alta",
+    "motivo": "Alta de la iniciativa en el registro."
    },
    {
     "fecha": "2025-11-20",
@@ -348,6 +370,14 @@
     "tipo": "reevaluacion",
     "caso": "IA-2025-002 Asistente conversacional de atención a clientes",
     "motivo": "R6 · Continuar con condiciones: La tasa de derivaciones erróneas (11 %) supera el umbral del 8 %.",
+    "decisor": "Teresa Molina",
+    "sustituto": null
+   },
+   {
+    "fecha": "2026-08-12",
+    "tipo": "reevaluacion",
+    "caso": "IA-2025-007 Asistente generativo en la suite ofimática corporativa",
+    "motivo": "R6 · Continuar la operación: Finanzas materializa valor validado; Comercial está por debajo del umbral de adopción y no ha materializado las horas: la ola 2 queda pendiente de la revisión de sus licencias.",
     "decisor": "Teresa Molina",
     "sustituto": null
    },
@@ -3741,6 +3771,425 @@
      "Apuesta estratégica 2026"
     ],
     "sistemas": []
+   }
+  },
+  {
+   "id": "IA-2025-007",
+   "nombre": "Asistente generativo en la suite ofimática corporativa",
+   "que_es": "Asistente de IA generativa integrado en la suite ofimática y el correo corporativos: redacta borradores, resume reuniones y documentos y busca en los ficheros a los que cada persona ya tiene acceso. Se despliega por olas en varias unidades de negocio; cada unidad declara su adopción y en qué se materializa el tiempo liberado.",
+   "descripcion": "Coste seguro y valor todavía disperso: el consejo asesor pide que cada unidad declare en qué se materializan las horas liberadas antes de ampliar licencias.",
+   "area": "Personas",
+   "compania": "Compañía Ejemplo Industrial, S.A. (ficticia)",
+   "unidad": "Varias unidades (transversal)",
+   "estado": "En uso",
+   "inicio_estimado": null,
+   "tags": {
+    "tecnologia": "GenAI",
+    "naturaleza": "IA generativa / agéntica",
+    "exposicion": "Empleado",
+    "riesgo": "Riesgo mínimo",
+    "funcion": "03 Personas",
+    "prioridad": "Alta",
+    "ambicion": "Optimizar",
+    "alcance": "Transversal"
+   },
+   "alcance": {
+    "tipo": "transversal",
+    "umbral_adopcion_pct": 60,
+    "habilita": [],
+    "unidades": [
+     {
+      "unidad": "Finanzas",
+      "estado": "en_uso",
+      "desde": "2026-05-06",
+      "licencias_asignadas": 900,
+      "licencias_activas": 792,
+      "usuarios_activos_semanales": 705,
+      "horas_liberadas_mes": 7200,
+      "coste_anual": 324000,
+      "coste_previsto": false,
+      "valor_materializado": 540000,
+      "valor_validado": 540000,
+      "capacidad_liberada": null,
+      "fuente": "Informe de uso de la suite y encuesta trimestral",
+      "fecha_dato": "2026-08-31"
+     },
+     {
+      "unidad": "Comercial",
+      "estado": "en_uso",
+      "desde": "2026-05-06",
+      "licencias_asignadas": 1200,
+      "licencias_activas": 624,
+      "usuarios_activos_semanales": 480,
+      "horas_liberadas_mes": 5100,
+      "coste_anual": 432000,
+      "coste_previsto": false,
+      "valor_materializado": 180000,
+      "valor_validado": null,
+      "capacidad_liberada": 1071000,
+      "fuente": "Informe de uso de la suite y encuesta trimestral",
+      "fecha_dato": "2026-08-31"
+     },
+     {
+      "unidad": "Atención al cliente",
+      "estado": "piloto",
+      "desde": "2026-07-01",
+      "licencias_asignadas": 400,
+      "licencias_activas": 356,
+      "usuarios_activos_semanales": 310,
+      "horas_liberadas_mes": 1900,
+      "coste_anual": 144000,
+      "coste_previsto": false,
+      "valor_materializado": null,
+      "valor_validado": null,
+      "capacidad_liberada": null,
+      "fuente": "Informe de uso de la suite y encuesta del piloto",
+      "fecha_dato": "2026-08-31"
+     },
+     {
+      "unidad": "Jurídico",
+      "estado": "previsto",
+      "desde": null,
+      "licencias_asignadas": null,
+      "licencias_activas": null,
+      "usuarios_activos_semanales": null,
+      "horas_liberadas_mes": null,
+      "coste_anual": null,
+      "coste_previsto": false,
+      "valor_materializado": null,
+      "valor_validado": null,
+      "capacidad_liberada": null,
+      "fuente": null,
+      "fecha_dato": null
+     },
+     {
+      "unidad": "Operaciones",
+      "estado": "previsto",
+      "desde": null,
+      "licencias_asignadas": null,
+      "licencias_activas": null,
+      "usuarios_activos_semanales": null,
+      "horas_liberadas_mes": null,
+      "coste_anual": null,
+      "coste_previsto": false,
+      "valor_materializado": null,
+      "valor_validado": null,
+      "capacidad_liberada": null,
+      "fuente": null,
+      "fecha_dato": null
+     },
+     {
+      "unidad": null,
+      "estado": null,
+      "desde": null,
+      "licencias_asignadas": null,
+      "licencias_activas": null,
+      "usuarios_activos_semanales": null,
+      "horas_liberadas_mes": null,
+      "coste_anual": 260000,
+      "coste_previsto": false,
+      "valor_materializado": null,
+      "valor_validado": null,
+      "capacidad_liberada": null,
+      "fuente": null,
+      "fecha_dato": null
+     }
+    ]
+   },
+   "detalle": {
+    "tipo": "IA de terceros embebida, IA generativa",
+    "decision": null,
+    "datos": null,
+    "aiact": "Riesgo mínimo",
+    "proveedores": "Proveedor D de suite de productividad (ficticio)",
+    "valor_tipo": "Eficiencia",
+    "es_ia": "IA generativa / agéntica",
+    "acciones_estimadas_cati": null
+   },
+   "valor": {
+    "magnitud": null,
+    "anio": null,
+    "acum": null,
+    "acum_dato": false,
+    "acum_extrapolado_cati": null,
+    "medido": true,
+    "fuente": "Registro de iniciativas T01",
+    "nota_acum": null,
+    "pta": null,
+    "nombre_cdm": null
+   },
+   "economia": {
+    "moneda": "EUR",
+    "nota_caso": "SEVEN-G T01 · fase 6 (Operación y gobierno) · En producción",
+    "inversion": {
+     "construccion": {
+      "importe": 540000,
+      "formula": "Configuración, revisión de permisos y formación de las olas 1 y piloto",
+      "estado": "declarado",
+      "fuente": "Finanzas",
+      "fecha": "2026-05-06",
+      "atribucion": null,
+      "hipotesis": null
+     },
+     "recurrente_anual": {
+      "importe": 1160000,
+      "formula": "Suma por unidades: común 260.000 € (Oficina de adopción, formación continua y revisión de permisos) + Finanzas 324.000 € (900 licencias × 360 €/año) + Comercial 432.000 € (1.200 licencias × 360 €/año) + Atención al cliente 144.000 € (400 licencias × 360 €/año (piloto))",
+      "estado": "declarado",
+      "fuente": "Finanzas",
+      "fecha": "2026-08-31",
+      "atribucion": null,
+      "hipotesis": null
+     },
+     "desglose_recurrente": null,
+     "adicional_potencial": {
+      "importe": 160000,
+      "formula": "Inversión pendiente según la ficha de la iniciativa",
+      "estado": "declarado",
+      "fuente": "Registro de iniciativas T01",
+      "fecha": null,
+      "atribucion": null,
+      "hipotesis": null
+     },
+     "recurrente_potencial": {
+      "importe": 2400000,
+      "formula": "6.000 licencias × 360 €/año + 240.000 € de oficina de adopción y gobierno",
+      "estado": "estimado_cati",
+      "fuente": null,
+      "fecha": null,
+      "atribucion": null,
+      "hipotesis": null
+     }
+    },
+    "eficiencias": [
+     {
+      "concepto": "personas",
+      "actual": {
+       "importe": 540000,
+       "formula": "Apoyo externo al cierre contable no renovado: 12.000 h/año × 45 €/h",
+       "estado": "validado",
+       "fuente": "Control de gestión",
+       "fecha": "2026-08-31",
+       "atribucion": null,
+       "hipotesis": null
+      },
+      "potencial": {
+       "importe": 2898000,
+       "formula": "6.000 usuarios × 1,5 h/semana × 46 semanas × 35 €/h × 20 % materializable",
+       "estado": "estimado_cati",
+       "fuente": null,
+       "fecha": null,
+       "atribucion": null,
+       "hipotesis": null
+      }
+     },
+     {
+      "concepto": "herramientas",
+      "actual": {
+       "importe": 180000,
+       "formula": "Herramienta anterior de redacción comercial retirada: 1.200 licencias × 150 €/año",
+       "estado": "declarado",
+       "fuente": "Dirección Comercial",
+       "fecha": "2026-08-31",
+       "atribucion": null,
+       "hipotesis": null
+      },
+      "potencial": null
+     },
+     {
+      "concepto": "capacidad_liberada",
+      "actual": {
+       "importe": 1071000,
+       "formula": "5.100 h/mes declaradas × 12 × 50 % (descuento por revisión y solape) × 35 €/h; sin destino asignado",
+       "estado": "declarado",
+       "fuente": "Encuesta trimestral de Comercial",
+       "fecha": "2026-08-31",
+       "atribucion": null,
+       "hipotesis": null
+      },
+      "potencial": null
+     }
+    ],
+    "retorno": [],
+    "plazo_potencial": "2027-06",
+    "hipotesis_potencial": "inversion: Configuración, revisión de permisos, etiquetado de confidencialidad y formación de 6.000 personas · coste recurrente: 6.000 licencias × 360 €/año + 240.000 € de oficina de adopción y gobierno · eficiencias: 6.000 usuarios × 1,5 h/semana × 46 semanas × 35 €/h × 20 % materializable",
+    "comparte_valor_con": [],
+    "clave_reparto": "Coste imputado a cada unidad de negocio por sus licencias; el gobierno común (oficina de adopción, formación y revisión de permisos) va sin unidad. El valor solo cuenta cuando la unidad lo materializa (documento 40 §7.2)."
+   },
+   "reporte_compania": {
+    "propietario_negocio": "Hugo Serrano",
+    "responsable_tecnico": "Elena Prieto",
+    "empresa_grupo": "Compañía Ejemplo Industrial, S.A. (ficticia)",
+    "fechas": {
+     "idea": "2025-10-06",
+     "aprobacion": "2026-02-04",
+     "inicio": "2026-02-04",
+     "piloto": "2026-03-11",
+     "produccion": "2026-05-06",
+     "ultima_revision": "2026-08-12",
+     "retirada": null
+    },
+    "retirada": {
+     "motivo": null,
+     "decisor": null,
+     "sustituto": null,
+     "lecciones": null
+    },
+    "historial_estados": [
+     {
+      "estado": "Propuesto",
+      "fecha": "2025-10-06",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Alta en el registro",
+      "cifras": {
+       "previsto": {
+        "inversion": null,
+        "recurrente": null,
+        "eficiencias": null,
+        "retorno": null
+       },
+       "actual": {
+        "inversion": null,
+        "recurrente": null,
+        "eficiencias": null,
+        "retorno": null
+       }
+      }
+     },
+     {
+      "estado": "Hipótesis de valor",
+      "fecha": "2025-11-28",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 2 (Hipótesis de valor)",
+      "cifras": {
+       "previsto": {
+        "inversion": null,
+        "recurrente": null,
+        "eficiencias": null,
+        "retorno": null
+       },
+       "actual": {
+        "inversion": null,
+        "recurrente": null,
+        "eficiencias": null,
+        "retorno": null
+       }
+      }
+     },
+     {
+      "estado": "POC",
+      "fecha": "2025-12-23",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 3 (Viabilidad y riesgo)",
+      "cifras": {
+       "previsto": {
+        "inversion": 600000,
+        "recurrente": 2400000,
+        "eficiencias": 2898000,
+        "retorno": null
+       },
+       "actual": {
+        "inversion": null,
+        "recurrente": null,
+        "eficiencias": null,
+        "retorno": null
+       }
+      }
+     },
+     {
+      "estado": "En desarrollo",
+      "fecha": "2026-02-04",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 4 (Diseño de la solución)",
+      "cifras": {
+       "previsto": {
+        "inversion": 600000,
+        "recurrente": 2400000,
+        "eficiencias": 2898000,
+        "retorno": null
+       },
+       "actual": {
+        "inversion": null,
+        "recurrente": null,
+        "eficiencias": null,
+        "retorno": null
+       }
+      }
+     },
+     {
+      "estado": "En uso",
+      "fecha": "2026-05-06",
+      "fuente": "Registro de iniciativas T01",
+      "nota": "Entrada en la fase 6 (Operación y gobierno)",
+      "cifras": {
+       "previsto": {
+        "inversion": 600000,
+        "recurrente": 2400000,
+        "eficiencias": 2898000,
+        "retorno": null
+       },
+       "actual": {
+        "inversion": 540000,
+        "recurrente": null,
+        "eficiencias": null,
+        "retorno": null
+       }
+      }
+     }
+    ],
+    "complejidad": "media",
+    "tier_riesgo": "medio",
+    "clasificacion_ria": "minimo",
+    "controles": {
+     "RIA": "hecho",
+     "FRIA": "no_aplica",
+     "DPIA": "hecho",
+     "seguridad": "hecho",
+     "MUC": "hecho",
+     "IA_ofensiva": "pendiente"
+    },
+    "valor_validado": {
+     "base": null,
+     "objetivo": 2898000,
+     "actual": 540000,
+     "metodo_atribucion": "Apoyo externo al cierre contable no renovado: 12.000 h/año × 45 €/h",
+     "validado_por": "Control de gestión",
+     "fecha_validacion": "2026-08-31",
+     "recurrente": null
+    },
+    "coste_real": {
+     "anio": null,
+     "acumulado": null,
+     "fuente": null
+    },
+    "operacion": null,
+    "agente": null,
+    "proveedor_dora": null
+   },
+   "seveng": {
+    "fase": 6,
+    "fase_nombre": "Operación y gobierno",
+    "estado": "en_produccion",
+    "fecha_entrada_fase": "2026-05-06",
+    "iteracion": 1,
+    "espera": null,
+    "proxima_revision": "2026-11-10",
+    "gate_pendiente": null,
+    "intensidad": "enterprise",
+    "esfera_principal": "03",
+    "esfera_secundaria": "06",
+    "ambicion": {
+     "propuesta": "optimizar",
+     "confirmada": "optimizar",
+     "real": null
+    },
+    "autonomia": "A0",
+    "regulatoria": "riesgo_minimo",
+    "etiquetas_libres": [
+     "Programa productividad"
+    ],
+    "sistemas": [
+     "SIA-2026-001"
+    ]
    }
   }
  ],

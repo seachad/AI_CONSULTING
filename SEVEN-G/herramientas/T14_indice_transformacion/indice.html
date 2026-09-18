@@ -1,0 +1,757 @@
+<!doctype html>
+<!-- GENERADO por build_indice.ps1 desde _fuentes/indice.plantilla.html y datos_demo.json. No editar a mano. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="SEVEN-G · T14 Calculadora del índice de transformación: condiciones de base, ocho señales, perfil de la compañía, alertas, cobertura y evolución, con versión de umbrales. Funciona sin servidor.">
+<title>T14 · Índice de transformación</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230f5499'/%3E%3Cpath d='M3 12h2V8H3zm4 0h2V5H7zm4 0h2V3h-2z' fill='%23fff1e5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --papel:#fff1e5;--papel-2:#f2dfce;--papel-3:#ead2bd;--tarjeta:#fff8f2;
+  --tinta:#33302e;--tinta-2:#5b5550;--tinta-3:#6e655e;--negro:#1a1817;
+  --regla:#ccc1b7;--regla-2:#e3d3c4;
+  --claret:#990f3d;--oxford:#0f5499;--teal:#0d7680;--velvet:#593380;--ambar:#8a5a00;
+  --ok-bg:#d9ebe0;--med-bg:#f7e3c4;--ko-bg:#f3d3da;--info-bg:#dbe6f2;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Libre Franklin","Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="claro"]){
+    --papel:#262a33;--papel-2:#30353f;--papel-3:#3a404b;--tarjeta:#2b3039;
+    --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
+    --regla:#555b66;--regla-2:#3d424c;
+    --claret:#ff7a9e;--oxford:#86b7f2;--teal:#5fd0cb;--velvet:#c6a3ec;--ambar:#f1c26b;
+    --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="oscuro"]{
+  --papel:#262a33;--papel-2:#30353f;--papel-3:#3a404b;--tarjeta:#2b3039;
+  --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
+  --regla:#555b66;--regla-2:#3d424c;
+  --claret:#ff7a9e;--oxford:#86b7f2;--teal:#5fd0cb;--velvet:#c6a3ec;--ambar:#f1c26b;
+  --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--papel);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font:15px/1.5 var(--sans);overflow-wrap:break-word}
+a{color:var(--oxford);text-underline-offset:3px}
+h1,h2,h3{font-family:var(--serif);color:var(--negro);line-height:1.2}
+h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;font-weight:600}
+h2{font-size:22px;margin:28px 0 10px;padding-top:10px;border-top:3px solid var(--negro);font-weight:600}
+h3{font-size:17px;margin:18px 0 8px;font-weight:700}
+p{margin:0 0 10px}
+.saltar{position:absolute;left:-9999px;top:0;background:var(--negro);color:var(--papel);padding:8px 12px;z-index:100}
+.saltar:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--oxford);outline-offset:2px}
+.oculto{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cab{border-bottom:1px solid var(--regla);background:var(--papel)}
+.cab-in{max-width:1280px;margin:0 auto;padding:10px 16px 8px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.marca{display:flex;align-items:center;gap:8px;font:800 17px/1 var(--serif);letter-spacing:.04em;color:var(--negro);text-decoration:none;margin-right:auto}
+.marca i{width:10px;height:10px;background:var(--claret);display:inline-block}
+.marca span{font:600 14px/1.2 var(--sans);letter-spacing:0;color:var(--tinta-2)}
+.ajustes{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.nav{max-width:1280px;margin:0 auto;padding:0 16px 8px;display:flex;flex-wrap:wrap;gap:4px}
+.nav a{font:600 14px/1 var(--sans);color:var(--tinta);text-decoration:none;padding:9px 10px;border:1px solid transparent;border-radius:2px;white-space:nowrap}
+.nav a:hover{border-color:var(--regla)}
+.nav a[aria-current="page"]{background:var(--negro);color:var(--papel)}
+.aviso-demo{max-width:1280px;margin:0 auto;padding:0 16px}
+.aviso-demo div{background:var(--med-bg);border-left:4px solid var(--ambar);padding:6px 10px;font-size:13px}
+main{max-width:1280px;margin:0 auto;padding:6px 16px 48px}
+main:focus{outline:none}
+.pie{max-width:1280px;margin:0 auto;padding:12px 16px 28px;border-top:3px solid var(--negro);font-size:12.5px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:space-between}
+.pie-legal{flex:1 1 100%;margin:0 0 8px;font-size:12px;line-height:1.5;color:var(--tinta-2)}
+.pie-legal b{color:var(--negro)}
+button,.btn,select,input,textarea{font:inherit;color:var(--tinta)}
+.btn,button{cursor:pointer;background:var(--papel);border:1px solid var(--regla);border-radius:2px;padding:7px 11px;font-weight:600;font-size:14px;line-height:1.2;min-height:36px;text-decoration:none;display:inline-block}
+.btn:hover,button:hover{border-color:var(--tinta-2)}
+.btn.primario,button.primario{background:var(--negro);color:var(--papel);border-color:var(--negro)}
+.btn.peligro,button.peligro{border-color:var(--claret);color:var(--claret)}
+button:disabled{opacity:.55;cursor:not-allowed}
+select,input[type=text],input[type=date],input[type=number],textarea{background:var(--tarjeta);border:1px solid var(--regla);border-radius:2px;padding:6px 8px;min-height:36px;max-width:100%}
+input:disabled,select:disabled,textarea:disabled{opacity:.7}
+textarea{width:100%;min-height:64px}
+label{font-weight:600;font-size:13px;color:var(--tinta-2)}
+.campo{display:flex;flex-direction:column;gap:3px;min-width:0}
+.campo input,.campo select,.campo textarea{width:100%}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px 14px}
+.fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ayuda{font-size:12.5px;color:var(--tinta-3)}
+.enlace-btn,button.enlace-btn{background:none;border:0;padding:0;min-height:0;color:var(--oxford);text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:inherit;line-height:inherit;cursor:pointer}
+.ajustes .enlace-btn{font-size:13px;margin-right:6px;padding:8px 2px}
+.et{display:inline-block;font:600 12px/1.3 var(--sans);padding:2px 7px;border-radius:2px;border:1px solid var(--regla);background:var(--papel-2);color:var(--tinta);white-space:nowrap}
+.et.ok{background:var(--ok-bg);border-color:var(--teal)}
+.et.med{background:var(--med-bg);border-color:var(--ambar)}
+.et.ko{background:var(--ko-bg);border-color:var(--claret)}
+.et.info{background:var(--info-bg);border-color:var(--oxford)}
+.sd{font-style:italic;color:var(--tinta-3)}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.tabla{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 16px}
+.tabla th{text-align:left;font-size:12.5px;color:var(--tinta-2);border-bottom:2px solid var(--negro);padding:6px 10px 6px 0;vertical-align:bottom}
+.tabla td{border-bottom:1px solid var(--regla);padding:7px 10px 7px 0;vertical-align:top}
+.tabla td small{display:block;color:var(--tinta-3);font-size:12px}
+.tblx{overflow-x:auto;max-width:100%}
+@media (max-width:760px){
+  .tabla.resp thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tabla.resp,.tabla.resp tbody,.tabla.resp tr,.tabla.resp td{display:block;width:100%}
+  .tabla.resp tr{border:1px solid var(--regla);background:var(--tarjeta);margin:0 0 10px;padding:6px 10px}
+  .tabla.resp td{border:0;padding:3px 0;display:grid;grid-template-columns:minmax(96px,38%) 1fr;gap:8px;text-align:left}
+  .tabla.resp td::before{content:attr(data-l);font-size:12px;font-weight:600;color:var(--tinta-3)}
+  .tabla.resp td.num{text-align:left}
+}
+.aviso{border-left:4px solid var(--ambar);background:var(--med-bg);padding:8px 10px;margin:8px 0}
+.aviso.ko{border-color:var(--claret);background:var(--ko-bg)}
+.aviso.ok{border-color:var(--teal);background:var(--ok-bg)}
+.aviso.info{border-color:var(--oxford);background:var(--info-bg)}
+/* Perfil */
+.perfil{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:0 24px;border-top:1px solid var(--negro);border-bottom:1px solid var(--regla);padding:12px 0;margin:10px 0 6px}
+@media (max-width:760px){.perfil{grid-template-columns:1fr}}
+.perfil .rotulo{font-size:12.5px;font-weight:700;color:var(--tinta-3);text-transform:uppercase;letter-spacing:.05em}
+.perfil .nombre{font:600 clamp(22px,3.2vw,30px)/1.15 var(--serif);color:var(--negro);margin:4px 0 6px}
+.perfil[data-perfil="declarada"] .nombre{color:var(--claret)}
+.perfil[data-perfil="curso"] .nombre{color:var(--teal)}
+.perfil .cifras{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;align-content:start}
+.perfil .cifras b{display:block;font:600 26px/1.1 var(--serif);color:var(--oxford)}
+.perfil .cifras span{font-size:12.5px;color:var(--tinta-2)}
+.espectro{display:flex;gap:3px;margin:10px 0 4px;flex-wrap:wrap}
+.espectro span{flex:1 1 110px;font-size:12px;padding:5px 6px;border-top:4px solid var(--regla);color:var(--tinta-3)}
+.espectro span.act{border-top-color:var(--oxford);color:var(--negro);font-weight:700;background:var(--info-bg)}
+.espectro span.sub{border-top-color:var(--ambar)}
+.puntos{display:inline-flex;gap:3px;vertical-align:middle}
+.puntos i{width:14px;height:10px;background:var(--regla-2);display:inline-block}
+.puntos i.on{background:var(--oxford)}
+.puntos.p3 i.on{background:var(--teal)}
+.puntos.p0 i{background:var(--regla-2)}
+.tend{font-weight:700;font-size:13px}
+.tend.sube{color:var(--teal)}.tend.baja{color:var(--claret)}.tend.igual{color:var(--tinta-3)}
+.mover li{margin:0 0 6px}
+/* Entradas */
+.entradas details{border:1px solid var(--regla);background:var(--tarjeta);padding:6px 12px;margin:8px 0}
+.entradas summary{cursor:pointer;font-weight:700;padding:4px 0}
+.entradas summary .et{margin-left:6px}
+.origen{font-size:11.5px;font-weight:600;color:var(--tinta-3)}
+.origen.t01{color:var(--teal)}
+.cab-calc{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end;margin:6px 0 4px}
+.cab-calc .campo{min-width:170px}
+dialog{border:0;border-top:4px solid var(--claret);background:var(--papel);color:var(--tinta);padding:0;width:min(760px,calc(100vw - 16px));max-height:calc(100vh - 24px)}
+dialog::backdrop{background:rgba(26,24,23,.45)}
+.dlg-cab{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--regla);position:sticky;top:0;background:var(--papel)}
+.dlg-cab h2{margin:0;padding:0;border:0;font-size:19px}
+.dlg-cuerpo{padding:10px 14px 14px}
+.dlg-cuerpo p{max-width:68ch;line-height:1.6}
+#toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:var(--negro);color:var(--papel);padding:8px 14px;max-width:calc(100vw - 32px);z-index:200;font-weight:600;display:none}
+#toast.ver{display:block}
+@media print{.cab,.nav,.entradas,.sin-imprimir,button,.btn,dialog,.aviso-demo{display:none!important}.pie{border-top:1px solid #000}main{padding:0}}
+</style>
+</head>
+<body>
+<a class="saltar" href="#principal" id="saltar">Saltar al contenido</a>
+<header class="cab">
+  <div class="cab-in">
+    <a class="marca" href="#/calculo"><i aria-hidden="true"></i>SEVEN-G <span id="txt-app">T14 · Índice de transformación</span></a>
+    <div class="ajustes">
+      <a class="enlace-btn" id="lnk-doc" href="../../html/es/12_SEVEN-G_Indice_de_transformacion.html">Documento 12</a>
+      <a class="enlace-btn" id="lnk-t01" href="../T01_registro_iniciativas/registro.html">Registro T01</a>
+      <button type="button" class="enlace-btn" id="btn-legal" data-acc="aviso-legal" aria-haspopup="dialog">Aviso legal</button>
+      <label class="oculto" for="sel-lang" id="lbl-lang">Idioma</label>
+      <select id="sel-lang"><option value="es">ES</option><option value="en">EN</option></select>
+      <label class="oculto" for="sel-tema" id="lbl-tema">Tema</label>
+      <select id="sel-tema"><option value="auto">Auto</option><option value="claro">Claro</option><option value="oscuro">Oscuro</option></select>
+    </div>
+  </div>
+  <nav class="nav" id="nav" aria-label="Vistas"></nav>
+</header>
+<div class="aviso-demo" id="aviso-demo"></div>
+<main id="principal" tabindex="-1"></main>
+<footer class="pie" id="pie"></footer>
+<dialog id="dlg-legal" aria-labelledby="legal-t"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="f-t14" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
+<input type="file" id="f-t01" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
+<script type="application/json" id="datos-demo">{"version_esquema":"0.1","herramienta":"T14","meta":{"organizacion":"Compañía industrial de ejemplo (ficticia)","moneda":"EUR","datos_ilustrativos":true,"nota":"Datos ilustrativos y ficticios. El cálculo formal de junio de 2026 reproduce el ejemplo completo del documento 12, sección 9; el cálculo de seguimiento de marzo de 2026 es una evolución inventada para mostrar la tendencia. Cualquier parecido con una compañía real es casual."},"umbrales":[{"version":"0.1","fecha":"2026-09-16","origen":"Documento 12, sección 4.5: umbrales iniciales, a calibrar en C5","aprobado_por":null,"nota":"Versión de referencia del marco. No procede de estudios de mercado.","parametros":{"base":{"b1_min":80,"b2_min":50,"b3_min":5},"s1":{"sin_clasificar_max":30,"t2":20,"t3":40,"transformar_min":10},"s2":{"t2":10,"t3":30,"iniciativas_min":2},"s3":{"t2":30,"t3":60,"reasignada_min":50},"s4":{"t2":15,"t3":35,"sin_verificacion_max":30},"s5":{"t2":10,"t3":25,"unidades_min":1},"s6":{"t2":0.5,"t3":2},"s7":{"cr2":0.5,"cr3":0.8,"tr3_max":2.0,"resultado_min":3,"tasa_referencia":0.6},"s8":{"revisiones_min":2,"decisiones_min":1},"perfil":{"suma_min":14,"cobertura_min":6,"d2_transformar_min":10},"sobredeclaracion":{"cartera":30,"transformar":50}}}],"calculos":[{"id":"IDX-2026-03","fecha_corte":"2026-03-31","tipo":"seguimiento","version_umbrales":"0.1","origen":"manual","entradas":{"base":{"activas":16,"gobernadas":13,"valor_validado":1400000,"valor_total":2900000,"en_produccion":12,"produccion_con_valor":10},"s1":{"coste_total":3600000,"coste_aumentar":650000,"coste_transformar":150000,"coste_sin_clasificar":0},"s2":{"eficiencias_validadas":1300000,"retorno_validado":100000,"iniciativas_con_retorno":1},"s3":{"horas_liberadas":52000,"horas_materializadas":7000,"horas_reasignadas":6000},"s4":{"itp2_verificada":1,"sin_verificacion":2},"s5":{"itp3_supervision":1,"unidades_completas":0,"sin_supervision":0},"s6":{"ingresos_habilitados":null,"ingresos_totales":400000000},"s7":{"hay_gates":true,"at_superaron_g2":5,"at_con_resultado":4,"at_en_produccion":2,"opt_con_resultado":12,"opt_en_produccion":9,"mediana_at":240,"mediana_opt":125,"plazos_ref":null},"s8":{"tesis_aprobada":true,"apuestas_transformar":1,"con_limite_etapa":true,"revisiones":0,"decisiones_etapa":0},"declaracion":{"d1":true,"d3":true,"evidencia":"Tesis de IA aprobada en C2 con Transformar en la esfera 02; plan estratégico que describe la IA como palanca de transformación."},"sobredeclaracion":{"real_registrada":3,"real_inferior":0,"transf_real_registrada":0,"transf_real_inferior":0}},"notas":"Cálculo trimestral de seguimiento (C4). Los ingresos habilitados por IA aún no se medían.","acciones":"Control de gestión: medir los ingresos del piloto comercial desde abril (responsable: dirección financiera)."},{"id":"IDX-2026-06","fecha_corte":"2026-06-30","tipo":"formal","version_umbrales":"0.1","origen":"manual","entradas":{"base":{"activas":17,"gobernadas":15,"valor_validado":1960000,"valor_total":3300000,"en_produccion":14,"produccion_con_valor":12},"s1":{"coste_total":4000000,"coste_aumentar":700000,"coste_transformar":300000,"coste_sin_clasificar":0},"s2":{"eficiencias_validadas":1800000,"retorno_validado":160000,"iniciativas_con_retorno":2},"s3":{"horas_liberadas":60000,"horas_materializadas":9000,"horas_reasignadas":12000},"s4":{"itp2_verificada":2,"sin_verificacion":0},"s5":{"itp3_supervision":1,"unidades_completas":0,"sin_supervision":0},"s6":{"ingresos_habilitados":40000,"ingresos_totales":400000000},"s7":{"hay_gates":true,"at_superaron_g2":6,"at_con_resultado":5,"at_en_produccion":2,"opt_con_resultado":14,"opt_en_produccion":10,"mediana_at":230,"mediana_opt":120,"plazos_ref":null},"s8":{"tesis_aprobada":true,"apuestas_transformar":1,"con_limite_etapa":true,"revisiones":1,"decisiones_etapa":0},"declaracion":{"d1":true,"d3":true,"evidencia":"Tesis de IA aprobada en C2 con Transformar en la esfera 02 (Producto y servicio); plan estratégico que describe la IA como «palanca de transformación»."},"sobredeclaracion":{"real_registrada":3,"real_inferior":0,"transf_real_registrada":0,"transf_real_inferior":0}},"notas":"Ejemplo completo del documento 12, sección 9. Cálculo formal anual.","acciones":"Revisión trimestral de la apuesta de Transformar por el consejo (secretaría del consejo). Verificar IT-P2 en las iniciativas de Aumentar en su próxima R6 (oficina de IA)."}]}</script>
+<script>
+'use strict';
+/* =========================================================
+   SEVEN-G · T14 Calculadora del índice de transformación (documento 12)
+   Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García · SEACHAD
+   ========================================================= */
+const DEMO_TXT = document.getElementById('datos-demo').textContent;
+const VERSION_ESQUEMA = '0.1';
+const LS_DATOS = 'seveng-t14-datos-v1', LS_UI = 'seveng-t14-ui-v1';
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
+function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
+
+/* ---------------- i18n ---------------- */
+const TX = {
+es:{
+ app:'T14 · Índice de transformación', saltar:'Saltar al contenido', idioma:'Idioma', tema:'Tema', t_auto:'Auto', t_claro:'Claro', t_oscuro:'Oscuro', vistas:'Vistas',
+ doc12:'Documento 12', reg_t01:'Registro T01', doc12_href:'../../html/es/12_SEVEN-G_Indice_de_transformacion.html',
+ v_calculo:'Cálculo', v_evolucion:'Evolución', v_umbrales:'Umbrales', v_datos:'Datos',
+ demo:'Datos ilustrativos y ficticios. El cálculo de junio de 2026 reproduce el ejemplo del documento 12, sección 9.',
+ pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García · SEACHAD · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador. No se envía nada a terceros.',
+ legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido',
+ legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los umbrales del índice son iniciales, no proceden de estudios de mercado y deben calibrarse con los datos de cada compañía. Cada organización que use la herramienta es la única responsable de sus datos, de las decisiones que adopte con ellos, de identificar la normativa que le aplica y de certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad alguna por el uso de la herramienta. Los datos de demostración son ficticios.',
+ tit_calculo:'Índice de transformación de la compañía', sub_calculo:'Condiciones de base, ocho señales y perfil, con las reglas del documento 12. «Sin dato» nunca es cero medido ni estimación.',
+ calculo:'Cálculo', fecha_corte:'Fecha de corte', tipo:'Tipo de cálculo', version_umbrales:'Versión de umbrales', origen_calc:'Origen',
+ tp_formal:'Formal (anual, C1 y C5)', tp_seguimiento:'De seguimiento (trimestral, C4)', tp_extraordinario:'Extraordinario',
+ or_manual:'Entrada manual', or_t01:'Desde el registro T01',
+ nuevo:'Nuevo cálculo', desde_t01:'Nuevo desde un registro T01…', duplicar:'Duplicar', eliminar:'Eliminar', imprimir:'Imprimir informe',
+ conf_eliminar:'¿Eliminar el cálculo del {f}? No se puede deshacer.', ok_eliminado:'Cálculo eliminado.', ok_nuevo:'Cálculo creado.',
+ ninguno:'No hay cálculos. Cree uno nuevo o cárguelo desde un registro T01.',
+ perfil_asignado:'Perfil asignado', perfil_sub:'Perfil subyacente (lo que evidencian las señales): {p}', provisional:'Provisional: cobertura inferior a {n} de 8. Hace falta un plan para obtener los datos que faltan, con responsable y plazo.',
+ suma:'Suma de señales', suma_nota:'Referencia; el perfil no se asigna por la suma.', cobertura:'Cobertura', cobertura_v:'{n} de 8', umbrales_v:'Umbrales v{v}',
+ declaracion:'Declaración de transformación', d_si:'Sí', d_no:'No',
+ p_curso:'Transformación en curso', p_escala:'Eficiencia a escala', p_tactica:'Eficiencia táctica', p_exploracion:'Exploración dispersa', p_declarada:'Transformación declarada, no evidenciada',
+ base:'Condiciones de base', b1:'B1 · Cartera gobernada', b2:'B2 · Proporción de valor validado', b3:'B3 · Escala en producción', cumple:'Cumple', no_cumple:'No cumple',
+ senales:'Señales', senal:'Señal', valor_medido:'Valor medido', puntuacion:'Puntuación', tendencia:'Tendencia', lectura:'Lectura',
+ s1:'1 · Composición de la inversión', s2:'2 · Composición del valor', s3:'3 · Materialización', s4:'4 · Profundidad del cambio', s5:'5 · Modelo operativo', s6:'6 · Ingresos habilitados por IA', s7:'7 · Paso a producción', s8:'8 · Decisión del consejo',
+ l0:'Sin dato o exploración', l1:'Lectura de eficiencia', l2:'Lectura intermedia', l3:'Lectura de transformación', sin_dato:'Sin dato', exploracion:'Exploración',
+ alertas:'Alertas complementarias', sin_alertas:'No se activa ninguna alerta.',
+ a_fragil:'Transformación frágil', a_fragil_t:'Las apuestas avanzan, pero la mayoría no confirma su ambición en G7.',
+ a_nomat:'Eficiencia no materializada', a_nomat_t:'Cartera de eficiencia cuyo ahorro no llega a la cuenta de resultados.',
+ a_atasc:'Apuestas atascadas', a_atasc_t:'Se invierte en Aumentar y Transformar, pero no llega a producción.',
+ a_sincons:'Transformación sin consejo', a_sincons_t:'Hay cambio real que el consejo no decide ni supervisa.',
+ a_sinsup:'Cambio sin supervisión', a_sinsup_t:'{n} iniciativas excluidas de la señal 5 por falta de supervisión humana definida: se delegan decisiones sin control.',
+ a_sobre:'Sobredeclaración de ambición', a_sobre_t:'{p} de las iniciativas con ambición real registrada tienen una ambición real inferior a la confirmada: revisar la calidad de la clasificación en la fase 2.',
+ a_sobre_tr:'Sobredeclaración en Transformar', a_sobre_tr_t:'{p} de las iniciativas confirmadas como Transformar no la confirman en G7: se informa al consejo.',
+ mover:'Qué movería el perfil', mover_hacia:'Para llegar a «{p}» falta:', mover_nada:'El perfil evidenciado es el más alto del espectro.',
+ m_b1:'Cartera gobernada del {u} % o más (hoy {v}): {n} iniciativas activas más con fase, gates registrados y ambición confirmada.',
+ m_b2:'Valor validado del {u} % o más del valor realizado (hoy {v}).',
+ m_b3:'Al menos {u} iniciativas de las esferas 01 a 07 en producción (hoy {v}).',
+ m_s3:'Materialización del {u} % o más de la capacidad liberada (hoy {v}): {h} horas más materializadas o reasignadas.',
+ m_s8:'Al menos una apuesta de Transformar aprobada por el consejo y registrada (señal 8 ≥ 2).',
+ m_s7:'Conversión relativa de Aumentar y Transformar de {u} o más (hoy {v}).',
+ m_s26:'Retorno validado de al menos {r} (hoy {rv}) o ingresos habilitados por IA de al menos {i} (hoy {iv}).',
+ m_s45:'Al menos {k} procesos rediseñados de extremo a extremo en producción con IT-P2 verificada (hoy {kv}) o {j} iniciativas con cambio de roles y supervisión verificados (hoy {jv}).',
+ m_suma:'Suma de señales de {u} o más (hoy {v}).',
+ m_s3_sd:'Medir la capacidad liberada y convertir en menor coste real o reasignar el {u} % o más (señal 3 ≥ 2).', m_tactica:'Al menos una iniciativa en producción con valor medido.',
+ m_resp:'Añada en «Acciones» el responsable y el plazo de cada condición (documento 12, sección 10).',
+ decl_titulo:'Contraste con la declaración', d1:'IT-D1 · La tesis de IA aprobada en C2 fija Transformar como ambición objetivo en al menos una esfera', d2:'IT-D2 · Transformar confirmada supone el {u} % o más del coste de la cartera (hoy {v})', d3:'IT-D3 · Plan estratégico, informes al consejo u otras comunicaciones presentan la IA como transformación del negocio',
+ entradas:'Datos del cálculo', entradas_sub:'Importes en euros. Deje vacío lo que no se mide: cuenta como «sin dato». Las señales de valor usan solo importes validados. Etiqueta verde: dato calculado desde el registro T01 (se puede corregir).',
+ del_t01:'desde T01', manual:'manual',
+ notas:'Notas del cálculo', acciones:'Acciones: qué movería el perfil y plan de datos (responsable y plazo)',
+ e_base:'Condiciones de base', e_s1:'Señal 1 · Coste de la cartera en la ventana', e_s2:'Señal 2 · Valor validado', e_s3:'Señal 3 · Capacidad liberada', e_s4:'Señal 4 · Procesos de extremo a extremo', e_s5:'Señal 5 · Modelo operativo', e_s6:'Señal 6 · Ingresos habilitados por IA', e_s7:'Señal 7 · Paso a producción (24 meses)', e_s8:'Señal 8 · Decisión del consejo (12 meses)', e_decl:'Declaración de transformación', e_sobre:'Sobredeclaración de ambición (24 meses)',
+ si:'Sí', no:'No', sd_opt:'Sin dato',
+ tit_evol:'Evolución del índice', sub_evol:'Todos los cálculos guardados, del más antiguo al más reciente. El perfil oficial es el del cálculo formal; los trimestrales se leen como tendencia.', ver:'Ver',
+ tit_umb:'Versiones de umbrales', sub_umb:'La compañía puede ajustar los umbrales, pero no la estructura de las señales ni las reglas de asignación de perfiles. Los umbrales no se cambian dentro del ciclo anual: una versión usada por algún cálculo ya no se edita. Cada ajuste se aprueba en C5 y se declara como desviación respecto al documento 12.',
+ version:'Versión', fecha:'Fecha', origen:'Origen', aprobado_por:'Aprobada por', nota:'Nota', usada:'Usada por {n} cálculos', no_usada:'Sin cálculos: editable', nueva_version:'Nueva versión a partir de esta', nombre_version:'Nombre de la nueva versión (por ejemplo, 2027)', ya_existe:'Ya existe esa versión.', ok_version:'Versión {v} creada.', recalcular:'Recalcular el cálculo seleccionado con esta versión',
+ parametro:'Parámetro', valor:'Valor',
+ tit_datos:'Datos', sub_datos:'Importe o exporte el fichero completo de T14 (umbrales y cálculos, con sus resultados). Para empezar un cálculo desde el registro de iniciativas, exporte su JSON completo en T01 («Datos» → «JSON completo») y cárguelo aquí.',
+ exportar:'Exportar JSON de T14', importar:'Importar JSON de T14 (sustituye)', cargar_t01:'Nuevo cálculo desde un registro T01', restaurar:'Restaurar los datos de ejemplo', vaciar:'Vaciar (sin cálculos)',
+ conf_importar:'Se sustituirán los datos actuales de T14. ¿Continuar?', conf_restaurar:'Se sustituirán los datos actuales por los de ejemplo. ¿Continuar?', conf_vaciar:'Se borrarán todos los cálculos (se conservan los umbrales). ¿Continuar?',
+ ok_import:'Datos importados.', ok_export:'Fichero exportado.', err_json:'El fichero no es un JSON válido de T14.', err_t01:'El fichero no es un registro completo de T01.', ok_t01:'Cálculo creado desde el registro T01 «{o}» a fecha {f}. Complete los datos que el registro no contiene.',
+ t01_pide_fecha:'Fecha de corte (AAAA-MM-DD). Por defecto, la fecha de referencia del registro:',
+ t01_nota:'Calculado desde el registro T01 a fecha {f}. El registro no contiene aún la verificación de IT-P2 e IT-P3, las horas materializadas y reasignadas, los ingresos habilitados por IA ni las decisiones del consejo: complételos a mano. Importes realizados: el último de cada tipo por iniciativa en la ventana; inversión: la realizada acumulada de cada iniciativa (aproximación).',
+ formula:'Fórmula', guardado:'Guardado en este navegador.', no_guardado:'No se ha podido guardar en este navegador: exporte el JSON para no perder los cambios.',
+ cr:'CR', tr:'TR', meses:'meses', de:'de'
+},
+en:{
+ app:'T14 · Transformation index', saltar:'Skip to content', idioma:'Language', tema:'Theme', t_auto:'Auto', t_claro:'Light', t_oscuro:'Dark', vistas:'Views',
+ doc12:'Document 12', reg_t01:'T01 register', doc12_href:'../../html/en/12_SEVEN-G_Indice_de_transformacion.html',
+ v_calculo:'Calculation', v_evolucion:'Evolution', v_umbrales:'Thresholds', v_datos:'Data',
+ demo:'Illustrative and fictitious data. The June 2026 calculation reproduces the example in document 12, section 9.',
+ pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García · SEACHAD · SEVEN-G methodology', pie_priv:'Data is stored only in this browser. Nothing is sent to third parties.',
+ legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'Understood',
+ legal_txt:'SEVEN-G and this tool are provided "as is" and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The index thresholds are initial values, do not come from market studies and must be calibrated with each company\'s data. Each organisation using the tool is solely responsible for its data, for the decisions it takes with it, for identifying the regulations that apply to it and for certifying its own regulatory compliance. The author and SEACHAD accept no liability for the use of the tool. Demonstration data is fictitious.',
+ tit_calculo:'Company transformation index', sub_calculo:'Baseline conditions, eight signals and profile, with the rules of document 12. "No data" is never a measured zero or an estimate.',
+ calculo:'Calculation', fecha_corte:'Cut-off date', tipo:'Calculation type', version_umbrales:'Threshold version', origen_calc:'Source',
+ tp_formal:'Formal (annual, C1 and C5)', tp_seguimiento:'Tracking (quarterly, C4)', tp_extraordinario:'Extraordinary',
+ or_manual:'Manual entry', or_t01:'From the T01 register',
+ nuevo:'New calculation', desde_t01:'New from a T01 register…', duplicar:'Duplicate', eliminar:'Delete', imprimir:'Print report',
+ conf_eliminar:'Delete the calculation of {f}? This cannot be undone.', ok_eliminado:'Calculation deleted.', ok_nuevo:'Calculation created.',
+ ninguno:'There are no calculations. Create a new one or load it from a T01 register.',
+ perfil_asignado:'Assigned profile', perfil_sub:'Underlying profile (what the signals evidence): {p}', provisional:'Provisional: coverage below {n} out of 8. A plan is needed to obtain the missing data, with an owner and a time limit.',
+ suma:'Sum of signals', suma_nota:'Reference only; the profile is not assigned by the sum.', cobertura:'Coverage', cobertura_v:'{n} out of 8', umbrales_v:'Thresholds v{v}',
+ declaracion:'Transformation declaration', d_si:'Yes', d_no:'No',
+ p_curso:'Transformation under way', p_escala:'Efficiency at scale', p_tactica:'Tactical efficiency', p_exploracion:'Scattered exploration', p_declarada:'Declared but unevidenced transformation',
+ base:'Baseline conditions', b1:'B1 · Governed portfolio', b2:'B2 · Proportion of validated value', b3:'B3 · Scale in production', cumple:'Met', no_cumple:'Not met',
+ senales:'Signals', senal:'Signal', valor_medido:'Measured value', puntuacion:'Score', tendencia:'Trend', lectura:'Reading',
+ s1:'1 · Investment mix', s2:'2 · Value mix', s3:'3 · Materialisation', s4:'4 · Depth of change', s5:'5 · Operating model', s6:'6 · AI-enabled revenue', s7:'7 · Progression to production', s8:'8 · Board decision',
+ l0:'No data or exploration', l1:'Efficiency reading', l2:'Intermediate reading', l3:'Transformation reading', sin_dato:'No data', exploracion:'Exploration',
+ alertas:'Complementary alerts', sin_alertas:'No alert is triggered.',
+ a_fragil:'Fragile transformation', a_fragil_t:'The bets are progressing, but most do not confirm their ambition at G7.',
+ a_nomat:'Unmaterialised efficiency', a_nomat_t:'Efficiency portfolio whose savings do not reach the income statement.',
+ a_atasc:'Stuck bets', a_atasc_t:'There is investment in Augment and Transform, but it does not reach production.',
+ a_sincons:'Transformation without the board', a_sincons_t:'There is real change that the board neither decides on nor oversees.',
+ a_sinsup:'Change without oversight', a_sinsup_t:'{n} initiatives excluded from signal 5 for lack of defined human oversight: decisions are delegated without control.',
+ a_sobre:'Ambition overstatement', a_sobre_t:'{p} of the initiatives with recorded actual ambition have an actual ambition lower than the confirmed one: review the quality of the classification in phase 2.',
+ a_sobre_tr:'Overstatement in Transform', a_sobre_tr_t:'{p} of the initiatives confirmed as Transform do not confirm it at G7: the board is informed.',
+ mover:'What would move the profile', mover_hacia:'To reach "{p}", the following is missing:', mover_nada:'The evidenced profile is the highest on the spectrum.',
+ m_b1:'Governed portfolio of {u}% or more (today {v}): {n} more active initiatives with phase, recorded gates and confirmed ambition.',
+ m_b2:'Validated value of {u}% or more of realised value (today {v}).',
+ m_b3:'At least {u} initiatives in spheres 01 to 07 in production (today {v}).',
+ m_s3:'Materialisation of {u}% or more of released capacity (today {v}): {h} more hours materialised or reassigned.',
+ m_s8:'At least one Transform bet approved by the board and recorded (signal 8 ≥ 2).',
+ m_s7:'Relative conversion of Augment and Transform of {u} or more (today {v}).',
+ m_s26:'Validated return of at least {r} (today {rv}) or AI-enabled revenue of at least {i} (today {iv}).',
+ m_s45:'At least {k} end-to-end redesigned processes in production with verified IT-P2 (today {kv}) or {j} initiatives with verified role change and oversight (today {jv}).',
+ m_suma:'Sum of signals of {u} or more (today {v}).',
+ m_s3_sd:'Measure released capacity and convert {u}% or more into lower actual cost or reassign it (signal 3 ≥ 2).', m_tactica:'At least one initiative in production with measured value.',
+ m_resp:'Add the owner and time limit of each condition under "Actions" (document 12, section 10).',
+ decl_titulo:'Cross-check against the declaration', d1:'IT-D1 · The AI thesis approved in C2 sets Transform as the target ambition in at least one sphere', d2:'IT-D2 · Confirmed Transform accounts for {u}% or more of the portfolio cost (today {v})', d3:'IT-D3 · The strategic plan, reports to the board or other communications present AI as business transformation',
+ entradas:'Calculation data', entradas_sub:'Amounts in euros. Leave empty whatever is not measured: it counts as "no data". Value signals use validated amounts only. Green label: figure calculated from the T01 register (it can be corrected).',
+ del_t01:'from T01', manual:'manual',
+ notas:'Calculation notes', acciones:'Actions: what would move the profile and data plan (owner and time limit)',
+ e_base:'Baseline conditions', e_s1:'Signal 1 · Portfolio cost in the window', e_s2:'Signal 2 · Validated value', e_s3:'Signal 3 · Released capacity', e_s4:'Signal 4 · End-to-end processes', e_s5:'Signal 5 · Operating model', e_s6:'Signal 6 · AI-enabled revenue', e_s7:'Signal 7 · Progression to production (24 months)', e_s8:'Signal 8 · Board decision (12 months)', e_decl:'Transformation declaration', e_sobre:'Ambition overstatement (24 months)',
+ si:'Yes', no:'No', sd_opt:'No data',
+ tit_evol:'Index evolution', sub_evol:'All saved calculations, from oldest to most recent. The official profile is that of the formal calculation; quarterly ones are read as a trend.', ver:'View',
+ tit_umb:'Threshold versions', sub_umb:'The company may adjust the thresholds, but not the structure of the signals or the profile assignment rules. Thresholds are not changed within the annual cycle: a version used by any calculation can no longer be edited. Each adjustment is approved in C5 and declared as a deviation from document 12.',
+ version:'Version', fecha:'Date', origen:'Source', aprobado_por:'Approved by', nota:'Note', usada:'Used by {n} calculations', no_usada:'No calculations: editable', nueva_version:'New version based on this one', nombre_version:'Name of the new version (for example, 2027)', ya_existe:'That version already exists.', ok_version:'Version {v} created.', recalcular:'Recalculate the selected calculation with this version',
+ parametro:'Parameter', valor:'Value',
+ tit_datos:'Data', sub_datos:'Import or export the complete T14 file (thresholds and calculations, with their results). To start a calculation from the initiative register, export its full JSON in T01 ("Data" → "Full JSON") and load it here.',
+ exportar:'Export T14 JSON', importar:'Import T14 JSON (replaces)', cargar_t01:'New calculation from a T01 register', restaurar:'Restore the example data', vaciar:'Clear (no calculations)',
+ conf_importar:'The current T14 data will be replaced. Continue?', conf_restaurar:'The current data will be replaced by the example data. Continue?', conf_vaciar:'All calculations will be deleted (thresholds are kept). Continue?',
+ ok_import:'Data imported.', ok_export:'File exported.', err_json:'The file is not a valid T14 JSON.', err_t01:'The file is not a complete T01 register.', ok_t01:'Calculation created from the T01 register "{o}" as at {f}. Complete the data the register does not contain.',
+ t01_pide_fecha:'Cut-off date (YYYY-MM-DD). By default, the reference date of the register:',
+ t01_nota:'Calculated from the T01 register as at {f}. The register does not yet contain the verification of IT-P2 and IT-P3, the materialised and reassigned hours, AI-enabled revenue or board decisions: complete them manually. Realised amounts: the latest of each type per initiative in the window; investment: the cumulative realised investment of each initiative (approximation).',
+ formula:'Formula', guardado:'Saved in this browser.', no_guardado:'Could not save in this browser: export the JSON so as not to lose the changes.',
+ cr:'CR', tr:'TR', meses:'months', de:'of'
+}};
+
+/* Campos de entrada: [grupo, clave, tipo, etiqueta ES, etiqueta EN]. Tipos: eur, int, h (horas), dias, bool, txt */
+const CAMPOS = {
+ base:[['activas','int','Iniciativas activas (toda la cartera)','Active initiatives (whole portfolio)'],['gobernadas','int','Activas con fase, gates registrados y ambición confirmada','Active with phase, recorded gates and confirmed ambition'],['valor_validado','eur','Valor realizado validado','Validated realised value'],['valor_total','eur','Valor realizado total (validado + declarado + estimado)','Total realised value (validated + declared + estimated)'],['en_produccion','int','Iniciativas de esferas 01–07 en producción','Initiatives in spheres 01–07 in production'],['produccion_con_valor','int','En producción con valor medido (cualquier estado)','In production with measured value (any status)']],
+ s1:[['coste_total','eur','Coste total de la cartera (construcción ejecutada + recurrente)','Total portfolio cost (build executed + recurring)'],['coste_aumentar','eur','Coste en Aumentar','Cost in Augment'],['coste_transformar','eur','Coste en Transformar','Cost in Transform'],['coste_sin_clasificar','eur','Coste sin clasificar (solo ambición propuesta)','Unclassified cost (proposed ambition only)']],
+ s2:[['eficiencias_validadas','eur','Eficiencias validadas materializadas','Validated materialised efficiencies'],['retorno_validado','eur','Retorno validado','Validated return'],['iniciativas_con_retorno','int','Iniciativas que aportan retorno validado','Initiatives contributing validated return']],
+ s3:[['horas_liberadas','h','Horas de capacidad liberada medidas','Measured released capacity hours'],['horas_materializadas','h','Horas materializadas (menor coste real)','Materialised hours (lower actual cost)'],['horas_reasignadas','h','Horas reasignadas con actividad de destino (T20)','Reassigned hours with destination activity (T20)']],
+ s4:[['itp2_verificada','int','En producción con IT-P2 = sí verificada en G5 o G7','In production with IT-P2 = yes verified at G5 or G7'],['sin_verificacion','int','En producción sin verificación de IT-P2','In production without IT-P2 verification']],
+ s5:[['itp3_supervision','int','En producción con IT-P3 = sí y supervisión humana (P17) verificadas','In production with IT-P3 = yes and human oversight (P17) verified'],['unidades_completas','int','Unidades organizativas completas rediseñadas','Entire organisational units redesigned'],['sin_supervision','int','Excluidas por cambio de roles sin supervisión definida','Excluded for role change without defined oversight']],
+ s6:[['ingresos_habilitados','eur','Ingresos validados de oferta habilitada por IA','Validated revenue from AI-enabled offering'],['ingresos_totales','eur','Ingresos totales de la compañía en la ventana','Total company revenue in the window']],
+ s7:[['hay_gates','bool','¿Hay gates registrados en la ventana?','Are there gates recorded in the window?'],['at_superaron_g2','int','Aumentar y Transformar que superaron G2','Augment and Transform that passed G2'],['at_con_resultado','int','… de ellas, con resultado (G5, parada o estancada)','… of which, with an outcome (G5, stopped or stalled)'],['at_en_produccion','int','… de ellas, que alcanzaron G5','… of which, reached G5'],['opt_con_resultado','int','Optimizar con resultado','Optimise with an outcome'],['opt_en_produccion','int','Optimizar que alcanzaron G5','Optimise that reached G5'],['mediana_at','dias','Mediana de días G2→G5 en Aumentar y Transformar','Median days G2→G5 in Augment and Transform'],['mediana_opt','dias','Mediana de días G2→G5 en Optimizar','Median days G2→G5 in Optimise'],['plazos_ref','dias','Suma de plazos de referencia de las fases 3 a 5 (solo sin base de comparación)','Sum of reference times for phases 3 to 5 (only without a comparison base)']],
+ s8:[['tesis_aprobada','bool','¿Hay tesis de IA aprobada por el consejo?','Is there an AI thesis approved by the board?'],['apuestas_transformar','int','Apuestas de Transformar aprobadas por el consejo','Transform bets approved by the board'],['con_limite_etapa','bool','¿Alguna con límite de inversión por etapa?','Any with an investment cap per stage?'],['revisiones','int','Revisiones del consejo registradas (T18)','Board reviews recorded (T18)'],['decisiones_etapa','int','Decisiones de etapa basadas en hitos','Milestone-based stage decisions']],
+ declaracion:[['d1','bool','IT-D1 · Tesis con Transformar como ambición objetivo','IT-D1 · Thesis with Transform as target ambition'],['d3','bool','IT-D3 · Comunicaciones que presentan la IA como transformación','IT-D3 · Communications presenting AI as transformation'],['evidencia','txt','Evidencia de la declaración (documentos y fechas)','Evidence of the declaration (documents and dates)']],
+ sobredeclaracion:[['real_registrada','int','Iniciativas con ambición real registrada','Initiatives with recorded actual ambition'],['real_inferior','int','… con ambición real inferior a la confirmada','… with actual ambition lower than confirmed'],['transf_real_registrada','int','Confirmadas como Transformar con ambición real registrada','Confirmed as Transform with recorded actual ambition'],['transf_real_inferior','int','… con ambición real inferior','… with lower actual ambition']]
+};
+const GRUPOS = [['base','e_base'],['s1','e_s1'],['s2','e_s2'],['s3','e_s3'],['s4','e_s4'],['s5','e_s5'],['s6','e_s6'],['s7','e_s7'],['s8','e_s8'],['declaracion','e_decl'],['sobredeclaracion','e_sobre']];
+/* Parámetros de umbrales: [grupo, clave, ES, EN] */
+const PARAMS = [
+ ['base','b1_min','B1 · mínimo de cartera gobernada (%)','B1 · minimum governed portfolio (%)'],['base','b2_min','B2 · mínimo de valor validado (%)','B2 · minimum validated value (%)'],['base','b3_min','B3 · mínimo de iniciativas en producción','B3 · minimum initiatives in production'],
+ ['s1','sin_clasificar_max','S1 · máximo sin clasificar para medir (%)','S1 · maximum unclassified to measure (%)'],['s1','t2','S1 · nivel 2 desde (%)','S1 · level 2 from (%)'],['s1','t3','S1 · nivel 3 desde (%)','S1 · level 3 from (%)'],['s1','transformar_min','S1 · nivel 3: Transformar mínimo (%)','S1 · level 3: minimum Transform (%)'],
+ ['s2','t2','S2 · nivel 2 desde (%)','S2 · level 2 from (%)'],['s2','t3','S2 · nivel 3 desde (%)','S2 · level 3 from (%)'],['s2','iniciativas_min','S2 · nivel 3: iniciativas mínimas','S2 · level 3: minimum initiatives'],
+ ['s3','t2','S3 · nivel 2 desde (%)','S3 · level 2 from (%)'],['s3','t3','S3 · nivel 3 desde (%)','S3 · level 3 from (%)'],['s3','reasignada_min','S3 · nivel 3: reasignada sobre convertida (%)','S3 · level 3: reassigned over converted (%)'],
+ ['s4','t2','S4 · nivel 2 desde (%)','S4 · level 2 from (%)'],['s4','t3','S4 · nivel 3 desde (%)','S4 · level 3 from (%)'],['s4','sin_verificacion_max','S4 · máximo sin verificación para medir (%)','S4 · maximum unverified to measure (%)'],
+ ['s5','t2','S5 · nivel 2 desde (%)','S5 · level 2 from (%)'],['s5','t3','S5 · nivel 3 desde (%)','S5 · level 3 from (%)'],['s5','unidades_min','S5 · nivel 3: unidades completas mínimas','S5 · level 3: minimum entire units'],
+ ['s6','t2','S6 · nivel 2 desde (% de ingresos)','S6 · level 2 from (% of revenue)'],['s6','t3','S6 · nivel 3 desde (% de ingresos)','S6 · level 3 from (% of revenue)'],
+ ['s7','cr2','S7 · nivel 2: CR mínima','S7 · level 2: minimum CR'],['s7','cr3','S7 · nivel 3: CR mínima','S7 · level 3: minimum CR'],['s7','tr3_max','S7 · nivel 3: TR máxima','S7 · level 3: maximum TR'],['s7','resultado_min','S7 · nivel 3: iniciativas con resultado mínimas','S7 · level 3: minimum initiatives with an outcome'],['s7','tasa_referencia','S7 · tasa de llegada de referencia sin base','S7 · reference arrival rate without a base'],
+ ['s8','revisiones_min','S8 · nivel 3: revisiones mínimas','S8 · level 3: minimum reviews'],['s8','decisiones_min','S8 · nivel 3: decisiones de etapa mínimas','S8 · level 3: minimum stage decisions'],
+ ['perfil','suma_min','Transformación en curso: suma mínima','Transformation under way: minimum sum'],['perfil','cobertura_min','Cobertura mínima para perfil no provisional','Minimum coverage for a non-provisional profile'],['perfil','d2_transformar_min','IT-D2 · Transformar mínimo en el coste (%)','IT-D2 · minimum Transform in cost (%)'],
+ ['sobredeclaracion','cartera','Alerta de sobredeclaración en la cartera (%)','Overstatement alert in the portfolio (%)'],['sobredeclaracion','transformar','Alerta de sobredeclaración en Transformar (%)','Overstatement alert in Transform (%)']
+];
+
+/* ---------------- estado ---------------- */
+let D = null, UI = { lang:'es', tema:'auto', sel:null, umb:null };
+let lang = 'es';
+function t(k, v){ let s = (TX[lang] && TX[lang][k]) ?? TX.es[k] ?? k; if(v) for(const x in v) s = s.split('{'+x+'}').join(v[x]); return s; }
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function clon(o){ return JSON.parse(JSON.stringify(o)); }
+function toast(m){ const e=document.getElementById('toast'); e.textContent=m; e.classList.add('ver'); clearTimeout(toast._t); toast._t=setTimeout(()=>e.classList.remove('ver'),3200); }
+function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); }
+function cargarDemo(){ return JSON.parse(DEMO_TXT); }
+function valido(x){ return x && typeof x==='object' && Array.isArray(x.umbrales) && Array.isArray(x.calculos) && x.umbrales.length; }
+
+/* ---------------- formato ---------------- */
+function nf(x, dec){ return new Intl.NumberFormat(lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:dec??0, minimumFractionDigits:dec??0}).format(x); }
+function pct(x, dec){ return x==null||!isFinite(x) ? t('sin_dato') : nf(x, dec??1)+(lang==='en'?'%':' %'); }
+function eur(x){ if(x==null||!isFinite(x)) return t('sin_dato'); const a=Math.abs(x); if(a>=1e6) return nf(x/1e6,2)+' M€'; if(a>=1e3) return nf(x/1e3,0)+' k€'; return nf(x,0)+' €'; }
+function fF(s){ if(!s) return ''; const [y,m,d]=s.split('-'); return lang==='en' ? d+'/'+m+'/'+y : d+'-'+m+'-'+y; }
+function n(v){ return (v===null||v===undefined||v==='') ? null : Number(v); }
+function ratio(a, b){ a=n(a); b=n(b); return (a==null||b==null||b===0) ? null : a/b*100; }
+
+/* =========================================================
+   Motor de cálculo (documento 12, secciones 4 a 6)
+   Un valor que coincide con el límite entre dos tramos va al superior (>=).
+   ========================================================= */
+function calcular(E, P){
+  const r = { s:[], alertas:[], mover:[] };
+  const b = E.base||{}, pb = P.base;
+  r.b1 = ratio(b.gobernadas, b.activas); r.b2 = ratio(b.valor_validado, b.valor_total); r.b3 = n(b.en_produccion);
+  r.B1 = r.b1!=null && r.b1>=pb.b1_min; r.B2 = r.b2!=null && r.b2>=pb.b2_min; r.B3 = r.b3!=null && r.b3>=pb.b3_min;
+  const prod = n(b.en_produccion);
+  const S = (num, o) => { r.s[num-1] = Object.assign({n:num, punt:0, sd:false, valor:null, texto:''}, o); };
+
+  // Señal 1 · Composición de la inversión
+  { const e=E.s1||{}, p=P.s1, tot=n(e.coste_total);
+    if(tot==null) S(1,{sd:true});
+    else if(tot===0) S(1,{punt:0, texto:t('exploracion')});
+    else { const at=ratio((n(e.coste_aumentar)||0)+(n(e.coste_transformar)||0), tot), tr=ratio(n(e.coste_transformar)||0, tot), sc=ratio(n(e.coste_sin_clasificar)||0, tot);
+      let pu; if(sc>p.sin_clasificar_max) pu=0; else if(at>=p.t3 && tr>=p.transformar_min) pu=3; else if(at>=p.t2) pu=2; else pu=1;
+      S(1,{punt:pu, valor:at, texto:pct(at)+(lang==='en'?' · Transform ':' · Transformar ')+pct(tr)+(sc>0?' · '+(lang==='en'?'unclassified ':'sin clasificar ')+pct(sc):''), tr}); } }
+  // Señal 2 · Composición del valor
+  { const e=E.s2||{}, p=P.s2, ef=n(e.eficiencias_validadas), re=n(e.retorno_validado);
+    if(ef==null && re==null) S(2,{sd:true});
+    else { const tot=(ef||0)+(re||0); if(tot===0) S(2,{punt:0, texto:t('exploracion')});
+      else { const v=(re||0)/tot*100, ni=n(e.iniciativas_con_retorno)||0; let pu; if(v>=p.t3 && ni>=p.iniciativas_min) pu=3; else if(v>=p.t2) pu=2; else pu=1;
+        S(2,{punt:pu, valor:v, texto:pct(v)+' · '+eur(re||0)+' / '+eur(tot)}); } } }
+  // Señal 3 · Materialización
+  { const e=E.s3||{}, p=P.s3, lib=n(e.horas_liberadas);
+    if(lib==null || lib===0) S(3,{sd:true});
+    else { const ma=n(e.horas_materializadas)||0, re=n(e.horas_reasignadas)||0, conv=ma+re, v=conv/lib*100; let pu;
+      if(v>=p.t3 && conv>0 && re/conv*100>=p.reasignada_min) pu=3; else if(v>=p.t2) pu=2; else pu=1;
+      S(3,{punt:pu, valor:v, texto:pct(v)+' · '+nf(conv)+' h / '+nf(lib)+' h'}); } }
+  // Señal 4 · Profundidad del cambio
+  { const e=E.s4||{}, p=P.s4, k=n(e.itp2_verificada);
+    if(prod==null || k==null) S(4,{sd:true});
+    else if(prod===0) S(4,{punt:0, texto:t('exploracion')});
+    else if((n(e.sin_verificacion)||0)/prod*100>p.sin_verificacion_max) S(4,{sd:true, texto:t('sin_dato')+' (IT-P2 '+pct((n(e.sin_verificacion)||0)/prod*100,0)+')'});
+    else { const v=k/prod*100; S(4,{punt: v>=p.t3?3:(v>=p.t2?2:1), valor:v, texto:pct(v)+' · '+k+' / '+prod}); } }
+  // Señal 5 · Modelo operativo
+  { const e=E.s5||{}, p=P.s5, k=n(e.itp3_supervision);
+    if(prod==null || k==null) S(5,{sd:true});
+    else if(prod===0) S(5,{punt:0, texto:t('exploracion')});
+    else { const v=k/prod*100, u=n(e.unidades_completas)||0; S(5,{punt: (v>=p.t3 && u>=p.unidades_min)?3:(v>=p.t2?2:1), valor:v, texto:pct(v)+' · '+k+' / '+prod}); } }
+  // Señal 6 · Ingresos habilitados por IA
+  { const e=E.s6||{}, p=P.s6, h=n(e.ingresos_habilitados), tot=n(e.ingresos_totales);
+    if(h==null || !tot) S(6,{sd:true});
+    else { const v=h/tot*100; S(6,{punt: v>=p.t3?3:(v>=p.t2?2:1), valor:v, texto:pct(v,2)+' · '+eur(h)}); } }
+  // Señal 7 · Paso a producción
+  { const e=E.s7||{}, p=P.s7;
+    if(e.hay_gates==null) S(7,{sd:true});
+    else if(e.hay_gates===false) S(7,{punt:0, texto:t('exploracion')});
+    else { const sup=n(e.at_superaron_g2), res=n(e.at_con_resultado)||0, pr=n(e.at_en_produccion)||0, ores=n(e.opt_con_resultado)||0, opr=n(e.opt_en_produccion)||0;
+      if(sup===0) S(7,{punt:1, texto:'0 G2'});
+      else if(sup==null && res===0) S(7,{sd:true});
+      else { let cr=null, tr=null; const tasa = res>0 ? pr/res : null;
+        if(tasa!=null){ if(ores>0 && opr>0) cr = tasa/(opr/ores); else cr = tasa/p.tasa_referencia; }
+        const ma=n(e.mediana_at), mo=n(e.mediana_opt), pl=n(e.plazos_ref);
+        if(ma!=null){ if(ores>0 && mo) tr = ma/mo; else if(pl) tr = ma/pl; }
+        let pu; if(cr==null) pu=2; else if(cr<p.cr2) pu=1; else if(cr>=p.cr3 && tr!=null && tr<=p.tr3_max && res>=p.resultado_min) pu=3; else pu=2;
+        S(7,{punt:pu, valor:cr, texto:t('cr')+' '+(cr==null?t('sin_dato'):nf(cr,2))+' · '+t('tr')+' '+(tr==null?t('sin_dato'):nf(tr,1)), cr, tr}); } } }
+  // Señal 8 · Decisión del consejo
+  { const e=E.s8||{}, p=P.s8;
+    if(e.tesis_aprobada==null) S(8,{sd:true});
+    else if(e.tesis_aprobada===false) S(8,{punt:0, texto:lang==='en'?'No thesis':'Sin tesis'});
+    else { const a=n(e.apuestas_transformar)||0, rv=n(e.revisiones)||0, de=n(e.decisiones_etapa)||0; let pu;
+      if(a===0) pu=1; else if(e.con_limite_etapa===true && rv>=p.revisiones_min && de>=p.decisiones_min) pu=3; else pu=2;
+      S(8,{punt:pu, valor:a, texto:(lang==='en'?'Bets ':'Apuestas ')+a+' · '+(lang==='en'?'reviews ':'revisiones ')+rv+' · '+(lang==='en'?'stage decisions ':'decisiones de etapa ')+de}); } }
+
+  const sc = i => r.s[i-1].punt;
+  r.suma = r.s.reduce((a,x)=>a+x.punt,0);
+  r.cobertura = r.s.filter(x=>!x.sd).length;
+  r.provisional = r.cobertura < P.perfil.cobertura_min;
+  // Paso 1 · perfil evidenciado
+  const condCurso = [['B1',r.B1],['B2',r.B2],['S8',sc(8)>=2],['S7',sc(7)>=2],['S26',sc(2)>=2||sc(6)>=2],['S45',sc(4)>=2||sc(5)>=2],['SUMA',r.suma>=P.perfil.suma_min]];
+  const condEscala = [['B1',r.B1],['B2',r.B2],['B3',r.B3],['S3',sc(3)>=2]];
+  const condTactica = [['TAC',(n(b.produccion_con_valor)||0)>=1]];
+  r.evidenciado = condCurso.every(c=>c[1]) ? 'curso' : condEscala.every(c=>c[1]) ? 'escala' : condTactica.every(c=>c[1]) ? 'tactica' : 'exploracion';
+  // Paso 2 · contraste con la declaración
+  const s1 = E.s1||{}, tot1 = n(s1.coste_total);
+  r.d2v = tot1 ? (n(s1.coste_transformar)||0)/tot1*100 : null;
+  r.d1 = (E.declaracion||{}).d1===true; r.d2 = r.d2v!=null && r.d2v>=P.perfil.d2_transformar_min; r.d3 = (E.declaracion||{}).d3===true;
+  r.D = r.d1 || r.d2 || r.d3;
+  r.asignado = (r.D && r.evidenciado!=='curso') ? 'declarada' : r.evidenciado;
+  r.subyacente = r.asignado==='declarada' ? r.evidenciado : null;
+  // Sobredeclaración de ambición
+  const so = E.sobredeclaracion||{};
+  r.sobre = ratio(so.real_inferior, so.real_registrada); r.sobreT = ratio(so.transf_real_inferior, so.transf_real_registrada);
+  // Alertas complementarias (sección 5.3)
+  if(r.evidenciado==='curso' && r.sobreT!=null && r.sobreT>=P.sobredeclaracion.transformar) r.alertas.push(['a_fragil', t('a_fragil_t')]);
+  if(sc(1)===1 && sc(3)===1) r.alertas.push(['a_nomat', t('a_nomat_t')]);
+  if(sc(1)>=2 && sc(7)===1) r.alertas.push(['a_atasc', t('a_atasc_t')]);
+  if((sc(2)>=2 || sc(6)>=2) && sc(8)<=1) r.alertas.push(['a_sincons', t('a_sincons_t')]);
+  if((n((E.s5||{}).sin_supervision)||0)>0) r.alertas.push(['a_sinsup', t('a_sinsup_t',{n:n(E.s5.sin_supervision)})]);
+  if(r.sobre!=null && r.sobre>=P.sobredeclaracion.cartera) r.alertas.push(['a_sobre', t('a_sobre_t',{p:pct(r.sobre,0)})]);
+  if(r.sobreT!=null && r.sobreT>=P.sobredeclaracion.transformar) r.alertas.push(['a_sobre_tr', t('a_sobre_tr_t',{p:pct(r.sobreT,0)})]);
+  // Qué movería el perfil (sección 10): condiciones sin cumplir del perfil siguiente
+  r.objetivo = (r.D || r.evidenciado==='escala') ? 'curso' : ({exploracion:'tactica', tactica:'escala', curso:null})[r.evidenciado];
+  if(r.objetivo && r.evidenciado!=='curso'){
+    const conds = r.objetivo==='curso' ? condCurso : r.objetivo==='escala' ? condEscala : condTactica;
+    for(const [c, ok] of conds){ if(ok) continue; r.mover.push(textoMover(c, E, P, r)); }
+  }
+  return r;
+}
+function textoMover(c, E, P, r){
+  const b=E.base||{}, prod=n(b.en_produccion)||0;
+  switch(c){
+    case 'B1': { const act=n(b.activas)||0, g=n(b.gobernadas)||0; return t('m_b1',{u:P.base.b1_min, v:pct(r.b1,0), n:Math.max(0, Math.ceil(act*P.base.b1_min/100)-g)}); }
+    case 'B2': return t('m_b2',{u:P.base.b2_min, v:pct(r.b2,0)});
+    case 'B3': return t('m_b3',{u:P.base.b3_min, v:r.b3??t('sin_dato')});
+    case 'S3': { const e=E.s3||{}, lib=n(e.horas_liberadas)||0; if(!lib) return t('m_s3_sd',{u:P.s3.t2}); const conv=(n(e.horas_materializadas)||0)+(n(e.horas_reasignadas)||0); return t('m_s3',{u:P.s3.t2, v:pct(r.s[2].valor,0), h:nf(Math.max(0, Math.ceil(lib*P.s3.t2/100-conv)))}); }
+    case 'S8': return t('m_s8');
+    case 'S7': return t('m_s7',{u:nf(P.s7.cr2,1), v:r.s[6].cr!=null?nf(r.s[6].cr,2):t('sin_dato')});
+    case 'S26': { const e=E.s2||{}, ef=n(e.eficiencias_validadas)||0, re=n(e.retorno_validado), g=E.s6||{}, tot=n(g.ingresos_totales);
+      return t('m_s26',{r:eur(ef*P.s2.t2/(100-P.s2.t2)), rv:eur(re), i:tot?eur(tot*P.s6.t2/100):t('sin_dato'), iv:eur(n(g.ingresos_habilitados))}); }
+    case 'S45': return t('m_s45',{k:Math.max(1, Math.ceil(prod*P.s4.t2/100)), kv:n((E.s4||{}).itp2_verificada)??t('sin_dato'), j:Math.max(1, Math.ceil(prod*P.s5.t2/100)), jv:n((E.s5||{}).itp3_supervision)??t('sin_dato')});
+    case 'SUMA': return t('m_suma',{u:P.perfil.suma_min, v:r.suma});
+    case 'TAC': return t('m_tactica');
+  }
+  return c;
+}
+
+/* =========================================================
+   Cálculo desde un registro T01 (esquema 0.1 a 0.3): lo que el registro contiene
+   ========================================================= */
+function desdeT01(reg, fecha){
+  const fc = new Date(fecha+'T00:00:00'), dia = 864e5;
+  const en = (f, meses) => { if(!f) return true; const d = new Date(f+'T00:00:00'); return d<=fc && (fc-d)/dia <= meses*30.44; };
+  const ini = reg.iniciativas||[], val = reg.valores||[], dg = reg.decisiones_gate||[];
+  const esf = I => (I.clasificacion||{}).esfera_principal, per = ini.filter(I => /^0[1-7]$/.test(esf(I)||''));
+  const nivel = I => (I.clasificacion||{}).ambicion_real || (I.clasificacion||{}).ambicion_confirmada || null;
+  const cerrada = I => ['parada','retirada'].includes((I.ciclo||{}).estado);
+  const enProd = I => ['en_produccion','pendiente_g7'].includes((I.ciclo||{}).estado);
+  // último importe realizado de un tipo en la ventana, por área (esquema 0.3: una iniciativa transversal registra cada unidad aparte)
+  const ultimo = (id, tipo, meses) => {
+    const ult = {};
+    for(const v of val){ if(v.iniciativa!==id || v.momento!=='realizado' || v.tipo!==tipo || !en(v.fecha, meses) || v.importe==null) continue;
+      const k = v.area||''; if(!ult[k] || String(v.fecha||'')>String(ult[k].fecha||'')) ult[k] = v; }
+    const l = Object.values(ult); if(!l.length) return null;
+    return { importe: l.reduce((a,v)=>a+v.importe,0), validado: l.filter(v=>v.estado==='validado').reduce((a,v)=>a+v.importe,0) };
+  };
+  const activas = ini.filter(I => !cerrada(I));
+  const gob = activas.filter(I => (I.ciclo||{}).estado!=='registrada' && dg.some(d=>d.iniciativa===I.id && d.resultado) && ((I.clasificacion||{}).ambicion_confirmada || (I.clasificacion||{}).ambicion_real));
+  let vVal=0, vTot=0; for(const I of ini) for(const tp of ['eficiencias','retorno']){ const v=ultimo(I.id,tp,12); if(v){ vTot+=v.importe; vVal+=v.validado; } }
+  const prod = per.filter(enProd);
+  const prodValor = prod.filter(I => ['eficiencias','retorno'].some(tp => ultimo(I.id,tp,12)));
+  // Señal 1: inversión realizada (acumulada) + último coste recurrente realizado en la ventana
+  const coste = {optimizar:0, aumentar:0, transformar:0, sin:0}; let cTot=0;
+  for(const I of per){ const inv=((I.inversion||{}).realizada)||0, cr=ultimo(I.id,'coste_recurrente',12), c=inv+(cr?cr.importe:0); if(!c) continue; cTot+=c; coste[nivel(I)||'sin']+=c; }
+  // Señal 2: último importe validado de eficiencias y retorno
+  let ef=0, re=0, nRe=0; for(const I of per){ const e=ultimo(I.id,'eficiencias',12), r=ultimo(I.id,'retorno',12); if(e) ef+=e.validado; if(r && r.validado>0){ re+=r.validado; nRe++; } }
+  // Señal 7: G2 superado en 24 meses y resultado (G5, parada o estancada más del doble de los plazos de las fases 3 a 5)
+  const plz = ((reg.meta||{}).configuracion||{}).plazos_fase || {};
+  const ok = d => d && ['continuar','continuar_condiciones'].includes(d.resultado);
+  const dec = (id, g) => dg.filter(d => d.iniciativa===id && d.gate===g && ok(d)).sort((a,b)=>String(a.fecha_decision).localeCompare(String(b.fecha_decision)))[0];
+  const grupo = {at:{sup:0,res:0,pr:0,dias:[],pl:[]}, opt:{sup:0,res:0,pr:0,dias:[],pl:[]}};
+  for(const I of per){ const nv=nivel(I); if(!nv) continue; const g2=dec(I.id,'G2'); if(!g2 || !en(g2.fecha_decision,24)) continue;
+    const G = grupo[nv==='optimizar'?'opt':'at']; G.sup++; const g5=dec(I.id,'G5'), p=plz[(I.clasificacion||{}).intensidad]||{}, suma=(p['3']||0)+(p['4']||0)+(p['5']||0);
+    if(suma) G.pl.push(suma);
+    const dias = g5 ? (new Date(g5.fecha_decision)-new Date(g2.fecha_decision))/dia : (fc-new Date(g2.fecha_decision))/dia;
+    if(g5 && new Date(g5.fecha_decision)<=fc){ G.res++; G.pr++; G.dias.push(dias); }
+    else if((I.ciclo||{}).estado==='parada' || (suma && dias>2*suma)) G.res++; }
+  const med = a => { if(!a.length) return null; const s=[...a].sort((x,y)=>x-y), m=Math.floor(s.length/2); return Math.round(s.length%2 ? s[m] : (s[m-1]+s[m])/2); };
+  const hayGates = dg.some(d => d.fecha_decision && en(d.fecha_decision,12));
+  // Sobredeclaración (24 meses)
+  const rango = {optimizar:1, aumentar:2, transformar:3};
+  const conReal = per.filter(I => (I.clasificacion||{}).ambicion_real && (I.clasificacion||{}).ambicion_confirmada);
+  const inf = I => rango[I.clasificacion.ambicion_real] < rango[I.clasificacion.ambicion_confirmada];
+  const trReal = conReal.filter(I => I.clasificacion.ambicion_confirmada==='transformar');
+  const E = {
+    base:{activas:activas.length, gobernadas:gob.length, valor_validado:vVal, valor_total:vTot, en_produccion:prod.length, produccion_con_valor:prodValor.length},
+    s1:{coste_total:cTot, coste_aumentar:coste.aumentar, coste_transformar:coste.transformar, coste_sin_clasificar:coste.sin},
+    s2:{eficiencias_validadas:ef, retorno_validado:re, iniciativas_con_retorno:nRe},
+    s3:{horas_liberadas:null, horas_materializadas:null, horas_reasignadas:null},
+    s4:{itp2_verificada:null, sin_verificacion:null},
+    s5:{itp3_supervision:null, unidades_completas:null, sin_supervision:null},
+    s6:{ingresos_habilitados:null, ingresos_totales:null},
+    s7:{hay_gates:hayGates, at_superaron_g2:grupo.at.sup, at_con_resultado:grupo.at.res, at_en_produccion:grupo.at.pr, opt_con_resultado:grupo.opt.res, opt_en_produccion:grupo.opt.pr, mediana_at:med(grupo.at.dias), mediana_opt:med(grupo.opt.dias), plazos_ref:med(grupo.at.pl)},
+    s8:{tesis_aprobada:null, apuestas_transformar:null, con_limite_etapa:null, revisiones:null, decisiones_etapa:null},
+    declaracion:{d1:null, d3:null, evidencia:''},
+    sobredeclaracion:{real_registrada:conReal.length, real_inferior:conReal.filter(inf).length, transf_real_registrada:trReal.length, transf_real_inferior:trReal.filter(inf).length}
+  };
+  const deT01 = {base:['activas','gobernadas','valor_validado','valor_total','en_produccion','produccion_con_valor'], s1:['coste_total','coste_aumentar','coste_transformar','coste_sin_clasificar'], s2:['eficiencias_validadas','retorno_validado','iniciativas_con_retorno'], s7:['hay_gates','at_superaron_g2','at_con_resultado','at_en_produccion','opt_con_resultado','opt_en_produccion','mediana_at','mediana_opt','plazos_ref'], sobredeclaracion:['real_registrada','real_inferior','transf_real_registrada','transf_real_inferior']};
+  return {entradas:E, de_t01:deT01};
+}
+
+/* ---------------- utilidades de datos ---------------- */
+function calcSel(){ return D.calculos.find(c=>c.id===UI.sel) || ordenados().slice(-1)[0] || null; }
+function ordenados(){ return [...D.calculos].sort((a,b)=>String(a.fecha_corte).localeCompare(String(b.fecha_corte)) || String(a.id).localeCompare(String(b.id))); }
+function umbral(v){ return D.umbrales.find(u=>u.version===v) || D.umbrales[D.umbrales.length-1]; }
+function anterior(c){ const o=ordenados(), i=o.indexOf(c); return i>0 ? o[i-1] : null; }
+function vacias(){ const E={}; for(const [g] of GRUPOS){ E[g]={}; for(const f of CAMPOS[g]) E[g][f[0]] = f[1]==='txt' ? '' : null; } return E; }
+function nuevoId(fecha){ let base='IDX-'+(fecha||'').slice(0,7), id=base, k=2; while(D.calculos.some(c=>c.id===id)) id=base+'-'+(k++); return id; }
+function hoy(){ return new Date().toISOString().slice(0,10); }
+function resultadoExport(c){ const r=calcular(c.entradas, umbral(c.version_umbrales).parametros);
+  return {perfil_asignado:r.asignado, perfil_evidenciado:r.evidenciado, perfil_subyacente:r.subyacente, provisional:r.provisional, cobertura:r.cobertura, suma:r.suma,
+    condiciones_base:{B1:r.B1, B2:r.B2, B3:r.B3}, declaracion:{D:r.D, IT_D1:r.d1, IT_D2:r.d2, IT_D3:r.d3},
+    senales:r.s.map(x=>({senal:x.n, valor:x.valor==null?null:Math.round(x.valor*100)/100, puntuacion:x.punt, sin_dato:x.sd})), alertas:r.alertas.map(a=>a[0])}; }
+
+/* ---------------- vistas ---------------- */
+function vistaCalculo(){
+  const c = calcSel();
+  let h = '<h1>'+esc(t('tit_calculo'))+'</h1><p class="ayuda">'+esc(t('sub_calculo'))+'</p>';
+  h += '<div class="fila sin-imprimir"><button type="button" class="primario" data-acc="nuevo">'+esc(t('nuevo'))+'</button><button type="button" data-acc="desde-t01">'+esc(t('desde_t01'))+'</button>'+(c?'<button type="button" data-acc="duplicar">'+esc(t('duplicar'))+'</button><button type="button" data-acc="imprimir">'+esc(t('imprimir'))+'</button><button type="button" class="peligro" data-acc="eliminar">'+esc(t('eliminar'))+'</button>':'')+'</div>';
+  if(!c) return h+'<p class="aviso info">'+esc(t('ninguno'))+'</p>';
+  const usada = umbral(c.version_umbrales);
+  h += '<div class="cab-calc"><div class="campo"><label for="c-sel">'+esc(t('calculo'))+'</label><select id="c-sel" data-cab="sel">'+ordenados().map(x=>'<option value="'+esc(x.id)+'"'+(x.id===c.id?' selected':'')+'>'+esc(fF(x.fecha_corte)+' · '+t('tp_'+x.tipo))+'</option>').join('')+'</select></div>'+
+    '<div class="campo"><label for="c-fecha">'+esc(t('fecha_corte'))+'</label><input type="date" id="c-fecha" data-cab="fecha_corte" value="'+esc(c.fecha_corte)+'"></div>'+
+    '<div class="campo"><label for="c-tipo">'+esc(t('tipo'))+'</label><select id="c-tipo" data-cab="tipo">'+['formal','seguimiento','extraordinario'].map(x=>'<option value="'+x+'"'+(x===c.tipo?' selected':'')+'>'+esc(t('tp_'+x))+'</option>').join('')+'</select></div>'+
+    '<div class="campo"><label for="c-umb">'+esc(t('version_umbrales'))+'</label><select id="c-umb" data-cab="version_umbrales">'+D.umbrales.map(u=>'<option value="'+esc(u.version)+'"'+(u.version===usada.version?' selected':'')+'>v'+esc(u.version)+'</option>').join('')+'</select></div>'+
+    '<div class="campo"><span class="ayuda">'+esc(t('origen_calc'))+': '+esc(t(c.origen==='t01'?'or_t01':'or_manual'))+'</span></div></div>';
+  h += '<div id="res">'+resultadoHTML(c)+'</div>';
+  h += entradasHTML(c);
+  return h;
+}
+function resultadoHTML(c){
+  const P = umbral(c.version_umbrales).parametros, r = calcular(c.entradas, P), ant = anterior(c), ra = ant ? calcular(ant.entradas, umbral(ant.version_umbrales).parametros) : null;
+  const orden = ['exploracion','tactica','escala','curso'];
+  let h = '<section class="perfil" id="perfil" data-perfil="'+r.asignado+'" data-evidenciado="'+r.evidenciado+'" data-suma="'+r.suma+'" data-cobertura="'+r.cobertura+'">'+
+    '<div><div class="rotulo">'+esc(t('perfil_asignado'))+' · '+esc(fF(c.fecha_corte))+' · '+esc(t('tp_'+c.tipo))+'</div><div class="nombre">'+esc(t('p_'+r.asignado))+'</div>'+
+    (r.subyacente?'<p><b>'+esc(t('perfil_sub',{p:t('p_'+r.subyacente)}))+'</b></p>':'')+
+    '<div class="espectro" aria-hidden="true">'+orden.map(p=>'<span class="'+(p===r.evidenciado?(r.subyacente?'act sub':'act'):'')+'">'+esc(t('p_'+p))+'</span>').join('')+'</div>'+
+    (r.provisional?'<p class="aviso ko">'+esc(t('provisional',{n:P.perfil.cobertura_min}))+'</p>':'')+'</div>'+
+    '<div class="cifras"><div><b>'+r.suma+'<small style="font-size:15px"> / 24</small></b><span>'+esc(t('suma'))+'</span></div><div><b>'+esc(t('cobertura_v',{n:r.cobertura}))+'</b><span>'+esc(t('cobertura'))+'</span></div>'+
+    '<div><b>'+esc(r.D?t('d_si'):t('d_no'))+'</b><span>'+esc(t('declaracion'))+'</span></div><div><b>v'+esc(c.version_umbrales)+'</b><span>'+esc(t('version_umbrales'))+'</span></div></div></section>'+
+    '<p class="ayuda">'+esc(t('suma_nota'))+'</p>';
+  // señales
+  h += '<h2>'+esc(t('senales'))+'</h2><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('senal'))+'</th><th>'+esc(t('valor_medido'))+'</th><th>'+esc(t('puntuacion'))+'</th><th>'+esc(t('lectura'))+'</th><th>'+esc(t('tendencia'))+'</th></tr></thead><tbody>';
+  for(const s of r.s){
+    const pa = ra ? ra.s[s.n-1] : null; let td='—';
+    if(pa){ const d = s.punt-pa.punt; td = '<span class="tend '+(d>0?'sube':d<0?'baja':'igual')+'">'+(d>0?'▲ +'+d:d<0?'▼ '+d:'=')+'</span>'+(pa.sd?' <small>('+esc(t('sin_dato'))+')</small>':''); }
+    h += '<tr data-senal="'+s.n+'" data-punt="'+s.punt+'"><td data-l="'+esc(t('senal'))+'"><b>'+esc(t('s'+s.n))+'</b></td><td data-l="'+esc(t('valor_medido'))+'">'+(s.sd?'<span class="sd">'+esc(s.texto||t('sin_dato'))+'</span>':esc(s.texto))+'</td>'+
+      '<td data-l="'+esc(t('puntuacion'))+'"><span class="puntos p'+s.punt+'" role="img" aria-label="'+s.punt+' / 3">'+[1,2,3].map(i=>'<i class="'+(i<=s.punt?'on':'')+'"></i>').join('')+'</span> <b>'+s.punt+'</b></td>'+
+      '<td data-l="'+esc(t('lectura'))+'">'+esc(s.sd?t('sin_dato'):t('l'+s.punt))+'</td><td data-l="'+esc(t('tendencia'))+'">'+td+(ant?'<small>'+esc(fF(ant.fecha_corte))+'</small>':'')+'</td></tr>';
+  }
+  h += '</tbody></table></div>';
+  // condiciones de base y declaración
+  const cb = (k, ok, v) => '<tr><td data-l="'+esc(t('base'))+'">'+esc(t(k))+'</td><td data-l="'+esc(t('valor_medido'))+'" class="num">'+esc(v)+'</td><td data-l=""><span class="et '+(ok?'ok':'ko')+'">'+esc(ok?t('cumple'):t('no_cumple'))+'</span></td></tr>';
+  h += '<h2>'+esc(t('base'))+'</h2><div class="tblx"><table class="tabla resp"><tbody>'+cb('b1',r.B1,pct(r.b1,0))+cb('b2',r.B2,pct(r.b2,0))+cb('b3',r.B3,r.b3??t('sin_dato'))+'</tbody></table></div>';
+  const dc = (txt, ok) => '<li><span class="et '+(ok?'ok':'')+'">'+esc(ok?t('d_si'):t('d_no'))+'</span> '+esc(txt)+'</li>';
+  h += '<h3>'+esc(t('decl_titulo'))+'</h3><ul style="list-style:none;padding:0">'+dc(t('d1'),r.d1)+dc(t('d2',{u:P.perfil.d2_transformar_min,v:pct(r.d2v)}),r.d2)+dc(t('d3'),r.d3)+'</ul>';
+  if((c.entradas.declaracion||{}).evidencia) h += '<p class="ayuda">'+esc(c.entradas.declaracion.evidencia)+'</p>';
+  // alertas
+  h += '<h2>'+esc(t('alertas'))+'</h2>'+(r.alertas.length ? r.alertas.map(a=>'<div class="aviso ko" data-alerta="'+a[0]+'"><b>'+esc(t(a[0]))+'.</b> '+esc(a[1])+'</div>').join('') : '<p class="aviso ok">'+esc(t('sin_alertas'))+'</p>');
+  // qué movería el perfil
+  h += '<h2>'+esc(t('mover'))+'</h2>';
+  if(!r.objetivo || r.evidenciado==='curso') h += '<p>'+esc(t('mover_nada'))+'</p>';
+  else h += '<p>'+esc(t('mover_hacia',{p:t('p_'+r.objetivo)}))+'</p><ul class="mover">'+r.mover.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul><p class="ayuda">'+esc(t('m_resp'))+'</p>';
+  if(c.acciones) h += '<div class="aviso info"><b>'+esc(t('acciones'))+'.</b> '+esc(c.acciones)+'</div>';
+  if(c.notas) h += '<p class="ayuda"><b>'+esc(t('notas'))+':</b> '+esc(c.notas)+'</p>';
+  return h;
+}
+function entradasHTML(c){
+  const E = c.entradas, de = c.de_t01||{};
+  let h = '<section class="entradas"><h2>'+esc(t('entradas'))+'</h2><p class="ayuda">'+esc(t('entradas_sub'))+'</p>';
+  for(const [g, rot] of GRUPOS){
+    const falt = CAMPOS[g].filter(f=>f[1]!=='txt' && (E[g]||{})[f[0]]==null).length;
+    h += '<details'+(g==='base'?' open':'')+'><summary>'+esc(t(rot))+(falt?'<span class="et">'+falt+' '+esc(t('sin_dato').toLowerCase())+'</span>':'')+'</summary><div class="rejilla">';
+    for(const f of CAMPOS[g]){
+      const [k, tp] = f, v = (E[g]||{})[k], id='e-'+g+'-'+k, lab = lang==='en'?f[3]:f[2], orig = (de[g]||[]).includes(k);
+      let ctl;
+      if(tp==='bool') ctl = '<select id="'+id+'" data-g="'+g+'" data-k="'+k+'" data-tp="bool"><option value=""'+(v==null?' selected':'')+'>'+esc(t('sd_opt'))+'</option><option value="1"'+(v===true?' selected':'')+'>'+esc(t('si'))+'</option><option value="0"'+(v===false?' selected':'')+'>'+esc(t('no'))+'</option></select>';
+      else if(tp==='txt') ctl = '<textarea id="'+id+'" data-g="'+g+'" data-k="'+k+'" data-tp="txt">'+esc(v||'')+'</textarea>';
+      else ctl = '<input type="number" inputmode="decimal" min="0" step="any" id="'+id+'" data-g="'+g+'" data-k="'+k+'" data-tp="num" value="'+(v==null?'':esc(v))+'" placeholder="'+esc(t('sin_dato'))+'">';
+      h += '<div class="campo"'+(tp==='txt'?' style="grid-column:1/-1"':'')+'><label for="'+id+'">'+esc(lab)+(tp==='eur'?' (€)':tp==='h'?' (h)':tp==='dias'?(lang==='en'?' (days)':' (días)'):'')+'</label>'+ctl+(orig?'<span class="origen t01">● '+esc(t('del_t01'))+'</span>':'')+'</div>';
+    }
+    h += '</div></details>';
+  }
+  h += '<div class="rejilla" style="margin-top:12px"><div class="campo" style="grid-column:1/-1"><label for="c-notas">'+esc(t('notas'))+'</label><textarea id="c-notas" data-cab="notas">'+esc(c.notas||'')+'</textarea></div>'+
+    '<div class="campo" style="grid-column:1/-1"><label for="c-acc">'+esc(t('acciones'))+'</label><textarea id="c-acc" data-cab="acciones">'+esc(c.acciones||'')+'</textarea></div></div></section>';
+  return h;
+}
+function vistaEvolucion(){
+  let h = '<h1>'+esc(t('tit_evol'))+'</h1><p class="ayuda">'+esc(t('sub_evol'))+'</p>';
+  const o = ordenados(); if(!o.length) return h+'<p class="aviso info">'+esc(t('ninguno'))+'</p>';
+  h += '<div class="tblx"><table class="tabla" id="tabla-evol"><thead><tr><th>'+esc(t('fecha_corte'))+'</th><th>'+esc(t('tipo'))+'</th><th>'+esc(t('version'))+'</th>'+[1,2,3,4,5,6,7,8].map(i=>'<th class="num" title="'+esc(t('s'+i))+'">S'+i+'</th>').join('')+'<th class="num">'+esc(t('suma'))+'</th><th class="num">'+esc(t('cobertura'))+'</th><th>'+esc(t('perfil_asignado'))+'</th><th></th></tr></thead><tbody>';
+  for(const c of o){ const r = calcular(c.entradas, umbral(c.version_umbrales).parametros);
+    h += '<tr><td>'+esc(fF(c.fecha_corte))+'</td><td>'+esc(t('tp_'+c.tipo))+'</td><td>v'+esc(c.version_umbrales)+'</td>'+r.s.map(s=>'<td class="num">'+(s.sd?'<span class="sd">s/d</span>':s.punt)+'</td>').join('')+'<td class="num"><b>'+r.suma+'</b></td><td class="num">'+r.cobertura+'/8</td><td>'+esc(t('p_'+r.asignado))+(r.subyacente?'<small>'+esc(t('p_'+r.subyacente))+'</small>':'')+(r.provisional?' <span class="et ko">!</span>':'')+'</td><td><button type="button" data-acc="ver" data-id="'+esc(c.id)+'">'+esc(t('ver'))+'</button></td></tr>'; }
+  return h+'</tbody></table></div>';
+}
+function vistaUmbrales(){
+  const u = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1];
+  const usos = D.calculos.filter(c=>c.version_umbrales===u.version).length, edit = usos===0;
+  let h = '<h1>'+esc(t('tit_umb'))+'</h1><p class="ayuda">'+esc(t('sub_umb'))+'</p>';
+  h += '<div class="cab-calc"><div class="campo"><label for="u-sel">'+esc(t('version'))+'</label><select id="u-sel" data-umb="sel">'+D.umbrales.map(x=>'<option value="'+esc(x.version)+'"'+(x.version===u.version?' selected':'')+'>v'+esc(x.version)+'</option>').join('')+'</select></div>'+
+    '<div class="campo"><span class="et '+(edit?'info':'')+'">'+esc(edit?t('no_usada'):t('usada',{n:usos}))+'</span></div>'+
+    '<div class="campo"><label for="u-nueva">'+esc(t('nombre_version'))+'</label><input type="text" id="u-nueva"></div><div class="campo"><button type="button" data-acc="nueva-version">'+esc(t('nueva_version'))+'</button></div></div>';
+  h += '<div class="rejilla"><div class="campo"><label for="u-fecha">'+esc(t('fecha'))+'</label><input type="date" id="u-fecha" data-umeta="fecha" value="'+esc(u.fecha||'')+'"'+(edit?'':' disabled')+'></div>'+
+    '<div class="campo"><label for="u-apr">'+esc(t('aprobado_por'))+'</label><input type="text" id="u-apr" data-umeta="aprobado_por" value="'+esc(u.aprobado_por||'')+'"'+(edit?'':' disabled')+'></div>'+
+    '<div class="campo" style="grid-column:1/-1"><label for="u-orig">'+esc(t('origen'))+'</label><input type="text" id="u-orig" data-umeta="origen" value="'+esc(u.origen||'')+'"'+(edit?'':' disabled')+'></div>'+
+    '<div class="campo" style="grid-column:1/-1"><label for="u-nota">'+esc(t('nota'))+'</label><textarea id="u-nota" data-umeta="nota"'+(edit?'':' disabled')+'>'+esc(u.nota||'')+'</textarea></div></div>';
+  h += '<div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('parametro'))+'</th><th>'+esc(t('valor'))+'</th></tr></thead><tbody>'+
+    PARAMS.map(p=>'<tr><td data-l="'+esc(t('parametro'))+'"><label for="p-'+p[0]+'-'+p[1]+'">'+esc(lang==='en'?p[3]:p[2])+'</label></td><td data-l="'+esc(t('valor'))+'"><input type="number" step="any" min="0" id="p-'+p[0]+'-'+p[1]+'" data-pg="'+p[0]+'" data-pk="'+p[1]+'" value="'+esc(u.parametros[p[0]][p[1]])+'"'+(edit?'':' disabled')+'></td></tr>').join('')+'</tbody></table></div>';
+  if(edit && D.calculos.length) h += '<button type="button" data-acc="recalcular">'+esc(t('recalcular'))+'</button>';
+  return h;
+}
+function vistaDatos(){
+  return '<h1>'+esc(t('tit_datos'))+'</h1><p class="ayuda">'+esc(t('sub_datos'))+'</p><div class="fila">'+
+    '<button type="button" class="primario" data-acc="exportar">'+esc(t('exportar'))+'</button><button type="button" data-acc="importar">'+esc(t('importar'))+'</button>'+
+    '<button type="button" data-acc="desde-t01">'+esc(t('cargar_t01'))+'</button><button type="button" data-acc="restaurar">'+esc(t('restaurar'))+'</button><button type="button" class="peligro" data-acc="vaciar">'+esc(t('vaciar'))+'</button></div>'+
+    '<p class="ayuda" style="margin-top:12px">'+esc(t('pie_priv'))+'</p>';
+}
+
+/* ---------------- render ---------------- */
+function ruta(){ const v=(location.hash||'#/calculo').replace(/^#\/?/,'').split('/')[0]; return ['calculo','evolucion','umbrales','datos'].includes(v)?v:'calculo'; }
+function render(){
+  document.documentElement.lang = lang;
+  document.title = t('app');
+  document.getElementById('txt-app').textContent = t('app');
+  document.getElementById('saltar').textContent = t('saltar');
+  document.getElementById('lbl-lang').textContent = t('idioma'); document.getElementById('lbl-tema').textContent = t('tema');
+  const st = document.getElementById('sel-tema'); st.options[0].text=t('t_auto'); st.options[1].text=t('t_claro'); st.options[2].text=t('t_oscuro'); st.value=UI.tema;
+  document.getElementById('sel-lang').value = lang;
+  document.getElementById('btn-legal').textContent = t('legal_link');
+  const ld = document.getElementById('lnk-doc'); ld.textContent = t('doc12'); ld.href = t('doc12_href');
+  document.getElementById('lnk-t01').textContent = t('reg_t01');
+  document.getElementById('nav').setAttribute('aria-label', t('vistas'));
+  const v = ruta();
+  document.getElementById('nav').innerHTML = ['calculo','evolucion','umbrales','datos'].map(x=>'<a href="#/'+x+'"'+(x===v?' aria-current="page"':'')+'>'+esc(t('v_'+x))+'</a>').join('');
+  document.getElementById('aviso-demo').innerHTML = (D.meta||{}).datos_ilustrativos ? '<div>'+esc(t('demo'))+'</div>' : '';
+  const m = document.getElementById('principal');
+  m.innerHTML = v==='evolucion' ? vistaEvolucion() : v==='umbrales' ? vistaUmbrales() : v==='datos' ? vistaDatos() : vistaCalculo();
+  document.getElementById('pie').innerHTML = '<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+'</p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
+}
+function refrescarResultado(){ const c = calcSel(), e = document.getElementById('res'); if(c && e) e.innerHTML = resultadoHTML(c); }
+
+/* ---------------- eventos ---------------- */
+document.addEventListener('input', ev => {
+  const el = ev.target, c = calcSel();
+  if(el.dataset.g && c){
+    const g = el.dataset.g, k = el.dataset.k; c.entradas[g] = c.entradas[g] || {};
+    let v; if(el.dataset.tp==='bool') v = el.value==='' ? null : el.value==='1'; else if(el.dataset.tp==='txt') v = el.value; else v = el.value==='' ? null : Number(el.value);
+    c.entradas[g][k] = v; if(c.de_t01 && c.de_t01[g]) c.de_t01[g] = c.de_t01[g].filter(x=>x!==k);
+    guardar(); refrescarResultado(); return;
+  }
+  if(el.dataset.cab && c && ['notas','acciones'].includes(el.dataset.cab)){ c[el.dataset.cab] = el.value; guardar(); refrescarResultado(); return; }
+  if(el.dataset.pg){ const u = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1]; if(el.value!=='') { u.parametros[el.dataset.pg][el.dataset.pk] = Number(el.value); guardar(); } return; }
+  if(el.dataset.umeta){ const u = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1]; u[el.dataset.umeta] = el.value || null; guardar(); }
+});
+document.addEventListener('change', ev => {
+  const el = ev.target, c = calcSel();
+  if(el.id==='sel-lang'){ lang = UI.lang = el.value; guardar(); render(); return; }
+  if(el.id==='sel-tema'){ UI.tema = el.value; aplicarTema(); guardar(); return; }
+  if(el.dataset.cab==='sel'){ UI.sel = el.value; guardar(); render(); return; }
+  if(el.dataset.cab && c && ['fecha_corte','tipo','version_umbrales'].includes(el.dataset.cab)){ c[el.dataset.cab] = el.value; guardar(); render(); return; }
+  if(el.dataset.umb==='sel'){ UI.umb = el.value; guardar(); render(); return; }
+});
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-acc]'); if(!b) return;
+  const a = b.dataset.acc, c = calcSel();
+  if(a==='aviso-legal'){ const d=document.getElementById('dlg-legal'); d.innerHTML='<div class="dlg-cab"><h2 id="legal-t">'+esc(t('legal_tit'))+'</h2><button type="button" data-acc="cerrar-legal">'+esc(t('legal_ok'))+'</button></div><div class="dlg-cuerpo"><p>'+esc(t('legal_txt'))+'</p></div>'; d.showModal(); return; }
+  if(a==='cerrar-legal'){ document.getElementById('dlg-legal').close(); return; }
+  if(a==='nuevo'){ const f=hoy(), x={id:nuevoId(f), fecha_corte:f, tipo:'seguimiento', version_umbrales:D.umbrales[D.umbrales.length-1].version, origen:'manual', entradas:vacias(), notas:'', acciones:''}; D.calculos.push(x); UI.sel=x.id; guardar(); location.hash='#/calculo'; render(); toast(t('ok_nuevo')); return; }
+  if(a==='duplicar' && c){ const x=clon(c); x.id=nuevoId(c.fecha_corte); x.origen='manual'; delete x.de_t01; D.calculos.push(x); UI.sel=x.id; guardar(); render(); toast(t('ok_nuevo')); return; }
+  if(a==='eliminar' && c){ if(!confirm(t('conf_eliminar',{f:fF(c.fecha_corte)}))) return; D.calculos=D.calculos.filter(x=>x!==c); UI.sel=null; guardar(); render(); toast(t('ok_eliminado')); return; }
+  if(a==='imprimir'){ window.print(); return; }
+  if(a==='ver'){ UI.sel=b.dataset.id; guardar(); location.hash='#/calculo'; render(); return; }
+  if(a==='desde-t01'){ document.getElementById('f-t01').click(); return; }
+  if(a==='importar'){ document.getElementById('f-t14').click(); return; }
+  if(a==='exportar'){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T14'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt});
+    x.calculos.forEach((cc,i)=>{ cc.resultado = resultadoExport(D.calculos[i]); });
+    const blob=new Blob([JSON.stringify(x,null,2)],{type:'application/json'}), u=URL.createObjectURL(blob), l=document.createElement('a'); l.href=u; l.download='t14_indice_transformacion_'+hoy()+'.json'; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),1000); toast(t('ok_export')); return; }
+  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); UI.sel=null; UI.umb=null; guardar(); render(); return; }
+  if(a==='vaciar'){ if(!confirm(t('conf_vaciar'))) return; D.calculos=[]; D.meta=Object.assign({}, D.meta, {datos_ilustrativos:false}); UI.sel=null; guardar(); render(); return; }
+  if(a==='nueva-version'){ const nom=(document.getElementById('u-nueva').value||'').trim(); if(!nom){ document.getElementById('u-nueva').focus(); return; } if(D.umbrales.some(x=>x.version===nom)){ toast(t('ya_existe')); return; }
+    const base = D.umbrales.find(x=>x.version===UI.umb) || D.umbrales[D.umbrales.length-1]; D.umbrales.push({version:nom, fecha:hoy(), origen:'v'+base.version, aprobado_por:null, nota:'', parametros:clon(base.parametros)}); UI.umb=nom; guardar(); render(); toast(t('ok_version',{v:nom})); return; }
+  if(a==='recalcular' && c){ c.version_umbrales = UI.umb || D.umbrales[D.umbrales.length-1].version; guardar(); location.hash='#/calculo'; render(); return; }
+});
+function leerFichero(inp, fn){ const f=inp.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ let x=null; try{ x=JSON.parse(rd.result); }catch(e){} inp.value=''; fn(x); }; rd.readAsText(f); }
+document.getElementById('f-t14').addEventListener('change', ev => leerFichero(ev.target, x => {
+  if(!valido(x)){ toast(t('err_json')); return; } if(!confirm(t('conf_importar'))) return;
+  x.calculos.forEach(c=>{ delete c.resultado; }); D=x; UI.sel=null; UI.umb=null; guardar(); render(); toast(t('ok_import')); }));
+document.getElementById('f-t01').addEventListener('change', ev => leerFichero(ev.target, reg => {
+  if(!reg || !Array.isArray(reg.iniciativas) || !Array.isArray(reg.valores) || !Array.isArray(reg.decisiones_gate)){ toast(t('err_t01')); return; }
+  const def = (reg.meta||{}).fecha_referencia || hoy(); let f = prompt(t('t01_pide_fecha'), def); if(f===null) return; f = /^\d{4}-\d{2}-\d{2}$/.test(f.trim()) ? f.trim() : def;
+  const d = desdeT01(reg, f), x = {id:nuevoId(f), fecha_corte:f, tipo:'seguimiento', version_umbrales:D.umbrales[D.umbrales.length-1].version, origen:'t01', entradas:d.entradas, de_t01:d.de_t01, notas:t('t01_nota',{f:fF(f)}), acciones:''};
+  D.calculos.push(x); UI.sel=x.id; guardar(); location.hash='#/calculo'; render(); toast(t('ok_t01',{o:(reg.meta||{}).organizacion||'', f:fF(f)})); }));
+function aplicarTema(){ if(UI.tema==='auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', UI.tema); }
+window.addEventListener('hashchange', render);
+
+/* ---------------- arranque ---------------- */
+(function(){
+  try{ const u = JSON.parse(lsGet(LS_UI)||'null'); if(u) UI = Object.assign(UI, u); }catch(e){}
+  try{ const d = JSON.parse(lsGet(LS_DATOS)||'null'); if(valido(d)) D = d; }catch(e){}
+  if(!D) D = cargarDemo();
+  const q = new URLSearchParams(location.search);
+  if(q.get('lang')==='en' || q.get('lang')==='es') UI.lang = q.get('lang');
+  else if(!lsGet(LS_UI) && /^en\b/i.test(navigator.language||'')) UI.lang = 'en';
+  lang = UI.lang==='en' ? 'en' : 'es';
+  aplicarTema(); render();
+})();
+</script>
+</body>
+</html>

@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Data and model lineage"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -462,7 +466,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN from the initiative register (T01).</td>
+<td>IA-AAAA-NNN from the initiative register (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>Initiative name</td>
@@ -472,17 +476,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI system(s)</td>
 <td></td>
-<td>Identifier in the AI system inventory (T02, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
+<td>Identifier in the AI system inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
 </tr>
 <tr>
 <td>Intensity</td>
 <td></td>
-<td>Lite · Enterprise (P04).</td>
+<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
 </tr>
 <tr>
 <td>Regulatory classification</td>
 <td></td>
-<td>Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification (P11).</td>
+<td>Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
 </tr>
 <tr>
 <td>Document version</td>
@@ -572,7 +576,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Transfers outside the European Economic Area <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Destination, safeguard applied and reference to the supplier assessment (P14).</td>
+<td>Destination, safeguard applied and reference to the supplier assessment (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
 </tr>
 <tr>
 <td>Data protection impact assessment</td>
@@ -702,6 +706,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td>Regression testing.</td>
 </tr>
+<tr>
+<td>Cost fallback model (document 52 §10.3), if planned</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Provider and exact version; evaluated before G5 with the reference set and the bias tests of the primary model. Adding it or changing its conditions is a change (document 52 §6.4).</td>
+</tr>
 </tbody>
 </table></div>
 <hr />
@@ -782,7 +793,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Reference for detecting drift</td>
 <td></td>
-<td>Dataset and period used as the reference for monitoring (P25).</td>
+<td>Dataset and period used as the reference for monitoring (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>). For generative AI and agents, usage reference: topics, intents and scope validated at G5 (document 52 §4.2.6).</td>
 </tr>
 </tbody>
 </table></div>
@@ -800,7 +811,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Previous stable version available</td>
 <td></td>
-<td>Identifier of the model and components to be reverted to (P19).</td>
+<td>Identifier of the model and components to be reverted to (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
 </tr>
 <tr>
 <td>Data that must be retained</td>
@@ -927,6 +938,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>First version of the template.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Cost fallback model in the components and usage reference for drift in generative AI and agents (document 52 §4.2.6 and §10.3).</td>
 </tr>
 </tbody>
 </table></div>

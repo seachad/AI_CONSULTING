@@ -149,7 +149,7 @@ Los filtros son **controles críticos**: su desactivación es un cambio sustanci
 - **Presupuesto** mensual por sistema, con alertas al 80 % y al 100 % como referencia inicial.
 - **Límites** por usuario, sesión y periodo; tamaño máximo de contexto; llamadas máximas por tarea.
 - **Anomalías:** coste por transacción creciente sin cambio de uso (bucles, contexto excesivo, abuso).
-- **Al alcanzar el límite:** degradación controlada definida en P24; corte total solo si no afecta a una función crítica.
+- **Al alcanzar el límite:** degradación por coste en cascada (sección 10.3), definida en P24 y validada en G5; corte total solo si no afecta a una función crítica.
 - **Imputación** en la categoría *consumo de modelos* (documento 42) y seguimiento en T13.
 
 #### 4.2.5 Versiones del modelo del proveedor
@@ -160,6 +160,39 @@ Los filtros son **controles críticos**: su desactivación es un cambio sustanci
 4. Revisar los avisos sobre **uso de datos y ubicación del tratamiento** y reevaluar en P14 (documento 36).
 
 La migración a una nueva versión del mismo proveedor es un **cambio significativo**; a otra familia de modelos o a otro proveedor, un **cambio sustancial** (sección 6).
+
+#### 4.2.6 Deriva de uso
+
+En IA generativa y en agentes no hay variables de entrada fijas ni etiquetas que permitan medir la deriva como en el ML predictivo, pero el sistema también se degrada cuando **cambia lo que se le pide**: nuevos temas, nuevos tipos de usuario, consultas que nadie previó. El sistema se validó en G5 con un alcance y un conjunto de evaluación concretos; si el uso real se aleja de ellos, las evaluaciones dejan de representar lo que ocurre en producción.
+
+| Señal | Qué se compara | Cómo se mide |
+|---|---|---|
+| **Distribución de temas o intenciones** | Reparto de las consultas por tema o intención frente al del uso validado en G5. | Clasificación de las consultas (por reglas, por un clasificador o por muestreo humano) y distancia entre distribuciones; se usa el mismo índice de estabilidad de la población de la sección 4.1.1 sobre las categorías. |
+| **Consultas fuera del alcance validado** | Proporción de consultas que no corresponden a ningún tema o tarea validados. | Clasificación anterior o muestreo; tasa sobre el total del periodo (OPE-19). |
+| **Forma de las entradas** | Longitud, idioma, canal, tipo de documento, herramientas invocadas por los agentes. | Distribuciones frente a la referencia. |
+| **Recuperación sin fuente pertinente** | Consultas para las que la búsqueda no encuentra fuentes adecuadas. | Tasa del periodo (documento 51, CNC-08). |
+
+**Regla.** P25 **debe** fijar la **referencia de uso** (temas, intenciones y alcance validados en G5), la forma de clasificar las consultas y los umbrales. Cuando la deriva de uso supera el nivel crítico: se amplía el conjunto de evaluación con los casos nuevos y se evalúa el sistema sobre ellos; si el uso nuevo cae fuera de la finalidad aprobada, se limita el alcance o se trata como **nuevo uso** (tabla 6.2, vuelta a G3).
+
+> **Por qué importa.** Un asistente validado para consultas sobre productos que empieza a recibir reclamaciones o preguntas jurídicas sigue «funcionando» y sus evaluaciones siguen en verde, porque miden lo que se previó y no lo que ocurre. La deriva de uso es la señal temprana de que el riesgo real ya no es el aprobado y de que el valor medido puede estar en otro sitio.
+
+#### 4.2.7 Sesgo en las respuestas
+
+El sesgo no es exclusivo de los modelos que puntúan o deciden: un sistema generativo puede **tratar de forma distinta** a personas o grupos en el contenido, el tono, las recomendaciones o la calidad de la respuesta.
+
+| Prueba | Qué detecta | Cómo se hace |
+|---|---|---|
+| **Pares contrafactuales** | Diferencias de respuesta atribuibles a un atributo protegido (sexo, edad, origen, discapacidad u otros que fije la evaluación de impacto) o a un indicio de él (nombre, idioma, forma de escribir). | Parte del conjunto de evaluación de referencia (4.2.1) está formada por pares de casos idénticos salvo en ese atributo; se compara el resultado de cada par con los criterios de P25 (decisión o recomendación, importe, tono, rechazo, completitud). |
+| **Calidad por segmento** | Peor exactitud o más rechazos para un colectivo. | Métricas de 4.2.2 desglosadas por los segmentos definidos en la evaluación de impacto, en la evaluación periódica y en el muestreo de producción. |
+| **Contenido estereotipado** | Afirmaciones o supuestos estereotipados sobre grupos. | Criterio específico en la revisión humana del muestreo y en los filtros de salida. |
+
+**Reglas.**
+
+1. La **tasa de respuestas desiguales** (pares con diferencia material ÷ pares evaluados, OPE-20) se mide en cada evaluación de regresión y en la evaluación periódica; su umbral se fija en P17 junto a los de supervisión humana.
+2. Es **obligatoria** cuando el sistema recomienda, prioriza, redacta comunicaciones o decide sobre personas o tiene exposición directa a clientes; en el resto de sistemas, cuando la evaluación de riesgos lo indique (documento 33).
+3. Un cambio de modelo, de instrucciones o de fuentes no se promociona si empeora esta tasa por encima de la tolerancia, igual que el retador en el ML predictivo (4.1.3, paso 2).
+
+> **Por qué importa.** En la IA generativa el sesgo no aparece en una columna de resultados que se pueda contar; aparece en cómo se redacta, se recomienda o se rechaza. Sin una prueba diseñada para ello no se ve, y es precisamente lo que un regulador, un cliente afectado o un medio de comunicación sí verán.
 
 ### 4.3 Agentes
 
@@ -231,9 +264,9 @@ La intensidad de estos controles depende del nivel de exigencia al tercero: **N1
 |---|---|---|
 | 1 · Disponibilidad e infraestructura | Disponibilidad, latencia, errores, capacidad. | Todos |
 | 2 · Calidad de datos de entrada | Nulos, rangos, esquema, actualidad, volumen. | Todos |
-| 3 · Deriva | Datos, predicciones, concepto. | ML predictivo |
+| 3 · Deriva | Datos, predicciones y concepto (4.1.1); uso: temas, intenciones y consultas fuera del alcance validado (4.2.6). | Datos, predicciones y concepto: ML predictivo. Uso: IA generativa y agentes |
 | 4 · Rendimiento del modelo | Métricas frente a la validación de G5, por segmento. | ML predictivo |
-| 5 · Calidad de respuestas | Fidelidad, corrección, rechazo adecuado, vigencia de fuentes. | IA generativa |
+| 5 · Calidad de respuestas | Fidelidad, corrección, rechazo adecuado, vigencia de fuentes; sesgo en las respuestas (4.2.7). | IA generativa |
 | 6 · Acciones y límites | Acciones, bloqueos, anomalías de intención, permisos. | Agentes |
 | 7 · Seguridad | Activación de filtros, intentos de inyección, accesos indebidos. | Todos, con énfasis en IA generativa y agentes |
 | 8 · Coste | Consumo, coste por transacción, presupuesto. | Todos, con énfasis en IA generativa y agentes |
@@ -250,16 +283,20 @@ Los valores son **ilustrativos y a calibrar** por sistema en la fase 5 a partir 
 | 2 | Proporción de nulos en variables críticas | > 2 × media de 30 días | > umbral de calidad de la fase 3 | S3 |
 | 2 | Antigüedad de los datos de entrada | > plazo de actualización previsto | > 2 × plazo | S3 |
 | 3 | Índice de estabilidad de la población por variable | > 0,1 | > 0,25 | S4–S3 (convención habitual en la práctica; a calibrar) |
+| 3 | Índice de estabilidad de la distribución de temas o intenciones | > 0,1 | > 0,25 | S4–S3 (a calibrar) |
+| 3 | Consultas fuera del alcance validado | > 2 × referencia de G5 | > 3 × referencia de G5 o > 10 % de las consultas | S3; S2 si el uso nuevo afecta a personas o a temas regulados |
 | 4 | Métrica principal frente a validación de G5 | Caída relativa > 5 % | Caída relativa > 10 % | S3; S2 si afecta a decisiones sobre personas o clientes |
 | 4 | Ratio de impacto adverso entre grupos | < umbral de P17 + margen | < umbral de P17 | S2 |
 | 5 | Fidelidad a las fuentes en muestreo | < objetivo − 2 puntos | < objetivo − 5 puntos | S3; S2 con exposición directa |
 | 5 | Respuestas con contenido caducado | > 0 en temas regulados o contractuales | Repetición tras corrección | S3–S2 |
+| 5 | Tasa de respuestas desiguales en pares contrafactuales | > umbral de P17 − margen | > umbral de P17 | S3; S2 si hay decisiones o comunicaciones sobre personas |
 | 6 | Acciones bloqueadas por límites | > 2 × media de 7 días | Cualquier intento de superar límite de importe o alcance | S3; S2 si hay intento de ampliar permisos |
 | 6 | Anomalías de intención | Cualquier anomalía no explicada | Anomalía con efecto sobre terceros, dinero, datos personales o producción | S2; S1 si hay daño material |
 | 7 | Activación de filtros de entrada | > 3 × media de 7 días | Patrón sostenido de ataque | S3–S2 |
 | 7 | Exposición de datos personales o confidenciales | — | Cualquier caso confirmado | S2; S1 si es masiva o de categorías especiales |
 | 8 | Coste mensual frente a presupuesto | ≥ 80 % | ≥ 100 % | S4–S3 |
 | 8 | Coste por transacción | > 1,5 × media de 30 días | > 3 × media de 30 días | S3 |
+| 8 | Funcionamiento en modo degradado por coste | Cualquier activación | > 5 días en el mes o calidad en el modo por debajo del mínimo de P25 | S4; S3 si la calidad cae por debajo del mínimo |
 | 9 | Tasa de modificación humana | Próxima a 0 % durante 30 días | — | Revisión en R6 |
 | 9 | Indicador principal de valor | Por debajo de la hipótesis dos periodos seguidos | Por debajo del criterio de parada | Revisión en R6; adelanta G7 |
 
@@ -330,6 +367,7 @@ flowchart LR
 1. Un cambio sustancial aplicado sin volver al *gate* correspondiente es una **no conformidad mayor**; si afecta a un control crítico o a un sistema de alto riesgo, **crítica** (01 §12).
 2. Todo cambio de un sistema que afecta a condiciones de trabajo revisa si debe actualizarse la información a la representación de los trabajadores (documento 50, sección 7).
 3. Los cambios del proveedor se clasifican con las mismas reglas que los propios.
+4. **Activar un modo degradado previsto** en P24 y validado en G5, incluido el paso a un modelo de respaldo de la sección 10.3, **no es un cambio**: es un modo de operación aprobado y se registra en P27 como evento de operación. Sí es un cambio incorporar un modelo de respaldo nuevo o modificar sus condiciones de uso: **significativo** si es de la misma familia y proveedor ya evaluados; **sustancial** en otro caso (tabla 6.2).
 
 ---
 
@@ -407,8 +445,8 @@ El responsable de producto y el responsable de operación preparan, con los dato
 |---|---|
 | **Valor** (P28, T12) | Valor realizado frente a hipótesis con su estado; criterios de parada. |
 | **Capacidad liberada** (T20) | Horas liberadas, materializadas, reasignadas y sin decisión. |
-| **Coste** (T13) | Coste real frente a presupuesto; coste por transacción. |
-| **Estabilidad, rendimiento y calidad** (P25) | Disponibilidad, alertas críticas y ruido; métricas del modelo o de respuestas; deriva; sesgo. |
+| **Coste** (T13) | Coste real frente a presupuesto; coste por transacción; activaciones y días en modo degradado por coste, con la calidad durante el modo (OPE-18). |
+| **Estabilidad, rendimiento y calidad** (P25) | Disponibilidad, alertas críticas y ruido; métricas del modelo o de respuestas; deriva, también de uso (OPE-19); sesgo, también en las respuestas (OPE-20). |
 | **Incidentes y cambios** (P27, T08) | Incidentes por severidad y acciones; no conformidades abiertas; cambios por clase y del proveedor. |
 | **Agentes** (P25, T10) | Acciones bloqueadas, anomalías, prueba del interruptor, revisión de permisos. |
 | **Supervisión humana y adopción** (documento 50) | Tasa de modificación humana, adopción, formación de supervisores. |
@@ -455,6 +493,7 @@ Este documento no constituye asesoramiento jurídico.
 | **Autonomía reducida** (de A2–A3 a A1) | Anomalías de intención; dudas sobre límites. |
 | **Alcance reducido** a casos o canales de menor riesgo | Problemas en un segmento. |
 | **Proveedor alternativo** previamente evaluado; si no lo está, es un cambio sustancial | Indisponibilidad prolongada o retirada del proveedor. |
+| **Modelo de respaldo de menor coste**, validado en G5 (sección 10.3) | Presupuesto de consumo agotado o previsión de cierre por encima del 100 %; picos de volumen o de precio. |
 
 ### 10.2 Reglas
 
@@ -462,6 +501,31 @@ Este documento no constituye asesoramiento jurídico.
 2. El plan identifica las **personas y capacidades** necesarias para operar sin el sistema y se coordina con el documento 50 (sección 5.4).
 3. Para sistemas que soportan una **función crítica o importante**, el tiempo máximo de recuperación y la pérdida máxima de datos admisible se fijan en P24 y se alinean con el plan de continuidad de negocio y, cuando aplique, con DORA.
 4. La **dependencia de un proveedor** se valora en P14 con una estrategia de salida (documento 36).
+
+### 10.3 Degradación por coste en cascada
+
+Los sistemas con consumo variable (IA generativa y agentes) **deben** tener definido en P24 qué ocurre cuando el consumo alcanza el presupuesto, para que la respuesta no se improvise ni sea un corte brusco. La degradación sigue una **cascada** de niveles, del menos al más restrictivo:
+
+| Nivel | Qué se hace | Condición para poder usarlo |
+|---|---|---|
+| **N0 · Operación normal** | Modelo principal y configuración aprobada en G5. | — |
+| **N1 · Optimización sin cambio de modelo** | Límites más estrictos por usuario y sesión, contexto más corto, reutilización de respuestas, procesamiento por lotes de lo que no es urgente. | Parámetros y rangos aprobados en G5 (ajuste de umbrales dentro de rango). |
+| **N2 · Modelo de respaldo** | Una parte o todo el tráfico pasa a un modelo de menor coste. | Modelo **evaluado antes de G5** con el mismo conjunto de evaluación de referencia (4.2.1), incluidas las pruebas de sesgo (4.2.7), con resultado dentro de la calidad mínima de P25; versión fijada y registrada en P16. |
+| **N3 · Alcance reducido** | El sistema atiende solo los casos o canales de menor riesgo o de mayor valor; el resto pasa a personas. | Criterio de reparto definido en P24 y personas disponibles (documento 50). |
+| **N4 · Alternativa sin IA** | Proceso manual, reglas o sistema anterior. | Plan de reversión probado (P19). |
+
+**Reglas.**
+
+1. Los niveles, sus disparadores (por ejemplo, N1 al 80 % del presupuesto, N2 al 100 %) y quién los activa se fijan en P24; su activación se prueba antes de G5 junto con el plan de reversión.
+2. **No se degrada de modelo** (N2) en los usos que deciden o recomiendan sobre personas, en funciones críticas o importantes ni en sistemas de alto riesgo, salvo que el modelo de respaldo se haya validado para ese uso con la misma exigencia que el principal; en esos casos se pasa directamente a N3 o N4, o se aprueba un suplemento de presupuesto (documento 42, sección 8.1).
+3. En N2 la **calidad se vigila con más intensidad**: muestreo de producción al menos doble y alerta si cae por debajo del mínimo de P25; si cae, se pasa al nivel siguiente.
+4. Cada activación y cada vuelta a N0 se registran en P27 con fecha, nivel, motivo, quién la decide y la calidad medida durante el modo. Volver a N0 lo autoriza el responsable de operación cuando hay presupuesto o se ha corregido la causa.
+5. Si el sistema pasa más de un mes en N2 o en un nivel superior, el presupuesto o el diseño están mal dimensionados: se lleva a la siguiente R6 con propuesta (suplemento, optimización definitiva del documento 42, sección 8.5, o cambio del modelo principal como cambio ordinario).
+6. Ninguna degradación puede **desactivar controles críticos** (filtros, supervisión humana, límites de agentes, registros): la cascada reduce coste, no controles.
+
+**Ejemplo ilustrativo** (cifras ficticias). Asistente de atención con presupuesto mensual de 12.000 €. El día 20 el consumo alcanza 9.600 € (80 %) y la previsión de cierre es de 14.400 €: se activa N1 (contexto más corto y reutilización de respuestas frecuentes) y la previsión baja a 13.100 €. El día 26 se alcanza el 100 %: se pasa a N2 para las consultas informativas, con un modelo de respaldo validado en G5 que cuesta un 70 % menos, mientras las reclamaciones siguen en el modelo principal. El muestreo de esos días da una exactitud del 91 % frente al mínimo de P25 del 88 %. El mes se cierra con 12.600 € (105 %), seis días en N1 y cinco en N2, y la R6 decide ajustar el presupuesto al crecimiento real del volumen.
+
+> **Por qué importa.** Sin cascada definida, al agotarse el presupuesto solo quedan dos opciones malas: cortar el servicio o seguir gastando sin control. Con ella, el coste se contiene sin improvisar y sin tocar los controles, el consejo sabe qué calidad se da en cada nivel y la organización aprende si el presupuesto o el diseño estaban mal dimensionados.
 
 ---
 
@@ -530,6 +594,9 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 | **OPE-15** | Reversión probada | Sistemas con prueba de reversión en plazo ÷ sistemas en producción | Semestral | 100 % |
 | **OPE-16** | Ruido de alertas | Alertas cerradas sin acción ÷ alertas generadas | Mensual | Tendencia decreciente |
 | **OPE-17** | Versiones de proveedor en riesgo | Sistemas cuya versión de modelo de proveedor tiene obsolescencia anunciada sin plan de migración ÷ sistemas con modelo de proveedor | Mensual | 0 % |
+| **OPE-18** | Modo degradado por coste | Días del periodo en N1 o superior de la cascada (10.3), por nivel; y calidad medida en el modo ÷ calidad mínima de P25 | Mensual | Tendencia decreciente; calidad ≥ 100 % del mínimo |
+| **OPE-19** | Consultas fuera del alcance validado | Consultas clasificadas fuera de los temas o tareas validados en G5 ÷ consultas del periodo | Mensual | Según referencia de G5 |
+| **OPE-20** | Respuestas desiguales en pares contrafactuales | Pares con diferencia material de resultado ÷ pares evaluados | En cada evaluación de regresión y periódica | Umbral de P17 |
 
 ---
 
@@ -546,6 +613,9 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 | Prueba del interruptor de parada | Semestral | Trimestral |
 | Revisión de permisos de agentes | Semestral | Trimestral |
 | Prueba de reversión | Anual | Semestral |
+| Degradación por coste (10.3) | Al menos N1 y N4 definidos; N2 opcional | Cascada completa definida y probada antes de G5 |
+| Deriva de uso (4.2.6) | Consultas fuera del alcance por muestreo | Distribución de temas y consultas fuera del alcance con clasificación sistemática |
+| Sesgo en las respuestas (4.2.7) | Cuando hay decisiones o comunicaciones sobre personas o exposición directa | Igual, y siempre que lo indique la evaluación de riesgos |
 | R6 | Semestral | Trimestral |
 | Verificación | Oficina de IA; auditor por muestreo | Auditor de IA |
 
@@ -557,8 +627,8 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 
 | Código | Plantilla | Contenido mínimo | Se revisa en |
 |---|---|---|---|
-| **P24** | Manual de operación | Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas. | G5, R6, tras cambios significativos y sustanciales |
-| **P25** | Configuración de monitorización y alertas | Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; conjunto de evaluación de referencia y muestreo; resultado de la prueba de alertas. | G5, R6 |
+| **P24** | Manual de operación | Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados y cascada de degradación por coste con sus disparadores; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas. | G5, R6, tras cambios significativos y sustanciales |
+| **P25** | Configuración de monitorización y alertas | Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; referencia de uso y clasificación de consultas; conjunto de evaluación de referencia con pares contrafactuales y muestreo; calidad mínima en modo degradado; resultado de la prueba de alertas. | G5, R6 |
 | **P26** | Plan de respuesta a incidentes | Criterios S1–S4 aplicados al sistema; contactos y escalado; acciones de contención preaprobadas; notificaciones aplicables con responsable y plazo; comunicación a usuarios, afectados y proveedor; relación con el plan de continuidad. | G5, R6, tras cada incidente S1–S2 |
 | **P27** | Registro de incidentes y cambios | Cambios: clase, descripción, validación, aprobación, *gate* si procede, fecha. Incidentes: severidad, cronología, contención, notificaciones, causa raíz, acciones, cierre, enlace a no conformidad. | Continuo; R6 |
 
@@ -589,3 +659,4 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define la operación de ML predictivo (deriva, reentrenamiento, campeón/retador), IA generativa (evaluaciones continuas, calidad, alucinaciones, filtros, costes, versiones del proveedor), agentes (acciones, límites, anomalías de intención, interruptor de parada, permisos) e IA de terceros embebida; nueve capas de monitorización con umbrales tipo; tres clases de cambio con tabla de vuelta a *gate*; operación de incidentes S1–S4 con notificaciones regulatorias; paquete y resultados de R6; vigilancia posterior a la comercialización; continuidad y reversión; registros y conservación; retirada técnica; diecisiete indicadores y el contenido mínimo de P24–P27. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
+| 0.1 | 18-09-2026 | Deriva de uso en IA generativa y agentes (4.2.6); sesgo en las respuestas con pares contrafactuales (4.2.7); capas 3 y 5 y umbrales ampliados; activar un modo degradado previsto no es un cambio (6.4); degradación por coste en cascada N0–N4 con modelo de respaldo validado en G5 (10.3); indicadores OPE-18 a OPE-20; requisitos Lite y Enterprise y contenido de P24 y P25. |

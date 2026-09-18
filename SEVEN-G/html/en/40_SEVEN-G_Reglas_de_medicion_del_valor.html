@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Value measurement rules"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -406,7 +410,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>This document develops the ten SEVEN-G value measurement rules (document 00, section 6) and sets out the definitions, formulas and procedures that all initiatives, the portfolio and reports to the board must apply.</p>
-<p>It applies to every initiative recorded in the initiative register (T01), in all phases, and to every value figure presented to the AI Committee or the board. The indicators derived from these rules are in document 41; the calculation of costs, in document 42; and the benefits realisation process, in document 43.</p>
+<p>It applies to every initiative recorded in the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), in all phases, and to every value figure presented to the AI Committee or the board. The indicators derived from these rules are in document 41; the calculation of costs, in document 42; and the benefits realisation process, in document 43.</p>
 <p>The figures in the examples are <strong>fictitious and illustrative</strong>. They are not market benchmarks.</p>
 <hr />
 <h2 id="measurement-principles"><span class="antetitulo">02</span>Measurement principles</h2>
@@ -511,7 +515,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>How it is verified</strong></td>
-<td>No amount in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or T12 has an empty status; all totals in the board pack show the validated proportion; validated amounts have a validator, a date and evidence.</td>
+<td>No amount in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> has an empty status; all totals in the board pack show the validated proportion; validated amounts have a validator, a date and evidence.</td>
 </tr>
 </tbody>
 </table></div>
@@ -647,7 +651,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>How it is verified</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> has all three blocks with separate amounts; the net value is recalculated automatically and matches the value reported; the recurring cost reconciles with T13.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> has all three blocks with separate amounts; the net value is recalculated automatically and matches the value reported; the recurring cost reconciles with <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -771,7 +775,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>How it is applied</strong></td>
-<td>Each use case has a one- or two-sentence description that answers: what it does, who uses it, which process or decision it acts on and what role the person plays. It is recorded in the use case record (P31) and in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Without a description, the use case is not presented to the board.</td>
+<td>Each use case has a one- or two-sentence description that answers: what it does, who uses it, which process or decision it acts on and what role the person plays. It is recorded in the use case record (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) and in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Without a description, the use case is not presented to the board.</td>
 </tr>
 <tr>
 <td><strong>Correct example</strong> <em>(illustrative)</em></td>
@@ -885,7 +889,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Cut-off and cost</strong></td>
 <td>Does the amount correspond to the period, is it not repeated, and is the recurring cost complete?</td>
-<td>Reconciliation with previous periods in T12 and with T13.</td>
+<td>Reconciliation with previous periods in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> and with <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1068,6 +1072,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Cost per unit of outcome</strong> (recurring cost for the period ÷ units of useful outcome) is defined in document 42.</p>
 <hr />
 <h2 id="attribution-methods"><span class="antetitulo">07</span>Attribution methods</h2>
+<h3 id="7-1-choosing-the-method">7.1 Choosing the method</h3>
 <p>The attribution method is chosen in phase 2, approved at G2 and not changed without the approval of the body that decided G2 (01 §7.4, rule 6). It determines the maximum status that the value can reach.</p>
 <div class="tabla"><table>
 <thead>
@@ -1125,6 +1130,142 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Expert estimates are only accepted with a plan and a date for replacing them. In Optimise they cannot evidence G5 or G7; in Augment and Transform they may support the G2 hypothesis, but not realised value.</li>
 </ol>
 <p>In <strong>Transform</strong> initiatives, attribution is applied by stage and focuses on the market or customer evidence required at G5 (01 §7.6): usage, conversion, initial revenue or verified operational change.</p>
+<h3 id="7-2-cross-unit-initiatives-and-enabling-platforms">7.2 Cross-unit initiatives and enabling platforms</h3>
+<p>Some initiatives do not belong to a single business unit. They are <strong>cross-unit</strong> initiatives, such as a tool used by several units (for example, a generative assistant built into the office suite), or <strong>enabling platforms</strong>: shared data, knowledge or decision capabilities used by other use cases. Their value is not measured in the same way as that of a business use case.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example <em>(illustrative)</em></th>
+<th>How it is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></th>
+<th>How it is measured</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Enabling platform</strong></td>
+<td>Shared data platform for several AI use cases</td>
+<td>One initiative that lists the use cases that rely on it (<code>alcance.habilita</code>)</td>
+<td>Its value is allocated to the use cases that rely on it (document 10 §4.1, rule 3). For the platform itself, only its cost, its availability and the use cases it serves count.</td>
+</tr>
+<tr>
+<td><strong>Cross-unit</strong></td>
+<td>Generative assistant in the office suite for several units</td>
+<td><strong>A single initiative</strong> with its roll-out by unit (<code>alcance.reparto</code>) and amounts by unit (<code>valores[].area</code>). No separate initiative is opened for each unit.</td>
+<td>By business unit, using the measurement ladder in this section.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Measurement ladder by unit.</strong> Each rung only counts if the previous one is met.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Rung</th>
+<th>What is measured</th>
+<th>Source</th>
+<th>Maximum status</th>
+<th>Does it add to net value?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Cost</strong></td>
+<td>Licences, training and governance. Each unit bears its own licences; shared costs (adoption office, ongoing training, permission review) carry no unit.</td>
+<td>Contracts and accounts</td>
+<td>Validated</td>
+<td>It is deducted in full from day one (asymmetric prudence, section 2)</td>
+</tr>
+<tr>
+<td><strong>2. Adoption</strong></td>
+<td>Active over assigned licences and weekly active users, by unit</td>
+<td>Platform usage reports, not surveys</td>
+<td>Indicator, no amount</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>3. Released capacity</strong></td>
+<td>Hours released as declared by users, valued with formula F4</td>
+<td>Surveys or each unit's estimate</td>
+<td>Declared or estimated. <strong>Never validated.</strong></td>
+<td>No (rule 3)</td>
+</tr>
+<tr>
+<td><strong>4. Realised value</strong></td>
+<td>Lower actual cost (hiring avoided, less overtime, outsourcing not renewed, licences retired) or capacity reassigned to an identified activity</td>
+<td>Accounts and management control</td>
+<td>Validated</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rules:</p>
+<ol>
+<li><strong>One initiative, several units.</strong> The cross-unit initiative has a corporate sponsor. Each unit has its own business owner of the benefit, who declares the unit's share (document 43 §6.4).</li>
+<li><strong>A roll-out that can be measured.</strong> The roll-out is staggered by unit so that it can be measured with difference-in-differences (section 7.1, criterion 2). Another option is to assign licences at random among eligible people. If the tool is rolled out across the whole company at once, only an expert estimate is possible, and it never allows validation.</li>
+<li><strong>Adoption threshold.</strong> G2 sets a minimum percentage of active over assigned licences. In each unit in use that falls below the threshold, the roll-out is reviewed or unused licences are withdrawn. A unit keeps paying for the tool because it uses it, not out of inertia.</li>
+<li><strong>No double counting with each unit's own use cases.</strong> If a unit also has its own use case on the same process, document 43 §6 applies: the generic saving of the cross-unit tool is not claimed again.</li>
+<li><strong>Net value with and without cross-unit initiatives.</strong> In reports to the board, the portfolio's net value is shown with and without cross-unit initiatives and platforms (section 11.1). A large and certain cost therefore neither hides nor inflates the result of the business use cases.</li>
+<li><strong>Indirect value is not converted into euros.</strong> Usage culture, maturity or better permissions and data are recorded in the maturity model (document 11) and in sphere 05 Data. The main risk of these tools is showing a person information they could access through inherited or excessive permissions. It goes in the risk matrix (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>) and is reviewed before each roll-out wave.</li>
+</ol>
+<p><strong>Illustrative example</strong> (fictitious data, the same as in the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> demo register):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Roll-out</th>
+<th>Active / assigned licences</th>
+<th>Hours released per month (declared)</th>
+<th>Annual cost</th>
+<th>Realised value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finance</td>
+<td>In use</td>
+<td>792 / 900 (88 %)</td>
+<td>7,200</td>
+<td>€324,000</td>
+<td>€540,000, validated (accounting close outsourcing not renewed)</td>
+</tr>
+<tr>
+<td>Commercial</td>
+<td>In use</td>
+<td>624 / 1,200 (52 %)</td>
+<td>5,100</td>
+<td>€432,000</td>
+<td>€180,000, declared (previous tool retired)</td>
+</tr>
+<tr>
+<td>Customer service</td>
+<td>Pilot</td>
+<td>356 / 400 (89 %)</td>
+<td>1,900</td>
+<td>€144,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Shared (no unit)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>€260,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>14,200</strong></td>
+<td><strong>€1,160,000</strong></td>
+<td><strong>€720,000</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Reading for the board: the initiative's annual net value is 720,000 − 1,160,000 = <strong>−€440,000</strong>. The 14,200 hours declared per month are not savings until they are realised. Commercial is below the 60 % adoption threshold and declares released hours with no destination. Extending the tool to new units is therefore conditional on reviewing Commercial's licences and on the unit declaring how its hours are realised.</p>
+<blockquote>
+<p><strong>Why it matters.</strong> A cross-unit tool has a large, certain cost that is visible from day one, and a value spread across many people and units. If it is measured like any other use case, one of two things happens: declared hours are added up and the portfolio is inflated, or nothing is measured and the tool keeps being paid for out of inertia. The ladder by unit shows where the tool is used, where it produces value and where licences should be withdrawn. The committee and the board can then decide on extending it with data rather than surveys.</p>
+</blockquote>
 <hr />
 <h2 id="horizon-discounting-and-single-economic-criterion"><span class="antetitulo">08</span>Horizon, discounting and single economic criterion</h2>
 <h3 id="8-1-the-problem-it-solves">8.1 The problem it solves</h3>
@@ -1385,6 +1526,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Expected losses avoided added to net value.</td>
 <td>Report it separately unless translated into observable cost (section 5.2).</td>
 </tr>
+<tr>
+<td>13</td>
+<td>Turning the hours declared by the users of a cross-unit tool into savings.</td>
+<td>Efficiencies equal to survey hours × hourly cost, with no accounting reflection and no breakdown by unit.</td>
+<td>Ladder in section 7.2: cost and adoption by unit; only realised value adds up.</td>
+</tr>
 </tbody>
 </table></div>
 <p>Presenting to the committee or the board as validated an amount that is not validated constitutes a <strong>major nonconformity</strong> (document 37). Relaxing stop criteria or changing the attribution method without approval is dealt with in accordance with 01 §7.4 and §12.</p>
@@ -1401,6 +1548,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>A comparison is made with the previous period</strong> and relevant variations are explained, including changes in status.</li>
 <li><strong>Each use case presented in detail includes its understandable description</strong> (rule 10). A maximum of three use cases are presented in detail per session, and answers follow the formats of the common specification: &quot;Yes&quot;, &quot;Yes, with one condition: …&quot;, &quot;Not yet, because … is missing&quot; or &quot;No, because …&quot;.</li>
 <li><strong>The composition of value by ambition level</strong> (efficiencies versus return) is shown to feed signals 1 and 2 of the transformation index.</li>
+<li><strong>Cross-unit initiatives and enabling platforms are shown separately</strong>, with their breakdown by business unit (cost, adoption, released capacity and realised value), and the portfolio's net value is given with and without them (section 7.2).</li>
 </ol>
 <h3 id="11-2-value-summary-template">11.2 Value summary template</h3>
 <p><em>Illustrative data.</em></p>
@@ -1528,27 +1676,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Initiative register</td>
-<td>Amounts, statuses, status change events, dates for agility.</td>
+<td>Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2).</td>
 </tr>
 <tr>
-<td><strong>T11</strong></td>
+<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a></strong></td>
 <td>Value hypothesis canvas and calculator</td>
 <td>Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method.</td>
 </tr>
 <tr>
-<td><strong>T12</strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Statuses per period, expiries, F5, F6 and F10.</td>
 </tr>
 <tr>
-<td><strong>T13</strong></td>
+<td><strong><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></strong></td>
 <td>Cost calculator per use case</td>
 <td>Full recurring cost and initial investment.</td>
 </tr>
 <tr>
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Board AI dashboard</td>
-<td>Presentation with the validated proportion visible.</td>
+<td>Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them.</td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></strong></td>
@@ -1644,6 +1792,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>First version. Develops the ten measurement rules and sets out the amount statuses with owners, evidence and expiry, the official formulas F1–F10, the attribution methods with their maximum status, the single economic criterion based on net benefit (NPV with the C2 horizon and rate; ROI and payback period for information only), the measurement of agility by risk and ambition, the value inflation errors and the rules for presentation to the board.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Adds section 7.2: cross-unit initiatives and enabling platforms, with the measurement ladder by unit (cost, adoption, released capacity and realised value), the adoption threshold and the portfolio's net value with and without them; error 13 and presentation rule 10.</td>
 </tr>
 </tbody>
 </table></div>

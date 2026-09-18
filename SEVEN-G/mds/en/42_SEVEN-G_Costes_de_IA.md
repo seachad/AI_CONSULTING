@@ -243,7 +243,7 @@ The forecast is recalculated daily for agents and for use cases with direct expo
 |---|---|---|
 | 50% of budget consumed | AI Operations Owner | Review the forecast. |
 | 80% of budget consumed or month-end forecast > 100% | AI Operations Owner and AI Product Owner | Analyse the cause: volume, change of model or price, loops, misuse. Decide on measures. |
-| 100% of budget consumed | AI Sponsor and AI Office | Apply the mode provided for in the design (limit, degrade or stop) or approve a supplement with a stated reason. |
+| 100% of budget consumed | AI Sponsor and AI Office | Apply the planned level of the cost-driven degradation cascade (document 52, section 10.3: optimise, validated fallback model, reduced scope or alternative without AI) or approve a supplement with a stated reason. |
 | Anomalous consumption (for example, one day far above the recent average) | AI Operations Owner and security | Treat it as a possible incident (document 37): loop, abuse, credential leak. |
 
 The thresholds are indicative and the company sets them in C2.
@@ -273,6 +273,8 @@ Agent E with charged model consumption of €45,000 per year; monthly budget: 45
 ### 8.5 Cost optimisation
 
 Before requesting more budget, the AI Technical Owner should review, with tests confirming that quality (IND-OPE-07) does not deteriorate: the model used compared with lower-cost alternatives, the length of the context sent, the reuse of responses or intermediate results, batch processing when an immediate response is not needed, and retries. Any model change in production follows the change management in document 52.
+
+A lower-cost model can be validated before G5 as the **fallback model** of the cost-driven degradation cascade (document 52, section 10.3): with the same evaluation set and the same bias tests as the primary model, activating it when the budget runs out is an approved operating mode and not a change. If the system spends more than a month degraded, the R6 decides between a supplement, permanent optimisation or a change of the primary model.
 
 ---
 
@@ -417,3 +419,4 @@ Minimum T13 validations: no amount without a category and component; no shared c
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the cost components (build, adoption, recurring and retirement), the nine categories with their equivalent in the dashboard, the total cost of ownership, the analytical allocation of shared costs with charging hierarchy, keys and examples, tagging, consumption forecasting and control with limits per agent, the cost per unit of outcome, the cost of stop decisions, integration with management control and the content of T13. |
+| 0.1 | 18-09-2026 | Response at 100% of the budget linked to the cost-driven degradation cascade in document 52 (section 10.3) and fallback model validated before G5 (section 8.5). |

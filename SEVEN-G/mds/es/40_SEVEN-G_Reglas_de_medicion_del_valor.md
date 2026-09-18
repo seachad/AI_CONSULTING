@@ -267,6 +267,8 @@ Estas fórmulas son las únicas válidas en SEVEN-G. Los documentos 41, 42 y 43,
 
 ## 7. Métodos de atribución
 
+### 7.1 Elección del método
+
 El método de atribución se elige en la fase 2, se aprueba en G2 y no se cambia sin aprobación del órgano que decidió G2 (01 §7.4, regla 6). Condiciona el estado máximo que puede alcanzar el valor.
 
 | Método | En qué consiste | Cuándo usarlo | Requisitos | Estado máximo |
@@ -285,6 +287,47 @@ Criterios de elección, en este orden:
 4. La estimación experta solo se admite con plan y fecha para sustituirla. En Optimizar no permite acreditar G5 ni G7; en Aumentar y Transformar puede sostener la hipótesis de G2, no el valor realizado.
 
 En las iniciativas de **Transformar** la atribución se aplica por etapa y se centra en la evidencia de mercado o de cliente exigida en G5 (01 §7.6): uso, conversión, ingresos iniciales o cambio operativo verificado.
+
+### 7.2 Iniciativas transversales y plataformas habilitadoras
+
+Algunas iniciativas no pertenecen a una sola unidad de negocio. Son **transversales**, como una herramienta que usan varias unidades (por ejemplo, un asistente generativo integrado en la suite ofimática), o son **plataformas habilitadoras**: capacidades comunes de datos, conocimiento o decisión que usan otros casos. Su valor no se mide igual que el de un caso de negocio.
+
+| Tipo | Ejemplo *(ilustrativo)* | Cómo se registra en T01 | Cómo se mide |
+|---|---|---|---|
+| **Plataforma habilitadora** | Plataforma común de datos para varios casos de IA | Una iniciativa que indica los casos que la usan (`alcance.habilita`) | Su valor se imputa a los casos que la usan (documento 10 §4.1, regla 3). En la plataforma solo cuentan su coste, su disponibilidad y los casos a los que sirve. |
+| **Transversal** | Asistente generativo en la suite ofimática para varias unidades | **Una sola iniciativa** con despliegue por unidad (`alcance.reparto`) e importes por unidad (`valores[].area`). No se abre una iniciativa por unidad. | Por unidad de negocio, con la escalera de medición de esta sección. |
+
+**Escalera de medición por unidad.** Cada peldaño solo cuenta si se cumple el anterior.
+
+| Peldaño | Qué se mide | Fuente | Estado máximo | ¿Suma en el neto? |
+|---|---|---|---|---|
+| **1. Coste** | Licencias, formación y gobierno. Cada unidad asume sus licencias; lo común (oficina de adopción, formación continua, revisión de permisos) va sin unidad. | Contratos y contabilidad | Validado | Se resta completo desde el primer día (prudencia asimétrica, sección 2) |
+| **2. Adopción** | Licencias activas sobre asignadas y usuarios activos semanales, por unidad | Informes de uso de la plataforma, no encuestas | Indicador, sin importe | No |
+| **3. Capacidad liberada** | Horas liberadas que declaran las personas, valoradas con la fórmula F4 | Encuestas o estimación de cada unidad | Declarado o estimado. **Nunca validado.** | No (regla 3) |
+| **4. Valor materializado** | Menor coste real (contratación evitada, menos horas extraordinarias, externalización no renovada, licencias retiradas) o capacidad reasignada a una actividad identificada | Contabilidad y control de gestión | Validado | Sí |
+
+Reglas:
+
+1. **Una iniciativa, varias unidades.** La iniciativa transversal tiene un patrocinador corporativo. Cada unidad tiene su responsable de negocio del beneficio, que declara la parte de su unidad (documento 43 §6.4).
+2. **Despliegue que permita medir.** El despliegue se hace escalonado por unidades, para poder medir con diferencias en diferencias (sección 7.1, criterio 2). Otra opción es asignar las licencias al azar entre las personas elegibles. Si se despliega en toda la compañía de una vez, solo cabe la estimación experta, que nunca permite validar.
+3. **Umbral de adopción.** G2 fija un porcentaje mínimo de licencias activas sobre asignadas. En cada unidad en uso por debajo del umbral se revisa el despliegue o se retiran las licencias sin uso. Una unidad sigue pagando la herramienta porque la usa, no por inercia.
+4. **Sin doble conteo con los casos de cada unidad.** Si una unidad tiene además un caso propio sobre el mismo proceso, se aplica el documento 43 §6: el ahorro genérico de la herramienta transversal no se reclama otra vez.
+5. **Neto con y sin transversales.** En los informes al consejo, el neto de la cartera se muestra con y sin las iniciativas transversales y las plataformas (sección 11.1). Así, un coste grande y seguro no oculta ni infla el resultado de los casos de negocio.
+6. **El valor indirecto no se convierte en euros.** La cultura de uso, la madurez o la mejora de los permisos y de los datos se recogen en el modelo de madurez (documento 11) y en la esfera 05 Datos. El riesgo principal de estas herramientas es mostrar a una persona información a la que tenía acceso por permisos heredados o excesivos. Va en la matriz de riesgos (P12) y se revisa antes de cada ola del despliegue.
+
+**Ejemplo ilustrativo** (datos ficticios, los mismos del registro de demostración de T01):
+
+| Unidad | Despliegue | Licencias activas / asignadas | Horas liberadas al mes (declaradas) | Coste anual | Valor materializado |
+|---|---|---|---|---|---|
+| Finanzas | En uso | 792 / 900 (88 %) | 7.200 | 324.000 € | 540.000 €, validado (externalización del cierre contable no renovada) |
+| Comercial | En uso | 624 / 1.200 (52 %) | 5.100 | 432.000 € | 180.000 €, declarado (herramienta anterior retirada) |
+| Atención al cliente | Piloto | 356 / 400 (89 %) | 1.900 | 144.000 € | — |
+| Común (sin unidad) | — | — | — | 260.000 € | — |
+| **Total** | | | **14.200** | **1.160.000 €** | **720.000 €** |
+
+Lectura para el consejo: el neto anual de la iniciativa es 720.000 − 1.160.000 = **−440.000 €**. Las 14.200 horas declaradas al mes no son ahorro mientras no se materialicen. Comercial está por debajo del umbral de adopción del 60 % y declara horas liberadas sin destino. Por eso, ampliar la herramienta a nuevas unidades queda condicionado a revisar las licencias de Comercial y a que declare en qué se materializan sus horas.
+
+> **Por qué importa.** Una herramienta transversal tiene un coste grande, seguro y visible desde el primer día, y un valor repartido entre muchas personas y unidades. Si se mide como un caso más, pasa una de dos cosas: se suman las horas declaradas y se infla la cartera, o no se mide nada y se sigue pagando por inercia. La escalera por unidad deja ver dónde se usa la herramienta, dónde produce valor y dónde conviene retirar licencias. Así el comité y el consejo deciden sobre la ampliación con datos y no con encuestas.
 
 ---
 
@@ -386,6 +429,7 @@ La compañía aprueba sus referencias en C2 y puede fijar una **vía rápida** p
 | 10 | Cambiar la métrica o el umbral tras ver los resultados. | Diferencias entre la hipótesis aprobada en G2 y la medida en G5. | Volver a la hipótesis aprobada; el cambio requiere aprobación (01 §7.4). |
 | 11 | Presentar valor esperado como realizado. | Importes del lienzo de hipótesis en informes de producción. | Separar esperado y realizado; el esperado nunca está validado. |
 | 12 | Contar el riesgo evitado como ahorro. | Pérdidas esperadas evitadas sumadas al neto. | Informarlo aparte salvo traducción a coste observable (sección 5.2). |
+| 13 | Convertir en ahorro las horas que declaran los usuarios de una herramienta transversal. | Eficiencias iguales a horas de encuesta × coste horario, sin reflejo contable ni desglose por unidad. | Escalera de la sección 7.2: coste y adopción por unidad; solo suma el valor materializado. |
 
 Presentar al comité o al consejo como validado un importe que no lo está constituye una **no conformidad mayor** (documento 37). Relajar criterios de parada o cambiar el método de atribución sin aprobación se trata conforme a 01 §7.4 y §12.
 
@@ -404,6 +448,7 @@ Presentar al comité o al consejo como validado un importe que no lo está const
 7. **Se compara con el periodo anterior** y se explican las variaciones relevantes, incluidas las de estado.
 8. **Cada caso presentado en detalle incluye su descripción comprensible** (regla 10). Se presentan como máximo tres casos en detalle por sesión y se responde con los formatos de la especificación común: "Sí", "Sí, con una condición: …", "Todavía no, porque falta …" o "No, porque …".
 9. **La composición del valor por nivel de ambición** (eficiencias frente a retorno) se muestra para alimentar las señales 1 y 2 del índice de transformación.
+10. **Las iniciativas transversales y las plataformas habilitadoras se muestran aparte**, con su desglose por unidad de negocio (coste, adopción, capacidad liberada y valor materializado), y el neto de la cartera se da con y sin ellas (sección 7.2).
 
 ### 11.2 Modelo de resumen de valor
 
@@ -442,11 +487,11 @@ Lectura para el consejo: la cartera genera un neto anual positivo según lo decl
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Importes, estados, eventos de cambio de estado, fechas para agilidad. |
+| **T01** | Registro de iniciativas | Importes, estados, eventos de cambio de estado, fechas para agilidad; alcance de las iniciativas transversales y plataformas, con despliegue, adopción e importes por unidad (sección 7.2). |
 | **T11** | Lienzo y calculadora de hipótesis de valor | Fórmulas F1–F4 y F7–F9 en fase 2 y 3; método de atribución. |
 | **T12** | Seguimiento de realización de valor | Estados por periodo, caducidades, F5, F6 y F10. |
 | **T13** | Calculadora de costes por caso | Coste recurrente completo e inversión inicial. |
-| **T17** | Panel de IA para el consejo | Presentación con proporción validada visible. |
+| **T17** | Panel de IA para el consejo | Presentación con proporción validada visible; tarjeta de iniciativas transversales y plataformas con el neto de la cartera con y sin ellas. |
 | **P08** | Lienzo de hipótesis de valor | Hipótesis, método de atribución y criterios de parada. |
 | **P09** | Línea base | Medición de referencia. |
 | **P22** | Resultados de validación y del piloto | Valor medido frente a la hipótesis en G5. |
@@ -477,3 +522,4 @@ Lectura para el consejo: la cartera genera un neto anual positivo según lo decl
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Desarrolla las diez reglas de medición, fija los estados del importe con responsables, evidencia y caducidad, las fórmulas oficiales F1–F10, los métodos de atribución con su estado máximo, el criterio económico único sobre beneficio neto (VAN con horizonte y tasa de C2; ROI y plazo de recuperación informativos), la medición de la agilidad por riesgo y ambición, los errores de inflado y las reglas de presentación al consejo. |
+| 0.1 | 18-09-2026 | Añade la sección 7.2: iniciativas transversales y plataformas habilitadoras, con la escalera de medición por unidad (coste, adopción, capacidad liberada y valor materializado), el umbral de adopción y el neto de la cartera con y sin ellas; el error 13 y la regla de presentación 10. |

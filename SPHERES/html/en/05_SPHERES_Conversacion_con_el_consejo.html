@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SPHERES · Conversation with the board"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -793,7 +797,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>From the diagnosis onwards, the map is reviewed <strong>every quarter</strong> in the board's oversight, with the gaps between target ambition and the portfolio, and <strong>every year</strong> in the review of the AI strategy. In SEVEN-G, the board AI dashboard (T17) shows the portfolio heat map, and the register of recommendations and decisions keeps what the board requests and its fulfilment.</p>
+<p>From the diagnosis onwards, the map is reviewed <strong>every quarter</strong> in the board's oversight, with the gaps between target ambition and the portfolio, and <strong>every year</strong> in the review of the AI strategy. In SEVEN-G, the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>) shows the portfolio heat map, and the register of recommendations and decisions keeps what the board requests and its fulfilment.</p>
 <hr />
 <h2 id="the-role-of-the-person-supporting-the-board"><span class="antetitulo">09</span>The role of the person supporting the board</h2>
 <p>The session may be led by management, a director with AI experience or an internal or external adviser. In all cases, these rules should be respected:</p>

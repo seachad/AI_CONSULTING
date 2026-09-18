@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Registro de decisión de gate"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -431,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>T03 Gestor de <em>gates</em> (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Los estados y el cálculo del grado de cumplimiento siguen 03 §3.4.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> Gestor de <em>gates</em> (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Los estados y el cálculo del grado de cumplimiento siguen 03 §3.4.</td>
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
@@ -463,7 +467,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (T01).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -488,12 +492,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad</td>
 <td></td>
-<td>Lite · Enterprise (P04).</td>
+<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
 </tr>
 <tr>
 <td>Nivel de ambición</td>
 <td></td>
-<td>Optimizar · Aumentar · Transformar (P07).</td>
+<td>Optimizar · Aumentar · Transformar (<a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria</td>
@@ -592,7 +596,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (documento 21)</th>
+<th>Código (<a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>)</th>
 <th>Criterio</th>
 <th>Obligatorio (Sí · No)</th>
 <th>Estado</th>
@@ -873,7 +877,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Riesgos aceptados en esta decisión <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Riesgo, nivel residual y quién lo acepta según su nivel (documento 33).</td>
+<td>Riesgo, nivel residual y quién lo acepta según su nivel (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1041,7 +1045,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Recomendación del consejo vinculada <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Identificador del registro de recomendaciones (documento 62), si existe.</td>
+<td>Identificador del registro de recomendaciones (<a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>), si existe.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1199,7 +1203,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Oficina de IA</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Auditor de IA</td>
-<td>Comité de IA tras firma multinivel (P23)</td>
+<td>Comité de IA tras firma multinivel (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>)</td>
 </tr>
 <tr>
 <td>R6</td>

@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · AI audit framework"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -704,7 +708,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Unauthorised use of AI</td>
-<td>Are the detection sources implemented? Are detected uses regularised on time? Does T21 match the reality observed?</td>
+<td>Are the detection sources implemented? Are detected uses regularised on time? Does <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> match the reality observed?</td>
 </tr>
 <tr>
 <td>Agents capable of taking action</td>
@@ -739,7 +743,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="audit-universe-and-risk-based-annual-plan"><span class="antetitulo">05</span>Audit universe and risk-based annual plan</h2>
 <h3 id="5-1-audit-universe">5.1 Audit universe</h3>
-<p>The audit universe is built from the <strong>AI system inventory</strong> (T02, document 32) and the <strong>initiative register</strong> (T01), and is completed with:</p>
+<p>The audit universe is built from the <strong>AI system inventory</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, document 32) and the <strong>initiative register</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), and is completed with:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -750,7 +754,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Each AI system in development, pilot or production</td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Each initiative with <em>gates</em> planned for the year</td>
@@ -758,7 +762,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Each AI supplier at level N2 or N3</td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>The framework processes: corporate cycle, portfolio management, inventory, risks, measurement, nonconformities, policies and literacy</td>
@@ -766,7 +770,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Cross-cutting themes identified by the second line or through incidents</td>
-<td>Risk reports; T08</td>
+<td>Risk reports; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -987,7 +991,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>7. Recording</strong></td>
-<td>Registration of nonconformities in T08; outcome in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>/T03; archiving of the audit file.</td>
+<td>Registration of nonconformities in <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>; outcome in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>/T03; archiving of the audit file.</td>
 <td>Records</td>
 <td>With the final report</td>
 </tr>
@@ -1051,7 +1055,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>7</td>
 <td>Segregation of duties</td>
 <td>Author, verifier and decision-maker are different persons with no incompatibilities (30 §5).</td>
-<td>Review of <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> and T03</td>
+<td>Review of <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>8</td>
@@ -1357,7 +1361,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Agents</strong></td>
 <td>Inventory of identities, credentials and permissions against the actions required.</td>
 <td>Excessive permissions; shared or non-rotated credentials.</td>
-<td>Document 35, T10</td>
+<td>Document 35, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td></td>
@@ -1547,7 +1551,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>For <strong><em>gate</em> audits</strong>, an abridged version integrated into the decision record (P29) and T03 is used: outcome, criteria in Not met or Pending, findings and limitations.</p>
+<p>For <strong><em>gate</em> audits</strong>, an abridged version integrated into the decision record (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>) and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> is used: outcome, criteria in Not met or Pending, findings and limitations.</p>
 <h3 id="9-2-finding-record">9.2 Finding record</h3>
 <div class="tabla"><table>
 <thead>
@@ -1559,7 +1563,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Code</td>
-<td><code>H-01</code>, <code>H-02</code>… within the report; nonconformities are also recorded in T08 with the code <code>NC-AAAA-NNN</code>.</td>
+<td><code>H-01</code>, <code>H-02</code>… within the report; nonconformities are also recorded in <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> with the code <code>NC-AAAA-NNN</code>.</td>
 </tr>
 <tr>
 <td>Title</td>
@@ -1716,7 +1720,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>2.</strong> Inventory with regulatory classification, intensity and owner; initiative register with the traceability in 01 §6.11.</td>
-<td>T02 and <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; quality indicators (32 §8).</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; quality indicators (32 §8).</td>
 <td>Reconciliation of the inventory with independent sources (32 §9); sample of records (95%/10%: 29) against reality; sample of initiatives with phase and <em>gate</em> events.</td>
 <td>Major; critical if there are non-inventoried high-risk systems</td>
 </tr>
@@ -1728,7 +1732,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>4.</strong> All new initiatives go through the lifecycle with their <em>gates</em> recorded.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
 <td>Analysis of the entire population: initiatives registered after adoption without G0 or with skipped phases; sample of <em>gates</em> with the tests in section 6.2 (including prior existence).</td>
 <td>Major; critical if there are systems in production without G5</td>
 </tr>
@@ -1740,13 +1744,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>6.</strong> Applies the value measurement rules and reports to the board with the dashboard.</td>
-<td>Board dashboard; T12; minutes.</td>
+<td>Board dashboard; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>; minutes.</td>
 <td>Sample of use cases: formula, validation status, released capacity, single attribution (rules in 00 §6); check that the board receives the dashboard in C4.</td>
 <td>Major</td>
 </tr>
 <tr>
 <td><strong>7.</strong> Manages nonconformities using the process in 01 §12.</td>
-<td>T08; reports to the board committee.</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>; reports to the board committee.</td>
 <td>Analysis of all nonconformities: classification, containment and plan time limits, closure with effectiveness.</td>
 <td>Major</td>
 </tr>
@@ -1811,7 +1815,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>9.2 Documented information</td>
-<td>Audit files, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03 and T08.</td>
+<td>Audit files, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> and <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>.</td>
 </tr>
 <tr>
 <td>9.3 Management review</td>
@@ -1880,7 +1884,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T02</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Audit universe and prioritisation.</td>
 </tr>
@@ -1890,27 +1894,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Forecast of <em>gates</em>, events, assignment and rotation of auditors.</td>
 </tr>
 <tr>
-<td><strong>T03</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td><em>Gate</em> manager</td>
 <td>Verification outcome per criterion and blocking of decisions in the event of Nonconformant.</td>
 </tr>
 <tr>
-<td><strong>T08</strong></td>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Registration and follow-up of nonconformities arising from audits.</td>
 </tr>
 <tr>
-<td><strong>T09</strong></td>
+<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></strong></td>
 <td>AI supplier register</td>
 <td>Universe and results of supplier audits.</td>
 </tr>
 <tr>
-<td><strong>T10</strong></td>
+<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></strong></td>
 <td>Agent security assessment</td>
 <td>Technical testing of agents.</td>
 </tr>
 <tr>
-<td><strong>T12</strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Recalculation and validation of value.</td>
 </tr>
@@ -1936,7 +1940,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Tool requirements arising from this document:</strong> T03 must prevent a <em>gate</em> decision from being recorded with a Nonconformant verification outcome, except Stop when the team withdraws the request and proposes to stop; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> must record the auditor, declaration of independence and verification date; T08 must link each nonconformity to the audit from which it originated and control the time limits in section 10.</p>
+<p><strong>Tool requirements arising from this document:</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> must prevent a <em>gate</em> decision from being recorded with a Nonconformant verification outcome, except Stop when the team withdraws the request and proposes to stop; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> must record the auditor, declaration of independence and verification date; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> must link each nonconformity to the audit from which it originated and control the time limits in section 10.</p>
 <hr />
 <h2 id="related-documents"><span class="antetitulo">14</span>Related documents</h2>
 <div class="tabla"><table>

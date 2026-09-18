@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Seguridad de IA y agentes"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -421,7 +425,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Uso corporativo de IA de propósito general en lo que afecta a fuga de información.</td>
-<td>La política de uso aceptable (documento 31).</td>
+<td>La política de uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
 </tr>
 <tr>
 <td>Exposición corporativa a la IA ofensiva: suplantación, fraude, explotación acelerada.</td>
@@ -661,7 +665,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="4-2-permisos-minimos">4.2 Permisos mínimos</h3>
 <ul>
 <li>Lista cerrada de herramientas permitidas y, para cada una, operaciones y datos permitidos (AG-02). Lectura y escritura se autorizan por separado.</li>
-<li>Los permisos se justifican en el diseño de seguridad (P18) y se revisan periódicamente (AG-20).</li>
+<li>Los permisos se justifican en el diseño de seguridad (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) y se revisan periódicamente (AG-20).</li>
 <li>Separación de privilegios: el componente que lee contenido no confiable no dispone, sin control intermedio, de herramientas que ejecutan acciones sensibles (AG-12).</li>
 </ul>
 <h3 id="4-3-credenciales">4.3 Credenciales</h3>
@@ -713,7 +717,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="4-7-interruptor-de-parada">4.7 Interruptor de parada</h3>
 <ul>
 <li>Mecanismo para detener de inmediato el agente completo o una capacidad concreta (una herramienta, un tipo de acción) <strong>sin desplegar código</strong> (AG-09).</li>
-<li>Activable por el responsable de operación de IA y por seguridad, con procedimiento en el manual de operación (P24).</li>
+<li>Activable por el responsable de operación de IA y por seguridad, con procedimiento en el manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</li>
 <li>Al activarse: revoca credenciales, bloquea nuevas acciones, conserva registros y activa el proceso alternativo.</li>
 <li>Se prueba antes de G5 y periódicamente (sección 5.3). Su tiempo de efecto se mide.</li>
 </ul>
@@ -762,11 +766,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="5-2-reglas-de-asignacion">5.2 Reglas de asignación</h3>
 <ol>
-<li>El nivel se propone en la fase 3, se fija en la fase 4 (P17 y <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) y se registra en el inventario (T02). Se asigna el <strong>nivel más alto</strong> de las acciones que el sistema puede ejecutar, no el de su uso habitual.</li>
+<li>El nivel se propone en la fase 3, se fija en la fase 4 (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> y <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) y se registra en el inventario (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>). Se asigna el <strong>nivel más alto</strong> de las acciones que el sistema puede ejecutar, no el de su uso habitual.</li>
 <li>Un sistema A2 o A3 cuyas acciones tienen efecto sobre terceros, dinero, datos personales o sistemas de producción cumple el criterio Enterprise &quot;agentes con capacidad de actuar&quot; (01 §9.2).</li>
 <li><strong>A3</strong> requiere decisión del comité de IA en G4 y en G5, con justificación de por qué A2 no basta.</li>
 <li>Subir de nivel es un cambio relevante: exige revaloración de riesgos, actualización de <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> y nueva decisión del <em>gate</em> correspondiente.</li>
-<li>En caso de incidente S1 o S2 relacionado con la autonomía, el sistema baja provisionalmente de nivel o se detiene hasta el análisis posterior (documento 37).</li>
+<li>En caso de incidente S1 o S2 relacionado con la autonomía, el sistema baja provisionalmente de nivel o se detiene hasta el análisis posterior (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</li>
 </ol>
 <h3 id="5-3-controles-minimos-por-nivel">5.3 Controles mínimos por nivel</h3>
 <p><strong>Sí</strong> = obligatorio · <strong>Rec.</strong> = recomendado; su omisión se justifica y registra · <strong>—</strong> = no aplica.</p>
@@ -1037,7 +1041,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>SEG-08</strong></td>
 <td>Integridad de datos de entrenamiento y conocimiento</td>
 <td>Procedencia verificada, control de cambios y detección de anomalías en datos de entrenamiento, ajuste, evaluación y bases de conocimiento.</td>
-<td>Linaje (P16); controles de ingesta.</td>
+<td>Linaje (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>); controles de ingesta.</td>
 <td>IA</td>
 <td>4, 6</td>
 </tr>
@@ -1085,7 +1089,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>SEG-14</strong></td>
 <td>Respuesta a incidentes de IA</td>
 <td>Procedimientos para inyección, fuga, acción no autorizada y compromiso de agente, conectados con el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</td>
-<td>Plan (P26); simulacro.</td>
+<td>Plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); simulacro.</td>
 <td>IA, CORP</td>
 <td>5, 6</td>
 </tr>
@@ -1133,7 +1137,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>SEG-20</strong></td>
 <td>Control del uso corporativo de IA</td>
 <td>Herramientas aprobadas, bloqueo o supervisión de las no autorizadas, prevención de fuga hacia servicios externos.</td>
-<td>Monitor de uso (T21).</td>
+<td>Monitor de uso (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>).</td>
 <td>CORP</td>
 <td>C4</td>
 </tr>
@@ -1198,7 +1202,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>AG-08</strong></td>
 <td>Validación humana</td>
 <td>Lista de acciones sensibles; validación informada; medición de rechazos y tiempos.</td>
-<td>Lista y diseño (P17) · Prueba con usuarios · Tasa de rechazo</td>
+<td>Lista y diseño (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) · Prueba con usuarios · Tasa de rechazo</td>
 </tr>
 <tr>
 <td><strong>AG-09</strong></td>
@@ -1471,7 +1475,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>G3</strong></td>
-<td>Riesgos RT-GEN y RT-SEG valorados; nivel de autonomía propuesto; evaluación de seguridad del proveedor (documento 36).</td>
+<td>Riesgos RT-GEN y RT-SEG valorados; nivel de autonomía propuesto; evaluación de seguridad del proveedor (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</td>
 </tr>
 <tr>
 <td><strong>G4</strong></td>
@@ -1509,9 +1513,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Modelo de amenazas, nivel de autonomía, identidades, matriz de permisos, mandato y control de intención, límites, acciones sensibles, interruptor, registro, aislamiento, plan de pruebas y estado de cada control SEG y AG. Fase 4; se actualiza en 5 y 6.</td>
 </tr>
 <tr>
-<td><strong>T10</strong></td>
+<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></strong></td>
 <td>Evaluación de seguridad de agentes</td>
-<td>A partir del nivel de autonomía, genera los controles SEG y AG exigibles, registra su estado (cumple, no cumple, no aplica, pendiente) con evidencia y bloquea G4 o G5 si un control crítico no está diseñado o probado. Lista de verificación en T03.</td>
+<td>A partir del nivel de autonomía, genera los controles SEG y AG exigibles, registra su estado (cumple, no cumple, no aplica, pendiente) con evidencia y bloquea G4 o G5 si un control crítico no está diseñado o probado. Lista de verificación en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>.</td>
 </tr>
 <tr>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
@@ -1519,7 +1523,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Acciones sensibles y validación; procedimiento del interruptor; respuesta a incidentes de IA.</td>
 </tr>
 <tr>
-<td>T02 · T06 · T08 · <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · T21</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> · <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></td>
 <td>Inventario · Riesgos · Incidentes · Panel del consejo · Monitor de uso corporativo</td>
 <td>Nivel de autonomía, riesgos, incidentes, indicadores y uso no autorizado.</td>
 </tr>

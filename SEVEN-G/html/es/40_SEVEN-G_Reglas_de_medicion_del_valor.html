@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Reglas de medición del valor"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -405,8 +409,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
-<p>Este documento desarrolla las diez reglas de medición del valor de SEVEN-G (documento 00, sección 6) y fija las definiciones, fórmulas y procedimientos que deben aplicar todas las iniciativas, la cartera y los informes al consejo.</p>
-<p>Se aplica a toda iniciativa registrada en el registro de iniciativas (T01), en todas las fases, y a toda cifra de valor que se presente al comité de IA o al consejo. Los indicadores que se derivan de estas reglas están en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>; el cálculo de costes, en el <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>; y el proceso de realización de beneficios, en el <a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>.</p>
+<p>Este documento desarrolla las diez reglas de medición del valor de SEVEN-G (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>, sección 6) y fija las definiciones, fórmulas y procedimientos que deben aplicar todas las iniciativas, la cartera y los informes al consejo.</p>
+<p>Se aplica a toda iniciativa registrada en el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), en todas las fases, y a toda cifra de valor que se presente al comité de IA o al consejo. Los indicadores que se derivan de estas reglas están en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>; el cálculo de costes, en el <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>; y el proceso de realización de beneficios, en el <a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>.</p>
 <p>Las cifras de los ejemplos son <strong>ficticias e ilustrativas</strong>. No son referencias de mercado.</p>
 <hr />
 <h2 id="principios-de-la-medicion"><span class="antetitulo">02</span>Principios de la medición</h2>
@@ -511,7 +515,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td>Ningún importe de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> o T12 tiene el estado vacío; todos los totales del paquete del consejo muestran la proporción validada; los importes validados tienen validador, fecha y evidencia.</td>
+<td>Ningún importe de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> o <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> tiene el estado vacío; todos los totales del paquete del consejo muestran la proporción validada; los importes validados tienen validador, fecha y evidencia.</td>
 </tr>
 </tbody>
 </table></div>
@@ -601,7 +605,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>En la fase 2 cada iniciativa declara con qué otros casos comparte métrica, proceso o población. El efecto conjunto se mide una vez y se reparte con una clave declarada (documento 43, sección 6). La clave se aprueba por control de gestión y se registra en ambos casos.</td>
+<td>En la fase 2 cada iniciativa declara con qué otros casos comparte métrica, proceso o población. El efecto conjunto se mide una vez y se reparte con una clave declarada (<a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>, sección 6). La clave se aprueba por control de gestión y se registra en ambos casos.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -647,7 +651,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> tiene los tres bloques con importes separados; el neto se recalcula automáticamente y coincide con el informado; el coste recurrente concilia con T13.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> tiene los tres bloques con importes separados; el neto se recalcula automáticamente y coincide con el informado; el coste recurrente concilia con <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -737,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>Cada propuesta de inversión adicional (nueva iniciativa, ampliación, escalado) calcula el neto adicional por euro (fórmula F3). La cartera se ordena por ese indicador, con restricciones de riesgo, capacidad y equilibrio de ambición (documento 14). Los casos con neto anual negativo se muestran siempre de forma individual.</td>
+<td>Cada propuesta de inversión adicional (nueva iniciativa, ampliación, escalado) calcula el neto adicional por euro (fórmula F3). La cartera se ordena por ese indicador, con restricciones de riesgo, capacidad y equilibrio de ambición (<a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>). Los casos con neto anual negativo se muestran siempre de forma individual.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -771,7 +775,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>Cada caso tiene una descripción de una o dos frases que responde a: qué hace, quién lo usa, sobre qué proceso o decisión actúa y qué papel tiene la persona. Se registra en la ficha de caso de uso (P31) y en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Sin descripción, el caso no se presenta al consejo.</td>
+<td>Cada caso tiene una descripción de una o dos frases que responde a: qué hace, quién lo usa, sobre qué proceso o decisión actúa y qué papel tiene la persona. Se registra en la ficha de caso de uso (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) y en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Sin descripción, el caso no se presenta al consejo.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -831,7 +835,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>El coste no tiene rebaja por estado.</strong> El coste recurrente se imputa completo aunque no esté validado; si se desconoce, el neto es &quot;sin dato&quot; (regla 8).</li>
 <li><strong>Degradación, no borrado.</strong> Un importe validado que caduca pasa a declarado hasta su revalidación; un declarado que el validador rechaza se corrige o pasa a estimado con motivo. Todo cambio de estado es un evento en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</li>
 <li><strong>El valor recurrente se revalida cada año.</strong> Validar un ejercicio no valida los siguientes.</li>
-<li>Los plazos de caducidad son <strong>orientativos</strong> y la compañía los fija en C2 (documento 13). No pueden ampliarse para una iniciativa concreta.</li>
+<li>Los plazos de caducidad son <strong>orientativos</strong> y la compañía los fija en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>). No pueden ampliarse para una iniciativa concreta.</li>
 </ol>
 <figure class="grafico"><div class="g-titulo">Ciclo de estados de un importe</div><div class="g-sub">El estado mejora con evidencia y se degrada con el tiempo o con cambios materiales</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
   EST["Estimado · comité, consejo o evaluador"] -->|"El área aporta dato con fórmula"| DEC["Declarado · área responsable"]
@@ -885,7 +889,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Corte y coste</strong></td>
 <td>¿El importe corresponde al periodo, no se repite y el coste recurrente es completo?</td>
-<td>Conciliación con periodos anteriores en T12 y con T13.</td>
+<td>Conciliación con periodos anteriores en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> y con <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -942,7 +946,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Cumplimiento</strong></td>
 <td>Capacidad de cumplir una obligación regulatoria o contractual.</td>
-<td>Por separado, vinculado a la obligación (documento 34).</td>
+<td>Por separado, vinculado a la obligación (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 <td>Cuando sustituye un coste de cumplimiento real (horas de control manual, servicio externo) medido con fórmula. Entonces es <strong>eficiencia</strong>.</td>
 </tr>
 </tbody>
@@ -1068,6 +1072,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Coste por unidad de resultado</strong> (coste recurrente del periodo ÷ unidades de resultado útil) se define en el <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>.</p>
 <hr />
 <h2 id="metodos-de-atribucion"><span class="antetitulo">07</span>Métodos de atribución</h2>
+<h3 id="7-1-eleccion-del-metodo">7.1 Elección del método</h3>
 <p>El método de atribución se elige en la fase 2, se aprueba en G2 y no se cambia sin aprobación del órgano que decidió G2 (01 §7.4, regla 6). Condiciona el estado máximo que puede alcanzar el valor.</p>
 <div class="tabla"><table>
 <thead>
@@ -1125,6 +1130,142 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>La estimación experta solo se admite con plan y fecha para sustituirla. En Optimizar no permite acreditar G5 ni G7; en Aumentar y Transformar puede sostener la hipótesis de G2, no el valor realizado.</li>
 </ol>
 <p>En las iniciativas de <strong>Transformar</strong> la atribución se aplica por etapa y se centra en la evidencia de mercado o de cliente exigida en G5 (01 §7.6): uso, conversión, ingresos iniciales o cambio operativo verificado.</p>
+<h3 id="7-2-iniciativas-transversales-y-plataformas-habilitadoras">7.2 Iniciativas transversales y plataformas habilitadoras</h3>
+<p>Algunas iniciativas no pertenecen a una sola unidad de negocio. Son <strong>transversales</strong>, como una herramienta que usan varias unidades (por ejemplo, un asistente generativo integrado en la suite ofimática), o son <strong>plataformas habilitadoras</strong>: capacidades comunes de datos, conocimiento o decisión que usan otros casos. Su valor no se mide igual que el de un caso de negocio.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Ejemplo <em>(ilustrativo)</em></th>
+<th>Cómo se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></th>
+<th>Cómo se mide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plataforma habilitadora</strong></td>
+<td>Plataforma común de datos para varios casos de IA</td>
+<td>Una iniciativa que indica los casos que la usan (<code>alcance.habilita</code>)</td>
+<td>Su valor se imputa a los casos que la usan (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a> §4.1, regla 3). En la plataforma solo cuentan su coste, su disponibilidad y los casos a los que sirve.</td>
+</tr>
+<tr>
+<td><strong>Transversal</strong></td>
+<td>Asistente generativo en la suite ofimática para varias unidades</td>
+<td><strong>Una sola iniciativa</strong> con despliegue por unidad (<code>alcance.reparto</code>) e importes por unidad (<code>valores[].area</code>). No se abre una iniciativa por unidad.</td>
+<td>Por unidad de negocio, con la escalera de medición de esta sección.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Escalera de medición por unidad.</strong> Cada peldaño solo cuenta si se cumple el anterior.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Peldaño</th>
+<th>Qué se mide</th>
+<th>Fuente</th>
+<th>Estado máximo</th>
+<th>¿Suma en el neto?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Coste</strong></td>
+<td>Licencias, formación y gobierno. Cada unidad asume sus licencias; lo común (oficina de adopción, formación continua, revisión de permisos) va sin unidad.</td>
+<td>Contratos y contabilidad</td>
+<td>Validado</td>
+<td>Se resta completo desde el primer día (prudencia asimétrica, sección 2)</td>
+</tr>
+<tr>
+<td><strong>2. Adopción</strong></td>
+<td>Licencias activas sobre asignadas y usuarios activos semanales, por unidad</td>
+<td>Informes de uso de la plataforma, no encuestas</td>
+<td>Indicador, sin importe</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>3. Capacidad liberada</strong></td>
+<td>Horas liberadas que declaran las personas, valoradas con la fórmula F4</td>
+<td>Encuestas o estimación de cada unidad</td>
+<td>Declarado o estimado. <strong>Nunca validado.</strong></td>
+<td>No (regla 3)</td>
+</tr>
+<tr>
+<td><strong>4. Valor materializado</strong></td>
+<td>Menor coste real (contratación evitada, menos horas extraordinarias, externalización no renovada, licencias retiradas) o capacidad reasignada a una actividad identificada</td>
+<td>Contabilidad y control de gestión</td>
+<td>Validado</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas:</p>
+<ol>
+<li><strong>Una iniciativa, varias unidades.</strong> La iniciativa transversal tiene un patrocinador corporativo. Cada unidad tiene su responsable de negocio del beneficio, que declara la parte de su unidad (<a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a> §6.4).</li>
+<li><strong>Despliegue que permita medir.</strong> El despliegue se hace escalonado por unidades, para poder medir con diferencias en diferencias (sección 7.1, criterio 2). Otra opción es asignar las licencias al azar entre las personas elegibles. Si se despliega en toda la compañía de una vez, solo cabe la estimación experta, que nunca permite validar.</li>
+<li><strong>Umbral de adopción.</strong> G2 fija un porcentaje mínimo de licencias activas sobre asignadas. En cada unidad en uso por debajo del umbral se revisa el despliegue o se retiran las licencias sin uso. Una unidad sigue pagando la herramienta porque la usa, no por inercia.</li>
+<li><strong>Sin doble conteo con los casos de cada unidad.</strong> Si una unidad tiene además un caso propio sobre el mismo proceso, se aplica el <a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a> §6: el ahorro genérico de la herramienta transversal no se reclama otra vez.</li>
+<li><strong>Neto con y sin transversales.</strong> En los informes al consejo, el neto de la cartera se muestra con y sin las iniciativas transversales y las plataformas (sección 11.1). Así, un coste grande y seguro no oculta ni infla el resultado de los casos de negocio.</li>
+<li><strong>El valor indirecto no se convierte en euros.</strong> La cultura de uso, la madurez o la mejora de los permisos y de los datos se recogen en el modelo de madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>) y en la esfera 05 Datos. El riesgo principal de estas herramientas es mostrar a una persona información a la que tenía acceso por permisos heredados o excesivos. Va en la matriz de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>) y se revisa antes de cada ola del despliegue.</li>
+</ol>
+<p><strong>Ejemplo ilustrativo</strong> (datos ficticios, los mismos del registro de demostración de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Unidad</th>
+<th>Despliegue</th>
+<th>Licencias activas / asignadas</th>
+<th>Horas liberadas al mes (declaradas)</th>
+<th>Coste anual</th>
+<th>Valor materializado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finanzas</td>
+<td>En uso</td>
+<td>792 / 900 (88 %)</td>
+<td>7.200</td>
+<td>324.000 €</td>
+<td>540.000 €, validado (externalización del cierre contable no renovada)</td>
+</tr>
+<tr>
+<td>Comercial</td>
+<td>En uso</td>
+<td>624 / 1.200 (52 %)</td>
+<td>5.100</td>
+<td>432.000 €</td>
+<td>180.000 €, declarado (herramienta anterior retirada)</td>
+</tr>
+<tr>
+<td>Atención al cliente</td>
+<td>Piloto</td>
+<td>356 / 400 (89 %)</td>
+<td>1.900</td>
+<td>144.000 €</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Común (sin unidad)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>260.000 €</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>14.200</strong></td>
+<td><strong>1.160.000 €</strong></td>
+<td><strong>720.000 €</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Lectura para el consejo: el neto anual de la iniciativa es 720.000 − 1.160.000 = <strong>−440.000 €</strong>. Las 14.200 horas declaradas al mes no son ahorro mientras no se materialicen. Comercial está por debajo del umbral de adopción del 60 % y declara horas liberadas sin destino. Por eso, ampliar la herramienta a nuevas unidades queda condicionado a revisar las licencias de Comercial y a que declare en qué se materializan sus horas.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Una herramienta transversal tiene un coste grande, seguro y visible desde el primer día, y un valor repartido entre muchas personas y unidades. Si se mide como un caso más, pasa una de dos cosas: se suman las horas declaradas y se infla la cartera, o no se mide nada y se sigue pagando por inercia. La escalera por unidad deja ver dónde se usa la herramienta, dónde produce valor y dónde conviene retirar licencias. Así el comité y el consejo deciden sobre la ampliación con datos y no con encuestas.</p>
+</blockquote>
 <hr />
 <h2 id="horizonte-descuento-y-criterio-economico-unico"><span class="antetitulo">08</span>Horizonte, descuento y criterio económico único</h2>
 <h3 id="8-1-el-problema-que-resuelve">8.1 El problema que resuelve</h3>
@@ -1140,7 +1281,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>I · Inversión inicial</strong></td>
-<td>Coste de construcción más coste de adopción inicial (documento 42), incurridos una vez. No incluye coste recurrente, que ya está restado en el neto anual.</td>
+<td>Coste de construcción más coste de adopción inicial (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>), incurridos una vez. No incluye coste recurrente, que ya está restado en el neto anual.</td>
 </tr>
 <tr>
 <td><strong>Neto anual del año t</strong></td>
@@ -1385,14 +1526,20 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Pérdidas esperadas evitadas sumadas al neto.</td>
 <td>Informarlo aparte salvo traducción a coste observable (sección 5.2).</td>
 </tr>
+<tr>
+<td>13</td>
+<td>Convertir en ahorro las horas que declaran los usuarios de una herramienta transversal.</td>
+<td>Eficiencias iguales a horas de encuesta × coste horario, sin reflejo contable ni desglose por unidad.</td>
+<td>Escalera de la sección 7.2: coste y adopción por unidad; solo suma el valor materializado.</td>
+</tr>
 </tbody>
 </table></div>
-<p>Presentar al comité o al consejo como validado un importe que no lo está constituye una <strong>no conformidad mayor</strong> (documento 37). Relajar criterios de parada o cambiar el método de atribución sin aprobación se trata conforme a 01 §7.4 y §12.</p>
+<p>Presentar al comité o al consejo como validado un importe que no lo está constituye una <strong>no conformidad mayor</strong> (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). Relajar criterios de parada o cambiar el método de atribución sin aprobación se trata conforme a 01 §7.4 y §12.</p>
 <hr />
 <h2 id="presentacion-al-consejo"><span class="antetitulo">11</span>Presentación al consejo</h2>
 <h3 id="11-1-reglas">11.1 Reglas</h3>
 <ol>
-<li><strong>La proporción validada es siempre visible</strong> junto a cada total de valor, en el panel completo, en la versión móvil y en cualquier documento del paquete del consejo (documento 60).</li>
+<li><strong>La proporción validada es siempre visible</strong> junto a cada total de valor, en el panel completo, en la versión móvil y en cualquier documento del paquete del consejo (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>).</li>
 <li><strong>Eficiencias, retorno y coste recurrente se muestran por separado</strong>, con el valor neto anual (F2) y el valor neto validado (F2v).</li>
 <li><strong>La capacidad liberada no materializada y la reasignada se muestran en líneas separadas</strong>, fuera del neto.</li>
 <li><strong>Los casos con neto anual negativo se identifican individualmente.</strong></li>
@@ -1401,6 +1548,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Se compara con el periodo anterior</strong> y se explican las variaciones relevantes, incluidas las de estado.</li>
 <li><strong>Cada caso presentado en detalle incluye su descripción comprensible</strong> (regla 10). Se presentan como máximo tres casos en detalle por sesión y se responde con los formatos de la especificación común: &quot;Sí&quot;, &quot;Sí, con una condición: …&quot;, &quot;Todavía no, porque falta …&quot; o &quot;No, porque …&quot;.</li>
 <li><strong>La composición del valor por nivel de ambición</strong> (eficiencias frente a retorno) se muestra para alimentar las señales 1 y 2 del índice de transformación.</li>
+<li><strong>Las iniciativas transversales y las plataformas habilitadoras se muestran aparte</strong>, con su desglose por unidad de negocio (coste, adopción, capacidad liberada y valor materializado), y el neto de la cartera se da con y sin ellas (sección 7.2).</li>
 </ol>
 <h3 id="11-2-modelo-de-resumen-de-valor">11.2 Modelo de resumen de valor</h3>
 <p><em>Datos ilustrativos.</em></p>
@@ -1499,7 +1647,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Coste completo y reparto</td>
-<td>Control de gestión con la oficina de IA (documento 42)</td>
+<td>Control de gestión con la oficina de IA (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>)</td>
 <td>Auditoría interna</td>
 </tr>
 <tr>
@@ -1528,27 +1676,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Registro de iniciativas</td>
-<td>Importes, estados, eventos de cambio de estado, fechas para agilidad.</td>
+<td>Importes, estados, eventos de cambio de estado, fechas para agilidad; alcance de las iniciativas transversales y plataformas, con despliegue, adopción e importes por unidad (sección 7.2).</td>
 </tr>
 <tr>
-<td><strong>T11</strong></td>
+<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a></strong></td>
 <td>Lienzo y calculadora de hipótesis de valor</td>
 <td>Fórmulas F1–F4 y F7–F9 en fase 2 y 3; método de atribución.</td>
 </tr>
 <tr>
-<td><strong>T12</strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Estados por periodo, caducidades, F5, F6 y F10.</td>
 </tr>
 <tr>
-<td><strong>T13</strong></td>
+<td><strong><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></strong></td>
 <td>Calculadora de costes por caso</td>
 <td>Coste recurrente completo e inversión inicial.</td>
 </tr>
 <tr>
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
-<td>Presentación con proporción validada visible.</td>
+<td>Presentación con proporción validada visible; tarjeta de iniciativas transversales y plataformas con el neto de la cartera con y sin ellas.</td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></strong></td>
@@ -1644,6 +1792,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>Primera versión. Desarrolla las diez reglas de medición, fija los estados del importe con responsables, evidencia y caducidad, las fórmulas oficiales F1–F10, los métodos de atribución con su estado máximo, el criterio económico único sobre beneficio neto (VAN con horizonte y tasa de C2; ROI y plazo de recuperación informativos), la medición de la agilidad por riesgo y ambición, los errores de inflado y las reglas de presentación al consejo.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Añade la sección 7.2: iniciativas transversales y plataformas habilitadoras, con la escalera de medición por unidad (coste, adopción, capacidad liberada y valor materializado), el umbral de adopción y el neto de la cartera con y sin ellas; el error 13 y la regla de presentación 10.</td>
 </tr>
 </tbody>
 </table></div>

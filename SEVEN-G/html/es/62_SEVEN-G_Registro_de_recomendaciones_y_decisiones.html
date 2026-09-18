@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Registro de recomendaciones y decisiones"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -413,7 +417,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Encargos</strong> del consejo a la dirección (trabajos con responsable y fecha), que se registran como recomendaciones.</li>
 <li><strong>Decisiones</strong> del consejo o de su comisión delegada sobre IA: aprobaciones, autorizaciones con límites, aceptaciones de riesgo y tomas de conocimiento relevantes.</li>
 </ul>
-<p>No sustituye al acta, que es el documento societario, ni al registro de decisiones de <em>gate</em> del ciclo de vida (plantilla <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, herramienta T03). El registro enlaza con ambos.</p>
+<p>No sustituye al acta, que es el documento societario, ni al registro de decisiones de <em>gate</em> del ciclo de vida (plantilla <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, herramienta <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>). El registro enlaza con ambos.</p>
 <hr />
 <h2 id="principios"><span class="antetitulo">02</span>Principios</h2>
 <div class="tabla"><table>
@@ -465,7 +469,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="identificadores"><span class="antetitulo">03</span>Identificadores</h2>
 <h3 id="3-1-formato">3.1 Formato</h3>
-<p>El esquema de datos del panel del consejo (<code>motor/ESQUEMA.md</code> del repositorio de demostraciones) no define un formato de identificador para las recomendaciones. La herramienta de demostración T18 usa códigos correlativos por organización (<code>R-01</code>, <code>R-02</code>…) agrupados por sesión. SEVEN-G adopta el formato de la especificación común:</p>
+<p>El esquema de datos del panel del consejo (<code>motor/ESQUEMA.md</code> del repositorio de demostraciones) no define un formato de identificador para las recomendaciones. La herramienta de demostración <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a> usa códigos correlativos por organización (<code>R-01</code>, <code>R-02</code>…) agrupados por sesión. SEVEN-G adopta el formato de la especificación común:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -486,7 +490,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Decisión del consejo o de la comisión</strong></td>
 <td><code>DEC-AAAA-NNN</code></td>
 <td>DEC-2026-014</td>
-<td><strong>Propuesto</strong> en este documento; pendiente de incorporar a la especificación común §5.9 y al glosario (documento 02)</td>
+<td><strong>Propuesto</strong> en este documento; pendiente de incorporar a la especificación común §5.9 y al glosario (<a href="02_SEVEN-G_Glosario_y_convenciones.html">documento 02</a>)</td>
 </tr>
 </tbody>
 </table></div>
@@ -498,7 +502,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Una recomendación que se divide</strong> conserva su identificador en la parte principal; las partes nuevas reciben identificadores nuevos y se enlazan a la original.</li>
 <li><strong>Una recomendación reformulada de forma sustancial</strong> se cierra como <em>Sustituida</em> y se registra una nueva enlazada. Los cambios menores de redacción se registran como evento sin cambiar el código.</li>
 <li><strong>La correspondencia con identificadores anteriores</strong> (por ejemplo, <code>R-NN</code> de una herramienta previa) se conserva en el campo <em>identificador anterior</em>.</li>
-<li><strong>Las iniciativas</strong> mantienen su propio código <code>IA-AAAA-NNN</code> (documento 03); los incidentes y no conformidades, <code>INC-AAAA-NNN</code> y <code>NC-AAAA-NNN</code>.</li>
+<li><strong>Las iniciativas</strong> mantienen su propio código <code>IA-AAAA-NNN</code> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>); los incidentes y no conformidades, <code>INC-AAAA-NNN</code> y <code>NC-AAAA-NNN</code>.</li>
 </ol>
 <hr />
 <h2 id="campos-de-una-recomendacion"><span class="antetitulo">04</span>Campos de una recomendación</h2>
@@ -1058,7 +1062,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Vínculos</strong></td>
-<td>IA-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, decisión de <em>gate</em> (P29).</td>
+<td>IA-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, decisión de <em>gate</em> (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
 </tr>
 <tr>
 <td><strong>Seguimiento</strong></td>
@@ -1082,12 +1086,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="11-1-con-el-registro-de-iniciativas">11.1 Con el registro de iniciativas</h3>
 <ul>
 <li>Toda recomendación o decisión que afecta a iniciativas concretas enlaza sus códigos IA-AAAA-NNN.</li>
-<li>En la ficha de cada iniciativa del registro (T01) aparecen las recomendaciones y decisiones que la afectan, con su estado y valoración.</li>
+<li>En la ficha de cada iniciativa del registro (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) aparecen las recomendaciones y decisiones que la afectan, con su estado y valoración.</li>
 <li>Una iniciativa <strong>no puede superar un <em>gate</em></strong> si tiene vinculada una decisión del consejo con condiciones vencidas que afectan a ese <em>gate</em>.</li>
 <li>Cuando una iniciativa se para o se retira, las recomendaciones que dependen solo de ella se proponen para descarte o cierre.</li>
 </ul>
 <h3 id="11-2-con-el-panel-del-consejo">11.2 Con el panel del consejo</h3>
-<p>Cada recomendación indica el bloque del panel (T17) en el que el consejo puede comprobar su efecto:</p>
+<p>Cada recomendación indica el bloque del panel (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) en el que el consejo puede comprobar su efecto:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1135,7 +1139,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="11-3-indicadores-del-registro">11.3 Indicadores del registro</h3>
-<p>Se informan en el paquete trimestral (documento 60) y en la revisión anual:</p>
+<p>Se informan en el paquete trimestral (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>) y en la revisión anual:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1179,16 +1183,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="herramienta-t18-situacion-actual-y-adaptacion-pendiente"><span class="antetitulo">12</span>Herramienta T18: situación actual y adaptación pendiente</h2>
+<h2 id="herramienta-t18-situacion-actual-y-adaptacion-pendiente"><span class="antetitulo">12</span>Herramienta <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>: situación actual y adaptación pendiente</h2>
 <h3 id="12-1-situacion-actual">12.1 Situación actual</h3>
-<p>La herramienta <strong>T18 · Registro de recomendaciones del consejo</strong> existe (03 §5.4) como parte del repositorio público de demostraciones del panel del consejo, con <strong>datos ficticios</strong> en once sectores. Muestra, por sesión, cada recomendación con identificador que no se reinicia, ámbito, destinatario, fecha comprometida, estado declarado, evidencia presentada, valoración en texto libre y enlace al bloque del panel donde se mide.</p>
+<p>La herramienta <strong><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a> · Registro de recomendaciones del consejo</strong> existe (03 §5.4) como parte del repositorio público de demostraciones del panel del consejo, con <strong>datos ficticios</strong> en once sectores. Muestra, por sesión, cada recomendación con identificador que no se reinicia, ámbito, destinatario, fecha comprometida, estado declarado, evidencia presentada, valoración en texto libre y enlace al bloque del panel donde se mide.</p>
 <p>Los ficheros del motor publicados en ese repositorio son <strong>copia de su proyecto privado de origen</strong>: no se editan en el repositorio de demostraciones, sino en origen, y se vuelven a publicar con su procedimiento, que incluye la verificación de términos antes de publicar.</p>
 <h3 id="12-2-adaptacion-necesaria">12.2 Adaptación necesaria</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
 <th>Aspecto</th>
-<th>T18 actual (demostración)</th>
+<th><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a> actual (demostración)</th>
 <th>Requisito SEVEN-G</th>
 <th>Adaptación</th>
 </tr>
@@ -1379,12 +1383,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Vínculos IA-AAAA-NNN y eventos.</td>
 </tr>
 <tr>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>Gestor de <em>gates</em></td>
 <td>Enlace entre decisiones del consejo y decisiones de <em>gate</em>.</td>
 </tr>
 <tr>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>Registro de no conformidades e incidentes</td>
 <td>Vínculos INC y NC.</td>
 </tr>
@@ -1394,7 +1398,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Bloques donde se comprueba el efecto de cada recomendación.</td>
 </tr>
 <tr>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Implementación del registro (sección 12).</td>
 </tr>
@@ -1434,7 +1438,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Herramientas y registro de iniciativas</strong></td>
-<td>Modelo de datos (entidad <em>Recomendación</em>), <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, T18 y orden de construcción.</td>
+<td>Modelo de datos (entidad <em>Recomendación</em>), <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a> y orden de construcción.</td>
 </tr>
 <tr>
 <td><strong>38 · Marco de auditoría de IA</strong></td>
@@ -1464,7 +1468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Define identificadores persistentes REC-AAAA-NNN y, como propuesta, DEC-AAAA-NNN; campos, estados declarados, valoración independiente, evidencia, ciclo de vida, cierre, decisiones del consejo, vínculos con iniciativas y panel, indicadores y adaptación pendiente de la herramienta T18.</td>
+<td>Primera versión. Define identificadores persistentes REC-AAAA-NNN y, como propuesta, DEC-AAAA-NNN; campos, estados declarados, valoración independiente, evidencia, ciclo de vida, cierre, decisiones del consejo, vínculos con iniciativas y panel, indicadores y adaptación pendiente de la herramienta <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>.</td>
 </tr>
 </tbody>
 </table></div>

@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Linaje de datos y modelos"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -462,7 +466,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN del registro de iniciativas (T01).</td>
+<td>IA-AAAA-NNN del registro de iniciativas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -472,17 +476,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistema(s) de IA</td>
 <td></td>
-<td>Identificador en el inventario de sistemas de IA (T02, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
+<td>Identificador en el inventario de sistemas de IA (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
 </tr>
 <tr>
 <td>Intensidad</td>
 <td></td>
-<td>Lite · Enterprise (P04).</td>
+<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria</td>
 <td></td>
-<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (P11).</td>
+<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
 </tr>
 <tr>
 <td>Versión del documento</td>
@@ -572,7 +576,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Transferencias fuera del Espacio Económico Europeo <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Destino, garantía aplicada y referencia a la evaluación de proveedor (P14).</td>
+<td>Destino, garantía aplicada y referencia a la evaluación de proveedor (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
 </tr>
 <tr>
 <td>Evaluación de impacto en protección de datos</td>
@@ -702,6 +706,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td>Prueba de regresión.</td>
 </tr>
+<tr>
+<td>Modelo de respaldo por coste (<a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §10.3), si se prevé</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Proveedor y versión exacta; evaluado antes de G5 con el conjunto de referencia y las pruebas de sesgo del principal. Incorporarlo o cambiar sus condiciones es un cambio (<a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §6.4).</td>
+</tr>
 </tbody>
 </table></div>
 <hr />
@@ -767,7 +778,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registros automáticos que se conservan</td>
 <td></td>
-<td>Qué se registra (entrada, salida, versión, fecha, usuario). En sistemas de alto riesgo, alinear con las obligaciones de registro del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (documento 34).</td>
+<td>Qué se registra (entrada, salida, versión, fecha, usuario). En sistemas de alto riesgo, alinear con las obligaciones de registro del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 </tr>
 <tr>
 <td>Plazo de conservación de registros</td>
@@ -782,7 +793,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Referencia para detectar deriva</td>
 <td></td>
-<td>Conjunto y periodo que sirve de referencia para la monitorización (P25).</td>
+<td>Conjunto y periodo que sirve de referencia para la monitorización (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>). En IA generativa y agentes, referencia de uso: temas, intenciones y alcance validados en G5 (<a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §4.2.6).</td>
 </tr>
 </tbody>
 </table></div>
@@ -800,7 +811,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión estable anterior disponible</td>
 <td></td>
-<td>Identificador del modelo y componentes a los que se vuelve (P19).</td>
+<td>Identificador del modelo y componentes a los que se vuelve (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
 </tr>
 <tr>
 <td>Datos que deben conservarse</td>
@@ -927,6 +938,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>Primera versión de la plantilla.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Modelo de respaldo por coste en los componentes y referencia de uso para la deriva en IA generativa y agentes (<a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §4.2.6 y §10.3).</td>
 </tr>
 </tbody>
 </table></div>

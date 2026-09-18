@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · People and organisation"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -448,7 +452,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Promoter</strong></td>
 <td>They know their process better than anyone and can propose uses of AI that no outsider would see.</td>
-<td>Proposal channel connected to the initiative register (T01), recognition and clear rules of use (document 31).</td>
+<td>Proposal channel connected to the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), recognition and clear rules of use (document 31).</td>
 </tr>
 </tbody>
 </table></div>
@@ -482,7 +486,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="2-4-what-is-assessed-in-sphere-03">2.4 What is assessed in sphere 03</h3>
-<p>Seven dimensions are assessed, each with its evidence and indicators (section 11): <strong>position</strong> approved at C2; <strong>effect per initiative</strong> (P20, PER-01); <strong>capabilities</strong> (PER-02, PER-03); <strong>released capacity</strong> (PER-04 to PER-06); <strong>labour relations</strong> (PER-08); <strong>decisions about people</strong> (P11, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, PER-09 to PER-12); and <strong>wellbeing</strong> (PER-15).</p>
+<p>Seven dimensions are assessed, each with its evidence and indicators (section 11): <strong>position</strong> approved at C2; <strong>effect per initiative</strong> (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, PER-01); <strong>capabilities</strong> (PER-02, PER-03); <strong>released capacity</strong> (PER-04 to PER-06); <strong>labour relations</strong> (PER-08); <strong>decisions about people</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, PER-09 to PER-12); and <strong>wellbeing</strong> (PER-15).</p>
 <p>The indicators in section 11 feed the <strong>D5 People and adoption</strong> dimension of the maturity model (document 11) and signals <strong>3 · Materialisation</strong> and <strong>5 · Operating model</strong> of the transformation index (document 12).</p>
 <hr />
 <h2 id="effect-of-ai-on-work"><span class="antetitulo">03</span>Effect of AI on work</h2>
@@ -535,7 +539,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>1</strong></td>
 <td>Identify affected groups and foreseeable effect.</td>
-<td>Opportunity record (P06, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+<td>Opportunity record (<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
 </tr>
 <tr>
 <td><strong>2</strong></td>
@@ -545,7 +549,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>3</strong></td>
 <td>Complete <strong>effect on work assessment</strong> (section 3.4), with the people function and clearance from the AI Risk Owner.</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> / T20; RT-ORG risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> / <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>; RT-ORG risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
@@ -583,7 +587,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Is it consistent with the C2 position? If not, the exception is escalated to the AI Committee.</li>
 </ol>
 <h3 id="3-5-intensity-rule">3.5 Intensity rule</h3>
-<p>The effect on work does not in itself create an Enterprise criterion, but <strong>intensity must be reviewed</strong> (T04) when the assessment detects decisions about people, significant changes in working conditions or staffing reductions. In those cases the initiative <strong>should</strong> be treated as Enterprise even if it does not meet any other criterion, and if it remains Lite the justification is recorded.</p>
+<p>The effect on work does not in itself create an Enterprise criterion, but <strong>intensity must be reviewed</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>) when the assessment detects decisions about people, significant changes in working conditions or staffing reductions. In those cases the initiative <strong>should</strong> be treated as Enterprise even if it does not meet any other criterion, and if it remains Lite the justification is recorded.</p>
 <hr />
 <h2 id="new-roles-and-capabilities"><span class="antetitulo">04</span>New roles and capabilities</h2>
 <h3 id="4-1-from-the-board-to-the-teams">4.1 From the board to the teams</h3>
@@ -825,7 +829,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>When the destination involves <strong>staffing reductions, changes in duties or in working conditions</strong>, the decision rests with senior management together with the people function and <strong>must</strong> respect the applicable statutory and collectively agreed procedures. In Spain, the procedures that may come into play include, among others, substantial modification of working conditions (Article 41 of the <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)">Estatuto de los Trabajadores (Workers' Statute)</a>) or collective dismissal (Article 51), in addition to the information and consultation rights in section 7. That assessment requires employment law expertise.</p>
 <h3 id="6-4-released-capacity-record">6.4 Released capacity record</h3>
-<p>The record is kept in T20 and feeds T12 (value tracking).</p>
+<p>The record is kept in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> and feeds <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (value tracking).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -930,7 +934,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Other jurisdictions differ.</strong> Outside the European Union, obligations may differ in content and in addressee; for example, <a class="ref-ext" href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener" title="New York City Local Law 144 of 2021 on automated employment decision tools (Int. No. 1894-2020), requiring an independent bias audit before use">some local regulations require independent bias audits</a> of automated employment decision tools before they are used. Each company <strong>must</strong> identify the applicable regulations in each country where it has employees or candidates and incorporate them into the context statement (P02).</p>
+<p><strong>Other jurisdictions differ.</strong> Outside the European Union, obligations may differ in content and in addressee; for example, <a class="ref-ext" href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener" title="New York City Local Law 144 of 2021 on automated employment decision tools (Int. No. 1894-2020), requiring an independent bias audit before use">some local regulations require independent bias audits</a> of automated employment decision tools before they are used. Each company <strong>must</strong> identify the applicable regulations in each country where it has employees or candidates and incorporate them into the context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</p>
 <p>This document does not constitute legal advice.</p>
 <h3 id="7-2-information-and-consultation-process-in-seven-g">7.2 Information and consultation process in SEVEN-G</h3>
 <div class="tabla"><table>
@@ -947,7 +951,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1 · Identification</td>
 <td>Phase 3</td>
 <td>The effect assessment determines whether the system affects working conditions, access to or retention of employment, profiling, or whether it is high-risk in the workplace.</td>
-<td>Effect assessment (P20).</td>
+<td>Effect assessment (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
 </tr>
 <tr>
 <td>2 · Legal analysis</td>
@@ -989,7 +993,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Changes:</strong> version, date and changes.</li>
 </ol>
 <h3 id="7-4-algorithmic-transparency-towards-employees">7.4 Algorithmic transparency towards employees</h3>
-<p>In addition to the information provided to workers' representatives, the company <strong>should</strong> keep accessible to all employees an <strong>internal register of AI systems that affect them</strong>, derived from the inventory (T02), with a summarised version of the sheet in section 7.3. Employees affected by AI-supported decisions must be able to know that the system is used, for what purpose, and how to request human review.</p>
+<p>In addition to the information provided to workers' representatives, the company <strong>should</strong> keep accessible to all employees an <strong>internal register of AI systems that affect them</strong>, derived from the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>), with a summarised version of the sheet in section 7.3. Employees affected by AI-supported decisions must be able to know that the system is used, for what purpose, and how to request human review.</p>
 <hr />
 <h2 id="use-of-ai-in-decisions-about-people"><span class="antetitulo">08</span>Use of AI in decisions about people</h2>
 <h3 id="8-1-why-it-is-treated-separately">8.1 Why it is treated separately</h3>
@@ -1268,7 +1272,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Effect assessment coverage</td>
 <td>Initiatives in phase 3 or later with a recorded effect assessment ÷ initiatives in phase 3 or later</td>
 <td>Quarterly</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T20</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>100%</td>
 </tr>
 <tr>
@@ -1284,7 +1288,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Qualified overseers</td>
 <td>A1–A3 systems in production whose designated overseers have recorded PER-PD training ÷ A1–A3 systems in production</td>
 <td>Quarterly</td>
-<td>T02, training</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, training</td>
 <td>100%</td>
 </tr>
 <tr>
@@ -1292,7 +1296,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Released capacity materialised</td>
 <td>Released hours materialised (PER-D1) ÷ measured released hours</td>
 <td>Quarterly</td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>As per hypothesis</td>
 </tr>
 <tr>
@@ -1300,7 +1304,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Released capacity reassigned</td>
 <td>Reassigned hours (PER-D2) with a verified destination activity ÷ measured released hours</td>
 <td>Quarterly</td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>As per hypothesis</td>
 </tr>
 <tr>
@@ -1308,7 +1312,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Released capacity without a decision</td>
 <td>Hours in PER-D5 older than the C2 time limit ÷ measured released hours</td>
 <td>Quarterly</td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>Decreasing trend</td>
 </tr>
 <tr>
@@ -1409,7 +1413,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ECO-03</strong></td>
 <td>Unrealised value (released capacity not realised)</td>
 <td>PER-06 increasing.</td>
-<td>Section 6, alerts in T20, G7 criterion.</td>
+<td>Section 6, alerts in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, G7 criterion.</td>
 </tr>
 <tr>
 <td><strong>RT-ORG-02</strong></td>
@@ -1450,7 +1454,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>RT-ORG-05</strong></td>
 <td>Unauthorised use of AI (<em>shadow AI</em>)</td>
-<td>Detections in T21.</td>
+<td>Detections in <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>.</td>
 <td>Document 31; authorised tools; PER-PC training.</td>
 </tr>
 <tr>
@@ -1485,12 +1489,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T20</strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Effect assessment, capability plan, released capacity record and tracking. Main tool of this document.</td>
 </tr>
 <tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · T02 · T04 · T12 · T21</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></strong></td>
 <td>Register, inventory, intensity, value and corporate use</td>
 <td>Alerts and proposals (PER-14); internal register of systems affecting employees; intensity review; realised and reassigned amounts; unauthorised use.</td>
 </tr>

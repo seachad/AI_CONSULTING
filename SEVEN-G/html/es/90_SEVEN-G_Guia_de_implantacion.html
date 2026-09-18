@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "Guía de implantación de SEVEN-G"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -384,7 +388,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <strong>Descargas</strong>
     <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
   </div>
-  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/90_SEVEN-G_Guia_de_implantacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/90_SEVEN-G_Guia_de_implantacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/90_SEVEN-G_Guia_de_implantacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/90_SEVEN-G_Guia_de_implantacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/90_SEVEN-G_Guia_de_implantacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/90_SEVEN-G_Guia_de_implantacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
 </aside>
 
 <div id="top"></div>
@@ -398,7 +402,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <div class="cifras"><div class="cifra"><b>2</b><span>alcances de implantaci&#243;n</span></div><div class="cifra"><b>13</b><span>semanas de plan inicial</span></div><div class="cifra"><b>7</b><span>condiciones para declarar que se aplica</span></div><div class="cifra"><b>18</b><span>meses como horizonte m&#225;ximo de la hoja de ruta</span></div></div>
   </div>
 </header>
-<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/90_SEVEN-G_Guia_de_implantacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/90_SEVEN-G_Guia_de_implantacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/90_SEVEN-G_Guia_de_implantacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/90_SEVEN-G_Guia_de_implantacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/90_SEVEN-G_Guia_de_implantacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/90_SEVEN-G_Guia_de_implantacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#elegir-el-alcance-de-implantacion"><span>02</span>Elegir el alcance de implantación</a></li><li><a href="#requisitos-previos"><span>03</span>Requisitos previos</a></li><li><a href="#plan-de-90-dias"><span>04</span>Plan de 90 días</a></li><li><a href="#regularizacion-de-iniciativas-y-sistemas-existentes"><span>05</span>Regularización de iniciativas y sistemas existentes</a></li><li><a href="#hoja-de-ruta-de-6-a-18-meses"><span>06</span>Hoja de ruta de 6 a 18 meses</a></li><li><a href="#roles-minimos-en-una-organizacion-pequena"><span>07</span>Roles mínimos en una organización pequeña</a></li><li><a href="#errores-frecuentes"><span>08</span>Errores frecuentes</a></li><li><a href="#indicadores-de-implantacion"><span>09</span>Indicadores de implantación</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>10</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>11</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>12</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal">
@@ -472,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Madurez</strong></td>
 <td>Evaluación verificada.</td>
-<td>Evaluación verificada y, al menos cada dos años, independiente (documento 11).</td>
+<td>Evaluación verificada y, al menos cada dos años, independiente (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
 </tr>
 <tr>
 <td><strong>Panel del consejo</strong></td>
@@ -537,7 +541,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Soporte de registro</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y T02 o, mientras no estén disponibles, una hoja de cálculo con los campos de 03 §3.3.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> o, mientras no estén disponibles, una hoja de cálculo con los campos de 03 §3.3.</td>
 </tr>
 <tr>
 <td><strong>Sin moratoria general</strong></td>
@@ -585,21 +589,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>2 · Inventario</strong></td>
 <td>Censo de sistemas de IA: propios, de terceros, uso corporativo y uso no autorizado (a partir de compras, licencias, contratos y controles de seguridad). Alta con estado real. Cribado inicial de criterios Enterprise y de posibles prácticas prohibidas.</td>
 <td>Oficina de IA con tecnología, compras y seguridad</td>
-<td>03; <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>; T02, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; T04</td>
+<td>03; <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></td>
 <td>Cada dirección de área firma una declaración de completitud del inventario. Posibles prácticas prohibidas escaladas de inmediato.</td>
 </tr>
 <tr>
 <td><strong>3 · Evidencias y entrevistas</strong></td>
 <td>Entrevistas de madurez por dimensión; revisión de evidencias y muestreo; recogida de valor y coste actuales con su estado; datos de las ocho señales del índice.</td>
 <td>Equipo evaluador</td>
-<td>11; 12; 40; T15, T14, T12</td>
+<td>11; 12; 40; <a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 <td>Siete dimensiones con al menos dos entrevistas cada una; muestras seleccionadas.</td>
 </tr>
 <tr>
 <td><strong>4 · Informe C1</strong></td>
 <td>Puntuación, calibración y verificación independiente de la madurez; perfil del índice de transformación; mapa de esferas actual; valor y coste de la cartera; informe C1.</td>
 <td>Evaluador principal; verificador independiente</td>
-<td>10, 11, 12; T15, T14, T16</td>
+<td>10, 11, 12; <a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></td>
 <td><strong>Hito 1:</strong> informe C1 verificado y aceptado. Riesgos urgentes tratados como no conformidad (01 §12).</td>
 </tr>
 </tbody>
@@ -620,21 +624,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>5 · Riesgos</strong></td>
 <td>Talleres por esfera sobre los sistemas existentes; matriz de riesgos principales con la escala del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>; clasificación regulatoria de los sistemas prioritarios; orden de regularización.</td>
 <td>Responsable de riesgos con asesoría jurídica</td>
-<td>33, 34, 32; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; T06, T07</td>
+<td>33, 34, 32; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 <td>Sistemas con criterios Enterprise clasificados o con fecha de clasificación; riesgos Altos y Críticos con responsable.</td>
 </tr>
 <tr>
 <td><strong>6 · Oportunidades</strong></td>
 <td>Talleres por esfera con las preguntas de referencia; cartera de oportunidades con ficha comprensible; ambición propuesta; valor con fórmula marcado como estimado.</td>
 <td>Oficina de IA con las áreas</td>
-<td>10, 61; <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>; T05</td>
+<td>10, 61; <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></td>
 <td>Oportunidades de todas las esferas con valor en la ambición prevista, o constancia de que no las hay.</td>
 </tr>
 <tr>
 <td><strong>7 · Consolidación y borrador de C2</strong></td>
 <td>Riesgos y oportunidades por esfera con responsable, impacto económico y plazo; borrador de tesis de IA, ambición por esfera y apetito de riesgo; borrador de umbrales (inversión Enterprise, horizonte, plazos de referencia, plazos de no conformidades, límites de concentración, pesos de madurez).</td>
 <td>Responsable de implantación con la alta dirección</td>
-<td>13, 14; T19</td>
+<td>13, 14; <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a></td>
 <td>Borrador completo con todas las secciones de C2 (01 §5.1).</td>
 </tr>
 <tr>
@@ -669,14 +673,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>10 · Gates y políticas</strong></td>
 <td>Criterios de <em>gate</em> y listas de verificación adoptados (versión inicial de 01 §7 si 21 y 22 no están publicados); plazos de referencia; política corporativa y de uso aceptable; proceso de no conformidades.</td>
 <td>Oficina de IA; cumplimiento</td>
-<td>21, 22, 31, 37; <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>; T03, T08</td>
+<td>21, 22, 31, 37; <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>Gestor de <em>gates</em> configurado; políticas en borrador final.</td>
 </tr>
 <tr>
 <td><strong>11 · Métricas, reporte y cartera</strong></td>
 <td>Reglas de medición adoptadas; primera versión del panel del consejo; registro de recomendaciones; calendario de reporte (01 §5.2); primera cartera priorizada con sobres, tramos y plan de regularización.</td>
 <td>Oficina de IA; control de gestión; comité</td>
-<td>40, 60, 62, 14; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, T18, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T16</td>
+<td>40, 60, 62, 14; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></td>
 <td>Panel generado con datos del inventario; cartera con puntuación y responsables.</td>
 </tr>
 <tr>
@@ -690,7 +694,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>13 · Régimen ordinario</strong></td>
 <td>Primera reunión ordinaria del comité; primeros <em>gates</em> con el nuevo modelo; hoja de ruta de 6–18 meses aprobada; lecciones de la implantación; comunicación a la organización.</td>
 <td>Responsable de implantación</td>
-<td>90; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+<td>90; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td><strong>Hito 3:</strong> criterios de la sección 4.5 cumplidos.</td>
 </tr>
 </tbody>
@@ -709,12 +713,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td>Inventario con declaración de completitud de todas las áreas del perímetro.</td>
-<td>T02; declaraciones firmadas.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>; declaraciones firmadas.</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Evaluación de madurez verificada e índice de transformación calculado.</td>
-<td>Informe C1; T15; T14.</td>
+<td>Informe C1; <a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a>; <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>.</td>
 </tr>
 <tr>
 <td>3</td>
@@ -734,12 +738,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>6</td>
 <td><em>Gates</em>, plazos de referencia y proceso de no conformidades operativos.</td>
-<td>T03; T08.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>.</td>
 </tr>
 <tr>
 <td>7</td>
 <td>Panel del consejo y registro de recomendaciones con datos reales.</td>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>; T18.</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>; <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>.</td>
 </tr>
 <tr>
 <td>8</td>
@@ -878,7 +882,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La declaración se apoya en una evaluación verificada con todas esas preguntas en &quot;Sí&quot; y con la regularización dentro de plazo (documento 11, sección 7.3).</p>
+<p>La declaración se apoya en una evaluación verificada con todas esas preguntas en &quot;Sí&quot; y con la regularización dentro de plazo (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>, sección 7.3).</p>
 <hr />
 <h2 id="roles-minimos-en-una-organizacion-pequena"><span class="antetitulo">07</span>Roles mínimos en una organización pequeña</h2>
 <p>SEVEN-G no exige crear estructuras nuevas. En una organización pequeña, con alcance Lite, basta con esta asignación, siempre que se respeten las incompatibilidades de 01 §8.2:</p>
@@ -948,7 +952,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Diagnóstico por autoevaluación.</td>
 <td>Madurez inflada que no resiste la primera auditoría.</td>
-<td>Evaluación verificada con muestreo (documento 11).</td>
+<td>Evaluación verificada con muestreo (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
 </tr>
 <tr>
 <td>Crear un gobierno paralelo.</td>
@@ -988,7 +992,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Priorizar todo por retorno inmediato.</td>
 <td>Ninguna apuesta de Transformar llega a producción.</td>
-<td>Carriles de ambición con sobres propios (documento 14).</td>
+<td>Carriles de ambición con sobres propios (<a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>).</td>
 </tr>
 <tr>
 <td>Auditor de IA dependiente del patrocinador.</td>
@@ -1026,7 +1030,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Áreas del perímetro con declaración de completitud ÷ total.</td>
 <td>100 %</td>
 <td>100 % revisado en el año</td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Iniciativas nuevas con G0 previo al gasto</td>
@@ -1040,7 +1044,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Clasificados ÷ sistemas con criterios Enterprise.</td>
 <td>Todos con clasificación o fecha</td>
 <td>100 %</td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Regularización</td>
@@ -1075,21 +1079,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Importes con fórmula y estado ÷ importes informados.</td>
 <td>100 % en el informe C1</td>
 <td>100 %</td>
-<td>T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 </tr>
 <tr>
 <td>Proporción de valor validado</td>
 <td>Valor validado ÷ valor total informado.</td>
 <td>Línea base</td>
 <td>Objetivo fijado en C2</td>
-<td>T12, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
 </tr>
 <tr>
 <td>No conformidades fuera de plazo</td>
 <td>Abiertas con plazo vencido.</td>
 <td>Línea base</td>
 <td>0 críticas; mayores en descenso</td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Alfabetización</td>
@@ -1103,7 +1107,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Condiciones acreditadas ÷ 7.</td>
 <td>Al menos 2</td>
 <td>7 en Lite; progreso según hoja de ruta en Enterprise</td>
-<td>T15</td>
+<td><a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1120,22 +1124,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Mes 1</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T02, T04 (inventario y registro); T15 (madurez); T14 (índice); T16 (mapa de esferas); T12 (valor actual).</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> (inventario y registro); <a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a> (madurez); <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a> (índice); <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> (mapa de esferas); <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (valor actual).</td>
 <td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
 </tr>
 <tr>
 <td><strong>Mes 2</strong></td>
-<td>T06 (riesgos); T07 (clasificación regulatoria); T05 (ambición); T19 (tesis y apetito).</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a> (riesgos); <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> (clasificación regulatoria); <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a> (ambición); <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a> (tesis y apetito).</td>
 <td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
 </tr>
 <tr>
 <td><strong>Mes 3</strong></td>
-<td>T03 (<em>gates</em>); T08 (no conformidades); <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> (panel); T18 (recomendaciones); <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y T16 (cartera).</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> (<em>gates</em>); <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> (no conformidades); <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> (panel); <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a> (recomendaciones); <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> (cartera).</td>
 <td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
 </tr>
 <tr>
 <td><strong>Meses 4–18</strong></td>
-<td>Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera.</td>
+<td>Todas las anteriores; <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a>, <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> según avance la cartera.</td>
 <td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> según la fase de cada iniciativa</td>
 </tr>
 </tbody>

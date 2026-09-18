@@ -9,7 +9,7 @@ referencias a regulación pueden quedar desactualizadas: cada organización es l
 que le aplica y certificar su propio cumplimiento. El autor y SEACHAD no asumen responsabilidad por su uso. Los datos de
 demostración son ficticios.
 
-Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, versiones 0.1 y 0.2) al JSON
+Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, versiones 0.1, 0.2 y 0.3) al JSON
 del panel (motor/ESQUEMA.md) y genera con el motor el panel completo y el movil; si T01 trae recomendaciones, genera tambien el
 registro de recomendaciones. Solo biblioteca estandar. La tabla de mapeo esta en README.md.
 
@@ -75,8 +75,8 @@ def cargar_motor(panel=None):
     return panel
 
 
-VERSION_CONECTOR = "2.0"
-ESQUEMAS_T01 = ("0.1", "0.2")
+VERSION_CONECTOR = "2.1"
+ESQUEMAS_T01 = ("0.1", "0.2", "0.3")
 FUENTE_T01 = "Registro de iniciativas T01"
 
 # ---------------------------------------------------------------- listas cerradas de T01 y su etiqueta en el panel
@@ -117,6 +117,9 @@ CONTROL = ("hecho", "pendiente", "no_aplica")
 CONCEPTOS = {"eficiencias": ("personas", "herramientas", "siniestros", "operativo", "penalizaciones"),
              "retorno": ("venta_nueva", "venta_cruzada", "retencion", "precio_margen", "cobros", "otros")}
 CONCEPTO_POR_DEFECTO = {"eficiencias": "operativo", "retorno": "otros"}
+# alcance de la iniciativa (esquema 0.3): etiqueta del filtro del panel; las iniciativas de una unidad no llevan etiqueta
+ALCANCE = {"transversal": "Transversal", "plataforma": "Plataforma habilitadora"}
+UNIDAD_TRANSVERSAL = "Varias unidades (transversal)"
 # ciclo de vida por defecto (si falta config_panel.json): etapa del embudo de cada fase de SEVEN-G
 # Las dos terminales del embudo son paralelas: En uso (en producción) y Desenganchado (retirada tras paso a producción).
 CICLO_POR_DEFECTO = {
@@ -139,6 +142,10 @@ GLOSARIO_SEVEN_G = [
     ["SEVEN-G", "Embudo", "Etapas del panel y fases de SEVEN-G", "Propuesto = fases 0 y 1 · Hipótesis de valor = fase 2 · POC = fase 3 (viabilidad y riesgo) · En desarrollo = fases 4 y 5 · "
      "En uso = fases 6 y 7. Una parada en las fases 0-1 figura como No aprobado; en las fases 2-5, como Descartado; una retirada, como Desenganchado. "
      "Las fechas de cada cambio salen de los eventos de T01.", False],
+    ["SEVEN-G", "Transversal", "Iniciativa transversal", "Herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática). "
+     "Se mide por unidad con una escalera: coste, adopción, capacidad liberada declarada (no suma) y valor materializado (documento 40 §7.2).", True],
+    ["SEVEN-G", "Plataforma", "Plataforma habilitadora", "Capacidad común (datos, conocimiento, decisión) cuyo valor se imputa a los casos que la usan; "
+     "en la plataforma solo cuenta su coste (documento 10 §4.1, regla 3).", False],
 ]
 
 
@@ -267,15 +274,45 @@ class Indice:
         return next((e["fecha"] for e in self.eventos.get(iid, []) if e["tipo"] == "entrada_fase" and e.get("fase") == fase), None)
 
     def valor(self, iid, momento, tipo, concepto=None):
-        """El importe mas reciente de ese momento y tipo (por fecha y codigo); con concepto, solo los de ese concepto."""
+        """El importe mas reciente de ese momento y tipo (por fecha y codigo); con concepto, solo los de ese concepto.
+        Con importes por unidad (campo opcional «area», esquema 0.3), el mas reciente de cada unidad, sumados: una iniciativa
+        transversal suma sus unidades y lo comun (sin unidad). Sin «area», un solo grupo: el comportamiento de siempre."""
         vs = [v for v in self.valores.get(iid, []) if v["momento"] == momento and v["tipo"] == tipo
               and (concepto is None or concepto_de(v) == concepto)]
-        return sorted(vs, key=lambda v: (v.get("fecha") or "", v["id"]))[-1] if vs else None
+        ultimos = {}
+        for v in sorted(vs, key=lambda v: (v.get("fecha") or "", v["id"])):
+            ultimos[v.get("area") or None] = v
+        if len(ultimos) <= 1:
+            return next(iter(ultimos.values()), None)
+        return agregado(list(ultimos.values()))
+
+    def por_area(self, iid, momento, tipos, area):
+        """Importes mas recientes de esos tipos en una unidad (area None = lo comun, sin unidad), uno por tipo y concepto."""
+        ult = {}
+        for v in sorted(self.valores.get(iid, []), key=lambda v: (v.get("fecha") or "", v["id"])):
+            if v["momento"] == momento and v["tipo"] in tipos and (v.get("area") or None) == area:
+                ult[(v["tipo"], concepto_de(v))] = v
+        return list(ult.values())
 
     def conceptos(self, iid, tipo):
         """Conceptos con algun importe de ese tipo, en el orden del motor."""
         usados = {concepto_de(v) for v in self.valores.get(iid, []) if v["tipo"] == tipo}
         return [c for c in CONCEPTOS[tipo] if c in usados]
+
+
+RANGO_ESTADO = {"estimado": 0, "declarado": 1, "validado": 2}
+
+
+def agregado(vs):
+    """Suma de los importes de varias unidades en un solo importe: el estado es el mas prudente de los sumados (regla 2) y la
+    formula enumera cada unidad. Un importe sin dato no suma como cero; si ninguno tiene dato, el total es sin dato."""
+    con = [v for v in vs if v.get("importe") is not None]
+    return {"id": vs[0]["id"], "iniciativa": vs[0]["iniciativa"], "momento": vs[0]["momento"], "tipo": vs[0]["tipo"], "concepto": vs[0].get("concepto"),
+            "importe": sum(v["importe"] for v in con) if con else None,
+            "estado": min((v["estado"] for v in vs), key=lambda e: RANGO_ESTADO.get(e, 0)),
+            "formula": "Suma por unidades: " + " + ".join(f"{v.get('area') or 'común'} {_euros(v.get('importe'))}" + (f" ({v['formula']})" if v.get("formula") else "") for v in vs),
+            "fuente": ", ".join(dict.fromkeys(v["fuente"] for v in vs if v.get("fuente"))) or None,
+            "fecha": max((v["fecha"] for v in vs if v.get("fecha")), default=None)}
 
 
 def concepto_de(v):
@@ -335,6 +372,37 @@ def economia(ix, ini, cerrado, moneda):
             "hipotesis_potencial": (hip or None) if not cerrado else None, "comparte_valor_con": [], "clave_reparto": None}
 
 
+def alcance(ix, ini):
+    """Bloque «alcance» del caso (opcional, esquema 0.3; documento 40 §7.2) o None si la iniciativa es de una unidad.
+    Transversal: una fila por unidad con la escalera de medición —coste, adopción, capacidad liberada declarada y valor materializado—
+    y una fila comun (unidad None) con lo que no se imputa a ninguna unidad. Plataforma: los casos a los que se imputa su valor."""
+    a = ini.get("alcance") or {}
+    if a.get("tipo") not in ALCANCE:
+        return None
+    iid = ini["id"]
+    suma = lambda vs: sum(v["importe"] for v in vs if v.get("importe") is not None) if any(v.get("importe") is not None for v in vs) else None
+    reparto = a.get("reparto") or []
+    areas = list(dict.fromkeys([u["area"] for u in reparto] + [v["area"] for v in ix.valores.get(iid, []) if v.get("area")]))
+    unidades = []
+    for area in areas + [None]:
+        u = next((x for x in reparto if x.get("area") == area), None) if area else None
+        coste_r, coste_e = suma(ix.por_area(iid, "realizado", ("coste_recurrente",), area)), (suma(ix.por_area(iid, "esperado", ("coste_recurrente",), area)) if area else None)
+        val = ix.por_area(iid, "realizado", ("eficiencias", "retorno"), area)
+        fila = {"unidad": area, "estado": (u or {}).get("estado"), "desde": (u or {}).get("desde"),
+                "licencias_asignadas": (u or {}).get("licencias_asignadas"), "licencias_activas": (u or {}).get("licencias_activas"),
+                "usuarios_activos_semanales": (u or {}).get("usuarios_activos_semanales"), "horas_liberadas_mes": (u or {}).get("horas_liberadas_mes"),
+                "coste_anual": coste_r if coste_r is not None else coste_e, "coste_previsto": coste_r is None and coste_e is not None,
+                "valor_materializado": suma(val), "valor_validado": suma([v for v in val if v["estado"] == "validado"]) if val else None,
+                "capacidad_liberada": suma(ix.por_area(iid, "realizado", ("capacidad_liberada",), area)),
+                "fuente": (u or {}).get("fuente"), "fecha_dato": (u or {}).get("fecha_dato")}
+        if area is None and fila["coste_anual"] is None and fila["valor_materializado"] is None and fila["capacidad_liberada"] is None:
+            continue
+        unidades.append(fila)
+    return {"tipo": a["tipo"], "umbral_adopcion_pct": a.get("umbral_adopcion_pct"),
+            "habilita": [{"id": h, "nombre": ix.ini[h]["nombre"] if h in ix.ini else None} for h in a.get("habilita") or []],
+            "unidades": unidades if a["tipo"] == "transversal" else []}
+
+
 def valor_validado(ix, ini):
     """Suma de lo realizado y validado (eficiencias y retorno) y objetivo = valor esperado; lo demas, sin dato."""
     iid = ini["id"]
@@ -372,18 +440,30 @@ def caso(ix, ini, org, moneda, ciclo_vida):
     # T01 no estima años de producción: inicio_estimado es null. Excepción por el motor actual: en un caso «En uso» o «Desenganchado» sin
     # fecha de producción (p. ej., parada en G3) el panel escribiría «null (año estimado)»; con "" muestra «—» y no lo cuenta por año.
     inicio_estimado = "" if (produccion is None and (en_uso or cerrado)) else None
+    al = alcance(ix, ini)   # solo iniciativas transversales y plataformas: las demás no cambian (D53)
+    eco = economia(ix, ini, cerrado, moneda)
+    if al and al["tipo"] == "transversal":
+        eco["clave_reparto"] = ("Coste imputado a cada unidad de negocio por sus licencias; el gobierno común (oficina de adopción, formación y revisión de permisos) "
+                                "va sin unidad. El valor solo cuenta cuando la unidad lo materializa (documento 40 §7.2).")
+    elif al:
+        eco["clave_reparto"] = "El valor de la plataforma se imputa a los casos que la usan; aquí solo cuenta su coste (documento 10 §4.1, regla 3)."
+        eco["comparte_valor_con"] = [h["id"] for h in al["habilita"]]
+    tags = {"tecnologia": TECNOLOGIA.get(tp), "naturaleza": NATURALEZA.get(tp), "exposicion": EXPOSICION.get(cl.get("exposicion")),
+            "riesgo": REGULATORIA_TAG.get(reg), "funcion": ESFERAS.get(cl.get("esfera_principal")), "prioridad": PRIORIDAD.get(pan.get("prioridad")), "ambicion": AMBICION.get(amb)}
+    if al:
+        tags["alcance"] = ALCANCE[al["tipo"]]
+    extra = {"alcance": al} if al else {}
     return {
         "id": iid, "nombre": ini["nombre"], "que_es": ini.get("descripcion") or None, "descripcion": pan.get("observaciones_consejo") or None, "area": ini.get("area"),
-        "compania": org, "unidad": ini.get("area"), "estado": estado, "inicio_estimado": inicio_estimado,
-        "tags": {"tecnologia": TECNOLOGIA.get(tp), "naturaleza": NATURALEZA.get(tp), "exposicion": EXPOSICION.get(cl.get("exposicion")),
-                 "riesgo": REGULATORIA_TAG.get(reg), "funcion": ESFERAS.get(cl.get("esfera_principal")), "prioridad": PRIORIDAD.get(pan.get("prioridad")), "ambicion": AMBICION.get(amb)},
+        "compania": org, "unidad": UNIDAD_TRANSVERSAL if al and al["tipo"] == "transversal" else ini.get("area"), "estado": estado, "inicio_estimado": inicio_estimado,
+        "tags": tags, **extra,
         "detalle": {"tipo": ", ".join(TECNOLOGIA_TXT.get(t, t) for t in tecs) or None, "decision": None, "datos": None, "aiact": REGULATORIA_TAG.get(reg),
                     "proveedores": proveedores, "valor_tipo": ", ".join(TIPO_VALOR.get(t, t) for t in cl.get("tipo_valor") or []) or None,
                     "es_ia": NATURALEZA.get(tp) if tp else None, "acciones_estimadas_cati": None},
         "valor": {"magnitud": None, "anio": None, "acum": None, "acum_dato": False, "acum_extrapolado_cati": None,
                   "medido": any(v["momento"] == "realizado" and v.get("importe") is not None for v in ix.valores.get(iid, [])),
                   "fuente": FUENTE_T01, "nota_acum": None, "pta": None, "nombre_cdm": None},
-        "economia": economia(ix, ini, cerrado, moneda),
+        "economia": eco,
         "reporte_compania": {
             "propietario_negocio": ix.nombre_persona(responsables.get("patrocinador")) if responsables.get("patrocinador") else None,
             "responsable_tecnico": ix.nombre_persona(responsables.get("tecnico")) if responsables.get("tecnico") else None,

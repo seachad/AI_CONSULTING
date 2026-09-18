@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Initiative charter"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -468,7 +472,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>Format IA-AAAA-NNN, assigned by the initiative register (T01). It is not reused.</td>
+<td>Format IA-AAAA-NNN, assigned by the initiative register (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). It is not reused.</td>
 </tr>
 <tr>
 <td>Initiative name</td>
@@ -698,7 +702,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Investment threshold approved in C2</td>
 <td></td>
-<td>If the total planned investment exceeds it, Enterprise intensity applies (P04, criterion 8).</td>
+<td>If the total planned investment exceeds it, Enterprise intensity applies (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterion 8).</td>
 </tr>
 <tr>
 <td>Target dates for G1 and G2</td>
@@ -790,7 +794,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Determined intensity</td>
 <td></td>
-<td>Lite · Enterprise, with the criterion that determines it (P04).</td>
+<td>Lite · Enterprise, with the criterion that determines it (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
 </tr>
 <tr>
 <td>Preliminary regulatory classification</td>

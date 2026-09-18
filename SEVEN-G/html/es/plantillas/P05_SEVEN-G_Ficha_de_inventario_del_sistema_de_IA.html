@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Ficha de inventario del sistema de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -435,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>T02 · Inventario de sistemas de IA (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Estructura de detalle en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · Inventario de sistemas de IA (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Estructura de detalle en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -584,7 +588,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad</td>
 <td></td>
-<td>Lite · Enterprise (P04).</td>
+<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
 </tr>
 <tr>
 <td>Tecnología</td>
@@ -604,7 +608,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Clasificación regulatoria</td>
 <td></td>
-<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (P11).</td>
+<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
 </tr>
 <tr>
 <td>Tipo de valor</td>
@@ -850,7 +854,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de riesgo residual principal</td>
 <td></td>
-<td>Bajo · Medio · Alto · Crítico (P12).</td>
+<td>Bajo · Medio · Alto · Crítico (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
 </tr>
 <tr>
 <td>No conformidades abiertas</td>

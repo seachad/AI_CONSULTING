@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Portfolio management"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -384,7 +388,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <strong>Downloads</strong>
     <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Close panel">✕</button>
   </div>
-  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/14_SEVEN-G_Gestion_de_cartera.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/en/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/14_SEVEN-G_Gestion_de_cartera.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div>
 </aside>
 
 <div id="top"></div>
@@ -398,7 +402,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <div class="cifras"><div class="cifra"><b>3</b><span>ambition lanes with their own budget</span></div><div class="cifra"><b>6</b><span>prioritisation criteria</span></div><div class="cifra"><b>10</b><span>steps in the retirement procedure</span></div><div class="cifra"><b>6</b><span>programme traffic-light axes</span></div></div>
   </div>
 </header>
-<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/14_SEVEN-G_Gestion_de_cartera.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
+<section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/14_SEVEN-G_Gestion_de_cartera.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#stage-c3-portfolio"><span>02</span>Stage C3 · Portfolio</a></li><li><a href="#entry-of-initiatives-into-the-portfolio"><span>03</span>Entry of initiatives into the portfolio</a></li><li><a href="#prioritisation-criteria"><span>04</span>Prioritisation criteria</a></li><li><a href="#balance-of-ambition-and-risk"><span>05</span>Balance of ambition and risk</a></li><li><a href="#capacity-and-staged-budget"><span>06</span>Capacity and staged budget</a></li><li><a href="#monthly-and-quarterly-review"><span>07</span>Monthly and quarterly review</a></li><li><a href="#stalled-initiatives-expired-conditions-and-initiatives-on-hold"><span>08</span>Stalled initiatives, expired conditions and initiatives on hold</a></li><li><a href="#risk-concentration-and-supplier-dependency"><span>09</span>Risk concentration and supplier dependency</a></li><li><a href="#retirement-procedure"><span>10</span>Retirement procedure</a></li><li><a href="#regularisation-of-initiatives-pre-dating-the-framework"><span>11</span>Regularisation of initiatives pre-dating the framework</a></li><li><a href="#programme-traffic-light"><span>12</span>Programme traffic light</a></li><li><a href="#associated-tools-and-templates"><span>13</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>14</span>Related documents</a></li><li><a href="#version-control"><span>15</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal">
@@ -406,7 +410,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>This document develops stage <strong>C3 · Portfolio</strong> of the corporate cycle (01 §5.1) and ongoing portfolio management in <strong>C4 · Oversight</strong>. It defines how initiatives enter, how they are prioritised and funded, how the balance of ambition and risk is maintained, how the portfolio is reviewed, how stalled initiatives are handled, how an initiative is retired and how initiatives that pre-date the adoption of the framework are regularised.</p>
-<p>It applies to all initiatives in the register (T01): in-house initiatives, third-party AI embedded in processes and corporate use of general-purpose AI that meets any Enterprise criterion (01 §1.2). The main tools are <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register</strong>, <strong>T16 · Portfolio sphere map</strong> and <strong>T22 · Retirement manager</strong>.</p>
+<p>It applies to all initiatives in the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>): in-house initiatives, third-party AI embedded in processes and corporate use of general-purpose AI that meets any Enterprise criterion (01 §1.2). The main tools are <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register</strong>, <strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> · Portfolio sphere map</strong> and <strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> · Retirement manager</strong>.</p>
 <p>This document does not constitute legal advice.</p>
 <h3 id="1-1-portfolio-management-principles">1.1 Portfolio management principles</h3>
 <ol>
@@ -590,7 +594,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Proposed sphere and ambition</td>
-<td>Using the five questions in 00 §5.2 (T05).</td>
+<td>Using the five questions in 00 §5.2 (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>).</td>
 </tr>
 <tr>
 <td>Order of magnitude of value</td>
@@ -606,7 +610,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Foreseeable Enterprise criteria</td>
-<td>Intensity questionnaire (T04).</td>
+<td>Intensity questionnaire (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -854,7 +858,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="balance-of-ambition-and-risk"><span class="antetitulo">05</span>Balance of ambition and risk</h2>
 <h3 id="5-1-ambition-balance">5.1 Ambition balance</h3>
-<p>C2 sets the <strong>target distribution</strong> of investment across lanes and the <strong>ambition per sphere</strong>. SEVEN-G does not impose proportions: they depend on the thesis. The portfolio is compared with the target at each quarterly review using the spheres × ambition levels map (T16), with investment, recurring cost and value per cell.</p>
+<p>C2 sets the <strong>target distribution</strong> of investment across lanes and the <strong>ambition per sphere</strong>. SEVEN-G does not impose proportions: they depend on the thesis. The portfolio is compared with the target at each quarterly review using the spheres × ambition levels map (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>), with investment, recurring cost and value per cell.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -973,7 +977,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>2 · Design and delivery</strong></td>
 <td>4–5</td>
 <td>G3</td>
-<td>Build and pilot cost from the feasibility assessment (P10).</td>
+<td>Build and pilot cost from the feasibility assessment (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>).</td>
 </tr>
 <tr>
 <td><strong>3 · Operation</strong></td>
@@ -1010,7 +1014,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>New entries and Enterprise <em>gates</em></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>Admit, prioritise, decide <em>gates</em>.</td>
 </tr>
 <tr>
@@ -1020,12 +1024,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Cost and value deviations</td>
-<td>T12, T13</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>Conditions, early R6.</td>
 </tr>
 <tr>
 <td>Incidents and major or critical nonconformities</td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>Containment, stop, retirement.</td>
 </tr>
 <tr>
@@ -1047,7 +1051,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Balance</td>
-<td>T16 map; ambition mix by phase; deviation from C2.</td>
+<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> map; ambition mix by phase; deviation from C2.</td>
 <td>Measures in section 5.1.</td>
 </tr>
 <tr>
@@ -1078,7 +1082,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Report to the board (C4)</td>
 <td>Summary in the response format of documents 60 and 61.</td>
-<td>Recorded recommendations (T18).</td>
+<td>Recorded recommendations (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1221,7 +1225,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>When risk so requires, the initiative is <strong>halted immediately</strong> using the kill switch or the rollback plan (P19) and the formal G7 is held afterwards, within a maximum of 10 working days.</p>
+<p>When risk so requires, the initiative is <strong>halted immediately</strong> using the kill switch or the rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) and the formal G7 is held afterwards, within a maximum of 10 working days.</p>
 <h3 id="10-2-owners">10.2 Owners</h3>
 <div class="tabla"><table>
 <thead>
@@ -1265,7 +1269,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>AI Office</strong></td>
-<td>Recording in T22, updating of <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and T02, consolidation of lessons.</td>
+<td>Recording in <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>, updating of <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, consolidation of lessons.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1290,7 +1294,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   class F ko
 </pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
 <p>Reference time limits: retirement plan approved within 15 days (Lite) or 30 days (Enterprise) of the decision, in line with the phase 7 time limits (03 §3.6); closure verification within 30 days of deactivation.</p>
-<h3 id="10-4-content-of-the-retirement-plan-p30">10.4 Content of the retirement plan (P30)</h3>
+<h3 id="10-4-content-of-the-retirement-plan-p30">10.4 Content of the retirement plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1356,7 +1360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Models, versions and configurations</strong></td>
-<td>Archiving with version and lineage (P16) for as long as there is an obligation to retain documentation or a possibility of claims; thereafter, recorded destruction.</td>
+<td>Archiving with version and lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>) for as long as there is an obligation to retain documentation or a possibility of claims; thereafter, recorded destruction.</td>
 </tr>
 <tr>
 <td><strong>Technical documentation and activity logs</strong></td>
@@ -1376,7 +1380,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Inventory and register</strong></td>
-<td>T02 moves the system to &quot;retired&quot;; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> moves the initiative to <em>Retired</em> with the closure date.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> moves the system to &quot;retired&quot;; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> moves the initiative to <em>Retired</em> with the closure date.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1431,7 +1435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="10-8-lessons-learned">10.8 Lessons learned</h3>
 <p>Every retirement, and every stop at G3 or later, produces a lessons note with: initial hypothesis; what happened; coded reason; <strong>what early signal foreshadowed it and when it was noticed</strong>; total investment and cost against realised value; and what change is proposed to entry criteria, templates or thresholds. The AI Office consolidates them by reason and presents them in C5.</p>
-<h3 id="10-9-retirement-register-t22">10.9 Retirement register (T22)</h3>
+<h3 id="10-9-retirement-register-t22">10.9 Retirement register (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1489,7 +1493,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Initiatives in production prior to the adoption of SEVEN-G must be regularised within the time limit approved in C2, by undergoing a continuity review equivalent to G7 (01 §14).</p>
 <h3 id="11-1-steps">11.1 Steps</h3>
 <ol>
-<li><strong>Census.</strong> Registration in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and T02 of everything that exists, with its actual status: idea, pilot, under construction or in production.</li>
+<li><strong>Census.</strong> Registration in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> of everything that exists, with its actual status: idea, pilot, under construction or in production.</li>
 <li><strong>Order by risk.</strong> First, those that meet any Enterprise criterion (01 §9.2), in particular high regulatory risk, decisions about people, direct exposure and agents that act; then the rest.</li>
 <li><strong>Treatment by status:</strong></li>
 </ol>
@@ -1504,7 +1508,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>In production</strong></td>
-<td>Review equivalent to G7 with minimum evidence: description (P31), roles (P03), intensity (P04), regulatory classification (P11), risks (P12), realised value with status (P28), manual and monitoring (P24, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), rollback plan (P19).</td>
+<td>Review equivalent to G7 with minimum evidence: description (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>), roles (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>), intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>), regulatory classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>), risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>), realised value with status (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), manual and monitoring (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
 <td>Continue in production with periodic R6; continue with conditions; iterate; retire.</td>
 </tr>
 <tr>
@@ -1610,15 +1614,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Entry record, prioritisation score, lanes and tranches, alerts for stalled initiatives, holds and conditions, &quot;Programme&quot; and &quot;Regularisation&quot; tags, traffic light.</td>
 </tr>
 <tr>
-<td><strong>T16 · Portfolio sphere map</strong></td>
+<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> · Portfolio sphere map</strong></td>
 <td>Ambition balance per sphere with investment, recurring cost and value.</td>
 </tr>
 <tr>
-<td><strong>T22 · Retirement manager</strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> · Retirement manager</strong></td>
 <td>Retirement plan, replacement, data and models, access, communication, closure verification and retirement register (section 10.9).</td>
 </tr>
 <tr>
-<td>T02, T03, T04, T05, T06, T08, T09, T12, T13, T14, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, T18</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>Inventory, <em>gates</em>, intensity, ambition, risks, nonconformities, suppliers, value, costs, transformation index, dashboard and recommendations.</td>
 </tr>
 <tr>

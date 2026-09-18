@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Benefits realisation"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -446,7 +450,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Estimated or declared</td>
 <td>AI Product Owner; management control reviews the calculation</td>
 <td>AI Risk Owner or AI Auditor</td>
-<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, T11, T13</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a>, <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 </tr>
 <tr>
 <td><strong>G4 · Design</strong></td>
@@ -470,7 +474,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Declared → validated</td>
 <td>Business owner</td>
 <td>Management control</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 </tr>
 <tr>
 <td><strong>6- and 12-month reviews</strong></td>
@@ -508,7 +512,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </pre></div><div class="g-fuente">Source: SEVEN-G · SEACHAD</div></figure>
 <h3 id="2-2-rules-of-the-path">2.2 Rules of the path</h3>
 <ol>
-<li><strong>Expected and realised values are never added together.</strong> They coexist in T12 as separate columns.</li>
+<li><strong>Expected and realised values are never added together.</strong> They coexist in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> as separate columns.</li>
 <li><strong>Expected value is not validated</strong> (document 40 §4.1). Management control may review its calculation at G3, but the validated status only applies to realised value in a closed period.</li>
 <li><strong>The approved hypothesis is the reference.</strong> The realisation plan, variances and G7 are measured against the hypothesis approved at G2 and revised at G3. Changing it requires the approval of the body that authorised the initiative (01 §7.4, rule 6).</li>
 </ol>
@@ -542,7 +546,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>AI Product Owner</strong></td>
 <td>As per 01 §8.1.</td>
-<td>Accountable for actual use and adoption; keeps T12 up to date; prepares the reviews.</td>
+<td>Accountable for actual use and adoption; keeps <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> up to date; prepares the reviews.</td>
 <td>Declare value on behalf of the business area.</td>
 </tr>
 <tr>
@@ -576,7 +580,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="benefits-realisation-plan"><span class="antetitulo">04</span>Benefits realisation plan</h2>
 <h3 id="4-1-content">4.1 Content</h3>
-<p>The plan forms part of template <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> and is recorded in T12. In Lite, the fields marked <strong>(Enterprise)</strong> may be omitted.</p>
+<p>The plan forms part of template <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> and is recorded in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>. In Lite, the fields marked <strong>(Enterprise)</strong> may be omitted.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -654,7 +658,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Benefit risks</strong></td>
 <td>What could prevent it from arriving</td>
-<td>Linked to the risk register (T06). <strong>(Enterprise)</strong></td>
+<td>Linked to the risk register (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>). <strong>(Enterprise)</strong></td>
 </tr>
 <tr>
 <td><strong>Stop criteria</strong></td>
@@ -754,7 +758,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Actual recurring cost</td>
-<td>From T13 (document 42).</td>
+<td>From <a href="42_SEVEN-G_Costes_de_IA.html">T13</a> (document 42).</td>
 </tr>
 <tr>
 <td>Released capacity</td>
@@ -916,6 +920,39 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Proportional allocation: A = 400,000 × 280/500 = <strong>€224,000</strong>; B = 400,000 × 220/500 = <strong>€176,000</strong>.</li>
 <li>Check: 100,000 + 224,000 + 176,000 = €500,000.</li>
 </ol>
+<h3 id="6-4-cross-unit-initiatives-realisation-by-business-unit">6.4 Cross-unit initiatives: realisation by business unit</h3>
+<p>A cross-unit initiative (document 40 §7.2) has a single realisation plan, with one block per business unit:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>What is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Owners</strong></td>
+<td>The sponsor is corporate. Each unit appoints its <strong>business owner of the benefit</strong>, who signs the unit's part of the plan and declares its cost, adoption and realised value every period.</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Each unit bears its licences from day one. Shared costs (adoption office, ongoing training, permission review) are recorded without a unit and add to the initiative's cost.</td>
+</tr>
+<tr>
+<td><strong>Adoption</strong></td>
+<td>Active over assigned licences and weekly active users, taken from the platform usage reports. Below the threshold approved at G2, the unit reviews the roll-out or withdraws licences.</td>
+</tr>
+<tr>
+<td><strong>Materialisation</strong></td>
+<td>Each unit states the lever from section 7.2 it uses to turn released hours into lower cost or reassigned capacity. Without a lever, the hours are released capacity and do not add up.</td>
+</tr>
+<tr>
+<td><strong>Validation</strong></td>
+<td>Management control validates unit by unit. The sum of the units and of the shared costs is the initiative's value; what a unit's own use case already claims on the same process is not counted again (sections 6.1 and 6.2).</td>
+</tr>
+</tbody>
+</table></div>
+<p>In <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, each unit's roll-out and adoption are recorded in the initiative's scope, and its cost and value as amounts with their unit. The board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) shows them by unit and gives the portfolio's net value with and without cross-unit initiatives.</p>
 <hr />
 <h2 id="materialisation-of-released-capacity"><span class="antetitulo">07</span>Materialisation of released capacity</h2>
 <h3 id="7-1-principle">7.1 Principle</h3>
@@ -959,7 +996,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Reassignment to a new activity</strong></td>
 <td>The hours are explicitly devoted to an identified higher-value activity.</td>
 <td>Reassigned capacity; its value only counts through the measured outcome of the destination activity.</td>
-<td>Activity, owner, date and hours recorded in T20.</td>
+<td>Activity, owner, date and hours recorded in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1092,7 +1129,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="8-3-outcome">8.3 Outcome</h3>
-<p>Each review produces a <strong>short report</strong> with conclusions, actions, owners and dates, recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> as an event and linked in T12. It is prepared by the AI Office with the AI Product Owner; it is approved by the sponsor (Lite) or the AI Committee (Enterprise). The lessons are incorporated into the portfolio's lessons learned register.</p>
+<p>Each review produces a <strong>short report</strong> with conclusions, actions, owners and dates, recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> as an event and linked in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>. It is prepared by the AI Office with the AI Product Owner; it is approved by the sponsor (Lite) or the AI Committee (Enterprise). The lessons are incorporated into the portfolio's lessons learned register.</p>
 <hr />
 <h2 id="variances-and-actions"><span class="antetitulo">09</span>Variances and actions</h2>
 <h3 id="9-1-thresholds">9.1 Thresholds</h3>
@@ -1183,7 +1220,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="9-3-rules">9.3 Rules</h3>
 <ol>
-<li><strong>Every variance has a cause and an action</strong>, with owner and date, recorded in T12.</li>
+<li><strong>Every variance has a cause and an action</strong>, with owner and date, recorded in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>.</li>
 <li><strong>The target is not lowered to close a variance.</strong> Revising the hypothesis is a decision of the body that approved it and is recorded with the reason.</li>
 <li><strong>Overdue actions are treated as expired conditions</strong> (IND-EMB-08) when they were imposed at a <em>gate</em> or at R6.</li>
 </ol>
@@ -1200,7 +1237,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Realised value is recorded each period with a status.</td>
-<td>T12 up to date; no unexplained &quot;no data&quot; periods.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> up to date; no unexplained &quot;no data&quot; periods.</td>
 </tr>
 <tr>
 <td>Realisation is within tolerance or has actions.</td>
@@ -1215,7 +1252,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Materialisation and reassignment rates.</td>
 </tr>
 <tr>
-<td>Actual cost reconciles with T13.</td>
+<td>Actual cost reconciles with <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</td>
 <td>Reconciliation in document 42 §11.3.</td>
 </tr>
 <tr>
@@ -1276,7 +1313,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Close of the period in T12 for all use cases.</td>
+<td>Close of the period in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> for all use cases.</td>
 <td>Business owners</td>
 <td>Use cases without a declaration identified.</td>
 </tr>
@@ -1294,7 +1331,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Incorporation of actual recurring cost from T13.</td>
+<td>Incorporation of actual recurring cost from <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</td>
 <td>Management control</td>
 <td>Reconciliation with accounting.</td>
 </tr>
@@ -1318,7 +1355,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Export to the board dashboard (T17).</td>
+<td>Export to the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
 <td>AI Office</td>
 <td>Validated proportion visible next to each total.</td>
 </tr>
@@ -1454,7 +1491,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T12</strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Realisation plan, recording by period, statuses, realisation, variances.</td>
 </tr>
@@ -1464,7 +1501,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Owners, review events, R6 and G7 decisions.</td>
 </tr>
 <tr>
-<td><strong>T13</strong></td>
+<td><strong><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></strong></td>
 <td>Cost calculator per use case</td>
 <td>Actual recurring cost.</td>
 </tr>
@@ -1474,12 +1511,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Consolidation and presentation.</td>
 </tr>
 <tr>
-<td><strong>T20</strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Materialisation and reassignment of capacity.</td>
 </tr>
 <tr>
-<td><strong>T22</strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></strong></td>
 <td>Retirement manager</td>
 <td>Final value and retirement.</td>
 </tr>

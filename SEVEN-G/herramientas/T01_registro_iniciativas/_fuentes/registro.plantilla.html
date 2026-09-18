@@ -105,6 +105,12 @@ legend{font-weight:700;padding:0 4px;color:var(--negro)}
 .tabla th{text-align:left;font-size:12.5px;color:var(--tinta-2);border-bottom:2px solid var(--negro);padding:6px 10px 6px 0;vertical-align:bottom}
 .tabla td{border-bottom:1px solid var(--regla);padding:7px 10px 7px 0;vertical-align:top}
 .tabla tr.clic:hover td{background:var(--papel-2)}
+/* despliegue y adopción por unidad (iniciativas transversales) */
+.tblx{overflow-x:auto;max-width:100%}
+dialog:has(.reparto-ed){width:min(1120px,calc(100vw - 16px))}
+.reparto-ed td{padding-right:6px}
+.reparto-ed input,.reparto-ed select{width:auto;max-width:10em;font-size:13px}
+.reparto-ed input[type=number]{width:6.5em}
 @media (max-width:760px){
   .tabla.resp thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .tabla.resp,.tabla.resp tbody,.tabla.resp tr,.tabla.resp td{display:block;width:100%}
@@ -241,7 +247,7 @@ const CAT = JSON.parse(document.getElementById('catalogo-criterios').textContent
 const DEMO_TXT = document.getElementById('datos-demo').textContent;
 /* Panel del consejo (T17): lo genera el conector t01_a_panel.py con el JSON completo de este registro. build_registro.ps1 comprueba que PANEL_DEMO existe. */
 const PANEL_DEMO = '../T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html', PANEL_T17 = '../T17_panel_consejo/index.html';
-const VERSION_ESQUEMA = '0.2';
+const VERSION_ESQUEMA = '0.3';
 const LS_DATOS = 'seveng-t01-datos-v1', LS_UI = 'seveng-t01-ui-v1';
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
@@ -327,6 +333,7 @@ const LB = {
   nc_tipo:{mayor:'mayor',menor:'menor'},
   /* datos para el panel del consejo (T17): bloque «panel» de la iniciativa y concepto de cada importe (esquema 0.2) */
   complejidad:{baja:'Baja',media:'Media',alta:'Alta'}, prioridad:{alta:'Alta',media:'Media',baja:'Baja'}, control:{hecho:'Hecho',pendiente:'Pendiente',no_aplica:'No aplica'},
+  alcance:{unidad:'De una unidad',transversal:'Transversal (varias unidades)',plataforma:'Plataforma habilitadora'}, despliegue:{previsto:'Previsto',piloto:'Piloto',en_uso:'En uso',retirado:'Retirado'},
   concepto_eficiencias:{personas:'Menor coste de personas o de externalización (materializado)',herramientas:'Herramientas o licencias retiradas',siniestros:'Fraude, recobros y sobrecostes evitados',operativo:'Otros costes operativos evitados',penalizaciones:'Errores y penalizaciones evitados'},
   concepto_retorno:{venta_nueva:'Venta nueva',venta_cruzada:'Venta cruzada',retencion:'Retención de clientes',precio_margen:'Precio y margen',cobros:'Cobros recuperados',otros:'Otro retorno'}
  },
@@ -366,6 +373,7 @@ const LB = {
   organo_p:{oficina_ia:'AI Office',comite_ia:'AI Committee',consejo:'Board',segunda_linea:'Second line',tercera_linea:'Third line'},
   nc_tipo:{mayor:'major',menor:'minor'},
   complejidad:{baja:'Low',media:'Medium',alta:'High'}, prioridad:{alta:'High',media:'Medium',baja:'Low'}, control:{hecho:'Done',pendiente:'Pending',no_aplica:'Not applicable'},
+  alcance:{unidad:'Single unit',transversal:'Cross-unit (several units)',plataforma:'Enabling platform'}, despliegue:{previsto:'Planned',piloto:'Pilot',en_uso:'In use',retirado:'Retired'},
   concepto_eficiencias:{personas:'Lower staff or outsourcing cost (realised)',herramientas:'Tools or licences retired',siniestros:'Fraud, recoveries and overcharges avoided',operativo:'Other operating costs avoided',penalizaciones:'Errors and penalties avoided'},
   concepto_retorno:{venta_nueva:'New sales',venta_cruzada:'Cross-selling',retencion:'Customer retention',precio_margen:'Price and margin',cobros:'Collections recovered',otros:'Other return'}
  }};
@@ -405,7 +413,7 @@ function descargar(nombre, contenido, tipo){ const blob=new Blob([contenido],{ty
 /* ---------------- datos y persistencia ---------------- */
 let DB = null, M = null, GUARDADO = true;
 const OPCIONALES = ['sistemas','riesgos','no_conformidades','incidentes','proveedores','recomendaciones'];
-function normalizar(d){ d.version_esquema=VERSION_ESQUEMA; /* 0.2 solo añade campos opcionales a 0.1 (bloque «panel» y concepto de los importes) */ OPCIONALES.forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); ['personas','iniciativas','eventos','decisiones_gate','condiciones','evidencias','valores'].forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); return d; }
+function normalizar(d){ d.version_esquema=VERSION_ESQUEMA; /* 0.2 y 0.3 solo añaden campos opcionales a 0.1 (0.2: bloque «panel» y concepto de los importes; 0.3: alcance de la iniciativa y unidad de cada importe) */ OPCIONALES.forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); ['personas','iniciativas','eventos','decisiones_gate','condiciones','evidencias','valores'].forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); return d; }
 function cargar(){
   const u = lsGet(LS_UI); if(u){ try{ Object.assign(UI, JSON.parse(u)); }catch(e){} }
   const s = lsGet(LS_DATOS);
@@ -491,6 +499,8 @@ function alertasDe(I, s){
   if(s.dg){ const pend=(M.evi.get(I.id)||[]).filter(e=>e.gate===s.dg.gate && !e.verificada && e.fecha<=s.dg.fecha_solicitud); if(pend.length) add('evidencias','media', t('al_evidencias',{n:pend.length,g:s.dg.gate})); }
   if(!cerrada(I) && I.ciclo.estado!=='registrada'){ const inc=incompatibilidades(I); if(inc.length) add('roles','alta', t('al_roles')+' '+inc.join(' · ')); }
   DB.no_conformidades.filter(n=>n.iniciativa===I.id && n.estado==='abierta' && n.plazo_accion && n.plazo_accion<h).forEach(n=>add('nc','media', t('al_nc',{id:n.id})));
+  /* iniciativa transversal: unidades en uso por debajo del umbral de adopción (criterio de parada o de retirada de licencias, 40 §7.2) */
+  const al=alcanceDe(I); if(al && !cerrada(I) && al.umbral_adopcion_pct!=null) (al.reparto||[]).filter(u=>u.estado==='en_uso').forEach(u=>{ const p=pctAdop(u); if(p!=null && p<al.umbral_adopcion_pct) add('adopcion','media', t('al_adopcion',{u:u.area,p:Math.round(p),m:al.umbral_adopcion_pct})); });
   return A;
 }
 function incompatibilidades(I){
@@ -503,7 +513,7 @@ function incompatibilidades(I){
 function todasAlertas(lista){ const A=[]; (lista||DB.iniciativas).forEach(I=>A.push(...sit(I).alertas)); return A; }
 
 /* ---------------- filtros ---------------- */
-const CLAVES_FILTRO = ['esfera','ambicion','intensidad','regulatoria','tecnologia','exposicion','tipo_valor','area','estado','fase','proveedor','etiqueta'];
+const CLAVES_FILTRO = ['esfera','ambicion','intensidad','regulatoria','tecnologia','exposicion','tipo_valor','area','estado','fase','proveedor','etiqueta','alcance'];
 function ambicionDe(I){ return I.clasificacion.ambicion_confirmada || I.clasificacion.ambicion_propuesta || null; }
 function filtrar(){
   const F=UI.filtros||{}; const q=(F.q||'').toLowerCase().trim();
@@ -522,6 +532,7 @@ function filtrar(){
     if(F.fase!=null && F.fase!=='' && String(I.ciclo.fase)!==String(F.fase)) return false;
     if(F.proveedor && !(c.proveedores||[]).includes(F.proveedor)) return false;
     if(F.etiqueta && !(I.etiquetas_libres||[]).includes(F.etiqueta)) return false;
+    if(F.alcance && tipoAlcance(I)!==F.alcance) return false;
     if(F.solo_alertas && !sit(I).alertas.some(a=>a.sev!=='info')) return false;
     if(q && !(I.id+' '+I.nombre+' '+(I.descripcion||'')).toLowerCase().includes(q)) return false;
     return true; });
@@ -539,7 +550,7 @@ function filtrosHTML(){
   return '<details class="filtros" id="det-filtros"'+(UI.filtrosAbiertos?' open':'')+'><summary>'+esc(t('filtros'))+(nFiltros()?' · '+esc(t('activos',{n:nFiltros()})):'')+'</summary>'+
    '<div class="rejilla"><div class="campo"><label for="f-q">'+esc(t('buscar'))+'</label><input type="search" id="f-q" data-filtro="q" value="'+esc(F.q||'')+'"></div>'+
    sel('esfera','esfera')+sel('ambicion','ambicion')+sel('intensidad','intensidad')+sel('regulatoria','regulatoria')+sel('tecnologia','tecnologia')+sel('exposicion','exposicion')+sel('tipo_valor','tipo_valor')+
-   sel('area',null,areas)+sel('estado','estado')+sel('fase',null,fases)+sel('proveedor',null,prov)+sel('etiqueta',null,etq)+'</div>'+
+   sel('area',null,areas)+sel('estado','estado')+sel('fase',null,fases)+sel('proveedor',null,prov)+sel('etiqueta',null,etq)+sel('alcance','alcance')+'</div>'+
    '<div class="fila"><label class="checks"><input type="checkbox" id="f-solo_alertas" data-filtro="solo_alertas"'+(F.solo_alertas?' checked':'')+'> '+esc(t('solo_alertas'))+'</label>'+
    '<label class="checks"><input type="checkbox" id="f-excluir_cerradas" data-filtro="excluir_cerradas"'+(F.excluir_cerradas?'':' checked')+' data-invertir="1"> '+esc(t('incluir_cerradas'))+'</label>'+
    '<button type="button" data-acc="limpiar-filtros">'+esc(t('limpiar'))+'</button></div></details>';
@@ -584,7 +595,7 @@ function vistaEmbudo(){
     [['fase','o_fase'],['dias','o_dias'],['valor','o_valor'],['codigo','o_codigo']].map(([v,k])=>'<option value="'+v+'"'+(orden===v?' selected':'')+'>'+esc(t(k))+'</option>').join('')+'</select></div></div>';
   h+='<table class="tabla resp"><thead><tr><th scope="col">'+esc(t('codigo'))+'</th><th scope="col">'+esc(t('iniciativa'))+'</th><th scope="col">'+esc(t('fase'))+'</th><th scope="col">'+esc(t('estado'))+'</th><th scope="col">'+esc(t('dias_fase'))+'</th><th scope="col">'+esc(t('ambicion'))+' · '+esc(t('intensidad'))+'</th><th scope="col" class="num">'+esc(t('valor_esp'))+'</th><th scope="col">'+esc(t('alertas'))+'</th></tr></thead><tbody>';
   ord.forEach(I=>{ const s=sit(I);
-    h+='<tr><td data-l="'+esc(t('codigo'))+'" class="mono">'+esc(I.id)+'</td><td data-l="'+esc(t('iniciativa'))+'">'+enlaceIni(I)+'<br><span class="ayuda">'+esc(I.area)+'</span></td><td data-l="'+esc(t('fase'))+'">'+esc(faseTxt(I.ciclo.fase))+'</td><td data-l="'+esc(t('estado'))+'">'+estadoEt(I)+(s.dg?' <span class="ayuda">'+esc(s.dg.gate)+'</span>':'')+'</td><td data-l="'+esc(t('dias_fase'))+'">'+diasTxt(I)+'</td><td data-l="'+esc(t('ambicion'))+'">'+(ambicionDe(I)?esc(L('ambicion',ambicionDe(I))):sd())+' · '+esc(L('intensidad',I.clasificacion.intensidad))+'</td><td data-l="'+esc(t('valor_esp'))+'" class="num">'+fE(s.valor.esperado)+'</td><td data-l="'+esc(t('alertas'))+'">'+alertasEt(I)+'</td></tr>'; });
+    h+='<tr><td data-l="'+esc(t('codigo'))+'" class="mono">'+esc(I.id)+'</td><td data-l="'+esc(t('iniciativa'))+'">'+enlaceIni(I)+'<br><span class="ayuda">'+esc(I.area)+'</span>'+(alcanceDe(I)?' '+et(L('alcance',I.alcance.tipo),'info'):'')+'</td><td data-l="'+esc(t('fase'))+'">'+esc(faseTxt(I.ciclo.fase))+'</td><td data-l="'+esc(t('estado'))+'">'+estadoEt(I)+(s.dg?' <span class="ayuda">'+esc(s.dg.gate)+'</span>':'')+'</td><td data-l="'+esc(t('dias_fase'))+'">'+diasTxt(I)+'</td><td data-l="'+esc(t('ambicion'))+'">'+(ambicionDe(I)?esc(L('ambicion',ambicionDe(I))):sd())+' · '+esc(L('intensidad',I.clasificacion.intensidad))+'</td><td data-l="'+esc(t('valor_esp'))+'" class="num">'+fE(s.valor.esperado)+'</td><td data-l="'+esc(t('alertas'))+'">'+alertasEt(I)+'</td></tr>'; });
   h+='</tbody></table>';
   return h;
 }
@@ -601,7 +612,7 @@ function vistaTablero(){
     c.items.forEach(I=>{ const s=sit(I); const al=s.alertas.filter(a=>a.sev!=='info');
       const cls = cerrada(I)?'fin':(al.length?'alerta':(I.ciclo.fase>=6?'prod':''));
       h+='<article class="tarjeta '+cls+'"><span class="mono">'+esc(I.id)+'</span><a class="tit" href="#/ficha/'+esc(I.id)+'">'+esc(I.nombre)+'</a>'+
-        '<div class="fila">'+estadoEt(I)+(ambicionDe(I)?et(L('ambicion',ambicionDe(I))):'')+et(L('intensidad',I.clasificacion.intensidad))+'</div>'+
+        '<div class="fila">'+estadoEt(I)+(ambicionDe(I)?et(L('ambicion',ambicionDe(I))):'')+et(L('intensidad',I.clasificacion.intensidad))+(alcanceDe(I)?et(L('alcance',I.alcance.tipo),'info'):'')+'</div>'+
         '<div class="ayuda" style="margin-top:4px">'+diasTxt(I)+'</div>'+
         (s.dg?'<div class="ayuda">'+esc(gateTxt(s.dg.gate))+' · '+esc(t('iteracion'))+' '+s.dg.iteracion+'</div>':'')+
         (al.length?'<div class="fila" style="margin-top:4px">'+al.map(a=>et(t('at_'+a.tipo),a.sev==='alta'?'ko':'med')).join('')+'</div>':'')+
@@ -822,7 +833,7 @@ function vistaFicha(r){
   const tab = ['resumen','gate','condiciones','valor','linea','historial'].includes(r.sub)? r.sub : 'resumen';
   const s=sit(I);
   let h='<p class="mono" style="margin:6px 0 0">'+esc(I.id)+' · '+esc(I.area)+'</p><h1>'+esc(I.nombre)+'</h1>';
-  h+='<div class="fila">'+estadoEt(I)+et(faseTxt(I.ciclo.fase))+et(L('intensidad',I.clasificacion.intensidad))+(ambicionDe(I)?et(L('ambicion',ambicionDe(I))):'')+(s.dg?et(gateTxt(s.dg.gate)+' · '+t('iteracion')+' '+s.dg.iteracion,'info'):'')+'</div>';
+  h+='<div class="fila">'+estadoEt(I)+et(faseTxt(I.ciclo.fase))+et(L('intensidad',I.clasificacion.intensidad))+(ambicionDe(I)?et(L('ambicion',ambicionDe(I))):'')+(alcanceDe(I)?et(L('alcance',I.alcance.tipo),'info'):'')+(s.dg?et(gateTxt(s.dg.gate)+' · '+t('iteracion')+' '+s.dg.iteracion,'info'):'')+'</div>';
   const acc=[];
   if(!cerrada(I)) acc.push('<button type="button" data-acc="editar" data-id="'+esc(I.id)+'">'+esc(t('editar'))+'</button>','<button type="button" data-acc="t04" data-id="'+esc(I.id)+'">'+esc(t('t04_btn'))+'</button>','<button type="button" data-acc="t05" data-id="'+esc(I.id)+'">'+esc(t('t05_btn'))+'</button>');
   if(I.ciclo.estado==='registrada') acc.push('<button type="button" class="primario" data-acc="iniciar-f0" data-id="'+esc(I.id)+'">'+esc(t('iniciar_f0'))+'</button>');
@@ -845,7 +856,7 @@ function fichaResumen(I,s){
   const inci=DB.incidentes.filter(n=>n.iniciativa===I.id);
   const di=I.determinacion_intensidad, da=I.clasificacion_ambicion;
   let h='<div class="bloques">';
-  h+='<section class="bloque"><h3>'+esc(t('b_ident'))+'</h3>'+dl([[t('codigo'),'<span class="mono">'+esc(I.id)+'</span>'],[t('descripcion'),esc(I.descripcion)],[t('area'),esc(I.area)],[t('fecha_registro'),fF(I.fecha_registro)],[t('etiquetas'),(I.etiquetas_libres||[]).map(x=>et(x)).join(' ')],[t('sistemas'),(I.sistemas||[]).map(id=>{ const x=M.sis.get(id); return '<a href="#/inventario">'+esc(id)+'</a>'+(x?' '+esc(x.nombre):''); }).join('<br>')]])+'</section>';
+  h+='<section class="bloque"><h3>'+esc(t('b_ident'))+'</h3>'+dl([[t('codigo'),'<span class="mono">'+esc(I.id)+'</span>'],[t('descripcion'),esc(I.descripcion)],[t('area'),esc(I.area)],[t('alcance'),alcanceTxt(I)],[t('fecha_registro'),fF(I.fecha_registro)],[t('etiquetas'),(I.etiquetas_libres||[]).map(x=>et(x)).join(' ')],[t('sistemas'),(I.sistemas||[]).map(id=>{ const x=M.sis.get(id); return '<a href="#/inventario">'+esc(id)+'</a>'+(x?' '+esc(x.nombre):''); }).join('<br>')]])+'</section>';
   h+='<section class="bloque"><h3>'+esc(t('b_resp'))+'</h3>'+dl(Object.keys(R).map(k=>[L('rol',k), R[k]?pNombre(R[k]):null]))+(inc.length?'<div class="aviso ko">'+esc(t('al_roles')+' '+inc.join(' · '))+'</div>':'')+'</section>';
   h+='<section class="bloque"><h3>'+esc(t('b_clas'))+'</h3>'+dl([[t('esfera_p'),esc(L('esfera',c.esfera_principal))],[t('esfera_s'),c.esfera_secundaria?esc(L('esfera',c.esfera_secundaria)):null],[t('amb_prop'),c.ambicion_propuesta?esc(L('ambicion',c.ambicion_propuesta)):null],[t('amb_conf'),c.ambicion_confirmada?esc(L('ambicion',c.ambicion_confirmada)):null],[t('amb_real'),c.ambicion_real?esc(L('ambicion',c.ambicion_real)):null],
     [t('intensidad'),esc(L('intensidad',c.intensidad))],[t('det_int'),di?fF(di.fecha)+' · '+esc(L('intensidad',di.resultado))+' · '+CRITERIOS_T04.filter(k=>di.criterios[k]===true).map(k=>esc(t('c_'+k))).join(', '):null],[t('det_amb'),da?fF(da.fecha)+' · '+esc(L('ambicion',da.resultado)):null],
@@ -1083,9 +1094,10 @@ function fichaValor(I,s){
   const vs=s.valor.lista;
   let h='<div class="kpis"><div class="kpi"><b>'+fE(s.valor.esperado)+'</b><span>'+esc(t('v_esperado'))+'</span></div><div class="kpi"><b>'+fE(s.valor.realizado)+'</b><span>'+esc(t('v_realizado'))+'</span></div><div class="kpi"><b>'+fP(s.valor.pctValidado)+'</b><span>'+esc(t('v_pct'))+'</span></div><div class="kpi"><b>'+fE(I.inversion&&I.inversion.realizada)+'</b><span>'+esc(t('inv_real'))+'</span></div></div>';
   h+='<p class="ayuda">'+esc(t('valor_reglas'))+'</p>'+(cerrada(I)?'':'<div class="fila"><button type="button" data-acc="valor" data-id="'+esc(I.id)+'">'+esc(t('anadir_valor'))+'</button></div>');
+  h+=fichaAlcance(I);
   if(!vs.length) return h+'<p>'+esc(t('sin_valores'))+'</p>';
   h+='<table class="tabla resp"><thead><tr><th scope="col">'+esc(t('momento'))+'</th><th scope="col">'+esc(t('tipo'))+'</th><th scope="col" class="num">'+esc(t('importe'))+'</th><th scope="col">'+esc(t('formula'))+'</th><th scope="col">'+esc(t('estado'))+'</th><th scope="col">'+esc(t('periodo'))+' · '+esc(t('fuente'))+'</th><th scope="col"><span class="oculto">'+esc(t('editar'))+'</span></th></tr></thead><tbody>';
-  [...vs].sort((a,b)=>a.momento<b.momento?-1:a.momento>b.momento?1:0).forEach(v=>{ h+='<tr><td data-l="'+esc(t('momento'))+'">'+esc(L('momento',v.momento))+'</td><td data-l="'+esc(t('tipo'))+'">'+esc(L('tipo_imp',v.tipo))+(v.concepto?'<br><span class="ayuda">'+esc(L('concepto_'+v.tipo,v.concepto))+'</span>':'')+'</td><td data-l="'+esc(t('importe'))+'" class="num">'+fE(v.importe)+'</td><td data-l="'+esc(t('formula'))+'">'+(v.formula?esc(v.formula):sd())+'</td><td data-l="'+esc(t('estado'))+'">'+et(L('importe',v.estado),v.estado==='validado'?'ok':(v.estado==='declarado'?'info':'med'))+'</td><td data-l="'+esc(t('periodo'))+'">'+esc(v.periodo||'')+(v.fuente?' · '+esc(v.fuente):'')+(v.fecha?' · '+fF(v.fecha):'')+'</td><td data-l="">'+(cerrada(I)?'':'<button type="button" data-acc="valor" data-id="'+esc(I.id)+'" data-val="'+esc(v.id)+'">'+esc(t('editar'))+'</button>')+'</td></tr>'; });
+  [...vs].sort((a,b)=>a.momento<b.momento?-1:a.momento>b.momento?1:0).forEach(v=>{ h+='<tr><td data-l="'+esc(t('momento'))+'">'+esc(L('momento',v.momento))+'</td><td data-l="'+esc(t('tipo'))+'">'+esc(L('tipo_imp',v.tipo))+(v.concepto?'<br><span class="ayuda">'+esc(L('concepto_'+v.tipo,v.concepto))+'</span>':'')+(v.area?'<br><span class="ayuda">'+esc(t('v_area'))+': '+esc(v.area)+'</span>':'')+'</td><td data-l="'+esc(t('importe'))+'" class="num">'+fE(v.importe)+'</td><td data-l="'+esc(t('formula'))+'">'+(v.formula?esc(v.formula):sd())+'</td><td data-l="'+esc(t('estado'))+'">'+et(L('importe',v.estado),v.estado==='validado'?'ok':(v.estado==='declarado'?'info':'med'))+'</td><td data-l="'+esc(t('periodo'))+'">'+esc(v.periodo||'')+(v.fuente?' · '+esc(v.fuente):'')+(v.fecha?' · '+fF(v.fecha):'')+'</td><td data-l="">'+(cerrada(I)?'':'<button type="button" data-acc="valor" data-id="'+esc(I.id)+'" data-val="'+esc(v.id)+'">'+esc(t('editar'))+'</button>')+'</td></tr>'; });
   return h+'</tbody></table>';
 }
 function fichaLinea(I){
@@ -1111,6 +1123,107 @@ function fichaHistorial(I){
       '<details><summary>'+esc(t('ver_criterios'))+'</summary><table class="tabla resp"><tbody>'+ev.filas.map(x=>'<tr><td data-l="'+esc(t('c_codigo'))+'" class="mono">'+esc(x.c.c)+'</td><td data-l="'+esc(t('c_estado'))+'">'+et(L('crit',x.efectivo),x.efectivo==='cumple'?'ok':(x.efectivo==='no_aplica'?'':'ko'))+'</td><td data-l="'+esc(t('c_just'))+'"><span class="ayuda">'+esc(x.auto||x.reg.justificacion||'')+'</span></td></tr>').join('')+'</tbody></table></details></section>'; });
   return h;
 }
+
+/* ---------------- iniciativas transversales y plataformas habilitadoras (esquema 0.3; documento 40 §7.2) ---------------- */
+/* Una iniciativa transversal (por ejemplo, un asistente generativo en la suite ofimática) se mide por unidad de negocio con una escalera:
+   coste → adopción → capacidad liberada (declarada, nunca validada) → valor materializado. Una plataforma habilitadora imputa su valor a los
+   casos que la usan (10 §4.1, regla 3). El coste y el valor de cada unidad son importes con «area»; el despliegue y la adopción, alcance.reparto. */
+function tipoAlcance(I){ return (I.alcance && I.alcance.tipo) || 'unidad'; }
+function alcanceDe(I){ return tipoAlcance(I)!=='unidad' ? I.alcance : null; }
+function pctAdop(u){ return u && u.licencias_activas!=null && u.licencias_asignadas ? u.licencias_activas/u.licencias_asignadas*100 : null; }
+function sinHtml(s){ return String(s).replace(/<[^>]+>/g,''); }
+function alcanceTxt(I){ const a=alcanceDe(I); if(!a) return esc(L('alcance','unidad'));
+  if(a.tipo==='plataforma') return esc(L('alcance','plataforma'))+((a.habilita||[]).length?' · '+esc(t('habilita_n',{n:a.habilita.length})):'');
+  const r=a.reparto||[]; return esc(L('alcance','transversal'))+(r.length?' · '+esc(t('rp_resumen',{u:r.filter(u=>u.estado==='en_uso').length,n:r.length})):''); }
+/* alcance en forma canónica (claves siempre en el mismo orden); null si la iniciativa es de una unidad y no tiene nada más */
+function alcanceCanon(a){ if(!a || !a.tipo || a.tipo==='unidad') return null;
+  return {tipo:a.tipo, habilita:a.tipo==='plataforma'? [...(a.habilita||[])] : [], umbral_adopcion_pct:a.tipo==='transversal' && a.umbral_adopcion_pct!=null? a.umbral_adopcion_pct : null, reparto:a.tipo==='transversal'? (a.reparto||[]) : []}; }
+/* coste, capacidad y valor de cada unidad a partir de los importes con «area»; lo que no lleva unidad va en la fila común */
+function repartoFilas(I){
+  const a=alcanceDe(I)||{}, vs=M.val.get(I.id)||[], rep=a.reparto||[];
+  const areas=[...new Set([...rep.map(u=>u.area), ...vs.filter(v=>v.area).map(v=>v.area)])];
+  const suma=xs=>{ const ys=xs.filter(v=>v.importe!=null); return ys.length? sum(ys.map(v=>v.importe)) : null; };
+  const fila=area=>{ const de=v=>(area==null? !v.area : v.area===area);
+    const c=(m,tps)=>suma(vs.filter(v=>de(v) && v.momento===m && tps.includes(v.tipo)));
+    const val=vs.filter(v=>de(v) && v.momento==='realizado' && ['eficiencias','retorno'].includes(v.tipo) && v.importe!=null);
+    const costeReal=c('realizado',['coste_recurrente']), costeEsp=c('esperado',['coste_recurrente']);
+    return {area, u:rep.find(x=>x.area===area)||null, coste:costeReal ?? costeEsp, costePrev:costeReal==null && costeEsp!=null, capacidad:c('realizado',['capacidad_liberada']),
+      valor:val.length? sum(val.map(v=>v.importe)) : null, validado:val.length? sum(val.filter(v=>v.estado==='validado').map(v=>v.importe)) : null}; };
+  const filas=areas.map(fila); const comun=fila(null); if(comun.coste!=null || comun.valor!=null || comun.capacidad!=null) filas.push(comun);
+  return filas;
+}
+function fichaAlcance(I){
+  const a=alcanceDe(I); if(!a) return '';
+  let h='<h2>'+esc(L('alcance',a.tipo))+'</h2><p class="ayuda">'+esc(t(a.tipo==='plataforma'?'pl_nota':'rp_nota'))+'</p>';
+  if(a.tipo==='plataforma'){
+    const cs=(a.habilita||[]).map(id=>M.ini.get(id)).filter(Boolean);
+    return h+(cs.length? tablaSimple([t('iniciativa'),t('estado'),t('v_realizado')], cs.map(J=>[enlaceIni(J), estadoEt(J), fE(sit(J).valor.realizado)]), [2]) : '<p>'+esc(t('habilita_sin'))+'</p>');
+  }
+  if(!cerrada(I)) h+='<div class="fila"><button type="button" data-acc="reparto" data-id="'+esc(I.id)+'">'+esc(t('rp_editar'))+'</button></div>';
+  const fs=repartoFilas(I); if(!fs.length) return h+'<p>'+esc(t('rp_sin'))+'</p>';
+  const umb=a.umbral_adopcion_pct;
+  h+='<div class="reparto">'+tablaSimple([t('rp_unidad'),t('rp_despliegue'),t('rp_licencias'),t('rp_usuarios'),t('rp_horas'),t('rp_coste'),t('rp_valor')], fs.map(f=>{ const u=f.u, p=pctAdop(u);
+    if(f.area==null) return ['<i>'+esc(t('rp_comun'))+'</i>','—','—','—','—', fE(f.coste)+(f.costePrev?' <span class="ayuda">'+esc(t('rp_prev'))+'</span>':''), fE(f.valor)];
+    return [esc(f.area),
+      u? et(L('despliegue',u.estado), u.estado==='en_uso'?'ok':(u.estado==='piloto'?'info':(u.estado==='retirado'?'ko':'')))+(u.desde?' <span class="ayuda">'+fF(u.desde)+'</span>':'') : sd(),
+      u && u.licencias_asignadas!=null? fN(u.licencias_activas,0)+' / '+fN(u.licencias_asignadas,0)+(p!=null?' <span class="'+(umb!=null && u.estado==='en_uso' && p<umb?'errores':'ayuda')+'">('+fP(p)+')</span>':'') : sd(),
+      u && u.usuarios_activos_semanales!=null? fN(u.usuarios_activos_semanales,0) : sd(),
+      u && u.horas_liberadas_mes!=null? fN(u.horas_liberadas_mes,0)+' <span class="ayuda">'+esc(t('rp_declaradas'))+'</span>' : sd(),
+      fE(f.coste)+(f.costePrev?' <span class="ayuda">'+esc(t('rp_prev'))+'</span>':''),
+      fE(f.valor)+(f.valor!=null? ' <span class="ayuda">'+esc(t('rp_validado',{v:sinHtml(fE(f.validado))}))+'</span>' : '')]; }), [2,3,4,5,6])+'</div>';
+  const tc=fs.filter(f=>f.coste!=null), tv=fs.filter(f=>f.valor!=null);
+  h+='<p class="ayuda">'+esc(t('rp_totales',{c:sinHtml(fE(tc.length? sum(tc.map(f=>f.coste)) : null)), v:sinHtml(fE(tv.length? sum(tv.map(f=>f.valor)) : null))}))+(umb!=null?' '+esc(t('rp_umbral',{m:umb})):'')+'</p>';
+  return h;
+}
+function abrirReparto(I){
+  const a=alcanceDe(I); if(!a) return;
+  const rep=a.reparto||[]; const areas=[...new Set([...rep.map(u=>u.area), ...(DB.meta.areas||[])])];
+  const num=(n,v,step,lab)=>'<input type="number" min="0" step="'+(step||'1')+'" name="'+n+'" value="'+(v!=null?v:'')+'" aria-label="'+esc(lab)+'">';
+  let b='<p class="ayuda">'+esc(t('rp_dlg_nota'))+'</p><div class="tblx"><table class="tabla reparto-ed"><thead><tr>'+[t('rp_unidad'),t('rp_despliegue'),t('desde'),t('rp_asig'),t('rp_act'),t('rp_usuarios'),t('rp_horas'),t('fuente'),t('rp_fecha_dato')].map(x=>'<th scope="col">'+esc(x)+'</th>').join('')+'</tr></thead><tbody>';
+  areas.forEach((ar,i)=>{ const u=rep.find(x=>x.area===ar)||{}, lab=k=>t(k)+' · '+ar;
+    b+='<tr><td>'+esc(ar)+'<input type="hidden" name="rp-area-'+i+'" value="'+esc(ar)+'"></td><td><select name="rp-est-'+i+'" aria-label="'+esc(lab('rp_despliegue'))+'">'+opts('despliegue',u.estado||'','—')+'</select></td>'+
+      '<td><input type="date" name="rp-desde-'+i+'" value="'+esc(u.desde||'')+'" aria-label="'+esc(lab('desde'))+'"></td><td>'+num('rp-asig-'+i,u.licencias_asignadas,'1',lab('rp_asig'))+'</td><td>'+num('rp-act-'+i,u.licencias_activas,'1',lab('rp_act'))+'</td>'+
+      '<td>'+num('rp-sem-'+i,u.usuarios_activos_semanales,'1',lab('rp_usuarios'))+'</td><td>'+num('rp-hor-'+i,u.horas_liberadas_mes,'any',lab('rp_horas'))+'</td><td><input type="text" name="rp-fue-'+i+'" value="'+esc(u.fuente||'')+'" aria-label="'+esc(lab('fuente'))+'"></td><td><input type="date" name="rp-fd-'+i+'" value="'+esc(u.fecha_dato||'')+'" aria-label="'+esc(lab('rp_fecha_dato'))+'"></td></tr>'; });
+  b+='</tbody></table></div>'+trio();
+  abrirDialogo(t('dlg_reparto'), b, f=>{ const errs=[]; const tr=leerTrio(f,errs); if(errs.length) return errs;
+    const n=v=>v===''?null:Number(v), ent=v=>v===''?null:Math.round(Number(v));
+    const nuevo=areas.map((ar,i)=>({area:ar, estado:f['rp-est-'+i].value, desde:f['rp-desde-'+i].value||null, licencias_asignadas:ent(f['rp-asig-'+i].value), licencias_activas:ent(f['rp-act-'+i].value),
+      usuarios_activos_semanales:ent(f['rp-sem-'+i].value), horas_liberadas_mes:n(f['rp-hor-'+i].value), fuente:f['rp-fue-'+i].value.trim()||null, fecha_dato:f['rp-fd-'+i].value||null})).filter(u=>u.estado);
+    if(nuevo.some(u=>u.licencias_activas!=null && u.licencias_asignadas!=null && u.licencias_activas>u.licencias_asignadas)) return [t('e_licencias')];
+    if(JSON.stringify(rep)===JSON.stringify(nuevo)) return [t('sin_cambios')];
+    nuevoEvento({iniciativa:I.id, fecha:tr.fecha, tipo:'edicion', autor:autorId(tr.autor), motivo:tr.motivo, campo:'alcance.reparto', antes:rep, despues:nuevo, fase:I.ciclo.fase});
+    a.reparto=nuevo; toast(t('ok_guardado')); return []; });
+}
+Object.assign(TX.es,{
+ f_alcance:'Alcance', alcance:'Alcance', b_alcance:'Alcance: de una unidad, transversal o plataforma',
+ alcance_nota:'Transversal: herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática); se mide por unidad en la pestaña Valor: coste, adopción, capacidad liberada declarada y valor materializado. Plataforma: capacidad habilitadora cuyo valor se imputa a los casos que la usan (documento 40 §7.2).',
+ umbral_adop:'Umbral de adopción (%)', umbral_adop_ayuda:'Solo transversales: porcentaje de licencias activas sobre asignadas por debajo del cual se revisa el despliegue en una unidad o se retiran sus licencias. Vacío = sin umbral.',
+ habilita:'Casos que usan la plataforma', habilita_ayuda:'Solo plataformas: el valor de la plataforma se imputa a estos casos.', habilita_n:'la usan {n} casos', habilita_sin:'Ningún caso vinculado: la plataforma no se justifica por su valor hasta que la use algún caso.',
+ e_umbral:'El umbral de adopción debe estar entre 0 y 100.', e_licencias:'Las licencias activas no pueden superar a las asignadas.',
+ at_adopcion:'Adopción baja', al_adopcion:'{u}: {p} % de licencias activas, por debajo del umbral de {m} %. Revise el despliegue en la unidad o reasigne las licencias sin uso.',
+ rp_nota:'Escalera de medición por unidad (40 §7.2): el coste se asigna completo desde el primer día; la adopción sale de los informes de uso de la plataforma; las horas liberadas son declaradas y no suman como ahorro; solo el valor materializado (menor coste real o capacidad reasignada con destino) llega al neto.',
+ pl_nota:'El valor de una plataforma habilitadora se imputa a los casos que la usan (10 §4.1, regla 3): aquí se ven esos casos y su valor realizado, que no se vuelve a contar en la plataforma.',
+ rp_editar:'Editar despliegue y adopción por unidad', dlg_reparto:'Despliegue y adopción por unidad', rp_dlg_nota:'Una fila por unidad de negocio. Deje el despliegue vacío si la unidad no participa. El coste y el valor de cada unidad se registran como importes con su unidad (botón «Añadir importe»).',
+ rp_unidad:'Unidad', rp_despliegue:'Despliegue', rp_licencias:'Licencias activas / asignadas', rp_asig:'Licencias asignadas', rp_act:'Licencias activas', rp_usuarios:'Usuarios activos semanales', rp_horas:'Horas liberadas al mes', rp_declaradas:'declaradas',
+ rp_coste:'Coste anual', rp_valor:'Valor materializado', rp_prev:'previsto', rp_validado:'validado {v}', rp_comun:'Común (sin unidad)', rp_sin:'Sin despliegue ni importes por unidad.', rp_fecha_dato:'Fecha del dato',
+ rp_totales:'Total de las unidades: coste {c}; valor materializado {v}.', rp_umbral:'Umbral de adopción: {m} % de licencias activas.', rp_resumen:'en uso en {u} de {n} unidades',
+ v_area:'Unidad', v_area_toda:'Toda la iniciativa', v_area_ayuda:'Iniciativas transversales: unidad a la que se imputa el importe. Vacío = toda la iniciativa (por ejemplo, el gobierno común).'
+});
+Object.assign(TX.en,{
+ f_alcance:'Scope', alcance:'Scope', b_alcance:'Scope: single unit, cross-unit or platform',
+ alcance_nota:'Cross-unit: a tool used by several business units (for example, a generative assistant in the office suite); it is measured by unit in the Value tab: cost, adoption, declared released capacity and realised value. Platform: an enabling capability whose value is allocated to the cases that use it (document 40 §7.2).',
+ umbral_adop:'Adoption threshold (%)', umbral_adop_ayuda:'Cross-unit only: percentage of active over assigned licences below which the roll-out in a unit is reviewed or its licences are withdrawn. Empty = no threshold.',
+ habilita:'Cases that use the platform', habilita_ayuda:'Platforms only: the value of the platform is allocated to these cases.', habilita_n:'used by {n} cases', habilita_sin:'No linked case: the platform cannot be justified by its value until a case uses it.',
+ e_umbral:'The adoption threshold must be between 0 and 100.', e_licencias:'Active licences cannot exceed assigned licences.',
+ at_adopcion:'Low adoption', al_adopcion:'{u}: {p} % of licences active, below the {m} % threshold. Review the roll-out in the unit or reassign unused licences.',
+ rp_nota:'Measurement ladder by unit (40 §7.2): cost is charged in full from day one; adoption comes from the platform usage reports; released hours are declared and do not count as savings; only realised value (lower actual cost or capacity reassigned to a named purpose) reaches net value.',
+ pl_nota:'The value of an enabling platform is allocated to the cases that use it (10 §4.1, rule 3): this shows those cases and their realised value, which is not counted again in the platform.',
+ rp_editar:'Edit roll-out and adoption by unit', dlg_reparto:'Roll-out and adoption by unit', rp_dlg_nota:'One row per business unit. Leave the roll-out empty if the unit does not take part. The cost and value of each unit are recorded as amounts with their unit (“Add amount” button).',
+ rp_unidad:'Unit', rp_despliegue:'Roll-out', rp_licencias:'Active / assigned licences', rp_asig:'Assigned licences', rp_act:'Active licences', rp_usuarios:'Weekly active users', rp_horas:'Hours released per month', rp_declaradas:'declared',
+ rp_coste:'Annual cost', rp_valor:'Realised value', rp_prev:'expected', rp_validado:'validated {v}', rp_comun:'Shared (no unit)', rp_sin:'No roll-out or amounts by unit.', rp_fecha_dato:'Data date',
+ rp_totales:'Total of the units: cost {c}; realised value {v}.', rp_umbral:'Adoption threshold: {m} % of active licences.', rp_resumen:'in use in {u} of {n} units',
+ v_area:'Unit', v_area_toda:'Whole initiative', v_area_ayuda:'Cross-unit initiatives: unit to which the amount is allocated. Empty = whole initiative (for example, shared governance).'
+});
 
 /* ---------------- diálogos de iniciativa, T04, T05, espera ---------------- */
 /* bloque «panel» de la iniciativa (lo que el panel del consejo necesita y el ciclo de vida no aporta) en forma canónica, con las claves siempre en el mismo orden; null si está vacío */
@@ -1146,6 +1259,10 @@ function abrirIniciativa(I, base){
     campo('in-p-plazo',t('p_plazo'),'<input type="month" id="in-p-plazo" name="in-p-plazo" value="'+esc(P.plazo_potencial||'')+'">',t('p_plazo_ayuda'))+
     campo('in-p-seg',t('p_ctrl_seg'),selP('in-p-seg','control',P.controles.seguridad))+campo('in-p-muc',t('p_ctrl_muc'),selP('in-p-muc','control',P.controles.muc))+campo('in-p-iao',t('p_ctrl_iao'),selP('in-p-iao','control',P.controles.ia_ofensiva))+'</div>'+
     campo('in-p-obs',t('p_obs'),'<textarea id="in-p-obs" name="in-p-obs">'+esc(P.observaciones_consejo||'')+'</textarea>',t('p_obs_ayuda'))+'</fieldset>';
+  const A0=alcanceCanon(X.alcance)||{tipo:'unidad', habilita:[], umbral_adopcion_pct:null, reparto:[]};
+  b+='<fieldset><legend>'+esc(t('b_alcance'))+'</legend><p class="ayuda">'+esc(t('alcance_nota'))+'</p><div class="rejilla">'+campo('in-alc',t('alcance'),'<select id="in-alc" name="in-alc">'+opts('alcance',A0.tipo)+'</select>')+
+    campo('in-umb',t('umbral_adop'),'<input type="number" min="0" max="100" step="any" id="in-umb" name="in-umb" value="'+(A0.umbral_adopcion_pct!=null?A0.umbral_adopcion_pct:'')+'">',t('umbral_adop_ayuda'))+'</div>'+
+    '<p><b>'+esc(t('habilita'))+'</b> <span class="ayuda">'+esc(t('habilita_ayuda'))+'</span></p><div class="checks">'+DB.iniciativas.filter(J=>!I || J.id!==I.id).map(J=>'<label><input type="checkbox" name="habilita" value="'+esc(J.id)+'"'+(A0.habilita.includes(J.id)?' checked':'')+'> '+esc(J.id+' '+J.nombre)+'</label>').join('')+'</div></fieldset>';
   b+=trio(nuevo?hoy():hoy());
   abrirDialogo(nuevo? t('dlg_alta') : t('dlg_editar',{id:I.id}), b, f=>{
     const errs=[]; const tr=leerTrio(f,errs);
@@ -1154,8 +1271,10 @@ function abrirIniciativa(I, base){
       responsables:{}, clasificacion:{esfera_principal:f['in-esf1'].value, esfera_secundaria:f['in-esf2'].value||null, ambicion_propuesta:f['in-amb1'].value||null, ambicion_confirmada:f['in-amb2'].value||null, ambicion_real:f['in-amb3'].value||null, intensidad:f['in-int'].value, regulatoria:f['in-reg'].value,
         tecnologia:$$('input[name="tecnologia"]:checked',f).map(x=>x.value), autonomia:f['in-aut'].value||null, exposicion:f['in-exp'].value, tipo_valor:$$('input[name="tipo_valor"]:checked',f).map(x=>x.value), proveedores:$$('input[name="proveedores"]:checked',f).map(x=>x.value)},
       riesgo_residual_principal:f['in-rr'].value||null, inversion:{realizada:num(f['in-inv1'].value), pendiente:num(f['in-inv2'].value)}, sistemas:$$('input[name="sistemas"]:checked',f).map(x=>x.value),
-      panel:panelCanon({complejidad:f['in-p-comp'].value, prioridad:f['in-p-prio'].value, plazo_potencial:f['in-p-plazo'].value, observaciones_consejo:f['in-p-obs'].value.trim(), controles:{seguridad:f['in-p-seg'].value, muc:f['in-p-muc'].value, ia_ofensiva:f['in-p-iao'].value}})};
+      panel:panelCanon({complejidad:f['in-p-comp'].value, prioridad:f['in-p-prio'].value, plazo_potencial:f['in-p-plazo'].value, observaciones_consejo:f['in-p-obs'].value.trim(), controles:{seguridad:f['in-p-seg'].value, muc:f['in-p-muc'].value, ia_ofensiva:f['in-p-iao'].value}}),
+      alcance:alcanceCanon({tipo:f['in-alc'].value, habilita:$$('input[name="habilita"]:checked',f).map(x=>x.value), umbral_adopcion_pct:num(f['in-umb'].value), reparto:A0.reparto})};
     Object.keys(X.responsables).forEach(k=>Y.responsables[k]=f['in-r-'+k].value||null);
+    if(Y.alcance && Y.alcance.umbral_adopcion_pct!=null && !(Y.alcance.umbral_adopcion_pct>=0 && Y.alcance.umbral_adopcion_pct<=100)) errs.push(t('e_umbral'));
     if(Y.nombre.length<3) errs.push(t('e_nombre')); if(!Y.descripcion) errs.push(t('e_desc')); if(!Y.area) errs.push(t('e_area')); if(!Y.clasificacion.tecnologia.length) errs.push(t('e_tec'));
     const inc=incompatibilidades({responsables:Y.responsables, clasificacion:Y.clasificacion}); if(inc.length) errs.push(t('e_roles',{r:inc.join(' · ')}));
     if(errs.length) return errs;
@@ -1164,7 +1283,7 @@ function abrirIniciativa(I, base){
       const fr=f['in-fecha'].value; if(!esFecha(fr)) return [t('e_fecha')];
       const id=nextId(DB.iniciativas.filter(i=>i.id.startsWith('IA-'+fr.slice(0,4)+'-')),'IA-'+fr.slice(0,4)+'-',3);
       const N=Object.assign({id, nombre:Y.nombre, descripcion:Y.descripcion, area:Y.area, fecha_registro:fr, responsables:Y.responsables, clasificacion:Y.clasificacion, determinacion_intensidad:null, clasificacion_ambicion:null,
-        ciclo:{fase:0,estado:'registrada',fecha_entrada_fase:null,iteracion:1,espera:null,proxima_revision:null}, cierre:null, riesgo_residual_principal:Y.riesgo_residual_principal, evaluaciones_impacto:[], inversion:Y.inversion, etiquetas_libres:Y.etiquetas_libres, sistemas:Y.sistemas, panel:Y.panel});
+        ciclo:{fase:0,estado:'registrada',fecha_entrada_fase:null,iteracion:1,espera:null,proxima_revision:null}, cierre:null, riesgo_residual_principal:Y.riesgo_residual_principal, evaluaciones_impacto:[], inversion:Y.inversion, etiquetas_libres:Y.etiquetas_libres, sistemas:Y.sistemas, panel:Y.panel}, Y.alcance?{alcance:Y.alcance}:{});
       DB.iniciativas.push(N); nuevoEvento({iniciativa:id, fecha:fr, tipo:'alta', autor, motivo:tr.motivo});
       setTimeout(()=>{ location.hash='#/ficha/'+id; toast(t('ok_alta',{id})); },0); return [];
     }
@@ -1172,11 +1291,13 @@ function abrirIniciativa(I, base){
     const cambios=[];
     campos.forEach(([k])=>{ if(JSON.stringify(I[k]??null)!==JSON.stringify(Y[k]??null)) cambios.push({campo:k, antes:I[k]??null, despues:Y[k]??null, clas:false}); });
     const panAntes=panelCanon(I.panel); if(JSON.stringify(panAntes)!==JSON.stringify(Y.panel)) cambios.push({campo:'panel', antes:panAntes, despues:Y.panel, clas:false});
+    const alcAntes=alcanceCanon(I.alcance); if(JSON.stringify(alcAntes)!==JSON.stringify(Y.alcance)) cambios.push({campo:'alcance', antes:alcAntes, despues:Y.alcance, clas:false});
     Object.keys(Y.responsables).forEach(k=>{ if((I.responsables[k]||null)!==(Y.responsables[k]||null)) cambios.push({campo:'responsables.'+k, antes:I.responsables[k]||null, despues:Y.responsables[k]||null, clas:false}); });
     Object.keys(Y.clasificacion).forEach(k=>{ if(JSON.stringify(I.clasificacion[k]??null)!==JSON.stringify(Y.clasificacion[k]??null)) cambios.push({campo:'clasificacion.'+k, antes:I.clasificacion[k]??null, despues:Y.clasificacion[k]??null, clas:['ambicion_propuesta','ambicion_confirmada','ambicion_real','intensidad','regulatoria'].includes(k)}); });
     if(!cambios.length) return [t('sin_cambios')];
     cambios.forEach(ch=>{ nuevoEvento({iniciativa:I.id, fecha:tr.fecha, tipo:ch.clas?'cambio_clasificacion':'edicion', autor, motivo:tr.motivo, campo:ch.campo, antes:ch.antes, despues:ch.despues, fase:I.ciclo.fase}); });
-    ['nombre','area','descripcion','etiquetas_libres','riesgo_residual_principal','inversion','sistemas','panel'].forEach(k=>I[k]=Y[k]); I.responsables=Y.responsables; Object.assign(I.clasificacion, Y.clasificacion);
+    ['nombre','area','descripcion','etiquetas_libres','riesgo_residual_principal','inversion','sistemas','panel'].forEach(k=>I[k]=Y[k]); I.responsables=Y.responsables;
+    if(Y.alcance) I.alcance=Y.alcance; else delete I.alcance; Object.assign(I.clasificacion, Y.clasificacion);
     toast(t('ok_guardado')); return [];
   });
 }
@@ -1261,11 +1382,14 @@ function onAccion(acc, b){
         const cr=dg.criterios.filter(r=>{ const c=CAT.find(x=>x.c===r.codigo); return c && c.e.includes(pl); }); cr.forEach(r=>{ r.evidencias=[...(r.evidencias||[]), eid]; });
         nuevoEvento({iniciativa:I.id, fecha:tr.fecha, tipo:'edicion', autor:autorId(tr.autor), motivo:t('anadir_evid')+' '+eid+' ('+pl+'). '+tr.motivo, gate:dg.gate, decision:dg.id, campo:'evidencias', antes:null, despues:eid}); return []; }); }
       return;
+    case 'reparto': if(I) abrirReparto(I); return;
     case 'valor': if(I){ const V = b.dataset.val? DB.valores.find(v=>v.id===b.dataset.val) : null;
       const bq='<div class="rejilla">'+campo('va-mom',t('momento'),'<select id="va-mom" name="va-mom">'+opts('momento',V?V.momento:'esperado')+'</select>')+campo('va-tip',t('tipo'),'<select id="va-tip" name="va-tip">'+opts('tipo_imp',V?V.tipo:'eficiencias')+'</select>')+campo('va-imp',t('importe'),'<input type="number" step="any" id="va-imp" name="va-imp" value="'+(V&&V.importe!=null?V.importe:'')+'">',t('importe_vacio'))+campo('va-est',t('estado'),'<select id="va-est" name="va-est">'+opts('importe',V?V.estado:'estimado')+'</select>')+campo('va-per',t('periodo'),'<input type="text" id="va-per" name="va-per" value="'+esc(V?V.periodo||'':t('anual'))+'">')+campo('va-fue',t('fuente'),'<input type="text" id="va-fue" name="va-fue" value="'+esc(V?V.fuente||'':'')+'">')+
-        campo('va-con',t('v_concepto'),'<select id="va-con" name="va-con"><option value="">—</option>'+['eficiencias','retorno'].map(g=>'<optgroup label="'+esc(L('tipo_imp',g))+'">'+opts('concepto_'+g,V&&V.tipo===g?V.concepto||'':'')+'</optgroup>').join('')+'</select>',t('v_concepto_ayuda'))+'</div>'+campo('va-for',t('formula'),'<input type="text" id="va-for" name="va-for" value="'+esc(V?V.formula||'':'')+'">')+trio();
+        campo('va-con',t('v_concepto'),'<select id="va-con" name="va-con"><option value="">—</option>'+['eficiencias','retorno'].map(g=>'<optgroup label="'+esc(L('tipo_imp',g))+'">'+opts('concepto_'+g,V&&V.tipo===g?V.concepto||'':'')+'</optgroup>').join('')+'</select>',t('v_concepto_ayuda'))+
+        (alcanceDe(I) || (V&&V.area)? campo('va-area',t('v_area'),'<select id="va-area" name="va-area"><option value="">'+esc(t('v_area_toda'))+'</option>'+[...new Set([...((alcanceDe(I)||{}).reparto||[]).map(u=>u.area), ...(DB.meta.areas||[]), ...(V&&V.area?[V.area]:[])])].map(a=>'<option value="'+esc(a)+'"'+(V&&V.area===a?' selected':'')+'>'+esc(a)+'</option>').join('')+'</select>',t('v_area_ayuda')) : '')+'</div>'+campo('va-for',t('formula'),'<input type="text" id="va-for" name="va-for" value="'+esc(V?V.formula||'':'')+'">')+trio();
       abrirDialogo(t('dlg_valor'), bq, f=>{ const errs=[]; const tr=leerTrio(f,errs); if(errs.length) return errs;
         const nv={momento:f['va-mom'].value, tipo:f['va-tip'].value, importe:f['va-imp'].value===''?null:Number(f['va-imp'].value), formula:f['va-for'].value.trim()||null, estado:f['va-est'].value, periodo:f['va-per'].value.trim()||null, fecha:tr.fecha, fuente:f['va-fue'].value.trim()||null, concepto:f['va-con'].value||null};
+        if(f['va-area']) nv.area=f['va-area'].value||null;
         if(nv.concepto && !((LB.es['concepto_'+nv.tipo]||{})[nv.concepto])) return [t('e_concepto')];
         let antes=null, vid; if(V){ antes={importe:V.importe,estado:V.estado,formula:V.formula}; Object.assign(V,nv); vid=V.id; } else { vid=nextId(DB.valores,'VAL-',4); DB.valores.push(Object.assign({id:vid, iniciativa:I.id},nv)); }
         nuevoEvento({iniciativa:I.id, fecha:tr.fecha, tipo:'edicion', autor:autorId(tr.autor), motivo:tr.motivo, campo:'valor.'+nv.momento+'.'+nv.tipo+' ('+vid+')', antes, despues:{importe:nv.importe,estado:nv.estado,formula:nv.formula}}); return []; }); }
@@ -1510,7 +1634,7 @@ function validar(d){
   const FL=x(' fuera de la lista.',' not in the closed list.'), FNV=x(' no válida.',' is not a valid date.');
   const NOC=(es,en)=>x('id no cumple '+es+'.','id does not match '+en+'.');
   if(!d || typeof d!=='object' || Array.isArray(d)) return {errores:[x('El fichero no contiene un objeto JSON.','The file does not contain a JSON object.')],avisos:[]};
-  if(!['0.1','0.2'].includes(d.version_esquema)) A.push(x('version_esquema distinta de 0.1 y 0.2: ','version_esquema is neither 0.1 nor 0.2: ')+d.version_esquema);
+  if(!['0.1','0.2','0.3'].includes(d.version_esquema)) A.push(x('version_esquema distinta de 0.1, 0.2 y 0.3: ','version_esquema is not 0.1, 0.2 or 0.3: ')+d.version_esquema);
   if(d.aviso_legal!=null && typeof d.aviso_legal!=='string') err(x('aviso_legal debe ser un texto.','aviso_legal must be a string.'));
   const cf=d.meta&&d.meta.configuracion;
   if(!d.meta || typeof d.meta.organizacion!=='string') err(x('meta.organizacion es obligatorio.','meta.organizacion is required.'));
@@ -1546,7 +1670,19 @@ function validar(d){
     if(!Array.isArray(g.criterios)) err(w+x('criterios debe ser una lista.','criterios must be a list.')); else g.criterios.forEach(c=>{ if(!/^(G[0-57]|R6)\.\d{2}$/.test(c.codigo||'')) err(w+x('código de criterio no válido: ','invalid criterion code: ')+c.codigo); if(!ENUM.crit.includes(c.estado)) err(w+x('estado de criterio no válido: ','invalid criterion status: ')+c.estado); }); });
   d.condiciones.forEach((c,i)=>{ const w='condiciones['+i+'] '+(c&&c.id||'')+': '; if(!/^CND-\d{4}-\d{3}$/.test(c.id||'')) err(w+NOC('CND-AAAA-NNN','CND-YYYY-NNN')); if(!esFecha(c.plazo)) err(w+x('sin plazo.','no deadline.')); if(!c.responsable) err(w+x('sin responsable.','no owner.')); if(!ENUM.cond.includes(c.estado)) err(w+'estado'+FL); });
   d.valores.forEach((v,i)=>{ const w='valores['+i+'] '+(v&&v.id||'')+': '; if(!['esperado','realizado'].includes(v.momento)) err(w+'momento'+FL); if(!ENUM.tipo_imp.includes(v.tipo)) err(w+'tipo'+FL); if(!ENUM.importe.includes(v.estado)) err(w+'estado'+FL); if(!(v.importe===null || typeof v.importe==='number')) err(w+x('importe debe ser número o null (sin dato).','importe must be a number or null (no data).'));
-    if(v.concepto!=null && !((LB.es['concepto_'+v.tipo]||{})[v.concepto])) err(w+'concepto'+FL); });
+    if(v.concepto!=null && !((LB.es['concepto_'+v.tipo]||{})[v.concepto])) err(w+'concepto'+FL);
+    if(v.area!=null && typeof v.area!=='string') err(w+'area'+x(' debe ser un texto o null.',' must be a string or null.')); });
+  /* bloque opcional «alcance» de cada iniciativa (esquema 0.3): iniciativas transversales y plataformas habilitadoras */
+  d.iniciativas.forEach((I,i)=>{ const a=I&&I.alcance; if(a==null) return; const w='iniciativas['+i+'] '+(I.id||'')+': alcance.';
+    if(typeof a!=='object' || Array.isArray(a)){ err(w.slice(0,-1)+x(' debe ser un objeto o null.',' must be an object or null.')); return; }
+    if(!LB.es.alcance[a.tipo]) err(w+'tipo'+FL);
+    if(a.umbral_adopcion_pct!=null && !(typeof a.umbral_adopcion_pct==='number' && a.umbral_adopcion_pct>=0 && a.umbral_adopcion_pct<=100)) err(w+'umbral_adopcion_pct'+x(' debe estar entre 0 y 100.',' must be between 0 and 100.'));
+    if(a.habilita!=null && !Array.isArray(a.habilita)) err(w+'habilita'+x(' debe ser una lista.',' must be a list.')); else (a.habilita||[]).forEach(id=>{ if(!ini.has(id)) A.push(w+'habilita'+x(': iniciativa inexistente ',': unknown initiative ')+id); });
+    if(a.reparto!=null && !Array.isArray(a.reparto)) err(w+'reparto'+x(' debe ser una lista.',' must be a list.'));
+    else (a.reparto||[]).forEach((u,j)=>{ const wu=w+'reparto['+j+'].'; if(!u || typeof u!=='object'){ err(wu.slice(0,-1)+x(' debe ser un objeto.',' must be an object.')); return; }
+      if(!u.area || typeof u.area!=='string') err(wu+'area'+x(' vacía.',' is empty.')); if(!LB.es.despliegue[u.estado]) err(wu+'estado'+FL);
+      ['licencias_asignadas','licencias_activas','usuarios_activos_semanales','horas_liberadas_mes'].forEach(k=>{ if(u[k]!=null && !(typeof u[k]==='number' && u[k]>=0)) err(wu+k+x(' debe ser un número ≥ 0 o null.',' must be a number ≥ 0 or null.')); });
+      ['desde','fecha_dato'].forEach(k=>{ if(u[k]!=null && !esFecha(u[k])) err(wu+k+FNV); }); }); });
   /* bloque opcional «panel» de cada iniciativa (esquema 0.2): datos para el panel del consejo */
   d.iniciativas.forEach((I,i)=>{ const p=I&&I.panel; if(p==null) return; const w='iniciativas['+i+'] '+(I.id||'')+': panel.';
     if(typeof p!=='object' || Array.isArray(p)){ err(w.slice(0,-1)+x(' debe ser un objeto o null.',' must be an object or null.')); return; }
@@ -1561,12 +1697,13 @@ function validar(d){
 /* ---------------- exportaciones ---------------- */
 function csvCelda(v){ if(v==null) return ''; const s=Array.isArray(v)? v.join('|') : String(v); return /[;"\n\r]/.test(s)? '"'+s.replace(/"/g,'""')+'"' : s; }
 function exportarCSV(){
-  const cab=['id','nombre','descripcion','area','fecha_registro','fase','estado','fecha_entrada_fase','dias_en_fase_sin_espera','plazo_referencia_dias','estancada','iteracion','esfera_principal','esfera_secundaria','ambicion_propuesta','ambicion_confirmada','ambicion_real','intensidad','regulatoria','tecnologia','autonomia','exposicion','tipo_valor','proveedores','patrocinador','producto','tecnico','operacion','riesgos','auditor','gate_pendiente','valor_neto_anual_esperado','valor_neto_anual_realizado','pct_valor_realizado_validado','inversion_realizada','inversion_pendiente','riesgo_residual_principal','condiciones_abiertas','condiciones_vencidas','proxima_revision','motivo_cierre','fecha_cierre','etiquetas_libres','sistemas','alertas'];
+  const cab=['id','nombre','descripcion','area','fecha_registro','fase','estado','fecha_entrada_fase','dias_en_fase_sin_espera','plazo_referencia_dias','estancada','iteracion','esfera_principal','esfera_secundaria','ambicion_propuesta','ambicion_confirmada','ambicion_real','intensidad','regulatoria','tecnologia','autonomia','exposicion','tipo_valor','proveedores','patrocinador','producto','tecnico','operacion','riesgos','auditor','gate_pendiente','valor_neto_anual_esperado','valor_neto_anual_realizado','pct_valor_realizado_validado','inversion_realizada','inversion_pendiente','riesgo_residual_principal','condiciones_abiertas','condiciones_vencidas','proxima_revision','motivo_cierre','fecha_cierre','etiquetas_libres','sistemas','alertas','alcance','unidades_en_uso'];
   const filas=DB.iniciativas.map(I=>{ const s=sit(I), c=I.clasificacion, R=I.responsables, cs=condicionesDe(I); const nom=id=>id?(persona(id)?persona(id).nombre:id):null;
     return [I.id,I.nombre,I.descripcion,I.area,I.fecha_registro,I.ciclo.fase,I.ciclo.estado,I.ciclo.fecha_entrada_fase,s.diasFase,s.plazo,s.estancada?'si':'no',I.ciclo.iteracion,c.esfera_principal,c.esfera_secundaria,c.ambicion_propuesta,c.ambicion_confirmada,c.ambicion_real,c.intensidad,c.regulatoria,c.tecnologia,c.autonomia,c.exposicion,c.tipo_valor,(c.proveedores||[]).map(p=>M.prv.get(p)?M.prv.get(p).nombre:p),
       nom(R.patrocinador),nom(R.producto),nom(R.tecnico),nom(R.operacion),nom(R.riesgos),nom(R.auditor),s.dg?s.dg.gate:null,
       s.valor.esperado==null?null:Math.round(s.valor.esperado),s.valor.realizado==null?null:Math.round(s.valor.realizado),s.valor.pctValidado==null?null:Math.round(s.valor.pctValidado),I.inversion?I.inversion.realizada:null,I.inversion?I.inversion.pendiente:null,I.riesgo_residual_principal,
-      cs.filter(x=>estadoCond(x)==='abierta').length,cs.filter(x=>estadoCond(x)==='vencida').length,I.ciclo.proxima_revision,I.cierre?I.cierre.motivo:null,I.cierre?I.cierre.fecha:null,I.etiquetas_libres,I.sistemas,s.alertas.map(a=>a.tipo)].map(csvCelda).join(';'); });
+      cs.filter(x=>estadoCond(x)==='abierta').length,cs.filter(x=>estadoCond(x)==='vencida').length,I.ciclo.proxima_revision,I.cierre?I.cierre.motivo:null,I.cierre?I.cierre.fecha:null,I.etiquetas_libres,I.sistemas,s.alertas.map(a=>a.tipo),
+      tipoAlcance(I),alcanceDe(I)?(I.alcance.reparto||[]).filter(u=>u.estado==='en_uso').map(u=>u.area):null].map(csvCelda).join(';'); });
   descargar('T01_iniciativas_'+hoy()+'.csv', '﻿'+cab.join(';')+'\r\n'+filas.join('\r\n')+'\r\n', 'text/csv;charset=utf-8');
 }
 /* El JSON del panel del consejo (T17) no se construye aquí: lo genera el conector t01_a_panel.py a partir del JSON completo de este registro

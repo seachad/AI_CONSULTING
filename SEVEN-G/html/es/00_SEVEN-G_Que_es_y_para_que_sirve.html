@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "Qué es SEVEN-G y para qué sirve a las empresas"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -962,7 +966,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </figure>
 
 <blockquote>
-<p><strong>Por qué importa.</strong> El embudo convierte la cartera en algo que el comité de IA y el consejo leen de un vistazo: cuántas iniciativas entran, dónde se atascan, cuántas llegan a producción, qué valor producen y qué se aprende de las que no llegan. Es la vista que comparten el registro de iniciativas (T01) y el panel del consejo (T17).</p>
+<p><strong>Por qué importa.</strong> El embudo convierte la cartera en algo que el comité de IA y el consejo leen de un vistazo: cuántas iniciativas entran, dónde se atascan, cuántas llegan a producción, qué valor producen y qué se aprende de las que no llegan. Es la vista que comparten el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) y el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
 </blockquote>
 <p><strong>Reglas de las puertas de decisión</strong></p>
 <ul>
@@ -1061,7 +1065,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Plantillas</strong> para cada evidencia de cada fase: carta de la iniciativa, lienzo de hipótesis de valor, registro de decisión de <em>gate</em>, matriz y registro de riesgos, manual de operación, seguimiento de realización de valor, entre otras.</li>
 <li><strong>Listas de verificación</strong> por <em>gate</em>, que convierten los criterios en controles binarios.</li>
 <li><strong>Panel de IA para el consejo</strong>: inventario, valor validado frente a declarado, coste, cumplimiento regulatorio, incidentes, exposición a ataques con IA, identidad y permisos de los agentes, adopción, agilidad y distribución por nivel de ambición. Se genera a partir de un único fichero de datos con esquema documentado, con versión completa y versión móvil sincronizadas.</li>
-<li><strong>Registro de iniciativas</strong>, que gestiona la cartera de IA como un embudo: fase y estado de cada iniciativa, tiempo en cada fase, cumplimiento de cada puerta de decisión, etiquetas, valor y motivos de parada (documento 03).</li>
+<li><strong>Registro de iniciativas</strong>, que gestiona la cartera de IA como un embudo: fase y estado de cada iniciativa, tiempo en cada fase, cumplimiento de cada puerta de decisión, etiquetas, valor y motivos de parada (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>).</li>
 <li><strong>Registro de recomendaciones del consejo</strong>, con identificadores que no se reinician, estado declarado, evidencia aportada y valoración independiente.</li>
 <li><strong>Demostraciones sectoriales</strong> con datos ficticios (banca, seguros, energía, industria, retail, sanidad, telecomunicaciones, logística, farmacéutica, turismo y sector público).</li>
 </ul>
@@ -1352,7 +1356,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Forma de cita recomendada: <em>SEVEN-G, marco de valor, gobierno y transformación con IA. Fernando García · SEACHAD. CC BY 4.0.</em></li>
 <li>El código de las herramientas se publica bajo <a class="ref-ext" href="https://opensource.org/license/mit" target="_blank" rel="noopener" title="Licencia MIT (The MIT License)">licencia MIT</a>.</li>
 <li>Las cifras y los casos que aparecen en los ejemplos y demostraciones son ficticios y no constituyen referencias de mercado.</li>
-<li>SEVEN-G se ofrece «tal cual», sin garantías y sin constituir asesoramiento jurídico. <strong>La organización que lo usa es la única responsable de identificar la regulación general y la específica de su industria y jurisdicción, verificar su vigencia y certificar su cumplimiento regulatorio</strong>; ni el autor ni SEACHAD asumen esa responsabilidad (documento 93, sección 11).</li>
+<li>SEVEN-G se ofrece «tal cual», sin garantías y sin constituir asesoramiento jurídico. <strong>La organización que lo usa es la única responsable de identificar la regulación general y la específica de su industria y jurisdicción, verificar su vigencia y certificar su cumplimiento regulatorio</strong>; ni el autor ni SEACHAD asumen esa responsabilidad (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</li>
 </ul>
 <h2 id="control-de-versiones"><span class="antetitulo">12</span>Control de versiones</h2>
 <div class="tabla"><table>

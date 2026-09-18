@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SPHERES · Regulación y gobierno de la IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -741,7 +745,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Un único proveedor concentra la mayor parte del gasto en modelos sin estrategia de salida.</li>
 </ul>
 <h3 id="como-se-mide-2">Cómo se mide</h3>
-<p>Los indicadores de referencia son la cobertura del registro de iniciativas y sistemas, la revisión de continuidad vigente, las recomendaciones del consejo cerradas en plazo, el tiempo de decisión en las puertas, el tiempo hasta producción, la capacidad de parar, la concentración en el proveedor principal de modelos, la estrategia de salida y el coste de IA imputado. Sus fórmulas están en <a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, sección 7. El modelo de gobierno se desarrolla en <a href="../../../SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html">SEVEN-G 30 · Modelo de gobierno</a> y la gestión de proveedores en <a href="../../../SEVEN-G/html/es/36_SEVEN-G_Terceros_y_proveedores_de_IA.html">SEVEN-G 36 · Terceros y proveedores de IA</a>. El registro de iniciativas de SEVEN-G (T01) y el panel de IA para el consejo (T17) son las herramientas que dan soporte a esta esfera.</p>
+<p>Los indicadores de referencia son la cobertura del registro de iniciativas y sistemas, la revisión de continuidad vigente, las recomendaciones del consejo cerradas en plazo, el tiempo de decisión en las puertas, el tiempo hasta producción, la capacidad de parar, la concentración en el proveedor principal de modelos, la estrategia de salida y el coste de IA imputado. Sus fórmulas están en <a href="../../../SEVEN-G/html/es/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, sección 7. El modelo de gobierno se desarrolla en <a href="../../../SEVEN-G/html/es/30_SEVEN-G_Modelo_de_gobierno.html">SEVEN-G 30 · Modelo de gobierno</a> y la gestión de proveedores en <a href="../../../SEVEN-G/html/es/36_SEVEN-G_Terceros_y_proveedores_de_IA.html">SEVEN-G 36 · Terceros y proveedores de IA</a>. El registro de iniciativas de SEVEN-G (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html">T01</a>) y el panel de IA para el consejo (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>) son las herramientas que dan soporte a esta esfera.</p>
 <hr />
 <h2 id="como-se-presentan-08-y-09-en-el-mapa"><span class="antetitulo">05</span>Cómo se presentan 08 y 09 en el mapa</h2>
 <p>En el mapa de la cartera, las esferas 08 y 09 <strong>no ocupan columnas de Optimizar, Aumentar y Transformar</strong>. Se muestran en un bloque separado con el grado actual y el grado objetivo de cada dimensión.</p>

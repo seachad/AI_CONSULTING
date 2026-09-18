@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Manual de operación"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -459,17 +463,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (T01).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA</td>
 <td></td>
-<td>Identificador en el inventario (T02).</td>
+<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
 </tr>
 <tr>
 <td>Versión en producción</td>
 <td></td>
-<td>Modelo, instrucciones y configuración (P16).</td>
+<td>Modelo, instrucciones y configuración (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
 </tr>
 <tr>
 <td>Fecha de puesta en producción</td>
@@ -542,7 +546,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Proveedores y soporte <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Proveedor, servicio, canal de soporte y nivel de servicio contratado (P14).</td>
+<td>Proveedor, servicio, canal de soporte y nivel de servicio contratado (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
 </tr>
 <tr>
 <td>Limitaciones conocidas</td>
@@ -594,7 +598,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Supervisores designados (P17)</td>
+<td>Supervisores designados (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -673,7 +677,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Revisar deriva y rendimiento frente a referencia</td>
+<td>Revisar deriva (también de uso), sesgo y rendimiento frente a referencia</td>
 <td>Mensual</td>
 <td></td>
 <td><a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
@@ -733,7 +737,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Relevante</strong></td>
 <td>Nueva versión de modelo, instrucciones o base de conocimiento; nuevas herramientas o permisos del agente; cambio de nivel de autonomía; ampliación de población o finalidad; cambio de proveedor</td>
 <td>Regresión, sesgo, seguridad e inyección según el caso; reversión preparada</td>
-<td>Según <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>; si cambia autonomía, finalidad o clasificación, decisión equivalente a G4/G5 y nueva firma (P23)</td>
+<td>Según <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>; si cambia autonomía, finalidad o clasificación, decisión equivalente a G4/G5 y nueva firma (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>)</td>
 <td>Sí</td>
 </tr>
 <tr>
@@ -782,9 +786,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Coste de consumo por encima del umbral</td>
 <td>Alerta de coste</td>
-<td>Revisar uso anómalo; aplicar límite</td>
+<td>Revisar uso anómalo; aplicar el nivel de la cascada de degradación por coste del bloque 8</td>
 <td>Responsable de producto de IA</td>
-<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 7</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 7 · <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §10.3</td>
+</tr>
+<tr>
+<td>Cambio en lo que piden los usuarios (deriva de uso)</td>
+<td>Alerta de consultas fuera del alcance validado o de cambio de temas</td>
+<td>Ampliar el conjunto de evaluación con los casos nuevos y evaluar; si el uso cae fuera de la finalidad, limitar el alcance</td>
+<td>Responsable de producto de IA</td>
+<td><a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §4.2.6</td>
 </tr>
 <tr>
 <td>Sospecha de inyección de instrucciones o acción anómala del agente</td>
@@ -802,7 +813,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Posible resultado discriminatorio</td>
-<td>Alerta de equidad o reclamación</td>
+<td>Alerta de equidad, de respuestas desiguales en pares contrafactuales o reclamación</td>
 <td>Tratar como incidente y clasificar severidad</td>
 <td>Responsable de riesgos de IA</td>
 <td><a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
@@ -830,7 +841,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Modo degradado disponible</td>
 <td></td>
-<td>Descripción y cómo se activa (P19).</td>
+<td>Descripción y cómo se activa (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
 </tr>
 <tr>
 <td>Proceso sin IA</td>
@@ -846,6 +857,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Recuperación tras el modo degradado</td>
 <td></td>
 <td>Comprobaciones antes de volver al funcionamiento normal y quién autoriza.</td>
+</tr>
+<tr>
+<td>Cascada de degradación por coste</td>
+<td></td>
+<td>Solo sistemas con consumo variable. Niveles aplicables (N1 optimización, N2 modelo de respaldo, N3 alcance reducido, N4 sin IA), disparador de cada uno (por ejemplo, N1 al 80 % y N2 al 100 % del presupuesto), quién los activa y usos excluidos de N2 (<a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §10.3).</td>
+</tr>
+<tr>
+<td>Modelo de respaldo</td>
+<td></td>
+<td>Identificador en <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, resultado de su evaluación antes de G5 y calidad mínima exigida en <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -878,12 +899,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Plazo de conservación</td>
 <td></td>
-<td>No inferior al que exija la regulación aplicable (documento 34).</td>
+<td>No inferior al que exija la regulación aplicable (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 </tr>
 <tr>
 <td>Vigilancia exigida por la regulación <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Qué se vigila tras la puesta en producción, quién lo hace y cómo se informa al proveedor o a la autoridad cuando proceda (documento 34).</td>
+<td>Qué se vigila tras la puesta en producción, quién lo hace y cómo se informa al proveedor o a la autoridad cuando proceda (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -911,7 +932,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Información que se prepara</td>
 <td></td>
-<td>Valor realizado frente a hipótesis (P28), estabilidad (P25), incidentes y cambios (P27), cumplimiento y vigencia de la clasificación de riesgo e intensidad (P04, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
+<td>Valor realizado frente a hipótesis (<a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), estabilidad (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), incidentes y cambios (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), cumplimiento y vigencia de la clasificación de riesgo e intensidad (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
 </tr>
 <tr>
 <td>Criterio para proponer adelantar G7</td>
@@ -960,6 +981,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>6</td>
 <td>La fecha de la próxima R6 está fijada según la intensidad.</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>En sistemas con consumo variable, la cascada de degradación por coste está definida, no desactiva controles críticos y se ha probado.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1023,6 +1049,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>Primera versión de la plantilla.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Cascada de degradación por coste y modelo de respaldo en el bloque 8; deriva de uso y pares contrafactuales en las situaciones habituales; criterio de calidad 7.</td>
 </tr>
 </tbody>
 </table></div>

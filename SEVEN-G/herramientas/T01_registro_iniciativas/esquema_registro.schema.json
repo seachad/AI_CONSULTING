@@ -8,7 +8,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": { "type": "string" },
-    "version_esquema": { "enum": ["0.1", "0.2"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. Un fichero 0.1 es un 0.2 válido." },
+    "version_esquema": { "enum": ["0.1", "0.2", "0.3"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para las iniciativas transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. Un fichero 0.1 o 0.2 es un 0.3 válido." },
     "aviso_legal": { "type": "string", "description": "Aviso legal y exención de responsabilidad de SEVEN-G y de la herramienta (en el idioma de la interfaz al exportar). Opcional al importar; la exportación del JSON completo siempre lo incluye." },
     "meta": { "$ref": "#/$defs/meta" },
     "personas": { "type": "array", "items": { "$ref": "#/$defs/persona" } },
@@ -282,8 +282,40 @@
             }
           }
         },
+        "alcance": { "$ref": "#/$defs/alcance" },
         "etiquetas_libres": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
         "sistemas": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_sistema" } }
+      }
+    },
+    "alcance": {
+      "description": "Alcance de la iniciativa (esquema 0.3, documento 40 §7.2). Opcional; null o ausente = iniciativa de una unidad. «transversal»: herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática); se mide por unidad con la escalera coste → adopción → capacidad liberada → valor materializado. «plataforma»: capacidad habilitadora (datos, conocimiento, decisión) cuyo valor se imputa a los casos que la usan (documento 10 §4.1, regla 3).",
+      "type": ["object", "null"],
+      "required": ["tipo"],
+      "additionalProperties": false,
+      "properties": {
+        "tipo": { "enum": ["unidad", "transversal", "plataforma"] },
+        "habilita": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_iniciativa" }, "description": "Plataforma: iniciativas que la usan y a las que se imputa su valor." },
+        "umbral_adopcion_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "Criterio de parada o de retirada de licencias: porcentaje mínimo de licencias activas sobre asignadas en cada unidad en uso. null = sin umbral." },
+        "reparto": {
+          "type": "array",
+          "description": "Despliegue y adopción por unidad de negocio. El coste y el valor de cada unidad se registran en valores[] con el campo area; aquí solo lo que no es dinero.",
+          "items": {
+            "type": "object",
+            "required": ["area", "estado"],
+            "additionalProperties": false,
+            "properties": {
+              "area": { "type": "string" },
+              "estado": { "enum": ["previsto", "piloto", "en_uso", "retirado"] },
+              "desde": { "$ref": "#/$defs/fecha_o_nula", "description": "Fecha de entrada en el estado actual." },
+              "licencias_asignadas": { "type": ["integer", "null"], "minimum": 0 },
+              "licencias_activas": { "type": ["integer", "null"], "minimum": 0, "description": "Licencias con uso real en el periodo, según los informes de uso de la plataforma." },
+              "usuarios_activos_semanales": { "type": ["integer", "null"], "minimum": 0 },
+              "horas_liberadas_mes": { "type": ["number", "null"], "minimum": 0, "description": "Capacidad liberada declarada (horas al mes). Indicador de uso: estado máximo estimado o declarado, nunca validado; no se convierte en euros hasta que se materializa (regla 3)." },
+              "fuente": { "$ref": "#/$defs/texto_o_nulo" },
+              "fecha_dato": { "$ref": "#/$defs/fecha_o_nula" }
+            }
+          }
+        }
       }
     },
     "sistema": {
@@ -450,7 +482,8 @@
         "concepto": {
           "description": "Línea del panel del consejo (T17) en la que suma el importe. Solo para eficiencias (personas, herramientas, siniestros, operativo, penalizaciones) y retorno (venta_nueva, venta_cruzada, retencion, precio_margen, cobros, otros). null o ausente = sin desglosar (operativo u otros).",
           "enum": ["personas", "herramientas", "siniestros", "operativo", "penalizaciones", "venta_nueva", "venta_cruzada", "retencion", "precio_margen", "cobros", "otros", null]
-        }
+        },
+        "area": { "$ref": "#/$defs/texto_o_nulo", "description": "Unidad de negocio a la que se imputa el importe (esquema 0.3; iniciativas transversales). null o ausente = toda la iniciativa. El total de la iniciativa es la suma de sus unidades; lo que no se pueda imputar a una unidad (por ejemplo, el gobierno común) va sin area." }
       }
     },
     "estado_control": { "enum": ["hecho", "pendiente", "no_aplica", null] },

@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SPHERES · Regulation and AI governance"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -741,7 +745,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>A single supplier accounts for most of the spending on models without an exit strategy.</li>
 </ul>
 <h3 id="how-it-is-measured-2">How it is measured</h3>
-<p>The reference indicators are coverage of the register of initiatives and systems, current continuity review, board recommendations closed on time, decision time at the gates, time to production, ability to stop, concentration in the main model supplier, exit strategy and allocated AI cost. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, section 7. The governance model is developed in <a href="../../../SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html">SEVEN-G 30 · Governance model</a> and supplier management in <a href="../../../SEVEN-G/html/en/36_SEVEN-G_Terceros_y_proveedores_de_IA.html">SEVEN-G 36 · AI third parties and suppliers</a>. The SEVEN-G initiative register (T01) and the board AI dashboard (T17) are the tools that support this sphere.</p>
+<p>The reference indicators are coverage of the register of initiatives and systems, current continuity review, board recommendations closed on time, decision time at the gates, time to production, ability to stop, concentration in the main model supplier, exit strategy and allocated AI cost. Their formulas are in <a href="../../../SEVEN-G/html/en/10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">SEVEN-G 10</a>, section 7. The governance model is developed in <a href="../../../SEVEN-G/html/en/30_SEVEN-G_Modelo_de_gobierno.html">SEVEN-G 30 · Governance model</a> and supplier management in <a href="../../../SEVEN-G/html/en/36_SEVEN-G_Terceros_y_proveedores_de_IA.html">SEVEN-G 36 · AI third parties and suppliers</a>. The SEVEN-G initiative register (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html">T01</a>) and the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>) are the tools that support this sphere.</p>
 <hr />
 <h2 id="how-08-and-09-are-presented-on-the-map"><span class="antetitulo">05</span>How 08 and 09 are presented on the map</h2>
 <p>On the portfolio map, spheres 08 and 09 <strong>do not occupy Optimise, Augment and Transform columns</strong>. They are shown in a separate block with the current grade and the target grade of each dimension.</p>

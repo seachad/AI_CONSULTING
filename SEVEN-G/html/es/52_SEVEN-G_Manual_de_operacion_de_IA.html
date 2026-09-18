@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Manual de operación de IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -405,13 +409,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
-<p>Este documento desarrolla la <strong>fase 6 · Operación y gobierno</strong> del ciclo de vida (01 §6.8) y fija cómo se operan los sistemas de IA en producción para que <strong>sigan funcionando, aportando valor y bajo control</strong>. Es genérico: cada sistema concreta lo que aquí se establece en su manual de operación (P24).</p>
+<p>Este documento desarrolla la <strong>fase 6 · Operación y gobierno</strong> del ciclo de vida (01 §6.8) y fija cómo se operan los sistemas de IA en producción para que <strong>sigan funcionando, aportando valor y bajo control</strong>. Es genérico: cada sistema concreta lo que aquí se establece en su manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</p>
 <p>Cubre:</p>
 <ul>
 <li>La operación específica de cada tipo de sistema: <strong>ML predictivo, IA generativa, agentes e IA de terceros embebida</strong>.</li>
-<li>La <strong>monitorización y las alertas</strong> (P25), con métricas y umbrales tipo.</li>
+<li>La <strong>monitorización y las alertas</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), con métricas y umbrales tipo.</li>
 <li>La <strong>gestión de cambios</strong> y qué cambios obligan a volver a un <em>gate</em>.</li>
-<li>La <strong>gestión de incidentes</strong> (P26, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), con la escala S1–S4, que se desarrolla en el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</li>
+<li>La <strong>gestión de incidentes</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), con la escala S1–S4, que se desarrolla en el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</li>
 <li>La preparación de la <strong>revisión de continuidad R6</strong>.</li>
 <li>La <strong>vigilancia posterior a la comercialización</strong> que exige la regulación.</li>
 <li>La <strong>continuidad y la reversión</strong>.</li>
@@ -419,7 +423,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>La <strong>retirada técnica</strong>.</li>
 </ul>
 <p><strong>Destinatarios.</strong> Responsables de operación y técnicos de IA, equipos de plataforma y seguridad, responsables de riesgos y auditores de IA.</p>
-<p><strong>No cubre</strong> la construcción de soluciones (documento 53), los controles de seguridad en detalle (documento 35) ni la gestión contractual de proveedores (documento 36).</p>
+<p><strong>No cubre</strong> la construcción de soluciones (<a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a>), los controles de seguridad en detalle (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>) ni la gestión contractual de proveedores (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</p>
 <p>Este documento contiene referencias regulatorias y no constituye asesoramiento jurídico.</p>
 <hr />
 <h2 id="principios-de-operacion"><span class="antetitulo">02</span>Principios de operación</h2>
@@ -437,7 +441,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-1-responsabilidades">3.1 Responsabilidades</h3>
 <p>En la fase 6 el <strong>responsable de operación de IA</strong> responde y realiza (01 §8.4). El <strong>responsable técnico</strong> realiza reentrenamientos, evaluaciones y cambios y responde del campeón/retador; el <strong>responsable de producto</strong> responde del valor y la adopción en R6; el <strong>responsable de riesgos</strong> emite conformidad en cambios significativos Enterprise; <strong>seguridad</strong> responde de la revisión de permisos de agentes; el <strong>auditor de IA</strong> verifica pruebas, permisos, R6 y retiradas.</p>
 <h3 id="3-2-preparacion-para-operar">3.2 Preparación para operar</h3>
-<p>G5 no puede resolverse con <em>Continuar</em> si no existen, verificados, el <strong>manual de operación</strong> (P24), la <strong>configuración de monitorización y alertas</strong> (P25) con alertas probadas, el <strong>plan de respuesta a incidentes</strong> (P26) y el <strong>registro de incidentes y cambios</strong> (P27) abierto, además del <strong>plan de reversión probado</strong> (P19). El responsable de operación <strong>debe</strong> haber participado en la fase 5 y aceptar formalmente el traspaso.</p>
+<p>G5 no puede resolverse con <em>Continuar</em> si no existen, verificados, el <strong>manual de operación</strong> (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>), la <strong>configuración de monitorización y alertas</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>) con alertas probadas, el <strong>plan de respuesta a incidentes</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) y el <strong>registro de incidentes y cambios</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>) abierto, además del <strong>plan de reversión probado</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>). El responsable de operación <strong>debe</strong> haber participado en la fase 5 y aceptar formalmente el traspaso.</p>
 <h3 id="3-3-requisitos-de-operacion-por-nivel-de-autonomia">3.3 Requisitos de operación por nivel de autonomía</h3>
 <div class="tabla"><table>
 <thead>
@@ -527,7 +531,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Todo reentrenamiento: usa datos que superan los controles de calidad (documento 51), congela y versiona el conjunto, actualiza <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y se registra en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> como cambio.</p>
+<p>Todo reentrenamiento: usa datos que superan los controles de calidad (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>), congela y versiona el conjunto, actualiza <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y se registra en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> como cambio.</p>
 <h4 id="validacion-campeonretador">4.1.3 Validación campeón/retador</h4>
 <div class="tabla"><table>
 <thead>
@@ -650,19 +654,93 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Presupuesto</strong> mensual por sistema, con alertas al 80 % y al 100 % como referencia inicial.</li>
 <li><strong>Límites</strong> por usuario, sesión y periodo; tamaño máximo de contexto; llamadas máximas por tarea.</li>
 <li><strong>Anomalías:</strong> coste por transacción creciente sin cambio de uso (bucles, contexto excesivo, abuso).</li>
-<li><strong>Al alcanzar el límite:</strong> degradación controlada definida en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>; corte total solo si no afecta a una función crítica.</li>
-<li><strong>Imputación</strong> en la categoría <em>consumo de modelos</em> (documento 42) y seguimiento en T13.</li>
+<li><strong>Al alcanzar el límite:</strong> degradación por coste en cascada (sección 10.3), definida en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y validada en G5; corte total solo si no afecta a una función crítica.</li>
+<li><strong>Imputación</strong> en la categoría <em>consumo de modelos</em> (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>) y seguimiento en <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</li>
 </ul>
 <h4 id="versiones-del-modelo-del-proveedor">4.2.5 Versiones del modelo del proveedor</h4>
 <ol>
 <li>Fijar la <strong>versión exacta</strong> del modelo en producción (no alias a la &quot;última versión&quot;) y registrarla en <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</li>
 <li>Registrar las <strong>fechas de obsolescencia</strong> anunciadas e iniciar la migración con margen para evaluación completa y campeón/retador.</li>
 <li>Detectar <strong>cambios de comportamiento sin cambio de versión</strong> con la evaluación periódica y consultas de control diarias.</li>
-<li>Revisar los avisos sobre <strong>uso de datos y ubicación del tratamiento</strong> y reevaluar en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> (documento 36).</li>
+<li>Revisar los avisos sobre <strong>uso de datos y ubicación del tratamiento</strong> y reevaluar en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
 </ol>
 <p>La migración a una nueva versión del mismo proveedor es un <strong>cambio significativo</strong>; a otra familia de modelos o a otro proveedor, un <strong>cambio sustancial</strong> (sección 6).</p>
+<h4 id="deriva-de-uso">4.2.6 Deriva de uso</h4>
+<p>En IA generativa y en agentes no hay variables de entrada fijas ni etiquetas que permitan medir la deriva como en el ML predictivo, pero el sistema también se degrada cuando <strong>cambia lo que se le pide</strong>: nuevos temas, nuevos tipos de usuario, consultas que nadie previó. El sistema se validó en G5 con un alcance y un conjunto de evaluación concretos; si el uso real se aleja de ellos, las evaluaciones dejan de representar lo que ocurre en producción.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Señal</th>
+<th>Qué se compara</th>
+<th>Cómo se mide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Distribución de temas o intenciones</strong></td>
+<td>Reparto de las consultas por tema o intención frente al del uso validado en G5.</td>
+<td>Clasificación de las consultas (por reglas, por un clasificador o por muestreo humano) y distancia entre distribuciones; se usa el mismo índice de estabilidad de la población de la sección 4.1.1 sobre las categorías.</td>
+</tr>
+<tr>
+<td><strong>Consultas fuera del alcance validado</strong></td>
+<td>Proporción de consultas que no corresponden a ningún tema o tarea validados.</td>
+<td>Clasificación anterior o muestreo; tasa sobre el total del periodo (OPE-19).</td>
+</tr>
+<tr>
+<td><strong>Forma de las entradas</strong></td>
+<td>Longitud, idioma, canal, tipo de documento, herramientas invocadas por los agentes.</td>
+<td>Distribuciones frente a la referencia.</td>
+</tr>
+<tr>
+<td><strong>Recuperación sin fuente pertinente</strong></td>
+<td>Consultas para las que la búsqueda no encuentra fuentes adecuadas.</td>
+<td>Tasa del periodo (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, CNC-08).</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Regla.</strong> <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> <strong>debe</strong> fijar la <strong>referencia de uso</strong> (temas, intenciones y alcance validados en G5), la forma de clasificar las consultas y los umbrales. Cuando la deriva de uso supera el nivel crítico: se amplía el conjunto de evaluación con los casos nuevos y se evalúa el sistema sobre ellos; si el uso nuevo cae fuera de la finalidad aprobada, se limita el alcance o se trata como <strong>nuevo uso</strong> (tabla 6.2, vuelta a G3).</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Un asistente validado para consultas sobre productos que empieza a recibir reclamaciones o preguntas jurídicas sigue «funcionando» y sus evaluaciones siguen en verde, porque miden lo que se previó y no lo que ocurre. La deriva de uso es la señal temprana de que el riesgo real ya no es el aprobado y de que el valor medido puede estar en otro sitio.</p>
+</blockquote>
+<h4 id="sesgo-en-las-respuestas">4.2.7 Sesgo en las respuestas</h4>
+<p>El sesgo no es exclusivo de los modelos que puntúan o deciden: un sistema generativo puede <strong>tratar de forma distinta</strong> a personas o grupos en el contenido, el tono, las recomendaciones o la calidad de la respuesta.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Prueba</th>
+<th>Qué detecta</th>
+<th>Cómo se hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pares contrafactuales</strong></td>
+<td>Diferencias de respuesta atribuibles a un atributo protegido (sexo, edad, origen, discapacidad u otros que fije la evaluación de impacto) o a un indicio de él (nombre, idioma, forma de escribir).</td>
+<td>Parte del conjunto de evaluación de referencia (4.2.1) está formada por pares de casos idénticos salvo en ese atributo; se compara el resultado de cada par con los criterios de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> (decisión o recomendación, importe, tono, rechazo, completitud).</td>
+</tr>
+<tr>
+<td><strong>Calidad por segmento</strong></td>
+<td>Peor exactitud o más rechazos para un colectivo.</td>
+<td>Métricas de 4.2.2 desglosadas por los segmentos definidos en la evaluación de impacto, en la evaluación periódica y en el muestreo de producción.</td>
+</tr>
+<tr>
+<td><strong>Contenido estereotipado</strong></td>
+<td>Afirmaciones o supuestos estereotipados sobre grupos.</td>
+<td>Criterio específico en la revisión humana del muestreo y en los filtros de salida.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Reglas.</strong></p>
+<ol>
+<li>La <strong>tasa de respuestas desiguales</strong> (pares con diferencia material ÷ pares evaluados, OPE-20) se mide en cada evaluación de regresión y en la evaluación periódica; su umbral se fija en <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> junto a los de supervisión humana.</li>
+<li>Es <strong>obligatoria</strong> cuando el sistema recomienda, prioriza, redacta comunicaciones o decide sobre personas o tiene exposición directa a clientes; en el resto de sistemas, cuando la evaluación de riesgos lo indique (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</li>
+<li>Un cambio de modelo, de instrucciones o de fuentes no se promociona si empeora esta tasa por encima de la tolerancia, igual que el retador en el ML predictivo (4.1.3, paso 2).</li>
+</ol>
+<blockquote>
+<p><strong>Por qué importa.</strong> En la IA generativa el sesgo no aparece en una columna de resultados que se pueda contar; aparece en cómo se redacta, se recomienda o se rechaza. Sin una prueba diseñada para ello no se ve, y es precisamente lo que un regulador, un cliente afectado o un medio de comunicación sí verán.</p>
+</blockquote>
 <h3 id="4-3-agentes">4.3 Agentes</h3>
-<p>Los controles de diseño de agentes (identidad, permisos, control de intención, interruptor de parada) se definen en el <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> y se evalúan con T10. Este apartado fija su operación.</p>
+<p>Los controles de diseño de agentes (identidad, permisos, control de intención, interruptor de parada) se definen en el <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> y se evalúan con <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>. Este apartado fija su operación.</p>
 <h4 id="monitorizacion-de-acciones">4.3.1 Monitorización de acciones</h4>
 <p>Cada acción de un agente <strong>debe</strong> registrar: identidad propia del agente (no compartida con personas) y versión; usuario o proceso en cuyo nombre actúa; <strong>intención declarada</strong> (objetivo de la tarea y justificación de la acción); herramienta, operación y datos usados; resultado y efecto; validación humana previa y quién la dio, si aplica; marca temporal e identificador de correlación para reconstruir la secuencia.</p>
 <h4 id="limites">4.3.2 Límites</h4>
@@ -732,13 +810,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>Funciones de IA nuevas activadas por el proveedor</strong>, a veces por defecto: revisión de notas de actualización, verificación de la configuración tras cada versión y desactivación hasta su evaluación cuando el contrato lo permite.</li>
 <li><strong>Cambios de modelo o de comportamiento sin aviso:</strong> indicadores de resultado del proceso, muestreo y pruebas de regresión antes de actualizaciones relevantes.</li>
-<li><strong>Falta de registros:</strong> exigencia contractual de acceso a registros y soporte en incidentes (documento 36).</li>
+<li><strong>Falta de registros:</strong> exigencia contractual de acceso a registros y soporte en incidentes (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
 <li><strong>Cambios en el tratamiento de datos</strong> (ubicación, subencargados, entrenamiento): reevaluación en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</li>
 <li><strong>Incidentes del proveedor:</strong> canal y plazos de notificación en <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>.</li>
 </ul>
-<p>La intensidad de estos controles depende del nivel de exigencia al tercero: <strong>N1 Estándar · N2 Reforzado · N3 Crítico</strong> (documento 36).</p>
+<p>La intensidad de estos controles depende del nivel de exigencia al tercero: <strong>N1 Estándar · N2 Reforzado · N3 Crítico</strong> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</p>
 <hr />
-<h2 id="monitorizacion-y-alertas-p25"><span class="antetitulo">05</span>Monitorización y alertas (P25)</h2>
+<h2 id="monitorizacion-y-alertas-p25"><span class="antetitulo">05</span>Monitorización y alertas (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</h2>
 <h3 id="5-1-capas-de-monitorizacion">5.1 Capas de monitorización</h3>
 <div class="tabla"><table>
 <thead>
@@ -761,8 +839,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3 · Deriva</td>
-<td>Datos, predicciones, concepto.</td>
-<td>ML predictivo</td>
+<td>Datos, predicciones y concepto (4.1.1); uso: temas, intenciones y consultas fuera del alcance validado (4.2.6).</td>
+<td>Datos, predicciones y concepto: ML predictivo. Uso: IA generativa y agentes</td>
 </tr>
 <tr>
 <td>4 · Rendimiento del modelo</td>
@@ -771,7 +849,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5 · Calidad de respuestas</td>
-<td>Fidelidad, corrección, rechazo adecuado, vigencia de fuentes.</td>
+<td>Fidelidad, corrección, rechazo adecuado, vigencia de fuentes; sesgo en las respuestas (4.2.7).</td>
 <td>IA generativa</td>
 </tr>
 <tr>
@@ -845,6 +923,20 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>S4–S3 (convención habitual en la práctica; a calibrar)</td>
 </tr>
 <tr>
+<td>3</td>
+<td>Índice de estabilidad de la distribución de temas o intenciones</td>
+<td>&gt; 0,1</td>
+<td>&gt; 0,25</td>
+<td>S4–S3 (a calibrar)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Consultas fuera del alcance validado</td>
+<td>&gt; 2 × referencia de G5</td>
+<td>&gt; 3 × referencia de G5 o &gt; 10 % de las consultas</td>
+<td>S3; S2 si el uso nuevo afecta a personas o a temas regulados</td>
+</tr>
+<tr>
 <td>4</td>
 <td>Métrica principal frente a validación de G5</td>
 <td>Caída relativa &gt; 5 %</td>
@@ -871,6 +963,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>&gt; 0 en temas regulados o contractuales</td>
 <td>Repetición tras corrección</td>
 <td>S3–S2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tasa de respuestas desiguales en pares contrafactuales</td>
+<td>&gt; umbral de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> − margen</td>
+<td>&gt; umbral de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td>S3; S2 si hay decisiones o comunicaciones sobre personas</td>
 </tr>
 <tr>
 <td>6</td>
@@ -913,6 +1012,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>&gt; 1,5 × media de 30 días</td>
 <td>&gt; 3 × media de 30 días</td>
 <td>S3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Funcionamiento en modo degradado por coste</td>
+<td>Cualquier activación</td>
+<td>&gt; 5 días en el mes o calidad en el modo por debajo del mínimo de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>S4; S3 si la calidad cae por debajo del mínimo</td>
 </tr>
 <tr>
 <td>9</td>
@@ -1010,7 +1116,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Cambio de variables en sistemas que deciden sobre personas</td>
 <td><strong>G4 y G5</strong></td>
-<td>Pruebas de sesgo e información a la representación (documento 50).</td>
+<td>Pruebas de sesgo e información a la representación (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>).</td>
 </tr>
 <tr>
 <td>Cambio de proveedor o de familia de modelos</td>
@@ -1025,7 +1131,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Cambio que puede alterar la clasificación regulatoria o la intensidad</td>
 <td><strong>G3</strong></td>
-<td>Nueva clasificación (T07) y determinación de intensidad (T04).</td>
+<td>Nueva clasificación (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>) y determinación de intensidad (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>).</td>
 </tr>
 <tr>
 <td>Modificación que pueda considerarse sustancial según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> en un sistema de alto riesgo</td>
@@ -1059,8 +1165,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="6-4-reglas">6.4 Reglas</h3>
 <ol>
 <li>Un cambio sustancial aplicado sin volver al <em>gate</em> correspondiente es una <strong>no conformidad mayor</strong>; si afecta a un control crítico o a un sistema de alto riesgo, <strong>crítica</strong> (01 §12).</li>
-<li>Todo cambio de un sistema que afecta a condiciones de trabajo revisa si debe actualizarse la información a la representación de los trabajadores (documento 50, sección 7).</li>
+<li>Todo cambio de un sistema que afecta a condiciones de trabajo revisa si debe actualizarse la información a la representación de los trabajadores (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>, sección 7).</li>
 <li>Los cambios del proveedor se clasifican con las mismas reglas que los propios.</li>
+<li><strong>Activar un modo degradado previsto</strong> en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y validado en G5, incluido el paso a un modelo de respaldo de la sección 10.3, <strong>no es un cambio</strong>: es un modo de operación aprobado y se registra en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> como evento de operación. Sí es un cambio incorporar un modelo de respaldo nuevo o modificar sus condiciones de uso: <strong>significativo</strong> si es de la misma familia y proveedor ya evaluados; <strong>sustancial</strong> en otro caso (tabla 6.2).</li>
 </ol>
 <hr />
 <h2 id="gestion-de-incidentes"><span class="antetitulo">07</span>Gestión de incidentes</h2>
@@ -1167,7 +1274,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> <strong>debe</strong> identificar, para cada sistema, qué notificaciones pueden aplicar, quién decide si procede notificar y quién notifica.</p>
 <h3 id="7-5-relacion-con-las-no-conformidades">7.5 Relación con las no conformidades</h3>
-<p>Un incidente puede revelar un incumplimiento del marco (por ejemplo, un cambio sustancial sin <em>gate</em> o un control crítico desactivado). En ese caso se abre además una <strong>no conformidad</strong> con su propia escala: menor, mayor o crítica (01 §12). Ambos se registran en T08 y se enlazan.</p>
+<p>Un incidente puede revelar un incumplimiento del marco (por ejemplo, un cambio sustancial sin <em>gate</em> o un control crítico desactivado). En ese caso se abre además una <strong>no conformidad</strong> con su propia escala: menor, mayor o crítica (01 §12). Ambos se registran en <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> y se enlazan.</p>
 <hr />
 <h2 id="revision-de-continuidad-r6"><span class="antetitulo">08</span>Revisión de continuidad R6</h2>
 <h3 id="8-1-periodicidad">8.1 Periodicidad</h3>
@@ -1183,39 +1290,39 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>Valor</strong> (P28, T12)</td>
+<td><strong>Valor</strong> (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>)</td>
 <td>Valor realizado frente a hipótesis con su estado; criterios de parada.</td>
 </tr>
 <tr>
-<td><strong>Capacidad liberada</strong> (T20)</td>
+<td><strong>Capacidad liberada</strong> (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>)</td>
 <td>Horas liberadas, materializadas, reasignadas y sin decisión.</td>
 </tr>
 <tr>
-<td><strong>Coste</strong> (T13)</td>
-<td>Coste real frente a presupuesto; coste por transacción.</td>
+<td><strong>Coste</strong> (<a href="42_SEVEN-G_Costes_de_IA.html">T13</a>)</td>
+<td>Coste real frente a presupuesto; coste por transacción; activaciones y días en modo degradado por coste, con la calidad durante el modo (OPE-18).</td>
 </tr>
 <tr>
-<td><strong>Estabilidad, rendimiento y calidad</strong> (P25)</td>
-<td>Disponibilidad, alertas críticas y ruido; métricas del modelo o de respuestas; deriva; sesgo.</td>
+<td><strong>Estabilidad, rendimiento y calidad</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</td>
+<td>Disponibilidad, alertas críticas y ruido; métricas del modelo o de respuestas; deriva, también de uso (OPE-19); sesgo, también en las respuestas (OPE-20).</td>
 </tr>
 <tr>
-<td><strong>Incidentes y cambios</strong> (P27, T08)</td>
+<td><strong>Incidentes y cambios</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>)</td>
 <td>Incidentes por severidad y acciones; no conformidades abiertas; cambios por clase y del proveedor.</td>
 </tr>
 <tr>
-<td><strong>Agentes</strong> (P25, T10)</td>
+<td><strong>Agentes</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>)</td>
 <td>Acciones bloqueadas, anomalías, prueba del interruptor, revisión de permisos.</td>
 </tr>
 <tr>
-<td><strong>Supervisión humana y adopción</strong> (documento 50)</td>
+<td><strong>Supervisión humana y adopción</strong> (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>)</td>
 <td>Tasa de modificación humana, adopción, formación de supervisores.</td>
 </tr>
 <tr>
-<td><strong>Riesgo y cumplimiento</strong> (P11, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, T04, T07)</td>
+<td><strong>Riesgo y cumplimiento</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>)</td>
 <td>Riesgos; vigencia de clasificación, intensidad y evaluaciones de impacto; información a la representación.</td>
 </tr>
 <tr>
-<td><strong>Continuidad</strong> (P19, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
+<td><strong>Continuidad</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
 <td>Última prueba de reversión; situación del proveedor.</td>
 </tr>
 <tr>
@@ -1255,7 +1362,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> exige a los <strong>proveedores</strong> de sistemas de alto riesgo establecer y documentar un <strong>sistema de vigilancia posterior a la comercialización</strong>, basado en un plan, que recopile y analice de forma activa y sistemática datos sobre el funcionamiento del sistema durante su vida útil para evaluar el cumplimiento continuo (art. 72). Los <strong>responsables del despliegue</strong> deben vigilar el funcionamiento conforme a las instrucciones de uso, informar al proveedor cuando proceda y, si consideran que el uso puede presentar un riesgo, informar y suspender el uso (art. 26.5). Las obligaciones de alto riesgo se aplican desde el 2 de diciembre de 2027 (anexo III) y el 2 de agosto de 2028 (anexo I), tras el Reglamento (UE) 2026/1744; el calendario y las demás modificaciones se tratan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
 <ul>
 <li><strong>Como proveedor</strong> (también si lo pasa a ser por modificación sustancial o cambio de finalidad): plan de vigilancia integrado en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, con los datos que se recogen, su análisis periódico y la conexión con riesgos, cambios, incidentes y R6.</li>
-<li><strong>Como responsable del despliegue:</strong> monitorización conforme a las instrucciones del proveedor, canal para informarle, criterio de suspensión y conservación de registros (P25, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
+<li><strong>Como responsable del despliegue:</strong> monitorización conforme a las instrucciones del proveedor, canal para informarle, criterio de suspensión y conservación de registros (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
 <li><strong>Sistemas que no son de alto riesgo:</strong> la monitorización de la sección 5 cumple una función equivalente.</li>
 </ul>
 <p>Este documento no constituye asesoramiento jurídico.</p>
@@ -1290,20 +1397,75 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Proveedor alternativo</strong> previamente evaluado; si no lo está, es un cambio sustancial</td>
 <td>Indisponibilidad prolongada o retirada del proveedor.</td>
 </tr>
+<tr>
+<td><strong>Modelo de respaldo de menor coste</strong>, validado en G5 (sección 10.3)</td>
+<td>Presupuesto de consumo agotado o previsión de cierre por encima del 100 %; picos de volumen o de precio.</td>
+</tr>
 </tbody>
 </table></div>
 <h3 id="10-2-reglas">10.2 Reglas</h3>
 <ol>
-<li>El <strong>plan de reversión</strong> (P19) se prueba antes de G5 y <strong>periódicamente</strong> en producción: al menos anual en Lite y semestral en Enterprise, y tras cada cambio sustancial (OPE-15).</li>
+<li>El <strong>plan de reversión</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) se prueba antes de G5 y <strong>periódicamente</strong> en producción: al menos anual en Lite y semestral en Enterprise, y tras cada cambio sustancial (OPE-15).</li>
 <li>El plan identifica las <strong>personas y capacidades</strong> necesarias para operar sin el sistema y se coordina con el <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> (sección 5.4).</li>
 <li>Para sistemas que soportan una <strong>función crítica o importante</strong>, el tiempo máximo de recuperación y la pérdida máxima de datos admisible se fijan en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y se alinean con el plan de continuidad de negocio y, cuando aplique, con <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>.</li>
-<li>La <strong>dependencia de un proveedor</strong> se valora en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> con una estrategia de salida (documento 36).</li>
+<li>La <strong>dependencia de un proveedor</strong> se valora en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> con una estrategia de salida (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
 </ol>
+<h3 id="10-3-degradacion-por-coste-en-cascada">10.3 Degradación por coste en cascada</h3>
+<p>Los sistemas con consumo variable (IA generativa y agentes) <strong>deben</strong> tener definido en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> qué ocurre cuando el consumo alcanza el presupuesto, para que la respuesta no se improvise ni sea un corte brusco. La degradación sigue una <strong>cascada</strong> de niveles, del menos al más restrictivo:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Qué se hace</th>
+<th>Condición para poder usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N0 · Operación normal</strong></td>
+<td>Modelo principal y configuración aprobada en G5.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>N1 · Optimización sin cambio de modelo</strong></td>
+<td>Límites más estrictos por usuario y sesión, contexto más corto, reutilización de respuestas, procesamiento por lotes de lo que no es urgente.</td>
+<td>Parámetros y rangos aprobados en G5 (ajuste de umbrales dentro de rango).</td>
+</tr>
+<tr>
+<td><strong>N2 · Modelo de respaldo</strong></td>
+<td>Una parte o todo el tráfico pasa a un modelo de menor coste.</td>
+<td>Modelo <strong>evaluado antes de G5</strong> con el mismo conjunto de evaluación de referencia (4.2.1), incluidas las pruebas de sesgo (4.2.7), con resultado dentro de la calidad mínima de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>; versión fijada y registrada en <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+</tr>
+<tr>
+<td><strong>N3 · Alcance reducido</strong></td>
+<td>El sistema atiende solo los casos o canales de menor riesgo o de mayor valor; el resto pasa a personas.</td>
+<td>Criterio de reparto definido en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y personas disponibles (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>).</td>
+</tr>
+<tr>
+<td><strong>N4 · Alternativa sin IA</strong></td>
+<td>Proceso manual, reglas o sistema anterior.</td>
+<td>Plan de reversión probado (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Reglas.</strong></p>
+<ol>
+<li>Los niveles, sus disparadores (por ejemplo, N1 al 80 % del presupuesto, N2 al 100 %) y quién los activa se fijan en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>; su activación se prueba antes de G5 junto con el plan de reversión.</li>
+<li><strong>No se degrada de modelo</strong> (N2) en los usos que deciden o recomiendan sobre personas, en funciones críticas o importantes ni en sistemas de alto riesgo, salvo que el modelo de respaldo se haya validado para ese uso con la misma exigencia que el principal; en esos casos se pasa directamente a N3 o N4, o se aprueba un suplemento de presupuesto (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>, sección 8.1).</li>
+<li>En N2 la <strong>calidad se vigila con más intensidad</strong>: muestreo de producción al menos doble y alerta si cae por debajo del mínimo de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>; si cae, se pasa al nivel siguiente.</li>
+<li>Cada activación y cada vuelta a N0 se registran en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> con fecha, nivel, motivo, quién la decide y la calidad medida durante el modo. Volver a N0 lo autoriza el responsable de operación cuando hay presupuesto o se ha corregido la causa.</li>
+<li>Si el sistema pasa más de un mes en N2 o en un nivel superior, el presupuesto o el diseño están mal dimensionados: se lleva a la siguiente R6 con propuesta (suplemento, optimización definitiva del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>, sección 8.5, o cambio del modelo principal como cambio ordinario).</li>
+<li>Ninguna degradación puede <strong>desactivar controles críticos</strong> (filtros, supervisión humana, límites de agentes, registros): la cascada reduce coste, no controles.</li>
+</ol>
+<p><strong>Ejemplo ilustrativo</strong> (cifras ficticias). Asistente de atención con presupuesto mensual de 12.000 €. El día 20 el consumo alcanza 9.600 € (80 %) y la previsión de cierre es de 14.400 €: se activa N1 (contexto más corto y reutilización de respuestas frecuentes) y la previsión baja a 13.100 €. El día 26 se alcanza el 100 %: se pasa a N2 para las consultas informativas, con un modelo de respaldo validado en G5 que cuesta un 70 % menos, mientras las reclamaciones siguen en el modelo principal. El muestreo de esos días da una exactitud del 91 % frente al mínimo de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> del 88 %. El mes se cierra con 12.600 € (105 %), seis días en N1 y cinco en N2, y la R6 decide ajustar el presupuesto al crecimiento real del volumen.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Sin cascada definida, al agotarse el presupuesto solo quedan dos opciones malas: cortar el servicio o seguir gastando sin control. Con ella, el coste se contiene sin improvisar y sin tocar los controles, el consejo sabe qué calidad se da en cada nivel y la organización aprende si el presupuesto o el diseño estaban mal dimensionados.</p>
+</blockquote>
 <hr />
 <h2 id="registros-y-trazabilidad"><span class="antetitulo">11</span>Registros y trazabilidad</h2>
 <h3 id="11-1-que-se-registra">11.1 Qué se registra</h3>
 <ul>
-<li><strong>Todos los sistemas:</strong> entradas (o su referencia) y resultados con versión de modelo e instrucciones y marca temporal, con minimización; alertas y acción; cambios e incidentes (P27, T08); resultados de evaluaciones y de campeón/retador.</li>
+<li><strong>Todos los sistemas:</strong> entradas (o su referencia) y resultados con versión de modelo e instrucciones y marca temporal, con minimización; alertas y acción; cambios e incidentes (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>); resultados de evaluaciones y de campeón/retador.</li>
 <li><strong>A1–A3 y decisiones sobre personas:</strong> recomendación, decisión humana, quién decide y motivo de la modificación.</li>
 <li><strong>Agentes A2–A3:</strong> campos de la sección 4.3.1.</li>
 <li><strong>IA generativa:</strong> fuentes y versiones recuperadas en cada respuesta; activaciones de filtros y bloqueos.</li>
@@ -1336,7 +1498,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Normativa sectorial y mercantil</strong></td>
 <td>Plazos propios (por ejemplo, en servicios financieros).</td>
-<td>Se incorporan en la declaración de contexto (P02).</td>
+<td>Se incorporan en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</td>
 </tr>
 <tr>
 <td><strong>Plazos de reclamación y prescripción</strong></td>
@@ -1349,17 +1511,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Este documento no constituye asesoramiento jurídico.</p>
 <hr />
 <h2 id="retirada-tecnica"><span class="antetitulo">12</span>Retirada técnica</h2>
-<p>La decisión de retirar se toma en G7 y se documenta en <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; la gestión se apoya en T22. Este apartado fija la ejecución técnica.</p>
+<p>La decisión de retirar se toma en G7 y se documenta en <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; la gestión se apoya en <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>. Este apartado fija la ejecución técnica.</p>
 <ol>
-<li><strong>Preparación:</strong> sustituto o alternativa sin IA operativos, personas capacitadas y comunicación realizada (P30).</li>
-<li><strong>Congelación:</strong> sin cambios salvo emergencias; captura del estado final y de las métricas (P27).</li>
+<li><strong>Preparación:</strong> sustituto o alternativa sin IA operativos, personas capacitadas y comunicación realizada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</li>
+<li><strong>Congelación:</strong> sin cambios salvo emergencias; captura del estado final y de las métricas (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</li>
 <li><strong>Desconexión progresiva:</strong> retirada del tráfico y de las integraciones y procesos que consumen resultados.</li>
 <li><strong>Agentes:</strong> interruptor de parada, cancelación de tareas y <strong>revocación de todas las credenciales e identidades no humanas</strong>, con registro.</li>
-<li><strong>Datos:</strong> eliminación, anonimización o archivo según G7 y los plazos de retención (documento 51, sección 4.5), con registro de eliminación.</li>
+<li><strong>Datos:</strong> eliminación, anonimización o archivo según G7 y los plazos de retención (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, sección 4.5), con registro de eliminación.</li>
 <li><strong>Modelos, instrucciones e índices:</strong> archivo de la versión final cuando proceda; eliminación de índices derivados de fuentes con datos personales; <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> en estado <em>retirado</em>.</li>
 <li><strong>Registros:</strong> se conservan hasta el fin de su plazo (sección 11.2); nunca se eliminan con la retirada.</li>
-<li><strong>Proveedores:</strong> baja de servicios, confirmación de eliminación de datos por el proveedor, cierre de licencias y consumos (documento 36).</li>
-<li><strong>Inventario y registro:</strong> estado <em>Retirada</em> en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y T02 con fecha, motivo codificado, órgano que decide y sustituto.</li>
+<li><strong>Proveedores:</strong> baja de servicios, confirmación de eliminación de datos por el proveedor, cierre de licencias y consumos (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
+<li><strong>Inventario y registro:</strong> estado <em>Retirada</em> en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> con fecha, motivo codificado, órgano que decide y sustituto.</li>
 <li><strong>Verificación posterior:</strong> tras un periodo definido, comprobar que no quedan accesos, costes ni procesos dependientes; nota de cierre verificada por el auditor de IA en Enterprise.</li>
 </ol>
 <hr />
@@ -1495,6 +1657,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Mensual</td>
 <td>0 %</td>
 </tr>
+<tr>
+<td><strong>OPE-18</strong></td>
+<td>Modo degradado por coste</td>
+<td>Días del periodo en N1 o superior de la cascada (10.3), por nivel; y calidad medida en el modo ÷ calidad mínima de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>Mensual</td>
+<td>Tendencia decreciente; calidad ≥ 100 % del mínimo</td>
+</tr>
+<tr>
+<td><strong>OPE-19</strong></td>
+<td>Consultas fuera del alcance validado</td>
+<td>Consultas clasificadas fuera de los temas o tareas validados en G5 ÷ consultas del periodo</td>
+<td>Mensual</td>
+<td>Según referencia de G5</td>
+</tr>
+<tr>
+<td><strong>OPE-20</strong></td>
+<td>Respuestas desiguales en pares contrafactuales</td>
+<td>Pares con diferencia material de resultado ÷ pares evaluados</td>
+<td>En cada evaluación de regresión y periódica</td>
+<td>Umbral de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+</tr>
 </tbody>
 </table></div>
 <hr />
@@ -1509,7 +1692,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>Manual de operación (P24)</td>
+<td>Manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
 <td>Simplificado</td>
 <td>Completo</td>
 </tr>
@@ -1554,6 +1737,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Semestral</td>
 </tr>
 <tr>
+<td>Degradación por coste (10.3)</td>
+<td>Al menos N1 y N4 definidos; N2 opcional</td>
+<td>Cascada completa definida y probada antes de G5</td>
+</tr>
+<tr>
+<td>Deriva de uso (4.2.6)</td>
+<td>Consultas fuera del alcance por muestreo</td>
+<td>Distribución de temas y consultas fuera del alcance con clasificación sistemática</td>
+</tr>
+<tr>
+<td>Sesgo en las respuestas (4.2.7)</td>
+<td>Cuando hay decisiones o comunicaciones sobre personas o exposición directa</td>
+<td>Igual, y siempre que lo indique la evaluación de riesgos</td>
+</tr>
+<tr>
 <td>R6</td>
 <td>Semestral</td>
 <td>Trimestral</td>
@@ -1581,13 +1779,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></strong></td>
 <td>Manual de operación</td>
-<td>Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas.</td>
+<td>Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados y cascada de degradación por coste con sus disparadores; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas.</td>
 <td>G5, R6, tras cambios significativos y sustanciales</td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
 <td>Configuración de monitorización y alertas</td>
-<td>Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; conjunto de evaluación de referencia y muestreo; resultado de la prueba de alertas.</td>
+<td>Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; referencia de uso y clasificación de consultas; conjunto de evaluación de referencia con pares contrafactuales y muestreo; calidad mínima en modo degradado; resultado de la prueba de alertas.</td>
 <td>G5, R6</td>
 </tr>
 <tr>
@@ -1606,7 +1804,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="15-2-otras-herramientas-y-plantillas">15.2 Otras herramientas y plantillas</h3>
 <ul>
-<li><strong>Herramientas:</strong> T08 (incidentes y no conformidades, soporte de <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), T10 (seguridad de agentes), T13 (costes de operación), T12 (valor en R6), T22 (retiradas), T02, T04 y T07 (vigencia de inventario, intensidad y clasificación).</li>
+<li><strong>Herramientas:</strong> <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> (incidentes y no conformidades, soporte de <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> (seguridad de agentes), <a href="42_SEVEN-G_Costes_de_IA.html">T13</a> (costes de operación), <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (valor en R6), <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> (retiradas), <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> y <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> (vigencia de inventario, intensidad y clasificación).</li>
 <li><strong>Plantillas:</strong> <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> (linaje, se actualiza con cada cambio), <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> (reversión), <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (valor en R6), <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (resultado de R6 y vueltas a <em>gate</em>), <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> (retirada).</li>
 </ul>
 <hr />
@@ -1668,6 +1866,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>Primera versión. Define la operación de ML predictivo (deriva, reentrenamiento, campeón/retador), IA generativa (evaluaciones continuas, calidad, alucinaciones, filtros, costes, versiones del proveedor), agentes (acciones, límites, anomalías de intención, interruptor de parada, permisos) e IA de terceros embebida; nueve capas de monitorización con umbrales tipo; tres clases de cambio con tabla de vuelta a <em>gate</em>; operación de incidentes S1–S4 con notificaciones regulatorias; paquete y resultados de R6; vigilancia posterior a la comercialización; continuidad y reversión; registros y conservación; retirada técnica; diecisiete indicadores y el contenido mínimo de <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>–<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Deriva de uso en IA generativa y agentes (4.2.6); sesgo en las respuestas con pares contrafactuales (4.2.7); capas 3 y 5 y umbrales ampliados; activar un modo degradado previsto no es un cambio (6.4); degradación por coste en cascada N0–N4 con modelo de respaldo validado en G5 (10.3); indicadores OPE-18 a OPE-20; requisitos Lite y Enterprise y contenido de <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
 </tr>
 </tbody>
 </table></div>
