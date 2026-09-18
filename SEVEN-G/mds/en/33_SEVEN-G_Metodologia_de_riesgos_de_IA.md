@@ -506,7 +506,7 @@ The report to the board uses business language: what can happen, whom it affects
 |---|---|---|
 | **P12** | Risk matrix and register | Register with the fields in section 8, inherent and residual heat map. Phases 3, 5 and 6. |
 | **P13** | Mitigation and contingency plan | Treatment actions, target residual, contingencies and triggers (sections 5–7). Phase 3. |
-| **T06** | Risk matrix and register | Calculation of levels, control effectiveness, acceptances, expiry alerts, indicators and portfolio view. Module of T01. |
+| **T06** | Risk matrix and register | Calculation of levels with the extreme impact rule, inherent and residual 5 × 5 matrix for each initiative and for the portfolio, control effectiveness, acceptance by the body for its level, observations from sections 4 to 8 (Critical residual without approval, High without contingency, acceptance expired or insufficient, review overdue) and CSV export. "Risks" view of the T01 register. Portfolio concentration and correlation (section 10) are analysed with P12 §7. |
 | T01 · T02 · T08 · T09 · T17 | Initiative register, inventory, incidents, suppliers and board dashboard | Sources and destinations of risk data. |
 
 ---

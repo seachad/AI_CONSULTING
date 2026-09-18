@@ -19,7 +19,7 @@
    - *GO/NO-GO Decision Record* → **P29 · Registro de decisión de gate** (evidencias, criterios del documento 21, verificación, decisión, condiciones, iteraciones), complementada por P23 (firma de puesta en producción) y P30 (escalado o retirada).
 2. **Lo que no existe es de otra naturaleza.** Hay cuatro huecos:
    - **A. Formato de trabajo.** Todas las plantillas existen solo como Markdown → HTML/PDF de lectura. No hay ningún fichero rellenable (`.docx`, `.xlsx`) en todo el repositorio, aunque el documento 03 promete «plantilla de hoja de cálculo» para T06, T11 y T13 y «plantilla» para T19 y T20.
-   - **B. Herramientas.** De las 22 herramientas del catálogo solo tienen aplicación T01 (con T02–T05 como módulos), T14, T17 y T18 (esta última como página generada por el conector de T17). T06–T13, T15, T16 y T19–T22 «se aplican con» una plantilla o un documento, y varios documentos atribuyen a T01, T15 o T17 funciones que las aplicaciones no tienen.
+   - **B. Herramientas.** De las 22 herramientas del catálogo solo tienen aplicación T01 (con T02–T06 como módulos; T06 desde el 18-09-2026, D65), T14, T17 y T18 (esta última como página generada por el conector de T17). T07–T13, T15, T16 y T19–T22 «se aplican con» una plantilla o un documento, y varios documentos atribuyen a T01, T15 o T17 funciones que las aplicaciones no tienen.
    - **C. Artefactos de compañía, consejo, cumplimiento y auditoría.** Las plantillas son casi todas *por iniciativa*. Los artefactos del ciclo corporativo C1–C5, de los órganos de gobierno, del cumplimiento regulatorio profundo (EIPD, FRIA, notificaciones), de terceros, de auditoría y de implantación del marco están descritos en los documentos, pero **no tienen plantilla**. Se han identificado **unos 60**.
    - **D. Referencias rotas.** Varios documentos dicen que un contenido «forma parte de» o es «anexo de» una plantilla que no lo contiene.
 3. **Hay además piezas que ya están completas dentro de un documento** y solo necesitan extraerse como plantilla o formato rellenable (por ejemplo, la decisión C2 en 13 §15, el cuestionario de madurez en 11 §3, las políticas de 31 §3–§4 o las listas LV del documento 22).
@@ -36,7 +36,8 @@
 | T14 Índice de transformación | Aplicación HTML + JSON. |
 | T17 Panel del consejo (completo y móvil) | Conector `t01_a_panel.py` + motor v8. |
 | T18 Registro de recomendaciones | Página generada por el conector de T17 (`t01_Registro_Recomendaciones.html`); no tiene carpeta propia. |
-| T06–T13, T15, T16, T19–T22 | **Sin aplicación.** «Se aplica con» P o documento. |
+| T06 | **Módulo de T01** (D65): vista «Riesgos» y pestaña de la ficha, con exportación CSV. |
+| T07–T13, T15, T16, T19–T22 | **Sin aplicación.** «Se aplica con» P o documento. |
 | `.docx` / `.xlsx` / `.csv` | **Ninguno** en el repositorio. |
 
 ### 2.1 Correspondencia con el material antiguo (`SEVEN-G/_legacy`)
@@ -46,7 +47,7 @@
 | AI Initiative Charter | P01 · Carta de la iniciativa | Cubierto. |
 | GO/NO-GO Decision Record | P29 (+ P23, P30) | Cubierto. |
 | Risk Matrix | P12 §3 y §5 + documento 33 | Cubierto. |
-| Risk Register | P12 §4 (T06 sin aplicación) | Cubierto como plantilla; falta formato de hoja de cálculo o módulo de T01. |
+| Risk Register | P12 §4 y T06 | Cubierto: plantilla P12 y módulo T06 de T01 (D65). |
 | Value Hypothesis Canvas | P08 (+ P09 línea base) | Cubierto. |
 | AI Ops Runbook | P24 (+ P25, P26, P27) | Cubierto. |
 | Maturity Assessment Report | Documento 11 §6 (estructura) | **Hueco**: no hay plantilla de informe ni herramienta T15. |
@@ -60,7 +61,7 @@ Una compañía no rellena un HTML ni un PDF. Hoy, para usar P12 o P29, tiene que
 
 | Promesa del marco | Dónde | Realidad |
 |---|---|---|
-| T06 «plantilla de hoja de cálculo» (riesgos) | 03 §5.2 | No existe. P12 incluye la fórmula de nivel para hoja de cálculo, pero no la hoja. |
+| T06 «plantilla de hoja de cálculo» (riesgos) | 03 §5.2 | Resuelto con la exportación CSV de la vista de riesgos de T01 (D65). |
 | T11 «HTML y plantilla de hoja de cálculo» (hipótesis de valor, VAN/ROI/plazo) | 03 §5.3; 40 §8; 41 IND-VAL-11/12/13 | No existe. P08 y P10 solo calculan el neto anual. **El criterio económico de G3 y G7 (40 §8) no tiene dónde calcularse.** |
 | T13 «plantilla de hoja de cálculo» (costes por caso, con exportación a T01 y T17) | 03 §5.3; 42 §12 | No existe. |
 | T19 «plantilla de documento» (tesis y apetito de riesgo) | 03 §5.4 | Solo como anexo de 13 §15. |
@@ -76,7 +77,7 @@ Una compañía no rellena un HTML ni un PDF. Hoy, para usar P12 o P29, tiene que
 
 | Código | Herramienta | Se aplica hoy con | Qué falta para que sea operativa |
 |---|---|---|---|
-| T06 | Matriz y registro de riesgos | P12, P13 | Hoja o módulo de T01 con cálculo de nivel, matriz de calor y vista de cartera (concentración, 33 §10–12). |
+| T06 | Matriz y registro de riesgos | P12, P13 | Hecho como módulo de T01 (D65): cálculo de nivel, matriz de calor, observaciones y vista de cartera. Falta la concentración y correlación (33 §10) y los indicadores de riesgo clave (33 §11). |
 | T07 | Clasificador regulatorio | P11 | Cuestionario guiado; P11 §3–8 es completo y sirve de contenido. |
 | T08 | Registro de NC e incidentes | P26, P27 | **No existe registro de no conformidades (NC-)**: ni plantilla ni aplicación. |
 | T09 | Registro de proveedores | P14 | Registro de cartera de proveedores (36 §9). |

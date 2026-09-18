@@ -327,7 +327,7 @@ function ObtenerMapaReferencias([string]$lang) {
     return [IO.Path]::GetRelativePath((Join-Path $root "html\$lang"), (Join-Path $htmlSevenG $relHtml)).Replace('\', '/')
   }
   if ($map['T01']) {
-    foreach ($par in @(@('T02', '#/inventario'), @('T03', '#/gates'), @('T04', ''), @('T05', ''))) {
+    foreach ($par in @(@('T02', '#/inventario'), @('T03', '#/gates'), @('T04', ''), @('T05', ''), @('T06', '#/riesgos'))) {
       if (-not $map[$par[0]]) { $map[$par[0]] = $map['T01'] + $par[1] }
     }
   }
@@ -527,7 +527,7 @@ foreach ($lang in $Idiomas) {
       $herramientas[$cod] = @{ ruta = $app.FullName; es = $titulos.es; en = $titulos.en }
     }
   }
-  $aliasHerr = @{ T02 = 'T01'; T03 = 'T01'; T04 = 'T01'; T05 = 'T01'; T18 = 'T17' }
+  $aliasHerr = @{ T02 = 'T01'; T03 = 'T01'; T04 = 'T01'; T05 = 'T01'; T06 = 'T01'; T18 = 'T17' }
 
   foreach ($f in $files) {
     $esIndice = $f.FullName -eq $indiceMd

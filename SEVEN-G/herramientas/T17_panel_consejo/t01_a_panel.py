@@ -9,7 +9,7 @@ referencias a regulación pueden quedar desactualizadas: cada organización es l
 que le aplica y certificar su propio cumplimiento. El autor y SEACHAD no asumen responsabilidad por su uso. Los datos de
 demostración son ficticios.
 
-Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, versiones 0.1, 0.2 y 0.3) al JSON
+Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, versiones 0.1, 0.2, 0.3 y 0.4) al JSON
 del panel (motor/ESQUEMA.md) y genera con el motor el panel completo y el movil; si T01 trae recomendaciones, genera tambien el
 registro de recomendaciones. Solo biblioteca estandar. La tabla de mapeo esta en README.md.
 
@@ -76,7 +76,7 @@ def cargar_motor(panel=None):
 
 
 VERSION_CONECTOR = "2.1"
-ESQUEMAS_T01 = ("0.1", "0.2", "0.3")
+ESQUEMAS_T01 = ("0.1", "0.2", "0.3", "0.4")
 FUENTE_T01 = "Registro de iniciativas T01"
 
 # ---------------------------------------------------------------- listas cerradas de T01 y su etiqueta en el panel

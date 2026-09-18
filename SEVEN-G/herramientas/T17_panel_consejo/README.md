@@ -8,7 +8,7 @@ Todo lo que genera el conector (panel completo, panel móvil y registro de recom
 
 ---
 
-Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1`, `0.2` y `0.3`) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
+Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1`, `0.2`, `0.3` y `0.4`; la 0.4 solo añade campos de los riesgos, que el conector no lee) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
 
 - el **panel completo** y el **panel móvil** (T17), sincronizados (misma huella de datos);
 - el **JSON del panel**, para inspeccionarlo o guardarlo como foto con `motor/snapshot.py`;

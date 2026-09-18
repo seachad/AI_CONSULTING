@@ -8,7 +8,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": { "type": "string" },
-    "version_esquema": { "enum": ["0.1", "0.2", "0.3"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para las iniciativas transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. Un fichero 0.1 o 0.2 es un 0.3 válido." },
+    "version_esquema": { "enum": ["0.1", "0.2", "0.3", "0.4"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para las iniciativas transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. 0.4 añade solo campos opcionales a riesgos[] para la matriz y registro de riesgos (T06, documento 33 §8.1): eje del impacto, controles y su eficacia, valoración residual objetivo o verificada, contingencia, estado, tendencia, próxima revisión y aceptación. Un fichero 0.1, 0.2 o 0.3 es un 0.4 válido." },
     "aviso_legal": { "type": "string", "description": "Aviso legal y exención de responsabilidad de SEVEN-G y de la herramienta (en el idioma de la interfaz al exportar). Opcional al importar; la exportación del JSON completo siempre lo incluye." },
     "meta": { "$ref": "#/$defs/meta" },
     "personas": { "type": "array", "items": { "$ref": "#/$defs/persona" } },
@@ -489,6 +489,7 @@
     "estado_control": { "enum": ["hecho", "pendiente", "no_aplica", null] },
     "riesgo": {
       "type": "object",
+      "description": "Entidad Riesgo (03 §4; 33 §8.1). Escalas 1–5 de 33 §4; nivel = probabilidad × impacto: Bajo 1–4 · Medio 5–9 · Alto 10–15 · Crítico 16–25. La herramienta T06 (vista «Riesgos» de T01) calcula los niveles a partir de probabilidad e impacto; nivel_inherente y nivel_residual se conservan para los datos que solo tienen el nivel.",
       "required": ["id", "iniciativa", "descripcion", "probabilidad", "impacto"],
       "additionalProperties": false,
       "properties": {
@@ -504,7 +505,32 @@
         "nivel_residual": { "$ref": "#/$defs/nivel_riesgo_o_nulo" },
         "respuesta": { "enum": ["evitar", "mitigar", "transferir", "aceptar", null] },
         "responsable": { "$ref": "#/$defs/id_persona_o_nula" },
-        "controles": { "type": "string" }
+        "controles": { "type": "string" },
+        "fecha_alta": { "$ref": "#/$defs/fecha_o_nula", "description": "Esquema 0.4. Fecha de identificación." },
+        "eje_impacto": { "enum": ["economico", "personas", "regulatorio", "operativo", "reputacional", null], "description": "Esquema 0.4. Eje que determina el impacto (el mayor de los cinco, 33 §4.2). Con impacto 5 en personas o regulatorio, el riesgo se acepta como Alto como mínimo (33 §4.3, regla 2)." },
+        "eficacia_controles": { "enum": ["eficaz", "parcial", "ineficaz", "no_probado", null], "description": "Esquema 0.4. 33 §5.3: eficaz reduce hasta 2 niveles; parcialmente eficaz, 1; ineficaz o no probado, ninguno en el residual verificado." },
+        "probabilidad_residual": { "type": ["integer", "null"], "minimum": 1, "maximum": 5, "description": "Esquema 0.4." },
+        "impacto_residual": { "type": ["integer", "null"], "minimum": 1, "maximum": 5, "description": "Esquema 0.4." },
+        "tipo_residual": { "enum": ["objetivo", "verificado", null], "description": "Esquema 0.4. Objetivo: con los controles previstos (G3, G4). Verificado: con la eficacia de los controles probada (G5, R6) (33 §5.1)." },
+        "contingencia": { "$ref": "#/$defs/texto_o_nulo", "description": "Esquema 0.4. Disparador, acciones y quién la activa. Obligatoria en todo riesgo Alto o Crítico en tratamiento (33 §6)." },
+        "estado": { "enum": ["identificado", "en_tratamiento", "aceptado", "materializado", "cerrado", null], "description": "Esquema 0.4." },
+        "tendencia": { "enum": ["sube", "estable", "baja", null], "description": "Esquema 0.4." },
+        "proxima_revision": { "$ref": "#/$defs/fecha_o_nula", "description": "Esquema 0.4. Según la frecuencia de 33 §7.3." },
+        "aceptacion": {
+          "description": "Esquema 0.4. Aceptación del riesgo residual por el órgano de su nivel (33 §7.1): Bajo, responsable de producto; Medio, patrocinador; Alto, comité de IA; Crítico, solo el consejo o su comisión delegada. null = sin aceptar.",
+          "oneOf": [{ "type": "null" }, {
+            "type": "object",
+            "required": ["organo", "fecha"],
+            "additionalProperties": false,
+            "properties": {
+              "organo": { "enum": ["producto", "patrocinador", "comite_ia", "consejo"] },
+              "persona": { "$ref": "#/$defs/id_persona_o_nula" },
+              "fecha": { "$ref": "#/$defs/fecha" },
+              "vigencia": { "$ref": "#/$defs/fecha_o_nula", "description": "Hasta la siguiente revisión de continuidad o el cambio que la invalide." },
+              "referencia": { "$ref": "#/$defs/texto_o_nulo", "description": "Acta, decisión de gate o registro." }
+            }
+          }]
+        }
       }
     },
     "no_conformidad": {

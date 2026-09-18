@@ -206,7 +206,7 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 | **Condición** | Condición impuesta con plazo, responsable y estado. | Decisión de gate |
 | **Evidencia** | Enlace, tipo, versión, autor, fecha y verificación. | Criterios, iniciativa |
 | **Valor** | Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación, periodo y, en las iniciativas transversales, unidad de negocio. | Iniciativa |
-| **Riesgo** | Riesgo con probabilidad, impacto, nivel inherente y residual, responsable y controles. | Iniciativa, sistema |
+| **Riesgo** | Riesgo con probabilidad, impacto, nivel inherente y residual, responsable y controles; desde el esquema 0.4 de T01, también eje del impacto, eficacia de los controles, residual objetivo o verificado, contingencia, estado, tendencia, próxima revisión y aceptación (33 §8.1). | Iniciativa, sistema |
 | **No conformidad** | Tipo, detección, contención, causa raíz, acción, cierre. | Iniciativa, sistema |
 | **Incidente** | Fecha, severidad, detección, contención, notificaciones. | Sistema, iniciativa |
 | **Proveedor** | Tercero, servicios, criticidad, contrato, evaluación. | Sistemas, iniciativas |
@@ -233,7 +233,7 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 
 | Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
 |---|---|---|---|---|---|---|---|
-| **T06** | Matriz y registro de riesgos | Evaluación de probabilidad e impacto, mapa de calor, riesgo inherente y residual, controles. | Fase 3, fase 6, cartera | Módulo de T01 y plantilla de hoja de cálculo | 33 | 2 | Se aplica con P12 y P13 |
+| **T06** | Matriz y registro de riesgos | Evaluación de probabilidad e impacto, mapa de calor, riesgo inherente y residual, controles y su eficacia, respuesta, contingencia y aceptación por el órgano de su nivel, con observaciones de la metodología (Crítico sin aprobación del consejo, Alto sin contingencia, aceptación caducada o por un órgano inferior, revisión vencida) y exportación CSV para hoja de cálculo. | Fase 3, fase 6, cartera | Módulo de T01 (vista «Riesgos» y pestaña de la ficha) | 33 | 2 | Disponible v0.1. Se documenta con P12 y P13 |
 | **T07** | Clasificador regulatorio | Cuestionario guiado de clasificación según el Reglamento de IA y evaluaciones requeridas. | Fases 0 y 3 | HTML | 34 | 2 | Se aplica con P11 |
 | **T08** | Registro de no conformidades e incidentes | Proceso completo con plazos y alertas. | Fase 6, C4 | Módulo de T01 | 37 | 2 | Se aplica con P26 y P27 |
 | **T09** | Registro de proveedores de IA | Terceros, criticidad, contratos, evaluación y dependencia. | Fases 3–4, C4 | Módulo de T01 | 36 | 3 | Se aplica con P14 |

@@ -17,7 +17,7 @@ Specification: document 03 (§3 and §4), document 01 (§6–§9), document 00 (
 | `registro.html` | Complete single-file application (HTML, CSS and JavaScript, no dependencies). **It is generated** by `build_registro.ps1` from the JSON files; it is never edited by hand. |
 | `datos_demo.json` | Source of the (fictitious) demo data the application opens with, valid against the schema. |
 | `catalogo_criterios.json` | Source of the catalogue of 128 gate criteria from document 21, in Spanish and English (one criterion per line). |
-| `esquema_registro.schema.json` | JSON Schema 2020-12 of the common data model (03 §4), with closed lists and code patterns. Version 0.3. |
+| `esquema_registro.schema.json` | JSON Schema 2020-12 of the common data model (03 §4), with closed lists and code patterns. Version 0.4. |
 | `build_registro.ps1` | Builds `registro.html` by embedding the JSON files in the template. It checks the sources before generating. |
 | `_fuentes/registro.plantilla.html` | The application without data: the only thing edited by hand. It is not published. |
 | `README.md` · `README_en.md` | This document, in Spanish and English. |
@@ -56,9 +56,10 @@ The application does not send data to third parties or load external resources (
 |---|---|
 | **Funnel** | Portfolio indicators, funnel by phase broken down by status, stalled initiatives and expected value, and an initiative table with days in phase against the limit and alerts. Filters by sphere, ambition, intensity, regulatory classification, technology, exposure, value type, area, status, phase, supplier, free tag and text. |
 | **Kanban board** | Cards by phase (0–7) and a closed column. Cards change column when the gate decision is recorded. |
-| **Record** | Tabs: summary (identification, owners with incompatibilities, classification, lifecycle, value, risk and compliance, and data for the board dashboard), current gate (T03), conditions, value (validated, declared or estimated), event timeline and gate history with criteria. |
+| **Record** | Tabs: summary (identification, owners with incompatibilities, classification, lifecycle, value, risk and compliance, and data for the board dashboard), current gate (T03), conditions, value (validated, declared or estimated), risks (T06: the initiative's matrix and register), event timeline and gate history with criteria. From G3 onwards, the gate tab summarises the risk matrix. |
 | **Pending gates** | Requests awaiting verification or decision, with working days against the limit, blocking criteria and unverified evidence; upcoming or overdue continuity reviews. |
-| **Alerts** | Stalled, decision overdue, expired conditions, overdue continuity reviews, evidence pending verification, third iteration (escalation), resumption overdue, incompatible roles and overdue nonconformities. |
+| **Alerts** | Stalled, decision overdue, expired conditions, overdue continuity reviews, evidence pending verification, third iteration (escalation), resumption overdue, incompatible roles, overdue nonconformities, low adoption and risk matrix observations (T06). |
+| **Risks (T06)** | Risk matrix and register of the initiatives that pass the filters: 5 × 5 likelihood × impact matrix, residual or inherent, with the number of risks per cell (clicking a cell filters the register); summary by level and by the ten categories in document 33; observations from the methodology; register with inherent and residual assessment, controls and their effectiveness, response, owner, acceptance, status and review; creation and editing; CSV export. Own filters by category, residual level and status, and inclusion of closed risks. |
 | **Analysis** | Metrics from 03 §3.5, segmentable with the filters (see below). |
 | **Inventory (T02)** | In-house, third-party and corporate-use systems, with classification, intensity, autonomy, suppliers, owner and review; consistency warnings against the register. |
 | **Data** | Export, steps to generate the board dashboard, import of one or several JSON files (replace or merge), preferences, reference time limits (C2/C5), people and suppliers. |
@@ -86,6 +87,15 @@ The application does not send data to third parties or load external resources (
 
 **“No data” is not zero.** Empty amounts are stored as `null`, shown as “No data”, never summed and counted separately. Annual net value is efficiencies + return − recurring cost and is only calculated when at least one benefit and the recurring cost have an amount; released capacity, avoided risk and compliance are not added.
 
+**T06 · Risk matrix and register** (document 33 and template P12).
+- Common scales: likelihood and impact from 1 to 5; impact is the highest of five axes (economic, people and rights, regulatory, operational, reputational). Level = likelihood × impact: Low 1–4 · Medium 5–9 · High 10–15 · Critical 16–25. Levels are calculated; `nivel_inherente` and `nivel_residual` are kept for risks that only have the level.
+- **Target** residual (with the planned controls, G3 and G4) or **verified** residual (with control effectiveness tested, G5 and R6). The body that accepts the residual depends on its level: Low, AI Product Owner; Medium, AI Sponsor; High, AI Committee; Critical, only the board or its board committee. With impact 5 on people and rights or regulatory, it is accepted as at least High (extreme impact rule, 33 §4.3).
+- Observations (for information; they do not prevent saving or deciding, but they feed the alerts and the gate tab): Critical residual without board approval (blocks G3 and G5); High or Critical without a contingency plan (G3.13); Medium or higher without a response (G3.14); no owner; not assessed or without residual; accepted by a lower body, by someone building the initiative, or expired; not accepted from phase 3 (G3.12); review overdue; ineffective control on a High or Critical risk (nonconformity); verified residual that reduces more levels than control effectiveness allows (2 effective, 1 partially effective, 0 otherwise); initiative in phase 3 or later without a register (G3.11).
+- Every new risk or change generates an edit event with date, author and reason. Risks are not deleted: they are closed with the status "Closed".
+- If the highest residual of the open risks does not match the record's **main residual risk** (the value used by the board dashboard), the tab says so and offers to update it, with its event.
+
+**Why it matters.** The risk matrix is mandatory evidence at G3, the main stopping gate, and is reviewed at G5 and at every R6. Keeping it inside the register stops it living in a separate spreadsheet that nobody updates: the same place that moves the initiative through the funnel shows which risks remain untreated, who must accept them and what blocks the decision.
+
 ## Analysis metrics (03 §3.5)
 
 | Metric | Calculation |
@@ -106,13 +116,14 @@ The application does not send data to third parties or load external resources (
 
 - **Export full JSON**: the whole register in the `esquema_registro.schema.json` format. It is the backup, the way to share data and **the input of the board dashboard (T17)**. It includes the root field `aviso_legal` with the legal notice in the interface language.
 - **Export initiatives CSV**: one row per initiative with classification, lifecycle, owners, value, conditions, closure and alerts. Semicolon separator, UTF-8 with BOM; lists separated by `|`; empty cell = no data; closed-list codes are exported untranslated. **It does not include the legal notice**: CSV has no comment lines, and an extra first line would break the header when the file is opened in a spreadsheet or imported; whoever distributes the CSV must accompany it with the notice.
+- **Export risks (CSV)** (Risks view): one row per risk with the fields of P12 and 33 §8.1, calculated scores and levels, level for acceptance purposes, required body and observation codes. It is the T06 "spreadsheet template". Same format and same caveat about the legal notice as the initiatives CSV.
 - **Board dashboard (T17)**: the view lists the steps (export the full JSON and run the `t01_a_panel.py` connector) and links to the example dashboard and to the connector page. The dashboard JSON is not built in the browser: there is a single T01 → dashboard mapping, the connector's.
 - **Import JSON**: picker for **one or several files** (for example, one register per area or per period). Each file is validated (structure, code patterns, closed lists, dates, references and outcomes allowed by gate); the files are then joined by code (if a code is repeated, the one in the last file prevails; `meta` is that of the first file, with the areas of all of them) and the result is validated. **Validate and import** replaces the current data; **Validate and merge** adds the files to the current data. Confirmation is always requested.
 - **Restore demo** and **delete local data** ask for confirmation.
 
 ## Data model
 
-A single JSON object with `version_esquema` (`0.3`; `0.1` and `0.2` files are accepted and upgraded on load, because `0.2` and `0.3` only add optional fields), `aviso_legal` (text, optional on import), `meta` (organisation, reference date, currency, time-limit configuration) and one list per entity from 03 §4. `null` means “no data”. Dates `YYYY-MM-DD`. Field names and closed-list codes are in Spanish, as in the rest of the SEVEN-G library.
+A single JSON object with `version_esquema` (`0.4`; `0.1`, `0.2` and `0.3` files are accepted and upgraded on load, because `0.2`, `0.3` and `0.4` only add optional fields), `aviso_legal` (text, optional on import), `meta` (organisation, reference date, currency, time-limit configuration) and one list per entity from 03 §4. `null` means “no data”. Dates `YYYY-MM-DD`. Field names and closed-list codes are in Spanish, as in the rest of the SEVEN-G library.
 
 | List | Entity | Code |
 |---|---|---|
@@ -123,7 +134,8 @@ A single JSON object with `version_esquema` (`0.3`; `0.1` and `0.2` files are ac
 | `condiciones` | Condition with decision, criterion, owner, deadline, verification and status | `CND-AAAA-NNN` |
 | `evidencias` | Link, template, version, author, date and verification (linked, not copied) | `EVI-AAAA-NNNN` |
 | `valores` | Expected or realised amount by type, formula, status (validated, declared, estimated), period, source, dashboard line (`concepto`, optional) and business unit (`area`, optional, cross-unit initiatives) | `VAL-NNNN` |
-| `riesgos` · `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Related entities (in this version they are displayed and exported; full management belongs to T06, T08, T09 and T18) | `IA-AAAA-NNN · Rnn` · `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
+| `riesgos` | Risk (T06): description, category, typical risk, system, owner, inherent and residual assessment, controls and their effectiveness, response, contingency, status, trend, review and acceptance | `IA-AAAA-NNN · Rnn` |
+| `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Related entities (in this version they are displayed and exported; full management belongs to T08, T09 and T18) | `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
 | `personas` | People assignable to roles, verification, decision and conditions | `PER-NN` |
 
 Closed lists (values in the schema): sphere `01`–`09`; ambition `optimizar · aumentar · transformar`; intensity `lite · enterprise`; regulatory classification `prohibido · alto_riesgo · transparencia · riesgo_minimo · fuera_ambito · pendiente`; technology `ml_predictivo · ia_generativa · agente · lenguaje_documentos · vision · optimizacion · ia_terceros_embebida · reglas`; exposure `interna · empleados · clientes_indirecta · clientes_directa`; value type `eficiencia · retorno · riesgo_evitado · cumplimiento`; stop or retirement reason (10 codes); statuses (8); outcomes (9); criterion statuses (4); event types (18); autonomy `A0`–`A3`.
@@ -164,13 +176,29 @@ The connector `../T17_panel_consejo/t01_a_panel.py` converts the full JSON of th
 | `iniciativas[].alcance.habilita[]` | `IA-YYYY-NNN` codes | Platform: cases to which its value is allocated. |
 | `valores[].area` | a business unit | Cost and value of each unit; without `area`, what is shared across the initiative (governance, training). The Value tab shows the ladder by unit: cost, adoption, declared hours, released capacity and realised value. |
 
+**Fields added in schema 0.4: risk matrix and register (T06)** (document 33 §8.1; all optional in `riesgos[]`, a 0.1, 0.2 or 0.3 register remains valid):
+
+| Field | Values | Use |
+|---|---|---|
+| `eje_impacto` | `economico` · `personas` · `regulatorio` · `operativo` · `reputacional` | Axis that determines the impact; applies the extreme impact rule. |
+| `eficacia_controles` | `eficaz` · `parcial` · `ineficaz` · `no_probado` | Maximum reduction allowed in the verified residual (33 §5.3). |
+| `probabilidad_residual` · `impacto_residual` | 1–5 | Position of the risk in the residual matrix. |
+| `tipo_residual` | `objetivo` · `verificado` | Residual with planned controls (target) or with tested effectiveness (verified). |
+| `contingencia` | text | Trigger, actions and who activates it; mandatory for High and Critical. |
+| `estado` | `identificado` · `en_tratamiento` · `aceptado` · `materializado` · `cerrado` | Closed risks do not count in the matrix unless included. |
+| `tendencia` | `sube` · `estable` · `baja` | Monitoring (Enterprise). |
+| `fecha_alta` · `proxima_revision` | `YYYY-MM-DD` | Date identified and next review (33 §7.3). |
+| `aceptacion` | `organo` (`producto` · `patrocinador` · `comite_ia` · `consejo`), `persona`, `fecha`, `vigencia`, `referencia` | Acceptance of the residual by the body for its level. |
+
+The board dashboard (T17) does not read these fields: it still uses the initiative's main residual risk.
+
 **Why it matters.** Entering an initiative in T01 is the equivalent of logging an opportunity in a CRM: from then on, every phase entry, gate decision, amount and closure recorded in the register moves the case through the dashboard funnel without anyone typing the data again. The board sees the same thing the AI Office manages.
 
 Anything T01 does not record (overall adoption of productivity suites outside a cross-unit initiative, agent identity and permissions record, DORA provider, operating metrics) is left as “no data” in the dashboard.
 
 ## Demo data
 
-Fictitious company (*Compañía Ejemplo Industrial, S.A.*), 21 fictitious people and 4 fictitious suppliers, 15 initiatives registered in 2025 and 2026 across all phases (0–7) and all eight statuses: one registered, in phase, awaiting gate (one at its third iteration, escalated to the higher body), one on hold with resumption overdue, in production (one with an overdue continuity review), one awaiting G7 brought forward by R6, one **stopped** at G3 for unacceptable risk and one **retired** after G7 because it was replaced. There are stalled initiatives, two **expired conditions**, a pivot, decisions with conditions, a G5 Enterprise multi-level sign-off, validated, declared, estimated and no-data amounts, 9 systems (including one for corporate use), incidents and nonconformities. One is **cross-unit** (a generative assistant in the office suite, rolled out in waves across five units: two in use, one in pilot and two planned, with Commercial below the adoption threshold, realised and validated value in Finance and declared released capacity that does not add up). Fourteen initiatives carry data for the board dashboard (complexity, priority, controls and, in four of them, advisory board remarks) and one does not, so that the dashboard also shows “no data”; efficiency and return amounts carry their dashboard line except those with no hypothesis yet. The T17 example dashboard is generated from this data. The data is illustrative: any resemblance to a real company or person is coincidental.
+Fictitious company (*Compañía Ejemplo Industrial, S.A.*), 21 fictitious people and 4 fictitious suppliers, 15 initiatives registered in 2025 and 2026 across all phases (0–7) and all eight statuses: one registered, in phase, awaiting gate (one at its third iteration, escalated to the higher body), one on hold with resumption overdue, in production (one with an overdue continuity review), one awaiting G7 brought forward by R6, one **stopped** at G3 for unacceptable risk and one **retired** after G7 because it was replaced. There are stalled initiatives, two **expired conditions**, a pivot, decisions with conditions, a G5 Enterprise multi-level sign-off, validated, declared, estimated and no-data amounts, 9 systems (including one for corporate use), incidents and nonconformities, and 21 risks across nine initiatives with codes from the catalogue in document 33: accepted by the body for their level, one closed in the stopped initiative, one High without a contingency plan in the initiative awaiting G3, and one expired acceptance with an overdue review in the cross-unit initiative. One is **cross-unit** (a generative assistant in the office suite, rolled out in waves across five units: two in use, one in pilot and two planned, with Commercial below the adoption threshold, realised and validated value in Finance and declared released capacity that does not add up). Fourteen initiatives carry data for the board dashboard (complexity, priority, controls and, in four of them, advisory board remarks) and one does not, so that the dashboard also shows “no data”; efficiency and return amounts carry their dashboard line except those with no hypothesis yet. The T17 example dashboard is generated from this data. The data is illustrative: any resemblance to a real company or person is coincidental.
 
 ## Limitations
 
@@ -178,7 +206,9 @@ Fictitious company (*Compañía Ejemplo Industrial, S.A.*), 21 fictitious people
 - Single-user, local tool: no authentication, access control, electronic signature or time-stamping; the author of each event is declarative. `localStorage` data is not shared across browsers or devices; export the JSON.
 - Import validates the main structure, not the full JSON Schema. Merging joins entities by code: it suits registers with different codes (per area or per period) or updated versions of the same records; if two registers have been edited separately from the same base, new codes may collide and the one in the last file prevails.
 - The board dashboard measures the time in each stage with the phase-entry dates; it does not deduct periods on hold, which the register analysis does deduct.
-- Risks (T06), nonconformities and incidents (T08), suppliers (T09), value realisation by period (T12), retirements (T22) and recommendations (T18) are displayed, raise alerts and are exported, but their full management belongs to those tools (waves 2 and 3).
+- If the browser holds data from a previous version, the new example risks do not appear until "Restore demo data" is clicked in the Data view.
+- The risks view does not yet calculate portfolio concentration and correlation (33 §10) or key risk indicators (33 §11).
+- Nonconformities and incidents (T08), suppliers (T09), value realisation by period (T12), retirements (T22) and recommendations (T18) are displayed, raise alerts and are exported, but their full management belongs to those tools (waves 2 and 3).
 - Gates grouped in Lite (G0–G2, G4–G5) are recorded as separate decisions on the same day; there is no joint session.
 - Scale opens registration of the new initiative with the tag “Escalado de IA-…”, without a formal link between the two.
 - Historical probability is not segmented by intensity, ambition or cohort.

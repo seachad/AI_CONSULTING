@@ -17,7 +17,7 @@ Especificación: documento 03 (§3 y §4), documento 01 (§6–§9), documento 0
 | `registro.html` | Aplicación completa en un único fichero (HTML, CSS y JavaScript sin dependencias). **Se genera** con `build_registro.ps1` a partir de los JSON; nunca se edita a mano. |
 | `datos_demo.json` | Fuente de los datos de demostración (ficticios) con los que se abre la aplicación, válidos contra el esquema. |
 | `catalogo_criterios.json` | Fuente del catálogo de 128 criterios de *gate* del documento 21, en español e inglés (un criterio por línea). |
-| `esquema_registro.schema.json` | JSON Schema 2020-12 del modelo de datos común (03 §4), con listas cerradas y patrones de código. Versión 0.3. |
+| `esquema_registro.schema.json` | JSON Schema 2020-12 del modelo de datos común (03 §4), con listas cerradas y patrones de código. Versión 0.4. |
 | `build_registro.ps1` | Construye `registro.html` incrustando los JSON en la plantilla. Comprueba las fuentes antes de generar. |
 | `_fuentes/registro.plantilla.html` | La aplicación sin datos: lo único que se edita a mano. No se publica. |
 | `README.md` · `README_en.md` | Este documento, en español e inglés. |
@@ -56,9 +56,10 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 |---|---|
 | **Embudo** | Indicadores de cartera, embudo por fase con desglose por estado, estancadas y valor esperado, y tabla de iniciativas con días en fase frente al plazo y alertas. Filtros por esfera, ambición, intensidad, clasificación regulatoria, tecnología, exposición, tipo de valor, área, estado, fase, proveedor, etiqueta libre y texto. |
 | **Tablero** | Tarjetas por fase (0–7) y columna de cerradas. Las tarjetas cambian de columna cuando se registra la decisión del *gate*. |
-| **Ficha** | Pestañas: resumen (identificación, responsables con incompatibilidades, clasificación, ciclo de vida, valor, riesgo y cumplimiento, y datos para el panel del consejo), *gate* en curso (T03), condiciones, valor (validado, declarado o estimado), línea de tiempo de eventos e historial de *gates* con sus criterios. |
+| **Ficha** | Pestañas: resumen (identificación, responsables con incompatibilidades, clasificación, ciclo de vida, valor, riesgo y cumplimiento, y datos para el panel del consejo), *gate* en curso (T03), condiciones, valor (validado, declarado o estimado), riesgos (T06: matriz y registro de la iniciativa), línea de tiempo de eventos e historial de *gates* con sus criterios. Desde G3, la pestaña del *gate* resume la matriz de riesgos. |
 | **Gates pendientes** | Solicitudes a la espera de verificación o decisión, con días hábiles frente al plazo, bloqueantes y evidencias sin verificar; revisiones de continuidad próximas o caducadas. |
-| **Alertas** | Estancadas, decisión fuera de plazo, condiciones vencidas, revisiones de continuidad caducadas, evidencias pendientes de verificación, tercera iteración (elevación), reanudación vencida, roles incompatibles y no conformidades fuera de plazo. |
+| **Alertas** | Estancadas, decisión fuera de plazo, condiciones vencidas, revisiones de continuidad caducadas, evidencias pendientes de verificación, tercera iteración (elevación), reanudación vencida, roles incompatibles, no conformidades fuera de plazo, adopción baja y observaciones de la matriz de riesgos (T06). |
+| **Riesgos (T06)** | Matriz y registro de riesgos de las iniciativas que dejan pasar los filtros: matriz 5 × 5 de probabilidad por impacto, residual o inherente, con el número de riesgos por celda (pulsar una celda filtra el registro); resumen por nivel y por las diez categorías del documento 33; observaciones de la metodología; registro con valoración inherente y residual, controles y su eficacia, respuesta, responsable, aceptación, estado y revisión; alta y edición; exportación CSV. Filtros propios por categoría, nivel residual y estado, e inclusión de los cerrados. |
 | **Análisis** | Métricas de 03 §3.5 segmentables con los filtros (ver más abajo). |
 | **Inventario (T02)** | Sistemas propios, de terceros y de uso corporativo, con clasificación, intensidad, autonomía, proveedores, responsable y revisión; avisos de coherencia con el registro. |
 | **Datos** | Exportación, pasos para generar el panel del consejo, importación de uno o varios JSON (sustituir o fusionar), preferencias, plazos de referencia (C2/C5), personas y proveedores. |
@@ -86,6 +87,15 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 
 **«Sin dato» no es cero.** Los importes vacíos se guardan como `null`, se muestran como «Sin dato», no suman y se cuentan aparte. El valor neto anual es eficiencias + retorno − coste recurrente y solo se calcula si hay al menos un beneficio y el coste recurrente con importe; la capacidad liberada, el riesgo evitado y el cumplimiento no suman.
 
+**T06 · Matriz y registro de riesgos** (documento 33 y plantilla P12).
+- Escalas comunes: probabilidad e impacto de 1 a 5; el impacto es el mayor de cinco ejes (económico, personas y derechos, regulatorio, operativo, reputacional). Nivel = probabilidad × impacto: Bajo 1–4 · Medio 5–9 · Alto 10–15 · Crítico 16–25. Los niveles se calculan; `nivel_inherente` y `nivel_residual` se conservan para los riesgos que solo tienen el nivel.
+- Residual **objetivo** (con los controles previstos, G3 y G4) o **verificado** (con la eficacia de los controles probada, G5 y R6). El órgano que acepta el residual depende de su nivel: Bajo, responsable de producto; Medio, patrocinador; Alto, comité de IA; Crítico, solo el consejo o su comisión delegada. Con impacto 5 en personas y derechos o regulatorio, se acepta como Alto como mínimo (regla de impacto extremo, 33 §4.3).
+- Observaciones (informativas; no impiden guardar ni decidir, pero alimentan las alertas y la pestaña del *gate*): residual Crítico sin aprobación del consejo (bloquea G3 y G5); Alto o Crítico sin plan de contingencia (G3.13); Medio o superior sin respuesta (G3.14); sin responsable; sin valorar o sin residual; aceptación por un órgano inferior, por quien construye la iniciativa o caducada; sin aceptación desde la fase 3 (G3.12); revisión vencida; control ineficaz en un riesgo Alto o Crítico (no conformidad); residual verificado que reduce más niveles de los que admite la eficacia de los controles (2 eficaz, 1 parcialmente eficaz, 0 el resto); iniciativa en fase 3 o posterior sin registro (G3.11).
+- Cada alta o cambio de un riesgo genera un evento de edición con fecha, autor y motivo. Los riesgos no se borran: se cierran con el estado «Cerrado».
+- Si el mayor residual de los riesgos abiertos no coincide con el **riesgo residual principal** de la ficha (el dato que usa el panel del consejo), la pestaña lo indica y ofrece actualizarlo, con su evento.
+
+**Por qué importa.** La matriz de riesgos es evidencia obligatoria de G3, la principal puerta de parada, y se revisa en G5 y en cada R6. Llevarla dentro del registro evita que viva en una hoja aparte que nadie actualiza: el mismo sitio que mueve la iniciativa por el embudo muestra qué riesgos quedan sin tratar, quién debe aceptarlos y qué bloquea la decisión.
+
 ## Métricas del análisis (03 §3.5)
 
 | Métrica | Cálculo |
@@ -106,13 +116,14 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 
 - **Exportar JSON completo**: todo el registro en el formato de `esquema_registro.schema.json`. Es la copia de seguridad, el medio para compartir datos y **la entrada del panel del consejo (T17)**. Incluye el campo raíz `aviso_legal` con el aviso legal en el idioma de la interfaz.
 - **Exportar CSV de iniciativas**: una fila por iniciativa con clasificación, ciclo de vida, responsables, valor, condiciones, cierre y alertas. Separador punto y coma, UTF-8 con BOM; listas separadas por `|`; celda vacía = sin dato; los códigos de las listas cerradas se exportan sin traducir. **No incluye el aviso legal**: el CSV no admite líneas de comentario y una primera línea añadida rompería la cabecera al abrirlo en una hoja de cálculo o importarlo; quien distribuya el CSV debe acompañarlo del aviso.
+- **Exportar riesgos (CSV)** (vista Riesgos): una fila por riesgo con los campos de P12 y 33 §8.1, puntuaciones y niveles calculados, nivel a efectos de aceptación, órgano requerido y códigos de las observaciones. Es la «plantilla de hoja de cálculo» de T06. Mismo formato y misma advertencia sobre el aviso legal que el CSV de iniciativas.
 - **Panel del consejo (T17)**: la vista indica los pasos (exportar el JSON completo y ejecutar el conector `t01_a_panel.py`) y enlaza al panel de ejemplo y a la página del conector. El JSON del panel no se construye en el navegador: hay una sola correspondencia T01 → panel, la del conector.
 - **Importar JSON**: selector de **uno o varios ficheros** (por ejemplo, un registro por área o por periodo). Cada fichero se valida (estructura, patrones de código, listas cerradas, fechas, referencias y resultados admitidos por *gate*); después se unen por código (si un código se repite, prevalece el del último fichero; `meta` es la del primero, con las áreas de todos) y se valida el resultado. **Validar e importar** sustituye los datos actuales; **Validar y fusionar** añade los ficheros a los datos actuales. Siempre se pide confirmación.
 - **Restaurar demostración** y **borrar datos locales** piden confirmación.
 
 ## Modelo de datos
 
-Un único objeto JSON con `version_esquema` (`0.3`; los ficheros `0.1` y `0.2` se aceptan y se actualizan al cargarlos, porque `0.2` y `0.3` solo añaden campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
+Un único objeto JSON con `version_esquema` (`0.4`; los ficheros `0.1`, `0.2` y `0.3` se aceptan y se actualizan al cargarlos, porque `0.2`, `0.3` y `0.4` solo añaden campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
 
 | Lista | Entidad | Código |
 |---|---|---|
@@ -123,7 +134,8 @@ Un único objeto JSON con `version_esquema` (`0.3`; los ficheros `0.1` y `0.2` s
 | `condiciones` | Condición con decisión, criterio, responsable, plazo, verificación y estado | `CND-AAAA-NNN` |
 | `evidencias` | Enlace, plantilla, versión, autor, fecha y verificación (se enlaza, no se copia) | `EVI-AAAA-NNNN` |
 | `valores` | Importe esperado o realizado por tipo, fórmula, estado (validado, declarado, estimado), periodo, fuente, concepto del panel (`concepto`, opcional) y unidad de negocio (`area`, opcional, iniciativas transversales) | `VAL-NNNN` |
-| `riesgos` · `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Entidades relacionadas (en esta versión se muestran y se exportan; su gestión completa corresponde a T06, T08, T09 y T18) | `IA-AAAA-NNN · Rnn` · `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
+| `riesgos` | Riesgo (T06): descripción, categoría, riesgo tipo, sistema, responsable, valoración inherente y residual, controles y su eficacia, respuesta, contingencia, estado, tendencia, revisión y aceptación | `IA-AAAA-NNN · Rnn` |
+| `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Entidades relacionadas (en esta versión se muestran y se exportan; su gestión completa corresponde a T08, T09 y T18) | `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
 | `personas` | Personas asignables a roles, verificación, decisión y condiciones | `PER-NN` |
 
 Listas cerradas (valores en el esquema): esfera `01`–`09`; ambición `optimizar · aumentar · transformar`; intensidad `lite · enterprise`; clasificación regulatoria `prohibido · alto_riesgo · transparencia · riesgo_minimo · fuera_ambito · pendiente`; tecnología `ml_predictivo · ia_generativa · agente · lenguaje_documentos · vision · optimizacion · ia_terceros_embebida · reglas`; exposición `interna · empleados · clientes_indirecta · clientes_directa`; tipo de valor `eficiencia · retorno · riesgo_evitado · cumplimiento`; motivo de parada o retirada (10 códigos); estados (8); resultados (9); estados de criterio (4); tipos de evento (18); autonomía `A0`–`A3`.
@@ -164,13 +176,29 @@ El conector `../T17_panel_consejo/t01_a_panel.py` convierte el JSON completo de 
 | `iniciativas[].alcance.habilita[]` | códigos `IA-AAAA-NNN` | Plataforma: casos a los que se imputa su valor. |
 | `valores[].area` | una unidad de negocio | Coste y valor de cada unidad; sin `area`, lo común de la iniciativa (gobierno, formación). La pestaña Valor muestra la escalera por unidad: coste, adopción, horas declaradas, capacidad liberada y valor materializado. |
 
+**Campos añadidos en el esquema 0.4: matriz y registro de riesgos (T06)** (documento 33 §8.1; todos opcionales en `riesgos[]`, un registro 0.1, 0.2 o 0.3 sigue siendo válido):
+
+| Campo | Valores | Uso |
+|---|---|---|
+| `eje_impacto` | `economico` · `personas` · `regulatorio` · `operativo` · `reputacional` | Eje que determina el impacto; aplica la regla de impacto extremo. |
+| `eficacia_controles` | `eficaz` · `parcial` · `ineficaz` · `no_probado` | Reducción máxima admitida en el residual verificado (33 §5.3). |
+| `probabilidad_residual` · `impacto_residual` | 1–5 | Posición del riesgo en la matriz residual. |
+| `tipo_residual` | `objetivo` · `verificado` | Residual con controles previstos o con eficacia probada. |
+| `contingencia` | texto | Disparador, acciones y quién la activa; obligatoria en Alto y Crítico. |
+| `estado` | `identificado` · `en_tratamiento` · `aceptado` · `materializado` · `cerrado` | Los cerrados no cuentan en la matriz salvo que se incluyan. |
+| `tendencia` | `sube` · `estable` · `baja` | Seguimiento (Enterprise). |
+| `fecha_alta` · `proxima_revision` | `AAAA-MM-DD` | Alta del riesgo y próxima revisión (33 §7.3). |
+| `aceptacion` | `organo` (`producto` · `patrocinador` · `comite_ia` · `consejo`), `persona`, `fecha`, `vigencia`, `referencia` | Aceptación del residual por el órgano de su nivel. |
+
+El panel del consejo (T17) no lee estos campos: sigue usando el riesgo residual principal de la iniciativa.
+
 **Por qué importa.** Dar de alta una iniciativa en T01 equivale a registrar una oportunidad en un CRM: a partir de ahí, cada entrada de fase, decisión de *gate*, importe y cierre que se anota en el registro mueve el caso por el embudo del panel sin que nadie vuelva a escribir el dato. El consejo ve lo mismo que gestiona la Oficina de IA.
 
 Lo que T01 no registra (adopción global de las suites de productividad fuera de una iniciativa transversal, ficha de identidad y permisos de los agentes, proveedor DORA, métricas de operación) queda «sin dato» en el panel.
 
 ## Datos de demostración
 
-Compañía ficticia (*Compañía Ejemplo Industrial, S.A.*), 21 personas y 4 proveedores ficticios, 15 iniciativas registradas entre 2025 y 2026 en todas las fases (0–7) y en los ocho estados: una registrada, en fase, pendientes de *gate* (una en tercera iteración, elevada al órgano superior), una en espera con reanudación vencida, en producción (una con revisión de continuidad caducada), una pendiente de G7 adelantado por R6, una **parada** en G3 por riesgo inaceptable y una **retirada** tras G7 por sustitución. Hay iniciativas estancadas, dos **condiciones vencidas**, un pivotaje, decisiones con condiciones, una firma multinivel G5 Enterprise, importes validados, declarados, estimados y sin dato, 9 sistemas (incluido uno de uso corporativo), incidentes y no conformidades. Una es **transversal** (asistente generativo en la suite ofimática, desplegado por olas en cinco unidades: dos en uso, una en piloto y dos previstas, con Comercial por debajo del umbral de adopción, valor materializado y validado en Finanzas y capacidad liberada declarada que no suma). Catorce iniciativas llevan datos para el panel del consejo (complejidad, prioridad, controles y, en cuatro, observaciones del consejo asesor) y una no, para que el panel muestre también el «sin dato»; los importes de eficiencias y retorno llevan su concepto salvo los que aún no tienen hipótesis. Con estos datos se genera el panel de ejemplo de T17. Los datos son ilustrativos: cualquier parecido con una compañía o persona real es casual.
+Compañía ficticia (*Compañía Ejemplo Industrial, S.A.*), 21 personas y 4 proveedores ficticios, 15 iniciativas registradas entre 2025 y 2026 en todas las fases (0–7) y en los ocho estados: una registrada, en fase, pendientes de *gate* (una en tercera iteración, elevada al órgano superior), una en espera con reanudación vencida, en producción (una con revisión de continuidad caducada), una pendiente de G7 adelantado por R6, una **parada** en G3 por riesgo inaceptable y una **retirada** tras G7 por sustitución. Hay iniciativas estancadas, dos **condiciones vencidas**, un pivotaje, decisiones con condiciones, una firma multinivel G5 Enterprise, importes validados, declarados, estimados y sin dato, 9 sistemas (incluido uno de uso corporativo), incidentes y no conformidades, y 21 riesgos en nueve iniciativas con códigos del catálogo del documento 33: aceptados por el órgano de su nivel, uno cerrado en la iniciativa parada, uno Alto sin plan de contingencia en la iniciativa pendiente de G3 y una aceptación caducada con la revisión vencida en la iniciativa transversal. Una es **transversal** (asistente generativo en la suite ofimática, desplegado por olas en cinco unidades: dos en uso, una en piloto y dos previstas, con Comercial por debajo del umbral de adopción, valor materializado y validado en Finanzas y capacidad liberada declarada que no suma). Catorce iniciativas llevan datos para el panel del consejo (complejidad, prioridad, controles y, en cuatro, observaciones del consejo asesor) y una no, para que el panel muestre también el «sin dato»; los importes de eficiencias y retorno llevan su concepto salvo los que aún no tienen hipótesis. Con estos datos se genera el panel de ejemplo de T17. Los datos son ilustrativos: cualquier parecido con una compañía o persona real es casual.
 
 ## Limitaciones
 
@@ -178,7 +206,9 @@ Compañía ficticia (*Compañía Ejemplo Industrial, S.A.*), 21 personas y 4 pro
 - Herramienta monousuario y local: sin autenticación, control de acceso, firma electrónica ni sellado de tiempo; el autor de cada evento es declarativo. Los datos de `localStorage` no se comparten entre navegadores ni equipos; hay que exportar el JSON.
 - La importación valida la estructura principal, no el JSON Schema completo. La fusión une entidades por código: sirve para registros con códigos distintos (por área o por periodo) o para versiones actualizadas de los mismos registros; si dos registros se han editado por separado desde una misma base, los códigos nuevos pueden coincidir y prevalece el del último fichero.
 - El panel del consejo mide el tiempo en cada etapa con las fechas de entrada en fase; no descuenta los periodos en espera, que sí descuenta el análisis del registro.
-- Riesgos (T06), no conformidades e incidentes (T08), proveedores (T09), realización de valor por periodos (T12), retiradas (T22) y recomendaciones (T18) se muestran, generan alertas y se exportan, pero su gestión completa corresponde a esas herramientas (olas 2 y 3).
+- Si el navegador guarda datos de una versión anterior, los riesgos de ejemplo nuevos no aparecen hasta pulsar «Restaurar datos de demostración» en la vista Datos.
+- La vista de riesgos no calcula aún la concentración ni la correlación de la cartera (33 §10) ni los indicadores de riesgo clave (33 §11).
+- No conformidades e incidentes (T08), proveedores (T09), realización de valor por periodos (T12), retiradas (T22) y recomendaciones (T18) se muestran, generan alertas y se exportan, pero su gestión completa corresponde a esas herramientas (olas 2 y 3).
 - Las puertas agrupadas en Lite (G0–G2, G4–G5) se registran como decisiones separadas del mismo día; no hay una sesión conjunta.
 - Escalar abre el alta de la nueva iniciativa con la etiqueta «Escalado de IA-…», sin vínculo formal entre ambas.
 - La probabilidad histórica no se segmenta por intensidad, ambición ni cohorte.
