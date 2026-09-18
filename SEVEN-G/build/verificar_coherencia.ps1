@@ -49,6 +49,21 @@ try {
     if (-not $soloEs -and -not $soloEn -and -not $faltan) { Ok "$met`: $($rel.es.Count) documentos ES y $($rel.en.Count) EN, con HTML y PDF" }
   }
 
+  # Markdown: una línea «---» o «===» pegada a un párrafo o a una tabla convierte ese texto en un título (y estropea el índice del
+  # documento y el PDF). Se exige una línea en blanco antes del separador; los bloques de código no cuentan.
+  Write-Host '1b. Separadores del Markdown'
+  $pegados = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds') -Recurse -File -Filter *.md)) {
+    $l = [IO.File]::ReadAllLines($f.FullName); $enCodigo = $false
+    for ($i = 0; $i -lt $l.Count; $i++) {
+      if ($l[$i] -match '^\s*(```|~~~)') { $enCodigo = -not $enCodigo; continue }
+      if (-not $enCodigo -and $i -gt 0 -and $l[$i] -match '^\s*(-{3,}|={3,})\s*$' -and $l[$i - 1].Trim() -ne '' -and $l[$i - 1] -notmatch '^\s*(-{3,}|={3,}|```|~~~)') { "$([IO.Path]::GetRelativePath($repo, $f.FullName)):$($i + 1)" }
+    }
+  }
+  foreach ($x in $pegados) { Mal "separador pegado al texto anterior (falta una línea en blanco): $x" }
+  $titulosRotos = Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html') -Recurse -File -Filter *.html | Select-String -Pattern '<h[23][^>]*>(<span[^>]*>[^<]*</span>)?\s*\|' -List
+  foreach ($x in $titulosRotos) { Mal "título generado a partir de una tabla: $([IO.Path]::GetRelativePath($repo, $x.Path))" }
+  if (-not $pegados -and -not $titulosRotos) { Ok 'sin separadores pegados ni títulos generados a partir de tablas' }
+
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
   $publicables = @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))

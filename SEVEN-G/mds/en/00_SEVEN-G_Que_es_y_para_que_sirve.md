@@ -362,6 +362,7 @@ SEVEN-G version 0.1 is operational. Every document, template and tool in this ta
 | **H · Templates** | 31 templates, from P01 to P31, one for each piece of mandatory evidence in the lifecycle, linked from the [library index](index.html). |
 | **I · Tools** | Initiative register T01 (with system inventory, *gate* manager, intensity determination and ambition classification) and connector T17, which feeds the board dashboard and the recommendations register with the register's data. |
 | **J · Framework adoption** | [90 · Implementation guide](90_SEVEN-G_Guia_de_implantacion.html) · [91 · Guide for consultants and support models](91_SEVEN-G_Guia_para_consultores.html) · [92 · Application cases](92_SEVEN-G_Casos_de_aplicacion.html) · [93 · Licence, use by third parties and citation](93_SEVEN-G_Licencia_uso_y_citacion.html) |
+
 ---
 
 ## 11. Licence and use

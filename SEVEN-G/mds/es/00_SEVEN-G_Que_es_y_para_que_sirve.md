@@ -362,6 +362,7 @@ La versión 0.1 de SEVEN-G es operativa. Todos los documentos, plantillas y herr
 | **H · Plantillas** | 31 plantillas, de P01 a P31, una por cada evidencia obligatoria del ciclo de vida, enlazadas desde el [índice de la biblioteca](index.html). |
 | **I · Herramientas** | Registro de iniciativas T01 (con inventario de sistemas, gestor de *gates*, determinación de intensidad y clasificación de ambición) y conector T17, que alimenta el panel del consejo y el registro de recomendaciones con los datos del registro. |
 | **J · Adopción del marco** | [90 · Guía de implantación](90_SEVEN-G_Guia_de_implantacion.html) · [91 · Guía para consultores y modelos de acompañamiento](91_SEVEN-G_Guia_para_consultores.html) · [92 · Casos de aplicación](92_SEVEN-G_Casos_de_aplicacion.html) · [93 · Licencia, uso por terceros y citación](93_SEVEN-G_Licencia_uso_y_citacion.html) |
+
 ---
 
 ## 11. Licencia y uso
