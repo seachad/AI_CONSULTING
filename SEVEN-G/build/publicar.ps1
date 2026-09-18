@@ -115,7 +115,10 @@ if (Test-Path $TerminosProhibidos) {
   foreach ($t in (Get-ChildItem $destinoAbs -Recurse -File | Where-Object { $_.FullName -notmatch '[\\/]\.git[\\/]' })) {
     $texto = if ($t.Extension -in '.html', '.md', '.json', '.csv', '.txt') { [IO.File]::ReadAllText($t.FullName) } else { $null }
     foreach ($term in $terminos) {
-      if ($t.Name.IndexOf($term, [StringComparison]::OrdinalIgnoreCase) -ge 0 -or ($texto -and $texto.IndexOf($term, [StringComparison]::OrdinalIgnoreCase) -ge 0)) {
+      # una línea «re:<expresión>» es una expresión regular (igual que en verificar_coherencia.ps1); el resto, texto literal
+      $hay = if ($term.StartsWith('re:')) { $rx = [regex]::new($term.Substring(3), 'IgnoreCase'); $rx.IsMatch($t.Name) -or ($texto -and $rx.IsMatch($texto)) }
+             else { $t.Name.IndexOf($term, [StringComparison]::OrdinalIgnoreCase) -ge 0 -or ($texto -and $texto.IndexOf($term, [StringComparison]::OrdinalIgnoreCase) -ge 0) }
+      if ($hay) {
         $errores.Add("Término prohibido en $([IO.Path]::GetRelativePath($destinoAbs, $t.FullName))")
       }
     }

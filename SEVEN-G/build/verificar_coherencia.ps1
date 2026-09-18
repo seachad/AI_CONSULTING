@@ -58,7 +58,9 @@ try {
   }
   $patrones = @('_trabajo', 'notas_internas', 'C:\\SEACHAD', 'OneDrive')
   $lista = Join-Path $env:USERPROFILE '.seveng\terminos_prohibidos.txt'
-  if (Test-Path $lista) { $patrones += Get-Content $lista -Encoding utf8 | Where-Object { $_.Trim() -and -not $_.StartsWith('#') } | ForEach-Object { [regex]::Escape($_.Trim()) } }
+  # un término por línea, buscado como texto literal sin distinguir mayúsculas; una línea «re:<expresión>» es una expresión regular
+  # (p. ej., re:\bSIGLA\b(?!_) para una sigla que también forma parte de palabras corrientes o de claves de datos)
+  if (Test-Path $lista) { $patrones += Get-Content $lista -Encoding utf8 | Where-Object { $_.Trim() -and -not $_.StartsWith('#') } | ForEach-Object { $x = $_.Trim(); if ($x.StartsWith('re:')) { $x.Substring(3) } else { [regex]::Escape($x) } } }
   else { Aviso "no existe la lista privada de términos prohibidos ($lista): solo se comprueban los patrones generales" }
   $hallazgos = $publicables | Select-String -Pattern ($patrones -join '|') -List
   foreach ($h in $hallazgos) { Mal "texto interno o prohibido en $([IO.Path]::GetRelativePath($repo, $h.Path)):$($h.LineNumber)" }

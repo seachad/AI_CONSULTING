@@ -118,7 +118,7 @@ A single JSON object with `version_esquema` (`0.2`; `0.1` files are accepted and
 |---|---|---|
 | `iniciativas` | Initiative: identification, owners, classification (controlled taxonomy), T04, T05, lifecycle (phase, status, entry, iteration, hold, next review), closure, residual risk, impact assessments, investment, data for the dashboard (`panel`, optional), free tags, systems | `IA-AAAA-NNN` |
 | `sistemas` | AI system (T02) | `SIA-AAAA-NNN` |
-| `eventos` | Event with date, author, reason and change | `EVT-NNNNNN` |
+| `eventos` | Event with date, author, reason and change. Events that change the status of the initiative (registration, phase entry, stop and retirement) also store the `cifras` (figures) at that time: investment, recurring cost, efficiencies and return, expected and realised | `EVT-NNNNNN` |
 | `decisiones_gate` | Request, verification, decision, body, escalation, proposed outcome and outcome, G5 sign-offs, evaluated criteria (`codigo`, `estado`, `justificacion`, `evidencias`) | `DG-AAAA-NNN` |
 | `condiciones` | Condition with decision, criterion, owner, deadline, verification and status | `CND-AAAA-NNN` |
 | `evidencias` | Link, template, version, author, date and verification (linked, not copied) | `EVI-AAAA-NNNN` |
@@ -135,7 +135,7 @@ The connector `../T17_panel_consejo/t01_a_panel.py` converts the full JSON of th
 | What the dashboard shows | Where it comes from in T01 |
 |---|---|
 | **Case state and funnel** (Propuesto → Hipótesis de valor → POC → En desarrollo → En uso; exits: No aprobado, Descartado, Desenganchado) | Phase and closure of the initiative: phases 0–1 → Propuesto; 2 → Hipótesis de valor; 3 → POC; 4–5 → En desarrollo; 6–7 → En uso. Stopped in phases 0–1 → No aprobado; in phases 2–5 → Descartado; retired → Desenganchado. The mapping is configured in `config_panel.json` of T17. |
-| **Lifecycle and time per stage**, as in a CRM (`historial_estados`) | Registration and `entrada_fase` events (including steps back after a pivot or an iteration) and the closure date. Never estimated. |
+| **Lifecycle and time per stage**, as in a CRM (`historial_estados`) | Registration and `entrada_fase` events (including steps back after a pivot or an iteration) and the closure date. Never estimated. Each status change carries the figures the initiative had at that time (`eventos[].cifras`): the dashboard shows them in the funnel, in its tables and in the case record. |
 | **Investment, efficiencies and return**, current and potential | Realised and expected `valores`, with their status (validated, declared, estimated) and, if provided, their `concepto` (dashboard line). |
 | **Classification and controls** | Regulatory classification, impact assessments (DPIA, FRIA) and `panel.controles` (security, use and control manual, risk of AI-enabled attacks). |
 | **Complexity, priority, expected value deadline and board remarks** | Optional `panel` block of the initiative (in the record: “Data for the board dashboard”). |
@@ -152,6 +152,7 @@ The connector `../T17_panel_consejo/t01_a_panel.py` converts the full JSON of th
 | `iniciativas[].panel.controles` | `seguridad`, `muc`, `ia_ofensiva`: `hecho` · `pendiente` · `no_aplica` | Complete controls per case. |
 | `valores[].concepto` | Efficiencies: `personas` · `herramientas` · `siniestros` · `operativo` · `penalizaciones`. Return: `venta_nueva` · `venta_cruzada` · `retencion` · `precio_margen` · `cobros` · `otros` | Dashboard line where the amount adds up; without it, `operativo` or `otros`. |
 | `meta.panel.consejo_sigla` | text | Name or acronym of the advisory board in the dashboard texts. |
+| `eventos[].cifras` | `esperado` and `realizado`, each with `inversion`, `coste_recurrente`, `eficiencias` and `retorno` | Figures on entering each status: how the case evolves along the funnel. Stored automatically by the tool. |
 
 **Why it matters.** Entering an initiative in T01 is the equivalent of logging an opportunity in a CRM: from then on, every phase entry, gate decision, amount and closure recorded in the register moves the case through the dashboard funnel without anyone typing the data again. The board sees the same thing the AI Office manages.
 

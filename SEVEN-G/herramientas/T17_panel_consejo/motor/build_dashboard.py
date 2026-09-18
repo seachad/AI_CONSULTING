@@ -344,6 +344,10 @@ footer{padding:20px 24px;color:var(--muted);font-size:11.5px;border-top:1px soli
 .fun-card li .m{display:block;opacity:.9}
 .fun-card li .pq{display:block;margin-top:2px;color:var(--ink);font-size:12.5px}.fun-card li .pq b{font-weight:750}.fun-card li .pq.falta{color:var(--rojink);font-style:italic}
 .fun-card a{color:inherit;font-weight:650}
+.cif{font-variant-numeric:tabular-nums}.cif b{font-weight:700}.prev{color:var(--muted);font-size:.9em;font-style:italic}
+.fun2-lbl .d.cif{margin-top:3px;color:var(--ink)}
+.fun-card li .m.cif{opacity:1}
+.fun-card>.h .cifh{display:block;margin-top:3px;font-size:12px}.fun-card.gan>.h .prev{color:#d6efd6}
 .fun2-out .fun-card::before{content:"";position:absolute;left:-15px;top:50%;width:13px;border-top:2px dashed var(--critical)}
 .fun2-fin{grid-column:1/-1;margin-top:10px;border-top:2px solid var(--ink);padding-top:10px}
 .fun2-fin>.tit{font-weight:700;font-size:13px;color:var(--ink);margin-bottom:8px}
@@ -565,9 +569,18 @@ function cicloFicha(c){
   const tot = sum(h.tramos.map(t=>t.dias||0)) || 1;
   const barra = `<div class="ciclobar">${h.tramos.map((t,i)=>`<i title="${esc(t.estado)}: ${dTxt(t.dias)}" style="flex:${Math.max(1,t.dias||0)} 1 0;background:${COL_ETAPA[Math.max(0,ESTADOS_CICLO().indexOf(t.estado))%COL_ETAPA.length]}"></i>`).join("")}</div>`;
   const filas = h.tramos.map(t=>{ const l = lim(t.estado), niv = l==null||t.dias==null ? "" : t.dias > l ? "rojo" : 100*t.dias/l >= (CICLO().aviso_pct_limite??80) ? "amarillo" : "ok";
-    return `<tr class="${t.abierto?niv:""}"><td>${esc(t.estado)}${t.abierto?" <span class=\"nd\">(actual)</span>":""}</td><td class="n">${fES(t.fecha)}</td><td class="n">${t.hasta?fES(t.hasta):"—"}</td><td class="n">${dTxt(t.dias)}</td><td class="n">${l==null?"sin límite":dTxt(l)}</td><td>${niv?pill(niv):""}</td><td class="nd">${esc(t.fuente)}</td></tr>`; }).join("");
-  return cab + barra + `<div class="tblx"><table class="mini"><thead><tr><th>Estado</th><th class="n">Desde</th><th class="n">Hasta</th><th class="n">Días</th><th class="n">Límite</th><th>Plazo</th><th>Fuente</th></tr></thead><tbody>${filas}</tbody></table></div>`;
+    return `<tr class="${t.abierto?niv:""}"><td>${esc(t.estado)}${t.abierto?" <span class=\"nd\">(actual)</span>":""}</td><td class="n">${fES(t.fecha)}</td><td class="n">${t.hasta?fES(t.hasta):"—"}</td><td class="n">${dTxt(t.dias)}</td><td class="n">${l==null?"sin límite":dTxt(l)}</td><td>${niv?pill(niv):""}</td><td class="cif">${cifrasTramo(t)?cifTxt(cifrasTramo(t)):`<span class="nd">—</span>`}</td><td class="nd">${esc(t.fuente)}</td></tr>`; }).join("");
+  return cab + barra + `<div class="tblx"><table class="mini"><thead><tr><th>Estado</th><th class="n">Desde</th><th class="n">Hasta</th><th class="n">Días</th><th class="n">Límite</th><th>Plazo</th><th>Cifras al entrar en el estado</th><th>Fuente</th></tr></thead><tbody>${filas}</tbody></table></div>`;
 }
+// ---- cifras mínimas de coste, eficiencias y retorno en el embudo. De cada caso se usa lo actual (realizado) y, si aún no lo hay —casos
+// que no han llegado a producción—, lo previsto en ese momento, marcado como «prev.». null = sin dato; nunca se convierte en cero.
+const CIF = [["eficiencias","eficiencias_pot","efic."],["retorno","retorno_pot","ret."],["recurrente","recurrente_pot","coste/año"],["construccion",null,"inversión"]];
+function cifrasCaso(c){ const r = R(c), o = {}; CIF.forEach(([a,p])=>{ o[a] = r[a] != null ? {v:r[a], prev:false} : (p && r[p] != null ? {v:r[p], prev:true} : null); }); return o; }
+function cifrasSuma(cs){ const o = {}; CIF.forEach(([a])=>{ const xs = cs.map(c=>cifrasCaso(c)[a]).filter(Boolean); o[a] = xs.length ? {v:sum(xs.map(x=>x.v)), prev:xs.some(x=>x.prev), n:xs.length} : null; }); return o; }
+const cifTxt = (o, sep) => { const p = CIF.map(([a,,lab])=>o[a] ? `${lab} <b>${fmt(o[a].v)}</b>${o[a].prev?'<span class="prev"> prev.</span>':""}` : "").filter(Boolean); return p.length ? p.join(sep || " · ") : `<span class="nd">sin cifras todavía</span>`; };
+const cifCelda = x => x ? `${fmt(x.v)}${x.prev?' <span class="prev">prev.</span>':""}` : "—";
+// cifras guardadas en el historial con un cambio de estado (historial_estados[].cifras: previsto y actual)
+function cifrasTramo(t){ const c = t && t.cifras; if (!c) return null; const o = {}; [["eficiencias","eficiencias"],["retorno","retorno"],["recurrente","recurrente"],["construccion","inversion"]].forEach(([a,k])=>{ const ac = (c.actual||{})[k], pr = (c.previsto||{})[k]; o[a] = ac != null ? {v:ac, prev:false} : pr != null ? {v:pr, prev:true} : null; }); return CIF.some(([a])=>o[a]) ? o : null; }
 function renderEmbudo(rows){
   const el = document.getElementById("embudo"); if (!el) return;
   const cfg = CICLO(), emb = cfg.embudo, sal = SALIDAS(), E = state.embudo, gi = emb.indexOf(cfg.ganado);
@@ -606,11 +619,11 @@ function renderEmbudo(rows){
       + (r.lecciones?`<span class="pq"><b>Qué se aprendió:</b> ${esc(r.lecciones)}</span>`:"")
       + (r.decisor||r.sustituto?`<span class="m">${[r.decisor?`decidió: ${esc(r.decisor)}`:"", r.sustituto?`lo sustituye: ${esc(r.sustituto)}`:""].filter(Boolean).join(" · ")}</span>`:""); };
   const lineaPerdido = c => { const f = finDe(c), fs = f && esSalida(f.estado) ? f.fecha : null;
-    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"} · ${dTxt(diasEmbudo(c, fs))} en el embudo</span>${porQue(c)}</li>`; };
+    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"} · ${dTxt(diasEmbudo(c, fs))} en el embudo</span><span class="m cif">al salir: ${cifTxt(cifrasTramo(f) || cifrasCaso(c))}</span>${porQue(c)}</li>`; };
   const lineaUso = c => { const g = entradaGan(c);
-    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${g?`en uso desde el ${fES(g)} · ${dTxt(diasEmbudo(c, g))} en el embudo`:"sin fecha de puesta en uso"}</span></li>`; };
+    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${g?`en uso desde el ${fES(g)} · ${dTxt(diasEmbudo(c, g))} en el embudo`:"sin fecha de puesta en uso"}</span><span class="m cif">${cifTxt(cifrasCaso(c))}</span></li>`; };
   const lineaDeseng = c => { const f = finDe(c), fs = f && esSalida(f.estado) ? f.fecha : null, g = entradaGan(c);
-    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"}${g&&fs?` · estuvo en uso ${dTxt(dias(g, fs))}`:""}</span>${porQue(c)}</li>`; };
+    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"}${g&&fs?` · estuvo en uso ${dTxt(dias(g, fs))}`:""}</span><span class="m cif">al desengancharse: ${cifTxt(cifrasTramo(f) || cifrasCaso(c))}</span>${porQue(c)}</li>`; };
   const tarjeta = (s, titulo, lista, linea, cls) => `<div class="fun-card${cls||""}${lista.length?"":" vacia"}${E.sel===s?" fun-sel":""}"><div class="h" data-sel="${esc(s)}" tabindex="0" role="button">${titulo}</div>${lista.length?`<ul>${lista.map(linea).join("")}</ul>`:""}</div>`;
   let html = "";
   etapas.forEach(e=>{
@@ -622,7 +635,7 @@ function renderEmbudo(rows){
     const sals = sal.filter(s=>(cfg.salidas[s]||[]).includes(e) || (grupos[s][e]||[]).length);
     html += `<div class="fun2-lbl${sel?" fun-sel":""}" data-sel="${esc(e)}" tabindex="0" role="button" aria-label="${esc(e)}: ${ahora(e).length} casos">
         <div class="t">${esc(e)}</div><div class="d">alcanzaron ${alcanzan[i]} (${alcanzan[0]?Math.round(100*alcanzan[i]/alcanzan[0]):0} %)</div>
-        <div class="d">${t?`media ${t.media} d · mediana ${t.mediana} d (${t.n})`:"tiempos: sin fechas"}</div><div class="d${r?" rojo":a?" amb":""}">${limTxt}${r||a?` · ${r} fuera, ${a} cerca`:""}</div></div>
+        <div class="d">${t?`media ${t.media} d · mediana ${t.mediana} d (${t.n})`:"tiempos: sin fechas"}</div><div class="d${r?" rojo":a?" amb":""}">${limTxt}${r||a?` · ${r} fuera, ${a} cerca`:""}</div><div class="d cif">${ahora(e).length?cifTxt(cifrasSuma(ahora(e))):""}</div></div>
       <div class="fun2-mid${sel?" fun-sel":""}" data-sel="${esc(e)}" tabindex="-1"><div class="fun2-trap" style="background:${COL_ETAPA[i%COL_ETAPA.length]};clip-path:polygon(${(100-wt)/2}% 0,${100-(100-wt)/2}% 0,${100-(100-wb)/2}% 100%,${(100-wb)/2}% 100%)">${ahora(e).length}</div></div>
       <div class="fun2-out">${sals.map(s=>{ const l = grupos[s][e]||[]; return tarjeta(s, `${esc(s)} <span class="k">· no pasó de ${esc(e)}</span> · ${l.length}`, l, lineaPerdido); }).join("")}</div>`;
   });
@@ -630,7 +643,7 @@ function renderEmbudo(rows){
   const enUso = ahora(cfg.ganado), tsUso = estad(enUso.map(c=>diasEmbudo(c, entradaGan(c))));
   const salFin = sal.filter(s=>(cfg.salidas[s]||[]).includes(cfg.ganado) || (grupos[s][cfg.ganado]||[]).length);
   html += `<div class="fun2-fin"><div class="tit">Ya han atravesado el embudo <span>· llegaron a producción ${llegaron} de ${alcanzan[0]} casos${conv==null?"":` · conversión ${conv} %`}</span></div><div class="cards">
-    ${tarjeta(cfg.ganado, `${esc(cfg.ganado)} · ${enUso.length}${tsUso?` <span class="k">· mediana ${tsUso.mediana} d desde la entrada en el embudo hasta el uso</span>`:""}`, enUso, lineaUso, " gan")}
+    ${tarjeta(cfg.ganado, `${esc(cfg.ganado)} · ${enUso.length}${tsUso?` <span class="k">· mediana ${tsUso.mediana} d desde la entrada en el embudo hasta el uso</span>`:""}${enUso.length?`<span class="k cifh">${cifTxt(cifrasSuma(enUso))}</span>`:""}`, enUso, lineaUso, " gan")}
     ${salFin.map(s=>{ const l = grupos[s][cfg.ganado]||[]; return tarjeta(s, `${esc(s)} <span class="k">tras haber estado en uso</span> · ${l.length}`, l, lineaDeseng); }).join("")}
    </div></div>`;
   el.innerHTML = `<div class="fun2" role="group" aria-label="Embudo de casos de uso">${html}</div>`;
@@ -645,17 +658,17 @@ function renderEmbudoDetalle(rows){
   let h;
   if (esSalida(E.sel)){
     const filas = cs.map(c=>{ const tr = historial(c).tramos, fin = tr.length ? tr[tr.length-1] : null; const d = tr.length ? dias(tr[0].fecha, tr[tr.length-1].fecha) : null; const ret = rc(c).retirada||{};
-      return {c, d, html:`<tr><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td><td>${esc(etapaDeSalida(c)||"—")}</td><td class="n">${fin&&fin.estado===E.sel?fES(fin.fecha):"—"}</td><td class="n">${dTxt(d)}</td><td>${nd(ret.motivo)}</td></tr>`}; }).sort((a,b)=>(b.d??-1)-(a.d??-1));
-    h = `<h3>${esc(E.sel)}: ${cs.length} casos perdidos</h3><div class="note">Casos que salieron del embudo en esta rama · días en el embudo: desde su primera fecha hasta la salida</div>${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Compañía</th><th>Tecnología</th><th>Salió desde</th><th class="n">Fecha de salida</th><th class="n">Días en el embudo</th><th>Motivo</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}</tbody></table></div>`:`<div class="nd">Ningún caso en esta salida con los filtros actuales.</div>`}`;
+      return {c, d, html:`<tr><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td><td>${esc(etapaDeSalida(c)||"—")}</td><td class="n">${fin&&fin.estado===E.sel?fES(fin.fecha):"—"}</td><td class="n">${dTxt(d)}</td>${CIF.map(([a])=>`<td class="n">${cifCelda((cifrasTramo(fin) || cifrasCaso(c))[a])}</td>`).join("")}<td>${nd(ret.motivo)}</td></tr>`}; }).sort((a,b)=>(b.d??-1)-(a.d??-1));
+    h = `<h3>${esc(E.sel)}: ${cs.length} casos perdidos</h3><div class="note">Casos que salieron del embudo en esta rama · días en el embudo: desde su primera fecha hasta la salida · cifras: las que tenía el caso al salir («prev.» = previstas, aún no realizadas)</div>${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Compañía</th><th>Tecnología</th><th>Salió desde</th><th class="n">Fecha de salida</th><th class="n">Días en el embudo</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th><th>Motivo</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}</tbody></table></div>`:`<div class="nd">Ningún caso en esta salida con los filtros actuales.</div>`}`;
   } else {
     const t = tiemposEstado(rows, E.sel), ref = t.todas ? t.todas[E.ref] : null, lim = (cfg.dias_limite||{})[E.sel];
     const filas = cs.map(c=>{ const p = plazoDe(c), dv = p.dias!=null && ref!=null ? p.dias - ref : null, dp = dv!=null && ref ? Math.round(100*dv/ref) : null;
-      return {c, p, dv, html:`<tr class="${p.nivel==="rojo"||p.nivel==="amarillo"?p.nivel:""}"><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td>${typeof lim==="object"&&lim?`<td>${nd(complejidadDe(c))}</td>`:""}<td class="n">${p.desde?fES(p.desde):"—"}</td><td class="n">${dTxt(p.dias)}</td><td class="n">${p.limite==null?"—":dTxt(p.limite)}</td><td class="n">${p.pct==null?"—":Math.round(p.pct)+" %"}</td><td class="n">${dv==null?"—":`<b class="${dv>0?"desv-mas":"desv-menos"}">${dv>0?"+":""}${dv} d</b>${dp!=null?` (${dp>0?"+":""}${dp} %)`:""}`}</td><td>${pill(p.nivel)}</td></tr>`}; })
+      return {c, p, dv, html:`<tr class="${p.nivel==="rojo"||p.nivel==="amarillo"?p.nivel:""}"><td>${casoLink(c)} <span class="nd">${esc(c.id)}</span></td><td>${esc(c.compania)}</td><td>${esc(c.tags.tecnologia)}</td>${typeof lim==="object"&&lim?`<td>${nd(complejidadDe(c))}</td>`:""}<td class="n">${p.desde?fES(p.desde):"—"}</td><td class="n">${dTxt(p.dias)}</td><td class="n">${p.limite==null?"—":dTxt(p.limite)}</td><td class="n">${p.pct==null?"—":Math.round(p.pct)+" %"}</td>${CIF.map(([a])=>`<td class="n">${cifCelda(cifrasCaso(c)[a])}</td>`).join("")}<td class="n">${dv==null?"—":`<b class="${dv>0?"desv-mas":"desv-menos"}">${dv>0?"+":""}${dv} d</b>${dp!=null?` (${dp>0?"+":""}${dp} %)`:""}`}</td><td>${pill(p.nivel)}</td></tr>`}; })
       .sort((a,b)=> (b.dv??-1e9) - (a.dv??-1e9));
     const sinF = cs.filter(c=>plazoDe(c).dias==null).length;
     h = `<h3>${esc(E.sel)}: ${cs.length} casos ahora en la etapa</h3>
      <div class="preg-ctrl"><span class="sub">Desviación frente a la</span>${refBtn}<span class="sub">del estado: ${t.todas?`media <b>${t.todas.media} d</b> · mediana <b>${t.todas.mediana} d</b> · ${t.todas.n} estancias (${t.cerradas?t.cerradas.n:0} cerradas, ${t.en_curso?t.en_curso.n:0} en curso)${t.cerradas?` · solo cerradas: media ${t.cerradas.media} d, mediana ${t.cerradas.mediana} d`:""}`:"sin fechas: no hay tiempos"}</span></div>
-     ${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Compañía</th><th>Tecnología</th>${typeof lim==="object"&&lim?"<th>Complejidad</th>":""}<th class="n">En la etapa desde</th><th class="n">Días</th><th class="n">Límite</th><th class="n">% del límite</th><th class="n">Desviación (${E.ref})</th><th>Plazo</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}</tbody></table></div>`:`<div class="nd">Ningún caso en esta etapa con los filtros actuales.</div>`}
+     ${cs.length?`<div class="tblx"><table class="mini"><thead><tr><th>Caso</th><th>Compañía</th><th>Tecnología</th>${typeof lim==="object"&&lim?"<th>Complejidad</th>":""}<th class="n">En la etapa desde</th><th class="n">Días</th><th class="n">Límite</th><th class="n">% del límite</th><th class="n">Eficiencias</th><th class="n">Retorno</th><th class="n">Coste anual</th><th class="n">Inversión</th><th class="n">Desviación (${E.ref})</th><th>Plazo</th></tr></thead><tbody>${filas.map(x=>x.html).join("")}</tbody></table></div>`:`<div class="nd">Ningún caso en esta etapa con los filtros actuales.</div>`}
      ${sinF?`<div class="nd" style="margin-top:6px">${sinF} de ${cs.length} casos sin fechas de cambio de estado: no se puede medir si están atascados.</div>`:""}`;
   }
   det.innerHTML = h;

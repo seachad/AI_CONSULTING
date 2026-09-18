@@ -118,7 +118,7 @@ Un único objeto JSON con `version_esquema` (`0.2`; los ficheros `0.1` se acepta
 |---|---|---|
 | `iniciativas` | Iniciativa: identificación, responsables, clasificación (taxonomía controlada), T04, T05, ciclo de vida (fase, estado, entrada, iteración, espera, próxima revisión), cierre, riesgo residual, evaluaciones de impacto, inversión, datos para el panel (`panel`, opcional), etiquetas libres, sistemas | `IA-AAAA-NNN` |
 | `sistemas` | Sistema de IA (T02) | `SIA-AAAA-NNN` |
-| `eventos` | Evento con fecha, autor, motivo y cambio | `EVT-NNNNNN` |
+| `eventos` | Evento con fecha, autor, motivo y cambio. Los que cambian el estado de la iniciativa (alta, entrada en fase, parada y retirada) guardan además las `cifras` de ese momento: inversión, coste recurrente, eficiencias y retorno, esperados y realizados | `EVT-NNNNNN` |
 | `decisiones_gate` | Solicitud, verificación, decisión, órgano, elevación, resultado propuesto y resultado, firmas G5, criterios evaluados (`codigo`, `estado`, `justificacion`, `evidencias`) | `DG-AAAA-NNN` |
 | `condiciones` | Condición con decisión, criterio, responsable, plazo, verificación y estado | `CND-AAAA-NNN` |
 | `evidencias` | Enlace, plantilla, versión, autor, fecha y verificación (se enlaza, no se copia) | `EVI-AAAA-NNNN` |
@@ -135,7 +135,7 @@ El conector `../T17_panel_consejo/t01_a_panel.py` convierte el JSON completo de 
 | Qué muestra el panel | De dónde sale en T01 |
 |---|---|
 | **Estado del caso y embudo** (Propuesto → Hipótesis de valor → POC → En desarrollo → En uso; salidas: No aprobado, Descartado, Desenganchado) | Fase y cierre de la iniciativa: fases 0–1 → Propuesto; 2 → Hipótesis de valor; 3 → POC; 4–5 → En desarrollo; 6–7 → En uso. Parada en fases 0–1 → No aprobado; en fases 2–5 → Descartado; retirada → Desenganchado. La correspondencia se configura en `config_panel.json` de T17. |
-| **Ciclo de vida y tiempos por etapa**, como en un CRM (`historial_estados`) | Alta y eventos `entrada_fase` (incluidas las vueltas atrás por pivotar o iterar) y fecha del cierre. Nunca se estiman. |
+| **Ciclo de vida y tiempos por etapa**, como en un CRM (`historial_estados`) | Alta y eventos `entrada_fase` (incluidas las vueltas atrás por pivotar o iterar) y fecha del cierre. Nunca se estiman. Cada cambio de estado lleva las cifras que tenía la iniciativa en ese momento (`eventos[].cifras`): el panel las muestra en el embudo, en sus tablas y en la ficha del caso. |
 | **Inversión, eficiencias y retorno**, actual y potencial | `valores` realizados y esperados, con su estado (validado, declarado, estimado) y, si se informa, su `concepto` (línea del panel). |
 | **Clasificación y controles** | Clasificación regulatoria, evaluaciones de impacto (EIPD, EIDF) y `panel.controles` (seguridad, manual de uso y control, riesgo de ataques con IA). |
 | **Complejidad, prioridad, plazo del valor esperado y observaciones del consejo** | Bloque opcional `panel` de la iniciativa (en la ficha: «Datos para el panel del consejo»). |
@@ -152,6 +152,7 @@ El conector `../T17_panel_consejo/t01_a_panel.py` convierte el JSON completo de 
 | `iniciativas[].panel.controles` | `seguridad`, `muc`, `ia_ofensiva`: `hecho` · `pendiente` · `no_aplica` | Controles completos por caso. |
 | `valores[].concepto` | Eficiencias: `personas` · `herramientas` · `siniestros` · `operativo` · `penalizaciones`. Retorno: `venta_nueva` · `venta_cruzada` · `retencion` · `precio_margen` · `cobros` · `otros` | Línea del panel en la que suma el importe; sin concepto va a `operativo` u `otros`. |
 | `meta.panel.consejo_sigla` | texto | Nombre o siglas del consejo asesor en los textos del panel. |
+| `eventos[].cifras` | `esperado` y `realizado`, cada uno con `inversion`, `coste_recurrente`, `eficiencias` y `retorno` | Cifras al entrar en cada estado: evolución del caso a lo largo del embudo. Las guarda la herramienta sola. |
 
 **Por qué importa.** Dar de alta una iniciativa en T01 equivale a registrar una oportunidad en un CRM: a partir de ahí, cada entrada de fase, decisión de *gate*, importe y cierre que se anota en el registro mueve el caso por el embudo del panel sin que nadie vuelva a escribir el dato. El consejo ve lo mismo que gestiona la Oficina de IA.
 
