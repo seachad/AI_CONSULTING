@@ -41,7 +41,7 @@ flowchart LR
 | Fichero | Contenido |
 |---|---|
 | `t01_a_panel.py` | El conector: mapeo T01 → esquema del panel y generación con el motor. Solo biblioteca estándar. |
-| `config_panel.json` | Configuración general del panel: `umbrales_kpi` y `ciclo_vida` (embudo, salidas, límites de días y etapa de cada fase de SEVEN-G). Valores de partida, a calibrar por cada organización. |
+| `config_panel.json` | Configuración general del panel: `navegacion` (sin página «Todo», página inicial y tarjetas desplegadas al entrar), `umbrales_kpi` y `ciclo_vida` (embudo, salidas, límites de días y etapa de cada fase de SEVEN-G). Valores de partida, a calibrar por cada organización. |
 | `motor/` | El motor del panel, **versión 8** (embudo y ciclo de vida, umbrales configurables): `build_dashboard.py` (panel completo), `panel_movil.py`, `panel_core.py` (núcleo JavaScript común), `economia.py`, `glosario.py`, `snapshot.py`, `ESQUEMA.md` (esquema del JSON) y `demo_lib.py` (plantilla del registro de recomendaciones). Copia mantenida en AI_CONSULTING; origen: `AI_en_el_consejo/motor` (MIT, mismo autor). |
 | `publicacion_panel.py` | Aviso legal, pie de autoría, inserción del aviso en el panel móvil y página del registro de recomendaciones. Lo importa el conector desde esta carpeta. |
 | `index.html` | Página del conector (ES/EN, sin servidor ni recursos externos) con los enlaces a la demo y el aviso legal. |
@@ -87,6 +87,7 @@ El conector no escribe `__pycache__` (`sys.dont_write_bytecode`).
 1. **«Sin dato» no es cero.** Lo que T01 no registra queda a `null` (o lista vacía) y el panel lo muestra como «sin dato» (documento 03 §2, principio 7).
 2. **El conector no modifica el motor.** Se usan sus claves heredadas: `estimado_cati` para los importes estimados y `acciones_estimadas_cati` (a `null`). Las etapas del embudo, los límites de días y los umbrales se adaptan a SEVEN-G con `config_panel.json`, sin tocar el motor. Los cambios internos pendientes (renombrar claves, leer `seveng`, aviso legal nativo) están propuestos en `PROPUESTA_MOTOR.md`.
 3. **Una sola fuente y una sola correspondencia.** Todo sale del JSON de T01; no se añaden estimaciones (documento 03 §2, principio 1). El registro no construye el JSON del panel en el navegador: la única correspondencia T01 → panel es la de este conector.
+4. **El tiempo nunca se estima.** El ciclo de vida de cada caso (`historial_estados`) se construye con las fechas de los eventos de T01.
 
 ## Estado del panel
 
@@ -120,6 +121,7 @@ La fase y el estado originales se conservan en `casos[].seveng`.
 |---|---|---|
 | `organizacion`, `compania_principal` | `--organizacion` o `meta.organizacion` | |
 | `consejo_sigla` | `--sigla`; si no, `meta.panel.consejo_sigla` | Por defecto «consejo asesor». |
+| `navegacion`, `umbrales_kpi`, `ciclo_vida` | `config_panel.json` | Configuración general del panel, copiada tal cual (sin las claves de comentario `_…`). `ciclo_vida.fases_seven_g` la usa el conector; el motor la ignora. |
 | `generado`, `ejercicio_valor`, `periodo` | `meta.fecha_referencia` (o `meta.generado`) | Etiqueta «Registro de iniciativas T01 · corte dd-mm-aaaa»; trimestre calculado de la fecha. `periodo.anterior` sin dato. |
 | `prefijo_ficheros` | `--prefijo` | |
 | `demo` | `meta.datos_ilustrativos` | |
@@ -171,6 +173,7 @@ Cada importe de `valores` pasa a un *item* con `importe`, `formula`, `estado`, `
 | `nota_caso` | Fase y estado de T01; importes de `riesgo_evitado` y `cumplimiento` | Se informan como texto: no suman en el neto (regla de T01). |
 | `moneda` | `meta.moneda` | |
 | `plazo_potencial` | `panel.plazo_potencial` (`AAAA-MM`) | Sin dato si no se informa o si la iniciativa está cerrada. |
+| `clave_reparto` | — | Sin dato. `comparte_valor_con` vacío. |
 
 En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la construcción; sus demás importes se citan en `nota_caso` y no suman en el panel.
 
@@ -188,6 +191,8 @@ En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la constr
 | `fechas.ultima_revision` | Última decisión de R6 | |
 | `fechas.retirada` | `cierre.fecha` | Fecha de parada o de retirada. |
 | `retirada` | `cierre`: tipo, *gate*, motivo codificado y comentario; `organo`; `sustituto` | |
+| `historial_estados` | `fecha_registro`, eventos `entrada_fase` y `cierre.fecha` | Ver «Estado del panel». Fuente de cada cambio: «Registro de iniciativas T01»; la nota indica la fase o el cierre. |
+| `complejidad` | `panel.complejidad` | `baja` · `media` · `alta`; sin dato se aplica el límite `sin_dato` de `ciclo_vida.dias_limite`. |
 | `tier_riesgo` | `riesgo_residual_principal` | `critico` → `alto`. |
 | `clasificacion_ria` | `clasificacion.regulatoria` | `riesgo_minimo` → `minimo` · `fuera_ambito` → `no_es_ia` · `pendiente` → sin dato. |
 | `controles.RIA` | `clasificacion.regulatoria` | `pendiente` → pendiente; cualquier otra → hecho. |
@@ -234,6 +239,7 @@ Decisiones y criterios de *gate*, condiciones, evidencias, iteraciones, esperas,
 ## Limitaciones conocidas
 
 - **Motor heredado.** `motor/` es la copia de la versión 8 del motor de *AI en el Consejo* (17-09-2026; versión de datos 6) y se mantiene aquí con independencia de aquel repositorio. Conserva claves y rótulos pensados para el consejo asesor (`estimado_cati`, magnitudes VNB y fraude, que aquí quedan sin dato); `PROPUESTA_MOTOR.md` recoge lo pendiente.
+- **Límites de días por complejidad, no por intensidad.** El panel fija el límite de la etapa «En desarrollo» por la complejidad del caso; los plazos de referencia de T01 van por fase e intensidad (Lite o Enterprise). Los valores de `config_panel.json` parten de la suma de los plazos Enterprise de T01 y están por calibrar.
 - **Aviso legal en el móvil.** El motor no muestra `meta.textos` en el panel móvil. `publicacion_panel.py` añade el aviso al HTML ya generado, antes del pie, sin cambiar los datos ni la huella. En el panel completo el aviso va en la banda de avisos de la cabecera (`aviso_previo`) y, en versión corta, en el pie.
 - **`tags.riesgo`.** El panel la rotula como estimación del consejo asesor; aquí es la clasificación registrada en T01.
 - **Estado «estimado».** El panel lo atribuye al consejo asesor; en T01 lo estima el equipo. El aviso de valor lo aclara.

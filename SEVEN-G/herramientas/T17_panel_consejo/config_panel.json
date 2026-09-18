@@ -1,5 +1,11 @@
 {
  "_leeme": "Configuración general del panel del consejo (completo y móvil) de SEVEN-G. El conector t01_a_panel.py la copia en meta del JSON del panel (dashboard_data.json); después de cambiarla hay que regenerar los paneles. Las claves que empiezan por '_' son comentarios y no se copian.",
+ "navegacion": {
+  "_leeme": "Menú del panel completo. 'pagina_todo': si es false no existe la página «Todo» (todas las secciones seguidas) y el panel se abre por 'pagina_inicial' (cartera, embudo, historico, riesgo, inventario o glosario). 'desplegar_todo': al entrar en una página, todas sus tarjetas se muestran desplegadas.",
+  "pagina_todo": false,
+  "pagina_inicial": "cartera",
+  "desplegar_todo": true
+ },
  "umbrales_kpi": {
   "_leeme": "Porcentajes. Por debajo de 'amarillo' el indicador se muestra en amarillo; por debajo de 'rojo', en rojo; en otro caso está en objetivo. 'rojo' debe ser menor que 'amarillo'. Valores de partida, a calibrar por cada organización.",
   "valor_validado_pct": {"amarillo": 50, "rojo": 20, "_que_mide": "% del valor actual (eficiencias + retorno) con estado «validado» en T01"},
