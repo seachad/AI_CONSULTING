@@ -332,19 +332,11 @@ SPAD is an independent methodology by Seachad, related to SEVEN-G and referenced
 
 ## 📜 License & Usage
 
-**SPAD** is intellectual property of Seachad (FGV). There is no SPAD certification: conformity with SPAD can only be self-assessed by each organization and is not issued or endorsed by Seachad or any third party.
+**SPAD** is published under the same conditions as SEVEN-G: content under **Creative Commons Attribution 4.0 International (CC BY 4.0)** and code under the **MIT** licence (see `LICENCIA_CONTENIDOS.md` and `LICENSE` at the root of the repository). It may be used, adapted, redistributed and extended, including for commercial purposes, provided that authorship is visibly credited: *SPAD · Fernando García · SEACHAD*.
 
-**Permitted:**
-- Internal use within organizations
-- Training and education
-- Commercial projects using SPAD
-- Customization for your needs
+There is no SPAD certification: conformity with SPAD can only be self-assessed by each organization, is not issued or endorsed by SEACHAD or any third party, and any public statement of conformity must be presented as a self-assessment, never as a certification. Use of the name does not imply endorsement by the author.
 
-**Requires Permission:**
-- Public redistribution of methodology
-- Public statements of conformity with SPAD (always as a self-assessment, never as a certification)
-- Training services
-- Derivative methodologies
+The public entry page of SPAD is `SPAD/html/<language>/00_SPAD_Que_es_y_para_que_sirve.html` (sources in `SPAD/mds/`). The documents in `Documents/` are working material and are not published.
 
 ---
 

@@ -1,17 +1,17 @@
 ﻿<#
 .SYNOPSIS
-  Genera HTML y PDF de las metodologías SEVEN-G y SPHERES en español e inglés a partir de las fuentes Markdown.
+  Genera HTML y PDF de las metodologías SEVEN-G, SPHERES y SPAD en español e inglés a partir de las fuentes Markdown.
 
 .DESCRIPTION
-  Metodologías: SEVEN-G (marco principal) y SPHERES (metodología de apoyo). Cada una vive en su carpeta de la raíz
-                del repositorio (<M> = SEVEN-G o SPHERES) con la misma jerarquía; este generador es común a ambas.
+  Metodologías: SEVEN-G (marco principal), SPHERES y SPAD (metodologías de apoyo). Cada una vive en su carpeta de la raíz
+                del repositorio (<M> = SEVEN-G, SPHERES o SPAD) con la misma jerarquía; este generador es común a todas.
   Fuentes:      <M>/mds/<idioma>/**/*.md          (idiomas: es, en)
   Salidas:      <M>/html/<idioma>/**/<nombre>.html (un solo fichero, con barra de herramientas)
                 <M>/html/<idioma>/index.html       (índice de la biblioteca por bloques; sin PDF; excluye _trabajo)
                 <M>/pdf/<idioma>/**/<nombre>.pdf   (impreso con Edge o Chrome sin ventana)
   Diseño:       build/plantilla.html + build/estilo.css (periódico económico en tonos salmón), comunes
   Componentes:  <M>/build/componentes/<idioma>/<nombre>.html y, si no existe ahí, build/componentes/<idioma>/<nombre>.html
-  Herramientas: SEVEN-G/herramientas/ (SPHERES enlaza las de SEVEN-G)
+  Herramientas: SEVEN-G/herramientas/ (SPHERES y SPAD enlazan las de SEVEN-G)
   Traducción:   build/guia_traduccion_en.md (reglas y glosario obligatorio)
 
   Regla: todo documento existe en español y en inglés con el mismo nombre de fichero.
@@ -45,8 +45,8 @@
   pwsh -File build/build.ps1 -SinPdf                  # solo HTML
 #>
 param(
-  [ValidateSet('SEVEN-G', 'SPHERES')]
-  [string[]]$Metodologias = @('SEVEN-G', 'SPHERES'),
+  [ValidateSet('SEVEN-G', 'SPHERES', 'SPAD')]
+  [string[]]$Metodologias = @('SEVEN-G', 'SPHERES', 'SPAD'),
   [string]$Filter = '*.md',
   [string[]]$Idiomas = @('es', 'en'),
   [switch]$SinPdf
@@ -96,6 +96,24 @@ $configuracion = @{
     Bloque = {
       param([string]$rel)
       if ($rel -match '^(\d{2})_') { $n = [int]$Matches[1]; if ($n -le 1) { return 'A' } elseif ($n -le 4) { return 'B' } else { return 'C' } }
+      return $null
+    }
+  }
+  'SPAD' = @{
+    marca = 'SPAD'
+    inicio = '00_SPAD_Que_es_y_para_que_sirve'
+    todasHerramientas = $null
+    es = @{ T_TT_INICIO = 'Ir al documento 00: Qué es SPAD y para qué sirve'; T_METODOLOGIA = 'Metodología SPAD'
+            Indice = 'Biblioteca SPAD'; IndiceSub = 'Documentos del marco de desarrollo de software con IA secuencial, bloqueante y auditable' }
+    en = @{ T_TT_INICIO = 'Go to document 00: What SPAD is and how it helps'; T_METODOLOGIA = 'SPAD methodology'
+            Indice = 'SPAD Library'; IndiceSub = 'Documents of the sequential, blocking and auditable framework for AI-assisted software development' }
+    bloques = @{
+      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Aplicación' }
+      en = [ordered]@{ A = 'A · Foundations'; B = 'B · Application' }
+    }
+    Bloque = {
+      param([string]$rel)
+      if ($rel -match '^(\d{2})_') { if ([int]$Matches[1] -le 1) { return 'A' } else { return 'B' } }
       return $null
     }
   }
@@ -241,6 +259,8 @@ function Nuevo-Indice([string]$lang) {
   $ti = $cfg[$lang]
   $cifrasIndice = if ($cfg.marca -eq 'SEVEN-G') {
     if ($en) { "$nDocs | documents ; $nPlant | templates ; $nHerr | tools ; 2 | languages" } else { "$nDocs | documentos ; $nPlant | plantillas ; $nHerr | herramientas ; 2 | idiomas" }
+  } elseif ($cfg.marca -eq 'SPAD') {
+    if ($en) { "$nDocs | documents ; 11 | main-cycle phases ; 5 | work cycles ; 2 | languages" } else { "$nDocs | documentos ; 11 | fases del ciclo principal ; 5 | ciclos de trabajo ; 2 | idiomas" }
   } else {
     if ($en) { "$nDocs | documents ; 9 | spheres ; 3 | ambition levels ; 2 | languages" } else { "$nDocs | documentos ; 9 | esferas ; 3 | niveles de ambición ; 2 | idiomas" }
   }

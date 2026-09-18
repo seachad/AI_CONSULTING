@@ -7,7 +7,7 @@ Repositorio de metodologías de IA de SEACHAD (Fernando García). El trabajo pri
 1. Lee el registro de decisiones (importado abajo). Es la fuente de verdad sobre lo decidido.
 2. Lee `SEVEN-G/mds/es/_trabajo/20260916_Analisis_estado_y_huecos_SEVEN-G.md` para el plan documental, el estado de cada documento y el orden de trabajo.
 3. Los documentos vigentes están en `SEVEN-G/mds/es/` (redacción) y `SEVEN-G/mds/en/` (traducción). `SEVEN-G/_legacy/` no es vigente.
-4. **SPHERES** (metodología de apoyo, en construcción) vive en `SPHERES/` con la misma jerarquía (`mds`, `html`, `pdf`, `build/componentes`, `_legacy`). Es la capa explicativa de las esferas y niveles; las reglas operativas están en SEVEN-G (documento 10). Un cambio en esferas, niveles o grados en SEVEN-G se revisa también en SPHERES y viceversa (D42).
+4. **SPHERES** y **SPAD** (metodologías de apoyo, en construcción) viven en `SPHERES/` y `SPAD/` con la misma jerarquía (`mds`, `html`, `pdf`, `build/componentes`, `_legacy`). SPHERES es la capa explicativa de las esferas y niveles; las reglas operativas están en SEVEN-G (documento 10). Un cambio en esferas, niveles o grados en SEVEN-G se revisa también en SPHERES y viceversa (D42).
 
 ## Gestión de la memoria del proyecto
 
@@ -18,7 +18,7 @@ Repositorio de metodologías de IA de SEACHAD (Fernando García). El trabajo pri
 ## Convenciones de trabajo
 
 - La fuente de verdad es el Markdown (`SEVEN-G/mds/es/` y `SEVEN-G/mds/en/`). Los HTML y PDF se generan siempre desde esos ficheros; no se editan en paralelo ni se quedan desincronizados.
-- Generar siempre con `pwsh -File SEVEN-G/build/build.ps1` (SEVEN-G y SPHERES, ambos idiomas, HTML y PDF; `-Metodologias SPHERES` para una sola). La primera generación de un documento nuevo se ejecuta dos veces para que cada idioma enlace el PDF del otro. Revisar visualmente el resultado antes de entregarlo: capturas con Edge sin ventana y `SEVEN-G/build/pdf_a_png.ps1` (ejecutar con `powershell.exe` 5.1 y rutas de salida cortas).
+- Generar siempre con `pwsh -File SEVEN-G/build/build.ps1` (SEVEN-G, SPHERES y SPAD, ambos idiomas, HTML y PDF; `-Metodologias SPHERES` para una sola). La primera generación de un documento nuevo se ejecuta dos veces para que cada idioma enlace el PDF del otro. Revisar visualmente el resultado antes de entregarlo: capturas con Edge sin ventana y `SEVEN-G/build/pdf_a_png.ps1` (ejecutar con `powershell.exe` 5.1 y rutas de salida cortas).
 - Todo cambio en un documento en un idioma debe replicarse en su versión del otro idioma en la misma entrega. Si hay una edición en español, el inglés debe quedar sincronizado con la misma estructura, contenido y alcance; no se deja un idioma atrasado.
 - Los HTML deben incluir una zona de descargas con enlaces a los PDF equivalentes del mismo idioma y, cuando corresponda, a la versión equivalente del otro idioma. Los enlaces deben ser explícitos y visibles.
 - Los HTML contienen enlaces de descarga para los PDFs equivalentes: español a PDFs en español e inglés a PDFs en inglés; no se cruzan los enlaces entre idiomas salvo como referencia explícita de la versión paralela.
@@ -28,7 +28,7 @@ Repositorio de metodologías de IA de SEACHAD (Fernando García). El trabajo pri
 - Traducciones al inglés según `SEVEN-G/build/guia_traduccion_en.md` (reglas y glosario obligatorio).
 - Convenciones del Markdown (portada, `<!-- cifras: -->`, `<!-- figura: -->`, `<!-- grafico: -->`, Mermaid): ver cabecera de `SEVEN-G/build/build.ps1`.
 - En el equipo no hay Python, Node ni pandoc: usar PowerShell 7 y Edge.
-- Revisión interactiva de los HTML (búsqueda, índice, tema, idioma): `pwsh -File SEVEN-G/build/servidor.ps1` y abrir `http://localhost:8765/` (portada), `/SEVEN-G/html/es/` o `/SPHERES/html/es/`.
+- Revisión interactiva de los HTML (búsqueda, índice, tema, idioma): `pwsh -File SEVEN-G/build/servidor.ps1` y abrir `http://localhost:8765/` (portada), `/SEVEN-G/html/es/`, `/SPHERES/html/es/` o `/SPAD/html/es/`.
 
 ## Cierre de cada tarea
 
@@ -50,7 +50,7 @@ Repositorio de metodologías de IA de SEACHAD (Fernando García). El trabajo pri
 - Confirmar si se pueden publicar enlaces a las demos del panel del consejo (`C:\SEACHAD\AI_en_el_consejo`). El conector T01 → panel vive en `SEVEN-G/herramientas/T17_panel_consejo/` (incluye su propia copia del motor del panel, que desde el 17-09-2026 evoluciona aquí, independiente de `AI_en_el_consejo`); los cambios internos del motor (claves heredadas `estimado_cati`, `aap`; bloques de esferas, madurez e índice) están propuestos en `PROPUESTA_MOTOR.md` de esa carpeta y se aplican en el proyecto privado de origen del motor.
 - Publicación: el sitio público es este repositorio (portada `index.html` / `en/index.html` + SEVEN-G y SPHERES generados) mediante `.github/workflows/pages.yml`; alternativa `SEVEN-G/build/publicar.ps1`. Nada de SEVEN-G se publica desde `AI_en_el_consejo`.
 - 17-09-2026: `https://seachad.github.io/AI_CONSULTING/` muestra aún la página Jekyll del README: en `origin/main` no están `index.html`, `en/` ni `pages.yml` (commits locales sin subir) y Pages parece configurado como "Deploy from a branch". El autor debe hacer push y poner *Settings → Pages → Source: GitHub Actions*.
-- SPHERES v0.1 (D42): validar con el autor el contenido de los seis documentos y si SPHERES debe tener también plantillas o herramientas propias. SPAD no tiene aún página de entrada 00 publicable: la portada enlaza al documento 53 de SEVEN-G.
+- SPHERES v0.1 (D42): validar con el autor el contenido de los seis documentos y si SPHERES debe tener también plantillas o herramientas propias. SPAD (D62): biblioteca con su documento 00 (ES/EN); decisiones pendientes del autor y biblioteca propuesta en `SPAD/mds/es/_trabajo/20260918_Analisis_metodologia_SPAD.md` §6–7. Las ilustraciones se regeneran con `pwsh -File SPAD/build/ilustraciones.ps1`.
 - T01 y T17 (D43–D45): `registro.html` se genera con `pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1` (la aplicación se edita en `_fuentes/registro.plantilla.html`, nunca en `registro.html`) y el panel de ejemplo con `uv run python t01_a_panel.py` desde `SEVEN-G/herramientas/T17_panel_consejo/`. Si cambian `datos_demo.json` o `config_panel.json`, regenerar ambos; si el motor cambia de versión, actualizar `PANEL_DEMO` en la plantilla y los enlaces de `T17_panel_consejo/index.html`. Validar con el autor la correspondencia fase → etapa del embudo y los límites de días de `config_panel.json` (D44).
 - Al pasar a la versión 1.x: retirar el aviso «Versión en revisión: no difundir» (D58) de la portada (`index.html`, `en/index.html`), de los documentos 00 de SEVEN-G y SPHERES (ES/EN), del índice que escribe `SEVEN-G/build/build.ps1` y su comprobación de `verificar_coherencia.ps1`. Hasta entonces, el trabajo en curso es adecuar documentos y herramientas para que sean reutilizables.
 - Olas 2 y 3 de herramientas (documento 03 §6).

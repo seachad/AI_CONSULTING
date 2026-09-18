@@ -5,7 +5,7 @@
   Sale con código 0 si todo es coherente y con 1 si hay algún error. No modifica nada del repositorio (trabaja en una carpeta temporal).
 
   Qué comprueba:
-    1. Paridad ES/EN de los Markdown de SEVEN-G y SPHERES (D12) y que cada documento tiene su HTML y su PDF (D11, D32).
+    1. Paridad ES/EN de los Markdown de SEVEN-G, SPHERES y SPAD (D12) y que cada documento tiene su HTML y su PDF (D11, D32).
     2. Textos internos o de clientes en lo que se publica (D17, D33): los mismos patrones que .github/workflows/pages.yml y, si existe,
        la lista privada de términos prohibidos (~/.seveng/terminos_prohibidos.txt).
     3. Aviso legal presente en las herramientas y paneles publicados (D33).
@@ -28,7 +28,7 @@ New-Item -ItemType Directory -Force $tmp | Out-Null
 try {
   # ---- 1. paridad ES/EN y salidas
   Write-Host '1. Paridad ES/EN y salidas HTML/PDF'
-  foreach ($met in 'SEVEN-G', 'SPHERES') {
+  foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') {
     $mds = Join-Path $repo "$met\mds"; if (-not (Test-Path $mds)) { continue }
     $rel = @{}
     foreach ($lang in 'es', 'en') {
@@ -52,7 +52,7 @@ try {
   # Markdown: una línea «---» o «===» pegada a un párrafo o a una tabla convierte ese texto en un título (y estropea el índice del
   # documento y el PDF). Se exige una línea en blanco antes del separador; los bloques de código no cuentan.
   Write-Host '1b. Separadores del Markdown'
-  $pegados = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds') -Recurse -File -Filter *.md)) {
+  $pegados = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -File -Filter *.md)) {
     $l = [IO.File]::ReadAllLines($f.FullName); $enCodigo = $false
     for ($i = 0; $i -lt $l.Count; $i++) {
       if ($l[$i] -match '^\s*(```|~~~)') { $enCodigo = -not $enCodigo; continue }
@@ -60,7 +60,7 @@ try {
     }
   }
   foreach ($x in $pegados) { Mal "separador pegado al texto anterior (falta una línea en blanco): $x" }
-  $titulosRotos = Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html') -Recurse -File -Filter *.html | Select-String -Pattern '<h[23][^>]*>(<span[^>]*>[^<]*</span>)?\s*\|' -List
+  $titulosRotos = Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html') -Recurse -File -Filter *.html | Select-String -Pattern '<h[23][^>]*>(<span[^>]*>[^<]*</span>)?\s*\|' -List
   foreach ($x in $titulosRotos) { Mal "título generado a partir de una tabla: $([IO.Path]::GetRelativePath($repo, $x.Path))" }
   if (-not $pegados -and -not $titulosRotos) { Ok 'sin separadores pegados ni títulos generados a partir de tablas' }
 
@@ -68,7 +68,7 @@ try {
   # se escriben \<CAT\>; dentro de código (`…`) van tal cual
   Write-Host '1d. Marcadores entre < > sin escapar'
   $etiquetasHtml = 'br|b|i|u|em|strong|sub|sup|span|div|a|p|small|code|kbd|details|summary|figure|figcaption|img|table|thead|tbody|tr|td|th|ul|ol|li|svg|path|g|rect|text|line|circle|polygon|defs|marker|tspan'
-  $sinEscapar = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds') -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+  $sinEscapar = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds'), (Join-Path $repo 'SPAD\mds') -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
     $enCodigo = $false; $i = 0
     foreach ($l in [IO.File]::ReadAllLines($f.FullName)) {
       $i++; if ($l -match '^\s*(```|~~~)') { $enCodigo = -not $enCodigo; continue }; if ($enCodigo) { continue }
@@ -82,7 +82,7 @@ try {
   # enlaces locales de los HTML generados: cada href o src relativo debe existir en disco, y cada ancla interna, en la página
   Write-Host '1c. Enlaces locales de los HTML generados'
   $rotos = [Collections.Generic.List[string]]::new(); $nEnlaces = 0
-  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html') -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html') -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
     $html = [IO.File]::ReadAllText($f.FullName); $sinScript = [regex]::Replace($html, '(?s)<script\b.*?</script>', '')
     foreach ($a in [regex]::Matches($sinScript, '\s(?:href|src)="([^"]+)"')) {
       $u = $a.Groups[1].Value
@@ -100,7 +100,7 @@ try {
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
   $publicables = @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))
-  foreach ($c in 'SEVEN-G\html', 'SEVEN-G\herramientas', 'SPHERES\html') {
+  foreach ($c in 'SEVEN-G\html', 'SEVEN-G\herramientas', 'SPHERES\html', 'SPAD\html') {
     $d = Join-Path $repo $c
     if (Test-Path $d) { $publicables += Get-ChildItem $d -Recurse -File -Include *.html, *.md, *.json, *.py | Where-Object { $_.FullName -notmatch '[\\/](_[^\\/]*|__pycache__)[\\/]' } }
   }
@@ -130,7 +130,7 @@ try {
   if (-not $sin) { Ok "$($conAviso.Count) páginas con aviso legal" }
 
   # aviso de versión en revisión (D58) en las páginas principales mientras el marco esté en la versión 0.x; se retira al pasar a la 1.x
-  $principales = @('index.html', 'en\index.html') + @(foreach ($met in 'SEVEN-G', 'SPHERES') { foreach ($lang in 'es', 'en') { "$met\html\$lang\index.html"; "$met\html\$lang\00_${met}_Que_es_y_para_que_sirve.html" } })
+  $principales = @('index.html', 'en\index.html') + @(foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') { foreach ($lang in 'es', 'en') { "$met\html\$lang\index.html"; "$met\html\$lang\00_${met}_Que_es_y_para_que_sirve.html" } })
   $sinRev = $principales | Where-Object { (Test-Path (Join-Path $repo $_)) -and -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Versión en revisión|Version under review' -Quiet) }
   foreach ($x in $sinRev) { Mal "sin aviso de versión en revisión: $x" }
   if (-not $sinRev) { Ok "$($principales.Count) páginas principales con el aviso de versión en revisión" }
