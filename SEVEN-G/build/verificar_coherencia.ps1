@@ -114,6 +114,14 @@ try {
   foreach ($h in $hallazgos) { Mal "texto interno o prohibido en $([IO.Path]::GetRelativePath($repo, $h.Path)):$($h.LineNumber)" }
   if (-not $hallazgos) { Ok "$($publicables.Count) ficheros publicables sin textos internos ($($patrones.Count) patrones)" }
 
+  # los términos de la lista privada tampoco pueden estar en el nombre de ningún fichero versionado (aunque no se publique)
+  if (Test-Path $lista) {
+    $privados = $patrones | Select-Object -Skip 4
+    $nombres = @(& git -C $repo ls-files) | Where-Object { $n = $_ -replace '[-_]', ' '; $privados | Where-Object { $n -match $_ -or $n -match ($_ -replace '\\ ', ' ?') } }
+    foreach ($x in $nombres) { Mal "término prohibido en el nombre de un fichero versionado: $x" }
+    if (-not $nombres) { Ok 'ningún fichero versionado lleva términos prohibidos en el nombre' }
+  }
+
   Write-Host '3. Aviso legal en herramientas y paneles'
   $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html') +
     @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter *.html | ForEach-Object { [IO.Path]::GetRelativePath($repo, $_.FullName) })
