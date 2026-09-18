@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Guía de conversación con el consejo"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -457,7 +461,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>6</td>
 <td><strong>Cada pregunta del consejo termina en el registro</strong></td>
-<td>Si una pregunta no se puede responder en la sesión, se convierte en una recomendación o encargo con responsable y fecha (documento 62).</td>
+<td>Si una pregunta no se puede responder en la sesión, se convierte en una recomendación o encargo con responsable y fecha (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</td>
 </tr>
 <tr>
 <td>7</td>
@@ -608,7 +612,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>No se responde &quot;depende&quot;.</strong> Si depende de algo, el formato es &quot;Sí, con una condición&quot; o &quot;Todavía no, porque falta&quot;.</li>
 <li><strong>La condición no puede afectar a controles críticos</strong> de seguridad, cumplimiento legal o supervisión humana (01 §7.3). Si falta uno de esos controles, la respuesta es &quot;Todavía no&quot;.</li>
-<li><strong>&quot;Todavía no&quot; genera un compromiso registrado</strong> con responsable y fecha (documento 62).</li>
+<li><strong>&quot;Todavía no&quot; genera un compromiso registrado</strong> con responsable y fecha (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</li>
 <li><strong>&quot;No&quot; es una respuesta válida y valiosa.</strong> Evitar una mala inversión también es generar valor.</li>
 </ul>
 <h3 id="4-2-ejemplos">4.2 Ejemplos</h3>
@@ -814,7 +818,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Anticipación</strong></td>
 <td>¿Qué obligaciones nuevas nos afectan en los próximos doce meses? ¿Quién vigila los cambios?</td>
-<td>Mapeo regulatorio con fechas de consulta y de aplicación (documento 34).</td>
+<td>Mapeo regulatorio con fechas de consulta y de aplicación (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 </tr>
 <tr>
 <td><strong>Liderazgo ético</strong></td>
@@ -837,7 +841,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Estructura</strong></td>
 <td>¿Quién tiene la responsabilidad última de la estrategia de IA? ¿Hay una cartera priorizada por valor y riesgo? ¿Recibe el consejo información periódica y comprensible?</td>
-<td>Tesis de IA aprobada; comité de IA con mandato; paquete trimestral (documento 60).</td>
+<td>Tesis de IA aprobada; comité de IA con mandato; paquete trimestral (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>).</td>
 </tr>
 <tr>
 <td><strong>Equilibrio entre velocidad y control</strong></td>
@@ -1171,7 +1175,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>5 días hábiles</strong></td>
-<td>Registro de decisiones y encargos con código, responsable y fecha (documento 62).</td>
+<td>Registro de decisiones y encargos con código, responsable y fecha (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</td>
 <td>Secretaría del consejo</td>
 </tr>
 <tr>
@@ -1214,7 +1218,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>45–55</td>
 <td>Recomendaciones vencidas y discrepancias entre estado declarado y valoración.</td>
-<td>Registro (documento 62)</td>
+<td>Registro (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>)</td>
 </tr>
 <tr>
 <td>55–60</td>
@@ -1241,7 +1245,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td><strong>¿Cuánto nos ahorra la IA?</strong></td>
 <td>Separar eficiencias, retorno y coste recurrente; dar el neto y la proporción validada; indicar aparte la capacidad liberada no materializada.</td>
-<td>Seguimiento de valor por caso con estado (T12).</td>
+<td>Seguimiento de valor por caso con estado (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>).</td>
 <td>Una cifra única sin estado o que suma horas liberadas.</td>
 </tr>
 <tr>
@@ -1255,35 +1259,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td><strong>¿Por qué no usamos agentes como hacen otros?</strong></td>
 <td>Responder por esferas y riesgo: dónde tendría sentido que un sistema actúe, con qué nivel de autonomía y qué controles harían falta. Si hay una propuesta, llevarla por el ciclo.</td>
-<td>Inventario con autonomía A0–A3; criterios de seguridad de agentes (documento 35).</td>
+<td>Inventario con autonomía A0–A3; criterios de seguridad de agentes (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
 <td>Adoptar una tecnología para no parecer rezagados.</td>
 </tr>
 <tr>
 <td>4</td>
 <td><strong>¿Cuántos empleos va a eliminar la IA?</strong></td>
 <td>Dar la posición aprobada (sustituir, aumentar o reorganizar) y los datos: capacidad liberada, materializada y reasignada; puestos afectados; plan de formación. Si no hay posición, decirlo y proponer fijarla en C2.</td>
-<td>Plan de adopción y capacidad (T20); <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>.</td>
+<td>Plan de adopción y capacidad (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>); <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>.</td>
 <td>Negar el efecto o dar cifras sin base.</td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>¿Cumplimos el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>?</strong></td>
 <td>Responder por sistema: cuántos inventariados, cuántos clasificados con criterio jurídico, cuántos de alto riesgo y con qué evaluaciones hechas o pendientes. Indicar la fecha de consulta de la norma.</td>
-<td>Inventario y clasificación (T02, T07); mapeo regulatorio (documento 34).</td>
+<td>Inventario y clasificación (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>); mapeo regulatorio (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 <td>&quot;Sí, cumplimos&quot; sin inventario completo.</td>
 </tr>
 <tr>
 <td>6</td>
 <td><strong>¿Quién responde si la IA se equivoca?</strong></td>
 <td>Nombrar los roles: el patrocinador responde del valor y de la inversión; el responsable de operación, de la estabilidad y los incidentes; el responsable de riesgos, de la evaluación y el seguimiento; la compañía responde ante terceros. La responsabilidad no se traslada al sistema ni al proveedor.</td>
-<td>Registro de asignación de roles (P03); contratos con proveedores.</td>
+<td>Registro de asignación de roles (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>); contratos con proveedores.</td>
 <td>&quot;Es responsabilidad del proveedor&quot;.</td>
 </tr>
 <tr>
 <td>7</td>
 <td><strong>¿Por qué hemos parado esto después de invertir?</strong></td>
 <td>&quot;Porque no se cumplió el criterio de parada fijado antes de invertir&quot;. Dar la inversión consumida, la que se evitó y lo aprendido.</td>
-<td>Registro de decisión de <em>gate</em> con criterios de parada (P29).</td>
+<td>Registro de decisión de <em>gate</em> con criterios de parada (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
 <td>Justificarse o presentar la parada como un fracaso del equipo.</td>
 </tr>
 <tr>
@@ -1297,42 +1301,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>9</td>
 <td><strong>¿Qué pasa si el sistema falla o nos atacan?</strong></td>
 <td>Explicar la severidad de los incidentes posibles, la contención, el interruptor de parada o el plan de reversión probado y los plazos de notificación.</td>
-<td>Plan de respuesta a incidentes (P26); prueba de reversión; simulacros.</td>
+<td>Plan de respuesta a incidentes (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); prueba de reversión; simulacros.</td>
 <td>Afirmar que no puede ocurrir.</td>
 </tr>
 <tr>
 <td>10</td>
 <td><strong>¿Dependemos demasiado de un proveedor?</strong></td>
 <td>Dar la concentración: qué casos dependen de cada proveedor, su criticidad y si hay estrategia de salida probada o solo escrita.</td>
-<td>Registro de proveedores (T09); nivel de exigencia N1–N3.</td>
+<td>Registro de proveedores (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>); nivel de exigencia N1–N3.</td>
 <td>&quot;Es el líder del mercado&quot; como respuesta.</td>
 </tr>
 <tr>
 <td>11</td>
 <td><strong>¿Esto es transformación o solo eficiencia?</strong></td>
 <td>Aplicar las cinco preguntas de clasificación (00 §5.2) en la sala. Si las cuatro primeras son negativas, es optimización, y está bien que lo sea.</td>
-<td>Clasificación de ambición confirmada (P07).</td>
+<td>Clasificación de ambición confirmada (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
 <td>Llamar transformación a una automatización.</td>
 </tr>
 <tr>
 <td>12</td>
 <td><strong>¿Por qué es tan bajo el valor validado?</strong></td>
 <td>Explicar qué falta para validar (línea base, grupo de control, validación de control de gestión) y el plan con fechas. Un porcentaje bajo y honesto es preferible a uno alto sin respaldo.</td>
-<td>Seguimiento de valor por estado (T12).</td>
+<td>Seguimiento de valor por estado (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>).</td>
 <td>Reclasificar importes declarados como validados.</td>
 </tr>
 <tr>
 <td>13</td>
 <td><strong>¿Cuánto cuesta de verdad la IA?</strong></td>
 <td>Dar el coste recurrente por categorías y por caso, incluido el consumo de modelos y las personas de operación. Si hay costes sin imputar, decirlo.</td>
-<td>Coste por caso con reparto (T13; <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>).</td>
+<td>Coste por caso con reparto (<a href="42_SEVEN-G_Costes_de_IA.html">T13</a>; <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>).</td>
 <td>Presentar solo las licencias.</td>
 </tr>
 <tr>
 <td>14</td>
 <td><strong>¿Usan los empleados herramientas de IA no autorizadas?</strong></td>
 <td>Dar lo que se sabe: detecciones, controles técnicos activos, formación, regularizaciones. Si no se mide, &quot;Todavía no lo sabemos, porque falta…&quot;.</td>
-<td>Monitor de uso corporativo (T21); no conformidades por uso no autorizado.</td>
+<td>Monitor de uso corporativo (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>); no conformidades por uso no autorizado.</td>
 <td>Decir que no ocurre porque está prohibido.</td>
 </tr>
 <tr>
@@ -1370,7 +1374,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Tomar decisiones que corresponden al consejo, al comité o a los patrocinadores.</td>
 </tr>
 <tr>
-<td>Formula recomendaciones al consejo, que se registran con código (documento 62).</td>
+<td>Formula recomendaciones al consejo, que se registran con código (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</td>
 <td>Asignarse a sí mismo la valoración de recomendaciones cuya ejecución depende de trabajos que él o su organización prestan.</td>
 </tr>
 <tr>
@@ -1386,7 +1390,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="10-3-independencia">10.3 Independencia</h3>
 <ul>
 <li><strong>Declaración de intereses</strong> al inicio del mandato y cada vez que cambie: relaciones con proveedores de tecnología, consultoras y la propia compañía.</li>
-<li><strong>Incompatibilidad</strong> con la prestación de servicios de implantación en las mismas iniciativas que supervisa (documento 91, sección 5).</li>
+<li><strong>Incompatibilidad</strong> con la prestación de servicios de implantación en las mismas iniciativas que supervisa (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 5).</li>
 <li><strong>Acceso a la información</strong> a través de la secretaría del consejo y de los canales formales, no mediante relaciones directas con los equipos que eludan la dirección.</li>
 <li><strong>Confidencialidad</strong>: la información de la compañía no se usa en ningún otro ámbito.</li>
 </ul>
@@ -1477,17 +1481,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>T05</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></td>
 <td>Clasificador de ambición</td>
 <td>Pregunta difícil 11; clasificación en la sala.</td>
 </tr>
 <tr>
-<td>T15</td>
+<td><a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></td>
 <td>Diagnóstico de madurez</td>
 <td>Bloque 06 del guion; etapa C1.</td>
 </tr>
 <tr>
-<td>T16</td>
+<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></td>
 <td>Mapa de esferas de la cartera</td>
 <td>Bloques 02 y 03 del guion.</td>
 </tr>
@@ -1497,7 +1501,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Casos en detalle y sesiones de supervisión.</td>
 </tr>
 <tr>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Registro de decisiones y encargos tras cada sesión.</td>
 </tr>

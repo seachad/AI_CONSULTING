@@ -69,6 +69,7 @@ Rules:
 | D-01 *(illustrative example)* | Degradation in the quality of proposals | Performance | Human override rate above 25 % for two consecutive days | Human oversight alert | AI Operations Owner | Manual |
 | D-02 *(illustrative example)* | Agent action outside limits | Security | A single executed action that exceeded a limit in P18 | Action log | Automatic; informs security | Automatic |
 | D-03 *(illustrative example)* | Incident classified as S1 | Incident | S1 classification according to document 37 | P26 | Incident coordinator | Manual |
+| D-04 *(illustrative example)* | Consumption budget exhausted | Cost | Month-to-date consumption ≥ 100% of the budget | P25 cost alert | AI Operations Owner | Manual |
 | | | | | | | |
 
 ---
@@ -82,6 +83,7 @@ Tick those that are prepared and indicate which one applies to each trigger.
 | Return to the previous version of the model | | | |
 | Return to the previous version of prompts, knowledge base or configuration | | | |
 | Reduce the autonomy level (degraded mode, for example from A2 to A1) | | | |
+| Move to a level of the cost-driven degradation cascade: validated fallback model or reduced scope (document 52 §10.3) | | | Only with the fallback model recorded in P16 and evaluated before G5; not in uses that decide about people unless specifically validated. It never deactivates critical controls. |
 | Deactivate the AI function and return to the process without AI | | | |
 | Full stop using the kill switch | | | Always prepared at A2 and A3. |
 
@@ -169,6 +171,7 @@ Formal G4 and G5 criteria in document 21; checklists LV-G4 and LV-G5 in document
 | 4 | There is a target rollback time and owners with deputies. | |
 | 5 | The alternative process has sufficient capacity. | |
 | 6 | The test has been performed before G5, in a valid environment, and its result is *Passed* or its observations have been resolved. | |
+| 7 | For systems with variable consumption, activation of the cost-driven degradation cascade has been tested together with the rollback. | |
 
 ---
 
@@ -190,3 +193,4 @@ Segregation of duties: whoever verifies the test has not taken part in performin
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version of the template. |
+| 0.1 | 18-09-2026 | Example cost trigger, option to move to the cost-driven degradation cascade and test criterion (document 52 §10.3). |

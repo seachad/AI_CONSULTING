@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Datos y conocimiento para IA"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -411,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>El gobierno del dato <strong>aplicado a la IA</strong>: propiedad, calidad, catálogo, base legal, minimización y retención.</li>
 <li>Los requisitos de datos en <strong>cada fase del ciclo de vida</strong>, con especial atención a la evaluación de disponibilidad y calidad en la fase 3.</li>
 <li>Los requisitos de gobernanza de datos del <strong>art. 10 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a></strong> para sistemas de alto riesgo, en síntesis.</li>
-<li>El <strong>linaje de datos y modelos</strong> (P16).</li>
+<li>El <strong>linaje de datos y modelos</strong> (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</li>
 <li>Los <strong>datos sintéticos</strong>.</li>
 <li>Los <strong>datos personales</strong> en entrenamiento, en instrucciones y en resultados.</li>
 <li>El <strong>conocimiento</strong> como fuente de la IA generativa: fuentes, curación, vigencia, permisos y conocimiento crítico que depende de pocas personas.</li>
@@ -472,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>En la esfera 05, el nivel <strong>Transformar</strong> exige especial atención a la base legal, a los derechos de terceros y a la clasificación regulatoria, porque cambia la finalidad para la que se recogieron los datos.</p>
 <h3 id="2-3-que-se-evalua">2.3 Qué se evalúa</h3>
 <p>En la esfera 05 se evalúan <strong>propiedad</strong> (DAT-01), <strong>catálogo</strong> (DAT-02), <strong>legitimidad</strong> (DAT-03), <strong>calidad</strong> (DAT-04, DAT-05, DAT-09), <strong>trazabilidad</strong> (DAT-06), <strong>preparación</strong> (DAT-07, DAT-10) y <strong>retención</strong> (DAT-08). En la esfera 06, <strong>fuentes</strong> (CNC-01, CNC-02, CNC-05), <strong>calidad de uso</strong> (CNC-03, CNC-04, CNC-08) y <strong>dependencia de pocas personas</strong> (CNC-06, CNC-07). Los indicadores se definen en la sección 12.</p>
-<p>Estas dimensiones alimentan <strong>D3 Datos y conocimiento</strong> en el modelo de madurez (documento 11).</p>
+<p>Estas dimensiones alimentan <strong>D3 Datos y conocimiento</strong> en el modelo de madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</p>
 <hr />
 <h2 id="principios"><span class="antetitulo">03</span>Principios</h2>
 <div class="tabla"><table>
@@ -555,7 +559,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Responsable de contenido o de conocimiento</strong></td>
-<td>Calidad, vigencia y permisos de las fuentes de la IA generativa (documento 50, sección 4.2).</td>
+<td>Calidad, vigencia y permisos de las fuentes de la IA generativa (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>, sección 4.2).</td>
 </tr>
 <tr>
 <td><strong>Responsable de riesgos de IA</strong></td>
@@ -611,7 +615,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Sistemas que lo usan</td>
-<td>Iniciativas y versiones de modelo; enlace a <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y T02.</td>
+<td>Iniciativas y versiones de modelo; enlace a <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>.</td>
 </tr>
 <tr>
 <td>Versión</td>
@@ -671,7 +675,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los <strong>umbrales</strong> se fijan en la fase 3 para cada conjunto crítico y se convierten en controles de monitorización en la fase 6 (documento 52, sección 5).</p>
+<p>Los <strong>umbrales</strong> se fijan en la fase 3 para cada conjunto crítico y se convierten en controles de monitorización en la fase 6 (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 5).</p>
 <h3 id="4-4-base-legal-y-minimizacion">4.4 Base legal y minimización</h3>
 <ul>
 <li>El uso de datos personales para desarrollar u operar un sistema de IA es un tratamiento con <strong>finalidad propia</strong>. Debe tener base legal (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, art. 6) y, si los datos se recogieron para otra finalidad, un análisis de <strong>compatibilidad</strong> (art. 6.4) o una base nueva.</li>
@@ -695,7 +699,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Datos de entrada y resultados en producción</td>
-<td>Según el plazo de conservación de registros (documento 52, sección 11) y la minimización.</td>
+<td>Según el plazo de conservación de registros (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 11) y la minimización.</td>
 </tr>
 <tr>
 <td>Instrucciones y conversaciones con IA generativa</td>
@@ -707,7 +711,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Al retirar un sistema</td>
-<td>Se aplica el tratamiento de datos y modelos decidido en G7 (documento 52, sección 12).</td>
+<td>Se aplica el tratamiento de datos y modelos decidido en G7 (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 12).</td>
 </tr>
 </tbody>
 </table></div>
@@ -819,11 +823,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Coste de preparación</strong></td>
-<td>Esfuerzo estimado de limpieza, integración, etiquetado y curación, incluido en el coste completo (documento 42).</td>
+<td>Esfuerzo estimado de limpieza, integración, etiquetado y curación, incluido en el coste completo (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>).</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Resultado.</strong> Cada bloque se califica como <em>suficiente</em>, <em>suficiente con acciones</em> (acción, coste, plazo y responsable) o <em>insuficiente</em>. Un bloque de legitimidad <em>insuficiente</em> impide continuar. Si otros bloques son insuficientes, el resultado esperado de G3 es <strong>Iterar</strong>, <strong>Pivotar</strong> o <strong>Parar</strong> con motivo codificado <em>Datos insuficientes</em> (documento 03, sección 3.3).</p>
+<p><strong>Resultado.</strong> Cada bloque se califica como <em>suficiente</em>, <em>suficiente con acciones</em> (acción, coste, plazo y responsable) o <em>insuficiente</em>. Un bloque de legitimidad <em>insuficiente</em> impide continuar. Si otros bloques son insuficientes, el resultado esperado de G3 es <strong>Iterar</strong>, <strong>Pivotar</strong> o <strong>Parar</strong> con motivo codificado <em>Datos insuficientes</em> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, sección 3.3).</p>
 <hr />
 <h2 id="sistemas-de-alto-riesgo-art-10-del-reglamento-europeo-de-ia"><span class="antetitulo">06</span>Sistemas de alto riesgo: art. 10 del Reglamento Europeo de IA</h2>
 <p>Esta sección resume, sin detalle jurídico, lo que el art. 10 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> exige a los conjuntos de datos de entrenamiento, validación y prueba de los <strong>sistemas de alto riesgo</strong>, y dónde se refleja en SEVEN-G. El análisis obligación por obligación, las fechas de aplicación (anexo III desde el 2 de diciembre de 2027 y anexo I desde el 2 de agosto de 2028, tras el Reglamento (UE) 2026/1744) y las demás modificaciones se tratan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
@@ -865,10 +869,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Cuando la compañía actúa como <strong>responsable del despliegue</strong> de un sistema de alto riesgo de un proveedor, debe asegurarse de que los <strong>datos de entrada</strong> que controla son pertinentes y suficientemente representativos para la finalidad prevista (art. 26.4), y exigir al proveedor la información necesaria (documento 36).</p>
+<p>Cuando la compañía actúa como <strong>responsable del despliegue</strong> de un sistema de alto riesgo de un proveedor, debe asegurarse de que los <strong>datos de entrada</strong> que controla son pertinentes y suficientemente representativos para la finalidad prevista (art. 26.4), y exigir al proveedor la información necesaria (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</p>
 <p>Este documento no constituye asesoramiento jurídico.</p>
 <hr />
-<h2 id="linaje-de-datos-y-modelos-p16"><span class="antetitulo">07</span>Linaje de datos y modelos (P16)</h2>
+<h2 id="linaje-de-datos-y-modelos-p16"><span class="antetitulo">07</span>Linaje de datos y modelos (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>)</h2>
 <h3 id="7-1-que-es-y-para-que-sirve">7.1 Qué es y para qué sirve</h3>
 <p>El linaje permite responder, para cualquier resultado de un sistema de IA: <strong>qué datos, qué transformaciones, qué versión de modelo, qué configuración y qué fuentes de conocimiento lo produjeron</strong>. Es la base para investigar incidentes, atender derechos de las personas, auditar, reproducir resultados, gestionar cambios y retirar sistemas.</p>
 <h3 id="7-2-contenido-minimo">7.2 Contenido mínimo</h3>
@@ -941,7 +945,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="7-3-reglas">7.3 Reglas</h3>
 <ol>
 <li><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> se elabora en la fase 4 y <strong>debe</strong> estar vigente para G5.</li>
-<li>Todo cambio en fuentes, transformaciones, modelo, instrucciones o índices <strong>actualiza</strong> <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y se registra en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> (documento 52, sección 6).</li>
+<li>Todo cambio en fuentes, transformaciones, modelo, instrucciones o índices <strong>actualiza</strong> <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y se registra en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 6).</li>
 <li>El linaje se genera <strong>automáticamente</strong> siempre que la plataforma lo permita; la documentación manual se limita a lo que no puede capturarse.</li>
 <li>Un sistema en producción sin linaje vigente es una <strong>no conformidad</strong> (menor si no afecta a decisiones; mayor si el sistema es Enterprise).</li>
 </ol>
@@ -1061,11 +1065,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Empleados que introducen datos personales o confidenciales en herramientas no autorizadas.</td>
-<td>Política de uso aceptable con clasificación de información permitida por herramienta (documento 31); controles de prevención de fuga de datos; monitorización del uso (T21).</td>
+<td>Política de uso aceptable con clasificación de información permitida por herramienta (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>); controles de prevención de fuga de datos; monitorización del uso (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>).</td>
 </tr>
 <tr>
 <td>Proveedor que conserva instrucciones o las usa para entrenar sus modelos.</td>
-<td>Condiciones contractuales verificadas en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>: no uso para entrenamiento, plazo de conservación, ubicación, subencargados (documento 36).</td>
+<td>Condiciones contractuales verificadas en <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>: no uso para entrenamiento, plazo de conservación, ubicación, subencargados (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</td>
 </tr>
 <tr>
 <td>Recuperación automática de datos personales no necesarios para la respuesta.</td>
@@ -1082,9 +1086,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="9-3-en-resultados">9.3 En resultados</h3>
-<p>Los sistemas de IA pueden <strong>inferir</strong> datos personales que nadie ha facilitado (por ejemplo, rasgos, preferencias o situaciones sensibles). Una inferencia sobre una persona identificada es un dato personal. Si la inferencia corresponde a una categoría especial, se aplican sus reglas. El diseño (P17) <strong>debe</strong> identificar qué inferencias produce el sistema y si son necesarias y lícitas.</p>
+<p>Los sistemas de IA pueden <strong>inferir</strong> datos personales que nadie ha facilitado (por ejemplo, rasgos, preferencias o situaciones sensibles). Una inferencia sobre una persona identificada es un dato personal. Si la inferencia corresponde a una categoría especial, se aplican sus reglas. El diseño (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) <strong>debe</strong> identificar qué inferencias produce el sistema y si son necesarias y lícitas.</p>
 <h3 id="9-4-datos-para-detectar-sesgos">9.4 Datos para detectar sesgos</h3>
-<p>Detectar sesgos puede requerir datos sobre características protegidas que la compañía normalmente no trata. Para sistemas de alto riesgo, el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> admite de forma excepcional el tratamiento de categorías especiales con esa finalidad y con garantías estrictas (art. 10.5), y el Reglamento (UE) 2026/1744 extiende esa posibilidad más allá del alto riesgo con criterio de estricta necesidad (documento 34 §3.2). En todo caso, la decisión se toma con el delegado de protección de datos y el análisis jurídico, se documenta en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y se aplican medidas como separación, seudonimización, acceso restringido y eliminación al terminar el análisis.</p>
+<p>Detectar sesgos puede requerir datos sobre características protegidas que la compañía normalmente no trata. Para sistemas de alto riesgo, el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> admite de forma excepcional el tratamiento de categorías especiales con esa finalidad y con garantías estrictas (art. 10.5), y el Reglamento (UE) 2026/1744 extiende esa posibilidad más allá del alto riesgo con criterio de estricta necesidad (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> §3.2). En todo caso, la decisión se toma con el delegado de protección de datos y el análisis jurídico, se documenta en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y se aplican medidas como separación, seudonimización, acceso restringido y eliminación al terminar el análisis.</p>
 <hr />
 <h2 id="conocimiento"><span class="antetitulo">10</span>Conocimiento</h2>
 <h3 id="10-1-fuentes-de-conocimiento-para-ia-generativa">10.1 Fuentes de conocimiento para IA generativa</h3>
@@ -1187,7 +1191,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Regla.</strong> Un sistema que cita un documento caducado en una respuesta sobre condiciones, precios, normas o procedimientos que afectan a clientes o empleados genera un <strong>incidente</strong> que se clasifica con la escala S1–S4 (documento 52, sección 7).</p>
+<p><strong>Regla.</strong> Un sistema que cita un documento caducado en una respuesta sobre condiciones, precios, normas o procedimientos que afectan a clientes o empleados genera un <strong>incidente</strong> que se clasifica con la escala S1–S4 (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 7).</p>
 <h3 id="10-4-permisos-de-acceso">10.4 Permisos de acceso</h3>
 <p>La recuperación de contenidos es una <strong>vía de acceso a la información</strong> y debe respetar los mismos permisos que la fuente.</p>
 <div class="tabla"><table>
@@ -1212,7 +1216,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Agentes con permisos propios</strong> que recuperan información para usuarios con menos permisos.</td>
-<td>Los agentes actúan con los permisos del usuario al que sirven, salvo diseño justificado en <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> (documento 35).</td>
+<td>Los agentes actúan con los permisos del usuario al que sirven, salvo diseño justificado en <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
 </tr>
 <tr>
 <td><strong>Cambios de permisos</strong> en la fuente no trasladados al índice.</td>
@@ -1233,7 +1237,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Pertinencia de la recuperación</td>
 <td>Si los documentos recuperados son los adecuados para la consulta.</td>
-<td>Evaluado en el conjunto de evaluación (documento 52, sección 4.2).</td>
+<td>Evaluado en el conjunto de evaluación (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 4.2).</td>
 </tr>
 <tr>
 <td>Fidelidad a las fuentes</td>
@@ -1341,7 +1345,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="11-2-modelos-de-proposito-general-de-terceros">11.2 Modelos de propósito general de terceros</h3>
-<p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> obliga a los <strong>proveedores de modelos de IA de propósito general</strong> a establecer una política para cumplir la normativa de derechos de autor, incluidas las reservas de derechos, y a publicar un resumen suficientemente detallado del contenido usado para el entrenamiento (art. 53.1.c y d). La compañía que usa esos modelos <strong>debería</strong> pedir y conservar esa información en la evaluación del proveedor (P14) y valorar las garantías contractuales frente a reclamaciones de terceros (documento 36).</p>
+<p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> obliga a los <strong>proveedores de modelos de IA de propósito general</strong> a establecer una política para cumplir la normativa de derechos de autor, incluidas las reservas de derechos, y a publicar un resumen suficientemente detallado del contenido usado para el entrenamiento (art. 53.1.c y d). La compañía que usa esos modelos <strong>debería</strong> pedir y conservar esa información en la evaluación del proveedor (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) y valorar las garantías contractuales frente a reclamaciones de terceros (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</p>
 <h3 id="11-3-resultados-generados">11.3 Resultados generados</h3>
 <div class="tabla"><table>
 <thead>
@@ -1365,7 +1369,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Transparencia</strong></td>
-<td>Se cumplen las obligaciones de marcado o información sobre contenido generado o manipulado que resulten aplicables (documento 34).</td>
+<td>Se cumplen las obligaciones de marcado o información sobre contenido generado o manipulado que resulten aplicables (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1391,7 +1395,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Cobertura de propiedad</td>
 <td>Conjuntos de datos usados por sistemas en producción con propietario asignado ÷ conjuntos usados por sistemas en producción</td>
 <td>Trimestral</td>
-<td>Catálogo, T02</td>
+<td>Catálogo, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 <td>100 %</td>
 </tr>
 <tr>
@@ -1431,7 +1435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Cobertura de linaje</td>
 <td>Sistemas en producción con <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> vigente ÷ sistemas en producción</td>
 <td>Trimestral</td>
-<td>T02, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 <td>100 %</td>
 </tr>
 <tr>
@@ -1439,7 +1443,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Decisiones de G3 por datos</td>
 <td>Decisiones de G3 con resultado Iterar, Pivotar o Parar y motivo <em>Datos insuficientes</em> ÷ decisiones de G3</td>
 <td>Semestral</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>Lectura, no objetivo: muy baja puede indicar evaluación laxa; muy alta, mala selección de oportunidades</td>
 </tr>
 <tr>
@@ -1455,7 +1459,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Incidentes con causa en datos</td>
 <td>Incidentes de IA cuya causa raíz es de datos ÷ incidentes de IA cerrados</td>
 <td>Trimestral</td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>Tendencia decreciente</td>
 </tr>
 <tr>
@@ -1526,7 +1530,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Exposición indebida</td>
 <td>Hallazgos de acceso a contenido sin permiso detectados en pruebas o en producción, por periodo</td>
 <td>Trimestral</td>
-<td>Pruebas de permisos, T08</td>
+<td>Pruebas de permisos, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -1647,7 +1651,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (documento 33)</th>
+<th>Código (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>)</th>
 <th>Riesgo</th>
 <th>Controles principales</th>
 </tr>
@@ -1697,7 +1701,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">15</span>Herramientas y plantillas asociadas</h2>
-<p>Este documento no crea una herramienta nueva. La ficha de conjunto de datos y el inventario de fuentes de conocimiento se implementan en el <strong>catálogo de datos que ya use la compañía</strong> o, si no existe, como anexos de <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y como atributos del sistema en T02.</p>
+<p>Este documento no crea una herramienta nueva. La ficha de conjunto de datos y el inventario de fuentes de conocimiento se implementan en el <strong>catálogo de datos que ya use la compañía</strong> o, si no existe, como anexos de <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y como atributos del sistema en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1708,12 +1712,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T02 · T03 · T06 · T07</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></strong></td>
 <td>Inventario, <em>gates</em>, riesgos, clasificador regulatorio</td>
 <td>Enlace de sistemas con datos y linaje; evaluación de G3; riesgos RT-DAT; obligaciones de alto riesgo.</td>
 </tr>
 <tr>
-<td><strong>T08 · T09 · T21</strong></td>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a> · <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></strong></td>
 <td>Incidentes, proveedores, uso corporativo</td>
 <td>Incidentes con causa en datos; condiciones de proveedores; datos en herramientas no autorizadas.</td>
 </tr>

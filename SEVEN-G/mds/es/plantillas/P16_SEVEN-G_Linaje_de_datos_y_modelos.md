@@ -99,6 +99,7 @@ Componentes de IA generativa y agentes (si aplica):
 | Base de conocimiento | | | | Revisión de contenido, fecha de corte y permisos de acceso. |
 | Herramientas conectadas del agente | | | | Revisión de permisos en P18. |
 | Parámetros de generación **(Enterprise)** | | | | Prueba de regresión. |
+| Modelo de respaldo por coste (documento 52 §10.3), si se prevé | | | | Proveedor y versión exacta; evaluado antes de G5 con el conjunto de referencia y las pruebas de sesgo del principal. Incorporarlo o cambiar sus condiciones es un cambio (documento 52 §6.4). |
 
 ---
 
@@ -123,7 +124,7 @@ Describe, en orden, cómo un dato de origen se convierte en un resultado del sis
 | Registros automáticos que se conservan | | Qué se registra (entrada, salida, versión, fecha, usuario). En sistemas de alto riesgo, alinear con las obligaciones de registro del Reglamento Europeo de IA (documento 34). |
 | Plazo de conservación de registros | | Plazo fijado por la compañía, no inferior al que exija la regulación aplicable. |
 | Capacidad de reentrenar o regenerar una versión anterior **(Enterprise)** | | Qué se guarda para reconstruir una versión (código, datos, parámetros). |
-| Referencia para detectar deriva | | Conjunto y periodo que sirve de referencia para la monitorización (P25). |
+| Referencia para detectar deriva | | Conjunto y periodo que sirve de referencia para la monitorización (P25). En IA generativa y agentes, referencia de uso: temas, intenciones y alcance validados en G5 (documento 52 §4.2.6). |
 
 ---
 
@@ -172,3 +173,4 @@ Separación de funciones: el verificador no forma parte del equipo que construye
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión de la plantilla. |
+| 0.1 | 18-09-2026 | Modelo de respaldo por coste en los componentes y referencia de uso para la deriva en IA generativa y agentes (documento 52 §4.2.6 y §10.3). |

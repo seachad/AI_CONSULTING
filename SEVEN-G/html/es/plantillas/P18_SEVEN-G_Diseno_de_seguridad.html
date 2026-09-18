@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Diseño de seguridad (incluye agentes)"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -435,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>T10 Evaluación de seguridad de agentes.</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> Evaluación de seguridad de agentes.</td>
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
@@ -463,12 +467,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (T01).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA</td>
 <td></td>
-<td>Identificador en el inventario (T02).</td>
+<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
 </tr>
 <tr>
 <td>Tecnología</td>
@@ -483,7 +487,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de autonomía</td>
 <td></td>
-<td>A0 · A1 · A2 · A3 (P17).</td>
+<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
 </tr>
 <tr>
 <td>Intensidad</td>
@@ -871,7 +875,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Estado seguro tras la parada</td>
 <td></td>
-<td>Proceso manual o modo degradado (P19).</td>
+<td>Proceso manual o modo degradado (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
 </tr>
 <tr>
 <td>Autorización para reactivar</td>
@@ -945,7 +949,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Plazo de conservación</td>
 <td></td>
-<td>No inferior al que exija la regulación aplicable (documento 34).</td>
+<td>No inferior al que exija la regulación aplicable (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
 </tr>
 <tr>
 <td>Protección frente a alteración <strong>(Enterprise)</strong></td>

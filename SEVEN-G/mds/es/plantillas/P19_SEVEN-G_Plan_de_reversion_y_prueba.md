@@ -69,6 +69,7 @@ Reglas:
 | D-01 *(ejemplo ilustrativo)* | Degradación de la calidad de las propuestas | Rendimiento | Tasa de anulación humana superior al 25 % durante dos días seguidos | Alerta de supervisión humana | Responsable de operación de IA | Manual |
 | D-02 *(ejemplo ilustrativo)* | Acción del agente fuera de límites | Seguridad | Una sola acción ejecutada que superó un límite del P18 | Registro de acciones | Automática; informa a seguridad | Automática |
 | D-03 *(ejemplo ilustrativo)* | Incidente clasificado S1 | Incidente | Clasificación S1 según documento 37 | P26 | Coordinador del incidente | Manual |
+| D-04 *(ejemplo ilustrativo)* | Presupuesto de consumo agotado | Coste | Consumo del mes ≥ 100 % del presupuesto | Alerta de coste de P25 | Responsable de operación de IA | Manual |
 | | | | | | | |
 
 ---
@@ -82,6 +83,7 @@ Marque las que estén preparadas e indique cuál se aplica para cada disparador.
 | Volver a la versión anterior del modelo | | | |
 | Volver a la versión anterior de instrucciones, base de conocimiento o configuración | | | |
 | Reducir el nivel de autonomía (modo degradado, por ejemplo de A2 a A1) | | | |
+| Pasar a un nivel de la cascada de degradación por coste: modelo de respaldo validado o alcance reducido (documento 52 §10.3) | | | Solo con el modelo de respaldo registrado en P16 y evaluado antes de G5; no en usos que deciden sobre personas salvo validación específica. Nunca desactiva controles críticos. |
 | Desactivar la función de IA y volver al proceso sin IA | | | |
 | Parada total mediante interruptor de parada | | | Siempre preparada en A2 y A3. |
 
@@ -169,6 +171,7 @@ Criterios formales de G4 y G5 en el documento 21; listas LV-G4 y LV-G5 en el doc
 | 4 | Hay tiempo objetivo de reversión y responsables con sustituto. | |
 | 5 | El proceso alternativo tiene capacidad suficiente. | |
 | 6 | La prueba se ha ejecutado antes de G5, en entorno válido, y su resultado es *Superada* o sus observaciones están resueltas. | |
+| 7 | En sistemas con consumo variable, la activación de la cascada de degradación por coste se ha probado junto con la reversión. | |
 
 ---
 
@@ -190,3 +193,4 @@ Separación de funciones: quien verifica la prueba no ha participado en su ejecu
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión de la plantilla. |
+| 0.1 | 18-09-2026 | Disparador de coste de ejemplo, opción de pasar a la cascada de degradación por coste y criterio de prueba (documento 52 §10.3). |

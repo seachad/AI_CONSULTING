@@ -52,7 +52,7 @@ Reglas:
 
 ## 3. Catálogo de métricas
 
-**Categoría:** Rendimiento del modelo · Deriva de datos · Calidad de datos de entrada · Sesgo y equidad · Disponibilidad y latencia · Coste y consumo · Seguridad · Comportamiento del agente · Supervisión humana · Adopción · Valor.
+**Categoría:** Rendimiento del modelo · Deriva de datos · Deriva de uso · Calidad de datos de entrada · Sesgo y equidad · Disponibilidad y latencia · Coste y consumo · Seguridad · Comportamiento del agente · Supervisión humana · Adopción · Valor.
 
 | ID | Métrica | Categoría | Definición y fórmula | Fuente | Frecuencia de cálculo | Valor de referencia | Umbral de aviso | Umbral crítico | Responsable |
 |---|---|---|---|---|---|---|---|---|---|
@@ -73,7 +73,9 @@ Marque las que aplican y enlace el ID del bloque 3.
 |---|---|---|---|---|
 | Rendimiento frente a referencia (con resultado real cuando esté disponible) | ☐ | ☐ | ☐ | |
 | Deriva de las variables de entrada | ☐ | | | |
+| Deriva de uso: distribución de temas o intenciones y consultas fuera del alcance validado | | ☐ | ☐ | |
 | Diferencias de rendimiento entre grupos **(Enterprise)** | ☐ | ☐ | ☐ | |
+| Respuestas desiguales en pares contrafactuales (obligatoria si el sistema decide, recomienda o se comunica con personas, o tiene exposición directa) | | ☐ | ☐ | |
 | Respuestas no fundamentadas o marcadas como incorrectas por usuarios | | ☐ | ☐ | |
 | Detección de intentos de inyección de instrucciones | | ☐ | ☐ | |
 | Fuga de datos confidenciales o personales detectada | | ☐ | ☐ | |
@@ -82,7 +84,17 @@ Marque las que aplican y enlace el ID del bloque 3.
 | Tasa de anulación humana y tiempo de validación | ☐ | ☐ | ☐ | |
 | Disponibilidad, latencia y errores | ☐ | ☐ | ☐ | |
 | Coste de consumo y de infraestructura | ☐ | ☐ | ☐ | |
+| Días en modo degradado por coste y calidad durante el modo | | ☐ | ☐ | |
 | Uso efectivo (adopción) | ☐ | ☐ | ☐ | |
+
+Referencias para IA generativa y agentes (documento 52 §4.2.6, §4.2.7 y §10.3):
+
+| Campo | Contenido | Guía |
+|---|---|---|
+| Referencia de uso | | Temas, intenciones y alcance validados en G5, con su distribución de referencia (P16). |
+| Clasificación de las consultas | | Reglas, clasificador o muestreo humano; tamaño de la muestra y frecuencia. |
+| Pares contrafactuales | | Atributos protegidos o indicios que se prueban (según la evaluación de impacto), número de pares y qué se considera diferencia material (decisión, importe, tono, rechazo, completitud). Umbral en P17. |
+| Calidad mínima en modo degradado | | Valor mínimo de la métrica de calidad por debajo del cual se pasa al siguiente nivel de la cascada; muestreo al menos doble durante el modo. |
 
 ---
 
@@ -95,6 +107,7 @@ Marque las que aplican y enlace el ID del bloque 3.
 | AL-01 *(ejemplo ilustrativo)* | M-01 > 25 % dos días seguidos | S2 Alta | Responsable de operación de IA | Herramienta de guardia | 2 horas laborables | Activar disparador de reversión | D-01 |
 | AL-02 *(ejemplo ilustrativo)* | M-03: acción ejecutada fuera de límites | S1 Crítica | Guardia técnica y seguridad | Aviso inmediato | 15 minutos | Interruptor de parada y abrir incidente | D-02 |
 | AL-03 *(ejemplo ilustrativo)* | Cualquier métrica crítica sin dato durante más de un ciclo | S3 Media | Guardia técnica | Herramienta de guardia | 4 horas laborables | Aplicar procedimiento de P24 | — |
+| AL-04 *(ejemplo ilustrativo)* | Coste acumulado del mes ≥ 100 % del presupuesto | S4 Baja | Responsable de operación de IA | Herramienta de guardia | 4 horas laborables | Aplicar procedimiento de P24 (cascada de degradación por coste, nivel N2) | D-04 |
 | | | | | | | | |
 
 ---
@@ -145,6 +158,7 @@ Criterios formales de G4, G5 y R6 en el documento 21.
 | 4 | La ausencia de datos genera alerta. | |
 | 5 | Las alertas críticas se han probado y llegan al destinatario en plazo. | |
 | 6 | Los cambios de umbral quedan registrados con motivo. | |
+| 7 | En IA generativa y agentes están fijadas la referencia de uso, los pares contrafactuales cuando aplican y la calidad mínima en modo degradado. | |
 
 ---
 
@@ -167,3 +181,4 @@ Separación de funciones: el verificador no forma parte del equipo que construye
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión de la plantilla. |
+| 0.1 | 18-09-2026 | Deriva de uso, respuestas desiguales en pares contrafactuales y días en modo degradado por coste en las métricas mínimas; referencias para IA generativa y agentes; alerta de ejemplo AL-04; criterio de calidad 7. |

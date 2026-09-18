@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Operations manual"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -459,17 +463,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (T01).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>AI system(s)</td>
 <td></td>
-<td>Identifier in the inventory (T02).</td>
+<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
 </tr>
 <tr>
 <td>Version in production</td>
 <td></td>
-<td>Model, instructions and configuration (P16).</td>
+<td>Model, instructions and configuration (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
 </tr>
 <tr>
 <td>Go-live date</td>
@@ -542,7 +546,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Suppliers and support <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Supplier, service, support channel and contracted service level (P14).</td>
+<td>Supplier, service, support channel and contracted service level (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
 </tr>
 <tr>
 <td>Known limitations</td>
@@ -594,7 +598,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Designated supervisors (P17)</td>
+<td>Designated supervisors (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -673,7 +677,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Review drift and performance against the reference</td>
+<td>Review drift (including usage drift), bias and performance against the reference</td>
 <td>Monthly</td>
 <td></td>
 <td><a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
@@ -733,7 +737,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Relevant</strong></td>
 <td>New version of the model, instructions or knowledge base; new tools or permissions for the agent; change in autonomy level; extension of population or purpose; change of supplier</td>
 <td>Regression, bias, security and injection testing as applicable; rollback prepared</td>
-<td>As per document 52; if autonomy, purpose or classification changes, a decision equivalent to G4/G5 and a new sign-off (P23)</td>
+<td>As per document 52; if autonomy, purpose or classification changes, a decision equivalent to G4/G5 and a new sign-off (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>)</td>
 <td>Yes</td>
 </tr>
 <tr>
@@ -782,9 +786,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Consumption cost above threshold</td>
 <td>Cost alert</td>
-<td>Review anomalous usage; apply limit</td>
+<td>Review anomalous usage; apply the level of the cost-driven degradation cascade in block 8</td>
 <td>AI Product Owner</td>
-<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> block 7</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> block 7 · document 52 §10.3</td>
+</tr>
+<tr>
+<td>Change in what users ask (usage drift)</td>
+<td>Alert on queries outside the validated scope or on a change of topics</td>
+<td>Expand the evaluation set with the new cases and evaluate; if the use falls outside the purpose, restrict the scope</td>
+<td>AI Product Owner</td>
+<td><a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · document 52 §4.2.6</td>
 </tr>
 <tr>
 <td>Suspected prompt injection or anomalous agent action</td>
@@ -802,7 +813,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Possible discriminatory output</td>
-<td>Fairness alert or complaint</td>
+<td>Fairness alert, unequal responses in counterfactual pairs or complaint</td>
 <td>Treat as an incident and classify severity</td>
 <td>AI Risk Owner</td>
 <td><a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
@@ -830,7 +841,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Degraded mode available</td>
 <td></td>
-<td>Description and how it is activated (P19).</td>
+<td>Description and how it is activated (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
 </tr>
 <tr>
 <td>Process without AI</td>
@@ -846,6 +857,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Recovery after degraded mode</td>
 <td></td>
 <td>Checks before returning to normal operation and who authorises it.</td>
+</tr>
+<tr>
+<td>Cost-driven degradation cascade</td>
+<td></td>
+<td>Only systems with variable consumption. Applicable levels (N1 optimisation, N2 fallback model, N3 reduced scope, N4 without AI), the trigger for each (for example, N1 at 80% and N2 at 100% of the budget), who activates them and uses excluded from N2 (document 52 §10.3).</td>
+</tr>
+<tr>
+<td>Fallback model</td>
+<td></td>
+<td>Identifier in <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, result of its evaluation before G5 and minimum quality required in <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -911,7 +932,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Information prepared</td>
 <td></td>
-<td>Realised value against hypothesis (P28), stability (P25), incidents and changes (P27), compliance and currency of the risk classification and intensity (P04, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
+<td>Realised value against hypothesis (<a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), stability (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), incidents and changes (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), compliance and currency of the risk classification and intensity (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
 </tr>
 <tr>
 <td>Criterion for proposing to bring G7 forward</td>
@@ -960,6 +981,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>6</td>
 <td>The date of the next R6 is set according to intensity.</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>For systems with variable consumption, the cost-driven degradation cascade is defined, does not deactivate critical controls and has been tested.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1023,6 +1049,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>First version of the template.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Cost-driven degradation cascade and fallback model in block 8; usage drift and counterfactual pairs in the common situations; quality criterion 7.</td>
 </tr>
 </tbody>
 </table></div>

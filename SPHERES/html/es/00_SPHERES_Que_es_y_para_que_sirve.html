@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "Qué es SPHERES y para qué sirve"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1001,7 +1005,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Herramientas de SEVEN-G que usan el mapa: el registro de iniciativas (T01), donde cada iniciativa lleva su esfera y su nivel, y el panel de IA para el consejo (T17), que muestra el mapa de calor de la cartera.</p>
+<p>Herramientas de SEVEN-G que usan el mapa: el registro de iniciativas (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html">T01</a>), donde cada iniciativa lleva su esfera y su nivel, y el panel de IA para el consejo (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>), que muestra el mapa de calor de la cartera.</p>
 <blockquote>
 <p><strong>Por qué importa.</strong> Separar la explicación de la regla evita dos riesgos: que el consejo reciba un manual operativo que no necesita leer, y que la oficina de IA aplique criterios distintos a los que se explicaron al consejo. Ambos usan las mismas esferas, los mismos niveles y los mismos nombres.</p>
 </blockquote>

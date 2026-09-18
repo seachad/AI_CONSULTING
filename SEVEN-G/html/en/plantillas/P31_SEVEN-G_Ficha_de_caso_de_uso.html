@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Use case record"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -464,7 +468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (T01).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>Use case</td>
@@ -474,7 +478,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI system(s)</td>
 <td></td>
-<td>Identifier in the inventory (T02), where it exists.</td>
+<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>), where it exists.</td>
 </tr>
 <tr>
 <td>Responsible area</td>
@@ -547,7 +551,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>What the system decides and what a person decides</td>
 <td></td>
-<td>Autonomy level A0 · A1 · A2 · A3 and, in one line, what is never delegated (P17).</td>
+<td>Autonomy level A0 · A1 · A2 · A3 and, in one line, what is never delegated (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
 </tr>
 <tr>
 <td>What it does not do</td>
@@ -875,7 +879,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Last <em>gate</em> and outcome</td>
 <td></td>
-<td>For example, G3 · Proceed with conditions · date (P29).</td>
+<td>For example, G3 · Proceed with conditions · date (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
 </tr>
 <tr>
 <td>Open conditions</td>

@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Configuración de monitorización y alertas"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -443,7 +447,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Cada disparador de reversión de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> debe tener una alerta en este documento.</li>
 <li><strong>&quot;Sin dato&quot; no es cero:</strong> la ausencia de una métrica es en sí misma una alerta, nunca un valor normal.</li>
-<li>La severidad de una alerta es una <strong>propuesta inicial</strong>; la severidad del incidente se clasifica con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> (P26).</li>
+<li>La severidad de una alerta es una <strong>propuesta inicial</strong>; la severidad del incidente se clasifica con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
 <li>Los cambios de umbral se registran en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> con su motivo.</li>
 </ul>
 <hr />
@@ -460,12 +464,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (T01).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA</td>
 <td></td>
-<td>Identificador en el inventario (T02).</td>
+<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
 </tr>
 <tr>
 <td>Tecnología</td>
@@ -506,7 +510,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="catalogo-de-metricas"><span class="antetitulo">03</span>Catálogo de métricas</h2>
-<p><strong>Categoría:</strong> Rendimiento del modelo · Deriva de datos · Calidad de datos de entrada · Sesgo y equidad · Disponibilidad y latencia · Coste y consumo · Seguridad · Comportamiento del agente · Supervisión humana · Adopción · Valor.</p>
+<p><strong>Categoría:</strong> Rendimiento del modelo · Deriva de datos · Deriva de uso · Calidad de datos de entrada · Sesgo y equidad · Disponibilidad y latencia · Coste y consumo · Seguridad · Comportamiento del agente · Supervisión humana · Adopción · Valor.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -552,7 +556,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Acciones bloqueadas por límites</td>
 <td>Comportamiento del agente</td>
 <td>Nº de acciones bloqueadas por límites o control de intención</td>
-<td>Registro de acciones (P18)</td>
+<td>Registro de acciones (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
 <td>Continua</td>
 <td>0–3/día</td>
 <td>&gt; 10/día</td>
@@ -626,8 +630,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
+<td>Deriva de uso: distribución de temas o intenciones y consultas fuera del alcance validado</td>
+<td></td>
+<td>☐</td>
+<td>☐</td>
+<td></td>
+</tr>
+<tr>
 <td>Diferencias de rendimiento entre grupos <strong>(Enterprise)</strong></td>
 <td>☐</td>
+<td>☐</td>
+<td>☐</td>
+<td></td>
+</tr>
+<tr>
+<td>Respuestas desiguales en pares contrafactuales (obligatoria si el sistema decide, recomienda o se comunica con personas, o tiene exposición directa)</td>
+<td></td>
 <td>☐</td>
 <td>☐</td>
 <td></td>
@@ -689,6 +707,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
+<td>Días en modo degradado por coste y calidad durante el modo</td>
+<td></td>
+<td>☐</td>
+<td>☐</td>
+<td></td>
+</tr>
+<tr>
 <td>Uso efectivo (adopción)</td>
 <td>☐</td>
 <td>☐</td>
@@ -697,9 +722,41 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<p>Referencias para IA generativa y agentes (<a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §4.2.6, §4.2.7 y §10.3):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Contenido</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Referencia de uso</td>
+<td></td>
+<td>Temas, intenciones y alcance validados en G5, con su distribución de referencia (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+</tr>
+<tr>
+<td>Clasificación de las consultas</td>
+<td></td>
+<td>Reglas, clasificador o muestreo humano; tamaño de la muestra y frecuencia.</td>
+</tr>
+<tr>
+<td>Pares contrafactuales</td>
+<td></td>
+<td>Atributos protegidos o indicios que se prueban (según la evaluación de impacto), número de pares y qué se considera diferencia material (decisión, importe, tono, rechazo, completitud). Umbral en <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+</tr>
+<tr>
+<td>Calidad mínima en modo degradado</td>
+<td></td>
+<td>Valor mínimo de la métrica de calidad por debajo del cual se pasa al siguiente nivel de la cascada; muestreo al menos doble durante el modo.</td>
+</tr>
+</tbody>
+</table></div>
 <hr />
 <h2 id="reglas-de-alerta"><span class="antetitulo">05</span>Reglas de alerta</h2>
-<p><strong>Severidad inicial propuesta:</strong> S1 Crítica · S2 Alta · S3 Media · S4 Baja (se confirma con el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). <strong>Acción asociada:</strong> Revisar · Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> · Abrir incidente (P26) · Activar disparador de reversión (P19) · Interruptor de parada.</p>
+<p><strong>Severidad inicial propuesta:</strong> S1 Crítica · S2 Alta · S3 Media · S4 Baja (se confirma con el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). <strong>Acción asociada:</strong> Revisar · Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> · Abrir incidente (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) · Activar disparador de reversión (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) · Interruptor de parada.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -743,6 +800,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 horas laborables</td>
 <td>Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
 <td>—</td>
+</tr>
+<tr>
+<td>AL-04 <em>(ejemplo ilustrativo)</em></td>
+<td>Coste acumulado del mes ≥ 100 % del presupuesto</td>
+<td>S4 Baja</td>
+<td>Responsable de operación de IA</td>
+<td>Herramienta de guardia</td>
+<td>4 horas laborables</td>
+<td>Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> (cascada de degradación por coste, nivel N2)</td>
+<td>D-04</td>
 </tr>
 <tr>
 <td></td>
@@ -789,7 +856,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Datos para el panel del consejo <strong>(Enterprise)</strong></td>
 <td>Oficina de IA</td>
-<td>Indicadores agregados en el formato del panel (T17)</td>
+<td>Indicadores agregados en el formato del panel (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>)</td>
 <td>Trimestral</td>
 </tr>
 </tbody>
@@ -907,6 +974,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Los cambios de umbral quedan registrados con motivo.</td>
 <td></td>
 </tr>
+<tr>
+<td>7</td>
+<td>En IA generativa y agentes están fijadas la referencia de uso, los pares contrafactuales cuando aplican y la calidad mínima en modo degradado.</td>
+<td></td>
+</tr>
 </tbody>
 </table></div>
 <hr />
@@ -975,6 +1047,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0.1</td>
 <td>16-09-2026</td>
 <td>Primera versión de la plantilla.</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>18-09-2026</td>
+<td>Deriva de uso, respuestas desiguales en pares contrafactuales y días en modo degradado por coste en las métricas mínimas; referencias para IA generativa y agentes; alerta de ejemplo AL-04; criterio de calidad 7.</td>
 </tr>
 </tbody>
 </table></div>

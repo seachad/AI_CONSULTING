@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SPHERES · Niveles de ambición"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -406,7 +410,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <h2 id="objeto"><span class="antetitulo">01</span>Objeto</h2>
 <p>Este documento explica los <strong>tres niveles de ambición</strong> de SPHERES: qué significa cada uno, qué cambia en la organización, dónde está su valor, qué riesgos tiene, cómo se decide y cómo se reconoce con evidencia. También explica cómo clasificar una iniciativa y cuáles son los errores más frecuentes.</p>
-<p>Los niveles se aplican a las esferas <strong>01 a 07</strong>. Las esferas 08 y 09 se evalúan con grados propios (documento 04).</p>
+<p>Los niveles se aplican a las esferas <strong>01 a 07</strong>. Las esferas 08 y 09 se evalúan con grados propios (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">documento 04</a>).</p>
 <hr />
 <h2 id="que-es-un-nivel-de-ambicion"><span class="antetitulo">02</span>Qué es un nivel de ambición</h2>
 <p>Un nivel de ambición describe <strong>lo que una iniciativa de IA cambia en el negocio</strong>. No describe la tecnología que usa, lo que cuesta ni lo novedosa que parece.</p>

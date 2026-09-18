@@ -198,14 +198,14 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 
 | Entidad | Qué representa | Se relaciona con |
 |---|---|---|
-| **Iniciativa** | La unidad que recorre el ciclo de vida. | Todas las demás |
+| **Iniciativa** | La unidad que recorre el ciclo de vida. Su alcance indica si es de una unidad de negocio, transversal (con despliegue y adopción por unidad) o una plataforma habilitadora (con los casos que la usan); documento 40 §7.2. | Todas las demás |
 | **Sistema de IA** | Cada sistema en el inventario, propio o de terceros, incluido el uso corporativo. | Iniciativas, proveedores, riesgos, incidentes |
 | **Evento** | Cualquier cambio con fecha, autor y motivo. | Iniciativa |
 | **Decisión de gate** | Solicitud, verificación, decisión, resultado e iteración. | Iniciativa, criterios, condiciones |
 | **Criterio evaluado** | Estado de cada criterio en una decisión de *gate*. | Decisión de gate, evidencia |
 | **Condición** | Condición impuesta con plazo, responsable y estado. | Decisión de gate |
 | **Evidencia** | Enlace, tipo, versión, autor, fecha y verificación. | Criterios, iniciativa |
-| **Valor** | Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación y periodo. | Iniciativa |
+| **Valor** | Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación, periodo y, en las iniciativas transversales, unidad de negocio. | Iniciativa |
 | **Riesgo** | Riesgo con probabilidad, impacto, nivel inherente y residual, responsable y controles. | Iniciativa, sistema |
 | **No conformidad** | Tipo, detección, contención, causa raíz, acción, cierre. | Iniciativa, sistema |
 | **Incidente** | Fecha, severidad, detección, contención, notificaciones. | Sistema, iniciativa |
@@ -246,7 +246,7 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 | **T11** | Lienzo y calculadora de hipótesis de valor | Línea base, fórmula, método de atribución, criterios de parada. | Fase 2 | HTML y plantilla de hoja de cálculo | 40 | 2 | Se aplica con P08 y P09 |
 | **T12** | Seguimiento de realización de valor | Valor validado, declarado y estimado por periodo y por caso. | Fases 6–7, C4 | Módulo de T01 | 40, 43 | 2 | Se aplica con P28 |
 | **T13** | Calculadora de costes por caso | Reparto analítico de licencias, consumo de modelos, cómputo y personas. | Fases 3 y 6 | Plantilla de hoja de cálculo | 42 | 3 | Se aplica con el documento 42 |
-| **T14** | Calculadora del índice de transformación | Ocho señales, perfil de la compañía y evolución. | C1, C5 | HTML | 12 | 2 | Se aplica con el documento 12 |
+| **T14** | Calculadora del índice de transformación | Condiciones de base, ocho señales, perfil de la compañía, alertas, cobertura y evolución, con versión de umbrales; parte del JSON del registro T01. | C1, C4, C5 | HTML + JSON | 12 | 2 | Disponible v0.1 |
 
 ### 5.4 Estrategia y consejo
 

@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Adoption and change in the initiative"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -590,7 +594,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Current volume and time</td>
-<td>Cases per period and unit time, taken from the baseline (P09).</td>
+<td>Cases per period and unit time, taken from the baseline (<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>).</td>
 </tr>
 <tr>
 <td>Type of change</td>
@@ -667,7 +671,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Complete, with estimated times, within the adoption plan (P20).</td>
+<td>Complete, with estimated times, within the adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
 </tr>
 <tr>
 <td>5</td>
@@ -808,7 +812,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <p>Rules:</p>
 <ol>
-<li>Baseline times come from <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; times with AI are <strong>measured</strong> in the pilot (P22) and in operation, not estimated.</li>
+<li>Baseline times come from <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; times with AI are <strong>measured</strong> in the pilot (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) and in operation, not estimated.</li>
 <li>The volume is that actually processed with the system in the period, not the eligible volume.</li>
 <li>Supervision and correction hours are measured using system logs or documented sampling.</li>
 <li>Conversion to full-time equivalents uses the effective annual hours per person set by the company, which are declared.</li>
@@ -946,7 +950,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Human overseers</strong></td>
-<td>Oversee effectively (P17).</td>
+<td>Oversee effectively (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
 <td>Intervention criteria, automation bias, sample review, use of the kill switch where one exists, escalation.</td>
 <td>Before they gain access.</td>
 </tr>
@@ -958,7 +962,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Operations team</strong></td>
-<td>Operate the system (P24).</td>
+<td>Operate the system (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
 <td>Monitoring, incidents, changes, rollback.</td>
 <td>Phase 5.</td>
 </tr>
@@ -1168,7 +1172,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>High effective use, override close to zero and decreasing review time</td>
 <td>Possible routine acceptance or automation bias.</td>
-<td>Sample review by a third party, adjustment of the oversight workload (P17), reinforcement of training.</td>
+<td>Sample review by a third party, adjustment of the oversight workload (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), reinforcement of training.</td>
 </tr>
 <tr>
 <td>High and stable override</td>
@@ -1257,7 +1261,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>G4</td>
 <td>G4.11</td>
 <td>Adoption plan with training, communication, support, measurement of use and intended destination of released capacity.</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>G5</td>
@@ -1404,7 +1408,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Uncritical acceptance</strong></td>
 <td>Indicator 5 close to zero; indicator 6 decreasing.</td>
 <td>Knowledge (overreliance).</td>
-<td>Training on automation bias; control samples; review of the oversight workload (P17).</td>
+<td>Training on automation bias; control samples; review of the oversight workload (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
 </tr>
 <tr>
 <td><strong>Resistance from managers</strong></td>
@@ -1420,7 +1424,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Use of unauthorised tools</strong></td>
-<td>Detections in T21 in the affected area.</td>
+<td>Detections in <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> in the affected area.</td>
 <td>Insufficient perceived usefulness of the approved system.</td>
 <td>Review the approved solution; apply the acceptable use policy (document 31).</td>
 </tr>
@@ -1464,13 +1468,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependence on key people</td>
 <td>Knowledge of use concentrated in a few advanced users.</td>
-<td>Training by audience; area champions; operations manual (P24).</td>
+<td>Training by audience; area champions; operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
 <td>4, 6</td>
 </tr>
 <tr>
 <td><strong>RT-ORG-05</strong></td>
 <td>Unauthorised use of AI</td>
-<td>Detections in T21 in affected groups.</td>
+<td>Detections in <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a> in affected groups.</td>
 <td>Training; document 31.</td>
 <td>C1, C4</td>
 </tr>
@@ -1599,9 +1603,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Main evidence: impact analysis, adoption targets and indicators, training, communication, destination of released capacity and tracking.</td>
 </tr>
 <tr>
-<td><strong>T20</strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
-<td>Tool for template <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and released capacity register; feeds T12 and the initiative register (T01).</td>
+<td>Tool for template <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and released capacity register; feeds <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></strong></td>
@@ -1629,7 +1633,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>G5, R6 and G7 decisions; lessons on adoption and communication of retirement.</td>
 </tr>
 <tr>
-<td><strong>T12 · T21</strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></strong></td>
 <td>Value tracking · Corporate use monitor</td>
 <td>Materialised amounts; unauthorised use in the affected groups.</td>
 </tr>
@@ -1656,7 +1660,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Tools and initiative register</strong></td>
-<td>Tool T20 and coded reason <em>No adoption</em>.</td>
+<td>Tool <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> and coded reason <em>No adoption</em>.</td>
 </tr>
 <tr>
 <td><strong>11 · Maturity model</strong></td>

@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Realización de beneficios"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -446,7 +450,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Estimado o declarado</td>
 <td>Responsable de producto; control de gestión revisa el cálculo</td>
 <td>Responsable de riesgos o auditor de IA</td>
-<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, T11, T13</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a>, <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 </tr>
 <tr>
 <td><strong>G4 · Diseño</strong></td>
@@ -470,7 +474,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Declarado → validado</td>
 <td>Responsable de negocio</td>
 <td>Control de gestión</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 </tr>
 <tr>
 <td><strong>Revisiones a 6 y 12 meses</strong></td>
@@ -508,8 +512,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
 <h3 id="2-2-reglas-del-recorrido">2.2 Reglas del recorrido</h3>
 <ol>
-<li><strong>El esperado y el realizado nunca se suman.</strong> Conviven en T12 como columnas distintas.</li>
-<li><strong>El valor esperado no se valida</strong> (documento 40 §4.1). Control de gestión puede revisar su cálculo en G3, pero el estado validado solo se aplica a valor realizado en un periodo cerrado.</li>
+<li><strong>El esperado y el realizado nunca se suman.</strong> Conviven en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> como columnas distintas.</li>
+<li><strong>El valor esperado no se valida</strong> (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §4.1). Control de gestión puede revisar su cálculo en G3, pero el estado validado solo se aplica a valor realizado en un periodo cerrado.</li>
 <li><strong>La hipótesis aprobada es la referencia.</strong> El plan de realización, las desviaciones y G7 se miden frente a la hipótesis aprobada en G2 y revisada en G3. Cambiarla exige aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).</li>
 </ol>
 <hr />
@@ -542,7 +546,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Responsable de producto de IA</strong></td>
 <td>Según 01 §8.1.</td>
-<td>Responde del uso real y de la adopción; mantiene T12 al día; prepara las revisiones.</td>
+<td>Responde del uso real y de la adopción; mantiene <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> al día; prepara las revisiones.</td>
 <td>Declarar valor en nombre del área de negocio.</td>
 </tr>
 <tr>
@@ -576,7 +580,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="plan-de-realizacion-de-beneficios"><span class="antetitulo">04</span>Plan de realización de beneficios</h2>
 <h3 id="4-1-contenido">4.1 Contenido</h3>
-<p>El plan forma parte de la plantilla <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> y se registra en T12. En Lite, los campos marcados como <strong>(Enterprise)</strong> pueden omitirse.</p>
+<p>El plan forma parte de la plantilla <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> y se registra en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>. En Lite, los campos marcados como <strong>(Enterprise)</strong> pueden omitirse.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -594,7 +598,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td></td>
 <td>Fórmula</td>
-<td>Unidades incrementales × valor unitario (documento 40, F1).</td>
+<td>Unidades incrementales × valor unitario (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, F1).</td>
 </tr>
 <tr>
 <td></td>
@@ -654,7 +658,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Riesgos del beneficio</strong></td>
 <td>Qué puede impedir que llegue</td>
-<td>Vinculados al registro de riesgos (T06). <strong>(Enterprise)</strong></td>
+<td>Vinculados al registro de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>). <strong>(Enterprise)</strong></td>
 </tr>
 <tr>
 <td><strong>Criterios de parada</strong></td>
@@ -754,11 +758,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Coste recurrente real</td>
-<td>Desde T13 (documento 42).</td>
+<td>Desde <a href="42_SEVEN-G_Costes_de_IA.html">T13</a> (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>).</td>
 </tr>
 <tr>
 <td>Capacidad liberada</td>
-<td>Horas liberadas netas, materializadas, reasignadas y sin destino (documento 40, F4 y F5).</td>
+<td>Horas liberadas netas, materializadas, reasignadas y sin destino (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, F4 y F5).</td>
 </tr>
 <tr>
 <td>Indicadores adelantados</td>
@@ -916,10 +920,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Reparto proporcional: A = 400.000 × 280/500 = <strong>224.000 €</strong>; B = 400.000 × 220/500 = <strong>176.000 €</strong>.</li>
 <li>Comprobación: 100.000 + 224.000 + 176.000 = 500.000 €.</li>
 </ol>
+<h3 id="6-4-iniciativas-transversales-realizacion-por-unidad-de-negocio">6.4 Iniciativas transversales: realización por unidad de negocio</h3>
+<p>Una iniciativa transversal (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §7.2) tiene un solo plan de realización, con un bloque por unidad de negocio:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Qué se exige</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Responsables</strong></td>
+<td>El patrocinador es corporativo. Cada unidad nombra su <strong>responsable de negocio del beneficio</strong>, que firma la parte del plan de su unidad y declara cada periodo su coste, su adopción y su valor materializado.</td>
+</tr>
+<tr>
+<td><strong>Coste</strong></td>
+<td>Cada unidad asume sus licencias desde el primer día. Lo común (oficina de adopción, formación continua, revisión de permisos) se registra sin unidad y suma en el coste de la iniciativa.</td>
+</tr>
+<tr>
+<td><strong>Adopción</strong></td>
+<td>Licencias activas sobre asignadas y usuarios activos semanales, tomados de los informes de uso de la plataforma. Por debajo del umbral aprobado en G2, la unidad revisa el despliegue o retira licencias.</td>
+</tr>
+<tr>
+<td><strong>Materialización</strong></td>
+<td>Cada unidad indica la palanca de la sección 7.2 con la que convierte las horas liberadas en menor coste o en capacidad reasignada. Sin palanca, las horas son capacidad liberada y no suman.</td>
+</tr>
+<tr>
+<td><strong>Validación</strong></td>
+<td>Control de gestión valida unidad por unidad. La suma de las unidades y de lo común es el valor de la iniciativa; lo que ya reclama un caso propio de la unidad sobre el mismo proceso no se cuenta otra vez (secciones 6.1 y 6.2).</td>
+</tr>
+</tbody>
+</table></div>
+<p>En <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, el despliegue y la adopción de cada unidad se registran en el alcance de la iniciativa y el coste y el valor, como importes con su unidad. El panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) los muestra por unidad y da el neto de la cartera con y sin las iniciativas transversales.</p>
 <hr />
 <h2 id="materializacion-de-la-capacidad-liberada"><span class="antetitulo">07</span>Materialización de la capacidad liberada</h2>
 <h3 id="7-1-principio">7.1 Principio</h3>
-<p>La capacidad liberada no es ahorro hasta que se materializa o se reasigna de forma explícita (documento 40, regla 3). En Optimizar, <strong>G5 exige un plan para materializarla y G7 exige ahorro materializado</strong> (01 §7.6). En Aumentar, G7 exige capacidad reasignada.</p>
+<p>La capacidad liberada no es ahorro hasta que se materializa o se reasigna de forma explícita (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, regla 3). En Optimizar, <strong>G5 exige un plan para materializarla y G7 exige ahorro materializado</strong> (01 §7.6). En Aumentar, G7 exige capacidad reasignada.</p>
 <h3 id="7-2-palancas">7.2 Palancas</h3>
 <div class="tabla"><table>
 <thead>
@@ -959,11 +996,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Reasignación a actividad nueva</strong></td>
 <td>Las horas se dedican de forma explícita a una actividad identificada de mayor valor.</td>
 <td>Capacidad reasignada; su valor solo cuenta a través del resultado medido de la actividad de destino.</td>
-<td>Actividad, responsable, fecha y horas registradas en T20.</td>
+<td>Actividad, responsable, fecha y horas registradas en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>.</td>
 </tr>
 </tbody>
 </table></div>
-<p>La materialización que afecte a personas se planifica con la función de personas y respeta las obligaciones legales y convencionales aplicables, así como el plan de adopción (documento 23). Este documento no constituye asesoramiento jurídico.</p>
+<p>La materialización que afecte a personas se planifica con la función de personas y respeta las obligaciones legales y convencionales aplicables, así como el plan de adopción (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>). Este documento no constituye asesoramiento jurídico.</p>
 <h3 id="7-3-reglas">7.3 Reglas</h3>
 <ol>
 <li><strong>El plan de materialización existe antes de G5</strong> en Optimizar y antes de G7 en Aumentar.</li>
@@ -1092,7 +1129,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="8-3-resultado">8.3 Resultado</h3>
-<p>Cada revisión genera un <strong>informe breve</strong> con conclusiones, acciones, responsables y fechas, registrado en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> como evento y enlazado en T12. Lo prepara la oficina de IA con el responsable de producto; lo aprueba el patrocinador (Lite) o el comité de IA (Enterprise). Las lecciones se incorporan al registro de lecciones aprendidas de la cartera.</p>
+<p>Cada revisión genera un <strong>informe breve</strong> con conclusiones, acciones, responsables y fechas, registrado en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> como evento y enlazado en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>. Lo prepara la oficina de IA con el responsable de producto; lo aprueba el patrocinador (Lite) o el comité de IA (Enterprise). Las lecciones se incorporan al registro de lecciones aprendidas de la cartera.</p>
 <hr />
 <h2 id="desviaciones-y-acciones"><span class="antetitulo">09</span>Desviaciones y acciones</h2>
 <h3 id="9-1-umbrales">9.1 Umbrales</h3>
@@ -1183,7 +1220,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="9-3-reglas">9.3 Reglas</h3>
 <ol>
-<li><strong>Toda desviación tiene causa y acción</strong>, con responsable y fecha, registradas en T12.</li>
+<li><strong>Toda desviación tiene causa y acción</strong>, con responsable y fecha, registradas en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>.</li>
 <li><strong>No se rebaja el objetivo para cerrar una desviación.</strong> La revisión de la hipótesis es una decisión del órgano que la aprobó y queda registrada con el motivo.</li>
 <li><strong>Las acciones vencidas se tratan como condiciones vencidas</strong> (IND-EMB-08) cuando se impusieron en un <em>gate</em> o en R6.</li>
 </ol>
@@ -1200,7 +1237,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>El valor realizado se registra cada periodo con estado.</td>
-<td>T12 al día; sin periodos &quot;sin dato&quot; sin explicación.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> al día; sin periodos &quot;sin dato&quot; sin explicación.</td>
 </tr>
 <tr>
 <td>La realización está dentro de tolerancia o tiene acciones.</td>
@@ -1208,14 +1245,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Las validaciones están vigentes.</td>
-<td>Ningún importe validado caducado (documento 40 §4.1).</td>
+<td>Ningún importe validado caducado (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §4.1).</td>
 </tr>
 <tr>
 <td>La capacidad liberada tiene destino o plan.</td>
 <td>Tasas de materialización y reasignación.</td>
 </tr>
 <tr>
-<td>El coste real concilia con T13.</td>
+<td>El coste real concilia con <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</td>
 <td>Conciliación del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a> §11.3.</td>
 </tr>
 <tr>
@@ -1243,7 +1280,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Optimizar</strong></td>
 <td>Ahorro materializado, no solo capacidad liberada.</td>
-<td>Eficiencias materializadas con reflejo contable o coste evitado presupuestado; tasa de materialización; valor neto anual; VAN recalculado con valores realizados (documento 40 §8).</td>
+<td>Eficiencias materializadas con reflejo contable o coste evitado presupuestado; tasa de materialización; valor neto anual; VAN recalculado con valores realizados (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §8).</td>
 <td>Validado</td>
 </tr>
 <tr>
@@ -1260,7 +1297,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Si la decisión es <strong>Escalar</strong>, el valor realizado validado y el plan de realización actualizado forman parte de la nueva fase 0 del alcance ampliado. Si es <strong>Retirar</strong>, se registran el valor realizado final, el coste de retirada (documento 42 §10) y las lecciones.</p>
+<p>Si la decisión es <strong>Escalar</strong>, el valor realizado validado y el plan de realización actualizado forman parte de la nueva fase 0 del alcance ampliado. Si es <strong>Retirar</strong>, se registran el valor realizado final, el coste de retirada (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a> §10) y las lecciones.</p>
 <hr />
 <h2 id="consolidacion-en-cartera-y-en-el-panel-del-consejo"><span class="antetitulo">11</span>Consolidación en cartera y en el panel del consejo</h2>
 <h3 id="11-1-proceso-de-consolidacion">11.1 Proceso de consolidación</h3>
@@ -1276,7 +1313,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Cierre del periodo en T12 para todos los casos.</td>
+<td>Cierre del periodo en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> para todos los casos.</td>
 <td>Responsables de negocio</td>
 <td>Casos sin declaración identificados.</td>
 </tr>
@@ -1294,7 +1331,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Incorporación del coste recurrente real desde T13.</td>
+<td>Incorporación del coste recurrente real desde <a href="42_SEVEN-G_Costes_de_IA.html">T13</a>.</td>
 <td>Control de gestión</td>
 <td>Conciliación con contabilidad.</td>
 </tr>
@@ -1318,7 +1355,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Exportación al panel del consejo (T17).</td>
+<td>Exportación al panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
 <td>Oficina de IA</td>
 <td>Proporción validada visible junto a cada total.</td>
 </tr>
@@ -1390,11 +1427,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Línea base y atribución</strong></td>
-<td>Que la línea base se midió antes de G2 y que el método aplicado es el aprobado, con su estado máximo (documento 40 §7).</td>
+<td>Que la línea base se midió antes de G2 y que el método aplicado es el aprobado, con su estado máximo (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §7).</td>
 </tr>
 <tr>
 <td><strong>Estado y vigencia</strong></td>
-<td>Que cada estado lo asignó quien puede asignarlo, con la evidencia exigida y sin caducar (documento 40 §4).</td>
+<td>Que cada estado lo asignó quien puede asignarlo, con la evidencia exigida y sin caducar (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §4).</td>
 </tr>
 <tr>
 <td><strong>Materialización</strong></td>
@@ -1406,11 +1443,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Coste completo</strong></td>
-<td>Que el coste recurrente incluye los costes compartidos y concilia con contabilidad (documento 42).</td>
+<td>Que el coste recurrente incluye los costes compartidos y concilia con contabilidad (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>).</td>
 </tr>
 <tr>
 <td><strong>Presentación</strong></td>
-<td>Que los informes al consejo muestran la proporción validada, la capacidad separada, los casos con neto negativo y los &quot;sin dato&quot; (documento 40 §11).</td>
+<td>Que los informes al consejo muestran la proporción validada, la capacidad separada, los casos con neto negativo y los &quot;sin dato&quot; (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §11).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1425,7 +1462,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Error de cálculo o de registro sin impacto en decisiones</td>
-<td>No conformidad menor (documento 37).</td>
+<td>No conformidad menor (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</td>
 </tr>
 <tr>
 <td>Importe presentado como validado sin validación o con validación caducada</td>
@@ -1454,7 +1491,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T12</strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Plan de realización, registro por periodo, estados, realización, desviaciones.</td>
 </tr>
@@ -1464,7 +1501,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Responsables, eventos de revisión, decisiones de R6 y G7.</td>
 </tr>
 <tr>
-<td><strong>T13</strong></td>
+<td><strong><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></strong></td>
 <td>Calculadora de costes por caso</td>
 <td>Coste recurrente real.</td>
 </tr>
@@ -1474,12 +1511,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Consolidación y presentación.</td>
 </tr>
 <tr>
-<td><strong>T20</strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Materialización y reasignación de la capacidad.</td>
 </tr>
 <tr>
-<td><strong>T22</strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></strong></td>
 <td>Gestor de retiradas</td>
 <td>Valor final y retirada.</td>
 </tr>

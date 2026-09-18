@@ -91,7 +91,7 @@ Roles and channels are indicated; personal contact details are kept in the corpo
 | Review a sample of outputs (after-the-fact oversight) | As per P17 | Designated supervisors | P17 block 6 | |
 | Review the agent action log and blocks | Weekly | | P18 block 10 | |
 | Review consumption and cost against budget | Monthly | | P25 | |
-| Review drift and performance against the reference | Monthly | | P25 | |
+| Review drift (including usage drift), bias and performance against the reference | Monthly | | P25 | |
 | Review system permissions and identities | Quarterly | | P18 blocks 4 and 5 | |
 | Update value tracking | As per P28 | AI Product Owner | P28 | |
 | Prepare the R6 continuity review | Quarterly (Enterprise) · Half-yearly (Lite) | AI Operations Owner | Block 10 | P29 |
@@ -116,10 +116,11 @@ Roles and channels are indicated; personal contact details are kept in the corpo
 | Performance degradation | Performance alert or increase in overrides | Check input data and version; assess rollback trigger | AI Technical Owner | P19 · P25 |
 | Missing or late input data | Freshness alert | Activate degraded mode if thresholds are exceeded | Data owner | P19 |
 | Model provider unavailable | Service errors | Apply the planned alternative; inform users | AI Operations Owner | P14 · P19 |
-| Consumption cost above threshold | Cost alert | Review anomalous usage; apply limit | AI Product Owner | P18 block 7 |
+| Consumption cost above threshold | Cost alert | Review anomalous usage; apply the level of the cost-driven degradation cascade in block 8 | AI Product Owner | P18 block 7 · document 52 §10.3 |
+| Change in what users ask (usage drift) | Alert on queries outside the validated scope or on a change of topics | Expand the evaluation set with the new cases and evaluate; if the use falls outside the purpose, restrict the scope | AI Product Owner | P25 · document 52 §4.2.6 |
 | Suspected prompt injection or anomalous agent action | Repeated blocks or action outside purpose | Assess kill switch; preserve logs | Information security | P18 · P26 |
 | Complaint from an affected person | Complaint received | Record; activate human review | AI Product Owner | P17 block 8 |
-| Possible discriminatory output | Fairness alert or complaint | Treat as an incident and classify severity | AI Risk Owner | P26 |
+| Possible discriminatory output | Fairness alert, unequal responses in counterfactual pairs or complaint | Treat as an incident and classify severity | AI Risk Owner | P26 |
 | | | | | |
 
 ---
@@ -132,6 +133,8 @@ Roles and channels are indicated; personal contact details are kept in the corpo
 | Process without AI | | Who performs it and with what capacity. |
 | Maximum acceptable time without service | | Consistent with P19. |
 | Recovery after degraded mode | | Checks before returning to normal operation and who authorises it. |
+| Cost-driven degradation cascade | | Only systems with variable consumption. Applicable levels (N1 optimisation, N2 fallback model, N3 reduced scope, N4 without AI), the trigger for each (for example, N1 at 80% and N2 at 100% of the budget), who activates them and uses excluded from N2 (document 52 §10.3). |
+| Fallback model | | Identifier in P16, result of its evaluation before G5 and minimum quality required in P25. |
 
 ---
 
@@ -170,6 +173,7 @@ Formal G5 and R6 criteria in document 21.
 | 4 | Common situations have a first action and escalation. | |
 | 5 | Degraded mode and the process without AI are described and are consistent with P19. | |
 | 6 | The date of the next R6 is set according to intensity. | |
+| 7 | For systems with variable consumption, the cost-driven degradation cascade is defined, does not deactivate critical controls and has been tested. | |
 
 ---
 
@@ -191,3 +195,4 @@ Segregation of duties: the operations owner does not verify evidence of their ow
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version of the template. |
+| 0.1 | 18-09-2026 | Cost-driven degradation cascade and fallback model in block 8; usage drift and counterfactual pairs in the common situations; quality criterion 7. |

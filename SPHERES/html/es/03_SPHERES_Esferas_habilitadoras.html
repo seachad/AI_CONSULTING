@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SPHERES · Esferas habilitadoras"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -699,7 +703,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>El nivel de autonomía <strong>no es lo mismo que el nivel de ambición</strong>. Un sistema A0 que solo resume información puede formar parte de una apuesta de Transformar. A la inversa, que una decisión que tomaba una persona pase a un sistema A2 o A3 cambia quién decide, y eso apunta como mínimo a Aumentar (documento 01, sección 8, pregunta 3).</p>
+<p>El nivel de autonomía <strong>no es lo mismo que el nivel de ambición</strong>. Un sistema A0 que solo resume información puede formar parte de una apuesta de Transformar. A la inversa, que una decisión que tomaba una persona pase a un sistema A2 o A3 cambia quién decide, y eso apunta como mínimo a Aumentar (<a href="01_SPHERES_Niveles_de_ambicion.html">documento 01</a>, sección 8, pregunta 3).</p>
 <blockquote>
 <p><strong>Por qué importa.</strong> Asignar un nivel de autonomía a cada tipo de decisión convierte una discusión abstracta sobre &quot;confiar en la IA&quot; en una regla concreta que puede aprobarse, supervisarse y auditarse. Es también la base para saber qué sistemas necesitan un interruptor de parada y quién puede activarlo.</p>
 </blockquote>

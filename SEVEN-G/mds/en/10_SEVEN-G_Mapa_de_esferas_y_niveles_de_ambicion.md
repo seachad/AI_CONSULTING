@@ -105,6 +105,7 @@ Common borderline cases (illustrative examples):
 | Assistant that drafts responses to customer complaints for the customer service team | 04 Operations | 01 Customer, only if satisfaction or repeat contact is measured | The main metric is handling time per complaint. |
 | Product recommender in the digital channel | 01 Customer | 02 Product and service, if it modifies the offering | The main metric is incremental conversion. |
 | Common data platform for several AI use cases | 05 Data | — | The outcome is the enabling capability; the value of the use cases that use it is allocated to those use cases. |
+| Generative assistant built into the office suite for several business units | 03 People | 06 Knowledge, if access to information is measured | It is a cross-unit initiative: it is recorded once and measured by business unit (document 40 §7.2). It is not an enabling capability of spheres 05 to 07: its outcome falls on people's work. |
 | Copilot for risk analysts that enables them to review more complex transactions | 03 People or 07 Decision | The other of the two | Primary according to the metric: analyst performance (03) or decision quality (07). |
 | AI system that monitors regulatory changes and assigns them to owners | 08 Regulation, ethics and accountability | — | Its purpose is regulatory anticipation. |
 

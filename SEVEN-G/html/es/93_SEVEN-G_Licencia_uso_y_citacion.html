@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Licencia, uso por terceros y citación"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -599,12 +603,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>&quot;Declaración de aplicación revisada por [tercero] el [fecha].&quot;</td>
-<td>Presentar como SEVEN-G un servicio que omite sus reglas esenciales sin declararlo (documento 91, sección 2.3).</td>
+<td>Presentar como SEVEN-G un servicio que omite sus reglas esenciales sin declararlo (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 2.3).</td>
 </tr>
 </tbody>
 </table></div>
 <h3 id="7-3-no-existe-certificacion-oficial">7.3 No existe certificación oficial</h3>
-<p><strong>En esta versión no existe ninguna certificación, acreditación ni sello oficial de SEVEN-G.</strong> La declaración de aplicación prevista en la sección 14 del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> es una <strong>autodeclaración verificable</strong>: la hace la compañía bajo su responsabilidad y debe poder demostrarse con evidencias. La revisión de esa declaración por un tercero es una opinión profesional de ese tercero, no una certificación, y no compromete al autor (documento 91, sección 6.3).</p>
+<p><strong>En esta versión no existe ninguna certificación, acreditación ni sello oficial de SEVEN-G.</strong> La declaración de aplicación prevista en la sección 14 del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> es una <strong>autodeclaración verificable</strong>: la hace la compañía bajo su responsabilidad y debe poder demostrarse con evidencias. La revisión de esa declaración por un tercero es una opinión profesional de ese tercero, no una certificación, y no compromete al autor (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 6.3).</p>
 <hr />
 <h2 id="obras-derivadas-y-traducciones"><span class="antetitulo">08</span>Obras derivadas y traducciones</h2>
 <div class="tabla"><table>
@@ -644,7 +648,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="datos-ficticios-de-las-demostraciones-y-los-ejemplos"><span class="antetitulo">09</span>Datos ficticios de las demostraciones y los ejemplos</h2>
 <ul>
-<li>Las demostraciones del panel del consejo, los casos de aplicación (documento 92) y los ejemplos de todos los documentos usan <strong>datos ficticios</strong>: compañías, órganos, personas, sistemas y cifras son inventados.</li>
+<li>Las demostraciones del panel del consejo, los casos de aplicación (<a href="92_SEVEN-G_Casos_de_aplicacion.html">documento 92</a>) y los ejemplos de todos los documentos usan <strong>datos ficticios</strong>: compañías, órganos, personas, sistemas y cifras son inventados.</li>
 <li><strong>No son benchmarks, referencias de mercado, resultados esperables, asesoramiento jurídico ni recomendaciones de inversión.</strong></li>
 <li>Quien reutilice estos datos debe mantener la indicación de que son ficticios y no presentarlos como datos reales ni como resultados obtenidos con clientes.</li>
 <li>Las heurísticas usadas para generar los datos de demostración no pretenden describir ningún mercado.</li>
@@ -694,11 +698,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Aplicar SEVEN-G, incluso íntegramente y con una declaración de aplicación (sección 7.3), <strong>no implica ni presume el cumplimiento de ninguna norma</strong>.</p>
 <h3 id="11-5-fechas-de-consulta">11.5 Fechas de consulta</h3>
-<p>Las referencias regulatorias y normativas de cada documento indican su <strong>fecha de consulta</strong>. Reflejan el estado de las fuentes en esa fecha y no se actualizan automáticamente: los cambios normativos, los textos en tramitación y las directrices, criterios o resoluciones posteriores de autoridades y tribunales pueden dejarlas incompletas o incorrectas. El procedimiento de mantenimiento del mapeo (documento 34, sección 10) es una recomendación para la organización usuaria, no un compromiso de actualización del autor.</p>
+<p>Las referencias regulatorias y normativas de cada documento indican su <strong>fecha de consulta</strong>. Reflejan el estado de las fuentes en esa fecha y no se actualizan automáticamente: los cambios normativos, los textos en tramitación y las directrices, criterios o resoluciones posteriores de autoridades y tribunales pueden dejarlas incompletas o incorrectas. El procedimiento de mantenimiento del mapeo (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>, sección 10) es una recomendación para la organización usuaria, no un compromiso de actualización del autor.</p>
 <h3 id="11-6-herramientas-y-demostraciones">11.6 Herramientas y demostraciones</h3>
-<p>Las herramientas (T01–T22), los paneles y registros de demostración y el código se ofrecen con fines ilustrativos y usan <strong>datos ficticios</strong> (sección 9). No están validados para su uso en producción ni para adoptar decisiones regulatorias, y sus resultados, como una clasificación orientativa o un indicador calculado, deben ser verificados por la organización antes de usarse.</p>
+<p>Las herramientas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>), los paneles y registros de demostración y el código se ofrecen con fines ilustrativos y usan <strong>datos ficticios</strong> (sección 9). No están validados para su uso en producción ni para adoptar decisiones regulatorias, y sus resultados, como una clasificación orientativa o un indicador calculado, deben ser verificados por la organización antes de usarse.</p>
 <h3 id="11-7-terceros-que-usan-o-adaptan-el-marco">11.7 Terceros que usan o adaptan el marco</h3>
-<p>Las consultoras, auditores, formadores y demás terceros que usen, adapten o integren SEVEN-G en sus servicios lo hacen <strong>bajo su exclusiva responsabilidad</strong>. No pueden presentar su trabajo, sus entregables, sus adaptaciones ni sus conclusiones como <strong>validados, certificados, revisados o respaldados</strong> por el autor o por SEACHAD, ni declarar o certificar en nombre de SEVEN-G o del autor el cumplimiento regulatorio de un cliente (documento 91, sección 6.2). Deben trasladar el aviso legal a sus entregables.</p>
+<p>Las consultoras, auditores, formadores y demás terceros que usen, adapten o integren SEVEN-G en sus servicios lo hacen <strong>bajo su exclusiva responsabilidad</strong>. No pueden presentar su trabajo, sus entregables, sus adaptaciones ni sus conclusiones como <strong>validados, certificados, revisados o respaldados</strong> por el autor o por SEACHAD, ni declarar o certificar en nombre de SEVEN-G o del autor el cumplimiento regulatorio de un cliente (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 6.2). Deben trasladar el aviso legal a sus entregables.</p>
 <h3 id="11-8-como-encaja-con-las-licencias">11.8 Cómo encaja con las licencias</h3>
 <p>La sección 5 de la licencia <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> ya excluye las declaraciones y garantías sobre el material y limita la responsabilidad del licenciante en la medida permitida por la ley; la <a class="ref-ext" href="https://opensource.org/license/mit" target="_blank" rel="noopener" title="Licencia MIT (The MIT License)">licencia MIT</a> hace lo mismo con el código (sección 5 de este documento). Esta sección <strong>no añade restricciones</strong> a lo que las licencias permiten: explica y concreta esas exclusiones en el ámbito regulatorio, de modo que cualquier uso, copia o adaptación que cumpla la licencia sigue estando permitido. Además, la sección 3.a.1.A de CC BY 4.0 exige conservar el aviso que remite a la exclusión de garantías cuando el licenciante lo facilita con el material. En caso de discrepancia, prevalece el texto legal de cada licencia.</p>
 <h3 id="11-9-aviso-que-deben-conservar-las-obras-derivadas">11.9 Aviso que deben conservar las obras derivadas</h3>
@@ -727,7 +731,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Contenidos <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y código MIT en el repositorio de demostraciones.</td>
 </tr>
 <tr>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Contenidos CC BY 4.0 y código MIT en el repositorio de demostraciones.</td>
 </tr>

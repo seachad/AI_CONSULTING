@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Diseño de gobierno y supervisión humana"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -427,7 +431,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>En qué <em>gate</em> se revisa</strong></td>
-<td>G4; se comprueba su funcionamiento real en G5 (P22) y en R6.</td>
+<td>G4; se comprueba su funcionamiento real en G5 (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) y en R6.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -443,9 +447,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Los controles de supervisión humana no admiten <strong>Continuar con condiciones</strong> en el <em>gate</em>: si no están resueltos, el resultado es Iterar (01 §7.3).</li>
 <li>La supervisión se diseña para que una persona pueda <strong>entender, corregir, anular e interrumpir</strong>, no solo para que &quot;esté presente&quot;.</li>
-<li>Cualquier aumento del nivel de autonomía o de la población afectada debería tratarse como cambio relevante (P27) y someterse a verificación y decisión equivalentes a G4.</li>
+<li>Cualquier aumento del nivel de autonomía o de la población afectada debería tratarse como cambio relevante (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>) y someterse a verificación y decisión equivalentes a G4.</li>
 </ul>
-<p>Esta plantilla no constituye asesoramiento jurídico. Las obligaciones de supervisión humana y de decisiones automatizadas se confirman con el mapeo regulatorio (documento 34).</p>
+<p>Esta plantilla no constituye asesoramiento jurídico. Las obligaciones de supervisión humana y de decisiones automatizadas se confirman con el mapeo regulatorio (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</p>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
 <div class="tabla"><table>
@@ -460,7 +464,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (T01).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -470,7 +474,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistema(s) de IA</td>
 <td></td>
-<td>Identificador en el inventario (T02).</td>
+<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
 </tr>
 <tr>
 <td>Intensidad</td>
@@ -523,7 +527,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Proceso o decisión en la que interviene el sistema</td>
 <td></td>
-<td>Descríbalo en lenguaje de negocio (P31).</td>
+<td>Descríbalo en lenguaje de negocio (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
 </tr>
 <tr>
 <td>Personas usuarias</td>
@@ -683,7 +687,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Decisiones que la compañía ha declarado indelegables en su política corporativa (documento 31) y que aplican a este sistema:</p>
+<p>Decisiones que la compañía ha declarado indelegables en su política corporativa (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) y que aplican a este sistema:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -754,7 +758,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Orientación: A1 exige validación previa; A2 exige al menos supervisión en tiempo real o revisión a posteriori, e interruptor de parada; A3 exige supervisión agregada, límites estrictos (P18) e interruptor de parada probado (P19).</p>
+<p>Orientación: A1 exige validación previa; A2 exige al menos supervisión en tiempo real o revisión a posteriori, e interruptor de parada; A3 exige supervisión agregada, límites estrictos (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) e interruptor de parada probado (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</p>
 <hr />
 <h2 id="capacidad-efectiva-de-la-persona-supervisora"><span class="antetitulo">07</span>Capacidad efectiva de la persona supervisora</h2>
 <div class="tabla"><table>
@@ -789,7 +793,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Puede interrumpir el sistema</td>
 <td></td>
-<td>Interruptor de parada (P18) y quién puede activarlo.</td>
+<td>Interruptor de parada (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) y quién puede activarlo.</td>
 </tr>
 <tr>
 <td>Tiene tiempo y carga de trabajo compatibles con la supervisión <strong>(Enterprise)</strong></td>
@@ -798,7 +802,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>En sistemas de alto riesgo, estos requisitos se contrastan con el artículo 14 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (documento 34).</p>
+<p>En sistemas de alto riesgo, estos requisitos se contrastan con el artículo 14 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</p>
 <hr />
 <h2 id="transparencia-y-derechos-de-las-personas-afectadas"><span class="antetitulo">08</span>Transparencia y derechos de las personas afectadas</h2>
 <div class="tabla"><table>
@@ -857,7 +861,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td>Funcionamiento diario de la supervisión y alertas</td>
-<td>Comité de IA en incidentes S1–S2 (P26)</td>
+<td>Comité de IA en incidentes S1–S2 (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>)</td>
 </tr>
 <tr>
 <td>Supervisores designados</td>

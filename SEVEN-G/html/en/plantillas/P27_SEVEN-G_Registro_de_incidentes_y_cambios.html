@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Incident and change log"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -415,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>Throughout phase 6. It is opened at go-live and closed at retirement (P30).</td>
+<td>Throughout phase 6. It is opened at go-live and closed at retirement (<a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -435,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td>T08 Nonconformity and incident register. If the company uses another incident or change tool, this log links its identifiers and adds the AI-specific fields.</td>
+<td><a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> Nonconformity and incident register. If the company uses another incident or change tool, this log links its identifiers and adds the AI-specific fields.</td>
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
@@ -466,12 +470,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (T01).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td>AI system(s)</td>
 <td></td>
-<td>Identifier in the inventory (T02).</td>
+<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
 </tr>
 <tr>
 <td>Intensity</td>
@@ -584,7 +588,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Affected system version</td>
 <td></td>
-<td>Model, instructions, knowledge base (P16).</td>
+<td>Model, instructions, knowledge base (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
 </tr>
 <tr>
 <td>Description</td>
@@ -752,7 +756,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Does it change the autonomy level, the purpose or the population?</td>
 <td></td>
-<td>Yes · No. If Yes, it requires verification and a decision equivalent to G4/G5 and a new sign-off (P23).</td>
+<td>Yes · No. If Yes, it requires verification and a decision equivalent to G4/G5 and a new sign-off (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>).</td>
 </tr>
 <tr>
 <td>Does it require reviewing the regulatory classification, intensity or risks?</td>

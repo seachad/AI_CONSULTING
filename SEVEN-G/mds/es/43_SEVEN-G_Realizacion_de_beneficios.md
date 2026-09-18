@@ -225,6 +225,20 @@ El coste de un proceso de tramitación se reduce en 500.000 € en el año. Sobr
 4. Reparto proporcional: A = 400.000 × 280/500 = **224.000 €**; B = 400.000 × 220/500 = **176.000 €**.
 5. Comprobación: 100.000 + 224.000 + 176.000 = 500.000 €.
 
+### 6.4 Iniciativas transversales: realización por unidad de negocio
+
+Una iniciativa transversal (documento 40 §7.2) tiene un solo plan de realización, con un bloque por unidad de negocio:
+
+| Elemento | Qué se exige |
+|---|---|
+| **Responsables** | El patrocinador es corporativo. Cada unidad nombra su **responsable de negocio del beneficio**, que firma la parte del plan de su unidad y declara cada periodo su coste, su adopción y su valor materializado. |
+| **Coste** | Cada unidad asume sus licencias desde el primer día. Lo común (oficina de adopción, formación continua, revisión de permisos) se registra sin unidad y suma en el coste de la iniciativa. |
+| **Adopción** | Licencias activas sobre asignadas y usuarios activos semanales, tomados de los informes de uso de la plataforma. Por debajo del umbral aprobado en G2, la unidad revisa el despliegue o retira licencias. |
+| **Materialización** | Cada unidad indica la palanca de la sección 7.2 con la que convierte las horas liberadas en menor coste o en capacidad reasignada. Sin palanca, las horas son capacidad liberada y no suman. |
+| **Validación** | Control de gestión valida unidad por unidad. La suma de las unidades y de lo común es el valor de la iniciativa; lo que ya reclama un caso propio de la unidad sobre el mismo proceso no se cuenta otra vez (secciones 6.1 y 6.2). |
+
+En T01, el despliegue y la adopción de cada unidad se registran en el alcance de la iniciativa y el coste y el valor, como importes con su unidad. El panel del consejo (T17) los muestra por unidad y da el neto de la cartera con y sin las iniciativas transversales.
+
 ---
 
 ## 7. Materialización de la capacidad liberada

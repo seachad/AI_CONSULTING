@@ -797,7 +797,7 @@ Spanish equivalents of the taxonomy values:
 | **RT-\<CAT\>-NN** | RT + three-letter category + two digits | Typical risks in the catalogue (70 in version 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
 | **SEG-01–SEG-20** | SEG + hyphen + two digits | AI security controls. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + hyphen + two digits | Agent controls. | 35 §7 | AG-09 |
-| **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (156 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
+| **IND-\<FAM\>-NN** | IND + three-letter family + two digits | Catalogue indicators (159 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused. | 41 §2 and §4 | IND-VAL-05 |
 | **IE\<sphere\>.\<nn\>** | IE + two-digit sphere + point + two digits | Indicators by sphere, provisional until they are consolidated in document 41. | 10 §5–7 | IE01.04 |
 | **IA-AAAA-NNN** | Year of registration + sequential number | Initiatives. | 03 §3.3 | IA-2026-014 |
 | **IA-AAAA-NNN · Rnn** | Initiative code + R + two digits | Specific risk of an initiative. | 33 §8.1 | IA-2026-014 · R03 |

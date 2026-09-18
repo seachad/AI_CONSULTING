@@ -63,6 +63,12 @@ const ESTL = e => (e === "estimado_cati" ? "estimación del " + CONSEJO() : EST[
 const NO_NETO = new Set(["capacidad_liberada"]);
 // agentes y asistentes generativos: la misma definición en el panel completo y en el móvil
 const esAgente = c => /Agéntico|GenAI/.test((c.tags||{}).tecnologia || "");
+// iniciativas transversales (varias unidades de negocio) y plataformas habilitadoras: bloque opcional casos[].alcance.
+// Sin él, el caso es de una unidad y el panel no cambia. Adopción = licencias activas sobre asignadas en cada unidad.
+const alcanceDe = c => (c.alcance && (c.alcance.tipo === "transversal" || c.alcance.tipo === "plataforma")) ? c.alcance : null;
+const adopcionPct = u => (u && u.licencias_activas != null && u.licencias_asignadas) ? 100 * u.licencias_activas / u.licencias_asignadas : null;
+function adopcionBaja(c){ const a = alcanceDe(c); if (!a || a.umbral_adopcion_pct == null) return [];
+  return (a.unidades || []).filter(u => u.estado === "en_uso" && adopcionPct(u) != null && adopcionPct(u) < a.umbral_adopcion_pct); }
 const TIPO_INC = {caida:"caída", deriva:"deriva", error:"error", seguridad:"seguridad"};
 const RETL = () => Object.fromEntries(Object.entries(RET).map(([k,v])=>[k, TX("ret_"+k, v)]));
 const EFICL = () => Object.fromEntries(Object.entries(EFIC).map(([k,v])=>[k, TX("ef_"+k, v)]));

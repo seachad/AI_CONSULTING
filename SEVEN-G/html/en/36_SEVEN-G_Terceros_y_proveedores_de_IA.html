@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · AI third parties and suppliers"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -608,7 +612,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Rules:</p>
 <ol>
-<li>The decision is documented in the phase 3 feasibility assessment (P10) using the criteria in the table and the three-year total cost according to the categories in document 42, including the <strong>exit cost</strong>.</li>
+<li>The decision is documented in the phase 3 feasibility assessment (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) using the criteria in the table and the three-year total cost according to the categories in document 42, including the <strong>exit cost</strong>.</li>
 <li>In <strong>Optimise</strong> initiatives, buying should be the starting option unless there is a documented reason otherwise. In <strong>Transform</strong>, dependency on a third party for the differentiating capability must be justified to the body that approves the bet.</li>
 <li><strong>Building on third-party models does not eliminate dependency</strong>: this document applies to the model provider.</li>
 <li>If the company substantially modifies a third party's high-risk system, changes its intended purpose or places it on the market under its own name, it may become a <strong>provider</strong> for the purposes of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> (Art. 25(1)), with the corresponding obligations. This consequence is analysed before deciding to adapt.</li>
@@ -653,7 +657,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The substitutability time frames are indicative and are approved in C2 (document 13). The level is determined in phase 3, reviewed at every R6 and upon any change to the service, and recorded in T09.</p>
+<p>The substitutability time frames are indicative and are approved in C2 (document 13). The level is determined in phase 3, reviewed at every R6 and upon any change to the service, and recorded in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>.</p>
 <h3 id="4-2-requirements-by-level">4.2 Requirements by level</h3>
 <div class="tabla"><table>
 <thead>
@@ -715,9 +719,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Register</strong></td>
-<td>T09.</td>
-<td>T09.</td>
-<td>T09 and, if DORA applies, the register of information.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a> and, if DORA applies, the register of information.</td>
 </tr>
 </tbody>
 </table></div>
@@ -781,7 +785,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>5. Monitoring</strong></td>
 <td>Service indicators, incidents, model changes, sub-processors, periodic reviews, level reassessment.</td>
-<td>T09; review minutes; <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>; review minutes; <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
 <td>Relationship manager and AI Operations Owner.</td>
 <td>6</td>
 </tr>
@@ -987,7 +991,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Register of information on all arrangements with ICT third-party service providers</td>
 <td>Art. 28(3); <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2956/oj/eng" target="_blank" rel="noopener" title="Commission Implementing Regulation (EU) 2024/2956 of 29 November 2024 laying down implementing technical standards for the application of Regulation (EU) 2022/2554 with regard to standard templates for the register of information">Implementing Regulation (EU) 2024/2956</a></td>
-<td>T09 feeds the register.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a> feeds the register.</td>
 </tr>
 <tr>
 <td>Pre-contractual analysis, due diligence and conflicts of interest</td>
@@ -1108,7 +1112,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>2. Inventory</strong></td>
-<td>Registration of each relevant AI feature in the inventory (T02), linked to the supplier in T09, with the technology tag &quot;Embedded third-party AI&quot;.</td>
+<td>Registration of each relevant AI feature in the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>), linked to the supplier in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>, with the technology tag &quot;Embedded third-party AI&quot;.</td>
 <td>AI Office</td>
 </tr>
 <tr>
@@ -1141,7 +1145,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <hr />
 <h2 id="supplier-register"><span class="antetitulo">09</span>Supplier register</h2>
-<p>The supplier register is tool <strong>T09</strong>, built on the <em>Supplier</em> entity of the common data model (03 §4). Each supplier–service relationship is a record.</p>
+<p>The supplier register is tool <strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></strong>, built on the <em>Supplier</em> entity of the common data model (03 §4). Each supplier–service relationship is a record.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1176,11 +1180,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Assessment</strong></td>
-<td>Date and result of due diligence (P14); certifications and reports with validity; security assessment; conditions imposed.</td>
+<td>Date and result of due diligence (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>); certifications and reports with validity; security assessment; conditions imposed.</td>
 </tr>
 <tr>
 <td><strong>Risk</strong></td>
-<td>RT-TER and other linked risks (T06); main residual level.</td>
+<td>RT-TER and other linked risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>); main residual level.</td>
 </tr>
 <tr>
 <td><strong>Monitoring</strong></td>
@@ -1328,7 +1332,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>N level with factors; build, buy or partner decision; due diligence questionnaire; security and data protection assessment; verification of the 16 clauses; risks; exit plan; clearances and approval. Phase 3; updated at R6 and when triggers occur.</td>
 </tr>
 <tr>
-<td><strong>T09</strong></td>
+<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></strong></td>
 <td>AI supplier register</td>
 <td>Fields in section 9, review and renewal alerts, indicators in section 10 and concentration view. Module of <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
 </tr>
@@ -1338,7 +1342,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Sourcing decision, RT-TER risks and exit.</td>
 </tr>
 <tr>
-<td>T02 · T06 · T08</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 <td>Inventory · Risks · Incidents</td>
 <td>Linked systems, third-party risks and incidents.</td>
 </tr>

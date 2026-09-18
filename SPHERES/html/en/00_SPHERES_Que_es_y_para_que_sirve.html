@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "What SPHERES is and how it helps"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1001,7 +1005,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>SEVEN-G tools that use the map: the initiative register (T01), where each initiative carries its sphere and its level, and the board AI dashboard (T17), which shows the portfolio heat map.</p>
+<p>SEVEN-G tools that use the map: the initiative register (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html">T01</a>), where each initiative carries its sphere and its level, and the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>), which shows the portfolio heat map.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> Separating the explanation from the rule avoids two risks: that the board receives an operating manual it does not need to read, and that the AI office applies criteria different from those explained to the board. Both use the same spheres, the same levels and the same names.</p>
 </blockquote>

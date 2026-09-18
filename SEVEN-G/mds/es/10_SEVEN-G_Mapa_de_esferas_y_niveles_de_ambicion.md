@@ -105,6 +105,7 @@ Casos dudosos frecuentes (ejemplos ilustrativos):
 | Asistente que redacta respuestas a reclamaciones de clientes para el equipo de atención | 04 Operaciones | 01 Cliente, solo si se mide satisfacción o recontacto | La métrica principal es el tiempo de gestión por reclamación. |
 | Recomendador de productos en el canal digital | 01 Cliente | 02 Producto y servicio, si modifica la oferta | La métrica principal es la conversión incremental. |
 | Plataforma común de datos para varios casos de IA | 05 Datos | — | El resultado es la capacidad habilitadora; el valor de los casos que la usan se imputa a esos casos. |
+| Asistente generativo integrado en la suite ofimática para varias unidades de negocio | 03 Personas | 06 Conocimiento, si se mide el acceso a la información | Es una iniciativa transversal: se registra una sola vez y se mide por unidad de negocio (documento 40 §7.2). No es una capacidad habilitadora de las esferas 05 a 07: su resultado recae sobre el trabajo de las personas. |
 | Copiloto para analistas de riesgos que les permite revisar operaciones más complejas | 03 Personas o 07 Decisión | La otra de las dos | Principal según la métrica: rendimiento de los analistas (03) o calidad de la decisión (07). |
 | Sistema de IA que vigila cambios normativos y los asigna a responsables | 08 Regulación, ética y responsabilidad | — | Su finalidad es la anticipación regulatoria. |
 

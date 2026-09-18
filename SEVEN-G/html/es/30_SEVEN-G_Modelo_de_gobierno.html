@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Modelo de gobierno"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -541,7 +545,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Funciones</strong></td>
-<td>Aprobar la tesis de IA, la ambición por esfera y el apetito de riesgo con sus umbrales (C2). Aprobar la política corporativa de IA (documento 31). Aprobar las iniciativas de Transformar en G2 y su escalado en G7. Decidir, de forma excepcional, la aceptación de riesgos residuales Críticos dentro del apetito. Supervisar el panel del consejo (C4). Revisar madurez, índice de transformación y tesis (C5).</td>
+<td>Aprobar la tesis de IA, la ambición por esfera y el apetito de riesgo con sus umbrales (C2). Aprobar la política corporativa de IA (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>). Aprobar las iniciativas de Transformar en G2 y su escalado en G7. Decidir, de forma excepcional, la aceptación de riesgos residuales Críticos dentro del apetito. Supervisar el panel del consejo (C4). Revisar madurez, índice de transformación y tesis (C5).</td>
 </tr>
 <tr>
 <td><strong>Composición</strong></td>
@@ -565,7 +569,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Registro</strong></td>
-<td>Acta y alta de cada acuerdo en el registro de recomendaciones y decisiones (T18).</td>
+<td>Acta y alta de cada acuerdo en el registro de recomendaciones y decisiones (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -585,7 +589,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Funciones</strong></td>
-<td>Aprobar el plan anual de auditoría de IA y recibir sus resultados (documento 38). Recibir información de incidentes S1 y de no conformidades mayores y críticas. Resolver los desacuerdos entre el comité de IA y la segunda línea (sección 8.3). Decidir, por delegación del consejo, la aceptación excepcional de riesgos Críticos. Vigilar la independencia de los auditores de IA. Recibir las excepciones vigentes.</td>
+<td>Aprobar el plan anual de auditoría de IA y recibir sus resultados (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>). Recibir información de incidentes S1 y de no conformidades mayores y críticas. Resolver los desacuerdos entre el comité de IA y la segunda línea (sección 8.3). Decidir, por delegación del consejo, la aceptación excepcional de riesgos Críticos. Vigilar la independencia de los auditores de IA. Recibir las excepciones vigentes.</td>
 </tr>
 <tr>
 <td><strong>Composición</strong></td>
@@ -652,11 +656,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Orden del día tipo</strong></td>
-<td>1. Embudo: altas, cambios de fase, estancadas (documento 03). 2. <em>Gates</em> con verificación completada. 3. Desviaciones de valor y coste. 4. Riesgos Altos y Críticos, y concentración por esfera, proveedor o tecnología. 5. Incidentes, no conformidades y condiciones vencidas. 6. Retiradas y R6 caducadas. 7. Uso corporativo y no autorizado (T21). 8. Excepciones. 9. Asuntos para elevar.</td>
+<td>1. Embudo: altas, cambios de fase, estancadas (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>). 2. <em>Gates</em> con verificación completada. 3. Desviaciones de valor y coste. 4. Riesgos Altos y Críticos, y concentración por esfera, proveedor o tecnología. 5. Incidentes, no conformidades y condiciones vencidas. 6. Retiradas y R6 caducadas. 7. Uso corporativo y no autorizado (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>). 8. Excepciones. 9. Asuntos para elevar.</td>
 </tr>
 <tr>
 <td><strong>Registro</strong></td>
-<td>Acta con acuerdos numerados; cada decisión de <em>gate</em> en T03 con <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>Acta con acuerdos numerados; cada decisión de <em>gate</em> en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> con <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -675,7 +679,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Funciones</strong></td>
-<td>Mantener el inventario (documento 32, T02) y el registro de iniciativas (T01). Custodiar metodología, plantillas y listas de verificación. Verificar los <em>gates</em> Lite en los que no haya participado. Consolidar la medición con control de gestión (documento 40). Preparar la información de los órganos. Coordinar la alfabetización en IA y la regularización del uso no autorizado (documento 31). Liderar C1 y C5.</td>
+<td>Mantener el inventario (<a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) y el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Custodiar metodología, plantillas y listas de verificación. Verificar los <em>gates</em> Lite en los que no haya participado. Consolidar la medición con control de gestión (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>). Preparar la información de los órganos. Coordinar la alfabetización en IA y la regularización del uso no autorizado (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>). Liderar C1 y C5.</td>
 </tr>
 <tr>
 <td><strong>Composición</strong></td>
@@ -708,7 +712,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Funciones</strong></td>
-<td>Designar responsables de riesgos de IA. Emitir conformidades (G3, G4 y G5 Lite; asuntos del comité). Firmar la puesta en producción Enterprise: riesgos y cumplimiento, seguridad y protección de datos (01 §6.7). Clasificación regulatoria y evaluaciones de impacto (documento 32). Mantener la metodología de riesgos (33) y el mapeo regulatorio (34).</td>
+<td>Designar responsables de riesgos de IA. Emitir conformidades (G3, G4 y G5 Lite; asuntos del comité). Firmar la puesta en producción Enterprise: riesgos y cumplimiento, seguridad y protección de datos (01 §6.7). Clasificación regulatoria y evaluaciones de impacto (<a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>). Mantener la metodología de riesgos (33) y el mapeo regulatorio (34).</td>
 <td>Aportar o supervisar a los auditores de IA. Proponer el plan anual de auditoría de IA. Auditar el marco y la declaración de aplicación (01 §14). Participar en C5. Verificar el cierre de no conformidades.</td>
 </tr>
 <tr>
@@ -751,7 +755,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Responsable de producto de IA</strong></td>
-<td>Responde de la hipótesis de valor, el uso real y la adopción. Redacta carta e hipótesis; mide línea base y piloto; prepara evidencias de fases 0, 1, 2 y 7; acepta riesgos Bajos con registro; coordina la adopción (documento 23); mantiene la ficha en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Responde de la hipótesis de valor, el uso real y la adopción. Redacta carta e hipótesis; mide línea base y piloto; prepara evidencias de fases 0, 1, 2 y 7; acepta riesgos Bajos con registro; coordina la adopción (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>); mantiene la ficha en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
 <td>Gestión de producto; diseño de experimentos y atribución; procesos; comunicación con usuarios; límites de la IA generativa.</td>
 <td>Negocio, con experiencia en producto, procesos o transformación.</td>
 <td>10–30 % en fases activas · 50–100 % en fases 2–5 y 20–40 % en operación</td>
@@ -765,7 +769,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Responsable de operación de IA</strong></td>
-<td>Responde de la estabilidad, la monitorización, los incidentes y los cambios. Prepara manual y monitorización; activa el interruptor de parada cuando procede; gestiona incidentes (documento 37) y cambios; aporta datos a R6.</td>
+<td>Responde de la estabilidad, la monitorización, los incidentes y los cambios. Prepara manual y monitorización; activa el interruptor de parada cuando procede; gestiona incidentes (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>) y cambios; aporta datos a R6.</td>
 <td>Operación de servicios; observabilidad de modelos (degradación, deriva, coste); incidentes; control de cambios.</td>
 <td>Responsable de la plataforma o del servicio de negocio.</td>
 <td>5–10 % en operación · 20–50 % en operación, con guardia en sistemas críticos</td>
@@ -1029,7 +1033,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>Determinar la intensidad (P04)</td>
+<td>Determinar la intensidad (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>)</td>
 <td>A</td>
 <td>R</td>
 <td>C</td>
@@ -1040,7 +1044,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Alta en el inventario (P05)</td>
+<td>Alta en el inventario (<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>)</td>
 <td>I</td>
 <td>R</td>
 <td>C</td>
@@ -1051,7 +1055,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Clasificación regulatoria y evaluaciones de impacto (P11)</td>
+<td>Clasificación regulatoria y evaluaciones de impacto (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>)</td>
 <td>I</td>
 <td>C</td>
 <td>C</td>
@@ -1062,7 +1066,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Matriz y registro de riesgos (P12)</td>
+<td>Matriz y registro de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>)</td>
 <td>C</td>
 <td>R</td>
 <td>R</td>
@@ -1073,7 +1077,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Evaluación de proveedor (P14)</td>
+<td>Evaluación de proveedor (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
 <td>C</td>
 <td>C</td>
 <td>R</td>
@@ -1084,7 +1088,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Diseño de supervisión humana y de seguridad (P17, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Diseño de supervisión humana y de seguridad (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
 <td>I</td>
 <td>C</td>
 <td>A/R</td>
@@ -1095,7 +1099,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Firma de puesta en producción (P23)</td>
+<td>Firma de puesta en producción (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>)</td>
 <td>I</td>
 <td>C</td>
 <td>R (firma)</td>
@@ -1106,7 +1110,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D</td>
 </tr>
 <tr>
-<td>Seguimiento de realización de valor (P28)</td>
+<td>Seguimiento de realización de valor (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>)</td>
 <td>A</td>
 <td>R</td>
 <td>I</td>
@@ -1117,7 +1121,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Plan de retirada (P30)</td>
+<td>Plan de retirada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</td>
 <td>A</td>
 <td>R</td>
 <td>R</td>
@@ -1452,12 +1456,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Parada en un <em>gate</em></strong></td>
 <td>Órgano que decide el <em>gate</em></td>
 <td>En la decisión</td>
-<td>Motivo codificado (documento 03).</td>
+<td>Motivo codificado (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>).</td>
 </tr>
 <tr>
 <td><strong>Retirada planificada</strong> (G7)</td>
 <td>Lite: patrocinador · Enterprise: comité de IA</td>
-<td>Según <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> y T22</td>
+<td>Según <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> y <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
 <td>Consejo informado si era Transformar.</td>
 </tr>
 <tr>
@@ -1474,7 +1478,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La suspensión inmediata <strong>no requiere autorización previa</strong> y quien la activa de buena fe no sufre consecuencias por ello. El manual de operación (P24) identifica nominalmente quién puede activarla.</p>
+<p>La suspensión inmediata <strong>no requiere autorización previa</strong> y quien la activa de buena fe no sufre consecuencias por ello. El manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>) identifica nominalmente quién puede activarla.</p>
 <h3 id="7-4-excepciones">7.4 Excepciones</h3>
 <p>Una excepción autoriza temporalmente a no cumplir un requisito del marco o de la política. <strong>Nunca</strong> se admiten sobre prácticas prohibidas, obligaciones legales, separación de funciones en ningún <em>gate</em>, firma multinivel Enterprise ni existencia de un mecanismo de parada.</p>
 <div class="tabla"><table>
@@ -1540,7 +1544,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Activar funciones de IA en software de terceros contratado</td>
 <td>Propietario del sistema con la Oficina de IA</td>
 <td>Seguridad y protección de datos</td>
-<td>Registro en T02</td>
+<td>Registro en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Cambiar la clasificación regulatoria de un sistema</td>
@@ -1551,7 +1555,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Elevar la autonomía a A2 o A3</td>
 <td>Comité de IA</td>
-<td>Seguridad (documento 35)</td>
+<td>Seguridad (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>)</td>
 <td>Comisión delegada si hay exposición directa</td>
 </tr>
 <tr>
@@ -1563,7 +1567,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Contratar un proveedor N3</td>
 <td>Comité de IA</td>
-<td>Segunda línea (documento 36)</td>
+<td>Segunda línea (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>)</td>
 <td>Comisión delegada</td>
 </tr>
 <tr>
@@ -1598,7 +1602,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Escalar no traslada la responsabilidad</strong>: quien escala sigue respondiendo de la contención mientras se decide.</li>
 <li><strong>El plazo cuenta desde la detección</strong>, no desde la confirmación.</li>
-<li><strong>Se escala por el canal registrado</strong> (T01 o T08) y, si el plazo es inferior a 24 horas, además por contacto directo con la persona designada.</li>
+<li><strong>Se escala por el canal registrado</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> o <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>) y, si el plazo es inferior a 24 horas, además por contacto directo con la persona designada.</li>
 <li><strong>La falta de respuesta en plazo escala automáticamente</strong> al siguiente nivel.</li>
 <li><strong>Nadie puede bloquear un escalado.</strong> Cualquier persona puede dirigirse a la segunda línea o al sistema interno de información de la compañía (en España, regulado por la <a class="ref-ext" href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener" title="Ley 2/2023, de 20 de febrero, reguladora de la protecci&#243;n de las personas que informen sobre infracciones normativas y de lucha contra la corrupci&#243;n">Ley 2/2023, de 20 de febrero</a>).</li>
 </ol>
@@ -1722,7 +1726,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li>El comité de IA no puede decidir Continuar ni Continuar con condiciones en ese asunto.</li>
 <li>Puede decidir Iterar, Pivotar o Parar, o elevar el desacuerdo a la comisión delegada (E-13).</li>
-<li>La comisión resuelve con la información de ambas partes y su decisión se registra en T18.</li>
+<li>La comisión resuelve con la información de ambas partes y su decisión se registra en <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>.</li>
 <li>En la firma multinivel Enterprise cada firmante tiene <strong>veto</strong> (01 §6.7), que solo levanta quien lo emitió, tras la corrección, o la comisión delegada.</li>
 </ol>
 <hr />
@@ -1781,7 +1785,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>La Oficina de IA verifica en Lite</td>
-<td>Es verificación de gestión, no aseguramiento independiente; por eso el auditor de IA revisa una muestra de <em>gates</em> Lite (documento 38).</td>
+<td>Es verificación de gestión, no aseguramiento independiente; por eso el auditor de IA revisa una muestra de <em>gates</em> Lite (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>).</td>
 </tr>
 <tr>
 <td>El delegado de protección de datos participa en la evaluación de impacto</td>
@@ -1991,22 +1995,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Órganos, personas, decisiones, abstenciones, conflictos y excepciones.</td>
 </tr>
 <tr>
-<td><strong>T03</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td>Gestor de <em>gates</em></td>
 <td>Verificador y decisor por <em>gate</em>; bloqueo de autoaprobación.</td>
 </tr>
 <tr>
-<td><strong>T08</strong></td>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></strong></td>
 <td>Registro de no conformidades e incidentes</td>
 <td>Escalado con plazos y alertas.</td>
 </tr>
 <tr>
-<td><strong>T18</strong></td>
+<td><strong><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></strong></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Acuerdos del consejo y de la comisión delegada.</td>
 </tr>
 <tr>
-<td><strong>T22</strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></strong></td>
 <td>Gestor de retiradas</td>
 <td>Retiradas planificadas y forzosas.</td>
 </tr>
@@ -2032,7 +2036,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Requisitos para las herramientas:</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y T03 deben impedir registrar como decisor o verificador a una persona con rol incompatible; registrar abstenciones; exigir la segunda línea en G3, G5, aceptaciones de riesgo y excepciones; y generar alertas con los plazos de la sección 8.2.</p>
+<p><strong>Requisitos para las herramientas:</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> deben impedir registrar como decisor o verificador a una persona con rol incompatible; registrar abstenciones; exigir la segunda línea en G3, G5, aceptaciones de riesgo y excepciones; y generar alertas con los plazos de la sección 8.2.</p>
 <hr />
 <h2 id="documentos-relacionados"><span class="antetitulo">14</span>Documentos relacionados</h2>
 <div class="tabla"><table>

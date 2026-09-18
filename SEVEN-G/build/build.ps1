@@ -314,6 +314,36 @@ function ObtenerMapaReferencias([string]$lang) {
     }
   }
 
+  # Ninguna herramienta citada queda sin enlace (D64). Los módulos de T01 enlazan a su vista del registro; el registro de
+  # recomendaciones (T18) al documento 62, que lo define; y cada herramienta sin aplicación propia, al procedimiento con el que
+  # «Se aplica» según la columna «Estado» del catálogo del documento 03 (la primera plantilla o documento que cita).
+  $htmlSevenG = Join-Path $repo "SEVEN-G\html\$lang"
+  $mdsSevenG = Join-Path $repo "SEVEN-G\mds\es"
+  $destinoSevenG = {
+    param([string]$clave)
+    $f = Get-ChildItem $mdsSevenG -Recurse -File -Filter "${clave}_*.md" | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' } | Select-Object -First 1
+    if (-not $f) { return $null }
+    $relHtml = [IO.Path]::ChangeExtension([IO.Path]::GetRelativePath($mdsSevenG, $f.FullName), '.html')
+    return [IO.Path]::GetRelativePath((Join-Path $root "html\$lang"), (Join-Path $htmlSevenG $relHtml)).Replace('\', '/')
+  }
+  if ($map['T01']) {
+    foreach ($par in @(@('T02', '#/inventario'), @('T03', '#/gates'), @('T04', ''), @('T05', ''))) {
+      if (-not $map[$par[0]]) { $map[$par[0]] = $map['T01'] + $par[1] }
+    }
+  }
+  if (-not $map['T18']) { $d = & $destinoSevenG '62'; if ($d) { $map['T18'] = $d } }
+  $catalogo03 = Get-ChildItem $mdsSevenG -File -Filter '03_*.md' | Select-Object -First 1
+  if ($catalogo03) {
+    foreach ($fila in [regex]::Matches([IO.File]::ReadAllText($catalogo03.FullName), '(?m)^\|\s*\*\*(T\d{2})\*\*\s*\|.*\|\s*Se aplica con ([^|]+)\|\s*$')) {
+      $cod = $fila.Groups[1].Value
+      if ($map[$cod]) { continue }
+      $proc = [regex]::Match($fila.Groups[2].Value, '\b(P\d{2})\b|documento\s+(\d{2})')
+      if (-not $proc.Success) { continue }
+      $d = & $destinoSevenG ($(if ($proc.Groups[1].Success) { $proc.Groups[1].Value } else { $proc.Groups[2].Value }))
+      if ($d) { $map[$cod] = $d }
+    }
+  }
+
   return $map
 }
 
@@ -403,8 +433,9 @@ function SeccionFuentes($citadas, [string]$lang) {
 function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
   # Solo se enlazan las menciones en texto corrido. Nunca dentro de un enlace ya escrito (ni en su texto ni en su dirección), de una URL,
   # de código, de una etiqueta HTML o de un comentario: «plantillas/P01_…html» o «herramientas/T01_…» contienen el código y, si se
-  # tocaran, el enlace quedaría roto. El código tampoco puede ir seguido de «_» (nombre de fichero).
-  $patron = '(?<![\w/\[\(\-])(?:(?<doc>documento\s+\d{2})|(?<tool>T\d{2})|(?<plt>P\d{2}))(?![A-Za-z0-9_\]])'
+  # tocaran, el enlace quedaría roto. El código tampoco puede ir seguido de «_» (nombre de fichero). Entre paréntesis sí se enlaza:
+  # «(T05)» es texto corrido (D64); los enlaces escritos ya están protegidos enteros.
+  $patron = '(?<![\w/\[\-])(?:(?<doc>documento\s+\d{2})|(?<tool>T\d{2})|(?<plt>P\d{2}))(?![A-Za-z0-9_\]])'
   $protegido = '(?s)```.*?```|~~~.*?~~~|`[^`\n]*`|<!--.*?-->|!?\[[^\]\n]*\]\([^)\n]*\)|<[^>\n]+>|https?://[^\s)>\]]+'
   $partes = [regex]::Split($md, "($protegido)")
   $sustituir = {

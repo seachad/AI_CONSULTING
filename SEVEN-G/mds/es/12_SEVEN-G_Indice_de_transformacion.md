@@ -507,9 +507,11 @@ No se presenta el índice como una nota ni se compara con otras compañías (sec
 | **T03** | Gestor de *gates* | Verificación de la clasificación en G2 y G7; aprobaciones del consejo. |
 | **T05** | Clasificador de ambición | Aplica las cinco preguntas y las reglas 1 a 10; registra el resultado y las incoherencias. |
 | **T12** | Seguimiento de realización de valor | Importes por tipo y estado; capacidad liberada y materializada; ingresos habilitados por IA. |
-| **T14** | Calculadora del índice de transformación | Calcula condiciones de base, señales, perfil, alertas, cobertura y evolución; conserva la versión de umbrales. |
+| **T13** | Calculadora de costes por caso | Inversión y coste recurrente de cada iniciativa (señal 1). |
+| **T14** | Calculadora del índice de transformación | Calcula condiciones de base, señales, perfil, alertas, cobertura, qué movería el perfil y evolución; conserva la versión de umbrales. Parte del JSON del registro T01 y se completa a mano con lo que el registro aún no contiene (señales 3 a 6 y 8). |
 | **T17** | Panel de IA para el consejo | Muestra perfil, señales y tendencia. |
 | **T18** | Registro de recomendaciones del consejo | Fuente de la señal 8. |
+| **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión de C2: tesis aprobada (señal 8) y ambición objetivo por esfera (condición IT-D1). |
 | **T20** | Plan de adopción y capacidad | Horas reasignadas y roles rediseñados (señales 3 y 5). |
 | **P07** | Clasificación de esfera y ambición | Evidencia de la clasificación en las fases 1, 2 y 7. |
 

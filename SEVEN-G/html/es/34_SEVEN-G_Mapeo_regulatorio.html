@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Mapeo regulatorio"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -406,13 +410,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
 <blockquote>
-<p><strong>Alcance y responsabilidad.</strong> Este mapeo es <strong>orientativo</strong> y no constituye asesoramiento jurídico. Recoge el estado de las normas consultado el 16 de septiembre de 2026 (fecha de consulta) y no se actualiza automáticamente. Tanto la regulación general (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> o normativa nacional) como la <strong>regulación específica de cada industria</strong> (banca, seguros, sanidad, energía, sector público, entre otras) cambian: las fechas de aplicación, los artículos y los textos en tramitación se modifican, y su alcance depende de la interpretación, las directrices y los criterios de supervisión de las autoridades competentes. El anexo de referencias sectoriales (sección 12) y el de otras jurisdicciones (sección 11) son solo orientativos y no identifican todas las obligaciones aplicables. Antes de usar cualquier fila en una decisión, verifique su vigencia en la fuente oficial. <strong>La organización usuaria es la única responsable de identificar la normativa que le aplica, realizar la clasificación regulatoria de cada sistema (01 §13) y verificar y certificar su cumplimiento con asesoramiento jurídico cualificado</strong>; ni el autor ni SEACHAD asumen esa responsabilidad (documento 93, sección 11).</p>
+<p><strong>Alcance y responsabilidad.</strong> Este mapeo es <strong>orientativo</strong> y no constituye asesoramiento jurídico. Recoge el estado de las normas consultado el 16 de septiembre de 2026 (fecha de consulta) y no se actualiza automáticamente. Tanto la regulación general (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> o normativa nacional) como la <strong>regulación específica de cada industria</strong> (banca, seguros, sanidad, energía, sector público, entre otras) cambian: las fechas de aplicación, los artículos y los textos en tramitación se modifican, y su alcance depende de la interpretación, las directrices y los criterios de supervisión de las autoridades competentes. El anexo de referencias sectoriales (sección 12) y el de otras jurisdicciones (sección 11) son solo orientativos y no identifican todas las obligaciones aplicables. Antes de usar cualquier fila en una decisión, verifique su vigencia en la fuente oficial. <strong>La organización usuaria es la única responsable de identificar la normativa que le aplica, realizar la clasificación regulatoria de cada sistema (01 §13) y verificar y certificar su cumplimiento con asesoramiento jurídico cualificado</strong>; ni el autor ni SEACHAD asumen esa responsabilidad (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</p>
 </blockquote>
 <h3 id="1-1-principio-seven-g-mapea-no-incrusta">1.1 Principio: SEVEN-G mapea, no incrusta</h3>
-<p>SEVEN-G no reproduce la regulación dentro de sus fases. Vincula cada obligación a <strong>una fase o etapa, un rol responsable, una evidencia y una herramienta</strong>. Cuando una norma cambia, se actualiza la fila afectada de este documento y la herramienta T07, sin rehacer el ciclo de vida, los <em>gates</em> ni las plantillas.</p>
+<p>SEVEN-G no reproduce la regulación dentro de sus fases. Vincula cada obligación a <strong>una fase o etapa, un rol responsable, una evidencia y una herramienta</strong>. Cuando una norma cambia, se actualiza la fila afectada de este documento y la herramienta <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, sin rehacer el ciclo de vida, los <em>gates</em> ni las plantillas.</p>
 <p>Este documento desarrolla la sección 13 del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> y cubre: el Reglamento (UE) 2024/1689 (Reglamento Europeo de IA) modificado por el Reglamento (UE) 2026/1744 (sección 3); ISO/IEC 42001:2023 (sección 4); <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1">NIST AI RMF 1.0</a> y <a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de IA: perfil de inteligencia artificial generativa (NIST AI 600-1)">NIST AI 600-1</a> (sección 5); el RGPD y las guías del <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_es" target="_blank" rel="noopener" title="Comit&#233; Europeo de Protecci&#243;n de Datos (CEPD)">CEPD</a> (sección 6); DORA y NIS2 cuando apliquen (sección 7); la normativa española y AESIA (sección 8); y, de forma orientativa, otras jurisdicciones y sectores (secciones 11 y 12).</p>
 <h3 id="1-2-que-no-hace-este-documento">1.2 Qué no hace este documento</h3>
-<p>No clasifica sistemas concretos (eso se hace en la fase 3 con <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y T07), no sustituye el texto de las normas ni las directrices de las autoridades, no afirma requisitos sectoriales no verificados y no reproduce el texto de normas ISO/IEC: solo identifica cláusulas y grupos de controles por número y tema.</p>
+<p>No clasifica sistemas concretos (eso se hace en la fase 3 con <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>), no sustituye el texto de las normas ni las directrices de las autoridades, no afirma requisitos sectoriales no verificados y no reproduce el texto de normas ISO/IEC: solo identifica cláusulas y grupos de controles por número y tema.</p>
 <h3 id="1-3-como-leer-las-tablas-de-mapeo">1.3 Cómo leer las tablas de mapeo</h3>
 <p>Todas las tablas de mapeo usan las mismas columnas:</p>
 <div class="tabla"><table>
@@ -449,7 +453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>Herramienta <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–T22 donde se registra (documento 03).</td>
+<td>Herramienta <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> donde se registra (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -480,7 +484,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="determinaciones-previas-a-cualquier-mapeo"><span class="antetitulo">02</span>Determinaciones previas a cualquier mapeo</h2>
-<p>Antes de aplicar las tablas, cada sistema debe tener resueltas cuatro preguntas. Se registran en la fase 0 de forma provisional (P02, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>) y se confirman en la fase 3 (P11).</p>
+<p>Antes de aplicar las tablas, cada sistema debe tener resueltas cuatro preguntas. Se registran en la fase 0 de forma provisional (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>) y se confirman en la fase 3 (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -499,7 +503,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Sistema de IA · Modelo de uso general · No es IA (etiqueta <em>Reglas (no es IA)</em>)</td>
 <td>0, confirmado en 3</td>
 <td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T02, T07</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>¿Está dentro del ámbito del Reglamento?</td>
@@ -507,7 +511,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Dentro · Fuera de ámbito</td>
 <td>0, confirmado en 3</td>
 <td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>¿Qué papel tiene la compañía respecto a ese sistema?</td>
@@ -515,7 +519,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Uno o varios roles por sistema</td>
 <td>0, confirmado en 3 y revisado en R6</td>
 <td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
-<td>T02, T07, T09</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>¿En qué categoría de riesgo está?</td>
@@ -523,7 +527,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (taxonomía de 03 §3.3)</td>
 <td>3; revisión en R6 y G7</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07, T02</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -545,7 +549,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   class AR,TR med
   class P ko
 </pre></div><div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div></figure>
-<p>Las categorías no son excluyentes: T07 debe registrar todas las que apliquen.</p>
+<p>Las categorías no son excluyentes: <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> debe registrar todas las que apliquen.</p>
 <hr />
 <h2 id="reglamento-europeo-de-ia"><span class="antetitulo">03</span>Reglamento Europeo de IA</h2>
 <h3 id="3-1-calendario-de-aplicacion-verificado">3.1 Calendario de aplicación verificado</h3>
@@ -576,7 +580,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>2-08-2025</strong></td>
 <td>Obligaciones de proveedores de modelos de IA de uso general (capítulo V); gobernanza; autoridades nacionales; régimen sancionador (salvo multas a proveedores de modelos de uso general).</td>
 <td>Verificado (oficial)</td>
-<td>Requisitos de información a proveedores de modelos (P14, T09).</td>
+<td>Requisitos de información a proveedores de modelos (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>).</td>
 </tr>
 <tr>
 <td><strong>2-08-2026</strong></td>
@@ -588,7 +592,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>2-12-2026</strong></td>
 <td>Nuevas prohibiciones añadidas al art. 5 por el ómnibus (generación de material íntimo no consentido y de material de abuso sexual infantil). Fin del periodo transitorio del marcado legible por máquina del art. 50.2 para sistemas introducidos en el mercado antes del 2-08-2026.</td>
 <td>Verificado (oficial) en cuanto a fecha y contenido general; numeración del apartado pendiente de confirmar</td>
-<td>Incorporar al cuestionario T07 y a las pruebas de la fase 5 de sistemas generativos.</td>
+<td>Incorporar al cuestionario <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> y a las pruebas de la fase 5 de sistemas generativos.</td>
 </tr>
 <tr>
 <td><strong>2-08-2027</strong></td>
@@ -628,7 +632,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Art. 113</td>
 <td>2-12-2027 (anexo III) y 2-08-2028 (anexo I)</td>
 <td>Verificado (oficial)</td>
-<td>Actualiza T07 y la columna de fechas de <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>. No cambia los <em>gates</em>.</td>
+<td>Actualiza <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> y la columna de fechas de <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>. No cambia los <em>gates</em>.</td>
 </tr>
 <tr>
 <td>Alfabetización en IA: la obligación pasa a ser de apoyo al desarrollo de la alfabetización del personal, sin exigir un nivel concreto; se refuerza el papel de la Comisión y los Estados miembros</td>
@@ -642,7 +646,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Art. 5</td>
 <td>2-12-2026</td>
 <td>Verificado (oficial)</td>
-<td>Nueva pregunta en T07 y prueba específica en la fase 5 de sistemas generativos (P22).</td>
+<td>Nueva pregunta en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> y prueba específica en la fase 5 de sistemas generativos (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
 </tr>
 <tr>
 <td>Periodo transitorio del marcado de contenido sintético</td>
@@ -656,7 +660,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Art. 10 y disposición asociada</td>
 <td>Desde la entrada en vigor del ómnibus</td>
 <td>Verificado (oficial) en lo esencial; artículo exacto verificado (secundaria)</td>
-<td>Requiere base jurídica <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> documentada y salvaguardas (P16, evaluación de impacto en protección de datos en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Requiere base jurídica <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> documentada y salvaguardas (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, evaluación de impacto en protección de datos en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
 </tr>
 <tr>
 <td>Registro en la base de datos de la UE: se mantiene, con información simplificada, para sistemas del anexo III que el proveedor considera no de alto riesgo</td>
@@ -717,13 +721,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/library/commission-publishes-guidelines-prohibited-artificial-intelligence-ai-practices-defined-ai-act" target="_blank" rel="noopener" title="Directrices de la Comisi&#243;n sobre pr&#225;cticas de inteligencia artificial prohibidas establecidas por el Reglamento (UE) 2024/1689 (Reglamento de IA)">Directrices sobre prácticas de IA prohibidas</a></td>
 <td>Febrero de 2025</td>
 <td>Publicadas (no vinculantes)</td>
-<td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 </tr>
 <tr>
 <td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/library/commission-publishes-guidelines-ai-system-definition-facilitate-first-ai-acts-rules-application" target="_blank" rel="noopener" title="Directrices de la Comisi&#243;n sobre la definici&#243;n de sistema de inteligencia artificial establecida por el Reglamento (UE) 2024/1689 (Reglamento de IA)">Directrices sobre la definición de sistema de IA</a></td>
 <td>Febrero de 2025</td>
 <td>Publicadas (no vinculantes)</td>
-<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, T02</td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/policies/contents-code-gpai" target="_blank" rel="noopener" title="C&#243;digo de buenas pr&#225;cticas de IA de uso general">Código de buenas prácticas para modelos de IA de uso general</a></td>
@@ -747,13 +751,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/consultations/ai-act-commission-issues-draft-guidance-and-reporting-template-serious-ai-incidents-and-seeks" target="_blank" rel="noopener" title="Proyecto de orientaciones y plantilla de notificaci&#243;n de incidentes graves de IA (art. 73 del Reglamento de IA)">Proyecto de orientaciones y plantilla sobre notificación de incidentes graves</a> (art. 73)</td>
 <td>Consulta en 2025</td>
 <td>Versión final pendiente de confirmar</td>
-<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/library/draft-commission-guidelines-classification-high-risk-ai-systems" target="_blank" rel="noopener" title="Proyecto de directrices de la Comisi&#243;n sobre la clasificaci&#243;n de los sistemas de IA de alto riesgo">Proyecto de directrices sobre clasificación de sistemas de alto riesgo</a> (art. 6)</td>
 <td>Proyecto publicado el 19-05-2026; consulta dirigida</td>
 <td>Proyecto; adopción final pendiente</td>
-<td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 </tr>
 <tr>
 <td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/policies/code-practice-ai-generated-content" target="_blank" rel="noopener" title="C&#243;digo de buenas pr&#225;cticas sobre transparencia de los contenidos generados por IA (marcado y etiquetado)">Código de buenas prácticas sobre marcado y etiquetado de contenido generado por IA</a></td>
@@ -765,7 +769,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems" target="_blank" rel="noopener" title="Directrices sobre las obligaciones de transparencia de los proveedores y responsables del despliegue de determinados sistemas de IA (art. 50 del Reglamento de IA)">Directrices sobre las obligaciones de transparencia</a> (art. 50)</td>
 <td>20-07-2026</td>
 <td>Publicadas</td>
-<td>T07, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 </tr>
 <tr>
 <td>Normas armonizadas (<a class="ref-ext" href="https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/" target="_blank" rel="noopener" title="CEN-CLC/JTC 21 &#171;Artificial Intelligence&#187;: normas europeas (armonizadas) en apoyo del Reglamento de IA">CEN-CENELEC JTC 21</a>)</td>
@@ -796,7 +800,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1 (filtrado), 3 (clasificación)</td>
 <td>Responsable de producto; Responsable de riesgos con asesoría jurídica</td>
 <td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>No explotar vulnerabilidades por edad, discapacidad o situación social o económica</td>
@@ -805,7 +809,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1, 3</td>
 <td>Responsable de producto; Responsable de riesgos</td>
 <td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>No realizar puntuación social con trato perjudicial o desproporcionado</td>
@@ -814,7 +818,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1, 3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>No evaluar el riesgo de que una persona cometa un delito basándose únicamente en perfiles o rasgos de personalidad</td>
@@ -823,7 +827,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>No crear o ampliar bases de datos de reconocimiento facial mediante extracción no selectiva de imágenes</td>
@@ -832,7 +836,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3; controles de datos en 4</td>
 <td>Responsable técnico; Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>No inferir emociones en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad</td>
@@ -841,7 +845,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos; segunda línea</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>No categorizar biométricamente para deducir raza, opiniones políticas, afiliación sindical, convicciones, vida u orientación sexual</td>
@@ -850,7 +854,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>No usar identificación biométrica remota en tiempo real en espacios públicos con fines policiales, salvo excepciones tasadas</td>
@@ -859,7 +863,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>No introducir ni usar sistemas que generen material íntimo no consentido o material de abuso sexual infantil, ni sistemas sin salvaguardas razonables frente a ese resultado previsible</td>
@@ -868,7 +872,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3; pruebas en 5; revisión en R6</td>
 <td>Responsable técnico; Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T07, T10</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Detectar y detener cualquier práctica prohibida en sistemas en producción o en uso no autorizado</td>
@@ -876,8 +880,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Toda la compañía</td>
 <td>6, C4</td>
 <td>Responsable de operación; Comité de IA; comisión delegada</td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; no conformidad crítica (documento 37)</td>
-<td>T08, T21</td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; no conformidad crítica (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>)</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -903,7 +907,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2 (política), C3 (plan), fases 4–6 por iniciativa</td>
 <td>Alta dirección; Oficina de IA; responsable de personas</td>
 <td>Documento 31 (política), <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>Formación específica de quienes usan o supervisan cada sistema</td>
@@ -912,7 +916,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), 5 (formación de usuarios)</td>
 <td>Responsable de producto</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>Seguimiento de la cobertura de formación y del uso corporativo de IA</td>
@@ -920,8 +924,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Proveedores y responsables del despliegue</td>
 <td>C4</td>
 <td>Oficina de IA</td>
-<td>Panel del consejo (documento 60)</td>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, T21</td>
+<td>Panel del consejo (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>)</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -946,7 +950,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos; Responsable técnico</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Determinar si el uso previsto figura en el anexo III</td>
@@ -955,7 +959,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1 (señal temprana), 3 (clasificación)</td>
 <td>Responsable de producto; Responsable de riesgos</td>
 <td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Documentar, antes de la introducción en el mercado, la excepción cuando un sistema del anexo III no presenta riesgo significativo (tarea procedimental limitada, mejora de una actividad humana previa, detección de patrones sin sustituir la valoración humana o tarea preparatoria); no cabe si hay elaboración de perfiles</td>
@@ -964,7 +968,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3; revisión en G4 y R6</td>
 <td>Responsable de riesgos con asesoría jurídica; verificación del Auditor de IA</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07, T03</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Registrar la excepción en la base de datos de la UE</td>
@@ -973,7 +977,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5 (antes de G5)</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Revisar la clasificación ante cambios de finalidad, alcance, datos o autonomía</td>
@@ -982,7 +986,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>R6, G7 y cada cambio</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T07, T08</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1008,7 +1012,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3 (evaluación), 4 (controles), 5 (pruebas), 6 (seguimiento)</td>
 <td>Responsable de riesgos; Responsable técnico</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Gobernanza y calidad de los datos de entrenamiento, validación y prueba: pertinencia, representatividad, ausencia de errores en la medida de lo posible, examen de sesgos</td>
@@ -1017,7 +1021,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3 (disponibilidad), 4 (linaje), 5 (pruebas de sesgo)</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; <a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Documentación técnica conforme al anexo IV, preparada antes de la introducción en el mercado y actualizada</td>
@@ -1026,7 +1030,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 y 5; mantenimiento en 6</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>; <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a></td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Registro automático de eventos (<em>logs</em>) que permita la trazabilidad</td>
@@ -1035,7 +1039,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), 6 (conservación)</td>
 <td>Responsable técnico; Responsable de operación</td>
 <td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Transparencia e instrucciones de uso para los responsables del despliegue</td>
@@ -1053,7 +1057,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), 5 (prueba), 6 (operación)</td>
 <td>Responsable técnico; Responsable de producto</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Precisión, solidez y ciberseguridad adecuadas, incluida la resistencia a manipulación de datos, modelos y entradas</td>
@@ -1062,7 +1066,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), 5 (pruebas), 6 (monitorización)</td>
 <td>Responsable técnico; seguridad de la información</td>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>; <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1087,7 +1091,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4, 5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Sistema de gestión de la calidad documentado (estrategia de cumplimiento, diseño, desarrollo, pruebas, gestión de datos, riesgos, vigilancia posterior a la comercialización, incidentes, responsabilidades)</td>
@@ -1096,7 +1100,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2 (marco), 4–6 (aplicación)</td>
 <td>Oficina de IA; Responsable técnico</td>
 <td>Documentos 01, 20, 21, 53; sección 4 de este documento</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Conservar la documentación durante diez años desde la introducción en el mercado</td>
@@ -1123,7 +1127,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5 (antes de G5)</td>
 <td>Responsable técnico; segunda línea</td>
 <td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Registro en la base de datos de la UE</td>
@@ -1132,7 +1136,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5 (antes de G5)</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Medidas correctoras, retirada o recuperación e información a distribuidores, responsables del despliegue y autoridades cuando el sistema no sea conforme</td>
@@ -1141,7 +1145,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6; G7 si procede retirada</td>
 <td>Responsable de operación; Comité de IA</td>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
-<td>T08, T22</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
 </tr>
 <tr>
 <td>Cooperar con las autoridades y facilitar documentación y registros</td>
@@ -1150,7 +1154,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6, C4</td>
 <td>Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Designar representante autorizado cuando el proveedor esté fuera de la UE</td>
@@ -1159,7 +1163,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3 (evaluación del proveedor)</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Verificaciones del importador y del distribuidor antes de comercializar</td>
@@ -1168,16 +1172,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3, 5</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Asumir obligaciones de proveedor al poner nombre o marca, modificar sustancialmente o cambiar la finalidad a alto riesgo; acuerdos escritos con proveedores de componentes</td>
 <td>Art. 25</td>
 <td>Responsables del despliegue, distribuidores, importadores y otros terceros</td>
-<td>3, 4 y cada cambio (P27)</td>
+<td>3, 4 y cada cambio (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>)</td>
 <td>Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a></td>
-<td>T07, T09</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1211,7 +1215,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), 5 (formación), 6</td>
 <td>Responsable de producto</td>
 <td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>Garantizar que los datos de entrada bajo su control sean pertinentes y suficientemente representativos</td>
@@ -1229,7 +1233,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6</td>
 <td>Responsable de operación</td>
 <td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Conservar los registros bajo su control al menos seis meses, salvo otra norma</td>
@@ -1247,7 +1251,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (plan), antes de G5</td>
 <td>Patrocinador; responsable de personas</td>
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>; <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a></td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>Registro en la base de datos de la UE cuando el responsable del despliegue es una autoridad pública</td>
@@ -1256,7 +1260,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Usar la información del proveedor para la evaluación de impacto en protección de datos</td>
@@ -1265,7 +1269,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos; delegado de protección de datos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Informar a las personas físicas de que están sujetas al uso de un sistema del anexo III que toma decisiones o ayuda a tomarlas</td>
@@ -1283,7 +1287,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), 6 (atención de solicitudes)</td>
 <td>Responsable de producto; segunda línea</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Cooperar con las autoridades</td>
@@ -1292,7 +1296,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6, C4</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1318,7 +1322,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3 (evaluación), actualizada en 4</td>
 <td>Responsable de riesgos; segunda línea; Responsable de producto</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Actualizar la evaluación cuando cambien sus elementos</td>
@@ -1327,7 +1331,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>R6 y cada cambio</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T07, T08</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Notificar los resultados a la autoridad de vigilancia del mercado con el formulario previsto</td>
@@ -1336,7 +1340,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5 (antes de G5)</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Complementar, sin duplicar, la evaluación de impacto en protección de datos</td>
@@ -1345,7 +1349,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos; delegado de protección de datos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1371,7 +1375,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), 5 (prueba)</td>
 <td>Responsable de producto</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Marcar en formato legible por máquina los contenidos sintéticos de audio, imagen, vídeo o texto</td>
@@ -1380,7 +1384,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4, 5; plan de adecuación en R6</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T07, T10</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Informar a las personas expuestas a sistemas de reconocimiento de emociones o de categorización biométrica</td>
@@ -1389,7 +1393,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4, 6</td>
 <td>Responsable de producto; delegado de protección de datos</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Revelar que un contenido es ultrasuplantación (<em>deepfake</em>), y que un texto publicado para informar sobre asuntos de interés público ha sido generado o manipulado, salvo revisión humana con responsabilidad editorial</td>
@@ -1398,7 +1402,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4, 6</td>
 <td>Responsable de producto</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Facilitar la información de forma clara y a más tardar en la primera interacción o exposición</td>
@@ -1434,7 +1438,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3 (evaluación del proveedor), 4 (arquitectura)</td>
 <td>Responsable técnico; Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Comprobar que el proveedor tiene política de derechos de autor y resumen público del contenido de entrenamiento</td>
@@ -1443,7 +1447,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Conocer si el modelo está clasificado con riesgo sistémico y qué evaluaciones, mitigaciones y notificación de incidentes aplica su proveedor</td>
@@ -1452,7 +1456,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3, 6</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
-<td>T06, T09</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Evaluar si las modificaciones propias (por ejemplo, reentrenamiento o ajuste fino significativo) convierten a la compañía en proveedora del modelo modificado, con los criterios de las directrices de la Comisión de julio de 2025</td>
@@ -1461,7 +1465,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), cada cambio</td>
 <td>Responsable técnico con asesoría jurídica</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Si el sistema construido sobre el modelo es de alto riesgo, cumplir todas las obligaciones del proveedor del sistema</td>
@@ -1470,7 +1474,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3–6</td>
 <td>Responsable técnico; Responsable de riesgos</td>
 <td>Secciones 3.7 y 3.8</td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Considerar la adhesión del proveedor al código de buenas prácticas como elemento de la evaluación, no como garantía</td>
@@ -1479,7 +1483,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1505,7 +1509,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5, antes de G5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T02, T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Registrar los sistemas del anexo III que el proveedor considera no de alto riesgo por el art. 6.3, con la información simplificada que establezca el texto modificado</td>
@@ -1514,7 +1518,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5, antes de G5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Registrarse y seleccionar el sistema en la base de datos cuando el responsable del despliegue es autoridad pública</td>
@@ -1523,7 +1527,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5, antes de G5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Mantener actualizada la información registrada</td>
@@ -1532,11 +1536,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6, R6, G7</td>
 <td>Responsable de operación</td>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
-<td>T02, T08</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
-<p>El alta en el inventario interno (P05, T02) es obligatoria desde la fase 0 para todo sistema; el registro UE es distinto y se verifica en G5.</p>
+<p>El alta en el inventario interno (<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) es obligatoria desde la fase 0 para todo sistema; el registro UE es distinto y se verifica en G5.</p>
 <h3 id="3-14-vigilancia-posterior-a-la-comercializacion-art-72">3.14 Vigilancia posterior a la comercialización (art. 72)</h3>
 <div class="tabla"><table>
 <thead>
@@ -1558,7 +1562,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4 (diseño), 6 (ejecución)</td>
 <td>Responsable de operación; Responsable técnico</td>
 <td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
-<td>T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 </tr>
 <tr>
 <td>Plan de vigilancia posterior a la comercialización como parte de la documentación técnica</td>
@@ -1567,7 +1571,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4, verificado en G5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Integrar la vigilancia en los sistemas existentes cuando exista legislación sectorial equivalente</td>
@@ -1585,7 +1589,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>R6</td>
 <td>Auditor de IA verifica; Comité de IA decide en Enterprise</td>
 <td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1610,7 +1614,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6</td>
 <td>Responsable de operación; Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Notificar a la autoridad de vigilancia del mercado en cuanto se establezca el vínculo causal o su probabilidad razonable y, como máximo, en 15 días desde que se tenga conocimiento</td>
@@ -1619,7 +1623,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6 (severidad S1)</td>
 <td>Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Plazos reducidos: inmediato y no más de 2 días en infracciones generalizadas o alteraciones graves de infraestructuras críticas; no más de 10 días en caso de fallecimiento</td>
@@ -1628,7 +1632,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6 (S1)</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Investigar, evaluar el riesgo y adoptar medidas correctoras sin alterar el sistema de forma que afecte a la evaluación de las causas antes de informar a las autoridades</td>
@@ -1637,7 +1641,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6; G7 si procede</td>
 <td>Responsable de operación; Responsable técnico</td>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Informar sin demora al proveedor y, en su caso, a las autoridades cuando el responsable del despliegue identifique un incidente grave</td>
@@ -1646,7 +1650,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6</td>
 <td>Responsable de operación</td>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Tratar todo posible incidente grave como severidad S1 y escalado E-4</td>
@@ -1655,7 +1659,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6, C4</td>
 <td>Comité de IA; comisión delegada</td>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1675,7 +1679,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Prácticas prohibidas</td>
 <td>Art. 99.3</td>
 <td>35 millones de euros o el 7 % del volumen de negocios mundial anual, si es superior</td>
-<td>Impacto 5 (Crítico) en el eje regulatorio (documento 33)</td>
+<td>Impacto 5 (Crítico) en el eje regulatorio (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>)</td>
 </tr>
 <tr>
 <td>Otras obligaciones de operadores (entre ellas arts. 16, 22–24, 26 y 50)</td>
@@ -1728,7 +1732,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C1</td>
 <td>Oficina de IA</td>
 <td>Documento 11 (diagnóstico); inventario</td>
-<td>T02, T15</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></td>
 </tr>
 <tr>
 <td>Necesidades y expectativas de las partes interesadas</td>
@@ -1737,7 +1741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C1, C2</td>
 <td>Oficina de IA; alta dirección</td>
 <td>Documento 13</td>
-<td>T19</td>
+<td><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a></td>
 </tr>
 <tr>
 <td>Alcance del sistema de gestión</td>
@@ -1746,7 +1750,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2</td>
 <td>Alta dirección</td>
 <td>Documentos 13 y 31</td>
-<td>T19</td>
+<td><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a></td>
 </tr>
 <tr>
 <td>Establecer el sistema de gestión</td>
@@ -1764,7 +1768,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2, C4</td>
 <td>Consejo; alta dirección</td>
 <td>Documentos 13 y 60</td>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, T18</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 </tr>
 <tr>
 <td>Política de IA</td>
@@ -1773,7 +1777,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2</td>
 <td>Alta dirección; aprueba el consejo</td>
 <td>Documento 31</td>
-<td>T19</td>
+<td><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a></td>
 </tr>
 <tr>
 <td>Roles, responsabilidades y autoridades</td>
@@ -1791,7 +1795,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2, C3</td>
 <td>Comité de IA</td>
 <td>Documentos 13 y 14</td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Evaluación de riesgos de IA</td>
@@ -1800,7 +1804,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2 (criterios), fase 3 (evaluación)</td>
 <td>Responsable de riesgos</td>
 <td>Documento 33; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Tratamiento de riesgos de IA y declaración de aplicabilidad de los controles</td>
@@ -1809,7 +1813,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2 (declaración), fases 3–4</td>
 <td>Oficina de IA; Responsable de riesgos</td>
 <td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>; sección 4.2 como base de la declaración</td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Evaluación de impacto de los sistemas de IA</td>
@@ -1818,7 +1822,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Objetivos de IA y planificación para lograrlos</td>
@@ -1827,7 +1831,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2, C3; fase 2</td>
 <td>Alta dirección; Responsable de producto</td>
 <td>Documentos 13 y 14; <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
-<td>T11, T19</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a>, <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a></td>
 </tr>
 <tr>
 <td>Planificación de los cambios</td>
@@ -1845,7 +1849,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C3</td>
 <td>Comité de IA</td>
 <td>Documento 14</td>
-<td>T13</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 </tr>
 <tr>
 <td>Competencia</td>
@@ -1854,7 +1858,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C3; fases 4–5</td>
 <td>Responsable de personas; Oficina de IA</td>
 <td>Documento 50; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>Toma de conciencia</td>
@@ -1863,7 +1867,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2–C4</td>
 <td>Oficina de IA</td>
 <td>Documentos 31 y 50</td>
-<td>T20, T21</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></td>
 </tr>
 <tr>
 <td>Comunicación</td>
@@ -1881,7 +1885,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Todas</td>
 <td>Oficina de IA</td>
 <td>Registro de evidencias (03 §4)</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Planificación y control operacional</td>
@@ -1890,7 +1894,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 0–7</td>
 <td>Responsables de la iniciativa</td>
 <td>Documento 20; <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Evaluación de riesgos de IA a intervalos planificados</td>
@@ -1899,7 +1903,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3; R6</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Tratamiento de riesgos de IA</td>
@@ -1908,7 +1912,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–6</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Evaluación de impacto de los sistemas de IA a intervalos planificados</td>
@@ -1917,7 +1921,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3; R6</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Seguimiento, medición, análisis y evaluación</td>
@@ -1926,7 +1930,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C4; fase 6</td>
 <td>Oficina de IA</td>
 <td>Documentos 40 y 41; <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
-<td>T12, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
 </tr>
 <tr>
 <td>Auditoría interna</td>
@@ -1935,7 +1939,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C4, C5</td>
 <td>Tercera línea; Auditor de IA</td>
 <td>Documento 38</td>
-<td>T03</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Revisión por la dirección</td>
@@ -1944,7 +1948,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C5</td>
 <td>Consejo; alta dirección</td>
 <td>Documento 60; <a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a></td>
-<td>T15, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a>, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
 </tr>
 <tr>
 <td>Mejora continua</td>
@@ -1952,7 +1956,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Organización</td>
 <td>C5</td>
 <td>Oficina de IA</td>
-<td>Lecciones aprendidas (P30)</td>
+<td>Lecciones aprendidas (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 </tr>
 <tr>
@@ -1962,7 +1966,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Todas</td>
 <td>Auditor de IA; Comité de IA</td>
 <td>Documento 37</td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1988,7 +1992,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2, C5</td>
 <td>Alta dirección; Oficina de IA</td>
 <td>Documento 31</td>
-<td>T19</td>
+<td><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a></td>
 </tr>
 <tr>
 <td>Organización interna: roles y responsabilidades; cauce para comunicar preocupaciones</td>
@@ -2006,7 +2010,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–4</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T13</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 </tr>
 <tr>
 <td>Evaluación de impactos: proceso, documentación, impacto en personas o colectivos e impacto social</td>
@@ -2015,7 +2019,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3; R6</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Ciclo de vida del sistema de IA: objetivos y procesos de desarrollo responsable, requisitos, diseño, verificación y validación, despliegue, operación y seguimiento, documentación técnica, registro de eventos</td>
@@ -2024,7 +2028,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 2–6</td>
 <td>Responsable técnico; Responsable de operación</td>
 <td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>; <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a></td>
-<td>T03, T10</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Datos para los sistemas de IA: datos de desarrollo, adquisición, calidad, procedencia y preparación</td>
@@ -2033,7 +2037,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; <a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Información para las partes interesadas: documentación para usuarios, comunicación externa, comunicación de incidentes</td>
@@ -2042,7 +2046,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 4–6</td>
 <td>Responsable de producto; Responsable de operación</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Uso de los sistemas de IA: procesos y objetivos de uso responsable, uso previsto</td>
@@ -2051,7 +2055,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2; fases 4–6</td>
 <td>Responsable de producto; Oficina de IA</td>
 <td>Documento 31; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
-<td>T21</td>
+<td><a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></td>
 </tr>
 <tr>
 <td>Relaciones con terceros y clientes: reparto de responsabilidades, proveedores y clientes</td>
@@ -2060,7 +2064,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–4; C4</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2090,7 +2094,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2</td>
 <td>Alta dirección; Oficina de IA</td>
 <td>Documentos 01, 31 y 33</td>
-<td>T19</td>
+<td><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a></td>
 </tr>
 <tr>
 <td>Estructuras de rendición de cuentas</td>
@@ -2135,7 +2139,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3; C4</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Establecer y comprender el contexto</td>
@@ -2153,7 +2157,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 1 y 3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T05, T07</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Capacidades, uso previsto, objetivos, beneficios y costes</td>
@@ -2162,7 +2166,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 2–3</td>
 <td>Responsable de producto</td>
 <td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
-<td>T11, T13</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a>, <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 </tr>
 <tr>
 <td>Riesgos y beneficios de todos los componentes, incluidos los de terceros</td>
@@ -2171,7 +2175,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
-<td>T06, T09</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Impactos en personas, colectivos, organizaciones y sociedad</td>
@@ -2180,7 +2184,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Métodos y métricas adecuados</td>
@@ -2189,7 +2193,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 2 y 5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T11</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">T11</a></td>
 </tr>
 <tr>
 <td>Evaluación de las características de fiabilidad (validez, seguridad, resiliencia, transparencia, explicabilidad, privacidad, equidad)</td>
@@ -2198,7 +2202,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Seguimiento de riesgos a lo largo del tiempo</td>
@@ -2207,7 +2211,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 6</td>
 <td>Responsable de operación</td>
 <td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T06, T08</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Retroalimentación sobre la eficacia de la medición</td>
@@ -2216,7 +2220,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>R6, C5</td>
 <td>Oficina de IA</td>
 <td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a></td>
-<td>T12</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 </tr>
 <tr>
 <td>Priorizar y responder a los riesgos</td>
@@ -2225,7 +2229,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3 y 6</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Estrategias para maximizar beneficios y minimizar impactos negativos</td>
@@ -2234,7 +2238,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 4–7</td>
 <td>Responsable de producto; Comité de IA</td>
 <td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
-<td>T22</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
 </tr>
 <tr>
 <td>Gestionar los riesgos de terceros</td>
@@ -2243,7 +2247,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–6</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Tratamientos documentados y supervisados, incluidas respuesta, recuperación y comunicación</td>
@@ -2252,7 +2256,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 6</td>
 <td>Responsable de operación</td>
 <td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2278,7 +2282,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3 (solo si aplica al uso)</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Confabulación (contenidos erróneos presentados con seguridad)</td>
@@ -2287,7 +2291,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3, 5 y 6</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Contenido peligroso, violento o de odio</td>
@@ -2296,7 +2300,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 4–5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Privacidad de datos</td>
@@ -2305,7 +2309,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–4</td>
 <td>Responsable de riesgos; delegado de protección de datos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Impactos ambientales</td>
@@ -2314,7 +2318,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3; C4</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>; <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a></td>
-<td>T13</td>
+<td><a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 </tr>
 <tr>
 <td>Sesgo perjudicial y homogeneización</td>
@@ -2323,7 +2327,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3 y 5</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Configuración persona–IA (dependencia excesiva, antropomorfización)</td>
@@ -2332,7 +2336,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 4</td>
 <td>Responsable de producto</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
-<td>T20</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 </tr>
 <tr>
 <td>Integridad de la información</td>
@@ -2350,7 +2354,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 4–6</td>
 <td>Responsable técnico; seguridad de la información</td>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Propiedad intelectual</td>
@@ -2359,7 +2363,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–5</td>
 <td>Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Contenido obsceno, degradante o abusivo</td>
@@ -2368,7 +2372,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–5 (relacionado con las nuevas prohibiciones del art. 5)</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T07, T10</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Cadena de valor e integración de componentes</td>
@@ -2377,7 +2381,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–4</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2404,7 +2408,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–4; verificación en G3 y G4</td>
 <td>Responsable de riesgos; delegado de protección de datos (asesora)</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Base jurídica del tratamiento en entrenamiento, prueba y uso</td>
@@ -2413,7 +2417,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3</td>
 <td>Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Condiciones para tratar categorías especiales de datos, incluido el tratamiento para detectar y corregir sesgos permitido por el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a></td>
@@ -2422,7 +2426,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–5</td>
 <td>Responsable de riesgos; delegado de protección de datos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Información a los interesados, incluida la existencia de decisiones automatizadas e información significativa sobre la lógica aplicada</td>
@@ -2440,7 +2444,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 6</td>
 <td>Responsable de operación; delegado de protección de datos</td>
 <td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>No sujeción a decisiones basadas únicamente en tratamiento automatizado con efectos jurídicos o significativos, salvo excepciones con garantías (intervención humana, expresar el punto de vista, impugnar)</td>
@@ -2449,7 +2453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3 (clasificación), fase 4 (supervisión humana), fase 6</td>
 <td>Responsable de producto; Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Protección de datos desde el diseño y por defecto</td>
@@ -2458,7 +2462,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 4; verificado en G4</td>
 <td>Responsable técnico</td>
 <td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Registro de actividades de tratamiento</td>
@@ -2467,7 +2471,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 4, antes de G5</td>
 <td>Delegado de protección de datos; Responsable técnico</td>
 <td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td>T02</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 </tr>
 <tr>
 <td>Notificación de violaciones de seguridad a la autoridad de control en 72 horas y, si hay alto riesgo, a los interesados</td>
@@ -2476,7 +2480,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 6 (S1–S2)</td>
 <td>Responsable de operación; delegado de protección de datos</td>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Evaluación de impacto relativa a la protección de datos cuando sea probable un alto riesgo (en particular, evaluación sistemática y exhaustiva basada en tratamiento automatizado) y consulta previa si procede</td>
@@ -2485,7 +2489,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3; actualizada en 4 y R6</td>
 <td>Responsable de riesgos; delegado de protección de datos (asesora y supervisa)</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2590,7 +2594,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C2; fases 3–6</td>
 <td>Segunda línea; Responsable de riesgos</td>
 <td>Documentos 33 y 35; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
-<td>T06</td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></td>
 </tr>
 <tr>
 <td>Identificación, protección, detección, respuesta y recuperación, copias de seguridad, aprendizaje</td>
@@ -2599,7 +2603,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 4–6</td>
 <td>Responsable técnico; Responsable de operación</td>
 <td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Proceso de gestión, clasificación y notificación de incidentes graves relacionados con las TIC, con los plazos de sus normas técnicas</td>
@@ -2608,7 +2612,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 6</td>
 <td>Responsable de operación; segunda línea</td>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Pruebas de resiliencia operativa digital</td>
@@ -2617,7 +2621,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 5; C4</td>
 <td>Responsable técnico; seguridad de la información</td>
 <td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T10</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Gestión del riesgo de terceros proveedores TIC, registro de información y evaluación del riesgo de concentración</td>
@@ -2626,7 +2630,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3; C4</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 <tr>
 <td>Cláusulas contractuales esenciales con proveedores TIC (incluidos proveedores de modelos y plataformas de IA)</td>
@@ -2635,7 +2639,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–4</td>
 <td>Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a></td>
-<td>T09</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2669,7 +2673,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–6</td>
 <td>Seguridad de la información; Responsable técnico</td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>; <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a></td>
-<td>T09, T10</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 </tr>
 <tr>
 <td>Notificación de incidentes significativos: alerta temprana en 24 horas, notificación en 72 horas e informe final en un mes</td>
@@ -2678,7 +2682,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 6 (S1–S2)</td>
 <td>Responsable de operación; seguridad de la información</td>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2755,7 +2759,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fase 3</td>
 <td>Responsable de riesgos; asesoría jurídica</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 <tr>
 <td>Canalizar notificaciones de incidentes graves y de evaluaciones de impacto en derechos fundamentales a la autoridad competente</td>
@@ -2764,7 +2768,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 5–6</td>
 <td>Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td>T08</td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></td>
 </tr>
 <tr>
 <td>Valorar la participación en un entorno controlado de pruebas cuando la iniciativa sea de alto riesgo y la viabilidad regulatoria sea incierta</td>
@@ -2782,7 +2786,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases 3–6</td>
 <td>Responsable técnico; Responsable de riesgos</td>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td>T07, T03</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 </tr>
 <tr>
 <td>Vigilar la tramitación de la ley orgánica y actualizar este mapeo cuando se publique en el BOE</td>
@@ -2791,7 +2795,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Sección 10</td>
 <td>Oficina de IA; asesoría jurídica</td>
 <td>Documento 34</td>
-<td>T07</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2943,7 +2947,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Oficina de IA</strong></td>
-<td>Es la propietaria del <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> y de la herramienta T07. Mantiene la vigilancia normativa, prepara las propuestas de cambio y comunica los cambios aprobados.</td>
+<td>Es la propietaria del <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> y de la herramienta <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>. Mantiene la vigilancia normativa, prepara las propuestas de cambio y comunica los cambios aprobados.</td>
 </tr>
 <tr>
 <td><strong>Segunda línea</strong> (cumplimiento, asesoría jurídica, delegado de protección de datos, seguridad de la información)</td>
@@ -3024,7 +3028,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>Analizar el impacto: filas afectadas, preguntas de T07, criterios de <em>gate</em> (documento 21), plantillas y sistemas del inventario</td>
+<td>Analizar el impacto: filas afectadas, preguntas de <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, criterios de <em>gate</em> (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>), plantillas y sistemas del inventario</td>
 <td>Oficina de IA con segunda línea</td>
 <td>Nota de impacto</td>
 </tr>
@@ -3042,7 +3046,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>Actualizar el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (nueva versión), T07 y, en su caso, las plantillas</td>
+<td>Actualizar el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (nueva versión), <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> y, en su caso, las plantillas</td>
 <td>Oficina de IA</td>
 <td>Control de versiones</td>
 </tr>
@@ -3062,11 +3066,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>8</td>
 <td>Verificar la aplicación en la siguiente revisión anual</td>
 <td>Tercera línea</td>
-<td>Informe de auditoría (documento 38)</td>
+<td>Informe de auditoría (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>)</td>
 </tr>
 </tbody>
 </table></div>
-<p>Un cambio regulatorio que convierte en incumplimiento una situación hasta entonces conforme no es por sí mismo una no conformidad; lo es no actuar en los plazos anteriores o dejar vencer una obligación aplicable (documento 37).</p>
+<p>Un cambio regulatorio que convierte en incumplimiento una situación hasta entonces conforme no es por sí mismo una no conformidad; lo es no actuar en los plazos anteriores o dejar vencer una obligación aplicable (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</p>
 <hr />
 <h2 id="anexo-a-otras-jurisdicciones-orientativo"><span class="antetitulo">11</span>Anexo A · Otras jurisdicciones (orientativo)</h2>
 <p>Solo sirve para detectar posibles obligaciones fuera de la UE; no analiza requisitos y exige asesoramiento local.</p>
@@ -3092,7 +3096,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Instrumentos internacionales</strong></td>
 <td><a class="ref-ext" href="https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0449" target="_blank" rel="noopener" title="Recomendaci&#243;n del Consejo de la OCDE sobre Inteligencia Artificial (OECD/LEGAL/0449), Principios de IA de la OCDE, adoptada el 22 de mayo de 2019 y modificada el 3 de mayo de 2024">Principios de IA de la OCDE</a>; Convenio Marco del Consejo de Europa sobre IA y derechos humanos, democracia y Estado de Derecho (abierto a la firma en 2024; estado de ratificación pendiente de confirmar).</td>
-<td>Referencia para la política corporativa (documento 31).</td>
+<td>Referencia para la política corporativa (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -3190,15 +3194,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T07 · Clasificador regulatorio</strong></td>
+<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> · Clasificador regulatorio</strong></td>
 <td>Herramienta principal: determinaciones de la sección 2, preguntas de los arts. 5, 6 y 50, evaluaciones requeridas y fechas de la sección 3.1. Se actualiza con el procedimiento de la sección 10.</td>
 </tr>
 <tr>
-<td>T02 · T03 · T06 · T08 · T09 · T10</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
 <td>Inventario y registro UE · verificación en <em>gates</em> · riesgos · incidentes y notificaciones · cadena de valor y terceros · ciberseguridad y supervisión humana.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · T20 · T21</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> · <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a></td>
 <td>Reporte al consejo, formación y uso corporativo.</td>
 </tr>
 <tr>

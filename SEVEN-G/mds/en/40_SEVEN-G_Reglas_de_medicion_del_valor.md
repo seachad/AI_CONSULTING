@@ -267,6 +267,8 @@ These formulas are the only valid ones in SEVEN-G. Documents 41, 42 and 43, the 
 
 ## 7. Attribution methods
 
+### 7.1 Choosing the method
+
 The attribution method is chosen in phase 2, approved at G2 and not changed without the approval of the body that decided G2 (01 §7.4, rule 6). It determines the maximum status that the value can reach.
 
 | Method | What it consists of | When to use it | Requirements | Maximum status |
@@ -285,6 +287,47 @@ Selection criteria, in this order:
 4. Expert estimates are only accepted with a plan and a date for replacing them. In Optimise they cannot evidence G5 or G7; in Augment and Transform they may support the G2 hypothesis, but not realised value.
 
 In **Transform** initiatives, attribution is applied by stage and focuses on the market or customer evidence required at G5 (01 §7.6): usage, conversion, initial revenue or verified operational change.
+
+### 7.2 Cross-unit initiatives and enabling platforms
+
+Some initiatives do not belong to a single business unit. They are **cross-unit** initiatives, such as a tool used by several units (for example, a generative assistant built into the office suite), or **enabling platforms**: shared data, knowledge or decision capabilities used by other use cases. Their value is not measured in the same way as that of a business use case.
+
+| Type | Example *(illustrative)* | How it is recorded in T01 | How it is measured |
+|---|---|---|---|
+| **Enabling platform** | Shared data platform for several AI use cases | One initiative that lists the use cases that rely on it (`alcance.habilita`) | Its value is allocated to the use cases that rely on it (document 10 §4.1, rule 3). For the platform itself, only its cost, its availability and the use cases it serves count. |
+| **Cross-unit** | Generative assistant in the office suite for several units | **A single initiative** with its roll-out by unit (`alcance.reparto`) and amounts by unit (`valores[].area`). No separate initiative is opened for each unit. | By business unit, using the measurement ladder in this section. |
+
+**Measurement ladder by unit.** Each rung only counts if the previous one is met.
+
+| Rung | What is measured | Source | Maximum status | Does it add to net value? |
+|---|---|---|---|---|
+| **1. Cost** | Licences, training and governance. Each unit bears its own licences; shared costs (adoption office, ongoing training, permission review) carry no unit. | Contracts and accounts | Validated | It is deducted in full from day one (asymmetric prudence, section 2) |
+| **2. Adoption** | Active over assigned licences and weekly active users, by unit | Platform usage reports, not surveys | Indicator, no amount | No |
+| **3. Released capacity** | Hours released as declared by users, valued with formula F4 | Surveys or each unit's estimate | Declared or estimated. **Never validated.** | No (rule 3) |
+| **4. Realised value** | Lower actual cost (hiring avoided, less overtime, outsourcing not renewed, licences retired) or capacity reassigned to an identified activity | Accounts and management control | Validated | Yes |
+
+Rules:
+
+1. **One initiative, several units.** The cross-unit initiative has a corporate sponsor. Each unit has its own business owner of the benefit, who declares the unit's share (document 43 §6.4).
+2. **A roll-out that can be measured.** The roll-out is staggered by unit so that it can be measured with difference-in-differences (section 7.1, criterion 2). Another option is to assign licences at random among eligible people. If the tool is rolled out across the whole company at once, only an expert estimate is possible, and it never allows validation.
+3. **Adoption threshold.** G2 sets a minimum percentage of active over assigned licences. In each unit in use that falls below the threshold, the roll-out is reviewed or unused licences are withdrawn. A unit keeps paying for the tool because it uses it, not out of inertia.
+4. **No double counting with each unit's own use cases.** If a unit also has its own use case on the same process, document 43 §6 applies: the generic saving of the cross-unit tool is not claimed again.
+5. **Net value with and without cross-unit initiatives.** In reports to the board, the portfolio's net value is shown with and without cross-unit initiatives and platforms (section 11.1). A large and certain cost therefore neither hides nor inflates the result of the business use cases.
+6. **Indirect value is not converted into euros.** Usage culture, maturity or better permissions and data are recorded in the maturity model (document 11) and in sphere 05 Data. The main risk of these tools is showing a person information they could access through inherited or excessive permissions. It goes in the risk matrix (P12) and is reviewed before each roll-out wave.
+
+**Illustrative example** (fictitious data, the same as in the T01 demo register):
+
+| Unit | Roll-out | Active / assigned licences | Hours released per month (declared) | Annual cost | Realised value |
+|---|---|---|---|---|---|
+| Finance | In use | 792 / 900 (88 %) | 7,200 | €324,000 | €540,000, validated (accounting close outsourcing not renewed) |
+| Commercial | In use | 624 / 1,200 (52 %) | 5,100 | €432,000 | €180,000, declared (previous tool retired) |
+| Customer service | Pilot | 356 / 400 (89 %) | 1,900 | €144,000 | — |
+| Shared (no unit) | — | — | — | €260,000 | — |
+| **Total** | | | **14,200** | **€1,160,000** | **€720,000** |
+
+Reading for the board: the initiative's annual net value is 720,000 − 1,160,000 = **−€440,000**. The 14,200 hours declared per month are not savings until they are realised. Commercial is below the 60 % adoption threshold and declares released hours with no destination. Extending the tool to new units is therefore conditional on reviewing Commercial's licences and on the unit declaring how its hours are realised.
+
+> **Why it matters.** A cross-unit tool has a large, certain cost that is visible from day one, and a value spread across many people and units. If it is measured like any other use case, one of two things happens: declared hours are added up and the portfolio is inflated, or nothing is measured and the tool keeps being paid for out of inertia. The ladder by unit shows where the tool is used, where it produces value and where licences should be withdrawn. The committee and the board can then decide on extending it with data rather than surveys.
 
 ---
 
@@ -386,6 +429,7 @@ The company approves its benchmarks in C2 and may set a **fast track** for Lite 
 | 10 | Changing the metric or threshold after seeing the results. | Differences between the hypothesis approved at G2 and the one measured at G5. | Revert to the approved hypothesis; any change requires approval (01 §7.4). |
 | 11 | Presenting expected value as realised. | Amounts from the hypothesis canvas in production reports. | Separate expected from realised; expected value is never validated. |
 | 12 | Counting risk avoided as savings. | Expected losses avoided added to net value. | Report it separately unless translated into observable cost (section 5.2). |
+| 13 | Turning the hours declared by the users of a cross-unit tool into savings. | Efficiencies equal to survey hours × hourly cost, with no accounting reflection and no breakdown by unit. | Ladder in section 7.2: cost and adoption by unit; only realised value adds up. |
 
 Presenting to the committee or the board as validated an amount that is not validated constitutes a **major nonconformity** (document 37). Relaxing stop criteria or changing the attribution method without approval is dealt with in accordance with 01 §7.4 and §12.
 
@@ -404,6 +448,7 @@ Presenting to the committee or the board as validated an amount that is not vali
 7. **A comparison is made with the previous period** and relevant variations are explained, including changes in status.
 8. **Each use case presented in detail includes its understandable description** (rule 10). A maximum of three use cases are presented in detail per session, and answers follow the formats of the common specification: "Yes", "Yes, with one condition: …", "Not yet, because … is missing" or "No, because …".
 9. **The composition of value by ambition level** (efficiencies versus return) is shown to feed signals 1 and 2 of the transformation index.
+10. **Cross-unit initiatives and enabling platforms are shown separately**, with their breakdown by business unit (cost, adoption, released capacity and realised value), and the portfolio's net value is given with and without them (section 7.2).
 
 ### 11.2 Value summary template
 
@@ -442,11 +487,11 @@ Reading for the board: the portfolio generates a positive annual net value accor
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Amounts, statuses, status change events, dates for agility. |
+| **T01** | Initiative register | Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2). |
 | **T11** | Value hypothesis canvas and calculator | Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method. |
 | **T12** | Value realisation tracking | Statuses per period, expiries, F5, F6 and F10. |
 | **T13** | Cost calculator per use case | Full recurring cost and initial investment. |
-| **T17** | Board AI dashboard | Presentation with the validated proportion visible. |
+| **T17** | Board AI dashboard | Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them. |
 | **P08** | Value hypothesis canvas | Hypothesis, attribution method and stop criteria. |
 | **P09** | Baseline | Reference measurement. |
 | **P22** | Validation and pilot results | Value measured against the hypothesis at G5. |
@@ -477,3 +522,4 @@ Reading for the board: the portfolio generates a positive annual net value accor
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Develops the ten measurement rules and sets out the amount statuses with owners, evidence and expiry, the official formulas F1–F10, the attribution methods with their maximum status, the single economic criterion based on net benefit (NPV with the C2 horizon and rate; ROI and payback period for information only), the measurement of agility by risk and ambition, the value inflation errors and the rules for presentation to the board. |
+| 0.1 | 18-09-2026 | Adds section 7.2: cross-unit initiatives and enabling platforms, with the measurement ladder by unit (cost, adoption, released capacity and realised value), the adoption threshold and the portfolio's net value with and without them; error 13 and presentation rule 10. |

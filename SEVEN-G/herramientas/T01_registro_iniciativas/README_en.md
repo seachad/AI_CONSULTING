@@ -17,7 +17,7 @@ Specification: document 03 (§3 and §4), document 01 (§6–§9), document 00 (
 | `registro.html` | Complete single-file application (HTML, CSS and JavaScript, no dependencies). **It is generated** by `build_registro.ps1` from the JSON files; it is never edited by hand. |
 | `datos_demo.json` | Source of the (fictitious) demo data the application opens with, valid against the schema. |
 | `catalogo_criterios.json` | Source of the catalogue of 128 gate criteria from document 21, in Spanish and English (one criterion per line). |
-| `esquema_registro.schema.json` | JSON Schema 2020-12 of the common data model (03 §4), with closed lists and code patterns. Version 0.2. |
+| `esquema_registro.schema.json` | JSON Schema 2020-12 of the common data model (03 §4), with closed lists and code patterns. Version 0.3. |
 | `build_registro.ps1` | Builds `registro.html` by embedding the JSON files in the template. It checks the sources before generating. |
 | `_fuentes/registro.plantilla.html` | The application without data: the only thing edited by hand. It is not published. |
 | `README.md` · `README_en.md` | This document, in Spanish and English. |
@@ -112,7 +112,7 @@ The application does not send data to third parties or load external resources (
 
 ## Data model
 
-A single JSON object with `version_esquema` (`0.2`; `0.1` files are accepted and upgraded on load, because `0.2` only adds optional fields), `aviso_legal` (text, optional on import), `meta` (organisation, reference date, currency, time-limit configuration) and one list per entity from 03 §4. `null` means “no data”. Dates `YYYY-MM-DD`. Field names and closed-list codes are in Spanish, as in the rest of the SEVEN-G library.
+A single JSON object with `version_esquema` (`0.3`; `0.1` and `0.2` files are accepted and upgraded on load, because `0.2` and `0.3` only add optional fields), `aviso_legal` (text, optional on import), `meta` (organisation, reference date, currency, time-limit configuration) and one list per entity from 03 §4. `null` means “no data”. Dates `YYYY-MM-DD`. Field names and closed-list codes are in Spanish, as in the rest of the SEVEN-G library.
 
 | List | Entity | Code |
 |---|---|---|
@@ -122,7 +122,7 @@ A single JSON object with `version_esquema` (`0.2`; `0.1` files are accepted and
 | `decisiones_gate` | Request, verification, decision, body, escalation, proposed outcome and outcome, G5 sign-offs, evaluated criteria (`codigo`, `estado`, `justificacion`, `evidencias`) | `DG-AAAA-NNN` |
 | `condiciones` | Condition with decision, criterion, owner, deadline, verification and status | `CND-AAAA-NNN` |
 | `evidencias` | Link, template, version, author, date and verification (linked, not copied) | `EVI-AAAA-NNNN` |
-| `valores` | Expected or realised amount by type, formula, status (validated, declared, estimated), period, source and dashboard line (`concepto`, optional) | `VAL-NNNN` |
+| `valores` | Expected or realised amount by type, formula, status (validated, declared, estimated), period, source, dashboard line (`concepto`, optional) and business unit (`area`, optional, cross-unit initiatives) | `VAL-NNNN` |
 | `riesgos` · `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Related entities (in this version they are displayed and exported; full management belongs to T06, T08, T09 and T18) | `IA-AAAA-NNN · Rnn` · `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
 | `personas` | People assignable to roles, verification, decision and conditions | `PER-NN` |
 
@@ -154,13 +154,23 @@ The connector `../T17_panel_consejo/t01_a_panel.py` converts the full JSON of th
 | `meta.panel.consejo_sigla` | text | Name or acronym of the advisory board in the dashboard texts. |
 | `eventos[].cifras` | `esperado` and `realizado`, each with `inversion`, `coste_recurrente`, `eficiencias` and `retorno` | Figures on entering each status: how the case evolves along the funnel. Stored automatically by the tool. |
 
+**Fields added in schema 0.3: cross-unit initiatives and enabling platforms** (document 40 §7.2; all optional, a 0.1 or 0.2 register remains valid):
+
+| Field | Values | Use |
+|---|---|---|
+| `iniciativas[].alcance.tipo` | `unidad` · `transversal` · `plataforma` | Without the block, the initiative belongs to a single unit. **Cross-unit** (`transversal`): a tool used by several business units (for example, a generative assistant in the office suite). **Platform** (`plataforma`): an enabling capability whose value is allocated to the cases that use it. Edited in the record (“Scope”) and available as a filter. |
+| `iniciativas[].alcance.reparto[]` | `area`, `estado` (`previsto` · `piloto` · `en_uso` · `retirado`), `desde`, `licencias_asignadas`, `licencias_activas`, `usuarios_activos_semanales`, `horas_liberadas_mes`, `fuente`, `fecha_dato` | Roll-out and adoption of each unit (“Edit roll-out and adoption by unit” button in the Value tab). Hours are declared: they are never validated and never count as savings. |
+| `iniciativas[].alcance.umbral_adopcion_pct` | 0–100 | “Low adoption” alert when a unit in use has fewer active over assigned licences. |
+| `iniciativas[].alcance.habilita[]` | `IA-YYYY-NNN` codes | Platform: cases to which its value is allocated. |
+| `valores[].area` | a business unit | Cost and value of each unit; without `area`, what is shared across the initiative (governance, training). The Value tab shows the ladder by unit: cost, adoption, declared hours, released capacity and realised value. |
+
 **Why it matters.** Entering an initiative in T01 is the equivalent of logging an opportunity in a CRM: from then on, every phase entry, gate decision, amount and closure recorded in the register moves the case through the dashboard funnel without anyone typing the data again. The board sees the same thing the AI Office manages.
 
-Anything T01 does not record (adoption of productivity suites, agent identity and permissions record, DORA provider, operating metrics) is left as “no data” in the dashboard.
+Anything T01 does not record (overall adoption of productivity suites outside a cross-unit initiative, agent identity and permissions record, DORA provider, operating metrics) is left as “no data” in the dashboard.
 
 ## Demo data
 
-Fictitious company (*Compañía Ejemplo Industrial, S.A.*), 21 fictitious people and 4 fictitious suppliers, 14 initiatives registered in 2025 and 2026 across all phases (0–7) and all eight statuses: one registered, in phase, awaiting gate (one at its third iteration, escalated to the higher body), one on hold with resumption overdue, in production (one with an overdue continuity review), one awaiting G7 brought forward by R6, one **stopped** at G3 for unacceptable risk and one **retired** after G7 because it was replaced. There are stalled initiatives, two **expired conditions**, a pivot, decisions with conditions, a G5 Enterprise multi-level sign-off, validated, declared, estimated and no-data amounts, 9 systems (including one for corporate use), incidents and nonconformities. Thirteen initiatives carry data for the board dashboard (complexity, priority, controls and, in four of them, advisory board remarks) and one does not, so that the dashboard also shows “no data”; efficiency and return amounts carry their dashboard line except those with no hypothesis yet. The T17 example dashboard is generated from this data. The data is illustrative: any resemblance to a real company or person is coincidental.
+Fictitious company (*Compañía Ejemplo Industrial, S.A.*), 21 fictitious people and 4 fictitious suppliers, 15 initiatives registered in 2025 and 2026 across all phases (0–7) and all eight statuses: one registered, in phase, awaiting gate (one at its third iteration, escalated to the higher body), one on hold with resumption overdue, in production (one with an overdue continuity review), one awaiting G7 brought forward by R6, one **stopped** at G3 for unacceptable risk and one **retired** after G7 because it was replaced. There are stalled initiatives, two **expired conditions**, a pivot, decisions with conditions, a G5 Enterprise multi-level sign-off, validated, declared, estimated and no-data amounts, 9 systems (including one for corporate use), incidents and nonconformities. One is **cross-unit** (a generative assistant in the office suite, rolled out in waves across five units: two in use, one in pilot and two planned, with Commercial below the adoption threshold, realised and validated value in Finance and declared released capacity that does not add up). Fourteen initiatives carry data for the board dashboard (complexity, priority, controls and, in four of them, advisory board remarks) and one does not, so that the dashboard also shows “no data”; efficiency and return amounts carry their dashboard line except those with no hypothesis yet. The T17 example dashboard is generated from this data. The data is illustrative: any resemblance to a real company or person is coincidental.
 
 ## Limitations
 

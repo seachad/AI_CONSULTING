@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Declaración de contexto y restricciones"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -415,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>En la fase 0, junto con la carta de la iniciativa (P01). Se revisa en G3 y cuando cambie una restricción relevante (norma, presupuesto, proveedor, datos).</td>
+<td>En la fase 0, junto con la carta de la iniciativa (<a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>). Se revisa en G3 y cuando cambie una restricción relevante (norma, presupuesto, proveedor, datos).</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -446,7 +450,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li>Una restricción es algo que la iniciativa <strong>no puede cambiar</strong>. Si puede negociarse, es un supuesto y va a la sección 10.</li>
-<li>Esta declaración no sustituye la clasificación regulatoria (P11) ni la matriz de riesgos (P12): identifica lo que se sabe en la fase 0 para que no se descubra tarde.</li>
+<li>Esta declaración no sustituye la clasificación regulatoria (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>) ni la matriz de riesgos (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>): identifica lo que se sabe en la fase 0 para que no se descubra tarde.</li>
 <li><em>Este documento no constituye asesoramiento jurídico.</em> La aplicabilidad de cada norma debe confirmarla quien tenga competencia jurídica en la compañía. Referencias normativas consultadas en septiembre de 2026; debe verificarse su vigencia.</li>
 </ul>
 <hr />
@@ -493,7 +497,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad aplicable</td>
 <td></td>
-<td>Lite · Enterprise (P04).</td>
+<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -558,7 +562,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (Reglamento (UE) 2024/1689)</td>
 <td>Sí · No · Por determinar</td>
 <td></td>
-<td>Clasificación y obligaciones según el rol de la compañía (P11).</td>
+<td>Clasificación y obligaciones según el rol de la compañía (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
 <td></td>
 </tr>
 <tr>
@@ -620,7 +624,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Normas internas</td>
 <td></td>
-<td>Política corporativa de IA y uso aceptable (documento 31), seguridad, protección de datos, compras.</td>
+<td>Política corporativa de IA y uso aceptable (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>), seguridad, protección de datos, compras.</td>
 <td></td>
 <td></td>
 </tr>
@@ -660,7 +664,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Autonomía máxima permitida</td>
 <td></td>
-<td>A0 Asistencia · A1 Recomendación · A2 Actuación supervisada · A3 Actuación autónoma (documento 35).</td>
+<td>A0 Asistencia · A1 Recomendación · A2 Actuación supervisada · A3 Actuación autónoma (<a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
 </tr>
 <tr>
 <td>Líneas rojas</td>

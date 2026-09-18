@@ -225,6 +225,20 @@ The cost of a case-processing process falls by €500,000 in the year. A non-AI 
 4. Proportional allocation: A = 400,000 × 280/500 = **€224,000**; B = 400,000 × 220/500 = **€176,000**.
 5. Check: 100,000 + 224,000 + 176,000 = €500,000.
 
+### 6.4 Cross-unit initiatives: realisation by business unit
+
+A cross-unit initiative (document 40 §7.2) has a single realisation plan, with one block per business unit:
+
+| Element | What is required |
+|---|---|
+| **Owners** | The sponsor is corporate. Each unit appoints its **business owner of the benefit**, who signs the unit's part of the plan and declares its cost, adoption and realised value every period. |
+| **Cost** | Each unit bears its licences from day one. Shared costs (adoption office, ongoing training, permission review) are recorded without a unit and add to the initiative's cost. |
+| **Adoption** | Active over assigned licences and weekly active users, taken from the platform usage reports. Below the threshold approved at G2, the unit reviews the roll-out or withdraws licences. |
+| **Materialisation** | Each unit states the lever from section 7.2 it uses to turn released hours into lower cost or reassigned capacity. Without a lever, the hours are released capacity and do not add up. |
+| **Validation** | Management control validates unit by unit. The sum of the units and of the shared costs is the initiative's value; what a unit's own use case already claims on the same process is not counted again (sections 6.1 and 6.2). |
+
+In T01, each unit's roll-out and adoption are recorded in the initiative's scope, and its cost and value as amounts with their unit. The board dashboard (T17) shows them by unit and gives the portfolio's net value with and without cross-unit initiatives.
+
 ---
 
 ## 7. Materialisation of released capacity

@@ -243,7 +243,7 @@ La previsión se recalcula a diario en agentes y en casos con exposición direct
 |---|---|---|
 | 50 % del presupuesto consumido | Responsable de operación | Revisar la previsión. |
 | 80 % del presupuesto consumido o previsión de cierre > 100 % | Responsable de operación y de producto | Analizar la causa: volumen, cambio de modelo o de precio, bucles, uso indebido. Decidir medidas. |
-| 100 % del presupuesto consumido | Patrocinador y oficina de IA | Aplicar el modo previsto en el diseño (limitar, degradar o detener) o aprobar un suplemento con motivo. |
+| 100 % del presupuesto consumido | Patrocinador y oficina de IA | Aplicar el nivel previsto de la cascada de degradación por coste (documento 52, sección 10.3: optimizar, modelo de respaldo validado, alcance reducido o alternativa sin IA) o aprobar un suplemento con motivo. |
 | Consumo anómalo (por ejemplo, un día muy superior a la media reciente) | Responsable de operación y seguridad | Tratarlo como posible incidente (documento 37): bucle, abuso, fuga de credenciales. |
 
 Los umbrales son orientativos y la compañía los fija en C2.
@@ -273,6 +273,8 @@ Agente E con un consumo de modelos imputado de 45.000 € al año; presupuesto m
 ### 8.5 Optimización del coste
 
 Antes de pedir más presupuesto, el responsable técnico debería revisar, con pruebas que confirmen que la calidad (IND-OPE-07) no empeora: el modelo utilizado frente a alternativas de menor coste, la longitud del contexto enviado, la reutilización de respuestas o resultados intermedios, el procesamiento por lotes cuando no se necesita respuesta inmediata y los reintentos. Todo cambio de modelo en producción sigue la gestión de cambios del documento 52.
+
+Un modelo de menor coste puede validarse antes de G5 como **modelo de respaldo** de la cascada de degradación por coste (documento 52, sección 10.3): con el mismo conjunto de evaluación y las mismas pruebas de sesgo que el principal, activarlo al agotarse el presupuesto es un modo de operación aprobado y no un cambio. Si el sistema pasa más de un mes degradado, la R6 decide entre suplemento, optimización definitiva o cambio del modelo principal.
 
 ---
 
@@ -417,3 +419,4 @@ Validaciones mínimas de T13: ningún importe sin categoría ni componente; ning
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define los componentes del coste (construcción, adopción, recurrente y retirada), las nueve categorías con su equivalencia en el panel, el coste total de propiedad, el reparto analítico de costes compartidos con jerarquía de imputación, claves y ejemplos, el etiquetado, la previsión y el control del consumo con límites por agente, el coste por unidad de resultado, el coste de las decisiones de parar, la integración con control de gestión y el contenido de T13. |
+| 0.1 | 18-09-2026 | Respuesta al 100 % del presupuesto enlazada con la cascada de degradación por coste del documento 52 (sección 10.3) y modelo de respaldo validado antes de G5 (sección 8.5). |

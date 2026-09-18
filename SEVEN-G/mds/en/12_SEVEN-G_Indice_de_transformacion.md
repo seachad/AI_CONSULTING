@@ -507,9 +507,11 @@ The index is not presented as a grade, nor is it compared with other companies (
 | **T03** | Gate manager | Verification of the classification at G2 and G7; board approvals. |
 | **T05** | Ambition classifier | Applies the five questions and rules 1 to 10; records the result and inconsistencies. |
 | **T12** | Value realisation tracking | Amounts by type and status; released and materialised capacity; AI-enabled revenue. |
-| **T14** | Transformation index calculator | Calculates baseline conditions, signals, profile, alerts, coverage and evolution; retains the threshold version. |
+| **T13** | Cost calculator per use case | Investment and recurring cost of each initiative (signal 1). |
+| **T14** | Transformation index calculator | Calculates baseline conditions, signals, profile, alerts, coverage, what would move the profile and evolution; retains the threshold version. It starts from the T01 register JSON and is completed manually with what the register does not yet contain (signals 3 to 6 and 8). |
 | **T17** | Board AI dashboard | Shows profile, signals and trend. |
 | **T18** | Board recommendations register | Source for signal 8. |
+| **T19** | AI thesis and risk appetite template | C2 decision document: approved thesis (signal 8) and target ambition by sphere (condition IT-D1). |
 | **T20** | Adoption and capacity plan | Reassigned hours and redesigned roles (signals 3 and 5). |
 | **P07** | Sphere and ambition classification | Evidence of the classification in phases 1, 2 and 7. |
 

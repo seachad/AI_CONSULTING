@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Board conversation guide"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -1241,7 +1245,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td><strong>How much does AI save us?</strong></td>
 <td>Separate efficiencies, return and recurring cost; give the net value and the validated proportion; state unmaterialised released capacity separately.</td>
-<td>Value tracking per use case with status (T12).</td>
+<td>Value tracking per use case with status (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>).</td>
 <td>A single figure without status or one that adds up released hours.</td>
 </tr>
 <tr>
@@ -1262,28 +1266,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4</td>
 <td><strong>How many jobs will AI eliminate?</strong></td>
 <td>Give the approved position (replace, augment or reorganise) and the data: released, materialised and reassigned capacity; roles affected; training plan. If there is no position, say so and propose setting it in C2.</td>
-<td>Adoption and capacity plan (T20); document 50.</td>
+<td>Adoption and capacity plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>); document 50.</td>
 <td>Denying the effect or giving unfounded figures.</td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>Do we comply with the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>?</strong></td>
 <td>Answer by system: how many are inventoried, how many classified on legal criteria, how many are high-risk and which assessments have been completed or are pending. State the date on which the regulation was consulted.</td>
-<td>Inventory and classification (T02, T07); regulatory mapping (document 34).</td>
+<td>Inventory and classification (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>); regulatory mapping (document 34).</td>
 <td>&quot;Yes, we comply&quot; without a complete inventory.</td>
 </tr>
 <tr>
 <td>6</td>
 <td><strong>Who is accountable if AI gets it wrong?</strong></td>
 <td>Name the roles: the AI Sponsor is accountable for the value and the investment; the AI Operations Owner, for stability and incidents; the AI Risk Owner, for assessment and monitoring; the company is accountable to third parties. Accountability is not transferred to the system or the supplier.</td>
-<td>Role assignment record (P03); contracts with suppliers.</td>
+<td>Role assignment record (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>); contracts with suppliers.</td>
 <td>&quot;It is the supplier's responsibility&quot;.</td>
 </tr>
 <tr>
 <td>7</td>
 <td><strong>Why have we stopped this after investing?</strong></td>
 <td>&quot;Because the stop criterion set before investing was not met&quot;. Give the investment consumed, the investment avoided and what was learned.</td>
-<td><em>Gate</em> decision record with stop criteria (P29).</td>
+<td><em>Gate</em> decision record with stop criteria (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
 <td>Making excuses or presenting the stop as a failure of the team.</td>
 </tr>
 <tr>
@@ -1297,42 +1301,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>9</td>
 <td><strong>What happens if the system fails or we are attacked?</strong></td>
 <td>Explain the severity of possible incidents, containment, the kill switch or the tested rollback plan, and the notification time limits.</td>
-<td>Incident response plan (P26); rollback test; drills.</td>
+<td>Incident response plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); rollback test; drills.</td>
 <td>Claiming that it cannot happen.</td>
 </tr>
 <tr>
 <td>10</td>
 <td><strong>Do we depend too much on one supplier?</strong></td>
 <td>Give the concentration: which use cases depend on each supplier, their criticality and whether there is a tested exit strategy or only a written one.</td>
-<td>Supplier register (T09); requirement level N1–N3.</td>
+<td>Supplier register (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>); requirement level N1–N3.</td>
 <td>&quot;It is the market leader&quot; as an answer.</td>
 </tr>
 <tr>
 <td>11</td>
 <td><strong>Is this transformation or just efficiency?</strong></td>
 <td>Apply the five classification questions (00 §5.2) in the room. If the first four are negative, it is optimisation, and it is fine for it to be so.</td>
-<td>Confirmed ambition classification (P07).</td>
+<td>Confirmed ambition classification (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
 <td>Calling an automation transformation.</td>
 </tr>
 <tr>
 <td>12</td>
 <td><strong>Why is validated value so low?</strong></td>
 <td>Explain what is missing for validation (baseline, control group, management control validation) and the plan with dates. A low, honest percentage is preferable to a high, unsupported one.</td>
-<td>Value tracking by status (T12).</td>
+<td>Value tracking by status (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>).</td>
 <td>Reclassifying declared amounts as validated.</td>
 </tr>
 <tr>
 <td>13</td>
 <td><strong>How much does AI really cost?</strong></td>
 <td>Give the recurring cost by category and by use case, including model consumption and operations people. If there are uncharged costs, say so.</td>
-<td>Cost per use case with allocation (T13; document 42).</td>
+<td>Cost per use case with allocation (<a href="42_SEVEN-G_Costes_de_IA.html">T13</a>; document 42).</td>
 <td>Presenting only the licences.</td>
 </tr>
 <tr>
 <td>14</td>
 <td><strong>Are employees using unauthorised AI tools?</strong></td>
 <td>Give what is known: detections, active technical controls, training, regularisations. If it is not measured, &quot;Not yet, because … is missing&quot;.</td>
-<td>Corporate use monitor (T21); nonconformities for unauthorised use.</td>
+<td>Corporate use monitor (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">T21</a>); nonconformities for unauthorised use.</td>
 <td>Saying it does not happen because it is prohibited.</td>
 </tr>
 <tr>
@@ -1477,17 +1481,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>T05</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></td>
 <td>Ambition classifier</td>
 <td>Difficult question 11; classification in the room.</td>
 </tr>
 <tr>
-<td>T15</td>
+<td><a href="11_SEVEN-G_Modelo_de_madurez.html">T15</a></td>
 <td>Maturity diagnosis</td>
 <td>Block 06 of the script; stage C1.</td>
 </tr>
 <tr>
-<td>T16</td>
+<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></td>
 <td>Portfolio sphere map</td>
 <td>Blocks 02 and 03 of the script.</td>
 </tr>
@@ -1497,7 +1501,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Use cases in detail and oversight sessions.</td>
 </tr>
 <tr>
-<td>T18</td>
+<td><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></td>
 <td>Board recommendations register</td>
 <td>Recording of decisions and assignments after each session.</td>
 </tr>

@@ -149,7 +149,7 @@ Filters are **critical controls**: deactivating them is a substantial change (se
 - Monthly **budget** per system, with alerts at 80% and 100% as an initial reference.
 - **Limits** per user, session and period; maximum context size; maximum calls per task.
 - **Anomalies:** rising cost per transaction with no change in use (loops, excessive context, abuse).
-- **On reaching the limit:** controlled degradation defined in P24; complete cut-off only if it does not affect a critical function.
+- **On reaching the limit:** cost-driven degradation cascade (section 10.3), defined in P24 and validated at G5; complete cut-off only if it does not affect a critical function.
 - **Allocation** to the *model consumption* category (document 42) and tracking in T13.
 
 #### 4.2.5 Provider model versions
@@ -160,6 +160,39 @@ Filters are **critical controls**: deactivating them is a substantial change (se
 4. Review notices on **data use and processing location** and reassess in P14 (document 36).
 
 Migration to a new version from the same provider is a **significant change**; migration to another model family or to another provider is a **substantial change** (section 6).
+
+#### 4.2.6 Usage drift
+
+In generative AI and agents there are no fixed input variables or labels with which to measure drift as in predictive ML, but the system also degrades when **what it is asked changes**: new topics, new types of user, queries nobody anticipated. The system was validated at G5 with a specific scope and evaluation set; if actual use moves away from them, the evaluations no longer represent what happens in production.
+
+| Signal | What is compared | How it is measured |
+|---|---|---|
+| **Distribution of topics or intents** | Breakdown of queries by topic or intent against that of the use validated at G5. | Classification of queries (by rules, by a classifier or by human sampling) and distance between distributions; the same population stability index as in section 4.1.1 is applied to the categories. |
+| **Queries outside the validated scope** | Proportion of queries that do not correspond to any validated topic or task. | The classification above or sampling; rate over the total for the period (OPE-19). |
+| **Shape of the inputs** | Length, language, channel, document type, tools invoked by agents. | Distributions against the reference. |
+| **Retrieval without a relevant source** | Queries for which the search finds no suitable sources. | Rate for the period (document 51, CNC-08). |
+
+**Rule.** P25 **must** set the **usage reference** (topics, intents and scope validated at G5), the way queries are classified and the thresholds. When usage drift exceeds the critical level: the evaluation set is expanded with the new cases and the system is evaluated on them; if the new use falls outside the approved purpose, the scope is restricted or it is treated as a **new use** (table 6.2, return to G3).
+
+> **Why it matters.** An assistant validated for product queries that starts receiving complaints or legal questions still "works" and its evaluations stay green, because they measure what was anticipated, not what is happening. Usage drift is the early signal that the actual risk is no longer the approved one and that the measured value may lie elsewhere.
+
+#### 4.2.7 Bias in responses
+
+Bias is not exclusive to models that score or decide: a generative system can **treat people or groups differently** in the content, tone, recommendations or quality of the response.
+
+| Test | What it detects | How it is done |
+|---|---|---|
+| **Counterfactual pairs** | Differences in response attributable to a protected attribute (sex, age, origin, disability or others set by the impact assessment) or to a proxy for it (name, language, writing style). | Part of the reference evaluation set (4.2.1) consists of pairs of cases identical except for that attribute; the outcome of each pair is compared against the P25 criteria (decision or recommendation, amount, tone, refusal, completeness). |
+| **Quality by segment** | Lower accuracy or more refusals for a group. | Metrics from 4.2.2 broken down by the segments defined in the impact assessment, in the periodic evaluation and in production sampling. |
+| **Stereotyped content** | Stereotyped statements or assumptions about groups. | A specific criterion in the human review of the sample and in the output filters. |
+
+**Rules.**
+
+1. The **unequal response rate** (pairs with a material difference ÷ pairs evaluated, OPE-20) is measured in every regression evaluation and in the periodic evaluation; its threshold is set in P17 alongside the human oversight thresholds.
+2. It is **mandatory** when the system recommends, prioritises, drafts communications or decides about people, or has direct exposure to customers; for other systems, when the risk assessment indicates it (document 33).
+3. A change of model, instructions or sources is not promoted if it worsens this rate beyond the tolerance, just like the challenger in predictive ML (4.1.3, step 2).
+
+> **Why it matters.** In generative AI, bias does not appear in a results column that can be counted; it appears in how things are drafted, recommended or refused. Without a test designed for it, it goes unseen, and it is precisely what a regulator, an affected customer or the media will see.
 
 ### 4.3 Agents
 
@@ -231,9 +264,9 @@ The intensity of these controls depends on the requirement level for the third p
 |---|---|---|
 | 1 · Availability and infrastructure | Availability, latency, errors, capacity. | All |
 | 2 · Input data quality | Nulls, ranges, schema, freshness, volume. | All |
-| 3 · Drift | Data, predictions, concept. | Predictive ML |
+| 3 · Drift | Data, predictions and concept (4.1.1); usage: topics, intents and queries outside the validated scope (4.2.6). | Data, predictions and concept: predictive ML. Usage: generative AI and agents |
 | 4 · Model performance | Metrics against the G5 validation, by segment. | Predictive ML |
-| 5 · Response quality | Faithfulness, correctness, appropriate refusal, currency of sources. | Generative AI |
+| 5 · Response quality | Faithfulness, correctness, appropriate refusal, currency of sources; bias in responses (4.2.7). | Generative AI |
 | 6 · Actions and limits | Actions, blocks, intent anomalies, permissions. | Agents |
 | 7 · Security | Filter triggers, injection attempts, improper access. | All, with emphasis on generative AI and agents |
 | 8 · Cost | Consumption, cost per transaction, budget. | All, with emphasis on generative AI and agents |
@@ -250,16 +283,20 @@ The values are **illustrative and to be calibrated** for each system in phase 5 
 | 2 | Proportion of nulls in critical variables | > 2 × 30-day average | > phase 3 quality threshold | S3 |
 | 2 | Age of input data | > planned update interval | > 2 × interval | S3 |
 | 3 | Population stability index by variable | > 0.1 | > 0.25 | S4–S3 (common convention in practice; to be calibrated) |
+| 3 | Stability index of the distribution of topics or intents | > 0.1 | > 0.25 | S4–S3 (to be calibrated) |
+| 3 | Queries outside the validated scope | > 2 × G5 reference | > 3 × G5 reference or > 10% of queries | S3; S2 if the new use affects people or regulated topics |
 | 4 | Primary metric against G5 validation | Relative drop > 5% | Relative drop > 10% | S3; S2 if it affects decisions about people or customers |
 | 4 | Adverse impact ratio between groups | < P17 threshold + margin | < P17 threshold | S2 |
 | 5 | Faithfulness to sources in sampling | < target − 2 points | < target − 5 points | S3; S2 with direct exposure |
 | 5 | Responses with outdated content | > 0 on regulated or contractual topics | Repetition after correction | S3–S2 |
+| 5 | Unequal response rate in counterfactual pairs | > P17 threshold − margin | > P17 threshold | S3; S2 if there are decisions or communications about people |
 | 6 | Actions blocked by limits | > 2 × 7-day average | Any attempt to exceed an amount or scope limit | S3; S2 if there is an attempt to extend permissions |
 | 6 | Intent anomalies | Any unexplained anomaly | Anomaly with an effect on third parties, money, personal data or production | S2; S1 if there is material harm |
 | 7 | Input filter triggers | > 3 × 7-day average | Sustained attack pattern | S3–S2 |
 | 7 | Exposure of personal or confidential data | — | Any confirmed case | S2; S1 if it is massive or involves special categories |
 | 8 | Monthly cost against budget | ≥ 80% | ≥ 100% | S4–S3 |
 | 8 | Cost per transaction | > 1.5 × 30-day average | > 3 × 30-day average | S3 |
+| 8 | Operation in cost-driven degraded mode | Any activation | > 5 days in the month or quality in the mode below the P25 minimum | S4; S3 if quality falls below the minimum |
 | 9 | Human override rate | Close to 0% for 30 days | — | Review at R6 |
 | 9 | Primary value indicator | Below the hypothesis for two consecutive periods | Below the stop criterion | Review at R6; brings G7 forward |
 
@@ -330,6 +367,7 @@ flowchart LR
 1. A substantial change applied without returning to the corresponding *gate* is a **major nonconformity**; if it affects a critical control or a high-risk system, it is **critical** (01 §12).
 2. Every change to a system that affects working conditions triggers a review of whether the information provided to worker representatives must be updated (document 50, section 7).
 3. Provider changes are classified using the same rules as the company's own changes.
+4. **Activating a planned degraded mode** defined in P24 and validated at G5, including switching to a fallback model under section 10.3, **is not a change**: it is an approved operating mode and is recorded in P27 as an operational event. Adding a new fallback model or modifying its conditions of use is a change: **significant** if it is from the same family and provider already assessed; **substantial** otherwise (table 6.2).
 
 ---
 
@@ -407,8 +445,8 @@ The product owner and the operations owner prepare, with the data for the period
 |---|---|
 | **Value** (P28, T12) | Realised value against the hypothesis with its status; stop criteria. |
 | **Released capacity** (T20) | Hours released, realised, reassigned and pending a decision. |
-| **Cost** (T13) | Actual cost against budget; cost per transaction. |
-| **Stability, performance and quality** (P25) | Availability, critical alerts and noise; model or response metrics; drift; bias. |
+| **Cost** (T13) | Actual cost against budget; cost per transaction; activations and days in cost-driven degraded mode, with the quality during the mode (OPE-18). |
+| **Stability, performance and quality** (P25) | Availability, critical alerts and noise; model or response metrics; drift, including usage drift (OPE-19); bias, including in responses (OPE-20). |
 | **Incidents and changes** (P27, T08) | Incidents by severity and actions; open nonconformities; changes by class and by the provider. |
 | **Agents** (P25, T10) | Blocked actions, anomalies, kill switch test, permission review. |
 | **Human oversight and adoption** (document 50) | Human override rate, adoption, supervisor training. |
@@ -455,6 +493,7 @@ This document does not constitute legal advice.
 | **Reduced autonomy** (from A2–A3 to A1) | Intent anomalies; doubts about limits. |
 | **Reduced scope** to lower-risk cases or channels | Problems in a segment. |
 | Previously assessed **alternative provider**; if not assessed, it is a substantial change | Prolonged unavailability or withdrawal of the provider. |
+| Lower-cost **fallback model**, validated at G5 (section 10.3) | Consumption budget exhausted or month-end forecast above 100%; volume or price peaks. |
 
 ### 10.2 Rules
 
@@ -462,6 +501,31 @@ This document does not constitute legal advice.
 2. The plan identifies the **people and capabilities** needed to operate without the system and is coordinated with document 50 (section 5.4).
 3. For systems that support a **critical or important function**, the maximum recovery time and the maximum tolerable data loss are set in P24 and aligned with the business continuity plan and, where applicable, with DORA.
 4. **Dependence on a provider** is assessed in P14 with an exit strategy (document 36).
+
+### 10.3 Cost-driven degradation cascade
+
+Systems with variable consumption (generative AI and agents) **must** have defined in P24 what happens when consumption reaches the budget, so that the response is neither improvised nor an abrupt cut-off. Degradation follows a **cascade** of levels, from least to most restrictive:
+
+| Level | What is done | Condition for using it |
+|---|---|---|
+| **N0 · Normal operation** | Primary model and configuration approved at G5. | — |
+| **N1 · Optimisation without a model change** | Stricter limits per user and session, shorter context, reuse of responses, batch processing of non-urgent work. | Parameters and ranges approved at G5 (threshold adjustment within range). |
+| **N2 · Fallback model** | Part or all of the traffic moves to a lower-cost model. | Model **evaluated before G5** with the same reference evaluation set (4.2.1), including the bias tests (4.2.7), with a result within the P25 minimum quality; version pinned and recorded in P16. |
+| **N3 · Reduced scope** | The system handles only the lowest-risk or highest-value cases or channels; the rest go to people. | Allocation criterion defined in P24 and people available (document 50). |
+| **N4 · Alternative without AI** | Manual process, rules or previous system. | Tested rollback plan (P19). |
+
+**Rules.**
+
+1. The levels, their triggers (for example, N1 at 80% of the budget, N2 at 100%) and who activates them are set in P24; their activation is tested before G5 together with the rollback plan.
+2. **No model downgrade** (N2) in uses that decide or recommend about people, in critical or important functions or in high-risk systems, unless the fallback model has been validated for that use to the same standard as the primary one; in those cases the system moves directly to N3 or N4, or a budget supplement is approved (document 42, section 8.1).
+3. In N2, **quality is monitored more intensively**: production sampling at least doubled and an alert if it falls below the P25 minimum; if it does, the system moves to the next level.
+4. Each activation and each return to N0 is recorded in P27 with the date, level, reason, who decides and the quality measured during the mode. The return to N0 is authorised by the operations owner when there is budget or the cause has been corrected.
+5. If the system spends more than a month in N2 or a higher level, the budget or the design is wrongly sized: it is taken to the next R6 with a proposal (supplement, permanent optimisation under document 42, section 8.5, or a change of the primary model as an ordinary change).
+6. No degradation may **deactivate critical controls** (filters, human oversight, agent limits, records): the cascade reduces cost, not controls.
+
+**Illustrative example** (fictitious figures). Customer service assistant with a monthly budget of €12,000. On day 20 consumption reaches €9,600 (80%) and the month-end forecast is €14,400: N1 is activated (shorter context and reuse of frequent responses) and the forecast falls to €13,100. On day 26 consumption reaches 100%: informational queries move to N2, with a fallback model validated at G5 that costs 70% less, while complaints remain on the primary model. Sampling on those days gives an accuracy of 91% against the P25 minimum of 88%. The month closes at €12,600 (105%), with six days in N1 and five in N2, and the R6 decides to adjust the budget to the actual growth in volume.
+
+> **Why it matters.** Without a defined cascade, when the budget runs out only two bad options remain: cut the service or keep spending without control. With it, cost is contained without improvisation and without touching the controls, the board knows what quality is delivered at each level, and the organisation learns whether the budget or the design was wrongly sized.
 
 ---
 
@@ -530,6 +594,9 @@ The codes are provisional until they are consolidated in document 41. The thresh
 | **OPE-15** | Tested rollback | Systems with a rollback test on time ÷ systems in production | Half-yearly | 100% |
 | **OPE-16** | Alert noise | Alerts closed without action ÷ alerts generated | Monthly | Downward trend |
 | **OPE-17** | Supplier versions at risk | Systems whose provider model version has an announced deprecation with no migration plan ÷ systems with a provider model | Monthly | 0% |
+| **OPE-18** | Cost-driven degraded mode | Days in the period at N1 or above in the cascade (10.3), by level; and quality measured in the mode ÷ P25 minimum quality | Monthly | Downward trend; quality ≥ 100% of the minimum |
+| **OPE-19** | Queries outside the validated scope | Queries classified outside the topics or tasks validated at G5 ÷ queries in the period | Monthly | According to the G5 reference |
+| **OPE-20** | Unequal responses in counterfactual pairs | Pairs with a material difference in outcome ÷ pairs evaluated | At each regression and periodic evaluation | P17 threshold |
 
 ---
 
@@ -546,6 +613,9 @@ The codes are provisional until they are consolidated in document 41. The thresh
 | Kill switch test | Half-yearly | Quarterly |
 | Agent permission review | Half-yearly | Quarterly |
 | Rollback test | Annual | Half-yearly |
+| Cost-driven degradation (10.3) | At least N1 and N4 defined; N2 optional | Full cascade defined and tested before G5 |
+| Usage drift (4.2.6) | Queries outside the scope by sampling | Distribution of topics and queries outside the scope with systematic classification |
+| Bias in responses (4.2.7) | When there are decisions or communications about people or direct exposure | The same, and whenever the risk assessment indicates it |
 | R6 | Half-yearly | Quarterly |
 | Verification | AI Office; auditor by sampling | AI Auditor |
 
@@ -557,8 +627,8 @@ The codes are provisional until they are consolidated in document 41. The thresh
 
 | Code | Template | Minimum content | Reviewed at |
 |---|---|---|---|
-| **P24** | Operations manual | Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions. | G5, R6, after significant and substantial changes |
-| **P25** | Monitoring and alerts configuration | Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; reference evaluation set and sampling; result of the alert test. | G5, R6 |
+| **P24** | Operations manual | Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes and cost-driven degradation cascade with its triggers; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions. | G5, R6, after significant and substantial changes |
+| **P25** | Monitoring and alerts configuration | Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; usage reference and query classification; reference evaluation set with counterfactual pairs and sampling; minimum quality in degraded mode; result of the alert test. | G5, R6 |
 | **P26** | Incident response plan | S1–S4 criteria applied to the system; contacts and escalation; pre-approved containment actions; applicable notifications with owner and time limit; communication to users, affected parties and the supplier; relationship with the continuity plan. | G5, R6, after each S1–S2 incident |
 | **P27** | Incident and change log | Changes: class, description, validation, approval, *gate* where applicable, date. Incidents: severity, timeline, containment, notifications, root cause, actions, closure, link to nonconformity. | Continuous; R6 |
 
@@ -589,3 +659,4 @@ The codes are provisional until they are consolidated in document 41. The thresh
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the operation of predictive ML (drift, retraining, champion/challenger), generative AI (continuous evaluations, quality, hallucinations, filters, costs, provider versions), agents (actions, limits, intent anomalies, kill switch, permissions) and embedded third-party AI; nine monitoring layers with typical thresholds; three change classes with a return-to-*gate* table; S1–S4 incident operation with regulatory notifications; R6 package and outcomes; post-market monitoring; continuity and rollback; records and retention; technical retirement; seventeen indicators and the minimum content of P24–P27. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37. |
+| 0.1 | 18-09-2026 | Usage drift in generative AI and agents (4.2.6); bias in responses with counterfactual pairs (4.2.7); layers 3 and 5 and thresholds extended; activating a planned degraded mode is not a change (6.4); cost-driven degradation cascade N0–N4 with a fallback model validated at G5 (10.3); indicators OPE-18 to OPE-20; Lite and Enterprise requirements and content of P24 and P25. |

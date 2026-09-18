@@ -320,6 +320,10 @@ ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2)
 ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
 ul.fuentes-externas li span { color: var(--tinta-2); }
 @media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
 @page { @bottom-left { content: "SEVEN-G · Tesis de IA, ambición y apetito de riesgo"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
 </style>
 </head>
@@ -384,7 +388,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <strong>Descargas</strong>
     <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
   </div>
-  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div>
 </aside>
 
 <div id="top"></div>
@@ -398,14 +402,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <div class="cifras"><div class="cifra"><b>12</b><span>componentes de la decisi&#243;n de C2</span></div><div class="cifra"><b>10</b><span>categor&#237;as de riesgo con apetito</span></div><div class="cifra"><b>4</b><span>grados de apetito</span></div><div class="cifra"><b>1</b><span>documento de decisi&#243;n del consejo</span></div></div>
   </div>
 </header>
-<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#la-decision-de-c2-en-conjunto"><span>02</span>La decisión de C2 en conjunto</a></li><li><a href="#tesis-de-ia"><span>03</span>Tesis de IA</a></li><li><a href="#ambicion-por-esfera"><span>04</span>Ambición por esfera</a></li><li><a href="#apetito-de-riesgo"><span>05</span>Apetito de riesgo</a></li><li><a href="#umbral-de-inversion-enterprise-y-umbrales-de-materialidad"><span>06</span>Umbral de inversión Enterprise y umbrales de materialidad</a></li><li><a href="#horizonte-de-retorno-por-nivel-de-ambicion"><span>07</span>Horizonte de retorno por nivel de ambición</a></li><li><a href="#equilibrio-objetivo-de-cartera-por-ambicion"><span>08</span>Equilibrio objetivo de cartera por ambición</a></li><li><a href="#plazos-de-referencia"><span>09</span>Plazos de referencia</a></li><li><a href="#plazos-de-no-conformidades-e-incidentes"><span>10</span>Plazos de no conformidades e incidentes</a></li><li><a href="#lineas-rojas"><span>11</span>Líneas rojas</a></li><li><a href="#presupuesto-marco"><span>12</span>Presupuesto marco</a></li><li><a href="#revision-anual-y-revision-extraordinaria"><span>13</span>Revisión anual y revisión extraordinaria</a></li><li><a href="#criterios-de-calidad-de-la-decision-de-c2"><span>14</span>Criterios de calidad de la decisión de C2</a></li><li><a href="#anexo-plantilla-de-documento-de-decision-del-consejo-t19"><span>15</span>Anexo · Plantilla de documento de decisión del consejo (T19)</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>16</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>17</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>18</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
-<p>Este documento define el contenido de la etapa <strong>C2 · Dirección</strong> del ciclo corporativo (documento 01, sección 5.1): la decisión con la que el consejo fija la tesis de IA de la compañía, la ambición por esfera, el apetito de riesgo y los umbrales, plazos, límites y presupuesto que el resto del marco usa para decidir.</p>
+<p>Este documento define el contenido de la etapa <strong>C2 · Dirección</strong> del ciclo corporativo (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 5.1): la decisión con la que el consejo fija la tesis de IA de la compañía, la ambición por esfera, el apetito de riesgo y los umbrales, plazos, límites y presupuesto que el resto del marco usa para decidir.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -428,11 +432,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cuándo</strong></td>
-<td>En la primera implantación, dentro de los noventa días iniciales (documento 90). Después, anualmente tras C5, y de forma extraordinaria cuando se produzca un desencadenante (sección 13).</td>
+<td>En la primera implantación, dentro de los noventa días iniciales (<a href="90_SEVEN-G_Guia_de_implantacion.html">documento 90</a>). Después, anualmente tras C5, y de forma extraordinaria cuando se produzca un desencadenante (sección 13).</td>
 </tr>
 <tr>
 <td><strong>Resultado</strong></td>
-<td>Un único <strong>documento de decisión del consejo</strong>, con la estructura del anexo (herramienta T19).</td>
+<td>Un único <strong>documento de decisión del consejo</strong>, con la estructura del anexo (herramienta <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -461,7 +465,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td><strong>Ambición por esfera</strong></td>
 <td>Prioridad y ambición objetivo en las esferas 01–07; grado objetivo en 08 y 09.</td>
-<td>C3; mapa de calor (T16); índice (condición IT-D1).</td>
+<td>C3; mapa de calor (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>); índice (condición IT-D1).</td>
 <td>4</td>
 </tr>
 <tr>
@@ -475,14 +479,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4</td>
 <td><strong>Umbrales de impacto económico</strong></td>
 <td>Escala económica de impacto 1–5 proporcionada al tamaño.</td>
-<td>Matriz de riesgos (T06, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</td>
+<td>Matriz de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</td>
 <td>5.4</td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>Umbral de inversión Enterprise</strong> y de materialidad</td>
 <td>Cuándo una iniciativa es Enterprise por inversión y cuándo se informa individualmente al consejo.</td>
-<td>Fase 0 (T04); C4.</td>
+<td>Fase 0 (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>); C4.</td>
 <td>6</td>
 </tr>
 <tr>
@@ -503,21 +507,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>8</td>
 <td><strong>Plazos de referencia</strong></td>
 <td>Plazo por fase y de decisión de <em>gate</em>; periodicidad de R6; regularización.</td>
-<td>Registro de iniciativas (T01); alertas de estancamiento.</td>
+<td>Registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>); alertas de estancamiento.</td>
 <td>9</td>
 </tr>
 <tr>
 <td>9</td>
 <td><strong>Plazos de no conformidades e incidentes</strong></td>
 <td>Contención, plan de acción y comunicación interna.</td>
-<td>Documento 37; T08.</td>
+<td>Documento 37; <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>.</td>
 <td>10</td>
 </tr>
 <tr>
 <td>10</td>
 <td><strong>Líneas rojas</strong></td>
 <td>Prácticas prohibidas, decisiones que no se delegan nunca y líneas propias.</td>
-<td>Fases 0, 3 y 4; T07; T10.</td>
+<td>Fases 0, 3 y 4; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>.</td>
 <td>11</td>
 </tr>
 <tr>
@@ -608,7 +612,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>7</td>
 <td><strong>Principios</strong></td>
-<td>Principios de uso responsable, que la política corporativa (documento 31) convierte en normas.</td>
+<td>Principios de uso responsable, que la política corporativa (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) convierte en normas.</td>
 <td>¿Cómo lo haremos?</td>
 </tr>
 <tr>
@@ -673,7 +677,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Para las esferas 08 y 09, en lugar de ambición se fija el <strong>grado objetivo por dimensión</strong> (Ausente, Básico, Sistemático o Avanzado), con horizonte, indicador y responsable. Nunca se fija Optimizar, Aumentar o Transformar para 08 o 09 (documento 10, sección 4.2).</p>
+<p>Para las esferas 08 y 09, en lugar de ambición se fija el <strong>grado objetivo por dimensión</strong> (Ausente, Básico, Sistemático o Avanzado), con horizonte, indicador y responsable. Nunca se fija Optimizar, Aumentar o Transformar para 08 o 09 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>, sección 4.2).</p>
 <h3 id="4-2-reglas">4.2 Reglas</h3>
 <ol>
 <li>La ambición objetivo <strong>debe</strong> apoyarse en el mapa de esferas actual de C1: se indica el nivel alcanzado y el nivel en cartera de cada esfera.</li>
@@ -1146,7 +1150,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>&quot;—&quot; en la columna ámbar indica <strong>tolerancia cero</strong>: el primer caso ya supera el límite.</p>
 <h3 id="5-4-umbrales-de-impacto-economico">5.4 Umbrales de impacto económico</h3>
-<p>El impacto se valora en cinco ejes (económico, personas y derechos, regulatorio, operativo, reputacional) y se toma el mayor (documento 33). El eje económico se fija <strong>en proporción al tamaño</strong> de la compañía sobre una magnitud de referencia estable:</p>
+<p>El impacto se valora en cinco ejes (económico, personas y derechos, regulatorio, operativo, reputacional) y se toma el mayor (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>). El eje económico se fija <strong>en proporción al tamaño</strong> de la compañía sobre una magnitud de referencia estable:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1244,7 +1248,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Métrica en <strong>rojo</strong> en LEG o SEG</td>
-<td>Además, se abre no conformidad crítica si concurre alguno de sus supuestos (documento 01, sección 12).</td>
+<td>Además, se abre no conformidad crítica si concurre alguno de sus supuestos (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 12).</td>
 <td>Contención en 48 horas como máximo.</td>
 </tr>
 </tbody>
@@ -1263,7 +1267,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Umbral de inversión Enterprise</strong></td>
-<td>Coste total a tres años de la iniciativa: construcción + coste recurrente previsto de los tres primeros años. Si lo supera, la iniciativa es Enterprise (documento 01, sección 9.2).</td>
+<td>Coste total a tres años de la iniciativa: construcción + coste recurrente previsto de los tres primeros años. Si lo supera, la iniciativa es Enterprise (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 9.2).</td>
 <td>0,5 % del EBITDA</td>
 <td>250 k€</td>
 </tr>
@@ -1281,7 +1285,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Escala mínima en producción (B3)</strong></td>
-<td>Número de iniciativas en producción que el índice de transformación exige para Eficiencia a escala (documento 12).</td>
+<td>Número de iniciativas en producción que el índice de transformación exige para Eficiencia a escala (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>).</td>
 <td>5 por defecto; ajustable al tamaño</td>
 <td>5</td>
 </tr>
@@ -1295,7 +1299,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <hr />
 <h2 id="horizonte-de-retorno-por-nivel-de-ambicion"><span class="antetitulo">07</span>Horizonte de retorno por nivel de ambición</h2>
-<p><em>Valores iniciales ilustrativos, a aprobar por el consejo en C2. &quot;Neto anual&quot;, &quot;VAN&quot; y &quot;plazo de recuperación&quot; siguen las definiciones del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> (F2, F7 y F9): neto anual = eficiencias materializadas + retorno − coste recurrente. El único criterio económico de viabilidad en G3 es VAN ≥ 0 con el horizonte y la tasa fijados en C2 (documento 40, sección 8.3; 01 §7.6); el plazo de recuperación de referencia es informativo y no es umbral de G3.</em></p>
+<p><em>Valores iniciales ilustrativos, a aprobar por el consejo en C2. &quot;Neto anual&quot;, &quot;VAN&quot; y &quot;plazo de recuperación&quot; siguen las definiciones del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> (F2, F7 y F9): neto anual = eficiencias materializadas + retorno − coste recurrente. El único criterio económico de viabilidad en G3 es VAN ≥ 0 con el horizonte y la tasa fijados en C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, sección 8.3; 01 §7.6); el plazo de recuperación de referencia es informativo y no es umbral de G3.</em></p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1324,7 +1328,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Transformar</strong></td>
 <td>Hipótesis de retorno con hitos de aprendizaje; límite de inversión por etapa; aprobación del consejo.</td>
-<td>No se exige VAN ≥ 0 del conjunto (documento 40, sección 8.3). Viabilidad de la primera etapa, que no debería superar el 25 % de la inversión total estimada; hitos de aprendizaje como máximo cada seis meses; criterios de parada por etapa; valor de opción documentado.</td>
+<td>No se exige VAN ≥ 0 del conjunto (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, sección 8.3). Viabilidad de la primera etapa, que no debería superar el 25 % de la inversión total estimada; hitos de aprendizaje como máximo cada seis meses; criterios de parada por etapa; valor de opción documentado.</td>
 <td>Evidencia de mercado o de cliente: uso, conversión, ingresos iniciales o cambio operativo verificado.</td>
 <td>Retorno medido en los 36 meses siguientes a G5, o decisión explícita del consejo de ampliar el plazo con nueva etapa y límite.</td>
 </tr>
@@ -1332,7 +1336,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas:</p>
 <ul>
-<li>El horizonte se aplica al <strong>nivel confirmado</strong> en G2. Si la ambición real resulta inferior, en G7 se aplica el horizonte del nivel real (documento 12, sección 3.6).</li>
+<li>El horizonte se aplica al <strong>nivel confirmado</strong> en G2. Si la ambición real resulta inferior, en G7 se aplica el horizonte del nivel real (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>, sección 3.6).</li>
 <li>Un horizonte vencido sin cumplir el criterio <strong>adelanta G7</strong>.</li>
 <li>Las iniciativas de cumplimiento obligatorio o de reducción de un riesgo relevante pueden justificarse por <strong>riesgo evitado</strong> o <strong>cumplimiento</strong>, que no se suman al valor salvo que se traduzcan a dinero con fórmula.</li>
 </ul>
@@ -1378,7 +1382,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li>Si la tesis fija <strong>Transformar</strong> como ambición objetivo en alguna esfera, la banda de Transformar <strong>no puede empezar en 0 %</strong> más allá del primer año, o la compañía estará declarando una transformación sin financiarla.</li>
 <li>El equilibrio se mide trimestralmente en C4. Estar fuera de banda un trimestre es ámbar; dos trimestres, rojo (métrica EST de la sección 5.3).</li>
-<li>La corrección se hace en C3 priorizando iniciativas, no reclasificando las existentes. Reclasificar para entrar en banda sin evidencia es una no conformidad mayor (documento 12, sección 3.6).</li>
+<li>La corrección se hace en C3 priorizando iniciativas, no reclasificando las existentes. Reclasificar para entrar en banda sin evidencia es una no conformidad mayor (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>, sección 3.6).</li>
 <li>La inversión en habilitación de gobierno y cumplimiento (esferas 08 y 09) se presupuesta en un sobre propio (sección 12).</li>
 </ol>
 <hr />
@@ -1488,7 +1492,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>S4 · Baja</strong></td>
-<td>Registro en T08.</td>
+<td>Registro en <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1533,7 +1537,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Categorización biométrica para inferir raza, opiniones políticas, afiliación sindical, convicciones religiosas o filosóficas, vida sexual u orientación sexual, con las excepciones previstas.</li>
 <li>Identificación biométrica remota en tiempo real en espacios de acceso público con fines de garantía del cumplimiento del Derecho, salvo las excepciones previstas.</li>
 </ul>
-<p>Tratamiento en SEVEN-G: <strong>tolerancia cero</strong>. Ninguna iniciativa que pueda constituir una práctica prohibida supera la fase 3 (documento 01, sección 6.5); si se detecta en producción, es una no conformidad crítica con parada del sistema. La interpretación de cada supuesto requiere criterio jurídico cualificado.</p>
+<p>Tratamiento en SEVEN-G: <strong>tolerancia cero</strong>. Ninguna iniciativa que pueda constituir una práctica prohibida supera la fase 3 (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 6.5); si se detecta en producción, es una no conformidad crítica con parada del sistema. La interpretación de cada supuesto requiere criterio jurídico cualificado.</p>
 <h3 id="11-2-lo-que-no-se-delega-nunca-en-ia">11.2 Lo que no se delega nunca en IA</h3>
 <p>Mínimo común de SEVEN-G. La compañía puede ampliarlo, no reducirlo. Los niveles de autonomía son los del <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> (A0 asistencia · A1 recomendación · A2 actuación supervisada · A3 actuación autónoma).</p>
 <div class="tabla"><table>
@@ -1600,7 +1604,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>No desplegar agentes con autonomía A3 en interacción directa con clientes.</li>
 <li>No usar reconocimiento de emociones en la relación con clientes.</li>
 </ul>
-<p>Las líneas rojas se incorporan a los cuestionarios de intensidad (T04), clasificación regulatoria (T07) y seguridad de agentes (T10). Solo el consejo puede modificarlas, en C2 o en una revisión extraordinaria.</p>
+<p>Las líneas rojas se incorporan a los cuestionarios de intensidad (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>), clasificación regulatoria (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>) y seguridad de agentes (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>). Solo el consejo puede modificarlas, en C2 o en una revisión extraordinaria.</p>
 <hr />
 <h2 id="presupuesto-marco"><span class="antetitulo">12</span>Presupuesto marco</h2>
 <p>El presupuesto marco es el importe anual que el consejo autoriza para la IA y las reglas con las que se asigna. No sustituye al presupuesto de cada iniciativa, que se aprueba en su <em>gate</em>.</p>
@@ -1714,7 +1718,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Cambio sustancial de la tecnología o del mercado que invalide un supuesto de la tesis.</li>
 <li>Perfil &quot;Transformación declarada, no evidenciada&quot; en dos cálculos formales consecutivos.</li>
 </ul>
-<p>Cada versión del documento de decisión se identifica con número de versión y fecha, se conserva la anterior y se registra en el registro de recomendaciones y decisiones (T18). Tras su aprobación se comunica a los órganos y responsables afectados y se actualizan los parámetros en las herramientas (T01, T04, T06, T14, T16, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
+<p>Cada versión del documento de decisión se identifica con número de versión y fecha, se conserva la anterior y se registra en el registro de recomendaciones y decisiones (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>). Tras su aprobación se comunica a los órganos y responsables afectados y se actualizan los parámetros en las herramientas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
 <hr />
 <h2 id="criterios-de-calidad-de-la-decision-de-c2"><span class="antetitulo">14</span>Criterios de calidad de la decisión de C2</h2>
 <p>El auditor de IA o la auditoría interna comprueban, antes de la aprobación:</p>
@@ -1780,7 +1784,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="anexo-plantilla-de-documento-de-decision-del-consejo-t19"><span class="antetitulo">15</span>Anexo · Plantilla de documento de decisión del consejo (T19)</h2>
+<h2 id="anexo-plantilla-de-documento-de-decision-del-consejo-t19"><span class="antetitulo">15</span>Anexo · Plantilla de documento de decisión del consejo (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a>)</h2>
 <p><strong>Instrucciones de uso.</strong> La plantilla se rellena en C2, la prepara la alta dirección con la oficina de IA, la verifica el auditor de IA o la auditoría interna con los criterios de la sección 14 y la aprueba el consejo. Los campos marcados <strong>(Enterprise)</strong> pueden omitirse en organizaciones que solo aplican la intensidad Lite, justificándolo. Donde se indica &quot;valor orientativo&quot;, se parte del valor de este documento y se sustituye por el aprobado.</p>
 <h3 id="a-identificacion">A. Identificación</h3>
 <div class="tabla"><table>
@@ -1813,7 +1817,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1.0 en la primera aprobación; se incrementa en cada revisión.</td>
 </tr>
 <tr>
-<td>Identificador en el registro de decisiones (T18)</td>
+<td>Identificador en el registro de decisiones (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a>)</td>
 <td></td>
 <td>Identificador persistente del registro.</td>
 </tr>
@@ -1904,7 +1908,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Principios</td>
 <td></td>
-<td>Remite a la política corporativa (documento 31).</td>
+<td>Remite a la política corporativa (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
 </tr>
 <tr>
 <td>Cómo sabremos que funciona</td>
@@ -2174,7 +2178,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Gasto en proveedor principal de modelos ÷ gasto total en modelos × 100</td>
 <td>&gt; 60 %</td>
 <td>&gt; 80 %</td>
-<td>T09, T13</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">T09</a>, <a href="42_SEVEN-G_Costes_de_IA.html">T13</a></td>
 <td>Trimestral</td>
 </tr>
 </tbody>
@@ -2657,7 +2661,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>T19</strong></td>
+<td><strong><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a></strong></td>
 <td>Plantilla de tesis de IA y apetito de riesgo</td>
 <td>Documento de decisión del consejo (anexo).</td>
 </tr>
@@ -2667,27 +2671,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Recibe plazos de referencia, bandas de cartera y horizontes.</td>
 </tr>
 <tr>
-<td><strong>T04</strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></strong></td>
 <td>Determinación de intensidad</td>
 <td>Recibe el umbral de inversión Enterprise y las líneas rojas.</td>
 </tr>
 <tr>
-<td><strong>T06</strong></td>
+<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">T06</a></strong></td>
 <td>Matriz y registro de riesgos</td>
 <td>Recibe los umbrales de impacto económico y los grados de apetito.</td>
 </tr>
 <tr>
-<td><strong>T08</strong></td>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">T08</a></strong></td>
 <td>Registro de no conformidades e incidentes</td>
 <td>Recibe los plazos aprobados.</td>
 </tr>
 <tr>
-<td><strong>T14</strong></td>
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Calculadora del índice de transformación</td>
 <td>Recibe la condición IT-D1 y el umbral B3.</td>
 </tr>
 <tr>
-<td><strong>T16</strong></td>
+<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></strong></td>
 <td>Mapa de esferas de la cartera</td>
 <td>Recibe la ambición por esfera y los grados objetivo.</td>
 </tr>
@@ -2697,7 +2701,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Muestra métricas de tolerancia, equilibrio de cartera y presupuesto.</td>
 </tr>
 <tr>
-<td><strong>T18</strong></td>
+<td><strong><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></strong></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Registra la decisión de C2 y sus revisiones.</td>
 </tr>
@@ -2734,7 +2738,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Herramientas y registro de iniciativas</strong></td>
-<td>Plazos de referencia orientativos (sección 3.6) y herramienta T19.</td>
+<td>Plazos de referencia orientativos (sección 3.6) y herramienta <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a>.</td>
 </tr>
 <tr>
 <td><strong>10 · Mapa de esferas y niveles de ambición</strong></td>
@@ -2800,7 +2804,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Define los doce componentes de la decisión de C2: estructura de la tesis de IA, ambición por esfera, grados de apetito y métricas de tolerancia para las diez categorías de riesgo, umbrales de impacto económico proporcionados, umbral de inversión Enterprise y de materialidad, horizonte de retorno por nivel, bandas de equilibrio de cartera, plazos, líneas rojas, presupuesto marco y revisión. Incluye como anexo la plantilla de documento de decisión del consejo (T19).</td>
+<td>Primera versión. Define los doce componentes de la decisión de C2: estructura de la tesis de IA, ambición por esfera, grados de apetito y métricas de tolerancia para las diez categorías de riesgo, umbrales de impacto económico proporcionados, umbral de inversión Enterprise y de materialidad, horizonte de retorno por nivel, bandas de equilibrio de cartera, plazos, líneas rojas, presupuesto marco y revisión. Incluye como anexo la plantilla de documento de decisión del consejo (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">T19</a>).</td>
 </tr>
 </tbody>
 </table></div>

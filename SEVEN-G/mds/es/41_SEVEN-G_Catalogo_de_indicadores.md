@@ -10,7 +10,7 @@
 | Autor | Fernando García · SEACHAD |
 | Estado | Borrador para revisión. Catálogo vivo: los umbrales se fijan por cada compañía y se recalibran en C5. |
 
-<!-- cifras: 156 | indicadores codificados ; 13 | familias ; 4 | niveles de uso ; 26 | indicadores del conjunto mínimo Lite -->
+<!-- cifras: 159 | indicadores codificados ; 13 | familias ; 4 | niveles de uso ; 26 | indicadores del conjunto mínimo Lite -->
 
 ---
 
@@ -67,7 +67,7 @@ Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según l
 | **EMB** | Embudo | 13 |
 | **AGI** | Agilidad | 6 |
 | **RIE** | Riesgo y cumplimiento | 17 |
-| **OPE** | Operación y calidad de modelos | 23 |
+| **OPE** | Operación y calidad de modelos | 26 |
 | **ADO** | Adopción y personas | 15 |
 | **DAT** | Datos y conocimiento | 20 |
 | **CLI** | Cliente y producto | 9 |
@@ -75,7 +75,7 @@ Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según l
 | **MAD** | Madurez | 4 |
 | **CON** | Consejo | 5 |
 | **PRO** | Procesos y decisión | 6 |
-| | **Total** | **156** |
+| | **Total** | **159** |
 
 ---
 
@@ -216,6 +216,7 @@ Definiciones de los tramos en el documento 40 §9. Todos se segmentan por nivel 
 | IND-OPE-21 | **Reversión probada.** Sistemas con prueba del plan de reversión en plazo. | Sistemas con prueba de reversión en plazo ÷ sistemas en producción | % | P19 | S | A definir por la compañía | I · Ca | F5–F6 | 100 % | |
 | IND-OPE-22 | **Ruido de alertas.** Alertas que se cierran sin acción. | Alertas cerradas sin acción ÷ alertas generadas | % | Monitorización · P25 | M | A definir por la compañía | I · Ca | F6 | Tendencia decreciente | |
 | IND-OPE-23 | **Versiones de proveedor en riesgo.** Sistemas con versión de modelo de proveedor con obsolescencia anunciada y sin plan de migración. | Sistemas cuya versión de modelo de proveedor tiene obsolescencia anunciada sin plan de migración ÷ sistemas con modelo de proveedor | % | A definir por la compañía | M | A definir por la compañía | Ca | F6 | 0 % | |
+| IND-OPE-26 | **Modo degradado por coste.** Días en que el sistema funciona degradado por agotar el presupuesto de consumo y calidad durante el modo. | Días del periodo en N1 o superior de la cascada (documento 52 §10.3), por nivel; y calidad medida en el modo ÷ calidad mínima de P25 | días · % | P27 · P25 | M | RO | I · Ca | F6 · IA generativa, agentes | Tendencia decreciente; calidad ≥ 100 % del mínimo | |
 
 ### 11.2 Aprendizaje automático predictivo
 
@@ -235,6 +236,8 @@ Definiciones de los tramos en el documento 40 §9. Todos se segmentan por nivel 
 | IND-OPE-08 | **Respuestas no fundamentadas.** Respuestas con afirmaciones no respaldadas por las fuentes. | Respuestas no fundamentadas ÷ respuestas revisadas en la muestra de revisión humana | % | Revisión muestral · `operacion.qa_humano_pct` | M | RP | I | F6 · IA generativa | A fijar | |
 | IND-OPE-09 | **Contención.** Conversaciones resueltas sin derivación a una persona. | Conversaciones sin derivación ÷ conversaciones | % | Registros · `operacion.contencion_pct` | M | RP | I | F6 · E01 · IA generativa | A fijar; leer con OPE-08 y CLI-03 | |
 | IND-OPE-10 | **Éxito de inyección de instrucciones en pruebas.** Ataques de prueba que logran alterar el comportamiento. | Ataques con éxito ÷ ataques ejecutados | % | T10 · `ia_ofensiva` | S y en cada cambio | SEG | I · Cj | F5–F6 · IA generativa, agentes | 0 en acciones con efecto | |
+| IND-OPE-24 | **Consultas fuera del alcance validado.** Deriva de uso: consultas que no corresponden a los temas o tareas validados en G5. | Consultas clasificadas fuera del alcance validado ÷ consultas del periodo | % | Clasificación de consultas o muestreo · P25 | M | RO | I | F6 · IA generativa, agentes | Según referencia de G5 (documento 52 §4.2.6) | |
+| IND-OPE-25 | **Respuestas desiguales en pares contrafactuales.** Sesgo en las respuestas: pares de casos idénticos salvo en un atributo protegido con resultado materialmente distinto. | Pares con diferencia material ÷ pares evaluados | % | Evaluaciones · P25 | En cada evaluación de regresión y periódica | RR | I · Cj | F5–F6 · IA generativa con decisiones, comunicaciones o exposición directa a personas | Umbral de P17 (documento 52 §4.2.7) | |
 
 ### 11.4 Agentes
 
@@ -530,6 +533,9 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 | OPE-15 | 52 | Reversión probada | IND-OPE-21 (incorporado) |
 | OPE-16 | 52 | Ruido de alertas | IND-OPE-22 (incorporado) |
 | OPE-17 | 52 | Versiones de proveedor en riesgo | IND-OPE-23 (incorporado) |
+| OPE-18 | 52 | Modo degradado por coste | IND-OPE-26 (incorporado) |
+| OPE-19 | 52 | Consultas fuera del alcance validado | IND-OPE-24 (incorporado) |
+| OPE-20 | 52 | Respuestas desiguales en pares contrafactuales | IND-OPE-25 (incorporado) |
 
 ---
 
@@ -572,3 +578,4 @@ Los documentos 10, 50, 51 y 52 usan códigos provisionales de indicadores. Esta 
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Catálogo de 156 indicadores en 13 familias con código, fórmula, unidad, fuente, periodicidad, responsable, nivel, aplicación y umbral orientativo; conjunto mínimo Lite de 26 indicadores; selección orientativa para el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; correspondencia de códigos provisionales de los documentos 10, 50, 51 y 52 (sección 21). Incorporados al catálogo los 47 indicadores provisionales que no tenían equivalente (familias EMB, RIE, OPE, ADO, DAT y CLI, y nueva familia PRO · Procesos y decisión, sección 18); prefijo provisional de conocimiento del documento 51 renombrado de CON- a CNC-. |
+| 0.1 | 18-09-2026 | Tres indicadores nuevos de operación (159 en total): IND-OPE-24 consultas fuera del alcance validado (deriva de uso), IND-OPE-25 respuestas desiguales en pares contrafactuales (sesgo en IA generativa) e IND-OPE-26 modo degradado por coste; correspondencia con OPE-18 a OPE-20 del documento 52. |

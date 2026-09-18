@@ -391,6 +391,7 @@ const DIMS = [
   ["clasif","Clasificación de la compañía", c=>rc(c).clasificacion_ria || "sin dato"],
   ["prioridad","Prioridad de información", c=>c.tags.prioridad || "sin dato"],
   ...(CASES.some(c=>c.tags.ambicion) ? [["ambicion","Ambición", c=>c.tags.ambicion || "sin dato"]] : []),
+  ...(CASES.some(alcanceDe) ? [["alcance","Alcance", c=>c.tags.alcance || "De una unidad"]] : []),
   // ciclo de vida (embudo): situación, plazo en el estado actual, complejidad y origen del historial
   ["situacion","Situación en el embudo", c=>situacion(c.estado)],
   ["plazo","Tiempo en el estado actual", c=>PLAZO_TXT[plazoDe(c).nivel]],
@@ -729,7 +730,7 @@ function renderEmbudoPreguntas(rows){
 function render(){
   buildFilters();
   const rows = CASES.filter(passes);
-  renderKPIs(rows); renderCharts(rows); renderEmbudo(rows); renderCdm(); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
+  renderKPIs(rows); renderCharts(rows); renderEmbudo(rows); renderCdm(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
   document.getElementById("cards").classList.toggle("hidden", state.view!=="cards");
   document.getElementById("table").classList.toggle("hidden", state.view!=="table");
   // agrupación (por compañía y unidad o sin agrupar) y presentación (tarjetas o tabla) son independientes
@@ -939,6 +940,40 @@ function renderCdm(){
     ${fila50("VNB", t50.vnb, t51.vnb)}${fila50("Fraude evitado (la compañía lo llama «ahorro»)", t50.fraude, t51.fraude)}${fila50(`Eficiencias (p. 50: ${nnum(t50.horas)} h)`, t50.eficiencia, t51.eficiencia)}${fila50("Total", t50.total, t51.total)}</tbody></table></div>
    <div class="note" style="margin-top:12px">Advertencias sobre el cuadro de mando de la compañía</div>
    <ul class="warnlist">${(d.advertencias||[]).map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`);
+}
+
+// ---- iniciativas transversales y plataformas habilitadoras (casos[].alcance, opcional; documento 40 §7.2 de SEVEN-G)
+// Una iniciativa transversal se lee por unidad de negocio con una escalera: coste imputado desde el primer día → adopción real →
+// horas liberadas declaradas y capacidad liberada (no suman) → valor materializado, lo único que llega al neto. Una plataforma
+// habilitadora imputa su valor a los casos que la usan. Sin casos con alcance, la tarjeta no se muestra.
+const DESPLIEGUE = {previsto:"Previsto", piloto:"Piloto", en_uso:"En uso", retirado:"Retirado"};
+function tablaAlcance(c){
+  const a = alcanceDe(c); if (!a) return "";
+  if (a.tipo === "plataforma") return `<div class="note">El valor de la plataforma se imputa a los casos que la usan; en la plataforma solo cuenta su coste.</div>` +
+    ((a.habilita||[]).length ? `<ul class="warnlist">${a.habilita.map(h=>{ const x = CASES.find(k=>k.id===h.id); return `<li><span class="id">${esc(h.id)}</span> ${esc(h.nombre||"")}${x?` · ${badgeEstado(x.estado)} · neto anual ${fmt(netoDe(x))}`:""}</li>`; }).join("")}</ul>`
+      : `<div class="nd">Ningún caso usa aún la plataforma: no se justifica por su valor hasta que algún caso la use.</div>`);
+  const umb = a.umbral_adopcion_pct;
+  const fila = u => { const comun = u.unidad == null, p = adopcionPct(u), bajo = umb != null && u.estado === "en_uso" && p != null && p < umb;
+    return `<tr><td>${comun ? "<i>Común (sin unidad)</i>" : esc(u.unidad)}</td><td>${comun ? "—" : nd(DESPLIEGUE[u.estado] || u.estado)}${u.desde ? ` <span class="nd">${fES(u.desde)}</span>` : ""}</td>
+      <td class="n">${comun ? "—" : u.licencias_asignadas == null ? ND : `${nnum(u.licencias_activas)} / ${nnum(u.licencias_asignadas)}${p != null ? ` <b style="color:${bajo ? "var(--critical)" : "var(--muted)"}">${Math.round(p)} %</b>` : ""}`}</td>
+      <td class="n">${comun ? "—" : nnum(u.horas_liberadas_mes)}</td><td class="n">${nd(u.coste_anual, fmt)}${u.coste_previsto ? ' <span class="nd">prev.</span>' : ""}</td>
+      <td class="n">${nd(u.capacidad_liberada, fmt)}</td><td class="n">${nd(u.valor_materializado, fmt)}${u.valor_materializado != null ? `<div class="nd" style="font-style:normal">validado ${fmt(u.valor_validado || 0)}</div>` : ""}</td></tr>`; };
+  return `<div class="tblx"><table class="mini"><thead><tr><th>Unidad de negocio</th><th>Despliegue</th><th class="n">Licencias activas / asignadas</th><th class="n">Horas liberadas al mes (declaradas)</th><th class="n">Coste anual</th><th class="n">Capacidad liberada (no suma)</th><th class="n">Valor materializado</th></tr></thead><tbody>${(a.unidades||[]).map(fila).join("")}</tbody></table></div>` +
+    `<div class="nd" style="margin-top:4px">${umb != null ? `Umbral de adopción: ${umb} % de licencias activas en cada unidad en uso. ` : ""}Las horas y la capacidad liberada son declaradas y no suman en el neto hasta que se materializan (menor coste real o capacidad reasignada con destino).</div>`;
+}
+function renderTransversales(rows){
+  const ts = rows.filter(alcanceDe);
+  if (!ts.length){ setCard("transv", "", "", "", ""); return; }
+  const trans = ts.filter(c=>c.alcance.tipo === "transversal"), plat = ts.filter(c=>c.alcance.tipo === "plataforma");
+  const netoCon = sum(rows.map(netoDe)), netoSin = sum(rows.filter(c=>!alcanceDe(c)).map(netoDe));
+  const bajo = trans.flatMap(c=>adopcionBaja(c).map(u=>`${esc(u.unidad)} (${Math.round(adopcionPct(u))} %)`));
+  const partes = [trans.length ? pl(trans.length, "iniciativa transversal", "iniciativas transversales") : "", plat.length ? pl(plat.length, "plataforma habilitadora", "plataformas habilitadoras") : ""].filter(Boolean);
+  const ella = ts.length === 1 ? "ella" : "ellas";
+  const insight = `${lista(partes)}: neto anual de la cartera <b>${fmt(netoCon)}</b> con ${ella} y <b>${fmt(netoSin)}</b> sin ${ella}${bajo.length ? `; adopción por debajo del umbral en ${lista(bajo)}` : ""}.`;
+  const bloques = ts.map(c=>`<h4 style="margin:14px 0 4px">${esc(c.nombre)} <span class="nd" style="font-style:normal">· ${esc(c.tags.alcance || "")} · ${badgeEstado(c.estado)} · coste anual ${fmt(R(c).recurrente)} · neto anual ${fmt(netoDe(c))} · <a href="#" onclick="openEco(CASES.find(x=>x.id==='${c.id}'));return false">ver el caso</a></span></h4>${tablaAlcance(c)}`).join("");
+  setCard("transv", "Iniciativas transversales y plataformas habilitadoras",
+    "Por unidad de negocio: coste imputado desde el primer día, adopción real, horas liberadas declaradas, capacidad liberada (no suma) y valor materializado, lo único que llega al neto. El valor de una plataforma se imputa a los casos que la usan. Los importes de estos casos ya suman en la cartera: aquí se desglosan (SEVEN-G, documento 40 §7.2)",
+    insight, bloques);
 }
 
 // ---- bloque 1: cartera (movimientos, tiempo a producción, agilidad)
@@ -1270,6 +1305,7 @@ function openEco(c){
    <h3>Inversión</h3><div class="tblx"><table class="mini"><thead><tr><th></th><th class="n">Importe</th><th>Dato y cálculo</th></tr></thead><tbody>${itRow("Construcción (una vez)", inv.construccion)}${itRow("Coste recurrente anual actual", inv.recurrente_anual)}${itRow("Inversión adicional para el potencial", inv.adicional_potencial)}${itRow("Coste recurrente anual en régimen", inv.recurrente_potencial)}</tbody></table></div>
    <div class="tblx"><table class="mini" style="margin-top:6px"><thead><tr><th>Desglose del coste recurrente actual</th><th class="n">€/año</th></tr></thead><tbody>${Object.entries(INVC).map(([k,l])=>`<tr><td>${l}</td><td class="n">${des[k]==null?"—":fmt(des[k])}</td></tr>`).join("")}</tbody></table></div>
    <div class="nd" style="margin-top:4px">Clave de reparto de la plataforma compartida: ${esc(e.clave_reparto||"no aplica o sin definir")}</div>
+   ${alcanceDe(c) ? `<h3>${c.alcance.tipo === "plataforma" ? "Casos que usan la plataforma" : "Por unidad de negocio"}</h3>${tablaAlcance(c)}` : ""}
    <h3>Eficiencias</h3>${lineasTabla(e.eficiencias||[], EFICL())}
    <h3>Retorno</h3>${lineasTabla(e.retorno||[], RETL())}
    ${especial}
@@ -1286,7 +1322,7 @@ function openFicha(c){
   const t = c.tags, d = c.detalle, r = rc(c), f = r.fechas||{}, k = r.controles||{}, vv = r.valor_validado||{}, op = r.operacion||{};
   const ctl = CTRL.map(x=>`${x}: <span class="badge ${k[x]==="hecho"?"ok":k[x]==="pendiente"?"mid":k[x]==="no_aplica"?"":""}">${k[x]?esc(k[x].replace("_"," ")):"sin dato"}</span>`).join(" ");
   open(`<h2>${c.id} · ${esc(c.nombre)}</h2><div class="sub">${esc(c.compania)} · ${esc(c.unidad)} · área ${esc(c.area)} · ${badgeEstado(c.estado)} · desde ${inicioDe(c)}${f.produccion?"":" (estimado)"}</div>
-   <div style="margin:8px 0">${[t.tecnologia,t.naturaleza,t.exposicion,t.funcion,"Prioridad "+t.prioridad].map(x=>`<span class="badge">${esc(x)}</span>`).join("")}${badgeRiesgo(t.riesgo)}</div>
+   <div style="margin:8px 0">${[t.tecnologia,t.naturaleza,t.exposicion,t.funcion,"Prioridad "+t.prioridad,...(t.alcance?[t.alcance]:[])].map(x=>`<span class="badge">${esc(x)}</span>`).join("")}${badgeRiesgo(t.riesgo)}</div>
    <h3>Qué es y para qué se usa</h3><p style="margin:0">${c.que_es?esc(c.que_es):ND}</p>
    <h3>Clasificación del ${CONSEJO()}</h3>
    <dl><dt>Tecnología</dt><dd>${esc(d.tipo)}</dd><dt>Tipo de decisión</dt><dd>${esc(d.decision)}</dd><dt>Datos tratados</dt><dd>${esc(d.datos)}</dd><dt>Reglamento de IA (estimación)</dt><dd>${esc(d.aiact)}</dd><dt>Proveedores</dt><dd>${esc(d.proveedores)}</dd><dt>Naturaleza</dt><dd>${esc(d.es_ia)}</dd>
@@ -1392,6 +1428,7 @@ HTML = """<!DOCTYPE html>
   <div class="card"><h3 id="c2t"></h3><div class="note">Haz clic en una barra para ver la inversión, las eficiencias y el retorno del caso</div><div class="legend"><span><i style="background:var(--seq450)"></i>Neto anual adicional</span><span><i style="background:var(--s2)"></i>Inversión adicional</span></div><div id="c2"></div></div>
  </div>
  <details class="card cdet" id="cdm" style="margin-bottom:14px"></details>
+ <details class="card cdet" id="transv" style="margin-bottom:14px"></details>
  <div class="grid2"><details class="card cdet" id="cart1"></details><details class="card cdet" id="cart2"></details></div>
  </section>
  <section class="page" data-page="embudo" id="secc-embudo">

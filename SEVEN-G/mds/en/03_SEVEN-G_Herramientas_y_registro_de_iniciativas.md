@@ -198,14 +198,14 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 
 | Entity | What it represents | Related to |
 |---|---|---|
-| **Initiative** | The unit that goes through the lifecycle. | All the others |
+| **Initiative** | The unit that goes through the lifecycle. Its scope states whether it belongs to one business unit, is cross-unit (with roll-out and adoption by unit) or is an enabling platform (with the use cases that rely on it); document 40 §7.2. | All the others |
 | **AI system** | Each system in the inventory, in-house or third-party, including corporate use. | Initiatives, suppliers, risks, incidents |
 | **Event** | Any change with date, author and reason. | Initiative |
 | **Gate decision** | Request, verification, decision, outcome and iteration. | Initiative, criteria, conditions |
 | **Assessed criterion** | Status of each criterion in a *gate* decision. | Gate decision, evidence |
 | **Condition** | Condition imposed with deadline, owner and status. | Gate decision |
 | **Evidence** | Link, type, version, author, date and verification. | Criteria, initiative |
-| **Value** | Amounts by type (efficiency, return, cost), formula, validation status and period. | Initiative |
+| **Value** | Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit. | Initiative |
 | **Risk** | Risk with probability, impact, inherent and residual level, owner and controls. | Initiative, system |
 | **Nonconformity** | Type, detection, containment, root cause, action, closure. | Initiative, system |
 | **Incident** | Date, severity, detection, containment, notifications. | System, initiative |
@@ -246,7 +246,7 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 | **T11** | Value hypothesis canvas and calculator | Baseline, formula, attribution method, stop criteria. | Phase 2 | HTML and spreadsheet template | 40 | 2 | Applied with P08 and P09 |
 | **T12** | Value realisation tracking | Validated, declared and estimated value by period and by use case. | Phases 6–7, C4 | T01 module | 40, 43 | 2 | Applied with P28 |
 | **T13** | Cost calculator per use case | Analytical allocation of licences, model consumption, compute and people. | Phases 3 and 6 | Spreadsheet template | 42 | 3 | Applied with document 42 |
-| **T14** | Transformation index calculator | Eight signals, company profile and evolution. | C1, C5 | HTML | 12 | 2 | Applied with document 12 |
+| **T14** | Transformation index calculator | Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the T01 register JSON. | C1, C4, C5 | HTML + JSON | 12 | 2 | Available v0.1 |
 
 ### 5.4 Strategy and board
 

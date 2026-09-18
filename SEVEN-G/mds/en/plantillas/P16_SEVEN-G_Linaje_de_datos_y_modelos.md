@@ -99,6 +99,7 @@ Generative AI and agent components (if applicable):
 | Knowledge base | | | | Content review, cut-off date and access permissions. |
 | Agent's connected tools | | | | Permissions review in P18. |
 | Generation parameters **(Enterprise)** | | | | Regression testing. |
+| Cost fallback model (document 52 §10.3), if planned | | | | Provider and exact version; evaluated before G5 with the reference set and the bias tests of the primary model. Adding it or changing its conditions is a change (document 52 §6.4). |
 
 ---
 
@@ -123,7 +124,7 @@ Describe, in order, how a source data item becomes an output of the system. One 
 | Automatic logs retained | | What is logged (input, output, version, date, user). In high-risk systems, align with the record-keeping obligations of the EU AI Act (document 34). |
 | Log retention period | | Period set by the company, not shorter than that required by applicable regulation. |
 | Ability to retrain or regenerate a previous version **(Enterprise)** | | What is kept to reconstruct a version (code, data, parameters). |
-| Reference for detecting drift | | Dataset and period used as the reference for monitoring (P25). |
+| Reference for detecting drift | | Dataset and period used as the reference for monitoring (P25). For generative AI and agents, usage reference: topics, intents and scope validated at G5 (document 52 §4.2.6). |
 
 ---
 
@@ -172,3 +173,4 @@ Segregation of duties: the verifier is not part of the team that builds and is n
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version of the template. |
+| 0.1 | 18-09-2026 | Cost fallback model in the components and usage reference for drift in generative AI and agents (document 52 §4.2.6 and §10.3). |

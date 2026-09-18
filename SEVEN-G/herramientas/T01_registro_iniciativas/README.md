@@ -17,7 +17,7 @@ Especificación: documento 03 (§3 y §4), documento 01 (§6–§9), documento 0
 | `registro.html` | Aplicación completa en un único fichero (HTML, CSS y JavaScript sin dependencias). **Se genera** con `build_registro.ps1` a partir de los JSON; nunca se edita a mano. |
 | `datos_demo.json` | Fuente de los datos de demostración (ficticios) con los que se abre la aplicación, válidos contra el esquema. |
 | `catalogo_criterios.json` | Fuente del catálogo de 128 criterios de *gate* del documento 21, en español e inglés (un criterio por línea). |
-| `esquema_registro.schema.json` | JSON Schema 2020-12 del modelo de datos común (03 §4), con listas cerradas y patrones de código. Versión 0.2. |
+| `esquema_registro.schema.json` | JSON Schema 2020-12 del modelo de datos común (03 §4), con listas cerradas y patrones de código. Versión 0.3. |
 | `build_registro.ps1` | Construye `registro.html` incrustando los JSON en la plantilla. Comprueba las fuentes antes de generar. |
 | `_fuentes/registro.plantilla.html` | La aplicación sin datos: lo único que se edita a mano. No se publica. |
 | `README.md` · `README_en.md` | Este documento, en español e inglés. |
@@ -112,7 +112,7 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 
 ## Modelo de datos
 
-Un único objeto JSON con `version_esquema` (`0.2`; los ficheros `0.1` se aceptan y se actualizan al cargarlos, porque `0.2` solo añade campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
+Un único objeto JSON con `version_esquema` (`0.3`; los ficheros `0.1` y `0.2` se aceptan y se actualizan al cargarlos, porque `0.2` y `0.3` solo añaden campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
 
 | Lista | Entidad | Código |
 |---|---|---|
@@ -122,7 +122,7 @@ Un único objeto JSON con `version_esquema` (`0.2`; los ficheros `0.1` se acepta
 | `decisiones_gate` | Solicitud, verificación, decisión, órgano, elevación, resultado propuesto y resultado, firmas G5, criterios evaluados (`codigo`, `estado`, `justificacion`, `evidencias`) | `DG-AAAA-NNN` |
 | `condiciones` | Condición con decisión, criterio, responsable, plazo, verificación y estado | `CND-AAAA-NNN` |
 | `evidencias` | Enlace, plantilla, versión, autor, fecha y verificación (se enlaza, no se copia) | `EVI-AAAA-NNNN` |
-| `valores` | Importe esperado o realizado por tipo, fórmula, estado (validado, declarado, estimado), periodo, fuente y concepto del panel (`concepto`, opcional) | `VAL-NNNN` |
+| `valores` | Importe esperado o realizado por tipo, fórmula, estado (validado, declarado, estimado), periodo, fuente, concepto del panel (`concepto`, opcional) y unidad de negocio (`area`, opcional, iniciativas transversales) | `VAL-NNNN` |
 | `riesgos` · `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Entidades relacionadas (en esta versión se muestran y se exportan; su gestión completa corresponde a T06, T08, T09 y T18) | `IA-AAAA-NNN · Rnn` · `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
 | `personas` | Personas asignables a roles, verificación, decisión y condiciones | `PER-NN` |
 
@@ -154,13 +154,23 @@ El conector `../T17_panel_consejo/t01_a_panel.py` convierte el JSON completo de 
 | `meta.panel.consejo_sigla` | texto | Nombre o siglas del consejo asesor en los textos del panel. |
 | `eventos[].cifras` | `esperado` y `realizado`, cada uno con `inversion`, `coste_recurrente`, `eficiencias` y `retorno` | Cifras al entrar en cada estado: evolución del caso a lo largo del embudo. Las guarda la herramienta sola. |
 
+**Campos añadidos en el esquema 0.3: iniciativas transversales y plataformas habilitadoras** (documento 40 §7.2; todos opcionales, un registro 0.1 o 0.2 sigue siendo válido):
+
+| Campo | Valores | Uso |
+|---|---|---|
+| `iniciativas[].alcance.tipo` | `unidad` · `transversal` · `plataforma` | Sin el bloque, la iniciativa es de una unidad. **Transversal**: herramienta que usan varias unidades de negocio (por ejemplo, un asistente generativo en la suite ofimática). **Plataforma**: capacidad habilitadora cuyo valor se imputa a los casos que la usan. Se edita en la ficha («Alcance») y se filtra por él. |
+| `iniciativas[].alcance.reparto[]` | `area`, `estado` (`previsto` · `piloto` · `en_uso` · `retirado`), `desde`, `licencias_asignadas`, `licencias_activas`, `usuarios_activos_semanales`, `horas_liberadas_mes`, `fuente`, `fecha_dato` | Despliegue y adopción de cada unidad (botón «Editar despliegue y adopción por unidad» de la pestaña Valor). Las horas son declaradas: nunca se validan ni suman como ahorro. |
+| `iniciativas[].alcance.umbral_adopcion_pct` | 0–100 | Alerta «Adopción baja» cuando una unidad en uso tiene menos licencias activas sobre asignadas. |
+| `iniciativas[].alcance.habilita[]` | códigos `IA-AAAA-NNN` | Plataforma: casos a los que se imputa su valor. |
+| `valores[].area` | una unidad de negocio | Coste y valor de cada unidad; sin `area`, lo común de la iniciativa (gobierno, formación). La pestaña Valor muestra la escalera por unidad: coste, adopción, horas declaradas, capacidad liberada y valor materializado. |
+
 **Por qué importa.** Dar de alta una iniciativa en T01 equivale a registrar una oportunidad en un CRM: a partir de ahí, cada entrada de fase, decisión de *gate*, importe y cierre que se anota en el registro mueve el caso por el embudo del panel sin que nadie vuelva a escribir el dato. El consejo ve lo mismo que gestiona la Oficina de IA.
 
-Lo que T01 no registra (adopción de las suites de productividad, ficha de identidad y permisos de los agentes, proveedor DORA, métricas de operación) queda «sin dato» en el panel.
+Lo que T01 no registra (adopción global de las suites de productividad fuera de una iniciativa transversal, ficha de identidad y permisos de los agentes, proveedor DORA, métricas de operación) queda «sin dato» en el panel.
 
 ## Datos de demostración
 
-Compañía ficticia (*Compañía Ejemplo Industrial, S.A.*), 21 personas y 4 proveedores ficticios, 14 iniciativas registradas entre 2025 y 2026 en todas las fases (0–7) y en los ocho estados: una registrada, en fase, pendientes de *gate* (una en tercera iteración, elevada al órgano superior), una en espera con reanudación vencida, en producción (una con revisión de continuidad caducada), una pendiente de G7 adelantado por R6, una **parada** en G3 por riesgo inaceptable y una **retirada** tras G7 por sustitución. Hay iniciativas estancadas, dos **condiciones vencidas**, un pivotaje, decisiones con condiciones, una firma multinivel G5 Enterprise, importes validados, declarados, estimados y sin dato, 9 sistemas (incluido uno de uso corporativo), incidentes y no conformidades. Trece iniciativas llevan datos para el panel del consejo (complejidad, prioridad, controles y, en cuatro, observaciones del consejo asesor) y una no, para que el panel muestre también el «sin dato»; los importes de eficiencias y retorno llevan su concepto salvo los que aún no tienen hipótesis. Con estos datos se genera el panel de ejemplo de T17. Los datos son ilustrativos: cualquier parecido con una compañía o persona real es casual.
+Compañía ficticia (*Compañía Ejemplo Industrial, S.A.*), 21 personas y 4 proveedores ficticios, 15 iniciativas registradas entre 2025 y 2026 en todas las fases (0–7) y en los ocho estados: una registrada, en fase, pendientes de *gate* (una en tercera iteración, elevada al órgano superior), una en espera con reanudación vencida, en producción (una con revisión de continuidad caducada), una pendiente de G7 adelantado por R6, una **parada** en G3 por riesgo inaceptable y una **retirada** tras G7 por sustitución. Hay iniciativas estancadas, dos **condiciones vencidas**, un pivotaje, decisiones con condiciones, una firma multinivel G5 Enterprise, importes validados, declarados, estimados y sin dato, 9 sistemas (incluido uno de uso corporativo), incidentes y no conformidades. Una es **transversal** (asistente generativo en la suite ofimática, desplegado por olas en cinco unidades: dos en uso, una en piloto y dos previstas, con Comercial por debajo del umbral de adopción, valor materializado y validado en Finanzas y capacidad liberada declarada que no suma). Catorce iniciativas llevan datos para el panel del consejo (complejidad, prioridad, controles y, en cuatro, observaciones del consejo asesor) y una no, para que el panel muestre también el «sin dato»; los importes de eficiencias y retorno llevan su concepto salvo los que aún no tienen hipótesis. Con estos datos se genera el panel de ejemplo de T17. Los datos son ilustrativos: cualquier parecido con una compañía o persona real es casual.
 
 ## Limitaciones
 

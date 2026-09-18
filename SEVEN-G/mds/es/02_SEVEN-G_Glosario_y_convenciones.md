@@ -797,7 +797,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **RT-\<CAT\>-NN** | RT + categoría de tres letras + dos cifras | Riesgos tipo del catálogo (70 en la versión 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7. | 33 §9 | RT-GEN-01 |
 | **SEG-01–SEG-20** | SEG + guion + dos cifras | Controles de seguridad de IA. | 35 §6 | SEG-02 |
 | **AG-01–AG-20** | AG + guion + dos cifras | Controles de agentes. | 35 §7 | AG-09 |
-| **IND-\<FAM\>-NN** | IND + familia de tres letras + dos cifras | Indicadores del catálogo (156 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza. | 41 §2 y §4 | IND-VAL-05 |
+| **IND-\<FAM\>-NN** | IND + familia de tres letras + dos cifras | Indicadores del catálogo (159 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza. | 41 §2 y §4 | IND-VAL-05 |
 | **IE\<esfera\>.\<nn\>** | IE + esfera de dos cifras + punto + dos cifras | Indicadores por esfera, provisionales hasta su consolidación en el documento 41. | 10 §5–7 | IE01.04 |
 | **IA-AAAA-NNN** | Año de registro + número correlativo | Iniciativas. | 03 §3.3 | IA-2026-014 |
 | **IA-AAAA-NNN · Rnn** | Código de iniciativa + R + dos cifras | Riesgo concreto de una iniciativa. | 33 §8.1 | IA-2026-014 · R03 |

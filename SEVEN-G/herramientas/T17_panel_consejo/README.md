@@ -8,7 +8,7 @@ Todo lo que genera el conector (panel completo, panel móvil y registro de recom
 
 ---
 
-Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1` y `0.2`) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
+Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1`, `0.2` y `0.3`) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
 
 - el **panel completo** y el **panel móvil** (T17), sincronizados (misma huella de datos);
 - el **JSON del panel**, para inspeccionarlo o guardarlo como foto con `motor/snapshot.py`;
@@ -147,6 +147,7 @@ La fase y el estado originales se conservan en `casos[].seveng`.
 | `tags.funcion` | `clasificacion.esfera_principal` | «04 Operaciones», etc. |
 | `tags.ambicion` | `ambicion_real`, si no `ambicion_confirmada`, si no `ambicion_propuesta` | Optimizar · Aumentar · Transformar. |
 | `tags.prioridad` | `panel.prioridad` | Alta · Media · Baja; sin dato si no se informa. |
+| `tags.alcance`, `alcance` | `alcance` (esquema 0.3) | Solo en iniciativas transversales (`Transversal`) y plataformas (`Plataforma habilitadora`); las de una unidad no llevan ni la etiqueta ni el bloque. `alcance.unidades` lleva por unidad de negocio el despliegue y la adopción de `alcance.reparto` y el coste, el valor materializado (y cuánto está validado) y la capacidad liberada de los importes con esa `area` (el más reciente por tipo y concepto); una fila sin unidad recoge lo común. En una transversal, `unidad` pasa a «Varias unidades (transversal)». |
 | `detalle.tipo` | `clasificacion.tecnologia` (todas) | |
 | `detalle.proveedores` | `clasificacion.proveedores` → `proveedores[].nombre` | |
 | `detalle.valor_tipo` | `clasificacion.tipo_valor` | |
@@ -157,7 +158,7 @@ La fase y el estado originales se conservan en `casos[].seveng`.
 
 ### `casos[].economia`
 
-Cada importe de `valores` pasa a un *item* con `importe`, `formula`, `estado`, `fuente` y `fecha`; `atribucion` e `hipotesis` quedan sin dato. Si hay varios importes del mismo momento y tipo, se usa el más reciente. Estado: `validado` y `declarado` iguales; `estimado` → `estimado_cati` (clave heredada del motor; en T01 lo estima el equipo de la iniciativa, no el consejo asesor, y el aviso del panel lo explica).
+Cada importe de `valores` pasa a un *item* con `importe`, `formula`, `estado`, `fuente` y `fecha`; `atribucion` e `hipotesis` quedan sin dato. Si hay varios importes del mismo momento y tipo, se usa el más reciente; si llevan unidad de negocio (`area`, esquema 0.3), el más reciente de cada unidad, y se suman con el estado más prudente de los sumados y una fórmula que enumera las unidades. Estado: `validado` y `declarado` iguales; `estimado` → `estimado_cati` (clave heredada del motor; en T01 lo estima el equipo de la iniciativa, no el consejo asesor, y el aviso del panel lo explica).
 
 | Panel | Origen en T01 | Nota |
 |---|---|---|
@@ -173,7 +174,7 @@ Cada importe de `valores` pasa a un *item* con `importe`, `formula`, `estado`, `
 | `nota_caso` | Fase y estado de T01; importes de `riesgo_evitado` y `cumplimiento` | Se informan como texto: no suman en el neto (regla de T01). |
 | `moneda` | `meta.moneda` | |
 | `plazo_potencial` | `panel.plazo_potencial` (`AAAA-MM`) | Sin dato si no se informa o si la iniciativa está cerrada. |
-| `clave_reparto` | — | Sin dato. `comparte_valor_con` vacío. |
+| `clave_reparto` | `alcance.tipo` | Transversal: coste por licencias de cada unidad y gobierno común sin unidad. Plataforma: su valor se imputa a los casos que la usan y `comparte_valor_con` lleva `alcance.habilita`. En las demás, sin dato y `comparte_valor_con` vacío. |
 
 En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la construcción; sus demás importes se citan en `nota_caso` y no suman en el panel.
 

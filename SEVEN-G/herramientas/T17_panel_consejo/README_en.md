@@ -8,7 +8,7 @@ Everything the connector generates (full dashboard, mobile dashboard and recomme
 
 ---
 
-Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1` and `0.2`) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
+Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1`, `0.2` and `0.3`) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
 
 - the **full dashboard** and the **mobile dashboard** (T17), in sync (same data fingerprint);
 - the **dashboard JSON**, to inspect it or save it as a snapshot with `motor/snapshot.py`;
@@ -147,6 +147,7 @@ Original phase and status are kept in `casos[].seveng`.
 | `tags.funcion` | `clasificacion.esfera_principal` | "04 Operaciones", etc. |
 | `tags.ambicion` | `ambicion_real`, else `ambicion_confirmada`, else `ambicion_propuesta` | Optimizar · Aumentar · Transformar. |
 | `tags.prioridad` | `panel.prioridad` | Alta · Media · Baja; no data if not provided. |
+| `tags.alcance`, `alcance` | `alcance` (schema 0.3) | Only for cross-unit initiatives (`Transversal`) and platforms (`Plataforma habilitadora`); single-unit initiatives carry neither the tag nor the block. `alcance.unidades` carries, per business unit, the roll-out and adoption from `alcance.reparto` and the cost, realised value (and how much of it is validated) and released capacity from the amounts with that `area` (the most recent per type and line); a row without a unit holds what is shared. For a cross-unit initiative, `unidad` becomes “Varias unidades (transversal)”. |
 | `detalle.tipo` | `clasificacion.tecnologia` (all) | |
 | `detalle.proveedores` | `clasificacion.proveedores` → `proveedores[].nombre` | |
 | `detalle.valor_tipo` | `clasificacion.tipo_valor` | |
@@ -157,7 +158,7 @@ Original phase and status are kept in `casos[].seveng`.
 
 ### `casos[].economia`
 
-Each amount in `valores` becomes an *item* with `importe`, `formula`, `estado`, `fuente` and `fecha`; `atribucion` and `hipotesis` are left empty. If there are several amounts for the same moment and type, the most recent one is used. Status: `validado` and `declarado` unchanged; `estimado` → `estimado_cati` (engine legacy key; in T01 the initiative team estimates it, not the advisory board, and the dashboard notice says so).
+Each amount in `valores` becomes an *item* with `importe`, `formula`, `estado`, `fuente` and `fecha`; `atribucion` and `hipotesis` are left empty. If there are several amounts for the same moment and type, the most recent one is used; if they carry a business unit (`area`, schema 0.3), the most recent one per unit, added up with the most prudent status among them and a formula that lists the units. Status: `validado` and `declarado` unchanged; `estimado` → `estimado_cati` (engine legacy key; in T01 the initiative team estimates it, not the advisory board, and the dashboard notice says so).
 
 | Dashboard | T01 source | Note |
 |---|---|---|
@@ -173,7 +174,7 @@ Each amount in `valores` becomes an *item* with `importe`, `formula`, `estado`, 
 | `nota_caso` | T01 phase and status; `riesgo_evitado` and `cumplimiento` amounts | Reported as text: not added to net value (T01 rule). |
 | `moneda` | `meta.moneda` | |
 | `plazo_potencial` | `panel.plazo_potencial` (`YYYY-MM`) | No data if not provided or if the initiative is closed. |
-| `clave_reparto` | — | No data. `comparte_valor_con` empty. |
+| `clave_reparto` | `alcance.tipo` | Cross-unit: cost by each unit's licences and shared governance without a unit. Platform: its value is allocated to the cases that use it and `comparte_valor_con` carries `alcance.habilita`. Otherwise, no data and `comparte_valor_con` empty. |
 
 For **closed** initiatives (stopped or retired) only construction is kept; their other amounts are quoted in `nota_caso` and not added in the dashboard.
 
