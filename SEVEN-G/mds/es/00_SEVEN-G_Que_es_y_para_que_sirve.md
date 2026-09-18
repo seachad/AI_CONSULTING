@@ -8,7 +8,7 @@
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
 | Autor | Fernando García · SEACHAD |
-| Estado | Proyecto vivo. Este documento se actualizará a medida que se desarrollen los documentos del marco y se incorporen nuevas investigaciones y experiencias. |
+| Estado | Versión 0.1 operativa como marco de referencia abierto. No se trata de una versión comercial cerrada ni de un producto liberado para clientes o mercados. |
 
 <!-- cifras: 9 | esferas de impacto ; 3 | niveles de ambición ; 0–7 | fases con puertas de decisión ; 10 | reglas de medición del valor -->
 
@@ -35,6 +35,8 @@ Las dos cosas son legítimas. El problema aparece cuando se confunden: cuando un
 El objetivo práctico es que el consejo, la alta dirección y los órganos de control entiendan y midan la aportación de la inteligencia empresarial en su compañía, comprendan y contengan sus riesgos y decidan, con disciplina de cartera, en qué iniciativas conviene invertir para mejorar la eficiencia, transformar capacidades y generar impacto real en la cuenta de resultados (P&L).
 
 SEVEN-G aporta cuatro cosas:
+
+> **Estado público y reutilización.** SEVEN-G se ofrece como marco metodológico abierto para uso de referencia, adaptación y aprendizaje. No constituye un producto comercial cerrado ni una versión liberada a clientes ni a mercados. El contenido del marco, sus plantillas y sus herramientas son reutilizables por cualquier organización salvo pacto escrito y específico sobre adaptaciones o desarrollos propios; la simple utilización del marco no otorga exclusividad ni derecho de propiedad sobre la base metodológica a ningún cliente, proveedor o tercero.
 
 1. **Un mapa de dónde y con qué ambición** usar la IA: nueve esferas de impacto y tres niveles de ambición (Optimizar, Aumentar, Transformar).
 2. **Un ciclo de vida controlado** para cada iniciativa, con fases, puertas de decisión (*gates*) auditables y capacidad real de parar o retirar.

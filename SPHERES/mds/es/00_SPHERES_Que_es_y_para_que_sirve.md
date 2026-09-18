@@ -8,7 +8,7 @@
 | Versión | 0.1 |
 | Fecha | 17-09-2026 |
 | Autor | Fernando García · SEACHAD |
-| Estado | En construcción. Metodología de apoyo de SEVEN-G; sus reglas operativas vigentes están en el documento 10 de SEVEN-G. |
+| Estado | En construcción. Metodología de apoyo de SEVEN-G y versión no liberada comercialmente; sus reglas operativas vigentes están en el documento 10 de SEVEN-G. |
 | Tipo | Presentación de la metodología |
 
 <!-- cifras: 9 | esferas de impacto ; 3 | niveles de ambición ; 4 | tipos de esfera ; 6 | documentos -->
@@ -24,6 +24,8 @@
 El nombre procede de la palabra inglesa *spheres* (esferas). No es un acrónimo: describe la idea central del método, que la IA no es un proyecto del área de tecnología sino un cambio que alcanza a clientes, oferta, personas, procesos, datos, conocimiento, decisiones, obligaciones y gobierno.
 
 SPHERES responde a tres preguntas que cualquier consejo o comité de dirección debería poder contestar con claridad:
+
+> **Estado público y reutilización.** SPHERES se ofrece como marco de referencia abierto en desarrollo. No está liberado como entregable comercial definitivo ni como producto cerrado para clientes. El contenido, las plantillas y la explicación metodológica pueden reutilizarse por cualquier organización para uso metodológico, salvo pacto escrito y específico sobre adaptaciones o desarrollos propios; ningún cliente puede alegar exclusividad sobre la base del marco por el mero uso de SPHERES.
 
 | Pregunta | Qué aporta SPHERES | Dónde se desarrolla |
 |---|---|---|

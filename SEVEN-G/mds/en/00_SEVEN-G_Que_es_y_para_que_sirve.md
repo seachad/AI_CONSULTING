@@ -8,7 +8,7 @@
 | Version | 0.1 (working draft) |
 | Date | 16-09-2026 |
 | Author | Fernando García · SEACHAD |
-| Status | Living project. This document will be updated as the framework documents are developed and new research and experience are incorporated. |
+| Status | Version 0.1 in operation as an open reference framework. It is not a closed commercial version or a product released to clients or markets. |
 
 <!-- cifras: 9 | spheres of impact ; 3 | ambition levels ; 0–7 | phases with decision gates ; 10 | value measurement rules -->
 
@@ -35,6 +35,8 @@ Both are legitimate. The problem arises when they are confused: when a portfolio
 The practical goal is for boards, senior management and control bodies to understand and measure the contribution of enterprise intelligence in their company, understand and contain its risks, and decide with portfolio discipline which initiatives deserve investment to improve efficiency, transform capabilities and create measurable impact on P&L.
 
 SEVEN-G provides four things:
+
+> **Public status and reuse.** SEVEN-G is offered as an open methodological framework for reference, adaptation and learning. It does not constitute a closed commercial product or a version released to clients or markets. The content of the framework, its templates and its tools are reusable by any organisation unless a written and specific agreement sets different terms for modifications or proprietary developments; the mere use of the framework does not confer exclusivity or ownership rights over the base methodology on any client, supplier or third party.
 
 1. **A map of where and with what ambition** to use AI: nine spheres of impact and three ambition levels (Optimise, Augment, Transform).
 2. **A controlled lifecycle** for each initiative, with phases, auditable decision gates (*gates*) and a real ability to stop or retire.

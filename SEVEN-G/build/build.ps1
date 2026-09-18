@@ -186,6 +186,18 @@ function Slug([string]$s) {
   ([regex]::Replace($n, '[^a-z0-9]+', '-')).Trim('-')
 }
 function Enc([string]$s) { [Net.WebUtility]::HtmlEncode($s) }
+function Set-ContentUtf8ConReintento([string]$Path, [string]$Value, [int]$Intentos = 8, [int]$EsperaMs = 200) {
+  for ($i = 1; $i -le $Intentos; $i++) {
+    try {
+      Set-Content -Path $Path -Value $Value -Encoding utf8 -NoNewline
+      return
+    }
+    catch [System.IO.IOException] {
+      if ($i -eq $Intentos) { throw }
+      [System.Threading.Thread]::Sleep($EsperaMs)
+    }
+  }
+}
 function BloqueNavegacion([string]$rel) {
   $claves = @($bloquesIndice.es.Keys)
   if ($rel -eq 'index.md') { return $claves[0] }
@@ -642,7 +654,7 @@ foreach ($lang in $Idiomas) {
                   Replace('{{BODY}}', $body).
                   Replace('{{SCRIPTS}}', $(if ($script:hayMermaid) { $mermaidScript } else { '' })).
                   Replace('{{GENERATED}}', (Get-Date -Format 'dd-MM-yyyy'))
-    Set-Content -Path $htmlOut -Value $html -Encoding utf8 -NoNewline
+    Set-ContentUtf8ConReintento -Path $htmlOut -Value $html
     Write-Host "HTML  [$lang] $rel"
 
     if (-not $SinPdf -and -not $esIndice) {

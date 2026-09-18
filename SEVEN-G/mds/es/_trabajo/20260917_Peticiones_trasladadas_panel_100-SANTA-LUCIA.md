@@ -1,14 +1,14 @@
-# Peticiones trasladadas al proyecto 100 - SANTA LUCIA (panel del consejo)
+# Peticiones trasladadas al proyecto 100 - --- (panel del consejo)
 
 | | |
 |---|---|
 | Tipo | Documento de trabajo interno |
 | Fecha | 17-09-2026 |
-| Objetivo | Conservar, para ejecutarlas en una sesión sobre el proyecto del cliente (100 - SANTA LUCIA), cuatro peticiones del autor sobre el Panel de IA del Consejo que se formularon por error en la sesión de AI_CONSULTING. Lo aplicado aquí por error se ha revertido. |
+| Objetivo | Conservar, para ejecutarlas en una sesión sobre el proyecto del cliente (100 - ---), cuatro peticiones del autor sobre el Panel de IA del Consejo que se formularon por error en la sesión de AI_CONSULTING. Lo aplicado aquí por error se ha revertido. |
 
 > Documento interno. No se publica. Ejecutar estas peticiones sobre el motor de origen del panel (`build_dashboard.py`, `economia.py`, `panel_core.py`, `panel_movil.py`) en el proyecto del cliente y regenerar sus paneles.
 
-## Texto para pegar en la sesión de 100 - SANTA LUCIA
+## Texto para pegar en la sesión de 100 - ---
 
 ```
 Peticiones sobre el Panel de IA del Consejo (motor build_dashboard.py de este proyecto). Ejecutarlas aquí, en el motor de origen del panel, y regenerar los paneles:
