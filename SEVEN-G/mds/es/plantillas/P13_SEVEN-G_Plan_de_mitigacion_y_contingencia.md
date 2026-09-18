@@ -23,7 +23,7 @@
 | **Quién la verifica** | Lite: responsable de riesgos en G3; si él ha elaborado el plan, verifica la oficina de IA o el auditor de IA. Enterprise: auditor de IA. |
 | **Quién decide** | Se aprueba con G3: patrocinador con conformidad de riesgos (Lite) · comité de IA (Enterprise). La financiación de las acciones forma parte de la decisión. |
 | **Gate en que se revisa** | G3 · Viabilidad; seguimiento en G4, G5 y R6. |
-| **Herramienta** | T06 · Matriz y registro de riesgos (módulo de acciones). |
+| **Herramienta** | T06 · Matriz y registro de riesgos: registra la respuesta, los controles y el plan de contingencia de cada riesgo; las acciones de tratamiento con responsable, plazo y estado se siguen en esta plantilla. |
 | **Lite frente a Enterprise** | Lite puede omitir las columnas y bloques marcados **(Enterprise)**. Todo riesgo residual Medio, Alto o Crítico debe tener acciones y, si es Alto o Crítico, plan de contingencia, en ambas intensidades. |
 
 Reglas de cumplimentación:

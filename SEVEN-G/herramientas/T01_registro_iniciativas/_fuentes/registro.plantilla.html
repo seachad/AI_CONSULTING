@@ -13,7 +13,7 @@
   --tinta:#33302e;--tinta-2:#5b5550;--tinta-3:#6e655e;--negro:#1a1817;
   --regla:#ccc1b7;--regla-2:#e3d3c4;
   --claret:#990f3d;--oxford:#0f5499;--teal:#0d7680;--velvet:#593380;--resaltado:#ffd27a;--ambar:#8a5a00;
-  --ok-bg:#d9ebe0;--med-bg:#f7e3c4;--ko-bg:#f3d3da;--info-bg:#dbe6f2;--vel-bg:#e6dcef;
+  --ok-bg:#d9ebe0;--med-bg:#f7e3c4;--ko-bg:#f3d3da;--info-bg:#dbe6f2;--vel-bg:#e6dcef;--alto-bg:#f4c9a6;--naranja:#a8490f;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --sans:"Libre Franklin","Segoe UI",Arial,sans-serif;
   color-scheme:light;
@@ -24,7 +24,7 @@
     --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
     --regla:#555b66;--regla-2:#3d424c;
     --claret:#ff7a9e;--oxford:#86b7f2;--teal:#5fd0cb;--velvet:#c6a3ec;--resaltado:#a8741f;--ambar:#f1c26b;
-    --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;--vel-bg:#3b2f4f;
+    --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;--vel-bg:#3b2f4f;--alto-bg:#5c3317;--naranja:#f0a067;
     color-scheme:dark;
   }
 }
@@ -33,7 +33,7 @@
   --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
   --regla:#555b66;--regla-2:#3d424c;
   --claret:#ff7a9e;--oxford:#86b7f2;--teal:#5fd0cb;--velvet:#c6a3ec;--resaltado:#a8741f;--ambar:#f1c26b;
-  --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;--vel-bg:#3b2f4f;
+  --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;--vel-bg:#3b2f4f;--alto-bg:#5c3317;--naranja:#f0a067;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -210,6 +210,28 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
 p.nota-clas{margin:4px 0 10px}
 #dlg-legal{border-top-color:var(--claret)}
 #dlg-legal .dlg-cuerpo p{max-width:68ch;line-height:1.6}
+/* Matriz de riesgos (T06): niveles Bajo · Medio · Alto · Crítico */
+.nv-bajo{background:var(--ok-bg);border-color:var(--teal)!important}
+.nv-medio{background:var(--med-bg);border-color:var(--ambar)!important}
+.nv-alto{background:var(--alto-bg);border-color:var(--naranja)!important}
+.nv-critico{background:var(--ko-bg);border-color:var(--claret)!important}
+.leyenda i.nv-bajo,.leyenda i.nv-medio,.leyenda i.nv-alto,.leyenda i.nv-critico{border:1px solid}
+.matriz{border-collapse:separate;border-spacing:3px;margin:4px 0;width:100%;min-width:300px;max-width:620px;table-layout:fixed}
+.matriz caption{text-align:left;font-size:12.5px;color:var(--tinta-3);padding:0 0 6px}
+.matriz th{font:600 11.5px/1.2 var(--sans);color:var(--tinta-2);padding:3px;text-align:center;vertical-align:bottom}
+.matriz th[scope=row]{text-align:right;vertical-align:middle;width:17%}
+.matriz td{padding:0}
+.matriz button.celda{width:100%;min-height:58px;padding:4px 2px;border:1px solid;border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--negro)}
+.matriz button.celda b{font:600 21px/1 var(--serif)}
+.matriz button.celda small{font:500 10.5px/1.1 var(--sans);color:var(--tinta-2)}
+.matriz button.celda.vacia b{font-weight:400;color:var(--tinta-3)}
+.matriz button.celda.vacia{opacity:.7}
+.matriz button.celda[aria-pressed="true"]{outline:3px solid var(--negro);outline-offset:-4px;opacity:1}
+.rg-bloques{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));align-items:start}
+.rg-bloques h3{margin-top:0}
+.rg-tabla tr.rg-cerrado td{opacity:.65}
+.matriz .ct{display:none}
+@media (max-width:560px){.matriz .lg{display:none}.matriz .ct{display:inline}.matriz th[scope=row]{width:12%}}
 @media print{.cab,.nav,details.filtros,button,.btn,dialog{display:none!important}.pie{border-top:1px solid #000}}
 </style>
 </head>
@@ -247,7 +269,7 @@ const CAT = JSON.parse(document.getElementById('catalogo-criterios').textContent
 const DEMO_TXT = document.getElementById('datos-demo').textContent;
 /* Panel del consejo (T17): lo genera el conector t01_a_panel.py con el JSON completo de este registro. build_registro.ps1 comprueba que PANEL_DEMO existe. */
 const PANEL_DEMO = '../T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html', PANEL_T17 = '../T17_panel_consejo/index.html';
-const VERSION_ESQUEMA = '0.3';
+const VERSION_ESQUEMA = '0.4';
 const LS_DATOS = 'seveng-t01-datos-v1', LS_UI = 'seveng-t01-ui-v1';
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
@@ -413,7 +435,7 @@ function descargar(nombre, contenido, tipo){ const blob=new Blob([contenido],{ty
 /* ---------------- datos y persistencia ---------------- */
 let DB = null, M = null, GUARDADO = true;
 const OPCIONALES = ['sistemas','riesgos','no_conformidades','incidentes','proveedores','recomendaciones'];
-function normalizar(d){ d.version_esquema=VERSION_ESQUEMA; /* 0.2 y 0.3 solo añaden campos opcionales a 0.1 (0.2: bloque «panel» y concepto de los importes; 0.3: alcance de la iniciativa y unidad de cada importe) */ OPCIONALES.forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); ['personas','iniciativas','eventos','decisiones_gate','condiciones','evidencias','valores'].forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); return d; }
+function normalizar(d){ d.version_esquema=VERSION_ESQUEMA; /* 0.2, 0.3 y 0.4 solo añaden campos opcionales a 0.1 (0.2: bloque «panel» y concepto de los importes; 0.3: alcance de la iniciativa y unidad de cada importe; 0.4: valoración residual, controles, tratamiento y aceptación de cada riesgo, T06) */ OPCIONALES.forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); ['personas','iniciativas','eventos','decisiones_gate','condiciones','evidencias','valores'].forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); return d; }
 function cargar(){
   const u = lsGet(LS_UI); if(u){ try{ Object.assign(UI, JSON.parse(u)); }catch(e){} }
   const s = lsGet(LS_DATOS);
@@ -425,7 +447,7 @@ function guardarUI(){ lsSet(LS_UI, JSON.stringify({lang:UI.lang,tema:UI.tema,aut
 function indexar(){
   M = { per:new Map(DB.personas.map(p=>[p.id,p])), ini:new Map(DB.iniciativas.map(i=>[i.id,i])),
     ev:agrupar(DB.eventos, e=>e.iniciativa), dg:agrupar(DB.decisiones_gate, d=>d.iniciativa), cnd:agrupar(DB.condiciones, c=>c.iniciativa),
-    evi:agrupar(DB.evidencias, e=>e.iniciativa), val:agrupar(DB.valores, v=>v.iniciativa), sis:new Map(DB.sistemas.map(s=>[s.id,s])), prv:new Map(DB.proveedores.map(p=>[p.id,p])), cache:new Map() };
+    evi:agrupar(DB.evidencias, e=>e.iniciativa), val:agrupar(DB.valores, v=>v.iniciativa), sis:new Map(DB.sistemas.map(s=>[s.id,s])), prv:new Map(DB.proveedores.map(p=>[p.id,p])), rsg:agrupar(DB.riesgos.filter(r=>r && typeof r==='object'), r=>r.iniciativa), cache:new Map() };
   M.dg.forEach(a=>a.sort((x,y)=> x.fecha_solicitud<y.fecha_solicitud?-1:x.fecha_solicitud>y.fecha_solicitud?1:(x.id<y.id?-1:1)));
   M.ev.forEach(a=>a.sort((x,y)=> x.fecha<y.fecha?-1:x.fecha>y.fecha?1:(x.id<y.id?-1:1)));
 }
@@ -499,6 +521,8 @@ function alertasDe(I, s){
   if(s.dg){ const pend=(M.evi.get(I.id)||[]).filter(e=>e.gate===s.dg.gate && !e.verificada && e.fecha<=s.dg.fecha_solicitud); if(pend.length) add('evidencias','media', t('al_evidencias',{n:pend.length,g:s.dg.gate})); }
   if(!cerrada(I) && I.ciclo.estado!=='registrada'){ const inc=incompatibilidades(I); if(inc.length) add('roles','alta', t('al_roles')+' '+inc.join(' · ')); }
   DB.no_conformidades.filter(n=>n.iniciativa===I.id && n.estado==='abierta' && n.plazo_accion && n.plazo_accion<h).forEach(n=>add('nc','media', t('al_nc',{id:n.id})));
+  /* matriz y registro de riesgos (T06): observaciones que exigen acción (33 §4–§8; G3.11–G3.14) */
+  if(typeof alertaRiesgos==='function'){ const ar=alertaRiesgos(I); if(ar) add('riesgos', ar.sev, ar.txt); }
   /* iniciativa transversal: unidades en uso por debajo del umbral de adopción (criterio de parada o de retirada de licencias, 40 §7.2) */
   const al=alcanceDe(I); if(al && !cerrada(I) && al.umbral_adopcion_pct!=null) (al.reparto||[]).filter(u=>u.estado==='en_uso').forEach(u=>{ const p=pctAdop(u); if(p!=null && p<al.umbral_adopcion_pct) add('adopcion','media', t('al_adopcion',{u:u.area,p:Math.round(p),m:al.umbral_adopcion_pct})); });
   return A;
@@ -830,7 +854,7 @@ function autorId(txt){ const p=DB.personas.find(x=>x.nombre===txt||x.id===txt); 
 function dl(pares){ return '<dl class="dl">'+pares.map(([k,v])=>'<dt>'+esc(k)+'</dt><dd>'+(v==null||v===''?sd():v)+'</dd>').join('')+'</dl>'; }
 function vistaFicha(r){
   const I=M.ini.get(r.id); if(!I) return '<h1>'+esc(t('v_ficha'))+'</h1><p>'+esc(t('no_encontrada',{id:r.id}))+'</p><p><a href="#/embudo">'+esc(t('volver'))+'</a></p>';
-  const tab = ['resumen','gate','condiciones','valor','linea','historial'].includes(r.sub)? r.sub : 'resumen';
+  const tab = ['resumen','gate','condiciones','valor','riesgos','linea','historial'].includes(r.sub)? r.sub : 'resumen';
   const s=sit(I);
   let h='<p class="mono" style="margin:6px 0 0">'+esc(I.id)+' · '+esc(I.area)+'</p><h1>'+esc(I.nombre)+'</h1>';
   h+='<div class="fila">'+estadoEt(I)+et(faseTxt(I.ciclo.fase))+et(L('intensidad',I.clasificacion.intensidad))+(ambicionDe(I)?et(L('ambicion',ambicionDe(I))):'')+(alcanceDe(I)?et(L('alcance',I.alcance.tipo),'info'):'')+(s.dg?et(gateTxt(s.dg.gate)+' · '+t('iteracion')+' '+s.dg.iteracion,'info'):'')+'</div>';
@@ -843,9 +867,9 @@ function vistaFicha(r){
   if(I.ciclo.estado==='pendiente_g7' && !s.dg && ultG7 && ultG7.resultado==='retirar') acc.push('<button type="button" class="primario" data-acc="retirada" data-id="'+esc(I.id)+'">'+esc(t('retirada_ejec'))+'</button>');
   if(acc.length) h+='<div class="fila" style="margin:10px 0">'+acc.join('')+'</div>';
   s.alertas.forEach(a=>{ h+='<div class="aviso '+(a.sev==='alta'?'ko':(a.sev==='info'?'info':''))+'"><b>'+esc(t('at_'+a.tipo))+'.</b> '+esc(a.texto)+'</div>'; });
-  const tabs=[['resumen','r_resumen'],['gate','r_gate'],['condiciones','r_condiciones'],['valor','r_valor'],['linea','r_linea'],['historial','r_historial']];
+  const tabs=[['resumen','r_resumen'],['gate','r_gate'],['condiciones','r_condiciones'],['valor','r_valor'],['riesgos','r_riesgos'],['linea','r_linea'],['historial','r_historial']];
   h+='<nav class="pestanas" aria-label="'+esc(t('v_ficha'))+'">'+tabs.map(([k,l])=>'<a href="#/ficha/'+esc(I.id)+'/'+k+'"'+(tab===k?' aria-current="page"':'')+'>'+esc(t(l))+'</a>').join('')+'</nav>';
-  if(tab==='gate') h+=fichaGate(I,s); else if(tab==='condiciones') h+=fichaCondiciones(I); else if(tab==='valor') h+=fichaValor(I,s); else if(tab==='linea') h+=fichaLinea(I); else if(tab==='historial') h+=fichaHistorial(I); else h+=fichaResumen(I,s);
+  if(tab==='gate') h+=fichaGate(I,s); else if(tab==='condiciones') h+=fichaCondiciones(I); else if(tab==='valor') h+=fichaValor(I,s); else if(tab==='riesgos') h+=fichaRiesgos(I); else if(tab==='linea') h+=fichaLinea(I); else if(tab==='historial') h+=fichaHistorial(I); else h+=fichaResumen(I,s);
   return h;
 }
 function fichaResumen(I,s){
@@ -865,7 +889,7 @@ function fichaResumen(I,s){
     [t('espera'),I.ciclo.espera?esc(L('espera',I.ciclo.espera.motivo))+' · '+fF(I.ciclo.espera.desde)+' · '+esc(I.ciclo.espera.comentario||''):esc(t('ninguna'))],[t('reanudacion'),I.ciclo.espera?fF(I.ciclo.espera.reanudacion_prevista):esc('—')],[t('prox_rev'),I.ciclo.fase===6?(I.ciclo.proxima_revision?fF(I.ciclo.proxima_revision):null):esc('—')],
     [t('cierre'),I.cierre?esc(L('estado',I.cierre.tipo))+' · '+fF(I.cierre.fecha)+' · '+esc(I.cierre.organo||''):esc('—')],[t('motivo_cierre'),I.cierre?esc(L('motivo',I.cierre.motivo))+(I.cierre.comentario?'<br><span class="ayuda">'+esc(I.cierre.comentario)+'</span>':''):esc('—')]])+'</section>';
   h+='<section class="bloque"><h3>'+esc(t('b_valor'))+'</h3>'+dl([[t('v_esperado'),fE(v.esperado)],[t('v_realizado'),fE(v.realizado)],[t('v_pct'),fP(v.pctValidado)],[t('inv_real'),fE(I.inversion&&I.inversion.realizada)],[t('inv_pend'),fE(I.inversion&&I.inversion.pendiente)]])+'<p class="ayuda" style="margin-top:6px"><a href="#/ficha/'+esc(I.id)+'/valor">'+esc(t('r_valor'))+' →</a></p></section>';
-  h+='<section class="bloque"><h3>'+esc(t('b_riesgo'))+'</h3>'+dl([[t('riesgo_res'),I.riesgo_residual_principal?esc(L('riesgo',I.riesgo_residual_principal)):null],[t('evaluaciones'),(I.evaluaciones_impacto||[]).length?(I.evaluaciones_impacto.map(x=>esc(L('eval',x.tipo)+': '+L('eval_estado',x.estado))).join('<br>')):null],[t('cond_abiertas'),ab+' / '+ve],[t('nc_abiertas'),nc.length?nc.map(n=>esc(n.id+' ('+L('nc_tipo',n.tipo)+')')).join(', '):esc(t('ninguna'))],[t('incidentes'),inci.length?inci.map(n=>esc(n.id+' '+n.severidad)).join(', '):esc(t('ninguno'))],[t('riesgos_reg'),String(DB.riesgos.filter(x=>x.iniciativa===I.id).length)]])+'</section>';
+  h+='<section class="bloque"><h3>'+esc(t('b_riesgo'))+'</h3>'+dl([[t('riesgo_res'),I.riesgo_residual_principal?esc(L('riesgo',I.riesgo_residual_principal)):null],[t('evaluaciones'),(I.evaluaciones_impacto||[]).length?(I.evaluaciones_impacto.map(x=>esc(L('eval',x.tipo)+': '+L('eval_estado',x.estado))).join('<br>')):null],[t('cond_abiertas'),ab+' / '+ve],[t('nc_abiertas'),nc.length?nc.map(n=>esc(n.id+' ('+L('nc_tipo',n.tipo)+')')).join(', '):esc(t('ninguna'))],[t('incidentes'),inci.length?inci.map(n=>esc(n.id+' '+n.severidad)).join(', '):esc(t('ninguno'))],[t('riesgos_reg'),String(riesgosDe(I).length)+' · <a href="#/ficha/'+esc(I.id)+'/riesgos">'+esc(t('rg_ver'))+' →</a>']])+'</section>';
   const P=panelCanon(I.panel)||PANEL_VACIO, ctl=k=>P.controles[k]?esc(L('control',P.controles[k])):null;
   h+='<section class="bloque"><h3>'+esc(t('b_panel'))+'</h3>'+dl([[t('p_complejidad'),P.complejidad?esc(L('complejidad',P.complejidad)):null],[t('p_prioridad'),P.prioridad?esc(L('prioridad',P.prioridad)):null],[t('p_plazo'),P.plazo_potencial?esc(P.plazo_potencial):null],[t('p_ctrl_seg'),ctl('seguridad')],[t('p_ctrl_muc'),ctl('muc')],[t('p_ctrl_iao'),ctl('ia_ofensiva')],[t('p_obs'),P.observaciones_consejo?esc(P.observaciones_consejo):null]])+'<p class="ayuda" style="margin-top:6px"><a href="'+(DB.meta.datos_ilustrativos?PANEL_DEMO:PANEL_T17)+'">'+esc(t(DB.meta.datos_ilustrativos?'lnk_panel_demo':'lnk_panel'))+' →</a></p></section>';
   return h+'</div>';
@@ -876,6 +900,7 @@ function fichaGate(I,s){
   const gate=GATE_DE_FASE[I.ciclo.fase]; const q=quienGate(gate,I); const dg=s.dg;
   let h='<h2>'+esc(gateTxt(gate))+'</h2>';
   h+='<div class="bloques"><section class="bloque">'+dl([[t('intensidad'),esc(L('intensidad',I.clasificacion.intensidad))],[t('g_verifica'),esc(q.verifica)],[t('g_decide'),esc(L('organo',q.organo))],[t('iteracion'),String(dg?dg.iteracion:I.ciclo.iteracion)]])+(q.notaTransf?'<p class="aviso info">'+esc(q.notaTransf)+'</p>':'')+(gate==='R6'?'<p class="ayuda">'+esc(t('r6_nota'))+'</p>':'')+(gate==='G7'?'<p class="ayuda">'+esc(t('g7_nota'))+'</p>':'')+'</section>';
+  if(['G3','G4','G5','R6','G7'].includes(gate)) h+=bloqueRiesgoGate(I);
   if(!dg){
     const ultG7 = decisionesDe(I).filter(d=>d.gate==='G7' && d.fecha_decision).pop();
     if(I.ciclo.estado==='pendiente_g7' && ultG7 && ultG7.resultado==='retirar') return h+'</div><div class="aviso">'+esc(L('resultado','retirar'))+' · '+fF(ultG7.fecha_decision)+'</div><button type="button" class="primario" data-acc="retirada" data-id="'+esc(I.id)+'">'+esc(t('retirada_ejec'))+'</button>';
@@ -1075,6 +1100,7 @@ document.addEventListener('submit', e=>{
 });
 function onChangeExtra(e){
   const el=e.target;
+  if(onChangeRiesgos(el)) return;
   if(el.dataset.recalc){ const f=el.closest('form[data-form="decision"]'); if(f) recalcDecision(f); return; }
   if(el.dataset.accChange==='propuesto'){ const I=M.ini.get(el.dataset.id); const dg=I&&decisionAbierta(I); if(dg){ const antes=dg.resultado_propuesto||null; dg.resultado_propuesto=el.value||null; nuevoEvento({iniciativa:I.id, tipo:'edicion', motivo:t('res_propuesto')+': '+(el.value?L('resultado',el.value):t('sin_propuesta')), gate:dg.gate, fase:I.ciclo.fase, decision:dg.id, campo:'resultado_propuesto', antes, despues:dg.resultado_propuesto}); guardar(); render(); } }
 }
@@ -1496,7 +1522,7 @@ function vistaAlertas(){
   const lista=filtrar(); const A=todasAlertas(lista);
   let h='<h1>'+esc(t('v_alertas'))+'</h1><p class="ayuda">'+esc(t('al_sub'))+'</p>'+filtrosHTML();
   if(!A.length) return h+'<p>'+esc(t('al_ninguna'))+'</p>';
-  const orden=['estancada','decision','condicion','revision','evidencias','elevar','espera','roles','nc'];
+  const orden=['estancada','decision','condicion','revision','evidencias','riesgos','elevar','espera','roles','nc','adopcion'];
   const g=agrupar(A,a=>a.tipo);
   h+='<div class="kpis">'+orden.filter(k=>g.has(k)).map(k=>'<div class="kpi"><b>'+g.get(k).length+'</b><span>'+esc(t('at_'+k))+'</span></div>').join('')+'</div>';
   orden.filter(k=>g.has(k)).forEach(k=>{
@@ -1618,6 +1644,329 @@ function abrirSistema(S){
   });
 }
 
+/* ---------------- T06 · matriz y registro de riesgos (documento 33, plantilla P12) ----------------
+   Módulo de T01 sobre la entidad riesgos[] del modelo de datos común (03 §4). Escalas comunes del marco: probabilidad e impacto 1–5,
+   nivel = P × I (Bajo 1–4 · Medio 5–9 · Alto 10–15 · Crítico 16–25); el impacto es el mayor de cinco ejes (33 §4). El nivel se valora
+   inherente (sin controles) y residual (objetivo con controles previstos; verificado con eficacia probada, 33 §5). La aceptación del
+   residual corresponde al órgano de su nivel (33 §7.1) y un residual Crítico sin aprobación del consejo bloquea G3 y G5. */
+Object.assign(LB.es,{
+  cat_riesgo:{EST:'EST · Estratégico',TEC:'TEC · Técnico',DAT:'DAT · Datos',ECO:'ECO · Económico',LEG:'LEG · Legal y cumplimiento',ORG:'ORG · Organizativo',REP:'REP · Reputacional',GEN:'GEN · IA generativa y agentes',SEG:'SEG · Seguridad e IA ofensiva',TER:'TER · Terceros'},
+  prob:{1:'1 · Rara',2:'2 · Improbable',3:'3 · Posible',4:'4 · Probable',5:'5 · Casi segura'},
+  imp:{1:'1 · Insignificante',2:'2 · Menor',3:'3 · Moderado',4:'4 · Grave',5:'5 · Crítico'},
+  eje:{economico:'Económico',personas:'Personas y derechos',regulatorio:'Regulatorio',operativo:'Operativo',reputacional:'Reputacional'},
+  respuesta:{evitar:'Evitar',mitigar:'Mitigar',transferir:'Transferir',aceptar:'Aceptar'},
+  eficacia:{eficaz:'Eficaz',parcial:'Parcialmente eficaz',ineficaz:'Ineficaz',no_probado:'No probado'},
+  tipo_residual:{objetivo:'Objetivo (controles previstos)',verificado:'Verificado (eficacia probada)'},
+  estado_riesgo:{identificado:'Identificado',en_tratamiento:'En tratamiento',aceptado:'Aceptado',materializado:'Materializado',cerrado:'Cerrado'},
+  tendencia:{sube:'Sube',estable:'Estable',baja:'Baja'},
+  organo_acepta:{producto:'Responsable de producto de IA',patrocinador:'Patrocinador de IA',comite_ia:'Comité de IA',consejo:'Consejo o comisión delegada'}
+});
+Object.assign(LB.en,{
+  cat_riesgo:{EST:'EST · Strategic',TEC:'TEC · Technical',DAT:'DAT · Data',ECO:'ECO · Economic',LEG:'LEG · Legal and compliance',ORG:'ORG · Organisational',REP:'REP · Reputational',GEN:'GEN · Generative AI and agents',SEG:'SEG · Security and offensive AI',TER:'TER · Third parties'},
+  prob:{1:'1 · Rare',2:'2 · Unlikely',3:'3 · Possible',4:'4 · Likely',5:'5 · Almost certain'},
+  imp:{1:'1 · Negligible',2:'2 · Minor',3:'3 · Moderate',4:'4 · Major',5:'5 · Critical'},
+  eje:{economico:'Economic',personas:'People and rights',regulatorio:'Regulatory',operativo:'Operational',reputacional:'Reputational'},
+  respuesta:{evitar:'Avoid',mitigar:'Mitigate',transferir:'Transfer',aceptar:'Accept'},
+  eficacia:{eficaz:'Effective',parcial:'Partially effective',ineficaz:'Ineffective',no_probado:'Not tested'},
+  tipo_residual:{objetivo:'Target (planned controls)',verificado:'Verified (effectiveness tested)'},
+  estado_riesgo:{identificado:'Identified',en_tratamiento:'Under treatment',aceptado:'Accepted',materializado:'Materialised',cerrado:'Closed'},
+  tendencia:{sube:'Rising',estable:'Stable',baja:'Falling'},
+  organo_acepta:{producto:'AI Product Owner',patrocinador:'AI Sponsor',comite_ia:'AI Committee',consejo:'Board or board committee'}
+});
+Object.assign(TX.es,{
+ v_riesgos:'Riesgos (T06)', r_riesgos:'Riesgos (T06)', at_riesgos:'Matriz de riesgos',
+ al_riesgos:'{n} observaciones en la matriz y registro de riesgos (T06): {d}',
+ rg_titulo:'Matriz y registro de riesgos (T06)', rg_sub:'Riesgos de las iniciativas que dejan pasar los filtros, valorados con las escalas comunes del marco: probabilidad × impacto (1–5), impacto como el mayor de cinco ejes, nivel inherente y residual, respuesta y aceptación por el órgano de su nivel.',
+ rg_ficha_sub:'Matriz y registro de riesgos de la iniciativa: evidencia obligatoria desde la fase 3 (G3.11–G3.14), actualizada antes de G5, en cada R6 y ante cada cambio o incidente.',
+ rg_doc33:'Metodología (documento 33)', rg_p12:'Plantilla P12',
+ rg_nuevo:'Nuevo riesgo', rg_csv:'Exportar riesgos (CSV)', rg_ver:'Ver matriz', rg_sync:'Actualizar la ficha con el registro',
+ rg_residual:'Residual', rg_inherente:'Inherente', rg_matriz:'Matriz', rg_mat_cap:'Matriz 5 × 5 · nivel {v}. Pulse una celda para ver sus riesgos; vuelva a pulsar para quitar el filtro.',
+ rg_celda_aria:'Probabilidad {p}, impacto {i}: puntuación {s}, nivel {n}, {c} riesgos', rg_axis:'Filas: probabilidad · columnas: impacto (el mayor de los cinco ejes)', rg_sin_pos:'{n} riesgos sin probabilidad o impacto en esta vista: no aparecen en la matriz.',
+ rg_celda_sel:'· solo la celda P {p} × I {i}', rg_quitar:'Quitar',
+ rg_k_total:'Riesgos abiertos', rg_k_crit:'Residual crítico', rg_k_alto:'Residual alto', rg_k_obs:'Observaciones que bloquean o exigen acción', rg_k_sin:'Iniciativas en fase 3 o posterior sin registro',
+ rg_categoria:'Categoría', rg_rt:'Riesgo tipo', rg_rt_ayuda:'Código RT-<CAT>-NN del catálogo del documento 33 §9, si existe.', rg_responsable:'Responsable del riesgo', rg_fecha_alta:'Fecha de alta',
+ rg_descripcion:'Riesgo (causa → evento → consecuencia)', rg_desc_ayuda:'En lenguaje comprensible: qué lo causa, qué puede ocurrir y qué consecuencia tendría.',
+ rg_prob:'Probabilidad', rg_imp:'Impacto', rg_eje:'Eje dominante del impacto', rg_controles:'Controles', rg_controles_txt:'Controles existentes y previstos (tipo, código SEG o AG, responsable)', rg_eficacia:'Eficacia de los controles',
+ rg_tipo_res:'Tipo de residual', rg_tratamiento:'Tratamiento y seguimiento', rg_respuesta:'Respuesta', rg_tendencia:'Tendencia', rg_contingencia:'Plan de contingencia', rg_cont_ayuda:'Disparador, acciones y quién lo activa. Obligatorio para todo riesgo Alto o Crítico en tratamiento (33 §6; P13).',
+ rg_aceptacion:'Aceptación del residual', rg_organo:'Órgano que acepta', rg_vigencia:'Vigente hasta', rg_referencia:'Acta o registro', rg_acept_ayuda:'Bajo: responsable de producto · Medio: patrocinador · Alto: comité de IA · Crítico: no se acepta salvo el consejo o su comisión delegada, dentro del apetito (33 §7.1). Nadie acepta un riesgo de una iniciativa en la que construye.',
+ rg_acepta:'Acepta', rg_requerido:'Requerido: {o}', rg_dlg:'Riesgo', rg_alta_ev:'alta del riesgo {id}',
+ rg_e_ini:'Elija la iniciativa.', rg_e_desc:'Describa el riesgo (causa, evento y consecuencia).', rg_e_rt:'El riesgo tipo debe tener el formato RT-XXX-NN.', rg_e_pi:'Indique probabilidad e impacto a la vez, o ninguno de los dos.', rg_e_acept:'Una aceptación necesita órgano y fecha.',
+ rg_c_riesgo:'Riesgo', rg_c_inh:'Inherente', rg_c_ctl:'Controles', rg_c_res:'Residual', rg_c_resp:'Respuesta · responsable', rg_c_acept:'Aceptación', rg_c_est:'Estado · revisión', rg_c_obs:'Observaciones',
+ rg_resumen:'Resumen por nivel', rg_por_cat:'Por categoría (nivel residual)', rg_obs:'Observaciones del registro', rg_obs_sub:'Comprobaciones de la metodología (33 §4–§8) y de los criterios G3.11–G3.14, G5.12 y R6.09. Informativas: la decisión es del órgano que corresponde.', rg_sin_obs:'Sin observaciones.',
+ rg_lista:'Registro de riesgos', rg_ninguno:'No hay riesgos registrados con estos filtros.', rg_total:'Total', rg_cerrados:'Incluir cerrados', rg_limpiar:'Quitar filtros de riesgos', rg_nivel_res:'Nivel residual',
+ rg_gate_tit:'Matriz de riesgos', rg_gate_txt:'{n} riesgos abiertos · mayor residual: {m} · {o} observaciones que exigen acción.', rg_gate_ok:'{n} riesgos abiertos · mayor residual: {m} · sin observaciones que exijan acción.',
+ rg_principal_dlg:'Riesgo residual principal', rg_principal_txt:'La ficha pasará de «{a}» a «{b}», el mayor nivel residual de los riesgos abiertos del registro. El panel del consejo (T17) usa este dato.',
+ ro_sin_valorar:'Sin probabilidad ni impacto: el riesgo no está valorado (33 §4).', ro_sin_residual:'Valorado sin nivel residual (33 §5).', ro_sin_responsable:'Sin responsable: sin responsable nominal el riesgo no está registrado (33 §2, principio 4).',
+ ro_sin_respuesta:'Nivel Medio o superior sin respuesta decidida (G3.14).', ro_critico:'Residual Crítico sin aprobación del consejo o de su comisión delegada: bloquea G3 y G5 (33 §7.1).',
+ ro_contingencia:'Residual Alto o Crítico sin plan de contingencia (33 §6; G3.13, P13).', ro_organo:'Aceptado por un órgano inferior al que corresponde a su nivel ({o}).', ro_caducada:'Aceptación caducada el {f}: debe renovarse (33 §7.1).',
+ ro_constructor:'Lo acepta una persona que construye la iniciativa (01 §8.2).', ro_revision:'Revisión vencida desde el {f} (33 §7.3).', ro_ineficaz:'Control ineficaz en un riesgo residual Alto o Crítico: es además una no conformidad (33 §5.3; documento 37).',
+ ro_reduccion:'El residual verificado reduce {n} niveles, más de los que admite la eficacia de sus controles ({m}) (33 §5.3).', ro_extremo:'Impacto 5 en personas y derechos o regulatorio: a efectos de aceptación se trata como Alto como mínimo (33 §4.3, regla 2).',
+ ro_sin_aceptacion:'Residual sin aceptación registrada por el órgano de su nivel (G3.12).', ro_sin_registro:'En fase 3 o posterior sin matriz y registro de riesgos (G3.11).',
+ ro_principal:'El riesgo residual principal de la ficha ({a}) no coincide con el mayor residual del registro ({b}).',
+ rs_sin_valorar:'Sin valorar', rs_sin_residual:'Sin residual', rs_sin_responsable:'Sin responsable', rs_sin_respuesta:'Sin respuesta', rs_critico:'Crítico sin consejo', rs_contingencia:'Sin contingencia', rs_organo:'Órgano insuficiente', rs_caducada:'Aceptación caducada',
+ rs_constructor:'Acepta quien construye', rs_revision:'Revisión vencida', rs_ineficaz:'Control ineficaz', rs_reduccion:'Reducción excesiva', rs_extremo:'Impacto extremo', rs_sin_aceptacion:'Sin aceptación', rs_sin_registro:'Sin registro', rs_principal:'Nivel principal distinto'
+});
+Object.assign(TX.en,{
+ v_riesgos:'Risks (T06)', r_riesgos:'Risks (T06)', at_riesgos:'Risk matrix',
+ al_riesgos:'{n} observations in the risk matrix and register (T06): {d}',
+ rg_titulo:'Risk matrix and register (T06)', rg_sub:'Risks of the initiatives that pass the filters, assessed with the framework’s common scales: likelihood × impact (1–5), impact as the highest of five axes, inherent and residual level, response and acceptance by the body for its level.',
+ rg_ficha_sub:'Risk matrix and register of the initiative: mandatory evidence from phase 3 (G3.11–G3.14), updated before G5, at every R6 and after every change or incident.',
+ rg_doc33:'Methodology (document 33)', rg_p12:'Template P12',
+ rg_nuevo:'New risk', rg_csv:'Export risks (CSV)', rg_ver:'View matrix', rg_sync:'Update the record from the register',
+ rg_residual:'Residual', rg_inherente:'Inherent', rg_matriz:'Matrix', rg_mat_cap:'5 × 5 matrix · {v} level. Click a cell to see its risks; click again to remove the filter.',
+ rg_celda_aria:'Likelihood {p}, impact {i}: score {s}, level {n}, {c} risks', rg_axis:'Rows: likelihood · columns: impact (the highest of the five axes)', rg_sin_pos:'{n} risks without likelihood or impact in this view: they are not shown in the matrix.',
+ rg_celda_sel:'· only cell L {p} × I {i}', rg_quitar:'Remove',
+ rg_k_total:'Open risks', rg_k_crit:'Critical residual', rg_k_alto:'High residual', rg_k_obs:'Observations that block or require action', rg_k_sin:'Initiatives in phase 3 or later without a register',
+ rg_categoria:'Category', rg_rt:'Typical risk', rg_rt_ayuda:'RT-<CAT>-NN code from the catalogue in document 33 §9, if one exists.', rg_responsable:'Risk owner', rg_fecha_alta:'Date identified',
+ rg_descripcion:'Risk (cause → event → consequence)', rg_desc_ayuda:'In plain language: what causes it, what may happen and what the consequence would be.',
+ rg_prob:'Likelihood', rg_imp:'Impact', rg_eje:'Dominant impact axis', rg_controles:'Controls', rg_controles_txt:'Existing and planned controls (type, SEG or AG code, owner)', rg_eficacia:'Control effectiveness',
+ rg_tipo_res:'Residual type', rg_tratamiento:'Treatment and monitoring', rg_respuesta:'Response', rg_tendencia:'Trend', rg_contingencia:'Contingency plan', rg_cont_ayuda:'Trigger, actions and who activates it. Mandatory for every High or Critical risk under treatment (33 §6; P13).',
+ rg_aceptacion:'Residual acceptance', rg_organo:'Accepting body', rg_vigencia:'Valid until', rg_referencia:'Minutes or record', rg_acept_ayuda:'Low: AI Product Owner · Medium: AI Sponsor · High: AI Committee · Critical: not accepted except by the board or its board committee, within the appetite (33 §7.1). Nobody accepts a risk of an initiative they are building.',
+ rg_acepta:'Accepts', rg_requerido:'Required: {o}', rg_dlg:'Risk', rg_alta_ev:'risk {id} registered',
+ rg_e_ini:'Choose the initiative.', rg_e_desc:'Describe the risk (cause, event and consequence).', rg_e_rt:'The typical risk must have the format RT-XXX-NN.', rg_e_pi:'Enter likelihood and impact together, or neither.', rg_e_acept:'An acceptance needs a body and a date.',
+ rg_c_riesgo:'Risk', rg_c_inh:'Inherent', rg_c_ctl:'Controls', rg_c_res:'Residual', rg_c_resp:'Response · owner', rg_c_acept:'Acceptance', rg_c_est:'Status · review', rg_c_obs:'Observations',
+ rg_resumen:'Summary by level', rg_por_cat:'By category (residual level)', rg_obs:'Register observations', rg_obs_sub:'Checks from the methodology (33 §4–§8) and from criteria G3.11–G3.14, G5.12 and R6.09. For information: the decision belongs to the competent body.', rg_sin_obs:'No observations.',
+ rg_lista:'Risk register', rg_ninguno:'No risks registered with these filters.', rg_total:'Total', rg_cerrados:'Include closed', rg_limpiar:'Remove risk filters', rg_nivel_res:'Residual level',
+ rg_gate_tit:'Risk matrix', rg_gate_txt:'{n} open risks · highest residual: {m} · {o} observations requiring action.', rg_gate_ok:'{n} open risks · highest residual: {m} · no observations requiring action.',
+ rg_principal_dlg:'Main residual risk', rg_principal_txt:'The record will change from “{a}” to “{b}”, the highest residual level of the open risks in the register. The board dashboard (T17) uses this value.',
+ ro_sin_valorar:'No likelihood or impact: the risk has not been assessed (33 §4).', ro_sin_residual:'Assessed without a residual level (33 §5).', ro_sin_responsable:'No owner: without a named owner the risk is not registered (33 §2, principle 4).',
+ ro_sin_respuesta:'Medium or higher level without a decided response (G3.14).', ro_critico:'Critical residual without approval from the board or its board committee: it blocks G3 and G5 (33 §7.1).',
+ ro_contingencia:'High or Critical residual without a contingency plan (33 §6; G3.13, P13).', ro_organo:'Accepted by a body below the one required for its level ({o}).', ro_caducada:'Acceptance expired on {f}: it must be renewed (33 §7.1).',
+ ro_constructor:'Accepted by a person who is building the initiative (01 §8.2).', ro_revision:'Review overdue since {f} (33 §7.3).', ro_ineficaz:'Ineffective control on a High or Critical residual risk: it is also a nonconformity (33 §5.3; document 37).',
+ ro_reduccion:'The verified residual reduces {n} levels, more than the effectiveness of its controls allows ({m}) (33 §5.3).', ro_extremo:'Impact 5 on people and rights or regulatory: for acceptance purposes it is treated as at least High (33 §4.3, rule 2).',
+ ro_sin_aceptacion:'Residual without an acceptance recorded by the body for its level (G3.12).', ro_sin_registro:'In phase 3 or later without a risk matrix and register (G3.11).',
+ ro_principal:'The main residual risk in the record ({a}) does not match the highest residual in the register ({b}).',
+ rs_sin_valorar:'Not assessed', rs_sin_residual:'No residual', rs_sin_responsable:'No owner', rs_sin_respuesta:'No response', rs_critico:'Critical without board', rs_contingencia:'No contingency', rs_organo:'Body too low', rs_caducada:'Acceptance expired',
+ rs_constructor:'Accepted by a builder', rs_revision:'Review overdue', rs_ineficaz:'Ineffective control', rs_reduccion:'Excessive reduction', rs_extremo:'Extreme impact', rs_sin_aceptacion:'Not accepted', rs_sin_registro:'No register', rs_principal:'Main level differs'
+});
+
+const NIVELES = ['bajo','medio','alto','critico'];
+const CATS_RIESGO = ['EST','TEC','DAT','ECO','LEG','ORG','REP','GEN','SEG','TER'];
+const ORGANO_NIVEL = {bajo:'producto', medio:'patrocinador', alto:'comite_ia', critico:'consejo'};
+const RANGO_ORGANO = {producto:0, patrocinador:1, comite_ia:2, consejo:3};
+const REDUCCION_MAX = {eficaz:2, parcial:1};
+function nivelPI(p,i){ if(!Number.isInteger(p)||!Number.isInteger(i)) return null; const n=p*i; return n>=16?'critico':(n>=10?'alto':(n>=5?'medio':'bajo')); }
+function rgInh(R){ return nivelPI(R.probabilidad,R.impacto) || R.nivel_inherente || null; }
+function rgRes(R){ return nivelPI(R.probabilidad_residual,R.impacto_residual) || R.nivel_residual || null; }
+function maxNivel(a,b){ if(!a) return b||null; if(!b) return a; return NIVELES.indexOf(a)>=NIVELES.indexOf(b)? a : b; }
+/* nivel a efectos de aceptación: el residual (o el inherente si aún no hay residual), con la regla de impacto extremo (33 §4.3, regla 2) */
+function rgAcept(R){ const n=rgRes(R)||rgInh(R); const imp=Number.isInteger(R.impacto_residual)? R.impacto_residual : R.impacto; return (imp===5 && ['personas','regulatorio'].includes(R.eje_impacto))? maxNivel(n,'alto') : n; }
+function rgAbierto(R){ return R.estado!=='cerrado'; }
+function riesgosDe(I){ return (M.rsg && M.rsg.get(I.id)) || []; }
+function nivelEt(n){ return n? '<span class="et nv-'+n+'">'+esc(L('riesgo',n))+'</span>' : sd(); }
+function piTxt(p,i){ return (Number.isInteger(p)&&Number.isInteger(i))? p+' × '+i+' = '+(p*i) : ''; }
+function docsRiesgo(){ const b='../../html/'+(UI.lang==='en'?'en':'es')+'/'; return '<a href="'+b+'33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">'+esc(t('rg_doc33'))+'</a> · <a href="'+b+'plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">'+esc(t('rg_p12'))+'</a>'; }
+
+/* observaciones de un riesgo abierto: comprobaciones de 33 §2–§8 y de los criterios G3.11–G3.14 (informativas, no bloquean la herramienta) */
+function obsRiesgo(R, I){
+  const O=[]; if(!rgAbierto(R)) return O; const h=hoy(); const add=(k,sev,v)=>O.push({k,sev,txt:t('ro_'+k,v)});
+  const inh=rgInh(R), res=rgRes(R), ac=rgAcept(R), A=R.aceptacion||null;
+  if(!inh) add('sin_valorar','media'); else if(!res) add('sin_residual','media');
+  if(!R.responsable) add('sin_responsable','alta');
+  if(ac && ac!=='bajo' && !R.respuesta) add('sin_respuesta','media');
+  if(ac==='critico' && !(A && A.organo==='consejo' && A.fecha)) add('critico','alta');
+  if((ac==='alto'||ac==='critico') && R.respuesta!=='evitar' && !(R.contingencia||'').trim()) add('contingencia','alta');
+  if(A && A.organo && ac && RANGO_ORGANO[A.organo]<RANGO_ORGANO[ORGANO_NIVEL[ac]]) add('organo','alta',{o:L('organo_acepta',ORGANO_NIVEL[ac])});
+  if(A && A.persona && I && ac && ac!=='bajo' && rolesDe(I,A.persona).some(k=>['producto','tecnico','operacion'].includes(k))) add('constructor','alta');
+  if(A && A.vigencia && A.vigencia<h) add('caducada','media',{f:fF(A.vigencia)});
+  if(!A && ac && I && !cerrada(I) && I.ciclo.fase>=3 && R.estado!=='materializado') add('sin_aceptacion','media');
+  if(R.proxima_revision && R.proxima_revision<h) add('revision','media',{f:fF(R.proxima_revision)});
+  if(R.eficacia_controles==='ineficaz' && (res==='alto'||res==='critico')) add('ineficaz','alta');
+  if(R.tipo_residual==='verificado' && [R.probabilidad,R.impacto,R.probabilidad_residual,R.impacto_residual].every(Number.isInteger)){
+    const red=(R.probabilidad-R.probabilidad_residual)+(R.impacto-R.impacto_residual), max=REDUCCION_MAX[R.eficacia_controles]??0; if(red>max) add('reduccion','media',{n:red,m:max}); }
+  if(ac && ac!==(res||inh)) add('extremo','info');
+  return O;
+}
+/* observaciones de la iniciativa: registro exigible desde la fase 3 y coherencia con el riesgo residual principal de la ficha */
+function obsIniRiesgos(I){
+  const O=[]; if(cerrada(I)) return O; const rs=riesgosDe(I);
+  if(!rs.length && (I.ciclo.fase>3 || (I.ciclo.fase===3 && decisionAbierta(I)))) O.push({k:'sin_registro',sev:'alta',txt:t('ro_sin_registro')});
+  const mx=rs.filter(rgAbierto).reduce((a,r)=>maxNivel(a,rgRes(r)),null);
+  if(mx && mx!==I.riesgo_residual_principal) O.push({k:'principal',sev:'info',txt:t('ro_principal',{a:I.riesgo_residual_principal?L('riesgo',I.riesgo_residual_principal):t('sin_dato'),b:L('riesgo',mx)}),mx});
+  return O;
+}
+function obsTodas(I){ const O=obsIniRiesgos(I).map(o=>Object.assign({r:null,ini:I},o)); riesgosDe(I).forEach(r=>obsRiesgo(r,I).forEach(o=>O.push(Object.assign({r,ini:I},o)))); return O; }
+/* alerta de la iniciativa (vista Alertas, embudo y ficha): solo observaciones que exigen acción */
+function alertaRiesgos(I){
+  const O=obsTodas(I).filter(o=>o.sev!=='info'); if(!O.length) return null;
+  const d=[...new Set(O.map(o=>(o.r?o.r.id.split(' · ').pop()+' ':'')+t('rs_'+o.k)))].slice(0,3).join(' · ')+(O.length>3?' …':'');
+  return {sev:O.some(o=>o.sev==='alta')?'alta':'media', txt:t('al_riesgos',{n:O.length,d})};
+}
+
+/* ---- vista de cartera y pestaña de la ficha ---- */
+function rgUI(){ if(!UI.rg) UI.rg={vista:'residual',cat:'',nivel:'',estado:'',cerrados:false,celda:null}; return UI.rg; }
+/* el filtro por celda de la matriz es de la vista en que se pulsó: se quita al cambiar de vista o de iniciativa */
+window.addEventListener('hashchange', ()=>{ if(UI.rg) UI.rg.celda=null; });
+function filtraRiesgos(rs){ const F=rgUI(); return rs.filter(r=>{ if(!F.cerrados && !rgAbierto(r)) return false; if(F.cat && r.categoria!==F.cat) return false; if(F.nivel && rgRes(r)!==F.nivel) return false; if(F.estado && (r.estado||'')!==F.estado) return false; return true; }); }
+function posRiesgo(r, vista){ return vista==='inherente'? [r.probabilidad,r.impacto] : [r.probabilidad_residual,r.impacto_residual]; }
+function matrizHTML(rs, vista){
+  const cnt={}; let sinPos=0; rs.forEach(r=>{ const [p,i]=posRiesgo(r,vista); if(Number.isInteger(p)&&Number.isInteger(i)) cnt[p+'-'+i]=(cnt[p+'-'+i]||0)+1; else sinPos++; });
+  let h='<div class="tblx"><table class="matriz"><caption>'+esc(t('rg_mat_cap',{v:t('rg_'+vista).toLowerCase()}))+'</caption><thead><tr><th scope="col"><span class="oculto">'+esc(t('rg_prob'))+' \\ '+esc(t('rg_imp'))+'</span><span aria-hidden="true">P \\ I</span></th>'+[1,2,3,4,5].map(i=>'<th scope="col"><span class="lg">'+esc(L('imp',i))+'</span><span class="ct" aria-hidden="true">I '+i+'</span></th>').join('')+'</tr></thead><tbody>';
+  for(let p=5;p>=1;p--){ h+='<tr><th scope="row"><span class="lg">'+esc(L('prob',p))+'</span><span class="ct" aria-hidden="true">P '+p+'</span></th>';
+    for(let i=1;i<=5;i++){ const k=p+'-'+i, n=cnt[k]||0, nv=nivelPI(p,i);
+      h+='<td><button type="button" class="celda nv-'+nv+(n?'':' vacia')+'" data-acc="rg-celda" data-celda="'+k+'" aria-pressed="'+(rgUI().celda===k)+'" aria-label="'+esc(t('rg_celda_aria',{p:L('prob',p),i:L('imp',i),s:p*i,n:L('riesgo',nv),c:n}))+'"><b>'+(n||'·')+'</b><small>'+(p*i)+'<span class="lg"> · '+esc(L('riesgo',nv))+'</span></small></button></td>'; }
+    h+='</tr>'; }
+  h+='</tbody></table></div><p class="leyenda">'+NIVELES.map(n=>'<span><i class="nv-'+n+'"></i>'+esc(L('riesgo',n))+' '+({bajo:'1–4',medio:'5–9',alto:'10–15',critico:'16–25'})[n]+'</span>').join('')+'<span>'+esc(t('rg_axis'))+'</span></p>';
+  if(sinPos) h+='<p class="ayuda">'+esc(t('rg_sin_pos',{n:sinPos}))+'</p>';
+  return h;
+}
+function bloqueMatriz(todos, inis, I){
+  const F=rgUI(); const rs=filtraRiesgos(todos); const abiertos=todos.filter(rgAbierto);
+  const obs=inis.flatMap(x=>obsTodas(x)).filter(o=>!o.r || rs.includes(o.r));
+  const sel=(k,grupo,etq)=>'<div class="campo"><label for="rg-f-'+k+'">'+esc(etq)+'</label><select id="rg-f-'+k+'" data-rg="'+k+'">'+opts(grupo,F[k]||'',t('todos'))+'</select></div>';
+  let h='<div class="rejilla" style="margin:8px 0">'+sel('cat','cat_riesgo',t('rg_categoria'))+sel('nivel','riesgo',t('rg_nivel_res'))+sel('estado','estado_riesgo',t('estado'))+
+    '<div class="campo"><span class="ayuda">'+esc(t('rg_matriz'))+'</span><div class="fila" role="group" aria-label="'+esc(t('rg_matriz'))+'">'+['residual','inherente'].map(v=>'<button type="button" data-acc="rg-vista" data-v="'+v+'" aria-pressed="'+(F.vista===v)+'"'+(F.vista===v?' class="primario"':'')+'>'+esc(t('rg_'+v))+'</button>').join('')+'</div></div></div>'+
+    '<div class="fila"><label class="checks"><input type="checkbox" id="rg-f-cerrados" data-rg="cerrados"'+(F.cerrados?' checked':'')+'> '+esc(t('rg_cerrados'))+'</label>'+((F.cat||F.nivel||F.estado||F.cerrados||F.celda)?'<button type="button" data-acc="rg-limpiar">'+esc(t('rg_limpiar'))+'</button>':'')+'</div>';
+  const nObs=obs.filter(o=>o.sev==='alta').length; const sinReg=inis.filter(x=>obsIniRiesgos(x).some(o=>o.k==='sin_registro')).length;
+  h+='<div class="kpis"><div class="kpi"><b>'+abiertos.length+'</b><span>'+esc(t('rg_k_total'))+'</span></div><div class="kpi"><b>'+abiertos.filter(r=>rgAcept(r)==='critico').length+'</b><span>'+esc(t('rg_k_crit'))+'</span></div><div class="kpi"><b>'+abiertos.filter(r=>rgAcept(r)==='alto').length+'</b><span>'+esc(t('rg_k_alto'))+'</span></div><div class="kpi"><b>'+nObs+'</b><span>'+esc(t('rg_k_obs'))+'</span></div>'+(I?'':'<div class="kpi"><b>'+sinReg+'</b><span>'+esc(t('rg_k_sin'))+'</span></div>')+'</div>';
+  h+='<div class="bloques rg-bloques"><section>'+matrizHTML(rs,F.vista)+'</section><section>';
+  h+='<h3>'+esc(t('rg_resumen'))+'</h3>'+tablaSimple(['',t('rg_inherente'),t('rg_residual')], [...NIVELES].reverse().map(n=>[nivelEt(n),String(rs.filter(r=>rgInh(r)===n).length),String(rs.filter(r=>rgRes(r)===n).length)]).concat([[esc(t('sin_dato')),String(rs.filter(r=>!rgInh(r)).length),String(rs.filter(r=>!rgRes(r)).length)],['<b>'+esc(t('rg_total'))+'</b>',String(rs.length),String(rs.length)]]), [1,2]);
+  const cats=CATS_RIESGO.filter(c=>!I || rs.some(r=>r.categoria===c));
+  h+='<h3>'+esc(t('rg_por_cat'))+'</h3>'+tablaSimple([t('rg_categoria'),...[...NIVELES].reverse().map(n=>L('riesgo',n)),t('rg_total')], cats.map(c=>{ const x=rs.filter(r=>r.categoria===c); return [esc(L('cat_riesgo',c)),...[...NIVELES].reverse().map(n=>String(x.filter(r=>rgRes(r)===n).length)),'<b>'+x.length+'</b>']; }), [1,2,3,4,5]);
+  h+='</section></div>';
+  // observaciones
+  h+='<h2>'+esc(t('rg_obs'))+' ('+obs.filter(o=>o.sev!=='info').length+')</h2><p class="ayuda">'+esc(t('rg_obs_sub'))+'</p>';
+  const ordSev={alta:0,media:1,info:2}; const obsO=[...obs].sort((a,b)=>ordSev[a.sev]-ordSev[b.sev]);
+  h+= obsO.length? '<table class="tabla resp"><thead><tr><th scope="col">'+esc(t('rg_c_riesgo'))+'</th><th scope="col">'+esc(t('severidad'))+'</th><th scope="col">'+esc(t('motivo'))+'</th></tr></thead><tbody>'+obsO.map(o=>{ const ini=o.ini;
+      return '<tr><td data-l="'+esc(t('rg_c_riesgo'))+'">'+(o.r?'<span class="mono">'+esc(o.r.id)+'</span>':'<span class="mono">'+esc(ini?ini.id:'')+'</span>')+(ini&&!I?'<br>'+enlaceIni(ini):'')+'</td><td data-l="'+esc(t('severidad'))+'">'+et(t('sev_'+o.sev),o.sev==='alta'?'ko':(o.sev==='info'?'info':'med'))+'</td><td data-l="'+esc(t('motivo'))+'">'+esc(o.txt)+'</td></tr>'; }).join('')+'</tbody></table>' : '<p>'+esc(t('rg_sin_obs'))+'</p>';
+  // registro
+  const vis = F.celda? rs.filter(r=>posRiesgo(r,F.vista).join('-')===F.celda) : rs;
+  const orden=r=>-(NIVELES.indexOf(rgRes(r))*10+NIVELES.indexOf(rgInh(r)));
+  const lst=[...vis].sort((a,b)=>orden(a)-orden(b) || (a.id<b.id?-1:1));
+  const [cp,ci]=(F.celda||'').split('-');
+  h+='<h2 id="rg-lista">'+esc(t('rg_lista'))+' ('+lst.length+')'+(F.celda?' <span class="sub-fase">'+esc(t('rg_celda_sel',{p:cp,i:ci}))+' <button type="button" data-acc="rg-celda" data-celda="'+esc(F.celda)+'">'+esc(t('rg_quitar'))+'</button></span>':'')+'</h2>';
+  if(!lst.length) return h+'<p>'+esc(t('rg_ninguno'))+'</p>';
+  const C=['rg_c_riesgo','rg_c_inh','rg_c_ctl','rg_c_res','rg_c_resp','rg_c_acept','rg_c_est','rg_c_obs'].map(k=>t(k));
+  h+='<table class="tabla resp rg-tabla"><thead><tr>'+C.map(c=>'<th scope="col">'+esc(c)+'</th>').join('')+'<th scope="col"><span class="oculto">'+esc(t('editar'))+'</span></th></tr></thead><tbody>';
+  lst.forEach(r=>{ const ini=M.ini.get(r.iniciativa); const A=r.aceptacion||null; const ac=rgAcept(r); const o=obsRiesgo(r,ini);
+    h+='<tr'+(rgAbierto(r)?'':' class="rg-cerrado"')+'><td data-l="'+esc(C[0])+'"><span class="mono">'+esc(r.id)+'</span>'+(!I&&ini?' · '+enlaceIni(ini):'')+'<br>'+esc(r.descripcion||'')+'<div class="fila" style="margin-top:3px">'+(r.categoria?et(L('cat_riesgo',r.categoria)):'')+(r.riesgo_tipo?et(r.riesgo_tipo,'info'):'')+(r.sistema?'<span class="ayuda mono">'+esc(r.sistema)+'</span>':'')+'</div></td>'+
+      '<td data-l="'+esc(C[1])+'">'+nivelEt(rgInh(r))+'<br><span class="ayuda">'+esc(piTxt(r.probabilidad,r.impacto))+(r.eje_impacto?' · '+esc(L('eje',r.eje_impacto)):'')+'</span></td>'+
+      '<td data-l="'+esc(C[2])+'"><span class="crit-txt">'+esc(r.controles||'')+'</span>'+(r.eficacia_controles?'<br>'+et(L('eficacia',r.eficacia_controles),r.eficacia_controles==='eficaz'?'ok':(r.eficacia_controles==='ineficaz'?'ko':'')):'')+'</td>'+
+      '<td data-l="'+esc(C[3])+'">'+nivelEt(rgRes(r))+(ac&&ac!==rgRes(r)&&rgRes(r)?' → '+nivelEt(ac):'')+'<br><span class="ayuda">'+esc(piTxt(r.probabilidad_residual,r.impacto_residual))+(r.tipo_residual?' · '+esc(L('tipo_residual',r.tipo_residual).split(' (')[0]):'')+'</span></td>'+
+      '<td data-l="'+esc(C[4])+'">'+(r.respuesta?esc(L('respuesta',r.respuesta)):sd())+'<br>'+pNombre(r.responsable)+((ac==='alto'||ac==='critico')&&r.contingencia?'<br><span class="ayuda">'+esc(t('rg_contingencia'))+': '+esc(r.contingencia)+'</span>':'')+'</td>'+
+      '<td data-l="'+esc(C[5])+'">'+(A?esc(L('organo_acepta',A.organo)||'')+(A.persona?'<br>'+pNombre(A.persona):'')+'<br><span class="ayuda">'+fF(A.fecha)+(A.vigencia?' → '+fF(A.vigencia):'')+'</span>':'<span class="ayuda">'+esc(ac?t('rg_requerido',{o:L('organo_acepta',ORGANO_NIVEL[ac])}):'—')+'</span>')+'</td>'+
+      '<td data-l="'+esc(C[6])+'">'+(r.estado?esc(L('estado_riesgo',r.estado)):sd())+(r.tendencia?' · '+esc(L('tendencia',r.tendencia)):'')+'<br><span class="ayuda">'+(r.proxima_revision?fF(r.proxima_revision):'—')+'</span></td>'+
+      '<td data-l="'+esc(C[7])+'">'+(o.length?o.map(x=>'<span class="et '+(x.sev==='alta'?'ko':(x.sev==='info'?'info':'med'))+'" title="'+esc(x.txt)+'">'+esc(t('rs_'+x.k))+'</span>').join(' '):'<span class="ayuda">'+esc(t('ninguna'))+'</span>')+'</td>'+
+      '<td data-l=""><button type="button" data-acc="rg-editar" data-rid="'+esc(r.id)+'">'+esc(t('editar'))+'</button></td></tr>'; });
+  return h+'</tbody></table>';
+}
+function vistaRiesgos(){
+  const lista=filtrar(); const ids=new Set(lista.map(i=>i.id));
+  let h='<div class="cab-ficha"><h1>'+esc(t('rg_titulo'))+'</h1><div class="fila"><button type="button" data-acc="rg-csv">'+esc(t('rg_csv'))+'</button><button type="button" class="primario" data-acc="rg-nuevo">'+esc(t('rg_nuevo'))+'</button></div></div>';
+  h+='<p class="ayuda">'+esc(t('rg_sub'))+' '+docsRiesgo()+'</p>'+filtrosHTML();
+  return h+bloqueMatriz(DB.riesgos.filter(r=>ids.has(r.iniciativa)), lista, null);
+}
+function fichaRiesgos(I){
+  let h='<div class="fila" style="justify-content:space-between;align-items:flex-start"><p class="ayuda" style="flex:1 1 320px">'+esc(t('rg_ficha_sub'))+' '+docsRiesgo()+'</p><button type="button" class="primario" data-acc="rg-nuevo" data-id="'+esc(I.id)+'">'+esc(t('rg_nuevo'))+'</button></div>';
+  const p=obsIniRiesgos(I).find(o=>o.k==='principal'); if(p) h+='<div class="aviso info">'+esc(p.txt)+' <button type="button" data-acc="rg-principal" data-id="'+esc(I.id)+'">'+esc(t('rg_sync'))+'</button></div>';
+  return h+bloqueMatriz(riesgosDe(I), [I], I);
+}
+/* resumen en la pestaña del gate (G3 en adelante): la matriz es evidencia de G3, G5 y R6 */
+function bloqueRiesgoGate(I){
+  const ab=riesgosDe(I).filter(rgAbierto); const mx=ab.reduce((a,r)=>maxNivel(a,rgAcept(r)),null); const n=obsTodas(I).filter(o=>o.sev!=='info').length; const alta=obsTodas(I).some(o=>o.sev==='alta');
+  return '<section class="bloque"><h3>'+esc(t('rg_gate_tit'))+'</h3><div class="aviso '+(alta?'ko':(n?'':'ok'))+'">'+esc(t(n?'rg_gate_txt':'rg_gate_ok',{n:ab.length,m:mx?L('riesgo',mx):t('sin_dato'),o:n}))+'</div><p class="ayuda"><a href="#/ficha/'+esc(I.id)+'/riesgos">'+esc(t('rg_ver'))+' →</a></p></section>';
+}
+
+/* ---- alta y edición de un riesgo (con fecha, autor y motivo, como el resto de cambios del registro) ---- */
+function abrirRiesgo(R, iniId){
+  const X=R||{id:null,iniciativa:iniId||'',descripcion:'',categoria:null,riesgo_tipo:null,sistema:null,probabilidad:null,impacto:null,eje_impacto:null,controles:'',eficacia_controles:null,probabilidad_residual:null,impacto_residual:null,tipo_residual:'objetivo',respuesta:null,contingencia:null,responsable:null,estado:'identificado',tendencia:null,proxima_revision:null,fecha_alta:hoy(),aceptacion:null};
+  const A=X.aceptacion||{};
+  const selN=(id,grupo,v)=>'<select id="'+id+'" name="'+id+'">'+opts(grupo, v==null?'':String(v), '—')+'</select>';
+  const ini = R? campo('rg-ini',t('iniciativa'),'<input type="text" id="rg-ini" name="rg-ini" value="'+esc(X.iniciativa)+'" readonly>')
+               : campo('rg-ini',t('iniciativa'),'<select id="rg-ini" name="rg-ini">'+DB.iniciativas.filter(x=>!cerrada(x)||x.id===X.iniciativa).map(x=>'<option value="'+esc(x.id)+'"'+(x.id===X.iniciativa?' selected':'')+'>'+esc(x.id+' · '+x.nombre)+'</option>').join('')+'</select>');
+  let b='<div class="rejilla">'+ini+campo('rg-cat',t('rg_categoria'),selN('rg-cat','cat_riesgo',X.categoria))+
+    campo('rg-rt',t('rg_rt'),'<input type="text" id="rg-rt" name="rg-rt" value="'+esc(X.riesgo_tipo||'')+'" placeholder="RT-GEN-01" aria-describedby="rg-rt-ay">',t('rg_rt_ayuda'))+
+    campo('rg-sis',t('sistemas'),'<select id="rg-sis" name="rg-sis"><option value="">—</option>'+DB.sistemas.map(s=>'<option value="'+esc(s.id)+'"'+(s.id===X.sistema?' selected':'')+'>'+esc(s.id+' · '+s.nombre)+'</option>').join('')+'</select>')+
+    campo('rg-resp',t('rg_responsable'),selPersonas('rg-resp',X.responsable))+campo('rg-alta',t('rg_fecha_alta'),'<input type="date" id="rg-alta" name="rg-alta" value="'+esc(X.fecha_alta||'')+'">')+'</div>';
+  b+=campo('rg-desc',t('rg_descripcion'),'<textarea id="rg-desc" name="rg-desc" aria-describedby="rg-desc-ay">'+esc(X.descripcion||'')+'</textarea>',t('rg_desc_ayuda'));
+  b+='<fieldset><legend>'+esc(t('rg_inherente'))+'</legend><div class="rejilla">'+campo('rg-p',t('rg_prob'),selN('rg-p','prob',X.probabilidad))+campo('rg-i',t('rg_imp'),selN('rg-i','imp',X.impacto))+campo('rg-eje',t('rg_eje'),selN('rg-eje','eje',X.eje_impacto))+'</div></fieldset>';
+  b+='<fieldset><legend>'+esc(t('rg_controles'))+'</legend>'+campo('rg-ctl',t('rg_controles_txt'),'<textarea id="rg-ctl" name="rg-ctl">'+esc(X.controles||'')+'</textarea>')+'<div class="rejilla">'+campo('rg-efi',t('rg_eficacia'),selN('rg-efi','eficacia',X.eficacia_controles))+'</div></fieldset>';
+  b+='<fieldset><legend>'+esc(t('rg_residual'))+'</legend><div class="rejilla">'+campo('rg-pr',t('rg_prob'),selN('rg-pr','prob',X.probabilidad_residual))+campo('rg-ir',t('rg_imp'),selN('rg-ir','imp',X.impacto_residual))+campo('rg-tr',t('rg_tipo_res'),selN('rg-tr','tipo_residual',X.tipo_residual))+'</div><p class="ayuda" id="rg-calc" aria-live="polite"></p></fieldset>';
+  b+='<fieldset><legend>'+esc(t('rg_tratamiento'))+'</legend><div class="rejilla">'+campo('rg-rsp',t('rg_respuesta'),selN('rg-rsp','respuesta',X.respuesta))+campo('rg-est',t('estado'),selN('rg-est','estado_riesgo',X.estado))+campo('rg-ten',t('rg_tendencia'),selN('rg-ten','tendencia',X.tendencia))+campo('rg-rev',t('prox_rev'),'<input type="date" id="rg-rev" name="rg-rev" value="'+esc(X.proxima_revision||'')+'">')+'</div>'+
+    campo('rg-cont',t('rg_contingencia'),'<textarea id="rg-cont" name="rg-cont" aria-describedby="rg-cont-ay">'+esc(X.contingencia||'')+'</textarea>',t('rg_cont_ayuda'))+'</fieldset>';
+  b+='<fieldset><legend>'+esc(t('rg_aceptacion'))+'</legend><div class="rejilla">'+campo('rg-aorg',t('rg_organo'),selN('rg-aorg','organo_acepta',A.organo))+campo('rg-aper',t('persona'),selPersonas('rg-aper',A.persona||null))+
+    campo('rg-afec',t('fecha'),'<input type="date" id="rg-afec" name="rg-afec" value="'+esc(A.fecha||'')+'">')+campo('rg-avig',t('rg_vigencia'),'<input type="date" id="rg-avig" name="rg-avig" value="'+esc(A.vigencia||'')+'">')+campo('rg-aref',t('rg_referencia'),'<input type="text" id="rg-aref" name="rg-aref" value="'+esc(A.referencia||'')+'">')+'</div><p class="ayuda">'+esc(t('rg_acept_ayuda'))+'</p></fieldset>'+trio();
+  abrirDialogo(t('rg_dlg')+(R?' · '+R.id:''), b, f=>{
+    const errs=[]; const tr=leerTrio(f,errs);
+    const n=k=>{ const v=parseInt(f[k].value,10); return Number.isInteger(v)? v : null; }, s=k=>{ const v=(f[k].value||'').trim(); return v||null; };
+    const iniId2=R? R.iniciativa : f['rg-ini'].value; const I=M.ini.get(iniId2); if(!I) errs.push(t('rg_e_ini'));
+    const desc=f['rg-desc'].value.trim(); if(desc.length<10) errs.push(t('rg_e_desc'));
+    const rt=s('rg-rt'); if(rt && !/^RT-[A-Z]{3}-\d{2}$/.test(rt)) errs.push(t('rg_e_rt'));
+    const Y={descripcion:desc, categoria:s('rg-cat'), riesgo_tipo:rt, sistema:s('rg-sis'), responsable:s('rg-resp'), fecha_alta:s('rg-alta'), probabilidad:n('rg-p'), impacto:n('rg-i'), eje_impacto:s('rg-eje'),
+      controles:f['rg-ctl'].value.trim(), eficacia_controles:s('rg-efi'), probabilidad_residual:n('rg-pr'), impacto_residual:n('rg-ir'), tipo_residual:s('rg-tr'), respuesta:s('rg-rsp'), contingencia:s('rg-cont'), estado:s('rg-est'), tendencia:s('rg-ten'), proxima_revision:s('rg-rev')};
+    if((Y.probabilidad==null)!==(Y.impacto==null) || (Y.probabilidad_residual==null)!==(Y.impacto_residual==null)) errs.push(t('rg_e_pi'));
+    const ac={organo:s('rg-aorg'), persona:s('rg-aper'), fecha:s('rg-afec'), vigencia:s('rg-avig'), referencia:s('rg-aref')};
+    Y.aceptacion = Object.values(ac).some(v=>v)? ac : null; if(Y.aceptacion && (!ac.organo || !ac.fecha)) errs.push(t('rg_e_acept'));
+    if(errs.length) return errs;
+    /* el nivel guardado es el calculado; si no hay probabilidad e impacto se conserva el nivel que ya tuviera (datos anteriores al esquema 0.4) */
+    Y.nivel_inherente = nivelPI(Y.probabilidad,Y.impacto) || (R? R.nivel_inherente??null : null);
+    Y.nivel_residual = nivelPI(Y.probabilidad_residual,Y.impacto_residual) || (R? R.nivel_residual??null : null);
+    const limpiar=o=>{ ['categoria','riesgo_tipo','sistema'].forEach(k=>{ if(o[k]==null) delete o[k]; }); return o; };
+    const autor=autorId(tr.autor);
+    if(R){ const ch=Object.keys(Y).filter(k=>JSON.stringify(R[k]??null)!==JSON.stringify(Y[k]??null)); if(!ch.length) return [t('sin_cambios')];
+      ch.forEach(k=>nuevoEvento({iniciativa:R.iniciativa, fecha:tr.fecha, tipo:'edicion', autor, motivo:tr.motivo, campo:'riesgo.'+R.id+'.'+k, antes:R[k]??null, despues:Y[k]??null, fase:I.ciclo.fase}));
+      Object.assign(R,Y); limpiar(R);
+    } else { const id=nextId(DB.riesgos.filter(x=>x.iniciativa===iniId2), iniId2+' · R', 2);
+      DB.riesgos.push(limpiar(Object.assign({id, iniciativa:iniId2}, Y)));
+      nuevoEvento({iniciativa:iniId2, fecha:tr.fecha, tipo:'edicion', autor, motivo:tr.motivo+' · '+t('rg_alta_ev',{id}), campo:'riesgos', antes:null, despues:id, fase:I.ciclo.fase}); }
+    toast(t('ok_guardado')); return [];
+  });
+  calcRiesgoDlg();
+}
+function calcRiesgoDlg(){
+  const f=$('#dlg-form'), out=$('#rg-calc'); if(!f||!out||!f['rg-p']) return; const n=k=>{ const v=parseInt(f[k].value,10); return Number.isInteger(v)? v : null; };
+  const R={probabilidad:n('rg-p'),impacto:n('rg-i'),probabilidad_residual:n('rg-pr'),impacto_residual:n('rg-ir'),eje_impacto:f['rg-eje'].value||null};
+  const inh=rgInh(R), res=rgRes(R), ac=rgAcept(R);
+  out.innerHTML=esc(t('rg_inherente'))+': '+(inh? nivelEt(inh)+' '+esc(piTxt(R.probabilidad,R.impacto)) : sd())+' · '+esc(t('rg_residual'))+': '+(res? nivelEt(res)+' '+esc(piTxt(R.probabilidad_residual,R.impacto_residual)) : sd())+(ac? ' · '+esc(t('rg_acepta'))+': <b>'+esc(L('organo_acepta',ORGANO_NIVEL[ac]))+'</b>' : '');
+}
+function abrirPrincipal(I){
+  const p=obsIniRiesgos(I).find(o=>o.k==='principal'); if(!p) return;
+  abrirDialogo(t('rg_principal_dlg'), '<p>'+esc(t('rg_principal_txt',{a:I.riesgo_residual_principal?L('riesgo',I.riesgo_residual_principal):t('sin_dato'),b:L('riesgo',p.mx)}))+'</p>'+trio(), f=>{
+    const errs=[]; const tr=leerTrio(f,errs); if(errs.length) return errs; const antes=I.riesgo_residual_principal??null; I.riesgo_residual_principal=p.mx;
+    nuevoEvento({iniciativa:I.id, fecha:tr.fecha, tipo:'edicion', autor:autorId(tr.autor), motivo:tr.motivo, campo:'riesgo_residual_principal', antes, despues:p.mx, fase:I.ciclo.fase}); toast(t('ok_guardado')); return []; });
+}
+function exportarRiesgosCSV(){
+  const cab=['id','iniciativa','iniciativa_nombre','sistema','categoria','riesgo_tipo','descripcion','responsable','fecha_alta','probabilidad','impacto','puntuacion_inherente','nivel_inherente','eje_impacto','controles','eficacia_controles','probabilidad_residual','impacto_residual','puntuacion_residual','nivel_residual','tipo_residual','nivel_aceptacion','organo_requerido','respuesta','contingencia','estado','tendencia','proxima_revision','aceptacion_organo','aceptacion_persona','aceptacion_fecha','aceptacion_vigencia','aceptacion_referencia','observaciones'];
+  const nom=id=>id?(persona(id)?persona(id).nombre:id):null; const pt=(p,i)=>Number.isInteger(p)&&Number.isInteger(i)? p*i : null;
+  const filas=DB.riesgos.map(r=>{ const I=M.ini.get(r.iniciativa), A=r.aceptacion||{}, ac=rgAcept(r);
+    return [r.id,r.iniciativa,I?I.nombre:null,r.sistema,r.categoria,r.riesgo_tipo,r.descripcion,nom(r.responsable),r.fecha_alta,r.probabilidad,r.impacto,pt(r.probabilidad,r.impacto),rgInh(r),r.eje_impacto,r.controles,r.eficacia_controles,r.probabilidad_residual,r.impacto_residual,pt(r.probabilidad_residual,r.impacto_residual),rgRes(r),r.tipo_residual,ac,ac?ORGANO_NIVEL[ac]:null,r.respuesta,r.contingencia,r.estado,r.tendencia,r.proxima_revision,A.organo,nom(A.persona),A.fecha,A.vigencia,A.referencia,obsRiesgo(r,I).map(o=>o.k)].map(csvCelda).join(';'); });
+  descargar('T06_riesgos_'+hoy()+'.csv', '﻿'+cab.join(';')+'\r\n'+filas.join('\r\n')+'\r\n', 'text/csv;charset=utf-8');
+}
+function onAccionRiesgos(acc, b){
+  switch(acc){
+    case 'rg-nuevo': { const r=ruta(); abrirRiesgo(null, b.dataset.id || (r.vista==='ficha'? r.id : '')); return true; }
+    case 'rg-editar': { const R=DB.riesgos.find(x=>x.id===b.dataset.rid); if(R) abrirRiesgo(R); return true; }
+    case 'rg-celda': { const F=rgUI(); F.celda = F.celda===b.dataset.celda? null : b.dataset.celda; render(); const l=document.getElementById('rg-lista'); if(l && F.celda) l.scrollIntoView({block:'nearest', behavior:'smooth'}); return true; }
+    case 'rg-vista': { const F=rgUI(); F.vista=b.dataset.v; F.celda=null; render(); return true; }
+    case 'rg-limpiar': UI.rg=null; rgUI(); render(); return true;
+    case 'rg-csv': exportarRiesgosCSV(); return true;
+    case 'rg-principal': { const I=M.ini.get(b.dataset.id); if(I) abrirPrincipal(I); return true; }
+  }
+  return false;
+}
+function onChangeRiesgos(el){
+  if(el.dataset && el.dataset.rg){ const F=rgUI(); F[el.dataset.rg] = el.type==='checkbox'? el.checked : el.value; F.celda=null; render(); return true; }
+  if(/^rg-(p|i|pr|ir|eje)$/.test(el.id||'')){ calcRiesgoDlg(); return true; }
+  return false;
+}
+/* validación de importación de riesgos[]: los campos de 0.1–0.3 dan avisos (se aceptan como antes, D53); los del esquema 0.4, errores */
+function validarRiesgos(d, ini, err, A, x, FL, FNV){
+  (d.riesgos||[]).forEach((r,i)=>{ const w='riesgos['+i+'] '+(r&&r.id||'')+': ';
+    if(!r || typeof r!=='object' || Array.isArray(r)){ err(w+x('debe ser un objeto.','must be an object.')); return; }
+    if(!/^IA-\d{4}-\d{3} · R\d{2}$/.test(r.id||'')) A.push(w+x('id no cumple IA-AAAA-NNN · RNN.','id does not match IA-YYYY-NNN · RNN.'));
+    if(!ini.has(r.iniciativa)) A.push(w+x('iniciativa inexistente ','unknown initiative ')+r.iniciativa);
+    if(r.categoria!=null && !CATS_RIESGO.includes(r.categoria)) A.push(w+'categoria'+FL);
+    ['probabilidad','impacto'].forEach(k=>{ if(r[k]!=null && !(Number.isInteger(r[k]) && r[k]>=1 && r[k]<=5)) A.push(w+k+x(' debe ser un entero 1–5 o null.',' must be an integer 1–5 or null.')); });
+    ['nivel_inherente','nivel_residual'].forEach(k=>{ if(r[k]!=null && !NIVELES.includes(r[k])) A.push(w+k+FL); });
+    if(r.respuesta!=null && !LB.es.respuesta[r.respuesta]) A.push(w+'respuesta'+FL);
+    ['probabilidad_residual','impacto_residual'].forEach(k=>{ if(r[k]!=null && !(Number.isInteger(r[k]) && r[k]>=1 && r[k]<=5)) err(w+k+x(' debe ser un entero 1–5 o null.',' must be an integer 1–5 or null.')); });
+    [['eje_impacto','eje'],['eficacia_controles','eficacia'],['tipo_residual','tipo_residual'],['estado','estado_riesgo'],['tendencia','tendencia']].forEach(([k,g])=>{ if(r[k]!=null && !LB.es[g][r[k]]) err(w+k+FL); });
+    ['fecha_alta','proxima_revision'].forEach(k=>{ if(r[k]!=null && !esFecha(r[k])) err(w+k+FNV); });
+    const a=r.aceptacion; if(a!=null){ if(typeof a!=='object' || Array.isArray(a)) err(w+'aceptacion'+x(' debe ser un objeto o null.',' must be an object or null.'));
+      else { if(a.organo!=null && !LB.es.organo_acepta[a.organo]) err(w+'aceptacion.organo'+FL); ['fecha','vigencia'].forEach(k=>{ if(a[k]!=null && !esFecha(a[k])) err(w+'aceptacion.'+k+FNV); }); } }
+  });
+}
+
 /* ---------------- validación de importación ---------------- */
 const ENUM = {
   esfera:['01','02','03','04','05','06','07','08','09'], ambicion:['optimizar','aumentar','transformar'], intensidad:['lite','enterprise'], regulatoria:['prohibido','alto_riesgo','transparencia','riesgo_minimo','fuera_ambito','pendiente'],
@@ -1634,7 +1983,7 @@ function validar(d){
   const FL=x(' fuera de la lista.',' not in the closed list.'), FNV=x(' no válida.',' is not a valid date.');
   const NOC=(es,en)=>x('id no cumple '+es+'.','id does not match '+en+'.');
   if(!d || typeof d!=='object' || Array.isArray(d)) return {errores:[x('El fichero no contiene un objeto JSON.','The file does not contain a JSON object.')],avisos:[]};
-  if(!['0.1','0.2','0.3'].includes(d.version_esquema)) A.push(x('version_esquema distinta de 0.1, 0.2 y 0.3: ','version_esquema is not 0.1, 0.2 or 0.3: ')+d.version_esquema);
+  if(!['0.1','0.2','0.3','0.4'].includes(d.version_esquema)) A.push(x('version_esquema distinta de 0.1, 0.2, 0.3 y 0.4: ','version_esquema is not 0.1, 0.2, 0.3 or 0.4: ')+d.version_esquema);
   if(d.aviso_legal!=null && typeof d.aviso_legal!=='string') err(x('aviso_legal debe ser un texto.','aviso_legal must be a string.'));
   const cf=d.meta&&d.meta.configuracion;
   if(!d.meta || typeof d.meta.organizacion!=='string') err(x('meta.organizacion es obligatorio.','meta.organizacion is required.'));
@@ -1691,6 +2040,7 @@ function validar(d){
     Object.keys(p.controles||{}).forEach(k=>{ if(!['seguridad','muc','ia_ofensiva'].includes(k) || (p.controles[k]!=null && !LB.es.control[p.controles[k]])) err(w+'controles.'+k+FL); }); });
   d.evidencias.forEach((v,i)=>{ if(!/^EVI-\d{4}-\d{4}$/.test(v.id||'')) err('evidencias['+i+']: '+NOC('EVI-AAAA-NNNN','EVI-YYYY-NNNN')); if(!esFecha(v.fecha)) err('evidencias['+i+']: fecha'+FNV); });
   (d.sistemas||[]).forEach((s,i)=>{ if(!/^SIA-\d{4}-\d{3}$/.test(s.id||'')) err('sistemas['+i+']: '+NOC('SIA-AAAA-NNN','SIA-YYYY-NNN')); });
+  if(d.riesgos!=null && !Array.isArray(d.riesgos)) err('riesgos'+x(' debe ser una lista.',' must be a list.')); else validarRiesgos(d, ini, err, A, x, FL, FNV);
   return {errores:E, avisos:A.slice(0,30)};
 }
 
@@ -1745,6 +2095,7 @@ document.addEventListener('submit', e=>{
     guardar(); render(); toast(t('dt_ok_conf')); }
 });
 function onAccionExtra(acc, b){
+  if(onAccionRiesgos(acc, b)) return;
   switch(acc){
     case 'exp-json': descargar('T01_registro_'+hoy()+'.json', JSON.stringify(conAvisoLegal(DB),null,2), 'application/json'); return;
     case 'aviso-legal': abrirLegal(); return;
@@ -1784,7 +2135,7 @@ function cerrarLegal(){ const d=$('#dlg-legal'); lsSet(LS_LEGAL,'1'); if(d.open)
 document.getElementById('dlg-legal').addEventListener('close', ()=>{ lsSet(LS_LEGAL,'1'); });
 
 /* ---------------- enrutado y arranque ---------------- */
-const VISTAS = ['embudo','tablero','gates','alertas','analisis','inventario','datos'];
+const VISTAS = ['embudo','tablero','gates','alertas','riesgos','analisis','inventario','datos'];
 function ruta(){ const p=(location.hash||'#/embudo').replace(/^#\/?/,'').split('/'); return {vista:p[0]||'embudo', id:p[1]?decodeURIComponent(p[1]):null, sub:p[2]||null}; }
 function aplicarTema(){ const r=document.documentElement; if(UI.tema==='claro'||UI.tema==='oscuro') r.setAttribute('data-theme',UI.tema); else r.removeAttribute('data-theme'); }
 function cabecera(r){
@@ -1810,6 +2161,7 @@ function render(enfocar){
       case 'ficha': h=typeof vistaFicha==='function'? vistaFicha(r) : ''; break;
       case 'gates': h=typeof vistaGates==='function'? vistaGates() : ''; break;
       case 'alertas': h=typeof vistaAlertas==='function'? vistaAlertas() : ''; break;
+      case 'riesgos': h=vistaRiesgos(); break;
       case 'analisis': h=typeof vistaAnalisis==='function'? vistaAnalisis() : ''; break;
       case 'inventario': h=typeof vistaInventario==='function'? vistaInventario() : ''; break;
       case 'datos': h=typeof vistaDatos==='function'? vistaDatos() : ''; break;

@@ -23,7 +23,7 @@
 | **Who verifies it** | Lite: the AI Risk Owner at G3 and G5; if the AI Risk Owner has prepared the register, the AI Office or the AI Auditor verifies it. Enterprise: AI Auditor. |
 | **Who decides** | Acceptance of residual risk is decided by the body in section 6 according to the level. The *gate* is decided by the body in 01 §7.5. |
 | **Gate at which it is reviewed** | G3 · Feasibility, G5 · Go-live and R6 · Continuity review. |
-| **Tool** | T06 · Risk matrix and register. |
+| **Tool** | T06 · Risk matrix and register: "Risks" view and "Risks" record tab of the T01 register, with the same fields, scales, heat map and acceptance rules as this template, and CSV export. |
 | **Lite versus Enterprise** | Lite may omit the columns and blocks marked **(Enterprise)**. The scales, the inherent and residual levels, the response and the acceptance are mandatory in both. |
 
 Completion rules:

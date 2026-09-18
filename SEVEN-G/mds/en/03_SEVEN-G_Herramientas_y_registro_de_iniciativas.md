@@ -206,7 +206,7 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 | **Condition** | Condition imposed with deadline, owner and status. | Gate decision |
 | **Evidence** | Link, type, version, author, date and verification. | Criteria, initiative |
 | **Value** | Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit. | Initiative |
-| **Risk** | Risk with probability, impact, inherent and residual level, owner and controls. | Initiative, system |
+| **Risk** | Risk with probability, impact, inherent and residual level, owner and controls; from T01 schema 0.4, also impact axis, control effectiveness, target or verified residual, contingency, status, trend, next review and acceptance (33 §8.1). | Initiative, system |
 | **Nonconformity** | Type, detection, containment, root cause, action, closure. | Initiative, system |
 | **Incident** | Date, severity, detection, containment, notifications. | System, initiative |
 | **Supplier** | Third party, services, criticality, contract, assessment. | Systems, initiatives |
@@ -233,7 +233,7 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 
 | Code | Tool | Purpose | Where it is used | Format | Depends on | Priority | Status |
 |---|---|---|---|---|---|---|---|
-| **T06** | Risk matrix and register | Probability and impact assessment, heat map, inherent and residual risk, controls. | Phase 3, phase 6, portfolio | T01 module and spreadsheet template | 33 | 2 | Applied with P12 and P13 |
+| **T06** | Risk matrix and register | Probability and impact assessment, heat map, inherent and residual risk, controls and their effectiveness, response, contingency and acceptance by the body for its level, with observations from the methodology (Critical without board approval, High without contingency, acceptance expired or by a lower body, review overdue) and CSV export for spreadsheets. | Phase 3, phase 6, portfolio | T01 module ("Risks" view and record tab) | 33 | 2 | Available v0.1. Documented with P12 and P13 |
 | **T07** | Regulatory classifier | Guided questionnaire for classification under the AI Act and the assessments required. | Phases 0 and 3 | HTML | 34 | 2 | Applied with P11 |
 | **T08** | Nonconformity and incident register | Full process with time limits and alerts. | Phase 6, C4 | T01 module | 37 | 2 | Applied with P26 and P27 |
 | **T09** | AI supplier register | Third parties, criticality, contracts, assessment and dependency. | Phases 3–4, C4 | T01 module | 36 | 3 | Applied with P14 |

@@ -8,7 +8,7 @@ Everything the connector generates (full dashboard, mobile dashboard and recomme
 
 ---
 
-Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1`, `0.2` and `0.3`) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
+Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1`, `0.2`, `0.3` and `0.4`; 0.4 only adds risk fields, which the connector does not read) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
 
 - the **full dashboard** and the **mobile dashboard** (T17), in sync (same data fingerprint);
 - the **dashboard JSON**, to inspect it or save it as a snapshot with `motor/snapshot.py`;
