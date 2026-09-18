@@ -349,9 +349,9 @@ const DIMS = [
   ["tecnologia","Tecnología", c=>c.tags.tecnologia],
   ["naturaleza","Naturaleza", c=>c.tags.naturaleza],
   ["exposicion","Exposición", c=>c.tags.exposicion],
-  ["riesgo","Reglamento de IA (estimación " + CONSEJO() + ")", c=>c.tags.riesgo],
+  ["riesgo","Reglamento de IA (estimación " + CONSEJO() + ")", c=>c.tags.riesgo || "sin dato"],
   ["clasif","Clasificación de la compañía", c=>rc(c).clasificacion_ria || "sin dato"],
-  ["prioridad","Prioridad de información", c=>c.tags.prioridad],
+  ["prioridad","Prioridad de información", c=>c.tags.prioridad || "sin dato"],
   ...(CASES.some(c=>c.tags.ambicion) ? [["ambicion","Ambición", c=>c.tags.ambicion || "sin dato"]] : []),
   // ciclo de vida (embudo): situación, plazo en el estado actual, complejidad y origen del historial
   ["situacion","Situación en el embudo", c=>situacion(c.estado)],
@@ -387,14 +387,15 @@ function buildFilters(){
   const root = document.getElementById("filters"); root.innerHTML = "";
   let activos = 0;
   DIMS.forEach(([k,label,get])=>{
-    const vals = k==="estado" ? ESTADOS : [...new Set(CASES.map(get))].sort((a,b)=>a.localeCompare(b,"es"));
+    // una etiqueta sin dato en algún caso no puede romper el filtro: se ordena como texto
+    const vals = k==="estado" ? ESTADOS : [...new Set(CASES.map(c=>get(c) ?? "sin dato"))].sort((a,b)=>String(a).localeCompare(String(b),"es"));
     const sel = state.filters[k]; activos += sel.size;
     // una fila por categoría: etiqueta a la izquierda, chips a la derecha y aspa para limpiar solo esa categoría
     const g = document.createElement("div"); g.className="fgroup"+(sel.size?" on":"");
     g.innerHTML = `<div class="lbl">${label}<span class="k">${sel.size ? `${sel.size} de ${vals.length} seleccionados` : `${vals.length} valores`}</span></div><div class="chips"></div><button type="button" class="gclear" title="Quitar los filtros de ${esc(label)}">✕</button>`;
     const chips = g.querySelector(".chips");
     vals.forEach(v=>{
-      const n = CASES.filter(c=>get(c)===v).length;
+      const n = CASES.filter(c=>(get(c) ?? "sin dato")===v).length;
       const b = document.createElement("button"); b.type = "button"; b.className="chip"+(sel.has(v)?" on":""); b.innerHTML = `${esc(v)}<span class="n">${n}</span>`;
       b.onclick = ()=>{ if(sel.has(v)) sel.delete(v); else sel.add(v); render(); };
       chips.appendChild(b);
@@ -405,7 +406,7 @@ function buildFilters(){
   document.getElementById("fcount").textContent = activos ? `${activos} filtro${activos>1?"s":""} activo${activos>1?"s":""}` : "";
 }
 function passes(c){
-  for (const [k,,get] of DIMS){ const s = state.filters[k]; if (s.size && !s.has(get(c))) return false; }
+  for (const [k,,get] of DIMS){ const s = state.filters[k]; if (s.size && !s.has(get(c) ?? "sin dato")) return false; }
   if (state.q){
     const hay = [c.id,c.nombre,c.que_es,c.descripcion,c.area,c.compania,c.unidad,c.estado,...Object.values(c.tags),...Object.values(c.detalle),eco(c).hipotesis_potencial].join(" ").toLowerCase();
     return state.q.toLowerCase().split(/\s+/).filter(Boolean).every(w=>hay.includes(w));
@@ -426,16 +427,22 @@ function applyFontScale(scale){
 }
 // ---- páginas (menú lateral): "todo" muestra todas las secciones; una categoría muestra solo la suya
 const PAGINAS = {todo:"Todo", cartera:"Cartera y valor", embudo:"Embudo y ciclo de vida", historico:"Histórico y adopción", riesgo:"Riesgo y cumplimiento", inventario:"Inventario", glosario:"Glosario"};
-let pagina = "todo";
+// navegación configurable (meta.navegacion, JSON general de configuración): pagina_todo (si es false, no existe la página "Todo"),
+// pagina_inicial (página que se abre al entrar) y desplegar_todo (al entrar en una página, todas sus tarjetas se muestran desplegadas)
+const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false}, META().navegacion || {});
+if (!NAV.pagina_todo){ delete PAGINAS.todo; const bt = document.querySelector('.page-item[data-page="todo"]'); if (bt) bt.remove(); }
+const PAGINA_DEF = PAGINAS[NAV.pagina_inicial] ? NAV.pagina_inicial : (PAGINAS.todo ? "todo" : Object.keys(PAGINAS)[0]);
+let pagina = PAGINA_DEF;
 function showPage(p, scroll){
-  pagina = PAGINAS[p] ? p : "todo";
+  pagina = PAGINAS[p] ? p : PAGINA_DEF;
   document.querySelectorAll(".page-item[data-page]").forEach(b=>b.classList.toggle("on", b.dataset.page===pagina));
   document.querySelectorAll("section.page").forEach(s=>s.hidden = pagina!=="todo" && s.dataset.page!==pagina);
   document.getElementById("pname").textContent = PAGINAS[pagina];
-  // al abrir una página que es una sola tarjeta plegada, se despliega
+  // al abrir una página que es una sola tarjeta plegada, se despliega; con desplegar_todo, se despliegan todas las tarjetas de la página
   if (pagina==="historico") document.getElementById("hist").open = true;
   if (pagina==="glosario"){ const g = document.querySelector("#secc-glosario details"); if (g) g.open = true; }
-  try { history.replaceState(null, "", pagina==="todo" ? location.pathname + location.search : "#" + pagina); } catch (e) {}
+  if (NAV.desplegar_todo) document.querySelectorAll("section.page:not([hidden]) details").forEach(d=>{ d.open = true; });
+  try { history.replaceState(null, "", pagina===PAGINA_DEF ? location.pathname + location.search : "#" + pagina); } catch (e) {}
   // los gráficos necesitan el ancho real: se redibujan al hacerse visibles
   const rows = CASES.filter(passes); renderCharts(rows); renderEmbudo(rows); if (document.getElementById("hist").open) renderHistorico(rows);
   if (scroll) window.scrollTo({top: pagina==="todo" ? 0 : document.querySelector("main").offsetTop - stickyH(), behavior: "smooth"});

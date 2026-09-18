@@ -41,7 +41,7 @@ flowchart LR
 | File | Content |
 |---|---|
 | `t01_a_panel.py` | The connector: T01 → dashboard schema mapping and generation with the engine. Standard library only. |
-| `config_panel.json` | General configuration of the dashboard: `umbrales_kpi` and `ciclo_vida` (funnel, exits, day limits and the stage of each SEVEN-G phase). Starting values, to be calibrated by each organisation. |
+| `config_panel.json` | General configuration of the dashboard: `navegacion` (no “Todo” page, initial page and cards expanded on entry), `umbrales_kpi` and `ciclo_vida` (funnel, exits, day limits and the stage of each SEVEN-G phase). Starting values, to be calibrated by each organisation. |
 | `motor/` | The dashboard engine, **version 8** (funnel and lifecycle, configurable thresholds): `build_dashboard.py` (full dashboard), `panel_movil.py`, `panel_core.py` (shared JavaScript core), `economia.py`, `glosario.py`, `snapshot.py`, `ESQUEMA.md` (JSON schema) and `demo_lib.py` (recommendations log template). Copy maintained in AI_CONSULTING; origin: `AI_en_el_consejo/motor` (MIT, same author). |
 | `publicacion_panel.py` | Legal notice, authorship footer, insertion of the notice into the mobile dashboard and the recommendations log page. Imported by the connector from this folder. |
 | `index.html` | Connector page (ES/EN, no server, no external resources) with links to the demo and the legal notice. |
@@ -87,6 +87,7 @@ The connector does not write `__pycache__` (`sys.dont_write_bytecode`).
 1. **"No data" is not zero.** Anything T01 does not record is `null` (or an empty list) and the dashboard shows "sin dato" (document 03 §2, principle 7).
 2. **The connector does not modify the engine.** Its legacy keys are used: `estimado_cati` for estimated amounts and `acciones_estimadas_cati` (set to `null`). Funnel stages, day limits and thresholds are adapted to SEVEN-G through `config_panel.json`, without touching the engine. Pending internal changes (renaming keys, reading `seveng`, native legal notice) are proposed in `PROPUESTA_MOTOR.md`.
 3. **Single source and single mapping.** Everything comes from the T01 JSON; no estimates are added (document 03 §2, principle 1). The register does not build the dashboard JSON in the browser: the only T01 → dashboard mapping is this connector's.
+4. **Time is never estimated.** The lifecycle of each case (`historial_estados`) is built from the dates of the T01 events.
 
 ## Dashboard status
 
@@ -120,6 +121,7 @@ Original phase and status are kept in `casos[].seveng`.
 |---|---|---|
 | `organizacion`, `compania_principal` | `--organizacion` or `meta.organizacion` | |
 | `consejo_sigla` | `--sigla`; else `meta.panel.consejo_sigla` | Default "consejo asesor". |
+| `navegacion`, `umbrales_kpi`, `ciclo_vida` | `config_panel.json` | General configuration of the dashboard, copied as is (without the `_…` comment keys). `ciclo_vida.fases_seven_g` is used by the connector; the engine ignores it. |
 | `generado`, `ejercicio_valor`, `periodo` | `meta.fecha_referencia` (or `meta.generado`) | Label "Registro de iniciativas T01 · corte dd-mm-yyyy"; quarter derived from the date. `periodo.anterior`: no data. |
 | `prefijo_ficheros` | `--prefijo` | |
 | `demo` | `meta.datos_ilustrativos` | |
@@ -171,6 +173,7 @@ Each amount in `valores` becomes an *item* with `importe`, `formula`, `estado`, 
 | `nota_caso` | T01 phase and status; `riesgo_evitado` and `cumplimiento` amounts | Reported as text: not added to net value (T01 rule). |
 | `moneda` | `meta.moneda` | |
 | `plazo_potencial` | `panel.plazo_potencial` (`YYYY-MM`) | No data if not provided or if the initiative is closed. |
+| `clave_reparto` | — | No data. `comparte_valor_con` empty. |
 
 For **closed** initiatives (stopped or retired) only construction is kept; their other amounts are quoted in `nota_caso` and not added in the dashboard.
 
@@ -188,6 +191,8 @@ For **closed** initiatives (stopped or retired) only construction is kept; their
 | `fechas.ultima_revision` | Last R6 decision | |
 | `fechas.retirada` | `cierre.fecha` | Stop or retirement date. |
 | `retirada` | `cierre`: type, gate, coded reason and comment; `organo`; `sustituto` | |
+| `historial_estados` | `fecha_registro`, `entrada_fase` events and `cierre.fecha` | See "Dashboard status". Source of each change: "Registro de iniciativas T01"; the note states the phase or the closure. |
+| `complejidad` | `panel.complejidad` | `baja` · `media` · `alta`; with no data the `sin_dato` limit of `ciclo_vida.dias_limite` applies. |
 | `tier_riesgo` | `riesgo_residual_principal` | `critico` → `alto`. |
 | `clasificacion_ria` | `clasificacion.regulatoria` | `riesgo_minimo` → `minimo` · `fuera_ambito` → `no_es_ia` · `pendiente` → no data. |
 | `controles.RIA` | `clasificacion.regulatoria` | `pendiente` → pending; anything else → done. |
@@ -234,6 +239,7 @@ Gate decisions and criteria, conditions, evidence, iterations, holds, deadlines 
 ## Known limitations
 
 - **Inherited engine.** `motor/` is the copy of version 8 of the *AI en el Consejo* engine (17-09-2026; data version 6) and is maintained here independently of that repository. It keeps keys and labels designed for the advisory board (`estimado_cati`, the VNB and fraud magnitudes, left here with no data); `PROPUESTA_MOTOR.md` (Spanish) lists what is pending.
+- **Day limits by complexity, not by intensity.** The dashboard sets the limit of the "En desarrollo" stage by the complexity of the case; the T01 reference time limits go by phase and intensity (Lite or Enterprise). The values in `config_panel.json` start from the sum of the T01 Enterprise limits and are yet to be calibrated.
 - **Legal notice on mobile.** The engine does not show `meta.textos` in the mobile dashboard. `publicacion_panel.py` adds the notice to the generated HTML, before the footer, without changing data or fingerprint. In the full dashboard the notice is in the header notice band (`aviso_previo`) and, in short form, in the footer.
 - **`tags.riesgo`.** The dashboard labels it as the advisory board estimate; here it is the classification recorded in T01.
 - **"Estimated" status.** The dashboard attributes it to the advisory board; in T01 the team estimates it. The value notice clarifies this.
