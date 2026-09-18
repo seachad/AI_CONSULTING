@@ -342,6 +342,7 @@ footer{padding:20px 24px;color:var(--muted);font-size:11.5px;border-top:1px soli
 .fun-card ul{list-style:none;margin:4px 0 0;padding:0}
 .fun-card li{padding:4px 0;border-top:1px dashed var(--kobd)}
 .fun-card li .m{display:block;opacity:.9}
+.fun-card li .pq{display:block;margin-top:2px;color:var(--ink);font-size:12.5px}.fun-card li .pq b{font-weight:750}.fun-card li .pq.falta{color:var(--rojink);font-style:italic}
 .fun-card a{color:inherit;font-weight:650}
 .fun2-out .fun-card::before{content:"";position:absolute;left:-15px;top:50%;width:13px;border-top:2px dashed var(--critical)}
 .fun2-fin{grid-column:1/-1;margin-top:10px;border-top:2px solid var(--ink);padding-top:10px}
@@ -599,12 +600,17 @@ function renderEmbudo(rows){
   const finDe = c => { const tr = historial(c).tramos; return tr.length ? tr[tr.length-1] : null; };
   const diasEmbudo = (c, hasta) => { const tr = historial(c).tramos; return tr.length && hasta ? dias(tr[0].fecha, hasta) : null; };
   const entradaGan = c => { const t = historial(c).tramos.find(x=>esGanado(x.estado)); return t ? t.fecha : null; };
+  // por qué salió el caso del embudo (o se desenganchó) y qué se aprendió: es lo más importante de estas tarjetas; si falta, se dice
+  const porQue = c => { const r = rc(c).retirada || {};
+    return `<span class="pq${r.motivo?"":" falta"}"><b>Por qué:</b> ${r.motivo?esc(r.motivo):"sin motivo registrado: hay que pedirlo"}</span>`
+      + (r.lecciones?`<span class="pq"><b>Qué se aprendió:</b> ${esc(r.lecciones)}</span>`:"")
+      + (r.decisor||r.sustituto?`<span class="m">${[r.decisor?`decidió: ${esc(r.decisor)}`:"", r.sustituto?`lo sustituye: ${esc(r.sustituto)}`:""].filter(Boolean).join(" · ")}</span>`:""); };
   const lineaPerdido = c => { const f = finDe(c), fs = f && esSalida(f.estado) ? f.fecha : null;
-    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"} · ${dTxt(diasEmbudo(c, fs))} en el embudo${motivoDe(c)?` · ${esc(motivoDe(c))}`:""}</span></li>`; };
+    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"} · ${dTxt(diasEmbudo(c, fs))} en el embudo</span>${porQue(c)}</li>`; };
   const lineaUso = c => { const g = entradaGan(c);
     return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${g?`en uso desde el ${fES(g)} · ${dTxt(diasEmbudo(c, g))} en el embudo`:"sin fecha de puesta en uso"}</span></li>`; };
   const lineaDeseng = c => { const f = finDe(c), fs = f && esSalida(f.estado) ? f.fecha : null, g = entradaGan(c);
-    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"}${g&&fs?` · estuvo en uso ${dTxt(dias(g, fs))}`:""}${motivoDe(c)?` · ${esc(motivoDe(c))}`:""}</span></li>`; };
+    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"}${g&&fs?` · estuvo en uso ${dTxt(dias(g, fs))}`:""}</span>${porQue(c)}</li>`; };
   const tarjeta = (s, titulo, lista, linea, cls) => `<div class="fun-card${cls||""}${lista.length?"":" vacia"}${E.sel===s?" fun-sel":""}"><div class="h" data-sel="${esc(s)}" tabindex="0" role="button">${titulo}</div>${lista.length?`<ul>${lista.map(linea).join("")}</ul>`:""}</div>`;
   let html = "";
   etapas.forEach(e=>{
@@ -962,19 +968,19 @@ function renderRiesgo(rows){
   // semáforo: clasificación de la compañía frente a estimación del consejo asesor
   const CL = ["prohibido","alto_riesgo","transparencia","minimo","no_es_ia"]; const LAB = {prohibido:"Prohibido",alto_riesgo:"Alto riesgo",transparencia:"Transparencia (art. 50)",minimo:"Riesgo mínimo",no_es_ia:"No es IA"};
   const comp = {}; CL.forEach(k=>comp[k]=rows.filter(c=>rc(c).clasificacion_ria===k).length); const sinClas = rows.filter(c=>!rc(c).clasificacion_ria).length;
-  const cati = {}; rows.forEach(c=>{ cati[c.tags.riesgo]=(cati[c.tags.riesgo]||0)+1; });
+  const estim = {}; rows.forEach(c=>{ estim[c.tags.riesgo]=(estim[c.tags.riesgo]||0)+1; });
   const ctrlRows = CTRL.map(k=>{ const cnt={hecho:0,pendiente:0,no_aplica:0,"sin dato":0}; rows.forEach(c=>{ const v=(rc(c).controles||{})[k]; cnt[v in cnt?v:"sin dato"]++; }); return {k,cnt}; });
   const pal = {hecho:"var(--good)",pendiente:"var(--warn)",no_aplica:"var(--axis)","sin dato":"var(--grid)"};
   const clasificados = rows.length - sinClas, completos = rows.filter(controlesCompletos).length;
-  const insightSem = clasificados ? `<b>${clasificados}</b> de ${rows.length} casos clasificados por la compañía (<b>${comp.prohibido+comp.alto_riesgo}</b> de alto riesgo); el ${CONSEJO()} estima <b>${cati["Alto riesgo"]||0}</b> de alto riesgo y <b>${cati["Candidato a alto riesgo"]||0}</b> candidatos. Controles completos en <b>${completos}</b> casos.` : `Ningún caso clasificado por la compañía con criterio jurídico; el ${CONSEJO()} estima <b>${cati["Alto riesgo"]||0}</b> de alto riesgo, <b>${cati["Candidato a alto riesgo"]||0}</b> candidatos y <b>${cati["Transparencia (art. 50)"]||0}</b> con obligación de transparencia (vigente desde 2-8-2026). Sin datos de controles por caso.`;
+  const insightSem = clasificados ? `<b>${clasificados}</b> de ${rows.length} casos clasificados por la compañía (<b>${comp.prohibido+comp.alto_riesgo}</b> de alto riesgo); el ${CONSEJO()} estima <b>${estim["Alto riesgo"]||0}</b> de alto riesgo y <b>${estim["Candidato a alto riesgo"]||0}</b> candidatos. Controles completos en <b>${completos}</b> casos.` : `Ningún caso clasificado por la compañía con criterio jurídico; el ${CONSEJO()} estima <b>${estim["Alto riesgo"]||0}</b> de alto riesgo, <b>${estim["Candidato a alto riesgo"]||0}</b> candidatos y <b>${estim["Transparencia (art. 50)"]||0}</b> con obligación de transparencia (vigente desde 2-8-2026). Sin datos de controles por caso.`;
   setCard("rie1", "Semáforo regulatorio", "Clasificación de la compañía con criterio jurídico frente a la estimación del " + CONSEJO() + "", insightSem, `
    <table class="mini"><thead><tr><th>Nivel</th><th class="n">Compañía</th><th class="n">Estimación ${CONSEJO()}</th></tr></thead><tbody>
-   <tr><td>Alto riesgo o prohibido</td><td class="n">${comp.prohibido+comp.alto_riesgo}</td><td class="n">${cati["Alto riesgo"]||0}</td></tr>
-   <tr><td>Candidato a alto riesgo</td><td class="n">—</td><td class="n">${cati["Candidato a alto riesgo"]||0}</td></tr>
-   <tr><td>Transparencia (art. 50)</td><td class="n">${comp.transparencia}</td><td class="n">${cati["Transparencia (art. 50)"]||0}</td></tr>
-   <tr><td>Riesgo mínimo</td><td class="n">${comp.minimo}</td><td class="n">${cati["Riesgo mínimo"]||0}</td></tr>
-   <tr><td>No es IA / fuera de ámbito</td><td class="n">${comp.no_es_ia}</td><td class="n">${(cati["Fuera de ámbito"]||0)}</td></tr>
-   <tr><td>Sin clasificar / por confirmar</td><td class="n">${sinClas}</td><td class="n">${cati["Por confirmar"]||0}</td></tr></tbody></table>
+   <tr><td>Alto riesgo o prohibido</td><td class="n">${comp.prohibido+comp.alto_riesgo}</td><td class="n">${estim["Alto riesgo"]||0}</td></tr>
+   <tr><td>Candidato a alto riesgo</td><td class="n">—</td><td class="n">${estim["Candidato a alto riesgo"]||0}</td></tr>
+   <tr><td>Transparencia (art. 50)</td><td class="n">${comp.transparencia}</td><td class="n">${estim["Transparencia (art. 50)"]||0}</td></tr>
+   <tr><td>Riesgo mínimo</td><td class="n">${comp.minimo}</td><td class="n">${estim["Riesgo mínimo"]||0}</td></tr>
+   <tr><td>No es IA / fuera de ámbito</td><td class="n">${comp.no_es_ia}</td><td class="n">${(estim["Fuera de ámbito"]||0)}</td></tr>
+   <tr><td>Sin clasificar / por confirmar</td><td class="n">${sinClas}</td><td class="n">${estim["Por confirmar"]||0}</td></tr></tbody></table>
    <div class="note" style="margin-top:10px">Cobertura de controles por caso (hecho · pendiente · no aplica · sin dato)</div>
    ${ctrlRows.map(r=>`<div class="ctl"><div class="k"><span>${CTRLLAB[r.k]||r.k}</span><span>${Object.entries(r.cnt).map(([a,b])=>`${a} ${b}`).join(" · ")}</span></div>${stackBar(r.cnt,pal)}</div>`).join("")}
    <div class="legend" style="margin-top:6px"><span><i style="background:var(--good)"></i>hecho</span><span><i style="background:var(--warn)"></i>pendiente</span><span><i style="background:var(--axis)"></i>no aplica</span><span><i style="background:var(--grid);border:1px solid var(--axis)"></i>sin dato</span></div>`);

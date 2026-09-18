@@ -190,7 +190,7 @@ For **closed** initiatives (stopped or retired) only construction is kept; their
 | `fechas.produccion` | First **G5** decision that continues; if none, first entry into phase 6 | |
 | `fechas.ultima_revision` | Last R6 decision | |
 | `fechas.retirada` | `cierre.fecha` | Stop or retirement date. |
-| `retirada` | `cierre`: type, gate, coded reason and comment; `organo`; `sustituto` | |
+| `retirada` | `cierre`: type, gate, coded reason and comment; `organo`; `sustituto`; `lecciones` | The funnel shows, in the card of each lost or disengaged case, **why** it left and **what was learned**; if the reason is missing, it says so. |
 | `historial_estados` | `fecha_registro`, `entrada_fase` events and `cierre.fecha` | See "Dashboard status". Source of each change: "Registro de iniciativas T01"; the note states the phase or the closure. |
 | `complejidad` | `panel.complejidad` | `baja` · `media` · `alta`; with no data the `sin_dato` limit of `ciclo_vida.dias_limite` applies. |
 | `tier_riesgo` | `riesgo_residual_principal` | `critico` → `alto`. |
