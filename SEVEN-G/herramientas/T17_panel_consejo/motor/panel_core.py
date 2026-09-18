@@ -175,7 +175,7 @@ let HIS = new WeakMap();
 function historial(c){
   if (HIS.has(c)) return HIS.get(c);
   const cfg = CICLO(), rep = rc(c), hoy = FECHA_PANEL(), orden = e => { const i = ESTADOS_CICLO().indexOf(e); return i < 0 ? 99 : i; };
-  let ev = (rep.historial_estados || []).filter(x => x && x.estado && x.fecha).map(x => ({estado:x.estado, fecha:String(x.fecha).slice(0,10), fuente:x.fuente || "historial de la compañía", nota:x.nota || null}));
+  let ev = (rep.historial_estados || []).filter(x => x && x.estado && x.fecha).map(x => ({estado:x.estado, fecha:String(x.fecha).slice(0,10), fuente:x.fuente || "historial de la compañía", nota:x.nota || null, cifras:x.cifras || null}));
   let origen = ev.length ? "historial" : "sin_dato";
   if (!ev.length){
     const f = rep.fechas || {};

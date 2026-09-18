@@ -191,7 +191,7 @@ En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la constr
 | `fechas.ultima_revision` | Última decisión de R6 | |
 | `fechas.retirada` | `cierre.fecha` | Fecha de parada o de retirada. |
 | `retirada` | `cierre`: tipo, *gate*, motivo codificado y comentario; `organo`; `sustituto`; `lecciones` | El embudo muestra en la tarjeta de cada caso perdido o desenganchado **por qué** salió y **qué se aprendió**; si el motivo no consta, lo señala. |
-| `historial_estados` | `fecha_registro`, eventos `entrada_fase` y `cierre.fecha` | Ver «Estado del panel». Fuente de cada cambio: «Registro de iniciativas T01»; la nota indica la fase o el cierre. |
+| `historial_estados` | `fecha_registro`, eventos `entrada_fase` y `cierre.fecha` | Ver «Estado del panel». Fuente de cada cambio: «Registro de iniciativas T01»; la nota indica la fase o el cierre. Cada cambio lleva `cifras` (`previsto` y `actual`: inversión, coste recurrente, eficiencias y retorno) tomadas de `eventos[].cifras`. El embudo muestra en cada etapa y tarjeta las cifras de sus casos —lo actual y, si el caso aún no produce, lo previsto, marcado «prev.»—, también en la tabla que se abre al pulsar una etapa y en el ciclo de vida de la ficha. |
 | `complejidad` | `panel.complejidad` | `baja` · `media` · `alta`; sin dato se aplica el límite `sin_dato` de `ciclo_vida.dias_limite`. |
 | `tier_riesgo` | `riesgo_residual_principal` | `critico` → `alto`. |
 | `clasificacion_ria` | `clasificacion.regulatoria` | `riesgo_minimo` → `minimo` · `fuera_ambito` → `no_es_ia` · `pendiente` → sin dato. |

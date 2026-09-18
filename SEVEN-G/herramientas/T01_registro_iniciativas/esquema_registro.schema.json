@@ -328,8 +328,19 @@
         "resultado": { "$ref": "#/$defs/resultado_gate" },
         "campo": { "type": "string" },
         "antes": {},
-        "despues": {}
+        "despues": {},
+        "cifras": {
+          "description": "Cifras de la iniciativa en el momento del evento (opcional; la herramienta las guarda en alta, entrada_fase, parada y retirada): suma de los importes esperados y realizados por tipo. null = sin dato. Conserva cómo cambian el coste, las eficiencias y el retorno con cada cambio de estado; el panel del consejo (T17) las muestra en el ciclo de vida del caso.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": { "esperado": { "$ref": "#/$defs/cifras_momento" }, "realizado": { "$ref": "#/$defs/cifras_momento" } }
+        }
       }
+    },
+    "cifras_momento": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "inversion": { "$ref": "#/$defs/importe" }, "coste_recurrente": { "$ref": "#/$defs/importe" }, "eficiencias": { "$ref": "#/$defs/importe" }, "retorno": { "$ref": "#/$defs/importe" } }
     },
     "criterio_evaluado": {
       "type": "object",

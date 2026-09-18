@@ -195,21 +195,32 @@ def historial_estados(ix, ini, ciclo_vida):
     (alta y eventos entrada_fase de T01, incluidas las vueltas atrás por pivotar o iterar) y, si está cerrada, su salida.
     Las fechas son las de los eventos del registro: nunca se estiman. Entradas consecutivas en la misma etapa se agrupan."""
     his = []
+    evs = ix.eventos.get(ini["id"], [])
 
-    def entra(estado, fecha, nota):
+    def cifras(e):
+        """Cifras guardadas en T01 con el cambio de estado (evento.cifras, esquema 0.2): previsto = esperado, actual = realizado."""
+        c = (e or {}).get("cifras")
+        if not c:
+            return None
+        lado = lambda m: {"inversion": (c.get(m) or {}).get("inversion"), "recurrente": (c.get(m) or {}).get("coste_recurrente"),
+                          "eficiencias": (c.get(m) or {}).get("eficiencias"), "retorno": (c.get(m) or {}).get("retorno")}
+        return {"previsto": lado("esperado"), "actual": lado("realizado")}
+
+    def entra(estado, fecha, nota, evento=None):
         if fecha and (not his or his[-1]["estado"] != estado):
-            his.append({"estado": estado, "fecha": fecha, "fuente": FUENTE_T01, "nota": nota})
+            his.append({"estado": estado, "fecha": fecha, "fuente": FUENTE_T01, "nota": nota, "cifras": cifras(evento)})
 
-    entra(etapa_de_fase(ciclo_vida, 0), ini.get("fecha_registro"), "Alta en el registro")
-    for e in ix.eventos.get(ini["id"], []):
+    entra(etapa_de_fase(ciclo_vida, 0), ini.get("fecha_registro"), "Alta en el registro", next((e for e in evs if e["tipo"] == "alta"), None))
+    for e in evs:
         if e["tipo"] == "entrada_fase" and e.get("fase") is not None:
-            entra(etapa_de_fase(ciclo_vida, e["fase"]), e["fecha"], f"Entrada en la fase {e['fase']} ({FASES.get(e['fase'])})")
+            entra(etapa_de_fase(ciclo_vida, e["fase"]), e["fecha"], f"Entrada en la fase {e['fase']} ({FASES.get(e['fase'])})", e)
     cierre = ini.get("cierre")
     if cierre or ini["ciclo"]["estado"] in ("parada", "retirada"):
         cierre = cierre or {}
         que = "Parada" if (cierre.get("tipo") or ini["ciclo"]["estado"]) == "parada" else "Retirada"
         entra(estado_panel(ini, ciclo_vida), cierre.get("fecha"), f"{que}{(' en ' + cierre['gate']) if cierre.get('gate') else ''}"
-              + (f" · {MOTIVO.get(cierre.get('motivo'), cierre.get('motivo'))}" if cierre.get("motivo") else ""))
+              + (f" · {MOTIVO.get(cierre.get('motivo'), cierre.get('motivo'))}" if cierre.get("motivo") else ""),
+              next((e for e in reversed(evs) if e["tipo"] in ("parada", "retirada")), None))
     return his
 
 

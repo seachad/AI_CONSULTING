@@ -191,7 +191,7 @@ For **closed** initiatives (stopped or retired) only construction is kept; their
 | `fechas.ultima_revision` | Last R6 decision | |
 | `fechas.retirada` | `cierre.fecha` | Stop or retirement date. |
 | `retirada` | `cierre`: type, gate, coded reason and comment; `organo`; `sustituto`; `lecciones` | The funnel shows, in the card of each lost or disengaged case, **why** it left and **what was learned**; if the reason is missing, it says so. |
-| `historial_estados` | `fecha_registro`, `entrada_fase` events and `cierre.fecha` | See "Dashboard status". Source of each change: "Registro de iniciativas T01"; the note states the phase or the closure. |
+| `historial_estados` | `fecha_registro`, `entrada_fase` events and `cierre.fecha` | See "Dashboard status". Source of each change: "Registro de iniciativas T01"; the note states the phase or the closure. Each change carries `cifras` (`previsto` and `actual`: investment, recurring cost, efficiencies and return) taken from `eventos[].cifras`. The funnel shows, in each stage and card, the figures of its cases —current ones and, if the case does not produce yet, the expected ones, marked "prev."—, also in the table opened by clicking a stage and in the lifecycle of the case record. |
 | `complejidad` | `panel.complejidad` | `baja` · `media` · `alta`; with no data the `sin_dato` limit of `ciclo_vida.dias_limite` applies. |
 | `tier_riesgo` | `riesgo_residual_principal` | `critico` → `alto`. |
 | `clasificacion_ria` | `clasificacion.regulatoria` | `riesgo_minimo` → `minimo` · `fuera_ambito` → `no_es_ia` · `pendiente` → no data. |
