@@ -126,7 +126,7 @@ try {
     $salidaEj = Join-Path $t17 'ejemplo\salida'
     $pruebas = @(
       @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#fbar #fopen, #filters .fgroup'); que = 'panel completo' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup'); que = 'panel completo' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan'); que = 'panel móvil' }
     )
     foreach ($p in $pruebas) {
@@ -164,6 +164,12 @@ try {
   if ($rep) { Mal "decisiones repetidas: D$($rep.Name -join ', D')" }
   elseif (Compare-Object $nums (1..$nums.Count)) { Mal 'la numeración de las decisiones no es correlativa' }
   else { Ok "$($nums.Count) decisiones, numeración correlativa" }
+
+  # ---- 9. nada generado por accidente bajo control de versiones
+  Write-Host '9. Ficheros que no deben versionarse'
+  $sobran = @(& git -C $repo ls-files | Where-Object { $_ -match '__pycache__|\.pyc$' })
+  foreach ($x in $sobran) { Mal "bytecode de Python versionado: $x (git rm --cached)" }
+  if (-not $sobran) { Ok 'sin bytecode de Python en el repositorio' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

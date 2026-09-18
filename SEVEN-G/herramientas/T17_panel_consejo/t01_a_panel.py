@@ -382,7 +382,9 @@ def caso(ix, ini, org, moneda, ciclo_vida):
                        "ultima_revision": r6[-1]["fecha_decision"] if r6 else None, "retirada": cierre["fecha"] if cierre else None},
             "retirada": ({"motivo": f"{'Parada' if cierre['tipo'] == 'parada' else 'Retirada'}{(' en ' + cierre['gate']) if cierre.get('gate') else ''} · "
                                     f"{MOTIVO.get(cierre['motivo'], cierre['motivo'])}" + (f": {cierre['comentario']}" if cierre.get("comentario") else ""),
-                          "decisor": cierre.get("organo"), "sustituto": cierre.get("sustituto")} if cierre else {"motivo": None, "decisor": None, "sustituto": None}),
+                          "decisor": cierre.get("organo"), "sustituto": cierre.get("sustituto"),
+                          # por qué se cerró y qué se aprendió: el panel lo muestra en las tarjetas de los casos perdidos y desenganchados
+                          "lecciones": cierre.get("lecciones") or None} if cierre else {"motivo": None, "decisor": None, "sustituto": None, "lecciones": None}),
             # ciclo de vida como en un CRM: sale de los eventos de T01 (alta, entradas de fase y cierre); nunca se estima
             "historial_estados": historial_estados(ix, ini, ciclo_vida),
             "complejidad": pan.get("complejidad") if pan.get("complejidad") in COMPLEJIDAD else None,

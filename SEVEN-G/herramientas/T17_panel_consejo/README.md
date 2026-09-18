@@ -190,7 +190,7 @@ En las iniciativas **cerradas** (paradas o retiradas) solo se conserva la constr
 | `fechas.produccion` | Primera decisión de **G5** que continúa; si no hay, primera entrada en la fase 6 | |
 | `fechas.ultima_revision` | Última decisión de R6 | |
 | `fechas.retirada` | `cierre.fecha` | Fecha de parada o de retirada. |
-| `retirada` | `cierre`: tipo, *gate*, motivo codificado y comentario; `organo`; `sustituto` | |
+| `retirada` | `cierre`: tipo, *gate*, motivo codificado y comentario; `organo`; `sustituto`; `lecciones` | El embudo muestra en la tarjeta de cada caso perdido o desenganchado **por qué** salió y **qué se aprendió**; si el motivo no consta, lo señala. |
 | `historial_estados` | `fecha_registro`, eventos `entrada_fase` y `cierre.fecha` | Ver «Estado del panel». Fuente de cada cambio: «Registro de iniciativas T01»; la nota indica la fase o el cierre. |
 | `complejidad` | `panel.complejidad` | `baja` · `media` · `alta`; sin dato se aplica el límite `sin_dato` de `ciclo_vida.dias_limite`. |
 | `tier_riesgo` | `riesgo_residual_principal` | `critico` → `alto`. |
