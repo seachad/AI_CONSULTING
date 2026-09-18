@@ -249,10 +249,15 @@ function Nuevo-Indice([string]$lang) {
     [void]$sb.AppendLine("# $($ti.Indice)`n`n**$($ti.IndiceSub)**`n")
     [void]$sb.AppendLine("| | |`n|---|---|`n| Document | Library index |`n| Date | $(Get-Date -Format 'dd-MM-yyyy') |`n| Author | Fernando García · SEACHAD |`n| Status | Living project. The index is regenerated with every build. |`n")
     [void]$sb.AppendLine("<!-- cifras: $cifrasIndice -->`n`n---`n")
+    # aviso de versión en revisión (D58): se retira cuando el marco pase a la versión 1.x
+    [void]$sb.AppendLine("> **Version under review: please do not circulate.** The current state of $($cfg.marca) (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.`n")
+    [void]$sb.AppendLine("> **Legal notice and disclaimer.** These contents and tools are provided 'as is' and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. Each organisation that uses them is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance. The author and SEACHAD accept no liability whatsoever for their use.`n")
   } else {
     [void]$sb.AppendLine("# $($ti.Indice)`n`n**$($ti.IndiceSub)**`n")
     [void]$sb.AppendLine("| | |`n|---|---|`n| Documento | Índice de la biblioteca |`n| Fecha | $(Get-Date -Format 'dd-MM-yyyy') |`n| Autor | Fernando García · SEACHAD |`n| Estado | Proyecto vivo. El índice se regenera en cada generación. |`n")
     [void]$sb.AppendLine("<!-- cifras: $cifrasIndice -->`n`n---`n")
+    [void]$sb.AppendLine("> **Versión en revisión: no difundir.** El estado actual de $($cfg.marca) (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.`n")
+    [void]$sb.AppendLine("> **Aviso legal y exención de responsabilidad.** Estos contenidos y herramientas se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Cada organización que los use es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad alguna por su uso.`n")
   }
   $i = 0
   foreach ($k in $grupos.Keys) {
@@ -545,7 +550,7 @@ foreach ($lang in $Idiomas) {
 
     # ---- Tablas, componentes y Mermaid ----
     $body = $body -replace '<table>', '<div class="tabla"><table>' -replace '</table>', '</table></div>'
-    $body = [regex]::Replace($body, '<blockquote>(\s*<p><strong>(?:Aviso legal|Legal notice))', '<blockquote class="aviso-legal">$1')
+    $body = [regex]::Replace($body, '<blockquote>(\s*<p><strong>(?:Aviso legal|Legal notice|Versión en revisión|Version under review))', '<blockquote class="aviso-legal">$1')
     $body = [regex]::Replace($body, '<!--\s*figura:\s*([\w-]+)\s*-->', {
       param($c)
       $ruta = $compDirs | ForEach-Object { Join-Path $_ "$($c.Groups[1].Value).html" } | Where-Object { Test-Path $_ } | Select-Object -First 1
