@@ -91,8 +91,9 @@ try {
   $t01 = Join-Path $repo 'SEVEN-G\herramientas\T01_registro_iniciativas'
   $salida = Join-Path $tmp 'registro.html'
   & pwsh -NoProfile -File (Join-Path $t01 'build_registro.ps1') -Salida $salida | Out-Null
+  # se compara el texto sin depender de los finales de línea, que git puede cambiar al extraer el fichero
   if ($LASTEXITCODE) { Mal 'build_registro.ps1 ha fallado' }
-  elseif ((Get-FileHash $salida).Hash -ne (Get-FileHash (Join-Path $t01 'registro.html')).Hash) { Mal 'registro.html no coincide con sus fuentes: ejecutar build_registro.ps1 (nunca editarlo a mano)' }
+  elseif (([IO.File]::ReadAllText($salida) -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText((Join-Path $t01 'registro.html')) -replace "`r`n", "`n")) { Mal 'registro.html no coincide con sus fuentes: ejecutar build_registro.ps1 (nunca editarlo a mano)' }
   else { Ok 'registro.html coincide con datos_demo.json, catalogo_criterios.json y la plantilla' }
 
   # ---- 6. T17: panel de ejemplo al día
@@ -125,7 +126,7 @@ try {
     $salidaEj = Join-Path $t17 'ejemplo\salida'
     $pruebas = @(
       @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#filters .fgroup'); que = 'panel completo' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#fbar #fopen, #filters .fgroup'); que = 'panel completo' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan'); que = 'panel móvil' }
     )
     foreach ($p in $pruebas) {
