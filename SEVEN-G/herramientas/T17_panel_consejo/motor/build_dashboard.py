@@ -320,6 +320,12 @@ svg text.fun-bt{fill:var(--koink);font-size:12px}
 .fun-sal.vacia{opacity:.5}
 .fun-sal.fun-sel .fun-box{stroke:var(--ink);stroke-width:2.5}
 .fun-sal:hover .fun-box{stroke:var(--koink)}
+/* rama de la etapa ganada (casos en uso): en verde, junto a la salida de los que se desengancharon */
+.fun-gan .fun-box{fill:#2e7d32;stroke:#1b5e20}
+.fun-gan:hover .fun-box{stroke:#0d3d12;stroke-width:2}
+svg .fun-gan text.fun-bt{fill:#fff}
+.fun-gan .fun-arrow{stroke:#2e7d32;stroke-dasharray:none;stroke-width:2}
+.fun-head-gan{fill:#2e7d32}
 .pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:650;white-space:nowrap;background:var(--chip);color:var(--muted)}
 .pill.rojo{background:var(--rojbg);color:var(--rojink)}.pill.amarillo{background:var(--ambbg);color:var(--ambink)}.pill.ok{background:var(--okbg);color:var(--okink)}
 table.mini tr.rojo td{background:color-mix(in srgb,var(--rojbg) 55%,transparent)}
@@ -529,17 +535,22 @@ function renderEmbudo(rows){
       <text x="${xl}" y="${y+49}" text-anchor="end" class="fun-d">${t?`media ${t.media} d · mediana ${t.mediana} d (${t.n})`:"tiempos: sin fechas"}</text>
       <text x="${xl}" y="${y+63}" text-anchor="end" class="fun-d${r?" fun-rojo":a?" fun-amb":""}">${limTxt}${r||a?` · ${r} fuera, ${a} cerca`:""}</text>
     </g>`;
-    (ramas[e]||[]).forEach((rm, j)=>{
-      const n = (ramas[e]||[]).length, bh = Math.min(30, (rowH-12)/n), by = y + 4 + j*(bh+2), my = by + bh/2, x0 = cx + ((wt+wb)/2)/2 + 6;
-      const ts = estad(rm.lista.map(c=>{ const tr = historial(c).tramos; return tr.length ? dias(tr[0].fecha, tr[tr.length-1].fecha) : null; }));
-      svg += `<g class="fun-row fun-sal${E.sel===rm.s?" fun-sel":""}${rm.lista.length?"":" vacia"}" data-sel="${esc(rm.s)}" tabindex="0" role="button" aria-label="${esc(rm.s)} desde ${esc(e)}: ${rm.lista.length} casos">
-        <path d="M${x0},${my} H${xb-6}" class="fun-arrow" marker-end="url(#fun-flecha)"/>
+    // la etapa ganada se desglosa en dos ramas: los casos que siguen en uso (en verde, el resultado que importa) y los que se desengancharon
+    const rs = esGanado(e) ? [{s:e, lista:ahora(e), gan:true}, ...(ramas[e]||[])] : (ramas[e]||[]);
+    rs.forEach((rm, j)=>{
+      const n = rs.length, bh = Math.min(30, (rowH-12)/n), by = y + 4 + j*(bh+2), my = by + bh/2, x0 = cx + ((wt+wb)/2)/2 + 6;
+      // en la rama ganada, días desde la entrada en el embudo hasta la puesta en uso; en las salidas, hasta la salida
+      const ts = estad(rm.lista.map(c=>{ const tr = historial(c).tramos; if (!tr.length) return null; const fin = rm.gan ? tr.find(t=>t.estado===e) : tr[tr.length-1]; return fin ? dias(tr[0].fecha, fin.fecha) : null; }));
+      svg += `<g class="fun-row fun-sal${rm.gan?" fun-gan":""}${E.sel===rm.s?" fun-sel":""}${rm.lista.length?"":" vacia"}" data-sel="${esc(rm.s)}" tabindex="0" role="button" aria-label="${rm.gan?`${esc(e)}: ${rm.lista.length} casos en uso`:`${esc(rm.s)} desde ${esc(e)}: ${rm.lista.length} casos`}">
+        <path d="M${x0},${my} H${xb-6}" class="fun-arrow" marker-end="url(#${rm.gan?"fun-flecha-gan":"fun-flecha"})"/>
         <rect x="${xb}" y="${by}" width="${W-xb-4}" height="${bh}" rx="6" class="fun-box"/>
-        <text x="${xb+10}" y="${my+4}" class="fun-bt"><tspan font-weight="700">${esc(rm.s)}</tspan> desde ${esc(e)} · ${rm.lista.length}${ts?` · ${ts.mediana} d en el embudo (mediana)`:""}</text>
+        <text x="${xb+10}" y="${my+4}" class="fun-bt">${rm.gan
+          ? `<tspan font-weight="700">${esc(e)}</tspan> · ${rm.lista.length} de ${alcanzan[i]} que llegaron${ts?` · ${ts.mediana} d hasta el uso (mediana)`:""}`
+          : `<tspan font-weight="700">${esc(rm.s)}</tspan> desde ${esc(e)} · ${rm.lista.length}${ts?` · ${ts.mediana} d en el embudo (mediana)`:""}`}</text>
       </g>`;
     });
   });
-  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Embudo de casos de uso"><defs><marker id="fun-flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="fun-head"/></marker></defs>${svg}</svg>`;
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Embudo de casos de uso"><defs><marker id="fun-flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="fun-head"/></marker><marker id="fun-flecha-gan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="fun-head-gan"/></marker></defs>${svg}</svg>`;
   el.querySelectorAll("[data-sel]").forEach(g=>{ const go = ()=>{ E.sel = E.sel===g.dataset.sel ? null : g.dataset.sel; renderEmbudo(CASES.filter(passes)); if (E.sel) document.getElementById("embudo-det").scrollIntoView({behavior:"smooth", block:"nearest"}); }; g.onclick = go; g.onkeydown = ev=>{ if (ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); go(); } }; });
   renderEmbudoDetalle(rows); renderEmbudoPreguntas(rows);
 }
