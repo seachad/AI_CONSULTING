@@ -41,7 +41,7 @@ flowchart LR
 | File | Content |
 |---|---|
 | `t01_a_panel.py` | The connector: T01 → dashboard schema mapping and generation with the engine. Standard library only. |
-| `config_panel.json` | General configuration of the dashboard: `navegacion` (no “Todo” page, initial page and cards expanded on entry), `umbrales_kpi` and `ciclo_vida` (funnel, exits, day limits and the stage of each SEVEN-G phase). Starting values, to be calibrated by each organisation. |
+| `config_panel.json` | General configuration of the dashboard: `navegacion` (no “Todo” page, initial page, cards expanded on entry and filters in a modal dialog with the applied query shown as pills), `umbrales_kpi` and `ciclo_vida` (funnel, exits, day limits and the stage of each SEVEN-G phase). Starting values, to be calibrated by each organisation. |
 | `motor/` | The dashboard engine, **version 8** (funnel and lifecycle, configurable thresholds): `build_dashboard.py` (full dashboard), `panel_movil.py`, `panel_core.py` (shared JavaScript core), `economia.py`, `glosario.py`, `snapshot.py`, `ESQUEMA.md` (JSON schema) and `demo_lib.py` (recommendations log template). Copy maintained in AI_CONSULTING; origin: `AI_en_el_consejo/motor` (MIT, same author). |
 | `publicacion_panel.py` | Legal notice, authorship footer, insertion of the notice into the mobile dashboard and the recommendations log page. Imported by the connector from this folder. |
 | `index.html` | Connector page (ES/EN, no server, no external resources) with links to the demo and the legal notice. |

@@ -153,6 +153,25 @@ select{padding:8px 10px;border:1px solid var(--axis);border-radius:8px;backgroun
 .fgroup.on .gclear{visibility:visible}
 .fgroup .gclear:hover{background:var(--chip);color:var(--ink)}
 @media (max-width:720px){.fgroup{grid-template-columns:1fr auto}.fgroup .chips{grid-column:1/-1}}
+/* filtros en diálogo modal: barra con la consulta aplicada (píldoras) y diálogo para componerla; el panel no se desplaza */
+.fbar{margin:8px 24px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;border:1px solid var(--axis);border-radius:10px;background:var(--surface);font-size:13px}
+.fbar .fquery{display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:1;min-width:0}
+.fbar .fhint,.fdlg .fhint{color:var(--muted);font-size:12px}
+.fbar .btn{padding:5px 10px;font-size:12.5px}
+.qpill{display:inline-flex;align-items:center;gap:5px;background:var(--chipon);border:1px solid var(--chipon-b);color:var(--ink);border-radius:14px;padding:3px 6px 3px 10px;font-size:12px;cursor:pointer}
+.qpill:hover{border-color:var(--accent)}
+.qpill i{color:var(--muted);font-style:normal}
+.qpill button{border:0;background:transparent;color:var(--ink2);cursor:pointer;border-radius:50%;padding:1px 5px;font-size:11px;line-height:1.2}
+.qpill button:hover{background:var(--chip);color:var(--ink)}
+.qy{color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+dialog.fdlg{border:1px solid var(--axis);border-radius:12px;background:var(--surface);color:var(--ink);padding:0;width:min(880px,94vw);max-height:88vh;overflow:hidden}
+dialog.fdlg::backdrop{background:rgba(0,0,0,.4)}
+.fdlg-h,.fdlg-f,.fdlg-add{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;flex-wrap:wrap}
+.fdlg-h{border-bottom:1px solid var(--grid)}.fdlg-h h3{margin:0}
+.fdlg-add{justify-content:flex-start;background:color-mix(in srgb,var(--chip) 45%,var(--surface));font-size:13px}
+.fdlg-add select{font:inherit;font-size:13px;padding:5px 8px;border:1px solid var(--axis);border-radius:8px;background:var(--surface);color:var(--ink);max-width:100%}
+#fdlg-body{overflow:auto;max-height:56vh}
+.fdlg-f{border-top:1px solid var(--grid);font-size:13px}
 .chip{border:1px solid transparent;background:var(--chip);color:var(--ink2);border-radius:14px;padding:3px 9px;cursor:pointer;font-size:12px;user-select:none}
 .chip:hover{border-color:var(--axis)}
 .chip.on{background:var(--chipon);border-color:var(--chipon-b);color:var(--ink)}
@@ -397,7 +416,53 @@ function enUso(c){ const p = fechaDe(c, "produccion");
   const y = HOY.getFullYear() - c.inicio_estimado; return {txt: y<=0?"menos de 1 año (estimado)":`≈ ${y} año${y>1?"s":""} (estimado)`, desde:`${c.inicio_estimado} (estimado)`, est:true}; }
 
 // ---- filtros
+// ---- filtros en diálogo modal (meta.navegacion.filtros_modal): el panel no se desplaza al filtrar. En el diálogo se añaden campos a la
+// consulta y se eligen sus valores; sobre el panel queda la consulta aplicada, en píldoras (valores de un campo: «o»; entre campos: «y»)
+const valorFiltro = (get, c) => get(c) ?? "sin dato";
+const valoresDe = (k, get) => k==="estado" ? ESTADOS : [...new Set(CASES.map(c=>valorFiltro(get, c)))].sort((a,b)=>String(a).localeCompare(String(b),"es"));
+function initFiltrosModal(){
+  const fp = document.getElementById("fpanel"); fp.hidden = true; state.fdims = [];
+  const bar = document.createElement("div"); bar.className = "fbar"; bar.id = "fbar";
+  bar.innerHTML = `<button type="button" class="btn" id="fopen" aria-haspopup="dialog">Filtros</button><div class="fquery" id="fquery"></div><button type="button" class="btn" id="freset" title="Quitar todos los filtros y la búsqueda">Limpiar filtros</button>`;
+  fp.after(bar);
+  const dlg = document.createElement("dialog"); dlg.className = "fdlg"; dlg.id = "fdlg"; dlg.setAttribute("aria-label", "Filtros del panel"); document.body.appendChild(dlg);
+  dlg.addEventListener("click", ev=>{ if (ev.target === dlg) dlg.close(); });   // clic fuera del cuadro
+  document.getElementById("fopen").onclick = ()=>abrirFiltros();
+  document.getElementById("freset").onclick = ()=>{ state.fdims = []; document.getElementById("reset").click(); };
+}
+function abrirFiltros(k){ const dlg = document.getElementById("fdlg"); if (k && !state.fdims.includes(k)) state.fdims.push(k); pintarDialogoFiltros(); if (!dlg.open) dlg.showModal(); }
+function pintarConsulta(){
+  const q = document.getElementById("fquery"), act = DIMS.filter(([k])=>state.filters[k].size);
+  const partes = act.map(([k,label])=>`<span class="qpill" data-k="${k}" tabindex="0" role="button" title="Cambiar este filtro"><b>${label}:</b> ${[...state.filters[k]].map(esc).join(" <i>o</i> ")}<button type="button" data-x="${k}" title="Quitar este filtro" aria-label="Quitar el filtro ${esc(label)}">✕</button></span>`);
+  if (state.q) partes.push(`<span class="qpill"><b>texto:</b> ${esc(state.q)}</span>`);
+  q.innerHTML = partes.length ? partes.join('<span class="qy">y</span>') : `<span class="fhint">Sin filtros: se muestran todos los casos. Pulsa «Filtros» para componer una consulta.</span>`;
+  q.querySelectorAll("[data-x]").forEach(b=>b.onclick = ev=>{ ev.stopPropagation(); state.filters[b.dataset.x].clear(); state.fdims = state.fdims.filter(x=>x!==b.dataset.x); render(); });
+  q.querySelectorAll(".qpill[data-k]").forEach(p=>{ p.onclick = ()=>abrirFiltros(p.dataset.k); p.onkeydown = ev=>{ if (ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); abrirFiltros(p.dataset.k); } }; });
+}
+function pintarDialogoFiltros(){
+  const dlg = document.getElementById("fdlg"); if (!dlg) return;
+  const enConsulta = DIMS.filter(([k])=>state.filters[k].size || state.fdims.includes(k)).sort((a,b)=>{ const i = state.fdims.indexOf(a[0]), j = state.fdims.indexOf(b[0]); return (i<0?99:i) - (j<0?99:j); });
+  const libres = DIMS.filter(([k])=>!enConsulta.some(a=>a[0]===k)), n = CASES.filter(passes).length;
+  dlg.innerHTML = `<div class="fdlg-h"><h3>Filtros</h3><button type="button" class="close" id="fclose">Cerrar ✕</button></div>
+   <div class="fdlg-add"><label for="fadd"><b>Añadir un campo a la consulta</b></label><select id="fadd"><option value="">Elige un campo…</option>${libres.map(([k,label])=>`<option value="${k}">${label}</option>`).join("")}</select><span class="fhint">Los valores de un mismo campo se suman (o); los campos se combinan entre sí (y).</span></div>
+   <div id="fdlg-body">${enConsulta.length?"":`<div class="nd" style="padding:16px 14px">La consulta está vacía: se muestran todos los casos. Añade un campo y elige sus valores.</div>`}</div>
+   <div class="fdlg-f"><span><b>${n}</b> de ${CASES.length} casos cumplen la consulta</span><span><button type="button" class="btn" id="fclear">Quitar todos</button> <button type="button" class="btn" id="fok">Ver el panel</button></span></div>`;
+  const body = dlg.querySelector("#fdlg-body");
+  enConsulta.forEach(([k,label,get])=>{
+    const sel = state.filters[k], vals = valoresDe(k, get), g = document.createElement("div"); g.className = "fgroup"+(sel.size?" on":"");
+    g.innerHTML = `<div class="lbl">${label}<span class="k">${sel.size ? `${sel.size} de ${vals.length} seleccionados` : `elige uno o varios de ${vals.length}`}</span></div><div class="chips"></div><button type="button" class="gclear" style="visibility:visible" title="Quitar ${esc(label)} de la consulta">✕</button>`;
+    const chips = g.querySelector(".chips");
+    vals.forEach(v=>{ const b = document.createElement("button"); b.type = "button"; b.className = "chip"+(sel.has(v)?" on":""); b.innerHTML = `${esc(v)}<span class="n">${CASES.filter(c=>valorFiltro(get, c)===v).length}</span>`;
+      b.onclick = ()=>{ if (sel.has(v)) sel.delete(v); else sel.add(v); render(); }; chips.appendChild(b); });
+    g.querySelector(".gclear").onclick = ()=>{ sel.clear(); state.fdims = state.fdims.filter(x=>x!==k); render(); };
+    body.appendChild(g);
+  });
+  dlg.querySelector("#fadd").onchange = ev=>{ if (ev.target.value){ state.fdims.push(ev.target.value); pintarDialogoFiltros(); } };
+  dlg.querySelector("#fclose").onclick = dlg.querySelector("#fok").onclick = ()=>dlg.close();
+  dlg.querySelector("#fclear").onclick = ()=>{ DIMS.forEach(([k])=>state.filters[k].clear()); state.fdims = []; render(); };
+}
 function buildFilters(){
+  if (NAV.filtros_modal){ if (!document.getElementById("fbar")) initFiltrosModal(); pintarConsulta(); if (document.getElementById("fdlg").open) pintarDialogoFiltros(); return; }
   const root = document.getElementById("filters"); root.innerHTML = "";
   let activos = 0;
   DIMS.forEach(([k,label,get])=>{
@@ -443,7 +508,7 @@ function applyFontScale(scale){
 const PAGINAS = {todo:"Todo", cartera:"Cartera y valor", embudo:"Embudo y ciclo de vida", historico:"Histórico y adopción", riesgo:"Riesgo y cumplimiento", inventario:"Inventario", glosario:"Glosario"};
 // navegación configurable (meta.navegacion, JSON general de configuración): pagina_todo (si es false, no existe la página "Todo"),
 // pagina_inicial (página que se abre al entrar) y desplegar_todo (al entrar en una página, todas sus tarjetas se muestran desplegadas)
-const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false}, META().navegacion || {});
+const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false, filtros_modal: false}, META().navegacion || {});
 if (!NAV.pagina_todo){ delete PAGINAS.todo; const bt = document.querySelector('.page-item[data-page="todo"]'); if (bt) bt.remove(); }
 const PAGINA_DEF = PAGINAS[NAV.pagina_inicial] ? NAV.pagina_inicial : (PAGINAS.todo ? "todo" : Object.keys(PAGINAS)[0]);
 let pagina = PAGINA_DEF;
