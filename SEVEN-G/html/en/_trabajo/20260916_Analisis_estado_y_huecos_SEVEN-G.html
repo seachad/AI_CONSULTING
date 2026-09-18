@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -976,7 +982,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Initiative charter · Context and constraints statement · Role assignment record · Opportunity portfolio and screening notes · Ambition classification · Value hypothesis canvas · Baseline · Feasibility assessment · Regulatory classification and impact assessments · Risk matrix and register · Mitigation and contingency plan · Architecture record · Data and model lineage · Governance and human oversight design · Rollback plan · Delivery report · Validation results · <em>Gate</em> decision record · Go-live sign-off · Operations manual · Monitoring configuration · Incident response plan · Value realisation tracking · Scale or retirement decision record · Use case sheet.</p>
 <p>Format: Markdown as the source, published in PDF and HTML. Templates that require it (for example, registers or calculators) will also be generated in Excel or PowerPoint when expressly requested.</p>
 <h3 id="i-tools">I · Tools</h3>
-<p>The complete catalogue of tools (22), the design of the initiative register as a managed funnel and the build order are in <strong>document 03 · Tools and initiative register</strong>. The AI board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) and the recommendation register (T18) from the <code>AI_en_el_consejo</code> repository already exist, and must be adapted to draw on the register.</p>
+<p>The complete catalogue of tools (22), the design of the initiative register as a managed funnel and the build order are in <strong>document 03 · Tools and initiative register</strong>. The AI board dashboard (T17) and the recommendation register (T18) from the <code>AI_en_el_consejo</code> repository already exist, and must be adapted to draw on the register.</p>
 <h3 id="j-framework-adoption">J · Framework adoption</h3>
 <div class="tabla"><table>
 <thead>
@@ -1079,7 +1085,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>01 Foundational methodology</strong> (done) and <strong>02 Glossary</strong>: they set the model and vocabulary for everything else.
 <ul>
-<li>After 02: <strong>wave 1 of tools</strong> (initiative register <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> with inventory, <em>gate</em> manager, intensity and ambition, and connection of the board dashboard). See document 03.</li>
+<li>After 02: <strong>wave 1 of tools</strong> (initiative register <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> with inventory, <em>gate</em> manager, intensity and ambition, and connection of the board dashboard). See document 03.</li>
 </ul>
 </li>
 <li><strong>10 Sphere map</strong>, <strong>12 Transformation index</strong> and <strong>40 Measurement rules</strong>: they are the most differentiating elements and the ones that connect with the board dashboard.</li>
@@ -1115,7 +1121,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><em>Gate</em> outcomes</td>
 <td>Proceed / Proceed with conditions / Iterate / Pivot / Stop; G7: Scale / Iterate / Retire; <strong>R6: Proceed with operation / Proceed with conditions / Bring G7 forward</strong> (added to 01 §7.3). Audit: Conformant / Conformant with observations / Nonconformant.</td>
-<td>01, 21, 22, 38, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>01, 21, 22, 38, <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
 </tr>
 <tr>
 <td>Maturity</td>
@@ -1186,13 +1192,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3. Retirement</td>
-<td>10-step procedure, retirement register and template <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; tool T22.</td>
-<td>14, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>10-step procedure, retirement register and template <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; tool T22.</td>
+<td>14, <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
 </tr>
 <tr>
 <td>4. Lite or Enterprise</td>
-<td>Criteria in 01 §9, with the agent criterion clarified (A2/A3 with external effect, D22); template <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>; company implementation scope distinct from intensity.</td>
-<td>01, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, 90</td>
+<td>Criteria in 01 §9, with the agent criterion clarified (A2/A3 with external effect, D22); template <a href="../plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>; company implementation scope distinct from intensity.</td>
+<td>01, <a href="../plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, 90</td>
 </tr>
 <tr>
 <td>5. AI that is not a project</td>
@@ -1202,7 +1208,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>6. Adoption and change</td>
 <td>Adoption plan, released capacity with five destinations, training and AI literacy, indicators and G5 and G7 criteria.</td>
-<td>23, 50, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>23, 50, <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1225,7 +1231,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Inventory and regulatory classification</td>
-<td>Document 32; templates <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> and <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Document 32; templates <a href="../plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> and <a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
 </tr>
 <tr>
 <td>Regulatory mapping</td>
@@ -1233,7 +1239,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Third parties and providers</td>
-<td>Document 36 with levels N1–N3 and 16 key clauses; template <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Document 36 with levels N1–N3 and 16 key clauses; template <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
 </tr>
 <tr>
 <td>AI costs</td>
@@ -1271,8 +1277,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="7-4-blocks-h-i-and-j">7.4 Blocks H, I and J</h3>
 <ul>
-<li><strong>H · Templates:</strong> 31 templates <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> aligned with 01 §6.10 (D21), in Spanish and English.</li>
-<li><strong>I · Tools:</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (initiative register with T02–T05 integrated) in <code>SEVEN-G/herramientas/[T01](../../herramientas/T01_registro_iniciativas/registro.html)_registro_iniciativas/</code>. <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> and T18 are adapted in the private project where the engine originates (D26).</li>
+<li><strong>H · Templates:</strong> 31 templates <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> aligned with 01 §6.10 (D21), in Spanish and English.</li>
+<li><strong>I · Tools:</strong> <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (initiative register with T02–T05 integrated) in <code>SEVEN-G/herramientas/T01_registro_iniciativas/</code>. <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> and T18 are adapted in the private project where the engine originates (D26).</li>
 <li><strong>J · Framework adoption:</strong> documents 90–93 done. <code>SEVEN-G_IA_for_Hypergrowth.pdf</code> is not redone (D24).</li>
 </ul>
 <h3 id="7-5-outstanding-items-for-the-author">7.5 Outstanding items for the author</h3>
@@ -1281,7 +1287,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Legal review of document 34 and of the regulatory citations in 31, 32, 37 and 50–52, in particular the text of Regulation (EU) 2026/1744 in the Official Journal of the EU, the Spanish transposition of <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> and the draft Organic Law on AI.</li>
 <li><del>Incorporate into 33 the three typical risks proposed in 50 (information and consultation, labour conflict, wellbeing); assign IND- codes to around 60 provisional indicators in 41; resolve the clash between the CON- (knowledge, 51) and IND-CON (board, 41) prefixes.</del> <strong>Resolved (16-09-2026):</strong> risks RT-ORG-07 (failure to inform and consult), RT-ORG-08 (labour dispute) and RT-ORG-09 (deterioration of wellbeing) added to the catalogue in 33 (70 typical risks) and linked from 50 §12; the 50 provisional codes without an equivalent have an IND- code in 41 §21 (47 new indicators, because IE03.06 and PER-14, IE05.05 and DAT-10, and IE06.02 and CNC-06 share a code), in the EMB, RIE, OPE, ADO, DAT and CLI families and in the new PRO · Processes and decision-making family (catalogue of 156 indicators in 13 families; Lite set unchanged, 26); the knowledge indicators in 51 change from CON- to CNC- in 41, 50, 51, 52, 02 and the common specification (§5.9).</li>
 <li><del>SPAD: review the claims involving return and certification figures.</del> <strong>Resolved (16-09-2026):</strong> unsupported figures replaced by objectives to be measured, &quot;certification&quot; by conformity self-assessment, and a legal notice in every file. The PDF <code>05_SPAD_Skill_Methodology_Seachad.pdf</code> still needs correcting at source.</li>
-<li><del>Adapt <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> and T18.</del> <strong>Resolved without touching the engine (16-09-2026):</strong> connector <code>SEVEN-G/herramientas/[T17](../../herramientas/T17_panel_consejo/index.html)_panel_consejo/</code> with a demo in <code>ejemplo/salida/</code>. Pending in the engine's private source project: rename legacy keys (<code>estimado_cati</code>, <code>aap</code>) and add sphere, maturity, index and funnel blocks (proposal in <code>PROPUESTA_MOTOR.md</code> in that folder). <strong>Updated (17-09-2026, D43–D45):</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> is generated from JSON (<code>build_registro.ps1</code>) and is the single data entry point of the dashboard; the engine moves to version 8 and the funnel now reaches the dashboard (stages per phase in <code>config_panel.json</code> and status history from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> events); schema 0.2 with the optional fields the dashboard needs. Legacy keys and the sphere, maturity and index blocks remain pending.</li>
+<li><del>Adapt <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> and T18.</del> <strong>Resolved without touching the engine (16-09-2026):</strong> connector <code>SEVEN-G/herramientas/T17_panel_consejo/</code> with a demo in <code>ejemplo/salida/</code>. Pending in the engine's private source project: rename legacy keys (<code>estimado_cati</code>, <code>aap</code>) and add sphere, maturity, index and funnel blocks (proposal in <code>PROPUESTA_MOTOR.md</code> in that folder). <strong>Updated (17-09-2026, D43–D45):</strong> <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> is generated from JSON (<code>build_registro.ps1</code>) and is the single data entry point of the dashboard; the engine moves to version 8 and the funnel now reaches the dashboard (stages per phase in <code>config_panel.json</code> and status history from the <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> events); schema 0.2 with the optional fields the dashboard needs. Legacy keys and the sphere, maturity and index blocks remain pending.</li>
 <li><strong>Legal notice (D33):</strong> included in every document, template, tool, dashboard, demo and SPAD. Publication prepared with <code>SEVEN-G/build/publicar.ps1</code> from the <code>AI_CONSULTING</code> repository itself with <code>.github/workflows/pages.yml</code>, with a home page at the root (D37); before publishing, create the private list of prohibited terms and run the engine source project's verification.</li>
 <li>Build tool waves 2 and 3 (document 03 §6).</li>
 </ol>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -413,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>Preliminary analysis in phase 0 (for <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> and <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>). Full classification in phase 3, before G3. It is reviewed at each R6 and whenever the intended purpose, the scope, the company's role or the regulation changes.</td>
+<td>Preliminary analysis in phase 0 (for <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> and <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>). Full classification in phase 3, before G3. It is reviewed at each R6 and whenever the intended purpose, the scope, the company's role or the regulation changes.</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -443,7 +449,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Completion rules:</p>
 <ul>
-<li><strong>Each AI system</strong> is classified (one template per <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> record) according to its <strong>intended purpose</strong>, using the taxonomy of 03 §3.3 verbatim.</li>
+<li><strong>Each AI system</strong> is classified (one template per <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> record) according to its <strong>intended purpose</strong>, using the taxonomy of 03 §3.3 verbatim.</li>
 <li>If a system is high-risk and also has transparency obligations, the tag records the most demanding category and section 8 records all the obligations.</li>
 <li>A prohibited practice does not get past phase 3 under any circumstances (01 §6.5).</li>
 </ul>
@@ -466,12 +472,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>System code and name</td>
 <td></td>
-<td>From <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
+<td>From <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
 </tr>
 <tr>
 <td>Intended purpose</td>
 <td></td>
-<td>Copy from <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>. The classification is valid only for this purpose.</td>
+<td>Copy from <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>. The classification is valid only for this purpose.</td>
 </tr>
 <tr>
 <td>Document version</td>
@@ -512,7 +518,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Is it an AI system according to the definition in the Regulation (section 4)?</td>
 <td>Step 2</td>
-<td>Out of scope (record &quot;Rules (not AI)&quot; in <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> where appropriate)</td>
+<td>Out of scope (record &quot;Rules (not AI)&quot; in <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> where appropriate)</td>
 </tr>
 <tr>
 <td>2</td>
@@ -540,7 +546,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>If any answer cannot be given with the information available, the result is <strong>Pending classification</strong>, with an owner and a date, and <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> treats it as a pending Enterprise criterion.</p>
+<p>If any answer cannot be given with the information available, the result is <strong>Pending classification</strong>, with an owner and a date, and <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> treats it as a pending Enterprise criterion.</p>
 <hr />
 <h2 id="definition-and-scope"><span class="antetitulo">04</span>Definition and scope</h2>
 <div class="tabla"><table>
@@ -576,7 +582,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Company role for this system</td>
 <td></td>
-<td>Provider · Deployer · Importer · Distributor · Authorised representative · Product manufacturer (consistent with <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
+<td>Provider · Deployer · Importer · Distributor · Authorised representative · Product manufacturer (consistent with <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
 </tr>
 <tr>
 <td>Justification of the role</td>
@@ -978,7 +984,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>AI literacy of the people who use the system</td>
 <td>Provider or deployer</td>
 <td>4–5</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -986,7 +992,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><em>(illustrative example)</em> Design the assistant so that the customer knows they are conversing with an AI system</td>
 <td>Provider</td>
 <td>4</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 <td>Product owner</td>
 <td>Pending</td>
 </tr>
@@ -1007,7 +1013,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>The intended purpose is specific and matches <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
+<td>The intended purpose is specific and matches <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
 <td>Met · Not met · Not applicable · Pending</td>
 </tr>
 <tr>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -433,14 +439,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Resultados del piloto · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de realización de valor · <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> Ficha de caso de uso · documentos 23 (Adopción y cambio) y 50 (Personas y organización).</td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Resultados del piloto · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de realización de valor · <a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> Ficha de caso de uso · documentos 23 (Adopción y cambio) y 50 (Personas y organización).</td>
 </tr>
 </tbody>
 </table></div>
 <p>Reglas:</p>
 <ul>
-<li><strong>La capacidad liberada no suma como ahorro</strong> hasta que se materializa en menor coste real o se reasigna de forma explícita (regla 3 de medición, 00 §6). Este plan fija su destino; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> registra lo que realmente ocurre.</li>
-<li>La formación de quienes operan o supervisan el sistema forma parte de la alfabetización en IA que la compañía debe garantizar (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</li>
+<li><strong>La capacidad liberada no suma como ahorro</strong> hasta que se materializa en menor coste real o se reasigna de forma explícita (regla 3 de medición, 00 §6). Este plan fija su destino; <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> registra lo que realmente ocurre.</li>
+<li>La formación de quienes operan o supervisan el sistema forma parte de la alfabetización en IA que la compañía debe garantizar (documento 34).</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -456,7 +462,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -550,7 +556,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Riesgos organizativos identificados</td>
 <td></td>
-<td>Referencia a los riesgos de categoría ORG en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>Referencia a los riesgos de categoría ORG en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -590,7 +596,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td><a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
 </tr>
 <tr>
 <td>Satisfacción de usuarios <strong>(Enterprise)</strong></td>
@@ -625,7 +631,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>Supervisores designados (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>)</td>
+<td>Supervisores designados (P17)</td>
 <td>Capacidades y limitaciones del sistema; riesgo de confiar en exceso; cómo corregir, anular e interrumpir</td>
 <td>Presencial con casos prácticos</td>
 <td></td>
@@ -728,7 +734,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Notas:</p>
 <ul>
-<li>La absorción de crecimiento de volumen solo cuenta como valor si se documenta el coste que se habría incurrido sin el sistema (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>).</li>
+<li>La absorción de crecimiento de volumen solo cuenta como valor si se documenta el coste que se habría incurrido sin el sistema (P08).</li>
 <li>&quot;Sin destino decidido&quot; es una respuesta válida en el plan, pero debe resolverse antes de G7; en Optimizar, G7 exige ahorro materializado y en Aumentar, capacidad reasignada (01 §7.6).</li>
 </ul>
 <hr />
@@ -791,7 +797,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">09</span>Criterios de calidad</h2>
-<p>Criterios formales de G4, G5 y G7 en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>.</p>
+<p>Criterios formales de G4, G5 y G7 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -813,7 +819,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Los supervisores designados en <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> tienen formación planificada y registrada.</td>
+<td>Los supervisores designados en <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> tienen formación planificada y registrada.</td>
 <td></td>
 </tr>
 <tr>
@@ -869,7 +875,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisor del <em>gate</em></td>
-<td>Según 01 §7.5 (registrado en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>

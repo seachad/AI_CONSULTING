@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -698,7 +704,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Esfera</strong></td>
-<td>Dominio de impacto de la IA en la organización. Hay nueve (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>).</td>
+<td>Dominio de impacto de la IA en la organización. Hay nueve (documento 10).</td>
 </tr>
 <tr>
 <td><strong>Nivel de ambición</strong></td>
@@ -1240,7 +1246,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Las plantillas de cada evidencia forman parte del bloque H de la biblioteca documental.</p>
 <h3 id="6-11-trazabilidad-del-ciclo-de-vida">6.11 Trazabilidad del ciclo de vida</h3>
-<p>La cartera de IA se gestiona como un embudo, del mismo modo que una organización comercial gestiona sus oportunidades. Para ello, toda iniciativa debe estar dada de alta en el <strong>registro de iniciativas</strong> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, herramienta <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) y el registro debe conservar, como mínimo:</p>
+<p>La cartera de IA se gestiona como un embudo, del mismo modo que una organización comercial gestiona sus oportunidades. Para ello, toda iniciativa debe estar dada de alta en el <strong>registro de iniciativas</strong> (documento 03, herramienta <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) y el registro debe conservar, como mínimo:</p>
 <ul>
 <li>La <strong>fecha de entrada y salida de cada fase</strong>, y los periodos en espera con su motivo.</li>
 <li>La <strong>solicitud, verificación y decisión de cada <em>gate</em></strong>, con su resultado, iteración, decisor y verificador.</li>
@@ -1431,7 +1437,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>G3 · Viabilidad</strong></td>
-<td>Neto anual esperado positivo y VAN ≥ 0 dentro del horizonte y con la tasa fijados en C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>).</td>
+<td>Neto anual esperado positivo y VAN ≥ 0 dentro del horizonte y con la tasa fijados en C2 (documento 40).</td>
 <td>Viabilidad de la adopción y del cambio de rol, además del neto esperado.</td>
 <td>Viabilidad de la primera etapa; criterios de parada por etapa; valor de opción documentado.</td>
 </tr>
@@ -1913,7 +1919,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <hr />
 <h2 id="medicion"><span class="antetitulo">11</span>Medición</h2>
-<p>La medición se integra en el ciclo de vida y en el ciclo corporativo. Las reglas de medición del valor (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>, sección 6, y <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>) se aplican en todos los casos.</p>
+<p>La medición se integra en el ciclo de vida y en el ciclo corporativo. Las reglas de medición del valor (documento 00, sección 6, y <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>) se aplican en todos los casos.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1960,7 +1966,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Continuo</strong></td>
-<td>Métricas del embudo: tiempo en fase, tiempo de decisión, conversión por <em>gate</em>, iteraciones, iniciativas estancadas, condiciones vencidas y motivos de parada (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>).</td>
+<td>Métricas del embudo: tiempo en fase, tiempo de decisión, conversión por <em>gate</em>, iteraciones, iniciativas estancadas, condiciones vencidas y motivos de parada (documento 03).</td>
 <td>Gestionar la cartera como un embudo y detectar cuellos de botella.</td>
 </tr>
 </tbody>

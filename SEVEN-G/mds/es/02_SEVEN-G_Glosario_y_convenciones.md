@@ -366,7 +366,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Riesgo evitado** | Reducción de la probabilidad o del impacto de un suceso adverso. Se informa por separado y solo suma, como eficiencia, cuando se traduce en un menor coste observable y atribuible. | 40 §5.2 | avoided risk † |
 | **Riesgo inherente** | Nivel del riesgo sin considerar los controles específicos de la iniciativa. | 33 §5.1 | inherent risk |
 | **Riesgo residual** | Nivel del riesgo con controles. **Objetivo**: esperado tras aplicar los controles previstos (G3 y G4). **Verificado**: tras comprobar con evidencia la eficacia de los controles (G5 y R6). | 33 §5.1 | residual risk; target · verified residual risk † |
-| **Riesgo tipo** | Riesgo de referencia del catálogo, codificado RT-<CAT>-NN, que sirve de punto de partida para identificar los riesgos concretos de cada iniciativa. | 33 §9 | standard risk † |
+| **Riesgo tipo** | Riesgo de referencia del catálogo, codificado RT-\<CAT\>-NN, que sirve de punto de partida para identificar los riesgos concretos de cada iniciativa. | 33 §9 | standard risk † |
 
 ### 3.16 S
 

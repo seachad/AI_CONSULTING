@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -602,7 +608,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Rules:</p>
 <ol>
-<li>The decision is documented in the phase 3 feasibility assessment (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) using the criteria in the table and the three-year total cost according to the categories in document 42, including the <strong>exit cost</strong>.</li>
+<li>The decision is documented in the phase 3 feasibility assessment (P10) using the criteria in the table and the three-year total cost according to the categories in document 42, including the <strong>exit cost</strong>.</li>
 <li>In <strong>Optimise</strong> initiatives, buying should be the starting option unless there is a documented reason otherwise. In <strong>Transform</strong>, dependency on a third party for the differentiating capability must be justified to the body that approves the bet.</li>
 <li><strong>Building on third-party models does not eliminate dependency</strong>: this document applies to the model provider.</li>
 <li>If the company substantially modifies a third party's high-risk system, changes its intended purpose or places it on the market under its own name, it may become a <strong>provider</strong> for the purposes of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> (Art. 25(1)), with the corresponding obligations. This consequence is analysed before deciding to adapt.</li>
@@ -1170,7 +1176,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Assessment</strong></td>
-<td>Date and result of due diligence (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>); certifications and reports with validity; security assessment; conditions imposed.</td>
+<td>Date and result of due diligence (P14); certifications and reports with validity; security assessment; conditions imposed.</td>
 </tr>
 <tr>
 <td><strong>Risk</strong></td>

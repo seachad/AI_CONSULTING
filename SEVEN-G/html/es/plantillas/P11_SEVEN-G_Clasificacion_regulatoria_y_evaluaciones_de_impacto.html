@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -413,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>Análisis preliminar en la fase 0 (para <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> y <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>). Clasificación completa en la fase 3, antes de G3. Se revisa en cada R6 y siempre que cambien la finalidad prevista, el alcance, el rol de la compañía o la norma.</td>
+<td>Análisis preliminar en la fase 0 (para <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> y <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>). Clasificación completa en la fase 3, antes de G3. Se revisa en cada R6 y siempre que cambien la finalidad prevista, el alcance, el rol de la compañía o la norma.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -443,7 +449,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas de cumplimentación:</p>
 <ul>
-<li>Se clasifica <strong>cada sistema de IA</strong> (una plantilla por ficha <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>) según su <strong>finalidad prevista</strong>, con la taxonomía literal de 03 §3.3.</li>
+<li>Se clasifica <strong>cada sistema de IA</strong> (una plantilla por ficha <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>) según su <strong>finalidad prevista</strong>, con la taxonomía literal de 03 §3.3.</li>
 <li>Si un sistema es de alto riesgo y además tiene obligaciones de transparencia, la etiqueta recoge la categoría más exigente y la sección 8, todas las obligaciones.</li>
 <li>Una práctica prohibida no pasa de la fase 3 en ningún caso (01 §6.5).</li>
 </ul>
@@ -466,12 +472,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código y nombre del sistema</td>
 <td></td>
-<td>De <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
+<td>De <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
 </tr>
 <tr>
 <td>Finalidad prevista</td>
 <td></td>
-<td>Copiar de <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>. La clasificación vale solo para esta finalidad.</td>
+<td>Copiar de <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>. La clasificación vale solo para esta finalidad.</td>
 </tr>
 <tr>
 <td>Versión del documento</td>
@@ -512,7 +518,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>¿Es un sistema de IA según la definición del Reglamento (sección 4)?</td>
 <td>Paso 2</td>
-<td>Fuera de ámbito (se anota &quot;Reglas (no es IA)&quot; en <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> si procede)</td>
+<td>Fuera de ámbito (se anota &quot;Reglas (no es IA)&quot; en <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> si procede)</td>
 </tr>
 <tr>
 <td>2</td>
@@ -540,7 +546,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Si alguna respuesta no puede darse con la información disponible, el resultado es <strong>Pendiente de clasificar</strong>, con responsable y fecha, y <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> lo trata como criterio Enterprise pendiente.</p>
+<p>Si alguna respuesta no puede darse con la información disponible, el resultado es <strong>Pendiente de clasificar</strong>, con responsable y fecha, y <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> lo trata como criterio Enterprise pendiente.</p>
 <hr />
 <h2 id="definicion-y-ambito"><span class="antetitulo">04</span>Definición y ámbito</h2>
 <div class="tabla"><table>
@@ -576,7 +582,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Rol de la compañía para este sistema</td>
 <td></td>
-<td>Proveedor · Responsable del despliegue · Importador · Distribuidor · Representante autorizado · Fabricante del producto (coherente con <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
+<td>Proveedor · Responsable del despliegue · Importador · Distribuidor · Representante autorizado · Fabricante del producto (coherente con <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
 </tr>
 <tr>
 <td>Justificación del rol</td>
@@ -953,7 +959,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Indique si se requieren y dónde constan: evaluación de riesgos TIC o de terceros (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>), evaluación ética interna, información a la representación de las personas trabajadoras y evaluaciones sectoriales.</p>
 <hr />
 <h2 id="obligaciones-derivadas"><span class="antetitulo">10</span>Obligaciones derivadas</h2>
-<p>Cada obligación se vincula a una fase, una evidencia y un responsable. El mapeo detallado está en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>.</p>
+<p>Cada obligación se vincula a una fase, una evidencia y un responsable. El mapeo detallado está en el <a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -978,7 +984,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Alfabetización en IA de las personas que usan el sistema</td>
 <td>Proveedor o responsable del despliegue</td>
 <td>4–5</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -986,7 +992,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><em>(ejemplo ilustrativo)</em> Diseñar el asistente para que el cliente sepa que conversa con un sistema de IA</td>
 <td>Proveedor</td>
 <td>4</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 <td>Responsable de producto</td>
 <td>Pendiente</td>
 </tr>
@@ -995,7 +1001,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>En alto riesgo, como responsable del despliegue, revisar al menos: uso conforme a las instrucciones, supervisión humana competente, datos de entrada pertinentes, vigilancia, conservación de registros, información a trabajadores y afectados, y explicación de decisiones individuales.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Los criterios formales de G3 están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G3.xx).</p>
+<p>Los criterios formales de G3 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G3.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1007,7 +1013,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>La finalidad prevista es concreta y coincide con <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
+<td>La finalidad prevista es concreta y coincide con <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -606,7 +612,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="classification-rules-on-the-map"><span class="antetitulo">04</span>Classification rules on the map</h2>
 <h3 id="4-1-primary-sphere-and-secondary-sphere">4.1 Primary sphere and secondary sphere</h3>
-<p>Each initiative is recorded in the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) with a mandatory <strong>primary sphere</strong> and, at most, one <strong>secondary sphere</strong>.</p>
+<p>Each initiative is recorded in the initiative register (T01) with a mandatory <strong>primary sphere</strong> and, at most, one <strong>secondary sphere</strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1258,7 +1264,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>IE05.04</td>
 <td>Documented lineage</td>
-<td>AI systems in production with verified data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>) ÷ AI systems in production × 100</td>
+<td>AI systems in production with verified data and model lineage (P16) ÷ AI systems in production × 100</td>
 <td>T02, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 </tr>
 <tr>
@@ -1710,7 +1716,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="sphere-level-heat-map-t16"><span class="antetitulo">08</span>Sphere × level heat map (T16)</h2>
-<p>The heat map is the portfolio view over the impact map. It is generated from the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) and shown in the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
+<p>The heat map is the portfolio view over the impact map. It is generated from the initiative register (T01) and shown in the board dashboard (T17).</p>
 <h3 id="8-1-construction">8.1 Construction</h3>
 <div class="tabla"><table>
 <thead>

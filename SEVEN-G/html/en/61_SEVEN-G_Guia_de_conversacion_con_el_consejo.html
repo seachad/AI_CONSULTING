@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -1270,14 +1276,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6</td>
 <td><strong>Who is accountable if AI gets it wrong?</strong></td>
 <td>Name the roles: the AI Sponsor is accountable for the value and the investment; the AI Operations Owner, for stability and incidents; the AI Risk Owner, for assessment and monitoring; the company is accountable to third parties. Accountability is not transferred to the system or the supplier.</td>
-<td>Role assignment record (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>); contracts with suppliers.</td>
+<td>Role assignment record (P03); contracts with suppliers.</td>
 <td>&quot;It is the supplier's responsibility&quot;.</td>
 </tr>
 <tr>
 <td>7</td>
 <td><strong>Why have we stopped this after investing?</strong></td>
 <td>&quot;Because the stop criterion set before investing was not met&quot;. Give the investment consumed, the investment avoided and what was learned.</td>
-<td><em>Gate</em> decision record with stop criteria (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
+<td><em>Gate</em> decision record with stop criteria (P29).</td>
 <td>Making excuses or presenting the stop as a failure of the team.</td>
 </tr>
 <tr>
@@ -1291,7 +1297,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>9</td>
 <td><strong>What happens if the system fails or we are attacked?</strong></td>
 <td>Explain the severity of possible incidents, containment, the kill switch or the tested rollback plan, and the notification time limits.</td>
-<td>Incident response plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); rollback test; drills.</td>
+<td>Incident response plan (P26); rollback test; drills.</td>
 <td>Claiming that it cannot happen.</td>
 </tr>
 <tr>
@@ -1305,7 +1311,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>11</td>
 <td><strong>Is this transformation or just efficiency?</strong></td>
 <td>Apply the five classification questions (00 §5.2) in the room. If the first four are negative, it is optimisation, and it is fine for it to be so.</td>
-<td>Confirmed ambition classification (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
+<td>Confirmed ambition classification (P07).</td>
 <td>Calling an automation transformation.</td>
 </tr>
 <tr>

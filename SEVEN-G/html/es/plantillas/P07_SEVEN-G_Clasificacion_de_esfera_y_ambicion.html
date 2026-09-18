@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -413,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
-<td>El responsable de producto de IA. En la fase 7, con los datos de <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (seguimiento de realización de valor).</td>
+<td>El responsable de producto de IA. En la fase 7, con los datos de <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (seguimiento de realización de valor).</td>
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>T05 · Clasificador de ambición (módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>T05 · Clasificador de ambición (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -482,7 +488,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad aplicable</td>
 <td></td>
-<td>Lite · Enterprise. Transformar implica Enterprise (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterio 7).</td>
+<td>Lite · Enterprise. Transformar implica Enterprise (P04, criterio 7).</td>
 </tr>
 </tbody>
 </table></div>
@@ -644,7 +650,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Guía de evidencia: en la fase 1 basta un razonamiento; en la fase 2, la hipótesis de valor (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>) debe ser coherente con las respuestas; en la fase 7 se usan datos: composición del valor validado (eficiencias frente a retorno), procesos rediseñados, cambios de roles aprobados e ingresos atribuibles.</p>
+<p>Guía de evidencia: en la fase 1 basta un razonamiento; en la fase 2, la hipótesis de valor (P08) debe ser coherente con las respuestas; en la fase 7 se usan datos: composición del valor validado (eficiencias frente a retorno), procesos rediseñados, cambios de roles aprobados e ingresos atribuibles.</p>
 <hr />
 <h2 id="regla-de-decision"><span class="antetitulo">05</span>Regla de decisión</h2>
 <p>Aplique los pasos en orden:</p>
@@ -675,11 +681,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>4</td>
 <td>Comprobación de coherencia con la pregunta 5.</td>
-<td>Si la 5 es &quot;Sí&quot; y el resultado es Transformar, hay incoherencia: se justifica o se reclasifica. Si la 5 es &quot;No&quot; y el resultado es Optimizar, se revisa si la iniciativa soporta una función crítica (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterio 6).</td>
+<td>Si la 5 es &quot;Sí&quot; y el resultado es Transformar, hay incoherencia: se justifica o se reclasifica. Si la 5 es &quot;No&quot; y el resultado es Optimizar, se revisa si la iniciativa soporta una función crítica (P04, criterio 6).</td>
 </tr>
 </tbody>
 </table></div>
-<p>Los pasos 2 a 4 son la regla operativa de esta plantilla para las preguntas que 00 §5.2 deja abiertas (&quot;Aumentar o Transformar&quot;). El <a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a> puede calibrarla.</p>
+<p>Los pasos 2 a 4 son la regla operativa de esta plantilla para las preguntas que 00 §5.2 deja abiertas (&quot;Aumentar o Transformar&quot;). El <a href="../12_SEVEN-G_Indice_de_transformacion.html">documento 12</a> puede calibrarla.</p>
 <hr />
 <h2 id="resultado-de-la-clasificacion"><span class="antetitulo">06</span>Resultado de la clasificación</h2>
 <div class="tabla"><table>
@@ -720,7 +726,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Si el nivel declarado no coincide con el de la regla, prevalece el de la regla salvo decisión motivada del órgano competente, que queda registrada en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<p>Si el nivel declarado no coincide con el de la regla, prevalece el de la regla salvo decisión motivada del órgano competente, que queda registrada en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
 <p><strong>Quién decide según el nivel</strong> (00 §4.1):</p>
 <div class="tabla"><table>
 <thead>
@@ -744,7 +750,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Transformar</td>
 <td>Consejo o alta dirección, de forma explícita.</td>
-<td>Intensidad Enterprise; aprobación del consejo en G2 y en G7; hitos de aprendizaje y límite de inversión por etapa en <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td>Intensidad Enterprise; aprobación del consejo en G2 y en G7; hitos de aprendizaje y límite de inversión por etapa en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -812,10 +818,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Cada cambio genera un evento de cambio de clasificación en el registro de iniciativas (03 §3.3) y obliga a revisar <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</p>
+<p>Cada cambio genera un evento de cambio de clasificación en el registro de iniciativas (03 §3.3) y obliga a revisar <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">09</span>Criterios de calidad</h2>
-<p>Los criterios formales están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G1.xx, G2.xx y G7.xx).</p>
+<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G1.xx, G2.xx y G7.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -857,7 +863,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Los cambios de clasificación están registrados y <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> se ha revisado.</td>
+<td>Los cambios de clasificación están registrados y <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> se ha revisado.</td>
 <td></td>
 </tr>
 </tbody>

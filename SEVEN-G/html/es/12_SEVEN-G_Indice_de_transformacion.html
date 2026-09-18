@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -603,7 +609,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistema de IA para vigilar obligaciones regulatorias (esfera principal 08)</td>
 <td><strong>Optimizar</strong> por lo general</td>
-<td>Se clasifica como cualquier otra; su nivel no califica la esfera 08 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>, sección 4.2).</td>
+<td>Se clasifica como cualquier otra; su nivel no califica la esfera 08 (documento 10, sección 4.2).</td>
 </tr>
 </tbody>
 </table></div>
@@ -711,7 +717,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Nadie verifica ni decide sobre la clasificación de su propia iniciativa (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 7.4).</p>
+<p>Nadie verifica ni decide sobre la clasificación de su propia iniciativa (documento 01, sección 7.4).</p>
 <h3 id="3-6-que-hacer-si-la-ambicion-real-difiere-de-la-declarada">3.6 Qué hacer si la ambición real difiere de la declarada</h3>
 <div class="tabla"><table>
 <thead>
@@ -811,7 +817,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Iniciativas incluidas</strong></td>
-<td>Todas las del registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) cuya esfera principal es 01 a 07. Las de esfera principal 08 o 09 se excluyen de las señales 1, 2 y 7 y se informan aparte como inversión en habilitación de gobierno y cumplimiento (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>, sección 4.2).</td>
+<td>Todas las del registro de iniciativas (T01) cuya esfera principal es 01 a 07. Las de esfera principal 08 o 09 se excluyen de las señales 1, 2 y 7 y se informan aparte como inversión en habilitación de gobierno y cumplimiento (documento 10, sección 4.2).</td>
 </tr>
 <tr>
 <td><strong>Uso corporativo de IA de propósito general</strong></td>
@@ -1039,7 +1045,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fórmula</strong></td>
-<td>IT-S5 = iniciativas en producción con IT-P3 = sí verificada y diseño de supervisión humana verificado (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) ÷ iniciativas en producción × 100.</td>
+<td>IT-S5 = iniciativas en producción con IT-P3 = sí verificada y diseño de supervisión humana verificado (P17) ÷ iniciativas en producción × 100.</td>
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
@@ -1127,7 +1133,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Sin base de comparación</strong></td>
-<td>Si no hay iniciativas de Optimizar con resultado, CR se sustituye por la tasa de llegada de Aumentar y Transformar ÷ 0,6, y TR por la mediana real ÷ la suma de los plazos de referencia de las fases 3 a 5 (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, sección 3.6).</td>
+<td>Si no hay iniciativas de Optimizar con resultado, CR se sustituye por la tasa de llegada de Aumentar y Transformar ÷ 0,6, y TR por la mediana real ÷ la suma de los plazos de referencia de las fases 3 a 5 (documento 03, sección 3.6).</td>
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
@@ -1675,7 +1681,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>No mide el valor absoluto ni la rentabilidad de la IA.</td>
 <td>Un perfil de transformación no implica que la cartera sea rentable.</td>
-<td>Se lee junto al valor neto anual y al neto adicional por euro (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>).</td>
+<td>Se lee junto al valor neto anual y al neto adicional por euro (documento 40).</td>
 </tr>
 <tr>
 <td>No es comparable entre sectores ni entre compañías de tamaño muy distinto.</td>
@@ -1700,7 +1706,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>No sustituye al diagnóstico de madurez.</td>
 <td>Perfil y madurez pueden divergir.</td>
-<td>Se presentan juntos en C1 y C5 (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>Se presentan juntos en C1 y C5 (documento 11).</td>
 </tr>
 </tbody>
 </table></div>

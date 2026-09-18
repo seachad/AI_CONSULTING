@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -413,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="usar-seven-g-como-tercero"><span class="antetitulo">02</span>Usar SEVEN-G como tercero</h2>
 <h3 id="2-1-que-permite">2.1 Qué permite</h3>
-<p>Los contenidos de SEVEN-G se publican bajo licencia <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>). Cualquier tercero puede usarlos, adaptarlos y aplicarlos en servicios profesionales, también remunerados, <strong>sin necesidad de autorización ni de contratar al autor</strong>, siempre que reconozca la autoría, indique los cambios y no sugiera que el autor respalda su servicio.</p>
+<p>Los contenidos de SEVEN-G se publican bajo licencia <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> (documento 93). Cualquier tercero puede usarlos, adaptarlos y aplicarlos en servicios profesionales, también remunerados, <strong>sin necesidad de autorización ni de contratar al autor</strong>, siempre que reconozca la autoría, indique los cambios y no sugiera que el autor respalda su servicio.</p>
 <h3 id="2-2-que-responsabilidades-asume">2.2 Qué responsabilidades asume</h3>
 <div class="tabla"><table>
 <thead>
@@ -451,8 +457,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Validación dual en los <em>gates</em> y posibilidad real de parar (01 §7).</li>
 <li>Las diez reglas de medición del valor (00 §6), en particular el estado de validación de cada importe y que la capacidad liberada no suma hasta materializarse.</li>
 <li>Clasificación de la ambición con las cinco preguntas (00 §5.2).</li>
-<li>Madurez basada en evidencia observable, no en autoevaluación (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</li>
-<li>Registro de recomendaciones con identificadores persistentes y valoración independiente (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</li>
+<li>Madurez basada en evidencia observable, no en autoevaluación (documento 11).</li>
+<li>Registro de recomendaciones con identificadores persistentes y valoración independiente (documento 62).</li>
 </ol>
 <p>Un servicio que omite alguna de estas reglas puede inspirarse en SEVEN-G, pero no debe presentarse como aplicación de SEVEN-G (sección 6).</p>
 <hr />
@@ -617,7 +623,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Entregables</strong></td>
-<td>Los de M1 · Propuesta de tesis de IA y apetito de riesgo (T19) · Política corporativa de IA (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) · Modelo de gobierno con asignación de roles · Cartera priorizada · Registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) y de recomendaciones (T18) con datos reales · Plan de regularización de los sistemas existentes (01 §14) · Primer paquete trimestral (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>).</td>
+<td>Los de M1 · Propuesta de tesis de IA y apetito de riesgo (T19) · Política corporativa de IA (documento 31) · Modelo de gobierno con asignación de roles · Cartera priorizada · Registro de iniciativas (T01) y de recomendaciones (T18) con datos reales · Plan de regularización de los sistemas existentes (01 §14) · Primer paquete trimestral (documento 60).</td>
 </tr>
 <tr>
 <td><strong>Roles del tercero</strong></td>
@@ -656,7 +662,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Entregables</strong></td>
-<td>Plan de auditoría con alcance, criterios y muestra · Papeles de trabajo con evidencias · Informe con conclusión <strong>Conforme</strong>, <strong>Conforme con observaciones</strong> o <strong>No conforme</strong> · No conformidades detectadas clasificadas como menor, mayor o crítica · Recomendaciones para el registro (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</td>
+<td>Plan de auditoría con alcance, criterios y muestra · Papeles de trabajo con evidencias · Informe con conclusión <strong>Conforme</strong>, <strong>Conforme con observaciones</strong> o <strong>No conforme</strong> · No conformidades detectadas clasificadas como menor, mayor o crítica · Recomendaciones para el registro (documento 62).</td>
 </tr>
 <tr>
 <td><strong>Roles del tercero</strong></td>
@@ -668,7 +674,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Criterio de calidad</strong></td>
-<td>Criterios, muestra y limitaciones declarados; cada hallazgo con evidencia; conclusión coherente con los hallazgos. Se sigue el marco de auditoría de IA (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>).</td>
+<td>Criterios, muestra y limitaciones declarados; cada hallazgo con evidencia; conclusión coherente con los hallazgos. Se sigue el marco de auditoría de IA (documento 38).</td>
 </tr>
 </tbody>
 </table></div>
@@ -699,7 +705,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Roles del tercero</strong></td>
-<td>Consejero o asesor con experiencia en IA (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>, sección 10).</td>
+<td>Consejero o asesor con experiencia en IA (documento 61, sección 10).</td>
 </tr>
 <tr>
 <td><strong>Roles de la compañía</strong></td>
@@ -897,7 +903,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>&quot;Avalado por Fernando García&quot; o &quot;por SEACHAD&quot;</td>
-<td>La licencia no autoriza a sugerir respaldo del autor (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>).</td>
+<td>La licencia no autoriza a sugerir respaldo del autor (documento 93).</td>
 </tr>
 <tr>
 <td>&quot;Cumplimiento del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> garantizado por SEVEN-G&quot;</td>
@@ -905,7 +911,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>&quot;El cliente cumple la regulación según SEVEN-G&quot; o cualquier declaración o certificación del cumplimiento regulatorio de un cliente en nombre de SEVEN-G o del autor</td>
-<td>El consultor no puede declarar ni certificar el cumplimiento regulatorio de un cliente en nombre de SEVEN-G ni del autor: esa responsabilidad es de la organización y, en su caso, del profesional que la asume con su propia firma. Debe trasladar el aviso legal de SEVEN-G a sus entregables (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</td>
+<td>El consultor no puede declarar ni certificar el cumplimiento regulatorio de un cliente en nombre de SEVEN-G ni del autor: esa responsabilidad es de la organización y, en su caso, del profesional que la asume con su propia firma. Debe trasladar el aviso legal de SEVEN-G a sus entregables (documento 93, sección 11).</td>
 </tr>
 <tr>
 <td>&quot;SEVEN-G&quot; aplicado a un servicio que omite reglas esenciales sin declararlo</td>
@@ -1035,10 +1041,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Valor: fórmula, estado, separación de eficiencias, retorno y coste; proporción validada visible.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Riesgo: escalas y niveles de la especificación común; residual Crítico identificado.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Ninguna condición propuesta afecta a controles críticos de seguridad, cumplimiento legal o supervisión humana.</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Lenguaje de negocio para el consejo (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>).</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Lenguaje de negocio para el consejo (documento 61).</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Revisado por un segundo profesional.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Sin datos de otros clientes; ejemplos marcados como ficticios.</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Contenido regulatorio con fecha de consulta y aviso de que no constituye asesoramiento jurídico; incluye el aviso legal de SEVEN-G (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11.9) y no declara ni certifica el cumplimiento regulatorio en nombre de SEVEN-G ni del autor.</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Contenido regulatorio con fecha de consulta y aviso de que no constituye asesoramiento jurídico; incluye el aviso legal de SEVEN-G (documento 93, sección 11.9) y no declara ni certifica el cumplimiento regulatorio en nombre de SEVEN-G ni del autor.</li>
 </ul>
 <h3 id="7-3-salida-del-servicio">7.3 Salida del servicio</h3>
 <p>Al terminar cualquier modelo, el tercero entrega: registros y datos en formato abierto, relación de evidencias y su ubicación, decisiones y recomendaciones pendientes con responsable, y una nota de riesgos abiertos. La compañía no debe necesitar al tercero para leer o mantener nada de lo entregado.</p>
@@ -1086,7 +1092,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>&quot;Nuestros clientes obtienen de media…&quot;</td>
 <td>Afirmación no demostrable salvo datos verificables y autorizados.</td>
-<td>Omitir, o presentar casos ficticios marcados como tales (<a href="92_SEVEN-G_Casos_de_aplicacion.html">documento 92</a>).</td>
+<td>Omitir, o presentar casos ficticios marcados como tales (documento 92).</td>
 </tr>
 <tr>
 <td>&quot;Implantación en X semanas&quot; sin diagnóstico</td>

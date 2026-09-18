@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -413,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
-<td>El responsable de producto de IA (viabilidad económica y organizativa) y el responsable técnico de IA (viabilidad técnica y de datos). El responsable de riesgos aporta el resumen de <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> y <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>El responsable de producto de IA (viabilidad económica y organizativa) y el responsable técnico de IA (viabilidad técnica y de datos). El responsable de riesgos aporta el resumen de <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> y <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
@@ -441,7 +447,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>La viabilidad se <strong>demuestra con datos reales</strong>, no con supuestos (01 §6.5).</li>
 <li>Las prácticas prohibidas por la regulación <strong>no pasan de esta fase en ningún caso</strong>.</li>
-<li>Ningún riesgo residual Crítico sin la aprobación prevista en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> puede superar G3.</li>
+<li>Ningún riesgo residual Crítico sin la aprobación prevista en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> puede superar G3.</li>
 <li>Los costes son <strong>completos</strong>: construcción, recurrentes y de adopción.</li>
 </ul>
 <hr />
@@ -473,7 +479,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad</td>
 <td></td>
-<td>Lite · Enterprise (revisada en G3 con <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (revisada en G3 con <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
 </tr>
 <tr>
 <td>Versión del documento</td>
@@ -747,12 +753,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Eficiencias anuales esperadas (€)</td>
 <td></td>
-<td>De <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, actualizadas con lo aprendido en la fase 3.</td>
+<td>De <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, actualizadas con lo aprendido en la fase 3.</td>
 </tr>
 <tr>
 <td>Retorno anual esperado (€)</td>
 <td></td>
-<td>De <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td>De <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
 </tr>
 <tr>
 <td>Coste recurrente anual (€)</td>
@@ -830,7 +836,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Plan de adopción preliminar</td>
 <td></td>
-<td>Referencia a <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, que se completa en la fase 4.</td>
+<td>Referencia a <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, que se completa en la fase 4.</td>
 </tr>
 </tbody>
 </table></div>
@@ -848,7 +854,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Clasificación regulatoria</td>
 <td></td>
-<td>Taxonomía de 03 §3.3, con referencia a <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y a la validación jurídica.</td>
+<td>Taxonomía de 03 §3.3, con referencia a <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y a la validación jurídica.</td>
 </tr>
 <tr>
 <td>Práctica prohibida</td>
@@ -863,17 +869,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Riesgos residuales Altos y Críticos</td>
 <td></td>
-<td>Número y referencia a <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; aprobación de aceptación cuando corresponda.</td>
+<td>Número y referencia a <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; aprobación de aceptación cuando corresponda.</td>
 </tr>
 <tr>
 <td>Plan de mitigación y contingencia</td>
 <td></td>
-<td>Referencia a <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>.</td>
+<td>Referencia a <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>.</td>
 </tr>
 <tr>
 <td>Proveedores</td>
 <td></td>
-<td>Nivel de exigencia y conclusión de <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Nivel de exigencia y conclusión de <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
 </tr>
 <tr>
 <td>Encaje con el apetito de riesgo de C2</td>
@@ -947,7 +953,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>No se admite &quot;Continuar con condiciones&quot; para controles críticos de seguridad, cumplimiento legal o supervisión humana (01 §7.3). En el ejemplo, la condición afecta a un control crítico de seguridad: la recomendación correcta sería <strong>Iterar</strong> hasta corregirla.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Los criterios formales de G3 están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G3.xx).</p>
+<p>Los criterios formales de G3 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G3.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -984,7 +990,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Existen <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> y, si hay proveedores, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Existen <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> y, si hay proveedores, <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
 <td></td>
 </tr>
 <tr>

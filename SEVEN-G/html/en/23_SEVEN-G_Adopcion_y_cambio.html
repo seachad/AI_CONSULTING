@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -584,7 +590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Current volume and time</td>
-<td>Cases per period and unit time, taken from the baseline (<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>).</td>
+<td>Cases per period and unit time, taken from the baseline (P09).</td>
 </tr>
 <tr>
 <td>Type of change</td>
@@ -661,7 +667,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Complete, with estimated times, within the adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
+<td>Complete, with estimated times, within the adoption plan (P20).</td>
 </tr>
 <tr>
 <td>5</td>
@@ -802,7 +808,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <p>Rules:</p>
 <ol>
-<li>Baseline times come from <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; times with AI are <strong>measured</strong> in the pilot (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) and in operation, not estimated.</li>
+<li>Baseline times come from <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; times with AI are <strong>measured</strong> in the pilot (P22) and in operation, not estimated.</li>
 <li>The volume is that actually processed with the system in the period, not the eligible volume.</li>
 <li>Supervision and correction hours are measured using system logs or documented sampling.</li>
 <li>Conversion to full-time equivalents uses the effective annual hours per person set by the company, which are declared.</li>
@@ -940,7 +946,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Human overseers</strong></td>
-<td>Oversee effectively (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Oversee effectively (P17).</td>
 <td>Intervention criteria, automation bias, sample review, use of the kill switch where one exists, escalation.</td>
 <td>Before they gain access.</td>
 </tr>
@@ -952,7 +958,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Operations team</strong></td>
-<td>Operate the system (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
+<td>Operate the system (P24).</td>
 <td>Monitoring, incidents, changes, rollback.</td>
 <td>Phase 5.</td>
 </tr>
@@ -1162,7 +1168,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>High effective use, override close to zero and decreasing review time</td>
 <td>Possible routine acceptance or automation bias.</td>
-<td>Sample review by a third party, adjustment of the oversight workload (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), reinforcement of training.</td>
+<td>Sample review by a third party, adjustment of the oversight workload (P17), reinforcement of training.</td>
 </tr>
 <tr>
 <td>High and stable override</td>
@@ -1398,7 +1404,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Uncritical acceptance</strong></td>
 <td>Indicator 5 close to zero; indicator 6 decreasing.</td>
 <td>Knowledge (overreliance).</td>
-<td>Training on automation bias; control samples; review of the oversight workload (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Training on automation bias; control samples; review of the oversight workload (P17).</td>
 </tr>
 <tr>
 <td><strong>Resistance from managers</strong></td>
@@ -1458,7 +1464,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependence on key people</td>
 <td>Knowledge of use concentrated in a few advanced users.</td>
-<td>Training by audience; area champions; operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
+<td>Training by audience; area champions; operations manual (P24).</td>
 <td>4, 6</td>
 </tr>
 <tr>
@@ -1595,7 +1601,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>T20</strong></td>
 <td>Adoption and capacity plan</td>
-<td>Tool for template <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and released capacity register; feeds T12 and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Tool for template <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and released capacity register; feeds T12 and the initiative register (T01).</td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></strong></td>

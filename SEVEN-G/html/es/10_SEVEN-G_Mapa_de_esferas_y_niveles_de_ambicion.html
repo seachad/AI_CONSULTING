@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -606,7 +612,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="reglas-de-clasificacion-en-el-mapa"><span class="antetitulo">04</span>Reglas de clasificación en el mapa</h2>
 <h3 id="4-1-esfera-principal-y-esfera-secundaria">4.1 Esfera principal y esfera secundaria</h3>
-<p>Cada iniciativa se registra en el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) con una <strong>esfera principal</strong> obligatoria y, como máximo, una <strong>esfera secundaria</strong>.</p>
+<p>Cada iniciativa se registra en el registro de iniciativas (T01) con una <strong>esfera principal</strong> obligatoria y, como máximo, una <strong>esfera secundaria</strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -728,7 +734,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>La ambición objetivo de C2 para 08 y 09 se expresa como <strong>grado objetivo por dimensión</strong> (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</td>
+<td>La ambición objetivo de C2 para 08 y 09 se expresa como <strong>grado objetivo por dimensión</strong> (documento 13).</td>
 <td>Fijar como objetivo &quot;Aumentar el gobierno&quot;, que no es verificable.</td>
 </tr>
 <tr>
@@ -738,7 +744,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>La inversión de las iniciativas con esfera principal 08 o 09 se muestra en una <strong>banda separada del mapa de calor</strong> (&quot;habilitación de gobierno y cumplimiento&quot;) y se <strong>excluye</strong> de las señales 1, 2 y 7 del índice de transformación (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>).</td>
+<td>La inversión de las iniciativas con esfera principal 08 o 09 se muestra en una <strong>banda separada del mapa de calor</strong> (&quot;habilitación de gobierno y cumplimiento&quot;) y se <strong>excluye</strong> de las señales 1, 2 y 7 del índice de transformación (documento 12).</td>
 <td>Que invertir en gobierno se lea como &quot;eficiencia&quot; y rebaje el perfil, o que se use para inflar la ambición.</td>
 </tr>
 <tr>
@@ -1258,7 +1264,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>IE05.04</td>
 <td>Linaje documentado</td>
-<td>Sistemas de IA en producción con linaje de datos y modelos verificado (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>) ÷ sistemas de IA en producción × 100</td>
+<td>Sistemas de IA en producción con linaje de datos y modelos verificado (P16) ÷ sistemas de IA en producción × 100</td>
 <td>T02, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 </tr>
 <tr>
@@ -1710,7 +1716,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="mapa-de-calor-esferas-niveles-t16"><span class="antetitulo">08</span>Mapa de calor esferas × niveles (T16)</h2>
-<p>El mapa de calor es la vista de la cartera sobre el mapa de impacto. Se genera desde el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) y se muestra en el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
+<p>El mapa de calor es la vista de la cartera sobre el mapa de impacto. Se genera desde el registro de iniciativas (T01) y se muestra en el panel del consejo (T17).</p>
 <h3 id="8-1-construccion">8.1 Construcción</h3>
 <div class="tabla"><table>
 <thead>
@@ -1974,7 +1980,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los <strong>primeros noventa días</strong> concentran C1 a C3 (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 5.3). El plan detallado está en el <a href="90_SEVEN-G_Guia_de_implantacion.html">documento 90</a>:</p>
+<p>Los <strong>primeros noventa días</strong> concentran C1 a C3 (documento 01, sección 5.3). El plan detallado está en el <a href="90_SEVEN-G_Guia_de_implantacion.html">documento 90</a>:</p>
 <div class="tabla"><table>
 <thead>
 <tr>

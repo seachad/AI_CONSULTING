@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -787,7 +793,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>From the diagnosis onwards, the map is reviewed <strong>every quarter</strong> in the board's oversight, with the gaps between target ambition and the portfolio, and <strong>every year</strong> in the review of the AI strategy. In SEVEN-G, the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>) shows the portfolio heat map, and the register of recommendations and decisions keeps what the board requests and its fulfilment.</p>
+<p>From the diagnosis onwards, the map is reviewed <strong>every quarter</strong> in the board's oversight, with the gaps between target ambition and the portfolio, and <strong>every year</strong> in the review of the AI strategy. In SEVEN-G, the board AI dashboard (T17) shows the portfolio heat map, and the register of recommendations and decisions keeps what the board requests and its fulfilment.</p>
 <hr />
 <h2 id="the-role-of-the-person-supporting-the-board"><span class="antetitulo">09</span>The role of the person supporting the board</h2>
 <p>The session may be led by management, a director with AI experience or an internal or external adviser. In all cases, these rules should be respected:</p>

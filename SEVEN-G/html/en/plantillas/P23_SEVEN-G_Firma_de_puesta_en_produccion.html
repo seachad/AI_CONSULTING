@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>Phase 5, once the evidence for the phase is complete and before the G5 decision. Also in the event of a relevant change that entails a new go-live (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td>Phase 5, once the evidence for the phase is complete and before the G5 decision. Also in the event of a relevant change that entails a new go-live (P27).</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -433,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Risk register · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Human oversight · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Security design · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Rollback test · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> Delivery report · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Validation and pilot results · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> <em>Gate</em> decision record.</td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Risk register · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Human oversight · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Security design · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Rollback test · <a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a> Delivery report · <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Validation and pilot results · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> <em>Gate</em> decision record.</td>
 </tr>
 </tbody>
 </table></div>
@@ -461,7 +467,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Initiative name</td>
@@ -491,7 +497,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Autonomy level</td>
 <td></td>
-<td>A0 · A1 · A2 · A3 (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>A0 · A1 · A2 · A3 (P17).</td>
 </tr>
 <tr>
 <td>Type of go-live</td>
@@ -531,67 +537,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td>G4 approved and its conditions fulfilled</td>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> for G4 · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> block 5</td>
+<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> for G4 · <a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a> block 5</td>
 <td></td>
 </tr>
 <tr>
 <td>2</td>
 <td>Delivery report verified</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td><a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
 <td>Validation and pilot results verified</td>
-<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td><a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
 <td></td>
 </tr>
 <tr>
 <td>4</td>
 <td>Rollback test passed</td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> block 10</td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> block 10</td>
 <td></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Security and prompt injection tests executed and critical findings resolved</td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> block 11</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> block 11</td>
 <td></td>
 </tr>
 <tr>
 <td>6</td>
 <td>Risk register updated; no Critical residual risk without board approval</td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
 <td></td>
 </tr>
 <tr>
 <td>7</td>
 <td>Regulatory classification and applicable impact assessments completed</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
 <td>Human oversight operational and supervisors trained</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
 <td></td>
 </tr>
 <tr>
 <td>9</td>
 <td>Operations manual, monitoring and incident response plan available</td>
-<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
+<td><a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
 <td></td>
 </tr>
 <tr>
 <td>10</td>
 <td>AI system inventory updated</td>
-<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> · T02</td>
+<td><a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> · T02</td>
 <td></td>
 </tr>
 <tr>
 <td>11</td>
 <td>Supplier contracts and guarantees in force <strong>(Enterprise)</strong></td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -610,7 +616,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Authorised version</td>
 <td></td>
-<td>Model, instructions and configuration (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>). Any other version requires a new sign-off.</td>
+<td>Model, instructions and configuration (P16). Any other version requires a new sign-off.</td>
 </tr>
 <tr>
 <td>Population and perimeter</td>
@@ -620,7 +626,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Authorised autonomy level</td>
 <td></td>
-<td>May not exceed that in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>May not exceed that in <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
 </tr>
 <tr>
 <td>Phased deployment</td>
@@ -732,7 +738,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>12-05-2026</td>
 <td>Favourable with conditions</td>
 <td>Processing compliant; the privacy notice for the web channel still needs to be updated, a non-critical aspect because the channel is not activated until the second stage of the deployment</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> v1.2, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> v1.0</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> v1.2, <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> v1.0</td>
 </tr>
 </tbody>
 </table></div>
@@ -774,7 +780,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The conditions are carried over to <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> so that the body deciding G5 adopts them. An expired condition that has not been fulfilled turns the outcome into Iterate (01 §7.4, rule 4).</p>
+<p>The conditions are carried over to <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> so that the body deciding G5 adopts them. An expired condition that has not been fulfilled turns the outcome into Iterate (01 §7.4, rule 4).</p>
 <hr />
 <h2 id="outcome-of-the-sign-off-round"><span class="antetitulo">07</span>Outcome of the sign-off round</h2>
 <div class="tabla"><table>
@@ -804,7 +810,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Referral to the deciding body</td>
 <td></td>
-<td>AI Committee (Enterprise) · Sponsor with risk clearance (Lite). Reference to <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>AI Committee (Enterprise) · Sponsor with risk clearance (Lite). Reference to <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
 </tr>
 <tr>
 <td>Effective go-live date</td>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>In phase 0, together with the initiative charter (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>). It is reviewed at G3 and whenever a relevant constraint changes (regulation, budget, supplier, data).</td>
+<td>In phase 0, together with the initiative charter (P01). It is reviewed at G3 and whenever a relevant constraint changes (regulation, budget, supplier, data).</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register (link as G0 evidence).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register (link as G0 evidence).</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -440,7 +446,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Completion rules:</p>
 <ul>
 <li>A constraint is something the initiative <strong>cannot change</strong>. If it can be negotiated, it is an assumption and goes in section 10.</li>
-<li>This statement does not replace the regulatory classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>) or the risk matrix (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>): it identifies what is known in phase 0 so that it is not discovered late.</li>
+<li>This statement does not replace the regulatory classification (P11) or the risk matrix (P12): it identifies what is known in phase 0 so that it is not discovered late.</li>
 <li><em>This document does not constitute legal advice.</em> The applicability of each regulation must be confirmed by whoever has legal competence in the company. Regulatory references consulted in September 2026; their currency must be verified.</li>
 </ul>
 <hr />
@@ -462,7 +468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative name</td>
 <td></td>
-<td>Same as in <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
+<td>Same as in <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
 </tr>
 <tr>
 <td>Document version</td>
@@ -487,7 +493,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Applicable intensity</td>
 <td></td>
-<td>Lite · Enterprise (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (P04).</td>
 </tr>
 </tbody>
 </table></div>
@@ -552,7 +558,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> (Regulation (EU) 2024/1689)</td>
 <td>Yes · No · To be determined</td>
 <td></td>
-<td>Classification and obligations according to the company's role (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Classification and obligations according to the company's role (P11).</td>
 <td></td>
 </tr>
 <tr>
@@ -687,7 +693,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Special categories or specially protected data</td>
 <td></td>
-<td>Yes · No · To be determined. If yes, it triggers Enterprise criterion 5 in <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</td>
+<td>Yes · No · To be determined. If yes, it triggers Enterprise criterion 5 in <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</td>
 </tr>
 <tr>
 <td>Critical confidential information</td>
@@ -735,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Maximum budget</td>
 <td></td>
-<td>Authorised cap and review point (consistent with <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>).</td>
+<td>Authorised cap and review point (consistent with <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>).</td>
 </tr>
 <tr>
 <td>Recurring cost constraints</td>
@@ -904,7 +910,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>The economic limits are consistent with <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
+<td>The economic limits are consistent with <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
 <td></td>
 </tr>
 <tr>

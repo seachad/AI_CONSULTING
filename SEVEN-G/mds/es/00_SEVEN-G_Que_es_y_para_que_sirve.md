@@ -177,6 +177,16 @@ Cada iniciativa de IA recorre ocho fases. La **fase 0** es habilitante: sin ella
 | 6 | **Operación y gobierno** | Operar con estabilidad, vigilar la degradación, responder a incidentes. | Manual de operación, configuración de monitorización y alertas, plan de respuesta a incidentes. |
 | 7 | **Evolución o retirada** | Escalar, iterar o retirar según la evidencia de valor y riesgo. | Seguimiento de realización de valor, registro de decisión de escalado o retirada. |
 
+**La cartera de iniciativas, como un embudo**
+
+SEVEN-G entiende el conjunto de iniciativas de IA de la compañía con la misma aproximación que un embudo tradicional de ventas: para llegar a su estadio final —en producción— cada iniciativa ha de atravesar un conjunto obligatorio de estados, y en cada uno puede avanzar, esperar o quedarse fuera. Dar de alta una iniciativa equivale a registrar una oportunidad en un CRM: desde ese momento se sabe en qué etapa está, cuánto tiempo lleva en ella, qué coste, eficiencias y retorno se esperan y, si sale del embudo, por qué salió y qué se aprendió.
+
+Las etapas del embudo agrupan las fases del ciclo de vida: **Propuesto** (fases 0 y 1), **Hipótesis de valor** (fase 2), **Prueba de concepto** (fase 3) y **En desarrollo** (fases 4 y 5). El embudo contiene solo las iniciativas en curso. Las que están **En uso** (fases 6 y 7) ya lo han atravesado, y las que se **desenganchan** después de haber estado en uso se siguen aparte, con su motivo.
+
+<!-- figura: embudo-cartera -->
+
+> **Por qué importa.** El embudo convierte la cartera en algo que el comité de IA y el consejo leen de un vistazo: cuántas iniciativas entran, dónde se atascan, cuántas llegan a producción, qué valor producen y qué se aprende de las que no llegan. Es la vista que comparten el registro de iniciativas (T01) y el panel del consejo (T17).
+
 **Reglas de las puertas de decisión**
 
 - Cada *gate* se supera con **validación dual**: resultados tangibles y documentación verificada.

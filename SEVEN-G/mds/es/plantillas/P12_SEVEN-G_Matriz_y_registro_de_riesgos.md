@@ -32,7 +32,7 @@ Reglas de cumplimentación:
 - El impacto se valora en **cinco ejes** y se toma el **mayor**.
 - El nivel se calcula **inherente** (sin controles) y **residual** (con controles eficaces). Un control solo reduce el residual si existe y funciona; los controles previstos se indican aparte.
 - Un riesgo residual **Crítico** sin aprobación del consejo o de su comisión delegada **bloquea G3 y G5**.
-- Los riesgos tipo del catálogo del documento 33 (formato RT-<CAT>-NN) se usan como punto de partida para no omitir riesgos conocidos.
+- Los riesgos tipo del catálogo del documento 33 (formato RT-\<CAT\>-NN) se usan como punto de partida para no omitir riesgos conocidos.
 
 ---
 

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -399,8 +405,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
-<p>Este documento desarrolla las diez reglas de medición del valor de SEVEN-G (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>, sección 6) y fija las definiciones, fórmulas y procedimientos que deben aplicar todas las iniciativas, la cartera y los informes al consejo.</p>
-<p>Se aplica a toda iniciativa registrada en el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), en todas las fases, y a toda cifra de valor que se presente al comité de IA o al consejo. Los indicadores que se derivan de estas reglas están en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>; el cálculo de costes, en el <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>; y el proceso de realización de beneficios, en el <a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>.</p>
+<p>Este documento desarrolla las diez reglas de medición del valor de SEVEN-G (documento 00, sección 6) y fija las definiciones, fórmulas y procedimientos que deben aplicar todas las iniciativas, la cartera y los informes al consejo.</p>
+<p>Se aplica a toda iniciativa registrada en el registro de iniciativas (T01), en todas las fases, y a toda cifra de valor que se presente al comité de IA o al consejo. Los indicadores que se derivan de estas reglas están en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>; el cálculo de costes, en el <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>; y el proceso de realización de beneficios, en el <a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>.</p>
 <p>Las cifras de los ejemplos son <strong>ficticias e ilustrativas</strong>. No son referencias de mercado.</p>
 <hr />
 <h2 id="principios-de-la-medicion"><span class="antetitulo">02</span>Principios de la medición</h2>
@@ -595,7 +601,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>En la fase 2 cada iniciativa declara con qué otros casos comparte métrica, proceso o población. El efecto conjunto se mide una vez y se reparte con una clave declarada (<a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>, sección 6). La clave se aprueba por control de gestión y se registra en ambos casos.</td>
+<td>En la fase 2 cada iniciativa declara con qué otros casos comparte métrica, proceso o población. El efecto conjunto se mide una vez y se reparte con una clave declarada (documento 43, sección 6). La clave se aprueba por control de gestión y se registra en ambos casos.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -731,7 +737,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>Cada propuesta de inversión adicional (nueva iniciativa, ampliación, escalado) calcula el neto adicional por euro (fórmula F3). La cartera se ordena por ese indicador, con restricciones de riesgo, capacidad y equilibrio de ambición (<a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>). Los casos con neto anual negativo se muestran siempre de forma individual.</td>
+<td>Cada propuesta de inversión adicional (nueva iniciativa, ampliación, escalado) calcula el neto adicional por euro (fórmula F3). La cartera se ordena por ese indicador, con restricciones de riesgo, capacidad y equilibrio de ambición (documento 14). Los casos con neto anual negativo se muestran siempre de forma individual.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -765,7 +771,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>Cada caso tiene una descripción de una o dos frases que responde a: qué hace, quién lo usa, sobre qué proceso o decisión actúa y qué papel tiene la persona. Se registra en la ficha de caso de uso (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) y en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Sin descripción, el caso no se presenta al consejo.</td>
+<td>Cada caso tiene una descripción de una o dos frases que responde a: qué hace, quién lo usa, sobre qué proceso o decisión actúa y qué papel tiene la persona. Se registra en la ficha de caso de uso (P31) y en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Sin descripción, el caso no se presenta al consejo.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -825,7 +831,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>El coste no tiene rebaja por estado.</strong> El coste recurrente se imputa completo aunque no esté validado; si se desconoce, el neto es &quot;sin dato&quot; (regla 8).</li>
 <li><strong>Degradación, no borrado.</strong> Un importe validado que caduca pasa a declarado hasta su revalidación; un declarado que el validador rechaza se corrige o pasa a estimado con motivo. Todo cambio de estado es un evento en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</li>
 <li><strong>El valor recurrente se revalida cada año.</strong> Validar un ejercicio no valida los siguientes.</li>
-<li>Los plazos de caducidad son <strong>orientativos</strong> y la compañía los fija en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>). No pueden ampliarse para una iniciativa concreta.</li>
+<li>Los plazos de caducidad son <strong>orientativos</strong> y la compañía los fija en C2 (documento 13). No pueden ampliarse para una iniciativa concreta.</li>
 </ol>
 <figure class="grafico"><div class="g-titulo">Ciclo de estados de un importe</div><div class="g-sub">El estado mejora con evidencia y se degrada con el tiempo o con cambios materiales</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
   EST["Estimado · comité, consejo o evaluador"] -->|"El área aporta dato con fórmula"| DEC["Declarado · área responsable"]
@@ -936,7 +942,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Cumplimiento</strong></td>
 <td>Capacidad de cumplir una obligación regulatoria o contractual.</td>
-<td>Por separado, vinculado a la obligación (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
+<td>Por separado, vinculado a la obligación (documento 34).</td>
 <td>Cuando sustituye un coste de cumplimiento real (horas de control manual, servicio externo) medido con fórmula. Entonces es <strong>eficiencia</strong>.</td>
 </tr>
 </tbody>
@@ -1134,7 +1140,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>I · Inversión inicial</strong></td>
-<td>Coste de construcción más coste de adopción inicial (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>), incurridos una vez. No incluye coste recurrente, que ya está restado en el neto anual.</td>
+<td>Coste de construcción más coste de adopción inicial (documento 42), incurridos una vez. No incluye coste recurrente, que ya está restado en el neto anual.</td>
 </tr>
 <tr>
 <td><strong>Neto anual del año t</strong></td>
@@ -1381,12 +1387,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Presentar al comité o al consejo como validado un importe que no lo está constituye una <strong>no conformidad mayor</strong> (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). Relajar criterios de parada o cambiar el método de atribución sin aprobación se trata conforme a 01 §7.4 y §12.</p>
+<p>Presentar al comité o al consejo como validado un importe que no lo está constituye una <strong>no conformidad mayor</strong> (documento 37). Relajar criterios de parada o cambiar el método de atribución sin aprobación se trata conforme a 01 §7.4 y §12.</p>
 <hr />
 <h2 id="presentacion-al-consejo"><span class="antetitulo">11</span>Presentación al consejo</h2>
 <h3 id="11-1-reglas">11.1 Reglas</h3>
 <ol>
-<li><strong>La proporción validada es siempre visible</strong> junto a cada total de valor, en el panel completo, en la versión móvil y en cualquier documento del paquete del consejo (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>).</li>
+<li><strong>La proporción validada es siempre visible</strong> junto a cada total de valor, en el panel completo, en la versión móvil y en cualquier documento del paquete del consejo (documento 60).</li>
 <li><strong>Eficiencias, retorno y coste recurrente se muestran por separado</strong>, con el valor neto anual (F2) y el valor neto validado (F2v).</li>
 <li><strong>La capacidad liberada no materializada y la reasignada se muestran en líneas separadas</strong>, fuera del neto.</li>
 <li><strong>Los casos con neto anual negativo se identifican individualmente.</strong></li>
@@ -1493,7 +1499,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Coste completo y reparto</td>
-<td>Control de gestión con la oficina de IA (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>)</td>
+<td>Control de gestión con la oficina de IA (documento 42)</td>
 <td>Auditoría interna</td>
 </tr>
 <tr>

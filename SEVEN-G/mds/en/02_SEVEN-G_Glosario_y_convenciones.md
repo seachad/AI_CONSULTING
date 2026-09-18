@@ -391,7 +391,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 | **Transformation declaration** | Situation in which the company claims to be transforming itself with AI: its thesis sets Transform as the target ambition in some sphere, initiatives confirmed as Transform account for 10% or more of portfolio cost, or its communications present AI as business transformation (conditions IT-D1 to IT-D3). If it exists and the evidenced profile is not Transformation under way, the profile assigned is Declared but unevidenced transformation. | 12 §5.1–5.2 | Declaración de transformación |
 | **Transformation index** | Instrument that places the company in one of five profiles between efficiency and transformation, with eight signals scored from 0 to 3, three baseline conditions and a cross-check against the transformation declaration. The profile is not assigned by the sum of points. | 00 §5.3; 12 §4–5 | Índice de transformación |
 | **Transformation profile** | One of the five profiles of the transformation index (section 4.16). The **evidenced profile** results from the signals and baseline conditions; if there is an unevidenced transformation declaration, it is reported as the **underlying profile**. | 00 §5.3; 12 §5 | Perfil de transformación; perfil evidenciado · subyacente |
-| **Typical risk** | Reference risk in the catalogue, coded RT-<CAT>-NN, which serves as a starting point for identifying the specific risks of each initiative. | 33 §9 | Riesgo tipo |
+| **Typical risk** | Reference risk in the catalogue, coded RT-\<CAT\>-NN, which serves as a starting point for identifying the specific risks of each initiative. | 33 §9 | Riesgo tipo |
 
 ### 3.18 U
 

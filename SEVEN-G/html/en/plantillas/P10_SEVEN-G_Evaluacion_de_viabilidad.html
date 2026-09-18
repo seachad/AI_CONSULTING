@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -413,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
-<td>The AI Product Owner (economic and organisational feasibility) and the AI Technical Owner (technical and data feasibility). The risk owner provides the summary of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> and <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>The AI Product Owner (economic and organisational feasibility) and the AI Technical Owner (technical and data feasibility). The risk owner provides the summary of <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> and <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
 </tr>
 <tr>
 <td><strong>Who verifies it</strong></td>
@@ -441,7 +447,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Feasibility is <strong>demonstrated with real data</strong>, not with assumptions (01 §6.5).</li>
 <li>Practices prohibited by regulation <strong>do not get past this phase under any circumstances</strong>.</li>
-<li>No Critical residual risk without the approval provided for in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> may pass G3.</li>
+<li>No Critical residual risk without the approval provided for in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> may pass G3.</li>
 <li>Costs are <strong>complete</strong>: build, recurring and adoption.</li>
 </ul>
 <hr />
@@ -473,7 +479,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensity</td>
 <td></td>
-<td>Lite · Enterprise (reviewed at G3 with <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (reviewed at G3 with <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
 </tr>
 <tr>
 <td>Document version</td>
@@ -747,12 +753,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Expected annual efficiencies (€)</td>
 <td></td>
-<td>From <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, updated with what has been learned in phase 3.</td>
+<td>From <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, updated with what has been learned in phase 3.</td>
 </tr>
 <tr>
 <td>Expected annual return (€)</td>
 <td></td>
-<td>From <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td>From <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
 </tr>
 <tr>
 <td>Annual recurring cost (€)</td>
@@ -830,7 +836,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Preliminary adoption plan</td>
 <td></td>
-<td>Reference to <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, which is completed in phase 4.</td>
+<td>Reference to <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, which is completed in phase 4.</td>
 </tr>
 </tbody>
 </table></div>
@@ -848,7 +854,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Regulatory classification</td>
 <td></td>
-<td>Taxonomy in 03 §3.3, with reference to <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and to the legal validation.</td>
+<td>Taxonomy in 03 §3.3, with reference to <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and to the legal validation.</td>
 </tr>
 <tr>
 <td>Prohibited practice</td>
@@ -863,17 +869,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>High and Critical residual risks</td>
 <td></td>
-<td>Number and reference to <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; acceptance approval where applicable.</td>
+<td>Number and reference to <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; acceptance approval where applicable.</td>
 </tr>
 <tr>
 <td>Mitigation and contingency plan</td>
 <td></td>
-<td>Reference to <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>.</td>
+<td>Reference to <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>.</td>
 </tr>
 <tr>
 <td>Suppliers</td>
 <td></td>
-<td>Requirement level and conclusion of <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Requirement level and conclusion of <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
 </tr>
 <tr>
 <td>Fit with the C2 risk appetite</td>
@@ -984,7 +990,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> and, if there are suppliers, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> exist.</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> and, if there are suppliers, <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> exist.</td>
 <td></td>
 </tr>
 <tr>

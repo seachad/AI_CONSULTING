@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -456,7 +462,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>ISO/IEC 42001</strong>, control A.10 del anexo A (relaciones con terceros y clientes).</li>
 <li><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">Directiva (UE) 2022/2555 (NIS2)</a></strong> en lo relativo a la seguridad de la cadena de suministro, según su transposición nacional.</li>
 </ul>
-<p>Este documento no constituye asesoramiento jurídico. El contenido contractual debe revisarse con asesoría jurídica cualificada. Los niveles de exigencia y las obligaciones descritas son orientativos: la responsabilidad de la clasificación regulatoria de los terceros y de los sistemas y del cumplimiento, incluida la regulación sectorial aplicable, es de la organización (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</p>
+<p>Este documento no constituye asesoramiento jurídico. El contenido contractual debe revisarse con asesoría jurídica cualificada. Los niveles de exigencia y las obligaciones descritas son orientativos: la responsabilidad de la clasificación regulatoria de los terceros y de los sistemas y del cumplimiento, incluida la regulación sectorial aplicable, es de la organización (documento 93, sección 11).</p>
 <hr />
 <h2 id="principios"><span class="antetitulo">02</span>Principios</h2>
 <div class="tabla"><table>
@@ -602,7 +608,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas:</p>
 <ol>
-<li>La decisión se documenta en la evaluación de viabilidad (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) de la fase 3 con los criterios de la tabla y el coste total a tres años según las categorías del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>, incluido el <strong>coste de salida</strong>.</li>
+<li>La decisión se documenta en la evaluación de viabilidad (P10) de la fase 3 con los criterios de la tabla y el coste total a tres años según las categorías del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>, incluido el <strong>coste de salida</strong>.</li>
 <li>En iniciativas de <strong>Optimizar</strong>, comprar debería ser la opción de partida salvo razón documentada. En <strong>Transformar</strong>, la dependencia de un tercero en la capacidad diferencial debe justificarse ante el órgano que aprueba la apuesta.</li>
 <li><strong>Construir sobre modelos de terceros no elimina la dependencia</strong>: se aplica este documento al proveedor del modelo.</li>
 <li>Si la compañía modifica sustancialmente un sistema de alto riesgo de un tercero, cambia su finalidad o lo comercializa con su nombre, puede pasar a ser <strong>proveedor</strong> a efectos del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> (art. 25.1), con las obligaciones correspondientes. Esta consecuencia se analiza antes de decidir adaptar.</li>
@@ -623,7 +629,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Criticidad del servicio</strong></td>
-<td>Proceso interno cuya interrupción tendría impacto 1–2 (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</td>
+<td>Proceso interno cuya interrupción tendría impacto 1–2 (documento 33).</td>
 <td>Proceso relevante con impacto 3; exposición directa a clientes; decisiones sobre personas.</td>
 <td>Función crítica o importante (incluida la definición de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> cuando aplique); impacto 4–5; sistema de alto riesgo según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>.</td>
 </tr>
@@ -647,7 +653,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los plazos de sustituibilidad son orientativos y se aprueban en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>). El nivel se determina en la fase 3, se revisa en cada R6 y ante cualquier cambio del servicio, y se registra en T09.</p>
+<p>Los plazos de sustituibilidad son orientativos y se aprueban en C2 (documento 13). El nivel se determina en la fase 3, se revisa en cada R6 y ante cualquier cambio del servicio, y se registra en T09.</p>
 <h3 id="4-2-requisitos-por-nivel">4.2 Requisitos por nivel</h3>
 <div class="tabla"><table>
 <thead>
@@ -855,7 +861,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>7</td>
 <td><strong>Notificación de incidentes</strong></td>
-<td>Plazo máximo, contenido mínimo, cooperación en la investigación y en las notificaciones regulatorias de la compañía (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</td>
+<td>Plazo máximo, contenido mínimo, cooperación en la investigación y en las notificaciones regulatorias de la compañía (documento 37).</td>
 <td>Rec.</td>
 <td>Sí</td>
 <td>Sí</td>
@@ -1050,7 +1056,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>La <strong>prueba de portabilidad</strong> para servicios N3 consiste en ejecutar el conjunto de evaluación propio con un modelo o proveedor alternativo y documentar la diferencia de resultados, coste y esfuerzo de migración. Se realiza al menos una vez al año o antes de renovar el contrato.</p>
 <h3 id="7-2-concentracion">7.2 Concentración</h3>
-<p>La concentración se mide en cartera (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> §10) con estos indicadores:</p>
+<p>La concentración se mide en cartera (documento 33 §10) con estos indicadores:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1081,7 +1087,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los límites de concentración forman parte del apetito de riesgo (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>). Cuando se superan, el comité de IA decide entre diversificar, reforzar la salida o aceptar el riesgo según 33 §7.</p>
+<p>Los límites de concentración forman parte del apetito de riesgo (documento 13). Cuando se superan, el comité de IA decide entre diversificar, reforzar la salida o aceptar el riesgo según 33 §7.</p>
 <hr />
 <h2 id="ia-embebida-en-software-ya-contratado"><span class="antetitulo">08</span>IA embebida en software ya contratado</h2>
 <p>Muchas aplicaciones de negocio incorporan funciones de IA mediante actualizaciones, a veces activadas por defecto. Son sistemas de IA de terceros integrados en procesos (01 §1.2) y deben gobernarse.</p>
@@ -1170,7 +1176,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Evaluación</strong></td>
-<td>Fecha y resultado de la diligencia debida (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>); certificaciones e informes con vigencia; evaluación de seguridad; condiciones impuestas.</td>
+<td>Fecha y resultado de la diligencia debida (P14); certificaciones e informes con vigencia; evaluación de seguridad; condiciones impuestas.</td>
 </tr>
 <tr>
 <td><strong>Riesgo</strong></td>

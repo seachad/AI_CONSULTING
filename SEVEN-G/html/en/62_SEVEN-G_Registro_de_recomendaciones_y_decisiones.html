@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -1052,7 +1058,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Links</strong></td>
-<td>IA-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, <em>gate</em> decision (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
+<td>IA-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, <em>gate</em> decision (P29).</td>
 </tr>
 <tr>
 <td><strong>Follow-up</strong></td>
@@ -1076,12 +1082,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="11-1-with-the-initiative-register">11.1 With the initiative register</h3>
 <ul>
 <li>Every recommendation or decision affecting specific initiatives links their IA-AAAA-NNN codes.</li>
-<li>The record of each initiative in the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) shows the recommendations and decisions affecting it, with their status and assessment.</li>
+<li>The record of each initiative in the register (T01) shows the recommendations and decisions affecting it, with their status and assessment.</li>
 <li>An initiative <strong>cannot pass a <em>gate</em></strong> if it is linked to a board decision with expired conditions that affect that <em>gate</em>.</li>
 <li>When an initiative is stopped or retired, the recommendations that depend solely on it are proposed for discarding or closure.</li>
 </ul>
 <h3 id="11-2-with-the-board-dashboard">11.2 With the board dashboard</h3>
-<p>Each recommendation indicates the dashboard block (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) in which the board can check its effect:</p>
+<p>Each recommendation indicates the dashboard block (T17) in which the board can check its effect:</p>
 <div class="tabla"><table>
 <thead>
 <tr>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (approved design) · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Validation and pilot results · <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> Go-live sign-off · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> Operations manual · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> G4 decision record (conditions) · documents 42 (Costs) and 53 (Building solutions).</td>
+<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (approved design) · <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Validation and pilot results · <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> Go-live sign-off · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Operations manual · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> G4 decision record (conditions) · documents 42 (Costs) and 53 (Building solutions).</td>
 </tr>
 </tbody>
 </table></div>
@@ -453,7 +459,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Initiative name</td>
@@ -468,7 +474,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Version delivered</td>
 <td></td>
-<td>Version of model, prompts and configuration (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Version of model, prompts and configuration (P16).</td>
 </tr>
 <tr>
 <td>Intensity</td>
@@ -483,7 +489,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Suppliers involved</td>
 <td></td>
-<td>Name and reference to <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Name and reference to <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
 </tr>
 <tr>
 <td>Document version</td>
@@ -557,7 +563,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Architecture and integrations</td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -565,7 +571,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Data and models</td>
-<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -573,7 +579,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Human oversight</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -581,7 +587,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Security and agent controls</td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -589,7 +595,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Rollback mechanism and kill switch</td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -597,7 +603,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Training and adoption</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -605,7 +611,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Monitoring and alerts</td>
-<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td><a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -613,7 +619,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Integration with the supplier's system <em>(illustrative example)</em></td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
 <td>Delivered with changes</td>
 <td>The real-time connection is replaced by an hourly load due to supplier limitations</td>
 <td>Yes: delay of up to one hour in the input data</td>
@@ -621,7 +627,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>If a change affects risks, human oversight or security, the corresponding design evidence and the risk register (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>) must be updated before G5.</p>
+<p>If a change affects risks, human oversight or security, the corresponding design evidence and the risk register (P12) must be updated before G5.</p>
 <hr />
 <h2 id="outstanding-conditions-from-previous-gates"><span class="antetitulo">05</span>Outstanding conditions from previous <em>gates</em></h2>
 <p><strong>Status:</strong> Met · Not met · Expired.</p>
@@ -674,7 +680,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Updated data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>)</td>
+<td>Updated data and model lineage (P16)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -686,19 +692,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Draft operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>Draft operations manual (P24)</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Monitoring and alert configuration (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</td>
+<td>Monitoring and alert configuration (P25)</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Incident response plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>)</td>
+<td>Incident response plan (P26)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -719,7 +725,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="actual-versus-planned-costs"><span class="antetitulo">07</span>Actual versus planned costs</h2>
-<p>Amounts in euros. &quot;Planned&quot; is what was approved at G3 (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) or, if updated, at G4.</p>
+<p>Amounts in euros. &quot;Planned&quot; is what was approved at G3 (P10) or, if updated, at G4.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -814,7 +820,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>If the updated recurring cost changes the expected annual net value, it is recalculated in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> and flagged to the <em>gate</em> decision-maker.</p>
+<p>If the updated recurring cost changes the expected annual net value, it is recalculated in <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> and flagged to the <em>gate</em> decision-maker.</p>
 <hr />
 <h2 id="timelines"><span class="antetitulo">08</span>Timelines</h2>
 <div class="tabla"><table>
@@ -1031,7 +1037,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><em>Gate</em> decision-maker</td>
-<td>According to 01 §7.5 (recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>According to 01 §7.5 (recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>

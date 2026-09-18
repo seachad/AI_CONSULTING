@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -402,7 +408,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>This document establishes how the cost of artificial intelligence is calculated, allocated, controlled and reported in SEVEN-G. Its purpose is to ensure that the <strong>recurring cost</strong> deducted in annual net value (document 40, formula F2) and the <strong>initial investment</strong> used in the economic criterion (document 40 §8) are complete, comparable across use cases and reconcilable with accounting.</p>
 <p>It applies to:</p>
 <ul>
-<li>Every initiative in the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), from the cost estimate in phase 3 through to retirement.</li>
+<li>Every initiative in the register (T01), from the cost estimate in phase 3 through to retirement.</li>
 <li>Costs shared by several use cases: productivity suites with AI, model platforms, compute, data platforms and common teams.</li>
 <li>Corporate use of general-purpose AI, which has a cost even though it is not an initiative (01 §1.2).</li>
 </ul>
@@ -511,7 +517,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Recurring</th>
 <th>Adoption</th>
 <th>Usual source</th>
-<th>Concept in the dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>)</th>
+<th>Concept in the dashboard (T17)</th>
 </tr>
 </thead>
 <tbody>
@@ -1062,7 +1068,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>The thresholds are indicative and the company sets them in C2.</p>
 <h3 id="8-3-technical-limits-per-agent">8.3 Technical limits per agent</h3>
-<p>Agents can generate chained consumption without human intervention. Therefore, in addition to the budget, they must have <strong>technical limits</strong> configured in the security design (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) and checked at G5:</p>
+<p>Agents can generate chained consumption without human intervention. Therefore, in addition to the budget, they must have <strong>technical limits</strong> configured in the security design (P18) and checked at G5:</p>
 <div class="tabla"><table>
 <thead>
 <tr>

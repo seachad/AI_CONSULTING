@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -690,7 +696,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="11-5-consultation-dates">11.5 Consultation dates</h3>
 <p>The regulatory and standards references in each document state their <strong>consultation date</strong>. They reflect the state of the sources on that date and are not updated automatically: regulatory changes, texts in the legislative process and later guidelines, positions or rulings of authorities and courts may render them incomplete or incorrect. The procedure for maintaining the mapping (document 34, section 10) is a recommendation for the user organisation, not an undertaking by the author to keep it updated.</p>
 <h3 id="11-6-tools-and-demonstrations">11.6 Tools and demonstrations</h3>
-<p>The tools (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–T22), the demonstration dashboards and registers and the code are provided for illustrative purposes and use <strong>fictitious data</strong> (section 9). They are not validated for production use or for taking regulatory decisions, and their outputs, such as an indicative classification or a calculated indicator, must be verified by the organisation before being used.</p>
+<p>The tools (T01–T22), the demonstration dashboards and registers and the code are provided for illustrative purposes and use <strong>fictitious data</strong> (section 9). They are not validated for production use or for taking regulatory decisions, and their outputs, such as an indicative classification or a calculated indicator, must be verified by the organisation before being used.</p>
 <h3 id="11-7-third-parties-that-use-or-adapt-the-framework">11.7 Third parties that use or adapt the framework</h3>
 <p>Consultancies, auditors, trainers and other third parties that use, adapt or integrate SEVEN-G in their services do so <strong>under their sole responsibility</strong>. They may not present their work, deliverables, adaptations or conclusions as <strong>validated, certified, reviewed or endorsed</strong> by the author or by SEACHAD, nor declare or certify a client's regulatory compliance on behalf of SEVEN-G or the author (document 91, section 6.2). They must pass the legal notice on in their deliverables.</p>
 <h3 id="11-8-how-this-fits-with-the-licences">11.8 How this fits with the licences</h3>

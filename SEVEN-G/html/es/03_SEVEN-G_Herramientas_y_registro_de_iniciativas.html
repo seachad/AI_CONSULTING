@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -967,7 +973,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Datos</strong></td>
-<td>Importación de uno o varios JSON (con sustitución o fusión por código) y exportación del registro completo. El JSON completo es la entrada del panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>): el conector lo convierte en el JSON del panel, con el embudo y los tiempos de cada etapa tomados de las fases y los eventos del registro.</td>
+<td>Importación de uno o varios JSON (con sustitución o fusión por código) y exportación del registro completo. El JSON completo es la entrada del panel del consejo (T17): el conector lo convierte en el JSON del panel, con el embudo y los tiempos de cada etapa tomados de las fases y los eventos del registro.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1288,7 +1294,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>HTML completo y móvil + JSON</td>
 <td>60</td>
 <td>1</td>
-<td>Disponible. Se alimenta de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> mediante el conector <code>herramientas/[T17](../../herramientas/T17_panel_consejo/index.html)_panel_consejo</code>: registro (JSON) más <code>config_panel.json</code> (umbrales de los indicadores y ciclo de vida) → JSON del panel → panel completo y móvil, con embudo y tiempos por etapa como en un CRM</td>
+<td>Disponible. Se alimenta de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> mediante el conector <code>herramientas/T17_panel_consejo</code>: registro (JSON) más <code>config_panel.json</code> (umbrales de los indicadores y ciclo de vida) → JSON del panel → panel completo y móvil, con embudo y tiempos por etapa como en un CRM</td>
 </tr>
 <tr>
 <td><strong>T18</strong></td>

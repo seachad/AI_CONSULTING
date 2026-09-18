@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>Se prepara en la fase 5 (requisito previo de la firma <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>) y se aprueba al inicio de la fase 6. Se revisa tras cada incidente S1 o S2 y en cada R6.</td>
+<td>Se prepara en la fase 5 (requisito previo de la firma <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>) y se aprueba al inicio de la fase 6. Se revisa tras cada incidente S1 o S2 y en cada R6.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -433,13 +439,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Seguridad e interruptor de parada · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Reversión · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Alertas · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> Registro de incidentes y cambios · documentos 35, 37 (No conformidades e incidentes) y 52.</td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Seguridad e interruptor de parada · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Alertas · <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> Registro de incidentes y cambios · documentos 35, 37 (No conformidades e incidentes) y 52.</td>
 </tr>
 </tbody>
 </table></div>
 <p>Reglas:</p>
 <ul>
-<li>Los <strong>criterios de severidad, los plazos de notificación y el proceso completo</strong> están en el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>. Este plan los aplica al sistema concreto; no fija plazos regulatorios propios.</li>
+<li>Los <strong>criterios de severidad, los plazos de notificación y el proceso completo</strong> están en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>. Este plan los aplica al sistema concreto; no fija plazos regulatorios propios.</li>
 <li>Este plan se integra en el proceso general de gestión de incidentes de la compañía (seguridad, continuidad, protección de datos); no crea un circuito paralelo.</li>
 <li>Un incidente grave no notificado cuando procedía es una no conformidad <strong>crítica</strong> (01 §12).</li>
 <li>Ante la duda sobre la severidad, se clasifica en el nivel superior y se revisa después.</li>
@@ -459,7 +465,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA</td>
@@ -474,7 +480,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Papel de la compañía respecto al sistema</td>
 <td></td>
-<td>Proveedor · Responsable del despliegue · Ambos · Por determinar. Condiciona las obligaciones de notificación (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
+<td>Proveedor · Responsable del despliegue · Ambos · Por determinar. Condiciona las obligaciones de notificación (documento 34).</td>
 </tr>
 <tr>
 <td>¿Sujeta a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>?</td>
@@ -527,7 +533,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Tipo</th>
 <th>¿Aplica a este sistema? (Sí · No)</th>
 <th>Ejemplo concreto para este sistema</th>
-<th>Detección prevista (alerta de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> u otra vía)</th>
+<th>Detección prevista (alerta de <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> u otra vía)</th>
 </tr>
 </thead>
 <tbody>
@@ -553,7 +559,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="severidad"><span class="antetitulo">04</span>Severidad</h2>
-<p>Escala común del marco: <strong>S1 Crítica · S2 Alta · S3 Media · S4 Baja</strong>. Los criterios completos están en el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> y prevalecen sobre esta orientación.</p>
+<p>Escala común del marco: <strong>S1 Crítica · S2 Alta · S3 Media · S4 Baja</strong>. Los criterios completos están en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> y prevalecen sobre esta orientación.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -652,13 +658,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td>S1–S4</td>
-<td>Cronología, decisiones y evidencias en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
+<td>Cronología, decisiones y evidencias en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="fases-de-respuesta"><span class="antetitulo">06</span>Fases de respuesta</h2>
-<p>Los tiempos objetivo internos los fija la compañía; no sustituyen a los plazos regulatorios del <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</p>
+<p>Los tiempos objetivo internos los fija la compañía; no sustituyen a los plazos regulatorios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -677,7 +683,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Guardia</td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
 </tr>
 <tr>
 <td>Clasificación</td>
@@ -685,7 +691,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Coordinador</td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
 </tr>
 <tr>
 <td>Contención</td>
@@ -693,7 +699,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Coordinador y técnico</td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
 </tr>
 <tr>
 <td>Comprobación de notificaciones</td>
@@ -701,7 +707,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Riesgos y protección de datos</td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
 </tr>
 <tr>
 <td>Resolución</td>
@@ -709,7 +715,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Técnico</td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
 </tr>
 <tr>
 <td>Recuperación</td>
@@ -717,7 +723,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Coordinador</td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
 </tr>
 <tr>
 <td>Cierre y lecciones</td>
@@ -725,7 +731,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Coordinador y riesgos</td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -745,31 +751,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Interruptor de parada</td>
 <td>Acción no autorizada, inyección con efecto, fuga en curso</td>
 <td></td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 9</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 9</td>
 </tr>
 <tr>
 <td>Reducir el nivel de autonomía</td>
 <td>Degradación con riesgo de impacto</td>
 <td></td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
 </tr>
 <tr>
 <td>Revertir a versión anterior</td>
 <td>Fallo atribuible a un cambio reciente</td>
 <td></td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
 </tr>
 <tr>
 <td>Desactivar una herramienta o permiso del agente</td>
 <td>Abuso de una herramienta concreta</td>
 <td></td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 5</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 5</td>
 </tr>
 <tr>
 <td>Revocar credenciales</td>
 <td>Compromiso de identidad</td>
 <td></td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 4</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 4</td>
 </tr>
 <tr>
 <td>Retirar o corregir contenido publicado</td>
@@ -787,7 +793,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="notificaciones-regulatorias-y-contractuales-a-verificar"><span class="antetitulo">08</span>Notificaciones regulatorias y contractuales a verificar</h2>
-<p>Casillas de comprobación. Para cada incidente se verifica si aplican; los plazos se toman del <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> y se confirman con asesoría jurídica. Esta tabla no afirma plazos.</p>
+<p>Casillas de comprobación. Para cada incidente se verifica si aplican; los plazos se toman del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> y se confirman con asesoría jurídica. Esta tabla no afirma plazos.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -797,7 +803,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>¿Aplica? (Sí · No · Por determinar)</th>
 <th>Quién decide</th>
 <th>Quién notifica</th>
-<th>Plazo confirmado en <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> y fecha de verificación</th>
+<th>Plazo confirmado en <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> y fecha de verificación</th>
 <th>Evidencia</th>
 </tr>
 </thead>
@@ -805,7 +811,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>☐</td>
 <td>Incidente grave de un sistema de IA de alto riesgo</td>
-<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (obligaciones del proveedor y del responsable del despliegue; <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>)</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (obligaciones del proveedor y del responsable del despliegue; <a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -926,13 +932,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>S4</td>
-<td>Registro en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>Registro en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
 <td></td>
 <td>Documento 37</td>
 </tr>
 </tbody>
 </table></div>
-<p>Si el incidente revela un incumplimiento del marco (control desactivado, cambio sin aprobar, gate omitido), se abre además una no conformidad con código NC-AAAA-NNN (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</p>
+<p>Si el incidente revela un incumplimiento del marco (control desactivado, cambio sin aprobar, gate omitido), se abre además una no conformidad con código NC-AAAA-NNN (documento 37).</p>
 <hr />
 <h2 id="simulacros"><span class="antetitulo">10</span>Simulacros</h2>
 <div class="tabla"><table>
@@ -968,7 +974,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>En Enterprise debería realizarse al menos un simulacro antes de G5 y repetirse con la periodicidad que fije la compañía.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Criterios formales de G5 y R6 en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; proceso de incidentes en el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</p>
+<p>Criterios formales de G5 y R6 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; proceso de incidentes en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -985,7 +991,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>La severidad usa la escala S1–S4 y remite a los criterios del <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</td>
+<td>La severidad usa la escala S1–S4 y remite a los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -995,7 +1001,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Las acciones de contención están preparadas y enlazadas con <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> y <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>.</td>
+<td>Las acciones de contención están preparadas y enlazadas con <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> y <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>.</td>
 <td></td>
 </tr>
 <tr>

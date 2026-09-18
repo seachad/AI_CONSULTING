@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -516,7 +522,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>4. Treat</strong></td>
 <td>Choose the response (avoid, mitigate, transfer, accept), design and apply controls, estimate the target residual and obtain acceptance of the residual.</td>
-<td>Mitigation and contingency plan (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>); acceptance decision.</td>
+<td>Mitigation and contingency plan (P13); acceptance decision.</td>
 <td>Risk owner; acceptance by whoever is competent under section 7.</td>
 </tr>
 <tr>
@@ -528,7 +534,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>6. Report</strong></td>
 <td>Present the risk profile to the body that decides the <em>gate</em> and, in aggregate, to the AI Committee and the board.</td>
-<td>Risk information in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
+<td>Risk information in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, board dashboard (T17).</td>
 <td>AI Office with the AI Risk Owner.</td>
 </tr>
 </tbody>
@@ -546,42 +552,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>0 · G0</strong></td>
 <td>Constraints and obvious risks (prohibited practice, protected data, critical function). Intensity determination.</td>
-<td>Context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>), intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Context statement (P02), intensity (P04).</td>
 </tr>
 <tr>
 <td><strong>1 · G1</strong></td>
 <td>Preliminary identification of risks that could rule out the opportunity.</td>
-<td>Screening notes (<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>).</td>
+<td>Screening notes (P06).</td>
 </tr>
 <tr>
 <td><strong>2 · G2</strong></td>
 <td>Risks of the value hypothesis (RT-ECO, RT-EST) and stop criteria linked to risk.</td>
-<td>Hypothesis canvas (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>).</td>
+<td>Hypothesis canvas (P08).</td>
 </tr>
 <tr>
 <td><strong>3 · G3</strong></td>
 <td><strong>Full assessment</strong>: inherent risk, planned controls, target residual, acceptance. No Critical risk without accepted treatment.</td>
-<td>Matrix and register (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>); mitigation and contingency plan (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>); supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
+<td>Matrix and register (P12); mitigation and contingency plan (P13); supplier assessment (P14).</td>
 </tr>
 <tr>
 <td><strong>4 · G4</strong></td>
 <td>Every Medium or higher risk has a designed control, with a code where one exists (SEG, AG from document 35).</td>
-<td>Security design (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>), oversight design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), updated register.</td>
+<td>Security design (P18), oversight design (P17), updated register.</td>
 </tr>
 <tr>
 <td><strong>5 · G5</strong></td>
 <td>Control effectiveness tested; <strong>residual verified</strong>; acceptance ratified.</td>
-<td>Validation results (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>), updated register, sign-off (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>).</td>
+<td>Validation results (P22), updated register, sign-off (P23).</td>
 </tr>
 <tr>
 <td><strong>6 · R6</strong></td>
 <td>Monitoring, indicators, incidents, changes; review of the classification.</td>
-<td>Updated register; incident register (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td>Updated register; incident register (P27).</td>
 </tr>
 <tr>
 <td><strong>7 · G7</strong></td>
 <td>Accumulated risks and retirement risks (data, models, dependencies).</td>
-<td>Scale or retire decision (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</td>
+<td>Scale or retire decision (P30).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1121,7 +1127,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td></td>
 <td>Plan</td>
-<td>Actions, owner, deadline and status (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>).</td>
+<td>Actions, owner, deadline and status (P13).</td>
 </tr>
 <tr>
 <td></td>
@@ -1182,7 +1188,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-EST-01</strong></td>
 <td><strong>Misalignment with the AI thesis.</strong> The initiative does not contribute to the ambition or the spheres approved in C2.</td>
 <td>Technology-driven origin; weak sponsorship; no screening.</td>
-<td>Fit with the thesis at G0; sphere classification (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>); prioritisation in C3.</td>
+<td>Fit with the thesis at G0; sphere classification (P07); prioritisation in C3.</td>
 <td>0–1</td>
 </tr>
 <tr>
@@ -1238,14 +1244,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-TEC-01</strong></td>
 <td><strong>Insufficient performance in real-world conditions.</strong> The system does not reach the threshold outside the test environment.</td>
 <td>Validation with non-representative data; pilot without an attribution method.</td>
-<td>Success threshold set in advance; pilot in real-world conditions (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
+<td>Success threshold set in advance; pilot in real-world conditions (P22).</td>
 <td>3, 5</td>
 </tr>
 <tr>
 <td><strong>RT-TEC-02</strong></td>
 <td><strong>Degradation and drift.</strong> Performance falls because of changes in the data, the environment or user behaviour.</td>
 <td>Dynamic environment; no monitoring.</td>
-<td>Drift and performance monitoring (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>); retraining or retirement thresholds.</td>
+<td>Drift and performance monitoring (P25); retraining or retirement thresholds.</td>
 <td>6</td>
 </tr>
 <tr>
@@ -1287,7 +1293,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-TEC-08</strong></td>
 <td><strong>Irreversibility.</strong> It is not possible to return to the previous state or to the process without AI.</td>
 <td>Rollback plan non-existent or untested; manual process dismantled.</td>
-<td>Rollback plan tested before G5 (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>); fallback process maintained.</td>
+<td>Rollback plan tested before G5 (P19); fallback process maintained.</td>
 <td>4, 5</td>
 </tr>
 </tbody>
@@ -1329,7 +1335,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-DAT-04</strong></td>
 <td><strong>Unknown lineage.</strong> It is not known where the data come from, what transformations they have undergone or under what licence.</td>
 <td>Third-party data; manual processes.</td>
-<td>Data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>); verified licences.</td>
+<td>Data and model lineage (P16); verified licences.</td>
 <td>4</td>
 </tr>
 <tr>
@@ -1378,7 +1384,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ECO-03</strong></td>
 <td><strong>Unrealised value.</strong> Released capacity is not converted into savings or reallocated.</td>
 <td>No realisation plan; organisational resistance.</td>
-<td>Measurement rule 3 (00 §6); realisation plan at G5; monitoring (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>).</td>
+<td>Measurement rule 3 (00 §6); realisation plan at G5; monitoring (P28).</td>
 <td>5–7</td>
 </tr>
 <tr>
@@ -1434,14 +1440,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-LEG-04</strong></td>
 <td><strong>Automated decisions without safeguards.</strong> Decisions with significant effects without effective human intervention or the right to contest.</td>
 <td>Nominal oversight; progressive automation not reviewed.</td>
-<td>Human oversight design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); analysis of Article 22 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>.</td>
+<td>Human oversight design (P17); analysis of Article 22 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>.</td>
 <td>3, 4</td>
 </tr>
 <tr>
 <td><strong>RT-LEG-05</strong></td>
 <td><strong>Omitted impact assessments.</strong> The data protection impact assessment or the fundamental rights impact assessment is not carried out or not updated.</td>
 <td>Lack of awareness of the requirement; deadlines.</td>
-<td>Classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>); assessments as G3 evidence.</td>
+<td>Classification (P11); assessments as G3 evidence.</td>
 <td>3, 6</td>
 </tr>
 <tr>
@@ -1455,14 +1461,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-LEG-07</strong></td>
 <td><strong>Late incident reporting.</strong> A serious incident, a data breach or a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> incident is not reported in time.</td>
 <td>No severity criteria; no reporting owner.</td>
-<td>Response plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); reporting matrix (37).</td>
+<td>Response plan (P26); reporting matrix (37).</td>
 <td>6</td>
 </tr>
 <tr>
 <td><strong>RT-LEG-08</strong></td>
 <td><strong>Breach of sector-specific or resilience obligations.</strong> Requirements of sector supervisors, DORA or other regulations not carried over into the system.</td>
 <td>Incomplete regulatory mapping.</td>
-<td>Regulatory mapping (34); context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</td>
+<td>Regulatory mapping (34); context statement (P02).</td>
 <td>0, 3</td>
 </tr>
 </tbody>
@@ -1483,14 +1489,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-01</strong></td>
 <td><strong>Lack of adoption.</strong> Users do not use the system or use it only marginally.</td>
 <td>Poor integration into work; distrust; insufficient training.</td>
-<td>Adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>); adoption target at G2 and G5.</td>
+<td>Adoption plan (P20); adoption target at G2 and G5.</td>
 <td>4–6</td>
 </tr>
 <tr>
 <td><strong>RT-ORG-02</strong></td>
 <td><strong>Dependence on key people.</strong> Knowledge of the system lies with a few people or with the supplier.</td>
 <td>Scarce documentation; small teams.</td>
-<td>Documentation and operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>); deputies; knowledge transfer.</td>
+<td>Documentation and operations manual (P24); deputies; knowledge transfer.</td>
 <td>4, 6</td>
 </tr>
 <tr>
@@ -1518,7 +1524,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-06</strong></td>
 <td><strong>Roles without segregation of duties.</strong> Those who build also verify, accept risks or decide.</td>
 <td>Small teams; roles not assigned.</td>
-<td>Role register (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>); incompatibilities (01 §8.2).</td>
+<td>Role register (P03); incompatibilities (01 §8.2).</td>
 <td>0</td>
 </tr>
 <tr>
@@ -1539,7 +1545,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-09</strong></td>
 <td><strong>Deterioration of wellbeing.</strong> Work intensification, excessive monitoring, loss of autonomy or oversight workload harm the health and engagement of the people affected.</td>
 <td>Objectives and workloads not reviewed after AI; usage data used to monitor people; excessive review volumes.</td>
-<td>Review of the occupational risk assessment, including psychosocial risks, and purpose limitation (50 §9.2); oversight design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); pulse survey (IND-ADO-15, 41).</td>
+<td>Review of the occupational risk assessment, including psychosocial risks, and purpose limitation (50 §9.2); oversight design (P17); pulse survey (IND-ADO-15, 41).</td>
 <td>4–6</td>
 </tr>
 </tbody>
@@ -1714,7 +1720,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-SEG-05</strong></td>
 <td><strong>Data or model poisoning.</strong> Manipulation of training, fine-tuning or evaluation data.</td>
 <td>Open sources; uncontrolled ingestion.</td>
-<td>SEG-08; lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>SEG-08; lineage (P16).</td>
 <td>4, 5</td>
 </tr>
 <tr>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -413,7 +419,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
-<td>The AI Product Owner. In phase 7, with the data from <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (value realisation tracking).</td>
+<td>The AI Product Owner. In phase 7, with the data from <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (value realisation tracking).</td>
 </tr>
 <tr>
 <td><strong>Who verifies it</strong></td>
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td>T05 · Ambition classifier (module of <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>T05 · Ambition classifier (module of <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -482,7 +488,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Applicable intensity</td>
 <td></td>
-<td>Lite · Enterprise. Transform implies Enterprise (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterion 7).</td>
+<td>Lite · Enterprise. Transform implies Enterprise (P04, criterion 7).</td>
 </tr>
 </tbody>
 </table></div>
@@ -644,7 +650,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Guidance on evidence: in phase 1 reasoning is sufficient; in phase 2, the value hypothesis (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>) must be consistent with the answers; in phase 7 data is used: composition of validated value (efficiencies versus return), redesigned processes, approved role changes and attributable revenue.</p>
+<p>Guidance on evidence: in phase 1 reasoning is sufficient; in phase 2, the value hypothesis (P08) must be consistent with the answers; in phase 7 data is used: composition of validated value (efficiencies versus return), redesigned processes, approved role changes and attributable revenue.</p>
 <hr />
 <h2 id="decision-rule"><span class="antetitulo">05</span>Decision rule</h2>
 <p>Apply the steps in order:</p>
@@ -675,7 +681,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>4</td>
 <td>Consistency check against question 5.</td>
-<td>If 5 is &quot;Yes&quot; and the result is Transform, there is an inconsistency: it is justified or reclassified. If 5 is &quot;No&quot; and the result is Optimise, check whether the initiative supports a critical function (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterion 6).</td>
+<td>If 5 is &quot;Yes&quot; and the result is Transform, there is an inconsistency: it is justified or reclassified. If 5 is &quot;No&quot; and the result is Optimise, check whether the initiative supports a critical function (P04, criterion 6).</td>
 </tr>
 </tbody>
 </table></div>
@@ -720,7 +726,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>If the declared level does not match the level from the rule, the rule prevails unless the competent body takes a reasoned decision, which is recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<p>If the declared level does not match the level from the rule, the rule prevails unless the competent body takes a reasoned decision, which is recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
 <p><strong>Who decides according to the level</strong> (00 §4.1):</p>
 <div class="tabla"><table>
 <thead>
@@ -744,7 +750,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Transform</td>
 <td>Board or senior management, explicitly.</td>
-<td>Enterprise intensity; board approval at G2 and G7; learning milestones and investment limit per stage in <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td>Enterprise intensity; board approval at G2 and G7; learning milestones and investment limit per stage in <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -812,7 +818,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Each change generates a classification change event in the initiative register (03 §3.3) and requires <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> to be reviewed.</p>
+<p>Each change generates a classification change event in the initiative register (03 §3.3) and requires <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> to be reviewed.</p>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">09</span>Quality criteria</h2>
 <p>The formal criteria are in document 21 (see criteria G1.xx, G2.xx and G7.xx).</p>
@@ -857,7 +863,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Classification changes are recorded and <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> has been reviewed.</td>
+<td>Classification changes are recorded and <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> has been reviewed.</td>
 <td></td>
 </tr>
 </tbody>

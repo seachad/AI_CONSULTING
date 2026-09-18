@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>In phase 2, before G2, in parallel with the value hypothesis canvas (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>). The baseline is frozen at G2 and used in phases 5, 6 and 7.</td>
+<td>In phase 2, before G2, in parallel with the value hypothesis canvas (P08). The baseline is frozen at G2 and used in phases 5, 6 and 7.</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -467,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Version of the associated canvas</td>
 <td></td>
-<td>Version of <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> to which this baseline corresponds.</td>
+<td>Version of <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> to which this baseline corresponds.</td>
 </tr>
 <tr>
 <td>Document version</td>
@@ -683,10 +689,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The unit values are used in the <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> formula (units × unit value). If they change after G2, this is recorded in section 9.</p>
+<p>The unit values are used in the <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> formula (units × unit value). If they change after G2, this is recorded in section 9.</p>
 <hr />
 <h2 id="control-group"><span class="antetitulo">07</span>Control group</h2>
-<p>Complete if the attribution method in <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> is a control group.</p>
+<p>Complete if the attribution method in <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> is a control group.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -833,7 +839,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Each <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> metric has an operational definition, formula and source.</td>
+<td>Each <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> metric has an operational definition, formula and source.</td>
 <td>Met · Not met · Not applicable · Pending</td>
 </tr>
 <tr>

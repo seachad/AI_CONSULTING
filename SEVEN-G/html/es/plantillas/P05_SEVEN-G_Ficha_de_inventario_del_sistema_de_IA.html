@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>T02 · Inventario de sistemas de IA (módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Estructura de detalle en el <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
+<td>T02 · Inventario de sistemas de IA (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Estructura de detalle en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -457,7 +463,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código del sistema</td>
 <td></td>
-<td>Código persistente asignado por el inventario según el <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
+<td>Código persistente asignado por el inventario según el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
 </tr>
 <tr>
 <td>Nombre del sistema</td>
@@ -530,7 +536,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Situación del sistema</td>
 <td></td>
-<td>Previsto · En construcción o integración · En piloto · En producción · Suspendido · Retirado. Lista propuesta, a confirmar en el <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
+<td>Previsto · En construcción o integración · En piloto · En producción · Suspendido · Retirado. Lista propuesta, a confirmar en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
 </tr>
 <tr>
 <td>Fase y estado de la iniciativa</td>
@@ -578,7 +584,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad</td>
 <td></td>
-<td>Lite · Enterprise (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (P04).</td>
 </tr>
 <tr>
 <td>Tecnología</td>
@@ -598,7 +604,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Clasificación regulatoria</td>
 <td></td>
-<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (P11).</td>
 </tr>
 <tr>
 <td>Tipo de valor</td>
@@ -610,7 +616,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Si la tecnología es &quot;Reglas (no es IA)&quot;, se documenta el motivo y se valora si debe mantenerse en el inventario.</p>
 <hr />
 <h2 id="rol-de-la-compania-segun-el-reglamento-europeo-de-ia"><span class="antetitulo">05</span>Rol de la compañía según el Reglamento Europeo de IA</h2>
-<p>Marque todos los roles que correspondan. La determinación final se valida en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> con criterio jurídico. <em>Este documento no constituye asesoramiento jurídico.</em></p>
+<p>Marque todos los roles que correspondan. La determinación final se valida en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> con criterio jurídico. <em>Este documento no constituye asesoramiento jurídico.</em></p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -681,7 +687,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registro en la base de datos de la UE <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Sí · No · No aplica. Solo para los sistemas y roles que lo exijan según <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Sí · No · No aplica. Solo para los sistemas y roles que lo exijan según <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -761,14 +767,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td>N1 Estándar · N2 Reforzado · N3 Crítico</td>
 <td>Referencia y vencimiento</td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> y fecha</td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> y fecha</td>
 </tr>
 <tr>
 <td><em>(ejemplo ilustrativo)</em> Proveedor X</td>
 <td>Modelo de lenguaje por API</td>
 <td>N2 Reforzado</td>
 <td>CT-0000, vence 30-06-2028</td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> de 10-11-2026, Conforme con observaciones</td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> de 10-11-2026, Conforme con observaciones</td>
 </tr>
 </tbody>
 </table></div>
@@ -819,7 +825,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Clasificación regulatoria validada</td>
 <td></td>
-<td>Fecha de <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y persona con criterio jurídico que la valida.</td>
+<td>Fecha de <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y persona con criterio jurídico que la valida.</td>
 </tr>
 <tr>
 <td>Evaluación de impacto en protección de datos</td>
@@ -839,12 +845,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Supervisión humana</td>
 <td></td>
-<td>Resumen y referencia a <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Resumen y referencia a <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
 </tr>
 <tr>
 <td>Nivel de riesgo residual principal</td>
 <td></td>
-<td>Bajo · Medio · Alto · Crítico (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
+<td>Bajo · Medio · Alto · Crítico (P12).</td>
 </tr>
 <tr>
 <td>No conformidades abiertas</td>
@@ -936,13 +942,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Tratamiento de datos y modelos</td>
 <td></td>
-<td>Eliminación, conservación o transferencia. Referencia a <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td>Eliminación, conservación o transferencia. Referencia a <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">12</span>Criterios de calidad</h2>
-<p>Los criterios formales están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx y R6.xx) y el detalle del inventario en el <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</p>
+<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx y R6.xx) y el detalle del inventario en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -969,7 +975,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>El rol regulatorio está justificado y es coherente con <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>El rol regulatorio está justificado y es coherente con <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -984,7 +990,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Responsables asignados coherentes con <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+<td>Responsables asignados coherentes con <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
 <td></td>
 </tr>
 <tr>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>Throughout phase 6. It is opened at go-live and closed at retirement (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</td>
+<td>Throughout phase 6. It is opened at go-live and closed at retirement (P30).</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -433,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
-<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Lineage · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Rollback · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> Operations manual (types of change) · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Alerts · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Response plan · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Risk register · document 37.</td>
+<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Lineage · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Rollback · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Operations manual (types of change) · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Alerts · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Response plan · <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Risk register · document 37.</td>
 </tr>
 </tbody>
 </table></div>
@@ -460,7 +466,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>AI system(s)</td>
@@ -568,7 +574,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Detected by</td>
 <td></td>
-<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> alert (ID) · User · Affected person · Supplier · Audit · Other.</td>
+<td><a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> alert (ID) · User · Affected person · Supplier · Audit · Other.</td>
 </tr>
 <tr>
 <td>Estimated start date and time</td>
@@ -578,7 +584,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Affected system version</td>
 <td></td>
-<td>Model, instructions, knowledge base (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Model, instructions, knowledge base (P16).</td>
 </tr>
 <tr>
 <td>Description</td>
@@ -608,7 +614,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Reports checked</td>
 <td></td>
-<td>Result of the boxes in block 8 of <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>: whether it applies, who reported, when and evidence.</td>
+<td>Result of the boxes in block 8 of <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>: whether it applies, who reported, when and evidence.</td>
 </tr>
 <tr>
 <td>Root cause</td>
@@ -628,12 +634,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Effect on the risk register</td>
 <td></td>
-<td>Risks reviewed in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and change in level.</td>
+<td>Risks reviewed in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and change in level.</td>
 </tr>
 <tr>
 <td>Effect on classification or intensity <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Does it require <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> or <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> to be reviewed?</td>
+<td>Does it require <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> or <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> to be reviewed?</td>
 </tr>
 <tr>
 <td>Economic impact</td>
@@ -648,7 +654,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Lessons learned</td>
 <td></td>
-<td>What will be done differently; carried over to <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> and to C5.</td>
+<td>What will be done differently; carried over to <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> and to C5.</td>
 </tr>
 <tr>
 <td>Closed by</td>
@@ -660,7 +666,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="change-log"><span class="antetitulo">04</span>Change log</h2>
 <h3 id="4-1-summary">4.1 Summary</h3>
-<p><strong>Type:</strong> Minor · Relevant · Emergency (defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>). <strong>Component:</strong> Model · System instructions · Knowledge base · Training data · Agent tools or permissions · Autonomy level · Monitoring thresholds · Integration or infrastructure · Supplier · Population or purpose. <strong>Status:</strong> Requested · Approved · Executed · Rolled back · Rejected.</p>
+<p><strong>Type:</strong> Minor · Relevant · Emergency (defined in <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a>). <strong>Component:</strong> Model · System instructions · Knowledge base · Training data · Agent tools or permissions · Autonomy level · Monitoring thresholds · Integration or infrastructure · Supplier · Population or purpose. <strong>Status:</strong> Requested · Approved · Executed · Rolled back · Rejected.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -731,7 +737,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Previous and new version</td>
 <td></td>
-<td>Updates <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Updates <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
 </tr>
 <tr>
 <td>Tests performed and result</td>
@@ -741,12 +747,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Applicable rollback plan</td>
 <td></td>
-<td>Reference to <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>; has it been updated?</td>
+<td>Reference to <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>; has it been updated?</td>
 </tr>
 <tr>
 <td>Does it change the autonomy level, the purpose or the population?</td>
 <td></td>
-<td>Yes · No. If Yes, it requires verification and a decision equivalent to G4/G5 and a new sign-off (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>).</td>
+<td>Yes · No. If Yes, it requires verification and a decision equivalent to G4/G5 and a new sign-off (P23).</td>
 </tr>
 <tr>
 <td>Does it require reviewing the regulatory classification, intensity or risks?</td>
@@ -863,7 +869,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Relevant changes have tests, prior approval and an updated <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Relevant changes have tests, prior approval and an updated <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -919,7 +925,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Review</td>
-<td>R6 decision-maker (recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>R6 decision-maker (recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>

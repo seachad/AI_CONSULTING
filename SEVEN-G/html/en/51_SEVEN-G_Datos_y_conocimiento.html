@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -405,7 +411,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Data governance <strong>applied to AI</strong>: ownership, quality, catalogue, legal basis, minimisation and retention.</li>
 <li>The data requirements in <strong>each phase of the lifecycle</strong>, with particular attention to the availability and quality assessment in phase 3.</li>
 <li>The data governance requirements of <strong>Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a></strong> for high-risk systems, in summary.</li>
-<li><strong>Data and model lineage</strong> (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</li>
+<li><strong>Data and model lineage</strong> (P16).</li>
 <li><strong>Synthetic data</strong>.</li>
 <li><strong>Personal data</strong> in training, in prompts and in outputs.</li>
 <li><strong>Knowledge</strong> as a source for generative AI: sources, curation, validity, permissions and critical knowledge that depends on a few people.</li>
@@ -862,7 +868,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>When the company acts as the <strong>deployer</strong> of a supplier's high-risk system, it must ensure that the <strong>input data</strong> under its control are relevant and sufficiently representative in view of the intended purpose (Art. 26(4)), and require the necessary information from the supplier (document 36).</p>
 <p>This document does not constitute legal advice.</p>
 <hr />
-<h2 id="data-and-model-lineage-p16"><span class="antetitulo">07</span>Data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>)</h2>
+<h2 id="data-and-model-lineage-p16"><span class="antetitulo">07</span>Data and model lineage (P16)</h2>
 <h3 id="7-1-what-it-is-and-what-it-is-for">7.1 What it is and what it is for</h3>
 <p>Lineage makes it possible to answer, for any output of an AI system: <strong>which data, which transformations, which model version, which configuration and which knowledge sources produced it</strong>. It is the basis for investigating incidents, handling individuals' rights, auditing, reproducing results, managing changes and retiring systems.</p>
 <h3 id="7-2-minimum-content">7.2 Minimum content</h3>
@@ -1076,7 +1082,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="9-3-in-outputs">9.3 In outputs</h3>
-<p>AI systems may <strong>infer</strong> personal data that nobody has provided (for example, traits, preferences or sensitive situations). An inference about an identified person is personal data. If the inference relates to a special category, its rules apply. The design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) <strong>must</strong> identify which inferences the system produces and whether they are necessary and lawful.</p>
+<p>AI systems may <strong>infer</strong> personal data that nobody has provided (for example, traits, preferences or sensitive situations). An inference about an identified person is personal data. If the inference relates to a special category, its rules apply. The design (P17) <strong>must</strong> identify which inferences the system produces and whether they are necessary and lawful.</p>
 <h3 id="9-4-data-for-detecting-bias">9.4 Data for detecting bias</h3>
 <p>Detecting bias may require data on protected characteristics that the company does not normally process. For high-risk systems, the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> exceptionally allows the processing of special categories for that purpose and with strict safeguards (Art. 10(5)), and Regulation (EU) 2026/1744 extends that possibility beyond high risk subject to a strict necessity criterion (document 34 §3.2). In all cases, the decision is taken with the data protection officer and the legal analysis, documented in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, and measures such as separation, pseudonymisation, restricted access and deletion at the end of the analysis are applied.</p>
 <hr />
@@ -1335,7 +1341,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="11-2-third-party-general-purpose-models">11.2 Third-party general-purpose models</h3>
-<p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers of general-purpose AI models</strong> to put in place a policy to comply with copyright law, including rights reservations, and to publish a sufficiently detailed summary of the content used for training (Art. 53(1)(c) and (d)). A company that uses those models <strong>should</strong> request and retain that information in the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) and assess the contractual safeguards against third-party claims (document 36).</p>
+<p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers of general-purpose AI models</strong> to put in place a policy to comply with copyright law, including rights reservations, and to publish a sufficiently detailed summary of the content used for training (Art. 53(1)(c) and (d)). A company that uses those models <strong>should</strong> request and retain that information in the supplier assessment (P14) and assess the contractual safeguards against third-party claims (document 36).</p>
 <h3 id="11-3-generated-outputs">11.3 Generated outputs</h3>
 <div class="tabla"><table>
 <thead>
