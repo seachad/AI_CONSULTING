@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -662,158 +668,158 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a></td>
-<td><a href="plantillas/%5BP01%5D(plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html)_SEVEN-G_Carta_de_la_iniciativa.html">Initiative charter</a></td>
-<td><a href="plantillas/%5BP01%5D(plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html)_SEVEN-G_Carta_de_la_iniciativa.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP01%5D(plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html)_SEVEN-G_Carta_de_la_iniciativa.pdf">PDF</a></td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">Initiative charter</a></td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">HTML</a> · <a href="../../pdf/en/plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
-<td><a href="plantillas/%5BP02%5D(plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html)_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">Context and constraints statement</a></td>
-<td><a href="plantillas/%5BP02%5D(plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html)_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP02%5D(plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html)_SEVEN-G_Declaracion_de_contexto_y_restricciones.pdf">PDF</a></td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">Context and constraints statement</a></td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">HTML</a> · <a href="../../pdf/en/plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
-<td><a href="plantillas/%5BP03%5D(plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html)_SEVEN-G_Registro_de_asignacion_de_roles.html">Role assignment record</a></td>
-<td><a href="plantillas/%5BP03%5D(plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html)_SEVEN-G_Registro_de_asignacion_de_roles.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP03%5D(plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html)_SEVEN-G_Registro_de_asignacion_de_roles.pdf">PDF</a></td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">Role assignment record</a></td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">HTML</a> · <a href="../../pdf/en/plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
-<td><a href="plantillas/%5BP04%5D(plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html)_SEVEN-G_Determinacion_de_intensidad.html">Intensity determination</a></td>
-<td><a href="plantillas/%5BP04%5D(plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html)_SEVEN-G_Determinacion_de_intensidad.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP04%5D(plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html)_SEVEN-G_Determinacion_de_intensidad.pdf">PDF</a></td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">Intensity determination</a></td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">HTML</a> · <a href="../../pdf/en/plantillas/P04_SEVEN-G_Determinacion_de_intensidad.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
-<td><a href="plantillas/%5BP05%5D(plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html)_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">AI system inventory record</a></td>
-<td><a href="plantillas/%5BP05%5D(plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html)_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP05%5D(plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html)_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.pdf">PDF</a></td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">AI system inventory record</a></td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">HTML</a> · <a href="../../pdf/en/plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
-<td><a href="plantillas/%5BP06%5D(plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html)_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">Opportunity portfolio and screening notes</a></td>
-<td><a href="plantillas/%5BP06%5D(plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html)_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP06%5D(plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html)_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.pdf">PDF</a></td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">Opportunity portfolio and screening notes</a></td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">HTML</a> · <a href="../../pdf/en/plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
-<td><a href="plantillas/%5BP07%5D(plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html)_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">Sphere and ambition classification</a></td>
-<td><a href="plantillas/%5BP07%5D(plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html)_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP07%5D(plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html)_SEVEN-G_Clasificacion_de_esfera_y_ambicion.pdf">PDF</a></td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">Sphere and ambition classification</a></td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">HTML</a> · <a href="../../pdf/en/plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
-<td><a href="plantillas/%5BP08%5D(plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html)_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">Value hypothesis canvas</a></td>
-<td><a href="plantillas/%5BP08%5D(plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html)_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP08%5D(plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html)_SEVEN-G_Lienzo_de_hipotesis_de_valor.pdf">PDF</a></td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">Value hypothesis canvas</a></td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">HTML</a> · <a href="../../pdf/en/plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
-<td><a href="plantillas/%5BP09%5D(plantillas/P09_SEVEN-G_Linea_base.html)_SEVEN-G_Linea_base.html">Baseline</a></td>
-<td><a href="plantillas/%5BP09%5D(plantillas/P09_SEVEN-G_Linea_base.html)_SEVEN-G_Linea_base.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP09%5D(plantillas/P09_SEVEN-G_Linea_base.html)_SEVEN-G_Linea_base.pdf">PDF</a></td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">Baseline</a></td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">HTML</a> · <a href="../../pdf/en/plantillas/P09_SEVEN-G_Linea_base.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
-<td><a href="plantillas/%5BP10%5D(plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html)_SEVEN-G_Evaluacion_de_viabilidad.html">Feasibility assessment</a></td>
-<td><a href="plantillas/%5BP10%5D(plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html)_SEVEN-G_Evaluacion_de_viabilidad.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP10%5D(plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html)_SEVEN-G_Evaluacion_de_viabilidad.pdf">PDF</a></td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">Feasibility assessment</a></td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">HTML</a> · <a href="../../pdf/en/plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td><a href="plantillas/%5BP11%5D(plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html)_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">Regulatory classification and impact assessments</a></td>
-<td><a href="plantillas/%5BP11%5D(plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html)_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP11%5D(plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html)_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.pdf">PDF</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">Regulatory classification and impact assessments</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">HTML</a> · <a href="../../pdf/en/plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
-<td><a href="plantillas/%5BP12%5D(plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html)_SEVEN-G_Matriz_y_registro_de_riesgos.html">Risk matrix and register</a></td>
-<td><a href="plantillas/%5BP12%5D(plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html)_SEVEN-G_Matriz_y_registro_de_riesgos.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP12%5D(plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html)_SEVEN-G_Matriz_y_registro_de_riesgos.pdf">PDF</a></td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">Risk matrix and register</a></td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">HTML</a> · <a href="../../pdf/en/plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
-<td><a href="plantillas/%5BP13%5D(plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html)_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">Mitigation and contingency plan</a></td>
-<td><a href="plantillas/%5BP13%5D(plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html)_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP13%5D(plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html)_SEVEN-G_Plan_de_mitigacion_y_contingencia.pdf">PDF</a></td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">Mitigation and contingency plan</a></td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">HTML</a> · <a href="../../pdf/en/plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
-<td><a href="plantillas/%5BP14%5D(plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html)_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">AI supplier assessment</a></td>
-<td><a href="plantillas/%5BP14%5D(plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html)_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP14%5D(plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html)_SEVEN-G_Evaluacion_de_proveedor_de_IA.pdf">PDF</a></td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">AI supplier assessment</a></td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">HTML</a> · <a href="../../pdf/en/plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
-<td><a href="plantillas/%5BP15%5D(plantillas/P15_SEVEN-G_Registro_de_arquitectura.html)_SEVEN-G_Registro_de_arquitectura.html">Architecture record</a></td>
-<td><a href="plantillas/%5BP15%5D(plantillas/P15_SEVEN-G_Registro_de_arquitectura.html)_SEVEN-G_Registro_de_arquitectura.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP15%5D(plantillas/P15_SEVEN-G_Registro_de_arquitectura.html)_SEVEN-G_Registro_de_arquitectura.pdf">PDF</a></td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">Architecture record</a></td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">HTML</a> · <a href="../../pdf/en/plantillas/P15_SEVEN-G_Registro_de_arquitectura.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
-<td><a href="plantillas/%5BP16%5D(plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html)_SEVEN-G_Linaje_de_datos_y_modelos.html">Data and model lineage</a></td>
-<td><a href="plantillas/%5BP16%5D(plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html)_SEVEN-G_Linaje_de_datos_y_modelos.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP16%5D(plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html)_SEVEN-G_Linaje_de_datos_y_modelos.pdf">PDF</a></td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">Data and model lineage</a></td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">HTML</a> · <a href="../../pdf/en/plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
-<td><a href="plantillas/%5BP17%5D(plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html)_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">Governance and human oversight design</a></td>
-<td><a href="plantillas/%5BP17%5D(plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html)_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP17%5D(plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html)_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.pdf">PDF</a></td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">Governance and human oversight design</a></td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">HTML</a> · <a href="../../pdf/en/plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
-<td><a href="plantillas/%5BP18%5D(plantillas/P18_SEVEN-G_Diseno_de_seguridad.html)_SEVEN-G_Diseno_de_seguridad.html">Security design (including agents)</a></td>
-<td><a href="plantillas/%5BP18%5D(plantillas/P18_SEVEN-G_Diseno_de_seguridad.html)_SEVEN-G_Diseno_de_seguridad.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP18%5D(plantillas/P18_SEVEN-G_Diseno_de_seguridad.html)_SEVEN-G_Diseno_de_seguridad.pdf">PDF</a></td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">Security design (including agents)</a></td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">HTML</a> · <a href="../../pdf/en/plantillas/P18_SEVEN-G_Diseno_de_seguridad.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
-<td><a href="plantillas/%5BP19%5D(plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html)_SEVEN-G_Plan_de_reversion_y_prueba.html">Rollback plan and test</a></td>
-<td><a href="plantillas/%5BP19%5D(plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html)_SEVEN-G_Plan_de_reversion_y_prueba.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP19%5D(plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html)_SEVEN-G_Plan_de_reversion_y_prueba.pdf">PDF</a></td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">Rollback plan and test</a></td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">HTML</a> · <a href="../../pdf/en/plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
-<td><a href="plantillas/%5BP20%5D(plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html)_SEVEN-G_Plan_de_adopcion_y_capacidad.html">Adoption and capacity plan</a></td>
-<td><a href="plantillas/%5BP20%5D(plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html)_SEVEN-G_Plan_de_adopcion_y_capacidad.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP20%5D(plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html)_SEVEN-G_Plan_de_adopcion_y_capacidad.pdf">PDF</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">Adoption and capacity plan</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">HTML</a> · <a href="../../pdf/en/plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
-<td><a href="plantillas/%5BP21%5D(plantillas/P21_SEVEN-G_Informe_de_entrega.html)_SEVEN-G_Informe_de_entrega.html">Delivery report</a></td>
-<td><a href="plantillas/%5BP21%5D(plantillas/P21_SEVEN-G_Informe_de_entrega.html)_SEVEN-G_Informe_de_entrega.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP21%5D(plantillas/P21_SEVEN-G_Informe_de_entrega.html)_SEVEN-G_Informe_de_entrega.pdf">PDF</a></td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">Delivery report</a></td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">HTML</a> · <a href="../../pdf/en/plantillas/P21_SEVEN-G_Informe_de_entrega.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td><a href="plantillas/%5BP22%5D(plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html)_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">Validation and pilot results</a></td>
-<td><a href="plantillas/%5BP22%5D(plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html)_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP22%5D(plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html)_SEVEN-G_Resultados_de_validacion_y_del_piloto.pdf">PDF</a></td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">Validation and pilot results</a></td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">HTML</a> · <a href="../../pdf/en/plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td><a href="plantillas/%5BP23%5D(plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html)_SEVEN-G_Firma_de_puesta_en_produccion.html">Go-live sign-off</a></td>
-<td><a href="plantillas/%5BP23%5D(plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html)_SEVEN-G_Firma_de_puesta_en_produccion.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP23%5D(plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html)_SEVEN-G_Firma_de_puesta_en_produccion.pdf">PDF</a></td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">Go-live sign-off</a></td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">HTML</a> · <a href="../../pdf/en/plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
-<td><a href="plantillas/%5BP24%5D(plantillas/P24_SEVEN-G_Manual_de_operacion.html)_SEVEN-G_Manual_de_operacion.html">Operations manual</a></td>
-<td><a href="plantillas/%5BP24%5D(plantillas/P24_SEVEN-G_Manual_de_operacion.html)_SEVEN-G_Manual_de_operacion.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP24%5D(plantillas/P24_SEVEN-G_Manual_de_operacion.html)_SEVEN-G_Manual_de_operacion.pdf">PDF</a></td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">Operations manual</a></td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">HTML</a> · <a href="../../pdf/en/plantillas/P24_SEVEN-G_Manual_de_operacion.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
-<td><a href="plantillas/%5BP25%5D(plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html)_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">Monitoring and alerting configuration</a></td>
-<td><a href="plantillas/%5BP25%5D(plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html)_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP25%5D(plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html)_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.pdf">PDF</a></td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">Monitoring and alerting configuration</a></td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">HTML</a> · <a href="../../pdf/en/plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
-<td><a href="plantillas/%5BP26%5D(plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html)_SEVEN-G_Plan_de_respuesta_a_incidentes.html">Incident response plan</a></td>
-<td><a href="plantillas/%5BP26%5D(plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html)_SEVEN-G_Plan_de_respuesta_a_incidentes.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP26%5D(plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html)_SEVEN-G_Plan_de_respuesta_a_incidentes.pdf">PDF</a></td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">Incident response plan</a></td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">HTML</a> · <a href="../../pdf/en/plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td><a href="plantillas/%5BP27%5D(plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html)_SEVEN-G_Registro_de_incidentes_y_cambios.html">Incident and change log</a></td>
-<td><a href="plantillas/%5BP27%5D(plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html)_SEVEN-G_Registro_de_incidentes_y_cambios.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP27%5D(plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html)_SEVEN-G_Registro_de_incidentes_y_cambios.pdf">PDF</a></td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">Incident and change log</a></td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">HTML</a> · <a href="../../pdf/en/plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
-<td><a href="plantillas/%5BP28%5D(plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html)_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">Value realisation tracking</a></td>
-<td><a href="plantillas/%5BP28%5D(plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html)_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP28%5D(plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html)_SEVEN-G_Seguimiento_de_realizacion_de_valor.pdf">PDF</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">Value realisation tracking</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">HTML</a> · <a href="../../pdf/en/plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
-<td><a href="plantillas/%5BP29%5D(plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html)_SEVEN-G_Registro_de_decision_de_gate.html"><em>Gate</em> decision record</a></td>
-<td><a href="plantillas/%5BP29%5D(plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html)_SEVEN-G_Registro_de_decision_de_gate.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP29%5D(plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html)_SEVEN-G_Registro_de_decision_de_gate.pdf">PDF</a></td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html"><em>Gate</em> decision record</a></td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">HTML</a> · <a href="../../pdf/en/plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
-<td><a href="plantillas/%5BP30%5D(plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html)_SEVEN-G_Decision_de_escalado_o_retirada.html">Scale or retire decision</a></td>
-<td><a href="plantillas/%5BP30%5D(plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html)_SEVEN-G_Decision_de_escalado_o_retirada.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP30%5D(plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html)_SEVEN-G_Decision_de_escalado_o_retirada.pdf">PDF</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">Scale or retire decision</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">HTML</a> · <a href="../../pdf/en/plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.pdf">PDF</a></td>
 </tr>
 <tr>
 <td><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
-<td><a href="plantillas/%5BP31%5D(plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html)_SEVEN-G_Ficha_de_caso_de_uso.html">Use case record</a></td>
-<td><a href="plantillas/%5BP31%5D(plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html)_SEVEN-G_Ficha_de_caso_de_uso.html">HTML</a> · <a href="../../pdf/en/plantillas/%5BP31%5D(plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html)_SEVEN-G_Ficha_de_caso_de_uso.pdf">PDF</a></td>
+<td><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">Use case record</a></td>
+<td><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">HTML</a> · <a href="../../pdf/en/plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.pdf">PDF</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -830,12 +836,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
-<td>[<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register](../../herramientas/<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>_registro_iniciativas/registro.html)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01 · Initiative register</a></td>
 <td>HTML</td>
 </tr>
 <tr>
 <td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
-<td>[<a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · Connector from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register to the board dashboard](../../herramientas/<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>_panel_consejo/index.html)</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html">T17 · Connector from the T01 register to the board dashboard</a></td>
 <td>HTML</td>
 </tr>
 </tbody>
@@ -880,7 +886,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 (function () {
   var raiz = document.documentElement;
   var contenido = document.getElementById('contenido');
-  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"What SEVEN-G is and how it helps companies","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":true}];
+  var navItems = [{"href":"index.html","title":"SEVEN-G Library","blockCode":"A","blockLabel":"A · Foundations","active":true},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Risk matrix and register","blockCode":"H","blockLabel":"H · Templates","active":false}];
 
   function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   function asArray(v) { return Array.isArray(v) ? v : []; }

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -475,7 +481,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 (function () {
   var raiz = document.documentElement;
   var contenido = document.getElementById('contenido');
-  var navItems = [{"href":"00_SPHERES_Que_es_y_para_que_sirve.html","title":"What SPHERES is and how it helps","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"index.html","title":"SPHERES Library","blockCode":"A","blockLabel":"A · Foundations","active":true}];
+  var navItems = [{"href":"00_SPHERES_Que_es_y_para_que_sirve.html","title":"What SPHERES is and how it helps","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"01_SPHERES_Niveles_de_ambicion.html","title":"Ambition levels","blockCode":"A","blockLabel":"A · Foundations","active":false},{"href":"02_SPHERES_Esferas_donde_se_genera_valor.html","title":"Spheres where value is created","blockCode":"B","blockLabel":"B · The spheres","active":false},{"href":"03_SPHERES_Esferas_habilitadoras.html","title":"Enabling spheres","blockCode":"B","blockLabel":"B · The spheres","active":false},{"href":"04_SPHERES_Regulacion_y_gobierno_de_la_IA.html","title":"Regulation and AI governance","blockCode":"B","blockLabel":"B · The spheres","active":false},{"href":"05_SPHERES_Conversacion_con_el_consejo.html","title":"Conversation with the board","blockCode":"C","blockLabel":"C · Board","active":false},{"href":"index.html","title":"SPHERES Library","blockCode":"A","blockLabel":"A · Foundations","active":true}];
 
   function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   function asArray(v) { return Array.isArray(v) ? v : []; }

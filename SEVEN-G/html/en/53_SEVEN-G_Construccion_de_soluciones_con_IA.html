@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -436,7 +442,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>The AI tools that help build it</strong></td>
 <td>Assistants, agents and models used by the team.</td>
-<td>Inventory (T02) as corporate or team use; policy (document 31); supplier (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>); this document.</td>
+<td>Inventory (T02) as corporate or team use; policy (document 31); supplier (P14); this document.</td>
 </tr>
 </tbody>
 </table></div>
@@ -898,7 +904,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Breach log.</strong> SPAD considers it optional. In SEVEN-G it <strong>should</strong> be maintained in Enterprise, within <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, with date, work topic, phase, type of breach, tool or model and action. Repeated patterns feed lessons learned (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>) and, if they reveal an unsuitable tool, the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</p>
+<p><strong>Breach log.</strong> SPAD considers it optional. In SEVEN-G it <strong>should</strong> be maintained in Enterprise, within <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, with date, work topic, phase, type of breach, tool or model and action. Repeated patterns feed lessons learned (P30) and, if they reveal an unsuitable tool, the supplier assessment (P14).</p>
 <hr />
 <h2 id="seven-g-minimum-requirements-for-ai-generated-code"><span class="antetitulo">07</span>SEVEN-G minimum requirements for AI-generated code</h2>
 <p>They apply to all code, configuration, queries, infrastructure as code, tests or technical documentation generated wholly or partly with AI that forms part of an initiative's solution, regardless of the engineering method.</p>
@@ -914,7 +920,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>It <strong>must</strong> be possible to identify which parts of the solution were generated with AI, with which tool and in which work topic or initiative (for example, through metadata in the changes or in the delivery report).</li>
 <li>Design decisions <strong>must</strong> be recorded in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, not only in conversations with the tool.</li>
 <li>In Enterprise, the relevant prompts and the accepted outputs of the plan and review phases <strong>should</strong> be retained, in line with the company's retention policy and without unnecessary personal data.</li>
-<li>The version of each delivery <strong>must</strong> be linked to its rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</li>
+<li>The version of each delivery <strong>must</strong> be linked to its rollback plan (P19).</li>
 </ul>
 <h3 id="7-3-testing">7.3 Testing</h3>
 <ul>
@@ -934,7 +940,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <h3 id="7-5-intellectual-property-and-licences">7.5 Intellectual property and licences</h3>
 <ul>
-<li>The AI tool <strong>must</strong> be approved by the company, with reviewed contractual terms on ownership and use of outputs, use of input data for training and, where applicable, warranties or indemnities (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, document 36).</li>
+<li>The AI tool <strong>must</strong> be approved by the company, with reviewed contractual terms on ownership and use of outputs, use of input data for training and, where applicable, warranties or indemnities (P14, document 36).</li>
 <li>Where the tool offers them, filters or notices of matches with public code <strong>should</strong> be enabled, and flagged matches reviewed.</li>
 <li>The licences of dependencies and of fragments identified as originating from third parties <strong>must</strong> be checked against the company's licensing policy.</li>
 <li>Copyright protection for content generated with little human creative input may be limited or uncertain depending on the jurisdiction. Where ownership of the code is relevant to the business (for example, a marketable product), legal counsel's opinion <strong>must</strong> be obtained and documented in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> or <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>.</li>

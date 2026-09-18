@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -462,7 +468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI systems affected</td>
 <td></td>
-<td>Codes from <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
+<td>Codes from <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
 </tr>
 <tr>
 <td>Supplier</td>
@@ -584,7 +590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Performance in the use case</td>
 <td></td>
 <td></td>
-<td>Results of in-house tests with representative data (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>), not only the supplier's figures.</td>
+<td>Results of in-house tests with representative data (P10), not only the supplier's figures.</td>
 </tr>
 <tr>
 <td>Model or service documentation</td>
@@ -719,7 +725,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Information it provides to enable compliance</td>
 <td></td>
 <td></td>
-<td>Documentation and instructions the company needs according to its own role (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Documentation and instructions the company needs according to its own role (P11).</td>
 </tr>
 <tr>
 <td>Compliance commitment</td>
@@ -963,7 +969,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>What must be resolved, owner and deadline (before signature or before G5).</td>
 </tr>
 <tr>
-<td>Risks for <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>Risks for <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
 <td></td>
 <td>Risks in the TER category or others identified in the assessment.</td>
 </tr>
@@ -1019,12 +1025,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>The risks identified have been carried over to <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>The risks identified have been carried over to <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
 <td></td>
 </tr>
 <tr>
 <td>7</td>
-<td>The supplier is registered in T09 and in record <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
+<td>The supplier is registered in T09 and in record <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1079,7 +1085,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Segregation of duties: whoever negotiated the contract does not verify the assessment; anyone with a conflict of interest with the supplier declares it in <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</p>
+<p>Segregation of duties: whoever negotiated the contract does not verify the assessment; anyone with a conflict of interest with the supplier declares it in <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</p>
 <hr />
 <h2 id="version-control"><span class="antetitulo">09</span>Version control</h2>
 <p><strong>Completed document</strong></p>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -410,7 +416,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Los procedimientos de alta, revisión y baja (sección 7).</li>
 <li>La calidad del inventario y la detección de sistemas no inventariados (secciones 8 y 9).</li>
 </ul>
-<p>La clasificación regulatoria que aquí se describe es un <strong>método de trabajo</strong> para ordenar el análisis. No sustituye el criterio jurídico cualificado que exige 01 §6.5. La clasificación y las obligaciones que se derivan son orientativas: la responsabilidad de la clasificación regulatoria de cada sistema y del cumplimiento, incluida la regulación sectorial aplicable, es de la organización (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</p>
+<p>La clasificación regulatoria que aquí se describe es un <strong>método de trabajo</strong> para ordenar el análisis. No sustituye el criterio jurídico cualificado que exige 01 §6.5. La clasificación y las obligaciones que se derivan son orientativas: la responsabilidad de la clasificación regulatoria de cada sistema y del cumplimiento, incluida la regulación sectorial aplicable, es de la organización (documento 93, sección 11).</p>
 <h3 id="1-1-estado-regulatorio-a-la-fecha-de-consulta">1.1 Estado regulatorio a la fecha de consulta</h3>
 <p>Consulta realizada el 16-09-2026 en fuentes oficiales de la Unión Europea (EUR-Lex y páginas de la Comisión Europea sobre el Reglamento de IA).</p>
 <div class="tabla"><table>
@@ -488,7 +494,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Uso corporativo de IA de propósito general</strong></td>
-<td>Asistentes, suites de productividad y herramientas del catálogo autorizado (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+<td>Asistentes, suites de productividad y herramientas del catálogo autorizado (documento 31).</td>
 <td>Un registro por herramienta autorizada; los usos concretos no se registran individualmente salvo que pasen al ciclo completo.</td>
 <td>Reducido, con licencias y condiciones.</td>
 </tr>
@@ -533,7 +539,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>IA usada por un proveedor para prestar un servicio externalizado a la compañía</td>
 <td>Sí, cuando interviene en decisiones sobre clientes o empleados de la compañía o trata sus datos.</td>
-<td>Riesgo de terceros (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</td>
+<td>Riesgo de terceros (documento 36).</td>
 </tr>
 <tr>
 <td>Herramientas de seguridad con IA (detección de amenazas)</td>
@@ -745,7 +751,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Supervisión humana</td>
-<td>Tipo de supervisión definida en el diseño (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Tipo de supervisión definida en el diseño (P17).</td>
 <td>Lista</td>
 <td>Cond.: en producción</td>
 <td>Validación de cada resultado · Revisión por muestreo · Supervisión de agregados con interruptor de parada · Ninguna</td>
@@ -780,7 +786,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Categoría en el catálogo</td>
-<td>Solo uso corporativo (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §4.2).</td>
+<td>Solo uso corporativo (documento 31 §4.2).</td>
 <td>Lista</td>
 <td>Cond.: uso corporativo</td>
 <td>Autorizada · Autorizada con restricciones · No autorizada</td>
@@ -1099,7 +1105,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Coste recurrente anual</td>
-<td>Referencia al cálculo por caso (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>).</td>
+<td>Referencia al cálculo por caso (documento 42).</td>
 <td>Importe (€) con estado</td>
 <td>Ent.</td>
 <td>Validado · Declarado · Estimado</td>
@@ -1184,7 +1190,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="3-8-correspondencia-con-el-esquema-del-panel-del-consejo">3.8 Correspondencia con el esquema del panel del consejo</h3>
-<p>El inventario alimenta el panel (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>). Correspondencias principales con el esquema de datos del panel: <code>reporte_compania.clasificacion_ria</code> (prohibido, alto_riesgo, transparencia, minimo, no_es_ia) se obtiene de <em>Clasificación regulatoria</em> (Fuera de ámbito por no ser IA → <code>no_es_ia</code>); <code>reporte_compania.controles</code> (<code>RIA</code>, <code>FRIA</code>, <code>DPIA</code>, <code>seguridad</code>…) de la sección 3.5; <code>tags.exposicion</code> y <code>tags.tecnologia</code> de la sección 3.3; <code>estado</code> del caso (En uso, En desarrollo, POC, Desenganchado) de <em>Estado del sistema</em> (En producción → En uso; En desarrollo → En desarrollo; Piloto → POC; Retirado → Desenganchado). Las diferencias de nomenclatura se resolverán al adaptar <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, ola 1).</p>
+<p>El inventario alimenta el panel (T17). Correspondencias principales con el esquema de datos del panel: <code>reporte_compania.clasificacion_ria</code> (prohibido, alto_riesgo, transparencia, minimo, no_es_ia) se obtiene de <em>Clasificación regulatoria</em> (Fuera de ámbito por no ser IA → <code>no_es_ia</code>); <code>reporte_compania.controles</code> (<code>RIA</code>, <code>FRIA</code>, <code>DPIA</code>, <code>seguridad</code>…) de la sección 3.5; <code>tags.exposicion</code> y <code>tags.tecnologia</code> de la sección 3.3; <code>estado</code> del caso (En uso, En desarrollo, POC, Desenganchado) de <em>Estado del sistema</em> (En producción → En uso; En desarrollo → En desarrollo; Piloto → POC; Retirado → Desenganchado). Las diferencias de nomenclatura se resolverán al adaptar <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> (documento 03, ola 1).</p>
 <hr />
 <h2 id="roles-de-la-compania-segun-el-reglamento-de-ia"><span class="antetitulo">04</span>Roles de la compañía según el Reglamento de IA</h2>
 <p>Las obligaciones dependen del <strong>rol</strong> que la compañía tenga respecto de cada sistema, no del sistema en abstracto. Una misma compañía puede tener roles distintos en sistemas distintos, y más de un rol en el mismo sistema.</p>
@@ -1482,7 +1488,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Consulta previa</strong></td>
-<td>Si el riesgo residual sigue siendo alto, consulta a la autoridad de control (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, artículo 36). En SEVEN-G, además, riesgo residual Alto o Crítico con su nivel de aceptación (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.2).</td>
+<td>Si el riesgo residual sigue siendo alto, consulta a la autoridad de control (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, artículo 36). En SEVEN-G, además, riesgo residual Alto o Crítico con su nivel de aceptación (documento 30 §7.2).</td>
 </tr>
 <tr>
 <td><strong>Plantilla</strong></td>
@@ -1556,7 +1562,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Si la compañía es solo responsable del despliegue</strong></td>
-<td>No realiza la evaluación de conformidad, pero debe verificar en la evaluación del proveedor (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) que el sistema dispone de ella y de instrucciones de uso, y cumplir sus obligaciones del artículo 26.</td>
+<td>No realiza la evaluación de conformidad, pero debe verificar en la evaluación del proveedor (P14) que el sistema dispone de ella y de instrucciones de uso, y cumplir sus obligaciones del artículo 26.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1581,7 +1587,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Alto riesgo</strong></td>
 <td>Requisitos del capítulo III, evaluación de conformidad, registro, vigilancia posterior a la comercialización, notificación de incidentes graves.</td>
 <td>Artículo 26; evaluación de impacto en derechos fundamentales en los supuestos de 6.2; evaluación del proveedor.</td>
-<td>Intensidad Enterprise; riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>); seguridad; evaluación de impacto en protección de datos si trata datos personales.</td>
+<td>Intensidad Enterprise; riesgos (P12); seguridad; evaluación de impacto en protección de datos si trata datos personales.</td>
 </tr>
 <tr>
 <td><strong>Excepción del artículo 6.3</strong></td>
@@ -1653,14 +1659,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>Determinar intensidad (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>) y vincular con la iniciativa, si procede.</td>
+<td>Determinar intensidad (P04) y vincular con la iniciativa, si procede.</td>
 <td>Patrocinador, verificado</td>
 <td>En fase 0</td>
 <td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
 </tr>
 <tr>
 <td>6</td>
-<td>Si es uso no autorizado: abrir no conformidad y plan de regularización (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §5).</td>
+<td>Si es uso no autorizado: abrir no conformidad y plan de regularización (documento 31 §5).</td>
 <td>Oficina de IA</td>
 <td>Con el alta</td>
 <td>Registro en T08</td>
@@ -1712,7 +1718,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Por auditoría</strong></td>
-<td>Según plan (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>).</td>
+<td>Según plan (documento 38).</td>
 <td>Muestra de fichas frente a la realidad.</td>
 <td>Auditor de IA</td>
 </tr>
@@ -1732,11 +1738,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td>Decisión de retirada en G7 o bloqueo en la regularización de uso no autorizado.</td>
-<td>Órgano competente (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.3)</td>
+<td>Órgano competente (documento 30 §7.3)</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Ejecutar el plan de retirada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>, T22): desactivación, sustituto, comunicación a afectados.</td>
+<td>Ejecutar el plan de retirada (P30, T22): desactivación, sustituto, comunicación a afectados.</td>
 <td>Responsable de operación</td>
 </tr>
 <tr>
@@ -1887,7 +1893,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Registros de navegación, prevención de fuga de datos y gestión de dispositivos</td>
-<td>Uso no autorizado (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §5.2).</td>
+<td>Uso no autorizado (documento 31 §5.2).</td>
 <td>Seguridad</td>
 </tr>
 <tr>

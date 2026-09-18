@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -425,20 +431,20 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
-<td>Lite may omit the fields marked <strong>(Enterprise)</strong>. Every initiative in production must monitor, as a minimum, performance, availability, cost and the human oversight indicators of <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Lite may omit the fields marked <strong>(Enterprise)</strong>. Every initiative in production must monitor, as a minimum, performance, availability, cost and the human oversight indicators of <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
-<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> Baseline · <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Lineage (drift reference) · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Oversight indicators · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Action log · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Rollback triggers · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> Operations manual · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Incident response · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Value tracking · documents 41 (Indicator catalogue) and 52.</td>
+<td><a href="P09_SEVEN-G_Linea_base.html">P09</a> Baseline · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Lineage (drift reference) · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Oversight indicators · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Action log · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Rollback triggers · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Operations manual · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Incident response · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Value tracking · documents 41 (Indicator catalogue) and 52.</td>
 </tr>
 </tbody>
 </table></div>
 <p>Rules:</p>
 <ul>
-<li>Each rollback trigger in <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> must have an alert in this document.</li>
+<li>Each rollback trigger in <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> must have an alert in this document.</li>
 <li><strong>&quot;No data&quot; is not zero:</strong> the absence of a metric is in itself an alert, never a normal value.</li>
-<li>The severity of an alert is an <strong>initial proposal</strong>; the severity of the incident is classified using the criteria of document 37 (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
-<li>Threshold changes are recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> with their reason.</li>
+<li>The severity of an alert is an <strong>initial proposal</strong>; the severity of the incident is classified using the criteria of document 37 (P26).</li>
+<li>Threshold changes are recorded in <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> with their reason.</li>
 </ul>
 <hr />
 <h2 id="identification"><span class="antetitulo">02</span>Identification</h2>
@@ -454,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>AI system(s)</td>
@@ -546,7 +552,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Actions blocked by limits</td>
 <td>Agent behaviour</td>
 <td>No. of actions blocked by limits or intent-based access control</td>
-<td>Action log (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Action log (P18)</td>
 <td>Continuous</td>
 <td>0–3/day</td>
 <td>&gt; 10/day</td>
@@ -693,7 +699,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="alert-rules"><span class="antetitulo">05</span>Alert rules</h2>
-<p><strong>Proposed initial severity:</strong> S1 Critical · S2 High · S3 Medium · S4 Low (confirmed using document 37). <strong>Associated action:</strong> Review · Apply <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> procedure · Open incident (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) · Activate rollback trigger (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) · Kill switch.</p>
+<p><strong>Proposed initial severity:</strong> S1 Critical · S2 High · S3 Medium · S4 Low (confirmed using document 37). <strong>Associated action:</strong> Review · Apply <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> procedure · Open incident (P26) · Activate rollback trigger (P19) · Kill switch.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -704,7 +710,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Channel</th>
 <th>Maximum acknowledgement time</th>
 <th>Associated action</th>
-<th><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> trigger</th>
+<th><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> trigger</th>
 </tr>
 </thead>
 <tbody>
@@ -735,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Technical on-call</td>
 <td>On-call tool</td>
 <td>4 working hours</td>
-<td>Apply <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> procedure</td>
+<td>Apply <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> procedure</td>
 <td>—</td>
 </tr>
 <tr>
@@ -783,7 +789,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Data for the board dashboard <strong>(Enterprise)</strong></td>
 <td>AI Office</td>
-<td>Aggregated indicators in the dashboard format (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>)</td>
+<td>Aggregated indicators in the dashboard format (T17)</td>
 <td>Quarterly</td>
 </tr>
 </tbody>
@@ -850,7 +856,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Threshold change log</td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, with reason and previous value.</td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, with reason and previous value.</td>
 </tr>
 <tr>
 <td>Recalibration after relevant changes <strong>(Enterprise)</strong></td>
@@ -883,7 +889,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Every <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> trigger and every <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> oversight indicator has an alert.</td>
+<td>Every <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> trigger and every <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> oversight indicator has an alert.</td>
 <td></td>
 </tr>
 <tr>
@@ -946,7 +952,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><em>Gate</em> decision-maker</td>
-<td>As per 01 §7.5 (recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>As per 01 §7.5 (recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>

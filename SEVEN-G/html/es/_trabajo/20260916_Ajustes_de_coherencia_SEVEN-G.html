@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -410,19 +416,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>A1</td>
 <td>Criterio Enterprise &quot;agentes con capacidad de actuar&quot; = autonomía A2/A3 con efecto sobre terceros, dinero, datos personales o sistemas de producción (01 §9.2).</td>
 <td>D22.</td>
-<td>04 (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>), 20, 21, 22, 35, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>04 (P04), 20, 21, 22, 35, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 </tr>
 <tr>
 <td>A2</td>
 <td>Separación de funciones en Lite: G3, G4 y G5 los verifica la oficina de IA y los decide el patrocinador con conformidad de riesgos; el responsable técnico ya no decide G4 en Lite (01 §7.5, §8.1).</td>
 <td>El responsable técnico forma parte del equipo; el responsable de riesgos no puede verificar y dar conformidad a la vez.</td>
-<td>20, 21, 22, 30, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>20, 21, 22, 30, <a href="../plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>, <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 </tr>
 <tr>
 <td>A3</td>
 <td>Resultados de R6: Continuar la operación · Continuar con condiciones · Adelantar G7 (01 §7.3). En G7, mantener sin cambios = Iterar con vuelta a la fase 6.</td>
 <td>01 no definía resultados de R6.</td>
-<td>20, 21, 22, 52, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>20, 21, 22, 52, <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 </tr>
 <tr>
 <td>A4</td>
@@ -452,7 +458,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>R2</td>
 <td>Indicadores por esfera</td>
-<td>Códigos provisionales IE01.01–IE09.09, consolidados en el catálogo del <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>.</td>
+<td>Códigos provisionales IE01.01–IE09.09, consolidados en el catálogo del <a href="../41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>.</td>
 <td>Documento 10</td>
 </tr>
 <tr>
@@ -494,7 +500,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>R9</td>
 <td>Medición</td>
-<td>Fórmulas F1–F10 del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>. Único criterio económico de viabilidad: VAN ≥ 0 con horizonte y tasa fijados en C2, sobre beneficio neto; ROI y plazo de recuperación solo informativos. Caducidad orientativa de estados: validado 12 meses, declarado y estimado 6. La capacidad reasignada solo suma si evita un coste presupuestado; si va a una actividad nueva, cuenta por el resultado de esa actividad.</td>
+<td>Fórmulas F1–F10 del <a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>. Único criterio económico de viabilidad: VAN ≥ 0 con horizonte y tasa fijados en C2, sobre beneficio neto; ROI y plazo de recuperación solo informativos. Caducidad orientativa de estados: validado 12 meses, declarado y estimado 6. La capacidad reasignada solo suma si evita un coste presupuestado; si va a una actividad nueva, cuenta por el resultado de esa actividad.</td>
 <td>Documento 40 (01 §7.6 ajustado)</td>
 </tr>
 <tr>
@@ -530,7 +536,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>R15</td>
 <td>Códigos con prefijo</td>
-<td>En 12: preguntas IT-P1–IT-P5, señales IT-S1–IT-S8 y condiciones de declaración IT-D1–IT-D3. En 50: destinos de la capacidad liberada PER-D1–PER-D5 y perfiles de alfabetización PER-PA–PER-PF. Se mantienen S1–S4 (severidad), D1–D7 (madurez) y <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (plantillas). 23 §7.1 remite a la correspondencia de 23 §10.5 entre los tres estados de la capacidad y los cinco destinos. En inglés: &quot;materialisation&quot; para la señal 3 y F5, &quot;realisation&quot; para F10.</td>
+<td>En 12: preguntas IT-P1–IT-P5, señales IT-S1–IT-S8 y condiciones de declaración IT-D1–IT-D3. En 50: destinos de la capacidad liberada PER-D1–PER-D5 y perfiles de alfabetización PER-PA–PER-PF. Se mantienen S1–S4 (severidad), D1–D7 (madurez) y <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (plantillas). 23 §7.1 remite a la correspondencia de 23 §10.5 entre los tres estados de la capacidad y los cinco destinos. En inglés: &quot;materialisation&quot; para la señal 3 y F5, &quot;realisation&quot; para F10.</td>
 <td>Documentos 02, 12, 13, 23, 40, 50</td>
 </tr>
 <tr>

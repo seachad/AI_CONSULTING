@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -404,7 +410,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Applies the measurement rules in document 40 and uses its official formulas (F1–F10).</li>
 <li>Includes the funnel metrics in document 03 §3.5 and the eight transformation index signals in document 00 §5.3.</li>
-<li>Feeds the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), value tracking (T12), the cost calculator (T13), the transformation index (T14), the maturity diagnosis (T15) and the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</li>
+<li>Feeds the initiative register (T01), value tracking (T12), the cost calculator (T13), the transformation index (T14), the maturity diagnosis (T15) and the board dashboard (T17).</li>
 <li>Marks a <strong>recommended minimum set for Lite intensity</strong>.</li>
 </ul>
 <p>No company needs all the indicators. They are selected in C2 according to the AI thesis, the portfolio and the intensity, and the selection is recorded.</p>
@@ -448,7 +454,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td>Tool from document 03 (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–T22) and, where one exists, board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) field in backticks.</td>
+<td>Tool from document 03 (T01–T22) and, where one exists, board dashboard (T17) field in backticks.</td>
 </tr>
 <tr>
 <td><strong>Lite</strong></td>
@@ -1905,7 +1911,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>OO</td>
 <td>I · B</td>
 <td>F5–F6 · agents</td>
-<td>According to the test plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>According to the test plan (P19, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
 <td></td>
 </tr>
 <tr>
@@ -3036,7 +3042,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>When an initiative moves to Enterprise, at least risk indicators IND-RIE-03, 04 and 11 are added and, depending on the technology, those in sections 11.2 to 11.4.</p>
 <hr />
 <h2 id="selection-for-the-board-dashboard"><span class="antetitulo">20</span>Selection for the board dashboard</h2>
-<p>The board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) does not show the entire catalogue. The selection is approved in C2 and should include:</p>
+<p>The board dashboard (T17) does not show the entire catalogue. The selection is approved in C2 and should include:</p>
 <ol>
 <li><strong>Value:</strong> IND-VAL-01, 04, 05, 06, 07 and 15, with the validated proportion alongside each total (document 40 §11).</li>
 <li><strong>Cost:</strong> IND-COS-11 and, per use case, IND-COS-01.</li>

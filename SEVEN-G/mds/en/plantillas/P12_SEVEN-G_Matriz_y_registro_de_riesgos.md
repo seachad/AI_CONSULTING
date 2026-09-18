@@ -32,7 +32,7 @@ Completion rules:
 - Impact is assessed on **five axes** and the **highest** is taken.
 - The level is calculated as **inherent** (without controls) and **residual** (with effective controls). A control only reduces the residual if it exists and works; planned controls are indicated separately.
 - A **Critical** residual risk without approval from the board or its board committee **blocks G3 and G5**.
-- The typical risks in the catalogue of document 33 (format RT-<CAT>-NN) are used as a starting point so that known risks are not omitted.
+- The typical risks in the catalogue of document 33 (format RT-\<CAT\>-NN) are used as a starting point so that known risks are not omitted.
 
 ---
 

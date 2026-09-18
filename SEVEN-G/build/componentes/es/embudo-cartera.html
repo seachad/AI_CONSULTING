@@ -1,0 +1,77 @@
+<figure class="grafico">
+  <div class="g-titulo">La cartera de iniciativas de IA, como un embudo de ventas</div>
+  <div class="g-sub">El embudo contiene las iniciativas en curso; a la derecha, las que no superaron cada etapa; debajo, las que ya lo han atravesado. Datos ilustrativos</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 980 366" role="img" aria-label="Ejemplo ilustrativo de embudo de iniciativas de IA: cuatro etapas en curso, las iniciativas que no superaron cada etapa y, al final, las que están en uso y las que se desengancharon">
+  <defs><marker id="ec-flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--claret)"/></marker></defs>
+
+  <!-- Etapas: anchura proporcional a las iniciativas que alcanzaron la etapa; número = iniciativas que están ahora en ella -->
+  <g>
+    <polygon points="220,20 640,20 593,74 267,74"    fill="#593380"/>
+    <polygon points="267,80 593,80 556,134 304,134"   fill="#0f5499"/>
+    <polygon points="304,140 556,140 519,194 341,194" fill="#a5822a"/>
+    <polygon points="341,200 519,200 493,254 367,254" fill="#1a1817"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" font-size="24">
+    <text x="430" y="56"  class="sv-blanco sv-serif">5</text>
+    <text x="430" y="116" class="sv-blanco sv-serif">4</text>
+    <text x="430" y="176" class="sv-blanco sv-serif">3</text>
+    <text x="430" y="236" class="sv-blanco sv-serif">4</text>
+  </g>
+
+  <!-- Etiquetas de etapa: fases de SEVEN-G, cuántas la alcanzaron y tiempo en la etapa -->
+  <g text-anchor="end">
+    <text x="205" y="38"  class="sv-t" font-size="14.5" font-weight="700">Propuesto</text>
+    <text x="205" y="54"  class="sv-t2" font-size="11.5">fases 0 y 1 · alcanzaron 40 (100 %)</text>
+    <text x="205" y="69"  class="sv-t2" font-size="11.5">mediana 35 días</text>
+    <text x="205" y="98"  class="sv-t" font-size="14.5" font-weight="700">Hipótesis de valor</text>
+    <text x="205" y="114" class="sv-t2" font-size="11.5">fase 2 · alcanzaron 31 (78 %)</text>
+    <text x="205" y="129" class="sv-t2" font-size="11.5">mediana 28 días</text>
+    <text x="205" y="158" class="sv-t" font-size="14.5" font-weight="700">Prueba de concepto</text>
+    <text x="205" y="174" class="sv-t2" font-size="11.5">fase 3 · alcanzaron 24 (60 %)</text>
+    <text x="205" y="189" font-size="11.5" font-weight="700" style="fill:var(--claret)">mediana 52 días ▲</text>
+    <text x="205" y="218" class="sv-t" font-size="14.5" font-weight="700">En desarrollo</text>
+    <text x="205" y="234" class="sv-t2" font-size="11.5">fases 4 y 5 · alcanzaron 17 (43 %)</text>
+    <text x="205" y="249" class="sv-t2" font-size="11.5">mediana 110 días</text>
+  </g>
+
+  <!-- Salidas: iniciativas que no superaron la etapa, con su motivo (aprendizaje de la organización) -->
+  <g fill="none" stroke-width="1.6" stroke-dasharray="4 3" style="stroke:var(--claret)">
+    <path d="M622,47 H684"  marker-end="url(#ec-flecha)"/>
+    <path d="M580,107 H684" marker-end="url(#ec-flecha)"/>
+    <path d="M543,167 H684" marker-end="url(#ec-flecha)"/>
+    <path d="M511,227 H684" marker-end="url(#ec-flecha)"/>
+  </g>
+  <g style="fill:color-mix(in srgb, var(--claret) 9%, transparent);stroke:var(--claret)" stroke-width="1">
+    <rect x="690" y="24"  width="280" height="46" rx="6"/>
+    <rect x="690" y="84"  width="280" height="46" rx="6"/>
+    <rect x="690" y="144" width="280" height="46" rx="6"/>
+    <rect x="690" y="204" width="280" height="46" rx="6"/>
+  </g>
+  <g font-size="12.5">
+    <text x="702" y="43"  class="sv-t"><tspan font-weight="700">No aprobado · 4</tspan></text>
+    <text x="702" y="60"  class="sv-t2" font-size="11.5">sin valor plausible · no requiere IA</text>
+    <text x="702" y="103" class="sv-t"><tspan font-weight="700">Descartado · 3</tspan></text>
+    <text x="702" y="120" class="sv-t2" font-size="11.5">hipótesis refutada · cambio de prioridad</text>
+    <text x="702" y="163" class="sv-t"><tspan font-weight="700">Descartado · 4</tspan></text>
+    <text x="702" y="180" class="sv-t2" font-size="11.5">datos insuficientes · riesgo inaceptable</text>
+    <text x="702" y="223" class="sv-t"><tspan font-weight="700">Descartado · 1</tspan></text>
+    <text x="702" y="240" class="sv-t2" font-size="11.5">coste superior al valor</text>
+  </g>
+
+  <!-- Ya han atravesado el embudo -->
+  <line x1="10" y1="270" x2="970" y2="270" class="sv-regla" stroke-width="1.5"/>
+  <text x="10" y="290" class="sv-t2" font-size="11" font-weight="700" letter-spacing="1">YA HAN ATRAVESADO EL EMBUDO</text>
+  <text x="970" y="290" text-anchor="end" class="sv-t2" font-size="11" font-weight="700" letter-spacing="1">LLEGARON A PRODUCCIÓN 12 DE 40 (30 %)</text>
+  <path d="M430,254 V300" fill="none" stroke="#2e7d32" stroke-width="2"/>
+  <rect x="220" y="302" width="420" height="54" rx="6" fill="#2e7d32"/>
+  <text x="236" y="324" class="sv-blanco" font-size="14.5" font-weight="700">En uso · 11</text>
+  <text x="236" y="343" class="sv-blanco" font-size="12">fases 6 y 7 · eficiencias 5,2 M€ · retorno 1,4 M€ · coste 1,3 M€ al año</text>
+  <rect x="690" y="302" width="280" height="54" rx="6" style="fill:color-mix(in srgb, var(--claret) 9%, transparent);stroke:var(--claret)" stroke-width="1"/>
+  <text x="702" y="324" class="sv-t" font-size="12.5" font-weight="700">Desenganchado · 1</text>
+  <text x="702" y="343" class="sv-t2" font-size="11.5">tras haber estado en uso · sustituida</text>
+  <path d="M640,329 H684" fill="none" stroke-width="1.6" stroke-dasharray="4 3" style="stroke:var(--claret)" marker-end="url(#ec-flecha)"/>
+</svg>
+  </div>
+  <div class="g-fuente">▲ supera el plazo de referencia de la etapa. Datos ilustrativos, no representan a ninguna organización. Fuente: SEVEN-G · SEACHAD</div>
+</figure>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -400,7 +406,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>This document develops the ten SEVEN-G value measurement rules (document 00, section 6) and sets out the definitions, formulas and procedures that all initiatives, the portfolio and reports to the board must apply.</p>
-<p>It applies to every initiative recorded in the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), in all phases, and to every value figure presented to the AI Committee or the board. The indicators derived from these rules are in document 41; the calculation of costs, in document 42; and the benefits realisation process, in document 43.</p>
+<p>It applies to every initiative recorded in the initiative register (T01), in all phases, and to every value figure presented to the AI Committee or the board. The indicators derived from these rules are in document 41; the calculation of costs, in document 42; and the benefits realisation process, in document 43.</p>
 <p>The figures in the examples are <strong>fictitious and illustrative</strong>. They are not market benchmarks.</p>
 <hr />
 <h2 id="measurement-principles"><span class="antetitulo">02</span>Measurement principles</h2>
@@ -765,7 +771,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>How it is applied</strong></td>
-<td>Each use case has a one- or two-sentence description that answers: what it does, who uses it, which process or decision it acts on and what role the person plays. It is recorded in the use case record (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) and in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Without a description, the use case is not presented to the board.</td>
+<td>Each use case has a one- or two-sentence description that answers: what it does, who uses it, which process or decision it acts on and what role the person plays. It is recorded in the use case record (P31) and in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Without a description, the use case is not presented to the board.</td>
 </tr>
 <tr>
 <td><strong>Correct example</strong> <em>(illustrative)</em></td>

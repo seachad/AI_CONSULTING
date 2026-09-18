@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -389,7 +395,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <h1>AI operations manual</h1>
     <p class="entradilla">Operation of predictive ML, generative AI, agents and third-party AI: monitoring, changes, incidents, continuity, records and retirement</p>
     <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD</b></span><span>Version 0.1 (working draft)</span><span>16-09-2026</span><span>Draft for review</span></div>
-    <div class="cifras"><div class="cifra"><b>4</b><span>system types with differentiated operation</span></div><div class="cifra"><b>9</b><span>monitoring layers</span></div><div class="cifra"><b>3</b><span>change classes with a gate rule</span></div><div class="cifra"><b>4</b><span>operations templates [P24](plantillas/P24_SEVEN-G_Manual_de_operacion.html)–[P27](plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html)</span></div></div>
+    <div class="cifras"><div class="cifra"><b>4</b><span>system types with differentiated operation</span></div><div class="cifra"><b>9</b><span>monitoring layers</span></div><div class="cifra"><b>3</b><span>change classes with a gate rule</span></div><div class="cifra"><b>4</b><span>operations templates P24–P27</span></div></div>
   </div>
 </header>
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/52_SEVEN-G_Manual_de_operacion_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/52_SEVEN-G_Manual_de_operacion_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/52_SEVEN-G_Manual_de_operacion_de_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
@@ -399,13 +405,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
-<p>This document develops <strong>phase 6 · Operation and governance</strong> of the lifecycle (01 §6.8) and sets out how AI systems in production are operated so that they <strong>continue to work, deliver value and remain under control</strong>. It is generic: each system specifies what is established here in its operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</p>
+<p>This document develops <strong>phase 6 · Operation and governance</strong> of the lifecycle (01 §6.8) and sets out how AI systems in production are operated so that they <strong>continue to work, deliver value and remain under control</strong>. It is generic: each system specifies what is established here in its operations manual (P24).</p>
 <p>It covers:</p>
 <ul>
 <li>The specific operation of each type of system: <strong>predictive ML, generative AI, agents and embedded third-party AI</strong>.</li>
-<li><strong>Monitoring and alerts</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), with metrics and typical thresholds.</li>
+<li><strong>Monitoring and alerts</strong> (P25), with metrics and typical thresholds.</li>
 <li><strong>Change management</strong> and which changes require a return to a <em>gate</em>.</li>
-<li><strong>Incident management</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), with the S1–S4 scale, which is developed in document 37.</li>
+<li><strong>Incident management</strong> (P26, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), with the S1–S4 scale, which is developed in document 37.</li>
 <li>Preparation of the <strong>R6 continuity review</strong>.</li>
 <li>The <strong>post-market monitoring</strong> required by regulation.</li>
 <li><strong>Continuity and rollback</strong>.</li>
@@ -431,7 +437,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-1-responsibilities">3.1 Responsibilities</h3>
 <p>In phase 6 the <strong>AI Operations Owner</strong> is accountable and responsible (01 §8.4). The <strong>technical owner</strong> carries out retraining, evaluations and changes and is accountable for champion/challenger; the <strong>product owner</strong> is accountable for value and adoption at R6; the <strong>risk owner</strong> grants clearance for significant changes at Enterprise; <strong>security</strong> is accountable for the review of agent permissions; the <strong>AI Auditor</strong> verifies tests, permissions, R6 and retirements.</p>
 <h3 id="3-2-readiness-to-operate">3.2 Readiness to operate</h3>
-<p>G5 cannot be resolved with <em>Proceed</em> unless the following exist and have been verified: the <strong>operations manual</strong> (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>), the <strong>monitoring and alerts configuration</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>) with tested alerts, the <strong>incident response plan</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) and an open <strong>incident and change log</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), in addition to the <strong>tested rollback plan</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>). The operations owner <strong>must</strong> have taken part in phase 5 and formally accept the handover.</p>
+<p>G5 cannot be resolved with <em>Proceed</em> unless the following exist and have been verified: the <strong>operations manual</strong> (P24), the <strong>monitoring and alerts configuration</strong> (P25) with tested alerts, the <strong>incident response plan</strong> (P26) and an open <strong>incident and change log</strong> (P27), in addition to the <strong>tested rollback plan</strong> (P19). The operations owner <strong>must</strong> have taken part in phase 5 and formally accept the handover.</p>
 <h3 id="3-3-operating-requirements-by-autonomy-level">3.3 Operating requirements by autonomy level</h3>
 <div class="tabla"><table>
 <thead>
@@ -732,7 +738,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <p>The intensity of these controls depends on the requirement level for the third party: <strong>N1 Standard · N2 Enhanced · N3 Critical</strong> (document 36).</p>
 <hr />
-<h2 id="monitoring-and-alerts-p25"><span class="antetitulo">05</span>Monitoring and alerts (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</h2>
+<h2 id="monitoring-and-alerts-p25"><span class="antetitulo">05</span>Monitoring and alerts (P25)</h2>
 <h3 id="5-1-monitoring-layers">5.1 Monitoring layers</h3>
 <div class="tabla"><table>
 <thead>
@@ -1034,7 +1040,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   Q1 -->|"No"| Q2{"Does it alter the behaviour of the system?"}
   Q2 -->|"Yes"| SIG["Significant: regression or champion/challenger and clearance"]
   Q2 -->|"No"| MEN["Minor: standard testing and recording"]
-  SUS --> REG["Recording in [P27](plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html) and update of [P16](plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html) and [P24](plantillas/P24_SEVEN-G_Manual_de_operacion.html)"]
+  SUS --> REG["Recording in P27 and update of P16 and P24"]
   SIG --> REG
   MEN --> REG
   classDef ok fill:#d9ebe0,stroke:#0d7680,color:#1a1817
@@ -1177,7 +1183,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>Value</strong> (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, T12)</td>
+<td><strong>Value</strong> (P28, T12)</td>
 <td>Realised value against the hypothesis with its status; stop criteria.</td>
 </tr>
 <tr>
@@ -1189,15 +1195,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Actual cost against budget; cost per transaction.</td>
 </tr>
 <tr>
-<td><strong>Stability, performance and quality</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</td>
+<td><strong>Stability, performance and quality</strong> (P25)</td>
 <td>Availability, critical alerts and noise; model or response metrics; drift; bias.</td>
 </tr>
 <tr>
-<td><strong>Incidents and changes</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, T08)</td>
+<td><strong>Incidents and changes</strong> (P27, T08)</td>
 <td>Incidents by severity and actions; open nonconformities; changes by class and by the provider.</td>
 </tr>
 <tr>
-<td><strong>Agents</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, T10)</td>
+<td><strong>Agents</strong> (P25, T10)</td>
 <td>Blocked actions, anomalies, kill switch test, permission review.</td>
 </tr>
 <tr>
@@ -1205,11 +1211,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Human override rate, adoption, supervisor training.</td>
 </tr>
 <tr>
-<td><strong>Risk and compliance</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, T04, T07)</td>
+<td><strong>Risk and compliance</strong> (P11, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, T04, T07)</td>
 <td>Risks; currency of classification, intensity and impact assessments; information to worker representatives.</td>
 </tr>
 <tr>
-<td><strong>Continuity</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
+<td><strong>Continuity</strong> (P19, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
 <td>Latest rollback test; supplier situation.</td>
 </tr>
 <tr>
@@ -1249,7 +1255,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers</strong> of high-risk systems to establish and document a <strong>post-market monitoring system</strong>, based on a plan, that actively and systematically collects and analyses data on the performance of the system throughout its lifetime in order to evaluate continuous compliance (Art. 72). <strong>Deployers</strong> must monitor operation in accordance with the instructions for use, inform the provider where appropriate and, if they consider that the use may present a risk, inform and suspend use (Art. 26(5)). High-risk obligations apply from 2 December 2027 (Annex III) and 2 August 2028 (Annex I), following Regulation (EU) 2026/1744; the timetable and the other amendments are addressed in document 34 (§3.1 and §3.2).</p>
 <ul>
 <li><strong>As a provider</strong> (including where it becomes one through substantial modification or change of purpose): monitoring plan integrated into <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, with the data collected, their periodic analysis and the connection with risks, changes, incidents and R6.</li>
-<li><strong>As a deployer:</strong> monitoring in accordance with the provider's instructions, a channel for informing the provider, a suspension criterion and retention of logs (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
+<li><strong>As a deployer:</strong> monitoring in accordance with the provider's instructions, a channel for informing the provider, a suspension criterion and retention of logs (P25, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
 <li><strong>Systems that are not high-risk:</strong> the monitoring in section 5 fulfils an equivalent function.</li>
 </ul>
 <p>This document does not constitute legal advice.</p>
@@ -1288,7 +1294,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="10-2-rules">10.2 Rules</h3>
 <ol>
-<li>The <strong>rollback plan</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) is tested before G5 and <strong>periodically</strong> in production: at least annually at Lite and half-yearly at Enterprise, and after each substantial change (OPE-15).</li>
+<li>The <strong>rollback plan</strong> (P19) is tested before G5 and <strong>periodically</strong> in production: at least annually at Lite and half-yearly at Enterprise, and after each substantial change (OPE-15).</li>
 <li>The plan identifies the <strong>people and capabilities</strong> needed to operate without the system and is coordinated with document 50 (section 5.4).</li>
 <li>For systems that support a <strong>critical or important function</strong>, the maximum recovery time and the maximum tolerable data loss are set in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and aligned with the business continuity plan and, where applicable, with <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>.</li>
 <li><strong>Dependence on a provider</strong> is assessed in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> with an exit strategy (document 36).</li>
@@ -1297,7 +1303,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h2 id="records-and-traceability"><span class="antetitulo">11</span>Records and traceability</h2>
 <h3 id="11-1-what-is-recorded">11.1 What is recorded</h3>
 <ul>
-<li><strong>All systems:</strong> inputs (or their reference) and outputs with the model and instruction version and a timestamp, with minimisation; alerts and action taken; changes and incidents (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, T08); results of evaluations and of champion/challenger.</li>
+<li><strong>All systems:</strong> inputs (or their reference) and outputs with the model and instruction version and a timestamp, with minimisation; alerts and action taken; changes and incidents (P27, T08); results of evaluations and of champion/challenger.</li>
 <li><strong>A1–A3 and decisions about people:</strong> recommendation, human decision, who decides and the reason for any override.</li>
 <li><strong>A2–A3 agents:</strong> the fields in section 4.3.1.</li>
 <li><strong>Generative AI:</strong> sources and versions retrieved for each response; filter triggers and blocks.</li>
@@ -1330,7 +1336,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Sector-specific and commercial regulation</strong></td>
 <td>Their own time limits (for example, in financial services).</td>
-<td>Incorporated into the context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</td>
+<td>Incorporated into the context statement (P02).</td>
 </tr>
 <tr>
 <td><strong>Claim and limitation periods</strong></td>
@@ -1345,8 +1351,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h2 id="technical-retirement"><span class="antetitulo">12</span>Technical retirement</h2>
 <p>The decision to retire is taken at G7 and documented in <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; its management is supported by T22. This section sets out the technical execution.</p>
 <ol>
-<li><strong>Preparation:</strong> replacement or alternative without AI operational, people trained and communication carried out (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</li>
-<li><strong>Freeze:</strong> no changes except emergencies; capture of the final state and metrics (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</li>
+<li><strong>Preparation:</strong> replacement or alternative without AI operational, people trained and communication carried out (P30).</li>
+<li><strong>Freeze:</strong> no changes except emergencies; capture of the final state and metrics (P27).</li>
 <li><strong>Progressive disconnection:</strong> removal of traffic and of the integrations and processes that consume outputs.</li>
 <li><strong>Agents:</strong> kill switch, cancellation of tasks and <strong>revocation of all credentials and non-human identities</strong>, with logging.</li>
 <li><strong>Data:</strong> deletion, anonymisation or archiving as per G7 and the retention periods (document 51, section 4.5), with a record of deletion.</li>
@@ -1503,7 +1509,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>Operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>Operations manual (P24)</td>
 <td>Simplified</td>
 <td>Complete</td>
 </tr>

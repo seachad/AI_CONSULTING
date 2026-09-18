@@ -381,8 +381,13 @@ function SeccionFuentes($citadas, [string]$lang) {
 }
 
 function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
-  $patron = '(?<!\])(?<!\w)(?:(?<doc>documento\s+\d{2})|(?<tool>T\d{2})|(?<plt>P\d{2}))(?!(?:[A-Za-z0-9]))'
-  return [regex]::Replace($md, $patron, {
+  # Solo se enlazan las menciones en texto corrido. Nunca dentro de un enlace ya escrito (ni en su texto ni en su dirección), de una URL,
+  # de código, de una etiqueta HTML o de un comentario: «plantillas/P01_…html» o «herramientas/T01_…» contienen el código y, si se
+  # tocaran, el enlace quedaría roto. El código tampoco puede ir seguido de «_» (nombre de fichero).
+  $patron = '(?<![\w/\[\(\-])(?:(?<doc>documento\s+\d{2})|(?<tool>T\d{2})|(?<plt>P\d{2}))(?![A-Za-z0-9_\]])'
+  $protegido = '(?s)```.*?```|~~~.*?~~~|`[^`\n]*`|<!--.*?-->|!?\[[^\]\n]*\]\([^)\n]*\)|<[^>\n]+>|https?://[^\s)>\]]+'
+  $partes = [regex]::Split($md, "($protegido)")
+  $sustituir = {
     param($m)
     $valor = $m.Value.Trim()
     $clave = $null
@@ -407,7 +412,10 @@ function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
     }
 
     return $valor
-  })
+  }
+  # [regex]::Split con un grupo de captura devuelve, alternados, el texto corrido (índices pares) y los tramos protegidos (impares)
+  for ($i = 0; $i -lt $partes.Count; $i += 2) { $partes[$i] = [regex]::Replace($partes[$i], $patron, $sustituir) }
+  return ($partes -join '')
 }
 
 foreach ($metodologia in $Metodologias) {
@@ -487,7 +495,15 @@ foreach ($lang in $Idiomas) {
     if (Test-Path $otroPdf) { $pdfOtroHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $otroPdf).Replace('\\', '/').Replace('\', '/') }
 
     $md   = Get-Content $f.FullName -Raw -Encoding utf8
-    $md   = EnlazarReferenciasMarkdown $md $mapaReferencias
+    # el mapa de referencias es relativo a html/<idioma>/: para un documento de una subcarpeta (plantillas/, _trabajo/) se rehace
+    # relativo a su propia carpeta, o los enlaces automáticos quedarían rotos
+    $mapaDoc = $mapaReferencias
+    $carpetaDoc = Split-Path $htmlOut
+    if ($carpetaDoc.TrimEnd('\') -ne $htmlDir.TrimEnd('\')) {
+      $mapaDoc = @{}
+      foreach ($k in $mapaReferencias.Keys) { $mapaDoc[$k] = [IO.Path]::GetRelativePath($carpetaDoc, (Join-Path $htmlDir $mapaReferencias[$k])).Replace('\', '/') }
+    }
+    $md   = EnlazarReferenciasMarkdown $md $mapaDoc
     $body = (ConvertFrom-Markdown -InputObject $md).Html
 
     # ---- Portada: título, entradilla, ficha y cifras ----

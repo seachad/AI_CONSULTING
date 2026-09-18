@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -441,7 +447,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Código</strong></td>
-<td><code>G&lt;n&gt;.&lt;nn&gt;</code> para las puertas y <code>R6.&lt;nn&gt;</code> para la revisión de continuidad. Es el mismo código que usan el <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>, el gestor de <em>gates</em> (T03) y el registro de decisión (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>). Un código no se reutiliza aunque el criterio se retire.</td>
+<td><code>G&lt;n&gt;.&lt;nn&gt;</code> para las puertas y <code>R6.&lt;nn&gt;</code> para la revisión de continuidad. Es el mismo código que usan el <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>, el gestor de <em>gates</em> (T03) y el registro de decisión (P29). Un código no se reutiliza aunque el criterio se retire.</td>
 </tr>
 <tr>
 <td><strong>Criterio</strong></td>
@@ -449,7 +455,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Evidencia</strong></td>
-<td>Plantilla (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) o herramienta (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–T22) donde debe encontrarse la prueba.</td>
+<td>Plantilla (P01–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) o herramienta (T01–T22) donde debe encontrarse la prueba.</td>
 </tr>
 <tr>
 <td><strong>Obligatorio</strong></td>
@@ -560,7 +566,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-2-reglas-de-decision">3.2 Reglas de decisión</h3>
 <p>Se aplican las siete reglas de 01 §7.4, con estas precisiones operativas:</p>
 <ol>
-<li><strong>Separación de funciones.</strong> El autor de una evidencia no la verifica ni decide sobre ella. El verificador no decide. Si el decisor aportó evidencias, debe abstenerse y decide su sustituto previsto en el modelo de gobierno (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a>).</li>
+<li><strong>Separación de funciones.</strong> El autor de una evidencia no la verifica ni decide sobre ella. El verificador no decide. Si el decisor aportó evidencias, debe abstenerse y decide su sustituto previsto en el modelo de gobierno (documento 30).</li>
 <li><strong>Sin evidencia no hay decisión.</strong> Si la verificación concluye <em>No conforme</em> (sección 10.2), la solicitud vuelve al equipo y no llega al órgano decisor.</li>
 <li><strong>Anterioridad.</strong> Toda evidencia debe tener fecha anterior a la solicitud del <em>gate</em>. Las correcciones pedidas por el verificador generan una nueva versión antes de la decisión.</li>
 <li><strong>Condiciones.</strong> Solo sobre criterios <em>Condicionable</em>. Cada condición tiene plazo, responsable, criterio al que se vincula y forma de verificación. Una condición vencida convierte el resultado en <strong>Iterar</strong>.</li>
@@ -573,7 +579,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-4-puertas-agrupadas-en-lite">3.4 Puertas agrupadas en Lite</h3>
 <p>En la intensidad Lite, G0, G1 y G2 pueden resolverse en una sola sesión, y G4 y G5 también (01 §7.5). La agrupación no fusiona criterios: cada puerta conserva su lista, su estado por criterio y su apartado en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, y cada evidencia se verifica.</p>
 <h3 id="3-5-decisiones-del-consejo-en-transformar">3.5 Decisiones del consejo en Transformar</h3>
-<p>Las iniciativas de Transformar son siempre Enterprise (01 §9.2) y requieren aprobación expresa del consejo o de su comisión delegada en <strong>G2</strong> (autorización de la apuesta, criterio G2.12) y en <strong>G7</strong> cuando se decide escalar (criterio G7.09). La aprobación se registra en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> con referencia al acta o al registro de recomendaciones y decisiones (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</p>
+<p>Las iniciativas de Transformar son siempre Enterprise (01 §9.2) y requieren aprobación expresa del consejo o de su comisión delegada en <strong>G2</strong> (autorización de la apuesta, criterio G2.12) y en <strong>G7</strong> cuando se decide escalar (criterio G7.09). La aprobación se registra en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> con referencia al acta o al registro de recomendaciones y decisiones (documento 62).</p>
 <hr />
 <h2 id="evidencia-valida"><span class="antetitulo">04</span>Evidencia válida</h2>
 <h3 id="4-1-reglas">4.1 Reglas</h3>
@@ -769,7 +775,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>En R6, la suspensión inmediata de un sistema no es un resultado de la revisión: se activa en cualquier momento por el proceso de incidentes o de no conformidades (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). En G7, mantener el sistema en operación sin cambios se registra como <strong>Iterar</strong> con vuelta a la fase 6 y fecha de la siguiente R6.</p>
+<p>En R6, la suspensión inmediata de un sistema no es un resultado de la revisión: se activa en cualquier momento por el proceso de incidentes o de no conformidades (documento 37). En G7, mantener el sistema en operación sin cambios se registra como <strong>Iterar</strong> con vuelta a la fase 6 y fecha de la siguiente R6.</p>
 <hr />
 <h2 id="criterios-por-puerta"><span class="antetitulo">06</span>Criterios por puerta</h2>
 <p>Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evidencias que se examinan y la tabla de criterios. La columna de ambición desarrolla 01 §7.6; la sección 7 la resume.</p>
@@ -2557,7 +2563,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Auditoría posterior</strong></td>
-<td>Auditor de IA o tercera línea, según el plan de auditoría (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>)</td>
+<td>Auditor de IA o tercera línea, según el plan de auditoría (documento 38)</td>
 <td>Muestra de <em>gates</em>, decisiones, condiciones, registros operativos y retiradas de un periodo.</td>
 <td>Informe con resultado por elemento auditado y hallazgos clasificados (10.5).</td>
 </tr>
@@ -2805,7 +2811,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="10-7-contenido-minimo-del-informe-de-auditoria">10.7 Contenido mínimo del informe de auditoría</h3>
 <p>Alcance y periodo · población y muestra con criterio de selección · pruebas realizadas · resultado por elemento auditado (Conforme, Conforme con observaciones o No conforme) · hallazgos con código de criterio o regla EV afectada, clasificación, causa y responsable · no conformidades abiertas en T08 · seguimiento de hallazgos anteriores · conclusión sobre el funcionamiento de las puertas en el periodo.</p>
 <hr />
-<h2 id="registro-de-decision-de-gate-p29"><span class="antetitulo">11</span>Registro de decisión de <em>gate</em> (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</h2>
+<h2 id="registro-de-decision-de-gate-p29"><span class="antetitulo">11</span>Registro de decisión de <em>gate</em> (P29)</h2>
 <p>Toda decisión de <em>gate</em> y toda revisión de continuidad se documenta en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> y se refleja en T03. El registro debe contener, como mínimo:</p>
 <div class="tabla"><table>
 <thead>

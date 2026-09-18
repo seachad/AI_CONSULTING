@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -669,7 +675,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Functions</strong></td>
-<td>Maintain the inventory (document 32, T02) and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Safeguard the methodology, templates and checklists. Verify Lite <em>gates</em> in which it has not participated. Consolidate measurement with management control (document 40). Prepare information for the bodies. Coordinate AI literacy and the regularisation of unauthorised use (document 31). Lead C1 and C5.</td>
+<td>Maintain the inventory (document 32, T02) and the initiative register (T01). Safeguard the methodology, templates and checklists. Verify Lite <em>gates</em> in which it has not participated. Consolidate measurement with management control (document 40). Prepare information for the bodies. Coordinate AI literacy and the regularisation of unauthorised use (document 31). Lead C1 and C5.</td>
 </tr>
 <tr>
 <td><strong>Composition</strong></td>
@@ -1023,7 +1029,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>Determine the intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>)</td>
+<td>Determine the intensity (P04)</td>
 <td>A</td>
 <td>R</td>
 <td>C</td>
@@ -1034,7 +1040,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Inventory registration (<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>)</td>
+<td>Inventory registration (P05)</td>
 <td>I</td>
 <td>R</td>
 <td>C</td>
@@ -1045,7 +1051,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Regulatory classification and impact assessments (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>)</td>
+<td>Regulatory classification and impact assessments (P11)</td>
 <td>I</td>
 <td>C</td>
 <td>C</td>
@@ -1056,7 +1062,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Risk matrix and register (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>)</td>
+<td>Risk matrix and register (P12)</td>
 <td>C</td>
 <td>R</td>
 <td>R</td>
@@ -1067,7 +1073,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
+<td>Supplier assessment (P14)</td>
 <td>C</td>
 <td>C</td>
 <td>R</td>
@@ -1078,7 +1084,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Human oversight and security design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Human oversight and security design (P17, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
 <td>I</td>
 <td>C</td>
 <td>A/R</td>
@@ -1089,7 +1095,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Go-live sign-off (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>)</td>
+<td>Go-live sign-off (P23)</td>
 <td>I</td>
 <td>C</td>
 <td>R (sign-off)</td>
@@ -1100,7 +1106,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D</td>
 </tr>
 <tr>
-<td>Value realisation tracking (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>)</td>
+<td>Value realisation tracking (P28)</td>
 <td>A</td>
 <td>R</td>
 <td>I</td>
@@ -1111,7 +1117,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Retirement plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</td>
+<td>Retirement plan (P30)</td>
 <td>A</td>
 <td>R</td>
 <td>R</td>
@@ -1468,7 +1474,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Immediate suspension <strong>does not require prior authorisation</strong>, and whoever activates it in good faith suffers no consequences for doing so. The operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>) identifies by name who may activate it.</p>
+<p>Immediate suspension <strong>does not require prior authorisation</strong>, and whoever activates it in good faith suffers no consequences for doing so. The operations manual (P24) identifies by name who may activate it.</p>
 <h3 id="7-4-exceptions">7.4 Exceptions</h3>
 <p>An exception temporarily authorises non-compliance with a requirement of the framework or the policy. They are <strong>never</strong> allowed for prohibited practices, legal obligations, segregation of duties at any <em>gate</em>, Enterprise multi-level sign-off or the existence of a stop mechanism.</p>
 <div class="tabla"><table>
@@ -1592,7 +1598,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Escalating does not transfer responsibility</strong>: whoever escalates remains accountable for containment while the decision is being made.</li>
 <li><strong>The time limit runs from detection</strong>, not from confirmation.</li>
-<li><strong>Escalation is made through the recorded channel</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or T08) and, if the time limit is less than 24 hours, also by direct contact with the designated person.</li>
+<li><strong>Escalation is made through the recorded channel</strong> (T01 or T08) and, if the time limit is less than 24 hours, also by direct contact with the designated person.</li>
 <li><strong>Failure to respond within the time limit escalates automatically</strong> to the next level.</li>
 <li><strong>No one may block an escalation.</strong> Anyone may contact the second line or the company's internal reporting system (in Spain, regulated by <a class="ref-ext" href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener" title="Law 2/2023 of 20 February on the protection of persons who report regulatory breaches and on the fight against corruption (unofficial translation)">Law 2/2023 of 20 February</a>).</li>
 </ol>

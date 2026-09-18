@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -584,7 +590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Volumen y tiempo actual</td>
-<td>Casos por periodo y tiempo unitario, tomados de la línea base (<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>).</td>
+<td>Casos por periodo y tiempo unitario, tomados de la línea base (P09).</td>
 </tr>
 <tr>
 <td>Tipo de cambio</td>
@@ -592,7 +598,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Nivel de autonomía del sistema</td>
-<td>A0–A3 (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
+<td>A0–A3 (documento 35).</td>
 </tr>
 <tr>
 <td>Tiempo previsto tras el cambio</td>
@@ -661,7 +667,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Completo, con tiempos estimados, dentro del plan de adopción (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
+<td>Completo, con tiempos estimados, dentro del plan de adopción (P20).</td>
 </tr>
 <tr>
 <td>5</td>
@@ -802,7 +808,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <p>Reglas:</p>
 <ol>
-<li>Los tiempos de la línea base proceden de <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; los tiempos con IA se <strong>miden</strong> en el piloto (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) y en operación, no se estiman.</li>
+<li>Los tiempos de la línea base proceden de <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; los tiempos con IA se <strong>miden</strong> en el piloto (P22) y en operación, no se estiman.</li>
 <li>El volumen es el realmente tratado con el sistema en el periodo, no el elegible.</li>
 <li>Las horas de supervisión y corrección se miden con registros del sistema o por muestreo documentado.</li>
 <li>La conversión a personas equivalentes usa las horas efectivas anuales por persona que fije la compañía y se declara.</li>
@@ -813,7 +819,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Solo cuenta como <strong>eficiencia</strong> el importe del menor coste real, tomado de la contabilidad o del presupuesto aprobado, no las horas multiplicadas por un coste por hora.</li>
 <li>La valida control de gestión, que comprueba que el coste existía, que desaparece y que no reaparece en otra partida.</li>
 <li>Si la materialización consiste en absorber crecimiento de volumen sin contratar, se exige que la contratación estuviera prevista y presupuestada; de lo contrario, se trata como reasignación.</li>
-<li>Las decisiones que afectan al empleo se toman por la dirección con la función de personas y conforme a la normativa laboral y a los convenios aplicables (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>). SEVEN-G no prescribe el destino de la capacidad liberada; exige que sea explícito.</li>
+<li>Las decisiones que afectan al empleo se toman por la dirección con la función de personas y conforme a la normativa laboral y a los convenios aplicables (documento 50). SEVEN-G no prescribe el destino de la capacidad liberada; exige que sea explícito.</li>
 </ul>
 <h3 id="7-4-reasignacion-explicita">7.4 Reasignación explícita</h3>
 <p>Una reasignación solo se reconoce si registra en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>:</p>
@@ -940,7 +946,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Supervisores humanos</strong></td>
-<td>Supervisar con eficacia (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Supervisar con eficacia (P17).</td>
 <td>Criterios de intervención, sesgo de automatización, revisión de muestras, uso del interruptor de parada cuando exista, escalado.</td>
 <td>Antes de su acceso.</td>
 </tr>
@@ -952,7 +958,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Equipo de operación</strong></td>
-<td>Operar el sistema (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
+<td>Operar el sistema (P24).</td>
 <td>Monitorización, incidentes, cambios, reversión.</td>
 <td>Fase 5.</td>
 </tr>
@@ -1043,7 +1049,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Lectura por pares.</strong> Ningún indicador de uso se interpreta solo: se lee con los de calidad de la supervisión y de resultado (sección 10.3).</li>
 </ol>
 <h3 id="10-2-indicadores">10.2 Indicadores</h3>
-<p>Los códigos <code>IND-</code> son los del catálogo (<a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>); los <code>PER-</code> son los provisionales del <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>. Los indicadores sin código son <strong>propuestas para su consolidación en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a></strong>.</p>
+<p>Los códigos <code>IND-</code> son los del catálogo (documento 41); los <code>PER-</code> son los provisionales del <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>. Los indicadores sin código son <strong>propuestas para su consolidación en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a></strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1162,7 +1168,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Uso efectivo alto, anulación próxima a cero y tiempo de revisión decreciente</td>
 <td>Posible aceptación rutinaria o sesgo de automatización.</td>
-<td>Revisión de muestras por un tercero, ajuste de la carga de supervisión (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), refuerzo de la formación.</td>
+<td>Revisión de muestras por un tercero, ajuste de la carga de supervisión (P17), refuerzo de la formación.</td>
 </tr>
 <tr>
 <td>Anulación alta y estable</td>
@@ -1191,7 +1197,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>El <strong>objetivo de adopción</strong> se fija en la fase 2 (G2.10): obligatorio en Aumentar, recomendado en Optimizar.</li>
 <li>En la fase 4 se fijan en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, para cada indicador seleccionado, la línea base, el objetivo, el plazo y el <strong>umbral mínimo</strong> para G5 y para G7. Los umbrales se fijan antes de conocer los resultados y no se relajan durante la fase sin aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).</li>
 <li>El seguimiento es mensual durante los primeros seis meses de producción y después se presenta en cada R6 (R6.14).</li>
-<li>Un uso efectivo inferior al umbral durante dos periodos consecutivos activa revisión en R6 y puede motivar adelantar G7. Si la iniciativa se para o se retira por esta causa, el motivo codificado es <strong>Sin adopción</strong> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>).</li>
+<li>Un uso efectivo inferior al umbral durante dos periodos consecutivos activa revisión en R6 y puede motivar adelantar G7. Si la iniciativa se para o se retira por esta causa, el motivo codificado es <strong>Sin adopción</strong> (documento 03).</li>
 <li>Los umbrales son propios de cada iniciativa. SEVEN-G no fija valores de referencia de adopción.</li>
 </ul>
 <h3 id="10-5-correspondencia-con-los-documentos-40-41-y-50">10.5 Correspondencia con los documentos 40, 41 y 50</h3>
@@ -1398,7 +1404,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Aceptación acrítica</strong></td>
 <td>Indicador 5 próximo a cero; indicador 6 decreciente.</td>
 <td>Conocimiento (exceso de confianza).</td>
-<td>Formación en sesgo de automatización; muestras de control; revisión de la carga de supervisión (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Formación en sesgo de automatización; muestras de control; revisión de la carga de supervisión (P17).</td>
 </tr>
 <tr>
 <td><strong>Resistencia de mandos</strong></td>
@@ -1416,12 +1422,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Uso de herramientas no autorizadas</strong></td>
 <td>Detecciones en T21 en el área afectada.</td>
 <td>Utilidad percibida insuficiente del sistema aprobado.</td>
-<td>Revisar la solución aprobada; aplicar la política de uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+<td>Revisar la solución aprobada; aplicar la política de uso aceptable (documento 31).</td>
 </tr>
 </tbody>
 </table></div>
 <h3 id="12-2-riesgos-tipo">12.2 Riesgos tipo</h3>
-<p>Los riesgos se registran en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> con la escala común de probabilidad e impacto y se aceptan al nivel que corresponde (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>). Los códigos son los del catálogo de riesgos tipo del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>; el <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> (§12) propone una relación ampliada de riesgos organizativos, pendiente de consolidación en el <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>.</p>
+<p>Los riesgos se registran en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> con la escala común de probabilidad e impacto y se aceptan al nivel que corresponde (documento 33). Los códigos son los del catálogo de riesgos tipo del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>; el <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> (§12) propone una relación ampliada de riesgos organizativos, pendiente de consolidación en el <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1458,7 +1464,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependencia de personas clave</td>
 <td>Conocimiento de uso concentrado en pocos usuarios avanzados.</td>
-<td>Formación por público; referentes del área; manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
+<td>Formación por público; referentes del área; manual de operación (P24).</td>
 <td>4, 6</td>
 </tr>
 <tr>
@@ -1484,7 +1490,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Todo riesgo Alto o Crítico en tratamiento tiene plan de contingencia (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>). En adopción, el disparador típico es el umbral mínimo de uso efectivo y la contingencia, la iteración del diseño o de la formación, el mantenimiento del procedimiento alternativo o la parada.</p>
+<p>Todo riesgo Alto o Crítico en tratamiento tiene plan de contingencia (documento 33). En adopción, el disparador típico es el umbral mínimo de uso efectivo y la contingencia, la iteración del diseño o de la formación, el mantenimiento del procedimiento alternativo o la parada.</p>
 <h3 id="12-3-coste-de-la-adopcion">12.3 Coste de la adopción</h3>
 <p>La formación, la comunicación, el soporte, el tiempo de los usuarios durante el aprendizaje y la pérdida temporal de productividad son costes de la iniciativa. Se estiman en la fase 3 en la categoría <em>adopción y formación</em> del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a> y forman parte de la inversión inicial (40 §8.2). Omitirlos infla el valor neto esperado y es una causa frecuente de adopción insuficiente por falta de recursos.</p>
 <hr />
@@ -1512,7 +1518,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Función de personas</strong></td>
-<td>Corresponsable del análisis de impacto, del plan de capacidades y de la relación con la representación de los trabajadores (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>).</td>
+<td>Corresponsable del análisis de impacto, del plan de capacidades y de la relación con la representación de los trabajadores (documento 50).</td>
 </tr>
 <tr>
 <td><strong>Control de gestión</strong></td>
@@ -1595,7 +1601,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>T20</strong></td>
 <td>Plan de adopción y capacidad</td>
-<td>Herramienta de la plantilla <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y registro de capacidad liberada; alimenta T12 y el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Herramienta de la plantilla <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y registro de capacidad liberada; alimenta T12 y el registro de iniciativas (T01).</td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></strong></td>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -453,7 +459,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Directiva (UE) 2022/2555 (NIS2)</strong>, art. 23. En España, la ley de transposición seguía en tramitación en la última información consultada (julio de 2026).</li>
 <li><strong>ISO/IEC 42001</strong>, requisito de no conformidad y acción correctiva (cláusula 10.2).</li>
 </ul>
-<p>Este documento no constituye asesoramiento jurídico. La decisión de notificar y su contenido deben validarse con asesoría jurídica y con el delegado de protección de datos cuando corresponda. Los criterios de clasificación y las obligaciones de notificación descritos son orientativos: la responsabilidad de la clasificación regulatoria de cada incidente y del cumplimiento, incluidos los regímenes sectoriales aplicables, es de la organización (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</p>
+<p>Este documento no constituye asesoramiento jurídico. La decisión de notificar y su contenido deben validarse con asesoría jurídica y con el delegado de protección de datos cuando corresponda. Los criterios de clasificación y las obligaciones de notificación descritos son orientativos: la responsabilidad de la clasificación regulatoria de cada incidente y del cumplimiento, incluidos los regímenes sectoriales aplicables, es de la organización (documento 93, sección 11).</p>
 <hr />
 <h2 id="principios"><span class="antetitulo">02</span>Principios</h2>
 <div class="tabla"><table>
@@ -721,7 +727,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-8-cierre">3.8 Cierre</h3>
 <p><strong>Solo el auditor de IA cierra una no conformidad.</strong> En intensidad Lite, puede cerrar las menores sobre la verificación documental de la oficina de IA. El cierre exige: contención realizada, causa raíz documentada (mayores y críticas), acciones ejecutadas, eficacia verificada con evidencia y registro actualizado. Una no conformidad cerrada que reaparece por la misma causa en doce meses se <strong>reabre</strong>, no se registra como nueva.</p>
 <h3 id="3-9-reauditoria">3.9 Reauditoría</h3>
-<p>Las no conformidades críticas y mayores se reauditan: el auditor de IA comprueba, en una fecha posterior al cierre (orientativamente entre tres y seis meses), que la corrección sigue operando. Las menores se reauditan por muestreo en la auditoría del marco (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>).</p>
+<p>Las no conformidades críticas y mayores se reauditan: el auditor de IA comprueba, en una fecha posterior al cierre (orientativamente entre tres y seis meses), que la corrección sigue operando. Las menores se reauditan por muestreo en la auditoría del marco (documento 38).</p>
 <h3 id="3-10-plazos">3.10 Plazos</h3>
 <p>Los plazos son de referencia; la compañía puede ajustarlos en C2 sin superar los que establezca la regulación aplicable (01 §12). Se cuentan desde la detección salvo indicación.</p>
 <div class="tabla"><table>
@@ -992,7 +998,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="4-5-fases">4.5 Fases</h3>
-<p><strong>1. Detección.</strong> Fuentes: monitorización y alertas (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), controles de agentes (bloqueos, límites, anomalías), usuarios y clientes, supervisión humana, proveedores, equipo de seguridad, auditoría, autoridades o terceros. Toda posible incidencia se registra en T08 con fecha y hora de detección: es el inicio de los relojes regulatorios.</p>
+<p><strong>1. Detección.</strong> Fuentes: monitorización y alertas (P25), controles de agentes (bloqueos, límites, anomalías), usuarios y clientes, supervisión humana, proveedores, equipo de seguridad, auditoría, autoridades o terceros. Toda posible incidencia se registra en T08 con fecha y hora de detección: es el inicio de los relojes regulatorios.</p>
 <p><strong>2. Triaje.</strong> Confirmar el incidente, asignar tipo y severidad, identificar sistemas, datos, personas y proveedores afectados, designar coordinador y abrir la valoración de notificaciones.</p>
 <p><strong>3. Contención.</strong> Limitar el daño de inmediato. Criterios para <strong>parar el sistema</strong> (total o por capacidad con el interruptor de parada):</p>
 <ul>
@@ -1002,7 +1008,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Resultados discriminatorios o peligrosos que siguen produciéndose.</li>
 <li>Imposibilidad de determinar en poco tiempo si el sistema es seguro.</li>
 </ul>
-<p>La parada activa el proceso alternativo previsto en el plan de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) y el manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>). Antes de modificar el sistema se <strong>conservan las evidencias</strong>: registros, versiones de modelo e instrucciones, configuraciones, entradas y salidas relevantes. El Reglamento de IA exige que el proveedor de un sistema de alto riesgo no altere el sistema de forma que pueda afectar a la evaluación posterior de las causas antes de informar a las autoridades (art. 73.6).</p>
+<p>La parada activa el proceso alternativo previsto en el plan de reversión (P19) y el manual de operación (P24). Antes de modificar el sistema se <strong>conservan las evidencias</strong>: registros, versiones de modelo e instrucciones, configuraciones, entradas y salidas relevantes. El Reglamento de IA exige que el proveedor de un sistema de alto riesgo no altere el sistema de forma que pueda afectar a la evaluación posterior de las causas antes de informar a las autoridades (art. 73.6).</p>
 <p><strong>4. Erradicación y recuperación.</strong> Eliminar la causa inmediata (revocar credenciales, corregir configuración, retirar contenido envenenado, revertir versión), validar que el sistema funciona dentro de umbrales con pruebas —incluidas pruebas adversarias si hubo manipulación— y reanudar con autorización del decisor. Tras un S1 o S2 relacionado con la autonomía de un agente, la reanudación se hace con un nivel de autonomía inferior hasta completar el análisis posterior (35 §5.2).</p>
 <p><strong>5. Comunicación.</strong> Interna, al comité de IA y al consejo según 4.3; a afectados y clientes cuando proceda o lo exija la regulación; a proveedores implicados. Toda comunicación externa la valida jurídico y comunicación.</p>
 <p><strong>6. Notificaciones regulatorias.</strong> Según la sección 5, en paralelo a la contención.</p>
@@ -1054,10 +1060,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas adicionales:</p>
 <ul>
-<li><strong>DORA y NIS2.</strong> Para las entidades financieras, DORA actúa como norma sectorial específica respecto de NIS2 en la notificación de incidentes; se confirma el régimen aplicable en el mapeo regulatorio (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</li>
+<li><strong>DORA y NIS2.</strong> Para las entidades financieras, DORA actúa como norma sectorial específica respecto de NIS2 en la notificación de incidentes; se confirma el régimen aplicable en el mapeo regulatorio (documento 34).</li>
 <li><strong>Aplicabilidad del art. 73.</strong> Afecta a los sistemas de alto riesgo, cuyas obligaciones del anexo III se aplican desde el 2 de diciembre de 2027. Hasta entonces, la compañía <strong>debería</strong> aplicar el criterio de incidente grave como umbral interno de S1 y documentar su valoración. El art. 73 prevé un régimen limitado cuando existen obligaciones sectoriales de notificación equivalentes (art. 73.9 y 73.10).</li>
-<li><strong>Modelos de propósito general con riesgo sistémico.</strong> Sus proveedores tienen obligaciones propias de notificación a la Oficina de IA (art. 55); la compañía, como usuaria, colabora a través del contrato (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</li>
-<li><strong>Regulación sectorial y contractual.</strong> Supervisores sectoriales, esquemas de seguridad del sector público y contratos con clientes pueden imponer notificaciones adicionales. Se recogen en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>) y en el plan de respuesta (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
+<li><strong>Modelos de propósito general con riesgo sistémico.</strong> Sus proveedores tienen obligaciones propias de notificación a la Oficina de IA (art. 55); la compañía, como usuaria, colabora a través del contrato (documento 36).</li>
+<li><strong>Regulación sectorial y contractual.</strong> Supervisores sectoriales, esquemas de seguridad del sector público y contratos con clientes pueden imponer notificaciones adicionales. Se recogen en la declaración de contexto (P02) y en el plan de respuesta (P26).</li>
 <li><strong>Proveedores.</strong> Los contratos N2 y N3 deben asegurar que el proveedor notifica en un plazo que permita cumplir estos plazos (36 §6, cláusula 7).</li>
 <li><strong>Ensayo.</strong> Las notificaciones se ensayan, como mínimo, una vez al año en un simulacro de incidente S1.</li>
 </ul>

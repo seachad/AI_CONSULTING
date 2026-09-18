@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -427,17 +433,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>2</td>
 <td><strong>Negocio, no tecnología</strong></td>
-<td>Se habla de valor, riesgo, responsabilidad y ventaja competitiva. Los términos técnicos se traducen (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>, sección 3).</td>
+<td>Se habla de valor, riesgo, responsabilidad y ventaja competitiva. Los términos técnicos se traducen (documento 61, sección 3).</td>
 </tr>
 <tr>
 <td>3</td>
 <td><strong>Evidencia, no declaración</strong></td>
-<td>Toda cifra tiene fórmula y estado de validación; toda afirmación relevante enlaza con su evidencia en el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Toda cifra tiene fórmula y estado de validación; toda afirmación relevante enlaza con su evidencia en el registro de iniciativas (T01).</td>
 </tr>
 <tr>
 <td>4</td>
 <td><strong>Un único dato</strong></td>
-<td>El paquete, el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) y el registro de recomendaciones (T18) salen del mismo modelo de datos y de la misma fecha de corte. No se rehacen cifras a mano.</td>
+<td>El paquete, el panel del consejo (T17) y el registro de recomendaciones (T18) salen del mismo modelo de datos y de la misma fecha de corte. No se rehacen cifras a mano.</td>
 </tr>
 <tr>
 <td>5</td>
@@ -544,7 +550,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Política corporativa de IA</strong></td>
-<td>Principios, uso aceptable y responsabilidades (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+<td>Principios, uso aceptable y responsabilidades (documento 31).</td>
 </tr>
 <tr>
 <td><strong>Presupuesto marco</strong></td>
@@ -705,7 +711,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Mensaje principal</strong></td>
-<td>Tres líneas como máximo, con uno de los cuatro formatos de respuesta (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>, sección 4).</td>
+<td>Tres líneas como máximo, con uno de los cuatro formatos de respuesta (documento 61, sección 4).</td>
 <td>Responde a &quot;¿se cumple lo decidido?&quot;. Ejemplo: <em>&quot;Sí, con una condición: el valor validado ha subido, pero dos iniciativas de alto riesgo siguen sin evaluación de impacto.&quot;</em></td>
 </tr>
 <tr>
@@ -813,7 +819,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Encargar</strong></td>
-<td>El órgano pide un trabajo con responsable y fecha. Se registra como recomendación o mandato (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</td>
+<td>El órgano pide un trabajo con responsable y fecha. Se registra como recomendación o mandato (documento 62).</td>
 <td>Revisión de la dependencia de un proveedor.</td>
 </tr>
 </tbody>
@@ -843,7 +849,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Exposición a ataques con IA</td>
-<td>Indicadores principales de la esfera de seguridad (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
+<td>Indicadores principales de la esfera de seguridad (documento 35).</td>
 </tr>
 <tr>
 <td>Cambios regulatorios</td>
@@ -889,7 +895,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Para cada incidente individual: código INC-AAAA-NNN, sistema e iniciativa, fecha, severidad, origen, afectados, tiempo de detección y de contención, notificaciones a autoridades y su plazo, lecciones y acciones.</p>
 <h3 id="4-7-recomendaciones-y-compromisos">4.7 Recomendaciones y compromisos</h3>
-<p>Extracto del registro de recomendaciones y decisiones (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>): recomendaciones vencidas, recomendaciones cerradas en el trimestre con su valoración independiente, discrepancias entre el estado declarado por el destinatario y la valoración, y decisiones del consejo pendientes de ejecución.</p>
+<p>Extracto del registro de recomendaciones y decisiones (documento 62): recomendaciones vencidas, recomendaciones cerradas en el trimestre con su valoración independiente, discrepancias entre el estado declarado por el destinatario y la valoración, y decisiones del consejo pendientes de ejecución.</p>
 <h3 id="4-8-casos-en-detalle">4.8 Casos en detalle</h3>
 <p>Se presentan <strong>como máximo tres casos en detalle</strong> por sesión. El resto está disponible en el panel. Criterios de selección, por este orden:</p>
 <ol>
@@ -915,7 +921,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Código</strong></td>
-<td>DEC-AAAA-NNN propuesto (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</td>
+<td>DEC-AAAA-NNN propuesto (documento 62).</td>
 <td>Se asigna al registrar la solicitud y se mantiene aunque la decisión se aplace.</td>
 </tr>
 <tr>
@@ -1473,9 +1479,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>En los documentos publicados los estados se muestran con texto además del color, para que el semáforo sea legible en impresión en blanco y negro y por personas con dificultades para distinguir colores.</p>
 <hr />
-<h2 id="relacion-con-el-panel-del-consejo-t17"><span class="antetitulo">10</span>Relación con el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>)</h2>
+<h2 id="relacion-con-el-panel-del-consejo-t17"><span class="antetitulo">10</span>Relación con el panel del consejo (T17)</h2>
 <h3 id="10-1-que-vista-usar">10.1 Qué vista usar</h3>
-<p>El panel de IA para el consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) se genera en dos versiones sincronizadas a partir del mismo fichero de datos y con la misma huella de datos: <strong>completa</strong> y <strong>móvil</strong>.</p>
+<p>El panel de IA para el consejo (T17) se genera en dos versiones sincronizadas a partir del mismo fichero de datos y con la misma huella de datos: <strong>completa</strong> y <strong>móvil</strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1574,7 +1580,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="10-3-adaptaciones-pendientes">10.3 Adaptaciones pendientes</h3>
-<p>La herramienta <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> existe (03 §5.4) y está pendiente de adaptación para alimentarse del registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Para este documento, la adaptación debería incluir: agrupación por <strong>programa</strong> y cálculo del semáforo de la sección 9; vista por <strong>fase y estado</strong> del ciclo de vida; distribución por <strong>esfera</strong>; y enlace de cada caso con su código IA-AAAA-NNN y con las recomendaciones y decisiones del <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>. Mientras tanto, el semáforo de programas se prepara desde el registro de iniciativas y se anexa al paquete.</p>
+<p>La herramienta <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> existe (03 §5.4) y está pendiente de adaptación para alimentarse del registro de iniciativas (T01). Para este documento, la adaptación debería incluir: agrupación por <strong>programa</strong> y cálculo del semáforo de la sección 9; vista por <strong>fase y estado</strong> del ciclo de vida; distribución por <strong>esfera</strong>; y enlace de cada caso con su código IA-AAAA-NNN y con las recomendaciones y decisiones del <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>. Mientras tanto, el semáforo de programas se prepara desde el registro de iniciativas y se anexa al paquete.</p>
 <p>Los ficheros del motor que se publican en el repositorio de demostraciones son copia de su proyecto de origen: las adaptaciones se hacen en origen y se vuelven a publicar.</p>
 <hr />
 <h2 id="lista-de-control-antes-de-enviar-el-paquete"><span class="antetitulo">11</span>Lista de control antes de enviar el paquete</h2>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -399,10 +405,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
-<p>Este documento establece cómo se calcula, se reparte, se controla y se informa el coste de la inteligencia artificial en SEVEN-G. Su finalidad es que el <strong>coste recurrente</strong> que se resta en el valor neto anual (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, fórmula F2) y la <strong>inversión inicial</strong> que se usa en el criterio económico (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §8) sean completos, comparables entre casos y conciliables con la contabilidad.</p>
+<p>Este documento establece cómo se calcula, se reparte, se controla y se informa el coste de la inteligencia artificial en SEVEN-G. Su finalidad es que el <strong>coste recurrente</strong> que se resta en el valor neto anual (documento 40, fórmula F2) y la <strong>inversión inicial</strong> que se usa en el criterio económico (documento 40 §8) sean completos, comparables entre casos y conciliables con la contabilidad.</p>
 <p>Se aplica a:</p>
 <ul>
-<li>Toda iniciativa del registro (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), desde la estimación de costes de la fase 3 hasta la retirada.</li>
+<li>Toda iniciativa del registro (T01), desde la estimación de costes de la fase 3 hasta la retirada.</li>
 <li>Los costes compartidos por varios casos: suites de productividad con IA, plataformas de modelos, cómputo, plataformas de datos y equipos comunes.</li>
 <li>El uso corporativo de IA de propósito general, que tiene coste aunque no sea una iniciativa (01 §1.2).</li>
 </ul>
@@ -511,7 +517,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Recurrente</th>
 <th>Adopción</th>
 <th>Fuente habitual</th>
-<th>Concepto en el panel (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>)</th>
+<th>Concepto en el panel (T17)</th>
 </tr>
 </thead>
 <tbody>
@@ -598,12 +604,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>El <strong>tiempo de los usuarios</strong> en formación y en revisión de las salidas del sistema es coste. Se valora a coste horario completo y se incluye en adopción y formación (formación) o en personas de operación (revisión), porque omitirlo infla la eficiencia (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §10, error 6).</p>
+<p>El <strong>tiempo de los usuarios</strong> en formación y en revisión de las salidas del sistema es coste. Se valora a coste horario completo y se incluye en adopción y formación (formación) o en personas de operación (revisión), porque omitirlo infla la eficiencia (documento 40 §10, error 6).</p>
 <hr />
 <h2 id="coste-total-de-propiedad"><span class="antetitulo">05</span>Coste total de propiedad</h2>
 <h3 id="5-1-formula">5.1 Fórmula</h3>
 <p><strong>Coste total de propiedad (H) = coste de construcción + coste de adopción inicial + Σ coste recurrente del año t (t = 1…H) + coste de retirada estimado</strong></p>
-<p>H es el horizonte aprobado en C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §8.2). El coste total de propiedad no se descuenta; cuando se necesita el valor actual, se usa el VAN del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> (F7), que ya incorpora los costes a través del neto anual.</p>
+<p>H es el horizonte aprobado en C2 (documento 40 §8.2). El coste total de propiedad no se descuenta; cuando se necesita el valor actual, se usa el VAN del <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> (F7), que ya incorpora los costes a través del neto anual.</p>
 <h3 id="5-2-ejemplo-ilustrativo">5.2 Ejemplo ilustrativo</h3>
 <p>Caso A: asistente para resolver consultas internas de empleados sobre procedimientos. Intensidad Enterprise. Horizonte H = 3 años.</p>
 <div class="tabla"><table>
@@ -1018,7 +1024,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Sin etiqueta no hay recurso.</strong> Las políticas de la nube deberían impedir crear recursos sin las etiquetas obligatorias; si no es posible, se detectan y se corrigen en el siguiente cierre.</li>
 <li><strong>Una clave de acceso a modelos por caso y entorno.</strong> El consumo de modelos se canaliza, cuando sea posible, por una pasarela común que registra la clave, el caso, el modelo y las unidades consumidas.</li>
-<li><strong>Los agentes tienen identidad y presupuesto propios.</strong> Cada agente usa credenciales propias (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>) que permiten medir su consumo por separado.</li>
+<li><strong>Los agentes tienen identidad y presupuesto propios.</strong> Cada agente usa credenciales propias (documento 35) que permiten medir su consumo por separado.</li>
 <li><strong>El etiquetado se verifica en G5.</strong> Un caso no pasa a producción sin etiquetas y claves propias.</li>
 <li><strong>Formato común de datos de coste.</strong> La compañía puede adoptar una especificación abierta de datos de facturación de nube, como la promovida por la <a class="ref-ext" href="https://focus.finops.org/" target="_blank" rel="noopener" title="FOCUS™ — FinOps Open Cost and Usage Specification (especificaci&#243;n abierta de datos de coste y uso), versi&#243;n 1.4">FinOps Foundation (FOCUS)</a>, para unificar proveedores. Debe verificarse la versión vigente.</li>
 </ol>
@@ -1056,13 +1062,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Consumo anómalo (por ejemplo, un día muy superior a la media reciente)</td>
 <td>Responsable de operación y seguridad</td>
-<td>Tratarlo como posible incidente (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>): bucle, abuso, fuga de credenciales.</td>
+<td>Tratarlo como posible incidente (documento 37): bucle, abuso, fuga de credenciales.</td>
 </tr>
 </tbody>
 </table></div>
 <p>Los umbrales son orientativos y la compañía los fija en C2.</p>
 <h3 id="8-3-limites-tecnicos-por-agente">8.3 Límites técnicos por agente</h3>
-<p>Los agentes pueden generar consumo en cadena sin intervención humana. Por eso, además del presupuesto, deben tener <strong>límites técnicos</strong> configurados en el diseño de seguridad (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) y comprobados en G5:</p>
+<p>Los agentes pueden generar consumo en cadena sin intervención humana. Por eso, además del presupuesto, deben tener <strong>límites técnicos</strong> configurados en el diseño de seguridad (P18) y comprobados en G5:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1093,7 +1099,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>El interruptor de parada del agente (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>) debe poder activarse también por motivo de coste.</p>
+<p>El interruptor de parada del agente (documento 35) debe poder activarse también por motivo de coste.</p>
 <h3 id="8-4-ejemplo-ilustrativo">8.4 Ejemplo ilustrativo</h3>
 <p>Agente E con un consumo de modelos imputado de 45.000 € al año; presupuesto mensual: 45.000 ÷ 12 = 3.750 €. Día 12 de un mes de 30 días; consumo acumulado: 2.100 €.</p>
 <ul>
@@ -1149,7 +1155,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La reducción del coste del proceso (480.000 − 350.000 = 130.000 €) es una <strong>capacidad potencial</strong>, no una eficiencia: solo cuenta en el valor neto cuando el menor coste humano se materializa (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, regla 3). El coste por unidad es un indicador de eficiencia del caso (IND-COS-05), no una cifra de valor.</p>
+<p>La reducción del coste del proceso (480.000 − 350.000 = 130.000 €) es una <strong>capacidad potencial</strong>, no una eficiencia: solo cuenta en el valor neto cuando el menor coste humano se materializa (documento 40, regla 3). El coste por unidad es un indicador de eficiencia del caso (IND-COS-05), no una cifra de valor.</p>
 <hr />
 <h2 id="coste-de-las-decisiones-de-parar"><span class="antetitulo">10</span>Coste de las decisiones de parar</h2>
 <p>Parar o retirar una iniciativa es un resultado válido del método (01 §7.3). Para que no se penalice económicamente a quien para, y para que el consejo vea el efecto de estas decisiones, se registran las siguientes magnitudes en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y T13 al registrar la parada o la retirada:</p>

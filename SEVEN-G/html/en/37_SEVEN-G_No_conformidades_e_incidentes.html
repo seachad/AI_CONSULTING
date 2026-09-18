@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -992,7 +998,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="4-5-phases">4.5 Phases</h3>
-<p><strong>1. Detection.</strong> Sources: monitoring and alerts (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), agent controls (blocks, limits, anomalies), users and customers, human oversight, suppliers, the security team, audit, authorities or third parties. Every possible incident is recorded in T08 with the date and time of detection: this starts the regulatory clocks.</p>
+<p><strong>1. Detection.</strong> Sources: monitoring and alerts (P25), agent controls (blocks, limits, anomalies), users and customers, human oversight, suppliers, the security team, audit, authorities or third parties. Every possible incident is recorded in T08 with the date and time of detection: this starts the regulatory clocks.</p>
 <p><strong>2. Triage.</strong> Confirm the incident, assign type and severity, identify the affected systems, data, people and suppliers, appoint a coordinator and open the assessment of reporting obligations.</p>
 <p><strong>3. Containment.</strong> Limit the harm immediately. Criteria for <strong>shutting down the system</strong> (fully or by capability with the kill switch):</p>
 <ul>
@@ -1002,7 +1008,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Discriminatory or dangerous outputs that continue to be produced.</li>
 <li>Inability to determine within a short time whether the system is safe.</li>
 </ul>
-<p>Shutdown activates the fallback process set out in the rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) and the operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>). Before the system is modified, <strong>evidence is preserved</strong>: logs, model and instruction versions, configurations, relevant inputs and outputs. The AI Act requires the provider of a high-risk system not to alter the system in a way that may affect any subsequent evaluation of the causes before informing the authorities (Art. 73(6)).</p>
+<p>Shutdown activates the fallback process set out in the rollback plan (P19) and the operations manual (P24). Before the system is modified, <strong>evidence is preserved</strong>: logs, model and instruction versions, configurations, relevant inputs and outputs. The AI Act requires the provider of a high-risk system not to alter the system in a way that may affect any subsequent evaluation of the causes before informing the authorities (Art. 73(6)).</p>
 <p><strong>4. Eradication and recovery.</strong> Eliminate the immediate cause (revoke credentials, correct the configuration, remove poisoned content, roll back the version), validate through testing that the system operates within thresholds —including adversarial testing if there was manipulation— and resume with the decision-maker's authorisation. After an S1 or S2 related to an agent's autonomy, operation resumes at a lower autonomy level until the post-incident analysis has been completed (35 §5.2).</p>
 <p><strong>5. Communication.</strong> Internal, to the AI Committee and the board as per 4.3; to affected parties and customers where appropriate or required by regulation; to the suppliers involved. All external communication is validated by Legal and Communications.</p>
 <p><strong>6. Regulatory reporting.</strong> As per section 5, in parallel with containment.</p>
@@ -1057,7 +1063,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>DORA and NIS2.</strong> For financial entities, DORA acts as sector-specific legislation with respect to NIS2 for incident reporting; the applicable regime is confirmed in the regulatory mapping (document 34).</li>
 <li><strong>Applicability of Art. 73.</strong> It concerns high-risk systems, whose Annex III obligations apply from 2 December 2027. Until then, the company <strong>should</strong> apply the serious incident criterion as its internal S1 threshold and document its assessment. Art. 73 provides for a limited regime where equivalent sector-specific reporting obligations exist (Art. 73(9) and 73(10)).</li>
 <li><strong>General-purpose AI models with systemic risk.</strong> Their providers have their own reporting obligations to the EU AI Office (Art. 55); the company, as a user, cooperates through the contract (document 36).</li>
-<li><strong>Sector-specific and contractual regulation.</strong> Sector supervisors, public sector security schemes and contracts with customers may impose additional reporting. These are captured in the context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>) and in the response plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
+<li><strong>Sector-specific and contractual regulation.</strong> Sector supervisors, public sector security schemes and contracts with customers may impose additional reporting. These are captured in the context statement (P02) and in the response plan (P26).</li>
 <li><strong>Suppliers.</strong> N2 and N3 contracts must ensure that the supplier reports within a time limit that allows these time limits to be met (36 §6, clause 7).</li>
 <li><strong>Rehearsal.</strong> Reporting is rehearsed at least once a year in an S1 incident drill.</li>
 </ul>

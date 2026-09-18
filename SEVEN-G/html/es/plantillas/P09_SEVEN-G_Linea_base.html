@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>En la fase 2, antes de G2, en paralelo al lienzo de hipótesis de valor (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>). La línea base se congela en G2 y se usa en las fases 5, 6 y 7.</td>
+<td>En la fase 2, antes de G2, en paralelo al lienzo de hipótesis de valor (P08). La línea base se congela en G2 y se usa en las fases 5, 6 y 7.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -467,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión del lienzo asociado</td>
 <td></td>
-<td>Versión de <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> a la que corresponde esta línea base.</td>
+<td>Versión de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> a la que corresponde esta línea base.</td>
 </tr>
 <tr>
 <td>Versión del documento</td>
@@ -683,10 +689,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los valores unitarios se usan en la fórmula de <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> (unidades × valor unitario). Si cambian después de G2, se registra en la sección 9.</p>
+<p>Los valores unitarios se usan en la fórmula de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> (unidades × valor unitario). Si cambian después de G2, se registra en la sección 9.</p>
 <hr />
 <h2 id="grupo-de-control"><span class="antetitulo">07</span>Grupo de control</h2>
-<p>Rellenar si el método de atribución de <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> es grupo de control.</p>
+<p>Rellenar si el método de atribución de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> es grupo de control.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -821,7 +827,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Los criterios formales de G2 están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G2.xx).</p>
+<p>Los criterios formales de G2 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G2.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -833,7 +839,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Cada métrica de <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> tiene definición operativa, fórmula y fuente.</td>
+<td>Cada métrica de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> tiene definición operativa, fórmula y fuente.</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>

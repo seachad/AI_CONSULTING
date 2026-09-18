@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -413,9 +419,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <h3 id="1-2-que-no-cubre">1.2 Qué no cubre</h3>
 <ul>
-<li>El apetito y las tolerancias de la compañía, que se aprueban en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</li>
-<li>El detalle de los controles de seguridad y de agentes (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>), de terceros (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>) y de cumplimiento regulatorio (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</li>
-<li>La gestión de incidentes y no conformidades (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). Un riesgo materializado se gestiona como incidente; la metodología de riesgos recoge sus lecciones.</li>
+<li>El apetito y las tolerancias de la compañía, que se aprueban en C2 (documento 13).</li>
+<li>El detalle de los controles de seguridad y de agentes (documento 35), de terceros (documento 36) y de cumplimiento regulatorio (documento 34).</li>
+<li>La gestión de incidentes y no conformidades (documento 37). Un riesgo materializado se gestiona como incidente; la metodología de riesgos recoge sus lecciones.</li>
 </ul>
 <h3 id="1-3-normas-de-referencia">1.3 Normas de referencia</h3>
 <p>La metodología es coherente con <strong><a class="ref-ext" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener" title="ISO/IEC 23894:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Orientaci&#243;n sobre la gesti&#243;n del riesgo">ISO/IEC 23894</a></strong> (orientación sobre la gestión del riesgo de la IA, que adapta el proceso de <a class="ref-ext" href="https://www.iso.org/standard/65694.html" target="_blank" rel="noopener" title="ISO 31000:2018 Gesti&#243;n del riesgo — Directrices">ISO 31000</a>), con los requisitos de evaluación y tratamiento de riesgos de <strong>ISO/IEC 42001</strong>, con las funciones <em>Map</em>, <em>Measure</em> y <em>Manage</em> del <strong><a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1">NIST AI RMF</a></strong> y su perfil de IA generativa <strong><a class="ref-ext" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener" title="Marco de gesti&#243;n de riesgos de IA: perfil de inteligencia artificial generativa (NIST AI 600-1)">NIST AI 600-1</a></strong>, y con el sistema de gestión de riesgos que el <strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a></strong> exige a los proveedores de sistemas de alto riesgo. SEVEN-G no sustituye el marco corporativo de riesgos de la compañía: lo especializa para la IA y debe integrarse en él (mismo lenguaje de niveles, mismos órganos, mismo informe).</p>
@@ -509,14 +515,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>3. Evaluar</strong></td>
-<td>Comparar con el apetito y las tolerancias (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>). Decidir qué riesgos requieren tratamiento y en qué orden.</td>
+<td>Comparar con el apetito y las tolerancias (documento 13). Decidir qué riesgos requieren tratamiento y en qué orden.</td>
 <td>Priorización y propuesta de respuesta.</td>
 <td>Responsable de riesgos de IA.</td>
 </tr>
 <tr>
 <td><strong>4. Tratar</strong></td>
 <td>Elegir la respuesta (evitar, mitigar, transferir, aceptar), diseñar y aplicar controles, estimar el residual objetivo y obtener la aceptación del residual.</td>
-<td>Plan de mitigación y contingencia (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>); decisión de aceptación.</td>
+<td>Plan de mitigación y contingencia (P13); decisión de aceptación.</td>
 <td>Responsable del riesgo; acepta quien corresponda según la sección 7.</td>
 </tr>
 <tr>
@@ -528,7 +534,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>6. Informar</strong></td>
 <td>Presentar el perfil de riesgo al órgano que decide el <em>gate</em> y, agregado, al comité de IA y al consejo.</td>
-<td>Información de riesgo en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
+<td>Información de riesgo en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, panel del consejo (T17).</td>
 <td>Oficina de IA con el responsable de riesgos.</td>
 </tr>
 </tbody>
@@ -546,42 +552,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>0 · G0</strong></td>
 <td>Restricciones y riesgos evidentes (práctica prohibida, datos protegidos, función crítica). Determinación de intensidad.</td>
-<td>Declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>), intensidad (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Declaración de contexto (P02), intensidad (P04).</td>
 </tr>
 <tr>
 <td><strong>1 · G1</strong></td>
 <td>Identificación preliminar de riesgos que podrían descartar la oportunidad.</td>
-<td>Notas de filtrado (<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>).</td>
+<td>Notas de filtrado (P06).</td>
 </tr>
 <tr>
 <td><strong>2 · G2</strong></td>
 <td>Riesgos de la hipótesis de valor (RT-ECO, RT-EST) y criterios de parada vinculados a riesgo.</td>
-<td>Lienzo de hipótesis (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>).</td>
+<td>Lienzo de hipótesis (P08).</td>
 </tr>
 <tr>
 <td><strong>3 · G3</strong></td>
 <td><strong>Evaluación completa</strong>: inherente, controles previstos, residual objetivo, aceptación. Ningún riesgo Crítico sin tratamiento aceptado.</td>
-<td>Matriz y registro (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>); plan de mitigación y contingencia (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>); evaluación de proveedor (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
+<td>Matriz y registro (P12); plan de mitigación y contingencia (P13); evaluación de proveedor (P14).</td>
 </tr>
 <tr>
 <td><strong>4 · G4</strong></td>
 <td>Cada riesgo Medio o superior tiene un control diseñado, con código cuando exista (SEG, AG del <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
-<td>Diseño de seguridad (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>), diseño de supervisión (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), registro actualizado.</td>
+<td>Diseño de seguridad (P18), diseño de supervisión (P17), registro actualizado.</td>
 </tr>
 <tr>
 <td><strong>5 · G5</strong></td>
 <td>Eficacia de los controles probada; <strong>residual verificado</strong>; aceptación ratificada.</td>
-<td>Resultados de validación (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>), registro actualizado, firma (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>).</td>
+<td>Resultados de validación (P22), registro actualizado, firma (P23).</td>
 </tr>
 <tr>
 <td><strong>6 · R6</strong></td>
 <td>Seguimiento, indicadores, incidentes, cambios; revisión de la clasificación.</td>
-<td>Registro actualizado; registro de incidentes (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td>Registro actualizado; registro de incidentes (P27).</td>
 </tr>
 <tr>
 <td><strong>7 · G7</strong></td>
 <td>Riesgos acumulados y riesgos de la retirada (datos, modelos, dependencias).</td>
-<td>Decisión de escalado o retirada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</td>
+<td>Decisión de escalado o retirada (P30).</td>
 </tr>
 </tbody>
 </table></div>
@@ -600,7 +606,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>C2 · Dirección</strong></td>
-<td>Aprobación del apetito, tolerancias, umbral de materialidad económica y umbrales de los indicadores (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</td>
+<td>Aprobación del apetito, tolerancias, umbral de materialidad económica y umbrales de los indicadores (documento 13).</td>
 </tr>
 <tr>
 <td><strong>C3 · Cartera</strong></td>
@@ -659,7 +665,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Criterios de apoyo: antecedentes en la compañía o en el sector, resultados de pruebas y pilotos, exposición (usuarios, volumen, acceso externo), existencia de un atacante motivado, madurez de la tecnología. En amenazas de seguridad con atacante activo (RT-GEN, RT-SEG) y exposición externa, la probabilidad <strong>no debería</strong> valorarse por debajo de 3 sin evidencia de pruebas adversarias.</p>
 <h3 id="4-2-impacto-en-cinco-ejes">4.2 Impacto en cinco ejes</h3>
 <p>El impacto se valora en cinco ejes y se toma el <strong>mayor</strong>. Se registra el eje determinante y su justificación.</p>
-<p>M es el <strong>umbral de materialidad económica</strong> que la compañía aprueba en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>) en proporción a su tamaño. Los porcentajes de M son orientativos y se calibran en C2.</p>
+<p>M es el <strong>umbral de materialidad económica</strong> que la compañía aprueba en C2 (documento 13) en proporción a su tamaño. Los porcentajes de M son orientativos y se calibran en C2.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -869,8 +875,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>La reducción total no puede llevar la probabilidad por debajo de 1 ni el impacto por debajo del que produciría el evento con el control correctivo ya activado.</li>
 <li>Los controles de tipo transferencia solo reducen el eje económico; el impacto se sigue determinando por el mayor de los demás ejes.</li>
-<li>En IA generativa y agentes, la eficacia de los controles frente a inyección de instrucciones <strong>debe</strong> probarse con pruebas adversarias (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>, sección 8); una política o una instrucción al modelo no es por sí sola un control eficaz.</li>
-<li>Un control ineficaz en un riesgo residual Alto o Crítico es, además, una no conformidad (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</li>
+<li>En IA generativa y agentes, la eficacia de los controles frente a inyección de instrucciones <strong>debe</strong> probarse con pruebas adversarias (documento 35, sección 8); una política o una instrucción al modelo no es por sí sola un control eficaz.</li>
+<li>Un control ineficaz en un riesgo residual Alto o Crítico es, además, una no conformidad (documento 37).</li>
 </ul>
 <hr />
 <h2 id="respuestas-al-riesgo"><span class="antetitulo">06</span>Respuestas al riesgo</h2>
@@ -973,7 +979,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Riesgo materializado</td>
-<td>Gestión como incidente (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>) y revaloración.</td>
+<td>Gestión como incidente (documento 37) y revaloración.</td>
 <td>Según severidad</td>
 </tr>
 <tr>
@@ -1121,7 +1127,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td></td>
 <td>Plan</td>
-<td>Acciones, responsable, plazo y estado (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>).</td>
+<td>Acciones, responsable, plazo y estado (P13).</td>
 </tr>
 <tr>
 <td></td>
@@ -1182,7 +1188,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-EST-01</strong></td>
 <td><strong>Desalineación con la tesis de IA.</strong> La iniciativa no contribuye a la ambición ni a las esferas aprobadas en C2.</td>
 <td>Origen tecnológico; patrocinio débil; ausencia de filtro.</td>
-<td>Encaje con la tesis en G0; clasificación de esfera (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>); priorización en C3.</td>
+<td>Encaje con la tesis en G0; clasificación de esfera (P07); priorización en C3.</td>
 <td>0–1</td>
 </tr>
 <tr>
@@ -1238,14 +1244,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-TEC-01</strong></td>
 <td><strong>Rendimiento insuficiente en condiciones reales.</strong> El sistema no alcanza el umbral fuera del entorno de prueba.</td>
 <td>Validación con datos no representativos; piloto sin método de atribución.</td>
-<td>Umbral de éxito previo; piloto en condiciones reales (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
+<td>Umbral de éxito previo; piloto en condiciones reales (P22).</td>
 <td>3, 5</td>
 </tr>
 <tr>
 <td><strong>RT-TEC-02</strong></td>
 <td><strong>Degradación y deriva.</strong> El rendimiento cae por cambios en los datos, el entorno o el comportamiento de los usuarios.</td>
 <td>Entorno dinámico; sin monitorización.</td>
-<td>Monitorización de deriva y rendimiento (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>); umbrales de reentrenamiento o retirada.</td>
+<td>Monitorización de deriva y rendimiento (P25); umbrales de reentrenamiento o retirada.</td>
 <td>6</td>
 </tr>
 <tr>
@@ -1287,7 +1293,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-TEC-08</strong></td>
 <td><strong>Irreversibilidad.</strong> No es posible volver al estado anterior o al proceso sin IA.</td>
 <td>Plan de reversión inexistente o no probado; proceso manual desmantelado.</td>
-<td>Plan de reversión probado antes de G5 (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>); proceso alternativo mantenido.</td>
+<td>Plan de reversión probado antes de G5 (P19); proceso alternativo mantenido.</td>
 <td>4, 5</td>
 </tr>
 </tbody>
@@ -1329,7 +1335,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-DAT-04</strong></td>
 <td><strong>Linaje desconocido.</strong> No se sabe de dónde vienen los datos, qué transformaciones han sufrido ni con qué licencia.</td>
 <td>Datos de terceros; procesos manuales.</td>
-<td>Linaje de datos y modelos (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>); licencias verificadas.</td>
+<td>Linaje de datos y modelos (P16); licencias verificadas.</td>
 <td>4</td>
 </tr>
 <tr>
@@ -1378,7 +1384,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ECO-03</strong></td>
 <td><strong>Valor no materializado.</strong> La capacidad liberada no se convierte en ahorro ni se reasigna.</td>
 <td>Sin plan de materialización; resistencia organizativa.</td>
-<td>Regla 3 de medición (00 §6); plan de materialización en G5; seguimiento (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>).</td>
+<td>Regla 3 de medición (00 §6); plan de materialización en G5; seguimiento (P28).</td>
 <td>5–7</td>
 </tr>
 <tr>
@@ -1392,7 +1398,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ECO-05</strong></td>
 <td><strong>Coste de salida no previsto.</strong> Sustituir el proveedor o retirar el sistema cuesta más de lo estimado.</td>
 <td>Contratos sin cláusulas de salida; datos en formatos cerrados.</td>
-<td>Plan de salida (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>); coste de salida en la evaluación económica.</td>
+<td>Plan de salida (documento 36); coste de salida en la evaluación económica.</td>
 <td>3, 7</td>
 </tr>
 </tbody>
@@ -1434,14 +1440,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-LEG-04</strong></td>
 <td><strong>Decisiones automatizadas sin garantías.</strong> Decisiones con efectos significativos sin intervención humana efectiva ni derecho a impugnar.</td>
 <td>Supervisión nominal; automatización progresiva no revisada.</td>
-<td>Diseño de supervisión humana (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); análisis del art. 22 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>.</td>
+<td>Diseño de supervisión humana (P17); análisis del art. 22 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>.</td>
 <td>3, 4</td>
 </tr>
 <tr>
 <td><strong>RT-LEG-05</strong></td>
 <td><strong>Evaluaciones de impacto omitidas.</strong> No se realizan o no se actualizan la evaluación de impacto en protección de datos o la de derechos fundamentales.</td>
 <td>Desconocimiento del requisito; plazos.</td>
-<td>Clasificación (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>); evaluaciones como evidencia de G3.</td>
+<td>Clasificación (P11); evaluaciones como evidencia de G3.</td>
 <td>3, 6</td>
 </tr>
 <tr>
@@ -1455,14 +1461,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-LEG-07</strong></td>
 <td><strong>Notificación de incidentes fuera de plazo.</strong> No se notifica a tiempo un incidente grave, una brecha de datos o un incidente <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>.</td>
 <td>Sin criterios de severidad; sin responsable de notificación.</td>
-<td>Plan de respuesta (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); matriz de notificaciones (37).</td>
+<td>Plan de respuesta (P26); matriz de notificaciones (37).</td>
 <td>6</td>
 </tr>
 <tr>
 <td><strong>RT-LEG-08</strong></td>
 <td><strong>Incumplimiento de obligaciones sectoriales o de resiliencia.</strong> Requisitos de supervisores sectoriales, DORA u otras normas no trasladados al sistema.</td>
 <td>Mapeo regulatorio incompleto.</td>
-<td>Mapeo regulatorio (34); declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</td>
+<td>Mapeo regulatorio (34); declaración de contexto (P02).</td>
 <td>0, 3</td>
 </tr>
 </tbody>
@@ -1483,14 +1489,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-01</strong></td>
 <td><strong>Falta de adopción.</strong> Los usuarios no usan el sistema o lo usan de forma marginal.</td>
 <td>Mala integración en el trabajo; desconfianza; formación insuficiente.</td>
-<td>Plan de adopción (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>); objetivo de adopción en G2 y G5.</td>
+<td>Plan de adopción (P20); objetivo de adopción en G2 y G5.</td>
 <td>4–6</td>
 </tr>
 <tr>
 <td><strong>RT-ORG-02</strong></td>
 <td><strong>Dependencia de personas clave.</strong> El conocimiento del sistema está en pocas personas o en el proveedor.</td>
 <td>Documentación escasa; equipos pequeños.</td>
-<td>Documentación y manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>); suplencias; transferencia de conocimiento.</td>
+<td>Documentación y manual de operación (P24); suplencias; transferencia de conocimiento.</td>
 <td>4, 6</td>
 </tr>
 <tr>
@@ -1518,7 +1524,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-06</strong></td>
 <td><strong>Roles sin separación de funciones.</strong> Quien construye verifica, acepta riesgos o decide.</td>
 <td>Equipos pequeños; roles no asignados.</td>
-<td>Registro de roles (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>); incompatibilidades (01 §8.2).</td>
+<td>Registro de roles (P03); incompatibilidades (01 §8.2).</td>
 <td>0</td>
 </tr>
 <tr>
@@ -1539,7 +1545,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-09</strong></td>
 <td><strong>Deterioro del bienestar.</strong> Intensificación del trabajo, vigilancia excesiva, pérdida de autonomía o carga de supervisión dañan la salud y el compromiso de las personas afectadas.</td>
 <td>Objetivos y cargas no revisados tras la IA; datos de uso empleados para controlar a personas; volúmenes de revisión excesivos.</td>
-<td>Revisión de la evaluación de riesgos laborales, incluidos los psicosociales, y limitación de finalidad (50 §9.2); diseño de la supervisión (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); encuesta de pulso (IND-ADO-15, 41).</td>
+<td>Revisión de la evaluación de riesgos laborales, incluidos los psicosociales, y limitación de finalidad (50 §9.2); diseño de la supervisión (P17); encuesta de pulso (IND-ADO-15, 41).</td>
 <td>4–6</td>
 </tr>
 </tbody>
@@ -1714,7 +1720,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-SEG-05</strong></td>
 <td><strong>Envenenamiento de datos o modelos.</strong> Manipulación de datos de entrenamiento, ajuste o evaluación.</td>
 <td>Fuentes abiertas; ingesta sin control.</td>
-<td>SEG-08; linaje (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>SEG-08; linaje (P16).</td>
 <td>4, 5</td>
 </tr>
 <tr>
@@ -1841,7 +1847,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los umbrales se fijan en el apetito de riesgo (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>); los de esta tabla son orientativos.</p>
+<p>Los umbrales se fijan en el apetito de riesgo (documento 13); los de esta tabla son orientativos.</p>
 <h3 id="10-2-correlacion">10.2 Correlación</h3>
 <p>Dos riesgos están correlacionados cuando una misma causa los materializa a la vez. Causas comunes típicas: el mismo modelo base (un cambio de versión o una vulnerabilidad afecta a todos los sistemas que lo usan), la misma técnica de ataque (una inyección indirecta que funciona en un agente suele funcionar en otros con el mismo diseño), el mismo cambio regulatorio o la misma interpretación jurídica, y el mismo proveedor o subencargado.</p>
 <p>Para cada causa común, la oficina de IA <strong>debería</strong> construir un <strong>escenario de cartera</strong> y valorarlo con la matriz de la sección 4, sumando los impactos económicos de los sistemas afectados y tomando el peor impacto en los demás ejes. Escenarios mínimos recomendados:</p>

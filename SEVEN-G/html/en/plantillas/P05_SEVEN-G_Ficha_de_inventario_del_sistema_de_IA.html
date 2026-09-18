@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td>T02 · AI system inventory (module of <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Detailed structure in document 32.</td>
+<td>T02 · AI system inventory (module of <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Detailed structure in document 32.</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -578,7 +584,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensity</td>
 <td></td>
-<td>Lite · Enterprise (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (P04).</td>
 </tr>
 <tr>
 <td>Technology</td>
@@ -598,7 +604,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Regulatory classification</td>
 <td></td>
-<td>Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Prohibited · High risk · Transparency obligations · Minimal risk · Out of scope · Pending classification (P11).</td>
 </tr>
 <tr>
 <td>Value type</td>
@@ -610,7 +616,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>If the technology is &quot;Rules (not AI)&quot;, the reason is documented and it is assessed whether it should remain in the inventory.</p>
 <hr />
 <h2 id="company-role-under-the-eu-ai-act"><span class="antetitulo">05</span>Company role under the EU AI Act</h2>
-<p>Mark all the roles that apply. The final determination is validated in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> with legal judgement. <em>This document does not constitute legal advice.</em></p>
+<p>Mark all the roles that apply. The final determination is validated in <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> with legal judgement. <em>This document does not constitute legal advice.</em></p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -681,7 +687,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registration in the EU database <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Yes · No · Not applicable. Only for the systems and roles that require it according to <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Yes · No · Not applicable. Only for the systems and roles that require it according to <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -761,14 +767,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td>N1 Standard · N2 Enhanced · N3 Critical</td>
 <td>Reference and expiry</td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> and date</td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> and date</td>
 </tr>
 <tr>
 <td><em>(illustrative example)</em> Supplier X</td>
 <td>Language model via API</td>
 <td>N2 Enhanced</td>
 <td>CT-0000, expires 30-06-2028</td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> of 10-11-2026, Conformant with observations</td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> of 10-11-2026, Conformant with observations</td>
 </tr>
 </tbody>
 </table></div>
@@ -819,7 +825,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Validated regulatory classification</td>
 <td></td>
-<td>Date of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and person with legal judgement who validates it.</td>
+<td>Date of <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and person with legal judgement who validates it.</td>
 </tr>
 <tr>
 <td>Data protection impact assessment</td>
@@ -839,12 +845,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Human oversight</td>
 <td></td>
-<td>Summary and reference to <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Summary and reference to <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
 </tr>
 <tr>
 <td>Main residual risk level</td>
 <td></td>
-<td>Low · Medium · High · Critical (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
+<td>Low · Medium · High · Critical (P12).</td>
 </tr>
 <tr>
 <td>Open nonconformities</td>
@@ -936,7 +942,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Treatment of data and models</td>
 <td></td>
-<td>Deletion, retention or transfer. Reference to <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td>Deletion, retention or transfer. Reference to <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -969,7 +975,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>The regulatory role is justified and consistent with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>The regulatory role is justified and consistent with <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -984,7 +990,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Assigned owners are consistent with <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+<td>Assigned owners are consistent with <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
 <td></td>
 </tr>
 <tr>

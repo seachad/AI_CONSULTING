@@ -64,6 +64,39 @@ try {
   foreach ($x in $titulosRotos) { Mal "título generado a partir de una tabla: $([IO.Path]::GetRelativePath($repo, $x.Path))" }
   if (-not $pegados -and -not $titulosRotos) { Ok 'sin separadores pegados ni títulos generados a partir de tablas' }
 
+  # marcadores entre < > sin escapar en el texto (p. ej. RT-<CAT>-NN): el navegador los toma por etiquetas y desaparecen. En texto corrido
+  # se escriben \<CAT\>; dentro de código (`…`) van tal cual
+  Write-Host '1d. Marcadores entre < > sin escapar'
+  $etiquetasHtml = 'br|b|i|u|em|strong|sub|sup|span|div|a|p|small|code|kbd|details|summary|figure|figcaption|img|table|thead|tbody|tr|td|th|ul|ol|li|svg|path|g|rect|text|line|circle|polygon|defs|marker|tspan'
+  $sinEscapar = foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\mds'), (Join-Path $repo 'SPHERES\mds') -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+    $enCodigo = $false; $i = 0
+    foreach ($l in [IO.File]::ReadAllLines($f.FullName)) {
+      $i++; if ($l -match '^\s*(```|~~~)') { $enCodigo = -not $enCodigo; continue }; if ($enCodigo) { continue }
+      $sinCodigo = [regex]::Replace($l, '`[^`]*`', '')
+      foreach ($m in [regex]::Matches($sinCodigo, "(?<!\\)<(?!!--|/?(?:$etiquetasHtml)\b|https?:)[^<>\s\\][^<>\\]*>")) { "$([IO.Path]::GetRelativePath($repo, $f.FullName)):$i $($m.Value)" }
+    }
+  }
+  foreach ($x in ($sinEscapar | Select-Object -First 10)) { Mal "marcador sin escapar: $x" }
+  if (-not $sinEscapar) { Ok 'ningún marcador entre < > sin escapar' }
+
+  # enlaces locales de los HTML generados: cada href o src relativo debe existir en disco, y cada ancla interna, en la página
+  Write-Host '1c. Enlaces locales de los HTML generados'
+  $rotos = [Collections.Generic.List[string]]::new(); $nEnlaces = 0
+  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html') -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+    $html = [IO.File]::ReadAllText($f.FullName); $sinScript = [regex]::Replace($html, '(?s)<script\b.*?</script>', '')
+    foreach ($a in [regex]::Matches($sinScript, '\s(?:href|src)="([^"]+)"')) {
+      $u = $a.Groups[1].Value
+      if ($u -match '^(https?:|mailto:|data:|javascript:)' -or $u -eq '#') { continue }
+      $nEnlaces++
+      if ($u.StartsWith('#')) { if ($html -notmatch ('id="' + [regex]::Escape($u.Substring(1)) + '"')) { $rotos.Add("$([IO.Path]::GetRelativePath($repo, $f.FullName)) -> $u") }; continue }
+      $ruta = ($u -split '[#?]')[0]
+      if ($ruta -and -not (Test-Path -LiteralPath (Join-Path (Split-Path $f.FullName) ([Uri]::UnescapeDataString($ruta))))) { $rotos.Add("$([IO.Path]::GetRelativePath($repo, $f.FullName)) -> $u") }
+    }
+  }
+  foreach ($x in ($rotos | Select-Object -First 15)) { Mal "enlace roto: $x" }
+  if ($rotos.Count -gt 15) { Mal "… y $($rotos.Count - 15) enlaces rotos más" }
+  if (-not $rotos.Count) { Ok "$nEnlaces enlaces locales comprobados, ninguno roto" }
+
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
   $publicables = @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))

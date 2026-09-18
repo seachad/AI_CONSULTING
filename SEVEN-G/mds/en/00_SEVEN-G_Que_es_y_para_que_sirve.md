@@ -177,6 +177,16 @@ Each AI initiative goes through eight phases. **Phase 0** is enabling: without i
 | 6 | **Operation and governance** | Operate stably, watch for degradation, respond to incidents. | Operations manual, monitoring and alerting configuration, incident response plan. |
 | 7 | **Evolution or retirement** | Scale, iterate or retire based on the evidence of value and risk. | Value realisation tracking, scaling or retirement decision record. |
 
+**The initiative portfolio as a funnel**
+
+SEVEN-G looks at the company's set of AI initiatives with the same approach as a traditional sales funnel: to reach its final stage —in production— every initiative has to go through a mandatory set of states, and in each of them it can move forward, wait or drop out. Registering an initiative is the equivalent of logging an opportunity in a CRM: from that moment on it is known which stage it is in, how long it has been there, what cost, efficiencies and return are expected and, if it leaves the funnel, why it left and what was learned.
+
+The funnel stages group the lifecycle phases: **Proposed** (phases 0 and 1), **Value hypothesis** (phase 2), **Proof of concept** (phase 3) and **In development** (phases 4 and 5). The funnel holds only the initiatives in progress. Those **In use** (phases 6 and 7) have already gone through it, and those that are **disengaged** after having been in use are tracked separately, with their reason.
+
+<!-- figura: embudo-cartera -->
+
+> **Why it matters.** The funnel turns the portfolio into something the AI committee and the board can read at a glance: how many initiatives come in, where they get stuck, how many reach production, what value they produce and what is learned from those that do not get there. It is the view shared by the initiative register (T01) and the board dashboard (T17).
+
 **Decision gate rules**
 
 - Each *gate* is passed through **dual validation**: tangible results and verified documentation.

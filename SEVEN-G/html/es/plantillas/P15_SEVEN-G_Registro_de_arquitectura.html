@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -440,9 +446,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li>La arquitectura debe cubrir los <strong>controles exigidos por la clasificación de riesgo</strong> y los riesgos de la fase 3 deben tener <strong>control diseñado</strong> (01 §6.6).</li>
-<li>Debe existir un <strong>mecanismo de parada</strong> y una vía de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</li>
+<li>Debe existir un <strong>mecanismo de parada</strong> y una vía de reversión (P19).</li>
 <li>Los diagramas se adjuntan como fichero enlazado o como bloque Mermaid; no se dibujan en texto.</li>
-<li>Este registro resume y enlaza: el linaje de datos y modelos va en <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, la supervisión humana en <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, la seguridad en <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, la reversión en <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y la monitorización en <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</li>
+<li>Este registro resume y enlaza: el linaje de datos y modelos va en <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, la supervisión humana en <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, la seguridad en <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, la reversión en <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y la monitorización en <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -463,12 +469,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistemas de IA cubiertos</td>
 <td></td>
-<td>Códigos de <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
+<td>Códigos de <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria e intensidad</td>
 <td></td>
-<td>De <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</td>
+<td>De <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</td>
 </tr>
 <tr>
 <td>Nivel de autonomía</td>
@@ -524,7 +530,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Qué incluye el diseño y qué se deja para versiones posteriores.</td>
 </tr>
 <tr>
-<td>Restricciones de <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> aplicadas</td>
+<td>Restricciones de <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> aplicadas</td>
 <td></td>
 <td>Plataformas obligatorias, ubicación de datos, autonomía máxima, líneas rojas.</td>
 </tr>
@@ -560,7 +566,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><em>(ejemplo ilustrativo)</em> Modelo de lenguaje</td>
 <td>Redactar respuestas a partir de la información del pedido</td>
 <td>Modelo</td>
-<td>Proveedor X (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, N2)</td>
+<td>Proveedor X (P14, N2)</td>
 <td>Versión fijada por contrato</td>
 <td>Nube del proveedor, región de la UE</td>
 <td>Texto de la consulta y datos del pedido</td>
@@ -590,7 +596,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="modelos"><span class="antetitulo">05</span>Modelos</h2>
-<p>Resumen; el detalle de versiones, datos de entrenamiento y evaluaciones va en <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</p>
+<p>Resumen; el detalle de versiones, datos de entrenamiento y evaluaciones va en <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -641,7 +647,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Detalle de fuentes, transformaciones y versiones en <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</p>
+<p>Detalle de fuentes, transformaciones y versiones en <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</p>
 <hr />
 <h2 id="decisiones-de-arquitectura"><span class="antetitulo">07</span>Decisiones de arquitectura</h2>
 <p>Una fila por decisión relevante. Las decisiones no se borran: si se sustituyen, se marca la anterior como sustituida.</p>
@@ -672,7 +678,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><em>(ejemplo ilustrativo)</em> DA-01</td>
 <td>El modelo no accede directamente al sistema de pedidos; recibe solo los datos devueltos por un servicio intermedio.</td>
-<td>Riesgo de fuga de datos de otros clientes (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, R01).</td>
+<td>Riesgo de fuga de datos de otros clientes (P12, R01).</td>
 <td>Acceso directo del modelo mediante herramienta; recuperación sobre un índice con todos los pedidos.</td>
 <td>Limita por diseño los datos disponibles a los del cliente autenticado.</td>
 <td>Mayor latencia; mantenimiento del servicio intermedio.</td>
@@ -683,7 +689,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="trazabilidad-de-riesgos-obligaciones-y-controles"><span class="antetitulo">08</span>Trazabilidad de riesgos, obligaciones y controles</h2>
-<p>Cada riesgo de <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> que requiera tratamiento y cada obligación de <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> debe tener al menos un control diseñado.</p>
+<p>Cada riesgo de <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> que requiera tratamiento y cada obligación de <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> debe tener al menos un control diseñado.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -698,26 +704,26 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td></td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> R.. · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> R.. · <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
 <td></td>
 </tr>
 <tr>
 <td><em>(ejemplo ilustrativo)</em> Fuga de datos de otro cliente</td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> R01</td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> R01</td>
 <td>Servicio intermedio con filtrado por cliente autenticado y filtro de salida</td>
 <td>Servicio de consulta de pedidos; filtro de salida</td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
 <td>300 ataques de inyección sin fugas</td>
 </tr>
 <tr>
 <td><em>(ejemplo ilustrativo)</em> Informar de que se conversa con un sistema de IA</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §10</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §10</td>
 <td>Aviso al inicio de cada conversación</td>
 <td>Interfaz</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 <td>Revisión funcional</td>
 </tr>
 </tbody>
@@ -786,12 +792,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Puntos de supervisión humana</td>
 <td></td>
-<td>Dónde interviene una persona y qué no se delega nunca. Detalle en <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Dónde interviene una persona y qué no se delega nunca. Detalle en <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
 </tr>
 <tr>
 <td>Identidad y permisos del sistema o del agente</td>
 <td></td>
-<td>Cuentas, permisos mínimos, límites de actuación. Detalle en <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>.</td>
+<td>Cuentas, permisos mínimos, límites de actuación. Detalle en <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>.</td>
 </tr>
 <tr>
 <td>Mecanismo de parada</td>
@@ -801,12 +807,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Reversión</td>
 <td></td>
-<td>Cómo se vuelve a la versión anterior o al proceso sin IA. Detalle en <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>.</td>
+<td>Cómo se vuelve a la versión anterior o al proceso sin IA. Detalle en <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>.</td>
 </tr>
 <tr>
 <td>Monitorización</td>
 <td></td>
-<td>Métricas técnicas, de calidad, de coste y de seguridad. Detalle en <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
+<td>Métricas técnicas, de calidad, de coste y de seguridad. Detalle en <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
 </tr>
 <tr>
 <td>Entornos</td>
@@ -828,7 +834,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Categoría</th>
 <th>Coste recurrente anual (€)</th>
 <th>Supuestos</th>
-<th>Cambio respecto de <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></th>
+<th>Cambio respecto de <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></th>
 </tr>
 </thead>
 <tbody>
@@ -870,10 +876,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Si el coste recurrente supera el de <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> de forma relevante, se actualiza <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> y se informa en G4.</p>
+<p>Si el coste recurrente supera el de <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> de forma relevante, se actualiza <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> y se informa en G4.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">12</span>Criterios de calidad</h2>
-<p>Los criterios formales de G4 están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G4.xx).</p>
+<p>Los criterios formales de G4 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G4.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -900,7 +906,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Todo riesgo de <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> que requiere tratamiento y toda obligación de <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> tiene control diseñado y forma de prueba.</td>
+<td>Todo riesgo de <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> que requiere tratamiento y toda obligación de <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> tiene control diseñado y forma de prueba.</td>
 <td></td>
 </tr>
 <tr>
@@ -910,17 +916,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Los permisos del sistema o del agente se limitan a lo necesario y no superan la autonomía máxima de <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>.</td>
+<td>Los permisos del sistema o del agente se limitan a lo necesario y no superan la autonomía máxima de <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>.</td>
 <td></td>
 </tr>
 <tr>
 <td>7</td>
-<td>Las restricciones de <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> (ubicación, plataformas, líneas rojas) se respetan.</td>
+<td>Las restricciones de <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> (ubicación, plataformas, líneas rojas) se respetan.</td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
-<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> existen y son coherentes con este registro.</td>
+<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> existen y son coherentes con este registro.</td>
 <td></td>
 </tr>
 </tbody>

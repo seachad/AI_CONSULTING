@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register (opportunities that proceed are linked to the initiative).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register (opportunities that proceed are linked to the initiative).</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -441,7 +447,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Opportunities start from a <strong>business need</strong>, not from an available technology.</li>
 <li>Every opportunity that proceeds must have compared <strong>non-AI alternatives</strong> (01 §6.3).</li>
-<li>Value in this phase is an <strong>estimated order of magnitude</strong>. Quantification with a formula is done in <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</li>
+<li>Value in this phase is an <strong>estimated order of magnitude</strong>. Quantification with a formula is done in <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</li>
 <li>Discarded opportunities are kept with their reason: they are learning for the portfolio.</li>
 </ul>
 <hr />
@@ -571,7 +577,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>F6</td>
 <td>Red lines</td>
-<td>Does it respect the red lines in <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, the corporate policy and the practices prohibited by regulation?</td>
+<td>Does it respect the red lines in <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, the corporate policy and the practices prohibited by regulation?</td>
 <td>Yes</td>
 </tr>
 <tr>
@@ -641,7 +647,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The sphere uses the list in 03 §3.3. The proposed ambition is justified with <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>.</p>
+<p>The sphere uses the list in 03 §3.3. The proposed ambition is justified with <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>.</p>
 <h3 id="5-2-screening">5.2 Screening</h3>
 <div class="tabla"><table>
 <thead>
@@ -816,7 +822,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Proposed sphere and ambition</td>
 <td></td>
-<td>Reference to <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> (&quot;Proposed&quot; column).</td>
+<td>Reference to <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> (&quot;Proposed&quot; column).</td>
 </tr>
 </tbody>
 </table></div>
@@ -849,7 +855,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>In this phase prioritisation is qualitative. The additional net value per additional euro invested (rule 9) is calculated once <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> and <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> exist.</p>
+<p>In this phase prioritisation is qualitative. The additional net value per additional euro invested (rule 9) is calculated once <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> and <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> exist.</p>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">09</span>Quality criteria</h2>
 <p>The formal G1 criteria are in document 21 (see criteria G1.xx).</p>
@@ -889,7 +895,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Proposed sphere and ambition use the taxonomy and are consistent with <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>.</td>
+<td>Proposed sphere and ambition use the taxonomy and are consistent with <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -935,7 +941,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Segregation of duties: the verifier has not taken part in the screening. The decision is recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<p>Segregation of duties: the verifier has not taken part in the screening. The decision is recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
 <hr />
 <h2 id="version-control"><span class="antetitulo">11</span>Version control</h2>
 <p><strong>Completed document</strong></p>

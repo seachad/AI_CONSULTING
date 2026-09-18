@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -421,7 +427,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>En qué <em>gate</em> se revisa</strong></td>
-<td>G4; se comprueba su funcionamiento real en G5 (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) y en R6.</td>
+<td>G4; se comprueba su funcionamiento real en G5 (P22) y en R6.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> Determinación de intensidad · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> Clasificación regulatoria · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Diseño de seguridad · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Plan de reversión · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Monitorización · <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> (autonomía y controles AG) · <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>.</td>
+<td><a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> Determinación de intensidad · <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> Clasificación regulatoria · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Diseño de seguridad · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Plan de reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Monitorización · <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> (autonomía y controles AG) · <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -437,9 +443,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Los controles de supervisión humana no admiten <strong>Continuar con condiciones</strong> en el <em>gate</em>: si no están resueltos, el resultado es Iterar (01 §7.3).</li>
 <li>La supervisión se diseña para que una persona pueda <strong>entender, corregir, anular e interrumpir</strong>, no solo para que &quot;esté presente&quot;.</li>
-<li>Cualquier aumento del nivel de autonomía o de la población afectada debería tratarse como cambio relevante (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>) y someterse a verificación y decisión equivalentes a G4.</li>
+<li>Cualquier aumento del nivel de autonomía o de la población afectada debería tratarse como cambio relevante (P27) y someterse a verificación y decisión equivalentes a G4.</li>
 </ul>
-<p>Esta plantilla no constituye asesoramiento jurídico. Las obligaciones de supervisión humana y de decisiones automatizadas se confirman con el mapeo regulatorio (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</p>
+<p>Esta plantilla no constituye asesoramiento jurídico. Las obligaciones de supervisión humana y de decisiones automatizadas se confirman con el mapeo regulatorio (documento 34).</p>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
 <div class="tabla"><table>
@@ -454,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -517,7 +523,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Proceso o decisión en la que interviene el sistema</td>
 <td></td>
-<td>Descríbalo en lenguaje de negocio (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+<td>Descríbalo en lenguaje de negocio (P31).</td>
 </tr>
 <tr>
 <td>Personas usuarias</td>
@@ -553,7 +559,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="nivel-de-autonomia"><span class="antetitulo">04</span>Nivel de autonomía</h2>
-<p>Marque un único nivel. Los niveles se definen en el <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</p>
+<p>Marque un único nivel. Los niveles se definen en el <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -622,7 +628,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Condiciones para bajar de nivel</td>
 <td></td>
-<td>Umbrales que obligan a reducir autonomía; se trasladan a <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> como modo degradado.</td>
+<td>Umbrales que obligan a reducir autonomía; se trasladan a <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> como modo degradado.</td>
 </tr>
 </tbody>
 </table></div>
@@ -677,7 +683,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Decisiones que la compañía ha declarado indelegables en su política corporativa (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) y que aplican a este sistema:</p>
+<p>Decisiones que la compañía ha declarado indelegables en su política corporativa (documento 31) y que aplican a este sistema:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -748,7 +754,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Orientación: A1 exige validación previa; A2 exige al menos supervisión en tiempo real o revisión a posteriori, e interruptor de parada; A3 exige supervisión agregada, límites estrictos (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) e interruptor de parada probado (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</p>
+<p>Orientación: A1 exige validación previa; A2 exige al menos supervisión en tiempo real o revisión a posteriori, e interruptor de parada; A3 exige supervisión agregada, límites estrictos (P18) e interruptor de parada probado (P19).</p>
 <hr />
 <h2 id="capacidad-efectiva-de-la-persona-supervisora"><span class="antetitulo">07</span>Capacidad efectiva de la persona supervisora</h2>
 <div class="tabla"><table>
@@ -763,7 +769,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Entiende las capacidades y limitaciones del sistema</td>
 <td></td>
-<td>Formación registrada en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>; limitaciones de <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Formación registrada en <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>; limitaciones de <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
 </tr>
 <tr>
 <td>Es consciente del riesgo de confiar en exceso en el resultado automático</td>
@@ -783,7 +789,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Puede interrumpir el sistema</td>
 <td></td>
-<td>Interruptor de parada (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) y quién puede activarlo.</td>
+<td>Interruptor de parada (P18) y quién puede activarlo.</td>
 </tr>
 <tr>
 <td>Tiene tiempo y carga de trabajo compatibles con la supervisión <strong>(Enterprise)</strong></td>
@@ -792,7 +798,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>En sistemas de alto riesgo, estos requisitos se contrastan con el artículo 14 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</p>
+<p>En sistemas de alto riesgo, estos requisitos se contrastan con el artículo 14 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (documento 34).</p>
 <hr />
 <h2 id="transparencia-y-derechos-de-las-personas-afectadas"><span class="antetitulo">08</span>Transparencia y derechos de las personas afectadas</h2>
 <div class="tabla"><table>
@@ -822,7 +828,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registro de reclamaciones relacionadas con el sistema <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Dónde se registran y cómo alimentan <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> y <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
+<td>Dónde se registran y cómo alimentan <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> y <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -851,7 +857,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td>Funcionamiento diario de la supervisión y alertas</td>
-<td>Comité de IA en incidentes S1–S2 (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>)</td>
+<td>Comité de IA en incidentes S1–S2 (P26)</td>
 </tr>
 <tr>
 <td>Supervisores designados</td>
@@ -871,7 +877,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="indicadores-de-supervision"><span class="antetitulo">10</span>Indicadores de supervisión</h2>
-<p>Se trasladan a <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> con sus umbrales.</p>
+<p>Se trasladan a <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> con sus umbrales.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -916,7 +922,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Los criterios formales de G4 sobre supervisión humana están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (y su lista LV-G4 en el <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>); los controles de autonomía, en los controles AG del <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</p>
+<p>Los criterios formales de G4 sobre supervisión humana están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (y su lista LV-G4 en el <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>); los controles de autonomía, en los controles AG del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -953,7 +959,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Los indicadores de supervisión tienen umbral y están trasladados a <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
+<td>Los indicadores de supervisión tienen umbral y están trasladados a <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1006,7 +1012,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisor del <em>gate</em></td>
-<td>Según 01 §7.5 (registrado en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>

@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -433,13 +439,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> Lienzo de hipótesis de valor · <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> Línea base · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Diseño de seguridad · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Prueba de reversión · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> Adopción · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> Informe de entrega · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de valor · <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>.</td>
+<td><a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> Lienzo de hipótesis de valor · <a href="P09_SEVEN-G_Linea_base.html">P09</a> Línea base · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Diseño de seguridad · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Prueba de reversión · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> Adopción · <a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a> Informe de entrega · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de valor · <a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>.</td>
 </tr>
 </tbody>
 </table></div>
 <p>Reglas:</p>
 <ul>
-<li><strong>Los umbrales se fijaron antes.</strong> Las métricas, umbrales de éxito y criterios de parada son los aprobados en la fase 2 (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>). No pueden relajarse para evitar una decisión de parar sin aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).</li>
+<li><strong>Los umbrales se fijaron antes.</strong> Las métricas, umbrales de éxito y criterios de parada son los aprobados en la fase 2 (P08). No pueden relajarse para evitar una decisión de parar sin aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).</li>
 <li><strong>La producción es la única verdad.</strong> Los resultados de laboratorio no sustituyen al piloto en condiciones reales.</li>
 <li>Todo importe tiene fórmula, es incremental frente a la línea base o el grupo de control y tiene estado (reglas 1 y 2 de medición).</li>
 <li>La extrapolación anual de un piloto es siempre <strong>estimada</strong> hasta que se mide en producción.</li>
@@ -458,12 +464,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA y versión probada</td>
 <td></td>
-<td>Identificador (T02) y versión (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Identificador (T02) y versión (P16).</td>
 </tr>
 <tr>
 <td>Nivel de ambición</td>
@@ -515,7 +521,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Rendimiento del modelo <em>(ejemplo ilustrativo)</em></td>
 <td>Proporción de clasificaciones correctas sobre conjunto de prueba independiente</td>
-<td>≥ 90 % · fijado en <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> el 03-03-2026</td>
+<td>≥ 90 % · fijado en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> el 03-03-2026</td>
 <td>92,4 %</td>
 <td>Superada</td>
 <td>Informe de evaluación v2</td>
@@ -534,15 +540,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 11</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 11</td>
 </tr>
 <tr>
 <td>Reversión</td>
 <td>Tiempo hasta estado seguro</td>
-<td>Tiempo objetivo de <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td>Tiempo objetivo de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
 <td></td>
 <td></td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> bloque 10</td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> bloque 10</td>
 </tr>
 <tr>
 <td></td>
@@ -655,7 +661,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Método de atribución</td>
 <td></td>
-<td>El aprobado en <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>: grupo de control · antes y después · otro justificado.</td>
+<td>El aprobado en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>: grupo de control · antes y después · otro justificado.</td>
 </tr>
 <tr>
 <td>Grupo de control o referencia</td>
@@ -670,7 +676,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de autonomía durante el piloto</td>
 <td></td>
-<td>A0 · A1 · A2 · A3 (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>A0 · A1 · A2 · A3 (P17).</td>
 </tr>
 <tr>
 <td>Desviaciones respecto al diseño del piloto</td>
@@ -685,7 +691,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <thead>
 <tr>
 <th>Métrica</th>
-<th>Línea base (<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>)</th>
+<th>Línea base (P09)</th>
 <th>Objetivo</th>
 <th>Umbral de éxito</th>
 <th>Resultado del piloto</th>
@@ -716,7 +722,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Adopción (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>)</td>
+<td>Adopción (P20)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -901,7 +907,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Recomendación al <em>gate</em></td>
 <td></td>
-<td>Continuar · Continuar con condiciones · Iterar · Parar. En G5 no cabe Pivotar (01 §7.3). Es una recomendación; decide el órgano competente en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>Continuar · Continuar con condiciones · Iterar · Parar. En G5 no cabe Pivotar (01 §7.3). Es una recomendación; decide el órgano competente en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
 </tr>
 <tr>
 <td>Condiciones propuestas</td>
@@ -912,7 +918,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Criterios formales de G5 en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; lista LV-G5 en el <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</p>
+<p>Criterios formales de G5 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; lista LV-G5 en el <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1002,7 +1008,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisor del <em>gate</em></td>
-<td>Según 01 §7.5 (registrado en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>

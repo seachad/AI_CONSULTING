@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (diseño aprobado) · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Resultados de validación y del piloto · <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> Firma de puesta en producción · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> Registro de decisión de G4 (condiciones) · documentos 42 (Costes) y 53 (Construcción de soluciones).</td>
+<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (diseño aprobado) · <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Resultados de validación y del piloto · <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> Firma de puesta en producción · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> Registro de decisión de G4 (condiciones) · documentos 42 (Costes) y 53 (Construcción de soluciones).</td>
 </tr>
 </tbody>
 </table></div>
@@ -453,7 +459,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -468,7 +474,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión entregada</td>
 <td></td>
-<td>Versión de modelo, instrucciones y configuración (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Versión de modelo, instrucciones y configuración (P16).</td>
 </tr>
 <tr>
 <td>Intensidad</td>
@@ -483,7 +489,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Proveedores que han intervenido</td>
 <td></td>
-<td>Nombre y referencia a <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Nombre y referencia a <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
 </tr>
 <tr>
 <td>Versión del documento</td>
@@ -557,7 +563,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Arquitectura e integraciones</td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -565,7 +571,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Datos y modelos</td>
-<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -573,7 +579,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Supervisión humana</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -581,7 +587,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Controles de seguridad y de agentes</td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -589,7 +595,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Mecanismo de reversión e interruptor de parada</td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -597,7 +603,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Formación y adopción</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -605,7 +611,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Monitorización y alertas</td>
-<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td><a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -613,7 +619,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Integración con el sistema del proveedor <em>(ejemplo ilustrativo)</em></td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
 <td>Entregado con cambios</td>
 <td>Se sustituye la conexión en tiempo real por carga cada hora por limitaciones del proveedor</td>
 <td>Sí: retraso de hasta una hora en los datos de entrada</td>
@@ -621,7 +627,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Si un cambio afecta a riesgos, supervisión humana o seguridad, debe actualizarse la evidencia de diseño correspondiente y el registro de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>) antes de G5.</p>
+<p>Si un cambio afecta a riesgos, supervisión humana o seguridad, debe actualizarse la evidencia de diseño correspondiente y el registro de riesgos (P12) antes de G5.</p>
 <hr />
 <h2 id="condiciones-pendientes-de-gates-anteriores"><span class="antetitulo">05</span>Condiciones pendientes de <em>gates</em> anteriores</h2>
 <p><strong>Estado:</strong> Cumplida · No cumplida · Vencida.</p>
@@ -674,7 +680,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Linaje de datos y modelos actualizado (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>)</td>
+<td>Linaje de datos y modelos actualizado (P16)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -686,19 +692,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Manual de operación en borrador (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>Manual de operación en borrador (P24)</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Configuración de monitorización y alertas (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</td>
+<td>Configuración de monitorización y alertas (P25)</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Plan de respuesta a incidentes (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>)</td>
+<td>Plan de respuesta a incidentes (P26)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -707,7 +713,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Documentación técnica exigida por la regulación para sistemas de alto riesgo <strong>(Enterprise)</strong></td>
 <td></td>
 <td></td>
-<td>Referencia al mapeo regulatorio (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
+<td>Referencia al mapeo regulatorio (documento 34).</td>
 </tr>
 <tr>
 <td>Documentación y garantías del proveedor <strong>(Enterprise)</strong></td>
@@ -719,7 +725,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="costes-reales-frente-a-previstos"><span class="antetitulo">07</span>Costes reales frente a previstos</h2>
-<p>Importes en euros. &quot;Previsto&quot; es lo aprobado en G3 (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) o, si se actualizó, en G4.</p>
+<p>Importes en euros. &quot;Previsto&quot; es lo aprobado en G3 (P10) o, si se actualizó, en G4.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -814,7 +820,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Si el coste recurrente actualizado cambia el valor neto anual esperado, se recalcula en <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> y se señala al decisor del <em>gate</em>.</p>
+<p>Si el coste recurrente actualizado cambia el valor neto anual esperado, se recalcula en <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> y se señala al decisor del <em>gate</em>.</p>
 <hr />
 <h2 id="plazos"><span class="antetitulo">08</span>Plazos</h2>
 <div class="tabla"><table>
@@ -946,7 +952,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Criterios formales de G5 en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; lista LV-G5 en el <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</p>
+<p>Criterios formales de G5 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; lista LV-G5 en el <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1031,7 +1037,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisor del <em>gate</em></td>
-<td>Según 01 §7.5 (registrado en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>

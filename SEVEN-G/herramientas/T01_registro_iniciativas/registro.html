@@ -132,6 +132,13 @@ details.filtros .rejilla{grid-template-columns:repeat(auto-fill,minmax(170px,1fr
 .embudo .et-fase{font-weight:700;color:var(--negro)}
 .embudo .et-fase small{display:block;font-weight:500;color:var(--tinta-3);font-size:12px}
 .barra-emb{display:flex;align-items:center;gap:8px;min-width:0}
+button.barra-emb{appearance:none;border:0;background:transparent;color:inherit;font:inherit;padding:3px 4px;margin:-3px -4px;width:100%;text-align:left;cursor:pointer;border-radius:4px}
+button.barra-emb:hover{background:var(--papel-2)}
+button.barra-emb:focus-visible{outline:2px solid var(--oxford);outline-offset:1px}
+button.barra-emb.sel{background:var(--papel-2);box-shadow:inset 3px 0 0 var(--claret)}
+button.barra-emb.sel i{background:var(--claret)}
+.sub-fase{font:500 14px/1.4 var(--sans);color:var(--tinta-2);margin-left:8px}
+.sub-fase button{margin-left:6px}
 .barra-emb i{display:block;height:22px;background:var(--oxford);min-width:3px}
 .barra-emb i.cero{background:var(--regla)}
 .barra-emb b{font:600 18px/1 var(--serif)}
@@ -246,6 +253,7 @@ const TX = {
 es:{
  app:'T01 · Registro de iniciativas', saltar:'Saltar al contenido', idioma:'Idioma', tema:'Tema', t_auto:'Auto', t_claro:'Claro', t_oscuro:'Oscuro', vistas:'Vistas',
  v_embudo:'Embudo', v_tablero:'Tablero', v_gates:'Gates pendientes', v_alertas:'Alertas', v_analisis:'Análisis', v_inventario:'Inventario (T02)', v_datos:'Datos', v_ficha:'Ficha',
+ emb_clic:'Pulse la barra para ver en la tabla solo las iniciativas de esta fase; vuelva a pulsar para quitar el filtro.', emb_filtro:'· solo', emb_de:'de {n} con los filtros de arriba', emb_todas:'Mostrar todas',
  demo_tit:'Iniciativas de ejemplo.', demo_panel:'Ver el panel del consejo generado con estas iniciativas', lnk_panel_demo:'Panel del consejo (ejemplo)', lnk_panel:'Panel del consejo',
  demo:'Datos ilustrativos y ficticios. Fecha de referencia: {f}.', sin_dato:'Sin dato', pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García · SEACHAD · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador. No se envía nada a terceros.',
  legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido', legal_otro:'English',
@@ -265,6 +273,7 @@ es:{
 en:{
  app:'T01 · Initiative register', saltar:'Skip to content', idioma:'Language', tema:'Theme', t_auto:'Auto', t_claro:'Light', t_oscuro:'Dark', vistas:'Views',
  v_embudo:'Funnel', v_tablero:'Kanban board', v_gates:'Pending gates', v_alertas:'Alerts', v_analisis:'Analysis', v_inventario:'Inventory (T02)', v_datos:'Data', v_ficha:'Record',
+ emb_clic:'Click the bar to show only the initiatives in this phase in the table; click again to remove the filter.', emb_filtro:'· only', emb_de:'of {n} with the filters above', emb_todas:'Show all',
  demo_tit:'Example initiatives.', demo_panel:'See the board dashboard generated from these initiatives', lnk_panel_demo:'Board dashboard (example)', lnk_panel:'Board dashboard',
  demo:'Illustrative, fictitious data. Reference date: {f}.', sin_dato:'No data', pie_lic:'Code MIT · Content CC BY 4.0 · © 2026 Fernando García · SEACHAD · SEVEN-G Methodology', pie_priv:'Data is stored only in this browser. Nothing is sent to third parties.',
  legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'I understand', legal_otro:'Español',
@@ -560,16 +569,19 @@ function vistaEmbudo(){
     const en=act.filter(i=>i.ciclo.fase===f); const porEst=agrupar(en,i=>i.ciclo.estado);
     const e=en.filter(i=>sit(i).estancada).length; const vals=en.map(i=>sit(i).valor.esperado); const conV=vals.filter(v=>v!=null);
     h+='<li><div class="et-fase">'+esc(t('fase'))+' '+f+'<small>'+esc(L('fase',f))+' · '+esc(GATE_DE_FASE[f])+'</small></div>'+
-      '<div class="barra-emb"><i class="'+(en.length?'':'cero')+'" style="width:'+(en.length/max*70)+'%"></i><b>'+en.length+'</b></div>'+
+      '<button type="button" class="barra-emb'+(String(UI.embFase)===String(f)?' sel':'')+'" data-acc="emb-fase" data-fase="'+f+'" aria-pressed="'+(String(UI.embFase)===String(f))+'" title="'+esc(t('emb_clic'))+'"><i class="'+(en.length?'':'cero')+'" style="width:'+(en.length/max*70)+'%"></i><b>'+en.length+'</b></button>'+
       '<div class="emb-det">'+[...porEst.entries()].map(([k,v])=>esc(v.length+' '+L('estado',k).toLowerCase())).join(' · ')+
       (e?' '+et(t('estancadas_n',{n:e}),'ko'):'')+(conV.length?' <span>'+t('valor_fase',{v:fE(sum(conV))})+'</span>':'')+(vals.length-conV.length?' <span class="sd">'+esc(t('sin_valor_n',{n:vals.length-conV.length}))+'</span>':'')+'</div></li>';
   }
   const cer=lista.filter(cerrada);
-  h+='<li><div class="et-fase">'+esc(t('cerradas'))+'<small>'+esc(L('estado','parada')+' · '+L('estado','retirada'))+'</small></div><div class="barra-emb"><i class="cero" style="width:'+(cer.length/max*70)+'%"></i><b>'+cer.length+'</b></div>'+
+  h+='<li><div class="et-fase">'+esc(t('cerradas'))+'<small>'+esc(L('estado','parada')+' · '+L('estado','retirada'))+'</small></div><button type="button" class="barra-emb'+(UI.embFase==='cerradas'?' sel':'')+'" data-acc="emb-fase" data-fase="cerradas" aria-pressed="'+(UI.embFase==='cerradas')+'" title="'+esc(t('emb_clic'))+'"><i class="cero" style="width:'+(cer.length/max*70)+'%"></i><b>'+cer.length+'</b></button>'+
     '<div class="emb-det">'+cer.map(i=>esc(i.id)+': '+esc(L('estado',i.ciclo.estado))+' · '+esc(i.cierre?L('motivo',i.cierre.motivo):'')).join(' · ')+'</div></li></ol>';
-  const orden=UI.orden||'fase'; const ord=[...lista];
+  /* subfiltro por fase (clic en una barra del embudo): se aplica sobre lo que ya dejan pasar los filtros de arriba; «Mostrar todas» lo quita */
+  const sub = UI.embFase==null? null : (UI.embFase==='cerradas'? lista.filter(cerrada) : act.filter(i=>String(i.ciclo.fase)===String(UI.embFase)));
+  const subTxt = UI.embFase==null? '' : (UI.embFase==='cerradas'? t('cerradas') : faseTxt(Number(UI.embFase)));
+  const orden=UI.orden||'fase'; const ord=[...(sub||lista)];
   ord.sort((a,b)=>{ if(orden==='dias') return (sit(b).diasFase??-1)-(sit(a).diasFase??-1); if(orden==='valor') return (sit(b).valor.esperado??-1e15)-(sit(a).valor.esperado??-1e15); if(orden==='codigo') return a.id<b.id?-1:1; return (cerrada(a)-cerrada(b)) || (a.ciclo.fase-b.ciclo.fase) || (a.id<b.id?-1:1); });
-  h+='<div class="fila" style="justify-content:space-between"><h2 style="flex:1 1 100%">'+esc(lista.length+' '+t('iniciativas'))+'</h2><div class="campo" style="max-width:220px"><label for="sel-orden">'+esc(t('ordenar'))+'</label><select id="sel-orden" data-acc-change="orden">'+
+  h+='<div class="fila" style="justify-content:space-between"><h2 style="flex:1 1 100%" id="emb-lista">'+esc((sub||lista).length+' '+t('iniciativas'))+(sub?' <span class="sub-fase">'+esc(t('emb_filtro'))+' <b>'+esc(subTxt)+'</b> · '+esc(t('emb_de',{n:lista.length}))+' <button type="button" data-acc="emb-todas">'+esc(t('emb_todas'))+'</button></span>':'')+'</h2><div class="campo" style="max-width:220px"><label for="sel-orden">'+esc(t('ordenar'))+'</label><select id="sel-orden" data-acc-change="orden">'+
     [['fase','o_fase'],['dias','o_dias'],['valor','o_valor'],['codigo','o_codigo']].map(([v,k])=>'<option value="'+v+'"'+(orden===v?' selected':'')+'>'+esc(t(k))+'</option>').join('')+'</select></div></div>';
   h+='<table class="tabla resp"><thead><tr><th scope="col">'+esc(t('codigo'))+'</th><th scope="col">'+esc(t('iniciativa'))+'</th><th scope="col">'+esc(t('fase'))+'</th><th scope="col">'+esc(t('estado'))+'</th><th scope="col">'+esc(t('dias_fase'))+'</th><th scope="col">'+esc(t('ambicion'))+' · '+esc(t('intensidad'))+'</th><th scope="col" class="num">'+esc(t('valor_esp'))+'</th><th scope="col">'+esc(t('alertas'))+'</th></tr></thead><tbody>';
   ord.forEach(I=>{ const s=sit(I);
@@ -1687,6 +1699,7 @@ document.addEventListener('click', e=>{
   const b=e.target.closest('[data-acc]'); if(!b) return;
   const acc=b.dataset.acc;
   if(acc==='limpiar-filtros'){ UI.filtros={}; guardarUI(); render(); return; }
+  if(acc==='emb-fase' || acc==='emb-todas'){ UI.embFase = acc==='emb-todas' || String(UI.embFase)===b.dataset.fase ? null : b.dataset.fase; render(); const l=document.getElementById('emb-lista'); if(l && UI.embFase!=null) l.scrollIntoView({block:'nearest', behavior:'smooth'}); return; }
   if(typeof onAccion==='function') onAccion(acc, b, e);
 });
 window.addEventListener('hashchange', ()=>render(true));

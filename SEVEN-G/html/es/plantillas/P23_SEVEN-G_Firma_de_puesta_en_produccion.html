@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>Fase 5, una vez completas las evidencias de la fase y antes de la decisión de G5. También ante un cambio relevante que suponga una nueva puesta en producción (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td>Fase 5, una vez completas las evidencias de la fase y antes de la decisión de G5. También ante un cambio relevante que suponga una nueva puesta en producción (P27).</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -433,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Registro de riesgos · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Diseño de seguridad · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Prueba de reversión · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> Informe de entrega · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Resultados de validación y del piloto · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> Registro de decisión de <em>gate</em>.</td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Registro de riesgos · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Diseño de seguridad · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Prueba de reversión · <a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a> Informe de entrega · <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Resultados de validación y del piloto · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> Registro de decisión de <em>gate</em>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -444,7 +450,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Conforme con condiciones</strong> solo cabe sobre aspectos no críticos. Si la condición afecta a un control crítico de seguridad, cumplimiento legal o supervisión humana, el sentido debe ser Veto (01 §7.3).</li>
 <li>Cada firmante revisa las evidencias de su ámbito; firmar sin haberlas revisado es una no conformidad.</li>
 <li>Los firmantes de la segunda línea no forman parte del equipo que construye la iniciativa (01 §8.1 y §8.3).</li>
-<li>Un riesgo residual <strong>Crítico</strong> sin aprobación expresa del consejo o de su comisión delegada bloquea G5 (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</li>
+<li>Un riesgo residual <strong>Crítico</strong> sin aprobación expresa del consejo o de su comisión delegada bloquea G5 (documento 33).</li>
 </ol>
 <p>Esta plantilla no constituye asesoramiento jurídico.</p>
 <hr />
@@ -461,7 +467,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -491,7 +497,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de autonomía</td>
 <td></td>
-<td>A0 · A1 · A2 · A3 (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>A0 · A1 · A2 · A3 (P17).</td>
 </tr>
 <tr>
 <td>Tipo de puesta en producción</td>
@@ -531,67 +537,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td>G4 aprobado y sus condiciones cumplidas</td>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> de G4 · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> bloque 5</td>
+<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> de G4 · <a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a> bloque 5</td>
 <td></td>
 </tr>
 <tr>
 <td>2</td>
 <td>Informe de entrega verificado</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td><a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
 <td>Resultados de validación y del piloto verificados</td>
-<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td><a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
 <td></td>
 </tr>
 <tr>
 <td>4</td>
 <td>Prueba de reversión superada</td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> bloque 10</td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> bloque 10</td>
 <td></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Pruebas de seguridad e inyección de instrucciones ejecutadas y hallazgos críticos resueltos</td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 11</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 11</td>
 <td></td>
 </tr>
 <tr>
 <td>6</td>
 <td>Registro de riesgos actualizado; ningún riesgo residual Crítico sin aprobación del consejo</td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
 <td></td>
 </tr>
 <tr>
 <td>7</td>
 <td>Clasificación regulatoria y evaluaciones de impacto aplicables completadas</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
 <td>Supervisión humana operativa y supervisores formados</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
 <td></td>
 </tr>
 <tr>
 <td>9</td>
 <td>Manual de operación, monitorización y plan de respuesta a incidentes disponibles</td>
-<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
+<td><a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
 <td></td>
 </tr>
 <tr>
 <td>10</td>
 <td>Inventario de sistemas de IA actualizado</td>
-<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> · T02</td>
+<td><a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> · T02</td>
 <td></td>
 </tr>
 <tr>
 <td>11</td>
 <td>Contratos y garantías de proveedores vigentes <strong>(Enterprise)</strong></td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -610,7 +616,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión autorizada</td>
 <td></td>
-<td>Modelo, instrucciones y configuración (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>). Otra versión requiere nueva firma.</td>
+<td>Modelo, instrucciones y configuración (P16). Otra versión requiere nueva firma.</td>
 </tr>
 <tr>
 <td>Población y perímetro</td>
@@ -620,7 +626,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de autonomía autorizado</td>
 <td></td>
-<td>No puede superar el de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>No puede superar el de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
 </tr>
 <tr>
 <td>Despliegue gradual</td>
@@ -732,7 +738,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>12-05-2026</td>
 <td>Conforme con condiciones</td>
 <td>Tratamiento conforme; falta actualizar la cláusula informativa del canal web, aspecto no crítico porque el canal no se activa hasta la segunda etapa del despliegue</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> v1.2, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> v1.0</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> v1.2, <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> v1.0</td>
 </tr>
 </tbody>
 </table></div>
@@ -774,7 +780,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Las condiciones se trasladan a <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> para que el órgano que decide G5 las haga suyas. Una condición vencida sin cumplir convierte el resultado en Iterar (01 §7.4, regla 4).</p>
+<p>Las condiciones se trasladan a <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> para que el órgano que decide G5 las haga suyas. Una condición vencida sin cumplir convierte el resultado en Iterar (01 §7.4, regla 4).</p>
 <hr />
 <h2 id="resultado-de-la-ronda-de-firmas"><span class="antetitulo">07</span>Resultado de la ronda de firmas</h2>
 <div class="tabla"><table>
@@ -804,7 +810,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Remisión al órgano que decide</td>
 <td></td>
-<td>Comité de IA (Enterprise) · Patrocinador con conformidad de riesgos (Lite). Referencia a <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>Comité de IA (Enterprise) · Patrocinador con conformidad de riesgos (Lite). Referencia a <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
 </tr>
 <tr>
 <td>Fecha efectiva de puesta en producción</td>
@@ -840,7 +846,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">09</span>Criterios de calidad</h2>
-<p>Criterios formales de G5 en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; lista LV-G5 en el <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</p>
+<p>Criterios formales de G5 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; lista LV-G5 en el <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>

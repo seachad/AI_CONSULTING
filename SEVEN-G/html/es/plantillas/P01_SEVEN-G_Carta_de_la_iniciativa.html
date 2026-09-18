@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas (los campos de identificación y clasificación alimentan la ficha de la iniciativa).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas (los campos de identificación y clasificación alimentan la ficha de la iniciativa).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -437,14 +443,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Plantillas relacionadas</strong></td>
-<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> (restricciones), <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> (roles), <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> (intensidad), <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (inventario), <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> (ambición), <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (decisión de <em>gate</em>), <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (ficha de caso de uso).</td>
+<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> (restricciones), <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> (roles), <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> (intensidad), <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (inventario), <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> (ambición), <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (decisión de <em>gate</em>), <a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (ficha de caso de uso).</td>
 </tr>
 </tbody>
 </table></div>
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li>Sin G0 aprobado la iniciativa no está autorizada: no puede consumir presupuesto ni acceder a datos de producción (01 §6.2).</li>
-<li>Las cifras de esta carta son órdenes de magnitud y se marcan como <em>estimadas</em>. El compromiso de valor se formula en <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</li>
+<li>Las cifras de esta carta son órdenes de magnitud y se marcan como <em>estimadas</em>. El compromiso de valor se formula en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</li>
 <li>&quot;Sin dato&quot; no es cero: si un campo no se conoce, se escribe &quot;sin dato&quot; y se indica cuándo se obtendrá.</li>
 <li>Las filas y textos marcados <em>(ejemplo ilustrativo)</em> son ficticios y deben borrarse antes de presentar la carta.</li>
 </ul>
@@ -462,7 +468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>Formato IA-AAAA-NNN, asignado por el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). No se reutiliza.</td>
+<td>Formato IA-AAAA-NNN, asignado por el registro de iniciativas (T01). No se reutiliza.</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -515,7 +521,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Descripción comprensible</td>
 <td></td>
-<td>Qué es y para qué se usará, en lenguaje para no especialistas (regla 10 de medición). Tres a cinco frases. Se reutiliza en <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>.</td>
+<td>Qué es y para qué se usará, en lenguaje para no especialistas (regla 10 de medición). Tres a cinco frases. Se reutiliza en <a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>.</td>
 </tr>
 <tr>
 <td>Necesidad de negocio</td>
@@ -558,7 +564,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Objetivo de la iniciativa</td>
 <td></td>
-<td>Resultado de negocio que se persigue, en una frase. Las métricas y umbrales se fijan en <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td>Resultado de negocio que se persigue, en una frase. Las métricas y umbrales se fijan en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
 </tr>
 <tr>
 <td>Encaje con la tesis de IA</td>
@@ -578,7 +584,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de ambición preliminar</td>
 <td></td>
-<td>Optimizar · Aumentar · Transformar. Se clasifica formalmente con <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> en la fase 1.</td>
+<td>Optimizar · Aumentar · Transformar. Se clasifica formalmente con <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> en la fase 1.</td>
 </tr>
 <tr>
 <td>Tipo de uso de IA</td>
@@ -593,7 +599,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Iniciativas relacionadas <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Códigos IA-AAAA-NNN con dependencias o resultados compartidos. Si comparten valor, se declarará el reparto en <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> (regla 5).</td>
+<td>Códigos IA-AAAA-NNN con dependencias o resultados compartidos. Si comparten valor, se declarará el reparto en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> (regla 5).</td>
 </tr>
 </tbody>
 </table></div>
@@ -621,12 +627,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistemas de IA previstos</td>
 <td></td>
-<td>Nombre provisional y enlace a su ficha <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (alta en el inventario).</td>
+<td>Nombre provisional y enlace a su ficha <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (alta en el inventario).</td>
 </tr>
 <tr>
 <td>Proveedores previstos</td>
 <td></td>
-<td>Terceros que podrían aportar modelos, plataformas o servicios. Se evaluarán con <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> en la fase 3.</td>
+<td>Terceros que podrían aportar modelos, plataformas o servicios. Se evaluarán con <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> en la fase 3.</td>
 </tr>
 <tr>
 <td>Supuestos iniciales</td>
@@ -692,7 +698,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Umbral de inversión aprobado en C2</td>
 <td></td>
-<td>Si la inversión total prevista lo supera, se aplica intensidad Enterprise (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterio 8).</td>
+<td>Si la inversión total prevista lo supera, se aplica intensidad Enterprise (P04, criterio 8).</td>
 </tr>
 <tr>
 <td>Fechas objetivo de G1 y G2</td>
@@ -759,7 +765,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>El detalle, las incompatibilidades y los sustitutos se registran en <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</p>
+<p>El detalle, las incompatibilidades y los sustitutos se registran en <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</p>
 <hr />
 <h2 id="restricciones-intensidad-e-inventario"><span class="antetitulo">09</span>Restricciones, intensidad e inventario</h2>
 <div class="tabla"><table>
@@ -774,7 +780,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Restricciones principales</td>
 <td></td>
-<td>Resumen de <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>: regulatorias, éticas, de datos, presupuestarias, de plazo y tecnológicas.</td>
+<td>Resumen de <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>: regulatorias, éticas, de datos, presupuestarias, de plazo y tecnológicas.</td>
 </tr>
 <tr>
 <td>Líneas rojas</td>
@@ -784,17 +790,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad determinada</td>
 <td></td>
-<td>Lite · Enterprise, con el criterio que la determina (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise, con el criterio que la determina (P04).</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria preliminar</td>
 <td></td>
-<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar. En fase 0 suele ser &quot;Pendiente de clasificar&quot;; se resuelve en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar. En fase 0 suele ser &quot;Pendiente de clasificar&quot;; se resuelve en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
 </tr>
 <tr>
 <td>Alta en el inventario</td>
 <td></td>
-<td>Referencia de la ficha <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> y fecha de alta.</td>
+<td>Referencia de la ficha <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> y fecha de alta.</td>
 </tr>
 </tbody>
 </table></div>
@@ -830,11 +836,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Las respuestas del asistente podrían contener información incorrecta sobre plazos de entrega.</td>
 <td>Riesgo</td>
 <td>Responsable de producto</td>
-<td>Se valorará en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; en el piloto, revisión humana de una muestra.</td>
+<td>Se valorará en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; en el piloto, revisión humana de una muestra.</td>
 </tr>
 </tbody>
 </table></div>
-<p>La valoración formal de riesgos se hace en la fase 3 con <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>. Aquí solo se anotan los conocidos para que el decisor de G0 los tenga presentes.</p>
+<p>La valoración formal de riesgos se hace en la fase 3 con <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>. Aquí solo se anotan los conocidos para que el decisor de G0 los tenga presentes.</p>
 <hr />
 <h2 id="condiciones-de-la-autorizacion"><span class="antetitulo">11</span>Condiciones de la autorización</h2>
 <div class="tabla"><table>
@@ -885,10 +891,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Una condición vencida sin cumplir convierte el resultado en <strong>Iterar</strong> (01 §7.4). La decisión se registra en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<p>Una condición vencida sin cumplir convierte el resultado en <strong>Iterar</strong> (01 §7.4). La decisión se registra en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">12</span>Criterios de calidad</h2>
-<p>El verificador comprueba, al menos, lo siguiente. Los criterios formales de G0 están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx).</p>
+<p>El verificador comprueba, al menos, lo siguiente. Los criterios formales de G0 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -935,12 +941,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Hay patrocinador comprometido y los roles asignados figuran en <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> sin incompatibilidades.</td>
+<td>Hay patrocinador comprometido y los roles asignados figuran en <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> sin incompatibilidades.</td>
 <td></td>
 </tr>
 <tr>
 <td>9</td>
-<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> y <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> existen y son coherentes con esta carta.</td>
+<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> y <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> existen y son coherentes con esta carta.</td>
 <td></td>
 </tr>
 <tr>

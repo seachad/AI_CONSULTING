@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>En la fase 3, junto con la matriz y registro de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>), antes de G3. Se sigue en las fases 4 y 5 (los controles deben estar diseñados en G4 y funcionando en G5) y se actualiza en la fase 6.</td>
+<td>En la fase 3, junto con la matriz y registro de riesgos (P12), antes de G3. Se sigue en las fases 4 y 5 (los controles deben estar diseñados en G4 y funcionando en G5) y se actualiza en la fase 6.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -439,10 +445,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas de cumplimentación:</p>
 <ul>
-<li>Cada acción se vincula a un riesgo de <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> y dice <strong>qué reduce</strong>: la probabilidad, el impacto o ambos.</li>
+<li>Cada acción se vincula a un riesgo de <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> y dice <strong>qué reduce</strong>: la probabilidad, el impacto o ambos.</li>
 <li>Una acción no reduce el riesgo residual hasta que existe <strong>evidencia de eficacia</strong>.</li>
 <li>Los controles críticos de seguridad, cumplimiento legal y supervisión humana no admiten &quot;Continuar con condiciones&quot; (01 §7.3).</li>
-<li>Los costes de las acciones se incorporan a la evaluación de viabilidad (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) en su categoría.</li>
+<li>Los costes de las acciones se incorporan a la evaluación de viabilidad (P10) en su categoría.</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -461,7 +467,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IA-AAAA-NNN.</td>
 </tr>
 <tr>
-<td>Versión de <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> asociada</td>
+<td>Versión de <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> asociada</td>
 <td></td>
 <td>El plan corresponde a una versión concreta del registro.</td>
 </tr>
@@ -492,7 +498,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Nº (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>)</th>
+<th>Nº (P12)</th>
 <th>Riesgo</th>
 <th>Nivel inherente</th>
 <th>Respuesta</th>
@@ -582,7 +588,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Responsable de operación</td>
 <td>31-01-2027</td>
 <td>1.500 · Control y cumplimiento</td>
-<td>Alerta configurada y probada (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</td>
+<td>Alerta configurada y probada (P25)</td>
 <td>No iniciada</td>
 </tr>
 </tbody>
@@ -628,7 +634,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Riesgo</td>
 <td></td>
-<td>Nº de <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>Nº de <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
 </tr>
 <tr>
 <td>Escenario</td>
@@ -638,7 +644,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Disparador</td>
 <td></td>
-<td>Indicador y umbral que activan el plan. Debe poder observarse en la monitorización (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>).</td>
+<td>Indicador y umbral que activan el plan. Debe poder observarse en la monitorización (P25).</td>
 </tr>
 <tr>
 <td>Acciones inmediatas</td>
@@ -648,7 +654,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Uso del plan de reversión</td>
 <td></td>
-<td>Si se activa <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y cómo se vuelve al proceso anterior.</td>
+<td>Si se activa <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y cómo se vuelve al proceso anterior.</td>
 </tr>
 <tr>
 <td>Responsable de activar el plan</td>
@@ -668,7 +674,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Notificaciones regulatorias</td>
 <td></td>
-<td>Si puede ser un incidente grave o una violación de seguridad de datos personales, se sigue el plan de respuesta a incidentes (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) con sus plazos.</td>
+<td>Si puede ser un incidente grave o una violación de seguridad de datos personales, se sigue el plan de respuesta a incidentes (P26) con sus plazos.</td>
 </tr>
 <tr>
 <td>Recuperación</td>
@@ -686,7 +692,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Riesgo</th>
 <th>Nivel residual</th>
 <th>Motivo de la aceptación</th>
-<th>Aceptado por (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6)</th>
+<th>Aceptado por (P12 §6)</th>
 <th>Condición que obligaría a revisarla</th>
 </tr>
 </thead>
@@ -773,10 +779,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>El total debe figurar en <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> §6.1.</p>
+<p>El total debe figurar en <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> §6.1.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">10</span>Criterios de calidad</h2>
-<p>Los criterios formales están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G3.xx, G4.xx y G5.xx).</p>
+<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G3.xx, G4.xx y G5.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -788,7 +794,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Todo riesgo residual Medio, Alto o Crítico de <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> tiene acciones o aceptación documentada.</td>
+<td>Todo riesgo residual Medio, Alto o Crítico de <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> tiene acciones o aceptación documentada.</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>
@@ -803,7 +809,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Los planes de contingencia enlazan con <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> (reversión) y <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> (incidentes).</td>
+<td>Los planes de contingencia enlazan con <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> (reversión) y <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> (incidentes).</td>
 <td></td>
 </tr>
 <tr>
@@ -813,7 +819,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>El coste del plan está incorporado en <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>.</td>
+<td>El coste del plan está incorporado en <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -901,7 +907,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Acciones de mitigación vinculadas a <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, transferencia, contingencia y coste por categoría de la especificación común §5.1 y §5.7.</td>
+<td>Primera versión. Acciones de mitigación vinculadas a <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, transferencia, contingencia y coste por categoría de la especificación común §5.1 y §5.7.</td>
 </tr>
 </tbody>
 </table></div>

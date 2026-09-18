@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -425,20 +431,20 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
-<td>Lite puede omitir los campos marcados <strong>(Enterprise)</strong>. Toda iniciativa en producción debe vigilar, como mínimo, rendimiento, disponibilidad, coste y los indicadores de supervisión humana de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Lite puede omitir los campos marcados <strong>(Enterprise)</strong>. Toda iniciativa en producción debe vigilar, como mínimo, rendimiento, disponibilidad, coste y los indicadores de supervisión humana de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> Línea base · <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Linaje (referencia de deriva) · <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Indicadores de supervisión · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Registro de acciones · <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Disparadores de reversión · <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Respuesta a incidentes · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de valor · documentos 41 (Catálogo de indicadores) y 52.</td>
+<td><a href="P09_SEVEN-G_Linea_base.html">P09</a> Línea base · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Linaje (referencia de deriva) · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Indicadores de supervisión · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Registro de acciones · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Disparadores de reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Respuesta a incidentes · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de valor · documentos 41 (Catálogo de indicadores) y 52.</td>
 </tr>
 </tbody>
 </table></div>
 <p>Reglas:</p>
 <ul>
-<li>Cada disparador de reversión de <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> debe tener una alerta en este documento.</li>
+<li>Cada disparador de reversión de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> debe tener una alerta en este documento.</li>
 <li><strong>&quot;Sin dato&quot; no es cero:</strong> la ausencia de una métrica es en sí misma una alerta, nunca un valor normal.</li>
-<li>La severidad de una alerta es una <strong>propuesta inicial</strong>; la severidad del incidente se clasifica con los criterios del <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
-<li>Los cambios de umbral se registran en <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> con su motivo.</li>
+<li>La severidad de una alerta es una <strong>propuesta inicial</strong>; la severidad del incidente se clasifica con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> (P26).</li>
+<li>Los cambios de umbral se registran en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> con su motivo.</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -454,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (T01).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA</td>
@@ -546,7 +552,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Acciones bloqueadas por límites</td>
 <td>Comportamiento del agente</td>
 <td>Nº de acciones bloqueadas por límites o control de intención</td>
-<td>Registro de acciones (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Registro de acciones (P18)</td>
 <td>Continua</td>
 <td>0–3/día</td>
 <td>&gt; 10/día</td>
@@ -693,7 +699,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="reglas-de-alerta"><span class="antetitulo">05</span>Reglas de alerta</h2>
-<p><strong>Severidad inicial propuesta:</strong> S1 Crítica · S2 Alta · S3 Media · S4 Baja (se confirma con el <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). <strong>Acción asociada:</strong> Revisar · Aplicar procedimiento de <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> · Abrir incidente (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) · Activar disparador de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) · Interruptor de parada.</p>
+<p><strong>Severidad inicial propuesta:</strong> S1 Crítica · S2 Alta · S3 Media · S4 Baja (se confirma con el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). <strong>Acción asociada:</strong> Revisar · Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> · Abrir incidente (P26) · Activar disparador de reversión (P19) · Interruptor de parada.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -704,7 +710,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Canal</th>
 <th>Tiempo máximo de reconocimiento</th>
 <th>Acción asociada</th>
-<th>Disparador de <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></th>
+<th>Disparador de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></th>
 </tr>
 </thead>
 <tbody>
@@ -735,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Guardia técnica</td>
 <td>Herramienta de guardia</td>
 <td>4 horas laborables</td>
-<td>Aplicar procedimiento de <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
 <td>—</td>
 </tr>
 <tr>
@@ -783,7 +789,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Datos para el panel del consejo <strong>(Enterprise)</strong></td>
 <td>Oficina de IA</td>
-<td>Indicadores agregados en el formato del panel (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>)</td>
+<td>Indicadores agregados en el formato del panel (T17)</td>
 <td>Trimestral</td>
 </tr>
 </tbody>
@@ -850,7 +856,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registro de cambios de umbral</td>
 <td></td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, con motivo y valor anterior.</td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, con motivo y valor anterior.</td>
 </tr>
 <tr>
 <td>Recalibración tras cambios relevantes <strong>(Enterprise)</strong></td>
@@ -861,7 +867,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">09</span>Criterios de calidad</h2>
-<p>Criterios formales de G4, G5 y R6 en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>.</p>
+<p>Criterios formales de G4, G5 y R6 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -883,7 +889,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Todo disparador de <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y todo indicador de supervisión de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> tiene alerta.</td>
+<td>Todo disparador de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y todo indicador de supervisión de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> tiene alerta.</td>
 <td></td>
 </tr>
 <tr>
@@ -946,7 +952,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisor del <em>gate</em></td>
-<td>Según 01 §7.5 (registrado en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>

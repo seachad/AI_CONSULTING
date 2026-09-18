@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -418,7 +424,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <blockquote>
 <p><strong>¿La IA sustituye, aumenta o reorganiza el trabajo de las personas?</strong></p>
 </blockquote>
-<p>La respuesta no es técnica. Define la cultura, la propuesta al empleado, la capacidad de atraer y retener talento y la relación con la representación de los trabajadores. Por eso SEVEN-G exige que la compañía adopte en <strong>C2</strong> una <strong>posición explícita</strong> sobre el efecto que busca en el trabajo (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>) y que cada iniciativa la respete o justifique la excepción.</p>
+<p>La respuesta no es técnica. Define la cultura, la propuesta al empleado, la capacidad de atraer y retener talento y la relación con la representación de los trabajadores. Por eso SEVEN-G exige que la compañía adopte en <strong>C2</strong> una <strong>posición explícita</strong> sobre el efecto que busca en el trabajo (documento 13) y que cada iniciativa la respete o justifique la excepción.</p>
 <h3 id="2-2-los-tres-papeles-del-empleado-ante-la-ia">2.2 Los tres papeles del empleado ante la IA</h3>
 <div class="tabla"><table>
 <thead>
@@ -432,7 +438,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Receptor</strong></td>
 <td>La IA le cambia herramientas, procesos y expectativas de productividad sin que lo haya elegido.</td>
-<td>Formación, acompañamiento, tiempo para aprender y canales para señalar problemas (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>).</td>
+<td>Formación, acompañamiento, tiempo para aprender y canales para señalar problemas (documento 23).</td>
 </tr>
 <tr>
 <td><strong>Sujeto</strong></td>
@@ -442,7 +448,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Promotor</strong></td>
 <td>Conoce su proceso mejor que nadie y puede proponer usos de IA que nadie externo vería.</td>
-<td>Canal de propuestas conectado al registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), reconocimiento y reglas de uso claras (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+<td>Canal de propuestas conectado al registro de iniciativas (T01), reconocimiento y reglas de uso claras (documento 31).</td>
 </tr>
 </tbody>
 </table></div>
@@ -476,8 +482,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="2-4-que-se-evalua-en-la-esfera-03">2.4 Qué se evalúa en la esfera 03</h3>
-<p>Se evalúan siete dimensiones, cada una con su evidencia e indicadores (sección 11): <strong>posición</strong> aprobada en C2; <strong>efecto por iniciativa</strong> (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, PER-01); <strong>capacidades</strong> (PER-02, PER-03); <strong>capacidad liberada</strong> (PER-04 a PER-06); <strong>relaciones laborales</strong> (PER-08); <strong>decisiones sobre personas</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, PER-09 a PER-12); y <strong>bienestar</strong> (PER-15).</p>
-<p>Los indicadores de la sección 11 alimentan la dimensión <strong>D5 Personas y adopción</strong> del modelo de madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>) y las señales <strong>3 · Materialización</strong> y <strong>5 · Modelo operativo</strong> del índice de transformación (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>).</p>
+<p>Se evalúan siete dimensiones, cada una con su evidencia e indicadores (sección 11): <strong>posición</strong> aprobada en C2; <strong>efecto por iniciativa</strong> (P20, PER-01); <strong>capacidades</strong> (PER-02, PER-03); <strong>capacidad liberada</strong> (PER-04 a PER-06); <strong>relaciones laborales</strong> (PER-08); <strong>decisiones sobre personas</strong> (P11, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, PER-09 a PER-12); y <strong>bienestar</strong> (PER-15).</p>
+<p>Los indicadores de la sección 11 alimentan la dimensión <strong>D5 Personas y adopción</strong> del modelo de madurez (documento 11) y las señales <strong>3 · Materialización</strong> y <strong>5 · Modelo operativo</strong> del índice de transformación (documento 12).</p>
 <hr />
 <h2 id="efecto-de-la-ia-sobre-el-trabajo"><span class="antetitulo">03</span>Efecto de la IA sobre el trabajo</h2>
 <h3 id="3-1-tres-efectos">3.1 Tres efectos</h3>
@@ -529,7 +535,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>1</strong></td>
 <td>Identificar colectivos afectados y efecto previsible.</td>
-<td>Ficha de oportunidad (<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+<td>Ficha de oportunidad (P06, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
 </tr>
 <tr>
 <td><strong>2</strong></td>
@@ -572,8 +578,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>¿Interviene el sistema en decisiones sobre candidatos o empleados? (sección 8)</li>
 <li>¿Qué capacidades nuevas se requieren y quién las tiene hoy? (sección 5)</li>
 <li>¿Qué capacidad se libera, cuándo y con qué destino previsto? (sección 6)</li>
-<li>¿Qué conocimiento se pierde o se concentra? (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, sección 10)</li>
-<li>¿Se conserva la capacidad de volver al proceso manual? (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 10)</li>
+<li>¿Qué conocimiento se pierde o se concentra? (documento 51, sección 10)</li>
+<li>¿Se conserva la capacidad de volver al proceso manual? (documento 52, sección 10)</li>
 <li>¿Es coherente con la posición de C2? Si no, la excepción se eleva al comité de IA.</li>
 </ol>
 <h3 id="3-5-regla-de-intensidad">3.5 Regla de intensidad</h3>
@@ -629,7 +635,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Las capacidades que cada nivel necesita se concretan en los perfiles de la sección 5.</p>
 <h3 id="4-2-roles-nuevos-o-ampliados">4.2 Roles nuevos o ampliados</h3>
-<p>Los roles de SEVEN-G (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> §8) no cambian. Las funciones siguientes <strong>pueden</strong> asignarse a personas existentes o crearse como roles nuevos, según tamaño e intensidad:</p>
+<p>Los roles de SEVEN-G (documento 01 §8) no cambian. Las funciones siguientes <strong>pueden</strong> asignarse a personas existentes o crearse como roles nuevos, según tamaño e intensidad:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -651,7 +657,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Responsable de contenido o de conocimiento</strong></td>
-<td>Calidad, vigencia y permisos de las fuentes de la IA generativa (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>).</td>
+<td>Calidad, vigencia y permisos de las fuentes de la IA generativa (documento 51).</td>
 <td>Sí, con IA generativa sobre fuentes internas.</td>
 </tr>
 <tr>
@@ -694,7 +700,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>PER-PC · Todos los empleados</strong></td>
-<td>Qué es y qué no es la IA; uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>); datos que no se introducen; verificar resultados; informar de problemas.</td>
+<td>Qué es y qué no es la IA; uso aceptable (documento 31); datos que no se introducen; verificar resultados; informar de problemas.</td>
 <td>Formación antes del acceso; renovación periódica.</td>
 </tr>
 <tr>
@@ -722,7 +728,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="reasignacion-de-la-capacidad-liberada"><span class="antetitulo">06</span>Reasignación de la capacidad liberada</h2>
 <h3 id="6-1-principio">6.1 Principio</h3>
-<p>La <strong>regla 3 de medición</strong> (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a> §6) establece que la capacidad liberada <strong>no suma como ahorro</strong> hasta que se materializa en menor coste real o se reasigna de forma explícita. SEVEN-G convierte esa regla en un proceso: <strong>toda capacidad liberada tiene una decisión explícita sobre su destino, un registro y un seguimiento</strong>. Sin decisión, la capacidad liberada se muestra como tal y no como valor.</p>
+<p>La <strong>regla 3 de medición</strong> (documento 00 §6) establece que la capacidad liberada <strong>no suma como ahorro</strong> hasta que se materializa en menor coste real o se reasigna de forma explícita. SEVEN-G convierte esa regla en un proceso: <strong>toda capacidad liberada tiene una decisión explícita sobre su destino, un registro y un seguimiento</strong>. Sin decisión, la capacidad liberada se muestra como tal y no como valor.</p>
 <h3 id="6-2-destinos-posibles">6.2 Destinos posibles</h3>
 <div class="tabla"><table>
 <thead>
@@ -924,7 +930,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Otras jurisdicciones difieren.</strong> Fuera de la Unión Europea las obligaciones pueden ser distintas en contenido y en destinatario; por ejemplo, <a class="ref-ext" href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener" title="Ley Local 144 de 2021 de la ciudad de Nueva York sobre herramientas automatizadas de decisi&#243;n en el empleo (Int. 1894-2020), que exige una auditor&#237;a de sesgo independiente antes de su uso">algunas normas locales exigen auditorías independientes de sesgo</a> de las herramientas automatizadas de selección antes de usarlas. Cada compañía <strong>debe</strong> identificar las normas aplicables en cada país donde tenga empleados o candidatos e incorporarlas en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</p>
+<p><strong>Otras jurisdicciones difieren.</strong> Fuera de la Unión Europea las obligaciones pueden ser distintas en contenido y en destinatario; por ejemplo, <a class="ref-ext" href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener" title="Ley Local 144 de 2021 de la ciudad de Nueva York sobre herramientas automatizadas de decisi&#243;n en el empleo (Int. 1894-2020), que exige una auditor&#237;a de sesgo independiente antes de su uso">algunas normas locales exigen auditorías independientes de sesgo</a> de las herramientas automatizadas de selección antes de usarlas. Cada compañía <strong>debe</strong> identificar las normas aplicables en cada país donde tenga empleados o candidatos e incorporarlas en la declaración de contexto (P02).</p>
 <p>Este documento no constituye asesoramiento jurídico.</p>
 <h3 id="7-2-proceso-de-informacion-y-consulta-en-seven-g">7.2 Proceso de información y consulta en SEVEN-G</h3>
 <div class="tabla"><table>
@@ -941,7 +947,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1 · Identificación</td>
 <td>Fase 3</td>
 <td>La evaluación de efecto determina si el sistema afecta a condiciones de trabajo, acceso o mantenimiento del empleo, perfiles, o si es de alto riesgo en el lugar de trabajo.</td>
-<td>Evaluación de efecto (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
+<td>Evaluación de efecto (P20).</td>
 </tr>
 <tr>
 <td>2 · Análisis jurídico</td>
@@ -963,7 +969,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5 · Actualización</td>
-<td>En cada cambio relevante (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 6)</td>
+<td>En cada cambio relevante (documento 52, sección 6)</td>
 <td>Si cambian parámetros, reglas, finalidad o colectivos, se actualiza la información.</td>
 <td>Nueva versión de la ficha.</td>
 </tr>
@@ -1103,7 +1109,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>9</td>
-<td>Conservación de registros de recomendación y decisión (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 11).</td>
+<td>Conservación de registros de recomendación y decisión (documento 52, sección 11).</td>
 <td>6</td>
 <td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
 </tr>
@@ -1127,7 +1133,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Grupos</strong></td>
-<td>Los que protege la normativa antidiscriminación aplicable, en la medida en que puedan analizarse lícitamente. El tratamiento de categorías especiales para detectar sesgos tiene condiciones propias (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, sección 6).</td>
+<td>Los que protege la normativa antidiscriminación aplicable, en la medida en que puedan analizarse lícitamente. El tratamiento de categorías especiales para detectar sesgos tiene condiciones propias (documento 51, sección 6).</td>
 </tr>
 <tr>
 <td><strong>Métricas</strong></td>
@@ -1244,7 +1250,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="indicadores"><span class="antetitulo">11</span>Indicadores</h2>
-<p>Los códigos son provisionales hasta su consolidación en el catálogo de indicadores (<a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>). Los umbrales son <strong>orientativos y a calibrar</strong>. Todos se calculan sin datos individuales identificables y con un tamaño mínimo de grupo fijado por la compañía.</p>
+<p>Los códigos son provisionales hasta su consolidación en el catálogo de indicadores (documento 41). Los umbrales son <strong>orientativos y a calibrar</strong>. Todos se calculan sin datos individuales identificables y con un tamaño mínimo de grupo fijado por la compañía.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1311,7 +1317,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Usuarios activos según el criterio de uso definido en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> ÷ usuarios destinatarios</td>
 <td>Mensual</td>
 <td>Registros de uso</td>
-<td>Según hipótesis (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>)</td>
+<td>Según hipótesis (documento 23)</td>
 </tr>
 <tr>
 <td><strong>PER-08</strong></td>
@@ -1386,7 +1392,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>)</th>
+<th>Código (documento 33)</th>
 <th>Riesgo</th>
 <th>Señal temprana</th>
 <th>Controles principales</th>
@@ -1408,7 +1414,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependencia de personas clave (pérdida de conocimiento crítico)</td>
-<td>Dependencia alta (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, CNC-06).</td>
+<td>Dependencia alta (documento 51, CNC-06).</td>
 <td>Captura de conocimiento; sección 5.4.</td>
 </tr>
 <tr>

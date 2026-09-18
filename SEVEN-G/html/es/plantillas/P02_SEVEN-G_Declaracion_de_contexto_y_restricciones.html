@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -409,7 +415,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>En la fase 0, junto con la carta de la iniciativa (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>). Se revisa en G3 y cuando cambie una restricción relevante (norma, presupuesto, proveedor, datos).</td>
+<td>En la fase 0, junto con la carta de la iniciativa (P01). Se revisa en G3 y cuando cambie una restricción relevante (norma, presupuesto, proveedor, datos).</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas (enlace como evidencia de G0).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas (enlace como evidencia de G0).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -440,7 +446,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li>Una restricción es algo que la iniciativa <strong>no puede cambiar</strong>. Si puede negociarse, es un supuesto y va a la sección 10.</li>
-<li>Esta declaración no sustituye la clasificación regulatoria (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>) ni la matriz de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>): identifica lo que se sabe en la fase 0 para que no se descubra tarde.</li>
+<li>Esta declaración no sustituye la clasificación regulatoria (P11) ni la matriz de riesgos (P12): identifica lo que se sabe en la fase 0 para que no se descubra tarde.</li>
 <li><em>Este documento no constituye asesoramiento jurídico.</em> La aplicabilidad de cada norma debe confirmarla quien tenga competencia jurídica en la compañía. Referencias normativas consultadas en septiembre de 2026; debe verificarse su vigencia.</li>
 </ul>
 <hr />
@@ -462,7 +468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nombre de la iniciativa</td>
 <td></td>
-<td>Igual que en <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
+<td>Igual que en <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
 </tr>
 <tr>
 <td>Versión del documento</td>
@@ -487,7 +493,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad aplicable</td>
 <td></td>
-<td>Lite · Enterprise (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (P04).</td>
 </tr>
 </tbody>
 </table></div>
@@ -552,7 +558,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (Reglamento (UE) 2024/1689)</td>
 <td>Sí · No · Por determinar</td>
 <td></td>
-<td>Clasificación y obligaciones según el rol de la compañía (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Clasificación y obligaciones según el rol de la compañía (P11).</td>
 <td></td>
 </tr>
 <tr>
@@ -614,7 +620,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Normas internas</td>
 <td></td>
-<td>Política corporativa de IA y uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>), seguridad, protección de datos, compras.</td>
+<td>Política corporativa de IA y uso aceptable (documento 31), seguridad, protección de datos, compras.</td>
 <td></td>
 <td></td>
 </tr>
@@ -654,7 +660,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Autonomía máxima permitida</td>
 <td></td>
-<td>A0 Asistencia · A1 Recomendación · A2 Actuación supervisada · A3 Actuación autónoma (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
+<td>A0 Asistencia · A1 Recomendación · A2 Actuación supervisada · A3 Actuación autónoma (documento 35).</td>
 </tr>
 <tr>
 <td>Líneas rojas</td>
@@ -687,7 +693,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Categorías especiales o datos especialmente protegidos</td>
 <td></td>
-<td>Sí · No · Por determinar. Si sí, activa el criterio Enterprise 5 de <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</td>
+<td>Sí · No · Por determinar. Si sí, activa el criterio Enterprise 5 de <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</td>
 </tr>
 <tr>
 <td>Información confidencial crítica</td>
@@ -735,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Presupuesto máximo</td>
 <td></td>
-<td>Tope autorizado y punto de revisión (coherente con <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>).</td>
+<td>Tope autorizado y punto de revisión (coherente con <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>).</td>
 </tr>
 <tr>
 <td>Restricciones de coste recurrente</td>
@@ -872,7 +878,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Los criterios formales de G0 y G3 están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx y G3.xx).</p>
+<p>Los criterios formales de G0 y G3 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx y G3.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -904,7 +910,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>Los límites económicos son coherentes con <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
+<td>Los límites económicos son coherentes con <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
 <td></td>
 </tr>
 <tr>

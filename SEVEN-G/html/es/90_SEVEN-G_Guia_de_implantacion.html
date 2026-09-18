@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -466,7 +472,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Madurez</strong></td>
 <td>Evaluación verificada.</td>
-<td>Evaluación verificada y, al menos cada dos años, independiente (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>Evaluación verificada y, al menos cada dos años, independiente (documento 11).</td>
 </tr>
 <tr>
 <td><strong>Panel del consejo</strong></td>
@@ -872,7 +878,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La declaración se apoya en una evaluación verificada con todas esas preguntas en &quot;Sí&quot; y con la regularización dentro de plazo (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>, sección 7.3).</p>
+<p>La declaración se apoya en una evaluación verificada con todas esas preguntas en &quot;Sí&quot; y con la regularización dentro de plazo (documento 11, sección 7.3).</p>
 <hr />
 <h2 id="roles-minimos-en-una-organizacion-pequena"><span class="antetitulo">07</span>Roles mínimos en una organización pequeña</h2>
 <p>SEVEN-G no exige crear estructuras nuevas. En una organización pequeña, con alcance Lite, basta con esta asignación, siempre que se respeten las incompatibilidades de 01 §8.2:</p>
@@ -942,7 +948,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Diagnóstico por autoevaluación.</td>
 <td>Madurez inflada que no resiste la primera auditoría.</td>
-<td>Evaluación verificada con muestreo (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>Evaluación verificada con muestreo (documento 11).</td>
 </tr>
 <tr>
 <td>Crear un gobierno paralelo.</td>
@@ -982,7 +988,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Priorizar todo por retorno inmediato.</td>
 <td>Ninguna apuesta de Transformar llega a producción.</td>
-<td>Carriles de ambición con sobres propios (<a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>).</td>
+<td>Carriles de ambición con sobres propios (documento 14).</td>
 </tr>
 <tr>
 <td>Auditor de IA dependiente del patrocinador.</td>

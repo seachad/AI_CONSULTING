@@ -125,6 +125,9 @@ blockquote p strong {
 }
 
 code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
 pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
 pre code { background: none; padding: 0; }
 
@@ -221,6 +224,9 @@ mark.hallazgo.actual { background: var(--claret); color: #fff; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
 .panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
   transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
 .panel-indice.abierto { transform: none; visibility: visible; }
@@ -429,7 +435,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas (bloque <em>Responsables</em> de la ficha).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas (bloque <em>Responsables</em> de la ficha).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -467,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad aplicable</td>
 <td></td>
-<td>Lite · Enterprise (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>). Si cambia, se revisa este registro.</td>
+<td>Lite · Enterprise (P04). Si cambia, se revisa este registro.</td>
 </tr>
 <tr>
 <td>Nivel de ambición</td>
@@ -667,7 +673,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Si el responsable de riesgos elabora evidencias de la fase 3 (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>), la verificación de G3 en Lite la realiza otra persona.</td>
+<td>Si el responsable de riesgos elabora evidencias de la fase 3 (P11, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>), la verificación de G3 en Lite la realiza otra persona.</td>
 <td>Sí · No · No aplica</td>
 <td>Evita que el responsable de riesgos verifique su propio trabajo (01 §7.4, regla 1).</td>
 </tr>
@@ -945,7 +951,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Responsable de riesgos</td>
 <td>Sí</td>
 <td>Participó en la selección del proveedor en otra iniciativa.</td>
-<td>Se abstiene en la conformidad de <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; la emite su sustituto.</td>
+<td>Se abstiene en la conformidad de <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; la emite su sustituto.</td>
 </tr>
 </tbody>
 </table></div>
@@ -976,7 +982,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Cada cambio genera un evento en el registro de iniciativas (03 §3.3).</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">10</span>Criterios de calidad</h2>
-<p>Los criterios formales de G0 están en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx).</p>
+<p>Los criterios formales de G0 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
