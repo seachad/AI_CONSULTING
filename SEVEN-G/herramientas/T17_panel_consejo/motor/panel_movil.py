@@ -89,6 +89,7 @@ details.gloss{margin-top:18px}
 /* embudo compacto */
 .funbar{height:6px;background:var(--grid);border-radius:3px;margin:4px 0 2px;overflow:hidden}
 .funbar i{display:block;height:100%;background:var(--s1);border-radius:3px}
+.row.fun.gan{border-left:4px solid #2e7d32;background:color-mix(in srgb,#2e7d32 12%,transparent)}
 .badge.rojo{background:var(--rojbg);color:var(--rojink)}.badge.amarillo{background:var(--ambbg);color:var(--ambink)}.badge.ok{background:var(--grid);color:var(--ink2)}
 """
 
@@ -167,9 +168,12 @@ function render(){
   const top = [...CASES].filter(c=>R(c)[k("neto")] > 0).sort((a,b)=>R(b)[k("neto")] - R(a)[k("neto")]).slice(0,5);
   // embudo compacto: casos ahora en cada etapa, los que la alcanzaron, mediana de días y atascados; salidas debajo
   const cfgC = CICLO(), embE = cfgC.embudo, base = Math.max(1, CASES.filter(c=>etapaAlcanzada(c) >= 0).length);
-  $("embudo").innerHTML = embE.map((e,i)=>{ const ahora = CASES.filter(c=>c.estado===e), alc = CASES.filter(c=>etapaAlcanzada(c) >= i).length, t = tiemposEstado(CASES, e).todas, pls = ahora.map(plazoDe), r = pls.filter(p=>p.nivel==="rojo").length, a = pls.filter(p=>p.nivel==="amarillo").length;
+  // el embudo solo contiene los casos al vuelo; la etapa ganada (en uso) y las salidas van debajo: son los que ya lo atravesaron o no pasaron
+  const ganE = cfgC.ganado, nGan = CASES.filter(c=>c.estado===ganE).length, llegaronE = CASES.filter(c=>etapaAlcanzada(c) >= embE.indexOf(ganE)).length;
+  $("embudo").innerHTML = embE.map((e,i)=>{ if (esGanado(e)) return ""; const ahora = CASES.filter(c=>c.estado===e), alc = CASES.filter(c=>etapaAlcanzada(c) >= i).length, t = tiemposEstado(CASES, e).todas, pls = ahora.map(plazoDe), r = pls.filter(p=>p.nivel==="rojo").length, a = pls.filter(p=>p.nivel==="amarillo").length;
       return `<div class="row fun" data-etapa="${esc(e)}"><div style="flex:1;min-width:0"><div class="n">${esc(e)} <span class="m">· ${ahora.length} ahora</span></div><div class="funbar"><i style="width:${Math.round(100*alc/base)}%"></i></div><div class="m">alcanzaron ${alc} · ${t?`mediana ${t.mediana} d · media ${t.media} d`:"sin fechas"}</div></div><div class="r">${r?`<span class="badge rojo">${r} fuera</span>`:""}${a?`<span class="badge amarillo">${a} cerca</span>`:""}</div></div>`; }).join("")
-    + `<div class="row"><div><div class="n">Perdidos</div><div class="m">${SALIDAS().map(s=>`${esc(s)} ${CASES.filter(c=>c.estado===s).length}`).join(" · ")}</div></div></div>`;
+    + `<div class="row fun gan" data-etapa="${esc(ganE)}"><div><div class="n">${esc(ganE)} <span class="m">· ${nGan} ahora</span></div><div class="m">ya atravesaron el embudo · llegaron a producción ${llegaronE}</div></div></div>`
+    + `<div class="row"><div><div class="n">No pasaron o se desengancharon</div><div class="m">${SALIDAS().map(s=>`${esc(s)} ${CASES.filter(c=>c.estado===s).length}`).join(" · ")}</div></div></div>`;
   document.querySelectorAll(".row.fun").forEach(r=>r.onclick=()=>etapa(r.dataset.etapa));
   $("top").innerHTML = top.length ? top.map(c=>{ const fc = fotoCaso(c); return fila(c, `<b class="${netoCls(R(c)[k("neto")])}">${fmt(R(c)[k("neto")])}</b><div>${fc?dl(R(c)[k("neto")], fc[k("neto")]):""}</div>`, `${esc(c.estado)} · ${estadoTxt(c)}`); }).join("") : `<div class="empty">Ningún caso con neto positivo.</div>`;
 

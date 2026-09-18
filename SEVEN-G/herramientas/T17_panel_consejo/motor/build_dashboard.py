@@ -303,29 +303,37 @@ table.big tr:hover td{background:var(--page)}
 footer{padding:20px 24px;color:var(--muted);font-size:11.5px;border-top:1px solid var(--grid);max-width:1700px;margin:0 auto}
 .hidden{display:none!important}
 /* embudo y ciclo de vida */
-#embudo svg{display:block;max-width:100%;height:auto}
-.fun-row{cursor:pointer;outline:none}
-.fun-row polygon{opacity:.9;transition:opacity .12s}
-.fun-row:hover polygon,.fun-row:focus-visible polygon{opacity:1}
-.fun-sel polygon{stroke:var(--ink);stroke-width:3;opacity:1}
-svg text.fun-n{fill:var(--accent-ink);font-size:17px;font-weight:750}
-svg text.fun-t{fill:var(--ink);font-size:14px;font-weight:700}
-svg text.fun-d{fill:var(--ink2);font-size:11.5px}
-svg text.fun-rojo{fill:var(--rojink);font-weight:700}
-svg text.fun-amb{fill:var(--ambink);font-weight:700}
-.fun-arrow{stroke:var(--critical);stroke-width:1.6;fill:none;stroke-dasharray:4 3}
-.fun-head{fill:var(--critical)}
-.fun-box{fill:var(--kobg);stroke:var(--kobd)}
-svg text.fun-bt{fill:var(--koink);font-size:12px}
-.fun-sal.vacia{opacity:.5}
-.fun-sal.fun-sel .fun-box{stroke:var(--ink);stroke-width:2.5}
-.fun-sal:hover .fun-box{stroke:var(--koink)}
-/* rama de la etapa ganada (casos en uso): en verde, junto a la salida de los que se desengancharon */
-.fun-gan .fun-box{fill:#2e7d32;stroke:#1b5e20}
-.fun-gan:hover .fun-box{stroke:#0d3d12;stroke-width:2}
-svg .fun-gan text.fun-bt{fill:#fff}
-.fun-gan .fun-arrow{stroke:#2e7d32;stroke-dasharray:none;stroke-width:2}
-.fun-head-gan{fill:#2e7d32}
+/* el embudo solo contiene los casos al vuelo (etapas anteriores a la ganada). A la derecha de cada etapa, las tarjetas de los casos que no
+   la superaron; al final, las tarjetas de los que ya atravesaron el embudo: en uso (verde) y desenganchados */
+.fun2{display:grid;grid-template-columns:minmax(150px,1fr) minmax(220px,1.5fr) minmax(250px,1.8fr);gap:6px 16px;align-items:stretch}
+.fun2-lbl{text-align:right;padding:6px 0;cursor:pointer;align-self:center;outline:none}
+.fun2-lbl .t{font-weight:700;font-size:14px;color:var(--ink)}
+.fun2-lbl.fun-sel .t{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.fun2-lbl .d{font-size:11.5px;color:var(--ink2);line-height:1.4}
+.fun2-lbl .d.rojo{color:var(--rojink);font-weight:700}.fun2-lbl .d.amb{color:var(--ambink);font-weight:700}
+.fun2-mid{display:flex;cursor:pointer;min-height:72px;outline:none}
+.fun2-trap{flex:1;display:flex;align-items:center;justify-content:center;opacity:.88;transition:opacity .12s;color:var(--accent-ink);font-size:17px;font-weight:750}
+.fun2-mid:hover .fun2-trap,.fun2-mid:focus-visible .fun2-trap,.fun2-mid.fun-sel .fun2-trap{opacity:1}
+.fun2-out{display:flex;flex-direction:column;gap:6px;justify-content:center}
+.fun-card{position:relative;border:1px solid var(--kobd);background:var(--kobg);color:var(--koink);border-radius:8px;padding:6px 10px;font-size:12px;line-height:1.35}
+.fun-card.vacia{opacity:.5}
+.fun-card.fun-sel{outline:2px solid var(--ink);outline-offset:1px}
+.fun-card>.h{font-weight:700;cursor:pointer;outline:none}
+.fun-card>.h .k{font-weight:400}
+.fun-card ul{list-style:none;margin:4px 0 0;padding:0}
+.fun-card li{padding:4px 0;border-top:1px dashed var(--kobd)}
+.fun-card li .m{display:block;opacity:.9}
+.fun-card a{color:inherit;font-weight:650}
+.fun2-out .fun-card::before{content:"";position:absolute;left:-15px;top:50%;width:13px;border-top:2px dashed var(--critical)}
+.fun2-fin{grid-column:1/-1;margin-top:10px;border-top:2px solid var(--ink);padding-top:10px}
+.fun2-fin>.tit{font-weight:700;font-size:13px;color:var(--ink);margin-bottom:8px}
+.fun2-fin>.tit span{font-weight:400;color:var(--ink2)}
+.fun2-fin>.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;align-items:start}
+.fun-card.gan{background:color-mix(in srgb,#2e7d32 13%,transparent);border:2px solid #2e7d32;color:var(--ink)}
+.fun-card.gan>.h{color:#fff;background:#2e7d32;margin:-6px -10px 4px;padding:7px 10px;border-radius:5px 5px 0 0}
+.fun-card.gan li{border-top-color:color-mix(in srgb,#2e7d32 40%,transparent)}
+.fun-card.gan li:first-child{border-top:0}
+@media(max-width:900px){.fun2{grid-template-columns:1fr}.fun2-lbl{text-align:left}.fun2-out .fun-card::before{display:none}}
 .pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:650;white-space:nowrap;background:var(--chip);color:var(--muted)}
 .pill.rojo{background:var(--rojbg);color:var(--rojink)}.pill.amarillo{background:var(--ambbg);color:var(--ambink)}.pill.ok{background:var(--okbg);color:var(--okink)}
 table.mini tr.rojo td{background:color-mix(in srgb,var(--rojbg) 55%,transparent)}
@@ -514,43 +522,47 @@ function renderEmbudo(rows){
    <div class="kpi"><div class="v">${perdidos}</div><div class="l">Perdidos</div><div class="d">${sal.map(s=>`${esc(s)} <b>${ahora(s).length}</b>`).join(" · ")}</div></div>
    <div class="kpi"><div class="v">${conv==null?"—":conv+" %"}</div><div class="l">Conversión a producción</div><div class="d">${conv==null?"No medible: los datos no incluyen casos no aprobados ni descartados":"Llegaron a producción / (llegaron + perdidos antes de producción)"}</div></div>
    <div class="kpi sem ${nivAtasco}"><div class="v">${rojos} <span class="de">+ ${amar}</span></div><div class="l">Casos atascados</div><div class="d">Superan el límite de días de su estado (${rojos}) o están a partir del ${cfg.aviso_pct_limite??80} % (${amar})</div><div class="kst ${nivAtasco}">${conFechas?`con fechas ${conFechas} de ${rows.length} casos`:"sin fechas: no se puede medir"}</div></div>`;
-  document.getElementById("embudo-nota").innerHTML = `Anchura de cada etapa: casos que la alcanzaron (sin historial, se deduce del estado actual) · número dentro: casos que están ahora en ella · tiempos: estancias cerradas y en curso hasta el ${fES(FECHA_PANEL())} · límites en días del JSON general de configuración${conFechas<rows.length?` · <b>${rows.length-conFechas}</b> de ${rows.length} casos sin fechas de estado: sus tiempos no cuentan`:""}`;
-  // --- diagrama (SVG): etapas en embudo; salidas como ramas a la derecha, desde la etapa en la que se perdieron
-  const W = Math.max(el.clientWidth || 900, 620), rowH = 74, top = 8, H = top + emb.length*rowH + 6;
-  const cx = W*0.47, maxw = W*0.30, minw = 46, base = Math.max(1, alcanzan[0]);
-  const wDe = i => minw + (maxw-minw) * (alcanzan[Math.min(i, emb.length-1)] / base);
-  const xl = W*0.29, xb = W*0.68;
-  const ramas = {}; sal.forEach(s=>{ const cs = ahora(s); const grupos = {}; cs.forEach(c=>{ const o = etapaDeSalida(c) || (cfg.salidas[s]||[])[0]; grupos[o] = (grupos[o]||[]).concat(c); }); if (!cs.length) grupos[(cfg.salidas[s]||[])[0]] = []; Object.entries(grupos).forEach(([o, lista])=>{ (ramas[o] = ramas[o] || []).push({s, lista}); }); });
-  let svg = "";
-  emb.forEach((e,i)=>{
-    const y = top + i*rowH, wt = wDe(i), wb = i < emb.length-1 ? wDe(i+1) : wt*0.82, sel = E.sel===e, t = tiemposEstado(rows, e).todas, lim = (cfg.dias_limite||{})[e];
+  document.getElementById("embudo-nota").innerHTML = `Anchura de cada etapa: casos que la alcanzaron (sin historial, se deduce del estado actual) · número dentro: casos que están ahora en ella · el embudo contiene solo los casos al vuelo: a la derecha de cada etapa, los que no la superaron; debajo, los que ya lo atravesaron (en uso y desenganchados) · tiempos: estancias cerradas y en curso hasta el ${fES(FECHA_PANEL())} · límites en días del JSON general de configuración${conFechas<rows.length?` · <b>${rows.length-conFechas}</b> de ${rows.length} casos sin fechas de estado: sus tiempos no cuentan`:""}`;
+  // --- diagrama: el embudo solo contiene los casos al vuelo (las etapas anteriores a la ganada). A la derecha de cada etapa, las tarjetas de
+  // los casos que no la superaron; al final, las tarjetas de los que ya atravesaron el embudo: en uso (verde) y desenganchados tras estar en uso.
+  // Cada tarjeta lista sus casos con una información mínima (fecha, días y motivo): es parte del aprendizaje de la organización.
+  const base = Math.max(1, alcanzan[0]), etapas = emb.filter(e=>!esGanado(e));
+  const pctDe = i => 18 + 82 * (alcanzan[Math.min(i, emb.length-1)] / base);
+  // casos perdidos, agrupados por salida y por la etapa desde la que salieron
+  const grupos = {}; sal.forEach(s=>{ grupos[s] = {}; ahora(s).forEach(c=>{ const o = etapaDeSalida(c) || (cfg.salidas[s]||[])[0]; (grupos[s][o] = grupos[s][o] || []).push(c); }); });
+  const motivoDe = c => (rc(c).retirada||{}).motivo;
+  const finDe = c => { const tr = historial(c).tramos; return tr.length ? tr[tr.length-1] : null; };
+  const diasEmbudo = (c, hasta) => { const tr = historial(c).tramos; return tr.length && hasta ? dias(tr[0].fecha, hasta) : null; };
+  const entradaGan = c => { const t = historial(c).tramos.find(x=>esGanado(x.estado)); return t ? t.fecha : null; };
+  const lineaPerdido = c => { const f = finDe(c), fs = f && esSalida(f.estado) ? f.fecha : null;
+    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"} · ${dTxt(diasEmbudo(c, fs))} en el embudo${motivoDe(c)?` · ${esc(motivoDe(c))}`:""}</span></li>`; };
+  const lineaUso = c => { const g = entradaGan(c);
+    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${g?`en uso desde el ${fES(g)} · ${dTxt(diasEmbudo(c, g))} en el embudo`:"sin fecha de puesta en uso"}</span></li>`; };
+  const lineaDeseng = c => { const f = finDe(c), fs = f && esSalida(f.estado) ? f.fecha : null, g = entradaGan(c);
+    return `<li>${casoLink(c)} <span class="k">${esc(c.id)}</span><span class="m">${fs?fES(fs):"sin fecha de salida"}${g&&fs?` · estuvo en uso ${dTxt(dias(g, fs))}`:""}${motivoDe(c)?` · ${esc(motivoDe(c))}`:""}</span></li>`; };
+  const tarjeta = (s, titulo, lista, linea, cls) => `<div class="fun-card${cls||""}${lista.length?"":" vacia"}${E.sel===s?" fun-sel":""}"><div class="h" data-sel="${esc(s)}" tabindex="0" role="button">${titulo}</div>${lista.length?`<ul>${lista.map(linea).join("")}</ul>`:""}</div>`;
+  let html = "";
+  etapas.forEach(e=>{
+    const i = emb.indexOf(e), wt = pctDe(i), wb = pctDe(i+1), sel = E.sel===e, t = tiemposEstado(rows, e).todas, lim = (cfg.dias_limite||{})[e];
     const lv = lim != null && typeof lim === "object" ? Object.values(lim).filter(v=>typeof v === "number") : [];
     const limTxt = lim == null ? "sin límite" : typeof lim === "number" ? `límite ${lim} d` : `límite ${Math.min(...lv)}–${Math.max(...lv)} d por complejidad`;
     const atas = ahora(e).map(plazoDe), r = atas.filter(p=>p.nivel==="rojo").length, a = atas.filter(p=>p.nivel==="amarillo").length;
-    svg += `<g class="fun-row${sel?" fun-sel":""}" data-sel="${esc(e)}" tabindex="0" role="button" aria-label="${esc(e)}: ${ahora(e).length} casos">
-      <polygon points="${cx-wt/2},${y} ${cx+wt/2},${y} ${cx+wb/2},${y+rowH-8} ${cx-wb/2},${y+rowH-8}" fill="${COL_ETAPA[i%COL_ETAPA.length]}"/>
-      <text x="${cx}" y="${y+rowH/2+2}" text-anchor="middle" class="fun-n">${ahora(e).length}</text>
-      <text x="${xl}" y="${y+18}" text-anchor="end" class="fun-t">${esc(e)}</text>
-      <text x="${xl}" y="${y+34}" text-anchor="end" class="fun-d">alcanzaron ${alcanzan[i]} (${alcanzan[0]?Math.round(100*alcanzan[i]/alcanzan[0]):0} %)</text>
-      <text x="${xl}" y="${y+49}" text-anchor="end" class="fun-d">${t?`media ${t.media} d · mediana ${t.mediana} d (${t.n})`:"tiempos: sin fechas"}</text>
-      <text x="${xl}" y="${y+63}" text-anchor="end" class="fun-d${r?" fun-rojo":a?" fun-amb":""}">${limTxt}${r||a?` · ${r} fuera, ${a} cerca`:""}</text>
-    </g>`;
-    // la etapa ganada se desglosa en dos ramas: los casos que siguen en uso (en verde, el resultado que importa) y los que se desengancharon
-    const rs = esGanado(e) ? [{s:e, lista:ahora(e), gan:true}, ...(ramas[e]||[])] : (ramas[e]||[]);
-    rs.forEach((rm, j)=>{
-      const n = rs.length, bh = Math.min(30, (rowH-12)/n), by = y + 4 + j*(bh+2), my = by + bh/2, x0 = cx + ((wt+wb)/2)/2 + 6;
-      // en la rama ganada, días desde la entrada en el embudo hasta la puesta en uso; en las salidas, hasta la salida
-      const ts = estad(rm.lista.map(c=>{ const tr = historial(c).tramos; if (!tr.length) return null; const fin = rm.gan ? tr.find(t=>t.estado===e) : tr[tr.length-1]; return fin ? dias(tr[0].fecha, fin.fecha) : null; }));
-      svg += `<g class="fun-row fun-sal${rm.gan?" fun-gan":""}${E.sel===rm.s?" fun-sel":""}${rm.lista.length?"":" vacia"}" data-sel="${esc(rm.s)}" tabindex="0" role="button" aria-label="${rm.gan?`${esc(e)}: ${rm.lista.length} casos en uso`:`${esc(rm.s)} desde ${esc(e)}: ${rm.lista.length} casos`}">
-        <path d="M${x0},${my} H${xb-6}" class="fun-arrow" marker-end="url(#${rm.gan?"fun-flecha-gan":"fun-flecha"})"/>
-        <rect x="${xb}" y="${by}" width="${W-xb-4}" height="${bh}" rx="6" class="fun-box"/>
-        <text x="${xb+10}" y="${my+4}" class="fun-bt">${rm.gan
-          ? `<tspan font-weight="700">${esc(e)}</tspan> · ${rm.lista.length} de ${alcanzan[i]} que llegaron${ts?` · ${ts.mediana} d hasta el uso (mediana)`:""}`
-          : `<tspan font-weight="700">${esc(rm.s)}</tspan> desde ${esc(e)} · ${rm.lista.length}${ts?` · ${ts.mediana} d en el embudo (mediana)`:""}`}</text>
-      </g>`;
-    });
+    // salidas previstas desde esta etapa (aunque no tengan casos) y cualquier otra con casos que salieron desde ella
+    const sals = sal.filter(s=>(cfg.salidas[s]||[]).includes(e) || (grupos[s][e]||[]).length);
+    html += `<div class="fun2-lbl${sel?" fun-sel":""}" data-sel="${esc(e)}" tabindex="0" role="button" aria-label="${esc(e)}: ${ahora(e).length} casos">
+        <div class="t">${esc(e)}</div><div class="d">alcanzaron ${alcanzan[i]} (${alcanzan[0]?Math.round(100*alcanzan[i]/alcanzan[0]):0} %)</div>
+        <div class="d">${t?`media ${t.media} d · mediana ${t.mediana} d (${t.n})`:"tiempos: sin fechas"}</div><div class="d${r?" rojo":a?" amb":""}">${limTxt}${r||a?` · ${r} fuera, ${a} cerca`:""}</div></div>
+      <div class="fun2-mid${sel?" fun-sel":""}" data-sel="${esc(e)}" tabindex="-1"><div class="fun2-trap" style="background:${COL_ETAPA[i%COL_ETAPA.length]};clip-path:polygon(${(100-wt)/2}% 0,${100-(100-wt)/2}% 0,${100-(100-wb)/2}% 100%,${(100-wb)/2}% 100%)">${ahora(e).length}</div></div>
+      <div class="fun2-out">${sals.map(s=>{ const l = grupos[s][e]||[]; return tarjeta(s, `${esc(s)} <span class="k">· no pasó de ${esc(e)}</span> · ${l.length}`, l, lineaPerdido); }).join("")}</div>`;
   });
-  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Embudo de casos de uso"><defs><marker id="fun-flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="fun-head"/></marker><marker id="fun-flecha-gan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="fun-head-gan"/></marker></defs>${svg}</svg>`;
+  // los que ya atravesaron el embudo: en uso y, de estos, los que se desengancharon después
+  const enUso = ahora(cfg.ganado), tsUso = estad(enUso.map(c=>diasEmbudo(c, entradaGan(c))));
+  const salFin = sal.filter(s=>(cfg.salidas[s]||[]).includes(cfg.ganado) || (grupos[s][cfg.ganado]||[]).length);
+  html += `<div class="fun2-fin"><div class="tit">Ya han atravesado el embudo <span>· llegaron a producción ${llegaron} de ${alcanzan[0]} casos${conv==null?"":` · conversión ${conv} %`}</span></div><div class="cards">
+    ${tarjeta(cfg.ganado, `${esc(cfg.ganado)} · ${enUso.length}${tsUso?` <span class="k">· mediana ${tsUso.mediana} d desde la entrada en el embudo hasta el uso</span>`:""}`, enUso, lineaUso, " gan")}
+    ${salFin.map(s=>{ const l = grupos[s][cfg.ganado]||[]; return tarjeta(s, `${esc(s)} <span class="k">tras haber estado en uso</span> · ${l.length}`, l, lineaDeseng); }).join("")}
+   </div></div>`;
+  el.innerHTML = `<div class="fun2" role="group" aria-label="Embudo de casos de uso">${html}</div>`;
   el.querySelectorAll("[data-sel]").forEach(g=>{ const go = ()=>{ E.sel = E.sel===g.dataset.sel ? null : g.dataset.sel; renderEmbudo(CASES.filter(passes)); if (E.sel) document.getElementById("embudo-det").scrollIntoView({behavior:"smooth", block:"nearest"}); }; g.onclick = go; g.onkeydown = ev=>{ if (ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); go(); } }; });
   renderEmbudoDetalle(rows); renderEmbudoPreguntas(rows);
 }

@@ -30,6 +30,12 @@ Repositorio de metodologías de IA de SEACHAD (Fernando García). El trabajo pri
 - En el equipo no hay Python, Node ni pandoc: usar PowerShell 7 y Edge.
 - Revisión interactiva de los HTML (búsqueda, índice, tema, idioma): `pwsh -File SEVEN-G/build/servidor.ps1` y abrir `http://localhost:8765/` (portada), `/SEVEN-G/html/es/` o `/SPHERES/html/es/`.
 
+## Cierre de cada tarea
+
+- Trabajar con las recomendaciones propias sin pedir confirmación paso a paso y **terminar siempre con commit y push** a `main` si pasan las pruebas de coherencia: `pwsh -File SEVEN-G/build/verificar_coherencia.ps1` (código de salida 0). Si fallan, corregir o explicar; no publicar (D52).
+- **No romper nada hacia atrás** salvo petición expresa del autor: lo nuevo se añade como opción o configuración, y los datos y ficheros existentes siguen funcionando (D53).
+- Cuando una decisión nueva sea comprobable de forma automática, añadir su comprobación a `verificar_coherencia.ps1`.
+
 ## Parámetros comunes y coherencia
 
 - Antes de redactar o modificar un documento, leer `SEVEN-G/mds/es/_trabajo/20260916_Especificacion_comun_biblioteca_SEVEN-G.md` (escalas, códigos, nombres de fichero, estructura) y `_trabajo/20260916_Ajustes_de_coherencia_SEVEN-G.md` (reglas R1–R15 que ya aplican todos los documentos).
