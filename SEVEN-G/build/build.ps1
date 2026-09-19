@@ -226,6 +226,25 @@ function BloqueNavegacion([string]$rel) {
   return $claves[-1]
 }
 
+# ---- Recuentos de la biblioteca para los componentes ----
+# Un componente puede escribir {{N_DOCUMENTOS}}, {{N_PLANTILLAS}} y {{N_HERRAMIENTAS}}: se sustituyen por los mismos recuentos
+# que muestra el índice, para que no queden desfasados al añadir un documento, una plantilla o una herramienta.
+function Recuentos-Biblioteca([string]$lang) {
+  $dir = Join-Path $root "mds\$lang"
+  $nDocs = 0; $nPlant = 0; $nHerr = 0
+  foreach ($d in (Get-ChildItem $dir -Recurse -File -Filter '*.md' | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+    $b = & $cfg.Bloque ([IO.Path]::GetRelativePath($dir, $d.FullName) -replace '\\', '/')
+    if (-not $b) { continue }
+    if ($b -eq 'H') { $nPlant++ } elseif ($b -ne 'K') { $nDocs++ }
+  }
+  if (Test-Path $herrRaiz) {
+    foreach ($h in (Get-ChildItem $herrRaiz -Directory)) {
+      if (Get-ChildItem $h.FullName -File -Filter '*.html' | Where-Object Name -notlike '_*' | Select-Object -First 1) { $nHerr++ }
+    }
+  }
+  @{ '{{N_DOCUMENTOS}}' = "$nDocs"; '{{N_PLANTILLAS}}' = "$nPlant"; '{{N_HERRAMIENTAS}}' = "$nHerr" }
+}
+
 # ---- Índice de la biblioteca (sustituye al antiguo Master Print Pack) ----
 # Se genera como Markdown temporal y pasa por el mismo proceso que el resto: html/<idioma>/index.html (sin PDF).
 function Nuevo-Indice([string]$lang) {
@@ -627,7 +646,11 @@ foreach ($lang in $Idiomas) {
     $body = [regex]::Replace($body, '<!--\s*figura:\s*([\w-]+)\s*-->', {
       param($c)
       $ruta = $compDirs | ForEach-Object { Join-Path $_ "$($c.Groups[1].Value).html" } | Where-Object { Test-Path $_ } | Select-Object -First 1
-      if ($ruta) { (Get-Content $ruta -Raw -Encoding utf8).Replace('SEVEN-G · SEACHAD', "$($cfg.marca) · SEACHAD") } else { Write-Warning "Componente no encontrado: $($c.Groups[1].Value) en $($compDirs -join ' ; ')"; $c.Value }
+      if ($ruta) {
+        $comp = (Get-Content $ruta -Raw -Encoding utf8).Replace('SEVEN-G · SEACHAD', "$($cfg.marca) · SEACHAD")
+        if ($comp.Contains('{{N_')) { $rec = Recuentos-Biblioteca $lang; foreach ($k in $rec.Keys) { $comp = $comp.Replace($k, $rec[$k]) } }
+        $comp
+      } else { Write-Warning "Componente no encontrado: $($c.Groups[1].Value) en $($compDirs -join ' ; ')"; $c.Value }
     })
     $script:hayMermaid = $false
     $body = [regex]::Replace($body, '(?s)(?:<!--\s*grafico:\s*(.*?)-->\s*)?(?:<pre><code class="language-mermaid">(.*?)</code></pre>|<pre class="mermaid">(.*?)</pre>)', {

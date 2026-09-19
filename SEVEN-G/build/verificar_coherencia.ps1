@@ -176,6 +176,27 @@ try {
   }
   if (-not $mapaMal) { Ok 'mapa de uso del documento 00 completo en ES y EN, con todas sus anclas' }
 
+  # el documento 00 (ES/EN) abre con el inicio rápido (D74): sección 0 antes de la 1, con la figura de lo que se lleva sin coste
+  # (índice, plantillas, las cinco aplicaciones y la licencia enlazados) y sin marcadores {{N_…}} sin sustituir
+  Write-Host '1i. Inicio rápido del documento 00'
+  $inicioMal = 0
+  foreach ($lang in 'es', 'en') {
+    $f = Join-Path $repo "SEVEN-G\html\$lang\00_SEVEN-G_Que_es_y_para_que_sirve.html"
+    if (-not (Test-Path $f)) { continue }
+    $html00 = [IO.File]::ReadAllText($f)
+    $idInicio = if ($lang -eq 'es') { 'inicio-rapido-quick-start' } else { 'quick-start' }
+    $idUno = if ($lang -eq 'es') { 'que-significa-seven-g' } else { 'what-seven-g-means' }
+    $pInicio = $html00.IndexOf("<h2 id=""$idInicio"""); $pFigura = $html00.IndexOf('<figure class="grafico inicio-rapido">'); $pUno = $html00.IndexOf("<h2 id=""$idUno""")
+    if ($pInicio -lt 0 -or $pFigura -lt $pInicio -or $pUno -lt $pFigura) { Mal "00 [$lang]: falta el inicio rápido (sección 0 con <!-- figura: inicio-rapido -->) antes de la sección 1"; $inicioMal++; continue }
+    if ($html00 -match '\{\{N_[A-Z]+\}\}') { Mal "00 [$lang]: quedan recuentos sin sustituir ({{N_…}}) en el inicio rápido"; $inicioMal++ }
+    $figura = [regex]::Match($html00, '(?s)<figure class="grafico inicio-rapido">.*?</figure>').Value
+    foreach ($dest in 'index.html"', 'index.html#h-', 'T01_registro_iniciativas/', 'T11_calculadora_valor/', 'T14_indice_transformacion/', 'T15_diagnostico_madurez/', 'T17_panel_consejo/', '93_SEVEN-G_Licencia_uso_y_citacion.html') {
+      if (-not $figura.Contains($dest)) { Mal "00 [$lang]: el inicio rápido no enlaza $dest"; $inicioMal++ }
+    }
+    if ($figura -notmatch 'CC BY 4\.0' -or $figura -notmatch 'MIT') { Mal "00 [$lang]: el inicio rápido no indica las licencias (CC BY 4.0 y MIT)"; $inicioMal++ }
+  }
+  if (-not $inicioMal) { Ok 'inicio rápido del documento 00 completo en ES y EN' }
+
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
   $publicables = @(Get-Item (Join-Path $repo 'index.html'), (Join-Path $repo 'en\index.html'))

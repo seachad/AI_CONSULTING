@@ -1,0 +1,80 @@
+<figure class="grafico inicio-rapido">
+<style>
+.inicio-rapido { font-family: var(--sans); }
+.inicio-rapido a { text-decoration: none; }
+.ir { display: grid; gap: 14px; font-size: 14px; line-height: 1.4; color: var(--tinta); }
+.ir-kit { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+.ir-caja { background: var(--papel-2); border: 1px solid var(--regla); border-top: 4px solid var(--oxford); padding: 10px 12px 12px; display: grid; gap: 6px; align-content: start; }
+.ir-caja.p { border-top-color: var(--claret); }
+.ir-caja.t { border-top-color: var(--teal); }
+.ir-caja > b { font: 600 40px/1 var(--serif); color: var(--oxford); }
+.ir-caja.p > b { color: var(--claret); }
+.ir-caja.t > b { color: var(--teal); }
+.ir-caja > strong { font-size: 15px; color: var(--negro); }
+.ir-caja > span { color: var(--tinta-2); font-size: 13.5px; }
+.ir-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.ir-chips a { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 6px; border: 1px solid var(--regla); background: var(--papel); color: var(--oxford); }
+.ir-caja.p .ir-chips a { color: var(--claret); }
+.ir-caja.t .ir-chips a { color: #fff; background: var(--teal); border-color: var(--teal); }
+.ir-chips a:hover { border-color: var(--oxford); background: var(--papel-3); }
+.ir-caja.t .ir-chips a:hover { background: var(--oxford); border-color: var(--oxford); }
+:root[data-theme="noche"] .ir-caja.t .ir-chips a { color: #1a1817; }
+.ir-lic { border: 2px solid var(--negro); padding: 10px 12px; display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: center; }
+.ir-lic > b { font: 600 34px/1 var(--serif); color: var(--claret); white-space: nowrap; }
+.ir-lic > div { font-size: 13.5px; color: var(--tinta-2); }
+.ir-lic > div strong { color: var(--negro); }
+.ir-lic a { color: var(--oxford); font-weight: 600; }
+.ir-cab { font: 700 12px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); border-top: 2px solid var(--negro); padding-top: 8px; }
+.ir-pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+.ir-paso { border-left: 3px solid var(--velvet); padding: 2px 0 2px 10px; font-size: 13.5px; color: var(--tinta-2); }
+.ir-paso > b { display: block; margin-bottom: 4px; font-size: 15px; color: var(--velvet); }
+.ir-paso a { color: var(--oxford); font-weight: 600; }
+@media (max-width: 560px) { .ir-lic { grid-template-columns: 1fr; } }
+@media print {
+  .inicio-rapido { break-inside: avoid; }
+  .ir { font-size: 8pt; gap: 7px; }
+  .ir-kit, .ir-pasos { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .ir-caja { padding: 5px 7px 6px; gap: 3px; }
+  .ir-caja > b { font-size: 20pt; }
+  .ir-caja > strong { font-size: 8.5pt; }
+  .ir-caja > span, .ir-lic > div, .ir-paso { font-size: 7.4pt; }
+  .ir-chips a { font-size: 6.6pt; padding: 0 3px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .ir-lic { padding: 5px 7px; }
+  .ir-lic > b { font-size: 17pt; }
+  .ir-cab { font-size: 6.6pt; padding-top: 4px; }
+  .ir-paso > b { font-size: 8.5pt; }
+}
+</style>
+  <div class="g-titulo">SEVEN-G en cinco minutos: qué se lleva, gratis y modificable</div>
+  <div class="g-sub">Todo lo que aparece aquí está publicado, se abre o se descarga sin registro y puede adaptarse a cada compañía.</div>
+  <div class="ir">
+
+    <div class="ir-kit">
+      <div class="ir-caja"><b>{{N_DOCUMENTOS}}</b><strong>documentos</strong>
+        <span>El método completo: estrategia y cartera, ciclo de vida con puertas de decisión, gobierno, riesgo y cumplimiento, medición del valor, personas, datos, operación y consejo. En HTML y PDF, en español y en inglés.</span>
+        <div class="ir-chips"><a href="index.html">Índice de la biblioteca</a><a href="01_SEVEN-G_Metodologia_fundacional.html">01 Metodología</a><a href="90_SEVEN-G_Guia_de_implantacion.html">90 Guía de implantación</a></div>
+      </div>
+      <div class="ir-caja p"><b>{{N_PLANTILLAS}}</b><strong>plantillas editables en Word</strong>
+        <span>Una por cada evidencia del ciclo de vida y por cada registro, informe y decisión de la compañía, el consejo, el cumplimiento, los proveedores y la auditoría. Se descargan, se rellenan y se cambian.</span>
+        <div class="ir-chips"><a href="index.html#h-plantillas">Todas las plantillas</a><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01 Carta de la iniciativa</a></div>
+      </div>
+      <div class="ir-caja t"><b>{{N_HERRAMIENTAS}}</b><strong>aplicaciones listas para usar</strong>
+        <span>Se abren en el navegador, sin instalación ni servidor; los datos se guardan en ficheros de la propia compañía (JSON y CSV). Incluyen datos de ejemplo ficticios para probarlas.</span>
+        <div class="ir-chips"><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Registro de iniciativas, con inventario, puertas, riesgos y consejo">T01 Registro de iniciativas</a><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Calculadora de hipótesis de valor y de costes por caso">T11 Valor y costes</a><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Calculadora del índice de transformación">T14 Índice de transformación</a><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Diagnóstico de madurez">T15 Madurez</a><a href="../../herramientas/T17_panel_consejo/index.html" title="Panel de IA para el consejo">T17 Panel del consejo</a></div>
+      </div>
+    </div>
+
+    <div class="ir-lic"><b>0 €</b>
+      <div><strong>Sin licencias, cuotas ni registro.</strong> Los contenidos se publican con licencia CC BY 4.0 y el código de las herramientas con licencia MIT: se pueden usar, copiar, modificar e integrar en la metodología propia, también con fines comerciales. La única condición es citar la autoría (Fernando García · SEACHAD) e indicar si se han hecho cambios. <a href="93_SEVEN-G_Licencia_uso_y_citacion.html">Licencia, uso y citación (93)</a></div>
+    </div>
+
+    <div class="ir-cab">Tres formas de empezar, según el tiempo disponible</div>
+    <div class="ir-pasos">
+      <div class="ir-paso"><b>5 minutos</b>Leer esta sección y recorrer el <a href="#que-significa-seven-g">diagrama de flujo y el mapa de uso</a> de la sección 1: qué pasa en cada fase y qué se decide en cada puerta.</div>
+      <div class="ir-paso"><b>30 minutos</b>Abrir el <a href="../../herramientas/T01_registro_iniciativas/registro.html">registro de iniciativas de ejemplo</a> y el <a href="../../herramientas/T17_panel_consejo/index.html">panel del consejo</a> generado con él, y responder al <a href="../../herramientas/T15_diagnostico_madurez/madurez.html">diagnóstico de madurez</a> con la situación real de la compañía.</div>
+      <div class="ir-paso"><b>90 días</b>Seguir el <a href="90_SEVEN-G_Guia_de_implantacion.html#plan-de-90-dias">plan de implantación de 90 días</a> o, en una compañía mediana y no regulada, la <a href="90_SEVEN-G_Guia_de_implantacion.html#2-4-ruta-minima-en-alcance-lite">ruta mínima en alcance Lite</a>.</div>
+    </div>
+
+  </div>
+  <div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div>
+</figure>

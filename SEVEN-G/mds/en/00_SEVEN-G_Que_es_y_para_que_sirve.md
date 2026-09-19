@@ -18,6 +18,52 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
+## 0. Quick start
+
+**SEVEN-G** (*Seven-phase Enterprise Value & Governance*) is a complete method, **free of charge and modifiable**, that lets a company implement, govern and measure its artificial intelligence by itself —enterprise self-consulting supported by AI— and answer, with evidence, whether it is transforming itself or just becoming more efficient. This section takes five minutes to read and serves a single purpose: **deciding whether it is worth reading on**.
+
+**What it does, in four ideas**
+
+1. **It organises the company's AI as a portfolio**, not as a list of projects: each initiative is registered, and its phase, its cost, the value expected from it and its accountable owner are known.
+2. **It places decision gates between phases.** Moving forward requires results and verified documentation; otherwise the initiative iterates, pivots or stops, and the reason is recorded.
+3. **It separates who decides, who builds and who controls**, and translates regulation (EU AI Act, GDPR, DORA, NIS2, ISO/IEC 42001) into specific phases, roles and evidence.
+4. **It measures value in money and with a status** —validated, declared or estimated— and tells the board, with eight observable signals, whether the company is transforming itself or just becoming more efficient.
+
+**What you get, at no cost**
+
+SEVEN-G is not a brochure that ends in a sales proposal: **the working material is here, in full**. The documents explain the method; the templates are the deliverables, ready to be filled in; the tools are applications that work with each company's data. Everything can be used as it is, trimmed, extended, renamed or built into the methodology that the company or its consultancy already uses, with a single condition: credit the author and indicate the changes.
+
+<!-- figura: inicio-rapido -->
+
+> **Why it matters.** Most of the cost of bringing order to AI lies not in understanding what has to be done, but in producing the instruments: policies, minutes, registers, checklists, dashboards. Starting from complete material, which can be modified without asking for permission, lets the effort go into deciding rather than into formatting, and makes it possible to check in an afternoon —with the sample data— whether the approach fits the company before committing anyone.
+
+**Is it useful for your company?**
+
+| It is probably useful if… | It is probably not useful, or not yet, if… |
+|---|---|
+| You already have AI initiatives —pilots, generative assistants, models, agents— and nobody can say with evidence **how much they cost, how much they contribute and who is accountable** for each one. | You are looking for a technical guide to **build models or choose technology**. SEVEN-G governs and measures; for building, it refers to [document 53](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) and to the SPAD methodology. |
+| The board or senior management ask about AI and receive an **inventory of technical projects** instead of business decisions. | You are looking for a **certification or a seal**. There is none: the declaration of application is a self-declaration that can be verified by audit. |
+| There are **many pilots and few use cases in production**, and no rule for stopping what does not work. | You expect **legal advice** or a guarantee of compliance. The framework maps obligations to evidence, but each company is responsible for its own compliance. |
+| You have to **demonstrate compliance** with evidence rather than statements. | You only have one or two trials with no budget and no intention of taking them to production. Start with the acceptable use policy ([document 31](31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html)) and the AI system inventory (T02), and come back when there is a portfolio to govern. |
+| You are a **medium-sized company** with no AI team: the Lite scope works with the executive committee, one part-time person and an external auditor. | **Nobody in management is going to own the decisions.** The framework requires a sponsor for each initiative and a real ability to stop; without that, it only produces documents. |
+| You are a **consultant or an in-house lead** and need a complete method that you can adapt and apply with your own way of working, citing the source ([document 91](91_SEVEN-G_Guia_para_consultores.html)). | |
+
+**What it asks in return.** It costs no money, but it does take discipline: someone to drive it, an initiative register kept up to date and decisions taken with the evidence on the table. Adoption can be **modular** —starting only with the register, with the decision gates, with value measurement or with the board dashboard— and be extended later. The implementation guide ([document 90](90_SEVEN-G_Guia_de_implantacion.html)) proposes a 90-day plan and a minimum path for medium-sized companies.
+
+**Where to go next, depending on who you are**
+
+| If you are… | Continue with… |
+|---|---|
+| A member of the board or of senior management | Section 5 of this page (transforming or just becoming more efficient), the [board conversation guide](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) and the sample board dashboard (T17). |
+| An AI, data or technology lead | The [foundational methodology](01_SEVEN-G_Metodologia_fundacional.html), the [phase manuals](20_SEVEN-G_Manuales_de_fase.html) and the initiative register (T01). |
+| Risk, compliance, data protection or audit | The [regulatory mapping](34_SEVEN-G_Mapeo_regulatorio.html), the [AI risk methodology](33_SEVEN-G_Metodologia_de_riesgos_de_IA.html) and the [AI audit framework](38_SEVEN-G_Marco_de_auditoria_de_IA.html). |
+| Finance or management control | The [value measurement rules](40_SEVEN-G_Reglas_de_medicion_del_valor.html) and the value and cost calculator (T11). |
+| A consultant or the person in charge of implementing the framework | The [implementation guide](90_SEVEN-G_Guia_de_implantacion.html), the [guide for consultants](91_SEVEN-G_Guia_para_consultores.html) and the [application cases](92_SEVEN-G_Casos_de_aplicacion.html). |
+
+The rest of this page develops the above in detail: what SEVEN-G means and how it is followed (section 1), the problem it solves (2), what it helps with (3), how it is built (4), how it tells transformation from efficiency (5) and the rules it uses to measure value (6).
+
+---
+
 ## 1. What SEVEN-G means
 
 SEVEN-G means **Seven-phase Enterprise Value & Governance**: one enabling phase 0 and seven value phases (1-7), with governance applied across all of them.

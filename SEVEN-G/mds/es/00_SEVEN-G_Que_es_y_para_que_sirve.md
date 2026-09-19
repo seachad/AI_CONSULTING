@@ -18,6 +18,52 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
+## 0. Inicio rápido (Quick Start)
+
+**SEVEN-G** (*Seven-phase Enterprise Value & Governance*) es un método completo, **gratuito y modificable**, para que una compañía implante, gobierne y mida su inteligencia artificial por sí misma —autoconsultoría empresarial apoyada en IA— y pueda responder con evidencia si se está transformando o solo está siendo más eficiente. Esta sección se lee en cinco minutos y sirve para una sola cosa: **decidir si merece la pena seguir leyendo**.
+
+**Qué hace, en cuatro ideas**
+
+1. **Ordena la IA de la compañía como una cartera**, no como una lista de proyectos: cada iniciativa se da de alta, se sabe en qué fase está, cuánto cuesta, qué valor se espera de ella y quién responde.
+2. **Pone puertas de decisión entre las fases.** Para avanzar hay que aportar resultados y documentación verificada; si no, la iniciativa se itera, se pivota o se para, y el motivo queda registrado.
+3. **Separa quién decide, quién construye y quién controla**, y traduce la regulación (Reglamento Europeo de IA, RGPD, DORA, NIS2, ISO/IEC 42001) a fases, roles y evidencias concretas.
+4. **Mide el valor en dinero y con estado** —validado, declarado o estimado— y le dice al consejo, con ocho señales observables, si la compañía se transforma o solo se eficienta.
+
+**Qué se lleva, sin coste**
+
+SEVEN-G no es un folleto que termina en una propuesta comercial: **el material de trabajo está aquí, entero**. Los documentos explican el método; las plantillas son los entregables ya preparados para rellenar; las herramientas son aplicaciones que funcionan con los datos de cada compañía. Todo puede usarse tal cual, recortarse, ampliarse, cambiarse de nombre o integrarse en la metodología que la compañía o su consultora ya utilicen, con una única condición: citar la autoría e indicar los cambios.
+
+<!-- figura: inicio-rapido -->
+
+> **Por qué importa.** La mayor parte del coste de poner orden en la IA no está en entender qué hay que hacer, sino en fabricar los instrumentos: políticas, actas, registros, listas de verificación, cuadros de mando. Partir de un material completo, que se puede modificar sin pedir permiso, permite dedicar el esfuerzo a decidir y no a maquetar, y comprobar en una tarde —con los datos de ejemplo— si el enfoque encaja con la compañía antes de comprometer a nadie.
+
+**¿Le sirve a su compañía?**
+
+| Probablemente le sirve si… | Probablemente no le sirve, o todavía no, si… |
+|---|---|
+| Ya tiene iniciativas de IA —pilotos, asistentes generativos, modelos, agentes— y nadie puede decir con evidencia **cuánto cuestan, cuánto aportan y quién responde** de cada una. | Busca una guía técnica para **construir modelos o elegir tecnología**. SEVEN-G gobierna y mide; para la construcción remite al documento 53 y a la metodología SPAD. |
+| El consejo o la dirección preguntan por la IA y reciben un **inventario de proyectos técnicos** en lugar de decisiones de negocio. | Busca una **certificación o un sello**. No existe: la declaración de aplicación es una autodeclaración verificable por auditoría. |
+| Hay **muchos pilotos y pocos casos en producción**, y ninguna regla para parar lo que no funciona. | Espera **asesoramiento jurídico** o una garantía de cumplimiento. El marco mapea obligaciones a evidencias, pero cada compañía responde de su propio cumplimiento. |
+| Tiene que **demostrar cumplimiento** con evidencias y no con declaraciones. | Solo tiene una o dos pruebas sin presupuesto ni intención de llevarlas a producción. Empiece por la política de uso aceptable (documento 31) y el inventario de sistemas (T02), y vuelva cuando haya una cartera que gobernar. |
+| Es una **compañía mediana** sin equipo de IA: el alcance Lite funciona con el comité de dirección, una persona a tiempo parcial y un auditor externo. | **Nadie en la dirección va a asumir las decisiones.** El marco exige un patrocinador por iniciativa y capacidad real de parar; sin eso, solo produce documentos. |
+| Es **consultor o responsable interno** y necesita un método completo que pueda adaptar y aplicar con su propia forma de trabajar, citando la fuente (documento 91). | |
+
+**Qué exige a cambio.** No cuesta dinero, pero sí disciplina: alguien que lo impulse, un registro de iniciativas al día y decisiones que se toman con evidencia delante. La adopción puede ser **modular** —empezar solo por el registro, por las puertas de decisión, por la medición del valor o por el panel del consejo— y ampliarse después. La guía de implantación (documento 90) propone un plan de 90 días y una ruta mínima para compañías medianas.
+
+**Por dónde seguir, según quién sea**
+
+| Si es… | Siga por… |
+|---|---|
+| Miembro del consejo o de la alta dirección | La sección 5 de esta página (transformarse o eficientarse), la [guía de conversación con el consejo](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) y el panel del consejo de ejemplo (T17). |
+| Responsable de IA, datos o tecnología | La [metodología fundacional](01_SEVEN-G_Metodologia_fundacional.html), los [manuales de fase](20_SEVEN-G_Manuales_de_fase.html) y el registro de iniciativas (T01). |
+| Riesgos, cumplimiento, protección de datos o auditoría | El [mapeo regulatorio](34_SEVEN-G_Mapeo_regulatorio.html), la [metodología de riesgos](33_SEVEN-G_Metodologia_de_riesgos_de_IA.html) y el [marco de auditoría](38_SEVEN-G_Marco_de_auditoria_de_IA.html). |
+| Dirección financiera o control de gestión | Las [reglas de medición del valor](40_SEVEN-G_Reglas_de_medicion_del_valor.html) y la calculadora de valor y costes (T11). |
+| Consultor o responsable de implantar el marco | La [guía de implantación](90_SEVEN-G_Guia_de_implantacion.html), la [guía para consultores](91_SEVEN-G_Guia_para_consultores.html) y los [casos de aplicación](92_SEVEN-G_Casos_de_aplicacion.html). |
+
+El resto de esta página desarrolla lo anterior con detalle: qué significa SEVEN-G y cómo se recorre (sección 1), qué problema resuelve (2), a qué ayuda (3), cómo está construido (4), cómo distingue la transformación de la eficiencia (5) y con qué reglas mide el valor (6).
+
+---
+
 ## 1. Qué significa SEVEN-G
 
 SEVEN-G significa **Seven-phase Enterprise Value & Governance**: una fase 0 habilitante y siete fases de valor (1–7), con gobierno transversal en todas ellas.
