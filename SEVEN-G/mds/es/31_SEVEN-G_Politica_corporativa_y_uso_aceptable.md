@@ -16,6 +16,8 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
+<!-- esencial: siempre | Política corporativa de IA y política de uso aceptable aprobadas, tratamiento de la IA de uso general y de la IA embebida («la IA que no es un proyecto») y alfabetización en IA de quienes usan o supervisan sistemas de IA. Los modelos de texto se adaptan a cada compañía. -->
+
 ## 1. Objeto y alcance
 
 Este documento ofrece a la compañía dos modelos de política que el consejo y la alta dirección pueden adaptar y aprobar en la etapa C2 del ciclo corporativo:

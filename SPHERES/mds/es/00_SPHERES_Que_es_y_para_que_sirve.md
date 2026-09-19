@@ -27,8 +27,6 @@ El nombre procede de la palabra inglesa *spheres* (esferas). No es un acrónimo:
 
 SPHERES responde a tres preguntas que cualquier consejo o comité de dirección debería poder contestar con claridad:
 
-> **Estado público y reutilización.** SPHERES se ofrece como marco de referencia abierto en desarrollo. No está liberado como entregable comercial definitivo ni como producto cerrado para clientes. El contenido, las plantillas y la explicación metodológica pueden reutilizarse por cualquier organización para uso metodológico, salvo pacto escrito y específico sobre adaptaciones o desarrollos propios; ningún cliente puede alegar exclusividad sobre la base del marco por el mero uso de SPHERES.
-
 | Pregunta | Qué aporta SPHERES | Dónde se desarrolla |
 |---|---|---|
 | **¿Dónde jugamos?** | Un mapa de nueve esferas que cubre toda la organización y obliga a elegir prioridades. | Documentos 02, 03 y 04 |
@@ -38,6 +36,8 @@ SPHERES responde a tres preguntas que cualquier consejo o comité de dirección 
 > **Por qué importa.** Sin un lenguaje común, cada área habla de la IA a su manera: tecnología habla de modelos, finanzas de ahorros, negocio de casos de uso y cumplimiento de riesgos. SPHERES da a todos el mismo mapa, de modo que el consejo puede comparar apuestas, detectar huecos y decidir dónde invertir sin tener que entender cómo funciona cada sistema.
 
 SPHERES es una **metodología de apoyo de SEVEN-G**, el marco de valor, gobierno y transformación con IA de SEACHAD. Constituye su componente A (mapa de impacto). Esta biblioteca explica el método con detalle y con ejemplos; las reglas operativas, los indicadores con fórmula y las herramientas están en SEVEN-G (sección 8).
+
+> **Titularidad y reutilización.** La propiedad intelectual de SPHERES pertenece a su autor, **Fernando García · SEACHAD**. Se ofrece como marco de referencia abierto, en desarrollo, para uso, adaptación y aprendizaje; no está liberado como entregable comercial definitivo ni como producto cerrado para clientes. Su reutilización y adaptación por cualquier organización quedan sujetas a la licencia de contenidos y de código de SEVEN-G (**CC BY 4.0** para los contenidos, **MIT** para el código; documento 93 de SEVEN-G), que exige reconocer la autoría e indicar los cambios. Usar SPHERES, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre su base a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.
 
 ---
 

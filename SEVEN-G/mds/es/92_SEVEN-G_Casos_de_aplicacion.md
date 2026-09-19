@@ -21,6 +21,8 @@
 
 ---
 
+<!-- esencial: consulta | Casos de aplicación ficticios, de compañías grandes y medianas, con iniciativas Lite y Enterprise. Se leen como ejemplo; no crean reglas. -->
+
 ## 1. Objeto y alcance
 
 Este documento muestra, con ocho casos ficticios, cómo se aplican en la práctica las piezas de SEVEN-G: diagnóstico de madurez, índice de transformación, decisiones del consejo, recorrido de las iniciativas por sus *gates*, medición del valor con fórmulas y estados, paradas y retiradas.

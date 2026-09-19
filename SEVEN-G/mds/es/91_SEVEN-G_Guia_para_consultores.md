@@ -16,6 +16,8 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
+<!-- esencial: condicional | Disparador: la compañía contrata acompañamiento externo o un profesional aplica SEVEN-G para terceros. Fija modelos de acompañamiento, independencia y transferencia para evitar la dependencia del consultor. -->
+
 ## 1. Objeto y alcance
 
 Esta guía se dirige a quien aplica SEVEN-G **como tercero** en una organización: consultoras, firmas de auditoría, asesores independientes, consejeros o asesores con experiencia en IA y equipos internos que prestan servicio a otras sociedades de un mismo grupo.

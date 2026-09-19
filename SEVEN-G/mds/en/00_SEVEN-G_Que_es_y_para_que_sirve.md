@@ -64,6 +64,8 @@ The rest of this page develops the above in detail: what SEVEN-G means and how i
 
 ---
 
+<!-- esencial: siempre | Initial reading for anyone who is going to use the framework. Sections 1 to 6 are enough: what it is, what problem it solves, how it is built (spheres, corporate cycle, lifecycle with gates, governance and measurement) and the ten value measurement rules. -->
+
 ## 1. What SEVEN-G means
 
 SEVEN-G means **Seven-phase Enterprise Value & Governance**: one enabling phase 0 and seven value phases (1-7), with governance applied across all of them.
@@ -82,9 +84,9 @@ Both are legitimate. The problem arises when they are confused: when a portfolio
 
 The practical goal is for boards, senior management and control bodies to understand and measure the contribution of enterprise intelligence in their company, understand and contain its risks, and decide with portfolio discipline which initiatives deserve investment to improve efficiency, transform capabilities and create measurable impact on P&L.
 
-SEVEN-G provides four things:
+> **Ownership and reuse.** The intellectual property of the SEVEN-G methodology — its documents, templates, criteria and tools — belongs to its author, **Fernando García · SEACHAD**. The framework is offered as an open reference for use, adaptation and learning, not as a closed commercial product or a version released to clients or markets: any organisation may reuse and adapt it, but that use is subject to the project's content and code licence (**CC BY 4.0** for content, **MIT** for code; document 93), which requires attribution and an indication of any changes made. Using SEVEN-G, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over the base methodology on any client, supplier or third party, except under a specific written agreement covering proprietary developments.
 
-> **Public status and reuse.** SEVEN-G is offered as an open methodological framework for reference, adaptation and learning. It does not constitute a closed commercial product or a version released to clients or markets. The content of the framework, its templates and its tools are reusable by any organisation unless a written and specific agreement sets different terms for modifications or proprietary developments; the mere use of the framework does not confer exclusivity or ownership rights over the base methodology on any client, supplier or third party.
+SEVEN-G provides four things:
 
 1. **A map of where and with what ambition** to use AI: nine spheres of impact and three ambition levels (Optimise, Augment, Transform).
 2. **A controlled lifecycle** for each initiative, with phases, auditable decision gates (*gates*) and a real ability to stop or retire.

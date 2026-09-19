@@ -21,6 +21,8 @@
 
 ---
 
+<!-- esencial: consulta | Fictitious application cases, from large and medium-sized companies, with Lite and Enterprise initiatives. They are read as examples; they create no rules. -->
+
 ## 1. Purpose and scope
 
 This document uses eight fictitious cases to show how the components of SEVEN-G are applied in practice: maturity diagnosis, transformation index, board decisions, the progression of initiatives through their *gates*, value measurement with formulas and statuses, stops and retirements.

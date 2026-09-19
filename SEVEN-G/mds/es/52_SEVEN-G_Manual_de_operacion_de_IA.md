@@ -16,6 +16,8 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
+<!-- esencial: siempre | Desde que una iniciativa entra en producción: manual de operación, monitorización y alertas, gestión de cambios y de incidentes, plan de reversión y revisión de continuidad R6 (semestral en Lite, trimestral en Enterprise). La sección 14 resume qué cambia entre Lite y Enterprise. -->
+
 ## 1. Objeto y alcance
 
 Este documento desarrolla la **fase 6 · Operación y gobierno** del ciclo de vida (01 §6.8) y fija cómo se operan los sistemas de IA en producción para que **sigan funcionando, aportando valor y bajo control**. Es genérico: cada sistema concreta lo que aquí se establece en su manual de operación (P24).

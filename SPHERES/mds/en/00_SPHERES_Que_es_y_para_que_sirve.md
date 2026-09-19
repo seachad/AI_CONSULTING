@@ -27,8 +27,6 @@ The name comes from the English word *spheres*. It is not an acronym: it describ
 
 SPHERES answers three questions that any board or management committee should be able to answer clearly:
 
-> **Public status and reuse.** SPHERES is offered as an open reference framework in development. It is not released as a final commercial deliverable or a closed product for clients. The content, templates and methodological explanation may be reused by any organisation for methodological use, unless a written and specific agreement sets different terms for modifications or proprietary developments; no client may claim exclusivity over the base framework by the mere use of SPHERES.
-
 | Question | What SPHERES contributes | Where it is developed |
 |---|---|---|
 | **Where do we play?** | A map of nine spheres that covers the whole organisation and forces priorities to be chosen. | Documents 02, 03 and 04 |
@@ -38,6 +36,8 @@ SPHERES answers three questions that any board or management committee should be
 > **Why it matters.** Without a common language, each area talks about AI in its own way: technology talks about models, finance about savings, the business about use cases and compliance about risks. SPHERES gives everyone the same map, so that the board can compare bets, detect gaps and decide where to invest without having to understand how each system works.
 
 SPHERES is a **supporting methodology of SEVEN-G**, the SEACHAD framework for value, governance and transformation with AI. It constitutes its component A (impact map). This library explains the method in detail and with examples; the operating rules, the indicators with a formula and the tools are in SEVEN-G (section 8).
+
+> **Ownership and reuse.** The intellectual property of SPHERES belongs to its author, **Fernando García · SEACHAD**. It is offered as an open reference framework, in development, for use, adaptation and learning; it is not released as a final commercial deliverable or a closed product for clients. Its reuse and adaptation by any organisation are subject to SEVEN-G's content and code licence (**CC BY 4.0** for content, **MIT** for code; SEVEN-G document 93), which requires attribution and an indication of any changes made. Using SPHERES, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over its base to any client, supplier or third party, except under a specific written agreement covering proprietary developments.
 
 ---
 
