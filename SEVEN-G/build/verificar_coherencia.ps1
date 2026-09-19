@@ -13,6 +13,7 @@
     1e. Ninguna herramienta (Tnn) citada en los HTML generados queda sin enlace (D64).
     1f. Los documentos de SEVEN-G no se presentan como provisionales (D40) y la adaptación Lite del 30 no contradice a 01 (D66).
     1g. El navegador de documentos de cada página lista toda su biblioteca (una generación con -Filter no lo recorta).
+    1h. El documento 00 (ES/EN) lleva el mapa de uso navegable con sus fases, puertas y listas enlazadas y anclas existentes (D72).
     5. T01: registro.html coincide con lo que genera build_registro.ps1 (no se ha editado a mano ni está desfasado, D43).
        T14: indice.html coincide con lo que genera build_indice.ps1 (D64).
        T06: los riesgos de demostración tienen niveles coherentes con probabilidad × impacto y aceptaciones del órgano de su nivel (D65).
@@ -149,6 +150,27 @@ try {
   foreach ($x in ($navCortos | Select-Object -First 10)) { Mal "navegador incompleto: $x. Generar sin -Filter" }
   if ($navCortos.Count -gt 10) { Mal "… y $($navCortos.Count - 10) páginas más con el navegador incompleto" }
   if (-not $navCortos.Count) { Ok 'todas las páginas listan su biblioteca completa en el navegador' }
+
+  # el documento 00 (ES/EN) lleva el mapa de uso navegable (D72): las ocho fases enlazan a su manual (20), las ocho puertas a sus
+  # criterios (21) y a su lista (22), y cada ancla que apunta a otro documento existe en él (1c solo comprueba el fichero)
+  Write-Host '1h. Mapa de uso del documento 00'
+  $mapaMal = 0
+  foreach ($lang in 'es', 'en') {
+    $f = Join-Path $repo "SEVEN-G\html\$lang\00_SEVEN-G_Que_es_y_para_que_sirve.html"
+    if (-not (Test-Path $f)) { continue }
+    $mapa = [regex]::Match([IO.File]::ReadAllText($f), '(?s)<figure class="grafico mapa-uso">.*?</figure>').Value
+    if (-not $mapa) { Mal "00 [$lang]: falta el mapa de uso (<!-- figura: mapa-uso -->)"; $mapaMal++; continue }
+    $hrefs = @([regex]::Matches($mapa, 'href="([^"]+)"') | ForEach-Object { $_.Groups[1].Value })
+    foreach ($par in @(@('20_', 8), @('21_', 8), @('22_', 8))) {
+      $n = @($hrefs | Where-Object { $_ -like "$($par[0])*#*" } | Select-Object -Unique).Count
+      if ($n -lt $par[1]) { Mal "00 [$lang]: el mapa de uso enlaza $n secciones de $($par[0])* (se esperan $($par[1]))"; $mapaMal++ }
+    }
+    foreach ($h in ($hrefs | Where-Object { $_ -match '^[^#]+\.html#[^/]' } | Select-Object -Unique)) {
+      $destino = Join-Path (Split-Path $f) ($h -split '#')[0]
+      if ((Test-Path $destino) -and [IO.File]::ReadAllText($destino) -notmatch ('id="' + [regex]::Escape(($h -split '#', 2)[1]) + '"')) { Mal "00 [$lang]: ancla inexistente en el mapa de uso: $h"; $mapaMal++ }
+    }
+  }
+  if (-not $mapaMal) { Ok 'mapa de uso del documento 00 completo en ES y EN, con todas sus anclas' }
 
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'

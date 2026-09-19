@@ -1,0 +1,184 @@
+<figure class="grafico mapa-uso">
+<style>
+.mapa-uso { --mu-borde: var(--regla); font-family: var(--sans); }
+.mapa-uso a { text-decoration: none; }
+.mapa-uso, .mapa-uso a { overflow-wrap: normal; word-break: normal; hyphens: auto; }
+.mu { min-width: 940px; display: grid; gap: 10px; font-size: 13px; line-height: 1.3; color: var(--tinta); }
+.mu-banda { border-top: 2px solid var(--negro); padding-top: 8px; }
+.mu-cab { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 16px; margin-bottom: 8px; }
+.mu-cab b { font: 700 12px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); }
+.mu-cab span { font-size: 12.5px; color: var(--tinta-2); }
+.mu-corp { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.mu-etapa { background: var(--papel-2); border: 1px solid var(--mu-borde); border-top: 4px solid var(--oxford); padding: 7px 8px 8px; display: grid; gap: 5px; align-content: start; }
+.mu-etapa > a:first-child { font-weight: 700; font-size: 14px; color: var(--negro); }
+.mu-etapa > a:first-child:hover { color: var(--oxford); }
+.mu-etapa i { font-style: normal; color: var(--tinta-2); font-size: 12.5px; }
+.mu-puente { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12.5px; color: var(--tinta-2); }
+.mu-puente div { border-left: 3px solid var(--claret); padding: 2px 8px; }
+.mu-puente div + div { border-left-color: var(--teal); }
+.mu-ciclo { display: grid; grid-template-columns: 96px repeat(8, 1fr); gap: 4px; }
+.mu-rot { font: 700 11px/1.2 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); padding: 6px 4px 0 0; border-top: 1px solid var(--regla-2); }
+.mu-cel { border-top: 1px solid var(--regla-2); padding: 5px 2px 6px; display: flex; flex-wrap: wrap; gap: 3px; align-content: flex-start; }
+.mu-emb { text-align: center; font-weight: 700; font-size: 12px; padding: 5px 4px; background: color-mix(in srgb, var(--oxford) 12%, transparent); border: 1px dashed var(--oxford); color: var(--oxford); }
+.mu-emb.uso { background: color-mix(in srgb, var(--teal) 14%, transparent); border-color: var(--teal); color: var(--teal); }
+.mu-emb small { display: block; font-weight: 500; color: var(--tinta-2); }
+.mu-fase { display: block; color: #fff; padding: 6px 7px 7px; min-height: 58px; }
+.mu-fase small { display: block; font-size: 11px; opacity: .8; font-weight: 700; }
+.mu-fase b { display: block; font-size: 13.5px; line-height: 1.2; }
+.mu-fase:hover, .mu-fase:focus-visible { outline: 2px solid var(--resaltado); outline-offset: 1px; }
+.mu-gate { width: 100%; display: grid; gap: 3px; }
+.mu-gate > a:first-child { display: flex; align-items: flex-start; gap: 6px; font-weight: 700; color: var(--negro); }
+.mu-gate > a:first-child::before { content: ""; width: 9px; height: 9px; flex: none; margin-top: .3em; background: var(--negro); transform: rotate(45deg); }
+.mu-gate.parada > a:first-child, .mu-gate.parada > a:first-child::before { color: var(--claret); background: none; }
+.mu-gate.parada > a:first-child::before { background: var(--claret); }
+.mu-gate.consejo em { font-style: normal; font-size: 11px; color: var(--velvet); font-weight: 700; }
+.mu-gate > a:first-child:hover { color: var(--oxford); }
+.mu-lv { font-size: 11.5px; color: var(--tinta-2); }
+.mu-c, .mu-p, .mu-t { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 2px 5px; border: 1px solid var(--mu-borde); background: var(--papel); color: var(--oxford); white-space: nowrap; }
+.mu-p { color: var(--claret); }
+.mu-t { color: #fff; background: var(--teal); border-color: var(--teal); }
+.mu-c:hover, .mu-p:hover, .mu-lv:hover { border-color: var(--oxford); background: var(--papel-3); }
+.mu-t:hover { background: var(--oxford); border-color: var(--oxford); }
+:root[data-theme="noche"] .mu-t, :root[data-theme="noche"] .mu-fase { color: #1a1817; }
+.mu-reglas { display: grid; grid-template-columns: 96px 1fr; gap: 4px; font-size: 12.5px; color: var(--tinta-2); }
+.mu-reglas div { border-top: 1px solid var(--regla-2); padding-top: 5px; }
+.mu-reglas a { color: var(--oxford); }
+.mu-trans { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.mu-grupo { border-left: 3px solid var(--velvet); padding: 2px 0 2px 8px; display: flex; flex-wrap: wrap; gap: 3px; align-content: flex-start; }
+.mu-grupo b { width: 100%; font-size: 12px; color: var(--negro); }
+.mu-leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--tinta-2); margin-top: 10px; }
+.mu-leyenda i { font-style: normal; }
+.mu-leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+@media print {
+  .mapa-uso { break-before: page; margin-top: 0; }
+  .mu { min-width: 0; font-size: 7pt; gap: 5px; }
+  .mu-ciclo { grid-template-columns: 66px repeat(8, 1fr); gap: 3px; }
+  .mu-reglas { grid-template-columns: 66px 1fr; }
+  .mu-cab b { font-size: 6.5pt; }
+  .mu-rot { font-size: 5.6pt; letter-spacing: .02em; }
+  .mu-gate > a:first-child { font-size: 6.8pt; gap: 4px; }
+  .mu-gate > a:first-child::before { width: 6px; height: 6px; }
+  .mu-gate.consejo em { font-size: 6.2pt; }
+  .mu-cab span, .mu-etapa i, .mu-puente, .mu-reglas, .mu-leyenda, .mu-lv { font-size: 6.8pt; }
+  .mu-etapa > a:first-child { font-size: 7.5pt; }
+  .mu-fase b { font-size: 6.8pt; }
+  .mu-fase { min-height: 0; padding: 4px 5px; }
+  .mu-fase small { font-size: 5.8pt; }
+  .mu-emb, .mu-grupo b { font-size: 6.5pt; }
+  .mu-c, .mu-p, .mu-t { font-size: 6.3pt; padding: 1px 3px; }
+  .mu-fase, .mu-t, .mu-gate > a:first-child::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .mapa-uso a { color: inherit; }
+  .mapa-uso .mu-fase, .mapa-uso .mu-t { color: #fff; }
+  .mapa-uso .mu-p { color: var(--claret); }
+  .mapa-uso .mu-c { color: var(--oxford); }
+}
+</style>
+  <div class="g-titulo">How SEVEN-G is used: phases, decision gates, documents, templates and tools</div>
+  <div class="g-sub">Navigable map of the framework. Each box takes you to its document, section, template or tool.</div>
+  <div class="g-lienzo">
+  <div class="mu">
+
+    <section class="mu-banda" aria-label="Company level: corporate cycle">
+      <div class="mu-cab"><b>Company level · Corporate cycle</b><span>Annual, with quarterly oversight · led by the board and senior management</span></div>
+      <div class="mu-corp">
+        <div class="mu-etapa"><a href="01_SEVEN-G_Metodologia_fundacional.html#5-1-stages">C1 · Diagnosis</a><i>Where are we?</i>
+          <div class="mu-cel"><a class="mu-c" href="11_SEVEN-G_Modelo_de_madurez.html" title="Maturity model">11 Maturity</a><a class="mu-c" href="12_SEVEN-G_Indice_de_transformacion.html" title="Transformation index">12 Index</a><a class="mu-c" href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="AI system inventory and regulatory classification">32 Inventory</a><a class="mu-p" href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html" title="C1 diagnosis report">P33</a><a class="mu-p" href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Maturity questionnaire and report">P34</a><a class="mu-t" href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Maturity diagnosis">T15</a><a class="mu-t" href="../../herramientas/T14_indice_transformacion/indice.html" title="Transformation index">T14</a></div></div>
+        <div class="mu-etapa"><a href="01_SEVEN-G_Metodologia_fundacional.html#5-1-stages">C2 · Direction</a><i>Where to play, with what ambition and risk appetite?</i>
+          <div class="mu-cel"><a class="mu-c" href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="AI thesis, ambition and risk appetite">13 Thesis</a><a class="mu-c" href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Sphere map and ambition levels">10 Spheres</a><a class="mu-c" href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Corporate AI policy and acceptable use policy">31 Policy</a><a class="mu-p" href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="AI thesis and risk appetite">P35</a></div></div>
+        <div class="mu-etapa"><a href="01_SEVEN-G_Metodologia_fundacional.html#5-1-stages">C3 · Portfolio</a><i>What do we fund, what do we stop and in what balance?</i>
+          <div class="mu-cel"><a class="mu-c" href="14_SEVEN-G_Gestion_de_cartera.html" title="Portfolio management">14 Portfolio</a><a class="mu-p" href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="C3 portfolio plan">P36</a><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html" title="Initiative register">T01</a></div></div>
+        <div class="mu-etapa"><a href="01_SEVEN-G_Metodologia_fundacional.html#5-1-stages">C4 · Oversight</a><i>Is what was decided being delivered?</i>
+          <div class="mu-cel"><a class="mu-c" href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Board pack">60 Board pack</a><a class="mu-c" href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Board conversation guide">61 Conversation</a><a class="mu-c" href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Recommendations and decisions register">62 Register</a><a class="mu-p" href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Quarterly board pack">P67</a><a class="mu-p" href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Board decisions register">P69</a><a class="mu-t" href="../../herramientas/T17_panel_consejo/index.html" title="Board AI dashboard">T17</a><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Board recommendations and decisions register">T18</a></div></div>
+        <div class="mu-etapa"><a href="01_SEVEN-G_Metodologia_fundacional.html#5-1-stages">C5 · Review</a><i>Have we progressed? Are we transforming?</i>
+          <div class="mu-cel"><a class="mu-c" href="11_SEVEN-G_Modelo_de_madurez.html" title="Maturity model">11 Maturity</a><a class="mu-c" href="12_SEVEN-G_Indice_de_transformacion.html" title="Transformation index">12 Index</a><a class="mu-p" href="plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="C5 annual review">P37</a><a class="mu-t" href="../../herramientas/T14_indice_transformacion/indice.html" title="Transformation index">T14</a><a class="mu-t" href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Maturity diagnosis">T15</a></div></div>
+      </div>
+    </section>
+
+    <div class="mu-puente">
+      <div><b>↓ C3 decides</b> which initiatives enter the lifecycle, with what ambition, intensity and budget.</div>
+      <div><b>↑ The initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>)</b> feeds oversight (C4), the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) and the transformation index (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>).</div>
+    </div>
+
+    <section class="mu-banda" aria-label="Initiative level: lifecycle with decision gates">
+      <div class="mu-cab"><b>Initiative level · Lifecycle with decision gates</b><span>Each initiative goes through phases 0 to 7 · manual for each phase in document 20</span></div>
+      <div class="mu-ciclo">
+        <div class="mu-rot">Funnel stage</div>
+        <a class="mu-emb" style="grid-column: span 2" href="#4-3-initiative-level-lifecycle-with-decision-gates">Proposed<small>phases 0 and 1</small></a>
+        <a class="mu-emb" href="#4-3-initiative-level-lifecycle-with-decision-gates">Value hypothesis<small>phase 2</small></a>
+        <a class="mu-emb" href="#4-3-initiative-level-lifecycle-with-decision-gates">Proof of concept<small>phase 3</small></a>
+        <a class="mu-emb" style="grid-column: span 2" href="#4-3-initiative-level-lifecycle-with-decision-gates">In development<small>phases 4 and 5</small></a>
+        <a class="mu-emb uso" style="grid-column: span 2" href="#4-3-initiative-level-lifecycle-with-decision-gates">In use<small>phases 6 and 7 · or disengaged</small></a>
+
+        <div class="mu-rot">Phase</div>
+        <a class="mu-fase" style="background:#1a1817" href="20_SEVEN-G_Manuales_de_fase.html#phase-0-context-and-constraints"><small>0 · ENABLING</small><b>Context and constraints</b></a>
+        <a class="mu-fase" style="background:#0a3d73" href="20_SEVEN-G_Manuales_de_fase.html#phase-1-opportunity-discovery"><small>1</small><b>Opportunity discovery</b></a>
+        <a class="mu-fase" style="background:#0f5499" href="20_SEVEN-G_Manuales_de_fase.html#phase-2-value-hypothesis"><small>2</small><b>Value hypothesis</b></a>
+        <a class="mu-fase" style="background:#990f3d" href="20_SEVEN-G_Manuales_de_fase.html#phase-3-feasibility-and-risk"><small>3 · STOP</small><b>Feasibility and risk</b></a>
+        <a class="mu-fase" style="background:#0b6a73" href="20_SEVEN-G_Manuales_de_fase.html#phase-4-solution-design"><small>4</small><b>Solution design</b></a>
+        <a class="mu-fase" style="background:#0d7680" href="20_SEVEN-G_Manuales_de_fase.html#phase-5-delivery-and-validation"><small>5</small><b>Delivery and validation</b></a>
+        <a class="mu-fase" style="background:#4a2a6b" href="20_SEVEN-G_Manuales_de_fase.html#phase-6-operation-and-governance"><small>6</small><b>Operation and governance</b></a>
+        <a class="mu-fase" style="background:#593380" href="20_SEVEN-G_Manuales_de_fase.html#phase-7-evolution-or-retirement"><small>7</small><b>Evolution or retirement</b></a>
+
+        <div class="mu-rot">Decision gate</div>
+        <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-1-g0-authorisation">G0 · Authorisation</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g0-authorisation">Checklist LV-G0</a></div></div>
+        <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-2-g1-opportunity">G1 · Opportunity</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g1-opportunity">Checklist LV-G1</a></div></div>
+        <div class="mu-cel"><div class="mu-gate consejo"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-3-g2-hypothesis">G2 · Hypothesis</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g2-hypothesis">Checklist LV-G2</a><em>Board if Transform</em></div></div>
+        <div class="mu-cel"><div class="mu-gate parada"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-4-g3-feasibility">G3 · Feasibility</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g3-feasibility">Checklist LV-G3</a></div></div>
+        <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-5-g4-design">G4 · Design</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g4-design">Checklist LV-G4</a></div></div>
+        <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-6-g5-go-live">G5 · Go-live</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g5-go-live">Checklist LV-G5</a><a class="mu-lv" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#multi-level-go-live-sign-off-g5">Multi-level sign-off</a></div></div>
+        <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-continuity-review">R6 · Continuity</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-r6-continuity-review">Checklist LV-R6</a></div></div>
+        <div class="mu-cel"><div class="mu-gate consejo"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">G7 · Scale or retire</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g7-scale-or-retire">Checklist LV-G7</a><em>Board if Transform</em></div></div>
+
+        <div class="mu-rot">Templates (evidence)</div>
+        <div class="mu-cel"><a class="mu-p" href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Initiative charter">P01</a><a class="mu-p" href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Context and constraints statement">P02</a><a class="mu-p" href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Role assignment record">P03</a><a class="mu-p" href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Intensity determination">P04</a><a class="mu-p" href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="AI system inventory record">P05</a></div>
+        <div class="mu-cel"><a class="mu-p" href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Opportunity portfolio and screening notes">P06</a><a class="mu-p" href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Sphere and ambition classification">P07</a><a class="mu-p" href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Use case record">P31</a></div>
+        <div class="mu-cel"><a class="mu-p" href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Sphere and ambition classification">P07</a><a class="mu-p" href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Value hypothesis canvas">P08</a><a class="mu-p" href="plantillas/P09_SEVEN-G_Linea_base.html" title="Baseline">P09</a></div>
+        <div class="mu-cel"><a class="mu-p" href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Intensity determination (review)">P04</a><a class="mu-p" href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Feasibility assessment">P10</a><a class="mu-p" href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Regulatory classification and impact assessments">P11</a><a class="mu-p" href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Risk matrix and register">P12</a><a class="mu-p" href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Mitigation and contingency plan">P13</a><a class="mu-p" href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="AI supplier assessment">P14</a></div>
+        <div class="mu-cel"><a class="mu-p" href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Architecture record">P15</a><a class="mu-p" href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Data and model lineage">P16</a><a class="mu-p" href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Governance and human oversight design">P17</a><a class="mu-p" href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Security design">P18</a><a class="mu-p" href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Rollback plan and test">P19</a><a class="mu-p" href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Adoption and capacity plan">P20</a></div>
+        <div class="mu-cel"><a class="mu-p" href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Updated risk register">P12</a><a class="mu-p" href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Rollback test">P19</a><a class="mu-p" href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Delivery report">P21</a><a class="mu-p" href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Validation and pilot results">P22</a><a class="mu-p" href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Go-live sign-off">P23</a></div>
+        <div class="mu-cel"><a class="mu-p" href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Operations manual">P24</a><a class="mu-p" href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Monitoring and alerting configuration">P25</a><a class="mu-p" href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Incident response plan">P26</a><a class="mu-p" href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Incident and change log">P27</a><a class="mu-p" href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Value realisation tracking">P28</a><a class="mu-p" href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html" title="R6 continuity review package">P65</a></div>
+        <div class="mu-cel"><a class="mu-p" href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Sphere and ambition classification (actual ambition)">P07</a><a class="mu-p" href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Value realisation tracking">P28</a><a class="mu-p" href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Scale or retire decision">P30</a></div>
+
+        <div class="mu-rot">Supporting documents</div>
+        <div class="mu-cel"><a class="mu-c" href="01_SEVEN-G_Metodologia_fundacional.html#application-intensity-lite-and-enterprise" title="Lite and Enterprise intensity">01 Intensity</a><a class="mu-c" href="30_SEVEN-G_Modelo_de_gobierno.html" title="Governance model">30 Roles</a><a class="mu-c" href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="AI system inventory and regulatory classification">32 Inventory</a></div>
+        <div class="mu-cel"><a class="mu-c" href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Sphere map and ambition levels">10 Spheres</a><a class="mu-c" href="14_SEVEN-G_Gestion_de_cartera.html#entry-of-initiatives-into-the-portfolio" title="Entry of initiatives into the portfolio">14 Entry</a></div>
+        <div class="mu-cel"><a class="mu-c" href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Value measurement rules">40 Measurement</a><a class="mu-c" href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Indicator catalogue">41 Indicators</a><a class="mu-c" href="12_SEVEN-G_Indice_de_transformacion.html" title="Transformation index: ambition criteria">12 Ambition</a></div>
+        <div class="mu-cel"><a class="mu-c" href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="AI risk methodology">33 Risks</a><a class="mu-c" href="34_SEVEN-G_Mapeo_regulatorio.html" title="Regulatory mapping">34 Regulation</a><a class="mu-c" href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="AI third parties and suppliers">36 Suppliers</a><a class="mu-c" href="42_SEVEN-G_Costes_de_IA.html" title="AI costs and allocation per use case">42 Costs</a></div>
+        <div class="mu-cel"><a class="mu-c" href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="AI and agent security">35 Security</a><a class="mu-c" href="51_SEVEN-G_Datos_y_conocimiento.html" title="Data and knowledge for AI">51 Data</a><a class="mu-c" href="23_SEVEN-G_Adopcion_y_cambio.html" title="Adoption and change in the initiative">23 Adoption</a></div>
+        <div class="mu-cel"><a class="mu-c" href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Building solutions with AI (SPAD)">53 Building</a><a class="mu-c" href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="AI audit framework">38 Audit</a></div>
+        <div class="mu-cel"><a class="mu-c" href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="AI operations manual">52 Operations</a><a class="mu-c" href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Nonconformities, AI incidents and remediation">37 Incidents</a><a class="mu-c" href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Benefits realisation">43 Benefits</a></div>
+        <div class="mu-cel"><a class="mu-c" href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Benefits realisation">43 Benefits</a><a class="mu-c" href="14_SEVEN-G_Gestion_de_cartera.html#retirement-procedure" title="Retirement procedure">14 Retirement</a></div>
+
+        <div class="mu-rot">Tools</div>
+        <div class="mu-cel"><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html" title="Initiative register: new initiative">T01</a><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="AI system inventory">T02</a><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html" title="Intensity determination (in the register record)">T04</a></div>
+        <div class="mu-cel"><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html" title="Ambition classifier (in the register record)">T05</a></div>
+        <div class="mu-cel"><a class="mu-t" href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Value hypothesis calculator">T11</a><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html" title="Ambition classifier (in the register record)">T05</a></div>
+        <div class="mu-cel"><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Risk matrix and register">T06</a><a class="mu-t" href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Costs per use case">T13</a></div>
+        <div class="mu-cel"><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Risk matrix and register">T06</a></div>
+        <div class="mu-cel"><a class="mu-t" href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Value hypothesis calculator (reconciliation)">T11</a></div>
+        <div class="mu-cel"><a class="mu-t" href="../../herramientas/T17_panel_consejo/index.html" title="Board AI dashboard">T17</a><a class="mu-t" href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="AI system inventory">T02</a></div>
+        <div class="mu-cel"><a class="mu-t" href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Value calculator: realisation">T11</a><a class="mu-t" href="../../herramientas/T17_panel_consejo/index.html" title="Board AI dashboard: cases in use and disengaged">T17</a></div>
+      </div>
+
+      <div class="mu-reglas">
+        <div class="mu-rot" style="border:0;padding-top:5px">At every gate</div>
+        <div><b>Dual validation</b> (results and verified documentation) and decision: Proceed · Proceed with conditions · Iterate · Pivot · Stop; at G7, Scale · Iterate · Retire (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#rules-common-to-all-gates">common rules</a>). Each decision is recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> with the <em>gate</em> manager <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>; the use case record <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> accompanies the initiative from phase 1 to phase 7. In Lite, G0–G2 and G4–G5 are grouped, but each gate is decided and recorded separately (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#3-4-grouped-gates-in-lite">grouped gates</a>). Iterate, pivot, stop, on hold and scale: <a href="20_SEVEN-G_Manuales_de_fase.html#transitions-between-phases">transitions between phases</a>.</div>
+      </div>
+    </section>
+
+    <section class="mu-banda" aria-label="Cross-cutting governance">
+      <div class="mu-cab"><b>G · Cross-cutting governance, present in every phase</b><span>Who decides, who builds and who controls; risk, compliance, measurement and people</span></div>
+      <div class="mu-trans">
+        <div class="mu-grupo"><b>Governance and control</b><a class="mu-c" href="30_SEVEN-G_Modelo_de_gobierno.html" title="Governance model">30 Governance</a><a class="mu-c" href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Corporate AI policy and acceptable use policy">31 Policy</a><a class="mu-c" href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="AI audit framework">38 Audit</a><a class="mu-p" href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Rules of procedure of the AI governance bodies">P38</a><a class="mu-p" href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Quarterly second-line report">P42</a></div>
+        <div class="mu-grupo"><b>Risk and compliance</b><a class="mu-c" href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="AI system inventory and regulatory classification">32</a><a class="mu-c" href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="AI risk methodology">33</a><a class="mu-c" href="34_SEVEN-G_Mapeo_regulatorio.html" title="Regulatory mapping">34</a><a class="mu-c" href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="AI and agent security">35</a><a class="mu-c" href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="AI third parties and suppliers">36</a><a class="mu-c" href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Nonconformities, AI incidents and remediation">37</a><a class="mu-p" href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Nonconformity register">P50</a></div>
+        <div class="mu-grupo"><b>Measurement and value</b><a class="mu-c" href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Value measurement rules">40</a><a class="mu-c" href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Indicator catalogue">41</a><a class="mu-c" href="42_SEVEN-G_Costes_de_IA.html" title="AI costs and allocation per use case">42</a><a class="mu-c" href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Benefits realisation">43</a><a class="mu-p" href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Benefits realisation plan">P62</a><a class="mu-p" href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" title="Consumption budget and cost reconciliation">P63</a></div>
+        <div class="mu-grupo"><b>People, data and operations</b><a class="mu-c" href="23_SEVEN-G_Adopcion_y_cambio.html" title="Adoption and change in the initiative">23</a><a class="mu-c" href="50_SEVEN-G_Personas_y_organizacion.html" title="People and organisation">50</a><a class="mu-c" href="51_SEVEN-G_Datos_y_conocimiento.html" title="Data and knowledge for AI">51</a><a class="mu-c" href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="AI operations manual">52</a><a class="mu-c" href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Building solutions with AI">53</a><a class="mu-p" href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Literacy and training plan and record">P45</a></div>
+        <div class="mu-grupo"><b>Getting started and adopting the framework</b><a class="mu-c" href="01_SEVEN-G_Metodologia_fundacional.html" title="Foundational methodology">01</a><a class="mu-c" href="02_SEVEN-G_Glosario_y_convenciones.html" title="Glossary and conventions">02</a><a class="mu-c" href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Tools and initiative register">03</a><a class="mu-c" href="90_SEVEN-G_Guia_de_implantacion.html" title="Implementation guide">90</a><a class="mu-c" href="91_SEVEN-G_Guia_para_consultores.html" title="Guide for consultants">91</a><a class="mu-c" href="92_SEVEN-G_Casos_de_aplicacion.html" title="Application cases">92</a><a class="mu-p" href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Implementation mandate">P32</a></div>
+      </div>
+    </section>
+
+  </div>
+  </div>
+  <div class="mu-leyenda"><span><i class="mu-c">00</i> document</span><span><i class="mu-p">P00</i> template (also in Word)</span><span><i class="mu-t">T00</i> tool</span><span>◆ decision gate · in red, the main stop gate</span></div>
+  <div class="g-fuente">Source: SEVEN-G · SEACHAD</div>
+</figure>
