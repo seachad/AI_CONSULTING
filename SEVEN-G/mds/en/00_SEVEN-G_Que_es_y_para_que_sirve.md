@@ -197,10 +197,12 @@ The funnel stages group the lifecycle phases: **Proposed** (phases 0 and 1), **V
 
 **Two application intensities**
 
-| Version | When it applies | What changes |
+| Intensity | When it applies | What changes |
 |---|---|---|
 | **Lite** | Low-risk initiatives, internal use, no decisions about people and no customer exposure, limited investment. | Grouped *gates*, simplified templates, decision by the sponsor with a record and verification by the AI Office. |
 | **Enterprise** | Systems that are high-risk under regulation, direct exposure to customers or people, automated decisions, agents with the ability to act, regulated environments or significant investment. | All *gates* and evidence, independent audit, visibility for the AI Committee and, where appropriate, for the board. |
+
+Intensity is decided **initiative by initiative**. Separately, each company chooses its **implementation scope**, also Lite or Enterprise, which determines how it organises its bodies and verification: with a Lite scope, a medium-sized, unregulated company governs AI with its executive committee, an AI Office of one part-time person and an external auditor, and any initiative that meets an Enterprise criterion is still managed with Enterprise intensity. The implementation guide (document 90, section 2) explains how the scope is chosen and what the minimum path in a Lite scope is.
 
 ### 4.4 Component B · Governance system
 
@@ -326,7 +328,7 @@ These rules are the core of the measurement system and apply to all use cases, i
 | **Risk, compliance, data protection and internal audit** | Rely on controls, evidence and audit criteria built in by design. |
 | **Business areas** | Turn their needs into value hypotheses that can be approved, measured and scaled. |
 
-SEVEN-G is **sector- and technology-agnostic**, and scalable: the Lite version is suitable for mid-sized organisations and the Enterprise version for regulated groups.
+SEVEN-G is **sector- and technology-agnostic**, and scalable: the Lite implementation scope makes it applicable to medium-sized organisations with a minimum structure, and the Enterprise scope to regulated groups (document 90, section 2).
 
 ---
 

@@ -11,6 +11,7 @@
     3. Aviso legal presente en las herramientas y paneles publicados (D33).
     4. Portada: el primer botón de cada metodología es el que explica el marco (D46) y sus enlaces locales existen.
     1e. Ninguna herramienta (Tnn) citada en los HTML generados queda sin enlace (D64).
+    1f. Los documentos de SEVEN-G no se presentan como provisionales (D40) y la adaptación Lite del 30 no contradice a 01 (D66).
     5. T01: registro.html coincide con lo que genera build_registro.ps1 (no se ha editado a mano ni está desfasado, D43).
        T14: indice.html coincide con lo que genera build_indice.ps1 (D64).
        T06: los riesgos de demostración tienen niveles coherentes con probabilidad × impacto y aceptaciones del órgano de su nivel (D65).
@@ -115,6 +116,16 @@ try {
   foreach ($x in ($sinEnlace | Select-Object -First 15)) { Mal "herramienta citada sin enlace: $x" }
   if ($sinEnlace.Count -gt 15) { Mal "… y $($sinEnlace.Count - 15) páginas más con herramientas sin enlace" }
   if (-not $sinEnlace.Count) { Ok 'todas las herramientas citadas llevan enlace' }
+
+  # SEVEN-G 0.1 es operativa (D40): sus documentos no dicen que otros documentos o herramientas estén en redacción o pendientes.
+  # Y la adaptación a organizaciones pequeñas no rebaja lo que 01 §9.3 exige a las iniciativas Enterprise (D66).
+  Write-Host '1f. SEVEN-G operativa y alcance Lite coherente con 01'
+  $provisional = Get-ChildItem (Join-Path $repo 'SEVEN-G\mds') -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' } |
+    Select-String -Pattern 'en redacción|mientras no est[ée]n? (publicad|disponib|construid)|no esté construida|being drafted|until they are published|has not been built|while they are not available'
+  foreach ($x in $provisional) { Mal "texto provisional en SEVEN-G (D40): $([IO.Path]::GetRelativePath($repo, $x.Path)):$($x.LineNumber)" }
+  $liteRebajado = Get-ChildItem (Join-Path $repo 'SEVEN-G\mds') -Recurse -File -Filter '30_*.md' | Select-String -Pattern 'al menos en G3 y G5|at least at G3 and G5|mensual o bimestral|monthly or bimonthly'
+  foreach ($x in $liteRebajado) { Mal "30 §11 contradice 01 §5.2 o §9.3 (D66): $([IO.Path]::GetRelativePath($repo, $x.Path)):$($x.LineNumber)" }
+  if (-not $provisional -and -not $liteRebajado) { Ok 'sin textos provisionales y con la adaptación Lite alineada con 01' }
 
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'

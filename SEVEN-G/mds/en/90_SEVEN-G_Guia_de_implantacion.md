@@ -20,7 +20,7 @@
 
 This guide explains how an organisation adopts SEVEN-G for the first time. It develops the first implementation envisaged in 01 §5.3 —concentrating C1 to C3 into ninety days— and the subsequent roadmap until the conditions for the declaration of application are met (01 §14).
 
-It is aimed at whoever leads the implementation (normally the head of the future AI Office), the sponsor in senior management and the risk, compliance and internal audit functions. Some of the documents cited are being drafted; until they are published, the corresponding rules in documents 01 and 03 apply.
+It is aimed at whoever leads the implementation (normally the head of the future AI Office), the sponsor in senior management and the risk, compliance and internal audit functions.
 
 This document does not constitute legal advice.
 
@@ -51,6 +51,8 @@ The **implementation scope** is a company decision on how it organises its gover
 | **Board dashboard** | Aggregated. | By initiative for Enterprise initiatives. |
 | **Indicative horizon up to 01 §14** | 6 to 12 months. | 12 to 18 months. |
 
+**Size does not determine the scope**: the criteria in section 2.2 do. A medium-sized company without sector-specific supervision or high-risk systems applies a Lite scope; a small company subject to prudential supervision applies an Enterprise scope. Both scopes apply the same lifecycle, the same evidence and the same segregation of duties rules; what changes is how the bodies and verification are organised.
+
 ### 2.2 Selection criteria
 
 An **Enterprise scope** is chosen if at least one of these criteria is met; otherwise, Lite:
@@ -59,11 +61,45 @@ An **Enterprise scope** is chosen if at least one of these criteria is met; othe
 2. It has or plans high-risk AI systems under the EU AI Act.
 3. It has or plans agents with A2 or A3 autonomy over customers, money, personal data or production systems.
 4. It operates as a group with several companies or countries that must follow a common framework.
-5. The board has approved or plans Transform bets.
+5. The approved or planned portfolio includes several simultaneous Transform bets (indicatively, three or more; value to be calibrated in C2).
+
+**A single Transform bet does not change the scope.** That initiative is managed with Enterprise intensity (01 §9.2) and the board approves it at G2 and, if it scales, at G7 (01 §7.5); the rest of the portfolio remains in a Lite scope. The scope is reviewed at each annual review (C5), or earlier if the company comes to meet any of these criteria.
 
 ### 2.3 Perimeter
 
 The perimeter may be the whole company or a part of it (a subsidiary, a country, a business unit). Implementing first in a reduced perimeter is valid, but **the declaration of application only covers the implemented perimeter** and must say so. The AI system inventory, however, should cover the whole company from the outset, because risk does not respect perimeters.
+
+### 2.4 Minimum path in a Lite scope
+
+> **Why it matters.** A medium-sized company does not need to go through the whole library to get started. It needs to know what is mandatory from day one, what is added only when an Enterprise initiative appears and what it can consult when needed. Without that path, the framework looks heavier than it is and the company ends up applying Enterprise to everything or applying nothing.
+
+**Mandatory from the start**
+
+| Element | Minimum in a Lite scope | Reference |
+|---|---|---|
+| **Initial reading** | Documents 00 and 01, this guide, the adaptation to small organisations in the governance model and, in the *gate* criteria, the Lite column of each gate. | 00; 01; 30 §11; 21 §2.1 |
+| **Three safeguards** | Those who build do not verify or decide on their own work; the risk clearance is issued by someone independent of the team; the board approves the direction and the risk appetite. | 30 §11 |
+| **Bodies** | Board with an AI item at least quarterly; executive committee with a monthly AI item; AI Office of one part-time person. | 01 §5.2; 30 §11; section 7 |
+| **Inventory** | All AI systems —in-house, third-party, corporate use and unauthorised use— with a completeness statement. It is not reduced in Lite. | 32; P05; T01 |
+| **Intensity** | Determination for each initiative: in phase 0, at G3 and at each R6. | 01 §9; P04; T04 |
+| **Evidence for a Lite initiative** | The evidence that the *gate* criteria mark "Yes" or "Simpl." in the Lite column, with templates without the *(Enterprise)* fields. No mandatory evidence is omitted: it is simplified. | 01 §6.10; 21 §2.1; P01–P31 |
+| **Gates** | G0–G2 in one session, G3 separately, G4–G5 in one session, half-yearly R6 and G7. Each gate keeps its criteria and its record in P29. | 21 §3.4 |
+| **Verification and decision** | The AI Office verifies; the sponsor decides, with risk clearance at G3, G4 and G5; the AI Auditor reviews a sample of Lite *gates* every half-year. | 01 §9.3; 21 §10.3 |
+| **Risks** | Risk register from phase 3 with the scale in document 33. | 33; P12; T06 |
+| **Value** | Measurement rules, baseline and tracking of realised value; aggregated board dashboard. | 40; P09; P28; T17 |
+| **Diagnosis** | Maturity with a verified assessment and transformation index at C1 and at each C5. | 11; 12; T15; T14 |
+
+**Added only when an initiative meets an Enterprise criterion**
+
+| What is added | Reference |
+|---|---|
+| Separate gates, full templates and decision by the AI Committee (by the board for Transform). | 01 §7.5, §9.3 |
+| AI Auditor at every *gate* of that initiative, external if there is nobody independent in-house. | 01 §9.3; 38 |
+| Multi-level sign-off with veto for go-live and quarterly R6. | 21 §9; P23 |
+| Visibility by initiative in the board dashboard. | 60; T17 |
+| Depending on the criterion met: regulatory classification and impact assessments; security of A2 or A3 agents; N2 or N3 requirements for suppliers. | 32, 34, P11; 35, P18; 36, P14 |
+
+The rest of the library is consulted when needed: ambition and portfolio (10, 13, 14), phase manuals and checklists (20, 22), adoption and people (23, 50), policies (31), incidents (37), indicators and costs (41, 42, 43), data, operation and construction (51, 52, 53), board (60, 61, 62) and application cases (92), which includes Lite initiatives of medium-sized companies.
 
 ---
 
@@ -78,7 +114,7 @@ The perimeter may be the whole company or a part of it (a subsidiary, a country,
 | **Third line informed** | Internal audit is aware of the plan and designates who will verify maturity. |
 | **Legal counsel** | Available for the regulatory classification of priority systems. |
 | **Access to information** | Procurement, licences, supplier contracts, architecture, risk register and budgets. |
-| **Register support** | T01 and T02 or, while they are not available, a spreadsheet with the fields in 03 §3.3. |
+| **Register support** | T01 with its inventory (T02) or, if the company prefers, a spreadsheet with the fields in 03 §3.3. |
 | **No general moratorium** | AI activity continues during implementation; only what the diagnosis identifies as unacceptable risk is stopped. |
 
 ---
@@ -128,7 +164,7 @@ Each milestone is accepted by the implementation sponsor together with the AI Co
 | Week | Activities and deliverables | Owner | Documents, templates and tools | Completion criterion |
 |---|---|---|---|---|
 | **9 · Bodies and roles** | Mandates of the AI Committee, the AI Office and the board committee; roles in 01 §8 in existing initiatives with an incompatibility check; AI Auditor designated. | Sponsor; board secretariat | 01 §8, 30; P03; T01 | Mandates drafted; roles assigned without incompatibilities. |
-| **10 · Gates and policies** | *Gate* criteria and checklists adopted (initial version of 01 §7 if 21 and 22 are not published); reference time limits; corporate and acceptable use policy; nonconformity process. | AI Office; compliance | 21, 22, 31, 37; P04, P29; T03, T08 | *Gate* manager configured; policies in final draft. |
+| **10 · Gates and policies** | *Gate* criteria (21) and checklists (22) adopted; reference time limits; corporate and acceptable use policy; nonconformity process. | AI Office; compliance | 21, 22, 31, 37; P04, P29; T03, T08 | *Gate* manager configured; policies in final draft. |
 | **11 · Metrics, reporting and portfolio** | Measurement rules adopted; first version of the board dashboard; register of recommendations; reporting calendar (01 §5.2); first prioritised portfolio with envelopes, tranches and regularisation plan. | AI Office; management control; committee | 40, 60, 62, 14; P28; T17, T18, T01, T16 | Dashboard generated with inventory data; portfolio with scoring and owners. |
 | **12 · Approvals** | The board approves the thesis, ambition per sphere, risk appetite, thresholds and corporate policy (C2). The committee approves the portfolio, *gates*, metrics and regularisation plan (C3). | Sponsor; AI Committee; board | 13, 14, 31 | Minutes with the approvals. |
 | **13 · Steady state** | First ordinary meeting of the committee; first *gates* under the new model; 6–18-month roadmap approved; lessons from the implementation; communication to the organisation. | Implementation lead | 90; T01, T03 | **Milestone 3:** criteria in section 4.5 met. |
@@ -263,7 +299,7 @@ The targets are indicative and are set by the company in its plan.
 | **Month 3** | T03 (*gates*); T08 (nonconformities); T17 (dashboard); T18 (recommendations); T01 and T16 (portfolio). | P03, P04, P28, P29 |
 | **Months 4–18** | All of the above; T09, T10, T11, T13, T20, T21, T22 as the portfolio progresses. | P01–P31 according to the phase of each initiative |
 
-While a tool has not been built, a spreadsheet with the fields of the data model in 03 §4 is used.
+Tools without an application of their own are applied with the template or document indicated in the catalogue in 03. A company that prefers not to use T01 may keep the register in a spreadsheet with the fields of the data model in 03 §4.
 
 ---
 
@@ -287,3 +323,4 @@ While a tool has not been built, a spreadsheet with the fields of the data model
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the company-level Lite or Enterprise implementation scope, the prerequisites, the week-by-week 90-day plan, regularisation, the 6- to 18-month roadmap up to 01 §14, minimum roles, common mistakes and implementation indicators. |
+| 0.1 | 19-09-2026 | Size does not determine the scope (2.1); a single Transform bet does not require an Enterprise scope (2.2); minimum path in a Lite scope (2.4); references to pending documents or tools removed. |

@@ -24,7 +24,7 @@
 | **Who decides** | The result is automatic: no decision is required. The *gate* body merely checks that the answers are justified. |
 | **Gate at which it is reviewed** | G0 · Authorisation, G3 · Feasibility and R6 · Continuity review. |
 | **Tool** | T04 · Intensity determination (module of T01). |
-| **Lite versus Enterprise** | This template is the same at both intensities, because it is the one that determines which applies. Only block 7 is **(Enterprise)**. |
+| **Lite versus Enterprise** | This template is the same at both intensities, because it is the one that determines which applies. It has no **(Enterprise)** fields: block 7 (change of intensity) is completed at both intensities when the result changes. |
 
 Completion rules:
 
@@ -126,9 +126,9 @@ Reference: 01 §9.3 and, for verification and decision, 01 §7.5.
 
 ---
 
-## 7. Change of intensity **(Enterprise)**
+## 7. Change of intensity
 
-Complete only if the result differs from the previous determination.
+Complete only if the result differs from the previous determination. It is mandatory at both intensities: the move from Lite to Enterprise is recorded precisely while the initiative is still Lite.
 
 | Date | From | To | Criterion that changes | Evidence to be completed | *Gates* affected | Recorded by |
 |---|---|---|---|---|---|---|
@@ -180,3 +180,4 @@ Segregation of duties: the verifier has not answered the questionnaire.
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Converts the eight Enterprise criteria of 01 §9.2 into questions with an automatic result and records changes of intensity. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37. |
+| 0.1 | 19-09-2026 | Block 7 (change of intensity) is no longer *(Enterprise)*: it is also completed at Lite, which is when the move to Enterprise is recorded. |

@@ -24,7 +24,7 @@
 | **Quién decide** | El resultado es automático: no requiere decisión. El órgano del *gate* se limita a comprobar que las respuestas están justificadas. |
 | **Gate en que se revisa** | G0 · Autorización, G3 · Viabilidad y R6 · Revisión de continuidad. |
 | **Herramienta** | T04 · Determinación de intensidad (módulo de T01). |
-| **Lite frente a Enterprise** | Esta plantilla es igual en ambas intensidades, porque es la que determina cuál aplica. Solo el bloque 7 es **(Enterprise)**. |
+| **Lite frente a Enterprise** | Esta plantilla es igual en ambas intensidades, porque es la que determina cuál aplica. No tiene campos **(Enterprise)**: el bloque 7 (cambio de intensidad) se rellena en ambas cuando cambia el resultado. |
 
 Reglas de cumplimentación:
 
@@ -126,9 +126,9 @@ Referencia: 01 §9.3 y, para verificación y decisión, 01 §7.5.
 
 ---
 
-## 7. Cambio de intensidad **(Enterprise)**
+## 7. Cambio de intensidad
 
-Rellenar solo si el resultado difiere de la determinación anterior.
+Rellenar solo si el resultado difiere de la determinación anterior. Es obligatorio en las dos intensidades: el paso de Lite a Enterprise se registra precisamente cuando la iniciativa aún es Lite.
 
 | Fecha | De | A | Criterio que cambia | Evidencias que deben completarse | *Gates* afectados | Registrado por |
 |---|---|---|---|---|---|---|
@@ -180,3 +180,4 @@ Separación de funciones: quien verifica no ha respondido al cuestionario.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Convierte los ocho criterios Enterprise de 01 §9.2 en preguntas con resultado automático y registra los cambios de intensidad. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
+| 0.1 | 19-09-2026 | El bloque 7 (cambio de intensidad) deja de ser *(Enterprise)*: se rellena también en Lite, que es cuando se registra el paso a Enterprise. |
