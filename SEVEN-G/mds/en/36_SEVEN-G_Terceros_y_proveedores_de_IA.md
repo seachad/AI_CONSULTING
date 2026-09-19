@@ -139,6 +139,8 @@ An N3 supplier normally implies **Enterprise** intensity for the initiatives tha
 11. **Exit:** export formats, assistance, time limits, certified deletion.
 12. **Ethics and responsible use:** acceptable use policies, bias management, use restrictions.
 
+The full questionnaire is in P55. A **Nonconformant** result in blocks 3 (data), 5 (security) or 7 (data protection) prevents the supplier from being used with production data until it is resolved.
+
 ---
 
 ## 5. Supplier lifecycle
@@ -158,7 +160,7 @@ An N3 supplier normally implies **Enterprise** intensity for the initiatives tha
 
 ## 6. Key contractual clauses
 
-**Yes** = must be included · **Rec.** = recommended · **—** = not required. At N1 many clauses are not negotiable: they are checked in the standard terms and, if missing, the risk is recorded together with who accepts it.
+**Yes** = must be included · **Rec.** = recommended · **—** = not required. At N1 many clauses are not negotiable: they are checked in the standard terms and, if missing, the risk is recorded together with who accepts it. At every level, while a **Yes** clause is missing without that risk recorded and accepted by the body corresponding to its level (33 §7), the supplier is not used with production data.
 
 | # | Clause | What it must ensure | N1 | N2 | N3 |
 |---|---|---|---|---|---|

@@ -143,7 +143,7 @@ Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinad
 | ☐ | G3.02 | ¿Está evaluada la calidad de los datos y tienen propietario? | P10 | Cond. | Simpl. | Sí |
 | ☐ | G3.03 | ¿Protección de datos confirma la base legal y la minimización? | P11 | Sí ◆ | Sí | Sí |
 | ☐ | G3.04 | ¿Están estimados los costes de construcción, recurrentes y de adopción por categoría? | P10 · T13 | Sí | Simpl. | Sí |
-| ☐ | G3.05 | ¿El neto esperado es coherente con el apetito y el horizonte de C2 según la ambición? | P10 · P08 · tesis C2 | Sí | Sí | Sí |
+| ☐ | G3.05 | ¿El neto esperado es coherente con el apetito y el horizonte de C2 según la ambición, y hay plan de realización de beneficios en borrador con responsable de negocio? | P10 · P08 · P62 · tesis C2 | Sí | Sí | Sí |
 | ☐ | G3.06 | ¿Los criterios de parada son los aprobados en G2 o su cambio está aprobado? | P08 (versiones) · P29 | Sí | Sí | Sí |
 | ☐ | G3.07 | ¿La clasificación regulatoria está fechada, firmada con criterio jurídico e indica el rol de la compañía? | P11 · T07 | Sí ◆ | Sí | Sí |
 | ☐ | G3.08 | ¿Se descarta cualquier práctica prohibida? (Si no: Parar) | P11 | Sí ◆ | Sí | Sí |
@@ -178,7 +178,7 @@ Verifica: oficina de IA (Lite) · auditor de IA (Enterprise). Decide: patrocinad
 | ☐ | G4.08 | ¿La monitorización tiene métricas, umbrales, alertas y responsable de operación asignado? | P15 · P03 | Cond. | Simpl. | Sí |
 | ☐ | G4.09 | ¿Existe mecanismo de parada con responsable y tiempo objetivo? | P19 | Sí ◆ | Sí | Sí |
 | ☐ | G4.10 | ¿El plan de reversión tiene criterios, procedimiento, responsable, alternativa y prueba prevista? | P19 | Sí | Simpl. | Sí |
-| ☐ | G4.11 | ¿El plan de adopción cubre formación, comunicación, apoyo, medición y lo propio de la ambición? | P20 · T20 | Cond. | Simpl. | Sí |
+| ☐ | G4.11 | ¿El plan de adopción cubre formación, comunicación, apoyo, medición y lo propio de la ambición, y el plan de realización de beneficios está completo y firmado? | P20 · P62 · T20 | Cond. | Simpl. | Sí |
 | ☐ | G4.12 | ¿El plan de pruebas y el diseño del piloto tienen criterios de aceptación y el método de atribución aprobado? | P22 | Cond. | Simpl. | Sí |
 | ☐ | G4.13 | ¿Las evaluaciones de impacto exigibles están cerradas y sus medidas incorporadas? | P11 | Sí ◆ | Sí | Sí |
 | ☐ | G4.14 | Alto riesgo: ¿están planificadas con responsable las obligaciones de la compañía según su rol? | P11 · P15 | Sí ◆ | — | Sí |

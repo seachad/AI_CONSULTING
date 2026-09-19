@@ -31,7 +31,7 @@
 
 Completion rules:
 
-- **Common profiles.** The eight profiles F1–F8 of 31 §6.2 are used; section 4 gives their correspondence with profiles PER-PA to PER-PF of 50 §5.2. A person may hold several profiles.
+- **Common profiles.** The nine profiles F1–F9 of 31 §6.2 are used; section 4 gives their correspondence with profiles PER-PA to PER-PF of 50 §5.2. A person may hold several profiles.
 - **Indicative durations.** Those in 31 §6.2 are a starting point and are adjusted to the size of the company and the actual use of AI.
 - **Effectiveness, not just attendance.** Each mandatory action has an assessment or practical exercise and an expiry date.
 - **Data protection.** The record contains employees' personal data: access is restricted to the AI Office, the people function and the verifier; indicators are presented in aggregate.
@@ -74,9 +74,9 @@ Regardless of that minimum, **SEVEN-G requires** a programme by profile with a r
 | F6 · Second and third line | PER-PF · Control and people functions | — |
 | F7 · Board and senior management | PER-PA · Board and senior management | — |
 | F8 · People, labour relations and workers' representatives | PER-PF · Control and people functions | — |
-| No F profile of its own | PER-PB · Middle managers | Area managers |
+| F9 · Middle managers of areas that use or introduce AI | PER-PB · Middle managers | Area managers |
 
-Middle managers (PER-PB) receive F1 and, in addition, the content of 50 §5.2 applied to their area: effect assessment, human oversight, transition and communication.
+Middle managers (PER-PB) receive F1 and F9, which applies the content of 50 §5.2 to their area: effect assessment, human oversight, transition and communication.
 
 ---
 
@@ -92,7 +92,7 @@ Middle managers (PER-PB) receive F1 and, in addition, the content of 50 §5.2 ap
 | F6 | | | 2 days and continuous training | Annually and upon regulatory changes | — | | | | Record; AI Auditor competence plan |
 | F7 | | | 2–3 hour session | Annually and on joining the body | — | | | | Minutes or attendance record |
 | F8 | | | 2–3 hour session | Annually | — | | | | Attendance record |
-| PER-PB | | 50 §5.2 | | | — | | | | Training and participation in an effect assessment |
+| F9 · PER-PB | | 31 §6.2 (F9); 50 §5.2 | | | — | | | | Training and participation in an effect assessment |
 | *(illustrative example)* F1 | Staff with a licence for the corporate assistant · 1,200 | Basic module v2 | Online, 75 minutes, 10-question test | Annually | Before the licence | 31-12-2026 | AI Office | €18,000 | Training platform record |
 
 ---
@@ -111,7 +111,7 @@ Summary of section 5 of P20 for each initiative, in order to consolidate the com
 
 | Person | Area | Profiles | Action and version | Date | Format | Assessment | Acceptance of the policy | Valid until | Systems overseen or role | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Employee identifier | | F1–F8 | | DD-MM-AAAA | | Passed · Not passed · Practical validated | Date | DD-MM-AAAA | SIA-AAAA-NNN · role in IA-AAAA-NNN | Current · Expired · Pending |
+| Employee identifier | | F1–F9 | | DD-MM-AAAA | | Passed · Not passed · Practical validated | Date | DD-MM-AAAA | SIA-AAAA-NNN · role in IA-AAAA-NNN | Current · Expired · Pending |
 | *(illustrative example)* E-00417 | Complaints | F1, F3 | Oversight of the complaints classifier v1.1 | 12-01-2027 | Classroom with cases | Practical validated | 03-11-2026 | 12-01-2028 | SIA-2026-021 | Current |
 | | | | | | | | | | | |
 
@@ -127,7 +127,7 @@ Summary of section 5 of P20 for each initiative, in order to consolidate the com
 | Expired training | People with expired mandatory training | 31 §6.4 | Monthly alert | | Monthly |
 | Pass rate | Assessments passed ÷ assessments taken, by profile | 31 §6.4 | To be set by the company | | Quarterly |
 | Incidents due to misuse | Incidents and nonconformities with root cause "lack of awareness of the policy" | 31 §6.4; T08 | Trend | | Quarterly |
-| IND-ADO-05 · AI literacy | People trained ÷ people in the obligated group | 41; PER-02 | 100 % of the obligated group (41); PER-PC ≥ 90 %, PER-PA and PER-PD 100 % (50 §11) | | Quarterly |
+| IND-ADO-05 · AI literacy | People trained ÷ people in the obligated group | 41; PER-02 | 100 % of the obligated group before access or taking up the role (41); current renewal of PER-PC ≥ 90 % as alert threshold; PER-PA and PER-PD 100 % (50 §11) | | Quarterly |
 | IND-ADO-10 · Qualified overseers | A1–A3 systems in production whose overseers have PER-PD training recorded ÷ A1–A3 systems in production | 41; PER-03 | 100 % | | Quarterly |
 | AI literacy (implementation) | Staff who use or oversee AI trained ÷ total | 90 §9 | Programme approved at 90 days; target set in C2 at 12 months | | Quarterly |
 

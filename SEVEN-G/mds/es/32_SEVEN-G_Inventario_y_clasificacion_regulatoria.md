@@ -347,6 +347,7 @@ Tras los pasos 1 a 7, el árbol continúa con dos pasos que no cambian la catego
 | **Procedimiento** | Artículo 43: para los sistemas del anexo III, puntos 2 a 8, procedimiento de control interno (anexo VI); para los del punto 1 (biometría), control interno o intervención de organismo notificado según se apliquen normas armonizadas o especificaciones comunes; para los del anexo I, el procedimiento de la legislación sectorial correspondiente. |
 | **Resultado** | Documentación técnica, sistema de gestión de la calidad, declaración UE de conformidad (artículo 47), marcado CE (artículo 48), registro (artículo 49), plan de vigilancia posterior a la comercialización (artículo 72). |
 | **Si la compañía es solo responsable del despliegue** | No realiza la evaluación de conformidad, pero debe verificar en la evaluación del proveedor (P14) que el sistema dispone de ella y de instrucciones de uso, y cumplir sus obligaciones del artículo 26. |
+| **Plantillas** | SEVEN-G no incluye plantillas para la documentación técnica, el sistema de gestión de la calidad ni la declaración UE de conformidad: la compañía que actúa como proveedor los elabora con las normas armonizadas y su propio sistema de gestión de la calidad. El plan de vigilancia posterior a la comercialización se apoya en P24 y P25, y la evaluación de impacto en derechos fundamentales, en P48. |
 
 ### 6.4 Matriz de evaluaciones por clasificación y rol
 
