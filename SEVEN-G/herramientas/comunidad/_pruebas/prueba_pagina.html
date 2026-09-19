@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba de la página de comunidad con el intermediario simulado</title>
+</head>
+<body>
+<p>Cargando la página de comunidad con un intermediario y un GitHub simulados en memoria (nada sale a la red)…</p>
+<!-- Abre ../index.html con «endpoint» apuntando a un intermediario falso: las llamadas de la página las atiende worker/worker.js
+     dentro del navegador, contra un GitHub en memoria con tres casos de ejemplo (ficticios). Esta carpeta no se publica. -->
+<script type="module">
+import worker from '../worker/worker.js';
+
+const gh = { issues: [], etiquetas: new Set(['comunidad', 'peticion', 'incidencia']) };
+const FETCH = async (url, opc) => {
+  const ruta = url.replace('https://api.github.com/repos/prueba/repo', ''), cuerpo = opc.body ? JSON.parse(opc.body) : null;
+  const r = (estado, datos) => new Response(JSON.stringify(datos), { status: estado });
+  if (opc.method === 'POST' && ruta === '/issues') {
+    const n = gh.issues.length + 1;
+    const i = { number: n, title: cuerpo.title, body: cuerpo.body, labels: cuerpo.labels.map(name => ({ name })), state: 'open', comments: 0, created_at: new Date(Date.now() - (10 - n) * 864e5).toISOString(), html_url: 'https://github.com/prueba/repo/issues/' + n };
+    gh.issues.push(i); return r(201, i);
+  }
+  const m = ruta.match(/^\/issues\/(\d+)$/);
+  if (m) { const i = gh.issues[m[1] - 1]; if (!i) return r(404, {}); if (opc.method === 'PATCH') Object.assign(i, cuerpo); return r(200, i); }
+  if (ruta.startsWith('/issues?')) return r(200, gh.issues.slice().reverse());
+  return r(404, {});
+};
+const env = { GITHUB_TOKEN: 'secreto', REPO: 'prueba/repo', ORIGENES: location.origin, LIMITE_ENVIOS: '50', LIMITE_VOTOS: '500', FETCH, CACHE: null };
+env.CACHE = { match: async () => undefined, put: async () => {}, delete: async () => true };
+const llama = (metodo, ruta, datos) => worker.fetch({ method: metodo, url: 'https://falso.example' + ruta, headers: new Headers({ Origin: location.origin, 'CF-Connecting-IP': '203.0.113.7' }), json: async () => datos }, env);
+
+// datos de ejemplo (ficticios)
+const alta = async (tipo, titulo, descripcion, usuario, votantes) => {
+  const r = await (await llama('POST', '/issues', { tipo, titulo, descripcion, usuario, idioma: 'es', web: '' })).json();
+  for (const v of votantes) await llama('POST', '/votos', { numero: r.issue.numero, usuario: v });
+};
+await alta('peticion', 'Plantilla P39 también en hoja de cálculo', 'El acta del comité de IA se rellena mejor en una hoja de cálculo cuando hay muchas decisiones por sesión.\nHoy solo está en Word.\nSería útil una exportación directa.\nCuarta línea para probar el «ver más».', 'Ana G', ['Luis_77', 'marta.r', 'Comité IA', 'pablo']);
+await alta('incidencia', 'El filtro por fase del registro T01 no se quita en el móvil', 'Al pulsar «Mostrar todas» en un móvil estrecho el botón queda fuera de la pantalla.', 'Luis_77', ['Ana G']);
+await alta('peticion', 'Ejemplo completo de iniciativa Lite de principio a fin', 'Un caso ficticio recorrido por todas las puertas con sus plantillas rellenas.', 'marta.r', []);
+gh.issues[1].state = 'closed'; gh.issues[1].state_reason = 'completed'; gh.issues[1].comments = 2;
+
+window.__fetchReal = window.fetch;
+window.fetch = (url, opc) => String(url).startsWith('https://falso.example')
+  ? llama((opc && opc.method) || 'GET', String(url).replace('https://falso.example', ''), opc && opc.body ? JSON.parse(opc.body) : null)
+  : Promise.reject(new Error('la prueba no debe salir a la red: ' + url));
+
+let html = await (await window.__fetchReal('../index.html')).text();
+html = html.replace(/window\.SEVENG_COMUNIDAD = \{[^}]*\};/, "window.SEVENG_COMUNIDAD = { repo: 'prueba/repo', endpoint: 'https://falso.example', umbralVotos: 10 };");
+const fetchFalso = window.fetch;
+document.open(); document.write(html); document.close();
+window.fetch = fetchFalso;
+</script>
+</body>
+</html>

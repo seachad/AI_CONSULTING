@@ -22,6 +22,8 @@
     7. Prueba de humo en Edge sin ventana: el registro, el panel completo y el panel móvil se dibujan (un error de JavaScript los deja vacíos),
        y la calculadora T14 reproduce el ejemplo del documento 12 §9 (suma 12, transformación declarada no evidenciada).
     8. Registro de decisiones: numeración única y correlativa.
+    10. Comunidad (D80): la página de incidencias y peticiones no pide correo ni datos de contacto, no carga recursos de terceros, no usa
+        cookies, muestra la regla de los votos, está enlazada desde la portada (ES/EN) y en su carpeta no hay ningún token.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -223,7 +225,7 @@ try {
   }
 
   Write-Host '3. Aviso legal en herramientas y paneles'
-  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T11_calculadora_valor\calculadora.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\madurez.html','SEVEN-G\herramientas\T17_panel_consejo\index.html') +
+  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T11_calculadora_valor\calculadora.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\madurez.html','SEVEN-G\herramientas\T17_panel_consejo\index.html', 'SEVEN-G\herramientas\comunidad\index.html') +
     @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter *.html | ForEach-Object { [IO.Path]::GetRelativePath($repo, $_.FullName) })
   $sin = $conAviso | Where-Object { -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Aviso legal|Legal notice' -Quiet) }
   foreach ($x in $sin) { Mal "sin aviso legal: $x" }
@@ -363,6 +365,8 @@ try {
       @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
       @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr'); que = 'panel completo' }
+      # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
+      @{ f = (Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)'); que = 'página de comunidad' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row'); que = 'panel móvil' }
     )
     foreach ($p in $pruebas) {
@@ -406,6 +410,22 @@ try {
   $sobran = @(& git -C $repo ls-files | Where-Object { $_ -match '__pycache__|\.pyc$' })
   foreach ($x in $sobran) { Mal "bytecode de Python versionado: $x (git rm --cached)" }
   if (-not $sobran) { Ok 'sin bytecode de Python en el repositorio' }
+
+  # ---- 10. comunidad (D80): la página cumple lo que promete
+  Write-Host '10. Comunidad: sin datos de contacto, sin terceros y sin tokens'
+  $com = Join-Path $repo 'SEVEN-G\herramientas\comunidad'; $malCom = 0
+  $pag = [IO.File]::ReadAllText((Join-Path $com 'index.html'))
+  foreach ($c in @(
+      @{ re = '(?i)type="(email|tel)"|name="(e-?mail|correo|telefono|phone)"|autocomplete="(email|tel|name)"'; que = 'pide correo u otro dato de contacto' }
+      @{ re = '(?i)<(script|link|img|iframe|source)\b[^>]*\b(src|href)="(https?:)?//'; que = 'carga recursos de terceros' }
+      @{ re = '(?i)document\.cookie|google-analytics|googletagmanager|gtag\('; que = 'usa cookies o analítica' })) {
+    if ($pag -match $c.re) { Mal "comunidad: la página $($c.que)"; $malCom++ }
+  }
+  foreach ($frase in 'número relevante de votos', 'relevant number of community votes', 'seveng-comunidad-usuario') { if (-not $pag.Contains($frase)) { Mal "comunidad: falta en la página «$frase»"; $malCom++ } }
+  $conToken = Get-ChildItem $com -Recurse -File | Select-String -Pattern 'gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}' -List
+  foreach ($x in $conToken) { Mal "comunidad: hay un token de GitHub en $([IO.Path]::GetRelativePath($repo, $x.Path)): revocarlo y quitarlo"; $malCom++ }
+  foreach ($p in 'index.html', 'en\index.html') { if (-not [IO.File]::ReadAllText((Join-Path $repo $p)).Contains('SEVEN-G/herramientas/comunidad/index.html')) { Mal "$p`: no enlaza la página de comunidad"; $malCom++ } }
+  if (-not $malCom) { Ok 'página de comunidad sin datos de contacto, recursos de terceros, cookies ni tokens, con la regla de los votos y enlazada desde la portada' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 
