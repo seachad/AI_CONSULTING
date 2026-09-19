@@ -128,14 +128,14 @@ SPAD requires two contexts to be loaded before any phase. In SEVEN-G those conte
 |---|---|---|---|---|
 | Context and objective | Problem, scope, constraints, success criteria. | 3–4 | Taken from P02, P08 and P10 | Entry condition for phase 4 (G3 passed). |
 | PLAN | Logical architecture, components, data flows, explicit decisions, risks. | 4 | P15 (architecture and decisions); P16 (data flows); P12 (new technical risks) | Input to G4. |
-| Plan review (AUDIT_PLAN) | Findings and technical verdict. | 4 | Annex to P15; clearance or conditions in P29 | Input to the G4 verification; it is not the verification. |
-| Implementation rules (CODE_PRIMER) | Structure, conventions, contracts, anti-patterns. | 4 | Annex to P15 | Input to G4. |
-| Test strategy (TEST_STRATEGY) | Cases, minimum coverage, test layers, test data. | 4 | Test plan in P22 (planning section) | Must exist before G4 in Enterprise. |
+| Plan review (AUDIT_PLAN) | Findings and technical verdict. | 4 | P66 (annex to P15); clearance or conditions in P29 | Input to the G4 verification; it is not the verification. |
+| Implementation rules (CODE_PRIMER) | Structure, conventions, contracts, anti-patterns. | 4 | P66 (annex to P15) | Input to G4. |
+| Test strategy (TEST_STRATEGY) | Cases, minimum coverage, test layers, test data. | 4 | P66 §6 (annex to P22) | Must exist before G4 in Enterprise. |
 | Implementation | Code generated according to the rules. | 5 | P21 (delivery report) | — |
 | Test implementation | Tests, test data and execution instructions. | 5 | P22 | — |
 | Test review (AUDIT_TESTS) | Actual versus expected coverage, quality, edge cases. | 5 | P22 | Input to G5. |
 | Code review (AUDIT_CODE) | Fidelity to the plan and the rules, technical risks, debt. | 5 | P21 | Input to G5. |
-| Minimal fixes (FIX_PRIMERS) | Problem, minimal change, justification, impact. | 5 | P21 (fix log) | — |
+| Minimal fixes (FIX_PRIMERS) | Problem, minimal change, justification, impact. | 5 | P66 §8 (annex to P21) | — |
 | Release management | Version number, changes, incompatibilities, migration, fallback plan. | 5 | P21; P19 (rollback plan); P27 (change log, from production onwards) | Input to G5 and to the P23 sign-off. |
 
 ### 4.2 Complementary flows
@@ -213,7 +213,7 @@ SPAD declares invalid, and requires the discarding and repetition of, any AI res
 | Implementation without a prior plan or review | Discard the generated code. | If that code reaches production, it is a **major nonconformity**; if it affects a critical control, **critical** (01 §12). | T08 |
 | AI self-approval | Immediate discard; serious breach. | Any approval without an identified person is null and void. If it was used to advance a *gate*, major nonconformity. | P29, T08 |
 
-**Breach log.** SPAD considers it optional. In SEVEN-G it **should** be maintained in Enterprise, within P21, with date, work topic, phase, type of breach, tool or model and action. Repeated patterns feed lessons learned (P30) and, if they reveal an unsuitable tool, the supplier assessment (P14).
+**Breach log.** SPAD considers it optional. In SEVEN-G it **should** be maintained in Enterprise, in P66 §9, annex to P21, with date, work topic, phase, type of breach, tool or model and action. Repeated patterns feed lessons learned (P30) and, if they reveal an unsuitable tool, the supplier assessment (P14).
 
 ---
 
@@ -246,7 +246,7 @@ They apply to all code, configuration, queries, infrastructure as code, tests or
 
 - Static security analysis, secret detection and dependency analysis **must** be run on the generated code before G5; in Enterprise, on every change.
 - Dependencies proposed by the AI **must** be verified (existence, provenance, maintenance and known vulnerabilities) before being incorporated, given the risk of non-existent or malicious packages suggested by the tool.
-- A software bill of materials for the solution **should** be generated in Enterprise.
+- A software bill of materials for the solution (P54) **should** be generated in Enterprise.
 - Build agents **must** operate with least privilege, without production credentials and with logging of their actions; their autonomy is classified under A0–A3 and assessed with T10 (document 35).
 - The OWASP Top 10 and the OWASP Top 10 for Large Language Model Applications lists may be used as technical references.
 - Critical and high findings **block** G5 unless there is formal risk acceptance in accordance with 33 and 01 §7.3 ("Proceed with conditions" is not permitted for critical security controls).
@@ -310,8 +310,9 @@ The formal criteria will be incorporated into document 21. In the meantime, the 
 | T10 · Agent security assessment | Build agents and security review. |
 | P03 | Designation of the orchestrator and the human reviewer. |
 | P12 · P14 · P15 · P16 · P18 | Risks · tool supplier · plan, rules and decisions · data flows · security. |
-| P19 · P21 · P22 · P23 | Rollback · delivery report with fix and breach log · tests and reviews · go-live sign-off. |
+| P19 · P21 · P22 · P23 | Rollback · delivery report · tests and reviews · go-live sign-off. |
 | P26 · P27 · P29 · P30 | Incidents · changes and root cause · *gate* decision · lessons learned. |
+| P54 · P66 | Software bill of materials · build annexes with SPAD: plan review, implementation rules, test strategy, and fix and breach logs (annexes to P15, P21 and P22). |
 
 ---
 

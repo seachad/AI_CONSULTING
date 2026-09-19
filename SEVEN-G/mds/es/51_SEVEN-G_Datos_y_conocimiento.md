@@ -482,7 +482,7 @@ Códigos y nombres del catálogo de riesgos tipo del documento 33; dos de estos 
 
 ## 15. Herramientas y plantillas asociadas
 
-Este documento no crea una herramienta nueva. La ficha de conjunto de datos y el inventario de fuentes de conocimiento se implementan en el **catálogo de datos que ya use la compañía** o, si no existe, como anexos de P16 y como atributos del sistema en T02.
+Este documento no crea una herramienta nueva. La ficha de conjunto de datos y el inventario de fuentes de conocimiento se implementan en el **catálogo de datos que ya use la compañía** o, si no existe, en la plantilla P64 y como atributos del sistema en T02.
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
@@ -493,10 +493,11 @@ Este documento no crea una herramienta nueva. La ficha de conjunto de datos y el
 | **P11** | Clasificación regulatoria y evaluaciones de impacto | Base legal, evaluación de impacto en protección de datos, datos para detectar sesgos. |
 | **P14** | Evaluación de proveedor de IA | Uso de instrucciones y datos por el proveedor; política de derechos de autor de modelos de propósito general. |
 | **P15** | Registro de arquitectura | Licencias de componentes y modelos. |
-| **P16** | Linaje de datos y modelos | Plantilla principal de este documento; incluye como anexos la ficha de conjunto de datos y el inventario de fuentes. |
+| **P16** | Linaje de datos y modelos | Plantilla principal de este documento; usa las fichas y el inventario de fuentes de P64. |
 | **P18** | Diseño de seguridad | Permisos de recuperación y de agentes. |
 | **P22** | Resultados de validación y del piloto | Pruebas de calidad, sesgo, fuga de datos y permisos. |
 | **P25** | Configuración de monitorización y alertas | Umbrales de calidad de datos y de vigencia. |
+| **P64** | Ficha de conjunto de datos e inventario de fuentes de conocimiento | Ficha de cada conjunto de datos e inventario de fuentes de conocimiento, si la compañía no tiene catálogo de datos. |
 
 ---
 

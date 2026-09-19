@@ -298,7 +298,7 @@ La duración y el formato los fija la compañía. La comprensión de usuarios y 
 
 ### 8.4 Evidencia
 
-Registro de formación en P20 con persona o colectivo, contenido y versión, fecha, formato y resultado de la evaluación. Alimenta el indicador de cobertura de formación (sección 10).
+Registro de formación en P20, consolidado en P45, con persona o colectivo, contenido y versión, fecha, formato y resultado de la evaluación. Alimenta el indicador de cobertura de formación (sección 10).
 
 ---
 
@@ -355,7 +355,7 @@ Los códigos `IND-` son los del catálogo (documento 41); los `PER-` son los pro
 | 5 | **Tasa de anulación humana** | Recomendaciones o resultados rechazados o modificados por la persona ÷ recomendaciones o resultados revisados | PER-10 (complementa IND-ADO-04) | M | G5 y R6: calibración de la confianza. |
 | 6 | **Tiempo de revisión por caso** | Mediana del tiempo de revisión humana por caso revisado, con percentil 80 | Propuesta | M | R6: detección de aprobación rutinaria (RT-ORG-04). |
 | 7 | **Cobertura de formación** | Personas con acceso o función de supervisión con formación registrada y evaluada antes del acceso ÷ personas con acceso o función de supervisión | IND-ADO-05 (nivel iniciativa) · PER-02 · PER-03 | M | G5 y R6: condición de acceso. |
-| 8 | **Percepción de los usuarios** | Respuestas favorables en las preguntas de utilidad, carga y confianza ÷ respuestas válidas | PER-15 | Fase 5, a los 3 meses y en R6 Enterprise | Deseo y refuerzo; alerta temprana de rechazo. |
+| 8 | **Percepción de los usuarios** | Respuestas favorables en las preguntas de utilidad, confianza, apoyo, carga y autonomía (P44) ÷ respuestas válidas | PER-15 | Fase 5, a los 3 meses y en R6 Enterprise | Deseo y refuerzo; alerta temprana de rechazo. |
 | 9 | **Tasa de aplicación de la capacidad liberada** | (Horas materializadas + horas reasignadas explícitamente) ÷ horas liberadas medidas | IND-VAL-08 + IND-VAL-09 · PER-04 + PER-05 | T | R6 y G7: conversión en valor (sección 7.5). |
 | 10 | **Roles actualizados** | Puestos afectados con descripción y objetivos actualizados ÷ puestos afectados según el análisis de impacto | PER-13 · IND-ADO-06 | S | G7 en Aumentar y Transformar; señal 5. |
 
@@ -521,10 +521,12 @@ Las iniciativas de Aumentar y Transformar tienen siempre plan de adopción y de 
 | **T20** | Plan de adopción y capacidad | Herramienta de la plantilla P20 y registro de capacidad liberada; alimenta T12 y el registro de iniciativas (T01). |
 | **P08 · P09** | Lienzo de hipótesis de valor · Línea base | Objetivo de adopción (G2.10) y tiempos de referencia por tarea. |
 | **P10 · P12** | Evaluación de viabilidad · Matriz y registro de riesgos | Análisis preliminar de impacto, costes de adopción y riesgos organizativos. |
-| **P17** | Diseño de gobierno y supervisión humana | Supervisores designados, carga de supervisión y ficha informativa para la representación. |
+| **P17** | Diseño de gobierno y supervisión humana | Supervisores designados y carga de supervisión. La ficha informativa y el registro de información a la representación están en P46. |
 | **P22 · P28** | Resultados del piloto · Seguimiento de realización de valor | Adopción y capacidad medidas en el piloto; capacidad materializada y reasignada en operación. |
 | **P29 · P30** | Registro de decisión de *gate* · Decisión de escalado o retirada | Decisiones de G5, R6 y G7; lecciones sobre adopción y comunicación de la retirada. |
 | **T12 · T21** | Seguimiento de valor · Monitor de uso corporativo | Importes materializados; uso no autorizado en los colectivos afectados. |
+| **P44** | Encuesta de uso y percepción de la IA | Percepción de los usuarios (indicador 8): utilidad, confianza, apoyo, carga y autonomía. |
+| **P46** | Información a los trabajadores y a su representación | Ficha informativa del sistema y registro de información y consultas a la representación. |
 
 Nota de coherencia: en P20 (sección 4), el indicador denominado *uso efectivo* corresponde a **usuarios activos** (IND-ADO-02) y la *cobertura del proceso*, a **uso efectivo en el proceso** (IND-ADO-03). La denominación de la plantilla se armonizará con este documento y con el documento 41 en su próxima versión.
 

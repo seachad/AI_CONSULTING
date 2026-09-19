@@ -23,13 +23,13 @@
 
 ## 1. Objeto y alcance
 
-Este documento muestra, con cinco casos ficticios, cómo se aplican en la práctica las piezas de SEVEN-G: diagnóstico de madurez, índice de transformación, decisiones del consejo, recorrido de las iniciativas por sus *gates*, medición del valor con fórmulas y estados, paradas y retiradas.
+Este documento muestra, con ocho casos ficticios, cómo se aplican en la práctica las piezas de SEVEN-G: diagnóstico de madurez, índice de transformación, decisiones del consejo, recorrido de las iniciativas por sus *gates*, medición del valor con fórmulas y estados, paradas y retiradas.
 
 Se usa para:
 
 - Formar a consejos, comités de IA y oficinas de IA.
 - Explicar el marco con ejemplos completos y verificables en sus cálculos.
-- Preparar talleres (sección 8).
+- Preparar talleres (sección 11).
 
 Convenciones de los casos:
 
@@ -50,8 +50,8 @@ Convenciones de los casos:
 | **3** | Grupo hospitalario H | 2 | Transformación declarada, no evidenciada | 3 | Iterar en G7 · Retirar por sesgo · Parar en G3 por regulación |
 | **4** | Grupo de distribución R | 3 | Transformación en curso | 3 | Escalar (Transformar) · Parar en G3 por datos · Retirar |
 | **5** | Administración territorial P | 1 | Exploración dispersa | 3 | Retirar tras no conformidad crítica · Continuar · Parar en G3 |
-| **6** | Cooperativa agroalimentaria A | 2 | Eficiencia operativa y logística | 2 | Continuar · Parar en G3 por datos insuficientes |
-| **7** | Grupo hotelero regional H | 2 | Mejora de experiencia y operación | 2 | Continuar · Iterar en G3 |
+| **6** | Cooperativa agroalimentaria A | 1 | Eficiencia operativa y logística | 2 | Continuar · Parar en G5 por datos insuficientes |
+| **7** | Grupo hotelero regional T | 2 | Mejora de experiencia y operación | 2 | Continuar · Iterar en G3 |
 | **8** | Fabricante industrial M | 3 | Mejora de servicio y prevención | 2 | Escalar · Parar en G5 por riesgo de cumplimiento |
 
 ---
@@ -505,7 +505,7 @@ Cooperativa regional ficticia con 260 empleados, 11 centros de recepción, logí
 | D6 · Riesgo, seguridad y cumplimiento | 2 | Control de seguridad de producción aceptable; inventario de IA aún incompleto. |
 | D7 · Medición y evidencia | 1 | Sin líneas base ni validación formal del valor. |
 
-**Nivel global:** media 13 ÷ 7 = 1,85 → 1; límite: mínimo de D1 y D6 (2) + 1 = 3. **Nivel global 2.**
+**Nivel global:** media 13 ÷ 7 = 1,85 → 1; límite: mínimo de D1 y D6 (2) + 1 = 3. **Nivel global 1.**
 
 **Índice de transformación:** composición de la inversión 1 · composición del valor 0 · materialización 1 · profundidad del cambio 1 · modelo operativo 0 · ingresos habilitados 0 · paso a producción 1 · decisión del consejo 0. **Perfil: Eficiencia operativa y logística.**
 
@@ -545,7 +545,7 @@ Valor estimado antes del cierre del piloto: 124.000 € de ahorro en margen perd
 
 ---
 
-## 9. Caso 7 · Grupo hotelero regional H (ficticio)
+## 9. Caso 7 · Grupo hotelero regional T (ficticio)
 
 ### 9.1 Situación inicial
 
@@ -711,7 +711,7 @@ Inversión consumida: 145.000 €. Se reformuló la iniciativa como un asistente
 
 ---
 
-## 10. Documentos relacionados
+## 13. Documentos relacionados
 
 | Documento | Relación |
 |---|---|
@@ -728,7 +728,7 @@ Inversión consumida: 145.000 €. Se reformuló la iniciativa como un asistente
 
 ---
 
-## 11. Control de versiones
+## 14. Control de versiones
 
 | Versión | Fecha | Cambios |
 |---|---|---|

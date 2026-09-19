@@ -147,7 +147,7 @@ Un potencial de escalado sin inversión adicional, hipótesis y plazo no es un d
 
 ### 8.2 Tratamiento de datos y modelos
 
-| Elemento | Tratamiento (Conservar · Anonimizar · Borrar · Devolver · Archivar) | Fundamento (obligación legal, auditoría, defensa jurídica, fin de finalidad) | Plazo | Responsable | Evidencia (por ejemplo, certificado de borrado) |
+| Elemento | Tratamiento (Conservar · Anonimizar · Borrar · Devolver · Archivar) | Fundamento (obligación legal, auditoría, defensa jurídica, fin de finalidad) | Plazo | Responsable | Evidencia (por ejemplo, certificado de borrado, P57 §8) |
 |---|---|---|---|---|---|
 | Datos de entrenamiento y conjuntos (P16) | | | | | |
 | Base de conocimiento | | | | | |

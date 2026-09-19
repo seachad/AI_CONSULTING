@@ -112,7 +112,7 @@ Los plazos de sustituibilidad son orientativos y se aprueban en C2 (documento 13
 
 | Requisito | N1 · Estándar | N2 · Reforzado | N3 · Crítico |
 |---|---|---|---|
-| **Diligencia debida** | Cuestionario básico; revisión de condiciones de servicio y de privacidad. | Cuestionario completo (4.3); certificaciones e informes independientes; análisis de subencargados. | Todo lo de N2, más solvencia financiera, continuidad, subcontratación en cadena, referencias y verificación directa o por tercero. |
+| **Diligencia debida** | Cuestionario básico; revisión de condiciones de servicio y de privacidad. | Cuestionario completo (4.3; P55); certificaciones e informes independientes; análisis de subencargados. | Todo lo de N2, más solvencia financiera, continuidad, subcontratación en cadena, referencias y verificación directa o por tercero. |
 | **Seguridad** | Configuración de datos verificada (no entrenamiento, retención). | Evaluación documental de seguridad de IA (SEG y AG aplicables). | Evaluación técnica, pruebas adversarias propias o informes independientes recientes; derecho a pruebas. |
 | **Contrato** | Condiciones estándar revisadas con las cláusulas 1–4 de la sección 6. | Anexo de IA y encargo de tratamiento con las cláusulas marcadas para N2. | Contrato negociado con todas las cláusulas; DORA art. 30.3 si soporta funciones críticas o importantes de una entidad financiera. |
 | **Aprobación** | Responsable de producto con conformidad de compras. | Patrocinador con conformidad de riesgos y de protección de datos. | Comité de IA con conformidad de riesgos, seguridad de la información, protección de datos y jurídico. |
@@ -146,11 +146,11 @@ Un proveedor N3 implica normalmente intensidad **Enterprise** en las iniciativas
 | Etapa | Qué se hace | Evidencia | Responsable | Fase SEVEN-G |
 |---|---|---|---|---|
 | **1. Selección** | Decisión de construir, comprar o aliarse; requisitos; nivel N preliminar; alternativas comparadas. | P10; requisitos; comparativa. | Responsable de producto con compras. | 3 |
-| **2. Diligencia debida** | Cuestionario y verificación según nivel; evaluación de seguridad y protección de datos; riesgos RT-TER. | P14; riesgos en P12. | Compras, seguridad, protección de datos, riesgos. | 3 |
-| **3. Contrato** | Negociación con las cláusulas del nivel; aprobación. | Contrato; lista de cláusulas verificada en P14. | Jurídico y compras. | 3–4 |
+| **2. Diligencia debida** | Cuestionario y verificación según nivel; evaluación de seguridad y protección de datos; riesgos RT-TER. | P14; P55; riesgos en P12. | Compras, seguridad, protección de datos, riesgos. | 3 |
+| **3. Contrato** | Negociación con las cláusulas del nivel; aprobación. | Contrato (P56); lista de cláusulas verificada en P14. | Jurídico y compras. | 3–4 |
 | **4. Integración** | Configuración segura (retención, no entrenamiento, regiones); identidades y permisos; registro; pruebas; plan de salida. | P15, P18; plan de salida. | Responsable técnico. | 4–5 |
-| **5. Seguimiento** | Indicadores de servicio, incidentes, cambios de modelo, subencargados, revisiones periódicas, reevaluación de nivel. | T09; actas de revisión; P27. | Gestor de la relación y responsable de operación. | 6 |
-| **6. Salida** | Activación del plan: transición, portabilidad, borrado certificado, revocación de accesos, lecciones. | Certificado de borrado; acta de cierre; P30. | Responsable técnico y jurídico. | 7 |
+| **5. Seguimiento** | Indicadores de servicio, incidentes, cambios de modelo, subencargados, revisiones periódicas, reevaluación de nivel. | T09; actas de revisión (P57 §5); P27. | Gestor de la relación y responsable de operación. | 6 |
+| **6. Salida** | Activación del plan: transición, portabilidad, borrado certificado, revocación de accesos, lecciones. | Certificado de borrado y acta de cierre (P57 §8–9); P30. | Responsable técnico y jurídico. | 7 |
 
 **Disparadores de reevaluación:** cambio de modelo o de versión principal; cambio de subencargados o de ubicación; incidente S1 o S2 imputable al proveedor; cambio de propiedad del proveedor; cambio de uso o de nivel de autonomía; nueva obligación regulatoria; deterioro de indicadores de servicio; aviso de retirada de un modelo.
 
@@ -221,7 +221,7 @@ Si la compañía no está sujeta a DORA, sus requisitos **pueden** usarse como r
 | Precio por uso sin límites ni previsión. | Presupuestos de consumo, alertas y cláusulas de revisión de precios. |
 | Sin alternativa probada. | Evaluación periódica de al menos una alternativa para servicios N3. |
 
-La **prueba de portabilidad** para servicios N3 consiste en ejecutar el conjunto de evaluación propio con un modelo o proveedor alternativo y documentar la diferencia de resultados, coste y esfuerzo de migración. Se realiza al menos una vez al año o antes de renovar el contrato.
+La **prueba de portabilidad** (P57 §7) para servicios N3 consiste en ejecutar el conjunto de evaluación propio con un modelo o proveedor alternativo y documentar la diferencia de resultados, coste y esfuerzo de migración. Se realiza al menos una vez al año o antes de renovar el contrato.
 
 ### 7.2 Concentración
 
@@ -247,11 +247,11 @@ Muchas aplicaciones de negocio incorporan funciones de IA mediante actualizacion
 
 | Paso | Qué se hace | Responsable |
 |---|---|---|
-| **1. Identificar** | Cuestionario a los proveedores de software vigentes sobre funciones de IA existentes y previstas; revisión de notas de versión; revisión de configuraciones. Se prioriza el software que trata datos personales o confidenciales o que interviene en decisiones. | Oficina de IA con compras y tecnología |
+| **1. Identificar** | Cuestionario (P55, anexo A) a los proveedores de software vigentes sobre funciones de IA existentes y previstas; revisión de notas de versión; revisión de configuraciones. Se prioriza el software que trata datos personales o confidenciales o que interviene en decisiones. | Oficina de IA con compras y tecnología |
 | **2. Inventariar** | Alta de cada función de IA relevante en el inventario (T02), vinculada al proveedor en T09, con etiqueta de tecnología "IA de terceros embebida". | Oficina de IA |
 | **3. Clasificar** | Determinar si es uso corporativo de propósito general o IA que interviene en decisiones, operaciones o relación con clientes; nivel N; criterios Enterprise; clasificación regulatoria. | Responsable de riesgos de IA |
 | **4. Decidir** | Mantener desactivada, activar con controles o activar como iniciativa con ciclo completo. | Según 4.2 y 01 §1.2 |
-| **5. Contratar** | Adenda con las cláusulas 1, 3, 8 y 13 como mínimo y las que correspondan al nivel. | Jurídico y compras |
+| **5. Contratar** | Adenda (P56 §8) con las cláusulas 1, 3, 8 y 13 como mínimo y las que correspondan al nivel. | Jurídico y compras |
 | **6. Vigilar** | Revisión de actualizaciones y cambios de configuración en cada R6 o, en su defecto, semestral. | Gestor de la relación |
 
 ### 8.2 Reglas
@@ -323,7 +323,10 @@ Al consejo o su comisión delegada se informa trimestralmente de la concentraci�
 | Código | Nombre | Uso |
 |---|---|---|
 | **P14** | Evaluación de proveedor de IA | Nivel N con factores; decisión de construir, comprar o aliarse; cuestionario de diligencia debida; evaluación de seguridad y protección de datos; verificación de las 16 cláusulas; riesgos; plan de salida; conformidades y aprobación. Fase 3; se actualiza en R6 y ante disparadores. |
-| **T09** | Registro de proveedores de IA | Campos de la sección 9, alertas de revisión y renovación, indicadores de la sección 10 y vista de concentración. Módulo de T01. |
+| **T09** | Registro de proveedores de IA | Campos de la sección 9, alertas de revisión y renovación, indicadores de la sección 10 y vista de concentración. Módulo de T01; su formato de trabajo es P57. |
+| **P55** | Cuestionario de diligencia debida a proveedores de IA | Cuestionario de la sección 4.3 por nivel, con valoración y traslado a P14; anexo A para la IA embebida (sección 8). Fase 3. |
+| **P56** | Cláusulas contractuales tipo de IA | Redacción modelo de las 16 cláusulas de la sección 6, anexo de IA para contratos existentes y adenda de IA embebida. Fases 3–4. |
+| **P57** | Registro de proveedores y plan de salida | Registro de la sección 9, concentración, actas de revisión, plan de salida, prueba de portabilidad, certificado de borrado y acta de cierre (secciones 5, 7 y 9). Fases 3 a 7. |
 | P10 · P12 · P30 | Evaluación de viabilidad · Matriz y registro de riesgos · Decisión de escalado o retirada | Decisión de contratación, riesgos RT-TER y salida. |
 | T02 · T06 · T08 | Inventario · Riesgos · Incidentes | Sistemas vinculados, riesgos e incidentes de terceros. |
 

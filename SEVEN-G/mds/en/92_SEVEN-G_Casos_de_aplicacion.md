@@ -1,6 +1,6 @@
 # Application cases
 
-**Five fictitious companies go through the corporate cycle and the lifecycle of their initiatives**
+**Eight fictitious companies go through the corporate cycle and the lifecycle of their initiatives**
 
 | | |
 |---|---|
@@ -10,26 +10,26 @@
 | Author | Fernando García · SEACHAD |
 | Status | Draft for review. All cases, companies, people and figures are fictitious. |
 
-<!-- cifras: 5 | fictitious cases ; 15 | initiatives taken through their gates ; 5 | well-founded stops ; 4 | recorded retirements -->
+<!-- cifras: 8 | fictitious cases ; 21 | initiatives taken through their gates ; 7 | well-founded stops ; 5 | recorded retirements -->
 
 ---
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 > **NOTICE: ALL THE CONTENT OF THIS DOCUMENT IS FICTITIOUS.**
-> The companies, their bodies, people, systems, initiatives, decisions, dates and figures are **invented** to illustrate how SEVEN-G is applied. They do not describe any real organisation, do not come from client engagements and **are not market references, benchmarks or expected results**. The cases are consistent with the sectors of the board dashboard demonstrations (energy, logistics, healthcare, retail and public sector), but do not reproduce their data. Any resemblance to a real organisation is coincidental.
+> The companies, their bodies, people, systems, initiatives, decisions, dates and figures are **invented** to illustrate how SEVEN-G is applied. They do not describe any real organisation, do not come from client engagements and **are not market references, benchmarks or expected results**. The cases are consistent with the sectors of the board dashboard demonstrations (energy, logistics, healthcare, retail, public sector, agri-food, hospitality and industry), but do not reproduce their data. Any resemblance to a real organisation is coincidental.
 
 ---
 
 ## 1. Purpose and scope
 
-This document uses five fictitious cases to show how the components of SEVEN-G are applied in practice: maturity diagnosis, transformation index, board decisions, the progression of initiatives through their *gates*, value measurement with formulas and statuses, stops and retirements.
+This document uses eight fictitious cases to show how the components of SEVEN-G are applied in practice: maturity diagnosis, transformation index, board decisions, the progression of initiatives through their *gates*, value measurement with formulas and statuses, stops and retirements.
 
 It is used to:
 
 - Train boards, AI Committees and AI Offices.
 - Explain the framework with complete examples whose calculations can be verified.
-- Prepare workshops (section 8).
+- Prepare workshops (section 11).
 
 Conventions used in the cases:
 
@@ -50,6 +50,9 @@ Conventions used in the cases:
 | **3** | Hospital group H | 2 | Declared but unevidenced transformation | 3 | Iterate at G7 · Retire due to bias · Stop at G3 due to regulation |
 | **4** | Retail group R | 3 | Transformation under way | 3 | Scale (Transform) · Stop at G3 due to data · Retire |
 | **5** | Regional administration P | 1 | Scattered exploration | 3 | Retire after critical nonconformity · Proceed · Stop at G3 |
+| **6** | Agri-food cooperative A | 1 | Operational and logistics efficiency | 2 | Proceed · Stop at G5 due to insufficient data |
+| **7** | Regional hotel group T | 2 | Experience and operations improvement | 2 | Proceed · Iterate at G3 |
+| **8** | Industrial manufacturer M | 3 | Service improvement and prevention | 2 | Scale · Stop at G5 due to compliance risk |
 
 ---
 
@@ -484,20 +487,198 @@ Investment consumed: €30,000. The stop gave rise to REC-2028-004 on tender spe
 
 ---
 
-## 8. Cross-cutting lessons and use in workshops
+## 8. Case 6 · Agri-food cooperative A (fictitious)
 
-### 8.1 Cross-cutting lessons
+### 8.1 Initial situation
+
+Fictitious regional cooperative with 260 employees, 11 receiving centres, its own logistics and 3 fruit and vegetable production lines. It has a very strong operations team but little digital specialisation, and management wants to decide whether AI can help reduce shrinkage and improve forecasting without creating complex external dependencies.
+
+### 8.2 Diagnosis (C1, Q2 27)
+
+| Dimension | Level | Main evidence |
+|---|---|---|
+| D1 · Strategy and governance | 2 | Cooperative thesis with no formal mandate over AI. |
+| D2 · Value and portfolio | 2 | Isolated projects with declared value; no prioritisation criteria. |
+| D3 · Data and knowledge | 2 | Procurement and sales data in accounting and the ERP, with some dispersion. |
+| D4 · Technology and operations | 2 | Stable production systems; little data automation. |
+| D5 · People and adoption | 2 | Warehouse and production staff with a culture of continuous improvement. |
+| D6 · Risk, security and compliance | 2 | Acceptable production security controls; AI inventory still incomplete. |
+| D7 · Measurement and evidence | 1 | No baselines or formal validation of value. |
+
+**Overall level:** average 13 ÷ 7 = 1.85 → 1; cap: minimum of D1 and D6 (2) + 1 = 3. **Overall level 1.**
+
+**Transformation index:** investment mix 1 · value mix 0 · materialisation 1 · depth of change 1 · operating model 0 · AI-enabled revenue 0 · progression to production 1 · board decision 0. **Profile: Operational and logistics efficiency.**
+
+### 8.3 Board decisions
+
+| Code | Body | Decision |
+|---|---|---|
+| DEC-2027-051 | General assembly (C2) | Thesis: Optimise in 04 Operations and in 05 Data/logistics; AI in procurement decisions or decisions about people is not approved until there is a baseline and controls. |
+| DEC-2027-053 | General assembly | Authorise stage 1 of IA-2027-052 with a limit of €90,000. |
+
+### 8.4 Initiatives
+
+**IA-2027-052 · Demand forecasting by centre and product.** Optimise · Lite · Autonomy A1.
+
+| *Gate* | Timing | Outcome | Decides | Reason |
+|---|---|---|---|---|
+| G0–G2 | Q1 27 | Proceed | Sponsor | Baseline of sales and returns by centre. |
+| G3 | Q2 27 | Proceed | Sponsor with risk clearance | Low residual risk; the decision concerns logistics coordination, not procurement. |
+| G4 | Q2 27 | Proceed | General assembly | Rollback to manual planning tested. |
+| G5 | Q4 27 | **Stop** | General assembly | External suppliers were found to have several different ordering patterns and the historical series was incomplete; accuracy fell below the threshold in two centres. Coded reason: *Insufficient data*. |
+
+Estimated value before the pilot closed: €124,000 of savings in lost margin and shrinkage avoided; forecast recurring cost €55,000. The initiative was archived and the cooperative devoted the following quarter to a procurement and logistics data project to standardise the flows.
+
+**IA-2027-055 · Quality and batch traceability assistant.** Augment · Lite · Autonomy A0.
+
+| *Gate* | Timing | Outcome | Decides | Reason |
+|---|---|---|---|---|
+| G0–G1 | Q3 27 | Proceed | General assembly | Quality staff have to look up 18,000 batches a year in several formats. |
+| G2–G3 | Q4 27 | Proceed | General assembly | Human review control and tests on batch matches. |
+| G4–G5 | Q1 28 | Proceed | General assembly | Response time is reduced and traceability improves; rollback is simple. |
+
+### 8.5 Lessons
+
+1. **Mid-sized companies often have good operational data, but not always consistent data.** Accuracy did not fail for technical reasons but because of data quality.
+2. **A data project can be the most valuable initiative.** The cooperative learnt that forecasting requires putting data in order before automating.
+3. **Useful AI for a cooperative does not have to be large-scale.** A clear problem, a baseline and a quick rollback are enough.
+
+---
+
+## 9. Case 7 · Regional hotel group T (fictitious)
+
+### 9.1 Initial situation
+
+Fictitious chain of 7 hotels, 4,000 beds and 600 employees. It has a small digital operations team and management that is very focused on the customer experience. It has no external consultancy or large AI Committee, but it knows that automating bookings and staff allocation has a direct impact on revenue and satisfaction.
+
+### 9.2 Diagnosis (C1, Q2 27)
+
+| Dimension | Level | Main evidence |
+|---|---|---|
+| D1 · Strategy and governance | 2 | Management with experience objectives, but no formal AI thesis. |
+| D2 · Value and portfolio | 2 | Some isolated marketing pilots; no portfolio or closure criteria. |
+| D3 · Data and knowledge | 2 | Fairly good booking and occupancy history; fragmented customer data. |
+| D4 · Technology and operations | 2 | CRM and PMS with partial integration. |
+| D5 · People and adoption | 3 | Front desk and management team with a positive attitude. |
+| D6 · Risk, security and compliance | 2 | Incomplete inventory of generative tools; third-party contracts reviewed. |
+| D7 · Measurement and evidence | 1 | Some occupancy indicators, but no validation of incremental value. |
+
+**Overall level:** average 14 ÷ 7 = 2.0. **Overall level 2.**
+
+**Transformation index:** investment mix 0 · value mix 0 · materialisation 1 · depth of change 1 · operating model 1 · AI-enabled revenue 0 · progression to production 1 · board decision 0. **Profile: Experience and operations improvement.**
+
+### 9.3 Board decisions
+
+| Code | Body | Decision |
+|---|---|---|
+| DEC-2027-061 | Management board | Thesis: Optimise in 04 Operations and 03 People; Augment in 01 Customer. Decisions on prices or refunds are not automated without human review. |
+| DEC-2027-062 | Management board | Authorise stage 1 of IA-2027-060 with a limit of €65,000. |
+
+### 9.4 Initiatives
+
+**IA-2027-060 · Room pricing and availability optimisation.** Optimise · Lite · Autonomy A1.
+
+| *Gate* | Timing | Outcome | Decides | Reason |
+|---|---|---|---|---|
+| G0–G2 | Q1 27 | Proceed | Management | The Black Friday campaign and high-demand dates had already been measured. |
+| G3 | Q2 27 | **Iterate** | Management board | A clear classification of customer data was missing and a human review criterion was needed for rate changes. |
+| G3 (2nd) | Q3 27 | Proceed | Management board | Data and usage policies clarified. |
+| G4–G5 | Q4 27 | Proceed | Management | The margin increase was above the threshold in one pilot hotel. |
+
+Value declared after six months: €212,000 of revenue increase from occupancy and hourly margin; recurring cost €92,000; estimated net value €120,000. The board did not authorise G7 until the effect had been validated with a control group.
+
+**IA-2027-063 · Assistant for customer service and incident management.** Augment · Lite · Autonomy A0.
+
+| *Gate* | Timing | Outcome | Decides | Reason |
+|---|---|---|---|---|
+| G0–G1 | Q3 27 | Proceed | Management | Reduction in response time and in repeat calls. |
+| G2–G3 | Q4 27 | Proceed | Management | Incidents with human review and transparency of the answer. |
+
+### 9.5 Lessons
+
+1. **The customer experience can be a sensible first use case for mid-sized companies.** It does not require a huge structure or an external consultancy.
+2. **Iterating at G3 is a sign of maturity, not of failure.** The use case was strengthened with a human review criterion and data classification.
+3. **A hotel does not need to "transform" to get started.** Optimising and augmenting already have measurable value.
+
+---
+
+## 10. Case 8 · Industrial manufacturer M (fictitious)
+
+### 10.1 Initial situation
+
+Fictitious manufacturer of metal components for the automotive and agricultural machinery industries, with 420 employees and two production plants. It has a capable technical team, management that is strongly focused on quality and a strong tension between customer service and the operational workload of maintenance and planning.
+
+### 10.2 Diagnosis (C1, Q2 27)
+
+| Dimension | Level | Main evidence |
+|---|---|---|
+| D1 · Strategy and governance | 3 | There is a continuous improvement agenda and an operations committee with owners. |
+| D2 · Value and portfolio | 3 | Clear priorities by business line. |
+| D3 · Data and knowledge | 3 | Sensors and traceability in production with a well-organised ERP. |
+| D4 · Technology and operations | 3 | Predictive maintenance and monitoring already in place. |
+| D5 · People and adoption | 2 | Some teams with a good foundation; others showing resistance to change. |
+| D6 · Risk, security and compliance | 2 | Supplier identification and control, without a complete AI inventory. |
+| D7 · Measurement and evidence | 3 | Baseline and comparison groups in maintenance and service. |
+
+**Overall level:** average 19 ÷ 7 = 2.71 → 2; cap: minimum of D1 and D6 (2) + 1 = 3. **Overall level 2.**
+
+**Transformation index:** investment mix 1 · value mix 1 · materialisation 1 · depth of change 2 · operating model 1 · AI-enabled revenue 0 · progression to production 1 · board decision 1. **Profile: Service improvement and prevention.**
+
+### 10.3 Board decisions
+
+| Code | Body | Decision |
+|---|---|---|
+| DEC-2027-071 | Management board | Thesis: Optimise in 04 Operations, Augment in 01 Customer and in 09 AI governance; quality and service decisions are not automated without human review. |
+| DEC-2027-072 | Management board | Authorise stage 1 of IA-2027-070 with a limit of €180,000. |
+| DEC-2028-010 | Management board | Stop IA-2027-074 at G5 due to tax compliance and order management risk. |
+
+### 10.4 Initiatives
+
+**IA-2027-070 · Predictive maintenance of critical equipment.** Optimise · Enterprise · Autonomy A1.
+
+| *Gate* | Timing | Outcome | Decides | Reason |
+|---|---|---|---|---|
+| G0–G2 | Q1 27 | Proceed | Management | Machinery control groups and failure dates recorded. |
+| G3 | Q2 27 | Proceed | Management | Medium residual risk; review by maintenance. |
+| G4 | Q3 27 | Proceed | Management | Rollback through manual shutdown tested. |
+| G5 | Q1 28 | **Scale** | Management board | Reduction in failures and in response time verified. |
+
+Value at twelve months: €280,000 of losses avoided; recurring cost €120,000; validated annual net value €160,000.
+
+**IA-2027-074 · Agent for managing customer incidents and orders.** Augment · Enterprise · Autonomy A2 with a limit of €2,500 per case.
+
+| *Gate* | Timing | Outcome | Decides | Reason |
+|---|---|---|---|---|
+| G0–G2 | Q2 27 | Proceed | Management | Hypothesis of reduced response time and improved service. |
+| G3 | Q3 27 | Proceed with conditions | Management | Condition: human review and traceability of decisions on contracts and deliveries. |
+| G4 | Q4 27 | Proceed | Management | Margin milestone prior to service. |
+| G5 | Q2 28 | **Stop** | Board | A problem was detected with traceability and with the handling of suppliers, with a risk of non-compliance in the most critical service. Coded reason: *Compliance risk*. |
+
+Investment consumed: €145,000. The initiative was reformulated as an internal support assistant, not as a decision-making agent.
+
+### 10.5 Lessons
+
+1. **Industry does not need to be huge to take a risk and service approach.** The case combines production, quality and customer service.
+2. **Useful AI in plants usually starts with maintenance and service.** These are domains with clear data and simple rollback.
+3. **Once decisions about customers or suppliers are involved, traceability becomes critical.** The case demonstrated this and reinforced the review criterion.
+
+---
+
+## 11. Cross-cutting lessons and use in workshops
+
+### 11.1 Cross-cutting lessons
 
 | Lesson | Cases |
 |---|---|
-| Well-founded stops avoid investment and generate recorded learning. | 1, 2, 3, 4, 5 |
-| Regularising systems that predate the framework often reveals unfounded declared value or unassessed risks. | 1, 3, 4, 5 |
-| Released capacity is only value when it materialises or is expressly reassigned. | 2, 3, 5 |
-| The overall maturity level is capped by the weakest governance or risk dimension and is read together with the dimensions. | 1, 2, 3 |
-| Transform bets need milestones, a stage limit and stop criteria that can only be relaxed by whoever authorised them. | 1, 2, 3, 4 |
-| At G3 there is no proceeding with conditions on legal compliance: the initiative iterates or stops. | 2, 3, 5 |
+| Well-founded stops avoid investment and generate recorded learning. | 1, 2, 3, 4, 5, 6, 8 |
+| Regularising systems that predate the framework often reveals unfounded declared value or unassessed risks. | 1, 3, 4, 5, 6, 8 |
+| Released capacity is only value when it materialises or is expressly reassigned. | 2, 3, 5, 6, 7 |
+| The overall maturity level is capped by the weakest governance or risk dimension and is read together with the dimensions. | 1, 2, 3, 6, 8 |
+| Transform bets need milestones, a stage limit and stop criteria that can only be relaxed by whoever authorised them. | 1, 2, 3, 4, 8 |
+| At G3 there is no proceeding with conditions on legal compliance: the initiative iterates or stops. | 2, 3, 5, 7, 8 |
+| In mid-sized companies, the first decision is not usually "transform" but "put data in order and put controls in place". | 6, 7, 8 |
 
-### 8.2 Questions for working on the cases
+### 11.2 Questions for working on the cases
 
 | Case | Question for discussion |
 |---|---|
@@ -506,10 +687,13 @@ Investment consumed: €30,000. The stop gave rise to REC-2028-004 on tender spe
 | 3 | With a negative validated net value and a positive total net value, would you scale automatic clinical documentation? Under what condition? |
 | 4 | Is it consistent to fund first the initiative with the lower additional net value per euro? How is this explained to the market and to the workforce? |
 | 5 | How would you adapt the "AI-enabled revenue" signal of the transformation index to a public administration? |
+| 6 | What change in data governance would be needed before trying forecasting by centre again? |
+| 7 | What human review threshold is reasonable for a hotel chain without a large AI structure? |
+| 8 | How would you distinguish a service error from a compliance risk when the system interacts with customers, suppliers and people? |
 
 ---
 
-## 9. Associated tools and templates
+## 12. Associated tools and templates
 
 | Code | Name | Use in the cases |
 |---|---|---|
@@ -527,7 +711,7 @@ Investment consumed: €30,000. The stop gave rise to REC-2028-004 on tender spe
 
 ---
 
-## 10. Related documents
+## 13. Related documents
 
 | Document | Relationship |
 |---|---|
@@ -544,7 +728,7 @@ Investment consumed: €30,000. The stop gave rise to REC-2028-004 on tender spe
 
 ---
 
-## 11. Version control
+## 14. Version control
 
 | Version | Date | Changes |
 |---|---|---|

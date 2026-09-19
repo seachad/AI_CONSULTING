@@ -59,8 +59,8 @@ Se aplica a los auditores de IA, a la función de auditoría interna y a los aud
 
 | Nivel | Requisito | Cómo se comprueba |
 |---|---|---|
-| **Organizativa** | La función que aporta auditores de IA depende funcionalmente de la comisión delegada del consejo (documento 30 §3.6), no de áreas que patrocinen iniciativas. | Estatuto de auditoría interna; organigrama. |
-| **Individual** | El auditor no ha tenido rol en la iniciativa ni en el diseño, construcción u operación del sistema; no depende jerárquicamente del patrocinador; no ha asesorado sobre los controles auditados en los doce meses anteriores (30, incompatibilidad I-10). | Declaración de independencia firmada antes de cada encargo. |
+| **Organizativa** | La función que aporta auditores de IA depende funcionalmente de la comisión delegada del consejo (documento 30 §3.5), no de áreas que patrocinen iniciativas. | Estatuto de auditoría interna; organigrama. |
+| **Individual** | El auditor no ha tenido rol en la iniciativa ni en el diseño, construcción u operación del sistema; no depende jerárquicamente del patrocinador; no ha asesorado sobre los controles auditados en los doce meses anteriores (30, incompatibilidad I-10). | Declaración de independencia firmada antes de cada encargo (P41, modelo B). |
 | **Económica** | Un auditor externo no audita soluciones que ha diseñado, implantado o vendido, ni productos de empresas vinculadas (30, I-11). La retribución no depende del resultado. | Declaración de relaciones con proveedores; revisión de contratos. |
 | **Rotación** | Se recomienda que un mismo auditor principal no audite el mismo sistema Enterprise más de [tres] ejercicios consecutivos. | Registro de asignaciones en T01. |
 | **Expertos técnicos** | El auditor puede apoyarse en expertos (ciencia de datos, seguridad ofensiva, jurídico). Los expertos deben cumplir los mismos requisitos de independencia respecto del objeto auditado y trabajan bajo la dirección del auditor, que responde de la conclusión. | Declaración del experto; programa de trabajo con su alcance. |
@@ -169,7 +169,7 @@ Cada sistema del universo se puntúa con los factores siguientes. La tabla es **
 | Bloque | Contenido | Regla de cobertura |
 |---|---|---|
 | Auditorías de *gate* Enterprise | Previsión de *gates* por iniciativa según T01. | 100 %. |
-| Auditorías de *gate* Lite | Muestra de *gates* Lite del ejercicio. | Según la sección 7.4. |
+| Auditorías de *gate* Lite | Muestra de *gates* Lite del ejercicio. | Según 21 §10.3. |
 | Auditorías de continuidad | Sistemas de prioridad Alta y los de prioridad Media que corresponda por rotación. | Sección 5.2. |
 | Auditoría del marco | Incluye la declaración de aplicación. | Anual. |
 | Temáticas | Entre una y tres al año según tamaño y riesgos. | Según riesgos de cartera e incidentes. |
@@ -463,7 +463,7 @@ Adicionalmente, se verifica la **regularización de las iniciativas anteriores**
 | **Conforme con observaciones** | Se cumplen las siete condiciones con no conformidades menores. | Lo mismo, indicando que existen acciones de mejora en curso. |
 | **No conforme** | Alguna condición no se cumple (no conformidad mayor o crítica en ella). | No puede declarar que aplica SEVEN-G hasta corregir y superar una reauditoría. Puede comunicar que está en proceso de implantación. |
 
-**Contenido mínimo de la declaración**: denominación de la compañía; alcance; versión de SEVEN-G aplicada; fecha; resultado y fecha de la última auditoría y tipo de auditor (interno o externo); excepciones vigentes relevantes; mención de que la declaración no es una certificación. Conforme a la licencia de los contenidos (CC BY 4.0), se debe reconocer la autoría del marco.
+**Contenido mínimo de la declaración**: denominación de la compañía; alcance; versión de SEVEN-G aplicada; fecha; resultado y fecha de la última auditoría y tipo de auditor (interno o externo); excepciones vigentes relevantes; mención de que la declaración no es una certificación. Conforme a la licencia de los contenidos (CC BY 4.0), se debe reconocer la autoría del marco. Texto modelo en P61.
 
 ---
 
@@ -517,6 +517,11 @@ ISO/IEC 42001:2023 establece requisitos para un sistema de gestión de la IA. Su
 | **P29** | Registro de decisión de *gate* | Resultado de auditoría de *gate* abreviado. |
 | **P22** | Resultados de validación y del piloto | Base de la reejecución de métricas. |
 | **P23** | Firma de puesta en producción | Verificación de la firma multinivel. |
+| **P41** | Declaraciones de independencia y conflictos de interés | Declaración de independencia del auditor y de los expertos antes de cada encargo (modelo B, sección 3.1). |
+| **P58** | Plan anual de auditoría de IA | Universo auditable, priorización y plan anual (sección 5). |
+| **P59** | Papeles de trabajo de auditoría | Programa de trabajo, pruebas y muestras (secciones 6 y 7). |
+| **P60** | Informe de auditoría y fichas de hallazgo | Informe y fichas de hallazgo (sección 9). |
+| **P61** | Declaración de aplicación de SEVEN-G | Texto de la declaración de aplicación que se audita (sección 11). |
 | **`LV-G0`… `LV-G7`** | Listas de verificación por *gate* (documento 22) | Programa de la auditoría de *gate*. |
 
 **Requisitos para las herramientas derivados de este documento:** T03 debe impedir registrar una decisión de *gate* con un resultado de verificación No conforme, salvo Parar cuando el equipo retira la solicitud y propone parar; T01 debe registrar auditor, declaración de independencia y fecha de verificación; T08 debe vincular cada no conformidad a su auditoría de origen y controlar los plazos de la sección 10.

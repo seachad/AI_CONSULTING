@@ -44,7 +44,7 @@ This document does not constitute legal advice.
 | **Inputs from C1** | Inventory, maturity (document 11), transformation index (12), current validated value and cost. |
 | **Inputs from C2** | AI thesis, ambition per sphere, risk appetite, framework budget, return horizon, Enterprise investment threshold, reference time limits per phase and concentration limits (document 13). |
 | **Mandatory outputs** (01 §5.1) | Prioritised portfolio with ambition level, sphere, intensity, budget and owners; retirement criteria; available capacity. |
-| **Outputs of this document** | Budget envelopes per lane; prioritisation table; capacity plan; concentration limits applied; regularisation plan; review calendar. |
+| **Outputs of this document** | Budget envelopes per lane; prioritisation table; capacity plan; concentration limits applied; regularisation plan; review calendar. They are documented with the C3 portfolio plan (P36). |
 | **Owner** | AI Committee, with preparation by the AI Office. |
 | **Approves** | AI Committee. The board approves Transform initiatives and any transfer out of their envelope. |
 
@@ -409,7 +409,7 @@ Reference time limits: retirement plan approved within 15 days (Lite) or 30 days
 
 ### 10.8 Lessons learned
 
-Every retirement, and every stop at G3 or later, produces a lessons note with: initial hypothesis; what happened; coded reason; **what early signal foreshadowed it and when it was noticed**; total investment and cost against realised value; and what change is proposed to entry criteria, templates or thresholds. The AI Office consolidates them by reason and presents them in C5.
+Every retirement, and every stop at G3 or later, produces a lessons note with: initial hypothesis; what happened; coded reason; **what early signal foreshadowed it and when it was noticed**; total investment and cost against realised value; and what change is proposed to entry criteria, templates or thresholds. The AI Office consolidates them by reason and presents them in C5 (P37 §9).
 
 ### 10.9 Retirement register (T22)
 
@@ -491,12 +491,14 @@ Initial thresholds, to be calibrated in C5.
 
 | Code | Use in this document |
 |---|---|
-| **T01 · Initiative register** | Entry record, prioritisation score, lanes and tranches, alerts for stalled initiatives, holds and conditions, "Programme" and "Regularisation" tags, traffic light. |
+| **T01 · Initiative register** | Entry record, alerts for stalled initiatives, holds and conditions, "Programme" and "Regularisation" tags. The prioritisation score, lanes and tranches, the regularisation plan and the programme traffic light are prepared with P36 (C3 portfolio plan), with columns ready for a spreadsheet; the traffic light is presented to the board in P67. |
 | **T16 · Portfolio sphere map** | Ambition balance per sphere with investment, recurring cost and value. |
 | **T22 · Retirement manager** | Retirement plan, replacement, data and models, access, communication, closure verification and retirement register (section 10.9). |
 | T02, T03, T04, T05, T06, T08, T09, T12, T13, T14, T17, T18 | Inventory, *gates*, intensity, ambition, risks, nonconformities, suppliers, value, costs, transformation index, dashboard and recommendations. |
 | P06, P07, P08, P10, P12, P14, P19, P28, P29, P31 | Evidence used in entry, prioritisation and review. |
 | **P30 · Scale or retirement decision** | G7 decision, lessons learned and retirement plan. |
+| **P36 · C3 portfolio plan** | Envelopes by lane, prioritisation, capacity, concentration limits, regularisation plan, review calendar and programme traffic light (section 2.1). |
+| **P37 · C5 annual review** | Lessons learned consolidated by reason (section 10.8). |
 
 ---
 

@@ -23,7 +23,7 @@
 | **Who verifies it** | AI Office under Lite; AI Auditor under Enterprise (01 §7.5). The AI Risk Owner reviews the legal basis and the restrictions on use. |
 | **At which *gate* it is reviewed** | G4. It is checked again at G5 (deployed versions) and at every R6 continuity review. |
 | **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. If the system is classified as high-risk, all fields are completed regardless of intensity. |
-| **Relationship** | P05 Inventory record · P11 Regulatory classification · P15 Architecture record · P19 Rollback plan · P27 Incident and change log · P30 Scale or retire decision · documents 51 and 53. |
+| **Relationship** | P05 Inventory record · P11 Regulatory classification · P15 Architecture record · P19 Rollback plan · P27 Incident and change log · P30 Scale or retire decision · P64 Dataset record and knowledge source inventory · documents 51 and 53. |
 
 Completion rules:
 

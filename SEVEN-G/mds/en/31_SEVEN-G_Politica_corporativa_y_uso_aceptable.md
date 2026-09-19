@@ -169,7 +169,7 @@ The red lines **admit no exceptions**.
 
 1. Any other requirement of this policy may be temporarily waived by means of a reasoned request that includes: the requirement affected, justification, risk, compensating measures, time limit and owner.
 2. Exceptions are approved by the bodies indicated in [the delegation matrix of the Governance model]. Whoever proposes does not approve.
-3. Exceptions have a maximum term of [six months], are recorded with a code and are reported quarterly to [the Committee].
+3. Exceptions have a maximum term of [six months], are recorded with the code EXC-AAAA-NNN (P40) and are reported quarterly to [the Committee].
 4. An expired exception that has not been closed is treated as a major nonconformity.
 
 ### 3.9 Breach
@@ -424,7 +424,7 @@ Durations are **indicative** as a starting point and must be adjusted to the siz
 |---|---|
 | **Owner** | AI Office, with the people function. |
 | **Annual plan** | Approved in C2 together with the policy; includes groups, priorities and budget (cost category "adoption and training"). |
-| **Record** | Per person: assigned profiles, completed training, dates, assessments and expiry dates. The record is linked to T21 and P03. |
+| **Record** | Per person: assigned profiles, completed training, dates, assessments and expiry dates. The record (P45) is maintained in T20, is linked to P03 and its indicators are shown in T21. |
 | **Access conditions** | F1 before receiving AI licences; F3 before overseeing a system in production; F4 before taking up a role in an initiative. |
 | **Effectiveness** | Measured by outcomes, not just attendance: assessments passed, incidents caused by misuse, detections of unauthorised use, verifications of outputs in sampling. |
 | **Updating** | Content reviewed at least annually and upon changes in regulation, tools or relevant incidents. |
@@ -495,6 +495,10 @@ The specific *gate* criteria are set out in document 21.
 | **P05** | AI system inventory record | Registration of tools and uses. |
 | **P14** | AI supplier assessment | Before authorising a tool or enabling embedded AI. |
 | **P20** | Adoption and capacity plan | Training of overseers and users of initiatives. |
+| **P40** | Exception request and register | Request, approval and register of exceptions to the policy (section 3.8). |
+| **P43** | Catalogue of authorised tools and requests | Catalogue of authorised tools and requests for new tools (section 4.2). |
+| **P44** | AI use and perception survey | Staff use and perception of AI, including unauthorised use (section 5.2). |
+| **P45** | Literacy and training plan and record | Programme by profile and record per person (section 6). |
 
 ---
 

@@ -142,6 +142,8 @@ Check boxes. For each incident, it is verified whether they apply; time limits a
 | ☐ | Contractual obligations towards customers or suppliers | Contracts | | | | | |
 | ☐ | Communication to affected individuals not required by law but appropriate **(Enterprise)** | Company policy | | | | | |
 
+The report models, the reasoned decision not to report and the communications are in P51.
+
 ---
 
 ## 9. Internal escalation
@@ -153,7 +155,7 @@ Check boxes. For each incident, it is verified whether they apply; time limits a
 | S3 | AI Product Owner and AI Office | | Document 37 |
 | S4 | Record in P27 | | Document 37 |
 
-If the incident reveals a breach of the framework (control disabled, unapproved change, gate skipped), a nonconformity with code NC-AAAA-NNN is also opened (document 37).
+If the incident reveals a breach of the framework (control disabled, unapproved change, gate skipped), a nonconformity with code NC-AAAA-NNN is also opened (P50, document 37).
 
 ---
 

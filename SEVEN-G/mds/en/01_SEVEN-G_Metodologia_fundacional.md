@@ -549,6 +549,8 @@ An organisation may declare that it applies SEVEN-G when it meets, as a minimum,
 6. It applies the value measurement rules and reports to the board with the oversight dashboard.
 7. It manages nonconformities using the process in section 12.
 
+The declaration is drafted with P61 and audited in accordance with 38 §11.
+
 Initiatives in production that predate the adoption of the framework must be regularised within a time limit approved in C2, by undergoing a continuity review equivalent to G7.
 
 ---

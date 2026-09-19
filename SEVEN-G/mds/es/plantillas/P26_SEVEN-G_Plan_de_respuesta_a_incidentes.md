@@ -142,6 +142,8 @@ Casillas de comprobación. Para cada incidente se verifica si aplican; los plazo
 | ☐ | Obligaciones contractuales con clientes o proveedores | Contratos | | | | | |
 | ☐ | Comunicación a personas afectadas no exigida por norma pero adecuada **(Enterprise)** | Política de la compañía | | | | | |
 
+Los modelos de notificación, la decisión motivada de no notificar y las comunicaciones están en P51.
+
 ---
 
 ## 9. Escalado interno
@@ -153,7 +155,7 @@ Casillas de comprobación. Para cada incidente se verifica si aplican; los plazo
 | S3 | Responsable de producto de IA y oficina de IA | | Documento 37 |
 | S4 | Registro en P27 | | Documento 37 |
 
-Si el incidente revela un incumplimiento del marco (control desactivado, cambio sin aprobar, gate omitido), se abre además una no conformidad con código NC-AAAA-NNN (documento 37).
+Si el incidente revela un incumplimiento del marco (control desactivado, cambio sin aprobar, gate omitido), se abre además una no conformidad con código NC-AAAA-NNN (P50, documento 37).
 
 ---
 

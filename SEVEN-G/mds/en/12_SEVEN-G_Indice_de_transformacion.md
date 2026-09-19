@@ -413,7 +413,7 @@ The initial thresholds have no empirical basis specific to the company. They are
 | 4 | Check that the adjustment is not being proposed to improve the profile for the current year. | Internal audit |
 | 5 | Approve the new version of the thresholds. | Board, in C5 |
 | 6 | Recalculate the previous period with the new thresholds and publish both results to maintain comparability. | AI Office |
-| 7 | Record the version of the thresholds used in each calculation. | AI Office (T14) |
+| 7 | Record the version of the thresholds used in each calculation. | AI Office (T14; P35 §14) |
 
 Calibration rules:
 

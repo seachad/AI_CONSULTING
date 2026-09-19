@@ -83,7 +83,7 @@ flowchart TB
 
 ## 3. Mandatos tipo de los órganos
 
-Los mandatos son **modelos para adaptar**. La compañía los aprueba en C2 y los incorpora al reglamento del órgano que asuma la función. Quórum y plazos son de referencia.
+Los mandatos son **modelos para adaptar**. La compañía los aprueba en C2 y los incorpora al reglamento del órgano que asuma la función. Quórum y plazos son de referencia. El texto aprobable por artículos, con el modelo de nombramiento del responsable de IA, está en P38; las órdenes del día y actas, en P39.
 
 ### 3.1 Consejo de administración
 
@@ -310,7 +310,7 @@ Una excepción autoriza temporalmente a no cumplir un requisito del marco o de l
 | **De requisito del ciclo de vida** | Aplazar una evidencia no crítica fuera de un "Continuar con condiciones". | Patrocinador | Comité de IA | 6 meses |
 | **De umbral corporativo** | Superar el límite de inversión por etapa o el horizonte de retorno de C2. | Comité de IA | Consejo o comisión delegada | Según acuerdo |
 
-Toda excepción se registra con justificación, riesgo, medidas compensatorias, caducidad y responsable. Una excepción vencida sin cierre es **no conformidad mayor**. La comisión delegada recibe cada trimestre las excepciones vigentes.
+Toda excepción se registra en P40 (EXC-AAAA-NNN) con justificación, riesgo, medidas compensatorias, caducidad y responsable. Una excepción vencida sin cierre es **no conformidad mayor**. La comisión delegada recibe cada trimestre las excepciones vigentes.
 
 ### 7.5 Otras decisiones delegadas
 
@@ -449,7 +449,7 @@ Una organización pequeña o mediana puede aplicar SEVEN-G con una estructura m�
 | CI-5 | La Oficina de IA tiene objetivos de volumen de iniciativas en producción. | Verificación laxa. | Objetivos de calidad del inventario, tiempo de decisión y valor validado. |
 | CI-6 | Un consejero tiene intereses en un proveedor de IA de la compañía. | Decisión sesgada en Transformar o N3. | Régimen de conflictos del consejo; abstención. |
 
-**Procedimiento.** (1) **Declaración** al asumir el rol (en P03) y cuando surja; los miembros de órganos, anualmente. (2) **Valoración** por la Oficina de IA con cumplimiento: real, potencial o aparente. (3) **Medida**: abstención, sustitución, verificación adicional o régimen del consejo. (4) **Registro** en T01 junto a la decisión afectada. (5) **Comprobación** por el auditor de IA en cada *gate* Enterprise.
+**Procedimiento.** (1) **Declaración** al asumir el rol (en P03) y cuando surja; los miembros de órganos, anualmente (P41). (2) **Valoración** por la Oficina de IA con cumplimiento: real, potencial o aparente. (3) **Medida**: abstención, sustitución, verificación adicional o régimen del consejo. (4) **Registro** en el registro de declaraciones y abstenciones de P41 y en el acta (P39) o el registro de decisión de *gate* (P29) de la decisión afectada. (5) **Comprobación** por el auditor de IA en cada *gate* Enterprise.
 
 No declarar un conflicto que haya afectado a una decisión de *gate* es **no conformidad mayor**, sin perjuicio del código de conducta de la compañía.
 
@@ -459,7 +459,7 @@ No declarar un conflicto que haya afectado a una decisión de *gate* es **no con
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Órganos, personas, decisiones, abstenciones, conflictos y excepciones. |
+| **T01** | Registro de iniciativas | Órganos, personas y decisiones de las iniciativas. |
 | **T03** | Gestor de *gates* | Verificador y decisor por *gate*; bloqueo de autoaprobación. |
 | **T08** | Registro de no conformidades e incidentes | Escalado con plazos y alertas. |
 | **T18** | Registro de recomendaciones del consejo | Acuerdos del consejo y de la comisión delegada. |
@@ -468,6 +468,11 @@ No declarar un conflicto que haya afectado a una decisión de *gate* es **no con
 | **P23** | Firma de puesta en producción | Firma multinivel con veto. |
 | **P29** | Registro de decisión de *gate* | Decisión, decisor, verificador y condiciones. |
 | **P30** | Decisión de escalado o retirada | Decisiones de G7. |
+| **P38** | Reglamento de los órganos de gobierno de IA | Texto aprobable de los mandatos de la sección 3 y nombramiento del responsable de IA. |
+| **P39** | Orden del día y acta de órgano de gobierno | Sesiones de los órganos, acuerdos y votaciones. |
+| **P40** | Solicitud y registro de excepciones | Excepciones de la sección 7.4. |
+| **P41** | Declaraciones de independencia y conflictos de interés | Declaraciones, abstenciones y medidas de la sección 12. |
+| **P42** | Informe trimestral de segunda línea | Información trimestral a la comisión delegada (sección 6.3). |
 
 **Requisitos para las herramientas:** T01 y T03 deben impedir registrar como decisor o verificador a una persona con rol incompatible; registrar abstenciones; exigir la segunda línea en G3, G5, aceptaciones de riesgo y excepciones; y generar alertas con los plazos de la sección 8.2.
 

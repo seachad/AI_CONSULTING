@@ -303,9 +303,9 @@ Reúne los controles para sistemas que ejecutan acciones o las preparan para val
 | ☐ | G3.18 | ¿El nivel de autonomía está aprobado y la intensidad es coherente con él? | P04 · P12 | G3 | Sí | Sí | Sí |
 | ☐ | G5.07 | ¿El nivel de autonomía configurado en producción es el probado y aprobado en G5? | P23 · configuración del agente | G5 | Sí | Sí | Sí |
 | | | **Identidad** | | | | | |
-| ☐ | G4.15 | ¿El agente tiene identidad técnica propia, no compartida con personas ni con otros agentes? | P18 · directorio de identidades | G4 | Sí | Sí | Sí |
+| ☐ | G4.15 | ¿El agente tiene identidad técnica propia, no compartida con personas ni con otros agentes? | P18 · P54 · directorio de identidades | G4 | Sí | Sí | Sí |
 | ☐ | G4.15 | ¿Las credenciales están en un gestor de secretos, se rotan y pueden revocarse de inmediato? | P18 · gestor de secretos | G4 | Sí | Sí | Sí |
-| ☐ | G4.15 | ¿Consta un responsable humano del agente en el inventario? | P05 · T02 | G4 | Sí | Sí | Sí |
+| ☐ | G4.15 | ¿Consta un responsable humano del agente en el inventario? | P05 · P54 · T02 | G4 | Sí | Sí | Sí |
 | | | **Permisos y límites** | | | | | |
 | ☐ | G4.16 | ¿Los permisos reales en los sistemas coinciden con los mínimos aprobados? (comprobar la configuración, no solo el documento) | P18 · configuración de accesos | G4, G5 | Sí | Sí | Sí |
 | ☐ | G4.16 | ¿Hay límites cuantitativos (importes, volúmenes, destinatarios, frecuencia) que bloquean las acciones que los superan? | P18 | G4 | — | Sí | Sí |
@@ -325,7 +325,7 @@ Reúne los controles para sistemas que ejecutan acciones o las preparan para val
 | ☐ | G5.05 | ¿Se superaron pruebas de fuga de datos personales, secretos e instrucciones del sistema? | P22 · T10 | G5 | Sí | Sí | Sí |
 | | | **Operación** | | | | | |
 | ☐ | R6.11 | ¿Se revisan las acciones bloqueadas, anómalas o fuera de patrón y se actúa sobre ellas? | P27 · registros | R6 | Rec. | Sí | Sí |
-| ☐ | R6.11 | ¿Se revisaron permisos y credenciales en el periodo y se retiraron los que sobran? | P18 · configuración de accesos | R6 | Sí | Sí | Sí |
+| ☐ | R6.11 | ¿Se revisaron permisos y credenciales en el periodo y se retiraron los que sobran? | P18 · P54 · configuración de accesos | R6 | Sí | Sí | Sí |
 | | | **Retirada** | | | | | |
 | ☐ | G7.11 | ¿Al retirar el agente se revocan identidad, credenciales y permisos y se conservan los registros el periodo definido? | P30 · T22 | G7 | Sí | Sí | Sí |
 

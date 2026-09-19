@@ -346,7 +346,7 @@ The engine files published in that repository are **a copy of their private sour
 | **Data source** | Demonstration data generated with the dashboard | *Recommendation* entity of the common model, integrated with T01 | Integration in tool wave 1 (03 §6). |
 | **Terminology** | Designed for tracking the recommendations of an advisory body | Generic for any issuing body | Configurable texts. |
 
-Priority: tool wave 1 (03 §6), together with connecting the T17 dashboard to the initiative register. Until the adaptation is available, the register can be kept in a spreadsheet with the fields in sections 4 and 10.
+Priority: tool wave 1 (03 §6), together with connecting the T17 dashboard to the initiative register. Until the adaptation is available, the register can be kept with template P69, prepared as a spreadsheet with the fields in sections 4 and 10.
 
 ---
 
@@ -381,6 +381,7 @@ Priority: tool wave 1 (03 §6), together with connecting the T17 dashboard to th
 | T18 | Board recommendations register | Implementation of the register (section 12). |
 | P29 | *Gate* decision record | Transform G2 and G7 decisions. |
 | P30 | Scaling or retirement decision | G7 decisions escalated to the board. |
+| P69 | Board decisions register | Register of recommendations, assignments and decisions until T18 has been adapted (sections 4, 10 and 12.2). |
 
 ---
 

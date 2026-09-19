@@ -114,7 +114,7 @@ El resto de la biblioteca se consulta cuando se necesita: ambición y cartera (1
 | **Tercera línea informada** | Auditoría interna conoce el plan y designa quién verificará la madurez. |
 | **Asesoría jurídica** | Disponible para la clasificación regulatoria de los sistemas prioritarios. |
 | **Acceso a información** | Compras, licencias, contratos con proveedores, arquitectura, registro de riesgos y presupuestos. |
-| **Soporte de registro** | T01 con su inventario (T02) o, si la compañía lo prefiere, una hoja de cálculo con los campos de 03 §3.3. |
+| **Soporte de registro** | T01 con su inventario (T02) o, si la compañía lo prefiere, una hoja de cálculo con los campos del modelo de datos de 03 §4 (y la ficha de 03 §3.3). |
 | **Sin moratoria general** | La actividad de IA continúa durante la implantación; solo se detiene lo que el diagnóstico identifique como riesgo inaceptable. |
 
 ---
@@ -145,10 +145,10 @@ Cada hito lo acepta el patrocinador de la implantación con el comité de IA (o 
 
 | Semana | Actividades y entregables | Responsable | Documentos, plantillas y herramientas | Criterio de finalización |
 |---|---|---|---|---|
-| **1 · Arranque** | Mandato de implantación; alcance Lite o Enterprise y perímetro; equipo núcleo; calendario de órganos con la sesión del consejo reservada; comunicación interna; solicitud de evidencias de madurez; fecha de corte. | Patrocinador y responsable de implantación | 00, 01, 90; lista de evidencias del documento 11 | Mandato firmado; sesión del consejo reservada; solicitud de evidencias enviada. |
-| **2 · Inventario** | Censo de sistemas de IA: propios, de terceros, uso corporativo y uso no autorizado (a partir de compras, licencias, contratos y controles de seguridad). Alta con estado real. Cribado inicial de criterios Enterprise y de posibles prácticas prohibidas. | Oficina de IA con tecnología, compras y seguridad | 03; P05; T02, T01; T04 | Cada dirección de área firma una declaración de completitud del inventario. Posibles prácticas prohibidas escaladas de inmediato. |
+| **1 · Arranque** | Mandato de implantación (P32); alcance Lite o Enterprise y perímetro; equipo núcleo; calendario de órganos con la sesión del consejo reservada; comunicación interna; solicitud de evidencias de madurez; fecha de corte. | Patrocinador y responsable de implantación | 00, 01, 90; lista de evidencias del documento 11 | Mandato firmado; sesión del consejo reservada; solicitud de evidencias enviada. |
+| **2 · Inventario** | Censo de sistemas de IA: propios, de terceros, uso corporativo y uso no autorizado (a partir de compras, licencias, contratos y controles de seguridad). Alta con estado real. Cribado inicial de criterios Enterprise y de posibles prácticas prohibidas. | Oficina de IA con tecnología, compras y seguridad | 03; P05; T02, T01; T04 | Cada dirección de área firma una declaración de completitud del inventario (P32, anexo). Posibles prácticas prohibidas escaladas de inmediato. |
 | **3 · Evidencias y entrevistas** | Entrevistas de madurez por dimensión; revisión de evidencias y muestreo; recogida de valor y coste actuales con su estado; datos de las ocho señales del índice. | Equipo evaluador | 11; 12; 40; T15, T14, T12 | Siete dimensiones con al menos dos entrevistas cada una; muestras seleccionadas. |
-| **4 · Informe C1** | Puntuación, calibración y verificación independiente de la madurez; perfil del índice de transformación; mapa de esferas actual; valor y coste de la cartera; informe C1. | Evaluador principal; verificador independiente | 10, 11, 12; T15, T14, T16 | **Hito 1:** informe C1 verificado y aceptado. Riesgos urgentes tratados como no conformidad (01 §12). |
+| **4 · Informe C1** | Puntuación, calibración y verificación independiente de la madurez; perfil del índice de transformación; mapa de esferas actual; valor y coste de la cartera; informe C1 (P33, con la madurez de P34). | Evaluador principal; verificador independiente | 10, 11, 12; T15, T14, T16 | **Hito 1:** informe C1 verificado y aceptado. Riesgos urgentes tratados como no conformidad (01 §12). |
 
 ### 4.3 Mes 2 · Riesgos y oportunidades
 
@@ -163,7 +163,7 @@ Cada hito lo acepta el patrocinador de la implantación con el comité de IA (o 
 
 | Semana | Actividades y entregables | Responsable | Documentos, plantillas y herramientas | Criterio de finalización |
 |---|---|---|---|---|
-| **9 · Órganos y roles** | Mandatos del comité de IA, la oficina de IA y la comisión delegada; roles de 01 §8 en las iniciativas existentes con comprobación de incompatibilidades; auditor de IA designado. | Patrocinador; secretaría del consejo | 01 §8, 30; P03; T01 | Mandatos redactados; roles asignados sin incompatibilidades. |
+| **9 · Órganos y roles** | Mandatos del comité de IA, la oficina de IA y la comisión delegada (P38); roles de 01 §8 en las iniciativas existentes con comprobación de incompatibilidades; auditor de IA designado. | Patrocinador; secretaría del consejo | 01 §8, 30; P03; T01 | Mandatos redactados; roles asignados sin incompatibilidades. |
 | **10 · Gates y políticas** | Criterios de *gate* (21) y listas de verificación (22) adoptados; plazos de referencia; política corporativa y de uso aceptable; proceso de no conformidades. | Oficina de IA; cumplimiento | 21, 22, 31, 37; P04, P29; T03, T08 | Gestor de *gates* configurado; políticas en borrador final. |
 | **11 · Métricas, reporte y cartera** | Reglas de medición adoptadas; primera versión del panel del consejo; registro de recomendaciones; calendario de reporte (01 §5.2); primera cartera priorizada con sobres, tramos y plan de regularización. | Oficina de IA; control de gestión; comité | 40, 60, 62, 14; P28; T17, T18, T01, T16 | Panel generado con datos del inventario; cartera con puntuación y responsables. |
 | **12 · Aprobaciones** | El consejo aprueba tesis, ambición por esfera, apetito de riesgo, umbrales y política corporativa (C2). El comité aprueba cartera, *gates*, métricas y plan de regularización (C3). | Patrocinador; comité de IA; consejo | 13, 14, 31 | Actas con las aprobaciones. |
@@ -175,8 +175,8 @@ Si el consejo no puede aprobar C2 en la semana 12, la cartera funciona con crite
 
 | # | Criterio | Evidencia |
 |---|---|---|
-| 1 | Inventario con declaración de completitud de todas las áreas del perímetro. | T02; declaraciones firmadas. |
-| 2 | Evaluación de madurez verificada e índice de transformación calculado. | Informe C1; T15; T14. |
+| 1 | Inventario con declaración de completitud de todas las áreas del perímetro. | T02; declaraciones firmadas (P32, anexo). |
+| 2 | Evaluación de madurez verificada e índice de transformación calculado. | Informe C1 (P33); T15; T14. |
 | 3 | Riesgos y oportunidades por esfera con responsable, impacto económico y plazo. | Mapa aprobado. |
 | 4 | Tesis, ambición por esfera, apetito de riesgo y umbrales aprobados por el consejo, o fecha de aprobación fijada con criterios provisionales. | Acta. |
 | 5 | Órganos con mandato, roles asignados sin incompatibilidades y auditor de IA designado. | Mandatos; P03. |
@@ -285,7 +285,7 @@ Los objetivos son orientativos y los fija la compañía en su plan.
 | Importes con estado | Importes con fórmula y estado ÷ importes informados. | 100 % en el informe C1 | 100 % | T12 |
 | Proporción de valor validado | Valor validado ÷ valor total informado. | Línea base | Objetivo fijado en C2 | T12, T17 |
 | No conformidades fuera de plazo | Abiertas con plazo vencido. | Línea base | 0 críticas; mayores en descenso | T08 |
-| Alfabetización | Personal que usa o supervisa IA formado ÷ total. | Programa aprobado | Objetivo fijado en C2 | Registro de formación |
+| Alfabetización | Personal que usa o supervisa IA formado ÷ total. | Programa aprobado | Objetivo fijado en C2 | Registro de formación (P45) |
 | Condiciones de 01 §14 | Condiciones acreditadas ÷ 7. | Al menos 2 | 7 en Lite; progreso según hoja de ruta en Enterprise | T15 |
 
 ---
@@ -294,10 +294,10 @@ Los objetivos son orientativos y los fija la compañía en su plan.
 
 | Periodo | Herramientas | Plantillas |
 |---|---|---|
-| **Mes 1** | T01, T02, T04 (inventario y registro); T15 (madurez); T14 (índice); T16 (mapa de esferas); T12 (valor actual). | P05 |
-| **Mes 2** | T06 (riesgos); T07 (clasificación regulatoria); T05 (ambición); T19 (tesis y apetito). | P06, P07, P11, P12, P31 |
-| **Mes 3** | T03 (*gates*); T08 (no conformidades); T17 (panel); T18 (recomendaciones); T01 y T16 (cartera). | P03, P04, P28, P29 |
-| **Meses 4–18** | Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera. | P01–P31 según la fase de cada iniciativa |
+| **Mes 1** | T01, T02, T04 (inventario y registro); T15 (madurez); T14 (índice); T16 (mapa de esferas); T12 (valor actual). | P32, P33, P34, P05 |
+| **Mes 2** | T06 (riesgos); T07 (clasificación regulatoria); T05 (ambición); T19 (tesis y apetito). | P35, P43, P06, P07, P11, P12, P31 |
+| **Mes 3** | T03 (*gates*); T08 (no conformidades); T17 (panel); T18 (recomendaciones); T01 y T16 (cartera). | P36, P38, P39, P40, P41, P03, P04, P28, P29 |
+| **Meses 4–18** | Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera. | P01–P31 según la fase de cada iniciativa; P42 y P67 cada trimestre; P37 en C5; el resto de P32–P71 cuando aplique |
 
 Las herramientas sin aplicación propia se aplican con la plantilla o el documento que indica el catálogo de 03. Una compañía que prefiera no usar T01 puede llevar el registro en una hoja de cálculo con los campos del modelo de datos de 03 §4.
 

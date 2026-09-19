@@ -12,6 +12,8 @@
 
 ---
 
+> **Estado a 19-09-2026: resuelto.** Las decisiones de la sección 9 se tomaron con las recomendaciones de este análisis: plantillas editables en Word generadas desde el Markdown (D67); 40 plantillas nuevas P32–P71, con las herramientas T11 (con T13) y T15 (D68); correcciones de las secciones 6 y 7 aplicadas. La correspondencia de cada artefacto con su plantilla está en la especificación común §6.1. Lo que queda pendiente del autor figura en `CLAUDE.md`.
+
 ## 1. Conclusión
 
 1. **El material del ciclo de vida de la iniciativa existe.** Las 31 plantillas P01–P31 cubren una a una las evidencias de 01 §6.10 (D21) y son sustantivas (10–18 KB cada una, con instrucciones, campos, guía, ejemplo ilustrativo, criterios de calidad y firmas). En particular, los dos ejemplos citados por el autor ya existen en la versión vigente:

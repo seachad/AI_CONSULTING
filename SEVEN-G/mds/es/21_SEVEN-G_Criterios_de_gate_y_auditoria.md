@@ -304,8 +304,8 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | G3.17 | [GEN] Están valorados los riesgos tipo RT-GEN y RT-SEG: inyección de instrucciones directa e indirecta, fuga de información, contenido erróneo o inventado, permisos excesivos y acciones no autorizadas. | P12 | Sí ◆ | Sí | Sí | — |
 | G3.18 | [GEN] El nivel de autonomía objetivo (A0–A3) está propuesto y justificado; si es A2 o A3 con efecto sobre terceros, dinero, datos personales o sistemas de producción, la intensidad es Enterprise. | P04 · P12 | Sí ◆ | Sí | Sí | — |
 | G3.19 | [GEN] Está definido el enfoque de evaluación: conjuntos de prueba representativos, métricas de calidad y de seguridad y umbrales de aceptación. | P10 | Condicionable | Simpl. | Sí | — |
-| G3.20 | [TER] Cada proveedor está evaluado al nivel de exigencia que le corresponde (N1–N3): seguridad, tratamiento y ubicación de los datos, uso de los datos para entrenar, propiedad intelectual, continuidad, dependencia y estrategia de salida. | P14 · T09 | Sí | Simpl. | Sí | — |
-| G3.21 | [TER] Las condiciones contractuales mínimas están fijadas como requisito de contratación: confidencialidad, prohibición de usar los datos para otros fines, notificación de incidentes, derecho de auditoría o informes equivalentes (N2–N3) y devolución o borrado de datos al terminar. | P14 | Sí ◆ | Sí | Sí | — |
+| G3.20 | [TER] Cada proveedor está evaluado al nivel de exigencia que le corresponde (N1–N3): seguridad, tratamiento y ubicación de los datos, uso de los datos para entrenar, propiedad intelectual, continuidad, dependencia y estrategia de salida. | P14 · P55 · T09 | Sí | Simpl. | Sí | — |
+| G3.21 | [TER] Las condiciones contractuales mínimas están fijadas como requisito de contratación: confidencialidad, prohibición de usar los datos para otros fines, notificación de incidentes, derecho de auditoría o informes equivalentes (N2–N3) y devolución o borrado de datos al terminar. | P14 · P56 | Sí ◆ | Sí | Sí | — |
 | G3.22 | [TER] El proveedor aporta, o se compromete a aportar, la documentación que la regulación le exige y que la compañía necesita para cumplir sus propias obligaciones. | P14 · P11 | Condicionable | Rec. | Sí | — |
 
 **Reglas específicas.** Las prácticas prohibidas no pasan de esta fase en ningún caso (01 §6.5). Un riesgo residual Crítico sin la aprobación de G3.12 bloquea G3. **Pivotar** es admisible cuando la hipótesis no se sostiene pero existe una alternativa razonable.
@@ -344,7 +344,7 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | G4.19 | [AG] Las acciones sensibles o irreversibles requieren validación humana previa según el nivel de autonomía aprobado. | P17 | Sí ◆ | Sí | Sí | — |
 | G4.20 | [GEN] Hay defensas frente a inyección de instrucciones y fuga de información: separación entre instrucciones y datos, contenido externo tratado como no confiable, filtrado de entradas y salidas y restricción de herramientas. | P18 · T10 | Sí ◆ | Sí | Sí | — |
 | G4.21 | [GEN] El conjunto de evaluación y sus umbrales (calidad, fundamentación de las respuestas, contenido dañino y seguridad) están aprobados antes de construir. | P22 | Condicionable | Simpl. | Sí | — |
-| G4.22 | [TER] Las cláusulas exigidas en G3.21 están incorporadas al contrato o al borrador en negociación, y la integración con el proveedor está documentada. | P14 · P15 | Condicionable | Sí | Sí | — |
+| G4.22 | [TER] Las cláusulas exigidas en G3.21 están incorporadas al contrato o al borrador en negociación, y la integración con el proveedor está documentada. | P14 · P56 · P15 | Condicionable | Sí | Sí | — |
 
 **Reglas específicas.** En Lite, G4 y G5 pueden resolverse en la misma sesión si cada criterio se evalúa y registra por separado. La clasificación de alto riesgo implica intensidad Enterprise, por eso G4.14 no tiene columna Lite.
 
@@ -380,7 +380,7 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | G5.17 | El plan de respuesta a incidentes define severidades S1–S4, escalado y notificaciones regulatorias aplicables (incidente grave de IA, protección de datos, DORA o NIS2) con sus plazos. | P26 · T08 | Sí ◆ | Simpl. | Sí | — |
 | G5.18 | El manual de operación está disponible y aceptado por el responsable de operación. | P24 | Condicionable | Simpl. | Sí | — |
 | G5.19 | Los usuarios están formados y hay evidencia de alfabetización en IA del personal que usa o supervisa el sistema. | P20 | Condicionable | Sí | Sí | — |
-| G5.20 | [TER] El contrato está firmado con las cláusulas exigidas y el proveedor figura en el registro de proveedores. | P14 · T09 | Sí ◆ | Sí | Sí | — |
+| G5.20 | [TER] El contrato está firmado con las cláusulas exigidas y el proveedor figura en el registro de proveedores. | P14 · P56 · P57 · T09 | Sí ◆ | Sí | Sí | — |
 | G5.21 | El seguimiento de valor está configurado (periodicidad, fuente y responsable de validación) y los resultados del piloto constan con su estado (validado, declarado o estimado). | P28 · T12 | Condicionable | Simpl. | Sí | — |
 | G5.22 | Las condiciones de *gates* anteriores están cerradas o, si no afectan a controles críticos, dentro de plazo. | P29 · T03 | Sí | Sí | Sí | — |
 | G5.23 | La puesta en producción está firmada: en Lite, con conformidad de riesgos; en Enterprise, con firma multinivel sin ningún veto vigente (sección 9). | P23 · T03 | Sí ◆ | Sí | Sí | — |
@@ -411,7 +411,7 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | R6.09 | El registro de riesgos está actualizado y los riesgos nuevos están valorados y aceptados al nivel que corresponde. | P12 · T06 | Condicionable | Simpl. | Sí | — |
 | R6.10 | Hay evidencia de que los controles críticos funcionan: supervisión humana ejercida, registros conservados y mecanismo de parada disponible. | P25 · P17 | Sí ◆ | Sí | Sí | — |
 | R6.11 | [AG] Se han revisado permisos y credenciales, registros de intención y acciones bloqueadas o anómalas, y se ha probado el interruptor de parada en el periodo. | P18 · P27 · T10 | Sí ◆ | Sí | Sí | — |
-| R6.12 | [TER] Se han revisado los cambios del proveedor (modelo, condiciones, subencargados), sus incidentes y el cumplimiento del contrato. | P14 · T09 | Condicionable | Simpl. | Sí | — |
+| R6.12 | [TER] Se han revisado los cambios del proveedor (modelo, condiciones, subencargados), sus incidentes y el cumplimiento del contrato. | P14 · P57 · T09 | Condicionable | Simpl. | Sí | — |
 | R6.13 | Se realiza la vigilancia posterior a la comercialización cuando la regulación la exige. | P25 · P11 | Sí ◆ | — | Sí | — |
 | R6.14 | La adopción se mide frente al objetivo. | P20 · P28 | Condicionable | Sí | Sí | Optimizar: recomendado. |
 | R6.15 | Las condiciones y las no conformidades abiertas están dentro de plazo. | P29 · T08 | Sí | Sí | Sí | — |
@@ -450,7 +450,7 @@ Cada puerta incluye su propósito, quién verifica y decide (01 §7.5), las evid
 | G7.09 | Escalar en Transformar: el consejo o su comisión delegada lo ha aprobado expresamente. | P29 | Sí | — | Sí | Solo Transformar. |
 | G7.10 | Iterar: están definidos la fase a la que se vuelve, el motivo y el plazo. | P30 | Sí | Sí | Sí | — |
 | G7.11 | Retirar: el plan de retirada registra fecha, motivo codificado, órgano que decide, sustituto, tratamiento de datos y modelos (conservación y borrado), revocación de accesos y credenciales, comunicación a los afectados y actualización del inventario. | P30 · T22 | Sí ◆ | Sí | Sí | — |
-| G7.12 | [TER] Retirar: la terminación con el proveedor incluye la devolución o el borrado certificado de los datos y la baja de accesos. | P14 · P30 | Sí ◆ | Sí | Sí | — |
+| G7.12 | [TER] Retirar: la terminación con el proveedor incluye la devolución o el borrado certificado de los datos y la baja de accesos. | P14 · P57 · P30 | Sí ◆ | Sí | Sí | — |
 
 **Reglas específicas.** Los criterios de un resultado no propuesto (por ejemplo, G7.07 a G7.09 cuando se propone Retirar) se registran como *No aplica*. Escalar abre una nueva fase 0 para el alcance ampliado; no autoriza por sí mismo la ampliación.
 
@@ -634,6 +634,8 @@ Los plazos son de referencia y la compañía puede ajustarlos en C2 sin superar 
 ### 10.7 Contenido mínimo del informe de auditoría
 
 Alcance y periodo · población y muestra con criterio de selección · pruebas realizadas · resultado por elemento auditado (Conforme, Conforme con observaciones o No conforme) · hallazgos con código de criterio o regla EV afectada, clasificación, causa y responsable · no conformidades abiertas en T08 · seguimiento de hallazgos anteriores · conclusión sobre el funcionamiento de las puertas en el periodo.
+
+El informe se redacta con P60.
 
 ---
 

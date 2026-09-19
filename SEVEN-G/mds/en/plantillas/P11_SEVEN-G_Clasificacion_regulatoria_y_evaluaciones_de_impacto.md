@@ -146,6 +146,8 @@ A system in the areas in 6.2 may not be considered high-risk if it does not pose
 
 **General-purpose AI models (Enterprise).** If the company develops, or modifies in such a way that it may be considered the provider of, a general-purpose AI model, the chapter of the Regulation dedicated to these models must be analysed separately.
 
+Notice texts and register in P49.
+
 ---
 
 ## 8. Classification result
@@ -176,7 +178,7 @@ A system in the areas in 6.2 may not be considered high-risk if it does not pose
 | Does the processing appear on the list of processing operations requiring an assessment published by the supervisory authority? | | |
 | Are decisions taken based solely on automated processing with legal or similarly significant effects? | | If "Yes", also review the GDPR safeguards on automated decision-making. |
 | **Result** | Required · Not required · Recommended | If required, it must be carried out before the processing. |
-| Reference and date of the assessment | | |
+| Reference and date of the assessment | | Documented in P47. |
 | Opinion of the data protection officer | | |
 
 ### 9.2 Fundamental rights impact assessment
@@ -190,7 +192,7 @@ It is required by the EU AI Act of certain deployers of high-risk systems, befor
 | Does the system evaluate the creditworthiness or credit score of natural persons, or carry out risk assessment and pricing in life or health insurance? | | |
 | **Result** | Required · Not required · Recommended | Critical infrastructure systems are outside this obligation. |
 
-Minimum content when required: processes in which the system will be used; period and frequency of use; categories of persons affected; specific risks of harm; human oversight measures; measures to be taken if the risks materialise, including internal governance and complaint mechanisms. The results are notified to the market surveillance authority and it may complement the data protection impact assessment. Reference and date of the assessment: ____.
+Minimum content when required: processes in which the system will be used; period and frequency of use; categories of persons affected; specific risks of harm; human oversight measures; measures to be taken if the risks materialise, including internal governance and complaint mechanisms. The results are notified to the market surveillance authority and it may complement the data protection impact assessment. The assessment is documented in P48. Reference and date: ____.
 
 ### 9.3 Other assessments **(Enterprise)**
 

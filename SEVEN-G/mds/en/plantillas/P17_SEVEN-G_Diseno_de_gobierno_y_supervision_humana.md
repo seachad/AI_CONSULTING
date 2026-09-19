@@ -145,6 +145,8 @@ In high-risk systems, these requirements are checked against Article 14 of the E
 | Channel for requesting human review or contesting | | Channel, internal response time limit and role that reviews. |
 | Log of complaints related to the system **(Enterprise)** | | Where they are recorded and how they feed P25 and P27. |
 
+Notice texts and register in P49.
+
 ---
 
 ## 9. Responsibilities and escalation

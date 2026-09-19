@@ -147,7 +147,7 @@ A scaling potential without additional investment, hypothesis and timeframe is n
 
 ### 8.2 Treatment of data and models
 
-| Item | Treatment (Retain · Anonymise · Delete · Return · Archive) | Basis (legal obligation, audit, legal defence, end of purpose) | Time limit | Owner | Evidence (for example, deletion certificate) |
+| Item | Treatment (Retain · Anonymise · Delete · Return · Archive) | Basis (legal obligation, audit, legal defence, end of purpose) | Time limit | Owner | Evidence (for example, deletion certificate, P57 §8) |
 |---|---|---|---|---|---|
 | Training data and datasets (P16) | | | | | |
 | Knowledge base | | | | | |

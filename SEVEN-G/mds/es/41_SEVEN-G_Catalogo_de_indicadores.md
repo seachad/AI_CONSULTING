@@ -81,7 +81,7 @@ Ninguna compañía necesita todos los indicadores. Se seleccionan en C2 según l
 
 ## 5. Ficha de un indicador
 
-Cada indicador del catálogo, y cualquier indicador propio que añada la compañía, se documenta con esta ficha en T01.
+Cada indicador del catálogo, y cualquier indicador propio que añada la compañía, se documenta con esta ficha. La selección de indicadores que aprueba la compañía en C2, con su meta, umbral, periodicidad, responsable y fuente, se registra en P35 §13.
 
 | Campo | Contenido |
 |---|---|
@@ -270,7 +270,7 @@ Definiciones de los tramos en el documento 40 §9. Todos se segmentan por nivel 
 | IND-ADO-12 | **Información previa a la representación.** Sistemas con efecto en condiciones de trabajo o empleo informados antes de su uso. | Sistemas con efecto en condiciones de trabajo o empleo informados antes de su uso ÷ sistemas con ese efecto | % | Registro de información (documento 50 §7.2) | T | A definir por la compañía | Co · Cj | F4–F5 · G5 · E03 | 100 % | |
 | IND-ADO-13 | **Revisión humana en decisiones sobre personas.** Decisiones sobre personas asistidas por IA con revisión humana documentada. | Decisiones sobre personas asistidas por IA con revisión humana documentada ÷ decisiones sobre personas asistidas por IA | % | Registros del sistema | M | A definir por la compañía | I | F6 · decisiones sobre personas | 100 % en A1 | |
 | IND-ADO-14 | **Impugnaciones de decisiones asistidas.** Solicitudes de revisión o reclamaciones sobre decisiones asistidas por IA. | Solicitudes de revisión o reclamaciones ÷ decisiones comunicadas; y proporción de estimadas | % | Canal de reclamaciones | T | A definir por la compañía | I · Co | F6 · decisiones sobre personas | Tendencia y causas | |
-| IND-ADO-15 | **Percepción de los colectivos afectados.** Respuestas favorables sobre apoyo, carga y autonomía en la encuesta de pulso. | Respuestas favorables en las preguntas de apoyo, carga y autonomía ÷ respuestas válidas | % | Encuesta de pulso | G (fase 5, a los 3 meses y en R6 Enterprise) | A definir por la compañía | I · Co | F5–F6 · R6 · E03 | Tendencia; acción si empeora | |
+| IND-ADO-15 | **Percepción de los colectivos afectados.** Respuestas favorables sobre utilidad, confianza, apoyo, carga y autonomía en la encuesta de pulso (P44). | Respuestas favorables en las preguntas de utilidad, confianza, apoyo, carga y autonomía (P44) ÷ respuestas válidas | % | Encuesta de pulso | G (fase 5, a los 3 meses y en R6 Enterprise) | A definir por la compañía | I · Co | F5–F6 · R6 · E03 | Tendencia; acción si empeora | |
 
 ---
 

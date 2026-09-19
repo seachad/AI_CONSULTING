@@ -413,7 +413,7 @@ Los umbrales iniciales no tienen base empírica propia de la compañía. Se cali
 | 4 | Revisar que el ajuste no se propone para mejorar el perfil del año en curso. | Auditoría interna |
 | 5 | Aprobar la nueva versión de umbrales. | Consejo, en C5 |
 | 6 | Recalcular el periodo anterior con los nuevos umbrales y publicar ambos resultados para mantener la comparabilidad. | Oficina de IA |
-| 7 | Registrar la versión de umbrales usada en cada cálculo. | Oficina de IA (T14) |
+| 7 | Registrar la versión de umbrales usada en cada cálculo. | Oficina de IA (T14; P35 §14) |
 
 Reglas de calibración:
 

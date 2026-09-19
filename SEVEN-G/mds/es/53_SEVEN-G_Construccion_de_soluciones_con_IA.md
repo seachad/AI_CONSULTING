@@ -128,14 +128,14 @@ SPAD exige cargar dos contextos antes de cualquier fase. En SEVEN-G esos context
 |---|---|---|---|---|
 | Contexto y objetivo | Problema, alcance, restricciones, criterios de éxito. | 3–4 | Se toma de P02, P08 y P10 | Condición de entrada a la fase 4 (G3 superado). |
 | PLAN | Arquitectura lógica, componentes, flujos de datos, decisiones explícitas, riesgos. | 4 | P15 (arquitectura y decisiones); P16 (flujos de datos); P12 (riesgos técnicos nuevos) | Insumo de G4. |
-| Revisión del plan (AUDIT_PLAN) | Hallazgos y veredicto técnico. | 4 | Anexo de P15; conformidad o condiciones en P29 | Insumo de la verificación de G4; no es la verificación. |
-| Reglas de implementación (CODE_PRIMER) | Estructura, convenciones, contratos, antipatrones. | 4 | Anexo de P15 | Insumo de G4. |
-| Estrategia de pruebas (TEST_STRATEGY) | Casos, cobertura mínima, capas de prueba, datos de prueba. | 4 | Plan de pruebas en P22 (apartado de planificación) | Debe existir antes de G4 en Enterprise. |
+| Revisión del plan (AUDIT_PLAN) | Hallazgos y veredicto técnico. | 4 | P66 (anexo de P15); conformidad o condiciones en P29 | Insumo de la verificación de G4; no es la verificación. |
+| Reglas de implementación (CODE_PRIMER) | Estructura, convenciones, contratos, antipatrones. | 4 | P66 (anexo de P15) | Insumo de G4. |
+| Estrategia de pruebas (TEST_STRATEGY) | Casos, cobertura mínima, capas de prueba, datos de prueba. | 4 | P66 §6 (anexo de P22) | Debe existir antes de G4 en Enterprise. |
 | Implementación | Código generado según las reglas. | 5 | P21 (informe de entrega) | — |
 | Implementación de pruebas | Pruebas, datos de prueba e instrucciones de ejecución. | 5 | P22 | — |
 | Revisión de pruebas (AUDIT_TESTS) | Cobertura real frente a esperada, calidad, casos límite. | 5 | P22 | Insumo de G5. |
 | Revisión del código (AUDIT_CODE) | Fidelidad al plan y a las reglas, riesgos técnicos, deuda. | 5 | P21 | Insumo de G5. |
-| Correcciones mínimas (FIX_PRIMERS) | Problema, cambio mínimo, justificación, impacto. | 5 | P21 (registro de correcciones) | — |
+| Correcciones mínimas (FIX_PRIMERS) | Problema, cambio mínimo, justificación, impacto. | 5 | P66 §8 (anexo de P21) | — |
 | Gestión de versiones | Número de versión, cambios, incompatibilidades, migración, plan de marcha atrás. | 5 | P21; P19 (plan de reversión); P27 (registro de cambios, desde producción) | Insumo de G5 y de la firma P23. |
 
 ### 4.2 Flujos complementarios
@@ -213,7 +213,7 @@ SPAD declara inválida, y obliga a descartar y repetir, toda respuesta de IA que
 | Implementación sin plan o revisión previa | Descartar el código generado. | Si ese código llega a producción, es **no conformidad mayor**; si afecta a un control crítico, **crítica** (01 §12). | T08 |
 | Autoaprobación de la IA | Descarte inmediato; infracción grave. | Toda aprobación sin persona identificada es nula. Si se usó para avanzar un *gate*, no conformidad mayor. | P29, T08 |
 
-**Registro de infracciones.** SPAD lo considera opcional. En SEVEN-G **debería** mantenerse en Enterprise, dentro de P21, con fecha, tema de trabajo, fase, tipo de infracción, herramienta o modelo y acción. Los patrones repetidos alimentan las lecciones aprendidas (P30) y, si revelan una herramienta inadecuada, la evaluación del proveedor (P14).
+**Registro de infracciones.** SPAD lo considera opcional. En SEVEN-G **debería** mantenerse en Enterprise, en P66 §9, anexo de P21, con fecha, tema de trabajo, fase, tipo de infracción, herramienta o modelo y acción. Los patrones repetidos alimentan las lecciones aprendidas (P30) y, si revelan una herramienta inadecuada, la evaluación del proveedor (P14).
 
 ---
 
@@ -246,7 +246,7 @@ Se aplican a todo código, configuración, consulta, infraestructura como códig
 
 - Análisis estático de seguridad, detección de secretos y análisis de dependencias **deben** ejecutarse sobre el código generado antes de G5; en Enterprise, en cada cambio.
 - Las dependencias propuestas por la IA **deben** verificarse (existencia, procedencia, mantenimiento y vulnerabilidades conocidas) antes de incorporarse, dado el riesgo de paquetes inexistentes o maliciosos sugeridos por la herramienta.
-- **Debería** generarse una relación de componentes de software de la solución en Enterprise.
+- **Debería** generarse una relación de componentes de software de la solución (P54) en Enterprise.
 - Los agentes de construcción **deben** operar con mínimo privilegio, sin credenciales de producción y con registro de sus acciones; su autonomía se clasifica con A0–A3 y se evalúa con T10 (documento 35).
 - Como referencias técnicas pueden usarse las listas OWASP Top 10 y OWASP Top 10 para aplicaciones con modelos de lenguaje.
 - Los hallazgos críticos y altos **bloquean** G5 salvo aceptación formal del riesgo según 33 y 01 §7.3 (no se admite "Continuar con condiciones" en controles críticos de seguridad).
@@ -310,8 +310,9 @@ Los criterios formales se incorporarán al documento 21. Mientras tanto, el veri
 | T10 · Evaluación de seguridad de agentes | Agentes de construcción y revisión de seguridad. |
 | P03 | Designación del orquestador y del revisor humano. |
 | P12 · P14 · P15 · P16 · P18 | Riesgos · proveedor de la herramienta · plan, reglas y decisiones · flujos de datos · seguridad. |
-| P19 · P21 · P22 · P23 | Reversión · informe de entrega con registro de correcciones e infracciones · pruebas y revisiones · firma de puesta en producción. |
+| P19 · P21 · P22 · P23 | Reversión · informe de entrega · pruebas y revisiones · firma de puesta en producción. |
 | P26 · P27 · P29 · P30 | Incidentes · cambios y causa raíz · decisión de *gate* · lecciones aprendidas. |
+| P54 · P66 | Relación de componentes de software · anexos de construcción con SPAD: revisión del plan, reglas de implementación, estrategia de pruebas y registros de correcciones y de infracciones (anexos de P15, P21 y P22). |
 
 ---
 

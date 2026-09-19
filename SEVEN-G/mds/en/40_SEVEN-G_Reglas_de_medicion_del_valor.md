@@ -488,7 +488,7 @@ Reading for the board: the portfolio generates a positive annual net value accor
 | Code | Name | Use in this document |
 |---|---|---|
 | **T01** | Initiative register | Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2). |
-| **T11** | Value hypothesis canvas and calculator | Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method. |
+| **T11** | Value hypothesis canvas and calculator | Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method; scenarios (P10 §6.2) and C2 criterion as information. Imports the initiative from T01 and exports its expected values. |
 | **T12** | Value realisation tracking | Statuses per period, expiries, F5, F6 and F10. |
 | **T13** | Cost calculator per use case | Full recurring cost and initial investment. |
 | **T17** | Board AI dashboard | Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them. |

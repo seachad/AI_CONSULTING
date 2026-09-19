@@ -26,7 +26,7 @@ Este documento define el contenido de la etapa **C2 · Dirección** del ciclo co
 | **Con qué información** | Resultados de C1: inventario, madurez con evidencia, mapa de esferas actual, perfil del índice de transformación, valor validado y coste actuales. |
 | **Quién aprueba** | Consejo de administración, que puede delegar la preparación en una comisión. |
 | **Cuándo** | En la primera implantación, dentro de los noventa días iniciales (documento 90). Después, anualmente tras C5, y de forma extraordinaria cuando se produzca un desencadenante (sección 13). |
-| **Resultado** | Un único **documento de decisión del consejo**, con la estructura del anexo (herramienta T19). |
+| **Resultado** | Un único **documento de decisión del consejo**, con la estructura del anexo (herramienta T19), que se cumplimenta con la plantilla P35. |
 
 El documento también contiene contenido regulatorio de referencia. **Este documento no constituye asesoramiento jurídico.** Las referencias normativas se han consultado en septiembre de 2026 y deben verificarse antes de su uso, porque existen propuestas de modificación en tramitación que pueden afectar a fechas de aplicación y obligaciones.
 
@@ -492,6 +492,8 @@ El auditor de IA o la auditoría interna comprueban, antes de la aprobación:
 
 ## 15. Anexo · Plantilla de documento de decisión del consejo (T19)
 
+El anexo se cumplimenta con la plantilla P35.
+
 **Instrucciones de uso.** La plantilla se rellena en C2, la prepara la alta dirección con la oficina de IA, la verifica el auditor de IA o la auditoría interna con los criterios de la sección 14 y la aprueba el consejo. Los campos marcados **(Enterprise)** pueden omitirse en organizaciones que solo aplican la intensidad Lite, justificándolo. Donde se indica "valor orientativo", se parte del valor de este documento y se sustituye por el aprobado.
 
 ### A. Identificación
@@ -700,6 +702,7 @@ El auditor de IA o la auditoría interna comprueban, antes de la aprobación:
 | **P04** | Determinación de intensidad | Aplica el umbral de inversión Enterprise. |
 | **P07** | Clasificación de esfera y ambición | Comprueba el encaje con la ambición por esfera. |
 | **P12** | Matriz y registro de riesgos | Aplica umbrales de impacto y aceptación. |
+| **P35** | Tesis de IA y apetito de riesgo | Documento de decisión del consejo de C2: cumplimenta el anexo (sección 15). |
 
 ---
 

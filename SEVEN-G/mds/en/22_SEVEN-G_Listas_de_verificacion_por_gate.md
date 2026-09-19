@@ -303,9 +303,9 @@ Brings together the controls for systems that execute actions or prepare them fo
 | ☐ | G3.18 | Is the autonomy level approved, and is the intensity consistent with it? | P04 · P12 | G3 | Yes | Yes | Yes |
 | ☐ | G5.07 | Is the autonomy level configured in production the one tested and approved at G5? | P23 · agent configuration | G5 | Yes | Yes | Yes |
 | | | **Identity** | | | | | |
-| ☐ | G4.15 | Does the agent have its own technical identity, not shared with people or with other agents? | P18 · identity directory | G4 | Yes | Yes | Yes |
+| ☐ | G4.15 | Does the agent have its own technical identity, not shared with people or with other agents? | P18 · P54 · identity directory | G4 | Yes | Yes | Yes |
 | ☐ | G4.15 | Are the credentials held in a secrets manager, rotated and immediately revocable? | P18 · secrets manager | G4 | Yes | Yes | Yes |
-| ☐ | G4.15 | Is a human owner of the agent recorded in the inventory? | P05 · T02 | G4 | Yes | Yes | Yes |
+| ☐ | G4.15 | Is a human owner of the agent recorded in the inventory? | P05 · P54 · T02 | G4 | Yes | Yes | Yes |
 | | | **Permissions and limits** | | | | | |
 | ☐ | G4.16 | Do the actual permissions in the systems match the approved least privilege? (check the configuration, not just the document) | P18 · access configuration | G4, G5 | Yes | Yes | Yes |
 | ☐ | G4.16 | Are there quantitative limits (amounts, volumes, recipients, frequency) that block actions exceeding them? | P18 | G4 | — | Yes | Yes |
@@ -325,7 +325,7 @@ Brings together the controls for systems that execute actions or prepare them fo
 | ☐ | G5.05 | Were tests for leakage of personal data, secrets and system instructions passed? | P22 · T10 | G5 | Yes | Yes | Yes |
 | | | **Operation** | | | | | |
 | ☐ | R6.11 | Are blocked, anomalous or out-of-pattern actions reviewed and acted upon? | P27 · logs | R6 | Rec. | Yes | Yes |
-| ☐ | R6.11 | Were permissions and credentials reviewed during the period, and were those no longer needed removed? | P18 · access configuration | R6 | Yes | Yes | Yes |
+| ☐ | R6.11 | Were permissions and credentials reviewed during the period, and were those no longer needed removed? | P18 · P54 · access configuration | R6 | Yes | Yes | Yes |
 | | | **Retirement** | | | | | |
 | ☐ | G7.11 | When the agent is retired, are its identity, credentials and permissions revoked and its logs retained for the defined period? | P30 · T22 | G7 | Yes | Yes | Yes |
 

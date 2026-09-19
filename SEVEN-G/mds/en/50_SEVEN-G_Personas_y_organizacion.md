@@ -296,7 +296,7 @@ This document does not constitute legal advice.
 |---|---|---|---|
 | 1 · Identification | Phase 3 | The effect assessment determines whether the system affects working conditions, access to or retention of employment, profiling, or whether it is high-risk in the workplace. | Effect assessment (P20). |
 | 2 · Legal analysis | Phase 3 | Labour relations and legal counsel determine the obligations of information and, where applicable, consultation, their content and their timing. | Legal note linked in P11. |
-| 3 · Preparation | Phase 4 | The system information sheet for workers' representatives is prepared (section 7.3). | Information sheet. |
+| 3 · Preparation | Phase 4 | The system information sheet for workers' representatives is prepared (section 7.3). | Information sheet (P46). |
 | 4 · Information or consultation | Before the pilot with real people and, in any case, before use in production | The sheet is delivered and questions are answered; the consultation is documented where applicable. | Record of delivery, minutes. |
 | 5 · Update | At each relevant change (document 52, section 6) | If parameters, rules, purpose or groups change, the information is updated. | New version of the sheet. |
 
@@ -446,7 +446,7 @@ The codes are provisional until they are consolidated in the indicator catalogue
 | **PER-12** | Challenges to assisted decisions | Review requests or complaints ÷ decisions communicated; and proportion upheld | Quarterly | Complaints channel | Trend and causes |
 | **PER-13** | Redesigned roles | Affected jobs with updated description and objectives ÷ affected jobs according to the effect assessment | Half-yearly | People function | 100% before G7 in Augment and Transform |
 | **PER-14** | Employee proposals | Initiatives registered in T01 originating from employee proposals ÷ registered initiatives; and G1 pass rate | Half-yearly | T01 | Trend |
-| **PER-15** | Perception of affected groups | Favourable responses to the questions on support, workload and autonomy ÷ valid responses | In phase 5, at 3 months and at Enterprise R6 | Pulse survey | Trend; action if it worsens |
+| **PER-15** | Perception of affected groups | Favourable responses to the questions on usefulness, trust, support, workload and autonomy (P44) ÷ valid responses | In phase 5, at 3 months and at Enterprise R6 | Pulse survey | Trend; action if it worsens |
 
 **Relationship with the transformation index.** PER-04 and PER-05 feed signal 3 (materialisation); PER-13 feeds signal 5 (operating model).
 
@@ -499,8 +499,10 @@ The criteria coded `G<n>.<nn>` and `R6.<nn>` are set in document 21. This docume
 | **P22** | Validation and pilot results | Bias testing and actual effect in the pilot. |
 | **P28** | Value realisation tracking | Released capacity materialised and reassigned. |
 | **P30** | Scaling or retirement decision | Actual versus declared effect and communication of the retirement. |
+| **P44** | AI use and perception survey | Pulse survey of the affected groups (PER-15). |
+| **P46** | Information to workers and their representatives | System information sheet (section 7.3) and register of information and consultation. |
 
-The **information sheet for workers' representatives** (section 7.3) is incorporated as an annex to P17 until it is decided whether it requires its own template.
+The **information sheet for workers' representatives** (section 7.3) and the register of information and consultation are in P46.
 
 ---
 

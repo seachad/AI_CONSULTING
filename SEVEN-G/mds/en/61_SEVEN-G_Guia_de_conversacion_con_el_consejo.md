@@ -383,7 +383,7 @@ SEVEN-G provides for the board or its board committee to be able to rely on a **
 
 ### 10.3 Independence
 
-- **Declaration of interests** at the start of the mandate and whenever it changes: relationships with technology suppliers, consultancies and the company itself.
+- **Declaration of interests** at the start of the mandate and whenever it changes: relationships with technology suppliers, consultancies and the company itself (P41, Model C).
 - **Incompatibility** with providing implementation services on the same initiatives they oversee (document 91, section 5).
 - **Access to information** through the board secretariat and formal channels, not through direct relationships with teams that bypass management.
 - **Confidentiality**: the company's information is not used in any other context.
@@ -425,6 +425,9 @@ The EU AI Act includes AI literacy obligations for the staff of providers and de
 | P07 | Sphere and ambition classification | Evidence of the classification. |
 | P29 | *Gate* decision record | Answers about stops and criteria. |
 | P31 | Use case sheet | How to tell a use case in five minutes. |
+| P41 | Declarations of independence and conflicts of interest | Declaration of interests by the director or adviser with AI experience (Model C, section 10.3). |
+| P68 | Pre-session note and note of conclusions for the board session | Pre-session note, agenda and conclusions of the session (sections 8.2 to 8.4). |
+| P69 | Board decisions register | Recording of decisions and assignments after the session (section 8.4). |
 
 ---
 

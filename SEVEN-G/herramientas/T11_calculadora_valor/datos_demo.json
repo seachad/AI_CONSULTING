@@ -1,0 +1,181 @@
+{
+  "version_esquema": "0.1",
+  "herramienta": "T11",
+  "meta": {
+    "organizacion": "Compañía Ejemplo Industrial, S.A. (ficticia)",
+    "moneda": "EUR",
+    "datos_ilustrativos": true,
+    "nota": "Datos ilustrativos y ficticios, coherentes en escala con el registro de demostración de T01 (iniciativas IA-2026-001 e IA-2026-002). Los desgloses por categoría, las claves de reparto, el consumo, la conciliación y las rampas son inventados para mostrar la herramienta. Cualquier parecido con una compañía real es casual."
+  },
+  "parametros": [
+    {
+      "version": "2026",
+      "fecha": "2026-09-16",
+      "origen": "Tesis de IA de ejemplo aprobada en C2 (ficticia): horizonte, tasa de descuento, tolerancia y umbrales de alerta del documento 42",
+      "aprobado_por": null,
+      "nota": "Valores de ejemplo. El horizonte y la tasa los fija la compañía en C2 (documento 40 §8.2); los umbrales de alerta de consumo son los orientativos del documento 42 §8.2. Los multiplicadores de los escenarios son supuestos de la calculadora, no del marco: cada compañía declara los suyos.",
+      "horizonte_anios": 3,
+      "tasa_descuento_pct": 8,
+      "tolerancia_sin_etiquetar_pct": 5,
+      "alertas_consumo": { "aviso_pct": 50, "alerta_pct": 80, "limite_pct": 100, "anomalia_factor": 3 },
+      "escenarios": {
+        "prudente": { "valor": 0.7, "coste_recurrente": 1.15, "inversion": 1.15 },
+        "favorable": { "valor": 1.15, "coste_recurrente": 1, "inversion": 1 }
+      },
+      "coste_horario": [
+        { "perfil": "Administración y finanzas", "importe": 50 },
+        { "perfil": "Datos, ingeniería e IA", "importe": 85 },
+        { "perfil": "Negocio y expertos", "importe": 70 },
+        { "perfil": "Operación y soporte", "importe": 55 }
+      ]
+    }
+  ],
+  "casos": [
+    {
+      "id": "IA-2026-001",
+      "nombre": "Agente de conciliación bancaria con registro de asientos",
+      "descripcion": "Agente que concilia los movimientos bancarios con las facturas y registra por sí mismo los asientos de importe bajo, dentro de límites fijados; los casos dudosos pasan a una persona.",
+      "ambicion": "optimizar",
+      "intensidad": "enterprise",
+      "fase": 3,
+      "fecha": "2026-09-15",
+      "autor": "Responsable de producto de IA (ficticio)",
+      "version_parametros": "2026",
+      "vida_util_anios": 5,
+      "origen": "manual",
+      "hipotesis": {
+        "enunciado": "Si el agente concilia los movimientos bancarios y registra los asientos de importe bajo, entonces las horas de conciliación manual pasarán de 60.000 a 22.000 al año en la dirección financiera en 12 meses desde G5, medido con antes y después con ajuste por volumen de movimientos.",
+        "refutacion": "Menos de 20.000 horas evitadas al año tras 6 meses en producción, o más de un 0,5 % de asientos registrados por el agente que requieren corrección.",
+        "horizonte_comprobacion": "Seis meses después de G5",
+        "metrica_principal": "Horas de conciliación manual al año",
+        "linea_base": "60.000 h (P09, medida en 2025)",
+        "objetivo": "22.000 h",
+        "umbral_exito": "40.000 h o menos",
+        "metodo_atribucion": "antes_despues",
+        "diseno": "Periodo de 12 meses antes y después, con ajuste por volumen de movimientos y estacionalidad de cierres; control de gestión aprueba los ajustes.",
+        "reparto": "No comparte métrica con otras iniciativas de la cartera.",
+        "supuestos": "El contrato de externalización del proceso vence en 2027 y no se renueva; las horas extraordinarias de cierre se eliminan en el primer año de uso estable."
+      },
+      "lineas": [
+        { "tipo": "eficiencias", "concepto": "Externalización de la conciliación que no se renueva", "unidades": 22000, "unidad": "h/año", "valor_unitario": 50, "importe": null, "fuente": "Contrato vigente y coste horario de control de gestión", "estado": "estimado", "base": null, "supuestos": "Reducción contractual al vencimiento de 2027." },
+        { "tipo": "eficiencias", "concepto": "Horas extraordinarias de cierre eliminadas", "unidades": 16000, "unidad": "h/año", "valor_unitario": 50, "importe": null, "fuente": "Nómina 2025 (horas extraordinarias de cierre)", "estado": "estimado", "base": null, "supuestos": "Menor coste real verificable en nómina." },
+        { "tipo": "capacidad_liberada", "concepto": "Horas internas sin plan de materialización", "unidades": 6000, "unidad": "h/año", "valor_unitario": 50, "importe": null, "fuente": "Estimación del equipo (F4)", "estado": "estimado", "base": null, "supuestos": "Sin destino definido: no suma hasta que se materialice o se reasigne (regla 3)." }
+      ],
+      "rampa": [40, 85, 100],
+      "neto_actual": 0,
+      "inversion_adicional": null,
+      "criterios_parada": [
+        { "tipo": "principal", "criterio": "Horas evitadas insuficientes", "umbral": "< 20.000 h/año anualizadas tras 6 meses", "momento": "R6", "decision": "parar", "quien": "Comité de IA" },
+        { "tipo": "salvaguarda", "criterio": "Calidad de los asientos", "umbral": "> 0,5 % de asientos corregidos en un mes", "momento": "Mensual", "decision": "iterar", "quien": "Responsable de producto; decide el patrocinador" },
+        { "tipo": "economico", "criterio": "Sobrecoste de construcción", "umbral": "Inversión inicial > 1.300.000 €", "momento": "G4 y G5", "decision": "parar", "quien": "Comité de IA" }
+      ],
+      "etapas": [],
+      "valor_opcion": "",
+      "costes": {
+        "lineas": [
+          { "componente": "construccion", "categoria": "personas_construccion", "concepto": "Producto, datos e ingeniería", "unidades": 5000, "valor_unitario": 84, "importe": null, "incremental": true, "fuente": "Plan de fase 3; coste horario completo" },
+          { "componente": "construccion", "categoria": "proveedores", "concepto": "Integrador del sistema contable y bancario", "unidades": null, "valor_unitario": null, "importe": 330000, "incremental": true, "fuente": "Oferta del integrador" },
+          { "componente": "construccion", "categoria": "consumo_modelos", "concepto": "Consumo de modelos en pruebas y piloto", "unidades": null, "valor_unitario": null, "importe": 40000, "incremental": true, "fuente": "Previsión de la pasarela de modelos" },
+          { "componente": "construccion", "categoria": "computo", "concepto": "Entornos de desarrollo y pruebas", "unidades": null, "valor_unitario": null, "importe": 60000, "incremental": true, "fuente": "Tarifa de nube" },
+          { "componente": "construccion", "categoria": "datos", "concepto": "Preparación y etiquetado de movimientos históricos", "unidades": null, "valor_unitario": null, "importe": 70000, "incremental": true, "fuente": "Plan de datos" },
+          { "componente": "construccion", "categoria": "control", "concepto": "EIPD, pruebas de seguridad del agente y auditoría", "unidades": null, "valor_unitario": null, "importe": 90000, "incremental": true, "fuente": "Plan de control" },
+          { "componente": "adopcion", "categoria": "adopcion", "concepto": "Formación, rediseño del proceso y acompañamiento", "unidades": null, "valor_unitario": null, "importe": 90000, "incremental": true, "fuente": "Plan de adopción preliminar (P20)" },
+          { "componente": "recurrente", "categoria": "licencias", "concepto": "Licencia del conector bancario", "unidades": null, "valor_unitario": null, "importe": 20000, "incremental": true, "fuente": "Oferta del proveedor" },
+          { "componente": "recurrente", "categoria": "personas_operacion", "concepto": "Supervisión humana de casos dudosos y soporte", "unidades": 1400, "valor_unitario": 50, "importe": null, "incremental": true, "fuente": "Coste horario de control de gestión" },
+          { "componente": "recurrente", "categoria": "control", "concepto": "Revisión anual de riesgos y auditoría del agente", "unidades": null, "valor_unitario": null, "importe": 20000, "incremental": true, "fuente": "Plan de control" },
+          { "componente": "recurrente", "categoria": "proveedores", "concepto": "Soporte y mantenimiento del integrador", "unidades": null, "valor_unitario": null, "importe": 25000, "incremental": true, "fuente": "Oferta del integrador" },
+          { "componente": "recurrente", "categoria": "adopcion", "concepto": "Formación continua", "unidades": null, "valor_unitario": null, "importe": 5000, "incremental": true, "fuente": "Plan de adopción" },
+          { "componente": "retirada", "categoria": "proveedores", "concepto": "Migración y borrado de datos y modelos al retirar", "unidades": null, "valor_unitario": null, "importe": 60000, "incremental": true, "fuente": "Estimación del integrador" }
+        ],
+        "compartidos": [
+          { "nombre": "Plataforma de modelos compartida", "categoria": "consumo_modelos", "coste_total": 1000000, "metodo": "consumo", "clave_caso": 7.68, "clave_total": null, "sin_etiquetar_pct": 4, "estructura_pct": 0, "clave_aprobada": true, "incremental": true, "nota": "Consumo medido por clave de acceso: 7,68 % del total; 4 % sin etiquetar, dentro de la tolerancia." },
+          { "nombre": "Oficina de IA", "categoria": "personas_operacion", "coste_total": 700000, "metodo": "ponderado", "clave_caso": 2, "clave_total": 21, "sin_etiquetar_pct": null, "estructura_pct": 40, "clave_aprobada": true, "incremental": false, "nota": "40 % estructura corporativa (no se reparte); el resto por casos en producción ponderados por intensidad (Enterprise 2, Lite 1)." }
+        ],
+        "retirada_en_horizonte": false,
+        "consumo": { "presupuesto_mensual": 6700, "dia": 12, "dias_mes": 30, "acumulado": 3100, "ultimo_dia": 290, "media_reciente": 250 },
+        "unidad_resultado": { "unidad": "movimiento conciliado", "unidades_utiles": 1200000, "volumen_total": 1500000, "coste_humano_residual": 450000, "coste_unitario_base": 1.6 },
+        "parada": { "presupuesto_aprobado": 1100000, "gastado": 310000, "compromisos": 45000, "penalizaciones": 20000, "cierre": 15000 },
+        "conciliacion": {
+          "fecha_corte": "2026-08-31",
+          "saldo_contable": 318500,
+          "reales": [
+            { "categoria": "personas_construccion", "importe": 150000 },
+            { "categoria": "proveedores", "importe": 110000 },
+            { "categoria": "datos", "importe": 30000 },
+            { "categoria": "control", "importe": 20000 }
+          ],
+          "explicacion": "8.500 € de una factura del integrador contabilizada y pendiente de imputar en T13; se imputa en el cierre de septiembre."
+        }
+      },
+      "notas": "Caso de ejemplo en la fase 3 (G3 pendiente). Totales coherentes con el registro de demostración de T01: eficiencias esperadas 1,9 M€, coste recurrente 260.000 € e inversión 1,1 M€."
+    },
+    {
+      "id": "IA-2026-002",
+      "nombre": "Mantenimiento predictivo como servicio para clientes industriales",
+      "descripcion": "Nuevo servicio de pago que avisa a los clientes industriales de las averías probables de sus equipos a partir de los datos de sensores, con visitas técnicas planificadas.",
+      "ambicion": "transformar",
+      "intensidad": "enterprise",
+      "fase": 2,
+      "fecha": "2026-09-10",
+      "autor": "Responsable de producto de IA (ficticio)",
+      "version_parametros": "2026",
+      "vida_util_anios": 8,
+      "origen": "manual",
+      "hipotesis": {
+        "enunciado": "Si se ofrece a los clientes industriales un servicio de pago de aviso de averías con visitas planificadas, entonces al menos 190 clientes contratarán el servicio en el tercer año, medido con despliegue escalonado por regiones (diferencias en diferencias).",
+        "refutacion": "Menos de 5 clientes piloto con intención firmada al cierre de la etapa 1, o menos de 3 renovaciones tras 3 meses de prueba de pago en la etapa 2.",
+        "horizonte_comprobacion": "Etapa 1: 31-03-2027; etapa 2: 30-09-2027",
+        "metrica_principal": "Contratos de servicio activos",
+        "linea_base": "0 contratos",
+        "objetivo": "190 contratos en el año 3",
+        "umbral_exito": "5 intenciones firmadas (etapa 1)",
+        "metodo_atribucion": "did",
+        "diseno": "Lanzamiento escalonado por regiones comerciales; las regiones sin lanzamiento sirven de comparación.",
+        "reparto": "Ninguno.",
+        "supuestos": "Precio de 50.000 € por contrato y año; los clientes aceptan compartir los datos de sensores."
+      },
+      "lineas": [
+        { "tipo": "retorno", "concepto": "Contratos de mantenimiento predictivo", "unidades": 190, "unidad": "contratos/año", "valor_unitario": 50000, "importe": null, "fuente": "Precio objetivo del área comercial", "estado": "estimado", "base": "ingreso", "supuestos": "Valorado en ingreso porque aún no se conoce el margen del servicio; se indica (documento 40 §5.1)." },
+        { "tipo": "riesgo_evitado", "concepto": "Menor riesgo de pérdida de clientes de mantenimiento tradicional", "unidades": null, "unidad": null, "valor_unitario": null, "importe": null, "fuente": null, "estado": "estimado", "base": null, "supuestos": "No cuantificado: no hay relación económica demostrada (regla 7)." }
+      ],
+      "rampa": [10, 40, 75],
+      "neto_actual": 0,
+      "inversion_adicional": null,
+      "criterios_parada": [
+        { "tipo": "principal", "criterio": "Interés de clientes insuficiente", "umbral": "< 5 intenciones firmadas al cierre de la etapa 1", "momento": "31-03-2027", "decision": "parar", "quien": "Comité de IA" },
+        { "tipo": "salvaguarda", "criterio": "Falsos avisos", "umbral": "> 20 % de visitas sin avería confirmada", "momento": "Mensual durante el piloto", "decision": "iterar", "quien": "Responsable de producto" },
+        { "tipo": "economico", "criterio": "Límite de inversión de la etapa", "umbral": "Inversión acumulada > límite de la etapa aprobado", "momento": "Cierre de cada etapa", "decision": "parar", "quien": "Consejo" }
+      ],
+      "etapas": [
+        { "etapa": 1, "pregunta": "¿Pagarían los clientes industriales por el servicio?", "evidencia": "≥ 5 clientes con intención firmada", "fecha": "2027-03-31", "inversion_max": 480000, "organo": "Comité de IA" },
+        { "etapa": 2, "pregunta": "¿Se sostiene el uso pagado?", "evidencia": "≥ 3 clientes renuevan tras 3 meses", "fecha": "2027-09-30", "inversion_max": 1500000, "organo": "Consejo" },
+        { "etapa": 3, "pregunta": "¿Escala el servicio a todas las regiones?", "evidencia": "≥ 60 contratos activos", "fecha": "2028-06-30", "inversion_max": 4200000, "organo": "Consejo" }
+      ],
+      "valor_opcion": "Aunque el servicio no escale, la compañía gana una plataforma de datos de sensores de sus equipos instalados y conocimiento de fallos que mejora su mantenimiento tradicional.",
+      "costes": {
+        "lineas": [
+          { "componente": "construccion", "categoria": "personas_construccion", "concepto": "Equipo de producto, datos y servicio", "unidades": null, "valor_unitario": null, "importe": 2100000, "incremental": true, "fuente": "Plan por etapas" },
+          { "componente": "construccion", "categoria": "proveedores", "concepto": "Integración con sensores y desarrollo de la aplicación de cliente", "unidades": null, "valor_unitario": null, "importe": 1800000, "incremental": true, "fuente": "Ofertas" },
+          { "componente": "construccion", "categoria": "computo", "concepto": "Plataforma de ingesta de datos de sensores", "unidades": null, "valor_unitario": null, "importe": 600000, "incremental": true, "fuente": "Tarifa de nube" },
+          { "componente": "construccion", "categoria": "datos", "concepto": "Datos históricos de fallos y etiquetado", "unidades": null, "valor_unitario": null, "importe": 900000, "incremental": true, "fuente": "Plan de datos" },
+          { "componente": "construccion", "categoria": "control", "concepto": "Contratos de datos con clientes, seguridad y responsabilidad del servicio", "unidades": null, "valor_unitario": null, "importe": 300000, "incremental": true, "fuente": "Asesoría jurídica" },
+          { "componente": "adopcion", "categoria": "adopcion", "concepto": "Formación de técnicos y del equipo comercial", "unidades": null, "valor_unitario": null, "importe": 480000, "incremental": true, "fuente": "Plan de adopción" },
+          { "componente": "recurrente", "categoria": "licencias", "concepto": "Licencias de la plataforma de servicio", "unidades": null, "valor_unitario": null, "importe": 150000, "incremental": true, "fuente": "Ofertas" },
+          { "componente": "recurrente", "categoria": "consumo_modelos", "concepto": "Consumo de modelos", "unidades": null, "valor_unitario": null, "importe": 250000, "incremental": true, "fuente": "Previsión de volumen" },
+          { "componente": "recurrente", "categoria": "computo", "concepto": "Ingesta y almacenamiento de datos de sensores", "unidades": null, "valor_unitario": null, "importe": 350000, "incremental": true, "fuente": "Tarifa de nube" },
+          { "componente": "recurrente", "categoria": "personas_operacion", "concepto": "Equipo de operación del servicio", "unidades": null, "valor_unitario": null, "importe": 500000, "incremental": true, "fuente": "Plan de operación" },
+          { "componente": "recurrente", "categoria": "control", "concepto": "Seguridad y cumplimiento del servicio", "unidades": null, "valor_unitario": null, "importe": 50000, "incremental": true, "fuente": "Plan de control" },
+          { "componente": "recurrente", "categoria": "adopcion", "concepto": "Formación continua de técnicos", "unidades": null, "valor_unitario": null, "importe": 100000, "incremental": true, "fuente": "Plan de adopción" },
+          { "componente": "retirada", "categoria": "proveedores", "concepto": "Cierre ordenado del servicio y devolución de datos a clientes", "unidades": null, "valor_unitario": null, "importe": 300000, "incremental": true, "fuente": "Estimación" }
+        ],
+        "compartidos": [],
+        "retirada_en_horizonte": false,
+        "consumo": { "presupuesto_mensual": null, "dia": null, "dias_mes": null, "acumulado": null, "ultimo_dia": null, "media_reciente": null },
+        "unidad_resultado": { "unidad": "contrato activo", "unidades_utiles": null, "volumen_total": null, "coste_humano_residual": null, "coste_unitario_base": null },
+        "parada": { "presupuesto_aprobado": 480000, "gastado": 480000, "compromisos": 0, "penalizaciones": null, "cierre": null },
+        "conciliacion": { "fecha_corte": null, "saldo_contable": null, "reales": [], "explicacion": "" }
+      },
+      "notas": "Apuesta de Transformar en la fase 2. Totales coherentes con el registro de demostración de T01: retorno esperado 9,5 M€ (en ingreso), coste recurrente 1,4 M€ e inversión 6,18 M€ en tres etapas. El VAN es informativo."
+    }
+  ]
+}

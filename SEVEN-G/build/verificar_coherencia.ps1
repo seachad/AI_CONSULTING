@@ -153,7 +153,7 @@ try {
   }
 
   Write-Host '3. Aviso legal en herramientas y paneles'
-  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T17_panel_consejo\index.html') +
+  $conAviso = @('index.html', 'en\index.html', 'SEVEN-G\herramientas\T01_registro_iniciativas\registro.html', 'SEVEN-G\herramientas\T14_indice_transformacion\indice.html', 'SEVEN-G\herramientas\T11_calculadora_valor\calculadora.html', 'SEVEN-G\herramientas\T15_diagnostico_madurez\madurez.html','SEVEN-G\herramientas\T17_panel_consejo\index.html') +
     @(Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida') -Filter *.html | ForEach-Object { [IO.Path]::GetRelativePath($repo, $_.FullName) })
   $sin = $conAviso | Where-Object { -not (Select-String -Path (Join-Path $repo $_) -Pattern 'Aviso legal|Legal notice' -Quiet) }
   foreach ($x in $sin) { Mal "sin aviso legal: $x" }
@@ -198,6 +198,17 @@ try {
   elseif (([IO.File]::ReadAllText($salida14) -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText((Join-Path $t14 'indice.html')) -replace "`r`n", "`n")) { Mal 'T14: indice.html no coincide con sus fuentes: ejecutar build_indice.ps1 (nunca editarlo a mano)' }
   else { Ok 'T14: indice.html coincide con datos_demo.json y la plantilla' }
 
+  # T11 (con T13) y T15 generados desde sus fuentes (D68)
+  $t11 = Join-Path $repo 'SEVEN-G\herramientas\T11_calculadora_valor'
+  $t15 = Join-Path $repo 'SEVEN-G\herramientas\T15_diagnostico_madurez'
+  foreach ($h in @(@{ dir = $t11; script = 'build_calculadora.ps1'; html = 'calculadora.html'; que = 'T11' }, @{ dir = $t15; script = 'build_madurez.ps1'; html = 'madurez.html'; que = 'T15' })) {
+    $salidaH = Join-Path $tmp "$($h.que)_$($h.html)"
+    & pwsh -NoProfile -File (Join-Path $h.dir $h.script) -Salida $salidaH | Out-Null
+    if ($LASTEXITCODE) { Mal "$($h.que): $($h.script) ha fallado" }
+    elseif (([IO.File]::ReadAllText($salidaH) -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText((Join-Path $h.dir $h.html)) -replace "`r`n", "`n")) { Mal "$($h.que): $($h.html) no coincide con sus fuentes: ejecutar $($h.script) (nunca editarlo a mano)" }
+    else { Ok "$($h.que): $($h.html) coincide con sus fuentes" }
+  }
+
   # T06 (D65): los riesgos de demostración usan las escalas del documento 33 (nivel = probabilidad × impacto: Bajo 1–4, Medio 5–9,
   # Alto 10–15, Crítico 16–25) y ninguna aceptación la firma un órgano inferior al del nivel residual (33 §7.1)
   $nivelPI = { param($p, $i) if ($null -eq $p -or $null -eq $i) { return $null }; $n = [int]$p * [int]$i; if ($n -ge 16) { 'critico' } elseif ($n -ge 10) { 'alto' } elseif ($n -ge 5) { 'medio' } else { 'bajo' } }
@@ -210,6 +221,22 @@ try {
     if ($r.aceptacion -and $res -and $rango[$r.aceptacion.organo] -lt $requerido[$res]) { $malT06 += "$($r.id): aceptado por $($r.aceptacion.organo), inferior al órgano de un residual $res" }
   }
   if ($malT06) { Mal "T06: riesgos de demostración incoherentes con el documento 33: $($malT06 -join ' · ')" } else { Ok 'T06: niveles y aceptaciones de los riesgos de demostración coherentes con el documento 33' }
+
+  # plantillas editables en Word (D67): cada plantilla tiene su .docx y este lleva la huella de su Markdown actual
+  Add-Type -AssemblyName System.IO.Compression
+  $malDocx = @(); $nDocx = 0
+  foreach ($lang in 'es', 'en') {
+    foreach ($p in (Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\plantillas") -File -Filter '*.md')) {
+      $nDocx++
+      $dx = Join-Path $repo "SEVEN-G\docx\$lang\plantillas\$($p.BaseName).docx"
+      if (-not (Test-Path $dx)) { $malDocx += "falta $lang/$($p.BaseName).docx"; continue }
+      $huella = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes(([IO.File]::ReadAllText($p.FullName) -replace "`r`n", "`n")))).ToLowerInvariant()
+      $zip = [IO.Compression.ZipFile]::OpenRead($dx)
+      try { $core = [IO.StreamReader]::new($zip.GetEntry('docProps/core.xml').Open()).ReadToEnd() } finally { $zip.Dispose() }
+      if ($core -notmatch "sha256:$huella") { $malDocx += "$lang/$($p.BaseName).docx desfasado" }
+    }
+  }
+  if ($malDocx) { Mal "plantillas en Word: $($malDocx -join ' · '). Ejecutar pwsh -File SEVEN-G/build/docx.ps1" } else { Ok "$nDocx plantillas con su versión editable en Word al día" }
 
   # ---- 6. T17: panel de ejemplo al día
   Write-Host '6. T17: panel de ejemplo generado desde los datos de demostración'
@@ -248,6 +275,9 @@ try {
       @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
       @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="escala"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="2"]', '#nav a[href="#/umbrales"]'); que = 'calculadora T14 (ejemplo del documento 12)' }
+      # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
+      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
+      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr'); que = 'panel completo' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row'); que = 'panel móvil' }
     )

@@ -23,7 +23,7 @@
 | **Quién la verifica** | Oficina de IA en Lite; auditor de IA en Enterprise (01 §7.5). El responsable de riesgos revisa la base legal y las restricciones de uso. |
 | **En qué *gate* se revisa** | G4. Se comprueba de nuevo en G5 (versiones desplegadas) y en cada revisión de continuidad R6. |
 | **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. Si el sistema está clasificado como de alto riesgo, se completan todos los campos con independencia de la intensidad. |
-| **Relación** | P05 Ficha de inventario · P11 Clasificación regulatoria · P15 Registro de arquitectura · P19 Plan de reversión · P27 Registro de incidentes y cambios · P30 Decisión de escalado o retirada · documentos 51 y 53. |
+| **Relación** | P05 Ficha de inventario · P11 Clasificación regulatoria · P15 Registro de arquitectura · P19 Plan de reversión · P27 Registro de incidentes y cambios · P30 Decisión de escalado o retirada · P64 Ficha de conjunto de datos e inventario de fuentes de conocimiento · documentos 51 y 53. |
 
 Reglas de cumplimentación:
 

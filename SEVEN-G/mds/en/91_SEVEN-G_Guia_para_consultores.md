@@ -97,7 +97,7 @@ Durations are indicative and depend on the size of the company, the number of sy
 | **When** | The company does not know with certainty what AI it has, how much it contributes or what risks it is taking; or the board wants a starting point before deciding. |
 | **Scope** | Initial AI system inventory (including third-party systems and corporate use); D1–D7 maturity assessment with evidence; current sphere map; transformation index profile; value by status and recurring cost of use cases in production; main risks and gaps. |
 | **Out of scope** | Design of the AI thesis, construction of solutions, definitive regulatory classification (requires legal judgement). |
-| **Deliverables** | Diagnosis report · Initial inventory (T02) · Maturity diagnosis with evidence (T15) · Transformation index profile (T14) · Sphere map (T16) · One-page summary for the board (60 §4.2). |
+| **Deliverables** | Diagnosis report (P33) · Initial inventory (T02) · Maturity diagnosis with evidence (T15) · Transformation index profile (T14) · Sphere map (T16) · One-page summary for the board (60 §4.2). |
 | **Third-party roles** | Diagnosis lead · Value and management control specialist · Risk and compliance specialist · Quality reviewer not involved in the fieldwork. |
 | **Company roles** | Senior management commissioning the work · Single point of contact · Management control (validation of figures) · Risk and compliance · Technology and data. |
 | **Quality criterion** | Each maturity level assigned has linked evidence; gaps are shown as *no data*; value distinguishes validated, declared and estimated. |
@@ -109,7 +109,7 @@ Durations are indicative and depend on the size of the company, the number of sy
 | **When** | The company has decided to adopt SEVEN-G and wants a first implementation (01 §5.3; document 90). |
 | **Scope** | **Month 1:** diagnosis (M1). **Month 2:** risks and opportunities by sphere with owner, economic impact and timeframe; proposed AI thesis, ambition and risk appetite. **Month 3:** governance structure (bodies, roles, incompatibilities, thresholds, *gates*, reference time limits, metrics and reporting cadence); initial portfolio; initiative register and register of recommendations in operation; first board pack. |
 | **Out of scope** | Independent verification of *gates* that the third party itself helps to prepare; decisions of the bodies. |
-| **Deliverables** | Those of M1 · Proposed AI thesis and risk appetite (T19) · Corporate AI policy (document 31) · Governance model with role assignment · Prioritised portfolio · Initiative register (T01) and register of recommendations (T18) with real data · Regularisation plan for existing systems (01 §14) · First quarterly pack (document 60). |
+| **Deliverables** | Those of M1 · Proposed AI thesis and risk appetite (T19) · Corporate AI policy (document 31) · Governance model with role assignment · Prioritised portfolio · Initiative register (T01) and register of recommendations (T18) with real data · Regularisation plan for existing systems (01 §14; P36 §9) · First quarterly pack (document 60). |
 | **Third-party roles** | Implementation director · Specialists in value, risk and regulation, and technology and data · Support to the AI Office · Quality reviewer. |
 | **Company roles** | Executive sponsor of the implementation · Future AI Office (must take part from day one) · AI Committee being set up · Board secretariat · Management control · Risk, compliance, data protection and security · Internal audit (informed). |
 | **Quality criterion** | On completion, the company can operate the cycle without the third party: the AI Office has prepared at least one *gate* decision and the first pack with support, not by delegation. |
@@ -121,7 +121,7 @@ Durations are indicative and depend on the size of the company, the number of sy
 | **When** | The board, the board committee or internal audit want an independent opinion; the company wants to verify its declaration of application (01 §14); a review is required after a relevant incident. |
 | **Scope** | Verification of the seven conditions in 01 §14; sample-based review of *gate* decisions (dual validation, segregation of duties, evidence predating the decision); review of the inventory and classification; review of the application of the measurement rules in the board pack; review of the nonconformity process; review of the register of recommendations and of the independence of assessments. |
 | **Out of scope** | Designing or implementing corrections; issuing certifications (section 6.3). |
-| **Deliverables** | Audit plan with scope, criteria and sample · Working papers with evidence · Report with a conclusion of **Conformant**, **Conformant with observations** or **Nonconformant** · Nonconformities detected, classified as minor, major or critical · Recommendations for the register (document 62). |
+| **Deliverables** | Audit plan with scope, criteria and sample (P58) · Working papers with evidence (P59) · Report (P60) with a conclusion of **Conformant**, **Conformant with observations** or **Nonconformant** · Nonconformities detected, classified as minor, major or critical · Recommendations for the register (document 62). |
 | **Third-party roles** | Audit lead · Auditors with AI experience · Quality reviewer. None of them may have taken part in the implementation or support of the audited area (section 5). |
 | **Company roles** | Commissioning body (board committee or internal audit) · Point of contact · Owners of the audited areas. |
 | **Quality criterion** | Criteria, sample and limitations declared; each finding with evidence; conclusion consistent with the findings. The AI audit framework (document 38) is followed. |
@@ -145,7 +145,7 @@ Durations are indicative and depend on the size of the company, the number of sy
 | **When** | The company has implemented the framework and needs additional capacity to operate it while it develops its own. |
 | **Scope** | Support to the AI Office: maintenance of the initiative register and the inventory, preparation of evidence with the teams, calculation of funnel metrics, preparation of the quarterly pack, methodological support for continuity reviews and for C5. |
 | **Out of scope** | Verification of *gates* for initiatives in which the third party takes part; decisions; independent assessment of recommendations whose execution it supports. |
-| **Deliverables** | Updated registers · Monthly funnel metrics · Drafts of the quarterly pack for review by the AI Office · Transfer plan with a date for exit or reduction of the service. |
+| **Deliverables** | Updated registers · Monthly funnel metrics · Drafts of the quarterly pack for review by the AI Office · Transfer plan (P71) with a date for exit or reduction of the service. |
 | **Third-party roles** | Service lead · Portfolio and measurement analysts. |
 | **Company roles** | AI Office (accountable for the outcome) · AI Committee · Management control. |
 | **Quality criterion** | The company's AI Office signs off the deliverables; there is a transfer plan with milestones; the service is reviewed every year. |
@@ -186,7 +186,7 @@ After providing an incompatible service, the third party **should** allow at lea
 
 ### 5.5 Declaration of independence
 
-At the start of every M3 or M4 service, and whenever the situation changes, the third party delivers a written declaration setting out: services provided to the client and its group in the last three years, relationships with relevant suppliers, fee structure, assigned staff and absence of incompatibilities under section 5.2.
+At the start of every M3 or M4 service, and whenever the situation changes, the third party delivers a written declaration setting out: services provided to the client and its group in the last three years, relationships with relevant suppliers, fee structure, assigned staff and absence of incompatibilities under section 5.2. P41, Model C, is used.
 
 ---
 
@@ -221,7 +221,7 @@ The declaration in 01 §14 is a **verifiable self-declaration**: it is made by t
 - Does not turn the declaration into a certification or grant any seal.
 - Does not commit the author of the framework.
 
-Template for a declaration of application:
+Template for a declaration of application (template P61):
 
 | Field | Content |
 |---|---|
@@ -268,7 +268,7 @@ Template for a declaration of application:
 
 ### 7.3 Service exit
 
-On completion of any model, the third party delivers: registers and data in an open format, a list of evidence and its location, pending decisions and recommendations with an owner, and a note on open risks. The company must not need the third party to read or maintain anything that has been delivered.
+On completion of any model, the third party delivers: registers and data in an open format, a list of evidence and its location, pending decisions and recommendations with an owner, and a note on open risks. The company must not need the third party to read or maintain anything that has been delivered. It is documented with P71.
 
 ---
 
@@ -304,6 +304,15 @@ On completion of any model, the third party delivers: registers and data in an o
 | T19 | AI thesis and risk appetite template | M2 |
 | P03 | Role assignment record | M2, M3 (incompatibilities) |
 | P29 | *Gate* decision record | M3 (sampling) |
+| P33 | C1 diagnosis report | M1, M2 |
+| P36 | C3 portfolio plan | M2 (regularisation plan) |
+| P41 | Declarations of independence and conflicts of interest | M3, M4 (Model C) |
+| P58 | Annual AI audit plan | M3 |
+| P59 | Audit working papers | M3 |
+| P60 | Audit report and finding records | M3 |
+| P61 | SEVEN-G declaration of application | M2, M3 |
+| P70 | Proposal and engagement letter | M1, M2, M3, M4, M5 |
+| P71 | Transfer plan and exit note | M1, M2, M3, M4, M5 |
 
 ---
 

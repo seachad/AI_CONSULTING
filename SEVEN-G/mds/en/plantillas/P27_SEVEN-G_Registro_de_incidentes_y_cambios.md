@@ -80,10 +80,10 @@ One record per incident.
 | Initial and final severity, with justification | | S1 · S2 · S3 · S4, using the criteria of document 37. |
 | Containment actions and time | | Kill switch, rollback, reduction of autonomy, etc. |
 | Time from detection to containment | | In minutes or hours. |
-| Reports checked | | Result of the boxes in block 8 of P26: whether it applies, who reported, when and evidence. |
-| Root cause | | Technical, data, process, supplier or oversight. |
+| Reports checked | | Result of the boxes in block 8 of P26: whether it applies, who reported, when and evidence, and P51 register. |
+| Root cause | | Technical, data, process, supplier or oversight (P52). |
 | Corrective actions | | What is changed, owner, date and verification. Changes are recorded in block 4. |
-| Linked nonconformity | | NC-AAAA-NNN if the incident reveals a breach of the framework. |
+| Linked nonconformity | | NC-AAAA-NNN (P50) if the incident reveals a breach of the framework. |
 | Effect on the risk register | | Risks reviewed in P12 and change in level. |
 | Effect on classification or intensity **(Enterprise)** | | Does it require P04 or P11 to be reviewed? |
 | Economic impact | | Amount with formula and status (validated · declared · estimated), or *No data*. |

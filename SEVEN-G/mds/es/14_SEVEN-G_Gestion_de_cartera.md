@@ -44,7 +44,7 @@ Este documento no constituye asesoramiento jurídico.
 | **Entradas de C1** | Inventario, madurez (documento 11), índice de transformación (12), valor validado y coste actuales. |
 | **Entradas de C2** | Tesis de IA, ambición por esfera, apetito de riesgo, presupuesto marco, horizonte de retorno, umbral de inversión Enterprise, plazos de referencia por fase y límites de concentración (documento 13). |
 | **Resultados obligatorios** (01 §5.1) | Cartera priorizada con nivel de ambición, esfera, intensidad, presupuesto y responsables; criterios de retirada; capacidad disponible. |
-| **Resultados de este documento** | Sobres presupuestarios por carril; tabla de priorización; plan de capacidad; límites de concentración aplicados; plan de regularización; calendario de revisiones. |
+| **Resultados de este documento** | Sobres presupuestarios por carril; tabla de priorización; plan de capacidad; límites de concentración aplicados; plan de regularización; calendario de revisiones. Se documentan con el plan de cartera C3 (P36). |
 | **Responsable** | Comité de IA, con la preparación de la oficina de IA. |
 | **Aprueba** | Comité de IA. El consejo aprueba las iniciativas de Transformar y cualquier trasvase de su sobre. |
 
@@ -409,7 +409,7 @@ Plazos de referencia: plan de retirada aprobado en 15 días (Lite) o 30 días (E
 
 ### 10.8 Lecciones aprendidas
 
-Toda retirada, y toda parada en G3 o posterior, produce una nota de lecciones con: hipótesis inicial; qué ocurrió; motivo codificado; **qué señal temprana lo anunciaba y cuándo se vio**; inversión y coste total frente a valor realizado; y qué cambio se propone en criterios de entrada, plantillas o umbrales. La oficina de IA las consolida por motivo y las presenta en C5.
+Toda retirada, y toda parada en G3 o posterior, produce una nota de lecciones con: hipótesis inicial; qué ocurrió; motivo codificado; **qué señal temprana lo anunciaba y cuándo se vio**; inversión y coste total frente a valor realizado; y qué cambio se propone en criterios de entrada, plantillas o umbrales. La oficina de IA las consolida por motivo y las presenta en C5 (P37 §9).
 
 ### 10.9 Registro de retiradas (T22)
 
@@ -491,12 +491,14 @@ Umbrales iniciales, a calibrar en C5.
 
 | Código | Uso en este documento |
 |---|---|
-| **T01 · Registro de iniciativas** | Ficha de entrada, puntuación de priorización, carriles y tramos, alertas de estancadas, esperas y condiciones, etiquetas "Programa" y "Regularización", semáforo. |
+| **T01 · Registro de iniciativas** | Ficha de entrada, alertas de estancadas, esperas y condiciones, etiquetas "Programa" y "Regularización". La puntuación de priorización, los carriles y tramos, el plan de regularización y el semáforo de programas se preparan con P36 (plan de cartera C3), con columnas listas para hoja de cálculo; el semáforo se presenta al consejo en P67. |
 | **T16 · Mapa de esferas de la cartera** | Equilibrio de ambición por esfera con inversión, coste recurrente y valor. |
 | **T22 · Gestor de retiradas** | Plan de retirada, sustituto, datos y modelos, accesos, comunicación, verificación de cierre y registro de retiradas (sección 10.9). |
 | T02, T03, T04, T05, T06, T08, T09, T12, T13, T14, T17, T18 | Inventario, *gates*, intensidad, ambición, riesgos, no conformidades, proveedores, valor, costes, índice de transformación, panel y recomendaciones. |
 | P06, P07, P08, P10, P12, P14, P19, P28, P29, P31 | Evidencias usadas en la entrada, la priorización y la revisión. |
 | **P30 · Decisión de escalado o retirada** | Decisión de G7, lecciones aprendidas y plan de retirada. |
+| **P36 · Plan de cartera C3** | Sobres por carril, priorización, capacidad, límites de concentración, plan de regularización, calendario de revisiones y semáforo de programas (sección 2.1). |
+| **P37 · Revisión anual C5** | Lecciones aprendidas consolidadas por motivo (sección 10.8). |
 
 ---
 

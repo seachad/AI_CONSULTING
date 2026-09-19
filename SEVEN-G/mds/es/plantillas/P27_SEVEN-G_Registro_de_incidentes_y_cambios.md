@@ -80,10 +80,10 @@ Una ficha por incidente.
 | Severidad inicial y final, con justificación | | S1 · S2 · S3 · S4, con los criterios del documento 37. |
 | Acciones de contención y hora | | Interruptor de parada, reversión, reducción de autonomía, etc. |
 | Tiempo desde la detección hasta la contención | | En minutos u horas. |
-| Notificaciones comprobadas | | Resultado de las casillas del bloque 8 de P26: aplica o no, quién notificó, cuándo y evidencia. |
-| Causa raíz | | Técnica, de datos, de proceso, de proveedor o de supervisión. |
+| Notificaciones comprobadas | | Resultado de las casillas del bloque 8 de P26: aplica o no, quién notificó, cuándo y evidencia, y registro de P51. |
+| Causa raíz | | Técnica, de datos, de proceso, de proveedor o de supervisión (P52). |
 | Acciones correctivas | | Qué se cambia, responsable, fecha y verificación. Los cambios se registran en el bloque 4. |
-| No conformidad vinculada | | NC-AAAA-NNN si el incidente revela un incumplimiento del marco. |
+| No conformidad vinculada | | NC-AAAA-NNN (P50) si el incidente revela un incumplimiento del marco. |
 | Efecto en el registro de riesgos | | Riesgos revisados en P12 y cambio de nivel. |
 | Efecto en clasificación o intensidad **(Enterprise)** | | ¿Obliga a revisar P04 o P11? |
 | Impacto económico | | Importe con fórmula y estado (validado · declarado · estimado), o *Sin dato*. |
