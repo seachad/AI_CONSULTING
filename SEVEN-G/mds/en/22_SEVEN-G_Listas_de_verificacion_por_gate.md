@@ -143,7 +143,7 @@ Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor with ris
 | ☐ | G3.02 | Has data quality been assessed, and do the data have an owner? | P10 | Cond. | Simpl. | Yes |
 | ☐ | G3.03 | Does data protection confirm the legal basis and minimisation? | P11 | Yes ◆ | Yes | Yes |
 | ☐ | G3.04 | Are build, recurring and adoption costs estimated by category? | P10 · T13 | Yes | Simpl. | Yes |
-| ☐ | G3.05 | Is the expected net value consistent with the C2 appetite and horizon for the ambition level? | P10 · P08 · C2 thesis | Yes | Yes | Yes |
+| ☐ | G3.05 | Is the expected net value consistent with the C2 appetite and horizon for the ambition level, and is there a draft benefits realisation plan with a business owner? | P10 · P08 · P62 · C2 thesis | Yes | Yes | Yes |
 | ☐ | G3.06 | Are the stop criteria those approved at G2, or has their change been approved? | P08 (versions) · P29 | Yes | Yes | Yes |
 | ☐ | G3.07 | Is the regulatory classification dated, signed off with legal judgement, and does it state the company's role? | P11 · T07 | Yes ◆ | Yes | Yes |
 | ☐ | G3.08 | Is any prohibited practice ruled out? (If not: Stop) | P11 | Yes ◆ | Yes | Yes |
@@ -178,7 +178,7 @@ Verifies: AI Office (Lite) · AI Auditor (Enterprise). Decides: sponsor with ris
 | ☐ | G4.08 | Does monitoring have metrics, thresholds, alerts and an assigned operations owner? | P15 · P03 | Cond. | Simpl. | Yes |
 | ☐ | G4.09 | Is there a shutdown mechanism with an owner and target time? | P19 | Yes ◆ | Yes | Yes |
 | ☐ | G4.10 | Does the rollback plan have criteria, procedure, owner, fallback and a planned test? | P19 | Yes | Simpl. | Yes |
-| ☐ | G4.11 | Does the adoption plan cover training, communication, support, measurement and what is specific to the ambition level? | P20 · T20 | Cond. | Simpl. | Yes |
+| ☐ | G4.11 | Does the adoption plan cover training, communication, support, measurement and what is specific to the ambition level, and is the benefits realisation plan complete and signed? | P20 · P62 · T20 | Cond. | Simpl. | Yes |
 | ☐ | G4.12 | Do the test plan and the pilot design have acceptance criteria and the approved attribution method? | P22 | Cond. | Simpl. | Yes |
 | ☐ | G4.13 | Are the required impact assessments closed and their measures incorporated? | P11 | Yes ◆ | Yes | Yes |
 | ☐ | G4.14 | High risk: are the company's obligations according to its role planned, with an owner? | P11 · P15 | Yes ◆ | — | Yes |

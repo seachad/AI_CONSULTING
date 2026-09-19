@@ -221,11 +221,14 @@ Exceeding a limit does not stop initiatives under way, but it prevents new ones 
 | Item | Content |
 |---|---|
 | **Committed recurring cost** | Operating cost of initiatives in production. It is reserved first: each go-live reduces the budget available for new initiatives in subsequent years. |
-| **Discovery reserve** | Tranche 1 of all initiatives (phases 0–3). |
 | **Optimise envelope** | Tranches 2 and 3 of its lane. |
-| **Augment envelope** | Tranches 2 and 3 of its lane, including adoption. |
-| **Transform envelope** | Stages approved by the board, each with its cap per stage. |
-| **Retirement and contingency reserve** | Costs of retirements, regularisation and approved deviations. |
+| **Augment envelope** | Tranches 2 and 3 of its lane, including the adoption specific to each initiative. |
+| **Staged Transform envelope** | Stages approved by the board, each with its cap per stage. |
+| **Enablement** | Data, common platform, governance and compliance, including initiatives in spheres 08 and 09. |
+| **Adoption and training** | AI literacy, role-based training and change management not charged to initiatives. |
+| **Contingency** | Includes the **discovery reserve** (tranche 1 of all initiatives, phases 0–3, before their lane is confirmed), the **retirement reserve** (retirements and regularisation) and approved deviations. Allocated by the AI Committee with a record. |
+
+The items are the seven envelopes of the framework budget approved by the board in C2 (13 §12); this section sets how the portfolio uses them. The portfolio plan records them in P36 §3.
 
 ### 6.2 Funding tranches
 

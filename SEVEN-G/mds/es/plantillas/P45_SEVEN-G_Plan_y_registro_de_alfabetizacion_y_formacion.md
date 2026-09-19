@@ -31,7 +31,7 @@
 
 Reglas de cumplimentación:
 
-- **Perfiles comunes.** Se usan los ocho perfiles F1–F8 de 31 §6.2; la sección 4 da su correspondencia con los perfiles PER-PA a PER-PF de 50 §5.2. Una persona puede tener varios perfiles.
+- **Perfiles comunes.** Se usan los nueve perfiles F1–F9 de 31 §6.2; la sección 4 da su correspondencia con los perfiles PER-PA a PER-PF de 50 §5.2. Una persona puede tener varios perfiles.
 - **Duraciones orientativas.** Las de 31 §6.2 son un punto de partida y se ajustan al tamaño de la compañía y al uso real de la IA.
 - **Eficacia, no solo asistencia.** Cada acción obligatoria tiene evaluación o práctica y fecha de vencimiento.
 - **Protección de datos.** El registro contiene datos personales de los empleados: acceso restringido a la oficina de IA, a la función de personas y al verificador; los indicadores se presentan agregados.
@@ -74,9 +74,9 @@ Con independencia de ese mínimo, **SEVEN-G exige** un programa por perfiles con
 | F6 · Segunda y tercera línea | PER-PF · Control y personas | — |
 | F7 · Consejo y alta dirección | PER-PA · Consejo y alta dirección | — |
 | F8 · Personas, relaciones laborales y representación de los trabajadores | PER-PF · Control y personas | — |
-| Sin perfil F propio | PER-PB · Mandos intermedios | Mandos del área |
+| F9 · Mandos intermedios de áreas que usan o incorporan IA | PER-PB · Mandos intermedios | Mandos del área |
 
-Los mandos intermedios (PER-PB) reciben F1 y, además, los contenidos de 50 §5.2 aplicados a su área: evaluación de efecto, supervisión humana, transición y comunicación.
+Los mandos intermedios (PER-PB) reciben F1 y F9, que aplica a su área los contenidos de 50 §5.2: evaluación de efecto, supervisión humana, transición y comunicación.
 
 ---
 
@@ -92,7 +92,7 @@ Los mandos intermedios (PER-PB) reciben F1 y, además, los contenidos de 50 §5.
 | F6 | | | 2 jornadas y formación continua | Anual y ante cambios normativos | — | | | | Registro; plan de competencias del auditor de IA |
 | F7 | | | Sesión de 2–3 horas | Anual y al incorporarse al órgano | — | | | | Acta o registro de asistencia |
 | F8 | | | Sesión de 2–3 horas | Anual | — | | | | Registro de asistencia |
-| PER-PB | | 50 §5.2 | | | — | | | | Formación y participación en una evaluación de efecto |
+| F9 · PER-PB | | 31 §6.2 (F9); 50 §5.2 | | | — | | | | Formación y participación en una evaluación de efecto |
 | *(ejemplo ilustrativo)* F1 | Plantilla con licencia del asistente corporativo · 1.200 | Módulo básico v2 | En línea, 75 minutos, prueba de 10 preguntas | Anual | Antes de la licencia | 31-12-2026 | Oficina de IA | 18.000 € | Registro de la plataforma de formación |
 
 ---
@@ -111,7 +111,7 @@ Resumen de la sección 5 de P20 de cada iniciativa, para consolidar la cobertura
 
 | Persona | Área | Perfiles | Acción y versión | Fecha | Formato | Evaluación | Aceptación de la política | Vigente hasta | Sistemas supervisados o rol | Estado |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Identificador de empleado | | F1–F8 | | DD-MM-AAAA | | Superada · No superada · Práctica validada | Fecha | DD-MM-AAAA | SIA-AAAA-NNN · rol en IA-AAAA-NNN | Vigente · Vencida · Pendiente |
+| Identificador de empleado | | F1–F9 | | DD-MM-AAAA | | Superada · No superada · Práctica validada | Fecha | DD-MM-AAAA | SIA-AAAA-NNN · rol en IA-AAAA-NNN | Vigente · Vencida · Pendiente |
 | *(ejemplo ilustrativo)* E-00417 | Reclamaciones | F1, F3 | Supervisión del clasificador de reclamaciones v1.1 | 12-01-2027 | Presencial con casos | Práctica validada | 03-11-2026 | 12-01-2028 | SIA-2026-021 | Vigente |
 | | | | | | | | | | | |
 
@@ -127,7 +127,7 @@ Resumen de la sección 5 de P20 de cada iniciativa, para consolidar la cobertura
 | Formación vencida | Personas con formación obligatoria vencida | 31 §6.4 | Alerta mensual | | Mensual |
 | Tasa de superación | Evaluaciones superadas ÷ evaluaciones realizadas, por perfil | 31 §6.4 | A fijar por la compañía | | Trimestral |
 | Incidentes por uso indebido | Incidentes y no conformidades con causa raíz «desconocimiento de la política» | 31 §6.4; T08 | Tendencia | | Trimestral |
-| IND-ADO-05 · Alfabetización en IA | Personas formadas ÷ personas del colectivo obligado | 41; PER-02 | 100 % del colectivo obligado (41); PER-PC ≥ 90 %, PER-PA y PER-PD 100 % (50 §11) | | Trimestral |
+| IND-ADO-05 · Alfabetización en IA | Personas formadas ÷ personas del colectivo obligado | 41; PER-02 | 100 % del colectivo obligado antes del acceso o del ejercicio del rol (41); renovación vigente de PER-PC ≥ 90 % como umbral de alerta; PER-PA y PER-PD 100 % (50 §11) | | Trimestral |
 | IND-ADO-10 · Supervisores cualificados | Sistemas A1–A3 en producción cuyos supervisores tienen formación PER-PD registrada ÷ sistemas A1–A3 en producción | 41; PER-03 | 100 % | | Trimestral |
 | Alfabetización (implantación) | Personal que usa o supervisa IA formado ÷ total | 90 §9 | Programa aprobado a 90 días; objetivo fijado en C2 a 12 meses | | Trimestral |
 

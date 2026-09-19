@@ -433,7 +433,7 @@ The codes are provisional until they are consolidated in the indicator catalogue
 | Code | Indicator | Formula | Frequency | Source | Indicative reference |
 |---|---|---|---|---|---|
 | **PER-01** | Effect assessment coverage | Initiatives in phase 3 or later with a recorded effect assessment ÷ initiatives in phase 3 or later | Quarterly | T01, T20 | 100% |
-| **PER-02** | Literacy by profile | People in the profile with current training ÷ people in the profile | Quarterly | Training system | PER-PC ≥ 90%; PER-PA and PER-PD 100% |
+| **PER-02** | Literacy by profile | People in the profile with current training ÷ people in the profile | Quarterly | Training system | 100% before access or taking up the role (IND-ADO-05); current renewal of PER-PC ≥ 90% (alert threshold, to be calibrated); PER-PA and PER-PD 100% |
 | **PER-03** | Qualified overseers | A1–A3 systems in production whose designated overseers have recorded PER-PD training ÷ A1–A3 systems in production | Quarterly | T02, training | 100% |
 | **PER-04** | Released capacity materialised | Released hours materialised (PER-D1) ÷ measured released hours | Quarterly | T20 | As per hypothesis |
 | **PER-05** | Released capacity reassigned | Reassigned hours (PER-D2) with a verified destination activity ÷ measured released hours | Quarterly | T20 | As per hypothesis |

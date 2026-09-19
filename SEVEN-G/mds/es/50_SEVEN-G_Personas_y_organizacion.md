@@ -433,7 +433,7 @@ Los códigos son provisionales hasta su consolidación en el catálogo de indica
 | Código | Indicador | Fórmula | Frecuencia | Fuente | Referencia orientativa |
 |---|---|---|---|---|---|
 | **PER-01** | Cobertura de la evaluación de efecto | Iniciativas en fase 3 o posterior con evaluación de efecto registrada ÷ iniciativas en fase 3 o posterior | Trimestral | T01, T20 | 100 % |
-| **PER-02** | Alfabetización por perfil | Personas del perfil con formación vigente ÷ personas del perfil | Trimestral | Sistema de formación | PER-PC ≥ 90 %; PER-PA y PER-PD 100 % |
+| **PER-02** | Alfabetización por perfil | Personas del perfil con formación vigente ÷ personas del perfil | Trimestral | Sistema de formación | 100 % antes del acceso o del ejercicio del rol (IND-ADO-05); renovación vigente de PER-PC ≥ 90 % (umbral de alerta, a calibrar); PER-PA y PER-PD 100 % |
 | **PER-03** | Supervisores cualificados | Sistemas A1–A3 en producción cuyos supervisores designados tienen formación PER-PD registrada ÷ sistemas A1–A3 en producción | Trimestral | T02, formación | 100 % |
 | **PER-04** | Capacidad liberada materializada | Horas liberadas materializadas (PER-D1) ÷ horas liberadas medidas | Trimestral | T20 | Según hipótesis |
 | **PER-05** | Capacidad liberada reasignada | Horas reasignadas (PER-D2) con actividad destino verificada ÷ horas liberadas medidas | Trimestral | T20 | Según hipótesis |

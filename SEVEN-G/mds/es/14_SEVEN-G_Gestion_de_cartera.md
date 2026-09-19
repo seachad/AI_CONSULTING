@@ -221,11 +221,14 @@ Superar un límite no para las iniciativas en curso, pero impide que entren nuev
 | Partida | Contenido |
 |---|---|
 | **Coste recurrente comprometido** | Coste de operación de las iniciativas en producción. Se reserva primero: cada puesta en producción reduce el presupuesto disponible para iniciativas nuevas en años siguientes. |
-| **Reserva de descubrimiento** | Tramo 1 de todas las iniciativas (fases 0–3). |
 | **Sobre de Optimizar** | Tramos 2 y 3 de su carril. |
-| **Sobre de Aumentar** | Tramos 2 y 3 de su carril, incluida la adopción. |
-| **Sobre de Transformar** | Etapas aprobadas por el consejo, con su límite por etapa. |
-| **Reserva de retirada y contingencia** | Costes de retiradas, regularización y desviaciones aprobadas. |
+| **Sobre de Aumentar** | Tramos 2 y 3 de su carril, incluida la adopción propia de cada iniciativa. |
+| **Sobre de Transformar por etapas** | Etapas aprobadas por el consejo, con su límite por etapa. |
+| **Habilitación** | Datos, plataforma común, gobierno y cumplimiento, incluidas las iniciativas de las esferas 08 y 09. |
+| **Adopción y formación** | Alfabetización, formación por rol y gestión del cambio no imputadas a iniciativas. |
+| **Contingencia** | Incluye la **reserva de descubrimiento** (tramo 1 de todas las iniciativas, fases 0–3, antes de confirmar su carril), la **reserva de retirada** (retiradas y regularización) y las desviaciones aprobadas. La asigna el comité de IA con registro. |
+
+Las partidas son los siete sobres del presupuesto marco que aprueba el consejo en C2 (13 §12); esta sección fija cómo los usa la cartera. El plan de cartera los recoge en P36 §3.
 
 ### 6.2 Tramos de financiación
 

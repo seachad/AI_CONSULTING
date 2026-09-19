@@ -347,6 +347,7 @@ After steps 1 to 7, the tree continues with two steps that do not change the cat
 | **Procedure** | Article 43: for systems in Annex III, points 2 to 8, the internal control procedure (Annex VI); for those in point 1 (biometrics), internal control or involvement of a notified body depending on whether harmonised standards or common specifications are applied; for those in Annex I, the procedure under the relevant sectoral legislation. |
 | **Result** | Technical documentation, quality management system, EU declaration of conformity (Article 47), CE marking (Article 48), registration (Article 49), post-market monitoring plan (Article 72). |
 | **If the company is only a deployer** | It does not carry out the conformity assessment, but must verify in the supplier assessment (P14) that the system has one and has instructions for use, and must comply with its obligations under Article 26. |
+| **Templates** | SEVEN-G does not include templates for the technical documentation, the quality management system or the EU declaration of conformity: a company acting as provider prepares them with the harmonised standards and its own quality management system. The post-market monitoring plan relies on P24 and P25, and the fundamental rights impact assessment on P48. |
 
 ### 6.4 Assessment matrix by classification and role
 

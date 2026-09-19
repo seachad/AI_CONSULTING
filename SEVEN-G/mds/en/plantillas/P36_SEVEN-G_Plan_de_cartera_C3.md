@@ -61,13 +61,12 @@ Amounts approved in the C2 framework budget (P35, section 11) and their C3 struc
 | Item | Approved in C2 | Committed | Available | C2 band (% of portfolio cost) | Remarks |
 |---|---|---|---|---|---|
 | Committed recurring cost | | | | — | |
-| Discovery reserve (tranche 1, phases 0–3) | | | | — | |
 | Optimise envelope (tranches 2 and 3) | | | | | |
-| Augment envelope (tranches 2 and 3, including adoption) | | | | | |
+| Augment envelope (tranches 2 and 3, including each initiative's adoption) | | | | | |
 | Staged Transform envelope | | | | | Only stages approved by the board. |
 | Enablement (data, platform, spheres 08 and 09) | | | | — | |
 | Adoption and training not charged to initiatives | | | | — | |
-| Retirement and contingency reserve | | | | — | Retirements, regularisation and approved deviations. |
+| Contingency | | | | — | Includes the discovery reserve (tranche 1, phases 0–3), the retirement and regularisation reserve and approved deviations (14 §6.1). |
 | **Total** | | | | | |
 
 ---

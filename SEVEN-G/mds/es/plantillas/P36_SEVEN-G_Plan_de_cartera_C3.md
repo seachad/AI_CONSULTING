@@ -61,13 +61,12 @@ Importes aprobados en el presupuesto marco de C2 (P35, sección 11) y su estruct
 | Partida | Aprobado en C2 | Comprometido | Disponible | Banda de C2 (% del coste de la cartera) | Observaciones |
 |---|---|---|---|---|---|
 | Coste recurrente comprometido | | | | — | |
-| Reserva de descubrimiento (tramo 1, fases 0–3) | | | | — | |
 | Sobre de Optimizar (tramos 2 y 3) | | | | | |
-| Sobre de Aumentar (tramos 2 y 3, incluida la adopción) | | | | | |
+| Sobre de Aumentar (tramos 2 y 3, incluida la adopción de cada iniciativa) | | | | | |
 | Sobre de Transformar por etapas | | | | | Solo etapas aprobadas por el consejo. |
 | Habilitación (datos, plataforma, esferas 08 y 09) | | | | — | |
 | Adopción y formación no imputada a iniciativas | | | | — | |
-| Reserva de retirada y contingencia | | | | — | Retiradas, regularización y desviaciones aprobadas. |
+| Contingencia | | | | — | Incluye la reserva de descubrimiento (tramo 1, fases 0–3), la de retirada y regularización y las desviaciones aprobadas (14 §6.1). |
 | **Total** | | | | | |
 
 ---

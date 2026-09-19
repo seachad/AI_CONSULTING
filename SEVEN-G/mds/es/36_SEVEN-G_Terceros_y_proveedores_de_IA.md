@@ -139,6 +139,8 @@ Un proveedor N3 implica normalmente intensidad **Enterprise** en las iniciativas
 11. **Salida:** formatos de exportación, asistencia, plazos, borrado certificado.
 12. **Ética y uso responsable:** políticas de uso aceptable, gestión de sesgo, restricciones de uso.
 
+El cuestionario completo está en P55. Un resultado **No conforme** en los bloques 3 (datos), 5 (seguridad) o 7 (protección de datos) impide usar el proveedor con datos de producción hasta resolverlo.
+
 ---
 
 ## 5. Ciclo de vida del proveedor
@@ -158,7 +160,7 @@ Un proveedor N3 implica normalmente intensidad **Enterprise** en las iniciativas
 
 ## 6. Cláusulas contractuales clave
 
-**Sí** = debe figurar · **Rec.** = recomendada · **—** = no requerida. En N1 muchas cláusulas no son negociables: se verifican en las condiciones estándar y, si faltan, se registra el riesgo y quién lo acepta.
+**Sí** = debe figurar · **Rec.** = recomendada · **—** = no requerida. En N1 muchas cláusulas no son negociables: se verifican en las condiciones estándar y, si faltan, se registra el riesgo y quién lo acepta. En todos los niveles, mientras una cláusula **Sí** falte sin ese riesgo registrado y aceptado por el órgano que corresponde a su nivel (33 §7), el proveedor no se usa con datos de producción.
 
 | # | Cláusula | Qué debe asegurar | N1 | N2 | N3 |
 |---|---|---|---|---|---|
