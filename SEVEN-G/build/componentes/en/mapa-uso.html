@@ -49,7 +49,22 @@
 .mu-leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--tinta-2); margin-top: 10px; }
 .mu-leyenda i { font-style: normal; }
 .mu-leyenda span { display: inline-flex; align-items: center; gap: 6px; }
-@media print {
+.mu-fase { position: relative; }
+.mu-fase.sig::after { content: ""; position: absolute; right: -8px; top: 50%; margin-top: -7px; border-style: solid; border-width: 7px 0 7px 7px; border-color: transparent transparent transparent var(--negro); z-index: 2; }
+.mu-sal { display: flex; flex-wrap: wrap; gap: 3px; align-content: flex-start; }
+.mu-sal a { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 5px; border: 1px dashed var(--mu-borde); background: var(--papel); white-space: nowrap; }
+.mu-sal a.it { color: var(--tinta-2); }
+.mu-sal a.pv { color: var(--oxford); border-color: var(--oxford); }
+.mu-sal a.pa { color: var(--claret); border-color: var(--claret); }
+.mu-sal a.pa.fuerte { border-style: solid; border-width: 2px; }
+.mu-sal a.ok { color: var(--teal); border-color: var(--teal); }
+.mu-sal a:hover { background: var(--papel-3); }
+.mu-bucle { grid-column: span 2; border: 2px solid var(--velvet); border-radius: 18px; padding: 6px 10px 7px; margin-top: 4px; background: color-mix(in srgb, var(--velvet) 8%, transparent); font-size: 12px; color: var(--tinta-2); display: grid; gap: 5px; align-content: start; }
+.mu-bucle > span > b { color: var(--velvet); }
+.mu-bucle a { color: var(--oxford); }@media print {
+  .mu-sal a { font-size: 6.2pt; padding: 0 2px; }
+  .mu-bucle { font-size: 6.4pt; padding: 3px 5px; border-radius: 10px; gap: 2px; }
+  .mu-fase.sig::after { border-width: 5px 0 5px 5px; right: -6px; margin-top: -5px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .mapa-uso { break-before: page; margin-top: 0; }
   .mu { min-width: 0; font-size: 7pt; gap: 5px; }
   .mu-ciclo { grid-template-columns: 66px repeat(8, 1fr); gap: 3px; }
@@ -110,13 +125,13 @@
         <a class="mu-emb uso" style="grid-column: span 2" href="#4-3-initiative-level-lifecycle-with-decision-gates">In use<small>phases 6 and 7 · or disengaged</small></a>
 
         <div class="mu-rot">Phase</div>
-        <a class="mu-fase" style="background:#1a1817" href="20_SEVEN-G_Manuales_de_fase.html#phase-0-context-and-constraints"><small>0 · ENABLING</small><b>Context and constraints</b></a>
-        <a class="mu-fase" style="background:#0a3d73" href="20_SEVEN-G_Manuales_de_fase.html#phase-1-opportunity-discovery"><small>1</small><b>Opportunity discovery</b></a>
-        <a class="mu-fase" style="background:#0f5499" href="20_SEVEN-G_Manuales_de_fase.html#phase-2-value-hypothesis"><small>2</small><b>Value hypothesis</b></a>
-        <a class="mu-fase" style="background:#990f3d" href="20_SEVEN-G_Manuales_de_fase.html#phase-3-feasibility-and-risk"><small>3 · STOP</small><b>Feasibility and risk</b></a>
-        <a class="mu-fase" style="background:#0b6a73" href="20_SEVEN-G_Manuales_de_fase.html#phase-4-solution-design"><small>4</small><b>Solution design</b></a>
-        <a class="mu-fase" style="background:#0d7680" href="20_SEVEN-G_Manuales_de_fase.html#phase-5-delivery-and-validation"><small>5</small><b>Delivery and validation</b></a>
-        <a class="mu-fase" style="background:#4a2a6b" href="20_SEVEN-G_Manuales_de_fase.html#phase-6-operation-and-governance"><small>6</small><b>Operation and governance</b></a>
+        <a class="mu-fase sig" style="background:#1a1817" href="20_SEVEN-G_Manuales_de_fase.html#phase-0-context-and-constraints"><small>0 · ENABLING</small><b>Context and constraints</b></a>
+        <a class="mu-fase sig" style="background:#0a3d73" href="20_SEVEN-G_Manuales_de_fase.html#phase-1-opportunity-discovery"><small>1</small><b>Opportunity discovery</b></a>
+        <a class="mu-fase sig" style="background:#0f5499" href="20_SEVEN-G_Manuales_de_fase.html#phase-2-value-hypothesis"><small>2</small><b>Value hypothesis</b></a>
+        <a class="mu-fase sig" style="background:#990f3d" href="20_SEVEN-G_Manuales_de_fase.html#phase-3-feasibility-and-risk"><small>3 · STOP</small><b>Feasibility and risk</b></a>
+        <a class="mu-fase sig" style="background:#0b6a73" href="20_SEVEN-G_Manuales_de_fase.html#phase-4-solution-design"><small>4</small><b>Solution design</b></a>
+        <a class="mu-fase sig" style="background:#0d7680" href="20_SEVEN-G_Manuales_de_fase.html#phase-5-delivery-and-validation"><small>5</small><b>Delivery and validation</b></a>
+        <a class="mu-fase sig" style="background:#4a2a6b" href="20_SEVEN-G_Manuales_de_fase.html#phase-6-operation-and-governance"><small>6 · ↻ in a loop</small><b>Operation and governance</b></a>
         <a class="mu-fase" style="background:#593380" href="20_SEVEN-G_Manuales_de_fase.html#phase-7-evolution-or-retirement"><small>7</small><b>Evolution or retirement</b></a>
 
         <div class="mu-rot">Decision gate</div>
@@ -128,6 +143,15 @@
         <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-6-g5-go-live">G5 · Go-live</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g5-go-live">Checklist LV-G5</a><a class="mu-lv" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#multi-level-go-live-sign-off-g5">Multi-level sign-off</a></div></div>
         <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-continuity-review">R6 · Continuity</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-r6-continuity-review">Checklist LV-R6</a></div></div>
         <div class="mu-cel"><div class="mu-gate consejo"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">G7 · Scale or retire</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g7-scale-or-retire">Checklist LV-G7</a><em>Board if Transform</em></div></div>
+
+        <div class="mu-rot">If the gate is not passed</div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivot" title="Pivot: the initiative returns to phase 2 with a new hypothesis">↶ Pivot to P2</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivot" title="Pivot: the initiative returns to phase 2 with a new hypothesis">↶ Pivot to P2</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivot" title="Pivot: the initiative returns to phase 2 with a new hypothesis">↶ Pivot to P2</a><a class="pa fuerte" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop · main</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-bucle"><span><b>↻ Operation loop</b> · continuous monitoring (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html#monitoring-and-alerts-p25">52</a>) → <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-continuity-review">R6</a> quarterly (Enterprise) or half-yearly (Lite): continue operation, with conditions or bring G7 forward in case of deviation</span><div class="mu-sal"><a class="ok" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">↑ Scale · new phase 0</a><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate">↺ Iterate · phase 2, 4, 5 or 6</a><a class="pa" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">✕ Retire · disengaged</a></div></div>
 
         <div class="mu-rot">Templates (evidence)</div>
         <div class="mu-cel"><a class="mu-p" href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Initiative charter">P01</a><a class="mu-p" href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Context and constraints statement">P02</a><a class="mu-p" href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Role assignment record">P03</a><a class="mu-p" href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Intensity determination">P04</a><a class="mu-p" href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="AI system inventory record">P05</a></div>
@@ -179,6 +203,6 @@
 
   </div>
   </div>
-  <div class="mu-leyenda"><span><i class="mu-c">00</i> document</span><span><i class="mu-p">P00</i> template (also in Word)</span><span><i class="mu-t">T00</i> tool</span><span>◆ decision gate · in red, the main stop gate</span></div>
+  <div class="mu-leyenda"><span><i class="mu-c">00</i> document</span><span><i class="mu-p">P00</i> template (also in Word)</span><span><i class="mu-t">T00</i> tool</span><span>◆ decision gate · in red, the main stop gate</span><span>→ progress · ↺ iterate · ↶ pivot · ✕ stop or retire · ↻ operation loop</span></div>
   <div class="g-fuente">Source: SEVEN-G · SEACHAD</div>
 </figure>

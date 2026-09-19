@@ -435,6 +435,145 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Adoption can be <strong>full or modular</strong>: a company may deploy the entire framework or start with a specific component (for example measurement, <em>gates</em>, regulatory inventory or oversight dashboard) and then expand without losing methodological coherence.</p>
 <p>All of this comes with templates, audit criteria and tools —including an AI dashboard for the board— that allow it to be applied in any sector.</p>
 <p><strong>How SEVEN-G is used, at a glance</strong></p>
+<p>Before the detail, the route. Each initiative moves through phases and, at the end of each one, a decision gate checks the result and the documentation at the same time (dual validation). If what the documents require is not met, the initiative does not move forward: it iterates (at most twice before the decision is escalated), pivots to a new hypothesis or stops, and the reason is recorded. Once past go-live (G5), the initiative enters an operation loop with continuous monitoring and periodic continuity reviews (R6), until gate G7 decides to scale it, iterate it or retire it.</p>
+<figure class="grafico">
+  <div class="g-titulo">How an initiative flows through SEVEN-G</div>
+  <div class="g-sub">Phases, gates with dual validation, iterations, exits and the operation and continuous improvement loop</div>
+  <div class="g-lienzo ancho">
+<svg viewBox="0 0 1000 432" role="img" aria-label="Flow of an initiative through SEVEN-G: six phases up to go-live with a decision gate at the end of each one; at each gate the initiative can proceed, iterate, pivot to phase 2 or stop; once in use, it enters an operation loop with continuous monitoring and periodic R6 review, and at gate G7 it is scaled, iterated or retired.">
+  <defs>
+    <marker id="fu-fl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" class="sv-flecha"/></marker>
+    <marker id="fu-ko" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#990f3d"/></marker>
+    <marker id="fu-pv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" style="fill:var(--oxford)"/></marker>
+  </defs>
+
+  <!-- validación dual y leyenda -->
+  <rect x="20" y="6" width="430" height="46" class="sv-caja" style="fill:var(--papel-2);stroke:var(--regla)"/>
+  <text x="32" y="24" class="sv-t" font-size="11" font-weight="700" letter-spacing="1">DUAL VALIDATION AT EVERY GATE</text>
+  <text x="32" y="42" class="sv-t2" font-size="11.5">R · result + D · verified documentation; without both, it is not met</text>
+  <g font-size="11.5">
+    <text x="476" y="24" class="sv-t2"><tspan class="sv-t" font-weight="700">→</tspan> Proceed (or with conditions)</text>
+    <text x="716" y="24" class="sv-t2"><tspan class="sv-t" font-weight="700">↺</tspan> Iterate (max. 2; then the higher body)</text>
+    <text x="476" y="44" class="sv-t2"><tspan style="fill:var(--oxford)" font-weight="700">↶</tspan> Pivot (G1–G3) to phase 2</text>
+    <text x="716" y="44" class="sv-t2"><tspan fill="#990f3d" font-weight="700">✕</tspan> Stop or retire</text>
+    <text x="838" y="44" class="sv-t2"><tspan class="sv-t" font-weight="700">◆</tspan> Decision gate</text>
+  </g>
+
+  <!-- etapas del embudo -->
+  <g font-size="10.5" font-weight="700" letter-spacing="1" class="sv-t2">
+    <path d="M22,80 V74 H230 V80" class="sv-regla"/><text x="126" y="68" text-anchor="middle" class="sv-t2">PROPOSED</text>
+    <path d="M238,80 V74 H338 V80" class="sv-regla"/><text x="288" y="68" text-anchor="middle" class="sv-t2">HYPOTHESIS</text>
+    <path d="M346,80 V74 H446 V80" class="sv-regla"/><text x="396" y="68" text-anchor="middle" class="sv-t2">PROOF</text>
+    <path d="M454,80 V74 H662 V80" class="sv-regla"/><text x="558" y="68" text-anchor="middle" class="sv-t2">IN DEVELOPMENT</text>
+    <path d="M712,80 V74 H958 V80" class="sv-regla"/><text x="835" y="68" text-anchor="middle" style="fill:var(--teal)">IN USE</text>
+  </g>
+
+  <!-- fases 0 a 5 -->
+  <g font-weight="700">
+    <path d="M20,110 H112 L124,140 L112,170 H20 Z" fill="#1a1817"/>
+    <text x="30" y="131" class="sv-blanco" font-size="11" opacity=".75">0</text><text x="30" y="148" class="sv-blanco" font-size="12">Context and</text><text x="30" y="162" class="sv-blanco" font-size="12">constraints</text>
+    <path d="M128,110 H220 L232,140 L220,170 H128 L140,140 Z" fill="#0a3d73"/>
+    <text x="146" y="131" class="sv-blanco" font-size="11" opacity=".75">1</text><text x="146" y="148" class="sv-blanco" font-size="12">Opportunity</text><text x="146" y="162" class="sv-blanco" font-size="12">discovery</text>
+    <path d="M236,110 H328 L340,140 L328,170 H236 L248,140 Z" fill="#0f5499"/>
+    <text x="254" y="131" class="sv-blanco" font-size="11" opacity=".75">2</text><text x="254" y="148" class="sv-blanco" font-size="12">Value</text><text x="254" y="162" class="sv-blanco" font-size="12">hypothesis</text>
+    <path d="M344,110 H436 L448,140 L436,170 H344 L356,140 Z" fill="#990f3d"/>
+    <text x="362" y="131" class="sv-blanco" font-size="11" opacity=".85">3</text><text x="362" y="148" class="sv-blanco" font-size="12">Feasibility</text><text x="362" y="162" class="sv-blanco" font-size="12">and risk</text>
+    <path d="M452,110 H544 L556,140 L544,170 H452 L464,140 Z" fill="#0b6a73"/>
+    <text x="470" y="131" class="sv-blanco" font-size="11" opacity=".75">4</text><text x="470" y="155" class="sv-blanco" font-size="12">Design</text>
+    <path d="M560,110 H652 L664,140 L652,170 H560 L572,140 Z" fill="#0d7680"/>
+    <text x="578" y="131" class="sv-blanco" font-size="11" opacity=".75">5</text><text x="578" y="148" class="sv-blanco" font-size="12">Delivery and</text><text x="578" y="162" class="sv-blanco" font-size="12">validation</text>
+  </g>
+
+  <!-- puertas G0 a G5 -->
+  <g font-size="11.5" font-weight="700" text-anchor="middle">
+    <text x="126" y="100" class="sv-t">G0</text><text x="234" y="100" class="sv-t">G1</text><text x="342" y="100" class="sv-t">G2</text>
+    <text x="450" y="100" fill="#990f3d">G3 · stop</text><text x="558" y="100" class="sv-t">G4</text><text x="666" y="100" class="sv-t">G5</text>
+  </g>
+  <g style="stroke:var(--papel)" stroke-width="2">
+    <rect x="119" y="133" width="14" height="14" transform="rotate(45 126 140)" style="fill:var(--tinta)"/>
+    <rect x="227" y="133" width="14" height="14" transform="rotate(45 234 140)" style="fill:var(--tinta)"/>
+    <rect x="335" y="133" width="14" height="14" transform="rotate(45 342 140)" style="fill:var(--tinta)"/>
+    <rect x="441" y="131" width="18" height="18" transform="rotate(45 450 140)" fill="#990f3d"/>
+    <rect x="551" y="133" width="14" height="14" transform="rotate(45 558 140)" style="fill:var(--tinta)"/>
+    <rect x="659" y="133" width="14" height="14" transform="rotate(45 666 140)" style="fill:var(--tinta)"/>
+  </g>
+
+  <!-- iterar: vuelve a la misma fase -->
+  <g fill="none" style="stroke:var(--tinta-2)" stroke-width="1.6" marker-end="url(#fu-fl)">
+    <path d="M123,174 C123,202 82,202 82,176"/>
+    <path d="M231,174 C231,202 190,202 190,176"/>
+    <path d="M339,174 C339,202 298,202 298,176"/>
+    <path d="M447,174 C447,202 406,202 406,176"/>
+    <path d="M555,174 C555,202 514,202 514,176"/>
+    <path d="M663,174 C663,202 622,202 622,176"/>
+  </g>
+  <text x="46" y="214" class="sv-t2" font-size="11" text-anchor="middle">↺ iterate</text>
+
+  <!-- pivotar: de G1, G2 o G3 a la fase 2 con nueva hipótesis -->
+  <path d="M445,178 C445,256 292,256 290,178" fill="none" style="stroke:var(--oxford)" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#fu-pv)"/>
+  <text x="400" y="262" font-size="11" font-weight="700" text-anchor="middle" style="fill:var(--oxford)">↶ pivot</text>
+
+  <!-- parar: salida del embudo -->
+  <g stroke="#990f3d" stroke-width="1.6" marker-end="url(#fu-ko)">
+    <line x1="131" y1="150" x2="131" y2="294"/><line x1="239" y1="150" x2="239" y2="294"/><line x1="347" y1="150" x2="347" y2="294"/>
+    <line x1="455" y1="152" x2="455" y2="294" stroke-width="3.2"/><line x1="563" y1="150" x2="563" y2="294"/><line x1="671" y1="150" x2="671" y2="294"/>
+  </g>
+  <rect x="20" y="298" width="664" height="34" fill="#990f3d" fill-opacity=".1" stroke="#990f3d"/>
+  <text x="32" y="319" font-size="11.5" font-weight="700" fill="#990f3d">✕ Stopped · not approved (phases 0–1) or discarded (2–5): reason and lessons are kept in the register</text>
+
+  <!-- de G5 a producción -->
+  <line x1="676" y1="140" x2="706" y2="140" class="sv-regla" stroke-width="2" marker-end="url(#fu-fl)" style="stroke:var(--tinta-2)"/>
+
+  <!-- bucle de operación y evolución (fases 6 y 7) -->
+  <path d="M835,140 C810,92 716,92 712,140 C716,188 810,188 835,140 C860,92 954,92 958,140 C954,188 860,188 835,140 Z" fill="none" stroke="#593380" stroke-width="11" stroke-linejoin="round"/>
+  <g fill="#fff"><polygon points="800,99 791,104 800,109"/><polygon points="742,172 751,177 742,182"/><polygon points="870,99 879,104 870,109"/><polygon points="928,172 919,177 928,182"/></g>
+  <g text-anchor="middle">
+    <text x="770" y="128" class="sv-t" font-size="12" font-weight="700">6 · Operation</text>
+    <text x="770" y="141" class="sv-t" font-size="12" font-weight="700">and governance</text>
+    <text x="770" y="156" class="sv-t2" font-size="10.5">continuous</text>
+    <text x="770" y="167" class="sv-t2" font-size="10.5">monitoring</text>
+    <text x="900" y="128" class="sv-t" font-size="12" font-weight="700">7 · Evolution</text>
+    <text x="900" y="141" class="sv-t" font-size="12" font-weight="700">or retirement</text>
+    <text x="900" y="156" class="sv-t2" font-size="10.5">G7 at the planned</text>
+    <text x="900" y="167" class="sv-t2" font-size="10.5">moment</text>
+  </g>
+  <rect x="764" y="96" width="12" height="12" transform="rotate(45 770 102)" style="fill:var(--tinta);stroke:var(--papel)" stroke-width="2"/>
+  <text x="700" y="90" class="sv-t" font-size="11" font-weight="700">R6 · continuity <tspan class="sv-t2" font-weight="400">(quarterly / half-yearly)</tspan></text>
+  <text x="835" y="206" class="sv-t2" font-size="11" text-anchor="middle">deviation at R6 → G7 is brought forward</text>
+
+  <!-- G7 y sus salidas -->
+  <rect x="951" y="133" width="14" height="14" transform="rotate(45 958 140)" style="fill:var(--tinta);stroke:var(--papel)" stroke-width="2"/>
+  <text x="958" y="100" class="sv-t" font-size="11.5" font-weight="700" text-anchor="middle">G7</text>
+  <path d="M958,150 V216 H746" fill="none" style="stroke:var(--tinta-2)" stroke-width="1.6"/>
+  <g style="stroke:var(--tinta-2)" stroke-width="1.6" marker-end="url(#fu-fl)">
+    <line x1="746" y1="216" x2="746" y2="228"/><line x1="844" y1="216" x2="844" y2="228"/><line x1="942" y1="216" x2="942" y2="228"/>
+  </g>
+  <rect x="700" y="232" width="92" height="40" fill="#0d7680" fill-opacity=".14" stroke="#0d7680"/>
+  <text x="746" y="249" text-anchor="middle" font-size="11.5" font-weight="700" style="fill:var(--teal)">↑ Scale</text>
+  <text x="746" y="264" text-anchor="middle" class="sv-t2" font-size="10.5">new phase 0</text>
+  <rect x="798" y="232" width="92" height="40" class="sv-caja" style="fill:var(--papel-2);stroke:var(--tinta-2)"/>
+  <text x="844" y="249" text-anchor="middle" class="sv-t" font-size="11.5" font-weight="700">↺ Iterate</text>
+  <text x="844" y="264" text-anchor="middle" class="sv-t2" font-size="10.5">phase 2, 4, 5 or 6</text>
+  <rect x="896" y="232" width="92" height="40" fill="#990f3d" fill-opacity=".1" stroke="#990f3d"/>
+  <text x="942" y="249" text-anchor="middle" font-size="11.5" font-weight="700" fill="#990f3d">✕ Retire</text>
+  <text x="942" y="264" text-anchor="middle" class="sv-t2" font-size="10.5">disengaged</text>
+
+  <!-- notas -->
+  <rect x="20" y="348" width="470" height="76" class="sv-caja" style="fill:var(--papel-2);stroke:var(--regla)"/>
+  <text x="32" y="366" class="sv-t" font-size="11.5" font-weight="700">If what the documents require is not met</text>
+  <text x="32" y="383" class="sv-t2" font-size="11">No verified evidence, no decision: the request goes back to the team.</text>
+  <text x="32" y="399" class="sv-t2" font-size="11">An overdue condition turns the outcome into Iterate.</text>
+  <text x="32" y="415" class="sv-t2" font-size="11">Stop criteria are not relaxed without the authorising body.</text>
+  <rect x="510" y="348" width="470" height="76" class="sv-caja" style="fill:var(--papel-2);stroke:var(--regla)"/>
+  <text x="522" y="366" class="sv-t" font-size="11.5" font-weight="700">On hold and in use</text>
+  <text x="522" y="383" class="sv-t2" font-size="11">For a recorded external cause, the initiative waits and then resumes.</text>
+  <text x="522" y="399" class="sv-t2" font-size="11">In use, continuous monitoring feeds every R6, and a relevant</text>
+  <text x="522" y="415" class="sv-t2" font-size="11">deviation brings the G7 decision forward.</text>
+</svg>
+  </div>
+  <div class="g-fuente">Source: SEVEN-G · SEACHAD · transition rules in document 20 §11 and document 21 §3</div>
+</figure>
+
 <p>The following map brings together in a single view how the framework is followed: at the top, the corporate cycle in which the company decides and oversees; in the centre, the lifecycle of each initiative, with its funnel stage, its phase, its decision gate and the templates, documents and tools used in it; at the bottom, the cross-cutting governance that accompanies every phase. Each element links to the document, section, template or tool that develops it.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> SEVEN-G has many pieces, and a first-time user needs to know what applies at each moment and where to find it. The map answers three practical questions —which phase an initiative is in, what must be provided to pass its gate and with which template or tool— and serves as a starting point to navigate the library without reading all of it.</p>
@@ -490,7 +629,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 .mu-leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--tinta-2); margin-top: 10px; }
 .mu-leyenda i { font-style: normal; }
 .mu-leyenda span { display: inline-flex; align-items: center; gap: 6px; }
-@media print {
+.mu-fase { position: relative; }
+.mu-fase.sig::after { content: ""; position: absolute; right: -8px; top: 50%; margin-top: -7px; border-style: solid; border-width: 7px 0 7px 7px; border-color: transparent transparent transparent var(--negro); z-index: 2; }
+.mu-sal { display: flex; flex-wrap: wrap; gap: 3px; align-content: flex-start; }
+.mu-sal a { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 5px; border: 1px dashed var(--mu-borde); background: var(--papel); white-space: nowrap; }
+.mu-sal a.it { color: var(--tinta-2); }
+.mu-sal a.pv { color: var(--oxford); border-color: var(--oxford); }
+.mu-sal a.pa { color: var(--claret); border-color: var(--claret); }
+.mu-sal a.pa.fuerte { border-style: solid; border-width: 2px; }
+.mu-sal a.ok { color: var(--teal); border-color: var(--teal); }
+.mu-sal a:hover { background: var(--papel-3); }
+.mu-bucle { grid-column: span 2; border: 2px solid var(--velvet); border-radius: 18px; padding: 6px 10px 7px; margin-top: 4px; background: color-mix(in srgb, var(--velvet) 8%, transparent); font-size: 12px; color: var(--tinta-2); display: grid; gap: 5px; align-content: start; }
+.mu-bucle > span > b { color: var(--velvet); }
+.mu-bucle a { color: var(--oxford); }@media print {
+  .mu-sal a { font-size: 6.2pt; padding: 0 2px; }
+  .mu-bucle { font-size: 6.4pt; padding: 3px 5px; border-radius: 10px; gap: 2px; }
+  .mu-fase.sig::after { border-width: 5px 0 5px 5px; right: -6px; margin-top: -5px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .mapa-uso { break-before: page; margin-top: 0; }
   .mu { min-width: 0; font-size: 7pt; gap: 5px; }
   .mu-ciclo { grid-template-columns: 66px repeat(8, 1fr); gap: 3px; }
@@ -551,13 +705,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
         <a class="mu-emb uso" style="grid-column: span 2" href="#4-3-initiative-level-lifecycle-with-decision-gates">In use<small>phases 6 and 7 · or disengaged</small></a>
 
         <div class="mu-rot">Phase</div>
-        <a class="mu-fase" style="background:#1a1817" href="20_SEVEN-G_Manuales_de_fase.html#phase-0-context-and-constraints"><small>0 · ENABLING</small><b>Context and constraints</b></a>
-        <a class="mu-fase" style="background:#0a3d73" href="20_SEVEN-G_Manuales_de_fase.html#phase-1-opportunity-discovery"><small>1</small><b>Opportunity discovery</b></a>
-        <a class="mu-fase" style="background:#0f5499" href="20_SEVEN-G_Manuales_de_fase.html#phase-2-value-hypothesis"><small>2</small><b>Value hypothesis</b></a>
-        <a class="mu-fase" style="background:#990f3d" href="20_SEVEN-G_Manuales_de_fase.html#phase-3-feasibility-and-risk"><small>3 · STOP</small><b>Feasibility and risk</b></a>
-        <a class="mu-fase" style="background:#0b6a73" href="20_SEVEN-G_Manuales_de_fase.html#phase-4-solution-design"><small>4</small><b>Solution design</b></a>
-        <a class="mu-fase" style="background:#0d7680" href="20_SEVEN-G_Manuales_de_fase.html#phase-5-delivery-and-validation"><small>5</small><b>Delivery and validation</b></a>
-        <a class="mu-fase" style="background:#4a2a6b" href="20_SEVEN-G_Manuales_de_fase.html#phase-6-operation-and-governance"><small>6</small><b>Operation and governance</b></a>
+        <a class="mu-fase sig" style="background:#1a1817" href="20_SEVEN-G_Manuales_de_fase.html#phase-0-context-and-constraints"><small>0 · ENABLING</small><b>Context and constraints</b></a>
+        <a class="mu-fase sig" style="background:#0a3d73" href="20_SEVEN-G_Manuales_de_fase.html#phase-1-opportunity-discovery"><small>1</small><b>Opportunity discovery</b></a>
+        <a class="mu-fase sig" style="background:#0f5499" href="20_SEVEN-G_Manuales_de_fase.html#phase-2-value-hypothesis"><small>2</small><b>Value hypothesis</b></a>
+        <a class="mu-fase sig" style="background:#990f3d" href="20_SEVEN-G_Manuales_de_fase.html#phase-3-feasibility-and-risk"><small>3 · STOP</small><b>Feasibility and risk</b></a>
+        <a class="mu-fase sig" style="background:#0b6a73" href="20_SEVEN-G_Manuales_de_fase.html#phase-4-solution-design"><small>4</small><b>Solution design</b></a>
+        <a class="mu-fase sig" style="background:#0d7680" href="20_SEVEN-G_Manuales_de_fase.html#phase-5-delivery-and-validation"><small>5</small><b>Delivery and validation</b></a>
+        <a class="mu-fase sig" style="background:#4a2a6b" href="20_SEVEN-G_Manuales_de_fase.html#phase-6-operation-and-governance"><small>6 · ↻ in a loop</small><b>Operation and governance</b></a>
         <a class="mu-fase" style="background:#593380" href="20_SEVEN-G_Manuales_de_fase.html#phase-7-evolution-or-retirement"><small>7</small><b>Evolution or retirement</b></a>
 
         <div class="mu-rot">Decision gate</div>
@@ -569,6 +723,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
         <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-6-g5-go-live">G5 · Go-live</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g5-go-live">Checklist LV-G5</a><a class="mu-lv" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#multi-level-go-live-sign-off-g5">Multi-level sign-off</a></div></div>
         <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-continuity-review">R6 · Continuity</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-r6-continuity-review">Checklist LV-R6</a></div></div>
         <div class="mu-cel"><div class="mu-gate consejo"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">G7 · Scale or retire</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g7-scale-or-retire">Checklist LV-G7</a><em>Board if Transform</em></div></div>
+
+        <div class="mu-rot">If the gate is not passed</div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivot" title="Pivot: the initiative returns to phase 2 with a new hypothesis">↶ Pivot to P2</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivot" title="Pivot: the initiative returns to phase 2 with a new hypothesis">↶ Pivot to P2</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivot" title="Pivot: the initiative returns to phase 2 with a new hypothesis">↶ Pivot to P2</a><a class="pa fuerte" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop · main</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
+        <div class="mu-bucle"><span><b>↻ Operation loop</b> · continuous monitoring (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html#monitoring-and-alerts-p25">52</a>) → <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-continuity-review">R6</a> quarterly (Enterprise) or half-yearly (Lite): continue operation, with conditions or bring G7 forward in case of deviation</span><div class="mu-sal"><a class="ok" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">↑ Scale · new phase 0</a><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate">↺ Iterate · phase 2, 4, 5 or 6</a><a class="pa" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">✕ Retire · disengaged</a></div></div>
 
         <div class="mu-rot">Templates (evidence)</div>
         <div class="mu-cel"><a class="mu-p" href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Initiative charter">P01</a><a class="mu-p" href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Context and constraints statement">P02</a><a class="mu-p" href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Role assignment record">P03</a><a class="mu-p" href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Intensity determination">P04</a><a class="mu-p" href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="AI system inventory record">P05</a></div>
@@ -620,7 +783,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
   </div>
   </div>
-  <div class="mu-leyenda"><span><i class="mu-c">00</i> document</span><span><i class="mu-p">P00</i> template (also in Word)</span><span><i class="mu-t">T00</i> tool</span><span>◆ decision gate · in red, the main stop gate</span></div>
+  <div class="mu-leyenda"><span><i class="mu-c">00</i> document</span><span><i class="mu-p">P00</i> template (also in Word)</span><span><i class="mu-t">T00</i> tool</span><span>◆ decision gate · in red, the main stop gate</span><span>→ progress · ↺ iterate · ↶ pivot · ✕ stop or retire · ↻ operation loop</span></div>
   <div class="g-fuente">Source: SEVEN-G · SEACHAD</div>
 </figure>
 

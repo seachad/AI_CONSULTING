@@ -158,6 +158,10 @@ try {
   foreach ($lang in 'es', 'en') {
     $f = Join-Path $repo "SEVEN-G\html\$lang\00_SEVEN-G_Que_es_y_para_que_sirve.html"
     if (-not (Test-Path $f)) { continue }
+    # D73: antes del mapa, el diagrama conceptual del flujo (puertas, iterar, pivotar, parar y bucle de operación)
+    $html00 = [IO.File]::ReadAllText($f)
+    if ($html00 -notmatch '<div class="g-titulo">(Cómo fluye una iniciativa por SEVEN-G|How an initiative flows through SEVEN-G)</div>' -or $html00.IndexOf('g-titulo">Cómo fluye') + $html00.IndexOf('g-titulo">How an initiative flows') + 1 -gt $html00.IndexOf('<figure class="grafico mapa-uso">')) { Mal "00 [$lang]: falta el diagrama de flujo (<!-- figura: flujo-uso -->) antes del mapa de uso"; $mapaMal++ }
+    if ($html00 -notmatch 'class="mu-bucle"' -or $html00 -notmatch 'class="mu-cel mu-sal"') { Mal "00 [$lang]: el mapa de uso no muestra las salidas de las puertas ni el bucle de operación"; $mapaMal++ }
     $mapa = [regex]::Match([IO.File]::ReadAllText($f), '(?s)<figure class="grafico mapa-uso">.*?</figure>').Value
     if (-not $mapa) { Mal "00 [$lang]: falta el mapa de uso (<!-- figura: mapa-uso -->)"; $mapaMal++; continue }
     $hrefs = @([regex]::Matches($mapa, 'href="([^"]+)"') | ForEach-Object { $_.Groups[1].Value })
