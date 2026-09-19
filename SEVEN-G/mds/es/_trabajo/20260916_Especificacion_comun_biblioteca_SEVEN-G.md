@@ -103,7 +103,7 @@ Ruta de redacción: `SEVEN-G/mds/es/`. La traducción usa **el mismo nombre de f
 | 91 | `91_SEVEN-G_Guia_para_consultores.md` |
 | 92 | `92_SEVEN-G_Casos_de_aplicacion.md` |
 | 93 | `93_SEVEN-G_Licencia_uso_y_citacion.md` |
-| P01–P31 | `plantillas/PNN_SEVEN-G_<Nombre_con_guiones_bajos>.md` |
+| P01–P71 | `plantillas/PNN_SEVEN-G_<Nombre_con_guiones_bajos>.md` |
 
 ## 5. Parámetros comunes
 
@@ -193,7 +193,7 @@ Formatos de respuesta: **"Sí"** · **"Sí, con una condición: …"** · **"Tod
 | `IND-<FAM>-NN` | Indicadores del catálogo (documento 41; 156 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y **PRO** (procesos y decisión, familia nueva que recoge los indicadores de las esferas 04 y 07) |
 | PER-NN · DAT-NN · **CNC-NN** · OPE-NN | Indicadores provisionales de los documentos 50, 51 y 52. **CNC-** (conocimiento, documento 51) sustituye a CON- para no confundirse con la familia IND-CON (consejo). Código definitivo en la tabla de correspondencia de 41 §21 |
 | T01–T22 | Herramientas (documento 03) |
-| P01–P31 | Plantillas (bloque H) |
+| P01–P71 | Plantillas (bloque H): P01–P31 por iniciativa; P32–P71 de compañía, consejo, cumplimiento, terceros, auditoría e implantación (§6.1) |
 | D1–D7 | Dimensiones de madurez |
 | S1–S4 | Severidad de incidentes |
 | A0–A3 | Autonomía |
@@ -205,6 +205,11 @@ Formatos de respuesta: **"Sí"** · **"Sí, con una condición: …"** · **"Tod
 | SEG-NN · AG-NN | Controles de seguridad de IA y de agentes (documento 35) |
 | REC-AAAA-NNN | Recomendaciones del consejo (verificar formato existente en `AI_en_el_consejo/motor/ESQUEMA.md` y respetarlo si ya existe uno) |
 | NC-AAAA-NNN · INC-AAAA-NNN | No conformidades · incidentes |
+| DEC-AAAA-NNN · AUD-AAAA-NNN · H-NN | Decisiones del consejo (62) · informes de auditoría y sus hallazgos (38) |
+| EXC-AAAA-NNN · DCI-AAAA-NNN | Excepciones (P40) · declaraciones de independencia y conflictos (P41) |
+| PRV-AAAA-NNN | Relación con un proveedor de IA en el registro de proveedores (P57, T09) |
+| SOL-AAAA-NNN · COM-AAAA-NNN · INF-AAAA-NNN | Solicitudes de herramienta y comunicaciones de empleados (P43) · información a la representación (P46) |
+| PA-AAAA-NNN · IDN-AAAA-NNN | Campañas de pruebas adversarias (P53) · identidades no humanas (P54) |
 
 ## 6. Plantillas del bloque H (alineadas con 01 §6.10)
 
@@ -241,6 +246,53 @@ Formatos de respuesta: **"Sí"** · **"Sí, con una condición: …"** · **"Tod
 | P29 | Registro de decisión de *gate* | Todas | Registro de decisión de *gate* (01 §7.4) | T03 |
 | P30 | Decisión de escalado o retirada | 7 | Decisión de escalado o retirada · Lecciones aprendidas · Plan de retirada | T22 |
 | P31 | Ficha de caso de uso | 1–7 | Descripción comprensible del caso (regla 10 de medición) | T01 |
+
+### 6.1 Plantillas de compañía, consejo, cumplimiento, terceros, auditoría e implantación (D68, 19-09-2026)
+
+No son evidencias de una fase de la iniciativa: son los registros, informes y decisiones que el marco pide a la compañía. Siguen la misma estructura (sección 7) y añaden «Por qué importa» tras el aviso legal (D30). Todas tienen versión editable en Word (D67).
+
+| Código | Plantilla | Ámbito | Documento fuente | Herramienta |
+|---|---|---|---|---|
+| P32 | Mandato de implantación de SEVEN-G (con declaración de completitud del inventario) | Implantación | 90 §3–§4 | — |
+| P33 | Informe de diagnóstico C1 | C1 | 01 §5, 11 §6, 10 §8, 12 §10 | T14, T15 |
+| P34 | Cuestionario e informe de madurez | C1, C5 | 11 | T15 |
+| P35 | Tesis de IA y apetito de riesgo (con selección de indicadores) | C2 | 13 §15, 41 §19–20 | T19 |
+| P36 | Plan de cartera C3 (priorización, semáforo, regularización) | C3 | 14 | T01 |
+| P37 | Revisión anual C5 (con autoevaluación de los órganos) | C5 | 01 §5, 13 §13, 11 D1 | T01, T14, T15 |
+| P38 | Reglamento de los órganos de gobierno de IA | Gobierno | 30 §3–§7 | — |
+| P39 | Orden del día y acta de órgano de gobierno | Gobierno | 30 §3, 14 §7 | — |
+| P40 | Solicitud y registro de excepciones | Gobierno | 30 §7.4, 31 §3.8 | — |
+| P41 | Declaraciones de independencia y conflictos de interés | Gobierno, auditoría, consultoría | 30 §12, 38 §3.1, 91 §5.5 | — |
+| P42 | Informe trimestral de segunda línea | C4 | 30 §6.3, 32 §9, 33 §10–12, 37 §9 | T06, T08 |
+| P43 | Catálogo de herramientas autorizadas y solicitudes | Uso corporativo | 31 §4–§5 | T21 |
+| P44 | Encuesta de uso y percepción de la IA | Uso corporativo, adopción | 31 §5.2, 23 §10, 50 §9–10 | T20 |
+| P45 | Plan y registro de alfabetización y formación | Personas | 31 §6, 50 §5 | T20 |
+| P46 | Información a los trabajadores y a su representación | Personas | 50 §7, 23 §9.3 | — |
+| P47 | Evaluación de impacto en protección de datos | Cumplimiento | 32 §6.1, 34 §6.1 | T07 |
+| P48 | Evaluación de impacto en derechos fundamentales | Cumplimiento | 32 §6.2, 34 §3.10 | T07 |
+| P49 | Avisos de transparencia e instrucciones de uso | Cumplimiento | 34 §3.7, §3.11, 50 §7 | — |
+| P50 | Registro de no conformidades | Cumplimiento | 37 §3 | T08 |
+| P51 | Notificaciones y comunicaciones de incidentes | Incidentes | 37 §5, §10 | T08 |
+| P52 | Análisis de causa raíz y plan de acción correctiva | Incidentes, no conformidades | 37 §3.5–3.6, §4.5 | T08 |
+| P53 | Plan e informe de pruebas adversarias | Seguridad | 35 §8, §9.2 | T10 |
+| P54 | Inventario de identidades no humanas y componentes | Seguridad | 35 §4.1, §7, 53 §7.4 | T10, T02 |
+| P55 | Cuestionario de diligencia debida a proveedores de IA | Terceros | 36 §4.3, §8.1 | T09 |
+| P56 | Cláusulas contractuales tipo de IA | Terceros | 36 §6, §8.1 | T09 |
+| P57 | Registro de proveedores y plan de salida | Terceros | 36 §4.2, §5, §7, §9 | T09 |
+| P58 | Plan anual de auditoría de IA | Auditoría | 38 §5 | — |
+| P59 | Papeles de trabajo de auditoría | Auditoría | 38 §6–§7 | — |
+| P60 | Informe de auditoría y fichas de hallazgo | Auditoría | 38 §9, 21 §10.7, 43 §12 | — |
+| P61 | Declaración de aplicación de SEVEN-G | Auditoría, implantación | 01 §14, 38 §11 | — |
+| P62 | Plan de realización de beneficios | Valor (G3–G7) | 43 §4, 40 §7.2 | T12 |
+| P63 | Presupuesto de consumo y conciliación de costes | Costes (G5, fase 6, C3) | 42 §6–§11, 52 §10.3 | T13 |
+| P64 | Ficha de conjunto de datos e inventario de fuentes de conocimiento | Datos | 51 §4.2, §10 | T02 |
+| P65 | Paquete de revisión de continuidad R6 | Operación (R6) | 52 §8.2 | T03 |
+| P66 | Anexos de construcción con SPAD | Construcción | 53 §4.1, §6 | — |
+| P67 | Paquete trimestral para el consejo | C4 | 60 | T17, T18 |
+| P68 | Nota previa y nota de conclusiones de la sesión del consejo | Consejo | 61 §8 | — |
+| P69 | Registro de decisiones del consejo | Consejo | 62 §4–§10 | T18 |
+| P70 | Propuesta y carta de encargo | Consultoría | 91 §4 | — |
+| P71 | Plan de transferencia y nota de salida | Consultoría | 91 §4.6, §7.3 | — |
 
 ## 7. Estructura de cada plantilla
 

@@ -454,7 +454,7 @@ The product owner and the operations owner prepare, with the data for the period
 | **Continuity** (P19, P14) | Latest rollback test; supplier situation. |
 | **Proposal** | Proceed with operation, Proceed with conditions or Bring G7 forward (01 §7.3), with reasons. |
 
-The `R6.<nn>` criteria are coded in document 21.
+The package is documented with P65. The `R6.<nn>` criteria are coded in document 21.
 
 ### 8.3 Outcomes
 
@@ -635,7 +635,7 @@ The codes are provisional until they are consolidated in document 41. The thresh
 ### 15.2 Other tools and templates
 
 - **Tools:** T08 (incidents and nonconformities, supporting P27), T10 (agent security), T13 (operating costs), T12 (value at R6), T22 (retirements), T02, T04 and T07 (currency of inventory, intensity and classification).
-- **Templates:** P16 (lineage, updated with each change), P19 (rollback), P28 (value at R6), P29 (R6 outcome and returns to *gate*), P30 (retirement).
+- **Templates:** P16 (lineage, updated with each change), P19 (rollback), P28 (value at R6), P29 (R6 outcome and returns to *gate*), P30 (retirement), P65 (R6 continuity review package, section 8.2).
 
 ---
 

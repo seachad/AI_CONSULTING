@@ -146,6 +146,8 @@ Un sistema de los ámbitos de 6.2 puede no considerarse de alto riesgo si no pla
 
 **Modelos de IA de uso general (Enterprise).** Si la compañía desarrolla, o modifica de forma que pueda considerarse proveedora de, un modelo de IA de uso general, debe analizarse por separado el capítulo del Reglamento dedicado a estos modelos.
 
+Textos y registro de avisos en P49.
+
 ---
 
 ## 8. Resultado de la clasificación
@@ -176,7 +178,7 @@ Un sistema de los ámbitos de 6.2 puede no considerarse de alto riesgo si no pla
 | ¿El tratamiento figura en la lista de tratamientos que requieren evaluación publicada por la autoridad de control? | | |
 | ¿Se toman decisiones basadas únicamente en tratamiento automatizado con efectos jurídicos o significativos? | | Si es "Sí", revisar además las garantías del RGPD sobre decisiones automatizadas. |
 | **Resultado** | Requerida · No requerida · Recomendada | Si es requerida, debe realizarse antes del tratamiento. |
-| Referencia y fecha de la evaluación | | |
+| Referencia y fecha de la evaluación | | Se documenta en P47. |
 | Opinión del delegado de protección de datos | | |
 
 ### 9.2 Evaluación de impacto en derechos fundamentales
@@ -190,7 +192,7 @@ La exige el Reglamento Europeo de IA a determinados responsables del despliegue 
 | ¿El sistema evalúa la solvencia o la calificación crediticia de personas físicas, o evalúa riesgos y fija precios en seguros de vida o de salud? | | |
 | **Resultado** | Requerida · No requerida · Recomendada | Los sistemas de infraestructuras críticas quedan fuera de esta obligación. |
 
-Contenido mínimo cuando es requerida: procesos en los que se usará el sistema; periodo y frecuencia de uso; categorías de personas afectadas; riesgos específicos de perjuicio; medidas de supervisión humana; medidas si los riesgos se materializan, incluidos gobierno interno y reclamaciones. Se comunican los resultados a la autoridad de vigilancia del mercado y puede complementar la evaluación de impacto en protección de datos. Referencia y fecha de la evaluación: ____.
+Contenido mínimo cuando es requerida: procesos en los que se usará el sistema; periodo y frecuencia de uso; categorías de personas afectadas; riesgos específicos de perjuicio; medidas de supervisión humana; medidas si los riesgos se materializan, incluidos gobierno interno y reclamaciones. Se comunican los resultados a la autoridad de vigilancia del mercado y puede complementar la evaluación de impacto en protección de datos. La evaluación se documenta en P48. Referencia y fecha: ____.
 
 ### 9.3 Otras evaluaciones **(Enterprise)**
 

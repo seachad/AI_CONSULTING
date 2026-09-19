@@ -324,7 +324,7 @@ After steps 1 to 7, the tree continues with two steps that do not change the cat
 | **When in the cycle** | Phase 3 (before G3) and updated in phase 4 with the design. Always before processing begins. |
 | **Relationship with the AI Act** | The deployer of a high-risk system uses the information from the provider (Article 13) to carry it out (Article 26(9)). The fundamental rights impact assessment complements it (Article 27(4)). |
 | **Prior consultation** | If the residual risk remains high, consultation of the supervisory authority (GDPR, Article 36). In SEVEN-G, in addition, High or Critical residual risk with its level of acceptance (document 30 §7.2). |
-| **Template** | P11, impact assessments block (may link to the company's own methodology). |
+| **Template** | P11 (need) and P47 (assessment); it may link to the company's own methodology. |
 
 ### 6.2 Fundamental rights impact assessment (AI Act, Article 27)
 
@@ -336,7 +336,7 @@ After steps 1 to 7, the tree continues with two steps that do not change the cat
 | **Notification** | The deployer notifies the market surveillance authority of the results, using the template provided by the European AI Office, under the terms of Article 27(3). |
 | **Temporal applicability** | Linked to the application of the Annex III obligations (2-12-2027 following Regulation (EU) 2026/1744). SEVEN-G recommends carrying it out from the design stage for the systems concerned. |
 | **Voluntary use** | Where it is not mandatory, the company **may** use its structure for systems involving significant decisions about people. It may draw on ISO/IEC 42005:2025 (AI system impact assessment). |
-| **Template** | P11. |
+| **Template** | P11 (need) and P48 (assessment and notification). |
 
 ### 6.3 Conformity assessment and provider obligations
 
@@ -456,7 +456,7 @@ The inventory is only reliable if it is checked against independent sources. The
 | Unauthorised use | Process in 31 §5. |
 | False positive (not AI) | Recorded as "Rules (not AI)" if recurrent; otherwise, the conclusion is documented in the reconciliation report. |
 
-The result of the reconciliation feeds indicator Q7 and is reported to the AI Committee within the corporate AI use monitor (T21) and the C4 report.
+The result of the reconciliation feeds indicator Q7 and is reported to the AI Committee within the corporate AI use monitor (T21), the quarterly second-line report (P42) and the C4 report.
 
 ---
 
@@ -468,6 +468,9 @@ The result of the reconciliation feeds indicator Q7 and is reported to the AI Co
 | **T07** | Regulatory classifier | Guided questionnaire covering steps 1 to 9 of the tree; generates the provisional classification and the assessment plan, and records the rationale and date. It must be updated when the consolidated text of the Regulation or the Commission guidelines change. |
 | **P05** | AI system inventory record | Evidence of inventory registration (phase 0). |
 | **P11** | Regulatory classification and impact assessments | Evidence of the classification (phase 3) and of the resulting assessments. |
+| **P47** | Data protection impact assessment | Assessment required under section 6.1. |
+| **P48** | Fundamental rights impact assessment | Assessment and notification required under section 6.2. |
+| **P42** | Quarterly second-line report | Reports the reconciliation of section 9 and indicator Q7 to the AI Committee. |
 | **T01** | Initiative register | System–initiative link and classification change events. |
 | **T04** | Intensity determination | Uses the classification and autonomy from the inventory. |
 | **T09** | AI supplier register | Linked suppliers and general-purpose models. |

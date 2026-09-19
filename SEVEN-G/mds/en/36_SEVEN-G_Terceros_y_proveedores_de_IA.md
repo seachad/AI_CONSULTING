@@ -112,7 +112,7 @@ The substitutability time frames are indicative and are approved in C2 (document
 
 | Requirement | N1 · Standard | N2 · Enhanced | N3 · Critical |
 |---|---|---|---|
-| **Due diligence** | Basic questionnaire; review of terms of service and privacy terms. | Full questionnaire (4.3); certifications and independent reports; analysis of sub-processors. | Everything in N2, plus financial soundness, continuity, subcontracting chain, references and direct or third-party verification. |
+| **Due diligence** | Basic questionnaire; review of terms of service and privacy terms. | Full questionnaire (4.3; P55); certifications and independent reports; analysis of sub-processors. | Everything in N2, plus financial soundness, continuity, subcontracting chain, references and direct or third-party verification. |
 | **Security** | Verified data configuration (no training, retention). | Document-based AI security assessment (applicable SEG and AG). | Technical assessment, in-house adversarial testing or recent independent reports; right to test. |
 | **Contract** | Standard terms reviewed against clauses 1–4 of section 6. | AI annex and data processing agreement with the clauses marked for N2. | Negotiated contract with all clauses; DORA Art. 30(3) if it supports critical or important functions of a financial entity. |
 | **Approval** | AI Product Owner with procurement clearance. | AI Sponsor with risk and data protection clearance. | AI Committee with clearance from risk, information security, data protection and legal. |
@@ -146,11 +146,11 @@ An N3 supplier normally implies **Enterprise** intensity for the initiatives tha
 | Stage | What is done | Evidence | Owner | SEVEN-G phase |
 |---|---|---|---|---|
 | **1. Selection** | Build, buy or partner decision; requirements; preliminary N level; alternatives compared. | P10; requirements; comparison. | AI Product Owner with procurement. | 3 |
-| **2. Due diligence** | Questionnaire and verification according to level; security and data protection assessment; RT-TER risks. | P14; risks in P12. | Procurement, security, data protection, risk. | 3 |
-| **3. Contract** | Negotiation with the clauses for the level; approval. | Contract; clause list verified in P14. | Legal and procurement. | 3–4 |
+| **2. Due diligence** | Questionnaire and verification according to level; security and data protection assessment; RT-TER risks. | P14; P55; risks in P12. | Procurement, security, data protection, risk. | 3 |
+| **3. Contract** | Negotiation with the clauses for the level; approval. | Contract (P56); clause list verified in P14. | Legal and procurement. | 3–4 |
 | **4. Integration** | Secure configuration (retention, no training, regions); identities and permissions; logging; testing; exit plan. | P15, P18; exit plan. | AI Technical Owner. | 4–5 |
-| **5. Monitoring** | Service indicators, incidents, model changes, sub-processors, periodic reviews, level reassessment. | T09; review minutes; P27. | Relationship manager and AI Operations Owner. | 6 |
-| **6. Exit** | Activation of the plan: transition, portability, certified deletion, revocation of access, lessons. | Deletion certificate; closure record; P30. | AI Technical Owner and legal. | 7 |
+| **5. Monitoring** | Service indicators, incidents, model changes, sub-processors, periodic reviews, level reassessment. | T09; review minutes (P57 §5); P27. | Relationship manager and AI Operations Owner. | 6 |
+| **6. Exit** | Activation of the plan: transition, portability, certified deletion, revocation of access, lessons. | Deletion certificate and closure record (P57 §8–9); P30. | AI Technical Owner and legal. | 7 |
 
 **Reassessment triggers:** change of model or major version; change of sub-processors or location; S1 or S2 incident attributable to the supplier; change of ownership of the supplier; change of use or autonomy level; new regulatory obligation; deterioration in service indicators; notice of a model's deprecation.
 
@@ -221,7 +221,7 @@ If the company is not subject to DORA, its requirements **may** be used as a goo
 | Usage-based pricing without limits or forecasting. | Consumption budgets, alerts and price review clauses. |
 | No tested alternative. | Periodic assessment of at least one alternative for N3 services. |
 
-The **portability test** for N3 services consists of running the in-house evaluation set with an alternative model or provider and documenting the difference in results, cost and migration effort. It is carried out at least once a year or before renewing the contract.
+The **portability test** (P57 §7) for N3 services consists of running the in-house evaluation set with an alternative model or provider and documenting the difference in results, cost and migration effort. It is carried out at least once a year or before renewing the contract.
 
 ### 7.2 Concentration
 
@@ -247,11 +247,11 @@ Many business applications incorporate AI features through updates, sometimes en
 
 | Step | What is done | Owner |
 |---|---|---|
-| **1. Identify** | Questionnaire to current software suppliers on existing and planned AI features; review of release notes; review of configurations. Priority is given to software that processes personal or confidential data or that plays a part in decisions. | AI Office with procurement and technology |
+| **1. Identify** | Questionnaire (P55, annex A) to current software suppliers on existing and planned AI features; review of release notes; review of configurations. Priority is given to software that processes personal or confidential data or that plays a part in decisions. | AI Office with procurement and technology |
 | **2. Inventory** | Registration of each relevant AI feature in the inventory (T02), linked to the supplier in T09, with the technology tag "Embedded third-party AI". | AI Office |
 | **3. Classify** | Determine whether it is general-purpose corporate use or AI that plays a part in decisions, operations or customer relationships; N level; Enterprise criteria; regulatory classification. | AI Risk Owner |
 | **4. Decide** | Keep disabled, enable with controls or enable as an initiative with the full lifecycle. | According to 4.2 and 01 §1.2 |
-| **5. Contract** | Addendum with clauses 1, 3, 8 and 13 as a minimum and those corresponding to the level. | Legal and procurement |
+| **5. Contract** | Addendum (P56 §8) with clauses 1, 3, 8 and 13 as a minimum and those corresponding to the level. | Legal and procurement |
 | **6. Monitor** | Review of updates and configuration changes at every R6 or, failing that, half-yearly. | Relationship manager |
 
 ### 8.2 Rules
@@ -323,7 +323,10 @@ The board or its board committee receives a quarterly report on concentration, N
 | Code | Name | Use |
 |---|---|---|
 | **P14** | AI supplier assessment | N level with factors; build, buy or partner decision; due diligence questionnaire; security and data protection assessment; verification of the 16 clauses; risks; exit plan; clearances and approval. Phase 3; updated at R6 and when triggers occur. |
-| **T09** | AI supplier register | Fields in section 9, review and renewal alerts, indicators in section 10 and concentration view. Module of T01. |
+| **T09** | AI supplier register | Fields in section 9, review and renewal alerts, indicators in section 10 and concentration view. Module of T01; its working format is P57. |
+| **P55** | AI supplier due diligence questionnaire | Questionnaire of section 4.3 by level, with scoring and transfer to P14; annex A for embedded AI (section 8). Phase 3. |
+| **P56** | Model AI contractual clauses | Model wording of the 16 clauses in section 6, AI annex for existing contracts and embedded AI addendum. Phases 3–4. |
+| **P57** | Supplier register and exit plan | Register of section 9, concentration, review minutes, exit plan, portability test, deletion certificate and closure record (sections 5, 7 and 9). Phases 3 to 7. |
 | P10 · P12 · P30 | Feasibility assessment · Risk matrix and register · Scale or retire decision | Sourcing decision, RT-TER risks and exit. |
 | T02 · T06 · T08 | Inventory · Risks · Incidents | Linked systems, third-party risks and incidents. |
 

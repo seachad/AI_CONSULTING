@@ -25,7 +25,7 @@
 | **En qué *gate* se revisa** | R6 y G7. Alimenta el panel del consejo (T17) y la cartera (documento 14). |
 | **Lite frente a Enterprise** | Lite puede omitir los campos marcados **(Enterprise)**. |
 | **Herramienta** | T12 Seguimiento de realización de valor. |
-| **Relación** | P08 Lienzo de hipótesis de valor · P09 Línea base · P20 Plan de adopción y capacidad · P22 Resultados del piloto · P30 Decisión de escalado o retirada · P31 Ficha de caso de uso · documentos 40, 42 y 43. |
+| **Relación** | P08 Lienzo de hipótesis de valor · P09 Línea base · P20 Plan de adopción y capacidad · P22 Resultados del piloto · P30 Decisión de escalado o retirada · P31 Ficha de caso de uso · P62 Plan de realización de beneficios (curva, responsables, habilitadores; referencia del esperado por periodo) · documentos 40, 42 y 43. |
 
 Reglas de medición aplicables (00 §6):
 

@@ -81,7 +81,7 @@ No company needs all the indicators. They are selected in C2 according to the AI
 
 ## 5. Indicator record
 
-Each indicator in the catalogue, and any in-house indicator added by the company, is documented with this record in T01.
+Each indicator in the catalogue, and any in-house indicator added by the company, is documented with this record. The selection of indicators approved by the company in C2, with its target, threshold, frequency, owner and source, is recorded in P35 §13.
 
 | Field | Content |
 |---|---|
@@ -270,7 +270,7 @@ Definitions of the segments are in document 40 §9. All are segmented by residua
 | IND-ADO-12 | **Prior information to workers' representatives.** Systems with an effect on working conditions or employment reported before use. | Systems with an effect on working conditions or employment reported before use ÷ systems with that effect | % | Information record (document 50 §7.2) | Q | To be defined by the company | Co · B | F4–F5 · G5 · E03 | 100% | |
 | IND-ADO-13 | **Human review in decisions about people.** AI-assisted decisions about people with documented human review. | AI-assisted decisions about people with documented human review ÷ AI-assisted decisions about people | % | System logs | M | To be defined by the company | I | F6 · decisions about people | 100% in A1 | |
 | IND-ADO-14 | **Challenges to assisted decisions.** Review requests or complaints about AI-assisted decisions. | Review requests or complaints ÷ decisions communicated; and proportion upheld | % | Complaints channel | Q | To be defined by the company | I · Co | F6 · decisions about people | Trend and causes | |
-| IND-ADO-15 | **Perception of affected groups.** Favourable responses on support, workload and autonomy in the pulse survey. | Favourable responses to the questions on support, workload and autonomy ÷ valid responses | % | Pulse survey | G (phase 5, at 3 months and at Enterprise R6) | To be defined by the company | I · Co | F5–F6 · R6 · E03 | Trend; action if it worsens | |
+| IND-ADO-15 | **Perception of affected groups.** Favourable responses on usefulness, trust, support, workload and autonomy in the pulse survey (P44). | Favourable responses to the questions on usefulness, trust, support, workload and autonomy (P44) ÷ valid responses | % | Pulse survey | G (phase 5, at 3 months and at Enterprise R6) | To be defined by the company | I · Co | F5–F6 · R6 · E03 | Trend; action if it worsens | |
 
 ---
 

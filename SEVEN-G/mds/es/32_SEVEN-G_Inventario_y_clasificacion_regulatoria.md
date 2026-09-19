@@ -324,7 +324,7 @@ Tras los pasos 1 a 7, el árbol continúa con dos pasos que no cambian la catego
 | **Cuándo en el ciclo** | Fase 3 (antes de G3) y actualización en fase 4 con el diseño. Siempre antes de iniciar el tratamiento. |
 | **Relación con el Reglamento de IA** | El responsable del despliegue de un sistema de alto riesgo usa la información del proveedor (artículo 13) para realizarla (artículo 26.9). La evaluación de impacto en derechos fundamentales la complementa (artículo 27.4). |
 | **Consulta previa** | Si el riesgo residual sigue siendo alto, consulta a la autoridad de control (RGPD, artículo 36). En SEVEN-G, además, riesgo residual Alto o Crítico con su nivel de aceptación (documento 30 §7.2). |
-| **Plantilla** | P11, bloque de evaluaciones de impacto (puede enlazar a la metodología propia de la compañía). |
+| **Plantilla** | P11 (necesidad) y P47 (evaluación); puede enlazar a la metodología propia de la compañía. |
 
 ### 6.2 Evaluación de impacto en derechos fundamentales (Reglamento de IA, artículo 27)
 
@@ -336,7 +336,7 @@ Tras los pasos 1 a 7, el árbol continúa con dos pasos que no cambian la catego
 | **Notificación** | El responsable del despliegue notifica los resultados a la autoridad de vigilancia del mercado, con el modelo que facilite la Oficina Europea de IA, en los términos del artículo 27.3. |
 | **Aplicabilidad temporal** | Ligada a la aplicación de las obligaciones del anexo III (2-12-2027 tras el Reglamento (UE) 2026/1744). SEVEN-G recomienda realizarla desde el diseño para los sistemas afectados. |
 | **Uso voluntario** | Cuando no es obligatoria, la compañía **puede** usar su estructura para sistemas con decisiones significativas sobre personas. Puede apoyarse en ISO/IEC 42005:2025 (evaluación de impacto de sistemas de IA). |
-| **Plantilla** | P11. |
+| **Plantilla** | P11 (necesidad) y P48 (evaluación y notificación). |
 
 ### 6.3 Evaluación de conformidad y obligaciones del proveedor
 
@@ -456,7 +456,7 @@ El inventario solo es fiable si se contrasta con fuentes independientes. La Ofic
 | Uso no autorizado | Proceso de 31 §5. |
 | Falso positivo (no es IA) | Registro como "Reglas (no es IA)" si es recurrente; si no, se documenta la conclusión en el informe de conciliación. |
 
-El resultado de la conciliación alimenta el indicador Q7 y se informa al comité de IA dentro del monitor de uso corporativo (T21) y del informe de C4.
+El resultado de la conciliación alimenta el indicador Q7 y se informa al comité de IA dentro del monitor de uso corporativo (T21), del informe trimestral de segunda línea (P42) y del informe de C4.
 
 ---
 
@@ -468,6 +468,9 @@ El resultado de la conciliación alimenta el indicador Q7 y se informa al comit�
 | **T07** | Clasificador regulatorio | Cuestionario guiado con los pasos 1 a 9 del árbol; genera la clasificación provisional y el plan de evaluaciones, y registra justificación y fecha. Debe actualizarse cuando cambie el texto consolidado del Reglamento o las directrices de la Comisión. |
 | **P05** | Ficha de inventario del sistema de IA | Evidencia del alta en el inventario (fase 0). |
 | **P11** | Clasificación regulatoria y evaluaciones de impacto | Evidencia de la clasificación (fase 3) y de las evaluaciones derivadas. |
+| **P47** | Evaluación de impacto en protección de datos | Evaluación exigida según la sección 6.1. |
+| **P48** | Evaluación de impacto en derechos fundamentales | Evaluación y notificación exigidas según la sección 6.2. |
+| **P42** | Informe trimestral de segunda línea | Informa al comité de IA de la conciliación de la sección 9 y del indicador Q7. |
 | **T01** | Registro de iniciativas | Vinculación sistema–iniciativa y eventos de cambio de clasificación. |
 | **T04** | Determinación de intensidad | Usa la clasificación y la autonomía del inventario. |
 | **T09** | Registro de proveedores de IA | Proveedores y modelos de uso general vinculados. |

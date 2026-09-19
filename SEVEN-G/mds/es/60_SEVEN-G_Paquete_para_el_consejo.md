@@ -158,6 +158,8 @@ Tipos de decisión:
 | **Tomar conocimiento** | El órgano queda informado de una decisión adoptada por quien corresponde. | Parada o retirada decidida por el comité de IA. |
 | **Encargar** | El órgano pide un trabajo con responsable y fecha. Se registra como recomendación o mandato (documento 62). | Revisión de la dependencia de un proveedor. |
 
+El encargo no genera un DEC: se registra como REC de tipo Encargo (62 §10.1).
+
 ### 4.4 Panel
 
 El paquete no reproduce el panel: indica la vista que debe consultarse (sección 10) y añade **una lectura de dos o tres líneas por bloque** preparada por la oficina de IA y revisada por control de gestión. La lectura dice qué ha cambiado, por qué y si requiere atención del consejo.
@@ -412,7 +414,7 @@ Reglas de uso:
 
 ### 10.3 Adaptaciones pendientes
 
-La herramienta T17 existe (03 §5.4) y está pendiente de adaptación para alimentarse del registro de iniciativas (T01). Para este documento, la adaptación debería incluir: agrupación por **programa** y cálculo del semáforo de la sección 9; vista por **fase y estado** del ciclo de vida; distribución por **esfera**; y enlace de cada caso con su código IA-AAAA-NNN y con las recomendaciones y decisiones del documento 62. Mientras tanto, el semáforo de programas se prepara desde el registro de iniciativas y se anexa al paquete.
+La herramienta T17 se alimenta del registro de iniciativas (T01) mediante su conector (03 §5.4): muestra el embudo por **fase y estado** del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del documento 62. La agrupación por **programa** con el semáforo de la sección 9 y la distribución por **esfera** (mapa T16) no forman parte del panel: el semáforo se calcula con las reglas de 14 §12 y se anexa al paquete con P67, y las decisiones del consejo se registran en P69.
 
 Los ficheros del motor que se publican en el repositorio de demostraciones son copia de su proyecto de origen: las adaptaciones se hacen en origen y se vuelven a publicar.
 
@@ -435,6 +437,8 @@ Los ficheros del motor que se publican en el repositorio de demostraciones son c
 | 11 | El reparto entre pleno y comisión respeta la sección 6 y el reglamento del consejo. | Secretaría del consejo |
 | 12 | No hay tecnicismos sin traducir ni comparaciones con el mercado sin fuente. | Presidencia del comité de IA |
 
+La lista se aplica con P67 §12.
+
 ---
 
 ## 12. Herramientas y plantillas asociadas
@@ -454,6 +458,7 @@ Los ficheros del motor que se publican en el repositorio de demostraciones son c
 | T19 | Plantilla de tesis de IA y apetito de riesgo | Paquete anual C2. |
 | P29 | Registro de decisión de *gate* | Evidencia de las decisiones que se elevan. |
 | P30 | Decisión de escalado o retirada | Decisiones de G7 que se elevan. |
+| P67 | Paquete trimestral para el consejo | Formulario del paquete C4 y variantes C2, C5 y extraordinarias. |
 
 ---
 

@@ -158,6 +158,8 @@ Types of decision:
 | **Take note** | The body is informed of a decision taken by whoever is competent. | Stop or retirement decided by the AI Committee. |
 | **Assign** | The body requests a piece of work with an owner and a date. It is recorded as a recommendation or assignment (document 62). | Review of dependence on a supplier. |
 
+An assignment does not generate a DEC: it is recorded as a REC of type Assignment (62 §10.1).
+
 ### 4.4 Dashboard
 
 The pack does not reproduce the dashboard: it indicates the view to be consulted (section 10) and adds **a two- or three-line commentary per block** prepared by the AI Office and reviewed by management control. The commentary states what has changed, why and whether it requires the board's attention.
@@ -412,7 +414,7 @@ Rules of use:
 
 ### 10.3 Pending adaptations
 
-Tool T17 exists (03 §5.4) and is pending adaptation to be fed from the initiative register (T01). For this document, the adaptation should include: grouping by **programme** and calculation of the traffic light in section 9; a view by lifecycle **phase and status**; distribution by **sphere**; and a link from each use case to its IA-AAAA-NNN code and to the recommendations and decisions in document 62. In the meantime, the programme traffic light is prepared from the initiative register and annexed to the pack.
+Tool T17 is fed from the initiative register (T01) through its connector (03 §5.4): it shows the funnel by lifecycle **phase and status**, links each use case to its IA-AAAA-NNN code and generates the recommendations register of document 62. Grouping by **programme** with the traffic light in section 9 and the distribution by **sphere** (T16 map) are not part of the dashboard: the traffic light is calculated with the rules of 14 §12 and annexed to the pack with P67, and board decisions are recorded in P69.
 
 The engine files published in the demonstrations repository are copies from their source project: adaptations are made at source and published again.
 
@@ -435,6 +437,8 @@ The engine files published in the demonstrations repository are copies from thei
 | 11 | The allocation between the full board and the committee complies with section 6 and the board regulations. | Board secretariat |
 | 12 | There is no untranslated technical jargon and no comparison with the market without a source. | Chair of the AI Committee |
 
+The checklist is applied with P67 §12.
+
 ---
 
 ## 12. Associated tools and templates
@@ -454,6 +458,7 @@ The engine files published in the demonstrations repository are copies from thei
 | T19 | AI thesis and risk appetite template | Annual C2 pack. |
 | P29 | *Gate* decision record | Evidence for the decisions escalated. |
 | P30 | Scale or retirement decision | G7 decisions escalated. |
+| P67 | Quarterly board pack | Form for the C4 pack and the C2, C5 and extraordinary variants. |
 
 ---
 

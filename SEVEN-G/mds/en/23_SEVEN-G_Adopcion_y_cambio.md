@@ -298,7 +298,7 @@ The duration and format are set by the company. The understanding of users and o
 
 ### 8.4 Evidence
 
-Training record in P20 with person or group, content and version, date, format and assessment result. It feeds the training coverage indicator (section 10).
+Training record in P20, consolidated in P45, with person or group, content and version, date, format and assessment result. It feeds the training coverage indicator (section 10).
 
 ---
 
@@ -355,7 +355,7 @@ The `IND-` codes are those of the catalogue (document 41); the `PER-` codes are 
 | 5 | **Human override rate** | Recommendations or results rejected or modified by the person ÷ recommendations or results reviewed | PER-10 (complements IND-ADO-04) | M | G5 and R6: calibration of trust. |
 | 6 | **Review time per case** | Median human review time per case reviewed, with 80th percentile | Proposal | M | R6: detection of rubber-stamp approval (RT-ORG-04). |
 | 7 | **Training coverage** | People with access or an oversight role with training recorded and assessed before access ÷ people with access or an oversight role | IND-ADO-05 (initiative level) · PER-02 · PER-03 | M | G5 and R6: access condition. |
-| 8 | **User perception** | Favourable responses to the questions on usefulness, workload and trust ÷ valid responses | PER-15 | Phase 5, at 3 months and at Enterprise R6 | Desire and reinforcement; early warning of rejection. |
+| 8 | **User perception** | Favourable responses to the questions on usefulness, trust, support, workload and autonomy (P44) ÷ valid responses | PER-15 | Phase 5, at 3 months and at Enterprise R6 | Desire and reinforcement; early warning of rejection. |
 | 9 | **Released capacity application rate** | (Materialised hours + explicitly reassigned hours) ÷ measured released hours | IND-VAL-08 + IND-VAL-09 · PER-04 + PER-05 | Q | R6 and G7: conversion into value (section 7.5). |
 | 10 | **Updated roles** | Affected positions with updated description and objectives ÷ affected positions according to the impact analysis | PER-13 · IND-ADO-06 | S | G7 in Augment and Transform; signal 5. |
 
@@ -521,10 +521,12 @@ Augment and Transform initiatives always have an adoption and people plan, regar
 | **T20** | Adoption and capacity plan | Tool for template P20 and released capacity register; feeds T12 and the initiative register (T01). |
 | **P08 · P09** | Value hypothesis canvas · Baseline | Adoption target (G2.10) and reference times per task. |
 | **P10 · P12** | Feasibility assessment · Risk matrix and register | Preliminary impact analysis, adoption costs and organisational risks. |
-| **P17** | Governance and human oversight design | Designated overseers, oversight workload and information sheet for representatives. |
+| **P17** | Governance and human oversight design | Designated overseers and oversight workload. The information sheet and the register of information to representatives are in P46. |
 | **P22 · P28** | Pilot results · Value realisation tracking | Adoption and capacity measured in the pilot; materialised and reassigned capacity in operation. |
 | **P29 · P30** | *Gate* decision record · Scaling or retirement decision | G5, R6 and G7 decisions; lessons on adoption and communication of retirement. |
 | **T12 · T21** | Value tracking · Corporate use monitor | Materialised amounts; unauthorised use in the affected groups. |
+| **P44** | AI use and perception survey | User perception (indicator 8): usefulness, trust, support, workload and autonomy. |
+| **P46** | Information to workers and their representatives | System information sheet and register of information to and consultation of representatives. |
 
 Consistency note: in P20 (section 4), the indicator called *effective use* corresponds to **active users** (IND-ADO-02) and *process coverage* to **effective use in the process** (IND-ADO-03). The template's terminology will be aligned with this document and with document 41 in its next version.
 

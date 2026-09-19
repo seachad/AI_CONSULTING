@@ -235,35 +235,35 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 |---|---|---|---|---|---|---|---|
 | **T06** | Matriz y registro de riesgos | Evaluación de probabilidad e impacto, mapa de calor, riesgo inherente y residual, controles y su eficacia, respuesta, contingencia y aceptación por el órgano de su nivel, con observaciones de la metodología (Crítico sin aprobación del consejo, Alto sin contingencia, aceptación caducada o por un órgano inferior, revisión vencida) y exportación CSV para hoja de cálculo. | Fase 3, fase 6, cartera | Módulo de T01 (vista «Riesgos» y pestaña de la ficha) | 33 | 2 | Disponible v0.1. Se documenta con P12 y P13 |
 | **T07** | Clasificador regulatorio | Cuestionario guiado de clasificación según el Reglamento de IA y evaluaciones requeridas. | Fases 0 y 3 | HTML | 34 | 2 | Se aplica con P11 |
-| **T08** | Registro de no conformidades e incidentes | Proceso completo con plazos y alertas. | Fase 6, C4 | Módulo de T01 | 37 | 2 | Se aplica con P26 y P27 |
-| **T09** | Registro de proveedores de IA | Terceros, criticidad, contratos, evaluación y dependencia. | Fases 3–4, C4 | Módulo de T01 | 36 | 3 | Se aplica con P14 |
-| **T10** | Evaluación de seguridad de agentes | Identidad, permisos, control de intención, interruptor de parada, pruebas de inyección. | Fases 4–6 | Lista de verificación en T03 | 35 | 3 | Se aplica con P18 y los criterios [AG] del documento 22 |
+| **T08** | Registro de no conformidades e incidentes | Proceso completo con plazos y alertas. | Fase 6, C4 | Módulo de T01 | 37 | 2 | Se aplica con P50 (registro de no conformidades), P51 (notificaciones y comunicaciones) y P52 (causa raíz), junto con P26 y P27 |
+| **T09** | Registro de proveedores de IA | Terceros, criticidad, contratos, evaluación y dependencia. | Fases 3–4, C4 | Módulo de T01 | 36 | 3 | Se aplica con P57 (registro de proveedores y plan de salida), P55 (diligencia debida), P56 (cláusulas contractuales) y P14 |
+| **T10** | Evaluación de seguridad de agentes | Identidad, permisos, control de intención, interruptor de parada, pruebas de inyección. | Fases 4–6 | Lista de verificación en T03 | 35 | 3 | Se aplica con P18, P53 (pruebas adversarias), P54 (identidades no humanas y componentes) y los criterios [AG] del documento 22 |
 
 ### 5.3 Valor y medición
 
 | Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
 |---|---|---|---|---|---|---|---|
-| **T11** | Lienzo y calculadora de hipótesis de valor | Línea base, fórmula, método de atribución, criterios de parada. | Fase 2 | HTML y plantilla de hoja de cálculo | 40 | 2 | Se aplica con P08 y P09 |
-| **T12** | Seguimiento de realización de valor | Valor validado, declarado y estimado por periodo y por caso. | Fases 6–7, C4 | Módulo de T01 | 40, 43 | 2 | Se aplica con P28 |
-| **T13** | Calculadora de costes por caso | Reparto analítico de licencias, consumo de modelos, cómputo y personas. | Fases 3 y 6 | Plantilla de hoja de cálculo | 42 | 3 | Se aplica con el documento 42 |
+| **T11** | Lienzo y calculadora de hipótesis de valor | Línea base, líneas de valor con fórmula (F1), neto anual, VAN, ROI, plazo de recuperación y F3 con el horizonte y la tasa de C2; escenarios; criterio económico de C2 como información; importa la iniciativa desde T01. Se documenta con P08, P09 y P10. | Fases 2, 3 y 7 | HTML + JSON; exportación CSV | 40 | 2 | Disponible v0.1 |
+| **T12** | Seguimiento de realización de valor | Valor validado, declarado y estimado por periodo y por caso. | Fases 6–7, C4 | Módulo de T01 | 40, 43 | 2 | Se aplica con P28 y P62 (plan de realización de beneficios) |
+| **T13** | Calculadora de costes por caso | Coste completo e incremental, coste total de propiedad, reparto de costes compartidos, previsión de consumo con alertas, coste por unidad, coste de parar y conciliación. Se documenta con P10 y P63. | Fases 3 y 6 | Módulo de T11 (vista «Costes por caso»); exportación CSV | 42 | 3 | Disponible v0.1 |
 | **T14** | Calculadora del índice de transformación | Condiciones de base, ocho señales, perfil de la compañía, alertas, cobertura y evolución, con versión de umbrales; parte del JSON del registro T01. | C1, C4, C5 | HTML + JSON | 12 | 2 | Disponible v0.1 |
 
 ### 5.4 Estrategia y consejo
 
 | Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
 |---|---|---|---|---|---|---|---|
-| **T15** | Diagnóstico de madurez | Cuestionario 0–5 por dimensión con evidencias e informe. | C1, C5 | HTML con informe | 11 | 2 | Se aplica con el documento 11 |
+| **T15** | Diagnóstico de madurez | Cuestionario de 84 preguntas con evidencia y verificación; nivel por dimensión y global con el límite de D1 y D6; comparación entre evaluaciones e informe para el consejo. Plantilla P34. | C1, C5 | HTML + JSON; exportación CSV | 11 | 2 | Disponible v0.1 |
 | **T16** | Mapa de esferas de la cartera | Mapa de calor esferas × niveles de ambición con inversión y valor. | C2, C3 | Vista del panel del consejo | 10 | 2 | Se aplica con el documento 10 |
 | **T17** | Panel de IA para el consejo | Supervisión: valor, coste, riesgo, cumplimiento, incidentes, agilidad, adopción. | C4 | HTML completo y móvil + JSON | 60 | 1 | Disponible. Se alimenta de T01 mediante el conector `herramientas/T17_panel_consejo`: registro (JSON) más `config_panel.json` (umbrales de los indicadores y ciclo de vida) → JSON del panel → panel completo y móvil, con embudo y tiempos por etapa como en un CRM |
 | **T18** | Registro de recomendaciones del consejo | Recomendaciones con identificador persistente, estado, evidencia y valoración. | C4 | HTML + JSON | 62 | 1 | Disponible. El conector de T17 genera el registro a partir de las recomendaciones de T01 |
-| **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión del consejo, con umbrales y plazos de referencia. | C2 | Plantilla de documento | 13 | 3 | Se aplica con el documento 13 |
+| **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión del consejo, con umbrales y plazos de referencia. | C2 | Plantilla de documento | 13 | 3 | Se aplica con P35 (tesis de IA y apetito de riesgo) |
 
 ### 5.5 Personas y operación
 
 | Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
 |---|---|---|---|---|---|---|---|
-| **T20** | Plan de adopción y capacidad | Adopción, formación y reasignación de la capacidad liberada. | Fases 4–7 | Plantilla y módulo de T01 | 23, 50 | 3 | Se aplica con P20 |
-| **T21** | Monitor de uso corporativo de IA | Licencias asignadas y activas, uso no autorizado, controles de fuga de datos. | C4 | Vista del panel del consejo | 31 | 3 | Se aplica con el documento 31 |
+| **T20** | Plan de adopción y capacidad | Adopción, formación y reasignación de la capacidad liberada. | Fases 4–7 | Plantilla y módulo de T01 | 23, 50 | 3 | Se aplica con P20 y P45 (plan y registro de alfabetización y formación) |
+| **T21** | Monitor de uso corporativo de IA | Licencias asignadas y activas, uso no autorizado, controles de fuga de datos. | C4 | Vista del panel del consejo | 31 | 3 | Se aplica con P43 (catálogo de herramientas autorizadas y solicitudes) |
 | **T22** | Gestor de retiradas | Plan de retirada, sustituto, datos y modelos, comunicación. | Fase 7 | Módulo de T01 | 14 | 3 | Se aplica con P30 |
 
 ---
@@ -298,3 +298,4 @@ Regla de trabajo: **cada documento que define un proceso con registro, cálculo 
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define el registro de iniciativas como embudo gestionado, su taxonomía, eventos, métricas y plazos de referencia; el modelo de datos común; el catálogo de 22 herramientas y el orden de construcción. |
+| 0.2 | 19-09-2026 | Catálogo al día: T11 (con T13 como módulo) y T15 disponibles; las herramientas sin aplicación propia se aplican con las plantillas P32–P71 que les corresponden (D68). |

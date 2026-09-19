@@ -81,7 +81,7 @@ Reglas:
 | Por cuenta de quién actúa | | Por cuenta de un usuario concreto (delegación) · Por cuenta de la compañía (proceso). Si actúa por cuenta de un usuario, nunca con más permisos que ese usuario. |
 | Gestión de credenciales | | Almacén de secretos; sin credenciales en instrucciones ni en código; rotación. |
 | Revocación | | Cómo y en cuánto tiempo se revocan las credenciales; quién puede hacerlo. |
-| Revisión periódica de la identidad y sus permisos **(Enterprise)** | | Frecuencia y responsable. |
+| Revisión periódica de la identidad y sus permisos **(Enterprise)** | | Frecuencia y responsable. Se registra en el inventario de identidades no humanas (P54). |
 
 ---
 
@@ -182,7 +182,7 @@ Por defecto, una acción sensible sin validación **se cancela**; nunca se ejecu
 | | | | | | | |
 | | | | | | | |
 
-Las pruebas deberían ejecutarlas personas ajenas al equipo que construye. Una prueba *No superada* sobre un control crítico impide la firma de seguridad en P23.
+Las pruebas deberían ejecutarlas personas ajenas al equipo que construye. Una prueba *No superada* sobre un control crítico impide la firma de seguridad en P23. El plan y el informe de las campañas de pruebas adversarias se documentan en P53.
 
 ---
 

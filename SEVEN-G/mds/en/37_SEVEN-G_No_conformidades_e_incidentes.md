@@ -75,7 +75,7 @@ A nonconformity may be detected in: *gate* verifications by the AI Auditor or th
 
 ### 3.2 Recording
 
-Every nonconformity is recorded in **T08** with the code **NC-AAAA-NNN** (year of detection and a sequential number that does not restart within the year).
+Every nonconformity is recorded in **T08** (template P50) with the code **NC-AAAA-NNN** (year of detection and a sequential number that does not restart within the year).
 
 | Field | Content |
 |---|---|
@@ -133,7 +133,7 @@ The analysis is mandatory for major and critical nonconformities and recommended
 | **Governance and controls** | Was there segregation of duties? Was the control designed and tested? Did the register raise an alert? |
 | **Environment** | Did the regulation, the use or the volume change, or did an attacker appear? |
 
-A root cause is valid when: it explains all the facts observed; had it been eliminated, the failure would not have occurred or would have been detected; it is actionable; and it does not merely attribute responsibility to a person.
+A root cause is valid when: it explains all the facts observed; had it been eliminated, the failure would not have occurred or would have been detected; it is actionable; and it does not merely attribute responsibility to a person. The worksheet is P52.
 
 ### 3.6 Corrective and preventive action
 
@@ -297,7 +297,7 @@ Additional rules:
 - **Suppliers.** N2 and N3 contracts must ensure that the supplier reports within a time limit that allows these time limits to be met (36 §6, clause 7).
 - **Rehearsal.** Reporting is rehearsed at least once a year in an S1 incident drill.
 
-Omitting or delaying a mandatory report is a critical nonconformity (01 §12).
+The decision and the reports are documented in P51. Omitting or delaying a mandatory report is a critical nonconformity (01 §12).
 
 ---
 
@@ -365,7 +365,7 @@ Template P27 also includes the log of relevant changes in production, because ma
 | Timing | Content |
 |---|---|
 | **S1 incident** | Communication to the board committee within 24 hours: what has happened, who is affected, what has been contained, which reports have been submitted or are still within the time limit, which decisions may be required. |
-| **Quarterly** | S1 and S2 incidents with their status; regulatory reports and compliance with them; open and overdue critical and major nonconformities; indicator trends; systemic lessons; supplier incidents; decisions requested. |
+| **Quarterly** | S1 and S2 incidents with their status; regulatory reports and compliance with them; open and overdue critical and major nonconformities; indicator trends; systemic lessons; supplier incidents; decisions requested. Presented with the quarterly second-line report (P42). |
 | **Annual (C5)** | Effectiveness of the incident and nonconformity processes; recurrences; drill results; proposed adjustments to time limits and thresholds. |
 
 Reporting to the board uses the format in document 60 and always distinguishes confirmed facts from assessments still in progress.
@@ -376,8 +376,12 @@ Reporting to the board uses the format in document 60 and always distinguishes c
 
 | Code | Name | Use |
 |---|---|---|
-| **P26** | Incident response plan | Types and severity applicable to the system; contacts and roles; shutdown criteria and procedure; preservation of evidence; reporting matrix with time limits and owners; communication templates; drill calendar. Phase 6; prepared before G5. |
+| **P26** | Incident response plan | Types and severity applicable to the system; contacts and roles; shutdown criteria and procedure; preservation of evidence; reporting matrix with time limits and owners; drill calendar. The report and communication models are in P51. Phase 6; prepared before G5. |
 | **P27** | Incident and change log | Fields in section 7. Phase 6. |
+| **P50** | Nonconformity register | NC-AAAA-NNN register with classification, containment, actions, effectiveness verification and closure (section 3). |
+| **P51** | Incident reports and communications | Assessment by regime, reasoned decision not to report, report models and communications to affected persons (section 5). |
+| **P52** | Root cause analysis and corrective action plan | Worksheet for the five whys and the cause-and-effect diagram, and action plan (sections 3.5 and 3.6). |
+| **P42** | Quarterly second-line report | Quarterly reporting to the board (section 9). |
 | **T08** | Nonconformity and incident register | Register of NC-AAAA-NNN and INC-AAAA-NNN with statuses, time limits, reporting clocks, overdue alerts, links to risks and *gates*, and the indicators in section 8. Module of T01. |
 | P19 · P24 · P25 | Rollback plan · Operations manual · Monitoring and alerting | Fallback process, kill switch and detection. |
 | T06 · T09 · T17 | Risks · Suppliers · Board dashboard | Materialised risks, third-party incidents and reporting to the board. |

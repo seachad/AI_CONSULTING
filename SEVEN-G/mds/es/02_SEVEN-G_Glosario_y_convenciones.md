@@ -328,7 +328,7 @@ Orden alfabético. Las escalas completas están en la sección 4 y los códigos 
 | **Pivotar** | Resultado de G1, G2 o G3: la hipótesis no se sostiene, pero existe una alternativa razonable; se vuelve a la fase 2 con una nueva hipótesis, conservando el contexto aprobado. | 01 §7.3 | Pivot |
 | **Plan de realización de beneficios** | Plan firmado por el responsable de negocio del beneficio, en borrador en G3 y completo en G4, que fija cómo, cuándo y con qué cambios habilitadores se materializará el valor esperado. | 43 §4 | benefits realisation plan † |
 | **Plan de reversión** | Plan para volver a una situación anterior segura (versión anterior, alternativa sin IA, autonomía o alcance reducidos) si la solución falla. Debe probarse antes de la puesta en producción. | 01 §3 principio 4, §6.6–6.7; P19; 52 §10 | rollback plan |
-| **Plantilla** | Documento tipo del bloque H para elaborar una evidencia obligatoria (P01–P31). | 01 §6.10 | template |
+| **Plantilla** | Documento tipo del bloque H: P01–P31 para elaborar las evidencias obligatorias de la iniciativa y P32–P71 para los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco. Cada una tiene versión editable en Word. | 01 §6.10; 03 §5 | template |
 | **Plazo de recuperación · ROI** | Indicadores económicos **informativos**, sin umbrales propios: año en que el neto anual acumulado iguala la inversión inicial (F9) y retorno sobre la inversión inicial calculado siempre sobre neto anual (F8). No son umbral de G3: los plazos de recuperación por nivel de ambición del documento 13 §7 son referencias informativas. | 40 §6, §8.3; 13 §7 | payback period · ROI † |
 | **Plazo de referencia** | Duración orientativa de cada fase y de la decisión de un *gate*, aprobada en C2, cuya superación marca la iniciativa como estancada. | 01 §6.11; 03 §3.6 | reference time limit |
 | **Práctica prohibida** | Uso de IA prohibido por el art. 5 del Reglamento Europeo de IA. No se valora como riesgo ni se acepta: se evita, y en G3 obliga a Parar. | 01 §6.5; 33 §4.3; 21 G3.08 | prohibited practice † |
@@ -786,7 +786,7 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **LV-G\<n\> · LV-R6 · LV-EV · LV-AG** | LV + guion + ámbito | Listas de verificación por puerta, de validación de evidencias y de agentes. | 22 §1 | LV-G5 |
 | **EV.01–EV.14** | EV + punto + dos cifras | Reglas de evidencia válida. | 21 §4.1; 22 §11 | EV.05 |
 | **T01–T22** | T + dos cifras | Herramientas del marco. | 03 §5 | T01 |
-| **P01–P31** | P + dos cifras | Plantillas del bloque H. | Bloque H; 01 §6.10 | P29 |
+| **P01–P71** | P + dos cifras | Plantillas del bloque H: P01–P31 por iniciativa (01 §6.10); P32–P71 de compañía, consejo, cumplimiento, terceros, auditoría e implantación. | Bloque H; 01 §6.10 | P29 |
 | **D1–D7** | D + número | Dimensiones de madurez. | 11 §2.1 | D6 |
 | **Niveles de madurez 0–5** | Número entero | Niveles de madurez. | 11 §2.2 | nivel 3 |
 | **S1–S4** | S + número | Severidad de incidentes de IA. | 37 §4.2 | S1 |
@@ -808,6 +808,13 @@ Equivalentes en inglés de los valores de la taxonomía:
 | **INC-AAAA-NNN** | Año + número correlativo | Incidentes de IA. | 37 §7.1 | INC-2026-006 |
 | **AUD-AAAA-NNN** | Año + número correlativo | Informes de auditoría de IA. | 38 §9.1 | AUD-2026-002 |
 | **H-NN** | H + guion + dos cifras, dentro de cada informe | Hallazgos de un informe de auditoría. | 38 §9.2 | H-01 |
+| **EXC-AAAA-NNN** | Año + número correlativo | Excepciones a la política o al marco. | 30 §7.4; P40 | EXC-2026-004 |
+| **DCI-AAAA-NNN** | Año + número correlativo | Declaraciones de independencia y de conflictos de interés. | 30 §12; P41 | DCI-2026-011 |
+| **PRV-AAAA-NNN** | Año de alta + número correlativo | Relación con un proveedor de IA (tercero y servicio) en el registro de proveedores. | 36 §9; P57 | PRV-2026-003 |
+| **SOL-AAAA-NNN · COM-AAAA-NNN** | Año + número correlativo | Solicitudes de herramienta nueva y comunicaciones de empleados sobre usos o incidentes de IA. | 31 §4; P43 | SOL-2026-017 |
+| **INF-AAAA-NNN** | Año + número correlativo | Informaciones y consultas a la representación de los trabajadores. | 50 §7; P46 | INF-2026-002 |
+| **PA-AAAA-NNN · Hnn** | Año + número correlativo; hallazgo dentro de la campaña | Campañas de pruebas adversarias y sus hallazgos. | 35 §8; P53 | PA-2026-001 · H03 |
+| **IDN-AAAA-NNN** | Año de alta + número correlativo | Identidades no humanas (agentes, cuentas de servicio, claves). | 35 §4.1; P54 | IDN-2026-009 |
 
 Reglas comunes:
 
@@ -823,11 +830,11 @@ Las antiguas numeraciones locales de los documentos 12 y 50 (P1–P5, S1–S8 y 
 
 | Código o numeración | Significado | Documento | Cómo se cita fuera | No confundir con |
 |---|---|---|---|---|
-| IT-P1–IT-P5 | Cinco preguntas de clasificación de la ambición (antes P1–P5) | 12 §3.1 | "IT-P4" o "pregunta IT-P4 del documento 12" | P01–P31 (plantillas) |
+| IT-P1–IT-P5 | Cinco preguntas de clasificación de la ambición (antes P1–P5) | 12 §3.1 | "IT-P4" o "pregunta IT-P4 del documento 12" | P01–P71 (plantillas) |
 | IT-S1–IT-S8 | Ocho señales del índice de transformación (antes S1–S8) | 12 §4.4 | "IT-S7" o "señal 7 del índice" | S1–S4 (severidad) |
 | IT-D1–IT-D3 | Condiciones de la declaración de transformación (antes D1–D3) | 12 §5.1 | "condición IT-D1" | D1–D7 (madurez) |
 | PER-D1–PER-D5 | Destinos de la capacidad liberada (antes D1–D5) | 50 §6.2; 23 §10.5 | "destino PER-D1 (Materializar)" | D1–D7 (madurez); PER-NN (indicadores) |
-| PER-PA–PER-PF | Perfiles de alfabetización en IA (antes P-A–P-F) | 50 §5.2 | "perfil PER-PD" | P01–P31 (plantillas); PER-NN (indicadores) |
+| PER-PA–PER-PF | Perfiles de alfabetización en IA (antes P-A–P-F) | 50 §5.2 | "perfil PER-PD" | P01–P71 (plantillas); PER-NN (indicadores) |
 | PER-NN · DAT-NN · CNC-NN · OPE-NN | Indicadores provisionales de personas, datos, conocimiento (CNC, antes CON) y operación | 50, 51, 52 | Por su código IND- según la tabla de correspondencia de 41 §21 | IND-\<FAM\>-NN; CNC-NN no se confunde con IND-CON-NN (consejo) |
 | CI-n · I-n | Conflictos de interés e incompatibilidades del modelo de gobierno | 30 §5, §12 | "conflicto CI-2 del documento 30" | — |
 | PAT, RN, RP, RT, RO, RR, AUD, OIA, CG, CIA… | Abreviaturas de responsables en columnas | 41 §3 | Nombre completo del rol | RT-\<CAT\>-NN (riesgos tipo) |
@@ -849,7 +856,7 @@ En nuevas versiones, los documentos **deberían** sustituir las numeraciones que
 | **E** | Medición y valor | 40–43 | Reglas de medición, indicadores, costes, realización de beneficios. |
 | **F** | Personas, datos y operación | 50–53 | Personas, datos y conocimiento, operación, construcción con IA. |
 | **G** | Consejo | 60–62 | Paquete y guía de conversación con el consejo, registro de recomendaciones y decisiones. |
-| **H** | Plantillas | P01–P31 | Evidencias de cada fase del ciclo de vida. |
+| **H** | Plantillas | P01–P71 | Evidencias de cada fase del ciclo de vida (P01–P31) y registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación (P32–P71). |
 | **I** | Herramientas | T01–T22 | Catálogo en el documento 03; herramientas en HTML con datos JSON. |
 | **J** | Adopción del marco | 90–93 | Implantación, guía para consultores, casos de aplicación, licencia. |
 
@@ -964,7 +971,7 @@ Abreviaturas del marco que no son siglas generales: **k€** miles de euros · *
 | **T04** | Determinación de intensidad | Usa los criterios Enterprise y la escala de la sección 4.6. |
 | **T05** | Clasificador de ambición | Usa los niveles y estados de ambición de la sección 4.5. |
 | **T06–T22** | Resto de herramientas | Usan las escalas de riesgo, apetito, madurez, severidad, no conformidades, terceros, índice y valor de la sección 4. |
-| **P01–P31** | Plantillas del bloque H | Usan los términos de la sección 3 y los códigos de la sección 6. Ninguna plantilla define términos propios. |
+| **P01–P71** | Plantillas del bloque H | Usan los términos de la sección 3 y los códigos de la sección 6. Ninguna plantilla define términos propios. |
 
 Las herramientas muestran los valores de las listas cerradas en español e inglés con los equivalentes de este documento.
 

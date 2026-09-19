@@ -138,3 +138,13 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | esfera principal · esfera secundaria | primary sphere · secondary sphere |
 | riesgo tipo (RT-<CAT>-NN) | typical risk |
 | decisiones sobre personas (criterio Enterprise) | decisions about people |
+| acta · orden del día · reglamento (del comité) | minutes · agenda · rules of procedure |
+| excepción · registro de excepciones | exception · exception register |
+| declaración de independencia · declaración de conflictos de interés | declaration of independence · declaration of conflicts of interest |
+| plantilla editable (Word) | editable template (Word) |
+| papeles de trabajo · ficha de hallazgo · plan anual de auditoría | working papers · finding sheet · annual audit plan |
+| cláusulas contractuales tipo · plan de salida · diligencia debida | model contract clauses · exit plan · due diligence |
+| pruebas adversarias · identidades no humanas · relación de componentes (SBOM) | adversarial testing · non-human identities · software bill of materials (SBOM) |
+| evaluación de impacto en protección de datos (EIPD) · evaluación de impacto en derechos fundamentales | data protection impact assessment (DPIA) · fundamental rights impact assessment (FRIA) |
+| plan de realización de beneficios · paquete de revisión de continuidad | benefits realisation plan · continuity review pack |
+| carta de encargo · plan de transferencia · nota de salida | engagement letter · transfer plan · exit note |

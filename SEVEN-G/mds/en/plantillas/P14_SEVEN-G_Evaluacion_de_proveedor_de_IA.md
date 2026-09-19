@@ -1,12 +1,12 @@
 # AI supplier assessment
 
-**Determines the requirement level of an AI supplier, assesses its capability, its guarantees and the dependency it creates, and checks that the contract includes the key clauses.**
+**Determines the requirement level of an AI supplier, summarises its due diligence assessment, the dependency it creates and its exit plan, and checks that the contract includes the key clauses.**
 
 | | |
 |---|---|
 | Document | Template P14 · AI supplier assessment |
-| Version | 0.1 (working draft) |
-| Date | 16-09-2026 |
+| Version | 0.2 (working draft) |
+| Date | 19-09-2026 |
 | Author | Fernando García · SEACHAD |
 | Status | Draft for review. |
 
@@ -18,18 +18,20 @@
 
 | Aspect | Guidance |
 |---|---|
-| **When it is used** | In phase 3, before G3, for each supplier that provides AI models, platforms, data or services to the initiative. It is reviewed before signing or renewing the contract, when the supplier changes its model or terms, and at the frequency set by the requirement level. |
+| **When it is used** | In phase 3, before G3, for each supplier that provides AI models, platforms, data or services to the initiative. It is reviewed before signing or renewing the contract, upon any reassessment trigger (36 §5) and at the frequency set by the requirement level. |
 | **Who completes it** | The AI Technical Owner, with procurement and the AI Risk Owner. Information security, data protection and legal counsel are consulted. |
 | **Who verifies it** | Lite: AI Risk Owner; if the AI Risk Owner has prepared the assessment, the AI Office or the AI Auditor verifies it. Enterprise: AI Auditor. |
-| **Who decides** | It is approved with G3: AI Sponsor with risk clearance (Lite) · AI Committee (Enterprise). |
+| **Who decides** | It is approved with G3, according to the requirement level (36 §4.2): N1, AI Product Owner with procurement clearance · N2, AI Sponsor with risk and data protection clearance · N3, AI Committee with clearance from risk, information security, data protection and legal. |
 | **Gate at which it is reviewed** | G3 · Feasibility; check of signed clauses at G5. |
-| **Tool** | T09 · AI supplier register. |
-| **Lite versus Enterprise** | The depth depends on the requirement level (N1, N2, N3), not only on the intensity. Lite may omit the fields marked **(Enterprise)** if the supplier is N1. |
+| **Tool** | T09 · AI supplier register (working format in P57). |
+| **Supporting documents** | P55 · Due diligence questionnaire (detail of the twelve blocks summarised in section 4) · P56 · Standard contractual clauses (model text of the clauses in section 5) · P57 · Supplier register and exit plan. |
+| **Lite versus Enterprise** | The depth depends on the requirement level (N1, N2, N3), not on the intensity (36 §2, principle 2). An N3 supplier normally implies Enterprise intensity (01 §9.2). |
 
 Completion rules:
 
-- The requirement level is determined by the **most demanding factor**.
-- The requirements by level in this template are **indicative**; the definitive ones are set in document 36.
+- The requirement level is determined by the **most demanding factor** (36 §4.1).
+- The requirements by level are those of document 36 §4.2: due diligence, security, contract, approval, audit, monitoring, exit, incidents and register.
+- This template **summarises** the assessment: the detail of the questions, answers and evidence is in P55.
 - *This document does not constitute legal advice.* References consulted in September 2026; their currency must be verified.
 
 ---
@@ -40,9 +42,10 @@ Completion rules:
 |---|---|---|
 | Initiative code | | IA-AAAA-NNN. |
 | AI systems affected | | Codes from P05. |
+| Supplier–service relationship code | | PRV-AAAA-NNN from the T09 register (P57). |
 | Supplier | | Registered name and country of establishment. |
 | Service or component assessed | | Model via API, platform, software with embedded AI, data, professional services. |
-| Sourcing option | | Build · Buy · Partner. |
+| Sourcing option | | Build · Buy · Adapt · Partner (36 §3.1). |
 | Document version | | |
 | Date | | DD-MM-AAAA. |
 | Author | | Name and role. |
@@ -51,12 +54,14 @@ Completion rules:
 
 ## 3. Requirement level
 
-| Factor | N1 Standard | N2 Enhanced | N3 Critical | Assessment |
+| Factor | N1 · Standard | N2 · Enhanced | N3 · Critical | Assessment |
 |---|---|---|---|---|
-| Service criticality | Support for non-critical internal tasks | Relevant process or with exposure to customers | Critical or important function, or subject to operational resilience regulation | N1 · N2 · N3 |
-| Data processed | No personal data or confidential information | Personal data or confidential information | Special categories, large volumes of personal data or critical confidential information | |
-| Autonomy | A0 Assistance or A1 Recommendation | A2 Supervised action | A3 Autonomous action | |
-| Substitutability | Replaceable within weeks without relevant impact | Replaceable with significant effort and cost | Hard to replace within a reasonable time frame | |
+| **Service criticality** | Internal process whose interruption would have an impact of 1–2 (document 33). | Relevant process with impact 3; direct exposure to customers; decisions about people. | Critical or important function (including the DORA definition where applicable); impact 4–5; high-risk system under the AI Act. | N1 · N2 · N3 |
+| **Data processed** | Public or non-sensitive internal data. | Personal data or confidential information. | Special categories of data, large-scale personal data, trade secrets or critical confidential information. | |
+| **Autonomy** | A0: the supplier's system assists. | A1, or A2 without effects on third parties, money, personal data or production. | A2 or A3 with effects on third parties, money, personal data or production systems. | |
+| **Substitutability** | Replaceable in less than 3 months without relevant cost. | Replaceable in 3 to 12 months or with relevant cost. | More than 12 months, cost above the materiality threshold M, or no alternative. | |
+
+The substitutability time frames are indicative and are approved in C2 (document 13).
 
 | Field | Content | Guidance |
 |---|---|---|
@@ -64,89 +69,67 @@ Completion rules:
 | Justification | | |
 | ICT third-party service provider supporting critical or important functions (DORA) | | Yes · No · Not applicable. Only entities subject to DORA. |
 
-*(illustrative example)* Supplier of a language model via API for the enquiries assistant: criticality N2 (exposure to customers), data N2 (personal data from orders), autonomy N1 (A0), substitutability N2. Level: **N2 Enhanced**.
+*(illustrative example)* Supplier of a language model via API for the enquiries assistant: criticality N2 (direct exposure to customers), data N2 (personal data from orders), autonomy N1 (A0), substitutability N2 (replaceable in about six months). Level: **N2 Enhanced**.
 
 ---
 
 ## 4. Supplier assessment
 
-Result per block: **Conformant · Conformant with observations · Nonconformant · Not assessed**.
+### 4.1 Result by due diligence block
 
-### 4.1 Capability and performance
+Completed from the summary in P55 §5, with the twelve blocks of document 36 §4.3. Result: **Conformant · Conformant with observations · Nonconformant · Not assessed**.
 
-| Field | Content | Result | Guidance |
-|---|---|---|---|
-| Performance in the use case | | | Results of in-house tests with representative data (P10), not only the supplier's figures. |
-| Model or service documentation | | | Intended purpose, known limitations, evaluation results, instructions for use. |
-| Version and change management | | | Advance notice of model changes, ability to pin a version, version deprecation. |
-| Service levels | | | Availability, response times, support. |
+| Block | Result | Observations |
+|---|---|---|
+| 1 · Identity and soundness | | |
+| 2 · Service and model | | |
+| 3 · Data | | |
+| 4 · Sub-processors and supply chain | | |
+| 5 · Security | | |
+| 6 · AI Act compliance | | |
+| 7 · Data protection | | |
+| 8 · Intellectual property | | |
+| 9 · Continuity | | |
+| 10 · Incidents | | |
+| 11 · Exit | | |
+| 12 · Ethics and responsible use | | |
+| Performance in in-house tests (P10) | | Results of in-house tests with representative data, not only the supplier's figures. |
 
-### 4.2 Data, privacy and intellectual property
+### 4.2 Dependency and exit plan
 
-| Field | Content | Result | Guidance |
-|---|---|---|---|
-| Use of the company's data | | | Whether it uses inputs, outputs or data to train or improve its models; it must be possible to opt out. |
-| Status as processor | | | Data processing agreement in accordance with the GDPR when it processes personal data on behalf of the company. |
-| Location and international transfers | | | Countries of processing and applicable safeguards. |
-| Sub-processors and supply chain | | | List, notification of changes and right to object. |
-| Retention and deletion | | | Periods and certification of deletion. |
-| Ownership of outputs and protection against claims | | | Ownership of the outputs and the supplier's commitments in the event of third-party intellectual property claims. |
-| Origin of the training data **(Enterprise)** | | | Available information on licences and provenance. |
-
-### 4.3 Security
-
-| Field | Content | Result | Guidance |
-|---|---|---|---|
-| Certifications and independent reports | | | For example, ISO/IEC 27001 or ISO/IEC 42001, with a scope that covers the service. |
-| AI-specific controls | | | Protection against prompt injection, isolation between customers, content filtering. |
-| Incident management and notification | | | Notification time limits compatible with the company's obligations. |
-| Identity and access **(Enterprise)** | | | Authentication, key management, access logs. |
-
-### 4.4 Regulatory compliance
-
-| Field | Content | Result | Guidance |
-|---|---|---|---|
-| Role of the supplier under the EU AI Act | | | Provider of the system, provider of a general-purpose AI model or other. |
-| Information it provides to enable compliance | | | Documentation and instructions the company needs according to its own role (P11). |
-| Compliance commitment | | | Declarations and cooperation with the company and with the authorities. |
-| Sector-specific requirements **(Enterprise)** | | | DORA, NIS2 or other regulation applicable to the company. |
-
-### 4.5 Dependency, continuity and exit
-
-| Field | Content | Result | Guidance |
-|---|---|---|---|
-| Concentration | | | Other company systems that depend on the same supplier (T09). |
-| Portability | | | Export formats for data, configurations, prompts and logs. |
-| Alternatives | | | Alternative suppliers or solutions identified. |
-| Supplier soundness and continuity **(Enterprise)** | | | Financial position, continuity plans, testing. |
-| Exit plan **(Enterprise)** | | | Steps, time frame and cost of replacement. Mandatory at N3. |
+| Field | Content | Guidance |
+|---|---|---|
+| Concentration | | Other company systems that depend on the same supplier (T09; 36 §7.2). |
+| Alternatives | | Alternative suppliers or solutions identified. |
+| **Exit required by the level** | | N1: guaranteed data export · N2: documented exit plan · N3: exit plan with an identified alternative and a documented rehearsal or test (36 §4.2). |
+| Exit plan | | Reference to the exit plan and, at N3, to the portability test in P57 §6 and §7. |
 
 ---
 
 ## 5. Key contractual clauses
 
-Status: **Included · Under negotiation · Not included · Not applicable**. Indicative requirement: **M** mandatory · **R** recommended · **—** not required.
+The sixteen clauses of document 36 §6. **Yes** = must be included · **Rec.** = recommended · **—** = not required. Status: **Present · Partial · Absent · Not applicable** (36 §9). The model text of each clause is in P56.
 
-| # | Clause | Minimum content | N1 | N2 | N3 | Status |
-|---|---|---|---|---|---|---|
-| 1 | Service description and service levels | Scope, availability, support, penalties. | M | M | M | |
-| 2 | Use of data | Prohibition or conditions on the use of data, inputs and outputs for training or improvement. | M | M | M | |
-| 3 | Data protection | Data processing agreement, sub-processors, transfers, assistance with rights and assessments. | M | M | M | |
-| 4 | Confidentiality | Scope and duration. | M | M | M | |
-| 5 | Security | Minimum controls, certifications and the obligation to maintain them. | R | M | M | |
-| 6 | Incident notification | Time limits, content and cooperation in the investigation. | R | M | M | |
-| 7 | Changes to the model or the service | Advance notice, pinned versions, right to terminate if the change affects compliance or performance. | R | M | M | |
-| 8 | Intellectual property | Ownership of outputs and protection against third-party claims. | R | M | M | |
-| 9 | Regulatory compliance | Information and cooperation for the obligations under the EU AI Act and other regulations. | R | M | M | |
-| 10 | Audit and access | Right of audit, reports and access for supervisors where appropriate. | — | R | M | |
-| 11 | Subcontracting | Authorisation, list and the supplier's liability for its subcontractors. | — | R | M | |
-| 12 | Location of processing | Permitted countries and notification of changes. | R | M | M | |
-| 13 | Continuity and resilience | Continuity plans and testing. | — | R | M | |
-| 14 | Exit and reversibility | Return of data, migration assistance, transition period, certified deletion. | R | M | M | |
-| 15 | Liability and insurance | Liability limits consistent with the risk; insurance. | R | R | M | |
-| 16 | Termination | Grounds, including regulatory or security breaches. | M | M | M | |
+| # | Clause | N1 | N2 | N3 | Status |
+|---|---|---|---|---|---|
+| 1 | Use of data for training | Yes | Yes | Yes | |
+| 2 | Confidentiality and data processing | Yes | Yes | Yes | |
+| 3 | Location and transfers | Yes | Yes | Yes | |
+| 4 | Security | Yes | Yes | Yes | |
+| 5 | Sub-processors | Rec. | Yes | Yes | |
+| 6 | Intellectual property and outputs | Rec. | Yes | Yes | |
+| 7 | Incident notification | Rec. | Yes | Yes | |
+| 8 | Model changes | Rec. | Yes | Yes | |
+| 9 | Service levels | — | Yes | Yes | |
+| 10 | Logs and traceability | — | Yes | Yes | |
+| 11 | Audit and access | — | Rec. | Yes | |
+| 12 | AI Act obligations along the value chain | Rec. | Yes | Yes | |
+| 13 | Transparency on AI features | Rec. | Yes | Yes | |
+| 14 | Continuity | — | Rec. | Yes | |
+| 15 | Exit and transition | Rec. | Yes | Yes | |
+| 16 | Termination | Rec. | Yes | Yes | |
 
-For entities subject to DORA, contracts with ICT third-party service providers must include the key contractual provisions required by that regulation, enhanced when the service supports critical or important functions.
+At N1 many clauses are not negotiable: they are checked in the standard terms and, if missing, the risk and who accepts it are recorded (36 §6; P56 §9). For entities subject to DORA, every N3 service is reviewed against Art. 30(3) of that regulation (36 §6.2).
 
 ---
 
@@ -157,10 +140,10 @@ For entities subject to DORA, contracts with ICT third-party service providers m
 | **Overall result** | | Conformant · Conformant with observations · Nonconformant. |
 | Observations and conditions | | What must be resolved, owner and deadline (before signature or before G5). |
 | Risks for P12 | | Risks in the TER category or others identified in the assessment. |
-| Review frequency | | Indicative: N1 every two years or on renewal; N2 annually; N3 annually and upon any relevant change. Document 36 sets the definitive frequency. |
+| Review frequency | | According to the level (36 §4.2): N1 annual review · N2 half-yearly review and service indicators · N3 quarterly review, monthly indicators and relationship governance meeting. |
 | Next review | | Date. |
 
-A **Nonconformant** result in blocks 4.2 or 4.3, or a mandatory clause not included, prevents the supplier from being used with production data.
+A **Nonconformant** result in blocks 3 (data), 5 (security) or 7 (data protection) of P55 prevents the supplier from being used with production data until it is resolved (P55 §5). Nor is it used with production data while a required clause (**Yes**) is absent without the risk being recorded and accepted by the competent body.
 
 ---
 
@@ -171,10 +154,10 @@ The formal G3 criteria are in document 21 (see criteria G3.xx) and the third-par
 | # | Check | Status |
 |---|---|---|
 | 1 | The requirement level is justified with the four factors. | Met · Not met · Not applicable · Pending |
-| 2 | Performance has been checked with in-house tests. | |
+| 2 | The twelve blocks have a result carried over from P55 and performance has been checked with in-house tests. | |
 | 3 | The supplier's use of data is resolved by contract. | |
-| 4 | The mandatory clauses for the level are included or under negotiation with a date before G5. | |
-| 5 | Dependency and exit have been assessed; at N3 there is an exit plan. | |
+| 4 | The required clauses for the level are present or under negotiation with a date before G5; absent ones have a recorded and accepted risk. | |
+| 5 | Dependency and exit have been assessed according to the level: at N2 there is a documented exit plan and at N3 an identified alternative and a documented test. | |
 | 6 | The risks identified have been carried over to P12. | |
 | 7 | The supplier is registered in T09 and in record P05. | |
 
@@ -186,9 +169,9 @@ The formal G3 criteria are in document 21 (see criteria G3.xx) and the third-par
 |---|---|---|---|---|
 | Prepares | AI Technical Owner | | | |
 | Consulted | Procurement · security · data protection · legal counsel | | | |
-| Issues clearance | AI Risk Owner | | | |
+| Issues clearance | The functions required by the level ("Decides" row) | | | |
 | Verifies | AI Risk Owner (Lite) · AI Auditor (Enterprise) | | | |
-| Decides | AI Sponsor with risk clearance (Lite) · AI Committee (Enterprise) | | | |
+| Decides | N1: AI Product Owner with procurement clearance · N2: AI Sponsor with risk and data protection clearance · N3: AI Committee with clearance from risk, information security, data protection and legal (36 §4.2) | | | |
 
 Segregation of duties: whoever negotiated the contract does not verify the assessment; anyone with a conflict of interest with the supplier declares it in P03.
 
@@ -206,4 +189,5 @@ Segregation of duties: whoever negotiated the contract does not verify the asses
 
 | Version | Date | Changes |
 |---|---|---|
-| 0.1 | 16-09-2026 | First version. N1–N3 requirement levels of the common specification §5.6, assessment by blocks and key contractual clauses. Requirements by level indicative until document 36. |
+| 0.1 | 16-09-2026 | First version. N1–N3 requirement levels of the common specification §5.6, assessment by blocks and key contractual clauses. |
+| 0.2 | 19-09-2026 | Aligned with document 36: decision and review by level N1–N3, factors, 12 due diligence blocks (P55), 16 clauses (P56) and exit plan (P57). |

@@ -232,21 +232,21 @@ Regulation (EU) 2024/1689 entered into force on 1 August 2024 and applies in sta
 
 | Obligation / requirement | Article or clause | Applies to | SEVEN-G phase or stage | Accountable role | Evidence (P-code or document) | Tool |
 |---|---|---|---|---|---|---|
-| Carry out the assessment before first use: processes, period and frequency of use, affected persons and groups, specific risks, human oversight measures and measures to be taken if risks materialise | Art. 27(1) | Bodies governed by public law, private entities providing public services and deployers of systems under Annex III, point 5(b) and (c); does not apply to Annex III area 2 | 3 (assessment), updated in 4 | AI Risk Owner; second line; AI Product Owner | P11 | T07 |
-| Update the assessment when any of its elements change | Art. 27(2) | Same | R6 and every change | AI Risk Owner | P11, P27 | T07, T08 |
-| Notify the market surveillance authority of the results using the prescribed form | Art. 27(3) | Same | 5 (before G5) | AI Risk Owner | P11, P23 | T07 |
-| Complement, without duplicating, the data protection impact assessment | Art. 27(4); GDPR Art. 35 | Same | 3 | AI Risk Owner; data protection officer | P11 | T07 |
+| Carry out the assessment before first use: processes, period and frequency of use, affected persons and groups, specific risks, human oversight measures and measures to be taken if risks materialise | Art. 27(1) | Bodies governed by public law, private entities providing public services and deployers of systems under Annex III, point 5(b) and (c); does not apply to Annex III area 2 | 3 (assessment), updated in 4 | AI Risk Owner; second line; AI Product Owner | P11, P48 | T07 |
+| Update the assessment when any of its elements change | Art. 27(2) | Same | R6 and every change | AI Risk Owner | P11, P48, P27 | T07, T08 |
+| Notify the market surveillance authority of the results using the prescribed form | Art. 27(3) | Same | 5 (before G5) | AI Risk Owner | P11, P48, P23 | T07 |
+| Complement, without duplicating, the data protection impact assessment | Art. 27(4); GDPR Art. 35 | Same | 3 | AI Risk Owner; data protection officer | P11, P48, P47 | T07 |
 
-It applies together with the high-risk requirements (2-12-2027 for Annex III); the European AI Office template is **pending confirmation**. Every Enterprise initiative involving decisions about people should apply this content in P11 even if not obliged to do so.
+It applies together with the high-risk requirements (2-12-2027 for Annex III); the European AI Office template is **pending confirmation**. Every Enterprise initiative involving decisions about people should apply this content in P11 and P48 even if not obliged to do so.
 
 ### 3.11 Transparency (Art. 50)
 
 | Obligation / requirement | Article or clause | Applies to | SEVEN-G phase or stage | Accountable role | Evidence (P-code or document) | Tool |
 |---|---|---|---|---|---|---|
-| Inform people that they are interacting with an AI system, unless this is obvious | Art. 50(1) | Providers of systems that interact with people | 4 (design), 5 (testing) | AI Product Owner | P17, P22 | T07 |
+| Inform people that they are interacting with an AI system, unless this is obvious | Art. 50(1) | Providers of systems that interact with people | 4 (design), 5 (testing) | AI Product Owner | P17, P22, P49 | T07 |
 | Mark synthetic audio, image, video or text content in a machine-readable format | Art. 50(2) (transitional period until 2-12-2026 for systems predating 2-08-2026) | Providers of generative systems | 4, 5; compliance plan in R6 | AI Technical Owner | P18, P22 | T07, T10 |
-| Inform people exposed to emotion recognition or biometric categorisation systems | Art. 50(3) | Deployers | 4, 6 | AI Product Owner; data protection officer | P17, P24 | T07 |
-| Disclose that content is a deep fake, and that text published to inform the public on matters of public interest has been generated or manipulated, unless subject to human review with editorial responsibility | Art. 50(4) | Deployers | 4, 6 | AI Product Owner | P17, P24 | T07 |
+| Inform people exposed to emotion recognition or biometric categorisation systems | Art. 50(3) | Deployers | 4, 6 | AI Product Owner; data protection officer | P17, P24, P49 | T07 |
+| Disclose that content is a deep fake, and that text published to inform the public on matters of public interest has been generated or manipulated, unless subject to human review with editorial responsibility | Art. 50(4) | Deployers | 4, 6 | AI Product Owner | P17, P24, P49 | T07 |
 | Provide the information clearly and at the latest at the time of the first interaction or exposure | Art. 50(5) | Providers and deployers | 5 (testing) | AI Product Owner | P22 | — |
 
 Supporting references: Commission guidelines on Art. 50 (20-07-2026) and code of practice on marking and labelling (section 3.3).
@@ -435,7 +435,7 @@ The profile describes risks that are unique to or exacerbated by generative AI a
 | Data protection by design and by default | Art. 25 | Controllers | Phase 4; verified at G4 | AI Technical Owner | P15, P16, P18 | T10 |
 | Records of processing activities | Art. 30 | Controllers and processors | Phase 4, before G5 | Data protection officer; AI Technical Owner | P16, P23 | T02 |
 | Notification of personal data breaches to the supervisory authority within 72 hours and, where there is a high risk, to data subjects | Arts. 33 and 34 | Controllers | Phase 6 (S1–S2) | AI Operations Owner; data protection officer | P26, P27 | T08 |
-| Data protection impact assessment where a high risk is likely (in particular, systematic and extensive evaluation based on automated processing) and prior consultation where appropriate | Arts. 35 and 36 | Controllers | Phase 3; updated in 4 and R6 | AI Risk Owner; data protection officer (advises and monitors) | P11 | T07 |
+| Data protection impact assessment where a high risk is likely (in particular, systematic and extensive evaluation based on automated processing) and prior consultation where appropriate | Arts. 35 and 36 | Controllers | Phase 3; updated in 4 and R6 | AI Risk Owner; data protection officer (advises and monitors) | P11, P47 | T07 |
 
 ### 6.2 EDPB guidelines and case law relevant to AI
 
@@ -624,6 +624,9 @@ Consultation date for all sources: 16-09-2026.
 | T02 · T03 · T06 · T08 · T09 · T10 | Inventory and EU registration · verification at *gates* · risks · incidents and notifications · value chain and third parties · cybersecurity and human oversight. |
 | T17 · T20 · T21 | Reporting to the board, training and corporate use. |
 | **P11 · Regulatory classification and impact assessments** | Main evidence of phase 3. |
+| **P47 · Data protection impact assessment** | Evidence for GDPR Arts. 35 and 36 (section 6.1). |
+| **P48 · Fundamental rights impact assessment** | Evidence for Art. 27 and its notification (section 3.10). |
+| **P49 · Transparency notices and instructions for use** | Evidence for Art. 50 (section 3.11). |
 | P02, P05 · P12–P18 · P21–P27 · P29 | Provisional classification · design requirements · conformity, operation and incidents · decisions and mapping changes. |
 
 ---

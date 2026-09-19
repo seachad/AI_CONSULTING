@@ -235,35 +235,35 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 |---|---|---|---|---|---|---|---|
 | **T06** | Risk matrix and register | Probability and impact assessment, heat map, inherent and residual risk, controls and their effectiveness, response, contingency and acceptance by the body for its level, with observations from the methodology (Critical without board approval, High without contingency, acceptance expired or by a lower body, review overdue) and CSV export for spreadsheets. | Phase 3, phase 6, portfolio | T01 module ("Risks" view and record tab) | 33 | 2 | Available v0.1. Documented with P12 and P13 |
 | **T07** | Regulatory classifier | Guided questionnaire for classification under the AI Act and the assessments required. | Phases 0 and 3 | HTML | 34 | 2 | Applied with P11 |
-| **T08** | Nonconformity and incident register | Full process with time limits and alerts. | Phase 6, C4 | T01 module | 37 | 2 | Applied with P26 and P27 |
-| **T09** | AI supplier register | Third parties, criticality, contracts, assessment and dependency. | Phases 3–4, C4 | T01 module | 36 | 3 | Applied with P14 |
-| **T10** | Agent security assessment | Identity, permissions, intent-based access control, kill switch, injection testing. | Phases 4–6 | Checklist in T03 | 35 | 3 | Applied with P18 and the [AG] criteria in document 22 |
+| **T08** | Nonconformity and incident register | Full process with time limits and alerts. | Phase 6, C4 | T01 module | 37 | 2 | Applied with P50 (nonconformity register), P51 (notifications and communications) and P52 (root cause), together with P26 and P27 |
+| **T09** | AI supplier register | Third parties, criticality, contracts, assessment and dependency. | Phases 3–4, C4 | T01 module | 36 | 3 | Applied with P57 (supplier register and exit plan), P55 (due diligence), P56 (contract clauses) and P14 |
+| **T10** | Agent security assessment | Identity, permissions, intent-based access control, kill switch, injection testing. | Phases 4–6 | Checklist in T03 | 35 | 3 | Applied with P18, P53 (adversarial testing), P54 (non-human identities and components) and the [AG] criteria in document 22 |
 
 ### 5.3 Value and measurement
 
 | Code | Tool | Purpose | Where it is used | Format | Depends on | Priority | Status |
 |---|---|---|---|---|---|---|---|
-| **T11** | Value hypothesis canvas and calculator | Baseline, formula, attribution method, stop criteria. | Phase 2 | HTML and spreadsheet template | 40 | 2 | Applied with P08 and P09 |
-| **T12** | Value realisation tracking | Validated, declared and estimated value by period and by use case. | Phases 6–7, C4 | T01 module | 40, 43 | 2 | Applied with P28 |
-| **T13** | Cost calculator per use case | Analytical allocation of licences, model consumption, compute and people. | Phases 3 and 6 | Spreadsheet template | 42 | 3 | Applied with document 42 |
+| **T11** | Value hypothesis canvas and calculator | Baseline, value lines with formula (F1), annual net value, NPV, ROI, payback and F3 with the C2 horizon and rate; scenarios; C2 economic criterion as information; imports the initiative from T01. Documented with P08, P09 and P10. | Phases 2, 3 and 7 | HTML + JSON; CSV export | 40 | 2 | Available v0.1 |
+| **T12** | Value realisation tracking | Validated, declared and estimated value by period and by use case. | Phases 6–7, C4 | T01 module | 40, 43 | 2 | Applied with P28 and P62 (benefits realisation plan) |
+| **T13** | Cost calculator per use case | Full and incremental cost, total cost of ownership, allocation of shared costs, consumption forecast with alerts, cost per unit, cost of stopping and reconciliation. Documented with P10 and P63. | Phases 3 and 6 | Module of T11 ("Cost per use case" view); CSV export | 42 | 3 | Available v0.1 |
 | **T14** | Transformation index calculator | Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the T01 register JSON. | C1, C4, C5 | HTML + JSON | 12 | 2 | Available v0.1 |
 
 ### 5.4 Strategy and board
 
 | Code | Tool | Purpose | Where it is used | Format | Depends on | Priority | Status |
 |---|---|---|---|---|---|---|---|
-| **T15** | Maturity diagnosis | 0–5 questionnaire by dimension with evidence and report. | C1, C5 | HTML with report | 11 | 2 | Applied with document 11 |
+| **T15** | Maturity diagnosis | 84-question questionnaire with evidence and verification; level by dimension and overall level capped by D1 and D6; comparison between assessments and report for the board. Template P34. | C1, C5 | HTML + JSON; CSV export | 11 | 2 | Available v0.1 |
 | **T16** | Portfolio sphere map | Heat map of spheres × ambition levels with investment and value. | C2, C3 | Board dashboard view | 10 | 2 | Applied with document 10 |
 | **T17** | Board AI dashboard | Oversight: value, cost, risk, compliance, incidents, agility, adoption. | C4 | Full and mobile HTML + JSON | 60 | 1 | Available. Fed from T01 through the connector `herramientas/T17_panel_consejo`: register (JSON) plus `config_panel.json` (indicator thresholds and lifecycle) → dashboard JSON → full and mobile dashboard, with a funnel and time per stage as in a CRM |
 | **T18** | Board recommendations register | Recommendations with persistent identifier, status, evidence and assessment. | C4 | HTML + JSON | 62 | 1 | Available. The T17 connector generates the register from the recommendations in T01 |
-| **T19** | AI thesis and risk appetite template | Board decision document, with thresholds and reference time limits. | C2 | Document template | 13 | 3 | Applied with document 13 |
+| **T19** | AI thesis and risk appetite template | Board decision document, with thresholds and reference time limits. | C2 | Document template | 13 | 3 | Applied with P35 (AI thesis and risk appetite) |
 
 ### 5.5 People and operations
 
 | Code | Tool | Purpose | Where it is used | Format | Depends on | Priority | Status |
 |---|---|---|---|---|---|---|---|
-| **T20** | Adoption and capacity plan | Adoption, training and reassignment of released capacity. | Phases 4–7 | Template and T01 module | 23, 50 | 3 | Applied with P20 |
-| **T21** | Corporate AI use monitor | Assigned and active licences, unauthorised use, data leakage controls. | C4 | Board dashboard view | 31 | 3 | Applied with document 31 |
+| **T20** | Adoption and capacity plan | Adoption, training and reassignment of released capacity. | Phases 4–7 | Template and T01 module | 23, 50 | 3 | Applied with P20 and P45 (AI literacy and training plan and register) |
+| **T21** | Corporate AI use monitor | Assigned and active licences, unauthorised use, data leakage controls. | C4 | Board dashboard view | 31 | 3 | Applied with P43 (catalogue of authorised tools and requests) |
 | **T22** | Retirement manager | Retirement plan, replacement, data and models, communication. | Phase 7 | T01 module | 14 | 3 | Applied with P30 |
 
 ---
@@ -298,3 +298,4 @@ Working rule: **every document that defines a process involving a register, a ca
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the initiative register as a managed funnel, with its taxonomy, events, metrics and reference time limits; the common data model; the catalogue of 22 tools; and the build order. |
+| 0.2 | 19-09-2026 | Catalogue brought up to date: T11 (with T13 as a module) and T15 available; tools without an application of their own are applied with their corresponding templates P32–P71 (D68). |

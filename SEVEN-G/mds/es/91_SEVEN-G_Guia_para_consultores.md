@@ -97,7 +97,7 @@ Las duraciones son orientativas y dependen del tamaño de la compañía, del nú
 | **Cuándo** | La compañía no sabe con certeza qué IA tiene, cuánto aporta ni qué riesgos asume; o el consejo quiere un punto de partida antes de decidir. |
 | **Alcance** | Inventario inicial de sistemas de IA (incluidos los de terceros y el uso corporativo); evaluación de madurez D1–D7 con evidencia; mapa de esferas actual; perfil del índice de transformación; valor por estado y coste recurrente de los casos en producción; principales riesgos y carencias. |
 | **Fuera de alcance** | Diseño de la tesis de IA, construcción de soluciones, clasificación regulatoria definitiva (requiere criterio jurídico). |
-| **Entregables** | Informe de diagnóstico · Inventario inicial (T02) · Diagnóstico de madurez con evidencias (T15) · Perfil del índice de transformación (T14) · Mapa de esferas (T16) · Resumen de una página para el consejo (60 §4.2). |
+| **Entregables** | Informe de diagnóstico (P33) · Inventario inicial (T02) · Diagnóstico de madurez con evidencias (T15) · Perfil del índice de transformación (T14) · Mapa de esferas (T16) · Resumen de una página para el consejo (60 §4.2). |
 | **Roles del tercero** | Responsable del diagnóstico · Especialista en valor y control de gestión · Especialista en riesgo y cumplimiento · Revisor de calidad no implicado en el trabajo de campo. |
 | **Roles de la compañía** | Alta dirección que encarga · Interlocutor único · Control de gestión (validación de cifras) · Riesgos y cumplimiento · Tecnología y datos. |
 | **Criterio de calidad** | Cada nivel de madurez asignado tiene evidencia enlazada; las ausencias figuran como *sin dato*; el valor distingue validado, declarado y estimado. |
@@ -109,7 +109,7 @@ Las duraciones son orientativas y dependen del tamaño de la compañía, del nú
 | **Cuándo** | La compañía ha decidido adoptar SEVEN-G y quiere una primera implantación (01 §5.3; documento 90). |
 | **Alcance** | **Mes 1:** diagnóstico (M1). **Mes 2:** riesgos y oportunidades por esfera con responsable, impacto económico y plazo; propuesta de tesis de IA, ambición y apetito de riesgo. **Mes 3:** estructura de gobierno (órganos, roles, incompatibilidades, umbrales, *gates*, plazos de referencia, métricas y ritmo de reporte); cartera inicial; registro de iniciativas y registro de recomendaciones en funcionamiento; primer paquete para el consejo. |
 | **Fuera de alcance** | Verificación independiente de los *gates* que el propio tercero ayude a preparar; decisiones de los órganos. |
-| **Entregables** | Los de M1 · Propuesta de tesis de IA y apetito de riesgo (T19) · Política corporativa de IA (documento 31) · Modelo de gobierno con asignación de roles · Cartera priorizada · Registro de iniciativas (T01) y de recomendaciones (T18) con datos reales · Plan de regularización de los sistemas existentes (01 §14) · Primer paquete trimestral (documento 60). |
+| **Entregables** | Los de M1 · Propuesta de tesis de IA y apetito de riesgo (T19) · Política corporativa de IA (documento 31) · Modelo de gobierno con asignación de roles · Cartera priorizada · Registro de iniciativas (T01) y de recomendaciones (T18) con datos reales · Plan de regularización de los sistemas existentes (01 §14; P36 §9) · Primer paquete trimestral (documento 60). |
 | **Roles del tercero** | Director de implantación · Especialistas de valor, riesgo y regulación, y tecnología y datos · Apoyo a la oficina de IA · Revisor de calidad. |
 | **Roles de la compañía** | Patrocinador ejecutivo de la implantación · Futura oficina de IA (debe participar desde el primer día) · Comité de IA en constitución · Secretaría del consejo · Control de gestión · Riesgos, cumplimiento, protección de datos y seguridad · Auditoría interna (informada). |
 | **Criterio de calidad** | Al terminar, la compañía puede operar el ciclo sin el tercero: la oficina de IA ha preparado al menos una decisión de *gate* y el primer paquete con apoyo, no por delegación. |
@@ -121,7 +121,7 @@ Las duraciones son orientativas y dependen del tamaño de la compañía, del nú
 | **Cuándo** | El consejo, la comisión delegada o auditoría interna quieren una opinión independiente; la compañía quiere verificar su declaración de aplicación (01 §14); se requiere una revisión tras un incidente relevante. |
 | **Alcance** | Verificación de las siete condiciones de 01 §14; revisión por muestreo de decisiones de *gate* (validación dual, separación de funciones, evidencias previas a la decisión); revisión del inventario y la clasificación; revisión de la aplicación de las reglas de medición en el paquete del consejo; revisión del proceso de no conformidades; revisión del registro de recomendaciones y de la independencia de las valoraciones. |
 | **Fuera de alcance** | Diseñar o implantar las correcciones; emitir certificaciones (sección 6.3). |
-| **Entregables** | Plan de auditoría con alcance, criterios y muestra · Papeles de trabajo con evidencias · Informe con conclusión **Conforme**, **Conforme con observaciones** o **No conforme** · No conformidades detectadas clasificadas como menor, mayor o crítica · Recomendaciones para el registro (documento 62). |
+| **Entregables** | Plan de auditoría con alcance, criterios y muestra (P58) · Papeles de trabajo con evidencias (P59) · Informe (P60) con conclusión **Conforme**, **Conforme con observaciones** o **No conforme** · No conformidades detectadas clasificadas como menor, mayor o crítica · Recomendaciones para el registro (documento 62). |
 | **Roles del tercero** | Responsable de auditoría · Auditores con experiencia en IA · Revisor de calidad. Ninguno puede haber participado en la implantación o en el acompañamiento del ámbito auditado (sección 5). |
 | **Roles de la compañía** | Órgano que encarga (comisión delegada o auditoría interna) · Interlocutor · Responsables de los ámbitos auditados. |
 | **Criterio de calidad** | Criterios, muestra y limitaciones declarados; cada hallazgo con evidencia; conclusión coherente con los hallazgos. Se sigue el marco de auditoría de IA (documento 38). |
@@ -145,7 +145,7 @@ Las duraciones son orientativas y dependen del tamaño de la compañía, del nú
 | **Cuándo** | La compañía ha implantado el marco y necesita capacidad adicional para operarlo mientras desarrolla la propia. |
 | **Alcance** | Apoyo a la oficina de IA: mantenimiento del registro de iniciativas y del inventario, preparación de evidencias con los equipos, cálculo de métricas del embudo, preparación del paquete trimestral, apoyo metodológico a las revisiones de continuidad y a C5. |
 | **Fuera de alcance** | Verificación de *gates* de iniciativas en las que el tercero participa; decisiones; valoración independiente de recomendaciones cuya ejecución apoya. |
-| **Entregables** | Registros actualizados · Métricas del embudo mensuales · Borradores de paquete trimestral para revisión de la oficina de IA · Plan de transferencia con fecha de salida o de reducción del servicio. |
+| **Entregables** | Registros actualizados · Métricas del embudo mensuales · Borradores de paquete trimestral para revisión de la oficina de IA · Plan de transferencia (P71) con fecha de salida o de reducción del servicio. |
 | **Roles del tercero** | Responsable del servicio · Analistas de cartera y medición. |
 | **Roles de la compañía** | Oficina de IA (responsable del resultado) · Comité de IA · Control de gestión. |
 | **Criterio de calidad** | La oficina de IA de la compañía firma los entregables; existe un plan de transferencia con hitos; el servicio se revisa cada año. |
@@ -186,7 +186,7 @@ Después de prestar un servicio incompatible, el tercero **debería** dejar tran
 
 ### 5.5 Declaración de independencia
 
-Al inicio de todo servicio M3 o M4, y cuando cambie la situación, el tercero entrega una declaración escrita con: servicios prestados al cliente y a su grupo en los últimos tres años, relaciones con proveedores relevantes, esquema de honorarios, personas asignadas y ausencia de incompatibilidades según la sección 5.2.
+Al inicio de todo servicio M3 o M4, y cuando cambie la situación, el tercero entrega una declaración escrita con: servicios prestados al cliente y a su grupo en los últimos tres años, relaciones con proveedores relevantes, esquema de honorarios, personas asignadas y ausencia de incompatibilidades según la sección 5.2. Se usa P41, modelo C.
 
 ---
 
@@ -221,7 +221,7 @@ La declaración de 01 §14 es una **autodeclaración verificable**: la hace la p
 - No convierte la declaración en una certificación ni otorga ningún sello.
 - No compromete al autor del marco.
 
-Modelo de declaración de aplicación:
+Modelo de declaración de aplicación (plantilla P61):
 
 | Campo | Contenido |
 |---|---|
@@ -268,7 +268,7 @@ Modelo de declaración de aplicación:
 
 ### 7.3 Salida del servicio
 
-Al terminar cualquier modelo, el tercero entrega: registros y datos en formato abierto, relación de evidencias y su ubicación, decisiones y recomendaciones pendientes con responsable, y una nota de riesgos abiertos. La compañía no debe necesitar al tercero para leer o mantener nada de lo entregado.
+Al terminar cualquier modelo, el tercero entrega: registros y datos en formato abierto, relación de evidencias y su ubicación, decisiones y recomendaciones pendientes con responsable, y una nota de riesgos abiertos. La compañía no debe necesitar al tercero para leer o mantener nada de lo entregado. Se documenta con P71.
 
 ---
 
@@ -304,6 +304,15 @@ Al terminar cualquier modelo, el tercero entrega: registros y datos en formato a
 | T19 | Plantilla de tesis de IA y apetito de riesgo | M2 |
 | P03 | Registro de asignación de roles | M2, M3 (incompatibilidades) |
 | P29 | Registro de decisión de *gate* | M3 (muestreo) |
+| P33 | Informe de diagnóstico C1 | M1, M2 |
+| P36 | Plan de cartera C3 | M2 (plan de regularización) |
+| P41 | Declaraciones de independencia y conflictos de interés | M3, M4 (modelo C) |
+| P58 | Plan anual de auditoría de IA | M3 |
+| P59 | Papeles de trabajo de auditoría | M3 |
+| P60 | Informe de auditoría y fichas de hallazgo | M3 |
+| P61 | Declaración de aplicación de SEVEN-G | M2, M3 |
+| P70 | Propuesta y carta de encargo | M1, M2, M3, M4, M5 |
+| P71 | Plan de transferencia y nota de salida | M1, M2, M3, M4, M5 |
 
 ---
 

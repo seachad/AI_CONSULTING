@@ -81,7 +81,7 @@ Rules:
 | On whose behalf it acts | | On behalf of a specific user (delegation) · On behalf of the company (process). If it acts on behalf of a user, never with more permissions than that user. |
 | Credential management | | Secrets vault; no credentials in prompts or code; rotation. |
 | Revocation | | How and how quickly credentials are revoked; who can do so. |
-| Periodic review of the identity and its permissions **(Enterprise)** | | Frequency and owner. |
+| Periodic review of the identity and its permissions **(Enterprise)** | | Frequency and owner. Recorded in the non-human identity inventory (P54). |
 
 ---
 
@@ -182,7 +182,7 @@ By default, a sensitive action without validation **is cancelled**; it is never 
 | | | | | | | |
 | | | | | | | |
 
-Tests should be performed by people outside the team that builds. A *Failed* test on a critical control prevents the security sign-off in P23.
+Tests should be performed by people outside the team that builds. A *Failed* test on a critical control prevents the security sign-off in P23. The plan and report of adversarial testing campaigns are documented in P53.
 
 ---
 

@@ -231,7 +231,7 @@ Para calcular el neto adicional por euro de una ampliación del caso D, el coste
 
 ### 8.1 Presupuesto y previsión
 
-Cada caso con costes variables tiene un **presupuesto de consumo** mensual y anual aprobado en G5 y revisado en R6.
+Cada caso con costes variables tiene un **presupuesto de consumo** mensual y anual aprobado en G5 y revisado en R6. El presupuesto y su conciliación con la facturación se documentan en P63.
 
 **Previsión de cierre del mes = consumo acumulado ÷ días transcurridos × días del mes**
 
@@ -362,7 +362,7 @@ Las diferencias se explican (periodificaciones, facturas pendientes) o se corrig
 
 ## 12. Herramienta T13 · Calculadora de costes por caso
 
-T13 se entrega como plantilla de hoja de cálculo (03 §5.3) y exporta a T01 y al panel del consejo.
+T13 es un módulo de la calculadora T11 (vista «Costes por caso», HTML sin servidor, 03 §5.3): exporta CSV (hoja de cálculo) y JSON con los valores esperados para T01. El presupuesto de consumo, las claves de reparto y la conciliación se documentan con P63.
 
 | Módulo | Entradas | Cálculos | Salidas |
 |---|---|---|---|
@@ -394,6 +394,7 @@ Validaciones mínimas de T13: ningún importe sin categoría ni componente; ning
 | **P20** | Plan de adopción y capacidad | Coste de adopción. |
 | **P25** | Configuración de monitorización y alertas | Alertas de consumo. |
 | **P30** | Decisión de escalado o retirada | Coste de retirada y de parar. |
+| **P63** | Presupuesto de consumo y conciliación de costes | Presupuesto de consumo, previsión, alertas y conciliación con la facturación (sección 8). |
 
 ---
 

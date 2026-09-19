@@ -482,7 +482,7 @@ Codes and names from the typical risk catalogue in document 33; two of these ris
 
 ## 15. Associated tools and templates
 
-This document does not create a new tool. The dataset record and the knowledge source inventory are implemented in the **data catalogue that the company already uses** or, if none exists, as annexes to P16 and as system attributes in T02.
+This document does not create a new tool. The dataset record and the knowledge source inventory are implemented in the **data catalogue that the company already uses** or, if none exists, in template P64 and as system attributes in T02.
 
 | Code | Name | Use in this document |
 |---|---|---|
@@ -493,10 +493,11 @@ This document does not create a new tool. The dataset record and the knowledge s
 | **P11** | Regulatory classification and impact assessments | Legal basis, data protection impact assessment, data for detecting bias. |
 | **P14** | AI supplier assessment | Use of prompts and data by the supplier; copyright policy of general-purpose models. |
 | **P15** | Architecture record | Licences for components and models. |
-| **P16** | Data and model lineage | Main template of this document; includes the dataset record and the source inventory as annexes. |
+| **P16** | Data and model lineage | Main template of this document; uses the records and the source inventory in P64. |
 | **P18** | Security design | Retrieval and agent permissions. |
 | **P22** | Validation and pilot results | Quality, bias, data leakage and permission testing. |
 | **P25** | Monitoring and alert configuration | Data quality and validity thresholds. |
+| **P64** | Dataset record and knowledge source inventory | Record of each dataset and inventory of knowledge sources, if the company has no data catalogue. |
 
 ---
 

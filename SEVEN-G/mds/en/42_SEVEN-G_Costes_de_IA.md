@@ -231,7 +231,7 @@ To calculate the additional net value per euro of an extension of use case D, th
 
 ### 8.1 Budget and forecast
 
-Each use case with variable costs has a monthly and annual **consumption budget** approved at G5 and reviewed at R6.
+Each use case with variable costs has a monthly and annual **consumption budget** approved at G5 and reviewed at R6. The budget and its reconciliation with invoicing are documented in P63.
 
 **Month-end forecast = cumulative consumption ÷ days elapsed × days in the month**
 
@@ -362,7 +362,7 @@ Differences are explained (accruals, pending invoices) or corrected before the n
 
 ## 12. Tool T13 · Cost calculator per use case
 
-T13 is delivered as a spreadsheet template (03 §5.3) and exports to T01 and to the board dashboard.
+T13 is a module of the T11 calculator ("Costs per use case" view, serverless HTML, 03 §5.3): it exports CSV (spreadsheet) and JSON with the expected values for T01. The consumption budget, the allocation keys and the reconciliation are documented with P63.
 
 | Module | Inputs | Calculations | Outputs |
 |---|---|---|---|
@@ -394,6 +394,7 @@ Minimum T13 validations: no amount without a category and component; no shared c
 | **P20** | Adoption and capacity plan | Adoption cost. |
 | **P25** | Monitoring and alert configuration | Consumption alerts. |
 | **P30** | Scaling or retirement decision | Retirement cost and cost of stopping. |
+| **P63** | Consumption budget and cost reconciliation | Consumption budget, forecast, alerts and reconciliation with invoicing (section 8). |
 
 ---
 

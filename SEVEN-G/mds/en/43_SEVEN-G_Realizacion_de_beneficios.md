@@ -107,7 +107,7 @@ flowchart LR
 
 ### 4.1 Content
 
-The plan forms part of template P28 and is recorded in T12. In Lite, the fields marked **(Enterprise)** may be omitted.
+The plan is documented in template P62 and recorded in T12; P28 captures its tracking by period. In Lite, the fields marked **(Enterprise)** may be omitted.
 
 | Block | Field | Guidance |
 |---|---|---|
@@ -308,7 +308,7 @@ In Enterprise, the intermediate quarterly R6 reviews continue (01 §6.8). In Lit
 
 ### 8.3 Outcome
 
-Each review produces a **short report** with conclusions, actions, owners and dates, recorded in T01 as an event and linked in T12. It is prepared by the AI Office with the AI Product Owner; it is approved by the sponsor (Lite) or the AI Committee (Enterprise). The lessons are incorporated into the portfolio's lessons learned register.
+Each review produces a **short report** with conclusions, actions, owners and dates, recorded in T01 as an event and linked in T12. It is prepared by the AI Office with the AI Product Owner; it is approved by the sponsor (Lite) or the AI Committee (Enterprise). If the actions change the curve, the owners or the enablers, the realisation plan (P62) is updated. The lessons are incorporated into the portfolio's lessons learned register (P37 §9).
 
 ---
 
@@ -447,7 +447,7 @@ The value audit verifies that the value figures presented to the AI Committee an
 | Double counting or released capacity added to net value with an impact on decisions of the committee or the board | Major nonconformity. |
 | Deliberate alteration of figures or of stop criteria | At least a major nonconformity; reported to the board committee. |
 
-When a finding affects figures already presented to the board, the AI Office presents at the next meeting the **corrected figure alongside the one presented**, with the explanation. The value audit report is incorporated into C5.
+When a finding affects figures already presented to the board, the AI Office presents at the next meeting the **corrected figure alongside the one presented**, with the explanation. The value audit report is incorporated into C5. Findings are documented with the record in P60 §8.1.
 
 ---
 
@@ -464,7 +464,8 @@ When a finding affects figures already presented to the board, the AI Office pre
 | **P08 · P09** | Value hypothesis canvas · Baseline | Reference for the plan. |
 | **P20** | Adoption and capacity plan | Enabling changes and destination of capacity. |
 | **P22** | Validation and pilot results | Value measured at G5. |
-| **P28** | Value realisation tracking | Plan and tracking by period. |
+| **P28** | Value realisation tracking | Tracking by period. |
+| **P62** | Benefits realisation plan | Realisation plan: curve, owners and enablers (section 4). |
 | **P29** | *Gate* decision record | R6 and G7 decisions. |
 | **P30** | Scaling or retirement decision | Value evidence at G7. |
 

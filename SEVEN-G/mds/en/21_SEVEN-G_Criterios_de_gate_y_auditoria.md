@@ -304,8 +304,8 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | G3.17 | [GEN] The RT-GEN and RT-SEG typical risks are assessed: direct and indirect prompt injection, information leakage, erroneous or fabricated content, excessive permissions and unauthorised actions. | P12 | Yes ◆ | Yes | Yes | — |
 | G3.18 | [GEN] The target autonomy level (A0–A3) is proposed and justified; if it is A2 or A3 with an effect on third parties, money, personal data or production systems, the intensity is Enterprise. | P04 · P12 | Yes ◆ | Yes | Yes | — |
 | G3.19 | [GEN] The evaluation approach is defined: representative test sets, quality and security metrics and acceptance thresholds. | P10 | Conditionable | Simpl. | Yes | — |
-| G3.20 | [TER] Each supplier is assessed at the requirement level that corresponds to it (N1–N3): security, processing and location of data, use of data for training, intellectual property, continuity, dependency and exit strategy. | P14 · T09 | Yes | Simpl. | Yes | — |
-| G3.21 | [TER] The minimum contractual terms are set as a procurement requirement: confidentiality, prohibition on using the data for other purposes, incident notification, right to audit or equivalent reports (N2–N3) and return or deletion of data on termination. | P14 | Yes ◆ | Yes | Yes | — |
+| G3.20 | [TER] Each supplier is assessed at the requirement level that corresponds to it (N1–N3): security, processing and location of data, use of data for training, intellectual property, continuity, dependency and exit strategy. | P14 · P55 · T09 | Yes | Simpl. | Yes | — |
+| G3.21 | [TER] The minimum contractual terms are set as a procurement requirement: confidentiality, prohibition on using the data for other purposes, incident notification, right to audit or equivalent reports (N2–N3) and return or deletion of data on termination. | P14 · P56 | Yes ◆ | Yes | Yes | — |
 | G3.22 | [TER] The supplier provides, or undertakes to provide, the documentation that regulation requires of it and that the company needs to meet its own obligations. | P14 · P11 | Conditionable | Rec. | Yes | — |
 
 **Specific rules.** Prohibited practices never get past this phase (01 §6.5). A Critical residual risk without the approval in G3.12 blocks G3. **Pivot** is admissible when the hypothesis does not hold but a reasonable alternative exists.
@@ -344,7 +344,7 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | G4.19 | [AG] Sensitive or irreversible actions require prior human validation according to the approved autonomy level. | P17 | Yes ◆ | Yes | Yes | — |
 | G4.20 | [GEN] There are defences against prompt injection and information leakage: separation between instructions and data, external content treated as untrusted, input and output filtering and restriction of tools. | P18 · T10 | Yes ◆ | Yes | Yes | — |
 | G4.21 | [GEN] The evaluation set and its thresholds (quality, grounding of responses, harmful content and security) are approved before building. | P22 | Conditionable | Simpl. | Yes | — |
-| G4.22 | [TER] The clauses required in G3.21 are incorporated into the contract or the draft under negotiation, and the integration with the supplier is documented. | P14 · P15 | Conditionable | Yes | Yes | — |
+| G4.22 | [TER] The clauses required in G3.21 are incorporated into the contract or the draft under negotiation, and the integration with the supplier is documented. | P14 · P56 · P15 | Conditionable | Yes | Yes | — |
 
 **Specific rules.** In Lite, G4 and G5 may be resolved in the same session if each criterion is assessed and recorded separately. High-risk classification implies Enterprise intensity, which is why G4.14 has no Lite column.
 
@@ -380,7 +380,7 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | G5.17 | The incident response plan defines severities S1–S4, escalation and applicable regulatory notifications (serious AI incident, data protection, DORA or NIS2) with their time limits. | P26 · T08 | Yes ◆ | Simpl. | Yes | — |
 | G5.18 | The operations manual is available and accepted by the operations owner. | P24 | Conditionable | Simpl. | Yes | — |
 | G5.19 | Users are trained and there is evidence of AI literacy among the staff who use or oversee the system. | P20 | Conditionable | Yes | Yes | — |
-| G5.20 | [TER] The contract is signed with the required clauses and the supplier appears in the supplier register. | P14 · T09 | Yes ◆ | Yes | Yes | — |
+| G5.20 | [TER] The contract is signed with the required clauses and the supplier appears in the supplier register. | P14 · P56 · P57 · T09 | Yes ◆ | Yes | Yes | — |
 | G5.21 | Value tracking is configured (frequency, source and validation owner) and the pilot results are recorded with their status (validated, declared or estimated). | P28 · T12 | Conditionable | Simpl. | Yes | — |
 | G5.22 | The conditions from previous *gates* are closed or, if they do not affect critical controls, within their time limit. | P29 · T03 | Yes | Yes | Yes | — |
 | G5.23 | Go-live is signed off: in Lite, with risk clearance; in Enterprise, with multi-level sign-off and no veto in force (section 9). | P23 · T03 | Yes ◆ | Yes | Yes | — |
@@ -411,7 +411,7 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | R6.09 | The risk register is updated and new risks are assessed and accepted at the corresponding level. | P12 · T06 | Conditionable | Simpl. | Yes | — |
 | R6.10 | There is evidence that the critical controls work: human oversight exercised, logs retained and stop mechanism available. | P25 · P17 | Yes ◆ | Yes | Yes | — |
 | R6.11 | [AG] Permissions and credentials, intent logs and blocked or anomalous actions have been reviewed, and the kill switch has been tested in the period. | P18 · P27 · T10 | Yes ◆ | Yes | Yes | — |
-| R6.12 | [TER] Supplier changes (model, terms, sub-processors), its incidents and compliance with the contract have been reviewed. | P14 · T09 | Conditionable | Simpl. | Yes | — |
+| R6.12 | [TER] Supplier changes (model, terms, sub-processors), its incidents and compliance with the contract have been reviewed. | P14 · P57 · T09 | Conditionable | Simpl. | Yes | — |
 | R6.13 | Post-market monitoring is carried out where regulation requires it. | P25 · P11 | Yes ◆ | — | Yes | — |
 | R6.14 | Adoption is measured against the target. | P20 · P28 | Conditionable | Yes | Yes | Optimise: recommended. |
 | R6.15 | Open conditions and nonconformities are within their time limit. | P29 · T08 | Yes | Yes | Yes | — |
@@ -450,7 +450,7 @@ Each gate includes its purpose, who verifies and who decides (01 §7.5), the evi
 | G7.09 | Scale in Transform: the board or its board committee has expressly approved it. | P29 | Yes | — | Yes | Transform only. |
 | G7.10 | Iterate: the phase to return to, the reason and the time limit are defined. | P30 | Yes | Yes | Yes | — |
 | G7.11 | Retire: the retirement plan records the date, coded reason, deciding body, replacement, treatment of data and models (retention and deletion), revocation of access and credentials, communication to those affected and update of the inventory. | P30 · T22 | Yes ◆ | Yes | Yes | — |
-| G7.12 | [TER] Retire: termination with the supplier includes the return or certified deletion of data and the removal of access. | P14 · P30 | Yes ◆ | Yes | Yes | — |
+| G7.12 | [TER] Retire: termination with the supplier includes the return or certified deletion of data and the removal of access. | P14 · P57 · P30 | Yes ◆ | Yes | Yes | — |
 
 **Specific rules.** The criteria for an outcome that is not proposed (for example, G7.07 to G7.09 when Retire is proposed) are recorded as *Not applicable*. Scale opens a new phase 0 for the extended scope; it does not by itself authorise the extension.
 
@@ -634,6 +634,8 @@ The time limits are reference values and the company may adjust them in C2 witho
 ### 10.7 Minimum content of the audit report
 
 Scope and period · population and sample with selection criterion · tests performed · outcome per audited item (Conformant, Conformant with observations or Nonconformant) · findings with the code of the affected criterion or EV rule, classification, cause and owner · open nonconformities in T08 · follow-up of previous findings · conclusion on the functioning of the gates in the period.
+
+The report is drafted with P60.
 
 ---
 

@@ -26,7 +26,7 @@ This document defines the content of stage **C2 · Direction** of the corporate 
 | **With what information** | C1 results: inventory, maturity with evidence, current sphere map, transformation index profile, current validated value and cost. |
 | **Who approves it** | The board of directors, which may delegate the preparation to a committee. |
 | **When** | On first implementation, within the initial ninety days (document 90). Thereafter, annually after C5, and on an extraordinary basis when a trigger occurs (section 13). |
-| **Result** | A single **board decision document**, with the structure in the annex (tool T19). |
+| **Result** | A single **board decision document**, with the structure in the annex (tool T19), which is completed with template P35. |
 
 The document also contains reference regulatory content. **This document does not constitute legal advice.** The regulatory references were consulted in September 2026 and must be verified before use, because there are proposed amendments in progress that may affect application dates and obligations.
 
@@ -492,6 +492,8 @@ The AI Auditor or internal audit checks, before approval:
 
 ## 15. Annex · Board decision document template (T19)
 
+The annex is completed with template P35.
+
 **Instructions for use.** The template is completed in C2, prepared by senior management with the AI Office, verified by the AI Auditor or internal audit against the criteria in section 14 and approved by the board. Fields marked **(Enterprise)** may be omitted in organisations that apply only Lite intensity, with justification. Where "indicative value" is indicated, the value in this document is used as a starting point and replaced by the approved value.
 
 ### A. Identification
@@ -700,6 +702,7 @@ The AI Auditor or internal audit checks, before approval:
 | **P04** | Intensity determination | Applies the Enterprise investment threshold. |
 | **P07** | Sphere and ambition classification | Checks fit with the ambition per sphere. |
 | **P12** | Risk matrix and register | Applies impact and acceptance thresholds. |
+| **P35** | AI thesis and risk appetite | C2 board decision document: completes the annex (section 15). |
 
 ---
 

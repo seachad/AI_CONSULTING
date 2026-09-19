@@ -60,7 +60,7 @@ Reglas:
 
 | Campo | Contenido | Guía |
 |---|---|---|
-| Información a la representación de los trabajadores **(Enterprise)** | | Sí · No · No aplica. Fecha y forma. Cuando el sistema afecte a condiciones de trabajo, verifique con asesoría laboral las obligaciones de información y consulta aplicables (en el ámbito del Reglamento Europeo de IA y de la legislación laboral nacional). |
+| Información a la representación de los trabajadores | | Sí · No · No aplica. Fecha, forma y referencia a P46. Obligatoria igual en Lite y Enterprise cuando proceda (23 §13.2). Cuando el sistema afecte a condiciones de trabajo, verifique con asesoría laboral las obligaciones de información y consulta aplicables (en el ámbito del Reglamento Europeo de IA y de la legislación laboral nacional). |
 | Riesgos organizativos identificados | | Referencia a los riesgos de categoría ORG en P12. |
 
 ---
@@ -72,7 +72,7 @@ Reglas:
 | Uso efectivo | Personas que usan el sistema al menos una vez por semana ÷ personas previstas | | | | |
 | Cobertura del proceso | Casos tratados con el sistema ÷ casos totales | | | | |
 | Tasa de anulación humana | Propuestas rechazadas o corregidas ÷ revisadas | | | | P25 |
-| Satisfacción de usuarios **(Enterprise)** | Encuesta con escala declarada | | | | |
+| Satisfacción de usuarios **(Enterprise)** | Encuesta de pulso con escala declarada (P44) | | | | |
 | | | | | | |
 
 ---
@@ -99,7 +99,7 @@ Reglas:
 
 ## 7. Capacidad liberada y su destino
 
-**Destino previsto:** Materialización en menor coste · Reasignación explícita a otra actividad · Absorción de crecimiento de volumen · Sin destino decidido. **Estado de la estimación:** Validado · Declarado · Estimado.
+**Destino previsto** (50 §6.4): PER-D1 Materializar en menor coste real · PER-D2 Reasignar a una actividad definida · PER-D3 Absorber crecimiento · PER-D4 Reinvertir en calidad, servicio o cumplimiento · PER-D5 Sin decisión. **Estado de la estimación:** Validado · Declarado · Estimado.
 
 | Colectivo o actividad | Horas liberadas por periodo | Fórmula | Estado | Destino previsto | Actividad de destino o partida de coste que se reduce | Responsable de la decisión | Fecha prevista |
 |---|---|---|---|---|---|---|---|
@@ -109,7 +109,7 @@ Reglas:
 Notas:
 
 - La absorción de crecimiento de volumen solo cuenta como valor si se documenta el coste que se habría incurrido sin el sistema (P08).
-- "Sin destino decidido" es una respuesta válida en el plan, pero debe resolverse antes de G7; en Optimizar, G7 exige ahorro materializado y en Aumentar, capacidad reasignada (01 §7.6).
+- PER-D4 no suma salvo traducción a dinero con fórmula (regla 7). "Sin decisión" (PER-D5) es una respuesta válida en el plan, no suma y se informa aparte, pero debe resolverse antes de G7; en Optimizar, G7 exige ahorro materializado y en Aumentar, capacidad reasignada (01 §7.6).
 
 ---
 

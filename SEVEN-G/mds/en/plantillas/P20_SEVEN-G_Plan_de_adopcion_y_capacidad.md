@@ -60,7 +60,7 @@ Rules:
 
 | Field | Content | Guidance |
 |---|---|---|
-| Information to employee representatives **(Enterprise)** | | Yes · No · Not applicable. Date and form. Where the system affects working conditions, check with employment law advisers the applicable information and consultation obligations (within the scope of the EU AI Act and national employment legislation). |
+| Information to employee representatives | | Yes · No · Not applicable. Date, form and reference to P46. Mandatory in the same way in Lite and Enterprise where applicable (23 §13.2). Where the system affects working conditions, check with employment law advisers the applicable information and consultation obligations (within the scope of the EU AI Act and national employment legislation). |
 | Organisational risks identified | | Reference to the ORG category risks in P12. |
 
 ---
@@ -72,7 +72,7 @@ Rules:
 | Effective use | People who use the system at least once a week ÷ expected people | | | | |
 | Process coverage | Cases handled with the system ÷ total cases | | | | |
 | Human override rate | Proposals rejected or corrected ÷ reviewed | | | | P25 |
-| User satisfaction **(Enterprise)** | Survey with a declared scale | | | | |
+| User satisfaction **(Enterprise)** | Pulse survey with a declared scale (P44) | | | | |
 | | | | | | |
 
 ---
@@ -99,7 +99,7 @@ Rules:
 
 ## 7. Released capacity and its destination
 
-**Planned destination:** Materialisation as lower cost · Explicit reallocation to another activity · Absorption of volume growth · No destination decided. **Status of the estimate:** Validated · Declared · Estimated.
+**Planned destination** (50 §6.4): PER-D1 Materialise as lower actual cost · PER-D2 Reassign to a defined activity · PER-D3 Absorb growth · PER-D4 Reinvest in quality, service or compliance · PER-D5 No decision. **Status of the estimate:** Validated · Declared · Estimated.
 
 | Group or activity | Hours released per period | Formula | Status | Planned destination | Destination activity or cost item that is reduced | Decision owner | Planned date |
 |---|---|---|---|---|---|---|---|
@@ -109,7 +109,7 @@ Rules:
 Notes:
 
 - Absorption of volume growth only counts as value if the cost that would have been incurred without the system is documented (P08).
-- "No destination decided" is a valid answer in the plan, but it must be resolved before G7; in Optimise, G7 requires materialised savings and in Augment, reassigned capacity (01 §7.6).
+- PER-D4 does not add up unless translated into money with a formula (rule 7). "No decision" (PER-D5) is a valid answer in the plan, does not add up and is reported separately, but it must be resolved before G7; in Optimise, G7 requires materialised savings and in Augment, reassigned capacity (01 §7.6).
 
 ---
 

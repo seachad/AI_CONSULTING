@@ -549,6 +549,8 @@ Una organización puede declarar que aplica SEVEN-G cuando cumple, como mínimo,
 6. Aplica las reglas de medición del valor y reporta al consejo con el panel de supervisión.
 7. Gestiona las no conformidades con el proceso de la sección 12.
 
+La declaración se redacta con P61 y se audita según 38 §11.
+
 Las iniciativas en producción anteriores a la adopción del marco deben regularizarse en un plazo aprobado en C2, pasando por una revisión de continuidad equivalente a G7.
 
 ---

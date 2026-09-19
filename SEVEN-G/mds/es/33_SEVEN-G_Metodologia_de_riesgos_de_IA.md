@@ -493,7 +493,7 @@ Los umbrales son orientativos y se aprueban en C2. Todos se calculan con los dat
 |---|---|---|
 | **Órgano que decide el *gate*** | En cada *gate* | Perfil inherente y residual, riesgos Alto y Crítico con controles y eficacia, aceptaciones requeridas, cambios desde el *gate* anterior. |
 | **Comité de IA** | Mensual | Mapa de calor residual de la cartera, riesgos nuevos y escalados, aceptaciones pendientes y caducadas, indicadores fuera de umbral, riesgos materializados. |
-| **Consejo o comisión delegada** | Trimestral | Residuales Críticos y Altos por esfera, concentración y escenarios de cartera, cumplimiento del apetito, incidentes significativos, exposición a IA ofensiva (35), decisiones solicitadas. |
+| **Consejo o comisión delegada** | Trimestral | Residuales Críticos y Altos por esfera, concentración y escenarios de cartera, cumplimiento del apetito, incidentes significativos, exposición a IA ofensiva (35), decisiones solicitadas. Se presenta con el informe trimestral de segunda línea (P42). |
 | **C5 · Revisión anual** | Anual | Eficacia del sistema de gestión de riesgos, recalibración de escalas y catálogo, lecciones aprendidas. |
 
 El informe al consejo usa lenguaje de negocio: qué puede pasar, a quién afecta, qué se hace y qué decisión se pide. No debería presentar listados técnicos de riesgos sin priorizar.
@@ -506,6 +506,7 @@ El informe al consejo usa lenguaje de negocio: qué puede pasar, a quién afecta
 |---|---|---|
 | **P12** | Matriz y registro de riesgos | Registro con los campos de la sección 8, mapa de calor inherente y residual. Fases 3, 5 y 6. |
 | **P13** | Plan de mitigación y contingencia | Acciones de tratamiento, residual objetivo, contingencias y disparadores (secciones 5–7). Fase 3. |
+| **P42** | Informe trimestral de segunda línea | Información trimestral de riesgos de la cartera a la comisión delegada (secciones 10–12). |
 | **T06** | Matriz y registro de riesgos | Cálculo de niveles con la regla de impacto extremo, matriz 5 × 5 inherente y residual de cada iniciativa y de la cartera, eficacia de controles, aceptación por el órgano de su nivel, observaciones de las secciones 4 a 8 (residual Crítico sin aprobación, Alto sin contingencia, aceptación caducada o insuficiente, revisión vencida) y exportación CSV. Vista «Riesgos» del registro T01. La concentración y la correlación de la cartera (sección 10) se analizan con P12 §7. |
 | T01 · T02 · T08 · T09 · T17 | Registro de iniciativas, inventario, incidentes, proveedores y panel del consejo | Fuentes y destinos de datos de riesgo. |
 

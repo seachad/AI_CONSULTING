@@ -101,7 +101,7 @@ Todo sistema clasificado como A2 o A3, y en lo que corresponda A1 (sección 5), 
 ### 4.1 Identidad propia
 
 - El agente **debe** operar con una identidad no humana propia, distinta de la de cualquier empleado y de la de otros agentes (AG-01).
-- La identidad se registra en el inventario de identidades no humanas con su sistema, finalidad y **responsable humano**.
+- La identidad se registra en el inventario de identidades no humanas (P54) con su sistema, finalidad y **responsable humano**.
 - Cuando actúa en nombre de un usuario, la acción se registra con las dos identidades: la del agente y la del usuario por cuya cuenta actúa. El agente no puede obtener más permisos que el usuario al que representa.
 
 ### 4.2 Permisos mínimos
@@ -256,7 +256,7 @@ En A2 y A3 son **controles críticos** AG-01, AG-02, AG-03, AG-05, AG-08, AG-09,
 | **SEG-06** | Recuperación con permisos | La recuperación de información respeta los permisos del usuario; segmentación de índices por nivel de confidencialidad. | Diseño del índice; pruebas con usuarios de distinto perfil. | GEN | 4, 5 |
 | **SEG-07** | Prevención de fuga de datos | Minimización, enmascarado, clasificación de la información y control de datos en entradas, contexto, salidas y registros. | Reglas de prevención de fuga; muestreo de registros. | IA, CORP | 4, 6 |
 | **SEG-08** | Integridad de datos de entrenamiento y conocimiento | Procedencia verificada, control de cambios y detección de anomalías en datos de entrenamiento, ajuste, evaluación y bases de conocimiento. | Linaje (P16); controles de ingesta. | IA | 4, 6 |
-| **SEG-09** | Cadena de suministro de modelos | Inventario de modelos y componentes con versión y procedencia; fuentes aprobadas; verificación de integridad; análisis de vulnerabilidades. | Inventario de componentes; registro de verificación. | IA | 4, 6 |
+| **SEG-09** | Cadena de suministro de modelos | Inventario de modelos y componentes con versión y procedencia; fuentes aprobadas; verificación de integridad; análisis de vulnerabilidades. | Inventario de componentes (P54); registro de verificación. | IA | 4, 6 |
 | **SEG-10** | Límites de uso y consumo | Autenticación, cuotas por usuario y sistema, límites de tamaño y frecuencia, detección de patrones de extracción. | Configuración y alertas. | GEN, EXT | 4, 6 |
 | **SEG-11** | Evaluaciones de seguridad y *red teaming* | Pruebas adversarias antes de G5, tras cambios relevantes y periódicamente (sección 8). | Plan, resultados y acciones cerradas. | GEN | 5, 6 |
 | **SEG-12** | Registro y monitorización de seguridad | Telemetría de entradas, salidas, bloqueos y acciones integrada en la monitorización de seguridad de la compañía, con casos de uso de detección específicos. | Casos de detección; alertas probadas. | IA | 4, 6 |
@@ -310,7 +310,7 @@ La lista **LV-AG** del documento 22 convierte cada control en preguntas binarias
 | **6 · Operación** | Evaluaciones continuas de regresión; campañas periódicas (5.3); pruebas tras cambios de modelo, instrucciones, herramientas o proveedor; simulacros de incidente. | Operación y seguridad | Indicadores de la sección 10 dentro de umbral. |
 | **7 · Evolución** | Pruebas del alcance ampliado; en retirada, revocación de identidades y borrado verificado. | Seguridad | Sin identidades ni credenciales huérfanas. |
 
-**Contenido mínimo de una campaña de *red teaming*:** alcance y reglas de enfrentamiento aprobadas; escenarios derivados del modelo de amenazas; inyección directa e indirecta por todos los canales de entrada; intentos de extracción de instrucciones y datos; abuso de cada herramienta; intentos de superar límites y de inducir aprobaciones; resultados con tasa de éxito por escenario, severidad y acción correctiva; repetición de los escenarios fallidos tras la corrección.
+**Contenido mínimo de una campaña de *red teaming* (plantilla P53):** alcance y reglas de enfrentamiento aprobadas; escenarios derivados del modelo de amenazas; inyección directa e indirecta por todos los canales de entrada; intentos de extracción de instrucciones y datos; abuso de cada herramienta; intentos de superar límites y de inducir aprobaciones; resultados con tasa de éxito por escenario, severidad y acción correctiva; repetición de los escenarios fallidos tras la corrección.
 
 Las evaluaciones adversarias automatizadas se versionan y se ejecutan antes de cada cambio relevante. Un escenario con éxito en una acción sensible es un hallazgo que bloquea G5 hasta su corrección.
 
@@ -381,6 +381,8 @@ El responsable técnico de IA diseña e implanta los controles; seguridad de la 
 |---|---|---|
 | **P18** | Diseño de seguridad (incluye agentes) | Modelo de amenazas, nivel de autonomía, identidades, matriz de permisos, mandato y control de intención, límites, acciones sensibles, interruptor, registro, aislamiento, plan de pruebas y estado de cada control SEG y AG. Fase 4; se actualiza en 5 y 6. |
 | **T10** | Evaluación de seguridad de agentes | A partir del nivel de autonomía, genera los controles SEG y AG exigibles, registra su estado (cumple, no cumple, no aplica, pendiente) con evidencia y bloquea G4 o G5 si un control crítico no está diseñado o probado. Lista de verificación en T03. |
+| **P53** | Plan e informe de pruebas adversarias | Alcance, reglas de enfrentamiento, escenarios y resultados de las campañas de *red teaming* (sección 8). Fases 4 a 6. |
+| **P54** | Inventario de identidades no humanas y componentes | Identidades de los agentes con su responsable humano (sección 4) y componentes con versión y procedencia (SEG-09). Fase 4; se revisa en la operación. |
 | P17 · P24 · P26 | Diseño de supervisión humana · Manual de operación · Plan de respuesta a incidentes | Acciones sensibles y validación; procedimiento del interruptor; respuesta a incidentes de IA. |
 | T02 · T06 · T08 · T17 · T21 | Inventario · Riesgos · Incidentes · Panel del consejo · Monitor de uso corporativo | Nivel de autonomía, riesgos, incidentes, indicadores y uso no autorizado. |
 

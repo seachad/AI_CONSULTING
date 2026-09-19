@@ -59,7 +59,7 @@ Rules:
 | Committed service levels | | Availability, response time, resolution time. |
 | Internal dependencies | | Systems and data on which it depends. |
 | Suppliers and support **(Enterprise)** | | Supplier, service, support channel and contracted service level (P14). |
-| Known limitations | | From P16 and P21; what the system must not be asked to do. |
+| Known limitations | | From P16 and P21; what the system must not be asked to do. They are carried over to the internal instructions for use (P49 §5). |
 
 ---
 

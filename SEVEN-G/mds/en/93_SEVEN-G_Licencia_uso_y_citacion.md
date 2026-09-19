@@ -255,7 +255,7 @@ It is not necessary to ask permission for any use that complies with the licence
 |---|---|---|
 | T17 | Board AI dashboard | CC BY 4.0 content and MIT code in the demonstrations repository. |
 | T18 | Board recommendations register | CC BY 4.0 content and MIT code in the demonstrations repository. |
-| P01–P31 | Block H templates | CC BY 4.0 content; templates completed by a company belong to the company. |
+| P01–P71 | Block H templates | CC BY 4.0 content; templates completed by a company belong to the company. |
 
 ---
 

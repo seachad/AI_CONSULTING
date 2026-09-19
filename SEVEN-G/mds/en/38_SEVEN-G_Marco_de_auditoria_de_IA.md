@@ -59,8 +59,8 @@ It applies to AI Auditors, to the internal audit function and to external audito
 
 | Level | Requirement | How it is checked |
 |---|---|---|
-| **Organisational** | The function that provides AI Auditors reports functionally to the board committee (document 30 §3.6), not to areas that sponsor initiatives. | Internal audit charter; organisation chart. |
-| **Individual** | The auditor has had no role in the initiative or in the design, construction or operation of the system; does not report hierarchically to the sponsor; and has not advised on the audited controls in the previous twelve months (30, incompatibility I-10). | Signed declaration of independence before each engagement. |
+| **Organisational** | The function that provides AI Auditors reports functionally to the board committee (document 30 §3.5), not to areas that sponsor initiatives. | Internal audit charter; organisation chart. |
+| **Individual** | The auditor has had no role in the initiative or in the design, construction or operation of the system; does not report hierarchically to the sponsor; and has not advised on the audited controls in the previous twelve months (30, incompatibility I-10). | Signed declaration of independence before each engagement (P41, Model B). |
 | **Financial** | An external auditor does not audit solutions they have designed, implemented or sold, or products of related companies (30, I-11). Remuneration does not depend on the outcome. | Declaration of relationships with suppliers; review of contracts. |
 | **Rotation** | It is recommended that the same lead auditor should not audit the same Enterprise system for more than [three] consecutive years. | Record of assignments in T01. |
 | **Technical experts** | The auditor may rely on experts (data science, offensive security, legal). Experts must meet the same independence requirements with respect to the subject matter audited and work under the direction of the auditor, who is accountable for the conclusion. | Expert's declaration; work programme with their scope. |
@@ -169,7 +169,7 @@ Each system in the universe is scored using the following factors. The table is 
 | Block | Content | Coverage rule |
 |---|---|---|
 | Enterprise *gate* audits | Forecast of *gates* per initiative according to T01. | 100%. |
-| Lite *gate* audits | Sample of Lite *gates* in the year. | As per section 7.4. |
+| Lite *gate* audits | Sample of Lite *gates* in the year. | As per 21 §10.3. |
 | Continuity audits | High-priority systems and the Medium-priority systems due by rotation. | Section 5.2. |
 | Framework audit | Includes the declaration of application. | Annual. |
 | Thematic audits | Between one and three per year depending on size and risks. | According to portfolio risks and incidents. |
@@ -463,7 +463,7 @@ In addition, the **regularisation of initiatives predating** adoption within the
 | **Conformant with observations** | The seven conditions are met with minor nonconformities. | The same, stating that improvement actions are under way. |
 | **Nonconformant** | A condition is not met (major or critical nonconformity in it). | It may not declare that it applies SEVEN-G until it corrects this and passes a re-audit. It may state that it is in the process of implementation. |
 
-**Minimum content of the declaration**: company name; scope; version of SEVEN-G applied; date; outcome and date of the last audit and type of auditor (internal or external); relevant exceptions in force; statement that the declaration is not a certification. In accordance with the content licence (CC BY 4.0), authorship of the framework must be acknowledged.
+**Minimum content of the declaration**: company name; scope; version of SEVEN-G applied; date; outcome and date of the last audit and type of auditor (internal or external); relevant exceptions in force; statement that the declaration is not a certification. In accordance with the content licence (CC BY 4.0), authorship of the framework must be acknowledged. Model text in P61.
 
 ---
 
@@ -517,6 +517,11 @@ ISO/IEC 42001:2023 sets out requirements for an AI management system. Its **clau
 | **P29** | *Gate* decision record | Abridged *gate* audit outcome. |
 | **P22** | Validation and pilot results | Basis for the re-performance of metrics. |
 | **P23** | Go-live sign-off | Verification of the multi-level sign-off. |
+| **P41** | Declarations of independence and conflicts of interest | Declaration of independence by the auditor and experts before each engagement (Model B, section 3.1). |
+| **P58** | Annual AI audit plan | Audit universe, prioritisation and annual plan (section 5). |
+| **P59** | Audit working papers | Work programme, tests and samples (sections 6 and 7). |
+| **P60** | Audit report and finding records | Report and finding records (section 9). |
+| **P61** | SEVEN-G declaration of application | Text of the declaration of application that is audited (section 11). |
 | **`LV-G0`… `LV-G7`** | Checklists by *gate* (document 22) | *Gate* audit programme. |
 
 **Tool requirements arising from this document:** T03 must prevent a *gate* decision from being recorded with a Nonconformant verification outcome, except Stop when the team withdraws the request and proposes to stop; T01 must record the auditor, declaration of independence and verification date; T08 must link each nonconformity to the audit from which it originated and control the time limits in section 10.

@@ -114,7 +114,7 @@ The rest of the library is consulted when needed: ambition and portfolio (10, 13
 | **Third line informed** | Internal audit is aware of the plan and designates who will verify maturity. |
 | **Legal counsel** | Available for the regulatory classification of priority systems. |
 | **Access to information** | Procurement, licences, supplier contracts, architecture, risk register and budgets. |
-| **Register support** | T01 with its inventory (T02) or, if the company prefers, a spreadsheet with the fields in 03 §3.3. |
+| **Register support** | T01 with its inventory (T02) or, if the company prefers, a spreadsheet with the fields of the data model in 03 §4 (and the record in 03 §3.3). |
 | **No general moratorium** | AI activity continues during implementation; only what the diagnosis identifies as unacceptable risk is stopped. |
 
 ---
@@ -145,10 +145,10 @@ Each milestone is accepted by the implementation sponsor together with the AI Co
 
 | Week | Activities and deliverables | Owner | Documents, templates and tools | Completion criterion |
 |---|---|---|---|---|
-| **1 · Kick-off** | Implementation mandate; Lite or Enterprise scope and perimeter; core team; calendar of bodies with the board session reserved; internal communication; request for maturity evidence; cut-off date. | Sponsor and implementation lead | 00, 01, 90; evidence list in document 11 | Mandate signed; board session reserved; evidence request sent. |
-| **2 · Inventory** | Census of AI systems: in-house, third-party, corporate use and unauthorised use (based on procurement, licences, contracts and security controls). Registration with actual status. Initial screening of Enterprise criteria and possible prohibited practices. | AI Office with technology, procurement and security | 03; P05; T02, T01; T04 | Each area head signs an inventory completeness statement. Possible prohibited practices escalated immediately. |
+| **1 · Kick-off** | Implementation mandate (P32); Lite or Enterprise scope and perimeter; core team; calendar of bodies with the board session reserved; internal communication; request for maturity evidence; cut-off date. | Sponsor and implementation lead | 00, 01, 90; evidence list in document 11 | Mandate signed; board session reserved; evidence request sent. |
+| **2 · Inventory** | Census of AI systems: in-house, third-party, corporate use and unauthorised use (based on procurement, licences, contracts and security controls). Registration with actual status. Initial screening of Enterprise criteria and possible prohibited practices. | AI Office with technology, procurement and security | 03; P05; T02, T01; T04 | Each area head signs an inventory completeness statement (P32, annex). Possible prohibited practices escalated immediately. |
 | **3 · Evidence and interviews** | Maturity interviews by dimension; review of evidence and sampling; collection of current value and cost with their status; data for the eight index signals. | Assessment team | 11; 12; 40; T15, T14, T12 | Seven dimensions with at least two interviews each; samples selected. |
-| **4 · C1 report** | Scoring, calibration and independent verification of maturity; transformation index profile; current sphere map; portfolio value and cost; C1 report. | Lead assessor; independent verifier | 10, 11, 12; T15, T14, T16 | **Milestone 1:** C1 report verified and accepted. Urgent risks treated as a nonconformity (01 §12). |
+| **4 · C1 report** | Scoring, calibration and independent verification of maturity; transformation index profile; current sphere map; portfolio value and cost; C1 report (P33, with maturity from P34). | Lead assessor; independent verifier | 10, 11, 12; T15, T14, T16 | **Milestone 1:** C1 report verified and accepted. Urgent risks treated as a nonconformity (01 §12). |
 
 ### 4.3 Month 2 · Risks and opportunities
 
@@ -163,7 +163,7 @@ Each milestone is accepted by the implementation sponsor together with the AI Co
 
 | Week | Activities and deliverables | Owner | Documents, templates and tools | Completion criterion |
 |---|---|---|---|---|
-| **9 · Bodies and roles** | Mandates of the AI Committee, the AI Office and the board committee; roles in 01 §8 in existing initiatives with an incompatibility check; AI Auditor designated. | Sponsor; board secretariat | 01 §8, 30; P03; T01 | Mandates drafted; roles assigned without incompatibilities. |
+| **9 · Bodies and roles** | Mandates of the AI Committee, the AI Office and the board committee (P38); roles in 01 §8 in existing initiatives with an incompatibility check; AI Auditor designated. | Sponsor; board secretariat | 01 §8, 30; P03; T01 | Mandates drafted; roles assigned without incompatibilities. |
 | **10 · Gates and policies** | *Gate* criteria (21) and checklists (22) adopted; reference time limits; corporate and acceptable use policy; nonconformity process. | AI Office; compliance | 21, 22, 31, 37; P04, P29; T03, T08 | *Gate* manager configured; policies in final draft. |
 | **11 · Metrics, reporting and portfolio** | Measurement rules adopted; first version of the board dashboard; register of recommendations; reporting calendar (01 §5.2); first prioritised portfolio with envelopes, tranches and regularisation plan. | AI Office; management control; committee | 40, 60, 62, 14; P28; T17, T18, T01, T16 | Dashboard generated with inventory data; portfolio with scoring and owners. |
 | **12 · Approvals** | The board approves the thesis, ambition per sphere, risk appetite, thresholds and corporate policy (C2). The committee approves the portfolio, *gates*, metrics and regularisation plan (C3). | Sponsor; AI Committee; board | 13, 14, 31 | Minutes with the approvals. |
@@ -175,8 +175,8 @@ If the board cannot approve C2 in week 12, the portfolio operates with provision
 
 | # | Criterion | Evidence |
 |---|---|---|
-| 1 | Inventory with a completeness statement from all areas in the perimeter. | T02; signed statements. |
-| 2 | Maturity assessment verified and transformation index calculated. | C1 report; T15; T14. |
+| 1 | Inventory with a completeness statement from all areas in the perimeter. | T02; signed statements (P32, annex). |
+| 2 | Maturity assessment verified and transformation index calculated. | C1 report (P33); T15; T14. |
 | 3 | Risks and opportunities by sphere with owner, economic impact and timeframe. | Approved map. |
 | 4 | Thesis, ambition per sphere, risk appetite and thresholds approved by the board, or approval date set with provisional criteria. | Minutes. |
 | 5 | Bodies with a mandate, roles assigned without incompatibilities and AI Auditor designated. | Mandates; P03. |
@@ -285,7 +285,7 @@ The targets are indicative and are set by the company in its plan.
 | Amounts with status | Amounts with formula and status ÷ amounts reported. | 100 % in the C1 report | 100 % | T12 |
 | Proportion of validated value | Validated value ÷ total value reported. | Baseline | Target set in C2 | T12, T17 |
 | Overdue nonconformities | Open with an expired time limit. | Baseline | 0 critical; major ones decreasing | T08 |
-| AI literacy | Staff who use or oversee AI trained ÷ total. | Programme approved | Target set in C2 | Training record |
+| AI literacy | Staff who use or oversee AI trained ÷ total. | Programme approved | Target set in C2 | Training record (P45) |
 | Conditions in 01 §14 | Conditions substantiated ÷ 7. | At least 2 | 7 in Lite; progress according to the roadmap in Enterprise | T15 |
 
 ---
@@ -294,10 +294,10 @@ The targets are indicative and are set by the company in its plan.
 
 | Period | Tools | Templates |
 |---|---|---|
-| **Month 1** | T01, T02, T04 (inventory and register); T15 (maturity); T14 (index); T16 (sphere map); T12 (current value). | P05 |
-| **Month 2** | T06 (risks); T07 (regulatory classification); T05 (ambition); T19 (thesis and appetite). | P06, P07, P11, P12, P31 |
-| **Month 3** | T03 (*gates*); T08 (nonconformities); T17 (dashboard); T18 (recommendations); T01 and T16 (portfolio). | P03, P04, P28, P29 |
-| **Months 4–18** | All of the above; T09, T10, T11, T13, T20, T21, T22 as the portfolio progresses. | P01–P31 according to the phase of each initiative |
+| **Month 1** | T01, T02, T04 (inventory and register); T15 (maturity); T14 (index); T16 (sphere map); T12 (current value). | P32, P33, P34, P05 |
+| **Month 2** | T06 (risks); T07 (regulatory classification); T05 (ambition); T19 (thesis and appetite). | P35, P43, P06, P07, P11, P12, P31 |
+| **Month 3** | T03 (*gates*); T08 (nonconformities); T17 (dashboard); T18 (recommendations); T01 and T16 (portfolio). | P36, P38, P39, P40, P41, P03, P04, P28, P29 |
+| **Months 4–18** | All of the above; T09, T10, T11, T13, T20, T21, T22 as the portfolio progresses. | P01–P31 according to the phase of each initiative; P42 and P67 every quarter; P37 in C5; the rest of P32–P71 when applicable |
 
 Tools without an application of their own are applied with the template or document indicated in the catalogue in 03. A company that prefers not to use T01 may keep the register in a spreadsheet with the fields of the data model in 03 §4.
 

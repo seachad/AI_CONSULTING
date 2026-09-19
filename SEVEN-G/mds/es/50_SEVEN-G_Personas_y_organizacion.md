@@ -296,7 +296,7 @@ Este documento no constituye asesoramiento jurídico.
 |---|---|---|---|
 | 1 · Identificación | Fase 3 | La evaluación de efecto determina si el sistema afecta a condiciones de trabajo, acceso o mantenimiento del empleo, perfiles, o si es de alto riesgo en el lugar de trabajo. | Evaluación de efecto (P20). |
 | 2 · Análisis jurídico | Fase 3 | Relaciones laborales y asesoría jurídica determinan las obligaciones de información y, en su caso, consulta, su contenido y su plazo. | Nota jurídica enlazada en P11. |
-| 3 · Preparación | Fase 4 | Se elabora la ficha informativa del sistema para la representación (sección 7.3). | Ficha informativa. |
+| 3 · Preparación | Fase 4 | Se elabora la ficha informativa del sistema para la representación (sección 7.3). | Ficha informativa (P46). |
 | 4 · Información o consulta | Antes del piloto con personas reales y, en todo caso, antes del uso en producción | Se entrega la ficha y se atienden las preguntas; se documenta la consulta si procede. | Registro de entrega, actas. |
 | 5 · Actualización | En cada cambio relevante (documento 52, sección 6) | Si cambian parámetros, reglas, finalidad o colectivos, se actualiza la información. | Nueva versión de la ficha. |
 
@@ -446,7 +446,7 @@ Los códigos son provisionales hasta su consolidación en el catálogo de indica
 | **PER-12** | Impugnaciones de decisiones asistidas | Solicitudes de revisión o reclamaciones ÷ decisiones comunicadas; y proporción estimadas | Trimestral | Canal de reclamaciones | Tendencia y causas |
 | **PER-13** | Roles rediseñados | Puestos afectados con descripción y objetivos actualizados ÷ puestos afectados según la evaluación de efecto | Semestral | Dirección de personas | 100 % antes de G7 en Aumentar y Transformar |
 | **PER-14** | Propuestas de empleados | Iniciativas registradas en T01 originadas en propuestas de empleados ÷ iniciativas registradas; y tasa de paso de G1 | Semestral | T01 | Tendencia |
-| **PER-15** | Percepción de los colectivos afectados | Respuestas favorables en las preguntas de apoyo, carga y autonomía ÷ respuestas válidas | En fase 5, a los 3 meses y en R6 Enterprise | Encuesta de pulso | Tendencia; acción si empeora |
+| **PER-15** | Percepción de los colectivos afectados | Respuestas favorables en las preguntas de utilidad, confianza, apoyo, carga y autonomía (P44) ÷ respuestas válidas | En fase 5, a los 3 meses y en R6 Enterprise | Encuesta de pulso | Tendencia; acción si empeora |
 
 **Relación con el índice de transformación.** PER-04 y PER-05 alimentan la señal 3 (materialización); PER-13 alimenta la señal 5 (modelo operativo).
 
@@ -499,8 +499,10 @@ Los criterios codificados `G<n>.<nn>` y `R6.<nn>` se fijan en el documento 21. E
 | **P22** | Resultados de validación y del piloto | Pruebas de sesgo y efecto real en el piloto. |
 | **P28** | Seguimiento de realización de valor | Capacidad liberada materializada y reasignada. |
 | **P30** | Decisión de escalado o retirada | Efecto real frente a declarado y comunicación de la retirada. |
+| **P44** | Encuesta de uso y percepción de la IA | Encuesta de pulso a los colectivos afectados (PER-15). |
+| **P46** | Información a los trabajadores y a su representación | Ficha informativa del sistema (sección 7.3) y registro de información y consultas. |
 
-La **ficha informativa para la representación** (sección 7.3) se incorpora como anexo de P17 hasta que se decida si requiere plantilla propia.
+La **ficha informativa para la representación** (sección 7.3) y el registro de información y consultas están en P46.
 
 ---
 

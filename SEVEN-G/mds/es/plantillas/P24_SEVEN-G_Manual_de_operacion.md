@@ -59,7 +59,7 @@ Reglas:
 | Niveles de servicio comprometidos | | Disponibilidad, tiempo de respuesta, tiempo de resolución. |
 | Dependencias internas | | Sistemas y datos de los que depende. |
 | Proveedores y soporte **(Enterprise)** | | Proveedor, servicio, canal de soporte y nivel de servicio contratado (P14). |
-| Limitaciones conocidas | | Del P16 y P21; qué no debe pedirse al sistema. |
+| Limitaciones conocidas | | Del P16 y P21; qué no debe pedirse al sistema. Se trasladan a las instrucciones internas de uso (P49 §5). |
 
 ---
 

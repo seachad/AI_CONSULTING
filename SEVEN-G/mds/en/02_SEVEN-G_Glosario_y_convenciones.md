@@ -383,7 +383,7 @@ Alphabetical order by English term. The full scales are in section 4 and the cod
 
 | Term | Definition in SEVEN-G | Reference document | Spanish term |
 |---|---|---|---|
-| **Template** | Standard Block H document for preparing a mandatory evidence item (P01–P31). | 01 §6.10 | Plantilla |
+| **Template** | Standard Block H document: P01–P31 for preparing the initiative's mandatory evidence and P32–P71 for the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation. Each has an editable Word version. | 01 §6.10; 03 §5 | Plantilla |
 | **Third-party AI embedded in processes** | Supplier software with AI features that take part in decisions, operations or customer relations. It goes through the full lifecycle, with the design and delivery phases focused on the selection, integration, contract and controls of the supplier. | 01 §1.2; 32 §2.1 | IA de terceros integrada en procesos |
 | **Third-party requirement level** | Degree of due diligence, contract, monitoring and exit required for each relationship between a supplier and a service: N1 Standard, N2 Enhanced or N3 Critical, determined by the highest factor among criticality, data, autonomy and substitutability. | 36 §4 | Nivel de exigencia a terceros |
 | **Time in phase · decision time** | **Time in phase**: days between entry into and exit from the phase, excluding time on hold. **Decision time**: days between the *gate* request and the decision. | 03 §3.5; 41 | Tiempo en fase · tiempo de decisión |
@@ -786,7 +786,7 @@ Spanish equivalents of the taxonomy values:
 | **LV-G\<n\> · LV-R6 · LV-EV · LV-AG** | LV + hyphen + scope | Checklists by gate, for evidence validation and for agents. | 22 §1 | LV-G5 |
 | **EV.01–EV.14** | EV + point + two digits | Valid evidence rules. | 21 §4.1; 22 §11 | EV.05 |
 | **T01–T22** | T + two digits | Framework tools. | 03 §5 | T01 |
-| **P01–P31** | P + two digits | Block H templates. | Block H; 01 §6.10 | P29 |
+| **P01–P71** | P + two digits | Block H templates: P01–P31 per initiative (01 §6.10); P32–P71 for the company, board, compliance, third parties, audit and implementation. | Block H; 01 §6.10 | P29 |
 | **D1–D7** | D + number | Maturity dimensions. | 11 §2.1 | D6 |
 | **Maturity levels 0–5** | Whole number | Maturity levels. | 11 §2.2 | level 3 |
 | **S1–S4** | S + number | AI incident severity. | 37 §4.2 | S1 |
@@ -808,6 +808,13 @@ Spanish equivalents of the taxonomy values:
 | **INC-AAAA-NNN** | Year + sequential number | AI incidents. | 37 §7.1 | INC-2026-006 |
 | **AUD-AAAA-NNN** | Year + sequential number | AI audit reports. | 38 §9.1 | AUD-2026-002 |
 | **H-NN** | H + hyphen + two digits, within each report | Findings of an audit report. | 38 §9.2 | H-01 |
+| **EXC-AAAA-NNN** | Year + sequential number | Exceptions to the policy or the framework. | 30 §7.4; P40 | EXC-2026-004 |
+| **DCI-AAAA-NNN** | Year + sequential number | Declarations of independence and of conflicts of interest. | 30 §12; P41 | DCI-2026-011 |
+| **PRV-AAAA-NNN** | Year of registration + sequential number | Relationship with an AI supplier (third party and service) in the supplier register. | 36 §9; P57 | PRV-2026-003 |
+| **SOL-AAAA-NNN · COM-AAAA-NNN** | Year + sequential number | New tool requests and employee reports on AI uses or incidents. | 31 §4; P43 | SOL-2026-017 |
+| **INF-AAAA-NNN** | Year + sequential number | Information and consultation with employee representatives. | 50 §7; P46 | INF-2026-002 |
+| **PA-AAAA-NNN · Hnn** | Year + sequential number; finding within the campaign | Adversarial testing campaigns and their findings. | 35 §8; P53 | PA-2026-001 · H03 |
+| **IDN-AAAA-NNN** | Year of registration + sequential number | Non-human identities (agents, service accounts, keys). | 35 §4.1; P54 | IDN-2026-009 |
 
 Common rules:
 
@@ -823,11 +830,11 @@ The former local numbering in documents 12 and 50 (P1–P5, S1–S8 and D1–D3 
 
 | Code or numbering | Meaning | Document | How it is cited elsewhere | Not to be confused with |
 |---|---|---|---|---|
-| IT-P1–IT-P5 | Five ambition classification questions (formerly P1–P5) | 12 §3.1 | "IT-P4" or "question IT-P4 of document 12" | P01–P31 (templates) |
+| IT-P1–IT-P5 | Five ambition classification questions (formerly P1–P5) | 12 §3.1 | "IT-P4" or "question IT-P4 of document 12" | P01–P71 (templates) |
 | IT-S1–IT-S8 | Eight signals of the transformation index (formerly S1–S8) | 12 §4.4 | "IT-S7" or "signal 7 of the index" | S1–S4 (severity) |
 | IT-D1–IT-D3 | Conditions of the transformation declaration (formerly D1–D3) | 12 §5.1 | "condition IT-D1" | D1–D7 (maturity) |
 | PER-D1–PER-D5 | Destinations of released capacity (formerly D1–D5) | 50 §6.2; 23 §10.5 | "destination PER-D1 (Materialise)" | D1–D7 (maturity); PER-NN (indicators) |
-| PER-PA–PER-PF | AI literacy profiles (formerly P-A–P-F) | 50 §5.2 | "profile PER-PD" | P01–P31 (templates); PER-NN (indicators) |
+| PER-PA–PER-PF | AI literacy profiles (formerly P-A–P-F) | 50 §5.2 | "profile PER-PD" | P01–P71 (templates); PER-NN (indicators) |
 | PER-NN · DAT-NN · CNC-NN · OPE-NN | Provisional people, data, knowledge (CNC, formerly CON) and operations indicators | 50, 51, 52 | By their IND- code according to the mapping table in 41 §21 | IND-\<FAM\>-NN; CNC-NN is not to be confused with IND-CON-NN (board) |
 | CI-n · I-n | Conflicts of interest and incompatibilities in the governance model | 30 §5, §12 | "conflict CI-2 of document 30" | — |
 | SP, BO, PO, TO, OO, RO, AUD, AIO, MC, AIC… (Spanish version: PAT, RN, RP, RT, RO, RR, AUD, OIA, CG, CIA…) | Abbreviations for owners in columns | 41 §3 | Full name of the role | RT-\<CAT\>-NN (typical risks) |
@@ -849,7 +856,7 @@ In new versions, documents **should** replace the numbering that remains local w
 | **E** | Measurement and value | 40–43 | Measurement rules, indicators, costs, benefits realisation. |
 | **F** | People, data and operations | 50–53 | People, data and knowledge, operations, building with AI. |
 | **G** | Board | 60–62 | Board pack and conversation guide, recommendations and decisions register. |
-| **H** | Templates | P01–P31 | Evidence for each phase of the lifecycle. |
+| **H** | Templates | P01–P71 | Evidence for each phase of the lifecycle (P01–P31) and registers, reports and decisions of the company, the board, compliance, third parties, audit and implementation (P32–P71). |
 | **I** | Tools | T01–T22 | Catalogue in document 03; HTML tools with JSON data. |
 | **J** | Framework adoption | 90–93 | Implementation, guide for consultants, application cases, licence. |
 
@@ -964,7 +971,7 @@ Framework abbreviations that are not general acronyms: **€k** thousands of eur
 | **T04** | Intensity determination | Uses the Enterprise criteria and the scale in section 4.6. |
 | **T05** | Ambition classifier | Uses the ambition levels and statuses in section 4.5. |
 | **T06–T22** | Other tools | Use the risk, appetite, maturity, severity, nonconformity, third-party, index and value scales in section 4. |
-| **P01–P31** | Block H templates | Use the terms in section 3 and the codes in section 6. No template defines terms of its own. |
+| **P01–P71** | Block H templates | Use the terms in section 3 and the codes in section 6. No template defines terms of its own. |
 
 Tools display the values of closed lists in Spanish and English using the equivalents in this document.
 

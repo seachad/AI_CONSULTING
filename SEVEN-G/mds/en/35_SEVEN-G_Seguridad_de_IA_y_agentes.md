@@ -101,7 +101,7 @@ Every system classified as A2 or A3, and A1 where applicable (section 5), **must
 ### 4.1 Own identity
 
 - The agent **must** operate with its own non-human identity, distinct from that of any employee and from those of other agents (AG-01).
-- The identity is recorded in the non-human identity inventory with its system, purpose and **human owner**.
+- The identity is recorded in the non-human identity inventory (P54) with its system, purpose and **human owner**.
 - When it acts on behalf of a user, the action is recorded with both identities: the agent's and that of the user on whose behalf it acts. The agent cannot obtain more permissions than the user it represents.
 
 ### 4.2 Least permissions
@@ -256,7 +256,7 @@ In A2 and A3, the **critical controls** are AG-01, AG-02, AG-03, AG-05, AG-08, A
 | **SEG-06** | Permission-aware retrieval | Information retrieval respects user permissions; indexes segmented by confidentiality level. | Index design; tests with users with different profiles. | GEN | 4, 5 |
 | **SEG-07** | Data leakage prevention | Minimisation, masking, information classification and control of data in inputs, context, outputs and logs. | Leakage prevention rules; log sampling. | IA, CORP | 4, 6 |
 | **SEG-08** | Integrity of training data and knowledge | Verified provenance, change control and anomaly detection in training, fine-tuning and evaluation data and knowledge bases. | Lineage (P16); ingestion controls. | IA | 4, 6 |
-| **SEG-09** | Model supply chain | Inventory of models and components with version and provenance; approved sources; integrity verification; vulnerability scanning. | Component inventory; verification record. | IA | 4, 6 |
+| **SEG-09** | Model supply chain | Inventory of models and components with version and provenance; approved sources; integrity verification; vulnerability scanning. | Component inventory (P54); verification record. | IA | 4, 6 |
 | **SEG-10** | Usage and consumption limits | Authentication, quotas per user and system, size and rate limits, detection of extraction patterns. | Configuration and alerts. | GEN, EXT | 4, 6 |
 | **SEG-11** | Security evaluations and *red teaming* | Adversarial testing before G5, after relevant changes and periodically (section 8). | Plan, results and closed actions. | GEN | 5, 6 |
 | **SEG-12** | Security logging and monitoring | Telemetry of inputs, outputs, blocks and actions integrated into the company's security monitoring, with specific detection use cases. | Detection use cases; tested alerts. | IA | 4, 6 |
@@ -310,7 +310,7 @@ The **LV-AG** checklist in document 22 turns each control into verifiable binary
 | **6 · Operation** | Continuous regression evaluations; periodic campaigns (5.3); tests after changes to the model, prompts, tools or supplier; incident exercises. | Operations and security | Indicators in section 10 within threshold. |
 | **7 · Evolution** | Tests of the extended scope; on retirement, revocation of identities and verified deletion. | Security | No orphaned identities or credentials. |
 
-**Minimum content of a *red teaming* campaign:** approved scope and rules of engagement; scenarios derived from the threat model; direct and indirect injection through all input channels; attempts to extract prompts and data; misuse of each tool; attempts to exceed limits and to induce approvals; results with success rate per scenario, severity and corrective action; re-running of failed scenarios after remediation.
+**Minimum content of a *red teaming* campaign (template P53):** approved scope and rules of engagement; scenarios derived from the threat model; direct and indirect injection through all input channels; attempts to extract prompts and data; misuse of each tool; attempts to exceed limits and to induce approvals; results with success rate per scenario, severity and corrective action; re-running of failed scenarios after remediation.
 
 Automated adversarial evaluations are versioned and run before every relevant change. A scenario that succeeds on a sensitive action is a finding that blocks G5 until it is remediated.
 
@@ -381,6 +381,8 @@ The AI Technical Owner designs and implements the controls; information security
 |---|---|---|
 | **P18** | Security design (including agents) | Threat model, autonomy level, identities, permission matrix, mandate and intent-based access control, limits, sensitive actions, kill switch, log, isolation, test plan and status of each SEG and AG control. Phase 4; updated in 5 and 6. |
 | **T10** | Agent security assessment | Based on the autonomy level, generates the required SEG and AG controls, records their status (met, not met, not applicable, pending) with evidence and blocks G4 or G5 if a critical control has not been designed or tested. Checklist in T03. |
+| **P53** | Adversarial testing plan and report | Scope, rules of engagement, scenarios and results of *red teaming* campaigns (section 8). Phases 4 to 6. |
+| **P54** | Non-human identity and component inventory | Agent identities with their human owner (section 4) and components with version and provenance (SEG-09). Phase 4; reviewed during operation. |
 | P17 · P24 · P26 | Human oversight design · Operations manual · Incident response plan | Sensitive actions and validation; kill switch procedure; AI incident response. |
 | T02 · T06 · T08 · T17 · T21 | Inventory · Risks · Incidents · Board dashboard · Corporate usage monitor | Autonomy level, risks, incidents, indicators and unauthorised use. |
 

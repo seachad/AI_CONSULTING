@@ -104,18 +104,18 @@ Level 0 has no criteria of its own. The time requirements of levels 4 and 5 prev
 
 | Code | Question | Level | Required evidence |
 |---|---|---|---|
-| D1.01 | Is there a member of senior management with responsibility for the company's AI assigned in writing? | 1 | Appointment, approved organisation chart or management resolution. |
-| D1.02 | Has AI been discussed by the management committee or the board in the last 12 months, as recorded in the minutes? | 1 | Minutes or agenda. |
-| D1.03 | Is there an AI Committee, or an existing committee with an extended mandate, with a written mandate and at least two meetings held? | 2 | Approved mandate; minutes. |
+| D1.01 | Is there a member of senior management with responsibility for the company's AI assigned in writing? | 1 | Appointment, approved organisation chart or management resolution (P38). |
+| D1.02 | Has AI been discussed by the management committee or the board in the last 12 months, as recorded in the minutes? | 1 | Minutes or agenda (P39). |
+| D1.03 | Is there an AI Committee, or an existing committee with an extended mandate, with a written mandate and at least two meetings held? | 2 | Approved mandate (P38); minutes. |
 | D1.04 | Is there a dated and versioned AI strategy or thesis document, and an AI acceptable use policy approved and communicated to staff? | 2 | Document; approved policy; record of the communication. |
-| D1.05 | Has the board approved the AI thesis, the ambition level by sphere and the risk appetite on the basis of a C1 diagnosis? **(§14)** | 3 | Board minutes; approved thesis; C1 report. |
-| D1.06 | Have the C2 thresholds been approved: Enterprise investment criterion, return horizon, reference time limits by phase and nonconformity time limits? | 3 | Thresholds document with its approval. |
-| D1.07 | Have the AI Committee, the AI Office and the board committee been set up with the functions in 01 §8.3, and do they meet according to the calendar in 01 §5.2? **(§14)** | 3 | Mandates; minutes for the last six months. |
+| D1.05 | Has the board approved the AI thesis, the ambition level by sphere and the risk appetite on the basis of a C1 diagnosis? **(§14)** | 3 | Board minutes; approved thesis; C1 report (P33). |
+| D1.06 | Have the C2 thresholds been approved: Enterprise investment criterion, return horizon, reference time limits by phase and nonconformity time limits? | 3 | Thresholds document with its approval (P35). |
+| D1.07 | Have the AI Committee, the AI Office and the board committee been set up with the functions in 01 §8.3, and do they meet according to the calendar in 01 §5.2? **(§14)** | 3 | Mandates (P38); minutes for the last six months. |
 | D1.08 | Do all active initiatives have the roles in 01 §8.1 assigned, without any of the incompatibilities in 01 §8.2? **(§14)** | 3 | Sample of P03; check in T01. |
 | D1.09 | Does the board or its board committee review the AI dashboard at least quarterly, as recorded in the minutes for two consecutive quarters? | 4 | Dashboards (T17); minutes. |
 | D1.10 | Are the board's recommendations tracked with a persistent identifier, owner, deadline, status and evidence, and is the decision time of the bodies measured? | 4 | Register of recommendations (T18); decision time metrics (T01). |
-| D1.11 | Has the AI thesis been reviewed in a C5 with the evidence on maturity, transformation index and portfolio, and have the approved changes been applied? | 5 | C5 report; versioned thesis; board minutes. |
-| D1.12 | Do the AI Committee and the AI Office assess their own effectiveness at least once a year and close the resulting improvement actions? | 5 | Self-assessment; action plan with closure. |
+| D1.11 | Has the AI thesis been reviewed in a C5 with the evidence on maturity, transformation index and portfolio, and have the approved changes been applied? | 5 | C5 report (P37); versioned thesis; board minutes. |
+| D1.12 | Do the AI Committee and the AI Office assess their own effectiveness at least once a year and close the resulting improvement actions? | 5 | Self-assessment (P37 §11); action plan with closure. |
 
 ### 3.3 D2 · Value and portfolio
 
@@ -245,7 +245,7 @@ Article 4 of the EU AI Act requires providers and deployers to take measures to 
 | D6.02 | Does any AI risk appear in the company's risk register? | 1 | Corporate risk register. |
 | D6.03 | Has an AI system inventory been started that includes in-house systems, third-party systems and corporate use of general-purpose AI? | 2 | Inventory (T02). |
 | D6.04 | Has an AI Risk Owner been appointed, independent of the teams that build, and are risks assessed in some of the initiatives? | 2 | Appointment; risk matrices. |
-| D6.05 | Does the inventory include all AI systems with regulatory classification, intensity and owner, and has the use of prohibited practices been ruled out in a documented way? **(§14)** | 3 | T02; P05; P11; statement of completeness signed by each area. |
+| D6.05 | Does the inventory include all AI systems with regulatory classification, intensity and owner, and has the use of prohibited practices been ruled out in a documented way? **(§14)** | 3 | T02; P05; P11; statement of completeness signed by each area (P32, annex). |
 | D6.06 | Do all initiatives in phase 3 or later have a risk matrix and register using the scale in document 33, and the applicable impact assessments? | 3 | Sample of P12 and P11. |
 | D6.07 | Are nonconformities managed using the process in 01 §12: classification, containment, root cause, corrective action, closure and time limits? **(§14)** | 3 | Register (T08); sample of case files. |
 | D6.08 | Are AI suppliers assessed with levels N1–N3, and do agents with A2 or A3 autonomy have their own identity, least privilege, a kill switch and prompt injection testing before production? **(if applicable, for the agents part)** | 3 | P14; T09; P18; T10. |
@@ -471,7 +471,7 @@ The board should not approve Transform bets at G2 with D1 or D6 below 2 unless t
 | T01, T02, T03, T08, T12 | Sources of evidence and samples. |
 | T14 | Cross-reading with the transformation index. |
 | T17, T18 | Publication of the result and tracking of the actions requested by the board. |
-| P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Usual evidence. The model has no template of its own in block H: the report is generated by T15. |
+| P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Usual evidence. The answer sheet, the calculation and the report have their own template, P34, which T15 calculates and generates. |
 
 ---
 

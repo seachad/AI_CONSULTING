@@ -25,7 +25,7 @@
 | **At which *gate* it is reviewed** | R6 and G7. It feeds the board dashboard (T17) and the portfolio (document 14). |
 | **Lite versus Enterprise** | Lite may omit the fields marked **(Enterprise)**. |
 | **Tool** | T12 Value realisation tracking. |
-| **Relationship** | P08 Value hypothesis canvas · P09 Baseline · P20 Adoption and capacity plan · P22 Pilot results · P30 Scale or retire decision · P31 Use case record · documents 40, 42 and 43. |
+| **Relationship** | P08 Value hypothesis canvas · P09 Baseline · P20 Adoption and capacity plan · P22 Pilot results · P30 Scale or retire decision · P31 Use case record · P62 Benefits realisation plan (curve, owners, enablers; reference for the expected value per period) · documents 40, 42 and 43. |
 
 Applicable measurement rules (00 §6):
 

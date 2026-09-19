@@ -83,7 +83,7 @@ flowchart TB
 
 ## 3. Model mandates of the bodies
 
-The mandates are **models to be adapted**. The company approves them in C2 and incorporates them into the rules of procedure of the body that takes on the function. Quorum and time limits are for reference.
+The mandates are **models to be adapted**. The company approves them in C2 and incorporates them into the rules of procedure of the body that takes on the function. Quorum and time limits are for reference. The article-by-article text that can be approved, with the model appointment of the head of AI, is in P38; agendas and minutes, in P39.
 
 ### 3.1 Board of directors
 
@@ -310,7 +310,7 @@ An exception temporarily authorises non-compliance with a requirement of the fra
 | **Lifecycle requirement** | Postponing a non-critical piece of evidence outside a "Proceed with conditions". | Sponsor | AI Committee | 6 months |
 | **Corporate threshold** | Exceeding the investment limit per stage or the return horizon set in C2. | AI Committee | Board or board committee | As resolved |
 
-Every exception is recorded with its justification, risk, compensating measures, expiry and owner. An expired exception that has not been closed is a **major nonconformity**. The board committee receives the exceptions in force each quarter.
+Every exception is recorded in P40 (EXC-AAAA-NNN) with its justification, risk, compensating measures, expiry and owner. An expired exception that has not been closed is a **major nonconformity**. The board committee receives the exceptions in force each quarter.
 
 ### 7.5 Other delegated decisions
 
@@ -449,7 +449,7 @@ A small or medium-sized organisation may apply SEVEN-G with a minimum structure 
 | CI-5 | The AI Office has volume targets for initiatives in production. | Lax verification. | Targets for inventory quality, decision time and validated value. |
 | CI-6 | A director has interests in one of the company's AI suppliers. | Biased decision on Transform or N3. | Board conflict of interest regime; abstention. |
 
-**Procedure.** (1) **Declaration** on taking on the role (in P03) and whenever a conflict arises; members of bodies, annually. (2) **Assessment** by the AI Office with compliance: actual, potential or apparent. (3) **Measure**: abstention, replacement, additional verification or board regime. (4) **Record** in T01 alongside the affected decision. (5) **Check** by the AI Auditor at each Enterprise *gate*.
+**Procedure.** (1) **Declaration** on taking on the role (in P03) and whenever a conflict arises; members of bodies, annually (P41). (2) **Assessment** by the AI Office with compliance: actual, potential or apparent. (3) **Measure**: abstention, replacement, additional verification or board regime. (4) **Record** in the register of declarations and abstentions in P41 and in the minutes (P39) or the *gate* decision record (P29) of the affected decision. (5) **Check** by the AI Auditor at each Enterprise *gate*.
 
 Failing to declare a conflict that has affected a *gate* decision is a **major nonconformity**, without prejudice to the company's code of conduct.
 
@@ -459,7 +459,7 @@ Failing to declare a conflict that has affected a *gate* decision is a **major n
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Bodies, people, decisions, abstentions, conflicts and exceptions. |
+| **T01** | Initiative register | Bodies, people and initiative decisions. |
 | **T03** | *Gate* manager | Verifier and decision-maker per *gate*; self-approval block. |
 | **T08** | Nonconformity and incident register | Escalation with time limits and alerts. |
 | **T18** | Board recommendations register | Resolutions of the board and the board committee. |
@@ -468,6 +468,11 @@ Failing to declare a conflict that has affected a *gate* decision is a **major n
 | **P23** | Go-live sign-off | Multi-level sign-off with veto power. |
 | **P29** | *Gate* decision record | Decision, decision-maker, verifier and conditions. |
 | **P30** | Scale or retirement decision | G7 decisions. |
+| **P38** | Rules of procedure of the AI governance bodies | Text that can be approved for the mandates in section 3 and appointment of the head of AI. |
+| **P39** | Agenda and minutes of a governance body | Meetings of the bodies, resolutions and votes. |
+| **P40** | Exception request and register | Exceptions in section 7.4. |
+| **P41** | Declarations of independence and conflicts of interest | Declarations, abstentions and measures in section 12. |
+| **P42** | Quarterly second-line report | Quarterly information to the board committee (section 6.3). |
 
 **Requirements for the tools:** T01 and T03 must prevent a person with an incompatible role from being recorded as decision-maker or verifier; record abstentions; require the second line at G3, G5, risk acceptances and exceptions; and generate alerts with the time limits in section 8.2.
 

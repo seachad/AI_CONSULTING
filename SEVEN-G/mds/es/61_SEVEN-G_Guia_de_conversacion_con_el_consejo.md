@@ -383,7 +383,7 @@ SEVEN-G prevé que el consejo o su comisión delegada puedan apoyarse en un **co
 
 ### 10.3 Independencia
 
-- **Declaración de intereses** al inicio del mandato y cada vez que cambie: relaciones con proveedores de tecnología, consultoras y la propia compañía.
+- **Declaración de intereses** al inicio del mandato y cada vez que cambie: relaciones con proveedores de tecnología, consultoras y la propia compañía (P41, modelo C).
 - **Incompatibilidad** con la prestación de servicios de implantación en las mismas iniciativas que supervisa (documento 91, sección 5).
 - **Acceso a la información** a través de la secretaría del consejo y de los canales formales, no mediante relaciones directas con los equipos que eludan la dirección.
 - **Confidencialidad**: la información de la compañía no se usa en ningún otro ámbito.
@@ -425,6 +425,9 @@ El Reglamento Europeo de IA incluye obligaciones de alfabetización en IA para e
 | P07 | Clasificación de esfera y ambición | Evidencia de la clasificación. |
 | P29 | Registro de decisión de *gate* | Respuesta a paradas y criterios. |
 | P31 | Ficha de caso de uso | Cómo contar un caso en cinco minutos. |
+| P41 | Declaraciones de independencia y conflictos de interés | Declaración de intereses del consejero o asesor con experiencia en IA (modelo C, sección 10.3). |
+| P68 | Nota previa y nota de conclusiones de la sesión del consejo | Nota previa, orden del día y conclusiones de la sesión (secciones 8.2 a 8.4). |
+| P69 | Registro de decisiones del consejo | Registro de decisiones y encargos tras la sesión (sección 8.4). |
 
 ---
 

@@ -454,7 +454,7 @@ El responsable de producto y el responsable de operación preparan, con los dato
 | **Continuidad** (P19, P14) | Última prueba de reversión; situación del proveedor. |
 | **Propuesta** | Continuar la operación, Continuar con condiciones o Adelantar G7 (01 §7.3), con motivos. |
 
-Los criterios `R6.<nn>` se codifican en el documento 21.
+El paquete se documenta con P65. Los criterios `R6.<nn>` se codifican en el documento 21.
 
 ### 8.3 Resultados
 
@@ -635,7 +635,7 @@ Los códigos son provisionales hasta su consolidación en el documento 41. Los u
 ### 15.2 Otras herramientas y plantillas
 
 - **Herramientas:** T08 (incidentes y no conformidades, soporte de P27), T10 (seguridad de agentes), T13 (costes de operación), T12 (valor en R6), T22 (retiradas), T02, T04 y T07 (vigencia de inventario, intensidad y clasificación).
-- **Plantillas:** P16 (linaje, se actualiza con cada cambio), P19 (reversión), P28 (valor en R6), P29 (resultado de R6 y vueltas a *gate*), P30 (retirada).
+- **Plantillas:** P16 (linaje, se actualiza con cada cambio), P19 (reversión), P28 (valor en R6), P29 (resultado de R6 y vueltas a *gate*), P30 (retirada), P65 (paquete de revisión de continuidad R6, sección 8.2).
 
 ---
 

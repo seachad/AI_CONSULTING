@@ -104,18 +104,18 @@ El nivel 0 no tiene criterios propios. Los requisitos temporales de los niveles 
 
 | Código | Pregunta | Nivel | Evidencia requerida |
 |---|---|---|---|
-| D1.01 | ¿Hay un miembro de la alta dirección con responsabilidad asignada por escrito sobre la IA de la compañía? | 1 | Nombramiento, organigrama aprobado o acuerdo de dirección. |
-| D1.02 | ¿Se ha tratado la IA en el comité de dirección o en el consejo en los últimos 12 meses, con constancia en acta? | 1 | Acta u orden del día. |
-| D1.03 | ¿Existe un comité de IA, o un comité existente con el mandato ampliado, con mandato escrito y al menos dos reuniones celebradas? | 2 | Mandato aprobado; actas. |
+| D1.01 | ¿Hay un miembro de la alta dirección con responsabilidad asignada por escrito sobre la IA de la compañía? | 1 | Nombramiento, organigrama aprobado o acuerdo de dirección (P38). |
+| D1.02 | ¿Se ha tratado la IA en el comité de dirección o en el consejo en los últimos 12 meses, con constancia en acta? | 1 | Acta u orden del día (P39). |
+| D1.03 | ¿Existe un comité de IA, o un comité existente con el mandato ampliado, con mandato escrito y al menos dos reuniones celebradas? | 2 | Mandato aprobado (P38); actas. |
 | D1.04 | ¿Existe un documento de estrategia o tesis de IA fechado y versionado, y una política de uso aceptable de IA aprobada y comunicada a la plantilla? | 2 | Documento; política aprobada; constancia de la comunicación. |
-| D1.05 | ¿Ha aprobado el consejo la tesis de IA, el nivel de ambición por esfera y el apetito de riesgo a partir de un diagnóstico C1? **(§14)** | 3 | Acta del consejo; tesis aprobada; informe C1. |
-| D1.06 | ¿Están aprobados los umbrales de C2: criterio de inversión Enterprise, horizonte de retorno, plazos de referencia por fase y plazos de no conformidades? | 3 | Documento de umbrales con su aprobación. |
-| D1.07 | ¿Están constituidos el comité de IA, la oficina de IA y la comisión delegada con las funciones de 01 §8.3, y se reúnen según el calendario de 01 §5.2? **(§14)** | 3 | Mandatos; actas de los últimos seis meses. |
+| D1.05 | ¿Ha aprobado el consejo la tesis de IA, el nivel de ambición por esfera y el apetito de riesgo a partir de un diagnóstico C1? **(§14)** | 3 | Acta del consejo; tesis aprobada; informe C1 (P33). |
+| D1.06 | ¿Están aprobados los umbrales de C2: criterio de inversión Enterprise, horizonte de retorno, plazos de referencia por fase y plazos de no conformidades? | 3 | Documento de umbrales con su aprobación (P35). |
+| D1.07 | ¿Están constituidos el comité de IA, la oficina de IA y la comisión delegada con las funciones de 01 §8.3, y se reúnen según el calendario de 01 §5.2? **(§14)** | 3 | Mandatos (P38); actas de los últimos seis meses. |
 | D1.08 | ¿Tienen todas las iniciativas activas asignados los roles de 01 §8.1, sin ninguna incompatibilidad de 01 §8.2? **(§14)** | 3 | Muestra de P03; comprobación en T01. |
 | D1.09 | ¿Revisa el consejo o su comisión delegada el panel de IA al menos trimestralmente, con constancia en acta durante dos trimestres consecutivos? | 4 | Paneles (T17); actas. |
 | D1.10 | ¿Se siguen las recomendaciones del consejo con identificador persistente, responsable, plazo, estado y evidencia, y se mide el tiempo de decisión de los órganos? | 4 | Registro de recomendaciones (T18); métricas de tiempo de decisión (T01). |
-| D1.11 | ¿Se ha revisado la tesis de IA en una C5 con la evidencia de madurez, índice de transformación y cartera, y se han aplicado los cambios aprobados? | 5 | Informe C5; tesis versionada; acta del consejo. |
-| D1.12 | ¿Evalúan el comité de IA y la oficina de IA su propia eficacia al menos una vez al año y cierran las acciones de mejora resultantes? | 5 | Autoevaluación; plan de acción con cierre. |
+| D1.11 | ¿Se ha revisado la tesis de IA en una C5 con la evidencia de madurez, índice de transformación y cartera, y se han aplicado los cambios aprobados? | 5 | Informe C5 (P37); tesis versionada; acta del consejo. |
+| D1.12 | ¿Evalúan el comité de IA y la oficina de IA su propia eficacia al menos una vez al año y cierran las acciones de mejora resultantes? | 5 | Autoevaluación (P37 §11); plan de acción con cierre. |
 
 ### 3.3 D2 · Valor y cartera
 
@@ -245,7 +245,7 @@ El artículo 4 del Reglamento Europeo de IA exige a proveedores y responsables d
 | D6.02 | ¿Figura algún riesgo de IA en el registro de riesgos de la compañía? | 1 | Registro corporativo de riesgos. |
 | D6.03 | ¿Existe un inventario de sistemas de IA iniciado que incluye sistemas propios, de terceros y uso corporativo de IA de propósito general? | 2 | Inventario (T02). |
 | D6.04 | ¿Hay un responsable de riesgos de IA nombrado, independiente de los equipos que construyen, y se evalúan los riesgos en parte de las iniciativas? | 2 | Nombramiento; matrices de riesgo. |
-| D6.05 | ¿Incluye el inventario todos los sistemas de IA con clasificación regulatoria, intensidad y responsable, y se ha descartado de forma documentada el uso de prácticas prohibidas? **(§14)** | 3 | T02; P05; P11; declaración de completitud firmada por cada área. |
+| D6.05 | ¿Incluye el inventario todos los sistemas de IA con clasificación regulatoria, intensidad y responsable, y se ha descartado de forma documentada el uso de prácticas prohibidas? **(§14)** | 3 | T02; P05; P11; declaración de completitud firmada por cada área (P32, anexo). |
 | D6.06 | ¿Tienen todas las iniciativas en fase 3 o posterior matriz y registro de riesgos con la escala del documento 33, y las evaluaciones de impacto aplicables? | 3 | Muestra de P12 y P11. |
 | D6.07 | ¿Se gestionan las no conformidades con el proceso de 01 §12: clasificación, contención, causa raíz, acción correctiva, cierre y plazos? **(§14)** | 3 | Registro (T08); muestra de expedientes. |
 | D6.08 | ¿Se evalúan los proveedores de IA con los niveles N1–N3 y tienen los agentes con autonomía A2 o A3 identidad propia, permisos mínimos, interruptor de parada y pruebas de inyección de instrucciones antes de producción? **(si aplica, en la parte de agentes)** | 3 | P14; T09; P18; T10. |
@@ -471,7 +471,7 @@ El consejo no debería aprobar apuestas de Transformar en G2 con D1 o D6 inferio
 | T01, T02, T03, T08, T12 | Fuentes de evidencia y de muestras. |
 | T14 | Lectura cruzada con el índice de transformación. |
 | T17, T18 | Publicación del resultado y seguimiento de las acciones pedidas por el consejo. |
-| P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Evidencias habituales. El modelo no tiene plantilla propia del bloque H: el informe lo genera T15. |
+| P03, P05, P07–P09, P11, P12, P14, P16, P18–P20, P24, P25, P28–P30 | Evidencias habituales. La hoja de respuestas, el cálculo y el informe tienen plantilla propia, P34, que T15 calcula y genera. |
 
 ---
 

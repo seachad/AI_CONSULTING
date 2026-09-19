@@ -107,7 +107,7 @@ flowchart LR
 
 ### 4.1 Contenido
 
-El plan forma parte de la plantilla P28 y se registra en T12. En Lite, los campos marcados como **(Enterprise)** pueden omitirse.
+El plan se documenta en la plantilla P62 y se registra en T12; P28 recoge su seguimiento por periodo. En Lite, los campos marcados como **(Enterprise)** pueden omitirse.
 
 | Bloque | Campo | Guía |
 |---|---|---|
@@ -308,7 +308,7 @@ En Enterprise, las R6 trimestrales intermedias continúan (01 §6.8). En Lite, l
 
 ### 8.3 Resultado
 
-Cada revisión genera un **informe breve** con conclusiones, acciones, responsables y fechas, registrado en T01 como evento y enlazado en T12. Lo prepara la oficina de IA con el responsable de producto; lo aprueba el patrocinador (Lite) o el comité de IA (Enterprise). Las lecciones se incorporan al registro de lecciones aprendidas de la cartera.
+Cada revisión genera un **informe breve** con conclusiones, acciones, responsables y fechas, registrado en T01 como evento y enlazado en T12. Lo prepara la oficina de IA con el responsable de producto; lo aprueba el patrocinador (Lite) o el comité de IA (Enterprise). Si las acciones cambian la curva, los responsables o los habilitadores, se actualiza el plan de realización (P62). Las lecciones se incorporan al registro de lecciones aprendidas de la cartera (P37 §9).
 
 ---
 
@@ -447,7 +447,7 @@ La auditoría del valor verifica que las cifras de valor que se presentan al com
 | Doble conteo o capacidad liberada sumada en el neto con impacto en decisiones del comité o del consejo | No conformidad mayor. |
 | Alteración deliberada de cifras o de criterios de parada | Al menos no conformidad mayor; se comunica a la comisión delegada del consejo. |
 
-Cuando un hallazgo afecta a cifras ya presentadas al consejo, la oficina de IA presenta en la siguiente sesión la **cifra corregida junto a la presentada**, con la explicación. El informe de auditoría del valor se incorpora a C5.
+Cuando un hallazgo afecta a cifras ya presentadas al consejo, la oficina de IA presenta en la siguiente sesión la **cifra corregida junto a la presentada**, con la explicación. El informe de auditoría del valor se incorpora a C5. Los hallazgos se documentan con la ficha de P60 §8.1.
 
 ---
 
@@ -464,7 +464,8 @@ Cuando un hallazgo afecta a cifras ya presentadas al consejo, la oficina de IA p
 | **P08 · P09** | Lienzo de hipótesis de valor · Línea base | Referencia del plan. |
 | **P20** | Plan de adopción y capacidad | Cambios habilitadores y destino de la capacidad. |
 | **P22** | Resultados de validación y del piloto | Valor medido en G5. |
-| **P28** | Seguimiento de realización de valor | Plan y seguimiento por periodo. |
+| **P28** | Seguimiento de realización de valor | Seguimiento por periodo. |
+| **P62** | Plan de realización de beneficios | Plan de realización: curva, responsables y habilitadores (sección 4). |
 | **P29** | Registro de decisión de *gate* | Decisiones de R6 y G7. |
 | **P30** | Decisión de escalado o retirada | Evidencia de valor en G7. |
 

@@ -75,7 +75,7 @@ Una no conformidad puede detectarse en: verificaciones de *gate* por el auditor 
 
 ### 3.2 Registro
 
-Toda no conformidad se registra en **T08** con el código **NC-AAAA-NNN** (año de detección y número correlativo que no se reinicia dentro del año).
+Toda no conformidad se registra en **T08** (plantilla P50) con el código **NC-AAAA-NNN** (año de detección y número correlativo que no se reinicia dentro del año).
 
 | Campo | Contenido |
 |---|---|
@@ -133,7 +133,7 @@ El análisis es obligatorio en las no conformidades mayores y críticas y recome
 | **Gobierno y controles** | ¿Había separación de funciones? ¿El control estaba diseñado y probado? ¿El registro alertó? |
 | **Entorno** | ¿Cambió la regulación, el uso, el volumen o apareció un atacante? |
 
-Una causa raíz es válida cuando: explica todos los hechos observados; al eliminarla, el fallo no se habría producido o se habría detectado; es accionable; y no se limita a atribuir la responsabilidad a una persona.
+Una causa raíz es válida cuando: explica todos los hechos observados; al eliminarla, el fallo no se habría producido o se habría detectado; es accionable; y no se limita a atribuir la responsabilidad a una persona. La hoja de trabajo es P52.
 
 ### 3.6 Acción correctiva y preventiva
 
@@ -297,7 +297,7 @@ Reglas adicionales:
 - **Proveedores.** Los contratos N2 y N3 deben asegurar que el proveedor notifica en un plazo que permita cumplir estos plazos (36 §6, cláusula 7).
 - **Ensayo.** Las notificaciones se ensayan, como mínimo, una vez al año en un simulacro de incidente S1.
 
-Omitir o retrasar una notificación obligatoria es una no conformidad crítica (01 §12).
+La decisión y las notificaciones se documentan en P51. Omitir o retrasar una notificación obligatoria es una no conformidad crítica (01 §12).
 
 ---
 
@@ -365,7 +365,7 @@ La plantilla P27 incluye también el registro de cambios relevantes en producci�
 | Momento | Contenido |
 |---|---|
 | **Incidente S1** | Comunicación a la comisión delegada en 24 horas: qué ha ocurrido, a quién afecta, qué se ha contenido, qué notificaciones se han hecho o están en plazo, qué decisiones pueden requerirse. |
-| **Trimestral** | Incidentes S1 y S2 con estado; notificaciones regulatorias y su cumplimiento; no conformidades críticas y mayores abiertas y vencidas; tendencias de los indicadores; lecciones sistémicas; incidentes de proveedores; decisiones solicitadas. |
+| **Trimestral** | Incidentes S1 y S2 con estado; notificaciones regulatorias y su cumplimiento; no conformidades críticas y mayores abiertas y vencidas; tendencias de los indicadores; lecciones sistémicas; incidentes de proveedores; decisiones solicitadas. Se presenta con el informe trimestral de segunda línea (P42). |
 | **Anual (C5)** | Eficacia de los procesos de incidentes y no conformidades; recurrencias; resultados de simulacros; ajustes propuestos a plazos y umbrales. |
 
 La información al consejo usa el formato del documento 60 y distingue siempre hechos confirmados de valoraciones en curso.
@@ -376,8 +376,12 @@ La información al consejo usa el formato del documento 60 y distingue siempre h
 
 | Código | Nombre | Uso |
 |---|---|---|
-| **P26** | Plan de respuesta a incidentes | Tipos y severidad aplicables al sistema; contactos y roles; criterios y procedimiento de parada; conservación de evidencias; matriz de notificaciones con plazos y responsables; plantillas de comunicación; calendario de simulacros. Fase 6; se prepara antes de G5. |
+| **P26** | Plan de respuesta a incidentes | Tipos y severidad aplicables al sistema; contactos y roles; criterios y procedimiento de parada; conservación de evidencias; matriz de notificaciones con plazos y responsables; calendario de simulacros. Los modelos de notificación y comunicación están en P51. Fase 6; se prepara antes de G5. |
 | **P27** | Registro de incidentes y cambios | Campos de la sección 7. Fase 6. |
+| **P50** | Registro de no conformidades | Registro NC-AAAA-NNN con clasificación, contención, acciones, verificación de eficacia y cierre (sección 3). |
+| **P51** | Notificaciones y comunicaciones de incidentes | Valoración por régimen, decisión motivada de no notificar, modelos de notificación y comunicaciones a afectados (sección 5). |
+| **P52** | Análisis de causa raíz y plan de acción correctiva | Hoja de trabajo de los cinco porqués y del diagrama de causa y efecto, y plan de acción (secciones 3.5 y 3.6). |
+| **P42** | Informe trimestral de segunda línea | Información trimestral al consejo (sección 9). |
 | **T08** | Registro de no conformidades e incidentes | Registro de NC-AAAA-NNN e INC-AAAA-NNN con estados, plazos, relojes de notificación, alertas de vencimiento, vínculos con riesgos y *gates*, e indicadores de la sección 8. Módulo de T01. |
 | P19 · P24 · P25 | Plan de reversión · Manual de operación · Monitorización y alertas | Proceso alternativo, interruptor de parada y detección. |
 | T06 · T09 · T17 | Riesgos · Proveedores · Panel del consejo | Riesgos materializados, incidentes de terceros e información al consejo. |

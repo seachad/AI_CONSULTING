@@ -1,0 +1,1003 @@
+<!doctype html>
+<!-- GENERADO por build_calculadora.ps1 desde _fuentes/calculadora.plantilla.html y datos_demo.json. No editar a mano. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="SEVEN-G · T11 Calculadora de hipótesis de valor y T13 Calculadora de costes por caso: neto anual, VAN, ROI y plazo de recuperación con las fórmulas del documento 40; costes completos, reparto, consumo, coste de parar y conciliación del documento 42. Funciona sin servidor.">
+<title>T11 · Hipótesis de valor y costes</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23990f3d'/%3E%3Cpath d='M3 13h10v-1H3zm1-2h2V6H4zm3 0h2V3H7zm3 0h2V8h-2z' fill='%23fff1e5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --papel:#fff1e5;--papel-2:#f2dfce;--papel-3:#ead2bd;--tarjeta:#fff8f2;
+  --tinta:#33302e;--tinta-2:#5b5550;--tinta-3:#6e655e;--negro:#1a1817;
+  --regla:#ccc1b7;--regla-2:#e3d3c4;
+  --claret:#990f3d;--oxford:#0f5499;--teal:#0d7680;--velvet:#593380;--ambar:#8a5a00;
+  --ok-bg:#d9ebe0;--med-bg:#f7e3c4;--ko-bg:#f3d3da;--info-bg:#dbe6f2;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Libre Franklin","Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="claro"]){
+    --papel:#262a33;--papel-2:#30353f;--papel-3:#3a404b;--tarjeta:#2b3039;
+    --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
+    --regla:#555b66;--regla-2:#3d424c;
+    --claret:#ff7a9e;--oxford:#86b7f2;--teal:#5fd0cb;--velvet:#c6a3ec;--ambar:#f1c26b;
+    --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="oscuro"]{
+  --papel:#262a33;--papel-2:#30353f;--papel-3:#3a404b;--tarjeta:#2b3039;
+  --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
+  --regla:#555b66;--regla-2:#3d424c;
+  --claret:#ff7a9e;--oxford:#86b7f2;--teal:#5fd0cb;--velvet:#c6a3ec;--ambar:#f1c26b;
+  --ok-bg:#20433f;--med-bg:#4a3b22;--ko-bg:#4d2432;--info-bg:#233a57;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--papel);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font:15px/1.5 var(--sans);overflow-wrap:break-word}
+a{color:var(--oxford);text-underline-offset:3px}
+h1,h2,h3{font-family:var(--serif);color:var(--negro);line-height:1.2}
+h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;font-weight:600}
+h2{font-size:22px;margin:28px 0 10px;padding-top:10px;border-top:3px solid var(--negro);font-weight:600}
+h3{font-size:17px;margin:18px 0 8px;font-weight:700}
+p{margin:0 0 10px}
+.saltar{position:absolute;left:-9999px;top:0;background:var(--negro);color:var(--papel);padding:8px 12px;z-index:100}
+.saltar:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--oxford);outline-offset:2px}
+.oculto{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cab{border-bottom:1px solid var(--regla);background:var(--papel)}
+.cab-in{max-width:1280px;margin:0 auto;padding:10px 16px 8px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.marca{display:flex;align-items:center;gap:8px;font:800 17px/1 var(--serif);letter-spacing:.04em;color:var(--negro);text-decoration:none;margin-right:auto}
+.marca i{width:10px;height:10px;background:var(--claret);display:inline-block}
+.marca span{font:600 14px/1.2 var(--sans);letter-spacing:0;color:var(--tinta-2)}
+.ajustes{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.nav{max-width:1280px;margin:0 auto;padding:0 16px 8px;display:flex;flex-wrap:wrap;gap:4px}
+.nav a{font:600 14px/1 var(--sans);color:var(--tinta);text-decoration:none;padding:9px 10px;border:1px solid transparent;border-radius:2px;white-space:nowrap}
+.nav a:hover{border-color:var(--regla)}
+.nav a[aria-current="page"]{background:var(--negro);color:var(--papel)}
+.aviso-demo{max-width:1280px;margin:0 auto;padding:0 16px}
+.aviso-demo div{background:var(--med-bg);border-left:4px solid var(--ambar);padding:6px 10px;font-size:13px}
+main{max-width:1280px;margin:0 auto;padding:6px 16px 48px}
+main:focus{outline:none}
+.pie{max-width:1280px;margin:0 auto;padding:12px 16px 28px;border-top:3px solid var(--negro);font-size:12.5px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:space-between}
+.pie-legal{flex:1 1 100%;margin:0 0 8px;font-size:12px;line-height:1.5;color:var(--tinta-2)}
+.pie-legal b{color:var(--negro)}
+button,.btn,select,input,textarea{font:inherit;color:var(--tinta)}
+.btn,button{cursor:pointer;background:var(--papel);border:1px solid var(--regla);border-radius:2px;padding:7px 11px;font-weight:600;font-size:14px;line-height:1.2;min-height:36px;text-decoration:none;display:inline-block}
+.btn:hover,button:hover{border-color:var(--tinta-2)}
+.btn.primario,button.primario{background:var(--negro);color:var(--papel);border-color:var(--negro)}
+.btn.peligro,button.peligro{border-color:var(--claret);color:var(--claret)}
+button.mini{min-height:30px;padding:4px 8px;font-size:13px}
+button:disabled{opacity:.55;cursor:not-allowed}
+select,input[type=text],input[type=date],input[type=number],textarea{background:var(--tarjeta);border:1px solid var(--regla);border-radius:2px;padding:6px 8px;min-height:36px;max-width:100%}
+input:disabled,select:disabled,textarea:disabled{opacity:.7}
+textarea{width:100%;min-height:64px}
+label{font-weight:600;font-size:13px;color:var(--tinta-2)}
+.campo{display:flex;flex-direction:column;gap:3px;min-width:0}
+.campo input,.campo select,.campo textarea{width:100%}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px 14px}
+.fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ayuda{font-size:12.5px;color:var(--tinta-3)}
+.enlace-btn,button.enlace-btn{background:none;border:0;padding:0;min-height:0;color:var(--oxford);text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:inherit;line-height:inherit;cursor:pointer}
+.ajustes .enlace-btn{font-size:13px;margin-right:6px;padding:8px 2px}
+.et{display:inline-block;font:600 12px/1.3 var(--sans);padding:2px 7px;border-radius:2px;border:1px solid var(--regla);background:var(--papel-2);color:var(--tinta);white-space:nowrap}
+.et.ok{background:var(--ok-bg);border-color:var(--teal)}
+.et.med{background:var(--med-bg);border-color:var(--ambar)}
+.et.ko{background:var(--ko-bg);border-color:var(--claret)}
+.et.info{background:var(--info-bg);border-color:var(--oxford)}
+.sd{font-style:italic;color:var(--tinta-3)}
+.neg{color:var(--claret);font-weight:700}
+.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.tabla{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 16px}
+.tabla th{text-align:left;font-size:12.5px;color:var(--tinta-2);border-bottom:2px solid var(--negro);padding:6px 10px 6px 0;vertical-align:bottom}
+.tabla td{border-bottom:1px solid var(--regla);padding:7px 10px 7px 0;vertical-align:top}
+.tabla td small{display:block;color:var(--tinta-3);font-size:12px}
+.tabla tr.total td{border-top:2px solid var(--negro);font-weight:700}
+.tabla th.num{text-align:right}
+.tblx{overflow-x:auto;max-width:100%}
+.ed td{padding:4px 6px 4px 0;vertical-align:middle}
+.ed input,.ed select{width:100%;min-width:84px;min-height:32px;padding:4px 6px}
+.ed input[type=text]{min-width:150px}
+@media (max-width:760px){
+  .tabla.resp thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tabla.resp,.tabla.resp tbody,.tabla.resp tr,.tabla.resp td{display:block;width:100%}
+  .tabla.resp tr{border:1px solid var(--regla);background:var(--tarjeta);margin:0 0 10px;padding:6px 10px}
+  .tabla.resp td{border:0;padding:3px 0;display:grid;grid-template-columns:minmax(96px,38%) 1fr;gap:8px;text-align:left}
+  .tabla.resp td::before{content:attr(data-l);font-size:12px;font-weight:600;color:var(--tinta-3)}
+  .tabla.resp td.num{text-align:left}
+}
+.aviso{border-left:4px solid var(--ambar);background:var(--med-bg);padding:8px 10px;margin:8px 0}
+.aviso.ko{border-color:var(--claret);background:var(--ko-bg)}
+.aviso.ok{border-color:var(--teal);background:var(--ok-bg)}
+.aviso.info{border-color:var(--oxford);background:var(--info-bg)}
+.aviso.med{border-color:var(--ambar);background:var(--med-bg)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px 16px;border-top:1px solid var(--negro);border-bottom:1px solid var(--regla);padding:12px 0;margin:10px 0 8px}
+.kpis div b{display:block;font:600 24px/1.15 var(--serif);color:var(--oxford)}
+.kpis div b.neg{color:var(--claret)}
+.kpis div span{font-size:12.5px;color:var(--tinta-2)}
+.kpis div small{display:block;font-size:11.5px;color:var(--tinta-3)}
+.formulas{list-style:none;padding:0;margin:6px 0 12px}
+.formulas li{padding:6px 0;border-bottom:1px dotted var(--regla);font-size:14px}
+.formulas li code{font-family:Consolas,"Courier New",monospace;font-size:13px;background:var(--papel-2);padding:1px 4px;overflow-wrap:anywhere}
+.bloque{border:1px solid var(--regla);background:var(--tarjeta);padding:8px 12px;margin:10px 0}
+.bloque>summary{cursor:pointer;font-weight:700;padding:4px 0}
+.cab-calc{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:end;margin:6px 0 4px}
+.cab-calc .campo{min-width:170px}
+.porque{border-left:4px solid var(--velvet);background:var(--papel-2);padding:8px 10px;margin:8px 0;font-size:14px}
+dialog{border:0;border-top:4px solid var(--claret);background:var(--papel);color:var(--tinta);padding:0;width:min(760px,calc(100vw - 16px));max-height:calc(100vh - 24px)}
+dialog::backdrop{background:rgba(26,24,23,.45)}
+.dlg-cab{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--regla);position:sticky;top:0;background:var(--papel)}
+.dlg-cab h2{margin:0;padding:0;border:0;font-size:19px}
+.dlg-cuerpo{padding:10px 14px 14px}
+.dlg-cuerpo p{max-width:68ch;line-height:1.6}
+#toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:var(--negro);color:var(--papel);padding:8px 14px;max-width:calc(100vw - 32px);z-index:200;font-weight:600;display:none}
+#toast.ver{display:block}
+@media print{.cab,.nav,.sin-imprimir,button,.btn,dialog,.aviso-demo,.editor{display:none!important}.pie{border-top:1px solid #000}main{padding:0}.tblx{overflow:visible}}
+</style>
+</head>
+<body>
+<a class="saltar" href="#principal" id="saltar">Saltar al contenido</a>
+<header class="cab">
+  <div class="cab-in">
+    <a class="marca" href="#/hipotesis"><i aria-hidden="true"></i>SEVEN-G <span id="txt-app">T11 · Hipótesis de valor y costes</span></a>
+    <div class="ajustes">
+      <a class="enlace-btn" id="lnk-d40" href="../../html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html">Documento 40</a>
+      <a class="enlace-btn" id="lnk-d42" href="../../html/es/42_SEVEN-G_Costes_de_IA.html">Documento 42</a>
+      <a class="enlace-btn" id="lnk-t01" href="../T01_registro_iniciativas/registro.html">Registro T01</a>
+      <button type="button" class="enlace-btn" id="btn-legal" data-acc="aviso-legal" aria-haspopup="dialog">Aviso legal</button>
+      <label class="oculto" for="sel-lang" id="lbl-lang">Idioma</label>
+      <select id="sel-lang"><option value="es">ES</option><option value="en">EN</option></select>
+      <label class="oculto" for="sel-tema" id="lbl-tema">Tema</label>
+      <select id="sel-tema"><option value="auto">Auto</option><option value="claro">Claro</option><option value="oscuro">Oscuro</option></select>
+    </div>
+  </div>
+  <nav class="nav" id="nav" aria-label="Vistas"></nav>
+</header>
+<div class="aviso-demo" id="aviso-demo"></div>
+<main id="principal" tabindex="-1"></main>
+<footer class="pie" id="pie"></footer>
+<dialog id="dlg-legal" aria-labelledby="legal-t"></dialog>
+<dialog id="dlg-t01" aria-labelledby="t01-t"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="f-t11" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
+<input type="file" id="f-t01" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
+<script type="application/json" id="datos-demo">{"version_esquema":"0.1","herramienta":"T11","meta":{"organizacion":"Compañía Ejemplo Industrial, S.A. (ficticia)","moneda":"EUR","datos_ilustrativos":true,"nota":"Datos ilustrativos y ficticios, coherentes en escala con el registro de demostración de T01 (iniciativas IA-2026-001 e IA-2026-002). Los desgloses por categoría, las claves de reparto, el consumo, la conciliación y las rampas son inventados para mostrar la herramienta. Cualquier parecido con una compañía real es casual."},"parametros":[{"version":"2026","fecha":"2026-09-16","origen":"Tesis de IA de ejemplo aprobada en C2 (ficticia): horizonte, tasa de descuento, tolerancia y umbrales de alerta del documento 42","aprobado_por":null,"nota":"Valores de ejemplo. El horizonte y la tasa los fija la compañía en C2 (documento 40 §8.2); los umbrales de alerta de consumo son los orientativos del documento 42 §8.2. Los multiplicadores de los escenarios son supuestos de la calculadora, no del marco: cada compañía declara los suyos.","horizonte_anios":3,"tasa_descuento_pct":8,"tolerancia_sin_etiquetar_pct":5,"alertas_consumo":{"aviso_pct":50,"alerta_pct":80,"limite_pct":100,"anomalia_factor":3},"escenarios":{"prudente":{"valor":0.7,"coste_recurrente":1.15,"inversion":1.15},"favorable":{"valor":1.15,"coste_recurrente":1,"inversion":1}},"coste_horario":[{"perfil":"Administración y finanzas","importe":50},{"perfil":"Datos, ingeniería e IA","importe":85},{"perfil":"Negocio y expertos","importe":70},{"perfil":"Operación y soporte","importe":55}]}],"casos":[{"id":"IA-2026-001","nombre":"Agente de conciliación bancaria con registro de asientos","descripcion":"Agente que concilia los movimientos bancarios con las facturas y registra por sí mismo los asientos de importe bajo, dentro de límites fijados; los casos dudosos pasan a una persona.","ambicion":"optimizar","intensidad":"enterprise","fase":3,"fecha":"2026-09-15","autor":"Responsable de producto de IA (ficticio)","version_parametros":"2026","vida_util_anios":5,"origen":"manual","hipotesis":{"enunciado":"Si el agente concilia los movimientos bancarios y registra los asientos de importe bajo, entonces las horas de conciliación manual pasarán de 60.000 a 22.000 al año en la dirección financiera en 12 meses desde G5, medido con antes y después con ajuste por volumen de movimientos.","refutacion":"Menos de 20.000 horas evitadas al año tras 6 meses en producción, o más de un 0,5 % de asientos registrados por el agente que requieren corrección.","horizonte_comprobacion":"Seis meses después de G5","metrica_principal":"Horas de conciliación manual al año","linea_base":"60.000 h (P09, medida en 2025)","objetivo":"22.000 h","umbral_exito":"40.000 h o menos","metodo_atribucion":"antes_despues","diseno":"Periodo de 12 meses antes y después, con ajuste por volumen de movimientos y estacionalidad de cierres; control de gestión aprueba los ajustes.","reparto":"No comparte métrica con otras iniciativas de la cartera.","supuestos":"El contrato de externalización del proceso vence en 2027 y no se renueva; las horas extraordinarias de cierre se eliminan en el primer año de uso estable."},"lineas":[{"tipo":"eficiencias","concepto":"Externalización de la conciliación que no se renueva","unidades":22000,"unidad":"h/año","valor_unitario":50,"importe":null,"fuente":"Contrato vigente y coste horario de control de gestión","estado":"estimado","base":null,"supuestos":"Reducción contractual al vencimiento de 2027."},{"tipo":"eficiencias","concepto":"Horas extraordinarias de cierre eliminadas","unidades":16000,"unidad":"h/año","valor_unitario":50,"importe":null,"fuente":"Nómina 2025 (horas extraordinarias de cierre)","estado":"estimado","base":null,"supuestos":"Menor coste real verificable en nómina."},{"tipo":"capacidad_liberada","concepto":"Horas internas sin plan de materialización","unidades":6000,"unidad":"h/año","valor_unitario":50,"importe":null,"fuente":"Estimación del equipo (F4)","estado":"estimado","base":null,"supuestos":"Sin destino definido: no suma hasta que se materialice o se reasigne (regla 3)."}],"rampa":[40,85,100],"neto_actual":0,"inversion_adicional":null,"criterios_parada":[{"tipo":"principal","criterio":"Horas evitadas insuficientes","umbral":"< 20.000 h/año anualizadas tras 6 meses","momento":"R6","decision":"parar","quien":"Comité de IA"},{"tipo":"salvaguarda","criterio":"Calidad de los asientos","umbral":"> 0,5 % de asientos corregidos en un mes","momento":"Mensual","decision":"iterar","quien":"Responsable de producto; decide el patrocinador"},{"tipo":"economico","criterio":"Sobrecoste de construcción","umbral":"Inversión inicial > 1.300.000 €","momento":"G4 y G5","decision":"parar","quien":"Comité de IA"}],"etapas":[],"valor_opcion":"","costes":{"lineas":[{"componente":"construccion","categoria":"personas_construccion","concepto":"Producto, datos e ingeniería","unidades":5000,"valor_unitario":84,"importe":null,"incremental":true,"fuente":"Plan de fase 3; coste horario completo"},{"componente":"construccion","categoria":"proveedores","concepto":"Integrador del sistema contable y bancario","unidades":null,"valor_unitario":null,"importe":330000,"incremental":true,"fuente":"Oferta del integrador"},{"componente":"construccion","categoria":"consumo_modelos","concepto":"Consumo de modelos en pruebas y piloto","unidades":null,"valor_unitario":null,"importe":40000,"incremental":true,"fuente":"Previsión de la pasarela de modelos"},{"componente":"construccion","categoria":"computo","concepto":"Entornos de desarrollo y pruebas","unidades":null,"valor_unitario":null,"importe":60000,"incremental":true,"fuente":"Tarifa de nube"},{"componente":"construccion","categoria":"datos","concepto":"Preparación y etiquetado de movimientos históricos","unidades":null,"valor_unitario":null,"importe":70000,"incremental":true,"fuente":"Plan de datos"},{"componente":"construccion","categoria":"control","concepto":"EIPD, pruebas de seguridad del agente y auditoría","unidades":null,"valor_unitario":null,"importe":90000,"incremental":true,"fuente":"Plan de control"},{"componente":"adopcion","categoria":"adopcion","concepto":"Formación, rediseño del proceso y acompañamiento","unidades":null,"valor_unitario":null,"importe":90000,"incremental":true,"fuente":"Plan de adopción preliminar (P20)"},{"componente":"recurrente","categoria":"licencias","concepto":"Licencia del conector bancario","unidades":null,"valor_unitario":null,"importe":20000,"incremental":true,"fuente":"Oferta del proveedor"},{"componente":"recurrente","categoria":"personas_operacion","concepto":"Supervisión humana de casos dudosos y soporte","unidades":1400,"valor_unitario":50,"importe":null,"incremental":true,"fuente":"Coste horario de control de gestión"},{"componente":"recurrente","categoria":"control","concepto":"Revisión anual de riesgos y auditoría del agente","unidades":null,"valor_unitario":null,"importe":20000,"incremental":true,"fuente":"Plan de control"},{"componente":"recurrente","categoria":"proveedores","concepto":"Soporte y mantenimiento del integrador","unidades":null,"valor_unitario":null,"importe":25000,"incremental":true,"fuente":"Oferta del integrador"},{"componente":"recurrente","categoria":"adopcion","concepto":"Formación continua","unidades":null,"valor_unitario":null,"importe":5000,"incremental":true,"fuente":"Plan de adopción"},{"componente":"retirada","categoria":"proveedores","concepto":"Migración y borrado de datos y modelos al retirar","unidades":null,"valor_unitario":null,"importe":60000,"incremental":true,"fuente":"Estimación del integrador"}],"compartidos":[{"nombre":"Plataforma de modelos compartida","categoria":"consumo_modelos","coste_total":1000000,"metodo":"consumo","clave_caso":7.68,"clave_total":null,"sin_etiquetar_pct":4,"estructura_pct":0,"clave_aprobada":true,"incremental":true,"nota":"Consumo medido por clave de acceso: 7,68 % del total; 4 % sin etiquetar, dentro de la tolerancia."},{"nombre":"Oficina de IA","categoria":"personas_operacion","coste_total":700000,"metodo":"ponderado","clave_caso":2,"clave_total":21,"sin_etiquetar_pct":null,"estructura_pct":40,"clave_aprobada":true,"incremental":false,"nota":"40 % estructura corporativa (no se reparte); el resto por casos en producción ponderados por intensidad (Enterprise 2, Lite 1)."}],"retirada_en_horizonte":false,"consumo":{"presupuesto_mensual":6700,"dia":12,"dias_mes":30,"acumulado":3100,"ultimo_dia":290,"media_reciente":250},"unidad_resultado":{"unidad":"movimiento conciliado","unidades_utiles":1200000,"volumen_total":1500000,"coste_humano_residual":450000,"coste_unitario_base":1.6},"parada":{"presupuesto_aprobado":1100000,"gastado":310000,"compromisos":45000,"penalizaciones":20000,"cierre":15000},"conciliacion":{"fecha_corte":"2026-08-31","saldo_contable":318500,"reales":[{"categoria":"personas_construccion","importe":150000},{"categoria":"proveedores","importe":110000},{"categoria":"datos","importe":30000},{"categoria":"control","importe":20000}],"explicacion":"8.500 € de una factura del integrador contabilizada y pendiente de imputar en T13; se imputa en el cierre de septiembre."}},"notas":"Caso de ejemplo en la fase 3 (G3 pendiente). Totales coherentes con el registro de demostración de T01: eficiencias esperadas 1,9 M€, coste recurrente 260.000 € e inversión 1,1 M€."},{"id":"IA-2026-002","nombre":"Mantenimiento predictivo como servicio para clientes industriales","descripcion":"Nuevo servicio de pago que avisa a los clientes industriales de las averías probables de sus equipos a partir de los datos de sensores, con visitas técnicas planificadas.","ambicion":"transformar","intensidad":"enterprise","fase":2,"fecha":"2026-09-10","autor":"Responsable de producto de IA (ficticio)","version_parametros":"2026","vida_util_anios":8,"origen":"manual","hipotesis":{"enunciado":"Si se ofrece a los clientes industriales un servicio de pago de aviso de averías con visitas planificadas, entonces al menos 190 clientes contratarán el servicio en el tercer año, medido con despliegue escalonado por regiones (diferencias en diferencias).","refutacion":"Menos de 5 clientes piloto con intención firmada al cierre de la etapa 1, o menos de 3 renovaciones tras 3 meses de prueba de pago en la etapa 2.","horizonte_comprobacion":"Etapa 1: 31-03-2027; etapa 2: 30-09-2027","metrica_principal":"Contratos de servicio activos","linea_base":"0 contratos","objetivo":"190 contratos en el año 3","umbral_exito":"5 intenciones firmadas (etapa 1)","metodo_atribucion":"did","diseno":"Lanzamiento escalonado por regiones comerciales; las regiones sin lanzamiento sirven de comparación.","reparto":"Ninguno.","supuestos":"Precio de 50.000 € por contrato y año; los clientes aceptan compartir los datos de sensores."},"lineas":[{"tipo":"retorno","concepto":"Contratos de mantenimiento predictivo","unidades":190,"unidad":"contratos/año","valor_unitario":50000,"importe":null,"fuente":"Precio objetivo del área comercial","estado":"estimado","base":"ingreso","supuestos":"Valorado en ingreso porque aún no se conoce el margen del servicio; se indica (documento 40 §5.1)."},{"tipo":"riesgo_evitado","concepto":"Menor riesgo de pérdida de clientes de mantenimiento tradicional","unidades":null,"unidad":null,"valor_unitario":null,"importe":null,"fuente":null,"estado":"estimado","base":null,"supuestos":"No cuantificado: no hay relación económica demostrada (regla 7)."}],"rampa":[10,40,75],"neto_actual":0,"inversion_adicional":null,"criterios_parada":[{"tipo":"principal","criterio":"Interés de clientes insuficiente","umbral":"< 5 intenciones firmadas al cierre de la etapa 1","momento":"31-03-2027","decision":"parar","quien":"Comité de IA"},{"tipo":"salvaguarda","criterio":"Falsos avisos","umbral":"> 20 % de visitas sin avería confirmada","momento":"Mensual durante el piloto","decision":"iterar","quien":"Responsable de producto"},{"tipo":"economico","criterio":"Límite de inversión de la etapa","umbral":"Inversión acumulada > límite de la etapa aprobado","momento":"Cierre de cada etapa","decision":"parar","quien":"Consejo"}],"etapas":[{"etapa":1,"pregunta":"¿Pagarían los clientes industriales por el servicio?","evidencia":"≥ 5 clientes con intención firmada","fecha":"2027-03-31","inversion_max":480000,"organo":"Comité de IA"},{"etapa":2,"pregunta":"¿Se sostiene el uso pagado?","evidencia":"≥ 3 clientes renuevan tras 3 meses","fecha":"2027-09-30","inversion_max":1500000,"organo":"Consejo"},{"etapa":3,"pregunta":"¿Escala el servicio a todas las regiones?","evidencia":"≥ 60 contratos activos","fecha":"2028-06-30","inversion_max":4200000,"organo":"Consejo"}],"valor_opcion":"Aunque el servicio no escale, la compañía gana una plataforma de datos de sensores de sus equipos instalados y conocimiento de fallos que mejora su mantenimiento tradicional.","costes":{"lineas":[{"componente":"construccion","categoria":"personas_construccion","concepto":"Equipo de producto, datos y servicio","unidades":null,"valor_unitario":null,"importe":2100000,"incremental":true,"fuente":"Plan por etapas"},{"componente":"construccion","categoria":"proveedores","concepto":"Integración con sensores y desarrollo de la aplicación de cliente","unidades":null,"valor_unitario":null,"importe":1800000,"incremental":true,"fuente":"Ofertas"},{"componente":"construccion","categoria":"computo","concepto":"Plataforma de ingesta de datos de sensores","unidades":null,"valor_unitario":null,"importe":600000,"incremental":true,"fuente":"Tarifa de nube"},{"componente":"construccion","categoria":"datos","concepto":"Datos históricos de fallos y etiquetado","unidades":null,"valor_unitario":null,"importe":900000,"incremental":true,"fuente":"Plan de datos"},{"componente":"construccion","categoria":"control","concepto":"Contratos de datos con clientes, seguridad y responsabilidad del servicio","unidades":null,"valor_unitario":null,"importe":300000,"incremental":true,"fuente":"Asesoría jurídica"},{"componente":"adopcion","categoria":"adopcion","concepto":"Formación de técnicos y del equipo comercial","unidades":null,"valor_unitario":null,"importe":480000,"incremental":true,"fuente":"Plan de adopción"},{"componente":"recurrente","categoria":"licencias","concepto":"Licencias de la plataforma de servicio","unidades":null,"valor_unitario":null,"importe":150000,"incremental":true,"fuente":"Ofertas"},{"componente":"recurrente","categoria":"consumo_modelos","concepto":"Consumo de modelos","unidades":null,"valor_unitario":null,"importe":250000,"incremental":true,"fuente":"Previsión de volumen"},{"componente":"recurrente","categoria":"computo","concepto":"Ingesta y almacenamiento de datos de sensores","unidades":null,"valor_unitario":null,"importe":350000,"incremental":true,"fuente":"Tarifa de nube"},{"componente":"recurrente","categoria":"personas_operacion","concepto":"Equipo de operación del servicio","unidades":null,"valor_unitario":null,"importe":500000,"incremental":true,"fuente":"Plan de operación"},{"componente":"recurrente","categoria":"control","concepto":"Seguridad y cumplimiento del servicio","unidades":null,"valor_unitario":null,"importe":50000,"incremental":true,"fuente":"Plan de control"},{"componente":"recurrente","categoria":"adopcion","concepto":"Formación continua de técnicos","unidades":null,"valor_unitario":null,"importe":100000,"incremental":true,"fuente":"Plan de adopción"},{"componente":"retirada","categoria":"proveedores","concepto":"Cierre ordenado del servicio y devolución de datos a clientes","unidades":null,"valor_unitario":null,"importe":300000,"incremental":true,"fuente":"Estimación"}],"compartidos":[],"retirada_en_horizonte":false,"consumo":{"presupuesto_mensual":null,"dia":null,"dias_mes":null,"acumulado":null,"ultimo_dia":null,"media_reciente":null},"unidad_resultado":{"unidad":"contrato activo","unidades_utiles":null,"volumen_total":null,"coste_humano_residual":null,"coste_unitario_base":null},"parada":{"presupuesto_aprobado":480000,"gastado":480000,"compromisos":0,"penalizaciones":null,"cierre":null},"conciliacion":{"fecha_corte":null,"saldo_contable":null,"reales":[],"explicacion":""}},"notas":"Apuesta de Transformar en la fase 2. Totales coherentes con el registro de demostración de T01: retorno esperado 9,5 M€ (en ingreso), coste recurrente 1,4 M€ e inversión 6,18 M€ en tres etapas. El VAN es informativo."}]}</script>
+<script>
+'use strict';
+/* =========================================================
+   SEVEN-G · T11 Calculadora de hipótesis de valor (documento 40)
+   con T13 Calculadora de costes por caso (documento 42) como módulo
+   Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García · SEACHAD
+   ========================================================= */
+const DEMO_TXT = document.getElementById('datos-demo').textContent;
+const VERSION_ESQUEMA = '0.1';
+const LS_DATOS = 'seveng-t11-datos-v1', LS_UI = 'seveng-t11-ui-v1';
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
+
+/* ---------------- i18n ---------------- */
+const TX = {
+es:{
+ app:'T11 · Hipótesis de valor y costes', saltar:'Saltar al contenido', idioma:'Idioma', tema:'Tema', t_auto:'Auto', t_claro:'Claro', t_oscuro:'Oscuro', vistas:'Vistas',
+ doc40:'Documento 40', doc42:'Documento 42', reg_t01:'Registro T01',
+ doc40_href:'../../html/es/40_SEVEN-G_Reglas_de_medicion_del_valor.html', doc42_href:'../../html/es/42_SEVEN-G_Costes_de_IA.html',
+ v_hipotesis:'Hipótesis de valor (T11)', v_costes:'Costes por caso (T13)', v_decision:'Hoja de decisión', v_parametros:'Parámetros', v_datos:'Datos',
+ demo:'Datos ilustrativos y ficticios, coherentes con el registro de demostración de T01.',
+ pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García · SEACHAD · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador. No se envía nada a terceros.',
+ legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido',
+ legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero, contable ni profesional, ni garantizan el cumplimiento de ninguna norma. La calculadora aplica las fórmulas del marco a los datos que se introducen; no decide: el criterio económico, el horizonte y la tasa los fija y los aplica la propia compañía. Cada organización que use la herramienta es la única responsable de sus datos, de las decisiones que adopte con ellos, de identificar la normativa que le aplica y de certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad alguna por el uso de la herramienta. Los datos de demostración son ficticios.',
+ caso:'Caso', nuevo:'Nuevo caso', duplicar:'Duplicar', eliminar:'Eliminar', imprimir:'Imprimir hoja de decisión', desde_t01:'Nuevo desde un registro T01…',
+ conf_eliminar:'¿Eliminar el caso {c}? No se puede deshacer.', ok_eliminado:'Caso eliminado.', ok_nuevo:'Caso creado.', ninguno:'No hay casos. Cree uno nuevo o cárguelo desde un registro T01.',
+ tit_hip:'Hipótesis de valor', sub_hip:'Fórmulas oficiales del documento 40 (F1–F4 y F7–F9) con el horizonte y la tasa aprobados en C2. «Sin dato» no es cero: un importe vacío deja el resultado sin dato y nunca se estima.',
+ tit_cos:'Costes por caso', sub_cos:'Coste completo con las nueve categorías del documento 42: construcción, adopción inicial, recurrente y retirada; reparto de costes compartidos, consumo, coste por unidad de resultado, coste de parar y conciliación.',
+ tit_dec:'Hoja de decisión', sub_dec:'Resumen para el órgano que decide el gate. La calculadora informa; no decide.',
+ identificacion:'Identificación', id:'Código', nombre:'Nombre', descripcion:'Descripción comprensible (regla 10)', ambicion:'Nivel de ambición confirmado', intensidad:'Intensidad', fase:'Fase', fecha:'Fecha', autor:'Autor', version_parametros:'Parámetros (ejercicio)', vida_util:'Vida útil esperada (años)',
+ lite:'Lite', enterprise:'Enterprise', sin_confirmar:'Sin confirmar',
+ resultado:'Resultado', neto_anual:'Valor neto anual (F2)', neto_sub:'en régimen', van:'VAN (F7)', roi:'ROI (F8)', payback:'Plazo de recuperación (F9)', inv_ini:'Inversión inicial (I)', f3:'Neto adicional por euro (F3)', f3_sub:'con coste incremental: {v}',
+ anios:'años', anio:'Año', por_euro:'€ por €', informativo:'informativo', no_recupera:'No se recupera en el horizonte',
+ formulas:'Fórmulas aplicadas y supuestos',
+ fx_f1:'F1 · Importe de cada línea = unidades incrementales × valor unitario (ver tabla de líneas).',
+ fx_f2:'F2 · Valor neto anual = eficiencias + retorno − coste recurrente = {e} + {r} − {c} = {n}',
+ fx_i:'I = construcción + adopción inicial = {b} + {a} = {i}',
+ fx_f7:'F7 · VAN = −I + Σ neto anual del año t ÷ (1 + r)^t, t = 1…{h}, r = {r} → {v}',
+ fx_f8:'F8 · ROI({h}) = (Σ neto anual − I) ÷ I = ({s} − {i}) ÷ {i} = {v}',
+ fx_f9:'F9 · Primer año en que el neto acumulado ≥ I, interpolado dentro del año: {v}',
+ fx_f9_det:'{a} + ({i} − {c}) ÷ {n} = {v}',
+ fx_f3:'F3 · Neto adicional por euro = (neto anual potencial − neto anual actual) ÷ inversión adicional = ({p} − {a}) ÷ {i} = {v}',
+ fx_f4:'F4 · Capacidad liberada = {v} (se informa aparte; no suma en el neto, regla 3).',
+ sup_h:'Horizonte H = {h} años (parámetros {v}{x}); tasa r = {r}; rampa de adopción por año: {rp}.', sup_vida:'; limitado por la vida útil de {n} años', sup_ret:'Coste de retirada: {v}.', sup_ret_in:'se resta en el año {h}', sup_ret_out:'fuera del horizonte: solo en el coste total de propiedad', sup_rec:'El coste recurrente se imputa completo cada año desde el primero (42 §2, principio 3); la rampa solo afecta al valor.',
+ tabla_anios:'Flujo por año', rampa:'Rampa', valor_bruto:'Valor bruto (eficiencias + retorno)', coste_rec:'Coste recurrente', retirada:'Retirada', neto:'Neto anual', factor:'Factor de descuento', va:'Valor actual', acumulado:'Acumulado sin descontar',
+ escenarios:'Escenarios', esc_sub:'Multiplicadores declarados en los parámetros (P10 §6.2); son supuestos, no datos.', esc_prudente:'Prudente', esc_central:'Central', esc_favorable:'Favorable', multiplicadores:'Multiplicadores (valor · coste recurrente · inversión)',
+ criterio:'Criterio económico de C2 (información, no decisión)',
+ cr_optimizar_ok:'VAN ≥ 0 con el H y la r aprobados en C2: cumple el criterio económico único del documento 40 §8.3.', cr_optimizar_ko:'VAN < 0 con el H y la r aprobados en C2: no cumple el criterio económico único del documento 40 §8.3.',
+ cr_aumentar:' En Aumentar se exige además la viabilidad de la adopción y del cambio de rol (P10 §7).',
+ cr_transformar:'En Transformar no se exige VAN ≥ 0 del conjunto en G3: se exigen el límite de inversión de la etapa, criterios de parada por etapa y valor de opción documentado. El VAN ({v}) es informativo.',
+ cr_sin:'Ambición sin confirmar: el criterio de G3 depende del nivel (01 §7.6).', cr_sd:'Sin dato: falta algún importe para calcular el VAN. Complete los importes; no se estima.',
+ cr_nota:'Es información para el órgano que decide el gate. ROI y plazo de recuperación son informativos y no tienen umbral propio. Para priorizar entre casos se usa F3, no el VAN.',
+ alertas:'Validaciones y alertas', sin_alertas:'Sin alertas.',
+ bloque_hip:'Hipótesis falsable, métrica y método de atribución (P08 §4–6)', enunciado:'Enunciado de la hipótesis', refutacion:'Condición de refutación', horizonte_comp:'Horizonte de comprobación', metrica:'Métrica principal', linea_base:'Línea base (P09)', objetivo:'Objetivo', umbral_exito:'Umbral de éxito', metodo:'Método de atribución', estado_max:'Estado máximo: {e}', diseno:'Diseño de la medición', reparto_otros:'Reparto con otras iniciativas (regla 5)', supuestos_criticos:'Supuestos críticos',
+ bloque_lineas:'Líneas de valor (F1): eficiencias, retorno y magnitudes que no suman', tipo:'Tipo', concepto:'Concepto', unidades:'Unidades incrementales', unidad:'Unidad', valor_unitario:'Valor unitario (€)', importe_directo:'Importe directo (€)', importe:'Importe (€)', estado:'Estado', base:'Retorno en', margen:'Margen', ingreso:'Ingreso', fuente:'Fuente', supuestos:'Supuestos', anadir:'Añadir', quitar:'Quitar', sin_formula:'sin fórmula',
+ lineas_ayuda:'Importe = unidades incrementales × valor unitario. Deje el importe directo vacío si hay fórmula; úselo solo para importes importados sin descomponer (se señalan).',
+ bloque_rampa:'Rampa de adopción y priorización', rampa_ayuda:'Porcentaje del valor en régimen que se alcanza cada año (43 §4.1). Un año vacío repite el anterior.', neto_actual:'Neto anual actual (€)', neto_actual_ayuda:'0 si la iniciativa es nueva.', inv_adicional:'Inversión adicional para F3 (€)', inv_adicional_ph:'= I',
+ bloque_parada:'Criterios de parada (P08 §8)', parada_ayuda:'Como mínimo uno sobre la métrica principal, uno de salvaguarda y uno económico. No se relajan sin aprobación del órgano que autorizó la iniciativa.', criterio_p:'Criterio', umbral:'Indicador y umbral', momento:'Momento', decision:'Decisión', quien:'Quién lo evalúa',
+ bloque_etapas:'Solo Transformar: etapas con límite de inversión (P08 §9)', etapa:'Etapa', pregunta:'Pregunta de aprendizaje', evidencia:'Evidencia esperada', inv_max:'Inversión máxima (€)', inv_acum:'Acumulada máxima (€)', organo:'Órgano', valor_opcion:'Valor de opción',
+ res_costes:'Resumen de costes', construccion_t:'Construcción', adopcion_t:'Adopción inicial', recurrente_t:'Coste recurrente completo', recurrente_inc:'Coste recurrente incremental', retirada_t:'Retirada estimada', tco:'Coste total de propiedad ({h} años)',
+ fx_tco:'Coste total de propiedad (H) = construcción + adopción inicial + Σ coste recurrente + retirada = {b} + {a} + {h} × {c} + {r} = {v}',
+ vista_inc:'Coste completo (para medir) frente a coste incremental (para decidir): el incremental excluye lo que existirá igualmente (42 §2 y §6.8).',
+ por_categoria:'Por categoría y componente', categoria:'Categoría', sin_categoria:'Sin categoría', total:'Total', directo:'directo', repartido:'repartido',
+ bloque_clineas:'Líneas de coste directas', componente:'Componente', incremental:'¿Incremental?', si:'Sí', no:'No', sd_opt:'Sin dato',
+ bloque_comp:'Costes compartidos y claves de reparto (42 §6)', comp_ayuda:'Consumo medido: clave del caso en % del consumo total y % sin etiquetar (se reparte en proporción solo dentro de la tolerancia). Inductor o ponderado: clave del caso ÷ clave total, sobre el coste menos la parte de estructura corporativa, que no se reparte.', coste_total:'Coste total anual (€)', metodo_rep:'Método', clave_caso:'Clave del caso', clave_total:'Clave total', sin_etiquetar:'% sin etiquetar', estructura:'% estructura', clave_aprobada:'Clave aprobada', imputado:'Imputado al caso (€)',
+ ret_horizonte:'¿Retirada prevista dentro del horizonte?',
+ bloque_consumo:'Consumo y presupuesto (42 §8)', presupuesto_mensual:'Presupuesto mensual de consumo (€)', dia:'Día del mes', dias_mes:'Días del mes', acumulado_mes:'Consumo acumulado del mes (€)', ultimo_dia:'Consumo del último día (€)', media_reciente:'Media diaria reciente (€)',
+ cons_pct:'Consumido: {p} del presupuesto', cons_prev:'Previsión de cierre = acumulado ÷ días transcurridos × días del mes = {v} ({p})', cons_ok:'Por debajo del primer umbral de alerta.',
+ cons_50:'Alerta del {u} %: revisar la previsión (responsable de operación).', cons_80:'Alerta del {u} % o previsión de cierre > 100 %: analizar la causa y decidir medidas (operación y producto).', cons_100:'Presupuesto agotado: aplicar el nivel previsto de la cascada de degradación por coste (documento 52 §10.3) o aprobar un suplemento con motivo (patrocinador y oficina de IA).', cons_anom:'Consumo anómalo: el último día supera {f} veces la media reciente. Tratar como posible incidente (documento 37).',
+ bloque_unidad:'Coste por unidad de resultado (42 §9)', unidad_res:'Unidad de resultado útil', unidades_utiles:'Unidades de resultado útil al año', volumen_total:'Volumen total tratado al año', coste_residual:'Coste humano residual (€/año)', coste_base:'Coste del proceso por unidad en la línea base (€)',
+ uni_ia:'Coste de la IA por unidad = coste recurrente ÷ unidades útiles = {v}', uni_proc:'Coste del proceso por unidad = (coste recurrente + coste humano residual) ÷ volumen = {v} (línea base: {b})', uni_pot:'Reducción del coste del proceso: {v}. Es capacidad potencial, no eficiencia: solo cuenta cuando se materializa (regla 3).',
+ bloque_parar:'Coste de parar e inversión evitada (42 §10)', presupuesto_aprobado:'Presupuesto aprobado (€)', gastado:'Gastado hasta la decisión (coste hundido, €)', compromisos:'Compromisos no cancelables (€)', penalizaciones:'Penalizaciones por cancelación (€)', cierre:'Coste de cierre (€)',
+ par_coste:'Coste de parar = penalizaciones + cierre = {v}', par_evit:'Inversión evitada = aprobado − gastado − compromisos = {v} (no suma en el valor)', par_neto:'Gasto futuro evitado neto del coste de parar (informativo) = {v}', par_rec:'Coste recurrente evitado previsto: {v} al año (estimado; no suma en el valor).', par_hundido:'Coste hundido: {v}. No interviene en la decisión.',
+ bloque_conc:'Conciliación previsto / real (42 §11)', fecha_corte:'Fecha de corte', saldo_contable:'Saldo contable del objeto de coste (€)', explicacion:'Explicación de las diferencias', previsto:'Previsto (I)', real:'Real a la fecha', ejecucion:'Ejecución',
+ conc_dif:'Diferencia saldo contable − real imputado en T13 = {s} − {r} = {d}', conc_ok:'Sin diferencias.',
+ hoja_resp:'Respuesta propuesta al consejo', resp_si:'Sí', resp_cond:'Sí, con una condición: {c}', resp_falta:'Todavía no, porque falta {c}', resp_no:'No, porque {c}',
+ resp_nota:'Formatos de la especificación común (§5.8). El texto es una propuesta a partir de los cálculos; lo decide el órgano.',
+ falta_datos:'completar los importes sin dato', falta_metodo:'fijar el método de atribución', falta_parada:'fijar los criterios de parada', falta_etapas:'fijar las etapas con límite de inversión', van_neg:'el VAN es negativo con el H y la r de C2', cond_alertas:'resolver las alertas señaladas en rojo',
+ tit_par:'Parámetros por ejercicio', sub_par:'Horizonte H y tasa r aprobados en C2 (40 §8.2), tolerancia de consumo sin etiquetar (42 §6.3), umbrales de alerta de consumo (42 §8.2), multiplicadores de escenarios y coste horario completo por perfil (control de gestión). Una versión usada por algún caso no se edita: se crea una nueva.',
+ version:'Versión', origen:'Origen', aprobado_por:'Aprobada por', nota:'Nota', usada:'Usada por {n} casos', no_usada:'Sin casos: editable', nueva_version:'Nueva versión a partir de esta', nombre_version:'Nombre de la nueva versión (por ejemplo, 2027)', ya_existe:'Ya existe esa versión.', ok_version:'Versión {v} creada.',
+ parametro:'Parámetro', valor:'Valor', coste_horario:'Coste horario completo por perfil', perfil:'Perfil', importe_h:'€/h',
+ tit_datos:'Datos', sub_datos:'Importe o exporte el fichero completo de T11 (parámetros y casos). Para empezar un caso desde el registro de iniciativas, exporte su JSON completo en T01 («Datos» → «JSON completo») y elija la iniciativa. El CSV es la plantilla de hoja de cálculo de T11 y T13 (documento 03).',
+ exportar:'Exportar JSON de T11', importar:'Importar JSON de T11 (sustituye)', cargar_t01:'Nuevo caso desde un registro T01', exp_caso:'Exportar el resultado del caso (JSON para T01)', exp_csv:'Exportar el caso en CSV (hoja de cálculo)', restaurar:'Restaurar los datos de ejemplo', vaciar:'Vaciar (sin casos)',
+ conf_importar:'Se sustituirán los datos actuales de T11. ¿Continuar?', conf_restaurar:'Se sustituirán los datos actuales por los de ejemplo. ¿Continuar?', conf_vaciar:'Se borrarán todos los casos (se conservan los parámetros). ¿Continuar?',
+ ok_import:'Datos importados.', ok_export:'Fichero exportado.', err_json:'El fichero no es un JSON válido de T11.', err_t01:'El fichero no es un registro completo de T01.',
+ t01_tit:'Nuevo caso desde el registro T01', t01_elegir:'Iniciativa', t01_crear:'Crear caso', t01_cancelar:'Cancelar', t01_ayuda:'Se importan los valores esperados (eficiencias, retorno, capacidad liberada, riesgo evitado y cumplimiento), el coste recurrente y la inversión esperados. T01 guarda solo el importe y el texto de la fórmula: las líneas llegan sin descomponer y sin categoría de coste, y se señalan para completarlas. Nada se estima.',
+ ok_t01:'Caso {c} creado desde el registro T01. Complete lo que el registro no contiene.', t01_nota:'Creado desde el registro T01 ({o}) el {f}. Importes esperados sin descomponer en unidades × valor unitario ni clasificar por categoría: complételos.', t01_inv:'Inversión registrada en T01 (realizada + pendiente)', t01_inv_sd:'Inversión registrada en T01: pendiente sin dato',
+ guardado:'Guardado en este navegador.', no_guardado:'No se ha podido guardar en este navegador: exporte el JSON para no perder los cambios.', bloqueado:'Esta versión la usan casos y no se edita.',
+ al_vida:'El horizonte de C2 ({h} años) supera la vida útil esperada ({v} años): se usa la vida útil (40 §8.2).',
+ al_linea_sd:'Línea «{c}» sin dato: el total de su tipo y el neto quedan sin dato (regla 8).', al_sin_formula:'Línea «{c}» sin fórmula: importe sin descomponer en unidades × valor unitario (regla 1).', al_validado:'Línea «{c}» marcada como validada: el valor esperado no se valida (40 §4.1, regla 2); use estimado o declarado.', al_sin_estado:'Línea «{c}» sin estado: se trata como estimada (regla 2).',
+ al_mezcla:'Retorno que mezcla margen e ingreso en el mismo total (40 §5.1 y error 5).', al_ingreso:'Retorno valorado en ingreso, no en margen: se indica (40 §5.1).', al_capacidad:'Capacidad liberada de {v}: se informa aparte y no suma en el neto hasta que se materialice o se reasigne (regla 3).', al_nosumable:'Riesgo evitado o cumplimiento: no suman salvo traducción a dinero con fórmula como eficiencia (40 §5.2).',
+ al_metodo:'Sin método de atribución: se elige en la fase 2 y se aprueba en G2 (40 §7.1).', al_experta:'Estimación experta: nunca permite validar; exige plan y fecha para sustituirla por un método de medición.', al_experta_opt:' En Optimizar no permite acreditar G5 ni G7.', al_hipotesis:'Falta el enunciado de la hipótesis o su condición de refutación: una hipótesis que no puede fallar no es válida (P08).',
+ al_parada:'Faltan criterios de parada de tipo: {f} (P08 §8).', al_rampa:'Sin rampa de adopción: se supone el 100 % del valor desde el año 1, declarado aquí (43 §4.1 pide la curva).',
+ al_cat:'Coste «{c}» sin categoría (42 §12: ningún importe sin categoría ni componente).', al_comp:'Coste «{c}» sin componente.', al_coste_sd:'Coste «{c}» sin dato: el total de su componente queda sin dato (regla 8).', al_rec_sd:'Coste recurrente sin dato: el neto anual, el VAN y el ROI quedan sin dato (regla 8).', al_inv_sd:'Inversión inicial sin dato: VAN, ROI y plazo de recuperación quedan sin dato.',
+ al_adop_obl:'Sin coste de adopción inicial: en Aumentar y Transformar es obligatorio estimarlo (42 §3).', al_adop_cero:'Sin línea de adopción inicial: se toma 0 € y se declara aquí; añádala si existe.', al_ret_sd:'Sin coste de retirada estimado (42 §3: se estima en G3): el coste total de propiedad queda sin dato.',
+ al_tol:'«{c}»: consumo sin etiquetar del {p} %, por encima de la tolerancia del {t} %: no se reparte; {e} se informan como coste no atribuido (IND-COS-08) y se corrige el etiquetado.', al_clave:'«{c}»: clave de reparto no aprobada por control de gestión (42 §12).', al_comp_sd:'«{c}»: coste compartido sin dato o sin clave: el coste recurrente queda sin dato.',
+ al_neto_neg:'Neto anual negativo: el caso se muestra de forma individual al consejo (regla 9).', al_etapas:'Transformar sin etapas con límite de inversión (01 §7.6 y P08 §9).', al_etapas_lim:'La inversión inicial ({i}) supera el límite acumulado de las etapas ({l}).', al_opcion:'Transformar sin valor de opción documentado (P08 §9.2).',
+ al_f3:'F3 sin calcular: falta la inversión adicional o el neto actual; se prioriza por neto adicional absoluto (40 §6).', al_conc:'Diferencia de conciliación sin explicar: se explica o se corrige antes del cierre siguiente (42 §11.3).', al_sobrecoste:'El gasto real de construcción y adopción ({r}) ya supera la inversión inicial prevista ({i}).',
+ ok_csv:'CSV exportado.', ok_caso_json:'Resultado del caso exportado.'
+},
+en:{
+ app:'T11 · Value hypothesis and costs', saltar:'Skip to content', idioma:'Language', tema:'Theme', t_auto:'Auto', t_claro:'Light', t_oscuro:'Dark', vistas:'Views',
+ doc40:'Document 40', doc42:'Document 42', reg_t01:'T01 register',
+ doc40_href:'../../html/en/40_SEVEN-G_Reglas_de_medicion_del_valor.html', doc42_href:'../../html/en/42_SEVEN-G_Costes_de_IA.html',
+ v_hipotesis:'Value hypothesis (T11)', v_costes:'Cost per use case (T13)', v_decision:'Decision sheet', v_parametros:'Parameters', v_datos:'Data',
+ demo:'Illustrative and fictitious data, consistent with the T01 demonstration register.',
+ pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García · SEACHAD · SEVEN-G methodology', pie_priv:'Data is stored only in this browser. Nothing is sent to third parties.',
+ legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'Understood',
+ legal_txt:'SEVEN-G and this tool are provided "as is" and for information purposes only. They do not constitute legal, regulatory, financial, accounting or professional advice, nor do they guarantee compliance with any regulation. The calculator applies the framework formulas to the data entered; it does not decide: the economic criterion, the horizon and the rate are set and applied by the company itself. Each organisation using the tool is solely responsible for its data, for the decisions it takes with it, for identifying the regulations that apply to it and for certifying its own regulatory compliance. The author and SEACHAD accept no liability for the use of the tool. Demonstration data is fictitious.',
+ caso:'Use case', nuevo:'New use case', duplicar:'Duplicate', eliminar:'Delete', imprimir:'Print decision sheet', desde_t01:'New from a T01 register…',
+ conf_eliminar:'Delete use case {c}? This cannot be undone.', ok_eliminado:'Use case deleted.', ok_nuevo:'Use case created.', ninguno:'There are no use cases. Create a new one or load it from a T01 register.',
+ tit_hip:'Value hypothesis', sub_hip:'Official formulas of document 40 (F1–F4 and F7–F9) with the horizon and rate approved in C2. "No data" is not zero: an empty amount leaves the result with no data and is never estimated.',
+ tit_cos:'Cost per use case', sub_cos:'Full cost with the nine categories of document 42: build, initial adoption, recurring and retirement; allocation of shared costs, consumption, cost per unit of output, cost of stopping and reconciliation.',
+ tit_dec:'Decision sheet', sub_dec:'Summary for the body that decides the gate. The calculator informs; it does not decide.',
+ identificacion:'Identification', id:'Code', nombre:'Name', descripcion:'Plain-language description (rule 10)', ambicion:'Confirmed ambition level', intensidad:'Intensity', fase:'Phase', fecha:'Date', autor:'Author', version_parametros:'Parameters (financial year)', vida_util:'Expected useful life (years)',
+ lite:'Lite', enterprise:'Enterprise', sin_confirmar:'Not confirmed',
+ resultado:'Result', neto_anual:'Annual net value (F2)', neto_sub:'at steady state', van:'NPV (F7)', roi:'ROI (F8)', payback:'Payback period (F9)', inv_ini:'Initial investment (I)', f3:'Additional net value per euro (F3)', f3_sub:'with incremental cost: {v}',
+ anios:'years', anio:'Year', por_euro:'€ per €', informativo:'for information', no_recupera:'Not recovered within the horizon',
+ formulas:'Formulas applied and assumptions',
+ fx_f1:'F1 · Amount of each line = incremental units × unit value (see the lines table).',
+ fx_f2:'F2 · Annual net value = efficiencies + return − recurring cost = {e} + {r} − {c} = {n}',
+ fx_i:'I = build + initial adoption = {b} + {a} = {i}',
+ fx_f7:'F7 · NPV = −I + Σ annual net value in year t ÷ (1 + r)^t, t = 1…{h}, r = {r} → {v}',
+ fx_f8:'F8 · ROI({h}) = (Σ annual net value − I) ÷ I = ({s} − {i}) ÷ {i} = {v}',
+ fx_f9:'F9 · First year in which cumulative net value ≥ I, linearly interpolated within the year: {v}',
+ fx_f9_det:'{a} + ({i} − {c}) ÷ {n} = {v}',
+ fx_f3:'F3 · Additional net value per euro = (potential annual net value − current annual net value) ÷ additional investment = ({p} − {a}) ÷ {i} = {v}',
+ fx_f4:'F4 · Released capacity = {v} (reported separately; it does not add to net value, rule 3).',
+ sup_h:'Horizon H = {h} years (parameters {v}{x}); rate r = {r}; adoption ramp-up by year: {rp}.', sup_vida:'; limited by the useful life of {n} years', sup_ret:'Retirement cost: {v}.', sup_ret_in:'deducted in year {h}', sup_ret_out:'outside the horizon: only in the total cost of ownership', sup_rec:'Recurring cost is charged in full every year from the first (42 §2, principle 3); the ramp-up only affects value.',
+ tabla_anios:'Flow by year', rampa:'Ramp-up', valor_bruto:'Gross value (efficiencies + return)', coste_rec:'Recurring cost', retirada:'Retirement', neto:'Annual net value', factor:'Discount factor', va:'Present value', acumulado:'Undiscounted cumulative',
+ escenarios:'Scenarios', esc_sub:'Multipliers declared in the parameters (P10 §6.2); they are assumptions, not data.', esc_prudente:'Prudent', esc_central:'Central', esc_favorable:'Favourable', multiplicadores:'Multipliers (value · recurring cost · investment)',
+ criterio:'C2 economic criterion (information, not a decision)',
+ cr_optimizar_ok:'NPV ≥ 0 with the H and r approved in C2: it meets the single economic criterion of document 40 §8.3.', cr_optimizar_ko:'NPV < 0 with the H and r approved in C2: it does not meet the single economic criterion of document 40 §8.3.',
+ cr_aumentar:' In Augment, the feasibility of adoption and role change is also required (P10 §7).',
+ cr_transformar:'In Transform, NPV ≥ 0 of the whole is not required at G3: the stage investment cap, stop criteria per stage and documented option value are required. The NPV ({v}) is for information.',
+ cr_sin:'Ambition not confirmed: the G3 criterion depends on the level (01 §7.6).', cr_sd:'No data: an amount needed to calculate the NPV is missing. Complete the amounts; nothing is estimated.',
+ cr_nota:'This is information for the body that decides the gate. ROI and payback period are for information and have no threshold of their own. F3, not NPV, is used to prioritise between use cases.',
+ alertas:'Validations and alerts', sin_alertas:'No alerts.',
+ bloque_hip:'Falsifiable hypothesis, metric and attribution method (P08 §4–6)', enunciado:'Hypothesis statement', refutacion:'Refutation condition', horizonte_comp:'Verification horizon', metrica:'Primary metric', linea_base:'Baseline (P09)', objetivo:'Target', umbral_exito:'Success threshold', metodo:'Attribution method', estado_max:'Maximum status: {e}', diseno:'Measurement design', reparto_otros:'Allocation with other initiatives (rule 5)', supuestos_criticos:'Critical assumptions',
+ bloque_lineas:'Value lines (F1): efficiencies, return and magnitudes that do not add', tipo:'Type', concepto:'Concept', unidades:'Incremental units', unidad:'Unit', valor_unitario:'Unit value (€)', importe_directo:'Direct amount (€)', importe:'Amount (€)', estado:'Status', base:'Return in', margen:'Margin', ingreso:'Revenue', fuente:'Source', supuestos:'Assumptions', anadir:'Add', quitar:'Remove', sin_formula:'no formula',
+ lineas_ayuda:'Amount = incremental units × unit value. Leave the direct amount empty if there is a formula; use it only for imported amounts that are not broken down (they are flagged).',
+ bloque_rampa:'Adoption ramp-up and prioritisation', rampa_ayuda:'Percentage of the steady-state value reached each year (43 §4.1). An empty year repeats the previous one.', neto_actual:'Current annual net value (€)', neto_actual_ayuda:'0 if the initiative is new.', inv_adicional:'Additional investment for F3 (€)', inv_adicional_ph:'= I',
+ bloque_parada:'Stop criteria (P08 §8)', parada_ayuda:'At least one on the primary metric, one safeguard and one economic criterion. They are not relaxed without the approval of the body that authorised the initiative.', criterio_p:'Criterion', umbral:'Indicator and threshold', momento:'When', decision:'Decision', quien:'Who assesses it',
+ bloque_etapas:'Transform only: stages with an investment cap (P08 §9)', etapa:'Stage', pregunta:'Learning question', evidencia:'Expected evidence', inv_max:'Maximum investment (€)', inv_acum:'Maximum cumulative (€)', organo:'Body', valor_opcion:'Option value',
+ res_costes:'Cost summary', construccion_t:'Build', adopcion_t:'Initial adoption', recurrente_t:'Full recurring cost', recurrente_inc:'Incremental recurring cost', retirada_t:'Estimated retirement', tco:'Total cost of ownership ({h} years)',
+ fx_tco:'Total cost of ownership (H) = build + initial adoption + Σ recurring cost + retirement = {b} + {a} + {h} × {c} + {r} = {v}',
+ vista_inc:'Full cost (to measure) versus incremental cost (to decide): the incremental view excludes what will exist anyway (42 §2 and §6.8).',
+ por_categoria:'By category and component', categoria:'Category', sin_categoria:'No category', total:'Total', directo:'direct', repartido:'allocated',
+ bloque_clineas:'Direct cost lines', componente:'Component', incremental:'Incremental?', si:'Yes', no:'No', sd_opt:'No data',
+ bloque_comp:'Shared costs and allocation keys (42 §6)', comp_ayuda:'Measured consumption: key of the use case as a % of total consumption and % untagged (allocated proportionally only within the tolerance). Driver or weighted: key of the use case ÷ total key, on the cost less the corporate overhead share, which is not allocated.', coste_total:'Total annual cost (€)', metodo_rep:'Method', clave_caso:'Use case key', clave_total:'Total key', sin_etiquetar:'% untagged', estructura:'% overhead', clave_aprobada:'Key approved', imputado:'Charged to the use case (€)',
+ ret_horizonte:'Retirement planned within the horizon?',
+ bloque_consumo:'Consumption and budget (42 §8)', presupuesto_mensual:'Monthly consumption budget (€)', dia:'Day of the month', dias_mes:'Days in the month', acumulado_mes:'Cumulative consumption this month (€)', ultimo_dia:'Consumption on the last day (€)', media_reciente:'Recent daily average (€)',
+ cons_pct:'Consumed: {p} of the budget', cons_prev:'Month-end forecast = cumulative ÷ days elapsed × days in the month = {v} ({p})', cons_ok:'Below the first alert threshold.',
+ cons_50:'{u}% alert: review the forecast (AI Operations Owner).', cons_80:'{u}% alert or month-end forecast > 100%: analyse the cause and decide on measures (operations and product).', cons_100:'Budget exhausted: apply the planned level of the cost-driven degradation cascade (document 52 §10.3) or approve a supplement with a stated reason (sponsor and AI Office).', cons_anom:'Anomalous consumption: the last day exceeds {f} times the recent average. Treat it as a possible incident (document 37).',
+ bloque_unidad:'Cost per unit of output (42 §9)', unidad_res:'Unit of useful output', unidades_utiles:'Units of useful output per year', volumen_total:'Total volume processed per year', coste_residual:'Residual human cost (€/year)', coste_base:'Baseline process cost per unit (€)',
+ uni_ia:'AI cost per unit = recurring cost ÷ useful units = {v}', uni_proc:'Process cost per unit = (recurring cost + residual human cost) ÷ volume = {v} (baseline: {b})', uni_pot:'Reduction in process cost: {v}. It is potential capacity, not efficiency: it only counts when materialised (rule 3).',
+ bloque_parar:'Cost of stopping and avoided investment (42 §10)', presupuesto_aprobado:'Approved budget (€)', gastado:'Spent up to the decision (sunk cost, €)', compromisos:'Non-cancellable commitments (€)', penalizaciones:'Cancellation penalties (€)', cierre:'Closure cost (€)',
+ par_coste:'Cost of stopping = penalties + closure = {v}', par_evit:'Avoided investment = approved − spent − commitments = {v} (does not add to value)', par_neto:'Avoided future spend net of the cost of stopping (for information) = {v}', par_rec:'Expected avoided recurring cost: {v} per year (estimated; does not add to value).', par_hundido:'Sunk cost: {v}. It plays no part in the decision.',
+ bloque_conc:'Planned / actual reconciliation (42 §11)', fecha_corte:'Cut-off date', saldo_contable:'Accounting balance of the cost object (€)', explicacion:'Explanation of differences', previsto:'Planned (I)', real:'Actual to date', ejecucion:'Execution',
+ conc_dif:'Difference accounting balance − actual charged in T13 = {s} − {r} = {d}', conc_ok:'No differences.',
+ hoja_resp:'Proposed answer to the board', resp_si:'Yes', resp_cond:'Yes, with one condition: {c}', resp_falta:'Not yet, because {c} is missing', resp_no:'No, because {c}',
+ resp_nota:'Formats of the common specification (§5.8). The text is a proposal based on the calculations; the body decides.',
+ falta_datos:'completing the amounts with no data', falta_metodo:'setting the attribution method', falta_parada:'setting the stop criteria', falta_etapas:'setting the stages with an investment cap', van_neg:'the NPV is negative with the C2 H and r', cond_alertas:'resolve the alerts flagged in red',
+ tit_par:'Parameters by financial year', sub_par:'Horizon H and rate r approved in C2 (40 §8.2), tolerance for untagged consumption (42 §6.3), consumption alert thresholds (42 §8.2), scenario multipliers and fully loaded hourly cost by profile (management control). A version used by any use case is not edited: a new one is created.',
+ version:'Version', origen:'Source', aprobado_por:'Approved by', nota:'Note', usada:'Used by {n} use cases', no_usada:'No use cases: editable', nueva_version:'New version based on this one', nombre_version:'Name of the new version (for example, 2027)', ya_existe:'That version already exists.', ok_version:'Version {v} created.',
+ parametro:'Parameter', valor:'Value', coste_horario:'Fully loaded hourly cost by profile', perfil:'Profile', importe_h:'€/h',
+ tit_datos:'Data', sub_datos:'Import or export the complete T11 file (parameters and use cases). To start a use case from the initiative register, export its full JSON in T01 ("Data" → "Full JSON") and choose the initiative. The CSV is the T11 and T13 spreadsheet template (document 03).',
+ exportar:'Export T11 JSON', importar:'Import T11 JSON (replaces)', cargar_t01:'New use case from a T01 register', exp_caso:'Export the use case result (JSON for T01)', exp_csv:'Export the use case as CSV (spreadsheet)', restaurar:'Restore the example data', vaciar:'Clear (no use cases)',
+ conf_importar:'The current T11 data will be replaced. Continue?', conf_restaurar:'The current data will be replaced by the example data. Continue?', conf_vaciar:'All use cases will be deleted (parameters are kept). Continue?',
+ ok_import:'Data imported.', ok_export:'File exported.', err_json:'The file is not a valid T11 JSON.', err_t01:'The file is not a complete T01 register.',
+ t01_tit:'New use case from the T01 register', t01_elegir:'Initiative', t01_crear:'Create use case', t01_cancelar:'Cancel', t01_ayuda:'The expected values (efficiencies, return, released capacity, avoided risk and compliance), the expected recurring cost and investment are imported. T01 stores only the amount and the text of the formula: the lines arrive without being broken down and without a cost category, and they are flagged for completion. Nothing is estimated.',
+ ok_t01:'Use case {c} created from the T01 register. Complete what the register does not contain.', t01_nota:'Created from the T01 register ({o}) on {f}. Expected amounts not broken down into units × unit value nor classified by category: complete them.', t01_inv:'Investment recorded in T01 (spent + pending)', t01_inv_sd:'Investment recorded in T01: pending amount with no data',
+ guardado:'Saved in this browser.', no_guardado:'Could not save in this browser: export the JSON so as not to lose the changes.', bloqueado:'This version is used by use cases and is not edited.',
+ al_vida:'The C2 horizon ({h} years) exceeds the expected useful life ({v} years): the useful life is used (40 §8.2).',
+ al_linea_sd:'Line "{c}" with no data: the total of its type and the net value have no data (rule 8).', al_sin_formula:'Line "{c}" with no formula: amount not broken down into units × unit value (rule 1).', al_validado:'Line "{c}" marked as validated: expected value is not validated (40 §4.1, rule 2); use estimated or declared.', al_sin_estado:'Line "{c}" with no status: it is treated as estimated (rule 2).',
+ al_mezcla:'Return that mixes margin and revenue in the same total (40 §5.1 and error 5).', al_ingreso:'Return valued as revenue, not margin: this is stated (40 §5.1).', al_capacidad:'Released capacity of {v}: reported separately; it does not add to net value until materialised or reassigned (rule 3).', al_nosumable:'Avoided risk or compliance: they do not add unless translated into money with a formula as an efficiency (40 §5.2).',
+ al_metodo:'No attribution method: it is chosen in phase 2 and approved at G2 (40 §7.1).', al_experta:'Expert estimate: it never allows validation; it requires a plan and a date to replace it with a measurement method.', al_experta_opt:' In Optimise it cannot evidence G5 or G7.', al_hipotesis:'The hypothesis statement or its refutation condition is missing: a hypothesis that cannot fail is not valid (P08).',
+ al_parada:'Stop criteria missing of type: {f} (P08 §8).', al_rampa:'No adoption ramp-up: 100% of the value is assumed from year 1, stated here (43 §4.1 requires the curve).',
+ al_cat:'Cost "{c}" with no category (42 §12: no amount without category and component).', al_comp:'Cost "{c}" with no component.', al_coste_sd:'Cost "{c}" with no data: the total of its component has no data (rule 8).', al_rec_sd:'Recurring cost with no data: annual net value, NPV and ROI have no data (rule 8).', al_inv_sd:'Initial investment with no data: NPV, ROI and payback period have no data.',
+ al_adop_obl:'No initial adoption cost: in Augment and Transform it must be estimated (42 §3).', al_adop_cero:'No initial adoption line: €0 is taken and stated here; add it if it exists.', al_ret_sd:'No estimated retirement cost (42 §3: estimated at G3): the total cost of ownership has no data.',
+ al_tol:'"{c}": untagged consumption of {p}%, above the {t}% tolerance: it is not allocated; {e} is reported as unattributed cost (IND-COS-08) and tagging is corrected.', al_clave:'"{c}": allocation key not approved by management control (42 §12).', al_comp_sd:'"{c}": shared cost with no data or no key: recurring cost has no data.',
+ al_neto_neg:'Negative annual net value: the use case is shown individually to the board (rule 9).', al_etapas:'Transform without stages with an investment cap (01 §7.6 and P08 §9).', al_etapas_lim:'The initial investment ({i}) exceeds the cumulative stage cap ({l}).', al_opcion:'Transform without documented option value (P08 §9.2).',
+ al_f3:'F3 not calculated: the additional investment or the current net value is missing; prioritise by absolute additional net value (40 §6).', al_conc:'Unexplained reconciliation difference: it is explained or corrected before the next close (42 §11.3).', al_sobrecoste:'Actual build and adoption spend ({r}) already exceeds the planned initial investment ({i}).',
+ ok_csv:'CSV exported.', ok_caso_json:'Use case result exported.'
+}};
+
+/* ---------------- catálogos (documentos 40 y 42) ---------------- */
+const CATS = [['licencias','Licencias','Licences'],['consumo_modelos','Consumo de modelos','Model consumption'],['computo','Cómputo e infraestructura','Compute and infrastructure'],['datos','Datos','Data'],['personas_construccion','Personas de construcción','Build people'],['personas_operacion','Personas de operación','Operations people'],['proveedores','Proveedores y servicios','Suppliers and services'],['control','Control y cumplimiento','Control and compliance'],['adopcion','Adopción y formación','Adoption and training']];
+const COMPS = [['construccion','Construcción','Build'],['adopcion','Adopción inicial','Initial adoption'],['recurrente','Recurrente anual','Annual recurring'],['retirada','Retirada estimada','Estimated retirement']];
+const TIPOS = [['eficiencias','Eficiencias','Efficiencies'],['retorno','Retorno','Return'],['capacidad_liberada','Capacidad liberada (no suma)','Released capacity (does not add)'],['riesgo_evitado','Riesgo evitado (no suma)','Avoided risk (does not add)'],['cumplimiento','Cumplimiento (no suma)','Compliance (does not add)']];
+const ESTADOS = [['estimado','Estimado','Estimated'],['declarado','Declarado','Declared'],['validado','Validado','Validated']];
+const METODOS = [['grupo_control','Grupo de control aleatorizado','Randomised control group','Validado','Validated'],['ab','Prueba A/B','A/B test','Validado','Validated'],['did','Diferencias en diferencias','Difference-in-differences','Validado','Validated'],['antes_despues','Antes y después con ajuste','Before and after with adjustment','Validado si los ajustes están documentados; si no, declarado','Validated if adjustments are documented; otherwise, declared'],['experta','Estimación experta','Expert estimate','Declarado o estimado; nunca validado','Declared or estimated; never validated']];
+const AMB = [['optimizar','Optimizar','Optimise'],['aumentar','Aumentar','Augment'],['transformar','Transformar','Transform']];
+const INTENS = [['lite','Lite','Lite'],['enterprise','Enterprise','Enterprise']];
+const REPARTO = [['consumo','Consumo medido','Measured consumption'],['inductor','Inductor de coste','Cost driver'],['ponderado','Reparto ponderado','Weighted allocation']];
+const DECIS = [['parar','Parar','Stop'],['pivotar','Pivotar','Pivot'],['iterar','Iterar','Iterate']];
+const TCRIT = [['principal','Métrica principal','Primary metric'],['salvaguarda','Salvaguarda','Safeguard'],['economico','Económico','Economic']];
+const BASES = [['margen','Margen','Margin'],['ingreso','Ingreso','Revenue']];
+const SINO = [['1','Sí','Yes'],['0','No','No']];
+/* Parámetros editables: [ruta, ES, EN] */
+const PARAMS = [
+ ['horizonte_anios','Horizonte H (años, C2)','Horizon H (years, C2)'],['tasa_descuento_pct','Tasa de descuento r (%, C2)','Discount rate r (%, C2)'],['tolerancia_sin_etiquetar_pct','Tolerancia de consumo sin etiquetar (%)','Tolerance for untagged consumption (%)'],
+ ['alertas_consumo.aviso_pct','Alerta de consumo: primer umbral (%)','Consumption alert: first threshold (%)'],['alertas_consumo.alerta_pct','Alerta de consumo: segundo umbral (%)','Consumption alert: second threshold (%)'],['alertas_consumo.limite_pct','Alerta de consumo: presupuesto agotado (%)','Consumption alert: budget exhausted (%)'],['alertas_consumo.anomalia_factor','Consumo anómalo: veces la media diaria reciente','Anomalous consumption: times the recent daily average'],
+ ['escenarios.prudente.valor','Escenario prudente: multiplicador del valor','Prudent scenario: value multiplier'],['escenarios.prudente.coste_recurrente','Escenario prudente: multiplicador del coste recurrente','Prudent scenario: recurring cost multiplier'],['escenarios.prudente.inversion','Escenario prudente: multiplicador de la inversión','Prudent scenario: investment multiplier'],
+ ['escenarios.favorable.valor','Escenario favorable: multiplicador del valor','Favourable scenario: value multiplier'],['escenarios.favorable.coste_recurrente','Escenario favorable: multiplicador del coste recurrente','Favourable scenario: recurring cost multiplier'],['escenarios.favorable.inversion','Escenario favorable: multiplicador de la inversión','Favourable scenario: investment multiplier']
+];
+
+/* ---------------- estado y utilidades ---------------- */
+let D = null, UI = { lang:'es', tema:'auto', sel:null, par:null }, lang = 'es', T01_PEND = null;
+function t(k, v){ let s = (TX[lang] && TX[lang][k]) ?? TX.es[k] ?? k; if(v) for(const x in v) s = s.split('{'+x+'}').join(v[x]); return s; }
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function clon(o){ return JSON.parse(JSON.stringify(o)); }
+function toast(m){ const e=document.getElementById('toast'); e.textContent=m; e.classList.add('ver'); clearTimeout(toast._t); toast._t=setTimeout(()=>e.classList.remove('ver'),3200); }
+function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); }
+function cargarDemo(){ return JSON.parse(DEMO_TXT); }
+function valido(x){ return x && typeof x==='object' && Array.isArray(x.parametros) && x.parametros.length && Array.isArray(x.casos); }
+function n(v){ return (v===null||v===undefined||v==='') ? null : (isFinite(Number(v)) ? Number(v) : null); }
+function nf(x, dec){ return new Intl.NumberFormat(lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:dec??0, minimumFractionDigits:dec??0}).format(x); }
+function eurF(x, dec){ if(x==null||!isFinite(x)) return t('sd_opt'); return lang==='en' ? (x<0?'−€':'€')+nf(Math.abs(x),dec??0) : (x<0?'−':'')+nf(Math.abs(x),dec??0)+' €'; }
+function pct(x, dec){ return x==null||!isFinite(x) ? t('sd_opt') : nf(x, dec??1)+(lang==='en'?'%':' %'); }
+function sdH(x, f){ return x==null||!isFinite(x) ? '<span class="sd">'+esc(t('sd_opt'))+'</span>' : esc(f(x)); }
+function fF(s){ if(!s) return ''; const [y,m,d]=s.split('-'); return lang==='en' ? d+'/'+m+'/'+y : d+'-'+m+'-'+y; }
+function hoy(){ return new Date().toISOString().slice(0,10); }
+function lab(list, k){ const x=list.find(e=>e[0]===k); return x ? (lang==='en'?x[2]:x[1]) : '—'; }
+function opts(list, v, vacio){ return (vacio!=null?'<option value=""'+(v==null||v===''?' selected':'')+'>'+esc(vacio)+'</option>':'')+list.map(e=>'<option value="'+e[0]+'"'+(e[0]===String(v)?' selected':'')+'>'+esc(lang==='en'?e[2]:e[1])+'</option>').join(''); }
+function getP(o,p){ return p.split('.').reduce((a,k)=>a==null?undefined:a[k], o); }
+function setP(o,p,v){ const ks=p.split('.'); let a=o; for(let i=0;i<ks.length-1;i++){ const k=ks[i]; if(a[k]==null) a[k] = /^\d+$/.test(ks[i+1])?[]:{}; a=a[k]; } a[ks[ks.length-1]]=v; }
+
+/* ---------------- controles ligados a una ruta del caso ---------------- */
+function pid(p){ return 'f-'+p.replace(/\./g,'-'); }
+function cNum(p, v, lbl, ph){ return '<input type="number" step="any" id="'+pid(p)+'" data-p="'+p+'" data-tp="num" value="'+(v==null?'':esc(v))+'" placeholder="'+esc(ph??t('sd_opt'))+'"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'; }
+function cTxt(p, v, lbl){ return '<input type="text" id="'+pid(p)+'" data-p="'+p+'" data-tp="txt" value="'+esc(v??'')+'"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'; }
+function cArea(p, v){ return '<textarea id="'+pid(p)+'" data-p="'+p+'" data-tp="txt">'+esc(v??'')+'</textarea>'; }
+function cSel(p, v, list, lbl, vacio){ return '<select id="'+pid(p)+'" data-p="'+p+'" data-tp="sel"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'+opts(list, v, vacio)+'</select>'; }
+function cBool(p, v, lbl){ return '<select id="'+pid(p)+'" data-p="'+p+'" data-tp="bool"'+(lbl?' aria-label="'+esc(lbl)+'"':'')+'>'+opts(SINO, v===true?'1':v===false?'0':'', t('sd_opt'))+'</select>'; }
+function campo(p, etiqueta, ctl, ancho){ return '<div class="campo"'+(ancho?' style="grid-column:1/-1"':'')+'><label for="'+pid(p)+'">'+esc(etiqueta)+'</label>'+ctl+'</div>'; }
+
+/* =========================================================
+   Motor de cálculo · documento 40 (F1–F4, F7–F9) y documento 42
+   ========================================================= */
+function amt(l){ if(!l) return null; const u=n(l.unidades), v=n(l.valor_unitario); if(u!=null && v!=null) return u*v; return n(l.importe); }
+function conFormula(l){ return n(l.unidades)!=null && n(l.valor_unitario)!=null; }
+/* Reparto de un coste compartido al caso (42 §6.1 a §6.6) */
+function reparto(s, tol){
+  const tot=n(s.coste_total); if(tot==null) return {imp:null};
+  const base = tot*(1-(n(s.estructura_pct)||0)/100);
+  const ca=n(s.clave_caso);
+  if(s.metodo==='consumo'){ const sin=n(s.sin_etiquetar_pct)||0; if(ca==null || sin>=100) return {imp:null};
+    if(sin<=tol) return {imp: base*ca/(100-sin), base};
+    return {imp: base*ca/100, base, fuera:true, no_atribuido: base*sin/100}; }
+  const ct=n(s.clave_total); if(ca==null||ct==null||ct===0) return {imp:null};
+  return {imp: base*ca/ct, base};
+}
+/* Flujo por año y F7, F8, F9 (40 §8) */
+function flujo(bruto, rec, I, c, Hc, r, retirada){
+  if(bruto==null || rec==null || I==null || !Hc) return null;
+  const retIn = ((c.costes||{}).retirada_en_horizonte===true);
+  if(retIn && retirada==null) return null;
+  const anios=[]; let prev=null, cum=0, van=-I, pb=null, pbDet=null, suma=0;
+  for(let a=1; a<=Hc; a++){
+    let rp = n((c.rampa||[])[a-1]); if(rp==null) rp = prev ?? 100; prev = rp;
+    const valor = bruto*rp/100, ret = (retIn && a===Hc) ? retirada : 0, neto = valor - rec - ret, f = Math.pow(1+r, a), va = neto/f;
+    if(pb==null && neto>0 && cum+neto>=I){ pb = (a-1) + (I-cum)/neto; pbDet = {a:a-1, c:cum, n:neto}; }
+    cum += neto; suma += neto; van += va;
+    anios.push({a, rampa:rp, valor, coste:rec, ret, neto, f, va, acum:cum-I});
+  }
+  return {anios, van, suma, roi: I>0 ? (suma-I)/I : null, pb, pbDet};
+}
+function calcular(c, P){
+  const A = [], al = (niv,k,v) => A.push([niv, t(k,v)]);
+  const R = {alertas:A};
+  const H = n(P.horizonte_anios), vu = n(c.vida_util_anios);
+  R.H = H; R.vida = vu; R.Hc = (H!=null && vu!=null && vu<H) ? vu : H; if(H!=null && vu!=null && vu<H) al('med','al_vida',{h:H,v:vu});
+  R.r = (n(P.tasa_descuento_pct)||0)/100;
+  // --- valor (F1)
+  const L = c.lineas||[];
+  const nom = (l,i) => l.concepto || ('#'+(i+1));
+  const sumTipo = tp => { let s=0, sd=0, k=0; L.forEach(l=>{ if(l.tipo!==tp) return; k++; const a=amt(l); if(a==null) sd++; else s+=a; }); return {total: sd?null:s, parcial:s, sd, n:k}; };
+  R.ef = sumTipo('eficiencias'); R.re = sumTipo('retorno'); R.cap = sumTipo('capacidad_liberada');
+  L.forEach((l,i)=>{ const a=amt(l), suma=['eficiencias','retorno'].includes(l.tipo);
+    if(suma && a==null) al('ko','al_linea_sd',{c:nom(l,i)});
+    if(suma && a!=null && !conFormula(l)) al('med','al_sin_formula',{c:nom(l,i)});
+    if(l.estado==='validado') al('ko','al_validado',{c:nom(l,i)});
+    if(!l.estado) al('med','al_sin_estado',{c:nom(l,i)}); });
+  const bases = new Set(L.filter(l=>l.tipo==='retorno').map(l=>l.base).filter(Boolean));
+  if(bases.size>1) al('ko','al_mezcla'); else if(bases.has('ingreso')) al('info','al_ingreso');
+  if(R.cap.n) al('info','al_capacidad',{v:R.cap.total==null?t('sd_opt'):eurF(R.cap.total)});
+  if(L.some(l=>['riesgo_evitado','cumplimiento'].includes(l.tipo))) al('info','al_nosumable');
+  R.bruto = (R.ef.total==null||R.re.total==null) ? null : R.ef.total+R.re.total;
+  // --- hipótesis, método y criterios de parada
+  const h = c.hipotesis||{};
+  if(!h.metodo_atribucion) al('ko','al_metodo');
+  else if(h.metodo_atribucion==='experta') A.push(['med', t('al_experta')+(c.ambicion==='optimizar'?t('al_experta_opt'):'')]);
+  if(!(h.enunciado||'').trim() || !(h.refutacion||'').trim()) al('med','al_hipotesis');
+  const tiposCP = new Set((c.criterios_parada||[]).filter(x=>(x.criterio||'').trim()).map(x=>x.tipo));
+  const faltanCP = TCRIT.filter(x=>!tiposCP.has(x[0])).map(x=>lab(TCRIT,x[0]).toLowerCase());
+  if(faltanCP.length) al('med','al_parada',{f:faltanCP.join(', ')});
+  if(!(c.rampa||[]).some(x=>n(x)!=null)) al('med','al_rampa');
+  // --- costes (42 §3 a §6)
+  const C = c.costes||{}, CL = C.lineas||[], tol = n(P.tolerancia_sin_etiquetar_pct) ?? 0;
+  CL.forEach((l,i)=>{ if(!l.categoria) al('med','al_cat',{c:nom(l,i)}); if(!COMPS.some(x=>x[0]===l.componente)) al('ko','al_comp',{c:nom(l,i)}); if(amt(l)==null) al('ko','al_coste_sd',{c:nom(l,i)}); });
+  const comp = k => { let s=0, sd=0, inc=0, m=0; CL.forEach(l=>{ if(l.componente!==k) return; m++; const a=amt(l); if(a==null) sd++; else { s+=a; if(l.incremental!==false) inc+=a; } }); return {total: (sd||!m)?null:s, inc: (sd||!m)?null:inc, sd, n:m}; };
+  R.constr = comp('construccion'); R.adop = comp('adopcion'); R.recDir = comp('recurrente'); R.ret = comp('retirada');
+  const CS = C.compartidos||[];
+  R.comp = CS.map(s=>reparto(s,tol));
+  let sh=0, shInc=0, shSd=0;
+  CS.forEach((s,i)=>{ const x=R.comp[i], nm=s.nombre||('#'+(i+1));
+    if(x.imp==null){ shSd++; al('ko','al_comp_sd',{c:nm}); } else { sh+=x.imp; if(s.incremental===true) shInc+=x.imp; }
+    if(x.fuera) al('ko','al_tol',{c:nm, p:nf(n(s.sin_etiquetar_pct),1), t:nf(tol,1), e:eurF(x.no_atribuido)});
+    if(s.clave_aprobada!==true) al('med','al_clave',{c:nm}); });
+  R.shared = shSd ? null : sh; R.sharedInc = shSd ? null : shInc;
+  const hayRec = R.recDir.n>0 || CS.length>0;
+  const recDirT = R.recDir.n ? R.recDir.total : 0, recDirI = R.recDir.n ? R.recDir.inc : 0;
+  R.rec = (!hayRec || recDirT==null || R.shared==null) ? null : recDirT + R.shared;
+  R.recInc = (!hayRec || recDirI==null || R.sharedInc==null) ? null : recDirI + R.sharedInc;
+  if(R.rec==null) al('ko','al_rec_sd');
+  let adop = R.adop.total;
+  if(R.adop.n===0){ if(['aumentar','transformar'].includes(c.ambicion)){ adop=null; al('ko','al_adop_obl'); } else { adop=0; al('info','al_adop_cero'); } }
+  R.adopV = adop;
+  R.I = (R.constr.total==null || adop==null) ? null : R.constr.total + adop;
+  if(R.I==null) al('ko','al_inv_sd');
+  R.retirada = R.ret.n ? R.ret.total : null; if(R.retirada==null) al('med','al_ret_sd');
+  // --- neto (F2), flujo, VAN (F7), ROI (F8), plazo (F9)
+  R.neto = (R.bruto==null||R.rec==null) ? null : R.bruto - R.rec;
+  R.netoInc = (R.bruto==null||R.recInc==null) ? null : R.bruto - R.recInc;
+  if(R.neto!=null && R.neto<0) al('ko','al_neto_neg');
+  R.fl = flujo(R.bruto, R.rec, R.I, c, R.Hc, R.r, R.retirada);
+  R.van = R.fl ? R.fl.van : null; R.roi = R.fl ? R.fl.roi : null; R.payback = R.fl ? R.fl.pb : null;
+  R.tco = (R.constr.total==null || adop==null || R.rec==null || R.retirada==null || !R.Hc) ? null : R.constr.total + adop + R.Hc*R.rec + R.retirada;
+  // --- F3 (regla 9)
+  const na = n(c.neto_actual), inv = n(c.inversion_adicional) ?? R.I;
+  R.netoActual = na; R.invAd = inv;
+  R.f3 = (R.neto!=null && na!=null && inv) ? (R.neto-na)/inv : null;
+  R.f3inc = (R.netoInc!=null && na!=null && inv) ? (R.netoInc-na)/inv : null;
+  if(R.f3==null && R.neto!=null) al('med','al_f3');
+  // --- escenarios (P10 §6.2)
+  const E = P.escenarios||{}, m1 = {valor:1, coste_recurrente:1, inversion:1};
+  R.esc = [['prudente', E.prudente||m1], ['central', m1], ['favorable', E.favorable||m1]].map(([k,m])=>{
+    const b = R.bruto==null?null:R.bruto*m.valor, rc = R.rec==null?null:R.rec*m.coste_recurrente, i = R.I==null?null:R.I*m.inversion, f = flujo(b, rc, i, c, R.Hc, R.r, R.retirada);
+    return {k, m, neto:(b==null||rc==null)?null:b-rc, I:i, van:f?f.van:null, roi:f?f.roi:null, pb:f?f.pb:null}; });
+  // --- Transformar (01 §7.6, P08 §9)
+  const et = c.etapas||[]; let acum=0; R.etapas = et.map(e=>{ const v=n(e.inversion_max); acum = (acum==null||v==null)?null:acum+v; return acum; });
+  R.limEtapas = et.length ? R.etapas[R.etapas.length-1] : null;
+  if(c.ambicion==='transformar'){
+    if(!et.length) al('ko','al_etapas');
+    else if(R.I!=null && R.limEtapas!=null && R.I>R.limEtapas) al('med','al_etapas_lim',{i:eurF(R.I), l:eurF(R.limEtapas)});
+    if(!(c.valor_opcion||'').trim()) al('med','al_opcion'); }
+  // --- consumo (42 §8)
+  const cs = C.consumo||{}, AC = P.alertas_consumo||{}, pres=n(cs.presupuesto_mensual), acu=n(cs.acumulado), dia=n(cs.dia), dm=n(cs.dias_mes);
+  R.cons = null;
+  if(pres && acu!=null){
+    const x = {pct: acu/pres*100}; if(dia && dm){ x.prev = acu/dia*dm; x.prevPct = x.prev/pres*100; }
+    const u1=n(AC.aviso_pct)??50, u2=n(AC.alerta_pct)??80, u3=n(AC.limite_pct)??100;
+    x.nivel = x.pct>=u3 ? '100' : (x.pct>=u2 || (x.prevPct!=null && x.prevPct>100)) ? '80' : x.pct>=u1 ? '50' : null;
+    const ud=n(cs.ultimo_dia), mr=n(cs.media_reciente), fa=n(AC.anomalia_factor); x.anom = (ud!=null && mr && fa) ? ud>=fa*mr : false;
+    if(x.nivel) A.push([x.nivel==='100'?'ko':'med', x.nivel==='100'?t('cons_100'):t('cons_'+x.nivel,{u:x.nivel==='50'?u1:u2})]);
+    if(x.anom) A.push(['ko', t('cons_anom',{f:fa})]);
+    R.cons = x; }
+  // --- coste por unidad de resultado (42 §9)
+  const u = C.unidad_resultado||{}, uu=n(u.unidades_utiles), vt=n(u.volumen_total), res=n(u.coste_humano_residual), cb=n(u.coste_unitario_base);
+  R.uni = {ia:(R.rec!=null && uu)?R.rec/uu:null, proc:(R.rec!=null && res!=null && vt)?(R.rec+res)/vt:null, base:cb};
+  R.uni.pot = (R.uni.proc!=null && cb!=null && vt) ? (cb-R.uni.proc)*vt : null;
+  // --- coste de parar (42 §10)
+  const pa = C.parada||{}, apr=n(pa.presupuesto_aprobado), gas=n(pa.gastado), com=n(pa.compromisos), pen=n(pa.penalizaciones), cie=n(pa.cierre);
+  R.par = {coste:(pen!=null&&cie!=null)?pen+cie:null, evitada:(apr!=null&&gas!=null&&com!=null)?apr-gas-com:null, hundido:gas};
+  R.par.neto = (R.par.coste!=null && R.par.evitada!=null) ? R.par.evitada-R.par.coste : null;
+  // --- conciliación (42 §11)
+  const co = C.conciliacion||{}, reales = co.reales||[];
+  const sumReal = reales.length ? (reales.some(x=>n(x.importe)==null) ? null : reales.reduce((a,x)=>a+n(x.importe),0)) : null;
+  const saldo = n(co.saldo_contable);
+  R.conc = {real:sumReal, saldo, dif:(sumReal!=null && saldo!=null) ? saldo-sumReal : null};
+  if(R.conc.dif!=null && Math.abs(R.conc.dif)>=0.5 && !(co.explicacion||'').trim()) al('ko','al_conc');
+  if(sumReal!=null && R.I!=null && sumReal>R.I) al('ko','al_sobrecoste',{r:eurF(sumReal), i:eurF(R.I)});
+  // --- por categoría y componente
+  const pc = {}; const addC=(cat,cm,v)=>{ const k=cat||''; pc[k]=pc[k]||{construccion:0,adopcion:0,recurrente:0,retirada:0,sd:{}}; if(v==null) pc[k].sd[cm]=true; else pc[k][cm]+=v; };
+  CL.forEach(l=>addC(l.categoria, l.componente, amt(l))); CS.forEach((s,i)=>addC(s.categoria,'recurrente',R.comp[i].imp));
+  R.porCat = pc;
+  const realCat = {}; reales.forEach(x=>{ const k=x.categoria||''; realCat[k]=(realCat[k]||0)+(n(x.importe)||0); }); R.realCat = realCat;
+  return R;
+}
+
+/* ---------------- utilidades de datos ---------------- */
+function casoSel(){ return D.casos.find(c=>c.id===UI.sel) || D.casos[0] || null; }
+function params(v){ return D.parametros.find(p=>p.version===v) || D.parametros[D.parametros.length-1]; }
+function calc(c){ return calcular(c, params(c.version_parametros)); }
+function nuevoId(base){ let id=base, k=2; while(D.casos.some(c=>c.id===id)) id=base+'-'+(k++); return id; }
+function casoVacio(id){ return {id, nombre:'', descripcion:'', ambicion:null, intensidad:null, fase:null, fecha:hoy(), autor:'', version_parametros:D.parametros[D.parametros.length-1].version, vida_util_anios:null, origen:'manual',
+  hipotesis:{enunciado:'', refutacion:'', horizonte_comprobacion:'', metrica_principal:'', linea_base:'', objetivo:'', umbral_exito:'', metodo_atribucion:null, diseno:'', reparto:'', supuestos:''},
+  lineas:[], rampa:[], neto_actual:0, inversion_adicional:null, criterios_parada:[{tipo:'principal',criterio:'',umbral:'',momento:'',decision:'parar',quien:''},{tipo:'salvaguarda',criterio:'',umbral:'',momento:'',decision:'iterar',quien:''},{tipo:'economico',criterio:'',umbral:'',momento:'',decision:'parar',quien:''}], etapas:[], valor_opcion:'',
+  costes:{lineas:[], compartidos:[], retirada_en_horizonte:false, consumo:{}, unidad_resultado:{}, parada:{}, conciliacion:{fecha_corte:null, saldo_contable:null, reales:[], explicacion:''}}, notas:''}; }
+const FILAS = {
+  'lineas': () => ({tipo:'eficiencias', concepto:'', unidades:null, unidad:'', valor_unitario:null, importe:null, fuente:'', estado:'estimado', base:null, supuestos:''}),
+  'criterios_parada': () => ({tipo:'principal', criterio:'', umbral:'', momento:'', decision:'parar', quien:''}),
+  'etapas': c => ({etapa:(c.etapas||[]).length+1, pregunta:'', evidencia:'', fecha:'', inversion_max:null, organo:''}),
+  'costes.lineas': () => ({componente:'construccion', categoria:null, concepto:'', unidades:null, valor_unitario:null, importe:null, incremental:true, fuente:''}),
+  'costes.compartidos': () => ({nombre:'', categoria:null, coste_total:null, metodo:'consumo', clave_caso:null, clave_total:null, sin_etiquetar_pct:null, estructura_pct:0, clave_aprobada:false, incremental:false, nota:''}),
+  'costes.conciliacion.reales': () => ({categoria:null, importe:null})
+};
+
+/* =========================================================
+   Bloques de resultado
+   ========================================================= */
+function kpisHTML(c, R, id){
+  const d = v => v==null ? '' : v;
+  const attrs = id==='resultado' ? ' data-van="'+d(R.van==null?null:Math.round(R.van))+'" data-roi="'+d(R.roi==null?null:(Math.round(R.roi*1000)/10).toFixed(1))+'" data-payback="'+d(R.payback==null?null:R.payback.toFixed(2))+'" data-neto="'+d(R.neto==null?null:Math.round(R.neto))+'" data-inversion="'+d(R.I==null?null:Math.round(R.I))+'"' : '';
+  const k = (lbl, val, cls, sub) => '<div><b class="'+(cls||'')+'">'+val+'</b><span>'+esc(lbl)+'</span>'+(sub?'<small>'+esc(sub)+'</small>':'')+'</div>';
+  return '<section class="kpis" id="'+id+'"'+attrs+'>'+
+    k(t('neto_anual'), sdH(R.neto, eurF), R.neto<0?'neg':'', t('neto_sub'))+
+    k(t('van'), sdH(R.van, eurF), R.van<0?'neg':'', 'H = '+(R.Hc??'—')+' · r = '+pct(R.r*100,1))+
+    k(t('roi'), sdH(R.roi, x=>pct(x*100,1)), '', t('informativo'))+
+    k(t('payback'), R.fl && R.payback==null ? '<span class="sd">'+esc(t('no_recupera'))+'</span>' : sdH(R.payback, x=>nf(x,2)+' '+t('anios')), '', t('informativo'))+
+    k(t('inv_ini'), sdH(R.I, eurF))+
+    k(t('f3'), sdH(R.f3, x=>nf(x,2)+' '+t('por_euro')), '', R.f3inc!=null ? t('f3_sub',{v:nf(R.f3inc,2)}) : '')+
+  '</section>';
+}
+function formulasHTML(c, R, P){
+  const e = x => x==null ? t('sd_opt') : eurF(x);
+  const li = s => '<li>'+s+'</li>';
+  let h = '<h3>'+esc(t('formulas'))+'</h3><ul class="formulas">';
+  h += li(esc(t('fx_f1')));
+  h += li('<code>'+esc(t('fx_f2',{e:e(R.ef.total), r:e(R.re.total), c:e(R.rec), n:e(R.neto)}))+'</code>');
+  h += li('<code>'+esc(t('fx_i',{b:e(R.constr.total), a:e(R.adopV), i:e(R.I)}))+'</code>');
+  h += li('<code>'+esc(t('fx_f7',{h:R.Hc??'—', r:pct(R.r*100,1), v:e(R.van)}))+'</code>');
+  h += li('<code>'+esc(t('fx_f8',{h:R.Hc??'—', s:e(R.fl?R.fl.suma:null), i:e(R.I), v:R.roi==null?t('sd_opt'):pct(R.roi*100,1)}))+'</code>');
+  const pbTxt = R.payback==null ? (R.fl?t('no_recupera'):t('sd_opt')) : t('fx_f9_det',{a:R.fl.pbDet.a, i:e(R.I), c:e(R.fl.pbDet.c), n:e(R.fl.pbDet.n), v:nf(R.payback,2)+' '+t('anios')});
+  h += li('<code>'+esc(t('fx_f9',{v:pbTxt}))+'</code>');
+  h += li('<code>'+esc(t('fx_f3',{p:e(R.neto), a:e(R.netoActual), i:e(R.invAd), v:R.f3==null?t('sd_opt'):nf(R.f3,2)+' '+t('por_euro')}))+'</code>');
+  if(R.cap.n) h += li(esc(t('fx_f4',{v:e(R.cap.total)})));
+  const rp = (R.fl ? R.fl.anios.map(a=>pct(a.rampa,0)) : (c.rampa||[]).map(x=>pct(n(x),0))).join(' · ') || '—';
+  h += li(esc(t('sup_h',{h:R.Hc??'—', v:'v'+(P.version||''), x:(R.vida!=null && R.H!=null && R.vida<R.H)?t('sup_vida',{n:R.vida}):'', r:pct(R.r*100,1), rp})));
+  h += li(esc(t('sup_ret',{v:e(R.retirada)+' · '+(((c.costes||{}).retirada_en_horizonte===true)?t('sup_ret_in',{h:R.Hc}):t('sup_ret_out'))})));
+  h += li(esc(t('sup_rec')));
+  return h+'</ul>';
+}
+function aniosHTML(R){
+  if(!R.fl) return '';
+  let h = '<h3>'+esc(t('tabla_anios'))+'</h3><div class="tblx"><table class="tabla resp" id="tabla-anios"><thead><tr><th>'+esc(t('anio'))+'</th><th class="num">'+esc(t('rampa'))+'</th><th class="num">'+esc(t('valor_bruto'))+'</th><th class="num">'+esc(t('coste_rec'))+'</th><th class="num">'+esc(t('retirada'))+'</th><th class="num">'+esc(t('neto'))+'</th><th class="num">'+esc(t('factor'))+'</th><th class="num">'+esc(t('va'))+'</th><th class="num">'+esc(t('acumulado'))+'</th></tr></thead><tbody>';
+  const td = (l, v, cls) => '<td class="num '+(cls||'')+'" data-l="'+esc(t(l))+'">'+v+'</td>';
+  h += '<tr><td data-l="'+esc(t('anio'))+'">0</td>'+td('rampa','—')+td('valor_bruto','—')+td('coste_rec','—')+td('retirada','—')+td('neto',esc(eurF(-R.I)),'neg')+td('factor',nf(1,6))+td('va',esc(eurF(-R.I,2)),'neg')+td('acumulado',esc(eurF(-R.I)),'neg')+'</tr>';
+  for(const a of R.fl.anios) h += '<tr><td data-l="'+esc(t('anio'))+'">'+a.a+'</td>'+td('rampa',esc(pct(a.rampa,0)))+td('valor_bruto',esc(eurF(a.valor)))+td('coste_rec',esc(eurF(a.coste)))+td('retirada',esc(eurF(a.ret)))+td('neto',esc(eurF(a.neto)),a.neto<0?'neg':'')+td('factor',nf(a.f,6))+td('va',esc(eurF(a.va,2)),a.va<0?'neg':'')+td('acumulado',esc(eurF(a.acum)),a.acum<0?'neg':'')+'</tr>';
+  h += '<tr class="total"><td data-l="'+esc(t('anio'))+'">'+esc(t('van'))+'</td><td colspan="6"></td>'+td('va',esc(eurF(R.van,2)),R.van<0?'neg':'')+'<td></td></tr>';
+  return h+'</tbody></table></div>';
+}
+function escenariosHTML(R){
+  let h = '<h3>'+esc(t('escenarios'))+'</h3><p class="ayuda">'+esc(t('esc_sub'))+'</p><div class="tblx"><table class="tabla resp" id="tabla-escenarios"><thead><tr><th></th><th>'+esc(t('multiplicadores'))+'</th><th class="num">'+esc(t('neto_anual'))+'</th><th class="num">'+esc(t('inv_ini'))+'</th><th class="num">'+esc(t('van'))+'</th><th class="num">'+esc(t('roi'))+'</th><th class="num">'+esc(t('payback'))+'</th></tr></thead><tbody>';
+  for(const s of R.esc) h += '<tr data-escenario="'+s.k+'"'+(s.k==='central'?' style="font-weight:700"':'')+'><td data-l=""><b>'+esc(t('esc_'+s.k))+'</b></td><td data-l="'+esc(t('multiplicadores'))+'">'+nf(s.m.valor,2)+' · '+nf(s.m.coste_recurrente,2)+' · '+nf(s.m.inversion,2)+'</td><td class="num" data-l="'+esc(t('neto_anual'))+'">'+sdH(s.neto,eurF)+'</td><td class="num" data-l="'+esc(t('inv_ini'))+'">'+sdH(s.I,eurF)+'</td><td class="num'+(s.van<0?' neg':'')+'" data-l="'+esc(t('van'))+'">'+sdH(s.van,eurF)+'</td><td class="num" data-l="'+esc(t('roi'))+'">'+sdH(s.roi,x=>pct(x*100,1))+'</td><td class="num" data-l="'+esc(t('payback'))+'">'+(s.van!=null&&s.pb==null?'<span class="sd">'+esc(t('no_recupera'))+'</span>':sdH(s.pb,x=>nf(x,2)))+'</td></tr>';
+  return h+'</tbody></table></div>';
+}
+function criterioHTML(c, R){
+  let cls='info', txt;
+  if(c.ambicion==='transformar') txt = t('cr_transformar',{v:R.van==null?t('sd_opt'):eurF(R.van)});
+  else if(!c.ambicion) txt = t('cr_sin');
+  else if(R.van==null){ cls='med'; txt = t('cr_sd'); }
+  else { cls = R.van>=0?'ok':'ko'; txt = t(R.van>=0?'cr_optimizar_ok':'cr_optimizar_ko') + (c.ambicion==='aumentar'?t('cr_aumentar'):''); }
+  return '<h3>'+esc(t('criterio'))+'</h3><div class="aviso '+cls+'" id="criterio" data-criterio="'+(cls==='ok'?'cumple':cls==='ko'?'no_cumple':cls==='med'?'sin_dato':'informativo')+'">'+esc(txt)+'</div><p class="ayuda">'+esc(t('cr_nota'))+'</p>';
+}
+function alertasHTML(R, filtro){
+  const l = filtro ? R.alertas.filter(filtro) : R.alertas;
+  const orden = {ko:0, med:1, info:2}, s=[...l].sort((a,b)=>orden[a[0]]-orden[b[0]]);
+  return '<h3>'+esc(t('alertas'))+'</h3>'+(s.length ? s.map(a=>'<div class="aviso '+a[0]+'" data-alerta="'+a[0]+'">'+esc(a[1])+'</div>').join('') : '<p class="aviso ok">'+esc(t('sin_alertas'))+'</p>');
+}
+function resultadoHTML(c){
+  const P = params(c.version_parametros), R = calcular(c, P);
+  return '<h2>'+esc(t('resultado'))+'</h2>'+kpisHTML(c, R, 'resultado')+criterioHTML(c, R)+formulasHTML(c, R, P)+aniosHTML(R)+escenariosHTML(R)+alertasHTML(R);
+}
+function costesResumenHTML(c){
+  const R = calc(c), e = x => x==null ? t('sd_opt') : eurF(x);
+  const k = (lbl, v, sub) => '<div><b>'+sdH(v,eurF)+'</b><span>'+esc(lbl)+'</span>'+(sub?'<small>'+esc(sub)+'</small>':'')+'</div>';
+  let h = '<section class="kpis" id="costes-resumen" data-inversion="'+(R.I==null?'':Math.round(R.I))+'" data-recurrente="'+(R.rec==null?'':Math.round(R.rec))+'" data-tco="'+(R.tco==null?'':Math.round(R.tco))+'">'+
+    k(t('construccion_t'), R.constr.total)+k(t('adopcion_t'), R.adopV)+k(t('inv_ini'), R.I)+k(t('recurrente_t'), R.rec, R.shared?t('repartido')+': '+eurF(R.shared):'')+k(t('recurrente_inc'), R.recInc)+k(t('retirada_t'), R.retirada)+k(t('tco',{h:R.Hc??'—'}), R.tco)+'</section>';
+  h += '<ul class="formulas"><li><code>'+esc(t('fx_tco',{b:e(R.constr.total), a:e(R.adopV), h:R.Hc??'—', c:e(R.rec), r:e(R.retirada), v:e(R.tco)}))+'</code></li><li>'+esc(t('vista_inc'))+'</li></ul>';
+  // tabla por categoría
+  const cats = [...CATS.map(x=>x[0]), ''], cm = ['construccion','adopcion','recurrente','retirada'];
+  let tot = {construccion:0,adopcion:0,recurrente:0,retirada:0};
+  h += '<h3>'+esc(t('por_categoria'))+'</h3><div class="tblx"><table class="tabla resp" id="tabla-categorias"><thead><tr><th>'+esc(t('categoria'))+'</th>'+cm.map(x=>'<th class="num">'+esc(lab(COMPS,x))+'</th>').join('')+'</tr></thead><tbody>';
+  for(const k of cats){ const r = R.porCat[k]; if(!r) continue;
+    h += '<tr><td data-l="'+esc(t('categoria'))+'">'+esc(k?lab(CATS,k):t('sin_categoria'))+'</td>'+cm.map(x=>{ tot[x]+=r[x]; return '<td class="num" data-l="'+esc(lab(COMPS,x))+'">'+(r.sd[x]?'<span class="sd">'+esc(t('sd_opt'))+'</span>':r[x]?esc(eurF(r[x])):'—')+'</td>'; }).join('')+'</tr>'; }
+  h += '<tr class="total"><td data-l="">'+esc(t('total'))+'</td>'+cm.map(x=>'<td class="num" data-l="'+esc(lab(COMPS,x))+'">'+esc(eurF(tot[x]))+'</td>').join('')+'</tr></tbody></table></div>';
+  return h;
+}
+function consumoRes(R, AC){
+  if(!R.cons) return '<p class="sd">'+esc(t('sd_opt'))+'</p>';
+  const x = R.cons; let h = '<ul class="formulas"><li>'+esc(t('cons_pct',{p:pct(x.pct,1)}))+'</li>';
+  if(x.prev!=null) h += '<li><code>'+esc(t('cons_prev',{v:eurF(x.prev), p:pct(x.prevPct,1)}))+'</code></li>';
+  h += '</ul>';
+  if(x.nivel) h += '<div class="aviso '+(x.nivel==='100'?'ko':'med')+'" data-consumo="'+x.nivel+'">'+esc(x.nivel==='100'?t('cons_100'):t('cons_'+x.nivel,{u:x.nivel==='50'?(AC.aviso_pct??50):(AC.alerta_pct??80)}))+'</div>';
+  else h += '<div class="aviso ok" data-consumo="ok">'+esc(t('cons_ok'))+'</div>';
+  if(x.anom) h += '<div class="aviso ko">'+esc(t('cons_anom',{f:AC.anomalia_factor}))+'</div>';
+  return h;
+}
+function unidadRes(R){ const u=R.uni; return '<ul class="formulas"><li><code>'+esc(t('uni_ia',{v:u.ia==null?t('sd_opt'):eurF(u.ia,3)}))+'</code></li><li><code>'+esc(t('uni_proc',{v:u.proc==null?t('sd_opt'):eurF(u.proc,3), b:u.base==null?t('sd_opt'):eurF(u.base,3)}))+'</code></li>'+(u.pot!=null?'<li>'+esc(t('uni_pot',{v:eurF(u.pot)}))+'</li>':'')+'</ul>'; }
+function paradaRes(R){ const p=R.par, e=x=>x==null?t('sd_opt'):eurF(x); return '<ul class="formulas"><li><code>'+esc(t('par_coste',{v:e(p.coste)}))+'</code></li><li><code>'+esc(t('par_evit',{v:e(p.evitada)}))+'</code></li><li><code>'+esc(t('par_neto',{v:e(p.neto)}))+'</code></li><li>'+esc(t('par_rec',{v:e(R.rec)}))+'</li><li>'+esc(t('par_hundido',{v:e(p.hundido)}))+'</li></ul>'; }
+function concRes(c, R){
+  const e=x=>x==null?t('sd_opt'):eurF(x);
+  let h = '<div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('categoria'))+'</th><th class="num">'+esc(t('previsto'))+'</th><th class="num">'+esc(t('real'))+'</th><th class="num">'+esc(t('ejecucion'))+'</th></tr></thead><tbody>';
+  for(const [k] of [...CATS, ['']]){ const pc=R.porCat[k], prev = pc ? ((pc.sd.construccion||pc.sd.adopcion)?null:pc.construccion+pc.adopcion) : 0, re = R.realCat[k]; if(!prev && re==null) continue;
+    h += '<tr><td data-l="'+esc(t('categoria'))+'">'+esc(k?lab(CATS,k):t('sin_categoria'))+'</td><td class="num" data-l="'+esc(t('previsto'))+'">'+esc(e(prev))+'</td><td class="num" data-l="'+esc(t('real'))+'">'+esc(re==null?'—':eurF(re))+'</td><td class="num" data-l="'+esc(t('ejecucion'))+'">'+esc(prev&&re!=null?pct(re/prev*100,0):'—')+'</td></tr>'; }
+  h += '<tr class="total"><td data-l="">'+esc(t('total'))+'</td><td class="num" data-l="'+esc(t('previsto'))+'">'+esc(e(R.I))+'</td><td class="num" data-l="'+esc(t('real'))+'">'+esc(e(R.conc.real))+'</td><td class="num" data-l="'+esc(t('ejecucion'))+'">'+esc(R.I&&R.conc.real!=null?pct(R.conc.real/R.I*100,0):'—')+'</td></tr></tbody></table></div>';
+  if(R.conc.dif!=null) h += '<div class="aviso '+(Math.abs(R.conc.dif)<0.5?'ok':(((c.costes||{}).conciliacion||{}).explicacion||'').trim()?'info':'ko')+'" id="conciliacion" data-diferencia="'+Math.round(R.conc.dif)+'">'+esc(Math.abs(R.conc.dif)<0.5?t('conc_ok'):t('conc_dif',{s:eurF(R.conc.saldo), r:eurF(R.conc.real), d:eurF(R.conc.dif)}))+'</div>';
+  return h;
+}
+
+/* =========================================================
+   Vistas
+   ========================================================= */
+function cabCaso(c){
+  let h = '<div class="fila sin-imprimir"><button type="button" class="primario" data-acc="nuevo">'+esc(t('nuevo'))+'</button><button type="button" data-acc="desde-t01">'+esc(t('desde_t01'))+'</button>'+(c?'<button type="button" data-acc="duplicar">'+esc(t('duplicar'))+'</button><button type="button" data-acc="imprimir">'+esc(t('imprimir'))+'</button><button type="button" class="peligro" data-acc="eliminar">'+esc(t('eliminar'))+'</button>':'')+'</div>';
+  if(!c) return h+'<p class="aviso info">'+esc(t('ninguno'))+'</p>';
+  h += '<div class="cab-calc sin-imprimir"><div class="campo"><label for="c-sel">'+esc(t('caso'))+'</label><select id="c-sel" data-cab="sel">'+D.casos.map(x=>'<option value="'+esc(x.id)+'"'+(x.id===c.id?' selected':'')+'>'+esc(x.id+' · '+(x.nombre||''))+'</option>').join('')+'</select></div></div>';
+  return h;
+}
+function identidadHTML(c){
+  return '<details class="bloque editor" open><summary>'+esc(t('identificacion'))+'</summary><div class="rejilla">'+
+    campo('id', t('id'), cTxt('id', c.id))+campo('nombre', t('nombre'), cTxt('nombre', c.nombre))+
+    campo('ambicion', t('ambicion'), cSel('ambicion', c.ambicion, AMB, null, t('sin_confirmar')))+campo('intensidad', t('intensidad'), cSel('intensidad', c.intensidad, INTENS, null, '—'))+
+    campo('fase', t('fase'), cNum('fase', c.fase))+campo('version_parametros', t('version_parametros'), '<select id="'+pid('version_parametros')+'" data-p="version_parametros" data-tp="sel">'+D.parametros.map(p=>'<option value="'+esc(p.version)+'"'+(p.version===params(c.version_parametros).version?' selected':'')+'>v'+esc(p.version)+'</option>').join('')+'</select>')+
+    campo('vida_util_anios', t('vida_util'), cNum('vida_util_anios', c.vida_util_anios))+campo('fecha', t('fecha'), '<input type="date" id="'+pid('fecha')+'" data-p="fecha" data-tp="txt" value="'+esc(c.fecha||'')+'">')+
+    campo('autor', t('autor'), cTxt('autor', c.autor))+campo('descripcion', t('descripcion'), cArea('descripcion', c.descripcion), true)+'</div></details>';
+}
+function vistaHipotesis(){
+  const c = casoSel();
+  let h = '<h1>'+esc(t('tit_hip'))+'</h1><p class="ayuda">'+esc(t('sub_hip'))+'</p>'+cabCaso(c);
+  if(!c) return h;
+  h += '<p><b>'+esc(c.id)+'</b> · '+esc(c.nombre||'')+' · '+esc(c.ambicion?lab(AMB,c.ambicion):t('sin_confirmar'))+(c.intensidad?' · '+esc(lab(INTENS,c.intensidad)):'')+(c.fase!=null?' · '+esc(t('fase'))+' '+esc(c.fase):'')+'</p>';
+  h += '<div id="res">'+resultadoHTML(c)+'</div>';
+  h += identidadHTML(c);
+  const hp = c.hipotesis||{}, met = METODOS.find(m=>m[0]===hp.metodo_atribucion);
+  h += '<details class="bloque editor" open><summary>'+esc(t('bloque_hip'))+'</summary><div class="rejilla">'+
+    campo('hipotesis.enunciado', t('enunciado'), cArea('hipotesis.enunciado', hp.enunciado), true)+campo('hipotesis.refutacion', t('refutacion'), cArea('hipotesis.refutacion', hp.refutacion), true)+
+    campo('hipotesis.metrica_principal', t('metrica'), cTxt('hipotesis.metrica_principal', hp.metrica_principal))+campo('hipotesis.linea_base', t('linea_base'), cTxt('hipotesis.linea_base', hp.linea_base))+
+    campo('hipotesis.objetivo', t('objetivo'), cTxt('hipotesis.objetivo', hp.objetivo))+campo('hipotesis.umbral_exito', t('umbral_exito'), cTxt('hipotesis.umbral_exito', hp.umbral_exito))+
+    campo('hipotesis.horizonte_comprobacion', t('horizonte_comp'), cTxt('hipotesis.horizonte_comprobacion', hp.horizonte_comprobacion))+
+    '<div class="campo"><label for="'+pid('hipotesis.metodo_atribucion')+'">'+esc(t('metodo'))+'</label>'+cSel('hipotesis.metodo_atribucion', hp.metodo_atribucion, METODOS, null, '—')+(met?'<span class="ayuda">'+esc(t('estado_max',{e:lang==='en'?met[4]:met[3]}))+'</span>':'')+'</div>'+
+    campo('hipotesis.diseno', t('diseno'), cArea('hipotesis.diseno', hp.diseno), true)+campo('hipotesis.reparto', t('reparto_otros'), cArea('hipotesis.reparto', hp.reparto), true)+campo('hipotesis.supuestos', t('supuestos_criticos'), cArea('hipotesis.supuestos', hp.supuestos), true)+'</div></details>';
+  // líneas de valor
+  h += '<details class="bloque editor" open><summary>'+esc(t('bloque_lineas'))+'</summary><p class="ayuda">'+esc(t('lineas_ayuda'))+'</p><div class="tblx"><table class="tabla ed" id="tabla-lineas"><thead><tr><th>'+esc(t('tipo'))+'</th><th>'+esc(t('concepto'))+'</th><th>'+esc(t('unidades'))+'</th><th>'+esc(t('unidad'))+'</th><th>'+esc(t('valor_unitario'))+'</th><th>'+esc(t('importe_directo'))+'</th><th class="num">'+esc(t('importe'))+'</th><th>'+esc(t('estado'))+'</th><th>'+esc(t('base'))+'</th><th>'+esc(t('fuente'))+'</th><th>'+esc(t('supuestos'))+'</th><th></th></tr></thead><tbody>';
+  (c.lineas||[]).forEach((l,i)=>{ const p='lineas.'+i+'.';
+    h += '<tr><td>'+cSel(p+'tipo', l.tipo, TIPOS, t('tipo'))+'</td><td>'+cTxt(p+'concepto', l.concepto, t('concepto'))+'</td><td>'+cNum(p+'unidades', l.unidades, t('unidades'))+'</td><td>'+cTxt(p+'unidad', l.unidad, t('unidad'))+'</td><td>'+cNum(p+'valor_unitario', l.valor_unitario, t('valor_unitario'))+'</td><td>'+cNum(p+'importe', l.importe, t('importe_directo'), '—')+'</td>'+
+      '<td class="num" data-calc="val:'+i+'">'+celdaImporte(l)+'</td><td>'+cSel(p+'estado', l.estado, ESTADOS, t('estado'), '—')+'</td><td>'+(l.tipo==='retorno'?cSel(p+'base', l.base, BASES, t('base'), '—'):'')+'</td><td>'+cTxt(p+'fuente', l.fuente, t('fuente'))+'</td><td>'+cTxt(p+'supuestos', l.supuestos, t('supuestos'))+'</td><td><button type="button" class="mini" data-acc="quitar" data-lista="lineas" data-i="'+i+'" aria-label="'+esc(t('quitar'))+'">×</button></td></tr>'; });
+  h += '</tbody></table></div><button type="button" class="mini" data-acc="anadir" data-lista="lineas">+ '+esc(t('anadir'))+'</button></details>';
+  // rampa y F3
+  const Hc = calc(c).Hc || 0;
+  h += '<details class="bloque editor" open><summary>'+esc(t('bloque_rampa'))+'</summary><p class="ayuda">'+esc(t('rampa_ayuda'))+'</p><div class="rejilla">';
+  for(let a=0; a<Math.max(Hc,(c.rampa||[]).length); a++) h += campo('rampa.'+a, t('rampa')+' · '+t('anio')+' '+(a+1)+' (%)', cNum('rampa.'+a, (c.rampa||[])[a]));
+  h += campo('neto_actual', t('neto_actual'), cNum('neto_actual', c.neto_actual))+campo('inversion_adicional', t('inv_adicional'), cNum('inversion_adicional', c.inversion_adicional, null, t('inv_adicional_ph')))+'</div><p class="ayuda">'+esc(t('neto_actual_ayuda'))+'</p></details>';
+  // criterios de parada
+  h += '<details class="bloque editor" open><summary>'+esc(t('bloque_parada'))+'</summary><p class="ayuda">'+esc(t('parada_ayuda'))+'</p><div class="tblx"><table class="tabla ed"><thead><tr><th>'+esc(t('tipo'))+'</th><th>'+esc(t('criterio_p'))+'</th><th>'+esc(t('umbral'))+'</th><th>'+esc(t('momento'))+'</th><th>'+esc(t('decision'))+'</th><th>'+esc(t('quien'))+'</th><th></th></tr></thead><tbody>';
+  (c.criterios_parada||[]).forEach((x,i)=>{ const p='criterios_parada.'+i+'.';
+    h += '<tr><td>'+cSel(p+'tipo', x.tipo, TCRIT, t('tipo'))+'</td><td>'+cTxt(p+'criterio', x.criterio, t('criterio_p'))+'</td><td>'+cTxt(p+'umbral', x.umbral, t('umbral'))+'</td><td>'+cTxt(p+'momento', x.momento, t('momento'))+'</td><td>'+cSel(p+'decision', x.decision, DECIS, t('decision'))+'</td><td>'+cTxt(p+'quien', x.quien, t('quien'))+'</td><td><button type="button" class="mini" data-acc="quitar" data-lista="criterios_parada" data-i="'+i+'" aria-label="'+esc(t('quitar'))+'">×</button></td></tr>'; });
+  h += '</tbody></table></div><button type="button" class="mini" data-acc="anadir" data-lista="criterios_parada">+ '+esc(t('anadir'))+'</button></details>';
+  // etapas (Transformar)
+  if(c.ambicion==='transformar' || (c.etapas||[]).length){
+    h += '<details class="bloque editor" open><summary>'+esc(t('bloque_etapas'))+'</summary><div class="tblx"><table class="tabla ed"><thead><tr><th>'+esc(t('etapa'))+'</th><th>'+esc(t('pregunta'))+'</th><th>'+esc(t('evidencia'))+'</th><th>'+esc(t('fecha'))+'</th><th>'+esc(t('inv_max'))+'</th><th class="num">'+esc(t('inv_acum'))+'</th><th>'+esc(t('organo'))+'</th><th></th></tr></thead><tbody>';
+    (c.etapas||[]).forEach((x,i)=>{ const p='etapas.'+i+'.';
+      h += '<tr><td>'+cNum(p+'etapa', x.etapa, t('etapa'))+'</td><td>'+cTxt(p+'pregunta', x.pregunta, t('pregunta'))+'</td><td>'+cTxt(p+'evidencia', x.evidencia, t('evidencia'))+'</td><td>'+cTxt(p+'fecha', x.fecha, t('fecha'))+'</td><td>'+cNum(p+'inversion_max', x.inversion_max, t('inv_max'))+'</td><td class="num" data-calc="etapa:'+i+'"></td><td>'+cTxt(p+'organo', x.organo, t('organo'))+'</td><td><button type="button" class="mini" data-acc="quitar" data-lista="etapas" data-i="'+i+'" aria-label="'+esc(t('quitar'))+'">×</button></td></tr>'; });
+    h += '</tbody></table></div><button type="button" class="mini" data-acc="anadir" data-lista="etapas">+ '+esc(t('anadir'))+'</button><div class="rejilla" style="margin-top:10px">'+campo('valor_opcion', t('valor_opcion'), cArea('valor_opcion', c.valor_opcion), true)+'</div></details>';
+  }
+  return h;
+}
+function celdaImporte(l){ const a=amt(l); if(a==null) return '<span class="sd">'+esc(t('sd_opt'))+'</span>'; return esc(eurF(a))+(conFormula(l)?'':'<small>'+esc(t('sin_formula'))+'</small>'); }
+function vistaCostes(){
+  const c = casoSel();
+  let h = '<h1>'+esc(t('tit_cos'))+'</h1><p class="ayuda">'+esc(t('sub_cos'))+'</p>'+cabCaso(c);
+  if(!c) return h;
+  const C = c.costes = c.costes||{}, P = params(c.version_parametros), R = calcular(c, P);
+  h += '<p><b>'+esc(c.id)+'</b> · '+esc(c.nombre||'')+'</p>';
+  h += '<h2>'+esc(t('res_costes'))+'</h2><div id="res-costes">'+costesResumenHTML(c)+'</div>';
+  // líneas directas
+  h += '<details class="bloque editor" open><summary>'+esc(t('bloque_clineas'))+'</summary><div class="tblx"><table class="tabla ed" id="tabla-costes"><thead><tr><th>'+esc(t('componente'))+'</th><th>'+esc(t('categoria'))+'</th><th>'+esc(t('concepto'))+'</th><th>'+esc(t('unidades'))+'</th><th>'+esc(t('valor_unitario'))+'</th><th>'+esc(t('importe_directo'))+'</th><th class="num">'+esc(t('importe'))+'</th><th>'+esc(t('incremental'))+'</th><th>'+esc(t('fuente'))+'</th><th></th></tr></thead><tbody>';
+  (C.lineas||[]).forEach((l,i)=>{ const p='costes.lineas.'+i+'.';
+    h += '<tr><td>'+cSel(p+'componente', l.componente, COMPS, t('componente'), '—')+'</td><td>'+cSel(p+'categoria', l.categoria, CATS, t('categoria'), t('sin_categoria'))+'</td><td>'+cTxt(p+'concepto', l.concepto, t('concepto'))+'</td><td>'+cNum(p+'unidades', l.unidades, t('unidades'), '—')+'</td><td>'+cNum(p+'valor_unitario', l.valor_unitario, t('valor_unitario'), '—')+'</td><td>'+cNum(p+'importe', l.importe, t('importe_directo'), '—')+'</td><td class="num" data-calc="cos:'+i+'">'+sdH(amt(l),eurF)+'</td><td>'+cBool(p+'incremental', l.incremental, t('incremental'))+'</td><td>'+cTxt(p+'fuente', l.fuente, t('fuente'))+'</td><td><button type="button" class="mini" data-acc="quitar" data-lista="costes.lineas" data-i="'+i+'" aria-label="'+esc(t('quitar'))+'">×</button></td></tr>'; });
+  h += '</tbody></table></div><button type="button" class="mini" data-acc="anadir" data-lista="costes.lineas">+ '+esc(t('anadir'))+'</button><div class="rejilla" style="margin-top:10px">'+campo('costes.retirada_en_horizonte', t('ret_horizonte'), cBool('costes.retirada_en_horizonte', C.retirada_en_horizonte))+'</div></details>';
+  // compartidos
+  h += '<details class="bloque editor" open><summary>'+esc(t('bloque_comp'))+'</summary><p class="ayuda">'+esc(t('comp_ayuda'))+'</p><div class="tblx"><table class="tabla ed" id="tabla-compartidos"><thead><tr><th>'+esc(t('nombre'))+'</th><th>'+esc(t('categoria'))+'</th><th>'+esc(t('coste_total'))+'</th><th>'+esc(t('metodo_rep'))+'</th><th>'+esc(t('clave_caso'))+'</th><th>'+esc(t('clave_total'))+'</th><th>'+esc(t('sin_etiquetar'))+'</th><th>'+esc(t('estructura'))+'</th><th>'+esc(t('clave_aprobada'))+'</th><th>'+esc(t('incremental'))+'</th><th class="num">'+esc(t('imputado'))+'</th><th></th></tr></thead><tbody>';
+  (C.compartidos||[]).forEach((s,i)=>{ const p='costes.compartidos.'+i+'.';
+    h += '<tr><td>'+cTxt(p+'nombre', s.nombre, t('nombre'))+'</td><td>'+cSel(p+'categoria', s.categoria, CATS, t('categoria'), t('sin_categoria'))+'</td><td>'+cNum(p+'coste_total', s.coste_total, t('coste_total'))+'</td><td>'+cSel(p+'metodo', s.metodo, REPARTO, t('metodo_rep'))+'</td><td>'+cNum(p+'clave_caso', s.clave_caso, t('clave_caso'))+'</td><td>'+(s.metodo==='consumo'?'100':cNum(p+'clave_total', s.clave_total, t('clave_total')))+'</td><td>'+(s.metodo==='consumo'?cNum(p+'sin_etiquetar_pct', s.sin_etiquetar_pct, t('sin_etiquetar'), '0'):'—')+'</td><td>'+cNum(p+'estructura_pct', s.estructura_pct, t('estructura'), '0')+'</td><td>'+cBool(p+'clave_aprobada', s.clave_aprobada, t('clave_aprobada'))+'</td><td>'+cBool(p+'incremental', s.incremental, t('incremental'))+'</td><td class="num" data-calc="rep:'+i+'">'+sdH(R.comp[i].imp,eurF)+'</td><td><button type="button" class="mini" data-acc="quitar" data-lista="costes.compartidos" data-i="'+i+'" aria-label="'+esc(t('quitar'))+'">×</button></td></tr>'; });
+  h += '</tbody></table></div><button type="button" class="mini" data-acc="anadir" data-lista="costes.compartidos">+ '+esc(t('anadir'))+'</button></details>';
+  // consumo
+  const cs = C.consumo||{}, f = (k, lbl) => campo('costes.consumo.'+k, t(lbl), cNum('costes.consumo.'+k, cs[k]));
+  h += '<h2>'+esc(t('bloque_consumo'))+'</h2><div class="rejilla editor">'+f('presupuesto_mensual','presupuesto_mensual')+f('acumulado','acumulado_mes')+f('dia','dia')+f('dias_mes','dias_mes')+f('ultimo_dia','ultimo_dia')+f('media_reciente','media_reciente')+'</div><div id="r-consumo">'+consumoRes(R, P.alertas_consumo||{})+'</div>';
+  // unidad de resultado
+  const u = C.unidad_resultado||{}, g = (k, lbl) => campo('costes.unidad_resultado.'+k, t(lbl), cNum('costes.unidad_resultado.'+k, u[k]));
+  h += '<h2>'+esc(t('bloque_unidad'))+'</h2><div class="rejilla editor">'+campo('costes.unidad_resultado.unidad', t('unidad_res'), cTxt('costes.unidad_resultado.unidad', u.unidad))+g('unidades_utiles','unidades_utiles')+g('volumen_total','volumen_total')+g('coste_humano_residual','coste_residual')+g('coste_unitario_base','coste_base')+'</div><div id="r-unidad">'+unidadRes(R)+'</div>';
+  // parada
+  const pa = C.parada||{}, q = k => campo('costes.parada.'+k, t(k), cNum('costes.parada.'+k, pa[k]));
+  h += '<h2>'+esc(t('bloque_parar'))+'</h2><div class="rejilla editor">'+q('presupuesto_aprobado')+q('gastado')+q('compromisos')+q('penalizaciones')+q('cierre')+'</div><div id="r-parada">'+paradaRes(R)+'</div>';
+  // conciliación
+  const co = C.conciliacion||{};
+  h += '<h2>'+esc(t('bloque_conc'))+'</h2><div class="rejilla editor">'+campo('costes.conciliacion.fecha_corte', t('fecha_corte'), '<input type="date" id="'+pid('costes.conciliacion.fecha_corte')+'" data-p="costes.conciliacion.fecha_corte" data-tp="txt" value="'+esc(co.fecha_corte||'')+'">')+campo('costes.conciliacion.saldo_contable', t('saldo_contable'), cNum('costes.conciliacion.saldo_contable', co.saldo_contable))+'</div>';
+  h += '<div class="tblx editor"><table class="tabla ed"><thead><tr><th>'+esc(t('categoria'))+'</th><th>'+esc(t('real'))+' (€)</th><th></th></tr></thead><tbody>';
+  (co.reales||[]).forEach((x,i)=>{ const p='costes.conciliacion.reales.'+i+'.'; h += '<tr><td>'+cSel(p+'categoria', x.categoria, CATS, t('categoria'), t('sin_categoria'))+'</td><td>'+cNum(p+'importe', x.importe, t('real'))+'</td><td><button type="button" class="mini" data-acc="quitar" data-lista="costes.conciliacion.reales" data-i="'+i+'" aria-label="'+esc(t('quitar'))+'">×</button></td></tr>'; });
+  h += '</tbody></table><button type="button" class="mini" data-acc="anadir" data-lista="costes.conciliacion.reales">+ '+esc(t('anadir'))+'</button></div><div class="rejilla editor" style="margin-top:10px">'+campo('costes.conciliacion.explicacion', t('explicacion'), cArea('costes.conciliacion.explicacion', co.explicacion), true)+'</div><div id="r-conc">'+concRes(c, R)+'</div>';
+  h += '<div id="r-alertas-costes">'+alertasHTML(R)+'</div>';
+  return h;
+}
+function respuesta(c, R){
+  const faltas = [];
+  if(R.neto==null || R.I==null || R.van==null) faltas.push(t('falta_datos'));
+  if(!(c.hipotesis||{}).metodo_atribucion) faltas.push(t('falta_metodo'));
+  if(!(c.criterios_parada||[]).some(x=>(x.criterio||'').trim())) faltas.push(t('falta_parada'));
+  if(c.ambicion==='transformar' && !(c.etapas||[]).length) faltas.push(t('falta_etapas'));
+  if(faltas.length) return t('resp_falta',{c:faltas.join('; ')});
+  if(c.ambicion!=='transformar' && R.van<0) return t('resp_no',{c:t('van_neg')});
+  if(R.alertas.some(a=>a[0]==='ko')) return t('resp_cond',{c:t('cond_alertas')});
+  return t('resp_si');
+}
+function vistaDecision(){
+  const c = casoSel();
+  let h = '<h1>'+esc(t('tit_dec'))+'</h1><p class="ayuda">'+esc(t('sub_dec'))+'</p>'+cabCaso(c);
+  if(!c) return h;
+  const P = params(c.version_parametros), R = calcular(c, P), hp = c.hipotesis||{};
+  h += '<h2>'+esc(c.id)+' · '+esc(c.nombre||'')+'</h2><p>'+esc(c.descripcion||'')+'</p>';
+  h += '<p class="ayuda">'+esc(t('ambicion'))+': <b>'+esc(c.ambicion?lab(AMB,c.ambicion):t('sin_confirmar'))+'</b> · '+esc(t('intensidad'))+': <b>'+esc(c.intensidad?lab(INTENS,c.intensidad):'—')+'</b> · '+esc(t('fase'))+': <b>'+esc(c.fase??'—')+'</b> · '+esc(t('version_parametros'))+': <b>v'+esc(P.version)+'</b> · '+esc(t('fecha'))+': <b>'+esc(fF(c.fecha))+'</b></p>';
+  h += '<div class="aviso info" id="respuesta"><b>'+esc(t('hoja_resp'))+':</b> '+esc(respuesta(c, R))+'<br><small>'+esc(t('resp_nota'))+'</small></div>';
+  h += kpisHTML(c, R, 'resultado-decision')+criterioHTML(c, R);
+  if(hp.enunciado) h += '<h3>'+esc(t('enunciado'))+'</h3><p>'+esc(hp.enunciado)+'</p>'+(hp.refutacion?'<p class="ayuda"><b>'+esc(t('refutacion'))+':</b> '+esc(hp.refutacion)+'</p>':'');
+  const met = METODOS.find(m=>m[0]===hp.metodo_atribucion); if(met) h += '<p class="ayuda"><b>'+esc(t('metodo'))+':</b> '+esc(lang==='en'?met[2]:met[1])+' · '+esc(t('estado_max',{e:lang==='en'?met[4]:met[3]}))+'</p>';
+  h += formulasHTML(c, R, P)+aniosHTML(R)+escenariosHTML(R);
+  h += '<h2>'+esc(t('res_costes'))+'</h2>'+costesResumenHTML(c);
+  if(R.cons) h += '<h3>'+esc(t('bloque_consumo'))+'</h3>'+consumoRes(R, P.alertas_consumo||{});
+  h += '<h3>'+esc(t('bloque_parar'))+'</h3>'+paradaRes(R);
+  if(R.conc.real!=null) h += '<h3>'+esc(t('bloque_conc'))+'</h3>'+concRes(c, R);
+  const cp = (c.criterios_parada||[]).filter(x=>(x.criterio||'').trim());
+  if(cp.length) h += '<h3>'+esc(t('bloque_parada'))+'</h3><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('tipo'))+'</th><th>'+esc(t('criterio_p'))+'</th><th>'+esc(t('umbral'))+'</th><th>'+esc(t('momento'))+'</th><th>'+esc(t('decision'))+'</th><th>'+esc(t('quien'))+'</th></tr></thead><tbody>'+cp.map(x=>'<tr><td data-l="'+esc(t('tipo'))+'">'+esc(lab(TCRIT,x.tipo))+'</td><td data-l="'+esc(t('criterio_p'))+'">'+esc(x.criterio)+'</td><td data-l="'+esc(t('umbral'))+'">'+esc(x.umbral)+'</td><td data-l="'+esc(t('momento'))+'">'+esc(x.momento)+'</td><td data-l="'+esc(t('decision'))+'">'+esc(lab(DECIS,x.decision))+'</td><td data-l="'+esc(t('quien'))+'">'+esc(x.quien)+'</td></tr>').join('')+'</tbody></table></div>';
+  if(c.ambicion==='transformar' && (c.etapas||[]).length) h += '<h3>'+esc(t('bloque_etapas'))+'</h3><div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('etapa'))+'</th><th>'+esc(t('pregunta'))+'</th><th>'+esc(t('evidencia'))+'</th><th>'+esc(t('fecha'))+'</th><th class="num">'+esc(t('inv_max'))+'</th><th class="num">'+esc(t('inv_acum'))+'</th><th>'+esc(t('organo'))+'</th></tr></thead><tbody>'+c.etapas.map((x,i)=>'<tr><td data-l="'+esc(t('etapa'))+'">'+esc(x.etapa)+'</td><td data-l="'+esc(t('pregunta'))+'">'+esc(x.pregunta)+'</td><td data-l="'+esc(t('evidencia'))+'">'+esc(x.evidencia)+'</td><td data-l="'+esc(t('fecha'))+'">'+esc(x.fecha)+'</td><td class="num" data-l="'+esc(t('inv_max'))+'">'+sdH(n(x.inversion_max),eurF)+'</td><td class="num" data-l="'+esc(t('inv_acum'))+'">'+sdH(R.etapas[i],eurF)+'</td><td data-l="'+esc(t('organo'))+'">'+esc(x.organo)+'</td></tr>').join('')+'</tbody></table></div>'+(c.valor_opcion?'<p><b>'+esc(t('valor_opcion'))+':</b> '+esc(c.valor_opcion)+'</p>':'');
+  h += alertasHTML(R);
+  if(c.notas) h += '<p class="ayuda">'+esc(c.notas)+'</p>';
+  return h;
+}
+function vistaParametros(){
+  const p = D.parametros.find(x=>x.version===UI.par) || D.parametros[D.parametros.length-1];
+  const usos = D.casos.filter(c=>params(c.version_parametros).version===p.version).length, edit = usos===0, dis = edit?'':' disabled';
+  let h = '<h1>'+esc(t('tit_par'))+'</h1><p class="ayuda">'+esc(t('sub_par'))+'</p>';
+  h += '<div class="cab-calc"><div class="campo"><label for="p-sel">'+esc(t('version'))+'</label><select id="p-sel" data-par="sel">'+D.parametros.map(x=>'<option value="'+esc(x.version)+'"'+(x.version===p.version?' selected':'')+'>v'+esc(x.version)+'</option>').join('')+'</select></div>'+
+    '<div class="campo"><span class="et '+(edit?'info':'')+'">'+esc(edit?t('no_usada'):t('usada',{n:usos}))+'</span></div>'+
+    '<div class="campo"><label for="p-nueva">'+esc(t('nombre_version'))+'</label><input type="text" id="p-nueva"></div><div class="campo"><button type="button" data-acc="nueva-version">'+esc(t('nueva_version'))+'</button></div></div>';
+  h += '<div class="rejilla"><div class="campo"><label for="pm-fecha">'+esc(t('fecha'))+'</label><input type="date" id="pm-fecha" data-pp="fecha" data-tp="txt" value="'+esc(p.fecha||'')+'"'+dis+'></div>'+
+    '<div class="campo"><label for="pm-apr">'+esc(t('aprobado_por'))+'</label><input type="text" id="pm-apr" data-pp="aprobado_por" data-tp="txt" value="'+esc(p.aprobado_por||'')+'"'+dis+'></div>'+
+    '<div class="campo" style="grid-column:1/-1"><label for="pm-orig">'+esc(t('origen'))+'</label><input type="text" id="pm-orig" data-pp="origen" data-tp="txt" value="'+esc(p.origen||'')+'"'+dis+'></div>'+
+    '<div class="campo" style="grid-column:1/-1"><label for="pm-nota">'+esc(t('nota'))+'</label><textarea id="pm-nota" data-pp="nota" data-tp="txt"'+dis+'>'+esc(p.nota||'')+'</textarea></div></div>';
+  h += '<div class="tblx"><table class="tabla resp"><thead><tr><th>'+esc(t('parametro'))+'</th><th>'+esc(t('valor'))+'</th></tr></thead><tbody>'+
+    PARAMS.map(x=>{ const id='pp-'+x[0].replace(/\./g,'-'); return '<tr><td data-l="'+esc(t('parametro'))+'"><label for="'+id+'">'+esc(lang==='en'?x[2]:x[1])+'</label></td><td data-l="'+esc(t('valor'))+'"><input type="number" step="any" min="0" id="'+id+'" data-pp="'+x[0]+'" data-tp="num" value="'+esc(getP(p,x[0])??'')+'"'+dis+'></td></tr>'; }).join('')+'</tbody></table></div>';
+  h += '<h3>'+esc(t('coste_horario'))+'</h3><div class="tblx"><table class="tabla ed"><thead><tr><th>'+esc(t('perfil'))+'</th><th>'+esc(t('importe_h'))+'</th></tr></thead><tbody>'+
+    (p.coste_horario||[]).map((x,i)=>'<tr><td><input type="text" id="pp-ch-'+i+'-p" data-pp="coste_horario.'+i+'.perfil" data-tp="txt" value="'+esc(x.perfil||'')+'" aria-label="'+esc(t('perfil'))+'"'+dis+'></td><td><input type="number" step="any" id="pp-ch-'+i+'-i" data-pp="coste_horario.'+i+'.importe" data-tp="num" value="'+esc(x.importe??'')+'" aria-label="'+esc(t('importe_h'))+'"'+dis+'></td></tr>').join('')+'</tbody></table></div>';
+  if(edit) h += '<button type="button" class="mini" data-acc="anadir-ch">+ '+esc(t('anadir'))+'</button>';
+  else h += '<p class="ayuda">'+esc(t('bloqueado'))+'</p>';
+  return h;
+}
+function vistaDatos(){
+  return '<h1>'+esc(t('tit_datos'))+'</h1><p class="ayuda">'+esc(t('sub_datos'))+'</p><div class="fila">'+
+    '<button type="button" class="primario" data-acc="exportar">'+esc(t('exportar'))+'</button><button type="button" data-acc="importar">'+esc(t('importar'))+'</button>'+
+    '<button type="button" data-acc="desde-t01">'+esc(t('cargar_t01'))+'</button></div><div class="fila" style="margin-top:8px">'+
+    '<button type="button" data-acc="exp-caso"'+(casoSel()?'':' disabled')+'>'+esc(t('exp_caso'))+'</button><button type="button" data-acc="exp-csv"'+(casoSel()?'':' disabled')+'>'+esc(t('exp_csv'))+'</button></div><div class="fila" style="margin-top:8px">'+
+    '<button type="button" data-acc="restaurar">'+esc(t('restaurar'))+'</button><button type="button" class="peligro" data-acc="vaciar">'+esc(t('vaciar'))+'</button></div>'+
+    '<p class="ayuda" style="margin-top:12px">'+esc(t('pie_priv'))+'</p>';
+}
+
+/* ---------------- render ---------------- */
+const RUTAS = ['hipotesis','costes','decision','parametros','datos'];
+function ruta(){ const v=(location.hash||'#/hipotesis').replace(/^#\/?/,'').split('/')[0]; return RUTAS.includes(v)?v:'hipotesis'; }
+function render(){
+  const foco = document.activeElement && document.activeElement.id;
+  document.documentElement.lang = lang;
+  document.title = t('app');
+  document.getElementById('txt-app').textContent = t('app');
+  document.getElementById('saltar').textContent = t('saltar');
+  document.getElementById('lbl-lang').textContent = t('idioma'); document.getElementById('lbl-tema').textContent = t('tema');
+  const st = document.getElementById('sel-tema'); st.options[0].text=t('t_auto'); st.options[1].text=t('t_claro'); st.options[2].text=t('t_oscuro'); st.value=UI.tema;
+  document.getElementById('sel-lang').value = lang;
+  document.getElementById('btn-legal').textContent = t('legal_link');
+  const l40 = document.getElementById('lnk-d40'); l40.textContent = t('doc40'); l40.href = t('doc40_href');
+  const l42 = document.getElementById('lnk-d42'); l42.textContent = t('doc42'); l42.href = t('doc42_href');
+  document.getElementById('lnk-t01').textContent = t('reg_t01');
+  document.getElementById('nav').setAttribute('aria-label', t('vistas'));
+  const v = ruta();
+  document.getElementById('nav').innerHTML = RUTAS.map(x=>'<a href="#/'+x+'"'+(x===v?' aria-current="page"':'')+'>'+esc(t('v_'+x))+'</a>').join('');
+  document.getElementById('aviso-demo').innerHTML = (D.meta||{}).datos_ilustrativos ? '<div>'+esc(t('demo'))+'</div>' : '';
+  const m = document.getElementById('principal');
+  m.innerHTML = v==='costes' ? vistaCostes() : v==='decision' ? vistaDecision() : v==='parametros' ? vistaParametros() : v==='datos' ? vistaDatos() : vistaHipotesis();
+  document.getElementById('pie').innerHTML = '<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+'</p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
+  refrescarCeldas();
+  if(foco){ const e = document.getElementById(foco); if(e && e!==document.body) try{ e.focus({preventScroll:true}); }catch(x){} }
+}
+function refrescarCeldas(){
+  const c = casoSel(); if(!c) return;
+  const R = calc(c);
+  document.querySelectorAll('[data-calc]').forEach(e=>{ const [k,i] = e.dataset.calc.split(':'), j = Number(i);
+    if(k==='val') e.innerHTML = celdaImporte((c.lineas||[])[j]||{});
+    else if(k==='cos') e.innerHTML = sdH(amt(((c.costes||{}).lineas||[])[j]), eurF);
+    else if(k==='rep') e.innerHTML = sdH((R.comp[j]||{}).imp, eurF);
+    else if(k==='etapa') e.innerHTML = sdH(R.etapas[j], eurF); });
+}
+function refrescar(){
+  const c = casoSel(); if(!c) return;
+  const P = params(c.version_parametros), R = calcular(c, P), set = (id, html) => { const e = document.getElementById(id); if(e) e.innerHTML = html; };
+  set('res', resultadoHTML(c)); set('res-costes', costesResumenHTML(c));
+  set('r-consumo', consumoRes(R, P.alertas_consumo||{})); set('r-unidad', unidadRes(R)); set('r-parada', paradaRes(R)); set('r-conc', concRes(c, R)); set('r-alertas-costes', alertasHTML(R));
+  refrescarCeldas();
+}
+
+/* ---------------- exportaciones ---------------- */
+function descargar(nombre, texto, tipo){ const blob=new Blob([texto],{type:tipo}), u=URL.createObjectURL(blob), l=document.createElement('a'); l.href=u; l.download=nombre; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),1000); }
+function resultadoExport(c){
+  const P = params(c.version_parametros), R = calcular(c, P), r2 = x => x==null?null:Math.round(x*100)/100;
+  return { parametros:{version:P.version, horizonte_anios:R.Hc, tasa_descuento_pct:n(P.tasa_descuento_pct)},
+    eficiencias:r2(R.ef.total), retorno:r2(R.re.total), capacidad_liberada_no_suma:r2(R.cap.n?R.cap.total:null), valor_bruto:r2(R.bruto),
+    construccion:r2(R.constr.total), adopcion_inicial:r2(R.adopV), inversion_inicial:r2(R.I), coste_recurrente:r2(R.rec), coste_recurrente_incremental:r2(R.recInc), coste_recurrente_repartido:r2(R.shared), coste_retirada:r2(R.retirada), coste_total_propiedad:r2(R.tco),
+    neto_anual:r2(R.neto), van:r2(R.van), roi_pct:R.roi==null?null:r2(R.roi*100), plazo_recuperacion_anios:R.payback==null?null:r2(R.payback), neto_adicional_por_euro:r2(R.f3), neto_adicional_por_euro_incremental:r2(R.f3inc),
+    flujo:R.fl?R.fl.anios.map(a=>({anio:a.a, rampa_pct:a.rampa, valor:r2(a.valor), coste_recurrente:r2(a.coste), retirada:r2(a.ret), neto:r2(a.neto), valor_actual:r2(a.va)})):null,
+    escenarios:R.esc.map(s=>({escenario:s.k, multiplicadores:s.m, neto_anual:r2(s.neto), inversion:r2(s.I), van:r2(s.van), roi_pct:s.roi==null?null:r2(s.roi*100), plazo_recuperacion_anios:s.pb==null?null:r2(s.pb)})),
+    coste_parar:r2(R.par.coste), inversion_evitada:r2(R.par.evitada), alertas:R.alertas.map(a=>({nivel:a[0], texto:a[1]})) };
+}
+function estadoPrudente(ls){ const e = ls.map(l=>l.estado||'estimado'); return e.includes('estimado')?'estimado':e.includes('declarado')?'declarado':e.length?'validado':'estimado'; }
+function valoresT01(c){
+  const R = calc(c), out = [], add = (tipo, imp, formula, estado, periodo) => { if(imp==null) return; out.push({iniciativa:c.id, momento:'esperado', tipo, importe:Math.round(imp*100)/100, formula, estado, periodo, fecha:c.fecha||null, fuente:'T11 · '+hoy(), concepto:null}); };
+  const L = c.lineas||[];
+  add('eficiencias', R.ef.n?R.ef.total:null, L.filter(l=>l.tipo==='eficiencias').map(l=>l.concepto).join(' + '), estadoPrudente(L.filter(l=>l.tipo==='eficiencias')), 'Anual');
+  add('retorno', R.re.n?R.re.total:null, L.filter(l=>l.tipo==='retorno').map(l=>l.concepto).join(' + '), estadoPrudente(L.filter(l=>l.tipo==='retorno')), 'Anual');
+  add('capacidad_liberada', R.cap.n?R.cap.total:null, L.filter(l=>l.tipo==='capacidad_liberada').map(l=>l.concepto).join(' + '), 'estimado', 'Anual');
+  add('coste_recurrente', R.rec, 'T13: coste recurrente completo (directo + repartido)', 'estimado', 'Anual');
+  add('inversion', R.I, 'T13: construcción + adopción inicial', 'estimado', 'Total');
+  return out;
+}
+function csvCaso(c){
+  const R = calc(c), dec = x => x==null ? '' : (lang==='en' ? String(Math.round(x*100)/100) : String(Math.round(x*100)/100).replace('.',','));
+  const q = s => { s = String(s ?? ''); return /[;"\n\r]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; };
+  const rows = [['bloque','tipo_o_componente','categoria','concepto','unidades','unidad','valor_unitario','importe','estado','notas']];
+  rows.push(['caso', c.id, '', c.nombre, '', '', '', '', '', c.descripcion||'']);
+  (c.lineas||[]).forEach(l=>rows.push(['valor', l.tipo, '', l.concepto, dec(n(l.unidades)), l.unidad||'', dec(n(l.valor_unitario)), dec(amt(l)), l.estado||'', [l.base, l.fuente, l.supuestos].filter(Boolean).join(' · ')]));
+  ((c.costes||{}).lineas||[]).forEach(l=>rows.push(['coste', l.componente||'', l.categoria||'', l.concepto, dec(n(l.unidades)), '', dec(n(l.valor_unitario)), dec(amt(l)), '', (l.incremental===false?'no incremental':'incremental')+(l.fuente?' · '+l.fuente:'')]));
+  ((c.costes||{}).compartidos||[]).forEach((s,i)=>rows.push(['coste_compartido', 'recurrente', s.categoria||'', s.nombre, dec(n(s.clave_caso)), s.metodo, dec(n(s.coste_total)), dec(R.comp[i].imp), s.clave_aprobada===true?'clave aprobada':'clave sin aprobar', 'clave_total='+(s.metodo==='consumo'?'100':(s.clave_total??''))+'; sin_etiquetar='+(s.sin_etiquetar_pct??'')+'; estructura='+(s.estructura_pct??'')]));
+  if(R.fl) R.fl.anios.forEach(a=>rows.push(['flujo', 'año '+a.a, '', 'rampa '+a.rampa+' %', '', '', '', dec(a.neto), '', 'valor '+dec(a.valor)+'; coste '+dec(a.coste)+'; retirada '+dec(a.ret)+'; valor actual '+dec(a.va)]));
+  const res = [['inversion_inicial',R.I],['coste_recurrente',R.rec],['coste_recurrente_incremental',R.recInc],['coste_total_propiedad',R.tco],['neto_anual_F2',R.neto],['VAN_F7',R.van],['ROI_F8_pct',R.roi==null?null:R.roi*100],['plazo_recuperacion_F9_anios',R.payback],['neto_adicional_por_euro_F3',R.f3],['coste_parar',R.par.coste],['inversion_evitada',R.par.evitada]];
+  res.forEach(([k,v])=>rows.push(['resultado', k, '', '', '', '', '', dec(v), v==null?'sin dato':'', 'H='+(R.Hc??'')+'; r='+(R.r*100)+' %']));
+  return '﻿'+rows.map(r=>r.map(q).join(';')).join('\r\n');
+}
+
+/* ---------------- importación desde T01 ---------------- */
+function casoDesdeT01(reg, id){
+  const I = reg.iniciativas.find(x=>x.id===id); if(!I) return null;
+  const cl = I.clasificacion||{}, c = casoVacio(nuevoId(I.id));
+  Object.assign(c, {nombre:I.nombre||'', descripcion:I.descripcion||'', ambicion:cl.ambicion_confirmada||cl.ambicion_propuesta||null, intensidad:cl.intensidad||null, fase:(I.ciclo||{}).fase??null, origen:'t01'});
+  const vals = (reg.valores||[]).filter(v=>v.iniciativa===I.id && v.momento==='esperado');
+  for(const v of vals){
+    const base = {concepto:v.formula||v.tipo, importe:n(v.importe), fuente:'T01 '+(v.id||'')+(v.fuente?' · '+v.fuente:'')};
+    if(['eficiencias','retorno','capacidad_liberada','riesgo_evitado','cumplimiento'].includes(v.tipo)) c.lineas.push(Object.assign(FILAS.lineas(), base, {tipo:v.tipo, estado:v.estado||null, supuestos:v.formula||''}));
+    else if(v.tipo==='coste_recurrente') c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), base, {componente:'recurrente'}));
+    else if(v.tipo==='inversion') c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), base, {componente:'construccion'}));
+  }
+  const inv = I.inversion||{};
+  if(!vals.some(v=>v.tipo==='inversion') && (inv.realizada!=null || inv.pendiente!=null)){
+    const ok = inv.realizada!=null && inv.pendiente!=null;
+    c.costes.lineas.push(Object.assign(FILAS['costes.lineas'](), {componente:'construccion', concepto:ok?t('t01_inv'):t('t01_inv_sd'), importe: ok ? n(inv.realizada)+n(inv.pendiente) : null, fuente:'T01'}));
+  }
+  if(inv.realizada!=null) c.costes.parada.gastado = n(inv.realizada);
+  c.notas = t('t01_nota',{o:(reg.meta||{}).organizacion||'', f:fF(hoy())});
+  return c;
+}
+function abrirDlgT01(reg){
+  T01_PEND = reg; const d = document.getElementById('dlg-t01');
+  d.innerHTML = '<div class="dlg-cab"><h2 id="t01-t">'+esc(t('t01_tit'))+'</h2><button type="button" data-acc="cerrar-t01">'+esc(t('t01_cancelar'))+'</button></div><div class="dlg-cuerpo"><p class="ayuda">'+esc(t('t01_ayuda'))+'</p><div class="campo"><label for="t01-ini">'+esc(t('t01_elegir'))+'</label><select id="t01-ini">'+
+    reg.iniciativas.map(I=>'<option value="'+esc(I.id)+'">'+esc(I.id+' · '+(I.nombre||''))+'</option>').join('')+'</select></div><p style="margin-top:12px"><button type="button" class="primario" data-acc="crear-t01">'+esc(t('t01_crear'))+'</button></p></div>';
+  d.showModal();
+}
+
+/* ---------------- eventos ---------------- */
+function leer(el){ const tp = el.dataset.tp; if(tp==='num') return el.value==='' ? null : Number(el.value); if(tp==='bool') return el.value==='' ? null : el.value==='1'; if(tp==='sel') return el.value==='' ? null : el.value; return el.value; }
+function parSel(){ return D.parametros.find(x=>x.version===UI.par) || D.parametros[D.parametros.length-1]; }
+function parEditable(p){ return !D.casos.some(c=>params(c.version_parametros).version===p.version); }
+document.addEventListener('input', ev => {
+  const el = ev.target;
+  if(el.dataset.p && ['num','txt'].includes(el.dataset.tp)){ const c = casoSel(); if(!c) return; setP(c, el.dataset.p, leer(el)); if(el.dataset.p==='id'){ UI.sel = c.id; } guardar(); refrescar(); return; }
+  if(el.dataset.pp && ['num','txt'].includes(el.dataset.tp)){ const p = parSel(); if(!parEditable(p)) return; setP(p, el.dataset.pp, leer(el)); guardar(); return; }
+});
+document.addEventListener('change', ev => {
+  const el = ev.target;
+  if(el.id==='sel-lang'){ lang = UI.lang = el.value; guardar(); render(); return; }
+  if(el.id==='sel-tema'){ UI.tema = el.value; aplicarTema(); guardar(); return; }
+  if(el.dataset.cab==='sel'){ UI.sel = el.value; guardar(); render(); return; }
+  if(el.dataset.par==='sel'){ UI.par = el.value; guardar(); render(); return; }
+  if(el.dataset.p && ['sel','bool'].includes(el.dataset.tp)){ const c = casoSel(); if(!c) return; setP(c, el.dataset.p, leer(el)); guardar(); render(); return; }
+  if(el.dataset.p==='vida_util_anios' || el.dataset.p==='id'){ render(); return; }
+});
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-acc]'); if(!b) return;
+  const a = b.dataset.acc, c = casoSel();
+  if(a==='aviso-legal'){ const d=document.getElementById('dlg-legal'); d.innerHTML='<div class="dlg-cab"><h2 id="legal-t">'+esc(t('legal_tit'))+'</h2><button type="button" data-acc="cerrar-legal">'+esc(t('legal_ok'))+'</button></div><div class="dlg-cuerpo"><p>'+esc(t('legal_txt'))+'</p></div>'; d.showModal(); return; }
+  if(a==='cerrar-legal'){ document.getElementById('dlg-legal').close(); return; }
+  if(a==='cerrar-t01'){ document.getElementById('dlg-t01').close(); T01_PEND=null; return; }
+  if(a==='crear-t01'){ const id = document.getElementById('t01-ini').value, x = T01_PEND && casoDesdeT01(T01_PEND, id); document.getElementById('dlg-t01').close(); T01_PEND=null; if(!x) return; D.casos.push(x); UI.sel=x.id; guardar(); location.hash='#/hipotesis'; render(); toast(t('ok_t01',{c:x.id})); return; }
+  if(a==='nuevo'){ const x = casoVacio(nuevoId('CASO-'+String(D.casos.length+1).padStart(2,'0'))); D.casos.push(x); UI.sel=x.id; guardar(); render(); toast(t('ok_nuevo')); return; }
+  if(a==='duplicar' && c){ const x=clon(c); x.id=nuevoId(c.id); x.origen='manual'; D.casos.push(x); UI.sel=x.id; guardar(); render(); toast(t('ok_nuevo')); return; }
+  if(a==='eliminar' && c){ if(!confirm(t('conf_eliminar',{c:c.id}))) return; D.casos=D.casos.filter(x=>x!==c); UI.sel=null; guardar(); render(); toast(t('ok_eliminado')); return; }
+  if(a==='imprimir'){ if(ruta()!=='decision'){ location.hash='#/decision'; render(); } setTimeout(()=>window.print(), 50); return; }
+  if(a==='anadir' && c){ const lista=b.dataset.lista; let arr=getP(c, lista); if(!Array.isArray(arr)){ setP(c, lista, []); arr=getP(c, lista); } arr.push(FILAS[lista](c)); guardar(); render(); return; }
+  if(a==='quitar' && c){ const arr=getP(c, b.dataset.lista); if(Array.isArray(arr)) arr.splice(Number(b.dataset.i),1); guardar(); render(); return; }
+  if(a==='anadir-ch'){ const p=parSel(); if(!parEditable(p)) return; (p.coste_horario=p.coste_horario||[]).push({perfil:'', importe:null}); guardar(); render(); return; }
+  if(a==='desde-t01'){ document.getElementById('f-t01').click(); return; }
+  if(a==='importar'){ document.getElementById('f-t11').click(); return; }
+  if(a==='exportar'){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T11'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt}); x.casos.forEach((cc,i)=>{ cc.resultado = resultadoExport(D.casos[i]); });
+    descargar('t11_calculadora_valor_'+hoy()+'.json', JSON.stringify(x,null,2), 'application/json'); toast(t('ok_export')); return; }
+  if(a==='exp-caso' && c){ const x = {herramienta:'T11', version_esquema:VERSION_ESQUEMA, exportado:hoy(), aviso_legal:TX.es.legal_txt, datos_ilustrativos:!!(D.meta||{}).datos_ilustrativos, caso:c.id, iniciativa:{id:c.id, nombre:c.nombre, ambicion:c.ambicion, intensidad:c.intensidad, fase:c.fase}, resultado:resultadoExport(c),
+      valores_t01:valoresT01(c), nota_valores_t01:'Importes esperados en el formato de valores[] de T01, sin código VAL: T01 lo asigna al darlos de alta. El valor esperado nunca se marca como validado.'};
+    descargar('t11_resultado_'+c.id+'_'+hoy()+'.json', JSON.stringify(x,null,2), 'application/json'); toast(t('ok_caso_json')); return; }
+  if(a==='exp-csv' && c){ descargar('t11_t13_'+c.id+'_'+hoy()+'.csv', csvCaso(c), 'text/csv;charset=utf-8'); toast(t('ok_csv')); return; }
+  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); UI.sel=null; UI.par=null; guardar(); render(); return; }
+  if(a==='vaciar'){ if(!confirm(t('conf_vaciar'))) return; D.casos=[]; D.meta=Object.assign({}, D.meta, {datos_ilustrativos:false}); UI.sel=null; guardar(); render(); return; }
+  if(a==='nueva-version'){ const nom=(document.getElementById('p-nueva').value||'').trim(); if(!nom){ document.getElementById('p-nueva').focus(); return; } if(D.parametros.some(x=>x.version===nom)){ toast(t('ya_existe')); return; }
+    const base = parSel(), x = clon(base); Object.assign(x, {version:nom, fecha:hoy(), origen:'v'+base.version, aprobado_por:null, nota:''}); D.parametros.push(x); UI.par=nom; guardar(); render(); toast(t('ok_version',{v:nom})); return; }
+});
+function leerFichero(inp, fn){ const f=inp.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ let x=null; try{ x=JSON.parse(rd.result); }catch(e){} inp.value=''; fn(x); }; rd.readAsText(f); }
+document.getElementById('f-t11').addEventListener('change', ev => leerFichero(ev.target, x => {
+  if(!valido(x)){ toast(t('err_json')); return; } if(!confirm(t('conf_importar'))) return;
+  x.casos.forEach(c=>{ delete c.resultado; }); D=x; UI.sel=null; UI.par=null; guardar(); render(); toast(t('ok_import')); }));
+document.getElementById('f-t01').addEventListener('change', ev => leerFichero(ev.target, reg => {
+  if(!reg || !Array.isArray(reg.iniciativas) || !Array.isArray(reg.valores) || !reg.iniciativas.length){ toast(t('err_t01')); return; }
+  abrirDlgT01(reg); }));
+function aplicarTema(){ if(UI.tema==='auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', UI.tema); }
+window.addEventListener('hashchange', render);
+
+/* ---------------- arranque ---------------- */
+(function(){
+  try{ const u = JSON.parse(lsGet(LS_UI)||'null'); if(u) UI = Object.assign(UI, u); }catch(e){}
+  try{ const d = JSON.parse(lsGet(LS_DATOS)||'null'); if(valido(d)) D = d; }catch(e){}
+  if(!D) D = cargarDemo();
+  const q = new URLSearchParams(location.search);
+  if(q.get('lang')==='en' || q.get('lang')==='es') UI.lang = q.get('lang');
+  else if(!lsGet(LS_UI) && /^en\b/i.test(navigator.language||'')) UI.lang = 'en';
+  lang = UI.lang==='en' ? 'en' : 'es';
+  aplicarTema(); render();
+})();
+</script>
+</body>
+</html>

@@ -1,12 +1,12 @@
 # Evaluación de proveedor de IA
 
-**Determina el nivel de exigencia de un proveedor de IA, evalúa su capacidad, sus garantías y la dependencia que genera, y comprueba que el contrato incluye las cláusulas clave.**
+**Determina el nivel de exigencia de un proveedor de IA, resume su evaluación de diligencia debida, la dependencia que genera y su plan de salida, y comprueba que el contrato incluye las cláusulas clave.**
 
 | | |
 |---|---|
 | Documento | Plantilla P14 · Evaluación de proveedor de IA |
-| Versión | 0.1 (borrador de trabajo) |
-| Fecha | 16-09-2026 |
+| Versión | 0.2 (borrador de trabajo) |
+| Fecha | 19-09-2026 |
 | Autor | Fernando García · SEACHAD |
 | Estado | Borrador para revisión. |
 
@@ -18,18 +18,20 @@
 
 | Aspecto | Indicación |
 |---|---|
-| **Cuándo se usa** | En la fase 3, antes de G3, para cada proveedor que aporte modelos, plataformas, datos o servicios de IA a la iniciativa. Se revisa antes de firmar o renovar el contrato, cuando el proveedor cambie de modelo o de condiciones, y con la periodicidad del nivel de exigencia. |
+| **Cuándo se usa** | En la fase 3, antes de G3, para cada proveedor que aporte modelos, plataformas, datos o servicios de IA a la iniciativa. Se revisa antes de firmar o renovar el contrato, ante cualquier disparador de reevaluación (36 §5) y con la periodicidad del nivel de exigencia. |
 | **Quién la rellena** | El responsable técnico de IA, con compras y el responsable de riesgos de IA. Consulta a seguridad de la información, protección de datos y asesoría jurídica. |
 | **Quién la verifica** | Lite: responsable de riesgos de IA; si ha elaborado la evaluación, verifica la oficina de IA o el auditor de IA. Enterprise: auditor de IA. |
-| **Quién decide** | Se aprueba con G3: patrocinador con conformidad de riesgos (Lite) · comité de IA (Enterprise). |
+| **Quién decide** | Se aprueba con G3, según el nivel de exigencia (36 §4.2): N1, responsable de producto con conformidad de compras · N2, patrocinador con conformidad de riesgos y de protección de datos · N3, comité de IA con conformidad de riesgos, seguridad de la información, protección de datos y jurídico. |
 | **Gate en que se revisa** | G3 · Viabilidad; comprobación de cláusulas firmadas en G5. |
-| **Herramienta** | T09 · Registro de proveedores de IA. |
-| **Lite frente a Enterprise** | La profundidad depende del nivel de exigencia (N1, N2, N3), no solo de la intensidad. Lite puede omitir los campos marcados **(Enterprise)** si el proveedor es N1. |
+| **Herramienta** | T09 · Registro de proveedores de IA (formato de trabajo en P57). |
+| **Documentos de apoyo** | P55 · Cuestionario de diligencia debida (detalle de los doce bloques que se resumen en la sección 4) · P56 · Cláusulas contractuales tipo (texto modelo de las cláusulas de la sección 5) · P57 · Registro de proveedores y plan de salida. |
+| **Lite frente a Enterprise** | La profundidad depende del nivel de exigencia (N1, N2, N3), no de la intensidad (36 §2, principio 2). Un proveedor N3 implica normalmente intensidad Enterprise (01 §9.2). |
 
 Reglas de cumplimentación:
 
-- El nivel de exigencia se determina por el **factor más exigente**.
-- Los requisitos por nivel de esta plantilla son **orientativos**; los definitivos se fijan en el documento 36.
+- El nivel de exigencia se determina por el **factor más exigente** (36 §4.1).
+- Los requisitos por nivel son los del documento 36 §4.2: diligencia debida, seguridad, contrato, aprobación, auditoría, seguimiento, salida, incidentes y registro.
+- Esta plantilla **resume** la evaluación: el detalle de las preguntas, las respuestas y las evidencias está en P55.
 - *Este documento no constituye asesoramiento jurídico.* Referencias consultadas en septiembre de 2026; debe verificarse su vigencia.
 
 ---
@@ -40,9 +42,10 @@ Reglas de cumplimentación:
 |---|---|---|
 | Código de la iniciativa | | IA-AAAA-NNN. |
 | Sistemas de IA afectados | | Códigos de P05. |
+| Código de la relación proveedor–servicio | | PRV-AAAA-NNN del registro T09 (P57). |
 | Proveedor | | Razón social y país de establecimiento. |
 | Servicio o componente evaluado | | Modelo por API, plataforma, software con IA embebida, datos, servicios profesionales. |
-| Opción de abastecimiento | | Construir · Comprar · Aliarse. |
+| Opción de abastecimiento | | Construir · Comprar · Adaptar · Aliarse (36 §3.1). |
 | Versión del documento | | |
 | Fecha | | DD-MM-AAAA. |
 | Autor | | Nombre y rol. |
@@ -51,12 +54,14 @@ Reglas de cumplimentación:
 
 ## 3. Nivel de exigencia
 
-| Factor | N1 Estándar | N2 Reforzado | N3 Crítico | Valoración |
+| Factor | N1 · Estándar | N2 · Reforzado | N3 · Crítico | Valoración |
 |---|---|---|---|---|
-| Criticidad del servicio | Apoyo a tareas internas no críticas | Proceso relevante o con exposición a clientes | Función crítica o importante, o sujeta a regulación de resiliencia operativa | N1 · N2 · N3 |
-| Datos tratados | Sin datos personales ni información confidencial | Datos personales o información confidencial | Categorías especiales, grandes volúmenes de datos personales o información confidencial crítica | |
-| Autonomía | A0 Asistencia o A1 Recomendación | A2 Actuación supervisada | A3 Actuación autónoma | |
-| Sustituibilidad | Sustituible en semanas sin impacto relevante | Sustituible con esfuerzo y coste significativos | Difícilmente sustituible en plazo razonable | |
+| **Criticidad del servicio** | Proceso interno cuya interrupción tendría impacto 1–2 (documento 33). | Proceso relevante con impacto 3; exposición directa a clientes; decisiones sobre personas. | Función crítica o importante (incluida la definición de DORA cuando aplique); impacto 4–5; sistema de alto riesgo según el Reglamento de IA. | N1 · N2 · N3 |
+| **Datos tratados** | Públicos o internos no sensibles. | Datos personales o información confidencial. | Categorías especiales de datos, datos personales a gran escala, secretos empresariales o información confidencial crítica. | |
+| **Autonomía** | A0: el sistema del proveedor asiste. | A1, o A2 sin efectos sobre terceros, dinero, datos personales ni producción. | A2 o A3 con efectos sobre terceros, dinero, datos personales o sistemas de producción. | |
+| **Sustituibilidad** | Sustituible en menos de 3 meses sin coste relevante. | Sustituible en 3 a 12 meses o con coste relevante. | Más de 12 meses, coste superior al umbral de materialidad M o sin alternativa. | |
+
+Los plazos de sustituibilidad son orientativos y se aprueban en C2 (documento 13).
 
 | Campo | Contenido | Guía |
 |---|---|---|
@@ -64,89 +69,67 @@ Reglas de cumplimentación:
 | Justificación | | |
 | Tercero TIC que presta servicios en funciones críticas o importantes (DORA) | | Sí · No · No aplica. Solo entidades sujetas a DORA. |
 
-*(ejemplo ilustrativo)* Proveedor de modelo de lenguaje por API para el asistente de consultas: criticidad N2 (exposición a clientes), datos N2 (datos personales de pedidos), autonomía N1 (A0), sustituibilidad N2. Nivel: **N2 Reforzado**.
+*(ejemplo ilustrativo)* Proveedor de modelo de lenguaje por API para el asistente de consultas: criticidad N2 (exposición directa a clientes), datos N2 (datos personales de pedidos), autonomía N1 (A0), sustituibilidad N2 (sustituible en unos seis meses). Nivel: **N2 Reforzado**.
 
 ---
 
 ## 4. Evaluación del proveedor
 
-Resultado por bloque: **Conforme · Conforme con observaciones · No conforme · No evaluado**.
+### 4.1 Resultado por bloque de diligencia debida
 
-### 4.1 Capacidad y rendimiento
+Se rellena desde el resumen de P55 §5, con los doce bloques del documento 36 §4.3. Resultado: **Conforme · Conforme con observaciones · No conforme · No evaluado**.
 
-| Campo | Contenido | Resultado | Guía |
-|---|---|---|---|
-| Rendimiento en el caso de uso | | | Resultados de pruebas propias con datos representativos (P10), no solo cifras del proveedor. |
-| Documentación del modelo o servicio | | | Finalidad prevista, limitaciones conocidas, resultados de evaluación, instrucciones de uso. |
-| Gestión de versiones y cambios | | | Preaviso de cambios de modelo, posibilidad de fijar versión, retirada de versiones. |
-| Niveles de servicio | | | Disponibilidad, tiempos de respuesta, soporte. |
+| Bloque | Resultado | Observaciones |
+|---|---|---|
+| 1 · Identidad y solvencia | | |
+| 2 · Servicio y modelo | | |
+| 3 · Datos | | |
+| 4 · Subencargados y cadena de suministro | | |
+| 5 · Seguridad | | |
+| 6 · Cumplimiento del Reglamento de IA | | |
+| 7 · Protección de datos | | |
+| 8 · Propiedad intelectual | | |
+| 9 · Continuidad | | |
+| 10 · Incidentes | | |
+| 11 · Salida | | |
+| 12 · Ética y uso responsable | | |
+| Rendimiento con pruebas propias (P10) | | Resultados de pruebas propias con datos representativos, no solo cifras del proveedor. |
 
-### 4.2 Datos, privacidad y propiedad intelectual
+### 4.2 Dependencia y plan de salida
 
-| Campo | Contenido | Resultado | Guía |
-|---|---|---|---|
-| Uso de los datos de la compañía | | | Si usa entradas, salidas o datos para entrenar o mejorar sus modelos; debe poder excluirse. |
-| Condición de encargado del tratamiento | | | Contrato de encargo conforme al RGPD cuando trate datos personales por cuenta de la compañía. |
-| Ubicación y transferencias internacionales | | | Países de tratamiento y garantías aplicables. |
-| Subencargados y cadena de suministro | | | Lista, notificación de cambios y derecho de oposición. |
-| Conservación y eliminación | | | Plazos y certificación de borrado. |
-| Propiedad de los resultados y protección frente a reclamaciones | | | Titularidad de las salidas y compromisos del proveedor ante reclamaciones de terceros por propiedad intelectual. |
-| Origen de los datos de entrenamiento **(Enterprise)** | | | Información disponible sobre licencias y procedencia. |
-
-### 4.3 Seguridad
-
-| Campo | Contenido | Resultado | Guía |
-|---|---|---|---|
-| Certificaciones e informes independientes | | | Por ejemplo, ISO/IEC 27001 o ISO/IEC 42001, con alcance que cubra el servicio. |
-| Controles específicos de IA | | | Protección frente a inyección de instrucciones, aislamiento entre clientes, filtrado de contenidos. |
-| Gestión y notificación de incidentes | | | Plazos de notificación compatibles con las obligaciones de la compañía. |
-| Identidad y acceso **(Enterprise)** | | | Autenticación, gestión de claves, registros de acceso. |
-
-### 4.4 Cumplimiento regulatorio
-
-| Campo | Contenido | Resultado | Guía |
-|---|---|---|---|
-| Rol del proveedor según el Reglamento Europeo de IA | | | Proveedor del sistema, proveedor de modelo de IA de uso general u otro. |
-| Información que facilita para cumplir | | | Documentación e instrucciones que la compañía necesita según su propio rol (P11). |
-| Compromiso de cumplimiento | | | Declaraciones y cooperación con la compañía y con las autoridades. |
-| Requisitos sectoriales **(Enterprise)** | | | DORA, NIS2 u otra regulación aplicable a la compañía. |
-
-### 4.5 Dependencia, continuidad y salida
-
-| Campo | Contenido | Resultado | Guía |
-|---|---|---|---|
-| Concentración | | | Otros sistemas de la compañía que dependen del mismo proveedor (T09). |
-| Portabilidad | | | Formatos de exportación de datos, configuraciones, instrucciones y registros. |
-| Alternativas | | | Proveedores o soluciones alternativos identificados. |
-| Solvencia y continuidad del proveedor **(Enterprise)** | | | Situación financiera, planes de continuidad, pruebas. |
-| Plan de salida **(Enterprise)** | | | Pasos, plazo y coste de sustitución. Obligatorio en N3. |
+| Campo | Contenido | Guía |
+|---|---|---|
+| Concentración | | Otros sistemas de la compañía que dependen del mismo proveedor (T09; 36 §7.2). |
+| Alternativas | | Proveedores o soluciones alternativos identificados. |
+| **Salida exigida por el nivel** | | N1: exportación de datos garantizada · N2: plan de salida documentado · N3: plan de salida con alternativa identificada y ensayo o prueba documentada (36 §4.2). |
+| Plan de salida | | Referencia al plan de salida y, en N3, a la prueba de portabilidad de P57 §6 y §7. |
 
 ---
 
 ## 5. Cláusulas contractuales clave
 
-Estado: **Incluida · En negociación · No incluida · No aplica**. Exigencia orientativa: **O** obligatoria · **R** recomendada · **—** no requerida.
+Las dieciséis cláusulas del documento 36 §6. **Sí** = debe figurar · **Rec.** = recomendada · **—** = no requerida. Estado: **Presente · Parcial · Ausente · No aplica** (36 §9). El texto modelo de cada cláusula está en P56.
 
-| # | Cláusula | Contenido mínimo | N1 | N2 | N3 | Estado |
-|---|---|---|---|---|---|---|
-| 1 | Descripción del servicio y niveles de servicio | Alcance, disponibilidad, soporte, penalizaciones. | O | O | O | |
-| 2 | Uso de datos | Prohibición o condiciones de uso de datos, entradas y salidas para entrenamiento o mejora. | O | O | O | |
-| 3 | Protección de datos | Encargo del tratamiento, subencargados, transferencias, asistencia en derechos y evaluaciones. | O | O | O | |
-| 4 | Confidencialidad | Alcance y duración. | O | O | O | |
-| 5 | Seguridad | Controles mínimos, certificaciones y obligación de mantenerlos. | R | O | O | |
-| 6 | Notificación de incidentes | Plazos, contenido y cooperación en la investigación. | R | O | O | |
-| 7 | Cambios en el modelo o en el servicio | Preaviso, versiones fijas, derecho a resolver si el cambio afecta al cumplimiento o al rendimiento. | R | O | O | |
-| 8 | Propiedad intelectual | Titularidad de resultados y protección frente a reclamaciones de terceros. | R | O | O | |
-| 9 | Cumplimiento regulatorio | Información y cooperación para las obligaciones del Reglamento Europeo de IA y otra normativa. | R | O | O | |
-| 10 | Auditoría y acceso | Derecho de auditoría, informes y acceso de supervisores cuando proceda. | — | R | O | |
-| 11 | Subcontratación | Autorización, lista y responsabilidad del proveedor por sus subcontratistas. | — | R | O | |
-| 12 | Ubicación del tratamiento | Países permitidos y notificación de cambios. | R | O | O | |
-| 13 | Continuidad y resiliencia | Planes de continuidad y pruebas. | — | R | O | |
-| 14 | Salida y reversibilidad | Devolución de datos, asistencia en la migración, periodo transitorio, borrado certificado. | R | O | O | |
-| 15 | Responsabilidad y seguros | Límites de responsabilidad coherentes con el riesgo; seguros. | R | R | O | |
-| 16 | Resolución | Causas, incluidos incumplimientos regulatorios o de seguridad. | O | O | O | |
+| # | Cláusula | N1 | N2 | N3 | Estado |
+|---|---|---|---|---|---|
+| 1 | Uso de datos para entrenamiento | Sí | Sí | Sí | |
+| 2 | Confidencialidad y tratamiento de datos | Sí | Sí | Sí | |
+| 3 | Ubicación y transferencias | Sí | Sí | Sí | |
+| 4 | Seguridad | Sí | Sí | Sí | |
+| 5 | Subencargados | Rec. | Sí | Sí | |
+| 6 | Propiedad intelectual y resultados | Rec. | Sí | Sí | |
+| 7 | Notificación de incidentes | Rec. | Sí | Sí | |
+| 8 | Cambios de modelo | Rec. | Sí | Sí | |
+| 9 | Niveles de servicio | — | Sí | Sí | |
+| 10 | Registros y trazabilidad | — | Sí | Sí | |
+| 11 | Auditoría y acceso | — | Rec. | Sí | |
+| 12 | Obligaciones del Reglamento de IA en la cadena de valor | Rec. | Sí | Sí | |
+| 13 | Transparencia sobre funciones de IA | Rec. | Sí | Sí | |
+| 14 | Continuidad | — | Rec. | Sí | |
+| 15 | Salida y transición | Rec. | Sí | Sí | |
+| 16 | Terminación | Rec. | Sí | Sí | |
 
-Para entidades sujetas a DORA, los contratos con terceros proveedores de servicios TIC deben incluir las disposiciones contractuales clave que exige ese reglamento, reforzadas cuando el servicio soporta funciones críticas o importantes.
+En N1 muchas cláusulas no son negociables: se verifican en las condiciones estándar y, si faltan, se registra el riesgo y quién lo acepta (36 §6; P56 §9). Para entidades sujetas a DORA, todo servicio N3 se revisa contra el art. 30.3 de ese reglamento (36 §6.2).
 
 ---
 
@@ -157,10 +140,10 @@ Para entidades sujetas a DORA, los contratos con terceros proveedores de servici
 | **Resultado global** | | Conforme · Conforme con observaciones · No conforme. |
 | Observaciones y condiciones | | Qué debe resolverse, responsable y plazo (antes de firma o antes de G5). |
 | Riesgos para P12 | | Riesgos de categoría TER u otros identificados en la evaluación. |
-| Periodicidad de revisión | | Orientativa: N1 cada dos años o al renovar; N2 anual; N3 anual y ante cualquier cambio relevante. El documento 36 fija la definitiva. |
+| Periodicidad de revisión | | Según el nivel (36 §4.2): N1 revisión anual · N2 revisión semestral e indicadores de servicio · N3 revisión trimestral, indicadores mensuales y reunión de gobierno de la relación. |
 | Próxima revisión | | Fecha. |
 
-Un resultado **No conforme** en los bloques 4.2 o 4.3, o una cláusula obligatoria no incluida, impide usar el proveedor con datos de producción.
+Un resultado **No conforme** en los bloques 3 (datos), 5 (seguridad) o 7 (protección de datos) de P55 impide usar el proveedor con datos de producción hasta resolverlo (P55 §5). Tampoco se usa con datos de producción mientras una cláusula exigible (**Sí**) esté ausente sin el riesgo registrado y aceptado por el órgano que corresponde.
 
 ---
 
@@ -171,10 +154,10 @@ Los criterios formales de G3 están en el documento 21 (ver criterios G3.xx) y l
 | # | Comprobación | Estado |
 |---|---|---|
 | 1 | El nivel de exigencia está justificado con los cuatro factores. | Cumple · No cumple · No aplica · Pendiente |
-| 2 | El rendimiento se ha comprobado con pruebas propias. | |
+| 2 | Los doce bloques tienen resultado trasladado desde P55 y el rendimiento se ha comprobado con pruebas propias. | |
 | 3 | El uso de datos por el proveedor está resuelto por contrato. | |
-| 4 | Las cláusulas obligatorias del nivel están incluidas o en negociación con fecha anterior a G5. | |
-| 5 | La dependencia y la salida están evaluadas; en N3 existe plan de salida. | |
+| 4 | Las cláusulas exigibles del nivel están presentes o en negociación con fecha anterior a G5; las ausentes tienen riesgo registrado y aceptado. | |
+| 5 | La dependencia y la salida están evaluadas según el nivel: en N2 existe plan de salida documentado y en N3 alternativa identificada y prueba documentada. | |
 | 6 | Los riesgos identificados se han trasladado a P12. | |
 | 7 | El proveedor está registrado en T09 y en la ficha P05. | |
 
@@ -186,9 +169,9 @@ Los criterios formales de G3 están en el documento 21 (ver criterios G3.xx) y l
 |---|---|---|---|---|
 | Elabora | Responsable técnico de IA | | | |
 | Consultado | Compras · seguridad · protección de datos · asesoría jurídica | | | |
-| Emite conformidad | Responsable de riesgos de IA | | | |
+| Emite conformidad | Las funciones que exige el nivel (fila «Decide») | | | |
 | Verifica | Responsable de riesgos (Lite) · Auditor de IA (Enterprise) | | | |
-| Decide | Patrocinador con conformidad de riesgos (Lite) · Comité de IA (Enterprise) | | | |
+| Decide | N1: responsable de producto con conformidad de compras · N2: patrocinador con conformidad de riesgos y de protección de datos · N3: comité de IA con conformidad de riesgos, seguridad de la información, protección de datos y jurídico (36 §4.2) | | | |
 
 Separación de funciones: quien negoció el contrato no verifica la evaluación; quien tenga conflicto de interés con el proveedor lo declara en P03.
 
@@ -206,4 +189,5 @@ Separación de funciones: quien negoció el contrato no verifica la evaluación;
 
 | Versión | Fecha | Cambios |
 |---|---|---|
-| 0.1 | 16-09-2026 | Primera versión. Niveles de exigencia N1–N3 de la especificación común §5.6, evaluación por bloques y cláusulas contractuales clave. Requisitos por nivel orientativos hasta el documento 36. |
+| 0.1 | 16-09-2026 | Primera versión. Niveles de exigencia N1–N3 de la especificación común §5.6, evaluación por bloques y cláusulas contractuales clave. |
+| 0.2 | 19-09-2026 | Alineada con el documento 36: decisión y revisión por nivel N1–N3, factores, 12 bloques de diligencia (P55), 16 cláusulas (P56) y plan de salida (P57). |

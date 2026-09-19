@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
   Genera HTML y PDF de las metodologías SEVEN-G, SPHERES y SPAD en español e inglés a partir de las fuentes Markdown.
 
@@ -331,6 +331,8 @@ function ObtenerMapaReferencias([string]$lang) {
       if (-not $map[$par[0]]) { $map[$par[0]] = $map['T01'] + $par[1] }
     }
   }
+  # los costes por caso (T13) son un módulo de la calculadora de valor (T11), D68
+  if ($map['T11'] -and -not $map['T13']) { $map['T13'] = $map['T11'] + '#/costes' }
   if (-not $map['T18']) { $d = & $destinoSevenG '62'; if ($d) { $map['T18'] = $d } }
   $catalogo03 = Get-ChildItem $mdsSevenG -File -Filter '03_*.md' | Select-Object -First 1
   if ($catalogo03) {
@@ -474,6 +476,8 @@ $cfg           = $configuracion[$metodologia]
 $root          = Join-Path $repo $metodologia
 $bloquesIndice = $cfg.bloques
 Write-Host "== $metodologia =="
+# versión editable en Word de las plantillas (D67), antes de los HTML para que la zona de descargas la enlace
+if ($metodologia -eq 'SEVEN-G') { & (Join-Path $PSScriptRoot 'docx.ps1') -Idiomas $Idiomas }
 
 foreach ($lang in $Idiomas) {
   $t       = $textos[$lang].Clone()
@@ -527,7 +531,7 @@ foreach ($lang in $Idiomas) {
       $herramientas[$cod] = @{ ruta = $app.FullName; es = $titulos.es; en = $titulos.en }
     }
   }
-  $aliasHerr = @{ T02 = 'T01'; T03 = 'T01'; T04 = 'T01'; T05 = 'T01'; T06 = 'T01'; T18 = 'T17' }
+  $aliasHerr = @{ T02 = 'T01'; T03 = 'T01'; T04 = 'T01'; T05 = 'T01'; T06 = 'T01'; T13 = 'T11'; T18 = 'T17' }
 
   foreach ($f in $files) {
     $esIndice = $f.FullName -eq $indiceMd
@@ -675,6 +679,13 @@ foreach ($lang in $Idiomas) {
     if (-not $esIndice) {
       $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfSameHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$pdfLabel</b></a>")
       if ($pdfOtroHref) { $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfOtroHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$otroLabel</b></a>") }
+      # plantilla editable en Word, del mismo idioma (D67)
+      $docxOut = Join-Path $root "docx\$lang\$relBase.docx"
+      if (Test-Path $docxOut) {
+        $docxHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $docxOut).Replace('\', '/')
+        $docxLabel = if ($en) { 'Editable template (Word)' } else { 'Plantilla editable (Word)' }
+        $enlacesDoc.Insert(1, "<a class=""dz-item"" href=""$docxHref"" download><span class=""dz-tipo"">DOCX</span><b>$docxLabel</b></a>")
+      }
     }
     if ($otroHtmlHref) { $enlacesDoc.Add("<a class=""dz-item"" href=""$otroHtmlHref"" hreflang=""$otroLang""><span class=""dz-tipo html"">HTML</span><b>$otroLabel</b></a>") }
 

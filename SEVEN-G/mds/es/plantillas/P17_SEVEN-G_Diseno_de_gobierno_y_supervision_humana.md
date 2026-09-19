@@ -145,6 +145,8 @@ En sistemas de alto riesgo, estos requisitos se contrastan con el artículo 14 d
 | Vía para solicitar revisión humana o impugnar | | Canal, plazo interno de respuesta y rol que revisa. |
 | Registro de reclamaciones relacionadas con el sistema **(Enterprise)** | | Dónde se registran y cómo alimentan P25 y P27. |
 
+Textos y registro de avisos en P49.
+
 ---
 
 ## 9. Responsabilidades y escalado

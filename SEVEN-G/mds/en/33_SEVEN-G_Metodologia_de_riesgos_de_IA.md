@@ -493,7 +493,7 @@ The thresholds are indicative and are approved in C2. All are calculated with da
 |---|---|---|
 | **Body that decides the *gate*** | At every *gate* | Inherent and residual profile, High and Critical risks with controls and effectiveness, required acceptances, changes since the previous *gate*. |
 | **AI Committee** | Monthly | Residual heat map of the portfolio, new and escalated risks, pending and expired acceptances, indicators outside threshold, materialised risks. |
-| **Board or board committee** | Quarterly | Critical and High residuals by sphere, concentration and portfolio scenarios, compliance with the appetite, significant incidents, exposure to offensive AI (35), decisions requested. |
+| **Board or board committee** | Quarterly | Critical and High residuals by sphere, concentration and portfolio scenarios, compliance with the appetite, significant incidents, exposure to offensive AI (35), decisions requested. Presented with the quarterly second-line report (P42). |
 | **C5 · Annual review** | Annual | Effectiveness of the risk management system, recalibration of scales and catalogue, lessons learned. |
 
 The report to the board uses business language: what can happen, whom it affects, what is being done and what decision is requested. It should not present unprioritised technical lists of risks.
@@ -506,6 +506,7 @@ The report to the board uses business language: what can happen, whom it affects
 |---|---|---|
 | **P12** | Risk matrix and register | Register with the fields in section 8, inherent and residual heat map. Phases 3, 5 and 6. |
 | **P13** | Mitigation and contingency plan | Treatment actions, target residual, contingencies and triggers (sections 5–7). Phase 3. |
+| **P42** | Quarterly second-line report | Quarterly portfolio risk reporting to the board committee (sections 10–12). |
 | **T06** | Risk matrix and register | Calculation of levels with the extreme impact rule, inherent and residual 5 × 5 matrix for each initiative and for the portfolio, control effectiveness, acceptance by the body for its level, observations from sections 4 to 8 (Critical residual without approval, High without contingency, acceptance expired or insufficient, review overdue) and CSV export. "Risks" view of the T01 register. Portfolio concentration and correlation (section 10) are analysed with P12 §7. |
 | T01 · T02 · T08 · T09 · T17 | Initiative register, inventory, incidents, suppliers and board dashboard | Sources and destinations of risk data. |
 

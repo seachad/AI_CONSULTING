@@ -488,7 +488,7 @@ Lectura para el consejo: la cartera genera un neto anual positivo según lo decl
 | Código | Nombre | Uso en este documento |
 |---|---|---|
 | **T01** | Registro de iniciativas | Importes, estados, eventos de cambio de estado, fechas para agilidad; alcance de las iniciativas transversales y plataformas, con despliegue, adopción e importes por unidad (sección 7.2). |
-| **T11** | Lienzo y calculadora de hipótesis de valor | Fórmulas F1–F4 y F7–F9 en fase 2 y 3; método de atribución. |
+| **T11** | Lienzo y calculadora de hipótesis de valor | Fórmulas F1–F4 y F7–F9 en fase 2 y 3; método de atribución; escenarios (P10 §6.2) y criterio de C2 como información. Importa la iniciativa desde T01 y exporta sus valores esperados. |
 | **T12** | Seguimiento de realización de valor | Estados por periodo, caducidades, F5, F6 y F10. |
 | **T13** | Calculadora de costes por caso | Coste recurrente completo e inversión inicial. |
 | **T17** | Panel de IA para el consejo | Presentación con proporción validada visible; tarjeta de iniciativas transversales y plataformas con el neto de la cartera con y sin ellas. |

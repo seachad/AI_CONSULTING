@@ -169,7 +169,7 @@ Las líneas rojas **no admiten excepciones**.
 
 1. Cualquier otro requisito de esta política puede exceptuarse temporalmente mediante solicitud motivada que incluya: requisito afectado, justificación, riesgo, medidas compensatorias, plazo y responsable.
 2. Aprueban las excepciones los órganos indicados en [la matriz de delegación del Modelo de gobierno]. Quien propone no aprueba.
-3. Las excepciones tienen plazo máximo de [seis meses], se registran con código y se informan trimestralmente a [la Comisión].
+3. Las excepciones tienen plazo máximo de [seis meses], se registran con código EXC-AAAA-NNN (P40) y se informan trimestralmente a [la Comisión].
 4. Una excepción vencida sin cierre se trata como no conformidad mayor.
 
 ### 3.9 Incumplimiento
@@ -424,7 +424,7 @@ Las duraciones son **orientativas** para empezar y deben ajustarse al tamaño de
 |---|---|
 | **Responsable** | Oficina de IA, con la función de personas. |
 | **Plan anual** | Se aprueba en C2 junto con la política; incluye colectivos, prioridades y presupuesto (categoría de coste "adopción y formación"). |
-| **Registro** | Por persona: perfiles asignados, formaciones completadas, fechas, evaluaciones y vencimientos. El registro se vincula a T21 y a P03. |
+| **Registro** | Por persona: perfiles asignados, formaciones completadas, fechas, evaluaciones y vencimientos. El registro (P45) se mantiene en T20, se vincula a P03 y sus indicadores se muestran en T21. |
 | **Condiciones de acceso** | F1 antes de recibir licencias de IA; F3 antes de supervisar un sistema en producción; F4 antes de asumir un rol en una iniciativa. |
 | **Eficacia** | Se mide con resultados, no solo con asistencia: evaluaciones superadas, incidentes causados por uso indebido, detecciones de uso no autorizado, verificaciones de resultados en muestreos. |
 | **Actualización** | Contenidos revisados al menos anualmente y ante cambios de regulación, herramientas o incidentes relevantes. |
@@ -495,6 +495,10 @@ Los criterios concretos de *gate* se fijan en el documento 21.
 | **P05** | Ficha de inventario del sistema de IA | Alta de herramientas y usos. |
 | **P14** | Evaluación de proveedor de IA | Antes de autorizar una herramienta o activar IA embebida. |
 | **P20** | Plan de adopción y capacidad | Formación de supervisores y usuarios de iniciativas. |
+| **P40** | Solicitud y registro de excepciones | Solicitud, aprobación y registro de excepciones a la política (sección 3.8). |
+| **P43** | Catálogo de herramientas autorizadas y solicitudes | Catálogo de herramientas autorizadas y solicitudes de nuevas herramientas (sección 4.2). |
+| **P44** | Encuesta de uso y percepción de la IA | Uso y percepción de la IA por la plantilla, incluido el uso no autorizado (sección 5.2). |
+| **P45** | Plan y registro de alfabetización y formación | Programa por perfiles y registro por persona (sección 6). |
 
 ---
 

@@ -232,21 +232,21 @@ El Reglamento (UE) 2024/1689 entró en vigor el 1 de agosto de 2024 y se aplica 
 
 | Obligación / requisito | Artículo o cláusula | A quién aplica | Fase o etapa SEVEN-G | Rol responsable | Evidencia (P-código o documento) | Herramienta |
 |---|---|---|---|---|---|---|
-| Realizar la evaluación antes del primer uso: procesos, periodo y frecuencia de uso, personas y colectivos afectados, riesgos específicos, medidas de supervisión humana y medidas ante materialización de riesgos | Art. 27.1 | Organismos de Derecho público, entidades privadas que prestan servicios públicos y responsables del despliegue de sistemas del anexo III, punto 5, letras b) y c); no aplica al área 2 del anexo III | 3 (evaluación), actualizada en 4 | Responsable de riesgos; segunda línea; Responsable de producto | P11 | T07 |
-| Actualizar la evaluación cuando cambien sus elementos | Art. 27.2 | Mismos | R6 y cada cambio | Responsable de riesgos | P11, P27 | T07, T08 |
-| Notificar los resultados a la autoridad de vigilancia del mercado con el formulario previsto | Art. 27.3 | Mismos | 5 (antes de G5) | Responsable de riesgos | P11, P23 | T07 |
-| Complementar, sin duplicar, la evaluación de impacto en protección de datos | Art. 27.4; RGPD art. 35 | Mismos | 3 | Responsable de riesgos; delegado de protección de datos | P11 | T07 |
+| Realizar la evaluación antes del primer uso: procesos, periodo y frecuencia de uso, personas y colectivos afectados, riesgos específicos, medidas de supervisión humana y medidas ante materialización de riesgos | Art. 27.1 | Organismos de Derecho público, entidades privadas que prestan servicios públicos y responsables del despliegue de sistemas del anexo III, punto 5, letras b) y c); no aplica al área 2 del anexo III | 3 (evaluación), actualizada en 4 | Responsable de riesgos; segunda línea; Responsable de producto | P11, P48 | T07 |
+| Actualizar la evaluación cuando cambien sus elementos | Art. 27.2 | Mismos | R6 y cada cambio | Responsable de riesgos | P11, P48, P27 | T07, T08 |
+| Notificar los resultados a la autoridad de vigilancia del mercado con el formulario previsto | Art. 27.3 | Mismos | 5 (antes de G5) | Responsable de riesgos | P11, P48, P23 | T07 |
+| Complementar, sin duplicar, la evaluación de impacto en protección de datos | Art. 27.4; RGPD art. 35 | Mismos | 3 | Responsable de riesgos; delegado de protección de datos | P11, P48, P47 | T07 |
 
-Se aplica con el alto riesgo (2-12-2027 para el anexo III); la plantilla de la Oficina Europea de IA está **pendiente de confirmar**. Toda iniciativa Enterprise con decisiones sobre personas debería aplicar este contenido en P11 aunque no esté obligada.
+Se aplica con el alto riesgo (2-12-2027 para el anexo III); la plantilla de la Oficina Europea de IA está **pendiente de confirmar**. Toda iniciativa Enterprise con decisiones sobre personas debería aplicar este contenido en P11 y P48 aunque no esté obligada.
 
 ### 3.11 Transparencia (art. 50)
 
 | Obligación / requisito | Artículo o cláusula | A quién aplica | Fase o etapa SEVEN-G | Rol responsable | Evidencia (P-código o documento) | Herramienta |
 |---|---|---|---|---|---|---|
-| Informar a las personas de que interactúan con un sistema de IA, salvo que sea evidente | Art. 50.1 | Proveedores de sistemas que interactúan con personas | 4 (diseño), 5 (prueba) | Responsable de producto | P17, P22 | T07 |
+| Informar a las personas de que interactúan con un sistema de IA, salvo que sea evidente | Art. 50.1 | Proveedores de sistemas que interactúan con personas | 4 (diseño), 5 (prueba) | Responsable de producto | P17, P22, P49 | T07 |
 | Marcar en formato legible por máquina los contenidos sintéticos de audio, imagen, vídeo o texto | Art. 50.2 (periodo transitorio hasta 2-12-2026 para sistemas anteriores al 2-08-2026) | Proveedores de sistemas generativos | 4, 5; plan de adecuación en R6 | Responsable técnico | P18, P22 | T07, T10 |
-| Informar a las personas expuestas a sistemas de reconocimiento de emociones o de categorización biométrica | Art. 50.3 | Responsables del despliegue | 4, 6 | Responsable de producto; delegado de protección de datos | P17, P24 | T07 |
-| Revelar que un contenido es ultrasuplantación (*deepfake*), y que un texto publicado para informar sobre asuntos de interés público ha sido generado o manipulado, salvo revisión humana con responsabilidad editorial | Art. 50.4 | Responsables del despliegue | 4, 6 | Responsable de producto | P17, P24 | T07 |
+| Informar a las personas expuestas a sistemas de reconocimiento de emociones o de categorización biométrica | Art. 50.3 | Responsables del despliegue | 4, 6 | Responsable de producto; delegado de protección de datos | P17, P24, P49 | T07 |
+| Revelar que un contenido es ultrasuplantación (*deepfake*), y que un texto publicado para informar sobre asuntos de interés público ha sido generado o manipulado, salvo revisión humana con responsabilidad editorial | Art. 50.4 | Responsables del despliegue | 4, 6 | Responsable de producto | P17, P24, P49 | T07 |
 | Facilitar la información de forma clara y a más tardar en la primera interacción o exposición | Art. 50.5 | Proveedores y responsables del despliegue | 5 (prueba) | Responsable de producto | P22 | — |
 
 Referencias de apoyo: directrices de la Comisión sobre el art. 50 (20-07-2026) y código de buenas prácticas sobre marcado y etiquetado (sección 3.3).
@@ -435,7 +435,7 @@ El perfil describe riesgos específicos o agravados por la IA generativa y accio
 | Protección de datos desde el diseño y por defecto | Art. 25 | Responsables del tratamiento | Fase 4; verificado en G4 | Responsable técnico | P15, P16, P18 | T10 |
 | Registro de actividades de tratamiento | Art. 30 | Responsables y encargados | Fase 4, antes de G5 | Delegado de protección de datos; Responsable técnico | P16, P23 | T02 |
 | Notificación de violaciones de seguridad a la autoridad de control en 72 horas y, si hay alto riesgo, a los interesados | Arts. 33 y 34 | Responsables del tratamiento | Fase 6 (S1–S2) | Responsable de operación; delegado de protección de datos | P26, P27 | T08 |
-| Evaluación de impacto relativa a la protección de datos cuando sea probable un alto riesgo (en particular, evaluación sistemática y exhaustiva basada en tratamiento automatizado) y consulta previa si procede | Arts. 35 y 36 | Responsables del tratamiento | Fase 3; actualizada en 4 y R6 | Responsable de riesgos; delegado de protección de datos (asesora y supervisa) | P11 | T07 |
+| Evaluación de impacto relativa a la protección de datos cuando sea probable un alto riesgo (en particular, evaluación sistemática y exhaustiva basada en tratamiento automatizado) y consulta previa si procede | Arts. 35 y 36 | Responsables del tratamiento | Fase 3; actualizada en 4 y R6 | Responsable de riesgos; delegado de protección de datos (asesora y supervisa) | P11, P47 | T07 |
 
 ### 6.2 Guías del CEPD y jurisprudencia relevantes para IA
 
@@ -624,6 +624,9 @@ Fecha de consulta de todas las fuentes: 16-09-2026.
 | T02 · T03 · T06 · T08 · T09 · T10 | Inventario y registro UE · verificación en *gates* · riesgos · incidentes y notificaciones · cadena de valor y terceros · ciberseguridad y supervisión humana. |
 | T17 · T20 · T21 | Reporte al consejo, formación y uso corporativo. |
 | **P11 · Clasificación regulatoria y evaluaciones de impacto** | Evidencia principal de la fase 3. |
+| **P47 · Evaluación de impacto en protección de datos** | Evidencia de RGPD arts. 35 y 36 (sección 6.1). |
+| **P48 · Evaluación de impacto en derechos fundamentales** | Evidencia del art. 27 y de su notificación (sección 3.10). |
+| **P49 · Avisos de transparencia e instrucciones de uso** | Evidencia del art. 50 (sección 3.11). |
 | P02, P05 · P12–P18 · P21–P27 · P29 | Clasificación provisional · requisitos de diseño · conformidad, operación e incidentes · decisiones y cambios del mapeo. |
 
 ---

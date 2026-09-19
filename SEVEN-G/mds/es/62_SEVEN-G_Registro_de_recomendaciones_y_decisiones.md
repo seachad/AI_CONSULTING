@@ -346,7 +346,7 @@ Los ficheros del motor publicados en ese repositorio son **copia de su proyecto 
 | **Fuente de datos** | Datos de demostración generados con el panel | Entidad *Recomendación* del modelo común, integrada con T01 | Integración de la ola 1 de herramientas (03 §6). |
 | **Terminología** | Pensada para el seguimiento de recomendaciones de un órgano asesor | Genérica para cualquier órgano emisor | Textos configurables. |
 
-Prioridad: ola 1 de herramientas (03 §6), junto con la conexión del panel T17 al registro de iniciativas. Hasta que la adaptación esté disponible, el registro puede llevarse en una hoja de cálculo con los campos de las secciones 4 y 10.
+Prioridad: ola 1 de herramientas (03 §6), junto con la conexión del panel T17 al registro de iniciativas. Hasta que la adaptación esté disponible, el registro puede llevarse con la plantilla P69, preparada como hoja de cálculo con los campos de las secciones 4 y 10.
 
 ---
 
@@ -381,6 +381,7 @@ Prioridad: ola 1 de herramientas (03 §6), junto con la conexión del panel T17 
 | T18 | Registro de recomendaciones del consejo | Implementación del registro (sección 12). |
 | P29 | Registro de decisión de *gate* | Decisiones de G2 y G7 de Transformar. |
 | P30 | Decisión de escalado o retirada | Decisiones de G7 elevadas al consejo. |
+| P69 | Registro de decisiones del consejo | Registro de recomendaciones, encargos y decisiones mientras T18 no esté adaptada (secciones 4, 10 y 12.2). |
 
 ---
 
