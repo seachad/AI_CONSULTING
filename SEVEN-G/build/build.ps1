@@ -289,7 +289,8 @@ function Nuevo-Indice([string]$lang) {
     foreach ($fila in $grupos[$k]) { [void]$sb.AppendLine($fila) }
     [void]$sb.AppendLine()
   }
-  $tmp = Join-Path $env:TEMP "seveng-indice\$($cfg.marca)\$lang\index.md"
+  # carpeta propia de cada proceso: dos generaciones simultáneas no deben leer el índice de la otra
+  $tmp = Join-Path $env:TEMP "seveng-indice-$PID\$($cfg.marca)\$lang\index.md"
   New-Item -ItemType Directory -Force (Split-Path $tmp) | Out-Null
   Set-Content -Path $tmp -Value $sb.ToString() -Encoding utf8
   $tmp
@@ -492,8 +493,9 @@ foreach ($lang in $Idiomas) {
   $indiceMd = Nuevo-Indice $lang
   $files += Get-Item $indiceMd
 
+  # el navegador de documentos se construye siempre con toda la biblioteca, aunque -Filter genere solo algunos documentos
   $catalogo = [Collections.Generic.List[object]]::new()
-  foreach ($fNav in $files) {
+  foreach ($fNav in @(@(Get-ChildItem $mdsDir -Recurse -File -Filter '*.md') + @(Get-Item $indiceMd))) {
     if ($fNav.FullName -match '[\\/]_trabajo[\\/]') { continue }
     $esIndiceNav = $fNav.FullName -eq $indiceMd
     $relNav = if ($esIndiceNav) { 'index.md' } else { [IO.Path]::GetRelativePath($mdsDir, $fNav.FullName).Replace('\', '/') }
@@ -758,3 +760,5 @@ foreach ($lang in $Idiomas) {
   }
 }
 }
+# índices temporales de este proceso
+Remove-Item -Recurse -Force (Join-Path $env:TEMP "seveng-indice-$PID") -ErrorAction SilentlyContinue

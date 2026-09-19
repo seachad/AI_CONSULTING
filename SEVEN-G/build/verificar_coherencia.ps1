@@ -12,6 +12,7 @@
     4. Portada: el primer botón de cada metodología es el que explica el marco (D46) y sus enlaces locales existen.
     1e. Ninguna herramienta (Tnn) citada en los HTML generados queda sin enlace (D64).
     1f. Los documentos de SEVEN-G no se presentan como provisionales (D40) y la adaptación Lite del 30 no contradice a 01 (D66).
+    1g. El navegador de documentos de cada página lista toda su biblioteca (una generación con -Filter no lo recorta).
     5. T01: registro.html coincide con lo que genera build_registro.ps1 (no se ha editado a mano ni está desfasado, D43).
        T14: indice.html coincide con lo que genera build_indice.ps1 (D64).
        T06: los riesgos de demostración tienen niveles coherentes con probabilidad × impacto y aceptaciones del órgano de su nivel (D65).
@@ -126,6 +127,27 @@ try {
   $liteRebajado = Get-ChildItem (Join-Path $repo 'SEVEN-G\mds') -Recurse -File -Filter '30_*.md' | Select-String -Pattern 'al menos en G3 y G5|at least at G3 and G5|mensual o bimestral|monthly or bimonthly'
   foreach ($x in $liteRebajado) { Mal "30 §11 contradice 01 §5.2 o §9.3 (D66): $([IO.Path]::GetRelativePath($repo, $x.Path)):$($x.LineNumber)" }
   if (-not $provisional -and -not $liteRebajado) { Ok 'sin textos provisionales y con la adaptación Lite alineada con 01' }
+
+  # el navegador de documentos de cada página lista toda su biblioteca (documentos y plantillas sin _trabajo, más el índice):
+  # una generación parcial con -Filter lo dejaba con solo las páginas generadas
+  Write-Host '1g. Navegador de documentos completo'
+  $navCortos = [Collections.Generic.List[string]]::new()
+  foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') {
+    foreach ($lang in 'es', 'en') {
+      $mdsL = Join-Path $repo "$met\mds\$lang"; $htmlL = Join-Path $repo "$met\html\$lang"
+      if (-not (Test-Path $mdsL) -or -not (Test-Path $htmlL)) { continue }
+      $esperado = @(Get-ChildItem $mdsL -Recurse -File -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' }).Count + 1
+      foreach ($f in (Get-ChildItem $htmlL -Recurse -File -Filter *.html)) {
+        $m = [regex]::Match([IO.File]::ReadAllText($f.FullName), 'var navItems = (\[.*?\]);')
+        if (-not $m.Success) { continue }
+        $n = [regex]::Matches($m.Groups[1].Value, '"href"').Count
+        if ($n -ne $esperado) { $navCortos.Add("$([IO.Path]::GetRelativePath($repo, $f.FullName)) ($n de $esperado)") }
+      }
+    }
+  }
+  foreach ($x in ($navCortos | Select-Object -First 10)) { Mal "navegador incompleto: $x. Generar sin -Filter" }
+  if ($navCortos.Count -gt 10) { Mal "… y $($navCortos.Count - 10) páginas más con el navegador incompleto" }
+  if (-not $navCortos.Count) { Ok 'todas las páginas listan su biblioteca completa en el navegador' }
 
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
