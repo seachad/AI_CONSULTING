@@ -192,6 +192,9 @@ El catálogo completo de herramientas (22), el diseño del registro de iniciativ
 | 91 | Guía para consultores y modelos de acompañamiento | Engagement Guide | Hecho v0.1 (ES/EN) |
 | 92 | Casos de aplicación (ficticios coherentes o anonimizados) | Demostraciones | Hecho v0.1 (ES/EN) |
 | 93 | Licencia, uso por terceros y citación | Licencias de `AI_en_el_consejo` | Hecho v0.1 (ES/EN) |
+| 94 | Matriz de obligatoriedad y lectura por capas | 01 §9, 21 §2, 90 §2 | Hecho v0.1 (ES/EN), D75 |
+| 04 | De dónde viene SEVEN-G, en qué se diferencia y por qué es abierto (bloque A) | Nota del autor | Hecho v0.1 (ES/EN), D77 |
+| Curso | Guía M00 y módulos M01–M09 en `curso/` (bloque K) | Biblioteca y herramientas de ejemplo | Hecho v0.1 (ES/EN), D79 |
 
 ---
 

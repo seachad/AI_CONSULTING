@@ -14,6 +14,8 @@
     1f. Los documentos de SEVEN-G no se presentan como provisionales (D40) y la adaptación Lite del 30 no contradice a 01 (D66).
     1g. El navegador de documentos de cada página lista toda su biblioteca (una generación con -Filter no lo recorta).
     1h. El documento 00 (ES/EN) lleva el mapa de uso navegable con sus fases, puertas y listas enlazadas y anclas existentes (D72).
+    1j. Cada documento numerado de SEVEN-G lleva su recuadro «Lo esencial» con el mismo nivel en ES y EN y en la matriz del documento 94 (D75),
+        y el curso tiene su guía y sus nueve módulos, enlazados desde la guía, el documento 00, el 94 y la portada (D79).
     5. T01: registro.html coincide con lo que genera build_registro.ps1 (no se ha editado a mano ni está desfasado, D43).
        T14: indice.html coincide con lo que genera build_indice.ps1 (D64).
        T06: los riesgos de demostración tienen niveles coherentes con probabilidad × impacto y aceptaciones del órgano de su nivel (D65).
@@ -198,6 +200,50 @@ try {
     if ($figura -notmatch 'CC BY 4\.0' -or $figura -notmatch 'MIT') { Mal "00 [$lang]: el inicio rápido no indica las licencias (CC BY 4.0 y MIT)"; $inicioMal++ }
   }
   if (-not $inicioMal) { Ok 'inicio rápido del documento 00 completo en ES y EN' }
+
+  # lectura por capas (D75) y curso (D79): cada documento numerado de SEVEN-G lleva una directiva «esencial» con el mismo nivel en ES y EN,
+  # ese nivel coincide con el de la tabla de documentos de la matriz (documento 94), el HTML muestra el recuadro, y el curso tiene su guía
+  # y sus nueve módulos enlazados desde la guía, el documento 00, el 94 y la portada
+  Write-Host '1j. Recuadro «Lo esencial», matriz de obligatoriedad y curso'
+  $capasMal = 0
+  $rotuloNivel = @{ siempre = 'Siempre'; enterprise = 'Enterprise'; condicional = 'Condicional'; recomendado = 'Recomendado'; consulta = 'Consulta' }
+  $mdsEs = Join-Path $repo 'SEVEN-G\mds\es'; $mdsEn = Join-Path $repo 'SEVEN-G\mds\en'
+  $f94 = Get-ChildItem $mdsEs -File -Filter '94_*.md' | Select-Object -First 1
+  $matriz = @{}
+  if ($f94) { foreach ($m in [regex]::Matches([IO.File]::ReadAllText($f94.FullName), '(?m)^\|\s*(\d{2})\s*\|\s*\[[^\]]+\]\([^)]+\)\s*\|\s*\*\*(\w+)\*\*')) { $matriz[$m.Groups[1].Value] = $m.Groups[2].Value } }
+  else { Mal 'falta el documento 94 (matriz de obligatoriedad)'; $capasMal++ }
+  foreach ($d in (Get-ChildItem $mdsEs -File -Filter '*.md' | Where-Object Name -match '^\d{2}_')) {
+    $num = $d.Name.Substring(0, 2)
+    $niveles = @{}
+    foreach ($par in @(@('es', $d.FullName), @('en', (Join-Path $mdsEn $d.Name)))) {
+      if (-not (Test-Path $par[1])) { continue }
+      $dirs = [regex]::Matches([IO.File]::ReadAllText($par[1]), '<!--\s*esencial:\s*(\w+)\s*\|')
+      if ($dirs.Count -ne 1) { Mal "$num [$($par[0])]: se espera una directiva «esencial» y hay $($dirs.Count)"; $capasMal++; continue }
+      $niveles[$par[0]] = $dirs[0].Groups[1].Value.ToLowerInvariant()
+      $html = Join-Path $repo "SEVEN-G\html\$($par[0])\$($d.BaseName).html"
+      if ((Test-Path $html) -and [IO.File]::ReadAllText($html) -notmatch '<aside class="esencial" data-capa="') { Mal "$num [$($par[0])]: el HTML no muestra el recuadro «Lo esencial» (regenerar)"; $capasMal++ }
+    }
+    if ($niveles.es -and -not $rotuloNivel.ContainsKey($niveles.es)) { Mal "$num`: nivel de «esencial» desconocido: $($niveles.es)"; $capasMal++; continue }
+    if ($niveles.es -and $niveles.en -and $niveles.es -ne $niveles.en) { Mal "$num`: el nivel de «esencial» difiere entre ES ($($niveles.es)) y EN ($($niveles.en))"; $capasMal++ }
+    if ($f94 -and $niveles.es) {
+      if (-not $matriz.ContainsKey($num)) { Mal "$num`: no figura en la tabla de documentos de la matriz (94 §6)"; $capasMal++ }
+      elseif ($matriz[$num] -ne $rotuloNivel[$niveles.es]) { Mal "$num`: «Lo esencial» dice $($rotuloNivel[$niveles.es]) y la matriz (94 §6) dice $($matriz[$num])"; $capasMal++ }
+    }
+  }
+  foreach ($lang in 'es', 'en') {
+    $cursoDir = Join-Path $repo "SEVEN-G\mds\$lang\curso"
+    $mods = @(Get-ChildItem $cursoDir -File -Filter 'M*.md' -ErrorAction SilentlyContinue)
+    if ($mods.Count -lt 10) { Mal "curso [$lang]: se esperan la guía y nueve módulos y hay $($mods.Count) ficheros"; $capasMal++; continue }
+    $guia = [IO.File]::ReadAllText((Join-Path $cursoDir 'M00_SEVEN-G_Curso_Guia_del_curso.md'))
+    foreach ($mod in ($mods | Where-Object Name -ne 'M00_SEVEN-G_Curso_Guia_del_curso.md')) { if (-not $guia.Contains("$($mod.BaseName).html")) { Mal "curso [$lang]: la guía no enlaza $($mod.BaseName)"; $capasMal++ } }
+    foreach ($n in '00', '94') {
+      $doc = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -File -Filter "${n}_*.md" | Select-Object -First 1
+      if ($doc -and -not [IO.File]::ReadAllText($doc.FullName).Contains('curso/M00_SEVEN-G_Curso_Guia_del_curso.html')) { Mal "$n [$lang]: no enlaza el curso"; $capasMal++ }
+    }
+    $portada = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
+    if (-not [IO.File]::ReadAllText($portada).Contains("html/$lang/curso/M00_SEVEN-G_Curso_Guia_del_curso.html")) { Mal "portada [$lang]: no enlaza el curso"; $capasMal++ }
+  }
+  if (-not $capasMal) { Ok "«Lo esencial» en $($matriz.Count) documentos, coherente con la matriz (94) en ES y EN; curso completo y enlazado" }
 
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'

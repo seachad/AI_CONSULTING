@@ -187,6 +187,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
 .falsa b { color: var(--claret); font-size: 16px; }
 .falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+:root[data-theme="noche"] .falsa .ic { color: #1a1817; }
 
 
 /* ---------- Barra de herramientas ---------- */
@@ -221,6 +222,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 }
 mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
 mark.hallazgo.actual { background: var(--claret); color: #fff; }
+:root[data-theme="noche"] mark.hallazgo.actual { color: #1a1817; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
@@ -295,6 +297,22 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
+.esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
+.esencial[data-capa="enterprise"] { border-top-color: var(--velvet); }
+.esencial[data-capa="condicional"] { border-top-color: var(--oxford); }
+.esencial[data-capa="recomendado"], .esencial[data-capa="consulta"] { border-top-color: var(--tinta-2); }
+.es-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 8px; }
+.es-rotulo { font: 800 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); }
+.es-nivel { font: 700 12px/1 var(--sans); letter-spacing: .04em; color: #fff; background: var(--teal); padding: 5px 8px; }
+.esencial[data-capa="enterprise"] .es-nivel { background: var(--velvet); }
+.esencial[data-capa="condicional"] .es-nivel { background: var(--oxford); }
+.esencial[data-capa="recomendado"] .es-nivel, .esencial[data-capa="consulta"] .es-nivel { background: var(--tinta-2); }
+:root[data-theme="noche"] .es-nivel { color: #1a1817; }
+.esencial p { font: 400 16px/1.55 var(--sans); color: var(--tinta); margin: 0; }
+.esencial p.es-pie { margin-top: 10px; font-size: 13.5px; }
+@media print { .esencial { break-inside: avoid; margin-bottom: 18pt; } .esencial p { font-size: 9.5pt; } .esencial p.es-pie { font-size: 8pt; } .es-nivel { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
 
 /* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
 .descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
@@ -991,47 +1009,47 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>document 00 · What SPAD is and how it helps</strong></td>
+<td><strong><a href="00_SPAD_Que_es_y_para_que_sirve.html">document 00</a> · What SPAD is and how it helps</strong></td>
 <td>Presentation of the method.</td>
 <td>First.</td>
 </tr>
 <tr>
-<td><strong>document 01 · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html">document 01</a> · Operating guide</strong></td>
 <td>Phases 0–10, roles, verdicts and reduced version.</td>
 <td>Before applying SPAD for the first time.</td>
 </tr>
 <tr>
-<td><strong>document 02 · Contexts, topics and artefact register</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a> · Contexts, topics and artefact register</strong></td>
 <td>What is loaded before working and what is recorded for each artefact.</td>
 <td>When preparing the organisation.</td>
 </tr>
 <tr>
-<td><strong>document 03 · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html">document 03</a> · Validation policy</strong></td>
 <td>When an AI response is discarded.</td>
 <td>Whoever orchestrates, always.</td>
 </tr>
 <tr>
-<td><strong>document 04 · Complementary cycles</strong></td>
+<td><strong><a href="04_SPAD_Ciclos_complementarios.html">document 04</a> · Complementary cycles</strong></td>
 <td>Legacy, debugging, urgent fixes and security.</td>
 <td>When the work is not a new feature.</td>
 </tr>
 <tr>
-<td><strong>document 05 · Systems that include AI</strong></td>
+<td><strong><a href="05_SPAD_Sistemas_que_incluyen_IA.html">document 05</a> · Systems that include AI</strong></td>
 <td>Behaviour evaluation and agents.</td>
 <td>When the solution has AI in production.</td>
 </tr>
 <tr>
-<td><strong>document 06 · Instructions by phase</strong></td>
+<td><strong><a href="06_SPAD_Instrucciones_por_fase.html">document 06</a> · Instructions by phase</strong></td>
 <td>Reference text of each instruction.</td>
 <td>When configuring the tools.</td>
 </tr>
 <tr>
-<td><strong>document 07 · Input and output contracts</strong></td>
+<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a> · Input and output contracts</strong></td>
 <td>Mandatory structure of each artefact.</td>
 <td>When automating validation.</td>
 </tr>
 <tr>
-<td><strong>document 08 · Self-assessment and metrics</strong></td>
+<td><strong><a href="08_SPAD_Autoevaluacion_y_metricas.html">document 08</a> · Self-assessment and metrics</strong></td>
 <td>How to check conformity and measure the process.</td>
 <td>When closing a piece of work and when reviewing the method.</td>
 </tr>

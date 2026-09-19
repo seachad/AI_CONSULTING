@@ -187,6 +187,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
 .falsa b { color: var(--claret); font-size: 16px; }
 .falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+:root[data-theme="noche"] .falsa .ic { color: #1a1817; }
 
 
 /* ---------- Barra de herramientas ---------- */
@@ -221,6 +222,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 }
 mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
 mark.hallazgo.actual { background: var(--claret); color: #fff; }
+:root[data-theme="noche"] mark.hallazgo.actual { color: #1a1817; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
@@ -295,6 +297,22 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
+.esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
+.esencial[data-capa="enterprise"] { border-top-color: var(--velvet); }
+.esencial[data-capa="condicional"] { border-top-color: var(--oxford); }
+.esencial[data-capa="recomendado"], .esencial[data-capa="consulta"] { border-top-color: var(--tinta-2); }
+.es-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 8px; }
+.es-rotulo { font: 800 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); }
+.es-nivel { font: 700 12px/1 var(--sans); letter-spacing: .04em; color: #fff; background: var(--teal); padding: 5px 8px; }
+.esencial[data-capa="enterprise"] .es-nivel { background: var(--velvet); }
+.esencial[data-capa="condicional"] .es-nivel { background: var(--oxford); }
+.esencial[data-capa="recomendado"] .es-nivel, .esencial[data-capa="consulta"] .es-nivel { background: var(--tinta-2); }
+:root[data-theme="noche"] .es-nivel { color: #1a1817; }
+.esencial p { font: 400 16px/1.55 var(--sans); color: var(--tinta); margin: 0; }
+.esencial p.es-pie { margin-top: 10px; font-size: 13.5px; }
+@media print { .esencial { break-inside: avoid; margin-bottom: 18pt; } .esencial p { font-size: 9.5pt; } .esencial p.es-pie { font-size: 8pt; } .es-nivel { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
 
 /* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
 .descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
@@ -412,7 +430,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Legal notice and disclaimer.</strong> SPAD is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. <strong>Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="purpose"><span class="antetitulo">01</span>Purpose</h2>
-<p>Each SPAD phase produces an artefact with a <strong>contractual structure</strong>: mandatory sections and fields that the instruction requires (document 06) and whose absence invalidates the response (document 03). This document defines that structure in JSON, so that:</p>
+<p>Each SPAD phase produces an artefact with a <strong>contractual structure</strong>: mandatory sections and fields that the instruction requires (<a href="06_SPAD_Instrucciones_por_fase.html">document 06</a>) and whose absence invalidates the response (<a href="03_SPAD_Politica_de_validacion.html">document 03</a>). This document defines that structure in JSON, so that:</p>
 <ul>
 <li>a person can check at a glance that the output is complete;</li>
 <li>an automatic validator can reject an incomplete artefact before anyone sees it;</li>
@@ -479,7 +497,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="2-3-human-validation-record">2.3 Human validation record</h3>
-<p>It is not part of the AI's artefact: the person writes it in the topic's <code>VALIDATION.md</code> (document 02, section 4.2). Its canonical form:</p>
+<p>It is not part of the AI's artefact: the person writes it in the topic's <code>VALIDATION.md</code> (<a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a>, section 4.2). Its canonical form:</p>
 <pre><code class="language-json">{
   &quot;artefact&quot;: &quot;SPAD_02_AUDIT_PLAN&quot;,
   &quot;person&quot;: &quot;identifier&quot;,
@@ -717,7 +735,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </code></pre>
 <hr />
 <h2 id="format-of-the-contexts"><span class="antetitulo">05</span>Format of the contexts</h2>
-<p>The contexts are not phase artefacts and are written in Markdown with fixed sections (document 02):</p>
+<p>The contexts are not phase artefacts and are written in Markdown with fixed sections (<a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a>):</p>
 <pre><code># GLOBAL_CONTEXT (version n)
 ## Artefacts
 ## Tests
@@ -778,7 +796,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The validator <strong>does not judge the content</strong>: that is for the AI Reviewer and the person. A serverless tool with this function is part of the next steps of SPAD (document 08).</p>
+<p>The validator <strong>does not judge the content</strong>: that is for the AI Reviewer and the person. A serverless tool with this function is part of the next steps of SPAD (<a href="08_SPAD_Autoevaluacion_y_metricas.html">document 08</a>).</p>
 <hr />
 <h2 id="related-documents"><span class="antetitulo">07</span>Related documents</h2>
 <div class="tabla"><table>
@@ -790,27 +808,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>document 01 · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html">document 01</a> · Operating guide</strong></td>
 <td>Phases that produce each artefact.</td>
 </tr>
 <tr>
-<td><strong>document 02 · Contexts, topics and artefact register</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a> · Contexts, topics and artefact register</strong></td>
 <td>Model record and validation record.</td>
 </tr>
 <tr>
-<td><strong>document 03 · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html">document 03</a> · Validation policy</strong></td>
 <td>Causes that the automatic validator detects.</td>
 </tr>
 <tr>
-<td><strong>document 04 · Complementary cycles</strong></td>
+<td><strong><a href="04_SPAD_Ciclos_complementarios.html">document 04</a> · Complementary cycles</strong></td>
 <td>Contracts L1, L2, D1, U and S1.</td>
 </tr>
 <tr>
-<td><strong>document 05 · Systems that include AI</strong></td>
+<td><strong><a href="05_SPAD_Sistemas_que_incluyen_IA.html">document 05</a> · Systems that include AI</strong></td>
 <td>Contract of the behaviour evaluation and <code>ai_system</code> fields.</td>
 </tr>
 <tr>
-<td><strong>document 06 · Instructions by phase</strong></td>
+<td><strong><a href="06_SPAD_Instrucciones_por_fase.html">document 06</a> · Instructions by phase</strong></td>
 <td>Instructions that require these outputs.</td>
 </tr>
 </tbody>

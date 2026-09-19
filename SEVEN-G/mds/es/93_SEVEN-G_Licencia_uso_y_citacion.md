@@ -245,7 +245,7 @@ Quien distribuya una copia, adaptación o traducción de SEVEN-G debe conservar,
 
 ## 12. Contacto
 
-Las consultas sobre el uso del marco, las propuestas de mejora y las comunicaciones de errores se dirigen al autor, Fernando García · SEACHAD, a través de los canales que se indiquen en el repositorio público de SEVEN-G cuando se publique. Hasta entonces, a través del repositorio público de demostraciones del panel del consejo.
+Las consultas sobre el uso del marco, las propuestas de mejora, las comunicaciones de errores y las solicitudes de acompañamiento se dirigen al autor, **Fernando García · SEACHAD**, a través de su perfil profesional de LinkedIn: <https://www.linkedin.com/in/fernandogarciavarela/>. Los motivos por los que el marco es abierto y gratuito se explican en el documento 04.
 
 No es necesario pedir permiso para ningún uso que cumpla la licencia. Contactar con el autor no convierte un uso en respaldado.
 
@@ -278,3 +278,4 @@ No es necesario pedir permiso para ningún uso que cumpla la licencia. Contactar
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Resume las licencias CC BY 4.0 (contenidos) y MIT (código), sus permisos y exigencias, la forma de cita en español e inglés, el uso del nombre SEVEN-G sin certificación, las obras derivadas y traducciones, los datos ficticios, la permanencia de la licencia de las versiones publicadas y el contacto. Aviso legal y responsabilidad del usuario sobre el cumplimiento regulatorio. |
+| 0.1 | 19-09-2026 | Contacto del autor (sección 12) y remisión al documento 04. |

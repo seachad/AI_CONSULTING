@@ -187,6 +187,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
 .falsa b { color: var(--claret); font-size: 16px; }
 .falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+:root[data-theme="noche"] .falsa .ic { color: #1a1817; }
 
 
 /* ---------- Barra de herramientas ---------- */
@@ -221,6 +222,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 }
 mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
 mark.hallazgo.actual { background: var(--claret); color: #fff; }
+:root[data-theme="noche"] mark.hallazgo.actual { color: #1a1817; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
@@ -295,6 +297,22 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
+.esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
+.esencial[data-capa="enterprise"] { border-top-color: var(--velvet); }
+.esencial[data-capa="condicional"] { border-top-color: var(--oxford); }
+.esencial[data-capa="recomendado"], .esencial[data-capa="consulta"] { border-top-color: var(--tinta-2); }
+.es-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 8px; }
+.es-rotulo { font: 800 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); }
+.es-nivel { font: 700 12px/1 var(--sans); letter-spacing: .04em; color: #fff; background: var(--teal); padding: 5px 8px; }
+.esencial[data-capa="enterprise"] .es-nivel { background: var(--velvet); }
+.esencial[data-capa="condicional"] .es-nivel { background: var(--oxford); }
+.esencial[data-capa="recomendado"] .es-nivel, .esencial[data-capa="consulta"] .es-nivel { background: var(--tinta-2); }
+:root[data-theme="noche"] .es-nivel { color: #1a1817; }
+.esencial p { font: 400 16px/1.55 var(--sans); color: var(--tinta); margin: 0; }
+.esencial p.es-pie { margin-top: 10px; font-size: 13.5px; }
+@media print { .esencial { break-inside: avoid; margin-bottom: 18pt; } .esencial p { font-size: 9.5pt; } .esencial p.es-pie { font-size: 8pt; } .es-nivel { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
 
 /* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
 .descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
@@ -437,7 +455,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="contexts"><span class="antetitulo">02</span>Contexts</h2>
-<p>Two contexts are loaded before any phase is executed. No instruction (document 06) is executed without them.</p>
+<p>Two contexts are loaded before any phase is executed. No instruction (<a href="06_SPAD_Instrucciones_por_fase.html">document 06</a>) is executed without them.</p>
 <h3 id="2-1-global-context">2.1 Global context</h3>
 <p>Universal rules of the organisation, applicable to all projects that use SPAD, regardless of the technology or the domain.</p>
 <div class="tabla"><table>
@@ -482,7 +500,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Parameters of the complementary cycles</strong></td>
 <td>Maximum time limits for the simplified plan and for post-deployment monitoring in the urgent fix; severity scale and who accepts the residual risk.</td>
-<td>Starting values, to be calibrated (document 04).</td>
+<td>Starting values, to be calibrated (<a href="04_SPAD_Ciclos_complementarios.html">document 04</a>).</td>
 </tr>
 <tr>
 <td><strong>Approved models</strong></td>
@@ -630,7 +648,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Instruction</td>
-<td>Reference to the instruction used (document 06) and its version; in the complete version, the full text of the additional instructions.</td>
+<td>Reference to the instruction used (<a href="06_SPAD_Instrucciones_por_fase.html">document 06</a>) and its version; in the complete version, the full text of the additional instructions.</td>
 </tr>
 <tr>
 <td>Contexts</td>
@@ -662,7 +680,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Outcome</td>
-<td>Valid · Invalid (with the cause from the validation policy, document 03) · Exception approved.</td>
+<td>Valid · Invalid (with the cause from the validation policy, <a href="03_SPAD_Politica_de_validacion.html">document 03</a>) · Exception approved.</td>
 </tr>
 <tr>
 <td>Verdict accepted</td>
@@ -676,7 +694,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>The record is kept in <code>VALIDATION.md</code> within the topic (or in the version control system, if the organisation prefers) and is completed <strong>at the time</strong>, not at the end.</p>
 <h3 id="4-3-violation-log">4.3 Violation log</h3>
-<p>Each response discarded under the validation policy (document 03) is noted with date, phase, cause, model and action. It is the raw material for the process metrics (document 08) and for improving the instructions.</p>
+<p>Each response discarded under the validation policy (<a href="03_SPAD_Politica_de_validacion.html">document 03</a>) is noted with date, phase, cause, model and action. It is the raw material for the process metrics (<a href="08_SPAD_Autoevaluacion_y_metricas.html">document 08</a>) and for improving the instructions.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> The three records answer the three questions of any development audit: which tool did this, which person accepted it and how many times it had to be discarded and repeated. In SEVEN-G, those records are the input to the evidence of the design and delivery phases (<a href="../../../SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html">SEVEN-G 53</a>, section 7.2).</p>
 </blockquote>
@@ -702,19 +720,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>document 01 · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html">document 01</a> · Operating guide</strong></td>
 <td>Phases in which the recorded artefacts are produced.</td>
 </tr>
 <tr>
-<td><strong>document 03 · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html">document 03</a> · Validation policy</strong></td>
 <td>Invalidation causes that feed the records.</td>
 </tr>
 <tr>
-<td><strong>document 07 · Input and output contracts</strong></td>
+<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a> · Input and output contracts</strong></td>
 <td>Structure of the artefacts, with the fields of the model record.</td>
 </tr>
 <tr>
-<td><strong>document 08 · Self-assessment and metrics</strong></td>
+<td><strong><a href="08_SPAD_Autoevaluacion_y_metricas.html">document 08</a> · Self-assessment and metrics</strong></td>
 <td>Use of the records as evidence and as the source of the metrics.</td>
 </tr>
 <tr>

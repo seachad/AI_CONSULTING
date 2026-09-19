@@ -187,6 +187,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
 .falsa b { color: var(--claret); font-size: 16px; }
 .falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+:root[data-theme="noche"] .falsa .ic { color: #1a1817; }
 
 
 /* ---------- Barra de herramientas ---------- */
@@ -221,6 +222,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 }
 mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
 mark.hallazgo.actual { background: var(--claret); color: #fff; }
+:root[data-theme="noche"] mark.hallazgo.actual { color: #1a1817; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
@@ -295,6 +297,22 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
+.esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
+.esencial[data-capa="enterprise"] { border-top-color: var(--velvet); }
+.esencial[data-capa="condicional"] { border-top-color: var(--oxford); }
+.esencial[data-capa="recomendado"], .esencial[data-capa="consulta"] { border-top-color: var(--tinta-2); }
+.es-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 8px; }
+.es-rotulo { font: 800 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); }
+.es-nivel { font: 700 12px/1 var(--sans); letter-spacing: .04em; color: #fff; background: var(--teal); padding: 5px 8px; }
+.esencial[data-capa="enterprise"] .es-nivel { background: var(--velvet); }
+.esencial[data-capa="condicional"] .es-nivel { background: var(--oxford); }
+.esencial[data-capa="recomendado"] .es-nivel, .esencial[data-capa="consulta"] .es-nivel { background: var(--tinta-2); }
+:root[data-theme="noche"] .es-nivel { color: #1a1817; }
+.esencial p { font: 400 16px/1.55 var(--sans); color: var(--tinta); margin: 0; }
+.esencial p.es-pie { margin-top: 10px; font-size: 13.5px; }
+@media print { .esencial { break-inside: avoid; margin-bottom: 18pt; } .esencial p { font-size: 9.5pt; } .esencial p.es-pie { font-size: 8pt; } .es-nivel { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
 
 /* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
 .descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
@@ -509,7 +527,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Two weeks before</strong></td>
-<td><strong>First preliminary map</strong>: each known initiative is placed in its primary sphere and at its ambition level (document 01). The approximate grades of spheres 08 and 09 are noted (document 04). The examples per level are chosen.</td>
+<td><strong>First preliminary map</strong>: each known initiative is placed in its primary sphere and at its ambition level (<a href="01_SPHERES_Niveles_de_ambicion.html">document 01</a>). The approximate grades of spheres 08 and 09 are noted (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">document 04</a>). The examples per level are chosen.</td>
 <td>The presenter</td>
 </tr>
 <tr>
@@ -528,8 +546,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Gather the list</strong> of AI initiatives and systems from the interviews, the budgets and the contracts with suppliers. It is common to discover initiatives that management was not aware of.</li>
 <li><strong>Assign the primary sphere</strong> of each one: the sphere in which its main metric is measured, not the area that sponsors it.</li>
-<li><strong>Assign the ambition level</strong> with the five questions in document 01. In case of doubt, the lower level.</li>
-<li><strong>Diagnose the enablers</strong> with the five quick questions in document 03.</li>
+<li><strong>Assign the ambition level</strong> with the five questions in <a href="01_SPHERES_Niveles_de_ambicion.html">document 01</a>. In case of doubt, the lower level.</li>
+<li><strong>Diagnose the enablers</strong> with the five quick questions in <a href="03_SPHERES_Esferas_habilitadoras.html">document 03</a>.</li>
 <li><strong>Estimate the grades</strong> of the dimensions of 08 and 09 with the evidence available.</li>
 <li><strong>Mark what is not known.</strong> A preliminary map with declared gaps is more useful than a complete, invented one.</li>
 </ol>
@@ -890,23 +908,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>document 00 · What SPHERES is and how it helps</strong></td>
+<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html">document 00</a> · What SPHERES is and how it helps</strong></td>
 <td>Presentation of the map and a complete example of reading it.</td>
 </tr>
 <tr>
-<td><strong>document 01 · Ambition levels</strong></td>
+<td><strong><a href="01_SPHERES_Niveles_de_ambicion.html">document 01</a> · Ambition levels</strong></td>
 <td>Classification of initiatives for the preliminary map.</td>
 </tr>
 <tr>
-<td><strong>document 02 · Spheres where value is created</strong></td>
+<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html">document 02</a> · Spheres where value is created</strong></td>
 <td>Examples and questions for blocks 02 and 05.</td>
 </tr>
 <tr>
-<td><strong>document 03 · Enabling spheres</strong></td>
+<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html">document 03</a> · Enabling spheres</strong></td>
 <td>Quick diagnosis for block 03.</td>
 </tr>
 <tr>
-<td><strong>document 04 · Regulation and AI governance</strong></td>
+<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">document 04</a> · Regulation and AI governance</strong></td>
 <td>Dimensions and grades for blocks 04 and 06.</td>
 </tr>
 <tr>

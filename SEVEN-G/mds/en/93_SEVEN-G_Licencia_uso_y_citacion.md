@@ -245,7 +245,7 @@ Anyone who distributes a copy, adaptation or translation of SEVEN-G must retain,
 
 ## 12. Contact
 
-Queries about the use of the framework, improvement proposals and error reports are addressed to the author, Fernando García · SEACHAD, through the channels indicated in the public SEVEN-G repository once it is published. Until then, through the public repository of board dashboard demonstrations.
+Queries about the use of the framework, improvement proposals, error reports and requests for support are addressed to the author, **Fernando García · SEACHAD**, through his professional LinkedIn profile: <https://www.linkedin.com/in/fernandogarciavarela/>. The reasons why the framework is open and free of charge are explained in document 04.
 
 It is not necessary to ask permission for any use that complies with the licence. Contacting the author does not make a use endorsed.
 
@@ -278,3 +278,4 @@ It is not necessary to ask permission for any use that complies with the licence
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Summarises the CC BY 4.0 (content) and MIT (code) licences, their permissions and requirements, the citation format in Spanish and English, use of the SEVEN-G name without certification, derivative works and translations, fictitious data, the permanence of the licence for published versions and contact details. Legal notice and user responsibility for regulatory compliance. |
+| 0.1 | 19-09-2026 | Author contact (section 12) and reference to document 04. |

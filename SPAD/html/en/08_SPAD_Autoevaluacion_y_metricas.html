@@ -187,6 +187,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
 .falsa b { color: var(--claret); font-size: 16px; }
 .falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+:root[data-theme="noche"] .falsa .ic { color: #1a1817; }
 
 
 /* ---------- Barra de herramientas ---------- */
@@ -221,6 +222,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 }
 mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
 mark.hallazgo.actual { background: var(--claret); color: #fff; }
+:root[data-theme="noche"] mark.hallazgo.actual { color: #1a1817; }
 
 /* ---------- Índice rápido ---------- */
 .velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
@@ -295,6 +297,22 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+
+/* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
+.esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
+.esencial[data-capa="enterprise"] { border-top-color: var(--velvet); }
+.esencial[data-capa="condicional"] { border-top-color: var(--oxford); }
+.esencial[data-capa="recomendado"], .esencial[data-capa="consulta"] { border-top-color: var(--tinta-2); }
+.es-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 8px; }
+.es-rotulo { font: 800 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); }
+.es-nivel { font: 700 12px/1 var(--sans); letter-spacing: .04em; color: #fff; background: var(--teal); padding: 5px 8px; }
+.esencial[data-capa="enterprise"] .es-nivel { background: var(--velvet); }
+.esencial[data-capa="condicional"] .es-nivel { background: var(--oxford); }
+.esencial[data-capa="recomendado"] .es-nivel, .esencial[data-capa="consulta"] .es-nivel { background: var(--tinta-2); }
+:root[data-theme="noche"] .es-nivel { color: #1a1817; }
+.esencial p { font: 400 16px/1.55 var(--sans); color: var(--tinta); margin: 0; }
+.esencial p.es-pie { margin-top: 10px; font-size: 13.5px; }
+@media print { .esencial { break-inside: avoid; margin-bottom: 18pt; } .esencial p { font-size: 9.5pt; } .esencial p.es-pie { font-size: 8pt; } .es-nivel { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
 
 /* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
 .descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
@@ -439,7 +457,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Presenting the self-assessment as a certification is a breach of the organisation's governance and of the permitted use of the SPAD name (document 00, section 11).</p>
+<p>Presenting the self-assessment as a certification is a breach of the organisation's governance and of the permitted use of the SPAD name (<a href="00_SPAD_Que_es_y_para_que_sirve.html">document 00</a>, section 11).</p>
 <blockquote>
 <p><strong>Why it matters.</strong> An honest self-assessment gives the organisation a shared definition of &quot;done&quot; and a set of evidence ready for whoever asks for it. A seal that nobody has granted would give false assurance and would expose the organisation if anyone put it to the test.</p>
 </blockquote>
@@ -487,7 +505,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>If the system includes AI (document 05), a seventh is added: <strong>the behaviour evaluation was executed before deployment and is repeated with each change of model, instructions or data</strong>.</p>
+<p>If the system includes AI (<a href="05_SPAD_Sistemas_que_incluyen_IA.html">document 05</a>), a seventh is added: <strong>the behaviour evaluation was executed before deployment and is repeated with each change of model, instructions or data</strong>.</p>
 <hr />
 <h2 id="mandatory-artefacts"><span class="antetitulo">03</span>Mandatory artefacts</h2>
 <div class="tabla"><table>
@@ -547,7 +565,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2 · Automatic validation</td>
-<td>Artefact validator (document 07)</td>
+<td>Artefact validator (<a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a>)</td>
 <td>Checks completeness, scales and consistency of verdicts.</td>
 </tr>
 <tr>
@@ -596,7 +614,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <hr />
 <h2 id="process-metrics"><span class="antetitulo">05</span>Process metrics</h2>
-<p>SPAD <strong>does not claim improvement figures</strong>. Each organisation measures whether the method works against its own baseline, with these indicators calculated from the records (document 02):</p>
+<p>SPAD <strong>does not claim improvement figures</strong>. Each organisation measures whether the method works against its own baseline, with these indicators calculated from the records (<a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a>):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -657,7 +675,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>For systems that include AI, the metrics of the behaviour evaluation are added (accuracy, correct refusal, adversarial tests passed, difference per segment) and, in operation, drift and cost per interaction (document 05).</p>
+<p>For systems that include AI, the metrics of the behaviour evaluation are added (accuracy, correct refusal, adversarial tests passed, difference per segment) and, in operation, drift and cost per interaction (<a href="05_SPAD_Sistemas_que_incluyen_IA.html">document 05</a>).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -732,7 +750,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Artefact validator</td>
-<td>Serverless tool that checks the contracts (document 07, section 6) and generates the topic register.</td>
+<td>Serverless tool that checks the contracts (<a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a>, section 6) and generates the topic register.</td>
 <td>Proposed.</td>
 </tr>
 <tr>
@@ -763,23 +781,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>document 00 · What SPAD is and how it helps</strong></td>
+<td><strong><a href="00_SPAD_Que_es_y_para_que_sirve.html">document 00</a> · What SPAD is and how it helps</strong></td>
 <td>Permitted use of the name and absence of certification.</td>
 </tr>
 <tr>
-<td><strong>document 01 · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html">document 01</a> · Operating guide</strong></td>
 <td>Phases and artefacts whose existence is checked.</td>
 </tr>
 <tr>
-<td><strong>document 02 · Contexts, topics and artefact register</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a> · Contexts, topics and artefact register</strong></td>
 <td>Records from which the evidence and the metrics come.</td>
 </tr>
 <tr>
-<td><strong>document 03 · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html">document 03</a> · Validation policy</strong></td>
 <td>Invalidation rate and violation log.</td>
 </tr>
 <tr>
-<td><strong>document 07 · Input and output contracts</strong></td>
+<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a> · Input and output contracts</strong></td>
 <td>Automatic validation prior to the independent review.</td>
 </tr>
 <tr>

@@ -103,6 +103,9 @@ The perimeter may be the whole company or a part of it (a subsidiary, a country,
 
 The rest of the library is consulted when needed: ambition and portfolio (10, 13, 14), phase manuals and checklists (20, 22), adoption and people (23, 50), policies (31), incidents (37), indicators and costs (41, 42, 43), data, operation and construction (51, 52, 53), board (60, 61, 62) and application cases (92), which includes Lite initiatives of medium-sized companies.
 
+
+The matrix in document 94 extends this path to the whole library: it gives the obligation level of each document, template and tool, the triggers that activate each module and what can be grouped at the gates; each document summarises its minimum part in its "The essentials" box. The [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) follows the same path in short modules.
+
 ---
 
 ## 3. Prerequisites
@@ -326,3 +329,4 @@ Tools without an application of their own are applied with the template or docum
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Defines the company-level Lite or Enterprise implementation scope, the prerequisites, the week-by-week 90-day plan, regularisation, the 6- to 18-month roadmap up to 01 §14, minimum roles, common mistakes and implementation indicators. |
 | 0.1 | 19-09-2026 | Size does not determine the scope (2.1); a single Transform bet does not require an Enterprise scope (2.2); minimum path in a Lite scope (2.4); references to pending documents or tools removed. |
+| 0.1 | 19-09-2026 | The minimum path (2.4) refers to the obligation matrix (document 94), to the "The essentials" box of each document and to the course. |
