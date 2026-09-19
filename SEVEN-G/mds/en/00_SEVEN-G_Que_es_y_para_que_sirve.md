@@ -51,6 +51,10 @@ All of this comes with templates, audit criteria and tools —including an AI da
 
 **How SEVEN-G is used, at a glance**
 
+Before the detail, the route. Each initiative moves through phases and, at the end of each one, a decision gate checks the result and the documentation at the same time (dual validation). If what the documents require is not met, the initiative does not move forward: it iterates (at most twice before the decision is escalated), pivots to a new hypothesis or stops, and the reason is recorded. Once past go-live (G5), the initiative enters an operation loop with continuous monitoring and periodic continuity reviews (R6), until gate G7 decides to scale it, iterate it or retire it.
+
+<!-- figura: flujo-uso -->
+
 The following map brings together in a single view how the framework is followed: at the top, the corporate cycle in which the company decides and oversees; in the centre, the lifecycle of each initiative, with its funnel stage, its phase, its decision gate and the templates, documents and tools used in it; at the bottom, the cross-cutting governance that accompanies every phase. Each element links to the document, section, template or tool that develops it.
 
 > **Why it matters.** SEVEN-G has many pieces, and a first-time user needs to know what applies at each moment and where to find it. The map answers three practical questions —which phase an initiative is in, what must be provided to pass its gate and with which template or tool— and serves as a starting point to navigate the library without reading all of it.

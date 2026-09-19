@@ -49,7 +49,22 @@
 .mu-leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--tinta-2); margin-top: 10px; }
 .mu-leyenda i { font-style: normal; }
 .mu-leyenda span { display: inline-flex; align-items: center; gap: 6px; }
-@media print {
+.mu-fase { position: relative; }
+.mu-fase.sig::after { content: ""; position: absolute; right: -8px; top: 50%; margin-top: -7px; border-style: solid; border-width: 7px 0 7px 7px; border-color: transparent transparent transparent var(--negro); z-index: 2; }
+.mu-sal { display: flex; flex-wrap: wrap; gap: 3px; align-content: flex-start; }
+.mu-sal a { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 5px; border: 1px dashed var(--mu-borde); background: var(--papel); white-space: nowrap; }
+.mu-sal a.it { color: var(--tinta-2); }
+.mu-sal a.pv { color: var(--oxford); border-color: var(--oxford); }
+.mu-sal a.pa { color: var(--claret); border-color: var(--claret); }
+.mu-sal a.pa.fuerte { border-style: solid; border-width: 2px; }
+.mu-sal a.ok { color: var(--teal); border-color: var(--teal); }
+.mu-sal a:hover { background: var(--papel-3); }
+.mu-bucle { grid-column: span 2; border: 2px solid var(--velvet); border-radius: 18px; padding: 6px 10px 7px; margin-top: 4px; background: color-mix(in srgb, var(--velvet) 8%, transparent); font-size: 12px; color: var(--tinta-2); display: grid; gap: 5px; align-content: start; }
+.mu-bucle > span > b { color: var(--velvet); }
+.mu-bucle a { color: var(--oxford); }@media print {
+  .mu-sal a { font-size: 6.2pt; padding: 0 2px; }
+  .mu-bucle { font-size: 6.4pt; padding: 3px 5px; border-radius: 10px; gap: 2px; }
+  .mu-fase.sig::after { border-width: 5px 0 5px 5px; right: -6px; margin-top: -5px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .mapa-uso { break-before: page; margin-top: 0; }
   .mu { min-width: 0; font-size: 7pt; gap: 5px; }
   .mu-ciclo { grid-template-columns: 66px repeat(8, 1fr); gap: 3px; }
@@ -110,13 +125,13 @@
         <a class="mu-emb uso" style="grid-column: span 2" href="#4-3-nivel-iniciativa-ciclo-de-vida-con-puertas-de-decision">En uso<small>fases 6 y 7 · o desenganchado</small></a>
 
         <div class="mu-rot">Fase</div>
-        <a class="mu-fase" style="background:#1a1817" href="20_SEVEN-G_Manuales_de_fase.html#fase-0-contexto-y-restricciones"><small>0 · HABILITANTE</small><b>Contexto y restricciones</b></a>
-        <a class="mu-fase" style="background:#0a3d73" href="20_SEVEN-G_Manuales_de_fase.html#fase-1-descubrimiento-de-oportunidades"><small>1</small><b>Descubrimiento de oportunidades</b></a>
-        <a class="mu-fase" style="background:#0f5499" href="20_SEVEN-G_Manuales_de_fase.html#fase-2-hipotesis-de-valor"><small>2</small><b>Hipótesis de valor</b></a>
-        <a class="mu-fase" style="background:#990f3d" href="20_SEVEN-G_Manuales_de_fase.html#fase-3-viabilidad-y-riesgo"><small>3 · PARADA</small><b>Viabilidad y riesgo</b></a>
-        <a class="mu-fase" style="background:#0b6a73" href="20_SEVEN-G_Manuales_de_fase.html#fase-4-diseno-de-la-solucion"><small>4</small><b>Diseño de la solución</b></a>
-        <a class="mu-fase" style="background:#0d7680" href="20_SEVEN-G_Manuales_de_fase.html#fase-5-entrega-y-validacion"><small>5</small><b>Entrega y validación</b></a>
-        <a class="mu-fase" style="background:#4a2a6b" href="20_SEVEN-G_Manuales_de_fase.html#fase-6-operacion-y-gobierno"><small>6</small><b>Operación y gobierno</b></a>
+        <a class="mu-fase sig" style="background:#1a1817" href="20_SEVEN-G_Manuales_de_fase.html#fase-0-contexto-y-restricciones"><small>0 · HABILITANTE</small><b>Contexto y restricciones</b></a>
+        <a class="mu-fase sig" style="background:#0a3d73" href="20_SEVEN-G_Manuales_de_fase.html#fase-1-descubrimiento-de-oportunidades"><small>1</small><b>Descubrimiento de oportunidades</b></a>
+        <a class="mu-fase sig" style="background:#0f5499" href="20_SEVEN-G_Manuales_de_fase.html#fase-2-hipotesis-de-valor"><small>2</small><b>Hipótesis de valor</b></a>
+        <a class="mu-fase sig" style="background:#990f3d" href="20_SEVEN-G_Manuales_de_fase.html#fase-3-viabilidad-y-riesgo"><small>3 · PARADA</small><b>Viabilidad y riesgo</b></a>
+        <a class="mu-fase sig" style="background:#0b6a73" href="20_SEVEN-G_Manuales_de_fase.html#fase-4-diseno-de-la-solucion"><small>4</small><b>Diseño de la solución</b></a>
+        <a class="mu-fase sig" style="background:#0d7680" href="20_SEVEN-G_Manuales_de_fase.html#fase-5-entrega-y-validacion"><small>5</small><b>Entrega y validación</b></a>
+        <a class="mu-fase sig" style="background:#4a2a6b" href="20_SEVEN-G_Manuales_de_fase.html#fase-6-operacion-y-gobierno"><small>6 · ↻ en bucle</small><b>Operación y gobierno</b></a>
         <a class="mu-fase" style="background:#593380" href="20_SEVEN-G_Manuales_de_fase.html#fase-7-evolucion-o-retirada"><small>7</small><b>Evolución o retirada</b></a>
 
         <div class="mu-rot">Puerta de decisión</div>
@@ -128,6 +143,15 @@
         <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-6-g5-puesta-en-produccion">G5 · Puesta en producción</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g5-puesta-en-produccion">Lista LV-G5</a><a class="mu-lv" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#firma-multinivel-de-puesta-en-produccion-g5">Firma multinivel</a></div></div>
         <div class="mu-cel"><div class="mu-gate"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-revision-de-continuidad">R6 · Continuidad</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-r6-revision-de-continuidad">Lista LV-R6</a></div></div>
         <div class="mu-cel"><div class="mu-gate consejo"><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-escalado-o-retirada">G7 · Escalado o retirada</a><a class="mu-lv" href="22_SEVEN-G_Listas_de_verificacion_por_gate.html#lv-g7-escalado-o-retirada">Lista LV-G7</a><em>Consejo si es Transformar</em></div></div>
+
+        <div class="mu-rot">Si no supera la puerta</div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivotar" title="Pivotar: la iniciativa vuelve a la fase 2 con una nueva hipótesis">↶ Pivotar a F2</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivotar" title="Pivotar: la iniciativa vuelve a la fase 2 con una nueva hipótesis">↶ Pivotar a F2</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivotar" title="Pivotar: la iniciativa vuelve a la fase 2 con una nueva hipótesis">↶ Pivotar a F2</a><a class="pa fuerte" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar · principal</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar</a></div>
+        <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar</a></div>
+        <div class="mu-bucle"><span><b>↻ Bucle de operación</b> · monitorización continua (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html#monitorizacion-y-alertas-p25">52</a>) → <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-revision-de-continuidad">R6</a> trimestral (Enterprise) o semestral (Lite): continuar la operación, con condiciones o adelantar G7 ante una desviación</span><div class="mu-sal"><a class="ok" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-escalado-o-retirada">↑ Escalar · nueva fase 0</a><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar">↺ Iterar · fase 2, 4, 5 o 6</a><a class="pa" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-escalado-o-retirada">✕ Retirar · desenganchado</a></div></div>
 
         <div class="mu-rot">Plantillas (evidencias)</div>
         <div class="mu-cel"><a class="mu-p" href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Carta de la iniciativa">P01</a><a class="mu-p" href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Declaración de contexto y restricciones">P02</a><a class="mu-p" href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Registro de asignación de roles">P03</a><a class="mu-p" href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Determinación de intensidad">P04</a><a class="mu-p" href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Ficha de inventario del sistema de IA">P05</a></div>
@@ -179,6 +203,6 @@
 
   </div>
   </div>
-  <div class="mu-leyenda"><span><i class="mu-c">00</i> documento</span><span><i class="mu-p">P00</i> plantilla (también en Word)</span><span><i class="mu-t">T00</i> herramienta</span><span>◆ puerta de decisión · en rojo, la principal puerta de parada</span></div>
+  <div class="mu-leyenda"><span><i class="mu-c">00</i> documento</span><span><i class="mu-p">P00</i> plantilla (también en Word)</span><span><i class="mu-t">T00</i> herramienta</span><span>◆ puerta de decisión · en rojo, la principal puerta de parada</span><span>→ avance · ↺ iterar · ↶ pivotar · ✕ parar o retirar · ↻ bucle de operación</span></div>
   <div class="g-fuente">Fuente: SEVEN-G · SEACHAD</div>
 </figure>

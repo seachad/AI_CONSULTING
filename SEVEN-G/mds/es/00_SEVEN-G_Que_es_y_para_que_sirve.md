@@ -51,6 +51,10 @@ Todo ello se acompaña de plantillas, criterios de auditoría y herramientas —
 
 **Cómo se usa SEVEN-G, de un vistazo**
 
+Antes del detalle, el recorrido. Cada iniciativa avanza por fases y, al final de cada una, una puerta de decisión comprueba a la vez el resultado y la documentación (validación dual). Si no se cumple lo que exigen los documentos, la iniciativa no avanza: se itera (como máximo dos veces antes de elevar la decisión), se pivota a una nueva hipótesis o se para, y el motivo queda registrado. Superada la puesta en producción (G5), la iniciativa entra en un bucle de operación con monitorización continua y revisiones periódicas de continuidad (R6), hasta que la puerta G7 decide escalarla, iterarla o retirarla.
+
+<!-- figura: flujo-uso -->
+
 El mapa siguiente reúne en una sola vista cómo se recorre el marco: arriba, el ciclo corporativo en el que la compañía decide y supervisa; en el centro, el ciclo de vida de cada iniciativa, con su etapa del embudo, su fase, su puerta de decisión y las plantillas, documentos y herramientas que se usan en ella; abajo, el gobierno transversal que acompaña a todas las fases. Cada elemento enlaza con el documento, la sección, la plantilla o la herramienta que lo desarrolla.
 
 > **Por qué importa.** SEVEN-G tiene muchas piezas, y quien lo usa por primera vez necesita saber qué toca en cada momento y dónde está. El mapa responde a tres preguntas prácticas —en qué fase está una iniciativa, qué hay que aportar para superar su puerta y con qué plantilla o herramienta— y sirve de punto de partida para navegar por la biblioteca sin leerla entera.
