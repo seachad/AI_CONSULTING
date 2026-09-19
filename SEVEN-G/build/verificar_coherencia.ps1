@@ -17,6 +17,7 @@
        T14: indice.html coincide con lo que genera build_indice.ps1 (D64).
        T06: los riesgos de demostración tienen niveles coherentes con probabilidad × impacto y aceptaciones del órgano de su nivel (D65).
     6. T17: el panel de ejemplo coincide con lo que genera el conector desde los datos de demostración (D43, D44); requiere uv.
+       El índice de ejemplo del panel (ejemplo/t14_indice.json) coincide con lo que calcula T14 desde los datos de T01 (D71).
     7. Prueba de humo en Edge sin ventana: el registro, el panel completo y el panel móvil se dibujan (un error de JavaScript los deja vacíos),
        y la calculadora T14 reproduce el ejemplo del documento 12 §9 (suma 12, transformación declarada no evidenciada).
     8. Registro de decisiones: numeración única y correlativa.
@@ -266,7 +267,8 @@ try {
   if (Get-Command uv -ErrorAction SilentlyContinue) {
     $sal17 = Join-Path $tmp 'panel'
     Push-Location $t17
-    try { & uv run python t01_a_panel.py --salida $sal17 2>&1 | Out-Null; $cod = $LASTEXITCODE } finally { Pop-Location }
+    $argIx = if (Test-Path (Join-Path $t17 'ejemplo\t14_indice.json')) { @('--indice', (Join-Path $t17 'ejemplo\t14_indice.json')) } else { @() }  # D71: el ejemplo lleva el índice de T14
+    try { & uv run python t01_a_panel.py --salida $sal17 @argIx 2>&1 | Out-Null; $cod = $LASTEXITCODE } finally { Pop-Location }
     if ($cod) { Mal 'el conector t01_a_panel.py ha fallado' }
     else {
       # los pies del ejemplo publicado llevan enlaces que solo se ponen en la carpeta por defecto: se comparan los datos, que son la fuente de todo
@@ -285,6 +287,19 @@ try {
     }
   } else { Aviso 'uv no está instalado: no se comprueba el panel de ejemplo' }
 
+  # D71: el índice de transformación del panel de ejemplo es el que calcula T14 desde los mismos datos de T01 (requiere Edge)
+  $ixEj = Join-Path $t17 'ejemplo\t14_indice.json'
+  $edgeIx = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  if (-not (Test-Path $ixEj)) { Mal 'D71: falta el índice de ejemplo del panel (T17_panel_consejo/ejemplo/t14_indice.json)' }
+  elseif ($SinNavegador -or -not $edgeIx) { Aviso 'sin navegador: no se comprueba el índice de ejemplo del panel' }
+  else {
+    $ixTmp = Join-Path $tmp 't14_indice.json'
+    & pwsh -NoProfile -File (Join-Path $t14 'build_indice.ps1') -Salida (Join-Path $tmp 'indice_ix.html') -DesdeT01 (Join-Path $t01 'datos_demo.json') -Exportar $ixTmp | Out-Null
+    if ($LASTEXITCODE -or -not (Test-Path $ixTmp)) { Mal 'D71: build_indice.ps1 -DesdeT01 ha fallado' }
+    elseif (([IO.File]::ReadAllText($ixTmp) -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText($ixEj) -replace "`r`n", "`n")) { Mal 'D71: el índice de ejemplo del panel está desfasado: ejecutar build_indice.ps1 -DesdeT01 ../T01_registro_iniciativas/datos_demo.json -Exportar ../T17_panel_consejo/ejemplo/t14_indice.json y regenerar el panel' }
+    else { $rIx = (Get-Content $ixTmp -Raw | ConvertFrom-Json).calculos[0].resultado; Ok "D71: índice de ejemplo del panel al día ($($rIx.perfil_asignado), suma $($rIx.suma), cobertura $($rIx.cobertura)/8)" }
+  }
+
   # ---- 7. prueba de humo en el navegador
   # Edge sin ventana abre cada página servida por un servidor local de un solo uso; la página lleva inyectado un informe que devuelve al
   # servidor los errores de JavaScript y si existen los elementos que debe haber dibujado. No se toca ningún fichero del repositorio.
@@ -294,13 +309,13 @@ try {
   else {
     $salidaEj = Join-Path $t17 'ejemplo\salida'
     $pruebas = @(
-      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
+      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
       @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="escala"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="2"]', '#nav a[href="#/umbrales"]'); que = 'calculadora T14 (ejemplo del documento 12)' }
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
       @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
       @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
-      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr'); que = 'panel completo' }
+      @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr'); que = 'panel completo' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row'); que = 'panel móvil' }
     )
     foreach ($p in $pruebas) {

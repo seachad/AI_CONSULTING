@@ -348,6 +348,20 @@ The engine files published in that repository are **a copy of their private sour
 
 Priority: tool wave 1 (03 §6), together with connecting the T17 dashboard to the initiative register. Until the adaptation is available, the register can be kept with template P69, prepared as a spreadsheet with the fields in sections 4 and 10.
 
+### 12.3 Status of the adaptation (version 0.1)
+
+From schema 0.5 of the initiative register, **T18 is a T01 module** ("Board (T18)" view), with a single data model (03 §4):
+
+| Aspect | Available | Pending |
+|---|---|---|
+| **Identifiers** | `REC-YYYY-NNN` and `DEC-YYYY-NNN`, sequential by year and never reset. | Previous identifier of migrated records. |
+| **Decisions** | Body, minutes reference, type, subject, text, outcome, linked initiatives and recommendations, investment cap and stage, stage decision, validity, owner and spheres with Transform as target (section 10.2). | Conditions with owner and time limit, and their follow-up. |
+| **Recommendations** | Text, addressee, status (open, in progress, closed, discarded), evidence and linked initiatives. | Compliance criterion, original and current dates, rescheduling, independent assessment, history and the alerts in section 5. |
+| **Transformation index** | Decisions feed signal 8 and condition IT-D1 of document 12 in the T14 calculator. | — |
+| **Board dashboard** | The T17 connector generates the register page from the recommendations in T01. | Decisions in the dashboard. |
+
+**Why it matters.** Board decisions no longer live only in the minutes: they are linked to initiatives and recommendations, and the transformation index can check with data whether the board decides on, funds and oversees Transform bets. What is pending is still kept with template P69.
+
 ---
 
 ## 13. Illustrative example

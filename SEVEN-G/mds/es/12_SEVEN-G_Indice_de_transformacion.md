@@ -503,14 +503,14 @@ No se presenta el índice como una nota ni se compara con otras compañías (sec
 
 | Código | Nombre | Uso en este documento |
 |---|---|---|
-| **T01** | Registro de iniciativas | Campos: respuestas IT-P1–IT-P5 con evidencia y estado de verificación; ambición propuesta, confirmada y real con fecha y motivo; esfera principal; fechas de *gates*; estados; motivos de parada; origen de la iniciativa. |
+| **T01** | Registro de iniciativas | Campos: respuestas IT-P1–IT-P5 con evidencia y estado de verificación; ambición propuesta, confirmada y real con fecha y motivo; esfera principal; fechas de *gates*; estados; motivos de parada; origen de la iniciativa. Desde el esquema 0.5: verificación de IT-P2 e IT-P3 en un *gate* con supervisión humana verificada, unidad completa rediseñada, capacidad liberada, materializada y reasignada, oferta habilitada por IA en los importes e ingresos totales e IT-D3 de la compañía. |
 | **T03** | Gestor de *gates* | Verificación de la clasificación en G2 y G7; aprobaciones del consejo. |
 | **T05** | Clasificador de ambición | Aplica las cinco preguntas y las reglas 1 a 10; registra el resultado y las incoherencias. |
 | **T12** | Seguimiento de realización de valor | Importes por tipo y estado; capacidad liberada y materializada; ingresos habilitados por IA. |
 | **T13** | Calculadora de costes por caso | Inversión y coste recurrente de cada iniciativa (señal 1). |
-| **T14** | Calculadora del índice de transformación | Calcula condiciones de base, señales, perfil, alertas, cobertura, qué movería el perfil y evolución; conserva la versión de umbrales. Parte del JSON del registro T01 y se completa a mano con lo que el registro aún no contiene (señales 3 a 6 y 8). |
-| **T17** | Panel de IA para el consejo | Muestra perfil, señales y tendencia. |
-| **T18** | Registro de recomendaciones del consejo | Fuente de la señal 8. |
+| **T14** | Calculadora del índice de transformación | Calcula condiciones de base, señales, perfil, alertas, cobertura, qué movería el perfil y evolución; conserva la versión de umbrales. Parte del JSON del registro T01: con el esquema 0.5 calcula desde él las ocho señales y las condiciones IT-D1 e IT-D3; lo que el registro no contenga se completa a mano. Exporta su resultado para el panel del consejo. |
+| **T17** | Panel de IA para el consejo | Tarjeta «Índice de transformación de la compañía» en «Cartera y valor»: perfil, condiciones de base, señales, tendencia, alertas y qué movería el perfil, a partir del resultado exportado por T14. |
+| **T18** | Registro de recomendaciones del consejo | Vista «Consejo (T18)» del registro T01: las decisiones del consejo (tesis, apuestas de Transformar con límite por etapa, revisiones y decisiones de etapa) son la fuente de la señal 8 y de IT-D1. |
 | **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión de C2: tesis aprobada (señal 8) y ambición objetivo por esfera (condición IT-D1). |
 | **T20** | Plan de adopción y capacidad | Horas reasignadas y roles rediseñados (señales 3 y 5). |
 | **P07** | Clasificación de esfera y ambición | Evidencia de la clasificación en las fases 1, 2 y 7. |

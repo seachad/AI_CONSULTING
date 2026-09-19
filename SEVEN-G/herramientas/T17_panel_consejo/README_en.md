@@ -8,7 +8,7 @@ Everything the connector generates (full dashboard, mobile dashboard and recomme
 
 ---
 
-Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1`, `0.2`, `0.3` and `0.4`; 0.4 only adds risk fields, which the connector does not read) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
+Converts the **full JSON** exported by the SEVEN-G **T01** initiative register (schema `esquema_registro.schema.json`, versions `0.1` to `0.5`; 0.4 adds risk fields and 0.5 the index evidence and board decisions, which the connector does not read) into the dashboard JSON (`motor/ESQUEMA.md`) and, using the dashboard engine included in `motor/`, generates:
 
 - the **full dashboard** and the **mobile dashboard** (T17), in sync (same data fingerprint);
 - the **dashboard JSON**, to inspect it or save it as a snapshot with `motor/snapshot.py`;
@@ -60,7 +60,7 @@ flowchart LR
 From this folder:
 
 ```bash
-uv run python t01_a_panel.py --t01 export_t01.json --salida folder [--sigla CA] [--organizacion "Name"] [--prefijo t01_] [--panel path]
+uv run python t01_a_panel.py --t01 export_t01.json --salida folder [--sigla CA] [--organizacion "Name"] [--prefijo t01_] [--panel path] [--indice t14.json]
 ```
 
 | Option | What it does |
@@ -70,7 +70,8 @@ uv run python t01_a_panel.py --t01 export_t01.json --salida folder [--sigla CA] 
 | `--sigla` | Advisory board acronym used in the texts. Default: "consejo asesor". |
 | `--organizacion` | Organisation name. Default: T01 `meta.organizacion`. |
 | `--prefijo` | File prefix. Default: `t01_`. |
-| `--panel` | Optional: use another engine, pointing to a checkout of the *AI en el Consejo* repository. Default: `./motor`. |
+| --panel | Optional: use another engine, pointing to a checkout of the *AI en el Consejo* repository. Default: ./motor. |
+| --indice | Optional: JSON exported by the transformation index calculator (T14). Adds the "Company transformation index" card to "Portfolio and value" (profile, baseline conditions, signals, trend against the previous calculation, alerts and what would move the profile). The connector does not recalculate the index: it takes the most recent calculation with a result. In the example, ./ejemplo/t14_indice.json, generated from the same T01 data with `pwsh -File ../T14_indice_transformacion/build_indice.ps1 -DesdeT01 ../T01_registro_iniciativas/datos_demo.json -Exportar ejemplo/t14_indice.json`. |
 
 Output files: `<prefix>Dashboard_Casos_Uso_IA_v8.html`, `<prefix>Dashboard_Movil_IA_v8.html`, `<prefix>dashboard_data.json` and, if there are recommendations, `<prefix>Registro_Recomendaciones.html`.
 

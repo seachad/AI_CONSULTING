@@ -23,9 +23,21 @@ Data is stored only in the browser used (local storage). Nothing is sent to thir
 | Signal 1 | Yes (approximation) | Cumulative realised investment of each initiative + latest realised recurring cost. Level: actual if it exists; otherwise, confirmed; with neither, "unclassified". |
 | Signal 7 | Yes | G2 passed in 24 months; outcome = G5, stopped or stalled for more than twice the reference times of phases 3 to 5 (T01 configuration). |
 | Overstatement | Yes | Initiatives with an actual ambition lower than the confirmed one. |
-| Signals 3, 4, 5, 6 and 8; IT-D1 and IT-D3 | No | The register does not yet store the verification of IT-P2 and IT-P3, materialised and reassigned hours (T20), AI-enabled revenue (T12) or board decisions (T18). They are completed manually. |
+| Signal 3 | Yes, with schema 0.5 | Sum of each initiative's capacity (`indice.capacidad`: released, materialised and reassigned hours; T20). |
+| Signals 4 and 5 | Yes, with schema 0.5 | Verification of IT-P2 and IT-P3 at a *gate* (`indice.itp2`, `indice.itp3`), verified human oversight and entire unit redesigned. Unverified = yes answer without a completed verification (no answers are not verified). |
+| Signal 6 | Yes, with schema 0.5 | Latest realised and validated return with `oferta_habilitada_ia` in the 12 months, over `meta.indice.ingresos_totales`. |
+| Signal 8 and IT-D1 | Yes, with schema 0.5 | Board decisions (`decisiones_consejo`, T01 Board view): approved thesis and its spheres with Transform, Transform bets approved in 12 months with or without a cap per stage, reviews and stage decisions. |
+| IT-D3 | Yes, with schema 0.5 | `meta.indice.it_d3` and its evidence. |
 
-Only initiatives in spheres 01 to 07 count (document 12, section 4.2).
+With a register prior to schema 0.5, signals 3 to 6 and 8 and conditions IT-D1 and IT-D3 are left as "no data" and completed manually. Only initiatives in spheres 01 to 07 count (document 12, section 4.2).
+
+## Calculating from T01 without opening the browser
+
+```bash
+pwsh -File SEVEN-G/herramientas/T14_indice_transformacion/build_indice.ps1 -DesdeT01 registro_T01.json -Exportar t14.json
+```
+
+It opens the calculator in headless Edge, creates the calculation at the register's reference date with the current thresholds and writes the T14 JSON with its result (profile, signals, alerts and what would move the profile). That file is the optional input for the board dashboard: `uv run python t01_a_panel.py --t01 registro_T01.json --indice t14.json` adds the "Company transformation index" card. The dashboard example uses `T17_panel_consejo/ejemplo/t14_indice.json`, calculated in this way from the T01 demonstration data.
 
 ## Thresholds
 
@@ -44,9 +56,8 @@ Version **0.1** holds the initial thresholds of document 12 (section 4.5), **to 
 
 ## Pending
 
-- T01 schema 0.4 (optional fields): verification of IT-P2 and IT-P3, materialised and reassigned hours, AI-enabled offering flag; with them, signals 3 to 6 will also be calculated from the register.
-- Board recommendations and decisions register (T18) as a T01 module, for signal 8.
-- Index block in the board dashboard (T17): proposed in `T17_panel_consejo/PROPUESTA_MOTOR.md`.
+- Calibrate the v0.1 thresholds with the company's data (document 12, section 8).
+- Index card in the mobile board dashboard (the full dashboard already shows it).
 
 ---
 

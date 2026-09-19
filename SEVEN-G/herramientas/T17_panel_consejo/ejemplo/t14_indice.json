@@ -1,0 +1,304 @@
+{
+ "version_esquema": "0.1",
+ "herramienta": "T14",
+ "meta": {
+  "organizacion": "Compañía Ejemplo Industrial, S.A. (ficticia)",
+  "moneda": "EUR",
+  "datos_ilustrativos": true,
+  "origen": "Calculado con build_indice.ps1 desde el registro T01 (esquema 0.5)",
+  "aviso_legal": "SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los umbrales del índice son iniciales, no proceden de estudios de mercado y deben calibrarse con los datos de cada compañía. Cada organización que use la herramienta es la única responsable de sus datos, de las decisiones que adopte con ellos, de identificar la normativa que le aplica y de certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad alguna por el uso de la herramienta. Los datos de demostración son ficticios."
+ },
+ "umbrales": [
+  {
+   "version": "0.1",
+   "fecha": "2026-09-16",
+   "origen": "Documento 12, sección 4.5: umbrales iniciales, a calibrar en C5",
+   "aprobado_por": null,
+   "nota": "Versión de referencia del marco. No procede de estudios de mercado.",
+   "parametros": {
+    "base": {
+     "b1_min": 80,
+     "b2_min": 50,
+     "b3_min": 5
+    },
+    "s1": {
+     "sin_clasificar_max": 30,
+     "t2": 20,
+     "t3": 40,
+     "transformar_min": 10
+    },
+    "s2": {
+     "t2": 10,
+     "t3": 30,
+     "iniciativas_min": 2
+    },
+    "s3": {
+     "t2": 30,
+     "t3": 60,
+     "reasignada_min": 50
+    },
+    "s4": {
+     "t2": 15,
+     "t3": 35,
+     "sin_verificacion_max": 30
+    },
+    "s5": {
+     "t2": 10,
+     "t3": 25,
+     "unidades_min": 1
+    },
+    "s6": {
+     "t2": 0.5,
+     "t3": 2
+    },
+    "s7": {
+     "cr2": 0.5,
+     "cr3": 0.8,
+     "tr3_max": 2,
+     "resultado_min": 3,
+     "tasa_referencia": 0.6
+    },
+    "s8": {
+     "revisiones_min": 2,
+     "decisiones_min": 1
+    },
+    "perfil": {
+     "suma_min": 14,
+     "cobertura_min": 6,
+     "d2_transformar_min": 10
+    },
+    "sobredeclaracion": {
+     "cartera": 30,
+     "transformar": 50
+    }
+   }
+  }
+ ],
+ "calculos": [
+  {
+   "id": "IDX-2026-09",
+   "fecha_corte": "2026-09-16",
+   "tipo": "seguimiento",
+   "version_umbrales": "0.1",
+   "origen": "t01",
+   "entradas": {
+    "base": {
+     "activas": 13,
+     "gobernadas": 9,
+     "valor_validado": 2650000,
+     "valor_total": 7370000,
+     "en_produccion": 4,
+     "produccion_con_valor": 4
+    },
+    "s1": {
+     "coste_total": 8919000,
+     "coste_aumentar": 4570000,
+     "coste_transformar": 480000,
+     "coste_sin_clasificar": 0
+    },
+    "s2": {
+     "eficiencias_validadas": 2650000,
+     "retorno_validado": 0,
+     "iniciativas_con_retorno": 0
+    },
+    "s3": {
+     "horas_liberadas": 123600,
+     "horas_materializadas": 70000,
+     "horas_reasignadas": 18000
+    },
+    "s4": {
+     "itp2_verificada": 1,
+     "sin_verificacion": 0
+    },
+    "s5": {
+     "itp3_supervision": 1,
+     "unidades_completas": 0,
+     "sin_supervision": 0
+    },
+    "s6": {
+     "ingresos_habilitados": 0,
+     "ingresos_totales": 950000000
+    },
+    "s7": {
+     "hay_gates": true,
+     "at_superaron_g2": 3,
+     "at_con_resultado": 3,
+     "at_en_produccion": 1,
+     "opt_con_resultado": 4,
+     "opt_en_produccion": 4,
+     "mediana_at": 217,
+     "mediana_opt": 134,
+     "plazos_ref": 180
+    },
+    "s8": {
+     "tesis_aprobada": true,
+     "apuestas_transformar": 0,
+     "con_limite_etapa": false,
+     "revisiones": 0,
+     "decisiones_etapa": 0
+    },
+    "declaracion": {
+     "d1": true,
+     "d3": true,
+     "evidencia": "Plan estratégico 2026-2028, aprobado en diciembre de 2025, que presenta la IA como palanca de transformación del servicio industrial (ficticio)."
+    },
+    "sobredeclaracion": {
+     "real_registrada": 2,
+     "real_inferior": 0,
+     "transf_real_registrada": 0,
+     "transf_real_inferior": 0
+    }
+   },
+   "de_t01": {
+    "base": [
+     "activas",
+     "gobernadas",
+     "valor_validado",
+     "valor_total",
+     "en_produccion",
+     "produccion_con_valor"
+    ],
+    "s1": [
+     "coste_total",
+     "coste_aumentar",
+     "coste_transformar",
+     "coste_sin_clasificar"
+    ],
+    "s2": [
+     "eficiencias_validadas",
+     "retorno_validado",
+     "iniciativas_con_retorno"
+    ],
+    "s7": [
+     "hay_gates",
+     "at_superaron_g2",
+     "at_con_resultado",
+     "at_en_produccion",
+     "opt_con_resultado",
+     "opt_en_produccion",
+     "mediana_at",
+     "mediana_opt",
+     "plazos_ref"
+    ],
+    "sobredeclaracion": [
+     "real_registrada",
+     "real_inferior",
+     "transf_real_registrada",
+     "transf_real_inferior"
+    ],
+    "s3": [
+     "horas_liberadas",
+     "horas_materializadas",
+     "horas_reasignadas"
+    ],
+    "s4": [
+     "itp2_verificada",
+     "sin_verificacion"
+    ],
+    "s5": [
+     "itp3_supervision",
+     "unidades_completas",
+     "sin_supervision"
+    ],
+    "s6": [
+     "ingresos_habilitados",
+     "ingresos_totales"
+    ],
+    "s8": [
+     "tesis_aprobada",
+     "apuestas_transformar",
+     "con_limite_etapa",
+     "revisiones",
+     "decisiones_etapa"
+    ],
+    "declaracion": [
+     "d1",
+     "d3"
+    ]
+   },
+   "notas": "Calculado desde el registro T01 a fecha 16-09-2026. Lo que el registro no contiene queda «sin dato» y se completa a mano; en registros anteriores al esquema 0.5 son la verificación de IT-P2 e IT-P3, las horas materializadas y reasignadas, los ingresos habilitados por IA, las decisiones del consejo e IT-D3. Importes realizados: el último de cada tipo por iniciativa en la ventana; inversión: la realizada acumulada de cada iniciativa (aproximación).",
+   "acciones": "",
+   "resultado": {
+    "perfil_asignado": "declarada",
+    "perfil_evidenciado": "tactica",
+    "perfil_subyacente": "tactica",
+    "provisional": false,
+    "cobertura": 8,
+    "suma": 12,
+    "condiciones_base": {
+     "B1": false,
+     "B2": false,
+     "B3": false
+    },
+    "declaracion": {
+     "D": true,
+     "IT_D1": true,
+     "IT_D2": false,
+     "IT_D3": true
+    },
+    "senales": [
+     {
+      "senal": 1,
+      "valor": 56.62,
+      "puntuacion": 2,
+      "sin_dato": false
+     },
+     {
+      "senal": 2,
+      "valor": 0,
+      "puntuacion": 1,
+      "sin_dato": false
+     },
+     {
+      "senal": 3,
+      "valor": 71.2,
+      "puntuacion": 2,
+      "sin_dato": false
+     },
+     {
+      "senal": 4,
+      "valor": 25,
+      "puntuacion": 2,
+      "sin_dato": false
+     },
+     {
+      "senal": 5,
+      "valor": 25,
+      "puntuacion": 2,
+      "sin_dato": false
+     },
+     {
+      "senal": 6,
+      "valor": 0,
+      "puntuacion": 1,
+      "sin_dato": false
+     },
+     {
+      "senal": 7,
+      "valor": 0.33,
+      "puntuacion": 1,
+      "sin_dato": false
+     },
+     {
+      "senal": 8,
+      "valor": 0,
+      "puntuacion": 1,
+      "sin_dato": false
+     }
+    ],
+    "alertas": [
+     "a_atasc"
+    ],
+    "perfil_objetivo": "curso",
+    "mover": [
+     "Cartera gobernada del 80 % o más (hoy 69 %): 2 iniciativas activas más con fase, gates registrados y ambición confirmada.",
+     "Valor validado del 50 % o más del valor realizado (hoy 36 %).",
+     "Al menos una apuesta de Transformar aprobada por el consejo y registrada (señal 8 ≥ 2).",
+     "Conversión relativa de Aumentar y Transformar de 0,5 o más (hoy 0,33).",
+     "Retorno validado de al menos 294 k€ (hoy 0 €) o ingresos habilitados por IA de al menos 4,75 M€ (hoy 0 €).",
+     "Suma de señales de 14 o más (hoy 12)."
+    ]
+   }
+  }
+ ]
+}

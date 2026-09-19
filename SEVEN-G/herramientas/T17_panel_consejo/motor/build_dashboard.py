@@ -730,7 +730,7 @@ function renderEmbudoPreguntas(rows){
 function render(){
   buildFilters();
   const rows = CASES.filter(passes);
-  renderKPIs(rows); renderCharts(rows); renderEmbudo(rows); renderCdm(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
+  renderKPIs(rows); renderCharts(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
   document.getElementById("cards").classList.toggle("hidden", state.view!=="cards");
   document.getElementById("table").classList.toggle("hidden", state.view!=="table");
   // agrupación (por compañía y unidad o sin agrupar) y presentación (tarjetas o tabla) son independientes
@@ -974,6 +974,37 @@ function renderTransversales(rows){
   setCard("transv", "Iniciativas transversales y plataformas habilitadoras",
     "Por unidad de negocio: coste imputado desde el primer día, adopción real, horas liberadas declaradas, capacidad liberada (no suma) y valor materializado, lo único que llega al neto. El valor de una plataforma se imputa a los casos que la usan. Los importes de estos casos ya suman en la cartera: aquí se desglosan (SEVEN-G, documento 40 §7.2)",
     insight, bloques);
+}
+
+// ---- índice de transformación de la compañía (bloque «indice», opcional; documento 12 de SEVEN-G, calculadora T14)
+// Es una lectura de toda la compañía en una fecha de corte, calculada por T14: no depende de los filtros ni se recalcula aquí.
+// Sin bloque «indice», la tarjeta no se muestra.
+const PERFIL_IX = {curso:"Transformación en curso", escala:"Eficiencia a escala", tactica:"Eficiencia táctica", exploracion:"Exploración dispersa", declarada:"Transformación declarada, no evidenciada"};
+const SENAL_IX = ["Composición de la inversión", "Composición del valor", "Materialización", "Profundidad del cambio", "Modelo operativo", "Ingresos habilitados por IA", "Paso a producción", "Decisión del consejo"];
+const LECTURA_IX = ["Exploración o sin medir", "Eficiencia", "Intermedia", "Transformación"];
+const ALERTA_IX = {a_fragil:"Transformación frágil", a_nomat:"Eficiencia no materializada", a_atasc:"Apuestas atascadas", a_sincons:"Transformación sin consejo", a_sinsup:"Cambio sin supervisión", a_sobre:"Sobredeclaración de ambición", a_sobre_tr:"Sobredeclaración en Transformar"};
+function valorIx(s){
+  if (s.sin_dato) return `<span class="nd">sin medir</span>`;
+  if (s.valor == null) return "—";
+  const n = v => v.toLocaleString("es-ES", {maximumFractionDigits: 2});
+  return s.senal === 7 ? `CR ${n(s.valor)}` : s.senal === 8 ? `${n(s.valor)} apuestas` : `${n(s.valor)} %`;
+}
+function renderIndice(){
+  const x = DATA.indice;
+  if (!x || !PERFIL_IX[x.perfil_asignado]){ setCard("indice", "", "", "", ""); return; }
+  const ant = x.anterior || null, prev = n => ant ? (ant.senales||[]).find(s=>s.senal===n) : null;
+  const puntos = p => `<span style="letter-spacing:2px;color:var(--${p>=3?"s3":p>=2?"s1":"muted"})">${"●".repeat(p)}${"○".repeat(3-p)}</span> <b>${p}</b>`;
+  const tend = s => { const a = prev(s.senal); if (!a) return "—"; const d = s.puntuacion - a.puntuacion; return d > 0 ? `<b style="color:var(--s3)">▲ +${d}</b>` : d < 0 ? `<b style="color:var(--critical)">▼ ${d}</b>` : "="; };
+  const filas = (x.senales||[]).map(s=>`<tr><td>${s.senal} · ${esc(SENAL_IX[s.senal-1] || "")}</td><td class="n">${valorIx(s)}</td><td>${puntos(s.puntuacion)}</td><td>${s.sin_dato ? '<span class="nd">sin medir</span>' : LECTURA_IX[s.puntuacion]}</td><td>${tend(s)}</td></tr>`).join("");
+  const b = x.condiciones_base || {}, cond = (k, t) => `<span class="badge ${b[k] ? "st-uso" : "st-off"}">${k} ${t}: ${b[k] ? "cumple" : "no cumple"}</span>`;
+  const insight = `Perfil asignado: <b>${PERFIL_IX[x.perfil_asignado]}</b>${x.perfil_subyacente ? ` (las señales evidencian <b>${PERFIL_IX[x.perfil_subyacente]}</b>)` : ""} · suma ${x.suma} de 24 · ${x.cobertura} de 8 señales medidas${x.provisional ? " · <b>provisional</b>" : ""}${ant ? ` · el cálculo anterior (${fES(ant.fecha_corte)}) daba <b>${PERFIL_IX[ant.perfil_asignado] || ant.perfil_asignado}</b> con suma ${ant.suma}` : ""}.`;
+  const alertas = (x.alertas||[]).length ? `<div class="note" style="margin-top:10px">Alertas</div><ul class="warnlist">${x.alertas.map(a=>`<li>${esc(ALERTA_IX[a] || a)}</li>`).join("")}</ul>` : "";
+  const mover = (x.mover||[]).length ? `<div class="note" style="margin-top:10px">Qué movería el perfil${x.perfil_objetivo && PERFIL_IX[x.perfil_objetivo] ? ` hacia «${PERFIL_IX[x.perfil_objetivo]}»` : ""}</div><ul class="warnlist">${x.mover.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>` : "";
+  setCard("indice", "Índice de transformación de la compañía",
+    `Calculado con la calculadora T14 de SEVEN-G (documento 12) a ${fES(x.fecha_corte)} · umbrales v${esc(x.version_umbrales || "")}, iniciales y a calibrar · no depende de los filtros · el perfil no se asigna por la suma, y no es una nota ni se compara con otras compañías`,
+    insight,
+    `<div style="display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px">${cond("B1","cartera gobernada")}${cond("B2","valor validado")}${cond("B3","escala en producción")}</div>` +
+    `<div class="tblx"><table class="mini"><thead><tr><th>Señal</th><th class="n">Valor medido</th><th>Puntuación (0–3)</th><th>Lectura</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` + alertas + mover);
 }
 
 // ---- bloque 1: cartera (movimientos, tiempo a producción, agilidad)
@@ -1428,6 +1459,7 @@ HTML = """<!DOCTYPE html>
   <div class="card"><h3 id="c2t"></h3><div class="note">Haz clic en una barra para ver la inversión, las eficiencias y el retorno del caso</div><div class="legend"><span><i style="background:var(--seq450)"></i>Neto anual adicional</span><span><i style="background:var(--s2)"></i>Inversión adicional</span></div><div id="c2"></div></div>
  </div>
  <details class="card cdet" id="cdm" style="margin-bottom:14px"></details>
+ <details class="card cdet" id="indice" style="margin-bottom:14px"></details>
  <details class="card cdet" id="transv" style="margin-bottom:14px"></details>
  <div class="grid2"><details class="card cdet" id="cart1"></details><details class="card cdet" id="cart2"></details></div>
  </section>

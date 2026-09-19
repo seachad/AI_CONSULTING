@@ -8,7 +8,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": { "type": "string" },
-    "version_esquema": { "enum": ["0.1", "0.2", "0.3", "0.4"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para las iniciativas transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. 0.4 añade solo campos opcionales a riesgos[] para la matriz y registro de riesgos (T06, documento 33 §8.1): eje del impacto, controles y su eficacia, valoración residual objetivo o verificada, contingencia, estado, tendencia, próxima revisión y aceptación. Un fichero 0.1, 0.2 o 0.3 es un 0.4 válido." },
+    "version_esquema": { "enum": ["0.1", "0.2", "0.3", "0.4", "0.5"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para las iniciativas transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. 0.4 añade solo campos opcionales a riesgos[] para la matriz y registro de riesgos (T06, documento 33 §8.1): eje del impacto, controles y su eficacia, valoración residual objetivo o verificada, contingencia, estado, tendencia, próxima revisión y aceptación. 0.5 añade solo campos opcionales para el índice de transformación (T14, documento 12) y el registro del consejo (T18, documento 62): iniciativas[].indice (verificación de IT-P2 e IT-P3, supervisión humana verificada, unidad completa rediseñada y capacidad liberada, materializada y reasignada), valores[].oferta_habilitada_ia, meta.indice (ingresos totales e IT-D3) y decisiones_consejo[] (DEC). Un fichero 0.1 a 0.4 es un 0.5 válido." },
     "aviso_legal": { "type": "string", "description": "Aviso legal y exención de responsabilidad de SEVEN-G y de la herramienta (en el idioma de la interfaz al exportar). Opcional al importar; la exportación del JSON completo siempre lo incluye." },
     "meta": { "$ref": "#/$defs/meta" },
     "personas": { "type": "array", "items": { "$ref": "#/$defs/persona" } },
@@ -23,7 +23,8 @@
     "no_conformidades": { "type": "array", "items": { "$ref": "#/$defs/no_conformidad" } },
     "incidentes": { "type": "array", "items": { "$ref": "#/$defs/incidente" } },
     "proveedores": { "type": "array", "items": { "$ref": "#/$defs/proveedor" } },
-    "recomendaciones": { "type": "array", "items": { "$ref": "#/$defs/recomendacion" } }
+    "recomendaciones": { "type": "array", "items": { "$ref": "#/$defs/recomendacion" } },
+    "decisiones_consejo": { "type": "array", "items": { "$ref": "#/$defs/decision_consejo" }, "description": "Esquema 0.5. Decisiones del consejo o de su comisión delegada (documento 62 §10): fuente de la señal 8 y de la condición IT-D1 del índice de transformación." }
   },
   "$defs": {
     "fecha": { "type": "string", "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$" },
@@ -78,6 +79,17 @@
           "type": ["object", "null"],
           "additionalProperties": false,
           "properties": { "consejo_sigla": { "$ref": "#/$defs/texto_o_nulo", "description": "Siglas o nombre del consejo asesor que figura en los textos del panel." } }
+        },
+        "indice": {
+          "description": "Esquema 0.5. Datos de la compañía para el índice de transformación (documento 12): denominador de la señal 6 y condición IT-D3.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "ingresos_totales": { "type": ["number", "null"], "minimum": 0, "description": "Ingresos totales de la compañía en los 12 meses anteriores al corte." },
+            "periodo_ingresos": { "$ref": "#/$defs/texto_o_nulo" },
+            "it_d3": { "type": ["boolean", "null"], "description": "El plan estratégico, los informes al consejo u otras comunicaciones presentan la IA como transformación del negocio." },
+            "it_d3_evidencia": { "$ref": "#/$defs/texto_o_nulo" }
+          }
         },
         "configuracion": {
           "type": "object",
@@ -284,7 +296,29 @@
         },
         "alcance": { "$ref": "#/$defs/alcance" },
         "etiquetas_libres": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
-        "sistemas": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_sistema" } }
+        "sistemas": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id_sistema" } },
+        "indice": {
+          "description": "Esquema 0.5. Evidencia de la iniciativa para el índice de transformación (documento 12 §4.4): verificación de IT-P2 e IT-P3 en un gate, unidad organizativa completa rediseñada y capacidad (T20).",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "itp2": { "$ref": "#/$defs/verificacion_it" },
+            "itp3": { "$ref": "#/$defs/verificacion_it" },
+            "unidad_completa": { "type": ["boolean", "null"] },
+            "capacidad": {
+              "type": ["object", "null"],
+              "additionalProperties": false,
+              "properties": {
+                "horas_liberadas": { "type": ["number", "null"], "minimum": 0 },
+                "horas_materializadas": { "type": ["number", "null"], "minimum": 0 },
+                "horas_reasignadas": { "type": ["number", "null"], "minimum": 0 },
+                "actividad_destino": { "$ref": "#/$defs/texto_o_nulo" },
+                "roles_redisenados": { "type": ["number", "null"], "minimum": 0 },
+                "fecha": { "$ref": "#/$defs/fecha_o_nula" }
+              }
+            }
+          }
+        }
       }
     },
     "alcance": {
@@ -483,7 +517,8 @@
           "description": "Línea del panel del consejo (T17) en la que suma el importe. Solo para eficiencias (personas, herramientas, siniestros, operativo, penalizaciones) y retorno (venta_nueva, venta_cruzada, retencion, precio_margen, cobros, otros). null o ausente = sin desglosar (operativo u otros).",
           "enum": ["personas", "herramientas", "siniestros", "operativo", "penalizaciones", "venta_nueva", "venta_cruzada", "retencion", "precio_margen", "cobros", "otros", null]
         },
-        "area": { "$ref": "#/$defs/texto_o_nulo", "description": "Unidad de negocio a la que se imputa el importe (esquema 0.3; iniciativas transversales). null o ausente = toda la iniciativa. El total de la iniciativa es la suma de sus unidades; lo que no se pueda imputar a una unidad (por ejemplo, el gobierno común) va sin area." }
+        "area": { "$ref": "#/$defs/texto_o_nulo", "description": "Unidad de negocio a la que se imputa el importe (esquema 0.3; iniciativas transversales). null o ausente = toda la iniciativa. El total de la iniciativa es la suma de sus unidades; lo que no se pueda imputar a una unidad (por ejemplo, el gobierno común) va sin area." },
+        "oferta_habilitada_ia": { "type": ["boolean", "null"], "description": "Esquema 0.5. Retorno de una oferta, canal o servicio que no existiría sin la IA (prueba contrafactual; señal 6 del documento 12). Las mejoras de conversión o retención de la oferta existente no cuentan." }
       }
     },
     "estado_control": { "enum": ["hecho", "pendiente", "no_aplica", null] },
@@ -581,6 +616,42 @@
         "contrato": { "$ref": "#/$defs/texto_o_nulo" },
         "fecha_evaluacion": { "$ref": "#/$defs/fecha_o_nula" },
         "resultado_evaluacion": { "enum": ["favorable", "favorable_condiciones", "desfavorable", "pendiente", null] }
+      }
+    },
+    "verificacion_it": {
+      "type": ["object", "null"],
+      "required": ["estado"],
+      "additionalProperties": false,
+      "properties": {
+        "estado": { "enum": ["pendiente", "verificada", "no_verificada"], "description": "verificada = la respuesta afirmativa se confirma con evidencia en el gate; no_verificada = no se confirma." },
+        "gate": { "enum": ["G2", "G5", "R6", "G7", null] },
+        "fecha": { "$ref": "#/$defs/fecha_o_nula" },
+        "verificador": { "$ref": "#/$defs/id_persona_o_nula" },
+        "evidencia": { "$ref": "#/$defs/texto_o_nulo" },
+        "supervision_p17": { "type": ["boolean", "null"], "description": "Solo IT-P3: diseño de supervisión humana verificado (P17). Sin él, el cambio de roles no cuenta en la señal 5." }
+      }
+    },
+    "decision_consejo": {
+      "type": "object",
+      "required": ["id", "fecha", "asunto", "texto"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^DEC-\\d{4}-\\d{3}$" },
+        "fecha": { "$ref": "#/$defs/fecha" },
+        "organo": { "enum": ["pleno", "comision", null] },
+        "acta": { "$ref": "#/$defs/texto_o_nulo" },
+        "tipo": { "enum": ["aprobar", "autorizar_limites", "aceptar_riesgo", "tomar_conocimiento", null] },
+        "asunto": { "enum": ["tesis", "transformar_g2", "escalado_g7", "revision_apuesta", "decision_etapa", "riesgo_critico", "revision_c5", "conocimiento", "otra"] },
+        "texto": { "type": "string" },
+        "resultado": { "enum": ["aprobada", "aprobada_condiciones", "aplazada", "rechazada", null] },
+        "iniciativas": { "type": "array", "items": { "$ref": "#/$defs/id_iniciativa" } },
+        "esferas_transformar": { "type": "array", "items": { "type": "string", "pattern": "^0[1-7]$" }, "description": "Solo en la tesis: esferas con Transformar como ambición objetivo (condición IT-D1)." },
+        "limite_inversion_etapa": { "type": ["number", "null"], "minimum": 0 },
+        "etapa": { "$ref": "#/$defs/texto_o_nulo" },
+        "decision_etapa": { "enum": ["continuar", "pivotar", "parar", null], "description": "Decisión de etapa basada en hitos (señal 8, nivel 3)." },
+        "vigencia": { "$ref": "#/$defs/fecha_o_nula" },
+        "responsable": { "$ref": "#/$defs/id_persona_o_nula" },
+        "recomendaciones": { "type": "array", "items": { "type": "string", "pattern": "^REC-\\d{4}-\\d{3}$" } }
       }
     },
     "recomendacion": {

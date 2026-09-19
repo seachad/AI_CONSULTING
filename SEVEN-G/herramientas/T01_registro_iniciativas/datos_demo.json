@@ -1,6 +1,6 @@
 {
   "$schema": "./esquema_registro.schema.json",
-  "version_esquema": "0.4",
+  "version_esquema": "0.5",
   "aviso_legal": "Aviso legal y exención de responsabilidad. SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.",
   "meta": {
     "organizacion": "Compañía Ejemplo Industrial, S.A. (ficticia)",
@@ -20,6 +20,12 @@
       "Tecnología"
     ],
     "nota": "Datos ilustrativos y ficticios. Cualquier parecido con una compañía o persona real es casual.",
+    "indice": {
+      "ingresos_totales": 950000000,
+      "periodo_ingresos": "2025-09 a 2026-08",
+      "it_d3": true,
+      "it_d3_evidencia": "Plan estratégico 2026-2028, aprobado en diciembre de 2025, que presenta la IA como palanca de transformación del servicio industrial (ficticio)."
+    },
     "configuracion": {
       "plazos_fase": {
         "lite": {
@@ -307,7 +313,18 @@
       ],
       "sistemas": [
         "SIA-2025-001"
-      ]
+      ],
+      "indice": {
+        "unidad_completa": false,
+        "capacidad": {
+          "horas_liberadas": 50000,
+          "horas_materializadas": 46000,
+          "horas_reasignadas": 0,
+          "actividad_destino": null,
+          "roles_redisenados": 0,
+          "fecha": "2026-02-10"
+        }
+      }
     },
     {
       "id": "IA-2025-002",
@@ -417,7 +434,33 @@
       ],
       "sistemas": [
         "SIA-2025-002"
-      ]
+      ],
+      "indice": {
+        "itp2": {
+          "estado": "verificada",
+          "gate": "G5",
+          "fecha": "2026-01-28",
+          "verificador": "PER-13",
+          "evidencia": "Mapa del proceso de atención rediseñado de extremo a extremo (P22) y acta de G5."
+        },
+        "itp3": {
+          "estado": "verificada",
+          "gate": "G5",
+          "fecha": "2026-01-28",
+          "verificador": "PER-13",
+          "evidencia": "Nuevo rol de gestor de retención con clientes en riesgo; decisiones de derivación que pasan al asistente con revisión de muestras.",
+          "supervision_p17": true
+        },
+        "unidad_completa": false,
+        "capacidad": {
+          "horas_liberadas": 43000,
+          "horas_materializadas": 12000,
+          "horas_reasignadas": 18000,
+          "actividad_destino": "Gestión proactiva de clientes en riesgo de baja",
+          "roles_redisenados": 2,
+          "fecha": "2026-07-27"
+        }
+      }
     },
     {
       "id": "IA-2025-003",
@@ -826,7 +869,24 @@
       "etiquetas_libres": [],
       "sistemas": [
         "SIA-2025-005"
-      ]
+      ],
+      "indice": {
+        "itp2": {
+          "estado": "pendiente",
+          "gate": null,
+          "fecha": null,
+          "verificador": null,
+          "evidencia": "Se verificará en G5."
+        },
+        "itp3": {
+          "estado": "pendiente",
+          "gate": null,
+          "fecha": null,
+          "verificador": null,
+          "evidencia": null,
+          "supervision_p17": null
+        }
+      }
     },
     {
       "id": "IA-2026-001",
@@ -1721,7 +1781,18 @@
       ],
       "sistemas": [
         "SIA-2026-001"
-      ]
+      ],
+      "indice": {
+        "unidad_completa": false,
+        "capacidad": {
+          "horas_liberadas": 30600,
+          "horas_materializadas": 12000,
+          "horas_reasignadas": 0,
+          "actividad_destino": null,
+          "roles_redisenados": 0,
+          "fecha": "2026-08-31"
+        }
+      }
     }
   ],
   "sistemas": [
@@ -24680,7 +24751,8 @@
       "periodo": "Anual",
       "fecha": null,
       "fuente": null,
-      "concepto": "venta_nueva"
+      "concepto": "venta_nueva",
+      "oferta_habilitada_ia": true
     },
     {
       "id": "VAL-0047",
@@ -25591,6 +25663,74 @@
       "evidencia": null,
       "iniciativas": [
         "IA-2026-002"
+      ]
+    }
+  ],
+  "decisiones_consejo": [
+    {
+      "id": "DEC-2025-001",
+      "fecha": "2025-12-16",
+      "organo": "pleno",
+      "acta": "Acta del consejo de 16-12-2025, punto 4",
+      "tipo": "aprobar",
+      "asunto": "tesis",
+      "texto": "Se aprueba la tesis de IA 2026: Optimizar en Operaciones y Finanzas, Aumentar en Cliente y Transformar en Producto y servicio (servicios digitales para clientes industriales), con apetito de riesgo moderado y presupuesto marco de 9 M€.",
+      "resultado": "aprobada",
+      "iniciativas": [],
+      "esferas_transformar": [
+        "02"
+      ],
+      "limite_inversion_etapa": null,
+      "etapa": null,
+      "decision_etapa": null,
+      "vigencia": "2026-12-31",
+      "responsable": "PER-15",
+      "recomendaciones": []
+    },
+    {
+      "id": "DEC-2026-001",
+      "fecha": "2026-05-27",
+      "organo": "comision",
+      "acta": "Acta de la comisión de 27-05-2026, punto 2",
+      "tipo": "autorizar_limites",
+      "asunto": "transformar_g2",
+      "texto": "Se aplaza la aprobación de la apuesta de mantenimiento predictivo como servicio hasta disponer de la validación comercial con clientes piloto; se autoriza la iteración de G2 con un límite de 480.000 €.",
+      "resultado": "aplazada",
+      "iniciativas": [
+        "IA-2026-002"
+      ],
+      "esferas_transformar": [],
+      "limite_inversion_etapa": 480000,
+      "etapa": "Iteración de G2",
+      "decision_etapa": null,
+      "vigencia": null,
+      "responsable": "PER-02",
+      "recomendaciones": [
+        "REC-2026-002"
+      ]
+    },
+    {
+      "id": "DEC-2026-002",
+      "fecha": "2026-06-30",
+      "organo": "pleno",
+      "acta": "Acta del consejo de 30-06-2026, punto 5",
+      "tipo": "tomar_conocimiento",
+      "asunto": "conocimiento",
+      "texto": "Toma de conocimiento del informe trimestral de IA (C4), de la parada de IA-2025-004 y de la retirada de IA-2025-005; se formulan las recomendaciones REC-2026-001 y REC-2026-002.",
+      "resultado": null,
+      "iniciativas": [
+        "IA-2025-004",
+        "IA-2025-005"
+      ],
+      "esferas_transformar": [],
+      "limite_inversion_etapa": null,
+      "etapa": null,
+      "decision_etapa": null,
+      "vigencia": null,
+      "responsable": null,
+      "recomendaciones": [
+        "REC-2026-001",
+        "REC-2026-002"
       ]
     }
   ]

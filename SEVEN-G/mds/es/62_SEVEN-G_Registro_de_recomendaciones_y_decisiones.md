@@ -348,6 +348,20 @@ Los ficheros del motor publicados en ese repositorio son **copia de su proyecto 
 
 Prioridad: ola 1 de herramientas (03 §6), junto con la conexión del panel T17 al registro de iniciativas. Hasta que la adaptación esté disponible, el registro puede llevarse con la plantilla P69, preparada como hoja de cálculo con los campos de las secciones 4 y 10.
 
+### 12.3 Estado de la adaptación (versión 0.1)
+
+Desde el esquema 0.5 del registro de iniciativas, **T18 es un módulo de T01** (vista «Consejo (T18)»), con un único modelo de datos (03 §4):
+
+| Aspecto | Disponible | Pendiente |
+|---|---|---|
+| **Identificadores** | `REC-AAAA-NNN` y `DEC-AAAA-NNN`, correlativos por año y sin reinicio. | Identificador anterior de registros migrados. |
+| **Decisiones** | Órgano, referencia del acta, tipo, asunto, texto, resultado, iniciativas y recomendaciones vinculadas, límite de inversión y etapa, decisión de etapa, vigencia, responsable y esferas con Transformar como objetivo (sección 10.2). | Condiciones con responsable y plazo, y su seguimiento. |
+| **Recomendaciones** | Texto, destinatario, situación (abierta, en curso, cerrada, descartada), evidencia e iniciativas vinculadas. | Criterio de cumplimiento, fechas original y vigente, reprogramaciones, valoración independiente, historial y alertas de la sección 5. |
+| **Índice de transformación** | Las decisiones alimentan la señal 8 y la condición IT-D1 del documento 12 en la calculadora T14. | — |
+| **Panel del consejo** | El conector de T17 genera la página del registro a partir de las recomendaciones de T01. | Decisiones en el panel. |
+
+**Por qué importa.** Las decisiones del consejo dejan de vivir solo en las actas: quedan enlazadas a las iniciativas y a las recomendaciones, y el índice de transformación puede comprobar con datos si el consejo decide, financia y supervisa las apuestas de Transformar. Lo pendiente sigue llevándose con la plantilla P69.
+
 ---
 
 ## 13. Ejemplo ilustrativo

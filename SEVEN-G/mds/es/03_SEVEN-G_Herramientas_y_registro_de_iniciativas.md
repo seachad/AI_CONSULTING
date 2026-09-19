@@ -198,19 +198,20 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 
 | Entidad | Qué representa | Se relaciona con |
 |---|---|---|
-| **Iniciativa** | La unidad que recorre el ciclo de vida. Su alcance indica si es de una unidad de negocio, transversal (con despliegue y adopción por unidad) o una plataforma habilitadora (con los casos que la usan); documento 40 §7.2. | Todas las demás |
+| **Iniciativa** | La unidad que recorre el ciclo de vida. Su alcance indica si es de una unidad de negocio, transversal (con despliegue y adopción por unidad) o una plataforma habilitadora (con los casos que la usan); documento 40 §7.2. Desde el esquema 0.5 de T01, también la evidencia para el índice de transformación: verificación de IT-P2 e IT-P3 en un *gate*, supervisión humana verificada, unidad organizativa completa rediseñada y capacidad liberada, materializada y reasignada (12 §4.4). | Todas las demás |
 | **Sistema de IA** | Cada sistema en el inventario, propio o de terceros, incluido el uso corporativo. | Iniciativas, proveedores, riesgos, incidentes |
 | **Evento** | Cualquier cambio con fecha, autor y motivo. | Iniciativa |
 | **Decisión de gate** | Solicitud, verificación, decisión, resultado e iteración. | Iniciativa, criterios, condiciones |
 | **Criterio evaluado** | Estado de cada criterio en una decisión de *gate*. | Decisión de gate, evidencia |
 | **Condición** | Condición impuesta con plazo, responsable y estado. | Decisión de gate |
 | **Evidencia** | Enlace, tipo, versión, autor, fecha y verificación. | Criterios, iniciativa |
-| **Valor** | Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación, periodo y, en las iniciativas transversales, unidad de negocio. | Iniciativa |
+| **Valor** | Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación, periodo y, en las iniciativas transversales, unidad de negocio; desde el esquema 0.5, si el retorno procede de una oferta habilitada por IA (señal 6 del 12). | Iniciativa |
 | **Riesgo** | Riesgo con probabilidad, impacto, nivel inherente y residual, responsable y controles; desde el esquema 0.4 de T01, también eje del impacto, eficacia de los controles, residual objetivo o verificado, contingencia, estado, tendencia, próxima revisión y aceptación (33 §8.1). | Iniciativa, sistema |
 | **No conformidad** | Tipo, detección, contención, causa raíz, acción, cierre. | Iniciativa, sistema |
 | **Incidente** | Fecha, severidad, detección, contención, notificaciones. | Sistema, iniciativa |
 | **Proveedor** | Tercero, servicios, criticidad, contrato, evaluación. | Sistemas, iniciativas |
 | **Recomendación** | Recomendación del consejo con identificador persistente, destinatario, estado y evidencia. | Iniciativas, sistemas |
+| **Decisión del consejo** | Decisión del consejo o de su comisión (DEC-AAAA-NNN) con órgano, tipo, asunto, resultado, límite de inversión por etapa, decisión de etapa, esferas con Transformar como objetivo y vínculos (62 §10); esquema 0.5. Es la fuente de la señal 8 y de la condición IT-D1 del índice. | Iniciativas, recomendaciones |
 
 ---
 
@@ -246,7 +247,7 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 | **T11** | Lienzo y calculadora de hipótesis de valor | Línea base, líneas de valor con fórmula (F1), neto anual, VAN, ROI, plazo de recuperación y F3 con el horizonte y la tasa de C2; escenarios; criterio económico de C2 como información; importa la iniciativa desde T01. Se documenta con P08, P09 y P10. | Fases 2, 3 y 7 | HTML + JSON; exportación CSV | 40 | 2 | Disponible v0.1 |
 | **T12** | Seguimiento de realización de valor | Valor validado, declarado y estimado por periodo y por caso. | Fases 6–7, C4 | Módulo de T01 | 40, 43 | 2 | Se aplica con P28 y P62 (plan de realización de beneficios) |
 | **T13** | Calculadora de costes por caso | Coste completo e incremental, coste total de propiedad, reparto de costes compartidos, previsión de consumo con alertas, coste por unidad, coste de parar y conciliación. Se documenta con P10 y P63. | Fases 3 y 6 | Módulo de T11 (vista «Costes por caso»); exportación CSV | 42 | 3 | Disponible v0.1 |
-| **T14** | Calculadora del índice de transformación | Condiciones de base, ocho señales, perfil de la compañía, alertas, cobertura y evolución, con versión de umbrales; parte del JSON del registro T01. | C1, C4, C5 | HTML + JSON | 12 | 2 | Disponible v0.1 |
+| **T14** | Calculadora del índice de transformación | Condiciones de base, ocho señales, perfil de la compañía, alertas, cobertura y evolución, con versión de umbrales; parte del JSON del registro T01, del que calcula las ocho señales cuando trae la evidencia del esquema 0.5, y su resultado alimenta la tarjeta del índice del panel del consejo (T17). | C1, C4, C5 | HTML + JSON | 12 | 2 | Disponible v0.1 |
 
 ### 5.4 Estrategia y consejo
 
@@ -255,14 +256,14 @@ El modelo es la base de todas las herramientas. Su especificación completa (cam
 | **T15** | Diagnóstico de madurez | Cuestionario de 84 preguntas con evidencia y verificación; nivel por dimensión y global con el límite de D1 y D6; comparación entre evaluaciones e informe para el consejo. Plantilla P34. | C1, C5 | HTML + JSON; exportación CSV | 11 | 2 | Disponible v0.1 |
 | **T16** | Mapa de esferas de la cartera | Mapa de calor esferas × niveles de ambición con inversión y valor. | C2, C3 | Vista del panel del consejo | 10 | 2 | Se aplica con el documento 10 |
 | **T17** | Panel de IA para el consejo | Supervisión: valor, coste, riesgo, cumplimiento, incidentes, agilidad, adopción. | C4 | HTML completo y móvil + JSON | 60 | 1 | Disponible. Se alimenta de T01 mediante el conector `herramientas/T17_panel_consejo`: registro (JSON) más `config_panel.json` (umbrales de los indicadores y ciclo de vida) → JSON del panel → panel completo y móvil, con embudo y tiempos por etapa como en un CRM |
-| **T18** | Registro de recomendaciones del consejo | Recomendaciones con identificador persistente, estado, evidencia y valoración. | C4 | HTML + JSON | 62 | 1 | Disponible. El conector de T17 genera el registro a partir de las recomendaciones de T01 |
+| **T18** | Registro de recomendaciones del consejo | Recomendaciones con identificador persistente, estado, evidencia y valoración. | C4 | Módulo de T01 y HTML | 62 | 1 | Disponible v0.1: vista «Consejo (T18)» del registro T01, con las decisiones (DEC) y las recomendaciones (REC); el conector de T17 genera la página del registro a partir de las recomendaciones de T01 |
 | **T19** | Plantilla de tesis de IA y apetito de riesgo | Documento de decisión del consejo, con umbrales y plazos de referencia. | C2 | Plantilla de documento | 13 | 3 | Se aplica con P35 (tesis de IA y apetito de riesgo) |
 
 ### 5.5 Personas y operación
 
 | Código | Herramienta | Para qué | Dónde se usa | Formato | Depende de | Prioridad | Estado |
 |---|---|---|---|---|---|---|---|
-| **T20** | Plan de adopción y capacidad | Adopción, formación y reasignación de la capacidad liberada. | Fases 4–7 | Plantilla y módulo de T01 | 23, 50 | 3 | Se aplica con P20 y P45 (plan y registro de alfabetización y formación) |
+| **T20** | Plan de adopción y capacidad | Adopción, formación y reasignación de la capacidad liberada. | Fases 4–7 | Plantilla y módulo de T01 | 23, 50 | 3 | Se aplica con P20 y P45 (plan y registro de alfabetización y formación); la capacidad liberada, materializada y reasignada de cada iniciativa se registra en T01 (esquema 0.5) |
 | **T21** | Monitor de uso corporativo de IA | Licencias asignadas y activas, uso no autorizado, controles de fuga de datos. | C4 | Vista del panel del consejo | 31 | 3 | Se aplica con P43 (catálogo de herramientas autorizadas y solicitudes) |
 | **T22** | Gestor de retiradas | Plan de retirada, sustituto, datos y modelos, comunicación. | Fase 7 | Módulo de T01 | 14 | 3 | Se aplica con P30 |
 

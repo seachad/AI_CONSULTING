@@ -246,7 +246,7 @@ es:{
  conf_importar:'Se sustituirán los datos actuales de T14. ¿Continuar?', conf_restaurar:'Se sustituirán los datos actuales por los de ejemplo. ¿Continuar?', conf_vaciar:'Se borrarán todos los cálculos (se conservan los umbrales). ¿Continuar?',
  ok_import:'Datos importados.', ok_export:'Fichero exportado.', err_json:'El fichero no es un JSON válido de T14.', err_t01:'El fichero no es un registro completo de T01.', ok_t01:'Cálculo creado desde el registro T01 «{o}» a fecha {f}. Complete los datos que el registro no contiene.',
  t01_pide_fecha:'Fecha de corte (AAAA-MM-DD). Por defecto, la fecha de referencia del registro:',
- t01_nota:'Calculado desde el registro T01 a fecha {f}. El registro no contiene aún la verificación de IT-P2 e IT-P3, las horas materializadas y reasignadas, los ingresos habilitados por IA ni las decisiones del consejo: complételos a mano. Importes realizados: el último de cada tipo por iniciativa en la ventana; inversión: la realizada acumulada de cada iniciativa (aproximación).',
+ t01_nota:'Calculado desde el registro T01 a fecha {f}. Lo que el registro no contiene queda «sin dato» y se completa a mano; en registros anteriores al esquema 0.5 son la verificación de IT-P2 e IT-P3, las horas materializadas y reasignadas, los ingresos habilitados por IA, las decisiones del consejo e IT-D3. Importes realizados: el último de cada tipo por iniciativa en la ventana; inversión: la realizada acumulada de cada iniciativa (aproximación).',
  formula:'Fórmula', guardado:'Guardado en este navegador.', no_guardado:'No se ha podido guardar en este navegador: exporte el JSON para no perder los cambios.',
  cr:'CR', tr:'TR', meses:'meses', de:'de'
 },
@@ -308,7 +308,7 @@ en:{
  conf_importar:'The current T14 data will be replaced. Continue?', conf_restaurar:'The current data will be replaced by the example data. Continue?', conf_vaciar:'All calculations will be deleted (thresholds are kept). Continue?',
  ok_import:'Data imported.', ok_export:'File exported.', err_json:'The file is not a valid T14 JSON.', err_t01:'The file is not a complete T01 register.', ok_t01:'Calculation created from the T01 register "{o}" as at {f}. Complete the data the register does not contain.',
  t01_pide_fecha:'Cut-off date (YYYY-MM-DD). By default, the reference date of the register:',
- t01_nota:'Calculated from the T01 register as at {f}. The register does not yet contain the verification of IT-P2 and IT-P3, the materialised and reassigned hours, AI-enabled revenue or board decisions: complete them manually. Realised amounts: the latest of each type per initiative in the window; investment: the cumulative realised investment of each initiative (approximation).',
+ t01_nota:'Calculated from the T01 register as at {f}. Whatever the register does not contain is left as "no data" and completed manually; in registers prior to schema 0.5 this is the verification of IT-P2 and IT-P3, materialised and reassigned hours, AI-enabled revenue, board decisions and IT-D3. Realised amounts: the latest of each type per initiative in the window; investment: the cumulative realised investment of each initiative (approximation).',
  formula:'Formula', guardado:'Saved in this browser.', no_guardado:'Could not save in this browser: export the JSON so as not to lose the changes.',
  cr:'CR', tr:'TR', meses:'months', de:'of'
 }};
@@ -529,20 +529,39 @@ function desdeT01(reg, fecha){
   const conReal = per.filter(I => (I.clasificacion||{}).ambicion_real && (I.clasificacion||{}).ambicion_confirmada);
   const inf = I => rango[I.clasificacion.ambicion_real] < rango[I.clasificacion.ambicion_confirmada];
   const trReal = conReal.filter(I => I.clasificacion.ambicion_confirmada==='transformar');
+  // Esquema 0.5 de T01 (opcional): evidencia del índice por iniciativa, oferta habilitada por IA y decisiones del consejo.
+  // Si el registro no trae esos campos, las señales 3 a 6 y 8 quedan «sin dato» para completarlas a mano (nunca se estiman).
+  const conIndice = ini.some(I => I.indice && typeof I.indice==='object');
+  const capac = per.map(I => (I.indice||{}).capacidad).filter(c => c && c.horas_liberadas!=null);
+  const s3 = capac.length ? {horas_liberadas:capac.reduce((a,c)=>a+(c.horas_liberadas||0),0), horas_materializadas:capac.reduce((a,c)=>a+(c.horas_materializadas||0),0), horas_reasignadas:capac.reduce((a,c)=>a+(c.horas_reasignadas||0),0)} : {horas_liberadas:null, horas_materializadas:null, horas_reasignadas:null};
+  const ver = (I,k) => ((I.indice||{})[k]) || null, verif = (I,k) => { const v=ver(I,k); return !!v && v.estado==='verificada'; };
+  const resp = (I,k) => (((I.clasificacion_ambicion||{}).respuestas)||{})[k]===true;
+  // IT-P2 sin verificar: respuesta afirmativa sin verificación concluida en un gate (las respuestas negativas no se verifican)
+  const s4 = conIndice ? {itp2_verificada:prod.filter(I=>verif(I,'itp2')).length, sin_verificacion:prod.filter(I=>resp(I,'p2') && !(ver(I,'itp2') && ['verificada','no_verificada'].includes(ver(I,'itp2').estado))).length} : {itp2_verificada:null, sin_verificacion:null};
+  const s5 = conIndice ? {itp3_supervision:prod.filter(I=>verif(I,'itp3') && ver(I,'itp3').supervision_p17===true).length, unidades_completas:prod.filter(I=>verif(I,'itp3') && (I.indice||{}).unidad_completa===true).length, sin_supervision:prod.filter(I=>verif(I,'itp3') && ver(I,'itp3').supervision_p17===false).length} : {itp3_supervision:null, unidades_completas:null, sin_supervision:null};
+  const mi = (reg.meta||{}).indice || {};
+  let hab = null;
+  if(mi.ingresos_totales!=null){ const ult={}; for(const v of val){ if(v.momento!=='realizado' || v.tipo!=='retorno' || v.estado!=='validado' || v.oferta_habilitada_ia!==true || !en(v.fecha,12) || v.importe==null) continue; if(!per.some(I=>I.id===v.iniciativa)) continue; const k=v.iniciativa+'|'+(v.area||''); if(!ult[k] || String(v.fecha||'')>String(ult[k].fecha||'')) ult[k]=v; } hab = Object.values(ult).reduce((a,v)=>a+v.importe,0); }
+  const DC = Array.isArray(reg.decisiones_consejo) ? reg.decisiones_consejo.filter(d => d.fecha && d.fecha<=fecha) : null;
+  let s8 = {tesis_aprobada:null, apuestas_transformar:null, con_limite_etapa:null, revisiones:null, decisiones_etapa:null}, d1 = null;
+  if(DC && DC.length){ const apr = d => d.resultado==='aprobada' || d.resultado==='aprobada_condiciones', en12 = d => en(d.fecha,12);
+    const tesis = DC.filter(d=>d.asunto==='tesis' && apr(d)).sort((a,b)=>a.fecha<b.fecha?-1:1).pop() || null, ap = DC.filter(d=>d.asunto==='transformar_g2' && apr(d) && en12(d));
+    s8 = {tesis_aprobada:!!tesis, apuestas_transformar:ap.length, con_limite_etapa:ap.some(d=>d.limite_inversion_etapa!=null), revisiones:DC.filter(d=>d.asunto==='revision_apuesta' && en12(d)).length, decisiones_etapa:DC.filter(d=>d.decision_etapa && en12(d)).length};
+    d1 = !!tesis && (tesis.esferas_transformar||[]).length>0; }
   const E = {
     base:{activas:activas.length, gobernadas:gob.length, valor_validado:vVal, valor_total:vTot, en_produccion:prod.length, produccion_con_valor:prodValor.length},
     s1:{coste_total:cTot, coste_aumentar:coste.aumentar, coste_transformar:coste.transformar, coste_sin_clasificar:coste.sin},
     s2:{eficiencias_validadas:ef, retorno_validado:re, iniciativas_con_retorno:nRe},
-    s3:{horas_liberadas:null, horas_materializadas:null, horas_reasignadas:null},
-    s4:{itp2_verificada:null, sin_verificacion:null},
-    s5:{itp3_supervision:null, unidades_completas:null, sin_supervision:null},
-    s6:{ingresos_habilitados:null, ingresos_totales:null},
+    s3, s4, s5,
+    s6:{ingresos_habilitados:hab, ingresos_totales:mi.ingresos_totales ?? null},
     s7:{hay_gates:hayGates, at_superaron_g2:grupo.at.sup, at_con_resultado:grupo.at.res, at_en_produccion:grupo.at.pr, opt_con_resultado:grupo.opt.res, opt_en_produccion:grupo.opt.pr, mediana_at:med(grupo.at.dias), mediana_opt:med(grupo.opt.dias), plazos_ref:med(grupo.at.pl)},
-    s8:{tesis_aprobada:null, apuestas_transformar:null, con_limite_etapa:null, revisiones:null, decisiones_etapa:null},
-    declaracion:{d1:null, d3:null, evidencia:''},
+    s8,
+    declaracion:{d1, d3:mi.it_d3 ?? null, evidencia:mi.it_d3_evidencia || ''},
     sobredeclaracion:{real_registrada:conReal.length, real_inferior:conReal.filter(inf).length, transf_real_registrada:trReal.length, transf_real_inferior:trReal.filter(inf).length}
   };
   const deT01 = {base:['activas','gobernadas','valor_validado','valor_total','en_produccion','produccion_con_valor'], s1:['coste_total','coste_aumentar','coste_transformar','coste_sin_clasificar'], s2:['eficiencias_validadas','retorno_validado','iniciativas_con_retorno'], s7:['hay_gates','at_superaron_g2','at_con_resultado','at_en_produccion','opt_con_resultado','opt_en_produccion','mediana_at','mediana_opt','plazos_ref'], sobredeclaracion:['real_registrada','real_inferior','transf_real_registrada','transf_real_inferior']};
+  const marca = (g, o) => { const k = Object.keys(o).filter(x => o[x]!=null); if(k.length) deT01[g] = k; };
+  marca('s3', s3); marca('s4', s4); marca('s5', s5); marca('s6', E.s6); marca('s8', s8); marca('declaracion', {d1, d3:E.declaracion.d3});
   return {entradas:E, de_t01:deT01};
 }
 
@@ -557,7 +576,8 @@ function hoy(){ return new Date().toISOString().slice(0,10); }
 function resultadoExport(c){ const r=calcular(c.entradas, umbral(c.version_umbrales).parametros);
   return {perfil_asignado:r.asignado, perfil_evidenciado:r.evidenciado, perfil_subyacente:r.subyacente, provisional:r.provisional, cobertura:r.cobertura, suma:r.suma,
     condiciones_base:{B1:r.B1, B2:r.B2, B3:r.B3}, declaracion:{D:r.D, IT_D1:r.d1, IT_D2:r.d2, IT_D3:r.d3},
-    senales:r.s.map(x=>({senal:x.n, valor:x.valor==null?null:Math.round(x.valor*100)/100, puntuacion:x.punt, sin_dato:x.sd})), alertas:r.alertas.map(a=>a[0])}; }
+    senales:r.s.map(x=>({senal:x.n, valor:x.valor==null?null:Math.round(x.valor*100)/100, puntuacion:x.punt, sin_dato:x.sd})), alertas:r.alertas.map(a=>a[0]),
+    perfil_objetivo:r.evidenciado==='curso'? null : r.objetivo, mover:r.mover}; }
 
 /* ---------------- vistas ---------------- */
 function vistaCalculo(){

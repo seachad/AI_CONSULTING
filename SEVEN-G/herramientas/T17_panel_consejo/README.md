@@ -8,7 +8,7 @@ Todo lo que genera el conector (panel completo, panel móvil y registro de recom
 
 ---
 
-Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1`, `0.2`, `0.3` y `0.4`; la 0.4 solo añade campos de los riesgos, que el conector no lee) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
+Convierte el **JSON completo** que exporta el registro de iniciativas **T01** de SEVEN-G (esquema `esquema_registro.schema.json`, versiones `0.1` a `0.5`; la 0.4 añade campos de los riesgos y la 0.5 la evidencia del índice y las decisiones del consejo, que el conector no lee) en el JSON del panel (`motor/ESQUEMA.md`) y genera con el motor del panel, incluido en `motor/`:
 
 - el **panel completo** y el **panel móvil** (T17), sincronizados (misma huella de datos);
 - el **JSON del panel**, para inspeccionarlo o guardarlo como foto con `motor/snapshot.py`;
@@ -60,7 +60,7 @@ flowchart LR
 Desde esta carpeta:
 
 ```bash
-uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta [--sigla CA] [--organizacion "Nombre"] [--prefijo t01_] [--panel ruta]
+uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta [--sigla CA] [--organizacion "Nombre"] [--prefijo t01_] [--panel ruta] [--indice t14.json]
 ```
 
 | Opción | Qué hace |
@@ -70,7 +70,8 @@ uv run python t01_a_panel.py --t01 export_t01.json --salida carpeta [--sigla CA]
 | `--sigla` | Siglas del consejo asesor que aparecen en los textos. Por defecto, «consejo asesor». |
 | `--organizacion` | Nombre de la organización. Por defecto, `meta.organizacion` de T01. |
 | `--prefijo` | Prefijo de los ficheros. Por defecto, `t01_`. |
-| `--panel` | Opcional: usar otro motor, indicando un checkout del repositorio *AI en el Consejo*. Por defecto, `./motor`. |
+| --panel | Opcional: usar otro motor, indicando un checkout del repositorio *AI en el Consejo*. Por defecto, ./motor. |
+| --indice | Opcional: JSON exportado por la calculadora del índice de transformación (T14). Añade al panel la tarjeta «Índice de transformación de la compañía» en «Cartera y valor» (perfil, condiciones de base, señales, tendencia frente al cálculo anterior, alertas y qué movería el perfil). El conector no recalcula el índice: toma el cálculo más reciente con resultado. En el ejemplo, ./ejemplo/t14_indice.json, que se genera desde los mismos datos de T01 con `pwsh -File ../T14_indice_transformacion/build_indice.ps1 -DesdeT01 ../T01_registro_iniciativas/datos_demo.json -Exportar ejemplo/t14_indice.json`. |
 
 Ficheros que genera: `<prefijo>Dashboard_Casos_Uso_IA_v8.html`, `<prefijo>Dashboard_Movil_IA_v8.html`, `<prefijo>dashboard_data.json` y, si hay recomendaciones, `<prefijo>Registro_Recomendaciones.html`.
 

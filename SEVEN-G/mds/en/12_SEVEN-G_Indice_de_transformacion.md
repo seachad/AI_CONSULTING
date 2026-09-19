@@ -503,14 +503,14 @@ The index is not presented as a grade, nor is it compared with other companies (
 
 | Code | Name | Use in this document |
 |---|---|---|
-| **T01** | Initiative register | Fields: answers IT-P1–IT-P5 with evidence and verification status; proposed, confirmed and actual ambition with date and reason; primary sphere; *gate* dates; statuses; stop reasons; origin of the initiative. |
+| **T01** | Initiative register | Fields: answers IT-P1–IT-P5 with evidence and verification status; proposed, confirmed and actual ambition with date and reason; primary sphere; *gate* dates; statuses; stop reasons; origin of the initiative. From schema 0.5: verification of IT-P2 and IT-P3 at a *gate* with verified human oversight, entire unit redesigned, released, materialised and reassigned capacity, AI-enabled offering in the amounts, and company total revenue and IT-D3. |
 | **T03** | Gate manager | Verification of the classification at G2 and G7; board approvals. |
 | **T05** | Ambition classifier | Applies the five questions and rules 1 to 10; records the result and inconsistencies. |
 | **T12** | Value realisation tracking | Amounts by type and status; released and materialised capacity; AI-enabled revenue. |
 | **T13** | Cost calculator per use case | Investment and recurring cost of each initiative (signal 1). |
-| **T14** | Transformation index calculator | Calculates baseline conditions, signals, profile, alerts, coverage, what would move the profile and evolution; retains the threshold version. It starts from the T01 register JSON and is completed manually with what the register does not yet contain (signals 3 to 6 and 8). |
-| **T17** | Board AI dashboard | Shows profile, signals and trend. |
-| **T18** | Board recommendations register | Source for signal 8. |
+| **T14** | Transformation index calculator | Calculates baseline conditions, signals, profile, alerts, coverage, what would move the profile and evolution; retains the threshold version. It starts from the T01 register JSON: with schema 0.5 it calculates from it the eight signals and conditions IT-D1 and IT-D3; whatever the register does not contain is completed manually. It exports its result for the board dashboard. |
+| **T17** | Board AI dashboard | "Company transformation index" card in "Portfolio and value": profile, baseline conditions, signals, trend, alerts and what would move the profile, from the result exported by T14. |
+| **T18** | Board recommendations register | "Board (T18)" view of the T01 register: board decisions (thesis, Transform bets with a cap per stage, reviews and stage decisions) are the source of signal 8 and IT-D1. |
 | **T19** | AI thesis and risk appetite template | C2 decision document: approved thesis (signal 8) and target ambition by sphere (condition IT-D1). |
 | **T20** | Adoption and capacity plan | Reassigned hours and redesigned roles (signals 3 and 5). |
 | **P07** | Sphere and ambition classification | Evidence of the classification in phases 1, 2 and 7. |

@@ -9,7 +9,7 @@ referencias a regulación pueden quedar desactualizadas: cada organización es l
 que le aplica y certificar su propio cumplimiento. El autor y SEACHAD no asumen responsabilidad por su uso. Los datos de
 demostración son ficticios.
 
-Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, versiones 0.1, 0.2, 0.3 y 0.4) al JSON
+Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, versiones 0.1 a 0.5) al JSON
 del panel (motor/ESQUEMA.md) y genera con el motor el panel completo y el movil; si T01 trae recomendaciones, genera tambien el
 registro de recomendaciones. Solo biblioteca estandar. La tabla de mapeo esta en README.md.
 
@@ -41,6 +41,9 @@ MOTOR_LOCAL = os.path.join(AQUI, "motor")
 CONFIG_PANEL = os.path.join(AQUI, "config_panel.json")
 T01_POR_DEFECTO = os.path.join(AQUI, "..", "T01_registro_iniciativas", "datos_demo.json")
 SALIDA_POR_DEFECTO = os.path.join(AQUI, "ejemplo", "salida")
+# indice de transformacion del ejemplo: lo exporta la calculadora T14 desde los mismos datos de T01
+# (pwsh -File ../T14_indice_transformacion/build_indice.ps1 -DesdeT01 ../T01_registro_iniciativas/datos_demo.json -Exportar ejemplo/t14_indice.json)
+INDICE_POR_DEFECTO = os.path.join(AQUI, "ejemplo", "t14_indice.json")
 RUTA_CONECTOR = "SEVEN-G/herramientas/T17_panel_consejo/t01_a_panel.py"
 
 BD = ECO = PUB = None   # se cargan con cargar_motor()
@@ -76,7 +79,7 @@ def cargar_motor(panel=None):
 
 
 VERSION_CONECTOR = "2.1"
-ESQUEMAS_T01 = ("0.1", "0.2", "0.3", "0.4")
+ESQUEMAS_T01 = ("0.1", "0.2", "0.3", "0.4", "0.5")
 FUENTE_T01 = "Registro de iniciativas T01"
 
 # ---------------------------------------------------------------- listas cerradas de T01 y su etiqueta en el panel
@@ -592,6 +595,33 @@ def convertir(t01, sigla=None, organizacion=None, prefijo="t01_", enlaces_pie=""
     }
 
 
+# ---------------------------------------------------------------- indice de transformacion (T14, documento 12)
+PERFILES_T14 = ("curso", "escala", "tactica", "exploracion", "declarada")
+
+
+def bloque_indice(t14):
+    """JSON exportado por la calculadora T14 -> bloque opcional «indice» del panel (motor/ESQUEMA.md). Toma el calculo mas
+    reciente con resultado y, si lo hay, el anterior para la tendencia. El conector no recalcula el indice: lo lee de T14."""
+    assert isinstance(t14, dict) and isinstance(t14.get("calculos"), list), "el fichero del índice no es un JSON exportado por T14"
+    calcs = sorted((c for c in t14["calculos"] if isinstance(c.get("resultado"), dict)), key=lambda c: (c.get("fecha_corte") or "", c.get("id") or ""))
+    if not calcs:
+        print("aviso: el JSON de T14 no trae cálculos con resultado (expórtelo desde la calculadora o con build_indice.ps1 -Exportar)", file=sys.stderr)
+        return None
+    def uno(c):
+        r = c["resultado"]
+        assert r.get("perfil_asignado") in PERFILES_T14, f"T14: perfil desconocido {r.get('perfil_asignado')!r}"
+        return {"id": c.get("id"), "fecha_corte": c.get("fecha_corte"), "tipo": c.get("tipo"), "version_umbrales": c.get("version_umbrales"),
+                "perfil_asignado": r["perfil_asignado"], "perfil_evidenciado": r.get("perfil_evidenciado"), "perfil_subyacente": r.get("perfil_subyacente"),
+                "provisional": bool(r.get("provisional")), "cobertura": r.get("cobertura"), "suma": r.get("suma"), "condiciones_base": r.get("condiciones_base"),
+                "declaracion": r.get("declaracion"), "senales": r.get("senales") or [], "alertas": r.get("alertas") or [],
+                "perfil_objetivo": r.get("perfil_objetivo"), "mover": r.get("mover") or []}
+    b = uno(calcs[-1])
+    b["anterior"] = uno(calcs[-2]) if len(calcs) > 1 else None
+    if b["anterior"]:
+        b["anterior"].pop("anterior", None)
+    return b
+
+
 # ---------------------------------------------------------------- registro de recomendaciones (T18)
 def datos_registro(t01, panel_data, slug):
     """Recomendaciones de T01 -> datos de la plantilla del registro. Sin recomendaciones devuelve None."""
@@ -621,16 +651,20 @@ def datos_registro(t01, panel_data, slug):
 
 
 # ---------------------------------------------------------------- generacion
-def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_", demo=None, enlace_portada=None, panel=None, enlace_registro=None):
+def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_", demo=None, enlace_portada=None, panel=None, enlace_registro=None, t14=None):
     """Convierte, genera panel completo y movil, JSON y, si hay recomendaciones, el registro. Devuelve un resumen.
     enlace_portada y enlace_registro: URL relativas (desde la carpeta de salida) de la pagina del conector y del registro de
-    iniciativas T01, para enlazarlas desde los pies."""
+    iniciativas T01, para enlazarlas desde los pies. t14: JSON exportado por la calculadora del indice (opcional); anade el
+    bloque «indice» al panel (tarjeta «Índice de transformación» en «Cartera y valor")."""
     cargar_motor(panel)
     reg_nombre = f"{prefijo}Registro_Recomendaciones.html" if t01.get("recomendaciones") else None
     enlaces = " · ".join(x for x in ((f'<a href="{enlace_registro}">registro de iniciativas T01</a>' if enlace_registro else ""),
                                      (f'<a href="{reg_nombre}">registro de recomendaciones</a>' if reg_nombre else ""),
                                      (f'<a href="{enlace_portada}">página del conector T17</a>' if enlace_portada else "")) if x)
     data = convertir(t01, sigla, organizacion, prefijo, enlaces, demo)
+    indice = bloque_indice(t14) if t14 else None
+    if indice:
+        data["indice"] = indice   # clave opcional (D53): sin ella el motor no muestra la tarjeta del índice
     os.makedirs(salida, exist_ok=True)
     completo, movil, huella = BD.generar(data, salida, verbose=False)
     ficticio = data["meta"]["demo"]
@@ -663,6 +697,8 @@ def main(argv=None):
     ap.add_argument("--sigla", default=None, help="siglas del consejo asesor (por defecto, «consejo asesor»)")
     ap.add_argument("--organizacion", default=None, help="nombre de la organización (por defecto, meta.organizacion de T01)")
     ap.add_argument("--prefijo", default="t01_", help="prefijo de los ficheros generados (por defecto t01_)")
+    ap.add_argument("--indice", default=None, help="opcional: JSON exportado por la calculadora del índice de transformación (T14) para añadir su tarjeta al panel "
+                    "(por defecto, en el ejemplo, ./ejemplo/t14_indice.json si existe)")
     a = ap.parse_args(argv)
     panel = cargar_motor(a.panel)
     if not os.path.exists(a.t01):
@@ -670,8 +706,12 @@ def main(argv=None):
     t01 = json.load(open(a.t01, encoding="utf-8"))
     # la demo de ejemplo enlaza a la pagina del conector (index.html, dos niveles por encima de ejemplo/salida)
     es_demo = os.path.abspath(a.salida) == os.path.abspath(SALIDA_POR_DEFECTO)
+    ruta_indice = a.indice or (INDICE_POR_DEFECTO if es_demo and os.path.exists(INDICE_POR_DEFECTO) else None)
+    if ruta_indice and not os.path.exists(ruta_indice):
+        sys.exit(f"error: no se encuentra el JSON del índice (T14): {os.path.abspath(ruta_indice)}")
+    t14 = json.load(open(ruta_indice, encoding="utf-8")) if ruta_indice else None
     r = generar_desde_t01(t01, a.salida, a.sigla, a.organizacion, a.prefijo, enlace_portada="../../index.html" if es_demo else None, panel=a.panel,
-                          enlace_registro="../../../T01_registro_iniciativas/registro.html" if es_demo else None)
+                          enlace_registro="../../../T01_registro_iniciativas/registro.html" if es_demo else None, t14=t14)
     print(f"motor del panel: {panel}\npanel completo:  {r['completo']}\npanel móvil:     {r['movil']}\ndatos:           {r['json']}\n"
           f"registro:        {r['registro'] or 'no se genera (T01 no trae recomendaciones)'}\n"
           f"{r['n']} casos · neto anual {_euros(r['neto'])} · neto potencial {_euros(r['neto_pot'])} · {r['nrecs']} recomendaciones · huella {r['huella']}")

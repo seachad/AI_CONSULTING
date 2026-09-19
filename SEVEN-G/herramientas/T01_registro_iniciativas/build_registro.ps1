@@ -58,6 +58,15 @@ foreach ($d in $reg.decisiones_gate) {
   if (-not $ids[$d.iniciativa]) { $errores.Add("decisión $($d.id): iniciativa $($d.iniciativa) inexistente") }
   foreach ($c in $d.criterios) { if (-not $codigos[$c.codigo]) { $errores.Add("decisión $($d.id): criterio $($c.codigo) no está en el catálogo") } }
 }
+# esquema 0.5: decisiones del consejo (documento 62) y evidencia del índice de transformación
+$recs = @{}; foreach ($r in @($reg.recomendaciones)) { if ($r) { $recs[$r.id] = $true } }
+$pers = @{}; foreach ($p in $reg.personas) { $pers[$p.id] = $true }
+foreach ($d in @($reg.decisiones_consejo)) {
+  if (-not $d) { continue }
+  foreach ($i in @($d.iniciativas)) { if ($i -and -not $ids[$i]) { $errores.Add("decisión del consejo $($d.id): iniciativa $i inexistente") } }
+  foreach ($r in @($d.recomendaciones)) { if ($r -and -not $recs[$r]) { $errores.Add("decisión del consejo $($d.id): recomendación $r inexistente") } }
+}
+foreach ($i in $reg.iniciativas) { foreach ($k in 'itp2', 'itp3') { $v = $i.indice.$k; if ($v -and $v.verificador -and -not $pers[$v.verificador]) { $errores.Add("$($i.id): indice.$k.verificador $($v.verificador) inexistente") } } }
 if ($errores.Count) { throw "Registro incoherente:`n  " + (($errores | Select-Object -First 20) -join "`n  ") }
 
 # ---- construcción

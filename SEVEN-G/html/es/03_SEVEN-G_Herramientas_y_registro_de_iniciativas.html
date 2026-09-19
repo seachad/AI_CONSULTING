@@ -995,7 +995,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Iniciativa</strong></td>
-<td>La unidad que recorre el ciclo de vida. Su alcance indica si es de una unidad de negocio, transversal (con despliegue y adopción por unidad) o una plataforma habilitadora (con los casos que la usan); <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §7.2.</td>
+<td>La unidad que recorre el ciclo de vida. Su alcance indica si es de una unidad de negocio, transversal (con despliegue y adopción por unidad) o una plataforma habilitadora (con los casos que la usan); <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> §7.2. Desde el esquema 0.5 de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, también la evidencia para el índice de transformación: verificación de IT-P2 e IT-P3 en un <em>gate</em>, supervisión humana verificada, unidad organizativa completa rediseñada y capacidad liberada, materializada y reasignada (12 §4.4).</td>
 <td>Todas las demás</td>
 </tr>
 <tr>
@@ -1030,7 +1030,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Valor</strong></td>
-<td>Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación, periodo y, en las iniciativas transversales, unidad de negocio.</td>
+<td>Importes por tipo (eficiencia, retorno, coste), fórmula, estado de validación, periodo y, en las iniciativas transversales, unidad de negocio; desde el esquema 0.5, si el retorno procede de una oferta habilitada por IA (señal 6 del 12).</td>
 <td>Iniciativa</td>
 </tr>
 <tr>
@@ -1057,6 +1057,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Recomendación</strong></td>
 <td>Recomendación del consejo con identificador persistente, destinatario, estado y evidencia.</td>
 <td>Iniciativas, sistemas</td>
+</tr>
+<tr>
+<td><strong>Decisión del consejo</strong></td>
+<td>Decisión del consejo o de su comisión (DEC-AAAA-NNN) con órgano, tipo, asunto, resultado, límite de inversión por etapa, decisión de etapa, esferas con Transformar como objetivo y vínculos (62 §10); esquema 0.5. Es la fuente de la señal 8 y de la condición IT-D1 del índice.</td>
+<td>Iniciativas, recomendaciones</td>
 </tr>
 </tbody>
 </table></div>
@@ -1246,7 +1251,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Calculadora del índice de transformación</td>
-<td>Condiciones de base, ocho señales, perfil de la compañía, alertas, cobertura y evolución, con versión de umbrales; parte del JSON del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Condiciones de base, ocho señales, perfil de la compañía, alertas, cobertura y evolución, con versión de umbrales; parte del JSON del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, del que calcula las ocho señales cuando trae la evidencia del esquema 0.5, y su resultado alimenta la tarjeta del índice del panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
 <td>C1, C4, C5</td>
 <td>HTML + JSON</td>
 <td>12</td>
@@ -1301,14 +1306,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Disponible. Se alimenta de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> mediante el conector <code>herramientas/T17_panel_consejo</code>: registro (JSON) más <code>config_panel.json</code> (umbrales de los indicadores y ciclo de vida) → JSON del panel → panel completo y móvil, con embudo y tiempos por etapa como en un CRM</td>
 </tr>
 <tr>
-<td><strong><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Recomendaciones con identificador persistente, estado, evidencia y valoración.</td>
 <td>C4</td>
-<td>HTML + JSON</td>
+<td>Módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y HTML</td>
 <td>62</td>
 <td>1</td>
-<td>Disponible. El conector de <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> genera el registro a partir de las recomendaciones de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Disponible v0.1: vista «Consejo (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)» del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, con las decisiones (DEC) y las recomendaciones (REC); el conector de <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> genera la página del registro a partir de las recomendaciones de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></strong></td>
@@ -1345,7 +1350,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Plantilla y módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 <td>23, 50</td>
 <td>3</td>
-<td>Se aplica con <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a> (plan y registro de alfabetización y formación)</td>
+<td>Se aplica con <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a> (plan y registro de alfabetización y formación); la capacidad liberada, materializada y reasignada de cada iniciativa se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (esquema 0.5)</td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
@@ -1383,7 +1388,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Ola 1 · Núcleo</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> con <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>; adaptación de <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> y <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a> para alimentarse del registro.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> con <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>; adaptación de <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> para alimentarse del registro.</td>
 <td>Tras el <a href="02_SEVEN-G_Glosario_y_convenciones.html">documento 02</a> (Glosario), que fija nombres y listas.</td>
 <td>Cartera gestionada como embudo, con <em>gates</em> trazados y panel del consejo conectado.</td>
 </tr>

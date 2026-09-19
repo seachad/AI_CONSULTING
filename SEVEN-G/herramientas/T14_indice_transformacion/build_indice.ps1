@@ -10,10 +10,18 @@
   Mismo patrón que T01 (D43): los datos viven en JSON y el HTML se genera incrustándolos. Con -Datos se construye una
   calculadora que arranca con otro fichero de T14 (por ejemplo, el exportado por una organización).
   El script comprueba que el fichero tiene umbrales completos y que cada cálculo usa una versión de umbrales que existe.
+
+  Cálculo desde un registro T01 sin abrir el navegador (D71):
+                pwsh -File build_indice.ps1 -DesdeT01 <registro_T01.json> -Exportar <t14.json>
+                Abre la calculadora en Edge sin ventana, crea el cálculo a la fecha de referencia del registro con los umbrales vigentes
+                y escribe el JSON de T14 con su resultado (perfil, señales, alertas y qué movería el perfil). Es la entrada opcional
+                del bloque del índice en el panel del consejo (T17: t01_a_panel.py --indice).
 #>
 param(
   [string]$Datos,
-  [string]$Salida
+  [string]$Salida,
+  [string]$DesdeT01,
+  [string]$Exportar
 )
 $ErrorActionPreference = 'Stop'
 $aqui = $PSScriptRoot
@@ -64,3 +72,41 @@ $html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por bui
 [IO.File]::WriteAllText($Salida, $html, [Text.UTF8Encoding]::new($false))
 "índice:     $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"
 "datos:      $(Split-Path $Datos -Leaf) · $($d.umbrales.Count) versiones de umbrales · $($d.calculos.Count) cálculos"
+
+# ---- cálculo desde un registro T01 con la propia calculadora (Edge sin ventana y un servidor local de un solo uso)
+if ($DesdeT01) {
+  if (-not $Exportar) { throw 'Con -DesdeT01 hace falta -Exportar <fichero.json>' }
+  if (-not (Test-Path $DesdeT01)) { throw "No se encuentra $DesdeT01" }
+  $null = Get-Content $DesdeT01 -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+  $edge = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  if (-not $edge) { throw 'Hace falta Microsoft Edge para calcular desde T01' }
+  $js = @'
+setTimeout(function(){ try{
+  const reg=JSON.parse(document.getElementById('t01-cli').textContent), m=reg.meta||{}, f=m.fecha_referencia||hoy(), d=desdeT01(reg,f);
+  const c={id:'IDX-'+f.slice(0,7), fecha_corte:f, tipo:'seguimiento', version_umbrales:D.umbrales[D.umbrales.length-1].version, origen:'t01', entradas:d.entradas, de_t01:d.de_t01, notas:t('t01_nota',{f:fF(f)}), acciones:''};
+  c.resultado=resultadoExport(c);
+  const out={version_esquema:VERSION_ESQUEMA, herramienta:'T14', meta:{organizacion:m.organizacion||null, moneda:m.moneda||'EUR', datos_ilustrativos:!!m.datos_ilustrativos, origen:'Calculado con build_indice.ps1 desde el registro T01 (esquema '+reg.version_esquema+')', aviso_legal:TX.es.legal_txt}, umbrales:[umbral(c.version_umbrales)], calculos:[c]};
+  fetch('/resultado',{method:'POST',body:JSON.stringify(out,null,1)});
+}catch(e){ fetch('/resultado',{method:'POST',body:'ERROR '+e.message}); } }, 300);
+'@
+  $pagina = $html.Replace('</body>', "<script type=`"application/json`" id=`"t01-cli`">$(Compactar $DesdeT01)</script><script>$js</script></body>")
+  $perfil = Join-Path ([IO.Path]::GetTempPath()) ('t14_edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 8))
+  $puerto = Get-Random -Minimum 20000 -Maximum 40000
+  $http = [System.Net.HttpListener]::new(); $http.Prefixes.Add("http://localhost:$puerto/"); $http.Start()
+  $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--virtual-time-budget=6000', "http://localhost:$puerto/?lang=es" -PassThru -WindowStyle Hidden
+  $res = $null; $limite = (Get-Date).AddSeconds(45)
+  try {
+    while (-not $res -and (Get-Date) -lt $limite) {
+      $tarea = $http.GetContextAsync(); if (-not $tarea.Wait(1000)) { continue }; $ctx = $tarea.Result
+      if ($ctx.Request.HttpMethod -eq 'POST') { $res = [IO.StreamReader]::new($ctx.Request.InputStream, [Text.Encoding]::UTF8).ReadToEnd(); $b = [byte[]]@() }
+      elseif ($ctx.Request.Url.AbsolutePath -eq '/') { $b = [Text.Encoding]::UTF8.GetBytes($pagina); $ctx.Response.ContentType = 'text/html; charset=utf-8' }
+      else { $ctx.Response.StatusCode = 404; $b = [byte[]]@() }
+      $ctx.Response.ContentLength64 = $b.Length; if ($b.Length) { $ctx.Response.OutputStream.Write($b, 0, $b.Length) }; $ctx.Response.Close()
+    }
+  } finally { $http.Stop(); if (-not $proc.HasExited) { try { $proc.Kill() } catch {} }; Remove-Item $perfil -Recurse -Force -ErrorAction SilentlyContinue }
+  if (-not $res) { throw 'El navegador no ha devuelto el cálculo' }
+  if ($res.StartsWith('ERROR')) { throw "Error en la calculadora: $res" }
+  [IO.File]::WriteAllText($Exportar, $res.Replace("`r`n", "`n") + "`n", [Text.UTF8Encoding]::new($false))
+  $r = ($res | ConvertFrom-Json).calculos[0].resultado
+  "exportado: $Exportar · perfil $($r.perfil_asignado)$(if ($r.perfil_subyacente) { " (subyacente $($r.perfil_subyacente))" }) · suma $($r.suma) · cobertura $($r.cobertura)/8"
+}

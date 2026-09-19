@@ -70,6 +70,20 @@ Para proveedores, `proveedor_dora`: `en_registro`, `criticidad`, `estrategia_sal
 | `ia_ofensiva` | Exposición a ataques ejecutados con IA. Superficie: doble factor en aplicaciones expuestas, vulnerabilidades críticas, detección de tráfico automatizado. Agentes: identidades con permisos excesivos, claves sin rotar. Pruebas: prueba de intrusión con IA, éxito de la inyección de instrucciones, tratamientos con este riesgo analizado. Preparación: registro de acciones, runbook, simulacro y ensayo de notificación. |
 | `cdm_compania` | Opcional: contraste con el cuadro de mando de valor de la propia compañía. Si falta, el bloque no se muestra. |
 
+## `indice` (opcional)
+
+Índice de transformación de la compañía calculado por la calculadora T14 de SEVEN-G (documento 12). Si falta, la tarjeta no se muestra. No depende de los filtros.
+
+| Campo | Contenido |
+|---|---|
+| `fecha_corte`, `tipo`, `version_umbrales` | Fecha de corte, tipo de cálculo (formal, seguimiento, extraordinario) y versión de umbrales. |
+| `perfil_asignado`, `perfil_evidenciado`, `perfil_subyacente` | `curso`, `escala`, `tactica`, `exploracion` o `declarada` (transformación declarada, no evidenciada). |
+| `provisional`, `cobertura`, `suma` | Perfil provisional si la cobertura es inferior a 6 de 8; señales con dato; suma de 0 a 24. |
+| `condiciones_base` | `B1`, `B2` y `B3`, verdadero o falso. |
+| `senales[]` | `senal` (1 a 8), `valor` (porcentaje; en la 7, conversión relativa; en la 8, número de apuestas), `puntuacion` (0 a 3), `sin_dato`. |
+| `alertas[]`, `perfil_objetivo`, `mover[]` | Códigos de las alertas del documento 12 §5.3 y condiciones que moverían el perfil hacia el objetivo. |
+| `anterior` | El cálculo anterior con los mismos campos, para la tendencia; `null` si no lo hay. |
+
 ## `historico[]`
 
 Una foto por sesión (`snapshot.py`): `fecha`, `etiqueta`, `casos_por_estado`, `totales` y, por caso, estado, fecha de producción y cifras derivadas. El panel compara los datos de hoy con cualquier foto: variaciones, casos nuevos o puestos en producción, retiradas, cambios de estado y tendencia.
