@@ -108,12 +108,12 @@ $configuracion = @{
     en = @{ T_TT_INICIO = 'Go to document 00: What SPAD is and how it helps'; T_METODOLOGIA = 'SPAD methodology'
             Indice = 'SPAD Library'; IndiceSub = 'Documents of the sequential, blocking and auditable framework for AI-assisted software development' }
     bloques = @{
-      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Aplicación' }
-      en = [ordered]@{ A = 'A · Foundations'; B = 'B · Application' }
+      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Método'; C = 'C · Aplicación' }
+      en = [ordered]@{ A = 'A · Foundations'; B = 'B · Method'; C = 'C · Application' }
     }
     Bloque = {
       param([string]$rel)
-      if ($rel -match '^(\d{2})_') { if ([int]$Matches[1] -le 1) { return 'A' } else { return 'B' } }
+      if ($rel -match '^(\d{2})_') { $n = [int]$Matches[1]; if ($n -le 1) { return 'A' } elseif ($n -le 5) { return 'B' } else { return 'C' } }
       return $null
     }
   }

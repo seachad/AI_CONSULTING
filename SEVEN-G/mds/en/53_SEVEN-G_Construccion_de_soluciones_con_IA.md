@@ -52,7 +52,7 @@ A build tool with the ability to execute actions on repositories, environments o
 
 ### 2.1 Position of SPAD
 
-**SPAD** (*Structured Prompt-Driven Engineering*) is an **independent methodology** for AI-assisted engineering, referenced from SEVEN-G and not integrated into it (decision D09). It is not a brand, a component or a "capability" of SEVEN-G. SEVEN-G can be applied with SPAD or with another engineering method that meets the requirements of section 7.
+**SPAD** (*Structured Prompt-Driven Engineering*) is an **independent methodology** for AI-assisted engineering, referenced from SEVEN-G and not integrated into it (decision D09). It is not a brand, a component or a "capability" of SEVEN-G. SEVEN-G can be applied with SPAD or with another engineering method that meets the requirements of section 7. The full methodology is in the [SPAD library](../../../SPAD/html/en/index.html) (documents 00 to 08).
 
 | Aspect | SEVEN-G | SPAD |
 |---|---|---|

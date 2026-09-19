@@ -8,7 +8,7 @@
 | Versión | 0.1 |
 | Fecha | 18-09-2026 |
 | Autor | Fernando García · SEACHAD (análisis preparado con asistencia de IA) |
-| Estado | Propuesta para el autor. No se publica. |
+| Estado | Aplicado el 19-09-2026 con las recomendaciones de Claude (D69): biblioteca 00–08 publicada; documentos de trabajo en `SPAD/_legacy/`. Quedan las decisiones de la sección 7 que solo el autor puede tomar (láminas e ilustraciones en inglés). No se publica. |
 
 ---
 
@@ -22,7 +22,7 @@
 2. **Contenido que contradice decisiones registradas** de SEVEN-G (cifras sin respaldo, "certificación", SPAD presentado como parte de SEVEN-G u obligatorio dentro de él, dos idiomas mezclados, tono comercial).
 3. **Huecos de método** que importan precisamente en los casos para los que SPAD se recomienda: validación humana sin registro propio, sistemas que incluyen IA en producción (no solo código escrito por IA), trazabilidad del modelo usado, cadena de suministro y licencias, datos enviados a proveedores de modelos, versión reducida (Lite) y métricas del propio proceso.
 
-La página de entrada publicada (documento 00) ya aplica las correcciones de los tipos 1 y 2 en lo que presenta; el resto se propone en la sección 5.
+La página de entrada publicada (documento 00) ya aplica las correcciones de los tipos 1 y 2 en lo que presenta; el resto se propone en la sección 5. **Actualización del 19-09-2026:** se ha aplicado todo lo propuesto en las secciones 3, 4, 5 y 6 salvo el hueco 12 (validador de artefactos: especificado en el documento 07 §6, herramienta pendiente) y las decisiones 6 de la sección 7 (regenerar láminas e ilustraciones en inglés), que requieren al autor.
 
 ---
 

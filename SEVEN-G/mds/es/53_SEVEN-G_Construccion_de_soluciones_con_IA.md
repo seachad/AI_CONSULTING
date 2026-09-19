@@ -52,7 +52,7 @@ Una herramienta de construcción con capacidad de ejecutar acciones en repositor
 
 ### 2.1 Posición de SPAD
 
-**SPAD** (*Structured Prompt-Driven Engineering*) es una **metodología independiente** de ingeniería asistida por IA, referenciada desde SEVEN-G y no integrada en él (decisión D09). No es una marca, un componente ni una "capacidad" de SEVEN-G. SEVEN-G puede aplicarse con SPAD o con otro método de ingeniería que cumpla los requisitos de la sección 7.
+**SPAD** (*Structured Prompt-Driven Engineering*) es una **metodología independiente** de ingeniería asistida por IA, referenciada desde SEVEN-G y no integrada en él (decisión D09). No es una marca, un componente ni una "capacidad" de SEVEN-G. SEVEN-G puede aplicarse con SPAD o con otro método de ingeniería que cumpla los requisitos de la sección 7. La metodología completa está en la [biblioteca SPAD](../../../SPAD/html/es/index.html) (documentos 00 a 08).
 
 | Aspecto | SEVEN-G | SPAD |
 |---|---|---|
