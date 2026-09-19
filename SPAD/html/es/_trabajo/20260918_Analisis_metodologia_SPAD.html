@@ -398,7 +398,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <p class="antetitulo">Documento de trabajo &#183; An&#225;lisis de SPAD</p>
     <h1>An&#225;lisis de la metodolog&#237;a SPAD: completitud y cambios propuestos</h1>
     <p class="entradilla">Revisi&#243;n de los documentos de trabajo de SPAD (SPAD/Documents) con los criterios de SEVEN-G, para decidir qu&#233; se mantiene, qu&#233; se corrige y qu&#233; falta antes de publicar la biblioteca completa</p>
-    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD (an&#225;lisis preparado con asistencia de IA)</b></span><span>Versión 0.1</span><span>18-09-2026</span><span>Propuesta para el autor</span></div>
+    <div class="firma"><span><b>Fernando Garc&#237;a &#183; SEACHAD (an&#225;lisis preparado con asistencia de IA)</b></span><span>Versión 0.1</span><span>18-09-2026</span><span>Aplicado el 19-09-2026 con las recomendaciones de Claude (D69): biblioteca 00–08 publicada; documentos de trabajo en SPAD/_legacy/</span></div>
     
   </div>
 </header>
@@ -413,7 +413,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Contenido que contradice decisiones registradas</strong> de SEVEN-G (cifras sin respaldo, &quot;certificación&quot;, SPAD presentado como parte de SEVEN-G u obligatorio dentro de él, dos idiomas mezclados, tono comercial).</li>
 <li><strong>Huecos de método</strong> que importan precisamente en los casos para los que SPAD se recomienda: validación humana sin registro propio, sistemas que incluyen IA en producción (no solo código escrito por IA), trazabilidad del modelo usado, cadena de suministro y licencias, datos enviados a proveedores de modelos, versión reducida (Lite) y métricas del propio proceso.</li>
 </ol>
-<p>La página de entrada publicada (<a href="../00_SPAD_Que_es_y_para_que_sirve.html">documento 00</a>) ya aplica las correcciones de los tipos 1 y 2 en lo que presenta; el resto se propone en la sección 5.</p>
+<p>La página de entrada publicada (<a href="../00_SPAD_Que_es_y_para_que_sirve.html">documento 00</a>) ya aplica las correcciones de los tipos 1 y 2 en lo que presenta; el resto se propone en la sección 5. <strong>Actualización del 19-09-2026:</strong> se ha aplicado todo lo propuesto en las secciones 3, 4, 5 y 6 salvo el hueco 12 (validador de artefactos: especificado en el <a href="../07_SPAD_Contratos_de_entrada_y_salida.html">documento 07</a> §6, herramienta pendiente) y las decisiones 6 de la sección 7 (regenerar láminas e ilustraciones en inglés), que requieren al autor.</p>
 <hr />
 <h2 id="material-revisado"><span class="antetitulo">02</span>Material revisado</h2>
 <div class="tabla"><table>
@@ -777,7 +777,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 (function () {
   var raiz = document.documentElement;
   var contenido = document.getElementById('contenido');
-  var navItems = [{"href":"../00_SPAD_Que_es_y_para_que_sirve.html","title":"Qué es SPAD y para qué sirve","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"../index.html","title":"Biblioteca SPAD","blockCode":"A","blockLabel":"A · Fundamentos","active":false}];
+  var navItems = [{"href":"../00_SPAD_Que_es_y_para_que_sirve.html","title":"Qué es SPAD y para qué sirve","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"../01_SPAD_Guia_operativa.html","title":"Guía operativa: fases, roles y veredictos","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"../02_SPAD_Contextos_temas_y_registro.html","title":"Contextos, temas y registro de artefactos","blockCode":"B","blockLabel":"B · Método","active":false},{"href":"../03_SPAD_Politica_de_validacion.html","title":"Política de validación","blockCode":"B","blockLabel":"B · Método","active":false},{"href":"../04_SPAD_Ciclos_complementarios.html","title":"Ciclos complementarios: legado, depuración, corrección urgente y seguridad","blockCode":"B","blockLabel":"B · Método","active":false},{"href":"../05_SPAD_Sistemas_que_incluyen_IA.html","title":"Sistemas que incluyen IA: evaluación del comportamiento y agentes","blockCode":"B","blockLabel":"B · Método","active":false},{"href":"../06_SPAD_Instrucciones_por_fase.html","title":"Instrucciones por fase","blockCode":"C","blockLabel":"C · Aplicación","active":false},{"href":"../07_SPAD_Contratos_de_entrada_y_salida.html","title":"Contratos de entrada y salida","blockCode":"C","blockLabel":"C · Aplicación","active":false},{"href":"../08_SPAD_Autoevaluacion_y_metricas.html","title":"Autoevaluación de conformidad y métricas del proceso","blockCode":"C","blockLabel":"C · Aplicación","active":false},{"href":"../index.html","title":"Biblioteca SPAD","blockCode":"A","blockLabel":"A · Fundamentos","active":false}];
 
   function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   function asArray(v) { return Array.isArray(v) ? v : []; }

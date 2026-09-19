@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Documento | Documento 00 · Qué es SPAD y para qué sirve |
-| Versión | 0.1 |
-| Fecha | 18-09-2026 |
+| Versión | 0.2 |
+| Fecha | 19-09-2026 |
 | Autor | Fernando García · SEACHAD |
 | Estado | En construcción. Metodología de apoyo, independiente de SEVEN-G y referenciada desde su documento 53; versión no liberada comercialmente. |
 | Tipo | Presentación de la metodología |
@@ -107,7 +107,7 @@ SPAD separa los roles lógicos de las personas y de las IA que intervienen. Una 
 | **IA revisora** | IA distinta de la constructora | Revisa planes, pruebas y código, y emite un veredicto. | Corregir lo que revisa o aprobar con problemas conocidos. |
 | **IA constructora** | IA | Implementa el código y las pruebas siguiendo el plan aprobado. | Tomar decisiones de diseño. |
 | **IA correctora** | IA | Aplica correcciones mínimas y justificadas a los problemas detectados. | Rediseñar o ampliar funcionalidad. |
-| **IA analista** e **IA de operación** | IA | Documentan código heredado y analizan incidentes (ciclos de legado y de depuración). | Proponer la solución en lugar del diagnóstico. |
+| **IA analista** e **IA de diagnóstico** | IA | Documentan código heredado y analizan incidentes (ciclos de legado y de depuración). | Proponer la solución en lugar del diagnóstico. |
 
 El rol que revisa se denomina **IA revisora** para no confundirlo con el **Auditor de IA** de SEVEN-G, que es una persona.
 
@@ -319,7 +319,19 @@ Al principio, SPAD hace el trabajo más lento mientras el equipo aprende las fas
 
 ## 11. Estado, licencia y próximos pasos
 
-SPAD está **en construcción** como biblioteca pública. Esta página es su puerta de entrada; los documentos de trabajo de la metodología (guía operativa, conjunto de instrucciones por fase, contratos de entrada y salida para agentes, gestión de contextos, política de validación y autoevaluación) se incorporarán a esta biblioteca, en español e inglés, a medida que se revisen.
+SPAD está **en construcción** como metodología pública: la biblioteca existe completa en español e inglés, y crecerá con herramientas y casos de aplicación. Esta página es su puerta de entrada.
+
+| Documento | Contenido | Cuándo leerlo |
+|---|---|---|
+| **documento 00 · Qué es SPAD y para qué sirve** | Presentación del método. | Primero. |
+| **documento 01 · Guía operativa** | Fases 0–10, roles, veredictos y versión reducida. | Antes de aplicar SPAD por primera vez. |
+| **documento 02 · Contextos, temas y registro de artefactos** | Qué se carga antes de trabajar y qué se registra de cada artefacto. | Al preparar la organización. |
+| **documento 03 · Política de validación** | Cuándo se descarta una respuesta de la IA. | Quien orquesta, siempre. |
+| **documento 04 · Ciclos complementarios** | Legado, depuración, corrección urgente y seguridad. | Cuando el trabajo no es una funcionalidad nueva. |
+| **documento 05 · Sistemas que incluyen IA** | Evaluación del comportamiento y agentes. | Cuando la solución lleva IA en producción. |
+| **documento 06 · Instrucciones por fase** | Texto de referencia de cada instrucción. | Al configurar las herramientas. |
+| **documento 07 · Contratos de entrada y salida** | Estructura obligatoria de cada artefacto. | Al automatizar la validación. |
+| **documento 08 · Autoevaluación y métricas** | Cómo comprobar la conformidad y medir el proceso. | Al cerrar un trabajo y al revisar el método. |
 
 SPAD se publica con las mismas condiciones que SEVEN-G: los contenidos, bajo licencia **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**, y el código, bajo licencia MIT. Puede usarse, adaptarse y extenderse, también con fines comerciales, siempre que se cite de forma visible la autoría: *SPAD · Fernando García · SEACHAD*. Las condiciones completas de uso y citación son las de [SEVEN-G 93 · Licencia, uso y citación](../../../SEVEN-G/html/es/93_SEVEN-G_Licencia_uso_y_citacion.html).
 
@@ -331,4 +343,5 @@ No existe certificación de SPAD y el uso del nombre no implica respaldo del aut
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| 0.2 | 19-09-2026 | Biblioteca completa (documentos 01–08) enlazada desde la sección 11; el rol de diagnóstico se denomina «IA de diagnóstico». |
 | 0.1 | 18-09-2026 | Primera versión de la página de entrada, a partir de los documentos de trabajo de SPAD: propiedades del marco, problema que resuelve, principio de validación, roles, ciclo principal y veredictos, ciclos de legado, depuración, corrección urgente y seguridad, contextos, temas, política de validación, autoevaluación de conformidad, relación con SEVEN-G y cuándo usarlo. |

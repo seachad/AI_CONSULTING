@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Document | Document 00 · What SPAD is and how it helps |
-| Version | 0.1 |
-| Date | 18-09-2026 |
+| Version | 0.2 |
+| Date | 19-09-2026 |
 | Author | Fernando García · SEACHAD |
 | Status | Under construction. Supporting methodology, independent of SEVEN-G and referenced from its document 53; not released commercially. |
 | Type | Methodology overview |
@@ -107,7 +107,7 @@ SPAD separates the logical roles from the people and AIs involved. The same AI m
 | **AI Reviewer** | AI other than the builder | Reviews plans, tests and code, and issues a verdict. | Fix what it reviews or approve with known problems. |
 | **AI Builder** | AI | Implements the code and the tests following the approved plan. | Take design decisions. |
 | **AI Fixer** | AI | Applies minimal, justified fixes to the problems detected. | Redesign or extend functionality. |
-| **AI Analyst** and **operations AI** | AI | Document legacy code and analyse incidents (legacy and debugging cycles). | Propose the solution instead of the diagnosis. |
+| **AI Analyst** and **Diagnostic AI** | AI | Document legacy code and analyse incidents (legacy and debugging cycles). | Propose the solution instead of the diagnosis. |
 
 The reviewing role is called **AI Reviewer** so that it is not confused with the SEVEN-G **AI Auditor**, who is a person.
 
@@ -319,7 +319,19 @@ At first, SPAD makes work slower while the team learns the phases. The hypothesi
 
 ## 11. Status, licence and next steps
 
-SPAD is **under construction** as a public library. This page is its entry point; the methodology's working documents (operating guide, set of instructions per phase, input and output contracts for agents, context management, validation policy and self-assessment) will be incorporated into this library, in Spanish and English, as they are reviewed.
+SPAD is **under construction** as a public methodology: the library exists in full in Spanish and English, and it will grow with tools and application cases. This page is its entry point.
+
+| Document | Content | When to read it |
+|---|---|---|
+| **document 00 · What SPAD is and how it helps** | Presentation of the method. | First. |
+| **document 01 · Operating guide** | Phases 0–10, roles, verdicts and reduced version. | Before applying SPAD for the first time. |
+| **document 02 · Contexts, topics and artefact register** | What is loaded before working and what is recorded for each artefact. | When preparing the organisation. |
+| **document 03 · Validation policy** | When an AI response is discarded. | Whoever orchestrates, always. |
+| **document 04 · Complementary cycles** | Legacy, debugging, urgent fixes and security. | When the work is not a new feature. |
+| **document 05 · Systems that include AI** | Behaviour evaluation and agents. | When the solution has AI in production. |
+| **document 06 · Instructions by phase** | Reference text of each instruction. | When configuring the tools. |
+| **document 07 · Input and output contracts** | Mandatory structure of each artefact. | When automating validation. |
+| **document 08 · Self-assessment and metrics** | How to check conformity and measure the process. | When closing a piece of work and when reviewing the method. |
 
 SPAD is published under the same conditions as SEVEN-G: the content under a **Creative Commons Attribution 4.0 International (CC BY 4.0)** licence and the code under the MIT licence. It may be used, adapted and extended, including for commercial purposes, provided that authorship is visibly credited: *SPAD · Fernando García · SEACHAD*. The full conditions of use and citation are those of [SEVEN-G 93 · Licence, use by third parties and citation](../../../SEVEN-G/html/en/93_SEVEN-G_Licencia_uso_y_citacion.html).
 
@@ -331,4 +343,5 @@ There is no SPAD certification and use of the name does not imply endorsement by
 
 | Version | Date | Changes |
 |---|---|---|
+| 0.2 | 19-09-2026 | Complete library (documents 01–08) linked from section 11; the diagnostic role is named "Diagnostic AI". |
 | 0.1 | 18-09-2026 | First version of the entry page, based on the SPAD working documents: properties of the framework, problem it solves, validation principle, roles, main cycle and verdicts, legacy, debugging, urgent fix and security cycles, contexts, topics, validation policy, self-assessment of conformity, relationship with SEVEN-G and when to use it. |
