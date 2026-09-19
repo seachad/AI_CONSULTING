@@ -995,7 +995,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Initiative</strong></td>
-<td>The unit that goes through the lifecycle. Its scope states whether it belongs to one business unit, is cross-unit (with roll-out and adoption by unit) or is an enabling platform (with the use cases that rely on it); document 40 §7.2.</td>
+<td>The unit that goes through the lifecycle. Its scope states whether it belongs to one business unit, is cross-unit (with roll-out and adoption by unit) or is an enabling platform (with the use cases that rely on it); document 40 §7.2. From <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> schema 0.5, also the evidence for the transformation index: verification of IT-P2 and IT-P3 at a <em>gate</em>, verified human oversight, entire organisational unit redesigned and released, materialised and reassigned capacity (12 §4.4).</td>
 <td>All the others</td>
 </tr>
 <tr>
@@ -1030,7 +1030,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Value</strong></td>
-<td>Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit.</td>
+<td>Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit; from schema 0.5, whether the return comes from an AI-enabled offering (signal 6 of 12).</td>
 <td>Initiative</td>
 </tr>
 <tr>
@@ -1057,6 +1057,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Recommendation</strong></td>
 <td>Board recommendation with persistent identifier, addressee, status and evidence.</td>
 <td>Initiatives, systems</td>
+</tr>
+<tr>
+<td><strong>Board decision</strong></td>
+<td>Decision of the board or its committee (DEC-YYYY-NNN) with body, type, subject, outcome, stage investment cap, stage decision, spheres with Transform as target and links (62 §10); schema 0.5. It is the source of signal 8 and condition IT-D1 of the index.</td>
+<td>Initiatives, recommendations</td>
 </tr>
 </tbody>
 </table></div>
@@ -1246,7 +1251,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Transformation index calculator</td>
-<td>Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register JSON.</td>
+<td>Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register JSON, from which it calculates the eight signals when it holds the schema 0.5 evidence, and its result feeds the index card of the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
 <td>C1, C4, C5</td>
 <td>HTML + JSON</td>
 <td>12</td>
@@ -1301,14 +1306,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Available. Fed from <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> through the connector <code>herramientas/T17_panel_consejo</code>: register (JSON) plus <code>config_panel.json</code> (indicator thresholds and lifecycle) → dashboard JSON → full and mobile dashboard, with a funnel and time per stage as in a CRM</td>
 </tr>
 <tr>
-<td><strong><a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
 <td>Board recommendations register</td>
 <td>Recommendations with persistent identifier, status, evidence and assessment.</td>
 <td>C4</td>
-<td>HTML + JSON</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> module and HTML</td>
 <td>62</td>
 <td>1</td>
-<td>Available. The <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> connector generates the register from the recommendations in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Available v0.1: &quot;Board (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)&quot; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register, with decisions (DEC) and recommendations (REC); the <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> connector generates the register page from the recommendations in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></strong></td>
@@ -1345,7 +1350,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Template and <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> module</td>
 <td>23, 50</td>
 <td>3</td>
-<td>Applied with <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a> (AI literacy and training plan and register)</td>
+<td>Applied with <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a> (AI literacy and training plan and register); the released, materialised and reassigned capacity of each initiative is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (schema 0.5)</td>
 </tr>
 <tr>
 <td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
@@ -1383,7 +1388,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Wave 1 · Core</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> with <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>; adaptation of <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> and <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">T18</a> to be fed from the register.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> with <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>; adaptation of <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> to be fed from the register.</td>
 <td>After document 02 (Glossary), which sets names and lists.</td>
 <td>Portfolio managed as a funnel, with tracked <em>gates</em> and a connected board dashboard.</td>
 </tr>

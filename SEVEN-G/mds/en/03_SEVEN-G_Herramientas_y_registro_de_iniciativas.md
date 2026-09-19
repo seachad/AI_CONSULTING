@@ -198,19 +198,20 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 
 | Entity | What it represents | Related to |
 |---|---|---|
-| **Initiative** | The unit that goes through the lifecycle. Its scope states whether it belongs to one business unit, is cross-unit (with roll-out and adoption by unit) or is an enabling platform (with the use cases that rely on it); document 40 §7.2. | All the others |
+| **Initiative** | The unit that goes through the lifecycle. Its scope states whether it belongs to one business unit, is cross-unit (with roll-out and adoption by unit) or is an enabling platform (with the use cases that rely on it); document 40 §7.2. From T01 schema 0.5, also the evidence for the transformation index: verification of IT-P2 and IT-P3 at a *gate*, verified human oversight, entire organisational unit redesigned and released, materialised and reassigned capacity (12 §4.4). | All the others |
 | **AI system** | Each system in the inventory, in-house or third-party, including corporate use. | Initiatives, suppliers, risks, incidents |
 | **Event** | Any change with date, author and reason. | Initiative |
 | **Gate decision** | Request, verification, decision, outcome and iteration. | Initiative, criteria, conditions |
 | **Assessed criterion** | Status of each criterion in a *gate* decision. | Gate decision, evidence |
 | **Condition** | Condition imposed with deadline, owner and status. | Gate decision |
 | **Evidence** | Link, type, version, author, date and verification. | Criteria, initiative |
-| **Value** | Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit. | Initiative |
+| **Value** | Amounts by type (efficiency, return, cost), formula, validation status, period and, in cross-unit initiatives, business unit; from schema 0.5, whether the return comes from an AI-enabled offering (signal 6 of 12). | Initiative |
 | **Risk** | Risk with probability, impact, inherent and residual level, owner and controls; from T01 schema 0.4, also impact axis, control effectiveness, target or verified residual, contingency, status, trend, next review and acceptance (33 §8.1). | Initiative, system |
 | **Nonconformity** | Type, detection, containment, root cause, action, closure. | Initiative, system |
 | **Incident** | Date, severity, detection, containment, notifications. | System, initiative |
 | **Supplier** | Third party, services, criticality, contract, assessment. | Systems, initiatives |
 | **Recommendation** | Board recommendation with persistent identifier, addressee, status and evidence. | Initiatives, systems |
+| **Board decision** | Decision of the board or its committee (DEC-YYYY-NNN) with body, type, subject, outcome, stage investment cap, stage decision, spheres with Transform as target and links (62 §10); schema 0.5. It is the source of signal 8 and condition IT-D1 of the index. | Initiatives, recommendations |
 
 ---
 
@@ -246,7 +247,7 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 | **T11** | Value hypothesis canvas and calculator | Baseline, value lines with formula (F1), annual net value, NPV, ROI, payback and F3 with the C2 horizon and rate; scenarios; C2 economic criterion as information; imports the initiative from T01. Documented with P08, P09 and P10. | Phases 2, 3 and 7 | HTML + JSON; CSV export | 40 | 2 | Available v0.1 |
 | **T12** | Value realisation tracking | Validated, declared and estimated value by period and by use case. | Phases 6–7, C4 | T01 module | 40, 43 | 2 | Applied with P28 and P62 (benefits realisation plan) |
 | **T13** | Cost calculator per use case | Full and incremental cost, total cost of ownership, allocation of shared costs, consumption forecast with alerts, cost per unit, cost of stopping and reconciliation. Documented with P10 and P63. | Phases 3 and 6 | Module of T11 ("Cost per use case" view); CSV export | 42 | 3 | Available v0.1 |
-| **T14** | Transformation index calculator | Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the T01 register JSON. | C1, C4, C5 | HTML + JSON | 12 | 2 | Available v0.1 |
+| **T14** | Transformation index calculator | Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the T01 register JSON, from which it calculates the eight signals when it holds the schema 0.5 evidence, and its result feeds the index card of the board dashboard (T17). | C1, C4, C5 | HTML + JSON | 12 | 2 | Available v0.1 |
 
 ### 5.4 Strategy and board
 
@@ -255,14 +256,14 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 | **T15** | Maturity diagnosis | 84-question questionnaire with evidence and verification; level by dimension and overall level capped by D1 and D6; comparison between assessments and report for the board. Template P34. | C1, C5 | HTML + JSON; CSV export | 11 | 2 | Available v0.1 |
 | **T16** | Portfolio sphere map | Heat map of spheres × ambition levels with investment and value. | C2, C3 | Board dashboard view | 10 | 2 | Applied with document 10 |
 | **T17** | Board AI dashboard | Oversight: value, cost, risk, compliance, incidents, agility, adoption. | C4 | Full and mobile HTML + JSON | 60 | 1 | Available. Fed from T01 through the connector `herramientas/T17_panel_consejo`: register (JSON) plus `config_panel.json` (indicator thresholds and lifecycle) → dashboard JSON → full and mobile dashboard, with a funnel and time per stage as in a CRM |
-| **T18** | Board recommendations register | Recommendations with persistent identifier, status, evidence and assessment. | C4 | HTML + JSON | 62 | 1 | Available. The T17 connector generates the register from the recommendations in T01 |
+| **T18** | Board recommendations register | Recommendations with persistent identifier, status, evidence and assessment. | C4 | T01 module and HTML | 62 | 1 | Available v0.1: "Board (T18)" view of the T01 register, with decisions (DEC) and recommendations (REC); the T17 connector generates the register page from the recommendations in T01 |
 | **T19** | AI thesis and risk appetite template | Board decision document, with thresholds and reference time limits. | C2 | Document template | 13 | 3 | Applied with P35 (AI thesis and risk appetite) |
 
 ### 5.5 People and operations
 
 | Code | Tool | Purpose | Where it is used | Format | Depends on | Priority | Status |
 |---|---|---|---|---|---|---|---|
-| **T20** | Adoption and capacity plan | Adoption, training and reassignment of released capacity. | Phases 4–7 | Template and T01 module | 23, 50 | 3 | Applied with P20 and P45 (AI literacy and training plan and register) |
+| **T20** | Adoption and capacity plan | Adoption, training and reassignment of released capacity. | Phases 4–7 | Template and T01 module | 23, 50 | 3 | Applied with P20 and P45 (AI literacy and training plan and register); the released, materialised and reassigned capacity of each initiative is recorded in T01 (schema 0.5) |
 | **T21** | Corporate AI use monitor | Assigned and active licences, unauthorised use, data leakage controls. | C4 | Board dashboard view | 31 | 3 | Applied with P43 (catalogue of authorised tools and requests) |
 | **T22** | Retirement manager | Retirement plan, replacement, data and models, communication. | Phase 7 | T01 module | 14 | 3 | Applied with P30 |
 

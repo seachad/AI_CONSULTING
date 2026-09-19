@@ -17,7 +17,7 @@ Especificación: documento 03 (§3 y §4), documento 01 (§6–§9), documento 0
 | `registro.html` | Aplicación completa en un único fichero (HTML, CSS y JavaScript sin dependencias). **Se genera** con `build_registro.ps1` a partir de los JSON; nunca se edita a mano. |
 | `datos_demo.json` | Fuente de los datos de demostración (ficticios) con los que se abre la aplicación, válidos contra el esquema. |
 | `catalogo_criterios.json` | Fuente del catálogo de 128 criterios de *gate* del documento 21, en español e inglés (un criterio por línea). |
-| `esquema_registro.schema.json` | JSON Schema 2020-12 del modelo de datos común (03 §4), con listas cerradas y patrones de código. Versión 0.4. |
+| `esquema_registro.schema.json` | JSON Schema 2020-12 del modelo de datos común (03 §4), con listas cerradas y patrones de código. Versión 0.5. |
 | `build_registro.ps1` | Construye `registro.html` incrustando los JSON en la plantilla. Comprueba las fuentes antes de generar. |
 | `_fuentes/registro.plantilla.html` | La aplicación sin datos: lo único que se edita a mano. No se publica. |
 | `README.md` · `README_en.md` | Este documento, en español e inglés. |
@@ -123,7 +123,7 @@ La aplicación no envía datos a terceros ni carga recursos externos (usa las fu
 
 ## Modelo de datos
 
-Un único objeto JSON con `version_esquema` (`0.4`; los ficheros `0.1`, `0.2` y `0.3` se aceptan y se actualizan al cargarlos, porque `0.2`, `0.3` y `0.4` solo añaden campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
+Un único objeto JSON con `version_esquema` (`0.5`; los ficheros `0.1` a `0.4` se aceptan y se actualizan al cargarlos, porque cada versión posterior a la `0.1` solo añade campos opcionales), `aviso_legal` (texto, opcional al importar), `meta` (organización, fecha de referencia, moneda, configuración de plazos) y una lista por entidad de 03 §4. `null` significa «sin dato». Fechas `AAAA-MM-DD`.
 
 | Lista | Entidad | Código |
 |---|---|---|
@@ -135,7 +135,7 @@ Un único objeto JSON con `version_esquema` (`0.4`; los ficheros `0.1`, `0.2` y 
 | `evidencias` | Enlace, plantilla, versión, autor, fecha y verificación (se enlaza, no se copia) | `EVI-AAAA-NNNN` |
 | `valores` | Importe esperado o realizado por tipo, fórmula, estado (validado, declarado, estimado), periodo, fuente, concepto del panel (`concepto`, opcional) y unidad de negocio (`area`, opcional, iniciativas transversales) | `VAL-NNNN` |
 | `riesgos` | Riesgo (T06): descripción, categoría, riesgo tipo, sistema, responsable, valoración inherente y residual, controles y su eficacia, respuesta, contingencia, estado, tendencia, revisión y aceptación | `IA-AAAA-NNN · Rnn` |
-| `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Entidades relacionadas (en esta versión se muestran y se exportan; su gestión completa corresponde a T08, T09 y T18) | `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
+| `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Entidades relacionadas (en esta versión se muestran y se exportan; su gestión completa corresponde a T08 y T09; las recomendaciones se gestionan en la vista Consejo, T18) | `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
 | `personas` | Personas asignables a roles, verificación, decisión y condiciones | `PER-NN` |
 
 Listas cerradas (valores en el esquema): esfera `01`–`09`; ambición `optimizar · aumentar · transformar`; intensidad `lite · enterprise`; clasificación regulatoria `prohibido · alto_riesgo · transparencia · riesgo_minimo · fuera_ambito · pendiente`; tecnología `ml_predictivo · ia_generativa · agente · lenguaje_documentos · vision · optimizacion · ia_terceros_embebida · reglas`; exposición `interna · empleados · clientes_indirecta · clientes_directa`; tipo de valor `eficiencia · retorno · riesgo_evitado · cumplimiento`; motivo de parada o retirada (10 códigos); estados (8); resultados (9); estados de criterio (4); tipos de evento (18); autonomía `A0`–`A3`.
@@ -191,6 +191,19 @@ El conector `../T17_panel_consejo/t01_a_panel.py` convierte el JSON completo de 
 | `aceptacion` | `organo` (`producto` · `patrocinador` · `comite_ia` · `consejo`), `persona`, `fecha`, `vigencia`, `referencia` | Aceptación del residual por el órgano de su nivel. |
 
 El panel del consejo (T17) no lee estos campos: sigue usando el riesgo residual principal de la iniciativa.
+
+**Campos añadidos en el esquema 0.5: evidencia del índice de transformación (T14) y registro del consejo (T18)** (documentos 12 y 62; todos opcionales, un registro 0.1 a 0.4 sigue siendo válido):
+
+| Campo | Valores | Uso |
+|---|---|---|
+| `iniciativas[].indice.itp2` · `itp3` | `estado` (`pendiente` · `verificada` · `no_verificada`), `gate` (`G2` · `G5` · `R6` · `G7`), `fecha`, `verificador`, `evidencia`; en `itp3`, `supervision_p17` | Verificación en un *gate* de las respuestas IT-P2 e IT-P3 (señales 4 y 5 del documento 12). Un cambio de roles sin supervisión humana verificada no cuenta. |
+| `iniciativas[].indice.unidad_completa` | sí o no | Rediseño de una unidad organizativa completa (nivel 3 de la señal 5). |
+| `iniciativas[].indice.capacidad` | `horas_liberadas`, `horas_materializadas`, `horas_reasignadas`, `actividad_destino`, `roles_redisenados`, `fecha` | Capacidad liberada y convertida (T20, señal 3). Las horas reasignadas exigen su actividad de destino. |
+| `valores[].oferta_habilitada_ia` | sí o no | Retorno de una oferta que no existiría sin la IA (prueba contrafactual; señal 6). |
+| `meta.indice` | `ingresos_totales`, `periodo_ingresos`, `it_d3`, `it_d3_evidencia` | Denominador de la señal 6 y condición IT-D3 de la declaración de transformación. |
+| `decisiones_consejo[]` | `DEC-AAAA-NNN` con `fecha`, `organo`, `acta`, `tipo`, `asunto` (tesis, apuesta de Transformar en G2, escalado en G7, revisión de una apuesta, decisión de etapa, riesgo Crítico, revisión C5, toma de conocimiento, otra), `texto`, `resultado`, `iniciativas`, `esferas_transformar`, `limite_inversion_etapa`, `etapa`, `decision_etapa`, `vigencia`, `responsable`, `recomendaciones` | Decisiones del consejo del documento 62 §10: fuente de la señal 8 y de la condición IT-D1. |
+
+La ficha muestra la evidencia del índice en su resumen («Editar evidencia del índice») y la vista **Consejo (T18)** registra las decisiones y las recomendaciones, con la lectura de la señal 8 y los datos de la compañía. La calculadora del índice (T14) lee todo ello del JSON completo del registro; el conector de T17 no lo lee.
 
 **Por qué importa.** Dar de alta una iniciativa en T01 equivale a registrar una oportunidad en un CRM: a partir de ahí, cada entrada de fase, decisión de *gate*, importe y cierre que se anota en el registro mueve el caso por el embudo del panel sin que nadie vuelva a escribir el dato. El consejo ve lo mismo que gestiona la Oficina de IA.
 

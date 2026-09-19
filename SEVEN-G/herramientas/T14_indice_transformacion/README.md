@@ -23,9 +23,21 @@ Los datos se guardan solo en el navegador que se usa (almacenamiento local). No 
 | Señal 1 | Sí (aproximación) | Inversión realizada acumulada de cada iniciativa + último coste recurrente realizado. Nivel: real si existe; si no, confirmada; sin ninguna, «sin clasificar». |
 | Señal 7 | Sí | G2 superado en 24 meses; resultado = G5, parada o estancada más del doble de los plazos de referencia de las fases 3 a 5 (configuración de T01). |
 | Sobredeclaración | Sí | Iniciativas con ambición real inferior a la confirmada. |
-| Señales 3, 4, 5, 6 y 8; IT-D1 e IT-D3 | No | El registro aún no guarda la verificación de IT-P2 e IT-P3, las horas materializadas y reasignadas (T20), los ingresos habilitados por IA (T12) ni las decisiones del consejo (T18). Se completan a mano. |
+| Señal 3 | Sí, con el esquema 0.5 | Suma de la capacidad de cada iniciativa (`indice.capacidad`: horas liberadas, materializadas y reasignadas; T20). |
+| Señales 4 y 5 | Sí, con el esquema 0.5 | Verificación de IT-P2 e IT-P3 en un *gate* (`indice.itp2`, `indice.itp3`), supervisión humana verificada y unidad completa rediseñada. Sin verificar = respuesta afirmativa sin verificación concluida (las negativas no se verifican). |
+| Señal 6 | Sí, con el esquema 0.5 | Último retorno realizado y validado con `oferta_habilitada_ia` en los 12 meses, sobre `meta.indice.ingresos_totales`. |
+| Señal 8 e IT-D1 | Sí, con el esquema 0.5 | Decisiones del consejo (`decisiones_consejo`, vista Consejo de T01): tesis aprobada y sus esferas con Transformar, apuestas de Transformar aprobadas en 12 meses con o sin límite por etapa, revisiones y decisiones de etapa. |
+| IT-D3 | Sí, con el esquema 0.5 | `meta.indice.it_d3` y su evidencia. |
 
-Solo cuentan las iniciativas de las esferas 01 a 07 (documento 12, sección 4.2).
+Con un registro anterior al esquema 0.5, las señales 3 a 6 y 8 y las condiciones IT-D1 e IT-D3 quedan «sin dato» y se completan a mano. Solo cuentan las iniciativas de las esferas 01 a 07 (documento 12, sección 4.2).
+
+## Cálculo desde T01 sin abrir el navegador
+
+```bash
+pwsh -File SEVEN-G/herramientas/T14_indice_transformacion/build_indice.ps1 -DesdeT01 registro_T01.json -Exportar t14.json
+```
+
+Abre la calculadora en Edge sin ventana, crea el cálculo a la fecha de referencia del registro con los umbrales vigentes y escribe el JSON de T14 con su resultado (perfil, señales, alertas y qué movería el perfil). Ese fichero es la entrada opcional del panel del consejo: `uv run python t01_a_panel.py --t01 registro_T01.json --indice t14.json` añade la tarjeta «Índice de transformación de la compañía». El ejemplo del panel usa `T17_panel_consejo/ejemplo/t14_indice.json`, calculado así desde los datos de demostración de T01.
 
 ## Umbrales
 
@@ -44,9 +56,8 @@ La versión **0.1** son los umbrales iniciales del documento 12 (sección 4.5), 
 
 ## Pendiente
 
-- Esquema 0.4 de T01 (campos opcionales): verificación de IT-P2 e IT-P3, horas materializadas y reasignadas, marca de oferta habilitada por IA; con ellos, las señales 3 a 6 se calcularán también desde el registro.
-- Registro de recomendaciones y decisiones del consejo (T18) como módulo de T01, para la señal 8.
-- Bloque del índice en el panel del consejo (T17): propuesto en `T17_panel_consejo/PROPUESTA_MOTOR.md`.
+- Calibrar los umbrales v0.1 con los datos de la compañía (documento 12, sección 8).
+- Tarjeta del índice en el panel móvil del consejo (el panel completo ya la muestra).
 
 ---
 

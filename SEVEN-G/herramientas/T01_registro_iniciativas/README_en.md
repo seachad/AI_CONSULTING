@@ -17,7 +17,7 @@ Specification: document 03 (§3 and §4), document 01 (§6–§9), document 00 (
 | `registro.html` | Complete single-file application (HTML, CSS and JavaScript, no dependencies). **It is generated** by `build_registro.ps1` from the JSON files; it is never edited by hand. |
 | `datos_demo.json` | Source of the (fictitious) demo data the application opens with, valid against the schema. |
 | `catalogo_criterios.json` | Source of the catalogue of 128 gate criteria from document 21, in Spanish and English (one criterion per line). |
-| `esquema_registro.schema.json` | JSON Schema 2020-12 of the common data model (03 §4), with closed lists and code patterns. Version 0.4. |
+| `esquema_registro.schema.json` | JSON Schema 2020-12 of the common data model (03 §4), with closed lists and code patterns. Version 0.5. |
 | `build_registro.ps1` | Builds `registro.html` by embedding the JSON files in the template. It checks the sources before generating. |
 | `_fuentes/registro.plantilla.html` | The application without data: the only thing edited by hand. It is not published. |
 | `README.md` · `README_en.md` | This document, in Spanish and English. |
@@ -123,7 +123,7 @@ The application does not send data to third parties or load external resources (
 
 ## Data model
 
-A single JSON object with `version_esquema` (`0.4`; `0.1`, `0.2` and `0.3` files are accepted and upgraded on load, because `0.2`, `0.3` and `0.4` only add optional fields), `aviso_legal` (text, optional on import), `meta` (organisation, reference date, currency, time-limit configuration) and one list per entity from 03 §4. `null` means “no data”. Dates `YYYY-MM-DD`. Field names and closed-list codes are in Spanish, as in the rest of the SEVEN-G library.
+A single JSON object with `version_esquema` (`0.5`; `0.1` to `0.4` files are accepted and upgraded on load, because each version after `0.1` only adds optional fields), `aviso_legal` (text, optional on import), `meta` (organisation, reference date, currency, time-limit configuration) and one list per entity from 03 §4. `null` means “no data”. Dates `YYYY-MM-DD`. Field names and closed-list codes are in Spanish, as in the rest of the SEVEN-G library.
 
 | List | Entity | Code |
 |---|---|---|
@@ -135,7 +135,7 @@ A single JSON object with `version_esquema` (`0.4`; `0.1`, `0.2` and `0.3` files
 | `evidencias` | Link, template, version, author, date and verification (linked, not copied) | `EVI-AAAA-NNNN` |
 | `valores` | Expected or realised amount by type, formula, status (validated, declared, estimated), period, source, dashboard line (`concepto`, optional) and business unit (`area`, optional, cross-unit initiatives) | `VAL-NNNN` |
 | `riesgos` | Risk (T06): description, category, typical risk, system, owner, inherent and residual assessment, controls and their effectiveness, response, contingency, status, trend, review and acceptance | `IA-AAAA-NNN · Rnn` |
-| `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Related entities (in this version they are displayed and exported; full management belongs to T08, T09 and T18) | `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
+| `no_conformidades` · `incidentes` · `proveedores` · `recomendaciones` | Related entities (in this version they are displayed and exported; full management belongs to T08 and T09; recommendations are managed in the Board view, T18) | `NC-AAAA-NNN` · `INC-AAAA-NNN` · `PRV-NNN` · `REC-AAAA-NNN` |
 | `personas` | People assignable to roles, verification, decision and conditions | `PER-NN` |
 
 Closed lists (values in the schema): sphere `01`–`09`; ambition `optimizar · aumentar · transformar`; intensity `lite · enterprise`; regulatory classification `prohibido · alto_riesgo · transparencia · riesgo_minimo · fuera_ambito · pendiente`; technology `ml_predictivo · ia_generativa · agente · lenguaje_documentos · vision · optimizacion · ia_terceros_embebida · reglas`; exposure `interna · empleados · clientes_indirecta · clientes_directa`; value type `eficiencia · retorno · riesgo_evitado · cumplimiento`; stop or retirement reason (10 codes); statuses (8); outcomes (9); criterion statuses (4); event types (18); autonomy `A0`–`A3`.
@@ -191,6 +191,19 @@ The connector `../T17_panel_consejo/t01_a_panel.py` converts the full JSON of th
 | `aceptacion` | `organo` (`producto` · `patrocinador` · `comite_ia` · `consejo`), `persona`, `fecha`, `vigencia`, `referencia` | Acceptance of the residual by the body for its level. |
 
 The board dashboard (T17) does not read these fields: it still uses the initiative's main residual risk.
+
+**Fields added in schema 0.5: transformation index evidence (T14) and board register (T18)** (documents 12 and 62; all optional, a 0.1 to 0.4 register remains valid):
+
+| Field | Values | Use |
+|---|---|---|
+| `iniciativas[].indice.itp2` · `itp3` | `estado` (`pendiente` · `verificada` · `no_verificada`), `gate` (`G2` · `G5` · `R6` · `G7`), `fecha`, `verificador`, `evidencia`; in `itp3`, `supervision_p17` | Verification at a *gate* of answers IT-P2 and IT-P3 (signals 4 and 5 of document 12). A change in roles without verified human oversight does not count. |
+| `iniciativas[].indice.unidad_completa` | yes or no | Redesign of an entire organisational unit (level 3 of signal 5). |
+| `iniciativas[].indice.capacidad` | `horas_liberadas`, `horas_materializadas`, `horas_reasignadas`, `actividad_destino`, `roles_redisenados`, `fecha` | Released and converted capacity (T20, signal 3). Reassigned hours require their destination activity. |
+| `valores[].oferta_habilitada_ia` | yes or no | Return from an offering that would not exist without AI (counterfactual test; signal 6). |
+| `meta.indice` | `ingresos_totales`, `periodo_ingresos`, `it_d3`, `it_d3_evidencia` | Denominator of signal 6 and condition IT-D3 of the transformation declaration. |
+| `decisiones_consejo[]` | `DEC-YYYY-NNN` with `fecha`, `organo`, `acta`, `tipo`, `asunto` (thesis, Transform bet at G2, scaling at G7, review of a bet, stage decision, Critical risk, C5 review, taking note, other), `texto`, `resultado`, `iniciativas`, `esferas_transformar`, `limite_inversion_etapa`, `etapa`, `decision_etapa`, `vigencia`, `responsable`, `recomendaciones` | Board decisions from document 62 §10: source of signal 8 and condition IT-D1. |
+
+The record shows the index evidence in its summary ("Edit index evidence") and the **Board (T18)** view records decisions and recommendations, with the signal 8 reading and the company data. The index calculator (T14) reads all of this from the register's full JSON; the T17 connector does not read it.
 
 **Why it matters.** Entering an initiative in T01 is the equivalent of logging an opportunity in a CRM: from then on, every phase entry, gate decision, amount and closure recorded in the register moves the case through the dashboard funnel without anyone typing the data again. The board sees the same thing the AI Office manages.
 

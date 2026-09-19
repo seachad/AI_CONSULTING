@@ -143,6 +143,8 @@ Reglas del motor: no mostrar si `modalidad = "autodiagnostico"` (11 §4.1: no se
 
 ## 7. Índice de transformación (12 §4–§6, T14) · `indice_transformacion`
 
+> **Resuelto el 19-09-2026 (D71)** con un bloque más sencillo: el conector pasa `indice` (ver `motor/ESQUEMA.md`) desde el JSON que exporta la calculadora T14 (`--indice`), y el motor muestra la tarjeta «Índice de transformación de la compañía» en «Cartera y valor» sin recalcular nada. Queda pendiente la vista en el panel móvil. La propuesta original se conserva como referencia.
+
 ```json
 "indice_transformacion": {
   "fecha_corte": "2026-06-30", "version_umbrales": "12-v1", "calculo": "anual",

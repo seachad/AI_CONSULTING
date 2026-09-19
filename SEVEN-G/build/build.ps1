@@ -316,7 +316,7 @@ function ObtenerMapaReferencias([string]$lang) {
   }
 
   # Ninguna herramienta citada queda sin enlace (D64). Los módulos de T01 enlazan a su vista del registro; el registro de
-  # recomendaciones (T18) al documento 62, que lo define; y cada herramienta sin aplicación propia, al procedimiento con el que
+  # recomendaciones (T18) a la vista «Consejo» del registro (D71) o, sin registro, al documento 62, que lo define; y cada herramienta sin aplicación propia, al procedimiento con el que
   # «Se aplica» según la columna «Estado» del catálogo del documento 03 (la primera plantilla o documento que cita).
   $htmlSevenG = Join-Path $repo "SEVEN-G\html\$lang"
   $mdsSevenG = Join-Path $repo "SEVEN-G\mds\es"
@@ -328,7 +328,7 @@ function ObtenerMapaReferencias([string]$lang) {
     return [IO.Path]::GetRelativePath((Join-Path $root "html\$lang"), (Join-Path $htmlSevenG $relHtml)).Replace('\', '/')
   }
   if ($map['T01']) {
-    foreach ($par in @(@('T02', '#/inventario'), @('T03', '#/gates'), @('T04', ''), @('T05', ''), @('T06', '#/riesgos'))) {
+    foreach ($par in @(@('T02', '#/inventario'), @('T03', '#/gates'), @('T04', ''), @('T05', ''), @('T06', '#/riesgos'), @('T18', '#/consejo'))) {
       if (-not $map[$par[0]]) { $map[$par[0]] = $map['T01'] + $par[1] }
     }
   }
@@ -533,7 +533,7 @@ foreach ($lang in $Idiomas) {
       $herramientas[$cod] = @{ ruta = $app.FullName; es = $titulos.es; en = $titulos.en }
     }
   }
-  $aliasHerr = @{ T02 = 'T01'; T03 = 'T01'; T04 = 'T01'; T05 = 'T01'; T06 = 'T01'; T13 = 'T11'; T18 = 'T17' }
+  $aliasHerr = @{ T02 = 'T01'; T03 = 'T01'; T04 = 'T01'; T05 = 'T01'; T06 = 'T01'; T13 = 'T11'; T18 = 'T01' }
 
   foreach ($f in $files) {
     $esIndice = $f.FullName -eq $indiceMd
