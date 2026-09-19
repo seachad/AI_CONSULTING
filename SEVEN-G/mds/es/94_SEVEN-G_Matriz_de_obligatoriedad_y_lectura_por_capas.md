@@ -249,6 +249,8 @@ Ninguna herramienta es obligatoria como aplicación: lo obligatorio es el regist
 | **Equipo de una iniciativa** | Documento 01 (sección 6) · la fase que toca del documento 20 · las plantillas de esa fase | documento 22 · documento 40 |
 | **Consultor** | Documentos 00, 01 y 04 · documento 91 · documento 93 | documento 90 · documento 92 |
 
+El [curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) recorre estos mismos itinerarios con módulos breves, ejercicios sobre los datos de ejemplo y preguntas de autocomprobación.
+
 ---
 
 ## 10. Herramientas y plantillas asociadas
@@ -272,6 +274,7 @@ Ninguna herramienta es obligatoria como aplicación: lo obligatorio es el regist
 | **41 · Catálogo de indicadores** | Conjunto mínimo de indicadores para Lite (sección 19). |
 | **52 · Manual de operación de IA** | Operación Lite y Enterprise (sección 14). |
 | **90 · Guía de implantación** | Alcance de implantación, criterios de elección y ruta mínima en alcance Lite (sección 2). |
+| **[Curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html)** | Itinerarios de aprendizaje por perfil. |
 
 ---
 

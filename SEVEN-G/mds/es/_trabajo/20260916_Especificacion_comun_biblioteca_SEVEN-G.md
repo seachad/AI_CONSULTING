@@ -50,6 +50,10 @@
 
 <!-- cifras: N | texto ; N | texto ; N | texto ; N | texto -->   (4 cifras que describan el documento, no cifras de mercado)
 
+> Aviso legal (D33)
+
+<!-- esencial: nivel | texto -->   (D75: siempre, enterprise, condicional, recomendado o consulta; el mismo nivel en EN y en la tabla del documento 94 §6)
+
 ---
 
 ## 1. Objeto y alcance
@@ -70,6 +74,7 @@ Ruta de redacción: `SEVEN-G/mds/es/`. La traducción usa **el mismo nombre de f
 | Nº | Fichero |
 |---|---|
 | 02 | `02_SEVEN-G_Glosario_y_convenciones.md` |
+| 04 | `04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.md` |
 | 10 | `10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.md` |
 | 11 | `11_SEVEN-G_Modelo_de_madurez.md` |
 | 12 | `12_SEVEN-G_Indice_de_transformacion.md` |
@@ -103,6 +108,8 @@ Ruta de redacción: `SEVEN-G/mds/es/`. La traducción usa **el mismo nombre de f
 | 91 | `91_SEVEN-G_Guia_para_consultores.md` |
 | 92 | `92_SEVEN-G_Casos_de_aplicacion.md` |
 | 93 | `93_SEVEN-G_Licencia_uso_y_citacion.md` |
+| 94 | `94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.md` |
+| Curso | `curso/M00_SEVEN-G_Curso_Guia_del_curso.md` y `curso/MNN_SEVEN-G_Curso_<Nombre>.md` (M01–M09); sin directiva «esencial» |
 | P01–P71 | `plantillas/PNN_SEVEN-G_<Nombre_con_guiones_bajos>.md` |
 
 ## 5. Parámetros comunes

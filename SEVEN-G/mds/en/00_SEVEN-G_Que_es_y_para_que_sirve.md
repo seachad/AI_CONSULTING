@@ -18,6 +18,8 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
+<!-- esencial: siempre | Initial reading for anyone who is going to use the framework. The quick start (section 0) and sections 1 to 6 are enough: what it is, what problem it solves, how it is built (spheres, corporate cycle, lifecycle with gates, governance and measurement) and the ten value measurement rules. -->
+
 ## 0. Quick start
 
 **SEVEN-G** (*Seven-phase Enterprise Value & Governance*) is a complete method, **free of charge and modifiable**, that lets a company implement, govern and measure its artificial intelligence by itself —enterprise self-consulting supported by AI— and answer, with evidence, whether it is transforming itself or just becoming more efficient. This section takes five minutes to read and serves a single purpose: **deciding whether it is worth reading on**.
@@ -63,8 +65,6 @@ SEVEN-G is not a brochure that ends in a sales proposal: **the working material 
 The rest of this page develops the above in detail: what SEVEN-G means and how it is followed (section 1), the problem it solves (2), what it helps with (3), how it is built (4), how it tells transformation from efficiency (5) and the rules it uses to measure value (6).
 
 ---
-
-<!-- esencial: siempre | Initial reading for anyone who is going to use the framework. Sections 1 to 6 are enough: what it is, what problem it solves, how it is built (spheres, corporate cycle, lifecycle with gates, governance and measurement) and the ten value measurement rules. -->
 
 ## 1. What SEVEN-G means
 
@@ -424,7 +424,7 @@ SEVEN-G version 0.1 is operational. Every document, template and tool in this ta
 
 | Block | Documents |
 |---|---|
-| **A · Foundations** | [00 · What SEVEN-G is and how it helps companies](00_SEVEN-G_Que_es_y_para_que_sirve.html) · [01 · Foundational methodology](01_SEVEN-G_Metodologia_fundacional.html) · [02 · Glossary and conventions](02_SEVEN-G_Glosario_y_convenciones.html) · [03 · Tools and initiative register](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) |
+| **A · Foundations** | [00 · What SEVEN-G is and how it helps companies](00_SEVEN-G_Que_es_y_para_que_sirve.html) · [01 · Foundational methodology](01_SEVEN-G_Metodologia_fundacional.html) · [02 · Glossary and conventions](02_SEVEN-G_Glosario_y_convenciones.html) · [03 · Tools and initiative register](03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html) · [04 · Where SEVEN-G comes from, how it differs and why it is open](04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html) |
 | **B · Strategy and portfolio** | [10 · Sphere map and ambition levels](10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html) · [11 · Maturity model](11_SEVEN-G_Modelo_de_madurez.html) · [12 · Transformation index](12_SEVEN-G_Indice_de_transformacion.html) · [13 · AI thesis, ambition and risk appetite](13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html) · [14 · Portfolio management](14_SEVEN-G_Gestion_de_cartera.html) |
 | **C · Lifecycle** | [20 · Phase manuals](20_SEVEN-G_Manuales_de_fase.html) · [21 · Gate and audit criteria](21_SEVEN-G_Criterios_de_gate_y_auditoria.html) · [22 · Checklists by gate](22_SEVEN-G_Listas_de_verificacion_por_gate.html) · [23 · Adoption and change in the initiative](23_SEVEN-G_Adopcion_y_cambio.html) |
 | **D · Governance, risk and compliance** | [30 · Governance model](30_SEVEN-G_Modelo_de_gobierno.html) · [31 · Corporate AI policy and acceptable use policy](31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html) · [32 · AI system inventory and regulatory classification](32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html) · [33 · AI risk methodology](33_SEVEN-G_Metodologia_de_riesgos_de_IA.html) · [34 · Regulatory mapping](34_SEVEN-G_Mapeo_regulatorio.html) · [35 · AI and agent security](35_SEVEN-G_Seguridad_de_IA_y_agentes.html) · [36 · AI third parties and suppliers](36_SEVEN-G_Terceros_y_proveedores_de_IA.html) · [37 · Nonconformities, AI incidents and remediation](37_SEVEN-G_No_conformidades_e_incidentes.html) · [38 · AI audit framework](38_SEVEN-G_Marco_de_auditoria_de_IA.html) |
@@ -433,7 +433,8 @@ SEVEN-G version 0.1 is operational. Every document, template and tool in this ta
 | **G · Board** | [60 · Board pack](60_SEVEN-G_Paquete_para_el_consejo.html) · [61 · Board conversation guide](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) · [62 · Recommendations and decisions register](62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html) |
 | **H · Templates** | 71 templates, linked from the [library index](index.html) and with an editable Word version: from P01 to P31, one for each piece of mandatory evidence in the lifecycle; from P32 to P71, the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation. |
 | **I · Tools** | Initiative register T01 (with system inventory, *gate* manager, intensity determination and ambition classification) and connector T17, which feeds the board dashboard and the recommendations register with the register's data. |
-| **J · Framework adoption** | [90 · Implementation guide](90_SEVEN-G_Guia_de_implantacion.html) · [91 · Guide for consultants and support models](91_SEVEN-G_Guia_para_consultores.html) · [92 · Application cases](92_SEVEN-G_Casos_de_aplicacion.html) · [93 · Licence, use by third parties and citation](93_SEVEN-G_Licencia_uso_y_citacion.html) |
+| **J · Framework adoption** | [90 · Implementation guide](90_SEVEN-G_Guia_de_implantacion.html) · [91 · Guide for consultants and support models](91_SEVEN-G_Guia_para_consultores.html) · [92 · Application cases](92_SEVEN-G_Casos_de_aplicacion.html) · [93 · Licence, use by third parties and citation](93_SEVEN-G_Licencia_uso_y_citacion.html) · [94 · Obligation matrix and layered reading](94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html) |
+| **K · Course** | [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html): a guide and nine short modules, with exercises on the example data and self-check questions, to learn what the framework is, how it is used and how to find your way around the site. It defines no rules: each module leads to the document that develops it. |
 
 ---
 

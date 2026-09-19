@@ -249,6 +249,8 @@ No tool is mandatory as an application: what is mandatory is the register or the
 | **Initiative team** | document 01 (section 6) · the relevant phase of document 20 · the templates of that phase | document 22 · document 40 |
 | **Consultant** | document 00 · document 01 · document 04 · document 91 · document 93 | document 90 · document 92 |
 
+The [SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) follows these same paths with short modules, exercises on the example data and self-check questions.
+
 ---
 
 ## 10. Associated tools and templates
@@ -272,6 +274,7 @@ No tool is mandatory as an application: what is mandatory is the register or the
 | **41 · Indicator catalogue** | Minimum set of indicators for Lite (section 19). |
 | **52 · AI operations manual** | Lite and Enterprise operation (section 14). |
 | **90 · Implementation guide** | Implementation scope, selection criteria and minimum path in Lite scope (section 2). |
+| **[SEVEN-G course](curso/M00_SEVEN-G_Curso_Guia_del_curso.html)** | Learning paths by profile. |
 
 ---
 

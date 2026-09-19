@@ -103,6 +103,9 @@ El perímetro puede ser toda la compañía o una parte (una filial, un país, un
 
 El resto de la biblioteca se consulta cuando se necesita: ambición y cartera (10, 13, 14), manuales de fase y listas de verificación (20, 22), adopción y personas (23, 50), políticas (31), incidentes (37), indicadores y costes (41, 42, 43), datos, operación y construcción (51, 52, 53), consejo (60, 61, 62) y casos de aplicación (92), que incluye iniciativas Lite de compañías medianas.
 
+
+El documento 94 extiende esta ruta a toda la biblioteca: da el nivel de obligatoriedad de cada documento, plantilla y herramienta, los disparadores que activan cada módulo y lo que puede agruparse en las puertas; cada documento resume su parte mínima en su recuadro «Lo esencial». El [curso de SEVEN-G](curso/M00_SEVEN-G_Curso_Guia_del_curso.html) recorre la misma ruta en módulos breves.
+
 ---
 
 ## 3. Requisitos previos
@@ -326,3 +329,4 @@ Las herramientas sin aplicación propia se aplican con la plantilla o el documen
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define el alcance de implantación Lite o Enterprise de compañía, los requisitos previos, el plan de 90 días semana a semana, la regularización, la hoja de ruta de 6 a 18 meses hasta 01 §14, los roles mínimos, los errores frecuentes y los indicadores de implantación. |
 | 0.1 | 19-09-2026 | El tamaño no decide el alcance (2.1); una apuesta de Transformar aislada no obliga a alcance Enterprise (2.2); ruta mínima en alcance Lite (2.4); se retiran las menciones a documentos o herramientas pendientes. |
+| 0.1 | 19-09-2026 | La ruta mínima (2.4) remite a la matriz de obligatoriedad (documento 94), al recuadro «Lo esencial» de cada documento y al curso. |
