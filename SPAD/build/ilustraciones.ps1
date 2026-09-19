@@ -1,19 +1,19 @@
 <#
-  Extrae las ilustraciones de SPAD/Documents/SPAD_AI_Engineering.pdf que se publican en la biblioteca SPAD.
+  Extrae las ilustraciones de SPAD/_legacy/SPAD_AI_Engineering.pdf que se publican en la biblioteca SPAD.
   Renderiza las páginas elegidas, las recorta (sin título en la lámina del problema y sin la marca de la herramienta
   con que se generaron) y las guarda en JPEG en SPAD/html/img/, desde donde las enlazan los documentos.
 
   Uso:   pwsh -File SPAD/build/ilustraciones.ps1
   Requiere Windows PowerShell 5.1 (powershell.exe) para el renderizado del PDF (SEVEN-G/build/pdf_a_png.ps1).
 
-  Láminas que NO se publican (decisión D61): 1 (presenta SPAD como parte de SEVEN-G, contra D09), 10 (tiempos
+  Láminas que NO se publican (decisión D62): 1 (presenta SPAD como parte de SEVEN-G, contra D09), 10 (tiempos
   sin respaldo), 12 (cifras de mejora y retorno sin respaldo), 13 («certificación», contra D25) y 14 (plazos y
   certificaciones). De la lámina 2 solo se publica la gráfica, sin el porcentaje sin respaldo.
 #>
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $repo   = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
-$pdf    = Join-Path $repo 'SPAD\Documents\SPAD_AI_Engineering.pdf'
+$pdf    = Join-Path $repo 'SPAD\_legacy\SPAD_AI_Engineering.pdf'
 $destino = Join-Path $repo 'SPAD\html\img'
 $tmp    = Join-Path ([IO.Path]::GetTempPath()) ('spad_ilus_' + [Guid]::NewGuid().ToString('N').Substring(0, 6))
 New-Item -ItemType Directory -Force $destino, $tmp | Out-Null
