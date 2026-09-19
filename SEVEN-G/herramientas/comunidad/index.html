@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comunidad SEVEN-G · Incidencias y peticiones</title>
+<meta name="description" content="Incidencias y peticiones de mejora de SEVEN-G: envía la tuya y vota las de otras personas, sin cuenta ni correo.">
+<meta name="referrer" content="no-referrer">
+<script>try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+
+<!-- CONFIGURACIÓN: lo único que se edita a mano en esta página (ver README.md).
+     repo         repositorio público de GitHub donde viven los issues.
+     endpoint     URL del intermediario (worker/worker.js desplegado), sin barra final. Vacío = la página solo lee los issues
+                  de la API pública de GitHub y no permite enviar ni votar.
+     umbralVotos  número de votos a partir del cual una petición se estudia; null = no se muestra ningún número. -->
+<script id="config">
+window.SEVENG_COMUNIDAD = { repo: 'seachad/seven-g-feedback', endpoint: '', umbralVotos: null };
+</script>
+
+<style>
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a;
+  --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b; --negro: #1a1817;
+  --regla: #c9a78d; --regla-2: #e7c6ab;
+  --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--papel); }
+body { margin: 0; color: var(--tinta); font: 17px/1.6 var(--serif); overflow-wrap: anywhere; }
+a { color: var(--oxford); text-underline-offset: 3px; }
+.envoltura { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.barra { position: sticky; top: 0; z-index: 10; background: var(--papel); border-bottom: 1px solid var(--regla); }
+.barra .envoltura { display: flex; align-items: center; gap: 10px 20px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+.barra-marca { font: 800 18px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); display: inline-block; }
+.barra-dcha { margin-left: auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font: 500 14px/1 var(--sans); }
+.tema select, .filtros select { font: 500 14px/1 var(--sans); color: var(--tinta); background: var(--papel-2); border: 1px solid var(--regla); padding: 6px 8px; }
+.idioma { display: flex; border: 1px solid var(--regla); }
+.idioma button { appearance: none; border: 0; background: transparent; padding: 6px 10px; font: 700 14px/1 var(--sans); color: var(--tinta-2); cursor: pointer; }
+.idioma button[aria-pressed="true"] { background: var(--negro); color: var(--papel); }
+
+.cabecera { padding: 40px 0 26px; border-bottom: 4px solid var(--negro); position: relative; }
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 12px; }
+h1 { font: 600 clamp(32px, 5vw, 54px)/1.05 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 16px; }
+.entradilla { font: 400 clamp(17px, 2vw, 20px)/1.5 var(--sans); color: var(--tinta-2); max-width: 860px; margin: 0; }
+h2 { font: 600 clamp(24px, 3vw, 30px)/1.15 var(--serif); color: var(--negro); margin: 44px 0 6px; }
+.sub { font: 400 15.5px/1.5 var(--sans); color: var(--tinta-2); margin: 0 0 18px; max-width: 860px; }
+
+.reglas { display: grid; grid-template-columns: 1fr; gap: 0 28px; margin-top: 34px; border-top: 1px solid var(--negro); }
+@media (min-width: 820px) { .reglas { grid-template-columns: repeat(3, 1fr); } }
+.regla-c { padding: 14px 0 12px; border-bottom: 1px solid var(--regla); font: 400 15px/1.5 var(--sans); color: var(--tinta-2); }
+.regla-c b { display: block; font: 700 17px/1.25 var(--serif); color: var(--negro); margin-bottom: 4px; }
+
+.identidad { margin-top: 26px; padding: 12px 14px; background: var(--papel-2); border-left: 4px solid var(--teal); font: 400 15px/1.5 var(--sans); display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.identidad b { font: 700 16px/1.2 var(--serif); color: var(--negro); }
+.boton { font: 700 14.5px/1 var(--sans); padding: 10px 14px; border: 2px solid var(--negro); color: var(--negro); background: transparent; cursor: pointer; text-decoration: none; display: inline-block; }
+.boton.primario { background: var(--negro); color: var(--papel); }
+.boton:hover:not(:disabled), .boton:focus-visible { background: var(--claret); border-color: var(--claret); color: #fff; }
+.boton:disabled { opacity: .45; cursor: not-allowed; }
+.boton.menor { padding: 7px 10px; font-size: 13px; border-width: 1px; }
+
+.dos { display: grid; grid-template-columns: 1fr; gap: 0 40px; }
+@media (min-width: 940px) { .dos { grid-template-columns: 1.55fr 1fr; align-items: start; } .dos > aside { position: sticky; top: 64px; } }
+
+.filtros { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font: 500 14px/1 var(--sans); border-top: 4px solid var(--negro); padding-top: 14px; }
+.filtros label { display: flex; align-items: center; gap: 6px; color: var(--tinta-2); }
+.filtros .cuenta { margin-left: auto; color: var(--tinta-3); }
+.lista { list-style: none; margin: 12px 0 0; padding: 0; }
+.caso { display: grid; grid-template-columns: 74px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--regla); }
+.voto { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 4px; border: 2px solid var(--negro); background: transparent; color: var(--negro); cursor: pointer; font: 600 12px/1.2 var(--sans); height: max-content; }
+.voto b { font: 600 28px/1 var(--serif); }
+.voto[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: #fff; }
+:root[data-theme="noche"] .voto[aria-pressed="true"] { color: #10252a; }
+.voto:hover:not(:disabled), .voto:focus-visible { border-color: var(--claret); }
+.voto:disabled { cursor: default; opacity: .6; }
+.caso h3 { font: 600 20px/1.25 var(--serif); color: var(--negro); margin: 0 0 4px; }
+.meta { font: 500 13px/1.5 var(--sans); color: var(--tinta-3); margin: 0 0 6px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+.chapa { font: 700 11px/1 var(--sans); letter-spacing: .07em; text-transform: uppercase; padding: 4px 6px; color: #fff; background: var(--oxford); }
+:root[data-theme="noche"] .chapa { color: #15181e; }
+.chapa.peticion { background: var(--teal); } .chapa.resuelto { background: var(--velvet); } .chapa.descartado { background: var(--tinta-3); }
+.chapa.etq { background: transparent; color: var(--tinta-2) !important; border: 1px solid var(--regla); }
+.desc { font: 400 15px/1.55 var(--sans); color: var(--tinta-2); margin: 0; white-space: pre-wrap; }
+.desc.corta { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.mas { appearance: none; border: 0; background: none; padding: 0; margin-top: 4px; font: 600 13px/1.4 var(--sans); color: var(--oxford); cursor: pointer; text-decoration: underline; }
+.progreso { height: 5px; background: var(--regla-2); margin-top: 8px; max-width: 260px; } .progreso i { display: block; height: 100%; background: var(--teal); }
+.vacio { padding: 22px 0; font: 400 15.5px/1.55 var(--sans); color: var(--tinta-2); border-bottom: 1px solid var(--regla); }
+
+form.envio { border-top: 4px solid var(--negro); padding-top: 14px; font: 400 15px/1.5 var(--sans); }
+.campo { margin: 0 0 14px; } .campo > label, .campo > .rotulo { display: block; font-weight: 700; color: var(--negro); margin-bottom: 5px; }
+.campo input[type="text"], .campo textarea, dialog input[type="text"] { width: 100%; font: 400 16px/1.45 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--tinta-3); padding: 9px 10px; }
+.campo textarea { min-height: 150px; resize: vertical; }
+.ayuda { font-size: 13px; color: var(--tinta-3); margin-top: 4px; }
+.tipos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tipos label { border: 1px solid var(--tinta-3); padding: 9px 10px; cursor: pointer; display: flex; gap: 8px; align-items: flex-start; font-weight: 600; }
+.tipos label:has(input:checked) { border-color: var(--negro); background: var(--papel-2); box-shadow: inset 0 0 0 1px var(--negro); }
+.trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.mensaje { margin: 12px 0 0; padding: 10px 12px; font: 500 14.5px/1.5 var(--sans); border-left: 4px solid var(--teal); background: color-mix(in srgb, var(--teal) 10%, transparent); }
+.mensaje.error { border-left-color: var(--claret); background: color-mix(in srgb, var(--claret) 8%, transparent); }
+.mensaje:empty { display: none; }
+
+dialog { border: 2px solid var(--negro); background: var(--papel); color: var(--tinta); padding: 22px; max-width: 480px; width: calc(100% - 32px); font: 400 15px/1.55 var(--sans); }
+dialog::backdrop { background: rgba(20, 16, 14, .55); }
+dialog h2 { margin: 0 0 8px; font-size: 24px; }
+dialog .acciones { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; flex-wrap: wrap; }
+
+.aviso { margin: 44px 0 0; padding: 14px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); }
+.aviso strong { color: var(--negro); }
+.aviso.privacidad { border-left-color: var(--teal); background: color-mix(in srgb, var(--teal) 8%, transparent); margin-top: 26px; }
+.pie { margin: 32px 0 40px; border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+</style>
+</head>
+<body>
+<div class="barra" role="navigation">
+  <div class="envoltura">
+    <a class="barra-marca" href="../../../index.html" id="lnk-portada"><i></i>AI Consulting · SEACHAD</a>
+    <div class="barra-dcha">
+      <a href="../../html/es/index.html" id="lnk-biblioteca" data-i18n="biblioteca"></a>
+      <label class="tema"><span class="oculto" data-i18n="tema"></span>
+        <select id="tema" aria-label="Tema">
+          <option value="salmon" data-i18n="tema_salmon"></option>
+          <option value="claro" data-i18n="tema_claro"></option>
+          <option value="noche" data-i18n="tema_noche"></option>
+        </select>
+      </label>
+      <div class="idioma" role="group" aria-label="Idioma / Language">
+        <button type="button" id="btn-es" aria-pressed="true">ES</button>
+        <button type="button" id="btn-en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="envoltura">
+  <header class="cabecera">
+    <p class="antetitulo" data-i18n="antetitulo"></p>
+    <h1 data-i18n="titulo"></h1>
+    <p class="entradilla" data-i18n="entradilla"></p>
+  </header>
+
+  <section class="reglas" aria-label="Reglas">
+    <div class="regla-c"><b data-i18n="r1_t"></b><span data-i18n="r1" id="regla-votos"></span></div>
+    <div class="regla-c"><b data-i18n="r2_t"></b><span data-i18n="r2"></span></div>
+    <div class="regla-c"><b data-i18n="r3_t"></b><span data-i18n="r3"></span></div>
+  </section>
+
+  <div class="identidad" id="identidad">
+    <span><span data-i18n="id_rotulo"></span> <b id="id-usuario">—</b></span>
+    <button type="button" class="boton menor" id="btn-identidad"></button>
+    <span class="ayuda" data-i18n="id_ayuda" style="margin: 0;"></span>
+  </div>
+
+  <div class="dos">
+    <section aria-labelledby="h-lista">
+      <h2 id="h-lista" data-i18n="lista_t"></h2>
+      <p class="sub" data-i18n="lista_sub"></p>
+      <div class="filtros">
+        <label><span data-i18n="f_tipo"></span>
+          <select id="f-tipo"><option value="" data-i18n="f_todo"></option><option value="peticion" data-i18n="f_peticiones"></option><option value="incidencia" data-i18n="f_incidencias"></option></select></label>
+        <label><span data-i18n="f_estado"></span>
+          <select id="f-estado"><option value="abierto" data-i18n="f_abiertas"></option><option value="cerrado" data-i18n="f_cerradas"></option><option value="" data-i18n="f_todas"></option></select></label>
+        <label><span data-i18n="f_orden"></span>
+          <select id="f-orden"><option value="votos" data-i18n="f_votos"></option><option value="recientes" data-i18n="f_recientes"></option></select></label>
+        <span class="cuenta" id="cuenta"></span>
+      </div>
+      <ul class="lista" id="lista" data-estado="cargando" aria-live="polite"></ul>
+      <p class="ayuda" id="fuente" style="font: 400 13px/1.5 var(--sans); margin-top: 10px;"></p>
+    </section>
+
+    <aside aria-labelledby="h-envio">
+      <h2 id="h-envio" data-i18n="envio_t"></h2>
+      <p class="sub" data-i18n="envio_sub"></p>
+      <form class="envio" id="form-envio" novalidate>
+        <div class="campo"><span class="rotulo" data-i18n="c_tipo"></span>
+          <div class="tipos">
+            <label><input type="radio" name="tipo" value="peticion" checked><span data-i18n="c_peticion"></span></label>
+            <label><input type="radio" name="tipo" value="incidencia"><span data-i18n="c_incidencia"></span></label>
+          </div>
+        </div>
+        <div class="campo"><label for="c-titulo" data-i18n="c_titulo"></label>
+          <input type="text" id="c-titulo" maxlength="120" autocomplete="off" required>
+          <div class="ayuda" data-i18n="c_titulo_a"></div></div>
+        <div class="campo"><label for="c-desc" data-i18n="c_desc"></label>
+          <textarea id="c-desc" maxlength="5000" required></textarea>
+          <div class="ayuda" data-i18n="c_desc_a"></div></div>
+        <div class="trampa" aria-hidden="true"><label>Web <input type="text" id="c-web" tabindex="-1" autocomplete="off"></label></div>
+        <button type="submit" class="boton primario" id="btn-enviar" data-i18n="c_enviar"></button>
+        <p class="mensaje" id="msg-envio" role="status"></p>
+      </form>
+    </aside>
+  </div>
+
+  <p class="aviso privacidad" data-i18n="privacidad"></p>
+  <p class="aviso" data-i18n="aviso"></p>
+
+  <footer class="pie">
+    <span>© 2026 Fernando García · SEACHAD</span>
+    <span data-i18n="pie_lic"></span>
+  </footer>
+</main>
+
+<dialog id="dlg-identidad" aria-labelledby="dlg-t">
+  <form method="dialog" id="form-identidad" novalidate>
+    <h2 id="dlg-t" data-i18n="dlg_t"></h2>
+    <p data-i18n="dlg_p" style="margin: 0 0 12px;"></p>
+    <label for="c-usuario" class="oculto" data-i18n="id_rotulo"></label>
+    <input type="text" id="c-usuario" maxlength="30" autocomplete="off" spellcheck="false">
+    <div class="ayuda" data-i18n="dlg_a"></div>
+    <p class="mensaje error" id="msg-identidad" role="alert"></p>
+    <div class="acciones">
+      <button type="button" class="boton" id="btn-cancelar" data-i18n="cancelar"></button>
+      <button type="submit" class="boton primario" data-i18n="guardar"></button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+  var CFG = window.SEVENG_COMUNIDAD || {};
+  var REPO = CFG.repo || '', ENDPOINT = String(CFG.endpoint || '').replace(/\/+$/, ''), UMBRAL = CFG.umbralVotos > 0 ? CFG.umbralVotos : null;
+  var K_USUARIO = 'seveng-comunidad-usuario', K_IDIOMA = 'seveng-comunidad-idioma';
+  var RE_USUARIO = /^[\p{L}\p{N}][\p{L}\p{N} ._-]{1,28}[\p{L}\p{N}]$/u;
+  var $ = function (id) { return document.getElementById(id); };
+
+  var T = {
+    es: {
+      biblioteca: 'Biblioteca SEVEN-G', tema: 'Tema', tema_salmon: 'Salmón', tema_claro: 'Salmón claro', tema_noche: 'Noche',
+      antetitulo: 'Comunidad SEVEN-G', titulo: 'Incidencias y peticiones de mejora',
+      entradilla: 'Cuenta qué falla o qué echas en falta en SEVEN-G, SPHERES o SPAD, y vota lo que han pedido otras personas. Sin cuenta, sin correo y sin seguimiento: solo un identificador que eliges tú.',
+      r1_t: 'Deciden los votos', r1: 'Solo se abordan las peticiones de mejora que reúnen un número relevante de votos de la comunidad. Una petición sin apoyo no se descarta: espera a tenerlo. Las incidencias (errores) se corrigen según su gravedad.',
+      r1_umbral: ' Hoy, una petición se estudia a partir de <strong>{n} votos</strong>.',
+      r2_t: 'Un identificador, nada más', r2: 'Cada envío y cada voto llevan el identificador que tú eliges. Se guarda solo en este navegador, no se vuelve a pedir y puedes cambiarlo cuando quieras. No es una cuenta ni prueba quién eres.',
+      r3_t: 'El contacto lo decides tú', r3: 'Esta página no pide correo, teléfono ni nombre real, y nadie te va a escribir. Si quieres hablar con el autor de SEVEN-G, eres tú quien da el paso.',
+      id_rotulo: 'Tu identificador:', id_ninguno: 'sin elegir', id_elegir: 'Elegir', id_cambiar: 'Cambiar', id_ayuda: 'Es público: aparece junto a lo que envías. No uses datos personales.',
+      lista_t: 'Lo que ha pedido la comunidad', lista_sub: 'Vota lo que te importa: un voto por identificador, y puedes retirarlo. En las incidencias, el voto significa «a mí también me pasa».',
+      f_tipo: 'Tipo', f_todo: 'Todo', f_peticiones: 'Peticiones', f_incidencias: 'Incidencias', f_estado: 'Estado', f_abiertas: 'Abiertas', f_cerradas: 'Cerradas', f_todas: 'Todas',
+      f_orden: 'Orden', f_votos: 'Más votadas', f_recientes: 'Más recientes',
+      cuenta: '{n} de {m}', cargando: 'Cargando…', vacio: 'Todavía no hay nada aquí. La primera petición puede ser la tuya.', vacio_filtro: 'Nada coincide con estos filtros.',
+      sin_repo: 'El repositorio público de la comunidad todavía no está disponible. Vuelve pronto.', error_carga: 'No se ha podido cargar la lista ahora mismo. Inténtalo de nuevo en unos minutos.',
+      fuente: 'Todo lo que ves aquí es público y está en <a href="{url}" rel="noopener">GitHub · {repo}</a>, donde el autor responde y cierra cada caso.',
+      peticion: 'Petición', incidencia: 'Incidencia', resuelto: 'Resuelto', descartado: 'No previsto',
+      por: 'por {u}', anonimo: 'sin identificador', comentarios: '{n} respuestas', ver_github: 'Ver en GitHub', ver_mas: 'Ver más', ver_menos: 'Ver menos',
+      voto: 'votos', voto1: 'voto', votar: 'Votar', votado: 'Votado', voto_aria: 'Votar «{t}» ({n} votos)',
+      envio_t: 'Envía la tuya', envio_sub: 'Antes de escribir, mira si ya existe: un voto más ayuda más que un duplicado.',
+      c_tipo: '¿Qué es?', c_peticion: 'Petición de mejora', c_incidencia: 'Incidencia (algo falla)', c_titulo: 'Título', c_titulo_a: 'Una frase que se entienda sola (8–120 caracteres).',
+      c_desc: 'Descripción', c_desc_a: 'Qué necesitas o qué falla, en qué documento o herramienta y por qué importa. Texto sin formato; será público. No incluyas datos personales ni de tu compañía.',
+      c_enviar: 'Enviar', enviando: 'Enviando…', enviado: 'Recibido: ya está en la lista con tu voto. Gracias.',
+      sin_endpoint: 'El envío y el voto todavía no están activados en este sitio. Mientras tanto puedes leer la lista.',
+      e_titulo: 'El título necesita entre 8 y 120 caracteres.', e_descripcion: 'La descripción necesita al menos 20 caracteres.', e_usuario: 'Elige un identificador válido.',
+      e_limite: 'Has llegado al límite por hora. Inténtalo más tarde.', e_cerrado: 'Este caso está cerrado y ya no admite votos.', e_red: 'No se ha podido completar. Inténtalo de nuevo en unos minutos.',
+      dlg_t: 'Elige tu identificador', dlg_p: 'Aparecerá junto a tus envíos y contará tus votos. Se guarda solo en este navegador y no se vuelve a pedir.',
+      dlg_a: 'De 3 a 30 caracteres: letras, números, espacios, punto, guion y guion bajo. Es público; mejor un apodo que tu nombre. Si lo cambias, los votos anteriores siguen con el identificador antiguo.',
+      cancelar: 'Cancelar', guardar: 'Guardar',
+      privacidad: '<strong>Privacidad, sin letra pequeña.</strong> Esta página no usa cookies ni analítica, no carga fuentes ni scripts de terceros y no pide correo ni ningún dato de contacto: no es una forma de captar contactos. Tu identificador se guarda en el almacenamiento local de este navegador. Lo que envías (título, descripción, identificador y votos) se publica en un repositorio público de GitHub a través de un intermediario mínimo que actúa con la cuenta del autor; ese intermediario solo usa tu dirección IP, resumida y durante una hora como máximo, para frenar el abuso, y no la guarda. Su código es público y está junto a esta página.',
+      aviso: '<strong>Aviso legal y exención de responsabilidad.</strong> Estos contenidos y herramientas se ofrecen «tal cual» y con fines exclusivamente informativos; no constituyen asesoramiento ni garantizan el cumplimiento de ninguna norma. Cada organización que los use es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. Enviar o votar una petición no obliga al autor a atenderla ni crea ninguna relación de servicio. El autor puede editar, cerrar o retirar envíos que no respeten estas reglas.',
+      pie_lic: 'Contenidos: <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="noopener">CC BY 4.0</a> · Código: MIT'
+    },
+    en: {
+      biblioteca: 'SEVEN-G library', tema: 'Theme', tema_salmon: 'Salmon', tema_claro: 'Light salmon', tema_noche: 'Night',
+      antetitulo: 'SEVEN-G community', titulo: 'Issues and feature requests',
+      entradilla: 'Tell us what is broken or missing in SEVEN-G, SPHERES or SPAD, and vote on what others have asked for. No account, no email, no tracking: just an identifier you choose.',
+      r1_t: 'Votes decide', r1: 'Only feature requests that gather a relevant number of community votes are taken on. A request without support is not discarded: it waits until it has it. Issues (errors) are fixed according to their severity.',
+      r1_umbral: ' Today, a request is considered from <strong>{n} votes</strong>.',
+      r2_t: 'An identifier, nothing else', r2: 'Every submission and every vote carries the identifier you choose. It is stored only in this browser, is never asked for again, and you can change it whenever you want. It is not an account and does not prove who you are.',
+      r3_t: 'Contact is your call', r3: 'This page does not ask for an email, a phone number or a real name, and nobody will write to you. If you want to talk to the author of SEVEN-G, you are the one who takes the step.',
+      id_rotulo: 'Your identifier:', id_ninguno: 'not chosen', id_elegir: 'Choose', id_cambiar: 'Change', id_ayuda: 'It is public: it appears next to what you submit. Do not use personal data.',
+      lista_t: 'What the community has asked for', lista_sub: 'Vote for what matters to you: one vote per identifier, and you can withdraw it. On issues, a vote means “this happens to me too”.',
+      f_tipo: 'Type', f_todo: 'All', f_peticiones: 'Requests', f_incidencias: 'Issues', f_estado: 'Status', f_abiertas: 'Open', f_cerradas: 'Closed', f_todas: 'All',
+      f_orden: 'Sort', f_votos: 'Most voted', f_recientes: 'Most recent',
+      cuenta: '{n} of {m}', cargando: 'Loading…', vacio: 'Nothing here yet. The first request can be yours.', vacio_filtro: 'Nothing matches these filters.',
+      sin_repo: 'The public community repository is not available yet. Come back soon.', error_carga: 'The list could not be loaded right now. Try again in a few minutes.',
+      fuente: 'Everything you see here is public and lives on <a href="{url}" rel="noopener">GitHub · {repo}</a>, where the author replies to and closes each case.',
+      peticion: 'Request', incidencia: 'Issue', resuelto: 'Resolved', descartado: 'Not planned',
+      por: 'by {u}', anonimo: 'no identifier', comentarios: '{n} replies', ver_github: 'View on GitHub', ver_mas: 'Show more', ver_menos: 'Show less',
+      voto: 'votes', voto1: 'vote', votar: 'Vote', votado: 'Voted', voto_aria: 'Vote for “{t}” ({n} votes)',
+      envio_t: 'Submit yours', envio_sub: 'Before writing, check whether it already exists: one more vote helps more than a duplicate.',
+      c_tipo: 'What is it?', c_peticion: 'Feature request', c_incidencia: 'Issue (something is broken)', c_titulo: 'Title', c_titulo_a: 'One self-explanatory sentence (8–120 characters).',
+      c_desc: 'Description', c_desc_a: 'What you need or what fails, in which document or tool, and why it matters. Plain text; it will be public. Do not include personal or company data.',
+      c_enviar: 'Submit', enviando: 'Submitting…', enviado: 'Received: it is now on the list with your vote. Thank you.',
+      sin_endpoint: 'Submitting and voting are not enabled on this site yet. Meanwhile you can read the list.',
+      e_titulo: 'The title needs between 8 and 120 characters.', e_descripcion: 'The description needs at least 20 characters.', e_usuario: 'Choose a valid identifier.',
+      e_limite: 'You have reached the hourly limit. Try again later.', e_cerrado: 'This case is closed and no longer accepts votes.', e_red: 'It could not be completed. Try again in a few minutes.',
+      dlg_t: 'Choose your identifier', dlg_p: 'It will appear next to your submissions and count your votes. It is stored only in this browser and is never asked for again.',
+      dlg_a: '3 to 30 characters: letters, numbers, spaces, dot, hyphen and underscore. It is public; a nickname is better than your name. If you change it, earlier votes stay under the old identifier.',
+      cancelar: 'Cancel', guardar: 'Save',
+      privacidad: '<strong>Privacy, no small print.</strong> This page uses no cookies or analytics, loads no third-party fonts or scripts, and asks for no email or contact details: it is not a way to collect leads. Your identifier is stored in this browser’s local storage. What you submit (title, description, identifier and votes) is published in a public GitHub repository through a minimal intermediary that acts with the author’s account; that intermediary only uses your IP address, hashed and for one hour at most, to curb abuse, and does not store it. Its code is public and sits next to this page.',
+      aviso: '<strong>Legal notice and disclaimer.</strong> These contents and tools are provided “as is” and for information purposes only; they are not advice and do not guarantee compliance with any regulation. Each organisation that uses them is solely responsible for identifying the regulation that applies to it, verifying that it is in force and certifying its own regulatory compliance. Submitting or voting on a request does not oblige the author to address it and creates no service relationship. The author may edit, close or remove submissions that do not respect these rules.',
+      pie_lic: 'Content: <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a> · Code: MIT'
+    }
+  };
+
+  var idioma = 'es', issues = [], estadoLista = 'cargando', pendiente = null;
+  function t(k, v) { var s = T[idioma][k] || T.es[k] || k; if (v) for (var c in v) s = s.split('{' + c + '}').join(v[c]); return s; }
+  function leeLocal(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function guardaLocal(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function limpiaUsuario(u) { u = String(u || '').replace(/\s+/g, ' ').trim(); return RE_USUARIO.test(u) ? u : ''; }
+  function usuario() { return limpiaUsuario(leeLocal(K_USUARIO)); }
+  function el(tag, attrs, texto) { var e = document.createElement(tag); for (var a in (attrs || {})) e.setAttribute(a, attrs[a]); if (texto != null) e.textContent = texto; return e; }
+
+  /* ---- idioma y tema ---- */
+  function ponIdioma(l) {
+    idioma = l === 'en' ? 'en' : 'es';
+    document.documentElement.lang = idioma;
+    document.title = idioma === 'en' ? 'SEVEN-G community · Issues and requests' : 'Comunidad SEVEN-G · Incidencias y peticiones';
+    $('btn-es').setAttribute('aria-pressed', String(idioma === 'es')); $('btn-en').setAttribute('aria-pressed', String(idioma === 'en'));
+    document.querySelectorAll('[data-i18n]').forEach(function (n) { n.innerHTML = t(n.getAttribute('data-i18n')); });   // textos propios de la página, nunca de usuarios
+    if (UMBRAL) $('regla-votos').innerHTML += t('r1_umbral', { n: UMBRAL });
+    $('lnk-portada').setAttribute('href', idioma === 'en' ? '../../../en/index.html' : '../../../index.html');
+    $('lnk-biblioteca').setAttribute('href', '../../html/' + idioma + '/index.html');
+    $('fuente').innerHTML = REPO ? t('fuente', { url: 'https://github.com/' + REPO + '/issues', repo: REPO }) : '';
+    pintaIdentidad(); pintaLista(); pintaEnvio();
+  }
+  $('btn-es').addEventListener('click', function () { guardaLocal(K_IDIOMA, 'es'); ponIdioma('es'); });
+  $('btn-en').addEventListener('click', function () { guardaLocal(K_IDIOMA, 'en'); ponIdioma('en'); });
+  var sel = $('tema'); sel.value = document.documentElement.getAttribute('data-theme') || 'salmon';
+  sel.addEventListener('change', function () { document.documentElement.setAttribute('data-theme', sel.value); guardaLocal('seveng-tema', sel.value); });
+
+  /* ---- identificador ---- */
+  function pintaIdentidad() {
+    var u = usuario();
+    $('id-usuario').textContent = u || t('id_ninguno');
+    $('btn-identidad').textContent = u ? t('id_cambiar') : t('id_elegir');
+  }
+  function pideIdentidad(despues) {
+    pendiente = despues || null;
+    $('c-usuario').value = usuario(); $('msg-identidad').textContent = '';
+    var d = $('dlg-identidad'); if (d.showModal) d.showModal(); else d.setAttribute('open', '');
+    $('c-usuario').focus();
+  }
+  function cierraDialogo() { var d = $('dlg-identidad'); if (d.close) d.close(); else d.removeAttribute('open'); }
+  $('btn-identidad').addEventListener('click', function () { pideIdentidad(null); });
+  $('btn-cancelar').addEventListener('click', function () { pendiente = null; cierraDialogo(); });
+  $('form-identidad').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var u = limpiaUsuario($('c-usuario').value);
+    if (!u) { $('msg-identidad').textContent = t('e_usuario'); return; }
+    guardaLocal(K_USUARIO, u); cierraDialogo(); pintaIdentidad(); pintaLista();
+    var f = pendiente; pendiente = null; if (f) f();
+  });
+  function conUsuario(f) { if (usuario()) f(); else pideIdentidad(f); }
+
+  /* ---- datos ---- */
+  // Misma lectura que worker/worker.js: los votos y el identificador van en un bloque oculto del texto del issue.
+  var SEPARADOR = '\n\n<!-- seveng-pie -->\n', RE_META = /<!--\s*seveng:(\{[\s\S]*?\})\s*-->/g;
+  function normaliza(i) {
+    var cuerpo = String(i.body || ''), meta = null, m; RE_META.lastIndex = 0;
+    while ((m = RE_META.exec(cuerpo))) { try { meta = JSON.parse(m[1]); } catch (e) {} }
+    meta = meta && typeof meta === 'object' ? meta : {};
+    var votos = Array.isArray(meta.votos) ? meta.votos.map(limpiaUsuario).filter(Boolean).map(function (v) { return v.toLowerCase(); }) : [];
+    votos = votos.filter(function (v, k) { return votos.indexOf(v) === k; });
+    var corte = cuerpo.indexOf(SEPARADOR), etq = (i.labels || []).map(function (e) { return typeof e === 'string' ? e : e.name; });
+    return {
+      numero: i.number, tipo: etq.indexOf('peticion') >= 0 ? 'peticion' : 'incidencia', titulo: i.title,
+      descripcion: (corte >= 0 ? cuerpo.slice(0, corte) : cuerpo.replace(RE_META, '')).replace(/​/g, '').trim(),
+      usuario: limpiaUsuario(meta.usuario), votos: votos.length, votantes: votos,
+      estado: i.state === 'open' ? 'abierto' : (i.state_reason === 'not_planned' ? 'descartado' : 'resuelto'),
+      etiquetas: etq.filter(function (e) { return ['comunidad', 'peticion', 'incidencia'].indexOf(e) < 0; }),
+      comentarios: i.comments || 0, creado: i.created_at, cerrado: i.closed_at || null, url: i.html_url
+    };
+  }
+  function carga() {
+    estadoLista = 'cargando'; pintaLista();
+    if (!REPO && !ENDPOINT) { estadoLista = 'sin_repo'; pintaLista(); return; }
+    var p = ENDPOINT
+      ? fetch(ENDPOINT + '/issues', { referrerPolicy: 'no-referrer' }).then(function (r) { if (!r.ok) throw r; return r.json(); }).then(function (d) { return d.issues || []; })
+      : fetch('https://api.github.com/repos/' + REPO + '/issues?labels=comunidad&state=all&per_page=100', { headers: { 'Accept': 'application/vnd.github+json' }, referrerPolicy: 'no-referrer' })
+          .then(function (r) { if (!r.ok) throw r; return r.json(); }).then(function (l) { return l.filter(function (i) { return !i.pull_request; }).map(normaliza); });
+    p.then(function (l) { issues = l; estadoLista = 'ok'; pintaLista(); })
+     .catch(function (r) { estadoLista = (r && r.status === 404) ? 'sin_repo' : 'error'; pintaLista(); });
+  }
+  function envia(ruta, datos) {
+    return fetch(ENDPOINT + ruta, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos), referrerPolicy: 'no-referrer' })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok) { var e = new Error(d.error || 'red'); e.codigo = d.error; throw e; } return d; }); });
+  }
+  function textoError(e) { var k = 'e_' + (e && e.codigo); return T.es[k] ? t(k) : t('e_red'); }
+  function sustituye(nuevo) {
+    if (!nuevo) return;
+    var k = issues.findIndex(function (x) { return x.numero === nuevo.numero; });
+    if (k >= 0) issues[k] = nuevo; else issues.unshift(nuevo);
+  }
+
+  /* ---- lista ---- */
+  function fecha(iso) { try { return new Date(iso).toLocaleDateString(idioma === 'en' ? 'en-GB' : 'es-ES', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return ''; } }
+  function pintaLista() {
+    var ul = $('lista'); ul.setAttribute('data-estado', estadoLista); ul.textContent = ''; $('cuenta').textContent = '';
+    if (estadoLista !== 'ok') { ul.appendChild(el('li', { 'class': 'vacio' }, t(estadoLista === 'cargando' ? 'cargando' : estadoLista === 'sin_repo' ? 'sin_repo' : 'error_carga'))); return; }
+    var fTipo = $('f-tipo').value, fEstado = $('f-estado').value, orden = $('f-orden').value, yo = usuario().toLowerCase();
+    var vista = issues.filter(function (i) { return (!fTipo || i.tipo === fTipo) && (!fEstado || (fEstado === 'abierto') === (i.estado === 'abierto')); });
+    vista.sort(function (a, b) { return orden === 'votos' ? (b.votos - a.votos) || (a.creado < b.creado ? 1 : -1) : (a.creado < b.creado ? 1 : -1); });
+    $('cuenta').textContent = t('cuenta', { n: vista.length, m: issues.length });
+    if (!vista.length) { ul.appendChild(el('li', { 'class': 'vacio' }, t(issues.length ? 'vacio_filtro' : 'vacio'))); return; }
+    vista.forEach(function (i) {
+      var li = el('li', { 'class': 'caso', 'data-numero': i.numero, 'data-tipo': i.tipo });
+      var votado = !!yo && i.votantes.indexOf(yo) >= 0;
+      var b = el('button', { type: 'button', 'class': 'voto', 'aria-pressed': String(votado), 'aria-label': t('voto_aria', { t: i.titulo, n: i.votos }) });
+      b.appendChild(el('b', null, String(i.votos))); b.appendChild(el('span', null, i.votos === 1 ? t('voto1') : t('voto')));
+      b.appendChild(el('span', null, votado ? '✓ ' + t('votado') : t('votar')));
+      if (i.estado !== 'abierto' || !ENDPOINT) b.disabled = true;
+      b.addEventListener('click', function () { conUsuario(function () { vota(i, b); }); });
+      li.appendChild(b);
+      var d = el('div');
+      d.appendChild(el('h3', null, i.titulo));
+      var m = el('p', { 'class': 'meta' });
+      m.appendChild(el('span', { 'class': 'chapa ' + i.tipo }, t(i.tipo)));
+      if (i.estado !== 'abierto') m.appendChild(el('span', { 'class': 'chapa ' + i.estado }, t(i.estado)));
+      i.etiquetas.forEach(function (e) { m.appendChild(el('span', { 'class': 'chapa etq' }, e)); });
+      m.appendChild(el('span', null, '#' + i.numero + ' · ' + t('por', { u: i.usuario || t('anonimo') }) + ' · ' + fecha(i.creado)));
+      if (i.comentarios) m.appendChild(el('span', null, t('comentarios', { n: i.comentarios })));
+      if (i.url) m.appendChild(el('a', { href: i.url, rel: 'noopener' }, t('ver_github')));
+      d.appendChild(m);
+      var p = el('p', { 'class': 'desc corta' }, i.descripcion); d.appendChild(p);
+      if (i.descripcion.length > 220 || i.descripcion.split('\n').length > 3) {
+        var mas = el('button', { type: 'button', 'class': 'mas', 'aria-expanded': 'false' }, t('ver_mas'));
+        mas.addEventListener('click', function () { var corta = p.classList.toggle('corta'); mas.textContent = t(corta ? 'ver_mas' : 'ver_menos'); mas.setAttribute('aria-expanded', String(!corta)); });
+        d.appendChild(mas);
+      }
+      if (UMBRAL && i.tipo === 'peticion' && i.estado === 'abierto') { var pr = el('div', { 'class': 'progreso', title: i.votos + ' / ' + UMBRAL }); var barra = el('i'); barra.style.width = Math.min(100, Math.round(100 * i.votos / UMBRAL)) + '%'; pr.appendChild(barra); d.appendChild(pr); }
+      li.appendChild(d); ul.appendChild(li);
+    });
+  }
+  function vota(i, boton) {
+    var quitar = boton.getAttribute('aria-pressed') === 'true';
+    boton.disabled = true;
+    envia('/votos', { numero: i.numero, usuario: usuario(), quitar: quitar })
+      .then(function (d) { sustituye(d.issue); pintaLista(); })
+      .catch(function (e) { boton.disabled = false; alert(textoError(e)); });
+  }
+  ['f-tipo', 'f-estado', 'f-orden'].forEach(function (id) { $(id).addEventListener('change', pintaLista); });
+
+  /* ---- envío ---- */
+  function mensaje(texto, error) { var m = $('msg-envio'); m.textContent = texto || ''; m.className = 'mensaje' + (error ? ' error' : ''); }
+  function pintaEnvio() { $('btn-enviar').disabled = !ENDPOINT; if (!ENDPOINT) mensaje(t('sin_endpoint')); }
+  $('form-envio').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var titulo = $('c-titulo').value.replace(/\s+/g, ' ').trim(), desc = $('c-desc').value.trim();
+    if (titulo.length < 8) { mensaje(t('e_titulo'), true); $('c-titulo').focus(); return; }
+    if (desc.length < 20) { mensaje(t('e_descripcion'), true); $('c-desc').focus(); return; }
+    conUsuario(function () {
+      var boton = $('btn-enviar'); boton.disabled = true; mensaje(t('enviando'));
+      envia('/issues', { tipo: document.querySelector('input[name="tipo"]:checked').value, titulo: titulo, descripcion: desc, usuario: usuario(), idioma: idioma, web: $('c-web').value })
+        .then(function (d) {
+          sustituye(d.issue); $('c-titulo').value = ''; $('c-desc').value = '';
+          $('f-estado').value = 'abierto'; $('f-tipo').value = ''; $('f-orden').value = 'recientes'; pintaLista(); mensaje(t('enviado'));
+        })
+        .catch(function (e) { mensaje(textoError(e), true); })
+        .then(function () { boton.disabled = false; });
+    });
+  });
+
+  /* ---- arranque ---- */
+  var guardado = leeLocal(K_IDIOMA);
+  ponIdioma(location.hash === '#en' ? 'en' : location.hash === '#es' ? 'es' : guardado || (/^en\b/i.test(navigator.language || '') ? 'en' : 'es'));
+  carga();
+})();
+</script>
+</body>
+</html>

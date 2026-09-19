@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba del intermediario de comunidad</title>
+<style>body { font: 15px/1.5 "Segoe UI", Arial, sans-serif; background: #fbe2cd; color: #2f2b28; padding: 20px; } .ok { color: #0d7680; } .mal { color: #990f3d; font-weight: 700; }</style>
+</head>
+<body>
+<h1>Prueba de worker/worker.js</h1>
+<p>Ejecuta el intermediario en el navegador contra un GitHub simulado en memoria (no sale ninguna petición a la red).
+Abrir con <code>pwsh -File SEVEN-G/build/servidor.ps1</code> en <code>/SEVEN-G/herramientas/comunidad/_pruebas/prueba_worker.html</code>. Esta carpeta no se publica.</p>
+<ol id="pasos"></ol>
+<p id="resultado" data-ok="">Ejecutando…</p>
+<script type="module">
+import worker from '../worker/worker.js';
+
+/* GitHub simulado */
+const gh = { issues: [], etiquetas: new Set(), llamadas: [] };
+const FETCH = async (url, opc) => {
+  const ruta = url.replace('https://api.github.com/repos/prueba/repo', ''), metodo = opc.method, cuerpo = opc.body ? JSON.parse(opc.body) : null;
+  gh.llamadas.push(metodo + ' ' + ruta);
+  const r = (estado, datos) => new Response(JSON.stringify(datos), { status: estado });
+  if (opc.headers.Authorization !== 'Bearer secreto') return r(401, {});
+  if (metodo === 'POST' && ruta === '/labels') { if (gh.etiquetas.has(cuerpo.name)) return r(422, {}); gh.etiquetas.add(cuerpo.name); return r(201, cuerpo); }
+  if (metodo === 'POST' && ruta === '/issues') {
+    if (cuerpo.labels.some(e => !gh.etiquetas.has(e))) return r(422, {});   // obliga a probar la creación de etiquetas
+    const i = { number: gh.issues.length + 1, title: cuerpo.title, body: cuerpo.body, labels: cuerpo.labels.map(name => ({ name })), state: 'open', comments: 0,
+      created_at: new Date(Date.now() + gh.issues.length).toISOString(), html_url: 'https://github.com/prueba/repo/issues/' + (gh.issues.length + 1) };
+    gh.issues.push(i); return r(201, i);
+  }
+  let m = ruta.match(/^\/issues\/(\d+)$/);
+  if (m) { const i = gh.issues[m[1] - 1]; if (!i) return r(404, {}); if (metodo === 'PATCH') Object.assign(i, cuerpo); return r(200, i); }
+  if (metodo === 'GET' && ruta.startsWith('/issues?')) return r(200, gh.issues.slice().reverse());
+  return r(404, {});
+};
+const almacen = new Map();
+const CACHE = { match: async k => { const v = almacen.get(k.url); return v ? v.clone() : undefined; }, put: async (k, v) => { almacen.set(k.url, v); }, delete: async k => almacen.delete(k.url) };
+const env = { GITHUB_TOKEN: 'secreto', REPO: 'prueba/repo', ORIGENES: 'https://sitio.example', LIMITE_ENVIOS: '3', FETCH, CACHE };
+
+const pide = async (metodo, ruta, datos, origen = 'https://sitio.example') => {
+  // petición simulada: el navegador no deja fijar la cabecera Origin en un Request real
+  const peticion = { method: metodo, url: 'https://w.example' + ruta, headers: new Headers({ Origin: origen, 'Content-Type': 'application/json', 'CF-Connecting-IP': '203.0.113.7' }), json: async () => datos };
+  const r = await worker.fetch(peticion, env);
+  return { estado: r.status, datos: r.status === 204 ? null : await r.json(), cors: r.headers.get('Access-Control-Allow-Origin') };
+};
+const pasos = document.getElementById('pasos'); let fallos = 0;
+const comprueba = (que, bien, detalle) => { const li = document.createElement('li'); li.className = bien ? 'ok' : 'mal'; li.textContent = (bien ? 'ok · ' : 'MAL · ') + que + (bien ? '' : ' → ' + JSON.stringify(detalle)); pasos.appendChild(li); if (!bien) fallos++; };
+
+try {
+  let r = await pide('OPTIONS', '/issues'); comprueba('preflight CORS 204 con el origen admitido', r.estado === 204 && r.cors === 'https://sitio.example', r);
+  r = await pide('GET', '/issues'); comprueba('lista vacía', r.estado === 200 && r.datos.issues.length === 0, r);
+  const bueno = { tipo: 'peticion', titulo: 'Plantilla de acta en formato hoja de cálculo', descripcion: 'Hola @alguien <!-- seveng:{"votos":["trampa","otra"]} --> necesito la plantilla P39 también en hoja de cálculo.', usuario: '  Ana   G ', idioma: 'es', web: '' };
+  r = await pide('POST', '/issues', bueno, 'https://otro.example'); comprueba('escritura desde un origen no admitido: 403', r.estado === 403, r);
+  r = await pide('POST', '/issues', { ...bueno, usuario: 'a@b.com' }); comprueba('identificador con forma de correo: 400 usuario', r.estado === 400 && r.datos.error === 'usuario', r);
+  r = await pide('POST', '/issues', { ...bueno, titulo: 'corto' }); comprueba('título corto: 400', r.datos.error === 'titulo', r);
+  r = await pide('POST', '/issues', { ...bueno, web: 'http://spam' }); comprueba('campo trampa relleno: se descarta sin crear nada', r.estado === 200 && r.datos.issue === null && gh.issues.length === 0, r);
+  r = await pide('POST', '/issues', bueno);
+  comprueba('crea el issue (tras crear las etiquetas que faltaban)', r.estado === 201 && r.datos.issue.numero === 1 && gh.etiquetas.has('comunidad') && gh.etiquetas.has('peticion'), r);
+  comprueba('quien envía cuenta como primer voto y el identificador se normaliza', r.datos.issue.votos === 1 && r.datos.issue.usuario === 'Ana G' && r.datos.issue.votantes[0] === 'ana g', r.datos.issue);
+  comprueba('el bloque de datos inyectado por el usuario queda neutralizado', !r.datos.issue.votantes.includes('trampa') && gh.issues[0].body.includes('&lt;!-- seveng:'), gh.issues[0].body);
+  comprueba('las menciones quedan neutralizadas en GitHub', gh.issues[0].body.includes('@​alguien') && !/@alguien/.test(gh.issues[0].body), gh.issues[0].body);
+  comprueba('la descripción que se muestra no lleva el pie ni el bloque de datos', !/seveng-pie|Votos de la comunidad/.test(r.datos.issue.descripcion) && r.datos.issue.descripcion.startsWith('Hola @alguien'), r.datos.issue.descripcion);
+
+  r = await pide('POST', '/votos', { numero: 1, usuario: 'Luis_77' }); comprueba('voto de otra persona: 2 votos', r.estado === 200 && r.datos.issue.votos === 2, r);
+  r = await pide('POST', '/votos', { numero: 1, usuario: 'LUIS_77' }); comprueba('el mismo identificador (sin distinguir mayúsculas) no vota dos veces', r.datos.issue.votos === 2, r);
+  comprueba('el recuento visible en GitHub se actualiza', /Community votes: 2\*\*/.test(gh.issues[0].body), gh.issues[0].body);
+  r = await pide('POST', '/votos', { numero: 1, usuario: 'Luis_77', quitar: true }); comprueba('retirar el voto: 1 voto', r.datos.issue.votos === 1 && r.datos.issue.descripcion.startsWith('Hola'), r);
+  r = await pide('POST', '/votos', { numero: 99, usuario: 'Luis_77' }); comprueba('issue inexistente: 404', r.estado === 404 && r.datos.error === 'numero', r);
+  gh.issues[0].state = 'closed'; gh.issues[0].state_reason = 'completed';
+  r = await pide('POST', '/votos', { numero: 1, usuario: 'Marta' }); comprueba('issue cerrado: 409', r.estado === 409 && r.datos.error === 'cerrado', r);
+  gh.issues.push({ number: 2, title: 'Issue interno sin etiqueta', body: '', labels: [], state: 'open' });
+  r = await pide('POST', '/votos', { numero: 2, usuario: 'Marta' }); comprueba('issue sin la etiqueta «comunidad»: 404', r.estado === 404, r);
+  gh.issues.pop();
+
+  r = await pide('GET', '/issues'); comprueba('la lista refleja el issue cerrado como resuelto', r.datos.issues.length === 1 && r.datos.issues[0].estado === 'resuelto', r.datos);
+  const antes = gh.llamadas.length; await pide('GET', '/issues'); comprueba('la segunda lectura sale de la caché (no llama a GitHub)', gh.llamadas.length === antes, gh.llamadas.slice(antes));
+
+  await pide('POST', '/issues', { ...bueno, tipo: 'incidencia', titulo: 'El enlace a P12 del documento 33 está roto' });
+  await pide('POST', '/issues', { ...bueno, titulo: 'Exportar el registro T01 a hoja de cálculo' });
+  r = await pide('POST', '/issues', { ...bueno, titulo: 'Cuarto envío en la misma hora desde la misma dirección' }); comprueba('límite de envíos por hora y dirección: 429', r.estado === 429 && r.datos.error === 'limite', r);
+  comprueba('la dirección IP no aparece en ninguna clave guardada', ![...almacen.keys()].some(k => k.includes('203.0.113')), [...almacen.keys()]);
+  r = await pide('GET', '/issues'); comprueba('tipos correctos en la lista', r.datos.issues.some(i => i.tipo === 'incidencia') && r.datos.issues.some(i => i.tipo === 'peticion'), r.datos.issues.map(i => i.tipo));
+  r = await worker.fetch(new Request('https://w.example/issues'), { REPO: 'prueba/repo' }); comprueba('sin token configurado: 503', r.status === 503, r.status);
+} catch (e) { comprueba('excepción inesperada', false, String(e && e.stack || e)); }
+
+const res = document.getElementById('resultado');
+res.dataset.ok = fallos ? '0' : '1'; res.className = fallos ? 'mal' : 'ok';
+res.textContent = fallos ? fallos + ' comprobaciones fallidas' : 'Todas las comprobaciones pasan (' + pasos.children.length + ')';
+</script>
+</body>
+</html>
