@@ -421,14 +421,14 @@ Una organización pequeña o mediana puede aplicar SEVEN-G con una estructura m�
 
 | Elemento | Estructura mínima |
 |---|---|
-| **Consejo** | Órgano de administración, sin comisión delegada. Sesión anual con punto de IA e informe semestral. |
-| **Comité de IA** | Comité de dirección con punto mensual o bimestral de IA. |
+| **Consejo** | Órgano de administración, sin comisión delegada. Punto de IA al menos trimestral con el panel del consejo (C4) y aprobación anual de la dirección y del apetito de riesgo (C2, C5), como en 01 §5.2. |
+| **Comité de IA** | Comité de dirección con punto mensual de IA y orden del día propio. |
 | **Oficina de IA** | Una persona con dedicación parcial (orientativamente, 10–30 %) que mantiene inventario, registro y plantillas. |
 | **Segunda línea** | Responsable de cumplimiento, delegado de protección de datos o asesor externo, con conformidad documentada. |
-| **Tercera línea** | Auditor externo para la revisión anual del marco y los *gates* Enterprise, o auditoría interna del grupo. |
+| **Tercera línea** | Auditor externo o auditoría interna del grupo: revisión anual del marco, muestreo de los *gates* Lite (21 §10.3) y todos los *gates* de las iniciativas Enterprise. |
 | **Roles de iniciativa** | Patrocinador, producto, técnico y operación pueden concentrarse en dos personas en Lite; riesgos y auditor siempre fuera del equipo. |
-| **Intensidad** | Lite por defecto. Con un criterio Enterprise (01 §9.2), auditor externo al menos en G3 y G5. |
-| **Herramientas** | Hoja de cálculo con el modelo de datos de 03 hasta disponer de T01. |
+| **Intensidad** | Lite por defecto. Una iniciativa con un criterio Enterprise (01 §9.2) se gestiona con intensidad Enterprise completa (01 §9.3): auditor de IA en todos sus *gates* —externo si no hay nadie independiente dentro— y firma multinivel en G5. |
+| **Herramientas** | Registro de iniciativas T01 o, si la compañía prefiere, una hoja de cálculo con el modelo de datos de 03. |
 
 | Situación | Solución aceptable | No aceptable |
 |---|---|---|
@@ -499,3 +499,4 @@ Este documento no constituye asesoramiento jurídico.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Desarrolla 01 §8 con mandatos tipo de los órganos, descripciones de puesto de los seis roles, incompatibilidades entre órganos y roles, matrices de responsabilidad por fase, actividad y etapa corporativa, matriz de delegación (*gates*, aceptación de riesgo, suspensiones y retiradas, excepciones), escalado con plazos alineados con el documento 37, modelo de tres líneas, integración en comités existentes, adaptación a organizaciones pequeñas y conflictos de interés. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37. |
+| 0.1 | 19-09-2026 | Adaptación a organizaciones pequeñas (11) alineada con 01 §5.2 y §9.3: consejo al menos trimestral, comité mensual y, en las iniciativas Enterprise, auditor de IA en todos los *gates*. |

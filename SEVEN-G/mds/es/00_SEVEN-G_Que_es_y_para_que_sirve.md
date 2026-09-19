@@ -197,10 +197,12 @@ Las etapas del embudo agrupan las fases del ciclo de vida: **Propuesto** (fases 
 
 **Dos intensidades de aplicación**
 
-| Versión | Cuándo se aplica | Qué cambia |
+| Intensidad | Cuándo se aplica | Qué cambia |
 |---|---|---|
 | **Lite** | Iniciativas de bajo riesgo, uso interno, sin decisiones sobre personas ni exposición a clientes, inversión reducida. | *Gates* agrupados, plantillas simplificadas, decisión del patrocinador con registro y verificación de la oficina de IA. |
 | **Enterprise** | Sistemas de alto riesgo según la regulación, exposición directa a clientes o personas, decisiones automatizadas, agentes con capacidad de actuar, entornos regulados o inversión significativa. | Todos los *gates* y evidencias, auditoría independiente, visibilidad del comité de IA y, cuando proceda, del consejo. |
+
+La intensidad se decide **iniciativa a iniciativa**. Aparte, cada compañía elige su **alcance de implantación**, también Lite o Enterprise, que decide cómo organiza sus órganos y su verificación: con alcance Lite, una compañía mediana y no regulada gobierna la IA con su comité de dirección, una oficina de IA de una persona a tiempo parcial y un auditor externo, y toda iniciativa que cumple un criterio Enterprise sigue gestionándose con intensidad Enterprise. La guía de implantación (documento 90, sección 2) explica cómo se elige el alcance y cuál es la ruta mínima en alcance Lite.
 
 ### 4.4 Componente B · Sistema de gobierno
 
@@ -326,7 +328,7 @@ Estas reglas son el núcleo del sistema de medición y se aplican a todos los ca
 | **Riesgos, cumplimiento, protección de datos y auditoría interna** | Contar con controles, evidencias y criterios de auditoría integrados desde el diseño. |
 | **Áreas de negocio** | Convertir sus necesidades en hipótesis de valor que se pueden aprobar, medir y escalar. |
 
-SEVEN-G es **agnóstico de sector y de tecnología**, y escalable: la versión Lite es aplicable a organizaciones medianas y la versión Enterprise a grupos regulados.
+SEVEN-G es **agnóstico de sector y de tecnología**, y escalable: el alcance de implantación Lite permite aplicarlo a organizaciones medianas con una estructura mínima, y el alcance Enterprise, a grupos regulados (documento 90, sección 2).
 
 ---
 

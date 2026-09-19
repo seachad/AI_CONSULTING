@@ -403,7 +403,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   </div>
 </header>
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P04_SEVEN-G_Determinacion_de_intensidad.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P04_SEVEN-G_Determinacion_de_intensidad.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
-<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#fuentes-consultadas"><span>03</span>Fuentes consultadas</a></li><li><a href="#criterios-enterprise"><span>04</span>Criterios Enterprise</a></li><li><a href="#resultado"><span>05</span>Resultado</a></li><li><a href="#consecuencias-de-la-intensidad"><span>06</span>Consecuencias de la intensidad</a></li><li><a href="#cambio-de-intensidad-enterprise"><span>07</span>Cambio de intensidad (Enterprise)</a></li><li><a href="#criterios-de-calidad"><span>08</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>09</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>10</span>Control de versiones</a></li></ol></div></nav>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#fuentes-consultadas"><span>03</span>Fuentes consultadas</a></li><li><a href="#criterios-enterprise"><span>04</span>Criterios Enterprise</a></li><li><a href="#resultado"><span>05</span>Resultado</a></li><li><a href="#consecuencias-de-la-intensidad"><span>06</span>Consecuencias de la intensidad</a></li><li><a href="#cambio-de-intensidad"><span>07</span>Cambio de intensidad</a></li><li><a href="#criterios-de-calidad"><span>08</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>09</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>10</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote class="aviso-legal">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
@@ -443,7 +443,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
-<td>Esta plantilla es igual en ambas intensidades, porque es la que determina cuál aplica. Solo el bloque 7 es <strong>(Enterprise)</strong>.</td>
+<td>Esta plantilla es igual en ambas intensidades, porque es la que determina cuál aplica. No tiene campos <strong>(Enterprise)</strong>: el bloque 7 (cambio de intensidad) se rellena en ambas cuando cambia el resultado.</td>
 </tr>
 </tbody>
 </table></div>
@@ -761,8 +761,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="cambio-de-intensidad-enterprise"><span class="antetitulo">07</span>Cambio de intensidad <strong>(Enterprise)</strong></h2>
-<p>Rellenar solo si el resultado difiere de la determinación anterior.</p>
+<h2 id="cambio-de-intensidad"><span class="antetitulo">07</span>Cambio de intensidad</h2>
+<p>Rellenar solo si el resultado difiere de la determinación anterior. Es obligatorio en las dos intensidades: el paso de Lite a Enterprise se registra precisamente cuando la iniciativa aún es Lite.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -921,11 +921,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>16-09-2026</td>
 <td>Primera versión. Convierte los ocho criterios Enterprise de 01 §9.2 en preguntas con resultado automático y registra los cambios de intensidad. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37.</td>
 </tr>
+<tr>
+<td>0.1</td>
+<td>19-09-2026</td>
+<td>El bloque 7 (cambio de intensidad) deja de ser <em>(Enterprise)</em>: se rellena también en Lite, que es cuando se registra el paso a Enterprise.</td>
+</tr>
 </tbody>
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 18-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García · SEACHAD · Metodolog&#237;a SEVEN-G</span><span>Generado el 19-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial de SEACHAD.</p></footer>
 
 <script>
 (function () {

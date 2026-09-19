@@ -421,14 +421,14 @@ A small or medium-sized organisation may apply SEVEN-G with a minimum structure 
 
 | Element | Minimum structure |
 |---|---|
-| **Board** | Governing body, without a board committee. Annual session with an AI item and a half-yearly report. |
-| **AI Committee** | Executive committee with a monthly or bimonthly AI item. |
+| **Board** | Governing body, without a board committee. An AI item at least quarterly with the board dashboard (C4) and annual approval of the direction and the risk appetite (C2, C5), as in 01 §5.2. |
+| **AI Committee** | Executive committee with a monthly AI item and its own agenda. |
 | **AI Office** | One person with a part-time commitment (indicatively, 10–30%) who maintains the inventory, register and templates. |
 | **Second line** | Compliance officer, data protection officer or external adviser, with documented clearance. |
-| **Third line** | External auditor for the annual review of the framework and Enterprise *gates*, or group internal audit. |
+| **Third line** | External auditor or group internal audit: annual review of the framework, sampling of Lite *gates* (21 §10.3) and every *gate* of Enterprise initiatives. |
 | **Initiative roles** | Sponsor, product, technical and operations may be concentrated in two people in Lite; risk and auditor always outside the team. |
-| **Intensity** | Lite by default. With an Enterprise criterion (01 §9.2), an external auditor at least at G3 and G5. |
-| **Tools** | Spreadsheet with the data model in 03 until T01 is available. |
+| **Intensity** | Lite by default. An initiative that meets an Enterprise criterion (01 §9.2) is managed with full Enterprise intensity (01 §9.3): AI Auditor at all its *gates* —external if there is nobody independent in-house— and multi-level sign-off at G5. |
+| **Tools** | Initiative register T01 or, if the company prefers, a spreadsheet with the data model in 03. |
 
 | Situation | Acceptable solution | Not acceptable |
 |---|---|---|
@@ -499,3 +499,4 @@ This document does not constitute legal advice.
 | Version | Date | Changes |
 |---|---|---|
 | 0.1 | 16-09-2026 | First version. Develops 01 §8 with model mandates for the bodies, role descriptions for the six roles, incompatibilities between bodies and roles, responsibility matrices by phase, activity and corporate stage, delegation matrix (*gates*, risk acceptance, suspensions and retirements, exceptions), escalation with time limits aligned with document 37, three lines model, integration into existing committees, adaptation to small organisations and conflicts of interest. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37. |
+| 0.1 | 19-09-2026 | Adaptation to small organisations (11) aligned with 01 §5.2 and §9.3: board at least quarterly, monthly committee and, for Enterprise initiatives, AI Auditor at every *gate*. |

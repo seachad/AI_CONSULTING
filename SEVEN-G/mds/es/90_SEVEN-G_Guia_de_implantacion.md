@@ -20,7 +20,7 @@
 
 Esta guía explica cómo una organización adopta SEVEN-G por primera vez. Desarrolla la primera implantación prevista en 01 §5.3 —concentrar C1 a C3 en noventa días— y la hoja de ruta posterior hasta cumplir las condiciones de la declaración de aplicación (01 §14).
 
-Se dirige a quien dirige la implantación (normalmente el responsable de la futura oficina de IA), al patrocinador en la alta dirección y a las funciones de riesgos, cumplimiento y auditoría interna. Algunos documentos citados están en redacción; mientras no estén publicados, se aplican las reglas correspondientes de los documentos 01 y 03.
+Se dirige a quien dirige la implantación (normalmente el responsable de la futura oficina de IA), al patrocinador en la alta dirección y a las funciones de riesgos, cumplimiento y auditoría interna.
 
 Este documento no constituye asesoramiento jurídico.
 
@@ -51,6 +51,8 @@ El **alcance de implantación** es una decisión de la compañía sobre cómo or
 | **Panel del consejo** | Agregado. | Por iniciativa para las Enterprise. |
 | **Horizonte orientativo hasta 01 §14** | 6 a 12 meses. | 12 a 18 meses. |
 
+El **tamaño no decide el alcance**: lo deciden los criterios de la sección 2.2. Una compañía mediana sin supervisión sectorial ni sistemas de alto riesgo aplica alcance Lite; una compañía pequeña sujeta a supervisión prudencial aplica alcance Enterprise. Los dos alcances aplican el mismo ciclo de vida, las mismas evidencias y las mismas reglas de separación de funciones; cambia cómo se organizan los órganos y la verificación.
+
 ### 2.2 Criterios de elección
 
 Se elige **alcance Enterprise** si se cumple al menos uno de estos criterios; en otro caso, Lite:
@@ -59,11 +61,45 @@ Se elige **alcance Enterprise** si se cumple al menos uno de estos criterios; en
 2. Tiene o prevé sistemas de IA de alto riesgo según el Reglamento Europeo de IA.
 3. Tiene o prevé agentes con autonomía A2 o A3 sobre clientes, dinero, datos personales o sistemas de producción.
 4. Opera como grupo con varias sociedades o países que deben seguir un marco común.
-5. El consejo ha aprobado o prevé apuestas de Transformar.
+5. La cartera aprobada o prevista incluye varias apuestas de Transformar simultáneas (orientativamente, tres o más; valor a calibrar en C2).
+
+**Una apuesta de Transformar aislada no cambia el alcance.** Esa iniciativa se gestiona con intensidad Enterprise (01 §9.2) y el consejo la aprueba en G2 y, si se escala, en G7 (01 §7.5); el resto de la cartera sigue en alcance Lite. El alcance se revisa en cada revisión anual (C5), o antes si la compañía pasa a cumplir alguno de estos criterios.
 
 ### 2.3 Perímetro
 
 El perímetro puede ser toda la compañía o una parte (una filial, un país, una unidad de negocio). Implantar primero en un perímetro reducido es válido, pero **la declaración de aplicación solo cubre el perímetro implantado** y debe decirlo. El inventario de sistemas de IA sí debería abarcar desde el principio toda la compañía, porque el riesgo no respeta perímetros.
+
+### 2.4 Ruta mínima en alcance Lite
+
+> **Por qué importa.** Una compañía mediana no necesita recorrer toda la biblioteca para empezar. Necesita saber qué es obligatorio desde el primer día, qué se añade solo cuando aparece una iniciativa Enterprise y qué puede consultar cuando lo necesite. Sin esa ruta, el marco parece más pesado de lo que es y la compañía acaba aplicando Enterprise a todo o no aplicando nada.
+
+**Obligatorio desde el inicio**
+
+| Elemento | Mínimo en alcance Lite | Referencia |
+|---|---|---|
+| **Lectura inicial** | Documentos 00 y 01, esta guía, la adaptación a organizaciones pequeñas del modelo de gobierno y, en los criterios de *gate*, la columna Lite de cada puerta. | 00; 01; 30 §11; 21 §2.1 |
+| **Tres garantías** | Quien construye no verifica ni decide su propio trabajo; la conformidad de riesgos la emite alguien independiente del equipo; el consejo aprueba la dirección y el apetito de riesgo. | 30 §11 |
+| **Órganos** | Consejo con punto de IA al menos trimestral; comité de dirección con punto mensual de IA; oficina de IA de una persona a tiempo parcial. | 01 §5.2; 30 §11; sección 7 |
+| **Inventario** | Todos los sistemas de IA —propios, de terceros, uso corporativo y uso no autorizado— con declaración de completitud. No se reduce en Lite. | 32; P05; T01 |
+| **Intensidad** | Determinación en cada iniciativa: en la fase 0, en G3 y en cada R6. | 01 §9; P04; T04 |
+| **Evidencias de una iniciativa Lite** | Las que los criterios de *gate* marcan «Sí» o «Simpl.» en la columna Lite, con las plantillas sin los campos *(Enterprise)*. Ninguna evidencia obligatoria se omite: se simplifica. | 01 §6.10; 21 §2.1; P01–P31 |
+| **Puertas** | G0–G2 en una sesión, G3 por separado, G4–G5 en una sesión, R6 semestral y G7. Cada puerta conserva sus criterios y su registro en P29. | 21 §3.4 |
+| **Verificación y decisión** | Verifica la oficina de IA; decide el patrocinador, con conformidad de riesgos en G3, G4 y G5; el auditor de IA revisa cada semestre una muestra de los *gates* Lite. | 01 §9.3; 21 §10.3 |
+| **Riesgos** | Registro de riesgos desde la fase 3 con la escala del documento 33. | 33; P12; T06 |
+| **Valor** | Reglas de medición, línea base y seguimiento del valor realizado; panel del consejo agregado. | 40; P09; P28; T17 |
+| **Diagnóstico** | Madurez con evaluación verificada e índice de transformación en C1 y en cada C5. | 11; 12; T15; T14 |
+
+**Se añade solo cuando una iniciativa cumple un criterio Enterprise**
+
+| Qué se añade | Referencia |
+|---|---|
+| Puertas por separado, plantillas completas y decisión del comité de IA (del consejo en Transformar). | 01 §7.5, §9.3 |
+| Auditor de IA en todos los *gates* de esa iniciativa, externo si no hay nadie independiente dentro. | 01 §9.3; 38 |
+| Firma multinivel con veto en la puesta en producción y R6 trimestral. | 21 §9; P23 |
+| Visibilidad por iniciativa en el panel del consejo. | 60; T17 |
+| Según el criterio que se cumple: clasificación regulatoria y evaluaciones de impacto; seguridad de agentes A2 o A3; exigencia N2 o N3 a proveedores. | 32, 34, P11; 35, P18; 36, P14 |
+
+El resto de la biblioteca se consulta cuando se necesita: ambición y cartera (10, 13, 14), manuales de fase y listas de verificación (20, 22), adopción y personas (23, 50), políticas (31), incidentes (37), indicadores y costes (41, 42, 43), datos, operación y construcción (51, 52, 53), consejo (60, 61, 62) y casos de aplicación (92), que incluye iniciativas Lite de compañías medianas.
 
 ---
 
@@ -78,7 +114,7 @@ El perímetro puede ser toda la compañía o una parte (una filial, un país, un
 | **Tercera línea informada** | Auditoría interna conoce el plan y designa quién verificará la madurez. |
 | **Asesoría jurídica** | Disponible para la clasificación regulatoria de los sistemas prioritarios. |
 | **Acceso a información** | Compras, licencias, contratos con proveedores, arquitectura, registro de riesgos y presupuestos. |
-| **Soporte de registro** | T01 y T02 o, mientras no estén disponibles, una hoja de cálculo con los campos de 03 §3.3. |
+| **Soporte de registro** | T01 con su inventario (T02) o, si la compañía lo prefiere, una hoja de cálculo con los campos de 03 §3.3. |
 | **Sin moratoria general** | La actividad de IA continúa durante la implantación; solo se detiene lo que el diagnóstico identifique como riesgo inaceptable. |
 
 ---
@@ -128,7 +164,7 @@ Cada hito lo acepta el patrocinador de la implantación con el comité de IA (o 
 | Semana | Actividades y entregables | Responsable | Documentos, plantillas y herramientas | Criterio de finalización |
 |---|---|---|---|---|
 | **9 · Órganos y roles** | Mandatos del comité de IA, la oficina de IA y la comisión delegada; roles de 01 §8 en las iniciativas existentes con comprobación de incompatibilidades; auditor de IA designado. | Patrocinador; secretaría del consejo | 01 §8, 30; P03; T01 | Mandatos redactados; roles asignados sin incompatibilidades. |
-| **10 · Gates y políticas** | Criterios de *gate* y listas de verificación adoptados (versión inicial de 01 §7 si 21 y 22 no están publicados); plazos de referencia; política corporativa y de uso aceptable; proceso de no conformidades. | Oficina de IA; cumplimiento | 21, 22, 31, 37; P04, P29; T03, T08 | Gestor de *gates* configurado; políticas en borrador final. |
+| **10 · Gates y políticas** | Criterios de *gate* (21) y listas de verificación (22) adoptados; plazos de referencia; política corporativa y de uso aceptable; proceso de no conformidades. | Oficina de IA; cumplimiento | 21, 22, 31, 37; P04, P29; T03, T08 | Gestor de *gates* configurado; políticas en borrador final. |
 | **11 · Métricas, reporte y cartera** | Reglas de medición adoptadas; primera versión del panel del consejo; registro de recomendaciones; calendario de reporte (01 §5.2); primera cartera priorizada con sobres, tramos y plan de regularización. | Oficina de IA; control de gestión; comité | 40, 60, 62, 14; P28; T17, T18, T01, T16 | Panel generado con datos del inventario; cartera con puntuación y responsables. |
 | **12 · Aprobaciones** | El consejo aprueba tesis, ambición por esfera, apetito de riesgo, umbrales y política corporativa (C2). El comité aprueba cartera, *gates*, métricas y plan de regularización (C3). | Patrocinador; comité de IA; consejo | 13, 14, 31 | Actas con las aprobaciones. |
 | **13 · Régimen ordinario** | Primera reunión ordinaria del comité; primeros *gates* con el nuevo modelo; hoja de ruta de 6–18 meses aprobada; lecciones de la implantación; comunicación a la organización. | Responsable de implantación | 90; T01, T03 | **Hito 3:** criterios de la sección 4.5 cumplidos. |
@@ -263,7 +299,7 @@ Los objetivos son orientativos y los fija la compañía en su plan.
 | **Mes 3** | T03 (*gates*); T08 (no conformidades); T17 (panel); T18 (recomendaciones); T01 y T16 (cartera). | P03, P04, P28, P29 |
 | **Meses 4–18** | Todas las anteriores; T09, T10, T11, T13, T20, T21, T22 según avance la cartera. | P01–P31 según la fase de cada iniciativa |
 
-Mientras una herramienta no esté construida, se usa una hoja de cálculo con los campos del modelo de datos de 03 §4.
+Las herramientas sin aplicación propia se aplican con la plantilla o el documento que indica el catálogo de 03. Una compañía que prefiera no usar T01 puede llevar el registro en una hoja de cálculo con los campos del modelo de datos de 03 §4.
 
 ---
 
@@ -287,3 +323,4 @@ Mientras una herramienta no esté construida, se usa una hoja de cálculo con lo
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 0.1 | 16-09-2026 | Primera versión. Define el alcance de implantación Lite o Enterprise de compañía, los requisitos previos, el plan de 90 días semana a semana, la regularización, la hoja de ruta de 6 a 18 meses hasta 01 §14, los roles mínimos, los errores frecuentes y los indicadores de implantación. |
+| 0.1 | 19-09-2026 | El tamaño no decide el alcance (2.1); una apuesta de Transformar aislada no obliga a alcance Enterprise (2.2); ruta mínima en alcance Lite (2.4); se retiran las menciones a documentos o herramientas pendientes. |
