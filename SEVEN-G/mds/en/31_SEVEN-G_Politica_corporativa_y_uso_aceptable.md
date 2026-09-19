@@ -16,6 +16,8 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
+<!-- esencial: siempre | Approved corporate AI policy and acceptable use policy, handling of general-purpose AI and embedded AI ('the AI that is not a project') and AI literacy for those who use or oversee AI systems. The model texts are adapted to each company. -->
+
 ## 1. Purpose and scope
 
 This document provides the company with two policy templates that the board and senior management can adapt and approve at stage C2 of the corporate cycle:

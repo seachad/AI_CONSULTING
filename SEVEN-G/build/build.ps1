@@ -32,6 +32,8 @@
     <!-- cifras: 9 | texto ; 3 | texto -->    -> cifras destacadas de la portada (justo después de la ficha)
     ## 1. Sección                             -> sección numerada con antetítulo, índice y navegador
     <!-- figura: nombre -->                   -> inserta build/componentes/<idioma>/nombre.html
+    <!-- esencial: nivel | texto -->          -> recuadro «Lo esencial» (D75): nivel = siempre, enterprise, condicional, recomendado o consulta
+                                                 (la palabra clave no se traduce); enlaza con la matriz de obligatoriedad (documento 94)
     <!-- grafico: Título | Subtítulo -->      -> título y subtítulo del diagrama Mermaid que va justo debajo
     ```mermaid ... ```                        -> diagrama Mermaid con los colores del tema activo
 
@@ -71,12 +73,13 @@ $configuracion = @{
     en = @{ T_TT_INICIO = 'Go to document 00: What SEVEN-G is and how it helps companies'; T_METODOLOGIA = 'SEVEN-G methodology'
             Indice = 'SEVEN-G Library'; IndiceSub = 'Documents, templates and tools of the framework for value, governance and transformation with AI' }
     bloques = @{
-      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Estrategia y cartera'; C = 'C · Ciclo de vida de la iniciativa'; D = 'D · Gobierno, riesgo y cumplimiento'; E = 'E · Medición y valor'; F = 'F · Personas, datos y operación'; G = 'G · Consejo'; H = 'H · Plantillas'; I = 'I · Herramientas'; J = 'J · Adopción del marco' }
-      en = [ordered]@{ A = 'A · Foundations'; B = 'B · Strategy and portfolio'; C = 'C · Initiative lifecycle'; D = 'D · Governance, risk and compliance'; E = 'E · Measurement and value'; F = 'F · People, data and operations'; G = 'G · Board'; H = 'H · Templates'; I = 'I · Tools'; J = 'J · Framework adoption' }
+      es = [ordered]@{ A = 'A · Fundamentos'; B = 'B · Estrategia y cartera'; C = 'C · Ciclo de vida de la iniciativa'; D = 'D · Gobierno, riesgo y cumplimiento'; E = 'E · Medición y valor'; F = 'F · Personas, datos y operación'; G = 'G · Consejo'; H = 'H · Plantillas'; I = 'I · Herramientas'; J = 'J · Adopción del marco'; K = 'K · Curso' }
+      en = [ordered]@{ A = 'A · Foundations'; B = 'B · Strategy and portfolio'; C = 'C · Initiative lifecycle'; D = 'D · Governance, risk and compliance'; E = 'E · Measurement and value'; F = 'F · People, data and operations'; G = 'G · Board'; H = 'H · Templates'; I = 'I · Tools'; J = 'J · Framework adoption'; K = 'K · Course' }
     }
     Bloque = {
       param([string]$rel)
       if ($rel -like 'plantillas/*') { return 'H' }
+      if ($rel -like 'curso/*') { return 'K' }   # curso de SEVEN-G (D75): módulos que enlazan a los documentos, no cuentan como documentos
       if ($rel -match '^(\d)\d_') { return @{ '0'='A'; '1'='B'; '2'='C'; '3'='D'; '4'='E'; '5'='F'; '6'='G'; '9'='J' }[$Matches[1]] }
       return $null
     }
@@ -259,9 +262,9 @@ function Nuevo-Indice([string]$lang) {
     $base = $rel -replace '\.md$', ''
     $h1 = Select-String -Path $d.FullName -Pattern '^#\s+(.+)$' -List -Encoding utf8
     $tit = if ($h1) { $h1.Matches[0].Groups[1].Value.Trim() } else { $base }
-    $num = if ($base -match '^(?:plantillas/)?(P?\d+)_') { $Matches[1] } else { '' }
+    $num = if ($base -match '^(?:plantillas/|curso/)?([PM]?\d+)_') { $Matches[1] } else { '' }
     $grupos[$b].Add("| $num | [$tit]($base.html) | [HTML]($base.html) · [PDF](../../pdf/$lang/$base.pdf) |")
-    if ($b -eq 'H') { $nPlant++ } else { $nDocs++ }
+    if ($b -eq 'H') { $nPlant++ } elseif ($b -ne 'K') { $nDocs++ }
   }
   if ($grupos.Contains('I') -and (Test-Path $herrRaiz)) {
     foreach ($h in (Get-ChildItem $herrRaiz -Directory | Sort-Object Name)) {
@@ -457,7 +460,8 @@ function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
   # de código, de una etiqueta HTML o de un comentario: «plantillas/P01_…html» o «herramientas/T01_…» contienen el código y, si se
   # tocaran, el enlace quedaría roto. El código tampoco puede ir seguido de «_» (nombre de fichero). Entre paréntesis sí se enlaza:
   # «(T05)» es texto corrido (D64); los enlaces escritos ya están protegidos enteros.
-  $patron = '(?<![\w/\[\-])(?:(?<doc>documento\s+\d{2})|(?<tool>T\d{2})|(?<plt>P\d{2}))(?![A-Za-z0-9_\]])'
+  # «documento NN» y, en los documentos en inglés, «document NN»
+  $patron = '(?<![\w/\[\-])(?:(?<doc>documento?\s+\d{2})|(?<tool>T\d{2})|(?<plt>P\d{2}))(?![A-Za-z0-9_\]])'
   $protegido = '(?s)```.*?```|~~~.*?~~~|`[^`\n]*`|<!--.*?-->|!?\[[^\]\n]*\]\([^)\n]*\)|<[^>\n]+>|https?://[^\s)>\]]+'
   $partes = [regex]::Split($md, "($protegido)")
   $sustituir = {
@@ -466,7 +470,7 @@ function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
     $clave = $null
     $href = $null
 
-    if ($valor -match '(?i)^documento\s+(\d{2})$') {
+    if ($valor -match '(?i)^documento?\s+(\d{2})$') {
       $clave = $Matches[1]
       $href = $map[$clave]
       if ($href) { return "[$valor]($href)" }
@@ -651,6 +655,19 @@ foreach ($lang in $Idiomas) {
         if ($comp.Contains('{{N_')) { $rec = Recuentos-Biblioteca $lang; foreach ($k in $rec.Keys) { $comp = $comp.Replace($k, $rec[$k]) } }
         $comp
       } else { Write-Warning "Componente no encontrado: $($c.Groups[1].Value) en $($compDirs -join ' ; ')"; $c.Value }
+    })
+    # ---- Recuadro «Lo esencial» (D75): qué es obligatorio del documento; enlaza con la matriz de obligatoriedad (documento 94) ----
+    $body = [regex]::Replace($body, '(?s)<!--\s*esencial:\s*(\w+)\s*\|(.*?)-->', {
+      param($c)
+      $nivel = $c.Groups[1].Value.ToLowerInvariant()
+      $rotulos = if ($lang -eq 'en') { @{ siempre = 'Always mandatory'; enterprise = 'Mandatory in Enterprise'; condicional = 'Conditional: depends on a trigger'; recomendado = 'Recommended'; consulta = 'Reference' } }
+                 else { @{ siempre = 'Obligatorio siempre'; enterprise = 'Obligatorio en Enterprise'; condicional = 'Condicional: depende de un disparador'; recomendado = 'Recomendado'; consulta = 'Consulta' } }
+      if (-not $rotulos.ContainsKey($nivel)) { Write-Warning "Nivel de «esencial» desconocido en $rel`: $nivel"; return '' }
+      $pieEs = if ($mapaDoc['94']) { "<p class=""es-pie""><a href=""$($mapaDoc['94'])"">$(if ($lang -eq 'en') { 'Obligation matrix and layered reading (document 94)' } else { 'Matriz de obligatoriedad y lectura por capas (documento 94)' })</a></p>" } else { '' }
+      # el texto pasa por el mismo enlazador automático de códigos que el resto del documento, o «T01», «documento NN» o «P01» quedarían sin enlazar (D64)
+      $textoEsencial = EnlazarReferenciasMarkdown (Enc $c.Groups[2].Value.Trim()) $mapaDoc
+      $textoEsencial = [regex]::Replace($textoEsencial, '\[([^\]]+)\]\(([^)]+)\)', '<a href="$2">$1</a>')
+      "<aside class=""esencial"" data-capa=""$nivel""><div class=""es-cab""><span class=""es-rotulo"">$(if ($lang -eq 'en') { 'The essentials' } else { 'Lo esencial' })</span><span class=""es-nivel"">$($rotulos[$nivel])</span></div><p>$textoEsencial</p>$pieEs</aside>"
     })
     $script:hayMermaid = $false
     $body = [regex]::Replace($body, '(?s)(?:<!--\s*grafico:\s*(.*?)-->\s*)?(?:<pre><code class="language-mermaid">(.*?)</code></pre>|<pre class="mermaid">(.*?)</pre>)', {

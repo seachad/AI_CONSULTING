@@ -20,6 +20,8 @@
 
 ---
 
+<!-- esencial: condicional | Trigger: SEVEN-G material is shared, adapted, translated or published, or its name is used before third parties. It requires crediting the author, indicating changes and keeping the legal notice. Internal use requires no formalities. -->
+
 ## 1. Purpose and scope
 
 This document explains under which licences SEVEN-G is published, what they permit and what they require, how to cite the framework, how to use its name and what happens with derivative works, translations and the fictitious data in the demonstrations, and the scope of the disclaimer and of the user's responsibility for regulatory compliance.

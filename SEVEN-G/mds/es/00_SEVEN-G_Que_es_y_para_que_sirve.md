@@ -64,6 +64,8 @@ El resto de esta página desarrolla lo anterior con detalle: qué significa SEVE
 
 ---
 
+<!-- esencial: siempre | Lectura inicial de cualquier persona que vaya a usar el marco. Bastan las secciones 1 a 6: qué es, qué problema resuelve, cómo está construido (esferas, ciclo corporativo, ciclo de vida con puertas, gobierno y medición) y las diez reglas de medición del valor. -->
+
 ## 1. Qué significa SEVEN-G
 
 SEVEN-G significa **Seven-phase Enterprise Value & Governance**: una fase 0 habilitante y siete fases de valor (1–7), con gobierno transversal en todas ellas.
@@ -82,9 +84,9 @@ Las dos cosas son legítimas. El problema aparece cuando se confunden: cuando un
 
 El objetivo práctico es que el consejo, la alta dirección y los órganos de control entiendan y midan la aportación de la inteligencia empresarial en su compañía, comprendan y contengan sus riesgos y decidan, con disciplina de cartera, en qué iniciativas conviene invertir para mejorar la eficiencia, transformar capacidades y generar impacto real en la cuenta de resultados (P&L).
 
-SEVEN-G aporta cuatro cosas:
+> **Titularidad y reutilización.** La propiedad intelectual de la metodología SEVEN-G —sus documentos, plantillas, criterios y herramientas— pertenece a su autor, **Fernando García · SEACHAD**. El marco se ofrece como referencia abierta para uso, adaptación y aprendizaje, no como un producto comercial cerrado ni como una versión liberada a clientes o mercados: cualquier organización puede reutilizarlo y adaptarlo, pero ese uso queda sujeto a la licencia de contenidos y de código del proyecto (**CC BY 4.0** para los contenidos, **MIT** para el código; documento 93), que exige reconocer la autoría e indicar los cambios. Usar SEVEN-G, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre la base metodológica a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.
 
-> **Estado público y reutilización.** SEVEN-G se ofrece como marco metodológico abierto para uso de referencia, adaptación y aprendizaje. No constituye un producto comercial cerrado ni una versión liberada a clientes ni a mercados. El contenido del marco, sus plantillas y sus herramientas son reutilizables por cualquier organización salvo pacto escrito y específico sobre adaptaciones o desarrollos propios; la simple utilización del marco no otorga exclusividad ni derecho de propiedad sobre la base metodológica a ningún cliente, proveedor o tercero.
+SEVEN-G aporta cuatro cosas:
 
 1. **Un mapa de dónde y con qué ambición** usar la IA: nueve esferas de impacto y tres niveles de ambición (Optimizar, Aumentar, Transformar).
 2. **Un ciclo de vida controlado** para cada iniciativa, con fases, puertas de decisión (*gates*) auditables y capacidad real de parar o retirar.

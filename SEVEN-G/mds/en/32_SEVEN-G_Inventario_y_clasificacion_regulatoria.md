@@ -16,6 +16,8 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
+<!-- esencial: siempre | Inventory of all AI systems —own, third-party, corporate use and unauthorised— with owner, intensity and regulatory classification. It is not reduced in Lite. Impact assessments are carried out only when the classification requires them. -->
+
 ## 1. Purpose and scope
 
 The AI system inventory is the **foundation of all governance**: without knowing which systems exist, who is accountable for them and how they are classified, it is not possible to manage risks, meet obligations, audit or report to the board. The foundational methodology requires it in C1 (01 §5.1), in phase 0 (inventory registration) and as a condition for declaring that SEVEN-G is applied (01 §14, condition 2).

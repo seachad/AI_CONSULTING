@@ -16,6 +16,8 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
+<!-- esencial: recomendado | El plan de realización de beneficios (P62) es evidencia de G3 (en borrador) y de G4 (firmado), con un responsable de negocio del beneficio, y el seguimiento por periodo alimenta R6 y G7. El resto —doble conteo entre casos, revisiones posteriores, auditoría del valor— se aplica según el tamaño de la cartera. -->
+
 ## 1. Objeto y alcance
 
 Este documento establece cómo SEVEN-G convierte el valor esperado de una iniciativa en valor realizado y validado, y cómo lo consolida en la cartera y en el panel del consejo. Aplica las reglas y fórmulas del documento 40 y los indicadores del documento 41.

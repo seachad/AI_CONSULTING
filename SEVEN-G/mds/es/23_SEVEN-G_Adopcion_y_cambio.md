@@ -16,6 +16,8 @@
 
 > **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
+<!-- esencial: recomendado | El plan de adopción (P20) es evidencia obligatoria desde la fase 4 y la adopción se comprueba en G5 y G7. El resto —modelo de cambio, análisis de impacto en roles, comunicación— es guía que se usa en proporción al efecto de la iniciativa sobre las personas. -->
+
 ## 1. Objeto y alcance
 
 Este documento define cómo se planifica, se mide y se decide la adopción de una iniciativa de IA. Cubre un hueco del material anterior del marco: la fase 5 validaba el valor, pero no trataba de forma explícita la adopción real, la reasignación de la capacidad liberada ni la formación, que son condiciones para que el valor se materialice.

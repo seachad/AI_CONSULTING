@@ -20,6 +20,8 @@
 
 ---
 
+<!-- esencial: condicional | Disparador: se comparte, adapta, traduce o publica material de SEVEN-G, o se usa su nombre ante terceros. Exige reconocer la autoría, indicar los cambios y conservar el aviso legal. El uso interno no requiere ningún trámite. -->
+
 ## 1. Objeto y alcance
 
 Este documento explica bajo qué licencias se publica SEVEN-G, qué permiten y qué exigen, cómo citar el marco, cómo usar su nombre y qué ocurre con las obras derivadas, las traducciones y los datos ficticios de las demostraciones, y el alcance de la exención de responsabilidad y de la responsabilidad del usuario sobre el cumplimiento regulatorio.

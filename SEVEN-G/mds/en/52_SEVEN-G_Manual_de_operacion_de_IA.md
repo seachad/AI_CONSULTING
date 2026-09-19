@@ -16,6 +16,8 @@
 
 > **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
+<!-- esencial: siempre | From the moment an initiative goes into production: operations manual, monitoring and alerts, change and incident management, rollback plan and continuity review R6 (six-monthly in Lite, quarterly in Enterprise). Section 14 summarises what changes between Lite and Enterprise. -->
+
 ## 1. Purpose and scope
 
 This document develops **phase 6 · Operation and governance** of the lifecycle (01 §6.8) and sets out how AI systems in production are operated so that they **continue to work, deliver value and remain under control**. It is generic: each system specifies what is established here in its operations manual (P24).
