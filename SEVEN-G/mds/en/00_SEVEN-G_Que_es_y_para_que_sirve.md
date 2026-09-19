@@ -49,6 +49,14 @@ Adoption can be **full or modular**: a company may deploy the entire framework o
 
 All of this comes with templates, audit criteria and tools —including an AI dashboard for the board— that allow it to be applied in any sector.
 
+**How SEVEN-G is used, at a glance**
+
+The following map brings together in a single view how the framework is followed: at the top, the corporate cycle in which the company decides and oversees; in the centre, the lifecycle of each initiative, with its funnel stage, its phase, its decision gate and the templates, documents and tools used in it; at the bottom, the cross-cutting governance that accompanies every phase. Each element links to the document, section, template or tool that develops it.
+
+> **Why it matters.** SEVEN-G has many pieces, and a first-time user needs to know what applies at each moment and where to find it. The map answers three practical questions —which phase an initiative is in, what must be provided to pass its gate and with which template or tool— and serves as a starting point to navigate the library without reading all of it.
+
+<!-- figura: mapa-uso -->
+
 ---
 
 ## 2. The problem it solves

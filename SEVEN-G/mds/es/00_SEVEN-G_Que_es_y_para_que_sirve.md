@@ -49,6 +49,14 @@ La adopción puede ser **integral o modular**: una compañía puede desplegar el
 
 Todo ello se acompaña de plantillas, criterios de auditoría y herramientas —entre ellas un panel de IA para el consejo— que permiten aplicarlo en cualquier sector.
 
+**Cómo se usa SEVEN-G, de un vistazo**
+
+El mapa siguiente reúne en una sola vista cómo se recorre el marco: arriba, el ciclo corporativo en el que la compañía decide y supervisa; en el centro, el ciclo de vida de cada iniciativa, con su etapa del embudo, su fase, su puerta de decisión y las plantillas, documentos y herramientas que se usan en ella; abajo, el gobierno transversal que acompaña a todas las fases. Cada elemento enlaza con el documento, la sección, la plantilla o la herramienta que lo desarrolla.
+
+> **Por qué importa.** SEVEN-G tiene muchas piezas, y quien lo usa por primera vez necesita saber qué toca en cada momento y dónde está. El mapa responde a tres preguntas prácticas —en qué fase está una iniciativa, qué hay que aportar para superar su puerta y con qué plantilla o herramienta— y sirve de punto de partida para navegar por la biblioteca sin leerla entera.
+
+<!-- figura: mapa-uso -->
+
 ---
 
 ## 2. El problema que resuelve
