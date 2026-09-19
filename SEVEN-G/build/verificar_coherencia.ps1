@@ -240,6 +240,12 @@ try {
       $doc = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -File -Filter "${n}_*.md" | Select-Object -First 1
       if ($doc -and -not [IO.File]::ReadAllText($doc.FullName).Contains('curso/M00_SEVEN-G_Curso_Guia_del_curso.html')) { Mal "$n [$lang]: no enlaza el curso"; $capasMal++ }
     }
+    # el curso es una de las formas de empezar del inicio rápido del documento 00 (entre «30 minutos» y «90 días»)
+    $html00c = Join-Path $repo "SEVEN-G\html\$lang\00_SEVEN-G_Que_es_y_para_que_sirve.html"
+    if (Test-Path $html00c) {
+      $pasos = [regex]::Match([IO.File]::ReadAllText($html00c), '(?s)<div class="ir-pasos">.*?</div>\s*</div>').Value
+      if ([regex]::Matches($pasos, '<div class="ir-paso"><b>').Count -ne 4 -or -not $pasos.Contains('curso/M00_SEVEN-G_Curso_Guia_del_curso.html')) { Mal "00 [$lang]: el inicio rápido no ofrece el curso entre sus cuatro formas de empezar"; $capasMal++ }
+    }
     $portada = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
     if (-not [IO.File]::ReadAllText($portada).Contains("html/$lang/curso/M00_SEVEN-G_Curso_Guia_del_curso.html")) { Mal "portada [$lang]: no enlaza el curso"; $capasMal++ }
   }
