@@ -76,6 +76,8 @@ body{margin:0;background:var(--page);color:var(--ink);font:calc(14px * var(--fon
 .side .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;opacity:.7;padding:8px 10px 4px;white-space:nowrap}
 .page-item{display:flex;align-items:center;gap:10px;width:100%;border:0;border-radius:8px;padding:9px 10px;background:transparent;color:var(--navink);font-size:13px;text-align:left;cursor:pointer;white-space:nowrap;position:relative}
 .page-item svg{width:18px;height:18px;flex:0 0 18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+a.page-item{text-decoration:none;box-sizing:border-box}
+a.page-item:hover,a.page-item:focus-visible{text-decoration:underline}
 .page-item:hover{background:var(--navchip)}
 .page-item.on{background:var(--accent);color:var(--accent-ink);font-weight:650}
 .page-item.here:not(.on)::after{content:"";position:absolute;right:10px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:currentColor;opacity:.6}
@@ -504,6 +506,8 @@ function applyTheme(theme){
   root.setAttribute('data-theme', theme || 'salmon');
   const select = document.getElementById('theme-select'); if (select) select.value = theme || 'salmon';
   try { localStorage.setItem('dashboard-theme', theme || 'salmon'); } catch (e) {}
+  // si el panel vive dentro de un sitio con tema propio (meta.navegacion.tema_sitio), el tema elegido aquí se comparte con él
+  if (TEMA_SITIO){ try { localStorage.setItem(TEMA_SITIO, ({salmon:'salmon', light:'claro', dark:'noche'})[theme] || 'salmon'); } catch (e) {} }
 }
 function applyFontScale(scale){
   const next = Math.min(1.4, Math.max(0.85, Number(scale) || 1));
@@ -514,7 +518,18 @@ function applyFontScale(scale){
 const PAGINAS = {todo:"Todo", cartera:"Cartera y valor", embudo:"Embudo y ciclo de vida", historico:"Histórico y adopción", riesgo:"Riesgo y cumplimiento", inventario:"Inventario", glosario:"Glosario"};
 // navegación configurable (meta.navegacion, JSON general de configuración): pagina_todo (si es false, no existe la página "Todo"),
 // pagina_inicial (página que se abre al entrar) y desplegar_todo (al entrar en una página, todas sus tarjetas se muestran desplegadas)
-const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false, filtros_modal: false}, META().navegacion || {});
+const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false, filtros_modal: false, sitio: null, sitio_titulo: "Sitio", tema_sitio: null}, META().navegacion || {});
+// integración opcional en un sitio: tema_sitio = clave de localStorage con el tema general del sitio (salmon, claro o noche), que el panel
+// sigue y actualiza; sitio = [{texto, href}], enlaces de vuelta al sitio que se añaden al menú lateral. Sin esas claves, nada cambia.
+const TEMA_SITIO = NAV.tema_sitio || null;
+if (Array.isArray(NAV.sitio) && NAV.sitio.length){
+  const hueco = document.querySelector('.side .grow');
+  if (hueco){
+    const rot = document.createElement('div'); rot.className = 'lbl'; rot.textContent = NAV.sitio_titulo || 'Sitio'; hueco.before(rot);
+    NAV.sitio.forEach(s=>{ if (!s || !s.href) return; const a = document.createElement('a'); a.className = 'page-item site-link'; a.href = s.href; a.title = s.texto || s.href;
+      a.innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span class="txt"></span>'; a.querySelector('.txt').textContent = s.texto || s.href; hueco.before(a); });
+  }
+}
 if (!NAV.pagina_todo){ delete PAGINAS.todo; const bt = document.querySelector('.page-item[data-page="todo"]'); if (bt) bt.remove(); }
 const PAGINA_DEF = PAGINAS[NAV.pagina_inicial] ? NAV.pagina_inicial : (PAGINAS.todo ? "todo" : Object.keys(PAGINAS)[0]);
 let pagina = PAGINA_DEF;
@@ -1394,7 +1409,8 @@ document.getElementById("reset").onclick = e=>{ e.preventDefault(); e.stopPropag
 document.getElementById("collapse").onclick = ()=>{ const all=[...document.querySelectorAll("details.comp, details.unit, details.cdet")]; const anyOpen = all.some(d=>d.open); all.forEach(d=>d.open=!anyOpen); };
 const storedTheme = (()=>{ try { return localStorage.getItem('dashboard-theme'); } catch (e) { return null; } })();
 const storedFont = (()=>{ try { return Number(localStorage.getItem('dashboard-font-scale')) || 1; } catch (e) { return 1; } })();
-applyTheme(storedTheme || 'salmon');
+const siteTheme = (()=>{ if (!TEMA_SITIO) return null; try { return ({salmon:'salmon', claro:'light', noche:'dark'})[localStorage.getItem(TEMA_SITIO)] || null; } catch (e) { return null; } })();
+applyTheme(siteTheme || storedTheme || 'salmon');
 applyFontScale(storedFont || 1);
 document.getElementById('theme-select').addEventListener('change', e => applyTheme(e.target.value));
 document.getElementById('font-minus').addEventListener('click', () => applyFontScale((getComputedStyle(root).getPropertyValue('--font-scale').trim() || '1') * 0.9));

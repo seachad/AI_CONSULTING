@@ -30,7 +30,7 @@ jobs:
           mkdir -p sitio
           cp index.html LICENSE LICENCIA_CONTENIDOS.md sitio/
           mkdir -p sitio/en && cp en/index.html sitio/en/
-          for c in html pdf docx herramientas; do
+          for c in html pdf docx pptx herramientas; do
             [ -d "SEVEN-G/$c" ] || continue
             rsync -a --exclude '_trabajo' --exclude '_legacy' --exclude '_*' --exclude '__pycache__' "SEVEN-G/$c" sitio/SEVEN-G/
           done
