@@ -741,16 +741,23 @@ foreach ($lang in $Idiomas) {
 
     # guía del curso (M00): además de su propio PDF/HTML, enlaza el curso completo en PPT y en PDF (D85)
     if ($metodologia -eq 'SEVEN-G' -and ($rel -replace '\\', '/') -eq 'curso/M00_SEVEN-G_Curso_Guia_del_curso.md') {
-      $pptxOut = Join-Path $root "pptx\$lang\SEVEN-G_Curso.pptx"
-      if (Test-Path $pptxOut) {
-        $pptxHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pptxOut).Replace('\', '/')
-        $pptxLabel = if ($en) { 'Full course (PowerPoint)' } else { 'Curso completo (PowerPoint)' }
-        $enlacesDoc.Add("<a class=""dz-item"" href=""$pptxHref"" download><span class=""dz-tipo"">PPTX</span><b>$pptxLabel</b></a>")
+      $cursosPpt = [ordered]@{ Empresa = $(if ($en) { 'Course for the company' } else { 'Curso para la empresa' }); Consultor = $(if ($en) { 'Course for the consultant' } else { 'Curso para el consultor' }); Partner = $(if ($en) { 'Course for the partner' } else { 'Curso para el partner' }) }
+      foreach ($cc in $cursosPpt.Keys) {
+        $pptxOut = Join-Path $root "pptx\$lang\SEVEN-G_Curso_$cc.pptx"
+        if (Test-Path $pptxOut) {
+          $pptxHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pptxOut).Replace('\', '/')
+          $enlacesDoc.Add("<a class=""dz-item"" href=""$pptxHref"" download><span class=""dz-tipo"">PPTX</span><b>$($cursosPpt[$cc])</b></a>")
+        }
+        $pdfCc = Join-Path $root "pdf\$lang\curso\SEVEN-G_Curso_$cc.pdf"
+        if (Test-Path $pdfCc) {
+          $pdfCcHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pdfCc).Replace('\', '/')
+          $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfCcHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$($cursosPpt[$cc])</b></a>")
+        }
       }
       $pdfCursoOut = Join-Path $root "pdf\$lang\curso\SEVEN-G_Curso_completo.pdf"
       if (Test-Path $pdfCursoOut) {
         $pdfCursoHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pdfCursoOut).Replace('\', '/')
-        $pdfCursoLabel = if ($en) { 'Full course (PDF)' } else { 'Curso completo (PDF)' }
+        $pdfCursoLabel = if ($en) { 'The nine modules (PDF)' } else { 'Los nueve módulos (PDF)' }
         $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfCursoHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$pdfCursoLabel</b></a>")
       }
     }
@@ -829,7 +836,7 @@ foreach ($lang in $Idiomas) {
 # con Test-Path al generar cada documento, y en la primera pasada del build normal todavía no existen). La variable de
 # entorno evita que esta segunda pasada, al ser otra invocación del mismo script, repita esta misma sección.
 if ($Metodologias -contains 'SEVEN-G' -and -not $env:SEVENG_BUILD_CURSO_PASE2) {
-  & (Join-Path $PSScriptRoot 'curso_pptx.ps1') -Idiomas $Idiomas
+  & (Join-Path $PSScriptRoot 'curso_pptx.ps1') -Idiomas $Idiomas -SinPdf:$SinPdf
   if (-not $SinPdf) {
     & (Join-Path $PSScriptRoot 'curso_pdf.ps1') -Idiomas $Idiomas
     $env:SEVENG_BUILD_CURSO_PASE2 = '1'

@@ -249,10 +249,22 @@ try {
     $portada = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
     if (-not [IO.File]::ReadAllText($portada).Contains("html/$lang/curso/M00_SEVEN-G_Curso_Guia_del_curso.html")) { Mal "portada [$lang]: no enlaza el curso"; $capasMal++ }
     # curso completo descargable en PPT y PDF (petición del autor, 20-09-2026)
-    if (-not (Test-Path (Join-Path $repo "SEVEN-G\pptx\$lang\SEVEN-G_Curso.pptx"))) { Mal "curso [$lang]: falta SEVEN-G_Curso.pptx (pwsh -File SEVEN-G/build/curso_pptx.ps1)"; $capasMal++ }
+    # tres cursos en presentación (empresa, consultor y partner), cada uno con su PPT y su PDF, enlazados desde la guía (D86)
+    $htmlGuia = Join-Path $repo "SEVEN-G\html\$lang\curso\M00_SEVEN-G_Curso_Guia_del_curso.html"
+    $htmlGuiaTxt = if (Test-Path $htmlGuia) { [IO.File]::ReadAllText($htmlGuia) } else { '' }
+    foreach ($cc in 'Empresa', 'Consultor', 'Partner') {
+      if (-not (Test-Path (Join-Path $repo "SEVEN-G\pptx\$lang\SEVEN-G_Curso_$cc.pptx"))) { Mal "curso [$lang]: falta SEVEN-G_Curso_$cc.pptx (pwsh -File SEVEN-G/build/curso_pptx.ps1)"; $capasMal++ }
+      if (-not (Test-Path (Join-Path $repo "SEVEN-G\pdf\$lang\curso\SEVEN-G_Curso_$cc.pdf"))) { Mal "curso [$lang]: falta SEVEN-G_Curso_$cc.pdf (curso_pptx.ps1 lo exporta con PowerPoint)"; $capasMal++ }
+      if (-not $guia.Contains("SEVEN-G_Curso_$cc.pptx") -or -not $guia.Contains("SEVEN-G_Curso_$cc.pdf")) { Mal "curso [$lang]: la guía no enlaza el PPT y el PDF del curso «$cc»"; $capasMal++ }
+      if ([regex]::Matches($htmlGuiaTxt, "SEVEN-G_Curso_$cc\.pptx").Count -lt 3) { Mal "curso [$lang]: la zona de descargas de la guía no ofrece el curso «$cc»"; $capasMal++ }
+    }
     if (-not (Test-Path (Join-Path $repo "SEVEN-G\pdf\$lang\curso\SEVEN-G_Curso_completo.pdf"))) { Mal "curso [$lang]: falta SEVEN-G_Curso_completo.pdf (pwsh -File SEVEN-G/build/curso_pdf.ps1)"; $capasMal++ }
-    if (-not $guia.Contains('SEVEN-G_Curso.pptx') -or -not $guia.Contains('SEVEN-G_Curso_completo.pdf')) { Mal "curso [$lang]: la guía no enlaza el PPT y el PDF del curso completo"; $capasMal++ }
+    if (-not $guia.Contains('SEVEN-G_Curso_completo.pdf')) { Mal "curso [$lang]: la guía no enlaza el PDF con los nueve módulos"; $capasMal++ }
   }
+  # los PPT de los cursos solo llegan al sitio público si el flujo de Pages y publicar.ps1 copian SEVEN-G/pptx
+  $pagesYml = Join-Path $repo '.github\workflows\pages.yml'
+  if ((Test-Path $pagesYml) -and [IO.File]::ReadAllText($pagesYml) -notmatch 'for c in [^;]*\bpptx\b') { Mal 'pages.yml no publica SEVEN-G/pptx (los PPT de los cursos darían 404 en el sitio)'; $capasMal++ }
+  if ([IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\build\publicar.ps1')) -notmatch "'pptx'") { Mal 'publicar.ps1 no publica SEVEN-G/pptx'; $capasMal++ }
   if (-not $capasMal) { Ok "«Lo esencial» en $($matriz.Count) documentos, coherente con la matriz (94) en ES y EN; curso completo, enlazado y descargable en PPT y PDF" }
 
   # ---- 2 y 3. textos internos o de clientes, y aviso legal

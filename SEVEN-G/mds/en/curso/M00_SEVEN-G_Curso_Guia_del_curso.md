@@ -38,7 +38,15 @@ It follows one rule: **the course defines no rule of the framework**. Each modul
 
 There is no exam, mark or certificate: SEVEN-G has no official certification (document 93, section 7).
 
-**Download the whole course.** All nine modules and this guide, in a single file: [PowerPoint presentation](../../../pptx/en/SEVEN-G_Curso.pptx) (one slide per module, with the objective and key ideas; for delivering or adapting it) and [PDF to read or print](../../../pdf/en/curso/SEVEN-G_Curso_completo.pdf) (the full content of all ten documents). Each module also remains available separately, in HTML, PDF and as part of the library.
+**Three slide courses, depending on who you are.** All three explain what SEVEN-G is, the phases and their gates, what is filled in at each phase, how that fills the initiative register's funnel all the way to the board dashboard —with annotated images of the register, the funnel and the dashboard— and two worked examples (one initiative that stops and one that reaches production). Each one then adds what is specific to its audience:
+
+| Course | Who it is for | PowerPoint | PDF |
+|---|---|---|---|
+| **Company · Self-consulting** | A company that wants to implement the framework by its own means: prerequisites, Lite or Enterprise scope, the 90-day plan and common mistakes. | [Download](../../../pptx/en/SEVEN-G_Curso_Empresa.pptx) | [Open](../../../pdf/en/curso/SEVEN-G_Curso_Empresa.pdf) |
+| **Consultant** | Anyone supporting clients under their own name: licence and responsibilities, essential rules, five engagement models, independence and what you can say and promise. | [Download](../../../pptx/en/SEVEN-G_Curso_Consultor.pptx) | [Open](../../../pdf/en/curso/SEVEN-G_Curso_Consultor.pdf) |
+| **Partner** | A company building SEVEN-G into its own methodology or product: what the licence allows and requires, adoption by components, technical integration and how to name it. There is no partner programme and no "official partner" status (document 91, section 6.2). | [Download](../../../pptx/en/SEVEN-G_Curso_Partner.pptx) | [Open](../../../pdf/en/curso/SEVEN-G_Curso_Partner.pdf) |
+
+The presentations may be adapted and delivered with attribution (document 93). The nine modules on this page and the guide are also available as a single [PDF to read or print](../../../pdf/en/curso/SEVEN-G_Curso_completo.pdf); each module remains available separately, in HTML and PDF.
 
 ---
 

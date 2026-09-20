@@ -75,7 +75,7 @@ foreach ($f in @('index.html', 'en\index.html', 'LICENSE', 'LICENCIA_CONTENIDOS.
   $o = Join-Path $raiz $f
   if (Test-Path $o) { Copiar $o $f } else { Write-Warning "No existe $f" }
 }
-$publicables = @{ 'SEVEN-G' = @('html', 'pdf', 'docx', 'herramientas'); 'SPHERES' = @('html', 'pdf'); 'SPAD' = @('html', 'pdf') }
+$publicables = @{ 'SEVEN-G' = @('html', 'pdf', 'docx', 'pptx', 'herramientas'); 'SPHERES' = @('html', 'pdf'); 'SPAD' = @('html', 'pdf') }
 foreach ($metodologia in $publicables.Keys) {
   $carpetas = $publicables[$metodologia]; if ($ConFuentes) { $carpetas += 'mds' }
   foreach ($c in $carpetas) {

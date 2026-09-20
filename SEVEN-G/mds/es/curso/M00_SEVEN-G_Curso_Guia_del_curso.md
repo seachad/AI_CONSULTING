@@ -38,7 +38,15 @@ Sigue una regla: **el curso no define ninguna regla del marco**. Cada módulo ex
 
 No hay examen, nota ni certificado: SEVEN-G no tiene certificación oficial (documento 93, sección 7).
 
-**Descargar el curso completo.** Los nueve módulos y esta guía, en un único fichero: [presentación en PowerPoint](../../../pptx/es/SEVEN-G_Curso.pptx) (una diapositiva por módulo, con el objetivo y las ideas clave; para impartirlo o adaptarlo) y [PDF para leer o imprimir](../../../pdf/es/curso/SEVEN-G_Curso_completo.pdf) (el contenido íntegro de los diez documentos). Cada módulo sigue disponible también por separado, en HTML, PDF y como parte de la biblioteca.
+**Tres cursos en presentación, según quién sea usted.** Los tres explican qué es SEVEN-G, las fases y sus puertas, qué se rellena en cada fase, cómo eso llena el embudo del registro de iniciativas hasta llegar al panel del consejo —con las imágenes del registro, del embudo y del panel comentadas— y dos casos de ejemplo (una iniciativa que se para y otra que llega a producción). Después, cada uno añade lo propio de su público:
+
+| Curso | Para quién | PowerPoint | PDF |
+|---|---|---|---|
+| **Empresa · Autoconsultoría** | La compañía que quiere implantar el marco por sus propios medios: requisitos, alcance Lite o Enterprise, plan de 90 días y errores frecuentes. | [Descargar](../../../pptx/es/SEVEN-G_Curso_Empresa.pptx) | [Abrir](../../../pdf/es/curso/SEVEN-G_Curso_Empresa.pdf) |
+| **Consultor** | Quien acompaña a clientes con su propia firma: licencia y responsabilidades, reglas esenciales, cinco modelos de acompañamiento, independencia y qué puede decir y prometer. | [Descargar](../../../pptx/es/SEVEN-G_Curso_Consultor.pptx) | [Abrir](../../../pdf/es/curso/SEVEN-G_Curso_Consultor.pdf) |
+| **Partner** | La empresa que integra SEVEN-G en su propia metodología o producto: qué permite y exige la licencia, adopción por componentes, integración técnica y cómo nombrarlo. No existe programa de socios ni «partner oficial» (documento 91, sección 6.2). | [Descargar](../../../pptx/es/SEVEN-G_Curso_Partner.pptx) | [Abrir](../../../pdf/es/curso/SEVEN-G_Curso_Partner.pdf) |
+
+Las presentaciones pueden adaptarse e impartirse citando la autoría (documento 93). Los nueve módulos de esta página y la guía están también en un único [PDF para leer o imprimir](../../../pdf/es/curso/SEVEN-G_Curso_completo.pdf); cada módulo sigue disponible por separado, en HTML y PDF.
 
 ---
 

@@ -20,7 +20,7 @@
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="claro"]){
+  :root:not([data-theme="claro"]):not([data-theme="salmon"]){
     --papel:#262a33;--papel-2:#30353f;--papel-3:#3a404b;--tarjeta:#2b3039;
     --tinta:#f2e6dc;--tinta-2:#d3c6bb;--tinta-3:#b0a499;--negro:#fff1e5;
     --regla:#555b66;--regla-2:#3d424c;
@@ -234,10 +234,17 @@ p.nota-clas{margin:4px 0 10px}
 .matriz .ct{display:none}
 @media (max-width:560px){.matriz .lg{display:none}.matriz .ct{display:inline}.matriz th[scope=row]{width:12%}}
 @media print{.cab,.nav,details.filtros,button,.btn,dialog{display:none!important}.pie{border-top:1px solid #000}}
-</style>
+/* tema salmón (el del sitio) y barra de navegación del sitio */
+:root[data-theme="salmon"]{--papel:#fbe2cd;--papel-2:#f3cfb2;--papel-3:#eabd9a;--tarjeta:#fdeede;--tinta:#2f2b28;--tinta-2:#564d47;--tinta-3:#6a5e56;--regla:#c9a78d;--regla-2:#e7c6ab;color-scheme:light}
+.sitio{display:flex;flex-wrap:wrap;gap:2px 18px;align-items:center;padding:6px 16px;background:var(--negro);font:600 13px/1.3 var(--sans)}
+.sitio a{color:var(--papel);text-decoration:none;padding:4px 0}
+.sitio a:hover,.sitio a:focus-visible{text-decoration:underline}
+.sitio .sitio-marca{font-family:var(--serif);font-weight:800;letter-spacing:.04em;margin-right:6px}
+@media print{.sitio{display:none}}</style>
 </head>
 <body>
 <a class="saltar" href="#principal" id="saltar">Saltar al contenido</a>
+<nav class="sitio" id="sitio-nav" aria-label="Sitio"></nav>
 <header class="cab">
   <div class="cab-in">
     <a class="marca" href="#/embudo"><i aria-hidden="true"></i>SEVEN-G <span id="txt-app">T01 · Registro de iniciativas</span></a>
@@ -247,7 +254,7 @@ p.nota-clas{margin:4px 0 10px}
       <label class="oculto" for="sel-lang" id="lbl-lang">Idioma</label>
       <select id="sel-lang"><option value="es">ES</option><option value="en">EN</option></select>
       <label class="oculto" for="sel-tema" id="lbl-tema">Tema</label>
-      <select id="sel-tema"><option value="auto">Auto</option><option value="claro">Claro</option><option value="oscuro">Oscuro</option></select>
+      <select id="sel-tema"><option value="auto">Auto</option><option value="salmon">Salmón</option><option value="claro">Claro</option><option value="oscuro">Oscuro</option></select>
     </div>
   </div>
   <nav class="nav" id="nav" aria-label="Vistas"></nav>
@@ -2311,11 +2318,26 @@ function validarIndice(d, ini, err, x, FL, FNV){
 /* ---------------- enrutado y arranque ---------------- */
 const VISTAS = ['embudo','tablero','gates','alertas','riesgos','consejo','analisis','inventario','datos'];
 function ruta(){ const p=(location.hash||'#/embudo').replace(/^#\/?/,'').split('/'); return {vista:p[0]||'embudo', id:p[1]?decodeURIComponent(p[1]):null, sub:p[2]||null}; }
-function aplicarTema(){ const r=document.documentElement; if(UI.tema==='claro'||UI.tema==='oscuro') r.setAttribute('data-theme',UI.tema); else r.removeAttribute('data-theme'); }
+// ---- integración en el sitio: barra de navegación y tema general compartido (clave «seveng-tema»: salmon, claro o noche) ----
+const LS_TEMA_SITIO = 'seveng-tema', LS_TEMA_AUTO = 'seveng-herramientas-tema-auto';
+let TEMA_SITIO_LEIDO = false;
+function temaSitioInicial(){
+  if(TEMA_SITIO_LEIDO) return; TEMA_SITIO_LEIDO = true;
+  try{ if(localStorage.getItem(LS_TEMA_AUTO)) return; const m = ({salmon:'salmon', claro:'claro', noche:'oscuro'})[localStorage.getItem(LS_TEMA_SITIO)]; if(m){ UI.tema = m; const s = document.getElementById('sel-tema'); if(s) s.value = m; } }catch(e){}
+}
+function temaSitioGuardar(v){
+  try{ if(v === 'auto'){ localStorage.setItem(LS_TEMA_AUTO, '1'); } else { localStorage.removeItem(LS_TEMA_AUTO); localStorage.setItem(LS_TEMA_SITIO, ({salmon:'salmon', claro:'claro', oscuro:'noche'})[v] || 'salmon'); } }catch(e){}
+}
+function sitioNav(){
+  const n = document.getElementById('sitio-nav'); if(!n) return; const en = UI.lang === 'en', l = en ? 'en' : 'es';
+  const e = [[en ? '../../../en/index.html' : '../../../index.html', en ? '⌂ Home' : '⌂ Portada'], ['../../html/'+l+'/00_SEVEN-G_Que_es_y_para_que_sirve.html', en ? 'What SEVEN-G is' : 'Qué es SEVEN-G'], ['../../html/'+l+'/index.html', en ? 'Library' : 'Biblioteca'], ['../../html/'+l+'/curso/M00_SEVEN-G_Curso_Guia_del_curso.html', en ? 'Course' : 'Curso'], ['../T01_registro_iniciativas/registro.html', en ? 'Initiative register' : 'Registro de iniciativas'], ['../T17_panel_consejo/index.html', en ? 'Board dashboard' : 'Panel del consejo']];
+  n.setAttribute('aria-label', en ? 'Site' : 'Sitio');
+  n.innerHTML = '<span class="sitio-marca" style="color:var(--papel)">SEVEN-G</span>' + e.map(x => '<a href="'+x[0]+'">'+x[1]+'</a>').join('');
+}function aplicarTema(){ temaSitioInicial(); const r=document.documentElement; if(UI.tema==='claro'||UI.tema==='oscuro'||UI.tema==='salmon') r.setAttribute('data-theme',UI.tema); else r.removeAttribute('data-theme'); }
 function cabecera(r){
   document.documentElement.lang = UI.lang;
   $('#txt-app').textContent=t('app'); $('#saltar').textContent=t('saltar'); $('#lbl-lang').textContent=t('idioma'); $('#lbl-tema').textContent=t('tema');
-  $('#sel-lang').value=UI.lang; const st=$('#sel-tema'); st.options[0].text=t('t_auto'); st.options[1].text=t('t_claro'); st.options[2].text=t('t_oscuro'); st.value=UI.tema;
+  $('#sel-lang').value=UI.lang; const st=$('#sel-tema'); st.options[0].text=t('t_auto'); st.options[1].text=(UI.lang==='en'?'Salmon':'Salmón'); st.options[2].text=t('t_claro'); st.options[3].text=t('t_oscuro'); sitioNav(); st.value=UI.tema;
   $('#nav').setAttribute('aria-label',t('vistas'));
   const nAl=todasAlertas().filter(a=>a.sev==='alta').length;
   $('#nav').innerHTML = VISTAS.map(v=>'<a href="#/'+v+'"'+(r.vista===v?' aria-current="page"':'')+'>'+esc(t('v_'+v))+(v==='alertas'&&nAl?'<span class="cuenta" aria-label="'+nAl+'">'+nAl+'</span>':'')+'</a>').join('');
@@ -2351,7 +2373,7 @@ function render(enfocar){
 document.addEventListener('change', e=>{
   const el=e.target;
   if(el.id==='sel-lang'){ UI.lang=el.value; guardarUI(); render(); return; }
-  if(el.id==='sel-tema'){ UI.tema=el.value; aplicarTema(); guardarUI(); return; }
+  if(el.id==='sel-tema'){ UI.tema=el.value; temaSitioGuardar(el.value); aplicarTema(); guardarUI(); return; }
   if(el.dataset.filtro && el.type!=='search'){ const k=el.dataset.filtro; if(el.type==='checkbox'){ UI.filtros[k] = el.dataset.invertir? !el.checked : el.checked; } else UI.filtros[k]=el.value; guardarUI(); render(); return; }
   if(el.dataset.accChange==='orden'){ UI.orden=el.value; guardarUI(); render(); return; }
   if(typeof onChangeExtra==='function') onChangeExtra(e);

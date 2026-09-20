@@ -44,6 +44,8 @@ Repositorio de metodologías de IA de Fernando García Varela (D81). El trabajo 
 
 ## Pendientes
 
+- 20-09-2026 (D86): los tres cursos en presentación (empresa, consultor, partner) se generan con `pwsh -File SEVEN-G/build/curso_pptx.ps1` (lo ejecuta `build.ps1`); su guion está en ese script y sus imágenes en `SEVEN-G/build/img_curso/` (capturas del embudo, de T01 y de T17: recapturarlas si cambian los datos de demostración). El PDF de cada curso lo exporta PowerPoint por COM. Pendiente del autor: validar el contenido de los tres cursos, en especial el del partner (no existe programa de socios; si se quiere crear uno, es una decisión nueva que cambia 91 §6.2 y 93 §7).
+- 20-09-2026 (D87): pendiente dar selector de tema al panel móvil de T17 (hoy sigue al sistema) y, si se quiere, llevar la barra del sitio a la página de comunidad y al registro de recomendaciones.
 - 20-09-2026 (D84): los hitos mensuales del historial de versiones del documento 04 §2.3 (febrero de 2025 a septiembre de 2026) son una reconstrucción razonada de Claude a petición del autor, no un registro exacto. Pendiente que el autor los revise y corrija lo que no encaje con lo que realmente ocurrió.
 - 20-09-2026 (D81): confirmar si el autor quiere renombrar también la organización de GitHub `Seachad-TEAM` y el dominio `seachad.github.io`; no se ha tocado porque es infraestructura real fuera de este repositorio (el cambio de nombre de una cuenta de GitHub no lo puede hacer Claude).
 - Biblioteca completa en versión 0.1 (ES/EN) desde el 16-09-2026: estado y pendientes del autor en el §7 del análisis (`_trabajo/20260916_Analisis_estado_y_huecos_SEVEN-G.md`).
