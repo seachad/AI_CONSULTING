@@ -3,7 +3,7 @@
 
 > **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard, and is not a certification. Each organisation that uses it is solely responsible for validating its results, verifying the regulation that applies to it and certifying its own regulatory compliance. The author and SEACHAD accept no liability for its use.
 
-> **Note on the change of name.** This document was previously titled "SEVEN-G Certification — SPAD-Compliant™ Internal Certification". It has been renamed "SPAD self-assessment of conformity" because there is no certification body and no certification process issued by SEACHAD or by any third party. A self-assessment is carried out by the organisation itself, about its own work: it is not a certification, it is not issued or endorsed by SEACHAD or any third party, and it does not attest compliance with any law or standard. The file name is kept unchanged so that existing links keep working.
+> **Note on the change of name.** This document was previously titled "SEVEN-G Certification — SPAD-Compliant™ Internal Certification". It has been renamed "SPAD self-assessment of conformity" because there is no certification body and no certification process issued by SEACHAD or by any third party. A self-assessment is carried out by the organisation itself, about its own work: it is not a certification, it is not issued or endorsed by its author or any third party, and it does not attest compliance with any law or standard. The file name is kept unchanged so that existing links keep working.
 
 ---
 

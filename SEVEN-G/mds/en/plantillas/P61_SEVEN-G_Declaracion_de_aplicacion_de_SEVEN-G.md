@@ -7,16 +7,16 @@
 | Document | Template P61 · SEVEN-G declaration of application |
 | Version | 0.1 (working draft) |
 | Date | 19-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Draft for review. |
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 > **Why it matters.** Saying "we apply SEVEN-G" to customers, supervisors or investors is a statement about how AI is governed in the company. If it does not state which perimeter it covers, what has been excluded, which version is applied and which audit supports it, it is misleading and exposes the company. This template turns the declaration into a **verifiable self-declaration**: each of the seven conditions in 01 §14 is linked to its evidence and to the result of an audit, and the text makes clear that it is not a certification.
 
-> **It is not a certification.** There is no official SEVEN-G certification in version 0.x. The declaration is the sole responsibility of the company that issues it; a third party's review report is a professional opinion with its own scope and date, and does not grant any seal. Use of the SEVEN-G name does not imply endorsement by the author or by SEACHAD (documents 91 §6 and 93).
+> **It is not a certification.** There is no official SEVEN-G certification in version 0.x. The declaration is the sole responsibility of the company that issues it; a third party's review report is a professional opinion with its own scope and date, and does not grant any seal. Use of the SEVEN-G name does not imply endorsement by the author (documents 91 §6 and 93).
 
 ## 1. Instructions for use
 
@@ -150,19 +150,19 @@ In a full declaration, the corporate cycle, the initiative lifecycle, the govern
 
 ### 10.1 Full declaration
 
-> *[Company name]* declares that it applies SEVEN-G (version *[number]*, of *[date]*), a framework by Fernando García · SEACHAD published under the CC BY 4.0 licence, since *[date]*, within the following scope: *[companies, areas and types of use]*. The following are excluded: *[exclusions]*, because *[reason]*. The following parameters have been adapted: *[adaptations]*. The following exceptions remain in force: *[exceptions]*.
+> *[Company name]* declares that it applies SEVEN-G (version *[number]*, of *[date]*), a framework by Fernando García Varela published under the CC BY 4.0 licence, since *[date]*, within the following scope: *[companies, areas and types of use]*. The following are excluded: *[exclusions]*, because *[reason]*. The following parameters have been adapted: *[adaptations]*. The following exceptions remain in force: *[exceptions]*.
 >
 > The declaration is supported by audit *[AUD-AAAA-NNN]*, carried out by *[internal audit or external auditor]* on *[date]* with the outcome *[Conformant or Conformant with observations]*. *[Where applicable: improvement actions are under way.]* It was approved by *[body]* on *[date]* and is valid until *[date of the next annual audit]*.
 >
-> This declaration is a self-declaration by the company and is not a certification. There is no official SEVEN-G certification in version 0.x. Use of the SEVEN-G name does not imply endorsement by the author of the framework or by SEACHAD. *[Company name]* is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance.
+> This declaration is a self-declaration by the company and is not a certification. There is no official SEVEN-G certification in version 0.x. Use of the SEVEN-G name does not imply endorsement by the author of the framework. *[Company name]* is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance.
 
 ### 10.2 Modular declaration
 
-> *[Company name]* uses the following components of SEVEN-G (version *[number]*), a framework by Fernando García · SEACHAD published under the CC BY 4.0 licence: *[components]*, within the scope *[scope]*. This statement is not a declaration of application of the full framework or a certification; there is no official SEVEN-G certification in version 0.x and use of the name does not imply endorsement by the author or by SEACHAD.
+> *[Company name]* uses the following components of SEVEN-G (version *[number]*), a framework by Fernando García Varela published under the CC BY 4.0 licence: *[components]*, within the scope *[scope]*. This statement is not a declaration of application of the full framework or a certification; there is no official SEVEN-G certification in version 0.x and use of the name does not imply endorsement by the author.
 
 ### 10.3 Expressions not permitted (91 §6.2)
 
-"SEVEN-G certified", "SEVEN-G certification", "certified company" · "approved by SEVEN-G", "official partner" · "endorsed by Fernando García" or "by SEACHAD" · "AI Act compliance guaranteed by SEVEN-G" · any statement that the company complies with regulation "according to SEVEN-G".
+"SEVEN-G certified", "SEVEN-G certification", "certified company" · "approved by SEVEN-G", "official partner" · "endorsed by Fernando García Varela" · "AI Act compliance guaranteed by SEVEN-G" · any statement that the company complies with regulation "according to SEVEN-G".
 
 ---
 

@@ -1,6 +1,6 @@
 # AI_CONSULTING · Instrucciones para Claude
 
-Repositorio de metodologías de IA de SEACHAD (Fernando García). El trabajo principal es **SEVEN-G**.
+Repositorio de metodologías de IA de Fernando García Varela (D81). El trabajo principal es **SEVEN-G**.
 
 ## Antes de trabajar en SEVEN-G
 
@@ -44,6 +44,8 @@ Repositorio de metodologías de IA de SEACHAD (Fernando García). El trabajo pri
 
 ## Pendientes
 
+- 20-09-2026 (D84): los hitos mensuales del historial de versiones del documento 04 §2.3 (febrero de 2025 a septiembre de 2026) son una reconstrucción razonada de Claude a petición del autor, no un registro exacto. Pendiente que el autor los revise y corrija lo que no encaje con lo que realmente ocurrió.
+- 20-09-2026 (D81): confirmar si el autor quiere renombrar también la organización de GitHub `Seachad-TEAM` y el dominio `seachad.github.io`; no se ha tocado porque es infraestructura real fuera de este repositorio (el cambio de nombre de una cuenta de GitHub no lo puede hacer Claude).
 - Biblioteca completa en versión 0.1 (ES/EN) desde el 16-09-2026: estado y pendientes del autor en el §7 del análisis (`_trabajo/20260916_Analisis_estado_y_huecos_SEVEN-G.md`).
 - Validar con el autor las decisiones "a validar" (D19, D20, D22, D25) y los umbrales marcados "a calibrar".
 - Revisión jurídica del documento 34 (Reglamento (UE) 2026/1744 contra el DOUE; transposición de NIS2; Ley Orgánica de IA en tramitación).

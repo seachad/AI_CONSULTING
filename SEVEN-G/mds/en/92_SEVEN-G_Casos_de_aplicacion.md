@@ -7,14 +7,14 @@
 | Document | Document 92 · Application cases |
 | Version | 0.1 (working draft) |
 | Date | 16-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Draft for review. All cases, companies, people and figures are fictitious. |
 
 <!-- cifras: 8 | fictitious cases ; 21 | initiatives taken through their gates ; 7 | well-founded stops ; 5 | recorded retirements -->
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 > **NOTICE: ALL THE CONTENT OF THIS DOCUMENT IS FICTITIOUS.**
 > The companies, their bodies, people, systems, initiatives, decisions, dates and figures are **invented** to illustrate how SEVEN-G is applied. They do not describe any real organisation, do not come from client engagements and **are not market references, benchmarks or expected results**. The cases are consistent with the sectors of the board dashboard demonstrations (energy, logistics, healthcare, retail, public sector, agri-food, hospitality and industry), but do not reproduce their data. Any resemblance to a real organisation is coincidental.

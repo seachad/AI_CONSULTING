@@ -7,14 +7,14 @@
 | Documento | Documento 20 · Manuales de fase |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Desarrolla la sección 6 del documento 01 y no puede contradecirlo. |
 
 <!-- cifras: 8 | manuales de fase ; 13 | apartados por manual ; 4 | perfiles tecnológicos ; 31 | plantillas de evidencia enlazadas -->
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: recomendado | Guía de trabajo de cada fase: actividades, responsables, evidencias y errores frecuentes. Lo obligatorio que desarrolla está en el documento 01 (fases y evidencias) y en el 21 (criterios). Se lee la fase en la que está la iniciativa; las transiciones entre fases (sección 11) conviene conocerlas desde el principio. -->
 

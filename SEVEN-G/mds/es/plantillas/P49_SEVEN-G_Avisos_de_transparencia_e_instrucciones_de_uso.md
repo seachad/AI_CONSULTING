@@ -7,14 +7,14 @@
 | Documento | Plantilla P49 · Avisos de transparencia e instrucciones de uso |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 19-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
 > *Esta plantilla no constituye asesoramiento jurídico.* Los textos modelo son orientativos y deben validarse para cada caso. Referencias consultadas en septiembre de 2026; verifíquese su vigencia (documento 34 §3.11).
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 > **Por qué importa.** Las obligaciones de transparencia del artículo 50 del Reglamento de IA son exigibles desde el 2-08-2026 y se comprueban en G4 y G5; una persona que no sabe que habla con una IA, o que no sabe cómo pedir que una persona revise una decisión que le afecta, es a la vez un incumplimiento y una pérdida de confianza. Las instrucciones de uso internas son la base de una supervisión humana efectiva: quien usa el sistema debe saber qué hace, qué no debe pedirle y cómo avisar de un fallo. Sin un registro de avisos, la compañía no puede demostrar qué texto vio cada persona ni desde cuándo.
 

@@ -1,8 +1,8 @@
 # SPAD — Structured Prompt-Driven Engineering
 
-Metodología de apoyo de SEACHAD para gestionar el desarrollo de software con inteligencia artificial de forma **secuencial, bloqueante y auditable**. Independiente de SEVEN-G y referenciada desde su documento 53 (D09). En construcción (versión 0.x).
+Metodología de apoyo de Fernando García Varela para gestionar el desarrollo de software con inteligencia artificial de forma **secuencial, bloqueante y auditable**. Independiente de SEVEN-G y referenciada desde su documento 53 (D09). En construcción (versión 0.x).
 
-> **Aviso legal y exención de responsabilidad.** SPAD es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio ni profesional, no garantiza resultados ni el cumplimiento de ninguna norma y no es una certificación. Cada organización que la use es la única responsable de validar sus resultados, identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad alguna por su uso.
+> **Aviso legal y exención de responsabilidad.** SPAD es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio ni profesional, no garantiza resultados ni el cumplimiento de ninguna norma y no es una certificación. Cada organización que la use es la única responsable de validar sus resultados, identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. El autor no asume responsabilidad alguna por su uso.
 
 | Carpeta | Contenido |
 |---|---|
@@ -37,6 +37,6 @@ pwsh -File SEVEN-G/build/build.ps1 -Metodologias SPAD
 
 ## Licencia
 
-Las mismas condiciones que SEVEN-G: contenidos bajo **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)** (`LICENCIA_CONTENIDOS.md` en la raíz del repositorio) y código bajo **MIT** (`LICENSE`). Atribución visible: *SPAD · Fernando García · SEACHAD*.
+Las mismas condiciones que SEVEN-G: contenidos bajo **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)** (`LICENCIA_CONTENIDOS.md` en la raíz del repositorio) y código bajo **MIT** (`LICENSE`). Atribución visible: *SPAD · Fernando García Varela*.
 
-No existe certificación de SPAD. La conformidad con SPAD solo puede autoevaluarla cada organización (documento 08); no la emite ni la respalda SEACHAD ni ningún tercero, y toda declaración pública debe presentarse como autoevaluación, nunca como certificación. El uso del nombre no implica respaldo del autor.
+No existe certificación de SPAD. La conformidad con SPAD solo puede autoevaluarla cada organización (documento 08); no la emite ni la respalda su autor ni ningún tercero, y toda declaración pública debe presentarse como autoevaluación, nunca como certificación. El uso del nombre no implica respaldo del autor.

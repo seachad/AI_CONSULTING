@@ -45,7 +45,7 @@
 | Documento | Documento NN · Nombre corto |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Borrador para revisión. <frase opcional> |
 
 <!-- cifras: N | texto ; N | texto ; N | texto ; N | texto -->   (4 cifras que describan el documento, no cifras de mercado)

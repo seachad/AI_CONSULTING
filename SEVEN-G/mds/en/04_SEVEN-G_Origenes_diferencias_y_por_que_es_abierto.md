@@ -7,14 +7,14 @@
 | Document | Document 04 · Origins, differences and openness |
 | Version | 0.1 (working draft) |
 | Date | 19-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Draft for review. Explanatory document: it adds no rules to the framework. |
 
 <!-- cifras: 6 | common shortcomings the framework corrects ; 6 | management disciplines it brings together ; 5 | differences from a sales funnel ; 0 | obligations to hire the author -->
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 <!-- esencial: consulta | Explanatory document. It tells where SEVEN-G was born (from practice, not from a specific methodology), what it corrects in the usual way of adopting AI, what it takes from sales funnel management and where it departs from it, and why the framework is free of charge and freely distributable. It contains no rules or mandatory evidence: it is read once, to understand the reasons behind the framework. -->
 
@@ -48,6 +48,37 @@ This does not mean that the framework starts from scratch. It brings together **
 | **Value is declared.** Released hours are added up as savings and nobody checks them. | Figures that do not withstand an audit and poorly founded investment decisions. | Ten measurement rules; every amount carries a formula and a status (validated, declared or estimated); released capacity does not count until it is materialised. | document 40; document 43 |
 | **Whoever builds also approves.** Governance arrives at the end, as a formality. | Weak controls, regulatory and security risk addressed late. | Segregation of duties from phase 0, dual validation (result and documentation), regulatory classification and risks before design. | document 01, section 8; document 30; document 32; document 33 |
 | **Everything is called transformation.** Efficiency and transformation are mixed in the same narrative and judged with the same criteria. | The company believes it is transforming when it is only becoming more efficient, or blocks its transformation bets with cost-cutting criteria. | Three ambition levels with different gate criteria and a company transformation index based on evidence. | document 10; document 12 |
+
+### 2.3 How the framework has evolved
+
+SEVEN-G did not appear all at once: it grew out of earlier research work and has kept expanding since. This timeline is for the **framework as a whole** (a product version, which grows with every new block) and is different from the **version of each document**, which is numbered separately (section 10 of each document) and moves forward when that specific document changes.
+
+> **Why it matters.** A framework that states where it comes from and how it has grown is easier to trust than one that appears already finished. The timeline also explains why some pieces (value measurement, risk) are more mature than others (transformation index, course): they have simply been worked on for longer.
+
+| When | What was added |
+|---|---|
+| February 2025 | Initial research: the state of AI governance in organisations and a comparison of existing market methodologies and frameworks (risk management frameworks, AI management standards, internal consultancy practices). No published version yet. |
+| March 2025 | First drafts of the initiative lifecycle and the decision gates, drawing on the discipline of phased investment and on sales-funnel management (section 4). |
+| April 2025 | **Version 0.1** (first internal version): phases 0–7, gates G0–G7 with their five possible outcomes, and a first draft of the impact sphere map. |
+| May 2025 | First governance model (board, AI committee, three lines of defence) and first evidence templates. |
+| June 2025 | Value measurement rules (validated, declared and estimated statuses) and a first draft of the transformation index. |
+| July 2025 | AI risk methodology (probability-and-impact matrix) and a first regulatory mapping (EU AI Act, GDPR). |
+| August 2025 | First trials of the framework with real, anonymised use cases; gates and measurement rules adjusted from that experience. |
+| **September 2025** | **First public release** of the framework (overview document and initial library in Spanish). |
+| October 2025 | English translation of the initial library; translation guide and shared glossary. |
+| November 2025 | Tool catalogue (T01–T22) and first design of the initiative register (T01). |
+| December 2025 | Maturity model (seven dimensions) and first diagnostic questionnaire. |
+| January 2026 | Risk methodology extended to generative AI and agents; autonomy levels A0–A3. |
+| February 2026 | First AI board dashboard (T17), connected to the initiative register. |
+| March 2026 | Generative-AI-specific controls: usage drift, bias testing with counterfactual pairs, cost degradation cascade. |
+| April 2026 | Implementation guide and first calibration of Lite and Enterprise scope per company. |
+| May 2026 | AI audit framework and declaration-of-application template. |
+| June 2026 | SPHERES as a supporting methodology (spheres and ambition levels) and SPAD as the AI-assisted software-building methodology, both referenced from SEVEN-G. |
+| July 2026 | Company transformation index (eight signals) and its calculator (T14). |
+| August 2026 | Library extended with templates P32–P71 and the value, maturity and risk tools (T06, T11, T14, T15). |
+| September 2026 | **Version 0.80** (current): complete library (documents 00–94, ES/EN), the SEVEN-G course with layered reading, an issues-and-requests community, and continued adjustment of documents and tools ahead of version 1.0. |
+
+As long as the framework's version number has not reached 1.0, the "version under review" notice in section 6.4 still applies: the content is operational (document 00, decision D40), but it is requested not to be shared widely because documents and tools are still being adapted to make them reusable.
 
 ---
 
@@ -132,19 +163,22 @@ The company approves the **reference time limits per phase** in C2 and recalibra
 
 ### 6.1 The reason
 
-**Author's note.** I have seen at first hand the need many companies have to put things in order: they are unsure how to start, how to take an inventory of what they are already doing and how to bring order to a chaotic and very fast-moving world of innovations. That is why I have decided to share my knowledge and my way of working. If anyone needs my help in person, I offer my services, as I already do with other companies. **Using all of this implies no obligation whatsoever to hire my advice.**
+**Author's note.** I have seen at first hand the need many companies have to put things in order: they are unsure how to start, how to take an inventory of what they are already doing and how to bring order to a chaotic and very fast-moving world of innovations. That is why I have decided to share my knowledge and my way of working: my goal is to help the market move forward on governed use of artificial intelligence, not to make money directly from the methodology, its documents, its templates or its tools. **The whole site can be used, read and downloaded without even registering**, and it never sends an email or any other communication seeking to gain clients. Where there is a personal contribution with a cost is if someone wants to request my services —a custom course on the methodology, consulting, or board advisory for a company, for example— and that decision is entirely up to whoever reads this: **I am reachable, but it is you who decides whether to get in touch with me.**
 
-— Fernando García · SEACHAD
+— Fernando García Varela
 
 ### 6.2 What it means in practice
 
 | Question | Answer |
 |---|---|
 | Does SEVEN-G have to be paid for? | No. Neither the documents, nor the templates, nor the tools. |
+| Do you have to register or give an email to use the site? | No. Everything is read, used and downloaded without an account or registration. |
+| Does the site send emails or try to capture contacts? | No. It never sends an email or any communication seeking engagement; contacting the author is always the visitor's own initiative (section 7). |
 | Does permission have to be requested? | No, as long as the licence is complied with. |
 | Can it be adapted to the company? | Yes: change thresholds, translate, integrate the templates into the company's own systems. |
 | Can a consultancy or an auditor use it in paid services? | Yes. The licence allows commercial use (document 91). |
-| Does it oblige anyone to hire the author or SEACHAD? | No. The framework is designed so that a company can apply it by itself. |
+| Does it oblige anyone to hire the author? | No. The framework is designed so that a company, consultancy or professional can apply it by itself. |
+| So how does the author make money from this? | Not directly from the methodology: the author's personal contribution has a cost only if someone hires his services (a custom course, consulting or board advisory for a company). |
 | What if the company wants support? | It can ask the author or any other professional. Document 91 describes the support models and how to avoid dependence on the consultant. |
 
 ### 6.3 What control the author keeps
@@ -153,7 +187,7 @@ Openness is not an absence of rules. The author chose the minimum control needed
 
 | Element | What is controlled | Why |
 |---|---|---|
-| **Contents under CC BY 4.0** | A single requirement: credit the author (Fernando García · SEACHAD), link to the licence and indicate whether changes were made. | Prohibiting commercial use was ruled out because it would create doubts for user companies and for those who advise them. |
+| **Contents under CC BY 4.0** | A single requirement: credit the author (Fernando García Varela), link to the licence and indicate whether changes were made. | Prohibiting commercial use was ruled out because it would create doubts for user companies and for those who advise them. |
 | **Code under MIT** | Keep the copyright notice and the licence. | The tools must be able to be integrated into each company's systems. |
 | **The SEVEN-G name** | Using the name does not imply endorsement by the author. There is no official certification: the declaration of application is a self-declaration verifiable by audit. | To prevent the name from being used to promise what nobody has checked. |
 | **Published versions** | The licence of a published version is not revoked. | Whoever adopts the framework needs to know that it will not be withdrawn from them. |
@@ -169,9 +203,9 @@ While the framework is at version 0.x, its main pages ask readers **not to circu
 
 ## 7. Contact
 
-For queries about the framework, improvement proposals, error reports or requests for support: **Fernando García · SEACHAD**, on his professional LinkedIn profile: <https://www.linkedin.com/in/fernandogarciavarela/>.
+For queries about the framework, improvement proposals, error reports or requests for support: **Fernando García Varela**, on his professional LinkedIn profile: <https://www.linkedin.com/in/fernandogarciavarela/>. **SEVEN-G is a registered trademark of Fernando García Varela** (document 93, section 7).
 
-There is no need to get in touch or ask permission for any use that complies with the licence. Contacting the author does not turn a use into an endorsed one (document 93, section 7).
+There is no need to get in touch or ask permission for any use that complies with the licence; the site never asks for it and never reaches out on its own initiative to whoever visits it. Contacting the author does not turn a use into an endorsed one (document 93, section 7).
 
 ---
 

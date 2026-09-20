@@ -248,8 +248,12 @@ try {
     }
     $portada = Join-Path $repo $(if ($lang -eq 'en') { 'en\index.html' } else { 'index.html' })
     if (-not [IO.File]::ReadAllText($portada).Contains("html/$lang/curso/M00_SEVEN-G_Curso_Guia_del_curso.html")) { Mal "portada [$lang]: no enlaza el curso"; $capasMal++ }
+    # curso completo descargable en PPT y PDF (petición del autor, 20-09-2026)
+    if (-not (Test-Path (Join-Path $repo "SEVEN-G\pptx\$lang\SEVEN-G_Curso.pptx"))) { Mal "curso [$lang]: falta SEVEN-G_Curso.pptx (pwsh -File SEVEN-G/build/curso_pptx.ps1)"; $capasMal++ }
+    if (-not (Test-Path (Join-Path $repo "SEVEN-G\pdf\$lang\curso\SEVEN-G_Curso_completo.pdf"))) { Mal "curso [$lang]: falta SEVEN-G_Curso_completo.pdf (pwsh -File SEVEN-G/build/curso_pdf.ps1)"; $capasMal++ }
+    if (-not $guia.Contains('SEVEN-G_Curso.pptx') -or -not $guia.Contains('SEVEN-G_Curso_completo.pdf')) { Mal "curso [$lang]: la guía no enlaza el PPT y el PDF del curso completo"; $capasMal++ }
   }
-  if (-not $capasMal) { Ok "«Lo esencial» en $($matriz.Count) documentos, coherente con la matriz (94) en ES y EN; curso completo y enlazado" }
+  if (-not $capasMal) { Ok "«Lo esencial» en $($matriz.Count) documentos, coherente con la matriz (94) en ES y EN; curso completo, enlazado y descargable en PPT y PDF" }
 
   # ---- 2 y 3. textos internos o de clientes, y aviso legal
   Write-Host '2. Textos internos o de clientes en lo publicable'
@@ -267,6 +271,12 @@ try {
   $hallazgos = $publicables | Select-String -Pattern ($patrones -join '|') -List
   foreach ($h in $hallazgos) { Mal "texto interno o prohibido en $([IO.Path]::GetRelativePath($repo, $h.Path)):$($h.LineNumber)" }
   if (-not $hallazgos) { Ok "$($publicables.Count) ficheros publicables sin textos internos ($($patrones.Count) patrones)" }
+
+  # D81: sin la marca «SEACHAD» (en mayúsculas) en lo publicado; distinto de «seachad» en minúsculas, que es el
+  # nombre real de la cuenta/organización de GitHub del autor (seachad.github.io, seachad/seven-g-feedback, Seachad-TEAM)
+  $conSeachad = $publicables | Select-String -Pattern 'SEACHAD' -CaseSensitive -List
+  foreach ($h in $conSeachad) { Mal "referencia a «SEACHAD» (D81, retirada de la marca): $([IO.Path]::GetRelativePath($repo, $h.Path)):$($h.LineNumber)" }
+  if (-not $conSeachad) { Ok 'sin la marca «SEACHAD» en lo publicado' }
 
   # los términos de la lista privada tampoco pueden estar en el nombre de ningún fichero versionado (aunque no se publique)
   if (Test-Path $lista) {

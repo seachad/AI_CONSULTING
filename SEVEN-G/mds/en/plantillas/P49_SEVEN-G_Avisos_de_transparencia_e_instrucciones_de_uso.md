@@ -7,14 +7,14 @@
 | Document | Template P49 · Transparency notices and instructions for use |
 | Version | 0.1 (working draft) |
 | Date | 19-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Draft for review. |
 
 > *This template does not constitute legal advice.* The model texts are indicative and must be validated for each case. References consulted in September 2026; verify that they are current (document 34 §3.11).
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 > **Why it matters.** The transparency obligations of Article 50 of the AI Act have applied since 2-08-2026 and are checked at G4 and G5; a person who does not know they are talking to an AI, or does not know how to ask for a person to review a decision that affects them, is both a breach and a loss of trust. Internal instructions for use are the basis of effective human oversight: whoever uses the system must know what it does, what not to ask of it and how to report a failure. Without a register of notices, the company cannot demonstrate which text each person saw or since when.
 

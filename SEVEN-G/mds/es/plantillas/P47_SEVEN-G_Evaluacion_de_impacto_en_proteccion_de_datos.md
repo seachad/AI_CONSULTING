@@ -7,14 +7,14 @@
 | Documento | Plantilla P47 · Evaluación de impacto en protección de datos |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 19-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
 > *Esta plantilla no constituye asesoramiento jurídico.* Referencias consultadas en septiembre de 2026; verifíquese su vigencia (documento 34 §6).
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 > **Por qué importa.** Cuando es obligatoria, la EIPD debe existir antes de iniciar el tratamiento (RGPD, artículo 35) y es condición de G3 y G4 en SEVEN-G. Sin ella, un sistema de IA puede llegar a producción tratando datos sin base jurídica clara, con inferencias o decisiones automatizadas no previstas y sin medidas proporcionadas; el resultado es un riesgo regulatorio y reputacional que ya no se corrige en el diseño, sino con la suspensión del sistema. Esta plantilla convierte la conclusión de P11 §9.1 («requerida») en una evaluación completa y verificable, integrada en el registro de riesgos (P12).
 

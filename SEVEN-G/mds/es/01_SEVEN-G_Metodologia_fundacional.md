@@ -7,14 +7,14 @@
 | Documento | Documento 01 · Metodología fundacional |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento normativo de referencia del marco. |
 
 <!-- cifras: 10 | principios ; 2 | niveles de gobierno ; 8 | fases por iniciativa ; 6 | roles con separación de funciones -->
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: siempre | Referencia normativa del marco. Lo que ninguna compañía puede omitir: el ciclo corporativo C1–C5, las ocho fases con sus puertas y evidencias (sección 6), las reglas de decisión de las puertas (sección 7), la separación de funciones (sección 8), la determinación de la intensidad Lite o Enterprise en cada iniciativa (sección 9) y el proceso de no conformidades (sección 12). -->
 
@@ -336,6 +336,8 @@ Resultados sin documentación, o documentación sin resultados, no superan el *g
 | **Continuar la operación · Continuar con condiciones · Adelantar G7** | Solo en R6: la iniciativa sigue aportando valor bajo control, lo hace con desviaciones corregibles, o presenta desviaciones relevantes de valor, riesgo o cumplimiento. | Sigue en producción; con condiciones, plazo y responsable; o se abre G7 sin esperar al calendario. |
 
 Una decisión de **parar** bien fundamentada es un resultado válido del método. Evitar una mala inversión también es generar valor.
+
+> **En palabras sencillas: ¿qué es «iterar»?** Iterar es repetir el trabajo de la fase en la que está la iniciativa, sin pasar a la siguiente, porque el resultado todavía no llega al criterio exigido pero la idea de fondo sigue pareciendo válida. No es empezar de cero (eso sería pivotar, con una hipótesis distinta) ni cerrar la iniciativa (eso sería parar): es corregir y volver a intentarlo en el mismo punto. Por ejemplo, en la fase 2 se prueba una hipótesis de valor y el ahorro medido queda por debajo del objetivo, pero el equipo identifica un ajuste concreto (otro segmento de usuarios, otro proceso) que podría cerrar la diferencia; en vez de avanzar a la fase 3 con datos insuficientes, la iniciativa itera: repite la fase 2 con ese ajuste y vuelve a presentarse al mismo *gate*. **Por qué solo se permite dos veces (regla 5 de la sección 7.4):** cada iteración tiene un coste de tiempo y de presupuesto, y si dos intentos de corregir lo mismo no bastan, es señal de que el problema no es un ajuste menor sino algo más de fondo (la hipótesis, el diseño o el patrocinio). Por eso, a la tercera vez, la decisión deja de tomarla quien dirige la iniciativa y **se eleva a quien tiene autoridad para decidir con más contexto** (por ejemplo, del patrocinador al comité de IA), que valora si merece la pena seguir iterando, pivotar hacia otra hipótesis o parar.
 
 ### 7.4 Reglas de decisión
 

@@ -1,4 +1,4 @@
-# What SEVEN-G is and how it helps companies
+# What SEVEN-G is and what it is for
 
 **A framework for value, governance and transformation with artificial intelligence**
 
@@ -7,7 +7,7 @@
 | Document | Document 00 · Framework overview |
 | Version | 0.1 (working draft) |
 | Date | 16-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Version 0.1 in operation as an open reference framework. It is not a closed commercial version or a product released to clients or markets. |
 
 <!-- cifras: 9 | spheres of impact ; 3 | ambition levels ; 0–7 | phases with decision gates ; 10 | value measurement rules -->
@@ -16,13 +16,13 @@
 
 > **Version under review: please do not circulate.** The current state of SEVEN-G (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 <!-- esencial: siempre | Initial reading for anyone who is going to use the framework. The quick start (section 0) and sections 1 to 6 are enough: what it is, what problem it solves, how it is built (spheres, corporate cycle, lifecycle with gates, governance and measurement) and the ten value measurement rules. -->
 
 ## 0. Quick start
 
-**SEVEN-G** (*Seven-phase Enterprise Value & Governance*) is a complete method, **free of charge and modifiable**, that lets a company implement, govern and measure its artificial intelligence by itself —enterprise self-consulting supported by AI— and answer, with evidence, whether it is transforming itself or just becoming more efficient. This section takes five minutes to read and serves a single purpose: **deciding whether it is worth reading on**.
+**SEVEN-G** (*Seven-phase Enterprise Value & Governance*) is a complete method, **free of charge and modifiable**, that lets a company, a consultancy or an independent professional implement, govern and measure an organisation's artificial intelligence —enterprise self-consulting supported by AI— and answer, with evidence, whether it is transforming itself or just becoming more efficient. This section takes five minutes to read and serves a single purpose: **deciding whether it is worth reading on**.
 
 **What it does, in four ideas**
 
@@ -39,7 +39,20 @@ SEVEN-G is not a brochure that ends in a sales proposal: **the working material 
 
 > **Why it matters.** Most of the cost of bringing order to AI lies not in understanding what has to be done, but in producing the instruments: policies, minutes, registers, checklists, dashboards. Starting from complete material, which can be modified without asking for permission, lets the effort go into deciding rather than into formatting, and makes it possible to check in an afternoon —with the sample data— whether the approach fits the company before committing anyone.
 
-**Is it useful for your company?**
+**What you actually get, for anyone who wants to see it before reading**
+
+Two quick views, with the fictitious sample data: the AI initiative portfolio read as a funnel (which phase each initiative reaches, how many are lost at each one and why) and the board dashboard generated from that same register (cost, return and net of the portfolio). This is what using SEVEN-G leads to: from one initiative's register entry to a board decision backed by evidence.
+
+<!-- figura: embudo-cartera -->
+
+<figure class="grafico">
+<div class="g-titulo">The board dashboard, generated from the sample initiative register</div>
+<div class="g-sub">"Portfolio and value" view of the full dashboard: cost, return, net and validation of a portfolio of 15 fictitious initiatives</div>
+<div class="g-lienzo ancho"><img src="img/panel-consejo-ejemplo.png" alt="SEVEN-G board dashboard: portfolio and value cards with 15 cases, €2.4M in costs, €7.3M in total return and €4.8M in annual net value, fictitious data" style="width:100%;height:auto;border:1px solid var(--regla)"></div>
+<div class="g-fuente">Source: sample dashboard from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">initiative register</a>, generated with the <a href="../../herramientas/T17_panel_consejo/index.html">board dashboard</a>, fictitious data. Screenshot in Spanish</div>
+</figure>
+
+**Is it useful?** (for your company, or for the consultancy or professional advising it)
 
 | It is probably useful if… | It is probably not useful, or not yet, if… |
 |---|---|
@@ -70,11 +83,11 @@ The rest of this page develops the above in detail: what SEVEN-G means and how i
 
 SEVEN-G means **Seven-phase Enterprise Value & Governance**: one enabling phase 0 and seven value phases (1-7), with governance applied across all of them.
 
-The intent of the framework is to enable, with AI support, a model of **enterprise self-consulting**: any company should be able to use SEVEN-G to implement, govern, measure, adapt, extend and improve its own AI system without depending on a closed third-party interpretation.
+The intent of the framework is to enable, with AI support, a model of **enterprise self-consulting**: any company, consultancy or independent professional should be able to use SEVEN-G to implement, govern, measure, adapt, extend and improve an AI system without depending on a closed third-party interpretation.
 
 SEVEN-G is designed to be **compatible** with existing governance structures, with in-house or external consulting support, and with other frameworks the company may already use. It does not require replacing them: it allows organisations to integrate them, structure their contributions and convert them into traceable decisions based on shared value, risk, compliance and measurement criteria.
 
-This use and adaptation are enabled by the project's content license (**CC BY 4.0**), with an explicit condition: always provide visible attribution to **Fernando Garcia · SEACHAD**, and indicate whether changes were made.
+This use and adaptation are enabled by the project's content license (**CC BY 4.0**), with an explicit condition: always provide visible attribution to **Fernando García Varela**, and indicate whether changes were made.
 
 SEVEN-G enables an organisation to **implement, govern and measure** artificial intelligence with the same rigour it applies to its finances, its risks or its regulatory compliance, and enables its decision and governance bodies to answer, with evidence, a question that almost no one can answer today:
 
@@ -84,7 +97,7 @@ Both are legitimate. The problem arises when they are confused: when a portfolio
 
 The practical goal is for boards, senior management and control bodies to understand and measure the contribution of enterprise intelligence in their company, understand and contain its risks, and decide with portfolio discipline which initiatives deserve investment to improve efficiency, transform capabilities and create measurable impact on P&L.
 
-> **Ownership and reuse.** The intellectual property of the SEVEN-G methodology — its documents, templates, criteria and tools — belongs to its author, **Fernando García · SEACHAD**. The framework is offered as an open reference for use, adaptation and learning, not as a closed commercial product or a version released to clients or markets: any organisation may reuse and adapt it, but that use is subject to the project's content and code licence (**CC BY 4.0** for content, **MIT** for code; document 93), which requires attribution and an indication of any changes made. Using SEVEN-G, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over the base methodology on any client, supplier or third party, except under a specific written agreement covering proprietary developments.
+> **Ownership and reuse.** The intellectual property of the SEVEN-G methodology — its documents, templates, criteria and tools — belongs to its author, **Fernando García Varela**. The framework is offered as an open reference for use, adaptation and learning, not as a closed commercial product or a version released to clients or markets: any organisation may reuse and adapt it, but that use is subject to the project's content and code licence (**CC BY 4.0** for content, **MIT** for code; document 93), which requires attribution and an indication of any changes made. Using SEVEN-G, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over the base methodology on any client, supplier or third party, except under a specific written agreement covering proprietary developments.
 
 SEVEN-G provides four things:
 
@@ -441,10 +454,10 @@ SEVEN-G version 0.1 is operational. Every document, template and tool in this ta
 ## 11. Licence and use
 
 - SEVEN-G content —documents, templates, criteria, measurement rules and graphic components— is published under a **Creative Commons Attribution 4.0 International (CC BY 4.0)** licence. It may be used, adapted and shared, including in a business context, provided authorship is acknowledged.
-- Recommended citation: *SEVEN-G, a framework for value, governance and transformation with AI. Fernando García · SEACHAD. CC BY 4.0.*
+- Recommended citation: *SEVEN-G, a framework for value, governance and transformation with AI. Fernando García Varela. CC BY 4.0.*
 - The code of the tools is published under the MIT licence.
 - The figures and cases appearing in the examples and demonstrations are fictitious and do not constitute market benchmarks.
-- SEVEN-G is provided "as is", without warranties and without constituting legal advice. **The organisation that uses it is solely responsible for identifying the general regulation and the regulation specific to its industry and jurisdiction, verifying that it is current and certifying its regulatory compliance**; neither the author nor SEACHAD accepts that responsibility (document 93, section 11).
+- SEVEN-G is provided "as is", without warranties and without constituting legal advice. **The organisation that uses it is solely responsible for identifying the general regulation and the regulation specific to its industry and jurisdiction, verifying that it is current and certifying its regulatory compliance**; the author does not accept that responsibility (document 93, section 11).
 
 ## 12. Version control
 

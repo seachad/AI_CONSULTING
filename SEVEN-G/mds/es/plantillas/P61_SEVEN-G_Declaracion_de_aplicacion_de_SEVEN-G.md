@@ -7,16 +7,16 @@
 | Documento | Plantilla P61 · Declaración de aplicación de SEVEN-G |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 19-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Borrador para revisión. |
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 > **Por qué importa.** Decir «aplicamos SEVEN-G» ante clientes, supervisores o inversores es una afirmación sobre cómo se gobierna la IA en la compañía. Si no dice qué perímetro cubre, qué se ha excluido, qué versión se aplica y qué auditoría la respalda, induce a error y expone a la compañía. Esta plantilla convierte la declaración en una **autodeclaración verificable**: cada una de las siete condiciones de 01 §14 enlaza con su evidencia y con el resultado de una auditoría, y el texto deja claro que no es una certificación.
 
-> **No es una certificación.** No existe certificación oficial de SEVEN-G en la versión 0.x. La declaración es responsabilidad exclusiva de la compañía que la emite; un informe de revisión de un tercero es una opinión profesional con su alcance y su fecha, y no otorga ningún sello. El uso del nombre SEVEN-G no implica respaldo del autor ni de SEACHAD (documentos 91 §6 y 93).
+> **No es una certificación.** No existe certificación oficial de SEVEN-G en la versión 0.x. La declaración es responsabilidad exclusiva de la compañía que la emite; un informe de revisión de un tercero es una opinión profesional con su alcance y su fecha, y no otorga ningún sello. El uso del nombre SEVEN-G no implica respaldo del autor (documentos 91 §6 y 93).
 
 ## 1. Instrucciones de uso
 
@@ -150,19 +150,19 @@ En una declaración integral, el ciclo corporativo, el ciclo de vida, el sistema
 
 ### 10.1 Declaración integral
 
-> *[Denominación de la compañía]* declara que aplica SEVEN-G (versión *[número]*, de *[fecha]*), marco de Fernando García · SEACHAD publicado con licencia CC BY 4.0, desde el *[fecha]*, en el siguiente alcance: *[sociedades, áreas y tipos de uso]*. Quedan excluidos *[exclusiones]*, por *[motivo]*. Se han adaptado los siguientes parámetros: *[adaptaciones]*. Permanecen vigentes las siguientes excepciones: *[excepciones]*.
+> *[Denominación de la compañía]* declara que aplica SEVEN-G (versión *[número]*, de *[fecha]*), marco de Fernando García Varela publicado con licencia CC BY 4.0, desde el *[fecha]*, en el siguiente alcance: *[sociedades, áreas y tipos de uso]*. Quedan excluidos *[exclusiones]*, por *[motivo]*. Se han adaptado los siguientes parámetros: *[adaptaciones]*. Permanecen vigentes las siguientes excepciones: *[excepciones]*.
 >
 > La declaración está respaldada por la auditoría *[AUD-AAAA-NNN]*, realizada por *[auditoría interna o auditor externo]* con fecha *[fecha]* y resultado *[Conforme o Conforme con observaciones]*. *[Si procede: existen acciones de mejora en curso.]* Ha sido aprobada por *[órgano]* el *[fecha]* y es válida hasta *[fecha de la siguiente auditoría anual]*.
 >
-> Esta declaración es una autodeclaración de la compañía y no es una certificación. No existe certificación oficial de SEVEN-G en la versión 0.x. El uso del nombre SEVEN-G no implica respaldo del autor del marco ni de SEACHAD. *[Denominación de la compañía]* es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio.
+> Esta declaración es una autodeclaración de la compañía y no es una certificación. No existe certificación oficial de SEVEN-G en la versión 0.x. El uso del nombre SEVEN-G no implica respaldo del autor del marco. *[Denominación de la compañía]* es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio.
 
 ### 10.2 Declaración modular
 
-> *[Denominación de la compañía]* utiliza los siguientes componentes de SEVEN-G (versión *[número]*), marco de Fernando García · SEACHAD publicado con licencia CC BY 4.0: *[componentes]*, en el alcance *[alcance]*. Esta mención no es una declaración de aplicación del marco completo ni una certificación; no existe certificación oficial de SEVEN-G en la versión 0.x y el uso del nombre no implica respaldo del autor ni de SEACHAD.
+> *[Denominación de la compañía]* utiliza los siguientes componentes de SEVEN-G (versión *[número]*), marco de Fernando García Varela publicado con licencia CC BY 4.0: *[componentes]*, en el alcance *[alcance]*. Esta mención no es una declaración de aplicación del marco completo ni una certificación; no existe certificación oficial de SEVEN-G en la versión 0.x y el uso del nombre no implica respaldo del autor.
 
 ### 10.3 Expresiones no admitidas (91 §6.2)
 
-«Certificado SEVEN-G», «certificación SEVEN-G», «compañía certificada» · «homologado por SEVEN-G», «partner oficial» · «avalado por Fernando García» o «por SEACHAD» · «cumplimiento del Reglamento de IA garantizado por SEVEN-G» · cualquier afirmación de que la compañía cumple la regulación «según SEVEN-G».
+«Certificado SEVEN-G», «certificación SEVEN-G», «compañía certificada» · «homologado por SEVEN-G», «partner oficial» · «avalado por Fernando García Varela» · «cumplimiento del Reglamento de IA garantizado por SEVEN-G» · cualquier afirmación de que la compañía cumple la regulación «según SEVEN-G».
 
 ---
 

@@ -7,7 +7,7 @@
 | Document | Document 08 · Self-assessment of conformity and process metrics |
 | Version | 0.1 |
 | Date | 19-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Under construction. Rewrites the previous self-assessment with the artefacts of the canonical cycle and adds the process metrics. |
 | Type | Application guide |
 
@@ -17,7 +17,7 @@
 
 > **Version under review: please do not circulate.** The current state of SPAD (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.
 
-> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. **Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. **Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 ## 1. What the self-assessment is
 
@@ -26,7 +26,7 @@ The **self-assessment of conformity** is a structured review, carried out by the
 | It is | It is not |
 |---|---|
 | An internal review tool. | A certification. |
-| Carried out by a person independent of those who built. | Issued or endorsed by SEACHAD or by any third party. |
+| Carried out by a person independent of those who built. | Issued or endorsed by its author or by any third party. |
 | Evidence of methodological rigour for internal or external audits. | Accreditation of compliance with any law or standard. |
 | Referenceable in internal documentation and, with approval, in communications with customers, always as a self-assessment. | A public claim or a seal. |
 

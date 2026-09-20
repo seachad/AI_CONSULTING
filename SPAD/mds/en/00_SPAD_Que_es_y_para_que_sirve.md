@@ -7,7 +7,7 @@
 | Document | Document 00 · What SPAD is and how it helps |
 | Version | 0.2 |
 | Date | 19-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Under construction. Supporting methodology, independent of SEVEN-G and referenced from its document 53; not released commercially. |
 | Type | Methodology overview |
 
@@ -17,11 +17,11 @@
 
 > **Version under review: please do not circulate.** The current state of SPAD (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.
 
-> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. **Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SPAD is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. **Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 ## 1. What SPAD is
 
-**SPAD** (*Structured Prompt-Driven Engineering*) is the SEACHAD framework for **managing software development by means of artificial intelligence** in a controlled way. It turns AI from an informal programming assistant into a governed engineering tool whose work can be reviewed, reproduced and audited.
+**SPAD** (*Structured Prompt-Driven Engineering*) is Fernando García Varela's framework for **managing software development by means of artificial intelligence** in a controlled way. It turns AI from an informal programming assistant into a governed engineering tool whose work can be reviewed, reproduced and audited.
 
 SPAD is not a collection of instructions (*prompts*) for requesting code. It is a **way of working** with three properties:
 
@@ -35,7 +35,7 @@ SPAD is not a collection of instructions (*prompts*) for requesting code. It is 
 <div class="g-titulo">Think, validate, execute</div>
 <div class="g-sub">Three pillars on foundations of documentation, security and traceability</div>
 <div class="g-lienzo"><img src="../img/spad_01_pensar_validar_ejecutar.jpg" alt="Three columns: think (explicit design before code), validate (independent review) and execute (the AI generates code without deciding the design)" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 > **Why it matters.** AI generates plausible code at great speed. Without structure, that speed turns into design decisions that nobody has taken consciously, insufficient tests, vulnerabilities introduced silently and technical debt that is hard to see. SPAD keeps the speed where it adds value and puts control where it is needed: in decisions, in reviews and in evidence.
@@ -59,14 +59,14 @@ SPAD is a **supporting methodology, independent of SEVEN-G**. SEVEN-G governs th
 <div class="g-titulo">The illusion of speed</div>
 <div class="g-sub">Without structure, perceived speed falls while technical debt and risk grow. Conceptual chart, no data</div>
 <div class="g-lienzo"><img src="../img/spad_02_ilusion_de_velocidad.jpg" alt="Conceptual chart: perceived speed rises and then falls, while technical debt and risk grow over time" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 <figure class="grafico ilustracion">
 <div class="g-titulo">AI without method versus SPAD</div>
 <div class="g-sub">Planning, design review, testing, security, traceability and execution</div>
 <div class="g-lienzo"><img src="../img/spad_03_ia_tradicional_frente_a_spad.jpg" alt="Comparison between using AI without a method and the SPAD methodology in six aspects" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 > **Why it matters.** None of these problems is caused by AI: they are problems of method that AI amplifies. With SPAD, quality does not depend on the skill of whoever writes the instructions or on the model of the moment, but on a process that any team can repeat.
@@ -89,7 +89,7 @@ A technically correct AI response that breaks the rules of its phase —for exam
 <div class="g-titulo">Six non-negotiable rules</div>
 <div class="g-sub">No phase is skipped, everything is auditable, every decision is explicit, code does not decide, reviews are independent and fixes are minimal</div>
 <div class="g-lienzo"><img src="../img/spad_04_reglas_no_negociables.jpg" alt="Six SPAD operational rules" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 > **Why it matters.** If a response that breaks the rules is accepted "because the code works", the process ceases to exist by the second time. The discipline of discarding and repeating is what makes the artefacts reliable and the traceability real. A valid "no" from a review is worth more than an invalid "yes".
@@ -115,7 +115,7 @@ The reviewing role is called **AI Reviewer** so that it is not confused with the
 <div class="g-titulo">Segregation of roles</div>
 <div class="g-sub">In the illustration, «IA-Auditor» is the AI Reviewer; the SEVEN-G AI Auditor is a person</div>
 <div class="g-lienzo"><img src="../img/spad_05_separacion_de_roles.jpg" alt="The human orchestrator above the generative roles (planner, builder, fixer) and the evaluating role, separated by a lock" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 > **Why it matters.** Segregation of duties is a classic control in any serious process: whoever does the work does not approve it. SPAD applies it between artificial intelligences as well and always leaves a person accountable for validation.
@@ -144,7 +144,7 @@ The main cycle is used to build a new feature. Each phase has an owner, an input
 <div class="g-titulo">The blocking flow</div>
 <div class="g-sub">A NO-GO verdict stops the flow and sends it back to the corresponding phase</div>
 <div class="g-lienzo"><img src="../img/spad_06_flujo_bloqueante.jpg" alt="Main SPAD phases chained with a lock that only opens with a GO verdict" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 <!-- grafico: SPAD main cycle | Each phase blocks the next; negative verdicts send the work back to the corresponding phase -->
@@ -207,7 +207,7 @@ flowchart LR
 <div class="g-titulo">Testing and security by design</div>
 <div class="g-sub">Tests are defined before building and sensitive code goes through a security review that can block deployment</div>
 <div class="g-lienzo"><img src="../img/spad_09_pruebas_y_seguridad.jpg" alt="Test strategy, implementation and review phases, and security review for sensitive code" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 > **Why it matters.** Haste is when controls are most relaxed and when errors do the most damage. SPAD speeds up the phases in an emergency but does not eliminate them: the review and the tests remain mandatory, and the post-mortem turns the incident into learning.
@@ -235,7 +235,7 @@ Each piece of work is associated with a **topic** (*TOPIC*): a short name that g
 <div class="g-titulo">Contexts and topic: the common thread</div>
 <div class="g-sub">The global and project contexts frame the work; the topic groups all the artefacts</div>
 <div class="g-lienzo"><img src="../img/spad_08_contextos_y_topic.jpg" alt="Global and project context as layers and the topic as a thread running through all artefacts" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 ### Validation policy
@@ -256,7 +256,7 @@ A well-founded NO-GO, a detected vulnerability or a failing test do not invalida
 <div class="g-titulo">Validation policy</div>
 <div class="g-sub">A valid NO-GO is always better than an invalid GO</div>
 <div class="g-lienzo"><img src="../img/spad_07_politica_de_validacion.jpg" alt="Table of situations and human action: discard, return to the plan or discard immediately" loading="lazy"></div>
-<div class="g-fuente">Source: SPAD · SEACHAD. Illustration in Spanish</div>
+<div class="g-fuente">Source: SPAD. Illustration in Spanish</div>
 </figure>
 
 > **Why it matters.** The validation policy is applied by a person, not by the AI. It is the point at which the organisation exercises real control over what is built, and the one that turns a set of good practices into a verifiable method.
@@ -274,7 +274,7 @@ An organisation can check whether a system, a project or a team has worked in ac
 | **Possible outcomes** | Approved · Approved with conditions · Rejected. The absence of a mandatory artefact makes it negative. |
 | **Validity** | Twelve months, or until there are significant changes in architecture, scope or decision logic. |
 
-**It is not a certification.** It is neither issued nor endorsed by SEACHAD or any third party, does not attest compliance with any standard and cannot be presented as a certification or as a marketing claim.
+**It is not a certification.** It is neither issued nor endorsed by its author or any third party, does not attest compliance with any standard and cannot be presented as a certification or as a marketing claim.
 
 > **Why it matters.** The self-assessment gives the organisation a shared definition of "done" and a set of evidence ready for internal or external audits, without creating the false appearance of a seal that nobody has granted.
 
@@ -333,7 +333,7 @@ SPAD is **under construction** as a public methodology: the library exists in fu
 | **document 07 · Input and output contracts** | Mandatory structure of each artefact. | When automating validation. |
 | **document 08 · Self-assessment and metrics** | How to check conformity and measure the process. | When closing a piece of work and when reviewing the method. |
 
-SPAD is published under the same conditions as SEVEN-G: the content under a **Creative Commons Attribution 4.0 International (CC BY 4.0)** licence and the code under the MIT licence. It may be used, adapted and extended, including for commercial purposes, provided that authorship is visibly credited: *SPAD · Fernando García · SEACHAD*. The full conditions of use and citation are those of [SEVEN-G 93 · Licence, use by third parties and citation](../../../SEVEN-G/html/en/93_SEVEN-G_Licencia_uso_y_citacion.html).
+SPAD is published under the same conditions as SEVEN-G: the content under a **Creative Commons Attribution 4.0 International (CC BY 4.0)** licence and the code under the MIT licence. It may be used, adapted and extended, including for commercial purposes, provided that authorship is visibly credited: *SPAD · Fernando García Varela*. The full conditions of use and citation are those of [SEVEN-G 93 · Licence, use by third parties and citation](../../../SEVEN-G/html/en/93_SEVEN-G_Licencia_uso_y_citacion.html).
 
 There is no SPAD certification and use of the name does not imply endorsement by the author. A public declaration of conformity with SPAD may only be presented as a self-assessment (section 8).
 

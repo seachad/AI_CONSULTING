@@ -7,14 +7,14 @@
 | Documento | Documento 91 · Guía para consultores y modelos de acompañamiento |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Borrador para revisión. En esta versión no existe certificación oficial de SEVEN-G. |
 
 <!-- cifras: 5 | modelos de acompañamiento ; 1 | regla de independencia: quien implanta no audita ; 0 | certificaciones oficiales en esta versión ; 10 | compromisos de calidad del servicio -->
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: condicional | Disparador: la compañía contrata acompañamiento externo o un profesional aplica SEVEN-G para terceros. Fija modelos de acompañamiento, independencia y transferencia para evitar la dependencia del consultor. -->
 
@@ -198,7 +198,7 @@ Al inicio de todo servicio M3 o M4, y cuando cambie la situación, el tercero en
 
 | Situación | Expresión adecuada |
 |---|---|
-| El servicio aplica las reglas esenciales (sección 2.3) sin cambios relevantes | "Servicio basado en SEVEN-G (versión 0.1), marco de Fernando García · SEACHAD, CC BY 4.0." |
+| El servicio aplica las reglas esenciales (sección 2.3) sin cambios relevantes | "Servicio basado en SEVEN-G (versión 0.1), marco de Fernando García Varela, CC BY 4.0." |
 | El servicio adapta el marco | "Metodología adaptada de SEVEN-G (versión 0.1). Cambios respecto al original: …" |
 | El servicio usa solo algunas piezas | "Utiliza el mapa de esferas y las reglas de medición de SEVEN-G (versión 0.1)." |
 | La compañía cumple 01 §14 | "[Compañía] declara que aplica SEVEN-G (versión 0.1) desde [fecha]." |
@@ -210,7 +210,7 @@ Al inicio de todo servicio M3 o M4, y cuando cambie la situación, el tercero en
 |---|---|
 | "Certificado SEVEN-G", "certificación SEVEN-G", "compañía certificada" | **No existe certificación oficial de SEVEN-G en esta versión.** |
 | "Consultora acreditada", "partner oficial", "homologado por SEVEN-G" | No existe ningún programa de acreditación ni de socios. |
-| "Avalado por Fernando García" o "por SEACHAD" | La licencia no autoriza a sugerir respaldo del autor (documento 93). |
+| "Avalado por Fernando García Varela" o certificación similar | La licencia no autoriza a sugerir respaldo del autor (documento 93). |
 | "Cumplimiento del Reglamento de IA garantizado por SEVEN-G" | El marco mapea obligaciones; no garantiza su cumplimiento. |
 | "El cliente cumple la regulación según SEVEN-G" o cualquier declaración o certificación del cumplimiento regulatorio de un cliente en nombre de SEVEN-G o del autor | El consultor no puede declarar ni certificar el cumplimiento regulatorio de un cliente en nombre de SEVEN-G ni del autor: esa responsabilidad es de la organización y, en su caso, del profesional que la asume con su propia firma. Debe trasladar el aviso legal de SEVEN-G a sus entregables (documento 93, sección 11). |
 | "SEVEN-G" aplicado a un servicio que omite reglas esenciales sin declararlo | Induce a error sobre el contenido del servicio. |
@@ -286,7 +286,7 @@ Al terminar cualquier modelo, el tercero entrega: registros y datos en formato a
 | "Sin riesgo" | Todo sistema de IA tiene riesgo residual. | "Riesgo residual conocido, dentro del apetito aprobado, con controles probados." |
 | "Nuestros clientes obtienen de media…" | Afirmación no demostrable salvo datos verificables y autorizados. | Omitir, o presentar casos ficticios marcados como tales (documento 92). |
 | "Implantación en X semanas" sin diagnóstico | El plazo depende del punto de partida. | "Primera implantación de referencia en noventa días, a confirmar tras el diagnóstico." |
-| "Método validado por el autor" o "aprobado por SEACHAD" | La licencia no permite sugerir respaldo. | "Basado en SEVEN-G, marco de Fernando García · SEACHAD, CC BY 4.0." |
+| "Método validado por el autor" o "certificado por el autor" | La licencia no permite sugerir respaldo. | "Basado en SEVEN-G, marco de Fernando García Varela, CC BY 4.0." |
 | "Con SEVEN-G no hará falta auditoría" | El marco exige verificación independiente. | "SEVEN-G facilita la auditoría porque deja las evidencias preparadas." |
 
 ---

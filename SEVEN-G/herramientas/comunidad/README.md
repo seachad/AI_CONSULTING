@@ -51,4 +51,4 @@ La carpeta `_pruebas` no se publica.
 
 ## Licencia
 
-Código MIT · textos CC BY 4.0 · © 2026 Fernando García · SEACHAD.
+Código MIT · textos CC BY 4.0 · © 2026 Fernando García Varela.

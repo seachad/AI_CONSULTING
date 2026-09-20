@@ -7,14 +7,14 @@
 | Document | Course · Guide |
 | Version | 0.1 (working draft) |
 | Date | 19-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Draft for review. Self-learning material: it defines no rules of the framework; if it differs from a document, the document prevails. |
 
 <!-- cifras: 9 | modules ; 20 | minutes per module, approximately ; 4 | paths by profile ; 0 | certificates: it is self-learning -->
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 ## 1. What this course is for
 
@@ -37,6 +37,8 @@ It follows one rule: **the course defines no rule of the framework**. Each modul
 | **Self-check** | Four questions. The answers are at the end of the module. |
 
 There is no exam, mark or certificate: SEVEN-G has no official certification (document 93, section 7).
+
+**Download the whole course.** All nine modules and this guide, in a single file: [PowerPoint presentation](../../../pptx/en/SEVEN-G_Curso.pptx) (one slide per module, with the objective and key ideas; for delivering or adapting it) and [PDF to read or print](../../../pdf/en/curso/SEVEN-G_Curso_completo.pdf) (the full content of all ten documents). Each module also remains available separately, in HTML, PDF and as part of the library.
 
 ---
 

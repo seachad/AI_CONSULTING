@@ -61,4 +61,4 @@ Version **0.1** holds the initial thresholds of document 12 (section 4.5), **to 
 
 ---
 
-MIT code · CC BY 4.0 content · © 2026 Fernando García · SEACHAD · SEVEN-G methodology. The tool is provided "as is", is not advice and each organisation is responsible for its data and decisions (full legal notice in the tool itself).
+MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology. The tool is provided "as is", is not advice and each organisation is responsible for its data and decisions (full legal notice in the tool itself).

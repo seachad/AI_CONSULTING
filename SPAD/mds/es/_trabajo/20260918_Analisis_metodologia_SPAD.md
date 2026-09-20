@@ -7,7 +7,7 @@
 | Documento | Documento de trabajo · Análisis de SPAD |
 | Versión | 0.1 |
 | Fecha | 18-09-2026 |
-| Autor | Fernando García · SEACHAD (análisis preparado con asistencia de IA) |
+| Autor | Fernando García Varela (análisis preparado con asistencia de IA) |
 | Estado | Aplicado el 19-09-2026 con las recomendaciones de Claude (D69): biblioteca 00–08 publicada; documentos de trabajo en `SPAD/_legacy/`. Quedan las decisiones de la sección 7 que solo el autor puede tomar (láminas e ilustraciones en inglés). No se publica. |
 
 ---

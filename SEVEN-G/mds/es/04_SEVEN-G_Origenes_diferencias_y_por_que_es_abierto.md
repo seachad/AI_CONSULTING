@@ -7,14 +7,14 @@
 | Documento | Documento 04 · Orígenes, diferencias y apertura |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 19-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Borrador para revisión. Documento explicativo: no añade reglas al marco. |
 
 <!-- cifras: 6 | carencias habituales que el marco corrige ; 6 | disciplinas de gestión que reúne ; 5 | diferencias con un embudo comercial ; 0 | obligaciones de contratar al autor -->
 
 ---
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: consulta | Documento explicativo. Cuenta de dónde nace SEVEN-G (de la práctica, no de una metodología concreta), qué corrige de la forma habitual de adoptar la IA, qué toma de la gestión comercial del embudo y en qué se aparta de ella, y por qué el marco es gratuito y de libre distribución. No contiene reglas ni evidencias obligatorias: se lee una vez, para entender el porqué del marco. -->
 
@@ -48,6 +48,37 @@ Esto no significa que el marco parta de cero. Reúne **disciplinas de gestión q
 | **El valor se declara.** Las horas liberadas se suman como ahorro y nadie las comprueba. | Cifras que no resisten una auditoría y decisiones de inversión mal fundadas. | Diez reglas de medición; cada importe lleva fórmula y estado (validado, declarado o estimado); la capacidad liberada no suma hasta que se materializa. | documento 40; documento 43 |
 | **Quien construye también aprueba.** El gobierno llega al final, como trámite. | Controles débiles, riesgo regulatorio y de seguridad tratado tarde. | Separación de funciones desde la fase 0, validación dual (resultado y documentación), clasificación regulatoria y riesgos antes de diseñar. | documento 01, sección 8; documento 30; documento 32; documento 33 |
 | **Todo se llama transformación.** Eficiencia y transformación se mezclan en el mismo discurso y se juzgan con los mismos criterios. | La compañía cree que se transforma cuando solo se eficienta, o bloquea sus apuestas de transformación con criterios de recorte de costes. | Tres niveles de ambición con criterios de puerta distintos y un índice de transformación de la compañía basado en evidencias. | documento 10; documento 12 |
+
+### 2.3 Cómo ha evolucionado el marco
+
+SEVEN-G no apareció de una vez: creció a partir de un trabajo de investigación previo y se ha ido ampliando desde entonces. Esta cronología es la del **marco en su conjunto** (una versión de producto, que crece con cada bloque nuevo) y es distinta de la **versión de cada documento**, que se numera por separado (sección 10 de cada documento) y avanza cuando ese documento concreto cambia.
+
+> **Por qué importa.** Un marco que dice de dónde viene y cómo ha crecido es más fácil de confiar que uno que aparece ya terminado. La cronología también explica por qué algunas piezas (medición del valor, riesgos) son más maduras que otras (índice de transformación, curso): lleva más tiempo trabajando en ellas.
+
+| Cuándo | Qué se incorporó |
+|---|---|
+| Febrero de 2025 | Investigación inicial: estado de la gobernanza de la IA en las organizaciones y comparativa de metodologías y marcos existentes en el mercado (marcos de gestión de riesgos, normas de gestión de IA, prácticas internas de consultoras). Sin versión publicada todavía. |
+| Marzo de 2025 | Primeros borradores del ciclo de vida de la iniciativa y de las puertas de decisión, partiendo de la disciplina de inversión por fases y de la gestión comercial del embudo (sección 4). |
+| Abril de 2025 | **Versión 0.1** (primera versión interna): fases 0–7, puertas G0–G7 con sus cinco resultados posibles y primer borrador del mapa de esferas de impacto. |
+| Mayo de 2025 | Primer modelo de gobierno (consejo, comité de IA, tres líneas de defensa) y primeras plantillas de evidencia. |
+| Junio de 2025 | Reglas de medición del valor (estados validado, declarado y estimado) y primer borrador del índice de transformación. |
+| Julio de 2025 | Metodología de riesgos de IA (matriz de probabilidad e impacto) y primer mapeo regulatorio (Reglamento Europeo de IA, RGPD). |
+| Agosto de 2025 | Primeras pruebas del marco con casos de uso reales, anonimizados; ajuste de puertas y reglas de medición con esa experiencia. |
+| **Septiembre de 2025** | **Primera publicación pública** del marco (documento de presentación y biblioteca inicial en español). |
+| Octubre de 2025 | Traducción al inglés de la biblioteca inicial; guía de traducción y glosario común. |
+| Noviembre de 2025 | Catálogo de herramientas (T01–T22) y primer diseño del registro de iniciativas (T01). |
+| Diciembre de 2025 | Modelo de madurez (siete dimensiones) y primer cuestionario de diagnóstico. |
+| Enero de 2026 | Metodología de riesgos ampliada a IA generativa y agentes; niveles de autonomía A0–A3. |
+| Febrero de 2026 | Primer panel de IA para el consejo (T17), conectado al registro de iniciativas. |
+| Marzo de 2026 | Controles específicos de IA generativa: deriva de uso, sesgo con pares contrafactuales, cascada de degradación por coste. |
+| Abril de 2026 | Guía de implantación y primera calibración del alcance Lite y Enterprise por compañía. |
+| Mayo de 2026 | Marco de auditoría de IA y plantilla de declaración de aplicación. |
+| Junio de 2026 | SPHERES como metodología de apoyo (esferas y niveles de ambición) y SPAD como metodología de construcción de software con IA, ambas referenciadas desde SEVEN-G. |
+| Julio de 2026 | Índice de transformación de la compañía (ocho señales) y su calculadora (T14). |
+| Agosto de 2026 | Biblioteca ampliada a las plantillas P32–P71 y a las herramientas de valor, madurez y riesgos (T06, T11, T14, T15). |
+| Septiembre de 2026 | **Versión 0.80** (actual): biblioteca completa (documentos 00–94, ES/EN), curso de SEVEN-G con lectura por capas, comunidad de incidencias y peticiones, y el ajuste continuo de documentos y herramientas de cara a la versión 1.0. |
+
+Mientras el número de versión del marco no llegue a 1.0, sigue aplicando el aviso de «versión en revisión» de la sección 6.4: el contenido es operativo (documento 00, decisión D40), pero se pide no difundirlo de forma general porque documentos y herramientas se siguen adecuando para que sean reutilizables.
 
 ---
 
@@ -132,19 +163,22 @@ La compañía aprueba en C2 los **plazos de referencia por fase** y los recalibr
 
 ### 6.1 El motivo
 
-**Nota del autor.** He visto en primera persona la necesidad que tienen muchas empresas de poner orden: dudan de cómo empezar, de cómo inventariar lo que ya están haciendo y de cómo ordenar un mundo caótico y muy rápido de innovaciones. Por eso he decidido compartir mi conocimiento y mi forma de trabajo. Si alguien necesita mi ayuda en primera persona, ofrezco mis servicios, como ya hago con otras compañías. **Usar todo esto no implica ninguna obligación de contratar mi asesoramiento.**
+**Nota del autor.** He visto en primera persona la necesidad que tienen muchas empresas de poner orden: dudan de cómo empezar, de cómo inventariar lo que ya están haciendo y de cómo ordenar un mundo caótico y muy rápido de innovaciones. Por eso he decidido compartir mi conocimiento y mi forma de trabajo: mi objetivo es ayudar al mercado a avanzar en un uso gobernado de la inteligencia artificial, no ganar dinero directamente con la metodología, sus documentos, sus plantillas o sus herramientas. **Todo el sitio se puede usar, leer y descargar sin necesidad siquiera de registrarse**, y desde aquí nunca se envía un correo ni ninguna otra comunicación buscando captar clientes. Donde sí hay una aportación personal con coste es si alguien quiere requerir mis servicios —un curso a medida sobre la metodología, consultoría o asesoramiento al consejo de una compañía, por ejemplo—, y esa decisión queda por completo a voluntad de quien lee esto: **soy accesible, pero es usted quien decide, si lo desea, ponerse en contacto conmigo.**
 
-— Fernando García · SEACHAD
+— Fernando García Varela
 
 ### 6.2 Qué significa en la práctica
 
 | Pregunta | Respuesta |
 |---|---|
 | ¿Hay que pagar por usar SEVEN-G? | No. Ni los documentos, ni las plantillas, ni las herramientas. |
+| ¿Hay que registrarse o dar un correo para usar el sitio? | No. Todo se lee, se usa y se descarga sin cuenta ni registro. |
+| ¿El sitio envía correos o busca captar contactos? | No. Desde aquí nunca se envía un correo ni ninguna comunicación buscando engagement; el contacto con el autor es siempre iniciativa de quien lo decide (sección 7). |
 | ¿Hay que pedir permiso? | No, mientras se cumpla la licencia. |
 | ¿Se puede adaptar a la compañía? | Sí: cambiar umbrales, traducir, integrar las plantillas en los sistemas propios. |
 | ¿Puede usarlo una consultora o un auditor en servicios de pago? | Sí. La licencia admite el uso comercial (documento 91). |
-| ¿Obliga a contratar al autor o a SEACHAD? | No. El marco está pensado para que una compañía pueda aplicarlo por sí misma. |
+| ¿Obliga a contratar al autor? | No. El marco está pensado para que una compañía, consultora o profesional pueda aplicarlo por sí misma. |
+| ¿Cómo gana el autor con esto, entonces? | No directamente con la metodología: la aportación personal del autor tiene coste solo si alguien contrata sus servicios (curso a medida, consultoría o asesoramiento al consejo de una compañía). |
 | ¿Y si la compañía quiere acompañamiento? | Puede pedirlo al autor o a cualquier otro profesional. El documento 91 describe los modelos de acompañamiento y cómo evitar la dependencia del consultor. |
 
 ### 6.3 Qué control conserva el autor
@@ -153,7 +187,7 @@ La apertura no es ausencia de reglas. El autor eligió el mínimo control necesa
 
 | Elemento | Qué se controla | Por qué |
 |---|---|---|
-| **Contenidos bajo CC BY 4.0** | Una sola exigencia: reconocer la autoría (Fernando García · SEACHAD), enlazar la licencia e indicar si se han hecho cambios. | Se descartó prohibir el uso comercial porque generaría dudas en las empresas usuarias y en quienes las asesoran. |
+| **Contenidos bajo CC BY 4.0** | Una sola exigencia: reconocer la autoría (Fernando García Varela), enlazar la licencia e indicar si se han hecho cambios. | Se descartó prohibir el uso comercial porque generaría dudas en las empresas usuarias y en quienes las asesoran. |
 | **Código bajo MIT** | Conservar el aviso de derechos de autor y la licencia. | Las herramientas deben poder integrarse en los sistemas de cada compañía. |
 | **Nombre SEVEN-G** | Usar el nombre no implica respaldo del autor. No existe certificación oficial: la declaración de aplicación es una autodeclaración verificable por auditoría. | Evitar que el nombre se use para prometer lo que nadie ha comprobado. |
 | **Versiones publicadas** | La licencia de una versión publicada no se revoca. | Quien adopta el marco necesita saber que no se le retirará. |
@@ -169,9 +203,9 @@ Mientras el marco esté en la versión 0.x, sus páginas principales piden **no 
 
 ## 7. Contacto
 
-Para consultas sobre el marco, propuestas de mejora, comunicación de errores o solicitudes de acompañamiento: **Fernando García · SEACHAD**, en su perfil profesional de LinkedIn: <https://www.linkedin.com/in/fernandogarciavarela/>.
+Para consultas sobre el marco, propuestas de mejora, comunicación de errores o solicitudes de acompañamiento: **Fernando García Varela**, en su perfil profesional de LinkedIn: <https://www.linkedin.com/in/fernandogarciavarela/>. **SEVEN-G es una marca registrada a nombre de Fernando García Varela** (documento 93, sección 7).
 
-No es necesario contactar ni pedir permiso para ningún uso que cumpla la licencia. Contactar con el autor no convierte un uso en respaldado (documento 93, sección 7).
+No es necesario contactar ni pedir permiso para ningún uso que cumpla la licencia; el sitio no lo pide en ningún momento y nunca contacta por iniciativa propia a quien lo visita. Contactar con el autor no convierte un uso en respaldado (documento 93, sección 7).
 
 ---
 

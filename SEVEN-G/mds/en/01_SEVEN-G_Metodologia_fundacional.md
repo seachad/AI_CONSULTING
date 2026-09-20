@@ -7,14 +7,14 @@
 | Document | Document 01 · Foundational methodology |
 | Version | 0.1 (working draft) |
 | Date | 16-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Draft for review. The framework's normative reference document. |
 
 <!-- cifras: 10 | principles ; 2 | governance levels ; 8 | phases per initiative ; 6 | roles with segregation of duties -->
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 <!-- esencial: siempre | The framework's normative reference. What no company may omit: the corporate cycle C1–C5, the eight phases with their gates and evidence (section 6), the gate decision rules (section 7), segregation of duties (section 8), the determination of Lite or Enterprise intensity for each initiative (section 9) and the nonconformity process (section 12). -->
 
@@ -336,6 +336,8 @@ Results without documentation, or documentation without results, do not pass the
 | **Proceed with operation · Proceed with conditions · Bring G7 forward** | Only at R6: the initiative keeps delivering value under control, does so with correctable deviations, or shows relevant deviations in value, risk or compliance. | Remains in production; with conditions, deadline and owner; or G7 is opened without waiting for the schedule. |
 
 A well-founded decision to **stop** is a valid outcome of the method. Avoiding a bad investment also creates value.
+
+> **In plain words: what does "iterate" mean?** Iterating means repeating the work of the phase the initiative is currently in, without moving on to the next one, because the result does not yet meet the required criterion but the underlying idea still looks valid. It is not starting from scratch (that would be pivoting, with a different hypothesis) and it is not closing the initiative (that would be stopping): it is correcting and trying again at the same point. For example, in phase 2 a value hypothesis is tested and the measured saving falls short of the target, but the team identifies a concrete adjustment (a different user segment, a different process) that could close the gap; instead of moving on to phase 3 with insufficient data, the initiative iterates: it repeats phase 2 with that adjustment and is presented again to the same *gate*. **Why only twice is allowed (rule 5 in section 7.4):** every iteration has a cost in time and budget, and if two attempts to fix the same thing are not enough, that is a sign the problem is not a minor adjustment but something more fundamental (the hypothesis, the design or the sponsorship). That is why, the third time, the decision is no longer made by whoever runs the initiative: it **is escalated to whoever has the authority to decide with more context** (for example, from the sponsor to the AI committee), who assesses whether it is worth iterating again, pivoting to another hypothesis, or stopping.
 
 ### 7.4 Decision rules
 

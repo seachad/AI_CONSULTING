@@ -51,4 +51,4 @@ The `_pruebas` folder is not published.
 
 ## Licence
 
-Code MIT · texts CC BY 4.0 · © 2026 Fernando García · SEACHAD.
+Code MIT · texts CC BY 4.0 · © 2026 Fernando García Varela.

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """T17 · Conector del registro de iniciativas T01 de SEVEN-G al panel de IA del Consejo (T17) y al registro de recomendaciones (T18).
 
-© 2026 Fernando García · SEACHAD · Metodología SEVEN-G. Código bajo licencia MIT; contenidos bajo CC BY 4.0.
+© 2026 Fernando García Varela · Metodología SEVEN-G. Código bajo licencia MIT; contenidos bajo CC BY 4.0.
 
 Aviso legal: SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen
 asesoramiento jurídico, regulatorio ni financiero ni garantizan el cumplimiento de ninguna norma. Las clasificaciones y
 referencias a regulación pueden quedar desactualizadas: cada organización es la única responsable de verificar la normativa
-que le aplica y certificar su propio cumplimiento. El autor y SEACHAD no asumen responsabilidad por su uso. Los datos de
+que le aplica y certificar su propio cumplimiento. El autor no asume responsabilidad por su uso. Los datos de
 demostración son ficticios.
 
 Convierte el JSON completo que exporta el registro de iniciativas T01 (esquema_registro.schema.json, versiones 0.1 a 0.5) al JSON

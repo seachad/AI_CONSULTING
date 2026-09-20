@@ -13,7 +13,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
    - `<!-- grafico: Título | Subtítulo -->` conserva `grafico:`; traduce título y subtítulo.
 5. **Bloques Mermaid.** Traduce solo los textos entre comillas de nodos y aristas. No cambies identificadores, `classDef`, `class`, flechas ni sintaxis.
 6. **Referencias.** Los números de documento (00, 01, 03, 40…), códigos (C1–C5, G0–G7, R6, T01–T22, IA-AAAA-NNN) y rutas de ficheros no se traducen. Los nombres de fichero y rutas entre comillas invertidas se mantienen.
-7. **No traduzcas** SEVEN-G, SEACHAD, Fernando García, Lite, Enterprise, ISO/IEC 42001, NIST AI RMF, DORA, NIS2, CC BY 4.0, MIT.
+7. **No traduzcas** SEVEN-G, Fernando García Varela, Lite, Enterprise, ISO/IEC 42001, NIST AI RMF, DORA, NIS2, CC BY 4.0, MIT.
 8. **Moneda y cifras** se mantienen (€, porcentajes). Usa punto decimal si aparece coma decimal.
 9. Escribe el fichero completo con codificación UTF-8.
 
@@ -87,7 +87,7 @@ Uso interno del generador. Todas las traducciones al inglés deben seguir esta g
 | embudo | funnel |
 | motivo de parada o retirada | stop or retirement reason |
 | valor ponderado de la cartera | weighted portfolio value |
-| Fuente: SEVEN-G · SEACHAD | Source: SEVEN-G · SEACHAD |
+| Fuente: SEVEN-G | Source: SEVEN-G |
 | Datos ilustrativos | Illustrative data |
 | proyecto vivo | living project |
 | Documento de trabajo interno | Internal working document |
