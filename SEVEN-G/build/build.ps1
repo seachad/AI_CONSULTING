@@ -739,6 +739,22 @@ foreach ($lang in $Idiomas) {
     }
     if ($otroHtmlHref) { $enlacesDoc.Add("<a class=""dz-item"" href=""$otroHtmlHref"" hreflang=""$otroLang""><span class=""dz-tipo html"">HTML</span><b>$otroLabel</b></a>") }
 
+    # guía del curso (M00): además de su propio PDF/HTML, enlaza el curso completo en PPT y en PDF (D85)
+    if ($metodologia -eq 'SEVEN-G' -and ($rel -replace '\\', '/') -eq 'curso/M00_SEVEN-G_Curso_Guia_del_curso.md') {
+      $pptxOut = Join-Path $root "pptx\$lang\SEVEN-G_Curso.pptx"
+      if (Test-Path $pptxOut) {
+        $pptxHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pptxOut).Replace('\', '/')
+        $pptxLabel = if ($en) { 'Full course (PowerPoint)' } else { 'Curso completo (PowerPoint)' }
+        $enlacesDoc.Add("<a class=""dz-item"" href=""$pptxHref"" download><span class=""dz-tipo"">PPTX</span><b>$pptxLabel</b></a>")
+      }
+      $pdfCursoOut = Join-Path $root "pdf\$lang\curso\SEVEN-G_Curso_completo.pdf"
+      if (Test-Path $pdfCursoOut) {
+        $pdfCursoHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pdfCursoOut).Replace('\', '/')
+        $pdfCursoLabel = if ($en) { 'Full course (PDF)' } else { 'Curso completo (PDF)' }
+        $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfCursoHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$pdfCursoLabel</b></a>")
+      }
+    }
+
     $todasHerr = $cfg.todasHerramientas -and ($esIndice -or $rel -like $cfg.todasHerramientas)
     $codigosHerr = if ($todasHerr) { @($herramientas.Keys) } else {
       @([regex]::Matches($md, '(?<![\w/])T\d{2}(?!\d)') | ForEach-Object { $c = $_.Value; if ($aliasHerr.ContainsKey($c)) { $aliasHerr[$c] } else { $c } } | Select-Object -Unique)
@@ -808,10 +824,18 @@ foreach ($lang in $Idiomas) {
   }
 }
 }
-# curso completo descargable en PPT y PDF (petición del autor, D81): el PDF necesita el HTML de los módulos ya generado
-if ($Metodologias -contains 'SEVEN-G') {
+# curso completo descargable en PPT y PDF (D85): el PDF necesita el HTML de los módulos ya generado. Se regenera después
+# la guía del curso (M00) para que su zona de descargas enlace ya el PPT y el PDF recién creados (build.ps1 los comprueba
+# con Test-Path al generar cada documento, y en la primera pasada del build normal todavía no existen). La variable de
+# entorno evita que esta segunda pasada, al ser otra invocación del mismo script, repita esta misma sección.
+if ($Metodologias -contains 'SEVEN-G' -and -not $env:SEVENG_BUILD_CURSO_PASE2) {
   & (Join-Path $PSScriptRoot 'curso_pptx.ps1') -Idiomas $Idiomas
-  if (-not $SinPdf) { & (Join-Path $PSScriptRoot 'curso_pdf.ps1') -Idiomas $Idiomas }
+  if (-not $SinPdf) {
+    & (Join-Path $PSScriptRoot 'curso_pdf.ps1') -Idiomas $Idiomas
+    $env:SEVENG_BUILD_CURSO_PASE2 = '1'
+    try { & $PSCommandPath -Metodologias SEVEN-G -Filter 'M00_SEVEN-G_Curso_Guia_del_curso.md' -Idiomas $Idiomas }
+    finally { Remove-Item Env:\SEVENG_BUILD_CURSO_PASE2 -ErrorAction SilentlyContinue }
+  }
 }
 
 # índices temporales de este proceso
