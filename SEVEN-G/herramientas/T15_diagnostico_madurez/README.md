@@ -50,4 +50,4 @@ Para la prueba de humo: `#nivel-global` lleva `data-nivel` (en el ejemplo, `2`),
 
 ---
 
-Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García · SEACHAD · Metodología SEVEN-G. La herramienta se ofrece «tal cual», no es asesoramiento y cada organización es responsable de sus datos y decisiones (aviso legal completo en la propia herramienta).
+Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G. La herramienta se ofrece «tal cual», no es asesoramiento y cada organización es responsable de sus datos y decisiones (aviso legal completo en la propia herramienta).

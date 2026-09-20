@@ -2,11 +2,11 @@
 """Piezas comunes de lo que publica el conector T17: autoria y licencias, aviso legal, pagina del registro de
 recomendaciones (T18) y aviso visible en el panel movil.
 
-© 2026 Fernando García · SEACHAD · Metodología SEVEN-G. Código bajo licencia MIT; contenidos bajo CC BY 4.0.
+© 2026 Fernando García Varela · Metodología SEVEN-G. Código bajo licencia MIT; contenidos bajo CC BY 4.0.
 
 Aviso legal: SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen
 asesoramiento jurídico, regulatorio ni financiero ni garantizan el cumplimiento de ninguna norma. Cada organización es la
-única responsable de verificar la normativa que le aplica. El autor y SEACHAD no asumen responsabilidad por su uso.
+única responsable de verificar la normativa que le aplica. El autor no asume responsabilidad por su uso.
 
 No toca el motor del panel (./motor): el aviso del panel completo va en meta.textos (aviso_previo y pie); el panel movil no
 muestra esos textos, asi que el aviso se anade al HTML ya generado, justo antes de su pie. La plantilla del registro
@@ -26,15 +26,14 @@ except ImportError:
         raise ImportError(f"no se encuentra demo_lib.py (plantilla del registro) en {_MOTOR}") from e
 
 # autoria y licencias (pie de cada panel y registro)
-AUTOR = "Fernando García"
-ENTIDAD = "SEACHAD"
+AUTOR = "Fernando García Varela"
 METODOLOGIA = "SEVEN-G"
 REPO_ORIGEN_MOTOR = "https://github.com/Seachad-TEAM/AI_en_el_consejo"   # origen del motor del panel (codigo MIT); desde el 17-09-2026 se mantiene en ./motor
 
 AVISO_LEGAL = ("<b>Aviso legal.</b> Demostración con datos ficticios del registro de iniciativas T01 de SEVEN-G, ofrecida «tal cual» y con fines "
                "informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni garantiza el cumplimiento de ninguna norma. "
                "Las clasificaciones y referencias a regulación general o sectorial pueden quedar desactualizadas: cada organización es la única "
-               "responsable de verificar la normativa que le aplica y certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen "
+               "responsable de verificar la normativa que le aplica y certificar su propio cumplimiento regulatorio. El autor no asume "
                "responsabilidad por su uso.")
 AVISO_LEGAL_CORTO = ("Aviso legal: datos ficticios, «tal cual» y con fines informativos; no es asesoramiento jurídico, regulatorio ni financiero ni "
                      "garantiza el cumplimiento de ninguna norma. Cada organización verifica la normativa que le aplica.")
@@ -43,13 +42,13 @@ AVISO_LEGAL_DATOS_PROPIOS = ("<b>Aviso legal.</b> Panel generado desde el regist
                              "ofrecido «tal cual» y con fines informativos. No constituye asesoramiento jurídico, regulatorio ni financiero ni "
                              "garantiza el cumplimiento de ninguna norma. Las clasificaciones y referencias a regulación general o sectorial pueden "
                              "quedar desactualizadas: cada organización es la única responsable de verificar la normativa que le aplica y certificar "
-                             "su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad por su uso.")
+                             "su propio cumplimiento regulatorio. El autor no asume responsabilidad por su uso.")
 
 
 def pie_autoria():
-    """Linea de autoria y licencias. La autoria de SEVEN-G, del conector y del motor incluido es de SEACHAD (AI_CONSULTING);
+    """Linea de autoria y licencias. La autoria de SEVEN-G, del conector y del motor incluido es de Fernando García Varela (AI_CONSULTING);
     el enlace al repositorio AI en el Consejo se limita al origen del codigo MIT del motor."""
-    return (f"© 2026 {AUTOR} · {ENTIDAD} · metodología {METODOLOGIA} · contenidos "
+    return (f"© 2026 {AUTOR} · metodología {METODOLOGIA} · contenidos "
             f"<a href=\"https://creativecommons.org/licenses/by/4.0/deed.es\">CC BY 4.0</a> · código MIT "
             f"(motor del panel derivado de <a href=\"{REPO_ORIGEN_MOTOR}\">AI en el Consejo</a>, <a href=\"{REPO_ORIGEN_MOTOR}/blob/main/LICENSE\">MIT</a>)")
 

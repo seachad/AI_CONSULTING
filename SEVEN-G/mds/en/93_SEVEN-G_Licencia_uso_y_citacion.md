@@ -7,14 +7,14 @@
 | Document | Document 93 · Licence, use by third parties and citation |
 | Version | 0.1 (working draft) |
 | Date | 16-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Draft for review. Summarises the licences in force; the legal text of each licence prevails over this summary. |
 
 <!-- cifras: 2 | licences: content and code ; 3 | attribution requirements ; 2 | citation languages ; 0 | official certifications -->
 
 ---
 
-> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SEVEN-G is a reference methodological framework provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. **Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 > **This document does not constitute legal advice.** It is a practical summary of the licences that apply to SEVEN-G. In case of doubt, the official legal texts of each licence prevail, and any use with significant legal implications should be discussed with a qualified professional. Texts consulted in September 2026.
 
@@ -40,7 +40,7 @@ Decision D07 in the decision register: **content under CC BY 4.0 and code under 
 | **SEVEN-G code** | **MIT** | Library generation scripts, generation template and stylesheet. |
 | **Board dashboard demonstrations** (public repository) | Content **CC BY 4.0**; code **MIT** | Demonstration dashboards and registers, JSON data, cover page and data schema (content); demonstration engine and generators (code). |
 
-**Rights holder:** © 2026 Fernando García · SEACHAD. SEVEN-G methodology.
+**Rights holder:** © 2026 Fernando García Varela. SEVEN-G methodology.
 
 **Excluded:** materials from previous versions no longer in force and internal working documents, which are neither published nor licensed.
 
@@ -69,7 +69,7 @@ Links to the official texts:
 |---|---|
 | **Attribution** | State the author and rights holder, the title of the work, a licence notice with a link to CC BY 4.0 and, where reasonable, a link to the original material. It may be done in any reasonable manner appropriate to the medium. |
 | **Indicate changes** | If the material has been modified, say so, even in general terms ("adapted from…", "translated from…", "thresholds modified"). |
-| **No suggestion of endorsement** | It may not be implied that the author or SEACHAD endorses the user, their use, their service or their adaptation. |
+| **No suggestion of endorsement** | It may not be implied that the author endorses the user, their use, their service or their adaptation. |
 | **No additional restrictions** | Legal terms or technological measures that prevent others from doing what the licence permits with the licensed material may not be applied. |
 
 In addition, it is worth bearing in mind that:
@@ -97,31 +97,31 @@ The code is provided **"as is", without warranty of any kind**, and the authors 
 
 **In Spanish**
 
-> «SEVEN-G, marco de valor, gobierno y transformación con IA», de Fernando García · SEACHAD, versión 0.1 (16-09-2026). Licencia CC BY 4.0.
+> «SEVEN-G, marco de valor, gobierno y transformación con IA», de Fernando García Varela, versión 0.1 (16-09-2026). Licencia CC BY 4.0.
 
 **In English**
 
-> "SEVEN-G, a framework for value, governance and transformation with AI", by Fernando García · SEACHAD, version 0.1 (16-09-2026). Licensed under CC BY 4.0.
+> "SEVEN-G, a framework for value, governance and transformation with AI", by Fernando García Varela, version 0.1 (16-09-2026). Licensed under CC BY 4.0.
 
 ### 6.2 Citing a specific document
 
 **In Spanish**
 
-> Fernando García · SEACHAD (2026). *Guía de conversación con el consejo* (Documento 61). SEVEN-G, versión 0.1. CC BY 4.0.
+> Fernando García Varela (2026). *Guía de conversación con el consejo* (Documento 61). SEVEN-G, versión 0.1. CC BY 4.0.
 
 **In English**
 
-> Fernando García · SEACHAD (2026). *Board conversation guide* (Document 61). SEVEN-G, version 0.1. CC BY 4.0.
+> Fernando García Varela (2026). *Board conversation guide* (Document 61). SEVEN-G, version 0.1. CC BY 4.0.
 
 ### 6.3 Citing an adapted or translated work
 
 **In Spanish**
 
-> Adaptado de «SEVEN-G, marco de valor, gobierno y transformación con IA», de Fernando García · SEACHAD, versión 0.1, CC BY 4.0. Cambios: [describir]. Esta adaptación no está respaldada por el autor.
+> Adaptado de «SEVEN-G, marco de valor, gobierno y transformación con IA», de Fernando García Varela, versión 0.1, CC BY 4.0. Cambios: [describir]. Esta adaptación no está respaldada por el autor.
 
 **In English**
 
-> Adapted from "SEVEN-G, a framework for value, governance and transformation with AI", by Fernando García · SEACHAD, version 0.1, CC BY 4.0. Changes: [describe]. This adaptation is not endorsed by the author.
+> Adapted from "SEVEN-G, a framework for value, governance and transformation with AI", by Fernando García Varela, version 0.1, CC BY 4.0. Changes: [describe]. This adaptation is not endorsed by the author.
 
 ### 6.4 Citing the board dashboard demonstrations
 
@@ -145,7 +145,7 @@ The code is provided **"as is", without warranty of any kind**, and the authors 
 
 ### 7.1 Principle
 
-The CC BY 4.0 licence permits use of the content; **it does not make the user a representative of the framework, nor does it imply endorsement or certification**. Naming SEVEN-G to describe accurately what has been used is necessary to comply with the attribution requirement; using it to suggest endorsement, accreditation or certification is not permitted.
+**SEVEN-G is a registered trademark of Fernando García Varela** (professional profile: <https://www.linkedin.com/in/fernandogarciavarela/>). The CC BY 4.0 licence permits use of the content, but it does not grant any right over the trademark (section 4); **it does not make the user a representative of the framework, nor does it imply endorsement or certification**. Naming SEVEN-G to describe accurately what has been used is necessary to comply with the attribution requirement; using it to suggest endorsement, accreditation or certification is not permitted.
 
 ### 7.2 Appropriate and inappropriate uses
 
@@ -153,7 +153,7 @@ The CC BY 4.0 licence permits use of the content; **it does not make the user a 
 |---|---|
 | "Based on SEVEN-G (version 0.1)." | "SEVEN-G certified" or "SEVEN-G certification". |
 | "Adapted from SEVEN-G (version 0.1); changes: …" | "SEVEN-G accredited consultancy", "official partner", "approved". |
-| "[Company] declares that it applies SEVEN-G (version 0.1)." | "Endorsed by Fernando García" or "approved by SEACHAD". |
+| "[Company] declares that it applies SEVEN-G (version 0.1)." | "Endorsed by Fernando García Varela" or "certified by the author". |
 | "Declaration of application reviewed by [third party] on [date]." | Presenting as SEVEN-G a service that omits its essential rules without declaring it (document 91, section 2.3). |
 
 ### 7.3 There is no official certification
@@ -204,7 +204,7 @@ SEVEN-G content **does not constitute legal, regulatory, financial, tax, employm
 
 ### 11.3 Limitation of liability
 
-To the fullest extent permitted by applicable law, **neither the author, Fernando García, nor SEACHAD shall be liable** for any damage, loss, penalty, claim or cost, whether direct or indirect, arising from the use of or inability to use SEVEN-G, from decisions taken with it or from errors or omissions in its content. This limitation does not exclude any liability that cannot be excluded by law.
+To the fullest extent permitted by applicable law, **neither the author, Fernando García Varela, shall be liable** for any damage, loss, penalty, claim or cost, whether direct or indirect, arising from the use of or inability to use SEVEN-G, from decisions taken with it or from errors or omissions in its content. This limitation does not exclude any liability that cannot be excluded by law.
 
 ### 11.4 User responsibility for regulatory compliance
 
@@ -229,7 +229,7 @@ The tools (T01–T22), the demonstration dashboards and registers and the code a
 
 ### 11.7 Third parties that use or adapt the framework
 
-Consultancies, auditors, trainers and other third parties that use, adapt or integrate SEVEN-G in their services do so **under their sole responsibility**. They may not present their work, deliverables, adaptations or conclusions as **validated, certified, reviewed or endorsed** by the author or by SEACHAD, nor declare or certify a client's regulatory compliance on behalf of SEVEN-G or the author (document 91, section 6.2). They must pass the legal notice on in their deliverables.
+Consultancies, auditors, trainers and other third parties that use, adapt or integrate SEVEN-G in their services do so **under their sole responsibility**. They may not present their work, deliverables, adaptations or conclusions as **validated, certified, reviewed or endorsed** by the author, nor declare or certify a client's regulatory compliance on behalf of SEVEN-G or the author (document 91, section 6.2). They must pass the legal notice on in their deliverables.
 
 ### 11.8 How this fits with the licences
 
@@ -239,13 +239,13 @@ Section 5 of the CC BY 4.0 licence already disclaims representations and warrant
 
 Anyone who distributes a copy, adaptation or translation of SEVEN-G must retain, together with the attribution, at least this short form of the notice:
 
-> **Legal notice.** Based on SEVEN-G (Fernando García · SEACHAD, CC BY 4.0). Guidance content provided "as is", without warranties, which does not constitute legal or regulatory advice. The user organisation is solely responsible for identifying the general, sector-specific and jurisdictional regulation that applies to it, verifying that it is current and certifying its compliance. Neither the author nor SEACHAD validates, certifies or endorses this work.
+> **Legal notice.** Based on SEVEN-G (Fernando García Varela, CC BY 4.0). Guidance content provided "as is", without warranties, which does not constitute legal or regulatory advice. The user organisation is solely responsible for identifying the general, sector-specific and jurisdictional regulation that applies to it, verifying that it is current and certifying its compliance. The author does not validate, certify or endorse this work.
 
 ---
 
 ## 12. Contact
 
-Queries about the use of the framework, improvement proposals, error reports and requests for support are addressed to the author, **Fernando García · SEACHAD**, through his professional LinkedIn profile: <https://www.linkedin.com/in/fernandogarciavarela/>. The reasons why the framework is open and free of charge are explained in document 04.
+Queries about the use of the framework, improvement proposals, error reports and requests for support are addressed to the author, **Fernando García Varela**, through his professional LinkedIn profile: <https://www.linkedin.com/in/fernandogarciavarela/>. The reasons why the framework is open and free of charge are explained in document 04, including that the site never reaches out on its own initiative to whoever visits it.
 
 It is not necessary to ask permission for any use that complies with the licence. Contacting the author does not make a use endorsed.
 

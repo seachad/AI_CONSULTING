@@ -7,7 +7,7 @@
 | Document | Document 00 · What SPHERES is and how it helps |
 | Version | 0.1 |
 | Date | 17-09-2026 |
-| Author | Fernando García · SEACHAD |
+| Author | Fernando García Varela |
 | Status | Under construction. Supporting methodology of SEVEN-G and not released commercially; its current operating rules are in SEVEN-G document 10. |
 | Type | Methodology overview |
 
@@ -17,11 +17,11 @@
 
 > **Version under review: please do not circulate.** The current state of SPHERES (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.
 
-> **Legal notice and disclaimer.** SPHERES is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act or the GDPR) and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date. **Each organisation that uses SPHERES is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author and SEACHAD accept no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
+> **Legal notice and disclaimer.** SPHERES is a reference methodology provided "as is" and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act or the GDPR) and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date. **Each organisation that uses SPHERES is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance**, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.
 
 ## 1. What SPHERES is
 
-**SPHERES** is the SEACHAD methodology for **placing artificial intelligence in the business** before talking about technology. It organises everything that AI can change in an organisation into **nine impact spheres** and grades each bet with **three ambition levels**: Optimise, Augment and Transform.
+**SPHERES** is Fernando García Varela's methodology for **placing artificial intelligence in the business** before talking about technology. It organises everything that AI can change in an organisation into **nine impact spheres** and grades each bet with **three ambition levels**: Optimise, Augment and Transform.
 
 The name comes from the English word *spheres*. It is not an acronym: it describes the central idea of the method, which is that AI is not a project for the technology area but a change that reaches customers, the offering, people, processes, data, knowledge, decisions, obligations and governance.
 
@@ -35,9 +35,9 @@ SPHERES answers three questions that any board or management committee should be
 
 > **Why it matters.** Without a common language, each area talks about AI in its own way: technology talks about models, finance about savings, the business about use cases and compliance about risks. SPHERES gives everyone the same map, so that the board can compare bets, detect gaps and decide where to invest without having to understand how each system works.
 
-SPHERES is a **supporting methodology of SEVEN-G**, the SEACHAD framework for value, governance and transformation with AI. It constitutes its component A (impact map). This library explains the method in detail and with examples; the operating rules, the indicators with a formula and the tools are in SEVEN-G (section 8).
+SPHERES is a **supporting methodology of SEVEN-G**, Fernando García Varela's framework for value, governance and transformation with AI. It constitutes its component A (impact map). This library explains the method in detail and with examples; the operating rules, the indicators with a formula and the tools are in SEVEN-G (section 8).
 
-> **Ownership and reuse.** The intellectual property of SPHERES belongs to its author, **Fernando García · SEACHAD**. It is offered as an open reference framework, in development, for use, adaptation and learning; it is not released as a final commercial deliverable or a closed product for clients. Its reuse and adaptation by any organisation are subject to SEVEN-G's content and code licence (**CC BY 4.0** for content, **MIT** for code; SEVEN-G document 93), which requires attribution and an indication of any changes made. Using SPHERES, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over its base to any client, supplier or third party, except under a specific written agreement covering proprietary developments.
+> **Ownership and reuse.** The intellectual property of SPHERES belongs to its author, **Fernando García Varela**. It is offered as an open reference framework, in development, for use, adaptation and learning; it is not released as a final commercial deliverable or a closed product for clients. Its reuse and adaptation by any organisation are subject to SEVEN-G's content and code licence (**CC BY 4.0** for content, **MIT** for code; SEVEN-G document 93), which requires attribution and an indication of any changes made. Using SPHERES, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over its base to any client, supplier or third party, except under a specific written agreement covering proprietary developments.
 
 ---
 
@@ -268,7 +268,7 @@ Documents 02, 03 and 04 follow the same structure for each sphere: what it is, w
 
 ## 12. Licence, attribution and status
 
-SPHERES is published under a **Creative Commons Attribution 4.0 International (CC BY 4.0)** licence. It may be used, adapted and extended, including for commercial purposes, provided that authorship is visibly credited: *SPHERES · Fernando García · SEACHAD*. The full conditions of use and citation are those of SEVEN-G ([SEVEN-G 93 · Licence, use by third parties and citation](../../../SEVEN-G/html/en/93_SEVEN-G_Licencia_uso_y_citacion.html)).
+SPHERES is published under a **Creative Commons Attribution 4.0 International (CC BY 4.0)** licence. It may be used, adapted and extended, including for commercial purposes, provided that authorship is visibly credited: *SPHERES · Fernando García Varela*. The full conditions of use and citation are those of SEVEN-G ([SEVEN-G 93 · Licence, use by third parties and citation](../../../SEVEN-G/html/en/93_SEVEN-G_Licencia_uso_y_citacion.html)).
 
 There is no SPHERES certification. Use of the name does not imply endorsement by the author.
 

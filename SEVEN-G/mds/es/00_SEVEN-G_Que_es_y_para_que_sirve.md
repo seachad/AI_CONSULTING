@@ -1,4 +1,4 @@
-# Qué es SEVEN-G y para qué sirve a las empresas
+# Qué es SEVEN-G y para qué sirve
 
 **Marco de valor, gobierno y transformación con inteligencia artificial**
 
@@ -7,7 +7,7 @@
 | Documento | Documento 00 · Presentación del marco |
 | Versión | 0.1 (borrador de trabajo) |
 | Fecha | 16-09-2026 |
-| Autor | Fernando García · SEACHAD |
+| Autor | Fernando García Varela |
 | Estado | Versión 0.1 operativa como marco de referencia abierto. No se trata de una versión comercial cerrada ni de un producto liberado para clientes o mercados. |
 
 <!-- cifras: 9 | esferas de impacto ; 3 | niveles de ambición ; 0–7 | fases con puertas de decisión ; 10 | reglas de medición del valor -->
@@ -16,13 +16,13 @@
 
 > **Versión en revisión: no difundir.** El estado actual de SEVEN-G (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.
 
-> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
+> **Aviso legal y exención de responsabilidad.** SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. **Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio**, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.
 
 <!-- esencial: siempre | Lectura inicial de cualquier persona que vaya a usar el marco. Bastan el inicio rápido (sección 0) y las secciones 1 a 6: qué es, qué problema resuelve, cómo está construido (esferas, ciclo corporativo, ciclo de vida con puertas, gobierno y medición) y las diez reglas de medición del valor. -->
 
 ## 0. Inicio rápido (Quick Start)
 
-**SEVEN-G** (*Seven-phase Enterprise Value & Governance*) es un método completo, **gratuito y modificable**, para que una compañía implante, gobierne y mida su inteligencia artificial por sí misma —autoconsultoría empresarial apoyada en IA— y pueda responder con evidencia si se está transformando o solo está siendo más eficiente. Esta sección se lee en cinco minutos y sirve para una sola cosa: **decidir si merece la pena seguir leyendo**.
+**SEVEN-G** (*Seven-phase Enterprise Value & Governance*) es un método completo, **gratuito y modificable**, para que una compañía, una consultora o un profesional independiente implante, gobierne y mida la inteligencia artificial de una organización —autoconsultoría empresarial apoyada en IA— y pueda responder con evidencia si se está transformando o solo está siendo más eficiente. Esta sección se lee en cinco minutos y sirve para una sola cosa: **decidir si merece la pena seguir leyendo**.
 
 **Qué hace, en cuatro ideas**
 
@@ -39,7 +39,20 @@ SEVEN-G no es un folleto que termina en una propuesta comercial: **el material d
 
 > **Por qué importa.** La mayor parte del coste de poner orden en la IA no está en entender qué hay que hacer, sino en fabricar los instrumentos: políticas, actas, registros, listas de verificación, cuadros de mando. Partir de un material completo, que se puede modificar sin pedir permiso, permite dedicar el esfuerzo a decidir y no a maquetar, y comprobar en una tarde —con los datos de ejemplo— si el enfoque encaja con la compañía antes de comprometer a nadie.
 
-**¿Le sirve a su compañía?**
+**Qué se obtiene, para quien quiere verlo antes de leer**
+
+Dos vistazos, con los datos ficticios de ejemplo: la cartera de iniciativas de IA leída como un embudo (a qué fase llega cada iniciativa, cuántas se pierden en cada una y por qué) y el panel del consejo generado a partir de ese mismo registro (coste, retorno y neto de la cartera). Es a donde lleva usar SEVEN-G: del registro de una iniciativa a una decisión de consejo con evidencia.
+
+<!-- figura: embudo-cartera -->
+
+<figure class="grafico">
+<div class="g-titulo">El panel del consejo, generado con los datos de ejemplo del registro de iniciativas</div>
+<div class="g-sub">Vista «Cartera y valor» del panel completo: coste, retorno, neto y validación de la cartera de 15 iniciativas ficticias</div>
+<div class="g-lienzo ancho"><img src="img/panel-consejo-ejemplo.png" alt="Panel del consejo de SEVEN-G: tarjetas de cartera y valor con 15 casos, 2,4 M€ de costes, 7,3 M€ de retorno total y 4,8 M€ de neto anual, datos ficticios" style="width:100%;height:auto;border:1px solid var(--regla)"></div>
+<div class="g-fuente">Fuente: panel de ejemplo del <a href="../../herramientas/T01_registro_iniciativas/registro.html">registro de iniciativas</a>, generado con el <a href="../../herramientas/T17_panel_consejo/index.html">panel del consejo</a>, datos ficticios</div>
+</figure>
+
+**¿Le sirve?** (a su compañía, o a la consultora o profesional que la asesora)
 
 | Probablemente le sirve si… | Probablemente no le sirve, o todavía no, si… |
 |---|---|
@@ -70,11 +83,11 @@ El resto de esta página desarrolla lo anterior con detalle: qué significa SEVE
 
 SEVEN-G significa **Seven-phase Enterprise Value & Governance**: una fase 0 habilitante y siete fases de valor (1–7), con gobierno transversal en todas ellas.
 
-La intención del marco es iniciar, con apoyo de IA, un modelo de **autoconsultoría empresarial**: que cualquier compañía pueda usar SEVEN-G para implantar, gobernar, medir, adaptar, extender y mejorar su propio sistema de IA sin depender de una interpretación cerrada de terceros.
+La intención del marco es iniciar, con apoyo de IA, un modelo de **autoconsultoría empresarial**: que cualquier compañía, consultora o profesional independiente pueda usar SEVEN-G para implantar, gobernar, medir, adaptar, extender y mejorar un sistema de IA sin depender de una interpretación cerrada de terceros.
 
 SEVEN-G está diseñado para ser **compatible** con estructuras de gobierno ya existentes, con consultoras internas o externas y con otros marcos que la compañía ya utilice. No exige reemplazarlos: permite integrarlos, ordenar sus aportaciones y convertirlas en decisiones trazables con criterios comunes de valor, riesgo, cumplimiento y medición.
 
-Ese uso y su adaptación están permitidos por la licencia de contenidos del proyecto (**CC BY 4.0**), con una condición explícita: reconocer siempre la autoría y citar de forma visible a **Fernando García · SEACHAD**, indicando además si se han hecho cambios.
+Ese uso y su adaptación están permitidos por la licencia de contenidos del proyecto (**CC BY 4.0**), con una condición explícita: reconocer siempre la autoría y citar de forma visible a **Fernando García Varela**, indicando además si se han hecho cambios.
 
 SEVEN-G permite que una organización **implante, gobierne y mida** la inteligencia artificial con el mismo rigor con el que gestiona sus finanzas, sus riesgos o su cumplimiento normativo, y que sus órganos de decisión y de gobierno puedan responder con evidencia a una pregunta que hoy casi nadie sabe contestar:
 
@@ -84,7 +97,7 @@ Las dos cosas son legítimas. El problema aparece cuando se confunden: cuando un
 
 El objetivo práctico es que el consejo, la alta dirección y los órganos de control entiendan y midan la aportación de la inteligencia empresarial en su compañía, comprendan y contengan sus riesgos y decidan, con disciplina de cartera, en qué iniciativas conviene invertir para mejorar la eficiencia, transformar capacidades y generar impacto real en la cuenta de resultados (P&L).
 
-> **Titularidad y reutilización.** La propiedad intelectual de la metodología SEVEN-G —sus documentos, plantillas, criterios y herramientas— pertenece a su autor, **Fernando García · SEACHAD**. El marco se ofrece como referencia abierta para uso, adaptación y aprendizaje, no como un producto comercial cerrado ni como una versión liberada a clientes o mercados: cualquier organización puede reutilizarlo y adaptarlo, pero ese uso queda sujeto a la licencia de contenidos y de código del proyecto (**CC BY 4.0** para los contenidos, **MIT** para el código; documento 93), que exige reconocer la autoría e indicar los cambios. Usar SEVEN-G, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre la base metodológica a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.
+> **Titularidad y reutilización.** La propiedad intelectual de la metodología SEVEN-G —sus documentos, plantillas, criterios y herramientas— pertenece a su autor, **Fernando García Varela**. El marco se ofrece como referencia abierta para uso, adaptación y aprendizaje, no como un producto comercial cerrado ni como una versión liberada a clientes o mercados: cualquier organización puede reutilizarlo y adaptarlo, pero ese uso queda sujeto a la licencia de contenidos y de código del proyecto (**CC BY 4.0** para los contenidos, **MIT** para el código; documento 93), que exige reconocer la autoría e indicar los cambios. Usar SEVEN-G, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre la base metodológica a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.
 
 SEVEN-G aporta cuatro cosas:
 
@@ -441,10 +454,10 @@ La versión 0.1 de SEVEN-G es operativa. Todos los documentos, plantillas y herr
 ## 11. Licencia y uso
 
 - Los contenidos de SEVEN-G —documentos, plantillas, criterios, reglas de medición y componentes gráficos— se publican bajo licencia **Creative Commons Reconocimiento 4.0 Internacional (CC BY 4.0)**. Pueden usarse, adaptarse y compartirse, también en el ámbito empresarial, reconociendo la autoría.
-- Forma de cita recomendada: *SEVEN-G, marco de valor, gobierno y transformación con IA. Fernando García · SEACHAD. CC BY 4.0.*
+- Forma de cita recomendada: *SEVEN-G, marco de valor, gobierno y transformación con IA. Fernando García Varela. CC BY 4.0.*
 - El código de las herramientas se publica bajo licencia MIT.
 - Las cifras y los casos que aparecen en los ejemplos y demostraciones son ficticios y no constituyen referencias de mercado.
-- SEVEN-G se ofrece «tal cual», sin garantías y sin constituir asesoramiento jurídico. **La organización que lo usa es la única responsable de identificar la regulación general y la específica de su industria y jurisdicción, verificar su vigencia y certificar su cumplimiento regulatorio**; ni el autor ni SEACHAD asumen esa responsabilidad (documento 93, sección 11).
+- SEVEN-G se ofrece «tal cual», sin garantías y sin constituir asesoramiento jurídico. **La organización que lo usa es la única responsable de identificar la regulación general y la específica de su industria y jurisdicción, verificar su vigencia y certificar su cumplimiento regulatorio**; el autor no asume esa responsabilidad (documento 93, sección 11).
 
 ## 12. Control de versiones
 

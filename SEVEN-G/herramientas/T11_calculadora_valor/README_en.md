@@ -70,4 +70,4 @@ Demonstration values for the smoke test (use case IA-2026-001, opened by default
 
 ---
 
-MIT code · CC BY 4.0 content · © 2026 Fernando García · SEACHAD · SEVEN-G methodology. The tool is provided "as is", is not advice and each organisation is responsible for its data and decisions (full legal notice in the tool itself).
+MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology. The tool is provided "as is", is not advice and each organisation is responsible for its data and decisions (full legal notice in the tool itself).

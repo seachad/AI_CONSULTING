@@ -1,6 +1,6 @@
 /*
   SEVEN-G · Comunidad — intermediario entre la página de comunidad y GitHub Issues (Cloudflare Worker).
-  Licencia MIT · © 2026 Fernando García · SEACHAD
+  Licencia MIT · © 2026 Fernando García Varela
 
   Por qué existe: una página estática no puede crear issues ni registrar votos en GitHub sin credenciales, y un token
   no puede ir nunca en el HTML. Este intermediario guarda el token como secreto y actúa en GitHub en nombre del

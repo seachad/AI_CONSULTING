@@ -99,7 +99,7 @@ Sitio público con las metodologías de inteligencia artificial de SEACHAD: **SE
 
 **Aviso legal y exención de responsabilidad.** Estos contenidos y herramientas se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Las referencias a regulación general y sectorial pueden quedar desactualizadas. Cada organización que los use es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad alguna por su uso. Los datos de ejemplo son ficticios.
 
-© 2026 Fernando García · SEACHAD. Contenidos: CC BY 4.0 (`LICENCIA_CONTENIDOS.md`). Código: MIT (`LICENSE`).
+© 2026 Fernando García Varela. Contenidos: CC BY 4.0 (`LICENCIA_CONTENIDOS.md`). Código: MIT (`LICENSE`).
 '@
 Set-Content -Path (Join-Path $destinoAbs 'README.md') -Value $readme -Encoding utf8
 

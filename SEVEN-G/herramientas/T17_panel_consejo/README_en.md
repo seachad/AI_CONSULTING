@@ -2,7 +2,7 @@
 
 ## Legal notice and disclaimer
 
-SEVEN-G and this tool are provided “as is” and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The criteria, classifications and references to general regulation (EU AI Act, GDPR, DORA, NIS2…) or sector-specific regulation may be incomplete, may not apply to a specific case or may become outdated as a result of regulatory changes. Each organisation that uses the tool is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance, with the appropriate qualified advice. The author and SEACHAD accept no liability whatsoever for the use of the tool or for decisions taken with it. The demo data is fictitious.
+SEVEN-G and this tool are provided “as is” and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The criteria, classifications and references to general regulation (EU AI Act, GDPR, DORA, NIS2…) or sector-specific regulation may be incomplete, may not apply to a specific case or may become outdated as a result of regulatory changes. Each organisation that uses the tool is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance, with the appropriate qualified advice. The author accepts no liability whatsoever for the use of the tool or for decisions taken with it. The demo data is fictitious.
 
 Everything the connector generates (full dashboard, mobile dashboard and recommendations log) carries this notice: in the notice band and footer of the full dashboard, before the footer of the mobile dashboard and in the footer of the log.
 
@@ -252,4 +252,4 @@ Gate decisions and criteria, conditions, evidence, iterations, holds, deadlines 
 
 Code under the **MIT** licence, including the engine in `motor/` (derived from [AI en el Consejo](https://github.com/Seachad-TEAM/AI_en_el_consejo), MIT, same author). Contents (documentation, connector page and sample data) under **CC BY 4.0**.
 
-© 2026 Fernando García · SEACHAD · SEVEN-G methodology
+© 2026 Fernando García Varela · SEVEN-G methodology

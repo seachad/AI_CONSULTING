@@ -130,13 +130,13 @@ $textos = @{
     T_HISTORIAL_TITULO = 'Historial de navegación'; T_FILTRAR_DOCUMENTOS = 'Filtrar documentos'; T_HISTORIAL_VACIO = 'Todavía no hay navegación registrada.'
     T_CERRAR_PANEL = 'Cerrar panel'; T_HORA = 'Hora'; T_DESCARGAS = 'Descargas'
     T_TT_INICIO = 'Ir al documento 00: Qué es SEVEN-G y para qué sirve'
-    T_PORTADA = 'Portada'; T_TT_PORTADA = 'Ir a la portada de AI Consulting · SEACHAD (todas las metodologías)'
+    T_PORTADA = 'Portada'; T_TT_PORTADA = 'Ir a la portada de AI Consulting (todas las metodologías)'
     T_TT_BIBLIOTECA = 'Abrir biblioteca de documentos del idioma actual'
     T_TT_HISTORIAL = 'Ver historial de navegación de este idioma'
     T_TT_INDICE = 'Abrir índice de secciones del documento actual'
     T_TT_TEXTO_MENOS = 'Reducir tamaño del texto'
     T_TT_TEXTO_MAS = 'Aumentar tamaño del texto'
-    T_GENERADO_IA = 'Contenido generado y maquetado con apoyo de IA bajo supervisión editorial de SEACHAD.'
+    T_GENERADO_IA = 'Contenido generado y maquetado con apoyo de IA bajo supervisión editorial del autor.'
     T_TEMA_SALMON = 'Salmón'; T_TEMA_CLARO = 'Salmón claro'; T_TEMA_NOCHE = 'Noche'; T_IDIOMA = 'Idioma'
     T_SIN_RESULTADOS = 'Sin resultados'; T_METODOLOGIA = 'Metodología SEVEN-G'; T_GENERADO = 'Generado el'
     EnEsteDocumento = 'En este documento'; Version = 'Versión'; NoDisponible = 'Versión no disponible'
@@ -148,14 +148,14 @@ $textos = @{
     T_INICIO = 'Home'; T_BIBLIOTECA = 'Library'; T_HISTORIAL = 'History'; T_DOCUMENTOS = 'Documents'
     T_HISTORIAL_TITULO = 'Navigation history'; T_FILTRAR_DOCUMENTOS = 'Filter documents'; T_HISTORIAL_VACIO = 'No navigation recorded yet.'
     T_CERRAR_PANEL = 'Close panel'; T_HORA = 'Time'; T_DESCARGAS = 'Downloads'
-    T_TT_INICIO = 'Go to document 00: What SEVEN-G is and how it helps companies'
-    T_PORTADA = 'Home'; T_TT_PORTADA = 'Go to the AI Consulting · SEACHAD home page (all methodologies)'
+    T_TT_INICIO = 'Go to document 00: What SEVEN-G is and what it is for'
+    T_PORTADA = 'Home'; T_TT_PORTADA = 'Go to the AI Consulting home page (all methodologies)'
     T_TT_BIBLIOTECA = 'Open the document library for the current language'
     T_TT_HISTORIAL = 'View navigation history for this language'
     T_TT_INDICE = 'Open section index for the current document'
     T_TT_TEXTO_MENOS = 'Decrease text size'
     T_TT_TEXTO_MAS = 'Increase text size'
-    T_GENERADO_IA = 'Content generated and typeset with AI support under SEACHAD editorial supervision.'
+    T_GENERADO_IA = 'Content generated and typeset with AI support under the author''s editorial supervision.'
     T_TEMA_SALMON = 'Salmon'; T_TEMA_CLARO = 'Light salmon'; T_TEMA_NOCHE = 'Night'; T_IDIOMA = 'Language'
     T_SIN_RESULTADOS = 'No results'; T_METODOLOGIA = 'SEVEN-G methodology'; T_GENERADO = 'Generated on'
     EnEsteDocumento = 'In this document'; Version = 'Version'; NoDisponible = 'Version not available'
@@ -289,17 +289,17 @@ function Nuevo-Indice([string]$lang) {
   $sb = [Text.StringBuilder]::new()
   if ($en) {
     [void]$sb.AppendLine("# $($ti.Indice)`n`n**$($ti.IndiceSub)**`n")
-    [void]$sb.AppendLine("| | |`n|---|---|`n| Document | Library index |`n| Date | $(Get-Date -Format 'dd-MM-yyyy') |`n| Author | Fernando García · SEACHAD |`n| Status | Living project. The index is regenerated with every build. |`n")
+    [void]$sb.AppendLine("| | |`n|---|---|`n| Document | Library index |`n| Date | $(Get-Date -Format 'dd-MM-yyyy') |`n| Author | Fernando García Varela |`n| Status | Living project. The index is regenerated with every build. |`n")
     [void]$sb.AppendLine("<!-- cifras: $cifrasIndice -->`n`n---`n")
     # aviso de versión en revisión (D58): se retira cuando el marco pase a la versión 1.x
     [void]$sb.AppendLine("> **Version under review: please do not circulate.** The current state of $($cfg.marca) (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.`n")
-    [void]$sb.AppendLine("> **Legal notice and disclaimer.** These contents and tools are provided 'as is' and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. Each organisation that uses them is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance. The author and SEACHAD accept no liability whatsoever for their use.`n")
+    [void]$sb.AppendLine("> **Legal notice and disclaimer.** These contents and tools are provided 'as is' and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. Each organisation that uses them is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance. The author accepts no liability whatsoever for their use.`n")
   } else {
     [void]$sb.AppendLine("# $($ti.Indice)`n`n**$($ti.IndiceSub)**`n")
-    [void]$sb.AppendLine("| | |`n|---|---|`n| Documento | Índice de la biblioteca |`n| Fecha | $(Get-Date -Format 'dd-MM-yyyy') |`n| Autor | Fernando García · SEACHAD |`n| Estado | Proyecto vivo. El índice se regenera en cada generación. |`n")
+    [void]$sb.AppendLine("| | |`n|---|---|`n| Documento | Índice de la biblioteca |`n| Fecha | $(Get-Date -Format 'dd-MM-yyyy') |`n| Autor | Fernando García Varela |`n| Estado | Proyecto vivo. El índice se regenera en cada generación. |`n")
     [void]$sb.AppendLine("<!-- cifras: $cifrasIndice -->`n`n---`n")
     [void]$sb.AppendLine("> **Versión en revisión: no difundir.** El estado actual de $($cfg.marca) (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.`n")
-    [void]$sb.AppendLine("> **Aviso legal y exención de responsabilidad.** Estos contenidos y herramientas se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Cada organización que los use es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. El autor y SEACHAD no asumen responsabilidad alguna por su uso.`n")
+    [void]$sb.AppendLine("> **Aviso legal y exención de responsabilidad.** Estos contenidos y herramientas se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Cada organización que los use es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio. El autor no asume responsabilidad alguna por su uso.`n")
   }
   $i = 0
   foreach ($k in $grupos.Keys) {
@@ -512,6 +512,14 @@ foreach ($lang in $Idiomas) {
   $compDirs = @((Join-Path $root "build\componentes\$lang"), (Join-Path $PSScriptRoot "componentes\$lang")) | Select-Object -Unique
   if (-not (Test-Path $mdsDir)) { Write-Warning "No existe $mdsDir"; continue }
 
+  # imágenes estáticas del sitio (capturas, ilustraciones): SEVEN-G/build/img -> SEVEN-G/html/<idioma>/img
+  $imgSrc = Join-Path $root "build\img"
+  if (Test-Path $imgSrc) {
+    $imgDst = Join-Path $htmlDir 'img'
+    New-Item -ItemType Directory -Force $imgDst | Out-Null
+    Copy-Item (Join-Path $imgSrc '*') $imgDst -Force
+  }
+
   $files = @(Get-ChildItem $mdsDir -Recurse -File -Filter $Filter | Where-Object Extension -eq '.md')
   $indiceMd = Nuevo-Indice $lang
   $files += Get-Item $indiceMd
@@ -600,7 +608,7 @@ foreach ($lang in $Idiomas) {
     $docRef = Campo 'Documento'; if (-not $docRef) { $docRef = Campo 'Tipo' }; if (-not $docRef) { $docRef = $t.Ficha.Documento }
     $docCorto = ($docRef -split ' · ')[0]
     $fecha = Campo 'Fecha'
-    $autor = Campo 'Autor'; if (-not $autor) { $autor = 'Fernando García · SEACHAD' }
+    $autor = Campo 'Autor'; if (-not $autor) { $autor = 'Fernando García Varela' }
     $firma = @("<b>$(Enc $autor)</b>")
     $ver = Campo 'Version'; if ($ver) { $firma += "$($t.Version) $(Enc $ver)" }
     if ($fecha) { $firma += Enc $fecha }
@@ -651,7 +659,7 @@ foreach ($lang in $Idiomas) {
       param($c)
       $ruta = $compDirs | ForEach-Object { Join-Path $_ "$($c.Groups[1].Value).html" } | Where-Object { Test-Path $_ } | Select-Object -First 1
       if ($ruta) {
-        $comp = (Get-Content $ruta -Raw -Encoding utf8).Replace('SEVEN-G · SEACHAD', "$($cfg.marca) · SEACHAD")
+        $comp = (Get-Content $ruta -Raw -Encoding utf8).Replace('SEVEN-G · SEACHAD', "$($cfg.marca)")
         if ($comp.Contains('{{N_')) { $rec = Recuentos-Biblioteca $lang; foreach ($k in $rec.Keys) { $comp = $comp.Replace($k, $rec[$k]) } }
         $comp
       } else { Write-Warning "Componente no encontrado: $($c.Groups[1].Value) en $($compDirs -join ' ; ')"; $c.Value }
@@ -677,7 +685,7 @@ foreach ($lang in $Idiomas) {
         $partes = $c.Groups[1].Value -split '\|', 2
         $cab = "<div class=""g-titulo"">$(Enc $partes[0].Trim())</div>"
         if ($partes.Count -gt 1 -and $partes[1].Trim()) { $cab += "<div class=""g-sub"">$(Enc $partes[1].Trim())</div>" }
-        $fuente = "<div class=""g-fuente"">$(if ($lang -eq 'en') { 'Source' } else { 'Fuente' }): $($cfg.marca) · SEACHAD</div>"
+        $fuente = "<div class=""g-fuente"">$(if ($lang -eq 'en') { 'Source' } else { 'Fuente' }): $($cfg.marca)</div>"
       }
       $codigo = if ($c.Groups[2].Success) { $c.Groups[2].Value } else { $c.Groups[3].Value }
       "<figure class=""grafico"">$cab<div class=""g-lienzo""><pre class=""mermaid"">$codigo</pre></div>$fuente</figure>"
@@ -800,5 +808,11 @@ foreach ($lang in $Idiomas) {
   }
 }
 }
+# curso completo descargable en PPT y PDF (petición del autor, D81): el PDF necesita el HTML de los módulos ya generado
+if ($Metodologias -contains 'SEVEN-G') {
+  & (Join-Path $PSScriptRoot 'curso_pptx.ps1') -Idiomas $Idiomas
+  if (-not $SinPdf) { & (Join-Path $PSScriptRoot 'curso_pdf.ps1') -Idiomas $Idiomas }
+}
+
 # índices temporales de este proceso
 Remove-Item -Recurse -Force (Join-Path $env:TEMP "seveng-indice-$PID") -ErrorAction SilentlyContinue

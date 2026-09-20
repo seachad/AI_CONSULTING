@@ -2,7 +2,7 @@
 
 ## Aviso legal y exención de responsabilidad
 
-SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.
+SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.
 
 En la interfaz, este aviso figura en el pie de todas las vistas, se muestra destacado en la primera carga (al descartarlo se recuerda en el navegador) y está siempre accesible desde el enlace «Aviso legal» de la cabecera y del pie. Junto a la clasificación regulatoria (ficha, alta y edición, inventario T02 y determinación de intensidad T04) se indica que es orientativa y que debe realizarla la organización con criterio jurídico cualificado.
 
@@ -231,4 +231,4 @@ Compañía ficticia (*Compañía Ejemplo Industrial, S.A.*), 21 personas y 4 pro
 
 Código bajo licencia **MIT**. Contenidos (textos, catálogo de criterios, modelo y datos de demostración) bajo **CC BY 4.0**.
 
-© 2026 Fernando García · SEACHAD · Metodología SEVEN-G
+© 2026 Fernando García Varela · Metodología SEVEN-G

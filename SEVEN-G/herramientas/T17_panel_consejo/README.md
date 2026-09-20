@@ -2,7 +2,7 @@
 
 ## Aviso legal y exención de responsabilidad
 
-SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. El autor y SEACHAD no asumen responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.
+SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.
 
 Todo lo que genera el conector (panel completo, panel móvil y registro de recomendaciones) lleva este aviso: en la banda de avisos y el pie del panel completo, antes del pie del panel móvil y en el pie del registro.
 
@@ -252,4 +252,4 @@ Decisiones y criterios de *gate*, condiciones, evidencias, iteraciones, esperas,
 
 Código bajo licencia **MIT**, incluido el motor de `motor/` (derivado de [AI en el Consejo](https://github.com/Seachad-TEAM/AI_en_el_consejo), MIT, mismo autor). Contenidos (documentación, página del conector y datos de ejemplo) bajo **CC BY 4.0**.
 
-© 2026 Fernando García · SEACHAD · Metodología SEVEN-G
+© 2026 Fernando García Varela · Metodología SEVEN-G
