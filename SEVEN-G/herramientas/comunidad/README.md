@@ -19,14 +19,14 @@ Un marco abierto mejora con quien lo usa, pero pedir un correo para opinar convi
 | Repositorio público de issues | Por defecto `seachad/seven-g-feedback`. Ahí responde y cierra el autor. Todo es público y auditable. |
 
 - **Datos.** El identificador de quien envía y la lista de votantes van en el propio issue, en un bloque oculto al final del texto (`<!-- seveng:{…} -->`), junto a un recuento visible. No hay base de datos.
-- **Un voto por identificador** (sin distinguir mayúsculas), que se puede retirar. Quien envía cuenta como primer voto. Los issues cerrados no admiten votos.
+- **Reconocimiento de contribuciones.** Cuando una incidencia o petición se incorpora a la metodología, el autor cita en ella a quien la aportó, por su identificador. No implica titularidad ni coautoría ni modifica la propiedad intelectual, que sigue siendo del autor bajo las licencias publicadas. La página lo dice junto al formulario. (sin distinguir mayúsculas), que se puede retirar. Quien envía cuenta como primer voto. Los issues cerrados no admiten votos.
 - **Qué issues se muestran.** Solo los que llevan la etiqueta `comunidad` (el intermediario la pone, con `peticion` o `incidencia`). Las demás etiquetas que añada el autor (por ejemplo `planificada`) se muestran como chapas. Un issue cerrado como *not planned* aparece como «No previsto»; los demás cierres, como «Resuelto».
 - **Protecciones.** Las menciones (`@nombre`) se neutralizan para que nadie pueda avisar a terceros con la cuenta del autor; no se admite HTML de comentario en el texto; campo trampa contra robots; límite de envíos y votos por hora y dirección (la IP solo se usa resumida con SHA-256, durante una hora como máximo, y no se guarda); las escrituras solo se aceptan desde los orígenes configurados.
 - **Límites conocidos (versión 0.1).** El identificador no es una cuenta: alguien puede usar el de otra persona o votar con varios. Es un compromiso consciente a cambio de no pedir datos; el autor valora los votos con ese criterio y puede cerrar o editar envíos abusivos en GitHub. Si el abuso creciera, el siguiente paso es añadir una prueba anti-robots sin seguimiento en el intermediario.
 
 ## Puesta en marcha (una sola vez, unos 15 minutos)
 
-Hasta completar estos pasos la página funciona en **solo lectura** y avisa de que el envío no está activado.
+Hasta completar estos pasos la página funciona en **solo lectura** y avisa de que el envío no está activado. En el sitio de SEVEN-G ya están hechos (en servicio desde el 21-09-2026); se conservan para quien reutilice la página y para renovar el token cuando caduque. Conviene desactivar los registros (*Logs*) del Worker, que vienen activados por defecto, para no guardar metadatos de las peticiones.
 
 1. **Repositorio.** Crear en GitHub el repositorio **público** `seachad/seven-g-feedback`, con *Issues* activado. Conviene un README breve que enlace a la página de comunidad.
 2. **Token.** En GitHub → *Settings → Developer settings → Personal access tokens → Fine-grained tokens*: token con acceso **solo a ese repositorio** y el permiso **Issues: Read and write**. Ningún otro permiso. Anotar la fecha de caducidad para renovarlo.

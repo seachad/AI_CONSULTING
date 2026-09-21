@@ -14,7 +14,7 @@
                   de la API pública de GitHub y no permite enviar ni votar.
      umbralVotos  número de votos a partir del cual una petición se estudia; null = no se muestra ningún número. -->
 <script id="config">
-window.SEVENG_COMUNIDAD = { repo: 'seachad/seven-g-feedback', endpoint: '', umbralVotos: null };
+window.SEVENG_COMUNIDAD = { repo: 'seachad/seven-g-feedback', endpoint: 'https://seven-g-comunidad.pecomac.workers.dev', umbralVotos: null };
 </script>
 
 <style>
@@ -115,6 +115,8 @@ form.envio { border-top: 4px solid var(--negro); padding-top: 14px; font: 400 15
 .mensaje { margin: 12px 0 0; padding: 10px 12px; font: 500 14.5px/1.5 var(--sans); border-left: 4px solid var(--teal); background: color-mix(in srgb, var(--teal) 10%, transparent); }
 .mensaje.error { border-left-color: var(--claret); background: color-mix(in srgb, var(--claret) 8%, transparent); }
 .mensaje:empty { display: none; }
+.reconocimiento { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--regla); font: 400 13.5px/1.55 var(--sans); color: var(--tinta-2); }
+.reconocimiento strong { color: var(--negro); }
 
 dialog { border: 2px solid var(--negro); background: var(--papel); color: var(--tinta); padding: 22px; max-width: 480px; width: calc(100% - 32px); font: 400 15px/1.55 var(--sans); }
 dialog::backdrop { background: rgba(20, 16, 14, .55); }
@@ -203,6 +205,7 @@ dialog .acciones { display: flex; gap: 10px; justify-content: flex-end; margin-t
         <div class="trampa" aria-hidden="true"><label>Web <input type="text" id="c-web" tabindex="-1" autocomplete="off"></label></div>
         <button type="submit" class="boton primario" id="btn-enviar" data-i18n="c_enviar"></button>
         <p class="mensaje" id="msg-envio" role="status"></p>
+        <p class="reconocimiento" id="reconocimiento" data-i18n="reconocimiento"></p>
       </form>
     </aside>
   </div>
@@ -263,6 +266,7 @@ dialog .acciones { display: flex; gap: 10px; justify-content: flex-end; margin-t
       c_tipo: '¿Qué es?', c_peticion: 'Petición de mejora', c_incidencia: 'Incidencia (algo falla)', c_titulo: 'Título', c_titulo_a: 'Una frase que se entienda sola (8–120 caracteres).',
       c_desc: 'Descripción', c_desc_a: 'Qué necesitas o qué falla, en qué documento o herramienta y por qué importa. Texto sin formato; será público. No incluyas datos personales ni de tu compañía.',
       c_enviar: 'Enviar', enviando: 'Enviando…', enviado: 'Recibido: ya está en la lista con tu voto. Gracias.',
+      reconocimiento: '<strong>Reconocimiento de contribuciones.</strong> Cuando una incidencia o una petición se incorpore a la metodología, el autor citará en ella a quien la aportó, por su identificador. Ese reconocimiento es un agradecimiento: no implica titularidad ni coautoría, y no modifica la propiedad intelectual de SEVEN-G, SPHERES y SPAD, que sigue siendo de su autor bajo las licencias publicadas.',
       sin_endpoint: 'El envío y el voto todavía no están activados en este sitio. Mientras tanto puedes leer la lista.',
       e_titulo: 'El título necesita entre 8 y 120 caracteres.', e_descripcion: 'La descripción necesita al menos 20 caracteres.', e_usuario: 'Elige un identificador válido.',
       e_limite: 'Has llegado al límite por hora. Inténtalo más tarde.', e_cerrado: 'Este caso está cerrado y ya no admite votos.', e_red: 'No se ha podido completar. Inténtalo de nuevo en unos minutos.',
@@ -295,6 +299,7 @@ dialog .acciones { display: flex; gap: 10px; justify-content: flex-end; margin-t
       c_tipo: 'What is it?', c_peticion: 'Feature request', c_incidencia: 'Issue (something is broken)', c_titulo: 'Title', c_titulo_a: 'One self-explanatory sentence (8–120 characters).',
       c_desc: 'Description', c_desc_a: 'What you need or what fails, in which document or tool, and why it matters. Plain text; it will be public. Do not include personal or company data.',
       c_enviar: 'Submit', enviando: 'Submitting…', enviado: 'Received: it is now on the list with your vote. Thank you.',
+      reconocimiento: '<strong>Acknowledgement of contributions.</strong> When an issue or a request is incorporated into the methodology, the author will credit the person who contributed it, by their identifier. That credit is a thank-you: it implies no ownership or co-authorship, and it does not alter the intellectual property of SEVEN-G, SPHERES and SPAD, which remains with their author under the published licences.',
       sin_endpoint: 'Submitting and voting are not enabled on this site yet. Meanwhile you can read the list.',
       e_titulo: 'The title needs between 8 and 120 characters.', e_descripcion: 'The description needs at least 20 characters.', e_usuario: 'Choose a valid identifier.',
       e_limite: 'You have reached the hourly limit. Try again later.', e_cerrado: 'This case is closed and no longer accepts votes.', e_red: 'It could not be completed. Try again in a few minutes.',
