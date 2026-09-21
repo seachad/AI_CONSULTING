@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1462,49 +1467,49 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-org-01">
 <td><strong>RT-ORG-01</strong></td>
 <td>Falta de adopción</td>
 <td>2, 3 y 4 por debajo del umbral.</td>
 <td>Plan de adopción (sección 6); participación de usuarios; formación; objetivo en G2 y umbral en G5.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-03">
 <td><strong>RT-ORG-03</strong></td>
 <td>Efecto no gestionado sobre las personas</td>
 <td>Análisis de impacto incompleto; indicador 8 decreciente; indicador 10 bajo.</td>
 <td>Análisis de impacto (sección 5); comunicación y participación (sección 9); <a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>.</td>
 <td>2, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-04">
 <td><strong>RT-ORG-04</strong></td>
 <td>Supervisión humana ineficaz</td>
 <td>5 próximo a cero; 6 decreciente; 7 por debajo del 100 % en supervisores.</td>
 <td>Formación de supervisores (sección 8.2); diseño de la supervisión en <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; muestras de control.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependencia de personas clave</td>
 <td>Conocimiento de uso concentrado en pocos usuarios avanzados.</td>
 <td>Formación por público; referentes del área; manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-05">
 <td><strong>RT-ORG-05</strong></td>
 <td>Uso no autorizado de IA</td>
 <td>Detecciones en <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> en colectivos afectados.</td>
 <td>Formación; <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>.</td>
 <td>C1, C4</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-03">
 <td><strong>RT-ECO-03</strong></td>
 <td>Valor no materializado</td>
 <td>Indicador 9 bajo; capacidad sin destino con antigüedad.</td>
 <td>Destino explícito (sección 7); plan en G5; seguimiento en R6.</td>
 <td>5–7</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-05">
 <td><strong>RT-REP-05</strong></td>
 <td>Comunicación engañosa sobre la IA</td>
 <td>Mensajes que atribuyen resultados no validados o niegan efectos previstos.</td>
@@ -1616,12 +1621,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-p20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Evidencia principal: análisis de impacto, objetivos e indicadores de adopción, formación, comunicación, destino de la capacidad liberada y seguimiento.</td>
 </tr>
-<tr>
+<tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Herramienta de la plantilla <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y registro de capacidad liberada; alimenta <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> y el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
@@ -1636,7 +1641,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Evaluación de viabilidad · Matriz y registro de riesgos</td>
 <td>Análisis preliminar de impacto, costes de adopción y riesgos organizativos.</td>
 </tr>
-<tr>
+<tr id="cod-p17">
 <td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></strong></td>
 <td>Diseño de gobierno y supervisión humana</td>
 <td>Supervisores designados y carga de supervisión. La ficha informativa y el registro de información a la representación están en <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a>.</td>
@@ -1656,12 +1661,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Seguimiento de valor · Monitor de uso corporativo</td>
 <td>Importes materializados; uso no autorizado en los colectivos afectados.</td>
 </tr>
-<tr>
+<tr id="cod-p44">
 <td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
 <td>Encuesta de uso y percepción de la IA</td>
 <td>Percepción de los usuarios (indicador 8): utilidad, confianza, apoyo, carga y autonomía.</td>
 </tr>
-<tr>
+<tr id="cod-p46">
 <td><strong><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></strong></td>
 <td>Información a los trabajadores y a su representación</td>
 <td>Ficha informativa del sistema y registro de información y consultas a la representación.</td>
@@ -1773,7 +1778,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li><li><a href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener">Modelo ADKAR&#174; de Prosci (Awareness, Desire, Knowledge, Ability, Reinforcement)</a><span> · Prosci Inc.</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

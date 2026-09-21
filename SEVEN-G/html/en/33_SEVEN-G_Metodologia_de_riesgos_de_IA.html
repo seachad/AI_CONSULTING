@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -623,23 +628,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-c1-diagnosis">
 <td><strong>C1 · Diagnosis</strong></td>
 <td>Risk profile of the inventoried systems, including those that predate the framework and corporate use of AI.</td>
 </tr>
-<tr>
+<tr id="cod-c2-direction">
 <td><strong>C2 · Direction</strong></td>
 <td>Approval of the appetite, tolerances, economic materiality threshold and indicator thresholds (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">document 13</a>).</td>
 </tr>
-<tr>
+<tr id="cod-c3-portfolio">
 <td><strong>C3 · Portfolio</strong></td>
 <td>Concentration, correlation and supplier dependency when prioritising (section 10).</td>
 </tr>
-<tr>
+<tr id="cod-c4-oversight">
 <td><strong>C4 · Oversight</strong></td>
 <td>Monthly report to the AI Committee and quarterly report to the board or board committee (section 12).</td>
 </tr>
-<tr>
+<tr id="cod-c5-review">
 <td><strong>C5 · Review</strong></td>
 <td>Effectiveness of the risk management system, materialised risks, lessons and recalibration of scales.</td>
 </tr>
@@ -1207,42 +1212,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-est-01">
 <td><strong>RT-EST-01</strong></td>
 <td><strong>Misalignment with the AI thesis.</strong> The initiative does not contribute to the ambition or the spheres approved in C2.</td>
 <td>Technology-driven origin; weak sponsorship; no screening.</td>
 <td>Fit with the thesis at G0; sphere classification (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>); prioritisation in C3.</td>
 <td>0–1</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-02">
 <td><strong>RT-EST-02</strong></td>
 <td><strong>Declared but unevidenced ambition.</strong> What is Optimise is presented as Augment or Transform, and decisions are made with wrong expectations.</td>
 <td>Incentives to &quot;transform&quot;; ambiguous criteria.</td>
 <td>Five classification questions (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>); confirmation in phase 2; review at G7.</td>
 <td>1, 2, 7</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-03">
 <td><strong>RT-EST-03</strong></td>
 <td><strong>Missed opportunity.</strong> The decision process is so slow that the advantage is lost.</td>
 <td>Long <em>gate</em> time limits; the same return criterion for all bets.</td>
 <td>Reference time limits (03 §3.6); criteria by ambition (01 §7.6); agility metrics.</td>
 <td>C3, all</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-04">
 <td><strong>RT-EST-04</strong></td>
 <td><strong>Technology lock-in.</strong> The chosen platform or model is superseded and changing is costly.</td>
 <td>Dependence on proprietary features; tightly coupled architecture.</td>
 <td>Model abstraction layer; portability of data and prompts; review at R6.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-05">
 <td><strong>RT-EST-05</strong></td>
 <td><strong>Withdrawal of sponsorship or funding.</strong> The initiative loses support before demonstrating value.</td>
 <td>Changes in leadership; value not visible in time.</td>
 <td>Stage-gated funding; learning milestones; stop criteria set in advance.</td>
 <td>0, C3</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-06">
 <td><strong>RT-EST-06</strong></td>
 <td><strong>Portfolio concentration in a single bet.</strong> A single initiative or platform concentrates investment or expected value.</td>
 <td>Large bets without limits per stage.</td>
@@ -1263,56 +1268,56 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-tec-01">
 <td><strong>RT-TEC-01</strong></td>
 <td><strong>Insufficient performance in real-world conditions.</strong> The system does not reach the threshold outside the test environment.</td>
 <td>Validation with non-representative data; pilot without an attribution method.</td>
 <td>Success threshold set in advance; pilot in real-world conditions (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
 <td>3, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-02">
 <td><strong>RT-TEC-02</strong></td>
 <td><strong>Degradation and drift.</strong> Performance falls because of changes in the data, the environment or user behaviour.</td>
 <td>Dynamic environment; no monitoring.</td>
 <td>Drift and performance monitoring (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>); retraining or retirement thresholds.</td>
 <td>6</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-03">
 <td><strong>RT-TEC-03</strong></td>
 <td><strong>Lack of robustness.</strong> Erroneous outputs in response to atypical inputs, noise or edge cases.</td>
 <td>Testing limited to common cases.</td>
 <td>Robustness and edge-case testing; referral to a person when out of domain.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-04">
 <td><strong>RT-TEC-04</strong></td>
 <td><strong>Confabulation.</strong> Generative AI produces false content presented as true.</td>
 <td>Lack of authoritative sources; out-of-scope tasks.</td>
 <td>Retrieval over authoritative sources; citations; periodic evaluations; user notice.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-05">
 <td><strong>RT-TEC-05</strong></td>
 <td><strong>Outputs that are neither explainable nor traceable.</strong> It is not possible to reconstruct why an output was produced.</td>
 <td>Insufficient logs; opaque models without documentation.</td>
 <td>Logging of inputs, versions and outputs; model documentation; explanations proportionate to the use.</td>
 <td>4</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-06">
 <td><strong>RT-TEC-06</strong></td>
 <td><strong>Insufficient integration and capacity.</strong> Latency, availability or volume cannot support the process.</td>
 <td>Testing without real load; external dependencies.</td>
 <td>Load testing; service level agreements; graceful degradation.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-07">
 <td><strong>RT-TEC-07</strong></td>
 <td><strong>Unmanaged change.</strong> Changes to the model, prompts, parameters or configuration without prior evaluation.</td>
 <td>Frequent changes; no version management.</td>
 <td>Change management with regression evaluations; prompt versioning.</td>
 <td>5, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-08">
 <td><strong>RT-TEC-08</strong></td>
 <td><strong>Irreversibility.</strong> It is not possible to return to the previous state or to the process without AI.</td>
 <td>Rollback plan non-existent or untested; manual process dismantled.</td>
@@ -1333,42 +1338,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-dat-01">
 <td><strong>RT-DAT-01</strong></td>
 <td><strong>Insufficient quality.</strong> Incomplete, erroneous or outdated data.</td>
 <td>No control at source; legacy systems.</td>
 <td>Quality profiling in phase 3; validation rules; data owner.</td>
 <td>3, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-02">
 <td><strong>RT-DAT-02</strong></td>
 <td><strong>Non-representative data and bias.</strong> The data do not reflect the population or reproduce historical discrimination.</td>
 <td>Biased samples; proxy variables for protected characteristics.</td>
 <td>Representativeness analysis; fairness metrics; testing by group.</td>
 <td>3, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-03">
 <td><strong>RT-DAT-03</strong></td>
 <td><strong>Lack of legal basis or incompatible purpose.</strong> Use of personal data without a legal basis or for a different purpose.</td>
 <td>Reuse of operational data without analysis.</td>
 <td>Legal analysis; data protection impact assessment; minimisation.</td>
 <td>3</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-04">
 <td><strong>RT-DAT-04</strong></td>
 <td><strong>Unknown lineage.</strong> It is not known where the data come from, what transformations they have undergone or under what licence.</td>
 <td>Third-party data; manual processes.</td>
 <td>Data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>); verified licences.</td>
 <td>4</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-05">
 <td><strong>RT-DAT-05</strong></td>
 <td><strong>Data exposure in the AI lifecycle.</strong> Personal or confidential data in training, context, prompts or logs.</td>
 <td>Full unmasked logs; excessive context.</td>
 <td>Minimisation and masking; limited log retention; SEG-07.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-06">
 <td><strong>RT-DAT-06</strong></td>
 <td><strong>Obsolete or contradictory knowledge.</strong> The document base that feeds generative AI is outdated or has no owner.</td>
 <td>No document governance; duplicates.</td>
@@ -1389,35 +1394,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-eco-01">
 <td><strong>RT-ECO-01</strong></td>
 <td><strong>Build cost overrun.</strong> The cost exceeds what was approved.</td>
 <td>Open scope; underestimated integration.</td>
 <td>Estimation with the cost categories (42); stage-gated funding; change control.</td>
 <td>3, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-02">
 <td><strong>RT-ECO-02</strong></td>
 <td><strong>Rising or unpredictable recurring cost.</strong> Consumption of models, compute or licences grows faster than value.</td>
 <td>Usage-based pricing; agent loops; unforeseen adoption.</td>
 <td>Consumption budgets and limits; cost per transaction monitored (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>); SEG-10.</td>
 <td>3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-03">
 <td><strong>RT-ECO-03</strong></td>
 <td><strong>Unrealised value.</strong> Released capacity is not converted into savings or reallocated.</td>
 <td>No realisation plan; organisational resistance.</td>
 <td>Measurement rule 3 (00 §6); realisation plan at G5; monitoring (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>).</td>
 <td>5–7</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-04">
 <td><strong>RT-ECO-04</strong></td>
 <td><strong>Inflated value or double counting.</strong> The same euro is attributed to several use cases or declared without a formula.</td>
 <td>Pressure for results; no independent validation.</td>
 <td>Measurement rules 1, 2 and 5; validation by management control.</td>
 <td>2, 6, 7</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-05">
 <td><strong>RT-ECO-05</strong></td>
 <td><strong>Unforeseen exit cost.</strong> Replacing the supplier or retiring the system costs more than estimated.</td>
 <td>Contracts without exit clauses; data in closed formats.</td>
@@ -1438,56 +1443,56 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-leg-01">
 <td><strong>RT-LEG-01</strong></td>
 <td><strong>Incorrect regulatory classification.</strong> A high-risk system is treated as minimal-risk or out of scope.</td>
 <td>Classification without legal judgement; change of purpose.</td>
 <td>Classification with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> and legal review; review at R6 and upon changes (34).</td>
 <td>0, 3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-02">
 <td><strong>RT-LEG-02</strong></td>
 <td><strong>Prohibited practice.</strong> The use falls within a practice prohibited by the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>.</td>
 <td>Lack of awareness; evolution of the use.</td>
 <td>Screening at G0 and G3; always avoid (01 §6.5).</td>
 <td>0, 3</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-03">
 <td><strong>RT-LEG-03</strong></td>
 <td><strong>Transparency breach.</strong> People do not know they are interacting with an AI or that content is synthetic.</td>
 <td>Design without transparency requirements.</td>
 <td>Requirements of Article 50 of the AI Act in the design; interface review.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-04">
 <td><strong>RT-LEG-04</strong></td>
 <td><strong>Automated decisions without safeguards.</strong> Decisions with significant effects without effective human intervention or the right to contest.</td>
 <td>Nominal oversight; progressive automation not reviewed.</td>
 <td>Human oversight design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); analysis of Article 22 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>.</td>
 <td>3, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-05">
 <td><strong>RT-LEG-05</strong></td>
 <td><strong>Omitted impact assessments.</strong> The data protection impact assessment or the fundamental rights impact assessment is not carried out or not updated.</td>
 <td>Lack of awareness of the requirement; deadlines.</td>
 <td>Classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>); assessments as G3 evidence.</td>
 <td>3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-06">
 <td><strong>RT-LEG-06</strong></td>
 <td><strong>Intellectual property infringement.</strong> Training data or outputs infringe third-party rights, or ownership of the outputs is unclear.</td>
 <td>Unlicensed data; supplier terms not reviewed.</td>
 <td>Licence review; ownership and indemnity clauses (36).</td>
 <td>3, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-07">
 <td><strong>RT-LEG-07</strong></td>
 <td><strong>Late incident reporting.</strong> A serious incident, a data breach or a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> incident is not reported in time.</td>
 <td>No severity criteria; no reporting owner.</td>
 <td>Response plan (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); reporting matrix (37).</td>
 <td>6</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-08">
 <td><strong>RT-LEG-08</strong></td>
 <td><strong>Breach of sector-specific or resilience obligations.</strong> Requirements of sector supervisors, DORA or other regulations not carried over into the system.</td>
 <td>Incomplete regulatory mapping.</td>
@@ -1508,63 +1513,63 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-org-01">
 <td><strong>RT-ORG-01</strong></td>
 <td><strong>Lack of adoption.</strong> Users do not use the system or use it only marginally.</td>
 <td>Poor integration into work; distrust; insufficient training.</td>
 <td>Adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>); adoption target at G2 and G5.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td><strong>Dependence on key people.</strong> Knowledge of the system lies with a few people or with the supplier.</td>
 <td>Scarce documentation; small teams.</td>
 <td>Documentation and operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>); deputies; knowledge transfer.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-03">
 <td><strong>RT-ORG-03</strong></td>
 <td><strong>Unmanaged effect on people.</strong> Changes in role, workload or employment without planning or dialogue.</td>
 <td>Efficiency-only view; late communication.</td>
 <td>People plan (50); consultation with employee representatives where appropriate.</td>
 <td>2, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-04">
 <td><strong>RT-ORG-04</strong></td>
 <td><strong>Ineffective human oversight.</strong> People approve out of routine or without sufficient information.</td>
 <td>High volume of approvals; automation bias.</td>
 <td>Oversight design with sampling, time allowances and rotation; measurement of the rejection rate.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-05">
 <td><strong>RT-ORG-05</strong></td>
 <td><strong>Unauthorised use of AI (<em>shadow AI</em>).</strong> Employees use unapproved tools with company data.</td>
 <td>Lack of approved alternatives; policy not known.</td>
 <td>Acceptable use policy (31); corporate alternatives; detection (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>).</td>
 <td>C1, C4</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-06">
 <td><strong>RT-ORG-06</strong></td>
 <td><strong>Roles without segregation of duties.</strong> Those who build also verify, accept risks or decide.</td>
 <td>Small teams; roles not assigned.</td>
 <td>Role register (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>); incompatibilities (01 §8.2).</td>
 <td>0</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-07">
 <td><strong>RT-ORG-07</strong></td>
 <td><strong>Failure to inform and consult.</strong> Workers' representatives or affected workers do not receive, before use, the required information or consultation on a system that affects working conditions or employment.</td>
 <td>Late or missing legal analysis; changes in parameters, rules or purpose not communicated.</td>
 <td>Information and consultation process (50 §7.2) and information sheet (50 §7.3); no <em>Proceed</em> or <em>Proceed with conditions</em> at G5 without evidence that information has been provided; IND-ADO-12 (41).</td>
 <td>3–5, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-08">
 <td><strong>RT-ORG-08</strong></td>
 <td><strong>Labour dispute.</strong> The introduction of AI gives rise to collective consultations, complaints or disputes that delay, condition or block the initiative.</td>
 <td>Late or ambiguous communication; effect on employment without dialogue; destinations of released capacity decided without participation.</td>
 <td>Position on AI and work approved in C2 (13); effect assessment (50 §3.4); dialogue with workers' representatives and internal communication (50 §7 and §10); senior management decision on relevant PER-D1 destinations.</td>
 <td>2–5, 7</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-09">
 <td><strong>RT-ORG-09</strong></td>
 <td><strong>Deterioration of wellbeing.</strong> Work intensification, excessive monitoring, loss of autonomy or oversight workload harm the health and engagement of the people affected.</td>
 <td>Objectives and workloads not reviewed after AI; usage data used to monitor people; excessive review volumes.</td>
@@ -1585,35 +1590,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-rep-01">
 <td><strong>RT-REP-01</strong></td>
 <td><strong>Discriminatory outcomes.</strong> The system treats groups of people less favourably.</td>
 <td>Bias in data or design; no testing by group.</td>
 <td>Bias testing before G5; monitoring by group; human oversight.</td>
 <td>3, 5, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-02">
 <td><strong>RT-REP-02</strong></td>
 <td><strong>Errors visible to customers.</strong> Wrong responses or decisions with public repercussions.</td>
 <td>Direct exposure without safeguards.</td>
 <td>Prior evaluations; referral to a person; rapid incident response.</td>
 <td>5, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-03">
 <td><strong>RT-REP-03</strong></td>
 <td><strong>Use perceived as inappropriate or intrusive.</strong> Use that is legal but contrary to the expectations of customers, employees or society.</td>
 <td>No ethical analysis; insufficient communication.</td>
 <td>Ethical review in phase 3; transparency; complaints channel.</td>
 <td>3</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-04">
 <td><strong>RT-REP-04</strong></td>
 <td><strong>Harmful or offensive content.</strong> Generative AI produces content that is offensive, dangerous or unbecoming of the brand.</td>
 <td>Insufficient filters; user manipulation.</td>
 <td>Input and output filters (SEG-03); adversarial testing; sample oversight.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-05">
 <td><strong>RT-REP-05</strong></td>
 <td><strong>Misleading communication about AI.</strong> Capabilities or results that AI does not have are attributed to it.</td>
 <td>Commercial pressure; unvalidated value.</td>
@@ -1634,63 +1639,63 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-gen-01">
 <td><strong>RT-GEN-01</strong></td>
 <td><strong>Direct prompt injection and <em>jailbreak</em>.</strong> A user manipulates the system to bypass its restrictions.</td>
 <td>Restrictions based solely on instructions to the model.</td>
 <td>SEG-02, SEG-03, SEG-11; limits enforced outside the model.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-02">
 <td><strong>RT-GEN-02</strong></td>
 <td><strong>Indirect injection.</strong> Malicious instructions in emails, documents, websites or tool responses alter the task.</td>
 <td>The system treats untrusted content as instructions.</td>
 <td>SEG-02; AG-12; AG-05; specific testing (AG-18).</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-03">
 <td><strong>RT-GEN-03</strong></td>
 <td><strong>Excessive agency.</strong> The system has more tools, permissions or autonomy than necessary.</td>
 <td>Inherited permissions; unjustified autonomy level.</td>
 <td>AG-02; autonomy level decided in phase 4 (35 §5); AG-20.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-04">
 <td><strong>RT-GEN-04</strong></td>
 <td><strong>Unauthorised or untraceable action.</strong> An agent executes an action that does not correspond to an authorised intent, or it is not possible to reconstruct why.</td>
 <td>No intent-based access control; incomplete logs.</td>
 <td>AG-04, AG-05, AG-06, AG-10.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-05">
 <td><strong>RT-GEN-05</strong></td>
 <td><strong>Information leakage.</strong> Personal or confidential data or system prompts leak through responses, retrieval or tools.</td>
 <td>Retrieval without user permissions; secrets in prompts.</td>
 <td>SEG-05, SEG-06, SEG-07.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-06">
 <td><strong>RT-GEN-06</strong></td>
 <td><strong>Improper output handling.</strong> The model's output is executed or inserted into other systems without validation.</td>
 <td>Trust in the output; direct integrations.</td>
 <td>SEG-04; AG-11.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-07">
 <td><strong>RT-GEN-07</strong></td>
 <td><strong>Memory or context poisoning.</strong> Manipulated content persists in memory or in the knowledge base and alters future decisions.</td>
 <td>Shared memory without control; ingestion without validation.</td>
 <td>AG-14; SEG-08; RT-DAT-06.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-08">
 <td><strong>RT-GEN-08</strong></td>
 <td><strong>Cascading failures and unbounded consumption.</strong> Loops, retries or chains of agents amplify errors or costs.</td>
 <td>No iteration limits or circuit breakers.</td>
 <td>AG-07, AG-16; SEG-10.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-09">
 <td><strong>RT-GEN-09</strong></td>
 <td><strong>Human trust exploitation.</strong> The system induces a person to approve an inappropriate action.</td>
 <td>Approvals without context; overreliance.</td>
@@ -1711,49 +1716,49 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-seg-01">
 <td><strong>RT-SEG-01</strong></td>
 <td><strong>Impersonation with synthetic voice or video.</strong> CEO fraud or false orders with a legitimate appearance.</td>
 <td>Payment processes based on voice or image recognition.</td>
 <td>SEG-16, SEG-17, SEG-18.</td>
 <td>C4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-02">
 <td><strong>RT-SEG-02</strong></td>
 <td><strong>AI-generated phishing and social engineering.</strong> Personalised, convincing messages at scale.</td>
 <td>Weak authentication; public exposure of employee information.</td>
 <td>SEG-15, SEG-17.</td>
 <td>C4</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-03">
 <td><strong>RT-SEG-03</strong></td>
 <td><strong>Accelerated exploitation of vulnerabilities.</strong> The time between the disclosure of a vulnerability and its exploitation shrinks.</td>
 <td>Slow patching; unknown exposed attack surface.</td>
 <td>SEG-13, SEG-19.</td>
 <td>6, C4</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-04">
 <td><strong>RT-SEG-04</strong></td>
 <td><strong>Compromise of non-human identities.</strong> Theft or abuse of agent credentials, service keys or <em>tokens</em>.</td>
 <td>Long-lived credentials; excessive permissions.</td>
 <td>AG-01, AG-02, AG-03, AG-20.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-05">
 <td><strong>RT-SEG-05</strong></td>
 <td><strong>Data or model poisoning.</strong> Manipulation of training, fine-tuning or evaluation data.</td>
 <td>Open sources; uncontrolled ingestion.</td>
 <td>SEG-08; lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-06">
 <td><strong>RT-SEG-06</strong></td>
 <td><strong>Model extraction and service abuse.</strong> Mass queries to replicate the model, infer data or exhaust resources.</td>
 <td>Exposed interfaces without limits.</td>
 <td>SEG-10, SEG-12.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-07">
 <td><strong>RT-SEG-07</strong></td>
 <td><strong>AI supply chain compromise.</strong> Malicious or vulnerable models, libraries, connectors or tool servers.</td>
 <td>Components downloaded without verification.</td>
@@ -1774,49 +1779,49 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-ter-01">
 <td><strong>RT-TER-01</strong></td>
 <td><strong>Supplier dependency and lock-in.</strong> Changing supplier is unfeasible within a reasonable time or cost.</td>
 <td>Closed formats; proprietary features.</td>
 <td>Exit strategy; portability (36 §7).</td>
 <td>3, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-02">
 <td><strong>RT-TER-02</strong></td>
 <td><strong>Use of data by the supplier.</strong> The supplier uses data, prompts or outputs for training or other purposes.</td>
 <td>Non-negotiated standard terms.</td>
 <td>No-training-use clause; configuration verification (36 §6).</td>
 <td>3</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-03">
 <td><strong>RT-TER-03</strong></td>
 <td><strong>Unilateral change of model or terms.</strong> The supplier changes the version, behaviour or price, or withdraws the model.</td>
 <td>Managed services without contractual advance notice.</td>
 <td>Advance notice and pinned versions; regression evaluations (RT-TEC-07).</td>
 <td>3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-04">
 <td><strong>RT-TER-04</strong></td>
 <td><strong>Uncontrolled sub-processors and location.</strong> Data processed by third parties or in unauthorised locations.</td>
 <td>Opaque subcontracting chain.</td>
 <td>List of sub-processors; authorisation of changes; contractual location.</td>
 <td>3</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-05">
 <td><strong>RT-TER-05</strong></td>
 <td><strong>Supplier failure or discontinuity.</strong> Prolonged unavailability, insolvency or market exit.</td>
 <td>Small or critical supplier with no alternative.</td>
 <td>Continuity and exit plan; financial due diligence; level N3 (36 §4).</td>
 <td>3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-06">
 <td><strong>RT-TER-06</strong></td>
 <td><strong>Unidentified embedded AI.</strong> Software already contracted incorporates AI features without assessment.</td>
 <td>Supplier updates; activation by default.</td>
 <td>Embedded AI questionnaire; review of updates (36 §8).</td>
 <td>C1, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-07">
 <td><strong>RT-TER-07</strong></td>
 <td><strong>Concentration in common suppliers.</strong> Many systems depend on the same model or cloud provider.</td>
 <td>Standardisation without concentration analysis.</td>
@@ -1992,7 +1997,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Quarterly</td>
 <td>Critical and High residuals by sphere, concentration and portfolio scenarios, compliance with the appetite, significant incidents, exposure to offensive AI (35), decisions requested. Presented with the quarterly second-line report (<a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>).</td>
 </tr>
-<tr>
+<tr id="cod-c5-annual-review">
 <td><strong>C5 · Annual review</strong></td>
 <td>Annual</td>
 <td>Effectiveness of the risk management system, recalibration of scales and catalogue, lessons learned.</td>
@@ -2011,22 +2016,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-p12">
 <td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
 <td>Risk matrix and register</td>
 <td>Register with the fields in section 8, inherent and residual heat map. Phases 3, 5 and 6.</td>
 </tr>
-<tr>
+<tr id="cod-p13">
 <td><strong><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></strong></td>
 <td>Mitigation and contingency plan</td>
 <td>Treatment actions, target residual, contingencies and triggers (sections 5–7). Phase 3.</td>
 </tr>
-<tr>
+<tr id="cod-p42">
 <td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a></strong></td>
 <td>Quarterly second-line report</td>
 <td>Quarterly portfolio risk reporting to the board committee (sections 10–12).</td>
 </tr>
-<tr>
+<tr id="cod-t06">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></strong></td>
 <td>Risk matrix and register</td>
 <td>Calculation of levels with the extreme impact rule, inherent and residual 5 × 5 matrix for each initiative and for the portfolio, control effectiveness, acceptance by the body for its level, observations from sections 4 to 8 (Critical residual without approval, High without contingency, acceptance expired or insufficient, review overdue) and CSV export. &quot;Risks&quot; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register. Portfolio concentration and correlation (section 10) are analysed with <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §7.</td>
@@ -2106,7 +2111,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)</a><span> · National Institute of Standards and Technology (NIST) · 26-07-2024</span></li><li><a href="https://www.iso.org/standard/65694.html" target="_blank" rel="noopener">ISO 31000:2018 Risk management — Guidelines</a><span> · ISO (ISO/TC 262) · 14-02-2018</span></li><li><a href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">ISO/IEC 23894:2023 Information technology — Artificial intelligence — Guidance on risk management</a><span> · ISO/IEC (JTC 1/SC 42) · 06-02-2023</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

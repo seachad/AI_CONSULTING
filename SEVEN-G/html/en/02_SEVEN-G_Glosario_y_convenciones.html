@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -869,7 +874,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>62 §3–6; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
 <td>Recomendación del consejo</td>
 </tr>
-<tr>
+<tr id="cod-bring-g7-forward">
 <td><strong>Bring G7 forward</strong></td>
 <td>R6 outcome when the initiative shows relevant deviations in value, risk or compliance: G7 is opened without waiting for the calendar.</td>
 <td>01 §7.3; 21 §5.3</td>
@@ -1192,7 +1197,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>10 §4.2; 12 §4.2</td>
 <td>Banda de habilitación de gobierno y cumplimiento</td>
 </tr>
-<tr>
+<tr id="cod-grades-of-spheres-08-and-09">
 <td><strong>Grades of spheres 08 and 09</strong></td>
 <td>Specific scale used to assess the dimensions of spheres 08 and 09: Absent, Basic, Systematic, Advanced (section 4.10). They are neither maturity levels nor ambition levels.</td>
 <td>10 §4.2</td>
@@ -1650,7 +1655,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-r6-continuity-review">
 <td><strong>R6 · Continuity review</strong></td>
 <td>Periodic review that replaces the <em>gate</em> in phase 6: at least quarterly in Enterprise and half-yearly in Lite. It checks realised value against the hypothesis, stability, incidents, compliance and the validity of the classification. Outcomes: Proceed with operation, Proceed with conditions or Bring G7 forward. Omitting it is a major nonconformity.</td>
 <td>01 §6.8, §7.3; 21 §6.7; 52 §8</td>
@@ -2175,7 +2180,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Time in production is measured</td>
 <td>En producción</td>
 </tr>
-<tr>
+<tr id="cod-awaiting-g7">
 <td><strong>Awaiting G7</strong></td>
 <td>Decision on scaling, iteration or retirement under way.</td>
 <td>Yes</td>
@@ -2643,37 +2648,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-d1">
 <td><strong>D1</strong></td>
 <td>Strategy and governance</td>
 <td>Estrategia y gobierno</td>
 </tr>
-<tr>
+<tr id="cod-d2">
 <td><strong>D2</strong></td>
 <td>Value and portfolio</td>
 <td>Valor y cartera</td>
 </tr>
-<tr>
+<tr id="cod-d3">
 <td><strong>D3</strong></td>
 <td>Data and knowledge</td>
 <td>Datos y conocimiento</td>
 </tr>
-<tr>
+<tr id="cod-d4">
 <td><strong>D4</strong></td>
 <td>Technology and operations</td>
 <td>Tecnología y operación</td>
 </tr>
-<tr>
+<tr id="cod-d5">
 <td><strong>D5</strong></td>
 <td>People and adoption</td>
 <td>Personas y adopción</td>
 </tr>
-<tr>
+<tr id="cod-d6">
 <td><strong>D6</strong></td>
 <td>Risk, security and compliance</td>
 <td>Riesgo, seguridad y cumplimiento</td>
 </tr>
-<tr>
+<tr id="cod-d7">
 <td><strong>D7</strong></td>
 <td>Measurement and evidence</td>
 <td>Medición y evidencia</td>
@@ -2797,28 +2802,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-a0">
 <td><strong>A0</strong></td>
 <td>Assistance</td>
 <td>Informs, summarises or generates content.</td>
 <td>The person decides and executes.</td>
 <td>Asistencia</td>
 </tr>
-<tr>
+<tr id="cod-a1">
 <td><strong>A1</strong></td>
 <td>Recommendation</td>
 <td>Proposes a specific decision or action.</td>
 <td>The person validates each action before it is executed.</td>
 <td>Recomendación</td>
 </tr>
-<tr>
+<tr id="cod-a2">
 <td><strong>A2</strong></td>
 <td>Supervised action</td>
 <td>Executes actions within defined limits.</td>
 <td>Supervises, can interrupt and reviews after the fact.</td>
 <td>Actuación supervisada</td>
 </tr>
-<tr>
+<tr id="cod-a3">
 <td><strong>A3</strong></td>
 <td>Autonomous action</td>
 <td>Executes sequences of actions without individual review within strict limits.</td>
@@ -2838,22 +2843,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-critical">
 <td><strong>S1 · Critical</strong></td>
 <td>Possible serious incident under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>; possible major <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> incident or significant <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> incident; personal data breach with a likely high risk; unauthorised action by an agent with an effect on money, third parties, personal data or production; harm to people or discrimination at scale; critical function outside its tolerance; impact 5 on any axis.</td>
 <td>S1 Crítica</td>
 </tr>
-<tr>
+<tr id="cod-s2-high">
 <td><strong>S2 · High</strong></td>
 <td>Impact 4; reportable breach without high risk; repeated errors visible to customers; agent identity compromised and contained; failure of a critical control without harm; relevant incident at an N3 supplier.</td>
 <td>S2 Alta</td>
 </tr>
-<tr>
+<tr id="cod-s3-medium">
 <td><strong>S3 · Medium</strong></td>
 <td>Impact 3; degradation beyond threshold in a relevant process; successful prompt injection without a sensitive action; limited internal leakage with no risk to individuals.</td>
 <td>S3 Media</td>
 </tr>
-<tr>
+<tr id="cod-s4-low">
 <td><strong>S4 · Low</strong></td>
 <td>Impact 1–2; near misses; blocked attempts that reveal a new threat.</td>
 <td>S4 Baja</td>
@@ -2914,7 +2919,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-n1-standard">
 <td><strong>N1 · Standard</strong></td>
 <td>Internal process with impact 1–2.</td>
 <td>Public or non-sensitive internal data.</td>
@@ -2922,7 +2927,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Less than 3 months without relevant cost.</td>
 <td>N1 Estándar</td>
 </tr>
-<tr>
+<tr id="cod-n2-enhanced">
 <td><strong>N2 · Enhanced</strong></td>
 <td>Relevant process with impact 3; direct exposure; decisions about people.</td>
 <td>Personal data or confidential information.</td>
@@ -2930,7 +2935,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3 to 12 months or relevant cost.</td>
 <td>N2 Reforzado</td>
 </tr>
-<tr>
+<tr id="cod-n3-critical">
 <td><strong>N3 · Critical</strong></td>
 <td>Critical or important function; impact 4–5; high-risk system.</td>
 <td>Special categories, large-scale personal data, trade secrets or critical confidential information.</td>
@@ -3299,42 +3304,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>10 §2</td>
 <td>04 Operations</td>
 </tr>
-<tr>
+<tr id="cod-c1-c5">
 <td><strong>C1–C5</strong></td>
 <td>C + number</td>
 <td>Corporate cycle stages: Diagnosis, Direction, Portfolio, Oversight, Review.</td>
 <td>01 §5.1</td>
 <td>C2</td>
 </tr>
-<tr>
+<tr id="cod-phases-0-7">
 <td><strong>Phases 0–7</strong></td>
 <td>Number (F0–F7 in indicator columns)</td>
 <td>Initiative lifecycle phases.</td>
 <td>01 §6.1</td>
 <td>phase 3</td>
 </tr>
-<tr>
+<tr id="cod-g0-g5-r6-g7">
 <td><strong>G0–G5 · R6 · G7</strong></td>
 <td>G + number; R6 for the continuity review</td>
 <td>Decision gates: Authorisation, Opportunity, Hypothesis, Feasibility, Design, Go-live, Continuity review, Scale or retire. There is no G6.</td>
 <td>01 §6.1</td>
 <td>G3</td>
 </tr>
-<tr>
+<tr id="cod-g-r6">
 <td><strong>G&lt;n&gt;.&lt;nn&gt; · R6.&lt;nn&gt;</strong></td>
 <td>Gate + point + two digits</td>
 <td><em>Gate</em> criteria. A code is not reused even if the criterion is withdrawn.</td>
 <td>21 §2.1</td>
 <td>G3.08 · R6.04</td>
 </tr>
-<tr>
+<tr id="cod-lv-g-lv-r6-lv-ev-lv-ag">
 <td><strong>LV-G&lt;n&gt; · LV-R6 · LV-EV · LV-AG</strong></td>
 <td>LV + hyphen + scope</td>
 <td>Checklists by gate, for evidence validation and for agents.</td>
 <td>22 §1</td>
 <td>LV-G5</td>
 </tr>
-<tr>
+<tr id="cod-ev-01-ev-14">
 <td><strong>EV.01–EV.14</strong></td>
 <td>EV + point + two digits</td>
 <td>Valid evidence rules.</td>
@@ -3355,196 +3360,196 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Block H; 01 §6.10</td>
 <td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
 </tr>
-<tr>
+<tr id="cod-d1-d7">
 <td><strong>D1–D7</strong></td>
 <td>D + number</td>
 <td>Maturity dimensions.</td>
 <td>11 §2.1</td>
 <td>D6</td>
 </tr>
-<tr>
+<tr id="cod-maturity-levels-0-5">
 <td><strong>Maturity levels 0–5</strong></td>
 <td>Whole number</td>
 <td>Maturity levels.</td>
 <td>11 §2.2</td>
 <td>level 3</td>
 </tr>
-<tr>
+<tr id="cod-s1-s4">
 <td><strong>S1–S4</strong></td>
 <td>S + number</td>
 <td>AI incident severity.</td>
 <td>37 §4.2</td>
 <td>S1</td>
 </tr>
-<tr>
+<tr id="cod-a0-a3">
 <td><strong>A0–A3</strong></td>
 <td>A + number</td>
 <td>Autonomy levels.</td>
 <td>35 §5.1</td>
 <td>A2</td>
 </tr>
-<tr>
+<tr id="cod-n1-n3">
 <td><strong>N1–N3</strong></td>
 <td>N + number</td>
 <td>Third-party requirement levels.</td>
 <td>36 §4</td>
 <td>N3</td>
 </tr>
-<tr>
+<tr id="cod-b1-b3">
 <td><strong>B1–B3</strong></td>
 <td>B + number</td>
 <td>Baseline conditions of the transformation index.</td>
 <td>12 §4.3</td>
 <td>B2</td>
 </tr>
-<tr>
+<tr id="cod-f1-f10-f2v">
 <td><strong>F1–F10 · F2v</strong></td>
 <td>F + number</td>
 <td>Official measurement formulas.</td>
 <td>40 §6</td>
 <td>F7</td>
 </tr>
-<tr>
+<tr id="cod-rt-nn">
 <td><strong>RT-&lt;CAT&gt;-NN</strong></td>
 <td>RT + three-letter category + two digits</td>
 <td>Typical risks in the catalogue (70 in version 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7.</td>
 <td>33 §9</td>
 <td>RT-GEN-01</td>
 </tr>
-<tr>
+<tr id="cod-seg-01-seg-20">
 <td><strong>SEG-01–SEG-20</strong></td>
 <td>SEG + hyphen + two digits</td>
 <td>AI security controls.</td>
 <td>35 §6</td>
 <td>SEG-02</td>
 </tr>
-<tr>
+<tr id="cod-ag-01-ag-20">
 <td><strong>AG-01–AG-20</strong></td>
 <td>AG + hyphen + two digits</td>
 <td>Agent controls.</td>
 <td>35 §7</td>
 <td>AG-09</td>
 </tr>
-<tr>
+<tr id="cod-ind-nn">
 <td><strong>IND-&lt;FAM&gt;-NN</strong></td>
 <td>IND + three-letter family + two digits</td>
 <td>Catalogue indicators (159 in 13 families): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (board) and PRO (processes and decision-making). A code is not reused.</td>
 <td>41 §2 and §4</td>
 <td>IND-VAL-05</td>
 </tr>
-<tr>
+<tr id="cod-ie">
 <td><strong>IE&lt;sphere&gt;.&lt;nn&gt;</strong></td>
 <td>IE + two-digit sphere + point + two digits</td>
 <td>Indicators by sphere, provisional until they are consolidated in <a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a>.</td>
 <td>10 §5–7</td>
 <td>IE01.04</td>
 </tr>
-<tr>
+<tr id="cod-ia-aaaa-nnn">
 <td><strong>IA-AAAA-NNN</strong></td>
 <td>Year of registration + sequential number</td>
 <td>Initiatives.</td>
 <td>03 §3.3</td>
 <td>IA-2026-014</td>
 </tr>
-<tr>
+<tr id="cod-ia-aaaa-nnn-rnn">
 <td><strong>IA-AAAA-NNN · Rnn</strong></td>
 <td>Initiative code + R + two digits</td>
 <td>Specific risk of an initiative.</td>
 <td>33 §8.1</td>
 <td>IA-2026-014 · R03</td>
 </tr>
-<tr>
+<tr id="cod-sia-aaaa-nnn">
 <td><strong>SIA-AAAA-NNN</strong></td>
 <td>Year of registration + sequential number that is neither restarted nor reused</td>
 <td>AI systems in the inventory.</td>
 <td>32 §3.1</td>
 <td>SIA-2026-021</td>
 </tr>
-<tr>
+<tr id="cod-rec-aaaa-nnn">
 <td><strong>REC-AAAA-NNN</strong></td>
 <td>Year + sequential number without restart</td>
 <td>Recommendations and requests of the board or its board committee.</td>
 <td>62 §3</td>
 <td>REC-2026-007</td>
 </tr>
-<tr>
+<tr id="cod-dec-aaaa-nnn">
 <td><strong>DEC-AAAA-NNN</strong></td>
 <td>Year + sequential number without restart</td>
 <td>Decisions of the board or its board committee.</td>
 <td>62 §3</td>
 <td>DEC-2026-014</td>
 </tr>
-<tr>
+<tr id="cod-nc-aaaa-nnn">
 <td><strong>NC-AAAA-NNN</strong></td>
 <td>Year of detection + sequential number</td>
 <td>Nonconformities.</td>
 <td>37 §3.2</td>
 <td>NC-2026-003</td>
 </tr>
-<tr>
+<tr id="cod-inc-aaaa-nnn">
 <td><strong>INC-AAAA-NNN</strong></td>
 <td>Year + sequential number</td>
 <td>AI incidents.</td>
 <td>37 §7.1</td>
 <td>INC-2026-006</td>
 </tr>
-<tr>
+<tr id="cod-aud-aaaa-nnn">
 <td><strong>AUD-AAAA-NNN</strong></td>
 <td>Year + sequential number</td>
 <td>AI audit reports.</td>
 <td>38 §9.1</td>
 <td>AUD-2026-002</td>
 </tr>
-<tr>
+<tr id="cod-h-nn">
 <td><strong>H-NN</strong></td>
 <td>H + hyphen + two digits, within each report</td>
 <td>Findings of an audit report.</td>
 <td>38 §9.2</td>
 <td>H-01</td>
 </tr>
-<tr>
+<tr id="cod-exc-aaaa-nnn">
 <td><strong>EXC-AAAA-NNN</strong></td>
 <td>Year + sequential number</td>
 <td>Exceptions to the policy or the framework.</td>
 <td>30 §7.4; <a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a></td>
 <td>EXC-2026-004</td>
 </tr>
-<tr>
+<tr id="cod-dci-aaaa-nnn">
 <td><strong>DCI-AAAA-NNN</strong></td>
 <td>Year + sequential number</td>
 <td>Declarations of independence and of conflicts of interest.</td>
 <td>30 §12; <a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a></td>
 <td>DCI-2026-011</td>
 </tr>
-<tr>
+<tr id="cod-prv-aaaa-nnn">
 <td><strong>PRV-AAAA-NNN</strong></td>
 <td>Year of registration + sequential number</td>
 <td>Relationship with an AI supplier (third party and service) in the supplier register.</td>
 <td>36 §9; <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a></td>
 <td>PRV-2026-003</td>
 </tr>
-<tr>
+<tr id="cod-sol-aaaa-nnn-com-aaaa-nnn">
 <td><strong>SOL-AAAA-NNN · COM-AAAA-NNN</strong></td>
 <td>Year + sequential number</td>
 <td>New tool requests and employee reports on AI uses or incidents.</td>
 <td>31 §4; <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a></td>
 <td>SOL-2026-017</td>
 </tr>
-<tr>
+<tr id="cod-inf-aaaa-nnn">
 <td><strong>INF-AAAA-NNN</strong></td>
 <td>Year + sequential number</td>
 <td>Information and consultation with employee representatives.</td>
 <td>50 §7; <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></td>
 <td>INF-2026-002</td>
 </tr>
-<tr>
+<tr id="cod-pa-aaaa-nnn-hnn">
 <td><strong>PA-AAAA-NNN · Hnn</strong></td>
 <td>Year + sequential number; finding within the campaign</td>
 <td>Adversarial testing campaigns and their findings.</td>
 <td>35 §8; <a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html">P53</a></td>
 <td>PA-2026-001 · H03</td>
 </tr>
-<tr>
+<tr id="cod-idn-aaaa-nnn">
 <td><strong>IDN-AAAA-NNN</strong></td>
 <td>Year of registration + sequential number</td>
 <td>Non-human identities (agents, service accounts, keys).</td>
@@ -4125,7 +4130,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Information and communication technologies</td>
 <td>In Spanish, TIC.</td>
 </tr>
-<tr>
+<tr id="cod-iso-iec-42001">
 <td><strong>ISO/IEC 42001</strong></td>
 <td>International standard for AI management systems</td>
 <td>Not translated.</td>
@@ -4145,7 +4150,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Machine learning</td>
 <td>Value of the &quot;Predictive ML&quot; technology tag.</td>
 </tr>
-<tr>
+<tr id="cod-nis2">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a></strong></td>
 <td>Directive (EU) 2022/2555 on measures for a high common level of cybersecurity</td>
 <td>Not translated.</td>
@@ -4170,7 +4175,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><em>Open Worldwide Application Security Project</em></td>
 <td>Risk lists for applications using language models and for agents (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>).</td>
 </tr>
-<tr>
+<tr id="cod-p80">
 <td><strong>P80</strong></td>
 <td>80th percentile</td>
 <td>Used together with the median in time metrics.</td>
@@ -4199,27 +4204,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Implements the controlled taxonomy (section 5), initiative and criterion statuses (sections 4.2 and 4.3), <em>gate</em> outcomes (4.1) and IA-AAAA-NNN codes. First tool of wave 1, built after this document.</td>
 </tr>
-<tr>
+<tr id="cod-t02">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Uses the SIA-AAAA-NNN codes, regulatory classification and autonomy A0–A3.</td>
 </tr>
-<tr>
+<tr id="cod-t03">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td><em>Gate</em> manager</td>
 <td>Uses the G&lt;n&gt;.&lt;nn&gt; and R6.&lt;nn&gt; codes, the mandatory status of criteria, the EV rules and the outcomes permitted by gate.</td>
 </tr>
-<tr>
+<tr id="cod-t04">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></strong></td>
 <td>Intensity determination</td>
 <td>Uses the Enterprise criteria and the scale in section 4.6.</td>
 </tr>
-<tr>
+<tr id="cod-t05">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
 <td>Ambition classifier</td>
 <td>Uses the ambition levels and statuses in section 4.5.</td>
@@ -4314,7 +4319,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Organic Law 3/2018, of 5 December, on the Protection of Personal Data and Guarantee of Digital Rights (Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales)</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European AI Office (European Commission)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener">European Data Protection Board (EDPB)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems)</a><span> · The MITRE Corporation</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -492,19 +497,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-regulation-eu-2024-1689">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a></strong> (AI Act)</td>
 <td>Article 4 (AI literacy); Article 5 (prohibited practices); Article 26 (obligations of deployers of high-risk AI systems, including informing workers, paragraph 7); Article 50 (transparency obligations).</td>
 </tr>
-<tr>
+<tr id="cod-regulation-eu-2026-1744">
 <td><strong>Regulation (EU) 2026/1744</strong> (Digital Omnibus on AI)</td>
 <td>Published in the Official Journal on 24-07-2026 and in force since 27-07-2026. Among other things, it amends Article 4, which now requires providers and deployers <strong>to take measures to support the development</strong> of AI literacy among their staff, without requiring them to ensure a specific level; it adds a prohibition on systems that generate non-consensual sexually explicit content or child sexual abuse material, applicable from 2-12-2026; and it postpones the high-risk obligations of Annex III to 2-12-2027 and those of Annex I to 2-8-2028. The transparency obligations of Article 50 apply from 2-8-2026, with a transitional period until 2-12-2026 for the marking under Article 50(2) of systems already placed on the market.</td>
 </tr>
-<tr>
+<tr id="cod-regulation-eu-2016-679">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">Regulation (EU) 2016/679</a></strong> (GDPR)</td>
 <td>Principles in Article 5; automated individual decision-making (Article 22); impact assessment (Article 35); personal data breaches (Articles 33 and 34).</td>
 </tr>
-<tr>
+<tr id="cod-organic-law-3-2018">
 <td><strong><a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Organic Law 3/2018, of 5 December, on the Protection of Personal Data and Guarantee of Digital Rights (Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales)">Organic Law 3/2018</a></strong> (LOPDGDD), Spain</td>
 <td>Article 87: criteria for the use of digital devices in the workplace, with the involvement of workers' representatives.</td>
 </tr>
@@ -512,11 +517,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong><a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)">Workers' Statute</a></strong> (Estatuto de los Trabajadores), Spain</td>
 <td>Article 64.4.d): right of the works council to be informed of the parameters, rules and instructions of the algorithms or AI systems that affect decisions on working conditions, access to and retention of employment, including profiling.</td>
 </tr>
-<tr>
+<tr id="cod-law-2-2023">
 <td><strong><a class="ref-ext" href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener" title="Law 2/2023 of 20 February on the protection of persons who report regulatory breaches and on the fight against corruption (unofficial translation)">Law 2/2023</a></strong>, Spain</td>
 <td>Internal reporting system and protection of whistleblowers.</td>
 </tr>
-<tr>
+<tr id="cod-directive-eu-2022-2555-nis2">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">Directive (EU) 2022/2555 (NIS2)</a></strong> and <strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">Regulation (EU) 2022/2554 (DORA)</a></strong>, where applicable</td>
 <td>ICT, third-party and incident risk management.</td>
 </tr>
@@ -940,19 +945,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-a0-assistance">
 <td><strong>A0 Assistance</strong> (informs, summarises, drafts)</td>
 <td>Permitted with authorised tools.</td>
 </tr>
-<tr>
+<tr id="cod-a1-recommendation">
 <td><strong>A1 Recommendation</strong> (proposes an action that you validate and execute)</td>
 <td>Permitted with authorised tools. Review each proposal before acting.</td>
 </tr>
-<tr>
+<tr id="cod-a2-supervised-action">
 <td><strong>A2 Supervised action</strong> (executes actions within limits and you supervise)</td>
 <td>Only with tools expressly authorised for A2 and within the actions permitted in the catalogue.</td>
 </tr>
-<tr>
+<tr id="cod-a3-autonomous-action">
 <td><strong>A3 Autonomous action</strong> (executes sequences without individual review)</td>
 <td>Not permitted for personal agents. Requires an initiative approved through the lifecycle.</td>
 </tr>
@@ -1516,31 +1521,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-c2">
 <td><strong>C2</strong></td>
 <td>Corporate policy approved by the board; acceptable use policy approved; annual literacy plan.</td>
 </tr>
-<tr>
+<tr id="cod-g0">
 <td><strong>G0</strong></td>
 <td>Roles with F4 training or a plan to obtain it; no red lines in the proposal.</td>
 </tr>
-<tr>
+<tr id="cod-g3">
 <td><strong>G3</strong></td>
 <td>Regulatory classification with no prohibited practice; no red line affected.</td>
 </tr>
-<tr>
+<tr id="cod-g5">
 <td><strong>G5</strong></td>
 <td>Overseers with F3; transparency towards users implemented where applicable; compliance with 4.5.</td>
 </tr>
-<tr>
+<tr id="cod-r6">
 <td><strong>R6</strong></td>
 <td>Compliant use in production; overseers with current training; no unauthorised uses associated with the process.</td>
 </tr>
-<tr>
+<tr id="cod-c4">
 <td><strong>C4</strong></td>
 <td><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> monitor reviewed by the AI Committee; exceptions reported to the board committee.</td>
 </tr>
-<tr>
+<tr id="cod-c5">
 <td><strong>C5</strong></td>
 <td>Annual review of both policies and of the literacy programme.</td>
 </tr>
@@ -1558,62 +1563,62 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t21">
 <td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
 <td>Corporate AI use monitor</td>
 <td>Licences, unauthorised use, embedded AI, technical controls and literacy.</td>
 </tr>
-<tr>
+<tr id="cod-t02">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Registration of authorised tools, embedded AI and unauthorised uses.</td>
 </tr>
-<tr>
+<tr id="cod-t08">
 <td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Nonconformities due to unauthorised use and incidents reported by employees.</td>
 </tr>
-<tr>
+<tr id="cod-t09">
 <td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></strong></td>
 <td>AI supplier register</td>
 <td>Assessment of suppliers of tools and of software with embedded AI.</td>
 </tr>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Exceptions and move to the full cycle.</td>
 </tr>
-<tr>
+<tr id="cod-p05">
 <td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></strong></td>
 <td>AI system inventory record</td>
 <td>Registration of tools and uses.</td>
 </tr>
-<tr>
+<tr id="cod-p14">
 <td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></strong></td>
 <td>AI supplier assessment</td>
 <td>Before authorising a tool or enabling embedded AI.</td>
 </tr>
-<tr>
+<tr id="cod-p20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Training of overseers and users of initiatives.</td>
 </tr>
-<tr>
+<tr id="cod-p40">
 <td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a></strong></td>
 <td>Exception request and register</td>
 <td>Request, approval and register of exceptions to the policy (section 3.8).</td>
 </tr>
-<tr>
+<tr id="cod-p43">
 <td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a></strong></td>
 <td>Catalogue of authorised tools and requests</td>
 <td>Catalogue of authorised tools and requests for new tools (section 4.2).</td>
 </tr>
-<tr>
+<tr id="cod-p44">
 <td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
 <td>AI use and perception survey</td>
 <td>Staff use and perception of AI, including unauthorised use (section 5.2).</td>
 </tr>
-<tr>
+<tr id="cod-p45">
 <td><strong><a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a></strong></td>
 <td>Literacy and training plan and record</td>
 <td>Programme by profile and record per person (section 6).</td>
@@ -1693,7 +1698,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener">Law 2/2023 of 20 February on the protection of persons who report regulatory breaches and on the fight against corruption (unofficial translation)</a><span> · Cortes Generales · 20-02-2023</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Organic Law 3/2018, of 5 December, on the Protection of Personal Data and Guarantee of Digital Rights (Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales)</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

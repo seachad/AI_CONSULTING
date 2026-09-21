@@ -39,6 +39,7 @@ Al terminar sabrá encontrar cualquier documento, plantilla o herramienta, busca
 | 2 | Entre en el documento 00. | La portada (título, versión, cifras), la **zona de descargas** —PDF, versión en el otro idioma y herramientas relacionadas— y el recuadro **«Lo esencial»**. |
 | 3 | Use la barra superior. | **Portada** (todas las metodologías), **Biblioteca**, **Documentos** (lista con filtro), **Historial** (por dónde ha pasado), **Índice** de secciones, **buscador** con resultado anterior y siguiente, **tema** (salmón, salmón claro o noche), tamaño del texto e **idioma**. |
 | 4 | Busque la palabra «embudo» en el documento 00. | El buscador resalta las coincidencias y salta de una a otra. |
+| 4 bis | Escriba un código en **«Ir a código»**: `P12`, `T06`, `G3.05`, `fase 3`, `C2`, `RT-GEN-01`… | Se abre una lista con lo que significa ese código y, al elegirlo, el sitio le lleva a la página y a la sección —o a la fila de la tabla— donde se explica. Está en la barra de todas las páginas, en la portada y en las herramientas. |
 | 5 | Baje hasta el **mapa de uso** del documento 00. | Cada fase, puerta, plantilla y herramienta del mapa es un enlace: es la forma más rápida de llegar a algo concreto. |
 | 6 | Abra una plantilla, por ejemplo P01. | En sus descargas aparece además la **plantilla editable en Word**. |
 | 7 | Cambie a inglés y vuelva. | Llega a la misma página en el otro idioma. |
@@ -58,7 +59,7 @@ Al terminar sabrá encontrar cualquier documento, plantilla o herramienta, busca
 | **IA-AAAA-NNN** | Identificador de una iniciativa. | documento 03 |
 | **A0–A3 · S1–S4 · N1–N3 · D1–D7** | Autonomía de agentes · severidad de incidentes · exigencia a proveedores · dimensiones de madurez. | documento 02 |
 
-Ante cualquier duda, el glosario (documento 02) manda.
+Ante cualquier duda, el glosario (documento 02) manda. Y no hace falta memorizar ninguno: el control **«Ir a código»** de la barra lleva a donde se explica cualquiera de ellos.
 
 ---
 

@@ -39,6 +39,7 @@ By the end you will be able to find any document, template or tool, search for a
 | 2 | Go into document 00. | The cover (title, version, figures), the **downloads area** —PDF, version in the other language and related tools— and the **"The essentials"** box. |
 | 3 | Use the top bar. | **Home** (all methodologies), **Library**, **Documents** (list with filter), **History** (where you have been), section **Contents**, **search** with previous and next result, **theme** (salmon, light salmon or night), text size and **language**. |
 | 4 | Search for the word "funnel" in document 00. | The search highlights the matches and jumps from one to the next. |
+| 4 bis | Type a code into **"Go to code"**: `P12`, `T06`, `G3.05`, `phase 3`, `C2`, `RT-GEN-01`… | A list opens with what that code means and, when you pick it, the site takes you to the page and section —or the table row— where it is explained. It is in the bar of every page, on the home page and in the tools. |
 | 5 | Scroll down to the **usage map** in document 00. | Every phase, gate, template and tool on the map is a link: it is the quickest way to reach something specific. |
 | 6 | Open a template, for example P01. | Its downloads also include the **editable template in Word**. |
 | 7 | Switch to Spanish and back. | You land on the same page in the other language. |
@@ -58,7 +59,7 @@ By the end you will be able to find any document, template or tool, search for a
 | **IA-AAAA-NNN** | Identifier of an initiative. | document 03 |
 | **A0–A3 · S1–S4 · N1–N3 · D1–D7** | Agent autonomy · incident severity · supplier requirement level · maturity dimensions. | document 02 |
 
-If in doubt, the glossary (document 02) rules.
+If in doubt, the glossary (document 02) rules. And there is no need to memorise any of them: the **"Go to code"** control in the bar takes you to where any of them is explained.
 
 ---
 

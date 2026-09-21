@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1275,17 +1280,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Desviaciones por caso (IND-COS-04), coste no atribuido, licencias ociosas; información al comité de IA.</td>
 <td>Control de gestión</td>
 </tr>
-<tr>
+<tr id="cod-fase-3">
 <td><strong>Fase 3</strong></td>
 <td>Estimación de costes completos (construcción, adopción, recurrente y retirada) y del coste total de propiedad.</td>
 <td>Responsable de producto con control de gestión</td>
 </tr>
-<tr>
+<tr id="cod-g5-y-r6">
 <td><strong>G5 y R6</strong></td>
 <td>Presupuesto de consumo, etiquetado y límites; revisión del coste recurrente real frente al previsto.</td>
 <td>Responsable de operación; verifica la oficina de IA o el auditor de IA</td>
 </tr>
-<tr>
+<tr id="cod-c3">
 <td><strong>C3</strong></td>
 <td>Presupuesto de la cartera y de las plataformas compartidas; aprobación de claves de reparto del ejercicio.</td>
 <td>Comité de IA con control de gestión</td>
@@ -1370,67 +1375,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
 <td>Calculadora de costes por caso</td>
 <td>Herramienta principal de este documento.</td>
 </tr>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Registro de iniciativas</td>
 <td>Costes por caso, eventos de alerta, paradas.</td>
 </tr>
-<tr>
+<tr id="cod-t02">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>Inventario de sistemas de IA</td>
 <td>Identificador de sistema para el etiquetado.</td>
 </tr>
-<tr>
+<tr id="cod-t11">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></strong></td>
 <td>Lienzo y calculadora de hipótesis de valor</td>
 <td>Uso de la inversión inicial y del coste recurrente en F2, F3 y F7–F9.</td>
 </tr>
-<tr>
+<tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Coste recurrente real en el valor neto por periodo.</td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
 <td>Coste por caso y coste total de IA.</td>
 </tr>
-<tr>
+<tr id="cod-t21">
 <td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
 <td>Monitor de uso corporativo de IA</td>
 <td>Licencias asignadas y activas.</td>
 </tr>
-<tr>
+<tr id="cod-p10">
 <td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></strong></td>
 <td>Evaluación de viabilidad</td>
 <td>Estimación de costes completos en fase 3.</td>
 </tr>
-<tr>
+<tr id="cod-p18">
 <td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></strong></td>
 <td>Diseño de seguridad (incluye agentes)</td>
 <td>Límites técnicos de consumo por agente.</td>
 </tr>
-<tr>
+<tr id="cod-p20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Coste de adopción.</td>
 </tr>
-<tr>
+<tr id="cod-p25">
 <td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
 <td>Configuración de monitorización y alertas</td>
 <td>Alertas de consumo.</td>
 </tr>
-<tr>
+<tr id="cod-p30">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
 <td>Decisión de escalado o retirada</td>
 <td>Coste de retirada y de parar.</td>
 </tr>
-<tr>
+<tr id="cod-p63">
 <td><strong><a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a></strong></td>
 <td>Presupuesto de consumo y conciliación de costes</td>
 <td>Presupuesto de consumo, previsión, alertas y conciliación con la facturación (sección 8).</td>
@@ -1514,7 +1519,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://focus.finops.org/" target="_blank" rel="noopener">FOCUS™ — FinOps Open Cost and Usage Specification (especificaci&#243;n abierta de datos de coste y uso), versi&#243;n 1.4</a><span> · FinOps Foundation (FOCUS, serie de Joint Development Foundation Projects, LLC) · 04-06-2026</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

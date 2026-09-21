@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1020,67 +1025,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-f1">
 <td><strong>F1</strong></td>
 <td>Amount of a value line</td>
 <td>Amount = incremental units × unit value</td>
 <td>Incremental units = result with AI − reference result (adjusted baseline or control group).</td>
 </tr>
-<tr>
+<tr id="cod-f2">
 <td><strong>F2</strong></td>
 <td><strong>Annual net value</strong></td>
 <td><strong>Annual net value = efficiencies + return − recurring cost</strong></td>
 <td>Materialised efficiencies only. Unmaterialised released capacity excluded. Calculated for realised (current) value and for potential value.</td>
 </tr>
-<tr>
+<tr id="cod-f2v">
 <td><strong>F2v</strong></td>
 <td>Validated net value</td>
 <td>Validated net value = validated efficiencies + validated return − recurring cost</td>
 <td>Cost is deducted in full. It may be negative even if F2 is positive.</td>
 </tr>
-<tr>
+<tr id="cod-f3">
 <td><strong>F3</strong></td>
 <td><strong>Additional net value per euro</strong></td>
 <td><strong>Additional net value per euro = (potential annual net value − current annual net value) ÷ additional investment required</strong></td>
 <td>Unit: euros of annual net value per euro invested. If the additional investment is zero or does not exist, it is not calculated and prioritisation is based on absolute additional net value.</td>
 </tr>
-<tr>
+<tr id="cod-f4">
 <td><strong>F4</strong></td>
 <td><strong>Released capacity</strong></td>
 <td>Net released hours = volume processed with AI × (reference unit time − unit time with AI) · Released capacity (€) = net released hours × fully loaded hourly cost</td>
 <td>The time with AI includes human review, exceptions and corrections. The fully loaded hourly cost is set by management control.</td>
 </tr>
-<tr>
+<tr id="cod-f5">
 <td><strong>F5</strong></td>
 <td><strong>Materialisation</strong></td>
 <td>Materialisation rate = materialised hours ÷ net released hours · Reassignment rate = hours reassigned to a new activity ÷ net released hours</td>
 <td>Materialised hours: those that translate into lower actual cost or budgeted avoided cost. Calculated in hours so as not to mix internal and external rates.</td>
 </tr>
-<tr>
+<tr id="cod-f6">
 <td><strong>F6</strong></td>
 <td><strong>Validated proportion</strong></td>
 <td>Validated proportion = validated value ÷ (validated + declared + estimated value)</td>
 <td>Based on gross realised value (materialised efficiencies + return) for the period. Amounts with no data are not included in the denominator and are reported separately.</td>
 </tr>
-<tr>
+<tr id="cod-f7">
 <td><strong>F7</strong></td>
 <td>Net present value</td>
 <td>NPV = −I + Σ (annual net value in year t ÷ (1 + r)^t), for t = 1…H</td>
 <td>I, r and H as per section 8.</td>
 </tr>
-<tr>
+<tr id="cod-f8">
 <td><strong>F8</strong></td>
 <td>Return on investment</td>
 <td>ROI(H) = (Σ annual net value in year t − I) ÷ I, for t = 1…H</td>
 <td>Always based on annual net value (F2), never on gross value.</td>
 </tr>
-<tr>
+<tr id="cod-f9">
 <td><strong>F9</strong></td>
 <td>Payback period</td>
 <td>First year in which the cumulative Σ annual net value ≥ I, linearly interpolated within the year</td>
 <td>With a constant annual net value, it is equivalent to I ÷ annual net value.</td>
 </tr>
-<tr>
+<tr id="cod-f10">
 <td><strong>F10</strong></td>
 <td>Value realisation</td>
 <td>Realisation = realised value for the period ÷ expected value for the period according to the realisation plan</td>
@@ -1605,13 +1610,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 <td>Deducted in full</td>
 </tr>
-<tr>
+<tr id="cod-annual-net-value-f2">
 <td><strong>Annual net value (F2)</strong></td>
 <td><strong>€510,000</strong></td>
 <td></td>
 <td></td>
 </tr>
-<tr>
+<tr id="cod-validated-net-value-f2v">
 <td><strong>Validated net value (F2v)</strong></td>
 <td><strong>−€50,000</strong></td>
 <td></td>
@@ -1692,52 +1697,52 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Amounts, statuses, status change events, dates for agility; scope of cross-unit initiatives and platforms, with roll-out, adoption and amounts by unit (section 7.2).</td>
 </tr>
-<tr>
+<tr id="cod-t11">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></strong></td>
 <td>Value hypothesis canvas and calculator</td>
 <td>Formulas F1–F4 and F7–F9 in phases 2 and 3; attribution method; scenarios (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> §6.2) and C2 criterion as information. Imports the initiative from <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and exports its expected values.</td>
 </tr>
-<tr>
+<tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Statuses per period, expiries, F5, F6 and F10.</td>
 </tr>
-<tr>
+<tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
 <td>Cost calculator per use case</td>
 <td>Full recurring cost and initial investment.</td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Presentation with the validated proportion visible; card for cross-unit initiatives and platforms with the portfolio's net value with and without them.</td>
 </tr>
-<tr>
+<tr id="cod-p08">
 <td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></strong></td>
 <td>Value hypothesis canvas</td>
 <td>Hypothesis, attribution method and stop criteria.</td>
 </tr>
-<tr>
+<tr id="cod-p09">
 <td><strong><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></strong></td>
 <td>Baseline</td>
 <td>Reference measurement.</td>
 </tr>
-<tr>
+<tr id="cod-p22">
 <td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
 <td>Validation and pilot results</td>
 <td>Value measured against the hypothesis at G5.</td>
 </tr>
-<tr>
+<tr id="cod-p28">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Value per period and status.</td>
 </tr>
-<tr>
+<tr id="cod-p31">
 <td><strong><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></strong></td>
 <td>Use case record</td>
 <td>Understandable description (rule 10).</td>
@@ -1821,7 +1826,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

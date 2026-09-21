@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -762,17 +767,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-per-d1-materialise">
 <td><strong>PER-D1 · Materialise</strong></td>
 <td>Reduction in actual cost: less overtime, less external or temporary hiring, vacancies not filled, resizing.</td>
 <td>Efficiency, validated when the lower cost appears in management accounts.</td>
 </tr>
-<tr>
+<tr id="cod-per-d2-reassign-to-a-defined-activity">
 <td><strong>PER-D2 · Reassign to a defined activity</strong></td>
 <td>The hours move to a specific activity with an owner and an outcome metric.</td>
 <td>Value measured in the outcome of the destination activity, attributed to a single use case (rule 5).</td>
 </tr>
-<tr>
+<tr id="cod-per-d3-absorb-growth">
 <td><strong>PER-D3 · Absorb growth</strong></td>
 <td>The same team handles more volume without increasing staffing.</td>
 <td>Avoided cost only if the growth is measured and the staffing need was documented beforehand.</td>
@@ -782,7 +787,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>More time per customer, more review, more control.</td>
 <td>Not additive unless translated into money with a formula (rule 7).</td>
 </tr>
-<tr>
+<tr id="cod-per-d5-no-decision">
 <td><strong>PER-D5 · No decision</strong></td>
 <td>The destination has not been decided.</td>
 <td><strong>Not counted.</strong> Reported separately, with an ageing alert.</td>
@@ -819,27 +824,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-phase-2">
 <td><strong>Phase 2</strong></td>
 <td>It is declared whether the value hypothesis depends on released capacity and with what planned destination.</td>
 <td>AI Sponsor</td>
 </tr>
-<tr>
+<tr id="cod-phase-4">
 <td><strong>Phase 4</strong></td>
 <td>Planned destination by group, with percentages, timeframe and owner.</td>
 <td>AI Sponsor with the people function and management control</td>
 </tr>
-<tr>
+<tr id="cod-g5">
 <td><strong>G5</strong></td>
 <td>In Optimise, plan to materialise the released capacity (01 §7.6); in Augment, reassignment plan.</td>
 <td><em>Gate</em> body</td>
 </tr>
-<tr>
+<tr id="cod-r6">
 <td><strong>R6</strong></td>
 <td>Tracking: measured released hours against materialised and reassigned hours; decision on PER-D5 by age.</td>
 <td>AI Sponsor; AI Committee in Enterprise</td>
 </tr>
-<tr>
+<tr id="cod-g7">
 <td><strong>G7</strong></td>
 <td>Optimise: materialised savings, not just released capacity. Augment: reassigned capacity and sustained performance.</td>
 <td><em>Gate</em> body</td>
@@ -919,27 +924,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-estatuto-de-los-trabajadores-workers-statute-article-64-4-d">
 <td><strong><a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)">Estatuto de los Trabajadores (Workers' Statute)</a>, Article 64.4.d)</strong> (introduced by <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-7840" target="_blank" rel="noopener" title="Royal Decree-Law 9/2021 of 11 May amending the consolidated text of the Workers&#39; Statute Act to guarantee the labour rights of persons engaged in delivery work for digital platforms (unofficial translation)">Real Decreto-ley 9/2021 (Royal Decree-Law 9/2021)</a> and <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-15767" target="_blank" rel="noopener" title="Law 12/2021 of 28 September amending the consolidated text of the Workers&#39; Statute Act to guarantee the labour rights of persons engaged in delivery work for digital platforms (unofficial translation)">Ley 12/2021 (Law 12/2021)</a>)</td>
 <td>The works council has the right to be informed by the company of <em>&quot;the parameters, rules and instructions on which the algorithms or artificial intelligence systems are based that affect decision-making that may have an impact on working conditions, access to and retention of employment, including profiling&quot;</em>. Trade union delegates may have equivalent rights under the terms of the <a class="ref-ext" href="https://www.boe.es/eli/es/lo/1985/08/02/11/con" target="_blank" rel="noopener" title="Organic Law 11/1985 of 2 August on Freedom of Association (unofficial translation)">Ley Orgánica de Libertad Sindical (Organic Law on Freedom of Association)</a>.</td>
 </tr>
-<tr>
+<tr id="cod-estatuto-de-los-trabajadores-article-64">
 <td><strong>Estatuto de los Trabajadores, Article 64</strong> (remainder) and applicable collective agreement</td>
 <td>General information and consultation rights on changes in the organisation of work, which may be triggered by AI initiatives even if they are not decision-making algorithms. The collective agreement may extend obligations.</td>
 </tr>
-<tr>
+<tr id="cod-eu-ai-act-art-26-7">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>, Art. 26(7)</strong></td>
 <td>Before putting into service or using a high-risk AI system in the workplace, deployers who are employers must inform workers' representatives and the affected workers.</td>
 </tr>
-<tr>
+<tr id="cod-eu-ai-act-annex-iii-point-4">
 <td><strong>EU AI Act, Annex III, point 4</strong></td>
 <td>High-risk systems in employment and workers management (section 8).</td>
 </tr>
-<tr>
+<tr id="cod-eu-ai-act-art-5-1-f">
 <td><strong>EU AI Act, Art. 5(1)(f)</strong></td>
 <td>Prohibition of emotion recognition systems in the workplace, except for medical or safety reasons.</td>
 </tr>
-<tr>
+<tr id="cod-gdpr-arts-13-14-15-22-and-88">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Arts. 13, 14, 15, 22 and 88</strong></td>
 <td>Information to data subjects, right of access, automated individual decision-making and processing in the employment context.</td>
 </tr>
@@ -947,7 +952,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong><a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Organic Law 3/2018, of 5 December, on the Protection of Personal Data and Guarantee of Digital Rights (Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales)">Ley Orgánica 3/2018</a> (Organic Law 3/2018 on Personal Data Protection and Guarantee of Digital Rights, LOPDGDD), Arts. 87 to 91</strong></td>
 <td>Digital rights in the workplace: use of digital devices, digital disconnection, video surveillance, geolocation and collective bargaining on these rights.</td>
 </tr>
-<tr>
+<tr id="cod-directive-eu-2024-2831">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2024/2831/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2024/2831 of the European Parliament and of the Council of 23 October 2024 on improving working conditions in platform work">Directive (EU) 2024/2831</a></strong> on improving working conditions in platform work</td>
 <td>Rules on algorithmic management (information, human monitoring and human review) for platform work. Transposition deadline: 2 December 2026. Verify the status of transposition.</td>
 </tr>
@@ -1286,7 +1291,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-per-01">
 <td><strong>PER-01</strong></td>
 <td>Effect assessment coverage</td>
 <td>Initiatives in phase 3 or later with a recorded effect assessment ÷ initiatives in phase 3 or later</td>
@@ -1294,7 +1299,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-per-02">
 <td><strong>PER-02</strong></td>
 <td>Literacy by profile</td>
 <td>People in the profile with current training ÷ people in the profile</td>
@@ -1302,7 +1307,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Training system</td>
 <td>100% before access or taking up the role (IND-ADO-05); current renewal of PER-PC ≥ 90% (alert threshold, to be calibrated); PER-PA and PER-PD 100%</td>
 </tr>
-<tr>
+<tr id="cod-per-03">
 <td><strong>PER-03</strong></td>
 <td>Qualified overseers</td>
 <td>A1–A3 systems in production whose designated overseers have recorded PER-PD training ÷ A1–A3 systems in production</td>
@@ -1310,7 +1315,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, training</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-per-04">
 <td><strong>PER-04</strong></td>
 <td>Released capacity materialised</td>
 <td>Released hours materialised (PER-D1) ÷ measured released hours</td>
@@ -1318,7 +1323,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>As per hypothesis</td>
 </tr>
-<tr>
+<tr id="cod-per-05">
 <td><strong>PER-05</strong></td>
 <td>Released capacity reassigned</td>
 <td>Reassigned hours (PER-D2) with a verified destination activity ÷ measured released hours</td>
@@ -1326,7 +1331,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>As per hypothesis</td>
 </tr>
-<tr>
+<tr id="cod-per-06">
 <td><strong>PER-06</strong></td>
 <td>Released capacity without a decision</td>
 <td>Hours in PER-D5 older than the C2 time limit ÷ measured released hours</td>
@@ -1334,7 +1339,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>Decreasing trend</td>
 </tr>
-<tr>
+<tr id="cod-per-07">
 <td><strong>PER-07</strong></td>
 <td>Effective adoption</td>
 <td>Active users according to the usage criterion defined in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> ÷ target users</td>
@@ -1342,7 +1347,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Usage logs</td>
 <td>As per hypothesis (<a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a>)</td>
 </tr>
-<tr>
+<tr id="cod-per-08">
 <td><strong>PER-08</strong></td>
 <td>Prior information to workers' representatives</td>
 <td>Systems with an effect on working conditions or employment reported before use ÷ systems with that effect</td>
@@ -1350,7 +1355,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Information record</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-per-09">
 <td><strong>PER-09</strong></td>
 <td>Human review in decisions about people</td>
 <td>AI-assisted decisions about people with documented human review ÷ AI-assisted decisions about people</td>
@@ -1358,7 +1363,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>System logs</td>
 <td>100% in A1</td>
 </tr>
-<tr>
+<tr id="cod-per-10">
 <td><strong>PER-10</strong></td>
 <td>Human override rate</td>
 <td>Recommendations modified or rejected by the overseer ÷ recommendations reviewed</td>
@@ -1366,7 +1371,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>System logs</td>
 <td>Values close to 0% (possible automatic acceptance) and high values (possible poor performance) are monitored</td>
 </tr>
-<tr>
+<tr id="cod-per-11">
 <td><strong>PER-11</strong></td>
 <td>Adverse impact ratio</td>
 <td>Favourable outcome rate of the group with the lowest rate ÷ rate of the group with the highest rate</td>
@@ -1374,7 +1379,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Bias testing</td>
 <td>Indication if &lt; 0.8 (section 8.4)</td>
 </tr>
-<tr>
+<tr id="cod-per-12">
 <td><strong>PER-12</strong></td>
 <td>Challenges to assisted decisions</td>
 <td>Review requests or complaints ÷ decisions communicated; and proportion upheld</td>
@@ -1382,7 +1387,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Complaints channel</td>
 <td>Trend and causes</td>
 </tr>
-<tr>
+<tr id="cod-per-13">
 <td><strong>PER-13</strong></td>
 <td>Redesigned roles</td>
 <td>Affected jobs with updated description and objectives ÷ affected jobs according to the effect assessment</td>
@@ -1390,7 +1395,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>People function</td>
 <td>100% before G7 in Augment and Transform</td>
 </tr>
-<tr>
+<tr id="cod-per-14">
 <td><strong>PER-14</strong></td>
 <td>Employee proposals</td>
 <td>Initiatives registered in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> originating from employee proposals ÷ registered initiatives; and G1 pass rate</td>
@@ -1398,7 +1403,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 <td>Trend</td>
 </tr>
-<tr>
+<tr id="cod-per-15">
 <td><strong>PER-15</strong></td>
 <td>Perception of affected groups</td>
 <td>Favourable responses to the questions on usefulness, trust, support, workload and autonomy (<a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a>) ÷ valid responses</td>
@@ -1422,61 +1427,61 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-org-01">
 <td><strong>RT-ORG-01</strong></td>
 <td>Lack of adoption</td>
 <td>PER-07 below hypothesis in the pilot.</td>
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a>, users involved in design.</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-03">
 <td><strong>RT-ECO-03</strong></td>
 <td>Unrealised value (released capacity not realised)</td>
 <td>PER-06 increasing.</td>
 <td>Section 6, alerts in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, G7 criterion.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependence on key people (loss of critical knowledge)</td>
 <td>High dependence (<a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a>, CNC-06).</td>
 <td>Knowledge capture; section 5.4.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-04">
 <td><strong>RT-ORG-04</strong></td>
 <td>Ineffective human oversight (nominal oversight)</td>
 <td>PER-10 close to zero; PER-03 &lt; 100%.</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; sections 4.2 and 9.2.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-07">
 <td><strong>RT-ORG-07</strong></td>
 <td>Failure to inform and consult</td>
 <td>PER-08 &lt; 100%.</td>
 <td>Section 7.2; G5 blocked.</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-01">
 <td><strong>RT-REP-01</strong></td>
 <td>Discriminatory outcomes (in decisions about people)</td>
 <td>PER-11 &lt; threshold; PER-12 increasing in a group.</td>
 <td>Sections 8.3 and 8.4.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-08">
 <td><strong>RT-ORG-08</strong></td>
 <td>Labour dispute</td>
 <td>Collective consultations or complaints.</td>
 <td>Sections 7 and 10; senior management decision on relevant PER-D1 destinations.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-09">
 <td><strong>RT-ORG-09</strong></td>
 <td>Deterioration of wellbeing</td>
 <td>PER-15 decreasing; sick leave or turnover in the group.</td>
 <td>Section 9.2.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-05">
 <td><strong>RT-ORG-05</strong></td>
 <td>Unauthorised use of AI (<em>shadow AI</em>)</td>
 <td>Detections in <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
 <td>Document 31; authorised tools; PER-PC training.</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-08">
 <td><strong>RT-TEC-08</strong></td>
 <td>Irreversibility (due to a lack of trained people)</td>
 <td>Rollback test failed due to a lack of trained people.</td>
@@ -1507,7 +1512,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Effect assessment, capability plan, released capacity record and tracking. Main tool of this document.</td>
@@ -1517,47 +1522,47 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Register, inventory, intensity, value and corporate use</td>
 <td>Alerts and proposals (PER-14); internal register of systems affecting employees; intensity review; realised and reassigned amounts; unauthorised use.</td>
 </tr>
-<tr>
+<tr id="cod-p20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Effect assessment, capability plan, planned destination of released capacity, communication.</td>
 </tr>
-<tr>
+<tr id="cod-p11">
 <td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></strong></td>
 <td>Regulatory classification and impact assessments</td>
 <td>Decisions about people and high risk.</td>
 </tr>
-<tr>
+<tr id="cod-p12">
 <td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
 <td>Risk matrix and register</td>
 <td>RT-ORG risks.</td>
 </tr>
-<tr>
+<tr id="cod-p17">
 <td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></strong></td>
 <td>Governance and human oversight design</td>
 <td>Maximum autonomy, authority and workload of the overseer, explanation and review.</td>
 </tr>
-<tr>
+<tr id="cod-p22">
 <td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
 <td>Validation and pilot results</td>
 <td>Bias testing and actual effect in the pilot.</td>
 </tr>
-<tr>
+<tr id="cod-p28">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Released capacity materialised and reassigned.</td>
 </tr>
-<tr>
+<tr id="cod-p30">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
 <td>Scaling or retirement decision</td>
 <td>Actual versus declared effect and communication of the retirement.</td>
 </tr>
-<tr>
+<tr id="cod-p44">
 <td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
 <td>AI use and perception survey</td>
 <td>Pulse survey of the affected groups (PER-15).</td>
 </tr>
-<tr>
+<tr id="cod-p46">
 <td><strong><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></strong></td>
 <td>Information to workers and their representatives</td>
 <td>System information sheet (section 7.3) and register of information and consultation.</td>
@@ -1637,7 +1642,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2024/2831/oj/eng" target="_blank" rel="noopener">Directive (EU) 2024/2831 of the European Parliament and of the Council of 23 October 2024 on improving working conditions in platform work</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener">New York City Local Law 144 of 2021 on automated employment decision tools (Int. No. 1894-2020), requiring an independent bias audit before use</a><span> · Consejo de la Ciudad de Nueva York; Department of Consumer and Worker Protection (DCWP) · 11-12-2021</span></li><li><a href="https://www.ecfr.gov/current/title-29/section-1607.4" target="_blank" rel="noopener">Uniform Guidelines on Employee Selection Procedures (1978), 29 CFR 1607.4(D): Adverse impact and the &quot;four-fifths rule&quot;</a><span> · EEOC y agencias federales de EE. UU. (Code of Federal Regulations) · 25-08-1978</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-15767" target="_blank" rel="noopener">Law 12/2021 of 28 September amending the consolidated text of the Workers&#39; Statute Act to guarantee the labour rights of persons engaged in delivery work for digital platforms (unofficial translation)</a><span> · Cortes Generales · 28-09-2021</span></li><li><a href="https://www.boe.es/eli/es/lo/1985/08/02/11/con" target="_blank" rel="noopener">Organic Law 11/1985 of 2 August on Freedom of Association (unofficial translation)</a><span> · Cortes Generales · 02-08-1985</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Organic Law 3/2018, of 5 December, on the Protection of Personal Data and Guarantee of Digital Rights (Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales)</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-7840" target="_blank" rel="noopener">Royal Decree-Law 9/2021 of 11 May amending the consolidated text of the Workers&#39; Statute Act to guarantee the labour rights of persons engaged in delivery work for digital platforms (unofficial translation)</a><span> · Gobierno de Espa&#241;a · 11-05-2021</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

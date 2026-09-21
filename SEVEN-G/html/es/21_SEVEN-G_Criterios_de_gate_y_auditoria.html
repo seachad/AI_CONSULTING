@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -617,85 +622,85 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-ev-01">
 <td><strong>EV.01</strong></td>
 <td>Identificación</td>
 <td>Código de iniciativa, plantilla (P) o registro de origen y título.</td>
 <td>Pendiente</td>
 </tr>
-<tr>
+<tr id="cod-ev-02">
 <td><strong>EV.02</strong></td>
 <td>Autor</td>
 <td>Persona y rol que la elabora.</td>
 <td>Pendiente</td>
 </tr>
-<tr>
+<tr id="cod-ev-03">
 <td><strong>EV.03</strong></td>
 <td>Fecha</td>
 <td>Fecha de elaboración y de última modificación.</td>
 <td>Pendiente</td>
 </tr>
-<tr>
+<tr id="cod-ev-04">
 <td><strong>EV.04</strong></td>
 <td>Versión</td>
 <td>Número de versión; la versión verificada es la enlazada en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>. Un cambio posterior exige nueva verificación.</td>
 <td>Pendiente</td>
 </tr>
-<tr>
+<tr id="cod-ev-05">
 <td><strong>EV.05</strong></td>
 <td>Anterioridad</td>
 <td>Fecha anterior a la solicitud del <em>gate</em>, y actividad descrita anterior a la decisión. Documentación elaborada a posteriori para justificar un avance ya producido invalida el <em>gate</em> (01 §7.4).</td>
 <td>No válida · no conformidad mayor</td>
 </tr>
-<tr>
+<tr id="cod-ev-06">
 <td><strong>EV.06</strong></td>
 <td>Integridad y trazabilidad</td>
 <td>Guardada en el repositorio documental con historial de versiones; enlace accesible al verificador y al auditor desde <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> o <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>.</td>
 <td>Pendiente</td>
 </tr>
-<tr>
+<tr id="cod-ev-07">
 <td><strong>EV.07</strong></td>
 <td>Pertinencia</td>
 <td>Se refiere a esta iniciativa, a su alcance y a la versión del sistema. La reutilización de evidencias de otra iniciativa se justifica.</td>
 <td>No válida</td>
 </tr>
-<tr>
+<tr id="cod-ev-08">
 <td><strong>EV.08</strong></td>
 <td>Datos reales</td>
 <td>Cuando el criterio exige resultados: fuente, periodo y método reproducibles; importes con fórmula y estado (validado, declarado o estimado).</td>
 <td>No válida</td>
 </tr>
-<tr>
+<tr id="cod-ev-09">
 <td><strong>EV.09</strong></td>
 <td>Aprobación y separación</td>
 <td>Aprobada por quien corresponde; autor, verificador y decisor son personas distintas.</td>
 <td>No válida · no conformidad mayor si hay autoaprobación</td>
 </tr>
-<tr>
+<tr id="cod-ev-10">
 <td><strong>EV.10</strong></td>
 <td>Completitud</td>
 <td>Campos obligatorios de la plantilla rellenos; en Lite, los no marcados <em>(Enterprise)</em>. Los datos ausentes figuran como &quot;sin dato&quot;, no como cero.</td>
 <td>Pendiente</td>
 </tr>
-<tr>
+<tr id="cod-ev-11">
 <td><strong>EV.11</strong></td>
 <td>Coherencia</td>
 <td>Las cifras y afirmaciones coinciden entre evidencias (por ejemplo, valor en <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> y <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; riesgos en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> y controles en <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>).</td>
 <td>No cumple hasta aclarar</td>
 </tr>
-<tr>
+<tr id="cod-ev-12">
 <td><strong>EV.12</strong></td>
 <td>Protección de la información</td>
 <td>No contiene datos personales innecesarios; acceso restringido según su clasificación.</td>
 <td>Observación o no conformidad según el caso</td>
 </tr>
-<tr>
+<tr id="cod-ev-13">
 <td><strong>EV.13</strong></td>
 <td>Evidencias generadas por sistemas</td>
 <td>Exportación fechada o enlace con marca temporal a registros, paneles o resultados de pruebas. Una captura sin fecha ni origen no es válida.</td>
 <td>No válida</td>
 </tr>
-<tr>
+<tr id="cod-ev-14">
 <td><strong>EV.14</strong></td>
 <td>Evidencias de terceros</td>
 <td>Emisor identificable, vigencia y alcance que cubre el servicio contratado (informes, certificaciones, documentación del proveedor).</td>
@@ -2296,43 +2301,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-g1">
 <td><strong>G1</strong></td>
 <td>Impacto en personas recomendado (G1.10).</td>
 <td>Roles y equipos afectados identificados (G1.10).</td>
 <td>Propuesta comunicada al comité de IA (G1.06); patrocinador de alta dirección (G0.01).</td>
 </tr>
-<tr>
+<tr id="cod-g2">
 <td><strong>G2</strong></td>
 <td>Línea base de coste, tiempo o errores (G2.03); ahorro esperado con fórmula (G2.06); objetivo de adopción recomendado (G2.10).</td>
 <td>Línea base de rendimiento y coste (G2.03); objetivo de adopción obligatorio (G2.10).</td>
 <td>Hitos de aprendizaje, límite de inversión y criterios de parada por etapa (G2.08, G2.11); aprobación del consejo (G2.12).</td>
 </tr>
-<tr>
+<tr id="cod-g3">
 <td><strong>G3</strong></td>
 <td>Neto anual esperado positivo dentro del horizonte de C2 (G3.05).</td>
 <td>Neto esperado y viabilidad de la adopción y del cambio de rol (G3.05, G3.16).</td>
 <td>Viabilidad de la primera etapa, criterios de parada por etapa y valor de opción documentado (G3.01, G3.05); impacto en el modelo operativo (G3.16).</td>
 </tr>
-<tr>
+<tr id="cod-g4">
 <td><strong>G4</strong></td>
 <td>Plan de materialización de la capacidad liberada (G4.11).</td>
 <td>Plan de cambio de rol y reasignación (G4.11).</td>
 <td>Cambio del modelo operativo de la primera etapa; piloto que mide evidencia de mercado o de cliente (G4.11, G4.12).</td>
 </tr>
-<tr>
+<tr id="cod-g5">
 <td><strong>G5</strong></td>
 <td>Eficiencia validada frente a la línea base; plan para materializar la capacidad liberada (G5.08, G5.10).</td>
 <td>Adopción real y mejora de rendimiento medidas; plan de reasignación (G5.08, G5.10).</td>
 <td>Evidencia de mercado o de cliente: uso, conversión, ingresos iniciales o cambio operativo verificado (G5.08).</td>
 </tr>
-<tr>
+<tr id="cod-r6">
 <td><strong>R6</strong></td>
 <td>Ahorro materializado o capacidad reasignada (R6.02); adopción recomendada (R6.14).</td>
 <td>Rendimiento y adopción sostenidos (R6.02, R6.14).</td>
 <td>Avance frente a los hitos de la etapa (R6.02).</td>
 </tr>
-<tr>
+<tr id="cod-g7">
 <td><strong>G7</strong></td>
 <td>Ahorro materializado, no solo capacidad liberada (G7.01).</td>
 <td>Rendimiento sostenido y capacidad reasignada (G7.01).</td>
@@ -2498,19 +2503,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-n1-estandar">
 <td><strong>N1 · Estándar</strong></td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> simplificada; condiciones de uso de datos revisadas (G3.20, G3.21).</td>
 <td>Condiciones aceptadas y registradas (G5.20).</td>
 <td>Revisión de cambios del servicio (R6.12).</td>
 </tr>
-<tr>
+<tr id="cod-n2-reforzado">
 <td><strong>N2 · Reforzado</strong></td>
 <td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> completa; derecho de auditoría o informes equivalentes y notificación de incidentes (G3.21).</td>
 <td>Cláusulas en contrato firmado (G4.22, G5.20).</td>
 <td>Revisión de incidentes y cumplimiento contractual.</td>
 </tr>
-<tr>
+<tr id="cod-n3-critico">
 <td><strong>N3 · Crítico</strong></td>
 <td>Además, estrategia de salida y requisitos de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> cuando apliquen (G3.20).</td>
 <td>Además, prueba de continuidad o de salida cuando proceda.</td>
@@ -2876,7 +2881,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Verificador, opinión (Conforme, Conforme con observaciones o No conforme), observaciones y declaración de ausencia de conflicto.</td>
 <td>Sí</td>
 </tr>
-<tr>
+<tr id="cod-firmas-g5">
 <td><strong>Firmas (G5)</strong></td>
 <td>En Enterprise: cada firmante, sentido (favorable, con reservas o veto), motivo y fecha. En Lite: conformidad de riesgos.</td>
 <td>Sí en G5</td>
@@ -2925,7 +2930,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t03">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td>Gestor de <em>gates</em></td>
 <td>Criterios con código y aplicabilidad; estados, dimensiones R y D, verificación, firmas, decisión y condiciones; cálculo del grado de cumplimiento y bloqueo de Continuar con bloqueantes.</td>
@@ -2935,12 +2940,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Resto de herramientas del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a></td>
 <td>Trazabilidad temporal y evidencias de los criterios, según la columna <em>Evidencia</em>.</td>
 </tr>
-<tr>
+<tr id="cod-p23">
 <td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></strong></td>
 <td>Firma de puesta en producción</td>
 <td>Firma multinivel y veto (sección 9).</td>
 </tr>
-<tr>
+<tr id="cod-p29">
 <td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></strong></td>
 <td>Registro de decisión de <em>gate</em></td>
 <td>Formato de la sección 11.</td>
@@ -3032,7 +3037,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -586,31 +591,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-m1-diagnostico">
 <td><strong>M1 · Diagnóstico</strong></td>
 <td>Inventario inicial (incluidos terceros y uso corporativo); madurez D1–D7 con evidencia; mapa de esferas; perfil del índice de transformación; valor por estado y coste recurrente de los casos en producción; principales riesgos y carencias.</td>
 <td>Tesis de IA; construcción de soluciones; clasificación regulatoria definitiva.</td>
 <td>[ ]</td>
 </tr>
-<tr>
+<tr id="cod-m2-implantacion-de-90-dias">
 <td><strong>M2 · Implantación de 90 días</strong></td>
 <td>Mes 1 diagnóstico; mes 2 riesgos y oportunidades por esfera y propuesta de tesis, ambición y apetito; mes 3 estructura de gobierno, cartera inicial, registros en funcionamiento y primer paquete.</td>
 <td>Verificación independiente de <em>gates</em> que el tercero ayude a preparar; decisiones de los órganos.</td>
 <td>[ ]</td>
 </tr>
-<tr>
+<tr id="cod-m3-auditoria-independiente">
 <td><strong>M3 · Auditoría independiente</strong></td>
 <td>Siete condiciones de 01 §14; muestreo de decisiones de <em>gate</em>; inventario y clasificación; reglas de medición en el paquete; proceso de no conformidades; registro de recomendaciones e independencia de las valoraciones.</td>
 <td>Diseñar o implantar correcciones; emitir certificaciones.</td>
 <td>[ ]</td>
 </tr>
-<tr>
+<tr id="cod-m4-asesoramiento-al-consejo">
 <td><strong>M4 · Asesoramiento al consejo</strong></td>
 <td>Preparación de sesiones (<a href="../61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>); revisión del paquete antes del envío; recomendaciones; valoraciones independientes encargadas; apoyo en C2 y C5; formación del consejo.</td>
 <td>Gestión de la IA de la compañía; preparación del paquete que revisa; selección de proveedores.</td>
 <td>[ ]</td>
 </tr>
-<tr>
+<tr id="cod-m5-acompanamiento-continuo">
 <td><strong>M5 · Acompañamiento continuo</strong></td>
 <td>Apoyo a la oficina de IA: registro e inventario, evidencias con los equipos, métricas del embudo, paquete trimestral, apoyo a R6 y a C5.</td>
 <td>Verificación de <em>gates</em> de iniciativas en las que participa; decisiones; valoración de recomendaciones cuya ejecución apoya.</td>
@@ -1265,7 +1270,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="../codigos.js" defer></script>
 
 <script>
 (function () {

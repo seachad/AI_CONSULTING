@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1302,7 +1307,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>According to internal rules</td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-minimum-scale-in-production-b3">
 <td><strong>Minimum scale in production (B3)</strong></td>
 <td>Number of initiatives in production that the transformation index requires for Efficiency at scale (<a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>).</td>
 <td>5 by default; adjustable to size</td>
@@ -1497,19 +1502,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-critical">
 <td><strong>S1 · Critical</strong></td>
 <td>AI Committee within 24 hours; board committee within 72 hours.</td>
 </tr>
-<tr>
+<tr id="cod-s2-high">
 <td><strong>S2 · High</strong></td>
 <td>AI Committee within 72 hours.</td>
 </tr>
-<tr>
+<tr id="cod-s3-medium">
 <td><strong>S3 · Medium</strong></td>
 <td>AI Office within 5 working days.</td>
 </tr>
-<tr>
+<tr id="cod-s4-low">
 <td><strong>S4 · Low</strong></td>
 <td>Record in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>.</td>
 </tr>
@@ -2680,67 +2685,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t19">
 <td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></strong></td>
 <td>AI thesis and risk appetite template</td>
 <td>Board decision document (annex).</td>
 </tr>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Receives reference time limits, portfolio bands and horizons.</td>
 </tr>
-<tr>
+<tr id="cod-t04">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></strong></td>
 <td>Intensity determination</td>
 <td>Receives the Enterprise investment threshold and the red lines.</td>
 </tr>
-<tr>
+<tr id="cod-t06">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></strong></td>
 <td>Risk matrix and register</td>
 <td>Receives the economic impact thresholds and the appetite grades.</td>
 </tr>
-<tr>
+<tr id="cod-t08">
 <td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Receives the approved time limits.</td>
 </tr>
-<tr>
+<tr id="cod-t14">
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Transformation index calculator</td>
 <td>Receives condition IT-D1 and threshold B3.</td>
 </tr>
-<tr>
+<tr id="cod-t16">
 <td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></strong></td>
 <td>Portfolio sphere map</td>
 <td>Receives the ambition per sphere and the target grades.</td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Shows tolerance metrics, portfolio balance and budget.</td>
 </tr>
-<tr>
+<tr id="cod-t18">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
 <td>Board recommendations register</td>
 <td>Records the C2 decision and its reviews.</td>
 </tr>
-<tr>
+<tr id="cod-p04">
 <td><strong><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></strong></td>
 <td>Intensity determination</td>
 <td>Applies the Enterprise investment threshold.</td>
 </tr>
-<tr>
+<tr id="cod-p07">
 <td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></strong></td>
 <td>Sphere and ambition classification</td>
 <td>Checks fit with the ambition per sphere.</td>
 </tr>
-<tr>
+<tr id="cod-p12">
 <td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
 <td>Risk matrix and register</td>
 <td>Applies impact and acceptance thresholds.</td>
 </tr>
-<tr>
+<tr id="cod-p35">
 <td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a></strong></td>
 <td>AI thesis and risk appetite</td>
 <td>C2 board decision document: completes the annex (section 15).</td>
@@ -2835,7 +2840,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

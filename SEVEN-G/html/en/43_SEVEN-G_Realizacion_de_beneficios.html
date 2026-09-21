@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -455,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-g2-hypothesis">
 <td><strong>G2 · Hypothesis</strong></td>
 <td>Expected value with formula, baseline and attribution method.</td>
 <td>Estimated or declared</td>
@@ -463,7 +468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>AI Office or AI Auditor</td>
 <td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
 </tr>
-<tr>
+<tr id="cod-g3-feasibility">
 <td><strong>G3 · Feasibility</strong></td>
 <td>Expected value revised with full costs and a draft realisation plan.</td>
 <td>Estimated or declared</td>
@@ -471,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>AI Risk Owner or AI Auditor</td>
 <td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
 </tr>
-<tr>
+<tr id="cod-g4-design">
 <td><strong>G4 · Design</strong></td>
 <td>Full realisation plan, including the materialisation plan.</td>
 <td>—</td>
@@ -479,7 +484,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>AI Office</td>
 <td>Realisation plan (section 4)</td>
 </tr>
-<tr>
+<tr id="cod-g5-go-live">
 <td><strong>G5 · Go-live</strong></td>
 <td>Value measured in the pilot with the attribution method.</td>
 <td>Declared; validated if management control verifies the pilot period</td>
@@ -487,7 +492,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Management control and AI Auditor</td>
 <td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
 </tr>
-<tr>
+<tr id="cod-phase-6-each-period">
 <td><strong>Phase 6 · Each period</strong></td>
 <td>Realised value for the period.</td>
 <td>Declared → validated</td>
@@ -503,7 +508,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>AI Committee or AI Sponsor</td>
 <td>Review report (section 8)</td>
 </tr>
-<tr>
+<tr id="cod-g7-scale-or-retire">
 <td><strong>G7 · Scale or retire</strong></td>
 <td>Validated realised value and actual versus declared ambition.</td>
 <td>Validated to demonstrate criteria</td>
@@ -1509,32 +1514,32 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Realisation plan, recording by period, statuses, realisation, variances.</td>
 </tr>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Owners, review events, R6 and G7 decisions.</td>
 </tr>
-<tr>
+<tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
 <td>Cost calculator per use case</td>
 <td>Actual recurring cost.</td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Consolidation and presentation.</td>
 </tr>
-<tr>
+<tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Materialisation and reassignment of capacity.</td>
 </tr>
-<tr>
+<tr id="cod-t22">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></strong></td>
 <td>Retirement manager</td>
 <td>Final value and retirement.</td>
@@ -1544,32 +1549,32 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Value hypothesis canvas · Baseline</td>
 <td>Reference for the plan.</td>
 </tr>
-<tr>
+<tr id="cod-p20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Enabling changes and destination of capacity.</td>
 </tr>
-<tr>
+<tr id="cod-p22">
 <td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
 <td>Validation and pilot results</td>
 <td>Value measured at G5.</td>
 </tr>
-<tr>
+<tr id="cod-p28">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Tracking by period.</td>
 </tr>
-<tr>
+<tr id="cod-p62">
 <td><strong><a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html">P62</a></strong></td>
 <td>Benefits realisation plan</td>
 <td>Realisation plan: curve, owners and enablers (section 4).</td>
 </tr>
-<tr>
+<tr id="cod-p29">
 <td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></strong></td>
 <td><em>Gate</em> decision record</td>
 <td>R6 and G7 decisions.</td>
 </tr>
-<tr>
+<tr id="cod-p30">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
 <td>Scaling or retirement decision</td>
 <td>Value evidence at G7.</td>
@@ -1652,7 +1657,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

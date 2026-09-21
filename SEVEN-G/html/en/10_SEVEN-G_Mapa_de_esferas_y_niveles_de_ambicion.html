@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1895,31 +1900,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-c1-diagnosis">
 <td><strong>C1 · Diagnosis</strong></td>
 <td>Classify existing initiatives and systems by sphere and level; calculate the available indicators; assign grades to 08 and 09; build the current heat map. For each sphere, the <strong>level achieved</strong> (highest level with at least one initiative in production and measured value) and the <strong>level in the portfolio</strong> (highest level with any initiative that has passed G2) are recorded.</td>
 <td>Current sphere map with explicit indicators and &quot;no data&quot;.</td>
 <td>11, 12</td>
 </tr>
-<tr>
+<tr id="cod-c2-direction">
 <td><strong>C2 · Direction</strong></td>
 <td>Set the priority and target ambition for each sphere 01–07, and the target grade by dimension for 08 and 09, with one main indicator per sphere chosen from those in this document.</td>
 <td>Ambition by sphere approved by the board.</td>
 <td>13</td>
 </tr>
-<tr>
+<tr id="cod-c3-portfolio">
 <td><strong>C3 · Portfolio</strong></td>
 <td>Compare the heat map with the target ambition; prioritise initiatives that close gaps; limit investment outside the thesis; check that the enabling spheres support the ambition of the value spheres.</td>
 <td>Prioritised portfolio with sphere and level per initiative.</td>
 <td>14</td>
 </tr>
-<tr>
+<tr id="cod-c4-oversight">
 <td><strong>C4 · Oversight</strong></td>
 <td>Quarterly heat map in the board dashboard with gap, outside-the-thesis and no-evidence markers; evolution of the main indicators.</td>
 <td>Board alerts and recommendations.</td>
 <td>60, 62</td>
 </tr>
-<tr>
+<tr id="cod-c5-review">
 <td><strong>C5 · Review</strong></td>
 <td>Compare the map with the previous year's and with the target ambition; recalibrate colour thresholds and markers; review the chosen indicators.</td>
 <td>Proposed adjustment of ambition by sphere.</td>
@@ -1938,25 +1943,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-phase-0">
 <td><strong>Phase 0</strong></td>
 <td>The expected sphere is stated in the initiative charter, to check alignment with the thesis.</td>
 <td>AI Product Owner</td>
 <td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a></td>
 </tr>
-<tr>
+<tr id="cod-phase-1">
 <td><strong>Phase 1</strong></td>
 <td>The <strong>primary sphere, secondary sphere and ambition level</strong> are proposed using the rules in section 4 and the five questions in <a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>. It is checked whether the sphere is a priority in C2.</td>
 <td>AI Product Owner; reviewed by the AI Office</td>
 <td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
 </tr>
-<tr>
+<tr id="cod-phase-2">
 <td><strong>Phase 2</strong></td>
 <td>The primary sphere is confirmed with the main metric of the hypothesis and the ambition level is confirmed. At least one indicator of the primary sphere is chosen as the hypothesis metric or as a secondary metric.</td>
 <td>Verified by the AI Office (Lite) or the AI Auditor (Enterprise)</td>
 <td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
 </tr>
-<tr>
+<tr id="cod-phase-7">
 <td><strong>Phase 7</strong></td>
 <td>The <strong>actual ambition</strong> is recorded with the evidence, and the sphere is reviewed if the main metric has changed.</td>
 <td>AI Product Owner; verified by the AI Office or the AI Auditor</td>
@@ -2047,52 +2052,52 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Primary and secondary sphere fields, proposed, confirmed and actual ambition level, and contribution dimension for 08 and 09.</td>
 </tr>
-<tr>
+<tr id="cod-t02">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Basis for the data, decision, compliance and governance indicators.</td>
 </tr>
-<tr>
+<tr id="cod-t05">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
 <td>Ambition classifier</td>
 <td>Five questions from <a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>, integrated with sphere selection.</td>
 </tr>
-<tr>
+<tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Indicator amounts converted into money.</td>
 </tr>
-<tr>
+<tr id="cod-t14">
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Transformation index calculator</td>
 <td>Uses the enablement band to exclude spheres 08 and 09 from signals 1, 2 and 7.</td>
 </tr>
-<tr>
+<tr id="cod-t16">
 <td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></strong></td>
 <td>Portfolio sphere map</td>
 <td>Heat map in section 8.</td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Shows the heat map and the main indicators by sphere.</td>
 </tr>
-<tr>
+<tr id="cod-p06">
 <td><strong><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></strong></td>
 <td>Opportunity portfolio and screening notes</td>
 <td>Sphere proposed in phase 1.</td>
 </tr>
-<tr>
+<tr id="cod-p07">
 <td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></strong></td>
 <td>Sphere and ambition classification</td>
 <td>Evidence for phases 1, 2 and 7.</td>
 </tr>
-<tr>
+<tr id="cod-p31">
 <td><strong><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></strong></td>
 <td>Use case profile</td>
 <td>Understandable description with its sphere and level.</td>
@@ -2187,7 +2192,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

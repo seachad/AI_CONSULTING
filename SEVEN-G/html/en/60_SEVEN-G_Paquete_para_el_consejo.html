@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -637,7 +642,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1">
 <td><strong>S1</strong> incident (includes possible serious incidents under regulation)</td>
 <td>Chair of the board committee; information to the full board</td>
 <td>As soon as the severity is confirmed, without waiting for the quarterly pack</td>
@@ -895,11 +900,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>S1</strong> incidents</td>
 <td>Always, individually, in addition to the extraordinary communication.</td>
 </tr>
-<tr>
+<tr id="cod-s2">
 <td><strong>S2</strong> incidents</td>
 <td>Individually in the quarterly pack.</td>
 </tr>
-<tr>
+<tr id="cod-s3-and-s4">
 <td><strong>S3 and S4</strong> incidents</td>
 <td>Aggregated: number, type, mean time to contain.</td>
 </tr>
@@ -1256,27 +1261,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-d-20">
 <td><strong>D−20</strong></td>
 <td>Data cut-off date. Snapshot of the dashboard and the register.</td>
 <td>AI Office</td>
 </tr>
-<tr>
+<tr id="cod-d-15">
 <td><strong>D−15</strong></td>
 <td>Validation of figures: validated, declared and estimated statuses; validated proportion.</td>
 <td>Management control</td>
 </tr>
-<tr>
+<tr id="cod-d-12">
 <td><strong>D−12</strong></td>
 <td>Verification of evidence for the decisions requested.</td>
 <td>AI Auditor</td>
 </tr>
-<tr>
+<tr id="cod-d-10">
 <td><strong>D−10</strong></td>
 <td>Review of the pack; selection of the three use cases.</td>
 <td>AI Committee</td>
 </tr>
-<tr>
+<tr id="cod-d-7">
 <td><strong>D−7</strong></td>
 <td>Submission to the board committee and the full board.</td>
 <td>Board secretariat</td>
@@ -1286,7 +1291,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Presentation following the guide in <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">document 61</a>.</td>
 <td>Chair of the AI Committee</td>
 </tr>
-<tr>
+<tr id="cod-d-5">
 <td><strong>D+5</strong></td>
 <td>Recording of decisions (DEC) and recommendations (REC) with owner and date.</td>
 <td>Board secretariat and AI Office</td>
@@ -1540,7 +1545,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Current</td>
 <td>With the snapshot from the previous quarter</td>
 </tr>
-<tr>
+<tr id="cod-annual-review-c5">
 <td><strong>Annual review (C5)</strong></td>
 <td>Full</td>
 <td>Current</td>
@@ -1843,7 +1848,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

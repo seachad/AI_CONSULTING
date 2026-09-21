@@ -2327,11 +2327,18 @@ function temaSitioInicial(){
 function temaSitioGuardar(v){
   try{ if(v === 'auto'){ localStorage.setItem(LS_TEMA_AUTO, '1'); } else { localStorage.removeItem(LS_TEMA_AUTO); localStorage.setItem(LS_TEMA_SITIO, ({salmon:'salmon', claro:'claro', oscuro:'noche'})[v] || 'salmon'); } }catch(e){}
 }
+// control «Ir a código» del sitio (D88): carga el índice del idioma activo, SEVEN-G/html/<idioma>/codigos.js
+function irCodigoCargar(l){
+  if(window.sevengIrCodigo && window.sevengIrCodigo.lang===l){ window.sevengIrCodigo.iniciar(); return; }
+  const previo=document.getElementById('ir-codigo-js'); if(previo) previo.parentNode.removeChild(previo);
+  const s=document.createElement('script'); s.id='ir-codigo-js'; s.src='../../html/'+l+'/codigos.js'; document.head.appendChild(s);
+}
 function sitioNav(){
   const n = document.getElementById('sitio-nav'); if(!n) return; const en = UI.lang === 'en', l = en ? 'en' : 'es';
   const e = [[en ? '../../../en/index.html' : '../../../index.html', en ? '⌂ Home' : '⌂ Portada'], ['../../html/'+l+'/00_SEVEN-G_Que_es_y_para_que_sirve.html', en ? 'What SEVEN-G is' : 'Qué es SEVEN-G'], ['../../html/'+l+'/index.html', en ? 'Library' : 'Biblioteca'], ['../../html/'+l+'/curso/M00_SEVEN-G_Curso_Guia_del_curso.html', en ? 'Course' : 'Curso'], ['../T01_registro_iniciativas/registro.html', en ? 'Initiative register' : 'Registro de iniciativas'], ['../T17_panel_consejo/index.html', en ? 'Board dashboard' : 'Panel del consejo']];
   n.setAttribute('aria-label', en ? 'Site' : 'Sitio');
-  n.innerHTML = '<span class="sitio-marca" style="color:var(--papel)">SEVEN-G</span>' + e.map(x => '<a href="'+x[0]+'">'+x[1]+'</a>').join('');
+  n.innerHTML = '<span class="sitio-marca" style="color:var(--papel)">SEVEN-G</span>' + e.map(x => '<a href="'+x[0]+'">'+x[1]+'</a>').join('') + '<span data-ir-codigo style="margin-left:auto"></span>';
+  irCodigoCargar(l);
 }function aplicarTema(){ temaSitioInicial(); const r=document.documentElement; if(UI.tema==='claro'||UI.tema==='oscuro'||UI.tema==='salmon') r.setAttribute('data-theme',UI.tema); else r.removeAttribute('data-theme'); }
 function cabecera(r){
   document.documentElement.lang = UI.lang;

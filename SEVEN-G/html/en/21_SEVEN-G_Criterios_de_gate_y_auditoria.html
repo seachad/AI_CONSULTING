@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -617,85 +622,85 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-ev-01">
 <td><strong>EV.01</strong></td>
 <td>Identification</td>
 <td>Initiative code, template (P) or source record, and title.</td>
 <td>Pending</td>
 </tr>
-<tr>
+<tr id="cod-ev-02">
 <td><strong>EV.02</strong></td>
 <td>Author</td>
 <td>Person and role who prepares it.</td>
 <td>Pending</td>
 </tr>
-<tr>
+<tr id="cod-ev-03">
 <td><strong>EV.03</strong></td>
 <td>Date</td>
 <td>Date of preparation and of last modification.</td>
 <td>Pending</td>
 </tr>
-<tr>
+<tr id="cod-ev-04">
 <td><strong>EV.04</strong></td>
 <td>Version</td>
 <td>Version number; the verified version is the one linked in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>. A subsequent change requires new verification.</td>
 <td>Pending</td>
 </tr>
-<tr>
+<tr id="cod-ev-05">
 <td><strong>EV.05</strong></td>
 <td>Prior existence</td>
 <td>Dated before the <em>gate</em> request, and the activity described predates the decision. Documentation prepared after the fact to justify progress already made invalidates the <em>gate</em> (01 §7.4).</td>
 <td>Not valid · major nonconformity</td>
 </tr>
-<tr>
+<tr id="cod-ev-06">
 <td><strong>EV.06</strong></td>
 <td>Integrity and traceability</td>
 <td>Stored in the document repository with version history; link accessible to the verifier and the auditor from <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>.</td>
 <td>Pending</td>
 </tr>
-<tr>
+<tr id="cod-ev-07">
 <td><strong>EV.07</strong></td>
 <td>Relevance</td>
 <td>It refers to this initiative, its scope and the system version. Reuse of evidence from another initiative is justified.</td>
 <td>Not valid</td>
 </tr>
-<tr>
+<tr id="cod-ev-08">
 <td><strong>EV.08</strong></td>
 <td>Real data</td>
 <td>Where the criterion requires results: reproducible source, period and method; amounts with a formula and status (validated, declared or estimated).</td>
 <td>Not valid</td>
 </tr>
-<tr>
+<tr id="cod-ev-09">
 <td><strong>EV.09</strong></td>
 <td>Approval and segregation</td>
 <td>Approved by the appropriate person; author, verifier and decision-maker are different people.</td>
 <td>Not valid · major nonconformity if there is self-approval</td>
 </tr>
-<tr>
+<tr id="cod-ev-10">
 <td><strong>EV.10</strong></td>
 <td>Completeness</td>
 <td>Mandatory fields of the template filled in; in Lite, those not marked <em>(Enterprise)</em>. Missing data are shown as &quot;no data&quot;, not as zero.</td>
 <td>Pending</td>
 </tr>
-<tr>
+<tr id="cod-ev-11">
 <td><strong>EV.11</strong></td>
 <td>Consistency</td>
 <td>Figures and statements match across evidence (for example, value in <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> and <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and controls in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>).</td>
 <td>Not met until clarified</td>
 </tr>
-<tr>
+<tr id="cod-ev-12">
 <td><strong>EV.12</strong></td>
 <td>Information protection</td>
 <td>It contains no unnecessary personal data; access restricted according to its classification.</td>
 <td>Observation or nonconformity, depending on the case</td>
 </tr>
-<tr>
+<tr id="cod-ev-13">
 <td><strong>EV.13</strong></td>
 <td>System-generated evidence</td>
 <td>Dated export or time-stamped link to logs, dashboards or test results. A screenshot with no date or source is not valid.</td>
 <td>Not valid</td>
 </tr>
-<tr>
+<tr id="cod-ev-14">
 <td><strong>EV.14</strong></td>
 <td>Third-party evidence</td>
 <td>Identifiable issuer, validity and a scope that covers the contracted service (reports, certifications, supplier documentation).</td>
@@ -2296,43 +2301,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-g1">
 <td><strong>G1</strong></td>
 <td>Impact on people recommended (G1.10).</td>
 <td>Affected roles and teams identified (G1.10).</td>
 <td>Proposal communicated to the AI Committee (G1.06); senior management sponsor (G0.01).</td>
 </tr>
-<tr>
+<tr id="cod-g2">
 <td><strong>G2</strong></td>
 <td>Baseline for cost, time or errors (G2.03); expected savings with a formula (G2.06); adoption target recommended (G2.10).</td>
 <td>Baseline for performance and cost (G2.03); adoption target mandatory (G2.10).</td>
 <td>Learning milestones, investment limit and stop criteria per stage (G2.08, G2.11); board approval (G2.12).</td>
 </tr>
-<tr>
+<tr id="cod-g3">
 <td><strong>G3</strong></td>
 <td>Positive expected annual net value within the C2 horizon (G3.05).</td>
 <td>Expected net value and feasibility of adoption and of the role change (G3.05, G3.16).</td>
 <td>Feasibility of the first stage, stop criteria per stage and documented option value (G3.01, G3.05); impact on the operating model (G3.16).</td>
 </tr>
-<tr>
+<tr id="cod-g4">
 <td><strong>G4</strong></td>
 <td>Plan for realising released capacity (G4.11).</td>
 <td>Plan for role change and reallocation (G4.11).</td>
 <td>Change in the operating model for the first stage; pilot that measures market or customer evidence (G4.11, G4.12).</td>
 </tr>
-<tr>
+<tr id="cod-g5">
 <td><strong>G5</strong></td>
 <td>Efficiency validated against the baseline; plan to realise released capacity (G5.08, G5.10).</td>
 <td>Actual adoption and performance improvement measured; reallocation plan (G5.08, G5.10).</td>
 <td>Market or customer evidence: use, conversion, initial revenue or verified operational change (G5.08).</td>
 </tr>
-<tr>
+<tr id="cod-r6">
 <td><strong>R6</strong></td>
 <td>Realised savings or reassigned capacity (R6.02); adoption recommended (R6.14).</td>
 <td>Sustained performance and adoption (R6.02, R6.14).</td>
 <td>Progress against the stage milestones (R6.02).</td>
 </tr>
-<tr>
+<tr id="cod-g7">
 <td><strong>G7</strong></td>
 <td>Realised savings, not just released capacity (G7.01).</td>
 <td>Sustained performance and reassigned capacity (G7.01).</td>
@@ -2498,19 +2503,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-n1-standard">
 <td><strong>N1 · Standard</strong></td>
 <td>Simplified <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; data use terms reviewed (G3.20, G3.21).</td>
 <td>Terms accepted and recorded (G5.20).</td>
 <td>Review of changes to the service (R6.12).</td>
 </tr>
-<tr>
+<tr id="cod-n2-enhanced">
 <td><strong>N2 · Enhanced</strong></td>
 <td>Full <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; right to audit or equivalent reports and incident notification (G3.21).</td>
 <td>Clauses in a signed contract (G4.22, G5.20).</td>
 <td>Review of incidents and contractual compliance.</td>
 </tr>
-<tr>
+<tr id="cod-n3-critical">
 <td><strong>N3 · Critical</strong></td>
 <td>In addition, exit strategy and <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> requirements where applicable (G3.20).</td>
 <td>In addition, continuity or exit test where appropriate.</td>
@@ -2876,7 +2881,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Verifier, opinion (Conformant, Conformant with observations or Nonconformant), observations and declaration of absence of conflict.</td>
 <td>Yes</td>
 </tr>
-<tr>
+<tr id="cod-sign-offs-g5">
 <td><strong>Sign-offs (G5)</strong></td>
 <td>In Enterprise: each signatory, position (favourable, with reservations or veto), reason and date. In Lite: risk clearance.</td>
 <td>Yes at G5</td>
@@ -2925,7 +2930,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t03">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td><em>Gate</em> manager</td>
 <td>Criteria with code and applicability; statuses, R and D dimensions, verification, sign-offs, decision and conditions; calculation of the degree of compliance and blocking of Proceed when there are blocking criteria.</td>
@@ -2935,12 +2940,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Other tools in <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a></td>
 <td>Time traceability and evidence for the criteria, according to the <em>Evidence</em> column.</td>
 </tr>
-<tr>
+<tr id="cod-p23">
 <td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></strong></td>
 <td>Go-live sign-off</td>
 <td>Multi-level sign-off and veto (section 9).</td>
 </tr>
-<tr>
+<tr id="cod-p29">
 <td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></strong></td>
 <td><em>Gate</em> decision record</td>
 <td>Format in section 11.</td>
@@ -3032,7 +3037,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

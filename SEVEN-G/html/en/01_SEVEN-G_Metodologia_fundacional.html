@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -770,35 +775,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-c1-diagnosis">
 <td><strong>C1 · Diagnosis</strong></td>
 <td>Understand the real situation of AI in the company.</td>
 <td>AI system inventory; maturity assessment with evidence; current sphere map; transformation index profile; current validated value and cost.</td>
 <td>AI Office</td>
 <td>AI Committee; presented to the board</td>
 </tr>
-<tr>
+<tr id="cod-c2-direction">
 <td><strong>C2 · Direction</strong></td>
 <td>Decide where to play, with what ambition and with what risk appetite.</td>
 <td>AI thesis; ambition level per sphere; risk appetite and thresholds (including those for Enterprise intensity and the return horizon); corporate AI policy; framework budget.</td>
 <td>Senior management</td>
 <td>Board</td>
 </tr>
-<tr>
+<tr id="cod-c3-portfolio">
 <td><strong>C3 · Portfolio</strong></td>
 <td>Select, prioritise and balance initiatives.</td>
 <td>Prioritised portfolio with ambition level, sphere, intensity, budget and owners; retirement criteria; available capacity.</td>
 <td>AI Committee</td>
 <td>AI Committee; the board approves Transform initiatives</td>
 </tr>
-<tr>
+<tr id="cod-c4-oversight">
 <td><strong>C4 · Oversight</strong></td>
 <td>Check that what was decided is being delivered and act on deviations.</td>
 <td>Board dashboard; register of recommendations and decisions; outcomes of relevant <em>gates</em>; incidents and nonconformities; main portfolio risks.</td>
 <td>AI Office</td>
 <td>AI Committee (monthly); board or board committee (quarterly)</td>
 </tr>
-<tr>
+<tr id="cod-c5-review">
 <td><strong>C5 · Review</strong></td>
 <td>Assess progress and adjust direction.</td>
 <td>Review of maturity and the transformation index; delivery against the thesis; lessons learned; proposed adjustments for the new cycle.</td>
@@ -855,17 +860,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-month-1">
 <td><strong>Month 1</strong></td>
 <td>Diagnosis</td>
 <td>Initial inventory, maturity with evidence and transformation profile.</td>
 </tr>
-<tr>
+<tr id="cod-month-2">
 <td><strong>Month 2</strong></td>
 <td>Risks and opportunities</td>
 <td>Main risks and opportunities by sphere, with owner, economic impact and timeframe.</td>
 </tr>
-<tr>
+<tr id="cod-month-3">
 <td><strong>Month 3</strong></td>
 <td>Governance structure</td>
 <td>Bodies, roles, thresholds, <em>gates</em>, metrics and reporting cadence approved.</td>
@@ -1187,7 +1192,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Mandatory evidence</strong></td>
 <td>Operations manual · Monitoring and alerting configuration · Incident response plan · Incident and change log · Value realisation tracking.</td>
 </tr>
-<tr>
+<tr id="cod-continuity-review-r6">
 <td><strong>Continuity review (R6)</strong></td>
 <td>At least quarterly in Enterprise and half-yearly in Lite. It checks realised value against the hypothesis, stability, incidents, compliance and whether the risk classification is still valid. If it detects significant deviations, it brings forward the G7 <em>gate</em>.</td>
 </tr>
@@ -1351,7 +1356,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Only at G7: the value is not sustained, the risk has increased or a better alternative exists.</td>
 <td>Planned and recorded retirement.</td>
 </tr>
-<tr>
+<tr id="cod-proceed-with-operation-proceed-with-conditions-bring-g7-forward">
 <td><strong>Proceed with operation · Proceed with conditions · Bring G7 forward</strong></td>
 <td>Only at R6: the initiative keeps delivering value under control, does so with correctable deviations, or shows relevant deviations in value, risk or compliance.</td>
 <td>Remains in production; with conditions, deadline and owner; or G7 is opened without waiting for the schedule.</td>
@@ -1384,56 +1389,56 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-g0-authorisation">
 <td><strong>G0 · Authorisation</strong></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
-<tr>
+<tr id="cod-g1-opportunity">
 <td><strong>G1 · Opportunity</strong></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>Sponsor, informing the committee</td>
 </tr>
-<tr>
+<tr id="cod-g2-hypothesis">
 <td><strong>G2 · Hypothesis</strong></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
-<tr>
+<tr id="cod-g3-feasibility">
 <td><strong>G3 · Feasibility</strong></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
-<tr>
+<tr id="cod-g4-design">
 <td><strong>G4 · Design</strong></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
-<tr>
+<tr id="cod-g5-go-live">
 <td><strong>G5 · Go-live</strong></td>
 <td>AI Office</td>
 <td>Sponsor with risk clearance</td>
 <td>AI Auditor</td>
 <td>AI Committee after multi-level sign-off</td>
 </tr>
-<tr>
+<tr id="cod-r6-continuity">
 <td><strong>R6 · Continuity</strong></td>
 <td>AI Office</td>
 <td>Sponsor</td>
 <td>AI Auditor</td>
 <td>AI Committee</td>
 </tr>
-<tr>
+<tr id="cod-g7-scale-or-retire">
 <td><strong>G7 · Scale or retire</strong></td>
 <td>AI Office</td>
 <td>Sponsor</td>
@@ -1955,37 +1960,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-phase-2">
 <td><strong>Phase 2</strong></td>
 <td>Baseline, target and success threshold; expected value in money with a formula.</td>
 <td>Make the hypothesis falsifiable.</td>
 </tr>
-<tr>
+<tr id="cod-phase-3">
 <td><strong>Phase 3</strong></td>
 <td>Full costs and expected net value.</td>
 <td>Decide on economic feasibility.</td>
 </tr>
-<tr>
+<tr id="cod-phase-5">
 <td><strong>Phase 5</strong></td>
 <td>Pilot results using the attribution method.</td>
 <td>Demonstrate value before production.</td>
 </tr>
-<tr>
+<tr id="cod-phase-6">
 <td><strong>Phase 6</strong></td>
 <td>Realised value, actual costs, performance, incidents, adoption.</td>
 <td>Maintain control and detect deviations.</td>
 </tr>
-<tr>
+<tr id="cod-phase-7">
 <td><strong>Phase 7</strong></td>
 <td>Validated realised value; actual versus declared ambition.</td>
 <td>Decide on scaling or retirement.</td>
 </tr>
-<tr>
+<tr id="cod-c1-and-c5">
 <td><strong>C1 and C5</strong></td>
 <td>Maturity with evidence; transformation index; portfolio value and cost.</td>
 <td>Diagnose and review direction.</td>
 </tr>
-<tr>
+<tr id="cod-c4">
 <td><strong>C4</strong></td>
 <td>Board dashboard; decision agility (time from idea to approval and to production).</td>
 <td>Oversee.</td>
@@ -2085,7 +2090,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a></strong></td>
 <td>Classification by risk level and prohibited practices (phase 3); risk management, data governance, technical documentation, record-keeping, transparency, human oversight, accuracy and robustness (phases 3 to 6); AI literacy of staff (C2 and people); post-market monitoring and reporting of serious incidents (phase 6).</td>
 </tr>
-<tr>
+<tr id="cod-iso-iec-42001">
 <td><strong>ISO/IEC 42001</strong> (AI management system)</td>
 <td>The corporate cycle acts as the management system: context and leadership (C1–C2), planning (C2–C3), operation (lifecycle), performance evaluation (C4–C5) and improvement (C5 and nonconformities).</td>
 </tr>
@@ -2097,7 +2102,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a></strong></td>
 <td>Legal basis and data minimisation (phase 3), data protection impact assessment (phases 3–4), data subject rights and automated decisions (phases 4–6).</td>
 </tr>
-<tr>
+<tr id="cod-dora-and-nis2">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> and <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a></strong>, where applicable</td>
 <td>Technology supplier risk (phases 3–4), incident management and reporting (phase 6), resilience of critical functions (Enterprise criterion).</td>
 </tr>
@@ -2226,7 +2231,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

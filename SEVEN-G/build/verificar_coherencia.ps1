@@ -500,6 +500,38 @@ try {
   foreach ($x in $conToken) { Mal "comunidad: hay un token de GitHub en $([IO.Path]::GetRelativePath($repo, $x.Path)): revocarlo y quitarlo"; $malCom++ }
   foreach ($p in 'index.html', 'en\index.html') { if (-not [IO.File]::ReadAllText((Join-Path $repo $p)).Contains('SEVEN-G/herramientas/comunidad/index.html')) { Mal "$p`: no enlaza la página de comunidad"; $malCom++ } }
   if (-not $malCom) { Ok 'página de comunidad sin datos de contacto, recursos de terceros, cookies ni tokens, con la regla de los votos y enlazada desde la portada' }
+
+  # ---- 11. control «Ir a código» (D88): índice generado, presente en todas las páginas y con todos sus destinos existentes
+  Write-Host '11. Control «Ir a código»'
+  $malCod = 0
+  foreach ($lang in 'es', 'en') {
+    $dirCod = Join-Path $repo "SEVEN-G\html\$lang"
+    $jsCod = Join-Path $dirCod 'codigos.js'
+    if (-not (Test-Path $jsCod)) { Mal "falta SEVEN-G/html/$lang/codigos.js (pwsh -File SEVEN-G/build/codigos.ps1)"; $malCod++; continue }
+    $mDatos = [regex]::Match([IO.File]::ReadAllText($jsCod), '(?s)var DATOS = (.*?), TX = \{')
+    if (-not $mDatos.Success) { Mal "codigos.js [$lang]: no se pueden leer los datos"; $malCod++; continue }
+    $datosCod = $mDatos.Groups[1].Value | ConvertFrom-Json -AsHashtable
+    foreach ($k in '40', 'P12', 'T06', 'M04', 'G3', 'R6', 'LV-G3', 'FASE 3', 'ESFERA 04', 'C2', 'D6', 'A2', 'S1', 'N2', 'IT-S7', 'SEG-02') { if (-not $datosCod.exactos.ContainsKey($k)) { Mal "codigos.js [$lang]: falta el código «$k»"; $malCod++ } }
+    foreach ($ej in 'G3.05', 'RT-GEN-01', 'IND-VAL-05', 'REC-2026-007', 'IA-2026-014') { if (-not ($datosCod.patrones | Where-Object { $ej -match $_.re })) { Mal "codigos.js [$lang]: ningún patrón reconoce «$ej»"; $malCod++ } }
+    $cacheCod = @{}
+    $destinos = @($datosCod.exactos.Values | ForEach-Object { $_ } | ForEach-Object { $_.h }) + @($datosCod.patrones | ForEach-Object { $_.h }) | Select-Object -Unique
+    foreach ($h in $destinos) {
+      $partes = $h -split '#', 2
+      $fich = [IO.Path]::GetFullPath((Join-Path $dirCod $partes[0]))
+      if (-not (Test-Path $fich)) { Mal "codigos.js [$lang]: destino inexistente $h"; $malCod++; continue }
+      if ($partes.Count -gt 1 -and $partes[1] -and -not $partes[1].StartsWith('/')) {
+        if (-not $cacheCod.ContainsKey($fich)) { $cacheCod[$fich] = [IO.File]::ReadAllText($fich) }
+        if (-not $cacheCod[$fich].Contains("id=""$($partes[1])""")) { Mal "codigos.js [$lang]: ancla inexistente $h"; $malCod++ }
+      }
+    }
+  }
+  $sinControl = foreach ($c in 'SEVEN-G\html', 'SPHERES\html', 'SPAD\html') {
+    Get-ChildItem (Join-Path $repo $c) -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_' } | Where-Object { $t = [IO.File]::ReadAllText($_.FullName); -not ($t.Contains('data-ir-codigo') -and $t -match 'src="[^"]*codigos\.js"') }
+  }
+  foreach ($x in $sinControl) { Mal "sin el control «Ir a código»: $([IO.Path]::GetRelativePath($repo, $x.FullName))"; $malCod++ }
+  foreach ($p in 'index.html', 'en\index.html') { $t = [IO.File]::ReadAllText((Join-Path $repo $p)); if (-not ($t.Contains('data-ir-codigo') -and $t.Contains('codigos.js'))) { Mal "$p`: la portada no tiene el control «Ir a código»"; $malCod++ } }
+  foreach ($h in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -File -Filter *.plantilla.html)) { if (-not [IO.File]::ReadAllText($h.FullName).Contains('irCodigoCargar')) { Mal "herramienta sin el control «Ir a código»: $($h.Name)"; $malCod++ } }
+  if (-not $malCod) { Ok 'índice de códigos generado (ES/EN), con todos sus destinos y anclas, y control presente en todas las páginas, la portada y las herramientas' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

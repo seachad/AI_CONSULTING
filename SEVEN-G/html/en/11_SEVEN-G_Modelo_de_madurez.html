@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -480,43 +485,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-d1">
 <td><strong>D1</strong></td>
 <td><strong>Strategy and governance</strong></td>
 <td>Does the company make decisions on AI with a thesis, bodies, roles and board oversight?</td>
 <td>Sphere 09 · documents 13, 30, 31, 60, 62</td>
 </tr>
-<tr>
+<tr id="cod-d2">
 <td><strong>D2</strong></td>
 <td><strong>Value and portfolio</strong></td>
 <td>Does it select, prioritise, control and retire initiatives with a traced lifecycle?</td>
 <td>Spheres 01–04 · documents 03, 14, 20, 21</td>
 </tr>
-<tr>
+<tr id="cod-d3">
 <td><strong>D3</strong></td>
 <td><strong>Data and knowledge</strong></td>
 <td>Does it have data and knowledge with an owner, quality, legal basis and lineage in order to use them in AI?</td>
 <td>Spheres 05 and 06 · <a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a></td>
 </tr>
-<tr>
+<tr id="cod-d4">
 <td><strong>D4</strong></td>
 <td><strong>Technology and operations</strong></td>
 <td>Does it operate AI in production with stability, monitoring, reversibility and known costs?</td>
 <td>Sphere 04 · documents 42, 52, 53</td>
 </tr>
-<tr>
+<tr id="cod-d5">
 <td><strong>D5</strong></td>
 <td><strong>People and adoption</strong></td>
 <td>Does it prepare people, achieve actual usage and manage the effect of AI on work?</td>
 <td>Sphere 03 · documents 23, 50</td>
 </tr>
-<tr>
+<tr id="cod-d6">
 <td><strong>D6</strong></td>
 <td><strong>Risk, security and compliance</strong></td>
 <td>Does it identify, control and audit the risks, security, third parties and regulation of AI?</td>
 <td>Spheres 08 and 09 · documents 32–38</td>
 </tr>
-<tr>
+<tr id="cod-d7">
 <td><strong>D7</strong></td>
 <td><strong>Measurement and evidence</strong></td>
 <td>Does it measure value and cost according to rules, and does its evidence withstand verification?</td>
@@ -1888,7 +1893,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

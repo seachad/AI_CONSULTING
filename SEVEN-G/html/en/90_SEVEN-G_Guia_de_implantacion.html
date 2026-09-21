@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -440,11 +445,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-day-90">
 <td><strong>Day 90</strong></td>
 <td>Diagnosis with evidence (C1), direction proposed or approved (C2), first portfolio (C3), bodies, roles, <em>gates</em>, metrics and reporting cadence up and running.</td>
 </tr>
-<tr>
+<tr id="cod-months-4-18">
 <td><strong>Months 4–18</strong></td>
 <td>The framework operates on a steady-state basis: new initiatives go through the lifecycle, existing ones are regularised, the board exercises oversight with the dashboard.</td>
 </tr>
@@ -502,7 +507,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Aggregated.</td>
 <td>By initiative for Enterprise initiatives.</td>
 </tr>
-<tr>
+<tr id="cod-indicative-horizon-up-to-01-14">
 <td><strong>Indicative horizon up to 01 §14</strong></td>
 <td>6 to 12 months.</td>
 <td>12 to 18 months.</td>
@@ -934,17 +939,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-months-4-6-consolidation">
 <td><strong>Months 4–6 · Consolidation</strong></td>
 <td>Ensure the lifecycle works with all new initiatives.</td>
 <td>Complete register; first verified <em>gates</em>; regularisation of priority systems; first quarterly board review with the dashboard; training in SEVEN-G roles; AI literacy programme under way.</td>
 </tr>
-<tr>
+<tr id="cod-months-7-12-extension">
 <td><strong>Months 7–12 · Extension</strong></td>
 <td>Ensure everything that exists is within the framework.</td>
 <td>Complete regularisation; current R6 in all initiatives in production; nonconformities managed with time limits; costs per use case; first audit of the framework by the third line in an Enterprise scope.</td>
 </tr>
-<tr>
+<tr id="cod-months-13-18-first-review-c5">
 <td><strong>Months 13–18 · First review (C5)</strong></td>
 <td>Check progress and adjust direction.</td>
 <td>Maturity verified with the same questionnaire; transformation index recalculated; thesis reviewed; recalibration of time limits and thresholds; declaration of application where appropriate.</td>
@@ -1247,17 +1252,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-month-1">
 <td><strong>Month 1</strong></td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> (inventory and register); <a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> (maturity); <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a> (index); <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> (sphere map); <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (current value).</td>
 <td><a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a>, <a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html">P33</a>, <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html">P34</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
 </tr>
-<tr>
+<tr id="cod-month-2">
 <td><strong>Month 2</strong></td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> (risks); <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> (regulatory classification); <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a> (ambition); <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a> (thesis and appetite).</td>
 <td><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>, <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a>, <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
 </tr>
-<tr>
+<tr id="cod-month-3">
 <td><strong>Month 3</strong></td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> (<em>gates</em>); <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> (nonconformities); <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> (dashboard); <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> (recommendations); <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> (portfolio).</td>
 <td><a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a>, <a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html">P38</a>, <a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>, <a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a>, <a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>, <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
@@ -1344,7 +1349,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

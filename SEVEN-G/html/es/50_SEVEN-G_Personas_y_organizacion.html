@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -762,17 +767,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-per-d1-materializar">
 <td><strong>PER-D1 · Materializar</strong></td>
 <td>Reducción de coste real: menos horas extraordinarias, menor contratación externa o temporal, vacantes no cubiertas, redimensionamiento.</td>
 <td>Eficiencia, validada cuando el menor coste aparece en la contabilidad de gestión.</td>
 </tr>
-<tr>
+<tr id="cod-per-d2-reasignar-a-una-actividad-definida">
 <td><strong>PER-D2 · Reasignar a una actividad definida</strong></td>
 <td>Las horas pasan a una actividad concreta con responsable y métrica de resultado.</td>
 <td>Valor medido en el resultado de la actividad destino, atribuido a un solo caso (regla 5).</td>
 </tr>
-<tr>
+<tr id="cod-per-d3-absorber-crecimiento">
 <td><strong>PER-D3 · Absorber crecimiento</strong></td>
 <td>El mismo equipo atiende más volumen sin aumentar dotación.</td>
 <td>Coste evitado solo si el crecimiento está medido y la necesidad de dotación estaba documentada antes.</td>
@@ -782,7 +787,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Más tiempo por cliente, más revisión, más control.</td>
 <td>No sumable salvo traducción a dinero con fórmula (regla 7).</td>
 </tr>
-<tr>
+<tr id="cod-per-d5-sin-decision">
 <td><strong>PER-D5 · Sin decisión</strong></td>
 <td>No se ha decidido el destino.</td>
 <td><strong>No suma.</strong> Se informa por separado, con alerta por antigüedad.</td>
@@ -819,27 +824,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-fase-2">
 <td><strong>Fase 2</strong></td>
 <td>Se declara si la hipótesis de valor depende de capacidad liberada y con qué destino previsto.</td>
 <td>Patrocinador</td>
 </tr>
-<tr>
+<tr id="cod-fase-4">
 <td><strong>Fase 4</strong></td>
 <td>Destino previsto por colectivo, con porcentajes, plazo y responsable.</td>
 <td>Patrocinador con dirección de personas y control de gestión</td>
 </tr>
-<tr>
+<tr id="cod-g5">
 <td><strong>G5</strong></td>
 <td>En Optimizar, plan para materializar la capacidad liberada (01 §7.6); en Aumentar, plan de reasignación.</td>
 <td>Órgano del <em>gate</em></td>
 </tr>
-<tr>
+<tr id="cod-r6">
 <td><strong>R6</strong></td>
 <td>Seguimiento: horas liberadas medidas frente a materializadas y reasignadas; decisión sobre PER-D5 con antigüedad.</td>
 <td>Patrocinador; comité de IA en Enterprise</td>
 </tr>
-<tr>
+<tr id="cod-g7">
 <td><strong>G7</strong></td>
 <td>Optimizar: ahorro materializado, no solo capacidad liberada. Aumentar: capacidad reasignada y rendimiento sostenido.</td>
 <td>Órgano del <em>gate</em></td>
@@ -919,35 +924,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-estatuto-de-los-trabajadores-art-64-4-d">
 <td><strong><a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a>, art. 64.4.d)</strong> (introducido por el <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-7840" target="_blank" rel="noopener" title="Real Decreto-ley 9/2021, de 11 de mayo, por el que se modifica el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, para garantizar los derechos laborales de las personas dedicadas al reparto en el &#225;mbito de plataformas digitales">Real Decreto-ley 9/2021</a> y la <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-15767" target="_blank" rel="noopener" title="Ley 12/2021, de 28 de septiembre, por la que se modifica el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, para garantizar los derechos laborales de las personas dedicadas al reparto en el &#225;mbito de plataformas digitales">Ley 12/2021</a>)</td>
 <td>El comité de empresa tiene derecho a ser informado por la empresa de <em>&quot;los parámetros, reglas e instrucciones en los que se basan los algoritmos o sistemas de inteligencia artificial que afectan a la toma de decisiones que pueden incidir en las condiciones de trabajo, el acceso y mantenimiento del empleo, incluida la elaboración de perfiles&quot;</em>. Los delegados sindicales pueden tener derechos equivalentes en los términos de la <a class="ref-ext" href="https://www.boe.es/eli/es/lo/1985/08/02/11/con" target="_blank" rel="noopener" title="Ley Org&#225;nica 11/1985, de 2 de agosto, de Libertad Sindical">Ley Orgánica de Libertad Sindical</a>.</td>
 </tr>
-<tr>
+<tr id="cod-estatuto-de-los-trabajadores-art-64">
 <td><strong>Estatuto de los Trabajadores, art. 64</strong> (resto) y convenio colectivo aplicable</td>
 <td>Derechos generales de información y consulta sobre cambios en la organización del trabajo, que pueden activarse por iniciativas de IA aunque no sean algoritmos de decisión. El convenio puede ampliar obligaciones.</td>
 </tr>
-<tr>
+<tr id="cod-reglamento-europeo-de-ia-art-26-7">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, art. 26.7</strong></td>
 <td>Antes de poner en servicio o utilizar un sistema de IA de alto riesgo en el lugar de trabajo, los responsables del despliegue que sean empleadores deben informar a los representantes de los trabajadores y a los trabajadores afectados.</td>
 </tr>
-<tr>
+<tr id="cod-reglamento-europeo-de-ia-anexo-iii-punto-4">
 <td><strong>Reglamento Europeo de IA, anexo III, punto 4</strong></td>
 <td>Sistemas de alto riesgo en empleo y gestión de trabajadores (sección 8).</td>
 </tr>
-<tr>
+<tr id="cod-reglamento-europeo-de-ia-art-5-1-f">
 <td><strong>Reglamento Europeo de IA, art. 5.1.f)</strong></td>
 <td>Prohibición de sistemas de reconocimiento de emociones en el lugar de trabajo, salvo por motivos médicos o de seguridad.</td>
 </tr>
-<tr>
+<tr id="cod-rgpd-arts-13-14-15-22-y-88">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, arts. 13, 14, 15, 22 y 88</strong></td>
 <td>Información a los interesados, derecho de acceso, decisiones individuales automatizadas y tratamiento en el ámbito laboral.</td>
 </tr>
-<tr>
+<tr id="cod-ley-organica-3-2018-lopdgdd-arts-87-a-91">
 <td><strong><a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales">Ley Orgánica 3/2018</a> (LOPDGDD), arts. 87 a 91</strong></td>
 <td>Derechos digitales en el ámbito laboral: uso de dispositivos digitales, desconexión digital, videovigilancia, geolocalización y negociación colectiva de estos derechos.</td>
 </tr>
-<tr>
+<tr id="cod-directiva-ue-2024-2831">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2024/2831/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2024/2831 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativa a la mejora de las condiciones laborales en el trabajo en plataformas">Directiva (UE) 2024/2831</a></strong>, relativa a la mejora de las condiciones laborales en el trabajo en plataformas</td>
 <td>Reglas de gestión algorítmica (información, supervisión y revisión humanas) para el trabajo en plataformas. Plazo de transposición: 2 de diciembre de 2026. Verificar el estado de la transposición.</td>
 </tr>
@@ -1286,7 +1291,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-per-01">
 <td><strong>PER-01</strong></td>
 <td>Cobertura de la evaluación de efecto</td>
 <td>Iniciativas en fase 3 o posterior con evaluación de efecto registrada ÷ iniciativas en fase 3 o posterior</td>
@@ -1294,7 +1299,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>100 %</td>
 </tr>
-<tr>
+<tr id="cod-per-02">
 <td><strong>PER-02</strong></td>
 <td>Alfabetización por perfil</td>
 <td>Personas del perfil con formación vigente ÷ personas del perfil</td>
@@ -1302,7 +1307,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Sistema de formación</td>
 <td>100 % antes del acceso o del ejercicio del rol (IND-ADO-05); renovación vigente de PER-PC ≥ 90 % (umbral de alerta, a calibrar); PER-PA y PER-PD 100 %</td>
 </tr>
-<tr>
+<tr id="cod-per-03">
 <td><strong>PER-03</strong></td>
 <td>Supervisores cualificados</td>
 <td>Sistemas A1–A3 en producción cuyos supervisores designados tienen formación PER-PD registrada ÷ sistemas A1–A3 en producción</td>
@@ -1310,7 +1315,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, formación</td>
 <td>100 %</td>
 </tr>
-<tr>
+<tr id="cod-per-04">
 <td><strong>PER-04</strong></td>
 <td>Capacidad liberada materializada</td>
 <td>Horas liberadas materializadas (PER-D1) ÷ horas liberadas medidas</td>
@@ -1318,7 +1323,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>Según hipótesis</td>
 </tr>
-<tr>
+<tr id="cod-per-05">
 <td><strong>PER-05</strong></td>
 <td>Capacidad liberada reasignada</td>
 <td>Horas reasignadas (PER-D2) con actividad destino verificada ÷ horas liberadas medidas</td>
@@ -1326,7 +1331,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>Según hipótesis</td>
 </tr>
-<tr>
+<tr id="cod-per-06">
 <td><strong>PER-06</strong></td>
 <td>Capacidad liberada sin decisión</td>
 <td>Horas en PER-D5 con antigüedad superior al plazo de C2 ÷ horas liberadas medidas</td>
@@ -1334,7 +1339,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
 <td>Tendencia decreciente</td>
 </tr>
-<tr>
+<tr id="cod-per-07">
 <td><strong>PER-07</strong></td>
 <td>Adopción efectiva</td>
 <td>Usuarios activos según el criterio de uso definido en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> ÷ usuarios destinatarios</td>
@@ -1342,7 +1347,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Registros de uso</td>
 <td>Según hipótesis (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>)</td>
 </tr>
-<tr>
+<tr id="cod-per-08">
 <td><strong>PER-08</strong></td>
 <td>Información previa a la representación</td>
 <td>Sistemas con efecto en condiciones de trabajo o empleo informados antes de su uso ÷ sistemas con ese efecto</td>
@@ -1350,7 +1355,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Registro de información</td>
 <td>100 %</td>
 </tr>
-<tr>
+<tr id="cod-per-09">
 <td><strong>PER-09</strong></td>
 <td>Revisión humana en decisiones sobre personas</td>
 <td>Decisiones sobre personas asistidas por IA con revisión humana documentada ÷ decisiones sobre personas asistidas por IA</td>
@@ -1358,7 +1363,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Registros del sistema</td>
 <td>100 % en A1</td>
 </tr>
-<tr>
+<tr id="cod-per-10">
 <td><strong>PER-10</strong></td>
 <td>Tasa de modificación humana</td>
 <td>Recomendaciones modificadas o rechazadas por el supervisor ÷ recomendaciones revisadas</td>
@@ -1366,7 +1371,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Registros del sistema</td>
 <td>Se vigilan valores próximos a 0 % (posible aceptación automática) y valores altos (posible bajo rendimiento)</td>
 </tr>
-<tr>
+<tr id="cod-per-11">
 <td><strong>PER-11</strong></td>
 <td>Ratio de impacto adverso</td>
 <td>Tasa de resultado favorable del grupo con menor tasa ÷ tasa del grupo con mayor tasa</td>
@@ -1374,7 +1379,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Pruebas de sesgo</td>
 <td>Indicio si &lt; 0,8 (sección 8.4)</td>
 </tr>
-<tr>
+<tr id="cod-per-12">
 <td><strong>PER-12</strong></td>
 <td>Impugnaciones de decisiones asistidas</td>
 <td>Solicitudes de revisión o reclamaciones ÷ decisiones comunicadas; y proporción estimadas</td>
@@ -1382,7 +1387,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Canal de reclamaciones</td>
 <td>Tendencia y causas</td>
 </tr>
-<tr>
+<tr id="cod-per-13">
 <td><strong>PER-13</strong></td>
 <td>Roles rediseñados</td>
 <td>Puestos afectados con descripción y objetivos actualizados ÷ puestos afectados según la evaluación de efecto</td>
@@ -1390,7 +1395,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Dirección de personas</td>
 <td>100 % antes de G7 en Aumentar y Transformar</td>
 </tr>
-<tr>
+<tr id="cod-per-14">
 <td><strong>PER-14</strong></td>
 <td>Propuestas de empleados</td>
 <td>Iniciativas registradas en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> originadas en propuestas de empleados ÷ iniciativas registradas; y tasa de paso de G1</td>
@@ -1398,7 +1403,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 <td>Tendencia</td>
 </tr>
-<tr>
+<tr id="cod-per-15">
 <td><strong>PER-15</strong></td>
 <td>Percepción de los colectivos afectados</td>
 <td>Respuestas favorables en las preguntas de utilidad, confianza, apoyo, carga y autonomía (<a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a>) ÷ respuestas válidas</td>
@@ -1422,61 +1427,61 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-org-01">
 <td><strong>RT-ORG-01</strong></td>
 <td>Falta de adopción</td>
 <td>PER-07 por debajo de hipótesis en el piloto.</td>
 <td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>, usuarios en el diseño.</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-03">
 <td><strong>RT-ECO-03</strong></td>
 <td>Valor no materializado (capacidad liberada no materializada)</td>
 <td>PER-06 creciente.</td>
 <td>Sección 6, alertas en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, criterio de G7.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependencia de personas clave (pérdida de conocimiento crítico)</td>
 <td>Dependencia alta (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, CNC-06).</td>
 <td>Captura de conocimiento; sección 5.4.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-04">
 <td><strong>RT-ORG-04</strong></td>
 <td>Supervisión humana ineficaz (supervisión nominal)</td>
 <td>PER-10 próximo a cero; PER-03 &lt; 100 %.</td>
 <td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; secciones 4.2 y 9.2.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-07">
 <td><strong>RT-ORG-07</strong></td>
 <td>Incumplimiento de información y consulta</td>
 <td>PER-08 &lt; 100 %.</td>
 <td>Sección 7.2; bloqueo de G5.</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-01">
 <td><strong>RT-REP-01</strong></td>
 <td>Resultados discriminatorios (en decisiones sobre personas)</td>
 <td>PER-11 &lt; umbral; PER-12 creciente en un grupo.</td>
 <td>Secciones 8.3 y 8.4.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-08">
 <td><strong>RT-ORG-08</strong></td>
 <td>Conflicto laboral</td>
 <td>Consultas o reclamaciones colectivas.</td>
 <td>Secciones 7 y 10; decisión de alta dirección en destinos PER-D1 relevantes.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-09">
 <td><strong>RT-ORG-09</strong></td>
 <td>Deterioro del bienestar</td>
 <td>PER-15 decreciente; bajas o rotación en el colectivo.</td>
 <td>Sección 9.2.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-05">
 <td><strong>RT-ORG-05</strong></td>
 <td>Uso no autorizado de IA (<em>shadow AI</em>)</td>
 <td>Detecciones en <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
 <td>Documento 31; herramientas autorizadas; formación PER-PC.</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-08">
 <td><strong>RT-TEC-08</strong></td>
 <td>Irreversibilidad (por falta de personas capacitadas)</td>
 <td>Prueba de reversión fallida por falta de personas capacitadas.</td>
@@ -1507,7 +1512,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Evaluación de efecto, plan de capacidades, registro de capacidad liberada y seguimiento. Herramienta principal de este documento.</td>
@@ -1517,47 +1522,47 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Registro, inventario, intensidad, valor y uso corporativo</td>
 <td>Alertas y propuestas (PER-14); registro interno de sistemas que afectan a empleados; revisión de intensidad; importes materializados y reasignados; uso no autorizado.</td>
 </tr>
-<tr>
+<tr id="cod-p20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Evaluación de efecto, plan de capacidades, destino previsto de la capacidad liberada, comunicación.</td>
 </tr>
-<tr>
+<tr id="cod-p11">
 <td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></strong></td>
 <td>Clasificación regulatoria y evaluaciones de impacto</td>
 <td>Decisiones sobre personas y alto riesgo.</td>
 </tr>
-<tr>
+<tr id="cod-p12">
 <td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
 <td>Matriz y registro de riesgos</td>
 <td>Riesgos RT-ORG.</td>
 </tr>
-<tr>
+<tr id="cod-p17">
 <td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></strong></td>
 <td>Diseño de gobierno y supervisión humana</td>
 <td>Autonomía máxima, autoridad y carga del supervisor, explicación y revisión.</td>
 </tr>
-<tr>
+<tr id="cod-p22">
 <td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
 <td>Resultados de validación y del piloto</td>
 <td>Pruebas de sesgo y efecto real en el piloto.</td>
 </tr>
-<tr>
+<tr id="cod-p28">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Capacidad liberada materializada y reasignada.</td>
 </tr>
-<tr>
+<tr id="cod-p30">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
 <td>Decisión de escalado o retirada</td>
 <td>Efecto real frente a declarado y comunicación de la retirada.</td>
 </tr>
-<tr>
+<tr id="cod-p44">
 <td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
 <td>Encuesta de uso y percepción de la IA</td>
 <td>Encuesta de pulso a los colectivos afectados (PER-15).</td>
 </tr>
-<tr>
+<tr id="cod-p46">
 <td><strong><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></strong></td>
 <td>Información a los trabajadores y a su representación</td>
 <td>Ficha informativa del sistema (sección 7.3) y registro de información y consultas.</td>
@@ -1637,7 +1642,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2024/2831/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2024/2831 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, relativa a la mejora de las condiciones laborales en el trabajo en plataformas</a><span> · Parlamento Europeo y Consejo de la UE · 23-10-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener">Ley Local 144 de 2021 de la ciudad de Nueva York sobre herramientas automatizadas de decisi&#243;n en el empleo (Int. 1894-2020), que exige una auditor&#237;a de sesgo independiente antes de su uso</a><span> · Consejo de la Ciudad de Nueva York; Department of Consumer and Worker Protection (DCWP) · 11-12-2021</span></li><li><a href="https://www.ecfr.gov/current/title-29/section-1607.4" target="_blank" rel="noopener">Uniform Guidelines on Employee Selection Procedures (1978), 29 CFR 1607.4(D): impacto adverso y &#171;regla de los cuatro quintos&#187;</a><span> · EEOC y agencias federales de EE. UU. (Code of Federal Regulations) · 25-08-1978</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-15767" target="_blank" rel="noopener">Ley 12/2021, de 28 de septiembre, por la que se modifica el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, para garantizar los derechos laborales de las personas dedicadas al reparto en el &#225;mbito de plataformas digitales</a><span> · Cortes Generales · 28-09-2021</span></li><li><a href="https://www.boe.es/eli/es/lo/1985/08/02/11/con" target="_blank" rel="noopener">Ley Org&#225;nica 11/1985, de 2 de agosto, de Libertad Sindical</a><span> · Cortes Generales · 02-08-1985</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-7840" target="_blank" rel="noopener">Real Decreto-ley 9/2021, de 11 de mayo, por el que se modifica el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, para garantizar los derechos laborales de las personas dedicadas al reparto en el &#225;mbito de plataformas digitales</a><span> · Gobierno de Espa&#241;a · 11-05-2021</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

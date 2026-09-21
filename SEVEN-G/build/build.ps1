@@ -654,6 +654,15 @@ foreach ($lang in $Idiomas) {
 
     # ---- Tablas, componentes y Mermaid ----
     $body = $body -replace '<table>', '<div class="tabla"><table>' -replace '</table>', '</table></div>'
+    # ancla por fila en las tablas de códigos (D88): una fila cuya primera celda es un código en negrita —«T06», «G0–G5 · R6 · G7»,
+    # «RT-<CAT>-NN»— recibe id="cod-…", para que el control «Ir a código» lleve a la fila exacta y no solo a la sección
+    $body = [regex]::Replace($body, '<tr>(\s*<td[^>]*>\s*<strong>(?:<a [^>]*>)?)([A-Z][^<]{0,60}?(?:\d|NN|AAAA|&gt;)[^<]{0,40})((?:</a>)?</strong>)', {
+      param($f)
+      $idFila = 'cod-' + (Slug ([Net.WebUtility]::HtmlDecode($f.Groups[2].Value)))
+      if ($usados.ContainsKey($idFila)) { return $f.Value }
+      $usados[$idFila] = 1
+      "<tr id=""$idFila"">$($f.Groups[1].Value)$($f.Groups[2].Value)$($f.Groups[3].Value)"
+    })
     $body = [regex]::Replace($body, '<blockquote>(\s*<p><strong>(?:Aviso legal|Legal notice|Versión en revisión|Version under review))', '<blockquote class="aviso-legal">$1')
     $body = [regex]::Replace($body, '<!--\s*figura:\s*([\w-]+)\s*-->', {
       param($c)
@@ -808,6 +817,7 @@ foreach ($lang in $Idiomas) {
                   Replace('{{IDIOMAS}}', $idiomasHtml).
                   Replace('{{HOME_HREF}}', $homeHref).
                   Replace('{{PORTADA_HREF}}', $portadaHref).
+                  Replace('{{CODIGOS_SRC}}', [IO.Path]::GetRelativePath((Split-Path $htmlOut), (Join-Path $repo "SEVEN-G\html\$lang\codigos.js")).Replace('\', '/')).
                   Replace('{{NAV_ITEMS}}', $navItemsJson).
                   Replace('{{PORTADA}}', $portada).
                   Replace('{{INDICE}}', $indiceHtml).
@@ -844,6 +854,9 @@ if ($Metodologias -contains 'SEVEN-G' -and -not $env:SEVENG_BUILD_CURSO_PASE2) {
     finally { Remove-Item Env:\SEVENG_BUILD_CURSO_PASE2 -ErrorAction SilentlyContinue }
   }
 }
+
+# índice de códigos del control «Ir a código» (D88): se rehace siempre, leyendo los HTML ya generados
+& (Join-Path $PSScriptRoot 'codigos.ps1') -Idiomas $todos
 
 # índices temporales de este proceso
 Remove-Item -Recurse -Force (Join-Path $env:TEMP "seveng-indice-$PID") -ErrorAction SilentlyContinue

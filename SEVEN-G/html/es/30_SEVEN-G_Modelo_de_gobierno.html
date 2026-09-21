@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1167,7 +1172,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-c1">
 <td><strong>C1</strong> · Inventario de sistemas de IA</td>
 <td>I</td>
 <td>I</td>
@@ -1197,7 +1202,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 <td>I</td>
 </tr>
-<tr>
+<tr id="cod-c2">
 <td><strong>C2</strong> · Tesis de IA y ambición por esfera</td>
 <td>D</td>
 <td>I</td>
@@ -1237,7 +1242,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-c3">
 <td><strong>C3</strong> · Cartera priorizada y equilibrio de ambición</td>
 <td>I (D en Transformar)</td>
 <td>—</td>
@@ -1257,7 +1262,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C</td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-c4">
 <td><strong>C4</strong> · Panel del consejo (trimestral)</td>
 <td>D (supervisa)</td>
 <td>I</td>
@@ -1297,7 +1302,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>C</td>
 <td>A/R</td>
 </tr>
-<tr>
+<tr id="cod-c5">
 <td><strong>C5</strong> · Revisión de madurez, índice y tesis</td>
 <td>D</td>
 <td>C</td>
@@ -2008,72 +2013,72 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Registro de iniciativas</td>
 <td>Órganos, personas y decisiones de las iniciativas.</td>
 </tr>
-<tr>
+<tr id="cod-t03">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td>Gestor de <em>gates</em></td>
 <td>Verificador y decisor por <em>gate</em>; bloqueo de autoaprobación.</td>
 </tr>
-<tr>
+<tr id="cod-t08">
 <td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
 <td>Registro de no conformidades e incidentes</td>
 <td>Escalado con plazos y alertas.</td>
 </tr>
-<tr>
+<tr id="cod-t18">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Acuerdos del consejo y de la comisión delegada.</td>
 </tr>
-<tr>
+<tr id="cod-t22">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></strong></td>
 <td>Gestor de retiradas</td>
 <td>Retiradas planificadas y forzosas.</td>
 </tr>
-<tr>
+<tr id="cod-p03">
 <td><strong><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></strong></td>
 <td>Registro de asignación de roles</td>
 <td>Asignación, incompatibilidades y conflictos.</td>
 </tr>
-<tr>
+<tr id="cod-p23">
 <td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></strong></td>
 <td>Firma de puesta en producción</td>
 <td>Firma multinivel con veto.</td>
 </tr>
-<tr>
+<tr id="cod-p29">
 <td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></strong></td>
 <td>Registro de decisión de <em>gate</em></td>
 <td>Decisión, decisor, verificador y condiciones.</td>
 </tr>
-<tr>
+<tr id="cod-p30">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
 <td>Decisión de escalado o retirada</td>
 <td>Decisiones de G7.</td>
 </tr>
-<tr>
+<tr id="cod-p38">
 <td><strong><a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html">P38</a></strong></td>
 <td>Reglamento de los órganos de gobierno de IA</td>
 <td>Texto aprobable de los mandatos de la sección 3 y nombramiento del responsable de IA.</td>
 </tr>
-<tr>
+<tr id="cod-p39">
 <td><strong><a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a></strong></td>
 <td>Orden del día y acta de órgano de gobierno</td>
 <td>Sesiones de los órganos, acuerdos y votaciones.</td>
 </tr>
-<tr>
+<tr id="cod-p40">
 <td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a></strong></td>
 <td>Solicitud y registro de excepciones</td>
 <td>Excepciones de la sección 7.4.</td>
 </tr>
-<tr>
+<tr id="cod-p41">
 <td><strong><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a></strong></td>
 <td>Declaraciones de independencia y conflictos de interés</td>
 <td>Declaraciones, abstenciones y medidas de la sección 12.</td>
 </tr>
-<tr>
+<tr id="cod-p42">
 <td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a></strong></td>
 <td>Informe trimestral de segunda línea</td>
 <td>Información trimestral a la comisión delegada (sección 6.3).</td>
@@ -2167,7 +2172,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener">Ley 2/2023, de 20 de febrero, reguladora de la protecci&#243;n de las personas que informen sobre infracciones normativas y de lucha contra la corrupci&#243;n</a><span> · Cortes Generales · 20-02-2023</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener">Oficina Europea de IA (Comisi&#243;n Europea)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

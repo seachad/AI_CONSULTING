@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -468,6 +473,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>El buscador resalta las coincidencias y salta de una a otra.</td>
 </tr>
 <tr>
+<td>4 bis</td>
+<td>Escriba un código en <strong>«Ir a código»</strong>: <code>P12</code>, <code>T06</code>, <code>G3.05</code>, <code>fase 3</code>, <code>C2</code>, <code>RT-GEN-01</code>…</td>
+<td>Se abre una lista con lo que significa ese código y, al elegirlo, el sitio le lleva a la página y a la sección —o a la fila de la tabla— donde se explica. Está en la barra de todas las páginas, en la portada y en las herramientas.</td>
+</tr>
+<tr>
 <td>5</td>
 <td>Baje hasta el <strong>mapa de uso</strong> del <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>.</td>
 <td>Cada fase, puerta, plantilla y herramienta del mapa es un enlace: es la forma más rápida de llegar a algo concreto.</td>
@@ -510,34 +520,34 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Herramientas. Las que no tienen aplicación propia enlazan al procedimiento con el que se aplican.</td>
 <td><a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a></td>
 </tr>
-<tr>
+<tr id="cod-c1-c5">
 <td><strong>C1–C5</strong></td>
 <td>Etapas del ciclo corporativo: diagnóstico, dirección, cartera, supervisión y revisión.</td>
 <td><a href="../01_SEVEN-G_Metodologia_fundacional.html">documento 01</a></td>
 </tr>
-<tr>
+<tr id="cod-fases-0-7-g0-g5-r6-g7">
 <td><strong>Fases 0–7 · G0–G5, R6, G7</strong></td>
 <td>Fases de una iniciativa y sus puertas de decisión.</td>
 <td><a href="../01_SEVEN-G_Metodologia_fundacional.html">documento 01</a></td>
 </tr>
-<tr>
+<tr id="cod-g3-05-lv-g3">
 <td><strong>G3.05, LV-G3</strong></td>
 <td>Criterio de una puerta y lista de verificación de esa puerta.</td>
 <td><a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> · <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a></td>
 </tr>
-<tr>
+<tr id="cod-ia-aaaa-nnn">
 <td><strong>IA-AAAA-NNN</strong></td>
 <td>Identificador de una iniciativa.</td>
 <td><a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a></td>
 </tr>
-<tr>
+<tr id="cod-a0-a3-s1-s4-n1-n3-d1-d7">
 <td><strong>A0–A3 · S1–S4 · N1–N3 · D1–D7</strong></td>
 <td>Autonomía de agentes · severidad de incidentes · exigencia a proveedores · dimensiones de madurez.</td>
 <td><a href="../02_SEVEN-G_Glosario_y_convenciones.html">documento 02</a></td>
 </tr>
 </tbody>
 </table></div>
-<p>Ante cualquier duda, el glosario (<a href="../02_SEVEN-G_Glosario_y_convenciones.html">documento 02</a>) manda.</p>
+<p>Ante cualquier duda, el glosario (<a href="../02_SEVEN-G_Glosario_y_convenciones.html">documento 02</a>) manda. Y no hace falta memorizar ninguno: el control <strong>«Ir a código»</strong> de la barra lleva a donde se explica cualquiera de ellos.</p>
 <hr />
 <h2 id="ejercicio"><span class="antetitulo">05</span>Ejercicio</h2>
 <p>Sin usar el índice, llegue desde el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a> hasta la lista de verificación de la puerta G3 y descargue su PDF. Después encuentre la plantilla en Word del lienzo de hipótesis de valor. Anote cuántos clics ha necesitado en cada caso.</p>
@@ -555,7 +565,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Respuestas.</strong> 1) En el recuadro «Lo esencial», tras el aviso legal, y en la matriz del <a href="../94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">documento 94</a>. 2) «Biblioteca» abre el índice completo; «Documentos» despliega la lista de documentos con filtro sin salir de la página. 3) Word (.docx), generado desde la misma fuente que el HTML y el PDF. 4) El glosario, <a href="../02_SEVEN-G_Glosario_y_convenciones.html">documento 02</a>.</p>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="../codigos.js" defer></script>
 
 <script>
 (function () {

@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -889,22 +894,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-critical">
 <td><strong>S1 · Critical</strong></td>
 <td>Possible serious incident under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>; possible major incident under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or significant incident under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>, where applicable; personal data breach likely to result in a high risk to individuals; unauthorised action by an agent affecting money, third parties, personal data or production systems; harm to people or discrimination at scale; disruption of a critical function beyond its tolerance; impact 5 on any axis.</td>
 <td>An agent issues unauthorised payments; a recruitment system systematically screens out a group of people; massive leakage of customer data through information retrieval; fraud carried out through an impersonated video call.</td>
 </tr>
-<tr>
+<tr id="cod-s2-high">
 <td><strong>S2 · High</strong></td>
 <td>Impact 4 on any axis; personal data breach reportable to the authority without a high risk to individuals; repeated errors visible to customers; compromise of an agent identity contained before it has any effect; failure of a critical control without harm; relevant incident at an N3 supplier.</td>
 <td>Agent credential exposed and revoked with no use detected; customer assistant giving erroneous answers about terms and conditions for several hours.</td>
 </tr>
-<tr>
+<tr id="cod-s3-medium">
 <td><strong>S3 · Medium</strong></td>
 <td>Impact 3; degradation beyond threshold in a relevant process; successful prompt injection without any sensitive action; limited internal leakage with no risk to individuals.</td>
 <td>Drift that increases classification errors in internal documents; a user obtains the system instructions.</td>
 </tr>
-<tr>
+<tr id="cod-s4-low">
 <td><strong>S4 · Low</strong></td>
 <td>Impact 1–2; near misses; blocked attempts that reveal a new threat.</td>
 <td>Injection attempts blocked by intent-based access control; brief unavailability with no effect.</td>
@@ -1051,28 +1056,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-ai-act-art-73">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>, Art. 73</strong></td>
 <td>Provider of the high-risk system. A deployer that identifies a serious incident <strong>immediately</strong> informs first the provider and then the importer or distributor and the market surveillance authorities (Art. 26(5)).</td>
 <td>Serious incident (Art. 3(49)).</td>
 <td>Market surveillance authority of the Member State where the incident occurred. Following the Omnibus, providers of systems falling within the competence of the <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener" title="European AI Office (European Commission)">EU AI Office</a> report to that Office.</td>
 <td>Immediately after a causal link, or the reasonable likelihood of such a link, has been established and, in any event, <strong>not later than 15 days</strong> after becoming aware. <strong>2 days</strong> in the event of a widespread infringement or a serious and irreversible disruption of critical infrastructure. <strong>10 days</strong> in the event of death. An incomplete initial report may be submitted and completed later.</td>
 </tr>
-<tr>
+<tr id="cod-gdpr-arts-33-and-34">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Arts. 33 and 34</strong></td>
 <td>Controller. The processor notifies the controller without undue delay.</td>
 <td>Personal data breach, unless it is unlikely to result in a risk to the rights and freedoms of natural persons.</td>
 <td>Competent supervisory authority (in Spain, the <a class="ref-ext" href="https://www.aepd.es/en" target="_blank" rel="noopener" title="Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)">Spanish Data Protection Agency</a>, except for cross-border processing with another lead authority). Communication to data subjects if a high risk is likely.</td>
 <td>Authority: without undue delay and, where feasible, not later than <strong>72 hours</strong> after becoming aware; if later, with reasons for the delay; information in phases if not available. Data subjects: without undue delay. All breaches are documented, whether or not they are notified.</td>
 </tr>
-<tr>
+<tr id="cod-dora-art-19">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, Art. 19</strong></td>
 <td>Financial entity subject to DORA.</td>
 <td>Major ICT-related incident; voluntary notification of significant cyber threats.</td>
 <td>Competent authority. Information to clients when the incident affects their financial interests.</td>
 <td>Initial notification within <strong>4 hours</strong> of classification as major and not later than <strong>24 hours</strong> after becoming aware; intermediate report within <strong>72 hours</strong> of the initial notification; final report <strong>one month</strong> after the latest intermediate report (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/eng" target="_blank" rel="noopener" title="Commission Delegated Regulation (EU) 2025/301 of 23 October 2024 supplementing Regulation (EU) 2022/2554 with regard to regulatory technical standards specifying the content and time limits for the initial notification of, and intermediate and final report on, major ICT-related incidents, and the content of the voluntary notification for significant cyber threats">Delegated Regulation (EU) 2025/301</a>).</td>
 </tr>
-<tr>
+<tr id="cod-nis2-art-23">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>, Art. 23</strong></td>
 <td>Essential or important entity under the national transposition.</td>
 <td>Significant incident.</td>
@@ -1260,7 +1265,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-incident">
 <td><strong>S1 incident</strong></td>
 <td>Communication to the board committee within 24 hours: what has happened, who is affected, what has been contained, which reports have been submitted or are still within the time limit, which decisions may be required.</td>
 </tr>
@@ -1268,7 +1273,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Quarterly</strong></td>
 <td>S1 and S2 incidents with their status; regulatory reports and compliance with them; open and overdue critical and major nonconformities; indicator trends; systemic lessons; supplier incidents; decisions requested. Presented with the quarterly second-line report (<a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>).</td>
 </tr>
-<tr>
+<tr id="cod-annual-c5">
 <td><strong>Annual (C5)</strong></td>
 <td>Effectiveness of the incident and nonconformity processes; recurrences; drill results; proposed adjustments to time limits and thresholds.</td>
 </tr>
@@ -1286,37 +1291,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-p26">
 <td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></strong></td>
 <td>Incident response plan</td>
 <td>Types and severity applicable to the system; contacts and roles; shutdown criteria and procedure; preservation of evidence; reporting matrix with time limits and owners; drill calendar. The report and communication models are in <a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html">P51</a>. Phase 6; prepared before G5.</td>
 </tr>
-<tr>
+<tr id="cod-p27">
 <td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong></td>
 <td>Incident and change log</td>
 <td>Fields in section 7. Phase 6.</td>
 </tr>
-<tr>
+<tr id="cod-p50">
 <td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">P50</a></strong></td>
 <td>Nonconformity register</td>
 <td>NC-AAAA-NNN register with classification, containment, actions, effectiveness verification and closure (section 3).</td>
 </tr>
-<tr>
+<tr id="cod-p51">
 <td><strong><a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html">P51</a></strong></td>
 <td>Incident reports and communications</td>
 <td>Assessment by regime, reasoned decision not to report, report models and communications to affected persons (section 5).</td>
 </tr>
-<tr>
+<tr id="cod-p52">
 <td><strong><a href="plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a></strong></td>
 <td>Root cause analysis and corrective action plan</td>
 <td>Worksheet for the five whys and the cause-and-effect diagram, and action plan (sections 3.5 and 3.6).</td>
 </tr>
-<tr>
+<tr id="cod-p42">
 <td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a></strong></td>
 <td>Quarterly second-line report</td>
 <td>Quarterly reporting to the board (section 9).</td>
 </tr>
-<tr>
+<tr id="cod-t08">
 <td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Register of NC-AAAA-NNN and INC-AAAA-NNN with statuses, time limits, reporting clocks, overdue alerts, links to risks and <em>gates</em>, and the indicators in section 8. Module of <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
@@ -1397,7 +1402,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/eng" target="_blank" rel="noopener">Commission Delegated Regulation (EU) 2025/301 of 23 October 2024 supplementing Regulation (EU) 2022/2554 with regard to regulatory technical standards specifying the content and time limits for the initial notification of, and intermediate and final report on, major ICT-related incidents, and the content of the voluntary notification for significant cyber threats</a><span> · Comisi&#243;n Europea · 23-10-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European AI Office (European Commission)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.aepd.es/en" target="_blank" rel="noopener">Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {
