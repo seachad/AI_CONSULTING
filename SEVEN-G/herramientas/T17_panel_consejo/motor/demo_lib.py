@@ -227,7 +227,8 @@ CSS_REG_EXTRA = r"""
 .ses .dot{position:absolute;left:4px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
 .shead h2{font-size:21px;margin:0}
 .shead .sub{color:var(--mute);font-size:12.5px;margin:2px 0 12px}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr));gap:12px}
+@media (max-width:700px){.tl{padding:16px 12px 40px}.tl:before{left:22px}.ses{padding-left:32px}.rec dl{grid-template-columns:100px 1fr}}
 .rec{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
 .rec header{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .rec .id{font-family:Georgia,serif;font-size:18px;margin-right:4px}

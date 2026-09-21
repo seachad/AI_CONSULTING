@@ -180,7 +180,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 /* ---------- Barra de herramientas ---------- */
 .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
-.barra-in { max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-in { position: relative; max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
 .barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
 .barra-marca i { width: 9px; height: 9px; background: var(--claret); }
 .barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -328,6 +328,22 @@ blockquote.aviso-legal strong { color: var(--negro); }
 .dz-tipo.html { background: var(--oxford); }
 .dz-tipo.tool { background: var(--teal); }
 :root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+/* descargas agrupadas en tarjetas, una por perfil (D97): guía del curso */
+@media (min-width: 900px) { .dz-agrupada .dz-in { grid-template-columns: 1fr; } }
+.dz-cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+/* en pantalla ancha: los tres perfiles en una fila y, debajo, lo común a todos (nueve módulos y la propia guía) */
+@media (min-width: 900px) { .dz-cards { grid-template-columns: repeat(6, 1fr); } .dz-card { grid-column: span 2; } .dz-card[data-grupo="modulos"], .dz-card[data-grupo="guia"] { grid-column: span 3; } }
+.dz-card { display: flex; flex-direction: column; border: 1px solid var(--regla); border-top: 3px solid var(--claret); background: var(--papel-2); padding: 12px 14px 14px; }
+.dz-card[data-grupo="modulos"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="guia"] { border-top-color: var(--tinta-2); }
+.dz-card-rotulo { font: 700 11px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 4px; }
+.dz-card[data-grupo="modulos"] .dz-card-rotulo { color: var(--oxford); }
+.dz-card[data-grupo="guia"] .dz-card-rotulo { color: var(--tinta-2); }
+.dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
+.dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
+.dz-card .dz-item { background: var(--papel); }
+.dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
+.dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 @media print { .descargas-zona { display: none !important; } }
 
 /* ---------- Enlaces a fuentes externas (D41) ---------- */
