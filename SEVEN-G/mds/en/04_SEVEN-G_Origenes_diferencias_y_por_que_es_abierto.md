@@ -174,6 +174,7 @@ The company approves the **reference time limits per phase** in C2 and recalibra
 | Does SEVEN-G have to be paid for? | No. Neither the documents, nor the templates, nor the tools. |
 | Do you have to register or give an email to use the site? | No. Everything is read, used and downloaded without an account or registration. |
 | Does the site send emails or try to capture contacts? | No. It never sends an email or any communication seeking engagement; contacting the author is always the visitor's own initiative (section 7). |
+| Does the site measure visits? | Yes, only in aggregate: how many visits each page gets, from which country and on what type of device, with [Umami](https://umami.is/), an open-source tool that uses no cookies, stores no personal data or IP addresses and does not follow anyone across sites; it honours the browser's "Do Not Track" signal. It is used to know which documents are read. The community page is not measured. |
 | Does permission have to be requested? | No, as long as the licence is complied with. |
 | Can it be adapted to the company? | Yes: change thresholds, translate, integrate the templates into the company's own systems. |
 | Can a consultancy or an auditor use it in paid services? | Yes. The licence allows commercial use (document 91). |

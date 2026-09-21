@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,13 +439,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/30_SEVEN-G_Modelo_de_gobierno.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/30_SEVEN-G_Modelo_de_gobierno.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/30_SEVEN-G_Modelo_de_gobierno.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#architecture-of-bodies"><span>02</span>Architecture of bodies</a></li><li><a href="#model-mandates-of-the-bodies"><span>03</span>Model mandates of the bodies</a></li><li><a href="#initiative-roles-role-descriptions"><span>04</span>Initiative roles: role descriptions</a></li><li><a href="#incompatibilities"><span>05</span>Incompatibilities</a></li><li><a href="#responsibility-matrices"><span>06</span>Responsibility matrices</a></li><li><a href="#decision-delegation-matrix"><span>07</span>Decision delegation matrix</a></li><li><a href="#escalation"><span>08</span>Escalation</a></li><li><a href="#three-lines-model-applied-to-ai"><span>09</span>Three lines model applied to AI</a></li><li><a href="#integration-into-existing-committees"><span>10</span>Integration into existing committees</a></li><li><a href="#adaptation-to-small-organisations"><span>11</span>Adaptation to small organisations</a></li><li><a href="#conflicts-of-interest"><span>12</span>Conflicts of interest</a></li><li><a href="#associated-tools-and-templates"><span>13</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>14</span>Related documents</a></li><li><a href="#version-control"><span>15</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>Three safeguards that are never reduced: whoever builds neither verifies nor decides their own work; risk clearance is independent of the team; the board approves the direction and the risk appetite. In Lite scope, section 11 is enough (existing bodies with an extended mandate); the full model mandates, matrices and delegation are for Enterprise scope.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
-<p>This document develops component B of SEVEN-G with regard to <strong>who decides, who builds and who controls</strong> artificial intelligence. It turns section 8 of <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> into elements that a company can approve and put into practice: body mandates, role descriptions, responsibility matrices, a decision delegation matrix and escalation rules.</p>
-<p>It applies to the bodies involved in the corporate cycle (C1–C5) and in the lifecycle (phases 0–7), to the six roles in 01 §8.1 and to the four types of AI use in 01 §1.2. The <em>gate</em> criteria are in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>, the risk methodology in 33, the nonconformity and incident process in 37 and audit in 38.</p>
+<p>This document develops component B of SEVEN-G with regard to <strong>who decides, who builds and who controls</strong> artificial intelligence. It turns section 8 of <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> into elements that a company can approve and put into practice: body mandates, role descriptions, responsibility matrices, a decision delegation matrix and escalation rules.</p>
+<p>It applies to the bodies involved in the corporate cycle (C1–C5) and in the lifecycle (phases 0–7), to the six roles in 01 §8.1 and to the four types of AI use in 01 §1.2. The <em>gate</em> criteria are in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, the risk methodology in 33, the nonconformity and incident process in 37 and audit in 38.</p>
 <h3 id="1-1-governance-design-principles">1.1 Governance design principles</h3>
 <div class="tabla"><table>
 <thead>
@@ -463,7 +474,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>4</td>
 <td><strong>Recorded decision</strong></td>
-<td>Every decision with an effect on the portfolio, risk or compliance is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> with the decision-maker, date and reason.</td>
+<td>Every decision with an effect on the portfolio, risk or compliance is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> with the decision-maker, date and reason.</td>
 </tr>
 <tr>
 <td>5</td>
@@ -553,7 +564,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="model-mandates-of-the-bodies"><span class="antetitulo">03</span>Model mandates of the bodies</h2>
-<p>The mandates are <strong>models to be adapted</strong>. The company approves them in C2 and incorporates them into the rules of procedure of the body that takes on the function. Quorum and time limits are for reference. The article-by-article text that can be approved, with the model appointment of the head of AI, is in <a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html">P38</a>; agendas and minutes, in <a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>.</p>
+<p>The mandates are <strong>models to be adapted</strong>. The company approves them in C2 and incorporates them into the rules of procedure of the body that takes on the function. Quorum and time limits are for reference. The article-by-article text that can be approved, with the model appointment of the head of AI, is in <a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Template P38 &#183; Rules of procedure of the AI governance bodies">P38</a>; agendas and minutes, in <a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Template P39 &#183; Agenda and minutes of a governance body">P39</a>.</p>
 <h3 id="3-1-board-of-directors">3.1 Board of directors</h3>
 <div class="tabla"><table>
 <thead>
@@ -569,7 +580,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Functions</strong></td>
-<td>Approve the AI thesis, the ambition per sphere and the risk appetite with its thresholds (C2). Approve the corporate AI policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>). Approve Transform initiatives at G2 and their scaling at G7. Decide, on an exceptional basis, on the acceptance of Critical residual risks within the appetite. Oversee the board dashboard (C4). Review maturity, the transformation index and the thesis (C5).</td>
+<td>Approve the AI thesis, the ambition per sphere and the risk appetite with its thresholds (C2). Approve the corporate AI policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>). Approve Transform initiatives at G2 and their scaling at G7. Decide, on an exceptional basis, on the acceptance of Critical residual risks within the appetite. Oversee the board dashboard (C4). Review maturity, the transformation index and the thesis (C5).</td>
 </tr>
 <tr>
 <td><strong>Composition</strong></td>
@@ -593,7 +604,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Record</strong></td>
-<td>Minutes and registration of each resolution in the recommendations and decisions register (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>).</td>
+<td>Minutes and registration of each resolution in the recommendations and decisions register (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -613,7 +624,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Functions</strong></td>
-<td>Approve the annual AI audit plan and receive its results (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a>). Receive information on S1 incidents and on major and critical nonconformities. Resolve disagreements between the AI Committee and the second line (section 8.3). Decide, by delegation of the board, on the exceptional acceptance of Critical risks. Monitor the independence of the AI auditors. Receive the exceptions in force.</td>
+<td>Approve the annual AI audit plan and receive its results (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a>). Receive information on S1 incidents and on major and critical nonconformities. Resolve disagreements between the AI Committee and the second line (section 8.3). Decide, by delegation of the board, on the exceptional acceptance of Critical risks. Monitor the independence of the AI auditors. Receive the exceptions in force.</td>
 </tr>
 <tr>
 <td><strong>Composition</strong></td>
@@ -680,11 +691,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Model agenda</strong></td>
-<td>1. Funnel: registrations, phase changes, stalled initiatives (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>). 2. <em>Gates</em> with verification completed. 3. Value and cost deviations. 4. High and Critical risks, and concentration by sphere, supplier or technology. 5. Incidents, nonconformities and expired conditions. 6. Retirements and lapsed R6 reviews. 7. Corporate and unauthorised use (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>). 8. Exceptions. 9. Matters to escalate.</td>
+<td>1. Funnel: registrations, phase changes, stalled initiatives (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>). 2. <em>Gates</em> with verification completed. 3. Value and cost deviations. 4. High and Critical risks, and concentration by sphere, supplier or technology. 5. Incidents, nonconformities and expired conditions. 6. Retirements and lapsed R6 reviews. 7. Corporate and unauthorised use (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>). 8. Exceptions. 9. Matters to escalate.</td>
 </tr>
 <tr>
 <td><strong>Record</strong></td>
-<td>Minutes with numbered resolutions; each <em>gate</em> decision in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> with <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>Minutes with numbered resolutions; each <em>gate</em> decision in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> with <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -703,7 +714,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Functions</strong></td>
-<td>Maintain the inventory (<a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">document 32</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Safeguard the methodology, templates and checklists. Verify Lite <em>gates</em> in which it has not participated. Consolidate measurement with management control (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>). Prepare information for the bodies. Coordinate AI literacy and the regularisation of unauthorised use (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>). Lead C1 and C5.</td>
+<td>Maintain the inventory (<a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>) and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>). Safeguard the methodology, templates and checklists. Verify Lite <em>gates</em> in which it has not participated. Consolidate measurement with management control (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>). Prepare information for the bodies. Coordinate AI literacy and the regularisation of unauthorised use (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>). Lead C1 and C5.</td>
 </tr>
 <tr>
 <td><strong>Composition</strong></td>
@@ -736,7 +747,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Functions</strong></td>
-<td>Designate AI Risk Owners. Issue clearances (G3, G4 and G5 Lite; committee matters). Sign off Enterprise go-live: risk and compliance, security and data protection (01 §6.7). Regulatory classification and impact assessments (<a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">document 32</a>). Maintain the risk methodology (33) and the regulatory mapping (34).</td>
+<td>Designate AI Risk Owners. Issue clearances (G3, G4 and G5 Lite; committee matters). Sign off Enterprise go-live: risk and compliance, security and data protection (01 §6.7). Regulatory classification and impact assessments (<a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a>). Maintain the risk methodology (33) and the regulatory mapping (34).</td>
 <td>Provide or supervise the AI auditors. Propose the annual AI audit plan. Audit the framework and the declaration of application (01 §14). Participate in C5. Verify the closure of nonconformities.</td>
 </tr>
 <tr>
@@ -773,13 +784,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>AI Sponsor</strong></td>
 <td>Accountable for value and investment. Commits budget and people; approves the hypothesis and stop criteria; decides Lite <em>gates</em> (01 §7.5); accepts Medium risks with risk clearance; ensures that released capacity is realised; proposes retirement when the value is not sustained.</td>
-<td>The affected business; reading hypotheses and indicators; AI risks at executive level (profile F7 in <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>); capacity to stop.</td>
+<td>The affected business; reading hypotheses and indicators; AI risks at executive level (profile F7 in <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>); capacity to stop.</td>
 <td>Management of the area that receives the value.</td>
 <td>2–4 h/month · 4–8 h/month plus <em>gate</em> preparation</td>
 </tr>
 <tr>
 <td><strong>AI Product Owner</strong></td>
-<td>Accountable for the value hypothesis, actual use and adoption. Drafts the charter and hypothesis; measures the baseline and pilot; prepares the evidence for phases 0, 1, 2 and 7; accepts Low risks with a record; coordinates adoption (<a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a>); maintains the record in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Accountable for the value hypothesis, actual use and adoption. Drafts the charter and hypothesis; measures the baseline and pilot; prepares the evidence for phases 0, 1, 2 and 7; accepts Low risks with a record; coordinates adoption (<a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Document 23 &#183; Adoption and change in the initiative">document 23</a>); maintains the record in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</td>
 <td>Product management; experiment design and attribution; processes; communication with users; limits of generative AI.</td>
 <td>Business, with experience in product, processes or transformation.</td>
 <td>10–30% in active phases · 50–100% in phases 2–5 and 20–40% in operation</td>
@@ -793,7 +804,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>AI Operations Owner</strong></td>
-<td>Accountable for stability, monitoring, incidents and changes. Prepares the manual and monitoring; activates the kill switch when appropriate; manages incidents (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>) and changes; provides data for R6.</td>
+<td>Accountable for stability, monitoring, incidents and changes. Prepares the manual and monitoring; activates the kill switch when appropriate; manages incidents (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>) and changes; provides data for R6.</td>
 <td>Service operations; model observability (degradation, drift, cost); incidents; change control.</td>
 <td>Head of the platform or of the business service.</td>
 <td>5–10% in operation · 20–50% in operation, with on-call cover for critical systems</td>
@@ -1057,7 +1068,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>Determine the intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>)</td>
+<td>Determine the intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>)</td>
 <td>A</td>
 <td>R</td>
 <td>C</td>
@@ -1068,7 +1079,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Inventory registration (<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>)</td>
+<td>Inventory registration (<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a>)</td>
 <td>I</td>
 <td>R</td>
 <td>C</td>
@@ -1079,7 +1090,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Regulatory classification and impact assessments (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>)</td>
+<td>Regulatory classification and impact assessments (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>)</td>
 <td>I</td>
 <td>C</td>
 <td>C</td>
@@ -1090,7 +1101,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Risk matrix and register (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>)</td>
+<td>Risk matrix and register (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>)</td>
 <td>C</td>
 <td>R</td>
 <td>R</td>
@@ -1101,7 +1112,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
+<td>Supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>)</td>
 <td>C</td>
 <td>C</td>
 <td>R</td>
@@ -1112,7 +1123,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Human oversight and security design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Human oversight and security design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>)</td>
 <td>I</td>
 <td>C</td>
 <td>A/R</td>
@@ -1123,7 +1134,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Go-live sign-off (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>)</td>
+<td>Go-live sign-off (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>)</td>
 <td>I</td>
 <td>C</td>
 <td>R (sign-off)</td>
@@ -1134,7 +1145,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D</td>
 </tr>
 <tr>
-<td>Value realisation tracking (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>)</td>
+<td>Value realisation tracking (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>)</td>
 <td>A</td>
 <td>R</td>
 <td>I</td>
@@ -1145,7 +1156,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>I</td>
 </tr>
 <tr>
-<td>Retirement plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</td>
+<td>Retirement plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>)</td>
 <td>A</td>
 <td>R</td>
 <td>R</td>
@@ -1430,13 +1441,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Low</strong></td>
 <td>AI Product Owner</td>
 <td>—</td>
-<td>Recorded in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> with justification.</td>
+<td>Recorded in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> with justification.</td>
 </tr>
 <tr>
 <td><strong>Medium</strong></td>
 <td>Sponsor</td>
 <td>AI Risk Owner</td>
-<td>Recorded in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; review at the next <em>gate</em> or R6.</td>
+<td>Recorded in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>; review at the next <em>gate</em> or R6.</td>
 </tr>
 <tr>
 <td><strong>High</strong></td>
@@ -1480,12 +1491,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Stop at a <em>gate</em></strong></td>
 <td>Body that decides the <em>gate</em></td>
 <td>In the decision</td>
-<td>Coded reason (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>).</td>
+<td>Coded reason (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>).</td>
 </tr>
 <tr>
 <td><strong>Planned retirement</strong> (G7)</td>
 <td>Lite: sponsor · Enterprise: AI Committee</td>
-<td>According to <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> and <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
+<td>According to <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a> and <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></td>
 <td>Board informed if it was Transform.</td>
 </tr>
 <tr>
@@ -1502,7 +1513,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Immediate suspension <strong>does not require prior authorisation</strong>, and whoever activates it in good faith suffers no consequences for doing so. The operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>) identifies by name who may activate it.</p>
+<p>Immediate suspension <strong>does not require prior authorisation</strong>, and whoever activates it in good faith suffers no consequences for doing so. The operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>) identifies by name who may activate it.</p>
 <h3 id="7-4-exceptions">7.4 Exceptions</h3>
 <p>An exception temporarily authorises non-compliance with a requirement of the framework or the policy. They are <strong>never</strong> allowed for prohibited practices, legal obligations, segregation of duties at any <em>gate</em>, Enterprise multi-level sign-off or the existence of a stop mechanism.</p>
 <div class="tabla"><table>
@@ -1546,7 +1557,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Every exception is recorded in <a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a> (EXC-AAAA-NNN) with its justification, risk, compensating measures, expiry and owner. An expired exception that has not been closed is a <strong>major nonconformity</strong>. The board committee receives the exceptions in force each quarter.</p>
+<p>Every exception is recorded in <a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Template P40 &#183; Exception request and register">P40</a> (EXC-AAAA-NNN) with its justification, risk, compensating measures, expiry and owner. An expired exception that has not been closed is a <strong>major nonconformity</strong>. The board committee receives the exceptions in force each quarter.</p>
 <h3 id="7-5-other-delegated-decisions">7.5 Other delegated decisions</h3>
 <div class="tabla"><table>
 <thead>
@@ -1568,7 +1579,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Activate AI features in contracted third-party software</td>
 <td>System owner with the AI Office</td>
 <td>Security and data protection</td>
-<td>Recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td>Recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></td>
 </tr>
 <tr>
 <td>Change the regulatory classification of a system</td>
@@ -1579,7 +1590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Raise autonomy to A2 or A3</td>
 <td>AI Committee</td>
-<td>Security (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>)</td>
+<td>Security (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>)</td>
 <td>Board committee if there is direct exposure</td>
 </tr>
 <tr>
@@ -1591,7 +1602,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Contract an N3 supplier</td>
 <td>AI Committee</td>
-<td>Second line (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>)</td>
+<td>Second line (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>)</td>
 <td>Board committee</td>
 </tr>
 <tr>
@@ -1626,12 +1637,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Escalating does not transfer responsibility</strong>: whoever escalates remains accountable for containment while the decision is being made.</li>
 <li><strong>The time limit runs from detection</strong>, not from confirmation.</li>
-<li><strong>Escalation is made through the recorded channel</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>) and, if the time limit is less than 24 hours, also by direct contact with the designated person.</li>
+<li><strong>Escalation is made through the recorded channel</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> or <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>) and, if the time limit is less than 24 hours, also by direct contact with the designated person.</li>
 <li><strong>Failure to respond within the time limit escalates automatically</strong> to the next level.</li>
 <li><strong>No one may block an escalation.</strong> Anyone may contact the second line or the company's internal reporting system (in Spain, regulated by <a class="ref-ext" href="https://www.boe.es/eli/es/l/2023/02/20/2/con" target="_blank" rel="noopener" title="Law 2/2023 of 20 February on the protection of persons who report regulatory breaches and on the fight against corruption (unofficial translation)">Law 2/2023 of 20 February</a>).</li>
 </ol>
 <h3 id="8-2-escalation-table">8.2 Escalation table</h3>
-<p>The incident time limits are the indicative response times in <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a> (§4.3); those for nonconformities are those in 01 §12. The company approves them in C2 without exceeding those set by regulation.</p>
+<p>The incident time limits are the indicative response times in <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a> (§4.3); those for nonconformities are those in 01 §12. The company approves them in C2 without exceeding those set by regulation.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1750,7 +1761,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li>The AI Committee may not decide Proceed or Proceed with conditions on that matter.</li>
 <li>It may decide Iterate, Pivot or Stop, or escalate the disagreement to the board committee (E-13).</li>
-<li>The board committee resolves with information from both parties, and its decision is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>.</li>
+<li>The board committee resolves with information from both parties, and its decision is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>.</li>
 <li>In the Enterprise multi-level sign-off, each signatory has a <strong>veto</strong> (01 §6.7), which can be lifted only by whoever issued it, after correction, or by the board committee.</li>
 </ol>
 <hr />
@@ -1809,7 +1820,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>The AI Office verifies in Lite</td>
-<td>This is management verification, not independent assurance; that is why the AI Auditor reviews a sample of Lite <em>gates</em> (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a>).</td>
+<td>This is management verification, not independent assurance; that is why the AI Auditor reviews a sample of Lite <em>gates</em> (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a>).</td>
 </tr>
 <tr>
 <td>The data protection officer participates in the impact assessment</td>
@@ -1854,7 +1865,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Information security and data protection committees</strong></td>
 <td>Security and data protection sign-offs; agents and AI-enabled attacks (35); impact assessments; unauthorised use involving personal data.</td>
-<td>Record sign-offs in <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>; coordination with classification (32).</td>
+<td>Record sign-offs in <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>; coordination with classification (32).</td>
 </tr>
 <tr>
 <td><strong>New products or product governance committee</strong></td>
@@ -1878,7 +1889,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Steps to integrate:</strong> (1) map committees and their rules of procedure; (2) assign each function in sections 3 and 7 to a body, with no gaps or duplications; (3) amend the rules of procedure; (4) approve the delegation matrix in C2; (5) register bodies and people in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> to validate decision-maker and verifier. This sequence fits into month 3 of the first implementation (01 §5.3) and is developed in <a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>.</p>
+<p><strong>Steps to integrate:</strong> (1) map committees and their rules of procedure; (2) assign each function in sections 3 and 7 to a body, with no gaps or duplications; (3) amend the rules of procedure; (4) approve the delegation matrix in C2; (5) register bodies and people in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> to validate decision-maker and verifier. This sequence fits into month 3 of the first implementation (01 §5.3) and is developed in <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>.</p>
 <hr />
 <h2 id="adaptation-to-small-organisations"><span class="antetitulo">11</span>Adaptation to small organisations</h2>
 <p>A small or medium-sized organisation may apply SEVEN-G with a minimum structure provided that it preserves <strong>three non-negotiable safeguards</strong>: those who build do not verify or decide on their own work; someone independent of the team issues the risk clearance; and the governing body approves the direction and the risk appetite.</p>
@@ -1920,7 +1931,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tools</strong></td>
-<td>Initiative register <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> or, if the company prefers, a spreadsheet with the data model in 03.</td>
+<td>Initiative register <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> or, if the company prefers, a spreadsheet with the data model in 03.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1978,7 +1989,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>CI-3</td>
 <td>An employee has a relationship with a supplier being assessed.</td>
 <td>Biased selection.</td>
-<td>Declaration prior to <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> and exclusion.</td>
+<td>Declaration prior to <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> and exclusion.</td>
 </tr>
 <tr>
 <td>CI-4</td>
@@ -2000,7 +2011,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Procedure.</strong> (1) <strong>Declaration</strong> on taking on the role (in <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>) and whenever a conflict arises; members of bodies, annually (<a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>). (2) <strong>Assessment</strong> by the AI Office with compliance: actual, potential or apparent. (3) <strong>Measure</strong>: abstention, replacement, additional verification or board regime. (4) <strong>Record</strong> in the register of declarations and abstentions in <a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a> and in the minutes (<a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>) or the <em>gate</em> decision record (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>) of the affected decision. (5) <strong>Check</strong> by the AI Auditor at each Enterprise <em>gate</em>.</p>
+<p><strong>Procedure.</strong> (1) <strong>Declaration</strong> on taking on the role (in <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a>) and whenever a conflict arises; members of bodies, annually (<a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Template P41 &#183; Declarations of independence and conflicts of interest">P41</a>). (2) <strong>Assessment</strong> by the AI Office with compliance: actual, potential or apparent. (3) <strong>Measure</strong>: abstention, replacement, additional verification or board regime. (4) <strong>Record</strong> in the register of declarations and abstentions in <a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Template P41 &#183; Declarations of independence and conflicts of interest">P41</a> and in the minutes (<a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Template P39 &#183; Agenda and minutes of a governance body">P39</a>) or the <em>gate</em> decision record (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>) of the affected decision. (5) <strong>Check</strong> by the AI Auditor at each Enterprise <em>gate</em>.</p>
 <p>Failing to declare a conflict that has affected a <em>gate</em> decision is a <strong>major nonconformity</strong>, without prejudice to the company's code of conduct.</p>
 <hr />
 <h2 id="associated-tools-and-templates"><span class="antetitulo">13</span>Associated tools and templates</h2>
@@ -2014,78 +2025,78 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Bodies, people and initiative decisions.</td>
 </tr>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></strong></td>
 <td><em>Gate</em> manager</td>
 <td>Verifier and decision-maker per <em>gate</em>; self-approval block.</td>
 </tr>
 <tr id="cod-t08">
-<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
+<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Escalation with time limits and alerts.</td>
 </tr>
 <tr id="cod-t18">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
 <td>Board recommendations register</td>
 <td>Resolutions of the board and the board committee.</td>
 </tr>
 <tr id="cod-t22">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></strong></td>
 <td>Retirement manager</td>
 <td>Planned and forced retirements.</td>
 </tr>
 <tr id="cod-p03">
-<td><strong><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></strong></td>
+<td><strong><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a></strong></td>
 <td>Role assignment record</td>
 <td>Assignment, incompatibilities and conflicts.</td>
 </tr>
 <tr id="cod-p23">
-<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></strong></td>
+<td><strong><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a></strong></td>
 <td>Go-live sign-off</td>
 <td>Multi-level sign-off with veto power.</td>
 </tr>
 <tr id="cod-p29">
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></strong></td>
+<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></strong></td>
 <td><em>Gate</em> decision record</td>
 <td>Decision, decision-maker, verifier and conditions.</td>
 </tr>
 <tr id="cod-p30">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></strong></td>
 <td>Scale or retirement decision</td>
 <td>G7 decisions.</td>
 </tr>
 <tr id="cod-p38">
-<td><strong><a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html">P38</a></strong></td>
+<td><strong><a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Template P38 &#183; Rules of procedure of the AI governance bodies">P38</a></strong></td>
 <td>Rules of procedure of the AI governance bodies</td>
 <td>Text that can be approved for the mandates in section 3 and appointment of the head of AI.</td>
 </tr>
 <tr id="cod-p39">
-<td><strong><a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a></strong></td>
+<td><strong><a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Template P39 &#183; Agenda and minutes of a governance body">P39</a></strong></td>
 <td>Agenda and minutes of a governance body</td>
 <td>Meetings of the bodies, resolutions and votes.</td>
 </tr>
 <tr id="cod-p40">
-<td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a></strong></td>
+<td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Template P40 &#183; Exception request and register">P40</a></strong></td>
 <td>Exception request and register</td>
 <td>Exceptions in section 7.4.</td>
 </tr>
 <tr id="cod-p41">
-<td><strong><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a></strong></td>
+<td><strong><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Template P41 &#183; Declarations of independence and conflicts of interest">P41</a></strong></td>
 <td>Declarations of independence and conflicts of interest</td>
 <td>Declarations, abstentions and measures in section 12.</td>
 </tr>
 <tr id="cod-p42">
-<td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a></strong></td>
+<td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Template P42 &#183; Quarterly second-line report">P42</a></strong></td>
 <td>Quarterly second-line report</td>
 <td>Quarterly information to the board committee (section 6.3).</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Requirements for the tools:</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> must prevent a person with an incompatible role from being recorded as decision-maker or verifier; record abstentions; require the second line at G3, G5, risk acceptances and exceptions; and generate alerts with the time limits in section 8.2.</p>
+<p><strong>Requirements for the tools:</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> must prevent a person with an incompatible role from being recorded as decision-maker or verifier; record abstentions; require the second line at G3, G5, risk acceptances and exceptions; and generate alerts with the time limits in section 8.2.</p>
 <hr />
 <h2 id="related-documents"><span class="antetitulo">14</span>Related documents</h2>
 <div class="tabla"><table>
@@ -2161,7 +2172,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Develops 01 §8 with model mandates for the bodies, role descriptions for the six roles, incompatibilities between bodies and roles, responsibility matrices by phase, activity and corporate stage, delegation matrix (<em>gates</em>, risk acceptance, suspensions and retirements, exceptions), escalation with time limits aligned with <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>, three lines model, integration into existing committees, adaptation to small organisations and conflicts of interest. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37.</td>
+<td>First version. Develops 01 §8 with model mandates for the bodies, role descriptions for the six roles, incompatibilities between bodies and roles, responsibility matrices by phase, activity and corporate stage, delegation matrix (<em>gates</em>, risk acceptance, suspensions and retirements, exceptions), escalation with time limits aligned with <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>, three lines model, integration into existing committees, adaptation to small organisations and conflicts of interest. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37.</td>
 </tr>
 <tr>
 <td>0.1</td>
@@ -2407,6 +2418,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

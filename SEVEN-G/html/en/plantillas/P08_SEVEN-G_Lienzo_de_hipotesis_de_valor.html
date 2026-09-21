@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#problem-users-and-solution"><span>03</span>Problem, users and solution</a></li><li><a href="#falsifiable-value-hypothesis"><span>04</span>Falsifiable value hypothesis</a></li><li><a href="#metrics"><span>05</span>Metrics</a></li><li><a href="#attribution-method"><span>06</span>Attribution method</a></li><li><a href="#value-in-money"><span>07</span>Value in money</a></li><li><a href="#stop-criteria"><span>08</span>Stop criteria</a></li><li><a href="#transform-only"><span>09</span>Transform only</a></li><li><a href="#check-by-ambition-level-at-g2"><span>10</span>Check by ambition level at G2</a></li><li><a href="#quality-criteria"><span>11</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>12</span>Approval and verification</a></li><li><a href="#version-control"><span>13</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
@@ -442,7 +453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>In phase 2 (Value hypothesis), before G2. It is compared with the pilot results in phase 5 (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) and with the value realised in phases 6 and 7 (<a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>).</td>
+<td>In phase 2 (Value hypothesis), before G2. It is compared with the pilot results in phase 5 (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>) and with the value realised in phases 6 and 7 (<a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>).</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> · Value hypothesis canvas and calculator.</td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a> · Value hypothesis canvas and calculator.</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -503,7 +514,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Confirmed ambition level</td>
 <td></td>
-<td>Optimise · Augment · Transform (<a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, Confirmed column).</td>
+<td>Optimise · Augment · Transform (<a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, Confirmed column).</td>
 </tr>
 <tr>
 <td>Primary sphere</td>
@@ -551,7 +562,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Problem or opportunity</td>
 <td></td>
-<td>Current situation with baseline data (<a href="P09_SEVEN-G_Linea_base.html">P09</a>).</td>
+<td>Current situation with baseline data (<a href="P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>).</td>
 </tr>
 <tr>
 <td>Users and beneficiaries</td>
@@ -618,7 +629,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Is the baseline measured or is its estimate justified (<a href="P09_SEVEN-G_Linea_base.html">P09</a>)?</td>
+<td>Is the baseline measured or is its estimate justified (<a href="P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>)?</td>
 <td></td>
 </tr>
 </tbody>
@@ -632,7 +643,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Metric</th>
 <th>Definition and formula</th>
 <th>Unit</th>
-<th>Baseline (<a href="P09_SEVEN-G_Linea_base.html">P09</a>)</th>
+<th>Baseline (<a href="P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>)</th>
 <th>Target</th>
 <th>Success threshold</th>
 <th>Frequency</th>
@@ -1121,7 +1132,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">11</span>Quality criteria</h2>
-<p>The formal G2 criteria are in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> (see criteria G2.xx).</p>
+<p>The formal G2 criteria are in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> (see criteria G2.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1138,7 +1149,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>The baseline is measured or its estimate is justified in <a href="P09_SEVEN-G_Linea_base.html">P09</a>.</td>
+<td>The baseline is measured or its estimate is justified in <a href="P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1504,6 +1515,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

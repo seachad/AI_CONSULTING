@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/50_SEVEN-G_Personas_y_organizacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/50_SEVEN-G_Personas_y_organizacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/50_SEVEN-G_Personas_y_organizacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#esfera-03-personas"><span>02</span>Esfera 03 · Personas</a></li><li><a href="#efecto-de-la-ia-sobre-el-trabajo"><span>03</span>Efecto de la IA sobre el trabajo</a></li><li><a href="#nuevos-roles-y-capacidades"><span>04</span>Nuevos roles y capacidades</a></li><li><a href="#plan-de-capacidades-y-alfabetizacion-por-perfil"><span>05</span>Plan de capacidades y alfabetización por perfil</a></li><li><a href="#reasignacion-de-la-capacidad-liberada"><span>06</span>Reasignación de la capacidad liberada</a></li><li><a href="#relaciones-laborales-informacion-y-consulta-transparencia-algoritmica"><span>07</span>Relaciones laborales, información y consulta, transparencia algorítmica</a></li><li><a href="#uso-de-ia-en-decisiones-sobre-personas"><span>08</span>Uso de IA en decisiones sobre personas</a></li><li><a href="#bienestar-autonomia-y-supervision"><span>09</span>Bienestar, autonomía y supervisión</a></li><li><a href="#comunicacion-interna"><span>10</span>Comunicación interna</a></li><li><a href="#indicadores"><span>11</span>Indicadores</a></li><li><a href="#riesgos-organizativos"><span>12</span>Riesgos organizativos</a></li><li><a href="#que-se-comprueba-en-las-puertas-de-decision"><span>13</span>Qué se comprueba en las puertas de decisión</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>14</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>15</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>16</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <aside class="esencial" data-capa="condicional"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Condicional: depende de un disparador</span></div><p>Disparador: la iniciativa cambia el trabajo de las personas, libera capacidad o interviene en decisiones sobre personas. L&#237;mites que no se relajan: autonom&#237;a m&#225;xima A1 en selecci&#243;n y evaluaci&#243;n, y A0 en disciplina y despido; informaci&#243;n a la plantilla y a su representaci&#243;n cuando la ley la exige.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
@@ -444,7 +455,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Proteger el <strong>bienestar, la autonomía</strong> y la calidad de la supervisión humana.</li>
 <li>Comunicar internamente con coherencia y medir todo lo anterior con <strong>indicadores con fórmula</strong>.</li>
 </ul>
-<p><strong>Alcance.</strong> Se aplica a todas las iniciativas de IA y a los usos corporativos de IA de propósito general que afectan al trabajo de los empleados, a sus condiciones laborales o a decisiones sobre candidatos y empleados. La gestión del cambio y la adopción se desarrollan en el <a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>; las reglas de uso aceptable de la IA por los empleados, en el <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>. Este documento no las repite: fija lo que es específico de las personas y de la organización.</p>
+<p><strong>Alcance.</strong> Se aplica a todas las iniciativas de IA y a los usos corporativos de IA de propósito general que afectan al trabajo de los empleados, a sus condiciones laborales o a decisiones sobre candidatos y empleados. La gestión del cambio y la adopción se desarrollan en el <a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa">documento 23</a>; las reglas de uso aceptable de la IA por los empleados, en el <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>. Este documento no las repite: fija lo que es específico de las personas y de la organización.</p>
 <p><strong>Límites.</strong> Las referencias normativas laborales se limitan a España y a la Unión Europea, con la fecha de consulta indicada. <strong>Otras jurisdicciones tienen reglas distintas</strong> y deben incorporarse en la declaración de contexto (fase 0). Este documento no constituye asesoramiento jurídico.</p>
 <hr />
 <h2 id="esfera-03-personas"><span class="antetitulo">02</span>Esfera 03 · Personas</h2>
@@ -452,7 +463,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <blockquote>
 <p><strong>¿La IA sustituye, aumenta o reorganiza el trabajo de las personas?</strong></p>
 </blockquote>
-<p>La respuesta no es técnica. Define la cultura, la propuesta al empleado, la capacidad de atraer y retener talento y la relación con la representación de los trabajadores. Por eso SEVEN-G exige que la compañía adopte en <strong>C2</strong> una <strong>posición explícita</strong> sobre el efecto que busca en el trabajo (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>) y que cada iniciativa la respete o justifique la excepción.</p>
+<p>La respuesta no es técnica. Define la cultura, la propuesta al empleado, la capacidad de atraer y retener talento y la relación con la representación de los trabajadores. Por eso SEVEN-G exige que la compañía adopte en <strong>C2</strong> una <strong>posición explícita</strong> sobre el efecto que busca en el trabajo (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Documento 13 &#183; Tesis de IA, ambici&#243;n y apetito de riesgo">documento 13</a>) y que cada iniciativa la respete o justifique la excepción.</p>
 <h3 id="2-2-los-tres-papeles-del-empleado-ante-la-ia">2.2 Los tres papeles del empleado ante la IA</h3>
 <div class="tabla"><table>
 <thead>
@@ -466,7 +477,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Receptor</strong></td>
 <td>La IA le cambia herramientas, procesos y expectativas de productividad sin que lo haya elegido.</td>
-<td>Formación, acompañamiento, tiempo para aprender y canales para señalar problemas (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>).</td>
+<td>Formación, acompañamiento, tiempo para aprender y canales para señalar problemas (<a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa">documento 23</a>).</td>
 </tr>
 <tr>
 <td><strong>Sujeto</strong></td>
@@ -476,7 +487,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Promotor</strong></td>
 <td>Conoce su proceso mejor que nadie y puede proponer usos de IA que nadie externo vería.</td>
-<td>Canal de propuestas conectado al registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), reconocimiento y reglas de uso claras (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+<td>Canal de propuestas conectado al registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>), reconocimiento y reglas de uso claras (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -510,8 +521,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="2-4-que-se-evalua-en-la-esfera-03">2.4 Qué se evalúa en la esfera 03</h3>
-<p>Se evalúan siete dimensiones, cada una con su evidencia e indicadores (sección 11): <strong>posición</strong> aprobada en C2; <strong>efecto por iniciativa</strong> (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, PER-01); <strong>capacidades</strong> (PER-02, PER-03); <strong>capacidad liberada</strong> (PER-04 a PER-06); <strong>relaciones laborales</strong> (PER-08); <strong>decisiones sobre personas</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, PER-09 a PER-12); y <strong>bienestar</strong> (PER-15).</p>
-<p>Los indicadores de la sección 11 alimentan la dimensión <strong>D5 Personas y adopción</strong> del modelo de madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>) y las señales <strong>3 · Materialización</strong> y <strong>5 · Modelo operativo</strong> del índice de transformación (<a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>).</p>
+<p>Se evalúan siete dimensiones, cada una con su evidencia e indicadores (sección 11): <strong>posición</strong> aprobada en C2; <strong>efecto por iniciativa</strong> (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>, PER-01); <strong>capacidades</strong> (PER-02, PER-03); <strong>capacidad liberada</strong> (PER-04 a PER-06); <strong>relaciones laborales</strong> (PER-08); <strong>decisiones sobre personas</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>, PER-09 a PER-12); y <strong>bienestar</strong> (PER-15).</p>
+<p>Los indicadores de la sección 11 alimentan la dimensión <strong>D5 Personas y adopción</strong> del modelo de madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>) y las señales <strong>3 · Materialización</strong> y <strong>5 · Modelo operativo</strong> del índice de transformación (<a href="12_SEVEN-G_Indice_de_transformacion.html" title="Documento 12 &#183; &#205;ndice de transformaci&#243;n">documento 12</a>).</p>
 <hr />
 <h2 id="efecto-de-la-ia-sobre-el-trabajo"><span class="antetitulo">03</span>Efecto de la IA sobre el trabajo</h2>
 <h3 id="3-1-tres-efectos">3.1 Tres efectos</h3>
@@ -563,37 +574,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>1</strong></td>
 <td>Identificar colectivos afectados y efecto previsible.</td>
-<td>Ficha de oportunidad (<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+<td>Ficha de oportunidad (<a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Plantilla P06 &#183; Cartera de oportunidades y notas de filtrado">P06</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>).</td>
 </tr>
 <tr>
 <td><strong>2</strong></td>
 <td>Medir la línea base de tiempo por tarea y personas; declarar si el valor depende de capacidad liberada.</td>
-<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a>.</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
 <td><strong>Evaluación de efecto sobre el trabajo</strong> completa (sección 3.4), con la dirección de personas y conformidad del responsable de riesgos.</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> / <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>; riesgos RT-ORG en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> / <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>; riesgos RT-ORG en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>Rediseñar roles y supervisión humana; plan de capacidades y de comunicación; destino previsto de la capacidad liberada.</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>.</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
 <td>Medir en el piloto el efecto real; formar a usuarios y supervisores; informar a la representación cuando proceda.</td>
-<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; registro de información.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a>; registro de información.</td>
 </tr>
 <tr>
 <td><strong>6</strong></td>
 <td>Seguir adopción, capacidad liberada, bienestar e incidencias; revisar en R6.</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; registro de capacidad liberada.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>; registro de capacidad liberada.</td>
 </tr>
 <tr>
 <td><strong>7</strong></td>
 <td>Contrastar efecto real con declarado; prever efecto del escalado o la vuelta al proceso anterior si se retira.</td>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -606,12 +617,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>¿Interviene el sistema en decisiones sobre candidatos o empleados? (sección 8)</li>
 <li>¿Qué capacidades nuevas se requieren y quién las tiene hoy? (sección 5)</li>
 <li>¿Qué capacidad se libera, cuándo y con qué destino previsto? (sección 6)</li>
-<li>¿Qué conocimiento se pierde o se concentra? (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, sección 10)</li>
-<li>¿Se conserva la capacidad de volver al proceso manual? (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 10)</li>
+<li>¿Qué conocimiento se pierde o se concentra? (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Documento 51 &#183; Datos y conocimiento para IA">documento 51</a>, sección 10)</li>
+<li>¿Se conserva la capacidad de volver al proceso manual? (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a>, sección 10)</li>
 <li>¿Es coherente con la posición de C2? Si no, la excepción se eleva al comité de IA.</li>
 </ol>
 <h3 id="3-5-regla-de-intensidad">3.5 Regla de intensidad</h3>
-<p>El efecto sobre el trabajo no crea por sí solo un criterio Enterprise, pero <strong>debe revisarse la intensidad</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>) cuando la evaluación detecta decisiones sobre personas, cambios significativos en condiciones de trabajo o reducciones de dotación. En esos casos la iniciativa <strong>debería</strong> tratarse como Enterprise aunque no cumpla otro criterio, y si se mantiene en Lite se registra la justificación.</p>
+<p>El efecto sobre el trabajo no crea por sí solo un criterio Enterprise, pero <strong>debe revisarse la intensidad</strong> (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a>) cuando la evaluación detecta decisiones sobre personas, cambios significativos en condiciones de trabajo o reducciones de dotación. En esos casos la iniciativa <strong>debería</strong> tratarse como Enterprise aunque no cumpla otro criterio, y si se mantiene en Lite se registra la justificación.</p>
 <hr />
 <h2 id="nuevos-roles-y-capacidades"><span class="antetitulo">04</span>Nuevos roles y capacidades</h2>
 <h3 id="4-1-del-consejo-a-los-equipos">4.1 Del consejo a los equipos</h3>
@@ -663,7 +674,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Las capacidades que cada nivel necesita se concretan en los perfiles de la sección 5.</p>
 <h3 id="4-2-roles-nuevos-o-ampliados">4.2 Roles nuevos o ampliados</h3>
-<p>Los roles de SEVEN-G (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> §8) no cambian. Las funciones siguientes <strong>pueden</strong> asignarse a personas existentes o crearse como roles nuevos, según tamaño e intensidad:</p>
+<p>Los roles de SEVEN-G (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a> §8) no cambian. Las funciones siguientes <strong>pueden</strong> asignarse a personas existentes o crearse como roles nuevos, según tamaño e intensidad:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -685,7 +696,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Responsable de contenido o de conocimiento</strong></td>
-<td>Calidad, vigencia y permisos de las fuentes de la IA generativa (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>).</td>
+<td>Calidad, vigencia y permisos de las fuentes de la IA generativa (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Documento 51 &#183; Datos y conocimiento para IA">documento 51</a>).</td>
 <td>Sí, con IA generativa sobre fuentes internas.</td>
 </tr>
 <tr>
@@ -700,12 +711,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Regla de autoridad.</strong> Un supervisor humano sin autoridad real para discrepar del sistema, o evaluado por la rapidez con la que acepta sus propuestas, <strong>no</strong> es supervisión humana. El diseño de objetivos e incentivos del supervisor forma parte de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</p>
+<p><strong>Regla de autoridad.</strong> Un supervisor humano sin autoridad real para discrepar del sistema, o evaluado por la rapidez con la que acepta sus propuestas, <strong>no</strong> es supervisión humana. El diseño de objetivos e incentivos del supervisor forma parte de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>.</p>
 <hr />
 <h2 id="plan-de-capacidades-y-alfabetizacion-por-perfil"><span class="antetitulo">05</span>Plan de capacidades y alfabetización por perfil</h2>
 <h3 id="5-1-obligacion-de-partida">5.1 Obligación de partida</h3>
-<p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> exige a proveedores y responsables del despliegue adoptar medidas para apoyar el desarrollo de la <strong>alfabetización en IA</strong> de su personal y de otras personas que operan o usan sistemas de IA en su nombre (art. 4, aplicable desde el 2 de febrero de 2025; con la redacción del Reglamento (UE) 2026/1744 no se exige un nivel concreto, pero la política y el plan de formación siguen siendo evidencia). Para los sistemas de alto riesgo, los responsables del despliegue deben encomendar la supervisión humana a personas con la <strong>competencia, formación y autoridad necesarias</strong> (art. 26.2). Las modificaciones del Reglamento (UE) 2026/1744 (ómnibus digital sobre IA, en vigor desde el 27 de julio de 2026) y el calendario de aplicación se detallan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (§3.1 y §3.2).</p>
-<p>SEVEN-G trata la alfabetización como un <strong>requisito de C2</strong> (política, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) y como una <strong>evidencia por iniciativa</strong> (plan de capacidades en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</p>
+<p>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> exige a proveedores y responsables del despliegue adoptar medidas para apoyar el desarrollo de la <strong>alfabetización en IA</strong> de su personal y de otras personas que operan o usan sistemas de IA en su nombre (art. 4, aplicable desde el 2 de febrero de 2025; con la redacción del Reglamento (UE) 2026/1744 no se exige un nivel concreto, pero la política y el plan de formación siguen siendo evidencia). Para los sistemas de alto riesgo, los responsables del despliegue deben encomendar la supervisión humana a personas con la <strong>competencia, formación y autoridad necesarias</strong> (art. 26.2). Las modificaciones del Reglamento (UE) 2026/1744 (ómnibus digital sobre IA, en vigor desde el 27 de julio de 2026) y el calendario de aplicación se detallan en el <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a> (§3.1 y §3.2).</p>
+<p>SEVEN-G trata la alfabetización como un <strong>requisito de C2</strong> (política, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>) y como una <strong>evidencia por iniciativa</strong> (plan de capacidades en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>).</p>
 <h3 id="5-2-perfiles-y-contenidos">5.2 Perfiles y contenidos</h3>
 <div class="tabla"><table>
 <thead>
@@ -728,7 +739,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>PER-PC · Todos los empleados</strong></td>
-<td>Qué es y qué no es la IA; uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>); datos que no se introducen; verificar resultados; informar de problemas.</td>
+<td>Qué es y qué no es la IA; uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>); datos que no se introducen; verificar resultados; informar de problemas.</td>
 <td>Formación antes del acceso; renovación periódica.</td>
 </tr>
 <tr>
@@ -749,14 +760,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="5-3-plan-de-capacidades-por-iniciativa">5.3 Plan de capacidades por iniciativa</h3>
-<p>El plan forma parte de <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> y <strong>debe</strong> incluir, para cada colectivo afectado: colectivo y número de personas; capacidades requeridas (técnicas, de supervisión, de proceso, de relación con el cliente); brecha actual medida; acción (formación, práctica acompañada, rotación, recualificación); horas reservadas dentro de la jornada; momento (usuarios y supervisores antes del piloto, resto antes de producción); responsable; y criterio de suficiencia con su evidencia.</p>
+<p>El plan forma parte de <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> y <strong>debe</strong> incluir, para cada colectivo afectado: colectivo y número de personas; capacidades requeridas (técnicas, de supervisión, de proceso, de relación con el cliente); brecha actual medida; acción (formación, práctica acompañada, rotación, recualificación); horas reservadas dentro de la jornada; momento (usuarios y supervisores antes del piloto, resto antes de producción); responsable; y criterio de suficiencia con su evidencia.</p>
 <p><strong>Regla.</strong> Ningún supervisor humano designado <strong>debe</strong> ejercer la supervisión de un sistema A1–A3 en producción sin la formación específica del perfil PER-PD completada y registrada.</p>
 <h3 id="5-4-conservacion-de-capacidades-criticas">5.4 Conservación de capacidades críticas</h3>
 <p>Cuando un sistema sustituye tareas que requieren juicio experto, la compañía <strong>debería</strong> conservar las capacidades necesarias para supervisar el sistema, detectar sus errores y operar sin él en caso de reversión. El plan identifica esas capacidades y cómo se mantienen (práctica periódica, casos de revisión manual, rotación).</p>
 <hr />
 <h2 id="reasignacion-de-la-capacidad-liberada"><span class="antetitulo">06</span>Reasignación de la capacidad liberada</h2>
 <h3 id="6-1-principio">6.1 Principio</h3>
-<p>La <strong>regla 3 de medición</strong> (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a> §6) establece que la capacidad liberada <strong>no suma como ahorro</strong> hasta que se materializa en menor coste real o se reasigna de forma explícita. SEVEN-G convierte esa regla en un proceso: <strong>toda capacidad liberada tiene una decisión explícita sobre su destino, un registro y un seguimiento</strong>. Sin decisión, la capacidad liberada se muestra como tal y no como valor.</p>
+<p>La <strong>regla 3 de medición</strong> (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a> §6) establece que la capacidad liberada <strong>no suma como ahorro</strong> hasta que se materializa en menor coste real o se reasigna de forma explícita. SEVEN-G convierte esa regla en un proceso: <strong>toda capacidad liberada tiene una decisión explícita sobre su destino, un registro y un seguimiento</strong>. Sin decisión, la capacidad liberada se muestra como tal y no como valor.</p>
 <h3 id="6-2-destinos-posibles">6.2 Destinos posibles</h3>
 <div class="tabla"><table>
 <thead>
@@ -853,7 +864,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Cuando el destino implica <strong>reducción de dotación, cambios de funciones o de condiciones de trabajo</strong>, la decisión corresponde a la alta dirección con la dirección de personas y <strong>debe</strong> respetar los procedimientos legales y convencionales aplicables. En España pueden entrar en juego, entre otros, los procedimientos de modificación sustancial de condiciones de trabajo (art. 41 del <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a>) o de despido colectivo (art. 51), además de los derechos de información y consulta de la sección 7. Esa valoración requiere criterio jurídico laboral.</p>
 <h3 id="6-4-registro-de-capacidad-liberada">6.4 Registro de capacidad liberada</h3>
-<p>El registro se mantiene en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> y alimenta <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (seguimiento de valor).</p>
+<p>El registro se mantiene en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a> y alimenta <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> (seguimiento de valor).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -907,7 +918,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="6-5-reglas-de-seguimiento">6.5 Reglas de seguimiento</h3>
 <ol>
 <li>Las horas liberadas <strong>medidas</strong> se informan siempre, aunque no tengan destino.</li>
-<li>La capacidad en <strong>PER-D5 con más de 90 días</strong> (plazo orientativo, se fija en C2) genera alerta en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y se revisa en R6.</li>
+<li>La capacidad en <strong>PER-D5 con más de 90 días</strong> (plazo orientativo, se fija en C2) genera alerta en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y se revisa en R6.</li>
 <li>Una reasignación <strong>PER-D2 sin actividad destino verificable</strong> se reclasifica como PER-D5.</li>
 <li>La reasignación no puede presentarse como materialización ni sumarse dos veces (en la iniciativa origen y en la actividad destino).</li>
 <li>Los informes al consejo muestran las horas liberadas, materializadas, reasignadas y sin decisión por separado.</li>
@@ -915,7 +926,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="relaciones-laborales-informacion-y-consulta-transparencia-algoritmica"><span class="antetitulo">07</span>Relaciones laborales, información y consulta, transparencia algorítmica</h2>
 <h3 id="7-1-marco-de-referencia-en-espana-y-en-la-union-europea">7.1 Marco de referencia en España y en la Unión Europea</h3>
-<p>Consulta realizada en septiembre de 2026. Debe verificarse la vigencia antes de aplicar y consultarse el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>.</p>
+<p>Consulta realizada en septiembre de 2026. Debe verificarse la vigencia antes de aplicar y consultarse el <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -958,7 +969,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Otras jurisdicciones difieren.</strong> Fuera de la Unión Europea las obligaciones pueden ser distintas en contenido y en destinatario; por ejemplo, <a class="ref-ext" href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener" title="Ley Local 144 de 2021 de la ciudad de Nueva York sobre herramientas automatizadas de decisi&#243;n en el empleo (Int. 1894-2020), que exige una auditor&#237;a de sesgo independiente antes de su uso">algunas normas locales exigen auditorías independientes de sesgo</a> de las herramientas automatizadas de selección antes de usarlas. Cada compañía <strong>debe</strong> identificar las normas aplicables en cada país donde tenga empleados o candidatos e incorporarlas en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</p>
+<p><strong>Otras jurisdicciones difieren.</strong> Fuera de la Unión Europea las obligaciones pueden ser distintas en contenido y en destinatario; por ejemplo, <a class="ref-ext" href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=4344524&amp;GUID=B051915D-A9AC-451E-81F8-6596032FA3F9" target="_blank" rel="noopener" title="Ley Local 144 de 2021 de la ciudad de Nueva York sobre herramientas automatizadas de decisi&#243;n en el empleo (Int. 1894-2020), que exige una auditor&#237;a de sesgo independiente antes de su uso">algunas normas locales exigen auditorías independientes de sesgo</a> de las herramientas automatizadas de selección antes de usarlas. Cada compañía <strong>debe</strong> identificar las normas aplicables en cada país donde tenga empleados o candidatos e incorporarlas en la declaración de contexto (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a>).</p>
 <p>Este documento no constituye asesoramiento jurídico.</p>
 <h3 id="7-2-proceso-de-informacion-y-consulta-en-seven-g">7.2 Proceso de información y consulta en SEVEN-G</h3>
 <div class="tabla"><table>
@@ -975,19 +986,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1 · Identificación</td>
 <td>Fase 3</td>
 <td>La evaluación de efecto determina si el sistema afecta a condiciones de trabajo, acceso o mantenimiento del empleo, perfiles, o si es de alto riesgo en el lugar de trabajo.</td>
-<td>Evaluación de efecto (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
+<td>Evaluación de efecto (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>).</td>
 </tr>
 <tr>
 <td>2 · Análisis jurídico</td>
 <td>Fase 3</td>
 <td>Relaciones laborales y asesoría jurídica determinan las obligaciones de información y, en su caso, consulta, su contenido y su plazo.</td>
-<td>Nota jurídica enlazada en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Nota jurídica enlazada en <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>3 · Preparación</td>
 <td>Fase 4</td>
 <td>Se elabora la ficha informativa del sistema para la representación (sección 7.3).</td>
-<td>Ficha informativa (<a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a>).</td>
+<td>Ficha informativa (<a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Plantilla P46 &#183; Informaci&#243;n a los trabajadores y a su representaci&#243;n">P46</a>).</td>
 </tr>
 <tr>
 <td>4 · Información o consulta</td>
@@ -997,7 +1008,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5 · Actualización</td>
-<td>En cada cambio relevante (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 6)</td>
+<td>En cada cambio relevante (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a>, sección 6)</td>
 <td>Si cambian parámetros, reglas, finalidad o colectivos, se actualiza la información.</td>
 <td>Nueva versión de la ficha.</td>
 </tr>
@@ -1017,7 +1028,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Cambios:</strong> versión, fecha y cambios.</li>
 </ol>
 <h3 id="7-4-transparencia-algoritmica-hacia-los-empleados">7.4 Transparencia algorítmica hacia los empleados</h3>
-<p>Además de la información a la representación, la compañía <strong>debería</strong> mantener accesible a todos los empleados un <strong>registro interno de sistemas de IA que les afectan</strong>, derivado del inventario (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>), con la ficha de la sección 7.3 en versión resumida. Los empleados afectados por decisiones apoyadas en IA deben poder saber que el sistema se usa, para qué, y cómo pedir revisión humana.</p>
+<p>Además de la información a la representación, la compañía <strong>debería</strong> mantener accesible a todos los empleados un <strong>registro interno de sistemas de IA que les afectan</strong>, derivado del inventario (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>), con la ficha de la sección 7.3 en versión resumida. Los empleados afectados por decisiones apoyadas en IA deben poder saber que el sistema se usa, para qué, y cómo pedir revisión humana.</p>
 <hr />
 <h2 id="uso-de-ia-en-decisiones-sobre-personas"><span class="antetitulo">08</span>Uso de IA en decisiones sobre personas</h2>
 <h3 id="8-1-por-que-se-trata-aparte">8.1 Por qué se trata aparte</h3>
@@ -1026,7 +1037,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>La <strong>contratación o selección</strong> de personas, en particular para publicar anuncios dirigidos, analizar y filtrar solicitudes y evaluar a candidatos.</li>
 <li>Tomar <strong>decisiones que afecten a las condiciones</strong> de las relaciones laborales, a la <strong>promoción o rescisión</strong> de relaciones contractuales, <strong>asignar tareas</strong> a partir de comportamientos o rasgos personales, o <strong>supervisar y evaluar el rendimiento y el comportamiento</strong> de las personas.</li>
 </ul>
-<p>Las obligaciones para estos sistemas se aplican desde el 2 de diciembre de 2027, tras el aplazamiento introducido por el Reglamento (UE) 2026/1744 (calendario en el <a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> §3.1). La clasificación concreta de cada sistema y sus excepciones requieren criterio jurídico (documentos 32 y 34).</p>
+<p>Las obligaciones para estos sistemas se aplican desde el 2 de diciembre de 2027, tras el aplazamiento introducido por el Reglamento (UE) 2026/1744 (calendario en el <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a> §3.1). La clasificación concreta de cada sistema y sus excepciones requieren criterio jurídico (documentos 32 y 34).</p>
 <p>Con independencia de la clasificación regulatoria, en SEVEN-G <strong>toda iniciativa que influye de forma significativa en decisiones sobre candidatos o empleados cumple el criterio Enterprise &quot;decisiones sobre personas&quot;</strong> (01 §9.2).</p>
 <h3 id="8-2-autonomia-maxima-por-tipo-de-decision">8.2 Autonomía máxima por tipo de decisión</h3>
 <div class="tabla"><table>
@@ -1091,43 +1102,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Clasificación regulatoria con criterio jurídico.</td>
 <td>3</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 </tr>
 <tr>
 <td>2</td>
 <td>Evaluación de impacto en protección de datos, cuando el tratamiento lo exija.</td>
 <td>3–4</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 </tr>
 <tr>
 <td>3</td>
 <td>Evaluación de impacto en derechos fundamentales, cuando sea exigible al responsable del despliegue.</td>
 <td>3–4</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 </tr>
 <tr>
 <td>4</td>
 <td>Justificación de pertinencia de cada variable y exclusión de variables que actúan como sustitutas de características protegidas.</td>
 <td>4</td>
-<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Pruebas de sesgo antes del piloto y periódicas en producción, con métrica, grupos, umbral y acción.</td>
 <td>5–6</td>
-<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a></td>
 </tr>
 <tr>
 <td>6</td>
 <td>Supervisión humana con competencia, formación y autoridad; medición de la tasa de modificación humana (PER-10).</td>
 <td>4–6</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a></td>
 </tr>
 <tr>
 <td>7</td>
 <td>Explicación comprensible a la persona afectada y vía de revisión humana.</td>
 <td>4–6</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a></td>
 </tr>
 <tr>
 <td>8</td>
@@ -1137,19 +1148,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>9</td>
-<td>Conservación de registros de recomendación y decisión (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 11).</td>
+<td>Conservación de registros de recomendación y decisión (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a>, sección 11).</td>
 <td>6</td>
-<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a></td>
 </tr>
 <tr>
 <td>10</td>
 <td>Evaluación del proveedor si el sistema es de terceros, con acceso a la información necesaria para cumplir los controles anteriores.</td>
 <td>3</td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a></td>
 </tr>
 </tbody>
 </table></div>
-<p>El Reglamento Europeo de IA reconoce además, en determinadas condiciones, el <strong>derecho a obtener una explicación</strong> de decisiones individuales adoptadas sobre la base de resultados de sistemas de alto riesgo del anexo III (art. 86). El diseño de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> <strong>debe</strong> prever cómo se atiende.</p>
+<p>El Reglamento Europeo de IA reconoce además, en determinadas condiciones, el <strong>derecho a obtener una explicación</strong> de decisiones individuales adoptadas sobre la base de resultados de sistemas de alto riesgo del anexo III (art. 86). El diseño de <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> <strong>debe</strong> prever cómo se atiende.</p>
 <h3 id="8-4-pruebas-de-sesgo-en-decisiones-sobre-personas">8.4 Pruebas de sesgo en decisiones sobre personas</h3>
 <div class="tabla"><table>
 <thead>
@@ -1161,7 +1172,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Grupos</strong></td>
-<td>Los que protege la normativa antidiscriminación aplicable, en la medida en que puedan analizarse lícitamente. El tratamiento de categorías especiales para detectar sesgos tiene condiciones propias (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, sección 6).</td>
+<td>Los que protege la normativa antidiscriminación aplicable, en la medida en que puedan analizarse lícitamente. El tratamiento de categorías especiales para detectar sesgos tiene condiciones propias (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Documento 51 &#183; Datos y conocimiento para IA">documento 51</a>, sección 6).</td>
 </tr>
 <tr>
 <td><strong>Métricas</strong></td>
@@ -1173,7 +1184,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Acción</strong></td>
-<td>Todo resultado por debajo del umbral se analiza, se registra en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> y, si no se explica por factores pertinentes, bloquea G5 o activa un incidente en producción.</td>
+<td>Todo resultado por debajo del umbral se analiza, se registra en <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> y, si no se explica por factores pertinentes, bloquea G5 o activa un incidente en producción.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1222,14 +1233,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Evaluación de riesgos laborales.</strong> Cuando una iniciativa cambia ritmo, contenido o control del trabajo, la evaluación de riesgos laborales, incluidos los psicosociales, <strong>debe</strong> revisarse con el servicio de prevención.</li>
 <li><strong>Limitación de finalidad.</strong> Los datos de uso de los sistemas no se emplean para evaluar individualmente a las personas salvo que esa finalidad esté declarada, sea lícita y haya sido informada.</li>
-<li><strong>Diseño de la supervisión.</strong> <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> fija volumen máximo razonable de revisiones por persona, tiempo mínimo esperado por caso cuando proceda, muestreo de control de calidad de la revisión y rotación.</li>
+<li><strong>Diseño de la supervisión.</strong> <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> fija volumen máximo razonable de revisiones por persona, tiempo mínimo esperado por caso cuando proceda, muestreo de control de calidad de la revisión y rotación.</li>
 <li><strong>Margen de criterio.</strong> Se documenta cuándo la persona puede apartarse de la propuesta del sistema sin necesidad de justificarlo más que brevemente, y se protege a quien lo hace de buena fe.</li>
 <li><strong>Desconexión digital.</strong> Los agentes y sistemas que generan tareas o avisos respetan la política de desconexión digital (<a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales">LOPDGDD</a>, art. 88, en España).</li>
 <li><strong>Pulso periódico.</strong> Encuesta breve a los colectivos afectados en fase 5, a los tres meses de producción y en cada R6 Enterprise (PER-15).</li>
 </ol>
 <hr />
 <h2 id="comunicacion-interna"><span class="antetitulo">10</span>Comunicación interna</h2>
-<p>La comunicación de la adopción se desarrolla en el <a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>. Este apartado fija lo que es específico del efecto sobre las personas.</p>
+<p>La comunicación de la adopción se desarrolla en el <a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa">documento 23</a>. Este apartado fija lo que es específico del efecto sobre las personas.</p>
 <h3 id="10-1-principios">10.1 Principios</h3>
 <ol>
 <li><strong>Verdad antes que entusiasmo:</strong> no se promete que &quot;nadie se verá afectado&quot; si la evaluación de efecto dice otra cosa.</li>
@@ -1278,7 +1289,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="indicadores"><span class="antetitulo">11</span>Indicadores</h2>
-<p>Los códigos son provisionales hasta su consolidación en el catálogo de indicadores (<a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>). Los umbrales son <strong>orientativos y a calibrar</strong>. Todos se calculan sin datos individuales identificables y con un tamaño mínimo de grupo fijado por la compañía.</p>
+<p>Los códigos son provisionales hasta su consolidación en el catálogo de indicadores (<a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Documento 41 &#183; Cat&#225;logo de indicadores">documento 41</a>). Los umbrales son <strong>orientativos y a calibrar</strong>. Todos se calculan sin datos individuales identificables y con un tamaño mínimo de grupo fijado por la compañía.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1296,7 +1307,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Cobertura de la evaluación de efecto</td>
 <td>Iniciativas en fase 3 o posterior con evaluación de efecto registrada ÷ iniciativas en fase 3 o posterior</td>
 <td>Trimestral</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></td>
 <td>100 %</td>
 </tr>
 <tr id="cod-per-02">
@@ -1312,7 +1323,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Supervisores cualificados</td>
 <td>Sistemas A1–A3 en producción cuyos supervisores designados tienen formación PER-PD registrada ÷ sistemas A1–A3 en producción</td>
 <td>Trimestral</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, formación</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, formación</td>
 <td>100 %</td>
 </tr>
 <tr id="cod-per-04">
@@ -1320,7 +1331,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Capacidad liberada materializada</td>
 <td>Horas liberadas materializadas (PER-D1) ÷ horas liberadas medidas</td>
 <td>Trimestral</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></td>
 <td>Según hipótesis</td>
 </tr>
 <tr id="cod-per-05">
@@ -1328,7 +1339,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Capacidad liberada reasignada</td>
 <td>Horas reasignadas (PER-D2) con actividad destino verificada ÷ horas liberadas medidas</td>
 <td>Trimestral</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></td>
 <td>Según hipótesis</td>
 </tr>
 <tr id="cod-per-06">
@@ -1336,16 +1347,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Capacidad liberada sin decisión</td>
 <td>Horas en PER-D5 con antigüedad superior al plazo de C2 ÷ horas liberadas medidas</td>
 <td>Trimestral</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></td>
 <td>Tendencia decreciente</td>
 </tr>
 <tr id="cod-per-07">
 <td><strong>PER-07</strong></td>
 <td>Adopción efectiva</td>
-<td>Usuarios activos según el criterio de uso definido en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> ÷ usuarios destinatarios</td>
+<td>Usuarios activos según el criterio de uso definido en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> ÷ usuarios destinatarios</td>
 <td>Mensual</td>
 <td>Registros de uso</td>
-<td>Según hipótesis (<a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>)</td>
+<td>Según hipótesis (<a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa">documento 23</a>)</td>
 </tr>
 <tr id="cod-per-08">
 <td><strong>PER-08</strong></td>
@@ -1398,15 +1409,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-per-14">
 <td><strong>PER-14</strong></td>
 <td>Propuestas de empleados</td>
-<td>Iniciativas registradas en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> originadas en propuestas de empleados ÷ iniciativas registradas; y tasa de paso de G1</td>
+<td>Iniciativas registradas en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> originadas en propuestas de empleados ÷ iniciativas registradas; y tasa de paso de G1</td>
 <td>Semestral</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>Tendencia</td>
 </tr>
 <tr id="cod-per-15">
 <td><strong>PER-15</strong></td>
 <td>Percepción de los colectivos afectados</td>
-<td>Respuestas favorables en las preguntas de utilidad, confianza, apoyo, carga y autonomía (<a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a>) ÷ respuestas válidas</td>
+<td>Respuestas favorables en las preguntas de utilidad, confianza, apoyo, carga y autonomía (<a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html" title="Plantilla P44 &#183; Encuesta de uso y percepci&#243;n de la IA">P44</a>) ÷ respuestas válidas</td>
 <td>En fase 5, a los 3 meses y en R6 Enterprise</td>
 <td>Encuesta de pulso</td>
 <td>Tendencia; acción si empeora</td>
@@ -1416,11 +1427,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Relación con el índice de transformación.</strong> PER-04 y PER-05 alimentan la señal 3 (materialización); PER-13 alimenta la señal 5 (modelo operativo).</p>
 <hr />
 <h2 id="riesgos-organizativos"><span class="antetitulo">12</span>Riesgos organizativos</h2>
-<p>Los códigos y nombres son los del catálogo de riesgos tipo del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>; algunos riesgos organizativos figuran allí en otras categorías (ECO, REP, TEC). Los tres riesgos específicos de personas que no tenían equivalente (información y consulta, conflicto laboral y bienestar) se han incorporado al catálogo del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> como RT-ORG-07, RT-ORG-08 y RT-ORG-09, relacionados con RT-ORG-03. Todos se valoran con la escala común (probabilidad × impacto).</p>
+<p>Los códigos y nombres son los del catálogo de riesgos tipo del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>; algunos riesgos organizativos figuran allí en otras categorías (ECO, REP, TEC). Los tres riesgos específicos de personas que no tenían equivalente (información y consulta, conflicto laboral y bienestar) se han incorporado al catálogo del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a> como RT-ORG-07, RT-ORG-08 y RT-ORG-09, relacionados con RT-ORG-03. Todos se valoran con la escala común (probabilidad × impacto).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>)</th>
+<th>Código (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>)</th>
 <th>Riesgo</th>
 <th>Señal temprana</th>
 <th>Controles principales</th>
@@ -1431,25 +1442,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-01</strong></td>
 <td>Falta de adopción</td>
 <td>PER-07 por debajo de hipótesis en el piloto.</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a>, usuarios en el diseño.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa">documento 23</a>, usuarios en el diseño.</td>
 </tr>
 <tr id="cod-rt-eco-03">
 <td><strong>RT-ECO-03</strong></td>
 <td>Valor no materializado (capacidad liberada no materializada)</td>
 <td>PER-06 creciente.</td>
-<td>Sección 6, alertas en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, criterio de G7.</td>
+<td>Sección 6, alertas en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>, criterio de G7.</td>
 </tr>
 <tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependencia de personas clave (pérdida de conocimiento crítico)</td>
-<td>Dependencia alta (<a href="51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a>, CNC-06).</td>
+<td>Dependencia alta (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Documento 51 &#183; Datos y conocimiento para IA">documento 51</a>, CNC-06).</td>
 <td>Captura de conocimiento; sección 5.4.</td>
 </tr>
 <tr id="cod-rt-org-04">
 <td><strong>RT-ORG-04</strong></td>
 <td>Supervisión humana ineficaz (supervisión nominal)</td>
 <td>PER-10 próximo a cero; PER-03 &lt; 100 %.</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; secciones 4.2 y 9.2.</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>; secciones 4.2 y 9.2.</td>
 </tr>
 <tr id="cod-rt-org-07">
 <td><strong>RT-ORG-07</strong></td>
@@ -1478,21 +1489,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-rt-org-05">
 <td><strong>RT-ORG-05</strong></td>
 <td>Uso no autorizado de IA (<em>shadow AI</em>)</td>
-<td>Detecciones en <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
+<td>Detecciones en <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>.</td>
 <td>Documento 31; herramientas autorizadas; formación PER-PC.</td>
 </tr>
 <tr id="cod-rt-tec-08">
 <td><strong>RT-TEC-08</strong></td>
 <td>Irreversibilidad (por falta de personas capacitadas)</td>
 <td>Prueba de reversión fallida por falta de personas capacitadas.</td>
-<td>Sección 5.4; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>, sección 10.</td>
+<td>Sección 5.4; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a>, sección 10.</td>
 </tr>
 </tbody>
 </table></div>
-<p>El riesgo tipo <strong>RT-ORG-03 · Efecto no gestionado sobre las personas</strong> del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> engloba el efecto general sobre roles, carga y empleo que se evalúa en la sección 3.4, y <strong>RT-ORG-06 · Roles sin separación de funciones</strong> se controla con <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> y 01 §8.2.</p>
+<p>El riesgo tipo <strong>RT-ORG-03 · Efecto no gestionado sobre las personas</strong> del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a> engloba el efecto general sobre roles, carga y empleo que se evalúa en la sección 3.4, y <strong>RT-ORG-06 · Roles sin separación de funciones</strong> se controla con <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a> y 01 §8.2.</p>
 <hr />
 <h2 id="que-se-comprueba-en-las-puertas-de-decision"><span class="antetitulo">13</span>Qué se comprueba en las puertas de decisión</h2>
-<p>Los criterios codificados <code>G&lt;n&gt;.&lt;nn&gt;</code> y <code>R6.&lt;nn&gt;</code> se fijan en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>. Este documento aporta su contenido en materia de personas.</p>
+<p>Los criterios codificados <code>G&lt;n&gt;.&lt;nn&gt;</code> y <code>R6.&lt;nn&gt;</code> se fijan en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>. Este documento aporta su contenido en materia de personas.</p>
 <ul>
 <li><strong>G1:</strong> colectivos y efecto previsible identificados. <strong>G2:</strong> dependencia del valor respecto a la capacidad liberada y destino previsto.</li>
 <li><strong>G3:</strong> evaluación de efecto completa; decisiones sobre personas clasificadas; información y consulta analizadas; riesgos RT-ORG; intensidad revisada.</li>
@@ -1513,63 +1524,63 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Evaluación de efecto, plan de capacidades, registro de capacidad liberada y seguimiento. Herramienta principal de este documento.</td>
 </tr>
 <tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> · <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a></strong></td>
 <td>Registro, inventario, intensidad, valor y uso corporativo</td>
 <td>Alertas y propuestas (PER-14); registro interno de sistemas que afectan a empleados; revisión de intensidad; importes materializados y reasignados; uso no autorizado.</td>
 </tr>
 <tr id="cod-p20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Evaluación de efecto, plan de capacidades, destino previsto de la capacidad liberada, comunicación.</td>
 </tr>
 <tr id="cod-p11">
-<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></strong></td>
+<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></strong></td>
 <td>Clasificación regulatoria y evaluaciones de impacto</td>
 <td>Decisiones sobre personas y alto riesgo.</td>
 </tr>
 <tr id="cod-p12">
-<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
+<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a></strong></td>
 <td>Matriz y registro de riesgos</td>
 <td>Riesgos RT-ORG.</td>
 </tr>
 <tr id="cod-p17">
-<td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></strong></td>
+<td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a></strong></td>
 <td>Diseño de gobierno y supervisión humana</td>
 <td>Autonomía máxima, autoridad y carga del supervisor, explicación y revisión.</td>
 </tr>
 <tr id="cod-p22">
-<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
+<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a></strong></td>
 <td>Resultados de validación y del piloto</td>
 <td>Pruebas de sesgo y efecto real en el piloto.</td>
 </tr>
 <tr id="cod-p28">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Capacidad liberada materializada y reasignada.</td>
 </tr>
 <tr id="cod-p30">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></strong></td>
 <td>Decisión de escalado o retirada</td>
 <td>Efecto real frente a declarado y comunicación de la retirada.</td>
 </tr>
 <tr id="cod-p44">
-<td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
+<td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html" title="Plantilla P44 &#183; Encuesta de uso y percepci&#243;n de la IA">P44</a></strong></td>
 <td>Encuesta de uso y percepción de la IA</td>
 <td>Encuesta de pulso a los colectivos afectados (PER-15).</td>
 </tr>
 <tr id="cod-p46">
-<td><strong><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></strong></td>
+<td><strong><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Plantilla P46 &#183; Informaci&#243;n a los trabajadores y a su representaci&#243;n">P46</a></strong></td>
 <td>Información a los trabajadores y a su representación</td>
 <td>Ficha informativa del sistema (sección 7.3) y registro de información y consultas.</td>
 </tr>
 </tbody>
 </table></div>
-<p>La <strong>ficha informativa para la representación</strong> (sección 7.3) y el registro de información y consultas están en <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a>.</p>
+<p>La <strong>ficha informativa para la representación</strong> (sección 7.3) y el registro de información y consultas están en <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Plantilla P46 &#183; Informaci&#243;n a los trabajadores y a su representaci&#243;n">P46</a>.</p>
 <hr />
 <h2 id="documentos-relacionados"><span class="antetitulo">15</span>Documentos relacionados</h2>
 <div class="tabla"><table>
@@ -1636,7 +1647,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Desarrolla la esfera 03 con indicadores; la evaluación del efecto sobre el trabajo por iniciativa; roles y capacidades del consejo a los equipos; el plan de alfabetización por perfil; el proceso de decisión, registro y seguimiento de la capacidad liberada con cinco destinos; información y consulta con referencia al art. 64.4.d) del <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a> y al <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>; autonomía máxima y controles en decisiones sobre personas; bienestar y supervisión; comunicación interna; quince indicadores con fórmula y diez riesgos organizativos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>; los tres riesgos propuestos se incorporan a 33 como RT-ORG-07 a RT-ORG-09.</td>
+<td>Primera versión. Desarrolla la esfera 03 con indicadores; la evaluación del efecto sobre el trabajo por iniciativa; roles y capacidades del consejo a los equipos; el plan de alfabetización por perfil; el proceso de decisión, registro y seguimiento de la capacidad liberada con cinco destinos; información y consulta con referencia al art. 64.4.d) del <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a> y al <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>; autonomía máxima y controles en decisiones sobre personas; bienestar y supervisión; comunicación interna; quince indicadores con fórmula y diez riesgos organizativos tipo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; riesgos alineados con los códigos del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>; los tres riesgos propuestos se incorporan a 33 como RT-ORG-07 a RT-ORG-09.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1877,6 +1888,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

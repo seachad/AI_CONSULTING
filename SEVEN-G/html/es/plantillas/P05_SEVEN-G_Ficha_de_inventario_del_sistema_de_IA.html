@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion-de-la-ficha"><span>02</span>Identificación de la ficha</a></li><li><a href="#descripcion"><span>03</span>Descripción</a></li><li><a href="#tipo-de-uso-y-clasificacion"><span>04</span>Tipo de uso y clasificación</a></li><li><a href="#rol-de-la-compania-segun-el-reglamento-europeo-de-ia"><span>05</span>Rol de la compañía según el Reglamento Europeo de IA</a></li><li><a href="#datos"><span>06</span>Datos</a></li><li><a href="#proveedores-y-componentes"><span>07</span>Proveedores y componentes</a></li><li><a href="#responsables"><span>08</span>Responsables</a></li><li><a href="#cumplimiento-y-control"><span>09</span>Cumplimiento y control</a></li><li><a href="#uso-no-autorizado"><span>10</span>Uso no autorizado</a></li><li><a href="#retirada"><span>11</span>Retirada</a></li><li><a href="#criterios-de-calidad"><span>12</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>13</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · Inventario de sistemas de IA (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Estructura de detalle en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> · Inventario de sistemas de IA (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>). Estructura de detalle en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Documento 32 &#183; Inventario de sistemas de IA y clasificaci&#243;n regulatoria">documento 32</a>.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -490,7 +501,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código del sistema</td>
 <td></td>
-<td>Código persistente asignado por el inventario según el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
+<td>Código persistente asignado por el inventario según el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Documento 32 &#183; Inventario de sistemas de IA y clasificaci&#243;n regulatoria">documento 32</a>.</td>
 </tr>
 <tr>
 <td>Nombre del sistema</td>
@@ -563,7 +574,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Situación del sistema</td>
 <td></td>
-<td>Previsto · En construcción o integración · En piloto · En producción · Suspendido · Retirado. Lista propuesta, a confirmar en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</td>
+<td>Previsto · En construcción o integración · En piloto · En producción · Suspendido · Retirado. Lista propuesta, a confirmar en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Documento 32 &#183; Inventario de sistemas de IA y clasificaci&#243;n regulatoria">documento 32</a>.</td>
 </tr>
 <tr>
 <td>Fase y estado de la iniciativa</td>
@@ -611,7 +622,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad</td>
 <td></td>
-<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>).</td>
 </tr>
 <tr>
 <td>Tecnología</td>
@@ -631,7 +642,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Clasificación regulatoria</td>
 <td></td>
-<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>).</td>
 </tr>
 <tr>
 <td>Tipo de valor</td>
@@ -643,7 +654,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Si la tecnología es &quot;Reglas (no es IA)&quot;, se documenta el motivo y se valora si debe mantenerse en el inventario.</p>
 <hr />
 <h2 id="rol-de-la-compania-segun-el-reglamento-europeo-de-ia"><span class="antetitulo">05</span>Rol de la compañía según el Reglamento Europeo de IA</h2>
-<p>Marque todos los roles que correspondan. La determinación final se valida en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> con criterio jurídico. <em>Este documento no constituye asesoramiento jurídico.</em></p>
+<p>Marque todos los roles que correspondan. La determinación final se valida en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> con criterio jurídico. <em>Este documento no constituye asesoramiento jurídico.</em></p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -714,7 +725,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registro en la base de datos de la UE <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Sí · No · No aplica. Solo para los sistemas y roles que lo exijan según <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Sí · No · No aplica. Solo para los sistemas y roles que lo exijan según <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -794,14 +805,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td>N1 Estándar · N2 Reforzado · N3 Crítico</td>
 <td>Referencia y vencimiento</td>
-<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> y fecha</td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> y fecha</td>
 </tr>
 <tr>
 <td><em>(ejemplo ilustrativo)</em> Proveedor X</td>
 <td>Modelo de lenguaje por API</td>
 <td>N2 Reforzado</td>
 <td>CT-0000, vence 30-06-2028</td>
-<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> de 10-11-2026, Conforme con observaciones</td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> de 10-11-2026, Conforme con observaciones</td>
 </tr>
 </tbody>
 </table></div>
@@ -852,7 +863,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Clasificación regulatoria validada</td>
 <td></td>
-<td>Fecha de <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> y persona con criterio jurídico que la valida.</td>
+<td>Fecha de <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> y persona con criterio jurídico que la valida.</td>
 </tr>
 <tr>
 <td>Evaluación de impacto en protección de datos</td>
@@ -872,12 +883,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Supervisión humana</td>
 <td></td>
-<td>Resumen y referencia a <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Resumen y referencia a <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>.</td>
 </tr>
 <tr>
 <td>Nivel de riesgo residual principal</td>
 <td></td>
-<td>Bajo · Medio · Alto · Crítico (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
+<td>Bajo · Medio · Alto · Crítico (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>).</td>
 </tr>
 <tr>
 <td>No conformidades abiertas</td>
@@ -969,13 +980,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Tratamiento de datos y modelos</td>
 <td></td>
-<td>Eliminación, conservación o transferencia. Referencia a <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td>Eliminación, conservación o transferencia. Referencia a <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">12</span>Criterios de calidad</h2>
-<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx y R6.xx) y el detalle del inventario en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>.</p>
+<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (ver criterios G0.xx y R6.xx) y el detalle del inventario en el <a href="../32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Documento 32 &#183; Inventario de sistemas de IA y clasificaci&#243;n regulatoria">documento 32</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1002,7 +1013,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>El rol regulatorio está justificado y es coherente con <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>El rol regulatorio está justificado y es coherente con <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1017,7 +1028,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Responsables asignados coherentes con <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+<td>Responsables asignados coherentes con <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1339,6 +1350,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

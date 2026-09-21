@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#resumen-ejecutivo"><span>03</span>Resumen ejecutivo</a></li><li><a href="#alcance-y-metodo"><span>04</span>Alcance y método</a></li><li><a href="#inventario-de-sistemas-de-ia"><span>05</span>Inventario de sistemas de IA</a></li><li><a href="#madurez"><span>06</span>Madurez</a></li><li><a href="#mapa-actual-de-esferas"><span>07</span>Mapa actual de esferas</a></li><li><a href="#indice-de-transformacion"><span>08</span>Índice de transformación</a></li><li><a href="#valor-y-coste-actuales"><span>09</span>Valor y coste actuales</a></li><li><a href="#mapa-de-riesgos-y-oportunidades-por-esfera"><span>10</span>Mapa de riesgos y oportunidades por esfera</a></li><li><a href="#hallazgos-y-recomendaciones-para-c2"><span>11</span>Hallazgos y recomendaciones para C2</a></li><li><a href="#criterios-de-calidad"><span>12</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>13</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -445,7 +456,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>En C1: en la primera implantación, al final del mes 1 (90 §4.2, semana 4, hito 1); la sección 10 se completa en el mes 2 (90 §4.3). En los ciclos siguientes, el diagnóstico se integra en la revisión anual C5 (<a href="P37_SEVEN-G_Revision_anual_C5.html">P37</a>).</td>
+<td>En C1: en la primera implantación, al final del mes 1 (90 §4.2, semana 4, hito 1); la sección 10 se completa en el mes 2 (90 §4.3). En los ciclos siguientes, el diagnóstico se integra en la revisión anual C5 (<a href="P37_SEVEN-G_Revision_anual_C5.html" title="Plantilla P37 &#183; Revisi&#243;n anual C5">P37</a>).</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -461,11 +472,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Etapa del ciclo corporativo</strong></td>
-<td>C1 · Diagnóstico. Es la entrada de C2 (<a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>) y de C3 (<a href="P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a>).</td>
+<td>C1 · Diagnóstico. Es la entrada de C2 (<a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a>) y de C3 (<a href="P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a>).</td>
 </tr>
 <tr>
 <td><strong>Herramientas</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> (inventario), <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> y <a href="P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html">P34</a> (madurez), <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> (mapa de esferas), <a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a> (índice de transformación), <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> (valor y coste), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> (riesgos).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> (inventario), <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> y <a href="P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Plantilla P34 &#183; Cuestionario e informe de madurez">P34</a> (madurez), <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a> (mapa de esferas), <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> (índice de transformación), <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a> (valor y coste), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a> (riesgos).</td>
 </tr>
 <tr>
 <td><strong>Documentos de referencia</strong></td>
@@ -509,7 +520,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Perímetro</td>
 <td></td>
-<td>El del mandato (<a href="P32_SEVEN-G_Mandato_de_implantacion.html">P32</a>). El inventario abarca toda la compañía.</td>
+<td>El del mandato (<a href="P32_SEVEN-G_Mandato_de_implantacion.html" title="Plantilla P32 &#183; Mandato de implantaci&#243;n de SEVEN-G">P32</a>). El inventario abarca toda la compañía.</td>
 </tr>
 <tr>
 <td>Alcance de implantación</td>
@@ -652,7 +663,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="inventario-de-sistemas-de-ia"><span class="antetitulo">05</span>Inventario de sistemas de IA</h2>
-<p>Fuente: <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> y las declaraciones de completitud del anexo de <a href="P32_SEVEN-G_Mandato_de_implantacion.html">P32</a>.</p>
+<p>Fuente: <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> y las declaraciones de completitud del anexo de <a href="P32_SEVEN-G_Mandato_de_implantacion.html" title="Plantilla P32 &#183; Mandato de implantaci&#243;n de SEVEN-G">P32</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -745,7 +756,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="madurez"><span class="antetitulo">06</span>Madurez</h2>
-<p>Resultado de la evaluación de madurez registrada en <a href="P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html">P34</a>, con las reglas de cálculo de 11 §5.</p>
+<p>Resultado de la evaluación de madurez registrada en <a href="P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Plantilla P34 &#183; Cuestionario e informe de madurez">P34</a>, con las reglas de cálculo de 11 §5.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1017,7 +1028,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="indice-de-transformacion"><span class="antetitulo">08</span>Índice de transformación</h2>
-<p>Cálculo formal con <a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a> y las reglas del <a href="../12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>. Se presenta con los tres elementos de 12 §10.</p>
+<p>Cálculo formal con <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y las reglas del <a href="../12_SEVEN-G_Indice_de_transformacion.html" title="Documento 12 &#183; &#205;ndice de transformaci&#243;n">documento 12</a>. Se presenta con los tres elementos de 12 §10.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1172,7 +1183,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 </tr>
 <tr>
 <td>Retorno</td>
@@ -1180,7 +1191,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 </tr>
 <tr>
 <td>Coste recurrente</td>
@@ -1188,7 +1199,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></td>
 </tr>
 <tr>
 <td><strong>Valor neto anual</strong></td>
@@ -1204,7 +1215,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>, <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></td>
 </tr>
 <tr>
 <td>Inversión de construcción ejecutada en el periodo</td>
@@ -1212,14 +1223,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></td>
 </tr>
 </tbody>
 </table></div>
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Categoría de coste (<a href="../42_SEVEN-G_Costes_de_IA.html">documento 42</a>)</th>
+<th>Categoría de coste (<a href="../42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>)</th>
 <th>Importe</th>
 <th>Observaciones</th>
 </tr>
@@ -1234,7 +1245,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="mapa-de-riesgos-y-oportunidades-por-esfera"><span class="antetitulo">10</span>Mapa de riesgos y oportunidades por esfera</h2>
-<p>Se elabora en el mes 2 con talleres por esfera (01 §5.3; 90 §4.3) y se incorpora como nueva versión del informe. Es la base del hito 2. Los riesgos usan la escala del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> (nivel = probabilidad × impacto: Bajo 1–4, Medio 5–9, Alto 10–15, Crítico 16–25).</p>
+<p>Se elabora en el mes 2 con talleres por esfera (01 §5.3; 90 §4.3) y se incorpora como nueva versión del informe. Es la base del hito 2. Los riesgos usan la escala del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a> (nivel = probabilidad × impacto: Bajo 1–4, Medio 5–9, Alto 10–15, Crítico 16–25).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1285,7 +1296,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Sanción y reclamaciones; estimado</td>
 <td>Directora de atención al cliente</td>
 <td>30-11-2026</td>
-<td>Clasificación regulatoria (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>) y regularización (<a href="P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a>)</td>
+<td>Clasificación regulatoria (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>) y regularización (<a href="P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a>)</td>
 </tr>
 <tr>
 <td><em>(ejemplo ilustrativo)</em> 02</td>
@@ -1297,7 +1308,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>0,40 M€ anuales; estimado con fórmula</td>
 <td>Director financiero</td>
 <td>Entrada en C3</td>
-<td>Ficha de caso de uso (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>)</td>
+<td>Ficha de caso de uso (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>)</td>
 </tr>
 </tbody>
 </table></div>
@@ -1440,7 +1451,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>El inventario incluye propios, terceros, uso corporativo y uso no autorizado (pregunta D6.03 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>), con declaraciones de completitud firmadas (D6.05).</td>
+<td>El inventario incluye propios, terceros, uso corporativo y uso no autorizado (pregunta D6.03 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>), con declaraciones de completitud firmadas (D6.05).</td>
 <td></td>
 </tr>
 <tr>
@@ -1798,6 +1809,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

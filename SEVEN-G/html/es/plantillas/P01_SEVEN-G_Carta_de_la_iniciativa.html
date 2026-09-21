@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#problema-u-oportunidad-de-negocio"><span>03</span>Problema u oportunidad de negocio</a></li><li><a href="#objetivo-y-encaje-estrategico"><span>04</span>Objetivo y encaje estratégico</a></li><li><a href="#alcance"><span>05</span>Alcance</a></li><li><a href="#valor-esperado-preliminar"><span>06</span>Valor esperado preliminar</a></li><li><a href="#presupuesto-y-plazos-autorizados"><span>07</span>Presupuesto y plazos autorizados</a></li><li><a href="#responsables-y-organos"><span>08</span>Responsables y órganos</a></li><li><a href="#restricciones-intensidad-e-inventario"><span>09</span>Restricciones, intensidad e inventario</a></li><li><a href="#riesgos-y-dependencias-iniciales"><span>10</span>Riesgos y dependencias iniciales</a></li><li><a href="#condiciones-de-la-autorizacion"><span>11</span>Condiciones de la autorización</a></li><li><a href="#criterios-de-calidad"><span>12</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>13</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas (los campos de identificación y clasificación alimentan la ficha de la iniciativa).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · Registro de iniciativas (los campos de identificación y clasificación alimentan la ficha de la iniciativa).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -470,14 +481,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Plantillas relacionadas</strong></td>
-<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> (restricciones), <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> (roles), <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> (intensidad), <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (inventario), <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> (ambición), <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (decisión de <em>gate</em>), <a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (ficha de caso de uso).</td>
+<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a> (restricciones), <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a> (roles), <a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a> (intensidad), <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a> (inventario), <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a> (ambición), <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> (decisión de <em>gate</em>), <a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a> (ficha de caso de uso).</td>
 </tr>
 </tbody>
 </table></div>
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li>Sin G0 aprobado la iniciativa no está autorizada: no puede consumir presupuesto ni acceder a datos de producción (01 §6.2).</li>
-<li>Las cifras de esta carta son órdenes de magnitud y se marcan como <em>estimadas</em>. El compromiso de valor se formula en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</li>
+<li>Las cifras de esta carta son órdenes de magnitud y se marcan como <em>estimadas</em>. El compromiso de valor se formula en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>.</li>
 <li>&quot;Sin dato&quot; no es cero: si un campo no se conoce, se escribe &quot;sin dato&quot; y se indica cuándo se obtendrá.</li>
 <li>Las filas y textos marcados <em>(ejemplo ilustrativo)</em> son ficticios y deben borrarse antes de presentar la carta.</li>
 </ul>
@@ -495,7 +506,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>Formato IA-AAAA-NNN, asignado por el registro de iniciativas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). No se reutiliza.</td>
+<td>Formato IA-AAAA-NNN, asignado por el registro de iniciativas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>). No se reutiliza.</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -548,7 +559,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Descripción comprensible</td>
 <td></td>
-<td>Qué es y para qué se usará, en lenguaje para no especialistas (regla 10 de medición). Tres a cinco frases. Se reutiliza en <a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>.</td>
+<td>Qué es y para qué se usará, en lenguaje para no especialistas (regla 10 de medición). Tres a cinco frases. Se reutiliza en <a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>.</td>
 </tr>
 <tr>
 <td>Necesidad de negocio</td>
@@ -591,7 +602,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Objetivo de la iniciativa</td>
 <td></td>
-<td>Resultado de negocio que se persigue, en una frase. Las métricas y umbrales se fijan en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td>Resultado de negocio que se persigue, en una frase. Las métricas y umbrales se fijan en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>.</td>
 </tr>
 <tr>
 <td>Encaje con la tesis de IA</td>
@@ -611,7 +622,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de ambición preliminar</td>
 <td></td>
-<td>Optimizar · Aumentar · Transformar. Se clasifica formalmente con <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> en la fase 1.</td>
+<td>Optimizar · Aumentar · Transformar. Se clasifica formalmente con <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a> en la fase 1.</td>
 </tr>
 <tr>
 <td>Tipo de uso de IA</td>
@@ -626,7 +637,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Iniciativas relacionadas <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Códigos IA-AAAA-NNN con dependencias o resultados compartidos. Si comparten valor, se declarará el reparto en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> (regla 5).</td>
+<td>Códigos IA-AAAA-NNN con dependencias o resultados compartidos. Si comparten valor, se declarará el reparto en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> (regla 5).</td>
 </tr>
 </tbody>
 </table></div>
@@ -654,12 +665,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistemas de IA previstos</td>
 <td></td>
-<td>Nombre provisional y enlace a su ficha <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (alta en el inventario).</td>
+<td>Nombre provisional y enlace a su ficha <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a> (alta en el inventario).</td>
 </tr>
 <tr>
 <td>Proveedores previstos</td>
 <td></td>
-<td>Terceros que podrían aportar modelos, plataformas o servicios. Se evaluarán con <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> en la fase 3.</td>
+<td>Terceros que podrían aportar modelos, plataformas o servicios. Se evaluarán con <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> en la fase 3.</td>
 </tr>
 <tr>
 <td>Supuestos iniciales</td>
@@ -725,7 +736,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Umbral de inversión aprobado en C2</td>
 <td></td>
-<td>Si la inversión total prevista lo supera, se aplica intensidad Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterio 8).</td>
+<td>Si la inversión total prevista lo supera, se aplica intensidad Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>, criterio 8).</td>
 </tr>
 <tr>
 <td>Fechas objetivo de G1 y G2</td>
@@ -792,7 +803,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>El detalle, las incompatibilidades y los sustitutos se registran en <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</p>
+<p>El detalle, las incompatibilidades y los sustitutos se registran en <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a>.</p>
 <hr />
 <h2 id="restricciones-intensidad-e-inventario"><span class="antetitulo">09</span>Restricciones, intensidad e inventario</h2>
 <div class="tabla"><table>
@@ -807,7 +818,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Restricciones principales</td>
 <td></td>
-<td>Resumen de <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>: regulatorias, éticas, de datos, presupuestarias, de plazo y tecnológicas.</td>
+<td>Resumen de <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a>: regulatorias, éticas, de datos, presupuestarias, de plazo y tecnológicas.</td>
 </tr>
 <tr>
 <td>Líneas rojas</td>
@@ -817,17 +828,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad determinada</td>
 <td></td>
-<td>Lite · Enterprise, con el criterio que la determina (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise, con el criterio que la determina (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>).</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria preliminar</td>
 <td></td>
-<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar. En fase 0 suele ser &quot;Pendiente de clasificar&quot;; se resuelve en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Prohibido · Alto riesgo · Obligaciones de transparencia · Riesgo mínimo · Fuera de ámbito · Pendiente de clasificar. En fase 0 suele ser &quot;Pendiente de clasificar&quot;; se resuelve en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>Alta en el inventario</td>
 <td></td>
-<td>Referencia de la ficha <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> y fecha de alta.</td>
+<td>Referencia de la ficha <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a> y fecha de alta.</td>
 </tr>
 </tbody>
 </table></div>
@@ -863,11 +874,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Las respuestas del asistente podrían contener información incorrecta sobre plazos de entrega.</td>
 <td>Riesgo</td>
 <td>Responsable de producto</td>
-<td>Se valorará en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; en el piloto, revisión humana de una muestra.</td>
+<td>Se valorará en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>; en el piloto, revisión humana de una muestra.</td>
 </tr>
 </tbody>
 </table></div>
-<p>La valoración formal de riesgos se hace en la fase 3 con <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>. Aquí solo se anotan los conocidos para que el decisor de G0 los tenga presentes.</p>
+<p>La valoración formal de riesgos se hace en la fase 3 con <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>. Aquí solo se anotan los conocidos para que el decisor de G0 los tenga presentes.</p>
 <hr />
 <h2 id="condiciones-de-la-autorizacion"><span class="antetitulo">11</span>Condiciones de la autorización</h2>
 <div class="tabla"><table>
@@ -918,10 +929,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Una condición vencida sin cumplir convierte el resultado en <strong>Iterar</strong> (01 §7.4). La decisión se registra en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<p>Una condición vencida sin cumplir convierte el resultado en <strong>Iterar</strong> (01 §7.4). La decisión se registra en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">12</span>Criterios de calidad</h2>
-<p>El verificador comprueba, al menos, lo siguiente. Los criterios formales de G0 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx).</p>
+<p>El verificador comprueba, al menos, lo siguiente. Los criterios formales de G0 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (ver criterios G0.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -968,12 +979,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Hay patrocinador comprometido y los roles asignados figuran en <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> sin incompatibilidades.</td>
+<td>Hay patrocinador comprometido y los roles asignados figuran en <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a> sin incompatibilidades.</td>
 <td></td>
 </tr>
 <tr>
 <td>9</td>
-<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> y <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> existen y son coherentes con esta carta.</td>
+<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a>, <a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a> y <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a> existen y son coherentes con esta carta.</td>
 <td></td>
 </tr>
 <tr>
@@ -1302,6 +1313,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#decision-de-notificar-o-no"><span>03</span>Decisión de notificar o no</a></li><li><a href="#contenido-comun-de-las-notificaciones"><span>04</span>Contenido común de las notificaciones</a></li><li><a href="#notificacion-de-incidente-grave-reglamento-de-ia"><span>05</span>Notificación de incidente grave (Reglamento de IA)</a></li><li><a href="#notificacion-de-violacion-de-la-seguridad-de-los-datos-personales-rgpd"><span>06</span>Notificación de violación de la seguridad de los datos personales (RGPD)</a></li><li><a href="#notificaciones-dora-y-nis2"><span>07</span>Notificaciones DORA y NIS2</a></li><li><a href="#comunicacion-a-personas-afectadas"><span>08</span>Comunicación a personas afectadas</a></li><li><a href="#comunicacion-interna-y-a-clientes"><span>09</span>Comunicación interna y a clientes</a></li><li><a href="#registro-de-notificaciones-y-comunicaciones"><span>10</span>Registro de notificaciones y comunicaciones</a></li><li><a href="#criterios-de-calidad"><span>11</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>12</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -445,7 +456,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>Los modelos de las secciones 5 a 9 se adaptan al sistema en la fase 5, junto con el plan de respuesta (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>), antes de G5. En cada incidente, la sección 3 se abre en el triaje y el registro de la sección 10 se mantiene hasta el informe final de cada régimen.</td>
+<td>Los modelos de las secciones 5 a 9 se adaptan al sistema en la fase 5, junto con el plan de respuesta (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>), antes de G5. En cada incidente, la sección 3 se abre en el triaje y el registro de la sección 10 se mantiene hasta el informe final de cada régimen.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -457,7 +468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién decide o aprueba</strong></td>
-<td>Notifica quien la norma designa (proveedor, responsable del tratamiento, entidad financiera, entidad esencial o importante). Internamente firma la persona que el plan <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> designa; en S1, con conocimiento del patrocinador de IA y de la comisión delegada (37 §4.3).</td>
+<td>Notifica quien la norma designa (proveedor, responsable del tratamiento, entidad financiera, entidad esencial o importante). Internamente firma la persona que el plan <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a> designa; en S1, con conocimiento del patrocinador de IA y de la comisión delegada (37 §4.3).</td>
 </tr>
 <tr>
 <td><strong>Etapa, <em>gate</em> o momento</strong></td>
@@ -465,11 +476,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> · Registro de no conformidades e incidentes: relojes de notificación y alertas. Esta plantilla recoge el contenido que <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> no redacta.</td>
+<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a> · Registro de no conformidades e incidentes: relojes de notificación y alertas. Esta plantilla recoge el contenido que <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a> no redacta.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>Documento 37 §4.5 (fases 5 y 6) y §5 (regímenes, plazos y reglas); <a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> (régimen aplicable a cada sistema); <a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a> (notificaciones de proveedores).</td>
+<td>Documento 37 §4.5 (fases 5 y 6) y §5 (regímenes, plazos y reglas); <a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a> (régimen aplicable a cada sistema); <a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a> (notificaciones de proveedores).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -480,8 +491,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li><strong>Los formularios oficiales prevalecen.</strong> Cuando una autoridad publica un formulario, una plantilla o un canal propio, se usa ese y esta plantilla solo sirve para preparar el contenido. Para el art. 73 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> existe el <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/consultations/ai-act-commission-issues-draft-guidance-and-reporting-template-serious-ai-incidents-and-seeks" target="_blank" rel="noopener" title="Proyecto de orientaciones y plantilla de notificaci&#243;n de incidentes graves de IA (art. 73 del Reglamento de IA)">Proyecto de orientaciones y plantilla sobre notificación de incidentes graves</a> de la Comisión (34 §3.3); <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> tiene formularios en su normativa de desarrollo, y las autoridades de control y los CSIRT tienen sus propios canales. Esta plantilla no reproduce ni sustituye ninguno.</li>
-<li>Los plazos se toman del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> §5 y se confirman con asesoría jurídica en el momento del incidente; esta plantilla no fija plazos propios.</li>
-<li>El reloj de cada régimen empieza en la fecha y hora de detección registrada en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> o en el momento que la norma indique; nunca al terminar el análisis.</li>
+<li>Los plazos se toman del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a> §5 y se confirman con asesoría jurídica en el momento del incidente; esta plantilla no fija plazos propios.</li>
+<li>El reloj de cada régimen empieza en la fecha y hora de detección registrada en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a> o en el momento que la norma indique; nunca al terminar el análisis.</li>
 <li>Si la norma lo prevé, es preferible una notificación inicial incompleta en plazo a una completa fuera de plazo.</li>
 <li>Toda comunicación externa distingue hechos confirmados de valoraciones en curso y no especula sobre causas.</li>
 <li>Un incidente de IA que es también una brecha o un incidente de seguridad se gestiona <strong>una sola vez</strong>, con un único coordinador (37 §1).</li>
@@ -501,7 +512,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Incidente</td>
 <td></td>
-<td>INC-AAAA-NNN (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>).</td>
+<td>INC-AAAA-NNN (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>, <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>).</td>
 </tr>
 <tr>
 <td>Sistema e iniciativa</td>
@@ -521,7 +532,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Papel de la compañía respecto al sistema</td>
 <td></td>
-<td>Proveedor · Responsable del despliegue · Ambos (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
+<td>Proveedor · Responsable del despliegue · Ambos (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>, <a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>).</td>
 </tr>
 <tr>
 <td>Papel respecto a los datos personales</td>
@@ -531,7 +542,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sujeta a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> · a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a></td>
 <td></td>
-<td>Sí · No · Por determinar (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> §2).</td>
+<td>Sí · No · Por determinar (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a> §2).</td>
 </tr>
 <tr>
 <td>Coordinador del incidente</td>
@@ -625,7 +636,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Regulación sectorial</td>
 <td></td>
-<td>Supervisor sectorial o esquema de seguridad del sector público (<a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</td>
+<td>Supervisor sectorial o esquema de seguridad del sector público (<a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a>).</td>
 <td></td>
 <td></td>
 <td></td>
@@ -945,7 +956,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Para las entidades financieras, DORA actúa como norma sectorial respecto de NIS2 en la notificación de incidentes; el régimen se confirma en el <a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>.</p>
+<p>Para las entidades financieras, DORA actúa como norma sectorial respecto de NIS2 en la notificación de incidentes; el régimen se confirma en el <a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>.</p>
 <hr />
 <h2 id="comunicacion-a-personas-afectadas"><span class="antetitulo">08</span>Comunicación a personas afectadas</h2>
 <p>Obligatoria cuando el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a> la exige (probable alto riesgo para las personas) y recomendable cuando el incidente afecta a sus decisiones o intereses aunque ninguna norma la exija <strong>(Enterprise)</strong>.</p>
@@ -1113,10 +1124,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Una notificación fuera de plazo o omitida abre una no conformidad crítica en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">P50</a>, además de las que revele el incidente (37 §6).</p>
+<p>Una notificación fuera de plazo o omitida abre una no conformidad crítica en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Plantilla P50 &#183; Registro de no conformidades">P50</a>, además de las que revele el incidente (37 §6).</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (G5.17 y R6.06) y proceso en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</p>
+<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (G5.17 y R6.06) y proceso en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1158,7 +1169,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Los incumplimientos de plazo tienen no conformidad abierta en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">P50</a>.</td>
+<td>Los incumplimientos de plazo tienen no conformidad abierta en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Plantilla P50 &#183; Registro de no conformidades">P50</a>.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1496,6 +1507,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

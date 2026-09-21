@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,12 +439,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#the-c2-decision-as-a-whole"><span>02</span>The C2 decision as a whole</a></li><li><a href="#ai-thesis"><span>03</span>AI thesis</a></li><li><a href="#ambition-per-sphere"><span>04</span>Ambition per sphere</a></li><li><a href="#risk-appetite"><span>05</span>Risk appetite</a></li><li><a href="#enterprise-investment-threshold-and-materiality-thresholds"><span>06</span>Enterprise investment threshold and materiality thresholds</a></li><li><a href="#return-horizon-by-ambition-level"><span>07</span>Return horizon by ambition level</a></li><li><a href="#target-portfolio-balance-by-ambition"><span>08</span>Target portfolio balance by ambition</a></li><li><a href="#reference-time-limits"><span>09</span>Reference time limits</a></li><li><a href="#nonconformity-and-incident-time-limits"><span>10</span>Nonconformity and incident time limits</a></li><li><a href="#red-lines"><span>11</span>Red lines</a></li><li><a href="#framework-budget"><span>12</span>Framework budget</a></li><li><a href="#annual-review-and-extraordinary-review"><span>13</span>Annual review and extraordinary review</a></li><li><a href="#quality-criteria-for-the-c2-decision"><span>14</span>Quality criteria for the C2 decision</a></li><li><a href="#annex-board-decision-document-template-t19"><span>15</span>Annex · Board decision document template (T19)</a></li><li><a href="#associated-tools-and-templates"><span>16</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>17</span>Related documents</a></li><li><a href="#version-control"><span>18</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>The C2 decision, approved by the board: AI thesis, ambition per sphere, risk appetite, Enterprise investment threshold, reference time limits, nonconformity time limits, red lines and framework budget. Without an approved C2, no Transform initiatives are approved. Each company sets its own numerical values.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
-<p>This document defines the content of stage <strong>C2 · Direction</strong> of the corporate cycle (<a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 5.1): the decision with which the board sets the company's AI thesis, the ambition per sphere, the risk appetite and the thresholds, time limits, limits and budget that the rest of the framework uses to make decisions.</p>
+<p>This document defines the content of stage <strong>C2 · Direction</strong> of the corporate cycle (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 5.1): the decision with which the board sets the company's AI thesis, the ambition per sphere, the risk appetite and the thresholds, time limits, limits and budget that the rest of the framework uses to make decisions.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -456,11 +467,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>When</strong></td>
-<td>On first implementation, within the initial ninety days (<a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>). Thereafter, annually after C5, and on an extraordinary basis when a trigger occurs (section 13).</td>
+<td>On first implementation, within the initial ninety days (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>). Thereafter, annually after C5, and on an extraordinary basis when a trigger occurs (section 13).</td>
 </tr>
 <tr>
 <td><strong>Result</strong></td>
-<td>A single <strong>board decision document</strong>, with the structure in the annex (tool <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>), which is completed with template <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>.</td>
+<td>A single <strong>board decision document</strong>, with the structure in the annex (tool <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>), which is completed with template <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -489,7 +500,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td><strong>Ambition per sphere</strong></td>
 <td>Priority and target ambition in spheres 01–07; target grade in 08 and 09.</td>
-<td>C3; heat map (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>); index (condition IT-D1).</td>
+<td>C3; heat map (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a>); index (condition IT-D1).</td>
 <td>4</td>
 </tr>
 <tr>
@@ -503,14 +514,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4</td>
 <td><strong>Economic impact thresholds</strong></td>
 <td>Economic impact scale 1–5 proportionate to size.</td>
-<td>Risk matrix (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>).</td>
+<td>Risk matrix (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>).</td>
 <td>5.4</td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>Enterprise investment threshold</strong> and materiality threshold</td>
 <td>When an initiative is Enterprise by virtue of investment and when it is reported individually to the board.</td>
-<td>Phase 0 (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>); C4.</td>
+<td>Phase 0 (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>); C4.</td>
 <td>6</td>
 </tr>
 <tr>
@@ -524,28 +535,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>7</td>
 <td><strong>Target portfolio balance</strong></td>
 <td>Investment bands by ambition level.</td>
-<td>C3; C4; <a href="14_SEVEN-G_Gestion_de_cartera.html">document 14</a>.</td>
+<td>C3; C4; <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a>.</td>
 <td>8</td>
 </tr>
 <tr>
 <td>8</td>
 <td><strong>Reference time limits</strong></td>
 <td>Time limit per phase and for a <em>gate</em> decision; R6 frequency; regularisation.</td>
-<td>Initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>); stall alerts.</td>
+<td>Initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>); stall alerts.</td>
 <td>9</td>
 </tr>
 <tr>
 <td>9</td>
 <td><strong>Nonconformity and incident time limits</strong></td>
 <td>Containment, action plan and internal communication.</td>
-<td>Document 37; <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>.</td>
+<td>Document 37; <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>.</td>
 <td>10</td>
 </tr>
 <tr>
 <td>10</td>
 <td><strong>Red lines</strong></td>
 <td>Prohibited practices, decisions that are never delegated and the company's own red lines.</td>
-<td>Phases 0, 3 and 4; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>.</td>
+<td>Phases 0, 3 and 4; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>.</td>
 <td>11</td>
 </tr>
 <tr>
@@ -636,7 +647,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>7</td>
 <td><strong>Principles</strong></td>
-<td>Principles of responsible use, which the corporate policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>) turns into rules.</td>
+<td>Principles of responsible use, which the corporate policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>) turns into rules.</td>
 <td>How will we do it?</td>
 </tr>
 <tr>
@@ -651,7 +662,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>An AI thesis is adequate if:</p>
 <ul>
 <li><strong>It contains renunciations.</strong> A thesis that declares all spheres to be priorities does not guide any decision.</li>
-<li><strong>It is consistent with the budget.</strong> An ambition to Transform without an investment envelope for staged bets is an unbacked statement (and triggers condition IT-D1 in <a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a> without evidence to support it).</li>
+<li><strong>It is consistent with the budget.</strong> An ambition to Transform without an investment envelope for staged bets is an unbacked statement (and triggers condition IT-D1 in <a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a> without evidence to support it).</li>
 <li><strong>It is verifiable.</strong> Section 8 uses framework indicators with current value, target and horizon.</li>
 <li><strong>It is consistent with capacity.</strong> The ambition in the value spheres does not exceed what the enabling spheres can support within the horizon, or it includes the initiatives that close that gap.</li>
 <li><strong>It takes a position on people.</strong> Avoiding the question does not resolve it: it delegates it to each project.</li>
@@ -691,7 +702,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Main indicator</strong></td>
-<td>An indicator from <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a></td>
+<td>An indicator from <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a></td>
 <td>With current value (or &quot;no data&quot;) and target value.</td>
 </tr>
 <tr>
@@ -701,7 +712,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>For spheres 08 and 09, instead of an ambition, the <strong>target grade per dimension</strong> is set (Absent, Basic, Systematic or Advanced), with horizon, indicator and owner. Optimise, Augment or Transform is never set for 08 or 09 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a>, section 4.2).</p>
+<p>For spheres 08 and 09, instead of an ambition, the <strong>target grade per dimension</strong> is set (Absent, Basic, Systematic or Advanced), with horizon, indicator and owner. Optimise, Augment or Transform is never set for 08 or 09 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>, section 4.2).</p>
 <h3 id="4-2-rules">4.2 Rules</h3>
 <ol>
 <li>The target ambition <strong>must</strong> be based on the current sphere map from C1: the level achieved and the level in the portfolio for each sphere are indicated.</li>
@@ -827,7 +838,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The probability, impact and risk level scale (Low, Medium, High, Critical) and the responses (Avoid, Mitigate, Transfer, Accept) are those in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>. This document does not modify them: it sets where the company stands within them.</p>
+<p>The probability, impact and risk level scale (Low, Medium, High, Critical) and the responses (Avoid, Mitigate, Transfer, Accept) are those in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>. This document does not modify them: it sets where the company stands within them.</p>
 <h3 id="5-2-appetite-grades-and-acceptance-of-residual-risk">5.2 Appetite grades and acceptance of residual risk</h3>
 <p>The general rule for accepting residual risk is: <strong>Low</strong> → AI Product Owner, with a record · <strong>Medium</strong> → AI Sponsor with the AI Risk Owner's clearance · <strong>High</strong> → AI Committee · <strong>Critical</strong> → not accepted; exceptionally, only the board or its board committee, within the appetite approved in C2. The appetite grade of each category may <strong>tighten</strong> that rule, never relax it.</p>
 <div class="tabla"><table>
@@ -1026,7 +1037,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>ECO</td>
 <td>Validated value</td>
-<td>Condition B2 in <a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a></td>
+<td>Condition B2 in <a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a></td>
 <td>&lt; 50%</td>
 <td>&lt; 30%</td>
 </tr>
@@ -1174,7 +1185,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>&quot;—&quot; in the amber column indicates <strong>zero tolerance</strong>: the first case already exceeds the limit.</p>
 <h3 id="5-4-economic-impact-thresholds">5.4 Economic impact thresholds</h3>
-<p>Impact is assessed on five axes (economic, people and rights, regulatory, operational, reputational) and the highest is taken (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>). The economic axis is set <strong>in proportion to the size</strong> of the company, based on a stable reference measure:</p>
+<p>Impact is assessed on five axes (economic, people and rights, regulatory, operational, reputational) and the highest is taken (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>). The economic axis is set <strong>in proportion to the size</strong> of the company, based on a stable reference measure:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1244,7 +1255,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Amounts are rounded and reviewed annually in C5. The anchors for the other four axes are defined in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a> and do not depend on size.</p>
+<p>Amounts are rounded and reviewed annually in C5. The anchors for the other four axes are defined in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> and do not depend on size.</p>
 <h3 id="5-5-escalation-when-a-tolerance-is-exceeded">5.5 Escalation when a tolerance is exceeded</h3>
 <div class="tabla"><table>
 <thead>
@@ -1272,7 +1283,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Metric in <strong>red</strong> in LEG or SEG</td>
-<td>In addition, a critical nonconformity is raised if any of its conditions apply (<a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 12).</td>
+<td>In addition, a critical nonconformity is raised if any of its conditions apply (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 12).</td>
 <td>Containment within 48 hours at most.</td>
 </tr>
 </tbody>
@@ -1291,7 +1302,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Enterprise investment threshold</strong></td>
-<td>Total three-year cost of the initiative: build + expected recurring cost for the first three years. If it exceeds the threshold, the initiative is Enterprise (<a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 9.2).</td>
+<td>Total three-year cost of the initiative: build + expected recurring cost for the first three years. If it exceeds the threshold, the initiative is Enterprise (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 9.2).</td>
 <td>0.5% of EBITDA</td>
 <td>€250k</td>
 </tr>
@@ -1309,7 +1320,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr id="cod-minimum-scale-in-production-b3">
 <td><strong>Minimum scale in production (B3)</strong></td>
-<td>Number of initiatives in production that the transformation index requires for Efficiency at scale (<a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>).</td>
+<td>Number of initiatives in production that the transformation index requires for Efficiency at scale (<a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>).</td>
 <td>5 by default; adjustable to size</td>
 <td>5</td>
 </tr>
@@ -1323,7 +1334,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <hr />
 <h2 id="return-horizon-by-ambition-level"><span class="antetitulo">07</span>Return horizon by ambition level</h2>
-<p><em>Illustrative initial values, to be approved by the board in C2. &quot;Annual net value&quot;, &quot;NPV&quot; and &quot;payback period&quot; follow the definitions in <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> (F2, F7 and F9): annual net value = materialised efficiencies + return − recurring cost. The only economic feasibility criterion at G3 is NPV ≥ 0 with the horizon and rate set in C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>, section 8.3; 01 §7.6); the reference payback period is for information only and is not a G3 threshold.</em></p>
+<p><em>Illustrative initial values, to be approved by the board in C2. &quot;Annual net value&quot;, &quot;NPV&quot; and &quot;payback period&quot; follow the definitions in <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> (F2, F7 and F9): annual net value = materialised efficiencies + return − recurring cost. The only economic feasibility criterion at G3 is NPV ≥ 0 with the horizon and rate set in C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>, section 8.3; 01 §7.6); the reference payback period is for information only and is not a G3 threshold.</em></p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1352,7 +1363,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Transform</strong></td>
 <td>Return hypothesis with learning milestones; investment cap per stage; board approval.</td>
-<td>NPV ≥ 0 for the whole is not required (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>, section 8.3). Feasibility of the first stage, which should not exceed 25% of the estimated total investment; learning milestones at least every six months; stop criteria per stage; documented option value.</td>
+<td>NPV ≥ 0 for the whole is not required (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>, section 8.3). Feasibility of the first stage, which should not exceed 25% of the estimated total investment; learning milestones at least every six months; stop criteria per stage; documented option value.</td>
 <td>Market or customer evidence: usage, conversion, initial revenue or verified operational change.</td>
 <td>Return measured within 36 months of G5, or an explicit board decision to extend the time limit with a new stage and cap.</td>
 </tr>
@@ -1360,7 +1371,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Rules:</p>
 <ul>
-<li>The horizon applies to the <strong>confirmed level</strong> at G2. If the actual ambition turns out to be lower, the horizon for the actual level is applied at G7 (<a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>, section 3.6).</li>
+<li>The horizon applies to the <strong>confirmed level</strong> at G2. If the actual ambition turns out to be lower, the horizon for the actual level is applied at G7 (<a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>, section 3.6).</li>
 <li>An expired horizon without the criterion being met <strong>brings G7 forward</strong>.</li>
 <li>Initiatives for mandatory compliance or for reducing a significant risk may be justified by <strong>avoided risk</strong> or <strong>compliance</strong>, which are not added to value unless they are translated into money with a formula.</li>
 </ul>
@@ -1406,12 +1417,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li>If the thesis sets <strong>Transform</strong> as the target ambition in any sphere, the Transform band <strong>cannot start at 0%</strong> beyond the first year, or the company will be declaring a transformation without funding it.</li>
 <li>The balance is measured quarterly in C4. Being outside the band for one quarter is amber; for two quarters, red (EST metric in section 5.3).</li>
-<li>Correction is made in C3 by prioritising initiatives, not by reclassifying existing ones. Reclassifying to get within the band without evidence is a major nonconformity (<a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>, section 3.6).</li>
+<li>Correction is made in C3 by prioritising initiatives, not by reclassifying existing ones. Reclassifying to get within the band without evidence is a major nonconformity (<a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>, section 3.6).</li>
 <li>Investment in governance and compliance enablement (spheres 08 and 09) is budgeted in its own envelope (section 12).</li>
 </ol>
 <hr />
 <h2 id="reference-time-limits"><span class="antetitulo">09</span>Reference time limits</h2>
-<p>The board approves the lifecycle reference time limits, which the initiative register uses to flag stalled initiatives. The indicative starting values are in <strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.6</strong>, and are recalibrated in C5 with the company's own data. The C2 decision includes:</p>
+<p>The board approves the lifecycle reference time limits, which the initiative register uses to flag stalled initiatives. The indicative starting values are in <strong><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.6</strong>, and are recalibrated in C5 with the company's own data. The C2 decision includes:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1423,7 +1434,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Time limit per phase (0, 1, 2, 3, 4, 5 and 7), Lite and Enterprise</td>
-<td>Table in <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.6</td>
+<td>Table in <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.6</td>
 <td>03</td>
 </tr>
 <tr>
@@ -1457,7 +1468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="nonconformity-and-incident-time-limits"><span class="antetitulo">10</span>Nonconformity and incident time limits</h2>
 <h3 id="10-1-nonconformities">10.1 Nonconformities</h3>
-<p>The reference time limits are those in <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 12. The company may adjust them in C2, without exceeding those established by applicable regulation, and <strong>should not</strong> lengthen those for critical nonconformities.</p>
+<p>The reference time limits are those in <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 12. The company may adjust them in C2, without exceeding those established by applicable regulation, and <strong>should not</strong> lengthen those for critical nonconformities.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1493,7 +1504,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="10-2-incidents">10.2 Incidents</h3>
-<p>Severity (S1 to S4) is defined in <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>. The C2 decision sets the <strong>internal communication time limits</strong>; the time limits for notification to authorities are established by regulation and always prevail.</p>
+<p>Severity (S1 to S4) is defined in <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>. The C2 decision sets the <strong>internal communication time limits</strong>; the time limits for notification to authorities are established by regulation and always prevail.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1516,7 +1527,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr id="cod-s4-low">
 <td><strong>S4 · Low</strong></td>
-<td>Record in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>.</td>
+<td>Record in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1561,9 +1572,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Biometric categorisation to infer race, political opinions, trade union membership, religious or philosophical beliefs, sex life or sexual orientation, with the exceptions provided for.</li>
 <li>Real-time remote biometric identification in publicly accessible spaces for law enforcement purposes, save for the exceptions provided for.</li>
 </ul>
-<p>Treatment in SEVEN-G: <strong>zero tolerance</strong>. No initiative that may constitute a prohibited practice passes phase 3 (<a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 6.5); if one is detected in production, it is a critical nonconformity and the system is stopped. The interpretation of each case requires qualified legal judgement.</p>
+<p>Treatment in SEVEN-G: <strong>zero tolerance</strong>. No initiative that may constitute a prohibited practice passes phase 3 (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 6.5); if one is detected in production, it is a critical nonconformity and the system is stopped. The interpretation of each case requires qualified legal judgement.</p>
 <h3 id="11-2-what-is-never-delegated-to-ai">11.2 What is never delegated to AI</h3>
-<p>SEVEN-G common minimum. The company may extend it, but not reduce it. The autonomy levels are those in <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a> (A0 assistance · A1 recommendation · A2 supervised action · A3 autonomous action).</p>
+<p>SEVEN-G common minimum. The company may extend it, but not reduce it. The autonomy levels are those in <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> (A0 assistance · A1 recommendation · A2 supervised action · A3 autonomous action).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1628,7 +1639,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Not deploying agents with A3 autonomy in direct interaction with customers.</li>
 <li>Not using emotion recognition in customer relationships.</li>
 </ul>
-<p>Red lines are incorporated into the questionnaires for intensity (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>), regulatory classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>) and agent security (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>). Only the board may modify them, in C2 or in an extraordinary review.</p>
+<p>Red lines are incorporated into the questionnaires for intensity (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>), regulatory classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>) and agent security (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>). Only the board may modify them, in C2 or in an extraordinary review.</p>
 <hr />
 <h2 id="framework-budget"><span class="antetitulo">12</span>Framework budget</h2>
 <p>The framework budget is the annual amount that the board authorises for AI and the rules by which it is allocated. It does not replace the budget of each initiative, which is approved at its <em>gate</em>.</p>
@@ -1678,7 +1689,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Spending is also reported by the <strong>cost categories</strong> in <a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>: licences · model consumption · compute and infrastructure · data · build staff · operations staff · suppliers and services · control and compliance · adoption and training.</p>
+<p>Spending is also reported by the <strong>cost categories</strong> in <a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>: licences · model consumption · compute and infrastructure · data · build staff · operations staff · suppliers and services · control and compliance · adoption and training.</p>
 <p>Reallocation rules (illustrative values):</p>
 <div class="tabla"><table>
 <thead>
@@ -1742,7 +1753,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Substantial change in technology or the market that invalidates an assumption of the thesis.</li>
 <li>&quot;Declared but unevidenced transformation&quot; profile in two consecutive formal calculations.</li>
 </ul>
-<p>Each version of the decision document is identified with a version number and date, the previous version is retained and it is recorded in the recommendations and decisions register (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>). After approval, it is communicated to the bodies and owners concerned and the parameters are updated in the tools (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
+<p>Each version of the decision document is identified with a version number and date, the previous version is retained and it is recorded in the recommendations and decisions register (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>). After approval, it is communicated to the bodies and owners concerned and the parameters are updated in the tools (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a>, <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>).</p>
 <hr />
 <h2 id="quality-criteria-for-the-c2-decision"><span class="antetitulo">14</span>Quality criteria for the C2 decision</h2>
 <p>The AI Auditor or internal audit checks, before approval:</p>
@@ -1808,8 +1819,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="annex-board-decision-document-template-t19"><span class="antetitulo">15</span>Annex · Board decision document template (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>)</h2>
-<p>The annex is completed with template <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>.</p>
+<h2 id="annex-board-decision-document-template-t19"><span class="antetitulo">15</span>Annex · Board decision document template (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>)</h2>
+<p>The annex is completed with template <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a>.</p>
 <p><strong>Instructions for use.</strong> The template is completed in C2, prepared by senior management with the AI Office, verified by the AI Auditor or internal audit against the criteria in section 14 and approved by the board. Fields marked <strong>(Enterprise)</strong> may be omitted in organisations that apply only Lite intensity, with justification. Where &quot;indicative value&quot; is indicated, the value in this document is used as a starting point and replaced by the approved value.</p>
 <h3 id="a-identification">A. Identification</h3>
 <div class="tabla"><table>
@@ -1842,7 +1853,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1.0 on first approval; incremented at each review.</td>
 </tr>
 <tr>
-<td>Identifier in the decisions register (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)</td>
+<td>Identifier in the decisions register (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)</td>
 <td></td>
 <td>Persistent identifier in the register.</td>
 </tr>
@@ -1933,7 +1944,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Principles</td>
 <td></td>
-<td>Refers to the corporate policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>).</td>
+<td>Refers to the corporate policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>).</td>
 </tr>
 <tr>
 <td>How we will know it is working</td>
@@ -2203,7 +2214,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Spend on main model supplier ÷ total spend on models × 100</td>
 <td>&gt; 60%</td>
 <td>&gt; 80%</td>
-<td><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></td>
 <td>Quarterly</td>
 </tr>
 </tbody>
@@ -2360,7 +2371,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Phase 0</td>
 <td></td>
 <td></td>
-<td>Indicative values in <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.6.</td>
+<td>Indicative values in <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.6.</td>
 </tr>
 <tr>
 <td>Phase 1</td>
@@ -2686,67 +2697,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t19">
-<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></strong></td>
+<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a></strong></td>
 <td>AI thesis and risk appetite template</td>
 <td>Board decision document (annex).</td>
 </tr>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Receives reference time limits, portfolio bands and horizons.</td>
 </tr>
 <tr id="cod-t04">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a></strong></td>
 <td>Intensity determination</td>
 <td>Receives the Enterprise investment threshold and the red lines.</td>
 </tr>
 <tr id="cod-t06">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></strong></td>
 <td>Risk matrix and register</td>
 <td>Receives the economic impact thresholds and the appetite grades.</td>
 </tr>
 <tr id="cod-t08">
-<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
+<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Receives the approved time limits.</td>
 </tr>
 <tr id="cod-t14">
-<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></strong></td>
 <td>Transformation index calculator</td>
 <td>Receives condition IT-D1 and threshold B3.</td>
 </tr>
 <tr id="cod-t16">
-<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></strong></td>
+<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a></strong></td>
 <td>Portfolio sphere map</td>
 <td>Receives the ambition per sphere and the target grades.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Shows tolerance metrics, portfolio balance and budget.</td>
 </tr>
 <tr id="cod-t18">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
 <td>Board recommendations register</td>
 <td>Records the C2 decision and its reviews.</td>
 </tr>
 <tr id="cod-p04">
-<td><strong><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></strong></td>
+<td><strong><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a></strong></td>
 <td>Intensity determination</td>
 <td>Applies the Enterprise investment threshold.</td>
 </tr>
 <tr id="cod-p07">
-<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></strong></td>
+<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a></strong></td>
 <td>Sphere and ambition classification</td>
 <td>Checks fit with the ambition per sphere.</td>
 </tr>
 <tr id="cod-p12">
-<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
+<td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></strong></td>
 <td>Risk matrix and register</td>
 <td>Applies impact and acceptance thresholds.</td>
 </tr>
 <tr id="cod-p35">
-<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a></strong></td>
+<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a></strong></td>
 <td>AI thesis and risk appetite</td>
 <td>C2 board decision document: completes the annex (section 15).</td>
 </tr>
@@ -2768,7 +2779,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Tools and initiative register</strong></td>
-<td>Indicative reference time limits (section 3.6) and tool <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>.</td>
+<td>Indicative reference time limits (section 3.6) and tool <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>.</td>
 </tr>
 <tr>
 <td><strong>10 · Sphere map and ambition levels</strong></td>
@@ -2834,7 +2845,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Defines the twelve components of the C2 decision: structure of the AI thesis, ambition per sphere, appetite grades and tolerance metrics for the ten risk categories, proportionate economic impact thresholds, Enterprise investment and materiality thresholds, return horizon by level, portfolio balance bands, time limits, red lines, framework budget and review. Includes as an annex the board decision document template (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>).</td>
+<td>First version. Defines the twelve components of the C2 decision: structure of the AI thesis, ambition per sphere, appetite grades and tolerance metrics for the ten risk categories, proportionate economic impact thresholds, Enterprise investment and materiality thresholds, return horizon by level, portfolio balance bands, time limits, red lines, framework budget and review. Includes as an annex the board decision document template (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -3075,6 +3086,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

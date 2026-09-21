@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,11 +439,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion-de-la-sesion"><span>02</span>Identificación de la sesión</a></li><li><a href="#orden-del-dia"><span>03</span>Orden del día</a></li><li><a href="#asistentes-y-quorum"><span>04</span>Asistentes y quórum</a></li><li><a href="#declaraciones-de-conflicto-y-abstenciones"><span>05</span>Declaraciones de conflicto y abstenciones</a></li><li><a href="#seguimiento-de-acuerdos-anteriores"><span>06</span>Seguimiento de acuerdos anteriores</a></li><li><a href="#desarrollo-de-la-sesion-y-acuerdos"><span>07</span>Desarrollo de la sesión y acuerdos</a></li><li><a href="#decisiones-de-gate-adoptadas"><span>08</span>Decisiones de gate adoptadas</a></li><li><a href="#decisiones-del-consejo-o-de-la-comision-dec"><span>09</span>Decisiones del consejo o de la comisión (DEC)</a></li><li><a href="#recomendaciones-y-encargos-rec"><span>10</span>Recomendaciones y encargos (REC)</a></li><li><a href="#asuntos-elevados-y-cierre"><span>11</span>Asuntos elevados y cierre</a></li><li><a href="#criterios-de-calidad"><span>12</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>13</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
-<p><strong>Por qué importa.</strong> El acta es la evidencia de que el órgano competente decidió, con quórum, sin conflictos no declarados y con la conformidad que se exigía. La piden la madurez (11, D1.02, D1.03, D1.07 y D1.09) y los criterios G2.12 y G7.09 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> en las iniciativas de Transformar. Sin ella, una decisión del consejo no puede enlazarse con la decisión de <em>gate</em> (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>) ni con el registro de recomendaciones y decisiones (<a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>), y la trazabilidad se rompe.</p>
+<p><strong>Por qué importa.</strong> El acta es la evidencia de que el órgano competente decidió, con quórum, sin conflictos no declarados y con la conformidad que se exigía. La piden la madurez (11, D1.02, D1.03, D1.07 y D1.09) y los criterios G2.12 y G7.09 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> en las iniciativas de Transformar. Sin ella, una decisión del consejo no puede enlazarse con la decisión de <em>gate</em> (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>) ni con el registro de recomendaciones y decisiones (<a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a>), y la trazabilidad se rompe.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
 <div class="tabla"><table>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> · Registro de recomendaciones del consejo (REC y DEC); <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> · Gestor de <em>gates</em> (decisiones con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>); <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (abstenciones y conflictos).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> · Registro de recomendaciones del consejo (REC y DEC); <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> · Gestor de <em>gates</em> (decisiones con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>); <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (abstenciones y conflictos).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -476,9 +487,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li>Esta plantilla <strong>no sustituye al acta societaria</strong> exigida por la legislación aplicable: la alimenta o se incorpora a ella (60 §1; 62 §1).</li>
-<li>Cada acuerdo lleva un número dentro de la sesión (AC-01, AC-02…) y, si procede, el código del registro correspondiente: DEC-AAAA-NNN, REC-AAAA-NNN, decisión de <em>gate</em> (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>), EXC-AAAA-NNN (<a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a>), NC-AAAA-NNN o INC-AAAA-NNN.</li>
+<li>Cada acuerdo lleva un número dentro de la sesión (AC-01, AC-02…) y, si procede, el código del registro correspondiente: DEC-AAAA-NNN, REC-AAAA-NNN, decisión de <em>gate</em> (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>), EXC-AAAA-NNN (<a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a>), NC-AAAA-NNN o INC-AAAA-NNN.</li>
 <li>Los códigos DEC y REC se asignan al registrar la solicitud y se mantienen aunque la decisión se aplace (62 §3 y §10.3).</li>
-<li>Las decisiones y encargos se registran en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> en un máximo de <strong>5 días hábiles</strong> tras la sesión (61 §8.4; 62 §8).</li>
+<li>Las decisiones y encargos se registran en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> en un máximo de <strong>5 días hábiles</strong> tras la sesión (61 §8.4; 62 §8).</li>
 <li>Sin la segunda línea presente, el comité de IA no decide G3, G5, aceptaciones de riesgo ni excepciones (30 §3.3).</li>
 </ul>
 <hr />
@@ -530,7 +541,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Fecha de corte de los datos</td>
 <td></td>
-<td>Fecha de la foto de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y del panel (60 §7.2).</td>
+<td>Fecha de la foto de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y del panel (60 §7.2).</td>
 </tr>
 <tr>
 <td>Secretaría</td>
@@ -565,11 +576,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Comisión delegada · trimestral</strong></td>
 <td>1. Riesgos Altos y Críticos, y concentraciones. 2. Cumplimiento regulatorio y cambios normativos. 3. Incidentes y no conformidades mayores y críticas. 4. Auditorías y seguimiento de hallazgos. 5. Asuntos elevados. 6. Excepciones del trimestre.</td>
-<td>30 §3.2; <a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a></td>
+<td>30 §3.2; <a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Plantilla P42 &#183; Informe trimestral de segunda l&#237;nea">P42</a></td>
 </tr>
 <tr>
 <td><strong>Comité de IA · mensual</strong></td>
-<td>1. Embudo: altas, cambios de fase, estancadas. 2. <em>Gates</em> con verificación completada. 3. Desviaciones de valor y coste. 4. Riesgos Altos y Críticos, y concentración. 5. Incidentes, no conformidades y condiciones vencidas. 6. Retiradas y R6 caducadas. 7. Uso corporativo y no autorizado (<a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>). 8. Excepciones. 9. Asuntos para elevar.</td>
+<td>1. Embudo: altas, cambios de fase, estancadas. 2. <em>Gates</em> con verificación completada. 3. Desviaciones de valor y coste. 4. Riesgos Altos y Críticos, y concentración. 5. Incidentes, no conformidades y condiciones vencidas. 6. Retiradas y R6 caducadas. 7. Uso corporativo y no autorizado (<a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>). 8. Excepciones. 9. Asuntos para elevar.</td>
 <td>30 §3.3; 14 §7.1</td>
 </tr>
 <tr>
@@ -606,7 +617,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td>Información · Decisión · Toma de conocimiento</td>
 <td></td>
-<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, <a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>, ficha de decisión (60 §5)…</td>
+<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>, <a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Plantilla P42 &#183; Informe trimestral de segunda l&#237;nea">P42</a>, ficha de decisión (60 §5)…</td>
 <td></td>
 </tr>
 <tr>
@@ -622,7 +633,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Autorizar la primera etapa de una iniciativa de Transformar (G2)</td>
 <td>Decisión</td>
 <td>Patrocinador de IA</td>
-<td>Ficha DEC-2026-014; <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> verificado por el auditor de IA</td>
+<td>Ficha DEC-2026-014; <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> verificado por el auditor de IA</td>
 <td>15 min</td>
 </tr>
 </tbody>
@@ -677,7 +688,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="declaraciones-de-conflicto-y-abstenciones"><span class="antetitulo">05</span>Declaraciones de conflicto y abstenciones</h2>
-<p>Al inicio de la sesión, cada asistente declara los conflictos relativos a los puntos del orden del día (30 §12; <a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>).</p>
+<p>Al inicio de la sesión, cada asistente declara los conflictos relativos a los puntos del orden del día (30 §12; <a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a>).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -724,7 +735,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td></td>
-<td>DEC · REC · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · EXC</td>
+<td>DEC · REC · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> · EXC</td>
 <td></td>
 <td></td>
 <td>Pendiente · En curso · Cumplido · Vencido</td>
@@ -778,9 +789,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th><em>Gate</em></th>
 <th>Iteración</th>
 <th>Resultado</th>
-<th>Registro <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></th>
+<th>Registro <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></th>
 <th>Verificador</th>
-<th>Criterio del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a></th>
+<th>Criterio del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a></th>
 <th>Acuerdo nº</th>
 </tr>
 </thead>
@@ -822,7 +833,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td>IA, REC, INC, NC, <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>IA, REC, INC, NC, <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -891,7 +902,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Fecha de registro en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td>Fecha de registro en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
 <td>Máximo 5 días hábiles.</td>
 </tr>
 <tr>
@@ -928,7 +939,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Las decisiones de Transformar en G2 y el escalado en G7 constan con código DEC y se enlazan con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (21, G2.12 y G7.09).</td>
+<td>Las decisiones de Transformar en G2 y el escalado en G7 constan con código DEC y se enlazan con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> (21, G2.12 y G7.09).</td>
 <td></td>
 </tr>
 <tr>
@@ -948,7 +959,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Los registros de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> se actualizaron en plazo.</td>
+<td>Los registros de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> se actualizaron en plazo.</td>
 <td></td>
 </tr>
 </tbody>
@@ -988,7 +999,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Sesión y acuerdo</td>
 </tr>
 <tr>
-<td>Registra en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td>Registra en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
 <td>Secretaría del consejo · Oficina de IA</td>
 <td></td>
 <td></td>
@@ -1031,7 +1042,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Reúne los órdenes del día tipo de 30 §3 y 14 §7 y los campos de decisión de 62 §10, y enlaza cada acuerdo con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, DEC, REC y EXC.</td>
+<td>Primera versión. Reúne los órdenes del día tipo de 30 §3 y 14 §7 y los campos de decisión de 62 §10, y enlaza cada acuerdo con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>, DEC, REC y EXC.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1272,6 +1283,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

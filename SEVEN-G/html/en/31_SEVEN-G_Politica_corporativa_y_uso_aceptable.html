@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#regulatory-references-used"><span>02</span>Regulatory references used</a></li><li><a href="#corporate-ai-policy-template"><span>03</span>Corporate AI policy template</a></li><li><a href="#ai-acceptable-use-policy-template"><span>04</span>AI acceptable use policy template</a></li><li><a href="#ai-that-is-not-a-project"><span>05</span>AI that is not a project</a></li><li><a href="#ai-literacy"><span>06</span>AI literacy</a></li><li><a href="#corporate-ai-use-monitor-t21"><span>07</span>Corporate AI use monitor (T21)</a></li><li><a href="#relationship-with-the-lifecycle-and-the-gates"><span>08</span>Relationship with the lifecycle and the gates</a></li><li><a href="#associated-tools-and-templates"><span>09</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>10</span>Related documents</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>Approved corporate AI policy and acceptable use policy, handling of general-purpose AI and embedded AI (&#39;the AI that is not a project&#39;) and AI literacy for those who use or oversee AI systems. The model texts are adapted to each company.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
@@ -436,14 +447,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>This document provides the company with two policy templates that the board and senior management can adapt and approve at stage C2 of the corporate cycle:</p>
 <ol>
 <li><strong>Corporate AI policy</strong> (section 3): sets out the principles, responsibilities, classification, mandatory lifecycle, red lines and the regime for exceptions and breaches. It is approved by the board.</li>
-<li><strong>AI acceptable use policy for employees</strong> (section 4): translates the corporate policy into rules of conduct for anyone who uses AI in their work. It is approved by the AI Committee under delegation from the board (<a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> §7.5).</li>
+<li><strong>AI acceptable use policy for employees</strong> (section 4): translates the corporate policy into rules of conduct for anyone who uses AI in their work. It is approved by the AI Committee under delegation from the board (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> §7.5).</li>
 </ol>
 <p>In addition, the document develops two topics that the foundational methodology sets out and that no other document covers:</p>
 <ul>
 <li>The treatment of <strong>AI that is not a project</strong> (section 5): AI embedded in third-party software, AI-enabled productivity suites, individual use and unauthorised use (<em>shadow AI</em>), with its detection, recording, regularisation and treatment as a nonconformity.</li>
 <li>The <strong>AI literacy programme</strong> (section 6), linked to Article 4 of <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a>.</li>
 </ul>
-<p>Text in <strong>[square brackets]</strong> must be customised. The templates are drafted for a generic company; their adaptation should be reviewed by legal counsel and, insofar as it affects labour relations, by the people function, with such involvement of workers' representatives as may be appropriate. The templates and the regulatory obligations they reflect are for guidance only: responsibility for the regulatory classification of its systems and for compliance with the applicable general and sector-specific regulation lies with the organisation (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>, section 11).</p>
+<p>Text in <strong>[square brackets]</strong> must be customised. The templates are drafted for a generic company; their adaptation should be reviewed by legal counsel and, insofar as it affects labour relations, by the people function, with such involvement of workers' representatives as may be appropriate. The templates and the regulatory obligations they reflect are for guidance only: responsibility for the regulatory classification of its systems and for compliance with the applicable general and sector-specific regulation lies with the organisation (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>, section 11).</p>
 <h3 id="1-1-how-to-use-the-templates">1.1 How to use the templates</h3>
 <div class="tabla"><table>
 <thead>
@@ -472,7 +483,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>4</td>
 <td>Approval: corporate policy by the board; acceptable use policy by the AI Committee.</td>
-<td>Bodies (<a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a>)</td>
+<td>Bodies (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a>)</td>
 </tr>
 <tr>
 <td>5</td>
@@ -745,7 +756,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Unauthorised use</strong></td>
-<td>Detection, recording, regularisation (authorise, replace or block) and treatment as a nonconformity, in accordance with section 5 of SEVEN-G <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>.</td>
+<td>Detection, recording, regularisation (authorise, replace or block) and treatment as a nonconformity, in accordance with section 5 of SEVEN-G <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -767,12 +778,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li>Any other requirement of this policy may be temporarily waived by means of a reasoned request that includes: the requirement affected, justification, risk, compensating measures, time limit and owner.</li>
 <li>Exceptions are approved by the bodies indicated in [the delegation matrix of the Governance model]. Whoever proposes does not approve.</li>
-<li>Exceptions have a maximum term of [six months], are recorded with the code EXC-AAAA-NNN (<a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a>) and are reported quarterly to [the Committee].</li>
+<li>Exceptions have a maximum term of [six months], are recorded with the code EXC-AAAA-NNN (<a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Template P40 &#183; Exception request and register">P40</a>) and are reported quarterly to [the Committee].</li>
 <li>An expired exception that has not been closed is treated as a major nonconformity.</li>
 </ol>
 <h3 id="3-9-breach">3.9 Breach</h3>
 <ol>
-<li>Any breach of this policy is a <strong>nonconformity</strong> and is classified as minor, major or critical using the SEVEN-G criteria (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>).</li>
+<li>Any breach of this policy is a <strong>nonconformity</strong> and is classified as minor, major or critical using the SEVEN-G criteria (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>).</li>
 <li>In the event of a critical nonconformity, [the Company] will adopt containment measures within a maximum of 48 hours, including suspension of the system if necessary.</li>
 <li>Treatment as a nonconformity <strong>does not preclude</strong> such disciplinary measures as may be appropriate under [the applicable disciplinary regime / collective agreement], nor action against third parties under contract.</li>
 <li>[The Company] encourages early reporting: anyone who reports in good faith a misuse, their own error or an incident will not suffer retaliation. Reports may be made to [the AI Office] or through [the Internal reporting system].</li>
@@ -1014,7 +1025,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>AI embedded in third-party software</strong></td>
 <td>AI functions that a supplier incorporates into a product already under contract (CRM, ERP, people management, customer service, cybersecurity).</td>
 <td>Activation by default without assessment; use of company data by the supplier; changes in behaviour with each version; decisions about people built into the process.</td>
-<td>Registration in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> as third-party AI; proportionate supplier assessment (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>); express decision on whether or not to activate; contractual review.</td>
+<td>Registration in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> as third-party AI; proportionate supplier assessment (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>); express decision on whether or not to activate; contractual review.</td>
 <td>It plays a part in decisions, operations or customer relationships with any Enterprise criterion: it is then <strong>third-party AI embedded in processes</strong> (01 §1.2).</td>
 </tr>
 <tr>
@@ -1028,7 +1039,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Authorised individual use</strong></td>
 <td>Employees who use catalogue tools for their work.</td>
 <td>Inappropriate data; unverified outputs; dependency.</td>
-<td>Acceptable use policy; training; technical controls; <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
+<td>Acceptable use policy; training; technical controls; <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>.</td>
 <td>It becomes a shared process or affects third parties.</td>
 </tr>
 <tr>
@@ -1104,13 +1115,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Audit</td>
 <td>Uninventoried use in audited areas.</td>
 <td>Internal audit</td>
-<td>According to plan (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a>)</td>
+<td>According to plan (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a>)</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Safeguards.</strong> Monitoring of the use of technology resources must be proportionate, provided for in the company's policy on the use of technology resources, notified to employees in advance and compliant with data protection and employment legislation (in Spain, among others, Article 87 of the <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Organic Law 3/2018, of 5 December, on the Protection of Personal Data and Guarantee of Digital Rights (Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales)">LOPDGDD</a> and Article 20.3 of the <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)">Workers' Statute</a>). Detection focuses on <strong>tools and information flows</strong>, not on monitoring the content of individual activity beyond what is necessary. Data protection should assess whether an impact assessment of the monitoring system itself is required.</p>
 <h3 id="5-3-recording">5.3 Recording</h3>
-<p>Every detected use is recorded in the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) with the type of use <strong>&quot;Unauthorised use&quot;</strong> and the minimum fields of <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">document 32</a>: tool and supplier, area or users (in aggregate unless it is necessary to identify them), apparent purpose, type of information exposed, detection date, detection source and owner of the regularisation. The record automatically generates a <strong>nonconformity</strong> in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>.</p>
+<p>Every detected use is recorded in the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>) with the type of use <strong>&quot;Unauthorised use&quot;</strong> and the minimum fields of <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a>: tool and supplier, area or users (in aggregate unless it is necessary to identify them), apparent purpose, type of information exposed, detection date, detection source and owner of the regularisation. The record automatically generates a <strong>nonconformity</strong> in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>.</p>
 <h3 id="5-4-assessment-and-classification-as-a-nonconformity">5.4 Assessment and classification as a nonconformity</h3>
 <div class="tabla"><table>
 <thead>
@@ -1138,7 +1149,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The classification is adjusted using the criteria of <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>. The time limits are reference time limits (01 §12) and the company may adjust them in C2.</p>
+<p>The classification is adjusted using the criteria of <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>. The time limits are reference time limits (01 §12) and the company may adjust them in C2.</p>
 <h3 id="5-5-regularisation">5.5 Regularisation</h3>
 <p>The AI Office proposes, and the corresponding body decides, one of three outcomes:</p>
 <div class="tabla"><table>
@@ -1155,7 +1166,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Authorise</strong></td>
 <td>The tool meets a real need, the supplier passes the assessment and the risks are acceptable.</td>
 <td>Corporate procurement, secure configuration, addition to the catalogue with category and conditions, user training and migration from personal accounts.</td>
-<td>AI Office, or AI Committee if it meets an Enterprise criterion (<a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> §7.5).</td>
+<td>AI Office, or AI Committee if it meets an Enterprise criterion (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> §7.5).</td>
 </tr>
 <tr>
 <td><strong>Replace</strong></td>
@@ -1195,7 +1206,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Register in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> and carry out a preliminary classification (type of use, data, exposure, autonomy, possible high risk).</td>
+<td>Register in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> and carry out a preliminary classification (type of use, data, exposure, autonomy, possible high risk).</td>
 <td>AI Office</td>
 </tr>
 <tr>
@@ -1255,7 +1266,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Licence assignment</td>
-<td>Based on need and with a quarterly review of active use (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>).</td>
+<td>Based on need and with a quarterly review of active use (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>).</td>
 </tr>
 <tr>
 <td>Prior training</td>
@@ -1317,13 +1328,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Phases, <em>gates</em> and evidence; value hypothesis and measurement rules; risk and regulatory classification; segregation of duties; templates.</td>
 <td>1 day plus support on the first initiative.</td>
 <td>On taking up the role; update with each relevant version of the framework.</td>
-<td>Record linked to <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+<td>Record linked to <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a>.</td>
 </tr>
 <tr>
 <td>F5</td>
 <td><strong>Technical construction</strong> (data science, engineering, AI-assisted development)</td>
 <td>Build compliant and secure systems.</td>
-<td>Technical requirements according to classification; documentation; evaluation of models and agents; bias and robustness testing; AI and agent security (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>); data lineage; use of AI in development.</td>
+<td>Technical requirements according to classification; documentation; evaluation of models and agents; bias and robustness testing; AI and agent security (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>); data lineage; use of AI in development.</td>
 <td>2–3 days, with technology-specific modules.</td>
 <td>On joining; annually.</td>
 <td>Record and exercises.</td>
@@ -1332,7 +1343,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>F6</td>
 <td><strong>Second and third line</strong> (risk, compliance, security, data protection, internal audit)</td>
 <td>Challenge and verify with sound judgement.</td>
-<td>AI Act and regulatory mapping; classification; impact assessments; specific risks of generative AI and agents; AI audit techniques (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a>).</td>
+<td>AI Act and regulatory mapping; classification; impact assessments; specific risks of generative AI and agents; AI audit techniques (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a>).</td>
 <td>2 days and continuous training.</td>
 <td>Annually, and upon regulatory changes.</td>
 <td>Record; AI Auditor competence plan.</td>
@@ -1359,7 +1370,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>F9</td>
 <td><strong>Middle managers of areas that use or introduce AI</strong></td>
 <td>Lead the change in their area.</td>
-<td>F1 content applied to the area; assessment of the effect on work (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>); human oversight and its limits; transition, communication and destination of released capacity; when to escalate.</td>
+<td>F1 content applied to the area; assessment of the effect on work (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>); human oversight and its limits; transition, communication and destination of released capacity; when to escalate.</td>
 <td>3–4 hour workshop with a case from the area.</td>
 <td>On taking up the post or when the first initiative reaches the area; annually.</td>
 <td>Record and participation in an effect assessment.</td>
@@ -1385,7 +1396,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Record</strong></td>
-<td>Per person: assigned profiles, completed training, dates, assessments and expiry dates. The record (<a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a>) is maintained in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, is linked to <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> and its indicators are shown in <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
+<td>Per person: assigned profiles, completed training, dates, assessments and expiry dates. The record (<a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a>) is maintained in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>, is linked to <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a> and its indicators are shown in <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>.</td>
 </tr>
 <tr>
 <td><strong>Access conditions</strong></td>
@@ -1448,8 +1459,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="corporate-ai-use-monitor-t21"><span class="antetitulo">07</span>Corporate AI use monitor (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>)</h2>
-<p>Tool <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>) consolidates the information from this policy for the AI Committee and for the board dashboard.</p>
+<h2 id="corporate-ai-use-monitor-t21"><span class="antetitulo">07</span>Corporate AI use monitor (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>)</h2>
+<p>Tool <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>) consolidates the information from this policy for the AI Committee and for the board dashboard.</p>
 <h3 id="7-1-content">7.1 Content</h3>
 <div class="tabla"><table>
 <thead>
@@ -1476,13 +1487,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Unauthorised use</strong></td>
 <td>Detections by source; users or areas affected (aggregated); nonconformities by classification; regularisation decisions (authorise, replace, block); time to regularisation.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 <td>Monthly</td>
 </tr>
 <tr>
 <td><strong>Embedded AI</strong></td>
 <td>AI functions detected in third-party software; enabled, disabled and pending decision.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, procurement</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, procurement</td>
 <td>Quarterly</td>
 </tr>
 <tr>
@@ -1500,7 +1511,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Exceptions</strong></td>
 <td>Current and expired use exceptions.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 <td>Monthly</td>
 </tr>
 </tbody>
@@ -1543,7 +1554,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr id="cod-c4">
 <td><strong>C4</strong></td>
-<td><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> monitor reviewed by the AI Committee; exceptions reported to the board committee.</td>
+<td><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a> monitor reviewed by the AI Committee; exceptions reported to the board committee.</td>
 </tr>
 <tr id="cod-c5">
 <td><strong>C5</strong></td>
@@ -1551,7 +1562,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The specific <em>gate</em> criteria are set out in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>.</p>
+<p>The specific <em>gate</em> criteria are set out in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>.</p>
 <hr />
 <h2 id="associated-tools-and-templates"><span class="antetitulo">09</span>Associated tools and templates</h2>
 <div class="tabla"><table>
@@ -1564,62 +1575,62 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t21">
-<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
+<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a></strong></td>
 <td>Corporate AI use monitor</td>
 <td>Licences, unauthorised use, embedded AI, technical controls and literacy.</td>
 </tr>
 <tr id="cod-t02">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Registration of authorised tools, embedded AI and unauthorised uses.</td>
 </tr>
 <tr id="cod-t08">
-<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
+<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Nonconformities due to unauthorised use and incidents reported by employees.</td>
 </tr>
 <tr id="cod-t09">
-<td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></strong></td>
+<td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a></strong></td>
 <td>AI supplier register</td>
 <td>Assessment of suppliers of tools and of software with embedded AI.</td>
 </tr>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Exceptions and move to the full cycle.</td>
 </tr>
 <tr id="cod-p05">
-<td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></strong></td>
+<td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a></strong></td>
 <td>AI system inventory record</td>
 <td>Registration of tools and uses.</td>
 </tr>
 <tr id="cod-p14">
-<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></strong></td>
+<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a></strong></td>
 <td>AI supplier assessment</td>
 <td>Before authorising a tool or enabling embedded AI.</td>
 </tr>
 <tr id="cod-p20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Training of overseers and users of initiatives.</td>
 </tr>
 <tr id="cod-p40">
-<td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a></strong></td>
+<td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Template P40 &#183; Exception request and register">P40</a></strong></td>
 <td>Exception request and register</td>
 <td>Request, approval and register of exceptions to the policy (section 3.8).</td>
 </tr>
 <tr id="cod-p43">
-<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a></strong></td>
+<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Template P43 &#183; Catalogue of authorised tools and requests">P43</a></strong></td>
 <td>Catalogue of authorised tools and requests</td>
 <td>Catalogue of authorised tools and requests for new tools (section 4.2).</td>
 </tr>
 <tr id="cod-p44">
-<td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
+<td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html" title="Template P44 &#183; AI use and perception survey">P44</a></strong></td>
 <td>AI use and perception survey</td>
 <td>Staff use and perception of AI, including unauthorised use (section 5.2).</td>
 </tr>
 <tr id="cod-p45">
-<td><strong><a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a></strong></td>
+<td><strong><a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a></strong></td>
 <td>Literacy and training plan and record</td>
 <td>Programme by profile and record per person (section 6).</td>
 </tr>
@@ -1692,7 +1703,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Templates for the corporate AI policy and the acceptable use policy; treatment of embedded AI, productivity suites, individual use and unauthorised use with detection, recording, classification as a nonconformity and regularisation; AI literacy programme across eight profiles with the wording of Article 4 as amended by Regulation (EU) 2026/1744; content of the <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> monitor.</td>
+<td>First version. Templates for the corporate AI policy and the acceptable use policy; treatment of embedded AI, productivity suites, individual use and unauthorised use with detection, recording, classification as a nonconformity and regularisation; AI literacy programme across eight profiles with the wording of Article 4 as amended by Regulation (EU) 2026/1744; content of the <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a> monitor.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1933,6 +1944,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

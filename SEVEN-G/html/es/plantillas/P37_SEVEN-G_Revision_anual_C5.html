@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,11 +439,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P37_SEVEN-G_Revision_anual_C5.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P37_SEVEN-G_Revision_anual_C5.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P37_SEVEN-G_Revision_anual_C5.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P37_SEVEN-G_Revision_anual_C5.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#resumen-para-el-consejo"><span>03</span>Resumen para el consejo</a></li><li><a href="#cumplimiento-de-la-tesis"><span>04</span>Cumplimiento de la tesis</a></li><li><a href="#evolucion-de-la-madurez"><span>05</span>Evolución de la madurez</a></li><li><a href="#evolucion-del-indice-de-transformacion"><span>06</span>Evolución del índice de transformación</a></li><li><a href="#metricas-del-embudo-y-cohortes"><span>07</span>Métricas del embudo y cohortes</a></li><li><a href="#valor-y-coste-de-la-cartera"><span>08</span>Valor y coste de la cartera</a></li><li><a href="#lecciones-aprendidas-consolidadas"><span>09</span>Lecciones aprendidas consolidadas</a></li><li><a href="#recalibracion-de-umbrales-y-plazos"><span>10</span>Recalibración de umbrales y plazos</a></li><li><a href="#autoevaluacion-de-los-organos-de-gobierno"><span>11</span>Autoevaluación de los órganos de gobierno</a></li><li><a href="#ajustes-propuestos-para-el-siguiente-c2"><span>12</span>Ajustes propuestos para el siguiente C2</a></li><li><a href="#criterios-de-calidad"><span>13</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>14</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
-<p><strong>Por qué importa.</strong> Sin una revisión anual con evidencia, la tesis se renueva por inercia, los umbrales iniciales nunca se contrastan con datos propios y los mismos errores se repiten en iniciativas nuevas. C5 es el momento en que el consejo comprueba si lo decidido en C2 se ha cumplido y ajusta la dirección con lo aprendido. Es la evidencia de las preguntas de nivel 5 de la dimensión D1 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a> (D1.11 y D1.12) y del ciclo de mejora que exige un sistema de gestión.</p>
+<p><strong>Por qué importa.</strong> Sin una revisión anual con evidencia, la tesis se renueva por inercia, los umbrales iniciales nunca se contrastan con datos propios y los mismos errores se repiten en iniciativas nuevas. C5 es el momento en que el consejo comprueba si lo decidido en C2 se ha cumplido y ajusta la dirección con lo aprendido. Es la evidencia de las preguntas de nivel 5 de la dimensión D1 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a> (D1.11 y D1.12) y del ciclo de mejora que exige un sistema de gestión.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
 <div class="tabla"><table>
@@ -461,11 +472,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Etapa del ciclo corporativo</strong></td>
-<td>C5 · Revisión. Entradas: <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> vigente, <a href="P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a>, los paquetes trimestrales de C4 y las revisiones de valor de las iniciativas. Salida: propuesta para el siguiente C2 (<a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> nueva versión).</td>
+<td>C5 · Revisión. Entradas: <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a> vigente, <a href="P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a>, los paquetes trimestrales de C4 y las revisiones de valor de las iniciativas. Salida: propuesta para el siguiente C2 (<a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a> nueva versión).</td>
 </tr>
 <tr>
 <td><strong>Herramientas</strong></td>
-<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> (madurez), <a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a> (índice), <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (métricas del embudo y cohortes), <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> (valor y coste), <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> (panel), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> (recomendaciones y decisiones), <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> (retiradas y lecciones).</td>
+<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> (madurez), <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> (índice), <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (métricas del embudo y cohortes), <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a> (valor y coste), <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> (panel), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> (recomendaciones y decisiones), <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a> (retiradas y lecciones).</td>
 </tr>
 <tr>
 <td><strong>Documentos de referencia</strong></td>
@@ -513,12 +524,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Decisión de C2 vigente</td>
 <td></td>
-<td>Versión de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> y DEC-AAAA-NNN.</td>
+<td>Versión de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a> y DEC-AAAA-NNN.</td>
 </tr>
 <tr>
 <td>Versión de umbrales usada</td>
 <td></td>
-<td>Registro de versiones de umbrales de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>, sección 14.</td>
+<td>Registro de versiones de umbrales de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a>, sección 14.</td>
 </tr>
 <tr>
 <td>Alcance de implantación</td>
@@ -584,7 +595,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="cumplimiento-de-la-tesis"><span class="antetitulo">04</span>Cumplimiento de la tesis</h2>
 <h3 id="4-1-objetivos-de-seguimiento">4.1 Objetivos de seguimiento</h3>
-<p>Los fijados en la sección 12 de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> (apartado «Cómo sabremos que funciona» de la tesis).</p>
+<p>Los fijados en la sección 12 de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a> (apartado «Cómo sabremos que funciona» de la tesis).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1038,21 +1049,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td>Validado · Declarado · Estimado</td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 </tr>
 <tr>
 <td>Retorno</td>
 <td></td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 </tr>
 <tr>
 <td>Coste recurrente</td>
 <td></td>
 <td></td>
 <td></td>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></td>
 </tr>
 <tr>
 <td><strong>Valor neto anual</strong></td>
@@ -1073,7 +1084,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>, <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1143,7 +1154,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Se incluyen todos los motivos con al menos un caso.</p>
 <hr />
 <h2 id="recalibracion-de-umbrales-y-plazos"><span class="antetitulo">10</span>Recalibración de umbrales y plazos</h2>
-<p>Procedimiento de 12 §8 y 13 §13. Los cambios aprobados se anotan en el registro de versiones de umbrales de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> (sección 14).</p>
+<p>Procedimiento de 12 §8 y 13 §13. Los cambios aprobados se anotan en el registro de versiones de umbrales de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a> (sección 14).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1215,7 +1226,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="autoevaluacion-de-los-organos-de-gobierno"><span class="antetitulo">11</span>Autoevaluación de los órganos de gobierno</h2>
-<p>El comité de IA y la oficina de IA evalúan su propia eficacia al menos una vez al año y cierran las acciones de mejora (pregunta D1.12 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>). El consejo y la comisión delegada <strong>pueden</strong> hacer lo mismo con su régimen propio.</p>
+<p>El comité de IA y la oficina de IA evalúan su propia eficacia al menos una vez al año y cierran las acciones de mejora (pregunta D1.12 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>). El consejo y la comisión delegada <strong>pueden</strong> hacer lo mismo con su régimen propio.</p>
 <h3 id="11-1-cuestionario">11.1 Cuestionario</h3>
 <div class="tabla"><table>
 <thead>
@@ -1247,14 +1258,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td>—</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 </tr>
 <tr>
 <td>¿Se han registrado las abstenciones y los conflictos de interés, incluida la declaración anual de los miembros (30 §12)?</td>
 <td></td>
 <td></td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; declaraciones</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; declaraciones</td>
 </tr>
 <tr>
 <td>¿Se han elevado a tiempo los asuntos que superaban la delegación?</td>
@@ -1264,11 +1275,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Actas</td>
 </tr>
 <tr>
-<td>¿Se han cerrado en plazo las recomendaciones del consejo asignadas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)?</td>
+<td>¿Se han cerrado en plazo las recomendaciones del consejo asignadas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>)?</td>
 <td></td>
 <td></td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></td>
 </tr>
 <tr>
 <td>¿Hay excepciones vencidas sin cierre (30 §7.4)?</td>
@@ -1282,14 +1293,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 <td></td>
 <td>—</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
 </tr>
 <tr>
 <td>¿Se ha parado o retirado alguna iniciativa con motivo codificado en el año?</td>
 <td></td>
 <td></td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a></td>
 </tr>
 <tr>
 <td>Valoración global (Eficaz · Eficaz con mejoras · No eficaz)</td>
@@ -1442,7 +1453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Selección de indicadores (<a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>, sección 13)</td>
+<td>Selección de indicadores (<a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a>, sección 13)</td>
 <td></td>
 <td></td>
 <td>Indicadores sin dato, sin uso o sin contraste.</td>
@@ -1468,7 +1479,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>La tesis se ha revisado con la evidencia de madurez, índice y cartera, y los cambios aprobados se aplican en el siguiente C2 (pregunta D1.11 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>La tesis se ha revisado con la evidencia de madurez, índice y cartera, y los cambios aprobados se aplican en el siguiente C2 (pregunta D1.11 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>
@@ -1834,6 +1845,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

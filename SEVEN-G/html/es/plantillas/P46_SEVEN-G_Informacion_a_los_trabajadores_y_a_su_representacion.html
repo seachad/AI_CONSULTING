@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#determinacion-de-la-obligacion"><span>03</span>Determinación de la obligación</a></li><li><a href="#ficha-informativa-del-sistema"><span>04</span>Ficha informativa del sistema</a></li><li><a href="#registro-de-informacion-y-consultas"><span>05</span>Registro de información y consultas</a></li><li><a href="#registro-interno-de-sistemas-que-afectan-a-los-empleados"><span>06</span>Registro interno de sistemas que afectan a los empleados</a></li><li><a href="#indicador"><span>07</span>Indicador</a></li><li><a href="#criterios-de-calidad"><span>08</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>09</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>10</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -465,11 +476,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> · Plan de adopción y capacidad (34 §3.9). El registro interno se deriva del inventario <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, campo <em>Información a trabajadores y a su representación</em> (32 §3.5).</td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a> · Plan de adopción y capacidad (34 §3.9). El registro interno se deriva del inventario <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, campo <em>Información a trabajadores y a su representación</em> (32 §3.5).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>50 §7 y §8; 23 §9.3, §11.1 y §13.2; 32 §3.5; 34 §3.9; <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>; <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td>50 §7 y §8; 23 §9.3, §11.1 y §13.2; 32 §3.5; 34 §3.9; <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>; <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>; <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -481,7 +492,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>Comprensible para no especialistas</strong> (regla 10 de medición): la ficha explica parámetros y reglas sin revelar código fuente (50 §7.3).</li>
 <li><strong>Primero los afectados:</strong> los colectivos afectados y su representación conocen los cambios antes que el resto de la organización y que el exterior (50 §10.1).</li>
-<li><strong>Jurisdicción.</strong> Las referencias de la sección 3 son las de España y la Unión Europea que recogen 50 §7.1 y 34 §3.9; en otros países se sustituyen por las que identifique la declaración de contexto (<a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</li>
+<li><strong>Jurisdicción.</strong> Las referencias de la sección 3 son las de España y la Unión Europea que recogen 50 §7.1 y 34 §3.9; en otros países se sustituyen por las que identifique la declaración de contexto (<a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a>).</li>
 <li>Esta plantilla no constituye asesoramiento jurídico. La obligación, su contenido y su plazo los determina la asesoría jurídica y laboral.</li>
 </ul>
 <hr />
@@ -503,7 +514,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistema de IA</td>
 <td></td>
-<td>SIA-AAAA-NNN (<a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
+<td>SIA-AAAA-NNN (<a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>).</td>
 </tr>
 <tr>
 <td>Nombre del sistema</td>
@@ -513,12 +524,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad y clasificación regulatoria</td>
 <td></td>
-<td><a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> y <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td><a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a> y <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>Colectivos afectados y número de personas</td>
 <td></td>
-<td>Del análisis de efecto de <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td>Del análisis de efecto de <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>.</td>
 </tr>
 <tr>
 <td>Centros y países</td>
@@ -559,31 +570,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>¿El sistema interviene en decisiones que pueden incidir en las condiciones de trabajo?</td>
 <td></td>
-<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></td>
 </tr>
 <tr>
 <td>2</td>
 <td>¿Interviene en el acceso al empleo o en su mantenimiento?</td>
 <td></td>
-<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>; <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>; <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 </tr>
 <tr>
 <td>3</td>
 <td>¿Elabora perfiles de trabajadores o candidatos?</td>
 <td></td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 </tr>
 <tr>
 <td>4</td>
 <td>¿Es un sistema de alto riesgo del anexo III, punto 4 (empleo y gestión de trabajadores), usado en el lugar de trabajo?</td>
 <td></td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 </tr>
 <tr>
 <td>5</td>
 <td>¿Cambia la organización del trabajo aunque no sea un algoritmo de decisión?</td>
 <td></td>
-<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -623,7 +634,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Otras jurisdicciones (<a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>)</td>
+<td>Otras jurisdicciones (<a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a>)</td>
 <td></td>
 <td></td>
 </tr>
@@ -657,7 +668,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nota jurídica</td>
 <td></td>
-<td>Referencia enlazada en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Referencia enlazada en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>Firmada por</td>
@@ -707,13 +718,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5</td>
 <td>Intervención humana</td>
 <td></td>
-<td>Quién revisa, con qué autoridad y cómo discrepar (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Quién revisa, con qué autoridad y cómo discrepar (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>).</td>
 </tr>
 <tr>
 <td>6</td>
 <td>Controles</td>
 <td></td>
-<td>Pruebas de sesgo y resultado resumido; monitorización; revisión (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>).</td>
+<td>Pruebas de sesgo y resultado resumido; monitorización; revisión (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a>, <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>).</td>
 </tr>
 <tr>
 <td>7</td>
@@ -789,11 +800,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="registro-interno-de-sistemas-que-afectan-a-los-empleados"><span class="antetitulo">06</span>Registro interno de sistemas que afectan a los empleados</h2>
-<p>Registro de compañía, accesible a todos los empleados (50 §7.4). Se deriva de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>: sistemas con exposición a empleados o con decisiones sobre personas en el ámbito <em>Empleo y relaciones laborales</em> (32 §3.3).</p>
+<p>Registro de compañía, accesible a todos los empleados (50 §7.4). Se deriva de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>: sistemas con exposición a empleados o con decisiones sobre personas en el ámbito <em>Empleo y relaciones laborales</em> (32 §3.3).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>)</th>
+<th>Código (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>)</th>
 <th>Sistema</th>
 <th>Para qué se usa</th>
 <th>Colectivos</th>
@@ -864,7 +875,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>La obligación se ha analizado en la fase 3 con criterio jurídico (criterio G3.16 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>).</td>
+<td>La obligación se ha analizado en la fase 3 con criterio jurídico (criterio G3.16 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>).</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>
@@ -894,7 +905,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>La información y la consulta se registran cuando la normativa o los acuerdos lo exigen (pregunta D5.08 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>La información y la consulta se registran cuando la normativa o los acuerdos lo exigen (pregunta D5.08 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 <td></td>
 </tr>
 </tbody>
@@ -942,7 +953,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decide el <em>gate</em></td>
-<td>Órgano de 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Órgano de 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1225,6 +1236,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/60_SEVEN-G_Paquete_para_el_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/60_SEVEN-G_Paquete_para_el_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/60_SEVEN-G_Paquete_para_el_consejo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#principios-del-paquete"><span>02</span>Principios del paquete</a></li><li><a href="#contenido-segun-el-momento-del-ciclo"><span>03</span>Contenido según el momento del ciclo</a></li><li><a href="#estructura-del-paquete-trimestral"><span>04</span>Estructura del paquete trimestral</a></li><li><a href="#formato-de-decision"><span>05</span>Formato de decisión</a></li><li><a href="#que-va-al-pleno-y-que-a-la-comision-delegada"><span>06</span>Qué va al pleno y qué a la comisión delegada</a></li><li><a href="#calendario"><span>07</span>Calendario</a></li><li><a href="#reglas-de-presentacion-de-cifras"><span>08</span>Reglas de presentación de cifras</a></li><li><a href="#semaforo-de-programas"><span>09</span>Semáforo de programas</a></li><li><a href="#relacion-con-el-panel-del-consejo-t17"><span>10</span>Relación con el panel del consejo (T17)</a></li><li><a href="#lista-de-control-antes-de-enviar-el-paquete"><span>11</span>Lista de control antes de enviar el paquete</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>12</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>13</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Obligatorio siempre</span></div><p>El consejo recibe informaci&#243;n de IA al menos cada trimestre, con cifras que cumplen las reglas de medici&#243;n y decisiones en un formato claro. En alcance Lite el paquete es agregado; en alcance Enterprise lleva detalle por iniciativa Enterprise.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
@@ -441,7 +452,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>El <strong>paquete anual de revisión</strong> (etapa C5), en el que el consejo evalúa el avance, la madurez y el perfil de transformación.</li>
 <li>Los <strong>paquetes extraordinarios</strong> que exigen un incidente grave, una no conformidad crítica o una decisión del consejo fuera de calendario.</li>
 </ul>
-<p>No sustituye a la documentación societaria (orden del día, actas, informes de las comisiones), sino que la alimenta. La forma de conducir la conversación en la sesión está en el <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>, y el registro de recomendaciones y decisiones en el <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>.</p>
+<p>No sustituye a la documentación societaria (orden del día, actas, informes de las comisiones), sino que la alimenta. La forma de conducir la conversación en la sesión está en el <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Documento 61 &#183; Gu&#237;a de conversaci&#243;n con el consejo">documento 61</a>, y el registro de recomendaciones y decisiones en el <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a>.</p>
 <hr />
 <h2 id="principios-del-paquete"><span class="antetitulo">02</span>Principios del paquete</h2>
 <div class="tabla"><table>
@@ -461,17 +472,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>2</td>
 <td><strong>Negocio, no tecnología</strong></td>
-<td>Se habla de valor, riesgo, responsabilidad y ventaja competitiva. Los términos técnicos se traducen (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>, sección 3).</td>
+<td>Se habla de valor, riesgo, responsabilidad y ventaja competitiva. Los términos técnicos se traducen (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Documento 61 &#183; Gu&#237;a de conversaci&#243;n con el consejo">documento 61</a>, sección 3).</td>
 </tr>
 <tr>
 <td>3</td>
 <td><strong>Evidencia, no declaración</strong></td>
-<td>Toda cifra tiene fórmula y estado de validación; toda afirmación relevante enlaza con su evidencia en el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Toda cifra tiene fórmula y estado de validación; toda afirmación relevante enlaza con su evidencia en el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>4</td>
 <td><strong>Un único dato</strong></td>
-<td>El paquete, el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) y el registro de recomendaciones (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>) salen del mismo modelo de datos y de la misma fecha de corte. No se rehacen cifras a mano.</td>
+<td>El paquete, el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) y el registro de recomendaciones (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>) salen del mismo modelo de datos y de la misma fecha de corte. No se rehacen cifras a mano.</td>
 </tr>
 <tr>
 <td>5</td>
@@ -511,42 +522,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Resumen de una página</strong></td>
 <td>Mensaje principal, cifras clave con proporción validada, decisiones solicitadas, riesgos principales, cambios desde la sesión anterior.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>, <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 </tr>
 <tr>
 <td><strong>Decisiones solicitadas</strong></td>
 <td>Fichas de decisión (sección 5), en particular iniciativas de Transformar en G2 y escalados de Transformar en G7.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
 </tr>
 <tr>
 <td><strong>Panel</strong></td>
 <td>Cartera y valor; riesgo y cumplimiento; agilidad; adopción. Vista indicada en la sección 10.</td>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 </tr>
 <tr>
 <td><strong>Riesgos</strong></td>
 <td>Riesgos residuales Alto y Crítico de la cartera, concentración de riesgos, riesgos aceptados fuera de umbral.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
 </tr>
 <tr>
 <td><strong>Incidentes y no conformidades</strong></td>
 <td>Incidentes S1 y S2 del trimestre; no conformidades mayores y críticas abiertas; estado de su contención y acción correctiva.</td>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></td>
 </tr>
 <tr>
 <td><strong>Recomendaciones y compromisos</strong></td>
 <td>Recomendaciones abiertas, vencidas y cerradas; discrepancias entre estado declarado y valoración independiente.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></td>
 </tr>
 <tr>
 <td><strong>Casos en detalle</strong></td>
 <td>Hasta tres casos elegidos con los criterios de la sección 4.8.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 </tr>
 <tr>
 <td><strong>Semáforo de programas</strong></td>
 <td>Estado de cada programa por ejes (sección 9).</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -578,7 +589,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Política corporativa de IA</strong></td>
-<td>Principios, uso aceptable y responsabilidades (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>).</td>
+<td>Principios, uso aceptable y responsabilidades (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>).</td>
 </tr>
 <tr>
 <td><strong>Presupuesto marco</strong></td>
@@ -602,7 +613,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Madurez</strong></td>
-<td>Nivel por dimensión y nivel global con la regla del <a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>, comparados con el año anterior y con la evidencia que justifica cada cambio.</td>
+<td>Nivel por dimensión y nivel global con la regla del <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>, comparados con el año anterior y con la evidencia que justifica cada cambio.</td>
 </tr>
 <tr>
 <td><strong>Índice de transformación</strong></td>
@@ -739,7 +750,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Mensaje principal</strong></td>
-<td>Tres líneas como máximo, con uno de los cuatro formatos de respuesta (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>, sección 4).</td>
+<td>Tres líneas como máximo, con uno de los cuatro formatos de respuesta (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Documento 61 &#183; Gu&#237;a de conversaci&#243;n con el consejo">documento 61</a>, sección 4).</td>
 <td>Responde a &quot;¿se cumple lo decidido?&quot;. Ejemplo: <em>&quot;Sí, con una condición: el valor validado ha subido, pero dos iniciativas de alto riesgo siguen sin evaluación de impacto.&quot;</em></td>
 </tr>
 <tr>
@@ -750,7 +761,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Cartera</strong></td>
 <td>Iniciativas por fase y estado; en producción; paradas y retiradas del trimestre; estancadas.</td>
-<td>Desde <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Desde <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</td>
 </tr>
 <tr>
 <td><strong>Riesgo</strong></td>
@@ -765,7 +776,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Recomendaciones</strong></td>
 <td>Abiertas, vencidas, cerradas en el trimestre, discrepancias entre declarado y valorado.</td>
-<td>Desde <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>.</td>
+<td>Desde <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>.</td>
 </tr>
 <tr>
 <td><strong>Cambios desde la sesión anterior</strong></td>
@@ -847,7 +858,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Encargar</strong></td>
-<td>El órgano pide un trabajo con responsable y fecha. Se registra como recomendación o mandato (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</td>
+<td>El órgano pide un trabajo con responsable y fecha. Se registra como recomendación o mandato (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a>).</td>
 <td>Revisión de la dependencia de un proveedor.</td>
 </tr>
 </tbody>
@@ -878,7 +889,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Exposición a ataques con IA</td>
-<td>Indicadores principales de la esfera de seguridad (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
+<td>Indicadores principales de la esfera de seguridad (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>).</td>
 </tr>
 <tr>
 <td>Cambios regulatorios</td>
@@ -924,7 +935,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Para cada incidente individual: código INC-AAAA-NNN, sistema e iniciativa, fecha, severidad, origen, afectados, tiempo de detección y de contención, notificaciones a autoridades y su plazo, lecciones y acciones.</p>
 <h3 id="4-7-recomendaciones-y-compromisos">4.7 Recomendaciones y compromisos</h3>
-<p>Extracto del registro de recomendaciones y decisiones (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>): recomendaciones vencidas, recomendaciones cerradas en el trimestre con su valoración independiente, discrepancias entre el estado declarado por el destinatario y la valoración, y decisiones del consejo pendientes de ejecución.</p>
+<p>Extracto del registro de recomendaciones y decisiones (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a>): recomendaciones vencidas, recomendaciones cerradas en el trimestre con su valoración independiente, discrepancias entre el estado declarado por el destinatario y la valoración, y decisiones del consejo pendientes de ejecución.</p>
 <h3 id="4-8-casos-en-detalle">4.8 Casos en detalle</h3>
 <p>Se presentan <strong>como máximo tres casos en detalle</strong> por sesión. El resto está disponible en el panel. Criterios de selección, por este orden:</p>
 <ol>
@@ -950,7 +961,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Código</strong></td>
-<td>DEC-AAAA-NNN propuesto (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>).</td>
+<td>DEC-AAAA-NNN propuesto (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a>).</td>
 <td>Se asigna al registrar la solicitud y se mantiene aunque la decisión se aplace.</td>
 </tr>
 <tr>
@@ -1288,7 +1299,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Sesión</strong></td>
-<td>Presentación con la guía del <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">documento 61</a>.</td>
+<td>Presentación con la guía del <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Documento 61 &#183; Gu&#237;a de conversaci&#243;n con el consejo">documento 61</a>.</td>
 <td>Presidencia del comité de IA</td>
 </tr>
 <tr id="cod-d-5">
@@ -1405,7 +1416,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="9-1-que-es-un-programa">9.1 Qué es un programa</h3>
 <p>Un <strong>programa</strong> es una agrupación de iniciativas con un objetivo común, un patrocinador y un presupuesto (etiqueta <em>Programa</em> del registro de iniciativas, 03 §3.3). El consejo no supervisa treinta iniciativas; supervisa pocos programas y baja al detalle cuando el semáforo lo indica.</p>
 <h3 id="9-2-ejes-y-estados">9.2 Ejes y estados</h3>
-<p>Se usa el semáforo del <a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a> (§12): cada programa se evalúa en <strong>seis ejes</strong>. Cada eje tiene uno de cuatro estados: <strong>Verde</strong>, <strong>Ámbar</strong>, <strong>Rojo</strong> o <strong>Sin dato</strong> (gris). Los umbrales son los iniciales del <a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>, que la compañía fija en C2 y calibra en C5; se reproducen aquí como referencia.</p>
+<p>Se usa el semáforo del <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a> (§12): cada programa se evalúa en <strong>seis ejes</strong>. Cada eje tiene uno de cuatro estados: <strong>Verde</strong>, <strong>Ámbar</strong>, <strong>Rojo</strong> o <strong>Sin dato</strong> (gris). Los umbrales son los iniciales del <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>, que la compañía fija en C2 y calibra en C5; se reproducen aquí como referencia.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1508,9 +1519,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>En los documentos publicados los estados se muestran con texto además del color, para que el semáforo sea legible en impresión en blanco y negro y por personas con dificultades para distinguir colores.</p>
 <hr />
-<h2 id="relacion-con-el-panel-del-consejo-t17"><span class="antetitulo">10</span>Relación con el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>)</h2>
+<h2 id="relacion-con-el-panel-del-consejo-t17"><span class="antetitulo">10</span>Relación con el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</h2>
 <h3 id="10-1-que-vista-usar">10.1 Qué vista usar</h3>
-<p>El panel de IA para el consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) se genera en dos versiones sincronizadas a partir del mismo fichero de datos y con la misma huella de datos: <strong>completa</strong> y <strong>móvil</strong>.</p>
+<p>El panel de IA para el consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) se genera en dos versiones sincronizadas a partir del mismo fichero de datos y con la misma huella de datos: <strong>completa</strong> y <strong>móvil</strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1609,7 +1620,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="10-3-adaptaciones-pendientes">10.3 Adaptaciones pendientes</h3>
-<p>La herramienta <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> se alimenta del registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) mediante su conector (03 §5.4): muestra el embudo por <strong>fase y estado</strong> del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>. La agrupación por <strong>programa</strong> con el semáforo de la sección 9 y la distribución por <strong>esfera</strong> (mapa <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>) no forman parte del panel: el semáforo se calcula con las reglas de 14 §12 y se anexa al paquete con <a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html">P67</a>, y las decisiones del consejo se registran en <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a>.</p>
+<p>La herramienta <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> se alimenta del registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) mediante su conector (03 §5.4): muestra el embudo por <strong>fase y estado</strong> del ciclo de vida, enlaza cada caso con su código IA-AAAA-NNN y genera el registro de recomendaciones del <a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a>. La agrupación por <strong>programa</strong> con el semáforo de la sección 9 y la distribución por <strong>esfera</strong> (mapa <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a>) no forman parte del panel: el semáforo se calcula con las reglas de 14 §12 y se anexa al paquete con <a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a>, y las decisiones del consejo se registran en <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Plantilla P69 &#183; Registro de decisiones del consejo">P69</a>.</p>
 <p>Los ficheros del motor que se publican en el repositorio de demostraciones son copia de su proyecto de origen: las adaptaciones se hacen en origen y se vuelven a publicar.</p>
 <hr />
 <h2 id="lista-de-control-antes-de-enviar-el-paquete"><span class="antetitulo">11</span>Lista de control antes de enviar el paquete</h2>
@@ -1684,7 +1695,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La lista se aplica con <a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html">P67</a> §12.</p>
+<p>La lista se aplica con <a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a> §12.</p>
 <hr />
 <h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">12</span>Herramientas y plantillas asociadas</h2>
 <div class="tabla"><table>
@@ -1697,72 +1708,72 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>Registro de iniciativas</td>
 <td>Fuente de cartera, fases, estados, programas y valor.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
 <td>Gestor de <em>gates</em></td>
 <td>Evidencias y verificación de las decisiones solicitadas.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
 <td>Matriz y registro de riesgos</td>
 <td>Apartado de riesgos.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></td>
 <td>Registro de no conformidades e incidentes</td>
 <td>Apartado de incidentes y no conformidades.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 <td>Seguimiento de realización de valor</td>
 <td>Cifras con estado de validación.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
+<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></td>
 <td>Calculadora del índice de transformación</td>
 <td>Paquete anual C5.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a></td>
+<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
 <td>Diagnóstico de madurez</td>
 <td>Paquetes anuales C2 y C5.</td>
 </tr>
 <tr>
-<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></td>
+<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a></td>
 <td>Mapa de esferas de la cartera</td>
 <td>Paquete anual C2.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 <td>Panel de IA para el consejo</td>
 <td>Vistas de la sección 10.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Apartado de recomendaciones y decisiones.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></td>
+<td><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a></td>
 <td>Plantilla de tesis de IA y apetito de riesgo</td>
 <td>Paquete anual C2.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></td>
 <td>Registro de decisión de <em>gate</em></td>
 <td>Evidencia de las decisiones que se elevan.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></td>
 <td>Decisión de escalado o retirada</td>
 <td>Decisiones de G7 que se elevan.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html">P67</a></td>
+<td><a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a></td>
 <td>Paquete trimestral para el consejo</td>
 <td>Formulario del paquete C4 y variantes C2, C5 y extraordinarias.</td>
 </tr>
@@ -1788,7 +1799,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Herramientas y registro de iniciativas</strong></td>
-<td>Modelo de datos, métricas del embudo, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>.</td>
+<td>Modelo de datos, métricas del embudo, <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>.</td>
 </tr>
 <tr>
 <td><strong>11 · Modelo de madurez</strong></td>
@@ -1842,7 +1853,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Define el contenido trimestral (C4) y anual (C2 y C5), la estructura del paquete, la ficha de decisión, el reparto entre pleno y comisión delegada, el calendario, las reglas de presentación de cifras, el semáforo de programas y la relación con el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; semáforo alineado con los seis ejes del <a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>.</td>
+<td>Primera versión. Define el contenido trimestral (C4) y anual (C2 y C5), la estructura del paquete, la ficha de decisión, el reparto entre pleno y comisión delegada, el calendario, las reglas de presentación de cifras, el semáforo de programas y la relación con el panel del consejo. Ajustes de coherencia con 01 (separación de funciones en Lite, resultados de R6, criterio de agentes) y con 34 y 37; semáforo alineado con los seis ejes del <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2083,6 +2094,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

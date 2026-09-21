@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#comprobacion-de-admisibilidad"><span>03</span>Comprobación de admisibilidad</a></li><li><a href="#solicitud"><span>04</span>Solicitud</a></li><li><a href="#organo-que-aprueba"><span>05</span>Órgano que aprueba</a></li><li><a href="#evaluacion-de-riesgo"><span>06</span>Evaluación de riesgo</a></li><li><a href="#resolucion"><span>07</span>Resolución</a></li><li><a href="#seguimiento-y-cierre"><span>08</span>Seguimiento y cierre</a></li><li><a href="#registro-de-excepciones-de-la-compania"><span>09</span>Registro de excepciones de la compañía</a></li><li><a href="#criterios-de-calidad"><span>10</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>11</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>12</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas (excepciones vinculadas a iniciativas y decisiones, 30 §13).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · Registro de iniciativas (excepciones vinculadas a iniciativas y decisiones, 30 §13).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -476,7 +487,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li>Las excepciones <strong>nunca</strong> se admiten sobre prácticas prohibidas, obligaciones legales, separación de funciones en ningún <em>gate</em>, firma multinivel Enterprise ni existencia de un mecanismo de parada (30 §7.4), ni sobre las líneas rojas de la política corporativa (31 §3.7).</li>
-<li>Una excepción no sustituye a un «Continuar con condiciones» de un <em>gate</em>: si el asunto se decide en un <em>gate</em>, se trata en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</li>
+<li>Una excepción no sustituye a un «Continuar con condiciones» de un <em>gate</em>: si el asunto se decide en un <em>gate</em>, se trata en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>.</li>
 <li>Código propuesto: <strong>EXC-AAAA-NNN</strong>, con año de solicitud y número correlativo que no se reutiliza, también si la solicitud se deniega.</li>
 <li>La prórroga se tramita como una <strong>nueva solicitud</strong> enlazada a la anterior, aprobada por el mismo órgano (regla propuesta por esta plantilla).</li>
 </ul>
@@ -595,7 +606,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Requisito afectado</td>
 <td></td>
-<td>Documento, sección y texto; criterio de <em>gate</em> del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> o control SEG-NN o AG-NN si aplica.</td>
+<td>Documento, sección y texto; criterio de <em>gate</em> del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> o control SEG-NN o AG-NN si aplica.</td>
 </tr>
 <tr>
 <td>Justificación</td>
@@ -681,7 +692,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>En el comité de IA, las excepciones requieren la presencia y la conformidad de la segunda línea (30 §3.3 y §8.3). Si la segunda línea deniega su conformidad, el comité no puede aprobarla y puede elevar el desacuerdo a la comisión delegada (E-13).</p>
 <hr />
 <h2 id="evaluacion-de-riesgo"><span class="antetitulo">06</span>Evaluación de riesgo</h2>
-<p>Escalas de la especificación común §5.1 y del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>.</p>
+<p>Escalas de la especificación común §5.1 y del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -747,7 +758,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Órgano y referencia</td>
 <td></td>
-<td>Acta (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>) o registro de la oficina de IA.</td>
+<td>Acta (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a>) o registro de la oficina de IA.</td>
 </tr>
 <tr>
 <td>Condiciones</td>
@@ -778,7 +789,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="seguimiento-y-cierre"><span class="antetitulo">08</span>Seguimiento y cierre</h2>
-<p><strong>Estados propuestos:</strong> Solicitada · Inadmitida · En evaluación · Denegada · Vigente · Cerrada · Vencida. Una excepción vigente cuya fecha de caducidad pasa sin cierre queda <strong>Vencida</strong> y se registra una no conformidad mayor (31 §3.8; <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</p>
+<p><strong>Estados propuestos:</strong> Solicitada · Inadmitida · En evaluación · Denegada · Vigente · Cerrada · Vencida. Una excepción vigente cuya fecha de caducidad pasa sin cierre queda <strong>Vencida</strong> y se registra una no conformidad mayor (31 §3.8; <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -857,7 +868,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Resumen trimestral para la comisión delegada</strong> (se incorpora a <a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>):</p>
+<p><strong>Resumen trimestral para la comisión delegada</strong> (se incorpora a <a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Plantilla P42 &#183; Informe trimestral de segunda l&#237;nea">P42</a>):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1254,6 +1265,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

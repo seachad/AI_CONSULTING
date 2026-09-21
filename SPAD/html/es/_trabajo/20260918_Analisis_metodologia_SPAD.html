@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -436,7 +447,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Contenido que contradice decisiones registradas</strong> de SEVEN-G (cifras sin respaldo, &quot;certificación&quot;, SPAD presentado como parte de SEVEN-G u obligatorio dentro de él, dos idiomas mezclados, tono comercial).</li>
 <li><strong>Huecos de método</strong> que importan precisamente en los casos para los que SPAD se recomienda: validación humana sin registro propio, sistemas que incluyen IA en producción (no solo código escrito por IA), trazabilidad del modelo usado, cadena de suministro y licencias, datos enviados a proveedores de modelos, versión reducida (Lite) y métricas del propio proceso.</li>
 </ol>
-<p>La página de entrada publicada (<a href="../00_SPAD_Que_es_y_para_que_sirve.html">documento 00</a>) ya aplica las correcciones de los tipos 1 y 2 en lo que presenta; el resto se propone en la sección 5. <strong>Actualización del 19-09-2026:</strong> se ha aplicado todo lo propuesto en las secciones 3, 4, 5 y 6 salvo el hueco 12 (validador de artefactos: especificado en el <a href="../07_SPAD_Contratos_de_entrada_y_salida.html">documento 07</a> §6, herramienta pendiente) y las decisiones 6 de la sección 7 (regenerar láminas e ilustraciones en inglés), que requieren al autor.</p>
+<p>La página de entrada publicada (<a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>) ya aplica las correcciones de los tipos 1 y 2 en lo que presenta; el resto se propone en la sección 5. <strong>Actualización del 19-09-2026:</strong> se ha aplicado todo lo propuesto en las secciones 3, 4, 5 y 6 salvo el hueco 12 (validador de artefactos: especificado en el <a href="../07_SPAD_Contratos_de_entrada_y_salida.html" title="Documento 07 &#183; Contratos de entrada y salida">documento 07</a> §6, herramienta pendiente) y las decisiones 6 de la sección 7 (regenerar láminas e ilustraciones en inglés), que requieren al autor.</p>
 <hr />
 <h2 id="material-revisado"><span class="antetitulo">02</span>Material revisado</h2>
 <div class="tabla"><table>
@@ -501,7 +512,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><code>10_SPAD_Web_Landing.md</code> (EN)</td>
 <td>Textos para una web.</td>
-<td>Presenta SPAD como &quot;habilidad central de SEVEN-G&quot; (contra D09). Sustituido por el <a href="../00_SPAD_Que_es_y_para_que_sirve.html">documento 00</a>.</td>
+<td>Presenta SPAD como &quot;habilidad central de SEVEN-G&quot; (contra D09). Sustituido por el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>.</td>
 </tr>
 <tr>
 <td><code>11_SPAD_Compliant_Certification.md</code> (EN)</td>
@@ -511,7 +522,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><code>SPAD_AI_Engineering.pdf</code></td>
 <td>Presentación ilustrada (14 láminas).</td>
-<td>Nueve láminas se publican en el <a href="../00_SPAD_Que_es_y_para_que_sirve.html">documento 00</a>; cinco no (sección 4).</td>
+<td>Nueve láminas se publican en el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>; cinco no (sección 4).</td>
 </tr>
 </tbody>
 </table></div>
@@ -531,7 +542,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td><strong>Numeración de fases distinta.</strong> La guía operativa: 0 Contexto, 1 PLAN, 2 revisión del plan, 3 guía de código, 4 estrategia de pruebas, 5 implementación, 6 pruebas, 7 revisión de pruebas, 8 revisión de código, 9 correcciones, 10 versión. La habilidad oficial repite &quot;IMPLEMENTATION&quot; en las fases 4 y 6, pone la estrategia de pruebas después de implementar y termina en la 11. La autoevaluación usa la numeración antigua (4 implementación, 5 revisión de código, 6 correcciones).</td>
 <td>0, 08, 11</td>
-<td><strong>Numeración canónica = guía operativa</strong> (la que usan el <a href="../00_SPAD_Que_es_y_para_que_sirve.html">documento 00</a> y la lámina del flujo bloqueante). Corregir 08 y 11.</td>
+<td><strong>Numeración canónica = guía operativa</strong> (la que usan el <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a> y la lámina del flujo bloqueante). Corregir 08 y 11.</td>
 </tr>
 <tr>
 <td>2</td>
@@ -597,7 +608,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Cifras de mejora y retorno: &quot;60–80 % de retrabajo&quot;, &quot;−70 % retrabajo&quot;, &quot;−60 % incidentes&quot;, &quot;+200 % cobertura&quot;, &quot;30–40 % más rápido&quot;, <em>break-even</em> en 3–4 semanas.</td>
 <td>D35, D41</td>
-<td><strong>Retiradas.</strong> Se formulan como hipótesis a medir por cada organización (<a href="../00_SPAD_Que_es_y_para_que_sirve.html">documento 00</a>, sección 10). Las láminas 2 (solo se publica su gráfica conceptual) y 12 no se usan.</td>
+<td><strong>Retiradas.</strong> Se formulan como hipótesis a medir por cada organización (<a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>, sección 10). Las láminas 2 (solo se publica su gráfica conceptual) y 12 no se usan.</td>
 </tr>
 <tr>
 <td>&quot;Certificación SPAD-Compliant™&quot;, &quot;estándar de oro&quot;, &quot;obligatorio para entornos financieros y de salud&quot;, &quot;evidencia para SOC 2, PCI-DSS o HIPAA&quot;.</td>
@@ -632,7 +643,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Licencia: &quot;propiedad intelectual de Seachad; la redistribución pública requiere permiso&quot;.</td>
 <td>D07 y decisión del autor (18-09-2026)</td>
-<td><strong>Sustituida</strong> por la de SEVEN-G: <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y MIT (README y <a href="../00_SPAD_Que_es_y_para_que_sirve.html">documento 00</a>).</td>
+<td><strong>Sustituida</strong> por la de SEVEN-G: <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y MIT (README y <a href="../00_SPAD_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPAD y para qu&#233; sirve">documento 00</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -718,7 +729,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>12</td>
 <td><strong>Herramientas.</strong> Los contratos JSON no se validan automáticamente.</td>
 <td>La validación de &quot;artefactos incompletos&quot; puede automatizarse.</td>
-<td>Herramienta sin servidor, al estilo de <a href="../../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html">T01</a>: validador de artefactos SPAD frente a sus esquemas JSON y generador del registro del tema.</td>
+<td>Herramienta sin servidor, al estilo de <a href="../../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: validador de artefactos SPAD frente a sus esquemas JSON y generador del registro del tema.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1029,6 +1040,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

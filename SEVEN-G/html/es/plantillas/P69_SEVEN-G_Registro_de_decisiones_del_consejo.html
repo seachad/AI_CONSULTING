@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,11 +439,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion-del-registro"><span>02</span>Identificación del registro</a></li><li><a href="#que-se-registra"><span>03</span>Qué se registra</a></li><li><a href="#hoja-dec-decisiones-del-consejo"><span>04</span>Hoja DEC · Decisiones del consejo</a></li><li><a href="#ficha-de-recomendacion"><span>05</span>Ficha de recomendación</a></li><li><a href="#hoja-rec-recomendaciones-y-encargos"><span>06</span>Hoja REC · Recomendaciones y encargos</a></li><li><a href="#hojas-de-evidencias-y-reprogramaciones"><span>07</span>Hojas de evidencias y reprogramaciones</a></li><li><a href="#hoja-de-historial"><span>08</span>Hoja de historial</a></li><li><a href="#alertas-e-indicadores"><span>09</span>Alertas e indicadores</a></li><li><a href="#criterios-de-calidad"><span>10</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>11</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>12</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
-<p><strong>Por qué importa.</strong> Lo que el consejo decide y encarga solo se cumple si alguien lo sigue con código, responsable, fecha y evidencia, y si quien lo valora no es quien lo ejecuta. Este registro separa lo que el destinatario <strong>declara</strong> de lo que se ha <strong>verificado</strong>, conserva la fecha original aunque se reprograme y enlaza cada decisión con su iniciativa y su <em>gate</em>. Es la «hoja de cálculo de respaldo» que cita el <a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a> mientras <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> no cubre todos sus campos; sin él, el seguimiento depende de la memoria de las actas y las discrepancias no llegan al consejo.</p>
+<p><strong>Por qué importa.</strong> Lo que el consejo decide y encarga solo se cumple si alguien lo sigue con código, responsable, fecha y evidencia, y si quien lo valora no es quien lo ejecuta. Este registro separa lo que el destinatario <strong>declara</strong> de lo que se ha <strong>verificado</strong>, conserva la fecha original aunque se reprograme y enlaza cada decisión con su iniciativa y su <em>gate</em>. Es la «hoja de cálculo de respaldo» que cita el <a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a> mientras <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> no cubre todos sus campos; sin él, el seguimiento depende de la memoria de las actas y las discrepancias no llegan al consejo.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
 <div class="tabla"><table>
@@ -445,7 +456,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>Tras cada sesión del consejo o de su comisión delegada en la que se decida, recomiende o encargue algo sobre IA (registro en 5 días hábiles, 62 §8), y antes de cada fecha de corte del paquete (<a href="P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html">P67</a>), cuando los destinatarios actualizan el estado.</td>
+<td>Tras cada sesión del consejo o de su comisión delegada en la que se decida, recomiende o encargue algo sobre IA (registro en 5 días hábiles, 62 §8), y antes de cada fecha de corte del paquete (<a href="P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a>), cuando los destinatarios actualizan el estado.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> · Registro de recomendaciones del consejo. Mientras su adaptación a los campos de 62 §12.2 no esté completa, este registro se lleva en hoja de cálculo con las hojas de las secciones 4 a 9 y se importa después. Vínculos con <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (IA-AAAA-NNN), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> (decisiones de <em>gate</em>) y <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> (INC y NC); efecto medido en <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> · Registro de recomendaciones del consejo. Mientras su adaptación a los campos de 62 §12.2 no esté completa, este registro se lleva en hoja de cálculo con las hojas de las secciones 4 a 9 y se importa después. Vínculos con <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (IA-AAAA-NNN), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> (decisiones de <em>gate</em>) y <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a> (INC y NC); efecto medido en <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -535,7 +546,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Fecha de corte</td>
 <td></td>
-<td>La del paquete trimestral (<a href="P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html">P67</a>).</td>
+<td>La del paquete trimestral (<a href="P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a>).</td>
 </tr>
 <tr>
 <td>Versión</td>
@@ -627,13 +638,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Acta 09/2026, punto 4</td>
 <td>Autorizar con límites</td>
 <td>Autorizar la etapa 1 de IA-2026-018 con límite de 400.000 € y decisión de continuidad en nueve meses.</td>
-<td><a href="P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html">P67</a>, ficha DEC-2026-014</td>
+<td><a href="P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a>, ficha DEC-2026-014</td>
 <td>Aprobada con condiciones</td>
 <td>400.000 €; etapa 1; nueve meses</td>
 <td>24-06-2027</td>
 <td>Dirección comercial</td>
 <td>IA-2026-018</td>
-<td>REC-2026-006; <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> G2 de IA-2026-018</td>
+<td>REC-2026-006; <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> G2 de IA-2026-018</td>
 <td>10-12-2026</td>
 </tr>
 <tr>
@@ -856,7 +867,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td>Bloque del panel</td>
 <td></td>
-<td>Bloque de <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> donde se mide el efecto (62 §11.2).</td>
+<td>Bloque de <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> donde se mide el efecto (62 §11.2).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1218,17 +1229,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Las decisiones de Transformar en G2 y G7 enlazan en ambos sentidos con su registro de <em>gate</em> <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (criterios G2.12 y G7.09 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>).</td>
+<td>Las decisiones de Transformar en G2 y G7 enlazan en ambos sentidos con su registro de <em>gate</em> <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> (criterios G2.12 y G7.09 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>).</td>
 <td></td>
 </tr>
 <tr>
 <td>7</td>
-<td>Las aceptaciones de riesgo Crítico tienen vigencia y enlazan con <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> (criterio G3.12).</td>
+<td>Las aceptaciones de riesgo Crítico tienen vigencia y enlazan con <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> (criterio G3.12).</td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
-<td>El registro permite responder «Sí» a la pregunta D1.10 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>.</td>
+<td>El registro permite responder «Sí» a la pregunta D1.10 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1318,7 +1329,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Registro de decisiones DEC con condiciones (62 §10) y ficha y hojas de recomendaciones REC con todos los campos de 62 §4–9 (criterio de cumplimiento, valoración estructurada, fechas y reprogramaciones, evidencias, historial, órgano y cierre), alertas e indicadores, preparados para hoja de cálculo mientras <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> no cubre todos los campos.</td>
+<td>Primera versión. Registro de decisiones DEC con condiciones (62 §10) y ficha y hojas de recomendaciones REC con todos los campos de 62 §4–9 (criterio de cumplimiento, valoración estructurada, fechas y reprogramaciones, evidencias, historial, órgano y cierre), alertas e indicadores, preparados para hoja de cálculo mientras <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> no cubre todos los campos.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1559,6 +1570,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

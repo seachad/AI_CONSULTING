@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -429,10 +440,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#aplicabilidad"><span>03</span>Aplicabilidad</a></li><li><a href="#procesos-en-los-que-se-usara-el-sistema-articulo-27-1-a"><span>04</span>Procesos en los que se usará el sistema (artículo 27.1.a)</a></li><li><a href="#periodo-y-frecuencia-de-uso-articulo-27-1-b"><span>05</span>Periodo y frecuencia de uso (artículo 27.1.b)</a></li><li><a href="#personas-y-colectivos-afectados-articulo-27-1-c"><span>06</span>Personas y colectivos afectados (artículo 27.1.c)</a></li><li><a href="#riesgos-especificos-de-perjuicio-articulo-27-1-d"><span>07</span>Riesgos específicos de perjuicio (artículo 27.1.d)</a></li><li><a href="#medidas-de-supervision-humana-articulo-27-1-e"><span>08</span>Medidas de supervisión humana (artículo 27.1.e)</a></li><li><a href="#medidas-si-los-riesgos-se-materializan-articulo-27-1-f"><span>09</span>Medidas si los riesgos se materializan (artículo 27.1.f)</a></li><li><a href="#notificacion-a-la-autoridad-de-vigilancia-del-mercado-articulo-27-3"><span>10</span>Notificación a la autoridad de vigilancia del mercado (artículo 27.3)</a></li><li><a href="#relacion-con-la-evaluacion-de-impacto-en-proteccion-de-datos-p47"><span>11</span>Relación con la evaluación de impacto en protección de datos (P47)</a></li><li><a href="#conclusion-y-revision"><span>12</span>Conclusión y revisión</a></li><li><a href="#criterios-de-calidad"><span>13</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>14</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote>
-<p><em>Esta plantilla no constituye asesoramiento jurídico.</em> Referencias consultadas en septiembre de 2026; la obligación se aplica con el alto riesgo del anexo III (2-12-2027 tras el Reglamento (UE) 2026/1744). Verifíquese su vigencia (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> §3.1 y §3.10).</p>
+<p><em>Esta plantilla no constituye asesoramiento jurídico.</em> Referencias consultadas en septiembre de 2026; la obligación se aplica con el alto riesgo del anexo III (2-12-2027 tras el Reglamento (UE) 2026/1744). Verifíquese su vigencia (<a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a> §3.1 y §3.10).</p>
 </blockquote>
 <hr />
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -449,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>Se abre cuando <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.2 concluye que la evaluación es <strong>Requerida</strong>, o <strong>Recomendada</strong> y la compañía decide hacerla. Se elabora en la fase 3, se actualiza en la fase 4 con el diseño, se notifica antes de G5 y se revisa en la fase 5, en cada R6 y cuando cambie alguno de sus elementos (artículo 27.2).</td>
+<td>Se abre cuando <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> §9.2 concluye que la evaluación es <strong>Requerida</strong>, o <strong>Recomendada</strong> y la compañía decide hacerla. Se elabora en la fase 3, se actualiza en la fase 4 con el diseño, se notifica antes de G5 y se revisa en la fase 5, en cada R6 y cuando cambie alguno de sus elementos (artículo 27.2).</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -461,7 +472,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién decide o aprueba</strong></td>
-<td>Comité de IA; la aceptación del riesgo residual, según <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6.</td>
+<td>Comité de IA; la aceptación del riesgo residual, según <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §6.</td>
 </tr>
 <tr>
 <td><strong>Gate o momento</strong></td>
@@ -469,11 +480,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> · Clasificador regulatorio (estado, fecha, enlace y fecha de notificación, 32 §3.5).</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Herramienta T07 &#183; Clasificador regulatorio">T07</a> · Clasificador regulatorio (estado, fecha, enlace y fecha de notificación, 32 §3.5).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>32 §6.2, 34 §3.10 y §8.2, <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> (escalas de riesgo), <a href="../50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> §8 (decisiones sobre personas).</td>
+<td>32 §6.2, 34 §3.10 y §8.2, <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a> (escalas de riesgo), <a href="../50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a> §8 (decisiones sobre personas).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -485,7 +496,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>Una evaluación por sistema de alto riesgo y por uso.</strong> Si el mismo sistema (SIA-AAAA-NNN) se usa en procesos distintos, se describen todos.</li>
 <li>La evaluación se centra en las <strong>personas y colectivos afectados</strong>, no en la compañía. Se apoya en la información que el proveedor facilita con las instrucciones de uso.</li>
-<li><strong>Complementa, sin duplicar,</strong> la evaluación de impacto en protección de datos (<a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a>): lo que ya consta allí se referencia (sección 11).</li>
+<li><strong>Complementa, sin duplicar,</strong> la evaluación de impacto en protección de datos (<a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Plantilla P47 &#183; Evaluaci&#243;n de impacto en protecci&#243;n de datos">P47</a>): lo que ya consta allí se referencia (sección 11).</li>
 <li>El <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a> prevé un cuestionario de la <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener" title="Oficina Europea de IA (Comisi&#243;n Europea)">Oficina Europea de IA</a> para la notificación: a fecha de consulta, la plantilla de la Oficina Europea de IA está pendiente de confirmar (34 §3.10). Cuando esté disponible, ese es el formato de notificación; <strong>esta plantilla de SEVEN-G no lo sustituye</strong>: sirve para preparar el contenido, integrarlo en el ciclo de la iniciativa y conservar la trazabilidad interna.</li>
 <li>Uso voluntario: puede apoyarse en <a class="ref-ext" href="https://www.iso.org/standard/42005" target="_blank" rel="noopener" title="ISO/IEC 42005:2025 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial (IA) — Evaluaci&#243;n de impacto de sistemas de IA">ISO/IEC 42005:2025</a> (32 §6.2).</li>
 </ul>
@@ -508,22 +519,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código y nombre del sistema</td>
 <td></td>
-<td>SIA-AAAA-NNN de <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>SIA-AAAA-NNN de <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>).</td>
 </tr>
 <tr>
 <td>Proveedor del sistema</td>
 <td></td>
-<td>Interno o tercero (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
+<td>Interno o tercero (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>).</td>
 </tr>
 <tr>
 <td>Finalidad prevista</td>
 <td></td>
-<td>Copiar de <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> y <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Copiar de <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a> y <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>Clasificación y punto del anexo III</td>
 <td></td>
-<td>De <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §6.2 (por ejemplo, 5.b o 5.c).</td>
+<td>De <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> §6.2 (por ejemplo, 5.b o 5.c).</td>
 </tr>
 <tr>
 <td>Rol de la compañía</td>
@@ -531,12 +542,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Responsable del despliegue (y, en su caso, también proveedor).</td>
 </tr>
 <tr>
-<td>Referencia a <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Referencia a <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 <td></td>
 <td>Versión y fecha.</td>
 </tr>
 <tr>
-<td>Referencia a <a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a></td>
+<td>Referencia a <a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Plantilla P47 &#183; Evaluaci&#243;n de impacto en protecci&#243;n de datos">P47</a></td>
 <td></td>
 <td>Si existe EIPD del mismo tratamiento.</td>
 </tr>
@@ -614,7 +625,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Decisiones que apoya o toma el sistema</td>
 <td></td>
-<td>Qué decide, qué recomienda y qué valida una persona (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> §5).</td>
+<td>Qué decide, qué recomienda y qué valida una persona (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> §5).</td>
 </tr>
 <tr>
 <td>Nivel de autonomía</td>
@@ -699,7 +710,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="riesgos-especificos-de-perjuicio-articulo-27-1-d"><span class="antetitulo">07</span>Riesgos específicos de perjuicio (artículo 27.1.d)</h2>
-<p>Considere la información facilitada por el proveedor (instrucciones de uso) y valore con la <strong>escala común</strong> (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>): <strong>Nivel = Probabilidad × Impacto</strong>; Bajo 1–4 · Medio 5–9 · Alto 10–15 · Crítico 16–25. El eje dominante será normalmente «Personas y derechos». Los riesgos de nivel Medio o superior se trasladan a <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</p>
+<p>Considere la información facilitada por el proveedor (instrucciones de uso) y valore con la <strong>escala común</strong> (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>): <strong>Nivel = Probabilidad × Impacto</strong>; Bajo 1–4 · Medio 5–9 · Alto 10–15 · Crítico 16–25. El eje dominante será normalmente «Personas y derechos». Los riesgos de nivel Medio o superior se trasladan a <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -712,7 +723,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Nivel inherente</th>
 <th>Medidas (secciones 8 y 9)</th>
 <th>Nivel residual</th>
-<th>Código en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></th>
+<th>Código en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a></th>
 </tr>
 </thead>
 <tbody>
@@ -748,7 +759,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>4</td>
 <td>12 Alto</td>
-<td>Exclusión de variables sustitutas (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>); pruebas de sesgo antes del piloto y en producción (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>); revisión humana de denegaciones (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>)</td>
+<td>Exclusión de variables sustitutas (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>); pruebas de sesgo antes del piloto y en producción (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a>, <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>); revisión humana de denegaciones (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>)</td>
 <td>6 Medio</td>
 <td>IA-2026-021 · R02</td>
 </tr>
@@ -756,7 +767,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="medidas-de-supervision-humana-articulo-27-1-e"><span class="antetitulo">08</span>Medidas de supervisión humana (artículo 27.1.e)</h2>
-<p>Según las instrucciones de uso del proveedor y el diseño de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</p>
+<p>Según las instrucciones de uso del proveedor y el diseño de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -769,17 +780,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Modos de supervisión</td>
 <td></td>
-<td>Validación previa · Supervisión en tiempo real · Revisión a posteriori por muestreo · Supervisión agregada (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> §6).</td>
+<td>Validación previa · Supervisión en tiempo real · Revisión a posteriori por muestreo · Supervisión agregada (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> §6).</td>
 </tr>
 <tr>
 <td>Personas que supervisan</td>
 <td></td>
-<td>Rol, competencia, formación y autoridad (artículo 26.2; <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
+<td>Rol, competencia, formación y autoridad (artículo 26.2; <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>).</td>
 </tr>
 <tr>
 <td>Capacidad de no usar, anular o detener el sistema</td>
 <td></td>
-<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> §7; interruptor de parada (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> §7; interruptor de parada (<a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>, <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>).</td>
 </tr>
 <tr>
 <td>Coherencia con las instrucciones de uso del proveedor</td>
@@ -802,17 +813,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Gobierno interno</td>
 <td></td>
-<td>Quién decide suspender o limitar el uso, escalado y plazos (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="../30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a>).</td>
+<td>Quién decide suspender o limitar el uso, escalado y plazos (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>, <a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>).</td>
 </tr>
 <tr>
 <td>Mecanismos de reclamación</td>
 <td></td>
-<td>Canal, plazo interno de respuesta y rol que revisa (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> §8; <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a>).</td>
+<td>Canal, plazo interno de respuesta y rol que revisa (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> §8; <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Plantilla P49 &#183; Avisos de transparencia e instrucciones de uso">P49</a>).</td>
 </tr>
 <tr>
 <td>Explicación de decisiones individuales</td>
 <td></td>
-<td>Cómo se atienden las solicitudes (artículo 86; <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a>).</td>
+<td>Cómo se atienden las solicitudes (artículo 86; <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Plantilla P49 &#183; Avisos de transparencia e instrucciones de uso">P49</a>).</td>
 </tr>
 <tr>
 <td>Reparación de las personas afectadas</td>
@@ -822,7 +833,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Información al proveedor y a las autoridades</td>
 <td></td>
-<td>Vigilancia y comunicación de incidentes graves (artículo 26.5; <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td>Vigilancia y comunicación de incidentes graves (artículo 26.5; <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>, <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -840,7 +851,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Autoridad competente</td>
 <td></td>
-<td>Identificada en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> (AESIA o autoridad sectorial; 34 §8.2).</td>
+<td>Identificada en <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> (AESIA o autoridad sectorial; 34 §8.2).</td>
 </tr>
 <tr>
 <td>Formato utilizado</td>
@@ -850,7 +861,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Fecha de notificación</td>
 <td></td>
-<td>Antes de G5 (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>).</td>
+<td>Antes de G5 (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a>).</td>
 </tr>
 <tr>
 <td>Referencia o acuse</td>
@@ -865,12 +876,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="relacion-con-la-evaluacion-de-impacto-en-proteccion-de-datos-p47"><span class="antetitulo">11</span>Relación con la evaluación de impacto en protección de datos (<a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a>)</h2>
+<h2 id="relacion-con-la-evaluacion-de-impacto-en-proteccion-de-datos-p47"><span class="antetitulo">11</span>Relación con la evaluación de impacto en protección de datos (<a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Plantilla P47 &#183; Evaluaci&#243;n de impacto en protecci&#243;n de datos">P47</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
 <th>Elemento</th>
-<th>¿Consta ya en <a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a>?</th>
+<th>¿Consta ya en <a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Plantilla P47 &#183; Evaluaci&#243;n de impacto en protecci&#243;n de datos">P47</a>?</th>
 <th>Referencia o complemento en esta evaluación</th>
 </tr>
 </thead>
@@ -926,12 +937,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Aceptación del riesgo residual</td>
 <td></td>
-<td>Órgano según <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6. Un residual Crítico sin aprobación del consejo o de su comisión delegada bloquea G3 y G5.</td>
+<td>Órgano según <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §6. Un residual Crítico sin aprobación del consejo o de su comisión delegada bloquea G3 y G5.</td>
 </tr>
 <tr>
 <td>Próxima revisión</td>
 <td></td>
-<td>Siguiente R6 o cambio de proceso, colectivo, frecuencia, proveedor o instrucciones de uso (artículo 27.2; <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td>Siguiente R6 o cambio de proceso, colectivo, frecuencia, proveedor o instrucciones de uso (artículo 27.2; <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -959,7 +970,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">13</span>Criterios de calidad</h2>
-<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (G3.09, G4.13, G5.15 y R6.08).</p>
+<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (G3.09, G4.13, G5.15 y R6.08).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -971,7 +982,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>La aplicabilidad coincide con <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.2 y está justificada.</td>
+<td>La aplicabilidad coincide con <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> §9.2 y está justificada.</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>
@@ -986,17 +997,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Los riesgos se valoran con la escala común y los de nivel Medio o superior están en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>Los riesgos se valoran con la escala común y los de nivel Medio o superior están en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>.</td>
 <td></td>
 </tr>
 <tr>
 <td>5</td>
-<td>Hay mecanismo de reclamación y vía de explicación operativos (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a>).</td>
+<td>Hay mecanismo de reclamación y vía de explicación operativos (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>, <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Plantilla P49 &#183; Avisos de transparencia e instrucciones de uso">P49</a>).</td>
 <td></td>
 </tr>
 <tr>
 <td>6</td>
-<td>Se reutiliza la EIPD (<a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a>) sin duplicarla.</td>
+<td>Se reutiliza la EIPD (<a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Plantilla P47 &#183; Evaluaci&#243;n de impacto en protecci&#243;n de datos">P47</a>) sin duplicarla.</td>
 <td></td>
 </tr>
 <tr>
@@ -1061,7 +1072,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Aprueba</td>
-<td>Comité de IA; aceptación del residual según <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6</td>
+<td>Comité de IA; aceptación del residual según <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §6</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1110,7 +1121,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Desarrolla la evaluación que <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.2 declara necesaria, con los elementos del artículo 27 recogidos en 32 §6.2 y 34 §3.10, la notificación a la autoridad y el enlace con <a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a> y <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>. Referencias consultadas en septiembre de 2026.</td>
+<td>Primera versión. Desarrolla la evaluación que <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> §9.2 declara necesaria, con los elementos del artículo 27 recogidos en 32 §6.2 y 34 §3.10, la notificación a la autoridad y el enlace con <a href="P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Plantilla P47 &#183; Evaluaci&#243;n de impacto en protecci&#243;n de datos">P47</a> y <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>. Referencias consultadas en septiembre de 2026.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1351,6 +1362,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

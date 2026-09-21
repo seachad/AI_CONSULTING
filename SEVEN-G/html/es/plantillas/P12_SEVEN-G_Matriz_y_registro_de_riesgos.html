@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#escalas"><span>03</span>Escalas</a></li><li><a href="#registro-de-riesgos"><span>04</span>Registro de riesgos</a></li><li><a href="#matriz-de-calor-de-la-iniciativa"><span>05</span>Matriz de calor de la iniciativa</a></li><li><a href="#aceptacion-del-riesgo-residual"><span>06</span>Aceptación del riesgo residual</a></li><li><a href="#riesgos-de-cartera-enterprise"><span>07</span>Riesgos de cartera (Enterprise)</a></li><li><a href="#historial-de-revisiones"><span>08</span>Historial de revisiones</a></li><li><a href="#criterios-de-calidad"><span>09</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>10</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>11</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> · Matriz y registro de riesgos: vista «Riesgos» y pestaña «Riesgos» de la ficha del registro <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, con los mismos campos, escalas, matriz de calor y reglas de aceptación que esta plantilla, y exportación CSV.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a> · Matriz y registro de riesgos: vista «Riesgos» y pestaña «Riesgos» de la ficha del registro <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, con los mismos campos, escalas, matriz de calor y reglas de aceptación que esta plantilla, y exportación CSV.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -472,11 +483,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas de cumplimentación:</p>
 <ul>
-<li>Las escalas y los niveles son <strong>los de la especificación común §5.1 y el <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a></strong>. No se modifican por iniciativa.</li>
+<li>Las escalas y los niveles son <strong>los de la especificación común §5.1 y el <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a></strong>. No se modifican por iniciativa.</li>
 <li>El impacto se valora en <strong>cinco ejes</strong> y se toma el <strong>mayor</strong>.</li>
 <li>El nivel se calcula <strong>inherente</strong> (sin controles) y <strong>residual</strong> (con controles eficaces). Un control solo reduce el residual si existe y funciona; los controles previstos se indican aparte.</li>
 <li>Un riesgo residual <strong>Crítico</strong> sin aprobación del consejo o de su comisión delegada <strong>bloquea G3 y G5</strong>.</li>
-<li>Los riesgos tipo del catálogo del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> (formato RT-&lt;CAT&gt;-NN) se usan como punto de partida para no omitir riesgos conocidos.</li>
+<li>Los riesgos tipo del catálogo del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a> (formato RT-&lt;CAT&gt;-NN) se usan como punto de partida para no omitir riesgos conocidos.</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -497,12 +508,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistemas de IA cubiertos</td>
 <td></td>
-<td>Códigos de <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>.</td>
+<td>Códigos de <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>.</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria</td>
 <td></td>
-<td>Taxonomía de 03 §3.3 (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Taxonomía de 03 §3.3 (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>).</td>
 </tr>
 <tr>
 <td>Intensidad y nivel de ambición</td>
@@ -527,7 +538,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Umbrales económicos de impacto aplicables</td>
 <td></td>
-<td>Referencia a los aprobados en C2 (<a href="../13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</td>
+<td>Referencia a los aprobados en C2 (<a href="../13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Documento 13 &#183; Tesis de IA, ambici&#243;n y apetito de riesgo">documento 13</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -715,7 +726,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>R01</td>
 <td></td>
 <td>EST · TEC · DAT · ECO · LEG · ORG · REP · GEN · SEG · TER</td>
-<td>Código del catálogo del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>, si existe</td>
+<td>Código del catálogo del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>, si existe</td>
 <td></td>
 <td></td>
 <td></td>
@@ -733,7 +744,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><em>(ejemplo ilustrativo)</em> R01</td>
 <td>Por una inyección de instrucciones en el mensaje de un cliente, el asistente revela datos del pedido de otro cliente, con perjuicio para el afectado y posible incumplimiento del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>.</td>
 <td>GEN</td>
-<td>Catálogo GEN del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a></td>
+<td>Catálogo GEN del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a></td>
 <td>Asistente de consultas · fases 5–6</td>
 <td>Responsable técnico</td>
 <td>20-11-2026</td>
@@ -790,7 +801,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <th>Nº</th>
 <th>Respuesta</th>
-<th>Controles previstos (<a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>)</th>
+<th>Controles previstos (<a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Plantilla P13 &#183; Plan de mitigaci&#243;n y contingencia">P13</a>)</th>
 <th>Aceptado por</th>
 <th>Fecha de aceptación</th>
 <th>Estado</th>
@@ -810,7 +821,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><em>(ejemplo ilustrativo)</em> R01</td>
 <td>Mitigar</td>
-<td>Monitorización de salidas con alerta (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</td>
+<td>Monitorización de salidas con alerta (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>)</td>
 <td>Patrocinador, con conformidad del responsable de riesgos</td>
 <td>15-01-2027</td>
 <td>Aceptado</td>
@@ -818,7 +829,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Respuestas: <strong>Evitar</strong> (se elimina la causa o la actividad) · <strong>Mitigar</strong> (controles que reducen probabilidad o impacto) · <strong>Transferir</strong> (seguro o contrato; el riesgo reputacional y regulatorio no se transfiere por completo) · <strong>Aceptar</strong> (se asume el residual con aprobación). La lista de estados es propuesta de esta plantilla, a confirmar en el <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>.</p>
+<p>Respuestas: <strong>Evitar</strong> (se elimina la causa o la actividad) · <strong>Mitigar</strong> (controles que reducen probabilidad o impacto) · <strong>Transferir</strong> (seguro o contrato; el riesgo reputacional y regulatorio no se transfiere por completo) · <strong>Aceptar</strong> (se asume el residual con aprobación). La lista de estados es propuesta de esta plantilla, a confirmar en el <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>.</p>
 <hr />
 <h2 id="matriz-de-calor-de-la-iniciativa"><span class="antetitulo">05</span>Matriz de calor de la iniciativa</h2>
 <p>Anote en cada celda los números de riesgo según su valoración <strong>residual</strong>.</p>
@@ -931,7 +942,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Alto</strong> (10–15)</td>
 <td>Comité de IA</td>
-<td>Con conformidad del responsable de riesgos y plan de mitigación (<a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>). Aplica también en intensidad Lite.</td>
+<td>Con conformidad del responsable de riesgos y plan de mitigación (<a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Plantilla P13 &#183; Plan de mitigaci&#243;n y contingencia">P13</a>). Aplica también en intensidad Lite.</td>
 </tr>
 <tr>
 <td><strong>Crítico</strong> (16–25)</td>
@@ -1016,7 +1027,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">09</span>Criterios de calidad</h2>
-<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G3.xx, G5.xx y R6.xx) y la metodología en el <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>.</p>
+<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (ver criterios G3.xx, G5.xx y R6.xx) y la metodología en el <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1048,7 +1059,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>Cada riesgo tiene respuesta; los de Mitigar tienen controles en <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>.</td>
+<td>Cada riesgo tiene respuesta; los de Mitigar tienen controles en <a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Plantilla P13 &#183; Plan de mitigaci&#243;n y contingencia">P13</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1394,6 +1405,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

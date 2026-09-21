@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,11 +439,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P50_SEVEN-G_Registro_de_no_conformidades.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P50_SEVEN-G_Registro_de_no_conformidades.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P50_SEVEN-G_Registro_de_no_conformidades.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#requisito-incumplido-y-descripcion"><span>03</span>Requisito incumplido y descripción</a></li><li><a href="#tipo"><span>04</span>Tipo</a></li><li><a href="#contencion"><span>05</span>Contención</a></li><li><a href="#causa-raiz-y-plan-de-accion"><span>06</span>Causa raíz y plan de acción</a></li><li><a href="#plazos"><span>07</span>Plazos</a></li><li><a href="#verificacion-de-eficacia-cierre-y-reauditoria"><span>08</span>Verificación de eficacia, cierre y reauditoría</a></li><li><a href="#estado-e-historial"><span>09</span>Estado e historial</a></li><li><a href="#registro-de-compania"><span>10</span>Registro de compañía</a></li><li><a href="#criterios-de-calidad"><span>11</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>12</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
-<p><strong>Por qué importa.</strong> Un marco que no registra sus incumplimientos no puede demostrar que se cumple. La ficha de no conformidad obliga a separar el hecho de su causa, a fijar el criterio de eficacia antes de verificarla y a que cierre alguien distinto de quien la originó. El registro de compañía permite al comité de IA y a la comisión delegada ver qué está abierto, qué está vencido y qué se repite; sin él, las no conformidades críticas pueden quedarse en correos y la auditoría del marco (<a href="../38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>) no tiene nada que muestrear.</p>
+<p><strong>Por qué importa.</strong> Un marco que no registra sus incumplimientos no puede demostrar que se cumple. La ficha de no conformidad obliga a separar el hecho de su causa, a fijar el criterio de eficacia antes de verificarla y a que cierre alguien distinto de quien la originó. El registro de compañía permite al comité de IA y a la comisión delegada ver qué está abierto, qué está vencido y qué se repite; sin él, las no conformidades críticas pueden quedarse en correos y la auditoría del marco (<a href="../38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a>) no tiene nada que muestrear.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
 <div class="tabla"><table>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> · Registro de no conformidades e incidentes (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), con estados, plazos, alertas de vencimiento y vínculos. Esta plantilla es su formato equivalente en documento u hoja de cálculo.</td>
+<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a> · Registro de no conformidades e incidentes (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>), con estados, plazos, alertas de vencimiento y vínculos. Esta plantilla es su formato equivalente en documento u hoja de cálculo.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -481,7 +492,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Código <strong>NC-AAAA-NNN</strong>: año de detección y número correlativo que no se reinicia dentro del año. Los códigos no se reutilizan.</li>
 <li>Una no conformidad es el incumplimiento de un requisito obligatorio («debe»). Los «debería» no cumplidos se registran como observación, no como no conformidad.</li>
-<li>El análisis de causa raíz se documenta en <a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a>; esta ficha recoge su conclusión.</li>
+<li>El análisis de causa raíz se documenta en <a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Plantilla P52 &#183; An&#225;lisis de causa ra&#237;z y plan de acci&#243;n correctiva">P52</a>; esta ficha recoge su conclusión.</li>
 <li>El criterio de eficacia se fija al aprobar el plan, no al verificar (37 §3.7).</li>
 <li>Una no conformidad cerrada que reaparece por la misma causa en doce meses se <strong>reabre</strong>; no se registra como nueva.</li>
 <li>«Sin dato» no es cero: si una fecha o un efecto se desconoce, se escribe <em>Sin dato</em>.</li>
@@ -563,7 +574,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Criterio o control afectado</td>
 <td></td>
-<td>Criterio de <em>gate</em> (G<em>n</em>.<em>nn</em> del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>), control SEG o AG del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>, cláusula contractual u otro.</td>
+<td>Criterio de <em>gate</em> (G<em>n</em>.<em>nn</em> del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>), control SEG o AG del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>, cláusula contractual u otro.</td>
 </tr>
 <tr>
 <td>Descripción del hallazgo</td>
@@ -583,12 +594,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Incidente vinculado</td>
 <td></td>
-<td>INC-AAAA-NNN (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), si lo hay. El tipo de la no conformidad lo determina el requisito incumplido, no la severidad del incidente (37 §6).</td>
+<td>INC-AAAA-NNN (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>), si lo hay. El tipo de la no conformidad lo determina el requisito incumplido, no la severidad del incidente (37 §6).</td>
 </tr>
 <tr>
 <td>Otros vínculos <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Riesgos (IA-AAAA-NNN · R<em>nn</em>), decisiones de <em>gate</em> (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>), recomendaciones del consejo (REC-AAAA-NNN).</td>
+<td>Riesgos (IA-AAAA-NNN · R<em>nn</em>), decisiones de <em>gate</em> (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>), recomendaciones del consejo (REC-AAAA-NNN).</td>
 </tr>
 </tbody>
 </table></div>
@@ -663,7 +674,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="contencion"><span class="antetitulo">05</span>Contención</h2>
-<p>Obligatoria en críticas y mayores. Opciones de menor a mayor intensidad: restricción de uso o de alcance · validación humana adicional temporal · bajada del nivel de autonomía (A0–A3) · suspensión de una capacidad con el interruptor de parada · suspensión del sistema con proceso alternativo (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) · retirada de producción.</p>
+<p>Obligatoria en críticas y mayores. Opciones de menor a mayor intensidad: restricción de uso o de alcance · validación humana adicional temporal · bajada del nivel de autonomía (A0–A3) · suspensión de una capacidad con el interruptor de parada · suspensión del sistema con proceso alternativo (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>) · retirada de producción.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -713,7 +724,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Método</td>
 <td></td>
-<td>Cinco porqués · Ishikawa · Ambos (<a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a>).</td>
+<td>Cinco porqués · Ishikawa · Ambos (<a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Plantilla P52 &#183; An&#225;lisis de causa ra&#237;z y plan de acci&#243;n correctiva">P52</a>).</td>
 </tr>
 <tr>
 <td>Causa inmediata</td>
@@ -738,7 +749,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Referencia de la hoja de trabajo</td>
 <td></td>
-<td><a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a>, versión y fecha.</td>
+<td><a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Plantilla P52 &#183; An&#225;lisis de causa ra&#237;z y plan de acci&#243;n correctiva">P52</a>, versión y fecha.</td>
 </tr>
 </tbody>
 </table></div>
@@ -781,11 +792,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><em>(ejemplo ilustrativo)</em> A01</td>
 <td>Acción correctiva</td>
-<td>Añadir a <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> y a <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> el criterio de cambio relevante</td>
+<td>Añadir a <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> y a <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> el criterio de cambio relevante</td>
 <td>Responsable de operación de IA</td>
 <td>15-12-2026</td>
 <td>Ningún cambio relevante sin <em>gate</em> en los tres meses siguientes</td>
-<td>Muestra de cambios de <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td>Muestra de cambios de <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a></td>
 <td>En curso</td>
 </tr>
 </tbody>
@@ -1097,7 +1108,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (R6.06, R6.15 y G7.04) y proceso en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</p>
+<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (R6.06, R6.15 y G7.04) y proceso en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1124,7 +1135,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Las críticas y mayores tienen causa raíz válida (<a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a>) y se ha comprobado si el fallo existe en otros sistemas.</td>
+<td>Las críticas y mayores tienen causa raíz válida (<a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Plantilla P52 &#183; An&#225;lisis de causa ra&#237;z y plan de acci&#243;n correctiva">P52</a>) y se ha comprobado si el fallo existe en otros sistemas.</td>
 <td></td>
 </tr>
 <tr>
@@ -1475,6 +1486,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

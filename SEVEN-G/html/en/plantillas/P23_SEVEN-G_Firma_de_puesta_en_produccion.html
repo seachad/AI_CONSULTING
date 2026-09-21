@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#prerequisites"><span>03</span>Prerequisites</a></li><li><a href="#scope-of-what-is-authorised"><span>04</span>Scope of what is authorised</a></li><li><a href="#multi-level-sign-offs"><span>05</span>Multi-level sign-offs</a></li><li><a href="#conditions-of-the-sign-offs"><span>06</span>Conditions of the sign-offs</a></li><li><a href="#outcome-of-the-sign-off-round"><span>07</span>Outcome of the sign-off round</a></li><li><a href="#history-of-changes-of-position"><span>08</span>History of changes of position</a></li><li><a href="#quality-criteria"><span>09</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>10</span>Approval and verification</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
@@ -442,7 +453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>Phase 5, once the evidence for the phase is complete and before the G5 decision. Also in the event of a relevant change that entails a new go-live (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td>Phase 5, once the evidence for the phase is complete and before the G5 decision. Also in the event of a relevant change that entails a new go-live (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>).</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -462,11 +473,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> <em>Gate</em> manager.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> <em>Gate</em> manager.</td>
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
-<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Risk register · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Human oversight · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Security design · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Rollback test · <a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a> Delivery report · <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> Validation and pilot results · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> <em>Gate</em> decision record.</td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> Risk register · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> Human oversight · <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> Security design · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a> Rollback test · <a href="P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a> Delivery report · <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a> Validation and pilot results · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> <em>Gate</em> decision record.</td>
 </tr>
 </tbody>
 </table></div>
@@ -477,7 +488,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Favourable with conditions</strong> is only possible on non-critical aspects. If the condition affects a critical control for security, legal compliance or human oversight, the position must be Veto (01 §7.3).</li>
 <li>Each signatory reviews the evidence within their remit; signing without having reviewed it is a nonconformity.</li>
 <li>Second-line signatories are not part of the team building the initiative (01 §8.1 and §8.3).</li>
-<li>A <strong>Critical</strong> residual risk without the express approval of the board or its board committee blocks G5 (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>).</li>
+<li>A <strong>Critical</strong> residual risk without the express approval of the board or its board committee blocks G5 (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>).</li>
 </ol>
 <p>This template does not constitute legal advice.</p>
 <hr />
@@ -494,7 +505,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
 <td>Initiative name</td>
@@ -504,7 +515,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI system(s)</td>
 <td></td>
-<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>).</td>
 </tr>
 <tr>
 <td>Intensity</td>
@@ -524,7 +535,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Autonomy level</td>
 <td></td>
-<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>).</td>
 </tr>
 <tr>
 <td>Type of go-live</td>
@@ -564,67 +575,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td>G4 approved and its conditions fulfilled</td>
-<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> for G4 · <a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a> block 5</td>
+<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> for G4 · <a href="P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a> block 5</td>
 <td></td>
 </tr>
 <tr>
 <td>2</td>
 <td>Delivery report verified</td>
-<td><a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td><a href="P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a></td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
 <td>Validation and pilot results verified</td>
-<td><a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td><a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
 <td></td>
 </tr>
 <tr>
 <td>4</td>
 <td>Rollback test passed</td>
-<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> block 10</td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a> block 10</td>
 <td></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Security and prompt injection tests executed and critical findings resolved</td>
-<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> block 11</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> block 11</td>
 <td></td>
 </tr>
 <tr>
 <td>6</td>
 <td>Risk register updated; no Critical residual risk without board approval</td>
-<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></td>
 <td></td>
 </tr>
 <tr>
 <td>7</td>
 <td>Regulatory classification and applicable impact assessments completed</td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
 <td>Human oversight operational and supervisors trained</td>
-<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></td>
 <td></td>
 </tr>
 <tr>
 <td>9</td>
 <td>Operations manual, monitoring and incident response plan available</td>
-<td><a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
+<td><a href="P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a></td>
 <td></td>
 </tr>
 <tr>
 <td>10</td>
 <td>AI system inventory updated</td>
-<td><a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td><a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></td>
 <td></td>
 </tr>
 <tr>
 <td>11</td>
 <td>Supplier contracts and guarantees in force <strong>(Enterprise)</strong></td>
-<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -643,7 +654,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Authorised version</td>
 <td></td>
-<td>Model, instructions and configuration (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>). Any other version requires a new sign-off.</td>
+<td>Model, instructions and configuration (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>). Any other version requires a new sign-off.</td>
 </tr>
 <tr>
 <td>Population and perimeter</td>
@@ -653,7 +664,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Authorised autonomy level</td>
 <td></td>
-<td>May not exceed that in <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>May not exceed that in <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>.</td>
 </tr>
 <tr>
 <td>Phased deployment</td>
@@ -765,7 +776,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>12-05-2026</td>
 <td>Favourable with conditions</td>
 <td>Processing compliant; the privacy notice for the web channel still needs to be updated, a non-critical aspect because the channel is not activated until the second stage of the deployment</td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> v1.2, <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> v1.0</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> v1.2, <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> v1.0</td>
 </tr>
 </tbody>
 </table></div>
@@ -807,7 +818,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The conditions are carried over to <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> so that the body deciding G5 adopts them. An expired condition that has not been fulfilled turns the outcome into Iterate (01 §7.4, rule 4).</p>
+<p>The conditions are carried over to <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> so that the body deciding G5 adopts them. An expired condition that has not been fulfilled turns the outcome into Iterate (01 §7.4, rule 4).</p>
 <hr />
 <h2 id="outcome-of-the-sign-off-round"><span class="antetitulo">07</span>Outcome of the sign-off round</h2>
 <div class="tabla"><table>
@@ -837,7 +848,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Referral to the deciding body</td>
 <td></td>
-<td>AI Committee (Enterprise) · Sponsor with risk clearance (Lite). Reference to <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>AI Committee (Enterprise) · Sponsor with risk clearance (Lite). Reference to <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>.</td>
 </tr>
 <tr>
 <td>Effective go-live date</td>
@@ -873,7 +884,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">09</span>Quality criteria</h2>
-<p>Formal G5 criteria in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>; checklist LV-G5 in <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">document 22</a>.</p>
+<p>Formal G5 criteria in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>; checklist LV-G5 in <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Document 22 &#183; Checklists by gate">document 22</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1219,6 +1230,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

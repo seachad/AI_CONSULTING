@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/02_SPHERES_Esferas_donde_se_genera_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/02_SPHERES_Esferas_donde_se_genera_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/02_SPHERES_Esferas_donde_se_genera_valor.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#why-these-four-spheres"><span>01</span>Why these four spheres</a></li><li><a href="#sphere-01-customer"><span>02</span>Sphere 01 · Customer</a></li><li><a href="#sphere-02-product-and-service"><span>03</span>Sphere 02 · Product and service</a></li><li><a href="#sphere-03-people"><span>04</span>Sphere 03 · People</a></li><li><a href="#sphere-04-operations"><span>05</span>Sphere 04 · Operations</a></li><li><a href="#reading-the-four-spheres-together"><span>06</span>Reading the four spheres together</a></li><li><a href="#related-documents"><span>07</span>Related documents</a></li><li><a href="#version-control"><span>08</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SPHERES is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. <strong>Each organisation that uses SPHERES is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="why-these-four-spheres"><span class="antetitulo">01</span>Why these four spheres</h2>
@@ -926,19 +937,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html">document 00</a> · What SPHERES is and how it helps</strong></td>
+<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SPHERES is and how it helps">document 00</a> · What SPHERES is and how it helps</strong></td>
 <td>Presentation of the complete map.</td>
 </tr>
 <tr>
-<td><strong><a href="01_SPHERES_Niveles_de_ambicion.html">document 01</a> · Ambition levels</strong></td>
+<td><strong><a href="01_SPHERES_Niveles_de_ambicion.html" title="Document 01 &#183; Ambition levels">document 01</a> · Ambition levels</strong></td>
 <td>How the level of each initiative is classified.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html">document 03</a> · Enabling spheres</strong></td>
+<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html" title="Document 03 &#183; Enabling spheres">document 03</a> · Enabling spheres</strong></td>
 <td>Data, Knowledge and Decision, which condition the value of these four spheres.</td>
 </tr>
 <tr>
-<td><strong><a href="05_SPHERES_Conversacion_con_el_consejo.html">document 05</a> · Conversation with the board</strong></td>
+<td><strong><a href="05_SPHERES_Conversacion_con_el_consejo.html" title="Document 05 &#183; Conversation with the board">document 05</a> · Conversation with the board</strong></td>
 <td>How to present these spheres in a sixty-minute session.</td>
 </tr>
 <tr>
@@ -1206,6 +1217,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

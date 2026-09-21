@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#catalogo-de-herramientas"><span>03</span>Catálogo de herramientas</a></li><li><a href="#solicitud-de-herramienta-nueva"><span>04</span>Solicitud de herramienta nueva</a></li><li><a href="#comunicacion-de-incidentes-y-usos-dudosos"><span>05</span>Comunicación de incidentes y usos dudosos</a></li><li><a href="#indicadores-para-el-monitor-t21"><span>06</span>Indicadores para el monitor T21</a></li><li><a href="#criterios-de-calidad"><span>07</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>08</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>09</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -453,7 +464,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
-<td>El auditor de IA o la auditoría interna, por muestreo, dentro del plan de auditoría (<a href="../38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>).</td>
+<td>El auditor de IA o la auditoría interna, por muestreo, dentro del plan de auditoría (<a href="../38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a>).</td>
 </tr>
 <tr>
 <td><strong>Quién decide o aprueba</strong></td>
@@ -461,15 +472,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Etapa del ciclo corporativo, <em>gate</em> o momento</strong></td>
-<td>C2 (catálogo inicial con la política), C4 (monitor <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> revisado por el comité de IA) y C5 (revisión anual). En una iniciativa, G3 y G5 comprueban que las herramientas usadas figuran en el catálogo o en el inventario.</td>
+<td>C2 (catálogo inicial con la política), C4 (monitor <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a> revisado por el comité de IA) y C5 (revisión anual). En una iniciativa, G3 y G5 comprueban que las herramientas usadas figuran en el catálogo o en el inventario.</td>
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> · Monitor de uso corporativo de IA (catálogo, solicitudes pendientes y tiempo de respuesta). Cada herramienta autorizada se registra en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> (<a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>); las comunicaciones que resultan incidentes o no conformidades, en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td><a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a> · Monitor de uso corporativo de IA (catálogo, solicitudes pendientes y tiempo de respuesta). Cada herramienta autorizada se registra en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> (<a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>); las comunicaciones que resultan incidentes o no conformidades, en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a> (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>31 §4.2, §4.3, §4.7, §4.8 y §5 (incluidas §5.2 a §5.7); 32 §2.1 y §3.3; 37 §4; <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>; <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>31 §4.2, §4.3, §4.7, §4.8 y §5 (incluidas §5.2 a §5.7); 32 §2.1 y §3.3; 37 §4; <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>; <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -480,8 +491,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Reglas de cumplimentación:</p>
 <ul>
 <li><strong>Una fila por herramienta y edición.</strong> La versión corporativa y la gratuita o personal de una misma herramienta son entradas distintas; la personal figura como <em>No autorizada</em> (31 §4.2.3).</li>
-<li><strong>Toda herramienta del catálogo tiene código de inventario</strong> SIA-AAAA-NNN con tipo de uso <em>Uso corporativo de IA de propósito general</em> (32 §2.1). Sin alta en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> no hay alta en el catálogo.</li>
-<li>Los niveles de información son los de la clasificación de la compañía (en los modelos del <a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>: [Pública] · [Interna] · [Confidencial] · [Restringida]). Las siete categorías de 31 §4.3 están prohibidas salvo que la fila lo autorice de forma expresa.</li>
+<li><strong>Toda herramienta del catálogo tiene código de inventario</strong> SIA-AAAA-NNN con tipo de uso <em>Uso corporativo de IA de propósito general</em> (32 §2.1). Sin alta en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> no hay alta en el catálogo.</li>
+<li>Los niveles de información son los de la clasificación de la compañía (en los modelos del <a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>: [Pública] · [Interna] · [Confidencial] · [Restringida]). Las siete categorías de 31 §4.3 están prohibidas salvo que la fila lo autorice de forma expresa.</li>
 <li>Una herramienta que cumple un criterio Enterprise, se configura para actuar (A2 o A3) o se integra en un proceso compartido no se resuelve aquí: pasa al ciclo completo como iniciativa (31 §3.6 y §5.1).</li>
 </ul>
 <hr />
@@ -518,7 +529,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Política de uso aceptable de referencia</td>
 <td></td>
-<td>Versión y fecha (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>, sección 4).</td>
+<td>Versión y fecha (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>, sección 4).</td>
 </tr>
 <tr>
 <td>Lugar de publicación</td>
@@ -576,7 +587,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>)</th>
+<th>Código (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>)</th>
 <th>Herramienta, edición y proveedor</th>
 <th>Categoría</th>
 <th>Finalidades autorizadas</th>
@@ -585,7 +596,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Conexiones permitidas</th>
 <th>Condiciones de uso</th>
 <th>Formación exigida</th>
-<th>Evaluación del proveedor (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</th>
+<th>Evaluación del proveedor (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>)</th>
 <th>Responsable del servicio</th>
 <th>Alta · próxima revisión</th>
 </tr>
@@ -640,7 +651,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>)</th>
+<th>Código (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>)</th>
 <th>[Pública]</th>
 <th>[Interna]</th>
 <th>[Confidencial]</th>
@@ -705,7 +716,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>)</th>
+<th>Código (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>)</th>
 <th>Producto y función de IA</th>
 <th>Origen de la detección (31 §5.6, paso 1)</th>
 <th>Estado</th>
@@ -818,7 +829,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Evaluación del proveedor</td>
 <td></td>
-<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> con nivel N1 · N2 · N3 (<a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</td>
+<td><a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> con nivel N1 · N2 · N3 (<a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a>).</td>
 </tr>
 <tr>
 <td>Condiciones contractuales</td>
@@ -828,12 +839,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Protección de datos y seguridad</td>
 <td></td>
-<td>Necesidad de evaluación de impacto en protección de datos (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>); controles del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</td>
+<td>Necesidad de evaluación de impacto en protección de datos (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>); controles del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>.</td>
 </tr>
 <tr>
 <td>Coste anual y licencias</td>
 <td></td>
-<td>Categoría <em>licencias</em> del <a href="../42_SEVEN-G_Costes_de_IA.html">documento 42</a>.</td>
+<td>Categoría <em>licencias</em> del <a href="../42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>.</td>
 </tr>
 <tr>
 <td>Propuesta de categoría y condiciones</td>
@@ -855,7 +866,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Resolución</td>
 <td></td>
-<td>Autorizar · Autorizar con restricciones · Remitir al catálogo · Denegar · Tratar como iniciativa (fase 0, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Autorizar · Autorizar con restricciones · Remitir al catálogo · Denegar · Tratar como iniciativa (fase 0, <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Motivo</td>
@@ -875,7 +886,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Acciones derivadas</td>
 <td></td>
-<td>Alta en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> (código SIA), actualización del catálogo, formación F1 o F2, contratación y configuración.</td>
+<td>Alta en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> (código SIA), actualización del catálogo, formación F1 o F2, contratación y configuración.</td>
 </tr>
 <tr>
 <td>Comunicación al solicitante</td>
@@ -952,7 +963,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Clasificación</td>
 <td></td>
-<td>Consulta resuelta · Incidente (INC-AAAA-NNN, <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>) · No conformidad por uso no autorizado (NC-AAAA-NNN) · Solicitud de herramienta (sección 4) · Remisión al sistema interno de información.</td>
+<td>Consulta resuelta · Incidente (INC-AAAA-NNN, <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>) · No conformidad por uso no autorizado (NC-AAAA-NNN) · Solicitud de herramienta (sección 4) · Remisión al sistema interno de información.</td>
 </tr>
 <tr>
 <td>Severidad del incidente</td>
@@ -967,7 +978,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Valoración de notificaciones</td>
 <td></td>
-<td>Por ejemplo, violación de seguridad de datos personales (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>) o incidente grave (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>): <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> §5.</td>
+<td>Por ejemplo, violación de seguridad de datos personales (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>) o incidente grave (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>): <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a> §5.</td>
 </tr>
 <tr>
 <td>Respuesta al comunicante</td>
@@ -1014,7 +1025,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="indicadores-para-el-monitor-t21"><span class="antetitulo">06</span>Indicadores para el monitor <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></h2>
+<h2 id="indicadores-para-el-monitor-t21"><span class="antetitulo">06</span>Indicadores para el monitor <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a></h2>
 <p>Los datos se presentan agregados por área (31 §7.2). <em>Sin dato</em> no es cero.</p>
 <div class="tabla"><table>
 <thead>
@@ -1070,12 +1081,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>El catálogo está publicado, es accesible a todos los empleados y es coherente con la política de uso aceptable vigente (pregunta D1.04 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>El catálogo está publicado, es accesible a todos los empleados y es coherente con la política de uso aceptable vigente (pregunta D1.04 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Cada herramienta autorizada tiene código SIA en el inventario y evaluación del proveedor (pregunta D6.03 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>Cada herramienta autorizada tiene código SIA en el inventario y evaluación del proveedor (pregunta D6.03 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 <td></td>
 </tr>
 <tr>
@@ -1095,12 +1106,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Cada comunicación tiene triaje y, si procede, código INC o NC vinculado en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>.</td>
+<td>Cada comunicación tiene triaje y, si procede, código INC o NC vinculado en <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>.</td>
 <td></td>
 </tr>
 <tr>
 <td>7</td>
-<td>El comité de IA revisa estos indicadores en el monitor <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> (pregunta D6.09 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>El comité de IA revisa estos indicadores en el monitor <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a> (pregunta D6.09 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 <td></td>
 </tr>
 </tbody>
@@ -1183,7 +1194,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Catálogo con categorías y condiciones por nivel de información de 31 §4.2 y §4.3, solicitud de herramienta nueva (31 §4.2.5), comunicación de incidentes y usos dudosos (31 §4.8) e indicadores para <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>. Propone los códigos SOL-AAAA-NNN y COM-AAAA-NNN.</td>
+<td>Primera versión. Catálogo con categorías y condiciones por nivel de información de 31 §4.2 y §4.3, solicitud de herramienta nueva (31 §4.2.5), comunicación de incidentes y usos dudosos (31 §4.8) e indicadores para <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>. Propone los códigos SOL-AAAA-NNN y COM-AAAA-NNN.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1424,6 +1435,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

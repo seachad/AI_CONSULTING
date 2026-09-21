@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/93_SEVEN-G_Licencia_uso_y_citacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/93_SEVEN-G_Licencia_uso_y_citacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/93_SEVEN-G_Licencia_uso_y_citacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#resumen"><span>02</span>Resumen</a></li><li><a href="#contenidos-que-permite-cc-by-4-0"><span>03</span>Contenidos: qué permite CC BY 4.0</a></li><li><a href="#contenidos-que-exige-cc-by-4-0"><span>04</span>Contenidos: qué exige CC BY 4.0</a></li><li><a href="#codigo-que-permite-y-exige-mit"><span>05</span>Código: qué permite y exige MIT</a></li><li><a href="#forma-de-cita"><span>06</span>Forma de cita</a></li><li><a href="#uso-del-nombre-seven-g"><span>07</span>Uso del nombre SEVEN-G</a></li><li><a href="#obras-derivadas-y-traducciones"><span>08</span>Obras derivadas y traducciones</a></li><li><a href="#datos-ficticios-de-las-demostraciones-y-los-ejemplos"><span>09</span>Datos ficticios de las demostraciones y los ejemplos</a></li><li><a href="#versiones-publicadas-y-cambios-de-licencia"><span>10</span>Versiones publicadas y cambios de licencia</a></li><li><a href="#exencion-de-responsabilidad-y-cumplimiento-regulatorio"><span>11</span>Exención de responsabilidad y cumplimiento regulatorio</a></li><li><a href="#contacto"><span>12</span>Contacto</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>13</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>14</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -627,12 +638,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>&quot;Declaración de aplicación revisada por [tercero] el [fecha].&quot;</td>
-<td>Presentar como SEVEN-G un servicio que omite sus reglas esenciales sin declararlo (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 2.3).</td>
+<td>Presentar como SEVEN-G un servicio que omite sus reglas esenciales sin declararlo (<a href="91_SEVEN-G_Guia_para_consultores.html" title="Documento 91 &#183; Gu&#237;a para consultores y modelos de acompa&#241;amiento">documento 91</a>, sección 2.3).</td>
 </tr>
 </tbody>
 </table></div>
 <h3 id="7-3-no-existe-certificacion-oficial">7.3 No existe certificación oficial</h3>
-<p><strong>En esta versión no existe ninguna certificación, acreditación ni sello oficial de SEVEN-G.</strong> La declaración de aplicación prevista en la sección 14 del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> es una <strong>autodeclaración verificable</strong>: la hace la compañía bajo su responsabilidad y debe poder demostrarse con evidencias. La revisión de esa declaración por un tercero es una opinión profesional de ese tercero, no una certificación, y no compromete al autor (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 6.3).</p>
+<p><strong>En esta versión no existe ninguna certificación, acreditación ni sello oficial de SEVEN-G.</strong> La declaración de aplicación prevista en la sección 14 del <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a> es una <strong>autodeclaración verificable</strong>: la hace la compañía bajo su responsabilidad y debe poder demostrarse con evidencias. La revisión de esa declaración por un tercero es una opinión profesional de ese tercero, no una certificación, y no compromete al autor (<a href="91_SEVEN-G_Guia_para_consultores.html" title="Documento 91 &#183; Gu&#237;a para consultores y modelos de acompa&#241;amiento">documento 91</a>, sección 6.3).</p>
 <hr />
 <h2 id="obras-derivadas-y-traducciones"><span class="antetitulo">08</span>Obras derivadas y traducciones</h2>
 <div class="tabla"><table>
@@ -672,7 +683,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="datos-ficticios-de-las-demostraciones-y-los-ejemplos"><span class="antetitulo">09</span>Datos ficticios de las demostraciones y los ejemplos</h2>
 <ul>
-<li>Las demostraciones del panel del consejo, los casos de aplicación (<a href="92_SEVEN-G_Casos_de_aplicacion.html">documento 92</a>) y los ejemplos de todos los documentos usan <strong>datos ficticios</strong>: compañías, órganos, personas, sistemas y cifras son inventados.</li>
+<li>Las demostraciones del panel del consejo, los casos de aplicación (<a href="92_SEVEN-G_Casos_de_aplicacion.html" title="Documento 92 &#183; Casos de aplicaci&#243;n">documento 92</a>) y los ejemplos de todos los documentos usan <strong>datos ficticios</strong>: compañías, órganos, personas, sistemas y cifras son inventados.</li>
 <li><strong>No son benchmarks, referencias de mercado, resultados esperables, asesoramiento jurídico ni recomendaciones de inversión.</strong></li>
 <li>Quien reutilice estos datos debe mantener la indicación de que son ficticios y no presentarlos como datos reales ni como resultados obtenidos con clientes.</li>
 <li>Las heurísticas usadas para generar los datos de demostración no pretenden describir ningún mercado.</li>
@@ -722,21 +733,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Aplicar SEVEN-G, incluso íntegramente y con una declaración de aplicación (sección 7.3), <strong>no implica ni presume el cumplimiento de ninguna norma</strong>.</p>
 <h3 id="11-5-fechas-de-consulta">11.5 Fechas de consulta</h3>
-<p>Las referencias regulatorias y normativas de cada documento indican su <strong>fecha de consulta</strong>. Reflejan el estado de las fuentes en esa fecha y no se actualizan automáticamente: los cambios normativos, los textos en tramitación y las directrices, criterios o resoluciones posteriores de autoridades y tribunales pueden dejarlas incompletas o incorrectas. El procedimiento de mantenimiento del mapeo (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>, sección 10) es una recomendación para la organización usuaria, no un compromiso de actualización del autor.</p>
+<p>Las referencias regulatorias y normativas de cada documento indican su <strong>fecha de consulta</strong>. Reflejan el estado de las fuentes en esa fecha y no se actualizan automáticamente: los cambios normativos, los textos en tramitación y las directrices, criterios o resoluciones posteriores de autoridades y tribunales pueden dejarlas incompletas o incorrectas. El procedimiento de mantenimiento del mapeo (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>, sección 10) es una recomendación para la organización usuaria, no un compromiso de actualización del autor.</p>
 <h3 id="11-6-herramientas-y-demostraciones">11.6 Herramientas y demostraciones</h3>
-<p>Las herramientas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>), los paneles y registros de demostración y el código se ofrecen con fines ilustrativos y usan <strong>datos ficticios</strong> (sección 9). No están validados para su uso en producción ni para adoptar decisiones regulatorias, y sus resultados, como una clasificación orientativa o un indicador calculado, deben ser verificados por la organización antes de usarse.</p>
+<p>Las herramientas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>), los paneles y registros de demostración y el código se ofrecen con fines ilustrativos y usan <strong>datos ficticios</strong> (sección 9). No están validados para su uso en producción ni para adoptar decisiones regulatorias, y sus resultados, como una clasificación orientativa o un indicador calculado, deben ser verificados por la organización antes de usarse.</p>
 <h3 id="11-7-terceros-que-usan-o-adaptan-el-marco">11.7 Terceros que usan o adaptan el marco</h3>
-<p>Las consultoras, auditores, formadores y demás terceros que usen, adapten o integren SEVEN-G en sus servicios lo hacen <strong>bajo su exclusiva responsabilidad</strong>. No pueden presentar su trabajo, sus entregables, sus adaptaciones ni sus conclusiones como <strong>validados, certificados, revisados o respaldados</strong> por el autor, ni declarar o certificar en nombre de SEVEN-G o del autor el cumplimiento regulatorio de un cliente (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 6.2). Deben trasladar el aviso legal a sus entregables.</p>
+<p>Las consultoras, auditores, formadores y demás terceros que usen, adapten o integren SEVEN-G en sus servicios lo hacen <strong>bajo su exclusiva responsabilidad</strong>. No pueden presentar su trabajo, sus entregables, sus adaptaciones ni sus conclusiones como <strong>validados, certificados, revisados o respaldados</strong> por el autor, ni declarar o certificar en nombre de SEVEN-G o del autor el cumplimiento regulatorio de un cliente (<a href="91_SEVEN-G_Guia_para_consultores.html" title="Documento 91 &#183; Gu&#237;a para consultores y modelos de acompa&#241;amiento">documento 91</a>, sección 6.2). Deben trasladar el aviso legal a sus entregables.</p>
 <h3 id="11-8-como-encaja-con-las-licencias">11.8 Cómo encaja con las licencias</h3>
 <p>La sección 5 de la licencia <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> ya excluye las declaraciones y garantías sobre el material y limita la responsabilidad del licenciante en la medida permitida por la ley; la <a class="ref-ext" href="https://opensource.org/license/mit" target="_blank" rel="noopener" title="Licencia MIT (The MIT License)">licencia MIT</a> hace lo mismo con el código (sección 5 de este documento). Esta sección <strong>no añade restricciones</strong> a lo que las licencias permiten: explica y concreta esas exclusiones en el ámbito regulatorio, de modo que cualquier uso, copia o adaptación que cumpla la licencia sigue estando permitido. Además, la sección 3.a.1.A de CC BY 4.0 exige conservar el aviso que remite a la exclusión de garantías cuando el licenciante lo facilita con el material. En caso de discrepancia, prevalece el texto legal de cada licencia.</p>
 <h3 id="11-9-aviso-que-deben-conservar-las-obras-derivadas">11.9 Aviso que deben conservar las obras derivadas</h3>
 <p>Quien distribuya una copia, adaptación o traducción de SEVEN-G debe conservar, junto al reconocimiento, al menos esta forma breve del aviso:</p>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal.</strong> Basado en SEVEN-G (Fernando García Varela, CC BY 4.0). Contenido orientativo que se ofrece «tal cual», sin garantías, y que no constituye asesoramiento jurídico ni regulatorio. La organización usuaria es la única responsable de identificar la normativa general, sectorial y de cada jurisdicción que le aplica, verificar su vigencia y certificar su cumplimiento. El autor no valida, certifica ni respalda esta obra.</p>
 </blockquote>
 <hr />
 <h2 id="contacto"><span class="antetitulo">12</span>Contacto</h2>
-<p>Las consultas sobre el uso del marco, las propuestas de mejora, las comunicaciones de errores y las solicitudes de acompañamiento se dirigen al autor, <strong>Fernando García Varela</strong>, a través de su perfil profesional de LinkedIn: <a href="https://www.linkedin.com/in/fernandogarciavarela/">https://www.linkedin.com/in/fernandogarciavarela/</a>. Los motivos por los que el marco es abierto y gratuito se explican en el <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html">documento 04</a>, incluido que el sitio nunca contacta por iniciativa propia a quien lo visita.</p>
+<p>Las consultas sobre el uso del marco, las propuestas de mejora, las comunicaciones de errores y las solicitudes de acompañamiento se dirigen al autor, <strong>Fernando García Varela</strong>, a través de su perfil profesional de LinkedIn: <a href="https://www.linkedin.com/in/fernandogarciavarela/">https://www.linkedin.com/in/fernandogarciavarela/</a>. Los motivos por los que el marco es abierto y gratuito se explican en el <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>, incluido que el sitio nunca contacta por iniciativa propia a quien lo visita.</p>
 <p>No es necesario pedir permiso para ningún uso que cumpla la licencia. Contactar con el autor no convierte un uso en respaldado.</p>
 <hr />
 <h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">13</span>Herramientas y plantillas asociadas</h2>
@@ -750,17 +761,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 <td>Panel de IA para el consejo</td>
 <td>Contenidos <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a> y código MIT en el repositorio de demostraciones.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Contenidos CC BY 4.0 y código MIT en el repositorio de demostraciones.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a></td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Plantilla P71 &#183; Plan de transferencia y nota de salida">P71</a></td>
 <td>Plantillas del bloque H</td>
 <td>Contenidos CC BY 4.0; las plantillas cumplimentadas por una compañía son de la compañía.</td>
 </tr>
@@ -817,7 +828,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Contacto del autor (sección 12) y remisión al <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html">documento 04</a>.</td>
+<td>Contacto del autor (sección 12) y remisión al <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1058,6 +1069,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

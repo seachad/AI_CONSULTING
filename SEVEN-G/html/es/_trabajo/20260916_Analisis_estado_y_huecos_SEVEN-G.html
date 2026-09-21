@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -557,7 +568,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Propuesta adoptada en el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a> (pendiente de confirmar):</strong> SEVEN-G = <em>Seven-phase Enterprise Value &amp; Governance</em>. La fase 0 es habilitante (autorización) y las fases 1–7 son las siete fases de valor; la G expresa el gobierno transversal. Se abandona el acrónimo S-E-V-E-N-G, pero sus contenidos útiles (modelos de engagement, criterios de priorización, KPIs) se reubican.</p>
+<p><strong>Propuesta adoptada en el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a> (pendiente de confirmar):</strong> SEVEN-G = <em>Seven-phase Enterprise Value &amp; Governance</em>. La fase 0 es habilitante (autorización) y las fases 1–7 son las siete fases de valor; la G expresa el gobierno transversal. Se abandona el acrónimo S-E-V-E-N-G, pero sus contenidos útiles (modelos de engagement, criterios de priorización, KPIs) se reubican.</p>
 <h3 id="2-2-otras-incoherencias">2.2 Otras incoherencias</h3>
 <div class="tabla"><table>
 <thead>
@@ -571,7 +582,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Número y nombre de fases</td>
 <td>8 (0–7), 6, 5 con meses; <em>Validation</em> = PoC o MVP según documento; <em>Navigation</em> = optimización o despliegue.</td>
-<td>Fases 0–7 del Doc 1 en español (tabla del <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>).</td>
+<td>Fases 0–7 del Doc 1 en español (tabla del <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>).</td>
 </tr>
 <tr>
 <td>Resultados de <em>gate</em></td>
@@ -601,7 +612,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Esferas 08 y 09</td>
 <td>Usan otros niveles; en la aplicación práctica se mezclaron.</td>
-<td>Regla explícita (<a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>, §4.1).</td>
+<td>Regla explícita (<a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>, §4.1).</td>
 </tr>
 <tr>
 <td>Ámbito geográfico</td>
@@ -629,10 +640,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h2 id="huecos-detectados"><span class="antetitulo">03</span>Huecos detectados</h2>
 <h3 id="3-1-huecos-estructurales-fases-y-niveles">3.1 Huecos estructurales (fases y niveles)</h3>
 <ol>
-<li><strong>Falta el nivel compañía.</strong> Todo el material existente gobierna <em>iniciativas</em>. No hay un ciclo en el que el consejo y la dirección diagnostiquen, fijen la ambición y el apetito de riesgo, gestionen la cartera, supervisen y revisen. <strong>Propuesto en el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a> como ciclo corporativo C1–C5.</strong></li>
-<li><strong>Falta la distinción entre eficiencia y transformación.</strong> Ningún documento normativo la aborda; el Charter incluso excluye la transformación de su alcance y los filtros de ROI de las fases 1 y 3 penalizan las apuestas transformadoras. Solo el Mapa de esferas y el panel del consejo la esbozan. <strong>Propuesto en el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>: clasificación de ambición con 5 preguntas, criterios de gate diferenciados e índice de transformación con 8 señales y 5 perfiles.</strong> Faltan umbrales y calibración.</li>
+<li><strong>Falta el nivel compañía.</strong> Todo el material existente gobierna <em>iniciativas</em>. No hay un ciclo en el que el consejo y la dirección diagnostiquen, fijen la ambición y el apetito de riesgo, gestionen la cartera, supervisen y revisen. <strong>Propuesto en el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a> como ciclo corporativo C1–C5.</strong></li>
+<li><strong>Falta la distinción entre eficiencia y transformación.</strong> Ningún documento normativo la aborda; el Charter incluso excluye la transformación de su alcance y los filtros de ROI de las fases 1 y 3 penalizan las apuestas transformadoras. Solo el Mapa de esferas y el panel del consejo la esbozan. <strong>Propuesto en el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>: clasificación de ambición con 5 preguntas, criterios de gate diferenciados e índice de transformación con 8 señales y 5 perfiles.</strong> Faltan umbrales y calibración.</li>
 <li><strong>La retirada no tiene procedimiento.</strong> Existe como resultado de la fase 7, pero no hay criterios, responsables ni registro de retiradas (con sustituto y lecciones aprendidas).</li>
-<li><strong>No hay criterios para elegir Lite o Enterprise.</strong> Propuestos de forma preliminar en el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>.</li>
+<li><strong>No hay criterios para elegir Lite o Enterprise.</strong> Propuestos de forma preliminar en el <a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>.</li>
 <li><strong>No hay tratamiento de la IA que no es un proyecto</strong>: IA embebida en software de terceros, suites de productividad con IA, uso individual por empleados y <em>shadow AI</em>. Hoy quedan fuera del ciclo 0–7 y son una parte creciente del riesgo y del gasto.</li>
 <li><strong>Falta una fase o subproceso de adopción y cambio.</strong> La fase 5 valida el valor, pero no hay un tratamiento explícito de la adopción real, la reasignación de capacidad liberada y la formación, que son condición para que el valor se materialice.</li>
 </ol>
@@ -1009,7 +1020,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Carta de la iniciativa · Declaración de contexto y restricciones · Registro de asignación de roles · Cartera de oportunidades y notas de filtrado · Clasificación de ambición · Lienzo de hipótesis de valor · Línea base · Evaluación de viabilidad · Clasificación regulatoria y evaluaciones de impacto · Matriz y registro de riesgos · Plan de mitigación y contingencia · Registro de arquitectura · Linaje de datos y modelos · Diseño de gobierno y supervisión humana · Plan de reversión · Informe de entrega · Resultados de validación · Registro de decisión de <em>gate</em> · Firma de puesta en producción · Manual de operación · Configuración de monitorización · Plan de respuesta a incidentes · Seguimiento de realización de valor · Registro de decisión de escalado o retirada · Ficha de caso de uso.</p>
 <p>Formato: Markdown como fuente, publicado en PDF y HTML. Las plantillas que lo requieran (por ejemplo, registros o calculadoras) se generarán además en Excel o PowerPoint cuando se indique expresamente.</p>
 <h3 id="i-herramientas">I · Herramientas</h3>
-<p>El catálogo completo de herramientas (22), el diseño del registro de iniciativas como embudo gestionado y el orden de construcción están en el <strong><a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> · Herramientas y registro de iniciativas</strong>. Existen ya, y hay que adaptarlas para alimentarse del registro, el panel de IA para el consejo (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>) y el registro de recomendaciones (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>) del repositorio <code>AI_en_el_consejo</code>.</p>
+<p>El catálogo completo de herramientas (22), el diseño del registro de iniciativas como embudo gestionado y el orden de construcción están en el <strong><a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> · Herramientas y registro de iniciativas</strong>. Existen ya, y hay que adaptarlas para alimentarse del registro, el panel de IA para el consejo (<a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) y el registro de recomendaciones (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>) del repositorio <code>AI_en_el_consejo</code>.</p>
 <h3 id="j-adopcion-del-marco">J · Adopción del marco</h3>
 <div class="tabla"><table>
 <thead>
@@ -1110,13 +1121,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>6</td>
 <td><strong>Relación con SPAD y AECF</strong></td>
-<td>Se mantienen como metodologías independientes y se referencian desde SEVEN-G: SPAD en el <a href="../53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a> (construcción de soluciones con IA, fases 4–5); AECF como referencia de gobierno ágil. No se presentan como marcas paralelas en los documentos de SEVEN-G.</td>
+<td>Se mantienen como metodologías independientes y se referencian desde SEVEN-G: SPAD en el <a href="../53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Documento 53 &#183; Construcci&#243;n de soluciones con IA">documento 53</a> (construcción de soluciones con IA, fases 4–5); AECF como referencia de gobierno ágil. No se presentan como marcas paralelas en los documentos de SEVEN-G.</td>
 <td>Reduce la dispersión de marca: un paraguas (SEVEN-G) y piezas especializadas referenciadas.</td>
 </tr>
 <tr>
 <td>7</td>
 <td><strong>Dimensiones del modelo de madurez</strong></td>
-<td>Propuesta de trabajo, a validar en el <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>: 1) Estrategia y gobierno · 2) Valor y cartera · 3) Datos y conocimiento · 4) Tecnología y operación · 5) Personas y adopción · 6) Riesgo, seguridad y cumplimiento · 7) Medición y evidencia. Escala 0–5 con rúbrica y evidencia por nivel.</td>
+<td>Propuesta de trabajo, a validar en el <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>: 1) Estrategia y gobierno · 2) Valor y cartera · 3) Datos y conocimiento · 4) Tecnología y operación · 5) Personas y adopción · 6) Riesgo, seguridad y cumplimiento · 7) Medición y evidencia. Escala 0–5 con rúbrica y evidencia por nivel.</td>
 <td>Cubre las métricas del documento fundacional, las siete dimensiones del informe de madurez antiguo y los huecos detectados (valor, seguridad, medición).</td>
 </tr>
 </tbody>
@@ -1130,7 +1141,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>01 Metodología fundacional</strong> (hecho) y <strong>02 Glosario</strong>: fijan el modelo y el vocabulario para todo lo demás.
 <ul>
-<li>Tras el 02: <strong>ola 1 de herramientas</strong> (registro de iniciativas <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> con inventario, gestor de <em>gates</em>, intensidad y ambición, y conexión del panel del consejo). Ver <a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>.</li>
+<li>Tras el 02: <strong>ola 1 de herramientas</strong> (registro de iniciativas <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> con inventario, gestor de <em>gates</em>, intensidad y ambición, y conexión del panel del consejo). Ver <a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>.</li>
 </ul>
 </li>
 <li><strong>10 Mapa de esferas</strong>, <strong>12 Índice de transformación</strong> y <strong>40 Reglas de medición</strong>: son lo más diferencial y lo que conecta con el panel del consejo.</li>
@@ -1166,7 +1177,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Resultados de <em>gate</em></td>
 <td>Continuar / Continuar con condiciones / Iterar / Pivotar / Parar; G7: Escalar / Iterar / Retirar; <strong>R6: Continuar la operación / Continuar con condiciones / Adelantar G7</strong> (añadido a 01 §7.3). Auditoría: Conforme / Conforme con observaciones / No conforme.</td>
-<td>01, 21, 22, 38, <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>01, 21, 22, 38, <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></td>
 </tr>
 <tr>
 <td>Madurez</td>
@@ -1237,13 +1248,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3. Retirada</td>
-<td>Procedimiento de 10 pasos, registro de retiradas y plantilla <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; herramienta <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>.</td>
-<td>14, <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td>Procedimiento de 10 pasos, registro de retiradas y plantilla <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>; herramienta <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>.</td>
+<td>14, <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></td>
 </tr>
 <tr>
 <td>4. Lite o Enterprise</td>
-<td>Criterios de 01 §9 con el de agentes precisado (A2/A3 con efecto externo, D22); plantilla <a href="../plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>; alcance de implantación de la compañía distinto de la intensidad.</td>
-<td>01, <a href="../plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, 90</td>
+<td>Criterios de 01 §9 con el de agentes precisado (A2/A3 con efecto externo, D22); plantilla <a href="../plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>; alcance de implantación de la compañía distinto de la intensidad.</td>
+<td>01, <a href="../plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>, 90</td>
 </tr>
 <tr>
 <td>5. IA que no es un proyecto</td>
@@ -1253,7 +1264,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>6. Adopción y cambio</td>
 <td>Plan de adopción, capacidad liberada con cinco destinos, formación y alfabetización, indicadores y criterios de G5 y G7.</td>
-<td>23, 50, <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>23, 50, <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1276,7 +1287,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Inventario y clasificación regulatoria</td>
-<td>Documento 32; plantillas <a href="../plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> y <a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Documento 32; plantillas <a href="../plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a> y <a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>Mapeo regulatorio</td>
@@ -1284,7 +1295,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Terceros y proveedores</td>
-<td>Documento 36 con niveles N1–N3 y 16 cláusulas clave; plantilla <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Documento 36 con niveles N1–N3 y 16 cláusulas clave; plantilla <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>.</td>
 </tr>
 <tr>
 <td>Costes de IA</td>
@@ -1322,19 +1333,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="7-4-bloques-h-i-y-j">7.4 Bloques H, I y J</h3>
 <ul>
-<li><strong>H · Plantillas:</strong> 31 plantillas <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> alineadas con 01 §6.10 (D21), en español e inglés.</li>
-<li><strong>I · Herramientas:</strong> <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (registro de iniciativas con <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>–<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T05</a> integrados) en <code>SEVEN-G/herramientas/T01_registro_iniciativas/</code>. La adaptación de <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> se hace en el proyecto privado de origen del motor (D26).</li>
+<li><strong>H · Plantillas:</strong> 31 plantillas <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a> alineadas con 01 §6.10 (D21), en español e inglés.</li>
+<li><strong>I · Herramientas:</strong> <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (registro de iniciativas con <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>–<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a> integrados) en <code>SEVEN-G/herramientas/T01_registro_iniciativas/</code>. La adaptación de <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> se hace en el proyecto privado de origen del motor (D26).</li>
 <li><strong>J · Adopción del marco:</strong> documentos 90–93 hechos. <code>SEVEN-G_IA_for_Hypergrowth.pdf</code> no se rehace (D24).</li>
 </ul>
 <h3 id="7-5-pendiente-para-el-autor">7.5 Pendiente para el autor</h3>
 <ol>
 <li>Validar las decisiones marcadas &quot;a validar&quot; (D19, D20, D22, D25) y los umbrales iniciales marcados &quot;a calibrar&quot; (índice de transformación, apetito y materialidad, priorización, semáforo, caducidad de estados, alertas de consumo, tamaños de muestra de auditoría).</li>
-<li>Revisión jurídica del <a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a> y de las citas regulatorias de 31, 32, 37 y 50–52, en particular el texto del Reglamento (UE) 2026/1744 en el DOUE, la transposición española de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> y el proyecto de Ley Orgánica de IA.</li>
+<li>Revisión jurídica del <a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a> y de las citas regulatorias de 31, 32, 37 y 50–52, en particular el texto del Reglamento (UE) 2026/1744 en el DOUE, la transposición española de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> y el proyecto de Ley Orgánica de IA.</li>
 <li><del>Incorporar a 33 los tres riesgos tipo propuestos en 50 (información y consulta, conflicto laboral, bienestar); dar código IND- a unos 60 indicadores provisionales del 41; resolver la colisión de prefijos CON- (conocimiento, 51) e IND-CON (consejo, 41).</del> <strong>Resuelto (16-09-2026):</strong> riesgos RT-ORG-07 (incumplimiento de información y consulta), RT-ORG-08 (conflicto laboral) y RT-ORG-09 (deterioro del bienestar) incorporados al catálogo de 33 (70 riesgos tipo) y enlazados desde 50 §12; los 50 códigos provisionales sin equivalente tienen código IND- en 41 §21 (47 indicadores nuevos, porque IE03.06 y PER-14, IE05.05 y DAT-10, e IE06.02 y CNC-06 comparten código), en las familias EMB, RIE, OPE, ADO, DAT y CLI y en la nueva familia PRO · Procesos y decisión (catálogo de 156 indicadores en 13 familias; conjunto Lite sin cambios, 26); los indicadores de conocimiento del 51 pasan de CON- a CNC- en 41, 50, 51, 52, 02 y la especificación común (§5.9).</li>
 <li><del>SPAD: revisar las afirmaciones con cifras de retorno y certificación.</del> <strong>Resuelto (16-09-2026):</strong> cifras sin respaldo sustituidas por objetivos a medir, &quot;certificación&quot; por autoevaluación de conformidad y aviso legal en todos los ficheros. Queda corregir en origen el PDF <code>05_SPAD_Skill_Methodology_Seachad.pdf</code>.</li>
-<li><del>Adaptar <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>.</del> <strong>Resuelto sin tocar el motor (16-09-2026):</strong> conector <code>SEVEN-G/herramientas/T17_panel_consejo/</code> con demo en <code>ejemplo/salida/</code>. Pendiente en el proyecto privado de origen del motor: renombrar claves heredadas (<code>estimado_cati</code>, <code>aap</code>) y añadir bloques de esferas, madurez, índice y embudo (propuesta en <code>PROPUESTA_MOTOR.md</code> de esa carpeta). <strong>Actualizado (17-09-2026, D43–D45):</strong> <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> se genera desde JSON (<code>build_registro.ps1</code>) y es la única entrada de datos del panel; el motor pasa a la versión 8 y el embudo ya llega al panel (etapas por fase en <code>config_panel.json</code> e historial de estados desde los eventos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>); esquema 0.2 con los campos opcionales que el panel necesita. Siguen pendientes las claves heredadas y los bloques de esferas, madurez e índice.</li>
+<li><del>Adaptar <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>.</del> <strong>Resuelto sin tocar el motor (16-09-2026):</strong> conector <code>SEVEN-G/herramientas/T17_panel_consejo/</code> con demo en <code>ejemplo/salida/</code>. Pendiente en el proyecto privado de origen del motor: renombrar claves heredadas (<code>estimado_cati</code>, <code>aap</code>) y añadir bloques de esferas, madurez, índice y embudo (propuesta en <code>PROPUESTA_MOTOR.md</code> de esa carpeta). <strong>Actualizado (17-09-2026, D43–D45):</strong> <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> se genera desde JSON (<code>build_registro.ps1</code>) y es la única entrada de datos del panel; el motor pasa a la versión 8 y el embudo ya llega al panel (etapas por fase en <code>config_panel.json</code> e historial de estados desde los eventos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>); esquema 0.2 con los campos opcionales que el panel necesita. Siguen pendientes las claves heredadas y los bloques de esferas, madurez e índice.</li>
 <li><strong>Aviso legal (D33):</strong> incluido en todos los documentos, plantillas, herramientas, paneles, demos y SPAD. Publicación preparada con <code>SEVEN-G/build/publicar.ps1</code> desde el propio repositorio <code>AI_CONSULTING</code> con <code>.github/workflows/pages.yml</code>, con portada en la raíz (D37); antes de publicar, crear la lista privada de términos prohibidos y pasar la verificación del proyecto de origen del motor.</li>
-<li>Construir las olas 2 y 3 de herramientas (<a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> §6).</li>
+<li>Construir las olas 2 y 3 de herramientas (<a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §6).</li>
 </ol>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener">Modelo ADKAR&#174; de Prosci (Awareness, Desire, Knowledge, Ability, Reinforcement)</a><span> · Prosci Inc.</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
@@ -1573,6 +1584,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

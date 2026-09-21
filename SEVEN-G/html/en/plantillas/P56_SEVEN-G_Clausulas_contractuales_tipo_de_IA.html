@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#clause-map-by-level-and-status"><span>03</span>Clause map by level and status</a></li><li><a href="#definitions"><span>04</span>Definitions</a></li><li><a href="#model-clauses"><span>05</span>Model clauses</a></li><li><a href="#entities-subject-to-dora"><span>06</span>Entities subject to DORA</a></li><li><a href="#ai-annex-for-existing-contracts-model"><span>07</span>AI annex for existing contracts (model)</a></li><li><a href="#embedded-ai-addendum-model"><span>08</span>Embedded AI addendum (model)</a></li><li><a href="#negotiation-record-and-accepted-risk"><span>09</span>Negotiation record and accepted risk</a></li><li><a href="#quality-criteria"><span>10</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>11</span>Approval and verification</a></li><li><a href="#version-control"><span>12</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <blockquote>
@@ -466,11 +477,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · AI supplier register: the status of the 16 clauses is entered in the <em>Contract</em> block (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> §3.3).</td>
+<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> · AI supplier register: the status of the 16 clauses is entered in the <em>Contract</em> block (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a> §3.3).</td>
 </tr>
 <tr>
 <td><strong>Reference document</strong></td>
-<td>Document 36 §6 (clauses), §6.1 (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> along the value chain), §6.2 (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>) and §8 (embedded AI). <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> §5 records the verification.</td>
+<td>Document 36 §6 (clauses), §6.1 (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> along the value chain), §6.2 (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>) and §8 (embedded AI). <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> §5 records the verification.</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -481,7 +492,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Completion rules:</p>
 <ul>
 <li><strong>Yes</strong> = must be included · <strong>Rec.</strong> = recommended · <strong>—</strong> = not required (36 §6).</li>
-<li>At N1 many clauses are not negotiable: they are checked in the supplier's standard terms and, if missing, the risk is recorded in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> together with who accepts it (section 9).</li>
+<li>At N1 many clauses are not negotiable: they are checked in the supplier's standard terms and, if missing, the risk is recorded in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> together with who accepts it (section 9).</li>
 <li>At N1 the standard terms are reviewed at least against clauses 1 to 4; at N2 an AI annex and a data processing agreement are signed with the clauses marked for N2; at N3 the contract is negotiated with all the clauses (36 §4.2).</li>
 <li><em>This document does not constitute legal advice.</em> References consulted in September 2026; their current validity must be verified.</li>
 </ul>
@@ -499,7 +510,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Supplier–service relationship code</td>
 <td></td>
-<td>PRV-AAAA-NNN (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a>).</td>
+<td>PRV-AAAA-NNN (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a>).</td>
 </tr>
 <tr>
 <td>Supplier</td>
@@ -514,7 +525,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Requirement level</td>
 <td></td>
-<td>N1 · N2 · N3 (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> §3).</td>
+<td>N1 · N2 · N3 (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> §3).</td>
 </tr>
 <tr>
 <td>Critical or important function</td>
@@ -728,7 +739,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Yes</td>
 <td>Minimum</td>
 <td>Partial</td>
-<td>30 days' notice accepted; the supplier does not allow version pinning. Risk RT-TER-03 in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>30 days' notice accepted; the supplier does not allow version pinning. Risk RT-TER-03 in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -758,7 +769,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Usage note.</strong> Required at N1, N2 and N3; minimum in the embedded AI addendum. It controls RT-TER-04.</p>
 <h3 id="5-4-clause-4-security">5.4 Clause 4 · Security</h3>
 <p><strong>Model text.</strong> The Supplier shall apply the security measures described in [annex of measures], keep the certifications [specify] in force throughout the contract with a scope covering the Service, manage vulnerabilities within the time frames in [annex] and apply protections against AI-specific threats, such as prompt injection, information leakage and model extraction. It shall report without delay any loss or reduction in scope of any certification.</p>
-<p><strong>Usage note.</strong> Required at N1, N2 and N3. At N2 and N3, information security checks the annex against the applicable SEG and AG controls of <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>.</p>
+<p><strong>Usage note.</strong> Required at N1, N2 and N3. At N2 and N3, information security checks the annex against the applicable SEG and AG controls of <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>.</p>
 <h3 id="5-5-clause-5-sub-processors">5.5 Clause 5 · Sub-processors</h3>
 <p><strong>Model text.</strong> The Supplier shall make available to the Company an up-to-date list of Sub-processors with their location and function. [It shall not engage new Sub-processors without the Company's prior written authorisation / It shall notify the Company of any change [number] days in advance, and the Company may object on reasoned grounds]. The Supplier shall impose on each Sub-processor obligations equivalent to those of this contract and shall be liable for their compliance.</p>
 <p><strong>Usage note.</strong> Recommended at N1; required at N2 and N3. For <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, see section 6.</p>
@@ -767,7 +778,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Usage note.</strong> Recommended at N1; required at N2 and N3. Particularly relevant with integrators (ownership of what is built).</p>
 <h3 id="5-7-clause-7-incident-notification">5.7 Clause 7 · Incident notification</h3>
 <p><strong>Model text.</strong> The Supplier shall notify the Company of any Incident within a maximum of [number] hours of its detection, with at least: description, systems and data affected, known cause, measures taken and contact person. It shall cooperate in the investigation and provide in good time the information the Company needs for its regulatory notifications.</p>
-<p><strong>Usage note.</strong> Recommended at N1; required at N2 and N3. The time limit must be compatible with the company's own obligations (<a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>); at N3, indicatively 24 hours or less (36 §4.2).</p>
+<p><strong>Usage note.</strong> Recommended at N1; required at N2 and N3. The time limit must be compatible with the company's own obligations (<a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>); at N3, indicatively 24 hours or less (36 §4.2).</p>
 <h3 id="5-8-clause-8-model-changes">5.8 Clause 8 · Model changes</h3>
 <p><strong>Model text.</strong> The Supplier shall give notice of any Relevant change at least [number] days in advance, with sufficient information for the Company to evaluate its effect before it takes place. The Company may keep the version in use pinned for [period] from the notice. The deprecation of a Model shall be notified [number] months in advance. If the change affects compliance or the agreed performance, the Company may terminate the contract without penalty.</p>
 <p><strong>Usage note.</strong> Recommended at N1; required at N2 and N3; minimum in the embedded AI addendum. It controls RT-TER-03.</p>
@@ -776,7 +787,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Usage note.</strong> Not required at N1; required at N2 and N3.</p>
 <h3 id="5-10-clause-10-logs-and-traceability">5.10 Clause 10 · Logs and traceability</h3>
 <p><strong>Model text.</strong> The Supplier shall generate and retain for [period] the logs needed for oversight, incident investigation and the Company's regulatory obligations, and shall give the Company access to them in [format and time frame].</p>
-<p><strong>Usage note.</strong> Not required at N1; required at N2 and N3. The retention period is aligned with the architecture record (<a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>).</p>
+<p><strong>Usage note.</strong> Not required at N1; required at N2 and N3. The retention period is aligned with the architecture record (<a href="P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>).</p>
 <h3 id="5-11-clause-11-audit-and-access">5.11 Clause 11 · Audit and access</h3>
 <p><strong>Model text.</strong> The Company, the auditors it designates and the competent supervisors may audit, inspect and access the information, premises and systems related to the Service, [with [number] days' notice except where required by the supervisor]. [At N2: the Supplier shall provide annual independent reports covering the Service.]</p>
 <p><strong>Usage note.</strong> Not required at N1; recommended at N2 (annual independent reports); required at N3 (right of audit, directly or through a designated third party).</p>
@@ -791,7 +802,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Usage note.</strong> Not required at N1; recommended at N2; required at N3.</p>
 <h3 id="5-15-clause-15-exit-and-transition">5.15 Clause 15 · Exit and transition</h3>
 <p><strong>Model text.</strong> On termination of the contract for any reason, the Supplier shall: a) maintain the Service for a transition period of [number] months; b) provide reasonable assistance to migrate to the Company or to a new supplier; c) deliver the Company's data, configurations, prompts and logs in usable formats [specify formats]; d) thereafter delete Company Data, including data held by its Sub-processors, and deliver a deletion certificate within [number] days; e) revoke all access.</p>
-<p><strong>Usage note.</strong> Recommended at N1 (at N1 guaranteed data export is sufficient); required at N2 and N3. The exit plan and the deletion certificate are documented in <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> §6 and §8. For DORA, see section 6.</p>
+<p><strong>Usage note.</strong> Recommended at N1 (at N1 guaranteed data export is sufficient); required at N2 and N3. The exit plan and the deletion certificate are documented in <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a> §6 and §8. For DORA, see section 6.</p>
 <h3 id="5-16-clause-16-termination">5.16 Clause 16 · Termination</h3>
 <p><strong>Model text.</strong> The Company may terminate the contract, without penalty, for: a) serious breach by the Supplier; b) a regulatory change that prevents the provision of the Service or makes it unlawful; c) a security breach; d) a change of control of the Supplier; e) an instruction from a competent supervisor. Termination triggers clause 15.</p>
 <p><strong>Usage note.</strong> Recommended at N1; required at N2 and N3.</p>
@@ -823,7 +834,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Exit strategy for services supporting critical or important functions</td>
 <td>Art. 28(8)</td>
-<td>Clause 15; tested exit plan (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> §6–7).</td>
+<td>Clause 15; tested exit plan (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a> §6–7).</td>
 <td>Yes · No · Not applicable</td>
 </tr>
 <tr>
@@ -835,7 +846,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Register of information</td>
 <td>Art. 28(3); <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2956/oj/eng" target="_blank" rel="noopener" title="Commission Implementing Regulation (EU) 2024/2956 of 29 November 2024 laying down implementing technical standards for the application of Regulation (EU) 2022/2554 with regard to standard templates for the register of information">Implementing Regulation (EU) 2024/2956</a></td>
-<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> feeds the register (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a>).</td>
+<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> feeds the register (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a>).</td>
 <td>Yes · No</td>
 </tr>
 </tbody>
@@ -856,7 +867,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>It is used with suppliers of software already contracted that incorporate AI features (36 §8.1, step 5). It includes at least clauses 1, 3, 8 and 13, plus those corresponding to the level. Starting text:</p>
 <p><strong>AI addendum to contract [reference] between [the Company] and [the Supplier].</strong></p>
 <ol>
-<li><strong>Existing AI features.</strong> The Supplier declares in [appendix] the AI features currently included in the software, the data they process, the Models and Model providers they use and where the data are processed (answers to annex A of <a href="P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html">P55</a>).</li>
+<li><strong>Existing AI features.</strong> The Supplier declares in [appendix] the AI features currently included in the software, the data they process, the Models and Model providers they use and where the data are processed (answers to annex A of <a href="P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a>).</li>
 <li><strong>Activation status.</strong> AI features that process personal or confidential data shall remain disabled until the Company has assessed and authorised them in writing. [If they cannot be disabled, the Supplier declares this and describes the measures available.]</li>
 <li><strong>Incorporated clauses.</strong> Clauses 1 (use of data for training), 3 (location and transfers), 8 (model changes) and 13 (transparency on AI features) are incorporated, together with [others according to the level].</li>
 <li><strong>New features.</strong> Any new AI feature is governed by clause 13.</li>
@@ -871,9 +882,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Clause</th>
 <th>Supplier's position</th>
 <th>Agreed alternative or compensating measure</th>
-<th>Risk in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></th>
+<th>Risk in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></th>
 <th>Residual level</th>
-<th>Accepted by (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6)</th>
+<th>Accepted by (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> §6)</th>
 <th>Date</th>
 </tr>
 </thead>
@@ -923,7 +934,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>The contract is signed with the required clauses before G5 and is recorded in <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> (G5.20).</td>
+<td>The contract is signed with the required clauses before G5 and is recorded in <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> (G5.20).</td>
 <td></td>
 </tr>
 <tr>
@@ -1003,7 +1014,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Segregation of duties: whoever negotiates the contract does not verify the clause list; anyone with a conflict of interest with the supplier declares it in <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</p>
+<p>Segregation of duties: whoever negotiates the contract does not verify the clause list; anyone with a conflict of interest with the supplier declares it in <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a>.</p>
 <hr />
 <h2 id="version-control"><span class="antetitulo">12</span>Version control</h2>
 <p><strong>Completed document</strong></p>
@@ -1279,6 +1290,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

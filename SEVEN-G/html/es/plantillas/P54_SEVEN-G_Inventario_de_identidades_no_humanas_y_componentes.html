@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#inventario-de-identidades-no-humanas"><span>03</span>Inventario de identidades no humanas</a></li><li><a href="#permisos-de-cada-identidad"><span>04</span>Permisos de cada identidad</a></li><li><a href="#credenciales"><span>05</span>Credenciales</a></li><li><a href="#revisiones-periodicas-de-permisos-ag-20"><span>06</span>Revisiones periódicas de permisos (AG-20)</a></li><li><a href="#inventario-de-modelos-y-componentes"><span>07</span>Inventario de modelos y componentes</a></li><li><a href="#bajas-y-retirada"><span>08</span>Bajas y retirada</a></li><li><a href="#criterios-de-calidad"><span>09</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>10</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>11</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -445,7 +456,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>Las identidades y componentes se dan de alta en la fase 4, al diseñar la seguridad (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>), y se confirman antes de G5. Se mantienen vivos en la fase 6: cada alta, cambio de permisos, rotación, revisión o baja es un evento. En G7, la retirada revoca identidades y credenciales.</td>
+<td>Las identidades y componentes se dan de alta en la fase 4, al diseñar la seguridad (<a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>), y se confirman antes de G5. Se mantienen vivos en la fase 6: cada alta, cambio de permisos, rotación, revisión o baja es un evento. En G7, la retirada revoca identidades y credenciales.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -465,11 +476,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> · Evaluación de seguridad de agentes (estado de AG-01, AG-03, AG-13, AG-20 y SEG-09) y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · Inventario (responsable humano del agente, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>). La relación de componentes puede generarse con la herramienta de análisis de dependencias de la compañía; esta plantilla recoge los campos que SEVEN-G exige.</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a> · Evaluación de seguridad de agentes (estado de AG-01, AG-03, AG-13, AG-20 y SEG-09) y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> · Inventario (responsable humano del agente, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>). La relación de componentes puede generarse con la herramienta de análisis de dependencias de la compañía; esta plantilla recoge los campos que SEVEN-G exige.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>Documento 35 §4.1–4.3 (identidad, permisos y credenciales), §5.3 (frecuencias), §7 (AG-01, AG-02, AG-03, AG-13, AG-20) y §6 (SEG-09, SEG-13); <a href="../53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a> §7.4–7.5 (componentes, dependencias y licencias); <a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a> (proveedores).</td>
+<td>Documento 35 §4.1–4.3 (identidad, permisos y credenciales), §5.3 (frecuencias), §7 (AG-01, AG-02, AG-03, AG-13, AG-20) y §6 (SEG-09, SEG-13); <a href="../53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Documento 53 &#183; Construcci&#243;n de soluciones con IA">documento 53</a> §7.4–7.5 (componentes, dependencias y licencias); <a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a> (proveedores).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -593,7 +604,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="permisos-de-cada-identidad"><span class="antetitulo">04</span>Permisos de cada identidad</h2>
-<p>Coherentes con la matriz de permisos de <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §5. <strong>Operación:</strong> Lectura · Escritura · Borrado · Envío externo · Operación económica · Cambio de configuración.</p>
+<p>Coherentes con la matriz de permisos de <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §5. <strong>Operación:</strong> Lectura · Escritura · Borrado · Envío externo · Operación económica · Cambio de configuración.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -620,7 +631,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>IDN-2026-012 <em>(ejemplo ilustrativo)</em></td>
 <td>Pasarela de devoluciones</td>
 <td>Operación económica</td>
-<td>Reembolsos de pedidos propios hasta el límite de <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §7</td>
+<td>Reembolsos de pedidos propios hasta el límite de <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §7</td>
 <td>Resolver devoluciones</td>
 <td>Sí, por encima del límite</td>
 <td>Sí</td>
@@ -711,7 +722,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los hallazgos de permisos excesivos se informan en el indicador «Identidades de agentes con permisos excesivos» (35 §10), cuyo objetivo es cero. La desactivación en producción de un control crítico (AG-01 en A2 y A3; AG-02 y AG-03 de A1 a A3; 35 §5.4) es una no conformidad crítica (<a href="P50_SEVEN-G_Registro_de_no_conformidades.html">P50</a>).</p>
+<p>Los hallazgos de permisos excesivos se informan en el indicador «Identidades de agentes con permisos excesivos» (35 §10), cuyo objetivo es cero. La desactivación en producción de un control crítico (AG-01 en A2 y A3; AG-02 y AG-03 de A1 a A3; 35 §5.4) es una no conformidad crítica (<a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Plantilla P50 &#183; Registro de no conformidades">P50</a>).</p>
 <hr />
 <h2 id="inventario-de-modelos-y-componentes"><span class="antetitulo">07</span>Inventario de modelos y componentes</h2>
 <p>Evidencia de SEG-09 y AG-13. <strong>Tipo:</strong> Modelo (propio, de proveedor o abierto) · Pesos · Biblioteca o dependencia · Conector · Servidor de herramientas · Imagen o contenedor · Servicio de proveedor · Conjunto de datos de evaluación. <strong>Estado:</strong> Aprobado · En evaluación · Obsoleto · Retirado.</p>
@@ -811,7 +822,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Proveedores de modelos y conectores</td>
 <td></td>
-<td>Nivel de exigencia N1 · N2 · N3 y evaluación en <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> (<a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>).</td>
+<td>Nivel de exigencia N1 · N2 · N3 y evaluación en <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> (<a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -826,7 +837,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Plazo de corrección</th>
 <th>Acción</th>
 <th>Fecha de cierre</th>
-<th>Cambio registrado en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></th>
+<th>Cambio registrado en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a></th>
 </tr>
 </thead>
 <tbody>
@@ -842,7 +853,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Un cambio de versión de modelo, de conector o de servidor de herramientas es un cambio que se registra en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> y se evalúa antes de ejecutarse (37 §7.2).</p>
+<p>Un cambio de versión de modelo, de conector o de servidor de herramientas es un cambio que se registra en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a> y se evalúa antes de ejecutarse (37 §7.2).</p>
 <hr />
 <h2 id="bajas-y-retirada"><span class="antetitulo">08</span>Bajas y retirada</h2>
 <div class="tabla"><table>
@@ -869,10 +880,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>En la retirada del sistema (G7, <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>) se revocan identidad, credenciales y permisos y se conservan los registros el periodo definido (G7.11); no deben quedar identidades ni credenciales huérfanas (35 §8, fase 7).</p>
+<p>En la retirada del sistema (G7, <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>) se revocan identidad, credenciales y permisos y se conservan los registros el periodo definido (G7.11); no deben quedar identidades ni credenciales huérfanas (35 §8, fase 7).</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">09</span>Criterios de calidad</h2>
-<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (G4.15, G4.16, R6.11 y G7.11) y lista LV-AG del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a> §12.</p>
+<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (G4.15, G4.16, R6.11 y G7.11) y lista LV-AG del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a> §12.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -889,7 +900,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>Los permisos registrados coinciden con los mínimos aprobados en <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> y con la configuración real.</td>
+<td>Los permisos registrados coinciden con los mínimos aprobados en <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> y con la configuración real.</td>
 <td></td>
 </tr>
 <tr>
@@ -1243,6 +1254,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

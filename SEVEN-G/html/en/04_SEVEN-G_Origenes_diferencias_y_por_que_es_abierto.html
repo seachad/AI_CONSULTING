@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,13 +439,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Maturity diagnosis</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#where-seven-g-comes-from"><span>02</span>Where SEVEN-G comes from</a></li><li><a href="#management-disciplines-that-seven-g-brings-together"><span>03</span>Management disciplines that SEVEN-G brings together</a></li><li><a href="#the-portfolio-as-a-funnel-what-is-taken-from-sales-management"><span>04</span>The portfolio as a funnel: what is taken from sales management</a></li><li><a href="#how-seven-g-differs-in-summary"><span>05</span>How SEVEN-G differs, in summary</a></li><li><a href="#why-it-is-free-of-charge-and-freely-distributable"><span>06</span>Why it is free of charge and freely distributable</a></li><li><a href="#contact"><span>07</span>Contact</a></li><li><a href="#associated-tools-and-templates"><span>08</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>09</span>Related documents</a></li><li><a href="#version-control"><span>10</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="consulta"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Reference</span></div><p>Explanatory document. It tells where SEVEN-G was born (from practice, not from a specific methodology), what it corrects in the usual way of adopting AI, what it takes from sales funnel management and where it departs from it, and why the framework is free of charge and freely distributable. It contains no rules or mandatory evidence: it is read once, to understand the reasons behind the framework.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>This document answers three questions asked by anyone who meets SEVEN-G for the first time: <strong>where it comes from</strong>, <strong>how it differs</strong> from what their company already does or already knows, and <strong>why it is offered free of charge under an open licence</strong>.</p>
-<p>It is an explanatory document. It adds no rules, criteria or evidence: the rules of the framework are in <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> and in the documents that develop it. It is aimed at directors, executives and AI leads who are considering adopting the framework, and at consultants and auditors who want to understand its approach before applying it.</p>
+<p>It is an explanatory document. It adds no rules, criteria or evidence: the rules of the framework are in <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> and in the documents that develop it. It is aimed at directors, executives and AI leads who are considering adopting the framework, and at consultants and auditors who want to understand its approach before applying it.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> A framework is adopted better when people understand what problem its author set out to solve and what he decided not to do.</p>
 </blockquote>
@@ -459,37 +470,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Experiment first and look for value later.</strong> Work starts from the available technology and looks for a problem to apply it to.</td>
 <td>Pilots that work but solve nothing the business is willing to pay for.</td>
 <td>No initiative goes beyond phase 2 without a falsifiable value hypothesis, with a baseline, an attribution method and stop criteria set in advance.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 6; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a></td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 6; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a></td>
 </tr>
 <tr>
 <td><strong>The prototype as the destination.</strong> Success is measured by the demonstration, not by operation.</td>
 <td>Many pilots and few cases in production; recurring cost with no return.</td>
 <td>&quot;Production is the only truth&quot;: value is validated only under real conditions, with go-live sign-off, a tested rollback plan and periodic continuity review.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, sections 3 and 7; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a></td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, sections 3 and 7; <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a></td>
 </tr>
 <tr>
 <td><strong>Nobody can stop.</strong> There are no criteria to iterate, pivot or retire.</td>
 <td>Portfolios that only grow and concentrate risk.</td>
 <td>Decision gates with five possible outcomes, a limit on iterations, a main stop gate (G3) and a retirement procedure. Stopping in time is a good outcome.</td>
-<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>; <a href="14_SEVEN-G_Gestion_de_cartera.html">document 14</a>, section 10</td>
+<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>; <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a>, section 10</td>
 </tr>
 <tr>
 <td><strong>Value is declared.</strong> Released hours are added up as savings and nobody checks them.</td>
 <td>Figures that do not withstand an audit and poorly founded investment decisions.</td>
 <td>Ten measurement rules; every amount carries a formula and a status (validated, declared or estimated); released capacity does not count until it is materialised.</td>
-<td><a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>; <a href="43_SEVEN-G_Realizacion_de_beneficios.html">document 43</a></td>
+<td><a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>; <a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Document 43 &#183; Benefits realisation">document 43</a></td>
 </tr>
 <tr>
 <td><strong>Whoever builds also approves.</strong> Governance arrives at the end, as a formality.</td>
 <td>Weak controls, regulatory and security risk addressed late.</td>
 <td>Segregation of duties from phase 0, dual validation (result and documentation), regulatory classification and risks before design.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 8; <a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a>; <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">document 32</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a></td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 8; <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a>; <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a></td>
 </tr>
 <tr>
 <td><strong>Everything is called transformation.</strong> Efficiency and transformation are mixed in the same narrative and judged with the same criteria.</td>
 <td>The company believes it is transforming when it is only becoming more efficient, or blocks its transformation bets with cost-cutting criteria.</td>
 <td>Three ambition levels with different gate criteria and a company transformation index based on evidence.</td>
-<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a>; <a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a></td>
+<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>; <a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -544,7 +555,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>November 2025</td>
-<td>Tool catalogue (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>) and first design of the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Tool catalogue (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>) and first design of the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
 <td>December 2025</td>
@@ -556,7 +567,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>February 2026</td>
-<td>First AI board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>), connected to the initiative register.</td>
+<td>First AI board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>), connected to the initiative register.</td>
 </tr>
 <tr>
 <td>March 2026</td>
@@ -576,11 +587,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>July 2026</td>
-<td>Company transformation index (eight signals) and its calculator (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>).</td>
+<td>Company transformation index (eight signals) and its calculator (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>).</td>
 </tr>
 <tr>
 <td>August 2026</td>
-<td>Library extended with templates <a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a>–<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a> and the value, maturity and risk tools (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>).</td>
+<td>Library extended with templates <a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Template P32 &#183; SEVEN-G implementation mandate">P32</a>–<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Template P71 &#183; Transfer plan and exit note">P71</a> and the value, maturity and risk tools (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>).</td>
 </tr>
 <tr>
 <td>September 2026</td>
@@ -588,7 +599,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>As long as the framework's version number has not reached 1.0, the &quot;version under review&quot; notice in section 6.4 still applies: the content is operational (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">document 00</a>, decision D40), but it is requested not to be shared widely because documents and tools are still being adapted to make them reusable.</p>
+<p>As long as the framework's version number has not reached 1.0, the &quot;version under review&quot; notice in section 6.4 still applies: the content is operational (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a>, decision D40), but it is requested not to be shared widely because documents and tools are still being adapted to make them reusable.</p>
 <hr />
 <h2 id="management-disciplines-that-seven-g-brings-together"><span class="antetitulo">03</span>Management disciplines that SEVEN-G brings together</h2>
 <p>The parts of the framework are familiar to any executive because they come from established management disciplines. What is specific to SEVEN-G is <strong>bringing them together in a single system</strong>, with a single register and a single language, and adapting them to what is different about AI: probabilistic results, degradation over time, dependence on data and suppliers, agent autonomy and specific regulation.</p>
@@ -633,7 +644,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>None of these disciplines is replaced. A company that already has its risk management, its project office or its management control <strong>keeps them</strong> and connects SEVEN-G to them (<a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, sections 1.2 and 13).</p>
+<p>None of these disciplines is replaced. A company that already has its risk management, its project office or its management control <strong>keeps them</strong> and connects SEVEN-G to them (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, sections 1.2 and 13).</p>
 <hr />
 <h2 id="the-portfolio-as-a-funnel-what-is-taken-from-sales-management"><span class="antetitulo">04</span>The portfolio as a funnel: what is taken from sales management</h2>
 <h3 id="4-1-the-idea">4.1 The idea</h3>
@@ -654,47 +665,47 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Recorded opportunity</td>
 <td>Initiative registered in the register, with a unique code and owners.</td>
-<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3</td>
+<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3</td>
 </tr>
 <tr>
 <td>Funnel stages</td>
 <td>Phases 0 to 7 and, in the board dashboard, grouped stages.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 6</td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 6</td>
 </tr>
 <tr>
 <td>Requirements to move to the next stage</td>
 <td>Criteria of each gate, with status and evidence.</td>
-<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a></td>
+<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a></td>
 </tr>
 <tr>
 <td>Days in stage</td>
 <td>Time in phase and decision time of each gate.</td>
-<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.5</td>
+<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.5</td>
 </tr>
 <tr>
 <td>Stalled opportunities</td>
 <td>Initiatives that exceed the reference time limit of their phase.</td>
-<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.6; <a href="14_SEVEN-G_Gestion_de_cartera.html">document 14</a>, section 8</td>
+<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.6; <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a>, section 8</td>
 </tr>
 <tr>
 <td>Conversion between stages</td>
 <td>Proportion that proceeds, iterates, pivots or stops at each gate.</td>
-<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.5</td>
+<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.5</td>
 </tr>
 <tr>
 <td>Loss reason</td>
 <td>Coded stop or retirement reason, with what was learnt.</td>
-<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.3</td>
+<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.3</td>
 </tr>
 <tr>
 <td>Weighted forecast</td>
 <td>Weighted portfolio value using the company's own historical probability.</td>
-<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.5</td>
+<td><a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.5</td>
 </tr>
 <tr>
 <td>Sales management dashboard</td>
-<td>Initiative register <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and board dashboard <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>.</td>
-<td><a href="60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a></td>
+<td>Initiative register <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> and board dashboard <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>.</td>
+<td><a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -748,7 +759,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>It makes stopping a normal decision</strong>, with criteria set before starting and reasons that are kept in order to learn.</li>
 <li><strong>It measures the decision system itself</strong>: times, conversion, iterations and expired conditions.</li>
 <li><strong>It requires evidence, not declaration</strong>, and separates whoever builds from whoever verifies and from whoever decides.</li>
-<li><strong>It is proportionate</strong>: Lite or Enterprise intensity per initiative and implementation scope per company (<a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">document 94</a>).</li>
+<li><strong>It is proportionate</strong>: Lite or Enterprise intensity per initiative and implementation scope per company (<a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html" title="Document 94 &#183; Obligation matrix and layered reading">document 94</a>).</li>
 <li><strong>It is compatible and modular</strong>: it coexists with the frameworks and bodies the company already has and can be adopted by components.</li>
 <li><strong>It is open</strong>: it can be used, adapted and redistributed without asking permission or paying (section 6).</li>
 </ol>
@@ -779,6 +790,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>No. It never sends an email or any communication seeking engagement; contacting the author is always the visitor's own initiative (section 7).</td>
 </tr>
 <tr>
+<td>Does the site measure visits?</td>
+<td>Yes, only in aggregate: how many visits each page gets, from which country and on what type of device, with <a href="https://umami.is/">Umami</a>, an open-source tool that uses no cookies, stores no personal data or IP addresses and does not follow anyone across sites; it honours the browser's &quot;Do Not Track&quot; signal. It is used to know which documents are read. The community page is not measured.</td>
+</tr>
+<tr>
 <td>Does permission have to be requested?</td>
 <td>No, as long as the licence is complied with.</td>
 </tr>
@@ -788,7 +803,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Can a consultancy or an auditor use it in paid services?</td>
-<td>Yes. The licence allows commercial use (<a href="91_SEVEN-G_Guia_para_consultores.html">document 91</a>).</td>
+<td>Yes. The licence allows commercial use (<a href="91_SEVEN-G_Guia_para_consultores.html" title="Document 91 &#183; Guide for consultants and support models">document 91</a>).</td>
 </tr>
 <tr>
 <td>Does it oblige anyone to hire the author?</td>
@@ -842,13 +857,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The detail is in <a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>. This document does not constitute legal advice.</p>
+<p>The detail is in <a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>. This document does not constitute legal advice.</p>
 <h3 id="6-4-the-version-under-review-notice">6.4 The version-under-review notice</h3>
 <p>While the framework is at version 0.x, its main pages ask readers <strong>not to circulate it widely</strong>. This is a request from the author, not a licence restriction: CC BY 4.0 already allows these versions to be shared. The request has a practical reason —documents and tools are being adapted to make them reusable— and it will disappear with version 1.x.</p>
 <hr />
 <h2 id="contact"><span class="antetitulo">07</span>Contact</h2>
-<p>For queries about the framework, improvement proposals, error reports or requests for support: <strong>Fernando García Varela</strong>, on his professional LinkedIn profile: <a href="https://www.linkedin.com/in/fernandogarciavarela/">https://www.linkedin.com/in/fernandogarciavarela/</a>. <strong>SEVEN-G is a registered trademark of Fernando García Varela</strong> (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>, section 7).</p>
-<p>There is no need to get in touch or ask permission for any use that complies with the licence; the site never asks for it and never reaches out on its own initiative to whoever visits it. Contacting the author does not turn a use into an endorsed one (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>, section 7).</p>
+<p>For queries about the framework, improvement proposals, error reports or requests for support: <strong>Fernando García Varela</strong>, on his professional LinkedIn profile: <a href="https://www.linkedin.com/in/fernandogarciavarela/">https://www.linkedin.com/in/fernandogarciavarela/</a>. <strong>SEVEN-G is a registered trademark of Fernando García Varela</strong> (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>, section 7).</p>
+<p>There is no need to get in touch or ask permission for any use that complies with the licence; the site never asks for it and never reaches out on its own initiative to whoever visits it. Contacting the author does not turn a use into an endorsed one (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>, section 7).</p>
 <hr />
 <h2 id="associated-tools-and-templates"><span class="antetitulo">08</span>Associated tools and templates</h2>
 <div class="tabla"><table>
@@ -861,22 +876,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 <td>Initiative register</td>
 <td>Applies funnel management: phases, times, criteria, stop reasons and value.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
 <td>Board AI dashboard</td>
 <td>Shows the funnel, the cases that left it and why.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></td>
 <td><em>Gate</em> decision record</td>
 <td>Keeps the outcome and the reason for each decision.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
 <td>Scale or retire decision</td>
 <td>Records the lessons learnt from each retirement.</td>
 </tr>
@@ -1177,6 +1192,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

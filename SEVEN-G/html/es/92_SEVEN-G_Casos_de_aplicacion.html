@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/92_SEVEN-G_Casos_de_aplicacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/92_SEVEN-G_Casos_de_aplicacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/92_SEVEN-G_Casos_de_aplicacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#resumen-de-los-casos"><span>02</span>Resumen de los casos</a></li><li><a href="#caso-1-grupo-energetico-e-ficticio"><span>03</span>Caso 1 · Grupo energético E (ficticio)</a></li><li><a href="#caso-2-operador-logistico-l-ficticio"><span>04</span>Caso 2 · Operador logístico L (ficticio)</a></li><li><a href="#caso-3-grupo-hospitalario-h-ficticio"><span>05</span>Caso 3 · Grupo hospitalario H (ficticio)</a></li><li><a href="#caso-4-grupo-de-distribucion-r-ficticio"><span>06</span>Caso 4 · Grupo de distribución R (ficticio)</a></li><li><a href="#caso-5-administracion-territorial-p-ficticia"><span>07</span>Caso 5 · Administración territorial P (ficticia)</a></li><li><a href="#caso-6-cooperativa-agroalimentaria-a-ficticio"><span>08</span>Caso 6 · Cooperativa agroalimentaria A (ficticio)</a></li><li><a href="#caso-7-grupo-hotelero-regional-t-ficticio"><span>09</span>Caso 7 · Grupo hotelero regional T (ficticio)</a></li><li><a href="#caso-8-fabricante-industrial-m-ficticio"><span>10</span>Caso 8 · Fabricante industrial M (ficticio)</a></li><li><a href="#lecciones-transversales-y-uso-en-talleres"><span>11</span>Lecciones transversales y uso en talleres</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>12</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>13</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -450,7 +461,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 <li><strong>Periodo ficticio:</strong> 2027–2028. Los trimestres se indican como 1T27, 2T27…</li>
 <li><strong>Códigos:</strong> cada compañía tiene su propia numeración (IA-AAAA-NNN, DEC-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN); los códigos no se relacionan entre casos.</li>
 <li><strong>Madurez:</strong> nivel global = media de las siete dimensiones redondeada hacia abajo y limitada al nivel más bajo de D1 o D6 más uno (especificación común §5.2), con pesos iguales.</li>
-<li><strong>Índice de transformación:</strong> ocho señales puntuadas de 0 a 3; los umbrales del <a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a> están pendientes de calibrar, por lo que las puntuaciones son ilustrativas.</li>
+<li><strong>Índice de transformación:</strong> ocho señales puntuadas de 0 a 3; los umbrales del <a href="12_SEVEN-G_Indice_de_transformacion.html" title="Documento 12 &#183; &#205;ndice de transformaci&#243;n">documento 12</a> están pendientes de calibrar, por lo que las puntuaciones son ilustrativas.</li>
 <li><strong>Valor:</strong> neto anual = eficiencias + retorno − coste recurrente; la capacidad liberada no materializada se informa aparte y no suma.</li>
 </ul>
 <hr />
@@ -1736,7 +1747,7 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </tbody>
 </table></div>
 <p><strong>Nivel global:</strong> media 8 ÷ 7 = 1,14 → 1; límite: mínimo de D1 y D6 (1) + 1 = 2. <strong>Nivel global 1.</strong></p>
-<p><strong>Índice de transformación:</strong> composición de la inversión <strong>sin dato</strong> · composición del valor <strong>sin dato</strong> · materialización 0 · profundidad del cambio 1 · modelo operativo 0 · ingresos habilitados 0 (señal a adaptar para el sector público en el <a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>) · paso a producción 0 · decisión del órgano de gobierno 0. <strong>Perfil: Exploración dispersa.</strong></p>
+<p><strong>Índice de transformación:</strong> composición de la inversión <strong>sin dato</strong> · composición del valor <strong>sin dato</strong> · materialización 0 · profundidad del cambio 1 · modelo operativo 0 · ingresos habilitados 0 (señal a adaptar para el sector público en el <a href="12_SEVEN-G_Indice_de_transformacion.html" title="Documento 12 &#183; &#205;ndice de transformaci&#243;n">documento 12</a>) · paso a producción 0 · decisión del órgano de gobierno 0. <strong>Perfil: Exploración dispersa.</strong></p>
 <h3 id="7-3-decisiones-del-organo-de-gobierno">7.3 Decisiones del órgano de gobierno</h3>
 <div class="tabla"><table>
 <thead>
@@ -2502,57 +2513,57 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>Registro de iniciativas</td>
 <td>Recorrido de <em>gates</em>, estados y motivos codificados.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a></td>
 <td>Inventario de sistemas de IA</td>
 <td>Hallazgos iniciales de los casos 1 y 5.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
 <td>Gestor de <em>gates</em></td>
 <td>Decisiones y condiciones.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a></td>
 <td>Clasificador de ambición</td>
 <td>Nivel de ambición de cada iniciativa.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 <td>Seguimiento de realización de valor</td>
 <td>Tablas de valor con estado.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
+<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></td>
 <td>Calculadora del índice de transformación</td>
 <td>Perfiles de cada compañía.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a></td>
+<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
 <td>Diagnóstico de madurez</td>
 <td>Tablas D1–D7.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Códigos REC y DEC.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a></td>
 <td>Gestor de retiradas</td>
 <td>Retiradas de los casos 1, 3, 4 y 5.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></td>
 <td>Registro de decisión de <em>gate</em></td>
 <td>Cada fila de las tablas de <em>gates</em>.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></td>
 <td>Decisión de escalado o retirada</td>
 <td>Decisiones de G7.</td>
 </tr>
@@ -2865,6 +2876,15 @@ Las compañías, sus órganos, personas, sistemas, iniciativas, decisiones, fech
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

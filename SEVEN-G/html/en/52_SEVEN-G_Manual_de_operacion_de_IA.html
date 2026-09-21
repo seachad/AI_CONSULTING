@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,18 +439,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/52_SEVEN-G_Manual_de_operacion_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/52_SEVEN-G_Manual_de_operacion_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/52_SEVEN-G_Manual_de_operacion_de_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#operating-principles"><span>02</span>Operating principles</a></li><li><a href="#operating-model"><span>03</span>Operating model</a></li><li><a href="#operation-by-type-of-system"><span>04</span>Operation by type of system</a></li><li><a href="#monitoring-and-alerts-p25"><span>05</span>Monitoring and alerts (P25)</a></li><li><a href="#change-management"><span>06</span>Change management</a></li><li><a href="#incident-management"><span>07</span>Incident management</a></li><li><a href="#r6-continuity-review"><span>08</span>R6 continuity review</a></li><li><a href="#post-market-monitoring"><span>09</span>Post-market monitoring</a></li><li><a href="#continuity-and-rollback"><span>10</span>Continuity and rollback</a></li><li><a href="#records-and-traceability"><span>11</span>Records and traceability</a></li><li><a href="#technical-retirement"><span>12</span>Technical retirement</a></li><li><a href="#operations-indicators"><span>13</span>Operations indicators</a></li><li><a href="#lite-and-enterprise-operation"><span>14</span>Lite and Enterprise operation</a></li><li><a href="#associated-tools-and-templates"><span>15</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>16</span>Related documents</a></li><li><a href="#version-control"><span>17</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>From the moment an initiative goes into production: operations manual, monitoring and alerts, change and incident management, rollback plan and continuity review R6 (six-monthly in Lite, quarterly in Enterprise). Section 14 summarises what changes between Lite and Enterprise.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
-<p>This document develops <strong>phase 6 · Operation and governance</strong> of the lifecycle (01 §6.8) and sets out how AI systems in production are operated so that they <strong>continue to work, deliver value and remain under control</strong>. It is generic: each system specifies what is established here in its operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</p>
+<p>This document develops <strong>phase 6 · Operation and governance</strong> of the lifecycle (01 §6.8) and sets out how AI systems in production are operated so that they <strong>continue to work, deliver value and remain under control</strong>. It is generic: each system specifies what is established here in its operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>).</p>
 <p>It covers:</p>
 <ul>
 <li>The specific operation of each type of system: <strong>predictive ML, generative AI, agents and embedded third-party AI</strong>.</li>
-<li><strong>Monitoring and alerts</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), with metrics and typical thresholds.</li>
+<li><strong>Monitoring and alerts</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>), with metrics and typical thresholds.</li>
 <li><strong>Change management</strong> and which changes require a return to a <em>gate</em>.</li>
-<li><strong>Incident management</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), with the S1–S4 scale, which is developed in <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>.</li>
+<li><strong>Incident management</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>), with the S1–S4 scale, which is developed in <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>.</li>
 <li>Preparation of the <strong>R6 continuity review</strong>.</li>
 <li>The <strong>post-market monitoring</strong> required by regulation.</li>
 <li><strong>Continuity and rollback</strong>.</li>
@@ -447,7 +458,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Technical retirement</strong>.</li>
 </ul>
 <p><strong>Audience.</strong> AI operations and technical owners, platform and security teams, risk owners and AI auditors.</p>
-<p><strong>It does not cover</strong> the building of solutions (<a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">document 53</a>), security controls in detail (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>) or the contractual management of suppliers (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</p>
+<p><strong>It does not cover</strong> the building of solutions (<a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Document 53 &#183; Building solutions with AI">document 53</a>), security controls in detail (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>) or the contractual management of suppliers (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</p>
 <p>This document contains regulatory references and does not constitute legal advice.</p>
 <hr />
 <h2 id="operating-principles"><span class="antetitulo">02</span>Operating principles</h2>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="3-1-responsibilities">3.1 Responsibilities</h3>
 <p>In phase 6 the <strong>AI Operations Owner</strong> is accountable and responsible (01 §8.4). The <strong>technical owner</strong> carries out retraining, evaluations and changes and is accountable for champion/challenger; the <strong>product owner</strong> is accountable for value and adoption at R6; the <strong>risk owner</strong> grants clearance for significant changes at Enterprise; <strong>security</strong> is accountable for the review of agent permissions; the <strong>AI Auditor</strong> verifies tests, permissions, R6 and retirements.</p>
 <h3 id="3-2-readiness-to-operate">3.2 Readiness to operate</h3>
-<p>G5 cannot be resolved with <em>Proceed</em> unless the following exist and have been verified: the <strong>operations manual</strong> (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>), the <strong>monitoring and alerts configuration</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>) with tested alerts, the <strong>incident response plan</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) and an open <strong>incident and change log</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), in addition to the <strong>tested rollback plan</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>). The operations owner <strong>must</strong> have taken part in phase 5 and formally accept the handover.</p>
+<p>G5 cannot be resolved with <em>Proceed</em> unless the following exist and have been verified: the <strong>operations manual</strong> (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>), the <strong>monitoring and alerts configuration</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>) with tested alerts, the <strong>incident response plan</strong> (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>) and an open <strong>incident and change log</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>), in addition to the <strong>tested rollback plan</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>). The operations owner <strong>must</strong> have taken part in phase 5 and formally accept the handover.</p>
 <h3 id="3-3-operating-requirements-by-autonomy-level">3.3 Operating requirements by autonomy level</h3>
 <div class="tabla"><table>
 <thead>
@@ -527,7 +538,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Rule.</strong> For each model, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> <strong>must</strong> state the <strong>label delay</strong> and which proxy indicators are used in the meantime. A model with no way of measuring its actual performance within a reasonable time <strong>should</strong> not pass G5.</p>
+<p><strong>Rule.</strong> For each model, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> <strong>must</strong> state the <strong>label delay</strong> and which proxy indicators are used in the meantime. A model with no way of measuring its actual performance within a reasonable time <strong>should</strong> not pass G5.</p>
 <h4 id="retraining">4.1.2 Retraining</h4>
 <div class="tabla"><table>
 <thead>
@@ -540,7 +551,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Scheduled</strong></td>
-<td>At a fixed frequency defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>.</td>
+<td>At a fixed frequency defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>.</td>
 <td>Same validated source data, variables and method; goes through champion/challenger.</td>
 </tr>
 <tr>
@@ -555,7 +566,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Every retraining: uses data that pass the quality controls (<a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a>), freezes and versions the dataset, updates <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> and is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> as a change.</p>
+<p>Every retraining: uses data that pass the quality controls (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a>), freezes and versions the dataset, updates <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> and is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> as a change.</p>
 <h4 id="championchallenger-validation">4.1.3 Champion/challenger validation</h4>
 <div class="tabla"><table>
 <thead>
@@ -569,7 +580,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1 · Offline evaluation</td>
 <td>The new model (challenger) and the current one (champion) are evaluated on the same recent test set, not used in training.</td>
-<td>Primary and secondary metrics defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>.</td>
+<td>Primary and secondary metrics defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>.</td>
 </tr>
 <tr>
 <td>2 · Segments and bias</td>
@@ -594,18 +605,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>6 · Retention</td>
 <td>The previous champion remains available for rollback.</td>
-<td>For the period defined in <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>.</td>
+<td>For the period defined in <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>.</td>
 </tr>
 </tbody>
 </table></div>
-<p>At Lite, steps 3 and 4 may be omitted if the system is A0 and has no direct exposure, with justification in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</p>
+<p>At Lite, steps 3 and 4 may be omitted if the system is A0 and has no direct exposure, with justification in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>.</p>
 <h3 id="4-2-generative-ai">4.2 Generative AI</h3>
 <h4 id="continuous-evaluations">4.2.1 Continuous evaluations</h4>
 <ul>
 <li><strong>Reference evaluation set:</strong> representative, difficult, sensitive and adversarial cases (including prompt injection), versioned and expanded with each incident and failure detected.</li>
 <li><strong>Full regression evaluation</strong> for any change of model, instructions, sources, filters or parameters; without a satisfactory result, the change is not promoted.</li>
 <li><strong>Periodic evaluation</strong> even when there are no changes by the company, to detect silent changes by the provider.</li>
-<li><strong>Production sampling</strong> with human review; size and frequency in <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</li>
+<li><strong>Production sampling</strong> with human review; size and frequency in <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>.</li>
 <li><strong>Evaluator model</strong> only if its agreement with human evaluators has been measured and it is recalibrated periodically.</li>
 </ul>
 <h4 id="response-quality-and-hallucinations">4.2.2 Response quality and hallucinations</h4>
@@ -619,7 +630,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Faithfulness</strong> to the sources or data provided</td>
-<td>Responses without unsupported statements (OPE-09; <a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a>, CNC-04).</td>
+<td>Responses without unsupported statements (OPE-09; <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a>, CNC-04).</td>
 </tr>
 <tr>
 <td><strong>Correctness</strong></td>
@@ -678,15 +689,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Monthly <strong>budget</strong> per system, with alerts at 80% and 100% as an initial reference.</li>
 <li><strong>Limits</strong> per user, session and period; maximum context size; maximum calls per task.</li>
 <li><strong>Anomalies:</strong> rising cost per transaction with no change in use (loops, excessive context, abuse).</li>
-<li><strong>On reaching the limit:</strong> cost-driven degradation cascade (section 10.3), defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and validated at G5; complete cut-off only if it does not affect a critical function.</li>
-<li><strong>Allocation</strong> to the <em>model consumption</em> category (<a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>) and tracking in <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>.</li>
+<li><strong>On reaching the limit:</strong> cost-driven degradation cascade (section 10.3), defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and validated at G5; complete cut-off only if it does not affect a critical function.</li>
+<li><strong>Allocation</strong> to the <em>model consumption</em> category (<a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>) and tracking in <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>.</li>
 </ul>
 <h4 id="provider-model-versions">4.2.5 Provider model versions</h4>
 <ol>
-<li>Pin the <strong>exact version</strong> of the model in production (not an alias to the &quot;latest version&quot;) and record it in <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</li>
+<li>Pin the <strong>exact version</strong> of the model in production (not an alias to the &quot;latest version&quot;) and record it in <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>.</li>
 <li>Record announced <strong>deprecation dates</strong> and start the migration with enough time for a full evaluation and champion/challenger.</li>
 <li>Detect <strong>behavioural changes without a version change</strong> through periodic evaluation and daily control queries.</li>
-<li>Review notices on <strong>data use and processing location</strong> and reassess in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</li>
+<li>Review notices on <strong>data use and processing location</strong> and reassess in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</li>
 </ol>
 <p>Migration to a new version from the same provider is a <strong>significant change</strong>; migration to another model family or to another provider is a <strong>substantial change</strong> (section 6).</p>
 <h4 id="usage-drift">4.2.6 Usage drift</h4>
@@ -718,11 +729,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Retrieval without a relevant source</strong></td>
 <td>Queries for which the search finds no suitable sources.</td>
-<td>Rate for the period (<a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a>, CNC-08).</td>
+<td>Rate for the period (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a>, CNC-08).</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Rule.</strong> <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> <strong>must</strong> set the <strong>usage reference</strong> (topics, intents and scope validated at G5), the way queries are classified and the thresholds. When usage drift exceeds the critical level: the evaluation set is expanded with the new cases and the system is evaluated on them; if the new use falls outside the approved purpose, the scope is restricted or it is treated as a <strong>new use</strong> (table 6.2, return to G3).</p>
+<p><strong>Rule.</strong> <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> <strong>must</strong> set the <strong>usage reference</strong> (topics, intents and scope validated at G5), the way queries are classified and the thresholds. When usage drift exceeds the critical level: the evaluation set is expanded with the new cases and the system is evaluated on them; if the new use falls outside the approved purpose, the scope is restricted or it is treated as a <strong>new use</strong> (table 6.2, return to G3).</p>
 <blockquote>
 <p><strong>Why it matters.</strong> An assistant validated for product queries that starts receiving complaints or legal questions still &quot;works&quot; and its evaluations stay green, because they measure what was anticipated, not what is happening. Usage drift is the early signal that the actual risk is no longer the approved one and that the measured value may lie elsewhere.</p>
 </blockquote>
@@ -740,7 +751,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Counterfactual pairs</strong></td>
 <td>Differences in response attributable to a protected attribute (sex, age, origin, disability or others set by the impact assessment) or to a proxy for it (name, language, writing style).</td>
-<td>Part of the reference evaluation set (4.2.1) consists of pairs of cases identical except for that attribute; the outcome of each pair is compared against the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> criteria (decision or recommendation, amount, tone, refusal, completeness).</td>
+<td>Part of the reference evaluation set (4.2.1) consists of pairs of cases identical except for that attribute; the outcome of each pair is compared against the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> criteria (decision or recommendation, amount, tone, refusal, completeness).</td>
 </tr>
 <tr>
 <td><strong>Quality by segment</strong></td>
@@ -756,15 +767,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p><strong>Rules.</strong></p>
 <ol>
-<li>The <strong>unequal response rate</strong> (pairs with a material difference ÷ pairs evaluated, OPE-20) is measured in every regression evaluation and in the periodic evaluation; its threshold is set in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> alongside the human oversight thresholds.</li>
-<li>It is <strong>mandatory</strong> when the system recommends, prioritises, drafts communications or decides about people, or has direct exposure to customers; for other systems, when the risk assessment indicates it (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>).</li>
+<li>The <strong>unequal response rate</strong> (pairs with a material difference ÷ pairs evaluated, OPE-20) is measured in every regression evaluation and in the periodic evaluation; its threshold is set in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> alongside the human oversight thresholds.</li>
+<li>It is <strong>mandatory</strong> when the system recommends, prioritises, drafts communications or decides about people, or has direct exposure to customers; for other systems, when the risk assessment indicates it (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>).</li>
 <li>A change of model, instructions or sources is not promoted if it worsens this rate beyond the tolerance, just like the challenger in predictive ML (4.1.3, step 2).</li>
 </ol>
 <blockquote>
 <p><strong>Why it matters.</strong> In generative AI, bias does not appear in a results column that can be counted; it appears in how things are drafted, recommended or refused. Without a test designed for it, it goes unseen, and it is precisely what a regulator, an affected customer or the media will see.</p>
 </blockquote>
 <h3 id="4-3-agents">4.3 Agents</h3>
-<p>The design controls for agents (identity, permissions, intent-based access control, kill switch) are defined in <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a> and assessed with <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>. This section sets out how they are operated.</p>
+<p>The design controls for agents (identity, permissions, intent-based access control, kill switch) are defined in <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> and assessed with <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>. This section sets out how they are operated.</p>
 <h4 id="action-monitoring">4.3.1 Action monitoring</h4>
 <p>Each action by an agent <strong>must</strong> record: the agent's own identity (not shared with people) and version; the user or process on whose behalf it acts; the <strong>declared intent</strong> (task objective and justification for the action); the tool, operation and data used; the result and effect; prior human validation and who gave it, if applicable; a timestamp and a correlation identifier to reconstruct the sequence.</p>
 <h4 id="limits">4.3.2 Limits</h4>
@@ -775,7 +786,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Execution:</strong> maximum steps, time and retries per task.</li>
 <li><strong>Escalation:</strong> actions that always require human validation, whatever the autonomy.</li>
 </ul>
-<p>Limits are enforced <strong>technically outside the agent</strong> (in the tools, gateways or permissions), not only through instructions to the model. An action blocked by a limit is logged and, as per <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, generates an alert.</p>
+<p>Limits are enforced <strong>technically outside the agent</strong> (in the tools, gateways or permissions), not only through instructions to the model. An action blocked by a limit is logged and, as per <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, generates an alert.</p>
 <h4 id="intent-anomalies">4.3.3 Intent anomalies</h4>
 <p>An <strong>intent anomaly</strong> is an action or sequence that is not consistent with the declared objective of the task.</p>
 <div class="tabla"><table>
@@ -816,7 +827,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>Levels:</strong> per action, session, agent and set of agents of a given type.</li>
 <li><strong>Who activates it:</strong> the operations owner, the designated human supervisor and security, <strong>without prior approval</strong>.</li>
-<li><strong>Effect:</strong> stops new actions, cancels pending ones, revokes temporary credentials and leaves the systems in the consistent state defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, within a target time set in <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</li>
+<li><strong>Effect:</strong> stops new actions, cancels pending ones, revokes temporary credentials and leaves the systems in the consistent state defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>, within a target time set in <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>.</li>
 <li><strong>Testing:</strong> quarterly at Enterprise, half-yearly at Lite and after each significant or substantial change (OPE-12).</li>
 <li><strong>Reactivation:</strong> after root cause analysis, with the approval of the operations owner and, if there was an S1 or S2 incident, of the risk owner.</li>
 </ul>
@@ -834,13 +845,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>New AI functions activated by the supplier</strong>, sometimes by default: review of release notes, verification of the configuration after each version and deactivation pending assessment where the contract allows it.</li>
 <li><strong>Model or behavioural changes without notice:</strong> process outcome indicators, sampling and regression testing before relevant updates.</li>
-<li><strong>Lack of logs:</strong> contractual requirement for access to logs and support in incidents (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</li>
-<li><strong>Changes in data processing</strong> (location, sub-processors, training): reassessment in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</li>
-<li><strong>Supplier incidents:</strong> notification channel and time limits in <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>.</li>
+<li><strong>Lack of logs:</strong> contractual requirement for access to logs and support in incidents (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</li>
+<li><strong>Changes in data processing</strong> (location, sub-processors, training): reassessment in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>.</li>
+<li><strong>Supplier incidents:</strong> notification channel and time limits in <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>.</li>
 </ul>
-<p>The intensity of these controls depends on the requirement level for the third party: <strong>N1 Standard · N2 Enhanced · N3 Critical</strong> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</p>
+<p>The intensity of these controls depends on the requirement level for the third party: <strong>N1 Standard · N2 Enhanced · N3 Critical</strong> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</p>
 <hr />
-<h2 id="monitoring-and-alerts-p25"><span class="antetitulo">05</span>Monitoring and alerts (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</h2>
+<h2 id="monitoring-and-alerts-p25"><span class="antetitulo">05</span>Monitoring and alerts (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>)</h2>
 <h3 id="5-1-monitoring-layers">5.1 Monitoring layers</h3>
 <div class="tabla"><table>
 <thead>
@@ -970,8 +981,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>4</td>
 <td>Adverse impact ratio between groups</td>
-<td>&lt; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> threshold + margin</td>
-<td>&lt; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> threshold</td>
+<td>&lt; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> threshold + margin</td>
+<td>&lt; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> threshold</td>
 <td>S2</td>
 </tr>
 <tr>
@@ -991,8 +1002,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>5</td>
 <td>Unequal response rate in counterfactual pairs</td>
-<td>&gt; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> threshold − margin</td>
-<td>&gt; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> threshold</td>
+<td>&gt; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> threshold − margin</td>
+<td>&gt; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> threshold</td>
 <td>S3; S2 if there are decisions or communications about people</td>
 </tr>
 <tr>
@@ -1041,7 +1052,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>8</td>
 <td>Operation in cost-driven degraded mode</td>
 <td>Any activation</td>
-<td>&gt; 5 days in the month or quality in the mode below the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> minimum</td>
+<td>&gt; 5 days in the month or quality in the mode below the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> minimum</td>
 <td>S4; S3 if quality falls below the minimum</td>
 </tr>
 <tr>
@@ -1062,11 +1073,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="5-3-alert-design-rules">5.3 Alert design rules</h3>
 <ol>
-<li>Each alert has an <strong>owner</strong>, a <strong>procedure</strong> in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and an <strong>initial severity</strong>.</li>
+<li>Each alert has an <strong>owner</strong>, a <strong>procedure</strong> in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and an <strong>initial severity</strong>.</li>
 <li>Critical alerts reach a person who can be contacted during the system's hours of operation.</li>
 <li>They are <strong>tested</strong> before G5 and after each change that affects them.</li>
 <li><strong>Noise</strong> is measured (OPE-16) and thresholds are reviewed at each R6.</li>
-<li>A deactivated or silenced alert is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> with the reason, owner and reactivation date.</li>
+<li>A deactivated or silenced alert is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> with the reason, owner and reactivation date.</li>
 </ol>
 <hr />
 <h2 id="change-management"><span class="antetitulo">06</span>Change management</h2>
@@ -1085,13 +1096,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Minor</strong></td>
 <td>Does not alter the behaviour of the system or its controls.</td>
 <td>Infrastructure scaling; security patch with no functional change; correction of a dashboard.</td>
-<td>Standard testing; approval by the operations owner; recording in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
+<td>Standard testing; approval by the operations owner; recording in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>.</td>
 </tr>
 <tr>
 <td><strong>Significant</strong></td>
 <td>Alters behaviour within the approved purpose, scope, autonomy and risks.</td>
 <td>Retraining with the same source data and method; new version of the model from the same provider and family; change of system instructions; new knowledge sources of the same type and permissions; adjustment of thresholds within approved ranges.</td>
-<td>Regression evaluation or champion/challenger; update of <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> and <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>; risk owner clearance at Enterprise; report at the next R6; verification by the auditor by sampling.</td>
+<td>Regression evaluation or champion/challenger; update of <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> and <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>; risk owner clearance at Enterprise; report at the next R6; verification by the auditor by sampling.</td>
 </tr>
 <tr>
 <td><strong>Substantial</strong></td>
@@ -1140,7 +1151,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Change of variables in systems that make decisions about people</td>
 <td><strong>G4 and G5</strong></td>
-<td>Bias testing and information to worker representatives (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>).</td>
+<td>Bias testing and information to worker representatives (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>).</td>
 </tr>
 <tr>
 <td>Change of provider or model family</td>
@@ -1155,12 +1166,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Change that may alter the regulatory classification or the intensity</td>
 <td><strong>G3</strong></td>
-<td>New classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>) and intensity determination (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>).</td>
+<td>New classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>) and intensity determination (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>).</td>
 </tr>
 <tr>
 <td>Modification that may be considered substantial under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> in a high-risk system</td>
 <td><strong>G3</strong>, with legal analysis</td>
-<td>May require a new conformity assessment and, in certain cases, turn the deployer into a provider (Arts. 3(23) and 25; <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>).</td>
+<td>May require a new conformity assessment and, in certain cases, turn the deployer into a provider (Arts. 3(23) and 25; <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1184,18 +1195,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>They are permitted in order to <strong>contain an incident</strong>. They may be applied before their ordinary approval.</li>
 <li><strong>They may only reduce</strong> functionality, autonomy, scope or permissions (shutdown, rollback, deactivation of a function, stricter limits). Never extend them.</li>
-<li>They are recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> within a maximum of 24 hours and reviewed within 5 working days, with a decision on whether they are consolidated, reverted or processed as an ordinary change.</li>
+<li>They are recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> within a maximum of 24 hours and reviewed within 5 working days, with a decision on whether they are consolidated, reverted or processed as an ordinary change.</li>
 </ul>
 <h3 id="6-4-rules">6.4 Rules</h3>
 <ol>
 <li>A substantial change applied without returning to the corresponding <em>gate</em> is a <strong>major nonconformity</strong>; if it affects a critical control or a high-risk system, it is <strong>critical</strong> (01 §12).</li>
-<li>Every change to a system that affects working conditions triggers a review of whether the information provided to worker representatives must be updated (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>, section 7).</li>
+<li>Every change to a system that affects working conditions triggers a review of whether the information provided to worker representatives must be updated (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>, section 7).</li>
 <li>Provider changes are classified using the same rules as the company's own changes.</li>
-<li><strong>Activating a planned degraded mode</strong> defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and validated at G5, including switching to a fallback model under section 10.3, <strong>is not a change</strong>: it is an approved operating mode and is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> as an operational event. Adding a new fallback model or modifying its conditions of use is a change: <strong>significant</strong> if it is from the same family and provider already assessed; <strong>substantial</strong> otherwise (table 6.2).</li>
+<li><strong>Activating a planned degraded mode</strong> defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and validated at G5, including switching to a fallback model under section 10.3, <strong>is not a change</strong>: it is an approved operating mode and is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> as an operational event. Adding a new fallback model or modifying its conditions of use is a change: <strong>significant</strong> if it is from the same family and provider already assessed; <strong>substantial</strong> otherwise (table 6.2).</li>
 </ol>
 <hr />
 <h2 id="incident-management"><span class="antetitulo">07</span>Incident management</h2>
-<p>The complete process, the definitive time limits and the relationship with nonconformities are set out in <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>. This section establishes what is needed to operate.</p>
+<p>The complete process, the definitive time limits and the relationship with nonconformities are set out in <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>. This section establishes what is needed to operate.</p>
 <h3 id="7-1-what-an-ai-incident-is">7.1 What an AI incident is</h3>
 <p>Any event that produces or may produce an undesired effect owing to the operation or use of an AI system, <strong>even if the system is available</strong>: erroneous outputs with an effect, bias, hallucinations with consequences, unauthorised actions by agents, exposure of information, anomalous costs, control failures, attacks and outages.</p>
 <h3 id="7-2-severity">7.2 Severity</h3>
@@ -1236,11 +1247,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>No effect on users or decisions.</td>
 <td>Warning alerts; minor formatting defects.</td>
 <td>Triage within 5 working days; analysis at R6.</td>
-<td>Recording in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; AI Committee (monthly report).</td>
+<td>Recording in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>; AI Committee (monthly report).</td>
 </tr>
 </tbody>
 </table></div>
-<p>Severity is assigned on <strong>detection</strong> using the most severe criterion met (one is enough; impact axes from <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a> §4.2, criteria from 37 §4.2) and reviewed once the scope is known. In case of doubt, the higher one is assigned.</p>
+<p>Severity is assigned on <strong>detection</strong> using the most severe criterion met (one is enough; impact axes from <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> §4.2, criteria from 37 §4.2) and reviewed once the scope is known. In case of doubt, the higher one is assigned.</p>
 <h3 id="7-3-flow">7.3 Flow</h3>
 <figure class="grafico"><div class="g-titulo">Flow of an AI incident</div><div class="g-sub">Contain first, report on time and always learn</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
   D["Detection: alert, user, provider or audit"] --> CL["Classification S1–S4"]
@@ -1292,13 +1303,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Sector-specific regulation</strong></td>
 <td>As per the context statement.</td>
-<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a></td>
 </tr>
 </tbody>
 </table></div>
-<p>For each system, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> <strong>must</strong> identify which notifications may apply, who decides whether notification is required and who notifies.</p>
+<p>For each system, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a> <strong>must</strong> identify which notifications may apply, who decides whether notification is required and who notifies.</p>
 <h3 id="7-5-relationship-with-nonconformities">7.5 Relationship with nonconformities</h3>
-<p>An incident may reveal a breach of the framework (for example, a substantial change without a <em>gate</em> or a deactivated critical control). In that case a <strong>nonconformity</strong> is also opened, with its own scale: minor, major or critical (01 §12). Both are recorded in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> and linked.</p>
+<p>An incident may reveal a breach of the framework (for example, a substantial change without a <em>gate</em> or a deactivated critical control). In that case a <strong>nonconformity</strong> is also opened, with its own scale: minor, major or critical (01 §12). Both are recorded in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a> and linked.</p>
 <hr />
 <h2 id="r6-continuity-review"><span class="antetitulo">08</span>R6 continuity review</h2>
 <h3 id="8-1-frequency">8.1 Frequency</h3>
@@ -1314,39 +1325,39 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong>Value</strong> (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>)</td>
+<td><strong>Value</strong> (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>)</td>
 <td>Realised value against the hypothesis with its status; stop criteria.</td>
 </tr>
 <tr>
-<td><strong>Released capacity</strong> (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>)</td>
+<td><strong>Released capacity</strong> (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>)</td>
 <td>Hours released, realised, reassigned and pending a decision.</td>
 </tr>
 <tr>
-<td><strong>Cost</strong> (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>)</td>
+<td><strong>Cost</strong> (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>)</td>
 <td>Actual cost against budget; cost per transaction; activations and days in cost-driven degraded mode, with the quality during the mode (OPE-18).</td>
 </tr>
 <tr>
-<td><strong>Stability, performance and quality</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</td>
+<td><strong>Stability, performance and quality</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>)</td>
 <td>Availability, critical alerts and noise; model or response metrics; drift, including usage drift (OPE-19); bias, including in responses (OPE-20).</td>
 </tr>
 <tr>
-<td><strong>Incidents and changes</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>)</td>
+<td><strong>Incidents and changes</strong> (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>)</td>
 <td>Incidents by severity and actions; open nonconformities; changes by class and by the provider.</td>
 </tr>
 <tr>
-<td><strong>Agents</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>)</td>
+<td><strong>Agents</strong> (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>)</td>
 <td>Blocked actions, anomalies, kill switch test, permission review.</td>
 </tr>
 <tr>
-<td><strong>Human oversight and adoption</strong> (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>)</td>
+<td><strong>Human oversight and adoption</strong> (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>)</td>
 <td>Human override rate, adoption, supervisor training.</td>
 </tr>
 <tr>
-<td><strong>Risk and compliance</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>)</td>
+<td><strong>Risk and compliance</strong> (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>)</td>
 <td>Risks; currency of classification, intensity and impact assessments; information to worker representatives.</td>
 </tr>
 <tr>
-<td><strong>Continuity</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
+<td><strong>Continuity</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>)</td>
 <td>Latest rollback test; supplier situation.</td>
 </tr>
 <tr>
@@ -1355,7 +1366,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The package is documented with <a href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html">P65</a>. The <code>R6.&lt;nn&gt;</code> criteria are coded in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>.</p>
+<p>The package is documented with <a href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html" title="Template P65 &#183; R6 continuity review package">P65</a>. The <code>R6.&lt;nn&gt;</code> criteria are coded in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>.</p>
 <h3 id="8-3-outcomes">8.3 Outcomes</h3>
 <div class="tabla"><table>
 <thead>
@@ -1383,10 +1394,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Omitting an R6 is a <strong>major nonconformity</strong> (01 §12).</p>
 <hr />
 <h2 id="post-market-monitoring"><span class="antetitulo">09</span>Post-market monitoring</h2>
-<p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers</strong> of high-risk systems to establish and document a <strong>post-market monitoring system</strong>, based on a plan, that actively and systematically collects and analyses data on the performance of the system throughout its lifetime in order to evaluate continuous compliance (Art. 72). <strong>Deployers</strong> must monitor operation in accordance with the instructions for use, inform the provider where appropriate and, if they consider that the use may present a risk, inform and suspend use (Art. 26(5)). High-risk obligations apply from 2 December 2027 (Annex III) and 2 August 2028 (Annex I), following Regulation (EU) 2026/1744; the timetable and the other amendments are addressed in <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> (§3.1 and §3.2).</p>
+<p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers</strong> of high-risk systems to establish and document a <strong>post-market monitoring system</strong>, based on a plan, that actively and systematically collects and analyses data on the performance of the system throughout its lifetime in order to evaluate continuous compliance (Art. 72). <strong>Deployers</strong> must monitor operation in accordance with the instructions for use, inform the provider where appropriate and, if they consider that the use may present a risk, inform and suspend use (Art. 26(5)). High-risk obligations apply from 2 December 2027 (Annex III) and 2 August 2028 (Annex I), following Regulation (EU) 2026/1744; the timetable and the other amendments are addressed in <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> (§3.1 and §3.2).</p>
 <ul>
-<li><strong>As a provider</strong> (including where it becomes one through substantial modification or change of purpose): monitoring plan integrated into <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, with the data collected, their periodic analysis and the connection with risks, changes, incidents and R6.</li>
-<li><strong>As a deployer:</strong> monitoring in accordance with the provider's instructions, a channel for informing the provider, a suspension criterion and retention of logs (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
+<li><strong>As a provider</strong> (including where it becomes one through substantial modification or change of purpose): monitoring plan integrated into <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, with the data collected, their periodic analysis and the connection with risks, changes, incidents and R6.</li>
+<li><strong>As a deployer:</strong> monitoring in accordance with the provider's instructions, a channel for informing the provider, a suspension criterion and retention of logs (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>).</li>
 <li><strong>Systems that are not high-risk:</strong> the monitoring in section 5 fulfils an equivalent function.</li>
 </ul>
 <p>This document does not constitute legal advice.</p>
@@ -1429,13 +1440,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="10-2-rules">10.2 Rules</h3>
 <ol>
-<li>The <strong>rollback plan</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) is tested before G5 and <strong>periodically</strong> in production: at least annually at Lite and half-yearly at Enterprise, and after each substantial change (OPE-15).</li>
-<li>The plan identifies the <strong>people and capabilities</strong> needed to operate without the system and is coordinated with <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a> (section 5.4).</li>
-<li>For systems that support a <strong>critical or important function</strong>, the maximum recovery time and the maximum tolerable data loss are set in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and aligned with the business continuity plan and, where applicable, with <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>.</li>
-<li><strong>Dependence on a provider</strong> is assessed in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> with an exit strategy (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</li>
+<li>The <strong>rollback plan</strong> (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>) is tested before G5 and <strong>periodically</strong> in production: at least annually at Lite and half-yearly at Enterprise, and after each substantial change (OPE-15).</li>
+<li>The plan identifies the <strong>people and capabilities</strong> needed to operate without the system and is coordinated with <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a> (section 5.4).</li>
+<li>For systems that support a <strong>critical or important function</strong>, the maximum recovery time and the maximum tolerable data loss are set in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and aligned with the business continuity plan and, where applicable, with <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>.</li>
+<li><strong>Dependence on a provider</strong> is assessed in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> with an exit strategy (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</li>
 </ol>
 <h3 id="10-3-cost-driven-degradation-cascade">10.3 Cost-driven degradation cascade</h3>
-<p>Systems with variable consumption (generative AI and agents) <strong>must</strong> have defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> what happens when consumption reaches the budget, so that the response is neither improvised nor an abrupt cut-off. Degradation follows a <strong>cascade</strong> of levels, from least to most restrictive:</p>
+<p>Systems with variable consumption (generative AI and agents) <strong>must</strong> have defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> what happens when consumption reaches the budget, so that the response is neither improvised nor an abrupt cut-off. Degradation follows a <strong>cascade</strong> of levels, from least to most restrictive:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1458,30 +1469,30 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-n2-fallback-model">
 <td><strong>N2 · Fallback model</strong></td>
 <td>Part or all of the traffic moves to a lower-cost model.</td>
-<td>Model <strong>evaluated before G5</strong> with the same reference evaluation set (4.2.1), including the bias tests (4.2.7), with a result within the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> minimum quality; version pinned and recorded in <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Model <strong>evaluated before G5</strong> with the same reference evaluation set (4.2.1), including the bias tests (4.2.7), with a result within the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> minimum quality; version pinned and recorded in <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>.</td>
 </tr>
 <tr id="cod-n3-reduced-scope">
 <td><strong>N3 · Reduced scope</strong></td>
 <td>The system handles only the lowest-risk or highest-value cases or channels; the rest go to people.</td>
-<td>Allocation criterion defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and people available (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>).</td>
+<td>Allocation criterion defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and people available (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>).</td>
 </tr>
 <tr id="cod-n4-alternative-without-ai">
 <td><strong>N4 · Alternative without AI</strong></td>
 <td>Manual process, rules or previous system.</td>
-<td>Tested rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
+<td>Tested rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>).</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Rules.</strong></p>
 <ol>
-<li>The levels, their triggers (for example, N1 at 80% of the budget, N2 at 100%) and who activates them are set in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>; their activation is tested before G5 together with the rollback plan.</li>
-<li><strong>No model downgrade</strong> (N2) in uses that decide or recommend about people, in critical or important functions or in high-risk systems, unless the fallback model has been validated for that use to the same standard as the primary one; in those cases the system moves directly to N3 or N4, or a budget supplement is approved (<a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>, section 8.1).</li>
-<li>In N2, <strong>quality is monitored more intensively</strong>: production sampling at least doubled and an alert if it falls below the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> minimum; if it does, the system moves to the next level.</li>
-<li>Each activation and each return to N0 is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> with the date, level, reason, who decides and the quality measured during the mode. The return to N0 is authorised by the operations owner when there is budget or the cause has been corrected.</li>
-<li>If the system spends more than a month in N2 or a higher level, the budget or the design is wrongly sized: it is taken to the next R6 with a proposal (supplement, permanent optimisation under <a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>, section 8.5, or a change of the primary model as an ordinary change).</li>
+<li>The levels, their triggers (for example, N1 at 80% of the budget, N2 at 100%) and who activates them are set in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>; their activation is tested before G5 together with the rollback plan.</li>
+<li><strong>No model downgrade</strong> (N2) in uses that decide or recommend about people, in critical or important functions or in high-risk systems, unless the fallback model has been validated for that use to the same standard as the primary one; in those cases the system moves directly to N3 or N4, or a budget supplement is approved (<a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>, section 8.1).</li>
+<li>In N2, <strong>quality is monitored more intensively</strong>: production sampling at least doubled and an alert if it falls below the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> minimum; if it does, the system moves to the next level.</li>
+<li>Each activation and each return to N0 is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> with the date, level, reason, who decides and the quality measured during the mode. The return to N0 is authorised by the operations owner when there is budget or the cause has been corrected.</li>
+<li>If the system spends more than a month in N2 or a higher level, the budget or the design is wrongly sized: it is taken to the next R6 with a proposal (supplement, permanent optimisation under <a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>, section 8.5, or a change of the primary model as an ordinary change).</li>
 <li>No degradation may <strong>deactivate critical controls</strong> (filters, human oversight, agent limits, records): the cascade reduces cost, not controls.</li>
 </ol>
-<p><strong>Illustrative example</strong> (fictitious figures). Customer service assistant with a monthly budget of €12,000. On day 20 consumption reaches €9,600 (80%) and the month-end forecast is €14,400: N1 is activated (shorter context and reuse of frequent responses) and the forecast falls to €13,100. On day 26 consumption reaches 100%: informational queries move to N2, with a fallback model validated at G5 that costs 70% less, while complaints remain on the primary model. Sampling on those days gives an accuracy of 91% against the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> minimum of 88%. The month closes at €12,600 (105%), with six days in N1 and five in N2, and the R6 decides to adjust the budget to the actual growth in volume.</p>
+<p><strong>Illustrative example</strong> (fictitious figures). Customer service assistant with a monthly budget of €12,000. On day 20 consumption reaches €9,600 (80%) and the month-end forecast is €14,400: N1 is activated (shorter context and reuse of frequent responses) and the forecast falls to €13,100. On day 26 consumption reaches 100%: informational queries move to N2, with a fallback model validated at G5 that costs 70% less, while complaints remain on the primary model. Sampling on those days gives an accuracy of 91% against the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> minimum of 88%. The month closes at €12,600 (105%), with six days in N1 and five in N2, and the R6 decides to adjust the budget to the actual growth in volume.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> Without a defined cascade, when the budget runs out only two bad options remain: cut the service or keep spending without control. With it, cost is contained without improvisation and without touching the controls, the board knows what quality is delivered at each level, and the organisation learns whether the budget or the design was wrongly sized.</p>
 </blockquote>
@@ -1489,7 +1500,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h2 id="records-and-traceability"><span class="antetitulo">11</span>Records and traceability</h2>
 <h3 id="11-1-what-is-recorded">11.1 What is recorded</h3>
 <ul>
-<li><strong>All systems:</strong> inputs (or their reference) and outputs with the model and instruction version and a timestamp, with minimisation; alerts and action taken; changes and incidents (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>); results of evaluations and of champion/challenger.</li>
+<li><strong>All systems:</strong> inputs (or their reference) and outputs with the model and instruction version and a timestamp, with minimisation; alerts and action taken; changes and incidents (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>); results of evaluations and of champion/challenger.</li>
 <li><strong>A1–A3 and decisions about people:</strong> recommendation, human decision, who decides and the reason for any override.</li>
 <li><strong>A2–A3 agents:</strong> the fields in section 4.3.1.</li>
 <li><strong>Generative AI:</strong> sources and versions retrieved for each response; filter triggers and blocks.</li>
@@ -1522,7 +1533,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Sector-specific and commercial regulation</strong></td>
 <td>Their own time limits (for example, in financial services).</td>
-<td>Incorporated into the context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>).</td>
+<td>Incorporated into the context statement (<a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a>).</td>
 </tr>
 <tr>
 <td><strong>Claim and limitation periods</strong></td>
@@ -1535,22 +1546,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>This document does not constitute legal advice.</p>
 <hr />
 <h2 id="technical-retirement"><span class="antetitulo">12</span>Technical retirement</h2>
-<p>The decision to retire is taken at G7 and documented in <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; its management is supported by <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>. This section sets out the technical execution.</p>
+<p>The decision to retire is taken at G7 and documented in <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>; its management is supported by <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>. This section sets out the technical execution.</p>
 <ol>
-<li><strong>Preparation:</strong> replacement or alternative without AI operational, people trained and communication carried out (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</li>
-<li><strong>Freeze:</strong> no changes except emergencies; capture of the final state and metrics (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</li>
+<li><strong>Preparation:</strong> replacement or alternative without AI operational, people trained and communication carried out (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>).</li>
+<li><strong>Freeze:</strong> no changes except emergencies; capture of the final state and metrics (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>).</li>
 <li><strong>Progressive disconnection:</strong> removal of traffic and of the integrations and processes that consume outputs.</li>
 <li><strong>Agents:</strong> kill switch, cancellation of tasks and <strong>revocation of all credentials and non-human identities</strong>, with logging.</li>
-<li><strong>Data:</strong> deletion, anonymisation or archiving as per G7 and the retention periods (<a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a>, section 4.5), with a record of deletion.</li>
-<li><strong>Models, instructions and indexes:</strong> archiving of the final version where appropriate; deletion of indexes derived from sources containing personal data; <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> with status <em>retired</em>.</li>
+<li><strong>Data:</strong> deletion, anonymisation or archiving as per G7 and the retention periods (<a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a>, section 4.5), with a record of deletion.</li>
+<li><strong>Models, instructions and indexes:</strong> archiving of the final version where appropriate; deletion of indexes derived from sources containing personal data; <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> with status <em>retired</em>.</li>
 <li><strong>Records:</strong> retained until the end of their period (section 11.2); never deleted with the retirement.</li>
-<li><strong>Suppliers:</strong> termination of services, confirmation of data deletion by the supplier, closure of licences and consumption (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</li>
-<li><strong>Inventory and register:</strong> status <em>Retired</em> in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> with date, coded reason, deciding body and replacement.</li>
+<li><strong>Suppliers:</strong> termination of services, confirmation of data deletion by the supplier, closure of licences and consumption (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</li>
+<li><strong>Inventory and register:</strong> status <em>Retired</em> in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> with date, coded reason, deciding body and replacement.</li>
 <li><strong>Subsequent verification:</strong> after a defined period, check that no access, costs or dependent processes remain; closure note verified by the AI Auditor at Enterprise.</li>
 </ol>
 <hr />
 <h2 id="operations-indicators"><span class="antetitulo">13</span>Operations indicators</h2>
-<p>The codes are provisional until they are consolidated in <a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a>. The thresholds are <strong>indicative and to be calibrated</strong>.</p>
+<p>The codes are provisional until they are consolidated in <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a>. The thresholds are <strong>indicative and to be calibrated</strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1572,7 +1583,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-ope-02">
 <td><strong>OPE-02</strong></td>
 <td>Monitoring coverage</td>
-<td>Systems in production with a current <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> and tested alerts ÷ systems in production</td>
+<td>Systems in production with a current <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> and tested alerts ÷ systems in production</td>
 <td>Quarterly</td>
 <td>100%</td>
 </tr>
@@ -1614,7 +1625,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-ope-08">
 <td><strong>OPE-08</strong></td>
 <td>Untreated drift</td>
-<td>Models with drift at critical level with no action recorded within the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> time limit ÷ monitored models</td>
+<td>Models with drift at critical level with no action recorded within the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> time limit ÷ monitored models</td>
 <td>Monthly</td>
 <td>0%</td>
 </tr>
@@ -1684,7 +1695,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-ope-18">
 <td><strong>OPE-18</strong></td>
 <td>Cost-driven degraded mode</td>
-<td>Days in the period at N1 or above in the cascade (10.3), by level; and quality measured in the mode ÷ <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> minimum quality</td>
+<td>Days in the period at N1 or above in the cascade (10.3), by level; and quality measured in the mode ÷ <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> minimum quality</td>
 <td>Monthly</td>
 <td>Downward trend; quality ≥ 100% of the minimum</td>
 </tr>
@@ -1700,7 +1711,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Unequal responses in counterfactual pairs</td>
 <td>Pairs with a material difference in outcome ÷ pairs evaluated</td>
 <td>At each regression and periodic evaluation</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> threshold</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> threshold</td>
 </tr>
 </tbody>
 </table></div>
@@ -1716,7 +1727,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>Operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>Operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>)</td>
 <td>Simplified</td>
 <td>Complete</td>
 </tr>
@@ -1801,25 +1812,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-p24">
-<td><strong><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></strong></td>
+<td><strong><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a></strong></td>
 <td>Operations manual</td>
 <td>Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes and cost-driven degradation cascade with its triggers; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions.</td>
 <td>G5, R6, after significant and substantial changes</td>
 </tr>
 <tr id="cod-p25">
-<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
+<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a></strong></td>
 <td>Monitoring and alerts configuration</td>
 <td>Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; usage reference and query classification; reference evaluation set with counterfactual pairs and sampling; minimum quality in degraded mode; result of the alert test.</td>
 <td>G5, R6</td>
 </tr>
 <tr id="cod-p26">
-<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></strong></td>
+<td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a></strong></td>
 <td>Incident response plan</td>
 <td>S1–S4 criteria applied to the system; contacts and escalation; pre-approved containment actions; applicable notifications with owner and time limit; communication to users, affected parties and the supplier; relationship with the continuity plan.</td>
 <td>G5, R6, after each S1–S2 incident</td>
 </tr>
 <tr id="cod-p27">
-<td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong></td>
+<td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></strong></td>
 <td>Incident and change log</td>
 <td>Changes: class, description, validation, approval, <em>gate</em> where applicable, date. Incidents: severity, timeline, containment, notifications, root cause, actions, closure, link to nonconformity.</td>
 <td>Continuous; R6</td>
@@ -1828,8 +1839,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="15-2-other-tools-and-templates">15.2 Other tools and templates</h3>
 <ul>
-<li><strong>Tools:</strong> <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> (incidents and nonconformities, supporting <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> (agent security), <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> (operating costs), <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (value at R6), <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> (retirements), <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> and <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> (currency of inventory, intensity and classification).</li>
-<li><strong>Templates:</strong> <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> (lineage, updated with each change), <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> (rollback), <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (value at R6), <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (R6 outcome and returns to <em>gate</em>), <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> (retirement), <a href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html">P65</a> (R6 continuity review package, section 8.2).</li>
+<li><strong>Tools:</strong> <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a> (incidents and nonconformities, supporting <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>), <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a> (agent security), <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> (operating costs), <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> (value at R6), <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a> (retirements), <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a> and <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a> (currency of inventory, intensity and classification).</li>
+<li><strong>Templates:</strong> <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> (lineage, updated with each change), <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a> (rollback), <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> (value at R6), <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> (R6 outcome and returns to <em>gate</em>), <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a> (retirement), <a href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html" title="Template P65 &#183; R6 continuity review package">P65</a> (R6 continuity review package, section 8.2).</li>
 </ul>
 <hr />
 <h2 id="related-documents"><span class="antetitulo">16</span>Related documents</h2>
@@ -1889,12 +1900,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Defines the operation of predictive ML (drift, retraining, champion/challenger), generative AI (continuous evaluations, quality, hallucinations, filters, costs, provider versions), agents (actions, limits, intent anomalies, kill switch, permissions) and embedded third-party AI; nine monitoring layers with typical thresholds; three change classes with a return-to-<em>gate</em> table; S1–S4 incident operation with regulatory notifications; R6 package and outcomes; post-market monitoring; continuity and rollback; records and retention; technical retirement; seventeen indicators and the minimum content of <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>–<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37.</td>
+<td>First version. Defines the operation of predictive ML (drift, retraining, champion/challenger), generative AI (continuous evaluations, quality, hallucinations, filters, costs, provider versions), agents (actions, limits, intent anomalies, kill switch, permissions) and embedded third-party AI; nine monitoring layers with typical thresholds; three change classes with a return-to-<em>gate</em> table; S1–S4 incident operation with regulatory notifications; R6 package and outcomes; post-market monitoring; continuity and rollback; records and retention; technical retirement; seventeen indicators and the minimum content of <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>–<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>. Consistency adjustments with 01 (segregation of duties at Lite, R6 outcomes, agents criterion) and with 34 and 37.</td>
 </tr>
 <tr>
 <td>0.1</td>
 <td>18-09-2026</td>
-<td>Usage drift in generative AI and agents (4.2.6); bias in responses with counterfactual pairs (4.2.7); layers 3 and 5 and thresholds extended; activating a planned degraded mode is not a change (6.4); cost-driven degradation cascade N0–N4 with a fallback model validated at G5 (10.3); indicators OPE-18 to OPE-20; Lite and Enterprise requirements and content of <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
+<td>Usage drift in generative AI and agents (4.2.6); bias in responses with counterfactual pairs (4.2.7); layers 3 and 5 and thresholds extended; activating a planned degraded mode is not a change (6.4); cost-driven degradation cascade N0–N4 with a fallback model validated at G5 (10.3); indicators OPE-18 to OPE-20; Lite and Enterprise requirements and content of <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2135,6 +2146,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,15 +439,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/42_SEVEN-G_Costes_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/42_SEVEN-G_Costes_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/42_SEVEN-G_Costes_de_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#principles"><span>02</span>Principles</a></li><li><a href="#components-of-the-cost-of-a-use-case"><span>03</span>Components of the cost of a use case</a></li><li><a href="#cost-categories"><span>04</span>Cost categories</a></li><li><a href="#total-cost-of-ownership"><span>05</span>Total cost of ownership</a></li><li><a href="#analytical-allocation-of-shared-costs"><span>06</span>Analytical allocation of shared costs</a></li><li><a href="#cost-tagging-in-the-cloud-and-in-models"><span>07</span>Cost tagging in the cloud and in models</a></li><li><a href="#consumption-forecasting-and-control"><span>08</span>Consumption forecasting and control</a></li><li><a href="#cost-per-unit-of-outcome"><span>09</span>Cost per unit of outcome</a></li><li><a href="#cost-of-stop-decisions"><span>10</span>Cost of stop decisions</a></li><li><a href="#integration-with-management-control"><span>11</span>Integration with management control</a></li><li><a href="#tool-t13-cost-calculator-per-use-case"><span>12</span>Tool T13 · Cost calculator per use case</a></li><li><a href="#associated-tools-and-templates"><span>13</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>14</span>Related documents</a></li><li><a href="#version-control"><span>15</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
-<aside class="esencial" data-capa="recomendado"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Recommended</span></div><p>The full recurring cost of each case is mandatory under the measurement rules (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>). Analytical allocation, total cost of ownership and cost per unit of output are applied in proportion to the size of the portfolio; the consumption budget, when cost depends on usage.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
+<aside class="esencial" data-capa="recomendado"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Recommended</span></div><p>The full recurring cost of each case is mandatory under the measurement rules (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>). Analytical allocation, total cost of ownership and cost per unit of output are applied in proportion to the size of the portfolio; the consumption budget, when cost depends on usage.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
-<p>This document establishes how the cost of artificial intelligence is calculated, allocated, controlled and reported in SEVEN-G. Its purpose is to ensure that the <strong>recurring cost</strong> deducted in annual net value (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>, formula F2) and the <strong>initial investment</strong> used in the economic criterion (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> §8) are complete, comparable across use cases and reconcilable with accounting.</p>
+<p>This document establishes how the cost of artificial intelligence is calculated, allocated, controlled and reported in SEVEN-G. Its purpose is to ensure that the <strong>recurring cost</strong> deducted in annual net value (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>, formula F2) and the <strong>initial investment</strong> used in the economic criterion (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> §8) are complete, comparable across use cases and reconcilable with accounting.</p>
 <p>It applies to:</p>
 <ul>
-<li>Every initiative in the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), from the cost estimate in phase 3 through to retirement.</li>
+<li>Every initiative in the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>), from the cost estimate in phase 3 through to retirement.</li>
 <li>Costs shared by several use cases: productivity suites with AI, model platforms, compute, data platforms and common teams.</li>
 <li>Corporate use of general-purpose AI, which has a cost even though it is not an initiative (01 §1.2).</li>
 </ul>
@@ -460,7 +471,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>2</td>
 <td><strong>Incremental cost for deciding</strong></td>
-<td>To decide on an additional investment (additional net value per euro, <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> F3), the cost that changes with the decision is used. A shared cost that will exist in any case is not incremental. Both views are calculated and identified.</td>
+<td>To decide on an additional investment (additional net value per euro, <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> F3), the cost that changes with the decision is used. A shared cost that will exist in any case is not incremental. Both views are calculated and identified.</td>
 </tr>
 <tr>
 <td>3</td>
@@ -470,7 +481,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>4</td>
 <td><strong>A single source of truth</strong></td>
-<td>The <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> cost is reconciled with accounting every month. Differences are explained or corrected.</td>
+<td>The <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> cost is reconciled with accounting every month. Differences are explained or corrected.</td>
 </tr>
 <tr>
 <td>5</td>
@@ -535,7 +546,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ol>
 <hr />
 <h2 id="cost-categories"><span class="antetitulo">04</span>Cost categories</h2>
-<p>The nine categories are common to all documents (common specification §5.7). Each <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> amount is classified in one category and one component.</p>
+<p>The nine categories are common to all documents (common specification §5.7). Each <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> amount is classified in one category and one component.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -545,7 +556,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Recurring</th>
 <th>Adoption</th>
 <th>Usual source</th>
-<th>Concept in the dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>)</th>
+<th>Concept in the dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</th>
 </tr>
 </thead>
 <tbody>
@@ -555,7 +566,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Sometimes</td>
 <td>Yes</td>
 <td>—</td>
-<td>Contracts, licence management (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>)</td>
+<td>Contracts, licence management (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>)</td>
 <td><code>licencias</code></td>
 </tr>
 <tr>
@@ -627,17 +638,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 <td>Yes (ongoing training)</td>
 <td>Yes</td>
-<td>Adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>), hours</td>
+<td>Adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>), hours</td>
 <td>No concept of its own; adding one is recommended</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Users' time</strong> spent in training and in reviewing system outputs is a cost. It is valued at full hourly cost and included in adoption and training (training) or in operations people (review), because omitting it inflates efficiency (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> §10, error 6).</p>
+<p><strong>Users' time</strong> spent in training and in reviewing system outputs is a cost. It is valued at full hourly cost and included in adoption and training (training) or in operations people (review), because omitting it inflates efficiency (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> §10, error 6).</p>
 <hr />
 <h2 id="total-cost-of-ownership"><span class="antetitulo">05</span>Total cost of ownership</h2>
 <h3 id="5-1-formula">5.1 Formula</h3>
 <p><strong>Total cost of ownership (H) = build cost + initial adoption cost + Σ recurring cost in year t (t = 1…H) + estimated retirement cost</strong></p>
-<p>H is the horizon approved in C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> §8.2). The total cost of ownership is not discounted; when the present value is needed, the NPV from <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> (F7) is used, which already incorporates costs through annual net value.</p>
+<p>H is the horizon approved in C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> §8.2). The total cost of ownership is not discounted; when the present value is needed, the NPV from <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> (F7) is used, which already incorporates costs through annual net value.</p>
 <h3 id="5-2-illustrative-example">5.2 Illustrative example</h3>
 <p>Use case A: assistant to resolve internal employee queries about procedures. Enterprise intensity. Horizon H = 3 years.</p>
 <div class="tabla"><table>
@@ -707,7 +718,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Total cost of ownership (3 years) = 150,000 + 30,000 + 3 × 240,000 + 10,000 = €910,000.</strong></p>
-<p><strong>Initial investment I = 150,000 + 30,000 = €180,000</strong>, the same as used in the example in <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> §8.4.</p>
+<p><strong>Initial investment I = 150,000 + 30,000 = €180,000</strong>, the same as used in the example in <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> §8.4.</p>
 <hr />
 <h2 id="analytical-allocation-of-shared-costs"><span class="antetitulo">06</span>Analytical allocation of shared costs</h2>
 <h3 id="6-1-charging-hierarchy">6.1 Charging hierarchy</h3>
@@ -748,7 +759,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Corporate overhead cost</strong> (governance, methodology, preparation of board information) is not allocated to use cases: it is reported as the company's AI governance cost, within the total cost (IND-COS-11 in <a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a>).</p>
+<p><strong>Corporate overhead cost</strong> (governance, methodology, preparation of board information) is not allocated to use cases: it is reported as the company's AI governance cost, within the total cost (IND-COS-11 in <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a>).</p>
 <h3 id="6-2-allocation-keys-by-type-of-shared-cost">6.2 Allocation keys by type of shared cost</h3>
 <div class="tabla"><table>
 <thead>
@@ -1003,7 +1014,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Check: 163,000 + 134,000 + 114,000 + 78,000 + 153,000 + 274,000 = €916,000 = 240,000 + 180,000 + 216,000 + 280,000. The €163,000 for use case A is the amount shown as allocated shared costs in its recurring cost (section 5.2).</p>
 <h3 id="6-8-incremental-view-for-deciding">6.8 Incremental view for deciding</h3>
-<p>To calculate the additional net value per euro of an extension of use case D, the cost of the suite is only incremental if the extension requires <strong>new licences</strong>. Those already paid for corporate use are not. The <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> decision sheet shows both views: full cost (for measuring) and incremental cost (for deciding).</p>
+<p>To calculate the additional net value per euro of an extension of use case D, the cost of the suite is only incremental if the extension requires <strong>new licences</strong>. Those already paid for corporate use are not. The <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> decision sheet shows both views: full cost (for measuring) and incremental cost (for deciding).</p>
 <hr />
 <h2 id="cost-tagging-in-the-cloud-and-in-models"><span class="antetitulo">07</span>Cost tagging in the cloud and in models</h2>
 <h3 id="7-1-mandatory-tags">7.1 Mandatory tags</h3>
@@ -1023,8 +1034,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><code>sistema</code></td>
-<td>System identifier in the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>)</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> identifier</td>
+<td>System identifier in the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> identifier</td>
 </tr>
 <tr>
 <td><code>entorno</code></td>
@@ -1052,14 +1063,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>No tag, no resource.</strong> Cloud policies should prevent resources from being created without the mandatory tags; if this is not possible, they are detected and corrected at the next close.</li>
 <li><strong>One model access key per use case and environment.</strong> Model consumption is channelled, where possible, through a common gateway that records the key, the use case, the model and the units consumed.</li>
-<li><strong>Agents have their own identity and budget.</strong> Each agent uses its own credentials (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>), which allow its consumption to be measured separately.</li>
+<li><strong>Agents have their own identity and budget.</strong> Each agent uses its own credentials (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>), which allow its consumption to be measured separately.</li>
 <li><strong>Tagging is verified at G5.</strong> A use case does not go into production without its own tags and keys.</li>
 <li><strong>Common cost data format.</strong> The company may adopt an open specification for cloud billing data, such as the one promoted by the <a class="ref-ext" href="https://focus.finops.org/" target="_blank" rel="noopener" title="FOCUS™ — FinOps Open Cost and Usage Specification, version 1.4">FinOps Foundation (FOCUS)</a>, to unify suppliers. The current version must be verified.</li>
 </ol>
 <hr />
 <h2 id="consumption-forecasting-and-control"><span class="antetitulo">08</span>Consumption forecasting and control</h2>
 <h3 id="8-1-budget-and-forecast">8.1 Budget and forecast</h3>
-<p>Each use case with variable costs has a monthly and annual <strong>consumption budget</strong> approved at G5 and reviewed at R6. The budget and its reconciliation with invoicing are documented in <a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a>.</p>
+<p>Each use case with variable costs has a monthly and annual <strong>consumption budget</strong> approved at G5 and reviewed at R6. The budget and its reconciliation with invoicing are documented in <a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" title="Template P63 &#183; Consumption budget and cost reconciliation">P63</a>.</p>
 <p><strong>Month-end forecast = cumulative consumption ÷ days elapsed × days in the month</strong></p>
 <p>The forecast is recalculated daily for agents and for use cases with direct exposure, and weekly for the rest. When the consumption pattern is not linear (month-end closes, campaigns), the profile of the same previous period is used.</p>
 <h3 id="8-2-alerts-and-response">8.2 Alerts and response</h3>
@@ -1085,18 +1096,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>100% of budget consumed</td>
 <td>AI Sponsor and AI Office</td>
-<td>Apply the planned level of the cost-driven degradation cascade (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>, section 10.3: optimise, validated fallback model, reduced scope or alternative without AI) or approve a supplement with a stated reason.</td>
+<td>Apply the planned level of the cost-driven degradation cascade (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>, section 10.3: optimise, validated fallback model, reduced scope or alternative without AI) or approve a supplement with a stated reason.</td>
 </tr>
 <tr>
 <td>Anomalous consumption (for example, one day far above the recent average)</td>
 <td>AI Operations Owner and security</td>
-<td>Treat it as a possible incident (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>): loop, abuse, credential leak.</td>
+<td>Treat it as a possible incident (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>): loop, abuse, credential leak.</td>
 </tr>
 </tbody>
 </table></div>
 <p>The thresholds are indicative and the company sets them in C2.</p>
 <h3 id="8-3-technical-limits-per-agent">8.3 Technical limits per agent</h3>
-<p>Agents can generate chained consumption without human intervention. Therefore, in addition to the budget, they must have <strong>technical limits</strong> configured in the security design (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) and checked at G5:</p>
+<p>Agents can generate chained consumption without human intervention. Therefore, in addition to the budget, they must have <strong>technical limits</strong> configured in the security design (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>) and checked at G5:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1127,17 +1138,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The agent's kill switch (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>) must also be able to be activated for cost reasons.</p>
+<p>The agent's kill switch (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>) must also be able to be activated for cost reasons.</p>
 <h3 id="8-4-illustrative-example">8.4 Illustrative example</h3>
 <p>Agent E with charged model consumption of €45,000 per year; monthly budget: 45,000 ÷ 12 = €3,750. Day 12 of a 30-day month; cumulative consumption: €2,100.</p>
 <ul>
 <li>Consumption against budget: 2,100 ÷ 3,750 = 56% → 50% alert.</li>
 <li>Month-end forecast: 2,100 ÷ 12 × 30 = €5,250 → 140% of budget → 80% alert.</li>
-<li>Analysis: a change in an external tool causes chained retries. It is corrected, the limit on calls per execution is lowered and the event is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</li>
+<li>Analysis: a change in an external tool causes chained retries. It is corrected, the limit on calls per execution is lowered and the event is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</li>
 </ul>
 <h3 id="8-5-cost-optimisation">8.5 Cost optimisation</h3>
-<p>Before requesting more budget, the AI Technical Owner should review, with tests confirming that quality (IND-OPE-07) does not deteriorate: the model used compared with lower-cost alternatives, the length of the context sent, the reuse of responses or intermediate results, batch processing when an immediate response is not needed, and retries. Any model change in production follows the change management in <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>.</p>
-<p>A lower-cost model can be validated before G5 as the <strong>fallback model</strong> of the cost-driven degradation cascade (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>, section 10.3): with the same evaluation set and the same bias tests as the primary model, activating it when the budget runs out is an approved operating mode and not a change. If the system spends more than a month degraded, the R6 decides between a supplement, permanent optimisation or a change of the primary model.</p>
+<p>Before requesting more budget, the AI Technical Owner should review, with tests confirming that quality (IND-OPE-07) does not deteriorate: the model used compared with lower-cost alternatives, the length of the context sent, the reuse of responses or intermediate results, batch processing when an immediate response is not needed, and retries. Any model change in production follows the change management in <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>.</p>
+<p>A lower-cost model can be validated before G5 as the <strong>fallback model</strong> of the cost-driven degradation cascade (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>, section 10.3): with the same evaluation set and the same bias tests as the primary model, activating it when the budget runs out is an approved operating mode and not a change. If the system spends more than a month degraded, the R6 decides between a supplement, permanent optimisation or a change of the primary model.</p>
 <hr />
 <h2 id="cost-per-unit-of-outcome"><span class="antetitulo">09</span>Cost per unit of outcome</h2>
 <h3 id="9-1-formula">9.1 Formula</h3>
@@ -1184,10 +1195,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The reduction in process cost (480,000 − 350,000 = €130,000) is <strong>potential capacity</strong>, not an efficiency: it only counts in net value when the lower human cost materialises (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>, rule 3). The cost per unit is an efficiency indicator for the use case (IND-COS-05), not a value figure.</p>
+<p>The reduction in process cost (480,000 − 350,000 = €130,000) is <strong>potential capacity</strong>, not an efficiency: it only counts in net value when the lower human cost materialises (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>, rule 3). The cost per unit is an efficiency indicator for the use case (IND-COS-05), not a value figure.</p>
 <hr />
 <h2 id="cost-of-stop-decisions"><span class="antetitulo">10</span>Cost of stop decisions</h2>
-<p>Stopping or retiring an initiative is a valid outcome of the method (01 §7.3). So that those who stop are not penalised financially, and so that the board can see the effect of these decisions, the following magnitudes are recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> when the stop or retirement is registered:</p>
+<p>Stopping or retiring an initiative is a valid outcome of the method (01 §7.3). So that those who stop are not penalised financially, and so that the board can see the effect of these decisions, the following magnitudes are recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> and <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> when the stop or retirement is registered:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1272,7 +1283,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Monthly close</strong></td>
-<td>Loading of cloud, model and licence invoicing; hours charged; allocation; reconciliation of <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> with accounting; budget alerts.</td>
+<td>Loading of cloud, model and licence invoicing; hours charged; allocation; reconciliation of <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> with accounting; budget alerts.</td>
 <td>Management control with the AI Office</td>
 </tr>
 <tr>
@@ -1307,8 +1318,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Total AI cost in accounting = Σ cost charged to use cases + corporate use cost + governance overhead cost + unattributed cost</strong></p>
 <p>Differences are explained (accruals, pending invoices) or corrected before the next close. A difference left unexplained for two consecutive closes is reported to the AI Committee.</p>
 <hr />
-<h2 id="tool-t13-cost-calculator-per-use-case"><span class="antetitulo">12</span>Tool <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> · Cost calculator per use case</h2>
-<p><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> is a module of the <a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> calculator (&quot;Costs per use case&quot; view, serverless HTML, 03 §5.3): it exports CSV (spreadsheet) and JSON with the expected values for <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. The consumption budget, the allocation keys and the reconciliation are documented with <a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a>.</p>
+<h2 id="tool-t13-cost-calculator-per-use-case"><span class="antetitulo">12</span>Tool <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> · Cost calculator per use case</h2>
+<p><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> is a module of the <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a> calculator (&quot;Costs per use case&quot; view, serverless HTML, 03 §5.3): it exports CSV (spreadsheet) and JSON with the expected values for <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>. The consumption budget, the allocation keys and the reconciliation are documented with <a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" title="Template P63 &#183; Consumption budget and cost reconciliation">P63</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1329,7 +1340,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Estimate per use case</strong></td>
 <td>Costs by category and component; volume and consumption assumptions.</td>
 <td>Initial investment; recurring cost; total cost of ownership; incremental view.</td>
-<td>Data for <a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> (NPV, ROI, payback) and for G3.</td>
+<td>Data for <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a> (NPV, ROI, payback) and for G3.</td>
 </tr>
 <tr>
 <td><strong>Shared costs</strong></td>
@@ -1363,7 +1374,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Minimum <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> validations: no amount without a category and component; no shared cost without an approved key; the allocated sum equals the total of the shared cost; nulls are shown as &quot;no data&quot;.</p>
+<p>Minimum <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> validations: no amount without a category and component; no shared cost without an approved key; the allocated sum equals the total of the shared cost; nulls are shown as &quot;no data&quot;.</p>
 <hr />
 <h2 id="associated-tools-and-templates"><span class="antetitulo">13</span>Associated tools and templates</h2>
 <div class="tabla"><table>
@@ -1376,67 +1387,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
+<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></strong></td>
 <td>Cost calculator per use case</td>
 <td>Main tool of this document.</td>
 </tr>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Costs per use case, alert events, stops.</td>
 </tr>
 <tr id="cod-t02">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>System identifier for tagging.</td>
 </tr>
 <tr id="cod-t11">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></strong></td>
+<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a></strong></td>
 <td>Value hypothesis canvas and calculator</td>
 <td>Use of the initial investment and recurring cost in F2, F3 and F7–F9.</td>
 </tr>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Actual recurring cost in net value per period.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Cost per use case and total AI cost.</td>
 </tr>
 <tr id="cod-t21">
-<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
+<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a></strong></td>
 <td>Corporate AI use monitor</td>
 <td>Assigned and active licences.</td>
 </tr>
 <tr id="cod-p10">
-<td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></strong></td>
+<td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a></strong></td>
 <td>Feasibility assessment</td>
 <td>Estimate of full costs in phase 3.</td>
 </tr>
 <tr id="cod-p18">
-<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></strong></td>
+<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a></strong></td>
 <td>Security design (includes agents)</td>
 <td>Technical consumption limits per agent.</td>
 </tr>
 <tr id="cod-p20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Adoption cost.</td>
 </tr>
 <tr id="cod-p25">
-<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
+<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a></strong></td>
 <td>Monitoring and alert configuration</td>
 <td>Consumption alerts.</td>
 </tr>
 <tr id="cod-p30">
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></strong></td>
 <td>Scaling or retirement decision</td>
 <td>Retirement cost and cost of stopping.</td>
 </tr>
 <tr id="cod-p63">
-<td><strong><a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a></strong></td>
+<td><strong><a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" title="Template P63 &#183; Consumption budget and cost reconciliation">P63</a></strong></td>
 <td>Consumption budget and cost reconciliation</td>
 <td>Consumption budget, forecast, alerts and reconciliation with invoicing (section 8).</td>
 </tr>
@@ -1458,7 +1469,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Tools and initiative register</strong></td>
-<td>Definition of <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> and common data model.</td>
+<td>Definition of <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> and common data model.</td>
 </tr>
 <tr>
 <td><strong>13 · AI thesis and risk appetite</strong></td>
@@ -1508,12 +1519,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Defines the cost components (build, adoption, recurring and retirement), the nine categories with their equivalent in the dashboard, the total cost of ownership, the analytical allocation of shared costs with charging hierarchy, keys and examples, tagging, consumption forecasting and control with limits per agent, the cost per unit of outcome, the cost of stop decisions, integration with management control and the content of <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>.</td>
+<td>First version. Defines the cost components (build, adoption, recurring and retirement), the nine categories with their equivalent in the dashboard, the total cost of ownership, the analytical allocation of shared costs with charging hierarchy, keys and examples, tagging, consumption forecasting and control with limits per agent, the cost per unit of outcome, the cost of stop decisions, integration with management control and the content of <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>.</td>
 </tr>
 <tr>
 <td>0.1</td>
 <td>18-09-2026</td>
-<td>Response at 100% of the budget linked to the cost-driven degradation cascade in <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a> (section 10.3) and fallback model validated before G5 (section 8.5).</td>
+<td>Response at 100% of the budget linked to the cost-driven degradation cascade in <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a> (section 10.3) and fallback model validated before G5 (section 8.5).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1754,6 +1765,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

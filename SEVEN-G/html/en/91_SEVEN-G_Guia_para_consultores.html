@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/91_SEVEN-G_Guia_para_consultores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/91_SEVEN-G_Guia_para_consultores.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/91_SEVEN-G_Guia_para_consultores.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Maturity diagnosis</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#using-seven-g-as-a-third-party"><span>02</span>Using SEVEN-G as a third party</a></li><li><a href="#support-principles"><span>03</span>Support principles</a></li><li><a href="#support-models"><span>04</span>Support models</a></li><li><a href="#independence-and-conflicts-of-interest"><span>05</span>Independence and conflicts of interest</a></li><li><a href="#use-of-the-seven-g-name"><span>06</span>Use of the SEVEN-G name</a></li><li><a href="#service-quality"><span>07</span>Service quality</a></li><li><a href="#what-must-not-be-promised"><span>08</span>What must not be promised</a></li><li><a href="#associated-tools-and-templates"><span>09</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>10</span>Related documents</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="condicional"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Conditional: depends on a trigger</span></div><p>Trigger: the company hires external support or a professional applies SEVEN-G for third parties. It sets support models, independence and transfer to avoid dependence on the consultant.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
@@ -443,11 +454,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>The service quality commitments.</li>
 <li>What must not be promised.</li>
 </ul>
-<p>It does not regulate the commercial terms between the third party and its client, which are freely agreed. The licence for use is in <a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>.</p>
+<p>It does not regulate the commercial terms between the third party and its client, which are freely agreed. The licence for use is in <a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>.</p>
 <hr />
 <h2 id="using-seven-g-as-a-third-party"><span class="antetitulo">02</span>Using SEVEN-G as a third party</h2>
 <h3 id="2-1-what-it-allows">2.1 What it allows</h3>
-<p>SEVEN-G content is published under a <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">CC BY 4.0</a> licence (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>). Any third party may use, adapt and apply it in professional services, including paid services, <strong>without needing authorisation or having to engage the author</strong>, provided that they give credit for authorship, indicate the changes and do not suggest that the author endorses their service.</p>
+<p>SEVEN-G content is published under a <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">CC BY 4.0</a> licence (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>). Any third party may use, adapt and apply it in professional services, including paid services, <strong>without needing authorisation or having to engage the author</strong>, provided that they give credit for authorship, indicate the changes and do not suggest that the author endorses their service.</p>
 <h3 id="2-2-what-responsibilities-it-entails">2.2 What responsibilities it entails</h3>
 <div class="tabla"><table>
 <thead>
@@ -485,8 +496,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Dual validation at <em>gates</em> and a real possibility of stopping (01 §7).</li>
 <li>The ten value measurement rules (00 §6), in particular the validation status of each amount and the rule that released capacity is not added until it materialises.</li>
 <li>Ambition classification using the five questions (00 §5.2).</li>
-<li>Maturity based on observable evidence, not on self-assessment (<a href="11_SEVEN-G_Modelo_de_madurez.html">document 11</a>).</li>
-<li>Register of recommendations with persistent identifiers and independent assessment (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">document 62</a>).</li>
+<li>Maturity based on observable evidence, not on self-assessment (<a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>).</li>
+<li>Register of recommendations with persistent identifiers and independent assessment (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Document 62 &#183; Recommendations and decisions register">document 62</a>).</li>
 </ol>
 <p>A service that omits any of these rules may draw inspiration from SEVEN-G, but must not be presented as an application of SEVEN-G (section 6).</p>
 <hr />
@@ -612,7 +623,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Deliverables</strong></td>
-<td>Diagnosis report (<a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html">P33</a>) · Initial inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) · Maturity diagnosis with evidence (<a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>) · Transformation index profile (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>) · Sphere map (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>) · One-page summary for the board (60 §4.2).</td>
+<td>Diagnosis report (<a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html" title="Template P33 &#183; C1 diagnosis report">P33</a>) · Initial inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>) · Maturity diagnosis with evidence (<a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>) · Transformation index profile (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>) · Sphere map (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a>) · One-page summary for the board (60 §4.2).</td>
 </tr>
 <tr>
 <td><strong>Third-party roles</strong></td>
@@ -639,7 +650,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When</strong></td>
-<td>The company has decided to adopt SEVEN-G and wants a first implementation (01 §5.3; <a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>).</td>
+<td>The company has decided to adopt SEVEN-G and wants a first implementation (01 §5.3; <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>).</td>
 </tr>
 <tr>
 <td><strong>Scope</strong></td>
@@ -651,7 +662,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Deliverables</strong></td>
-<td>Those of M1 · Proposed AI thesis and risk appetite (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>) · Corporate AI policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>) · Governance model with role assignment · Prioritised portfolio · Initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) and register of recommendations (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>) with real data · Regularisation plan for existing systems (01 §14; <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a> §9) · First quarterly pack (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a>).</td>
+<td>Those of M1 · Proposed AI thesis and risk appetite (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>) · Corporate AI policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>) · Governance model with role assignment · Prioritised portfolio · Initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) and register of recommendations (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>) with real data · Regularisation plan for existing systems (01 §14; <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Template P36 &#183; C3 portfolio plan">P36</a> §9) · First quarterly pack (<a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a>).</td>
 </tr>
 <tr>
 <td><strong>Third-party roles</strong></td>
@@ -690,7 +701,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Deliverables</strong></td>
-<td>Audit plan with scope, criteria and sample (<a href="plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html">P58</a>) · Working papers with evidence (<a href="plantillas/P59_SEVEN-G_Papeles_de_auditoria.html">P59</a>) · Report (<a href="plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html">P60</a>) with a conclusion of <strong>Conformant</strong>, <strong>Conformant with observations</strong> or <strong>Nonconformant</strong> · Nonconformities detected, classified as minor, major or critical · Recommendations for the register (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">document 62</a>).</td>
+<td>Audit plan with scope, criteria and sample (<a href="plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html" title="Template P58 &#183; Annual AI audit plan">P58</a>) · Working papers with evidence (<a href="plantillas/P59_SEVEN-G_Papeles_de_auditoria.html" title="Template P59 &#183; Audit working papers">P59</a>) · Report (<a href="plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html" title="Template P60 &#183; Audit report and finding records">P60</a>) with a conclusion of <strong>Conformant</strong>, <strong>Conformant with observations</strong> or <strong>Nonconformant</strong> · Nonconformities detected, classified as minor, major or critical · Recommendations for the register (<a href="62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Document 62 &#183; Recommendations and decisions register">document 62</a>).</td>
 </tr>
 <tr>
 <td><strong>Third-party roles</strong></td>
@@ -702,7 +713,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quality criterion</strong></td>
-<td>Criteria, sample and limitations declared; each finding with evidence; conclusion consistent with the findings. The AI audit framework (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a>) is followed.</td>
+<td>Criteria, sample and limitations declared; each finding with evidence; conclusion consistent with the findings. The AI audit framework (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a>) is followed.</td>
 </tr>
 </tbody>
 </table></div>
@@ -721,7 +732,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Scope</strong></td>
-<td>Preparation of sessions using the guide in <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">document 61</a>; review of the quarterly pack before it is sent (60 §11); formulation of recommendations; independent assessment of recommendations when the board commissions it; support for the annual C2 and C5 decisions; board training.</td>
+<td>Preparation of sessions using the guide in <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Document 61 &#183; Board conversation guide">document 61</a>; review of the quarterly pack before it is sent (60 §11); formulation of recommendations; independent assessment of recommendations when the board commissions it; support for the annual C2 and C5 decisions; board training.</td>
 </tr>
 <tr>
 <td><strong>Out of scope</strong></td>
@@ -733,7 +744,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Third-party roles</strong></td>
-<td>Director or adviser with AI experience (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">document 61</a>, section 10).</td>
+<td>Director or adviser with AI experience (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Document 61 &#183; Board conversation guide">document 61</a>, section 10).</td>
 </tr>
 <tr>
 <td><strong>Company roles</strong></td>
@@ -768,7 +779,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Deliverables</strong></td>
-<td>Updated registers · Monthly funnel metrics · Drafts of the quarterly pack for review by the AI Office · Transfer plan (<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a>) with a date for exit or reduction of the service.</td>
+<td>Updated registers · Monthly funnel metrics · Drafts of the quarterly pack for review by the AI Office · Transfer plan (<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Template P71 &#183; Transfer plan and exit note">P71</a>) with a date for exit or reduction of the service.</td>
 </tr>
 <tr>
 <td><strong>Third-party roles</strong></td>
@@ -878,7 +889,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="5-5-declaration-of-independence">5.5 Declaration of independence</h3>
-<p>At the start of every M3 or M4 service, and whenever the situation changes, the third party delivers a written declaration setting out: services provided to the client and its group in the last three years, relationships with relevant suppliers, fee structure, assigned staff and absence of incompatibilities under section 5.2. <a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>, Model C, is used.</p>
+<p>At the start of every M3 or M4 service, and whenever the situation changes, the third party delivers a written declaration setting out: services provided to the client and its group in the last three years, relationships with relevant suppliers, fee structure, assigned staff and absence of incompatibilities under section 5.2. <a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Template P41 &#183; Declarations of independence and conflicts of interest">P41</a>, Model C, is used.</p>
 <hr />
 <h2 id="use-of-the-seven-g-name"><span class="antetitulo">06</span>Use of the SEVEN-G name</h2>
 <h3 id="6-1-what-may-be-said">6.1 What may be said</h3>
@@ -931,7 +942,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>&quot;Endorsed by Fernando García Varela&quot; or similar certification claim</td>
-<td>The licence does not authorise suggesting endorsement by the author (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>).</td>
+<td>The licence does not authorise suggesting endorsement by the author (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>).</td>
 </tr>
 <tr>
 <td>&quot;<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> compliance guaranteed by SEVEN-G&quot;</td>
@@ -939,7 +950,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>&quot;The client complies with regulation according to SEVEN-G&quot; or any declaration or certification of a client's regulatory compliance on behalf of SEVEN-G or the author</td>
-<td>The consultant may not declare or certify a client's regulatory compliance on behalf of SEVEN-G or the author: that responsibility lies with the organisation and, where applicable, with the professional who assumes it under their own signature. The consultant must pass the SEVEN-G legal notice on in their deliverables (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>, section 11).</td>
+<td>The consultant may not declare or certify a client's regulatory compliance on behalf of SEVEN-G or the author: that responsibility lies with the organisation and, where applicable, with the professional who assumes it under their own signature. The consultant must pass the SEVEN-G legal notice on in their deliverables (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>, section 11).</td>
 </tr>
 <tr>
 <td>&quot;SEVEN-G&quot; applied to a service that omits essential rules without declaring it</td>
@@ -954,7 +965,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Does not turn the declaration into a certification or grant any seal.</li>
 <li>Does not commit the author of the framework.</li>
 </ul>
-<p>Template for a declaration of application (template <a href="plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html">P61</a>):</p>
+<p>Template for a declaration of application (template <a href="plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" title="Template P61 &#183; SEVEN-G declaration of application">P61</a>):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1064,18 +1075,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="7-2-deliverable-checklist">7.2 Deliverable checklist</h3>
 <ul class="contains-task-list">
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> States the SEVEN-G version, adaptations and credit for authorship in accordance with the licence.</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Uses the official terms in the glossary (translation guide and <a href="02_SEVEN-G_Glosario_y_convenciones.html">document 02</a>).</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Maturity: each level with evidence; overall level calculated with the rule in <a href="11_SEVEN-G_Modelo_de_madurez.html">document 11</a>.</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Uses the official terms in the glossary (translation guide and <a href="02_SEVEN-G_Glosario_y_convenciones.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a>).</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Maturity: each level with evidence; overall level calculated with the rule in <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Value: formula, status, separation of efficiencies, return and cost; validated proportion visible.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Risk: scales and levels from the common specification; Critical residual risk identified.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> No proposed condition affects critical security controls, legal compliance or human oversight.</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Business language for the board (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">document 61</a>).</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Business language for the board (<a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Document 61 &#183; Board conversation guide">document 61</a>).</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> Reviewed by a second professional.</li>
 <li class="task-list-item"><input disabled="disabled" type="checkbox" /> No data from other clients; examples marked as fictitious.</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Regulatory content with the date of consultation and a notice that it does not constitute legal advice; includes the SEVEN-G legal notice (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>, section 11.9) and does not declare or certify regulatory compliance on behalf of SEVEN-G or the author.</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Regulatory content with the date of consultation and a notice that it does not constitute legal advice; includes the SEVEN-G legal notice (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>, section 11.9) and does not declare or certify regulatory compliance on behalf of SEVEN-G or the author.</li>
 </ul>
 <h3 id="7-3-service-exit">7.3 Service exit</h3>
-<p>On completion of any model, the third party delivers: registers and data in an open format, a list of evidence and its location, pending decisions and recommendations with an owner, and a note on open risks. The company must not need the third party to read or maintain anything that has been delivered. It is documented with <a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a>.</p>
+<p>On completion of any model, the third party delivers: registers and data in an open format, a list of evidence and its location, pending decisions and recommendations with an owner, and a note on open risks. The company must not need the third party to read or maintain anything that has been delivered. It is documented with <a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Template P71 &#183; Transfer plan and exit note">P71</a>.</p>
 <hr />
 <h2 id="what-must-not-be-promised"><span class="antetitulo">08</span>What must not be promised</h2>
 <div class="tabla"><table>
@@ -1120,7 +1131,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>&quot;Our clients obtain on average…&quot;</td>
 <td>A claim that cannot be demonstrated without verifiable and authorised data.</td>
-<td>Omit it, or present fictitious cases marked as such (<a href="92_SEVEN-G_Casos_de_aplicacion.html">document 92</a>).</td>
+<td>Omit it, or present fictitious cases marked as such (<a href="92_SEVEN-G_Casos_de_aplicacion.html" title="Document 92 &#183; Application cases">document 92</a>).</td>
 </tr>
 <tr>
 <td>&quot;Implementation in X weeks&quot; without a diagnosis</td>
@@ -1151,102 +1162,102 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 <td>Initiative register</td>
 <td>M2, M5</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></td>
 <td>AI system inventory</td>
 <td>M1, M2, M3</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
 <td><em>Gate</em> manager</td>
 <td>M2, M3, M5</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
+<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></td>
 <td>Transformation index calculator</td>
 <td>M1, M4 (C5)</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a></td>
+<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></td>
 <td>Maturity diagnosis</td>
 <td>M1, M2, M4 (C5)</td>
 </tr>
 <tr>
-<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></td>
+<td><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a></td>
 <td>Portfolio sphere map</td>
 <td>M1, M2</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
 <td>Board AI dashboard</td>
 <td>M2, M4, M5</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></td>
 <td>Board recommendations register</td>
 <td>M2, M3, M4</td>
 </tr>
 <tr>
-<td><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></td>
+<td><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a></td>
 <td>AI thesis and risk appetite template</td>
 <td>M2</td>
 </tr>
 <tr>
-<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a></td>
 <td>Role assignment record</td>
 <td>M2, M3 (incompatibilities)</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></td>
 <td><em>Gate</em> decision record</td>
 <td>M3 (sampling)</td>
 </tr>
 <tr>
-<td><a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html">P33</a></td>
+<td><a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html" title="Template P33 &#183; C1 diagnosis report">P33</a></td>
 <td>C1 diagnosis report</td>
 <td>M1, M2</td>
 </tr>
 <tr>
-<td><a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a></td>
+<td><a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Template P36 &#183; C3 portfolio plan">P36</a></td>
 <td>C3 portfolio plan</td>
 <td>M2 (regularisation plan)</td>
 </tr>
 <tr>
-<td><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a></td>
+<td><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Template P41 &#183; Declarations of independence and conflicts of interest">P41</a></td>
 <td>Declarations of independence and conflicts of interest</td>
 <td>M3, M4 (Model C)</td>
 </tr>
 <tr>
-<td><a href="plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html">P58</a></td>
+<td><a href="plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html" title="Template P58 &#183; Annual AI audit plan">P58</a></td>
 <td>Annual AI audit plan</td>
 <td>M3</td>
 </tr>
 <tr>
-<td><a href="plantillas/P59_SEVEN-G_Papeles_de_auditoria.html">P59</a></td>
+<td><a href="plantillas/P59_SEVEN-G_Papeles_de_auditoria.html" title="Template P59 &#183; Audit working papers">P59</a></td>
 <td>Audit working papers</td>
 <td>M3</td>
 </tr>
 <tr>
-<td><a href="plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html">P60</a></td>
+<td><a href="plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html" title="Template P60 &#183; Audit report and finding records">P60</a></td>
 <td>Audit report and finding records</td>
 <td>M3</td>
 </tr>
 <tr>
-<td><a href="plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html">P61</a></td>
+<td><a href="plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" title="Template P61 &#183; SEVEN-G declaration of application">P61</a></td>
 <td>SEVEN-G declaration of application</td>
 <td>M2, M3</td>
 </tr>
 <tr>
-<td><a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html">P70</a></td>
+<td><a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html" title="Template P70 &#183; Proposal and engagement letter">P70</a></td>
 <td>Proposal and engagement letter</td>
 <td>M1, M2, M3, M4, M5</td>
 </tr>
 <tr>
-<td><a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a></td>
+<td><a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Template P71 &#183; Transfer plan and exit note">P71</a></td>
 <td>Transfer plan and exit note</td>
 <td>M1, M2, M3, M4, M5</td>
 </tr>
@@ -1555,6 +1566,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

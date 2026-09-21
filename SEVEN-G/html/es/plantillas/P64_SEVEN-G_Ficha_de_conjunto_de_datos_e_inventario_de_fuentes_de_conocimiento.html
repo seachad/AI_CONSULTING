@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#ficha-de-conjunto-de-datos"><span>03</span>Ficha de conjunto de datos</a></li><li><a href="#calidad-por-dimension"><span>04</span>Calidad por dimensión</a></li><li><a href="#representatividad-y-sesgos-conocidos"><span>05</span>Representatividad y sesgos conocidos</a></li><li><a href="#inventario-de-fuentes-de-conocimiento"><span>06</span>Inventario de fuentes de conocimiento</a></li><li><a href="#admision-curacion-y-permisos-de-cada-fuente"><span>07</span>Admisión, curación y permisos de cada fuente</a></li><li><a href="#mapa-de-dependencia-de-conocimiento"><span>08</span>Mapa de dependencia de conocimiento</a></li><li><a href="#plan-de-captura"><span>09</span>Plan de captura</a></li><li><a href="#criterios-de-calidad"><span>10</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>11</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>12</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -449,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
-<td>Fichas: responsable técnico de IA con el propietario y el custodio del dato. Fuentes: responsable de contenido o de conocimiento. Mapa y plan: la oficina de IA coordina con las áreas propietarias de cada dominio, con la función de personas (<a href="../50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>).</td>
+<td>Fichas: responsable técnico de IA con el propietario y el custodio del dato. Fuentes: responsable de contenido o de conocimiento. Mapa y plan: la oficina de IA coordina con las áreas propietarias de cada dominio, con la función de personas (<a href="../50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a>).</td>
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
@@ -465,11 +476,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>Catálogo de datos de la compañía, si existe; atributos del sistema en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>. No hay herramienta propia (51 §15).</td>
+<td>Catálogo de datos de la compañía, si existe; atributos del sistema en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>. No hay herramienta propia (51 §15).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>Documento 51 (§4.2, §4.3, §4.5, §8, §10.1–10.6); <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> para el linaje que usa estas fichas.</td>
+<td>Documento 51 (§4.2, §4.3, §4.5, §8, §10.1–10.6); <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a> para el linaje que usa estas fichas.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -481,7 +492,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>Ningún dato sin propietario</strong> y <strong>ninguna fuente sin responsable de contenido</strong> (51 §3, principios 1 y 7).</li>
 <li>Si la compañía ya tiene un catálogo de datos, la ficha se implementa como extensión de ese catálogo y aquí solo se enlaza.</li>
-<li>Los identificadores de conjuntos (CD-NN) y fuentes (F-NN) son los mismos que usa <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; las fuentes de conocimiento se numeran FC-NN y los dominios críticos DC-NN.</li>
+<li>Los identificadores de conjuntos (CD-NN) y fuentes (F-NN) son los mismos que usa <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>; las fuentes de conocimiento se numeran FC-NN y los dominios críticos DC-NN.</li>
 <li>La calidad se mide sobre datos reales, con umbrales fijados por caso en la fase 3.</li>
 <li>Esta plantilla no constituye asesoramiento jurídico. La base legal la valida protección de datos.</li>
 </ul>
@@ -499,17 +510,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). No aplica al mapa de dependencia.</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>). No aplica al mapa de dependencia.</td>
 </tr>
 <tr>
 <td>Sistemas de IA</td>
 <td></td>
-<td>SIA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
+<td>SIA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>).</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria</td>
 <td></td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>Intensidad</td>
@@ -543,7 +554,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Identificador y nombre</td>
 <td></td>
-<td>CD-NN, el mismo de <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>CD-NN, el mismo de <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>.</td>
 </tr>
 <tr>
 <td>Propietario (negocio) y custodio (tecnología)</td>
@@ -598,7 +609,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistemas que lo usan</td>
 <td></td>
-<td>Iniciativas y versiones de modelo; enlace a <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>.</td>
+<td>Iniciativas y versiones de modelo; enlace a <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>.</td>
 </tr>
 <tr>
 <td>Versión y fecha de congelación</td>
@@ -615,7 +626,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><em>(Ejemplo ilustrativo)</em> CD-01 · Histórico de órdenes de trabajo de mantenimiento 2023–2025 · propietario: jefatura de mantenimiento · custodio: equipo de plataforma de datos · 180.000 registros · sin datos personales tras seudonimizar el identificador del técnico · finalidad autorizada: estimar la probabilidad de avería · congelado en la versión 3 el 15-11-2026.</p>
 <hr />
 <h2 id="calidad-por-dimension"><span class="antetitulo">04</span>Calidad por dimensión</h2>
-<p>Umbrales fijados en la fase 3; se convierten en controles de monitorización en <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</p>
+<p>Umbrales fijados en la fase 3; se convierten en controles de monitorización en <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -727,12 +738,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sesgos conocidos y medidas</td>
 <td></td>
-<td>Enlace a las pruebas de <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> y a los riesgos de <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>Enlace a las pruebas de <a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a> y a los riesgos de <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>.</td>
 </tr>
 <tr>
 <td>Uso de categorías especiales para detectar sesgos</td>
 <td></td>
-<td>Solo con decisión documentada con el delegado de protección de datos y garantías (51 §9.4); referencia a <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Solo con decisión documentada con el delegado de protección de datos y garantías (51 §9.4); referencia a <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -950,10 +961,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La captura se hace con participación voluntaria informada y reconocimiento del experto, y no se usa como paso previo a prescindir de la persona sin evaluar el efecto conforme al <a href="../50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>.</p>
+<p>La captura se hace con participación voluntaria informada y reconocimiento del experto, y no se usa como paso previo a prescindir de la persona sin evaluar el efecto conforme al <a href="../50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a>.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">10</span>Criterios de calidad</h2>
-<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (G3.02, G3.03 y G4.03); indicadores DAT y CNC del <a href="../51_SEVEN-G_Datos_y_conocimiento.html">documento 51</a> §12.</p>
+<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (G3.02, G3.03 y G4.03); indicadores DAT y CNC del <a href="../51_SEVEN-G_Datos_y_conocimiento.html" title="Documento 51 &#183; Datos y conocimiento para IA">documento 51</a> §12.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1338,6 +1349,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

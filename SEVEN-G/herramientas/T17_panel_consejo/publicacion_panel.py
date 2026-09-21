@@ -62,7 +62,8 @@ def textos_con_aviso(textos, aviso=AVISO_LEGAL, aviso_corto=AVISO_LEGAL_CORTO):
     return tx
 
 
-MARCA_MOVIL = '<div class="foot" id="aviso-legal">'
+# el aviso va plegado: se ve su título y se despliega al pulsar (D93)
+MARCA_MOVIL = '<details class="foot" id="aviso-legal"><summary style="cursor:pointer;font-weight:700">Aviso legal (pulsa para verlo)</summary>'
 
 
 def aviso_en_movil(ruta, aviso=AVISO_LEGAL):
@@ -73,7 +74,7 @@ def aviso_en_movil(ruta, aviso=AVISO_LEGAL):
         return False
     ancla = '<div class="foot" id="pie"></div>'
     assert ancla in page, f"no se encuentra el pie del panel movil en {ruta}"
-    page = page.replace(ancla, MARCA_MOVIL + aviso + "</div>\n " + ancla, 1)
+    page = page.replace(ancla, MARCA_MOVIL + aviso + "</details>\n " + ancla, 1)
     open(ruta, "w", encoding="utf-8").write(page)
     return True
 

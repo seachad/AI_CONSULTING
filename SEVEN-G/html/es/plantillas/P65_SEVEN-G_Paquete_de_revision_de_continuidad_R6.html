@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#resumen-para-la-decision"><span>03</span>Resumen para la decisión</a></li><li><a href="#bloque-1-valor-p28-t12"><span>04</span>Bloque 1 · Valor (P28, T12)</a></li><li><a href="#bloque-2-capacidad-liberada-t20"><span>05</span>Bloque 2 · Capacidad liberada (T20)</a></li><li><a href="#bloque-3-coste-t13"><span>06</span>Bloque 3 · Coste (T13)</a></li><li><a href="#bloque-4-estabilidad-rendimiento-y-calidad-p25"><span>07</span>Bloque 4 · Estabilidad, rendimiento y calidad (P25)</a></li><li><a href="#bloque-5-incidentes-y-cambios-p27-t08"><span>08</span>Bloque 5 · Incidentes y cambios (P27, T08)</a></li><li><a href="#bloque-6-agentes-p25-t10"><span>09</span>Bloque 6 · Agentes (P25, T10)</a></li><li><a href="#bloque-7-supervision-humana-y-adopcion-documento-50"><span>10</span>Bloque 7 · Supervisión humana y adopción (documento 50)</a></li><li><a href="#bloque-8-riesgo-y-cumplimiento-p11-p12-t04-t07"><span>11</span>Bloque 8 · Riesgo y cumplimiento (P11, P12, T04, T07)</a></li><li><a href="#bloque-9-continuidad-p19-p14"><span>12</span>Bloque 9 · Continuidad (P19, P14)</a></li><li><a href="#comprobacion-de-los-criterios-r6"><span>13</span>Comprobación de los criterios R6</a></li><li><a href="#bloque-10-desviaciones-y-propuesta"><span>14</span>Bloque 10 · Desviaciones y propuesta</a></li><li><a href="#criterios-de-calidad"><span>15</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>16</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>17</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -445,7 +456,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>En cada R6: al menos trimestral en Enterprise y semestral en Lite. Se adelanta tras un incidente S1 o S2, un cambio sustancial o un cambio relevante del proveedor (52 §8.1). Puede coincidir con la revisión a 6 o 12 meses (43 §8.1); en ese caso se adjunta el informe de <a href="P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html">P62</a>.</td>
+<td>En cada R6: al menos trimestral en Enterprise y semestral en Lite. Se adelanta tras un incidente S1 o S2, un cambio sustancial o un cambio relevante del proveedor (52 §8.1). Puede coincidir con la revisión a 6 o 12 meses (43 §8.1); en ese caso se adjunta el informe de <a href="P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a>.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -453,7 +464,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
-<td>Oficina de IA en Lite; auditor de IA en Enterprise, con la lista LV-R6 del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</td>
+<td>Oficina de IA en Lite; auditor de IA en Enterprise, con la lista LV-R6 del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a>.</td>
 </tr>
 <tr>
 <td><strong>Quién decide</strong></td>
@@ -461,15 +472,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Etapa, <em>gate</em> o momento</strong></td>
-<td>R6 · Revisión de continuidad (fase 6). El resultado se registra en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>R6 · Revisión de continuidad (fase 6). El resultado se registra en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>.</td>
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (eventos y fechas de R6), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> (verificación), <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>, <a href="P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> como fuentes.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (eventos y fechas de R6), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> (verificación), <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>, <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a> como fuentes.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>Documento 52 §8; criterios R6.01–R6.16 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> §6.7; LV-R6 del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a> §9.</td>
+<td>Documento 52 §8; criterios R6.01–R6.16 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> §6.7; LV-R6 del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a> §9.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -482,7 +493,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Mismo periodo para todos los bloques.</strong> Cada dato indica su fecha de corte; un dato de otro periodo se señala.</li>
 <li><strong>Se aporta la evidencia, no un resumen de ella:</strong> cada bloque enlaza la versión vigente de su plantilla o el informe de su herramienta.</li>
 <li><strong>&quot;Sin dato&quot; no es cero.</strong> Un bloque sin dato se marca como tal y su criterio queda <em>Pendiente</em>.</li>
-<li>Este paquete es la <strong>propuesta del equipo</strong>. No sustituye la verificación (LV-R6) ni la decisión, que se registran en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</li>
+<li>Este paquete es la <strong>propuesta del equipo</strong>. No sustituye la verificación (LV-R6) ni la decisión, que se registran en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>.</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -498,12 +509,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Sistemas de IA</td>
 <td></td>
-<td>SIA-AAAA-NNN (<a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
+<td>SIA-AAAA-NNN (<a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>).</td>
 </tr>
 <tr>
 <td>Tipo de sistema y nivel de autonomía</td>
@@ -513,7 +524,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad, nivel de ambición y clasificación regulatoria</td>
 <td></td>
-<td><a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td><a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>, <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a>, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>Número de R6 y periodo revisado</td>
@@ -528,7 +539,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Fecha de la R6 anterior y su resultado</td>
 <td></td>
-<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>.</td>
 </tr>
 <tr>
 <td>Fecha límite según la periodicidad (R6.01)</td>
@@ -618,7 +629,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-1-valor-p28-t12"><span class="antetitulo">04</span>Bloque 1 · Valor (<a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>)</h2>
+<h2 id="bloque-1-valor-p28-t12"><span class="antetitulo">04</span>Bloque 1 · Valor (<a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -636,7 +647,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Realización del periodo y acumulada (F10)</td>
 <td></td>
-<td>Frente a la curva de <a href="P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html">P62</a>.</td>
+<td>Frente a la curva de <a href="P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Plantilla P62 &#183; Plan de realizaci&#243;n de beneficios">P62</a>.</td>
 </tr>
 <tr>
 <td>Proporción validada (F6)</td>
@@ -661,12 +672,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Evidencia</td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> versión y fecha.</td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> versión y fecha.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-2-capacidad-liberada-t20"><span class="antetitulo">05</span>Bloque 2 · Capacidad liberada (<a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>)</h2>
+<h2 id="bloque-2-capacidad-liberada-t20"><span class="antetitulo">05</span>Bloque 2 · Capacidad liberada (<a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -692,7 +703,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-3-coste-t13"><span class="antetitulo">06</span>Bloque 3 · Coste (<a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>)</h2>
+<h2 id="bloque-3-coste-t13"><span class="antetitulo">06</span>Bloque 3 · Coste (<a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -715,10 +726,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Activaciones y días en modo degradado por coste, por nivel</td>
 <td></td>
-<td>N1–N4 (<a href="P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a> §8).</td>
+<td>N1–N4 (<a href="P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" title="Plantilla P63 &#183; Presupuesto de consumo y conciliaci&#243;n de costes">P63</a> §8).</td>
 </tr>
 <tr>
-<td>Calidad medida durante el modo frente al mínimo de <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>Calidad medida durante el modo frente al mínimo de <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a></td>
 <td></td>
 <td>OPE-18.</td>
 </tr>
@@ -730,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-4-estabilidad-rendimiento-y-calidad-p25"><span class="antetitulo">07</span>Bloque 4 · Estabilidad, rendimiento y calidad (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>)</h2>
+<h2 id="bloque-4-estabilidad-rendimiento-y-calidad-p25"><span class="antetitulo">07</span>Bloque 4 · Estabilidad, rendimiento y calidad (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -786,7 +797,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-5-incidentes-y-cambios-p27-t08"><span class="antetitulo">08</span>Bloque 5 · Incidentes y cambios (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>)</h2>
+<h2 id="bloque-5-incidentes-y-cambios-p27-t08"><span class="antetitulo">08</span>Bloque 5 · Incidentes y cambios (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>, <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -804,7 +815,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Notificaciones regulatorias y plazo cumplido</td>
 <td></td>
-<td>Según <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>.</td>
+<td>Según <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>.</td>
 </tr>
 <tr>
 <td>No conformidades abiertas y plazo</td>
@@ -824,12 +835,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Condiciones de <em>gates</em> anteriores</td>
 <td></td>
-<td>Abiertas, cumplidas o vencidas (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
+<td>Abiertas, cumplidas o vencidas (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>).</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-6-agentes-p25-t10"><span class="antetitulo">09</span>Bloque 6 · Agentes (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>)</h2>
+<h2 id="bloque-6-agentes-p25-t10"><span class="antetitulo">09</span>Bloque 6 · Agentes (<a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>, <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a>)</h2>
 <p>Solo si hay agentes (A1–A3).</p>
 <div class="tabla"><table>
 <thead>
@@ -850,7 +861,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-7-supervision-humana-y-adopcion-documento-50"><span class="antetitulo">10</span>Bloque 7 · Supervisión humana y adopción (<a href="../50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>)</h2>
+<h2 id="bloque-7-supervision-humana-y-adopcion-documento-50"><span class="antetitulo">10</span>Bloque 7 · Supervisión humana y adopción (<a href="../50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -868,7 +879,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Adopción frente al objetivo</td>
 <td></td>
-<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>.</td>
 </tr>
 <tr>
 <td>Supervisores designados y formados</td>
@@ -883,7 +894,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-8-riesgo-y-cumplimiento-p11-p12-t04-t07"><span class="antetitulo">11</span>Bloque 8 · Riesgo y cumplimiento (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T04</a>, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>)</h2>
+<h2 id="bloque-8-riesgo-y-cumplimiento-p11-p12-t04-t07"><span class="antetitulo">11</span>Bloque 8 · Riesgo y cumplimiento (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a>, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Herramienta T07 &#183; Clasificador regulatorio">T07</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -896,17 +907,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Riesgos nuevos o que suben de nivel y su aceptación</td>
 <td></td>
-<td>Órgano según el nivel residual (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6).</td>
+<td>Órgano según el nivel residual (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §6).</td>
 </tr>
 <tr>
 <td>Vigencia de la clasificación regulatoria y de la intensidad</td>
 <td></td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T04</a>.</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Herramienta T07 &#183; Clasificador regulatorio">T07</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a>.</td>
 </tr>
 <tr>
 <td>Vigencia de las evaluaciones de impacto</td>
 <td></td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 <tr>
 <td>Información a la representación de los trabajadores</td>
@@ -921,7 +932,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="bloque-9-continuidad-p19-p14"><span class="antetitulo">12</span>Bloque 9 · Continuidad (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</h2>
+<h2 id="bloque-9-continuidad-p19-p14"><span class="antetitulo">12</span>Bloque 9 · Continuidad (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>, <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>)</h2>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1201,7 +1212,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Decide y registra en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td>Decide y registra en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></td>
 <td>Patrocinador de IA (Lite) · Comité de IA (Enterprise)</td>
 <td></td>
 <td></td>
@@ -1244,7 +1255,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Ordena los diez bloques del paquete de R6 de 52 §8.2 con los criterios R6.01–R6.16 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> y las desviaciones que obligan a adelantar G7.</td>
+<td>Primera versión. Ordena los diez bloques del paquete de R6 de 52 §8.2 con los criterios R6.01–R6.16 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> y las desviaciones que obligan a adelantar G7.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1485,6 +1496,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

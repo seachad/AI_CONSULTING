@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#register-identification"><span>02</span>Register identification</a></li><li><a href="#supplier-register-t09"><span>03</span>Supplier register (T09)</a></li><li><a href="#portfolio-concentration-and-dependency"><span>04</span>Portfolio concentration and dependency</a></li><li><a href="#periodic-supplier-review-minutes"><span>05</span>Periodic supplier review minutes</a></li><li><a href="#exit-plan"><span>06</span>Exit plan</a></li><li><a href="#portability-test"><span>07</span>Portability test</a></li><li><a href="#deletion-certificate-model"><span>08</span>Deletion certificate (model)</a></li><li><a href="#relationship-closure-record"><span>09</span>Relationship closure record</a></li><li><a href="#quality-criteria"><span>10</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>11</span>Approval and verification</a></li><li><a href="#version-control"><span>12</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <blockquote>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · AI supplier register, a module of <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> built on the <em>Supplier</em> entity of the common data model (03 §4). This template is its working format and uses the same fields (36 §9).</td>
+<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> · AI supplier register, a module of <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> built on the <em>Supplier</em> entity of the common data model (03 §4). This template is its working format and uses the same fields (36 §9).</td>
 </tr>
 <tr>
 <td><strong>Reference document</strong></td>
@@ -482,7 +493,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Each supplier–service relationship is a record</strong>, with code PRV-AAAA-NNN. The same supplier may have different levels for different services (36 §4.1).</li>
 <li>Exit by level (36 §4.2): N1, guaranteed data export; N2, documented exit plan; N3, exit plan with an identified alternative and a documented rehearsal or test, and a portability test at least once a year or before renewal (36 §7.1).</li>
 <li>Review by level (36 §4.2): N1 annual; N2 half-yearly with service indicators; N3 quarterly, with monthly indicators and a relationship governance meeting.</li>
-<li>If the company is subject to DORA, <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> feeds the register of information under Art. 28(3) (36 §6.2).</li>
+<li>If the company is subject to DORA, <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> feeds the register of information under Art. 28(3) (36 §6.2).</li>
 <li><em>This document does not constitute legal advice.</em></li>
 </ul>
 <hr />
@@ -514,7 +525,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Applicable concentration limits</td>
 <td></td>
-<td>Approved in C2 (<a href="../13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">document 13</a>).</td>
+<td>Approved in C2 (<a href="../13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Document 13 &#183; AI thesis, ambition and risk appetite">document 13</a>).</td>
 </tr>
 <tr>
 <td>Subject to <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a></td>
@@ -529,7 +540,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="supplier-register-t09"><span class="antetitulo">03</span>Supplier register (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>)</h2>
+<h2 id="supplier-register-t09"><span class="antetitulo">03</span>Supplier register (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>)</h2>
 <h3 id="3-1-identification-and-service">3.1 Identification and service</h3>
 <div class="tabla"><table>
 <thead>
@@ -624,8 +635,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Contract reference</th>
 <th>Start · renewal · end</th>
 <th>Notice period</th>
-<th>Status of the 16 clauses (<a href="P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html">P56</a> §3)</th>
-<th>Due diligence (<a href="P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html">P55</a> · <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>): date and result</th>
+<th>Status of the 16 clauses (<a href="P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Template P56 &#183; Model AI contractual clauses">P56</a> §3)</th>
+<th>Due diligence (<a href="P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a> · <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>): date and result</th>
 <th>Certifications and reports and validity</th>
 <th>Security assessment</th>
 <th>Conditions imposed</th>
@@ -664,7 +675,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <thead>
 <tr>
 <th>Code</th>
-<th>Linked risks (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>)</th>
+<th>Linked risks (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>)</th>
 <th>Main residual level</th>
 <th>Service indicators</th>
 <th>Attributable incidents</th>
@@ -869,7 +880,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Level reassessment</td>
 <td></td>
-<td>Maintained · Changes to N<em>n</em> (update <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> and, where appropriate, <a href="P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html">P55</a>).</td>
+<td>Maintained · Changes to N<em>n</em> (update <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> and, where appropriate, <a href="P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a>).</td>
 </tr>
 <tr>
 <td>Conclusion</td>
@@ -926,7 +937,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Activation causes</td>
 <td></td>
-<td>Termination, serious breach, regulatory change, unresolved trigger, decision to retire at G7 (<a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</td>
+<td>Termination, serious breach, regulatory change, unresolved trigger, decision to retire at G7 (<a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>).</td>
 </tr>
 <tr>
 <td>Identified alternative</td>
@@ -941,7 +952,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Estimated exit cost</td>
 <td></td>
-<td>Categories in <a href="../42_SEVEN-G_Costes_de_IA.html">document 42</a>; included in the total cost in <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>.</td>
+<td>Categories in <a href="../42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>; included in the total cost in <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>.</td>
 </tr>
 <tr>
 <td>Continuity during the transition</td>
@@ -1036,7 +1047,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Start-up of the alternative and validation</td>
 <td>AI Technical Owner</td>
 <td></td>
-<td><a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> if there is a relevant change</td>
+<td><a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a> if there is a relevant change</td>
 </tr>
 <tr>
 <td>4</td>
@@ -1136,7 +1147,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="deletion-certificate-model"><span class="antetitulo">08</span>Deletion certificate (model)</h2>
-<p>Starting text signed by the supplier on termination (clause 15 of <a href="P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html">P56</a>). It must be reviewed by legal advisers.</p>
+<p>Starting text signed by the supplier on termination (clause 15 of <a href="P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Template P56 &#183; Model AI contractual clauses">P56</a>). It must be reviewed by legal advisers.</p>
 <p><strong>[The Supplier]</strong>, represented by <strong>[name and position]</strong>, certifies that on <strong>[date]</strong> it irreversibly deleted the Company Data relating to contract <strong>[reference]</strong>, including Inputs, Outputs, logs, indexes, memories and backups, in its systems and in those of its Sub-processors <strong>[list]</strong>, by means of <strong>[method]</strong>, except for data it must retain by legal obligation, which are detailed in <strong>[appendix]</strong> with their basis and retention period. All of the Company's access has been revoked.</p>
 <div class="tabla"><table>
 <thead>
@@ -1212,10 +1223,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Lessons learned</td>
 <td></td>
-<td>Also in <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> if the exit accompanies a retirement.</td>
+<td>Also in <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a> if the exit accompanies a retirement.</td>
 </tr>
 <tr>
-<td>Final status in <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></td>
+<td>Final status in <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a></td>
 <td></td>
 <td>Terminated.</td>
 </tr>
@@ -1269,7 +1280,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Suppliers are assessed with the N1–N3 levels (D6.08 of <a href="../11_SEVEN-G_Modelo_de_madurez.html">document 11</a>).</td>
+<td>Suppliers are assessed with the N1–N3 levels (D6.08 of <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>).</td>
 <td></td>
 </tr>
 </tbody>
@@ -1359,7 +1370,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>First version. Register fields from 36 §9, concentration from 36 §7.2, periodic review minutes (36 §5), exit plan, portability test (36 §7.1), deletion certificate and closure record. Working format of <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>.</td>
+<td>First version. Register fields from 36 §9, concentration from 36 §7.2, periodic review minutes (36 §5), exit plan, portability test (36 §7.1), deletion certificate and closure record. Working format of <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1600,6 +1611,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

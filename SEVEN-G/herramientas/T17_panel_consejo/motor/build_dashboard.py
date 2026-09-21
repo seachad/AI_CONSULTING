@@ -131,6 +131,10 @@ details.fpanel[open]>summary{border-bottom-left-radius:0;border-bottom-right-rad
 h1{font-size:19px;margin:0;font-weight:650}
 .sub{color:var(--ink2);font-size:12.5px}
 .banner{margin-top:8px;padding:8px 12px;border-radius:6px;background:var(--bannerbg);color:var(--bannerink);font-size:12.5px;border:1px solid var(--bannerbd)}
+.banner summary{cursor:pointer;font-weight:700}
+.banner[open] summary{margin-bottom:6px}
+.ir-movil{display:none;margin-top:10px;padding:10px 12px;border-radius:6px;background:var(--accent);color:var(--surface);font-weight:700;text-decoration:none;text-align:center}
+@media (max-width:760px){.ir-movil{display:block}}
 .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
 .search{flex:1 1 320px;position:relative}
 .search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--axis);border-radius:8px;background:var(--surface);color:var(--ink);font-size:14px}
@@ -1451,8 +1455,9 @@ HTML = """<!DOCTYPE html>
 </nav>
 <div class="app">
 <header>
- <div class="hrow"><div><h1>Casos de uso de IA · Panel del Consejo de Administración</h1><div class="sub">__ORG__ · versión __VERSION__ · elaborado por el __CONSEJO__ · versión móvil: __MOVIL__ · <span id="periodo"></span> · <span id="src"></span></div></div></div>
- <div class="banner">__AVISO_PREVIO__<b>Aviso.</b> Todo lo que muestra este panel procede de <code>dashboard_data.json</code> (esquema en <code>dashboard_schema.md</code>). Cada caso de uso tiene <b>inversión, eficiencias y retorno en euros, con valor actual y potencial</b>: el potencial es el máximo alcanzable con las hipótesis del caso, la inversión adicional y el plazo indicados. __AVISO_VALOR__ La capacidad liberada que no se materializa en menor coste no suma en el neto. Las fotos de cada sesión se guardan en el histórico para comparar. Donde aparece <i>sin dato</i>, la compañía no ha reportado el campo. Las siglas se explican en el glosario.</div>
+ <div class="hrow"><div><h1>Casos de uso de IA · Panel del Consejo de Administración</h1><div class="sub">__ORG__ · versión __VERSION__ · elaborado por el __CONSEJO__ · versión móvil: <a href="__MOVIL__">__MOVIL__</a> · <span id="periodo"></span> · <span id="src"></span></div></div></div>
+ <a class="ir-movil" href="__MOVIL__">Ver la versión para móvil →</a>
+ <details class="banner"><summary>Aviso legal y notas de lectura (pulsa para verlos)</summary>__AVISO_PREVIO__<b>Aviso.</b> Todo lo que muestra este panel procede de <code>dashboard_data.json</code> (esquema en <code>dashboard_schema.md</code>). Cada caso de uso tiene <b>inversión, eficiencias y retorno en euros, con valor actual y potencial</b>: el potencial es el máximo alcanzable con las hipótesis del caso, la inversión adicional y el plazo indicados. __AVISO_VALOR__ La capacidad liberada que no se materializa en menor coste no suma en el neto. Las fotos de cada sesión se guardan en el histórico para comparar. Donde aparece <i>sin dato</i>, la compañía no ha reportado el campo. Las siglas se explican en el glosario.</details>
 </header>
 <div class="sticky" id="barra">
  <div class="toolbar">

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#principles"><span>02</span>Principles</a></li><li><a href="#identifiers"><span>03</span>Identifiers</a></li><li><a href="#fields-of-a-recommendation"><span>04</span>Fields of a recommendation</a></li><li><a href="#statuses-declared-by-the-recipient"><span>05</span>Statuses declared by the recipient</a></li><li><a href="#independent-assessment"><span>06</span>Independent assessment</a></li><li><a href="#evidence-provided"><span>07</span>Evidence provided</a></li><li><a href="#lifecycle"><span>08</span>Lifecycle</a></li><li><a href="#closure-discarding-rescheduling-and-reopening"><span>09</span>Closure, discarding, rescheduling and reopening</a></li><li><a href="#recorded-board-decisions"><span>10</span>Recorded board decisions</a></li><li><a href="#links-with-initiatives-and-with-the-dashboard"><span>11</span>Links with initiatives and with the dashboard</a></li><li><a href="#tool-t18-current-situation-and-pending-adaptation"><span>12</span>Tool T18: current situation and pending adaptation</a></li><li><a href="#illustrative-example"><span>13</span>Illustrative example</a></li><li><a href="#associated-tools-and-templates"><span>14</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>15</span>Related documents</a></li><li><a href="#version-control"><span>16</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
-<aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>The board&#39;s decisions and recommendations on AI are recorded with an identifier, owner, deadline and status, and are followed up until closure. This can be done in the &#39;Board&#39; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register or with template <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a>.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
+<aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>The board&#39;s decisions and recommendations on AI are recorded with an identifier, owner, deadline and status, and are followed up until closure. This can be done in the &#39;Board&#39; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register or with template <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Template P69 &#183; Board decisions register">P69</a>.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>The recommendations and decisions register keeps, with identifiers that are never reset, <strong>what the board and its committees recommend, assign and decide on AI</strong>, who must carry it out, within what time limit, what evidence has been provided and whether someone independent considers that it has been met.</p>
 <p>Its purpose is to ensure that follow-up does not depend on the memory of meetings or on the minutes, and to distinguish <strong>what the recipient declares</strong> from <strong>what has been verified</strong>.</p>
@@ -441,7 +452,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Assignments</strong> from the board to management (pieces of work with an owner and a date), which are recorded as recommendations.</li>
 <li><strong>Decisions</strong> of the board or its board committee on AI: approvals, authorisations with limits, risk acceptances and relevant notings.</li>
 </ul>
-<p>It does not replace the minutes, which are the corporate record, or the lifecycle <em>gate</em> decision record (template <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, tool <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>). The register links to both.</p>
+<p>It does not replace the minutes, which are the corporate record, or the lifecycle <em>gate</em> decision record (template <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>, tool <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>). The register links to both.</p>
 <hr />
 <h2 id="principles"><span class="antetitulo">02</span>Principles</h2>
 <div class="tabla"><table>
@@ -493,7 +504,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="identifiers"><span class="antetitulo">03</span>Identifiers</h2>
 <h3 id="3-1-format">3.1 Format</h3>
-<p>The board dashboard data schema (<code>motor/ESQUEMA.md</code> in the demonstrations repository) does not define an identifier format for recommendations. The <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> demonstration tool uses sequential codes per organisation (<code>R-01</code>, <code>R-02</code>…) grouped by session. SEVEN-G adopts the format of the common specification:</p>
+<p>The board dashboard data schema (<code>motor/ESQUEMA.md</code> in the demonstrations repository) does not define an identifier format for recommendations. The <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> demonstration tool uses sequential codes per organisation (<code>R-01</code>, <code>R-02</code>…) grouped by session. SEVEN-G adopts the format of the common specification:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -514,7 +525,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Decision of the board or the committee</strong></td>
 <td><code>DEC-AAAA-NNN</code></td>
 <td>DEC-2026-014</td>
-<td><strong>Proposed</strong> in this document; pending incorporation into the common specification §5.9 and the glossary (<a href="02_SEVEN-G_Glosario_y_convenciones.html">document 02</a>)</td>
+<td><strong>Proposed</strong> in this document; pending incorporation into the common specification §5.9 and the glossary (<a href="02_SEVEN-G_Glosario_y_convenciones.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a>)</td>
 </tr>
 </tbody>
 </table></div>
@@ -526,7 +537,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>A recommendation that is split</strong> keeps its identifier in the main part; the new parts receive new identifiers and are linked to the original.</li>
 <li><strong>A substantially reformulated recommendation</strong> is closed as <em>Superseded</em> and a new linked one is recorded. Minor wording changes are recorded as an event without changing the code.</li>
 <li><strong>The correspondence with previous identifiers</strong> (for example, <code>R-NN</code> from a previous tool) is kept in the <em>previous identifier</em> field.</li>
-<li><strong>Initiatives</strong> keep their own <code>IA-AAAA-NNN</code> code (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>); incidents and nonconformities, <code>INC-AAAA-NNN</code> and <code>NC-AAAA-NNN</code>.</li>
+<li><strong>Initiatives</strong> keep their own <code>IA-AAAA-NNN</code> code (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>); incidents and nonconformities, <code>INC-AAAA-NNN</code> and <code>NC-AAAA-NNN</code>.</li>
 </ol>
 <hr />
 <h2 id="fields-of-a-recommendation"><span class="antetitulo">04</span>Fields of a recommendation</h2>
@@ -1086,7 +1097,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Links</strong></td>
-<td>IA-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, <em>gate</em> decision (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
+<td>IA-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN, <em>gate</em> decision (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>).</td>
 </tr>
 <tr>
 <td><strong>Follow-up</strong></td>
@@ -1110,12 +1121,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="11-1-with-the-initiative-register">11.1 With the initiative register</h3>
 <ul>
 <li>Every recommendation or decision affecting specific initiatives links their IA-AAAA-NNN codes.</li>
-<li>The record of each initiative in the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) shows the recommendations and decisions affecting it, with their status and assessment.</li>
+<li>The record of each initiative in the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) shows the recommendations and decisions affecting it, with their status and assessment.</li>
 <li>An initiative <strong>cannot pass a <em>gate</em></strong> if it is linked to a board decision with expired conditions that affect that <em>gate</em>.</li>
 <li>When an initiative is stopped or retired, the recommendations that depend solely on it are proposed for discarding or closure.</li>
 </ul>
 <h3 id="11-2-with-the-board-dashboard">11.2 With the board dashboard</h3>
-<p>Each recommendation indicates the dashboard block (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) in which the board can check its effect:</p>
+<p>Each recommendation indicates the dashboard block (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) in which the board can check its effect:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1163,7 +1174,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="11-3-register-indicators">11.3 Register indicators</h3>
-<p>They are reported in the quarterly pack (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a>) and in the annual review:</p>
+<p>They are reported in the quarterly pack (<a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a>) and in the annual review:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1207,16 +1218,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="tool-t18-current-situation-and-pending-adaptation"><span class="antetitulo">12</span>Tool <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>: current situation and pending adaptation</h2>
+<h2 id="tool-t18-current-situation-and-pending-adaptation"><span class="antetitulo">12</span>Tool <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>: current situation and pending adaptation</h2>
 <h3 id="12-1-current-situation">12.1 Current situation</h3>
-<p>The tool <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> · Board recommendations register</strong> exists (03 §5.4) as part of the public demonstrations repository for the board dashboard, with <strong>fictitious data</strong> in eleven sectors. For each session, it shows each recommendation with an identifier that is never reset, area, recipient, committed date, declared status, evidence presented, free-text assessment and a link to the dashboard block where it is measured.</p>
+<p>The tool <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> · Board recommendations register</strong> exists (03 §5.4) as part of the public demonstrations repository for the board dashboard, with <strong>fictitious data</strong> in eleven sectors. For each session, it shows each recommendation with an identifier that is never reset, area, recipient, committed date, declared status, evidence presented, free-text assessment and a link to the dashboard block where it is measured.</p>
 <p>The engine files published in that repository are <strong>a copy of their private source project</strong>: they are not edited in the demonstrations repository but at source, and are republished using their procedure, which includes a terminology check before publication.</p>
 <h3 id="12-2-adaptation-required">12.2 Adaptation required</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
 <th>Aspect</th>
-<th>Current <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> (demonstration)</th>
+<th>Current <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> (demonstration)</th>
 <th>SEVEN-G requirement</th>
 <th>Adaptation</th>
 </tr>
@@ -1297,7 +1308,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Data source</strong></td>
 <td>Demonstration data generated with the dashboard</td>
-<td><em>Recommendation</em> entity of the common model, integrated with <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><em>Recommendation</em> entity of the common model, integrated with <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 <td>Integration in tool wave 1 (03 §6).</td>
 </tr>
 <tr>
@@ -1308,9 +1319,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Priority: tool wave 1 (03 §6), together with connecting the <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> dashboard to the initiative register. Until the adaptation is available, the register can be kept with template <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a>, prepared as a spreadsheet with the fields in sections 4 and 10.</p>
+<p>Priority: tool wave 1 (03 §6), together with connecting the <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> dashboard to the initiative register. Until the adaptation is available, the register can be kept with template <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Template P69 &#183; Board decisions register">P69</a>, prepared as a spreadsheet with the fields in sections 4 and 10.</p>
 <h3 id="12-3-status-of-the-adaptation-version-0-1">12.3 Status of the adaptation (version 0.1)</h3>
-<p>From schema 0.5 of the initiative register, <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> is a <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> module</strong> (&quot;Board (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)&quot; view), with a single data model (03 §4):</p>
+<p>From schema 0.5 of the initiative register, <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> is a <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module</strong> (&quot;Board (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)&quot; view), with a single data model (03 §4):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1337,17 +1348,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Transformation index</strong></td>
-<td>Decisions feed signal 8 and condition IT-D1 of <a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a> in the <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a> calculator.</td>
+<td>Decisions feed signal 8 and condition IT-D1 of <a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a> in the <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> calculator.</td>
 <td>—</td>
 </tr>
 <tr>
 <td><strong>Board dashboard</strong></td>
-<td>The <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> connector generates the register page from the recommendations in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>The <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> connector generates the register page from the recommendations in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</td>
 <td>Decisions in the dashboard.</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Why it matters.</strong> Board decisions no longer live only in the minutes: they are linked to initiatives and recommendations, and the transformation index can check with data whether the board decides on, funds and oversees Transform bets. What is pending is still kept with template <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a>.</p>
+<p><strong>Why it matters.</strong> Board decisions no longer live only in the minutes: they are linked to initiatives and recommendations, and the transformation index can check with data whether the board decides on, funds and oversees Transform bets. What is pending is still kept with template <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Template P69 &#183; Board decisions register">P69</a>.</p>
 <hr />
 <h2 id="illustrative-example"><span class="antetitulo">13</span>Illustrative example</h2>
 <p><em>Fictitious records, unrelated to any company.</em></p>
@@ -1441,44 +1452,44 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 <td>Initiative register</td>
 <td>IA-AAAA-NNN links and events.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
 <td>Gate manager</td>
 <td>Link between board decisions and <em>gate</em> decisions.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 <td>Nonconformity and incident register</td>
 <td>INC and NC links.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
 <td>Board AI dashboard</td>
 <td>Blocks where the effect of each recommendation is checked.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></td>
 <td>Board recommendations register</td>
 <td>Implementation of the register (section 12).</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></td>
 <td><em>Gate</em> decision record</td>
 <td>Transform G2 and G7 decisions.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
 <td>Scaling or retirement decision</td>
 <td>G7 decisions escalated to the board.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a></td>
+<td><a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Template P69 &#183; Board decisions register">P69</a></td>
 <td>Board decisions register</td>
-<td>Register of recommendations, assignments and decisions until <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> has been adapted (sections 4, 10 and 12.2).</td>
+<td>Register of recommendations, assignments and decisions until <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> has been adapted (sections 4, 10 and 12.2).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1506,7 +1517,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Tools and initiative register</strong></td>
-<td>Data model (<em>Recommendation</em> entity), <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> and build order.</td>
+<td>Data model (<em>Recommendation</em> entity), <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> and build order.</td>
 </tr>
 <tr>
 <td><strong>38 · AI audit framework</strong></td>
@@ -1536,7 +1547,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Defines persistent identifiers REC-AAAA-NNN and, as a proposal, DEC-AAAA-NNN; fields, declared statuses, independent assessment, evidence, lifecycle, closure, board decisions, links with initiatives and the dashboard, indicators and pending adaptation of tool <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>.</td>
+<td>First version. Defines persistent identifiers REC-AAAA-NNN and, as a proposal, DEC-AAAA-NNN; fields, declared statuses, independent assessment, evidence, lifecycle, closure, board decisions, links with initiatives and the dashboard, indicators and pending adaptation of tool <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1777,6 +1788,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

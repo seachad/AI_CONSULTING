@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Maturity diagnosis</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#how-to-read-the-matrix"><span>02</span>How to read the matrix</a></li><li><a href="#what-is-never-omitted"><span>03</span>What is never omitted</a></li><li><a href="#triggers"><span>04</span>Triggers</a></li><li><a href="#phases-and-gates-what-can-be-grouped-and-what-cannot"><span>05</span>Phases and gates: what can be grouped and what cannot</a></li><li><a href="#documents"><span>06</span>Documents</a></li><li><a href="#templates"><span>07</span>Templates</a></li><li><a href="#tools"><span>08</span>Tools</a></li><li><a href="#where-to-start-by-profile"><span>09</span>Where to start, by profile</a></li><li><a href="#associated-tools-and-templates"><span>10</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>11</span>Related documents</a></li><li><a href="#version-control"><span>12</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="recomendado"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Recommended</span></div><p>Guidance document so that the whole library does not have to be read. It says what is mandatory in every company, what is added only with Enterprise intensity or scope, which modules are activated by a trigger and what is guidance or reference. Underlying rule: no phase or gate is omitted; in Lite they are grouped and simplified. It creates no rules: if it differs from documents 01, 21 or 90, those prevail.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
@@ -436,10 +447,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Not all companies have the same capacity for effort or the same risk exposure. SEVEN-G handles this with <strong>a single library that is read in layers</strong>, not with several versions of each document: that way there are no parallel texts that could contradict each other, and a company that grows does not have to change framework.</p>
 <p>This document brings together in one place what other documents establish about proportionality:</p>
 <ul>
-<li>the <strong>intensity</strong> of each initiative, Lite or Enterprise (<a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 9);</li>
-<li>the company's <strong>implementation scope</strong>, Lite or Enterprise, and its minimum path (<a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>, section 2);</li>
-<li>the <strong>obligation of each gate criterion</strong> and its application in Lite (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>, section 2);</li>
-<li>the <strong>scopes</strong> that apply only to certain technologies: generative AI, agents and third parties (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>, section 2.3).</li>
+<li>the <strong>intensity</strong> of each initiative, Lite or Enterprise (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 9);</li>
+<li>the company's <strong>implementation scope</strong>, Lite or Enterprise, and its minimum path (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2);</li>
+<li>the <strong>obligation of each gate criterion</strong> and its application in Lite (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, section 2);</li>
+<li>the <strong>scopes</strong> that apply only to certain technologies: generative AI, agents and third parties (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, section 2.3).</li>
 </ul>
 <p>It creates no new rules. If a row in this document differs from its source document, <strong>the source document prevails</strong>.</p>
 <blockquote>
@@ -528,62 +539,62 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td><strong>Complete inventory</strong> of AI systems —own, third-party, corporate use and unauthorised— with an owner.</td>
-<td><a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">document 32</a>; <a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>, section 2.4</td>
+<td><a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a>; <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2.4</td>
 </tr>
 <tr>
 <td>2</td>
 <td><strong>Every initiative is registered</strong> before consuming budget, with its dates per phase, decisions, criteria and closing reason.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 6.11; <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a></td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 6.11; <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a></td>
 </tr>
 <tr>
 <td>3</td>
 <td><strong>Intensity is determined for each initiative</strong> in phase 0 and reviewed at G3 and at each R6. One Enterprise criterion is enough.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 9</td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 9</td>
 </tr>
 <tr>
 <td>4</td>
 <td><strong>No phase or gate is skipped.</strong> In Lite they may be grouped into one session; each gate keeps its criteria and its record.</td>
-<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>, section 3.4</td>
+<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, section 3.4</td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>G3 is always decided separately</strong>: it is the main stop gate.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 6.1; <a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>, section 2.4</td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 6.1; <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2.4</td>
 </tr>
 <tr>
 <td>6</td>
 <td><strong>Segregation of duties</strong>: whoever builds neither verifies nor decides their own work, and risk clearance is independent of the team.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 8; <a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a></td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 8; <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a></td>
 </tr>
 <tr>
 <td>7</td>
 <td><strong>Dual validation and evidence prior to the decision</strong>: without verified evidence there is no decision.</td>
-<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>, sections 3 and 4</td>
+<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, sections 3 and 4</td>
 </tr>
 <tr>
 <td>8</td>
 <td><strong>The &quot;Yes ◆&quot; criteria</strong> (security, legal compliance, human oversight) are never accepted as a condition.</td>
-<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>, section 2.2</td>
+<td><a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>, section 2.2</td>
 </tr>
 <tr>
 <td>9</td>
 <td><strong>Value hypothesis with baseline and stop criteria</strong> before investing in feasibility, and measurement rules in all figures.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 6; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a></td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 6; <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a></td>
 </tr>
 <tr>
 <td>10</td>
 <td><strong>Regulatory classification and risk register</strong> before design; a Critical residual risk without board approval blocks G3 and G5.</td>
-<td><a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">document 32</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a></td>
+<td><a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a>; <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a></td>
 </tr>
 <tr>
 <td>11</td>
 <td><strong>Tested rollback plan and current continuity review</strong> for everything in production.</td>
-<td><a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a></td>
+<td><a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a></td>
 </tr>
 <tr>
 <td>12</td>
 <td><strong>The board approves the direction and the risk appetite (C2)</strong>, receives AI information at least quarterly and approves Transform bets.</td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 5; <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">document 13</a></td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 5; <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Document 13 &#183; AI thesis, ambition and risk appetite">document 13</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -602,32 +613,32 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td><strong>High-risk</strong> system under the applicable regulation</td>
-<td>Enterprise intensity · <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> · impact assessments (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a>, <a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html">P48</a>) · data requirements of <a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a></td>
+<td>Enterprise intensity · <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> · impact assessments (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Template P47 &#183; Data protection impact assessment">P47</a>, <a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html" title="Template P48 &#183; Fundamental rights impact assessment">P48</a>) · data requirements of <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a></td>
 </tr>
 <tr>
 <td>2</td>
 <td><strong>Decisions about people</strong></td>
-<td>Enterprise intensity · <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a> · enhanced human oversight (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) · <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a> when the law requires information</td>
+<td>Enterprise intensity · <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a> · enhanced human oversight (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>) · <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Template P46 &#183; Information to workers and their representatives">P46</a> when the law requires information</td>
 </tr>
 <tr>
 <td>3</td>
 <td><strong>Direct exposure</strong> to customers or external people</td>
-<td>Enterprise intensity · transparency notices (<a href="plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a>) · adversarial testing (<a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html">P53</a>)</td>
+<td>Enterprise intensity · transparency notices (<a href="plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Template P49 &#183; Transparency notices and instructions for use">P49</a>) · adversarial testing (<a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Template P53 &#183; Adversarial testing plan and report">P53</a>)</td>
 </tr>
 <tr>
 <td>4</td>
 <td><strong>Agents with autonomy A2 or A3</strong> with an effect on third parties, money, personal data or production</td>
-<td>Enterprise intensity · <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a> · LV-AG checklist · full <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html">P54</a></td>
+<td>Enterprise intensity · <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> · LV-AG checklist · full <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> · <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a></td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>Specially protected data</strong></td>
-<td>Enterprise intensity · <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a> · <a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a></td>
+<td>Enterprise intensity · <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Template P47 &#183; Data protection impact assessment">P47</a> · <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a></td>
 </tr>
 <tr>
 <td>6</td>
 <td><strong>Critical function</strong> or one subject to operational resilience</td>
-<td>Enterprise intensity · <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>) · enhanced continuity in <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a></td>
+<td>Enterprise intensity · <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a>) · enhanced continuity in <a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a></td>
 </tr>
 <tr>
 <td>7</td>
@@ -642,41 +653,41 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>9</td>
 <td><strong>Generative AI</strong> (criteria tagged GEN)</td>
-<td>GEN criteria of <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> · <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a> · consumption budget (<a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a>)</td>
+<td>GEN criteria of <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> · <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> · consumption budget (<a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" title="Template P63 &#183; Consumption budget and cost reconciliation">P63</a>)</td>
 </tr>
 <tr>
 <td>10</td>
 <td><strong>Agents with autonomy A1</strong> (criteria tagged AG)</td>
-<td>AG criteria of <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> · minimum controls per autonomy level of <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a></td>
+<td>AG criteria of <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> · minimum controls per autonomy level of <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a></td>
 </tr>
 <tr>
 <td>11</td>
 <td>An <strong>AI supplier</strong> is involved (criteria tagged TER), including AI embedded in contracted software</td>
-<td><a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · <a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html">P55</a>, <a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html">P56</a> and <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> depending on level N1 to N3</td>
+<td><a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> · <a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a>, <a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Template P56 &#183; Model AI contractual clauses">P56</a> and <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a> depending on level N1 to N3</td>
 </tr>
 <tr>
 <td>12</td>
 <td><strong>Personal data</strong> is processed</td>
-<td><a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>) · <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a> when the processing requires it · <a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a></td>
+<td><a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>) · <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Template P47 &#183; Data protection impact assessment">P47</a> when the processing requires it · <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a></td>
 </tr>
 <tr>
 <td>13</td>
 <td>The initiative <strong>changes people's work</strong> or releases capacity</td>
-<td><a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a> · full <a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a> · <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></td>
+<td><a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a> · full <a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Document 23 &#183; Adoption and change in the initiative">document 23</a> · <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Template P46 &#183; Information to workers and their representatives">P46</a></td>
 </tr>
 <tr>
 <td>14</td>
 <td>The solution is built with <strong>AI-generated code</strong></td>
-<td><a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">document 53</a> · <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html">P66</a></td>
+<td><a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Document 53 &#183; Building solutions with AI">document 53</a> · <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a></td>
 </tr>
 <tr>
 <td>15</td>
 <td>The company meets an <strong>Enterprise scope</strong> criterion (90 §2.2)</td>
-<td>AI Committee with its own session · auditor at every Enterprise gate · full <a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a> · <a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a> · independent maturity assessment every two years</td>
+<td>AI Committee with its own session · auditor at every Enterprise gate · full <a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a> · <a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Template P42 &#183; Quarterly second-line report">P42</a> · independent maturity assessment every two years</td>
 </tr>
 </tbody>
 </table></div>
-<p>An isolated Transform bet makes that initiative Enterprise, but <strong>does not change the company's scope</strong> (<a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>, section 2.2).</p>
+<p>An isolated Transform bet makes that initiative Enterprise, but <strong>does not change the company's scope</strong> (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2.2).</p>
 <hr />
 <h2 id="phases-and-gates-what-can-be-grouped-and-what-cannot"><span class="antetitulo">05</span>Phases and gates: what can be grouped and what cannot</h2>
 <div class="tabla"><table>
@@ -692,7 +703,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>0 · Context and constraints → G0</strong></td>
 <td>No</td>
-<td>G0, G1 and G2 may be resolved in <strong>a single session</strong>; each gate keeps its list of criteria and its section in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>. Templates without the <em>(Enterprise)</em> fields. The AI Office verifies and the sponsor decides.</td>
+<td>G0, G1 and G2 may be resolved in <strong>a single session</strong>; each gate keeps its list of criteria and its section in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>. Templates without the <em>(Enterprise)</em> fields. The AI Office verifies and the sponsor decides.</td>
 <td>Each gate separately, full templates, AI Auditor at all of them, the AI Committee decides. In Transform, the board approves at G2.</td>
 </tr>
 <tr>
@@ -741,8 +752,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p><strong>Three situations that look like skips and are not:</strong></p>
 <ul>
-<li><strong>Systems that were already in production</strong> before the framework was implemented. They do not go back through the phases: they are placed in the phase supported by their real evidence and go through a review equivalent to G7, with documentation identified as regularisation (<a href="14_SEVEN-G_Gestion_de_cartera.html">document 14</a>, section 11; <a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>, section 5).</li>
-<li><strong>Corporate use of general-purpose AI tools.</strong> This is not an initiative with phases: it is governed through the acceptable use policy, the catalogue of authorised tools and the inventory (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>, section 5).</li>
+<li><strong>Systems that were already in production</strong> before the framework was implemented. They do not go back through the phases: they are placed in the phase supported by their real evidence and go through a review equivalent to G7, with documentation identified as regularisation (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a>, section 11; <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 5).</li>
+<li><strong>Corporate use of general-purpose AI tools.</strong> This is not an initiative with phases: it is governed through the acceptable use policy, the catalogue of authorised tools and the inventory (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>, section 5).</li>
 <li><strong>An opportunity that arrives already well defined.</strong> Phases 1 and 2 may be brief, but their evidence —alternatives without AI, falsifiable hypothesis, baseline, stop criteria— remains what makes it possible to stop later on.</li>
 </ul>
 <hr />
@@ -994,10 +1005,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The fact that a document is <em>Always</em> does not mean it must be read in full: nineteen documents have that level, but the initial reading for a company with Lite scope comes down to documents 00 and 01, the implementation guide, the adaptation of the governance model to small organisations and the Lite column of the gate criteria (<a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>, section 2.4). The rest is opened when its moment in the cycle arrives.</p>
+<p>The fact that a document is <em>Always</em> does not mean it must be read in full: nineteen documents have that level, but the initial reading for a company with Lite scope comes down to documents 00 and 01, the implementation guide, the adaptation of the governance model to small organisations and the Lite column of the gate criteria (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2.4). The rest is opened when its moment in the cycle arrives.</p>
 <hr />
 <h2 id="templates"><span class="antetitulo">07</span>Templates</h2>
-<h3 id="7-1-lifecycle-evidence-p01-p31">7.1 Lifecycle evidence (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>)</h3>
+<h3 id="7-1-lifecycle-evidence-p01-p31">7.1 Lifecycle evidence (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>)</h3>
 <p><strong>No mandatory evidence is omitted in Lite: it is simplified.</strong> Each template marks with <em>(Enterprise)</em> the fields that a Lite initiative may leave blank.</p>
 <div class="tabla"><table>
 <thead>
@@ -1009,53 +1020,53 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>, <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (phase 0)</td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>, <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a>, <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a> (phase 0)</td>
 <td><strong>Always</strong></td>
-<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> is reviewed at G3 and at each R6.</td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a> is reviewed at G3 and at each R6.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> (phase 1) · <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> (phase 2)</td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> (phase 1) · <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a> (phase 2)</td>
 <td><strong>Always</strong></td>
 <td>—</td>
 </tr>
 <tr>
-<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a> (phase 3)</td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a> (phase 3)</td>
 <td><strong>Always</strong></td>
-<td>In <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> the classification is always mandatory; impact assessments, only when the classification requires them.</td>
+<td>In <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> the classification is always mandatory; impact assessments, only when the classification requires them.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> (phase 3)</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> (phase 3)</td>
 <td><strong>Conditional</strong></td>
 <td>Trigger 11: an AI supplier is involved.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (phase 4)</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>, <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> (phase 4)</td>
 <td><strong>Always</strong></td>
-<td>In <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, the agents block applies only with triggers 4 or 10.</td>
+<td>In <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>, the agents block applies only with triggers 4 or 10.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> (phase 5)</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a> (phase 5)</td>
 <td><strong>Always</strong></td>
-<td>In <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>, multi-level sign-off with veto is Enterprise; in Lite, risk clearance.</td>
+<td>In <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>, multi-level sign-off with veto is Enterprise; in Lite, risk clearance.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (phase 6)</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> (phase 6)</td>
 <td><strong>Always</strong></td>
 <td>From entry into production.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (all gates) · <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (use case sheet)</td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> (all gates) · <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> (use case sheet)</td>
 <td><strong>Always</strong></td>
 <td>—</td>
 </tr>
 <tr>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> (phase 7)</td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a> (phase 7)</td>
 <td><strong>Always</strong></td>
 <td>When G7 is convened.</td>
 </tr>
 </tbody>
 </table></div>
-<h3 id="7-2-company-board-compliance-third-parties-audit-and-implementation-p32-p71">7.2 Company, board, compliance, third parties, audit and implementation (<a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a>–<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a>)</h3>
+<h3 id="7-2-company-board-compliance-third-parties-audit-and-implementation-p32-p71">7.2 Company, board, compliance, third parties, audit and implementation (<a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Template P32 &#183; SEVEN-G implementation mandate">P32</a>–<a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Template P71 &#183; Transfer plan and exit note">P71</a>)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1066,102 +1077,102 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a>, <a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html">P33</a>, <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html">P34</a>, <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>, <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a>, <a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html">P37</a> (implementation and corporate cycle)</td>
+<td><a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Template P32 &#183; SEVEN-G implementation mandate">P32</a>, <a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html" title="Template P33 &#183; C1 diagnosis report">P33</a>, <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Template P34 &#183; Maturity questionnaire and report">P34</a>, <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a>, <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Template P36 &#183; C3 portfolio plan">P36</a>, <a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="Template P37 &#183; C5 annual review">P37</a> (implementation and corporate cycle)</td>
 <td><strong>Always</strong></td>
-<td><a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html">P37</a> at each annual review.</td>
+<td><a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="Template P37 &#183; C5 annual review">P37</a> at each annual review.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html">P38</a> (rules of procedure or mandate of the bodies)</td>
+<td><a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Template P38 &#183; Rules of procedure of the AI governance bodies">P38</a> (rules of procedure or mandate of the bodies)</td>
 <td><strong>Always</strong></td>
 <td>In Lite scope, extended mandate of the existing bodies.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a> (agenda and minutes) · <a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a> (usage survey) · <a href="plantillas/P68_SEVEN-G_Nota_previa_y_nota_de_conclusiones_de_la_sesion_del_consejo.html">P68</a> (board session notes)</td>
+<td><a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Template P39 &#183; Agenda and minutes of a governance body">P39</a> (agenda and minutes) · <a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html" title="Template P44 &#183; AI use and perception survey">P44</a> (usage survey) · <a href="plantillas/P68_SEVEN-G_Nota_previa_y_nota_de_conclusiones_de_la_sesion_del_consejo.html" title="Template P68 &#183; Pre-session note and note of conclusions for the board session">P68</a> (board session notes)</td>
 <td><strong>Recommended</strong></td>
 <td>The company may use its own formats.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a> (exceptions)</td>
+<td><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Template P40 &#183; Exception request and register">P40</a> (exceptions)</td>
 <td><strong>Conditional</strong></td>
 <td>When an exception is requested.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a> (independence and conflicts of interest)</td>
+<td><a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Template P41 &#183; Declarations of independence and conflicts of interest">P41</a> (independence and conflicts of interest)</td>
 <td><strong>Conditional</strong></td>
 <td>Verifiers and auditors of Enterprise initiatives, and external support.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a> (quarterly second-line report)</td>
+<td><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Template P42 &#183; Quarterly second-line report">P42</a> (quarterly second-line report)</td>
 <td><strong>Enterprise</strong></td>
 <td>Trigger 15. In Lite scope, its content goes into the AI item of the management committee.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a> (authorised tools) · <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a> (literacy and training)</td>
+<td><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Template P43 &#183; Catalogue of authorised tools and requests">P43</a> (authorised tools) · <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a> (literacy and training)</td>
 <td><strong>Always</strong></td>
 <td>—</td>
 </tr>
 <tr>
-<td><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a> (information to workers)</td>
+<td><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Template P46 &#183; Information to workers and their representatives">P46</a> (information to workers)</td>
 <td><strong>Conditional</strong></td>
 <td>Triggers 2 or 13, when the law requires information or consultation.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a> (DPIA) · <a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html">P48</a> (fundamental rights) · <a href="plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a> (transparency)</td>
+<td><a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Template P47 &#183; Data protection impact assessment">P47</a> (DPIA) · <a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html" title="Template P48 &#183; Fundamental rights impact assessment">P48</a> (fundamental rights) · <a href="plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Template P49 &#183; Transparency notices and instructions for use">P49</a> (transparency)</td>
 <td><strong>Conditional</strong></td>
 <td>Triggers 1, 3, 5 or 12, as required by the regulation.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">P50</a> (nonconformity register)</td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Template P50 &#183; Nonconformity register">P50</a> (nonconformity register)</td>
 <td><strong>Always</strong></td>
 <td>—</td>
 </tr>
 <tr>
-<td><a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html">P51</a> (notifications) · <a href="plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a> (root cause)</td>
+<td><a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html" title="Template P51 &#183; Incident reports and communications">P51</a> (notifications) · <a href="plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Template P52 &#183; Root cause analysis and corrective action plan">P52</a> (root cause)</td>
 <td><strong>Conditional</strong></td>
 <td>Notifiable incident; major or critical nonconformity, or S1 or S2 incident.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html">P53</a> (adversarial testing) · <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html">P54</a> (non-human identities)</td>
+<td><a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Template P53 &#183; Adversarial testing plan and report">P53</a> (adversarial testing) · <a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a> (non-human identities)</td>
 <td><strong>Conditional</strong></td>
 <td>Triggers 3, 4, 9 or 10.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html">P55</a>, <a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html">P56</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> (suppliers)</td>
+<td><a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" title="Template P55 &#183; AI supplier due diligence questionnaire">P55</a>, <a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Template P56 &#183; Model AI contractual clauses">P56</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a> (suppliers)</td>
 <td><strong>Conditional</strong></td>
 <td>Trigger 11, with the detail required by level N1 to N3.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html">P58</a>, <a href="plantillas/P59_SEVEN-G_Papeles_de_auditoria.html">P59</a> (audit plan and working papers)</td>
+<td><a href="plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html" title="Template P58 &#183; Annual AI audit plan">P58</a>, <a href="plantillas/P59_SEVEN-G_Papeles_de_auditoria.html" title="Template P59 &#183; Audit working papers">P59</a> (audit plan and working papers)</td>
 <td><strong>Enterprise</strong></td>
 <td>Trigger 15.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html">P60</a> (audit report)</td>
+<td><a href="plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html" title="Template P60 &#183; Audit report and finding records">P60</a> (audit report)</td>
 <td><strong>Always</strong></td>
 <td>In Lite scope, report of the six-monthly sample review.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html">P61</a> (declaration of application)</td>
+<td><a href="plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" title="Template P61 &#183; SEVEN-G declaration of application">P61</a> (declaration of application)</td>
 <td><strong>Conditional</strong></td>
 <td>When the company declares that it applies SEVEN-G.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html">P62</a> (benefits realisation plan) · <a href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html">P65</a> (R6 pack)</td>
+<td><a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Template P62 &#183; Benefits realisation plan">P62</a> (benefits realisation plan) · <a href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html" title="Template P65 &#183; R6 continuity review package">P65</a> (R6 pack)</td>
 <td><strong>Always</strong></td>
-<td><a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html">P62</a> from G3; <a href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html">P65</a> from entry into production.</td>
+<td><a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html" title="Template P62 &#183; Benefits realisation plan">P62</a> from G3; <a href="plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html" title="Template P65 &#183; R6 continuity review package">P65</a> from entry into production.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a> (consumption budget) · <a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html">P64</a> (datasets and sources) · <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html">P66</a> (SPAD annexes)</td>
+<td><a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" title="Template P63 &#183; Consumption budget and cost reconciliation">P63</a> (consumption budget) · <a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html" title="Template P64 &#183; Dataset record and knowledge source inventory">P64</a> (datasets and sources) · <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a> (SPAD annexes)</td>
 <td><strong>Conditional</strong></td>
 <td>Trigger 9 · own data or knowledge · trigger 14.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html">P67</a> (quarterly board pack) · <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a> (register of board decisions)</td>
+<td><a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Template P67 &#183; Quarterly board pack">P67</a> (quarterly board pack) · <a href="plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Template P69 &#183; Board decisions register">P69</a> (register of board decisions)</td>
 <td><strong>Always</strong></td>
 <td>Aggregated in Lite scope.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html">P70</a>, <a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a> (consultancy)</td>
+<td><a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html" title="Template P70 &#183; Proposal and engagement letter">P70</a>, <a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Template P71 &#183; Transfer plan and exit note">P71</a> (consultancy)</td>
 <td><strong>Conditional</strong></td>
 <td>External support.</td>
 </tr>
@@ -1169,7 +1180,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="tools"><span class="antetitulo">08</span>Tools</h2>
-<p>No tool is mandatory as an application: what is mandatory is the register or the calculation it contains. A company may keep it in a spreadsheet with the data model of <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>.</p>
+<p>No tool is mandatory as an application: what is mandatory is the register or the calculation it contains. A company may keep it in a spreadsheet with the data model of <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1180,29 +1191,29 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register (with <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> inventory, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> gates, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> intensity, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a> ambition, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> risks and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> board)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · Initiative register (with <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> inventory, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> gates, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a> intensity, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a> ambition, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a> risks and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> board)</td>
 <td><strong>Always</strong></td>
 <td>It is the central piece: the other tools read its data.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a> · Transformation index · <a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> · Maturity diagnosis</td>
+<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> · Transformation index · <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> · Maturity diagnosis</td>
 <td><strong>Always</strong></td>
 <td>At C1 and at each C5.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a> · Board dashboard</td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> · Board dashboard</td>
 <td><strong>Always</strong></td>
 <td>Aggregated in Lite scope; per initiative for Enterprise ones.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> · Value calculator (with <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> costs)</td>
+<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a> · Value calculator (with <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a> costs)</td>
 <td><strong>Recommended</strong></td>
-<td>The formulas of <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> are mandatory; the calculator is an aid.</td>
+<td>The formulas of <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> are mandatory; the calculator is an aid.</td>
 </tr>
 <tr>
 <td>Rest of the catalogue</td>
 <td>According to its procedure</td>
-<td>They are applied with the template or document indicated in the catalogue of <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>.</td>
+<td>They are applied with the template or document indicated in the catalogue of <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1219,33 +1230,33 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Board director</strong></td>
-<td><a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">document 00</a> (sections 1 to 6) · <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">document 61</a></td>
-<td><a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a> · <a href="60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a> · example board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>)</td>
+<td><a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a> (sections 1 to 6) · <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html" title="Document 61 &#183; Board conversation guide">document 61</a></td>
+<td><a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a> · <a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a> · example board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</td>
 </tr>
 <tr>
 <td><strong>Senior management and AI Committee</strong></td>
-<td><a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">document 00</a> · <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> · <a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a> (section 2) · this document</td>
-<td><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">document 13</a> · <a href="14_SEVEN-G_Gestion_de_cartera.html">document 14</a> · <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a></td>
+<td><a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a> · <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> · <a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a> (section 2) · this document</td>
+<td><a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Document 13 &#183; AI thesis, ambition and risk appetite">document 13</a> · <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a> · <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a></td>
 </tr>
 <tr>
 <td><strong>AI lead or AI Office</strong></td>
-<td>All of the above · <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a> · <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> · <a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> (section 11 in Lite)</td>
+<td>All of the above · <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> · <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> · <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> (section 11 in Lite)</td>
 <td>The <em>Always</em> level documents as the 90-day plan progresses</td>
 </tr>
 <tr>
 <td><strong>Risk, compliance and audit</strong></td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> (sections 7 to 12) · <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> · <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">document 32</a> · <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a> · <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a></td>
-<td><a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> · <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a> · <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a> · <a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a>, depending on the triggers</td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> (sections 7 to 12) · <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> · <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Document 32 &#183; AI system inventory and regulatory classification">document 32</a> · <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> · <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a></td>
+<td><a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> · <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> · <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a> · <a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a>, depending on the triggers</td>
 </tr>
 <tr>
 <td><strong>Initiative team</strong></td>
-<td><a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> (section 6) · the relevant phase of <a href="20_SEVEN-G_Manuales_de_fase.html">document 20</a> · the templates of that phase</td>
-<td><a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">document 22</a> · <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a></td>
+<td><a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> (section 6) · the relevant phase of <a href="20_SEVEN-G_Manuales_de_fase.html" title="Document 20 &#183; Phase manuals">document 20</a> · the templates of that phase</td>
+<td><a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Document 22 &#183; Checklists by gate">document 22</a> · <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a></td>
 </tr>
 <tr>
 <td><strong>Consultant</strong></td>
-<td><a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">document 00</a> · <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> · <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html">document 04</a> · <a href="91_SEVEN-G_Guia_para_consultores.html">document 91</a> · <a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a></td>
-<td><a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a> · <a href="92_SEVEN-G_Casos_de_aplicacion.html">document 92</a></td>
+<td><a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a> · <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> · <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a> · <a href="91_SEVEN-G_Guia_para_consultores.html" title="Document 91 &#183; Guide for consultants and support models">document 91</a> · <a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a></td>
+<td><a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a> · <a href="92_SEVEN-G_Casos_de_aplicacion.html" title="Document 92 &#183; Application cases">document 92</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1262,22 +1273,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a></td>
 <td>Intensity determination</td>
 <td>Records which Enterprise criteria each initiative meets.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></td>
-<td>Intensity determination (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> module)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a></td>
+<td>Intensity determination (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module)</td>
 <td>Applies the criteria of 01 §9.2 when the initiative is registered.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
-<td><em>Gate</em> manager (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> module)</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
+<td><em>Gate</em> manager (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module)</td>
 <td>Shows, for each gate, the criteria that apply according to the initiative's intensity and tags.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a></td>
+<td><a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Template P32 &#183; SEVEN-G implementation mandate">P32</a></td>
 <td>Implementation mandate</td>
 <td>Sets the company's implementation scope.</td>
 </tr>
@@ -1578,6 +1589,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

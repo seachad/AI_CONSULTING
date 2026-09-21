@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#catalogo-de-metricas"><span>03</span>Catálogo de métricas</a></li><li><a href="#metricas-minimas-por-tipo-de-sistema"><span>04</span>Métricas mínimas por tipo de sistema</a></li><li><a href="#reglas-de-alerta"><span>05</span>Reglas de alerta</a></li><li><a href="#paneles-y-destinatarios"><span>06</span>Paneles y destinatarios</a></li><li><a href="#prueba-de-la-configuracion"><span>07</span>Prueba de la configuración</a></li><li><a href="#revision-de-umbrales"><span>08</span>Revisión de umbrales</a></li><li><a href="#criterios-de-calidad"><span>09</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>10</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>11</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -458,20 +469,20 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
-<td>Lite puede omitir los campos marcados <strong>(Enterprise)</strong>. Toda iniciativa en producción debe vigilar, como mínimo, rendimiento, disponibilidad, coste y los indicadores de supervisión humana de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Lite puede omitir los campos marcados <strong>(Enterprise)</strong>. Toda iniciativa en producción debe vigilar, como mínimo, rendimiento, disponibilidad, coste y los indicadores de supervisión humana de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>.</td>
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="P09_SEVEN-G_Linea_base.html">P09</a> Línea base · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Linaje (referencia de deriva) · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Indicadores de supervisión · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Registro de acciones · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Disparadores de reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Respuesta a incidentes · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de valor · documentos 41 (Catálogo de indicadores) y 52.</td>
+<td><a href="P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a> Línea base · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a> Linaje (referencia de deriva) · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> Indicadores de supervisión · <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> Registro de acciones · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a> Disparadores de reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> Manual de operación · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a> Respuesta a incidentes · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> Seguimiento de valor · documentos 41 (Catálogo de indicadores) y 52.</td>
 </tr>
 </tbody>
 </table></div>
 <p>Reglas:</p>
 <ul>
-<li>Cada disparador de reversión de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> debe tener una alerta en este documento.</li>
+<li>Cada disparador de reversión de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a> debe tener una alerta en este documento.</li>
 <li><strong>&quot;Sin dato&quot; no es cero:</strong> la ausencia de una métrica es en sí misma una alerta, nunca un valor normal.</li>
-<li>La severidad de una alerta es una <strong>propuesta inicial</strong>; la severidad del incidente se clasifica con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>).</li>
-<li>Los cambios de umbral se registran en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> con su motivo.</li>
+<li>La severidad de una alerta es una <strong>propuesta inicial</strong>; la severidad del incidente se clasifica con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a> (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>).</li>
+<li>Los cambios de umbral se registran en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a> con su motivo.</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -487,12 +498,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA</td>
 <td></td>
-<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>).</td>
 </tr>
 <tr>
 <td>Tecnología</td>
@@ -579,7 +590,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Acciones bloqueadas por límites</td>
 <td>Comportamiento del agente</td>
 <td>Nº de acciones bloqueadas por límites o control de intención</td>
-<td>Registro de acciones (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Registro de acciones (<a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>)</td>
 <td>Continua</td>
 <td>0–3/día</td>
 <td>&gt; 10/día</td>
@@ -745,7 +756,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Referencias para IA generativa y agentes (<a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §4.2.6, §4.2.7 y §10.3):</p>
+<p>Referencias para IA generativa y agentes (<a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a> §4.2.6, §4.2.7 y §10.3):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -758,7 +769,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Referencia de uso</td>
 <td></td>
-<td>Temas, intenciones y alcance validados en G5, con su distribución de referencia (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Temas, intenciones y alcance validados en G5, con su distribución de referencia (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>).</td>
 </tr>
 <tr>
 <td>Clasificación de las consultas</td>
@@ -768,7 +779,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Pares contrafactuales</td>
 <td></td>
-<td>Atributos protegidos o indicios que se prueban (según la evaluación de impacto), número de pares y qué se considera diferencia material (decisión, importe, tono, rechazo, completitud). Umbral en <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Atributos protegidos o indicios que se prueban (según la evaluación de impacto), número de pares y qué se considera diferencia material (decisión, importe, tono, rechazo, completitud). Umbral en <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>.</td>
 </tr>
 <tr>
 <td>Calidad mínima en modo degradado</td>
@@ -779,7 +790,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="reglas-de-alerta"><span class="antetitulo">05</span>Reglas de alerta</h2>
-<p><strong>Severidad inicial propuesta:</strong> S1 Crítica · S2 Alta · S3 Media · S4 Baja (se confirma con el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). <strong>Acción asociada:</strong> Revisar · Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> · Abrir incidente (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) · Activar disparador de reversión (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) · Interruptor de parada.</p>
+<p><strong>Severidad inicial propuesta:</strong> S1 Crítica · S2 Alta · S3 Media · S4 Baja (se confirma con el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>). <strong>Acción asociada:</strong> Revisar · Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> · Abrir incidente (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>) · Activar disparador de reversión (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>) · Interruptor de parada.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -790,7 +801,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Canal</th>
 <th>Tiempo máximo de reconocimiento</th>
 <th>Acción asociada</th>
-<th>Disparador de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></th>
+<th>Disparador de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a></th>
 </tr>
 </thead>
 <tbody>
@@ -821,7 +832,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Guardia técnica</td>
 <td>Herramienta de guardia</td>
 <td>4 horas laborables</td>
-<td>Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td>Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a></td>
 <td>—</td>
 </tr>
 <tr>
@@ -831,7 +842,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Responsable de operación de IA</td>
 <td>Herramienta de guardia</td>
 <td>4 horas laborables</td>
-<td>Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> (cascada de degradación por coste, nivel N2)</td>
+<td>Aplicar procedimiento de <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> (cascada de degradación por coste, nivel N2)</td>
 <td>D-04</td>
 </tr>
 <tr>
@@ -879,7 +890,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Datos para el panel del consejo <strong>(Enterprise)</strong></td>
 <td>Oficina de IA</td>
-<td>Indicadores agregados en el formato del panel (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>)</td>
+<td>Indicadores agregados en el formato del panel (<a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</td>
 <td>Trimestral</td>
 </tr>
 </tbody>
@@ -946,7 +957,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registro de cambios de umbral</td>
 <td></td>
-<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, con motivo y valor anterior.</td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>, con motivo y valor anterior.</td>
 </tr>
 <tr>
 <td>Recalibración tras cambios relevantes <strong>(Enterprise)</strong></td>
@@ -957,7 +968,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">09</span>Criterios de calidad</h2>
-<p>Criterios formales de G4, G5 y R6 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>.</p>
+<p>Criterios formales de G4, G5 y R6 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -979,7 +990,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Todo disparador de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> y todo indicador de supervisión de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> tiene alerta.</td>
+<td>Todo disparador de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a> y todo indicador de supervisión de <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> tiene alerta.</td>
 <td></td>
 </tr>
 <tr>
@@ -1047,7 +1058,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisor del <em>gate</em></td>
-<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1315,6 +1326,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

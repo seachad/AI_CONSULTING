@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,12 +439,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/01_SPHERES_Niveles_de_ambicion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose"><span>01</span>Purpose</a></li><li><a href="#what-an-ambition-level-is"><span>02</span>What an ambition level is</a></li><li><a href="#optimise"><span>03</span>Optimise</a></li><li><a href="#augment"><span>04</span>Augment</a></li><li><a href="#transform"><span>05</span>Transform</a></li><li><a href="#comparison-of-the-three-levels"><span>06</span>Comparison of the three levels</a></li><li><a href="#not-a-ladder"><span>07</span>Not a ladder</a></li><li><a href="#how-to-classify-an-initiative"><span>08</span>How to classify an initiative</a></li><li><a href="#borderline-cases"><span>09</span>Borderline cases</a></li><li><a href="#the-ambition-of-a-sphere-and-portfolio-balance"><span>10</span>The ambition of a sphere and portfolio balance</a></li><li><a href="#common-mistakes"><span>11</span>Common mistakes</a></li><li><a href="#related-documents"><span>12</span>Related documents</a></li><li><a href="#version-control"><span>13</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SPHERES is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. <strong>Each organisation that uses SPHERES is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="purpose"><span class="antetitulo">01</span>Purpose</h2>
 <p>This document explains the <strong>three ambition levels</strong> of SPHERES: what each one means, what changes in the organisation, where its value lies, what risks it carries, how it is decided and how it is recognised with evidence. It also explains how to classify an initiative and what the most common mistakes are.</p>
-<p>The levels apply to spheres <strong>01 to 07</strong>. Spheres 08 and 09 are assessed with their own grades (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">document 04</a>).</p>
+<p>The levels apply to spheres <strong>01 to 07</strong>. Spheres 08 and 09 are assessed with their own grades (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Document 04 &#183; Regulation and AI governance">document 04</a>).</p>
 <hr />
 <h2 id="what-an-ambition-level-is"><span class="antetitulo">02</span>What an ambition level is</h2>
 <p>An ambition level describes <strong>what an AI initiative changes in the business</strong>. It does not describe the technology it uses, what it costs or how novel it appears.</p>
@@ -1075,7 +1086,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Setting the ambition of a sphere without looking at the enablers.</td>
 <td>Promises that the data or the decision rules cannot sustain.</td>
-<td>Read <a href="03_SPHERES_Esferas_habilitadoras.html">document 03</a> before setting a high ambition.</td>
+<td>Read <a href="03_SPHERES_Esferas_habilitadoras.html" title="Document 03 &#183; Enabling spheres">document 03</a> before setting a high ambition.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1090,19 +1101,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html">document 00</a> · What SPHERES is and how it helps</strong></td>
+<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SPHERES is and how it helps">document 00</a> · What SPHERES is and how it helps</strong></td>
 <td>Overview of the map and the levels.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html">document 02</a> · Spheres where value is created</strong></td>
+<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html" title="Document 02 &#183; Spheres where value is created">document 02</a> · Spheres where value is created</strong></td>
 <td>Examples by level in Customer, Product and service, People and Operations.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html">document 03</a> · Enabling spheres</strong></td>
+<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html" title="Document 03 &#183; Enabling spheres">document 03</a> · Enabling spheres</strong></td>
 <td>Examples by level in Data, Knowledge and Decision.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">document 04</a> · Regulation and AI governance</strong></td>
+<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Document 04 &#183; Regulation and AI governance">document 04</a> · Regulation and AI governance</strong></td>
 <td>Why spheres 08 and 09 do not use ambition levels.</td>
 </tr>
 <tr>
@@ -1370,6 +1381,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

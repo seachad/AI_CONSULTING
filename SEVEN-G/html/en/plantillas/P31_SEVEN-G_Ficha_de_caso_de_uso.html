@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#what-it-is-and-what-it-is-used-for"><span>03</span>What it is and what it is used for</a></li><li><a href="#classification"><span>04</span>Classification</a></li><li><a href="#value"><span>05</span>Value</a></li><li><a href="#main-risks"><span>06</span>Main risks</a></li><li><a href="#owners"><span>07</span>Owners</a></li><li><a href="#status"><span>08</span>Status</a></li><li><a href="#quality-criteria"><span>09</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>10</span>Approval and verification</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
@@ -462,11 +473,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> Initiative register (&quot;plain-language description&quot; field, 03 §3.3).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> Initiative register (&quot;plain-language description&quot; field, 03 §3.3).</td>
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
-<td><a href="P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a> Opportunity portfolio · <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> Sphere and ambition classification · <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> Value hypothesis canvas · <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Risk register · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Human oversight · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Value tracking · documents 10, 40 and 60.</td>
+<td><a href="P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a> Opportunity portfolio · <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> Sphere and ambition classification · <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> Value hypothesis canvas · <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> Risk register · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> Human oversight · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> Value tracking · documents 10, 40 and 60.</td>
 </tr>
 </tbody>
 </table></div>
@@ -491,7 +502,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
 <td>Use case</td>
@@ -501,7 +512,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI system(s)</td>
 <td></td>
-<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>), where it exists.</td>
+<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>), where it exists.</td>
 </tr>
 <tr>
 <td>Responsible area</td>
@@ -574,7 +585,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>What the system decides and what a person decides</td>
 <td></td>
-<td>Autonomy level A0 · A1 · A2 · A3 and, in one line, what is never delegated (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Autonomy level A0 · A1 · A2 · A3 and, in one line, what is never delegated (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>).</td>
 </tr>
 <tr>
 <td>What it does not do</td>
@@ -718,7 +729,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="value"><span class="antetitulo">05</span>Value</h2>
-<p>Annual amounts in euros, taken from <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> (expected) or <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (realised). <strong>Status:</strong> Validated · Declared · Estimated.</p>
+<p>Annual amounts in euros, taken from <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> (expected) or <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> (realised). <strong>Status:</strong> Validated · Declared · Estimated.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -800,7 +811,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="main-risks"><span class="antetitulo">06</span>Main risks</h2>
-<p>Maximum five, taken from <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>. <strong>Residual level:</strong> Low · Medium · High · Critical.</p>
+<p>Maximum five, taken from <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>. <strong>Residual level:</strong> Low · Medium · High · Critical.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -814,7 +825,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>The draft proposes an incorrect response and the case handler does not detect it <em>(illustrative example)</em></td>
-<td>Code from the catalogue in <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a></td>
+<td>Code from the catalogue in <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a></td>
 <td>Medium</td>
 <td>Mandatory review and weekly sampling of responses sent</td>
 <td>AI Operations Owner</td>
@@ -902,7 +913,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Last <em>gate</em> and outcome</td>
 <td></td>
-<td>For example, G3 · Proceed with conditions · date (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
+<td>For example, G3 · Proceed with conditions · date (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>).</td>
 </tr>
 <tr>
 <td>Open conditions</td>
@@ -923,7 +934,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">09</span>Quality criteria</h2>
-<p>Consistency with the evidence is checked against the criteria in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> for the current <em>gate</em>.</p>
+<p>Consistency with the evidence is checked against the criteria in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> for the current <em>gate</em>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -950,7 +961,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>The amounts match <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> or <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> and have a type, formula and status.</td>
+<td>The amounts match <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> or <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> and have a type, formula and status.</td>
 <td></td>
 </tr>
 <tr>
@@ -960,7 +971,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>The risks and the status match <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>The risks and the status match <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> and <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1262,6 +1273,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

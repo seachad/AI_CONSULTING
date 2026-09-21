@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/00_SEVEN-G_Que_es_y_para_que_sirve.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/00_SEVEN-G_Que_es_y_para_que_sirve.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/00_SEVEN-G_Que_es_y_para_que_sirve.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#inicio-rapido-quick-start"><span>00</span>Inicio rápido (Quick Start)</a></li><li><a href="#que-significa-seven-g"><span>01</span>Qué significa SEVEN-G</a></li><li><a href="#el-problema-que-resuelve"><span>02</span>El problema que resuelve</a></li><li><a href="#a-que-ayuda-seven-g"><span>03</span>A qué ayuda SEVEN-G</a></li><li><a href="#como-esta-construido-el-marco"><span>04</span>Cómo está construido el marco</a></li><li><a href="#transformarse-o-eficientarse-como-lo-distingue-seven-g"><span>05</span>Transformarse o eficientarse: cómo lo distingue SEVEN-G</a></li><li><a href="#reglas-de-medicion-del-valor"><span>06</span>Reglas de medición del valor</a></li><li><a href="#a-quien-se-dirige"><span>07</span>A quién se dirige</a></li><li><a href="#principios-del-marco"><span>08</span>Principios del marco</a></li><li><a href="#que-obtiene-una-compania-que-adopta-seven-g"><span>09</span>Qué obtiene una compañía que adopta SEVEN-G</a></li><li><a href="#biblioteca-documental"><span>10</span>Biblioteca documental</a></li><li><a href="#licencia-y-uso"><span>11</span>Licencia y uso</a></li><li><a href="#control-de-versiones"><span>12</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Versión en revisión: no difundir.</strong> El estado actual de SEVEN-G (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.</p>
 </blockquote>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Obligatorio siempre</span></div><p>Lectura inicial de cualquier persona que vaya a usar el marco. Bastan el inicio r&#225;pido (secci&#243;n 0) y las secciones 1 a 6: qu&#233; es, qu&#233; problema resuelve, c&#243;mo est&#225; construido (esferas, ciclo corporativo, ciclo de vida con puertas, gobierno y medici&#243;n) y las diez reglas de medici&#243;n del valor.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
@@ -629,7 +640,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Ya tiene iniciativas de IA —pilotos, asistentes generativos, modelos, agentes— y nadie puede decir con evidencia <strong>cuánto cuestan, cuánto aportan y quién responde</strong> de cada una.</td>
-<td>Busca una guía técnica para <strong>construir modelos o elegir tecnología</strong>. SEVEN-G gobierna y mide; para la construcción remite al <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">documento 53</a> y a la metodología SPAD.</td>
+<td>Busca una guía técnica para <strong>construir modelos o elegir tecnología</strong>. SEVEN-G gobierna y mide; para la construcción remite al <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Documento 53 &#183; Construcci&#243;n de soluciones con IA">documento 53</a> y a la metodología SPAD.</td>
 </tr>
 <tr>
 <td>El consejo o la dirección preguntan por la IA y reciben un <strong>inventario de proyectos técnicos</strong> en lugar de decisiones de negocio.</td>
@@ -641,19 +652,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Tiene que <strong>demostrar cumplimiento</strong> con evidencias y no con declaraciones.</td>
-<td>Solo tiene una o dos pruebas sin presupuesto ni intención de llevarlas a producción. Empiece por la política de uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) y el inventario de sistemas (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>), y vuelva cuando haya una cartera que gobernar.</td>
+<td>Solo tiene una o dos pruebas sin presupuesto ni intención de llevarlas a producción. Empiece por la política de uso aceptable (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>) y el inventario de sistemas (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>), y vuelva cuando haya una cartera que gobernar.</td>
 </tr>
 <tr>
 <td>Es una <strong>compañía mediana</strong> sin equipo de IA: el alcance Lite funciona con el comité de dirección, una persona a tiempo parcial y un auditor externo.</td>
 <td><strong>Nadie en la dirección va a asumir las decisiones.</strong> El marco exige un patrocinador por iniciativa y capacidad real de parar; sin eso, solo produce documentos.</td>
 </tr>
 <tr>
-<td>Es <strong>consultor o responsable interno</strong> y necesita un método completo que pueda adaptar y aplicar con su propia forma de trabajar, citando la fuente (<a href="91_SEVEN-G_Guia_para_consultores.html">documento 91</a>).</td>
+<td>Es <strong>consultor o responsable interno</strong> y necesita un método completo que pueda adaptar y aplicar con su propia forma de trabajar, citando la fuente (<a href="91_SEVEN-G_Guia_para_consultores.html" title="Documento 91 &#183; Gu&#237;a para consultores y modelos de acompa&#241;amiento">documento 91</a>).</td>
 <td></td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Qué exige a cambio.</strong> No cuesta dinero, pero sí disciplina: alguien que lo impulse, un registro de iniciativas al día y decisiones que se toman con evidencia delante. La adopción puede ser <strong>modular</strong> —empezar solo por el registro, por las puertas de decisión, por la medición del valor o por el panel del consejo— y ampliarse después. La guía de implantación (<a href="90_SEVEN-G_Guia_de_implantacion.html">documento 90</a>) propone un plan de 90 días y una ruta mínima para compañías medianas.</p>
+<p><strong>Qué exige a cambio.</strong> No cuesta dinero, pero sí disciplina: alguien que lo impulse, un registro de iniciativas al día y decisiones que se toman con evidencia delante. La adopción puede ser <strong>modular</strong> —empezar solo por el registro, por las puertas de decisión, por la medición del valor o por el panel del consejo— y ampliarse después. La guía de implantación (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Documento 90 &#183; Gu&#237;a de implantaci&#243;n de SEVEN-G">documento 90</a>) propone un plan de 90 días y una ruta mínima para compañías medianas.</p>
 <p><strong>Por dónde seguir, según quién sea</strong></p>
 <div class="tabla"><table>
 <thead>
@@ -665,11 +676,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Miembro del consejo o de la alta dirección</td>
-<td>La sección 5 de esta página (transformarse o eficientarse), la <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">guía de conversación con el consejo</a> y el panel del consejo de ejemplo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
+<td>La sección 5 de esta página (transformarse o eficientarse), la <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">guía de conversación con el consejo</a> y el panel del consejo de ejemplo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>).</td>
 </tr>
 <tr>
 <td>Responsable de IA, datos o tecnología</td>
-<td>La <a href="01_SEVEN-G_Metodologia_fundacional.html">metodología fundacional</a>, los <a href="20_SEVEN-G_Manuales_de_fase.html">manuales de fase</a> y el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>La <a href="01_SEVEN-G_Metodologia_fundacional.html">metodología fundacional</a>, los <a href="20_SEVEN-G_Manuales_de_fase.html">manuales de fase</a> y el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Riesgos, cumplimiento, protección de datos o auditoría</td>
@@ -677,7 +688,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Dirección financiera o control de gestión</td>
-<td>Las <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">reglas de medición del valor</a> y la calculadora de valor y costes (<a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a>).</td>
+<td>Las <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">reglas de medición del valor</a> y la calculadora de valor y costes (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>).</td>
 </tr>
 <tr>
 <td>Consultor o responsable de implantar el marco</td>
@@ -698,8 +709,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <p>Las dos cosas son legítimas. El problema aparece cuando se confunden: cuando una cartera de automatizaciones se presenta como transformación, cuando se declaran ahorros que nunca se materializan, o cuando las apuestas que podrían cambiar el negocio se bloquean con los mismos criterios de retorno que un proyecto de recorte de costes.</p>
 <p>El objetivo práctico es que el consejo, la alta dirección y los órganos de control entiendan y midan la aportación de la inteligencia empresarial en su compañía, comprendan y contengan sus riesgos y decidan, con disciplina de cartera, en qué iniciativas conviene invertir para mejorar la eficiencia, transformar capacidades y generar impacto real en la cuenta de resultados (P&amp;L).</p>
-<blockquote>
-<p><strong>Titularidad y reutilización.</strong> La propiedad intelectual de la metodología SEVEN-G —sus documentos, plantillas, criterios y herramientas— pertenece a su autor, <strong>Fernando García Varela</strong>. El marco se ofrece como referencia abierta para uso, adaptación y aprendizaje, no como un producto comercial cerrado ni como una versión liberada a clientes o mercados: cualquier organización puede reutilizarlo y adaptarlo, pero ese uso queda sujeto a la licencia de contenidos y de código del proyecto (<strong>CC BY 4.0</strong> para los contenidos, <strong>MIT</strong> para el código; <a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>), que exige reconocer la autoría e indicar los cambios. Usar SEVEN-G, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre la base metodológica a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.</p>
+<blockquote class="aviso-legal plegado">
+<p><strong>Titularidad y reutilización.</strong> La propiedad intelectual de la metodología SEVEN-G —sus documentos, plantillas, criterios y herramientas— pertenece a su autor, <strong>Fernando García Varela</strong>. El marco se ofrece como referencia abierta para uso, adaptación y aprendizaje, no como un producto comercial cerrado ni como una versión liberada a clientes o mercados: cualquier organización puede reutilizarlo y adaptarlo, pero ese uso queda sujeto a la licencia de contenidos y de código del proyecto (<strong>CC BY 4.0</strong> para los contenidos, <strong>MIT</strong> para el código; <a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a>), que exige reconocer la autoría e indicar los cambios. Usar SEVEN-G, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre la base metodológica a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.</p>
 </blockquote>
 <p>SEVEN-G aporta cuatro cosas:</p>
 <ol>
@@ -967,7 +978,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
     <div class="mu-puente">
       <div><b>↓ C3 decide</b> qué iniciativas entran en el ciclo de vida, con qué ambición, intensidad y presupuesto.</div>
-      <div><b>↑ El registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>)</b> alimenta la supervisión (C4), el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) y el índice de transformación (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>).</div>
+      <div><b>↑ El registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>)</b> alimenta la supervisión (C4), el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) y el índice de transformación (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>).</div>
     </div>
 
     <section class="mu-banda" aria-label="Nivel iniciativa: ciclo de vida con puertas de decisión">
@@ -1007,7 +1018,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
         <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivotar" title="Pivotar: la iniciativa vuelve a la fase 2 con una nueva hipótesis">↶ Pivotar a F2</a><a class="pa fuerte" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar · principal</a></div>
         <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar</a></div>
         <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar" title="Iterar: se repite lo que no alcanzó el criterio y se vuelve a la misma puerta (máximo dos veces; después decide el órgano superior)">↺ Iterar</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-parar" title="Parar: la iniciativa sale del embudo con su motivo y sus lecciones">✕ Parar</a></div>
-        <div class="mu-bucle"><span><b>↻ Bucle de operación</b> · monitorización continua (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html#monitorizacion-y-alertas-p25">52</a>) → <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-revision-de-continuidad">R6</a> trimestral (Enterprise) o semestral (Lite): continuar la operación, con condiciones o adelantar G7 ante una desviación</span><div class="mu-sal"><a class="ok" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-escalado-o-retirada">↑ Escalar · nueva fase 0</a><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar">↺ Iterar · fase 2, 4, 5 o 6</a><a class="pa" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-escalado-o-retirada">✕ Retirar · desenganchado</a></div></div>
+        <div class="mu-bucle"><span><b>↻ Bucle de operación</b> · monitorización continua (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html#monitorizacion-y-alertas-p25" title="Documento 52 &#183; Manual de operaci&#243;n de IA">52</a>) → <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-revision-de-continuidad">R6</a> trimestral (Enterprise) o semestral (Lite): continuar la operación, con condiciones o adelantar G7 ante una desviación</span><div class="mu-sal"><a class="ok" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-escalado-o-retirada">↑ Escalar · nueva fase 0</a><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterar">↺ Iterar · fase 2, 4, 5 o 6</a><a class="pa" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-escalado-o-retirada">✕ Retirar · desenganchado</a></div></div>
 
         <div class="mu-rot">Plantillas (evidencias)</div>
         <div class="mu-cel"><a class="mu-p" href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Carta de la iniciativa">P01</a><a class="mu-p" href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Declaración de contexto y restricciones">P02</a><a class="mu-p" href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Registro de asignación de roles">P03</a><a class="mu-p" href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Determinación de intensidad">P04</a><a class="mu-p" href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Ficha de inventario del sistema de IA">P05</a></div>
@@ -1042,7 +1053,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
       <div class="mu-reglas">
         <div class="mu-rot" style="border:0;padding-top:5px">En todas las puertas</div>
-        <div><b>Validación dual</b> (resultados y documentación verificada) y decisión: Continuar · Continuar con condiciones · Iterar · Pivotar · Parar; en G7, Escalar · Iterar · Retirar (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#reglas-comunes-a-todas-las-puertas">reglas comunes</a>). Cada decisión se registra en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> con el gestor de <em>gates</em> <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>; la ficha de caso de uso <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> acompaña a la iniciativa de la fase 1 a la 7. En Lite se agrupan G0–G2 y G4–G5, pero cada puerta se decide y registra aparte (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#3-4-puertas-agrupadas-en-lite">puertas agrupadas</a>). Iterar, pivotar, parar, esperar y escalar: <a href="20_SEVEN-G_Manuales_de_fase.html#transiciones-entre-fases">transiciones entre fases</a>.</div>
+        <div><b>Validación dual</b> (resultados y documentación verificada) y decisión: Continuar · Continuar con condiciones · Iterar · Pivotar · Parar; en G7, Escalar · Iterar · Retirar (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#reglas-comunes-a-todas-las-puertas">reglas comunes</a>). Cada decisión se registra en <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> con el gestor de <em>gates</em> <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>; la ficha de caso de uso <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a> acompaña a la iniciativa de la fase 1 a la 7. En Lite se agrupan G0–G2 y G4–G5, pero cada puerta se decide y registra aparte (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#3-4-puertas-agrupadas-en-lite">puertas agrupadas</a>). Iterar, pivotar, parar, esperar y escalar: <a href="20_SEVEN-G_Manuales_de_fase.html#transiciones-entre-fases">transiciones entre fases</a>.</div>
       </div>
     </section>
 
@@ -1354,7 +1365,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Las esferas 08 y 09 no se evalúan con estos tres niveles, porque no generan valor por sí mismas: la esfera 08 se evalúa en <em>Cumplimiento, Anticipación y Liderazgo ético</em>, y la esfera 09 en <em>Estructura, Equilibrio entre velocidad y control y Ecosistema de proveedores</em> (grados Ausente, Básico, Sistemático y Avanzado; <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>).</p>
+<p>Las esferas 08 y 09 no se evalúan con estos tres niveles, porque no generan valor por sí mismas: la esfera 08 se evalúa en <em>Cumplimiento, Anticipación y Liderazgo ético</em>, y la esfera 09 en <em>Estructura, Equilibrio entre velocidad y control y Ecosistema de proveedores</em> (grados Ausente, Básico, Sistemático y Avanzado; <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Documento 10 &#183; Mapa de esferas y niveles de ambici&#243;n">documento 10</a>).</p>
 <h3 id="4-2-nivel-compania-ciclo-corporativo">4.2 Nivel compañía · Ciclo corporativo</h3>
 <p>Es el ciclo en el que el consejo y la alta dirección ejercen su función. Se recorre de forma anual, con supervisión trimestral:</p>
 <blockquote>
@@ -1595,7 +1606,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </figure>
 
 <blockquote>
-<p><strong>Por qué importa.</strong> El embudo convierte la cartera en algo que el comité de IA y el consejo leen de un vistazo: cuántas iniciativas entran, dónde se atascan, cuántas llegan a producción, qué valor producen y qué se aprende de las que no llegan. Es la vista que comparten el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) y el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
+<p><strong>Por qué importa.</strong> El embudo convierte la cartera en algo que el comité de IA y el consejo leen de un vistazo: cuántas iniciativas entran, dónde se atascan, cuántas llegan a producción, qué valor producen y qué se aprende de las que no llegan. Es la vista que comparten el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) y el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>).</p>
 </blockquote>
 <p><strong>Reglas de las puertas de decisión</strong></p>
 <ul>
@@ -1627,7 +1638,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La intensidad se decide <strong>iniciativa a iniciativa</strong>. Aparte, cada compañía elige su <strong>alcance de implantación</strong>, también Lite o Enterprise, que decide cómo organiza sus órganos y su verificación: con alcance Lite, una compañía mediana y no regulada gobierna la IA con su comité de dirección, una oficina de IA de una persona a tiempo parcial y un auditor externo, y toda iniciativa que cumple un criterio Enterprise sigue gestionándose con intensidad Enterprise. La guía de implantación (<a href="90_SEVEN-G_Guia_de_implantacion.html">documento 90</a>, sección 2) explica cómo se elige el alcance y cuál es la ruta mínima en alcance Lite.</p>
+<p>La intensidad se decide <strong>iniciativa a iniciativa</strong>. Aparte, cada compañía elige su <strong>alcance de implantación</strong>, también Lite o Enterprise, que decide cómo organiza sus órganos y su verificación: con alcance Lite, una compañía mediana y no regulada gobierna la IA con su comité de dirección, una oficina de IA de una persona a tiempo parcial y un auditor externo, y toda iniciativa que cumple un criterio Enterprise sigue gestionándose con intensidad Enterprise. La guía de implantación (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Documento 90 &#183; Gu&#237;a de implantaci&#243;n de SEVEN-G">documento 90</a>, sección 2) explica cómo se elige el alcance y cuál es la ruta mínima en alcance Lite.</p>
 <h3 id="4-4-componente-b-sistema-de-gobierno">4.4 Componente B · Sistema de gobierno</h3>
 <blockquote>
 <p><strong>Por qué importa.</strong> Si no se separan las funciones de decidir, construir y controlar, el marco pierde credibilidad y aumenta el riesgo operativo y regulatorio. Un sistema de gobierno claro acelera las decisiones correctas y reduce el coste de corregir errores.</p>
@@ -1695,7 +1706,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Plantillas</strong> para cada evidencia de cada fase: carta de la iniciativa, lienzo de hipótesis de valor, registro de decisión de <em>gate</em>, matriz y registro de riesgos, manual de operación, seguimiento de realización de valor, entre otras.</li>
 <li><strong>Listas de verificación</strong> por <em>gate</em>, que convierten los criterios en controles binarios.</li>
 <li><strong>Panel de IA para el consejo</strong>: inventario, valor validado frente a declarado, coste, cumplimiento regulatorio, incidentes, exposición a ataques con IA, identidad y permisos de los agentes, adopción, agilidad y distribución por nivel de ambición. Se genera a partir de un único fichero de datos con esquema documentado, con versión completa y versión móvil sincronizadas.</li>
-<li><strong>Registro de iniciativas</strong>, que gestiona la cartera de IA como un embudo: fase y estado de cada iniciativa, tiempo en cada fase, cumplimiento de cada puerta de decisión, etiquetas, valor y motivos de parada (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>).</li>
+<li><strong>Registro de iniciativas</strong>, que gestiona la cartera de IA como un embudo: fase y estado de cada iniciativa, tiempo en cada fase, cumplimiento de cada puerta de decisión, etiquetas, valor y motivos de parada (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>).</li>
 <li><strong>Registro de recomendaciones del consejo</strong>, con identificadores que no se reinician, estado declarado, evidencia aportada y valoración independiente.</li>
 <li><strong>Demostraciones sectoriales</strong> con datos ficticios (banca, seguros, energía, industria, retail, sanidad, telecomunicaciones, logística, farmacéutica, turismo y sector público).</li>
 </ul>
@@ -1901,7 +1912,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>SEVEN-G es <strong>agnóstico de sector y de tecnología</strong>, y escalable: el alcance de implantación Lite permite aplicarlo a organizaciones medianas con una estructura mínima, y el alcance Enterprise, a grupos regulados (<a href="90_SEVEN-G_Guia_de_implantacion.html">documento 90</a>, sección 2).</p>
+<p>SEVEN-G es <strong>agnóstico de sector y de tecnología</strong>, y escalable: el alcance de implantación Lite permite aplicarlo a organizaciones medianas con una estructura mínima, y el alcance Enterprise, a grupos regulados (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Documento 90 &#183; Gu&#237;a de implantaci&#243;n de SEVEN-G">documento 90</a>, sección 2).</p>
 <hr />
 <h2 id="principios-del-marco"><span class="antetitulo">08</span>Principios del marco</h2>
 <ol>
@@ -1967,11 +1978,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>H · Plantillas</strong></td>
-<td>71 plantillas, enlazadas desde el <a href="index.html">índice de la biblioteca</a> y con versión editable en Word: de <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> a <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>, una por cada evidencia obligatoria del ciclo de vida; de <a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a> a <a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a>, los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco.</td>
+<td>71 plantillas, enlazadas desde el <a href="index.html">índice de la biblioteca</a> y con versión editable en Word: de <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a> a <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>, una por cada evidencia obligatoria del ciclo de vida; de <a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Plantilla P32 &#183; Mandato de implantaci&#243;n de SEVEN-G">P32</a> a <a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Plantilla P71 &#183; Plan de transferencia y nota de salida">P71</a>, los registros, informes y decisiones de la compañía, el consejo, el cumplimiento, los terceros, la auditoría y la implantación del marco.</td>
 </tr>
 <tr>
 <td><strong>I · Herramientas</strong></td>
-<td>Registro de iniciativas <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (con inventario de sistemas, gestor de <em>gates</em>, determinación de intensidad y clasificación de ambición) y conector <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, que alimenta el panel del consejo y el registro de recomendaciones con los datos del registro.</td>
+<td>Registro de iniciativas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (con inventario de sistemas, gestor de <em>gates</em>, determinación de intensidad y clasificación de ambición) y conector <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>, que alimenta el panel del consejo y el registro de recomendaciones con los datos del registro.</td>
 </tr>
 <tr>
 <td><strong>J · Adopción del marco</strong></td>
@@ -1990,7 +2001,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Forma de cita recomendada: <em>SEVEN-G, marco de valor, gobierno y transformación con IA. Fernando García Varela. CC BY 4.0.</em></li>
 <li>El código de las herramientas se publica bajo <a class="ref-ext" href="https://opensource.org/license/mit" target="_blank" rel="noopener" title="Licencia MIT (The MIT License)">licencia MIT</a>.</li>
 <li>Las cifras y los casos que aparecen en los ejemplos y demostraciones son ficticios y no constituyen referencias de mercado.</li>
-<li>SEVEN-G se ofrece «tal cual», sin garantías y sin constituir asesoramiento jurídico. <strong>La organización que lo usa es la única responsable de identificar la regulación general y la específica de su industria y jurisdicción, verificar su vigencia y certificar su cumplimiento regulatorio</strong>; el autor no asume esa responsabilidad (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</li>
+<li>SEVEN-G se ofrece «tal cual», sin garantías y sin constituir asesoramiento jurídico. <strong>La organización que lo usa es la única responsable de identificar la regulación general y la específica de su industria y jurisdicción, verificar su vigencia y certificar su cumplimiento regulatorio</strong>; el autor no asume esa responsabilidad (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a>, sección 11).</li>
 </ul>
 <h2 id="control-de-versiones"><span class="antetitulo">12</span>Control de versiones</h2>
 <div class="tabla"><table>
@@ -2246,6 +2257,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>
