@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -429,25 +440,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#conclusion"><span>01</span>Conclusión</a></li><li><a href="#que-existe-hoy"><span>02</span>Qué existe hoy</a></li><li><a href="#hueco-a-formato-de-trabajo"><span>03</span>Hueco A · Formato de trabajo</a></li><li><a href="#hueco-b-herramientas-sin-aplicacion-y-funciones-atribuidas-que-no-existen"><span>04</span>Hueco B · Herramientas sin aplicación y funciones atribuidas que no existen</a></li><li><a href="#hueco-c-artefactos-sin-plantilla"><span>05</span>Hueco C · Artefactos sin plantilla</a></li><li><a href="#hueco-d-referencias-rotas"><span>06</span>Hueco D · Referencias rotas</a></li><li><a href="#incoherencias-detectadas-durante-el-barrido"><span>07</span>Incoherencias detectadas durante el barrido</a></li><li><a href="#propuesta-de-trabajo"><span>08</span>Propuesta de trabajo</a></li><li><a href="#decisiones-que-necesito-del-autor-antes-de-crear"><span>09</span>Decisiones que necesito del autor antes de crear</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote>
-<p><strong>Estado a 19-09-2026: resuelto.</strong> Las decisiones de la sección 9 se tomaron con las recomendaciones de este análisis: plantillas editables en Word generadas desde el Markdown (D67); 40 plantillas nuevas <a href="../plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a>–<a href="../plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a>, con las herramientas <a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> (con <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>) y <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> (D68); correcciones de las secciones 6 y 7 aplicadas. La correspondencia de cada artefacto con su plantilla está en la especificación común §6.1. Lo que queda pendiente del autor figura en <code>CLAUDE.md</code>.</p>
+<p><strong>Estado a 19-09-2026: resuelto.</strong> Las decisiones de la sección 9 se tomaron con las recomendaciones de este análisis: plantillas editables en Word generadas desde el Markdown (D67); 40 plantillas nuevas <a href="../plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Plantilla P32 &#183; Mandato de implantaci&#243;n de SEVEN-G">P32</a>–<a href="../plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Plantilla P71 &#183; Plan de transferencia y nota de salida">P71</a>, con las herramientas <a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> (con <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>) y <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> (D68); correcciones de las secciones 6 y 7 aplicadas. La correspondencia de cada artefacto con su plantilla está en la especificación común §6.1. Lo que queda pendiente del autor figura en <code>CLAUDE.md</code>.</p>
 </blockquote>
 <h2 id="conclusion"><span class="antetitulo">01</span>Conclusión</h2>
 <ol>
-<li><strong>El material del ciclo de vida de la iniciativa existe.</strong> Las 31 plantillas <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> cubren una a una las evidencias de 01 §6.10 (D21) y son sustantivas (10–18 KB cada una, con instrucciones, campos, guía, ejemplo ilustrativo, criterios de calidad y firmas). En particular, los dos ejemplos citados por el autor ya existen en la versión vigente:
+<li><strong>El material del ciclo de vida de la iniciativa existe.</strong> Las 31 plantillas <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a> cubren una a una las evidencias de 01 §6.10 (D21) y son sustantivas (10–18 KB cada una, con instrucciones, campos, guía, ejemplo ilustrativo, criterios de calidad y firmas). En particular, los dos ejemplos citados por el autor ya existen en la versión vigente:
 <ul>
-<li><em>Risk Matrix</em> y <em>Risk Register</em> del material antiguo → <strong><a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · Matriz y registro de riesgos</strong> (escalas 5×5, matriz de calor, inherente y residual, aceptación por nivel) con el método del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>.</li>
-<li><em>GO/NO-GO Decision Record</em> → <strong><a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · Registro de decisión de gate</strong> (evidencias, criterios del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>, verificación, decisión, condiciones, iteraciones), complementada por <a href="../plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> (firma de puesta en producción) y <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> (escalado o retirada).</li>
+<li><em>Risk Matrix</em> y <em>Risk Register</em> del material antiguo → <strong><a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> · Matriz y registro de riesgos</strong> (escalas 5×5, matriz de calor, inherente y residual, aceptación por nivel) con el método del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>.</li>
+<li><em>GO/NO-GO Decision Record</em> → <strong><a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> · Registro de decisión de gate</strong> (evidencias, criterios del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>, verificación, decisión, condiciones, iteraciones), complementada por <a href="../plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a> (firma de puesta en producción) y <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a> (escalado o retirada).</li>
 </ul>
 </li>
 <li><strong>Lo que no existe es de otra naturaleza.</strong> Hay cuatro huecos:
 <ul>
-<li><strong>A. Formato de trabajo.</strong> Todas las plantillas existen solo como Markdown → HTML/PDF de lectura. No hay ningún fichero rellenable (<code>.docx</code>, <code>.xlsx</code>) en todo el repositorio, aunque el <a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> promete «plantilla de hoja de cálculo» para <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>, <a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> y «plantilla» para <a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a> y <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>.</li>
-<li><strong>B. Herramientas.</strong> De las 22 herramientas del catálogo solo tienen aplicación <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (con <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>–<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> como módulos; <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> desde el 18-09-2026, D65), <a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> (esta última como página generada por el conector de <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>). <a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>–<a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>, <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>, <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> y <a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>–<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> «se aplican con» una plantilla o un documento, y varios documentos atribuyen a <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> o <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> funciones que las aplicaciones no tienen.</li>
+<li><strong>A. Formato de trabajo.</strong> Todas las plantillas existen solo como Markdown → HTML/PDF de lectura. No hay ningún fichero rellenable (<code>.docx</code>, <code>.xlsx</code>) en todo el repositorio, aunque el <a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> promete «plantilla de hoja de cálculo» para <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a>, <a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a> y «plantilla» para <a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a> y <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>.</li>
+<li><strong>B. Herramientas.</strong> De las 22 herramientas del catálogo solo tienen aplicación <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (con <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>–<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a> como módulos; <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a> desde el 18-09-2026, D65), <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> (esta última como página generada por el conector de <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>). <a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Herramienta T07 &#183; Clasificador regulatorio">T07</a>–<a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>, <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>, <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a> y <a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a>–<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a> «se aplican con» una plantilla o un documento, y varios documentos atribuyen a <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> o <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> funciones que las aplicaciones no tienen.</li>
 <li><strong>C. Artefactos de compañía, consejo, cumplimiento y auditoría.</strong> Las plantillas son casi todas <em>por iniciativa</em>. Los artefactos del ciclo corporativo C1–C5, de los órganos de gobierno, del cumplimiento regulatorio profundo (EIPD, FRIA, notificaciones), de terceros, de auditoría y de implantación del marco están descritos en los documentos, pero <strong>no tienen plantilla</strong>. Se han identificado <strong>unos 60</strong>.</li>
 <li><strong>D. Referencias rotas.</strong> Varios documentos dicen que un contenido «forma parte de» o es «anexo de» una plantilla que no lo contiene.</li>
 </ul>
 </li>
-<li><strong>Hay además piezas que ya están completas dentro de un documento</strong> y solo necesitan extraerse como plantilla o formato rellenable (por ejemplo, la decisión C2 en 13 §15, el cuestionario de madurez en 11 §3, las políticas de 31 §3–§4 o las listas LV del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>).</li>
+<li><strong>Hay además piezas que ya están completas dentro de un documento</strong> y solo necesitan extraerse como plantilla o formato rellenable (por ejemplo, la decisión C2 en 13 §15, el cuestionario de madurez en 11 §3, las políticas de 31 §3–§4 o las listas LV del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a>).</li>
 </ol>
 <hr />
 <h2 id="que-existe-hoy"><span class="antetitulo">02</span>Qué existe hoy</h2>
@@ -464,31 +475,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Markdown, HTML y PDF generados.</td>
 </tr>
 <tr>
-<td>Plantillas <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (ES/EN)</td>
+<td>Plantillas <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a> (ES/EN)</td>
 <td>Markdown, HTML y PDF. <strong>Sin versión rellenable.</strong></td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> Registro de iniciativas (+ <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> inventario, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> gestor de <em>gates</em> con 128 criterios, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T04</a> intensidad, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T05</a> ambición)</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> Registro de iniciativas (+ <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> inventario, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> gestor de <em>gates</em> con 128 criterios, <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a> intensidad, <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a> ambición)</td>
 <td>Aplicación HTML + JSON (esquema 0.3).</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a> Índice de transformación</td>
+<td><a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> Índice de transformación</td>
 <td>Aplicación HTML + JSON.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> Panel del consejo (completo y móvil)</td>
+<td><a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> Panel del consejo (completo y móvil)</td>
 <td>Conector <code>t01_a_panel.py</code> + motor v8.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> Registro de recomendaciones</td>
-<td>Página generada por el conector de <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> (<code>t01_Registro_Recomendaciones.html</code>); no tiene carpeta propia.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> Registro de recomendaciones</td>
+<td>Página generada por el conector de <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> (<code>t01_Registro_Recomendaciones.html</code>); no tiene carpeta propia.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
-<td><strong>Módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong> (D65): vista «Riesgos» y pestaña de la ficha, con exportación CSV.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
+<td><strong>Módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong> (D65): vista «Riesgos» y pestaña de la ficha, con exportación CSV.</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>–<a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>, <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>, <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>, <a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>–<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
+<td><a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Herramienta T07 &#183; Clasificador regulatorio">T07</a>–<a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>, <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>, <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a>, <a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a>–<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a></td>
 <td><strong>Sin aplicación.</strong> «Se aplica con» P o documento.</td>
 </tr>
 <tr>
@@ -509,38 +520,38 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>AI Initiative Charter</td>
-<td><a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> · Carta de la iniciativa</td>
+<td><a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a> · Carta de la iniciativa</td>
 <td>Cubierto.</td>
 </tr>
 <tr>
 <td>GO/NO-GO Decision Record</td>
-<td><a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (+ <a href="../plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>, <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</td>
+<td><a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> (+ <a href="../plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a>, <a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>)</td>
 <td>Cubierto.</td>
 </tr>
 <tr>
 <td>Risk Matrix</td>
-<td><a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §3 y §5 + <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a></td>
+<td><a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §3 y §5 + <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a></td>
 <td>Cubierto.</td>
 </tr>
 <tr>
 <td>Risk Register</td>
-<td><a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §4 y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
-<td>Cubierto: plantilla <a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> y módulo <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (D65).</td>
+<td><a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §4 y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
+<td>Cubierto: plantilla <a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> y módulo <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a> de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (D65).</td>
 </tr>
 <tr>
 <td>Value Hypothesis Canvas</td>
-<td><a href="../plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> (+ <a href="../plantillas/P09_SEVEN-G_Linea_base.html">P09</a> línea base)</td>
+<td><a href="../plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> (+ <a href="../plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a> línea base)</td>
 <td>Cubierto.</td>
 </tr>
 <tr>
 <td>AI Ops Runbook</td>
-<td><a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> (+ <a href="../plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="../plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>)</td>
+<td><a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> (+ <a href="../plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>, <a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>, <a href="../plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>)</td>
 <td>Cubierto.</td>
 </tr>
 <tr>
 <td>Maturity Assessment Report</td>
 <td>Documento 11 §6 (estructura)</td>
-<td><strong>Hueco</strong>: no hay plantilla de informe ni herramienta <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>.</td>
+<td><strong>Hueco</strong>: no hay plantilla de informe ni herramienta <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>.</td>
 </tr>
 <tr>
 <td>Engagement Guide</td>
@@ -551,7 +562,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="hueco-a-formato-de-trabajo"><span class="antetitulo">03</span>Hueco A · Formato de trabajo</h2>
-<p>Una compañía no rellena un HTML ni un PDF. Hoy, para usar <a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> o <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, tiene que copiar el Markdown o rehacer la tabla en su herramienta.</p>
+<p>Una compañía no rellena un HTML ni un PDF. Hoy, para usar <a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> o <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>, tiene que copiar el Markdown o rehacer la tabla en su herramienta.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -562,29 +573,29 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> «plantilla de hoja de cálculo» (riesgos)</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a> «plantilla de hoja de cálculo» (riesgos)</td>
 <td>03 §5.2</td>
-<td>Resuelto con la exportación CSV de la vista de riesgos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (D65).</td>
+<td>Resuelto con la exportación CSV de la vista de riesgos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (D65).</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> «HTML y plantilla de hoja de cálculo» (hipótesis de valor, VAN/ROI/plazo)</td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> «HTML y plantilla de hoja de cálculo» (hipótesis de valor, VAN/ROI/plazo)</td>
 <td>03 §5.3; 40 §8; 41 IND-VAL-11/12/13</td>
-<td>No existe. <a href="../plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> y <a href="../plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> solo calculan el neto anual. <strong>El criterio económico de G3 y G7 (40 §8) no tiene dónde calcularse.</strong></td>
+<td>No existe. <a href="../plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> y <a href="../plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a> solo calculan el neto anual. <strong>El criterio económico de G3 y G7 (40 §8) no tiene dónde calcularse.</strong></td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> «plantilla de hoja de cálculo» (costes por caso, con exportación a <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>)</td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a> «plantilla de hoja de cálculo» (costes por caso, con exportación a <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</td>
 <td>03 §5.3; 42 §12</td>
 <td>No existe.</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a> «plantilla de documento» (tesis y apetito de riesgo)</td>
+<td><a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a> «plantilla de documento» (tesis y apetito de riesgo)</td>
 <td>03 §5.4</td>
 <td>Solo como anexo de 13 §15.</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> «plantilla y módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>»</td>
+<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a> «plantilla y módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>»</td>
 <td>03 §5.5</td>
-<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> existe; el módulo no.</td>
+<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> existe; el módulo no.</td>
 </tr>
 <tr>
 <td>Hoja de cálculo de respaldo del registro de recomendaciones</td>
@@ -592,9 +603,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>No existe.</td>
 </tr>
 <tr>
-<td>Exportación de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> «a hoja de cálculo»</td>
+<td>Exportación de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> «a hoja de cálculo»</td>
 <td>03 §2 principio 5</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> exporta JSON.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> exporta JSON.</td>
 </tr>
 </tbody>
 </table></div>
@@ -612,87 +623,87 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
 <td>Matriz y registro de riesgos</td>
-<td><a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="../plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
-<td>Hecho como módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (D65): cálculo de nivel, matriz de calor, observaciones y vista de cartera. Falta la concentración y correlación (33 §10) y los indicadores de riesgo clave (33 §11).</td>
+<td><a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>, <a href="../plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Plantilla P13 &#183; Plan de mitigaci&#243;n y contingencia">P13</a></td>
+<td>Hecho como módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (D65): cálculo de nivel, matriz de calor, observaciones y vista de cartera. Falta la concentración y correlación (33 §10) y los indicadores de riesgo clave (33 §11).</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
+<td><a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Herramienta T07 &#183; Clasificador regulatorio">T07</a></td>
 <td>Clasificador regulatorio</td>
-<td><a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td>Cuestionario guiado; <a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §3–8 es completo y sirve de contenido.</td>
+<td><a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
+<td>Cuestionario guiado; <a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> §3–8 es completo y sirve de contenido.</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="../plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></td>
 <td>Registro de NC e incidentes</td>
-<td><a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="../plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>, <a href="../plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a></td>
 <td><strong>No existe registro de no conformidades (NC-)</strong>: ni plantilla ni aplicación.</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></td>
+<td><a href="../plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a></td>
 <td>Registro de proveedores</td>
-<td><a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td><a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a></td>
 <td>Registro de cartera de proveedores (36 §9).</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
+<td><a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a></td>
 <td>Seguridad de agentes</td>
-<td><a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> + LV-AG (22 §12)</td>
+<td><a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> + LV-AG (22 §12)</td>
 <td>Estado de cada control SEG-01–20 / AG-01–20.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a></td>
 <td>Hipótesis de valor y calculadora</td>
-<td><a href="../plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="../plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
+<td><a href="../plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>, <a href="../plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a></td>
 <td>Calculadora VAN/ROI/plazo (40 §8, F7–F9).</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 <td>Seguimiento de realización</td>
-<td><a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td><a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a></td>
 <td>Módulo por periodo y por caso.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></td>
 <td>Costes por caso</td>
 <td>Documento 42</td>
 <td>TCO, vista incremental, reparto, consumo, conciliación, hoja de decisión (42 §12).</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a></td>
+<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
 <td>Diagnóstico de madurez</td>
 <td>Documento 11</td>
 <td>Hoja de respuestas y evidencias, cálculo (11 §5), informe (11 §6).</td>
 </tr>
 <tr>
-<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></td>
+<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a></td>
 <td>Mapa de esferas</td>
 <td>Documento 10</td>
-<td>Mapa de calor esferas × ambición (10 §8.1). <strong>No está en <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a></strong> (solo en <code>PROPUESTA_MOTOR.md</code>).</td>
+<td>Mapa de calor esferas × ambición (10 §8.1). <strong>No está en <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong> (solo en <code>PROPUESTA_MOTOR.md</code>).</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></td>
+<td><a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a></td>
 <td>Tesis de IA y apetito</td>
 <td>Documento 13 §15</td>
 <td>Plantilla propia y versión con umbrales.</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></td>
 <td>Adopción y capacidad</td>
-<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></td>
 <td>Registro de capacidad liberada y de formación.</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></td>
+<td><a href="../plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a></td>
 <td>Monitor de uso corporativo</td>
 <td>Documento 31</td>
 <td>Catálogo de herramientas autorizadas y vista de licencias.</td>
 </tr>
 <tr>
-<td><a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
+<td><a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a></td>
 <td>Gestor de retiradas</td>
-<td><a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a></td>
 <td>Registro de retiradas (campos en 14 §10.9).</td>
 </tr>
 </tbody>
@@ -708,42 +719,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> calcula la puntuación de priorización, los carriles y los tramos</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> calcula la puntuación de priorización, los carriles y los tramos</td>
 <td>14 §13</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> no tiene priorización ni carriles.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> no tiene priorización ni carriles.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> muestra el semáforo de programas</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> muestra el semáforo de programas</td>
 <td>14 §13; 60 §9–10</td>
-<td>No está en <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> ni en <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>; se calcula a mano.</td>
+<td>No está en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> ni en <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>; se calcula a mano.</td>
 </tr>
 <tr>
-<td>La ficha de indicador se documenta en <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>La ficha de indicador se documenta en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>41 §5</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> no tiene entidad de indicadores.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> no tiene entidad de indicadores.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> registra excepciones y conflictos de interés</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> registra excepciones y conflictos de interés</td>
 <td>30 §13</td>
 <td>El registro no los contempla.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> genera el informe de madurez</td>
+<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> genera el informe de madurez</td>
 <td>11 §10</td>
-<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> no existe.</td>
+<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> no existe.</td>
 </tr>
 <tr>
-<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> es una vista del panel del consejo</td>
+<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a> es una vista del panel del consejo</td>
 <td>03 §5.4; 10 §8</td>
-<td>El motor de <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> no tiene mapa de calor.</td>
+<td>El motor de <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> no tiene mapa de calor.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> está «pendiente de adaptación para alimentarse de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>»</td>
+<td><a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> está «pendiente de adaptación para alimentarse de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>»</td>
 <td>60 §10.3</td>
 <td>Texto desfasado: el conector existe (D43).</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> recoge los campos de 62 §4</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> recoge los campos de 62 §4</td>
 <td>62 §4–9</td>
 <td>Faltan criterio de cumplimiento, valoración, reprogramaciones, historial y órgano (lo reconoce 62 §12.2). <strong>No existe registro de decisiones del consejo (DEC)</strong>, 62 §10.</td>
 </tr>
@@ -796,7 +807,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Decisión C2: tesis, ambición por esfera, apetito, umbrales, horizontes, líneas rojas, presupuesto marco</td>
 <td>13 §15</td>
-<td>Doc (<a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>)</td>
+<td>Doc (<a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a>)</td>
 <td>Extraer como plantilla y versionar umbrales.</td>
 </tr>
 <tr>
@@ -832,7 +843,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registro de calibración de umbrales (mapa, semáforo, pesos)</td>
 <td>12 §8; 13 §13</td>
-<td>Parcial (<a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a> solo sus umbrales)</td>
+<td>Parcial (<a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> solo sus umbrales)</td>
 <td>—</td>
 </tr>
 <tr>
@@ -850,7 +861,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registro consolidado de lecciones aprendidas</td>
 <td>14 §10.8; 43 §8.3</td>
-<td>Parcial (<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> por iniciativa)</td>
+<td>Parcial (<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a> por iniciativa)</td>
 <td>—</td>
 </tr>
 </tbody>
@@ -894,7 +905,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>RACI de etapas corporativas</td>
 <td>30 §6.3</td>
 <td>Doc</td>
-<td><a href="../plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> solo cubre la iniciativa.</td>
+<td><a href="../plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a> solo cubre la iniciativa.</td>
 </tr>
 <tr>
 <td>Solicitud y registro de excepciones</td>
@@ -905,7 +916,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Declaración anual de conflictos de interés de miembros de órganos</td>
 <td>30 §12</td>
-<td>Parcial (<a href="../plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> §8, por iniciativa)</td>
+<td>Parcial (<a href="../plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a> §8, por iniciativa)</td>
 <td>—</td>
 </tr>
 <tr>
@@ -991,43 +1002,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Evaluación de impacto en protección de datos (EIPD, art. 35 <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>)</td>
 <td>32 §6.1; 34 §6.1</td>
-<td>Parcial (<a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.1 solo decide si hace falta)</td>
+<td>Parcial (<a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> §9.1 solo decide si hace falta)</td>
 <td>Sin plantilla de la evaluación.</td>
 </tr>
 <tr>
 <td>Evaluación de impacto en derechos fundamentales (FRIA, art. 27) y notificación</td>
 <td>32 §6.2; 34 §3.10</td>
-<td>Parcial (<a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.2)</td>
+<td>Parcial (<a href="../plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> §9.2)</td>
 <td>Sin plantilla.</td>
 </tr>
 <tr>
 <td>Expediente de proveedor de alto riesgo: documentación técnica del anexo IV, sistema de gestión de la calidad (art. 17), declaración UE de conformidad, marcado CE</td>
 <td>32 §6.3; 34 §3.7–3.8</td>
-<td>Nada (una línea en <a href="../plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>)</td>
+<td>Nada (una línea en <a href="../plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Plantilla P21 &#183; Informe de entrega">P21</a>)</td>
 <td>Solo aplica si la compañía actúa como proveedor.</td>
 </tr>
 <tr>
 <td>Plan de vigilancia posterior a la comercialización</td>
 <td>34 §3.14; 52 §9</td>
-<td>Parcial (una fila en <a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>Parcial (una fila en <a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Información a trabajadores y su representación (art. 26.7; ET 64.4.d)</td>
 <td>32 §3.5; 34 §3.9; 23 §11.1; 50 §7.3</td>
-<td>Parcial (un campo Enterprise en <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>)</td>
+<td>Parcial (un campo Enterprise en <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>)</td>
 <td>Sin ficha ni registro; 23 lo exige también en Lite.</td>
 </tr>
 <tr>
 <td>Textos modelo de avisos de transparencia (art. 50) e instrucciones de uso</td>
 <td>34 §3.7, §3.11</td>
-<td>Parcial (<a href="../plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> §8, <a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>)</td>
+<td>Parcial (<a href="../plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> §8, <a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Registro interno de sistemas que afectan a empleados</td>
 <td>50 §7.4</td>
-<td>Nada (derivable de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>)</td>
+<td>Nada (derivable de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>)</td>
 <td>—</td>
 </tr>
 <tr>
@@ -1065,18 +1076,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Catálogo de riesgos tipo RT- (70) en formato estructurado</td>
 <td>33 §9</td>
 <td>Doc</td>
-<td>Sin JSON o hoja importable por <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>/T06.</td>
+<td>Sin JSON o hoja importable por <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>/T06.</td>
 </tr>
 <tr>
 <td>Informe de riesgo de cartera e indicadores de riesgo clave</td>
 <td>33 §10–12</td>
-<td>Parcial (<a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §7)</td>
+<td>Parcial (<a href="../plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §7)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Plan e informe de campaña de <em>red teaming</em> e inyección</td>
 <td>35 §8</td>
-<td>Parcial (<a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §11, registro de pruebas)</td>
+<td>Parcial (<a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §11, registro de pruebas)</td>
 <td>Sin reglas de enfrentamiento ni informe.</td>
 </tr>
 <tr>
@@ -1113,25 +1124,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Cuestionario de diligencia debida</td>
 <td>36 §4.3 (12 bloques)</td>
-<td>Parcial (<a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> §4, 5 bloques)</td>
+<td>Parcial (<a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> §4, 5 bloques)</td>
 <td>Incompleto y desalineado.</td>
 </tr>
 <tr>
 <td>Cláusulas contractuales tipo, anexo de IA, adenda de IA embebida</td>
 <td>36 §6, §8.1</td>
-<td>Parcial (lista de verificación en <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> §5)</td>
+<td>Parcial (lista de verificación en <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> §5)</td>
 <td>Sin redacción de cláusulas.</td>
 </tr>
 <tr>
 <td>Registro de proveedores</td>
 <td>36 §9</td>
 <td>Nada</td>
-<td><a href="../plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>.</td>
+<td><a href="../plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a>.</td>
 </tr>
 <tr>
 <td>Plan de salida y prueba de portabilidad</td>
 <td>36 §4.2, §7.1</td>
-<td>Parcial (un campo en <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>)</td>
+<td>Parcial (un campo en <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>)</td>
 <td>—</td>
 </tr>
 <tr>
@@ -1143,7 +1154,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Actas de revisión del proveedor, certificado de borrado, registro <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a></td>
 <td>36 §5, §6.2</td>
-<td>Parcial (<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> §8)</td>
+<td>Parcial (<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a> §8)</td>
 <td>—</td>
 </tr>
 </tbody>
@@ -1168,12 +1179,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Formularios de notificación a autoridades (art. 73 RIA, brecha RGPD 72 h, DORA, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>) y decisión motivada de no notificar</td>
 <td>37 §5</td>
-<td>Parcial (casillas en <a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> §8)</td>
+<td>Parcial (casillas en <a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a> §8)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Plantillas de comunicación de incidentes</td>
-<td>37 §10 (dice que están en <a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>)</td>
+<td>37 §10 (dice que están en <a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>)</td>
 <td><strong>Nada</strong></td>
 <td>Referencia rota.</td>
 </tr>
@@ -1266,7 +1277,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Presupuesto de consumo por caso aprobado en G5</td>
 <td>42 §8</td>
-<td>Parcial (<a href="../plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Parcial (<a href="../plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>, <a href="../plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>)</td>
 <td>—</td>
 </tr>
 <tr>
@@ -1278,19 +1289,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Coste de parar e inversión evitada</td>
 <td>42 §10</td>
-<td>Parcial (<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</td>
+<td>Parcial (<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Registro de solapes y reparto entre casos (cartera)</td>
 <td>40 §4.2; 43 §6</td>
-<td>Parcial (<a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> §8)</td>
+<td>Parcial (<a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> §8)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Plan de realización de beneficios</td>
 <td>43 §4.1; 02 (evidencia de G3 y G4)</td>
-<td><strong>Nada</strong> (43 dice que está en <a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>)</td>
+<td><strong>Nada</strong> (43 dice que está en <a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>)</td>
 <td>Referencia rota.</td>
 </tr>
 <tr>
@@ -1302,19 +1313,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Evaluación de efecto sobre el trabajo (9 preguntas)</td>
 <td>50 §3.3–3.4</td>
-<td>Parcial (<a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> §3)</td>
+<td>Parcial (<a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> §3)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Plan de capacidades y formación por colectivo</td>
 <td>50 §5.3</td>
-<td>Parcial (<a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> §5)</td>
+<td>Parcial (<a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> §5)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Registro de capacidad liberada (PER-D1…D5)</td>
 <td>50 §6.4</td>
-<td>Parcial (<a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> §7, sin PER-D4; <a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> §6)</td>
+<td>Parcial (<a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> §7, sin PER-D4; <a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> §6)</td>
 <td>—</td>
 </tr>
 <tr>
@@ -1331,13 +1342,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Ficha de conjunto de datos para IA</td>
-<td>51 §4.2, §15 (dice «anexo de <a href="../plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>»)</td>
-<td>Parcial (<a href="../plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> §3–4)</td>
+<td>51 §4.2, §15 (dice «anexo de <a href="../plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>»)</td>
+<td>Parcial (<a href="../plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a> §3–4)</td>
 <td>Referencia rota.</td>
 </tr>
 <tr>
 <td>Inventario de fuentes de conocimiento</td>
-<td>51 §10.1, §15 (dice «anexo de <a href="../plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>»)</td>
+<td>51 §10.1, §15 (dice «anexo de <a href="../plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>»)</td>
 <td><strong>Nada</strong></td>
 <td>Referencia rota.</td>
 </tr>
@@ -1350,12 +1361,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Paquete de revisión de continuidad R6 (10 bloques)</td>
 <td>52 §8.2</td>
-<td>Parcial (<a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="../plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Parcial (<a href="../plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>, <a href="../plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>, <a href="../plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Anexos de construcción con SPAD (revisión del plan, reglas de implementación, estrategia de pruebas, registro de correcciones)</td>
-<td>53 §4.1, §6 (dice que están en <a href="../plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="../plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="../plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>)</td>
+<td>53 §4.1, §6 (dice que están en <a href="../plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Plantilla P15 &#183; Registro de arquitectura">P15</a>, <a href="../plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Plantilla P21 &#183; Informe de entrega">P21</a>, <a href="../plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a>)</td>
 <td><strong>Nada</strong></td>
 <td>Referencia rota.</td>
 </tr>
@@ -1460,27 +1471,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>43 §4.1</td>
-<td>El plan de realización de beneficios «forma parte de la plantilla <a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>».</td>
-<td><a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> no tiene curva de realización, habilitadores ni indicadores adelantados.</td>
+<td>El plan de realización de beneficios «forma parte de la plantilla <a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>».</td>
+<td><a href="../plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> no tiene curva de realización, habilitadores ni indicadores adelantados.</td>
 </tr>
 <tr>
 <td>50 §14 (l. 503)</td>
-<td>La ficha informativa para la representación «se incorpora como anexo de <a href="../plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>».</td>
-<td><a href="../plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> no tiene ese anexo.</td>
+<td>La ficha informativa para la representación «se incorpora como anexo de <a href="../plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>».</td>
+<td><a href="../plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> no tiene ese anexo.</td>
 </tr>
 <tr>
 <td>51 §15 (l. 485)</td>
-<td>Ficha de conjunto de datos e inventario de fuentes son anexos de <a href="../plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Ficha de conjunto de datos e inventario de fuentes son anexos de <a href="../plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>.</td>
 <td>No existen.</td>
 </tr>
 <tr>
 <td>53 §4.1, §6</td>
-<td>Los artefactos SPAD se registran en <a href="../plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="../plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> y <a href="../plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>.</td>
+<td>Los artefactos SPAD se registran en <a href="../plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Plantilla P15 &#183; Registro de arquitectura">P15</a>, <a href="../plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Plantilla P21 &#183; Informe de entrega">P21</a> y <a href="../plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a>.</td>
 <td>Esas plantillas no los mencionan.</td>
 </tr>
 <tr>
 <td>37 §10</td>
-<td><a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> incluye plantillas de comunicación.</td>
+<td><a href="../plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a> incluye plantillas de comunicación.</td>
 <td>No las incluye.</td>
 </tr>
 </tbody>
@@ -1498,8 +1509,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> no coincide con el <a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>: 16 cláusulas distintas de las de 36 §6, 5 bloques de diligencia frente a 12, reglas de exigencia N1–N3 diferentes.</td>
-<td><a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, 36</td>
+<td><a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> no coincide con el <a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a>: 16 cláusulas distintas de las de 36 §6, 5 bloques de diligencia frente a 12, reglas de exigencia N1–N3 diferentes.</td>
+<td><a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>, 36</td>
 </tr>
 <tr>
 <td>2</td>
@@ -1508,22 +1519,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>La información a la representación de los trabajadores es obligatoria en Lite y Enterprise (23 §13.2), pero <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> la marca Enterprise.</td>
-<td>23, <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>La información a la representación de los trabajadores es obligatoria en Lite y Enterprise (23 §13.2), pero <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> la marca Enterprise.</td>
+<td>23, <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></td>
 </tr>
 <tr>
 <td>4</td>
-<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> recoge 4 destinos de la capacidad liberada; 50 §6.4 define 5 (falta PER-D4).</td>
-<td>50, <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> recoge 4 destinos de la capacidad liberada; 50 §6.4 define 5 (falta PER-D4).</td>
+<td>50, <a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></td>
 </tr>
 <tr>
 <td>5</td>
-<td>Funciones atribuidas a <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>, <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> y <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> que no existen (sección 4.2).</td>
+<td>Funciones atribuidas a <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>, <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a> y <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> que no existen (sección 4.2).</td>
 <td>11, 14, 30, 41, 60</td>
 </tr>
 <tr>
 <td>6</td>
-<td>60 §10.3 describe <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> como pendiente de conectarse a <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>60 §10.3 describe <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> como pendiente de conectarse a <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</td>
 <td>60</td>
 </tr>
 <tr>
@@ -1542,10 +1553,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h2 id="propuesta-de-trabajo"><span class="antetitulo">08</span>Propuesta de trabajo</h2>
 <h3 id="8-1-criterio">8.1 Criterio</h3>
 <ul>
-<li><strong>Primero lo que impide arrancar.</strong> Una compañía que adopta SEVEN-G sigue el plan de 90 días del <a href="../90_SEVEN-G_Guia_de_implantacion.html">documento 90</a>: mandato, diagnóstico C1, órganos, tesis C2, cartera C3. Hoy casi ninguno de esos entregables tiene plantilla.</li>
+<li><strong>Primero lo que impide arrancar.</strong> Una compañía que adopta SEVEN-G sigue el plan de 90 días del <a href="../90_SEVEN-G_Guia_de_implantacion.html" title="Documento 90 &#183; Gu&#237;a de implantaci&#243;n de SEVEN-G">documento 90</a>: mandato, diagnóstico C1, órganos, tesis C2, cartera C3. Hoy casi ninguno de esos entregables tiene plantilla.</li>
 <li><strong>Después lo que bloquea un <em>gate</em> o una obligación legal</strong>: cálculo económico de G3/G7, registro de NC, notificaciones, EIPD y FRIA, cláusulas de proveedor.</li>
 <li><strong>Extraer antes que redactar.</strong> Donde el contenido ya está completo en un documento (13 §15, 11 §3, 31 §3–4, 60 §4–5, 22), la plantilla se extrae y el documento remite a ella, sin duplicar.</li>
-<li>Cada pieza nueva, en ES/EN, con aviso legal, «Por qué importa» y entrada en el catálogo del <a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>.</li>
+<li>Cada pieza nueva, en ES/EN, con aviso legal, «Por qué importa» y entrada en el catálogo del <a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>.</li>
 </ul>
 <h3 id="8-2-olas-propuestas">8.2 Olas propuestas</h3>
 <div class="tabla"><table>
@@ -1559,27 +1570,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>0 · Correcciones</strong></td>
-<td>Referencias rotas (sección 6) e incoherencias (sección 7), incluida la alineación <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> ↔ 36.</td>
+<td>Referencias rotas (sección 6) e incoherencias (sección 7), incluida la alineación <a href="../plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> ↔ 36.</td>
 <td>Coste bajo; el marco dice hoy cosas que no son ciertas.</td>
 </tr>
 <tr>
 <td><strong>1 · Arranque de la compañía</strong></td>
-<td>Mandato de implantación · Informe de diagnóstico C1 · Cuestionario e informe de madurez (<a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>) · Reglamento del comité de IA · Acta y orden del día de los órganos · Plantilla de tesis y apetito C2 (<a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>) · Plan de cartera C3 con calculadora de priorización · Informe anual C5.</td>
+<td>Mandato de implantación · Informe de diagnóstico C1 · Cuestionario e informe de madurez (<a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>) · Reglamento del comité de IA · Acta y orden del día de los órganos · Plantilla de tesis y apetito C2 (<a href="../plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a>) · Plan de cartera C3 con calculadora de priorización · Informe anual C5.</td>
 <td>Son los entregables del plan de 90 días y evidencias de madurez (D1) y de G2/G7 de Transformar.</td>
 </tr>
 <tr>
 <td><strong>2 · Económico</strong></td>
-<td>Calculadora de valor VAN/ROI/plazo (<a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a>) · Calculadora de costes por caso (<a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>) · Plan de realización de beneficios · Informe de conciliación de costes.</td>
+<td>Calculadora de valor VAN/ROI/plazo (<a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>) · Calculadora de costes por caso (<a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>) · Plan de realización de beneficios · Informe de conciliación de costes.</td>
 <td>Sin ellas, los criterios económicos de G3 y G7 no se pueden aplicar.</td>
 </tr>
 <tr>
 <td><strong>3 · Cumplimiento y control</strong></td>
-<td>Registro de NC (<a href="../plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>) · Notificaciones a autoridades y comunicaciones de incidente · EIPD · FRIA · Información a trabajadores · Avisos de transparencia · Registro de excepciones · Registro de decisiones del consejo (DEC).</td>
+<td>Registro de NC (<a href="../plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>) · Notificaciones a autoridades y comunicaciones de incidente · EIPD · FRIA · Información a trabajadores · Avisos de transparencia · Registro de excepciones · Registro de decisiones del consejo (DEC).</td>
 <td>Obligaciones legales y de segunda línea.</td>
 </tr>
 <tr>
 <td><strong>4 · Terceros y auditoría</strong></td>
-<td>Cuestionario de diligencia completo · Cláusulas contractuales tipo · Plan de salida · Registro de proveedores (<a href="../plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>) · Kit de auditoría (plan anual, independencia, papeles, informe, hallazgos, muestreo) · Declaración de aplicación.</td>
+<td>Cuestionario de diligencia completo · Cláusulas contractuales tipo · Plan de salida · Registro de proveedores (<a href="../plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a>) · Kit de auditoría (plan anual, independencia, papeles, informe, hallazgos, muestreo) · Declaración de aplicación.</td>
 <td>Tercera línea y contratación.</td>
 </tr>
 <tr>
@@ -1589,7 +1600,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>6 · Personas, datos y seguridad</strong></td>
-<td>Encuesta de pulso · Registro de formación y alfabetización · Registro de capacidad liberada (<a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>) · Ficha de conjunto de datos · Inventario de fuentes de conocimiento · Catálogo de herramientas autorizadas y solicitud (<a href="../plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>) · Plan e informe de <em>red teaming</em> · Inventario de identidades no humanas · SBOM · Registro de retiradas (<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>) · Catálogo RT- en JSON · Mapa de calor <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> en el panel.</td>
+<td>Encuesta de pulso · Registro de formación y alfabetización · Registro de capacidad liberada (<a href="../plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>) · Ficha de conjunto de datos · Inventario de fuentes de conocimiento · Catálogo de herramientas autorizadas y solicitud (<a href="../plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>) · Plan e informe de <em>red teaming</em> · Inventario de identidades no humanas · SBOM · Registro de retiradas (<a href="../plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>) · Catálogo RT- en JSON · Mapa de calor <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a> en el panel.</td>
 <td>Completan el marco.</td>
 </tr>
 </tbody>
@@ -1600,12 +1611,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Formato de las piezas rellenables.</strong> Hoy todo es Markdown → HTML/PDF de lectura, y D11 dice que PowerPoint o Excel solo se hacen cuando el autor lo pide. Opciones:
 <ul>
 <li>(a) Mantener Markdown → HTML/PDF y añadir <strong><code>.docx</code> y <code>.xlsx</code> descargables</strong> generados desde la misma fuente (recomendado para plantillas documentales y calculadoras: es lo que una compañía usa).</li>
-<li>(b) Solo aplicaciones HTML sin servidor con JSON (D27), como <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a>.</li>
-<li>(c) Mixto: plantillas documentales en <code>.docx</code>; registros y calculadoras como módulos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> o aplicaciones HTML con exportación a <code>.xlsx</code>.</li>
-<li>Restricción técnica: el equipo no tiene Python, Node ni pandoc (solo PowerShell 7 y Edge; <code>uv</code> para el conector de <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>). Generar <code>.docx</code>/<code>.xlsx</code> desde PowerShell es posible (son ZIP con XML), pero hay que confirmar la vía.</li>
+<li>(b) Solo aplicaciones HTML sin servidor con JSON (D27), como <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>.</li>
+<li>(c) Mixto: plantillas documentales en <code>.docx</code>; registros y calculadoras como módulos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> o aplicaciones HTML con exportación a <code>.xlsx</code>.</li>
+<li>Restricción técnica: el equipo no tiene Python, Node ni pandoc (solo PowerShell 7 y Edge; <code>uv</code> para el conector de <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>). Generar <code>.docx</code>/<code>.xlsx</code> desde PowerShell es posible (son ZIP con XML), pero hay que confirmar la vía.</li>
 </ul>
 </li>
-<li><strong>Codificación de las plantillas nuevas.</strong> <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> son por iniciativa y se alinean con 01 §6.10 (D21). Recomendación: continuar con <strong><a href="../plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a> en adelante</strong> agrupadas por bloque (compañía, consejo, cumplimiento, terceros, auditoría, implantación) en un único catálogo, en vez de abrir una serie paralela.</li>
+<li><strong>Codificación de las plantillas nuevas.</strong> <a href="../plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>–<a href="../plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a> son por iniciativa y se alinean con 01 §6.10 (D21). Recomendación: continuar con <strong><a href="../plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Plantilla P32 &#183; Mandato de implantaci&#243;n de SEVEN-G">P32</a> en adelante</strong> agrupadas por bloque (compañía, consejo, cumplimiento, terceros, auditoría, implantación) en un único catálogo, en vez de abrir una serie paralela.</li>
 <li><strong>Alcance del expediente de proveedor de alto riesgo</strong> (anexo IV, sistema de calidad, declaración UE de conformidad). Recomendación: fuera de v0.x; indicar en 32 y 34 que la compañía que actúe como proveedor sigue las normas armonizadas y su propio sistema de calidad.</li>
 <li><strong>Orden de las olas</strong> de la sección 8.2 y si se empieza por la ola 0 (correcciones) en la misma entrega.</li>
 </ol>
@@ -1846,6 +1857,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

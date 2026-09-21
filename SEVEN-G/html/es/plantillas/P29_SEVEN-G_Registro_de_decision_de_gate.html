@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#evidencias-presentadas"><span>03</span>Evidencias presentadas</a></li><li><a href="#criterios-del-gate"><span>04</span>Criterios del gate</a></li><li><a href="#grado-de-cumplimiento"><span>05</span>Grado de cumplimiento</a></li><li><a href="#criterios-diferenciados-por-nivel-de-ambicion"><span>06</span>Criterios diferenciados por nivel de ambición</a></li><li><a href="#validacion-dual"><span>07</span>Validación dual</a></li><li><a href="#resultado"><span>08</span>Resultado</a></li><li><a href="#condiciones"><span>09</span>Condiciones</a></li><li><a href="#motivo-codificado-de-parada-o-retirada"><span>10</span>Motivo codificado de parada o retirada</a></li><li><a href="#elevacion-y-aprobacion-del-consejo"><span>11</span>Elevación y aprobación del consejo</a></li><li><a href="#criterios-de-calidad"><span>12</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>13</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -458,11 +469,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> Gestor de <em>gates</em> (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). Los estados y el cálculo del grado de cumplimiento siguen 03 §3.4.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> Gestor de <em>gates</em> (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>). Los estados y el cálculo del grado de cumplimiento siguen 03 §3.4.</td>
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td>Documento 21 (criterios <code>G&lt;n&gt;.&lt;nn&gt;</code> y <code>R6.&lt;nn&gt;</code>) · <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a> (listas LV) · <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> Intensidad · <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> Ambición · <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> Firma de puesta en producción · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de valor · <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> Decisión de escalado o retirada.</td>
+<td>Documento 21 (criterios <code>G&lt;n&gt;.&lt;nn&gt;</code> y <code>R6.&lt;nn&gt;</code>) · <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a> (listas LV) · <a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a> Intensidad · <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a> Ambición · <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a> Firma de puesta en producción · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> Seguimiento de valor · <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a> Decisión de escalado o retirada.</td>
 </tr>
 </tbody>
 </table></div>
@@ -490,7 +501,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -515,12 +526,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad</td>
 <td></td>
-<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>).</td>
 </tr>
 <tr>
 <td>Nivel de ambición</td>
 <td></td>
-<td>Optimizar · Aumentar · Transformar (<a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
+<td>Optimizar · Aumentar · Transformar (<a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a>).</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria</td>
@@ -573,7 +584,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Lienzo de hipótesis de valor <em>(ejemplo ilustrativo, G2)</em></td>
-<td><a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
+<td><a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a></td>
 <td>1.0</td>
 <td>02-03-2026</td>
 <td>Repositorio documental</td>
@@ -583,7 +594,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Línea base <em>(ejemplo ilustrativo, G2)</em></td>
-<td><a href="P09_SEVEN-G_Linea_base.html">P09</a></td>
+<td><a href="P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a></td>
 <td>0.9</td>
 <td>28-02-2026</td>
 <td>Repositorio documental</td>
@@ -615,11 +626,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-del-gate"><span class="antetitulo">04</span>Criterios del <em>gate</em></h2>
-<p>Se listan los criterios del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> para el <em>gate</em>, la intensidad y el nivel de ambición. No se inventan códigos: se copian del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>. <strong>Estado:</strong> Cumple · No cumple · No aplica · Pendiente (03 §3.4).</p>
+<p>Se listan los criterios del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> para el <em>gate</em>, la intensidad y el nivel de ambición. No se inventan códigos: se copian del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>. <strong>Estado:</strong> Cumple · No cumple · No aplica · Pendiente (03 §3.4).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Código (<a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>)</th>
+<th>Código (<a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>)</th>
 <th>Criterio</th>
 <th>Obligatorio (Sí · No)</th>
 <th>Estado</th>
@@ -634,7 +645,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>La línea base está medida, no estimada, salvo justificación</td>
 <td>Sí</td>
 <td>No cumple</td>
-<td><a href="P09_SEVEN-G_Linea_base.html">P09</a> v0.9</td>
+<td><a href="P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a> v0.9</td>
 <td>Se aporta una estimación del área sin medición</td>
 <td>Sí</td>
 </tr>
@@ -667,7 +678,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Lista de verificación binaria aplicada: LV-G<em>n</em> del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a> · versión: ______.</p>
+<p>Lista de verificación binaria aplicada: LV-G<em>n</em> del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a> · versión: ______.</p>
 <hr />
 <h2 id="grado-de-cumplimiento"><span class="antetitulo">05</span>Grado de cumplimiento</h2>
 <div class="tabla"><table>
@@ -895,12 +906,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Si Escalar: referencia a la nueva fase 0</td>
 <td></td>
-<td>Se detalla en <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td>Se detalla en <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>.</td>
 </tr>
 <tr>
 <td>Riesgos aceptados en esta decisión <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Riesgo, nivel residual y quién lo acepta según su nivel (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</td>
+<td>Riesgo, nivel residual y quién lo acepta según su nivel (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -926,7 +937,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><em>[código del documento 21]</em></td>
 <td>Responsable de producto de IA</td>
 <td>30-06-2026</td>
-<td>Registro de asistencia en <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td>Registro de asistencia en <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></td>
 <td>Abierta</td>
 </tr>
 <tr>
@@ -1025,7 +1036,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Lecciones aprendidas</td>
 <td></td>
-<td>Enlace a <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> bloque de lecciones o resumen.</td>
+<td>Enlace a <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a> bloque de lecciones o resumen.</td>
 </tr>
 <tr>
 <td>Recursos liberados</td>
@@ -1035,7 +1046,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Plan de retirada (si <em>Retirar</em>)</td>
 <td></td>
-<td><a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td><a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1068,13 +1079,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Recomendación del consejo vinculada <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Identificador del registro de recomendaciones (<a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a>), si existe.</td>
+<td>Identificador del registro de recomendaciones (<a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a>), si existe.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">12</span>Criterios de calidad</h2>
-<p>El auditor de IA (en Lite, por muestreo) comprueba la calidad del propio registro, además de los criterios del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> para el <em>gate</em> concreto:</p>
+<p>El auditor de IA (en Lite, por muestreo) comprueba la calidad del propio registro, además de los criterios del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> para el <em>gate</em> concreto:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1226,7 +1237,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Oficina de IA</td>
 <td>Patrocinador con conformidad de riesgos</td>
 <td>Auditor de IA</td>
-<td>Comité de IA tras firma multinivel (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>)</td>
+<td>Comité de IA tras firma multinivel (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a>)</td>
 </tr>
 <tr>
 <td>R6</td>
@@ -1499,6 +1510,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,14 +439,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/04_SPAD_Ciclos_complementarios.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/04_SPAD_Ciclos_complementarios.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/04_SPAD_Ciclos_complementarios.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose"><span>01</span>Purpose</a></li><li><a href="#legacy-cycle"><span>02</span>Legacy cycle</a></li><li><a href="#debugging-cycle"><span>03</span>Debugging cycle</a></li><li><a href="#urgent-fix-cycle"><span>04</span>Urgent fix cycle</a></li><li><a href="#security-cycle"><span>05</span>Security cycle</a></li><li><a href="#handover-to-operations"><span>06</span>Handover to operations</a></li><li><a href="#related-documents"><span>07</span>Related documents</a></li><li><a href="#version-control"><span>08</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Version under review: please do not circulate.</strong> The current state of SPAD (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.</p>
 </blockquote>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SPAD is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. <strong>Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="purpose"><span class="antetitulo">01</span>Purpose</h2>
-<p>The main cycle (<a href="01_SPAD_Guia_operativa.html">document 01</a>) builds new functionality. This document defines the four cycles that cover the rest of a team's real work, with the same rules: blocking phases, artefacts, an independent AI Reviewer, human validation and a record.</p>
+<p>The main cycle (<a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; Operating guide: phases, roles and verdicts">document 01</a>) builds new functionality. This document defines the four cycles that cover the rest of a team's real work, with the same rules: blocking phases, artefacts, an independent AI Reviewer, human validation and a record.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -585,7 +596,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </pre></div><div class="g-fuente">Source: SPAD</div></figure>
 <h3 id="3-3-rules">3.3 Rules</h3>
 <ul>
-<li>The diagnostic AI <strong>does not generate solution code</strong> and does not modify production code: it produces a diagnosis. Doing so is a phase violation (<a href="03_SPAD_Politica_de_validacion.html">document 03</a>).</li>
+<li>The diagnostic AI <strong>does not generate solution code</strong> and does not modify production code: it produces a diagnosis. Doing so is a phase violation (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>).</li>
 <li>A report without a verdict is an incomplete artefact.</li>
 <li>The report is kept in the incident's topic, even if the cause turns out to be configuration: it is organisational learning.</li>
 </ul>
@@ -700,7 +711,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>AI components in production (instructions, agents, information retrieval).</td>
-<td>Mandatory, with the requirements of <a href="05_SPAD_Sistemas_que_incluyen_IA.html">document 05</a>.</td>
+<td>Mandatory, with the requirements of <a href="05_SPAD_Sistemas_que_incluyen_IA.html" title="Document 05 &#183; Systems that include AI: behaviour evaluation and agents">document 05</a>.</td>
 </tr>
 <tr>
 <td>The rest of the code.</td>
@@ -795,23 +806,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="01_SPAD_Guia_operativa.html">document 01</a> · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; Operating guide: phases, roles and verdicts">document 01</a> · Operating guide</strong></td>
 <td>Main cycle into which these cycles lead; phase 9 of fixes; phase 10 of versions.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a> · Contexts, topics and artefact register</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a> · Contexts, topics and artefact register</strong></td>
 <td>Parameters for time limits, severities and acceptance in the global context.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html">document 03</a> · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a> · Validation policy</strong></td>
 <td>Phase violations specific to these cycles.</td>
 </tr>
 <tr>
-<td><strong><a href="05_SPAD_Sistemas_que_incluyen_IA.html">document 05</a> · Systems that include AI</strong></td>
+<td><strong><a href="05_SPAD_Sistemas_que_incluyen_IA.html" title="Document 05 &#183; Systems that include AI: behaviour evaluation and agents">document 05</a> · Systems that include AI</strong></td>
 <td>Additional security requirements for AI components.</td>
 </tr>
 <tr>
-<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a> · Input and output contracts</strong></td>
+<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Document 07 &#183; Input and output contracts">document 07</a> · Input and output contracts</strong></td>
 <td>Structure of the root cause, security and urgent fix reports.</td>
 </tr>
 <tr>
@@ -1079,6 +1090,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

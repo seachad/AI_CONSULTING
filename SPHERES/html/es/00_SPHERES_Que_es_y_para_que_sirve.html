@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/00_SPHERES_Que_es_y_para_que_sirve.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/00_SPHERES_Que_es_y_para_que_sirve.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/00_SPHERES_Que_es_y_para_que_sirve.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#que-es-spheres"><span>01</span>Qué es SPHERES</a></li><li><a href="#el-problema-que-resuelve"><span>02</span>El problema que resuelve</a></li><li><a href="#las-nueve-esferas-de-un-vistazo"><span>03</span>Las nueve esferas de un vistazo</a></li><li><a href="#los-tres-niveles-de-ambicion-de-un-vistazo"><span>04</span>Los tres niveles de ambición de un vistazo</a></li><li><a href="#como-se-lee-el-mapa"><span>05</span>Cómo se lee el mapa</a></li><li><a href="#para-que-sirve"><span>06</span>Para qué sirve</a></li><li><a href="#un-ejemplo-completo"><span>07</span>Un ejemplo completo</a></li><li><a href="#relacion-con-seven-g"><span>08</span>Relación con SEVEN-G</a></li><li><a href="#para-quien-es"><span>09</span>Para quién es</a></li><li><a href="#como-usar-esta-biblioteca"><span>10</span>Cómo usar esta biblioteca</a></li><li><a href="#principios-de-uso"><span>11</span>Principios de uso</a></li><li><a href="#licencia-atribucion-y-estado"><span>12</span>Licencia, atribución y estado</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Versión en revisión: no difundir.</strong> El estado actual de SPHERES (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.</p>
 </blockquote>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SPHERES es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA o el RGPD) y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas. <strong>Cada organización que use SPHERES es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="que-es-spheres"><span class="antetitulo">01</span>Qué es SPHERES</h2>
@@ -468,8 +479,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Por qué importa.</strong> Sin un lenguaje común, cada área habla de la IA a su manera: tecnología habla de modelos, finanzas de ahorros, negocio de casos de uso y cumplimiento de riesgos. SPHERES da a todos el mismo mapa, de modo que el consejo puede comparar apuestas, detectar huecos y decidir dónde invertir sin tener que entender cómo funciona cada sistema.</p>
 </blockquote>
 <p>SPHERES es una <strong>metodología de apoyo de SEVEN-G</strong>, el marco de valor, gobierno y transformación con IA de Fernando García Varela. Constituye su componente A (mapa de impacto). Esta biblioteca explica el método con detalle y con ejemplos; las reglas operativas, los indicadores con fórmula y las herramientas están en SEVEN-G (sección 8).</p>
-<blockquote>
-<p><strong>Titularidad y reutilización.</strong> La propiedad intelectual de SPHERES pertenece a su autor, <strong>Fernando García Varela</strong>. Se ofrece como marco de referencia abierto, en desarrollo, para uso, adaptación y aprendizaje; no está liberado como entregable comercial definitivo ni como producto cerrado para clientes. Su reutilización y adaptación por cualquier organización quedan sujetas a la licencia de contenidos y de código de SEVEN-G (<strong><a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a></strong> para los contenidos, <strong>MIT</strong> para el código; documento 93 de SEVEN-G), que exige reconocer la autoría e indicar los cambios. Usar SPHERES, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre su base a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.</p>
+<blockquote class="aviso-legal plegado">
+<p><strong>Titularidad y reutilización.</strong> La propiedad intelectual de SPHERES pertenece a su autor, <strong>Fernando García Varela</strong>. Se ofrece como marco de referencia abierto, en desarrollo, para uso, adaptación y aprendizaje; no está liberado como entregable comercial definitivo ni como producto cerrado para clientes. Su reutilización y adaptación por cualquier organización quedan sujetas a la licencia de contenidos y de código de SEVEN-G (<strong>CC BY 4.0</strong> para los contenidos, <strong>MIT</strong> para el código; documento 93 de SEVEN-G), que exige reconocer la autoría e indicar los cambios. Usar SPHERES, incluida su adaptación conforme a esa licencia, no transfiere la titularidad de la metodología ni otorga exclusividad ni derecho de propiedad sobre su base a ningún cliente, proveedor o tercero, salvo pacto escrito y específico sobre desarrollos propios.</p>
 </blockquote>
 <hr />
 <h2 id="el-problema-que-resuelve"><span class="antetitulo">02</span>El problema que resuelve</h2>
@@ -745,8 +756,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La inversión, la incertidumbre y la resistencia organizativa <strong>crecen</strong> de Optimizar a Transformar. Por eso cada nivel exige criterios de decisión distintos: medir una apuesta de Transformar con el plazo de retorno de una automatización la mata antes de que pueda demostrar nada. El <a href="01_SPHERES_Niveles_de_ambicion.html">documento 01</a> desarrolla los tres niveles con detalle.</p>
-<p>Las esferas 08 y 09 <strong>no se evalúan con estos tres niveles</strong>, porque no generan valor por sí mismas. Se evalúan por dimensiones con cuatro grados (Ausente, Básico, Sistemático y Avanzado), como explica el <a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">documento 04</a>.</p>
+<p>La inversión, la incertidumbre y la resistencia organizativa <strong>crecen</strong> de Optimizar a Transformar. Por eso cada nivel exige criterios de decisión distintos: medir una apuesta de Transformar con el plazo de retorno de una automatización la mata antes de que pueda demostrar nada. El <a href="01_SPHERES_Niveles_de_ambicion.html" title="Documento 01 &#183; Niveles de ambici&#243;n">documento 01</a> desarrolla los tres niveles con detalle.</p>
+<p>Las esferas 08 y 09 <strong>no se evalúan con estos tres niveles</strong>, porque no generan valor por sí mismas. Se evalúan por dimensiones con cuatro grados (Ausente, Básico, Sistemático y Avanzado), como explica el <a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Documento 04 &#183; Regulaci&#243;n y gobierno de la IA">documento 04</a>.</p>
 <blockquote>
 <p><strong>Por qué importa.</strong> El nivel de ambición es la pregunta que distingue a una compañía que <strong>se transforma</strong> de una que <strong>solo se eficienta</strong>. Ambas cosas son legítimas, pero no son lo mismo, no cuestan lo mismo y no se gobiernan igual. Llamar transformación a una automatización con buen discurso es uno de los errores más caros y más frecuentes.</p>
 </blockquote>
@@ -1028,7 +1039,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Herramientas de SEVEN-G que usan el mapa: el registro de iniciativas (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html">T01</a>), donde cada iniciativa lleva su esfera y su nivel, y el panel de IA para el consejo (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>), que muestra el mapa de calor de la cartera.</p>
+<p>Herramientas de SEVEN-G que usan el mapa: el registro de iniciativas (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>), donde cada iniciativa lleva su esfera y su nivel, y el panel de IA para el consejo (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>), que muestra el mapa de calor de la cartera.</p>
 <blockquote>
 <p><strong>Por qué importa.</strong> Separar la explicación de la regla evita dos riesgos: que el consejo reciba un manual operativo que no necesita leer, y que la oficina de IA aplique criterios distintos a los que se explicaron al consejo. Ambos usan las mismas esferas, los mismos niveles y los mismos nombres.</p>
 </blockquote>
@@ -1046,7 +1057,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Consejeros y presidencia</strong></td>
 <td>Un lenguaje para supervisar la IA sin entrar en tecnología, y las preguntas que conviene hacer.</td>
-<td>Este documento y el <a href="05_SPHERES_Conversacion_con_el_consejo.html">documento 05</a>.</td>
+<td>Este documento y el <a href="05_SPHERES_Conversacion_con_el_consejo.html" title="Documento 05 &#183; Conversaci&#243;n con el consejo">documento 05</a>.</td>
 </tr>
 <tr>
 <td><strong>Alta dirección</strong></td>
@@ -1087,32 +1098,32 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html">documento 00</a> · Qué es SPHERES y para qué sirve</strong></td>
+<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPHERES y para qu&#233; sirve">documento 00</a> · Qué es SPHERES y para qué sirve</strong></td>
 <td>Presentación de la metodología, el problema que resuelve y un ejemplo completo.</td>
 <td>Primero.</td>
 </tr>
 <tr>
-<td><strong><a href="01_SPHERES_Niveles_de_ambicion.html">documento 01</a> · Niveles de ambición</strong></td>
+<td><strong><a href="01_SPHERES_Niveles_de_ambicion.html" title="Documento 01 &#183; Niveles de ambici&#243;n">documento 01</a> · Niveles de ambición</strong></td>
 <td>Optimizar, Aumentar y Transformar con detalle, cómo clasificar y errores frecuentes.</td>
 <td>Antes de clasificar cualquier iniciativa.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html">documento 02</a> · Esferas donde se genera valor</strong></td>
+<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html" title="Documento 02 &#183; Esferas donde se genera valor">documento 02</a> · Esferas donde se genera valor</strong></td>
 <td>Cliente, Producto y servicio, Personas y Operaciones, con ejemplos por nivel.</td>
 <td>Para diagnosticar oportunidades.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html">documento 03</a> · Esferas habilitadoras</strong></td>
+<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html" title="Documento 03 &#183; Esferas habilitadoras">documento 03</a> · Esferas habilitadoras</strong></td>
 <td>Datos, Conocimiento y Decisión: por qué condicionan todo lo demás.</td>
 <td>Antes de fijar una ambición alta en cualquier esfera de valor.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">documento 04</a> · Regulación y gobierno de la IA</strong></td>
+<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Documento 04 &#183; Regulaci&#243;n y gobierno de la IA">documento 04</a> · Regulación y gobierno de la IA</strong></td>
 <td>Las esferas 08 y 09, sus dimensiones y sus grados.</td>
 <td>Para evaluar límites y capacidad de gobierno.</td>
 </tr>
 <tr>
-<td><strong><a href="05_SPHERES_Conversacion_con_el_consejo.html">documento 05</a> · Conversación con el consejo</strong></td>
+<td><strong><a href="05_SPHERES_Conversacion_con_el_consejo.html" title="Documento 05 &#183; Conversaci&#243;n con el consejo">documento 05</a> · Conversación con el consejo</strong></td>
 <td>Guion de sesenta minutos, banco de preguntas y primeros noventa días.</td>
 <td>Para preparar la sesión con el consejo.</td>
 </tr>
@@ -1427,6 +1438,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -429,14 +440,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#reason-for-the-assessment"><span>03</span>Reason for the assessment</a></li><li><a href="#systematic-description-of-the-processing"><span>04</span>Systematic description of the processing</a></li><li><a href="#necessity-and-proportionality"><span>05</span>Necessity and proportionality</a></li><li><a href="#assessment-of-the-risks-to-rights-and-freedoms"><span>06</span>Assessment of the risks to rights and freedoms</a></li><li><a href="#planned-measures"><span>07</span>Planned measures</a></li><li><a href="#consultation-of-the-data-protection-officer"><span>08</span>Consultation of the data protection officer</a></li><li><a href="#conclusion-and-prior-consultation"><span>09</span>Conclusion and prior consultation</a></li><li><a href="#relationship-with-other-assessments"><span>10</span>Relationship with other assessments</a></li><li><a href="#review"><span>11</span>Review</a></li><li><a href="#quality-criteria"><span>12</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>13</span>Approval and verification</a></li><li><a href="#version-control"><span>14</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
 <blockquote>
-<p><em>This template does not constitute legal advice.</em> References consulted in September 2026; verify that they are current (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> §6).</p>
+<p><em>This template does not constitute legal advice.</em> References consulted in September 2026; verify that they are current (<a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> §6).</p>
 </blockquote>
 <hr />
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <blockquote>
-<p><strong>Why it matters.</strong> Where it is mandatory, the DPIA must exist before the processing starts (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 35) and it is a condition of G3 and G4 in SEVEN-G. Without it, an AI system can reach production processing data without a clear legal basis, with unforeseen inferences or automated decisions and without proportionate measures; the result is a regulatory and reputational risk that can no longer be corrected in the design, only by suspending the system. This template turns the conclusion of <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.1 (&quot;required&quot;) into a complete and verifiable assessment, integrated into the risk register (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</p>
+<p><strong>Why it matters.</strong> Where it is mandatory, the DPIA must exist before the processing starts (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 35) and it is a condition of G3 and G4 in SEVEN-G. Without it, an AI system can reach production processing data without a clear legal basis, with unforeseen inferences or automated decisions and without proportionate measures; the result is a regulatory and reputational risk that can no longer be corrected in the design, only by suspending the system. This template turns the conclusion of <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> §9.1 (&quot;required&quot;) into a complete and verifiable assessment, integrated into the risk register (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>).</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
 <div class="tabla"><table>
@@ -449,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>It is opened when <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.1 concludes that the assessment is <strong>Required</strong> (or <strong>Recommended</strong> and the company decides to carry it out). It is prepared in phase 3, before G3; it is updated in phase 4 with the design (G4) and reviewed at every R6 and upon any change listed in section 11. Always before the processing starts.</td>
+<td>It is opened when <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> §9.1 concludes that the assessment is <strong>Required</strong> (or <strong>Recommended</strong> and the company decides to carry it out). It is prepared in phase 3, before G3; it is updated in phase 4 with the design (G4) and reviewed at every R6 and upon any change listed in section 11. Always before the processing starts.</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -457,11 +468,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Who verifies it</strong></td>
-<td>Lite: AI Office or AI Auditor. Enterprise: AI Auditor. The data protection officer advises and monitors, but is not listed as author (<a href="../30_SEVEN-G_Modelo_de_gobierno.html">document 30</a>; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 39).</td>
+<td>Lite: AI Office or AI Auditor. Enterprise: AI Auditor. The data protection officer advises and monitors, but is not listed as author (<a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a>; <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 39).</td>
 </tr>
 <tr>
 <td><strong>Who decides or approves</strong></td>
-<td>The controller, in the body corresponding to the residual risk (section 9 and <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6). Prior consultation with the supervisory authority is decided by the same body when applicable.</td>
+<td>The controller, in the body corresponding to the residual risk (section 9 and <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> §6). Prior consultation with the supervisory authority is decided by the same body when applicable.</td>
 </tr>
 <tr>
 <td><strong>Gate or moment</strong></td>
@@ -469,11 +480,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> · Regulatory classifier (status, date and link of the assessment in the system record, 32 §3.5).</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a> · Regulatory classifier (status, date and link of the assessment in the system record, 32 §3.5).</td>
 </tr>
 <tr>
 <td><strong>Reference document</strong></td>
-<td>32 §6.1 (when and who), 34 §6.1 and §6.2 (articles and guidelines), <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a> (risk scales), <a href="../51_SEVEN-G_Datos_y_conocimiento.html">document 51</a> (data).</td>
+<td>32 §6.1 (when and who), 34 §6.1 and §6.2 (articles and guidelines), <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> (risk scales), <a href="../51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a> (data).</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -485,7 +496,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>One assessment per processing operation.</strong> If several AI systems (SIA-AAAA-NNN) share a processing operation, they are assessed together; if one system has different processing operations (for example, training and use), they are described separately in section 4.</li>
 <li>The template may be replaced by the company's own methodology if it covers all the blocks; in that case it is linked and only sections 2, 9 and 13 are completed.</li>
-<li>Risks are assessed with the <strong>common scale</strong> (common specification §5.1, <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>) and those of Medium level or above are carried over to <strong><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong> with their code IA-AAAA-NNN · Rnn.</li>
+<li>Risks are assessed with the <strong>common scale</strong> (common specification §5.1, <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>) and those of Medium level or above are carried over to <strong><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></strong> with their code IA-AAAA-NNN · Rnn.</li>
 <li>Supporting guidance: the <a class="ref-ext" href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener" title="European Data Protection Board (EDPB)">EDPB</a>-endorsed <a class="ref-ext" href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/data-protection-impact-assessments-high-risk-processing_en" target="_blank" rel="noopener" title="Guidelines on Data Protection Impact Assessment (DPIA) and determining whether processing is &quot;likely to result in a high risk&quot; for the purposes of Regulation 2016/679 (WP248rev.01), Article 29 Working Party, endorsed by the EDPB">Guidelines on data protection impact assessment</a> (WP248 rev.01), the <a class="ref-ext" href="https://www.aepd.es/documento/listas-dpia-en-35-4.pdf" target="_blank" rel="noopener" title="List of the types of data processing that require a data protection impact assessment (Art. 35(4) GDPR)">lists of processing operations requiring an assessment</a> published by the <a class="ref-ext" href="https://www.aepd.es/en" target="_blank" rel="noopener" title="Spanish Data Protection Agency (Agencia Espa&#241;ola de Protecci&#243;n de Datos, AEPD)">AEPD</a> and the <a class="ref-ext" href="https://www.aepd.es/en/areas/innovation-and-technology" target="_blank" rel="noopener" title="AEPD guides on processing that embeds AI: &#171;GDPR compliance of processing that embed Artificial Intelligence. An introduction&#187; (February 2020) and &#171;Audit Requirements for Personal Data Processing Activities involving AI&#187; (January 2021) &#183; &#171;Innovation and Technology&#187; page listing both">Guides of the AEPD (Spanish Data Protection Agency) on processing operations that incorporate AI and on auditing such processing</a>.</li>
 </ul>
 <hr />
@@ -507,7 +518,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI systems included</td>
 <td></td>
-<td>SIA-AAAA-NNN from <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>SIA-AAAA-NNN from <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>).</td>
 </tr>
 <tr>
 <td>Name of the processing operation</td>
@@ -522,10 +533,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Processors</td>
 <td></td>
-<td>Suppliers that process data on behalf of the company (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
+<td>Suppliers that process data on behalf of the company (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>).</td>
 </tr>
 <tr>
-<td>Reference to <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Reference to <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></td>
 <td></td>
 <td>Version and date of the classification that concluded that the DPIA is necessary.</td>
 </tr>
@@ -553,7 +564,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="reason-for-the-assessment"><span class="antetitulo">03</span>Reason for the assessment</h2>
-<p>Copy the answers from <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.1 and add the justification. A single &quot;Yes&quot; makes the assessment mandatory.</p>
+<p>Copy the answers from <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> §9.1 and add the justification. A single &quot;Yes&quot; makes the assessment mandatory.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -610,12 +621,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Purpose or purposes</td>
 <td></td>
-<td>Specific and explicit. Consistent with the intended purpose in <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> and <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Specific and explicit. Consistent with the intended purpose in <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a> and <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>.</td>
 </tr>
 <tr>
 <td>Business process in which it sits</td>
 <td></td>
-<td>In plain language (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+<td>In plain language (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>).</td>
 </tr>
 <tr>
 <td>Role of AI in the processing</td>
@@ -625,7 +636,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Are there decisions about people?</td>
 <td></td>
-<td>Which decisions, who takes them and with what oversight (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Which decisions, who takes them and with what oversight (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>).</td>
 </tr>
 <tr>
 <td>Interest or benefit pursued</td>
@@ -693,7 +704,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td>Only if the company trains or fine-tunes a model (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Only if the company trains or fine-tunes a model (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>).</td>
 </tr>
 <tr>
 <td>Testing and validation</td>
@@ -721,7 +732,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td>Retention, deletion or transfer (<a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</td>
+<td>Retention, deletion or transfer (<a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -738,7 +749,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI model or models</td>
 <td></td>
-<td>Own, third-party via API, fine-tuned. Supplier and version (<a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Own, third-party via API, fine-tuned. Supplier and version (<a href="P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>).</td>
 </tr>
 <tr>
 <td>Use of the data by the supplier for training</td>
@@ -776,7 +787,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Condition for special categories (Article 9)</td>
 <td></td>
-<td>Including processing to detect and correct bias, with its conditions (34 §3.2, <a href="../51_SEVEN-G_Datos_y_conocimiento.html">document 51</a>).</td>
+<td>Including processing to detect and correct bias, with its conditions (34 §3.2, <a href="../51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a>).</td>
 </tr>
 <tr>
 <td>Purpose limitation</td>
@@ -801,12 +812,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Is AI necessary for this purpose?</td>
 <td></td>
-<td>Less intrusive alternatives considered, including the non-AI alternative (<a href="P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>).</td>
+<td>Less intrusive alternatives considered, including the non-AI alternative (<a href="P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a>).</td>
 </tr>
 <tr>
 <td>Information to data subjects (Articles 13 and 14)</td>
 <td></td>
-<td>Including the existence of automated decision-making and meaningful information about the logic involved (<a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a>).</td>
+<td>Including the existence of automated decision-making and meaningful information about the logic involved (<a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Template P49 &#183; Transparency notices and instructions for use">P49</a>).</td>
 </tr>
 <tr>
 <td>Exercise of rights</td>
@@ -816,12 +827,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Safeguards for automated decisions (Article 22)</td>
 <td></td>
-<td>Applicable exception; human intervention, expressing one's point of view and contesting the decision (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> §8).</td>
+<td>Applicable exception; human intervention, expressing one's point of view and contesting the decision (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> §8).</td>
 </tr>
 <tr>
 <td>Processors and contracts</td>
 <td></td>
-<td>Data processing agreement and supplier terms (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</td>
+<td>Data processing agreement and supplier terms (<a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>).</td>
 </tr>
 <tr>
 <td>International transfers</td>
@@ -832,7 +843,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="assessment-of-the-risks-to-rights-and-freedoms"><span class="antetitulo">06</span>Assessment of the risks to rights and freedoms</h2>
-<p>Assess each risk from the point of view of the people, not the company. The dominant impact axis will usually be &quot;People and rights&quot; (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §3.2). <strong>Level = Likelihood × Impact</strong>: Low 1–4 · Medium 5–9 · High 10–15 · Critical 16–25.</p>
+<p>Assess each risk from the point of view of the people, not the company. The dominant impact axis will usually be &quot;People and rights&quot; (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> §3.2). <strong>Level = Likelihood × Impact</strong>: Low 1–4 · Medium 5–9 · High 10–15 · Critical 16–25.</p>
 <p>Risks worth reviewing in processing that embeds AI: unauthorised access or disclosure (including data leakage through prompt injection or model memorisation); inferences the data subject does not expect; biased or discriminatory outputs; inaccurate decisions affecting the person; re-identification of pseudonymised data; loss of the data subject's control over their data; practical impossibility of exercising rights; reuse for other purposes; excessive observation or tracking.</p>
 <div class="tabla"><table>
 <thead>
@@ -847,7 +858,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Res. L</th>
 <th>Res. I</th>
 <th>Residual level</th>
-<th>Code in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></th>
+<th>Code in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></th>
 </tr>
 </thead>
 <tbody>
@@ -925,7 +936,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td>E..</td>
 <td>Technical · Organisational · Contractual</td>
-<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> · <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a> · <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a> · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> · <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> · <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> · <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Template P49 &#183; Transparency notices and instructions for use">P49</a> · <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a></td>
 <td></td>
 <td>Planned · Implemented · Verified</td>
 </tr>
@@ -943,7 +954,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Filter that detects and masks health data before the log is stored; log retention limited to 6 months.</td>
 <td>E01</td>
 <td>Technical</td>
-<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>, <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a></td>
 <td>AI Technical Owner</td>
 <td>Implemented</td>
 </tr>
@@ -952,13 +963,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Notice in the complaint form that health data should not be included unless necessary for the complaint.</td>
 <td>E01</td>
 <td>Organisational</td>
-<td><a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a></td>
+<td><a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Template P49 &#183; Transparency notices and instructions for use">P49</a></td>
 <td>AI Product Owner</td>
 <td>Planned</td>
 </tr>
 </tbody>
 </table></div>
-<p>A measure only reduces the residual risk if it exists and works (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>). &quot;Planned&quot; measures must be implemented before the processing starts; otherwise the risk is assessed without them.</p>
+<p>A measure only reduces the residual risk if it exists and works (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>). &quot;Planned&quot; measures must be implemented before the processing starts; otherwise the risk is assessed without them.</p>
 <hr />
 <h2 id="consultation-of-the-data-protection-officer"><span class="antetitulo">08</span>Consultation of the data protection officer</h2>
 <div class="tabla"><table>
@@ -1026,7 +1037,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Is prior consultation with the supervisory authority required (Article 36)?</td>
 <td></td>
-<td>Yes, if the residual risk remains high despite the measures. In SEVEN-G, in addition, High or Critical residual risk with its level of acceptance (32 §6.1; <a href="../30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> §7.2).</td>
+<td>Yes, if the residual risk remains high despite the measures. In SEVEN-G, in addition, High or Critical residual risk with its level of acceptance (32 §6.1; <a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> §7.2).</td>
 </tr>
 <tr>
 <td>Competent supervisory authority</td>
@@ -1041,7 +1052,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Acceptance of the residual risk</td>
 <td></td>
-<td>Body according to <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6. A Critical residual without approval from the board or its board committee blocks G3 and G5.</td>
+<td>Body according to <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> §6. A Critical residual without approval from the board or its board committee blocks G3 and G5.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1057,30 +1068,30 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td>Fundamental rights impact assessment (<a href="P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html">P48</a>)</td>
+<td>Fundamental rights impact assessment (<a href="P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html" title="Template P48 &#183; Fundamental rights impact assessment">P48</a>)</td>
 <td>Yes · No</td>
 <td>It complements the DPIA without duplicating it (Article 27.4 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>): the description of the processing and the data protection risks are reused.</td>
 </tr>
 <tr>
-<td>Initiative risk register (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>)</td>
+<td>Initiative risk register (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>)</td>
 <td>Yes</td>
-<td>Risks E.. of Medium level or above appear in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>Risks E.. of Medium level or above appear in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>.</td>
 </tr>
 <tr>
-<td>Security design (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Security design (<a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>)</td>
 <td></td>
 <td>Technical data security measures.</td>
 </tr>
 <tr>
 <td>Sector-specific or third-party assessments <strong>(Enterprise)</strong></td>
 <td></td>
-<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> or others (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.3).</td>
+<td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> or others (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> §9.3).</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="review"><span class="antetitulo">11</span>Review</h2>
-<p>The assessment is reviewed at every R6 and, in addition, whenever any of these elements changes: purpose, categories of data or of data subjects, sources, model or supplier, autonomy level, scope of decisions about people, location of the processing or the authority's position. The change is recorded in <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</p>
+<p>The assessment is reviewed at every R6 and, in addition, whenever any of these elements changes: purpose, categories of data or of data subjects, sources, model or supplier, autonomy level, scope of decisions about people, location of the processing or the authority's position. The change is recorded in <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1103,7 +1114,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">12</span>Quality criteria</h2>
-<p>The formal criteria are in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> (G3.03, G3.09, G4.13 and R6.08).</p>
+<p>The formal criteria are in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> (G3.03, G3.09, G4.13 and R6.08).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1115,7 +1126,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>The reason for the assessment matches <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.1 and is justified.</td>
+<td>The reason for the assessment matches <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> §9.1 and is justified.</td>
 <td>Met · Not met · Not applicable · Pending</td>
 </tr>
 <tr>
@@ -1135,7 +1146,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>Risks are assessed from the people's perspective, with the common scale, inherent and residual, and those of Medium level or above are in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>Risks are assessed from the people's perspective, with the common scale, inherent and residual, and those of Medium level or above are in <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1208,7 +1219,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Approves and accepts the residual</td>
-<td>Body according to <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6</td>
+<td>Body according to <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> §6</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1257,7 +1268,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>First version. Develops the assessment that <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> §9.1 declares necessary, with the content of 32 §6.1 and 34 §6.1, the common risk scales and the link with <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and <a href="P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html">P48</a>. References consulted in September 2026.</td>
+<td>First version. Develops the assessment that <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> §9.1 declares necessary, with the content of 32 §6.1 and 34 §6.1, the common risk scales and the link with <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> and <a href="P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html" title="Template P48 &#183; Fundamental rights impact assessment">P48</a>. References consulted in September 2026.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1498,6 +1509,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -174,6 +174,7 @@ La compañía aprueba en C2 los **plazos de referencia por fase** y los recalibr
 | ¿Hay que pagar por usar SEVEN-G? | No. Ni los documentos, ni las plantillas, ni las herramientas. |
 | ¿Hay que registrarse o dar un correo para usar el sitio? | No. Todo se lee, se usa y se descarga sin cuenta ni registro. |
 | ¿El sitio envía correos o busca captar contactos? | No. Desde aquí nunca se envía un correo ni ninguna comunicación buscando engagement; el contacto con el autor es siempre iniciativa de quien lo decide (sección 7). |
+| ¿El sitio mide las visitas? | Sí, solo de forma agregada: cuántas visitas tiene cada página, desde qué país y con qué tipo de dispositivo, con [Umami](https://umami.is/), una herramienta de código abierto que no usa *cookies*, no guarda datos personales ni direcciones IP y no sigue a nadie entre sitios; respeta la señal «No rastrear» del navegador. Sirve para saber qué documentos se leen. La página de comunidad no se mide. |
 | ¿Hay que pedir permiso? | No, mientras se cumpla la licencia. |
 | ¿Se puede adaptar a la compañía? | Sí: cambiar umbrales, traducir, integrar las plantillas en los sistemas propios. |
 | ¿Puede usarlo una consultora o un auditor en servicios de pago? | Sí. La licencia admite el uso comercial (documento 91). |

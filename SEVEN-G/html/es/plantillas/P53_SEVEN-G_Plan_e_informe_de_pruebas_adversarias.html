@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#alcance-y-reglas-de-enfrentamiento"><span>03</span>Alcance y reglas de enfrentamiento</a></li><li><a href="#casos-de-prueba"><span>04</span>Casos de prueba</a></li><li><a href="#evaluacion-de-exposicion-a-la-ia-ofensiva-y-simulacros-corporativos"><span>05</span>Evaluación de exposición a la IA ofensiva y simulacros corporativos</a></li><li><a href="#criterios-de-exito"><span>06</span>Criterios de éxito</a></li><li><a href="#informe-de-resultados"><span>07</span>Informe de resultados</a></li><li><a href="#criterios-de-calidad"><span>08</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>09</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>10</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -453,11 +464,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
-<td>Seguridad de la información revisa el plan y emite conformidad. El auditor de IA (Enterprise) o la oficina de IA (Lite) verifica el informe frente a la lista LV-AG del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a> §12.</td>
+<td>Seguridad de la información revisa el plan y emite conformidad. El auditor de IA (Enterprise) o la oficina de IA (Lite) verifica el informe frente a la lista LV-AG del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a> §12.</td>
 </tr>
 <tr>
 <td><strong>Quién decide o aprueba</strong></td>
-<td>Las reglas de enfrentamiento y las autorizaciones las aprueba el patrocinador de IA con seguridad de la información (y el propietario de cada sistema afectado). La aceptación de hallazgos no corregidos sigue la tabla de aceptación del riesgo residual (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6). Las campañas corporativas informan al comité de IA y a la comisión delegada.</td>
+<td>Las reglas de enfrentamiento y las autorizaciones las aprueba el patrocinador de IA con seguridad de la información (y el propietario de cada sistema afectado). La aceptación de hallazgos no corregidos sigue la tabla de aceptación del riesgo residual (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §6). Las campañas corporativas informan al comité de IA y a la comisión delegada.</td>
 </tr>
 <tr>
 <td><strong>Etapa, <em>gate</em> o momento</strong></td>
@@ -465,11 +476,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> · Evaluación de seguridad de agentes (estado de SEG-11, AG-18 y de los controles probados).</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Herramienta T10 &#183; Evaluaci&#243;n de seguridad de agentes">T10</a> · Evaluación de seguridad de agentes (estado de SEG-11, AG-18 y de los controles probados).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>Documento 35 §3 (amenazas), §5.3 (frecuencias), §5.4 (controles críticos), §8 (pruebas por fase y contenido mínimo de una campaña) y §9.2 (IA ofensiva); <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a> §12 (LV-AG); <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §3 y §11.</td>
+<td>Documento 35 §3 (amenazas), §5.3 (frecuencias), §5.4 (controles críticos), §8 (pruebas por fase y contenido mínimo de una campaña) y §9.2 (IA ofensiva); <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a> §12 (LV-AG); <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §3 y §11.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -481,10 +492,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Código de campaña propuesto: <strong>PA-AAAA-NNN</strong>; hallazgos PA-AAAA-NNN · H<em>nn</em>. Si la compañía ya codifica sus pruebas de intrusión, se usa su código y se anota aquí.</li>
 <li>Quien construye el agente no realiza su <em>red teaming</em> de G5 (35 §11).</li>
-<li>Los casos de prueba se derivan del modelo de amenazas de <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §3 (SEG-01) y cubren todos los canales de entrada y todas las herramientas del agente.</li>
+<li>Los casos de prueba se derivan del modelo de amenazas de <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §3 (SEG-01) y cubren todos los canales de entrada y todas las herramientas del agente.</li>
 <li>Un escenario con éxito en una <strong>acción sensible</strong> es un hallazgo que bloquea G5 hasta su corrección (35 §8). Los hallazgos Críticos y Altos se cierran o se aceptan según 33 §7 antes de G5.</li>
 <li>Las pruebas se ejecutan en entornos aislados y sin credenciales de producción (AG-11) salvo autorización expresa en las reglas de enfrentamiento.</li>
-<li>Las referencias técnicas son las del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> (<a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener" title="OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tama&#241;o, edici&#243;n 2025 (OWASP Top 10 for LLM Applications 2025)">OWASP Top 10 for LLM Applications</a>, <a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener" title="OWASP Top 10 para aplicaciones ag&#233;nticas 2026 (OWASP Top 10 for Agentic Applications for 2026)">OWASP Top 10 for Agentic Applications</a>, <a class="ref-ext" href="https://atlas.mitre.org/" target="_blank" rel="noopener" title="MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems), base de conocimiento de t&#225;cticas y t&#233;cnicas adversarias contra sistemas de IA">MITRE ATLAS</a> y, para la IA ofensiva, <a class="ref-ext" href="https://www.ccn-cert.cni.es/es/informes/informes-de-buenas-practicas-bp/7469-ccn-cert-bp-36-buenas-practicas-ia-ofensiva/file.html" target="_blank" rel="noopener" title="CCN-CERT BP/36 &#183; Gu&#237;a de buenas pr&#225;cticas frente al modelo de IA ofensiva">CCN-CERT BP/36</a>).</li>
+<li>Las referencias técnicas son las del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a> (<a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener" title="OWASP Top 10 para aplicaciones con modelos de lenguaje de gran tama&#241;o, edici&#243;n 2025 (OWASP Top 10 for LLM Applications 2025)">OWASP Top 10 for LLM Applications</a>, <a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener" title="OWASP Top 10 para aplicaciones ag&#233;nticas 2026 (OWASP Top 10 for Agentic Applications for 2026)">OWASP Top 10 for Agentic Applications</a>, <a class="ref-ext" href="https://atlas.mitre.org/" target="_blank" rel="noopener" title="MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems), base de conocimiento de t&#225;cticas y t&#233;cnicas adversarias contra sistemas de IA">MITRE ATLAS</a> y, para la IA ofensiva, <a class="ref-ext" href="https://www.ccn-cert.cni.es/es/informes/informes-de-buenas-practicas-bp/7469-ccn-cert-bp-36-buenas-practicas-ia-ofensiva/file.html" target="_blank" rel="noopener" title="CCN-CERT BP/36 &#183; Gu&#237;a de buenas pr&#225;cticas frente al modelo de IA ofensiva">CCN-CERT BP/36</a>).</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -515,12 +526,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de autonomía</td>
 <td></td>
-<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>, <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>).</td>
+<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>, <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>).</td>
 </tr>
 <tr>
 <td>Tecnología y exposición</td>
 <td></td>
-<td>Según <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §2.</td>
+<td>Según <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §2.</td>
 </tr>
 <tr>
 <td>Intensidad</td>
@@ -530,7 +541,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Cambio que la motiva</td>
 <td></td>
-<td>Referencia de <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, si aplica.</td>
+<td>Referencia de <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>, si aplica.</td>
 </tr>
 <tr>
 <td>Equipo que prueba</td>
@@ -545,7 +556,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión probada</td>
 <td></td>
-<td>Modelo, instrucciones, herramientas y configuración (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Modelo, instrucciones, herramientas y configuración (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -613,7 +624,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Tratamiento de hallazgos críticos durante la prueba</td>
 <td></td>
-<td>Comunicación inmediata al responsable técnico y a seguridad; posible apertura de incidente (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>).</td>
+<td>Comunicación inmediata al responsable técnico y a seguridad; posible apertura de incidente (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>).</td>
 </tr>
 <tr>
 <td>Conservación y confidencialidad de resultados</td>
@@ -673,12 +684,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="casos-de-prueba"><span class="antetitulo">04</span>Casos de prueba</h2>
-<p>Cada caso se vincula a una amenaza de <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §3, a su riesgo tipo (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>) y a los controles SEG o AG que pretende poner a prueba. <strong>Resultado esperado:</strong> Bloqueado · Detectado y alertado · Validación humana solicitada · Sin fuga.</p>
+<p>Cada caso se vincula a una amenaza de <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §3, a su riesgo tipo (<a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>) y a los controles SEG o AG que pretende poner a prueba. <strong>Resultado esperado:</strong> Bloqueado · Detectado y alertado · Validación humana solicitada · Sin fuga.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
 <th>Nº</th>
-<th>Amenaza (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §3)</th>
+<th>Amenaza (<a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §3)</th>
 <th>Escenario y canal</th>
 <th>Riesgo tipo</th>
 <th>Controles probados</th>
@@ -830,7 +841,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los riesgos tipo de la tabla son la referencia de 35 §3.1; se ajustan al registro de riesgos de la iniciativa (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</p>
+<p>Los riesgos tipo de la tabla son la referencia de 35 §3.1; se ajustan al registro de riesgos de la iniciativa (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>).</p>
 <hr />
 <h2 id="evaluacion-de-exposicion-a-la-ia-ofensiva-y-simulacros-corporativos"><span class="antetitulo">05</span>Evaluación de exposición a la IA ofensiva y simulacros corporativos</h2>
 <p>Solo en campañas corporativas (C4), con responsable en seguridad de la información (35 §9.2).</p>
@@ -1004,7 +1015,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Tiempo de efecto del interruptor de parada</td>
-<td>Igual o inferior al objetivo de <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §9</td>
+<td>Igual o inferior al objetivo de <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §9</td>
 <td>G5.06, R6.11.</td>
 </tr>
 <tr>
@@ -1061,7 +1072,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="7-2-hallazgos">7.2 Hallazgos</h3>
-<p><strong>Severidad del hallazgo</strong> (nivel de riesgo del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>): Crítico · Alto · Medio · Bajo. <strong>Estado:</strong> Abierto · En corrección · Corregido pendiente de reintento · Cerrado · Aceptado.</p>
+<p><strong>Severidad del hallazgo</strong> (nivel de riesgo del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>): Crítico · Alto · Medio · Bajo. <strong>Estado:</strong> Abierto · En corrección · Corregido pendiente de reintento · Cerrado · Aceptado.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1139,10 +1150,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Hallazgos aceptados</td>
 <td></td>
-<td>Código, nivel, órgano que acepta (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §6) y vigencia.</td>
+<td>Código, nivel, órgano que acepta (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> §6) y vigencia.</td>
 </tr>
 <tr>
-<td>Riesgos actualizados en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td>Riesgos actualizados en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -1160,7 +1171,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">08</span>Criterios de calidad</h2>
-<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (G3.17, G4.20, G5.05, G5.06 y R6.11) y lista LV-AG del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a> §12.</p>
+<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (G3.17, G4.20, G5.05, G5.06 y R6.11) y lista LV-AG del <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a> §12.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1182,7 +1193,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Los casos cubren todas las amenazas aplicables de <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §3, todos los canales de entrada y todas las herramientas.</td>
+<td>Los casos cubren todas las amenazas aplicables de <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §3, todos los canales de entrada y todas las herramientas.</td>
 <td></td>
 </tr>
 <tr>
@@ -1297,7 +1308,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Plan de campaña con reglas de enfrentamiento y autorizaciones, casos vinculados a <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> §3 y a los controles SEG y AG, evaluación anual de IA ofensiva y simulacro de suplantación sintética (35 §9.2), criterios de éxito e informe con hallazgos, reintentos y estado. Propone el código PA-AAAA-NNN.</td>
+<td>Primera versión. Plan de campaña con reglas de enfrentamiento y autorizaciones, casos vinculados a <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> §3 y a los controles SEG y AG, evaluación anual de IA ofensiva y simulacro de suplantación sintética (35 §9.2), criterios de éxito e informe con hallazgos, reintentos y estado. Propone el código PA-AAAA-NNN.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1538,6 +1549,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

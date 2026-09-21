@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P09_SEVEN-G_Linea_base.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P09_SEVEN-G_Linea_base.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P09_SEVEN-G_Linea_base.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P09_SEVEN-G_Linea_base.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#definicion-de-las-metricas"><span>03</span>Definición de las métricas</a></li><li><a href="#periodo-y-metodo-de-medicion"><span>04</span>Periodo y método de medición</a></li><li><a href="#resultados-de-la-linea-base"><span>05</span>Resultados de la línea base</a></li><li><a href="#valores-unitarios-para-la-traduccion-a-dinero"><span>06</span>Valores unitarios para la traducción a dinero</a></li><li><a href="#grupo-de-control"><span>07</span>Grupo de control</a></li><li><a href="#factores-externos-y-estacionalidad"><span>08</span>Factores externos y estacionalidad</a></li><li><a href="#congelacion-y-cambios-posteriores"><span>09</span>Congelación y cambios posteriores</a></li><li><a href="#reproducibilidad-enterprise"><span>10</span>Reproducibilidad (Enterprise)</a></li><li><a href="#criterios-de-calidad"><span>11</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>12</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -442,7 +453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>En la fase 2, antes de G2, en paralelo al lienzo de hipótesis de valor (<a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>). La línea base se congela en G2 y se usa en las fases 5, 6 y 7.</td>
+<td>En la fase 2, antes de G2, en paralelo al lienzo de hipótesis de valor (<a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>). La línea base se congela en G2 y se usa en las fases 5, 6 y 7.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> · Lienzo y calculadora de hipótesis de valor.</td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> · Lienzo y calculadora de hipótesis de valor.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -500,7 +511,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión del lienzo asociado</td>
 <td></td>
-<td>Versión de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> a la que corresponde esta línea base.</td>
+<td>Versión de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> a la que corresponde esta línea base.</td>
 </tr>
 <tr>
 <td>Versión del documento</td>
@@ -716,10 +727,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los valores unitarios se usan en la fórmula de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> (unidades × valor unitario). Si cambian después de G2, se registra en la sección 9.</p>
+<p>Los valores unitarios se usan en la fórmula de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> (unidades × valor unitario). Si cambian después de G2, se registra en la sección 9.</p>
 <hr />
 <h2 id="grupo-de-control"><span class="antetitulo">07</span>Grupo de control</h2>
-<p>Rellenar si el método de atribución de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> es grupo de control.</p>
+<p>Rellenar si el método de atribución de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> es grupo de control.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -854,7 +865,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Los criterios formales de G2 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G2.xx).</p>
+<p>Los criterios formales de G2 están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (ver criterios G2.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -866,7 +877,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Cada métrica de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> tiene definición operativa, fórmula y fuente.</td>
+<td>Cada métrica de <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> tiene definición operativa, fórmula y fuente.</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>
@@ -1227,6 +1238,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

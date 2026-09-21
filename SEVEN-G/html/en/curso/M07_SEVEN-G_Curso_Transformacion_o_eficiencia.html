@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/curso/M07_SEVEN-G_Curso_Transformacion_o_eficiencia.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../pdf/es/curso/M07_SEVEN-G_Curso_Transformacion_o_eficiencia.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/curso/M07_SEVEN-G_Curso_Transformacion_o_eficiencia.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#objective"><span>01</span>Objective</a></li><li><a href="#key-ideas"><span>02</span>Key ideas</a></li><li><a href="#guided-tour"><span>03</span>Guided tour</a></li><li><a href="#exercise"><span>04</span>Exercise</a></li><li><a href="#self-check"><span>05</span>Self-check</a></li><li><a href="#next-step"><span>06</span>Next step</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="objective"><span class="antetitulo">01</span>Objective</h2>
@@ -454,34 +465,34 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">document 00</a>, section 5</td>
+<td><a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a>, section 5</td>
 <td>The principle and the five profiles.</td>
 </tr>
 <tr>
 <td>2</td>
-<td><a href="../12_SEVEN-G_Indice_de_transformacion.html">document 12</a>, sections 3 and 4</td>
+<td><a href="../12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>, sections 3 and 4</td>
 <td>The questions that classify an initiative's ambition and the eight signals of the index.</td>
 </tr>
 <tr>
 <td>3</td>
-<td><a href="../12_SEVEN-G_Indice_de_transformacion.html">document 12</a>, section 9</td>
+<td><a href="../12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>, section 9</td>
 <td>The complete illustrative example.</td>
 </tr>
 <tr>
 <td>4</td>
-<td><a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
+<td><a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></td>
 <td>The same example calculated, with &quot;what would move the profile&quot;.</td>
 </tr>
 <tr>
 <td>5</td>
-<td><a href="../../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
 <td>The index card in the example board dashboard.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="exercise"><span class="antetitulo">04</span>Exercise</h2>
-<p>Open the index calculator (<a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a>). The example gives &quot;declared but unevidenced transformation&quot; with an underlying efficiency profile. Find which signals have the lowest score and read &quot;what would move the profile&quot;. Then answer, for your company and without calculating anything: for how many of the eight signals would you have data today?</p>
+<p>Open the index calculator (<a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>). The example gives &quot;declared but unevidenced transformation&quot; with an underlying efficiency profile. Find which signals have the lowest score and read &quot;what would move the profile&quot;. Then answer, for your company and without calculating anything: for how many of the eight signals would you have data today?</p>
 <hr />
 <h2 id="self-check"><span class="antetitulo">05</span>Self-check</h2>
 <ol>
@@ -731,6 +742,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

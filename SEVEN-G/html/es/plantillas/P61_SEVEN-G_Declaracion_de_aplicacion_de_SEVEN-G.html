@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#alcance"><span>03</span>Alcance</a></li><li><a href="#componentes-aplicados-y-excluidos"><span>04</span>Componentes aplicados y excluidos</a></li><li><a href="#intensidad-de-aplicacion"><span>05</span>Intensidad de aplicación</a></li><li><a href="#condiciones-de-01-14-y-evidencias"><span>06</span>Condiciones de 01 §14 y evidencias</a></li><li><a href="#adaptaciones-y-excepciones"><span>07</span>Adaptaciones y excepciones</a></li><li><a href="#auditoria-que-la-respalda"><span>08</span>Auditoría que la respalda</a></li><li><a href="#aprobacion-y-vigencia"><span>09</span>Aprobación y vigencia</a></li><li><a href="#texto-modelo"><span>10</span>Texto modelo</a></li><li><a href="#criterios-de-calidad"><span>11</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>12</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -468,11 +479,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>No tiene herramienta propia. Las evidencias salen de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> y <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>.</td>
+<td>No tiene herramienta propia. Las evidencias salen de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>, <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> y <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>01 §1.2 y §14; 38 §11; 91 §6; 11 §7.3 (preguntas <strong>(§14)</strong>); <a href="../93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a> (licencia y atribución).</td>
+<td>01 §1.2 y §14; 38 §11; 91 §6; 11 §7.3 (preguntas <strong>(§14)</strong>); <a href="../93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a> (licencia y atribución).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -565,12 +576,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Número de sistemas en el inventario dentro del perímetro</td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, a la fecha de corte.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, a la fecha de corte.</td>
 </tr>
 <tr>
 <td>Número de iniciativas en el registro dentro del perímetro</td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, a la fecha de corte.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, a la fecha de corte.</td>
 </tr>
 <tr>
 <td>Fecha de corte</td>
@@ -676,7 +687,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <th>Nº</th>
 <th>Condición</th>
-<th>Pregunta del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a></th>
+<th>Pregunta del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a></th>
 <th>¿Cumple? (Sí · No)</th>
 <th>Evidencia disponible</th>
 <th>Resultado de la auditoría para la condición</th>
@@ -696,7 +707,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Inventario con clasificación regulatoria, intensidad y responsable; registro de iniciativas con la trazabilidad de 01 §6.11.</td>
 <td>D6.05 · D2.05</td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; conciliación del inventario (32 §9).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; conciliación del inventario (32 §9).</td>
 <td></td>
 </tr>
 <tr>
@@ -704,7 +715,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Roles y órganos asignados con las incompatibilidades de 01 §8.2.</td>
 <td>D1.07 · D1.08</td>
 <td></td>
-<td>Mandatos (<a href="../30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a>); <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+<td>Mandatos (<a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>); <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -712,7 +723,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Todas las iniciativas nuevas recorren el ciclo de vida con sus <em>gates</em> registrados.</td>
 <td>D2.06</td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>, <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -720,7 +731,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Todas las iniciativas en producción tienen revisión de continuidad vigente.</td>
 <td>D4.07</td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; actas de R6.</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; actas de R6.</td>
 <td></td>
 </tr>
 <tr>
@@ -728,7 +739,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Aplica las reglas de medición del valor y reporta al consejo con el panel de supervisión.</td>
 <td>D7.05 · D7.06</td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>; panel del consejo (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>); actas.</td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>; panel del consejo (<a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>); actas.</td>
 <td></td>
 </tr>
 <tr>
@@ -736,7 +747,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Gestiona las no conformidades con el proceso de 01 §12.</td>
 <td>D6.07</td>
 <td></td>
-<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>; informes a la comisión delegada.</td>
+<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>; informes a la comisión delegada.</td>
 <td></td>
 </tr>
 <tr>
@@ -795,7 +806,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la auditoría</td>
 <td></td>
-<td>AUD-AAAA-NNN (<a href="P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html">P60</a>).</td>
+<td>AUD-AAAA-NNN (<a href="P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html" title="Plantilla P60 &#183; Informe de auditor&#237;a y fichas de hallazgo">P60</a>).</td>
 </tr>
 <tr>
 <td>Tipo de auditor</td>
@@ -805,7 +816,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Auditor o firma</td>
 <td></td>
-<td>En auditoría externa, con referencia a su declaración de independencia (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>).</td>
+<td>En auditoría externa, con referencia a su declaración de independencia (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a>).</td>
 </tr>
 <tr>
 <td>Fecha del informe</td>
@@ -825,7 +836,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de madurez verificado de referencia</td>
 <td></td>
-<td>Opcional: modalidad y fecha de la última evaluación verificada (<a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>). La declaración se basa en las preguntas <strong>(§14)</strong>, no en el nivel global.</td>
+<td>Opcional: modalidad y fecha de la última evaluación verificada (<a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>). La declaración se basa en las preguntas <strong>(§14)</strong>, no en el nivel global.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1012,7 +1023,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Aplica las condiciones de 01 §14, la auditoría y el contenido mínimo de 38 §11, el modelo de 91 §6.3 y las preguntas <strong>(§14)</strong> del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>; distingue la declaración integral de la modular (01 §1.2) y advierte de que no existe certificación oficial en la versión 0.x.</td>
+<td>Primera versión. Aplica las condiciones de 01 §14, la auditoría y el contenido mínimo de 38 §11, el modelo de 91 §6.3 y las preguntas <strong>(§14)</strong> del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>; distingue la declaración integral de la modular (01 §1.2) y advierte de que no existe certificación oficial en la versión 0.x.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1253,6 +1264,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

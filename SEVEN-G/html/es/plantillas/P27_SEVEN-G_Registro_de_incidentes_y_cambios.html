@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#registro-de-incidentes"><span>03</span>Registro de incidentes</a></li><li><a href="#registro-de-cambios"><span>04</span>Registro de cambios</a></li><li><a href="#indicadores-del-periodo"><span>05</span>Indicadores del periodo</a></li><li><a href="#criterios-de-calidad"><span>06</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>07</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>08</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -442,7 +453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>Durante toda la fase 6. Se abre con la puesta en producción y se cierra con la retirada (<a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</td>
+<td>Durante toda la fase 6. Se abre con la puesta en producción y se cierra con la retirada (<a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>).</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -462,11 +473,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> Registro de no conformidades e incidentes. Si la compañía usa otra herramienta de incidentes o de cambios, este registro enlaza sus identificadores y añade los campos propios de IA.</td>
+<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a> Registro de no conformidades e incidentes. Si la compañía usa otra herramienta de incidentes o de cambios, este registro enlaza sus identificadores y añade los campos propios de IA.</td>
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Linaje · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación (tipos de cambio) · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Alertas · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Plan de respuesta · <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Registro de riesgos · <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</td>
+<td><a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a> Linaje · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a> Reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> Manual de operación (tipos de cambio) · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a> Alertas · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a> Plan de respuesta · <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> Registro de riesgos · <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -474,8 +485,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>Todo cambio es un evento con fecha, autor y motivo</strong> (03 §2, principio 2).</li>
 <li>Los incidentes se codifican <strong>INC-AAAA-NNN</strong> y las no conformidades <strong>NC-AAAA-NNN</strong>; los identificadores no se reutilizan.</li>
-<li>La severidad se clasifica con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a> y puede revisarse; se conserva la severidad inicial y la final.</li>
-<li>Un cambio relevante ejecutado sin aprobación es una no conformidad (<a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</li>
+<li>La severidad se clasifica con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a> y puede revisarse; se conserva la severidad inicial y la final.</li>
+<li>Un cambio relevante ejecutado sin aprobación es una no conformidad (<a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>).</li>
 <li>&quot;Sin dato&quot; no es cero: si se desconoce un impacto, se registra como <em>Sin dato</em>.</li>
 </ul>
 <p>Esta plantilla no constituye asesoramiento jurídico.</p>
@@ -493,12 +504,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA</td>
 <td></td>
-<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>).</td>
 </tr>
 <tr>
 <td>Intensidad</td>
@@ -601,7 +612,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Detectado por</td>
 <td></td>
-<td>Alerta de <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> (ID) · Usuario · Persona afectada · Proveedor · Auditoría · Otro.</td>
+<td>Alerta de <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a> (ID) · Usuario · Persona afectada · Proveedor · Auditoría · Otro.</td>
 </tr>
 <tr>
 <td>Fecha y hora de inicio estimado</td>
@@ -611,7 +622,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión del sistema afectada</td>
 <td></td>
-<td>Modelo, instrucciones, base de conocimiento (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Modelo, instrucciones, base de conocimiento (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>).</td>
 </tr>
 <tr>
 <td>Descripción</td>
@@ -626,7 +637,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Severidad inicial y final, con justificación</td>
 <td></td>
-<td>S1 · S2 · S3 · S4, con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</td>
+<td>S1 · S2 · S3 · S4, con los criterios del <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>.</td>
 </tr>
 <tr>
 <td>Acciones de contención y hora</td>
@@ -641,12 +652,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Notificaciones comprobadas</td>
 <td></td>
-<td>Resultado de las casillas del bloque 8 de <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>: aplica o no, quién notificó, cuándo y evidencia, y registro de <a href="P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html">P51</a>.</td>
+<td>Resultado de las casillas del bloque 8 de <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>: aplica o no, quién notificó, cuándo y evidencia, y registro de <a href="P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html" title="Plantilla P51 &#183; Notificaciones y comunicaciones de incidentes">P51</a>.</td>
 </tr>
 <tr>
 <td>Causa raíz</td>
 <td></td>
-<td>Técnica, de datos, de proceso, de proveedor o de supervisión (<a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a>).</td>
+<td>Técnica, de datos, de proceso, de proveedor o de supervisión (<a href="P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html" title="Plantilla P52 &#183; An&#225;lisis de causa ra&#237;z y plan de acci&#243;n correctiva">P52</a>).</td>
 </tr>
 <tr>
 <td>Acciones correctivas</td>
@@ -656,17 +667,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>No conformidad vinculada</td>
 <td></td>
-<td>NC-AAAA-NNN (<a href="P50_SEVEN-G_Registro_de_no_conformidades.html">P50</a>) si el incidente revela un incumplimiento del marco.</td>
+<td>NC-AAAA-NNN (<a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Plantilla P50 &#183; Registro de no conformidades">P50</a>) si el incidente revela un incumplimiento del marco.</td>
 </tr>
 <tr>
 <td>Efecto en el registro de riesgos</td>
 <td></td>
-<td>Riesgos revisados en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> y cambio de nivel.</td>
+<td>Riesgos revisados en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> y cambio de nivel.</td>
 </tr>
 <tr>
 <td>Efecto en clasificación o intensidad <strong>(Enterprise)</strong></td>
 <td></td>
-<td>¿Obliga a revisar <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> o <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>?</td>
+<td>¿Obliga a revisar <a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a> o <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>?</td>
 </tr>
 <tr>
 <td>Impacto económico</td>
@@ -681,7 +692,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Lecciones aprendidas</td>
 <td></td>
-<td>Qué se hará distinto; se trasladan a <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> y a C5.</td>
+<td>Qué se hará distinto; se trasladan a <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a> y a C5.</td>
 </tr>
 <tr>
 <td>Cerrado por</td>
@@ -693,7 +704,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="registro-de-cambios"><span class="antetitulo">04</span>Registro de cambios</h2>
 <h3 id="4-1-resumen">4.1 Resumen</h3>
-<p><strong>Tipo:</strong> Menor · Relevante · Emergencia (definidos en <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a>). <strong>Componente:</strong> Modelo · Instrucciones del sistema · Base de conocimiento · Datos de entrenamiento · Herramientas o permisos del agente · Nivel de autonomía · Umbrales de monitorización · Integración o infraestructura · Proveedor · Población o finalidad. <strong>Estado:</strong> Solicitado · Aprobado · Ejecutado · Revertido · Rechazado.</p>
+<p><strong>Tipo:</strong> Menor · Relevante · Emergencia (definidos en <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>). <strong>Componente:</strong> Modelo · Instrucciones del sistema · Base de conocimiento · Datos de entrenamiento · Herramientas o permisos del agente · Nivel de autonomía · Umbrales de monitorización · Integración o infraestructura · Proveedor · Población o finalidad. <strong>Estado:</strong> Solicitado · Aprobado · Ejecutado · Revertido · Rechazado.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -764,7 +775,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión anterior y nueva</td>
 <td></td>
-<td>Actualiza <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Actualiza <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>.</td>
 </tr>
 <tr>
 <td>Pruebas realizadas y resultado</td>
@@ -774,12 +785,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Plan de reversión aplicable</td>
 <td></td>
-<td>Referencia a <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>; ¿se ha actualizado?</td>
+<td>Referencia a <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>; ¿se ha actualizado?</td>
 </tr>
 <tr>
 <td>¿Cambia el nivel de autonomía, la finalidad o la población?</td>
 <td></td>
-<td>Sí · No. Si es Sí, requiere verificación y decisión equivalentes a G4/G5 y nueva firma (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>).</td>
+<td>Sí · No. Si es Sí, requiere verificación y decisión equivalentes a G4/G5 y nueva firma (<a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Plantilla P23 &#183; Firma de puesta en producci&#243;n">P23</a>).</td>
 </tr>
 <tr>
 <td>¿Requiere revisar clasificación regulatoria, intensidad o riesgos?</td>
@@ -874,7 +885,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">06</span>Criterios de calidad</h2>
-<p>Criterios formales de R6 y G7 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; proceso en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>.</p>
+<p>Criterios formales de R6 y G7 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>; proceso en el <a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -896,7 +907,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Los cambios relevantes tienen pruebas, aprobación previa y <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> actualizado.</td>
+<td>Los cambios relevantes tienen pruebas, aprobación previa y <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a> actualizado.</td>
 <td></td>
 </tr>
 <tr>
@@ -952,7 +963,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Revisión</td>
-<td>Decisor de R6 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Decisor de R6 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1215,6 +1226,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -432,7 +443,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>This document does not constitute legal advice. Intellectual property, licensing and data protection matters must be validated with qualified legal counsel.</p>
 </blockquote>
 <hr />
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="condicional"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Conditional: depends on a trigger</span></div><p>Trigger: the solution is built with AI-generated code or with the SPAD methodology. It sets the minimum requirements for that code and how they are verified at the gates.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
@@ -447,10 +458,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ol>
 <h3 id="1-2-what-it-does-not-govern">1.2 What it does not govern</h3>
 <ul>
-<li>The governance of the initiative, its <em>gates</em> and its value: these are set by <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>.</li>
-<li>Corporate use of AI assistants outside projects: <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>.</li>
-<li>The security of agents in production: <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>.</li>
-<li>The assessment of AI tool suppliers: <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a> and <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</li>
+<li>The governance of the initiative, its <em>gates</em> and its value: these are set by <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>.</li>
+<li>Corporate use of AI assistants outside projects: <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>.</li>
+<li>The security of agents in production: <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>.</li>
+<li>The assessment of AI tool suppliers: <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a> and <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>.</li>
 </ul>
 <h3 id="1-3-two-distinct-objects">1.3 Two distinct objects</h3>
 <div class="tabla"><table>
@@ -465,16 +476,16 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>The system being built</strong></td>
 <td>The initiative's solution (which may or may not be an AI system).</td>
-<td>Lifecycle 0–7, regulatory classification (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>), <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>.</td>
+<td>Lifecycle 0–7, regulatory classification (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>), <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>–<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>.</td>
 </tr>
 <tr>
 <td><strong>The AI tools that help build it</strong></td>
 <td>Assistants, agents and models used by the team.</td>
-<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) as corporate or team use; policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>); supplier (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>); this document.</td>
+<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>) as corporate or team use; policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>); supplier (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>); this document.</td>
 </tr>
 </tbody>
 </table></div>
-<p>A build tool with the ability to execute actions on repositories, environments or systems is an <strong>agent</strong> and is classified under autonomy levels A0–A3 (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>). If it acts on production systems or personal data at level A2 or A3, the initiative meets the Enterprise criterion in 01 §9.2.</p>
+<p>A build tool with the ability to execute actions on repositories, environments or systems is an <strong>agent</strong> and is classified under autonomy levels A0–A3 (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>). If it acts on production systems or personal data at level A2 or A3, the initiative meets the Enterprise criterion in 01 §9.2.</p>
 <hr />
 <h2 id="relationship-between-seven-g-and-spad"><span class="antetitulo">02</span>Relationship between SEVEN-G and SPAD</h2>
 <h3 id="2-1-position-of-spad">2.1 Position of SPAD</h3>
@@ -510,7 +521,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Evidence</td>
-<td>Verified templates <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>.</td>
+<td>Verified templates <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>.</td>
 <td>Artefacts per phase grouped by topic.</td>
 </tr>
 </tbody>
@@ -595,22 +606,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Global context</td>
 <td>Common rules for artefacts, testing, versions, security and prohibitions.</td>
-<td>Document 31 (acceptable use), <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a> (security), the company's technical standards.</td>
+<td>Document 31 (acceptable use), <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> (security), the company's technical standards.</td>
 </tr>
 <tr>
 <td>Project context</td>
 <td>Technology, architecture, business rules, compliance and justified exceptions.</td>
-<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> (context and constraints), <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> (regulatory classification), <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> (architecture), <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> (human oversight), <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> (security).</td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a> (context and constraints), <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> (regulatory classification), <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a> (architecture), <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> (human oversight), <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> (security).</td>
 </tr>
 <tr>
 <td>Exceptions to the global context</td>
 <td>Must be justified, have their risk assessed and be approved in the plan review.</td>
-<td>In addition, they are recorded as a risk in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and, if they affect a critical control, require clearance from the AI Risk Owner.</td>
+<td>In addition, they are recorded as a risk in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> and, if they affect a critical control, require clearance from the AI Risk Owner.</td>
 </tr>
 <tr>
 <td>Work topic (<em>TOPIC</em>)</td>
 <td>Identifier that groups the artefacts.</td>
-<td>Must include or reference the initiative code (IA-AAAA-NNN) and be linked from <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (03 §2, principle 4).</td>
+<td>Must include or reference the initiative code (IA-AAAA-NNN) and be linked from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> (03 §2, principle 4).</td>
 </tr>
 </tbody>
 </table></div>
@@ -632,78 +643,78 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Context and objective</td>
 <td>Problem, scope, constraints, success criteria.</td>
 <td>3–4</td>
-<td>Taken from <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> and <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>Taken from <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> and <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a></td>
 <td>Entry condition for phase 4 (G3 passed).</td>
 </tr>
 <tr>
 <td>PLAN</td>
 <td>Logical architecture, components, data flows, explicit decisions, risks.</td>
 <td>4</td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> (architecture and decisions); <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> (data flows); <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> (new technical risks)</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a> (architecture and decisions); <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> (data flows); <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> (new technical risks)</td>
 <td>Input to G4.</td>
 </tr>
 <tr>
 <td>Plan review (AUDIT_PLAN)</td>
 <td>Findings and technical verdict.</td>
 <td>4</td>
-<td><a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html">P66</a> (annex to <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>); clearance or conditions in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a> (annex to <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>); clearance or conditions in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a></td>
 <td>Input to the G4 verification; it is not the verification.</td>
 </tr>
 <tr>
 <td>Implementation rules (CODE_PRIMER)</td>
 <td>Structure, conventions, contracts, anti-patterns.</td>
 <td>4</td>
-<td><a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html">P66</a> (annex to <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>)</td>
+<td><a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a> (annex to <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>)</td>
 <td>Input to G4.</td>
 </tr>
 <tr>
 <td>Test strategy (TEST_STRATEGY)</td>
 <td>Cases, minimum coverage, test layers, test data.</td>
 <td>4</td>
-<td><a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html">P66</a> §6 (annex to <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>)</td>
+<td><a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a> §6 (annex to <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>)</td>
 <td>Must exist before G4 in Enterprise.</td>
 </tr>
 <tr>
 <td>Implementation</td>
 <td>Code generated according to the rules.</td>
 <td>5</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> (delivery report)</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a> (delivery report)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Test implementation</td>
 <td>Tests, test data and execution instructions.</td>
 <td>5</td>
-<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Test review (AUDIT_TESTS)</td>
 <td>Actual versus expected coverage, quality, edge cases.</td>
 <td>5</td>
-<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
 <td>Input to G5.</td>
 </tr>
 <tr>
 <td>Code review (AUDIT_CODE)</td>
 <td>Fidelity to the plan and the rules, technical risks, debt.</td>
 <td>5</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a></td>
 <td>Input to G5.</td>
 </tr>
 <tr>
 <td>Minimal fixes (FIX_PRIMERS)</td>
 <td>Problem, minimal change, justification, impact.</td>
 <td>5</td>
-<td><a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html">P66</a> §8 (annex to <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>)</td>
+<td><a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a> §8 (annex to <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>)</td>
 <td>—</td>
 </tr>
 <tr>
 <td>Release management</td>
 <td>Version number, changes, incompatibilities, migration, fallback plan.</td>
 <td>5</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>; <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> (rollback plan); <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> (change log, from production onwards)</td>
-<td>Input to G5 and to the <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a> sign-off.</td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>; <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a> (rollback plan); <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> (change log, from production onwards)</td>
+<td>Input to G5 and to the <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a> sign-off.</td>
 </tr>
 </tbody>
 </table></div>
@@ -721,26 +732,26 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Documentation of existing code and impact analysis (legacy code)</td>
 <td>3 (feasibility) and 4</td>
-<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></td>
 </tr>
 <tr>
 <td>Security review (SECURITY_AUDIT)</td>
 <td>5; also for relevant changes in 6</td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>; critical and high findings block G5</td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>; critical and high findings block G5</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a></td>
 </tr>
 <tr>
 <td>Incident diagnosis (DEBUG)</td>
 <td>6</td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> (root cause analysis)</td>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> (root cause analysis)</td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 </tr>
 <tr>
 <td>Urgent fix (HOTFIX) and subsequent review</td>
 <td>6</td>
-<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>; definitive plan as a recorded change</td>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>; definitive plan as a recorded change</td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -790,7 +801,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Human orchestrator</td>
 <td>Orchestrator</td>
 <td>Team member</td>
-<td>AI Technical Owner (or a team member designated by them in <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>).</td>
+<td>AI Technical Owner (or a team member designated by them in <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a>).</td>
 </tr>
 <tr>
 <td>Planner AI (<em>Planner</em>)</td>
@@ -904,35 +915,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Phase violation (for example, a plan that includes code or a review that makes fixes)</td>
 <td>Discard and repeat the phase.</td>
 <td>Record of the incident in Enterprise.</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a></td>
 </tr>
 <tr>
 <td>Mandatory artefacts missing or altered</td>
 <td>Discard and repeat.</td>
 <td>Without complete artefacts, the <em>gate</em> is not requested.</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
 </tr>
 <tr>
 <td>Decisions outside the approved plan</td>
 <td>Discard and return to the plan.</td>
-<td>If the decision affects architecture, data, security or human oversight, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> are updated before G4 or G5.</td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td>If the decision affects architecture, data, security or human oversight, <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>–<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> are updated before G4 or G5.</td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>–<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a></td>
 </tr>
 <tr>
 <td>Implementation without a prior plan or review</td>
 <td>Discard the generated code.</td>
 <td>If that code reaches production, it is a <strong>major nonconformity</strong>; if it affects a critical control, <strong>critical</strong> (01 §12).</td>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 </tr>
 <tr>
 <td>AI self-approval</td>
 <td>Immediate discard; serious breach.</td>
 <td>Any approval without an identified person is null and void. If it was used to advance a <em>gate</em>, major nonconformity.</td>
-<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Breach log.</strong> SPAD considers it optional. In SEVEN-G it <strong>should</strong> be maintained in Enterprise, in <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html">P66</a> §9, annex to <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, with date, work topic, phase, type of breach, tool or model and action. Repeated patterns feed lessons learned (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>) and, if they reveal an unsuitable tool, the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>).</p>
+<p><strong>Breach log.</strong> SPAD considers it optional. In SEVEN-G it <strong>should</strong> be maintained in Enterprise, in <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a> §9, annex to <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>, with date, work topic, phase, type of breach, tool or model and action. Repeated patterns feed lessons learned (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>) and, if they reveal an unsuitable tool, the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>).</p>
 <hr />
 <h2 id="seven-g-minimum-requirements-for-ai-generated-code"><span class="antetitulo">07</span>SEVEN-G minimum requirements for AI-generated code</h2>
 <p>They apply to all code, configuration, queries, infrastructure as code, tests or technical documentation generated wholly or partly with AI that forms part of an initiative's solution, regardless of the engineering method.</p>
@@ -946,37 +957,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="7-2-traceability">7.2 Traceability</h3>
 <ul>
 <li>It <strong>must</strong> be possible to identify which parts of the solution were generated with AI, with which tool and in which work topic or initiative (for example, through metadata in the changes or in the delivery report).</li>
-<li>Design decisions <strong>must</strong> be recorded in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, not only in conversations with the tool.</li>
+<li>Design decisions <strong>must</strong> be recorded in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, not only in conversations with the tool.</li>
 <li>In Enterprise, the relevant prompts and the accepted outputs of the plan and review phases <strong>should</strong> be retained, in line with the company's retention policy and without unnecessary personal data.</li>
-<li>The version of each delivery <strong>must</strong> be linked to its rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</li>
+<li>The version of each delivery <strong>must</strong> be linked to its rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>).</li>
 </ul>
 <h3 id="7-3-testing">7.3 Testing</h3>
 <ul>
 <li>The test strategy <strong>must</strong> be defined before implementation, with minimum coverage and critical cases.</li>
 <li>AI-generated tests <strong>must</strong> be reviewed to check that they verify the expected behaviour and do not merely reproduce the generated code.</li>
 <li>If the solution is an AI system, the tests <strong>must</strong> include the performance, bias, robustness and security testing required in phase 5 (01 §6.7), including prompt injection testing for generative AI and agents.</li>
-<li>The results <strong>must</strong> be recorded in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> before G5.</li>
+<li>The results <strong>must</strong> be recorded in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a> before G5.</li>
 </ul>
 <h3 id="7-4-security">7.4 Security</h3>
 <ul>
 <li>Static security analysis, secret detection and dependency analysis <strong>must</strong> be run on the generated code before G5; in Enterprise, on every change.</li>
 <li>Dependencies proposed by the AI <strong>must</strong> be verified (existence, provenance, maintenance and known vulnerabilities) before being incorporated, given the risk of non-existent or malicious packages suggested by the tool.</li>
-<li>A software bill of materials for the solution (<a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html">P54</a>) <strong>should</strong> be generated in Enterprise.</li>
-<li>Build agents <strong>must</strong> operate with least privilege, without production credentials and with logging of their actions; their autonomy is classified under A0–A3 and assessed with <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>).</li>
+<li>A software bill of materials for the solution (<a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a>) <strong>should</strong> be generated in Enterprise.</li>
+<li>Build agents <strong>must</strong> operate with least privilege, without production credentials and with logging of their actions; their autonomy is classified under A0–A3 and assessed with <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a> (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>).</li>
 <li>The <a class="ref-ext" href="https://top10.owasp.org/2025/" target="_blank" rel="noopener" title="OWASP Top 10:2025 (web application security risks)">OWASP Top 10</a> and the <a class="ref-ext" href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener" title="OWASP Top 10 for Large Language Model Applications 2025">OWASP Top 10 for Large Language Model Applications</a> lists may be used as technical references.</li>
 <li>Critical and high findings <strong>block</strong> G5 unless there is formal risk acceptance in accordance with 33 and 01 §7.3 (&quot;Proceed with conditions&quot; is not permitted for critical security controls).</li>
 </ul>
 <h3 id="7-5-intellectual-property-and-licences">7.5 Intellectual property and licences</h3>
 <ul>
-<li>The AI tool <strong>must</strong> be approved by the company, with reviewed contractual terms on ownership and use of outputs, use of input data for training and, where applicable, warranties or indemnities (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</li>
+<li>The AI tool <strong>must</strong> be approved by the company, with reviewed contractual terms on ownership and use of outputs, use of input data for training and, where applicable, warranties or indemnities (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</li>
 <li>Where the tool offers them, filters or notices of matches with public code <strong>should</strong> be enabled, and flagged matches reviewed.</li>
 <li>The licences of dependencies and of fragments identified as originating from third parties <strong>must</strong> be checked against the company's licensing policy.</li>
-<li>Copyright protection for content generated with little human creative input may be limited or uncertain depending on the jurisdiction. Where ownership of the code is relevant to the business (for example, a marketable product), legal counsel's opinion <strong>must</strong> be obtained and documented in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> or <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>.</li>
+<li>Copyright protection for content generated with little human creative input may be limited or uncertain depending on the jurisdiction. Where ownership of the code is relevant to the business (for example, a marketable product), legal counsel's opinion <strong>must</strong> be obtained and documented in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a> or <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>.</li>
 </ul>
 <h3 id="7-6-data-and-confidentiality">7.6 Data and confidentiality</h3>
 <ul>
-<li>Personal data, secrets, credentials or confidential information <strong>must not</strong> be entered into tools not approved for that level of information (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>).</li>
-<li>Test data <strong>should</strong> be synthetic or anonymised; if personal data are used, the legal basis and measures of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> apply.</li>
+<li>Personal data, secrets, credentials or confidential information <strong>must not</strong> be entered into tools not approved for that level of information (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>).</li>
+<li>Test data <strong>should</strong> be synthetic or anonymised; if personal data are used, the legal basis and measures of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> and <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> apply.</li>
 <li>The tool's configuration regarding data retention and use <strong>must</strong> be verified before it is used in the initiative.</li>
 </ul>
 <h3 id="7-7-intensity">7.7 Intensity</h3>
@@ -996,18 +1007,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Traceability (7.2)</td>
-<td>Identification of tool and scope in <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td>Identification of tool and scope in <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a></td>
 <td>In addition, key prompts and outputs retained; breach log</td>
 </tr>
 <tr>
 <td>Testing (7.3)</td>
-<td>Simplified strategy and results in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td>Simplified strategy and results in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
 <td>Full strategy before G4; test review</td>
 </tr>
 <tr>
 <td>Security (7.4)</td>
 <td>Static analysis, secrets and dependencies before G5</td>
-<td>On every change; software bill of materials; security review; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> for agents</td>
+<td>On every change; software bill of materials; security review; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a> for agents</td>
 </tr>
 <tr>
 <td>Intellectual property (7.5)</td>
@@ -1028,14 +1039,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="7-8-relationship-with-regulation">7.8 Relationship with regulation</h3>
 <ul>
-<li>Build evidence supports the <strong>technical documentation</strong> (Art. 11 and Annex IV), the <strong>quality management system</strong> (Art. 17) and the <strong>cybersecurity</strong> (Art. 15) of providers of high-risk AI systems under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>, sections 3.7 and 3.8).</li>
-<li>Coding assistance tools are not, in general, high-risk systems by virtue of their intended purpose, but they must be inventoried and comply with the use policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>). Their specific classification is confirmed with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>.</li>
-<li>If the company manufactures products with digital elements, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)">Regulation (EU) 2024/2847 on cyber resilience (Cyber Resilience Act)</a> must be assessed, with reporting obligations from 11-09-2026 and main obligations from 11-12-2027 (verify applicability; <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>).</li>
-<li>For entities subject to <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, the development of and changes to ICT systems are integrated into their ICT risk management framework (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>, section 7.1).</li>
+<li>Build evidence supports the <strong>technical documentation</strong> (Art. 11 and Annex IV), the <strong>quality management system</strong> (Art. 17) and the <strong>cybersecurity</strong> (Art. 15) of providers of high-risk AI systems under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>, sections 3.7 and 3.8).</li>
+<li>Coding assistance tools are not, in general, high-risk systems by virtue of their intended purpose, but they must be inventoried and comply with the use policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>). Their specific classification is confirmed with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>.</li>
+<li>If the company manufactures products with digital elements, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)">Regulation (EU) 2024/2847 on cyber resilience (Cyber Resilience Act)</a> must be assessed, with reporting obligations from 11-09-2026 and main obligations from 11-12-2027 (verify applicability; <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>).</li>
+<li>For entities subject to <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, the development of and changes to ICT systems are integrated into their ICT risk management framework (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>, section 7.1).</li>
 </ul>
 <hr />
 <h2 id="verification-at-the-gates"><span class="antetitulo">08</span>Verification at the <em>gates</em></h2>
-<p>The formal criteria will be incorporated into <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>. In the meantime, the verifier should check:</p>
+<p>The formal criteria will be incorporated into <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>. In the meantime, the verifier should check:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1046,15 +1057,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr id="cod-g4-design">
 <td><strong>G4 · Design</strong></td>
-<td>AI build tools identified and approved; autonomy of build agents classified; plan and implementation rules reflected in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>; test strategy defined; exceptions to the global context recorded as risks.</td>
+<td>AI build tools identified and approved; autonomy of build agents classified; plan and implementation rules reflected in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>; test strategy defined; exceptions to the global context recorded as risks.</td>
 </tr>
 <tr id="cod-g5-go-live">
 <td><strong>G5 · Go-live</strong></td>
-<td>Human review recorded; traceability of AI-generated content; test and security results in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> with no open critical or high findings; licences checked; version linked to a tested rollback plan; breach log reviewed in Enterprise.</td>
+<td>Human review recorded; traceability of AI-generated content; test and security results in <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a> with no open critical or high findings; licences checked; version linked to a tested rollback plan; breach log reviewed in Enterprise.</td>
 </tr>
 <tr id="cod-r6-continuity">
 <td><strong>R6 · Continuity</strong></td>
-<td>Subsequent AI-generated changes recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> with the same requirements; urgent fixes with subsequent review closed.</td>
+<td>Subsequent AI-generated changes recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> with the same requirements; urgent fixes with subsequent review closed.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1069,52 +1080,52 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · Initiative register</td>
 <td>Linking of work topic artefacts to the initiative.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · AI system inventory</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> · AI system inventory</td>
 <td>Registration of AI build tools.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> · <em>Gate</em> manager</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> · <em>Gate</em> manager</td>
 <td>Verification at G4, G5 and R6.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> · Risk matrix and register</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a> · Risk matrix and register</td>
 <td>Technical risks and exceptions to the global context.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> · Nonconformity and incident register</td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a> · Nonconformity and incident register</td>
 <td>Implementation without review, self-approval, urgent fixes.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · AI supplier register</td>
+<td><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> · AI supplier register</td>
 <td>Terms of the build tools.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> · Agent security assessment</td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a> · Agent security assessment</td>
 <td>Build agents and security review.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a></td>
 <td>Designation of the orchestrator and the human reviewer.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> · <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> · <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> · <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a> · <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a> · <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a></td>
 <td>Risks · tool supplier · plan, rules and decisions · data flows · security.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a> · <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a> · <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a> · <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a></td>
 <td>Rollback · delivery report · tests and reviews · go-live sign-off.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a> · <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> · <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
 <td>Incidents · changes and root cause · <em>gate</em> decision · lessons learned.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html">P54</a> · <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html">P66</a></td>
-<td>Software bill of materials · build annexes with SPAD: plan review, implementation rules, test strategy, and fix and breach logs (annexes to <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a> and <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
+<td><a href="plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a> · <a href="plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html" title="Template P66 &#183; Build annexes with SPAD">P66</a></td>
+<td>Software bill of materials · build annexes with SPAD: plan review, implementation rules, test strategy, and fix and breach logs (annexes to <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a> and <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1425,6 +1436,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

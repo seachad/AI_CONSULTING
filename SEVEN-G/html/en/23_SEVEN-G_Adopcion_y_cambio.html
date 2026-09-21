@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/23_SEVEN-G_Adopcion_y_cambio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/23_SEVEN-G_Adopcion_y_cambio.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/23_SEVEN-G_Adopcion_y_cambio.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#why-value-depends-on-adoption"><span>02</span>Why value depends on adoption</a></li><li><a href="#principles"><span>03</span>Principles</a></li><li><a href="#reference-model-for-change"><span>04</span>Reference model for change</a></li><li><a href="#analysis-of-the-impact-on-roles-and-tasks"><span>05</span>Analysis of the impact on roles and tasks</a></li><li><a href="#adoption-plan-by-phase"><span>06</span>Adoption plan by phase</a></li><li><a href="#released-capacity-measurement-materialisation-or-reassignment"><span>07</span>Released capacity: measurement, materialisation or reassignment</a></li><li><a href="#training-and-ai-literacy"><span>08</span>Training and AI literacy</a></li><li><a href="#communication-and-participation"><span>09</span>Communication and participation</a></li><li><a href="#adoption-indicators"><span>10</span>Adoption indicators</a></li><li><a href="#adoption-criteria-at-g5-and-g7"><span>11</span>Adoption criteria at G5 and G7</a></li><li><a href="#resistance-to-change-and-organisational-risks"><span>12</span>Resistance to change and organisational risks</a></li><li><a href="#responsibilities-and-intensity"><span>13</span>Responsibilities and intensity</a></li><li><a href="#associated-tools-and-templates"><span>14</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>15</span>Related documents</a></li><li><a href="#version-control"><span>16</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
-<aside class="esencial" data-capa="recomendado"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Recommended</span></div><p>The adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>) is mandatory evidence from phase 4 and adoption is checked at G5 and G7. The rest —change model, role impact analysis, communication— is guidance used in proportion to the initiative&#39;s effect on people.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
+<aside class="esencial" data-capa="recomendado"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Recommended</span></div><p>The adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>) is mandatory evidence from phase 4 and adoption is checked at G5 and G7. The rest —change model, role impact analysis, communication— is guidance used in proportion to the initiative&#39;s effect on people.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>This document defines how the adoption of an AI initiative is planned, measured and decided. It fills a gap in the framework's previous material: phase 5 validated value, but did not explicitly address actual adoption, the reassignment of released capacity or training, which are conditions for value to materialise.</p>
 <p><strong>What it covers</strong></p>
@@ -474,7 +485,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>This document does not constitute legal advice. The regulatory references were consulted in September 2026 and their validity must be verified in <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>.</p>
+<p>This document does not constitute legal advice. The regulatory references were consulted in September 2026 and their validity must be verified in <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>.</p>
 <hr />
 <h2 id="why-value-depends-on-adoption"><span class="antetitulo">02</span>Why value depends on adoption</h2>
 <p>An available AI system does not generate value on its own. Value appears only when a complete chain is followed through: the system is used, it is used in the process for which it was designed, the work changes and that change produces a result measured against the baseline. When the change frees up time, it must also be decided what is done with it.</p>
@@ -567,7 +578,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Awareness</td>
 <td>Do the people affected know what is changing and why?</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> communication plan</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> communication plan</td>
 <td>4–5</td>
 </tr>
 <tr>
@@ -599,7 +610,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="analysis-of-the-impact-on-roles-and-tasks"><span class="antetitulo">05</span>Analysis of the impact on roles and tasks</h2>
 <h3 id="5-1-unit-of-analysis">5.1 Unit of analysis</h3>
-<p>The impact is analysed <strong>by task within each role</strong>, not by entire job. The same role may see eliminated tasks, assisted tasks and new tasks, in particular the human oversight tasks defined in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</p>
+<p>The impact is analysed <strong>by task within each role</strong>, not by entire job. The same role may see eliminated tasks, assisted tasks and new tasks, in particular the human oversight tasks defined in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -618,7 +629,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Current volume and time</td>
-<td>Cases per period and unit time, taken from the baseline (<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>).</td>
+<td>Cases per period and unit time, taken from the baseline (<a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>).</td>
 </tr>
 <tr>
 <td>Type of change</td>
@@ -626,7 +637,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>System autonomy level</td>
-<td>A0–A3 (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>).</td>
+<td>A0–A3 (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>).</td>
 </tr>
 <tr>
 <td>Expected time after the change</td>
@@ -691,11 +702,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>3</td>
-<td>Preliminary: groups affected, type of expected effect and organisational feasibility (evidence <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>).</td>
+<td>Preliminary: groups affected, type of expected effect and organisational feasibility (evidence <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>).</td>
 </tr>
 <tr>
 <td>4</td>
-<td>Complete, with estimated times, within the adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</td>
+<td>Complete, with estimated times, within the adoption plan (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>).</td>
 </tr>
 <tr>
 <td>5</td>
@@ -712,7 +723,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="6-1-preparation-in-phases-2-and-3">6.1 Preparation in phases 2 and 3</h3>
 <ul>
 <li><strong>Phase 2:</strong> in Augment and Transform, the <strong>adoption target</strong> is set (target users, expected effective use, time frame). In Optimise, released capacity is estimated separately from savings.</li>
-<li><strong>Phase 3:</strong> preliminary impact analysis (section 5.3), adoption and training costs in the feasibility assessment, organisational risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>. In Augment, G3 requires the feasibility of adoption and of the change of role (01 §7.6).</li>
+<li><strong>Phase 3:</strong> preliminary impact analysis (section 5.3), adoption and training costs in the feasibility assessment, organisational risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>. In Augment, G3 requires the feasibility of adoption and of the change of role (01 §7.6).</li>
 </ul>
 <h3 id="6-2-phase-4-adoption-design">6.2 Phase 4 · Adoption design</h3>
 <div class="tabla"><table>
@@ -769,7 +780,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Record organisational risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> (section 12).</td>
+<td>Record organisational risks in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> (section 12).</td>
 <td>Product</td>
 <td>Risk</td>
 </tr>
@@ -781,7 +792,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Measure the pilot adoption indicators with the same discipline as the value indicators.</li>
 <li>Measure the actual (not the estimated) released capacity using the method in section 7.2.</li>
 <li>Collect usage issues, overrides and their reasons, and adjust the design, training or communication.</li>
-<li>Update <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> with the results and with the plan for rollout to the entire target population.</li>
+<li>Update <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> with the results and with the plan for rollout to the entire target population.</li>
 </ul>
 <h3 id="6-4-phase-6-rollout-reinforcement-and-materialisation">6.4 Phase 6 · Rollout, reinforcement and materialisation</h3>
 <ul>
@@ -828,7 +839,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p>By construction: <strong>released capacity = materialised + reassigned + unapplied.</strong></p>
-<p>These three parts group the five destinations of released capacity in <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a> (§6.2): PER-D1 (Materialise) is materialised capacity; PER-D2 (Reassign) and PER-D4 (Reinvest in quality, service or compliance) are reassigned capacity; PER-D3 (Absorb growth) is materialised if the hiring was planned and budgeted and, otherwise, reassigned; PER-D5 (No decision) is unapplied capacity. The full correspondence is set out in section 10.5.</p>
+<p>These three parts group the five destinations of released capacity in <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a> (§6.2): PER-D1 (Materialise) is materialised capacity; PER-D2 (Reassign) and PER-D4 (Reinvest in quality, service or compliance) are reassigned capacity; PER-D3 (Absorb growth) is materialised if the hiring was planned and budgeted and, otherwise, reassigned; PER-D5 (No decision) is unapplied capacity. The full correspondence is set out in section 10.5.</p>
 <h3 id="7-2-measurement">7.2 Measurement</h3>
 <p>Released capacity is measured, not inferred from model performance:</p>
 <blockquote>
@@ -836,7 +847,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <p>Rules:</p>
 <ol>
-<li>Baseline times come from <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; times with AI are <strong>measured</strong> in the pilot (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) and in operation, not estimated.</li>
+<li>Baseline times come from <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>; times with AI are <strong>measured</strong> in the pilot (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>) and in operation, not estimated.</li>
 <li>The volume is that actually processed with the system in the period, not the eligible volume.</li>
 <li>Supervision and correction hours are measured using system logs or documented sampling.</li>
 <li>Conversion to full-time equivalents uses the effective annual hours per person set by the company, which are declared.</li>
@@ -847,10 +858,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Only the amount of the lower actual cost, taken from the accounts or the approved budget, counts as an <strong>efficiency</strong>, not the hours multiplied by an hourly cost.</li>
 <li>It is validated by management control, which checks that the cost existed, that it disappears and that it does not reappear under another line item.</li>
 <li>If materialisation consists of absorbing volume growth without hiring, the hiring must have been planned and budgeted; otherwise, it is treated as reassignment.</li>
-<li>Decisions affecting employment are taken by management together with the people function and in accordance with labour legislation and applicable collective agreements (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>). SEVEN-G does not prescribe the destination of released capacity; it requires it to be explicit.</li>
+<li>Decisions affecting employment are taken by management together with the people function and in accordance with labour legislation and applicable collective agreements (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>). SEVEN-G does not prescribe the destination of released capacity; it requires it to be explicit.</li>
 </ul>
 <h3 id="7-4-explicit-reassignment">7.4 Explicit reassignment</h3>
-<p>A reassignment is only recognised if it records the following in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>:</p>
+<p>A reassignment is only recognised if it records the following in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -909,7 +920,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Reports to the board show released capacity <strong>separately</strong> from savings and broken down into materialised, reassigned and unapplied. These rates feed signal 3 of the transformation index; their thresholds are set in <a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>.</p>
+<p>Reports to the board show released capacity <strong>separately</strong> from savings and broken down into materialised, reassigned and unapplied. These rates feed signal 3 of the transformation index; their thresholds are set in <a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>.</p>
 <h3 id="7-6-illustrative-example">7.6 Illustrative example</h3>
 <p><em>Fictitious data.</em> A document management team classifies 4,000 documents a month. The baseline is 12 minutes per document; with the system, as measured in the pilot, 5 minutes. A sample of 400 documents is reviewed at 3 minutes each, and 80 system errors are corrected at 10 minutes each.</p>
 <div class="tabla"><table>
@@ -947,8 +958,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="training-and-ai-literacy"><span class="antetitulo">08</span>Training and AI literacy</h2>
 <h3 id="8-1-regulatory-framework">8.1 Regulatory framework</h3>
-<p>Article 4 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires providers and deployers to take measures to ensure, to their best extent, a sufficient level of AI literacy among their staff and other persons dealing with the operation and use of AI systems on their behalf, taking into account their technical knowledge, experience, education and training and the context of use. It has applied since 2 February 2025. Regulation (EU) 2026/1744 (Digital Omnibus on AI) has amended its wording, which now requires measures to <em>support</em> the development of AI literacy without setting a level; the details and their verification status, as at the consultation date of September 2026, are in <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> (§3.5).</p>
-<p>Regardless of regulatory developments, <strong>SEVEN-G requires training in each initiative because value depends on it</strong>. General AI literacy across the workforce is governed in <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>; this document addresses training specific to the initiative.</p>
+<p>Article 4 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires providers and deployers to take measures to ensure, to their best extent, a sufficient level of AI literacy among their staff and other persons dealing with the operation and use of AI systems on their behalf, taking into account their technical knowledge, experience, education and training and the context of use. It has applied since 2 February 2025. Regulation (EU) 2026/1744 (Digital Omnibus on AI) has amended its wording, which now requires measures to <em>support</em> the development of AI literacy without setting a level; the details and their verification status, as at the consultation date of September 2026, are in <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> (§3.5).</p>
+<p>Regardless of regulatory developments, <strong>SEVEN-G requires training in each initiative because value depends on it</strong>. General AI literacy across the workforce is governed in <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>; this document addresses training specific to the initiative.</p>
 <h3 id="8-2-training-by-audience">8.2 Training by audience</h3>
 <div class="tabla"><table>
 <thead>
@@ -974,7 +985,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Human overseers</strong></td>
-<td>Oversee effectively (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Oversee effectively (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>).</td>
 <td>Intervention criteria, automation bias, sample review, use of the kill switch where one exists, escalation.</td>
 <td>Before they gain access.</td>
 </tr>
@@ -986,7 +997,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Operations team</strong></td>
-<td>Operate the system (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
+<td>Operate the system (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>).</td>
 <td>Monitoring, incidents, changes, rollback.</td>
 <td>Phase 5.</td>
 </tr>
@@ -1021,7 +1032,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="8-4-evidence">8.4 Evidence</h3>
-<p>Training record in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, consolidated in <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a>, with person or group, content and version, date, format and assessment result. It feeds the training coverage indicator (section 10).</p>
+<p>Training record in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>, consolidated in <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Template P45 &#183; Literacy and training plan and record">P45</a>, with person or group, content and version, date, format and assessment result. It feeds the training coverage indicator (section 10).</p>
 <hr />
 <h2 id="communication-and-participation"><span class="antetitulo">09</span>Communication and participation</h2>
 <h3 id="9-1-communication-plan">9.1 Communication plan</h3>
@@ -1070,14 +1081,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h2 id="adoption-indicators"><span class="antetitulo">10</span>Adoption indicators</h2>
 <h3 id="10-1-measurement-rules">10.1 Measurement rules</h3>
 <ol>
-<li><strong>Measured over the population and cases in the process.</strong> The denominators are the target users and eligible cases defined in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, not licences or accesses.</li>
-<li><strong>The active use criterion is set in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong> before the pilot (for example, at least one use per week with a result incorporated into the process) and is not changed during measurement.</li>
+<li><strong>Measured over the population and cases in the process.</strong> The denominators are the target users and eligible cases defined in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>, not licences or accesses.</li>
+<li><strong>The active use criterion is set in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></strong> before the pilot (for example, at least one use per week with a result incorporated into the process) and is not changed during measurement.</li>
 <li><strong>No individual data.</strong> Indicators are calculated by group, with the minimum group size set by the company. Usage data are not used to assess individuals unless that purpose has been declared, is lawful and has been communicated (50 §9.2).</li>
 <li><strong>&quot;No data&quot; is not zero</strong> (measurement rule 8). An indicator that cannot be calculated with its formula is shown as <em>no data</em>.</li>
 <li><strong>Paired reading.</strong> No usage indicator is interpreted on its own: it is read together with the oversight quality and result indicators (section 10.3).</li>
 </ol>
 <h3 id="10-2-indicators">10.2 Indicators</h3>
-<p>The <code>IND-</code> codes are those of the catalogue (<a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a>); the <code>PER-</code> codes are the provisional ones in <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>. Indicators without a code are <strong>proposals for consolidation in <a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a></strong>.</p>
+<p>The <code>IND-</code> codes are those of the catalogue (<a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a>); the <code>PER-</code> codes are the provisional ones in <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>. Indicators without a code are <strong>proposals for consolidation in <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a></strong>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1101,7 +1112,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>2</td>
 <td><strong>Active users</strong></td>
-<td>Active users in the period, according to the <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> criterion ÷ target users</td>
+<td>Active users in the period, according to the <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> criterion ÷ target users</td>
 <td>IND-ADO-02 · PER-07</td>
 <td>M</td>
 <td>G5 and R6: extent of use.</td>
@@ -1149,7 +1160,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>8</td>
 <td><strong>User perception</strong></td>
-<td>Favourable responses to the questions on usefulness, trust, support, workload and autonomy (<a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a>) ÷ valid responses</td>
+<td>Favourable responses to the questions on usefulness, trust, support, workload and autonomy (<a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html" title="Template P44 &#183; AI use and perception survey">P44</a>) ÷ valid responses</td>
 <td>PER-15</td>
 <td>Phase 5, at 3 months and at Enterprise R6</td>
 <td>Desire and reinforcement; early warning of rejection.</td>
@@ -1175,7 +1186,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Notes:</p>
 <ul>
 <li>Indicator 5 has no good value in the abstract. A rate close to zero may indicate acceptance without review; a high rate, poor system performance or distrust. An <strong>expected band</strong> is set in phase 4 using the validation results, and the recorded override reasons are analysed.</li>
-<li>In generative AI, indicator 5 is calculated on the human review sample and read together with IND-OPE-08 (ungrounded responses). In agents, it is calculated on the actions that require validation (AG-08, <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>).</li>
+<li>In generative AI, indicator 5 is calculated on the human review sample and read together with IND-OPE-08 (ungrounded responses). In agents, it is calculated on the actions that require validation (AG-08, <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>).</li>
 <li>Indicator 7 has a target of <strong>100%</strong> for designated overseers: no person oversees an A1–A3 system without recorded training (50 §5.3).</li>
 </ul>
 <h3 id="10-3-combined-reading">10.3 Combined reading</h3>
@@ -1196,7 +1207,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>High effective use, override close to zero and decreasing review time</td>
 <td>Possible routine acceptance or automation bias.</td>
-<td>Sample review by a third party, adjustment of the oversight workload (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), reinforcement of training.</td>
+<td>Sample review by a third party, adjustment of the oversight workload (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>), reinforcement of training.</td>
 </tr>
 <tr>
 <td>High and stable override</td>
@@ -1223,13 +1234,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="10-4-targets-and-thresholds">10.4 Targets and thresholds</h3>
 <ul>
 <li>The <strong>adoption target</strong> is set in phase 2 (G2.10): mandatory in Augment, recommended in Optimise.</li>
-<li>In phase 4, the baseline, target, time frame and <strong>minimum threshold</strong> for G5 and for G7 are set in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> for each selected indicator. Thresholds are set before the results are known and are not relaxed during the phase without the approval of the body that authorised the initiative (01 §7.4, rule 6).</li>
+<li>In phase 4, the baseline, target, time frame and <strong>minimum threshold</strong> for G5 and for G7 are set in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> for each selected indicator. Thresholds are set before the results are known and are not relaxed during the phase without the approval of the body that authorised the initiative (01 §7.4, rule 6).</li>
 <li>Tracking is monthly during the first six months of production and is then presented at each R6 (R6.14).</li>
-<li>Effective use below the threshold for two consecutive periods triggers a review at R6 and may justify bringing G7 forward. If the initiative is stopped or retired for this reason, the coded reason is <strong>No adoption</strong> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>).</li>
+<li>Effective use below the threshold for two consecutive periods triggers a review at R6 and may justify bringing G7 forward. If the initiative is stopped or retired for this reason, the coded reason is <strong>No adoption</strong> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>).</li>
 <li>Thresholds are specific to each initiative. SEVEN-G does not set adoption reference values.</li>
 </ul>
 <h3 id="10-5-correspondence-with-documents-40-41-and-50">10.5 Correspondence with documents 40, 41 and 50</h3>
-<p>The three statuses in section 7 and the five destinations in <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a> (§6.2) describe the same reality at different levels of detail:</p>
+<p>The three statuses in section 7 and the five destinations in <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a> (§6.2) describe the same reality at different levels of detail:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1266,10 +1277,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The formula in section 7.2 is equivalent to formula F4 in <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>: there, the unit time with AI includes review, exceptions and corrections; here, they are deducted explicitly so that the user area can see each component. Under no circumstances are they deducted twice.</p>
+<p>The formula in section 7.2 is equivalent to formula F4 in <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>: there, the unit time with AI includes review, exceptions and corrections; here, they are deducted explicitly so that the user area can see each component. Under no circumstances are they deducted twice.</p>
 <hr />
 <h2 id="adoption-criteria-at-g5-and-g7"><span class="antetitulo">11</span>Adoption criteria at G5 and G7</h2>
-<p>The coded criteria are set in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> and applied using the checklists in <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">document 22</a>. This section brings together what those criteria require in terms of adoption and how it is evidenced with this document. It does not create new criteria.</p>
+<p>The coded criteria are set in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> and applied using the checklists in <a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Document 22 &#183; Checklists by gate">document 22</a>. This section brings together what those criteria require in terms of adoption and how it is evidenced with this document. It does not create new criteria.</p>
 <h3 id="11-1-criteria-common-to-all-levels">11.1 Criteria common to all levels</h3>
 <div class="tabla"><table>
 <thead>
@@ -1285,25 +1296,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>G4</td>
 <td>G4.11</td>
 <td>Adoption plan with training, communication, support, measurement of use and intended destination of released capacity.</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></td>
 </tr>
 <tr>
 <td>G5</td>
 <td>G5.14 ◆</td>
 <td>Overseers designated, trained and given the authority and means to intervene. Admits no conditions.</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (training record)</td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> · <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> (training record)</td>
 </tr>
 <tr>
 <td>G5</td>
 <td>G5.19</td>
 <td>Users trained and evidence of AI literacy for those who use or oversee the system.</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (indicator 7)</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> (indicator 7)</td>
 </tr>
 <tr>
 <td>G5</td>
 <td>G5.10</td>
 <td>Plan to materialise or reassign released capacity, with an owner and date.</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (section 7.4)</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> (section 7.4)</td>
 </tr>
 <tr>
 <td>G5</td>
@@ -1315,13 +1326,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>R6</td>
 <td>R6.14 · R6.02</td>
 <td>Adoption measured against the target; realised value with status.</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a></td>
 </tr>
 <tr>
 <td>G7</td>
 <td>G7.01 · G7.02</td>
 <td>Value consolidated with status; explicit conclusion on the hypothesis, including the adoption hypothesis.</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1392,9 +1403,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>The ambition level confirmed at G2 applies</strong> (21 §7.2).</li>
 <li><strong>Unapplied capacity is not realised value</strong> at any level (21 §7.2, rule 5).</li>
 <li><strong>To Scale</strong>, the adoption that sustains the value must be measured in the current scope. Extrapolation to a larger scope carries its own adoption hypothesis and extension cost (measurement rule 4).</li>
-<li><strong>To Iterate because of adoption</strong>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> records the change condition that has failed (section 4), the action and the time limit.</li>
+<li><strong>To Iterate because of adoption</strong>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a> records the change condition that has failed (section 4), the action and the time limit.</li>
 <li><strong>To Retire</strong>, section 6.5 applies: users informed, alternative procedure restored and training in it if it is no longer known.</li>
-<li><strong>Intensity.</strong> In Lite, the criteria marked <em>Simpl.</em> in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> are evidenced with a simplified <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>; the ◆ criteria and prior information to workers' representatives are not simplified.</li>
+<li><strong>Intensity.</strong> In Lite, the criteria marked <em>Simpl.</em> in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> are evidenced with a simplified <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>; the ◆ criteria and prior information to workers' representatives are not simplified.</li>
 </ol>
 <hr />
 <h2 id="resistance-to-change-and-organisational-risks"><span class="antetitulo">12</span>Resistance to change and organisational risks</h2>
@@ -1432,7 +1443,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Uncritical acceptance</strong></td>
 <td>Indicator 5 close to zero; indicator 6 decreasing.</td>
 <td>Knowledge (overreliance).</td>
-<td>Training on automation bias; control samples; review of the oversight workload (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Training on automation bias; control samples; review of the oversight workload (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>).</td>
 </tr>
 <tr>
 <td><strong>Resistance from managers</strong></td>
@@ -1448,14 +1459,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Use of unauthorised tools</strong></td>
-<td>Detections in <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> in the affected area.</td>
+<td>Detections in <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a> in the affected area.</td>
 <td>Insufficient perceived usefulness of the approved system.</td>
-<td>Review the approved solution; apply the acceptable use policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>).</td>
+<td>Review the approved solution; apply the acceptable use policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>).</td>
 </tr>
 </tbody>
 </table></div>
 <h3 id="12-2-typical-risks">12.2 Typical risks</h3>
-<p>Risks are recorded in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> using the common probability and impact scale and are accepted at the corresponding level (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>). The codes are those of the typical risk catalogue in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>; <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a> (§12) proposes an extended list of organisational risks, pending consolidation in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>.</p>
+<p>Risks are recorded in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> using the common probability and impact scale and are accepted at the corresponding level (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>). The codes are those of the typical risk catalogue in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>; <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a> (§12) proposes an extended list of organisational risks, pending consolidation in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1478,28 +1489,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>RT-ORG-03</strong></td>
 <td>Unmanaged effect on people</td>
 <td>Incomplete impact analysis; indicator 8 decreasing; indicator 10 low.</td>
-<td>Impact analysis (section 5); communication and participation (section 9); <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>.</td>
+<td>Impact analysis (section 5); communication and participation (section 9); <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>.</td>
 <td>2, 4</td>
 </tr>
 <tr id="cod-rt-org-04">
 <td><strong>RT-ORG-04</strong></td>
 <td>Ineffective human oversight</td>
 <td>5 close to zero; 6 decreasing; 7 below 100% for overseers.</td>
-<td>Overseer training (section 8.2); oversight design in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; control samples.</td>
+<td>Overseer training (section 8.2); oversight design in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>; control samples.</td>
 <td>4, 6</td>
 </tr>
 <tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependence on key people</td>
 <td>Knowledge of use concentrated in a few advanced users.</td>
-<td>Training by audience; area champions; operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
+<td>Training by audience; area champions; operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>).</td>
 <td>4, 6</td>
 </tr>
 <tr id="cod-rt-org-05">
 <td><strong>RT-ORG-05</strong></td>
 <td>Unauthorised use of AI</td>
-<td>Detections in <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> in affected groups.</td>
-<td>Training; <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>.</td>
+<td>Detections in <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a> in affected groups.</td>
+<td>Training; <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>.</td>
 <td>C1, C4</td>
 </tr>
 <tr id="cod-rt-eco-03">
@@ -1518,9 +1529,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Every High or Critical risk under treatment has a contingency plan (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>). In adoption, the typical trigger is the minimum effective use threshold, and the contingency is iterating the design or training, maintaining the alternative procedure or stopping.</p>
+<p>Every High or Critical risk under treatment has a contingency plan (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>). In adoption, the typical trigger is the minimum effective use threshold, and the contingency is iterating the design or training, maintaining the alternative procedure or stopping.</p>
 <h3 id="12-3-cost-of-adoption">12.3 Cost of adoption</h3>
-<p>Training, communication, support, users' time during learning and the temporary loss of productivity are costs of the initiative. They are estimated in phase 3 in the <em>adoption and training</em> category of <a href="42_SEVEN-G_Costes_de_IA.html">document 42</a> and form part of the initial investment (40 §8.2). Omitting them inflates the expected net value and is a frequent cause of insufficient adoption due to lack of resources.</p>
+<p>Training, communication, support, users' time during learning and the temporary loss of productivity are costs of the initiative. They are estimated in phase 3 in the <em>adoption and training</em> category of <a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a> and form part of the initial investment (40 §8.2). Omitting them inflates the expected net value and is a frequent cause of insufficient adoption due to lack of resources.</p>
 <hr />
 <h2 id="responsibilities-and-intensity"><span class="antetitulo">13</span>Responsibilities and intensity</h2>
 <h3 id="13-1-responsibilities">13.1 Responsibilities</h3>
@@ -1538,7 +1549,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>AI Product Owner</strong></td>
-<td>Accountable for adoption (01 §8.1): prepares <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, measures the indicators, coordinates training and communication.</td>
+<td>Accountable for adoption (01 §8.1): prepares <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>, measures the indicators, coordinates training and communication.</td>
 </tr>
 <tr>
 <td><strong>User area management and managers</strong></td>
@@ -1546,7 +1557,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>People function</strong></td>
-<td>Jointly responsible for the impact analysis, the capabilities plan and the relationship with workers' representatives (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>).</td>
+<td>Jointly responsible for the impact analysis, the capabilities plan and the relationship with workers' representatives (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>).</td>
 </tr>
 <tr>
 <td><strong>Management control</strong></td>
@@ -1558,7 +1569,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>AI Office · AI Auditor</strong></td>
-<td>Verify <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and the adoption criteria at the <em>gates</em>; consolidate lessons on adoption for the portfolio.</td>
+<td>Verify <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> and the adoption criteria at the <em>gates</em>; consolidate lessons on adoption for the portfolio.</td>
 </tr>
 <tr>
 <td><strong>AI Committee</strong></td>
@@ -1594,7 +1605,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Communication and participation</strong></td>
-<td>Simplified plan in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td>Simplified plan in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>.</td>
 <td>Full plan; user perception measured (indicator 8).</td>
 </tr>
 <tr>
@@ -1622,58 +1633,58 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-p20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Main evidence: impact analysis, adoption targets and indicators, training, communication, destination of released capacity and tracking.</td>
 </tr>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
-<td>Tool for template <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and released capacity register; feeds <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Tool for template <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> and released capacity register; feeds <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></strong></td>
+<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> · <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a></strong></td>
 <td>Value hypothesis canvas · Baseline</td>
 <td>Adoption target (G2.10) and reference times per task.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
+<td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a> · <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></strong></td>
 <td>Feasibility assessment · Risk matrix and register</td>
 <td>Preliminary impact analysis, adoption costs and organisational risks.</td>
 </tr>
 <tr id="cod-p17">
-<td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></strong></td>
+<td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a></strong></td>
 <td>Governance and human oversight design</td>
-<td>Designated overseers and oversight workload. The information sheet and the register of information to representatives are in <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a>.</td>
+<td>Designated overseers and oversight workload. The information sheet and the register of information to representatives are in <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Template P46 &#183; Information to workers and their representatives">P46</a>.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
+<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a></strong></td>
 <td>Pilot results · Value realisation tracking</td>
 <td>Adoption and capacity measured in the pilot; materialised and reassigned capacity in operation.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
+<td><strong><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></strong></td>
 <td><em>Gate</em> decision record · Scaling or retirement decision</td>
 <td>G5, R6 and G7 decisions; lessons on adoption and communication of retirement.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> · <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> · <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a></strong></td>
 <td>Value tracking · Corporate use monitor</td>
 <td>Materialised amounts; unauthorised use in the affected groups.</td>
 </tr>
 <tr id="cod-p44">
-<td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
+<td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html" title="Template P44 &#183; AI use and perception survey">P44</a></strong></td>
 <td>AI use and perception survey</td>
 <td>User perception (indicator 8): usefulness, trust, support, workload and autonomy.</td>
 </tr>
 <tr id="cod-p46">
-<td><strong><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></strong></td>
+<td><strong><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Template P46 &#183; Information to workers and their representatives">P46</a></strong></td>
 <td>Information to workers and their representatives</td>
 <td>System information sheet and register of information to and consultation of representatives.</td>
 </tr>
 </tbody>
 </table></div>
-<p>Consistency note: in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> (section 4), the indicator called <em>effective use</em> corresponds to <strong>active users</strong> (IND-ADO-02) and <em>process coverage</em> to <strong>effective use in the process</strong> (IND-ADO-03). The template's terminology will be aligned with this document and with <a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a> in its next version.</p>
+<p>Consistency note: in <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> (section 4), the indicator called <em>effective use</em> corresponds to <strong>active users</strong> (IND-ADO-02) and <em>process coverage</em> to <strong>effective use in the process</strong> (IND-ADO-03). The template's terminology will be aligned with this document and with <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a> in its next version.</p>
 <hr />
 <h2 id="related-documents"><span class="antetitulo">15</span>Related documents</h2>
 <div class="tabla"><table>
@@ -1694,7 +1705,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Tools and initiative register</strong></td>
-<td>Tool <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> and coded reason <em>No adoption</em>.</td>
+<td>Tool <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a> and coded reason <em>No adoption</em>.</td>
 </tr>
 <tr>
 <td><strong>11 · Maturity model</strong></td>
@@ -2013,6 +2024,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

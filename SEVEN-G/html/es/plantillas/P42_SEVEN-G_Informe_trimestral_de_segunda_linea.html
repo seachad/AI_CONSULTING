@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#mensaje-principal-y-decisiones-solicitadas"><span>03</span>Mensaje principal y decisiones solicitadas</a></li><li><a href="#riesgos-de-la-cartera"><span>04</span>Riesgos de la cartera</a></li><li><a href="#incidentes"><span>05</span>Incidentes</a></li><li><a href="#no-conformidades"><span>06</span>No conformidades</a></li><li><a href="#excepciones-vigentes"><span>07</span>Excepciones vigentes</a></li><li><a href="#conciliacion-trimestral-del-inventario"><span>08</span>Conciliación trimestral del inventario</a></li><li><a href="#cambios-regulatorios"><span>09</span>Cambios regulatorios</a></li><li><a href="#condiciones-vencidas-aceptaciones-caducadas-y-desacuerdos"><span>10</span>Condiciones vencidas, aceptaciones caducadas y desacuerdos</a></li><li><a href="#propuestas-de-decision"><span>11</span>Propuestas de decisión</a></li><li><a href="#criterios-de-calidad"><span>12</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>13</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -449,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
-<td>El coordinador de segunda línea para la IA (responde y realiza, 30 §6.3), con los responsables de riesgos de IA, seguridad, protección de datos y cumplimiento; la oficina de IA aporta los datos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>, <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>, <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> y <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
+<td>El coordinador de segunda línea para la IA (responde y realiza, 30 §6.3), con los responsables de riesgos de IA, seguridad, protección de datos y cumplimiento; la oficina de IA aporta los datos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a>, <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>, <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> y <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>.</td>
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> (riesgos), <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> (incidentes y no conformidades), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> (inventario), <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> (proveedores), <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> (uso corporativo), <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (excepciones y condiciones) y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> (decisiones).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a> (riesgos), <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a> (incidentes y no conformidades), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> (inventario), <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> (proveedores), <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a> (uso corporativo), <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (excepciones y condiciones) y <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a> (decisiones).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -509,7 +520,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sesión en que se presenta</td>
 <td></td>
-<td>Referencia del acta (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>).</td>
+<td>Referencia del acta (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a>).</td>
 </tr>
 <tr>
 <td>Elaborado por</td>
@@ -810,7 +821,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Dentro · Fuera, con los límites superados.</td>
 </tr>
 <tr>
-<td>Exposición a IA ofensiva (<a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>)</td>
+<td>Exposición a IA ofensiva (<a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>)</td>
 <td>Indicadores principales y hechos del trimestre.</td>
 </tr>
 </tbody>
@@ -945,7 +956,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="excepciones-vigentes"><span class="antetitulo">07</span>Excepciones vigentes</h2>
-<p>Resumen del registro de <a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a> (30 §7.4).</p>
+<p>Resumen del registro de <a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a> (30 §7.4).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -996,7 +1007,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Registro de proveedores de IA (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>) y registro de proveedores TIC (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, cuando aplique)</td>
+<td>Registro de proveedores de IA (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a>) y registro de proveedores TIC (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, cuando aplique)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1103,7 +1114,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Condición de <em>gate</em> vencida</td>
-<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
+<td><a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a></td>
 <td></td>
 <td></td>
 <td>Resultado pasa a Iterar (01 §7.4, regla 4).</td>
@@ -1184,7 +1195,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Las excepciones vigentes coinciden con el registro de <a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a>.</td>
+<td>Las excepciones vigentes coinciden con el registro de <a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1255,7 +1266,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Comisión delegada</td>
 <td></td>
 <td></td>
-<td>Sesión y acuerdo (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>)</td>
+<td>Sesión y acuerdo (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a>)</td>
 </tr>
 </tbody>
 </table></div>
@@ -1535,6 +1546,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

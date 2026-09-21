@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,11 +439,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#assignment-of-functions-to-existing-bodies"><span>03</span>Assignment of functions to existing bodies</a></li><li><a href="#rules-of-procedure-of-the-ai-committee"><span>04</span>Rules of procedure of the AI Committee</a></li><li><a href="#annex-a-mandate-of-the-ai-office"><span>05</span>Annex A · Mandate of the AI Office</a></li><li><a href="#annex-b-ai-competences-of-the-board-committee"><span>06</span>Annex B · AI competences of the board committee</a></li><li><a href="#annex-c-model-appointment-of-the-head-of-ai"><span>07</span>Annex C · Model appointment of the head of AI</a></li><li><a href="#register-of-members-and-appointments"><span>08</span>Register of members and appointments</a></li><li><a href="#quality-criteria"><span>09</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>10</span>Approval and verification</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <blockquote>
-<p><strong>Why it matters.</strong> The model mandates in <a href="../30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> say what each body does, but they are not enough for a body to work: it must be clear who convenes, when there is a quorum, how votes are cast, who abstains and where each resolution is recorded. Without approved rules of procedure, <em>gate</em> decisions, risk acceptances and exceptions can be challenged for lack of competence or form, and D1 maturity cannot exceed level 2 because the evidence of a written mandate is missing (11, D1.03 and D1.07).</p>
+<p><strong>Why it matters.</strong> The model mandates in <a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> say what each body does, but they are not enough for a body to work: it must be clear who convenes, when there is a quorum, how votes are cast, who abstains and where each resolution is recorded. Without approved rules of procedure, <em>gate</em> decisions, risk acceptances and exceptions can be challenged for lack of competence or form, and D1 maturity cannot exceed level 2 because the evidence of a written mandate is missing (11, D1.03 and D1.07).</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
 <div class="tabla"><table>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register: registration of bodies and people to validate decision-maker and verifier (30 §10, step 5).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · Initiative register: registration of bodies and people to validate decision-maker and verifier (30 §10, step 5).</td>
 </tr>
 <tr>
 <td><strong>Reference document</strong></td>
@@ -513,7 +524,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Approving body and date</td>
 <td></td>
-<td>Minutes reference (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>).</td>
+<td>Minutes reference (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Template P39 &#183; Agenda and minutes of a governance body">P39</a>).</td>
 </tr>
 <tr>
 <td>Replaces</td>
@@ -528,7 +539,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Documents it develops</td>
 <td></td>
-<td>Corporate AI policy (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>) and the delegation matrix approved in C2.</td>
+<td>Corporate AI policy (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>) and the delegation matrix approved in C2.</td>
 </tr>
 </tbody>
 </table></div>
@@ -595,8 +606,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Each member designates a deputy from the same remit, notified in writing to the secretariat.</li>
 </ol>
 <p><strong>Article 4. Chair.</strong> The Committee is chaired by [position], a member of senior management with authority over the portfolio. It should not be chaired by whoever sponsors most of the portfolio. In their absence, [deputy] stands in. The chair holds a casting vote.</p>
-<p><strong>Article 5. Secretariat.</strong> The secretary convenes on the chair's instructions, prepares the documentation, takes the minutes, records <em>gate</em> decisions in <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> with <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, keeps the conflict and exception registers and follows up resolutions.</p>
-<p><strong>Article 6. Competences.</strong> In accordance with the delegation matrix of [the Company] (<a href="../30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> §7), the Committee is responsible for:</p>
+<p><strong>Article 5. Secretariat.</strong> The secretary convenes on the chair's instructions, prepares the documentation, takes the minutes, records <em>gate</em> decisions in <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> with <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>, keeps the conflict and exception registers and follows up resolutions.</p>
+<p><strong>Article 6. Competences.</strong> In accordance with the delegation matrix of [the Company] (<a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> §7), the Committee is responsible for:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -644,32 +655,32 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Article 7. Limits and escalation.</strong> The Committee does not approve the AI thesis, the risk appetite, the corporate policy, Transform initiatives at G2 or their scaling at G7, nor does it accept Critical residual risks. It escalates to the Board or to [the Board Committee] anything that exceeds its delegation and, in any event, the situations in 30 §8.2 that require it. No practice prohibited by Article 5 of <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a> is acceptable to any body.</p>
-<p><strong>Article 8. Notice of meetings.</strong> The secretariat convenes ordinary meetings at least [five] working days in advance, with the agenda and documentation (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>). Extraordinary meetings, for urgent <em>gates</em> or S1 incidents, may be convened with [24 hours'] notice by any means that leaves a record.</p>
+<p><strong>Article 8. Notice of meetings.</strong> The secretariat convenes ordinary meetings at least [five] working days in advance, with the agenda and documentation (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Template P39 &#183; Agenda and minutes of a governance body">P39</a>). Extraordinary meetings, for urgent <em>gates</em> or S1 incidents, may be convened with [24 hours'] notice by any means that leaves a record.</p>
 <p><strong>Article 9. Quorum.</strong> The Committee is validly constituted with a majority of voting members, including the chair or their deputy, and at least one representative of the second line. Without the second line present, G3, G5, risk acceptances and exceptions are not decided. Anyone who must abstain on an item does not count towards the quorum for that item.</p>
 <p><strong>Article 10. Deliberation and resolutions.</strong> Resolutions are adopted by consensus; failing that, by a majority of votes present, with the chair holding a casting vote. If the second line withholds its clearance on G3, G5, a risk acceptance or an exception, the Committee may not decide Proceed or Proceed with conditions: it may decide Iterate, Pivot or Stop, or escalate the disagreement to [the Board Committee] (30 §8.3).</p>
 <p><strong>Article 11. Written decisions.</strong> <em>Gates</em> without debate may be decided in writing, under the same rules on quorum, clearance and abstention. Any voting member may ask for the matter to be dealt with in a meeting.</p>
-<p><strong>Article 12. Conflicts of interest and abstention.</strong> Members declare their conflicts on joining and every year (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>), and at the start of each meeting in respect of the agenda items. Anyone with a sponsorship or build role in an initiative abstains from its decisions (30, I-6). Whoever verifies a <em>gate</em> does not take part in its decision (I-7). Whoever proposes an exception does not approve it (I-9). Abstentions are recorded in the minutes and in <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</p>
-<p><strong>Article 13. Minutes and records.</strong> Minutes are taken of each meeting with attendees, quorum, conflicts, a summary of deliberations and numbered resolutions (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>). The minutes are approved at the same meeting or the next. Each <em>gate</em> decision is recorded in <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> with <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>; each exception, in the <a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a> register.</p>
+<p><strong>Article 12. Conflicts of interest and abstention.</strong> Members declare their conflicts on joining and every year (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Template P41 &#183; Declarations of independence and conflicts of interest">P41</a>), and at the start of each meeting in respect of the agenda items. Anyone with a sponsorship or build role in an initiative abstains from its decisions (30, I-6). Whoever verifies a <em>gate</em> does not take part in its decision (I-7). Whoever proposes an exception does not approve it (I-9). Abstentions are recorded in the minutes and in <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</p>
+<p><strong>Article 13. Minutes and records.</strong> Minutes are taken of each meeting with attendees, quorum, conflicts, a summary of deliberations and numbered resolutions (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Template P39 &#183; Agenda and minutes of a governance body">P39</a>). The minutes are approved at the same meeting or the next. Each <em>gate</em> decision is recorded in <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> with <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>; each exception, in the <a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Template P40 &#183; Exception request and register">P40</a> register.</p>
 <p><strong>Article 14. Frequency.</strong> The Committee meets monthly according to the annual calendar it approves at its first meeting of the financial year, and in extraordinary session when urgent <em>gates</em> or S1 incidents so require.</p>
-<p><strong>Article 15. Reporting to the Board.</strong> The Committee reports quarterly to [the Board Committee] on High and Critical risks, incidents, nonconformities, exceptions in force and escalated matters, and to the Board in the quarterly pack (<a href="../60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a>).</p>
+<p><strong>Article 15. Reporting to the Board.</strong> The Committee reports quarterly to [the Board Committee] on High and Critical risks, incidents, nonconformities, exceptions in force and escalated matters, and to the Board in the quarterly pack (<a href="../60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a>).</p>
 <p><strong>Article 16. Annual evaluation.</strong> The Committee evaluates its effectiveness once a year, in C5, and approves an improvement plan with owners and deadlines (11, D1.12).</p>
 <p><strong>Article 17. Confidentiality.</strong> Members and guests keep the deliberations and the information received confidential.</p>
 <p><strong>Article 18. Amendment and entry into force.</strong> These rules are amended on a proposal from the chair or the AI Office, with a report from the second line, and enter into force on [date].</p>
 <hr />
 <h2 id="annex-a-mandate-of-the-ai-office"><span class="antetitulo">05</span>Annex A · Mandate of the AI Office</h2>
 <p><strong>A.1 Purpose.</strong> The AI Office makes the framework work: methodology, inventory, reliable information and support for teams. If there is a risk of confusion with the <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener" title="European AI Office (European Commission)">European AI Office</a>, it is called [Corporate AI Office / AI Centre of Excellence] (30 §1.2).</p>
-<p><strong>A.2 Functions.</strong> Maintain the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) and the initiative register (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>); safeguard the methodology, templates and checklists; verify Lite <em>gates</em> in which it has not participated; consolidate measurement with management control; prepare information for the bodies; coordinate literacy and the regularisation of unauthorised use; lead C1 and C5; approve minor methodological and use policy exceptions (30 §7.4).</p>
+<p><strong>A.2 Functions.</strong> Maintain the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>) and the initiative register (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>); safeguard the methodology, templates and checklists; verify Lite <em>gates</em> in which it has not participated; consolidate measurement with management control; prepare information for the bodies; coordinate literacy and the regularisation of unauthorised use; lead C1 and C5; approve minor methodological and use policy exceptions (30 §7.4).</p>
 <p><strong>A.3 Composition and reporting line.</strong> Head of the Office, [position title], and [number] people for methodology, portfolio and measurement. It reports to [the chair of the AI Committee / a position that is not a regular sponsor].</p>
 <p><strong>A.4 Limit.</strong> The Office does not verify initiatives in whose design, build or operation it has participated (I-8); in that case, verification passes to the second line or the AI Auditor.</p>
 <hr />
 <h2 id="annex-b-ai-competences-of-the-board-committee"><span class="antetitulo">06</span>Annex B · AI competences of the board committee</h2>
 <p>Text to be incorporated into the rules of [the Audit / Risk / Technology Committee]. If there is no committee, the functions are exercised by the Board (30 §3.2).</p>
-<p><strong>B.1 Competences.</strong> In AI matters, [the Committee] is responsible for: (a) approving the annual AI audit plan and receiving its results; (b) receiving information on S1 incidents within 24 hours and on major and critical nonconformities; (c) resolving disagreements between the AI Committee and the second line; (d) deciding, by express delegation of the Board, on the exceptional acceptance of Critical residual risks within the approved appetite; (e) monitoring the independence of the AI auditors; (f) receiving each quarter the exceptions in force and the second-line report (<a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>); (g) approving corporate threshold exceptions when the Board delegates this to it.</p>
+<p><strong>B.1 Competences.</strong> In AI matters, [the Committee] is responsible for: (a) approving the annual AI audit plan and receiving its results; (b) receiving information on S1 incidents within 24 hours and on major and critical nonconformities; (c) resolving disagreements between the AI Committee and the second line; (d) deciding, by express delegation of the Board, on the exceptional acceptance of Critical residual risks within the approved appetite; (e) monitoring the independence of the AI auditors; (f) receiving each quarter the exceptions in force and the second-line report (<a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Template P42 &#183; Quarterly second-line report">P42</a>); (g) approving corporate threshold exceptions when the Board delegates this to it.</p>
 <p><strong>B.2 Functioning.</strong> A quarterly meeting with an AI item and an extraordinary meeting in the event of an S1 incident or a critical nonconformity if the chair so decides. The head of the AI Office, [the chief risk or compliance officer] and [the head of internal audit] attend without a vote.</p>
 <p><strong>B.3 Model agenda.</strong> High and Critical risks and concentrations · regulatory compliance and regulatory changes · incidents and major and critical nonconformities · audits and follow-up of findings · escalated matters · exceptions for the quarter (30 §3.2).</p>
 <hr />
 <h2 id="annex-c-model-appointment-of-the-head-of-ai"><span class="antetitulo">07</span>Annex C · Model appointment of the head of AI</h2>
-<p>Evidence for D1.01 (<a href="../11_SEVEN-G_Modelo_de_madurez.html">document 11</a>): a member of senior management with responsibility for the company's AI assigned in writing.</p>
+<p>Evidence for D1.01 (<a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>): a member of senior management with responsibility for the company's AI assigned in writing.</p>
 <blockquote>
 <p><strong>Appointment resolution.</strong> [The Board of Directors / The Chief Executive Officer] of [the Company], at its meeting of [date], resolves to appoint [full name], [position], as <strong>head of AI of [the Company]</strong>, with the following responsibilities: (1) to answer to [the Board / the Chief Executive Officer] for the application of the approved AI thesis, ambition per sphere and risk appetite; (2) [to chair the AI Committee / to propose its chair]; (3) to ensure that the AI Office has the resources to fulfil its mandate; (4) to present to the Board the quarterly pack and the C2 and C5 packs; (5) to promote segregation of duties and the independence of the second and third lines. The appointment does not confer the verification of <em>gates</em> or the acceptance of risks above the delegation matrix. Term: [indefinite / until date]. It is communicated to the organisation on [date].</p>
 </blockquote>
@@ -725,7 +736,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Capacity</th>
 <th>Deputy</th>
 <th>Date joined</th>
-<th>Conflict declaration (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>)</th>
+<th>Conflict declaration (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Template P41 &#183; Declarations of independence and conflicts of interest">P41</a>)</th>
 <th>Date left</th>
 </tr>
 </thead>
@@ -1136,6 +1147,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

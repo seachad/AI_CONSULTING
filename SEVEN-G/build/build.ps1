@@ -455,6 +455,30 @@ function SeccionFuentes($citadas, [string]$lang) {
   "<h2 id=""$(if ($en) { 'external-sources' } else { 'fuentes-externas' })"">$titulo</h2><p class=""fuentes-nota"">$nota</p><ul class=""fuentes-externas"">$($items -join '')</ul>"
 }
 
+# Texto del tooltip de cada código enlazado (D94): «Documento 21 · …», «Plantilla P12 · …», «Herramienta T17 · …», «Módulo M03 · …».
+# Documentos, plantillas y módulos: su título (primer «# » del Markdown). Herramientas: nombre en el catálogo del documento 03.
+function ObtenerTitulosReferencias([string]$lang) {
+  $tit = @{}
+  $rot = if ($lang -eq 'en') { @{ doc = 'Document'; plt = 'Template'; tool = 'Tool'; mod = 'Course module' } } else { @{ doc = 'Documento'; plt = 'Plantilla'; tool = 'Herramienta'; mod = 'Módulo del curso' } }
+  $dir = Join-Path $root "mds\$lang"
+  foreach ($f in (Get-ChildItem $dir -Recurse -File -Filter '*.md' | Where-Object { $_.FullName -notmatch '[\\/]_trabajo[\\/]' })) {
+    $clave = ([IO.Path]::GetFileNameWithoutExtension($f.Name) -split '_')[0]
+    if (-not $clave) { continue }
+    $h1 = Get-Content -LiteralPath $f.FullName -TotalCount 12 -Encoding UTF8 | Where-Object { $_ -match '^#\s+\S' } | Select-Object -First 1
+    if (-not $h1) { continue }
+    $titulo = ($h1 -replace '^#\s+', '' -replace '[*_`]', '').Trim()
+    $tipo = if ($clave -match '^P\d{2}$') { "$($rot.plt) $clave" } elseif ($clave -match '^M\d{2}$') { "$($rot.mod) $clave" } else { "$($rot.doc) $clave" }
+    $tit[$clave] = "$tipo · $titulo"
+  }
+  $cat = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -File -Filter '03_*.md' -ErrorAction SilentlyContinue | Select-Object -First 1
+  if ($cat) {
+    foreach ($fila in [regex]::Matches([IO.File]::ReadAllText($cat.FullName), '(?m)^\|\s*\*\*(T\d{2})\*\*\s*\|\s*([^|]+?)\s*\|')) {
+      $tit[$fila.Groups[1].Value] = "$($rot.tool) $($fila.Groups[1].Value) · " + ($fila.Groups[2].Value -replace '[*_`]', '').Trim()
+    }
+  }
+  return $tit
+}
+
 function EnlazarReferenciasMarkdown([string]$md, [hashtable]$map) {
   # Solo se enlazan las menciones en texto corrido. Nunca dentro de un enlace ya escrito (ni en su texto ni en su dirección), de una URL,
   # de código, de una etiqueta HTML o de un comentario: «plantillas/P01_…html» o «herramientas/T01_…» contienen el código y, si se
@@ -519,6 +543,15 @@ foreach ($lang in $Idiomas) {
     New-Item -ItemType Directory -Force $imgDst | Out-Null
     Copy-Item (Join-Path $imgSrc '*') $imgDst -Force
   }
+  # entrada ligera «Qué es SEVEN-G» (D91): página estática por idioma (build/entrada/<idioma>/index.html -> html/<idioma>/entrada/)
+  # con su hoja de estilos e imágenes comunes (build/entrada/*.css|png -> html/entrada/). Desde ella se pasa al documento 00.
+  $entSrc = Join-Path $root 'build\entrada'
+  if (Test-Path (Join-Path $entSrc "$lang\index.html")) {
+    $entDst = Join-Path $htmlDir 'entrada'; $entCom = Join-Path $root 'html\entrada'
+    New-Item -ItemType Directory -Force $entDst, $entCom | Out-Null
+    Copy-Item (Join-Path $entSrc "$lang\index.html") $entDst -Force
+    Get-ChildItem $entSrc -File | Copy-Item -Destination $entCom -Force
+  }
 
   $files = @(Get-ChildItem $mdsDir -Recurse -File -Filter $Filter | Where-Object Extension -eq '.md')
   $indiceMd = Nuevo-Indice $lang
@@ -546,6 +579,7 @@ foreach ($lang in $Idiomas) {
   $catalogo = @($catalogo | Sort-Object relMd)
 
   $mapaReferencias = ObtenerMapaReferencias $lang
+$titulosReferencias = ObtenerTitulosReferencias $lang
   $referencias = @(CargarReferencias)
 
   # Herramientas disponibles (carpeta herramientas/<código>_<nombre>/ con un HTML) y módulos que viven dentro de otra
@@ -663,7 +697,15 @@ foreach ($lang in $Idiomas) {
       $usados[$idFila] = 1
       "<tr id=""$idFila"">$($f.Groups[1].Value)$($f.Groups[2].Value)$($f.Groups[3].Value)"
     })
-    $body = [regex]::Replace($body, '<blockquote>(\s*<p><strong>(?:Aviso legal|Legal notice|Versión en revisión|Version under review))', '<blockquote class="aviso-legal">$1')
+    # los avisos van plegados en pantalla (una línea con su título; se despliegan al pulsar) y completos en el PDF (D93)
+    $body = [regex]::Replace($body, '<blockquote>(\s*<p><strong>(?:Aviso legal|Legal notice|Versión en revisión|Version under review|Titularidad|Ownership))', '<blockquote class="aviso-legal plegado">$1')
+    # todo enlace cuyo texto es solo un código (documento NN, Tnn, Pnn, Mnn) lleva un tooltip que dice adónde va (D94)
+    $body = [regex]::Replace($body, '<a href="([^"]+)">((?:documento?\s+)?(\d{2}|[TPM]\d{2}))</a>', {
+      param($a)
+      $t = $titulosReferencias[$a.Groups[3].Value]
+      if (-not $t) { return $a.Value }
+      "<a href=""$($a.Groups[1].Value)"" title=""$(Enc $t)"">$($a.Groups[2].Value)</a>"
+    }, 'IgnoreCase')
     $body = [regex]::Replace($body, '<!--\s*figura:\s*([\w-]+)\s*-->', {
       param($c)
       $ruta = $compDirs | ForEach-Object { Join-Path $_ "$($c.Groups[1].Value).html" } | Where-Object { Test-Path $_ } | Select-Object -First 1
@@ -826,6 +868,13 @@ foreach ($lang in $Idiomas) {
                   Replace('{{BODY}}', $body).
                   Replace('{{SCRIPTS}}', $(if ($script:hayMermaid) { $mermaidScript } else { '' })).
                   Replace('{{GENERATED}}', (Get-Date -Format 'dd-MM-yyyy'))
+    # tooltips también en los enlaces de código que llegan después del cuerpo: componentes, recuadro «Lo esencial», zona de descargas (D94)
+    $html = [regex]::Replace($html, '<a href="([^"]+)">((?:documento?\s+)?(\d{2}|[TPM]\d{2}))</a>', {
+      param($a)
+      $t = $titulosReferencias[$a.Groups[3].Value]
+      if (-not $t) { return $a.Value }
+      "<a href=""$($a.Groups[1].Value)"" title=""$(Enc $t)"">$($a.Groups[2].Value)</a>"
+    }, 'IgnoreCase')
     Set-ContentUtf8ConReintento -Path $htmlOut -Value $html
     Write-Host "HTML  [$lang] $rel"
 

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/00_SPHERES_Que_es_y_para_que_sirve.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/00_SPHERES_Que_es_y_para_que_sirve.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/00_SPHERES_Que_es_y_para_que_sirve.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#what-spheres-is"><span>01</span>What SPHERES is</a></li><li><a href="#the-problem-it-solves"><span>02</span>The problem it solves</a></li><li><a href="#the-nine-spheres-at-a-glance"><span>03</span>The nine spheres at a glance</a></li><li><a href="#the-three-ambition-levels-at-a-glance"><span>04</span>The three ambition levels at a glance</a></li><li><a href="#how-the-map-is-read"><span>05</span>How the map is read</a></li><li><a href="#how-it-helps"><span>06</span>How it helps</a></li><li><a href="#a-complete-example"><span>07</span>A complete example</a></li><li><a href="#relationship-with-seven-g"><span>08</span>Relationship with SEVEN-G</a></li><li><a href="#who-it-is-for"><span>09</span>Who it is for</a></li><li><a href="#how-to-use-this-library"><span>10</span>How to use this library</a></li><li><a href="#principles-of-use"><span>11</span>Principles of use</a></li><li><a href="#licence-attribution-and-status"><span>12</span>Licence, attribution and status</a></li><li><a href="#version-control"><span>13</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Version under review: please do not circulate.</strong> The current state of SPHERES (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.</p>
 </blockquote>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SPHERES is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act or the GDPR) and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date. <strong>Each organisation that uses SPHERES is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="what-spheres-is"><span class="antetitulo">01</span>What SPHERES is</h2>
@@ -468,8 +479,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Why it matters.</strong> Without a common language, each area talks about AI in its own way: technology talks about models, finance about savings, the business about use cases and compliance about risks. SPHERES gives everyone the same map, so that the board can compare bets, detect gaps and decide where to invest without having to understand how each system works.</p>
 </blockquote>
 <p>SPHERES is a <strong>supporting methodology of SEVEN-G</strong>, Fernando García Varela's framework for value, governance and transformation with AI. It constitutes its component A (impact map). This library explains the method in detail and with examples; the operating rules, the indicators with a formula and the tools are in SEVEN-G (section 8).</p>
-<blockquote>
-<p><strong>Ownership and reuse.</strong> The intellectual property of SPHERES belongs to its author, <strong>Fernando García Varela</strong>. It is offered as an open reference framework, in development, for use, adaptation and learning; it is not released as a final commercial deliverable or a closed product for clients. Its reuse and adaptation by any organisation are subject to SEVEN-G's content and code licence (<strong><a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">CC BY 4.0</a></strong> for content, <strong>MIT</strong> for code; SEVEN-G document 93), which requires attribution and an indication of any changes made. Using SPHERES, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over its base to any client, supplier or third party, except under a specific written agreement covering proprietary developments.</p>
+<blockquote class="aviso-legal plegado">
+<p><strong>Ownership and reuse.</strong> The intellectual property of SPHERES belongs to its author, <strong>Fernando García Varela</strong>. It is offered as an open reference framework, in development, for use, adaptation and learning; it is not released as a final commercial deliverable or a closed product for clients. Its reuse and adaptation by any organisation are subject to SEVEN-G's content and code licence (<strong>CC BY 4.0</strong> for content, <strong>MIT</strong> for code; SEVEN-G document 93), which requires attribution and an indication of any changes made. Using SPHERES, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over its base to any client, supplier or third party, except under a specific written agreement covering proprietary developments.</p>
 </blockquote>
 <hr />
 <h2 id="the-problem-it-solves"><span class="antetitulo">02</span>The problem it solves</h2>
@@ -746,7 +757,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p>Investment, uncertainty and organisational resistance <strong>increase</strong> from Optimise to Transform. That is why each level requires different decision criteria: measuring a Transform bet against the payback period of an automation kills it before it can demonstrate anything. Document 01 develops the three levels in detail.</p>
-<p>Spheres 08 and 09 <strong>are not assessed with these three levels</strong>, because they do not generate value in themselves. They are assessed by dimensions with four grades (Absent, Basic, Systematic and Advanced), as explained in <a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">document 04</a>.</p>
+<p>Spheres 08 and 09 <strong>are not assessed with these three levels</strong>, because they do not generate value in themselves. They are assessed by dimensions with four grades (Absent, Basic, Systematic and Advanced), as explained in <a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Document 04 &#183; Regulation and AI governance">document 04</a>.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> The ambition level is the question that distinguishes a company that <strong>is transforming</strong> from one that <strong>is only becoming more efficient</strong>. Both are legitimate, but they are not the same thing, they do not cost the same and they are not governed in the same way. Calling an automation with a good narrative a transformation is one of the most expensive and most common mistakes.</p>
 </blockquote>
@@ -1028,7 +1039,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>SEVEN-G tools that use the map: the initiative register (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html">T01</a>), where each initiative carries its sphere and its level, and the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html">T17</a>), which shows the portfolio heat map.</p>
+<p>SEVEN-G tools that use the map: the initiative register (<a href="../../../SEVEN-G/herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>), where each initiative carries its sphere and its level, and the board AI dashboard (<a href="../../../SEVEN-G/herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>), which shows the portfolio heat map.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> Separating the explanation from the rule avoids two risks: that the board receives an operating manual it does not need to read, and that the AI office applies criteria different from those explained to the board. Both use the same spheres, the same levels and the same names.</p>
 </blockquote>
@@ -1046,7 +1057,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Directors and chair</strong></td>
 <td>A language for overseeing AI without going into technology, and the questions worth asking.</td>
-<td>This document and <a href="05_SPHERES_Conversacion_con_el_consejo.html">document 05</a>.</td>
+<td>This document and <a href="05_SPHERES_Conversacion_con_el_consejo.html" title="Document 05 &#183; Conversation with the board">document 05</a>.</td>
 </tr>
 <tr>
 <td><strong>Senior management</strong></td>
@@ -1087,32 +1098,32 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html">document 00</a> · What SPHERES is and how it helps</strong></td>
+<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SPHERES is and how it helps">document 00</a> · What SPHERES is and how it helps</strong></td>
 <td>Overview of the methodology, the problem it solves and a complete example.</td>
 <td>First.</td>
 </tr>
 <tr>
-<td><strong><a href="01_SPHERES_Niveles_de_ambicion.html">document 01</a> · Ambition levels</strong></td>
+<td><strong><a href="01_SPHERES_Niveles_de_ambicion.html" title="Document 01 &#183; Ambition levels">document 01</a> · Ambition levels</strong></td>
 <td>Optimise, Augment and Transform in detail, how to classify and common mistakes.</td>
 <td>Before classifying any initiative.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html">document 02</a> · Spheres where value is created</strong></td>
+<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html" title="Document 02 &#183; Spheres where value is created">document 02</a> · Spheres where value is created</strong></td>
 <td>Customer, Product and service, People and Operations, with examples by level.</td>
 <td>To diagnose opportunities.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html">document 03</a> · Enabling spheres</strong></td>
+<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html" title="Document 03 &#183; Enabling spheres">document 03</a> · Enabling spheres</strong></td>
 <td>Data, Knowledge and Decision: why they constrain everything else.</td>
 <td>Before setting a high ambition in any value sphere.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">document 04</a> · Regulation and AI governance</strong></td>
+<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Document 04 &#183; Regulation and AI governance">document 04</a> · Regulation and AI governance</strong></td>
 <td>Spheres 08 and 09, their dimensions and their grades.</td>
 <td>To assess boundaries and governance capability.</td>
 </tr>
 <tr>
-<td><strong><a href="05_SPHERES_Conversacion_con_el_consejo.html">document 05</a> · Conversation with the board</strong></td>
+<td><strong><a href="05_SPHERES_Conversacion_con_el_consejo.html" title="Document 05 &#183; Conversation with the board">document 05</a> · Conversation with the board</strong></td>
 <td>Sixty-minute script, question bank and first ninety days.</td>
 <td>To prepare the session with the board.</td>
 </tr>
@@ -1427,6 +1438,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

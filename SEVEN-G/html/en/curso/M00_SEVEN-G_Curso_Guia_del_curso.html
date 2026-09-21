@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/curso/M00_SEVEN-G_Curso_Guia_del_curso.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../pdf/es/curso/M00_SEVEN-G_Curso_Guia_del_curso.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/curso/M00_SEVEN-G_Curso_Guia_del_curso.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a><a class="dz-item" href="../../../pptx/en/SEVEN-G_Curso_Empresa.pptx" download><span class="dz-tipo">PPTX</span><b>Course for the company</b></a><a class="dz-item" href="../../../pdf/en/curso/SEVEN-G_Curso_Empresa.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Course for the company</b></a><a class="dz-item" href="../../../pptx/en/SEVEN-G_Curso_Consultor.pptx" download><span class="dz-tipo">PPTX</span><b>Course for the consultant</b></a><a class="dz-item" href="../../../pdf/en/curso/SEVEN-G_Curso_Consultor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Course for the consultant</b></a><a class="dz-item" href="../../../pptx/en/SEVEN-G_Curso_Partner.pptx" download><span class="dz-tipo">PPTX</span><b>Course for the partner</b></a><a class="dz-item" href="../../../pdf/en/curso/SEVEN-G_Curso_Partner.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Course for the partner</b></a><a class="dz-item" href="../../../pdf/en/curso/SEVEN-G_Curso_completo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>The nine modules (PDF)</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#what-this-course-is-for"><span>01</span>What this course is for</a></li><li><a href="#what-each-module-looks-like"><span>02</span>What each module looks like</a></li><li><a href="#the-modules"><span>03</span>The modules</a></li><li><a href="#paths-by-profile"><span>04</span>Paths by profile</a></li><li><a href="#before-starting"><span>05</span>Before starting</a></li><li><a href="#related-documents"><span>06</span>Related documents</a></li><li><a href="#version-control"><span>07</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="what-this-course-is-for"><span class="antetitulo">01</span>What this course is for</h2>
@@ -469,7 +480,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>There is no exam, mark or certificate: SEVEN-G has no official certification (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>, section 7).</p>
+<p>There is no exam, mark or certificate: SEVEN-G has no official certification (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>, section 7).</p>
 <p><strong>Three slide courses, depending on who you are.</strong> All three explain what SEVEN-G is, the phases and their gates, what is filled in at each phase, how that fills the initiative register's funnel all the way to the board dashboard —with annotated images of the register, the funnel and the dashboard— and two worked examples (one initiative that stops and one that reaches production). Each one then adds what is specific to its audience:</p>
 <div class="tabla"><table>
 <thead>
@@ -495,13 +506,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Partner</strong></td>
-<td>A company building SEVEN-G into its own methodology or product: what the licence allows and requires, adoption by components, technical integration and how to name it. There is no partner programme and no &quot;official partner&quot; status (<a href="../91_SEVEN-G_Guia_para_consultores.html">document 91</a>, section 6.2).</td>
+<td>A company building SEVEN-G into its own methodology or product: what the licence allows and requires, adoption by components, technical integration and how to name it. There is no partner programme and no &quot;official partner&quot; status (<a href="../91_SEVEN-G_Guia_para_consultores.html" title="Document 91 &#183; Guide for consultants and support models">document 91</a>, section 6.2).</td>
 <td><a href="../../../pptx/en/SEVEN-G_Curso_Partner.pptx">Download</a></td>
 <td><a href="../../../pdf/en/curso/SEVEN-G_Curso_Partner.pdf">Open</a></td>
 </tr>
 </tbody>
 </table></div>
-<p>The presentations may be adapted and delivered with attribution (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>). The nine modules on this page and the guide are also available as a single <a href="../../../pdf/en/curso/SEVEN-G_Curso_completo.pdf">PDF to read or print</a>; each module remains available separately, in HTML and PDF.</p>
+<p>The presentations may be adapted and delivered with attribution (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>). The nine modules on this page and the guide are also available as a single <a href="../../../pdf/en/curso/SEVEN-G_Curso_completo.pdf">PDF to read or print</a>; each module remains available separately, in HTML and PDF.</p>
 <hr />
 <h2 id="the-modules"><span class="antetitulo">03</span>The modules</h2>
 <div class="tabla"><table>
@@ -521,42 +532,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><a href="M02_SEVEN-G_Curso_Que_es_y_que_resuelve.html">02 · What SEVEN-G is and what problem it solves</a></td>
 <td>The problem, the two levels of the framework and its four components.</td>
-<td><a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">document 00</a> · <a href="../04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html">document 04</a></td>
+<td><a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a> · <a href="../04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a></td>
 </tr>
 <tr>
 <td><a href="M03_SEVEN-G_Curso_Esferas_y_ambicion.html">03 · Spheres and ambition levels</a></td>
 <td>Where AI creates value and with what ambition.</td>
-<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a> · SPHERES</td>
+<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a> · SPHERES</td>
 </tr>
 <tr>
 <td><a href="M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.html">04 · Lifecycle, gates and funnel</a></td>
 <td>Phases, gates, possible outcomes and the portfolio as a funnel.</td>
-<td><a href="../01_SEVEN-G_Metodologia_fundacional.html">document 01</a> · <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> · <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 </tr>
 <tr>
 <td><a href="M05_SEVEN-G_Curso_Gobierno_y_riesgo.html">05 · Governance and risk</a></td>
 <td>Who decides, who verifies and how a risk is accepted.</td>
-<td><a href="../30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> · <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> · <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></td>
 </tr>
 <tr>
 <td><a href="M06_SEVEN-G_Curso_Medir_el_valor.html">06 · Measuring value</a></td>
 <td>Measurement rules, amount statuses and economic criterion.</td>
-<td><a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a> · <a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></td>
+<td><a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a> · <a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a></td>
 </tr>
 <tr>
 <td><a href="M07_SEVEN-G_Curso_Transformacion_o_eficiencia.html">07 · Transformation or efficiency</a></td>
 <td>The transformation index and its profiles.</td>
-<td><a href="../12_SEVEN-G_Indice_de_transformacion.html">document 12</a> · <a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
+<td><a href="../12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a> · <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></td>
 </tr>
 <tr>
 <td><a href="M08_SEVEN-G_Curso_El_consejo.html">08 · The board</a></td>
 <td>What it receives, what it decides and how decisions are followed up.</td>
-<td><a href="../60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a> · <a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">document 62</a> · <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a> · <a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Document 62 &#183; Recommendations and decisions register">document 62</a> · <a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
 </tr>
 <tr>
 <td><a href="M09_SEVEN-G_Curso_Implantar_por_capas.html">09 · Implementing in layers</a></td>
 <td>Scope, minimum path, 90-day plan and what is mandatory.</td>
-<td><a href="../90_SEVEN-G_Guia_de_implantacion.html">document 90</a> · <a href="../94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">document 94</a></td>
+<td><a href="../90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a> · <a href="../94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html" title="Document 94 &#183; Obligation matrix and layered reading">document 94</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -598,7 +609,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Consultant</strong></td>
-<td>All, and then <a href="../91_SEVEN-G_Guia_para_consultores.html">document 91</a></td>
+<td>All, and then <a href="../91_SEVEN-G_Guia_para_consultores.html" title="Document 91 &#183; Guide for consultants and support models">document 91</a></td>
 <td>4 hours</td>
 </tr>
 </tbody>
@@ -606,9 +617,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="before-starting"><span class="antetitulo">05</span>Before starting</h2>
 <ul>
-<li>Open the <strong>example initiative register</strong> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) and the <strong>example board dashboard</strong> (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>) in another tab: almost all the exercises use them. The data is fictitious and never leaves the browser.</li>
-<li>Keep the <strong>glossary</strong> (<a href="../02_SEVEN-G_Glosario_y_convenciones.html">document 02</a>) to hand for terms and codes.</li>
-<li>If you are going to use the course for internal training, you may adapt it: the licence allows it, crediting the author (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>).</li>
+<li>Open the <strong>example initiative register</strong> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) and the <strong>example board dashboard</strong> (<a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) in another tab: almost all the exercises use them. The data is fictitious and never leaves the browser.</li>
+<li>Keep the <strong>glossary</strong> (<a href="../02_SEVEN-G_Glosario_y_convenciones.html" title="Document 02 &#183; SEVEN-G glossary and conventions">document 02</a>) to hand for terms and codes.</li>
+<li>If you are going to use the course for internal training, you may adapt it: the licence allows it, crediting the author (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>).</li>
 </ul>
 <hr />
 <h2 id="related-documents"><span class="antetitulo">06</span>Related documents</h2>
@@ -889,6 +900,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

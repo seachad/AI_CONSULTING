@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,12 +439,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/01_SPHERES_Niveles_de_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/01_SPHERES_Niveles_de_ambicion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto"><span>01</span>Objeto</a></li><li><a href="#que-es-un-nivel-de-ambicion"><span>02</span>Qué es un nivel de ambición</a></li><li><a href="#optimizar"><span>03</span>Optimizar</a></li><li><a href="#aumentar"><span>04</span>Aumentar</a></li><li><a href="#transformar"><span>05</span>Transformar</a></li><li><a href="#comparacion-de-los-tres-niveles"><span>06</span>Comparación de los tres niveles</a></li><li><a href="#no-es-una-escalera"><span>07</span>No es una escalera</a></li><li><a href="#como-clasificar-una-iniciativa"><span>08</span>Cómo clasificar una iniciativa</a></li><li><a href="#casos-dudosos"><span>09</span>Casos dudosos</a></li><li><a href="#la-ambicion-de-una-esfera-y-el-equilibrio-de-la-cartera"><span>10</span>La ambición de una esfera y el equilibrio de la cartera</a></li><li><a href="#errores-frecuentes"><span>11</span>Errores frecuentes</a></li><li><a href="#documentos-relacionados"><span>12</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SPHERES es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. <strong>Cada organización que use SPHERES es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto"><span class="antetitulo">01</span>Objeto</h2>
 <p>Este documento explica los <strong>tres niveles de ambición</strong> de SPHERES: qué significa cada uno, qué cambia en la organización, dónde está su valor, qué riesgos tiene, cómo se decide y cómo se reconoce con evidencia. También explica cómo clasificar una iniciativa y cuáles son los errores más frecuentes.</p>
-<p>Los niveles se aplican a las esferas <strong>01 a 07</strong>. Las esferas 08 y 09 se evalúan con grados propios (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">documento 04</a>).</p>
+<p>Los niveles se aplican a las esferas <strong>01 a 07</strong>. Las esferas 08 y 09 se evalúan con grados propios (<a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Documento 04 &#183; Regulaci&#243;n y gobierno de la IA">documento 04</a>).</p>
 <hr />
 <h2 id="que-es-un-nivel-de-ambicion"><span class="antetitulo">02</span>Qué es un nivel de ambición</h2>
 <p>Un nivel de ambición describe <strong>lo que una iniciativa de IA cambia en el negocio</strong>. No describe la tecnología que usa, lo que cuesta ni lo novedosa que parece.</p>
@@ -1075,7 +1086,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Fijar la ambición de una esfera sin mirar las habilitadoras.</td>
 <td>Promesas que los datos o las reglas de decisión no sostienen.</td>
-<td>Leer el <a href="03_SPHERES_Esferas_habilitadoras.html">documento 03</a> antes de fijar una ambición alta.</td>
+<td>Leer el <a href="03_SPHERES_Esferas_habilitadoras.html" title="Documento 03 &#183; Esferas habilitadoras">documento 03</a> antes de fijar una ambición alta.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1090,19 +1101,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html">documento 00</a> · Qué es SPHERES y para qué sirve</strong></td>
+<td><strong><a href="00_SPHERES_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SPHERES y para qu&#233; sirve">documento 00</a> · Qué es SPHERES y para qué sirve</strong></td>
 <td>Presentación del mapa y de los niveles.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html">documento 02</a> · Esferas donde se genera valor</strong></td>
+<td><strong><a href="02_SPHERES_Esferas_donde_se_genera_valor.html" title="Documento 02 &#183; Esferas donde se genera valor">documento 02</a> · Esferas donde se genera valor</strong></td>
 <td>Ejemplos por nivel en Cliente, Producto y servicio, Personas y Operaciones.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html">documento 03</a> · Esferas habilitadoras</strong></td>
+<td><strong><a href="03_SPHERES_Esferas_habilitadoras.html" title="Documento 03 &#183; Esferas habilitadoras">documento 03</a> · Esferas habilitadoras</strong></td>
 <td>Ejemplos por nivel en Datos, Conocimiento y Decisión.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html">documento 04</a> · Regulación y gobierno de la IA</strong></td>
+<td><strong><a href="04_SPHERES_Regulacion_y_gobierno_de_la_IA.html" title="Documento 04 &#183; Regulaci&#243;n y gobierno de la IA">documento 04</a> · Regulación y gobierno de la IA</strong></td>
 <td>Por qué las esferas 08 y 09 no usan niveles de ambición.</td>
 </tr>
 <tr>
@@ -1370,6 +1381,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

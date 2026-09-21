@@ -29,6 +29,11 @@ $repo = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $raiz = Join-Path $repo 'SEVEN-G'
 
 function Texto([string]$html) { ([Net.WebUtility]::HtmlDecode(([regex]::Replace($html, '<[^>]+>', '')))).Trim() -replace '\s+', ' ' }
+# medición de visitas (D90): SEVEN-G/build/analitica.json; sin fichero o sin websiteId, codigos.js no mide nada
+$umami = 'null'
+$ficheroAnalitica = Join-Path $PSScriptRoot 'analitica.json'
+if (Test-Path $ficheroAnalitica) { $cfgA = Get-Content $ficheroAnalitica -Raw -Encoding utf8 | ConvertFrom-Json; if ($cfgA.umami) { $umami = $cfgA.umami | ConvertTo-Json -Compress } }
+
 function Recortar([string]$s, [int]$n = 130) { if ($s.Length -le $n) { $s } else { $s.Substring(0, $n - 1).TrimEnd() + '…' } }
 
 foreach ($lang in $Idiomas) {
@@ -293,8 +298,17 @@ foreach ($lang in $Idiomas) {
   window.sevengIrCodigo = { buscar: buscar, iniciar: iniciar, lang: DATOS.lang };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();
+/* Medición agregada de visitas con Umami (D90): sin cookies ni datos personales; solo en los dominios públicos indicados. */
+(function () {
+  var U = __UMAMI__;
+  if (!U || !U.websiteId || !U.src || document.getElementById('umami-js')) return;
+  if ((U.dominios || []).indexOf(location.hostname) < 0) return;
+  var s = document.createElement('script'); s.id = 'umami-js'; s.defer = true; s.src = U.src;
+  s.setAttribute('data-website-id', U.websiteId); s.setAttribute('data-domains', U.dominios.join(',')); s.setAttribute('data-do-not-track', 'true');
+  document.head.appendChild(s);
+})();
 '@
-  $js = $js.Replace('__DATOS__', $datos).Replace('__TEXTOS__', $textos)
+  $js = $js.Replace('__DATOS__', $datos).Replace('__TEXTOS__', $textos).Replace('__UMAMI__', $umami)
   $salida = Join-Path $htmlDir 'codigos.js'
   [IO.File]::WriteAllText($salida, $js, [Text.UTF8Encoding]::new($false))
   Write-Host "codigos [$lang]: $($exactos.Count) códigos y $($patrones.Count) patrones -> $salida"

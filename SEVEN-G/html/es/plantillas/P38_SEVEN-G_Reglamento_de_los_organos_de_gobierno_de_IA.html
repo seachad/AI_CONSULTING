@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,11 +439,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#asignacion-de-funciones-a-organos-existentes"><span>03</span>Asignación de funciones a órganos existentes</a></li><li><a href="#reglamento-del-comite-de-ia"><span>04</span>Reglamento del comité de IA</a></li><li><a href="#anexo-a-mandato-de-la-oficina-de-ia"><span>05</span>Anexo A · Mandato de la oficina de IA</a></li><li><a href="#anexo-b-competencias-de-ia-de-la-comision-delegada"><span>06</span>Anexo B · Competencias de IA de la comisión delegada</a></li><li><a href="#anexo-c-modelo-de-nombramiento-del-responsable-de-ia"><span>07</span>Anexo C · Modelo de nombramiento del responsable de IA</a></li><li><a href="#registro-de-miembros-y-nombramientos"><span>08</span>Registro de miembros y nombramientos</a></li><li><a href="#criterios-de-calidad"><span>09</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>10</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>11</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
-<p><strong>Por qué importa.</strong> Los mandatos tipo del <a href="../30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> dicen qué hace cada órgano, pero no bastan para que un órgano funcione: hace falta saber quién convoca, cuándo hay quórum, cómo se vota, quién se abstiene y dónde queda cada acuerdo. Sin un reglamento aprobado, las decisiones de <em>gate</em>, las aceptaciones de riesgo y las excepciones pueden impugnarse por falta de competencia o de forma, y la madurez D1 no puede superar el nivel 2 porque falta la evidencia de un mandato escrito (11, D1.03 y D1.07).</p>
+<p><strong>Por qué importa.</strong> Los mandatos tipo del <a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a> dicen qué hace cada órgano, pero no bastan para que un órgano funcione: hace falta saber quién convoca, cuándo hay quórum, cómo se vota, quién se abstiene y dónde queda cada acuerdo. Sin un reglamento aprobado, las decisiones de <em>gate</em>, las aceptaciones de riesgo y las excepciones pueden impugnarse por falta de competencia o de forma, y la madurez D1 no puede superar el nivel 2 porque falta la evidencia de un mandato escrito (11, D1.03 y D1.07).</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
 <div class="tabla"><table>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas: alta de órganos y personas para validar decisor y verificador (30 §10, paso 5).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · Registro de iniciativas: alta de órganos y personas para validar decisor y verificador (30 §10, paso 5).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -513,7 +524,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Órgano que aprueba y fecha</td>
 <td></td>
-<td>Referencia del acta (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>).</td>
+<td>Referencia del acta (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a>).</td>
 </tr>
 <tr>
 <td>Sustituye a</td>
@@ -528,7 +539,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Documentos que desarrolla</td>
 <td></td>
-<td>Política corporativa de IA (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) y matriz de delegación aprobada en C2.</td>
+<td>Política corporativa de IA (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>) y matriz de delegación aprobada en C2.</td>
 </tr>
 </tbody>
 </table></div>
@@ -595,8 +606,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Cada miembro designa un suplente de su mismo ámbito, que se comunica por escrito a la secretaría.</li>
 </ol>
 <p><strong>Artículo 4. Presidencia.</strong> Preside el Comité [cargo], miembro de la alta dirección con autoridad sobre la cartera. No debería presidirlo quien patrocine la mayor parte de la cartera. En su ausencia le sustituye [suplente]. La presidencia tiene voto de calidad.</p>
-<p><strong>Artículo 5. Secretaría.</strong> El secretario convoca por orden de la presidencia, prepara la documentación, levanta acta, registra las decisiones de <em>gate</em> en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, custodia los registros de conflictos y excepciones y mantiene el seguimiento de acuerdos.</p>
-<p><strong>Artículo 6. Competencias.</strong> Corresponde al Comité, conforme a la matriz de delegación de [la Compañía] (<a href="../30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7):</p>
+<p><strong>Artículo 5. Secretaría.</strong> El secretario convoca por orden de la presidencia, prepara la documentación, levanta acta, registra las decisiones de <em>gate</em> en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>, custodia los registros de conflictos y excepciones y mantiene el seguimiento de acuerdos.</p>
+<p><strong>Artículo 6. Competencias.</strong> Corresponde al Comité, conforme a la matriz de delegación de [la Compañía] (<a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a> §7):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -644,32 +655,32 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <p><strong>Artículo 7. Límites y elevación.</strong> El Comité no aprueba la tesis de IA, el apetito de riesgo, la política corporativa, las iniciativas de Transformar en G2 ni su escalado en G7, ni acepta riesgos residuales Críticos. Eleva al Consejo o a [la Comisión] lo que supere su delegación y, en todo caso, las situaciones de 30 §8.2 que lo requieran. Ninguna práctica prohibida por el artículo 5 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a> es aceptable por ningún órgano.</p>
-<p><strong>Artículo 8. Convocatoria.</strong> La secretaría convoca las sesiones ordinarias con al menos [cinco] días hábiles de antelación, con orden del día y documentación (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>). Las extraordinarias, por <em>gates</em> urgentes o incidentes S1, pueden convocarse con [24 horas] por cualquier medio que deje constancia.</p>
+<p><strong>Artículo 8. Convocatoria.</strong> La secretaría convoca las sesiones ordinarias con al menos [cinco] días hábiles de antelación, con orden del día y documentación (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a>). Las extraordinarias, por <em>gates</em> urgentes o incidentes S1, pueden convocarse con [24 horas] por cualquier medio que deje constancia.</p>
 <p><strong>Artículo 9. Quórum.</strong> El Comité queda válidamente constituido con la mayoría de los miembros con voto, incluida la presidencia o su suplente, y al menos un representante de la segunda línea. Sin segunda línea presente no se deciden G3, G5, aceptaciones de riesgo ni excepciones. Quien deba abstenerse en un punto no computa para el quórum de ese punto.</p>
 <p><strong>Artículo 10. Deliberación y acuerdos.</strong> Los acuerdos se adoptan por consenso; si no lo hay, por mayoría de votos presentes, con voto de calidad de la presidencia. Si la segunda línea deniega su conformidad en G3, G5, una aceptación de riesgo o una excepción, el Comité no puede decidir Continuar ni Continuar con condiciones: puede decidir Iterar, Pivotar o Parar, o elevar el desacuerdo a [la Comisión] (30 §8.3).</p>
 <p><strong>Artículo 11. Decisión por escrito.</strong> Los <em>gates</em> sin debate pueden decidirse por escrito, con las mismas reglas de quórum, conformidad y abstención. Cualquier miembro con voto puede pedir que el asunto se trate en sesión.</p>
-<p><strong>Artículo 12. Conflictos de interés y abstención.</strong> Los miembros declaran sus conflictos al incorporarse y cada año (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>), y al inicio de cada sesión respecto de los puntos del orden del día. Quien tenga rol de patrocinio o construcción en una iniciativa se abstiene en sus decisiones (30, I-6). Quien verifica un <em>gate</em> no participa en su decisión (I-7). Quien propone una excepción no la aprueba (I-9). La abstención consta en acta y en <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</p>
-<p><strong>Artículo 13. Actas y registro.</strong> De cada sesión se levanta acta con asistentes, quórum, conflictos, deliberación resumida y acuerdos numerados (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>). El acta se aprueba en la misma sesión o en la siguiente. Cada decisión de <em>gate</em> se registra en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>; cada excepción, en el registro de <a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a>.</p>
+<p><strong>Artículo 12. Conflictos de interés y abstención.</strong> Los miembros declaran sus conflictos al incorporarse y cada año (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a>), y al inicio de cada sesión respecto de los puntos del orden del día. Quien tenga rol de patrocinio o construcción en una iniciativa se abstiene en sus decisiones (30, I-6). Quien verifica un <em>gate</em> no participa en su decisión (I-7). Quien propone una excepción no la aprueba (I-9). La abstención consta en acta y en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</p>
+<p><strong>Artículo 13. Actas y registro.</strong> De cada sesión se levanta acta con asistentes, quórum, conflictos, deliberación resumida y acuerdos numerados (<a href="P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Plantilla P39 &#183; Orden del d&#237;a y acta de &#243;rgano de gobierno">P39</a>). El acta se aprueba en la misma sesión o en la siguiente. Cada decisión de <em>gate</em> se registra en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a> con <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>; cada excepción, en el registro de <a href="P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a>.</p>
 <p><strong>Artículo 14. Periodicidad.</strong> El Comité se reúne mensualmente según el calendario anual que aprueba en su primera sesión del ejercicio, y en sesión extraordinaria cuando lo exijan <em>gates</em> urgentes o incidentes S1.</p>
-<p><strong>Artículo 15. Información al Consejo.</strong> El Comité informa a [la Comisión] trimestralmente de riesgos Altos y Críticos, incidentes, no conformidades, excepciones vigentes y asuntos elevados, y al Consejo en el paquete trimestral (<a href="../60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>).</p>
+<p><strong>Artículo 15. Información al Consejo.</strong> El Comité informa a [la Comisión] trimestralmente de riesgos Altos y Críticos, incidentes, no conformidades, excepciones vigentes y asuntos elevados, y al Consejo en el paquete trimestral (<a href="../60_SEVEN-G_Paquete_para_el_consejo.html" title="Documento 60 &#183; Paquete para el consejo">documento 60</a>).</p>
 <p><strong>Artículo 16. Evaluación anual.</strong> El Comité evalúa su eficacia una vez al año, en C5, y aprueba un plan de mejora con responsables y plazos (11, D1.12).</p>
 <p><strong>Artículo 17. Confidencialidad.</strong> Los miembros e invitados guardan reserva sobre las deliberaciones y la información recibida.</p>
 <p><strong>Artículo 18. Modificación y entrada en vigor.</strong> Este reglamento se modifica a propuesta de la presidencia o de la Oficina de IA, con informe de la segunda línea, y entra en vigor el [fecha].</p>
 <hr />
 <h2 id="anexo-a-mandato-de-la-oficina-de-ia"><span class="antetitulo">05</span>Anexo A · Mandato de la oficina de IA</h2>
 <p><strong>A.1 Objeto.</strong> La Oficina de IA hace que el marco funcione: metodología, inventario, información fiable y soporte a los equipos. Si existe riesgo de confusión con la <a class="ref-ext" href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener" title="Oficina Europea de IA (Comisi&#243;n Europea)">Oficina Europea de IA</a>, se denomina [Oficina corporativa de IA / Centro de excelencia de IA] (30 §1.2).</p>
-<p><strong>A.2 Funciones.</strong> Mantener el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) y el registro de iniciativas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>); custodiar metodología, plantillas y listas de verificación; verificar los <em>gates</em> Lite en los que no haya participado; consolidar la medición con control de gestión; preparar la información de los órganos; coordinar la alfabetización y la regularización del uso no autorizado; liderar C1 y C5; aprobar las excepciones metodológicas menores y de política de uso (30 §7.4).</p>
+<p><strong>A.2 Funciones.</strong> Mantener el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>) y el registro de iniciativas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>); custodiar metodología, plantillas y listas de verificación; verificar los <em>gates</em> Lite en los que no haya participado; consolidar la medición con control de gestión; preparar la información de los órganos; coordinar la alfabetización y la regularización del uso no autorizado; liderar C1 y C5; aprobar las excepciones metodológicas menores y de política de uso (30 §7.4).</p>
 <p><strong>A.3 Composición y dependencia.</strong> Responsable de la Oficina, [nombre del cargo], y [número] personas de metodología, cartera y medición. Depende de [la presidencia del Comité de IA / cargo que no sea patrocinador habitual].</p>
 <p><strong>A.4 Límite.</strong> La Oficina no verifica iniciativas en cuyo diseño, construcción u operación haya participado (I-8); en ese caso la verificación pasa a la segunda línea o al auditor de IA.</p>
 <hr />
 <h2 id="anexo-b-competencias-de-ia-de-la-comision-delegada"><span class="antetitulo">06</span>Anexo B · Competencias de IA de la comisión delegada</h2>
 <p>Texto para incorporar al reglamento de [la Comisión de Auditoría / Riesgos / Tecnología]. Si no existe comisión, las funciones las ejerce el Consejo (30 §3.2).</p>
-<p><strong>B.1 Competencias.</strong> Corresponde a [la Comisión] en materia de IA: (a) aprobar el plan anual de auditoría de IA y recibir sus resultados; (b) recibir información de incidentes S1 en 24 horas y de no conformidades mayores y críticas; (c) resolver los desacuerdos entre el Comité de IA y la segunda línea; (d) decidir, por delegación expresa del Consejo, la aceptación excepcional de riesgos residuales Críticos dentro del apetito aprobado; (e) vigilar la independencia de los auditores de IA; (f) recibir cada trimestre las excepciones vigentes y el informe de la segunda línea (<a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>); (g) aprobar las excepciones de umbral corporativo cuando el Consejo se lo delegue.</p>
+<p><strong>B.1 Competencias.</strong> Corresponde a [la Comisión] en materia de IA: (a) aprobar el plan anual de auditoría de IA y recibir sus resultados; (b) recibir información de incidentes S1 en 24 horas y de no conformidades mayores y críticas; (c) resolver los desacuerdos entre el Comité de IA y la segunda línea; (d) decidir, por delegación expresa del Consejo, la aceptación excepcional de riesgos residuales Críticos dentro del apetito aprobado; (e) vigilar la independencia de los auditores de IA; (f) recibir cada trimestre las excepciones vigentes y el informe de la segunda línea (<a href="P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Plantilla P42 &#183; Informe trimestral de segunda l&#237;nea">P42</a>); (g) aprobar las excepciones de umbral corporativo cuando el Consejo se lo delegue.</p>
 <p><strong>B.2 Funcionamiento.</strong> Sesión trimestral con punto de IA y sesión extraordinaria ante un incidente S1 o una no conformidad crítica si la presidencia lo decide. Asisten sin voto el responsable de la Oficina de IA, [el director de riesgos o cumplimiento] y [el responsable de auditoría interna].</p>
 <p><strong>B.3 Orden del día tipo.</strong> Riesgos Altos y Críticos y concentraciones · cumplimiento regulatorio y cambios normativos · incidentes y no conformidades mayores y críticas · auditorías y seguimiento de hallazgos · asuntos elevados · excepciones del trimestre (30 §3.2).</p>
 <hr />
 <h2 id="anexo-c-modelo-de-nombramiento-del-responsable-de-ia"><span class="antetitulo">07</span>Anexo C · Modelo de nombramiento del responsable de IA</h2>
-<p>Evidencia de D1.01 (<a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>): un miembro de la alta dirección con responsabilidad asignada por escrito sobre la IA de la compañía.</p>
+<p>Evidencia de D1.01 (<a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>): un miembro de la alta dirección con responsabilidad asignada por escrito sobre la IA de la compañía.</p>
 <blockquote>
 <p><strong>Acuerdo de nombramiento.</strong> [El Consejo de Administración / El Consejero Delegado] de [la Compañía], en su sesión de [fecha], acuerda nombrar a [nombre y apellidos], [cargo], <strong>responsable de IA de [la Compañía]</strong>, con las siguientes responsabilidades: (1) responder ante [el Consejo / el Consejero Delegado] de la aplicación de la tesis de IA, la ambición por esfera y el apetito de riesgo aprobados; (2) [presidir el Comité de IA / proponer su presidencia]; (3) asegurar que la Oficina de IA dispone de los medios para cumplir su mandato; (4) presentar al Consejo el paquete trimestral y los paquetes de C2 y C5; (5) promover la separación de funciones y la independencia de la segunda y la tercera línea. El nombramiento no le atribuye la verificación de <em>gates</em> ni la aceptación de riesgos por encima de la matriz de delegación. Duración: [indefinida / hasta fecha]. Se comunica a la organización el [fecha].</p>
 </blockquote>
@@ -725,7 +736,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Condición</th>
 <th>Suplente</th>
 <th>Fecha de alta</th>
-<th>Declaración de conflictos (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a>)</th>
+<th>Declaración de conflictos (<a href="P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html" title="Plantilla P41 &#183; Declaraciones de independencia y conflictos de inter&#233;s">P41</a>)</th>
 <th>Fecha de baja</th>
 </tr>
 </thead>
@@ -1136,6 +1147,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

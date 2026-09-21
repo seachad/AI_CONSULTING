@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#what-is-inventoried"><span>02</span>What is inventoried</a></li><li><a href="#inventory-fields"><span>03</span>Inventory fields</a></li><li><a href="#company-roles-under-the-ai-act"><span>04</span>Company roles under the AI Act</a></li><li><a href="#regulatory-classification-tree"><span>05</span>Regulatory classification tree</a></li><li><a href="#resulting-assessments"><span>06</span>Resulting assessments</a></li><li><a href="#registration-review-and-removal-procedures"><span>07</span>Registration, review and removal procedures</a></li><li><a href="#inventory-quality"><span>08</span>Inventory quality</a></li><li><a href="#detection-of-uninventoried-systems"><span>09</span>Detection of uninventoried systems</a></li><li><a href="#associated-tools-and-templates"><span>10</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>11</span>Related documents</a></li><li><a href="#version-control"><span>12</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>Inventory of all AI systems —own, third-party, corporate use and unauthorised— with owner, intensity and regulatory classification. It is not reduced in Lite. Impact assessments are carried out only when the classification requires them.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
@@ -437,14 +448,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>This document defines:</p>
 <ul>
 <li>What is and is not inventoried (section 2).</li>
-<li>The inventory fields, consistent with the controlled taxonomy of <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a> (section 3).</li>
+<li>The inventory fields, consistent with the controlled taxonomy of <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> (section 3).</li>
 <li>The roles the company may have under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">Regulation (EU) 2024/1689</a> (section 4).</li>
 <li>The step-by-step regulatory classification tree (section 5).</li>
 <li>The assessments that follow from the classification (section 6).</li>
 <li>The registration, review and removal procedures (section 7).</li>
 <li>Inventory quality and the detection of uninventoried systems (sections 8 and 9).</li>
 </ul>
-<p>The regulatory classification described here is a <strong>working method</strong> for structuring the analysis. It does not replace the qualified legal judgement required by 01 §6.5. The classification and the obligations derived from it are for guidance only: responsibility for the regulatory classification of each system and for compliance, including the applicable sector regulation, lies with the organisation (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>, section 11).</p>
+<p>The regulatory classification described here is a <strong>working method</strong> for structuring the analysis. It does not replace the qualified legal judgement required by 01 §6.5. The classification and the obligations derived from it are for guidance only: responsibility for the regulatory classification of each system and for compliance, including the applicable sector regulation, lies with the organisation (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>, section 11).</p>
 <h3 id="1-1-regulatory-status-at-the-date-of-consultation">1.1 Regulatory status at the date of consultation</h3>
 <p>Consulted on 16-09-2026 in official European Union sources (EUR-Lex and European Commission pages on the AI Act).</p>
 <div class="tabla"><table>
@@ -522,7 +533,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Corporate use of general-purpose AI</strong></td>
-<td>Assistants, productivity suites and tools in the authorised catalogue (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>).</td>
+<td>Assistants, productivity suites and tools in the authorised catalogue (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>).</td>
 <td>One record per authorised tool; specific uses are not recorded individually unless they move to the full cycle.</td>
 <td>Reduced, with licences and conditions.</td>
 </tr>
@@ -556,7 +567,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>General-purpose AI model procured via API, with no system built on top of it</td>
-<td>Recorded as a supplier component in <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> and linked to the systems that use it.</td>
+<td>Recorded as a supplier component in <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> and linked to the systems that use it.</td>
 <td>The model is not in itself an AI system; the systems that integrate it are.</td>
 </tr>
 <tr>
@@ -567,7 +578,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI used by a supplier to provide an outsourced service to the company</td>
 <td>Yes, when it plays a part in decisions about the company's customers or employees or processes its data.</td>
-<td>Third-party risk (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</td>
+<td>Third-party risk (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</td>
 </tr>
 <tr>
 <td>AI-enabled security tools (threat detection)</td>
@@ -779,7 +790,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Human oversight</td>
-<td>Type of oversight defined in the design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>Type of oversight defined in the design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>).</td>
 <td>List</td>
 <td>Cond.: in production</td>
 <td>Validation of each output · Sample-based review · Oversight of aggregates with kill switch · None</td>
@@ -814,7 +825,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Catalogue category</td>
-<td>Corporate use only (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a> §4.2).</td>
+<td>Corporate use only (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a> §4.2).</td>
 <td>List</td>
 <td>Cond.: corporate use</td>
 <td>Authorised · Authorised with restrictions · Not authorised</td>
@@ -1024,7 +1035,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Supplier assessment</td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>.</td>
 <td>List · Reference</td>
 <td>Cond.: there is a supplier</td>
 </tr>
@@ -1085,7 +1096,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Suppliers</td>
 <td>Third parties involved.</td>
-<td>Multiple reference (<a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>)</td>
+<td>Multiple reference (<a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>)</td>
 <td>Cond.: there is a supplier</td>
 <td>—</td>
 </tr>
@@ -1105,7 +1116,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Open nonconformities</td>
-<td>Number and link to <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>.</td>
+<td>Number and link to <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>.</td>
 <td>Number · Reference</td>
 <td>Yes (0 if none)</td>
 <td>—</td>
@@ -1133,7 +1144,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Annual recurring cost</td>
-<td>Reference to the per-case calculation (<a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>).</td>
+<td>Reference to the per-case calculation (<a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>).</td>
 <td>Amount (€) with status</td>
 <td>Ent.</td>
 <td>Validated · Declared · Estimated</td>
@@ -1218,7 +1229,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="3-8-mapping-to-the-board-dashboard-schema">3.8 Mapping to the board dashboard schema</h3>
-<p>The inventory feeds the dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>). Main mappings to the dashboard data schema: <code>reporte_compania.clasificacion_ria</code> (prohibido, alto_riesgo, transparencia, minimo, no_es_ia) is obtained from <em>Regulatory classification</em> (Out of scope because it is not AI → <code>no_es_ia</code>); <code>reporte_compania.controles</code> (<code>RIA</code>, <code>FRIA</code>, <code>DPIA</code>, <code>seguridad</code>…) from section 3.5; <code>tags.exposicion</code> and <code>tags.tecnologia</code> from section 3.3; the case <code>estado</code> (En uso, En desarrollo, POC, Desenganchado) from <em>System status</em> (In production → En uso; In development → En desarrollo; Pilot → POC; Retired → Desenganchado). Differences in nomenclature will be resolved when <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> is adapted (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, wave 1).</p>
+<p>The inventory feeds the dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>). Main mappings to the dashboard data schema: <code>reporte_compania.clasificacion_ria</code> (prohibido, alto_riesgo, transparencia, minimo, no_es_ia) is obtained from <em>Regulatory classification</em> (Out of scope because it is not AI → <code>no_es_ia</code>); <code>reporte_compania.controles</code> (<code>RIA</code>, <code>FRIA</code>, <code>DPIA</code>, <code>seguridad</code>…) from section 3.5; <code>tags.exposicion</code> and <code>tags.tecnologia</code> from section 3.3; the case <code>estado</code> (En uso, En desarrollo, POC, Desenganchado) from <em>System status</em> (In production → En uso; In development → En desarrollo; Pilot → POC; Retired → Desenganchado). Differences in nomenclature will be resolved when <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> is adapted (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, wave 1).</p>
 <hr />
 <h2 id="company-roles-under-the-ai-act"><span class="antetitulo">04</span>Company roles under the AI Act</h2>
 <p>Obligations depend on the <strong>role</strong> the company has in relation to each system, not on the system in the abstract. The same company may have different roles for different systems, and more than one role for the same system.</p>
@@ -1322,7 +1333,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The obligations of providers of general-purpose AI models have applied since 2-8-2025. A company that integrates third-party models should record in <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> the documentation made available to it by the model provider.</p>
+<p>The obligations of providers of general-purpose AI models have applied since 2-8-2025. A company that integrates third-party models should record in <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> the documentation made available to it by the model provider.</p>
 <hr />
 <h2 id="regulatory-classification-tree"><span class="antetitulo">05</span>Regulatory classification tree</h2>
 <h3 id="5-1-graphical-representation">5.1 Graphical representation</h3>
@@ -1358,7 +1369,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Step</th>
 <th>Question</th>
 <th>How it is answered</th>
-<th>Evidence in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></th>
+<th>Evidence in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></th>
 <th>Result</th>
 </tr>
 </thead>
@@ -1437,7 +1448,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>&quot;Pending classification&quot; has a time limit.</strong> No system may pass G3 or remain in production beyond the time limit approved in C2 with a pending classification.</li>
 <li><strong>Application dates do not delay classification.</strong> An Annex III high-risk system is classified as such from today, even if its obligations apply from 2-12-2027; this way, the design incorporates the requirements in time. For systems already in service before those dates, the transitional regime of Article 111 in its current version must be analysed.</li>
 <li><strong>The Article 6(3) exception is applied restrictively</strong> and is reviewed if the degree of influence of the system on the decision changes.</li>
-<li><strong>Other legislation is assessed in parallel.</strong> The tree covers the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>; data protection, sector-specific regulation, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> are mapped in <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> and may require controls even if the system is minimal risk.</li>
+<li><strong>Other legislation is assessed in parallel.</strong> The tree covers the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a>; data protection, sector-specific regulation, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> are mapped in <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> and may require controls even if the system is minimal risk.</li>
 </ol>
 <h3 id="5-4-illustrative-examples">5.4 Illustrative examples</h3>
 <p><em>Fictitious cases for teaching purposes. The actual classification depends on the specific analysis.</em></p>
@@ -1516,11 +1527,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Prior consultation</strong></td>
-<td>If the residual risk remains high, consultation of the supervisory authority (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 36). In SEVEN-G, in addition, High or Critical residual risk with its level of acceptance (<a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> §7.2).</td>
+<td>If the residual risk remains high, consultation of the supervisory authority (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Article 36). In SEVEN-G, in addition, High or Critical residual risk with its level of acceptance (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> §7.2).</td>
 </tr>
 <tr>
 <td><strong>Template</strong></td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> (need) and <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a> (assessment); it may link to the company's own methodology.</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> (need) and <a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Template P47 &#183; Data protection impact assessment">P47</a> (assessment); it may link to the company's own methodology.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1559,7 +1570,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Template</strong></td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> (need) and <a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html">P48</a> (assessment and notification).</td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> (need) and <a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html" title="Template P48 &#183; Fundamental rights impact assessment">P48</a> (assessment and notification).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1590,11 +1601,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>If the company is only a deployer</strong></td>
-<td>It does not carry out the conformity assessment, but must verify in the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) that the system has one and has instructions for use, and must comply with its obligations under Article 26.</td>
+<td>It does not carry out the conformity assessment, but must verify in the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>) that the system has one and has instructions for use, and must comply with its obligations under Article 26.</td>
 </tr>
 <tr>
 <td><strong>Templates</strong></td>
-<td>SEVEN-G does not include templates for the technical documentation, the quality management system or the EU declaration of conformity: a company acting as provider prepares them with the harmonised standards and its own quality management system. The post-market monitoring plan relies on <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, and the fundamental rights impact assessment on <a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html">P48</a>.</td>
+<td>SEVEN-G does not include templates for the technical documentation, the quality management system or the EU declaration of conformity: a company acting as provider prepares them with the harmonised standards and its own quality management system. The post-market monitoring plan relies on <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, and the fundamental rights impact assessment on <a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html" title="Template P48 &#183; Fundamental rights impact assessment">P48</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1619,7 +1630,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>High risk</strong></td>
 <td>Chapter III requirements, conformity assessment, registration, post-market monitoring, reporting of serious incidents.</td>
 <td>Article 26; fundamental rights impact assessment in the cases in 6.2; supplier assessment.</td>
-<td>Enterprise intensity; risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>); security; data protection impact assessment if it processes personal data.</td>
+<td>Enterprise intensity; risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>); security; data protection impact assessment if it processes personal data.</td>
 </tr>
 <tr id="cod-article-6-3-exception">
 <td><strong>Article 6(3) exception</strong></td>
@@ -1673,42 +1684,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Create the record with the minimum fields for the type of use and assign code <code>SIA-AAAA-NNN</code>.</td>
 <td>AI Office</td>
 <td>5 working days from identification</td>
-<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> record in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a> record in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></td>
 </tr>
 <tr>
 <td>3</td>
 <td>Designate the system owner and the risk owner.</td>
 <td>Area and second line</td>
 <td>Upon registration</td>
-<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a> record</td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a> record</td>
 </tr>
 <tr>
 <td>4</td>
-<td>Provisional classification (steps 1–7 of the tree) with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>.</td>
+<td>Provisional classification (steps 1–7 of the tree) with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>.</td>
 <td>AI Risk Owner</td>
 <td>10 working days from registration</td>
-<td>Provisional classification in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Provisional classification in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></td>
 </tr>
 <tr>
 <td>5</td>
-<td>Determine intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>) and link to the initiative, where applicable.</td>
+<td>Determine intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>) and link to the initiative, where applicable.</td>
 <td>Sponsor, verified</td>
 <td>In phase 0</td>
-<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a></td>
 </tr>
 <tr>
 <td>6</td>
-<td>If it is unauthorised use: open a nonconformity and a regularisation plan (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a> §5).</td>
+<td>If it is unauthorised use: open a nonconformity and a regularisation plan (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a> §5).</td>
 <td>AI Office</td>
 <td>Upon registration</td>
-<td>Record in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td>Record in <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 </tr>
 <tr>
 <td>7</td>
 <td>Final classification with legal review and assessment plan.</td>
 <td>AI Risk Owner</td>
 <td>Before G3</td>
-<td>Final <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td>Final <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></td>
 </tr>
 <tr>
 <td>8</td>
@@ -1750,7 +1761,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Audit-driven</strong></td>
-<td>According to plan (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a>).</td>
+<td>According to plan (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a>).</td>
 <td>Sample of records against reality.</td>
 <td>AI Auditor</td>
 </tr>
@@ -1770,11 +1781,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>1</td>
 <td>Retirement decision at G7 or blocking in the regularisation of unauthorised use.</td>
-<td>Competent body (<a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> §7.3)</td>
+<td>Competent body (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> §7.3)</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Execute the retirement plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>): deactivation, replacement, communication to those affected.</td>
+<td>Execute the retirement plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>): deactivation, replacement, communication to those affected.</td>
 <td>AI Operations Owner</td>
 </tr>
 <tr>
@@ -1877,7 +1888,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>A system in production without a complete record and final classification</strong> is a major nonconformity; if it is also high-risk or prohibited, it is critical.</li>
 <li><strong>Records are not filled in with undeclared estimates.</strong> &quot;No data&quot; is recorded as such.</li>
-<li><strong>Mandatory reconciliation</strong> between <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> (systems) and <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (initiatives): every initiative in phases 4–7 must have at least one linked system, and every system of the initiative type must have an initiative.</li>
+<li><strong>Mandatory reconciliation</strong> between <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> (systems) and <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> (initiatives): every initiative in phases 4–7 must have at least one linked system, and every system of the initiative type must have an initiative.</li>
 <li><strong>Named owner</strong>, not a generic area.</li>
 <li><strong>History retained</strong>: changes do not overwrite without recording the previous value.</li>
 </ol>
@@ -1904,7 +1915,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Procurement</td>
 </tr>
 <tr>
-<td>AI supplier register (<a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>) and ICT third-party provider register (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, where applicable)</td>
+<td>AI supplier register (<a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>) and ICT third-party provider register (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a>, where applicable)</td>
 <td>Suppliers with AI services without a linked system.</td>
 <td>Second line</td>
 </tr>
@@ -1925,7 +1936,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Browsing, data loss prevention and device management logs</td>
-<td>Unauthorised use (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a> §5.2).</td>
+<td>Unauthorised use (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a> §5.2).</td>
 <td>Security</td>
 </tr>
 <tr>
@@ -1976,7 +1987,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The result of the reconciliation feeds indicator Q7 and is reported to the AI Committee within the corporate AI use monitor (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>), the quarterly second-line report (<a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>) and the C4 report.</p>
+<p>The result of the reconciliation feeds indicator Q7 and is reported to the AI Committee within the corporate AI use monitor (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>), the quarterly second-line report (<a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Template P42 &#183; Quarterly second-line report">P42</a>) and the C4 report.</p>
 <hr />
 <h2 id="associated-tools-and-templates"><span class="antetitulo">10</span>Associated tools and templates</h2>
 <div class="tabla"><table>
@@ -1989,62 +2000,62 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t02">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Implements the fields in section 3, the procedures in section 7 and the indicators in section 8.</td>
 </tr>
 <tr id="cod-t07">
-<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></strong></td>
+<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a></strong></td>
 <td>Regulatory classifier</td>
 <td>Guided questionnaire covering steps 1 to 9 of the tree; generates the provisional classification and the assessment plan, and records the rationale and date. It must be updated when the consolidated text of the Regulation or the Commission guidelines change.</td>
 </tr>
 <tr id="cod-p05">
-<td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></strong></td>
+<td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a></strong></td>
 <td>AI system inventory record</td>
 <td>Evidence of inventory registration (phase 0).</td>
 </tr>
 <tr id="cod-p11">
-<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></strong></td>
+<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></strong></td>
 <td>Regulatory classification and impact assessments</td>
 <td>Evidence of the classification (phase 3) and of the resulting assessments.</td>
 </tr>
 <tr id="cod-p47">
-<td><strong><a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html">P47</a></strong></td>
+<td><strong><a href="plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html" title="Template P47 &#183; Data protection impact assessment">P47</a></strong></td>
 <td>Data protection impact assessment</td>
 <td>Assessment required under section 6.1.</td>
 </tr>
 <tr id="cod-p48">
-<td><strong><a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html">P48</a></strong></td>
+<td><strong><a href="plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html" title="Template P48 &#183; Fundamental rights impact assessment">P48</a></strong></td>
 <td>Fundamental rights impact assessment</td>
 <td>Assessment and notification required under section 6.2.</td>
 </tr>
 <tr id="cod-p42">
-<td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a></strong></td>
+<td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html" title="Template P42 &#183; Quarterly second-line report">P42</a></strong></td>
 <td>Quarterly second-line report</td>
 <td>Reports the reconciliation of section 9 and indicator Q7 to the AI Committee.</td>
 </tr>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
 <td>Initiative register</td>
 <td>System–initiative link and classification change events.</td>
 </tr>
 <tr id="cod-t04">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a></strong></td>
 <td>Intensity determination</td>
 <td>Uses the classification and autonomy from the inventory.</td>
 </tr>
 <tr id="cod-t09">
-<td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></strong></td>
+<td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a></strong></td>
 <td>AI supplier register</td>
 <td>Linked suppliers and general-purpose models.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Receives the classification and control status (section 3.8).</td>
 </tr>
 <tr id="cod-t21">
-<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
+<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a></strong></td>
 <td>Corporate AI use monitor</td>
 <td>Receives corporate and unauthorised uses, and indicator Q7.</td>
 </tr>
@@ -2362,6 +2373,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

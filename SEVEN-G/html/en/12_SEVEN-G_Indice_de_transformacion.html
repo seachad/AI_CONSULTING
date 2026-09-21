@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,22 +439,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/12_SEVEN-G_Indice_de_transformacion.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#principle"><span>02</span>Principle</a></li><li><a href="#ambition-classification-of-an-initiative"><span>03</span>Ambition classification of an initiative</a></li><li><a href="#company-transformation-index"><span>04</span>Company transformation index</a></li><li><a href="#profile-assignment"><span>05</span>Profile assignment</a></li><li><a href="#treatment-of-quot-no-data-quot"><span>06</span>Treatment of &quot;no data&quot;</a></li><li><a href="#frequency-and-owners"><span>07</span>Frequency and owners</a></li><li><a href="#calibration-in-c5"><span>08</span>Calibration in C5</a></li><li><a href="#complete-illustrative-example"><span>09</span>Complete illustrative example</a></li><li><a href="#presentation-to-the-board"><span>10</span>Presentation to the board</a></li><li><a href="#limitations"><span>11</span>Limitations</a></li><li><a href="#associated-tools-and-templates"><span>12</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>13</span>Related documents</a></li><li><a href="#version-control"><span>14</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>Calculation of the company&#39;s transformation index at C1 and at each C5, with the base conditions and the eight signals; &#39;no data&#39; never counts as evidence. The classification of each initiative&#39;s ambition (section 3) always applies.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
-<p>This document develops section 5 of <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">document 00</a>. It defines two connected instruments:</p>
+<p>This document develops section 5 of <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SEVEN-G is and what it is for">document 00</a>. It defines two connected instruments:</p>
 <ol>
 <li><strong>The ambition classification of each initiative</strong> (Optimise, Augment or Transform): five questions, decision rules, treatment of borderline cases, owners and the cycle of proposed, confirmed and actual ambition.</li>
 <li><strong>The company transformation index</strong>: eight signals with formula, data source and a score from 0 to 3; baseline conditions; rules for assigning one of the five profiles; treatment of &quot;no data&quot;; frequency; calibration; a complete example and limitations.</li>
 </ol>
-<p>It applies in phases 1, 2 and 7 of the lifecycle and in stages C1, C4 and C5 of the corporate cycle. The associated tools are the ambition classifier (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>) and the index calculator (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>); the evidence for the classification is documented with template <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>.</p>
+<p>It applies in phases 1, 2 and 7 of the lifecycle and in stages C1, C4 and C5 of the corporate cycle. The associated tools are the ambition classifier (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a>) and the index calculator (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>); the evidence for the classification is documented with template <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>.</p>
 <p>All the numerical thresholds in this document are <strong>initial and marked &quot;to be calibrated&quot;</strong>. They do not come from market studies: they are reasonable starting points that each company reviews in C5 with its own data (section 8).</p>
 <hr />
 <h2 id="principle"><span class="antetitulo">02</span>Principle</h2>
 <p>Efficiency and transformation <strong>are not distinguished by technology</strong>, but by <strong>what changes in the business and where the value appears</strong>. A generative AI agent that drafts responses faster is optimisation; a classical statistical model that makes it possible to launch a service with personalised pricing may be transformation.</p>
-<p>The index is not a value judgement. <strong>Efficiency is a legitimate outcome</strong>, and many companies should start with it in order to fund their later bets. What SEVEN-G requires is that the choice be conscious, measured and made by the appropriate person (principle 9 of <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>). Above all, the index serves to detect one specific situation: <strong>declared transformation that the signals do not confirm</strong>.</p>
+<p>The index is not a value judgement. <strong>Efficiency is a legitimate outcome</strong>, and many companies should start with it in order to fund their later bets. What SEVEN-G requires is that the choice be conscious, measured and made by the appropriate person (principle 9 of <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>). Above all, the index serves to detect one specific situation: <strong>declared transformation that the signals do not confirm</strong>.</p>
 <hr />
 <h2 id="ambition-classification-of-an-initiative"><span class="antetitulo">03</span>Ambition classification of an initiative</h2>
 <h3 id="3-1-the-five-questions">3.1 The five questions</h3>
@@ -540,7 +551,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>7 · Dependency in Optimise</strong></td>
 <td>The result is Optimise and IT-P5 is <strong>no</strong>.</td>
-<td>The level does not change. It is checked whether the initiative supports a critical function (Enterprise criterion in <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 9.2).</td>
+<td>The level does not change. It is checked whether the initiative supports a critical function (Enterprise criterion in <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 9.2).</td>
 </tr>
 <tr>
 <td><strong>8 · Prudence in case of doubt</strong></td>
@@ -637,7 +648,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI system for monitoring regulatory obligations (primary sphere 08)</td>
 <td><strong>Optimise</strong> as a general rule</td>
-<td>It is classified like any other; its level does not qualify sphere 08 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a>, section 4.2).</td>
+<td>It is classified like any other; its level does not qualify sphere 08 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>, section 4.2).</td>
 </tr>
 </tbody>
 </table></div>
@@ -656,23 +667,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Proposed</strong></td>
 <td>Phase 1</td>
 <td>Level proposed by the team using the five questions on the opportunity.</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> with answers and justification.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> with answers and justification.</td>
 </tr>
 <tr>
 <td><strong>Confirmed</strong></td>
 <td>Phase 2 (G2)</td>
 <td>Level verified against the value hypothesis: metrics, baseline and type of expected value consistent with the level.</td>
-<td>Updated <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td>Updated <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>.</td>
 </tr>
 <tr>
 <td><strong>Actual</strong></td>
 <td>Phase 7 (G7) and, where applicable, R6</td>
 <td>Level demonstrated by the evidence in production.</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> with evidence of results, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> with evidence of results, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>.</td>
 </tr>
 </tbody>
 </table></div>
-<p>Criteria for recording the <strong>actual ambition</strong> (consistent with the G7 criteria in <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 7.6):</p>
+<p>Criteria for recording the <strong>actual ambition</strong> (consistent with the G7 criteria in <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 7.6):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -713,7 +724,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>AI Product Owner</td>
 <td>AI Office (consistency of answers)</td>
 <td>Sponsor, at G1</td>
-<td>The event is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>The event is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</td>
 </tr>
 <tr id="cod-phase-2-confirmation-lite">
 <td><strong>Phase 2 · Confirmation (Lite)</strong></td>
@@ -738,14 +749,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr id="cod-phase-7-actual-ambition">
 <td><strong>Phase 7 · Actual ambition</strong></td>
-<td>AI Product Owner, with data from <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td>AI Product Owner, with data from <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 <td>AI Office (Lite) or AI Auditor (Enterprise)</td>
 <td>G7 body</td>
 <td>Scaling an initiative with an actual ambition of Transform requires board approval.</td>
 </tr>
 </tbody>
 </table></div>
-<p>No one verifies or decides on the classification of their own initiative (<a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a>, section 7.4).</p>
+<p>No one verifies or decides on the classification of their own initiative (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a>, section 7.4).</p>
 <h3 id="3-6-what-to-do-if-the-actual-ambition-differs-from-the-declared-ambition">3.6 What to do if the actual ambition differs from the declared ambition</h3>
 <div class="tabla"><table>
 <thead>
@@ -845,7 +856,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Initiatives included</strong></td>
-<td>All those in the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) whose primary sphere is 01 to 07. Those with primary sphere 08 or 09 are excluded from signals 1, 2 and 7 and reported separately as investment in governance and compliance enablement (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a>, section 4.2).</td>
+<td>All those in the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) whose primary sphere is 01 to 07. Those with primary sphere 08 or 09 are excluded from signals 1, 2 and 7 and reported separately as investment in governance and compliance enablement (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>, section 4.2).</td>
 </tr>
 <tr>
 <td><strong>Corporate use of general-purpose AI</strong></td>
@@ -865,7 +876,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Currency and cost</strong></td>
-<td>&quot;Portfolio cost&quot; = build investment executed in the window + recurring cost for the window, according to the categories in <a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>.</td>
+<td>&quot;Portfolio cost&quot; = build investment executed in the window + recurring cost for the window, according to the categories in <a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -921,7 +932,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: ambition level, primary sphere; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> and <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>: investment and recurring cost per initiative.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>: ambition level, primary sphere; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> and <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>: investment and recurring cost per initiative.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -960,7 +971,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>: amounts by type (efficiency, return) with validated status. Released capacity does not count (measurement rule 3).</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>: amounts by type (efficiency, return) with validated status. Released capacity does not count (measurement rule 3).</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -999,7 +1010,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (released capacity and materialised savings) and <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> (recorded reassignment with destination activity).</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> (released capacity and materialised savings) and <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a> (recorded reassignment with destination activity).</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1038,7 +1049,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: answers to IT-P2 with verification status; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>: result of G5 and G7.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>: answers to IT-P2 with verification status; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>: result of G5 and G7.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1073,11 +1084,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Formula</strong></td>
-<td>IT-S5 = initiatives in production with IT-P3 = yes verified and human oversight design verified (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) ÷ initiatives in production × 100.</td>
+<td>IT-S5 = initiatives in production with IT-P3 = yes verified and human oversight design verified (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>) ÷ initiatives in production × 100.</td>
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: verified answers to IT-P3; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> evidence; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>: redesigned roles; register of redesigned organisational units.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>: verified answers to IT-P3; <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> evidence; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>: redesigned roles; register of redesigned organisational units.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1121,7 +1132,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td>Management control; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (return from new sales items flagged as AI-enabled offering); <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (IT-P4 = yes verified).</td>
+<td>Management control; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> (return from new sales items flagged as AI-enabled offering); <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> (IT-P4 = yes verified).</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1161,11 +1172,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>No basis for comparison</strong></td>
-<td>If there are no Optimise initiatives with an outcome, CR is replaced by the arrival rate for Augment and Transform ÷ 0.6, and TR by the actual median ÷ the sum of the reference time limits for phases 3 to 5 (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.6).</td>
+<td>If there are no Optimise initiatives with an outcome, CR is replaced by the arrival rate for Augment and Transform ÷ 0.6, and TR by the actual median ÷ the sum of the reference time limits for phases 3 to 5 (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.6).</td>
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>: G2 and G5 dates, statuses, stop reasons, reference time limits.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>: G2 and G5 dates, statuses, stop reasons, reference time limits.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1204,7 +1215,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Source</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>: recommendations and decisions register; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>: board approvals at G2 and G7; C2 decision document (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>).</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>: recommendations and decisions register; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>: board approvals at G2 and G7; C2 decision document (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>).</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1329,12 +1340,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>IT-D1</td>
 <td>The AI thesis approved in C2 sets <strong>Transform</strong> as the target ambition in at least one sphere.</td>
-<td>C2 decision document (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>).</td>
+<td>C2 decision document (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>).</td>
 </tr>
 <tr>
 <td>IT-D2</td>
 <td>Initiatives with a confirmed ambition of Transform account for <strong>10% or more</strong> of the portfolio cost.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, signal 1.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, signal 1.</td>
 </tr>
 <tr>
 <td>IT-D3</td>
@@ -1524,7 +1535,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>7</td>
 <td>Record the version of the thresholds used in each calculation.</td>
-<td>AI Office (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>; <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> §14)</td>
+<td>AI Office (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>; <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a> §14)</td>
 </tr>
 </tbody>
 </table></div>
@@ -1536,7 +1547,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <hr />
 <h2 id="complete-illustrative-example"><span class="antetitulo">09</span>Complete illustrative example</h2>
-<p><em>Fictitious company. All data are illustrative and match the heat map example in <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a>, section 8.2.</em></p>
+<p><em>Fictitious company. All data are illustrative and match the heat map example in <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>, section 8.2.</em></p>
 <p><strong>Context.</strong> Industrial company with €400M in annual revenue. It has 17 active initiatives in spheres 01 to 07 (14 Optimise, 2 Augment and 1 Transform) and 2 initiatives in the enablement band (spheres 08 and 09). Fourteen are in production: the 12 Optimise initiatives that have passed G5 and the 2 Augment initiatives. The Transform initiative (a new service in sphere 02) is in phase 5, with a commercial pilot. The AI thesis approved in C2 sets Transform as the target ambition for Product and service, and the strategic plan describes AI as a &quot;transformation lever&quot;.</p>
 <p><strong>Baseline conditions</strong></p>
 <div class="tabla"><table>
@@ -1658,7 +1669,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Step 2 · Cross-check.</strong> IT-D1 (thesis with Transform in sphere 02) and IT-D3 (strategic plan) are met: D = yes. The evidenced profile is not Transformation under way.</p>
 <p><strong>Assigned profile: Declared but unevidenced transformation. Underlying profile: Efficiency at scale.</strong></p>
 <p>Complementary alerts: none of those in section 5.3 is triggered. The overstatement rate cannot yet be calculated for Transform (no initiative with recorded actual ambition).</p>
-<p><strong>Message to the board</strong> (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a> format): <em>&quot;Not yet, because evidence of return and of change in processes and roles is missing. The company governs an efficiency portfolio with validated value well, but the declared transformation rests on a single bet at pilot stage. To evidence transformation, the following would be needed as a minimum: validated return of at least €0.20M or enabled revenue of at least €2M; at least three processes redesigned end to end in production; and quarterly review of the bet by the board.&quot;</em></p>
+<p><strong>Message to the board</strong> (<a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a> format): <em>&quot;Not yet, because evidence of return and of change in processes and roles is missing. The company governs an efficiency portfolio with validated value well, but the declared transformation rests on a single bet at pilot stage. To evidence transformation, the following would be needed as a minimum: validated return of at least €0.20M or enabled revenue of at least €2M; at least three processes redesigned end to end in production; and quarterly review of the bet by the board.&quot;</em></p>
 <hr />
 <h2 id="presentation-to-the-board"><span class="antetitulo">10</span>Presentation to the board</h2>
 <p>The index is always presented with three elements:</p>
@@ -1709,7 +1720,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>It does not measure the absolute value or the profitability of AI.</td>
 <td>A transformation profile does not imply that the portfolio is profitable.</td>
-<td>It is read alongside annual net value and additional net value per euro (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>).</td>
+<td>It is read alongside annual net value and additional net value per euro (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>).</td>
 </tr>
 <tr>
 <td>It is not comparable across sectors or between companies of very different size.</td>
@@ -1734,7 +1745,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>It does not replace the maturity diagnosis.</td>
 <td>Profile and maturity may diverge.</td>
-<td>They are presented together in C1 and C5 (<a href="11_SEVEN-G_Modelo_de_madurez.html">document 11</a>).</td>
+<td>They are presented together in C1 and C5 (<a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1750,57 +1761,57 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Fields: answers IT-P1–IT-P5 with evidence and verification status; proposed, confirmed and actual ambition with date and reason; primary sphere; <em>gate</em> dates; statuses; stop reasons; origin of the initiative. From schema 0.5: verification of IT-P2 and IT-P3 at a <em>gate</em> with verified human oversight, entire unit redesigned, released, materialised and reassigned capacity, AI-enabled offering in the amounts, and company total revenue and IT-D3.</td>
 </tr>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></strong></td>
 <td>Gate manager</td>
 <td>Verification of the classification at G2 and G7; board approvals.</td>
 </tr>
 <tr id="cod-t05">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a></strong></td>
 <td>Ambition classifier</td>
 <td>Applies the five questions and rules 1 to 10; records the result and inconsistencies.</td>
 </tr>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Amounts by type and status; released and materialised capacity; AI-enabled revenue.</td>
 </tr>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
+<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></strong></td>
 <td>Cost calculator per use case</td>
 <td>Investment and recurring cost of each initiative (signal 1).</td>
 </tr>
 <tr id="cod-t14">
-<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></strong></td>
 <td>Transformation index calculator</td>
-<td>Calculates baseline conditions, signals, profile, alerts, coverage, what would move the profile and evolution; retains the threshold version. It starts from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register JSON: with schema 0.5 it calculates from it the eight signals and conditions IT-D1 and IT-D3; whatever the register does not contain is completed manually. It exports its result for the board dashboard.</td>
+<td>Calculates baseline conditions, signals, profile, alerts, coverage, what would move the profile and evolution; retains the threshold version. It starts from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register JSON: with schema 0.5 it calculates from it the eight signals and conditions IT-D1 and IT-D3; whatever the register does not contain is completed manually. It exports its result for the board dashboard.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong></td>
 <td>Board AI dashboard</td>
-<td>&quot;Company transformation index&quot; card in &quot;Portfolio and value&quot;: profile, baseline conditions, signals, trend, alerts and what would move the profile, from the result exported by <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>.</td>
+<td>&quot;Company transformation index&quot; card in &quot;Portfolio and value&quot;: profile, baseline conditions, signals, trend, alerts and what would move the profile, from the result exported by <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>.</td>
 </tr>
 <tr id="cod-t18">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
 <td>Board recommendations register</td>
-<td>&quot;Board (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)&quot; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register: board decisions (thesis, Transform bets with a cap per stage, reviews and stage decisions) are the source of signal 8 and IT-D1.</td>
+<td>&quot;Board (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>)&quot; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register: board decisions (thesis, Transform bets with a cap per stage, reviews and stage decisions) are the source of signal 8 and IT-D1.</td>
 </tr>
 <tr id="cod-t19">
-<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></strong></td>
+<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a></strong></td>
 <td>AI thesis and risk appetite template</td>
 <td>C2 decision document: approved thesis (signal 8) and target ambition by sphere (condition IT-D1).</td>
 </tr>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Reassigned hours and redesigned roles (signals 3 and 5).</td>
 </tr>
 <tr id="cod-p07">
-<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></strong></td>
+<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a></strong></td>
 <td>Sphere and ambition classification</td>
 <td>Evidence of the classification in phases 1, 2 and 7.</td>
 </tr>
@@ -2109,6 +2120,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

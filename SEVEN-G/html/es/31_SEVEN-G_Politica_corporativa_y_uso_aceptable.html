@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#referencias-regulatorias-utilizadas"><span>02</span>Referencias regulatorias utilizadas</a></li><li><a href="#modelo-de-politica-corporativa-de-ia"><span>03</span>Modelo de política corporativa de IA</a></li><li><a href="#modelo-de-politica-de-uso-aceptable-de-ia"><span>04</span>Modelo de política de uso aceptable de IA</a></li><li><a href="#la-ia-que-no-es-un-proyecto"><span>05</span>La IA que no es un proyecto</a></li><li><a href="#alfabetizacion-en-ia"><span>06</span>Alfabetización en IA</a></li><li><a href="#monitor-de-uso-corporativo-de-ia-t21"><span>07</span>Monitor de uso corporativo de IA (T21)</a></li><li><a href="#relacion-con-el-ciclo-de-vida-y-los-gates"><span>08</span>Relación con el ciclo de vida y los gates</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>09</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>10</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>11</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Obligatorio siempre</span></div><p>Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable aprobadas, tratamiento de la IA de uso general y de la IA embebida (&#171;la IA que no es un proyecto&#187;) y alfabetizaci&#243;n en IA de quienes usan o supervisan sistemas de IA. Los modelos de texto se adaptan a cada compa&#241;&#237;a.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
@@ -436,14 +447,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Este documento ofrece a la compañía dos modelos de política que el consejo y la alta dirección pueden adaptar y aprobar en la etapa C2 del ciclo corporativo:</p>
 <ol>
 <li><strong>Política corporativa de IA</strong> (sección 3): fija los principios, las responsabilidades, la clasificación, el ciclo de vida obligatorio, las líneas rojas y el régimen de excepciones e incumplimientos. La aprueba el consejo.</li>
-<li><strong>Política de uso aceptable de IA para empleados</strong> (sección 4): traduce la política corporativa en reglas de conducta para cualquier persona que use IA en su trabajo. La aprueba el comité de IA por delegación del consejo (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.5).</li>
+<li><strong>Política de uso aceptable de IA para empleados</strong> (sección 4): traduce la política corporativa en reglas de conducta para cualquier persona que use IA en su trabajo. La aprueba el comité de IA por delegación del consejo (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a> §7.5).</li>
 </ol>
 <p>Además, el documento desarrolla dos temas que la metodología fundacional enuncia y que ningún otro documento cubre:</p>
 <ul>
 <li>El tratamiento de la <strong>IA que no es un proyecto</strong> (sección 5): IA embebida en software de terceros, suites de productividad con IA, uso individual y uso no autorizado (<em>shadow AI</em>), con su detección, registro, regularización y tratamiento como no conformidad.</li>
 <li>El <strong>programa de alfabetización en IA</strong> (sección 6), vinculado al artículo 4 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento (UE) 2024/1689</a>.</li>
 </ul>
-<p>Los textos entre <strong>[corchetes]</strong> deben personalizarse. Los modelos están redactados para una compañía genérica; su adaptación debería revisarla la asesoría jurídica y, en lo que afecte a las relaciones laborales, la función de personas con la participación que proceda de la representación de los trabajadores. Los modelos y las obligaciones regulatorias que recogen son orientativos: la responsabilidad de la clasificación regulatoria de sus sistemas y del cumplimiento de la normativa general y sectorial aplicable es de la organización (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 11).</p>
+<p>Los textos entre <strong>[corchetes]</strong> deben personalizarse. Los modelos están redactados para una compañía genérica; su adaptación debería revisarla la asesoría jurídica y, en lo que afecte a las relaciones laborales, la función de personas con la participación que proceda de la representación de los trabajadores. Los modelos y las obligaciones regulatorias que recogen son orientativos: la responsabilidad de la clasificación regulatoria de sus sistemas y del cumplimiento de la normativa general y sectorial aplicable es de la organización (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a>, sección 11).</p>
 <h3 id="1-1-como-usar-los-modelos">1.1 Cómo usar los modelos</h3>
 <div class="tabla"><table>
 <thead>
@@ -472,7 +483,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>4</td>
 <td>Aprobación: política corporativa por el consejo; política de uso aceptable por el comité de IA.</td>
-<td>Órganos (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a>)</td>
+<td>Órganos (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a>)</td>
 </tr>
 <tr>
 <td>5</td>
@@ -664,7 +675,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los roles de cada iniciativa (patrocinador, producto, técnico, operación, riesgos y auditor) y sus incompatibilidades se rigen por [el Modelo de gobierno de IA de la Compañía, basado en el <a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> de SEVEN-G].</p>
+<p>Los roles de cada iniciativa (patrocinador, producto, técnico, operación, riesgos y auditor) y sus incompatibilidades se rigen por [el Modelo de gobierno de IA de la Compañía, basado en el <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a> de SEVEN-G].</p>
 <h3 id="3-5-clasificacion">3.5 Clasificación</h3>
 <p>Todo sistema de IA se clasifica en el inventario con, al menos:</p>
 <div class="tabla"><table>
@@ -745,7 +756,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Uso no autorizado</strong></td>
-<td>Detección, registro, regularización (autorizar, sustituir o bloquear) y tratamiento como no conformidad, según la sección 5 del <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> de SEVEN-G.</td>
+<td>Detección, registro, regularización (autorizar, sustituir o bloquear) y tratamiento como no conformidad, según la sección 5 del <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a> de SEVEN-G.</td>
 </tr>
 </tbody>
 </table></div>
@@ -767,12 +778,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li>Cualquier otro requisito de esta política puede exceptuarse temporalmente mediante solicitud motivada que incluya: requisito afectado, justificación, riesgo, medidas compensatorias, plazo y responsable.</li>
 <li>Aprueban las excepciones los órganos indicados en [la matriz de delegación del Modelo de gobierno]. Quien propone no aprueba.</li>
-<li>Las excepciones tienen plazo máximo de [seis meses], se registran con código EXC-AAAA-NNN (<a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a>) y se informan trimestralmente a [la Comisión].</li>
+<li>Las excepciones tienen plazo máximo de [seis meses], se registran con código EXC-AAAA-NNN (<a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a>) y se informan trimestralmente a [la Comisión].</li>
 <li>Una excepción vencida sin cierre se trata como no conformidad mayor.</li>
 </ol>
 <h3 id="3-9-incumplimiento">3.9 Incumplimiento</h3>
 <ol>
-<li>Todo incumplimiento de esta política es una <strong>no conformidad</strong> y se clasifica como menor, mayor o crítica con los criterios de SEVEN-G (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</li>
+<li>Todo incumplimiento de esta política es una <strong>no conformidad</strong> y se clasifica como menor, mayor o crítica con los criterios de SEVEN-G (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>).</li>
 <li>Ante una no conformidad crítica, [la Compañía] adoptará medidas de contención en un máximo de 48 horas, incluida la suspensión del sistema si es necesario.</li>
 <li>El tratamiento como no conformidad <strong>no excluye</strong> las medidas disciplinarias que procedan conforme a [el régimen disciplinario / convenio colectivo aplicable], ni las acciones frente a terceros según contrato.</li>
 <li>[La Compañía] promueve la comunicación temprana: quien comunique de buena fe un uso indebido, un error propio o un incidente no será objeto de represalias. Las comunicaciones pueden realizarse a [la Oficina de IA] o a través de [el Sistema interno de información].</li>
@@ -1014,7 +1025,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>IA embebida en software de terceros</strong></td>
 <td>Funciones de IA que un proveedor incorpora a un producto ya contratado (CRM, ERP, gestión de personas, atención al cliente, ciberseguridad).</td>
 <td>Activación por defecto sin evaluación; uso de datos de la compañía por el proveedor; cambios de comportamiento con cada versión; decisiones sobre personas integradas en el proceso.</td>
-<td>Registro en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> como IA de terceros; evaluación del proveedor proporcional (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>); decisión expresa de activar o no; revisión contractual.</td>
+<td>Registro en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> como IA de terceros; evaluación del proveedor proporcional (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a>); decisión expresa de activar o no; revisión contractual.</td>
 <td>Interviene en decisiones, operaciones o relación con clientes con algún criterio Enterprise: entonces es <strong>IA de terceros integrada en procesos</strong> (01 §1.2).</td>
 </tr>
 <tr>
@@ -1028,7 +1039,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Uso individual autorizado</strong></td>
 <td>Empleados que usan herramientas del catálogo para su trabajo.</td>
 <td>Datos inadecuados; resultados sin verificar; dependencia.</td>
-<td>Política de uso aceptable; formación; controles técnicos; <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
+<td>Política de uso aceptable; formación; controles técnicos; <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>.</td>
 <td>Se convierte en un proceso compartido o afecta a terceros.</td>
 </tr>
 <tr>
@@ -1104,13 +1115,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Auditoría</td>
 <td>Uso no inventariado en áreas auditadas.</td>
 <td>Auditoría interna</td>
-<td>Según plan (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>)</td>
+<td>Según plan (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a>)</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Garantías.</strong> La monitorización del uso de medios tecnológicos debe ser proporcional, estar prevista en la política de uso de medios de la compañía, informarse previamente a los empleados y respetar la normativa de protección de datos y laboral (en España, entre otros, el artículo 87 de la <a class="ref-ext" href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener" title="Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales">LOPDGDD</a> y el artículo 20.3 del <a class="ref-ext" href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener" title="Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores">Estatuto de los Trabajadores</a>). La detección se orienta a <strong>herramientas y flujos de información</strong>, no a vigilar el contenido de la actividad individual más allá de lo necesario. La protección de datos debería valorar la necesidad de una evaluación de impacto del propio sistema de monitorización.</p>
 <h3 id="5-3-registro">5.3 Registro</h3>
-<p>Todo uso detectado se registra en el inventario (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) con el tipo de uso <strong>&quot;Uso no autorizado&quot;</strong> y los campos mínimos del <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html">documento 32</a>: herramienta y proveedor, área o personas usuarias (de forma agregada salvo que sea necesario identificarlas), finalidad aparente, tipo de información expuesta, fecha de detección, fuente de detección y responsable de la regularización. El registro genera automáticamente una <strong>no conformidad</strong> en <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>.</p>
+<p>Todo uso detectado se registra en el inventario (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>) con el tipo de uso <strong>&quot;Uso no autorizado&quot;</strong> y los campos mínimos del <a href="32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html" title="Documento 32 &#183; Inventario de sistemas de IA y clasificaci&#243;n regulatoria">documento 32</a>: herramienta y proveedor, área o personas usuarias (de forma agregada salvo que sea necesario identificarlas), finalidad aparente, tipo de información expuesta, fecha de detección, fuente de detección y responsable de la regularización. El registro genera automáticamente una <strong>no conformidad</strong> en <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>.</p>
 <h3 id="5-4-valoracion-y-clasificacion-como-no-conformidad">5.4 Valoración y clasificación como no conformidad</h3>
 <div class="tabla"><table>
 <thead>
@@ -1138,7 +1149,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La clasificación se ajusta con los criterios del <a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>. Los plazos son de referencia (01 §12) y la compañía puede ajustarlos en C2.</p>
+<p>La clasificación se ajusta con los criterios del <a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>. Los plazos son de referencia (01 §12) y la compañía puede ajustarlos en C2.</p>
 <h3 id="5-5-regularizacion">5.5 Regularización</h3>
 <p>La Oficina de IA propone y el órgano correspondiente decide una de tres salidas:</p>
 <div class="tabla"><table>
@@ -1155,7 +1166,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Autorizar</strong></td>
 <td>La herramienta cubre una necesidad real, el proveedor supera la evaluación y los riesgos son aceptables.</td>
 <td>Contratación corporativa, configuración segura, alta en el catálogo con categoría y condiciones, formación de los usuarios y migración desde cuentas personales.</td>
-<td>Oficina de IA, o comité de IA si cumple un criterio Enterprise (<a href="30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.5).</td>
+<td>Oficina de IA, o comité de IA si cumple un criterio Enterprise (<a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a> §7.5).</td>
 </tr>
 <tr>
 <td><strong>Sustituir</strong></td>
@@ -1195,7 +1206,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Registrar en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> y hacer una clasificación preliminar (tipo de uso, datos, exposición, autonomía, posible alto riesgo).</td>
+<td>Registrar en <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> y hacer una clasificación preliminar (tipo de uso, datos, exposición, autonomía, posible alto riesgo).</td>
 <td>Oficina de IA</td>
 </tr>
 <tr>
@@ -1255,7 +1266,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Asignación de licencias</td>
-<td>Por necesidad y con revisión trimestral de uso activo (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>).</td>
+<td>Por necesidad y con revisión trimestral de uso activo (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>).</td>
 </tr>
 <tr>
 <td>Formación previa</td>
@@ -1317,13 +1328,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Fases, <em>gates</em> y evidencias; hipótesis de valor y reglas de medición; clasificación de riesgo y regulatoria; separación de funciones; plantillas.</td>
 <td>1 jornada más acompañamiento en la primera iniciativa.</td>
 <td>Al asumir el rol; actualización con cada versión relevante del marco.</td>
-<td>Registro vinculado a <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>.</td>
+<td>Registro vinculado a <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a>.</td>
 </tr>
 <tr>
 <td>F5</td>
 <td><strong>Construcción técnica</strong> (ciencia de datos, ingeniería, desarrollo con IA)</td>
 <td>Construir sistemas conformes y seguros.</td>
-<td>Requisitos técnicos según clasificación; documentación; evaluación de modelos y agentes; pruebas de sesgo y robustez; seguridad de IA y agentes (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>); linaje de datos; uso de IA en el desarrollo.</td>
+<td>Requisitos técnicos según clasificación; documentación; evaluación de modelos y agentes; pruebas de sesgo y robustez; seguridad de IA y agentes (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>); linaje de datos; uso de IA en el desarrollo.</td>
 <td>2–3 jornadas, con módulos por tecnología.</td>
 <td>Al incorporarse; anual.</td>
 <td>Registro y ejercicios.</td>
@@ -1332,7 +1343,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>F6</td>
 <td><strong>Segunda y tercera línea</strong> (riesgos, cumplimiento, seguridad, protección de datos, auditoría interna)</td>
 <td>Cuestionar y verificar con criterio.</td>
-<td>Reglamento de IA y mapeo regulatorio; clasificación; evaluaciones de impacto; riesgos específicos de IA generativa y agentes; técnicas de auditoría de IA (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>).</td>
+<td>Reglamento de IA y mapeo regulatorio; clasificación; evaluaciones de impacto; riesgos específicos de IA generativa y agentes; técnicas de auditoría de IA (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a>).</td>
 <td>2 jornadas y formación continua.</td>
 <td>Anual, y ante cambios normativos.</td>
 <td>Registro; plan de competencias del auditor de IA.</td>
@@ -1359,7 +1370,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>F9</td>
 <td><strong>Mandos intermedios de áreas que usan o incorporan IA</strong></td>
 <td>Dirigir el cambio en su área.</td>
-<td>Lo de F1 aplicado al área; evaluación del efecto sobre el trabajo (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>); supervisión humana y sus límites; transición, comunicación y destino de la capacidad liberada; cuándo escalar.</td>
+<td>Lo de F1 aplicado al área; evaluación del efecto sobre el trabajo (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a>); supervisión humana y sus límites; transición, comunicación y destino de la capacidad liberada; cuándo escalar.</td>
 <td>Taller de 3–4 horas con un caso del área.</td>
 <td>Al asumir el puesto o al llegar la primera iniciativa al área; anual.</td>
 <td>Registro y participación en una evaluación de efecto.</td>
@@ -1385,7 +1396,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Registro</strong></td>
-<td>Por persona: perfiles asignados, formaciones completadas, fechas, evaluaciones y vencimientos. El registro (<a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a>) se mantiene en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, se vincula a <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> y sus indicadores se muestran en <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
+<td>Por persona: perfiles asignados, formaciones completadas, fechas, evaluaciones y vencimientos. El registro (<a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Plantilla P45 &#183; Plan y registro de alfabetizaci&#243;n y formaci&#243;n">P45</a>) se mantiene en <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>, se vincula a <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a> y sus indicadores se muestran en <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>.</td>
 </tr>
 <tr>
 <td><strong>Condiciones de acceso</strong></td>
@@ -1448,8 +1459,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="monitor-de-uso-corporativo-de-ia-t21"><span class="antetitulo">07</span>Monitor de uso corporativo de IA (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>)</h2>
-<p>La herramienta <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>) consolida la información de esta política para el comité de IA y para el panel del consejo.</p>
+<h2 id="monitor-de-uso-corporativo-de-ia-t21"><span class="antetitulo">07</span>Monitor de uso corporativo de IA (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>)</h2>
+<p>La herramienta <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>) consolida la información de esta política para el comité de IA y para el panel del consejo.</p>
 <h3 id="7-1-contenido">7.1 Contenido</h3>
 <div class="tabla"><table>
 <thead>
@@ -1476,13 +1487,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Uso no autorizado</strong></td>
 <td>Detecciones por fuente; usuarios o áreas afectadas (agregado); no conformidades por clasificación; decisiones de regularización (autorizar, sustituir, bloquear); tiempo hasta regularización.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></td>
 <td>Mensual</td>
 </tr>
 <tr>
 <td><strong>IA embebida</strong></td>
 <td>Funciones de IA detectadas en software de terceros; activadas, desactivadas y pendientes de decisión.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, compras</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, compras</td>
 <td>Trimestral</td>
 </tr>
 <tr>
@@ -1500,7 +1511,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Excepciones</strong></td>
 <td>Excepciones de uso vigentes y vencidas.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>Mensual</td>
 </tr>
 </tbody>
@@ -1543,7 +1554,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr id="cod-c4">
 <td><strong>C4</strong></td>
-<td>Monitor <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> revisado por el comité de IA; excepciones informadas a la comisión delegada.</td>
+<td>Monitor <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a> revisado por el comité de IA; excepciones informadas a la comisión delegada.</td>
 </tr>
 <tr id="cod-c5">
 <td><strong>C5</strong></td>
@@ -1551,7 +1562,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Los criterios concretos de <em>gate</em> se fijan en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>.</p>
+<p>Los criterios concretos de <em>gate</em> se fijan en el <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>.</p>
 <hr />
 <h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">09</span>Herramientas y plantillas asociadas</h2>
 <div class="tabla"><table>
@@ -1564,62 +1575,62 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t21">
-<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
+<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a></strong></td>
 <td>Monitor de uso corporativo de IA</td>
 <td>Licencias, uso no autorizado, IA embebida, controles técnicos y alfabetización.</td>
 </tr>
 <tr id="cod-t02">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a></strong></td>
 <td>Inventario de sistemas de IA</td>
 <td>Registro de herramientas autorizadas, IA embebida y usos no autorizados.</td>
 </tr>
 <tr id="cod-t08">
-<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
+<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></strong></td>
 <td>Registro de no conformidades e incidentes</td>
 <td>No conformidades por uso no autorizado e incidentes comunicados por empleados.</td>
 </tr>
 <tr id="cod-t09">
-<td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></strong></td>
+<td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a></strong></td>
 <td>Registro de proveedores de IA</td>
 <td>Evaluación de proveedores de herramientas y de software con IA embebida.</td>
 </tr>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
 <td>Registro de iniciativas</td>
 <td>Excepciones y paso al ciclo completo.</td>
 </tr>
 <tr id="cod-p05">
-<td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></strong></td>
+<td><strong><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a></strong></td>
 <td>Ficha de inventario del sistema de IA</td>
 <td>Alta de herramientas y usos.</td>
 </tr>
 <tr id="cod-p14">
-<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></strong></td>
+<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a></strong></td>
 <td>Evaluación de proveedor de IA</td>
 <td>Antes de autorizar una herramienta o activar IA embebida.</td>
 </tr>
 <tr id="cod-p20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Formación de supervisores y usuarios de iniciativas.</td>
 </tr>
 <tr id="cod-p40">
-<td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a></strong></td>
+<td><strong><a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html" title="Plantilla P40 &#183; Solicitud y registro de excepciones">P40</a></strong></td>
 <td>Solicitud y registro de excepciones</td>
 <td>Solicitud, aprobación y registro de excepciones a la política (sección 3.8).</td>
 </tr>
 <tr id="cod-p43">
-<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a></strong></td>
+<td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Plantilla P43 &#183; Cat&#225;logo de herramientas autorizadas y solicitudes">P43</a></strong></td>
 <td>Catálogo de herramientas autorizadas y solicitudes</td>
 <td>Catálogo de herramientas autorizadas y solicitudes de nuevas herramientas (sección 4.2).</td>
 </tr>
 <tr id="cod-p44">
-<td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
+<td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html" title="Plantilla P44 &#183; Encuesta de uso y percepci&#243;n de la IA">P44</a></strong></td>
 <td>Encuesta de uso y percepción de la IA</td>
 <td>Uso y percepción de la IA por la plantilla, incluido el uso no autorizado (sección 5.2).</td>
 </tr>
 <tr id="cod-p45">
-<td><strong><a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a></strong></td>
+<td><strong><a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Plantilla P45 &#183; Plan y registro de alfabetizaci&#243;n y formaci&#243;n">P45</a></strong></td>
 <td>Plan y registro de alfabetización y formación</td>
 <td>Programa por perfiles y registro por persona (sección 6).</td>
 </tr>
@@ -1692,7 +1703,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>Primera versión. Modelos de política corporativa de IA y de política de uso aceptable; tratamiento de la IA embebida, las suites de productividad, el uso individual y el uso no autorizado con detección, registro, clasificación como no conformidad y regularización; programa de alfabetización en IA por ocho perfiles con la redacción del artículo 4 modificada por el Reglamento (UE) 2026/1744; contenido del monitor <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>.</td>
+<td>Primera versión. Modelos de política corporativa de IA y de política de uso aceptable; tratamiento de la IA embebida, las suites de productividad, el uso individual y el uso no autorizado con detección, registro, clasificación como no conformidad y regularización; programa de alfabetización en IA por ocho perfiles con la redacción del artículo 4 modificada por el Reglamento (UE) 2026/1744; contenido del monitor <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1933,6 +1944,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

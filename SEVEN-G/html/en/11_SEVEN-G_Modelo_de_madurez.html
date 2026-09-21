@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,13 +439,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/11_SEVEN-G_Modelo_de_madurez.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/11_SEVEN-G_Modelo_de_madurez.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/11_SEVEN-G_Modelo_de_madurez.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Maturity diagnosis</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#model-structure"><span>02</span>Model structure</a></li><li><a href="#rubrics-and-questionnaire-by-dimension"><span>03</span>Rubrics and questionnaire by dimension</a></li><li><a href="#assessment-method"><span>04</span>Assessment method</a></li><li><a href="#calculation"><span>05</span>Calculation</a></li><li><a href="#maturity-report"><span>06</span>Maturity report</a></li><li><a href="#links-with-the-rest-of-the-framework"><span>07</span>Links with the rest of the framework</a></li><li><a href="#maturity-targets-by-ambition"><span>08</span>Maturity targets by ambition</a></li><li><a href="#illustrative-example"><span>09</span>Illustrative example</a></li><li><a href="#associated-tools-and-templates"><span>10</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>11</span>Related documents</a></li><li><a href="#version-control"><span>12</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>Verified maturity assessment at the initial diagnosis (C1) and at each annual review (C5): seven dimensions, levels 0 to 5, observable evidence and an overall level capped by D1 and D6. An unverified self-assessment is not valid for C1, C5 or the declaration of application. In Enterprise scope, additionally, an independent assessment at least every two years.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>This document defines how to measure a <strong>company's maturity to govern artificial intelligence and obtain verifiable value from it</strong>. It is the instrument of the measurement system (component C) that produces one of the mandatory outputs of stage <strong>C1 · Diagnosis</strong> —&quot;maturity assessment with evidence&quot; (01 §5.1)— and that is repeated in <strong>C5 · Review</strong> to check progress.</p>
-<p>The document contains the seven dimensions and the six levels, the rubric and questionnaire for each dimension, the assessment method, the calculation, the structure of the report, the links with the rest of the framework, the maturity targets according to ambition and an illustrative example. The supporting tool is <strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> · Maturity diagnosis</strong> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>).</p>
+<p>The document contains the seven dimensions and the six levels, the rubric and questionnaire for each dimension, the assessment method, the calculation, the structure of the report, the links with the rest of the framework, the maturity targets according to ambition and an illustrative example. The supporting tool is <strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> · Maturity diagnosis</strong> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>).</p>
 <h3 id="1-1-what-it-measures-and-what-it-does-not">1.1 What it measures and what it does not</h3>
 <div class="tabla"><table>
 <thead>
@@ -450,7 +461,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Whether that capability is in place and working, with observable evidence.</td>
-<td>Whether the company is transforming or merely becoming more efficient: that is measured by the transformation index (<a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>).</td>
+<td>Whether the company is transforming or merely becoming more efficient: that is measured by the transformation index (<a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>).</td>
 </tr>
 <tr>
 <td>The company's progress over time using a consistent method.</td>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The model is not a certification. A maturity result does not replace the framework audit (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html">document 38</a>) or attest to regulatory compliance. This document does not constitute legal advice.</p>
+<p>The model is not a certification. A maturity result does not replace the framework audit (<a href="38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Document 38 &#183; AI audit framework">document 38</a>) or attest to regulatory compliance. This document does not constitute legal advice.</p>
 <h3 id="1-2-assessment-principles">1.2 Assessment principles</h3>
 <ol>
 <li><strong>Evidence, not assertion.</strong> A criterion is only met if there is observable and verified evidence (principle 8 in 01 §3).</li>
@@ -501,7 +512,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>D3</strong></td>
 <td><strong>Data and knowledge</strong></td>
 <td>Does it have data and knowledge with an owner, quality, legal basis and lineage in order to use them in AI?</td>
-<td>Spheres 05 and 06 · <a href="51_SEVEN-G_Datos_y_conocimiento.html">document 51</a></td>
+<td>Spheres 05 and 06 · <a href="51_SEVEN-G_Datos_y_conocimiento.html" title="Document 51 &#183; Data and knowledge for AI">document 51</a></td>
 </tr>
 <tr id="cod-d4">
 <td><strong>D4</strong></td>
@@ -620,12 +631,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>3</strong></td>
 <td>C1 and C2 completed: the board has approved the thesis, the ambition by sphere, the risk appetite and the thresholds. Bodies operating according to the calendar in 01 §5.2. Roles assigned without incompatibilities.</td>
-<td>Board minutes; approved thesis (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>); mandates and minutes; role assignment records (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>).</td>
+<td>Board minutes; approved thesis (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a>); mandates and minutes; role assignment records (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a>).</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>The board has exercised oversight with the dashboard for at least two quarters. The board's recommendations are tracked with an identifier and status. The decision time of the bodies is measured.</td>
-<td>Dashboards (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) and minutes; register of recommendations (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>); agility report.</td>
+<td>Dashboards (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) and minutes; register of recommendations (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>); agility report.</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
@@ -648,19 +659,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D1.01</td>
 <td>Is there a member of senior management with responsibility for the company's AI assigned in writing?</td>
 <td>1</td>
-<td>Appointment, approved organisation chart or management resolution (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html">P38</a>).</td>
+<td>Appointment, approved organisation chart or management resolution (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Template P38 &#183; Rules of procedure of the AI governance bodies">P38</a>).</td>
 </tr>
 <tr>
 <td>D1.02</td>
 <td>Has AI been discussed by the management committee or the board in the last 12 months, as recorded in the minutes?</td>
 <td>1</td>
-<td>Minutes or agenda (<a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html">P39</a>).</td>
+<td>Minutes or agenda (<a href="plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html" title="Template P39 &#183; Agenda and minutes of a governance body">P39</a>).</td>
 </tr>
 <tr>
 <td>D1.03</td>
 <td>Is there an AI Committee, or an existing committee with an extended mandate, with a written mandate and at least two meetings held?</td>
 <td>2</td>
-<td>Approved mandate (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html">P38</a>); minutes.</td>
+<td>Approved mandate (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Template P38 &#183; Rules of procedure of the AI governance bodies">P38</a>); minutes.</td>
 </tr>
 <tr>
 <td>D1.04</td>
@@ -672,49 +683,49 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D1.05</td>
 <td>Has the board approved the AI thesis, the ambition level by sphere and the risk appetite on the basis of a C1 diagnosis? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Board minutes; approved thesis; C1 report (<a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html">P33</a>).</td>
+<td>Board minutes; approved thesis; C1 report (<a href="plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html" title="Template P33 &#183; C1 diagnosis report">P33</a>).</td>
 </tr>
 <tr>
 <td>D1.06</td>
 <td>Have the C2 thresholds been approved: Enterprise investment criterion, return horizon, reference time limits by phase and nonconformity time limits?</td>
 <td>3</td>
-<td>Thresholds document with its approval (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>).</td>
+<td>Thresholds document with its approval (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a>).</td>
 </tr>
 <tr>
 <td>D1.07</td>
 <td>Have the AI Committee, the AI Office and the board committee been set up with the functions in 01 §8.3, and do they meet according to the calendar in 01 §5.2? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Mandates (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html">P38</a>); minutes for the last six months.</td>
+<td>Mandates (<a href="plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html" title="Template P38 &#183; Rules of procedure of the AI governance bodies">P38</a>); minutes for the last six months.</td>
 </tr>
 <tr>
 <td>D1.08</td>
 <td>Do all active initiatives have the roles in 01 §8.1 assigned, without any of the incompatibilities in 01 §8.2? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Sample of <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>; check in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Sample of <a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a>; check in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</td>
 </tr>
 <tr>
 <td>D1.09</td>
 <td>Does the board or its board committee review the AI dashboard at least quarterly, as recorded in the minutes for two consecutive quarters?</td>
 <td>4</td>
-<td>Dashboards (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>); minutes.</td>
+<td>Dashboards (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>); minutes.</td>
 </tr>
 <tr>
 <td>D1.10</td>
 <td>Are the board's recommendations tracked with a persistent identifier, owner, deadline, status and evidence, and is the decision time of the bodies measured?</td>
 <td>4</td>
-<td>Register of recommendations (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>); decision time metrics (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Register of recommendations (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>); decision time metrics (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
 <td>D1.11</td>
 <td>Has the AI thesis been reviewed in a C5 with the evidence on maturity, transformation index and portfolio, and have the approved changes been applied?</td>
 <td>5</td>
-<td>C5 report (<a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html">P37</a>); versioned thesis; board minutes.</td>
+<td>C5 report (<a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="Template P37 &#183; C5 annual review">P37</a>); versioned thesis; board minutes.</td>
 </tr>
 <tr>
 <td>D1.12</td>
 <td>Do the AI Committee and the AI Office assess their own effectiveness at least once a year and close the resulting improvement actions?</td>
 <td>5</td>
-<td>Self-assessment (<a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html">P37</a> §11); action plan with closure.</td>
+<td>Self-assessment (<a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="Template P37 &#183; C5 annual review">P37</a> §11); action plan with closure.</td>
 </tr>
 </tbody>
 </table></div>
@@ -737,22 +748,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>2</strong></td>
 <td>Initiative register with phase, status and owner covering the known initiatives. There are documented <em>gate</em> decisions in some of the initiatives.</td>
-<td>Register; <em>gate</em> decision records (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
+<td>Register; <em>gate</em> decision records (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>).</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
 <td>All new initiatives are in the register with the traceability in 01 §6.11 and go through the <em>gates</em>. Portfolio prioritised with a documented method. Falsifiable hypotheses and stop criteria before investing.</td>
-<td>Register with events (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>); <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> predating the spending; portfolio minutes; <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>.</td>
+<td>Register with events (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>); <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> predating the spending; portfolio minutes; <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>.</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>Funnel metrics reviewed monthly and portfolio balance quarterly for two quarters. Realised value compared with the hypothesis in all initiatives in production. Stops and retirements carried out according to procedure.</td>
-<td>Reports and minutes; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; retirement register (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>).</td>
+<td>Reports and minutes; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>; retirement register (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>).</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
 <td>Historical probability and weighted value calculated with the company's own data. Entry or prioritisation criteria modified on the basis of stop reasons and cohorts.</td>
-<td>Analysis in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; versioned method; C5 report.</td>
+<td>Analysis in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>; versioned method; C5 report.</td>
 </tr>
 </tbody>
 </table></div>
@@ -782,37 +793,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D2.03</td>
 <td>Does the company maintain an initiative register with phase, status and owner covering all known initiatives?</td>
 <td>2</td>
-<td>Register; cross-check against the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Register; cross-check against the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>).</td>
 </tr>
 <tr>
 <td>D2.04</td>
 <td>Are there documented <em>gate</em> decisions, with decision-maker and outcome, in some of the initiatives of the last 12 months?</td>
 <td>2</td>
-<td><em>Gate</em> decision records (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</td>
+<td><em>Gate</em> decision records (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>).</td>
 </tr>
 <tr>
 <td>D2.05</td>
 <td>Are all new initiatives registered with phase dates, waiting periods, <em>gates</em>, criteria, conditions, tags and stop reasons (01 §6.11)? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Sample of records with event history in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Sample of records with event history in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</td>
 </tr>
 <tr>
 <td>D2.06</td>
 <td>Do all new initiatives go through the lifecycle with their <em>gates</em> recorded before consuming the budget for the next phase? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Sample: <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> dated before the spending.</td>
+<td>Sample: <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> dated before the spending.</td>
 </tr>
 <tr>
 <td>D2.07</td>
 <td>Is the portfolio prioritised with a documented method that uses additional net value per euro and ambition balance, approved by the AI Committee?</td>
 <td>3</td>
-<td>Method (<a href="14_SEVEN-G_Gestion_de_cartera.html">document 14</a> or equivalent); minutes approving the portfolio.</td>
+<td>Method (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a> or equivalent); minutes approving the portfolio.</td>
 </tr>
 <tr>
 <td>D2.08</td>
 <td>Do all initiatives that pass G2 have a falsifiable hypothesis, baseline, confirmed ambition and stop criteria set before investing?</td>
 <td>3</td>
-<td>Sample of <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> and <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>.</td>
+<td>Sample of <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> and <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>.</td>
 </tr>
 <tr>
 <td>D2.09</td>
@@ -822,15 +833,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>D2.10</td>
-<td>At each R6, is realised value compared with the hypothesis in all initiatives in production, and are the stops and retirements decided carried out using the procedure in <a href="14_SEVEN-G_Gestion_de_cartera.html">document 14</a>?</td>
+<td>At each R6, is realised value compared with the hypothesis in all initiatives in production, and are the stops and retirements decided carried out using the procedure in <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a>?</td>
 <td>4</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>; retirement register (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>).</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>; <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>; retirement register (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>).</td>
 </tr>
 <tr>
 <td>D2.11</td>
 <td>Does the company calculate, with its own data, the historical probability of reaching production from each phase and the weighted portfolio value?</td>
 <td>5</td>
-<td>Analysis in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> with sufficient history.</td>
+<td>Analysis in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> with sufficient history.</td>
 </tr>
 <tr>
 <td>D2.12</td>
@@ -864,17 +875,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>3</strong></td>
 <td>Formal owner for each dataset. Legal basis, minimisation and impact assessments verified in phase 3. Lineage in all Enterprise initiatives. Knowledge sources with an owner, validity, permissions and rights.</td>
-<td>Appointments; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>; <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; register of knowledge sources.</td>
+<td>Appointments; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>; <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>; register of knowledge sources.</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>Data quality monitored in production with thresholds, alerts and incidents for two quarters. Delays attributable to data measured. Plan for critical knowledge.</td>
-<td>Configuration (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>); incident register; metrics in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; plan.</td>
+<td>Configuration (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>); incident register; metrics in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>; plan.</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
 <td>Data and knowledge reused across initiatives with measured usage. Data preparation cost and time measured and improving over two cycles.</td>
-<td>Reuse register; indicator series (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>).</td>
+<td>Reuse register; indicator series (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -922,13 +933,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D3.06</td>
 <td>Are the legal basis, minimisation and, where applicable, the data protection impact assessment verified in phase 3 for all personal data?</td>
 <td>3</td>
-<td>Sample of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> and of assessments.</td>
+<td>Sample of <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a> and of assessments.</td>
 </tr>
 <tr>
 <td>D3.07</td>
 <td>Do all Enterprise initiatives have documented data and model lineage, updated after the latest change?</td>
 <td>3</td>
-<td>Sample of <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Sample of <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>.</td>
 </tr>
 <tr>
 <td>D3.08</td>
@@ -940,13 +951,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D3.09</td>
 <td>Is the quality of input data monitored in production with thresholds and alerts, and are incidents recorded and resolved?</td>
 <td>4</td>
-<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>; incident register for two quarters.</td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>; incident register for two quarters.</td>
 </tr>
 <tr>
 <td>D3.10</td>
 <td>Are waiting periods and stops attributable to data measured, and is there an approved plan for critical knowledge that depends on a few people?</td>
 <td>4</td>
-<td>Metrics in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; plan with owners.</td>
+<td>Metrics in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>; plan with owners.</td>
 </tr>
 <tr>
 <td>D3.11</td>
@@ -958,7 +969,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D3.12</td>
 <td>Are the cost and time of data preparation measured per initiative, with improvement over at least two annual cycles?</td>
 <td>5</td>
-<td>Indicator series (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>).</td>
+<td>Indicator series (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -976,7 +987,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>1</strong></td>
 <td>Each AI system in production or pilot has a technical owner. Deployments leave a written record.</td>
-<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>); deployment log.</td>
+<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>); deployment log.</td>
 </tr>
 <tr>
 <td><strong>2</strong></td>
@@ -986,12 +997,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>3</strong></td>
 <td>All systems in production have an operations owner, a manual, performance and degradation monitoring, a tested rollback plan, a kill switch when they take actions and a current R6. Generative AI is evaluated before each change.</td>
-<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>; R6 dates in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; evaluation reports.</td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>; R6 dates in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>; evaluation reports.</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>Operational indicators reviewed monthly and recurring cost per use case known, for two quarters.</td>
-<td>Operational reports; cost report (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>).</td>
+<td>Operational reports; cost report (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>).</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
@@ -1014,7 +1025,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D4.01</td>
 <td>Does each AI system in production or in pilot have an identified technical owner?</td>
 <td>1</td>
-<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>).</td>
 </tr>
 <tr>
 <td>D4.02</td>
@@ -1038,19 +1049,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D4.05</td>
 <td>Do all systems in production have an operations owner, an operations manual and performance and degradation monitoring with alerts?</td>
 <td>3</td>
-<td>Sample of <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
+<td>Sample of <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a> and <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>.</td>
 </tr>
 <tr>
 <td>D4.06</td>
 <td>Do all systems in production have a rollback plan tested before go-live and, when they act with A2 or A3 autonomy, a tested kill switch?</td>
 <td>3</td>
-<td>Sample of <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> with the test result; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>.</td>
+<td>Sample of <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a> with the test result; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>.</td>
 </tr>
 <tr>
 <td>D4.07</td>
 <td>Do all initiatives in production have a current continuity review (R6) according to their intensity? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Date of the latest R6 against its periodicity in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Date of the latest R6 against its periodicity in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</td>
 </tr>
 <tr>
 <td>D4.08</td>
@@ -1068,13 +1079,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D4.10</td>
 <td>Is the actual recurring cost of each use case in production known, with allocation of licences, model consumption, compute and people?</td>
 <td>4</td>
-<td>Cost report (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>) for two quarters.</td>
+<td>Cost report (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>) for two quarters.</td>
 </tr>
 <tr>
 <td>D4.11</td>
 <td>Are common platforms or components reused, and has time to production been reduced in a measured way?</td>
 <td>5</td>
-<td>Time to production by cohort (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Time to production by cohort (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
 <td>D4.12</td>
@@ -1104,17 +1115,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>2</strong></td>
 <td>Approved literacy programme. Adoption plans in some of the initiatives.</td>
-<td>Programme; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td>Programme; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>.</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
 <td>AI literacy appropriate to their function for all staff who use or oversee AI. Training for SEVEN-G roles. Adoption plan in all Augment and Transform initiatives. Released capacity recorded separately. Information and consultation where required.</td>
-<td>Training register by group; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> predating G4; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> or <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>; minutes.</td>
+<td>Training register by group; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> predating G4; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> or <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>; minutes.</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>Actual adoption and use of released capacity measured for two quarters.</td>
-<td>Usage indicators; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> reports.</td>
+<td>Usage indicators; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a> reports.</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
@@ -1143,7 +1154,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D5.02</td>
 <td>Does the user area or human resources take part in any initiative that changes people's work?</td>
 <td>1</td>
-<td>Minutes; initiative charter (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>).</td>
+<td>Minutes; initiative charter (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>).</td>
 </tr>
 <tr>
 <td>D5.03</td>
@@ -1155,7 +1166,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D5.04</td>
 <td>Do some of the initiatives have an adoption plan with training and communication?</td>
 <td>2</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>.</td>
 </tr>
 <tr>
 <td>D5.05</td>
@@ -1173,13 +1184,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D5.07</td>
 <td>Do all Augment and Transform initiatives have an adoption and people plan approved before G4?</td>
 <td>3</td>
-<td>Sample of dated <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td>Sample of dated <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>.</td>
 </tr>
 <tr>
 <td>D5.08</td>
 <td>Is released capacity recorded separately from savings, and are employee representatives informed and consulted where regulations or agreements require it?</td>
 <td>3</td>
-<td>Records in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> or <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>; minutes or communications.</td>
+<td>Records in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> or <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a>; minutes or communications.</td>
 </tr>
 <tr>
 <td>D5.09</td>
@@ -1191,7 +1202,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D5.10</td>
 <td>Is it tracked quarterly how much released capacity has been realised as lower cost or reassigned, with an explicit destination?</td>
 <td>4</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> or <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> reports.</td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a> or <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a> reports.</td>
 </tr>
 <tr>
 <td>D5.11</td>
@@ -1208,7 +1219,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="3-7-d6-risk-security-and-compliance">3.7 D6 · Risk, security and compliance</h3>
-<p><strong>Scope.</strong> Inventory and regulatory classification; prohibited practices; impact assessments; risk management (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>); AI and agent security (35); third parties (36); nonconformities and incidents (37); audit (38); unauthorised use; second and third line. <strong>Interviewees:</strong> AI Risk Owner, compliance, legal counsel, information security, data protection officer, internal audit, procurement or supplier management.</p>
+<p><strong>Scope.</strong> Inventory and regulatory classification; prohibited practices; impact assessments; risk management (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>); AI and agent security (35); third parties (36); nonconformities and incidents (37); audit (38); unauthorised use; second and third line. <strong>Interviewees:</strong> AI Risk Owner, compliance, legal counsel, information security, data protection officer, internal audit, procurement or supplier management.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1226,12 +1237,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>2</strong></td>
 <td>Inventory started that includes in-house systems, third-party systems and corporate use. AI Risk Owner independent of those who build. Risks assessed in some of the initiatives.</td>
-<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>); appointment; risk matrices.</td>
+<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>); appointment; risk matrices.</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
 <td>Complete inventory with classification, intensity and owner, and prohibited practices ruled out. Matrix and impact assessments in all initiatives from phase 3. Nonconformity process in 01 §12. Suppliers assessed and agent controls.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>; <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> register; <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>; <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a> register; <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>.</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
@@ -1271,7 +1282,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D6.03</td>
 <td>Has an AI system inventory been started that includes in-house systems, third-party systems and corporate use of general-purpose AI?</td>
 <td>2</td>
-<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>).</td>
 </tr>
 <tr>
 <td>D6.04</td>
@@ -1283,25 +1294,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D6.05</td>
 <td>Does the inventory include all AI systems with regulatory classification, intensity and owner, and has the use of prohibited practices been ruled out in a documented way? <strong>(§14)</strong></td>
 <td>3</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>; <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>; statement of completeness signed by each area (<a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a>, annex).</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>; <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a>; <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>; statement of completeness signed by each area (<a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Template P32 &#183; SEVEN-G implementation mandate">P32</a>, annex).</td>
 </tr>
 <tr>
 <td>D6.06</td>
-<td>Do all initiatives in phase 3 or later have a risk matrix and register using the scale in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>, and the applicable impact assessments?</td>
+<td>Do all initiatives in phase 3 or later have a risk matrix and register using the scale in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>, and the applicable impact assessments?</td>
 <td>3</td>
-<td>Sample of <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Sample of <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> and <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>.</td>
 </tr>
 <tr>
 <td>D6.07</td>
 <td>Are nonconformities managed using the process in 01 §12: classification, containment, root cause, corrective action, closure and time limits? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Register (<a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>); sample of case files.</td>
+<td>Register (<a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>); sample of case files.</td>
 </tr>
 <tr>
 <td>D6.08</td>
 <td>Are AI suppliers assessed with levels N1–N3, and do agents with A2 or A3 autonomy have their own identity, least privilege, a kill switch and prompt injection testing before production? <strong>(if applicable, for the agents part)</strong></td>
 <td>3</td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>; <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>.</td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>; <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>; <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>.</td>
 </tr>
 <tr>
 <td>D6.09</td>
@@ -1319,18 +1330,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D6.11</td>
 <td>Has the effectiveness of key controls been tested with tests or drills, including a serious incident, and has the recurrence of nonconformities by cause been reduced?</td>
 <td>5</td>
-<td>Drill reports; <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> series.</td>
+<td>Drill reports; <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a> series.</td>
 </tr>
 <tr>
 <td>D6.12</td>
 <td>Is the regulatory mapping reviewed at least every six months, and have controls been adapted before the application date of new obligations?</td>
 <td>5</td>
-<td>Versioned mapping (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>); dated plans.</td>
+<td>Versioned mapping (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>); dated plans.</td>
 </tr>
 </tbody>
 </table></div>
 <h3 id="3-8-d7-measurement-and-evidence">3.8 D7 · Measurement and evidence</h3>
-<p><strong>Scope.</strong> Value measurement rules (00 §6 and <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">document 40</a>); validated, declared and estimated statuses; baseline and attribution; full costs; benefits realisation; board dashboard; transformation index; quality and traceability of evidence; decision agility. <strong>Interviewees:</strong> management control, AI Office, AI Auditor, product owners, board secretary.</p>
+<p><strong>Scope.</strong> Value measurement rules (00 §6 and <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>); validated, declared and estimated statuses; baseline and attribution; full costs; benefits realisation; board dashboard; transformation index; quality and traceability of evidence; decision agility. <strong>Interviewees:</strong> management control, AI Office, AI Auditor, product owners, board secretary.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1348,17 +1359,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>2</strong></td>
 <td>Some of the initiatives have a measured baseline and value with a formula. Management receives a periodic AI report.</td>
-<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; reports for two periods.</td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>; reports for two periods.</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
 <td>The measurement rules are applied to all amounts. The board receives the dashboard with the proportion of validated value. Evidence is traceable and verified. The transformation index has been calculated.</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>; dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) and minutes; sample in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>; <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a> result.</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>; dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) and minutes; sample in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>; <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> result.</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>Independent validation of value in each period, agility measured by risk and ambition, and measurement audited by sampling, for two quarters.</td>
-<td>Validation reports; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> metrics; audit report.</td>
+<td>Validation reports; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>; <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> metrics; audit report.</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
@@ -1393,7 +1404,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D7.03</td>
 <td>Do some of the initiatives have a measured baseline and value expressed with a formula?</td>
 <td>2</td>
-<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>; <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>; <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>.</td>
 </tr>
 <tr>
 <td>D7.04</td>
@@ -1405,37 +1416,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D7.05</td>
 <td>Do all amounts have a formula, incremental nature and status, with efficiencies, return and recurring cost separated and released capacity reported separately? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Sample in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>; report to the board.</td>
+<td>Sample in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>; report to the board.</td>
 </tr>
 <tr>
 <td>D7.06</td>
 <td>Does the company report to the board with the oversight dashboard, showing the proportion of validated value and missing data as &quot;no data&quot;? <strong>(§14)</strong></td>
 <td>3</td>
-<td>Dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>); minutes.</td>
+<td>Dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>); minutes.</td>
 </tr>
 <tr>
 <td>D7.07</td>
 <td>Does <em>gate</em> evidence have an author, date, version and verification, and does the verifier check that it was not prepared after the fact?</td>
 <td>3</td>
-<td>Sample in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>; verifier reports.</td>
+<td>Sample in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>; verifier reports.</td>
 </tr>
 <tr>
 <td>D7.08</td>
 <td>Has the transformation index been calculated with its eight signals in the latest C1 or C5?</td>
 <td>3</td>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a> result.</td>
+<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> result.</td>
 </tr>
 <tr>
 <td>D7.09</td>
 <td>Does management control or another independent function validate the declared value in each reporting period, and is realisation tracked against the hypothesis?</td>
 <td>4</td>
-<td>Validation reports for two quarters; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>.</td>
+<td>Validation reports for two quarters; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>.</td>
 </tr>
 <tr>
 <td>D7.10</td>
 <td>Is the time from idea to approval and to production measured by risk and ambition level, and is the measurement audited by sampling?</td>
 <td>4</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> metrics; audit report.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> metrics; audit report.</td>
 </tr>
 <tr>
 <td>D7.11</td>
@@ -1476,7 +1487,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Independent assessment</strong></td>
 <td>Third line or external assessor with no involvement in the implementation.</td>
-<td>It should be carried out at least every two years in companies with an Enterprise implementation scope (<a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>) and before publicly declaring that SEVEN-G is applied.</td>
+<td>It should be carried out at least every two years in companies with an Enterprise implementation scope (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>) and before publicly declaring that SEVEN-G is applied.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1570,7 +1581,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="4-6-evidence-sampling">4.6 Evidence sampling</h3>
-<p>Questions about practices that must be applied to &quot;all&quot; initiatives or systems are verified on a sample from the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) or the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>):</p>
+<p>Questions about practices that must be applied to &quot;all&quot; initiatives or systems are verified on a sample from the register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) or the inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1603,7 +1614,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Calibration.</strong> In a joint session, the team reviews doubtful answers using the same criterion for all dimensions.</li>
 <li><strong>Fact check.</strong> The owners of each dimension may correct factual errors and provide evidence predating the cut-off date. They do not negotiate answers.</li>
-<li><strong>Approval.</strong> The AI Committee approves the report and presents it to the board. The result, the answers and the links to evidence are recorded in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>.</li>
+<li><strong>Approval.</strong> The AI Committee approves the report and presents it to the board. The result, the answers and the links to evidence are recorded in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>.</li>
 </ol>
 <hr />
 <h2 id="calculation"><span class="antetitulo">05</span>Calculation</h2>
@@ -1650,7 +1661,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>6. Targets and improvement plan</strong></td>
-<td>Target by dimension set in C2; actions with owner, deadline and closure criterion. Actions that the board asks to be tracked are added to the register of recommendations (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>).</td>
+<td>Target by dimension set in C2; actions with owner, deadline and closure criterion. Actions that the board asks to be tracked are added to the register of recommendations (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>).</td>
 </tr>
 <tr>
 <td><strong>7. Annexes</strong></td>
@@ -1661,8 +1672,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="links-with-the-rest-of-the-framework"><span class="antetitulo">07</span>Links with the rest of the framework</h2>
 <h3 id="7-1-with-c1-and-c5">7.1 With C1 and C5</h3>
-<p>In <strong>C1</strong>, the verified assessment sets the baseline and feeds the thesis, the ambition and the risk appetite of C2. In <strong>C5</strong>, it is repeated with the same questionnaire version, compared with the baseline, and a check is made as to whether the maturity targets set in C2 have been achieved. Between C1 and C5, the AI Office may update answers in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> as a self-assessment, with no level value.</p>
-<h3 id="7-2-with-the-transformation-index-document-12">7.2 With the transformation index (<a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>)</h3>
+<p>In <strong>C1</strong>, the verified assessment sets the baseline and feeds the thesis, the ambition and the risk appetite of C2. In <strong>C5</strong>, it is repeated with the same questionnaire version, compared with the baseline, and a check is made as to whether the maturity targets set in C2 have been achieved. Between C1 and C5, the AI Office may update answers in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> as a self-assessment, with no level value.</p>
+<h3 id="7-2-with-the-transformation-index-document-12">7.2 With the transformation index (<a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>)</h3>
 <p>Maturity measures the <strong>capability</strong> to govern and capture value; the index measures <strong>what type of value</strong> is obtained. They are independent and are read together:</p>
 <div class="tabla"><table>
 <thead>
@@ -1693,7 +1704,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="7-3-with-the-declaration-of-application-01-14">7.3 With the declaration of application (01 §14)</h3>
 <p>The ten <strong>(§14)</strong> questions substantiate the seven conditions in 01 §14. A company may declare that it applies SEVEN-G when <strong>all of them are &quot;Yes&quot; in a verified assessment</strong> and the initiatives that predate the framework are being regularised within the time limit approved in C2. As all of them are at level 3, <strong>a company with a verified level 3 in D1, D2, D4, D6 and D7 meets the conditions</strong>; the declaration is nevertheless based on the questions and not on the overall level.</p>
 <h3 id="7-4-with-the-dashboard-and-the-bodies">7.4 With the dashboard and the bodies</h3>
-<p>The overall level and the level by dimension are published in the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) after each C1 or C5, with the assessment type and the cut-off date. The AI Committee reviews progress on the improvement actions quarterly.</p>
+<p>The overall level and the level by dimension are published in the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) after each C1 or C5, with the assessment type and the cut-off date. The AI Committee reviews progress on the improvement actions quarterly.</p>
 <hr />
 <h2 id="maturity-targets-by-ambition"><span class="antetitulo">08</span>Maturity targets by ambition</h2>
 <p>The company sets its maturity targets in C2. Level 5 is not a default target: the requirement must be proportionate to ambition and risk. Initial references, to be calibrated:</p>
@@ -1804,24 +1815,24 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> · Maturity diagnosis</strong></td>
+<td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> · Maturity diagnosis</strong></td>
 <td>Questionnaire in section 3, links to evidence, samples, verifier adjustments, calculation in section 5, report in section 6 and comparison between assessments. Records assessment type, cut-off date, questionnaire version and weights. Proposal for the data model in 03 §4: entities <em>Maturity assessment</em> and <em>Answer</em>.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 <td>Sources of evidence and samples.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
+<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></td>
 <td>Cross-reading with the transformation index.</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></td>
 <td>Publication of the result and tracking of the actions requested by the board.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>–<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
-<td>Usual evidence. The answer sheet, the calculation and the report have their own template, <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html">P34</a>, which <a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> calculates and generates.</td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a>, <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>–<a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>–<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
+<td>Usual evidence. The answer sheet, the calculation and the report have their own template, <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Template P34 &#183; Maturity questionnaire and report">P34</a>, which <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> calculates and generates.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1845,7 +1856,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>03 · Tools and initiative register</strong></td>
-<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> and sources of evidence.</td>
+<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> and sources of evidence.</td>
 </tr>
 <tr>
 <td><strong>12 · Transformation index</strong></td>
@@ -2128,6 +2139,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

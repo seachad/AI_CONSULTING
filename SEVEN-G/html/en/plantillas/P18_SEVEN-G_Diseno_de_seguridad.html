@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P18_SEVEN-G_Diseno_de_seguridad.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P18_SEVEN-G_Diseno_de_seguridad.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P18_SEVEN-G_Diseno_de_seguridad.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#threats-and-controls"><span>03</span>Threats and controls</a></li><li><a href="#agent-identity"><span>04</span>Agent identity</a></li><li><a href="#least-permissions"><span>05</span>Least permissions</a></li><li><a href="#intent-based-access-control"><span>06</span>Intent-based access control</a></li><li><a href="#action-limits"><span>07</span>Action limits</a></li><li><a href="#human-validation-of-sensitive-actions"><span>08</span>Human validation of sensitive actions</a></li><li><a href="#kill-switch"><span>09</span>Kill switch</a></li><li><a href="#action-log"><span>10</span>Action log</a></li><li><a href="#security-testing-including-prompt-injection"><span>11</span>Security testing, including prompt injection</a></li><li><a href="#quality-criteria"><span>12</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>13</span>Approval and verification</a></li><li><a href="#version-control"><span>14</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
@@ -454,25 +465,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>At which <em>gate</em> it is reviewed</strong></td>
-<td>G4 (design) and G5 (tests passed and security sign-off in <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>).</td>
+<td>G4 (design) and G5 (tests passed and security sign-off in <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>).</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
-<td>Lite may omit the fields marked <strong>(Enterprise)</strong>. If the system does not execute actions (A0 or A1 according to <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>), blocks 5 to 9 may be marked <em>Not applicable</em> with a justification; technical identity (block 4) and logging (block 10) are always completed.</td>
+<td>Lite may omit the fields marked <strong>(Enterprise)</strong>. If the system does not execute actions (A0 or A1 according to <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>), blocks 5 to 9 may be marked <em>Not applicable</em> with a justification; technical identity (block 4) and logging (block 10) are always completed.</td>
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">T10</a> Agent security assessment.</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a> Agent security assessment.</td>
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
-<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> Architecture · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Lineage · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Human oversight · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Rollback · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Monitoring · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> Incident response · <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a> (AG controls) · <a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a> (third parties).</td>
+<td><a href="P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a> Architecture · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> Lineage · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> Human oversight · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a> Rollback · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a> Monitoring · <a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a> Incident response · <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> (AG controls) · <a href="../36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a> (third parties).</td>
 </tr>
 </tbody>
 </table></div>
 <p>Rules:</p>
 <ul>
-<li>Controls are referenced using the <strong>AG codes of <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a></strong>. No local codes are created in that format; the company's own controls are referenced with their internal code.</li>
+<li>Controls are referenced using the <strong>AG codes of <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a></strong>. No local codes are created in that format; the company's own controls are referenced with their internal code.</li>
 <li>Critical security controls do not allow <strong>Proceed with conditions</strong> at the <em>gate</em> (01 §7.3).</li>
 <li>The content the system reads (documents, emails, web pages, tool responses) is <strong>data, not instructions</strong>: the design must prevent that content from ordering actions.</li>
 </ul>
@@ -490,12 +501,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
 <td>AI system(s)</td>
 <td></td>
-<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>).</td>
 </tr>
 <tr>
 <td>Technology</td>
@@ -510,7 +521,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Autonomy level</td>
 <td></td>
-<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>).</td>
 </tr>
 <tr>
 <td>Intensity</td>
@@ -548,7 +559,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Threat</th>
 <th>Applies? (Yes · No)</th>
 <th>Planned control</th>
-<th>Reference (AG control of <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a> or internal control)</th>
+<th>Reference (AG control of <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a> or internal control)</th>
 <th>Owner</th>
 <th>Status</th>
 </tr>
@@ -691,7 +702,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Periodic review of the identity and its permissions <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Frequency and owner. Recorded in the non-human identity inventory (<a href="P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html">P54</a>).</td>
+<td>Frequency and owner. Recorded in the non-human identity inventory (<a href="P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html" title="Template P54 &#183; Non-human identity and component inventory">P54</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -863,7 +874,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>By default, a sensitive action without validation <strong>is cancelled</strong>; it is never executed because the time limit has expired. It must be consistent with the allocation of decisions in <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</p>
+<p>By default, a sensitive action without validation <strong>is cancelled</strong>; it is never executed because the time limit has expired. It must be consistent with the allocation of decisions in <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>.</p>
 <hr />
 <h2 id="kill-switch"><span class="antetitulo">09</span>Kill switch</h2>
 <div class="tabla"><table>
@@ -898,7 +909,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Safe state after the stop</td>
 <td></td>
-<td>Manual process or degraded mode (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
+<td>Manual process or degraded mode (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>).</td>
 </tr>
 <tr>
 <td>Authorisation to reactivate</td>
@@ -972,7 +983,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Retention period</td>
 <td></td>
-<td>Not shorter than that required by applicable regulation (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>).</td>
+<td>Not shorter than that required by applicable regulation (<a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>).</td>
 </tr>
 <tr>
 <td>Protection against tampering <strong>(Enterprise)</strong></td>
@@ -1031,10 +1042,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Tests should be performed by people outside the team that builds. A <em>Failed</em> test on a critical control prevents the security sign-off in <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>. The plan and report of adversarial testing campaigns are documented in <a href="P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html">P53</a>.</p>
+<p>Tests should be performed by people outside the team that builds. A <em>Failed</em> test on a critical control prevents the security sign-off in <a href="P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>. The plan and report of adversarial testing campaigns are documented in <a href="P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html" title="Template P53 &#183; Adversarial testing plan and report">P53</a>.</p>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">12</span>Quality criteria</h2>
-<p>Formal G4 and G5 criteria in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>; agent controls in the AG controls of <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>.</p>
+<p>Formal G4 and G5 criteria in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>; agent controls in the AG controls of <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1129,7 +1140,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><em>Gate</em> decision-maker</td>
-<td>According to 01 §7.5 (recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>According to 01 §7.5 (recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1392,6 +1403,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

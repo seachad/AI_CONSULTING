@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#summary-of-the-evidence"><span>03</span>Summary of the evidence</a></li><li><a href="#declared-versus-actual-ambition"><span>04</span>Declared versus actual ambition</a></li><li><a href="#options-assessed"><span>05</span>Options assessed</a></li><li><a href="#decision"><span>06</span>Decision</a></li><li><a href="#if-scaling-or-iterating"><span>07</span>If scaling or iterating</a></li><li><a href="#retirement-plan"><span>08</span>Retirement plan</a></li><li><a href="#lessons-learned"><span>09</span>Lessons learned</a></li><li><a href="#quality-criteria"><span>10</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>11</span>Approval and verification</a></li><li><a href="#version-control"><span>12</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
@@ -454,7 +465,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Who decides</strong></td>
-<td>Sponsor at Lite intensity; AI Committee at Enterprise intensity. Scaling a Transform initiative also requires board approval (01 §7.5). The decision is recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>Sponsor at Lite intensity; AI Committee at Enterprise intensity. Scaling a Transform initiative also requires board approval (01 §7.5). The decision is recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>.</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -462,11 +473,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> Retirement manager.</td>
+<td><a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a> Retirement manager.</td>
 </tr>
 <tr>
 <td><strong>Relationship</strong></td>
-<td><a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> Ambition classification (review in phase 7) · <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> Risk register · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> Lineage · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> Adoption and capacity · <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> Incident and change log · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Value tracking · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> <em>Gate</em> decision record · <a href="../14_SEVEN-G_Gestion_de_cartera.html">document 14</a> (Portfolio management).</td>
+<td><a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> Ambition classification (review in phase 7) · <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> Risk register · <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> Lineage · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> Adoption and capacity · <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> Incident and change log · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> Value tracking · <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> <em>Gate</em> decision record · <a href="../14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a> (Portfolio management).</td>
 </tr>
 </tbody>
 </table></div>
@@ -492,7 +503,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative code</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
 <td>Initiative name</td>
@@ -502,7 +513,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>AI system(s)</td>
 <td></td>
-<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Identifier in the inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>).</td>
 </tr>
 <tr>
 <td>Confirmed ambition level</td>
@@ -562,19 +573,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Realised annual efficiencies (€)</td>
 <td></td>
 <td>Validated · Declared · Estimated</td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>.</td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>.</td>
 </tr>
 <tr>
 <td>Realised annual return (€)</td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>.</td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>.</td>
 </tr>
 <tr>
 <td>Actual annual recurring cost (€)</td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>.</td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>.</td>
 </tr>
 <tr>
 <td><strong>Annual net value (€)</strong></td>
@@ -586,19 +597,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Proportion of validated value</td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>.</td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>.</td>
 </tr>
 <tr>
 <td>Expected annual net value in the hypothesis (€)</td>
 <td></td>
 <td></td>
-<td><a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td><a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>.</td>
 </tr>
 <tr>
 <td>Released capacity: realised · reassigned · pending (hours)</td>
 <td></td>
 <td></td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> block 6; not counted.</td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a> block 6; not counted.</td>
 </tr>
 <tr>
 <td>Total investment made (€)</td>
@@ -610,13 +621,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Main residual risk and trend</td>
 <td></td>
 <td>Low · Medium · High · Critical</td>
-<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>.</td>
 </tr>
 <tr>
 <td>S1–S2 incidents since go-live</td>
 <td></td>
 <td></td>
-<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
+<td><a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>.</td>
 </tr>
 <tr>
 <td>Open nonconformities</td>
@@ -628,13 +639,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Adoption against target</td>
 <td></td>
 <td></td>
-<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td><a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>.</td>
 </tr>
 <tr>
 <td>Currency of the regulatory classification</td>
 <td></td>
 <td>Current · Requires review</td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -701,7 +712,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Actual ambition level</td>
 <td></td>
-<td>Optimise · Augment · Transform. If it differs from the confirmed level, <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> and the register are updated.</td>
+<td>Optimise · Augment · Transform. If it differs from the confirmed level, <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> and the register are updated.</td>
 </tr>
 <tr>
 <td>Compliance with the G7 criterion for the level (01 §7.6)</td>
@@ -794,7 +805,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><em>Gate</em> decision record</td>
 <td></td>
-<td>Reference to <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>Reference to <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -817,7 +828,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>New phase 0 (Scale)</td>
 <td></td>
-<td>The extended scope starts a new phase 0 with its charter (<a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>); its treatment in the register is governed by <a href="../14_SEVEN-G_Gestion_de_cartera.html">document 14</a>.</td>
+<td>The extended scope starts a new phase 0 with its charter (<a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>); its treatment in the register is governed by <a href="../14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a>.</td>
 </tr>
 <tr>
 <td>Planned changes in intensity or classification (Scale)</td>
@@ -894,12 +905,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Basis (legal obligation, audit, legal defence, end of purpose)</th>
 <th>Time limit</th>
 <th>Owner</th>
-<th>Evidence (for example, deletion certificate, <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> §8)</th>
+<th>Evidence (for example, deletion certificate, <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Template P57 &#183; Supplier register and exit plan">P57</a> §8)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Training data and datasets (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>)</td>
+<td>Training data and datasets (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -974,7 +985,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Revoke agent identities, credentials and permissions (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>)</td>
+<td>Revoke agent identities, credentials and permissions (<a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -998,7 +1009,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Update the AI system inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>)</td>
+<td>Update the AI system inventory (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1161,7 +1172,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">10</span>Quality criteria</h2>
-<p>Formal G7 criteria in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>; LV-G7 checklist in <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">document 22</a>.</p>
+<p>Formal G7 criteria in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>; LV-G7 checklist in <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Document 22 &#183; Checklists by gate">document 22</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1173,7 +1184,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>The value evidence comes from <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, with statuses and validated proportion.</td>
+<td>The value evidence comes from <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>, with statuses and validated proportion.</td>
 <td></td>
 </tr>
 <tr>
@@ -1519,6 +1530,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

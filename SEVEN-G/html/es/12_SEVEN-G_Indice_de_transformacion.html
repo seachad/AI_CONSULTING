@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,22 +439,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/12_SEVEN-G_Indice_de_transformacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/12_SEVEN-G_Indice_de_transformacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#principio"><span>02</span>Principio</a></li><li><a href="#clasificacion-de-la-ambicion-de-una-iniciativa"><span>03</span>Clasificación de la ambición de una iniciativa</a></li><li><a href="#indice-de-transformacion-de-la-compania"><span>04</span>Índice de transformación de la compañía</a></li><li><a href="#asignacion-del-perfil"><span>05</span>Asignación del perfil</a></li><li><a href="#tratamiento-del-quot-sin-dato-quot"><span>06</span>Tratamiento del &quot;sin dato&quot;</a></li><li><a href="#periodicidad-y-responsables"><span>07</span>Periodicidad y responsables</a></li><li><a href="#calibracion-en-c5"><span>08</span>Calibración en C5</a></li><li><a href="#ejemplo-ilustrativo-completo"><span>09</span>Ejemplo ilustrativo completo</a></li><li><a href="#presentacion-al-consejo"><span>10</span>Presentación al consejo</a></li><li><a href="#limitaciones"><span>11</span>Limitaciones</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>12</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>13</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Obligatorio siempre</span></div><p>C&#225;lculo del &#237;ndice de transformaci&#243;n de la compa&#241;&#237;a en C1 y en cada C5, con las condiciones de base y las ocho se&#241;ales; &#171;sin dato&#187; nunca cuenta como evidencia. La clasificaci&#243;n de la ambici&#243;n de cada iniciativa (secci&#243;n 3) se aplica siempre.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
-<p>Este documento desarrolla la sección 5 del <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>. Define dos instrumentos conectados:</p>
+<p>Este documento desarrolla la sección 5 del <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>. Define dos instrumentos conectados:</p>
 <ol>
 <li><strong>La clasificación de ambición de cada iniciativa</strong> (Optimizar, Aumentar o Transformar): cinco preguntas, reglas de decisión, tratamiento de los casos dudosos, responsables y ciclo de ambición propuesta, confirmada y real.</li>
 <li><strong>El índice de transformación de la compañía</strong>: ocho señales con fórmula, fuente de datos y puntuación de 0 a 3; condiciones de base; reglas para asignar uno de los cinco perfiles; tratamiento del &quot;sin dato&quot;; periodicidad; calibración; ejemplo completo y limitaciones.</li>
 </ol>
-<p>Se aplica en las fases 1, 2 y 7 del ciclo de vida y en las etapas C1, C4 y C5 del ciclo corporativo. Las herramientas asociadas son el clasificador de ambición (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>) y la calculadora del índice (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>); la evidencia de la clasificación se documenta con la plantilla <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>.</p>
+<p>Se aplica en las fases 1, 2 y 7 del ciclo de vida y en las etapas C1, C4 y C5 del ciclo corporativo. Las herramientas asociadas son el clasificador de ambición (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a>) y la calculadora del índice (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>); la evidencia de la clasificación se documenta con la plantilla <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a>.</p>
 <p>Todos los umbrales numéricos de este documento son <strong>iniciales y están marcados &quot;a calibrar&quot;</strong>. No proceden de estudios de mercado: son puntos de partida razonables que cada compañía revisa en C5 con sus propios datos (sección 8).</p>
 <hr />
 <h2 id="principio"><span class="antetitulo">02</span>Principio</h2>
 <p>La eficiencia y la transformación <strong>no se distinguen por la tecnología</strong>, sino por <strong>qué cambia en el negocio y dónde aparece el valor</strong>. Un agente de IA generativa que redacta respuestas más rápido es optimización; un modelo estadístico clásico que permite lanzar un servicio con precio personalizado puede ser transformación.</p>
-<p>El índice no es un juicio de valor. <strong>La eficiencia es un resultado legítimo</strong> y muchas compañías deben empezar por ella para financiar sus apuestas posteriores. Lo que SEVEN-G exige es que la elección sea consciente, esté medida y la tome quien corresponde (principio 9 del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>). El índice sirve sobre todo para detectar una situación concreta: <strong>la transformación declarada que las señales no confirman</strong>.</p>
+<p>El índice no es un juicio de valor. <strong>La eficiencia es un resultado legítimo</strong> y muchas compañías deben empezar por ella para financiar sus apuestas posteriores. Lo que SEVEN-G exige es que la elección sea consciente, esté medida y la tome quien corresponde (principio 9 del <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>). El índice sirve sobre todo para detectar una situación concreta: <strong>la transformación declarada que las señales no confirman</strong>.</p>
 <hr />
 <h2 id="clasificacion-de-la-ambicion-de-una-iniciativa"><span class="antetitulo">03</span>Clasificación de la ambición de una iniciativa</h2>
 <h3 id="3-1-las-cinco-preguntas">3.1 Las cinco preguntas</h3>
@@ -540,7 +551,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>7 · Dependencia en Optimizar</strong></td>
 <td>El resultado es Optimizar y IT-P5 es <strong>no</strong>.</td>
-<td>El nivel no cambia. Se comprueba si la iniciativa soporta una función crítica (criterio Enterprise del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 9.2).</td>
+<td>El nivel no cambia. Se comprueba si la iniciativa soporta una función crítica (criterio Enterprise del <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>, sección 9.2).</td>
 </tr>
 <tr>
 <td><strong>8 · Prudencia ante la duda</strong></td>
@@ -637,7 +648,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistema de IA para vigilar obligaciones regulatorias (esfera principal 08)</td>
 <td><strong>Optimizar</strong> por lo general</td>
-<td>Se clasifica como cualquier otra; su nivel no califica la esfera 08 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>, sección 4.2).</td>
+<td>Se clasifica como cualquier otra; su nivel no califica la esfera 08 (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Documento 10 &#183; Mapa de esferas y niveles de ambici&#243;n">documento 10</a>, sección 4.2).</td>
 </tr>
 </tbody>
 </table></div>
@@ -656,23 +667,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Propuesta</strong></td>
 <td>Fase 1</td>
 <td>Nivel que el equipo propone con las cinco preguntas sobre la oportunidad.</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> con respuestas y justificación.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a> con respuestas y justificación.</td>
 </tr>
 <tr>
 <td><strong>Confirmada</strong></td>
 <td>Fase 2 (G2)</td>
 <td>Nivel verificado sobre la hipótesis de valor: métricas, línea base y tipo de valor esperado coherentes con el nivel.</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> actualizada, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a> actualizada, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>.</td>
 </tr>
 <tr>
 <td><strong>Real</strong></td>
 <td>Fase 7 (G7) y, si procede, R6</td>
 <td>Nivel que demuestra la evidencia en producción.</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> con evidencia de resultados, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a> con evidencia de resultados, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>.</td>
 </tr>
 </tbody>
 </table></div>
-<p>Criterios para registrar la <strong>ambición real</strong> (coherentes con los criterios de G7 del <a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 7.6):</p>
+<p>Criterios para registrar la <strong>ambición real</strong> (coherentes con los criterios de G7 del <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>, sección 7.6):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -713,7 +724,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Responsable de producto de IA</td>
 <td>Oficina de IA (coherencia de respuestas)</td>
 <td>Patrocinador, en G1</td>
-<td>Se registra el evento en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Se registra el evento en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</td>
 </tr>
 <tr id="cod-fase-2-confirmacion-lite">
 <td><strong>Fase 2 · Confirmación (Lite)</strong></td>
@@ -738,14 +749,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr id="cod-fase-7-ambicion-real">
 <td><strong>Fase 7 · Ambición real</strong></td>
-<td>Responsable de producto de IA, con datos de <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td>Responsable de producto de IA, con datos de <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></td>
 <td>Oficina de IA (Lite) o auditor de IA (Enterprise)</td>
 <td>Órgano de G7</td>
 <td>Escalar una iniciativa con ambición real Transformar requiere aprobación del consejo.</td>
 </tr>
 </tbody>
 </table></div>
-<p>Nadie verifica ni decide sobre la clasificación de su propia iniciativa (<a href="01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 7.4).</p>
+<p>Nadie verifica ni decide sobre la clasificación de su propia iniciativa (<a href="01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>, sección 7.4).</p>
 <h3 id="3-6-que-hacer-si-la-ambicion-real-difiere-de-la-declarada">3.6 Qué hacer si la ambición real difiere de la declarada</h3>
 <div class="tabla"><table>
 <thead>
@@ -845,7 +856,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Iniciativas incluidas</strong></td>
-<td>Todas las del registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) cuya esfera principal es 01 a 07. Las de esfera principal 08 o 09 se excluyen de las señales 1, 2 y 7 y se informan aparte como inversión en habilitación de gobierno y cumplimiento (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>, sección 4.2).</td>
+<td>Todas las del registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) cuya esfera principal es 01 a 07. Las de esfera principal 08 o 09 se excluyen de las señales 1, 2 y 7 y se informan aparte como inversión en habilitación de gobierno y cumplimiento (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Documento 10 &#183; Mapa de esferas y niveles de ambici&#243;n">documento 10</a>, sección 4.2).</td>
 </tr>
 <tr>
 <td><strong>Uso corporativo de IA de propósito general</strong></td>
@@ -865,7 +876,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Moneda y coste</strong></td>
-<td>&quot;Coste de la cartera&quot; = inversión de construcción ejecutada en la ventana + coste recurrente de la ventana, según las categorías del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>.</td>
+<td>&quot;Coste de la cartera&quot; = inversión de construcción ejecutada en la ventana + coste recurrente de la ventana, según las categorías del <a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -921,7 +932,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: nivel de ambición, esfera principal; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> y <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>: inversión y coste recurrente por iniciativa.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: nivel de ambición, esfera principal; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> y <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>: inversión y coste recurrente por iniciativa.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -960,7 +971,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>: importes por tipo (eficiencia, retorno) con estado validado. La capacidad liberada no suma (regla 3 de medición).</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>: importes por tipo (eficiencia, retorno) con estado validado. La capacidad liberada no suma (regla 3 de medición).</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -999,7 +1010,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (capacidad liberada y ahorro materializado) y <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> (reasignación registrada con actividad de destino).</td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> (capacidad liberada y ahorro materializado) y <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a> (reasignación registrada con actividad de destino).</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1038,7 +1049,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: respuestas a IT-P2 con estado de verificación; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>: resultado de G5 y G7.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: respuestas a IT-P2 con estado de verificación; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>: resultado de G5 y G7.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1073,11 +1084,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fórmula</strong></td>
-<td>IT-S5 = iniciativas en producción con IT-P3 = sí verificada y diseño de supervisión humana verificado (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) ÷ iniciativas en producción × 100.</td>
+<td>IT-S5 = iniciativas en producción con IT-P3 = sí verificada y diseño de supervisión humana verificado (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>) ÷ iniciativas en producción × 100.</td>
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: respuestas a IT-P3 verificadas; evidencia <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>: roles rediseñados; registro de unidades organizativas rediseñadas.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: respuestas a IT-P3 verificadas; evidencia <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>; <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a>: roles rediseñados; registro de unidades organizativas rediseñadas.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1121,7 +1132,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td>Control de gestión; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> (retorno de conceptos de venta nueva con marca de oferta habilitada por IA); <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (IT-P4 = sí verificada).</td>
+<td>Control de gestión; <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> (retorno de conceptos de venta nueva con marca de oferta habilitada por IA); <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (IT-P4 = sí verificada).</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1161,11 +1172,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Sin base de comparación</strong></td>
-<td>Si no hay iniciativas de Optimizar con resultado, CR se sustituye por la tasa de llegada de Aumentar y Transformar ÷ 0,6, y TR por la mediana real ÷ la suma de los plazos de referencia de las fases 3 a 5 (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, sección 3.6).</td>
+<td>Si no hay iniciativas de Optimizar con resultado, CR se sustituye por la tasa de llegada de Aumentar y Transformar ÷ 0,6, y TR por la mediana real ÷ la suma de los plazos de referencia de las fases 3 a 5 (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>, sección 3.6).</td>
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>: fechas de G2 y G5, estados, motivos de parada, plazos de referencia.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>: fechas de G2 y G5, estados, motivos de parada, plazos de referencia.</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1204,7 +1215,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Fuente</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>: registro de recomendaciones y decisiones; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>: aprobaciones del consejo en G2 y G7; documento de decisión de C2 (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>).</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>: registro de recomendaciones y decisiones; <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>: aprobaciones del consejo en G2 y G7; documento de decisión de C2 (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a>).</td>
 </tr>
 <tr>
 <td><strong>0</strong></td>
@@ -1329,12 +1340,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>IT-D1</td>
 <td>La tesis de IA aprobada en C2 fija <strong>Transformar</strong> como ambición objetivo en al menos una esfera.</td>
-<td>Documento de decisión de C2 (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>).</td>
+<td>Documento de decisión de C2 (<a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a>).</td>
 </tr>
 <tr>
 <td>IT-D2</td>
 <td>Las iniciativas con ambición confirmada Transformar suponen el <strong>10 % o más</strong> del coste de la cartera.</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, señal 1.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, señal 1.</td>
 </tr>
 <tr>
 <td>IT-D3</td>
@@ -1524,7 +1535,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>7</td>
 <td>Registrar la versión de umbrales usada en cada cálculo.</td>
-<td>Oficina de IA (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>; <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> §14)</td>
+<td>Oficina de IA (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>; <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a> §14)</td>
 </tr>
 </tbody>
 </table></div>
@@ -1536,7 +1547,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </ul>
 <hr />
 <h2 id="ejemplo-ilustrativo-completo"><span class="antetitulo">09</span>Ejemplo ilustrativo completo</h2>
-<p><em>Compañía ficticia. Todos los datos son ilustrativos y coinciden con el ejemplo de mapa de calor del <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a>, sección 8.2.</em></p>
+<p><em>Compañía ficticia. Todos los datos son ilustrativos y coinciden con el ejemplo de mapa de calor del <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Documento 10 &#183; Mapa de esferas y niveles de ambici&#243;n">documento 10</a>, sección 8.2.</em></p>
 <p><strong>Contexto.</strong> Compañía industrial con 400 M€ de ingresos anuales. Tiene 17 iniciativas activas en esferas 01 a 07 (14 de Optimizar, 2 de Aumentar y 1 de Transformar) y 2 iniciativas en la banda de habilitación (esferas 08 y 09). Catorce están en producción: las 12 de Optimizar que han superado G5 y las 2 de Aumentar. La de Transformar (un servicio nuevo en la esfera 02) está en fase 5, con un piloto comercial. La tesis de IA aprobada en C2 fija Transformar como ambición objetivo para Producto y servicio, y el plan estratégico describe la IA como &quot;palanca de transformación&quot;.</p>
 <p><strong>Condiciones de base</strong></p>
 <div class="tabla"><table>
@@ -1658,7 +1669,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Paso 2 · Contraste.</strong> IT-D1 (tesis con Transformar en la esfera 02) y IT-D3 (plan estratégico) se cumplen: D = sí. El perfil evidenciado no es Transformación en curso.</p>
 <p><strong>Perfil asignado: Transformación declarada, no evidenciada. Perfil subyacente: Eficiencia a escala.</strong></p>
 <p>Alertas complementarias: ninguna de las de la sección 5.3 se activa. La tasa de sobredeclaración no es aún calculable para Transformar (ninguna iniciativa con ambición real registrada).</p>
-<p><strong>Mensaje al consejo</strong> (formato del <a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>): <em>&quot;Todavía no, porque falta evidencia de retorno y de cambio en procesos y roles. La compañía gobierna bien una cartera de eficiencia con valor validado, pero la transformación declarada descansa en una sola apuesta en piloto. Para evidenciar transformación harían falta, como mínimo: retorno validado de al menos 0,20 M€ o ingresos habilitados de al menos 2 M€; al menos tres procesos rediseñados de extremo a extremo en producción; y revisión trimestral de la apuesta por el consejo.&quot;</em></p>
+<p><strong>Mensaje al consejo</strong> (formato del <a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Documento 60 &#183; Paquete para el consejo">documento 60</a>): <em>&quot;Todavía no, porque falta evidencia de retorno y de cambio en procesos y roles. La compañía gobierna bien una cartera de eficiencia con valor validado, pero la transformación declarada descansa en una sola apuesta en piloto. Para evidenciar transformación harían falta, como mínimo: retorno validado de al menos 0,20 M€ o ingresos habilitados de al menos 2 M€; al menos tres procesos rediseñados de extremo a extremo en producción; y revisión trimestral de la apuesta por el consejo.&quot;</em></p>
 <hr />
 <h2 id="presentacion-al-consejo"><span class="antetitulo">10</span>Presentación al consejo</h2>
 <p>El índice se presenta siempre con tres elementos:</p>
@@ -1709,7 +1720,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>No mide el valor absoluto ni la rentabilidad de la IA.</td>
 <td>Un perfil de transformación no implica que la cartera sea rentable.</td>
-<td>Se lee junto al valor neto anual y al neto adicional por euro (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>).</td>
+<td>Se lee junto al valor neto anual y al neto adicional por euro (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>).</td>
 </tr>
 <tr>
 <td>No es comparable entre sectores ni entre compañías de tamaño muy distinto.</td>
@@ -1734,7 +1745,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>No sustituye al diagnóstico de madurez.</td>
 <td>Perfil y madurez pueden divergir.</td>
-<td>Se presentan juntos en C1 y C5 (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>Se presentan juntos en C1 y C5 (<a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1750,57 +1761,57 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
 <td>Registro de iniciativas</td>
 <td>Campos: respuestas IT-P1–IT-P5 con evidencia y estado de verificación; ambición propuesta, confirmada y real con fecha y motivo; esfera principal; fechas de <em>gates</em>; estados; motivos de parada; origen de la iniciativa. Desde el esquema 0.5: verificación de IT-P2 e IT-P3 en un <em>gate</em> con supervisión humana verificada, unidad completa rediseñada, capacidad liberada, materializada y reasignada, oferta habilitada por IA en los importes e ingresos totales e IT-D3 de la compañía.</td>
 </tr>
 <tr id="cod-t03">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></strong></td>
 <td>Gestor de <em>gates</em></td>
 <td>Verificación de la clasificación en G2 y G7; aprobaciones del consejo.</td>
 </tr>
 <tr id="cod-t05">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a></strong></td>
 <td>Clasificador de ambición</td>
 <td>Aplica las cinco preguntas y las reglas 1 a 10; registra el resultado y las incoherencias.</td>
 </tr>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Importes por tipo y estado; capacidad liberada y materializada; ingresos habilitados por IA.</td>
 </tr>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
+<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></strong></td>
 <td>Calculadora de costes por caso</td>
 <td>Inversión y coste recurrente de cada iniciativa (señal 1).</td>
 </tr>
 <tr id="cod-t14">
-<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></strong></td>
 <td>Calculadora del índice de transformación</td>
-<td>Calcula condiciones de base, señales, perfil, alertas, cobertura, qué movería el perfil y evolución; conserva la versión de umbrales. Parte del JSON del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: con el esquema 0.5 calcula desde él las ocho señales y las condiciones IT-D1 e IT-D3; lo que el registro no contenga se completa a mano. Exporta su resultado para el panel del consejo.</td>
+<td>Calcula condiciones de base, señales, perfil, alertas, cobertura, qué movería el perfil y evolución; conserva la versión de umbrales. Parte del JSON del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: con el esquema 0.5 calcula desde él las ocho señales y las condiciones IT-D1 e IT-D3; lo que el registro no contenga se completa a mano. Exporta su resultado para el panel del consejo.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
-<td>Tarjeta «Índice de transformación de la compañía» en «Cartera y valor»: perfil, condiciones de base, señales, tendencia, alertas y qué movería el perfil, a partir del resultado exportado por <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>.</td>
+<td>Tarjeta «Índice de transformación de la compañía» en «Cartera y valor»: perfil, condiciones de base, señales, tendencia, alertas y qué movería el perfil, a partir del resultado exportado por <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>.</td>
 </tr>
 <tr id="cod-t18">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></strong></td>
 <td>Registro de recomendaciones del consejo</td>
-<td>Vista «Consejo (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)» del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: las decisiones del consejo (tesis, apuestas de Transformar con límite por etapa, revisiones y decisiones de etapa) son la fuente de la señal 8 y de IT-D1.</td>
+<td>Vista «Consejo (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>)» del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>: las decisiones del consejo (tesis, apuestas de Transformar con límite por etapa, revisiones y decisiones de etapa) son la fuente de la señal 8 y de IT-D1.</td>
 </tr>
 <tr id="cod-t19">
-<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></strong></td>
+<td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Herramienta T19 &#183; Plantilla de tesis de IA y apetito de riesgo">T19</a></strong></td>
 <td>Plantilla de tesis de IA y apetito de riesgo</td>
 <td>Documento de decisión de C2: tesis aprobada (señal 8) y ambición objetivo por esfera (condición IT-D1).</td>
 </tr>
 <tr id="cod-t20">
-<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
+<td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Horas reasignadas y roles rediseñados (señales 3 y 5).</td>
 </tr>
 <tr id="cod-p07">
-<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></strong></td>
+<td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a></strong></td>
 <td>Clasificación de esfera y ambición</td>
 <td>Evidencia de la clasificación en las fases 1, 2 y 7.</td>
 </tr>
@@ -2109,6 +2120,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

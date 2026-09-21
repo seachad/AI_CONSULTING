@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#contexto-de-decision"><span>03</span>Contexto de decisión</a></li><li><a href="#nivel-de-autonomia"><span>04</span>Nivel de autonomía</a></li><li><a href="#reparto-de-decisiones"><span>05</span>Reparto de decisiones</a></li><li><a href="#modos-de-supervision-humana"><span>06</span>Modos de supervisión humana</a></li><li><a href="#capacidad-efectiva-de-la-persona-supervisora"><span>07</span>Capacidad efectiva de la persona supervisora</a></li><li><a href="#transparencia-y-derechos-de-las-personas-afectadas"><span>08</span>Transparencia y derechos de las personas afectadas</a></li><li><a href="#responsabilidades-y-escalado"><span>09</span>Responsabilidades y escalado</a></li><li><a href="#indicadores-de-supervision"><span>10</span>Indicadores de supervisión</a></li><li><a href="#criterios-de-calidad"><span>11</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>12</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -454,7 +465,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>En qué <em>gate</em> se revisa</strong></td>
-<td>G4; se comprueba su funcionamiento real en G5 (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>) y en R6.</td>
+<td>G4; se comprueba su funcionamiento real en G5 (<a href="P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a>) y en R6.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> Determinación de intensidad · <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> Clasificación regulatoria · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Diseño de seguridad · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Plan de reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> Manual de operación · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> Monitorización · <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a> (autonomía y controles AG) · <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a>.</td>
+<td><a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a> Determinación de intensidad · <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> Clasificación regulatoria · <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> Diseño de seguridad · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a> Plan de reversión · <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> Manual de operación · <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a> Monitorización · <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a> (autonomía y controles AG) · <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -470,9 +481,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Los controles de supervisión humana no admiten <strong>Continuar con condiciones</strong> en el <em>gate</em>: si no están resueltos, el resultado es Iterar (01 §7.3).</li>
 <li>La supervisión se diseña para que una persona pueda <strong>entender, corregir, anular e interrumpir</strong>, no solo para que &quot;esté presente&quot;.</li>
-<li>Cualquier aumento del nivel de autonomía o de la población afectada debería tratarse como cambio relevante (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>) y someterse a verificación y decisión equivalentes a G4.</li>
+<li>Cualquier aumento del nivel de autonomía o de la población afectada debería tratarse como cambio relevante (<a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>) y someterse a verificación y decisión equivalentes a G4.</li>
 </ul>
-<p>Esta plantilla no constituye asesoramiento jurídico. Las obligaciones de supervisión humana y de decisiones automatizadas se confirman con el mapeo regulatorio (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</p>
+<p>Esta plantilla no constituye asesoramiento jurídico. Las obligaciones de supervisión humana y de decisiones automatizadas se confirman con el mapeo regulatorio (<a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>).</p>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
 <div class="tabla"><table>
@@ -487,7 +498,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Nombre de la iniciativa</td>
@@ -497,7 +508,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Sistema(s) de IA</td>
 <td></td>
-<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>).</td>
+<td>Identificador en el inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>).</td>
 </tr>
 <tr>
 <td>Intensidad</td>
@@ -550,7 +561,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Proceso o decisión en la que interviene el sistema</td>
 <td></td>
-<td>Descríbalo en lenguaje de negocio (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+<td>Descríbalo en lenguaje de negocio (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>).</td>
 </tr>
 <tr>
 <td>Personas usuarias</td>
@@ -586,7 +597,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="nivel-de-autonomia"><span class="antetitulo">04</span>Nivel de autonomía</h2>
-<p>Marque un único nivel. Los niveles se definen en el <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</p>
+<p>Marque un único nivel. Los niveles se definen en el <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -655,7 +666,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Condiciones para bajar de nivel</td>
 <td></td>
-<td>Umbrales que obligan a reducir autonomía; se trasladan a <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> como modo degradado.</td>
+<td>Umbrales que obligan a reducir autonomía; se trasladan a <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a> como modo degradado.</td>
 </tr>
 </tbody>
 </table></div>
@@ -710,7 +721,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Decisiones que la compañía ha declarado indelegables en su política corporativa (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a>) y que aplican a este sistema:</p>
+<p>Decisiones que la compañía ha declarado indelegables en su política corporativa (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a>) y que aplican a este sistema:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -781,7 +792,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Orientación: A1 exige validación previa; A2 exige al menos supervisión en tiempo real o revisión a posteriori, e interruptor de parada; A3 exige supervisión agregada, límites estrictos (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) e interruptor de parada probado (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</p>
+<p>Orientación: A1 exige validación previa; A2 exige al menos supervisión en tiempo real o revisión a posteriori, e interruptor de parada; A3 exige supervisión agregada, límites estrictos (<a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>) e interruptor de parada probado (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>).</p>
 <hr />
 <h2 id="capacidad-efectiva-de-la-persona-supervisora"><span class="antetitulo">07</span>Capacidad efectiva de la persona supervisora</h2>
 <div class="tabla"><table>
@@ -796,7 +807,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Entiende las capacidades y limitaciones del sistema</td>
 <td></td>
-<td>Formación registrada en <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>; limitaciones de <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Formación registrada en <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>; limitaciones de <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>.</td>
 </tr>
 <tr>
 <td>Es consciente del riesgo de confiar en exceso en el resultado automático</td>
@@ -816,7 +827,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Puede interrumpir el sistema</td>
 <td></td>
-<td>Interruptor de parada (<a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>) y quién puede activarlo.</td>
+<td>Interruptor de parada (<a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a>) y quién puede activarlo.</td>
 </tr>
 <tr>
 <td>Tiene tiempo y carga de trabajo compatibles con la supervisión <strong>(Enterprise)</strong></td>
@@ -825,7 +836,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>En sistemas de alto riesgo, estos requisitos se contrastan con el artículo 14 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</p>
+<p>En sistemas de alto riesgo, estos requisitos se contrastan con el artículo 14 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a> (<a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>).</p>
 <hr />
 <h2 id="transparencia-y-derechos-de-las-personas-afectadas"><span class="antetitulo">08</span>Transparencia y derechos de las personas afectadas</h2>
 <div class="tabla"><table>
@@ -855,11 +866,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Registro de reclamaciones relacionadas con el sistema <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Dónde se registran y cómo alimentan <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> y <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>.</td>
+<td>Dónde se registran y cómo alimentan <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a> y <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>.</td>
 </tr>
 </tbody>
 </table></div>
-<p>Textos y registro de avisos en <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html">P49</a>.</p>
+<p>Textos y registro de avisos en <a href="P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html" title="Plantilla P49 &#183; Avisos de transparencia e instrucciones de uso">P49</a>.</p>
 <hr />
 <h2 id="responsabilidades-y-escalado"><span class="antetitulo">09</span>Responsabilidades y escalado</h2>
 <div class="tabla"><table>
@@ -885,7 +896,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td>Funcionamiento diario de la supervisión y alertas</td>
-<td>Comité de IA en incidentes S1–S2 (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>)</td>
+<td>Comité de IA en incidentes S1–S2 (<a href="P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Plantilla P26 &#183; Plan de respuesta a incidentes">P26</a>)</td>
 </tr>
 <tr>
 <td>Supervisores designados</td>
@@ -905,7 +916,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="indicadores-de-supervision"><span class="antetitulo">10</span>Indicadores de supervisión</h2>
-<p>Se trasladan a <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> con sus umbrales.</p>
+<p>Se trasladan a <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a> con sus umbrales.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -950,7 +961,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Los criterios formales de G4 sobre supervisión humana están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (y su lista LV-G4 en el <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>); los controles de autonomía, en los controles AG del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</p>
+<p>Los criterios formales de G4 sobre supervisión humana están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (y su lista LV-G4 en el <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a>); los controles de autonomía, en los controles AG del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -987,7 +998,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Los indicadores de supervisión tienen umbral y están trasladados a <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
+<td>Los indicadores de supervisión tienen umbral y están trasladados a <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1040,7 +1051,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisor del <em>gate</em></td>
-<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1303,6 +1314,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

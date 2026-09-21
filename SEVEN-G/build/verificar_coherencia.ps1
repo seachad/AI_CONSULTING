@@ -532,6 +532,72 @@ try {
   foreach ($p in 'index.html', 'en\index.html') { $t = [IO.File]::ReadAllText((Join-Path $repo $p)); if (-not ($t.Contains('data-ir-codigo') -and $t.Contains('codigos.js'))) { Mal "$p`: la portada no tiene el control «Ir a código»"; $malCod++ } }
   foreach ($h in (Get-ChildItem (Join-Path $repo 'SEVEN-G\herramientas') -Recurse -File -Filter *.plantilla.html)) { if (-not [IO.File]::ReadAllText($h.FullName).Contains('irCodigoCargar')) { Mal "herramienta sin el control «Ir a código»: $($h.Name)"; $malCod++ } }
   if (-not $malCod) { Ok 'índice de códigos generado (ES/EN), con todos sus destinos y anclas, y control presente en todas las páginas, la portada y las herramientas' }
+
+  # ---- 12. medición de visitas (D90): configuración válida, llevada a codigos.js, declarada en el documento 04 y fuera de la comunidad
+  Write-Host '12. Medición de visitas (Umami)'
+  $malUm = 0
+  $cfgUm = (Get-Content (Join-Path $repo 'SEVEN-G\build\analitica.json') -Raw -Encoding utf8 | ConvertFrom-Json).umami
+  if ($cfgUm.websiteId -and $cfgUm.websiteId -notmatch '^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$') { Mal 'analitica.json: websiteId no es un identificador de Umami'; $malUm++ }
+  if ($cfgUm.src -notmatch '^https://') { Mal 'analitica.json: src debe ser https'; $malUm++ }
+  if (@($cfgUm.dominios) -match 'localhost|127\.0\.0\.1') { Mal 'analitica.json: no se mide en local'; $malUm++ }
+  foreach ($lang in 'es', 'en') {
+    $tCod = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\html\$lang\codigos.js"))
+    if (-not $tCod.Contains(($cfgUm | ConvertTo-Json -Compress))) { Mal "codigos.js [$lang] no lleva la configuración de analitica.json (pwsh -File SEVEN-G/build/codigos.ps1)"; $malUm++ }
+    if (-not $tCod.Contains('data-do-not-track')) { Mal "codigos.js [$lang]: la medición no respeta «No rastrear»"; $malUm++ }
+    $d04 = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '04_*.md' | Select-Object -First 1
+    if (-not [IO.File]::ReadAllText($d04.FullName).Contains('umami.is')) { Mal "documento 04 [$lang]: no declara la medición de visitas"; $malUm++ }
+  }
+  if ($pag -match '(?i)umami|codigos\.js') { Mal 'comunidad: la página no debe medirse'; $malUm++ }
+  if (-not $malUm) { Ok "medición de visitas configurada$(if (-not $cfgUm.websiteId) { ' (sin websiteId: desactivada)' }), declarada en el documento 04 y fuera de la página de comunidad" }
+  # ---- 13. entrada ligera «Qué es SEVEN-G» (D91): en ES y EN, copia exacta de su fuente, enlazada desde la portada como primer
+  # botón, y con paso al documento 00 (el detalle), al registro y a los dos paneles (completo y móvil); imágenes SEVEN-G_<lámina>.png
+  Write-Host '13. Entrada ligera de SEVEN-G'
+  $malEnt = 0
+  foreach ($lang in 'es', 'en') {
+    $fuente = Join-Path $repo "SEVEN-G\build\entrada\$lang\index.html"; $pub = Join-Path $repo "SEVEN-G\html\$lang\entrada\index.html"
+    if (-not (Test-Path $fuente) -or -not (Test-Path $pub)) { Mal "entrada [$lang]: falta la fuente o la página publicada"; $malEnt++; continue }
+    $tEnt = [IO.File]::ReadAllText($pub)
+    if (($tEnt -replace "`r`n", "`n") -cne ([IO.File]::ReadAllText($fuente) -replace "`r`n", "`n")) { Mal "entrada [$lang]: html/$lang/entrada/index.html no coincide con build/entrada/$lang (generar con build.ps1)"; $malEnt++ }
+    foreach ($req in '00_SEVEN-G_Que_es_y_para_que_sirve.html', 'T01_registro_iniciativas/registro.html', 'Dashboard_Casos_Uso_IA', 'Dashboard_Movil_IA', 'class="niv"', '<details class="aviso">', 'Presentaci%C3%B3n_Corregida.pptx', 'Presentaci%C3%B3n_Corregida.pdf') {
+      if (-not $tEnt.Contains($req)) { Mal "entrada [$lang]: falta «$req»"; $malEnt++ }
+    }
+    foreach ($img in [regex]::Matches($tEnt, 'src="\.\./\.\./entrada/([^"]+\.png)"')) {
+      $n = $img.Groups[1].Value
+      if ($n -notmatch '^SEVEN-G_(\d{2}|embudo|embudo_en|panel)\.png$') { Mal "entrada [$lang]: imagen con nombre fuera de convención: $n"; $malEnt++ }
+      if (-not (Test-Path (Join-Path $repo "SEVEN-G\html\entrada\$n"))) { Mal "entrada [$lang]: falta la imagen $n"; $malEnt++ }
+    }
+    $port = [IO.File]::ReadAllText((Join-Path $repo $(if ($lang -eq 'es') { 'index.html' } else { 'en\index.html' })))
+    if ($port -notmatch "<a class=""boton primario"" href=""[^""]*SEVEN-G/html/$lang/entrada/index\.html""") { Mal "portada [$lang]: el botón «Qué es SEVEN-G» no lleva a la entrada ligera"; $malEnt++ }
+  }
+  if (-not $malEnt) { Ok 'entrada ligera en ES y EN, igual a su fuente, enlazada desde la portada y con paso al documento 00, al registro y a los paneles' }
+
+  # ---- 14. avisos plegados por defecto (D93): en los documentos (plegados en pantalla, completos en el PDF), la portada y los paneles
+  Write-Host '14. Avisos plegados por defecto'
+  $malAv = 0
+  $abiertos = Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html') -Recurse -File -Filter *.html | Select-String -Pattern '<blockquote class="aviso-legal">' -List
+  foreach ($x in ($abiertos | Select-Object -First 10)) { Mal "aviso sin plegar: $([IO.Path]::GetRelativePath($repo, $x.Path))"; $malAv++ }
+  foreach ($f in 'SEVEN-G\build\estilo.css', 'SEVEN-G\build\plantilla.html') { if (-not [IO.File]::ReadAllText((Join-Path $repo $f)).Contains('plegado')) { Mal "$f`: falta el plegado de los avisos"; $malAv++ } }
+  foreach ($p in 'index.html', 'en\index.html') { if ([IO.File]::ReadAllText((Join-Path $repo $p)) -match '<p class="aviso') { Mal "$p`: aviso de la portada sin plegar (debe ser <details>)"; $malAv++ } }
+  $salidaT17 = Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida'
+  if (-not (Select-String -Path (Join-Path $salidaT17 't01_Dashboard_Casos_Uso_IA_v8.html') -Pattern '<details class="banner">' -Quiet)) { Mal 'panel completo: el aviso no está plegado'; $malAv++ }
+  if (-not (Select-String -Path (Join-Path $salidaT17 't01_Dashboard_Movil_IA_v8.html') -Pattern '<details class="foot" id="aviso-legal">' -Quiet)) { Mal 'panel móvil: el aviso no está plegado'; $malAv++ }
+  if (-not (Select-String -Path (Join-Path $salidaT17 't01_Dashboard_Casos_Uso_IA_v8.html') -Pattern 'class="ir-movil"' -Quiet)) { Mal 'panel completo: falta el paso a la versión para móvil'; $malAv++ }
+  if (-not $malAv) { Ok 'avisos plegados en documentos, portada y paneles; el panel completo ofrece la versión para móvil' }
+
+  # ---- 15. todo enlace cuyo texto es solo un código (documento NN, Tnn, Pnn, Mnn) lleva un tooltip que dice adónde va (D94)
+  Write-Host '15. Tooltips en los enlaces de código'
+  $sinTitulo = [Collections.Generic.List[string]]::new(); $nCod = 0
+  foreach ($f in (Get-ChildItem (Join-Path $repo 'SEVEN-G\html'), (Join-Path $repo 'SPHERES\html'), (Join-Path $repo 'SPAD\html') -Recurse -File -Filter *.html)) {
+    $cuerpo = [regex]::Replace([IO.File]::ReadAllText($f.FullName), '(?s)<script\b.*?</script>', '')
+    foreach ($a in [regex]::Matches($cuerpo, '(?i)<a\s([^>]*)>\s*(?:documento?\s+)?(?:\d{2}|[TPM]\d{2})\s*</a>')) {
+      $nCod++
+      if ($a.Groups[1].Value -notmatch '\btitle="[^"]+"') { $sinTitulo.Add("$([IO.Path]::GetRelativePath($repo, $f.FullName)): $($a.Value)") }
+    }
+  }
+  foreach ($x in ($sinTitulo | Select-Object -First 12)) { Mal "enlace de código sin tooltip: $x" }
+  if ($sinTitulo.Count -gt 12) { Mal "… y $($sinTitulo.Count - 12) enlaces de código más sin tooltip" }
+  if (-not $sinTitulo.Count) { Ok "$nCod enlaces de código, todos con tooltip" }
+  if (-not (Select-String -Path (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\index.html') -Pattern 'class="que-es"' -Quiet)) { Mal 'T17: su página no explica en una frase qué es (generador del panel)' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/51_SEVEN-G_Datos_y_conocimiento.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/51_SEVEN-G_Datos_y_conocimiento.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/51_SEVEN-G_Datos_y_conocimiento.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#spheres-05-and-06"><span>02</span>Spheres 05 and 06</a></li><li><a href="#principles"><span>03</span>Principles</a></li><li><a href="#data-governance-applied-to-ai"><span>04</span>Data governance applied to AI</a></li><li><a href="#data-preparation-by-phase"><span>05</span>Data preparation by phase</a></li><li><a href="#high-risk-systems-article-10-of-the-eu-ai-act"><span>06</span>High-risk systems: Article 10 of the EU AI Act</a></li><li><a href="#data-and-model-lineage-p16"><span>07</span>Data and model lineage (P16)</a></li><li><a href="#synthetic-data"><span>08</span>Synthetic data</a></li><li><a href="#personal-data-in-training-prompts-and-outputs"><span>09</span>Personal data in training, prompts and outputs</a></li><li><a href="#knowledge"><span>10</span>Knowledge</a></li><li><a href="#intellectual-property-and-third-party-rights"><span>11</span>Intellectual property and third-party rights</a></li><li><a href="#indicators"><span>12</span>Indicators</a></li><li><a href="#common-mistakes"><span>13</span>Common mistakes</a></li><li><a href="#typical-data-and-knowledge-risks"><span>14</span>Typical data and knowledge risks</a></li><li><a href="#associated-tools-and-templates"><span>15</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>16</span>Related documents</a></li><li><a href="#version-control"><span>17</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
-<aside class="esencial" data-capa="condicional"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Conditional: depends on a trigger</span></div><p>Trigger: the initiative uses the company&#39;s own data to train, fine-tune or feed a system, uses knowledge sources or processes personal data. Data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>) is evidence for every initiative in phase 4.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
+<aside class="esencial" data-capa="condicional"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Conditional: depends on a trigger</span></div><p>Trigger: the initiative uses the company&#39;s own data to train, fine-tune or feed a system, uses knowledge sources or processes personal data. Data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>) is evidence for every initiative in phase 4.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
 <p>This document develops the enabling spheres <strong>05 · Data</strong> and <strong>06 · Knowledge</strong> of the impact map. It sets out what an organisation applying SEVEN-G must do to ensure that the data and knowledge used by AI are <strong>known, of sufficient quality, legally usable, traceable and protected</strong>.</p>
 <p>It covers:</p>
@@ -439,13 +450,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Data governance <strong>applied to AI</strong>: ownership, quality, catalogue, legal basis, minimisation and retention.</li>
 <li>The data requirements in <strong>each phase of the lifecycle</strong>, with particular attention to the availability and quality assessment in phase 3.</li>
 <li>The data governance requirements of <strong>Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a></strong> for high-risk systems, in summary.</li>
-<li><strong>Data and model lineage</strong> (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</li>
+<li><strong>Data and model lineage</strong> (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>).</li>
 <li><strong>Synthetic data</strong>.</li>
 <li><strong>Personal data</strong> in training, in prompts and in outputs.</li>
 <li><strong>Knowledge</strong> as a source for generative AI: sources, curation, validity, permissions and critical knowledge that depends on a few people.</li>
 <li><strong>Intellectual property</strong> and third-party rights.</li>
 </ul>
-<p>It <strong>does not replace</strong> the company's data governance policy or its data protection policy: it applies them to AI and indicates where AI demands more. The security of data against attacks is dealt with in <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>; contracts with suppliers, in <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>.</p>
+<p>It <strong>does not replace</strong> the company's data governance policy or its data protection policy: it applies them to AI and indicates where AI demands more. The security of data against attacks is dealt with in <a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>; contracts with suppliers, in <a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>.</p>
 <p>This document does not constitute legal advice.</p>
 <hr />
 <h2 id="spheres-05-and-06"><span class="antetitulo">02</span>Spheres 05 and 06</h2>
@@ -500,7 +511,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>In sphere 05, the <strong>Transform</strong> level requires particular attention to the legal basis, third-party rights and regulatory classification, because it changes the purpose for which the data were collected.</p>
 <h3 id="2-3-what-is-assessed">2.3 What is assessed</h3>
 <p>In sphere 05, the following are assessed: <strong>ownership</strong> (DAT-01), <strong>catalogue</strong> (DAT-02), <strong>legitimacy</strong> (DAT-03), <strong>quality</strong> (DAT-04, DAT-05, DAT-09), <strong>traceability</strong> (DAT-06), <strong>readiness</strong> (DAT-07, DAT-10) and <strong>retention</strong> (DAT-08). In sphere 06: <strong>sources</strong> (CNC-01, CNC-02, CNC-05), <strong>quality in use</strong> (CNC-03, CNC-04, CNC-08) and <strong>dependence on a few people</strong> (CNC-06, CNC-07). The indicators are defined in section 12.</p>
-<p>These dimensions feed <strong>D3 Data and knowledge</strong> in the maturity model (<a href="11_SEVEN-G_Modelo_de_madurez.html">document 11</a>).</p>
+<p>These dimensions feed <strong>D3 Data and knowledge</strong> in the maturity model (<a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>).</p>
 <hr />
 <h2 id="principles"><span class="antetitulo">03</span>Principles</h2>
 <div class="tabla"><table>
@@ -583,7 +594,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Content or knowledge owner</strong></td>
-<td>Quality, validity and permissions of generative AI sources (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>, section 4.2).</td>
+<td>Quality, validity and permissions of generative AI sources (<a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>, section 4.2).</td>
 </tr>
 <tr>
 <td><strong>AI Risk Owner</strong></td>
@@ -639,7 +650,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Systems using it</td>
-<td>Initiatives and model versions; link to <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>.</td>
+<td>Initiatives and model versions; link to <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>.</td>
 </tr>
 <tr>
 <td>Version</td>
@@ -699,14 +710,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Thresholds</strong> are set in phase 3 for each critical dataset and become monitoring controls in phase 6 (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>, section 5).</p>
+<p><strong>Thresholds</strong> are set in phase 3 for each critical dataset and become monitoring controls in phase 6 (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>, section 5).</p>
 <h3 id="4-4-legal-basis-and-minimisation">4.4 Legal basis and minimisation</h3>
 <ul>
 <li>The use of personal data to develop or operate an AI system is processing with <strong>its own purpose</strong>. It must have a legal basis (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Art. 6) and, if the data were collected for another purpose, a <strong>compatibility</strong> analysis (Art. 6(4)) or a new basis.</li>
 <li><strong>Special categories</strong> of data (Art. 9) require an applicable exception and enhanced controls.</li>
 <li><strong>Minimisation</strong> (Art. 5(1)(c)) applies to attributes, records and period. In AI, each personal attribute used as a variable is justified in writing.</li>
-<li><strong>Data protection by design and by default</strong> (Art. 25) is reflected in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> and <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>.</li>
-<li>The processing is included in the <strong>record of processing activities</strong> (Art. 30) and, where applicable, in a <strong>data protection impact assessment</strong> (Art. 35) in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</li>
+<li><strong>Data protection by design and by default</strong> (Art. 25) is reflected in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> and <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>.</li>
+<li>The processing is included in the <strong>record of processing activities</strong> (Art. 30) and, where applicable, in a <strong>data protection impact assessment</strong> (Art. 35) in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>.</li>
 </ul>
 <h3 id="4-5-retention">4.5 Retention</h3>
 <div class="tabla"><table>
@@ -723,7 +734,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Input data and outputs in production</td>
-<td>According to the log retention period (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>, section 11) and minimisation.</td>
+<td>According to the log retention period (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>, section 11) and minimisation.</td>
 </tr>
 <tr>
 <td>Prompts and conversations with generative AI</td>
@@ -735,7 +746,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>When a system is retired</td>
-<td>The treatment of data and models decided at G7 is applied (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>, section 12).</td>
+<td>The treatment of data and models decided at G7 is applied (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>, section 12).</td>
 </tr>
 </tbody>
 </table></div>
@@ -755,49 +766,49 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>0 · Context</strong></td>
 <td>Declare known data constraints: protected data, international transfers, secrets, licences.</td>
-<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a></td>
 <td>Is there a constraint that prevents the initiative?</td>
 </tr>
 <tr>
 <td><strong>1 · Discovery</strong></td>
 <td>Identify what data or knowledge would be needed and whether they exist.</td>
-<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a></td>
 <td>Does the opportunity depend on data that do not exist?</td>
 </tr>
 <tr>
 <td><strong>2 · Hypothesis</strong></td>
 <td>Confirm that the baseline can be measured with real data.</td>
-<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a></td>
 <td>Can the baseline be measured?</td>
 </tr>
 <tr>
 <td><strong>3 · Feasibility</strong></td>
 <td><strong>Availability and quality assessment with real data</strong>; legal basis; third-party rights; representativeness.</td>
-<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></td>
 <td>Are there sufficient data, of sufficient quality and legally usable?</td>
 </tr>
 <tr>
 <td><strong>4 · Design</strong></td>
 <td>Lineage, dataset records, quality controls, minimisation, retention, knowledge source permissions.</td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a></td>
 <td>Does the design treat the data with sufficient controls?</td>
 </tr>
 <tr>
 <td><strong>5 · Delivery</strong></td>
 <td>Freeze and version datasets; quality, bias and data leakage testing; validate knowledge sources.</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
 <td>Do the results hold with production data?</td>
 </tr>
 <tr>
 <td><strong>6 · Operation</strong></td>
 <td>Monitor quality, drift and validity; manage data incidents.</td>
-<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>, <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></td>
 <td>Has quality degraded or has the legal basis changed?</td>
 </tr>
 <tr>
 <td><strong>7 · Evolution or retirement</strong></td>
 <td>Review whether the data allow scaling; treat data and models on retirement.</td>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
 <td>Do the data support the extended scope?</td>
 </tr>
 </tbody>
@@ -847,14 +858,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Preparation cost</strong></td>
-<td>Estimated effort for cleansing, integration, labelling and curation, included in the full cost (<a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>).</td>
+<td>Estimated effort for cleansing, integration, labelling and curation, included in the full cost (<a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>).</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Result.</strong> Each block is rated as <em>sufficient</em>, <em>sufficient with actions</em> (action, cost, timeframe and owner) or <em>insufficient</em>. An <em>insufficient</em> legitimacy block prevents proceeding. If other blocks are insufficient, the expected outcome of G3 is <strong>Iterate</strong>, <strong>Pivot</strong> or <strong>Stop</strong> with the coded reason <em>Insufficient data</em> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>, section 3.3).</p>
+<p><strong>Result.</strong> Each block is rated as <em>sufficient</em>, <em>sufficient with actions</em> (action, cost, timeframe and owner) or <em>insufficient</em>. An <em>insufficient</em> legitimacy block prevents proceeding. If other blocks are insufficient, the expected outcome of G3 is <strong>Iterate</strong>, <strong>Pivot</strong> or <strong>Stop</strong> with the coded reason <em>Insufficient data</em> (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>, section 3.3).</p>
 <hr />
 <h2 id="high-risk-systems-article-10-of-the-eu-ai-act"><span class="antetitulo">06</span>High-risk systems: Article 10 of the EU AI Act</h2>
-<p>This section summarises, without legal detail, what Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires of the training, validation and test datasets of <strong>high-risk systems</strong>, and where it is reflected in SEVEN-G. The obligation-by-obligation analysis, the application dates (Annex III from 2 December 2027 and Annex I from 2 August 2028, following Regulation (EU) 2026/1744) and the other amendments are dealt with in <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> (§3.1 and §3.2).</p>
+<p>This section summarises, without legal detail, what Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires of the training, validation and test datasets of <strong>high-risk systems</strong>, and where it is reflected in SEVEN-G. The obligation-by-obligation analysis, the application dates (Annex III from 2 December 2027 and Annex I from 2 August 2028, following Regulation (EU) 2026/1744) and the other amendments are dealt with in <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> (§3.1 and §3.2).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -865,15 +876,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Data governance and management practices appropriate to the intended purpose: design choices, origin and original purpose of the data, preparation (annotation, labelling, cleaning, updating, enrichment, aggregation), assumptions about what the data measure and represent.</td>
-<td>Dataset record (4.2); <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
+<td>Dataset record (4.2); <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>.</td>
 </tr>
 <tr>
 <td>Prior assessment of the availability, quantity and suitability of the datasets needed.</td>
-<td>Phase 3 assessment (5.2); <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>.</td>
+<td>Phase 3 assessment (5.2); <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>.</td>
 </tr>
 <tr>
 <td>Examination of possible biases likely to affect health, safety or fundamental rights or lead to discrimination, and measures to detect, prevent and mitigate them.</td>
-<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a> (bias testing); <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>, section 8.4; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a> (bias testing); <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>, section 8.4; <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>.</td>
 </tr>
 <tr>
 <td>Identification of data gaps or shortcomings and how they can be addressed.</td>
@@ -893,10 +904,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>When the company acts as the <strong>deployer</strong> of a supplier's high-risk system, it must ensure that the <strong>input data</strong> under its control are relevant and sufficiently representative in view of the intended purpose (Art. 26(4)), and require the necessary information from the supplier (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</p>
+<p>When the company acts as the <strong>deployer</strong> of a supplier's high-risk system, it must ensure that the <strong>input data</strong> under its control are relevant and sufficiently representative in view of the intended purpose (Art. 26(4)), and require the necessary information from the supplier (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</p>
 <p>This document does not constitute legal advice.</p>
 <hr />
-<h2 id="data-and-model-lineage-p16"><span class="antetitulo">07</span>Data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>)</h2>
+<h2 id="data-and-model-lineage-p16"><span class="antetitulo">07</span>Data and model lineage (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>)</h2>
 <h3 id="7-1-what-it-is-and-what-it-is-for">7.1 What it is and what it is for</h3>
 <p>Lineage makes it possible to answer, for any output of an AI system: <strong>which data, which transformations, which model version, which configuration and which knowledge sources produced it</strong>. It is the basis for investigating incidents, handling individuals' rights, auditing, reproducing results, managing changes and retiring systems.</p>
 <h3 id="7-2-minimum-content">7.2 Minimum content</h3>
@@ -968,8 +979,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h3 id="7-3-rules">7.3 Rules</h3>
 <ol>
-<li><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> is prepared in phase 4 and <strong>must</strong> be current for G5.</li>
-<li>Any change in sources, transformations, model, prompts or indexes <strong>updates</strong> <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> and is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a> (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>, section 6).</li>
+<li><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> is prepared in phase 4 and <strong>must</strong> be current for G5.</li>
+<li>Any change in sources, transformations, model, prompts or indexes <strong>updates</strong> <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> and is recorded in <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a> (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>, section 6).</li>
 <li>Lineage is generated <strong>automatically</strong> wherever the platform allows; manual documentation is limited to what cannot be captured.</li>
 <li>A system in production without current lineage is a <strong>nonconformity</strong> (minor if it does not affect decisions; major if the system is Enterprise).</li>
 </ol>
@@ -1089,11 +1100,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Employees entering personal or confidential data into unauthorised tools.</td>
-<td>Acceptable use policy with a classification of the information permitted per tool (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>); data leakage prevention controls; usage monitoring (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>).</td>
+<td>Acceptable use policy with a classification of the information permitted per tool (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>); data leakage prevention controls; usage monitoring (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a>).</td>
 </tr>
 <tr>
 <td>Supplier retaining prompts or using them to train its models.</td>
-<td>Contractual terms verified in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>: no use for training, retention period, location, sub-processors (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</td>
+<td>Contractual terms verified in <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>: no use for training, retention period, location, sub-processors (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</td>
 </tr>
 <tr>
 <td>Automatic retrieval of personal data not needed for the response.</td>
@@ -1101,7 +1112,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>System prompts containing sensitive information.</td>
-<td>System prompts do not contain secrets or personal data; they are reviewed in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>.</td>
+<td>System prompts do not contain secrets or personal data; they are reviewed in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>.</td>
 </tr>
 <tr>
 <td>Conversation logs retained without a time limit.</td>
@@ -1110,9 +1121,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="9-3-in-outputs">9.3 In outputs</h3>
-<p>AI systems may <strong>infer</strong> personal data that nobody has provided (for example, traits, preferences or sensitive situations). An inference about an identified person is personal data. If the inference relates to a special category, its rules apply. The design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>) <strong>must</strong> identify which inferences the system produces and whether they are necessary and lawful.</p>
+<p>AI systems may <strong>infer</strong> personal data that nobody has provided (for example, traits, preferences or sensitive situations). An inference about an identified person is personal data. If the inference relates to a special category, its rules apply. The design (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>) <strong>must</strong> identify which inferences the system produces and whether they are necessary and lawful.</p>
 <h3 id="9-4-data-for-detecting-bias">9.4 Data for detecting bias</h3>
-<p>Detecting bias may require data on protected characteristics that the company does not normally process. For high-risk systems, the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> exceptionally allows the processing of special categories for that purpose and with strict safeguards (Art. 10(5)), and Regulation (EU) 2026/1744 extends that possibility beyond high risk subject to a strict necessity criterion (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a> §3.2). In all cases, the decision is taken with the data protection officer and the legal analysis, documented in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, and measures such as separation, pseudonymisation, restricted access and deletion at the end of the analysis are applied.</p>
+<p>Detecting bias may require data on protected characteristics that the company does not normally process. For high-risk systems, the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> exceptionally allows the processing of special categories for that purpose and with strict safeguards (Art. 10(5)), and Regulation (EU) 2026/1744 extends that possibility beyond high risk subject to a strict necessity criterion (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a> §3.2). In all cases, the decision is taken with the data protection officer and the legal analysis, documented in <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, and measures such as separation, pseudonymisation, restricted access and deletion at the end of the analysis are applied.</p>
 <hr />
 <h2 id="knowledge"><span class="antetitulo">10</span>Knowledge</h2>
 <h3 id="10-1-knowledge-sources-for-generative-ai">10.1 Knowledge sources for generative AI</h3>
@@ -1215,7 +1226,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Rule.</strong> A system that cites an expired document in a response on terms, prices, rules or procedures affecting customers or employees generates an <strong>incident</strong> that is classified using the S1–S4 scale (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>, section 7).</p>
+<p><strong>Rule.</strong> A system that cites an expired document in a response on terms, prices, rules or procedures affecting customers or employees generates an <strong>incident</strong> that is classified using the S1–S4 scale (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>, section 7).</p>
 <h3 id="10-4-access-permissions">10.4 Access permissions</h3>
 <p>Content retrieval is a <strong>route of access to information</strong> and must respect the same permissions as the source.</p>
 <div class="tabla"><table>
@@ -1240,7 +1251,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Agents with their own permissions</strong> that retrieve information for users with fewer permissions.</td>
-<td>Agents act with the permissions of the user they serve, unless there is a justified design in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>).</td>
+<td>Agents act with the permissions of the user they serve, unless there is a justified design in <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>).</td>
 </tr>
 <tr>
 <td><strong>Permission changes</strong> in the source not carried over to the index.</td>
@@ -1261,7 +1272,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Retrieval relevance</td>
 <td>Whether the documents retrieved are appropriate for the query.</td>
-<td>Evaluated on the evaluation set (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html">document 52</a>, section 4.2).</td>
+<td>Evaluated on the evaluation set (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Document 52 &#183; AI operations manual">document 52</a>, section 4.2).</td>
 </tr>
 <tr>
 <td>Faithfulness to sources</td>
@@ -1281,7 +1292,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Source citation</td>
 <td>Whether the response allows the user to check the source.</td>
-<td>Design requirement in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>.</td>
+<td>Design requirement in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1327,7 +1338,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Considerations regarding people.</strong> The capture of tacit knowledge is carried out with <strong>informed voluntary participation</strong>, recognition of the expert and clarity about the subsequent use of the content. It <strong>must not</strong> be presented or used as a step prior to dispensing with the person without the effect having been assessed in accordance with <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>. If recordings or transcripts contain personal data, the corresponding legal basis, information and retention apply.</p>
+<p><strong>Considerations regarding people.</strong> The capture of tacit knowledge is carried out with <strong>informed voluntary participation</strong>, recognition of the expert and clarity about the subsequent use of the content. It <strong>must not</strong> be presented or used as a step prior to dispensing with the person without the effect having been assessed in accordance with <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>. If recordings or transcripts contain personal data, the corresponding legal basis, information and retention apply.</p>
 <hr />
 <h2 id="intellectual-property-and-third-party-rights"><span class="antetitulo">11</span>Intellectual property and third-party rights</h2>
 <p>Consultation carried out in September 2026. This is an area of evolving legislation and case law; it must be verified with specialist advice.</p>
@@ -1364,12 +1375,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Open-source software and models</strong></td>
 <td>Licences may impose conditions of use, attribution or purpose restrictions.</td>
-<td>Licence record in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>; review before G4.</td>
+<td>Licence record in <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>; review before G4.</td>
 </tr>
 </tbody>
 </table></div>
 <h3 id="11-2-third-party-general-purpose-models">11.2 Third-party general-purpose models</h3>
-<p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers of general-purpose AI models</strong> to put in place a policy to comply with copyright law, including rights reservations, and to publish a sufficiently detailed summary of the content used for training (Art. 53(1)(c) and (d)). A company that uses those models <strong>should</strong> request and retain that information in the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) and assess the contractual safeguards against third-party claims (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">document 36</a>).</p>
+<p>The <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> requires <strong>providers of general-purpose AI models</strong> to put in place a policy to comply with copyright law, including rights reservations, and to publish a sufficiently detailed summary of the content used for training (Art. 53(1)(c) and (d)). A company that uses those models <strong>should</strong> request and retain that information in the supplier assessment (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>) and assess the contractual safeguards against third-party claims (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Document 36 &#183; AI third parties and suppliers">document 36</a>).</p>
 <h3 id="11-3-generated-outputs">11.3 Generated outputs</h3>
 <div class="tabla"><table>
 <thead>
@@ -1393,14 +1404,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Transparency</strong></td>
-<td>Any applicable obligations to mark or disclose generated or manipulated content are met (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>).</td>
+<td>Any applicable obligations to mark or disclose generated or manipulated content are met (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>).</td>
 </tr>
 </tbody>
 </table></div>
 <p>This document does not constitute legal advice.</p>
 <hr />
 <h2 id="indicators"><span class="antetitulo">12</span>Indicators</h2>
-<p>The codes are provisional; their definitive <code>IND-</code> code is shown in the mapping table in <a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a> (§21). Knowledge indicators use the <strong>CNC-</strong> prefix so that they are not confused with the <code>IND-CON</code> family (board) in <a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a>. Thresholds are <strong>indicative and to be calibrated</strong>. &quot;No data&quot; is not zero.</p>
+<p>The codes are provisional; their definitive <code>IND-</code> code is shown in the mapping table in <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a> (§21). Knowledge indicators use the <strong>CNC-</strong> prefix so that they are not confused with the <code>IND-CON</code> family (board) in <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a>. Thresholds are <strong>indicative and to be calibrated</strong>. &quot;No data&quot; is not zero.</p>
 <h3 id="12-1-sphere-05-data">12.1 Sphere 05 · Data</h3>
 <div class="tabla"><table>
 <thead>
@@ -1419,7 +1430,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Ownership coverage</td>
 <td>Datasets used by systems in production with an assigned owner ÷ datasets used by systems in production</td>
 <td>Quarterly</td>
-<td>Catalogue, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td>Catalogue, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></td>
 <td>100%</td>
 </tr>
 <tr id="cod-dat-02">
@@ -1457,9 +1468,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-dat-06">
 <td><strong>DAT-06</strong></td>
 <td>Lineage coverage</td>
-<td>Systems in production with current <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> ÷ systems in production</td>
+<td>Systems in production with current <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> ÷ systems in production</td>
 <td>Quarterly</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a></td>
 <td>100%</td>
 </tr>
 <tr id="cod-dat-07">
@@ -1467,7 +1478,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>G3 decisions due to data</td>
 <td>G3 decisions with an Iterate, Pivot or Stop outcome and the reason <em>Insufficient data</em> ÷ G3 decisions</td>
 <td>Half-yearly</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
 <td>For interpretation, not a target: very low may indicate a lax assessment; very high, poor opportunity selection</td>
 </tr>
 <tr id="cod-dat-08">
@@ -1483,7 +1494,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Incidents caused by data</td>
 <td>AI incidents whose root cause lies in data ÷ closed AI incidents</td>
 <td>Quarterly</td>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 <td>Decreasing trend</td>
 </tr>
 <tr id="cod-dat-10">
@@ -1554,7 +1565,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Improper exposure</td>
 <td>Findings of access to content without permission detected in testing or in production, per period</td>
 <td>Quarterly</td>
-<td>Permission testing, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td>Permission testing, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 <td>0</td>
 </tr>
 <tr id="cod-cnc-06">
@@ -1659,23 +1670,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>11</td>
 <td>Omitting the cost of preparation, labelling and curation.</td>
 <td>Inflated expected net value at G3.</td>
-<td>Section 5.2; <a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>.</td>
+<td>Section 5.2; <a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>.</td>
 </tr>
 <tr>
 <td>12</td>
 <td>Capturing experts' knowledge without their informed participation.</td>
 <td>Poor content and loss of trust.</td>
-<td>Section 10.6; <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>.</td>
+<td>Section 10.6; <a href="50_SEVEN-G_Personas_y_organizacion.html" title="Document 50 &#183; People and organisation">document 50</a>.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="typical-data-and-knowledge-risks"><span class="antetitulo">14</span>Typical data and knowledge risks</h2>
-<p>Codes and names from the typical risk catalogue in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>; two of these risks appear there in other categories (LEG, ORG).</p>
+<p>Codes and names from the typical risk catalogue in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>; two of these risks appear there in other categories (LEG, ORG).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
-<th>Code (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>)</th>
+<th>Code (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>)</th>
 <th>Risk</th>
 <th>Main controls</th>
 </tr>
@@ -1699,7 +1710,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr id="cod-rt-dat-04">
 <td><strong>RT-DAT-04</strong></td>
 <td>Unknown lineage: loss of traceability of data and models.</td>
-<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> current and updated with every change.</td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a> current and updated with every change.</td>
 </tr>
 <tr id="cod-rt-dat-05">
 <td><strong>RT-DAT-05</strong></td>
@@ -1725,7 +1736,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="associated-tools-and-templates"><span class="antetitulo">15</span>Associated tools and templates</h2>
-<p>This document does not create a new tool. The dataset record and the knowledge source inventory are implemented in the <strong>data catalogue that the company already uses</strong> or, if none exists, in template <a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html">P64</a> and as system attributes in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>.</p>
+<p>This document does not create a new tool. The dataset record and the knowledge source inventory are implemented in the <strong>data catalogue that the company already uses</strong> or, if none exists, in template <a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html" title="Template P64 &#183; Dataset record and knowledge source inventory">P64</a> and as system attributes in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1736,62 +1747,62 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a></strong></td>
 <td>Inventory, <em>gates</em>, risks, regulatory classifier</td>
 <td>Link between systems, data and lineage; G3 assessment; RT-DAT risks; high-risk obligations.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> · <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
+<td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a> · <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> · <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Tool T21 &#183; Corporate AI use monitor">T21</a></strong></td>
 <td>Incidents, suppliers, corporate use</td>
 <td>Incidents caused by data; supplier terms; data in unauthorised tools.</td>
 </tr>
 <tr id="cod-p02">
-<td><strong><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></strong></td>
+<td><strong><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a></strong></td>
 <td>Context and constraints statement</td>
 <td>Phase 0 data constraints.</td>
 </tr>
 <tr id="cod-p10">
-<td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></strong></td>
+<td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a></strong></td>
 <td>Feasibility assessment</td>
 <td>Data availability and quality assessment (section 5.2).</td>
 </tr>
 <tr id="cod-p11">
-<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></strong></td>
+<td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></strong></td>
 <td>Regulatory classification and impact assessments</td>
 <td>Legal basis, data protection impact assessment, data for detecting bias.</td>
 </tr>
 <tr id="cod-p14">
-<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></strong></td>
+<td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a></strong></td>
 <td>AI supplier assessment</td>
 <td>Use of prompts and data by the supplier; copyright policy of general-purpose models.</td>
 </tr>
 <tr id="cod-p15">
-<td><strong><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></strong></td>
+<td><strong><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a></strong></td>
 <td>Architecture record</td>
 <td>Licences for components and models.</td>
 </tr>
 <tr id="cod-p16">
-<td><strong><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></strong></td>
+<td><strong><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a></strong></td>
 <td>Data and model lineage</td>
-<td>Main template of this document; uses the records and the source inventory in <a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html">P64</a>.</td>
+<td>Main template of this document; uses the records and the source inventory in <a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html" title="Template P64 &#183; Dataset record and knowledge source inventory">P64</a>.</td>
 </tr>
 <tr id="cod-p18">
-<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></strong></td>
+<td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a></strong></td>
 <td>Security design</td>
 <td>Retrieval and agent permissions.</td>
 </tr>
 <tr id="cod-p22">
-<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
+<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></strong></td>
 <td>Validation and pilot results</td>
 <td>Quality, bias, data leakage and permission testing.</td>
 </tr>
 <tr id="cod-p25">
-<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
+<td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a></strong></td>
 <td>Monitoring and alert configuration</td>
 <td>Data quality and validity thresholds.</td>
 </tr>
 <tr id="cod-p64">
-<td><strong><a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html">P64</a></strong></td>
+<td><strong><a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html" title="Template P64 &#183; Dataset record and knowledge source inventory">P64</a></strong></td>
 <td>Dataset record and knowledge source inventory</td>
 <td>Record of each dataset and inventory of knowledge sources, if the company has no data catalogue.</td>
 </tr>
@@ -1867,7 +1878,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Develops spheres 05 and 06 with indicators; data governance applied to AI (roles, dataset record, quality, legal basis, minimisation and retention); data requirements by phase with the phase 3 assessment using real data; the summary of Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>; the content of <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>; synthetic data; personal data in training, prompts and outputs; knowledge sources for generative AI, curation, validity, permissions and critical knowledge dependent on a few people; intellectual property; nineteen indicators with a formula, twelve common mistakes and eight typical risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>. Knowledge indicators renamed from CON- to CNC- to avoid the clash with the IND-CON family (board) in <a href="41_SEVEN-G_Catalogo_de_indicadores.html">document 41</a>.</td>
+<td>First version. Develops spheres 05 and 06 with indicators; data governance applied to AI (roles, dataset record, quality, legal basis, minimisation and retention); data requirements by phase with the phase 3 assessment using real data; the summary of Article 10 of the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>; the content of <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>; synthetic data; personal data in training, prompts and outputs; knowledge sources for generative AI, curation, validity, permissions and critical knowledge dependent on a few people; intellectual property; nineteen indicators with a formula, twelve common mistakes and eight typical risks. Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agents criterion) and with 34 and 37; risks aligned with the codes in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>. Knowledge indicators renamed from CON- to CNC- to avoid the clash with the IND-CON family (board) in <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Document 41 &#183; Indicator catalogue">document 41</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2108,6 +2119,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

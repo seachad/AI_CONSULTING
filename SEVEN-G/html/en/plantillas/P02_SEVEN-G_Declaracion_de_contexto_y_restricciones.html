@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#strategic-context"><span>03</span>Strategic context</a></li><li><a href="#regulatory-constraints"><span>04</span>Regulatory constraints</a></li><li><a href="#ethical-and-usage-constraints"><span>05</span>Ethical and usage constraints</a></li><li><a href="#data-constraints"><span>06</span>Data constraints</a></li><li><a href="#budgetary-and-time-constraints"><span>07</span>Budgetary and time constraints</a></li><li><a href="#technological-and-third-party-constraints"><span>08</span>Technological and third-party constraints</a></li><li><a href="#organisational-and-people-constraints"><span>09</span>Organisational and people constraints</a></li><li><a href="#assumptions-and-open-questions"><span>10</span>Assumptions and open questions</a></li><li><a href="#quality-criteria"><span>11</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>12</span>Approval and verification</a></li><li><a href="#version-control"><span>13</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
@@ -442,7 +453,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>When it is used</strong></td>
-<td>In phase 0, together with the initiative charter (<a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>). It is reviewed at G3 and whenever a relevant constraint changes (regulation, budget, supplier, data).</td>
+<td>In phase 0, together with the initiative charter (<a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>). It is reviewed at G3 and whenever a relevant constraint changes (regulation, budget, supplier, data).</td>
 </tr>
 <tr>
 <td><strong>Who completes it</strong></td>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register (link as G0 evidence).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · Initiative register (link as G0 evidence).</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -473,7 +484,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Completion rules:</p>
 <ul>
 <li>A constraint is something the initiative <strong>cannot change</strong>. If it can be negotiated, it is an assumption and goes in section 10.</li>
-<li>This statement does not replace the regulatory classification (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>) or the risk matrix (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>): it identifies what is known in phase 0 so that it is not discovered late.</li>
+<li>This statement does not replace the regulatory classification (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>) or the risk matrix (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>): it identifies what is known in phase 0 so that it is not discovered late.</li>
 <li><em>This document does not constitute legal advice.</em> The applicability of each regulation must be confirmed by whoever has legal competence in the company. Regulatory references consulted in September 2026; their currency must be verified.</li>
 </ul>
 <hr />
@@ -495,7 +506,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Initiative name</td>
 <td></td>
-<td>Same as in <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
+<td>Same as in <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>.</td>
 </tr>
 <tr>
 <td>Document version</td>
@@ -520,7 +531,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Applicable intensity</td>
 <td></td>
-<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>).</td>
+<td>Lite · Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -585,7 +596,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a> (Regulation (EU) 2024/1689)</td>
 <td>Yes · No · To be determined</td>
 <td></td>
-<td>Classification and obligations according to the company's role (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>).</td>
+<td>Classification and obligations according to the company's role (<a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>).</td>
 <td></td>
 </tr>
 <tr>
@@ -647,7 +658,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Internal rules</td>
 <td></td>
-<td>Corporate AI and acceptable use policy (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>), security, data protection, procurement.</td>
+<td>Corporate AI and acceptable use policy (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>), security, data protection, procurement.</td>
 <td></td>
 <td></td>
 </tr>
@@ -687,7 +698,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Maximum autonomy permitted</td>
 <td></td>
-<td>A0 Assistance · A1 Recommendation · A2 Supervised action · A3 Autonomous action (<a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">document 35</a>).</td>
+<td>A0 Assistance · A1 Recommendation · A2 Supervised action · A3 Autonomous action (<a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Document 35 &#183; AI and agent security">document 35</a>).</td>
 </tr>
 <tr>
 <td>Red lines</td>
@@ -720,7 +731,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Special categories or specially protected data</td>
 <td></td>
-<td>Yes · No · To be determined. If yes, it triggers Enterprise criterion 5 in <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</td>
+<td>Yes · No · To be determined. If yes, it triggers Enterprise criterion 5 in <a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>.</td>
 </tr>
 <tr>
 <td>Critical confidential information</td>
@@ -768,7 +779,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Maximum budget</td>
 <td></td>
-<td>Authorised cap and review point (consistent with <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>).</td>
+<td>Authorised cap and review point (consistent with <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>).</td>
 </tr>
 <tr>
 <td>Recurring cost constraints</td>
@@ -905,7 +916,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">11</span>Quality criteria</h2>
-<p>The formal G0 and G3 criteria are in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> (see criteria G0.xx and G3.xx).</p>
+<p>The formal G0 and G3 criteria are in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> (see criteria G0.xx and G3.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -937,7 +948,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>The economic limits are consistent with <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>.</td>
+<td>The economic limits are consistent with <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1276,6 +1287,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

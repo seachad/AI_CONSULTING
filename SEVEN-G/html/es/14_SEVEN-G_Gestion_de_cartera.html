@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,13 +439,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/14_SEVEN-G_Gestion_de_cartera.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/14_SEVEN-G_Gestion_de_cartera.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#la-etapa-c3-cartera"><span>02</span>La etapa C3 · Cartera</a></li><li><a href="#entrada-de-iniciativas-en-la-cartera"><span>03</span>Entrada de iniciativas en la cartera</a></li><li><a href="#criterios-de-priorizacion"><span>04</span>Criterios de priorización</a></li><li><a href="#equilibrio-de-ambicion-y-de-riesgo"><span>05</span>Equilibrio de ambición y de riesgo</a></li><li><a href="#capacidad-y-presupuesto-por-etapas"><span>06</span>Capacidad y presupuesto por etapas</a></li><li><a href="#revision-mensual-y-trimestral"><span>07</span>Revisión mensual y trimestral</a></li><li><a href="#estancadas-condiciones-vencidas-y-en-espera"><span>08</span>Estancadas, condiciones vencidas y en espera</a></li><li><a href="#concentracion-de-riesgos-y-dependencia-de-proveedores"><span>09</span>Concentración de riesgos y dependencia de proveedores</a></li><li><a href="#procedimiento-de-retirada"><span>10</span>Procedimiento de retirada</a></li><li><a href="#regularizacion-de-iniciativas-previas-al-marco"><span>11</span>Regularización de iniciativas previas al marco</a></li><li><a href="#semaforo-de-programas"><span>12</span>Semáforo de programas</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>13</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>14</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Obligatorio siempre</span></div><p>Cartera priorizada (C3), revisi&#243;n mensual del comit&#233;, tratamiento de las iniciativas estancadas y de las condiciones vencidas, procedimiento de retirada y regularizaci&#243;n de lo que exist&#237;a antes del marco. Los pesos y umbrales son de cada compa&#241;&#237;a; la retirada y la regularizaci&#243;n no se omiten.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
 <p>Este documento desarrolla la etapa <strong>C3 · Cartera</strong> del ciclo corporativo (01 §5.1) y la gestión continua de la cartera en <strong>C4 · Supervisión</strong>. Define cómo entran las iniciativas, cómo se priorizan y financian, cómo se mantiene el equilibrio de ambición y de riesgo, cómo se revisa la cartera, cómo se tratan las iniciativas estancadas, cómo se retira una iniciativa y cómo se regularizan las iniciativas anteriores a la adopción del marco.</p>
-<p>Aplica a todas las iniciativas del registro (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>): iniciativas propias, IA de terceros integrada en procesos y uso corporativo de IA de propósito general que cumpla algún criterio Enterprise (01 §1.2). Las herramientas principales son <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas</strong>, <strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> · Mapa de esferas de la cartera</strong> y <strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> · Gestor de retiradas</strong>.</p>
+<p>Aplica a todas las iniciativas del registro (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>): iniciativas propias, IA de terceros integrada en procesos y uso corporativo de IA de propósito general que cumpla algún criterio Enterprise (01 §1.2). Las herramientas principales son <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · Registro de iniciativas</strong>, <strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a> · Mapa de esferas de la cartera</strong> y <strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a> · Gestor de retiradas</strong>.</p>
 <p>Este documento no constituye asesoramiento jurídico.</p>
 <h3 id="1-1-principios-de-la-gestion-de-cartera">1.1 Principios de la gestión de cartera</h3>
 <ol>
@@ -458,11 +469,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr id="cod-entradas-de-c1">
 <td><strong>Entradas de C1</strong></td>
-<td>Inventario, madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>), índice de transformación (12), valor validado y coste actuales.</td>
+<td>Inventario, madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>), índice de transformación (12), valor validado y coste actuales.</td>
 </tr>
 <tr id="cod-entradas-de-c2">
 <td><strong>Entradas de C2</strong></td>
-<td>Tesis de IA, ambición por esfera, apetito de riesgo, presupuesto marco, horizonte de retorno, umbral de inversión Enterprise, plazos de referencia por fase y límites de concentración (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</td>
+<td>Tesis de IA, ambición por esfera, apetito de riesgo, presupuesto marco, horizonte de retorno, umbral de inversión Enterprise, plazos de referencia por fase y límites de concentración (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Documento 13 &#183; Tesis de IA, ambici&#243;n y apetito de riesgo">documento 13</a>).</td>
 </tr>
 <tr>
 <td><strong>Resultados obligatorios</strong> (01 §5.1)</td>
@@ -470,7 +481,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Resultados de este documento</strong></td>
-<td>Sobres presupuestarios por carril; tabla de priorización; plan de capacidad; límites de concentración aplicados; plan de regularización; calendario de revisiones. Se documentan con el plan de cartera C3 (<a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a>).</td>
+<td>Sobres presupuestarios por carril; tabla de priorización; plan de capacidad; límites de concentración aplicados; plan de regularización; calendario de revisiones. Se documentan con el plan de cartera C3 (<a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a>).</td>
 </tr>
 <tr>
 <td><strong>Responsable</strong></td>
@@ -509,7 +520,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Continuo</strong></td>
-<td>Alta de iniciativas, alertas de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, preparación de información.</td>
+<td>Alta de iniciativas, alertas de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, preparación de información.</td>
 <td>Oficina de IA</td>
 </tr>
 </tbody>
@@ -610,7 +621,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Descripción comprensible</td>
-<td>Qué es y para qué se usa, sin jerga (regla 10; <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>).</td>
+<td>Qué es y para qué se usa, sin jerga (regla 10; <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>).</td>
 </tr>
 <tr>
 <td>Patrocinador y responsable de producto</td>
@@ -618,7 +629,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Esfera y ambición propuestas</td>
-<td>Con las cinco preguntas de 00 §5.2 (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>).</td>
+<td>Con las cinco preguntas de 00 §5.2 (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a>).</td>
 </tr>
 <tr>
 <td>Orden de magnitud del valor</td>
@@ -634,7 +645,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Criterios Enterprise previsibles</td>
-<td>Cuestionario de intensidad (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>).</td>
+<td>Cuestionario de intensidad (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -654,7 +665,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Puntuación</strong> con seis criterios y pesos propios de cada carril (secciones 4.2 y 4.3).</li>
 <li><strong>Asignación de presupuesto y capacidad</strong> por orden de puntuación dentro de cada carril, con comprobación de equilibrio y concentración (secciones 5 y 6).</li>
 </ol>
-<p>El comité puede alterar el orden resultante con justificación escrita registrada en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Las alteraciones que afecten al carril de Transformar se informan al consejo.</p>
+<p>El comité puede alterar el orden resultante con justificación escrita registrada en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>. Las alteraciones que afecten al carril de Transformar se informan al consejo.</p>
 <h3 id="4-2-criterios-y-pesos">4.2 Criterios y pesos</h3>
 <p>El <strong>neto adicional por euro</strong> (neto anual adicional esperado ÷ inversión adicional necesaria; regla 9) es el criterio principal en Optimizar y Aumentar. En Transformar se calcula y se muestra siempre, pero no decide por sí solo (01 §7.6).</p>
 <div class="tabla"><table>
@@ -691,7 +702,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Riesgo</strong></td>
-<td>Nivel de riesgo residual esperado (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</td>
+<td>Nivel de riesgo residual esperado (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>).</td>
 <td>15</td>
 <td>15</td>
 <td>15</td>
@@ -722,7 +733,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><strong>Puntuación de la iniciativa (0–100) = Σ (peso × puntuación del criterio) ÷ 5.</strong></p>
 <h3 id="4-3-escalas-de-puntuacion">4.3 Escalas de puntuación</h3>
 <p>Todas las escalas van de 1 a 5. Un criterio <strong>sin dato puntúa 0 y se muestra como &quot;sin dato&quot;</strong> (regla 8); una iniciativa con el neto adicional por euro sin dato no puede superar G2.</p>
-<p><strong>Neto adicional por euro.</strong> Se usa el <strong>múltiplo en el horizonte</strong> = neto adicional por euro × horizonte de retorno de C2 en años. Un múltiplo de 1 significa que la inversión adicional se recupera dentro del horizonte, sin descontar. Es un criterio de <strong>priorización</strong>, no de viabilidad: la viabilidad económica en G3 se decide solo con VAN ≥ 0 con el horizonte y la tasa fijados en C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>, sección 8.3; 01 §7.6).</p>
+<p><strong>Neto adicional por euro.</strong> Se usa el <strong>múltiplo en el horizonte</strong> = neto adicional por euro × horizonte de retorno de C2 en años. Un múltiplo de 1 significa que la inversión adicional se recupera dentro del horizonte, sin descontar. Es un criterio de <strong>priorización</strong>, no de viabilidad: la viabilidad económica en G3 se decide solo con VAN ≥ 0 con el horizonte y la tasa fijados en C2 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>, sección 8.3; 01 §7.6).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -749,7 +760,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Menos de 1</td>
-<td>1. No impide por sí solo pasar G3: en G3 se aplica VAN ≥ 0 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>).</td>
+<td>1. No impide por sí solo pasar G3: en G3 se aplica VAN ≥ 0 (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -808,7 +819,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>El riesgo residual Crítico no puntúa: es un filtro eliminatorio salvo aprobación excepcional del consejo dentro del apetito de riesgo (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</p>
+<p>El riesgo residual Crítico no puntúa: es un filtro eliminatorio salvo aprobación excepcional del consejo dentro del apetito de riesgo (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>).</p>
 <h3 id="4-4-reglas-para-que-el-retorno-no-bloquee-la-transformacion">4.4 Reglas para que el retorno no bloquee la transformación</h3>
 <ol>
 <li><strong>Sobres separados.</strong> C2 fija la proporción del presupuesto marco para cada carril. Las iniciativas solo compiten dentro de su carril.</li>
@@ -882,7 +893,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="equilibrio-de-ambicion-y-de-riesgo"><span class="antetitulo">05</span>Equilibrio de ambición y de riesgo</h2>
 <h3 id="5-1-equilibrio-de-ambicion">5.1 Equilibrio de ambición</h3>
-<p>C2 fija la <strong>distribución objetivo</strong> de la inversión entre carriles y la <strong>ambición por esfera</strong>. SEVEN-G no impone proporciones: dependen de la tesis. La cartera se compara con el objetivo en cada revisión trimestral mediante el mapa de esferas × niveles de ambición (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>), con inversión, coste recurrente y valor por celda.</p>
+<p>C2 fija la <strong>distribución objetivo</strong> de la inversión entre carriles y la <strong>ambición por esfera</strong>. SEVEN-G no impone proporciones: dependen de la tesis. La cartera se compara con el objetivo en cada revisión trimestral mediante el mapa de esferas × niveles de ambición (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a>), con inversión, coste recurrente y valor por celda.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -930,7 +941,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Autonomía</td>
-<td>Agentes con autonomía A2 o A3 en producción solo con nivel 3 en D4 y D6 (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>Agentes con autonomía A2 o A3 en producción solo con nivel 3 en D4 y D6 (<a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 </tr>
 <tr>
 <td>Exposición directa</td>
@@ -984,7 +995,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Las partidas son los siete sobres del presupuesto marco que aprueba el consejo en C2 (13 §12); esta sección fija cómo los usa la cartera. El plan de cartera los recoge en <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a> §3.</p>
+<p>Las partidas son los siete sobres del presupuesto marco que aprueba el consejo en C2 (13 §12); esta sección fija cómo los usa la cartera. El plan de cartera los recoge en <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a> §3.</p>
 <h3 id="6-2-tramos-de-financiacion">6.2 Tramos de financiación</h3>
 <div class="tabla"><table>
 <thead>
@@ -1006,7 +1017,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>2 · Diseño y entrega</strong></td>
 <td>4–5</td>
 <td>G3</td>
-<td>Coste de construcción y piloto de la evaluación de viabilidad (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>).</td>
+<td>Coste de construcción y piloto de la evaluación de viabilidad (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a>).</td>
 </tr>
 <tr>
 <td><strong>3 · Operación</strong></td>
@@ -1043,27 +1054,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Nuevas entradas y <em>gates</em> Enterprise</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a></td>
 <td>Admitir, priorizar, decidir <em>gates</em>.</td>
 </tr>
 <tr>
 <td>Estancadas, condiciones vencidas y esperas</td>
-<td>Alertas de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>Alertas de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>Sección 8.</td>
 </tr>
 <tr>
 <td>Desviaciones de coste y valor</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></td>
 <td>Condiciones, R6 anticipada.</td>
 </tr>
 <tr>
 <td>Incidentes y no conformidades mayores o críticas</td>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></td>
 <td>Contención, parada, retirada.</td>
 </tr>
 <tr>
 <td>Métricas del embudo: tiempo en fase, tiempo de decisión, conversión</td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td>Medidas sobre cuellos de botella.</td>
 </tr>
 </tbody>
@@ -1080,7 +1091,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Equilibrio</td>
-<td>Mapa <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>; mezcla de ambición por fase; desviación frente a C2.</td>
+<td>Mapa <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a>; mezcla de ambición por fase; desviación frente a C2.</td>
 <td>Medidas de la sección 5.1.</td>
 </tr>
 <tr>
@@ -1111,7 +1122,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Informe al consejo (C4)</td>
 <td>Síntesis con el formato de respuesta de los documentos 60 y 61.</td>
-<td>Recomendaciones registradas (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>).</td>
+<td>Recomendaciones registradas (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1198,7 +1209,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Medidas.</strong> Los proveedores con nivel de exigencia <strong>N3</strong> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html">documento 36</a>) deben tener plan de salida probado o, al menos, documentado y con coste estimado, que se incorpora al neto de la iniciativa. En entidades sujetas a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, los servicios TIC que soportan funciones críticas o importantes requieren estrategias de salida (artículo 28 del Reglamento (UE) 2022/2554). Un cambio relevante del proveedor o del modelo base provoca una R6 extraordinaria de las iniciativas afectadas.</p>
+<p><strong>Medidas.</strong> Los proveedores con nivel de exigencia <strong>N3</strong> (<a href="36_SEVEN-G_Terceros_y_proveedores_de_IA.html" title="Documento 36 &#183; Terceros y proveedores de IA">documento 36</a>) deben tener plan de salida probado o, al menos, documentado y con coste estimado, que se incorpora al neto de la iniciativa. En entidades sujetas a <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, los servicios TIC que soportan funciones críticas o importantes requieren estrategias de salida (artículo 28 del Reglamento (UE) 2022/2554). Un cambio relevante del proveedor o del modelo base provoca una R6 extraordinaria de las iniciativas afectadas.</p>
 <hr />
 <h2 id="procedimiento-de-retirada"><span class="antetitulo">10</span>Procedimiento de retirada</h2>
 <p>La retirada es un resultado de G7 (01 §6.9 y §7.3). Toda retirada debe registrar fecha, motivo, órgano que decide, sustituto si lo hay, tratamiento de datos y modelos y comunicación a los afectados (01 §6.9). Este procedimiento se aplica también a la <strong>retirada parcial</strong> (reducción de alcance, usuarios o funciones) y, con las adaptaciones de 10.10, al uso corporativo de IA.</p>
@@ -1254,7 +1265,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Cuando el riesgo lo exige, la iniciativa se <strong>detiene de inmediato</strong> con el interruptor de parada o el plan de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) y el G7 formal se celebra después, en un plazo máximo de 10 días hábiles.</p>
+<p>Cuando el riesgo lo exige, la iniciativa se <strong>detiene de inmediato</strong> con el interruptor de parada o el plan de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>) y el G7 formal se celebra después, en un plazo máximo de 10 días hábiles.</p>
 <h3 id="10-2-responsables">10.2 Responsables</h3>
 <div class="tabla"><table>
 <thead>
@@ -1298,7 +1309,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Oficina de IA</strong></td>
-<td>Registro en <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>, actualización de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, consolidación de lecciones.</td>
+<td>Registro en <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>, actualización de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, consolidación de lecciones.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1323,7 +1334,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   class F ko
 </pre></div><div class="g-fuente">Fuente: SEVEN-G</div></figure>
 <p>Plazos de referencia: plan de retirada aprobado en 15 días (Lite) o 30 días (Enterprise) desde la decisión, en línea con los plazos de la fase 7 (03 §3.6); verificación de cierre en los 30 días siguientes a la desactivación.</p>
-<h3 id="10-4-contenido-del-plan-de-retirada-p30">10.4 Contenido del plan de retirada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>)</h3>
+<h3 id="10-4-contenido-del-plan-de-retirada-p30">10.4 Contenido del plan de retirada (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1362,7 +1373,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Riesgos de la retirada</td>
-<td>Riesgos de la transición registrados con la escala del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>.</td>
+<td>Riesgos de la transición registrados con la escala del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>.</td>
 </tr>
 <tr>
 <td>Verificación</td>
@@ -1389,7 +1400,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Modelos, versiones y configuraciones</strong></td>
-<td>Archivo con versión y linaje (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>) mientras exista obligación de conservar documentación o posibilidad de reclamación; después, destrucción registrada.</td>
+<td>Archivo con versión y linaje (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>) mientras exista obligación de conservar documentación o posibilidad de reclamación; después, destrucción registrada.</td>
 </tr>
 <tr>
 <td><strong>Documentación técnica y registros de actividad</strong></td>
@@ -1409,7 +1420,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Inventario y registro</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> pasa el sistema a &quot;retirado&quot;; <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> pasa la iniciativa a <em>Retirada</em> con la fecha de cierre.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> pasa el sistema a &quot;retirado&quot;; <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> pasa la iniciativa a <em>Retirada</em> con la fecha de cierre.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1463,8 +1474,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="10-8-lecciones-aprendidas">10.8 Lecciones aprendidas</h3>
-<p>Toda retirada, y toda parada en G3 o posterior, produce una nota de lecciones con: hipótesis inicial; qué ocurrió; motivo codificado; <strong>qué señal temprana lo anunciaba y cuándo se vio</strong>; inversión y coste total frente a valor realizado; y qué cambio se propone en criterios de entrada, plantillas o umbrales. La oficina de IA las consolida por motivo y las presenta en C5 (<a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html">P37</a> §9).</p>
-<h3 id="10-9-registro-de-retiradas-t22">10.9 Registro de retiradas (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>)</h3>
+<p>Toda retirada, y toda parada en G3 o posterior, produce una nota de lecciones con: hipótesis inicial; qué ocurrió; motivo codificado; <strong>qué señal temprana lo anunciaba y cuándo se vio</strong>; inversión y coste total frente a valor realizado; y qué cambio se propone en criterios de entrada, plantillas o umbrales. La oficina de IA las consolida por motivo y las presenta en C5 (<a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="Plantilla P37 &#183; Revisi&#243;n anual C5">P37</a> §9).</p>
+<h3 id="10-9-registro-de-retiradas-t22">10.9 Registro de retiradas (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a>)</h3>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1479,7 +1490,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisión</td>
-<td>Fecha de G7, órgano, decisor, verificador, motivo codificado, referencia a <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> y <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td>Fecha de G7, órgano, decisor, verificador, motivo codificado, referencia a <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a> y <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a>.</td>
 </tr>
 <tr>
 <td>Plan</td>
@@ -1522,7 +1533,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Las iniciativas en producción anteriores a la adopción de SEVEN-G deben regularizarse en el plazo aprobado en C2, pasando por una revisión de continuidad equivalente a G7 (01 §14).</p>
 <h3 id="11-1-pasos">11.1 Pasos</h3>
 <ol>
-<li><strong>Censo.</strong> Alta en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> de todo lo existente, con estado real: idea, piloto, en construcción o en producción.</li>
+<li><strong>Censo.</strong> Alta en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> de todo lo existente, con estado real: idea, piloto, en construcción o en producción.</li>
 <li><strong>Orden por riesgo.</strong> Primero las que cumplen algún criterio Enterprise (01 §9.2), en particular alto riesgo regulatorio, decisiones sobre personas, exposición directa y agentes que actúan; después, el resto.</li>
 <li><strong>Tratamiento por estado:</strong></li>
 </ol>
@@ -1537,7 +1548,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>En producción</strong></td>
-<td>Revisión equivalente a G7 con evidencias mínimas: descripción (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>), roles (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>), intensidad (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>), clasificación regulatoria (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>), riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>), valor realizado con estado (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), manual y monitorización (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), plan de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
+<td>Revisión equivalente a G7 con evidencias mínimas: descripción (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>), roles (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a>), intensidad (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>), clasificación regulatoria (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>), riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>), valor realizado con estado (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>), manual y monitorización (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>, <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>), plan de reversión (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>).</td>
 <td>Continuar en producción con R6 periódica; continuar con condiciones; iterar; retirar.</td>
 </tr>
 <tr>
@@ -1639,35 +1650,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Registro de iniciativas</strong></td>
-<td>Ficha de entrada, alertas de estancadas, esperas y condiciones, etiquetas &quot;Programa&quot; y &quot;Regularización&quot;. La puntuación de priorización, los carriles y tramos, el plan de regularización y el semáforo de programas se preparan con <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a> (plan de cartera C3), con columnas listas para hoja de cálculo; el semáforo se presenta al consejo en <a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html">P67</a>.</td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · Registro de iniciativas</strong></td>
+<td>Ficha de entrada, alertas de estancadas, esperas y condiciones, etiquetas &quot;Programa&quot; y &quot;Regularización&quot;. La puntuación de priorización, los carriles y tramos, el plan de regularización y el semáforo de programas se preparan con <a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a> (plan de cartera C3), con columnas listas para hoja de cálculo; el semáforo se presenta al consejo en <a href="plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" title="Plantilla P67 &#183; Paquete trimestral para el consejo">P67</a>.</td>
 </tr>
 <tr>
-<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> · Mapa de esferas de la cartera</strong></td>
+<td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a> · Mapa de esferas de la cartera</strong></td>
 <td>Equilibrio de ambición por esfera con inversión, coste recurrente y valor.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> · Gestor de retiradas</strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a> · Gestor de retiradas</strong></td>
 <td>Plan de retirada, sustituto, datos y modelos, accesos, comunicación, verificación de cierre y registro de retiradas (sección 10.9).</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Herramienta T03 &#183; Gestor de gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></td>
 <td>Inventario, <em>gates</em>, intensidad, ambición, riesgos, no conformidades, proveedores, valor, costes, índice de transformación, panel y recomendaciones.</td>
 </tr>
 <tr>
-<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Plantilla P06 &#183; Cartera de oportunidades y notas de filtrado">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>, <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a></td>
 <td>Evidencias usadas en la entrada, la priorización y la revisión.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> · Decisión de escalado o retirada</strong></td>
+<td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Plantilla P30 &#183; Decisi&#243;n de escalado o retirada">P30</a> · Decisión de escalado o retirada</strong></td>
 <td>Decisión de G7, lecciones aprendidas y plan de retirada.</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html">P36</a> · Plan de cartera C3</strong></td>
+<td><strong><a href="plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" title="Plantilla P36 &#183; Plan de cartera C3">P36</a> · Plan de cartera C3</strong></td>
 <td>Sobres por carril, priorización, capacidad, límites de concentración, plan de regularización, calendario de revisiones y semáforo de programas (sección 2.1).</td>
 </tr>
 <tr>
-<td><strong><a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html">P37</a> · Revisión anual C5</strong></td>
+<td><strong><a href="plantillas/P37_SEVEN-G_Revision_anual_C5.html" title="Plantilla P37 &#183; Revisi&#243;n anual C5">P37</a> · Revisión anual C5</strong></td>
 <td>Lecciones aprendidas consolidadas por motivo (sección 10.8).</td>
 </tr>
 </tbody>
@@ -1983,6 +1994,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

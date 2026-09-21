@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P36_SEVEN-G_Plan_de_cartera_C3.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P36_SEVEN-G_Plan_de_cartera_C3.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P36_SEVEN-G_Plan_de_cartera_C3.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#sobres-por-carril-y-presupuesto"><span>03</span>Sobres por carril y presupuesto</a></li><li><a href="#priorizacion"><span>04</span>Priorización</a></li><li><a href="#capacidad"><span>05</span>Capacidad</a></li><li><a href="#limites-de-cartera-y-concentracion"><span>06</span>Límites de cartera y concentración</a></li><li><a href="#calendario-de-revisiones"><span>07</span>Calendario de revisiones</a></li><li><a href="#semaforo-de-programas"><span>08</span>Semáforo de programas</a></li><li><a href="#plan-de-regularizacion"><span>09</span>Plan de regularización</a></li><li><a href="#criterios-de-calidad"><span>10</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>11</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>12</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -461,11 +472,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Etapa del ciclo corporativo</strong></td>
-<td>C3 · Cartera, con seguimiento en C4. Entradas: <a href="P33_SEVEN-G_Informe_de_diagnostico_C1.html">P33</a> (C1) y <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> (C2).</td>
+<td>C3 · Cartera, con seguimiento en C4. Entradas: <a href="P33_SEVEN-G_Informe_de_diagnostico_C1.html" title="Plantilla P33 &#183; Informe de diagn&#243;stico C1">P33</a> (C1) y <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a> (C2).</td>
 </tr>
 <tr>
 <td><strong>Herramientas</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (ficha de entrada, puntuación, carriles, tramos, alertas, etiquetas «Programa» y «Regularización»), <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a> (equilibrio por esfera), <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a> (retiradas), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> (concentración de riesgos).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (ficha de entrada, puntuación, carriles, tramos, alertas, etiquetas «Programa» y «Regularización»), <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Herramienta T16 &#183; Mapa de esferas de la cartera">T16</a> (equilibrio por esfera), <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Herramienta T22 &#183; Gestor de retiradas">T22</a> (retiradas), <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a> (concentración de riesgos).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -481,7 +492,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>Cada ambición compite con su igual.</strong> Las iniciativas se puntúan y se ordenan solo dentro de su carril (14 §4.4).</li>
 <li><strong>Sin dato no es cero medido.</strong> Un criterio sin dato puntúa 0 y se muestra como «sin dato»; con el neto adicional por euro sin dato no se supera G2 (14 §4.3).</li>
-<li><strong>El orden puede alterarse</strong> con justificación escrita registrada en <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; si afecta al carril de Transformar, se informa al consejo.</li>
+<li><strong>El orden puede alterarse</strong> con justificación escrita registrada en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; si afecta al carril de Transformar, se informa al consejo.</li>
 <li><strong>Se financia por etapas.</strong> El dinero se libera <em>gate</em> a <em>gate</em> por tramos (14 §6.2).</li>
 <li>La documentación de regularización se identifica como tal y con su fecha real; no acredita <em>gates</em> pasados.</li>
 </ul>
@@ -514,12 +525,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Decisión de C2 de referencia</td>
 <td></td>
-<td>Versión de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> y DEC-AAAA-NNN.</td>
+<td>Versión de <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a> y DEC-AAAA-NNN.</td>
 </tr>
 <tr>
 <td>Informe de C1 de referencia</td>
 <td></td>
-<td>Versión de <a href="P33_SEVEN-G_Informe_de_diagnostico_C1.html">P33</a>.</td>
+<td>Versión de <a href="P33_SEVEN-G_Informe_de_diagnostico_C1.html" title="Plantilla P33 &#183; Informe de diagn&#243;stico C1">P33</a>.</td>
 </tr>
 <tr>
 <td>Horizonte de retorno de C2 (años)</td>
@@ -540,7 +551,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="sobres-por-carril-y-presupuesto"><span class="antetitulo">03</span>Sobres por carril y presupuesto</h2>
-<p>Importes aprobados en el presupuesto marco de C2 (<a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a>, sección 11) y su estructura de C3 (14 §6.1). El coste recurrente comprometido se reserva primero.</p>
+<p>Importes aprobados en el presupuesto marco de C2 (<a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Plantilla P35 &#183; Tesis de IA y apetito de riesgo">P35</a>, sección 11) y su estructura de C3 (14 §6.1). El coste recurrente comprometido se reserva primero.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1077,7 +1088,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Continuo</td>
-<td>Altas, alertas de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y preparación de información.</td>
+<td>Altas, alertas de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y preparación de información.</td>
 <td>—</td>
 <td>Oficina de IA</td>
 </tr>
@@ -1168,7 +1179,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Exposición directa</td>
 <td>1</td>
 <td>Revisión equivalente a G7</td>
-<td><a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>, <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>, <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a>, <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>, <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td><a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>, <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a>, <a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>, <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>, <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a>, <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>, <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>, <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a></td>
 <td>6 meses desde C2</td>
 <td>Directora de atención al cliente</td>
 <td>15-03-2027</td>
@@ -1190,7 +1201,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>La cartera se prioriza con un método documentado que usa el neto adicional por euro y el equilibrio de ambición, aprobado por el comité (pregunta D2.07 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>La cartera se prioriza con un método documentado que usa el neto adicional por euro y el equilibrio de ambición, aprobado por el comité (pregunta D2.07 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>
@@ -1322,7 +1333,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Recoge los resultados de C3 del <a href="../14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>: sobres, priorización con fórmula para hoja de cálculo, capacidad, límites y concentración, equilibrio, calendario, semáforo de programas y plan de regularización (14 §11; 90 §5).</td>
+<td>Primera versión. Recoge los resultados de C3 del <a href="../14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>: sobres, priorización con fórmula para hoja de cálculo, capacidad, límites y concentración, equilibrio, calendario, semáforo de programas y plan de regularización (14 §11; 90 §5).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1563,6 +1574,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

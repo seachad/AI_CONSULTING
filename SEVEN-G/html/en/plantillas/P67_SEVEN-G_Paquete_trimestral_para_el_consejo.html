@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,11 +439,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Transformation index calculator</b></a><a class="dz-item" href="../../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Maturity diagnosis</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#contents-of-the-pack"><span>03</span>Contents of the pack</a></li><li><a href="#one-page-summary"><span>04</span>One-page summary</a></li><li><a href="#decisions-requested"><span>05</span>Decisions requested</a></li><li><a href="#programme-traffic-light"><span>06</span>Programme traffic light</a></li><li><a href="#value-summary"><span>07</span>Value summary</a></li><li><a href="#dashboard-view-and-commentary-per-block"><span>08</span>Dashboard: view and commentary per block</a></li><li><a href="#risks-incidents-and-recommendations"><span>09</span>Risks, incidents and recommendations</a></li><li><a href="#use-cases-in-detail"><span>10</span>Use cases in detail</a></li><li><a href="#preparation-calendar"><span>11</span>Preparation calendar</a></li><li><a href="#checklist-before-submission"><span>12</span>Checklist before submission</a></li><li><a href="#variants-c2-c5-and-extraordinary-packs"><span>13</span>Variants: C2, C5 and extraordinary packs</a></li><li><a href="#quality-criteria"><span>14</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>15</span>Approval and verification</a></li><li><a href="#version-control"><span>16</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <blockquote>
-<p><strong>Why it matters.</strong> The board can only oversee AI if every quarter it receives the same information, under the same rules and in time to read it. This template turns <a href="../60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a> into a working form: it forces the pack to start with what has to be decided, to show the validated proportion and the <em>no data</em> items, and to check before submission that no decision is requested without verified evidence. Without it, each pack is built by hand, changes perimeter and criteria, and the board approves figures that nobody has validated.</p>
+<p><strong>Why it matters.</strong> The board can only oversee AI if every quarter it receives the same information, under the same rules and in time to read it. This template turns <a href="../60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a> into a working form: it forces the pack to start with what has to be decided, to show the validated proportion and the <em>no data</em> items, and to check before submission that no decision is requested without verified evidence. Without it, each pack is built by hand, changes perimeter and criteria, and the board approves figures that nobody has validated.</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
 <div class="tabla"><table>
@@ -465,7 +476,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> · Board AI dashboard (views and data fingerprint) and <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> · Board recommendations register (extract). Figures from <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>; risks from <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>; incidents and nonconformities from <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>; evidence from <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>.</td>
+<td><a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> · Board AI dashboard (views and data fingerprint) and <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> · Board recommendations register (extract). Figures from <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> and <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>; risks from <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>; incidents and nonconformities from <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>; evidence from <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>.</td>
 </tr>
 <tr>
 <td><strong>Reference document</strong></td>
@@ -479,7 +490,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Completion rules:</p>
 <ul>
-<li><strong>A single source of data.</strong> All figures come from the same data model and the same cut-off date as the <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> dashboard and the <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> register. They are not reworked by hand (60 §2, principle 4).</li>
+<li><strong>A single source of data.</strong> All figures come from the same data model and the same cut-off date as the <a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> dashboard and the <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a> register. They are not reworked by hand (60 §2, principle 4).</li>
 <li><strong>Decision before information.</strong> Anything that does not lead to a decision or to specific oversight goes to the annexes.</li>
 <li><strong>No data is not zero.</strong> Gaps are written as <em>no data</em> and totals state how many use cases they include.</li>
 <li><strong>At most three use cases in detail</strong> per session (60 §4.8).</li>
@@ -523,7 +534,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>D−20. Every figure carries it.</td>
 </tr>
 <tr>
-<td><a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> dashboard data fingerprint</td>
+<td><a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> dashboard data fingerprint</td>
 <td></td>
 <td>That of the data file used. If the dashboard is regenerated after submission, this is reported.</td>
 </tr>
@@ -567,7 +578,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>One-page summary (section 4)</td>
 <td>1 page</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>, <a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -575,7 +586,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Decisions requested (section 5)</td>
 <td>1 sheet per decision</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -583,7 +594,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Programme traffic light (section 6)</td>
 <td>1 page</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -591,7 +602,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4</td>
 <td>Dashboard: indicated view and commentary per block (section 8)</td>
 <td>1–2 pages</td>
-<td><a href="../../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -599,7 +610,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>5</td>
 <td>Risks (section 9.1)</td>
 <td>1 page</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -607,7 +618,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>6</td>
 <td>Incidents and nonconformities (section 9.2)</td>
 <td>1 page</td>
-<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -615,7 +626,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>7</td>
 <td>Recommendations and commitments (section 9.3)</td>
 <td>1 page and extract</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -623,7 +634,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>8</td>
 <td>Use cases in detail, maximum 3 (section 10)</td>
 <td>1 page per use case</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -631,7 +642,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>—</td>
 <td>Annexes: inventory, value per use case, funnel metrics, full recommendations register, glossary</td>
 <td>No limit; not presented in session</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -732,7 +743,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Types: Approve · Authorise with limits · Accept a risk · Take note · Assign (an assignment is recorded as a REC in <a href="P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a>).</p>
+<p>Types: Approve · Authorise with limits · Accept a risk · Take note · Assign (an assignment is recorded as a REC in <a href="P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Template P69 &#183; Board decisions register">P69</a>).</p>
 <h3 id="5-2-decision-sheet">5.2 Decision sheet</h3>
 <p>One sheet per decision. Copy the block as many times as there are decisions.</p>
 <div class="tabla"><table>
@@ -747,7 +758,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Code</td>
 <td></td>
-<td>DEC-AAAA-NNN (<a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">document 62</a>). It is retained even if the decision is deferred.</td>
+<td>DEC-AAAA-NNN (<a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Document 62 &#183; Recommendations and decisions register">document 62</a>). It is retained even if the decision is deferred.</td>
 </tr>
 <tr>
 <td>What is requested</td>
@@ -807,7 +818,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Verified evidence</td>
 <td></td>
-<td><em>Gate</em> evidence (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>) and who verified it.</td>
+<td><em>Gate</em> evidence (<a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>) and who verified it.</td>
 </tr>
 <tr>
 <td>What happens if no decision is taken</td>
@@ -817,13 +828,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Links</td>
 <td></td>
-<td>IA-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN; <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> and <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> where applicable.</td>
+<td>IA-AAAA-NNN, REC-AAAA-NNN, INC-AAAA-NNN, NC-AAAA-NNN; <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> and <a href="P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a> where applicable.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="programme-traffic-light"><span class="antetitulo">06</span>Programme traffic light</h2>
-<p>Six axes with four statuses: <strong>Green</strong>, <strong>Amber</strong>, <strong>Red</strong> or <strong>No data</strong>. Thresholds from <a href="../14_SEVEN-G_Gestion_de_cartera.html">document 14</a> (§12.1), set in C2 and calibrated in C5; threshold version applied: ______.</p>
+<p>Six axes with four statuses: <strong>Green</strong>, <strong>Amber</strong>, <strong>Red</strong> or <strong>No data</strong>. Thresholds from <a href="../14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a> (§12.1), set in C2 and calibrated in C5; threshold version applied: ______.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1039,7 +1050,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Composition by ambition level <strong>(Enterprise)</strong></td>
 <td></td>
-<td>Efficiencies against return in Optimise, Augment and Transform (signals 1 and 2 of <a href="../12_SEVEN-G_Indice_de_transformacion.html">document 12</a>).</td>
+<td>Efficiencies against return in Optimise, Augment and Transform (signals 1 and 2 of <a href="../12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1049,7 +1060,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <div class="tabla"><table>
 <thead>
 <tr>
-<th><a href="../../../herramientas/T17_panel_consejo/index.html">T17</a> dashboard block</th>
+<th><a href="../../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> dashboard block</th>
 <th>Indicated view</th>
 <th>Commentary (what has changed and why)</th>
 <th>Requires the board's attention? (Yes · No)</th>
@@ -1146,7 +1157,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Regulatory changes</td>
 <td></td>
-<td>New or amended obligations with an effect on the portfolio, with the date consulted (<a href="../34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>).</td>
+<td>New or amended obligations with an effect on the portfolio, with the date consulted (<a href="../34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>).</td>
 </tr>
 </tbody>
 </table></div>
@@ -1179,7 +1190,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>S1 and S2 individually; S3 and S4 aggregated. Critical nonconformities individually; major ones individually if they are beyond their time limit; minor ones, number only (60 §4.6).</p>
 <h3 id="9-3-recommendations-and-commitments">9.3 Recommendations and commitments</h3>
-<p>Extract from <a href="P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a> and <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>: overdue items, items closed in the quarter with their assessment, discrepancies and DEC decisions with pending conditions.</p>
+<p>Extract from <a href="P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Template P69 &#183; Board decisions register">P69</a> and <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a>: overdue items, items closed in the quarter with their assessment, discrepancies and DEC decisions with pending conditions.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1206,7 +1217,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="use-cases-in-detail"><span class="antetitulo">10</span>Use cases in detail</h2>
-<p>At most three, chosen in this order: 1) they require a decision at the session; 2) S1 or S2 incident, Critical residual risk or critical nonconformity; 3) relevant change in value, stop or retirement with lessons; 4) Transform under way. One page per use case (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> as the basis).</p>
+<p>At most three, chosen in this order: 1) they require a decision at the session; 2) S1 or S2 incident, Critical residual risk or critical nonconformity; 3) relevant change in value, stop or retirement with lessons; 4) Transform under way. One page per use case (<a href="P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> as the basis).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1331,7 +1342,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Session</td>
 <td></td>
-<td>Presentation using the script in 61 §8.5 (<a href="P68_SEVEN-G_Nota_previa_y_nota_de_conclusiones_de_la_sesion_del_consejo.html">P68</a>).</td>
+<td>Presentation using the script in 61 §8.5 (<a href="P68_SEVEN-G_Nota_previa_y_nota_de_conclusiones_de_la_sesion_del_consejo.html" title="Template P68 &#183; Pre-session note and note of conclusions for the board session">P68</a>).</td>
 <td>Chair of the AI Committee</td>
 <td></td>
 <td></td>
@@ -1339,7 +1350,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>D+5</td>
 <td></td>
-<td>Recording of decisions (DEC) and recommendations (REC) with owner and date (<a href="P69_SEVEN-G_Registro_de_decisiones_del_consejo.html">P69</a>).</td>
+<td>Recording of decisions (DEC) and recommendations (REC) with owner and date (<a href="P69_SEVEN-G_Registro_de_decisiones_del_consejo.html" title="Template P69 &#183; Board decisions register">P69</a>).</td>
 <td>Board secretariat and AI Office</td>
 <td></td>
 <td></td>
@@ -1434,7 +1445,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="variants-c2-c5-and-extraordinary-packs"><span class="antetitulo">13</span>Variants: C2, C5 and extraordinary packs</h2>
-<p>Sections 2, 5, 11 and 12 of this template are used and blocks 4 to 10 are replaced by the following. The underlying content is prepared with <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">P35</a> (AI thesis and risk appetite, C2) and <a href="P37_SEVEN-G_Revision_anual_C5.html">P37</a> (annual review, C5); here only what is escalated to the board is organised.</p>
+<p>Sections 2, 5, 11 and 12 of this template are used and blocks 4 to 10 are replaced by the following. The underlying content is prepared with <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Template P35 &#183; AI thesis and risk appetite">P35</a> (AI thesis and risk appetite, C2) and <a href="P37_SEVEN-G_Revision_anual_C5.html" title="Template P37 &#183; C5 annual review">P37</a> (annual review, C5); here only what is escalated to the board is organised.</p>
 <h3 id="13-1-annual-direction-pack-c2">13.1 Annual direction pack (C2)</h3>
 <div class="tabla"><table>
 <thead>
@@ -1449,30 +1460,30 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Starting point</td>
 <td>Maturity D1–D7 with evidence, transformation index profile, validated value and cost of the portfolio.</td>
-<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>, <a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>, <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Proposed AI thesis</td>
 <td>Role of AI in the strategy; what will not be done and why.</td>
-<td><a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></td>
+<td><a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Ambition per sphere</td>
 <td>Target level in spheres 01 to 07; expected level on the axes of spheres 08 and 09.</td>
-<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>, <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></td>
+<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a>, <a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Risk appetite and thresholds</td>
 <td>Economic impact thresholds, Enterprise investment threshold, return horizon, reference time limits, risks that are not accepted.</td>
-<td><a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></td>
+<td><a href="P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html" title="Tool T19 &#183; AI thesis and risk appetite template">T19</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Corporate AI policy</td>
-<td>Principles, acceptable use and responsibilities (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>).</td>
+<td>Principles, acceptable use and responsibilities (<a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>).</td>
 <td>Document 31</td>
 <td></td>
 </tr>
@@ -1503,38 +1514,38 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Maturity</td>
-<td>Level by dimension and overall level using the rule in <a href="../11_SEVEN-G_Modelo_de_madurez.html">document 11</a>, against the previous year and with evidence for each change.</td>
-<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a></td>
+<td>Level by dimension and overall level using the rule in <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>, against the previous year and with evidence for each change.</td>
+<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Transformation index</td>
 <td>Eight signals and profile; signals with no data identified.</td>
-<td><a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
+<td><a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Delivery of the thesis</td>
 <td>Target against actual ambition per sphere; Transform initiatives approved, in production, stopped and retired.</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Tool T16 &#183; Portfolio sphere map">T16</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Value for the year</td>
 <td>Annual net value by ambition level, validated proportion, released capacity realised and not realised.</td>
-<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Governance agility</td>
 <td>Idea–approval–production times by risk and ambition; stalled initiatives; conversion per <em>gate</em>.</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 <td></td>
 </tr>
 <tr>
 <td>Lessons learned</td>
 <td>Stop and retirement reasons; closed recommendations and their effect.</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></td>
 <td></td>
 </tr>
 <tr>
@@ -1610,7 +1621,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Transform decisions at G2 and G7 link to their <em>gate</em> record (criteria G2.12 and G7.09 of <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>).</td>
+<td>Transform decisions at G2 and G7 link to their <em>gate</em> record (criteria G2.12 and G7.09 of <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>).</td>
 <td></td>
 </tr>
 <tr>
@@ -1625,7 +1636,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>The pack serves as evidence for questions D1.09 and D7.06 of <a href="../11_SEVEN-G_Modelo_de_madurez.html">document 11</a> (quarterly review recorded in the minutes; validated proportion and <em>no data</em> visible).</td>
+<td>The pack serves as evidence for questions D1.09 and D7.06 of <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a> (quarterly review recorded in the minutes; validated proportion and <em>no data</em> visible).</td>
 <td></td>
 </tr>
 </tbody>
@@ -1715,7 +1726,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>First version. Extracts from <a href="../60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a> the contents, the one-page summary, the decision sheet, the programme traffic light, the preparation calendar and the checklist, with the value summary in 40 §11.2 and variants for C2, C5 and extraordinary packs.</td>
+<td>First version. Extracts from <a href="../60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a> the contents, the one-page summary, the decision sheet, the programme traffic light, the preparation calendar and the checklist, with the value summary in 40 §11.2 and variants for C2, C5 and extraordinary packs.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1956,6 +1967,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

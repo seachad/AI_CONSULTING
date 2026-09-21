@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion-de-la-evaluacion"><span>02</span>Identificación de la evaluación</a></li><li><a href="#hoja-de-respuestas"><span>03</span>Hoja de respuestas</a></li><li><a href="#entrevistas-y-muestras"><span>04</span>Entrevistas y muestras</a></li><li><a href="#calculo"><span>05</span>Cálculo</a></li><li><a href="#informe-de-madurez"><span>06</span>Informe de madurez</a></li><li><a href="#criterios-de-calidad"><span>07</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>08</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>09</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -461,11 +472,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Etapa del ciclo corporativo</strong></td>
-<td>C1 y C5. El resultado se publica en el panel del consejo (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>) y las acciones que el consejo pida seguir pasan al registro de recomendaciones (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>).</td>
+<td>C1 y C5. El resultado se publica en el panel del consejo (<a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) y las acciones que el consejo pida seguir pasan al registro de recomendaciones (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>).</td>
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> · Diagnóstico de madurez: cuestionario de 84 preguntas con evidencia y verificación, cálculo de 11 §5 con el límite de D1 y D6, comparación entre evaluaciones, guía de entrevistas, informe imprimible con las siete secciones de 11 §6 y exportación JSON y CSV de las respuestas. Esta plantilla es su equivalente en papel u hoja de cálculo.</td>
+<td><a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> · Diagnóstico de madurez: cuestionario de 84 preguntas con evidencia y verificación, cálculo de 11 §5 con el límite de D1 y D6, comparación entre evaluaciones, guía de entrevistas, informe imprimible con las siete secciones de 11 §6 y exportación JSON y CSV de las respuestas. Esta plantilla es su equivalente en papel u hoja de cálculo.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -479,7 +490,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas de cumplimentación:</p>
 <ul>
-<li>El texto de cada pregunta y la evidencia requerida están en el <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a> §3; esta hoja recoge el código, el nivel y las marcas. No se reformulan preguntas: la versión del cuestionario se anota en la sección 2 y solo se comparan evaluaciones con la misma versión.</li>
+<li>El texto de cada pregunta y la evidencia requerida están en el <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a> §3; esta hoja recoge el código, el nivel y las marcas. No se reformulan preguntas: la versión del cuestionario se anota en la sección 2 y solo se comparan evaluaciones con la misma versión.</li>
 <li>Respuestas posibles (11 §4.5): <strong>Sí</strong>, <strong>Parcial</strong>, <strong>No, sin evidencia</strong>, <strong>No, evidencia contraria</strong> y <strong>No aplica</strong> (solo en las preguntas marcadas <em>si aplica</em>, con justificación verificada). <strong>Parcial computa como no cumplido.</strong></li>
 <li>Una pregunta <strong>sin responder se deja en blanco y cuenta como «sin dato»</strong>: nunca se da por cumplida ni se sustituye por una estimación. Si lo único que impide subir de nivel son preguntas en blanco, el nivel de la dimensión es «sin dato» y se informa el nivel mínimo alcanzado.</li>
 <li>Solo cuentan evidencias existentes y aplicadas en la <strong>fecha de corte</strong>. Una entrevista es un indicio, no una evidencia: un «Sí» exige triangulación (11 §4.4).</li>
@@ -524,7 +535,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Versión del cuestionario</td>
 <td></td>
-<td>0.1 mientras el <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a> no cambie preguntas ni niveles.</td>
+<td>0.1 mientras el <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a> no cambie preguntas ni niveles.</td>
 </tr>
 <tr>
 <td>Promotor</td>
@@ -688,7 +699,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>4</td>
 <td></td>
 <td>Parcial</td>
-<td>Acta de la comisión delegada del segundo trimestre con revisión del panel (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>); en el primer trimestre no consta.</td>
+<td>Acta de la comisión delegada del segundo trimestre con revisión del panel (<a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>); en el primer trimestre no consta.</td>
 <td>Conforme</td>
 <td></td>
 </tr>
@@ -1317,7 +1328,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td></td>
 <td>Parcial</td>
-<td>Inventario <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> con los sistemas propios y cuatro de terceros.</td>
+<td>Inventario <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> con los sistemas propios y cuatro de terceros.</td>
 <td>Modificada</td>
 <td>Respuesta original: Sí. El inventario no incluye el uso corporativo de IA de propósito general.</td>
 </tr>
@@ -1477,7 +1488,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><em>(ejemplo ilustrativo)</em> Delegado de protección de datos</td>
 <td>D3, D6</td>
 <td>08-06-2026</td>
-<td>Registro de evaluaciones de impacto; muestra de <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Registro de evaluaciones de impacto; muestra de <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1750,7 +1761,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="informe-de-madurez"><span class="antetitulo">06</span>Informe de madurez</h2>
-<p>Estructura de 11 §6. <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a> lo genera a partir de la hoja de respuestas; en papel se completa con estos bloques.</p>
+<p>Estructura de 11 §6. <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> lo genera a partir de la hoja de respuestas; en papel se completa con estos bloques.</p>
 <h3 id="6-1-resumen-para-el-consejo-maximo-una-pagina">6.1 Resumen para el consejo (máximo una página)</h3>
 <div class="tabla"><table>
 <thead>
@@ -1904,7 +1915,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Perfil del índice de transformación</td>
 <td></td>
-<td>Resultado del <a href="../12_SEVEN-G_Indice_de_transformacion.html">documento 12</a> (<a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a>) en la misma fecha de corte, si existe.</td>
+<td>Resultado del <a href="../12_SEVEN-G_Indice_de_transformacion.html" title="Documento 12 &#183; &#205;ndice de transformaci&#243;n">documento 12</a> (<a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>) en la misma fecha de corte, si existe.</td>
 </tr>
 <tr>
 <td>Lectura que aplica</td>
@@ -1969,7 +1980,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Responsable</th>
 <th>Plazo</th>
 <th>Criterio de cierre</th>
-<th>Seguimiento en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></th>
+<th>Seguimiento en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></th>
 </tr>
 </thead>
 <tbody>
@@ -2057,7 +2068,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>10</td>
-<td>Cada acción de mejora tiene responsable, plazo y criterio de cierre; las que pide el consejo están en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>.</td>
+<td>Cada acción de mejora tiene responsable, plazo y criterio de cierre; las que pide el consejo están en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a>.</td>
 <td></td>
 </tr>
 </tbody>
@@ -2147,7 +2158,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Hoja de respuestas de las 84 preguntas del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a> (versión 0.1 del cuestionario), entrevistas, muestras, verificación, cálculo con fórmulas para hoja de cálculo e informe con las siete secciones de 11 §6. Equivale en papel a <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>.</td>
+<td>Primera versión. Hoja de respuestas de las 84 preguntas del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a> (versión 0.1 del cuestionario), entrevistas, muestras, verificación, cálculo con fórmulas para hoja de cálculo e informe con las siete secciones de 11 §6. Equivale en papel a <a href="../../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2388,6 +2399,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

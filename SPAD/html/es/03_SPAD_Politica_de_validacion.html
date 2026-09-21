@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/03_SPAD_Politica_de_validacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/03_SPAD_Politica_de_validacion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/03_SPAD_Politica_de_validacion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-naturaleza"><span>01</span>Objeto y naturaleza</a></li><li><a href="#principio-fundamental"><span>02</span>Principio fundamental</a></li><li><a href="#causas-de-invalidacion"><span>03</span>Causas de invalidación</a></li><li><a href="#lo-que-no-invalida-una-respuesta"><span>04</span>Lo que no invalida una respuesta</a></li><li><a href="#procedimiento-ante-una-respuesta-invalida"><span>05</span>Procedimiento ante una respuesta inválida</a></li><li><a href="#registro-de-validacion-e-infracciones"><span>06</span>Registro de validación e infracciones</a></li><li><a href="#reglas-de-gobierno"><span>07</span>Reglas de gobierno</a></li><li><a href="#ejemplos-de-decision"><span>08</span>Ejemplos de decisión</a></li><li><a href="#documentos-relacionados"><span>09</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>10</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Versión en revisión: no difundir.</strong> El estado actual de SPAD (versión 0.x) no está pensado para compartirse de forma general. Se mantiene en público para que un número reducido de personas pueda revisarlo, dar su opinión y ayudar a mejorarlo. Se está trabajando en la adecuación de los documentos y las herramientas para que sean reutilizables; este aviso desaparecerá cuando el marco pase a la versión 1.x.</p>
 </blockquote>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SPAD es una metodología de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio ni profesional, no garantiza resultados ni el cumplimiento de ninguna norma y no es una certificación. <strong>Cada organización que use SPAD es la única responsable de validar sus resultados, identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objeto-y-naturaleza"><span class="antetitulo">01</span>Objeto y naturaleza</h2>
@@ -542,7 +553,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p><strong>Acción:</strong> descartar la respuesta y ejecutar de nuevo la misma fase. Si se repite, anotar la infracción.</p>
 <h3 id="3-2-artefactos-ausentes-o-alterados">3.2 Artefactos ausentes o alterados</h3>
-<p>La respuesta omite secciones obligatorias, no incluye los marcadores exigidos o altera el formato contractual (<a href="07_SPAD_Contratos_de_entrada_y_salida.html">documento 07</a>).</p>
+<p>La respuesta omite secciones obligatorias, no incluye los marcadores exigidos o altera el formato contractual (<a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Documento 07 &#183; Contratos de entrada y salida">documento 07</a>).</p>
 <p><em>Ejemplos:</em> un plan sin la sección de riesgos; una revisión sin veredicto explícito; una estrategia de pruebas sin cobertura mínima; una versión sin número semántico; un informe de causa raíz sin veredicto; cualquier artefacto sin el registro del modelo.</p>
 <p><strong>Acción:</strong> descartar y ejecutar de nuevo la fase, insistiendo en las secciones obligatorias.</p>
 <h3 id="3-3-decisiones-fuera-del-plan">3.3 Decisiones fuera del plan</h3>
@@ -662,7 +673,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </pre></div><div class="g-fuente">Fuente: SPAD</div></figure>
 <hr />
 <h2 id="registro-de-validacion-e-infracciones"><span class="antetitulo">06</span>Registro de validación e infracciones</h2>
-<p>Toda validación deja registro (<a href="02_SPAD_Contextos_temas_y_registro.html">documento 02</a>, sección 4.2), y toda invalidación, además, una entrada en el registro de infracciones:</p>
+<p>Toda validación deja registro (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Contextos, temas y registro de artefactos">documento 02</a>, sección 4.2), y toda invalidación, además, una entrada en el registro de infracciones:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -732,7 +743,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <blockquote>
-<p><strong>Por qué importa.</strong> El registro convierte la política en aprendizaje: muestra qué fases fallan más, qué modelos siguen peor las reglas y qué instrucciones hay que reforzar. Es la base de las métricas del proceso (<a href="08_SPAD_Autoevaluacion_y_metricas.html">documento 08</a>) y, en organizaciones que aplican SEVEN-G, alimenta las lecciones aprendidas y la evaluación del proveedor de IA.</p>
+<p><strong>Por qué importa.</strong> El registro convierte la política en aprendizaje: muestra qué fases fallan más, qué modelos siguen peor las reglas y qué instrucciones hay que reforzar. Es la base de las métricas del proceso (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Documento 08 &#183; Autoevaluaci&#243;n de conformidad y m&#233;tricas del proceso">documento 08</a>) y, en organizaciones que aplican SEVEN-G, alimenta las lecciones aprendidas y la evaluación del proveedor de IA.</p>
 </blockquote>
 <hr />
 <h2 id="reglas-de-gobierno"><span class="antetitulo">07</span>Reglas de gobierno</h2>
@@ -817,19 +828,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="01_SPAD_Guia_operativa.html">documento 01</a> · Guía operativa</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html" title="Documento 01 &#183; Gu&#237;a operativa: fases, roles y veredictos">documento 01</a> · Guía operativa</strong></td>
 <td>Fases, roles y veredictos a los que se aplica la política.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html">documento 02</a> · Contextos, temas y registro de artefactos</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Documento 02 &#183; Contextos, temas y registro de artefactos">documento 02</a> · Contextos, temas y registro de artefactos</strong></td>
 <td>Registro de validación y de infracciones.</td>
 </tr>
 <tr>
-<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html">documento 07</a> · Contratos de entrada y salida</strong></td>
+<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Documento 07 &#183; Contratos de entrada y salida">documento 07</a> · Contratos de entrada y salida</strong></td>
 <td>Secciones obligatorias cuya ausencia invalida (3.2).</td>
 </tr>
 <tr>
-<td><strong><a href="08_SPAD_Autoevaluacion_y_metricas.html">documento 08</a> · Autoevaluación y métricas</strong></td>
+<td><strong><a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Documento 08 &#183; Autoevaluaci&#243;n de conformidad y m&#233;tricas del proceso">documento 08</a> · Autoevaluación y métricas</strong></td>
 <td>Tasa de invalidación y demás métricas del proceso.</td>
 </tr>
 <tr>
@@ -1093,6 +1104,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

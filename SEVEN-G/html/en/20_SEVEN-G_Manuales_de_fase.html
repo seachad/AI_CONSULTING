@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,12 +439,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/20_SEVEN-G_Manuales_de_fase.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/20_SEVEN-G_Manuales_de_fase.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/20_SEVEN-G_Manuales_de_fase.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose-and-scope"><span>01</span>Purpose and scope</a></li><li><a href="#how-to-use-the-manuals"><span>02</span>How to use the manuals</a></li><li><a href="#phase-0-context-and-constraints"><span>03</span>Phase 0 · Context and constraints</a></li><li><a href="#phase-1-opportunity-discovery"><span>04</span>Phase 1 · Opportunity discovery</a></li><li><a href="#phase-2-value-hypothesis"><span>05</span>Phase 2 · Value hypothesis</a></li><li><a href="#phase-3-feasibility-and-risk"><span>06</span>Phase 3 · Feasibility and risk</a></li><li><a href="#phase-4-solution-design"><span>07</span>Phase 4 · Solution design</a></li><li><a href="#phase-5-delivery-and-validation"><span>08</span>Phase 5 · Delivery and validation</a></li><li><a href="#phase-6-operation-and-governance"><span>09</span>Phase 6 · Operation and governance</a></li><li><a href="#phase-7-evolution-or-retirement"><span>10</span>Phase 7 · Evolution or retirement</a></li><li><a href="#transitions-between-phases"><span>11</span>Transitions between phases</a></li><li><a href="#associated-tools-and-templates"><span>12</span>Associated tools and templates</a></li><li><a href="#related-documents"><span>13</span>Related documents</a></li><li><a href="#version-control"><span>14</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
-<aside class="esencial" data-capa="recomendado"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Recommended</span></div><p>Working guide for each phase: activities, owners, evidence and common mistakes. The mandatory content it develops is in <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> (phases and evidence) and in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> (criteria). Read the phase the initiative is in; the transitions between phases (section 11) are worth knowing from the start.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
+<aside class="esencial" data-capa="recomendado"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Recommended</span></div><p>Working guide for each phase: activities, owners, evidence and common mistakes. The mandatory content it develops is in <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> (phases and evidence) and in <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> (criteria). Read the phase the initiative is in; the transitions between phases (section 11) are worth knowing from the start.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
 <h2 id="purpose-and-scope"><span class="antetitulo">01</span>Purpose and scope</h2>
-<p>This document turns the initiative lifecycle defined in <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> (section 6) into working instructions. For each phase, from 0 to 7, it sets out what must be done, in what order, who does it, what evidence must exist before the decision gate and how that gate is prepared. It includes the differences by intensity (Lite or Enterprise), by ambition level and by technology, as well as the transitions between phases.</p>
+<p>This document turns the initiative lifecycle defined in <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> (section 6) into working instructions. For each phase, from 0 to 7, it sets out what must be done, in what order, who does it, what evidence must exist before the decision gate and how that gate is prepared. It includes the differences by intensity (Lite or Enterprise), by ambition level and by technology, as well as the transitions between phases.</p>
 <p><strong>What it does not cover and where to find it</strong></p>
 <div class="tabla"><table>
 <thead>
@@ -461,12 +472,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Content of each piece of evidence</td>
-<td>Templates <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
+<td>Templates <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a></td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Scope.</strong> AI initiatives and third-party AI embedded in processes (01 §1.2). Corporate use of general-purpose AI only goes through these manuals if it meets any Enterprise criterion (01 §9.2); otherwise it is governed through the inventory, the acceptable use policy and training (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>).</p>
-<p>This document does not constitute legal advice. The regulatory references were consulted in September 2026 and their validity must be checked in <a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>.</p>
+<p><strong>Scope.</strong> AI initiatives and third-party AI embedded in processes (01 §1.2). Corporate use of general-purpose AI only goes through these manuals if it meets any Enterprise criterion (01 §9.2); otherwise it is governed through the inventory, the acceptable use policy and training (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>).</p>
+<p>This document does not constitute legal advice. The regulatory references were consulted in September 2026 and their validity must be checked in <a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>.</p>
 <hr />
 <h2 id="how-to-use-the-manuals"><span class="antetitulo">02</span>How to use the manuals</h2>
 <h3 id="2-1-common-structure">2.1 Common structure</h3>
@@ -539,61 +550,61 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>0 · Context and constraints</strong></td>
 <td>G0 · Authorisation</td>
 <td>AI Sponsor</td>
-<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a></td>
 <td>10 / 20 days</td>
 </tr>
 <tr>
 <td><strong>1 · Opportunity discovery</strong></td>
 <td>G1 · Opportunity</td>
 <td>AI Sponsor</td>
-<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a></td>
 <td>20 / 30 days</td>
 </tr>
 <tr>
 <td><strong>2 · Value hypothesis</strong></td>
 <td>G2 · Hypothesis</td>
 <td>AI Sponsor</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a></td>
 <td>20 / 30 days</td>
 </tr>
 <tr>
 <td><strong>3 · Feasibility and risk</strong></td>
 <td>G3 · Feasibility</td>
 <td>AI Sponsor</td>
-<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>–<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>, <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>–<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a></td>
 <td>20 / 45 days</td>
 </tr>
 <tr>
 <td><strong>4 · Solution design</strong></td>
 <td>G4 · Design</td>
 <td>AI Technical Owner</td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></td>
 <td>20 / 45 days</td>
 </tr>
 <tr>
 <td><strong>5 · Delivery and validation</strong></td>
 <td>G5 · Go-live</td>
 <td>AI Product Owner</td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>–<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>–<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a></td>
 <td>60 / 90 days</td>
 </tr>
 <tr>
 <td><strong>6 · Operation and governance</strong></td>
 <td>R6 · Continuity review</td>
 <td>AI Operations Owner</td>
-<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>–<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>, <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>–<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a></td>
 <td>No time limit; R6 half-yearly / quarterly</td>
 </tr>
 <tr>
 <td><strong>7 · Evolution or retirement</strong></td>
 <td>G7 · Scale or retire</td>
 <td>AI Sponsor</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
 <td>15 / 30 days</td>
 </tr>
 </tbody>
 </table></div>
-<p>Every decision is documented with the <strong><em>gate</em> decision record (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</strong> in the <em>gate</em> manager (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>). The <strong>use case record (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>)</strong> is opened in phase 1 and maintained until retirement.</p>
+<p>Every decision is documented with the <strong><em>gate</em> decision record (<a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>)</strong> in the <em>gate</em> manager (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>). The <strong>use case record (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>)</strong> is opened in phase 1 and maintained until retirement.</p>
 <h3 id="2-3-conventions">2.3 Conventions</h3>
 <ul>
 <li><strong>Responsibilities.</strong> Letters from 01 §8.4: <strong>A</strong> accountable, <strong>R</strong> does the work, <strong>C</strong> consulted, <strong>I</strong> informed, <strong>V</strong> verifies. In the activity tables, <em>Performed by</em> indicates who carries out each step; the person accountable for the whole phase is the <strong>A</strong> role in section 5. Short names: <em>Sponsor</em>, <em>Product</em>, <em>Technical</em>, <em>Operations</em>, <em>Risk</em>, <em>Auditor</em>.</li>
@@ -607,15 +618,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ol>
 <li><strong>Evidence exists before the <em>gate</em> is requested</strong>, with author, date and version. Documentation produced after the fact invalidates the <em>gate</em> and is a major nonconformity (01 §7.4).</li>
 <li><strong>Whoever provides evidence neither verifies it nor decides on it.</strong></li>
-<li><strong>No mandatory evidence, no decision.</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> does not allow <em>Proceed</em> to be recorded with mandatory criteria in <em>Not met</em> or <em>Pending</em>.</li>
+<li><strong>No mandatory evidence, no decision.</strong> <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> does not allow <em>Proceed</em> to be recorded with mandatory criteria in <em>Not met</em> or <em>Pending</em>.</li>
 <li><strong>Conditions have a deadline and an owner</strong> and are not accepted for critical security, legal compliance or human oversight controls. Once expired, the outcome becomes <em>Iterate</em>.</li>
 <li><strong>After two iterations at the same <em>gate</em></strong>, the decision is escalated to the higher body.</li>
 <li><strong>Stop criteria are not relaxed</strong> without approval from the body that authorised the initiative.</li>
 <li><strong>Intensity only goes up without waiting for a <em>gate</em>.</strong> It is determined in phase 0 and reviewed at G3 and at each R6. If an Enterprise criterion appears earlier (for example, Transform ambition or an agent with the capacity to act), the initiative moves to Enterprise at that moment. A return to Lite can only be decided at G3 or R6.</li>
-<li><strong>Every amount has a formula and a status</strong>, and released capacity is reported separately (measurement rules 1, 2 and 3). <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> is kept in plain language (rule 10).</li>
-<li><strong>Grouping is not omitting.</strong> When G0–G2 or G4–G5 are grouped in Lite, each gate is recorded as a separate decision in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> and each piece of evidence is verified.</li>
+<li><strong>Every amount has a formula and a status</strong>, and released capacity is reported separately (measurement rules 1, 2 and 3). <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> is kept in plain language (rule 10).</li>
+<li><strong>Grouping is not omitting.</strong> When G0–G2 or G4–G5 are grouped in Lite, each gate is recorded as a separate decision in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> and each piece of evidence is verified.</li>
 </ol>
-<h3 id="2-5-recording-in-t01">2.5 Recording in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></h3>
+<h3 id="2-5-recording-in-t01">2.5 Recording in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></h3>
 <p>Event types (03 §3.3): registration; entry into and exit from a phase; <em>gate</em> request; verification; decision with outcome; creation, fulfilment or expiry of conditions; move to on hold and resumption; change of classification (ambition, intensity or regulatory); incident; nonconformity; stop; retirement. All of them carry date, author and comment. Section 13 of each manual lists those specific to the phase; on hold, conditions and nonconformities can occur in any phase.</p>
 <hr />
 <h2 id="phase-0-context-and-constraints"><span class="antetitulo">03</span>Phase 0 · Context and constraints</h2>
@@ -623,12 +634,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Formally authorise the initiative and set its framework: strategic objective, sphere, constraints, roles, intensity and inventory registration. Question: <em>is the initiative authorised and within what framework?</em></p>
 <h3 id="3-2-when-it-starts-and-when-it-ends">3.2 When it starts and when it ends</h3>
 <ul>
-<li><strong>It starts</strong> when an idea recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (status <em>Registered</em>) has an AI Sponsor who agrees to champion it and a designated AI Product Owner, or when G7 decides to <strong>Scale</strong> (section 11.5).</li>
+<li><strong>It starts</strong> when an idea recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> (status <em>Registered</em>) has an AI Sponsor who agrees to champion it and a designated AI Product Owner, or when G7 decides to <strong>Scale</strong> (section 11.5).</li>
 <li><strong>It ends</strong> with G0: <em>Proceed</em>, <em>Proceed with conditions</em>, <em>Iterate</em> or <em>Stop</em>.</li>
 <li><strong>Rule:</strong> without G0 the initiative is not authorised; it does not consume budget or access production data (01 §6.2).</li>
 </ul>
 <h3 id="3-3-inputs">3.3 Inputs</h3>
-<p>Registered idea with a plain-language description (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) · AI thesis, ambition by sphere and risk appetite (C2, <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">document 13</a>) · portfolio, framework budget and Enterprise investment threshold (C3, <a href="14_SEVEN-G_Gestion_de_cartera.html">document 14</a>) · corporate and acceptable use policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>) · inventory and existing initiatives (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) · regulatory mapping and sector regulations (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>) · if it comes from scaling, the G7 decision and lessons learned (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>).</p>
+<p>Registered idea with a plain-language description (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) · AI thesis, ambition by sphere and risk appetite (C2, <a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Document 13 &#183; AI thesis, ambition and risk appetite">document 13</a>) · portfolio, framework budget and Enterprise investment threshold (C3, <a href="14_SEVEN-G_Gestion_de_cartera.html" title="Document 14 &#183; Portfolio management">document 14</a>) · corporate and acceptable use policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>) · inventory and existing initiatives (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) · regulatory mapping and sector regulations (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>) · if it comes from scaling, the G7 decision and lessons learned (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>).</p>
 <h3 id="3-4-step-by-step-activities">3.4 Step-by-step activities</h3>
 <div class="tabla"><table>
 <thead>
@@ -648,7 +659,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>Check the fit with the thesis, the ambition of the sphere and the portfolio; search <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> for similar initiatives or systems.</td>
+<td>Check the fit with the thesis, the ambition of the sphere and the portfolio; search <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> for similar initiatives or systems.</td>
 <td>Product</td>
 <td>AI Office</td>
 </tr>
@@ -660,7 +671,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Preliminary regulatory identification with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> (possible prohibited practice, high risk, transparency); if no conclusion can be reached, <em>Pending classification</em>.</td>
+<td>Preliminary regulatory identification with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a> (possible prohibited practice, high risk, transparency); if no conclusion can be reached, <em>Pending classification</em>.</td>
 <td>Product</td>
 <td>Risk</td>
 </tr>
@@ -672,7 +683,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Determine the intensity with <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a>; if there are agents, declare the planned autonomy level (A0–A3).</td>
+<td>Determine the intensity with <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a>; if there are agents, declare the planned autonomy level (A0–A3).</td>
 <td>Product</td>
 <td>Risk</td>
 </tr>
@@ -684,13 +695,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Register the planned systems in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, even if they do not yet exist.</td>
+<td>Register the planned systems in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>, even if they do not yet exist.</td>
 <td>Product</td>
 <td>Technical</td>
 </tr>
 <tr>
 <td>9</td>
-<td>Draft the charter, gather the evidence and request G0 in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>.</td>
+<td>Draft the charter, gather the evidence and request G0 in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>.</td>
 <td>Product</td>
 <td>—</td>
 </tr>
@@ -710,28 +721,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Initiative charter</td>
-<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 </tr>
 <tr>
 <td>Context and constraints statement</td>
-<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 </tr>
 <tr>
 <td>Role assignment record</td>
-<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Template P03 &#183; Role assignment record">P03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 </tr>
 <tr>
 <td>Intensity determination</td>
-<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a></td>
 </tr>
 <tr>
 <td>Inventory registration</td>
-<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td><a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -762,8 +773,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Regulatory identification</td>
-<td>With <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>.</td>
-<td>With <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> and review by legal counsel.</td>
+<td>With <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>.</td>
+<td>With <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a> and review by legal counsel.</td>
 </tr>
 </tbody>
 </table></div>
@@ -822,9 +833,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>10 days in Lite and 20 in Enterprise.</p>
 <h3 id="3-11-preparation-of-gate-g0">3.11 Preparation of <em>gate</em> G0</h3>
 <ul>
-<li><strong>Presented:</strong> <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> to <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>; the charter serves as a summary.</li>
+<li><strong>Presented:</strong> <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a> to <a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a>; the charter serves as a summary.</li>
 <li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor; Enterprise, AI Auditor and AI Committee.</li>
-<li><strong>Criteria:</strong> G0.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>) and <code>LV-G0</code> (<a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html">document 22</a>), which develop 01 §6.2: committed AI Sponsor, roles without incompatibilities, fit with thesis and portfolio, known constraints.</li>
+<li><strong>Criteria:</strong> G0.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>) and <code>LV-G0</code> (<a href="22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Document 22 &#183; Checklists by gate">document 22</a>), which develop 01 §6.2: committed AI Sponsor, roles without incompatibilities, fit with thesis and portfolio, known constraints.</li>
 <li><strong>Tip:</strong> request it early enough for the verifier to have the full time available.</li>
 </ul>
 <h3 id="3-12-common-mistakes">3.12 Common mistakes</h3>
@@ -837,7 +848,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Generic constraints (<em>comply with regulations</em>) without identifying specific rules.</li>
 </ul>
 <h3 id="3-13-events-in-the-register">3.13 Events in the register</h3>
-<p>Registration · entry into phase 0 · system registration in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · first intensity classification and preliminary regulatory classification · G0 request, verification and decision · conditions · exit or stop with coded reason.</p>
+<p>Registration · entry into phase 0 · system registration in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> · first intensity classification and preliminary regulatory classification · G0 request, verification and decision · conditions · exit or stop with coded reason.</p>
 <hr />
 <h2 id="phase-1-opportunity-discovery"><span class="antetitulo">04</span>Phase 1 · Opportunity discovery</h2>
 <h3 id="4-1-objective">4.1 Objective</h3>
@@ -848,7 +859,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>It ends</strong> with G1: <em>Proceed</em>, <em>Proceed with conditions</em>, <em>Iterate</em>, <em>Pivot</em> (section 11.2) or <em>Stop</em>.</li>
 </ul>
 <h3 id="4-3-inputs">4.3 Inputs</h3>
-<p>Evidence and conditions from G0 (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>) · process or decision data: volumes, times, costs, errors (user area, management control) · stopped or retired initiatives with comparable reasons (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) · sphere map and ambition criteria (documents 10 and 12, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>).</p>
+<p>Evidence and conditions from G0 (<a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Template P05 &#183; AI system inventory record">P05</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>) · process or decision data: volumes, times, costs, errors (user area, management control) · stopped or retired initiatives with comparable reasons (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) · sphere map and ambition criteria (documents 10 and 12, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a>).</p>
 <h3 id="4-4-step-by-step-activities">4.4 Step-by-step activities</h3>
 <div class="tabla"><table>
 <thead>
@@ -868,7 +879,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>Record the opportunities in <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a> with the problem, the affected user or customer and the expected result.</td>
+<td>Record the opportunities in <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a> with the problem, the affected user or customer and the expected result.</td>
 <td>Product</td>
 <td>User area</td>
 </tr>
@@ -892,13 +903,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Propose sphere and ambition with the five questions in 00 §5.2 (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
+<td>Propose sphere and ambition with the five questions in 00 §5.2 (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>).</td>
 <td>Product</td>
 <td>AI Office</td>
 </tr>
 <tr>
 <td>7</td>
-<td>Draft the use case record (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) for the selected opportunity.</td>
+<td>Draft the use case record (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>) for the selected opportunity.</td>
 <td>Product</td>
 <td>—</td>
 </tr>
@@ -924,23 +935,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Opportunity portfolio and filtering notes</td>
-<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 </tr>
 <tr>
 <td>Non-AI alternatives considered</td>
-<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 </tr>
 <tr>
 <td>Proposed sphere and ambition level</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a></td>
 </tr>
 <tr>
 <td>Plain-language description of the case</td>
-<td><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1009,7 +1020,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Generative AI</strong></td>
-<td>Distinguish individual productivity (corporate use, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>) from integration into a process. Prioritise tasks where errors are detectable or tolerable.</td>
+<td>Distinguish individual productivity (corporate use, <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>) from integration into a process. Prioritise tasks where errors are detectable or tolerable.</td>
 </tr>
 <tr>
 <td><strong>Agents</strong></td>
@@ -1017,7 +1028,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Embedded third-party AI</strong></td>
-<td>Check in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> whether an already licensed tool offers the function; consider build, buy or partner.</td>
+<td>Check in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> whether an already licensed tool offers the function; consider build, buy or partner.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1025,9 +1036,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>20 days in Lite and 30 in Enterprise.</p>
 <h3 id="4-11-preparation-of-gate-g1">4.11 Preparation of <em>gate</em> G1</h3>
 <ul>
-<li><strong>Presented:</strong> <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a> with alternatives and filtering notes, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> and <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>.</li>
+<li><strong>Presented:</strong> <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a> with alternatives and filtering notes, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> and <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>.</li>
 <li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor; Enterprise, AI Auditor and AI Sponsor, informing the AI Committee.</li>
-<li><strong>Criteria:</strong> G1.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>) and <code>LV-G1</code>, which develop 01 §6.3: business need, contribution of AI compared with the alternatives and sufficient potential value to formulate a hypothesis.</li>
+<li><strong>Criteria:</strong> G1.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>) and <code>LV-G1</code>, which develop 01 §6.3: business need, contribution of AI compared with the alternatives and sufficient potential value to formulate a hypothesis.</li>
 </ul>
 <h3 id="4-12-common-mistakes">4.12 Common mistakes</h3>
 <ul>
@@ -1049,7 +1060,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>It ends</strong> with G2. For Transform, G2 also requires board approval, which is recorded as part of the decision.</li>
 </ul>
 <h3 id="5-3-inputs">5.3 Inputs</h3>
-<p><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> and <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> approved · operational data for the baseline period (user area, systems) · unit values such as cost per hour, margin or cost per error (management control) · return horizon and thresholds (C2) · measurement rules and indicators (documents 40 and 41) · in the case of a pivot, previous evidence and reason (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>).</p>
+<p><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> and <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> approved · operational data for the baseline period (user area, systems) · unit values such as cost per hour, margin or cost per error (management control) · return horizon and thresholds (C2) · measurement rules and indicators (documents 40 and 41) · in the case of a pivot, previous evidence and reason (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>).</p>
 <h3 id="5-4-step-by-step-activities">5.4 Step-by-step activities</h3>
 <div class="tabla"><table>
 <thead>
@@ -1075,7 +1086,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Measure the baseline with real data from a representative period, with source, extraction and quality documented (<a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>). An estimate is only accepted if justified and marked.</td>
+<td>Measure the baseline with real data from a representative period, with source, extraction and quality documented (<a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>). An estimate is only accepted if justified and marked.</td>
 <td>Product</td>
 <td>Technical, user area</td>
 </tr>
@@ -1093,13 +1104,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Express the expected value in money with a formula, separating efficiencies, return and preliminary recurring cost; released capacity separately (<a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a>).</td>
+<td>Express the expected value in money with a formula, separating efficiencies, return and preliminary recurring cost; released capacity separately (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>).</td>
 <td>Product</td>
 <td>Management control</td>
 </tr>
 <tr>
 <td>7</td>
-<td>Confirm the ambition level with the formulated hypothesis (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>).</td>
+<td>Confirm the ambition level with the formulated hypothesis (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>).</td>
 <td>Product</td>
 <td>AI Office</td>
 </tr>
@@ -1111,7 +1122,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>9</td>
-<td>For Augment and Transform, set the adoption target (<a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a>). Update <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> and request G2.</td>
+<td>For Augment and Transform, set the adoption target (<a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Document 23 &#183; Adoption and change in the initiative">document 23</a>). Update <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> and request G2.</td>
 <td>Product</td>
 <td>User area</td>
 </tr>
@@ -1131,18 +1142,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Value hypothesis canvas, attribution method and stop criteria</td>
-<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
-<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></td>
+<td><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a></td>
+<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a></td>
 </tr>
 <tr>
 <td>Baseline metrics</td>
-<td><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></td>
-<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></td>
+<td><a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a></td>
+<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a></td>
 </tr>
 <tr>
 <td>Confirmation of the ambition level</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1227,9 +1238,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>20 days in Lite and 30 in Enterprise. For Transform, waiting for the board meeting counts as decision time.</p>
 <h3 id="5-11-preparation-of-gate-g2">5.11 Preparation of <em>gate</em> G2</h3>
 <ul>
-<li><strong>Presented:</strong> <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> confirmed and <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> updated.</li>
-<li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor; Enterprise, AI Auditor and AI Committee. For Transform, the committee escalates the proposal to the board using the format in <a href="60_SEVEN-G_Paquete_para_el_consejo.html">document 60</a>.</li>
-<li><strong>Criteria:</strong> G2.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>) and <code>LV-G2</code>, which develop 01 §6.4: falsifiable hypothesis, measured baseline, value in money with a formula and stop criteria set before investment.</li>
+<li><strong>Presented:</strong> <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> confirmed and <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> updated.</li>
+<li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor; Enterprise, AI Auditor and AI Committee. For Transform, the committee escalates the proposal to the board using the format in <a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Document 60 &#183; Board pack">document 60</a>.</li>
+<li><strong>Criteria:</strong> G2.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>) and <code>LV-G2</code>, which develop 01 §6.4: falsifiable hypothesis, measured baseline, value in money with a formula and stop criteria set before investment.</li>
 </ul>
 <h3 id="5-12-common-mistakes">5.12 Common mistakes</h3>
 <ul>
@@ -1253,7 +1264,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Rule:</strong> prohibited practices never get past this phase under any circumstances (01 §6.5).</li>
 </ul>
 <h3 id="6-3-inputs">6.3 Inputs</h3>
-<p><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> and <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> approved · risk appetite, thresholds and horizon (C2) · scales and typical risks <code>RT-&lt;CAT&gt;-NN</code> (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">document 33</a>) · regulatory mapping (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>) · authorised access to real data samples within the constraints of <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> · supplier documentation and offers · architecture and security standards.</p>
+<p><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> and <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a> approved · risk appetite, thresholds and horizon (C2) · scales and typical risks <code>RT-&lt;CAT&gt;-NN</code> (<a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a>) · regulatory mapping (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>) · authorised access to real data samples within the constraints of <a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a> · supplier documentation and offers · architecture and security standards.</p>
 <h3 id="6-4-step-by-step-activities">6.4 Step-by-step activities</h3>
 <div class="tabla"><table>
 <thead>
@@ -1279,7 +1290,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Estimate construction and recurring costs by category (<a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>), including control, compliance, adoption and training.</td>
+<td>Estimate construction and recurring costs by category (<a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>), including control, compliance, adoption and training.</td>
 <td>Technical and Product</td>
 <td>Management control, Operations</td>
 </tr>
@@ -1291,7 +1302,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>Classify the system with legal judgement (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>), including the company's role (provider or deployer).</td>
+<td>Classify the system with legal judgement (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a>), including the company's role (provider or deployer).</td>
 <td>Risk</td>
 <td>Legal counsel</td>
 </tr>
@@ -1303,31 +1314,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Identify and assess inherent and residual risks with the 5 × 5 scale (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>), including generative AI, agents, security and third parties.</td>
+<td>Identify and assess inherent and residual risks with the 5 × 5 scale (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>), including generative AI, agents, security and third parties.</td>
 <td>Risk, Product and Technical</td>
 <td>Operations</td>
 </tr>
 <tr>
 <td>8</td>
-<td>Define responses, the mitigation and contingency plan (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>) and acceptance of residual risk at the appropriate level.</td>
+<td>Define responses, the mitigation and contingency plan (<a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a>) and acceptance of residual risk at the appropriate level.</td>
 <td>Risk</td>
 <td>Product, Technical</td>
 </tr>
 <tr>
 <td>9</td>
-<td>Assess suppliers with their requirement level N1–N3 (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>).</td>
+<td>Assess suppliers with their requirement level N1–N3 (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a>).</td>
 <td>Technical</td>
 <td>Risk, procurement</td>
 </tr>
 <tr>
 <td>10</td>
-<td>Assess the impact on people with the preliminary analysis of roles and tasks (<a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a>).</td>
+<td>Assess the impact on people with the preliminary analysis of roles and tasks (<a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Document 23 &#183; Adoption and change in the initiative">document 23</a>).</td>
 <td>Product</td>
 <td>People, user area</td>
 </tr>
 <tr>
 <td>11</td>
-<td>Review the intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>), update <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> and request G3.</td>
+<td>Review the intensity (<a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>), update <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> and request G3.</td>
 <td>Product</td>
 <td>Risk</td>
 </tr>
@@ -1348,33 +1359,33 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Feasibility assessment (data, technical, costs, net value)</td>
-<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
-<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a></td>
+<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></td>
 </tr>
 <tr>
 <td>Regulatory classification and impact assessments</td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
-<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a></td>
+<td><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a></td>
 </tr>
 <tr>
 <td>Risk matrix and register</td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></td>
 </tr>
 <tr>
 <td>Mitigation and contingency plan</td>
-<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></td>
 </tr>
 <tr>
 <td>Supplier assessment, if any</td>
-<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
-<td><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></td>
+<td><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a></td>
+<td><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a></td>
 </tr>
 <tr>
 <td>Intensity review</td>
-<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></td>
+<td><a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1401,7 +1412,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Costs</td>
 <td>Main categories.</td>
-<td>All the categories in <a href="42_SEVEN-G_Costes_de_IA.html">document 42</a>.</td>
+<td>All the categories in <a href="42_SEVEN-G_Costes_de_IA.html" title="Document 42 &#183; AI costs and allocation per use case">document 42</a>.</td>
 </tr>
 <tr>
 <td>Verification and decision</td>
@@ -1448,7 +1459,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Generative AI</strong></td>
-<td>Representative test case set including adversarial cases; risks of incorrect or ungrounded content and of information leakage; consumption cost scenarios; supplier data use terms; transparency (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>).</td>
+<td>Representative test case set including adversarial cases; risks of incorrect or ungrounded content and of information leakage; consumption cost scenarios; supplier data use terms; transparency (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>).</td>
 </tr>
 <tr>
 <td><strong>Agents</strong></td>
@@ -1464,9 +1475,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>20 days in Lite and 45 in Enterprise.</p>
 <h3 id="6-11-preparation-of-gate-g3">6.11 Preparation of <em>gate</em> G3</h3>
 <ul>
-<li><strong>Presented:</strong> <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> to <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> and a one-page summary with expected net value, High and Critical residual risks and regulatory classification.</li>
+<li><strong>Presented:</strong> <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a> to <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>, <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> and a one-page summary with expected net value, High and Critical residual risks and regulatory classification.</li>
 <li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor with risk clearance; Enterprise, AI Auditor and AI Committee.</li>
-<li><strong>Criteria:</strong> G3.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>) and <code>LV-G3</code>, which develop 01 §6.5: feasibility with real data, no critical risk without accepted mitigation, classification with legal judgement (it cannot remain <em>Pending classification</em>) and net value consistent with C2.</li>
+<li><strong>Criteria:</strong> G3.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>) and <code>LV-G3</code>, which develop 01 §6.5: feasibility with real data, no critical risk without accepted mitigation, classification with legal judgement (it cannot remain <em>Pending classification</em>) and net value consistent with C2.</li>
 <li><strong>Blockers:</strong> a Critical residual risk without board approval blocks G3; conditions on legal compliance controls are not allowed.</li>
 </ul>
 <h3 id="6-12-common-mistakes">6.12 Common mistakes</h3>
@@ -1480,7 +1491,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Letting the feasibility test turn into covert construction.</li>
 </ul>
 <h3 id="6-13-events-in-the-register">6.13 Events in the register</h3>
-<p>Entry into phase 3 · final regulatory classification · intensity review · supplier registration in <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · G3 request, verification and decision · conditions · on hold (frequent due to data or suppliers) · exit, pivot or stop (insufficient data, technically unfeasible, cost higher than value, unacceptable risk, regulation).</p>
+<p>Entry into phase 3 · final regulatory classification · intensity review · supplier registration in <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> · G3 request, verification and decision · conditions · on hold (frequent due to data or suppliers) · exit, pivot or stop (insufficient data, technically unfeasible, cost higher than value, unacceptable risk, regulation).</p>
 <hr />
 <h2 id="phase-4-solution-design"><span class="antetitulo">07</span>Phase 4 · Solution design</h2>
 <h3 id="7-1-objective">7.1 Objective</h3>
@@ -1492,7 +1503,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Lite grouping:</strong> if G4 and G5 are resolved together, the design evidence must be completed and versioned <strong>before construction starts</strong>. The verifier checks the dates.</li>
 </ul>
 <h3 id="7-3-inputs">7.3 Inputs</h3>
-<p>Risks, responses and required controls (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a>) · obligations arising from the regulatory classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>) · metrics, baseline and attribution (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>) · supplier conditions (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>) · preliminary analysis of the impact on people (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>) · architecture, security and data standards (documents 35 and 51).</p>
+<p>Risks, responses and required controls (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Template P13 &#183; Mitigation and contingency plan">P13</a>) · obligations arising from the regulatory classification (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>) · metrics, baseline and attribution (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>) · supplier conditions (<a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Template P14 &#183; AI supplier assessment">P14</a>) · preliminary analysis of the impact on people (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a>) · architecture, security and data standards (documents 35 and 51).</p>
 <h3 id="7-4-step-by-step-activities">7.4 Step-by-step activities</h3>
 <div class="tabla"><table>
 <thead>
@@ -1506,31 +1517,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Define the architecture and record the decisions with the options considered (<a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>).</td>
+<td>Define the architecture and record the decisions with the options considered (<a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>).</td>
 <td>Technical</td>
 <td>Operations, information security</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Document data and model lineage: sources, transformations, versions, training and evaluation sets, third-party models (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Document data and model lineage: sources, transformations, versions, training and evaluation sets, third-party models (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a>).</td>
 <td>Technical</td>
 <td>Data protection officer</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Design human oversight (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>): what the system decides, what a person validates, what is never delegated, intervention criteria, how a result is overridden and information for those affected.</td>
+<td>Design human oversight (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a>): what the system decides, what a person validates, what is never delegated, intervention criteria, how a result is overridden and information for those affected.</td>
 <td>Technical</td>
 <td>Product, Risk, user area</td>
 </tr>
 <tr>
 <td>4</td>
-<td>Design security (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>): identity and permissions, least privilege, protection against injection, activity logging and, for agents, intent-based access control and kill switch.</td>
+<td>Design security (<a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a>): identity and permissions, least privilege, protection against injection, activity logging and, for agents, intent-based access control and kill switch.</td>
 <td>Technical</td>
 <td>Risk, information security</td>
 </tr>
 <tr>
 <td>5</td>
-<td>Trace each risk in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> to a control and to the test that will check it in phase 5.</td>
+<td>Trace each risk in <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a> to a control and to the test that will check it in phase 5.</td>
 <td>Technical</td>
 <td>Risk</td>
 </tr>
@@ -1548,13 +1559,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>8</td>
-<td>Prepare the rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>): triggers, procedure, owner, target time, return to the previous process, data and how to test it.</td>
+<td>Prepare the rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>): triggers, procedure, owner, target time, return to the previous process, data and how to test it.</td>
 <td>Technical</td>
 <td>Operations, user area</td>
 </tr>
 <tr>
 <td>9</td>
-<td>Design adoption (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a>): impact on roles, training, communication and use of released capacity.</td>
+<td>Design adoption (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Document 23 &#183; Adoption and change in the initiative">document 23</a>): impact on roles, training, communication and use of released capacity.</td>
 <td>Product</td>
 <td>People, user area</td>
 </tr>
@@ -1580,33 +1591,33 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Architecture record</td>
-<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></td>
+<td><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Data and model lineage</td>
-<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Template P16 &#183; Data and model lineage">P16</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Governance and human oversight design</td>
-<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></td>
+<td><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Security design</td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></td>
-<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a></td>
+<td><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a></td>
 </tr>
 <tr>
 <td>Rollback plan</td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Adoption plan</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1628,7 +1639,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Adoption plan</td>
 <td>Training and use of released capacity.</td>
-<td>All the blocks of <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td>All the blocks of <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>.</td>
 </tr>
 <tr>
 <td>Verification and decision</td>
@@ -1691,9 +1702,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>20 days in Lite and 45 in Enterprise.</p>
 <h3 id="7-11-preparation-of-gate-g4">7.11 Preparation of <em>gate</em> G4</h3>
 <ul>
-<li><strong>Presented:</strong> <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a> to <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and the risk → control → test traceability.</li>
+<li><strong>Presented:</strong> <a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a> to <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> and the risk → control → test traceability.</li>
 <li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor with risk clearance (the AI Technical Owner is part of the team and does not decide, 01 §8.1); Enterprise, AI Auditor and AI Committee.</li>
-<li><strong>Criteria:</strong> G4.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>) and <code>LV-G4</code>, which develop 01 §6.6: controls required by the classification, defined human oversight, stop mechanism and a designed control for each phase 3 risk.</li>
+<li><strong>Criteria:</strong> G4.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>) and <code>LV-G4</code>, which develop 01 §6.6: controls required by the classification, defined human oversight, stop mechanism and a designed control for each phase 3 risk.</li>
 <li><strong>Blockers:</strong> conditions on human oversight or critical security controls are not allowed.</li>
 </ul>
 <h3 id="7-12-common-mistakes">7.12 Common mistakes</h3>
@@ -1718,7 +1729,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Rule:</strong> Enterprise go-live requires multi-level sign-off with veto power (01 §6.7).</li>
 </ul>
 <h3 id="8-3-inputs">8.3 Inputs</h3>
-<p>Approved design and G4 conditions (<a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>) · test and pilot plan · authorised environments, access and data · signed contracts with suppliers · training and communication materials (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</p>
+<p>Approved design and G4 conditions (<a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html" title="Template P15 &#183; Architecture record">P15</a>–<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>) · test and pilot plan · authorised environments, access and data · signed contracts with suppliers · training and communication materials (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>).</p>
 <h3 id="8-4-step-by-step-activities">8.4 Step-by-step activities</h3>
 <div class="tabla"><table>
 <thead>
@@ -1732,7 +1743,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Build or integrate according to the design, recording deviations and their approval. If it is built with AI assistance, apply <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">document 53</a>.</td>
+<td>Build or integrate according to the design, recording deviations and their approval. If it is built with AI assistance, apply <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Document 53 &#183; Building solutions with AI">document 53</a>.</td>
 <td>Technical</td>
 <td>Operations</td>
 </tr>
@@ -1744,7 +1755,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Test each critical control in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> and <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> and record the result.</td>
+<td>Test each critical control in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Template P17 &#183; Governance and human oversight design">P17</a> and <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Template P18 &#183; Security design (including agents)">P18</a> and record the result.</td>
 <td>Technical</td>
 <td>Risk</td>
 </tr>
@@ -1762,19 +1773,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Analyse results against the hypothesis and the threshold, with the status of each amount (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
+<td>Analyse results against the hypothesis and the threshold, with the status of each amount (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>).</td>
 <td>Product</td>
 <td>Management control</td>
 </tr>
 <tr>
 <td>7</td>
-<td>Test the rollback plan under realistic conditions and record time and result (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
+<td>Test the rollback plan under realistic conditions and record time and result (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>).</td>
 <td>Technical</td>
 <td>Operations</td>
 </tr>
 <tr>
 <td>8</td>
-<td>Update the risk register with what has been observed (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>).</td>
+<td>Update the risk register with what has been observed (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>).</td>
 <td>Technical and Product</td>
 <td>Risk</td>
 </tr>
@@ -1786,13 +1797,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>10</td>
-<td>Prepare the delivery report (<a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>).</td>
+<td>Prepare the delivery report (<a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>).</td>
 <td>Technical</td>
 <td>—</td>
 </tr>
 <tr>
 <td>11</td>
-<td>Obtain the go-live sign-off (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>): in Enterprise, technical, risk and compliance, information security and data protection, each with veto power; in Lite, risk clearance. Request G5.</td>
+<td>Obtain the go-live sign-off (<a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>): in Enterprise, technical, risk and compliance, information security and data protection, each with veto power; in Lite, risk clearance. Request G5.</td>
 <td>Product</td>
 <td>Signatories</td>
 </tr>
@@ -1812,33 +1823,33 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Delivery report</td>
-<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a></td>
+<td><a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Validation, test and pilot results</td>
-<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></td>
-<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></td>
+<td><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a></td>
+<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a></td>
 </tr>
 <tr>
 <td>Rollback plan test</td>
-<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td><a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Updated risk register</td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></td>
 </tr>
 <tr>
 <td>Go-live sign-off</td>
-<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
 </tr>
 <tr>
 <td>Adoption plan with training delivered</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -1892,7 +1903,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The adoption criteria at G5 are detailed in <a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a>.</p>
+<p>The adoption criteria at G5 are detailed in <a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Document 23 &#183; Adoption and change in the initiative">document 23</a>.</p>
 <h3 id="8-9-technology-specific-considerations">8.9 Technology-specific considerations</h3>
 <div class="tabla"><table>
 <thead>
@@ -1924,9 +1935,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>60 days in Lite and 90 in Enterprise. If the attribution method requires a longer pilot, the time limit is set at G4 and recorded.</p>
 <h3 id="8-11-preparation-of-gate-g5">8.11 Preparation of <em>gate</em> G5</h3>
 <ul>
-<li><strong>Presented:</strong> <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> with the test, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, signed <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and the operations documentation.</li>
+<li><strong>Presented:</strong> <a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>, <a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Template P22 &#183; Validation and pilot results">P22</a>, <a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a> with the test, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, signed <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a> and the operations documentation.</li>
 <li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor with risk clearance; Enterprise, AI Auditor and AI Committee after the multi-level sign-off.</li>
-<li><strong>Criteria:</strong> G5.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>) and <code>LV-G5</code>, which develop 01 §6.7: results that meet the threshold or do so with accepted conditions, critical controls that work and operations ready.</li>
+<li><strong>Criteria:</strong> G5.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>) and <code>LV-G5</code>, which develop 01 §6.7: results that meet the threshold or do so with accepted conditions, critical controls that work and operations ready.</li>
 <li><strong>Blockers:</strong> a veto in the sign-off or a Critical residual risk without board approval.</li>
 </ul>
 <h3 id="8-12-common-mistakes">8.12 Common mistakes</h3>
@@ -1939,7 +1950,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Changing the success threshold after seeing the results.</li>
 </ul>
 <h3 id="8-13-events-in-the-register">8.13 Events in the register</h3>
-<p>Entry into phase 5 · verification of G4 conditions · incidents in tests and pilot (<a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>) · sign-offs · G5 request, verification and decision · move to <em>In production</em> or stop (hypothesis refuted, no adoption, unacceptable risk…).</p>
+<p>Entry into phase 5 · verification of G4 conditions · incidents in tests and pilot (<a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>) · sign-offs · G5 request, verification and decision · move to <em>In production</em> or stop (hypothesis refuted, no adoption, unacceptable risk…).</p>
 <hr />
 <h2 id="phase-6-operation-and-governance"><span class="antetitulo">09</span>Phase 6 · Operation and governance</h2>
 <h3 id="9-1-objective">9.1 Objective</h3>
@@ -1947,11 +1958,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <h3 id="9-2-when-it-starts-and-when-it-ends">9.2 When it starts and when it ends</h3>
 <ul>
 <li><strong>It starts</strong> with <em>Proceed</em> or <em>Proceed with conditions</em> at G5 (status <em>In production</em>).</li>
-<li><strong>It has no fixed end.</strong> It moves to phase 7 when G7 is requested: at the time planned in value tracking (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), when an R6 detects relevant deviations or when the AI Committee so decides due to a change of strategy or a better alternative.</li>
+<li><strong>It has no fixed end.</strong> It moves to phase 7 when G7 is requested: at the time planned in value tracking (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>), when an R6 detects relevant deviations or when the AI Committee so decides due to a change of strategy or a better alternative.</li>
 <li><strong>R6 frequency:</strong> at least quarterly in Enterprise and half-yearly in Lite (01 §6.8).</li>
 </ul>
 <h3 id="9-3-inputs">9.3 Inputs</h3>
-<p>Solution in production with delivery report and sign-offs (<a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html">P21</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html">P23</a>) · operations documentation (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>–<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>) · tested rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>) · hypothesis and attribution (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a>) · adoption plan and use of released capacity (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>) · incident and nonconformity process (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>).</p>
+<p>Solution in production with delivery report and sign-offs (<a href="plantillas/P21_SEVEN-G_Informe_de_entrega.html" title="Template P21 &#183; Delivery report">P21</a>, <a href="plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html" title="Template P23 &#183; Go-live sign-off">P23</a>) · operations documentation (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>–<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>) · tested rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Template P19 &#183; Rollback plan and test">P19</a>) · hypothesis and attribution (<a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Template P09 &#183; Baseline">P09</a>) · adoption plan and use of released capacity (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>) · incident and nonconformity process (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>).</p>
 <h3 id="9-4-step-by-step-activities">9.4 Step-by-step activities</h3>
 <div class="tabla"><table>
 <thead>
@@ -1965,19 +1976,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Operate according to the manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>): procedures, access, maintenance and continuity.</td>
+<td>Operate according to the manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a>): procedures, access, maintenance and continuity.</td>
 <td>Operations</td>
 <td>Technical</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Monitor performance, degradation, bias, costs, security and usage, with alerts and owners responsible for responding (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>).</td>
+<td>Monitor performance, degradation, bias, costs, security and usage, with alerts and owners responsible for responding (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>).</td>
 <td>Operations</td>
 <td>Technical</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Manage incidents (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>), record them with severity S1–S4 (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>) and notify where applicable, including possible serious incidents under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">document 37</a>).</td>
+<td>Manage incidents (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a>), record them with severity S1–S4 (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>) and notify where applicable, including possible serious incidents under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>, <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Document 37 &#183; Nonconformities, AI incidents and remediation">document 37</a>).</td>
 <td>Operations</td>
 <td>Risk, Technical</td>
 </tr>
@@ -1989,19 +2000,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>5</td>
-<td>Carry out the post-market monitoring required by regulation (<a href="34_SEVEN-G_Mapeo_regulatorio.html">document 34</a>).</td>
+<td>Carry out the post-market monitoring required by regulation (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Document 34 &#183; Regulatory mapping">document 34</a>).</td>
 <td>Operations</td>
 <td>Risk</td>
 </tr>
 <tr>
 <td>6</td>
-<td>Measure the realised value with its status and the actual costs per period (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>).</td>
+<td>Measure the realised value with its status and the actual costs per period (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>).</td>
 <td>Product</td>
 <td>Management control</td>
 </tr>
 <tr>
 <td>7</td>
-<td>Track adoption and the materialisation or reassignment of released capacity (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html">document 23</a>).</td>
+<td>Track adoption and the materialisation or reassignment of released capacity (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>, <a href="23_SEVEN-G_Adopcion_y_cambio.html" title="Document 23 &#183; Adoption and change in the initiative">document 23</a>).</td>
 <td>Product</td>
 <td>User area, people</td>
 </tr>
@@ -2033,38 +2044,38 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Operations manual</td>
-<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></td>
+<td><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html" title="Template P24 &#183; Operations manual">P24</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Monitoring and alerts</td>
-<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a></td>
 <td>—</td>
 </tr>
 <tr>
 <td>Incident response plan</td>
-<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></td>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html" title="Template P26 &#183; Incident response plan">P26</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 </tr>
 <tr>
 <td>Incident and change register</td>
-<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a></td>
 </tr>
 <tr>
 <td>Value tracking</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 </tr>
 <tr>
 <td>Risk register and intensity review at each R6</td>
-<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></td>
+<td><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a></td>
 </tr>
 <tr>
 <td>Adoption and capacity tracking</td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></td>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2146,12 +2157,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="9-10-reference-time-limit">9.10 Reference time limit</h3>
-<p>No time limit (03 §3.6). It is controlled through the R6 frequency, whose decision is taken within 5 or 10 working days of the request. An overdue R6 triggers an alert in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</p>
+<p>No time limit (03 §3.6). It is controlled through the R6 frequency, whose decision is taken within 5 or 10 working days of the request. An overdue R6 triggers an alert in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</p>
 <h3 id="9-11-preparation-of-the-r6-review">9.11 Preparation of the R6 review</h3>
 <ul>
-<li><strong>Presented:</strong> realised value against the hypothesis with its status (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>), stability and alerts (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>), incidents and changes (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>), risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>), validity of the classification and intensity (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>) and adoption and capacity (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>).</li>
+<li><strong>Presented:</strong> realised value against the hypothesis with its status (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>), stability and alerts (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Template P25 &#183; Monitoring and alerting configuration">P25</a>), incidents and changes (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>), risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>), validity of the classification and intensity (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Template P11 &#183; Regulatory classification and impact assessments">P11</a>, <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a>) and adoption and capacity (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>).</li>
 <li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor; Enterprise, AI Auditor and AI Committee.</li>
-<li><strong>Criteria:</strong> R6.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>) and <code>LV-R6</code>, which develop 01 §6.8.</li>
+<li><strong>Criteria:</strong> R6.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>) and <code>LV-R6</code>, which develop 01 §6.8.</li>
 <li><strong>Outcomes (01 §7.3):</strong> <em>Proceed with operation</em>, <em>Proceed with conditions</em> or <em>Bring G7 forward</em>. If an incident requires the system to be stopped, there is no waiting for the R6: the response plan and, where applicable, the rollback plan are applied.</li>
 </ul>
 <h3 id="9-12-common-mistakes">9.12 Common mistakes</h3>
@@ -2171,11 +2182,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Decide on the basis of evidence whether the initiative is scaled, iterated or retired, and check the actual ambition against the declared ambition. Question: <em>do we scale, iterate or retire?</em></p>
 <h3 id="10-2-when-it-starts-and-when-it-ends">10.2 When it starts and when it ends</h3>
 <ul>
-<li><strong>It starts</strong> when G7 is requested (status <em>Awaiting G7</em>): at the time planned in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, when brought forward from an R6 or by decision of the AI Committee.</li>
+<li><strong>It starts</strong> when G7 is requested (status <em>Awaiting G7</em>): at the time planned in <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>, when brought forward from an R6 or by decision of the AI Committee.</li>
 <li><strong>It ends</strong> with G7. <strong>Scale:</strong> a new phase 0 for the extended scope (section 11.5), and the current solution continues operating with its R6 reviews. <strong>Iterate:</strong> return to the relevant phase (section 11.1); keeping the solution unchanged is <em>Iterate</em> with a return to phase 6. <strong>Retire:</strong> the phase closes when the retirement plan has been executed and verified.</li>
 </ul>
 <h3 id="10-3-inputs">10.3 Inputs</h3>
-<p>Realised value with status and actual costs (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>) · incidents, changes and nonconformities (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>) · risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>) · adoption and capacity (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>) · declared ambition (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>) · current thesis and portfolio (C2, C3) · internal or market alternatives.</p>
+<p>Realised value with status and actual costs (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>) · incidents, changes and nonconformities (<a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Template P27 &#183; Incident and change log">P27</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a>) · risks (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>) · adoption and capacity (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Template P20 &#183; Adoption and capacity plan">P20</a>) · declared ambition (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>) · current thesis and portfolio (C2, C3) · internal or market alternatives.</p>
 <h3 id="10-4-step-by-step-activities">10.4 Step-by-step activities</h3>
 <div class="tabla"><table>
 <thead>
@@ -2201,7 +2212,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Review the actual ambition with the five questions and the production evidence (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>).</td>
+<td>Review the actual ambition with the five questions and the production evidence (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a>).</td>
 <td>Product</td>
 <td>AI Office</td>
 </tr>
@@ -2225,13 +2236,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>If retirement is proposed, prepare the plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>): date, reason, body, replacement, data and models in line with retention obligations, revocation of access and agent identities, contracts, alternative process and communication to those affected.</td>
+<td>If retirement is proposed, prepare the plan (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>): date, reason, body, replacement, data and models in line with retention obligations, revocation of access and agent identities, contracts, alternative process and communication to those affected.</td>
 <td>Product and Operations</td>
 <td>Risk, data protection officer</td>
 </tr>
 <tr>
 <td>8</td>
-<td>Prepare the decision (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>), request G7 and, once decided, execute it: register the new initiative, return the initiative to its phase or execute and verify the retirement.</td>
+<td>Prepare the decision (<a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>), request G7 and, once decided, execute it: register the new initiative, return the initiative to its phase or execute and verify the retirement.</td>
 <td>Product</td>
 <td>AI Office</td>
 </tr>
@@ -2251,18 +2262,18 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Value realisation tracking</td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></td>
-<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a></td>
+<td><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 </tr>
 <tr>
 <td>Scaling or retirement decision, lessons learned and retirement plan where applicable</td>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></td>
-<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a></td>
+<td><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></td>
 </tr>
 <tr>
 <td>Actual ambition against declared ambition</td>
-<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></td>
+<td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -2288,8 +2299,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Lessons learned</td>
-<td>Brief record in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
-<td>Session with all roles and record in <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a>.</td>
+<td>Brief record in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>.</td>
+<td>Session with all roles and record in <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2316,7 +2327,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>If the actual ambition is lower than the declared ambition, it is reclassified in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. The difference feeds the transformation index (<a href="12_SEVEN-G_Indice_de_transformacion.html">document 12</a>) and is a signal of the <em>Declared but unevidenced transformation</em> profile.</p>
+<p>If the actual ambition is lower than the declared ambition, it is reclassified in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>. The difference feeds the transformation index (<a href="12_SEVEN-G_Indice_de_transformacion.html" title="Document 12 &#183; Transformation index">document 12</a>) and is a signal of the <em>Declared but unevidenced transformation</em> profile.</p>
 <h3 id="10-9-technology-specific-considerations">10.9 Technology-specific considerations</h3>
 <div class="tabla"><table>
 <thead>
@@ -2345,12 +2356,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <h3 id="10-10-reference-time-limit">10.10 Reference time limit</h3>
-<p>15 days in Lite and 30 in Enterprise until the decision. Execution of the retirement is controlled using the dates in its plan in <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>.</p>
+<p>15 days in Lite and 30 in Enterprise until the decision. Execution of the retirement is controlled using the dates in its plan in <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>.</p>
 <h3 id="10-11-preparation-of-gate-g7">10.11 Preparation of <em>gate</em> G7</h3>
 <ul>
-<li><strong>Presented:</strong> consolidated <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> with the proposed option and its alternatives, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> with the actual ambition and a summary of risks, incidents and adoption.</li>
+<li><strong>Presented:</strong> consolidated <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Template P28 &#183; Value realisation tracking">P28</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a> with the proposed option and its alternatives, <a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> with the actual ambition and a summary of risks, incidents and adoption.</li>
 <li><strong>Verifies and decides:</strong> Lite, AI Office and AI Sponsor; Enterprise, AI Auditor and AI Committee; board for scaling Transform.</li>
-<li><strong>Criteria:</strong> G7.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>) and <code>LV-G7</code>, which develop 01 §6.9: decision based on realised and validated value and, in the case of retirement, a plan with date, reason, body, replacement, data and models, and communication.</li>
+<li><strong>Criteria:</strong> G7.nn (see <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a>) and <code>LV-G7</code>, which develop 01 §6.9: decision based on realised and validated value and, in the case of retirement, a plan with date, reason, body, replacement, data and models, and communication.</li>
 </ul>
 <h3 id="10-12-common-mistakes">10.12 Common mistakes</h3>
 <ul>
@@ -2388,24 +2399,24 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   class P,R ko
   class E espera
 </pre></div><div class="g-fuente">Source: SEVEN-G</div></figure>
-<p><strong>Proceed with conditions.</strong> Each condition is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a> with a deadline, an owner and the <em>gate</em> at which it will be verified. If it expires without being met, the outcome becomes <em>Iterate</em> and the initiative returns to the phase of the <em>gate</em> that imposed it; if it is already in production, it is dealt with at the next R6 or G7 is brought forward.</p>
+<p><strong>Proceed with conditions.</strong> Each condition is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a> with a deadline, an owner and the <em>gate</em> at which it will be verified. If it expires without being met, the outcome becomes <em>Iterate</em> and the initiative returns to the phase of the <em>gate</em> that imposed it; if it is already in production, it is dealt with at the next R6 or G7 is brought forward.</p>
 <h3 id="11-1-iterate">11.1 Iterate</h3>
 <ul>
 <li><strong>When:</strong> insufficient results with a hypothesis that is still plausible; at G7, when value or risk justify redoing a part.</li>
 <li><strong>What is done:</strong> the activities that did not meet the criterion are repeated, the evidence is versioned again and the initiative returns to the same <em>gate</em>. From G7 it returns to phase 2 if the hypothesis changes, to phase 4 if the design changes, to phase 5 if only the construction changes or to phase 6 if the solution is kept unchanged.</li>
-<li><strong>Limit:</strong> after two iterations at the same <em>gate</em>, the higher body decides in accordance with <a href="30_SEVEN-G_Modelo_de_gobierno.html">document 30</a> (in Lite, for example, from the AI Sponsor to the AI Committee).</li>
-<li><strong>Record:</strong> time in phase continues to count and <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> increments the iteration counter.</li>
+<li><strong>Limit:</strong> after two iterations at the same <em>gate</em>, the higher body decides in accordance with <a href="30_SEVEN-G_Modelo_de_gobierno.html" title="Document 30 &#183; Governance model">document 30</a> (in Lite, for example, from the AI Sponsor to the AI Committee).</li>
+<li><strong>Record:</strong> time in phase continues to count and <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> increments the iteration counter.</li>
 </ul>
 <h3 id="11-2-pivot">11.2 Pivot</h3>
 <ul>
 <li><strong>When:</strong> only at G1, G2 and G3, when the hypothesis does not hold but there is a reasonable alternative.</li>
-<li><strong>What is done:</strong> the initiative enters phase 2 with a new hypothesis and keeps the G0 context. From G1, the alternative must appear in <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a> with its filtering notes; from G3, the feasibility and risk findings that remain valid are retained.</li>
-<li><strong>Limits:</strong> if the pivot changes sphere, constraints, roles or intensity, <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> to <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> are updated and verified at G2. Stop criteria are not carried over in relaxed form. A second pivot in the same initiative should be escalated to the AI Committee.</li>
+<li><strong>What is done:</strong> the initiative enters phase 2 with a new hypothesis and keeps the G0 context. From G1, the alternative must appear in <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" title="Template P06 &#183; Opportunity portfolio and screening notes">P06</a> with its filtering notes; from G3, the feasibility and risk findings that remain valid are retained.</li>
+<li><strong>Limits:</strong> if the pivot changes sphere, constraints, roles or intensity, <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a> to <a href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Template P04 &#183; Intensity determination">P04</a> are updated and verified at G2. Stop criteria are not carried over in relaxed form. A second pivot in the same initiative should be escalated to the AI Committee.</li>
 </ul>
 <h3 id="11-3-stop">11.3 Stop</h3>
 <ul>
 <li><strong>When:</strong> there is no plausible value, feasibility is not demonstrated, the risk is unacceptable or a stop criterion is triggered.</li>
-<li><strong>What is done:</strong> work is closed and budget and people are released; access to data and technical identities are revoked; the <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> record is updated or deregistered; any pilot is withdrawn with its rollback plan; participants are informed and lessons learned are recorded.</li>
+<li><strong>What is done:</strong> work is closed and budget and people are released; access to data and technical identities are revoked; the <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> record is updated or deregistered; any pilot is withdrawn with its rollback plan; participants are informed and lessons learned are recorded.</li>
 <li><strong>Coded reason</strong> (03 §3.3): no plausible value · hypothesis refuted · insufficient data · technically unfeasible · cost higher than value · unacceptable risk · regulation · no adoption · replaced by another solution · change in strategic priority.</li>
 <li><strong>Reactivation:</strong> a stopped initiative is not resumed. If circumstances change, it is registered as a new initiative linked to the stopped one, with its own phase 0 and reusing the valid evidence.</li>
 </ul>
@@ -2413,19 +2424,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>When:</strong> an external cause prevents progress (budget, dependency on another project, supplier, data, key people). It is not a <em>gate</em> outcome.</li>
 <li><strong>What is done:</strong> product records the reason and the expected resumption date, with the knowledge of the AI Sponsor; controls over what has already been built are maintained. Time on hold is measured separately.</li>
-<li><strong>Expiry:</strong> if the date arrives without resumption, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> generates an alert and the AI Committee (the AI Sponsor in Lite) decides to resume, set a new date or stop.</li>
+<li><strong>Expiry:</strong> if the date arrives without resumption, <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> generates an alert and the AI Committee (the AI Sponsor in Lite) decides to resume, set a new date or stop.</li>
 <li><strong>Resumption:</strong> the validity of the baseline, regulatory classification, supplier assessment and role assignment is checked; anything out of date is updated before the next <em>gate</em>.</li>
 </ul>
 <p>A system in production does not move to <em>On hold</em>: its suspension is managed with the incident response plan or the rollback plan (documents 37 and 52) and analysed at the next R6 or at a G7 brought forward.</p>
 <h3 id="11-5-scaling-as-a-new-phase-0">11.5 Scaling as a new phase 0</h3>
 <ul>
 <li><strong>When:</strong> G7 decides to extend the scope (areas, populations, countries, channels, volumes) or to increase autonomy or ambition.</li>
-<li><strong>What is done:</strong> the extended scope is registered in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> as a <strong>new initiative, with its own code, linked to the originating initiative</strong>, and goes through the cycle from phase 0. It may reuse evidence from the originating initiative, identified with its version and verified again. The intensity is determined again.</li>
+<li><strong>What is done:</strong> the extended scope is registered in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> as a <strong>new initiative, with its own code, linked to the originating initiative</strong>, and goes through the cycle from phase 0. It may reuse evidence from the originating initiative, identified with its version and verified again. The intensity is determined again.</li>
 <li><strong>Originating initiative:</strong> it continues operating with its R6 reviews until the new one absorbs or replaces it; its retirement or integration is then decided at G7.</li>
 <li><strong>Value:</strong> the new initiative only declares the incremental value of the extended scope (measurement rule 5).</li>
 </ul>
 <h3 id="11-6-retirement">11.6 Retirement</h3>
-<p>It is decided at G7 and executed with <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a> and <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>. It records date, reason, deciding body, replacement, treatment of data and models and communication to those affected (01 §6.9). The <em>Retired</em> status is only recorded when the AI Auditor (Enterprise) or the AI Office (Lite) verifies the execution of the plan, including the revocation of access and the update of the inventory.</p>
+<p>It is decided at G7 and executed with <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Template P30 &#183; Scale or retire decision">P30</a> and <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a>. It records date, reason, deciding body, replacement, treatment of data and models and communication to those affected (01 §6.9). The <em>Retired</em> status is only recorded when the AI Auditor (Enterprise) or the AI Office (Lite) verifies the execution of the plan, including the revocation of access and the update of the inventory.</p>
 <h3 id="11-7-classification-changes-during-the-cycle">11.7 Classification changes during the cycle</h3>
 <div class="tabla"><table>
 <thead>
@@ -2461,7 +2472,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>They are regularised within the time limit approved in C2 through a review equivalent to G7 (01 §14). The evidence for phases 6 and 7 is prepared, together with the essential evidence from earlier phases (regulatory classification, risks, rollback plan), expressly identified as produced during regularisation, so it does not constitute documentation produced after the fact within the meaning of 01 §7.4.</p>
 <hr />
 <h2 id="associated-tools-and-templates"><span class="antetitulo">12</span>Associated tools and templates</h2>
-<p>The templates for each phase are in the table in section 2.2 and in section 6 of each manual; <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> (<em>gate</em> decision record) is used at all gates and <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> (use case record) from phase 1 to phase 7.</p>
+<p>The templates for each phase are in the table in section 2.2 and in section 6 of each manual; <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> (<em>gate</em> decision record) is used at all gates and <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> (use case record) from phase 1 to phase 7.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -2472,37 +2483,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a></td>
 <td>Initiative register · <em>Gate</em> manager</td>
 <td>All</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a> · <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T04 &#183; Intensity determination">T04</a> · <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Tool T07 &#183; Regulatory classifier">T07</a></td>
 <td>Inventory · Intensity determination · Regulatory classifier</td>
 <td>0, 3, 6</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T05 &#183; Ambition classifier">T05</a></td>
 <td>Ambition classifier</td>
 <td>1, 2, 7</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a> · <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a> · <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Tool T09 &#183; AI supplier register">T09</a> · <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a></td>
 <td>Risks · Suppliers · Costs per use case</td>
 <td>3–7</td>
 </tr>
 <tr>
-<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></td>
+<td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html" title="Tool T08 &#183; Nonconformity and incident register">T08</a> · <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html" title="Tool T10 &#183; Agent security assessment">T10</a></td>
 <td>Incidents and nonconformities · Agent security</td>
 <td>4–6</td>
 </tr>
 <tr>
-<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
+<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a> · <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Tool T12 &#183; Value realisation tracking">T12</a></td>
 <td>Value hypothesis · Value realisation tracking</td>
 <td>2, 5, 6, 7</td>
 </tr>
 <tr>
-<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></td>
+<td><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Tool T20 &#183; Adoption and capacity plan">T20</a> · <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html" title="Tool T22 &#183; Retirement manager">T22</a></td>
 <td>Adoption and capacity plan · Retirement manager</td>
 <td>4–7</td>
 </tr>
@@ -2574,7 +2585,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>16-09-2026</td>
-<td>First version. Develops phases 0–7 of <a href="01_SEVEN-G_Metodologia_fundacional.html">document 01</a> with thirteen common sections, differences by intensity, ambition and technology, links to templates <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> and tools from 03, and transition rules (iterate, pivot, stop, on hold, scaling, retirement, classification changes and regularisation). Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37.</td>
+<td>First version. Develops phases 0–7 of <a href="01_SEVEN-G_Metodologia_fundacional.html" title="Document 01 &#183; SEVEN-G foundational methodology">document 01</a> with thirteen common sections, differences by intensity, ambition and technology, links to templates <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a>–<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> and tools from 03, and transition rules (iterate, pivot, stop, on hold, scaling, retirement, classification changes and regularisation). Consistency adjustments with 01 (segregation of duties in Lite, R6 outcomes, agent criterion) and with 34 and 37.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2815,6 +2826,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

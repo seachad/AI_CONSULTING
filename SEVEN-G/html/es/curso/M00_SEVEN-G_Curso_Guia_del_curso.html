@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/curso/M00_SEVEN-G_Curso_Guia_del_curso.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../pdf/en/curso/M00_SEVEN-G_Curso_Guia_del_curso.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/curso/M00_SEVEN-G_Curso_Guia_del_curso.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../../pptx/es/SEVEN-G_Curso_Empresa.pptx" download><span class="dz-tipo">PPTX</span><b>Curso para la empresa</b></a><a class="dz-item" href="../../../pdf/es/curso/SEVEN-G_Curso_Empresa.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Curso para la empresa</b></a><a class="dz-item" href="../../../pptx/es/SEVEN-G_Curso_Consultor.pptx" download><span class="dz-tipo">PPTX</span><b>Curso para el consultor</b></a><a class="dz-item" href="../../../pdf/es/curso/SEVEN-G_Curso_Consultor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Curso para el consultor</b></a><a class="dz-item" href="../../../pptx/es/SEVEN-G_Curso_Partner.pptx" download><span class="dz-tipo">PPTX</span><b>Curso para el partner</b></a><a class="dz-item" href="../../../pdf/es/curso/SEVEN-G_Curso_Partner.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Curso para el partner</b></a><a class="dz-item" href="../../../pdf/es/curso/SEVEN-G_Curso_completo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Los nueve módulos (PDF)</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#para-que-sirve-este-curso"><span>01</span>Para qué sirve este curso</a></li><li><a href="#como-es-cada-modulo"><span>02</span>Cómo es cada módulo</a></li><li><a href="#los-modulos"><span>03</span>Los módulos</a></li><li><a href="#itinerarios-por-perfil"><span>04</span>Itinerarios por perfil</a></li><li><a href="#antes-de-empezar"><span>05</span>Antes de empezar</a></li><li><a href="#documentos-relacionados"><span>06</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>07</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="para-que-sirve-este-curso"><span class="antetitulo">01</span>Para qué sirve este curso</h2>
@@ -469,7 +480,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>No hay examen, nota ni certificado: SEVEN-G no tiene certificación oficial (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>, sección 7).</p>
+<p>No hay examen, nota ni certificado: SEVEN-G no tiene certificación oficial (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a>, sección 7).</p>
 <p><strong>Tres cursos en presentación, según quién sea usted.</strong> Los tres explican qué es SEVEN-G, las fases y sus puertas, qué se rellena en cada fase, cómo eso llena el embudo del registro de iniciativas hasta llegar al panel del consejo —con las imágenes del registro, del embudo y del panel comentadas— y dos casos de ejemplo (una iniciativa que se para y otra que llega a producción). Después, cada uno añade lo propio de su público:</p>
 <div class="tabla"><table>
 <thead>
@@ -495,13 +506,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Partner</strong></td>
-<td>La empresa que integra SEVEN-G en su propia metodología o producto: qué permite y exige la licencia, adopción por componentes, integración técnica y cómo nombrarlo. No existe programa de socios ni «partner oficial» (<a href="../91_SEVEN-G_Guia_para_consultores.html">documento 91</a>, sección 6.2).</td>
+<td>La empresa que integra SEVEN-G en su propia metodología o producto: qué permite y exige la licencia, adopción por componentes, integración técnica y cómo nombrarlo. No existe programa de socios ni «partner oficial» (<a href="../91_SEVEN-G_Guia_para_consultores.html" title="Documento 91 &#183; Gu&#237;a para consultores y modelos de acompa&#241;amiento">documento 91</a>, sección 6.2).</td>
 <td><a href="../../../pptx/es/SEVEN-G_Curso_Partner.pptx">Descargar</a></td>
 <td><a href="../../../pdf/es/curso/SEVEN-G_Curso_Partner.pdf">Abrir</a></td>
 </tr>
 </tbody>
 </table></div>
-<p>Las presentaciones pueden adaptarse e impartirse citando la autoría (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>). Los nueve módulos de esta página y la guía están también en un único <a href="../../../pdf/es/curso/SEVEN-G_Curso_completo.pdf">PDF para leer o imprimir</a>; cada módulo sigue disponible por separado, en HTML y PDF.</p>
+<p>Las presentaciones pueden adaptarse e impartirse citando la autoría (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a>). Los nueve módulos de esta página y la guía están también en un único <a href="../../../pdf/es/curso/SEVEN-G_Curso_completo.pdf">PDF para leer o imprimir</a>; cada módulo sigue disponible por separado, en HTML y PDF.</p>
 <hr />
 <h2 id="los-modulos"><span class="antetitulo">03</span>Los módulos</h2>
 <div class="tabla"><table>
@@ -521,42 +532,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><a href="M02_SEVEN-G_Curso_Que_es_y_que_resuelve.html">02 · Qué es SEVEN-G y qué problema resuelve</a></td>
 <td>El problema, los dos niveles del marco y sus cuatro componentes.</td>
-<td><a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a> · <a href="../04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html">documento 04</a></td>
+<td><a href="../00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a> · <a href="../04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a></td>
 </tr>
 <tr>
 <td><a href="M03_SEVEN-G_Curso_Esferas_y_ambicion.html">03 · Esferas y niveles de ambición</a></td>
 <td>Dónde genera valor la IA y con qué ambición.</td>
-<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a> · SPHERES</td>
+<td><a href="../10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Documento 10 &#183; Mapa de esferas y niveles de ambici&#243;n">documento 10</a> · SPHERES</td>
 </tr>
 <tr>
 <td><a href="M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.html">04 · Ciclo de vida, puertas y embudo</a></td>
 <td>Fases, puertas, resultados posibles y la cartera como embudo.</td>
-<td><a href="../01_SEVEN-G_Metodologia_fundacional.html">documento 01</a> · <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a> · <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 </tr>
 <tr>
 <td><a href="M05_SEVEN-G_Curso_Gobierno_y_riesgo.html">05 · Gobierno y riesgo</a></td>
 <td>Quién decide, quién verifica y cómo se acepta un riesgo.</td>
-<td><a href="../30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> · <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></td>
+<td><a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a> · <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></td>
 </tr>
 <tr>
 <td><a href="M06_SEVEN-G_Curso_Medir_el_valor.html">06 · Medir el valor</a></td>
 <td>Reglas de medición, estados del importe y criterio económico.</td>
-<td><a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a> · <a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></td>
+<td><a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a> · <a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a></td>
 </tr>
 <tr>
 <td><a href="M07_SEVEN-G_Curso_Transformacion_o_eficiencia.html">07 · Transformación o eficiencia</a></td>
 <td>El índice de transformación y sus perfiles.</td>
-<td><a href="../12_SEVEN-G_Indice_de_transformacion.html">documento 12</a> · <a href="../../../herramientas/T14_indice_transformacion/indice.html">T14</a></td>
+<td><a href="../12_SEVEN-G_Indice_de_transformacion.html" title="Documento 12 &#183; &#205;ndice de transformaci&#243;n">documento 12</a> · <a href="../../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a></td>
 </tr>
 <tr>
 <td><a href="M08_SEVEN-G_Curso_El_consejo.html">08 · El consejo</a></td>
 <td>Qué recibe, qué decide y cómo se sigue lo decidido.</td>
-<td><a href="../60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a> · <a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html">documento 62</a> · <a href="../../../herramientas/T17_panel_consejo/index.html">T17</a></td>
+<td><a href="../60_SEVEN-G_Paquete_para_el_consejo.html" title="Documento 60 &#183; Paquete para el consejo">documento 60</a> · <a href="../62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html" title="Documento 62 &#183; Registro de recomendaciones y decisiones">documento 62</a> · <a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
 </tr>
 <tr>
 <td><a href="M09_SEVEN-G_Curso_Implantar_por_capas.html">09 · Implantar por capas</a></td>
 <td>Alcance, ruta mínima, plan de 90 días y qué es obligatorio.</td>
-<td><a href="../90_SEVEN-G_Guia_de_implantacion.html">documento 90</a> · <a href="../94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">documento 94</a></td>
+<td><a href="../90_SEVEN-G_Guia_de_implantacion.html" title="Documento 90 &#183; Gu&#237;a de implantaci&#243;n de SEVEN-G">documento 90</a> · <a href="../94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html" title="Documento 94 &#183; Matriz de obligatoriedad y lectura por capas">documento 94</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -598,7 +609,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Consultor</strong></td>
-<td>Todos, y después el <a href="../91_SEVEN-G_Guia_para_consultores.html">documento 91</a></td>
+<td>Todos, y después el <a href="../91_SEVEN-G_Guia_para_consultores.html" title="Documento 91 &#183; Gu&#237;a para consultores y modelos de acompa&#241;amiento">documento 91</a></td>
 <td>4 horas</td>
 </tr>
 </tbody>
@@ -606,9 +617,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="antes-de-empezar"><span class="antetitulo">05</span>Antes de empezar</h2>
 <ul>
-<li>Abra en otra pestaña el <strong>registro de iniciativas de ejemplo</strong> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) y el <strong>panel del consejo de ejemplo</strong> (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>): casi todos los ejercicios los usan. Los datos son ficticios y no salen del navegador.</li>
-<li>Tenga a mano el <strong>glosario</strong> (<a href="../02_SEVEN-G_Glosario_y_convenciones.html">documento 02</a>) para los términos y códigos.</li>
-<li>Si va a usar el curso en formación interna, puede adaptarlo: la licencia lo permite citando la autoría (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html">documento 93</a>).</li>
+<li>Abra en otra pestaña el <strong>registro de iniciativas de ejemplo</strong> (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) y el <strong>panel del consejo de ejemplo</strong> (<a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>): casi todos los ejercicios los usan. Los datos son ficticios y no salen del navegador.</li>
+<li>Tenga a mano el <strong>glosario</strong> (<a href="../02_SEVEN-G_Glosario_y_convenciones.html" title="Documento 02 &#183; Glosario y convenciones de SEVEN-G">documento 02</a>) para los términos y códigos.</li>
+<li>Si va a usar el curso en formación interna, puede adaptarlo: la licencia lo permite citando la autoría (<a href="../93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a>).</li>
 </ul>
 <hr />
 <h2 id="documentos-relacionados"><span class="antetitulo">06</span>Documentos relacionados</h2>
@@ -889,6 +900,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

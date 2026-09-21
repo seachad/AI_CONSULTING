@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,21 +439,21 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/01_SPAD_Guia_operativa.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/01_SPAD_Guia_operativa.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/01_SPAD_Guia_operativa.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose"><span>01</span>Purpose</a></li><li><a href="#the-blocking-execution-principle"><span>02</span>The blocking execution principle</a></li><li><a href="#roles"><span>03</span>Roles</a></li><li><a href="#main-cycle-phases-0-to-10"><span>04</span>Main cycle: phases 0 to 10</a></li><li><a href="#verdicts"><span>05</span>Verdicts</a></li><li><a href="#reduced-version-spad-lite"><span>06</span>Reduced version (SPAD Lite)</a></li><li><a href="#non-negotiable-operating-rules"><span>07</span>Non-negotiable operating rules</a></li><li><a href="#related-documents"><span>08</span>Related documents</a></li><li><a href="#version-control"><span>09</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Version under review: please do not circulate.</strong> The current state of SPAD (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.</p>
 </blockquote>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SPAD is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. <strong>Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="purpose"><span class="antetitulo">01</span>Purpose</h2>
 <p>This document describes <strong>how SPAD is used in practice</strong>: the order in which the phases are applied, what goes into and comes out of each one, the roles involved, the rules of interaction between artificial intelligences and the verdicts that allow work to advance or send it back. It is the canonical reference for numbering and vocabulary for the rest of the library.</p>
-<p>SPAD is not a collection of instructions: it is a <strong>sequential, blocking and auditable methodology</strong> (<a href="00_SPAD_Que_es_y_para_que_sirve.html">document 00</a>). This guide makes it operational.</p>
+<p>SPAD is not a collection of instructions: it is a <strong>sequential, blocking and auditable methodology</strong> (<a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SPAD is and how it helps">document 00</a>). This guide makes it operational.</p>
 <hr />
 <h2 id="the-blocking-execution-principle"><span class="antetitulo">02</span>The blocking execution principle</h2>
 <blockquote>
 <p>No phase can begin until the previous phase has produced its artefact and a person has validated it.</p>
 </blockquote>
-<p>Each phase produces an <strong>explicit artefact</strong> that is the mandatory input to the next one. If validation fails, work goes back to the corresponding phase and the rejected artefact is kept in the topic register (<a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a>), numbered as an iteration.</p>
+<p>Each phase produces an <strong>explicit artefact</strong> that is the mandatory input to the next one. If validation fails, work goes back to the corresponding phase and the rejected artefact is kept in the topic register (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a>), numbered as an iteration.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> Blocking is what makes SPAD a method rather than a recommendation. Without it, deadline pressure leads to &quot;starting the code while the plan is being finished&quot;, and at that moment the plan ceases to govern anything.</p>
 </blockquote>
@@ -492,19 +503,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>AI Analyst</strong></td>
 <td>AI</td>
-<td>Documents existing code and analyses the impact of a change (legacy cycle, <a href="04_SPAD_Ciclos_complementarios.html">document 04</a>).</td>
+<td>Documents existing code and analyses the impact of a change (legacy cycle, <a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a>).</td>
 <td>Proposing the solution.</td>
 </tr>
 <tr>
 <td><strong>Diagnostic AI</strong></td>
 <td>AI</td>
-<td>Analyses incidents and produces the root cause report (debugging cycle, <a href="04_SPAD_Ciclos_complementarios.html">document 04</a>).</td>
+<td>Analyses incidents and produces the root cause report (debugging cycle, <a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a>).</td>
 <td>Generating solution code; modifying production code.</td>
 </tr>
 <tr>
 <td><strong>AI Security Reviewer</strong></td>
 <td>AI other than the builder</td>
-<td>Security review of sensitive code (<a href="04_SPAD_Ciclos_complementarios.html">document 04</a>).</td>
+<td>Security review of sensitive code (<a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a>).</td>
 <td>Fixing what it reviews.</td>
 </tr>
 </tbody>
@@ -651,7 +662,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </pre></div><div class="g-fuente">Source: SPAD</div></figure>
 <h3 id="4-1-the-design-phases-in-detail">4.1 The design phases in detail</h3>
 <p><strong>Phase 0 · Context and objective.</strong> The person orchestrating writes down what problem is being solved, for whom, what is within and outside the scope, what constraints exist (technological, legal, deadline) and how it will be known that the result is correct. Without success criteria there is no phase 1.</p>
-<p><strong>Phase 1 · PLAN.</strong> The AI Planner designs without writing code. Each design decision is recorded with the alternatives considered and their trade-offs. Risks are classified by severity and probability. If the solution includes AI components in production, the plan also incorporates what <a href="05_SPAD_Sistemas_que_incluyen_IA.html">document 05</a> requires (autonomy level, limits, evaluation of behaviour).</p>
+<p><strong>Phase 1 · PLAN.</strong> The AI Planner designs without writing code. Each design decision is recorded with the alternatives considered and their trade-offs. Risks are classified by severity and probability. If the solution includes AI components in production, the plan also incorporates what <a href="05_SPAD_Sistemas_que_incluyen_IA.html" title="Document 05 &#183; Systems that include AI: behaviour evaluation and agents">document 05</a> requires (autonomy level, limits, evaluation of behaviour).</p>
 <p><strong>Phase 2 · Plan review.</strong> The AI Reviewer evaluates and does not fix. A plan reviewed with GO WITH CHANGES goes back to phase 1 with the recommendations; with NO-GO, work goes back to phase 0 because the problem is badly framed or the scope is unfeasible.</p>
 <p><strong>Phase 3 · Code primer.</strong> Translates the plan into verifiable rules for whoever builds: folder structure, naming, interface and data contracts, error handling, concurrency, logging and prohibited anti-patterns. It cannot introduce decisions that the plan does not contain.</p>
 <p><strong>Phase 4 · Test strategy.</strong> It is set <strong>before building</strong> what will be tested and with what minimum coverage, taken from the global context unless there is a justified exception. Critical paths require full coverage.</p>
@@ -703,13 +714,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Rules:</p>
 <ol>
-<li>A verdict without a written justification is an <strong>incomplete artefact</strong> and is discarded (<a href="03_SPAD_Politica_de_validacion.html">document 03</a>).</li>
+<li>A verdict without a written justification is an <strong>incomplete artefact</strong> and is discarded (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>).</li>
 <li>A GO with open critical or high findings is a <strong>self-approval</strong> and is discarded.</li>
 <li>A well-founded NO-GO <strong>is not a failure of the process</strong>: it is the process working.</li>
-<li>The verdict is issued by the AI Reviewer; <strong>it is accepted or rejected by the person orchestrating</strong>, who records it (<a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a>).</li>
+<li>The verdict is issued by the AI Reviewer; <strong>it is accepted or rejected by the person orchestrating</strong>, who records it (<a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a>).</li>
 </ol>
 <blockquote>
-<p><strong>Why it matters.</strong> Three different vocabularies for saying the same thing (GO/NO-GO, OK/ISSUES, approved/rejected) make it impossible to compare phases, measure the process (<a href="08_SPAD_Autoevaluacion_y_metricas.html">document 08</a>) and automate the validation of the contracts (<a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a>). A single vocabulary is a condition of auditability.</p>
+<p><strong>Why it matters.</strong> Three different vocabularies for saying the same thing (GO/NO-GO, OK/ISSUES, approved/rejected) make it impossible to compare phases, measure the process (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Document 08 &#183; Self-assessment of conformity and process metrics">document 08</a>) and automate the validation of the contracts (<a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Document 07 &#183; Input and output contracts">document 07</a>). A single vocabulary is a condition of auditability.</p>
 </blockquote>
 <hr />
 <h2 id="reduced-version-spad-lite"><span class="antetitulo">06</span>Reduced version (SPAD Lite)</h2>
@@ -850,31 +861,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="00_SPAD_Que_es_y_para_que_sirve.html">document 00</a> · What SPAD is and how it helps</strong></td>
+<td><strong><a href="00_SPAD_Que_es_y_para_que_sirve.html" title="Document 00 &#183; What SPAD is and how it helps">document 00</a> · What SPAD is and how it helps</strong></td>
 <td>Overview of the method.</td>
 </tr>
 <tr>
-<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html">document 02</a> · Contexts, topics and artefact register</strong></td>
+<td><strong><a href="02_SPAD_Contextos_temas_y_registro.html" title="Document 02 &#183; Contexts, topics and artefact register">document 02</a> · Contexts, topics and artefact register</strong></td>
 <td>What is loaded before phase 0 and how each output is stored.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html">document 03</a> · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a> · Validation policy</strong></td>
 <td>When a response is discarded.</td>
 </tr>
 <tr>
-<td><strong><a href="04_SPAD_Ciclos_complementarios.html">document 04</a> · Complementary cycles</strong></td>
+<td><strong><a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a> · Complementary cycles</strong></td>
 <td>Legacy, debugging, urgent fix and security.</td>
 </tr>
 <tr>
-<td><strong><a href="05_SPAD_Sistemas_que_incluyen_IA.html">document 05</a> · Systems that include AI</strong></td>
+<td><strong><a href="05_SPAD_Sistemas_que_incluyen_IA.html" title="Document 05 &#183; Systems that include AI: behaviour evaluation and agents">document 05</a> · Systems that include AI</strong></td>
 <td>Additional requirements when the solution has AI in production.</td>
 </tr>
 <tr>
-<td><strong><a href="06_SPAD_Instrucciones_por_fase.html">document 06</a> · Instructions by phase</strong></td>
+<td><strong><a href="06_SPAD_Instrucciones_por_fase.html" title="Document 06 &#183; Instructions by phase">document 06</a> · Instructions by phase</strong></td>
 <td>Reference text of each instruction.</td>
 </tr>
 <tr>
-<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a> · Input and output contracts</strong></td>
+<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Document 07 &#183; Input and output contracts">document 07</a> · Input and output contracts</strong></td>
 <td>Mandatory structure of each artefact.</td>
 </tr>
 <tr>
@@ -1138,6 +1149,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

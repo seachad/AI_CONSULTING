@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/02_SPAD_Contextos_temas_y_registro.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/02_SPAD_Contextos_temas_y_registro.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/02_SPAD_Contextos_temas_y_registro.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#purpose"><span>01</span>Purpose</a></li><li><a href="#contexts"><span>02</span>Contexts</a></li><li><a href="#topics"><span>03</span>Topics</a></li><li><a href="#records-per-artefact"><span>04</span>Records per artefact</a></li><li><a href="#checklist-before-starting"><span>05</span>Checklist before starting</a></li><li><a href="#related-documents"><span>06</span>Related documents</a></li><li><a href="#version-control"><span>07</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Version under review: please do not circulate.</strong> The current state of SPAD (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.</p>
 </blockquote>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SPAD is a reference methodology provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory or professional advice, does not guarantee results or compliance with any law or standard and is not a certification. References to general regulation (such as the GDPR) may be incomplete, may not apply to a particular case or may become out of date. <strong>Each organisation that uses SPAD is solely responsible for validating its results, identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="purpose"><span class="antetitulo">01</span>Purpose</h2>
@@ -460,7 +471,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="contexts"><span class="antetitulo">02</span>Contexts</h2>
-<p>Two contexts are loaded before any phase is executed. No instruction (<a href="06_SPAD_Instrucciones_por_fase.html">document 06</a>) is executed without them.</p>
+<p>Two contexts are loaded before any phase is executed. No instruction (<a href="06_SPAD_Instrucciones_por_fase.html" title="Document 06 &#183; Instructions by phase">document 06</a>) is executed without them.</p>
 <h3 id="2-1-global-context">2.1 Global context</h3>
 <p>Universal rules of the organisation, applicable to all projects that use SPAD, regardless of the technology or the domain.</p>
 <div class="tabla"><table>
@@ -505,7 +516,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Parameters of the complementary cycles</strong></td>
 <td>Maximum time limits for the simplified plan and for post-deployment monitoring in the urgent fix; severity scale and who accepts the residual risk.</td>
-<td>Starting values, to be calibrated (<a href="04_SPAD_Ciclos_complementarios.html">document 04</a>).</td>
+<td>Starting values, to be calibrated (<a href="04_SPAD_Ciclos_complementarios.html" title="Document 04 &#183; Complementary cycles: legacy, debugging, urgent fixes and security">document 04</a>).</td>
 </tr>
 <tr>
 <td><strong>Approved models</strong></td>
@@ -653,7 +664,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Instruction</td>
-<td>Reference to the instruction used (<a href="06_SPAD_Instrucciones_por_fase.html">document 06</a>) and its version; in the complete version, the full text of the additional instructions.</td>
+<td>Reference to the instruction used (<a href="06_SPAD_Instrucciones_por_fase.html" title="Document 06 &#183; Instructions by phase">document 06</a>) and its version; in the complete version, the full text of the additional instructions.</td>
 </tr>
 <tr>
 <td>Contexts</td>
@@ -685,7 +696,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Outcome</td>
-<td>Valid · Invalid (with the cause from the validation policy, <a href="03_SPAD_Politica_de_validacion.html">document 03</a>) · Exception approved.</td>
+<td>Valid · Invalid (with the cause from the validation policy, <a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>) · Exception approved.</td>
 </tr>
 <tr>
 <td>Verdict accepted</td>
@@ -699,7 +710,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>The record is kept in <code>VALIDATION.md</code> within the topic (or in the version control system, if the organisation prefers) and is completed <strong>at the time</strong>, not at the end.</p>
 <h3 id="4-3-violation-log">4.3 Violation log</h3>
-<p>Each response discarded under the validation policy (<a href="03_SPAD_Politica_de_validacion.html">document 03</a>) is noted with date, phase, cause, model and action. It is the raw material for the process metrics (<a href="08_SPAD_Autoevaluacion_y_metricas.html">document 08</a>) and for improving the instructions.</p>
+<p>Each response discarded under the validation policy (<a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a>) is noted with date, phase, cause, model and action. It is the raw material for the process metrics (<a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Document 08 &#183; Self-assessment of conformity and process metrics">document 08</a>) and for improving the instructions.</p>
 <blockquote>
 <p><strong>Why it matters.</strong> The three records answer the three questions of any development audit: which tool did this, which person accepted it and how many times it had to be discarded and repeated. In SEVEN-G, those records are the input to the evidence of the design and delivery phases (<a href="../../../SEVEN-G/html/en/53_SEVEN-G_Construccion_de_soluciones_con_IA.html">SEVEN-G 53</a>, section 7.2).</p>
 </blockquote>
@@ -725,19 +736,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="01_SPAD_Guia_operativa.html">document 01</a> · Operating guide</strong></td>
+<td><strong><a href="01_SPAD_Guia_operativa.html" title="Document 01 &#183; Operating guide: phases, roles and verdicts">document 01</a> · Operating guide</strong></td>
 <td>Phases in which the recorded artefacts are produced.</td>
 </tr>
 <tr>
-<td><strong><a href="03_SPAD_Politica_de_validacion.html">document 03</a> · Validation policy</strong></td>
+<td><strong><a href="03_SPAD_Politica_de_validacion.html" title="Document 03 &#183; Validation policy">document 03</a> · Validation policy</strong></td>
 <td>Invalidation causes that feed the records.</td>
 </tr>
 <tr>
-<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html">document 07</a> · Input and output contracts</strong></td>
+<td><strong><a href="07_SPAD_Contratos_de_entrada_y_salida.html" title="Document 07 &#183; Input and output contracts">document 07</a> · Input and output contracts</strong></td>
 <td>Structure of the artefacts, with the fields of the model record.</td>
 </tr>
 <tr>
-<td><strong><a href="08_SPAD_Autoevaluacion_y_metricas.html">document 08</a> · Self-assessment and metrics</strong></td>
+<td><strong><a href="08_SPAD_Autoevaluacion_y_metricas.html" title="Document 08 &#183; Self-assessment of conformity and process metrics">document 08</a> · Self-assessment and metrics</strong></td>
 <td>Use of the records as evidence and as the source of the metrics.</td>
 </tr>
 <tr>
@@ -1005,6 +1016,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

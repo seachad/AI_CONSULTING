@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#esfera-de-impacto"><span>03</span>Esfera de impacto</a></li><li><a href="#las-cinco-preguntas"><span>04</span>Las cinco preguntas</a></li><li><a href="#regla-de-decision"><span>05</span>Regla de decisión</a></li><li><a href="#resultado-de-la-clasificacion"><span>06</span>Resultado de la clasificación</a></li><li><a href="#analisis-de-discrepancias-en-la-fase-7-enterprise"><span>07</span>Análisis de discrepancias en la fase 7 (Enterprise)</a></li><li><a href="#registro-de-cambios-de-clasificacion"><span>08</span>Registro de cambios de clasificación</a></li><li><a href="#criterios-de-calidad"><span>09</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>10</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>11</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -446,7 +457,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
-<td>El responsable de producto de IA. En la fase 7, con los datos de <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> (seguimiento de realización de valor).</td>
+<td>El responsable de producto de IA. En la fase 7, con los datos de <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> (seguimiento de realización de valor).</td>
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T05</a> · Clasificador de ambición (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T05 &#183; Clasificador de ambici&#243;n">T05</a> · Clasificador de ambición (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -515,7 +526,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Intensidad aplicable</td>
 <td></td>
-<td>Lite · Enterprise. Transformar implica Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterio 7).</td>
+<td>Lite · Enterprise. Transformar implica Enterprise (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>, criterio 7).</td>
 </tr>
 </tbody>
 </table></div>
@@ -677,7 +688,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Guía de evidencia: en la fase 1 basta un razonamiento; en la fase 2, la hipótesis de valor (<a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>) debe ser coherente con las respuestas; en la fase 7 se usan datos: composición del valor validado (eficiencias frente a retorno), procesos rediseñados, cambios de roles aprobados e ingresos atribuibles.</p>
+<p>Guía de evidencia: en la fase 1 basta un razonamiento; en la fase 2, la hipótesis de valor (<a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>) debe ser coherente con las respuestas; en la fase 7 se usan datos: composición del valor validado (eficiencias frente a retorno), procesos rediseñados, cambios de roles aprobados e ingresos atribuibles.</p>
 <hr />
 <h2 id="regla-de-decision"><span class="antetitulo">05</span>Regla de decisión</h2>
 <p>Aplique los pasos en orden:</p>
@@ -708,11 +719,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>4</td>
 <td>Comprobación de coherencia con la pregunta 5.</td>
-<td>Si la 5 es &quot;Sí&quot; y el resultado es Transformar, hay incoherencia: se justifica o se reclasifica. Si la 5 es &quot;No&quot; y el resultado es Optimizar, se revisa si la iniciativa soporta una función crítica (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>, criterio 6).</td>
+<td>Si la 5 es &quot;Sí&quot; y el resultado es Transformar, hay incoherencia: se justifica o se reclasifica. Si la 5 es &quot;No&quot; y el resultado es Optimizar, se revisa si la iniciativa soporta una función crítica (<a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>, criterio 6).</td>
 </tr>
 </tbody>
 </table></div>
-<p>Los pasos 2 a 4 son la regla operativa de esta plantilla para las preguntas que 00 §5.2 deja abiertas (&quot;Aumentar o Transformar&quot;). El <a href="../12_SEVEN-G_Indice_de_transformacion.html">documento 12</a> puede calibrarla.</p>
+<p>Los pasos 2 a 4 son la regla operativa de esta plantilla para las preguntas que 00 §5.2 deja abiertas (&quot;Aumentar o Transformar&quot;). El <a href="../12_SEVEN-G_Indice_de_transformacion.html" title="Documento 12 &#183; &#205;ndice de transformaci&#243;n">documento 12</a> puede calibrarla.</p>
 <hr />
 <h2 id="resultado-de-la-clasificacion"><span class="antetitulo">06</span>Resultado de la clasificación</h2>
 <div class="tabla"><table>
@@ -753,7 +764,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Si el nivel declarado no coincide con el de la regla, prevalece el de la regla salvo decisión motivada del órgano competente, que queda registrada en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<p>Si el nivel declarado no coincide con el de la regla, prevalece el de la regla salvo decisión motivada del órgano competente, que queda registrada en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>.</p>
 <p><strong>Quién decide según el nivel</strong> (00 §4.1):</p>
 <div class="tabla"><table>
 <thead>
@@ -777,7 +788,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Transformar</td>
 <td>Consejo o alta dirección, de forma explícita.</td>
-<td>Intensidad Enterprise; aprobación del consejo en G2 y en G7; hitos de aprendizaje y límite de inversión por etapa en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</td>
+<td>Intensidad Enterprise; aprobación del consejo en G2 y en G7; hitos de aprendizaje y límite de inversión por etapa en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -845,10 +856,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Cada cambio genera un evento de cambio de clasificación en el registro de iniciativas (03 §3.3) y obliga a revisar <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a>.</p>
+<p>Cada cambio genera un evento de cambio de clasificación en el registro de iniciativas (03 §3.3) y obliga a revisar <a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a>.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">09</span>Criterios de calidad</h2>
-<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G1.xx, G2.xx y G7.xx).</p>
+<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (ver criterios G1.xx, G2.xx y G7.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -890,7 +901,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Los cambios de clasificación están registrados y <a href="P04_SEVEN-G_Determinacion_de_intensidad.html">P04</a> se ha revisado.</td>
+<td>Los cambios de clasificación están registrados y <a href="P04_SEVEN-G_Determinacion_de_intensidad.html" title="Plantilla P04 &#183; Determinaci&#243;n de intensidad">P04</a> se ha revisado.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1214,6 +1225,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P04_SEVEN-G_Determinacion_de_intensidad.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P04_SEVEN-G_Determinacion_de_intensidad.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P04_SEVEN-G_Determinacion_de_intensidad.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#fuentes-consultadas"><span>03</span>Fuentes consultadas</a></li><li><a href="#criterios-enterprise"><span>04</span>Criterios Enterprise</a></li><li><a href="#resultado"><span>05</span>Resultado</a></li><li><a href="#consecuencias-de-la-intensidad"><span>06</span>Consecuencias de la intensidad</a></li><li><a href="#cambio-de-intensidad"><span>07</span>Cambio de intensidad</a></li><li><a href="#criterios-de-calidad"><span>08</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>09</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>10</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T04</a> · Determinación de intensidad (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T04 &#183; Determinaci&#243;n de intensidad">T04</a> · Determinación de intensidad (módulo de <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -474,7 +485,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li><strong>Basta un criterio Enterprise para aplicar esa intensidad</strong> (01 §9.1).</li>
 <li>Toda respuesta, sea &quot;Sí&quot; o &quot;No&quot;, se justifica con hechos y, cuando exista, con evidencia enlazada.</li>
-<li>En esta plantilla, una respuesta &quot;Pendiente&quot; cuenta como &quot;Sí&quot; hasta que se resuelva, con responsable y fecha. Así se evita avanzar con menos control por falta de información. Es una regla de prudencia propuesta por la plantilla que el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> debería confirmar.</li>
+<li>En esta plantilla, una respuesta &quot;Pendiente&quot; cuenta como &quot;Sí&quot; hasta que se resuelva, con responsable y fecha. Así se evita avanzar con menos control por falta de información. Es una regla de prudencia propuesta por la plantilla que el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> debería confirmar.</li>
 <li>La intensidad no puede rebajarse para acelerar un <em>gate</em>. Una iniciativa sin ningún criterio puede aplicar voluntariamente Enterprise.</li>
 </ul>
 <hr />
@@ -538,27 +549,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Carta de la iniciativa</td>
-<td><a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a></td>
+<td><a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a></td>
 <td>Alcance y exposición.</td>
 </tr>
 <tr>
 <td>Declaración de contexto y restricciones</td>
-<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></td>
+<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a></td>
 <td>Datos, autonomía máxima, función crítica.</td>
 </tr>
 <tr>
 <td>Ficha de inventario</td>
-<td><a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
+<td><a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a></td>
 <td>Tecnología, exposición, autonomía, rol regulatorio.</td>
 </tr>
 <tr>
 <td>Clasificación de ambición</td>
-<td><a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
+<td><a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a></td>
 <td>Criterio 7.</td>
 </tr>
 <tr>
 <td>Clasificación regulatoria</td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 <td>Criterio 1 (a partir de la fase 3).</td>
 </tr>
 <tr>
@@ -589,7 +600,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>¿El sistema está clasificado, o hay indicios razonables de que será clasificado, como de alto riesgo según la regulación aplicable?</td>
 <td>Sí · No · Pendiente</td>
 <td></td>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> o análisis preliminar</td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> o análisis preliminar</td>
 </tr>
 <tr>
 <td>2</td>
@@ -605,7 +616,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>¿Clientes, pacientes, ciudadanos u otras personas externas interactúan directamente con el sistema?</td>
 <td>Sí · No · Pendiente</td>
 <td></td>
-<td>Exposición en <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
+<td>Exposición en <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a></td>
 </tr>
 <tr>
 <td>4</td>
@@ -613,7 +624,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>¿El sistema ejecuta acciones, como escribir en sistemas, enviar comunicaciones o realizar pagos, sin que una persona valide cada acción antes de ejecutarla (A2 o A3), y esas acciones tienen efecto sobre terceros, dinero, datos personales o sistemas de producción?</td>
 <td>Sí · No · Pendiente</td>
 <td></td>
-<td>Nivel de autonomía en <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a></td>
+<td>Nivel de autonomía en <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a></td>
 </tr>
 <tr>
 <td>5</td>
@@ -621,7 +632,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>¿Trata categorías especiales de datos personales o información confidencial crítica?</td>
 <td>Sí · No · Pendiente</td>
 <td></td>
-<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a> §6</td>
+<td><a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a> §6</td>
 </tr>
 <tr>
 <td>6</td>
@@ -637,7 +648,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>¿La iniciativa está clasificada como Transformar?</td>
 <td>Sí · No</td>
 <td></td>
-<td><a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></td>
+<td><a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a></td>
 </tr>
 <tr>
 <td>8</td>
@@ -645,7 +656,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>¿La inversión prevista supera el umbral aprobado por el consejo en C2?</td>
 <td>Sí · No · Pendiente</td>
 <td>Indicar umbral e inversión estimada.</td>
-<td><a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> §7</td>
+<td><a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a> §7</td>
 </tr>
 </tbody>
 </table></div>
@@ -660,7 +671,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>Mientras <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a> no esté hecho, se responde con el análisis preliminar. Si el sistema cae en un ámbito de alto riesgo (por ejemplo, empleo, acceso a servicios esenciales, infraestructuras críticas, educación o biometría) y no se ha descartado de forma documentada, la respuesta es &quot;Pendiente&quot;.</td>
+<td>Mientras <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a> no esté hecho, se responde con el análisis preliminar. Si el sistema cae en un ámbito de alto riesgo (por ejemplo, empleo, acceso a servicios esenciales, infraestructuras críticas, educación o biometría) y no se ha descartado de forma documentada, la respuesta es &quot;Pendiente&quot;.</td>
 </tr>
 <tr>
 <td>2</td>
@@ -672,7 +683,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Se responde &quot;Sí&quot; cuando el nivel de autonomía es A2 (Actuación supervisada) o A3 (Actuación autónoma) y las acciones tienen efecto sobre terceros, dinero, datos personales o sistemas de producción (01 §9.2; niveles de autonomía en el <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>). Con A0 o A1, o con A2 o A3 sin ese efecto, se responde &quot;No&quot; y se justifica.</td>
+<td>Se responde &quot;Sí&quot; cuando el nivel de autonomía es A2 (Actuación supervisada) o A3 (Actuación autónoma) y las acciones tienen efecto sobre terceros, dinero, datos personales o sistemas de producción (01 §9.2; niveles de autonomía en el <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>). Con A0 o A1, o con A2 o A3 sin ese efecto, se responde &quot;No&quot; y se justifica.</td>
 </tr>
 <tr>
 <td>5</td>
@@ -813,7 +824,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Lite</td>
 <td>Enterprise</td>
 <td>4: se añade la actuación automática sobre pedidos</td>
-<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> y <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> completas; firma multinivel en G5</td>
+<td><a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> y <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> completas; firma multinivel en G5</td>
 <td>G4 y G5 por separado</td>
 <td>Oficina de IA</td>
 </tr>
@@ -822,7 +833,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>Un paso de Lite a Enterprise obliga a completar con plantillas completas las evidencias de los <em>gates</em> pendientes. Un paso de Enterprise a Lite solo es posible si desaparecen todos los criterios y debe registrarse como evento de cambio de clasificación (03 §3.3).</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">08</span>Criterios de calidad</h2>
-<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (ver criterios G0.xx, G3.xx y R6.xx).</p>
+<p>Los criterios formales están en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (ver criterios G0.xx, G3.xx y R6.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -844,7 +855,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Las respuestas son coherentes con <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a>, <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>, <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> y, desde la fase 3, con <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>.</td>
+<td>Las respuestas son coherentes con <a href="P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Plantilla P01 &#183; Carta de la iniciativa">P01</a>, <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Plantilla P02 &#183; Declaraci&#243;n de contexto y restricciones">P02</a>, <a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>, <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Plantilla P07 &#183; Clasificaci&#243;n de esfera y ambici&#243;n">P07</a> y, desde la fase 3, con <a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1188,6 +1199,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

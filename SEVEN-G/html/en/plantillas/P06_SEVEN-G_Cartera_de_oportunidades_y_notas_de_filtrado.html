@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/en/plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../../docx/en/plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.docx" download><span class="dz-tipo">DOCX</span><b>Editable template (Word)</b></a><a class="dz-item" href="../../../pdf/es/plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../../es/plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#instructions-for-use"><span>01</span>Instructions for use</a></li><li><a href="#identification"><span>02</span>Identification</a></li><li><a href="#discovery-method"><span>03</span>Discovery method</a></li><li><a href="#screening-criteria"><span>04</span>Screening criteria</a></li><li><a href="#opportunity-register"><span>05</span>Opportunity register</a></li><li><a href="#non-ai-alternatives"><span>06</span>Non-AI alternatives</a></li><li><a href="#screening-notes"><span>07</span>Screening notes</a></li><li><a href="#prioritisation-enterprise"><span>08</span>Prioritisation (Enterprise)</a></li><li><a href="#quality-criteria"><span>09</span>Quality criteria</a></li><li><a href="#approval-and-verification"><span>10</span>Approval and verification</a></li><li><a href="#version-control"><span>11</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <h2 id="instructions-for-use"><span class="antetitulo">01</span>Instructions for use</h2>
@@ -462,7 +473,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Tool</strong></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · Initiative register (opportunities that proceed are linked to the initiative).</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> · Initiative register (opportunities that proceed are linked to the initiative).</td>
 </tr>
 <tr>
 <td><strong>Lite versus Enterprise</strong></td>
@@ -474,7 +485,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <ul>
 <li>Opportunities start from a <strong>business need</strong>, not from an available technology.</li>
 <li>Every opportunity that proceeds must have compared <strong>non-AI alternatives</strong> (01 §6.3).</li>
-<li>Value in this phase is an <strong>estimated order of magnitude</strong>. Quantification with a formula is done in <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>.</li>
+<li>Value in this phase is an <strong>estimated order of magnitude</strong>. Quantification with a formula is done in <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a>.</li>
 <li>Discarded opportunities are kept with their reason: they are learning for the portfolio.</li>
 </ul>
 <hr />
@@ -604,7 +615,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>F6</td>
 <td>Red lines</td>
-<td>Does it respect the red lines in <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a>, the corporate policy and the practices prohibited by regulation?</td>
+<td>Does it respect the red lines in <a href="P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Template P02 &#183; Context and constraints statement">P02</a>, the corporate policy and the practices prohibited by regulation?</td>
 <td>Yes</td>
 </tr>
 <tr>
@@ -674,7 +685,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>The sphere uses the list in 03 §3.3. The proposed ambition is justified with <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>.</p>
+<p>The sphere uses the list in 03 §3.3. The proposed ambition is justified with <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>.</p>
 <h3 id="5-2-screening">5.2 Screening</h3>
 <div class="tabla"><table>
 <thead>
@@ -849,7 +860,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Proposed sphere and ambition</td>
 <td></td>
-<td>Reference to <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a> (&quot;Proposed&quot; column).</td>
+<td>Reference to <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a> (&quot;Proposed&quot; column).</td>
 </tr>
 </tbody>
 </table></div>
@@ -882,10 +893,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>In this phase prioritisation is qualitative. The additional net value per additional euro invested (rule 9) is calculated once <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> and <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> exist.</p>
+<p>In this phase prioritisation is qualitative. The additional net value per additional euro invested (rule 9) is calculated once <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Template P08 &#183; Value hypothesis canvas">P08</a> and <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Template P10 &#183; Feasibility assessment">P10</a> exist.</p>
 <hr />
 <h2 id="quality-criteria"><span class="antetitulo">09</span>Quality criteria</h2>
-<p>The formal G1 criteria are in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a> (see criteria G1.xx).</p>
+<p>The formal G1 criteria are in <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Document 21 &#183; Gate and audit criteria">document 21</a> (see criteria G1.xx).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -922,7 +933,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>6</td>
-<td>Proposed sphere and ambition use the taxonomy and are consistent with <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>.</td>
+<td>Proposed sphere and ambition use the taxonomy and are consistent with <a href="P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html" title="Template P07 &#183; Sphere and ambition classification">P07</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -968,7 +979,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Segregation of duties: the verifier has not taken part in the screening. The decision is recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</p>
+<p>Segregation of duties: the verifier has not taken part in the screening. The decision is recorded in <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a>.</p>
 <hr />
 <h2 id="version-control"><span class="antetitulo">11</span>Version control</h2>
 <p><strong>Completed document</strong></p>
@@ -1244,6 +1255,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

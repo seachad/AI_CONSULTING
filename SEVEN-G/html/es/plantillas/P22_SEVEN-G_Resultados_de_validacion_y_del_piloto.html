@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#resultados-de-las-pruebas"><span>03</span>Resultados de las pruebas</a></li><li><a href="#evaluacion-especifica-de-ia-generativa-y-agentes-enterprise"><span>04</span>Evaluación específica de IA generativa y agentes (Enterprise)</a></li><li><a href="#diseno-del-piloto"><span>05</span>Diseño del piloto</a></li><li><a href="#resultados-del-piloto-frente-a-la-hipotesis"><span>06</span>Resultados del piloto frente a la hipótesis</a></li><li><a href="#valor-observado-y-proyeccion"><span>07</span>Valor observado y proyección</a></li><li><a href="#criterios-de-parada"><span>08</span>Criterios de parada</a></li><li><a href="#criterios-de-g5-segun-el-nivel-de-ambicion"><span>09</span>Criterios de G5 según el nivel de ambición</a></li><li><a href="#conclusion-y-recomendacion-del-equipo"><span>10</span>Conclusión y recomendación del equipo</a></li><li><a href="#criterios-de-calidad"><span>11</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>12</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>13</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="instrucciones-de-uso"><span class="antetitulo">01</span>Instrucciones de uso</h2>
@@ -462,17 +473,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html">T11</a> Lienzo y calculadora de hipótesis de valor.</td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> Lienzo y calculadora de hipótesis de valor.</td>
 </tr>
 <tr>
 <td><strong>Relación</strong></td>
-<td><a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> Lienzo de hipótesis de valor · <a href="P09_SEVEN-G_Linea_base.html">P09</a> Línea base · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> Supervisión humana · <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> Diseño de seguridad · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> Prueba de reversión · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> Adopción · <a href="P21_SEVEN-G_Informe_de_entrega.html">P21</a> Informe de entrega · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> Seguimiento de valor · <a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html">documento 40</a>.</td>
+<td><a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> Lienzo de hipótesis de valor · <a href="P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a> Línea base · <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> Supervisión humana · <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> Diseño de seguridad · <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a> Prueba de reversión · <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> Adopción · <a href="P21_SEVEN-G_Informe_de_entrega.html" title="Plantilla P21 &#183; Informe de entrega">P21</a> Informe de entrega · <a href="P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a> Seguimiento de valor · <a href="../40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Documento 40 &#183; Reglas de medici&#243;n del valor">documento 40</a>.</td>
 </tr>
 </tbody>
 </table></div>
 <p>Reglas:</p>
 <ul>
-<li><strong>Los umbrales se fijaron antes.</strong> Las métricas, umbrales de éxito y criterios de parada son los aprobados en la fase 2 (<a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>). No pueden relajarse para evitar una decisión de parar sin aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).</li>
+<li><strong>Los umbrales se fijaron antes.</strong> Las métricas, umbrales de éxito y criterios de parada son los aprobados en la fase 2 (<a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>). No pueden relajarse para evitar una decisión de parar sin aprobación del órgano que autorizó la iniciativa (01 §7.4, regla 6).</li>
 <li><strong>La producción es la única verdad.</strong> Los resultados de laboratorio no sustituyen al piloto en condiciones reales.</li>
 <li>Todo importe tiene fórmula, es incremental frente a la línea base o el grupo de control y tiene estado (reglas 1 y 2 de medición).</li>
 <li>La extrapolación anual de un piloto es siempre <strong>estimada</strong> hasta que se mide en producción.</li>
@@ -491,12 +502,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Sistema(s) de IA y versión probada</td>
 <td></td>
-<td>Identificador (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>) y versión (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
+<td>Identificador (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>) y versión (<a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a>).</td>
 </tr>
 <tr>
 <td>Nivel de ambición</td>
@@ -548,7 +559,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Rendimiento del modelo <em>(ejemplo ilustrativo)</em></td>
 <td>Proporción de clasificaciones correctas sobre conjunto de prueba independiente</td>
-<td>≥ 90 % · fijado en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a> el 03-03-2026</td>
+<td>≥ 90 % · fijado en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a> el 03-03-2026</td>
 <td>92,4 %</td>
 <td>Superada</td>
 <td>Informe de evaluación v2</td>
@@ -567,15 +578,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> bloque 11</td>
+<td><a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> bloque 11</td>
 </tr>
 <tr>
 <td>Reversión</td>
 <td>Tiempo hasta estado seguro</td>
-<td>Tiempo objetivo de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a></td>
+<td>Tiempo objetivo de <a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a></td>
 <td></td>
 <td></td>
-<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a> bloque 10</td>
+<td><a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a> bloque 10</td>
 </tr>
 <tr>
 <td></td>
@@ -688,7 +699,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Método de atribución</td>
 <td></td>
-<td>El aprobado en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>: grupo de control · antes y después · otro justificado.</td>
+<td>El aprobado en <a href="P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a>: grupo de control · antes y después · otro justificado.</td>
 </tr>
 <tr>
 <td>Grupo de control o referencia</td>
@@ -703,7 +714,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de autonomía durante el piloto</td>
 <td></td>
-<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>).</td>
+<td>A0 · A1 · A2 · A3 (<a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a>).</td>
 </tr>
 <tr>
 <td>Desviaciones respecto al diseño del piloto</td>
@@ -718,7 +729,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <thead>
 <tr>
 <th>Métrica</th>
-<th>Línea base (<a href="P09_SEVEN-G_Linea_base.html">P09</a>)</th>
+<th>Línea base (<a href="P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a>)</th>
 <th>Objetivo</th>
 <th>Umbral de éxito</th>
 <th>Resultado del piloto</th>
@@ -749,7 +760,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 </tr>
 <tr>
-<td>Adopción (<a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>)</td>
+<td>Adopción (<a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -934,7 +945,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Recomendación al <em>gate</em></td>
 <td></td>
-<td>Continuar · Continuar con condiciones · Iterar · Parar. En G5 no cabe Pivotar (01 §7.3). Es una recomendación; decide el órgano competente en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>.</td>
+<td>Continuar · Continuar con condiciones · Iterar · Parar. En G5 no cabe Pivotar (01 §7.3). Es una recomendación; decide el órgano competente en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>.</td>
 </tr>
 <tr>
 <td>Condiciones propuestas</td>
@@ -945,7 +956,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">11</span>Criterios de calidad</h2>
-<p>Criterios formales de G5 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; lista LV-G5 en el <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html">documento 22</a>.</p>
+<p>Criterios formales de G5 en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>; lista LV-G5 en el <a href="../22_SEVEN-G_Listas_de_verificacion_por_gate.html" title="Documento 22 &#183; Listas de verificaci&#243;n por gate">documento 22</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1035,7 +1046,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Decisor del <em>gate</em></td>
-<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a>)</td>
+<td>Según 01 §7.5 (registrado en <a href="P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Plantilla P29 &#183; Registro de decisi&#243;n de gate">P29</a>)</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1298,6 +1309,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

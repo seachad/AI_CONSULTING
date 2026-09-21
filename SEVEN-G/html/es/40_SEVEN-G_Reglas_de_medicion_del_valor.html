@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,13 +439,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/40_SEVEN-G_Reglas_de_medicion_del_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/40_SEVEN-G_Reglas_de_medicion_del_valor.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/40_SEVEN-G_Reglas_de_medicion_del_valor.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#principios-de-la-medicion"><span>02</span>Principios de la medición</a></li><li><a href="#las-diez-reglas-de-medicion"><span>03</span>Las diez reglas de medición</a></li><li><a href="#estados-del-importe"><span>04</span>Estados del importe</a></li><li><a href="#tipos-de-valor"><span>05</span>Tipos de valor</a></li><li><a href="#formulas-oficiales"><span>06</span>Fórmulas oficiales</a></li><li><a href="#metodos-de-atribucion"><span>07</span>Métodos de atribución</a></li><li><a href="#horizonte-descuento-y-criterio-economico-unico"><span>08</span>Horizonte, descuento y criterio económico único</a></li><li><a href="#agilidad-del-sistema-de-decision"><span>09</span>Agilidad del sistema de decisión</a></li><li><a href="#errores-frecuentes-que-inflan-el-valor"><span>10</span>Errores frecuentes que inflan el valor</a></li><li><a href="#presentacion-al-consejo"><span>11</span>Presentación al consejo</a></li><li><a href="#responsabilidades-en-la-medicion"><span>12</span>Responsabilidades en la medición</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>13</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>14</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>15</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Obligatorio siempre</span></div><p>Las diez reglas de medici&#243;n, el estado de cada importe (validado, declarado o estimado), las f&#243;rmulas oficiales y el criterio econ&#243;mico &#250;nico (VAN ≥ 0 con el horizonte y la tasa fijados en C2). No se reducen en Lite: son lo que hace defendibles las cifras ante el consejo.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
 <h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
-<p>Este documento desarrolla las diez reglas de medición del valor de SEVEN-G (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>, sección 6) y fija las definiciones, fórmulas y procedimientos que deben aplicar todas las iniciativas, la cartera y los informes al consejo.</p>
-<p>Se aplica a toda iniciativa registrada en el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>), en todas las fases, y a toda cifra de valor que se presente al comité de IA o al consejo. Los indicadores que se derivan de estas reglas están en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>; el cálculo de costes, en el <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>; y el proceso de realización de beneficios, en el <a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>.</p>
+<p>Este documento desarrolla las diez reglas de medición del valor de SEVEN-G (<a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>, sección 6) y fija las definiciones, fórmulas y procedimientos que deben aplicar todas las iniciativas, la cartera y los informes al consejo.</p>
+<p>Se aplica a toda iniciativa registrada en el registro de iniciativas (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>), en todas las fases, y a toda cifra de valor que se presente al comité de IA o al consejo. Los indicadores que se derivan de estas reglas están en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html" title="Documento 41 &#183; Cat&#225;logo de indicadores">documento 41</a>; el cálculo de costes, en el <a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>; y el proceso de realización de beneficios, en el <a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a>.</p>
 <p>Las cifras de los ejemplos son <strong>ficticias e ilustrativas</strong>. No son referencias de mercado.</p>
 <hr />
 <h2 id="principios-de-la-medicion"><span class="antetitulo">02</span>Principios de la medición</h2>
@@ -468,13 +479,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Trazabilidad</strong></td>
-<td>Toda cifra se puede reconstruir desde su fórmula, sus fuentes y su periodo, y enlaza con la evidencia en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Toda cifra se puede reconstruir desde su fórmula, sus fuentes y su periodo, y enlaza con la evidencia en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="las-diez-reglas-de-medicion"><span class="antetitulo">03</span>Las diez reglas de medición</h2>
-<p>La numeración es la del <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a>, sección 6, y no se modifica.</p>
+<p>La numeración es la del <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a>, sección 6, y no se modifica.</p>
 <h3 id="3-1-regla-1-todo-importe-tiene-formula-y-es-incremental">3.1 Regla 1 · Todo importe tiene fórmula y es incremental</h3>
 <blockquote>
 <p>Todo importe tiene fórmula (unidades × valor unitario) y es incremental frente a una línea base o un grupo de control.</p>
@@ -505,7 +516,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td>La fórmula existe en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>; las unidades proceden de un sistema identificado; la línea base se midió antes de G2 (01 §6.4); el valor unitario tiene fuente y fecha; el método de atribución aplicado es el aprobado en G2.</td>
+<td>La fórmula existe en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; las unidades proceden de un sistema identificado; la línea base se midió antes de G2 (01 §6.4); el valor unitario tiene fuente y fecha; el método de atribución aplicado es el aprobado en G2.</td>
 </tr>
 </tbody>
 </table></div>
@@ -539,7 +550,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td>Ningún importe de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> o <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> tiene el estado vacío; todos los totales del paquete del consejo muestran la proporción validada; los importes validados tienen validador, fecha y evidencia.</td>
+<td>Ningún importe de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> o <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> tiene el estado vacío; todos los totales del paquete del consejo muestran la proporción validada; los importes validados tienen validador, fecha y evidencia.</td>
 </tr>
 </tbody>
 </table></div>
@@ -607,7 +618,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td>En <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> el potencial tiene los cuatro campos cumplimentados; el paquete del consejo no muestra potenciales incompletos; el potencial se revisa en G7 frente a lo realizado.</td>
+<td>En <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> el potencial tiene los cuatro campos cumplimentados; el paquete del consejo no muestra potenciales incompletos; el potencial se revisa en G7 frente a lo realizado.</td>
 </tr>
 </tbody>
 </table></div>
@@ -629,7 +640,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>En la fase 2 cada iniciativa declara con qué otros casos comparte métrica, proceso o población. El efecto conjunto se mide una vez y se reparte con una clave declarada (<a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>, sección 6). La clave se aprueba por control de gestión y se registra en ambos casos.</td>
+<td>En la fase 2 cada iniciativa declara con qué otros casos comparte métrica, proceso o población. El efecto conjunto se mide una vez y se reparte con una clave declarada (<a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a>, sección 6). La clave se aprueba por control de gestión y se registra en ambos casos.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -659,11 +670,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Fundamento</strong></td>
-<td>Eficiencias y retorno tienen distinto riesgo, distinta forma de validarse y distinta lectura estratégica (eficiencia frente a transformación, <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html">documento 00</a> §5). Mezclarlos, o compensar costes dentro de las eficiencias, impide leer la cartera.</td>
+<td>Eficiencias y retorno tienen distinto riesgo, distinta forma de validarse y distinta lectura estratégica (eficiencia frente a transformación, <a href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Documento 00 &#183; Qu&#233; es SEVEN-G y para qu&#233; sirve">documento 00</a> §5). Mezclarlos, o compensar costes dentro de las eficiencias, impide leer la cartera.</td>
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>Cada caso registra tres bloques separados y calcula el valor neto anual con la fórmula F2. El coste recurrente es el coste completo del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>, incluidos los costes compartidos repartidos. La inversión de construcción y adopción no forma parte del neto anual; se usa en el criterio económico de la sección 8.</td>
+<td>Cada caso registra tres bloques separados y calcula el valor neto anual con la fórmula F2. El coste recurrente es el coste completo del <a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>, incluidos los costes compartidos repartidos. La inversión de construcción y adopción no forma parte del neto anual; se usa en el criterio económico de la sección 8.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -675,7 +686,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> tiene los tres bloques con importes separados; el neto se recalcula automáticamente y coincide con el informado; el coste recurrente concilia con <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> tiene los tres bloques con importes separados; el neto se recalcula automáticamente y coincide con el informado; el coste recurrente concilia con <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -743,7 +754,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> distingue nulo de cero; el panel muestra &quot;sin dato&quot;; los totales informan del número de casos sin dato; ninguna estimación carece de estado.</td>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> distingue nulo de cero; el panel muestra &quot;sin dato&quot;; los totales informan del número de casos sin dato; ninguna estimación carece de estado.</td>
 </tr>
 </tbody>
 </table></div>
@@ -765,7 +776,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>Cada propuesta de inversión adicional (nueva iniciativa, ampliación, escalado) calcula el neto adicional por euro (fórmula F3). La cartera se ordena por ese indicador, con restricciones de riesgo, capacidad y equilibrio de ambición (<a href="14_SEVEN-G_Gestion_de_cartera.html">documento 14</a>). Los casos con neto anual negativo se muestran siempre de forma individual.</td>
+<td>Cada propuesta de inversión adicional (nueva iniciativa, ampliación, escalado) calcula el neto adicional por euro (fórmula F3). La cartera se ordena por ese indicador, con restricciones de riesgo, capacidad y equilibrio de ambición (<a href="14_SEVEN-G_Gestion_de_cartera.html" title="Documento 14 &#183; Gesti&#243;n de cartera">documento 14</a>). Los casos con neto anual negativo se muestran siempre de forma individual.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -799,7 +810,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se aplica</strong></td>
-<td>Cada caso tiene una descripción de una o dos frases que responde a: qué hace, quién lo usa, sobre qué proceso o decisión actúa y qué papel tiene la persona. Se registra en la ficha de caso de uso (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>) y en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Sin descripción, el caso no se presenta al consejo.</td>
+<td>Cada caso tiene una descripción de una o dos frases que responde a: qué hace, quién lo usa, sobre qué proceso o decisión actúa y qué papel tiene la persona. Se registra en la ficha de caso de uso (<a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a>) y en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>. Sin descripción, el caso no se presenta al consejo.</td>
 </tr>
 <tr>
 <td><strong>Ejemplo correcto</strong> <em>(ilustrativo)</em></td>
@@ -811,7 +822,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Cómo se verifica</strong></td>
-<td>El campo de descripción de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> está cumplimentado y revisado por la oficina de IA; una persona ajena al área entiende el caso al leerlo.</td>
+<td>El campo de descripción de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> está cumplimentado y revisado por la oficina de IA; una persona ajena al área entiende el caso al leerlo.</td>
 </tr>
 </tbody>
 </table></div>
@@ -832,13 +843,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Validado</strong></td>
 <td>Control de gestión (o la función financiera equivalente) o auditoría interna o externa. Nunca el área que se beneficia de la cifra ni el equipo de la iniciativa.</td>
-<td>Fórmula completa; línea base medida; método de atribución aprobado y aplicado (sección 7); datos trazables a los sistemas de origen o a la contabilidad; periodo cerrado; en eficiencias, reflejo contable o evidencia del coste evitado; firma del validador con fecha; evidencia enlazada en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
+<td>Fórmula completa; línea base medida; método de atribución aprobado y aplicado (sección 7); datos trazables a los sistemas de origen o a la contabilidad; periodo cerrado; en eficiencias, reflejo contable o evidencia del coste evitado; firma del validador con fecha; evidencia enlazada en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</td>
 <td><strong>12 meses</strong> desde el cierre del periodo validado. Caduca antes si hay un cambio material: modelo, proceso, alcance, población, precio o volumen fuera del intervalo de la hipótesis.</td>
 <td>Todos los informes y <em>gates</em>. Único estado que acredita &quot;ahorro materializado&quot; o &quot;retorno medido&quot; en G7 (01 §7.6).</td>
 </tr>
 <tr>
 <td><strong>Declarado</strong></td>
-<td>El área responsable del beneficio (responsable de negocio del <a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a>), con conformidad del patrocinador.</td>
+<td>El área responsable del beneficio (responsable de negocio del <a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a>), con conformidad del patrocinador.</td>
 <td>Fórmula; fuente de las unidades y del valor unitario; periodo; método de atribución utilizado; autor y fecha.</td>
 <td><strong>6 meses</strong> sin someterse a validación. Pasado ese plazo se muestra como &quot;declarado pendiente de validar&quot; con alerta.</td>
 <td>Informes y R6, siempre identificado. En G5 y G7 no sustituye a la validación cuando el criterio exige valor validado.</td>
@@ -857,9 +868,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>El estado se asigna <strong>por importe y por periodo</strong>, no por caso. Un caso puede tener la eficiencia validada y el retorno declarado.</li>
 <li><strong>El valor esperado no se valida.</strong> Los importes de la hipótesis (fases 2 y 3) son estimados o declarados; control de gestión puede revisar su cálculo, pero el estado validado solo se aplica a valor realizado en un periodo cerrado.</li>
 <li><strong>El coste no tiene rebaja por estado.</strong> El coste recurrente se imputa completo aunque no esté validado; si se desconoce, el neto es &quot;sin dato&quot; (regla 8).</li>
-<li><strong>Degradación, no borrado.</strong> Un importe validado que caduca pasa a declarado hasta su revalidación; un declarado que el validador rechaza se corrige o pasa a estimado con motivo. Todo cambio de estado es un evento en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</li>
+<li><strong>Degradación, no borrado.</strong> Un importe validado que caduca pasa a declarado hasta su revalidación; un declarado que el validador rechaza se corrige o pasa a estimado con motivo. Todo cambio de estado es un evento en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>.</li>
 <li><strong>El valor recurrente se revalida cada año.</strong> Validar un ejercicio no valida los siguientes.</li>
-<li>Los plazos de caducidad son <strong>orientativos</strong> y la compañía los fija en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>). No pueden ampliarse para una iniciativa concreta.</li>
+<li>Los plazos de caducidad son <strong>orientativos</strong> y la compañía los fija en C2 (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Documento 13 &#183; Tesis de IA, ambici&#243;n y apetito de riesgo">documento 13</a>). No pueden ampliarse para una iniciativa concreta.</li>
 </ol>
 <figure class="grafico"><div class="g-titulo">Ciclo de estados de un importe</div><div class="g-sub">El estado mejora con evidencia y se degrada con el tiempo o con cambios materiales</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
   EST["Estimado · comité, consejo o evaluador"] -->|"El área aporta dato con fórmula"| DEC["Declarado · área responsable"]
@@ -913,7 +924,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Corte y coste</strong></td>
 <td>¿El importe corresponde al periodo, no se repite y el coste recurrente es completo?</td>
-<td>Conciliación con periodos anteriores en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> y con <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>.</td>
+<td>Conciliación con periodos anteriores en <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a> y con <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -945,7 +956,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Coste recurrente</strong></td>
 <td>Coste anual completo para operar el caso.</td>
-<td>Las nueve categorías del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a> en su parte recurrente, incluidos los costes compartidos repartidos.</td>
+<td>Las nueve categorías del <a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a> en su parte recurrente, incluidos los costes compartidos repartidos.</td>
 <td>Se resta siempre, completo, con independencia de su estado.</td>
 </tr>
 </tbody>
@@ -964,13 +975,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><strong>Riesgo evitado</strong></td>
 <td>Reducción de la probabilidad o del impacto de un suceso adverso.</td>
-<td>Por separado, con la métrica de riesgo (nivel inherente y residual, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>) y, si se calcula, la pérdida esperada evitada como estimación.</td>
+<td>Por separado, con la métrica de riesgo (nivel inherente y residual, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>) y, si se calcula, la pérdida esperada evitada como estimación.</td>
 <td>Cuando se traduce en un menor coste observable y atribuible (pérdidas operativas, sanciones, primas, provisiones) medido con un método de la sección 7. Entonces se registra como <strong>eficiencia</strong>.</td>
 </tr>
 <tr>
 <td><strong>Cumplimiento</strong></td>
 <td>Capacidad de cumplir una obligación regulatoria o contractual.</td>
-<td>Por separado, vinculado a la obligación (<a href="34_SEVEN-G_Mapeo_regulatorio.html">documento 34</a>).</td>
+<td>Por separado, vinculado a la obligación (<a href="34_SEVEN-G_Mapeo_regulatorio.html" title="Documento 34 &#183; Mapeo regulatorio">documento 34</a>).</td>
 <td>Cuando sustituye un coste de cumplimiento real (horas de control manual, servicio externo) medido con fórmula. Entonces es <strong>eficiencia</strong>.</td>
 </tr>
 </tbody>
@@ -1093,7 +1104,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Coste por unidad de resultado</strong> (coste recurrente del periodo ÷ unidades de resultado útil) se define en el <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>.</p>
+<p><strong>Coste por unidad de resultado</strong> (coste recurrente del periodo ÷ unidades de resultado útil) se define en el <a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>.</p>
 <hr />
 <h2 id="metodos-de-atribucion"><span class="antetitulo">07</span>Métodos de atribución</h2>
 <h3 id="7-1-eleccion-del-metodo">7.1 Elección del método</h3>
@@ -1161,7 +1172,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <th>Tipo</th>
 <th>Ejemplo <em>(ilustrativo)</em></th>
-<th>Cómo se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></th>
+<th>Cómo se registra en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></th>
 <th>Cómo se mide</th>
 </tr>
 </thead>
@@ -1170,7 +1181,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Plataforma habilitadora</strong></td>
 <td>Plataforma común de datos para varios casos de IA</td>
 <td>Una iniciativa que indica los casos que la usan (<code>alcance.habilita</code>)</td>
-<td>Su valor se imputa a los casos que la usan (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">documento 10</a> §4.1, regla 3). En la plataforma solo cuentan su coste, su disponibilidad y los casos a los que sirve.</td>
+<td>Su valor se imputa a los casos que la usan (<a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Documento 10 &#183; Mapa de esferas y niveles de ambici&#243;n">documento 10</a> §4.1, regla 3). En la plataforma solo cuentan su coste, su disponibilidad y los casos a los que sirve.</td>
 </tr>
 <tr>
 <td><strong>Transversal</strong></td>
@@ -1224,14 +1235,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Reglas:</p>
 <ol>
-<li><strong>Una iniciativa, varias unidades.</strong> La iniciativa transversal tiene un patrocinador corporativo. Cada unidad tiene su responsable de negocio del beneficio, que declara la parte de su unidad (<a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a> §6.4).</li>
+<li><strong>Una iniciativa, varias unidades.</strong> La iniciativa transversal tiene un patrocinador corporativo. Cada unidad tiene su responsable de negocio del beneficio, que declara la parte de su unidad (<a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a> §6.4).</li>
 <li><strong>Despliegue que permita medir.</strong> El despliegue se hace escalonado por unidades, para poder medir con diferencias en diferencias (sección 7.1, criterio 2). Otra opción es asignar las licencias al azar entre las personas elegibles. Si se despliega en toda la compañía de una vez, solo cabe la estimación experta, que nunca permite validar.</li>
 <li><strong>Umbral de adopción.</strong> G2 fija un porcentaje mínimo de licencias activas sobre asignadas. En cada unidad en uso por debajo del umbral se revisa el despliegue o se retiran las licencias sin uso. Una unidad sigue pagando la herramienta porque la usa, no por inercia.</li>
-<li><strong>Sin doble conteo con los casos de cada unidad.</strong> Si una unidad tiene además un caso propio sobre el mismo proceso, se aplica el <a href="43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a> §6: el ahorro genérico de la herramienta transversal no se reclama otra vez.</li>
+<li><strong>Sin doble conteo con los casos de cada unidad.</strong> Si una unidad tiene además un caso propio sobre el mismo proceso, se aplica el <a href="43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a> §6: el ahorro genérico de la herramienta transversal no se reclama otra vez.</li>
 <li><strong>Neto con y sin transversales.</strong> En los informes al consejo, el neto de la cartera se muestra con y sin las iniciativas transversales y las plataformas (sección 11.1). Así, un coste grande y seguro no oculta ni infla el resultado de los casos de negocio.</li>
-<li><strong>El valor indirecto no se convierte en euros.</strong> La cultura de uso, la madurez o la mejora de los permisos y de los datos se recogen en el modelo de madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>) y en la esfera 05 Datos. El riesgo principal de estas herramientas es mostrar a una persona información a la que tenía acceso por permisos heredados o excesivos. Va en la matriz de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>) y se revisa antes de cada ola del despliegue.</li>
+<li><strong>El valor indirecto no se convierte en euros.</strong> La cultura de uso, la madurez o la mejora de los permisos y de los datos se recogen en el modelo de madurez (<a href="11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>) y en la esfera 05 Datos. El riesgo principal de estas herramientas es mostrar a una persona información a la que tenía acceso por permisos heredados o excesivos. Va en la matriz de riesgos (<a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>) y se revisa antes de cada ola del despliegue.</li>
 </ol>
-<p><strong>Ejemplo ilustrativo</strong> (datos ficticios, los mismos del registro de demostración de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>):</p>
+<p><strong>Ejemplo ilustrativo</strong> (datos ficticios, los mismos del registro de demostración de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1305,7 +1316,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>I · Inversión inicial</strong></td>
-<td>Coste de construcción más coste de adopción inicial (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>), incurridos una vez. No incluye coste recurrente, que ya está restado en el neto anual.</td>
+<td>Coste de construcción más coste de adopción inicial (<a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>), incurridos una vez. No incluye coste recurrente, que ya está restado en el neto anual.</td>
 </tr>
 <tr>
 <td><strong>Neto anual del año t</strong></td>
@@ -1387,7 +1398,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="agilidad-del-sistema-de-decision"><span class="antetitulo">09</span>Agilidad del sistema de decisión</h2>
 <h3 id="9-1-que-se-mide">9.1 Qué se mide</h3>
-<p>La agilidad mide cuánto tarda el sistema de gobierno en decidir y en llevar a producción, no la velocidad de los equipos técnicos. Se calcula a partir de los eventos de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (03 §3.3).</p>
+<p>La agilidad mide cuánto tarda el sistema de gobierno en decidir y en llevar a producción, no la velocidad de los equipos técnicos. Se calcula a partir de los eventos de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (03 §3.3).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1426,8 +1437,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Todos los tramos excluyen el tiempo en espera con motivo externo registrado, que se informa aparte. Se muestran como <strong>mediana y percentil 80</strong>, nunca solo como media.</p>
 <h3 id="9-2-segmentacion-por-riesgo-y-ambicion">9.2 Segmentación por riesgo y ambición</h3>
-<p>Los tiempos se segmentan siempre por <strong>nivel de riesgo residual</strong> (Bajo, Medio, Alto, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>), por <strong>nivel de ambición</strong> y por <strong>intensidad</strong>. Un gobierno ágil tarda poco en lo sencillo y dedica tiempo a lo que tiene riesgo; tardar lo mismo en todo es señal de un proceso que no discrimina.</p>
-<p>Referencias iniciales, calculadas como suma de los plazos de referencia por fase del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a> §3.6 (orientativas, sin incluir tiempos de decisión):</p>
+<p>Los tiempos se segmentan siempre por <strong>nivel de riesgo residual</strong> (Bajo, Medio, Alto, <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>), por <strong>nivel de ambición</strong> y por <strong>intensidad</strong>. Un gobierno ágil tarda poco en lo sencillo y dedica tiempo a lo que tiene riesgo; tardar lo mismo en todo es señal de un proceso que no discrimina.</p>
+<p>Referencias iniciales, calculadas como suma de los plazos de referencia por fase del <a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §3.6 (orientativas, sin incluir tiempos de decisión):</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1488,7 +1499,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Valor bruto sin restar coste recurrente.</td>
 <td>Totales de &quot;beneficio&quot; que no concilian con F2.</td>
-<td>Aplicar F2 con el coste completo del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>.</td>
+<td>Aplicar F2 con el coste completo del <a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>.</td>
 </tr>
 <tr>
 <td>3</td>
@@ -1524,7 +1535,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>8</td>
 <td>Imputar solo costes directos.</td>
 <td>Costes de licencias compartidas, plataforma o equipos comunes no repartidos.</td>
-<td>Reparto analítico del <a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>.</td>
+<td>Reparto analítico del <a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>.</td>
 </tr>
 <tr>
 <td>9</td>
@@ -1558,12 +1569,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Presentar al comité o al consejo como validado un importe que no lo está constituye una <strong>no conformidad mayor</strong> (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>). Relajar criterios de parada o cambiar el método de atribución sin aprobación se trata conforme a 01 §7.4 y §12.</p>
+<p>Presentar al comité o al consejo como validado un importe que no lo está constituye una <strong>no conformidad mayor</strong> (<a href="37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>). Relajar criterios de parada o cambiar el método de atribución sin aprobación se trata conforme a 01 §7.4 y §12.</p>
 <hr />
 <h2 id="presentacion-al-consejo"><span class="antetitulo">11</span>Presentación al consejo</h2>
 <h3 id="11-1-reglas">11.1 Reglas</h3>
 <ol>
-<li><strong>La proporción validada es siempre visible</strong> junto a cada total de valor, en el panel completo, en la versión móvil y en cualquier documento del paquete del consejo (<a href="60_SEVEN-G_Paquete_para_el_consejo.html">documento 60</a>).</li>
+<li><strong>La proporción validada es siempre visible</strong> junto a cada total de valor, en el panel completo, en la versión móvil y en cualquier documento del paquete del consejo (<a href="60_SEVEN-G_Paquete_para_el_consejo.html" title="Documento 60 &#183; Paquete para el consejo">documento 60</a>).</li>
 <li><strong>Eficiencias, retorno y coste recurrente se muestran por separado</strong>, con el valor neto anual (F2) y el valor neto validado (F2v).</li>
 <li><strong>La capacidad liberada no materializada y la reasignada se muestran en líneas separadas</strong>, fuera del neto.</li>
 <li><strong>Los casos con neto anual negativo se identifican individualmente.</strong></li>
@@ -1671,7 +1682,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Coste completo y reparto</td>
-<td>Control de gestión con la oficina de IA (<a href="42_SEVEN-G_Costes_de_IA.html">documento 42</a>)</td>
+<td>Control de gestión con la oficina de IA (<a href="42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>)</td>
 <td>Auditoría interna</td>
 </tr>
 <tr>
@@ -1698,52 +1709,52 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </thead>
 <tbody>
 <tr id="cod-t01">
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></strong></td>
 <td>Registro de iniciativas</td>
 <td>Importes, estados, eventos de cambio de estado, fechas para agilidad; alcance de las iniciativas transversales y plataformas, con despliegue, adopción e importes por unidad (sección 7.2).</td>
 </tr>
 <tr id="cod-t11">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></strong></td>
+<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a></strong></td>
 <td>Lienzo y calculadora de hipótesis de valor</td>
-<td>Fórmulas F1–F4 y F7–F9 en fase 2 y 3; método de atribución; escenarios (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> §6.2) y criterio de C2 como información. Importa la iniciativa desde <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y exporta sus valores esperados.</td>
+<td>Fórmulas F1–F4 y F7–F9 en fase 2 y 3; método de atribución; escenarios (<a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a> §6.2) y criterio de C2 como información. Importa la iniciativa desde <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y exporta sus valores esperados.</td>
 </tr>
 <tr id="cod-t12">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Herramienta T12 &#183; Seguimiento de realizaci&#243;n de valor">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Estados por periodo, caducidades, F5, F6 y F10.</td>
 </tr>
 <tr id="cod-t13">
-<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
+<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></strong></td>
 <td>Calculadora de costes por caso</td>
 <td>Coste recurrente completo e inversión inicial.</td>
 </tr>
 <tr id="cod-t17">
-<td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
 <td>Presentación con proporción validada visible; tarjeta de iniciativas transversales y plataformas con el neto de la cartera con y sin ellas.</td>
 </tr>
 <tr id="cod-p08">
-<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></strong></td>
+<td><strong><a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html" title="Plantilla P08 &#183; Lienzo de hip&#243;tesis de valor">P08</a></strong></td>
 <td>Lienzo de hipótesis de valor</td>
 <td>Hipótesis, método de atribución y criterios de parada.</td>
 </tr>
 <tr id="cod-p09">
-<td><strong><a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a></strong></td>
+<td><strong><a href="plantillas/P09_SEVEN-G_Linea_base.html" title="Plantilla P09 &#183; L&#237;nea base">P09</a></strong></td>
 <td>Línea base</td>
 <td>Medición de referencia.</td>
 </tr>
 <tr id="cod-p22">
-<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
+<td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html" title="Plantilla P22 &#183; Resultados de validaci&#243;n y del piloto">P22</a></strong></td>
 <td>Resultados de validación y del piloto</td>
 <td>Valor medido frente a la hipótesis en G5.</td>
 </tr>
 <tr id="cod-p28">
-<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a></strong></td>
+<td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html" title="Plantilla P28 &#183; Seguimiento de realizaci&#243;n de valor">P28</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Valor por periodo y estado.</td>
 </tr>
 <tr id="cod-p31">
-<td><strong><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></strong></td>
+<td><strong><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Plantilla P31 &#183; Ficha de caso de uso">P31</a></strong></td>
 <td>Ficha de caso de uso</td>
 <td>Descripción comprensible (regla 10).</td>
 </tr>
@@ -2061,6 +2072,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

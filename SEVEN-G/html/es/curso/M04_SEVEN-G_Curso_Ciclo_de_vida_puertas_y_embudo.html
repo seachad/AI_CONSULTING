@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/curso/M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../pdf/en/curso/M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/curso/M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Conector del registro T01 al panel del consejo</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objetivo"><span>01</span>Objetivo</a></li><li><a href="#ideas-clave"><span>02</span>Ideas clave</a></li><li><a href="#recorrido-guiado"><span>03</span>Recorrido guiado</a></li><li><a href="#ejercicio"><span>04</span>Ejercicio</a></li><li><a href="#autocomprobacion"><span>05</span>Autocomprobación</a></li><li><a href="#siguiente-paso"><span>06</span>Siguiente paso</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <h2 id="objetivo"><span class="antetitulo">01</span>Objetivo</h2>
@@ -454,44 +465,44 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="../01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 6.1</td>
+<td><a href="../01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>, sección 6.1</td>
 <td>La tabla de fases con la pregunta que responde cada una.</td>
 </tr>
 <tr>
 <td>2</td>
-<td><a href="../01_SEVEN-G_Metodologia_fundacional.html">documento 01</a>, sección 7</td>
+<td><a href="../01_SEVEN-G_Metodologia_fundacional.html" title="Documento 01 &#183; Metodolog&#237;a fundacional de SEVEN-G">documento 01</a>, sección 7</td>
 <td>Cómo funciona una puerta, los resultados y quién verifica y decide.</td>
 </tr>
 <tr>
 <td>3</td>
-<td><a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>, sección 6.4</td>
+<td><a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>, sección 6.4</td>
 <td>Los criterios de G3: código, evidencia, obligatoriedad y columna Lite o Enterprise.</td>
 </tr>
 <tr>
 <td>4</td>
-<td><a href="../04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html">documento 04</a>, sección 4</td>
+<td><a href="../04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a>, sección 4</td>
 <td>Qué se toma de la gestión comercial del embudo y en qué se aparta el marco.</td>
 </tr>
 <tr>
 <td>5</td>
-<td><a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">documento 03</a>, secciones 3.5 y 3.6</td>
+<td><a href="../03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a>, secciones 3.5 y 3.6</td>
 <td>Las métricas del embudo y los plazos de referencia por fase.</td>
 </tr>
 <tr>
 <td>6</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, vistas de embudo, tablero y puertas</td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, vistas de embudo, tablero y puertas</td>
 <td>La cartera de ejemplo por fase, el tiempo en fase y el estado de cada criterio.</td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="ejercicio"><span class="antetitulo">04</span>Ejercicio</h2>
-<p>En el registro de ejemplo (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>):</p>
+<p>En el registro de ejemplo (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>):</p>
 <ol>
 <li>Pulse una barra del embudo para filtrar las iniciativas de esa fase. ¿Cuál lleva más tiempo en su fase?</li>
 <li>Abra IA-2025-004 (cribado de candidaturas). ¿En qué puerta se paró, con qué motivo y qué se aprendió?</li>
 <li>Abra IA-2025-005. No se paró: se retiró tras estar en uso. ¿Por qué?</li>
-<li>Abra el panel del consejo de ejemplo (<a href="../../../herramientas/T17_panel_consejo/index.html">T17</a>) y localice esos dos casos en las tarjetas de salida del embudo.</li>
+<li>Abra el panel del consejo de ejemplo (<a href="../../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) y localice esos dos casos en las tarjetas de salida del embudo.</li>
 </ol>
 <hr />
 <h2 id="autocomprobacion"><span class="antetitulo">05</span>Autocomprobación</h2>
@@ -742,6 +753,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#universo-auditable"><span>03</span>Universo auditable</a></li><li><a href="#puntuacion-de-prioridad"><span>04</span>Puntuación de prioridad</a></li><li><a href="#plan-de-trabajos-del-ejercicio"><span>05</span>Plan de trabajos del ejercicio</a></li><li><a href="#capacidad-y-recursos"><span>06</span>Capacidad y recursos</a></li><li><a href="#aprobacion-del-plan-y-limitaciones"><span>07</span>Aprobación del plan y limitaciones</a></li><li><a href="#seguimiento-de-la-ejecucion"><span>08</span>Seguimiento de la ejecución</a></li><li><a href="#criterios-de-calidad"><span>09</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>10</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>11</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -449,7 +460,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
-<td>Auditoría interna (responsable de auditoría de IA), con los datos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> que facilita la oficina de IA.</td>
+<td>Auditoría interna (responsable de auditoría de IA), con los datos de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> que facilita la oficina de IA.</td>
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
@@ -457,7 +468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién decide o aprueba</strong></td>
-<td>La comisión delegada del consejo (38 §5.3; <a href="../30_SEVEN-G_Modelo_de_gobierno.html">documento 30</a> §7.5). Si la auditoría de IA se integra en el plan de auditoría interna corporativa, se aprueba de forma conjunta o coordinada (38 §12.2).</td>
+<td>La comisión delegada del consejo (38 §5.3; <a href="../30_SEVEN-G_Modelo_de_gobierno.html" title="Documento 30 &#183; Modelo de gobierno">documento 30</a> §7.5). Si la auditoría de IA se integra en el plan de auditoría interna corporativa, se aprueba de forma conjunta o coordinada (38 §12.2).</td>
 </tr>
 <tr>
 <td><strong>Etapa del ciclo corporativo</strong></td>
@@ -465,11 +476,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>No tiene herramienta propia. El universo se extrae de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> (inventario), <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (registro de iniciativas) y <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> (proveedores); los hallazgos abiertos, de <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>. Las fórmulas de la sección 4 permiten llevarla a una hoja de cálculo.</td>
+<td>No tiene herramienta propia. El universo se extrae de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> (inventario), <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (registro de iniciativas) y <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> (proveedores); los hallazgos abiertos, de <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a>. Las fórmulas de la sección 4 permiten llevarla a una hoja de cálculo.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>Documento 38 §4, §5 y §12; <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> §10.3 (muestra de <em>gates</em>); <a href="../43_SEVEN-G_Realizacion_de_beneficios.html">documento 43</a> §12 (auditoría del valor).</td>
+<td>Documento 38 §4, §5 y §12; <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> §10.3 (muestra de <em>gates</em>); <a href="../43_SEVEN-G_Realizacion_de_beneficios.html" title="Documento 43 &#183; Realizaci&#243;n de beneficios">documento 43</a> §12 (auditoría del valor).</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -519,7 +530,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Fecha de corte del universo</td>
 <td></td>
-<td>DD-MM-AAAA. Fecha de extracción de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>.</td>
+<td>DD-MM-AAAA. Fecha de extracción de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a>.</td>
 </tr>
 <tr>
 <td>Relación con el plan de auditoría interna corporativa</td>
@@ -558,9 +569,9 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>U01</td>
 <td>Sistema · Iniciativa · Proveedor · Proceso · Tema</td>
-<td>SIA-AAAA-NNN · IA-AAAA-NNN · código de <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · nombre del proceso</td>
+<td>SIA-AAAA-NNN · IA-AAAA-NNN · código de <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> · nombre del proceso</td>
 <td></td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> · <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · Documento · Informe de riesgos · <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> · <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> · Documento · Informe de riesgos · <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -590,7 +601,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Sistema</td>
 <td>SIA-2026-014</td>
 <td>Asistente de consultas de clientes</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a></td>
 <td>Responsable de operación de IA del área de clientes</td>
 <td>En producción</td>
 <td>Nunca auditado</td>
@@ -620,19 +631,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Cada sistema de IA en desarrollo, piloto o producción</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>Cada iniciativa con <em>gates</em> planificados en el ejercicio</td>
-<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td><a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>Cada proveedor de IA con nivel N2 o N3</td>
-<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></td>
+<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -644,7 +655,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Temas transversales identificados por la segunda línea o por incidentes</td>
-<td>Informes de riesgos; <a href="P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
+<td>Informes de riesgos; <a href="P50_SEVEN-G_Registro_de_no_conformidades.html" title="Herramienta T08 &#183; Registro de no conformidades e incidentes">T08</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -847,7 +858,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Auditorías de <em>gate</em> Enterprise</td>
-<td>100 % de los <em>gates</em> Enterprise planificados en <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
+<td>100 % de los <em>gates</em> Enterprise planificados en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -865,7 +876,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Auditoría del marco</td>
-<td>Anual, incluida la declaración de aplicación (<a href="P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html">P61</a>)</td>
+<td>Anual, incluida la declaración de aplicación (<a href="P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html" title="Plantilla P61 &#183; Declaraci&#243;n de aplicaci&#243;n de SEVEN-G">P61</a>)</td>
 <td></td>
 <td></td>
 </tr>
@@ -947,7 +958,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Continuidad</td>
 <td>U01</td>
 <td>Controles del asistente de consultas en los últimos doce meses: monitorización, supervisión humana, incidentes, valor y coste (38 §6.3)</td>
-<td>R6.nn del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>; <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a>; <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
+<td>R6.nn del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>; <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>; <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a></td>
 <td>2T</td>
 <td>Auditora principal de IA</td>
 <td>Especialista en seguridad ofensiva</td>
@@ -956,7 +967,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>El código AUD-AAAA-NNN es el que propone 38 §9.1 y se mantiene en los papeles de trabajo (<a href="P59_SEVEN-G_Papeles_de_auditoria.html">P59</a>) y en el informe (<a href="P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html">P60</a>). Las auditorías de <em>gate</em> reciben código cuando se solicita el <em>gate</em>.</p>
+<p>El código AUD-AAAA-NNN es el que propone 38 §9.1 y se mantiene en los papeles de trabajo (<a href="P59_SEVEN-G_Papeles_de_auditoria.html" title="Plantilla P59 &#183; Papeles de trabajo de auditor&#237;a">P59</a>) y en el informe (<a href="P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html" title="Plantilla P60 &#183; Informe de auditor&#237;a y fichas de hallazgo">P60</a>). Las auditorías de <em>gate</em> reciben código cuando se solicita el <em>gate</em>.</p>
 <hr />
 <h2 id="capacidad-y-recursos"><span class="antetitulo">06</span>Capacidad y recursos</h2>
 <div class="tabla"><table>
@@ -971,7 +982,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Horas disponibles de auditores de IA en el ejercicio</td>
 <td></td>
-<td>Descontadas formación (perfil F6, <a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">documento 31</a> §6.2), vacaciones y otras tareas.</td>
+<td>Descontadas formación (perfil F6, <a href="../31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Documento 31 &#183; Pol&#237;tica corporativa de IA y pol&#237;tica de uso aceptable">documento 31</a> §6.2), vacaciones y otras tareas.</td>
 </tr>
 <tr>
 <td>Horas de expertos externos contratadas</td>
@@ -1156,7 +1167,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>1</td>
-<td>El universo incluye todos los sistemas de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, las iniciativas con <em>gates</em> del ejercicio, los proveedores N2 y N3 y los procesos del marco.</td>
+<td>El universo incluye todos los sistemas de <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>, las iniciativas con <em>gates</em> del ejercicio, los proveedores N2 y N3 y los procesos del marco.</td>
 <td>Cumple · No cumple · No aplica · Pendiente</td>
 </tr>
 <tr>
@@ -1196,7 +1207,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>La pregunta D6.10 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a> (auditoría del marco en los últimos 12 meses) se acredita con la ejecución de este plan.</p>
+<p>La pregunta D6.10 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a> (auditoría del marco en los últimos 12 meses) se acredita con la ejecución de este plan.</p>
 <hr />
 <h2 id="aprobacion-y-verificacion"><span class="antetitulo">10</span>Aprobación y verificación</h2>
 <div class="tabla"><table>
@@ -1516,6 +1527,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

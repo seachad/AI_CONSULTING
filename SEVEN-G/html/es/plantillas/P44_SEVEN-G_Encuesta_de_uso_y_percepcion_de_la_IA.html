@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#escala-declarada-y-calculo-comun"><span>03</span>Escala declarada y cálculo común</a></li><li><a href="#encuesta-anual-de-uso-de-ia"><span>04</span>Encuesta anual de uso de IA</a></li><li><a href="#encuesta-de-pulso-de-percepcion"><span>05</span>Encuesta de pulso de percepción</a></li><li><a href="#criterios-de-calidad"><span>06</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>07</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>08</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -453,7 +464,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Quién la verifica</strong></td>
-<td>Anual: auditor de IA o auditoría interna, por muestreo (<a href="../38_SEVEN-G_Marco_de_auditoria_de_IA.html">documento 38</a>). Pulso: oficina de IA en Lite; auditor de IA en Enterprise, como parte de <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>.</td>
+<td>Anual: auditor de IA o auditoría interna, por muestreo (<a href="../38_SEVEN-G_Marco_de_auditoria_de_IA.html" title="Documento 38 &#183; Marco de auditor&#237;a de IA">documento 38</a>). Pulso: oficina de IA en Lite; auditor de IA en Enterprise, como parte de <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a>.</td>
 </tr>
 <tr>
 <td><strong>Quién decide o aprueba</strong></td>
@@ -461,11 +472,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Etapa, <em>gate</em> o momento</strong></td>
-<td>Anual: C4 (monitor <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>) y C5. Pulso: G5, R6 y G7 de la iniciativa.</td>
+<td>Anual: C4 (monitor <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a>) y C5. Pulso: G5, R6 y G7 de la iniciativa.</td>
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td>Anual: <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> · Monitor de uso corporativo de IA. Pulso: <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a> · Plan de adopción y capacidad.</td>
+<td>Anual: <a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Herramienta T21 &#183; Monitor de uso corporativo de IA">T21</a> · Monitor de uso corporativo de IA. Pulso: <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Herramienta T20 &#183; Plan de adopci&#243;n y capacidad">T20</a> · Plan de adopción y capacidad.</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
@@ -482,7 +493,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Anonimato.</strong> Las respuestas no se vinculan a personas identificadas. La herramienta de encuesta no guarda identificadores ni direcciones de red, o los separa de las respuestas antes del análisis.</li>
 <li><strong>Tamaño mínimo de grupo.</strong> La compañía fija un tamaño mínimo (50 §11); ningún resultado se desglosa para un grupo con menos respuestas válidas y, si no se alcanza, se informa como <em>sin dato</em> (regla 8 de medición).</li>
 <li><strong>Finalidad limitada.</strong> Los resultados no se usan para evaluar ni sancionar a personas (23 §10.1, regla 3; 50 §9.2). Lo declarado en la encuesta de uso no abre expedientes individuales.</li>
-<li><strong>Información previa.</strong> Se informa a los participantes de la finalidad, del carácter voluntario y anónimo y del tratamiento de los datos conforme al <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>; cuando proceda, se informa a la representación de los trabajadores (<a href="P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a>).</li>
+<li><strong>Información previa.</strong> Se informa a los participantes de la finalidad, del carácter voluntario y anónimo y del tratamiento de los datos conforme al <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>; cuando proceda, se informa a la representación de los trabajadores (<a href="P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html" title="Plantilla P46 &#183; Informaci&#243;n a los trabajadores y a su representaci&#243;n">P46</a>).</li>
 <li><strong>Cuestionario estable.</strong> Las preguntas y la escala no se cambian entre mediciones de la misma serie; un cambio abre una serie nueva y se indica en el informe.</li>
 </ul>
 <hr />
@@ -613,7 +624,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>U2</td>
 <td>¿Qué herramientas ha usado?</td>
-<td>Lista del catálogo (<a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a>) más «Otras: indique cuáles»</td>
+<td>Lista del catálogo (<a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Plantilla P43 &#183; Cat&#225;logo de herramientas autorizadas y solicitudes">P43</a>) más «Otras: indique cuáles»</td>
 </tr>
 <tr>
 <td>U3</td>
@@ -725,15 +736,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>Herramienta no catalogada citada</td>
-<td>Registro en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> como uso no autorizado, por herramienta y ámbito, sin identificar personas (31 §5.3; 32 §2.1), y regularización (31 §5.5).</td>
+<td>Registro en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> como uso no autorizado, por herramienta y ámbito, sin identificar personas (31 §5.3; 32 §2.1), y regularización (31 §5.5).</td>
 </tr>
 <tr>
 <td>Necesidad no cubierta recurrente</td>
-<td>Evaluación como solicitud (<a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a>, sección 4) o como oportunidad en el registro de iniciativas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>Evaluación como solicitud (<a href="P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html" title="Plantilla P43 &#183; Cat&#225;logo de herramientas autorizadas y solicitudes">P43</a>, sección 4) o como oportunidad en el registro de iniciativas (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>).</td>
 </tr>
 <tr>
 <td>Conocimiento bajo de la política o del canal</td>
-<td>Refuerzo de la formación F1 (<a href="P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a>) y de la comunicación.</td>
+<td>Refuerzo de la formación F1 (<a href="P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html" title="Plantilla P45 &#183; Plan y registro de alfabetizaci&#243;n y formaci&#243;n">P45</a>) y de la comunicación.</td>
 </tr>
 <tr>
 <td>Agentes personales no autorizados</td>
@@ -744,7 +755,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="encuesta-de-pulso-de-percepcion"><span class="antetitulo">05</span>Encuesta de pulso de percepción</h2>
 <h3 id="5-1-dimensiones">5.1 Dimensiones</h3>
-<p>El <a href="../23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a> (indicador 8) mide <strong>utilidad, carga y confianza</strong>; el <a href="../50_SEVEN-G_Personas_y_organizacion.html">documento 50</a> y el catálogo (PER-15, IND-ADO-15) miden <strong>apoyo, carga y autonomía</strong>. Esta plantilla mide las <strong>cinco dimensiones</strong> con dos preguntas cada una, de modo que ambos indicadores se calculan con el mismo cuestionario.</p>
+<p>El <a href="../23_SEVEN-G_Adopcion_y_cambio.html" title="Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa">documento 23</a> (indicador 8) mide <strong>utilidad, carga y confianza</strong>; el <a href="../50_SEVEN-G_Personas_y_organizacion.html" title="Documento 50 &#183; Personas y organizaci&#243;n">documento 50</a> y el catálogo (PER-15, IND-ADO-15) miden <strong>apoyo, carga y autonomía</strong>. Esta plantilla mide las <strong>cinco dimensiones</strong> con dos preguntas cada una, de modo que ambos indicadores se calculan con el mismo cuestionario.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -810,25 +821,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1–5</td>
 </tr>
 <tr>
-<td><a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td><a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a></td>
 <td>Autonomía</td>
 <td>Mi criterio profesional se sigue teniendo en cuenta en las decisiones.</td>
 <td>1–5</td>
 </tr>
 <tr>
-<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
+<td><a href="P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html" title="Plantilla P11 &#183; Clasificaci&#243;n regulatoria y evaluaciones de impacto">P11</a></td>
 <td>Abierta</td>
 <td>¿Qué cambiaría del sistema o de su uso?</td>
 <td>Texto libre</td>
 </tr>
 <tr>
-<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></td>
+<td><a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a></td>
 <td>Abierta</td>
 <td>¿Le preocupa algo sobre el efecto del sistema en su trabajo?</td>
 <td>Texto libre</td>
 </tr>
 <tr>
-<td><a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
+<td><a href="P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html" title="Plantilla P13 &#183; Plan de mitigaci&#243;n y contingencia">P13</a></td>
 <td>Contexto</td>
 <td>Colectivo y función (usuario · supervisor · mando)</td>
 <td>Lista cerrada, solo para agregación</td>
@@ -853,17 +864,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>PER-15 · IND-ADO-15</td>
-<td>Respuestas favorables en P5 a <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> (apoyo, carga y autonomía) ÷ respuestas válidas en P5 a <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>Respuestas favorables en P5 a <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a> (apoyo, carga y autonomía) ÷ respuestas válidas en P5 a <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a></td>
 <td>Documentos 41 y 50; R6.</td>
 </tr>
 <tr>
-<td>Indicador 8 del <a href="../23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a></td>
+<td>Indicador 8 del <a href="../23_SEVEN-G_Adopcion_y_cambio.html" title="Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa">documento 23</a></td>
 <td>Respuestas favorables en P1 a P4, P7 y P8 (utilidad, confianza y carga) ÷ respuestas válidas en esas preguntas</td>
 <td>G5 en Aumentar (23 §11.2).</td>
 </tr>
 <tr>
 <td>Percepción global</td>
-<td>Respuestas favorables en P1 a <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> ÷ respuestas válidas en P1 a <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></td>
+<td>Respuestas favorables en P1 a <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a> ÷ respuestas válidas en P1 a <a href="P10_SEVEN-G_Evaluacion_de_viabilidad.html" title="Plantilla P10 &#183; Evaluaci&#243;n de viabilidad">P10</a></td>
 <td>Resumen para el comité de IA.</td>
 </tr>
 <tr>
@@ -873,7 +884,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p><strong>Umbrales.</strong> Los documentos 50 y 41 fijan como referencia la <strong>tendencia, con acción si empeora</strong>; no hay valor mínimo común. El umbral mínimo y la caída que activa acción se fijan en <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> en la fase 4, antes de medir (23 §10.4): <strong>a fijar por la compañía</strong>.</p>
+<p><strong>Umbrales.</strong> Los documentos 50 y 41 fijan como referencia la <strong>tendencia, con acción si empeora</strong>; no hay valor mínimo común. El umbral mínimo y la caída que activa acción se fijan en <a href="P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html" title="Plantilla P20 &#183; Plan de adopci&#243;n y capacidad">P20</a> en la fase 4, antes de medir (23 §10.4): <strong>a fijar por la compañía</strong>.</p>
 <h3 id="5-3-resultados">5.3 Resultados</h3>
 <div class="tabla"><table>
 <thead>
@@ -953,14 +964,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Acción</th>
 <th>Responsable</th>
 <th>Fecha</th>
-<th>Riesgo vinculado (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>)</th>
+<th>Riesgo vinculado (<a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><em>(ejemplo ilustrativo)</em> Caída de la carga con uso estable</td>
 <td>Uso obligado sin aceptación; posible sobrecarga de supervisión</td>
-<td>Revisar el volumen de revisiones por persona en <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a> y reforzar el soporte</td>
+<td>Revisar el volumen de revisiones por persona en <a href="P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html" title="Plantilla P17 &#183; Dise&#241;o de gobierno y supervisi&#243;n humana">P17</a> y reforzar el soporte</td>
 <td>Responsable de producto de IA</td>
 <td>30-11-2026</td>
 <td>RT-ORG-09</td>
@@ -1004,17 +1015,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>4</td>
-<td>Los usos no catalogados detectados se han registrado en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a> y tienen regularización en curso (31 §5.3).</td>
+<td>Los usos no catalogados detectados se han registrado en <a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a> y tienen regularización en curso (31 §5.3).</td>
 <td></td>
 </tr>
 <tr>
 <td>5</td>
-<td>El pulso se ha realizado en los momentos de 50 §9.2 y se presenta en G5 y R6 (criterios G5.08 y R6.14 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a>).</td>
+<td>El pulso se ha realizado en los momentos de 50 §9.2 y se presenta en G5 y R6 (criterios G5.08 y R6.14 del <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a>).</td>
 <td></td>
 </tr>
 <tr>
 <td>6</td>
-<td>Cada dimensión que activa acción tiene responsable y fecha, y los riesgos organizativos están en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a>.</td>
+<td>Cada dimensión que activa acción tiene responsable y fecha, y los riesgos organizativos están en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a>.</td>
 <td></td>
 </tr>
 </tbody>
@@ -1104,7 +1115,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>0.1</td>
 <td>19-09-2026</td>
-<td>Primera versión. Encuesta anual de uso (31 §5.2) y encuesta de pulso (23 §10.2; 50 §9–10) con escala común de cinco puntos. El pulso mide cinco dimensiones (utilidad, confianza, apoyo, carga y autonomía) para calcular con el mismo cuestionario el indicador 8 del <a href="../23_SEVEN-G_Adopcion_y_cambio.html">documento 23</a> y PER-15 · IND-ADO-15.</td>
+<td>Primera versión. Encuesta anual de uso (31 §5.2) y encuesta de pulso (23 §10.2; 50 §9–10) con escala común de cinco puntos. El pulso mide cinco dimensiones (utilidad, confianza, apoyo, carga y autonomía) para calcular con el mismo cuestionario el indicador 8 del <a href="../23_SEVEN-G_Adopcion_y_cambio.html" title="Documento 23 &#183; Adopci&#243;n y cambio en la iniciativa">documento 23</a> y PER-15 · IND-ADO-15.</td>
 </tr>
 </tbody>
 </table></div>
@@ -1345,6 +1356,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

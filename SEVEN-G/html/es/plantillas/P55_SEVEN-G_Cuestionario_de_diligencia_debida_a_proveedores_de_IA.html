@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#escala-de-valoracion"><span>03</span>Escala de valoración</a></li><li><a href="#cuestionario"><span>04</span>Cuestionario</a></li><li><a href="#resumen-de-la-valoracion-y-traslado-a-p14"><span>05</span>Resumen de la valoración y traslado a P14</a></li><li><a href="#verificacion-directa-o-por-tercero-n3"><span>06</span>Verificación directa o por tercero (N3)</a></li><li><a href="#anexo-a-cuestionario-de-ia-embebida-para-proveedores-de-software-ya-contratado"><span>07</span>Anexo A · Cuestionario de IA embebida para proveedores de software ya contratado</a></li><li><a href="#criterios-de-calidad"><span>08</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>09</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>10</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -445,7 +456,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>Cuándo se usa</strong></td>
-<td>En la etapa 2 del ciclo del proveedor (36 §5), en la fase 3 y antes de G3, una vez fijado el nivel de exigencia preliminar en <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> §3. Se repite ante cualquier disparador de reevaluación (36 §5) y antes de renovar el contrato. El anexo A se usa con los proveedores de software ya contratado (36 §8.1) desde C1 y en cada R6.</td>
+<td>En la etapa 2 del ciclo del proveedor (36 §5), en la fase 3 y antes de G3, una vez fijado el nivel de exigencia preliminar en <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> §3. Se repite ante cualquier disparador de reevaluación (36 §5) y antes de renovar el contrato. El anexo A se usa con los proveedores de software ya contratado (36 §8.1) desde C1 y en cada R6.</td>
 </tr>
 <tr>
 <td><strong>Quién la rellena</strong></td>
@@ -465,11 +476,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> · Registro de proveedores de IA: la fecha y el resultado de la diligencia se anotan en el bloque <em>Evaluación</em> del registro (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> §3.3).</td>
+<td><a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> · Registro de proveedores de IA: la fecha y el resultado de la diligencia se anotan en el bloque <em>Evaluación</em> del registro (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Plantilla P57 &#183; Registro de proveedores y plan de salida">P57</a> §3.3).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>Documento 36 §4 (niveles y contenido del cuestionario) y §8 (IA embebida). Se usa junto a <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>, que resume la evaluación.</td>
+<td>Documento 36 §4 (niveles y contenido del cuestionario) y §8 (IA embebida). Se usa junto a <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>, que resume la evaluación.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -482,7 +493,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Se formulan las preguntas <strong>del nivel del proveedor y de los niveles inferiores</strong>: N1 responde solo las marcadas N1 (cuestionario básico), N2 las marcadas N1 y N2 (cuestionario completo), N3 todas.</li>
 <li>Cada respuesta relevante se respalda con <strong>evidencia</strong>; una afirmación sin evidencia se valora como máximo <em>Conforme con observaciones</em>.</li>
 <li>En N1, muchas respuestas se obtienen de las condiciones de servicio y de privacidad publicadas por el proveedor: se indica la versión y la fecha consultadas.</li>
-<li>Las respuestas que revelen un riesgo se trasladan a <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> con el riesgo tipo que corresponda (RT-TER-01 a RT-TER-07 del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html">documento 33</a>).</li>
+<li>Las respuestas que revelen un riesgo se trasladan a <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> con el riesgo tipo que corresponda (RT-TER-01 a RT-TER-07 del <a href="../33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a>).</li>
 <li><em>Este documento no constituye asesoramiento jurídico.</em> Referencias consultadas en septiembre de 2026; debe verificarse su vigencia.</li>
 </ul>
 <hr />
@@ -499,7 +510,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la relación proveedor–servicio</td>
 <td></td>
-<td>PRV-AAAA-NNN del registro <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a>).</td>
+<td>PRV-AAAA-NNN del registro <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Plantilla P57 &#183; Registro de proveedores y plan de salida">P57</a>).</td>
 </tr>
 <tr>
 <td>Proveedor</td>
@@ -519,7 +530,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Nivel de exigencia</td>
 <td></td>
-<td>N1 Estándar · N2 Reforzado · N3 Crítico, según <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> §3.</td>
+<td>N1 Estándar · N2 Reforzado · N3 Crítico, según <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> §3.</td>
 </tr>
 <tr>
 <td>Motivo del cuestionario</td>
@@ -872,7 +883,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>5.5</td>
 <td>Si el servicio incluye agentes: ¿qué identidad, permisos, límites de acción e interruptor de parada tienen?</td>
-<td>Descripción frente a los controles AG del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>.</td>
+<td>Descripción frente a los controles AG del <a href="../35_SEVEN-G_Seguridad_de_IA_y_agentes.html" title="Documento 35 &#183; Seguridad de IA y agentes">documento 35</a>.</td>
 <td>N2</td>
 <td></td>
 <td></td>
@@ -1202,7 +1213,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>11.4</td>
 <td>¿Cómo certifica el borrado al terminar?</td>
-<td>Modelo de certificado (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> §8).</td>
+<td>Modelo de certificado (<a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Plantilla P57 &#183; Registro de proveedores y plan de salida">P57</a> §8).</td>
 <td>N2</td>
 <td></td>
 <td></td>
@@ -1257,14 +1268,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tbody>
 </table></div>
 <hr />
-<h2 id="resumen-de-la-valoracion-y-traslado-a-p14"><span class="antetitulo">05</span>Resumen de la valoración y traslado a <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></h2>
+<h2 id="resumen-de-la-valoracion-y-traslado-a-p14"><span class="antetitulo">05</span>Resumen de la valoración y traslado a <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a></h2>
 <div class="tabla"><table>
 <thead>
 <tr>
 <th>Bloque</th>
 <th>Resultado</th>
 <th>Observaciones y condiciones (responsable y plazo)</th>
-<th>Riesgo trasladado a <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></th>
+<th>Riesgo trasladado a <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a></th>
 </tr>
 </thead>
 <tbody>
@@ -1348,7 +1359,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Un bloque <strong>No conforme</strong> en datos (3), seguridad (5) o protección de datos (7) impide usar el proveedor con datos de producción hasta resolverlo; la conclusión se registra en <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a> §6.</p>
+<p>Un bloque <strong>No conforme</strong> en datos (3), seguridad (5) o protección de datos (7) impide usar el proveedor con datos de producción hasta resolverlo; la conclusión se registra en <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a> §6.</p>
 <hr />
 <h2 id="verificacion-directa-o-por-tercero-n3"><span class="antetitulo">06</span>Verificación directa o por tercero (N3)</h2>
 <div class="tabla"><table>
@@ -1447,7 +1458,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>A.10</td>
-<td>¿Acepta una adenda con las cláusulas de uso de datos, ubicación, cambios de modelo y transparencia sobre funciones de IA (<a href="P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html">P56</a> §8)?</td>
+<td>¿Acepta una adenda con las cláusulas de uso de datos, ubicación, cambios de modelo y transparencia sobre funciones de IA (<a href="P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html" title="Plantilla P56 &#183; Cl&#225;usulas contractuales tipo de IA">P56</a> §8)?</td>
 <td></td>
 </tr>
 </tbody>
@@ -1457,7 +1468,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <thead>
 <tr>
 <th>Función de IA</th>
-<th>Código del inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>)</th>
+<th>Código del inventario (<a href="../../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Herramienta T02 &#183; Inventario de sistemas de IA">T02</a>)</th>
 <th>Datos personales o confidenciales</th>
 <th>Interviene en decisiones o actúa (A0–A3)</th>
 <th>¿Se puede desactivar?</th>
@@ -1533,17 +1544,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>7</td>
-<td>Los riesgos detectados están en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> y el resumen en <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a>.</td>
+<td>Los riesgos detectados están en <a href="P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Plantilla P12 &#183; Matriz y registro de riesgos">P12</a> y el resumen en <a href="P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html" title="Plantilla P14 &#183; Evaluaci&#243;n de proveedor de IA">P14</a>.</td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
-<td>La diligencia está registrada en <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a> con fecha y resultado; en R6 se ha revisado (R6.12).</td>
+<td>La diligencia está registrada en <a href="P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html" title="Herramienta T09 &#183; Registro de proveedores de IA">T09</a> con fecha y resultado; en R6 se ha revisado (R6.12).</td>
 <td></td>
 </tr>
 <tr>
 <td>9</td>
-<td>En el anexo A, cada función identificada está en el inventario con su decisión (D6.08 del <a href="../11_SEVEN-G_Modelo_de_madurez.html">documento 11</a>).</td>
+<td>En el anexo A, cada función identificada está en el inventario con su decisión (D6.08 del <a href="../11_SEVEN-G_Modelo_de_madurez.html" title="Documento 11 &#183; Modelo de madurez">documento 11</a>).</td>
 <td></td>
 </tr>
 </tbody>
@@ -1598,7 +1609,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Separación de funciones: quien negocia el contrato no valora ni verifica el cuestionario; quien tenga conflicto de interés con el proveedor lo declara en <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a> y no participa en la valoración.</p>
+<p>Separación de funciones: quien negocia el contrato no valora ni verifica el cuestionario; quien tenga conflicto de interés con el proveedor lo declara en <a href="P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Plantilla P03 &#183; Registro de asignaci&#243;n de roles">P03</a> y no participa en la valoración.</p>
 <hr />
 <h2 id="control-de-versiones"><span class="antetitulo">10</span>Control de versiones</h2>
 <p><strong>Documento cumplimentado</strong></p>
@@ -1874,6 +1885,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

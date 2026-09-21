@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,7 +439,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../../pdf/es/plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../../docx/es/plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.docx" download><span class="dz-tipo">DOCX</span><b>Plantilla editable (Word)</b></a><a class="dz-item" href="../../../pdf/en/plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../../en/plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#instrucciones-de-uso"><span>01</span>Instrucciones de uso</a></li><li><a href="#identificacion"><span>02</span>Identificación</a></li><li><a href="#etiquetado-y-claves-de-acceso"><span>03</span>Etiquetado y claves de acceso</a></li><li><a href="#presupuesto-de-consumo-del-caso"><span>04</span>Presupuesto de consumo del caso</a></li><li><a href="#alertas-y-respuesta"><span>05</span>Alertas y respuesta</a></li><li><a href="#limites-tecnicos-por-agente"><span>06</span>Límites técnicos por agente</a></li><li><a href="#cascada-de-degradacion-por-coste"><span>07</span>Cascada de degradación por coste</a></li><li><a href="#seguimiento-mensual-del-consumo"><span>08</span>Seguimiento mensual del consumo</a></li><li><a href="#claves-de-reparto-de-costes-compartidos"><span>09</span>Claves de reparto de costes compartidos</a></li><li><a href="#conciliacion-mensual"><span>10</span>Conciliación mensual</a></li><li><a href="#coste-de-parar-e-inversion-evitada"><span>11</span>Coste de parar e inversión evitada</a></li><li><a href="#criterios-de-calidad"><span>12</span>Criterios de calidad</a></li><li><a href="#aprobacion-y-verificacion"><span>13</span>Aprobación y verificación</a></li><li><a href="#control-de-versiones"><span>14</span>Control de versiones</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
 </blockquote>
 <blockquote>
@@ -465,11 +476,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>Herramienta</strong></td>
-<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> · Calculadora de costes por caso (módulos de parámetros, consumo, costes compartidos, conciliación y paradas, 42 §12).</td>
+<td><a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a> · Calculadora de costes por caso (módulos de parámetros, consumo, costes compartidos, conciliación y paradas, 42 §12).</td>
 </tr>
 <tr>
 <td><strong>Documento de referencia</strong></td>
-<td>Documento 42 (§6, §7, §8, §10, §11); <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html">documento 52</a> §10.3 (cascada de degradación por coste); <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> y <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
+<td>Documento 42 (§6, §7, §8, §10, §11); <a href="../52_SEVEN-G_Manual_de_operacion_de_IA.html" title="Documento 52 &#183; Manual de operaci&#243;n de IA">documento 52</a> §10.3 (cascada de degradación por coste); <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> y <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>.</td>
 </tr>
 <tr>
 <td><strong>Lite frente a Enterprise</strong></td>
@@ -483,7 +494,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Sin etiqueta no hay recurso:</strong> cada recurso, clave de acceso a modelos y licencia lleva la etiqueta de su iniciativa (42 §7). El etiquetado se verifica en G5.</li>
 <li><strong>Las claves de reparto no se cambian a mitad de ejercicio</strong> salvo error, y el cambio se registra.</li>
 <li><strong>La cascada reduce coste, no controles:</strong> ninguna degradación desactiva filtros, supervisión humana, límites de agentes ni registros (52 §10.3, regla 6).</li>
-<li>Los umbrales de esta plantilla son orientativos; la compañía los fija en C2 (<a href="../13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</li>
+<li>Los umbrales de esta plantilla son orientativos; la compañía los fija en C2 (<a href="../13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html" title="Documento 13 &#183; Tesis de IA, ambici&#243;n y apetito de riesgo">documento 13</a>).</li>
 </ul>
 <hr />
 <h2 id="identificacion"><span class="antetitulo">02</span>Identificación</h2>
@@ -499,12 +510,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td>Código de la iniciativa</td>
 <td></td>
-<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a>). En las secciones 9 y 10, «cartera» o la plataforma (<code>PLAT-</code> en la etiqueta, 42 §7.1).</td>
+<td>IA-AAAA-NNN (<a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>). En las secciones 9 y 10, «cartera» o la plataforma (<code>PLAT-</code> en la etiqueta, 42 §7.1).</td>
 </tr>
 <tr>
 <td>Sistemas de IA</td>
 <td></td>
-<td>SIA-AAAA-NNN (<a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html">P05</a>).</td>
+<td>SIA-AAAA-NNN (<a href="P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="Plantilla P05 &#183; Ficha de inventario del sistema de IA">P05</a>).</td>
 </tr>
 <tr>
 <td>Tipo de sistema</td>
@@ -522,7 +533,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Por ejemplo, 2027 · marzo.</td>
 </tr>
 <tr>
-<td>Versión de los parámetros de <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></td>
+<td>Versión de los parámetros de <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a></td>
 <td></td>
 <td>Parámetros versionados por ejercicio.</td>
 </tr>
@@ -634,7 +645,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <th>Valor aprobado</th>
 <th>Alerta a</th>
 <th>Respuesta</th>
-<th>Enlace a <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></th>
+<th>Enlace a <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a></th>
 </tr>
 </thead>
 <tbody>
@@ -663,14 +674,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Consumo anómalo</td>
 <td></td>
 <td>Responsable de operación y seguridad</td>
-<td>Tratarlo como posible incidente (<a href="../37_SEVEN-G_No_conformidades_e_incidentes.html">documento 37</a>).</td>
+<td>Tratarlo como posible incidente (<a href="../37_SEVEN-G_No_conformidades_e_incidentes.html" title="Documento 37 &#183; No conformidades, incidentes de IA y remediaci&#243;n">documento 37</a>).</td>
 <td></td>
 </tr>
 </tbody>
 </table></div>
 <hr />
 <h2 id="limites-tecnicos-por-agente"><span class="antetitulo">06</span>Límites técnicos por agente</h2>
-<p>Solo si el sistema incluye agentes. Se configuran en <a href="P18_SEVEN-G_Diseno_de_seguridad.html">P18</a> y se comprueban en G5 (42 §8.3).</p>
+<p>Solo si el sistema incluye agentes. Se configuran en <a href="P18_SEVEN-G_Diseno_de_seguridad.html" title="Plantilla P18 &#183; Dise&#241;o de seguridad (incluye agentes)">P18</a> y se comprueban en G5 (42 §8.3).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -696,7 +707,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p>El interruptor de parada del agente puede activarse también por motivo de coste.</p>
 <hr />
 <h2 id="cascada-de-degradacion-por-coste"><span class="antetitulo">07</span>Cascada de degradación por coste</h2>
-<p>Definida en <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a>, con la calidad mínima de <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> y el modelo de respaldo registrado en <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> (52 §10.3).</p>
+<p>Definida en <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a>, con la calidad mínima de <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a> y el modelo de respaldo registrado en <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a> (52 §10.3).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -730,7 +741,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td><em>(ejemplo ilustrativo)</em> 100 % del presupuesto</td>
 <td></td>
-<td>Evaluado antes de G5 con el conjunto de referencia y las pruebas de sesgo; versión en <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
+<td>Evaluado antes de G5 con el conjunto de referencia y las pruebas de sesgo; versión en <a href="P16_SEVEN-G_Linaje_de_datos_y_modelos.html" title="Plantilla P16 &#183; Linaje de datos y modelos">P16</a></td>
 <td></td>
 </tr>
 <tr>
@@ -738,7 +749,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td>Criterio de reparto en <a href="P24_SEVEN-G_Manual_de_operacion.html">P24</a> y personas disponibles</td>
+<td>Criterio de reparto en <a href="P24_SEVEN-G_Manual_de_operacion.html" title="Plantilla P24 &#183; Manual de operaci&#243;n">P24</a> y personas disponibles</td>
 <td></td>
 </tr>
 <tr>
@@ -746,7 +757,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td></td>
 <td></td>
 <td></td>
-<td>Plan de reversión probado (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>)</td>
+<td>Plan de reversión probado (<a href="P19_SEVEN-G_Plan_de_reversion_y_prueba.html" title="Plantilla P19 &#183; Plan de reversi&#243;n y prueba">P19</a>)</td>
 <td></td>
 </tr>
 </tbody>
@@ -810,7 +821,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Cada activación y cada vuelta a N0 se registran en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a>. Más de un mes en N2 o superior se lleva a la siguiente R6 con propuesta: suplemento, optimización definitiva (42 §8.5) o cambio del modelo principal.</p>
+<p>Cada activación y cada vuelta a N0 se registran en <a href="P27_SEVEN-G_Registro_de_incidentes_y_cambios.html" title="Plantilla P27 &#183; Registro de incidentes y cambios">P27</a>. Más de un mes en N2 o superior se lleva a la siguiente R6 con propuesta: suplemento, optimización definitiva (42 §8.5) o cambio del modelo principal.</p>
 <hr />
 <h2 id="claves-de-reparto-de-costes-compartidos"><span class="antetitulo">09</span>Claves de reparto de costes compartidos</h2>
 <p>Aprobadas en C3 por el comité de IA con control de gestión, para todo el ejercicio (42 §6 y §11.2). Método en el orden de 42 §6.1: imputación directa · consumo medido · inductor de coste · reparto ponderado.</p>
@@ -949,7 +960,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="coste-de-parar-e-inversion-evitada"><span class="antetitulo">11</span>Coste de parar e inversión evitada</h2>
-<p>Al registrar una parada o una retirada en <a href="../../../herramientas/T01_registro_iniciativas/registro.html">T01</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a> (42 §10).</p>
+<p>Al registrar una parada o una retirada en <a href="../../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y <a href="../../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a> (42 §10).</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -994,7 +1005,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <p><em>(Ejemplo ilustrativo)</em> Aprobado 400.000 €; gastado 45.000 €; compromisos 20.000 €; penalización 8.000 € y cierre 5.000 €. Coste de parar: 13.000 €. Inversión evitada: 335.000 €.</p>
 <hr />
 <h2 id="criterios-de-calidad"><span class="antetitulo">12</span>Criterios de calidad</h2>
-<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html">documento 21</a> (G3.04, G4.08, G4.16, G5.16, R6.03 y G7.05); reglas en el <a href="../42_SEVEN-G_Costes_de_IA.html">documento 42</a>.</p>
+<p>Criterios formales en el <a href="../21_SEVEN-G_Criterios_de_gate_y_auditoria.html" title="Documento 21 &#183; Criterios de gate y de auditor&#237;a">documento 21</a> (G3.04, G4.08, G4.16, G5.16, R6.03 y G7.05); reglas en el <a href="../42_SEVEN-G_Costes_de_IA.html" title="Documento 42 &#183; Costes de IA y reparto por caso">documento 42</a>.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1016,7 +1027,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>3</td>
-<td>Cada umbral de alerta tiene destinatario y respuesta, y está configurado en <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>.</td>
+<td>Cada umbral de alerta tiene destinatario y respuesta, y está configurado en <a href="P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html" title="Plantilla P25 &#183; Configuraci&#243;n de monitorizaci&#243;n y alertas">P25</a>.</td>
 <td></td>
 </tr>
 <tr>
@@ -1377,6 +1388,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>

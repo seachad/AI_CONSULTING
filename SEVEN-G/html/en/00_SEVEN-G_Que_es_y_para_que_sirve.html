@@ -301,6 +301,17 @@ blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4p
 blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
 blockquote.aviso-legal strong { color: var(--negro); }
 @media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
 
 /* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
 .esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
@@ -428,10 +439,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <section class="descargas-zona" aria-label="Downloads and tools"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Downloads</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/en/00_SEVEN-G_Que_es_y_para_que_sirve.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>This document · English</b></a><a class="dz-item" href="../../pdf/es/00_SEVEN-G_Que_es_y_para_que_sirve.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Spanish version</b></a><a class="dz-item" href="../es/00_SEVEN-G_Que_es_y_para_que_sirve.html" hreflang="es"><span class="dz-tipo html">HTML</span><b>Spanish version</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Related tools</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Initiative register</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Value hypothesis and cost-per-case calculator</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Connector from the T01 register to the board dashboard</b></a></div></div></div></section>
 <nav class="indice"><div class="indice-in"><h2>In this document</h2><ol><li><a href="#quick-start"><span>00</span>Quick start</a></li><li><a href="#what-seven-g-means"><span>01</span>What SEVEN-G means</a></li><li><a href="#the-problem-it-solves"><span>02</span>The problem it solves</a></li><li><a href="#what-seven-g-helps-with"><span>03</span>What SEVEN-G helps with</a></li><li><a href="#how-the-framework-is-built"><span>04</span>How the framework is built</a></li><li><a href="#transforming-or-just-becoming-more-efficient-how-seven-g-tells-them-apart"><span>05</span>Transforming or just becoming more efficient: how SEVEN-G tells them apart</a></li><li><a href="#value-measurement-rules"><span>06</span>Value measurement rules</a></li><li><a href="#who-it-is-for"><span>07</span>Who it is for</a></li><li><a href="#framework-principles"><span>08</span>Framework principles</a></li><li><a href="#what-a-company-that-adopts-seven-g-gains"><span>09</span>What a company that adopts SEVEN-G gains</a></li><li><a href="#document-library"><span>10</span>Document library</a></li><li><a href="#licence-and-use"><span>11</span>Licence and use</a></li><li><a href="#version-control"><span>12</span>Version control</a></li></ol></div></nav>
 <main class="contenido" id="contenido">
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Version under review: please do not circulate.</strong> The current state of SEVEN-G (version 0.x) is not meant to be shared widely. It is public so that a small number of people can review it, give feedback and help improve it. Documents and tools are being adapted to make them reusable; this notice will disappear when the framework reaches version 1.x.</p>
 </blockquote>
-<blockquote class="aviso-legal">
+<blockquote class="aviso-legal plegado">
 <p><strong>Legal notice and disclaimer.</strong> SEVEN-G is a reference methodological framework provided &quot;as is&quot; and for information purposes only. It does not constitute legal, regulatory, financial or professional advice, nor does it guarantee compliance with any law or standard. References to general regulation (such as the EU AI Act, the GDPR, DORA or NIS2), to technical standards and to regulation specific to each sector or jurisdiction may be incomplete, may not apply to a particular case or may become out of date as a result of regulatory changes, interpretations or supervisory positions after their consultation date. <strong>Each organisation that uses SEVEN-G is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance</strong>, with the appropriate qualified advice. The author accepts no liability for any use made of this content or for any decisions taken on the basis of it. The data, figures, companies and cases in the examples are fictitious or illustrative.</p>
 </blockquote>
 <aside class="esencial" data-capa="siempre"><div class="es-cab"><span class="es-rotulo">The essentials</span><span class="es-nivel">Always mandatory</span></div><p>Initial reading for anyone who is going to use the framework. The quick start (section 0) and sections 1 to 6 are enough: what it is, what problem it solves, how it is built (spheres, corporate cycle, lifecycle with gates, governance and measurement) and the ten value measurement rules.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Obligation matrix and layered reading (document 94)</a></p></aside>
@@ -620,7 +631,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>You already have AI initiatives —pilots, generative assistants, models, agents— and nobody can say with evidence <strong>how much they cost, how much they contribute and who is accountable</strong> for each one.</td>
-<td>You are looking for a technical guide to <strong>build models or choose technology</strong>. SEVEN-G governs and measures; for building, it refers to <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html">document 53</a> and to the SPAD methodology.</td>
+<td>You are looking for a technical guide to <strong>build models or choose technology</strong>. SEVEN-G governs and measures; for building, it refers to <a href="53_SEVEN-G_Construccion_de_soluciones_con_IA.html" title="Document 53 &#183; Building solutions with AI">document 53</a> and to the SPAD methodology.</td>
 </tr>
 <tr>
 <td>The board or senior management ask about AI and receive an <strong>inventory of technical projects</strong> instead of business decisions.</td>
@@ -632,19 +643,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>You have to <strong>demonstrate compliance</strong> with evidence rather than statements.</td>
-<td>You only have one or two trials with no budget and no intention of taking them to production. Start with the acceptable use policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>) and the AI system inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>), and come back when there is a portfolio to govern.</td>
+<td>You only have one or two trials with no budget and no intention of taking them to production. Start with the acceptable use policy (<a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html" title="Document 31 &#183; Corporate AI policy and acceptable use policy">document 31</a>) and the AI system inventory (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario" title="Tool T02 &#183; AI system inventory">T02</a>), and come back when there is a portfolio to govern.</td>
 </tr>
 <tr>
 <td>You are a <strong>medium-sized company</strong> with no AI team: the Lite scope works with the executive committee, one part-time person and an external auditor.</td>
 <td><strong>Nobody in management is going to own the decisions.</strong> The framework requires a sponsor for each initiative and a real ability to stop; without that, it only produces documents.</td>
 </tr>
 <tr>
-<td>You are a <strong>consultant or an in-house lead</strong> and need a complete method that you can adapt and apply with your own way of working, citing the source (<a href="91_SEVEN-G_Guia_para_consultores.html">document 91</a>).</td>
+<td>You are a <strong>consultant or an in-house lead</strong> and need a complete method that you can adapt and apply with your own way of working, citing the source (<a href="91_SEVEN-G_Guia_para_consultores.html" title="Document 91 &#183; Guide for consultants and support models">document 91</a>).</td>
 <td></td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>What it asks in return.</strong> It costs no money, but it does take discipline: someone to drive it, an initiative register kept up to date and decisions taken with the evidence on the table. Adoption can be <strong>modular</strong> —starting only with the register, with the decision gates, with value measurement or with the board dashboard— and be extended later. The implementation guide (<a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>) proposes a 90-day plan and a minimum path for medium-sized companies.</p>
+<p><strong>What it asks in return.</strong> It costs no money, but it does take discipline: someone to drive it, an initiative register kept up to date and decisions taken with the evidence on the table. Adoption can be <strong>modular</strong> —starting only with the register, with the decision gates, with value measurement or with the board dashboard— and be extended later. The implementation guide (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>) proposes a 90-day plan and a minimum path for medium-sized companies.</p>
 <p><strong>Where to go next, depending on who you are</strong></p>
 <div class="tabla"><table>
 <thead>
@@ -656,11 +667,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td>A member of the board or of senior management</td>
-<td>Section 5 of this page (transforming or just becoming more efficient), the <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">board conversation guide</a> and the sample board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
+<td>Section 5 of this page (transforming or just becoming more efficient), the <a href="61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">board conversation guide</a> and the sample board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>).</td>
 </tr>
 <tr>
 <td>An AI, data or technology lead</td>
-<td>The <a href="01_SEVEN-G_Metodologia_fundacional.html">foundational methodology</a>, the <a href="20_SEVEN-G_Manuales_de_fase.html">phase manuals</a> and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
+<td>The <a href="01_SEVEN-G_Metodologia_fundacional.html">foundational methodology</a>, the <a href="20_SEVEN-G_Manuales_de_fase.html">phase manuals</a> and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>).</td>
 </tr>
 <tr>
 <td>Risk, compliance, data protection or audit</td>
@@ -668,7 +679,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>Finance or management control</td>
-<td>The <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">value measurement rules</a> and the value and cost calculator (<a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a>).</td>
+<td>The <a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html">value measurement rules</a> and the value and cost calculator (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>).</td>
 </tr>
 <tr>
 <td>A consultant or the person in charge of implementing the framework</td>
@@ -689,8 +700,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </blockquote>
 <p>Both are legitimate. The problem arises when they are confused: when a portfolio of automations is presented as transformation, when savings are declared that never materialise, or when the bets that could change the business are blocked using the same return criteria as a cost-cutting project.</p>
 <p>The practical goal is for boards, senior management and control bodies to understand and measure the contribution of enterprise intelligence in their company, understand and contain its risks, and decide with portfolio discipline which initiatives deserve investment to improve efficiency, transform capabilities and create measurable impact on P&amp;L.</p>
-<blockquote>
-<p><strong>Ownership and reuse.</strong> The intellectual property of the SEVEN-G methodology — its documents, templates, criteria and tools — belongs to its author, <strong>Fernando García Varela</strong>. The framework is offered as an open reference for use, adaptation and learning, not as a closed commercial product or a version released to clients or markets: any organisation may reuse and adapt it, but that use is subject to the project's content and code licence (<strong>CC BY 4.0</strong> for content, <strong>MIT</strong> for code; <a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>), which requires attribution and an indication of any changes made. Using SEVEN-G, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over the base methodology on any client, supplier or third party, except under a specific written agreement covering proprietary developments.</p>
+<blockquote class="aviso-legal plegado">
+<p><strong>Ownership and reuse.</strong> The intellectual property of the SEVEN-G methodology — its documents, templates, criteria and tools — belongs to its author, <strong>Fernando García Varela</strong>. The framework is offered as an open reference for use, adaptation and learning, not as a closed commercial product or a version released to clients or markets: any organisation may reuse and adapt it, but that use is subject to the project's content and code licence (<strong>CC BY 4.0</strong> for content, <strong>MIT</strong> for code; <a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>), which requires attribution and an indication of any changes made. Using SEVEN-G, including adapting it under that licence, does not transfer ownership of the methodology or confer exclusivity or any ownership right over the base methodology on any client, supplier or third party, except under a specific written agreement covering proprietary developments.</p>
 </blockquote>
 <p>SEVEN-G provides four things:</p>
 <ol>
@@ -958,7 +969,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
     <div class="mu-puente">
       <div><b>↓ C3 decides</b> which initiatives enter the lifecycle, with what ambition, intensity and budget.</div>
-      <div><b>↑ The initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>)</b> feeds oversight (C4), the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>) and the transformation index (<a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>).</div>
+      <div><b>↑ The initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>)</b> feeds oversight (C4), the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) and the transformation index (<a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>).</div>
     </div>
 
     <section class="mu-banda" aria-label="Initiative level: lifecycle with decision gates">
@@ -998,7 +1009,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
         <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pv" href="20_SEVEN-G_Manuales_de_fase.html#11-2-pivot" title="Pivot: the initiative returns to phase 2 with a new hypothesis">↶ Pivot to P2</a><a class="pa fuerte" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop · main</a></div>
         <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
         <div class="mu-cel mu-sal"><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate" title="Iterate: what did not meet the criterion is repeated and the initiative returns to the same gate (at most twice; then the higher body decides)">↺ Iterate</a><a class="pa" href="20_SEVEN-G_Manuales_de_fase.html#11-3-stop" title="Stop: the initiative leaves the funnel with its reason and lessons">✕ Stop</a></div>
-        <div class="mu-bucle"><span><b>↻ Operation loop</b> · continuous monitoring (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html#monitoring-and-alerts-p25">52</a>) → <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-continuity-review">R6</a> quarterly (Enterprise) or half-yearly (Lite): continue operation, with conditions or bring G7 forward in case of deviation</span><div class="mu-sal"><a class="ok" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">↑ Scale · new phase 0</a><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate">↺ Iterate · phase 2, 4, 5 or 6</a><a class="pa" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">✕ Retire · disengaged</a></div></div>
+        <div class="mu-bucle"><span><b>↻ Operation loop</b> · continuous monitoring (<a href="52_SEVEN-G_Manual_de_operacion_de_IA.html#monitoring-and-alerts-p25" title="Document 52 &#183; AI operations manual">52</a>) → <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-7-r6-continuity-review">R6</a> quarterly (Enterprise) or half-yearly (Lite): continue operation, with conditions or bring G7 forward in case of deviation</span><div class="mu-sal"><a class="ok" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">↑ Scale · new phase 0</a><a class="it" href="20_SEVEN-G_Manuales_de_fase.html#11-1-iterate">↺ Iterate · phase 2, 4, 5 or 6</a><a class="pa" href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#6-8-g7-scale-or-retire">✕ Retire · disengaged</a></div></div>
 
         <div class="mu-rot">Templates (evidence)</div>
         <div class="mu-cel"><a class="mu-p" href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Initiative charter">P01</a><a class="mu-p" href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html" title="Context and constraints statement">P02</a><a class="mu-p" href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html" title="Role assignment record">P03</a><a class="mu-p" href="plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html" title="Intensity determination">P04</a><a class="mu-p" href="plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html" title="AI system inventory record">P05</a></div>
@@ -1033,7 +1044,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 
       <div class="mu-reglas">
         <div class="mu-rot" style="border:0;padding-top:5px">At every gate</div>
-        <div><b>Dual validation</b> (results and verified documentation) and decision: Proceed · Proceed with conditions · Iterate · Pivot · Stop; at G7, Scale · Iterate · Retire (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#rules-common-to-all-gates">common rules</a>). Each decision is recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a> with the <em>gate</em> manager <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>; the use case record <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a> accompanies the initiative from phase 1 to phase 7. In Lite, G0–G2 and G4–G5 are grouped, but each gate is decided and recorded separately (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#3-4-grouped-gates-in-lite">grouped gates</a>). Iterate, pivot, stop, on hold and scale: <a href="20_SEVEN-G_Manuales_de_fase.html#transitions-between-phases">transitions between phases</a>.</div>
+        <div><b>Dual validation</b> (results and verified documentation) and decision: Proceed · Proceed with conditions · Iterate · Pivot · Stop; at G7, Scale · Iterate · Retire (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#rules-common-to-all-gates">common rules</a>). Each decision is recorded in <a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html" title="Template P29 &#183; Gate decision record">P29</a> with the <em>gate</em> manager <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates" title="Tool T03 &#183; Gate manager">T03</a>; the use case record <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a> accompanies the initiative from phase 1 to phase 7. In Lite, G0–G2 and G4–G5 are grouped, but each gate is decided and recorded separately (<a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html#3-4-grouped-gates-in-lite">grouped gates</a>). Iterate, pivot, stop, on hold and scale: <a href="20_SEVEN-G_Manuales_de_fase.html#transitions-between-phases">transitions between phases</a>.</div>
       </div>
     </section>
 
@@ -1345,7 +1356,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Spheres 08 and 09 are not assessed on these three levels, because they do not generate value in themselves: sphere 08 is assessed on <em>Compliance, Anticipation and Ethical leadership</em>, and sphere 09 on <em>Structure, Balance between speed and control and Supplier ecosystem</em> (grades Absent, Basic, Systematic and Advanced; <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a>).</p>
+<p>Spheres 08 and 09 are not assessed on these three levels, because they do not generate value in themselves: sphere 08 is assessed on <em>Compliance, Anticipation and Ethical leadership</em>, and sphere 09 on <em>Structure, Balance between speed and control and Supplier ecosystem</em> (grades Absent, Basic, Systematic and Advanced; <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html" title="Document 10 &#183; Sphere map and ambition levels">document 10</a>).</p>
 <h3 id="4-2-company-level-corporate-cycle">4.2 Company level · Corporate cycle</h3>
 <p>This is the cycle in which the board and senior management perform their role. It runs annually, with quarterly oversight:</p>
 <blockquote>
@@ -1578,7 +1589,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </figure>
 
 <blockquote>
-<p><strong>Why it matters.</strong> The funnel turns the portfolio into something the AI committee and the board can read at a glance: how many initiatives come in, where they get stuck, how many reach production, what value they produce and what is learned from those that do not get there. It is the view shared by the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>) and the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</p>
+<p><strong>Why it matters.</strong> The funnel turns the portfolio into something the AI committee and the board can read at a glance: how many initiatives come in, where they get stuck, how many reach production, what value they produce and what is learned from those that do not get there. It is the view shared by the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) and the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>).</p>
 </blockquote>
 <p><strong>Decision gate rules</strong></p>
 <ul>
@@ -1610,7 +1621,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>Intensity is decided <strong>initiative by initiative</strong>. Separately, each company chooses its <strong>implementation scope</strong>, also Lite or Enterprise, which determines how it organises its bodies and verification: with a Lite scope, a medium-sized, unregulated company governs AI with its executive committee, an AI Office of one part-time person and an external auditor, and any initiative that meets an Enterprise criterion is still managed with Enterprise intensity. The implementation guide (<a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>, section 2) explains how the scope is chosen and what the minimum path in a Lite scope is.</p>
+<p>Intensity is decided <strong>initiative by initiative</strong>. Separately, each company chooses its <strong>implementation scope</strong>, also Lite or Enterprise, which determines how it organises its bodies and verification: with a Lite scope, a medium-sized, unregulated company governs AI with its executive committee, an AI Office of one part-time person and an external auditor, and any initiative that meets an Enterprise criterion is still managed with Enterprise intensity. The implementation guide (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2) explains how the scope is chosen and what the minimum path in a Lite scope is.</p>
 <h3 id="4-4-component-b-governance-system">4.4 Component B · Governance system</h3>
 <blockquote>
 <p><strong>Why it matters.</strong> If decision, build and control duties are not separated, the framework loses credibility and operational and regulatory risk increases. A clear governance system speeds up sound decisions and reduces the cost of correcting errors.</p>
@@ -1678,7 +1689,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li><strong>Templates</strong> for each piece of evidence in each phase: initiative charter, value hypothesis canvas, <em>gate</em> decision record, risk matrix and register, operations manual, value realisation tracking, among others.</li>
 <li><strong>Checklists</strong> for each <em>gate</em>, which turn the criteria into binary controls.</li>
 <li><strong>AI dashboard for the board</strong>: inventory, validated versus declared value, cost, regulatory compliance, incidents, exposure to AI-enabled attacks, agent identity and permissions, adoption, agility and distribution by ambition level. It is generated from a single data file with a documented schema, with synchronised full and mobile versions.</li>
-<li><strong>Initiative register</strong>, which manages the AI portfolio as a funnel: phase and status of each initiative, time spent in each phase, compliance with each decision gate, tags, value and stop reasons (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html">document 03</a>).</li>
+<li><strong>Initiative register</strong>, which manages the AI portfolio as a funnel: phase and status of each initiative, time spent in each phase, compliance with each decision gate, tags, value and stop reasons (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a>).</li>
 <li><strong>Board recommendations register</strong>, with identifiers that are never reset, declared status, evidence provided and independent assessment.</li>
 <li><strong>Sector demonstrations</strong> with fictitious data (banking, insurance, energy, manufacturing, retail, healthcare, telecommunications, logistics, pharmaceuticals, tourism and the public sector).</li>
 </ul>
@@ -1884,7 +1895,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
-<p>SEVEN-G is <strong>sector- and technology-agnostic</strong>, and scalable: the Lite implementation scope makes it applicable to medium-sized organisations with a minimum structure, and the Enterprise scope to regulated groups (<a href="90_SEVEN-G_Guia_de_implantacion.html">document 90</a>, section 2).</p>
+<p>SEVEN-G is <strong>sector- and technology-agnostic</strong>, and scalable: the Lite implementation scope makes it applicable to medium-sized organisations with a minimum structure, and the Enterprise scope to regulated groups (<a href="90_SEVEN-G_Guia_de_implantacion.html" title="Document 90 &#183; SEVEN-G implementation guide">document 90</a>, section 2).</p>
 <hr />
 <h2 id="framework-principles"><span class="antetitulo">08</span>Framework principles</h2>
 <ol>
@@ -1950,11 +1961,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td><strong>H · Templates</strong></td>
-<td>71 templates, linked from the <a href="index.html">library index</a> and with an editable Word version: from <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a> to <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a>, one for each piece of mandatory evidence in the lifecycle; from <a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html">P32</a> to <a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html">P71</a>, the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation.</td>
+<td>71 templates, linked from the <a href="index.html">library index</a> and with an editable Word version: from <a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html" title="Template P01 &#183; Initiative charter">P01</a> to <a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html" title="Template P31 &#183; Use case record">P31</a>, one for each piece of mandatory evidence in the lifecycle; from <a href="plantillas/P32_SEVEN-G_Mandato_de_implantacion.html" title="Template P32 &#183; SEVEN-G implementation mandate">P32</a> to <a href="plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html" title="Template P71 &#183; Transfer plan and exit note">P71</a>, the registers, reports and decisions of the company, the board, compliance, third parties, audit and framework implementation.</td>
 </tr>
 <tr>
 <td><strong>I · Tools</strong></td>
-<td>Initiative register <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (with system inventory, <em>gate</em> manager, intensity determination and ambition classification) and connector <a href="../../herramientas/T17_panel_consejo/index.html">T17</a>, which feeds the board dashboard and the recommendations register with the register's data.</td>
+<td>Initiative register <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> (with system inventory, <em>gate</em> manager, intensity determination and ambition classification) and connector <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>, which feeds the board dashboard and the recommendations register with the register's data.</td>
 </tr>
 <tr>
 <td><strong>J · Framework adoption</strong></td>
@@ -1973,7 +1984,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Recommended citation: <em>SEVEN-G, a framework for value, governance and transformation with AI. Fernando García Varela. CC BY 4.0.</em></li>
 <li>The code of the tools is published under the <a class="ref-ext" href="https://opensource.org/license/mit" target="_blank" rel="noopener" title="The MIT License">MIT licence</a>.</li>
 <li>The figures and cases appearing in the examples and demonstrations are fictitious and do not constitute market benchmarks.</li>
-<li>SEVEN-G is provided &quot;as is&quot;, without warranties and without constituting legal advice. <strong>The organisation that uses it is solely responsible for identifying the general regulation and the regulation specific to its industry and jurisdiction, verifying that it is current and certifying its regulatory compliance</strong>; the author does not accept that responsibility (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html">document 93</a>, section 11).</li>
+<li>SEVEN-G is provided &quot;as is&quot;, without warranties and without constituting legal advice. <strong>The organisation that uses it is solely responsible for identifying the general regulation and the regulation specific to its industry and jurisdiction, verifying that it is current and certifying its regulatory compliance</strong>; the author does not accept that responsibility (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Document 93 &#183; Licence, use by third parties and citation">document 93</a>, section 11).</li>
 </ul>
 <h2 id="version-control"><span class="antetitulo">12</span>Version control</h2>
 <div class="tabla"><table>
@@ -2229,6 +2240,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
     if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
   });
 })();
 </script>
