@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -475,13 +480,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-l1-documentation-of-what-exists">
 <td><strong>L1 · Documentation of what exists</strong></td>
 <td>AI Analyst</td>
 <td>Existing code and its location.</td>
 <td>Current behaviour (purpose, functions, inputs, outputs, side effects); components and internal and external dependencies; flow and architecture diagrams; identified risks.</td>
 </tr>
-<tr>
+<tr id="cod-l2-impact-analysis">
 <td><strong>L2 · Impact analysis</strong></td>
 <td>AI Analyst</td>
 <td>Documented code and objective of the change.</td>
@@ -517,7 +522,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-d1-diagnosis">
 <td><strong>D1 · Diagnosis</strong></td>
 <td>Diagnostic AI</td>
 <td>Description of the incident, environment, available evidence (logs, traces, configuration).</td>
@@ -601,43 +606,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-u1-rapid-diagnosis">
 <td><strong>U1 · Rapid diagnosis</strong></td>
 <td>Diagnostic AI</td>
 <td>Abbreviated root cause report with verdict.</td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-u2-simplified-plan">
 <td><strong>U2 · Simplified plan</strong></td>
 <td>AI Planner</td>
 <td>Proposed minimal change, scope, risk, rollback plan.</td>
 <td>Maximum time for the plan (starting value to be set by each organisation).</td>
 </tr>
-<tr>
+<tr id="cod-u3-accelerated-review">
 <td><strong>U3 · Accelerated review</strong></td>
 <td>AI Reviewer</td>
 <td>Verdict on the simplified plan. <strong>Mandatory.</strong></td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-u4-implementation-with-minimal-tests">
 <td><strong>U4 · Implementation with minimal tests</strong></td>
 <td>AI Builder</td>
 <td>Change and minimal tests covering the fixed path. <strong>Mandatory.</strong></td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-u5-deployment">
 <td><strong>U5 · Deployment</strong></td>
 <td>Authorised person</td>
 <td>Recorded deployment with method and rollback available.</td>
 <td>Emergency approval: who may give it.</td>
 </tr>
-<tr>
+<tr id="cod-u6-monitoring">
 <td><strong>U6 · Monitoring</strong></td>
 <td>Operations</td>
 <td>Monitored indicators and status (stable · unstable · rolled back).</td>
 <td>Minimum duration of monitoring.</td>
 </tr>
-<tr>
+<tr id="cod-u7-post-mortem">
 <td><strong>U7 · Post-mortem</strong></td>
 <td>Person orchestrating, with diagnostic AI</td>
 <td>Timeline, root cause, effectiveness of the fix, lessons, actions with owner and date; if the fix is provisional, <strong>topic of the definitive plan</strong>.</td>
@@ -714,7 +719,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-security-review">
 <td><strong>S1 · Security review</strong></td>
 <td>AI Security Reviewer (other than the builder)</td>
 <td>Implemented code, security context, dependencies.</td>
@@ -839,7 +844,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noopener">OWASP Top 10 for Large Language Model Applications 2025</a><span> · OWASP GenAI Security Project (OWASP Foundation) · 17-11-2024</span></li><li><a href="https://top10.owasp.org/2025/" target="_blank" rel="noopener">OWASP Top 10:2025 (web application security risks)</a><span> · OWASP Foundation · 2025</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SPAD methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="../../../SEVEN-G/html/en/codigos.js" defer></script>
 
 <script>
 (function () {

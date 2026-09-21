@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -470,19 +475,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-a0-assistance">
 <td><strong>A0 · Assistance</strong></td>
 <td>Quality of outputs and cost; channel for reporting errors.</td>
 </tr>
-<tr>
+<tr id="cod-a1-recommendation">
 <td><strong>A1 · Recommendation</strong></td>
 <td>Plus logging of the recommendation and the human decision; human override rate (PER-10).</td>
 </tr>
-<tr>
+<tr id="cod-a2-supervised-action">
 <td><strong>A2 · Supervised action</strong></td>
 <td>Plus logging of each action with its intent; technical limits; tested kill switch; sample-based review.</td>
 </tr>
-<tr>
+<tr id="cod-a3-autonomous-action">
 <td><strong>A3 · Autonomous action</strong></td>
 <td>Plus real-time anomaly detection; thresholds on aggregates; permissions reviewed quarterly; on-call staff able to shut down.</td>
 </tr>
@@ -1205,28 +1210,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-critical">
 <td><strong>S1 · Critical</strong></td>
 <td>Possible serious incident under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>; serious incident under <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)">DORA</a> or <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener" title="Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)">NIS2</a> where applicable; significant material harm to people, customers, money or rights; or loss of control of a system that acts.</td>
 <td>Agent executing unauthorised payments or communications to customers; systematic discrimination in decisions about people; massive exposure of personal data.</td>
 <td>Triage within 1 hour, at any time; immediate coordinator; AI Committee within 4 hours; board committee within 24 hours.</td>
 <td>AI Committee and board committee; authorities where appropriate.</td>
 </tr>
-<tr>
+<tr id="cod-s2-high">
 <td><strong>S2 · High</strong></td>
 <td>Impact 4 on any axis; personal data breach reportable to the authority without a high risk to individuals; repeated errors visible to customers; compromise of an agent identity contained before it has any effect; failure of a critical control without harm; relevant incident at an N3 supplier.</td>
 <td>Erroneous responses to customers about contractual terms; kill switch that does not work in testing; attempt by an agent to extend its permissions.</td>
 <td>Triage within 4 hours; immediate coordinator; AI Committee within 24 hours; board committee in the quarterly report.</td>
 <td>AI Committee (24 hours); board committee (quarterly report).</td>
 </tr>
-<tr>
+<tr id="cod-s3-medium">
 <td><strong>S3 · Medium</strong></td>
 <td>Impact 3; degradation beyond threshold in a relevant process; successful prompt injection without any sensitive action; limited internal leakage with no risk to individuals.</td>
 <td>Critical drift with human review correcting the outputs; filter failing in isolated cases.</td>
 <td>Triage within 1 working day; planned resolution; AI Committee in the monthly report; board committee in the quarterly report.</td>
 <td>AI Committee (monthly report); board committee (quarterly report).</td>
 </tr>
-<tr>
+<tr id="cod-s4-low">
 <td><strong>S4 · Low</strong></td>
 <td>No effect on users or decisions.</td>
 <td>Warning alerts; minor formatting defects.</td>
@@ -1274,7 +1279,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Personal data breach: notification to the supervisory authority without undue delay and, where feasible, within 72 hours; communication to data subjects if there is a high risk.</td>
 <td>Arts. 33 and 34</td>
 </tr>
-<tr>
+<tr id="cod-nis2">
 <td><strong>NIS2</strong> (as transposed)</td>
 <td>Significant incidents: early warning within 24 hours and notification within 72 hours.</td>
 <td>Art. 23 of Directive (EU) 2022/2555</td>
@@ -1368,7 +1373,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Proceed with conditions</strong></td>
 <td>Non-critical deviations with an action, deadline and owner. Not permitted for critical controls, legal compliance or human oversight.</td>
 </tr>
-<tr>
+<tr id="cod-bring-g7-forward">
 <td><strong>Bring G7 forward</strong></td>
 <td>Relevant deviation in value (stop criterion reached), increase in risk or a better alternative.</td>
 </tr>
@@ -1440,27 +1445,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-n0-normal-operation">
 <td><strong>N0 · Normal operation</strong></td>
 <td>Primary model and configuration approved at G5.</td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-n1-optimisation-without-a-model-change">
 <td><strong>N1 · Optimisation without a model change</strong></td>
 <td>Stricter limits per user and session, shorter context, reuse of responses, batch processing of non-urgent work.</td>
 <td>Parameters and ranges approved at G5 (threshold adjustment within range).</td>
 </tr>
-<tr>
+<tr id="cod-n2-fallback-model">
 <td><strong>N2 · Fallback model</strong></td>
 <td>Part or all of the traffic moves to a lower-cost model.</td>
 <td>Model <strong>evaluated before G5</strong> with the same reference evaluation set (4.2.1), including the bias tests (4.2.7), with a result within the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> minimum quality; version pinned and recorded in <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
 </tr>
-<tr>
+<tr id="cod-n3-reduced-scope">
 <td><strong>N3 · Reduced scope</strong></td>
 <td>The system handles only the lowest-risk or highest-value cases or channels; the rest go to people.</td>
 <td>Allocation criterion defined in <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> and people available (<a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>).</td>
 </tr>
-<tr>
+<tr id="cod-n4-alternative-without-ai">
 <td><strong>N4 · Alternative without AI</strong></td>
 <td>Manual process, rules or previous system.</td>
 <td>Tested rollback plan (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
@@ -1499,17 +1504,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-eu-ai-act-arts-12-19-and-26-6">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">EU AI Act</a>, Arts. 12, 19 and 26(6)</strong></td>
 <td>High-risk systems allow for the automatic recording of events. Providers and deployers keep the automatically generated logs under their control for a period appropriate to the intended purpose, <strong>of at least six months</strong>, unless otherwise provided by other applicable law.</td>
 <td>Minimum of six months for high-risk systems, extendable according to the purpose, sector-specific regulation and claim periods.</td>
 </tr>
-<tr>
+<tr id="cod-eu-ai-act-art-18">
 <td><strong>EU AI Act, Art. 18</strong></td>
 <td>Providers of high-risk systems keep the technical documentation and other documentation for ten years after the system has been placed on the market or put into service.</td>
 <td>Applies when the company is a provider.</td>
 </tr>
-<tr>
+<tr id="cod-gdpr-art-5-1-c-and-e">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)">GDPR</a>, Art. 5(1)(c) and (e)</strong></td>
 <td>Data minimisation and storage limitation.</td>
 <td>Logs containing personal data are limited to what is necessary, with pseudonymisation where possible and a defined retention period.</td>
@@ -1557,140 +1562,140 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-ope-01">
 <td><strong>OPE-01</strong></td>
 <td>Availability</td>
 <td>Time available ÷ time committed in the service level</td>
 <td>Monthly</td>
 <td>As per service level</td>
 </tr>
-<tr>
+<tr id="cod-ope-02">
 <td><strong>OPE-02</strong></td>
 <td>Monitoring coverage</td>
 <td>Systems in production with a current <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> and tested alerts ÷ systems in production</td>
 <td>Quarterly</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-ope-03">
 <td><strong>OPE-03</strong></td>
 <td>Mean time to detect</td>
 <td>Σ (time of detection − time of onset) ÷ number of incidents</td>
 <td>Quarterly</td>
 <td>Downward trend</td>
 </tr>
-<tr>
+<tr id="cod-ope-04">
 <td><strong>OPE-04</strong></td>
 <td>Mean time to contain</td>
 <td>Σ (time of containment − time of detection) ÷ number of incidents, by severity</td>
 <td>Quarterly</td>
 <td>Within the references in 7.2</td>
 </tr>
-<tr>
+<tr id="cod-ope-05">
 <td><strong>OPE-05</strong></td>
 <td>Incidents by severity</td>
 <td>S1, S2, S3 and S4 incidents ÷ systems in production, per quarter</td>
 <td>Quarterly</td>
 <td>Trend</td>
 </tr>
-<tr>
+<tr id="cod-ope-06">
 <td><strong>OPE-06</strong></td>
 <td>Substantial changes without a <em>gate</em></td>
 <td>Substantial changes applied without returning to the <em>gate</em> ÷ substantial changes</td>
 <td>Quarterly</td>
 <td>0%</td>
 </tr>
-<tr>
+<tr id="cod-ope-07">
 <td><strong>OPE-07</strong></td>
 <td>Failed change rate</td>
 <td>Changes reverted or giving rise to an incident ÷ changes applied</td>
 <td>Quarterly</td>
 <td>Downward trend</td>
 </tr>
-<tr>
+<tr id="cod-ope-08">
 <td><strong>OPE-08</strong></td>
 <td>Untreated drift</td>
 <td>Models with drift at critical level with no action recorded within the <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> time limit ÷ monitored models</td>
 <td>Monthly</td>
 <td>0%</td>
 </tr>
-<tr>
+<tr id="cod-ope-09">
 <td><strong>OPE-09</strong></td>
 <td>Responses with unsupported statements</td>
 <td>Evaluated responses with at least one unsupported statement ÷ evaluated responses</td>
 <td>Monthly</td>
 <td>Threshold per system</td>
 </tr>
-<tr>
+<tr id="cod-ope-10">
 <td><strong>OPE-10</strong></td>
 <td>Cost per transaction and variance</td>
 <td>Operating cost for the period ÷ useful transactions; and actual cost ÷ budget</td>
 <td>Monthly</td>
 <td>As per hypothesis and budget</td>
 </tr>
-<tr>
+<tr id="cod-ope-11">
 <td><strong>OPE-11</strong></td>
 <td>Blocked agent actions</td>
 <td>Actions blocked by limits ÷ actions attempted; and intent anomalies reviewed ÷ detected</td>
 <td>Monthly</td>
 <td>100% of anomalies reviewed</td>
 </tr>
-<tr>
+<tr id="cod-ope-12">
 <td><strong>OPE-12</strong></td>
 <td>Tested kill switch</td>
 <td>A2–A3 agents with a kill switch test on time and passed ÷ A2–A3 agents</td>
 <td>Quarterly</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-ope-13">
 <td><strong>OPE-13</strong></td>
 <td>Reviewed agent permissions</td>
 <td>Agent identities reviewed on time ÷ agent identities</td>
 <td>Quarterly</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-ope-14">
 <td><strong>OPE-14</strong></td>
 <td>R6 on time</td>
 <td>Continuity reviews carried out on time ÷ reviews due</td>
 <td>Quarterly</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-ope-15">
 <td><strong>OPE-15</strong></td>
 <td>Tested rollback</td>
 <td>Systems with a rollback test on time ÷ systems in production</td>
 <td>Half-yearly</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-ope-16">
 <td><strong>OPE-16</strong></td>
 <td>Alert noise</td>
 <td>Alerts closed without action ÷ alerts generated</td>
 <td>Monthly</td>
 <td>Downward trend</td>
 </tr>
-<tr>
+<tr id="cod-ope-17">
 <td><strong>OPE-17</strong></td>
 <td>Supplier versions at risk</td>
 <td>Systems whose provider model version has an announced deprecation with no migration plan ÷ systems with a provider model</td>
 <td>Monthly</td>
 <td>0%</td>
 </tr>
-<tr>
+<tr id="cod-ope-18">
 <td><strong>OPE-18</strong></td>
 <td>Cost-driven degraded mode</td>
 <td>Days in the period at N1 or above in the cascade (10.3), by level; and quality measured in the mode ÷ <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> minimum quality</td>
 <td>Monthly</td>
 <td>Downward trend; quality ≥ 100% of the minimum</td>
 </tr>
-<tr>
+<tr id="cod-ope-19">
 <td><strong>OPE-19</strong></td>
 <td>Queries outside the validated scope</td>
 <td>Queries classified outside the topics or tasks validated at G5 ÷ queries in the period</td>
 <td>Monthly</td>
 <td>According to the G5 reference</td>
 </tr>
-<tr>
+<tr id="cod-ope-20">
 <td><strong>OPE-20</strong></td>
 <td>Unequal responses in counterfactual pairs</td>
 <td>Pairs with a material difference in outcome ÷ pairs evaluated</td>
@@ -1795,25 +1800,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-p24">
 <td><strong><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></strong></td>
 <td>Operations manual</td>
 <td>Description of the system and type; autonomy level; service levels; responsibilities and on-call; procedures per alert; retraining or continuous evaluation; agent limits and shutdown; degraded modes and cost-driven degradation cascade with its triggers; costs and consumption limits; records and retention; dependencies and suppliers; post-market monitoring plan where applicable; maximum recovery time for critical functions.</td>
 <td>G5, R6, after significant and substantial changes</td>
 </tr>
-<tr>
+<tr id="cod-p25">
 <td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
 <td>Monitoring and alerts configuration</td>
 <td>Metrics per layer; baseline; warning and critical thresholds; initial severity; owner; procedure; label delay; usage reference and query classification; reference evaluation set with counterfactual pairs and sampling; minimum quality in degraded mode; result of the alert test.</td>
 <td>G5, R6</td>
 </tr>
-<tr>
+<tr id="cod-p26">
 <td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></strong></td>
 <td>Incident response plan</td>
 <td>S1–S4 criteria applied to the system; contacts and escalation; pre-approved containment actions; applicable notifications with owner and time limit; communication to users, affected parties and the supplier; relationship with the continuity plan.</td>
 <td>G5, R6, after each S1–S2 incident</td>
 </tr>
-<tr>
+<tr id="cod-p27">
 <td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong></td>
 <td>Incident and change log</td>
 <td>Changes: class, description, validation, approval, <em>gate</em> where applicable, date. Incidents: severity, timeline, containment, notifications, root cause, actions, closure, link to nonconformity.</td>
@@ -1895,7 +1900,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng" target="_blank" rel="noopener">Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2022/2554 of the European Parliament and of the Council of 14 December 2022 on digital operational resilience for the financial sector (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

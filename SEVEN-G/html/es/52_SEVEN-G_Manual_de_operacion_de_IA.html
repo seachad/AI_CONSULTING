@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -470,19 +475,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-a0-asistencia">
 <td><strong>A0 · Asistencia</strong></td>
 <td>Calidad de resultados y coste; canal de reporte de errores.</td>
 </tr>
-<tr>
+<tr id="cod-a1-recomendacion">
 <td><strong>A1 · Recomendación</strong></td>
 <td>Más registro de recomendación y decisión humana; tasa de modificación humana (PER-10).</td>
 </tr>
-<tr>
+<tr id="cod-a2-actuacion-supervisada">
 <td><strong>A2 · Actuación supervisada</strong></td>
 <td>Más registro de cada acción con su intención; límites técnicos; interruptor probado; revisión por muestreo.</td>
 </tr>
-<tr>
+<tr id="cod-a3-actuacion-autonoma">
 <td><strong>A3 · Actuación autónoma</strong></td>
 <td>Más detección de anomalías en tiempo real; umbrales sobre agregados; permisos revisados trimestralmente; guardia con capacidad de parada.</td>
 </tr>
@@ -1205,28 +1210,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-critica">
 <td><strong>S1 · Crítica</strong></td>
 <td>Posible incidente grave según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>; incidente grave según <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> cuando apliquen; daño material significativo a personas, clientes, dinero o derechos; o pérdida de control de un sistema que actúa.</td>
 <td>Agente que ejecuta pagos o comunicaciones no autorizadas a clientes; discriminación sistemática en decisiones sobre personas; exposición masiva de datos personales.</td>
 <td>Triaje en 1 hora, a cualquier hora; coordinador inmediato; comité de IA en 4 horas; comisión delegada en 24 horas.</td>
 <td>Comité de IA y comisión delegada del consejo; autoridades cuando proceda.</td>
 </tr>
-<tr>
+<tr id="cod-s2-alta">
 <td><strong>S2 · Alta</strong></td>
 <td>Impacto 4 en algún eje; brecha de datos personales notificable a la autoridad sin alto riesgo para las personas; errores repetidos visibles para clientes; compromiso de una identidad de agente contenido antes de causar efecto; fallo de un control crítico sin daño; incidente relevante de un proveedor N3.</td>
 <td>Respuestas erróneas sobre condiciones contractuales a clientes; interruptor de parada que no funciona en prueba; intento de ampliar permisos por un agente.</td>
 <td>Triaje en 4 horas; coordinador inmediato; comité de IA en 24 horas; comisión delegada en el informe trimestral.</td>
 <td>Comité de IA (24 horas); comisión delegada del consejo (informe trimestral).</td>
 </tr>
-<tr>
+<tr id="cod-s3-media">
 <td><strong>S3 · Media</strong></td>
 <td>Impacto 3; degradación fuera de umbral en un proceso relevante; inyección de instrucciones con éxito sin acción sensible; fuga interna limitada sin riesgo para las personas.</td>
 <td>Deriva crítica con revisión humana que corrige los resultados; filtro que falla en casos aislados.</td>
 <td>Triaje en 1 día hábil; resolución planificada; comité de IA en el informe mensual; comisión delegada en el informe trimestral.</td>
 <td>Comité de IA (informe mensual); comisión delegada del consejo (informe trimestral).</td>
 </tr>
-<tr>
+<tr id="cod-s4-baja">
 <td><strong>S4 · Baja</strong></td>
 <td>Sin efecto en usuarios ni en decisiones.</td>
 <td>Alertas de aviso; defectos menores de formato.</td>
@@ -1274,7 +1279,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Violación de la seguridad de datos personales: notificación a la autoridad de control sin dilación indebida y, cuando sea posible, en 72 horas; comunicación a los interesados si hay alto riesgo.</td>
 <td>Arts. 33 y 34</td>
 </tr>
-<tr>
+<tr id="cod-nis2">
 <td><strong>NIS2</strong> (según su transposición)</td>
 <td>Incidentes significativos: alerta temprana en 24 horas y notificación en 72 horas.</td>
 <td>Art. 23 de la Directiva (UE) 2022/2555</td>
@@ -1368,7 +1373,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Continuar con condiciones</strong></td>
 <td>Desviaciones no críticas con acción, plazo y responsable. No se admite para controles críticos, cumplimiento legal o supervisión humana.</td>
 </tr>
-<tr>
+<tr id="cod-adelantar-g7">
 <td><strong>Adelantar G7</strong></td>
 <td>Desviación relevante de valor (criterio de parada alcanzado), aumento del riesgo o alternativa mejor.</td>
 </tr>
@@ -1440,27 +1445,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-n0-operacion-normal">
 <td><strong>N0 · Operación normal</strong></td>
 <td>Modelo principal y configuración aprobada en G5.</td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-n1-optimizacion-sin-cambio-de-modelo">
 <td><strong>N1 · Optimización sin cambio de modelo</strong></td>
 <td>Límites más estrictos por usuario y sesión, contexto más corto, reutilización de respuestas, procesamiento por lotes de lo que no es urgente.</td>
 <td>Parámetros y rangos aprobados en G5 (ajuste de umbrales dentro de rango).</td>
 </tr>
-<tr>
+<tr id="cod-n2-modelo-de-respaldo">
 <td><strong>N2 · Modelo de respaldo</strong></td>
 <td>Una parte o todo el tráfico pasa a un modelo de menor coste.</td>
 <td>Modelo <strong>evaluado antes de G5</strong> con el mismo conjunto de evaluación de referencia (4.2.1), incluidas las pruebas de sesgo (4.2.7), con resultado dentro de la calidad mínima de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>; versión fijada y registrada en <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>.</td>
 </tr>
-<tr>
+<tr id="cod-n3-alcance-reducido">
 <td><strong>N3 · Alcance reducido</strong></td>
 <td>El sistema atiende solo los casos o canales de menor riesgo o de mayor valor; el resto pasa a personas.</td>
 <td>Criterio de reparto definido en <a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a> y personas disponibles (<a href="50_SEVEN-G_Personas_y_organizacion.html">documento 50</a>).</td>
 </tr>
-<tr>
+<tr id="cod-n4-alternativa-sin-ia">
 <td><strong>N4 · Alternativa sin IA</strong></td>
 <td>Proceso manual, reglas o sistema anterior.</td>
 <td>Plan de reversión probado (<a href="plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html">P19</a>).</td>
@@ -1499,17 +1504,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-reglamento-europeo-de-ia-arts-12-19-y-26-6">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento Europeo de IA</a>, arts. 12, 19 y 26.6</strong></td>
 <td>Los sistemas de alto riesgo permiten el registro automático de eventos. Proveedores y responsables del despliegue conservan los registros generados automáticamente que estén bajo su control durante un periodo adecuado a la finalidad prevista, <strong>de al menos seis meses</strong>, salvo que otra norma aplicable disponga otra cosa.</td>
 <td>Mínimo de seis meses para sistemas de alto riesgo, ampliable según la finalidad, la normativa sectorial y los plazos de reclamación.</td>
 </tr>
-<tr>
+<tr id="cod-reglamento-europeo-de-ia-art-18">
 <td><strong>Reglamento Europeo de IA, art. 18</strong></td>
 <td>Los proveedores de sistemas de alto riesgo conservan la documentación técnica y otra documentación durante diez años desde la introducción en el mercado o la puesta en servicio.</td>
 <td>Aplica cuando la compañía es proveedor.</td>
 </tr>
-<tr>
+<tr id="cod-rgpd-art-5-1-c-y-e">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, art. 5.1.c y e</strong></td>
 <td>Minimización y limitación del plazo de conservación.</td>
 <td>Los registros con datos personales se limitan a lo necesario, con seudonimización cuando sea posible y plazo definido.</td>
@@ -1557,140 +1562,140 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-ope-01">
 <td><strong>OPE-01</strong></td>
 <td>Disponibilidad</td>
 <td>Tiempo disponible ÷ tiempo comprometido en el nivel de servicio</td>
 <td>Mensual</td>
 <td>Según nivel de servicio</td>
 </tr>
-<tr>
+<tr id="cod-ope-02">
 <td><strong>OPE-02</strong></td>
 <td>Cobertura de monitorización</td>
 <td>Sistemas en producción con <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> vigente y alertas probadas ÷ sistemas en producción</td>
 <td>Trimestral</td>
 <td>100 %</td>
 </tr>
-<tr>
+<tr id="cod-ope-03">
 <td><strong>OPE-03</strong></td>
 <td>Tiempo medio de detección</td>
 <td>Σ (momento de detección − momento de inicio) ÷ número de incidentes</td>
 <td>Trimestral</td>
 <td>Tendencia decreciente</td>
 </tr>
-<tr>
+<tr id="cod-ope-04">
 <td><strong>OPE-04</strong></td>
 <td>Tiempo medio de contención</td>
 <td>Σ (momento de contención − momento de detección) ÷ número de incidentes, por severidad</td>
 <td>Trimestral</td>
 <td>Dentro de las referencias de 7.2</td>
 </tr>
-<tr>
+<tr id="cod-ope-05">
 <td><strong>OPE-05</strong></td>
 <td>Incidentes por severidad</td>
 <td>Incidentes S1, S2, S3 y S4 ÷ sistemas en producción, por trimestre</td>
 <td>Trimestral</td>
 <td>Tendencia</td>
 </tr>
-<tr>
+<tr id="cod-ope-06">
 <td><strong>OPE-06</strong></td>
 <td>Cambios sustanciales sin <em>gate</em></td>
 <td>Cambios sustanciales aplicados sin volver al <em>gate</em> ÷ cambios sustanciales</td>
 <td>Trimestral</td>
 <td>0 %</td>
 </tr>
-<tr>
+<tr id="cod-ope-07">
 <td><strong>OPE-07</strong></td>
 <td>Tasa de cambios fallidos</td>
 <td>Cambios revertidos o que originan un incidente ÷ cambios aplicados</td>
 <td>Trimestral</td>
 <td>Tendencia decreciente</td>
 </tr>
-<tr>
+<tr id="cod-ope-08">
 <td><strong>OPE-08</strong></td>
 <td>Deriva sin tratar</td>
 <td>Modelos con deriva en nivel crítico sin acción registrada en el plazo de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a> ÷ modelos monitorizados</td>
 <td>Mensual</td>
 <td>0 %</td>
 </tr>
-<tr>
+<tr id="cod-ope-09">
 <td><strong>OPE-09</strong></td>
 <td>Respuestas con afirmaciones no soportadas</td>
 <td>Respuestas evaluadas con al menos una afirmación no soportada ÷ respuestas evaluadas</td>
 <td>Mensual</td>
 <td>Umbral por sistema</td>
 </tr>
-<tr>
+<tr id="cod-ope-10">
 <td><strong>OPE-10</strong></td>
 <td>Coste por transacción y desviación</td>
 <td>Coste de operación del periodo ÷ transacciones útiles; y coste real ÷ presupuesto</td>
 <td>Mensual</td>
 <td>Según hipótesis y presupuesto</td>
 </tr>
-<tr>
+<tr id="cod-ope-11">
 <td><strong>OPE-11</strong></td>
 <td>Acciones de agente bloqueadas</td>
 <td>Acciones bloqueadas por límites ÷ acciones intentadas; y anomalías de intención revisadas ÷ detectadas</td>
 <td>Mensual</td>
 <td>100 % de anomalías revisadas</td>
 </tr>
-<tr>
+<tr id="cod-ope-12">
 <td><strong>OPE-12</strong></td>
 <td>Interruptor de parada probado</td>
 <td>Agentes A2–A3 con prueba del interruptor en plazo y superada ÷ agentes A2–A3</td>
 <td>Trimestral</td>
 <td>100 %</td>
 </tr>
-<tr>
+<tr id="cod-ope-13">
 <td><strong>OPE-13</strong></td>
 <td>Permisos de agentes revisados</td>
 <td>Identidades de agentes con revisión en plazo ÷ identidades de agentes</td>
 <td>Trimestral</td>
 <td>100 %</td>
 </tr>
-<tr>
+<tr id="cod-ope-14">
 <td><strong>OPE-14</strong></td>
 <td>R6 en plazo</td>
 <td>Revisiones de continuidad realizadas en plazo ÷ revisiones debidas</td>
 <td>Trimestral</td>
 <td>100 %</td>
 </tr>
-<tr>
+<tr id="cod-ope-15">
 <td><strong>OPE-15</strong></td>
 <td>Reversión probada</td>
 <td>Sistemas con prueba de reversión en plazo ÷ sistemas en producción</td>
 <td>Semestral</td>
 <td>100 %</td>
 </tr>
-<tr>
+<tr id="cod-ope-16">
 <td><strong>OPE-16</strong></td>
 <td>Ruido de alertas</td>
 <td>Alertas cerradas sin acción ÷ alertas generadas</td>
 <td>Mensual</td>
 <td>Tendencia decreciente</td>
 </tr>
-<tr>
+<tr id="cod-ope-17">
 <td><strong>OPE-17</strong></td>
 <td>Versiones de proveedor en riesgo</td>
 <td>Sistemas cuya versión de modelo de proveedor tiene obsolescencia anunciada sin plan de migración ÷ sistemas con modelo de proveedor</td>
 <td>Mensual</td>
 <td>0 %</td>
 </tr>
-<tr>
+<tr id="cod-ope-18">
 <td><strong>OPE-18</strong></td>
 <td>Modo degradado por coste</td>
 <td>Días del periodo en N1 o superior de la cascada (10.3), por nivel; y calidad medida en el modo ÷ calidad mínima de <a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></td>
 <td>Mensual</td>
 <td>Tendencia decreciente; calidad ≥ 100 % del mínimo</td>
 </tr>
-<tr>
+<tr id="cod-ope-19">
 <td><strong>OPE-19</strong></td>
 <td>Consultas fuera del alcance validado</td>
 <td>Consultas clasificadas fuera de los temas o tareas validados en G5 ÷ consultas del periodo</td>
 <td>Mensual</td>
 <td>Según referencia de G5</td>
 </tr>
-<tr>
+<tr id="cod-ope-20">
 <td><strong>OPE-20</strong></td>
 <td>Respuestas desiguales en pares contrafactuales</td>
 <td>Pares con diferencia material de resultado ÷ pares evaluados</td>
@@ -1795,25 +1800,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-p24">
 <td><strong><a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a></strong></td>
 <td>Manual de operación</td>
 <td>Descripción del sistema y tipo; nivel de autonomía; niveles de servicio; responsabilidades y guardia; procedimientos por alerta; reentrenamiento o evaluación continua; límites y parada de agentes; modos degradados y cascada de degradación por coste con sus disparadores; costes y límites de consumo; registros y conservación; dependencias y proveedores; plan de vigilancia posterior a la comercialización si procede; tiempo máximo de recuperación en funciones críticas.</td>
 <td>G5, R6, tras cambios significativos y sustanciales</td>
 </tr>
-<tr>
+<tr id="cod-p25">
 <td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
 <td>Configuración de monitorización y alertas</td>
 <td>Métricas por capa; línea base; umbrales de aviso y crítico; severidad inicial; responsable; procedimiento; retraso de etiquetas; referencia de uso y clasificación de consultas; conjunto de evaluación de referencia con pares contrafactuales y muestreo; calidad mínima en modo degradado; resultado de la prueba de alertas.</td>
 <td>G5, R6</td>
 </tr>
-<tr>
+<tr id="cod-p26">
 <td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></strong></td>
 <td>Plan de respuesta a incidentes</td>
 <td>Criterios S1–S4 aplicados al sistema; contactos y escalado; acciones de contención preaprobadas; notificaciones aplicables con responsable y plazo; comunicación a usuarios, afectados y proveedor; relación con el plan de continuidad.</td>
 <td>G5, R6, tras cada incidente S1–S2</td>
 </tr>
-<tr>
+<tr id="cod-p27">
 <td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong></td>
 <td>Registro de incidentes y cambios</td>
 <td>Cambios: clase, descripción, validación, aprobación, <em>gate</em> si procede, fecha. Incidentes: severidad, cronología, contención, notificaciones, causa raíz, acciones, cierre, enlace a no conformidad.</td>
@@ -1895,7 +1900,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

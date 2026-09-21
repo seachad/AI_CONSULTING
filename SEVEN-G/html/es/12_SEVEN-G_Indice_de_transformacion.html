@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -454,35 +459,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-it-p1">
 <td><strong>IT-P1</strong></td>
 <td>¿Cambia la propuesta de valor que recibe el cliente o el usuario final?</td>
 <td>El cliente recibe algo distinto: un servicio nuevo, una prestación que antes no existía, un modo de relación diferente o un precio construido de otra forma.</td>
 <td>El mismo servicio más rápido, más barato o con menos errores.</td>
 <td>Transformar</td>
 </tr>
-<tr>
+<tr id="cod-it-p2">
 <td><strong>IT-P2</strong></td>
 <td>¿Se rediseña el proceso de extremo a extremo, y no solo una tarea dentro del proceso?</td>
 <td>Cambian los pasos, los puntos de decisión y los traspasos del proceso completo, desde la entrada hasta el resultado.</td>
 <td>Se automatiza o acelera uno o varios pasos manteniendo el diseño del proceso.</td>
 <td>Aumentar o Transformar</td>
 </tr>
-<tr>
+<tr id="cod-it-p3">
 <td><strong>IT-P3</strong></td>
 <td>¿Cambian los roles, la estructura organizativa o quién toma qué decisiones?</td>
 <td>Se rediseñan puestos o equipos, o decisiones que tomaban personas pasan a tomarlas sistemas (A2 o A3) con supervisión definida, o las personas asumen tareas que antes no podían hacer.</td>
 <td>Se reduce el número de personas que hacen lo mismo; se entrega una herramienta sin cambiar el contenido del puesto.</td>
 <td>Aumentar o Transformar</td>
 </tr>
-<tr>
+<tr id="cod-it-p4">
 <td><strong>IT-P4</strong></td>
 <td>¿Genera ingresos, servicios o mercados que no existían?</td>
 <td>Ingresos o clientes procedentes de una oferta, canal o mercado que no existiría sin la IA.</td>
 <td>Más ventas de la oferta existente por mejor conversión o retención.</td>
 <td>Transformar</td>
 </tr>
-<tr>
+<tr id="cod-it-p5">
 <td><strong>IT-P5</strong></td>
 <td>¿Podría retirarse sin afectar al modelo de negocio, volviendo simplemente al coste anterior?</td>
 <td>Si se apaga, la compañía sigue haciendo lo mismo con el coste o el tiempo previos.</td>
@@ -703,35 +708,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-fase-1-propuesta">
 <td><strong>Fase 1 · Propuesta</strong></td>
 <td>Responsable de producto de IA</td>
 <td>Oficina de IA (coherencia de respuestas)</td>
 <td>Patrocinador, en G1</td>
 <td>Se registra el evento en <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
 </tr>
-<tr>
+<tr id="cod-fase-2-confirmacion-lite">
 <td><strong>Fase 2 · Confirmación (Lite)</strong></td>
 <td>Responsable de producto de IA</td>
 <td>Oficina de IA</td>
 <td>Patrocinador, en G2</td>
 <td>Si el nivel confirmado es Transformar, la intensidad pasa a Enterprise.</td>
 </tr>
-<tr>
+<tr id="cod-fase-2-confirmacion-enterprise">
 <td><strong>Fase 2 · Confirmación (Enterprise)</strong></td>
 <td>Responsable de producto de IA</td>
 <td>Auditor de IA</td>
 <td>Comité de IA, en G2</td>
 <td>Transformar requiere además aprobación del consejo.</td>
 </tr>
-<tr>
+<tr id="cod-r6-revision-de-continuidad">
 <td><strong>R6 · Revisión de continuidad</strong></td>
 <td>Responsable de producto de IA</td>
 <td>Oficina de IA o auditor de IA</td>
 <td>Órgano de R6</td>
 <td>Si hay indicios de que el nivel real difiere del confirmado, se adelanta G7.</td>
 </tr>
-<tr>
+<tr id="cod-fase-7-ambicion-real">
 <td><strong>Fase 7 · Ambición real</strong></td>
 <td>Responsable de producto de IA, con datos de <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></td>
 <td>Oficina de IA (Lite) o auditor de IA (Enterprise)</td>
@@ -876,19 +881,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-b1">
 <td><strong>B1</strong></td>
 <td>Cartera gobernada</td>
 <td>Iniciativas activas con fase, <em>gates</em> registrados y ambición confirmada ÷ iniciativas activas × 100</td>
 <td>80 % o más</td>
 </tr>
-<tr>
+<tr id="cod-b2">
 <td><strong>B2</strong></td>
 <td>Proporción de valor validado</td>
 <td>Valor realizado validado ÷ valor realizado total (validado + declarado + estimado) × 100</td>
 <td>50 % o más</td>
 </tr>
-<tr>
+<tr id="cod-b3">
 <td><strong>B3</strong></td>
 <td>Escala en producción</td>
 <td>Número de iniciativas de esferas 01 a 07 en producción</td>
@@ -1744,57 +1749,57 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Registro de iniciativas</td>
 <td>Campos: respuestas IT-P1–IT-P5 con evidencia y estado de verificación; ambición propuesta, confirmada y real con fecha y motivo; esfera principal; fechas de <em>gates</em>; estados; motivos de parada; origen de la iniciativa. Desde el esquema 0.5: verificación de IT-P2 e IT-P3 en un <em>gate</em> con supervisión humana verificada, unidad completa rediseñada, capacidad liberada, materializada y reasignada, oferta habilitada por IA en los importes e ingresos totales e IT-D3 de la compañía.</td>
 </tr>
-<tr>
+<tr id="cod-t03">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td>Gestor de <em>gates</em></td>
 <td>Verificación de la clasificación en G2 y G7; aprobaciones del consejo.</td>
 </tr>
-<tr>
+<tr id="cod-t05">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
 <td>Clasificador de ambición</td>
 <td>Aplica las cinco preguntas y las reglas 1 a 10; registra el resultado y las incoherencias.</td>
 </tr>
-<tr>
+<tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Importes por tipo y estado; capacidad liberada y materializada; ingresos habilitados por IA.</td>
 </tr>
-<tr>
+<tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
 <td>Calculadora de costes por caso</td>
 <td>Inversión y coste recurrente de cada iniciativa (señal 1).</td>
 </tr>
-<tr>
+<tr id="cod-t14">
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Calculadora del índice de transformación</td>
 <td>Calcula condiciones de base, señales, perfil, alertas, cobertura, qué movería el perfil y evolución; conserva la versión de umbrales. Parte del JSON del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: con el esquema 0.5 calcula desde él las ocho señales y las condiciones IT-D1 e IT-D3; lo que el registro no contenga se completa a mano. Exporta su resultado para el panel del consejo.</td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
 <td>Tarjeta «Índice de transformación de la compañía» en «Cartera y valor»: perfil, condiciones de base, señales, tendencia, alertas y qué movería el perfil, a partir del resultado exportado por <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>.</td>
 </tr>
-<tr>
+<tr id="cod-t18">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Vista «Consejo (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)» del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>: las decisiones del consejo (tesis, apuestas de Transformar con límite por etapa, revisiones y decisiones de etapa) son la fuente de la señal 8 y de IT-D1.</td>
 </tr>
-<tr>
+<tr id="cod-t19">
 <td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></strong></td>
 <td>Plantilla de tesis de IA y apetito de riesgo</td>
 <td>Documento de decisión de C2: tesis aprobada (señal 8) y ambición objetivo por esfera (condición IT-D1).</td>
 </tr>
-<tr>
+<tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Plan de adopción y capacidad</td>
 <td>Horas reasignadas y roles rediseñados (señales 3 y 5).</td>
 </tr>
-<tr>
+<tr id="cod-p07">
 <td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></strong></td>
 <td>Clasificación de esfera y ambición</td>
 <td>Evidencia de la clasificación en las fases 1, 2 y 7.</td>
@@ -1869,7 +1874,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

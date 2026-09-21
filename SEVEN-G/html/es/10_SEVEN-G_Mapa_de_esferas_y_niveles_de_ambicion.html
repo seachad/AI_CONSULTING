@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1895,31 +1900,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-c1-diagnostico">
 <td><strong>C1 · Diagnóstico</strong></td>
 <td>Clasificar las iniciativas y sistemas existentes por esfera y nivel; calcular los indicadores disponibles; asignar grados a 08 y 09; construir el mapa de calor actual. Para cada esfera se registran el <strong>nivel alcanzado</strong> (máximo nivel con al menos una iniciativa en producción y valor medido) y el <strong>nivel en cartera</strong> (máximo nivel con alguna iniciativa que haya superado G2).</td>
 <td>Mapa de esferas actual con indicadores y &quot;sin dato&quot; explícitos.</td>
 <td>11, 12</td>
 </tr>
-<tr>
+<tr id="cod-c2-direccion">
 <td><strong>C2 · Dirección</strong></td>
 <td>Fijar para cada esfera 01–07 la prioridad y la ambición objetivo, y para 08 y 09 el grado objetivo por dimensión, con un indicador principal por esfera elegido entre los de este documento.</td>
 <td>Ambición por esfera aprobada por el consejo.</td>
 <td>13</td>
 </tr>
-<tr>
+<tr id="cod-c3-cartera">
 <td><strong>C3 · Cartera</strong></td>
 <td>Comparar el mapa de calor con la ambición objetivo; priorizar iniciativas que cierren brechas; limitar la inversión fuera de tesis; comprobar que las esferas habilitadoras soportan la ambición de las esferas de valor.</td>
 <td>Cartera priorizada con esfera y nivel por iniciativa.</td>
 <td>14</td>
 </tr>
-<tr>
+<tr id="cod-c4-supervision">
 <td><strong>C4 · Supervisión</strong></td>
 <td>Mapa de calor trimestral en el panel del consejo con marcas de brecha, fuera de tesis y sin evidencia; evolución de los indicadores principales.</td>
 <td>Alertas y recomendaciones del consejo.</td>
 <td>60, 62</td>
 </tr>
-<tr>
+<tr id="cod-c5-revision">
 <td><strong>C5 · Revisión</strong></td>
 <td>Comparar el mapa con el del año anterior y con la ambición objetivo; recalibrar umbrales de color y marcas; revisar los indicadores elegidos.</td>
 <td>Propuesta de ajuste de la ambición por esfera.</td>
@@ -1938,25 +1943,25 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-fase-0">
 <td><strong>Fase 0</strong></td>
 <td>Se indica la esfera prevista en la carta de la iniciativa, para comprobar el encaje con la tesis.</td>
 <td>Responsable de producto</td>
 <td><a href="plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html">P01</a></td>
 </tr>
-<tr>
+<tr id="cod-fase-1">
 <td><strong>Fase 1</strong></td>
 <td>Se proponen <strong>esfera principal, esfera secundaria y nivel de ambición</strong> con las reglas de la sección 4 y las cinco preguntas del <a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>. Se comprueba si la esfera es prioritaria en C2.</td>
 <td>Responsable de producto; revisa la oficina de IA</td>
 <td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></td>
 </tr>
-<tr>
+<tr id="cod-fase-2">
 <td><strong>Fase 2</strong></td>
 <td>Se confirma la esfera principal con la métrica principal de la hipótesis y se confirma el nivel de ambición. Se elige al menos un indicador de la esfera principal como métrica de la hipótesis o como métrica secundaria.</td>
 <td>Verifica la oficina de IA (Lite) o el auditor de IA (Enterprise)</td>
 <td><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>, <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a></td>
 </tr>
-<tr>
+<tr id="cod-fase-7">
 <td><strong>Fase 7</strong></td>
 <td>Se registra la <strong>ambición real</strong> con la evidencia y se revisa la esfera si la métrica principal ha cambiado.</td>
 <td>Responsable de producto; verifica la oficina de IA o el auditor</td>
@@ -2047,52 +2052,52 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Registro de iniciativas</td>
 <td>Campos de esfera principal y secundaria, nivel de ambición propuesto, confirmado y real, y dimensión de contribución para 08 y 09.</td>
 </tr>
-<tr>
+<tr id="cod-t02">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>Inventario de sistemas de IA</td>
 <td>Base de los indicadores de datos, decisión, cumplimiento y gobierno.</td>
 </tr>
-<tr>
+<tr id="cod-t05">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
 <td>Clasificador de ambición</td>
 <td>Cinco preguntas del <a href="12_SEVEN-G_Indice_de_transformacion.html">documento 12</a>, integradas con la selección de esfera.</td>
 </tr>
-<tr>
+<tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Seguimiento de realización de valor</td>
 <td>Importes de los indicadores traducidos a dinero.</td>
 </tr>
-<tr>
+<tr id="cod-t14">
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Calculadora del índice de transformación</td>
 <td>Usa la banda de habilitación para excluir las esferas 08 y 09 de las señales 1, 2 y 7.</td>
 </tr>
-<tr>
+<tr id="cod-t16">
 <td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></strong></td>
 <td>Mapa de esferas de la cartera</td>
 <td>Mapa de calor de la sección 8.</td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Panel de IA para el consejo</td>
 <td>Muestra el mapa de calor y los indicadores principales por esfera.</td>
 </tr>
-<tr>
+<tr id="cod-p06">
 <td><strong><a href="plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html">P06</a></strong></td>
 <td>Cartera de oportunidades y notas de filtrado</td>
 <td>Esfera propuesta en la fase 1.</td>
 </tr>
-<tr>
+<tr id="cod-p07">
 <td><strong><a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a></strong></td>
 <td>Clasificación de esfera y ambición</td>
 <td>Evidencia de las fases 1, 2 y 7.</td>
 </tr>
-<tr>
+<tr id="cod-p31">
 <td><strong><a href="plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html">P31</a></strong></td>
 <td>Ficha de caso de uso</td>
 <td>Descripción comprensible con su esfera y nivel.</td>
@@ -2187,7 +2192,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1462,49 +1467,49 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-org-01">
 <td><strong>RT-ORG-01</strong></td>
 <td>Lack of adoption</td>
 <td>2, 3 and 4 below the threshold.</td>
 <td>Adoption plan (section 6); user participation; training; target at G2 and threshold at G5.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-03">
 <td><strong>RT-ORG-03</strong></td>
 <td>Unmanaged effect on people</td>
 <td>Incomplete impact analysis; indicator 8 decreasing; indicator 10 low.</td>
 <td>Impact analysis (section 5); communication and participation (section 9); <a href="50_SEVEN-G_Personas_y_organizacion.html">document 50</a>.</td>
 <td>2, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-04">
 <td><strong>RT-ORG-04</strong></td>
 <td>Ineffective human oversight</td>
 <td>5 close to zero; 6 decreasing; 7 below 100% for overseers.</td>
 <td>Overseer training (section 8.2); oversight design in <a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>; control samples.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependence on key people</td>
 <td>Knowledge of use concentrated in a few advanced users.</td>
 <td>Training by audience; area champions; operations manual (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>).</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-05">
 <td><strong>RT-ORG-05</strong></td>
 <td>Unauthorised use of AI</td>
 <td>Detections in <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a> in affected groups.</td>
 <td>Training; <a href="31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html">document 31</a>.</td>
 <td>C1, C4</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-03">
 <td><strong>RT-ECO-03</strong></td>
 <td>Unrealised value</td>
 <td>Indicator 9 low; capacity without a destination, with ageing.</td>
 <td>Explicit destination (section 7); plan at G5; tracking at R6.</td>
 <td>5–7</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-05">
 <td><strong>RT-REP-05</strong></td>
 <td>Misleading communication about AI</td>
 <td>Messages that attribute unvalidated results or deny expected effects.</td>
@@ -1616,12 +1621,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-p20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Main evidence: impact analysis, adoption targets and indicators, training, communication, destination of released capacity and tracking.</td>
 </tr>
-<tr>
+<tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Tool for template <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and released capacity register; feeds <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a> and the initiative register (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>).</td>
@@ -1636,7 +1641,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Feasibility assessment · Risk matrix and register</td>
 <td>Preliminary impact analysis, adoption costs and organisational risks.</td>
 </tr>
-<tr>
+<tr id="cod-p17">
 <td><strong><a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a></strong></td>
 <td>Governance and human oversight design</td>
 <td>Designated overseers and oversight workload. The information sheet and the register of information to representatives are in <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a>.</td>
@@ -1656,12 +1661,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Value tracking · Corporate use monitor</td>
 <td>Materialised amounts; unauthorised use in the affected groups.</td>
 </tr>
-<tr>
+<tr id="cod-p44">
 <td><strong><a href="plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html">P44</a></strong></td>
 <td>AI use and perception survey</td>
 <td>User perception (indicator 8): usefulness, trust, support, workload and autonomy.</td>
 </tr>
-<tr>
+<tr id="cod-p46">
 <td><strong><a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></strong></td>
 <td>Information to workers and their representatives</td>
 <td>System information sheet and register of information to and consultation of representatives.</td>
@@ -1773,7 +1778,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/eli/es/rdlg/2015/10/23/2/con" target="_blank" rel="noopener">Royal Legislative Decree 2/2015 of 23 October approving the consolidated text of the Workers&#39; Statute Act (unofficial translation)</a><span> · Gobierno de Espa&#241;a (Ministerio de Empleo y Seguridad Social) · 23-10-2015</span></li><li><a href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener">Prosci ADKAR&#174; Model (Awareness, Desire, Knowledge, Ability, Reinforcement)</a><span> · Prosci Inc.</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

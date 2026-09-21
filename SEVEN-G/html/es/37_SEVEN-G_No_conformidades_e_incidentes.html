@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -889,22 +894,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-critica">
 <td><strong>S1 · Crítica</strong></td>
 <td>Posible incidente grave según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>; posible incidente grave de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o significativo de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a> cuando apliquen; brecha de datos personales con probable alto riesgo para las personas; acción no autorizada de un agente con efecto sobre dinero, terceros, datos personales o sistemas de producción; daño a personas o discriminación a escala; interrupción de una función crítica fuera de su tolerancia; impacto 5 en cualquier eje.</td>
 <td>Un agente emite pagos no autorizados; un sistema de selección descarta sistemáticamente a un colectivo; fuga masiva de datos de clientes por la recuperación de información; fraude consumado mediante videollamada suplantada.</td>
 </tr>
-<tr>
+<tr id="cod-s2-alta">
 <td><strong>S2 · Alta</strong></td>
 <td>Impacto 4 en algún eje; brecha de datos personales notificable a la autoridad sin alto riesgo para las personas; errores repetidos visibles para clientes; compromiso de una identidad de agente contenido antes de causar efecto; fallo de un control crítico sin daño; incidente relevante de un proveedor N3.</td>
 <td>Credencial de un agente expuesta y revocada sin uso detectado; asistente a clientes con respuestas erróneas sobre condiciones durante horas.</td>
 </tr>
-<tr>
+<tr id="cod-s3-media">
 <td><strong>S3 · Media</strong></td>
 <td>Impacto 3; degradación fuera de umbral en un proceso relevante; inyección de instrucciones con éxito sin acción sensible; fuga interna limitada sin riesgo para las personas.</td>
 <td>Deriva que eleva los errores de clasificación de documentos internos; un usuario obtiene las instrucciones del sistema.</td>
 </tr>
-<tr>
+<tr id="cod-s4-baja">
 <td><strong>S4 · Baja</strong></td>
 <td>Impacto 1–2; cuasi incidentes; intentos bloqueados que revelan una amenaza nueva.</td>
 <td>Intentos de inyección bloqueados por el control de intención; indisponibilidad breve sin efecto.</td>
@@ -1051,28 +1056,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-reglamento-de-ia-art-73">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>, art. 73</strong></td>
 <td>Proveedor del sistema de alto riesgo. El responsable del despliegue que detecta un incidente grave informa <strong>inmediatamente</strong> primero al proveedor y después al importador o distribuidor y a las autoridades de vigilancia del mercado (art. 26.5).</td>
 <td>Incidente grave (art. 3.49).</td>
 <td>Autoridad de vigilancia del mercado del Estado miembro donde se produjo. Tras el Ómnibus, los proveedores de sistemas de competencia de la Oficina de IA notifican a esta.</td>
 <td>Inmediatamente después de establecer un vínculo causal o una probabilidad razonable de tal vínculo y, en todo caso, <strong>no más tarde de 15 días</strong> desde que se tiene conocimiento. <strong>2 días</strong> si hay infracción generalizada o alteración grave e irreversible de infraestructuras críticas. <strong>10 días</strong> en caso de fallecimiento. Se puede presentar un informe inicial incompleto y completarlo después.</td>
 </tr>
-<tr>
+<tr id="cod-rgpd-arts-33-y-34">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>, arts. 33 y 34</strong></td>
 <td>Responsable del tratamiento. El encargado notifica al responsable sin dilación indebida.</td>
 <td>Brecha de datos personales, salvo que sea improbable que constituya un riesgo para los derechos y libertades.</td>
 <td>Autoridad de control competente (en España, la <a class="ref-ext" href="https://www.aepd.es/" target="_blank" rel="noopener" title="Agencia Espa&#241;ola de Protecci&#243;n de Datos (AEPD)">Agencia Española de Protección de Datos</a>, salvo tratamientos transfronterizos con otra autoridad principal). Comunicación a los interesados si es probable un alto riesgo.</td>
 <td>Autoridad: sin dilación indebida y, a más tardar, <strong>72 horas</strong> desde que se tiene constancia; fuera de plazo, con motivación; información por fases si no está disponible. Interesados: sin dilación indebida. Todas las brechas se documentan, se notifiquen o no.</td>
 </tr>
-<tr>
+<tr id="cod-dora-art-19">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a>, art. 19</strong></td>
 <td>Entidad financiera sujeta a DORA.</td>
 <td>Incidente grave relacionado con las TIC; notificación voluntaria de ciberamenazas significativas.</td>
 <td>Autoridad competente. Información a clientes cuando el incidente afecta a sus intereses financieros.</td>
 <td>Notificación inicial en <strong>4 horas</strong> desde la clasificación como grave y no más tarde de <strong>24 horas</strong> desde que se tiene conocimiento; informe intermedio en <strong>72 horas</strong> desde la notificación inicial; informe final <strong>un mes</strong> después del último informe intermedio (<a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/spa" target="_blank" rel="noopener" title="Reglamento Delegado (UE) 2025/301 de la Comisi&#243;n, de 23 de octubre de 2024, por el que se completa el Reglamento (UE) 2022/2554 en lo que respecta a las normas t&#233;cnicas de regulaci&#243;n que especifican el contenido y los plazos para la notificaci&#243;n inicial y los informes intermedio y final sobre incidentes graves relacionados con las TIC, as&#237; como el contenido de la notificaci&#243;n voluntaria de ciberamenazas importantes">Reglamento Delegado (UE) 2025/301</a>).</td>
 </tr>
-<tr>
+<tr id="cod-nis2-art-23">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>, art. 23</strong></td>
 <td>Entidad esencial o importante según la transposición nacional.</td>
 <td>Incidente significativo.</td>
@@ -1260,7 +1265,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-incidente-s1">
 <td><strong>Incidente S1</strong></td>
 <td>Comunicación a la comisión delegada en 24 horas: qué ha ocurrido, a quién afecta, qué se ha contenido, qué notificaciones se han hecho o están en plazo, qué decisiones pueden requerirse.</td>
 </tr>
@@ -1268,7 +1273,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>Trimestral</strong></td>
 <td>Incidentes S1 y S2 con estado; notificaciones regulatorias y su cumplimiento; no conformidades críticas y mayores abiertas y vencidas; tendencias de los indicadores; lecciones sistémicas; incidentes de proveedores; decisiones solicitadas. Se presenta con el informe trimestral de segunda línea (<a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>).</td>
 </tr>
-<tr>
+<tr id="cod-anual-c5">
 <td><strong>Anual (C5)</strong></td>
 <td>Eficacia de los procesos de incidentes y no conformidades; recurrencias; resultados de simulacros; ajustes propuestos a plazos y umbrales.</td>
 </tr>
@@ -1286,37 +1291,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-p26">
 <td><strong><a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a></strong></td>
 <td>Plan de respuesta a incidentes</td>
 <td>Tipos y severidad aplicables al sistema; contactos y roles; criterios y procedimiento de parada; conservación de evidencias; matriz de notificaciones con plazos y responsables; calendario de simulacros. Los modelos de notificación y comunicación están en <a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html">P51</a>. Fase 6; se prepara antes de G5.</td>
 </tr>
-<tr>
+<tr id="cod-p27">
 <td><strong><a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></strong></td>
 <td>Registro de incidentes y cambios</td>
 <td>Campos de la sección 7. Fase 6.</td>
 </tr>
-<tr>
+<tr id="cod-p50">
 <td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">P50</a></strong></td>
 <td>Registro de no conformidades</td>
 <td>Registro NC-AAAA-NNN con clasificación, contención, acciones, verificación de eficacia y cierre (sección 3).</td>
 </tr>
-<tr>
+<tr id="cod-p51">
 <td><strong><a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html">P51</a></strong></td>
 <td>Notificaciones y comunicaciones de incidentes</td>
 <td>Valoración por régimen, decisión motivada de no notificar, modelos de notificación y comunicaciones a afectados (sección 5).</td>
 </tr>
-<tr>
+<tr id="cod-p52">
 <td><strong><a href="plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a></strong></td>
 <td>Análisis de causa raíz y plan de acción correctiva</td>
 <td>Hoja de trabajo de los cinco porqués y del diagrama de causa y efecto, y plan de acción (secciones 3.5 y 3.6).</td>
 </tr>
-<tr>
+<tr id="cod-p42">
 <td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a></strong></td>
 <td>Informe trimestral de segunda línea</td>
 <td>Información trimestral al consejo (sección 9).</td>
 </tr>
-<tr>
+<tr id="cod-t08">
 <td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
 <td>Registro de no conformidades e incidentes</td>
 <td>Registro de NC-AAAA-NNN e INC-AAAA-NNN con estados, plazos, relojes de notificación, alertas de vencimiento, vínculos con riesgos y <em>gates</em>, e indicadores de la sección 8. Módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>.</td>
@@ -1397,7 +1402,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://eur-lex.europa.eu/eli/reg_del/2025/301/oj/spa" target="_blank" rel="noopener">Reglamento Delegado (UE) 2025/301 de la Comisi&#243;n, de 23 de octubre de 2024, por el que se completa el Reglamento (UE) 2022/2554 en lo que respecta a las normas t&#233;cnicas de regulaci&#243;n que especifican el contenido y los plazos para la notificaci&#243;n inicial y los informes intermedio y final sobre incidentes graves relacionados con las TIC, as&#237; como el contenido de la notificaci&#243;n voluntaria de ciberamenazas importantes</a><span> · Comisi&#243;n Europea · 23-10-2024</span></li><li><a href="https://www.aepd.es/" target="_blank" rel="noopener">Agencia Espa&#241;ola de Protecci&#243;n de Datos (AEPD)</a><span> · Agencia Espa&#241;ola de Protecci&#243;n de Datos</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

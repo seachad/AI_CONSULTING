@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1409,7 +1414,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-dat-01">
 <td><strong>DAT-01</strong></td>
 <td>Ownership coverage</td>
 <td>Datasets used by systems in production with an assigned owner ÷ datasets used by systems in production</td>
@@ -1417,7 +1422,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Catalogue, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-dat-02">
 <td><strong>DAT-02</strong></td>
 <td>Catalogue coverage</td>
 <td>Datasets used by AI with a complete record ÷ datasets used by AI</td>
@@ -1425,7 +1430,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Catalogue</td>
 <td>100% in Enterprise</td>
 </tr>
-<tr>
+<tr id="cod-dat-03">
 <td><strong>DAT-03</strong></td>
 <td>Legal basis coverage</td>
 <td>Datasets with personal data used by AI with verified legal basis and purpose ÷ datasets with personal data used by AI</td>
@@ -1433,7 +1438,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Catalogue, record of processing activities</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-dat-04">
 <td><strong>DAT-04</strong></td>
 <td>Quality by dimension</td>
 <td>Records that pass the dimension's rules ÷ records assessed (by dataset and dimension)</td>
@@ -1441,7 +1446,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Quality monitoring</td>
 <td>Threshold set per use case in phase 3</td>
 </tr>
-<tr>
+<tr id="cod-dat-05">
 <td><strong>DAT-05</strong></td>
 <td>Critical datasets within threshold</td>
 <td>Critical datasets that meet all their thresholds ÷ critical datasets</td>
@@ -1449,7 +1454,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Quality monitoring</td>
 <td>≥ 95%</td>
 </tr>
-<tr>
+<tr id="cod-dat-06">
 <td><strong>DAT-06</strong></td>
 <td>Lineage coverage</td>
 <td>Systems in production with current <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> ÷ systems in production</td>
@@ -1457,7 +1462,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-dat-07">
 <td><strong>DAT-07</strong></td>
 <td>G3 decisions due to data</td>
 <td>G3 decisions with an Iterate, Pivot or Stop outcome and the reason <em>Insufficient data</em> ÷ G3 decisions</td>
@@ -1465,7 +1470,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></td>
 <td>For interpretation, not a target: very low may indicate a lax assessment; very high, poor opportunity selection</td>
 </tr>
-<tr>
+<tr id="cod-dat-08">
 <td><strong>DAT-08</strong></td>
 <td>Retention compliance</td>
 <td>Datasets with a defined and applied retention period ÷ datasets used by AI</td>
@@ -1473,7 +1478,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Catalogue</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-dat-09">
 <td><strong>DAT-09</strong></td>
 <td>Incidents caused by data</td>
 <td>AI incidents whose root cause lies in data ÷ closed AI incidents</td>
@@ -1481,7 +1486,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
 <td>Decreasing trend</td>
 </tr>
-<tr>
+<tr id="cod-dat-10">
 <td><strong>DAT-10</strong></td>
 <td>Data access time</td>
 <td>Median days between a data access request for an initiative and its authorised availability</td>
@@ -1489,7 +1494,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Access requests</td>
 <td>Decreasing trend</td>
 </tr>
-<tr>
+<tr id="cod-dat-11">
 <td><strong>DAT-11</strong></td>
 <td>Validated synthetic data</td>
 <td>Synthetic datasets in use with recorded utility and privacy validation ÷ synthetic datasets in use</td>
@@ -1512,7 +1517,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-cnc-01">
 <td><strong>CNC-01</strong></td>
 <td>Sources with an owner</td>
 <td>Knowledge sources connected to AI with a content owner ÷ connected sources</td>
@@ -1520,7 +1525,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Source inventory</td>
 <td>100%</td>
 </tr>
-<tr>
+<tr id="cod-cnc-02">
 <td><strong>CNC-02</strong></td>
 <td>Content validity</td>
 <td>Indexed documents within their review date ÷ indexed documents</td>
@@ -1528,7 +1533,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Source metadata</td>
 <td>≥ 95%</td>
 </tr>
-<tr>
+<tr id="cod-cnc-03">
 <td><strong>CNC-03</strong></td>
 <td>Use of expired content</td>
 <td>Sampled responses citing documents that are no longer valid ÷ sampled responses with a citation</td>
@@ -1536,7 +1541,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Continuous evaluation</td>
 <td>Close to 0%</td>
 </tr>
-<tr>
+<tr id="cod-cnc-04">
 <td><strong>CNC-04</strong></td>
 <td>Faithfulness to sources</td>
 <td>Evaluated responses whose statements are supported by the retrieved sources ÷ evaluated responses</td>
@@ -1544,7 +1549,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Continuous evaluation</td>
 <td>Threshold per use case; shared with OPE-09</td>
 </tr>
-<tr>
+<tr id="cod-cnc-05">
 <td><strong>CNC-05</strong></td>
 <td>Improper exposure</td>
 <td>Findings of access to content without permission detected in testing or in production, per period</td>
@@ -1552,7 +1557,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Permission testing, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></td>
 <td>0</td>
 </tr>
-<tr>
+<tr id="cod-cnc-06">
 <td><strong>CNC-06</strong></td>
 <td>Critical knowledge dependence</td>
 <td>Critical domains mastered by two people or fewer and without usable documentation ÷ critical domains</td>
@@ -1560,7 +1565,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Dependence map</td>
 <td>Decreasing trend</td>
 </tr>
-<tr>
+<tr id="cod-cnc-07">
 <td><strong>CNC-07</strong></td>
 <td>Capture coverage</td>
 <td>Dependent critical domains with captured and validated content ÷ dependent critical domains</td>
@@ -1568,7 +1573,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Capture plan</td>
 <td>As per plan</td>
 </tr>
-<tr>
+<tr id="cod-cnc-08">
 <td><strong>CNC-08</strong></td>
 <td>Queries without a relevant source</td>
 <td>Queries with no relevant document retrieved ÷ evaluated queries</td>
@@ -1676,42 +1681,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-dat-01">
 <td><strong>RT-DAT-01</strong></td>
 <td>Insufficient quality: insufficient data or data of inadequate quality for the purpose.</td>
 <td>Phase 3 assessment with real data; thresholds and monitoring.</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-03">
 <td><strong>RT-DAT-03</strong></td>
 <td>Lack of legal basis or incompatible purpose in the use of personal data.</td>
 <td>Record, verification by the data protection officer, impact assessment.</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-02">
 <td><strong>RT-DAT-02</strong></td>
 <td>Non-representative data and bias that produce discriminatory outcomes.</td>
 <td>Representativeness, bias testing, section 9.4.</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-04">
 <td><strong>RT-DAT-04</strong></td>
 <td>Unknown lineage: loss of traceability of data and models.</td>
 <td><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a> current and updated with every change.</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-05">
 <td><strong>RT-DAT-05</strong></td>
 <td>Data exposure in the AI lifecycle: leakage of personal or confidential data through prompts, retrieval or memorisation.</td>
 <td>Sections 9.2 and 10.4; extraction testing.</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-06">
 <td><strong>RT-DAT-06</strong></td>
 <td>Obsolete or contradictory knowledge in responses.</td>
 <td>Curation and validity; CNC-02 and CNC-03.</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-06">
 <td><strong>RT-LEG-06</strong></td>
 <td>Infringement of intellectual property or other third-party rights through the data or content used.</td>
 <td>Section 11; supplier assessment.</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td>Dependence on key people: loss of critical knowledge when people leave.</td>
 <td>Section 10.6; CNC-06 and CNC-07.</td>
@@ -1740,52 +1745,52 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Incidents, suppliers, corporate use</td>
 <td>Incidents caused by data; supplier terms; data in unauthorised tools.</td>
 </tr>
-<tr>
+<tr id="cod-p02">
 <td><strong><a href="plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html">P02</a></strong></td>
 <td>Context and constraints statement</td>
 <td>Phase 0 data constraints.</td>
 </tr>
-<tr>
+<tr id="cod-p10">
 <td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></strong></td>
 <td>Feasibility assessment</td>
 <td>Data availability and quality assessment (section 5.2).</td>
 </tr>
-<tr>
+<tr id="cod-p11">
 <td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></strong></td>
 <td>Regulatory classification and impact assessments</td>
 <td>Legal basis, data protection impact assessment, data for detecting bias.</td>
 </tr>
-<tr>
+<tr id="cod-p14">
 <td><strong><a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></strong></td>
 <td>AI supplier assessment</td>
 <td>Use of prompts and data by the supplier; copyright policy of general-purpose models.</td>
 </tr>
-<tr>
+<tr id="cod-p15">
 <td><strong><a href="plantillas/P15_SEVEN-G_Registro_de_arquitectura.html">P15</a></strong></td>
 <td>Architecture record</td>
 <td>Licences for components and models.</td>
 </tr>
-<tr>
+<tr id="cod-p16">
 <td><strong><a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a></strong></td>
 <td>Data and model lineage</td>
 <td>Main template of this document; uses the records and the source inventory in <a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html">P64</a>.</td>
 </tr>
-<tr>
+<tr id="cod-p18">
 <td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></strong></td>
 <td>Security design</td>
 <td>Retrieval and agent permissions.</td>
 </tr>
-<tr>
+<tr id="cod-p22">
 <td><strong><a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a></strong></td>
 <td>Validation and pilot results</td>
 <td>Quality, bias, data leakage and permission testing.</td>
 </tr>
-<tr>
+<tr id="cod-p25">
 <td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
 <td>Monitoring and alert configuration</td>
 <td>Data quality and validity thresholds.</td>
 </tr>
-<tr>
+<tr id="cod-p64">
 <td><strong><a href="plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html">P64</a></strong></td>
 <td>Dataset record and knowledge source inventory</td>
 <td>Record of each dataset and inventory of knowledge sources, if the company has no data catalogue.</td>
@@ -1868,7 +1873,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2016/943/oj/eng" target="_blank" rel="noopener">Directive (EU) 2016/943 of the European Parliament and of the Council of 8 June 2016 on the protection of undisclosed know-how and business information (trade secrets) against their unlawful acquisition, use and disclosure</a><span> · Parlamento Europeo y Consejo de la UE · 08-06-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/dir/2019/790/oj/eng" target="_blank" rel="noopener">Directive (EU) 2019/790 of the European Parliament and of the Council of 17 April 2019 on copyright and related rights in the Digital Single Market</a><span> · Parlamento Europeo y Consejo de la UE · 17-04-2019</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.edpb.europa.eu/edpb_en" target="_blank" rel="noopener">European Data Protection Board (EDPB)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en" target="_blank" rel="noopener">Opinion 28/2024 on certain data protection aspects related to the processing of personal data in the context of AI models</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos · 17-12-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

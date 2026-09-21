@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -886,27 +891,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-c1-diagnosis">
 <td><strong>C1 · Diagnosis</strong></td>
 <td>How many AI systems do we have, including suppliers' systems and those employees use on their own initiative? What is our real maturity and on what evidence? How much value is validated and how much does AI cost today? Are we efficient or are we transforming?</td>
 <td>Inventory; D1–D7 maturity with evidence; value by status and recurring cost; transformation index profile.</td>
 </tr>
-<tr>
+<tr id="cod-c2-direction">
 <td><strong>C2 · Direction</strong></td>
 <td>In which spheres do we want to Optimise, Augment or Transform? What risks will we not accept under any circumstances? Above what investment must the board decide? What will we not do with AI?</td>
 <td>AI thesis; ambition by sphere; risk appetite and thresholds; corporate policy; framework budget.</td>
 </tr>
-<tr>
+<tr id="cod-c3-portfolio">
 <td><strong>C3 · Portfolio</strong></td>
 <td>What do we fund and what do we stop? Is the portfolio balanced between efficiency and transformation? Where does the next euro deliver most? Do we have the capacity to execute it?</td>
 <td>Prioritised portfolio with additional net value per euro; distribution by ambition level; retirement criteria; available capacity.</td>
 </tr>
-<tr>
+<tr id="cod-c4-oversight">
 <td><strong>C4 · Oversight</strong></td>
 <td>Is what was decided being carried out? What has changed since the last session? What incidents have there been and how were they managed? Which recommendations are overdue? What do we have to decide today?</td>
 <td>Quarterly pack; dashboard; register of recommendations and decisions.</td>
 </tr>
-<tr>
+<tr id="cod-c5-review">
 <td><strong>C5 · Review</strong></td>
 <td>Have we progressed in maturity, with evidence? Has our transformation profile changed? Has the thesis been fulfilled? What have we learned from what we stopped and retired? What do we change for the next cycle?</td>
 <td>Review of maturity and index; actual versus target ambition; stop and retirement reasons; proposed adjustments.</td>
@@ -1632,7 +1637,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

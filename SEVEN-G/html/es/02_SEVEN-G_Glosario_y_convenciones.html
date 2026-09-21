@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -646,7 +651,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>33 §7.1; 13 §5.2</td>
 <td>risk acceptance †</td>
 </tr>
-<tr>
+<tr id="cod-adelantar-g7">
 <td><strong>Adelantar G7</strong></td>
 <td>Resultado de R6 cuando la iniciativa presenta desviaciones relevantes de valor, riesgo o cumplimiento: se abre G7 sin esperar al calendario.</td>
 <td>01 §7.3; 21 §5.3</td>
@@ -1180,7 +1185,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>21 §5.1; 03 §3.4</td>
 <td>gate compliance rate †</td>
 </tr>
-<tr>
+<tr id="cod-grados-de-las-esferas-08-y-09">
 <td><strong>Grados de las esferas 08 y 09</strong></td>
 <td>Escala propia con la que se evalúan las dimensiones de las esferas 08 y 09: Ausente, Básico, Sistemático, Avanzado (sección 4.10). No son niveles de madurez ni niveles de ambición.</td>
 <td>10 §4.2</td>
@@ -1656,7 +1661,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-r6-revision-de-continuidad">
 <td><strong>R6 · Revisión de continuidad</strong></td>
 <td>Revisión periódica que sustituye al <em>gate</em> en la fase 6: al menos trimestral en Enterprise y semestral en Lite. Comprueba valor realizado frente a hipótesis, estabilidad, incidentes, cumplimiento y vigencia de la clasificación. Resultados: Continuar la operación, Continuar con condiciones o Adelantar G7. Omitirla es no conformidad mayor.</td>
 <td>01 §6.8, §7.3; 21 §6.7; 52 §8</td>
@@ -2175,7 +2180,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Se mide el tiempo en producción</td>
 <td>In production</td>
 </tr>
-<tr>
+<tr id="cod-pendiente-de-g7">
 <td><strong>Pendiente de G7</strong></td>
 <td>En decisión de escalado, iteración o retirada.</td>
 <td>Sí</td>
@@ -2643,37 +2648,37 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-d1">
 <td><strong>D1</strong></td>
 <td>Estrategia y gobierno</td>
 <td>Strategy and governance</td>
 </tr>
-<tr>
+<tr id="cod-d2">
 <td><strong>D2</strong></td>
 <td>Valor y cartera</td>
 <td>Value and portfolio</td>
 </tr>
-<tr>
+<tr id="cod-d3">
 <td><strong>D3</strong></td>
 <td>Datos y conocimiento</td>
 <td>Data and knowledge</td>
 </tr>
-<tr>
+<tr id="cod-d4">
 <td><strong>D4</strong></td>
 <td>Tecnología y operación</td>
 <td>Technology and operations</td>
 </tr>
-<tr>
+<tr id="cod-d5">
 <td><strong>D5</strong></td>
 <td>Personas y adopción</td>
 <td>People and adoption</td>
 </tr>
-<tr>
+<tr id="cod-d6">
 <td><strong>D6</strong></td>
 <td>Riesgo, seguridad y cumplimiento</td>
 <td>Risk, security and compliance</td>
 </tr>
-<tr>
+<tr id="cod-d7">
 <td><strong>D7</strong></td>
 <td>Medición y evidencia</td>
 <td>Measurement and evidence</td>
@@ -2797,28 +2802,28 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-a0">
 <td><strong>A0</strong></td>
 <td>Asistencia</td>
 <td>Informa, resume o genera contenido.</td>
 <td>La persona decide y ejecuta.</td>
 <td>Assistance</td>
 </tr>
-<tr>
+<tr id="cod-a1">
 <td><strong>A1</strong></td>
 <td>Recomendación</td>
 <td>Propone una decisión o acción concreta.</td>
 <td>La persona valida cada acción antes de ejecutarla.</td>
 <td>Recommendation</td>
 </tr>
-<tr>
+<tr id="cod-a2">
 <td><strong>A2</strong></td>
 <td>Actuación supervisada</td>
 <td>Ejecuta acciones dentro de límites definidos.</td>
 <td>Supervisa, puede interrumpir y revisa a posteriori.</td>
 <td>Supervised action</td>
 </tr>
-<tr>
+<tr id="cod-a3">
 <td><strong>A3</strong></td>
 <td>Actuación autónoma</td>
 <td>Ejecuta secuencias de acciones sin revisión individual dentro de límites estrictos.</td>
@@ -2838,22 +2843,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-s1-critica">
 <td><strong>S1 · Crítica</strong></td>
 <td>Posible incidente grave según el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>; posible incidente grave de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o significativo de <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>; brecha de datos personales con probable alto riesgo; acción no autorizada de un agente con efecto sobre dinero, terceros, datos personales o producción; daño a personas o discriminación a escala; función crítica fuera de su tolerancia; impacto 5 en cualquier eje.</td>
 <td>S1 Critical</td>
 </tr>
-<tr>
+<tr id="cod-s2-alta">
 <td><strong>S2 · Alta</strong></td>
 <td>Impacto 4; brecha notificable sin alto riesgo; errores repetidos visibles para clientes; identidad de agente comprometida y contenida; fallo de un control crítico sin daño; incidente relevante de un proveedor N3.</td>
 <td>S2 High</td>
 </tr>
-<tr>
+<tr id="cod-s3-media">
 <td><strong>S3 · Media</strong></td>
 <td>Impacto 3; degradación fuera de umbral en un proceso relevante; inyección de instrucciones con éxito sin acción sensible; fuga interna limitada sin riesgo para las personas.</td>
 <td>S3 Medium</td>
 </tr>
-<tr>
+<tr id="cod-s4-baja">
 <td><strong>S4 · Baja</strong></td>
 <td>Impacto 1–2; cuasi incidentes; intentos bloqueados que revelan una amenaza nueva.</td>
 <td>S4 Low</td>
@@ -2914,7 +2919,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-n1-estandar">
 <td><strong>N1 · Estándar</strong></td>
 <td>Proceso interno con impacto 1–2.</td>
 <td>Públicos o internos no sensibles.</td>
@@ -2922,7 +2927,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Menos de 3 meses sin coste relevante.</td>
 <td>N1 Standard</td>
 </tr>
-<tr>
+<tr id="cod-n2-reforzado">
 <td><strong>N2 · Reforzado</strong></td>
 <td>Proceso relevante con impacto 3; exposición directa; decisiones sobre personas.</td>
 <td>Datos personales o información confidencial.</td>
@@ -2930,7 +2935,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3 a 12 meses o coste relevante.</td>
 <td>N2 Enhanced</td>
 </tr>
-<tr>
+<tr id="cod-n3-critico">
 <td><strong>N3 · Crítico</strong></td>
 <td>Función crítica o importante; impacto 4–5; sistema de alto riesgo.</td>
 <td>Categorías especiales, datos personales a gran escala, secretos empresariales o información confidencial crítica.</td>
@@ -3299,42 +3304,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>10 §2</td>
 <td>04 Operaciones</td>
 </tr>
-<tr>
+<tr id="cod-c1-c5">
 <td><strong>C1–C5</strong></td>
 <td>C + número</td>
 <td>Etapas del ciclo corporativo: Diagnóstico, Dirección, Cartera, Supervisión, Revisión.</td>
 <td>01 §5.1</td>
 <td>C2</td>
 </tr>
-<tr>
+<tr id="cod-fases-0-7">
 <td><strong>Fases 0–7</strong></td>
 <td>Número (F0–F7 en columnas de indicadores)</td>
 <td>Fases del ciclo de vida de la iniciativa.</td>
 <td>01 §6.1</td>
 <td>fase 3</td>
 </tr>
-<tr>
+<tr id="cod-g0-g5-r6-g7">
 <td><strong>G0–G5 · R6 · G7</strong></td>
 <td>G + número; R6 para la revisión de continuidad</td>
 <td>Puertas de decisión: Autorización, Oportunidad, Hipótesis, Viabilidad, Diseño, Puesta en producción, Revisión de continuidad, Escalado o retirada. No existe G6.</td>
 <td>01 §6.1</td>
 <td>G3</td>
 </tr>
-<tr>
+<tr id="cod-g-r6">
 <td><strong>G&lt;n&gt;.&lt;nn&gt; · R6.&lt;nn&gt;</strong></td>
 <td>Puerta + punto + dos cifras</td>
 <td>Criterios de <em>gate</em>. Un código no se reutiliza aunque el criterio se retire.</td>
 <td>21 §2.1</td>
 <td>G3.08 · R6.04</td>
 </tr>
-<tr>
+<tr id="cod-lv-g-lv-r6-lv-ev-lv-ag">
 <td><strong>LV-G&lt;n&gt; · LV-R6 · LV-EV · LV-AG</strong></td>
 <td>LV + guion + ámbito</td>
 <td>Listas de verificación por puerta, de validación de evidencias y de agentes.</td>
 <td>22 §1</td>
 <td>LV-G5</td>
 </tr>
-<tr>
+<tr id="cod-ev-01-ev-14">
 <td><strong>EV.01–EV.14</strong></td>
 <td>EV + punto + dos cifras</td>
 <td>Reglas de evidencia válida.</td>
@@ -3355,196 +3360,196 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Bloque H; 01 §6.10</td>
 <td><a href="plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html">P29</a></td>
 </tr>
-<tr>
+<tr id="cod-d1-d7">
 <td><strong>D1–D7</strong></td>
 <td>D + número</td>
 <td>Dimensiones de madurez.</td>
 <td>11 §2.1</td>
 <td>D6</td>
 </tr>
-<tr>
+<tr id="cod-niveles-de-madurez-0-5">
 <td><strong>Niveles de madurez 0–5</strong></td>
 <td>Número entero</td>
 <td>Niveles de madurez.</td>
 <td>11 §2.2</td>
 <td>nivel 3</td>
 </tr>
-<tr>
+<tr id="cod-s1-s4">
 <td><strong>S1–S4</strong></td>
 <td>S + número</td>
 <td>Severidad de incidentes de IA.</td>
 <td>37 §4.2</td>
 <td>S1</td>
 </tr>
-<tr>
+<tr id="cod-a0-a3">
 <td><strong>A0–A3</strong></td>
 <td>A + número</td>
 <td>Niveles de autonomía.</td>
 <td>35 §5.1</td>
 <td>A2</td>
 </tr>
-<tr>
+<tr id="cod-n1-n3">
 <td><strong>N1–N3</strong></td>
 <td>N + número</td>
 <td>Niveles de exigencia a terceros.</td>
 <td>36 §4</td>
 <td>N3</td>
 </tr>
-<tr>
+<tr id="cod-b1-b3">
 <td><strong>B1–B3</strong></td>
 <td>B + número</td>
 <td>Condiciones de base del índice de transformación.</td>
 <td>12 §4.3</td>
 <td>B2</td>
 </tr>
-<tr>
+<tr id="cod-f1-f10-f2v">
 <td><strong>F1–F10 · F2v</strong></td>
 <td>F + número</td>
 <td>Fórmulas oficiales de medición.</td>
 <td>40 §6</td>
 <td>F7</td>
 </tr>
-<tr>
+<tr id="cod-rt-nn">
 <td><strong>RT-&lt;CAT&gt;-NN</strong></td>
 <td>RT + categoría de tres letras + dos cifras</td>
 <td>Riesgos tipo del catálogo (70 en la versión 0.1): EST 6 · TEC 8 · DAT 6 · ECO 5 · LEG 8 · ORG 9 · REP 5 · GEN 9 · SEG 7 · TER 7.</td>
 <td>33 §9</td>
 <td>RT-GEN-01</td>
 </tr>
-<tr>
+<tr id="cod-seg-01-seg-20">
 <td><strong>SEG-01–SEG-20</strong></td>
 <td>SEG + guion + dos cifras</td>
 <td>Controles de seguridad de IA.</td>
 <td>35 §6</td>
 <td>SEG-02</td>
 </tr>
-<tr>
+<tr id="cod-ag-01-ag-20">
 <td><strong>AG-01–AG-20</strong></td>
 <td>AG + guion + dos cifras</td>
 <td>Controles de agentes.</td>
 <td>35 §7</td>
 <td>AG-09</td>
 </tr>
-<tr>
+<tr id="cod-ind-nn">
 <td><strong>IND-&lt;FAM&gt;-NN</strong></td>
 <td>IND + familia de tres letras + dos cifras</td>
 <td>Indicadores del catálogo (159 en 13 familias): VAL, COS, EMB, AGI, RIE, OPE, ADO, DAT, CLI, TRA, MAD, CON (consejo) y PRO (procesos y decisión). Un código no se reutiliza.</td>
 <td>41 §2 y §4</td>
 <td>IND-VAL-05</td>
 </tr>
-<tr>
+<tr id="cod-ie">
 <td><strong>IE&lt;esfera&gt;.&lt;nn&gt;</strong></td>
 <td>IE + esfera de dos cifras + punto + dos cifras</td>
 <td>Indicadores por esfera, provisionales hasta su consolidación en el <a href="41_SEVEN-G_Catalogo_de_indicadores.html">documento 41</a>.</td>
 <td>10 §5–7</td>
 <td>IE01.04</td>
 </tr>
-<tr>
+<tr id="cod-ia-aaaa-nnn">
 <td><strong>IA-AAAA-NNN</strong></td>
 <td>Año de registro + número correlativo</td>
 <td>Iniciativas.</td>
 <td>03 §3.3</td>
 <td>IA-2026-014</td>
 </tr>
-<tr>
+<tr id="cod-ia-aaaa-nnn-rnn">
 <td><strong>IA-AAAA-NNN · Rnn</strong></td>
 <td>Código de iniciativa + R + dos cifras</td>
 <td>Riesgo concreto de una iniciativa.</td>
 <td>33 §8.1</td>
 <td>IA-2026-014 · R03</td>
 </tr>
-<tr>
+<tr id="cod-sia-aaaa-nnn">
 <td><strong>SIA-AAAA-NNN</strong></td>
 <td>Año de alta + número correlativo que no se reinicia ni reutiliza</td>
 <td>Sistemas de IA del inventario.</td>
 <td>32 §3.1</td>
 <td>SIA-2026-021</td>
 </tr>
-<tr>
+<tr id="cod-rec-aaaa-nnn">
 <td><strong>REC-AAAA-NNN</strong></td>
 <td>Año + número correlativo sin reinicio</td>
 <td>Recomendaciones y encargos del consejo o de su comisión delegada.</td>
 <td>62 §3</td>
 <td>REC-2026-007</td>
 </tr>
-<tr>
+<tr id="cod-dec-aaaa-nnn">
 <td><strong>DEC-AAAA-NNN</strong></td>
 <td>Año + número correlativo sin reinicio</td>
 <td>Decisiones del consejo o de su comisión delegada.</td>
 <td>62 §3</td>
 <td>DEC-2026-014</td>
 </tr>
-<tr>
+<tr id="cod-nc-aaaa-nnn">
 <td><strong>NC-AAAA-NNN</strong></td>
 <td>Año de detección + número correlativo</td>
 <td>No conformidades.</td>
 <td>37 §3.2</td>
 <td>NC-2026-003</td>
 </tr>
-<tr>
+<tr id="cod-inc-aaaa-nnn">
 <td><strong>INC-AAAA-NNN</strong></td>
 <td>Año + número correlativo</td>
 <td>Incidentes de IA.</td>
 <td>37 §7.1</td>
 <td>INC-2026-006</td>
 </tr>
-<tr>
+<tr id="cod-aud-aaaa-nnn">
 <td><strong>AUD-AAAA-NNN</strong></td>
 <td>Año + número correlativo</td>
 <td>Informes de auditoría de IA.</td>
 <td>38 §9.1</td>
 <td>AUD-2026-002</td>
 </tr>
-<tr>
+<tr id="cod-h-nn">
 <td><strong>H-NN</strong></td>
 <td>H + guion + dos cifras, dentro de cada informe</td>
 <td>Hallazgos de un informe de auditoría.</td>
 <td>38 §9.2</td>
 <td>H-01</td>
 </tr>
-<tr>
+<tr id="cod-exc-aaaa-nnn">
 <td><strong>EXC-AAAA-NNN</strong></td>
 <td>Año + número correlativo</td>
 <td>Excepciones a la política o al marco.</td>
 <td>30 §7.4; <a href="plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html">P40</a></td>
 <td>EXC-2026-004</td>
 </tr>
-<tr>
+<tr id="cod-dci-aaaa-nnn">
 <td><strong>DCI-AAAA-NNN</strong></td>
 <td>Año + número correlativo</td>
 <td>Declaraciones de independencia y de conflictos de interés.</td>
 <td>30 §12; <a href="plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html">P41</a></td>
 <td>DCI-2026-011</td>
 </tr>
-<tr>
+<tr id="cod-prv-aaaa-nnn">
 <td><strong>PRV-AAAA-NNN</strong></td>
 <td>Año de alta + número correlativo</td>
 <td>Relación con un proveedor de IA (tercero y servicio) en el registro de proveedores.</td>
 <td>36 §9; <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a></td>
 <td>PRV-2026-003</td>
 </tr>
-<tr>
+<tr id="cod-sol-aaaa-nnn-com-aaaa-nnn">
 <td><strong>SOL-AAAA-NNN · COM-AAAA-NNN</strong></td>
 <td>Año + número correlativo</td>
 <td>Solicitudes de herramienta nueva y comunicaciones de empleados sobre usos o incidentes de IA.</td>
 <td>31 §4; <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a></td>
 <td>SOL-2026-017</td>
 </tr>
-<tr>
+<tr id="cod-inf-aaaa-nnn">
 <td><strong>INF-AAAA-NNN</strong></td>
 <td>Año + número correlativo</td>
 <td>Informaciones y consultas a la representación de los trabajadores.</td>
 <td>50 §7; <a href="plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html">P46</a></td>
 <td>INF-2026-002</td>
 </tr>
-<tr>
+<tr id="cod-pa-aaaa-nnn-hnn">
 <td><strong>PA-AAAA-NNN · Hnn</strong></td>
 <td>Año + número correlativo; hallazgo dentro de la campaña</td>
 <td>Campañas de pruebas adversarias y sus hallazgos.</td>
 <td>35 §8; <a href="plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html">P53</a></td>
 <td>PA-2026-001 · H03</td>
 </tr>
-<tr>
+<tr id="cod-idn-aaaa-nnn">
 <td><strong>IDN-AAAA-NNN</strong></td>
 <td>Año de alta + número correlativo</td>
 <td>Identidades no humanas (agentes, cuentas de servicio, claves).</td>
@@ -4115,7 +4120,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Inteligencia artificial</td>
 <td>—</td>
 </tr>
-<tr>
+<tr id="cod-iso-iec-42001">
 <td><strong>ISO/IEC 42001</strong></td>
 <td>Norma internacional de sistemas de gestión de la IA</td>
 <td>No se traduce.</td>
@@ -4135,7 +4140,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Base de conocimiento de tácticas y técnicas de ataque a sistemas de IA</td>
 <td>Referencia de amenazas (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
 </tr>
-<tr>
+<tr id="cod-nis2">
 <td><strong><a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a></strong></td>
 <td>Directiva (UE) 2022/2555, relativa a medidas para un elevado nivel común de ciberseguridad</td>
 <td>No se traduce.</td>
@@ -4150,7 +4155,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><em>Open Worldwide Application Security Project</em></td>
 <td>Listas de riesgos de aplicaciones con modelos de lenguaje y de agentes (<a href="35_SEVEN-G_Seguridad_de_IA_y_agentes.html">documento 35</a>).</td>
 </tr>
-<tr>
+<tr id="cod-p80">
 <td><strong>P80</strong></td>
 <td>Percentil 80</td>
 <td>Se usa con la mediana en las métricas de tiempo.</td>
@@ -4199,27 +4204,27 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Registro de iniciativas</td>
 <td>Implementa la taxonomía controlada (sección 5), los estados de iniciativa y criterio (secciones 4.2 y 4.3), los resultados de <em>gate</em> (4.1) y los códigos IA-AAAA-NNN. Primera herramienta de la ola 1, que se construye tras este documento.</td>
 </tr>
-<tr>
+<tr id="cod-t02">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>Inventario de sistemas de IA</td>
 <td>Usa los códigos SIA-AAAA-NNN, la clasificación regulatoria y la autonomía A0–A3.</td>
 </tr>
-<tr>
+<tr id="cod-t03">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td>Gestor de <em>gates</em></td>
 <td>Usa los códigos G&lt;n&gt;.&lt;nn&gt; y R6.&lt;nn&gt;, la obligatoriedad de criterios, las reglas EV y los resultados admitidos por puerta.</td>
 </tr>
-<tr>
+<tr id="cod-t04">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></strong></td>
 <td>Determinación de intensidad</td>
 <td>Usa los criterios Enterprise y la escala de la sección 4.6.</td>
 </tr>
-<tr>
+<tr id="cod-t05">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
 <td>Clasificador de ambición</td>
 <td>Usa los niveles y estados de ambición de la sección 4.5.</td>
@@ -4314,7 +4319,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" target="_blank" rel="noopener">Ley Org&#225;nica 3/2018, de 5 de diciembre, de Protecci&#243;n de Datos Personales y garant&#237;a de los derechos digitales</a><span> · Cortes Generales (Jefatura del Estado) · 05-12-2018</span></li><li><a href="https://www.edpb.europa.eu/edpb_es" target="_blank" rel="noopener">Comit&#233; Europeo de Protecci&#243;n de Datos (CEPD)</a><span> · Comit&#233; Europeo de Protecci&#243;n de Datos (organismo de la UE creado por el art. 68 del RGPD)</span></li><li><a href="https://digital-strategy.ec.europa.eu/es/policies/ai-office" target="_blank" rel="noopener">Oficina Europea de IA (Comisi&#243;n Europea)</a><span> · Comisi&#243;n Europea (DG CONNECT)</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems), base de conocimiento de t&#225;cticas y t&#233;cnicas adversarias contra sistemas de IA</a><span> · The MITRE Corporation</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

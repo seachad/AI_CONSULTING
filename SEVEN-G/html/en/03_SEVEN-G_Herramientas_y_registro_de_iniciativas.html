@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -599,7 +604,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>G5 passed; in operation with continuity reviews.</td>
 <td>Time in production is measured</td>
 </tr>
-<tr>
+<tr id="cod-awaiting-g7">
 <td><strong>Awaiting G7</strong></td>
 <td>Decision on scaling, iteration or retirement under way.</td>
 <td>Yes</td>
@@ -1103,7 +1108,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td><strong>Initiative register</strong></td>
 <td>CRM-style funnel: phases, statuses, events, tags, value and metrics.</td>
@@ -1113,7 +1118,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Available v0.1</td>
 </tr>
-<tr>
+<tr id="cod-t02">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>Register of all systems, including third-party systems and corporate use.</td>
@@ -1123,7 +1128,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Available v0.1</td>
 </tr>
-<tr>
+<tr id="cod-t03">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a></strong></td>
 <td>Gate manager</td>
 <td>Criteria with status, evidence, verification, decision and conditions.</td>
@@ -1133,7 +1138,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Available v0.1 (128 criteria from <a href="21_SEVEN-G_Criterios_de_gate_y_auditoria.html">document 21</a>)</td>
 </tr>
-<tr>
+<tr id="cod-t04">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a></strong></td>
 <td>Intensity determination</td>
 <td>Lite or Enterprise questionnaire with recorded result.</td>
@@ -1143,7 +1148,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Available v0.1</td>
 </tr>
-<tr>
+<tr id="cod-t05">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a></strong></td>
 <td>Ambition classifier</td>
 <td>Five questions for Optimise, Augment or Transform.</td>
@@ -1170,7 +1175,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t06">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></strong></td>
 <td>Risk matrix and register</td>
 <td>Probability and impact assessment, heat map, inherent and residual risk, controls and their effectiveness, response, contingency and acceptance by the body for its level, with observations from the methodology (Critical without board approval, High without contingency, acceptance expired or by a lower body, review overdue) and CSV export for spreadsheets.</td>
@@ -1180,7 +1185,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Available v0.1. Documented with <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> and <a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></td>
 </tr>
-<tr>
+<tr id="cod-t07">
 <td><strong><a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a></strong></td>
 <td>Regulatory classifier</td>
 <td>Guided questionnaire for classification under the <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)">AI Act</a> and the assessments required.</td>
@@ -1190,7 +1195,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Applied with <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a></td>
 </tr>
-<tr>
+<tr id="cod-t08">
 <td><strong><a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a></strong></td>
 <td>Nonconformity and incident register</td>
 <td>Full process with time limits and alerts.</td>
@@ -1200,7 +1205,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Applied with <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">P50</a> (nonconformity register), <a href="plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html">P51</a> (notifications and communications) and <a href="plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html">P52</a> (root cause), together with <a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a> and <a href="plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html">P27</a></td>
 </tr>
-<tr>
+<tr id="cod-t09">
 <td><strong><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a></strong></td>
 <td>AI supplier register</td>
 <td>Third parties, criticality, contracts, assessment and dependency.</td>
@@ -1210,7 +1215,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Applied with <a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">P57</a> (supplier register and exit plan), <a href="plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html">P55</a> (due diligence), <a href="plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html">P56</a> (contract clauses) and <a href="plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html">P14</a></td>
 </tr>
-<tr>
+<tr id="cod-t10">
 <td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a></strong></td>
 <td>Agent security assessment</td>
 <td>Identity, permissions, intent-based access control, kill switch, injection testing.</td>
@@ -1237,7 +1242,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t11">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></strong></td>
 <td>Value hypothesis canvas and calculator</td>
 <td>Baseline, value lines with formula (F1), annual net value, NPV, ROI, payback and F3 with the C2 horizon and rate; scenarios; C2 economic criterion as information; imports the initiative from <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. Documented with <a href="plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html">P08</a>, <a href="plantillas/P09_SEVEN-G_Linea_base.html">P09</a> and <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a>.</td>
@@ -1247,7 +1252,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Available v0.1</td>
 </tr>
-<tr>
+<tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Validated, declared and estimated value by period and by use case.</td>
@@ -1257,7 +1262,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Applied with <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a> and <a href="plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html">P62</a> (benefits realisation plan)</td>
 </tr>
-<tr>
+<tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
 <td>Cost calculator per use case</td>
 <td>Full and incremental cost, total cost of ownership, allocation of shared costs, consumption forecast with alerts, cost per unit, cost of stopping and reconciliation. Documented with <a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a> and <a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a>.</td>
@@ -1267,7 +1272,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Available v0.1</td>
 </tr>
-<tr>
+<tr id="cod-t14">
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a></strong></td>
 <td>Transformation index calculator</td>
 <td>Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register JSON, from which it calculates the eight signals when it holds the schema 0.5 evidence, and its result feeds the index card of the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html">T17</a>).</td>
@@ -1294,7 +1299,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t15">
 <td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a></strong></td>
 <td>Maturity diagnosis</td>
 <td>84-question questionnaire with evidence and verification; level by dimension and overall level capped by D1 and D6; comparison between assessments and report for the board. Template <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html">P34</a>.</td>
@@ -1304,7 +1309,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Available v0.1</td>
 </tr>
-<tr>
+<tr id="cod-t16">
 <td><strong><a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a></strong></td>
 <td>Portfolio sphere map</td>
 <td>Heat map of spheres × ambition levels with investment and value.</td>
@@ -1314,7 +1319,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>2</td>
 <td>Applied with <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">document 10</a></td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Oversight: value, cost, risk, compliance, incidents, agility, adoption.</td>
@@ -1324,7 +1329,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Available. Fed from <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> through the connector <code>herramientas/T17_panel_consejo</code>: register (JSON) plus <code>config_panel.json</code> (indicator thresholds and lifecycle) → dashboard JSON → full and mobile dashboard, with a funnel and time per stage as in a CRM</td>
 </tr>
-<tr>
+<tr id="cod-t18">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a></strong></td>
 <td>Board recommendations register</td>
 <td>Recommendations with persistent identifier, status, evidence and assessment.</td>
@@ -1334,7 +1339,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Available v0.1: &quot;Board (<a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a>)&quot; view of the <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> register, with decisions (DEC) and recommendations (REC); the <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> connector generates the register page from the recommendations in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></td>
 </tr>
-<tr>
+<tr id="cod-t19">
 <td><strong><a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a></strong></td>
 <td>AI thesis and risk appetite template</td>
 <td>Board decision document, with thresholds and reference time limits.</td>
@@ -1361,7 +1366,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Adoption, training and reassignment of released capacity.</td>
@@ -1371,7 +1376,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Applied with <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a> and <a href="plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html">P45</a> (AI literacy and training plan and register); the released, materialised and reassigned capacity of each initiative is recorded in <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> (schema 0.5)</td>
 </tr>
-<tr>
+<tr id="cod-t21">
 <td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
 <td>Corporate AI use monitor</td>
 <td>Assigned and active licences, unauthorised use, data leakage controls.</td>
@@ -1381,7 +1386,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Applied with <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">P43</a> (catalogue of authorised tools and requests)</td>
 </tr>
-<tr>
+<tr id="cod-t22">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a></strong></td>
 <td>Retirement manager</td>
 <td>Retirement plan, replacement, data and models, communication.</td>
@@ -1405,19 +1410,19 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-wave-1-core">
 <td><strong>Wave 1 · Core</strong></td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a> with <a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/gates">T03</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html">T04</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>; adaptation of <a href="../../herramientas/T17_panel_consejo/index.html">T17</a> and <a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo">T18</a> to be fed from the register.</td>
 <td>After <a href="02_SEVEN-G_Glosario_y_convenciones.html">document 02</a> (Glossary), which sets names and lists.</td>
 <td>Portfolio managed as a funnel, with tracked <em>gates</em> and a connected board dashboard.</td>
 </tr>
-<tr>
+<tr id="cod-wave-2-full-governance">
 <td><strong>Wave 2 · Full governance</strong></td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a>, <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a>, <a href="plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html">T08</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a>, <a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html">T15</a>, <a href="10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html">T16</a>.</td>
 <td>As documents 11, 12, 33, 34, 37 and 40 are completed.</td>
 <td>Risk, compliance, value, maturity and transformation index operational.</td>
 </tr>
-<tr>
+<tr id="cod-wave-3-complements">
 <td><strong>Wave 3 · Complements</strong></td>
 <td><a href="plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html">T09</a>, <a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">T10</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>, <a href="plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html">T19</a>, <a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">T20</a>, <a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>, <a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">T22</a>.</td>
 <td>With documents 13, 14, 23, 31, 35, 36, 42 and 50.</td>
@@ -1487,7 +1492,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

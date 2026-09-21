@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -1275,17 +1280,17 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Variances per use case (IND-COS-04), unattributed cost, idle licences; reporting to the AI Committee.</td>
 <td>Management control</td>
 </tr>
-<tr>
+<tr id="cod-phase-3">
 <td><strong>Phase 3</strong></td>
 <td>Estimate of full costs (build, adoption, recurring and retirement) and of the total cost of ownership.</td>
 <td>AI Product Owner with management control</td>
 </tr>
-<tr>
+<tr id="cod-g5-and-r6">
 <td><strong>G5 and R6</strong></td>
 <td>Consumption budget, tagging and limits; review of actual against forecast recurring cost.</td>
 <td>AI Operations Owner; verified by the AI Office or the AI Auditor</td>
 </tr>
-<tr>
+<tr id="cod-c3">
 <td><strong>C3</strong></td>
 <td>Budget for the portfolio and shared platforms; approval of the allocation keys for the year.</td>
 <td>AI Committee with management control</td>
@@ -1370,67 +1375,67 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-t13">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a></strong></td>
 <td>Cost calculator per use case</td>
 <td>Main tool of this document.</td>
 </tr>
-<tr>
+<tr id="cod-t01">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a></strong></td>
 <td>Initiative register</td>
 <td>Costs per use case, alert events, stops.</td>
 </tr>
-<tr>
+<tr id="cod-t02">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/inventario">T02</a></strong></td>
 <td>AI system inventory</td>
 <td>System identifier for tagging.</td>
 </tr>
-<tr>
+<tr id="cod-t11">
 <td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html">T11</a></strong></td>
 <td>Value hypothesis canvas and calculator</td>
 <td>Use of the initial investment and recurring cost in F2, F3 and F7–F9.</td>
 </tr>
-<tr>
+<tr id="cod-t12">
 <td><strong><a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">T12</a></strong></td>
 <td>Value realisation tracking</td>
 <td>Actual recurring cost in net value per period.</td>
 </tr>
-<tr>
+<tr id="cod-t17">
 <td><strong><a href="../../herramientas/T17_panel_consejo/index.html">T17</a></strong></td>
 <td>Board AI dashboard</td>
 <td>Cost per use case and total AI cost.</td>
 </tr>
-<tr>
+<tr id="cod-t21">
 <td><strong><a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a></strong></td>
 <td>Corporate AI use monitor</td>
 <td>Assigned and active licences.</td>
 </tr>
-<tr>
+<tr id="cod-p10">
 <td><strong><a href="plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html">P10</a></strong></td>
 <td>Feasibility assessment</td>
 <td>Estimate of full costs in phase 3.</td>
 </tr>
-<tr>
+<tr id="cod-p18">
 <td><strong><a href="plantillas/P18_SEVEN-G_Diseno_de_seguridad.html">P18</a></strong></td>
 <td>Security design (includes agents)</td>
 <td>Technical consumption limits per agent.</td>
 </tr>
-<tr>
+<tr id="cod-p20">
 <td><strong><a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a></strong></td>
 <td>Adoption and capacity plan</td>
 <td>Adoption cost.</td>
 </tr>
-<tr>
+<tr id="cod-p25">
 <td><strong><a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a></strong></td>
 <td>Monitoring and alert configuration</td>
 <td>Consumption alerts.</td>
 </tr>
-<tr>
+<tr id="cod-p30">
 <td><strong><a href="plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html">P30</a></strong></td>
 <td>Scaling or retirement decision</td>
 <td>Retirement cost and cost of stopping.</td>
 </tr>
-<tr>
+<tr id="cod-p63">
 <td><strong><a href="plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html">P63</a></strong></td>
 <td>Consumption budget and cost reconciliation</td>
 <td>Consumption budget, forecast, alerts and reconciliation with invoicing (section 8).</td>
@@ -1514,7 +1519,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://focus.finops.org/" target="_blank" rel="noopener">FOCUS™ — FinOps Open Cost and Usage Specification, version 1.4</a><span> · FinOps Foundation (FOCUS, serie de Joint Development Foundation Projects, LLC) · 04-06-2026</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {

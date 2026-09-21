@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Decrease text size" aria-label="Decrease text size"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Increase text size" aria-label="Increase text size"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Search this document" aria-label="Search this document" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -586,31 +591,31 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-m1-diagnosis">
 <td><strong>M1 · Diagnosis</strong></td>
 <td>Initial inventory (including third parties and corporate use); D1–D7 maturity with evidence; sphere map; transformation index profile; value by status and recurring cost of use cases in production; main risks and gaps.</td>
 <td>AI thesis; construction of solutions; definitive regulatory classification.</td>
 <td>[ ]</td>
 </tr>
-<tr>
+<tr id="cod-m2-90-day-implementation">
 <td><strong>M2 · 90-day implementation</strong></td>
 <td>Month 1 diagnosis; month 2 risks and opportunities by sphere and proposed thesis, ambition and appetite; month 3 governance structure, initial portfolio, registers in operation and first pack.</td>
 <td>Independent verification of <em>gates</em> that the third party helps to prepare; decisions of the bodies.</td>
 <td>[ ]</td>
 </tr>
-<tr>
+<tr id="cod-m3-independent-audit">
 <td><strong>M3 · Independent audit</strong></td>
 <td>Seven conditions of 01 §14; sampling of <em>gate</em> decisions; inventory and classification; measurement rules in the pack; nonconformity process; register of recommendations and independence of assessments.</td>
 <td>Designing or implementing corrections; issuing certifications.</td>
 <td>[ ]</td>
 </tr>
-<tr>
+<tr id="cod-m4-board-advisory">
 <td><strong>M4 · Board advisory</strong></td>
 <td>Preparation of sessions (<a href="../61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html">document 61</a>); review of the pack before submission; recommendations; independent assessments commissioned; support for C2 and C5; board training.</td>
 <td>Management of the company's AI; preparation of the pack it reviews; supplier selection.</td>
 <td>[ ]</td>
 </tr>
-<tr>
+<tr id="cod-m5-ongoing-support">
 <td><strong>M5 · Ongoing support</strong></td>
 <td>Support to the AI Office: register and inventory, evidence with the teams, funnel metrics, quarterly pack, support for R6 and C5.</td>
 <td>Verification of <em>gates</em> for initiatives in which it takes part; decisions; assessment of recommendations whose execution it supports.</td>
@@ -1265,7 +1270,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="external-sources">External sources cited</h2><p class="fuentes-nota">Links to the official or primary source, checked before publication. Always verify the version in force on the date of use.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 20-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · SEVEN-G methodology</span><span>Generated on 21-09-2026</span></div><p class="pie-ia">Content generated and typeset with AI support under the author&#39;s editorial supervision.</p></footer>
+<script src="../codigos.js" defer></script>
 
 <script>
 (function () {

@@ -250,6 +250,10 @@ html { overflow-x: clip; }
 .descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
 .descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
 h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
 /* ---------- Pie ---------- */
 .pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
 .pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
@@ -356,6 +360,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
     <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
     <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
     <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="buscar" role="search">
       <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
       <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
@@ -623,23 +628,23 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-c1-diagnostico">
 <td><strong>C1 · Diagnóstico</strong></td>
 <td>Perfil de riesgo de los sistemas inventariados, incluidos los anteriores al marco y el uso corporativo de IA.</td>
 </tr>
-<tr>
+<tr id="cod-c2-direccion">
 <td><strong>C2 · Dirección</strong></td>
 <td>Aprobación del apetito, tolerancias, umbral de materialidad económica y umbrales de los indicadores (<a href="13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html">documento 13</a>).</td>
 </tr>
-<tr>
+<tr id="cod-c3-cartera">
 <td><strong>C3 · Cartera</strong></td>
 <td>Concentración, correlación y dependencia de proveedores al priorizar (sección 10).</td>
 </tr>
-<tr>
+<tr id="cod-c4-supervision">
 <td><strong>C4 · Supervisión</strong></td>
 <td>Informe mensual al comité de IA y trimestral al consejo o comisión delegada (sección 12).</td>
 </tr>
-<tr>
+<tr id="cod-c5-revision">
 <td><strong>C5 · Revisión</strong></td>
 <td>Eficacia del sistema de gestión de riesgos, riesgos materializados, lecciones y recalibración de escalas.</td>
 </tr>
@@ -1207,42 +1212,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-est-01">
 <td><strong>RT-EST-01</strong></td>
 <td><strong>Desalineación con la tesis de IA.</strong> La iniciativa no contribuye a la ambición ni a las esferas aprobadas en C2.</td>
 <td>Origen tecnológico; patrocinio débil; ausencia de filtro.</td>
 <td>Encaje con la tesis en G0; clasificación de esfera (<a href="plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html">P07</a>); priorización en C3.</td>
 <td>0–1</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-02">
 <td><strong>RT-EST-02</strong></td>
 <td><strong>Ambición declarada no evidenciada.</strong> Se presenta como Aumentar o Transformar lo que es Optimizar, y se decide con expectativas erróneas.</td>
 <td>Incentivos a &quot;transformar&quot;; criterios ambiguos.</td>
 <td>Cinco preguntas de clasificación (<a href="../../herramientas/T01_registro_iniciativas/registro.html">T05</a>); confirmación en fase 2; revisión en G7.</td>
 <td>1, 2, 7</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-03">
 <td><strong>RT-EST-03</strong></td>
 <td><strong>Pérdida de oportunidad.</strong> El proceso de decisión es tan lento que la ventaja se pierde.</td>
 <td>Plazos de <em>gate</em> largos; mismo criterio de retorno para todas las apuestas.</td>
 <td>Plazos de referencia (03 §3.6); criterios por ambición (01 §7.6); métricas de agilidad.</td>
 <td>C3, todas</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-04">
 <td><strong>RT-EST-04</strong></td>
 <td><strong>Bloqueo tecnológico.</strong> Plataforma o modelo elegidos quedan superados y el cambio es costoso.</td>
 <td>Dependencia de funciones propietarias; arquitectura acoplada.</td>
 <td>Capa de abstracción de modelos; portabilidad de datos e instrucciones; revisión en R6.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-05">
 <td><strong>RT-EST-05</strong></td>
 <td><strong>Retirada de patrocinio o de financiación.</strong> La iniciativa pierde apoyo antes de demostrar valor.</td>
 <td>Cambios de dirección; valor no visible a tiempo.</td>
 <td>Financiación por etapas; hitos de aprendizaje; criterios de parada previos.</td>
 <td>0, C3</td>
 </tr>
-<tr>
+<tr id="cod-rt-est-06">
 <td><strong>RT-EST-06</strong></td>
 <td><strong>Concentración de la cartera en una apuesta.</strong> Una sola iniciativa o plataforma concentra inversión o valor esperado.</td>
 <td>Apuestas grandes sin límites por etapa.</td>
@@ -1263,56 +1268,56 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-tec-01">
 <td><strong>RT-TEC-01</strong></td>
 <td><strong>Rendimiento insuficiente en condiciones reales.</strong> El sistema no alcanza el umbral fuera del entorno de prueba.</td>
 <td>Validación con datos no representativos; piloto sin método de atribución.</td>
 <td>Umbral de éxito previo; piloto en condiciones reales (<a href="plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html">P22</a>).</td>
 <td>3, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-02">
 <td><strong>RT-TEC-02</strong></td>
 <td><strong>Degradación y deriva.</strong> El rendimiento cae por cambios en los datos, el entorno o el comportamiento de los usuarios.</td>
 <td>Entorno dinámico; sin monitorización.</td>
 <td>Monitorización de deriva y rendimiento (<a href="plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html">P25</a>); umbrales de reentrenamiento o retirada.</td>
 <td>6</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-03">
 <td><strong>RT-TEC-03</strong></td>
 <td><strong>Falta de robustez.</strong> Resultados erróneos ante entradas atípicas, ruido o casos límite.</td>
 <td>Pruebas limitadas a casos habituales.</td>
 <td>Pruebas de robustez y casos límite; derivación a persona fuera de dominio.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-04">
 <td><strong>RT-TEC-04</strong></td>
 <td><strong>Confabulación.</strong> La IA generativa produce contenidos falsos presentados como ciertos.</td>
 <td>Ausencia de fuentes autorizadas; tareas fuera de alcance.</td>
 <td>Recuperación sobre fuentes autorizadas; citas; evaluaciones periódicas; aviso al usuario.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-05">
 <td><strong>RT-TEC-05</strong></td>
 <td><strong>Resultados no explicables ni trazables.</strong> No puede reconstruirse por qué se produjo un resultado.</td>
 <td>Registros insuficientes; modelos opacos sin documentación.</td>
 <td>Registro de entradas, versiones y salidas; documentación del modelo; explicaciones proporcionales al uso.</td>
 <td>4</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-06">
 <td><strong>RT-TEC-06</strong></td>
 <td><strong>Integración y capacidad insuficientes.</strong> Latencia, disponibilidad o volumen no soportan el proceso.</td>
 <td>Pruebas sin carga real; dependencias externas.</td>
 <td>Pruebas de carga; acuerdos de nivel de servicio; degradación controlada.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-07">
 <td><strong>RT-TEC-07</strong></td>
 <td><strong>Cambio no gestionado.</strong> Cambios de modelo, instrucciones, parámetros o configuración sin evaluación previa.</td>
 <td>Cambios frecuentes; sin gestión de versiones.</td>
 <td>Gestión de cambios con evaluaciones de regresión; versionado de instrucciones.</td>
 <td>5, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-tec-08">
 <td><strong>RT-TEC-08</strong></td>
 <td><strong>Irreversibilidad.</strong> No es posible volver al estado anterior o al proceso sin IA.</td>
 <td>Plan de reversión inexistente o no probado; proceso manual desmantelado.</td>
@@ -1333,42 +1338,42 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-dat-01">
 <td><strong>RT-DAT-01</strong></td>
 <td><strong>Calidad insuficiente.</strong> Datos incompletos, erróneos o desactualizados.</td>
 <td>Sin control en origen; sistemas heredados.</td>
 <td>Perfilado de calidad en fase 3; reglas de validación; propietario del dato.</td>
 <td>3, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-02">
 <td><strong>RT-DAT-02</strong></td>
 <td><strong>Datos no representativos y sesgo.</strong> Los datos no reflejan la población o reproducen discriminaciones históricas.</td>
 <td>Muestras sesgadas; variables sustitutivas de características protegidas.</td>
 <td>Análisis de representatividad; métricas de equidad; pruebas por grupo.</td>
 <td>3, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-03">
 <td><strong>RT-DAT-03</strong></td>
 <td><strong>Falta de base legal o finalidad incompatible.</strong> Uso de datos personales sin base jurídica o para una finalidad distinta.</td>
 <td>Reutilización de datos operativos sin análisis.</td>
 <td>Análisis jurídico; evaluación de impacto en protección de datos; minimización.</td>
 <td>3</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-04">
 <td><strong>RT-DAT-04</strong></td>
 <td><strong>Linaje desconocido.</strong> No se sabe de dónde vienen los datos, qué transformaciones han sufrido ni con qué licencia.</td>
 <td>Datos de terceros; procesos manuales.</td>
 <td>Linaje de datos y modelos (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>); licencias verificadas.</td>
 <td>4</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-05">
 <td><strong>RT-DAT-05</strong></td>
 <td><strong>Exposición de datos en el ciclo de IA.</strong> Datos personales o confidenciales en entrenamiento, contexto, instrucciones o registros.</td>
 <td>Registros completos sin enmascarar; contexto excesivo.</td>
 <td>Minimización y enmascarado; retención limitada de registros; SEG-07.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-dat-06">
 <td><strong>RT-DAT-06</strong></td>
 <td><strong>Conocimiento obsoleto o contradictorio.</strong> La base documental que alimenta la IA generativa está desactualizada o sin propietario.</td>
 <td>Sin gobierno documental; duplicados.</td>
@@ -1389,35 +1394,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-eco-01">
 <td><strong>RT-ECO-01</strong></td>
 <td><strong>Sobrecoste de construcción.</strong> El coste supera lo aprobado.</td>
 <td>Alcance abierto; integración subestimada.</td>
 <td>Estimación con las categorías de coste (42); financiación por etapas; control de cambios.</td>
 <td>3, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-02">
 <td><strong>RT-ECO-02</strong></td>
 <td><strong>Coste recurrente creciente o imprevisible.</strong> El consumo de modelos, cómputo o licencias crece más que el valor.</td>
 <td>Precio por uso; bucles de agentes; adopción no prevista.</td>
 <td>Presupuestos y límites de consumo; coste por transacción vigilado (<a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes">T13</a>); SEG-10.</td>
 <td>3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-03">
 <td><strong>RT-ECO-03</strong></td>
 <td><strong>Valor no materializado.</strong> La capacidad liberada no se convierte en ahorro ni se reasigna.</td>
 <td>Sin plan de materialización; resistencia organizativa.</td>
 <td>Regla 3 de medición (00 §6); plan de materialización en G5; seguimiento (<a href="plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html">P28</a>).</td>
 <td>5–7</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-04">
 <td><strong>RT-ECO-04</strong></td>
 <td><strong>Valor inflado o doble contabilización.</strong> El mismo euro se atribuye a varios casos o se declara sin fórmula.</td>
 <td>Presión por resultados; sin validación independiente.</td>
 <td>Reglas 1, 2 y 5 de medición; validación por control de gestión.</td>
 <td>2, 6, 7</td>
 </tr>
-<tr>
+<tr id="cod-rt-eco-05">
 <td><strong>RT-ECO-05</strong></td>
 <td><strong>Coste de salida no previsto.</strong> Sustituir el proveedor o retirar el sistema cuesta más de lo estimado.</td>
 <td>Contratos sin cláusulas de salida; datos en formatos cerrados.</td>
@@ -1438,56 +1443,56 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-leg-01">
 <td><strong>RT-LEG-01</strong></td>
 <td><strong>Clasificación regulatoria errónea.</strong> Un sistema de alto riesgo se trata como de riesgo mínimo o fuera de ámbito.</td>
 <td>Clasificación sin criterio jurídico; cambio de finalidad.</td>
 <td>Clasificación con <a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">T07</a> y revisión jurídica; revisión en R6 y ante cambios (34).</td>
 <td>0, 3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-02">
 <td><strong>RT-LEG-02</strong></td>
 <td><strong>Práctica prohibida.</strong> El uso encaja en una práctica prohibida por el <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)">Reglamento de IA</a>.</td>
 <td>Desconocimiento; evolución del uso.</td>
 <td>Filtro en G0 y G3; evitar siempre (01 §6.5).</td>
 <td>0, 3</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-03">
 <td><strong>RT-LEG-03</strong></td>
 <td><strong>Transparencia incumplida.</strong> Las personas no saben que interactúan con una IA o que un contenido es sintético.</td>
 <td>Diseño sin requisitos de transparencia.</td>
 <td>Requisitos del art. 50 del Reglamento de IA en el diseño; revisión de interfaces.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-04">
 <td><strong>RT-LEG-04</strong></td>
 <td><strong>Decisiones automatizadas sin garantías.</strong> Decisiones con efectos significativos sin intervención humana efectiva ni derecho a impugnar.</td>
 <td>Supervisión nominal; automatización progresiva no revisada.</td>
 <td>Diseño de supervisión humana (<a href="plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html">P17</a>); análisis del art. 22 del <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)">RGPD</a>.</td>
 <td>3, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-05">
 <td><strong>RT-LEG-05</strong></td>
 <td><strong>Evaluaciones de impacto omitidas.</strong> No se realizan o no se actualizan la evaluación de impacto en protección de datos o la de derechos fundamentales.</td>
 <td>Desconocimiento del requisito; plazos.</td>
 <td>Clasificación (<a href="plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html">P11</a>); evaluaciones como evidencia de G3.</td>
 <td>3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-06">
 <td><strong>RT-LEG-06</strong></td>
 <td><strong>Infracción de propiedad intelectual.</strong> Datos de entrenamiento o resultados vulneran derechos de terceros, o la titularidad de los resultados no está clara.</td>
 <td>Datos sin licencia; condiciones del proveedor no revisadas.</td>
 <td>Revisión de licencias; cláusulas de propiedad y de indemnidad (36).</td>
 <td>3, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-07">
 <td><strong>RT-LEG-07</strong></td>
 <td><strong>Notificación de incidentes fuera de plazo.</strong> No se notifica a tiempo un incidente grave, una brecha de datos o un incidente <a class="ref-ext" href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener" title="Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)">DORA</a> o <a class="ref-ext" href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener" title="Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)">NIS2</a>.</td>
 <td>Sin criterios de severidad; sin responsable de notificación.</td>
 <td>Plan de respuesta (<a href="plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html">P26</a>); matriz de notificaciones (37).</td>
 <td>6</td>
 </tr>
-<tr>
+<tr id="cod-rt-leg-08">
 <td><strong>RT-LEG-08</strong></td>
 <td><strong>Incumplimiento de obligaciones sectoriales o de resiliencia.</strong> Requisitos de supervisores sectoriales, DORA u otras normas no trasladados al sistema.</td>
 <td>Mapeo regulatorio incompleto.</td>
@@ -1508,63 +1513,63 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-org-01">
 <td><strong>RT-ORG-01</strong></td>
 <td><strong>Falta de adopción.</strong> Los usuarios no usan el sistema o lo usan de forma marginal.</td>
 <td>Mala integración en el trabajo; desconfianza; formación insuficiente.</td>
 <td>Plan de adopción (<a href="plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html">P20</a>); objetivo de adopción en G2 y G5.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-02">
 <td><strong>RT-ORG-02</strong></td>
 <td><strong>Dependencia de personas clave.</strong> El conocimiento del sistema está en pocas personas o en el proveedor.</td>
 <td>Documentación escasa; equipos pequeños.</td>
 <td>Documentación y manual de operación (<a href="plantillas/P24_SEVEN-G_Manual_de_operacion.html">P24</a>); suplencias; transferencia de conocimiento.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-03">
 <td><strong>RT-ORG-03</strong></td>
 <td><strong>Efecto no gestionado sobre las personas.</strong> Cambios de rol, carga o empleo sin planificación ni diálogo.</td>
 <td>Visión solo de eficiencia; comunicación tardía.</td>
 <td>Plan de personas (50); consulta a la representación cuando proceda.</td>
 <td>2, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-04">
 <td><strong>RT-ORG-04</strong></td>
 <td><strong>Supervisión humana ineficaz.</strong> Las personas validan por rutina o sin información suficiente.</td>
 <td>Volumen alto de aprobaciones; sesgo de automatización.</td>
 <td>Diseño de la supervisión con muestreo, tiempos y rotación; medición de la tasa de rechazo.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-05">
 <td><strong>RT-ORG-05</strong></td>
 <td><strong>Uso no autorizado de IA (<em>shadow AI</em>).</strong> Empleados usan herramientas no aprobadas con datos de la compañía.</td>
 <td>Falta de alternativas aprobadas; política desconocida.</td>
 <td>Política de uso aceptable (31); alternativas corporativas; detección (<a href="plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html">T21</a>).</td>
 <td>C1, C4</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-06">
 <td><strong>RT-ORG-06</strong></td>
 <td><strong>Roles sin separación de funciones.</strong> Quien construye verifica, acepta riesgos o decide.</td>
 <td>Equipos pequeños; roles no asignados.</td>
 <td>Registro de roles (<a href="plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html">P03</a>); incompatibilidades (01 §8.2).</td>
 <td>0</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-07">
 <td><strong>RT-ORG-07</strong></td>
 <td><strong>Incumplimiento de información y consulta.</strong> La representación de los trabajadores o los trabajadores afectados no reciben, antes del uso, la información o la consulta exigibles sobre un sistema que incide en las condiciones de trabajo o en el empleo.</td>
 <td>Análisis jurídico tardío o ausente; cambios de parámetros, reglas o finalidad no comunicados.</td>
 <td>Proceso de información y consulta (50 §7.2) y ficha informativa (50 §7.3); G5 sin <em>Continuar</em> ni <em>Continuar con condiciones</em> sin evidencia de la información; IND-ADO-12 (41).</td>
 <td>3–5, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-08">
 <td><strong>RT-ORG-08</strong></td>
 <td><strong>Conflicto laboral.</strong> La introducción de la IA genera consultas, reclamaciones o conflictos colectivos que retrasan, condicionan o bloquean la iniciativa.</td>
 <td>Comunicación tardía o ambigua; efecto sobre el empleo sin diálogo; destinos de la capacidad liberada decididos sin participación.</td>
 <td>Posición sobre IA y trabajo aprobada en C2 (13); evaluación de efecto (50 §3.4); diálogo con la representación y comunicación interna (50 §7 y §10); decisión de la alta dirección en destinos PER-D1 relevantes.</td>
 <td>2–5, 7</td>
 </tr>
-<tr>
+<tr id="cod-rt-org-09">
 <td><strong>RT-ORG-09</strong></td>
 <td><strong>Deterioro del bienestar.</strong> Intensificación del trabajo, vigilancia excesiva, pérdida de autonomía o carga de supervisión dañan la salud y el compromiso de las personas afectadas.</td>
 <td>Objetivos y cargas no revisados tras la IA; datos de uso empleados para controlar a personas; volúmenes de revisión excesivos.</td>
@@ -1585,35 +1590,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-rep-01">
 <td><strong>RT-REP-01</strong></td>
 <td><strong>Resultados discriminatorios.</strong> El sistema trata peor a grupos de personas.</td>
 <td>Sesgo en datos o en diseño; sin pruebas por grupo.</td>
 <td>Pruebas de sesgo antes de G5; monitorización por grupo; supervisión humana.</td>
 <td>3, 5, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-02">
 <td><strong>RT-REP-02</strong></td>
 <td><strong>Errores visibles para clientes.</strong> Respuestas o decisiones erróneas con trascendencia pública.</td>
 <td>Exposición directa sin salvaguardas.</td>
 <td>Evaluaciones previas; derivación a persona; respuesta rápida a incidentes.</td>
 <td>5, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-03">
 <td><strong>RT-REP-03</strong></td>
 <td><strong>Uso percibido como inadecuado o intrusivo.</strong> Uso legal pero contrario a las expectativas de clientes, empleados o sociedad.</td>
 <td>Sin análisis ético; comunicación insuficiente.</td>
 <td>Revisión ética en fase 3; transparencia; canal de quejas.</td>
 <td>3</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-04">
 <td><strong>RT-REP-04</strong></td>
 <td><strong>Contenido dañino u ofensivo.</strong> La IA generativa produce contenido ofensivo, peligroso o impropio de la marca.</td>
 <td>Filtros insuficientes; manipulación del usuario.</td>
 <td>Filtros de entrada y salida (SEG-03); pruebas adversarias; supervisión de muestras.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-rep-05">
 <td><strong>RT-REP-05</strong></td>
 <td><strong>Comunicación engañosa sobre la IA.</strong> Se atribuyen a la IA capacidades o resultados que no tiene.</td>
 <td>Presión comercial; valor no validado.</td>
@@ -1634,63 +1639,63 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-gen-01">
 <td><strong>RT-GEN-01</strong></td>
 <td><strong>Inyección directa de instrucciones y <em>jailbreak</em>.</strong> Un usuario manipula el sistema para saltarse sus restricciones.</td>
 <td>Restricciones basadas solo en instrucciones al modelo.</td>
 <td>SEG-02, SEG-03, SEG-11; límites fuera del modelo.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-02">
 <td><strong>RT-GEN-02</strong></td>
 <td><strong>Inyección indirecta.</strong> Instrucciones maliciosas en correos, documentos, webs o respuestas de herramientas alteran la tarea.</td>
 <td>El sistema trata como instrucciones contenidos no confiables.</td>
 <td>SEG-02; AG-12; AG-05; pruebas específicas (AG-18).</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-03">
 <td><strong>RT-GEN-03</strong></td>
 <td><strong>Agencia excesiva.</strong> El sistema tiene más herramientas, permisos o autonomía de los necesarios.</td>
 <td>Permisos heredados; nivel de autonomía no justificado.</td>
 <td>AG-02; nivel de autonomía decidido en fase 4 (35 §5); AG-20.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-04">
 <td><strong>RT-GEN-04</strong></td>
 <td><strong>Acción no autorizada o no trazable.</strong> Un agente ejecuta una acción que no responde a una intención autorizada, o no puede reconstruirse por qué.</td>
 <td>Sin control de intención; registros incompletos.</td>
 <td>AG-04, AG-05, AG-06, AG-10.</td>
 <td>4–6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-05">
 <td><strong>RT-GEN-05</strong></td>
 <td><strong>Fuga de información.</strong> Datos personales, confidenciales o instrucciones del sistema salen por respuestas, recuperación o herramientas.</td>
 <td>Recuperación sin permisos del usuario; secretos en instrucciones.</td>
 <td>SEG-05, SEG-06, SEG-07.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-06">
 <td><strong>RT-GEN-06</strong></td>
 <td><strong>Tratamiento inseguro de salidas.</strong> La salida del modelo se ejecuta o se inserta en otros sistemas sin validar.</td>
 <td>Confianza en la salida; integraciones directas.</td>
 <td>SEG-04; AG-11.</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-07">
 <td><strong>RT-GEN-07</strong></td>
 <td><strong>Envenenamiento de memoria o contexto.</strong> Contenido manipulado persiste en la memoria o en la base de conocimiento y altera decisiones futuras.</td>
 <td>Memoria compartida sin control; ingesta sin validación.</td>
 <td>AG-14; SEG-08; RT-DAT-06.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-08">
 <td><strong>RT-GEN-08</strong></td>
 <td><strong>Fallos en cascada y consumo sin límite.</strong> Bucles, reintentos o cadenas de agentes amplifican errores o costes.</td>
 <td>Sin límites de iteración ni disyuntores.</td>
 <td>AG-07, AG-16; SEG-10.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-gen-09">
 <td><strong>RT-GEN-09</strong></td>
 <td><strong>Explotación de la confianza humana.</strong> El sistema induce a una persona a aprobar una acción inadecuada.</td>
 <td>Aprobaciones sin contexto; exceso de confianza.</td>
@@ -1711,49 +1716,49 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-seg-01">
 <td><strong>RT-SEG-01</strong></td>
 <td><strong>Suplantación con voz o vídeo sintéticos.</strong> Fraude del CEO u órdenes falsas con apariencia legítima.</td>
 <td>Procesos de pago basados en reconocimiento de voz o imagen.</td>
 <td>SEG-16, SEG-17, SEG-18.</td>
 <td>C4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-02">
 <td><strong>RT-SEG-02</strong></td>
 <td><strong>Phishing e ingeniería social generados con IA.</strong> Mensajes personalizados y convincentes a escala.</td>
 <td>Autenticación débil; exposición pública de información de empleados.</td>
 <td>SEG-15, SEG-17.</td>
 <td>C4</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-03">
 <td><strong>RT-SEG-03</strong></td>
 <td><strong>Explotación acelerada de vulnerabilidades.</strong> El tiempo entre publicación de una vulnerabilidad y su explotación se reduce.</td>
 <td>Parcheo lento; superficie expuesta desconocida.</td>
 <td>SEG-13, SEG-19.</td>
 <td>6, C4</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-04">
 <td><strong>RT-SEG-04</strong></td>
 <td><strong>Compromiso de identidades no humanas.</strong> Robo o abuso de credenciales de agentes, claves de servicio o <em>tokens</em>.</td>
 <td>Credenciales de larga duración; permisos excesivos.</td>
 <td>AG-01, AG-02, AG-03, AG-20.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-05">
 <td><strong>RT-SEG-05</strong></td>
 <td><strong>Envenenamiento de datos o modelos.</strong> Manipulación de datos de entrenamiento, ajuste o evaluación.</td>
 <td>Fuentes abiertas; ingesta sin control.</td>
 <td>SEG-08; linaje (<a href="plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html">P16</a>).</td>
 <td>4, 5</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-06">
 <td><strong>RT-SEG-06</strong></td>
 <td><strong>Extracción de modelos y abuso del servicio.</strong> Consultas masivas para replicar el modelo, inferir datos o agotar recursos.</td>
 <td>Interfaces expuestas sin límites.</td>
 <td>SEG-10, SEG-12.</td>
 <td>4, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-seg-07">
 <td><strong>RT-SEG-07</strong></td>
 <td><strong>Compromiso de la cadena de suministro de IA.</strong> Modelos, bibliotecas, conectores o servidores de herramientas maliciosos o vulnerables.</td>
 <td>Componentes descargados sin verificación.</td>
@@ -1774,49 +1779,49 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-rt-ter-01">
 <td><strong>RT-TER-01</strong></td>
 <td><strong>Dependencia y bloqueo de proveedor.</strong> Cambiar de proveedor es inviable en plazo o coste razonables.</td>
 <td>Formatos cerrados; funciones propietarias.</td>
 <td>Estrategia de salida; portabilidad (36 §7).</td>
 <td>3, 4</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-02">
 <td><strong>RT-TER-02</strong></td>
 <td><strong>Uso de los datos por el proveedor.</strong> El proveedor usa datos, instrucciones o resultados para entrenar o para otros fines.</td>
 <td>Condiciones estándar no negociadas.</td>
 <td>Cláusula de no uso para entrenamiento; verificación de configuración (36 §6).</td>
 <td>3</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-03">
 <td><strong>RT-TER-03</strong></td>
 <td><strong>Cambio unilateral de modelo o condiciones.</strong> El proveedor cambia versión, comportamiento, precio o retira el modelo.</td>
 <td>Servicios gestionados sin preaviso contractual.</td>
 <td>Preaviso y versiones fijadas; evaluaciones de regresión (RT-TEC-07).</td>
 <td>3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-04">
 <td><strong>RT-TER-04</strong></td>
 <td><strong>Subencargados y ubicación no controlados.</strong> Datos tratados por terceros o en ubicaciones no autorizadas.</td>
 <td>Cadena de subcontratación opaca.</td>
 <td>Lista de subencargados; autorización de cambios; ubicación contractual.</td>
 <td>3</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-05">
 <td><strong>RT-TER-05</strong></td>
 <td><strong>Fallo o discontinuidad del proveedor.</strong> Indisponibilidad prolongada, insolvencia o salida del mercado.</td>
 <td>Proveedor pequeño o crítico sin alternativa.</td>
 <td>Continuidad y plan de salida; diligencia financiera; nivel N3 (36 §4).</td>
 <td>3, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-06">
 <td><strong>RT-TER-06</strong></td>
 <td><strong>IA embebida no identificada.</strong> Software ya contratado incorpora funciones de IA sin evaluación.</td>
 <td>Actualizaciones del proveedor; activación por defecto.</td>
 <td>Cuestionario de IA embebida; revisión de actualizaciones (36 §8).</td>
 <td>C1, 6</td>
 </tr>
-<tr>
+<tr id="cod-rt-ter-07">
 <td><strong>RT-TER-07</strong></td>
 <td><strong>Concentración en proveedores comunes.</strong> Muchos sistemas dependen del mismo proveedor de modelos o de nube.</td>
 <td>Estandarización sin análisis de concentración.</td>
@@ -1992,7 +1997,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Trimestral</td>
 <td>Residuales Críticos y Altos por esfera, concentración y escenarios de cartera, cumplimiento del apetito, incidentes significativos, exposición a IA ofensiva (35), decisiones solicitadas. Se presenta con el informe trimestral de segunda línea (<a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a>).</td>
 </tr>
-<tr>
+<tr id="cod-c5-revision-anual">
 <td><strong>C5 · Revisión anual</strong></td>
 <td>Anual</td>
 <td>Eficacia del sistema de gestión de riesgos, recalibración de escalas y catálogo, lecciones aprendidas.</td>
@@ -2011,22 +2016,22 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr id="cod-p12">
 <td><strong><a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a></strong></td>
 <td>Matriz y registro de riesgos</td>
 <td>Registro con los campos de la sección 8, mapa de calor inherente y residual. Fases 3, 5 y 6.</td>
 </tr>
-<tr>
+<tr id="cod-p13">
 <td><strong><a href="plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html">P13</a></strong></td>
 <td>Plan de mitigación y contingencia</td>
 <td>Acciones de tratamiento, residual objetivo, contingencias y disparadores (secciones 5–7). Fase 3.</td>
 </tr>
-<tr>
+<tr id="cod-p42">
 <td><strong><a href="plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html">P42</a></strong></td>
 <td>Informe trimestral de segunda línea</td>
 <td>Información trimestral de riesgos de la cartera a la comisión delegada (secciones 10–12).</td>
 </tr>
-<tr>
+<tr id="cod-t06">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos">T06</a></strong></td>
 <td>Matriz y registro de riesgos</td>
 <td>Cálculo de niveles con la regla de impacto extremo, matriz 5 × 5 inherente y residual de cada iniciativa y de la cartera, eficacia de controles, aceptación por el órgano de su nivel, observaciones de las secciones 4 a 8 (residual Crítico sin aprobación, Alto sin contingencia, aceptación caducada o insuficiente, revisión vencida) y exportación CSV. Vista «Riesgos» del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html">T01</a>. La concentración y la correlación de la cartera (sección 10) se analizan con <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html">P12</a> §7.</td>
@@ -2106,7 +2111,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/spa" target="_blank" rel="noopener">Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, relativa a las medidas destinadas a garantizar un elevado nivel com&#250;n de ciberseguridad en toda la Uni&#243;n (Directiva SRI 2 / NIS2)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protecci&#243;n de las personas f&#237;sicas en lo que respecta al tratamiento de datos personales y a la libre circulaci&#243;n de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protecci&#243;n de datos)</a><span> · Parlamento Europeo y Consejo de la UE · 27-04-2016</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2022/2554 del Parlamento Europeo y del Consejo, de 14 de diciembre de 2022, sobre la resiliencia operativa digital del sector financiero (DORA)</a><span> · Parlamento Europeo y Consejo de la UE · 14-12-2022</span></li><li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/spa" target="_blank" rel="noopener">Reglamento (UE) 2024/1689 del Parlamento Europeo y del Consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial (Reglamento de Inteligencia Artificial)</a><span> · Parlamento Europeo y Consejo de la UE · 13-06-2024</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de IA: perfil de inteligencia artificial generativa (NIST AI 600-1)</a><span> · National Institute of Standards and Technology (NIST) · 26-07-2024</span></li><li><a href="https://www.iso.org/standard/65694.html" target="_blank" rel="noopener">ISO 31000:2018 Gesti&#243;n del riesgo — Directrices</a><span> · ISO (ISO/TC 262) · 14-02-2018</span></li><li><a href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">ISO/IEC 23894:2023 Tecnolog&#237;a de la informaci&#243;n — Inteligencia artificial — Orientaci&#243;n sobre la gesti&#243;n del riesgo</a><span> · ISO/IEC (JTC 1/SC 42) · 06-02-2023</span></li><li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">Marco de gesti&#243;n de riesgos de inteligencia artificial del NIST (AI RMF 1.0), NIST AI 100-1</a><span> · National Institute of Standards and Technology (NIST), Departamento de Comercio de EE. UU. · 26-01-2023</span></li></ul>
 </main>
-<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 20-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 21-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
 
 <script>
 (function () {
