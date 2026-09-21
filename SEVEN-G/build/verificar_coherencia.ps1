@@ -257,6 +257,8 @@ try {
       if (-not (Test-Path (Join-Path $repo "SEVEN-G\pdf\$lang\curso\SEVEN-G_Curso_$cc.pdf"))) { Mal "curso [$lang]: falta SEVEN-G_Curso_$cc.pdf (curso_pptx.ps1 lo exporta con PowerPoint)"; $capasMal++ }
       if (-not $guia.Contains("SEVEN-G_Curso_$cc.pptx") -or -not $guia.Contains("SEVEN-G_Curso_$cc.pdf")) { Mal "curso [$lang]: la guía no enlaza el PPT y el PDF del curso «$cc»"; $capasMal++ }
       if ([regex]::Matches($htmlGuiaTxt, "SEVEN-G_Curso_$cc\.pptx").Count -lt 3) { Mal "curso [$lang]: la zona de descargas de la guía no ofrece el curso «$cc»"; $capasMal++ }
+      # las descargas de la guía van agrupadas en una tarjeta por perfil, con su PPT y su PDF dentro (D97)
+      if ($htmlGuiaTxt -notmatch "<div class=""dz-card"" data-grupo=""$($cc.ToLowerInvariant())"">(?:(?!<div class=""dz-card"").)*?SEVEN-G_Curso_$cc\.pptx(?:(?!<div class=""dz-card"").)*?SEVEN-G_Curso_$cc\.pdf") { Mal "curso [$lang]: la guía no agrupa en una tarjeta el PPT y el PDF del curso «$cc» (D97)"; $capasMal++ }
     }
     if (-not (Test-Path (Join-Path $repo "SEVEN-G\pdf\$lang\curso\SEVEN-G_Curso_completo.pdf"))) { Mal "curso [$lang]: falta SEVEN-G_Curso_completo.pdf (pwsh -File SEVEN-G/build/curso_pdf.ps1)"; $capasMal++ }
     if (-not $guia.Contains('SEVEN-G_Curso_completo.pdf')) { Mal "curso [$lang]: la guía no enlaza el PDF con los nueve módulos"; $capasMal++ }
@@ -598,6 +600,23 @@ try {
   if ($sinTitulo.Count -gt 12) { Mal "… y $($sinTitulo.Count - 12) enlaces de código más sin tooltip" }
   if (-not $sinTitulo.Count) { Ok "$nCod enlaces de código, todos con tooltip" }
   if (-not (Select-String -Path (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\index.html') -Pattern 'class="que-es"' -Quiet)) { Mal 'T17: su página no explica en una frase qué es (generador del panel)' }
+  # ---- 16. móvil y visores sin JavaScript (D95, D96): nada ensancha la página en un teléfono, el panel completo cede el paso al
+  # móvil y los dos paneles llevan una vista estática para cuando el visor no ejecuta JavaScript (fichero enviado por mensajería)
+  Write-Host '16. Móvil y vista sin JavaScript'
+  $malMov = 0
+  if ([IO.File]::ReadAllText((Join-Path $repo 'SEVEN-G\build\estilo.css')) -notmatch '\.barra-in \{ position: relative;') { Mal 'estilo.css: .barra-in debe ser position: relative (si no, los rótulos ocultos ensanchan la página en el móvil)'; $malMov++ }
+  foreach ($p in 'index.html', 'en\index.html') { if (-not [IO.File]::ReadAllText((Join-Path $repo $p)).Contains('@media (max-width: 600px) { .barra-dcha')) { Mal "$p`: falta el ajuste de la barra para móvil"; $malMov++ } }
+  $docMuestra = Join-Path $repo 'SEVEN-G\html\es\00_SEVEN-G_Que_es_y_para_que_sirve.html'
+  if ([IO.File]::ReadAllText($docMuestra) -notmatch '\.barra-in \{ position: relative;') { Mal 'los HTML generados no llevan el ajuste de la barra para móvil: regenerar con build.ps1'; $malMov++ }
+  $sal = Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\ejemplo\salida'
+  foreach ($f in 't01_Dashboard_Casos_Uso_IA_v8.html', 't01_Dashboard_Movil_IA_v8.html') {
+    $t = [IO.File]::ReadAllText((Join-Path $sal $f))
+    if ($t -notmatch '<noscript data-vista-estatica>' -or $t -notmatch 'body>\*:not\(noscript\)\{display:none') { Mal "$f`: falta la vista estática para visores sin JavaScript"; $malMov++ }
+  }
+  if (-not [IO.File]::ReadAllText((Join-Path $sal 't01_Dashboard_Casos_Uso_IA_v8.html')).Contains('nv.redirigir_movil')) { Mal 'panel completo: falta el paso automático al panel móvil'; $malMov++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $sal 't01_Dashboard_Movil_IA_v8.html')).Contains('?completo=1')) { Mal 'panel móvil: no enlaza el panel completo con ?completo'; $malMov++ }
+  if (-not ((Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\config_panel.json') -Raw | ConvertFrom-Json).navegacion.redirigir_movil)) { Mal 'config_panel.json: navegacion.redirigir_movil debe ser true en el ejemplo'; $malMov++ }
+  if (-not $malMov) { Ok 'barras ajustadas al móvil, panel completo con paso al móvil y vista estática sin JavaScript en los dos paneles' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

@@ -216,7 +216,7 @@ function render(){
     sec.hidden = false;
   } else sec.hidden = true;
 
-  $("pie").innerHTML = `Datos generados el ${fES(DATA.meta.generado)} · versión ${esc(String(DATA.meta.version_panel||""))} · ${H.length} foto${H.length===1?"":"s"} en el histórico. Valor actual declarado por la compañía para ${YEAR}; coste y potencial estimados por el ${CONSEJO()} salvo que se indique. El detalle completo (fichas, riesgo y cumplimiento, agentes, cuadro de mando de la compañía) está en el panel del Consejo: <b>${esc(DATA.meta.panel_completo||"")}</b>.`;
+  $("pie").innerHTML = `Datos generados el ${fES(DATA.meta.generado)} · versión ${esc(String(DATA.meta.version_panel||""))} · ${H.length} foto${H.length===1?"":"s"} en el histórico. Valor actual declarado por la compañía para ${YEAR}; coste y potencial estimados por el ${CONSEJO()} salvo que se indique. El detalle completo (fichas, riesgo y cumplimiento, agentes, cuadro de mando de la compañía) está en el panel del Consejo: <a href="${esc(DATA.meta.panel_completo||"")}?completo=1"><b>${esc(DATA.meta.panel_completo||"")}</b></a> (pensado para pantalla grande).`;
   document.querySelectorAll(".row[data-id]").forEach(r=>r.onclick=()=>ficha(CASES.find(c=>c.id===r.dataset.id)));
 }
 

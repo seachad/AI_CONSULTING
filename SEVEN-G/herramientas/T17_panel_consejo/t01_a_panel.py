@@ -669,6 +669,9 @@ def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_"
     completo, movil, huella = BD.generar(data, salida, verbose=False)
     ficticio = data["meta"]["demo"]
     PUB.aviso_en_movil(movil, PUB.AVISO_LEGAL if ficticio else PUB.AVISO_LEGAL_DATOS_PROPIOS)
+    # vista estática para visores sin JavaScript (un panel enviado por WhatsApp o correo suele abrirse en uno): D96
+    for ruta_panel, titulo_panel in ((completo, "Casos de uso de IA · Panel del Consejo"), (movil, "IA · Panel móvil del Consejo")):
+        PUB.vista_sin_javascript(ruta_panel, data, PUB.AVISO_LEGAL if ficticio else PUB.AVISO_LEGAL_DATOS_PROPIOS, titulo_panel)
     ruta_json = os.path.join(salida, f"{prefijo}dashboard_data.json")
     json.dump(data, open(ruta_json, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     ruta_reg, nrecs = None, 0

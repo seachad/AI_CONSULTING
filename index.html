@@ -46,6 +46,8 @@ a { color: var(--oxford); text-underline-offset: 3px; }
 .barra-marca i { width: 9px; height: 9px; background: var(--claret); display: inline-block; }
 .barra-dcha { margin-left: auto; display: flex; align-items: center; gap: 14px; font: 500 14px/1 var(--sans); }
 .tema select { font: 500 14px/1 var(--sans); color: var(--tinta); background: var(--papel-2); border: 1px solid var(--regla); padding: 6px 8px; }
+/* móvil: los controles de la barra pasan a una segunda línea y el campo «Ir a código» ocupa lo que quede */
+@media (max-width: 600px) { .barra-dcha { margin-left: 0; width: 100%; gap: 8px; min-width: 0; } .barra-dcha [data-ir-codigo] { flex: 1 1 110px; min-width: 0; } .barra-dcha [data-ir-codigo] input { width: 100%; min-width: 0; box-sizing: border-box; } .tema select { max-width: 104px; } }
 .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .idioma { display: flex; border: 1px solid var(--regla); }
 .idioma a, .idioma span { padding: 6px 10px; font-weight: 700; text-decoration: none; color: var(--tinta-2); }

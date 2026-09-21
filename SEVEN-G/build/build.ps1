@@ -790,26 +790,45 @@ $titulosReferencias = ObtenerTitulosReferencias $lang
     }
     if ($otroHtmlHref) { $enlacesDoc.Add("<a class=""dz-item"" href=""$otroHtmlHref"" hreflang=""$otroLang""><span class=""dz-tipo html"">HTML</span><b>$otroLabel</b></a>") }
 
-    # guía del curso (M00): además de su propio PDF/HTML, enlaza el curso completo en PPT y en PDF (D85)
+    # guía del curso (M00): además de su propio PDF/HTML, enlaza los tres cursos en PPT y PDF y el PDF con los nueve
+    # módulos (D85, D86). Las descargas van agrupadas en tarjetas, una por perfil (D97): $gruposDoc; un documento sin
+    # grupos conserva la lista plana de siempre.
+    $gruposDoc = [Collections.Generic.List[object]]::new()
     if ($metodologia -eq 'SEVEN-G' -and ($rel -replace '\\', '/') -eq 'curso/M00_SEVEN-G_Curso_Guia_del_curso.md') {
-      $cursosPpt = [ordered]@{ Empresa = $(if ($en) { 'Course for the company' } else { 'Curso para la empresa' }); Consultor = $(if ($en) { 'Course for the consultant' } else { 'Curso para el consultor' }); Partner = $(if ($en) { 'Course for the partner' } else { 'Curso para el partner' }) }
+      $cursosPpt = [ordered]@{
+        Empresa   = @{ rotulo = $(if ($en) { 'Presentation course' } else { 'Curso en presentación' }); titulo = $(if ($en) { 'Company · Self-consulting' } else { 'Empresa · Autoconsultoría' })
+                       texto = $(if ($en) { 'For the company that implements the framework by its own means: requirements, Lite or Enterprise scope and 90-day plan.' } else { 'Para la compañía que implanta el marco por sus propios medios: requisitos, alcance Lite o Enterprise y plan de 90 días.' }) }
+        Consultor = @{ rotulo = $(if ($en) { 'Presentation course' } else { 'Curso en presentación' }); titulo = $(if ($en) { 'Consultant' } else { 'Consultor' })
+                       texto = $(if ($en) { 'For those who support clients under their own firm: licence, essential rules, engagement models and independence.' } else { 'Para quien acompaña a clientes con su propia firma: licencia, reglas esenciales, modelos de acompañamiento e independencia.' }) }
+        Partner   = @{ rotulo = $(if ($en) { 'Presentation course' } else { 'Curso en presentación' }); titulo = 'Partner'
+                       texto = $(if ($en) { 'For the company that integrates SEVEN-G into its own methodology or product: licence, adoption by components and technical integration.' } else { 'Para la empresa que integra SEVEN-G en su metodología o producto: licencia, adopción por componentes e integración técnica.' }) }
+      }
       foreach ($cc in $cursosPpt.Keys) {
+        $g = $cursosPpt[$cc]; $enlacesG = [Collections.Generic.List[string]]::new()
         $pptxOut = Join-Path $root "pptx\$lang\SEVEN-G_Curso_$cc.pptx"
         if (Test-Path $pptxOut) {
           $pptxHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pptxOut).Replace('\', '/')
-          $enlacesDoc.Add("<a class=""dz-item"" href=""$pptxHref"" download><span class=""dz-tipo"">PPTX</span><b>$($cursosPpt[$cc])</b></a>")
+          $enlacesG.Add("<a class=""dz-item"" href=""$pptxHref"" download title=""$(Enc "$($g.titulo) · PowerPoint")""><span class=""dz-tipo"">PPTX</span><b>PowerPoint</b></a>")
         }
         $pdfCc = Join-Path $root "pdf\$lang\curso\SEVEN-G_Curso_$cc.pdf"
         if (Test-Path $pdfCc) {
           $pdfCcHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pdfCc).Replace('\', '/')
-          $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfCcHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$($cursosPpt[$cc])</b></a>")
+          $enlacesG.Add("<a class=""dz-item"" href=""$pdfCcHref"" target=""_blank"" rel=""noopener"" title=""$(Enc "$($g.titulo) · PDF")""><span class=""dz-tipo"">PDF</span><b>$(if ($en) { 'Open as PDF' } else { 'Abrir en PDF' })</b></a>")
         }
+        if ($enlacesG.Count) { $gruposDoc.Add(@{ clave = $cc.ToLowerInvariant(); rotulo = $g.rotulo; titulo = $g.titulo; texto = $g.texto; enlaces = $enlacesG }) }
       }
       $pdfCursoOut = Join-Path $root "pdf\$lang\curso\SEVEN-G_Curso_completo.pdf"
       if (Test-Path $pdfCursoOut) {
         $pdfCursoHref = [IO.Path]::GetRelativePath((Split-Path $htmlOut), $pdfCursoOut).Replace('\', '/')
         $pdfCursoLabel = if ($en) { 'The nine modules (PDF)' } else { 'Los nueve módulos (PDF)' }
-        $enlacesDoc.Add("<a class=""dz-item"" href=""$pdfCursoHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$pdfCursoLabel</b></a>")
+        $gruposDoc.Add(@{ clave = 'modulos'; rotulo = $(if ($en) { 'All profiles' } else { 'Todos los perfiles' }); titulo = $(if ($en) { 'The nine modules' } else { 'Los nueve módulos' })
+                          texto = $(if ($en) { 'The guide and the nine modules of this page in a single PDF, to read or print.' } else { 'La guía y los nueve módulos de esta página en un único PDF, para leer o imprimir.' })
+                          enlaces = @("<a class=""dz-item"" href=""$pdfCursoHref"" target=""_blank"" rel=""noopener""><span class=""dz-tipo"">PDF</span><b>$pdfCursoLabel</b></a>") })
+      }
+      if ($gruposDoc.Count -and $enlacesDoc.Count) {
+        $gruposDoc.Add(@{ clave = 'guia'; rotulo = $(if ($en) { 'This page' } else { 'Esta página' }); titulo = $(if ($en) { 'Course guide' } else { 'Guía del curso' })
+                          texto = $(if ($en) { 'This guide on its own, in PDF, and its Spanish version.' } else { 'Esta guía por separado, en PDF, y su versión en inglés.' })
+                          enlaces = @($enlacesDoc) })
       }
     }
 
@@ -827,12 +846,19 @@ $titulosReferencias = ObtenerTitulosReferencias $lang
     }
     $zonaDescargas = ''
     if ($enlacesDoc.Count -or $enlacesHerr.Count) {
-      $zonaDescargas = "<section class=""descargas-zona"" aria-label=""$(if ($en) { 'Downloads and tools' } else { 'Descargas y herramientas' })""><div class=""dz-in"">"
-      if ($enlacesDoc.Count) { $zonaDescargas += "<div class=""dz-bloque""><p class=""dz-titulo"">$(if ($en) { 'Downloads' } else { 'Descargas' })</p><div class=""dz-enlaces"">$($enlacesDoc -join '')</div></div>" }
+      $zonaDescargas = "<section class=""descargas-zona$(if ($gruposDoc.Count) { ' dz-agrupada' })"" aria-label=""$(if ($en) { 'Downloads and tools' } else { 'Descargas y herramientas' })""><div class=""dz-in"">"
+      if ($gruposDoc.Count) {
+        # una tarjeta por perfil o uso, con sus propios botones (D97)
+        $tarjetas = ($gruposDoc | ForEach-Object { "<div class=""dz-card"" data-grupo=""$($_.clave)""><p class=""dz-card-rotulo"">$(Enc $_.rotulo)</p><p class=""dz-card-titulo"">$(Enc $_.titulo)</p><p class=""dz-card-texto"">$(Enc $_.texto)</p><div class=""dz-enlaces"">$($_.enlaces -join '')</div></div>" }) -join ''
+        $zonaDescargas += "<div class=""dz-bloque""><p class=""dz-titulo"">$(if ($en) { 'Downloads, by profile' } else { 'Descargas, según su perfil' })</p><div class=""dz-cards"">$tarjetas</div></div>"
+      }
+      elseif ($enlacesDoc.Count) { $zonaDescargas += "<div class=""dz-bloque""><p class=""dz-titulo"">$(if ($en) { 'Downloads' } else { 'Descargas' })</p><div class=""dz-enlaces"">$($enlacesDoc -join '')</div></div>" }
       if ($enlacesHerr.Count) { $zonaDescargas += "<div class=""dz-bloque""><p class=""dz-titulo"">$(if ($en) { 'Related tools' } else { 'Herramientas relacionadas' })</p><div class=""dz-enlaces"">$($enlacesHerr -join '')</div></div>" }
       $zonaDescargas += '</div></section>'
     }
-    $descargasPanel = @($enlacesDoc) + @($enlacesHerr)
+    $descargasPanel = if ($gruposDoc.Count) {
+      @($gruposDoc | ForEach-Object { "<p class=""dz-grupo"">$(Enc $_.titulo)</p>"; $_.enlaces }) + $(if ($enlacesHerr.Count) { @("<p class=""dz-grupo"">$(if ($en) { 'Related tools' } else { 'Herramientas relacionadas' })</p>") + @($enlacesHerr) } else { @() })
+    } else { @($enlacesDoc) + @($enlacesHerr) }
 
     $navItems = @(
       foreach ($item in $catalogo) {
