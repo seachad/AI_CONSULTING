@@ -40,7 +40,9 @@ flowchart LR
 
 | File | Content |
 |---|---|
-| `t01_a_panel.py` | The connector: T01 → dashboard schema mapping and generation with the engine. Standard library only. |
+| `t01_a_panel.py` | The connector: T01 → dashboard schema mapping and generation with the engine. Standard library only. `--solo-json <file>` writes only the dashboard JSON. |
+| `t01_a_panel.js` | The same mapping in JavaScript (D101): embedded in the generated dashboards (they regenerate themselves in the browser) and in the T01 register. |
+| `conector_js.ps1` | Runs `t01_a_panel.js` with headless Edge: dashboard JSON without Python; used by the parity check in `verificar_coherencia.ps1`. |
 | `config_panel.json` | General configuration of the dashboard: `navegacion` (no “Todo” page, initial page, cards expanded on entry, filters in a modal dialog with the applied query shown as pills and, for a dashboard hosted inside a site, `tema_sitio` —the `localStorage` key holding the site's general theme, which the dashboard follows and updates— and `sitio` —links back to the site in the side menu, with paths relative to the output folder; a dashboard generated outside the site removes those keys—), `umbrales_kpi` and `ciclo_vida` (funnel, exits, day limits and the stage of each SEVEN-G phase). Starting values, to be calibrated by each organisation. |
 | `motor/` | The dashboard engine, **version 8** (funnel and lifecycle, configurable thresholds): `build_dashboard.py` (full dashboard), `panel_movil.py`, `panel_core.py` (shared JavaScript core), `economia.py`, `glosario.py`, `snapshot.py`, `ESQUEMA.md` (JSON schema) and `demo_lib.py` (recommendations log template). Copy maintained in AI_CONSULTING; origin: `AI_en_el_consejo/motor` (MIT, same author). |
 | `publicacion_panel.py` | Legal notice, authorship footer, insertion of the notice into the mobile dashboard and the recommendations log page. Imported by the connector from this folder. |
@@ -49,9 +51,13 @@ flowchart LR
 | `PROPUESTA_MOTOR.md` | Working document (Spanish): proposed changes to the dashboard engine so that it reads SEVEN-G data. For the engine's source project; not applied to the public copy. |
 | `README.md` · `README_en.md` | This document, in Spanish and English. |
 
-## Requirements
+## Without Python: the dashboard regenerates itself in the browser (D101)
 
-- **Python 3.11 or later** with [`uv`](https://docs.astral.sh/uv/). Standard library only; no packages are installed.
+Both dashboards embed the connector in JavaScript, `t01_a_panel.js` (the same mapping as `t01_a_panel.py`; `verificar_coherencia.ps1` checks that both produce the same JSON with the demo data). When opened, the dashboard: (1) if that browser holds an own T01 register (same site; T01's `localStorage` key with an origin other than "sample"), converts and shows it; (2) otherwise, served over http, reads `navegacion.datos_t01` from `config_panel.json` (default `../../../datos/T01_registro.json`, the data folder of the company copy) and shows it; (3) "Cargar JSON" also accepts the full T01 JSON. A band under the header says where the data come from. The no-JavaScript view and the fingerprint remain those of the data embedded at generation time. `conector_js.ps1 -T01 <register> -Salida <dashboard_data.json>` produces the dashboard JSON with Edge, without Python. The T01 register embeds the same connector ("Download the dashboard JSON").
+
+## Requirements (only to generate the dashboards as static files)
+
+- **Python 3.11 or later** with [`uv`](https://docs.astral.sh/uv/). Standard library only; no packages are installed. Optional: without Python, the dashboard regenerates itself in the browser (previous section).
 - Nothing else: the **dashboard engine is included** in `motor/` and no other repository is needed. The connector adds this folder and `./motor` to `sys.path`.
 - Optional: `--panel <path>` uses another engine, pointing to a checkout of the [AI en el Consejo](https://github.com/Seachad-TEAM/AI_en_el_consejo) repository (`<path>/motor` and `<path>/demos/fuente`). If anything is missing, the connector stops with a clear message.
 
