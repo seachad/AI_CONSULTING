@@ -718,6 +718,7 @@ try {
       $tp = [IO.File]::ReadAllText($h.f)
       if (-not $tp.Contains("LS_T01 = '$claveT01'")) { Mal "$($h.c): no lee el registro T01 del navegador (clave $claveT01)"; $malMapa++ }
       if (-not $tp.Contains("q.get('desde')==='t01'")) { Mal "$($h.c): no atiende el enlace del registro (?desde=t01)"; $malMapa++ }
+      if ($h.c -ne 'T15' -and -not $tp.Contains('function actualizarDesdeT01(')) { Mal "$($h.c): no puede actualizar desde el registro sin pisar lo corregido a mano (D102)"; $malMapa++ }   # T15 no importa datos de T01 que haya que refrescar
       $claveH = [regex]::Match($tp, "const LS_DATOS = '([^']+)'").Groups[1].Value
       if ($claveH -ne $mapa.herramientas[$h.c].almacenamiento) { Mal "mapa_datos.json: almacenamiento de $($h.c) ($($mapa.herramientas[$h.c].almacenamiento)) distinto del real ($claveH)"; $malMapa++ }
     }
