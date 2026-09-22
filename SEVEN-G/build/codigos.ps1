@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Genera el índice de códigos del sitio y el control «Ir a código» (D88): SEVEN-G/html/<idioma>/codigos.js
+  Genera el índice de códigos del sitio y el control «Ir a código» (D88), rotulado «Buscador de documentos» desde D104: SEVEN-G/html/<idioma>/codigos.js
 
 .DESCRIPTION
   Los códigos del marco (documentos 00–94, plantillas Pnn, herramientas Tnn, módulos del curso Mnn, puertas G0–G7 y R6,
@@ -221,12 +221,12 @@ foreach ($lang in $Idiomas) {
   # ---- salida: datos + control ----
   $datos = [ordered]@{ lang = $lang; exactos = $exactos; patrones = $patrones } | ConvertTo-Json -Depth 6 -Compress
   $txt = if ($en) {
-    @{ ph = 'Go to code: P12, T06, G3…'; aria = 'Go to where a code is explained (document, template, tool, gate, criterion…)'; nada = 'No such code. Try the glossary:'; glos = 'Glossary and conventions (02), code system'; ayuda = 'Type a code (40, P12, T06, G3, G3.05, LV-G3, phase 3, C2, D6, A2, RT-GEN-01, IND-VAL-05…) or part of a title. Enter opens the first result.'
+    @{ ph = 'Document finder'; aria = 'Document finder: go to where a code or a title is explained (document, template, tool, gate, criterion…)'; nada = 'No such code. Try the glossary:'; glos = 'Glossary and conventions (02), code system'; ayuda = 'Document finder. Type a code (40, P12, T06, G3, G3.05, LV-G3, phase 3, C2, D6, A2, RT-GEN-01, IND-VAL-05…) or part of a title. Enter opens the first result.'
        citados = 'Cited here'; citadosTt = 'Documents, templates, tools and other codes this page names, each with its link'; citadosNada = 'This page names no code of the framework.'
        tipos = @{ doc = 'Documents'; pla = 'Templates'; her = 'Tools'; app = 'Tools'; mod = 'Course'; puerta = 'Gates and criteria'; lv = 'Checklists'; fase = 'Phases'; esfera = 'Spheres'; otro = 'Other codes' }
        tt = @{ doc = 'Document'; pla = 'Template'; her = 'Tool'; app = 'Tool'; mod = 'Course module'; puerta = 'Gate'; lv = 'Checklist'; fase = 'Phase'; esfera = 'Sphere'; otro = 'Code' } }
   } else {
-    @{ ph = 'Ir a código: P12, T06, G3…'; aria = 'Ir a donde se explica un código (documento, plantilla, herramienta, puerta, criterio…)'; nada = 'No existe ese código. Pruebe en el glosario:'; glos = 'Glosario y convenciones (02), sistema de códigos'; ayuda = 'Escriba un código (40, P12, T06, G3, G3.05, LV-G3, fase 3, C2, D6, A2, RT-GEN-01, IND-VAL-05…) o parte de un título. Intro abre el primer resultado.'
+    @{ ph = 'Buscador de documentos'; aria = 'Buscador de documentos: ir a donde se explica un código o un título (documento, plantilla, herramienta, puerta, criterio…)'; nada = 'No existe ese código. Pruebe en el glosario:'; glos = 'Glosario y convenciones (02), sistema de códigos'; ayuda = 'Buscador de documentos. Escriba un código (40, P12, T06, G3, G3.05, LV-G3, fase 3, C2, D6, A2, RT-GEN-01, IND-VAL-05…) o parte de un título. Intro abre el primer resultado.'
        citados = 'Citados aquí'; citadosTt = 'Documentos, plantillas, herramientas y demás códigos que nombra esta página, cada uno con su enlace'; citadosNada = 'Esta página no nombra ningún código del marco.'
        tipos = @{ doc = 'Documentos'; pla = 'Plantillas'; her = 'Herramientas'; app = 'Herramientas'; mod = 'Curso'; puerta = 'Puertas y criterios'; lv = 'Listas de verificación'; fase = 'Fases'; esfera = 'Esferas'; otro = 'Otros códigos' }
        tt = @{ doc = 'Documento'; pla = 'Plantilla'; her = 'Herramienta'; app = 'Herramienta'; mod = 'Módulo del curso'; puerta = 'Puerta'; lv = 'Lista de verificación'; fase = 'Fase'; esfera = 'Esfera'; otro = 'Código' } }
@@ -348,8 +348,8 @@ foreach ($lang in $Idiomas) {
     if (document.getElementById('ir-codigo-css')) return;
     var st = document.createElement('style'); st.id = 'ir-codigo-css';
     st.textContent = '.ir-codigo{position:relative;display:inline-flex;align-items:center;gap:6px;font:500 14px/1.2 var(--sans,"Segoe UI",Arial,sans-serif)}' +
-      '.ir-codigo input{width:11.5em;max-width:46vw;font:inherit;color:var(--tinta,#2f2b28);background:var(--papel,#fff1e5);border:1px solid var(--regla,#c9a78d);border-left:3px solid var(--claret,#990f3d);padding:6px 8px;border-radius:0}' +
-      '.ir-codigo input:focus{outline:2px solid var(--oxford,#0f5499);outline-offset:1px;width:15em}' +
+      '.ir-codigo input{width:13em;max-width:46vw;font:inherit;color:var(--tinta,#2f2b28);background:var(--papel,#fff1e5);border:1px solid var(--regla,#c9a78d);border-left:3px solid var(--claret,#990f3d);padding:6px 8px;border-radius:0}' +
+      '.ir-codigo input:focus{outline:2px solid var(--oxford,#0f5499);outline-offset:1px;width:16em}' +
       '.ir-codigo-citados{font:inherit;color:var(--tinta,#2f2b28);background:var(--papel,#fff1e5);border:1px solid var(--regla,#c9a78d);padding:6px 8px;border-radius:0;cursor:pointer;white-space:nowrap}' +
       '.ir-codigo-citados:hover,.ir-codigo-citados[aria-expanded=true]{background:var(--papel-2,#f3cfb2)}.ir-codigo-citados:focus-visible{outline:2px solid var(--oxford,#0f5499);outline-offset:1px}.ir-codigo-citados[hidden]{display:none}' +
       '.ir-codigo-lista{position:fixed;z-index:1000;box-sizing:border-box;width:min(34em,calc(100vw - 16px));max-height:70vh;overflow-y:auto;background:var(--papel,#fff1e5);border:1px solid var(--negro,#1a1817);box-shadow:0 8px 24px rgba(0,0,0,.25);display:none;text-align:left;font:500 14px/1.2 var(--sans,"Segoe UI",Arial,sans-serif)}' +

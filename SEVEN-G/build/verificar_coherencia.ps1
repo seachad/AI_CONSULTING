@@ -33,6 +33,9 @@
     18. Mapa de datos entre herramientas (D100): mapa_datos.json con todas sus rutas en el esquema de T01 (0.6); T11, T14 y T15 leen el
         registro del navegador (misma clave) y atienden ?desde=t01; T01 incorpora sus resultados; las demostraciones de T11, T14, T15 y T17
         son de la misma compañía que T01 y derivan de él (cálculo del índice y madurez de T15); documento 03 §4.1 (ES/EN).
+    20. Buscador de términos en todas las páginas (D104): busqueda.json (ES/EN) generado por busqueda.ps1 cubre todas las páginas publicadas
+        y sus anclas existen; cada página generada lleva el selector de ámbito; el control de códigos se rotula «Buscador de documentos»;
+        M01 lo explica. La prueba de humo (7) busca «embudo» en todas las páginas desde el documento 00 y comprueba que aparece la lista.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -459,6 +462,10 @@ try {
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Movil_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#embudo .row.fun', '#embudo .row.fun.gan', '#transv .row', '#madurez-sec:not([hidden]) #madurez *', "header $ctl", 'body a.cod-enlace[title]'); que = 'panel móvil' }
       @{ f = (Join-Path $salidaEj 't01_Registro_Recomendaciones.html'); debe = @('#tl article.rec', ".top $ctl", 'body a.cod-enlace[title]'); que = 'registro de recomendaciones' }
       @{ f = (Join-Path $t17 'index.html'); debe = @('p.que-es', "header $ctl", '#es a.cod-enlace[title]'); que = 'página de T17' }
+      # D104: buscador de términos con selector de ámbito; en «Todas las páginas» la lista de resultados llega de busqueda.json (servido por http).
+      # «antes»: script opcional que se ejecuta en la página antes de comprobar los selectores
+      @{ f = (Join-Path $repo 'SEVEN-G\html\es\00_SEVEN-G_Que_es_y_para_que_sirve.html'); antes = "setTimeout(function(){var s=document.getElementById('buscar-ambito');s.value='todas';s.dispatchEvent(new Event('change'));var i=document.getElementById('buscar');i.value='embudo';i.dispatchEvent(new Event('input'));},200);"
+         debe = @('#buscar-ambito option[value="todas"]', ".barra $ctl", '.buscar-lista:not([hidden]) a[role="option"][href*="?q=embudo"]'); que = 'documento 00 con búsqueda de «embudo» en todas las páginas' }
     )
     $tipos = @{ '.html' = 'text/html; charset=utf-8'; '.js' = 'application/javascript; charset=utf-8'; '.css' = 'text/css; charset=utf-8'; '.json' = 'application/json; charset=utf-8'; '.png' = 'image/png'; '.jpg' = 'image/jpeg'; '.svg' = 'image/svg+xml'; '.pdf' = 'application/pdf'; '.woff2' = 'font/woff2' }
     foreach ($p in $pruebas) {
@@ -468,7 +475,8 @@ try {
       $pagina = [IO.File]::ReadAllText($p.f)
       $pagina = $pagina -replace '(?i)<head>', '<head><script>window.__errs=[];window.addEventListener("error",function(e){__errs.push(e.message)});</script>'
       $informe = "<script>setTimeout(function(){var f=[$sel].filter(function(s){return !document.querySelector(s)});fetch('/resultado',{method:'POST',body:JSON.stringify({errores:window.__errs,faltan:f})});},2500);</script>"
-      $pagina = $pagina -replace '(?i)</body>', ($informe.Replace('$', '$$') + '</body>')
+      $antes = if ($p.antes) { "<script>$($p.antes)</script>" } else { '' }
+      $pagina = $pagina -replace '(?i)</body>', (($antes + $informe).Replace('$', '$$') + '</body>')
       $rutaPag = '/' + [IO.Path]::GetRelativePath($repo, $p.f).Replace('\', '/')
       $perfil = Join-Path $tmp ('edge_' + [Guid]::NewGuid().ToString('N').Substring(0, 6))
       $proc = Start-Process -FilePath $edge -ArgumentList '--headless=new', '--disable-gpu', '--no-first-run', "--user-data-dir=$perfil", '--window-size=1400,1000', "--screenshot=$tmp\humo.png", '--virtual-time-budget=10000', "http://localhost:$puerto$rutaPag" -PassThru -WindowStyle Hidden
@@ -801,6 +809,35 @@ try {
   if (-not ($readme.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html') -and $readme.Contains("$repoUrl/archive/refs/heads/main.zip"))) { Mal 'README.md: no enlaza el documento 95 ni la descarga del repositorio'; $malInst++ }
   if ($readme -match '(?i)repositorio es privado') { Mal 'README.md: sigue diciendo que el repositorio es privado'; $malInst++ }
   if (-not $malInst) { Ok "documento 95 (ES/EN) con el repositorio y su ZIP, enlazado desde la portada, la entrada, el README y el documento 03; $nDocs documentos en las cifras de portada y entrada" }
+
+  # ---- 20. buscador de términos en la página o en todas las páginas (D104): índice de texto generado (ES/EN) que cubre todas las páginas
+  # publicadas con sus secciones y anclas; selector de ámbito en cada página generada; el control de códigos se rotula «Buscador de documentos»
+  Write-Host '20. Buscador de términos en todas las páginas'
+  $malBus = 0
+  foreach ($lang in 'es', 'en') {
+    $dirB = Join-Path $repo "SEVEN-G\html\$lang"; $fB = Join-Path $dirB 'busqueda.json'
+    if (-not (Test-Path $fB)) { Mal "falta SEVEN-G/html/$lang/busqueda.json (pwsh -File SEVEN-G/build/busqueda.ps1)"; $malBus++; continue }
+    $idxB = Get-Content $fB -Raw -Encoding utf8 | ConvertFrom-Json
+    $enIndice = @{}; foreach ($pg in $idxB.paginas) { $enIndice[$pg.h] = $pg }
+    foreach ($met in 'SEVEN-G', 'SPHERES', 'SPAD') {
+      $dirMet = Join-Path $repo "$met\html\$lang"
+      foreach ($f in (Get-ChildItem $dirMet -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch '[\\/]_' })) {
+        $t = [IO.File]::ReadAllText($f.FullName)
+        if (-not $t.Contains('<main class="contenido"')) { continue }    # páginas sin la barra de los documentos (entrada ligera)
+        $relB = [IO.Path]::GetRelativePath($dirB, $f.FullName).Replace('\', '/')
+        if (-not ($t.Contains('id="buscar-ambito"') -and $t.Contains('value="todas"') -and $t.Contains('busqueda.json'))) { Mal "sin selector de ámbito del buscador: $([IO.Path]::GetRelativePath($repo, $f.FullName))"; $malBus++ }
+        if (-not $enIndice.ContainsKey($relB)) { Mal "busqueda.json [$lang]: no indexa $met/html/$lang/$([IO.Path]::GetRelativePath($dirMet, $f.FullName).Replace('\', '/'))"; $malBus++; continue }
+        foreach ($sec in $enIndice[$relB].s) { if ($sec.id -and -not $t.Contains("id=""$($sec.id)""")) { Mal "busqueda.json [$lang]: ancla inexistente $relB#$($sec.id)"; $malBus++ } }
+        $enIndice.Remove($relB)
+      }
+    }
+    foreach ($h in @($enIndice.Keys)) { Mal "busqueda.json [$lang]: indexa una página inexistente o no publicable: $h"; $malBus++ }
+    $tCodB = [IO.File]::ReadAllText((Join-Path $dirB 'codigos.js'))
+    if (-not $tCodB.Contains($(if ($lang -eq 'en') { 'Document finder' } else { 'Buscador de documentos' }))) { Mal "codigos.js [$lang]: el control de códigos no se rotula «Buscador de documentos» (D104; pwsh -File SEVEN-G/build/codigos.ps1)"; $malBus++ }
+    $m01B = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang\curso") -Filter 'M01_*.md' | Select-Object -First 1).FullName)
+    foreach ($req in $(if ($lang -eq 'en') { @('Document finder', 'Whole site') } else { @('Buscador de documentos', 'Todo el sitio') })) { if (-not $m01B.Contains($req)) { Mal "M01 [$lang]: no explica «$req» (D104)"; $malBus++ } }
+  }
+  if (-not $malBus) { Ok 'índice de búsqueda (ES/EN) con todas las páginas publicadas y sus anclas, selector de ámbito en cada página, control «Buscador de documentos» y M01 al día' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

@@ -45,7 +45,8 @@ The site is a **set of static files**: HTML pages, PDFs, Word templates and pres
 | Board dashboard generator (T17) | A Python program that reads the JSON exported by T01 and **generates** the full dashboard, the mobile dashboard and the recommendations register as HTML files. | On the computer of whoever runs it, with Python. It is not a web application. | The files it generates, in the folder you indicate. Those files **contain the data**. |
 | Generated board dashboards | HTML files with the data embedded, meant to be sent or hosted. | In the browser; no server. | Nothing new: they show what they carry inside. |
 | Community page | Issues and improvement requests for the framework, with votes. | In the browser; **it is the only page that sends anything**: the text you write, to a public GitHub repository through an intermediary. | The identifier you choose, in your browser. What is sent becomes public on GitHub (section 3.3). |
-| Code index ("Go to code", "Cited here") | A generated JavaScript file with the destinations of every code in the framework. | In the browser. | Nothing. |
+| Code index ("Document finder", "Cited here") | A generated JavaScript file with the destinations of every code in the framework. | In the browser. | Nothing. |
+| Term search index ("Whole site" in the bar's search box) | A generated JSON file with the text of every published page, which the browser downloads only the first time you choose to search across the whole site. | In the browser: the search runs there. | Nothing. |
 
 <!-- grafico: Data flow | Everything you enter stays in the browser or in files the organisation controls -->
 ```mermaid

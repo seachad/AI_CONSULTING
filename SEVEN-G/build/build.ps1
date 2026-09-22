@@ -124,7 +124,13 @@ $configuracion = @{
 
 $textos = @{
   es = @{
-    T_BARRA = 'Herramientas del documento'; T_BUSCAR = 'Buscar en el documento'; T_ANTERIOR = 'Resultado anterior'; T_SIGUIENTE = 'Resultado siguiente'
+    T_BARRA = 'Herramientas del documento'; T_BUSCAR = 'Buscar términos'; T_ANTERIOR = 'Resultado anterior'; T_SIGUIENTE = 'Resultado siguiente'
+    # buscador de términos en esta página o en todas las páginas (D104)
+    T_TT_BUSCAR = 'Busque una palabra o una frase en esta página o en todas las páginas del sitio, según el selector de la izquierda. Intro salta al resultado siguiente o abre el primero de la lista.'
+    T_AMBITO = 'Dónde buscar'; T_TT_AMBITO = 'Dónde buscar: en esta página o en todas las páginas del sitio (documentos, plantillas, curso, SPHERES y SPAD)'
+    T_AMBITO_PAGINA = 'Esta página'; T_AMBITO_TODAS = 'Todo el sitio'; T_CARGANDO = 'Cargando…'
+    T_SIN_INDICE = 'No se pudo cargar el índice de búsqueda. Abra el sitio publicado o sírvalo por http: un fichero abierto con doble clic no puede descargarlo.'
+    T_RESULTADOS = '{n} coincidencias en {p} páginas'; T_MAS_RESULTADOS = 'Se muestran las {n} primeras; afine el término para ver el resto.'
     T_INDICE = 'Índice'; T_INDICE_CORTO = 'Índice'; T_CERRAR = 'Cerrar'; T_FILTRAR = 'Filtrar secciones'; T_TEMA = 'Tema'
     T_INICIO = 'Inicio'; T_BIBLIOTECA = 'Biblioteca'; T_HISTORIAL = 'Historial'; T_DOCUMENTOS = 'Documentos'
     T_HISTORIAL_TITULO = 'Historial de navegación'; T_FILTRAR_DOCUMENTOS = 'Filtrar documentos'; T_HISTORIAL_VACIO = 'Todavía no hay navegación registrada.'
@@ -143,7 +149,13 @@ $textos = @{
     Ficha = @{ Documento = 'Documento'; Version = 'Versión'; Fecha = 'Fecha'; Autor = 'Autor'; Estado = 'Estado'; Tipo = 'Tipo'; Objetivo = 'Objetivo' }
   }
   en = @{
-    T_BARRA = 'Document tools'; T_BUSCAR = 'Search this document'; T_ANTERIOR = 'Previous result'; T_SIGUIENTE = 'Next result'
+    T_BARRA = 'Document tools'; T_BUSCAR = 'Search terms'; T_ANTERIOR = 'Previous result'; T_SIGUIENTE = 'Next result'
+    # term search on this page or across all pages (D104)
+    T_TT_BUSCAR = 'Search for a word or a phrase on this page or across every page of the site, as chosen in the selector on the left. Enter jumps to the next result or opens the first one in the list.'
+    T_AMBITO = 'Where to search'; T_TT_AMBITO = 'Where to search: on this page or across every page of the site (documents, templates, course, SPHERES and SPAD)'
+    T_AMBITO_PAGINA = 'This page'; T_AMBITO_TODAS = 'Whole site'; T_CARGANDO = 'Loading…'
+    T_SIN_INDICE = 'The search index could not be loaded. Open the published site or serve it over http: a file opened by double-click cannot download it.'
+    T_RESULTADOS = '{n} matches on {p} pages'; T_MAS_RESULTADOS = 'Showing the first {n}; refine the term to see the rest.'
     T_INDICE = 'Contents'; T_INDICE_CORTO = 'Contents'; T_CERRAR = 'Close'; T_FILTRAR = 'Filter sections'; T_TEMA = 'Theme'
     T_INICIO = 'Home'; T_BIBLIOTECA = 'Library'; T_HISTORIAL = 'History'; T_DOCUMENTOS = 'Documents'
     T_HISTORIAL_TITULO = 'Navigation history'; T_FILTRAR_DOCUMENTOS = 'Filter documents'; T_HISTORIAL_VACIO = 'No navigation recorded yet.'
@@ -932,8 +944,10 @@ if ($Metodologias -contains 'SEVEN-G' -and -not $env:SEVENG_BUILD_CURSO_PASE2) {
   }
 }
 
-# índice de códigos del control «Ir a código» (D88): se rehace siempre, leyendo los HTML ya generados
+# índice de códigos del control «Buscador de documentos» (D88, D104): se rehace siempre, leyendo los HTML ya generados
 & (Join-Path $PSScriptRoot 'codigos.ps1') -Idiomas $todos
+# índice de texto del buscador de términos en todas las páginas (D104): también desde los HTML ya generados
+& (Join-Path $PSScriptRoot 'busqueda.ps1') -Idiomas $todos
 
 # índices temporales de este proceso
 Remove-Item -Recurse -Force (Join-Path $env:TEMP "seveng-indice-$PID") -ErrorAction SilentlyContinue
