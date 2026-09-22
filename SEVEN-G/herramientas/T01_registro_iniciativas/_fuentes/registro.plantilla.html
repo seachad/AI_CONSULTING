@@ -259,7 +259,7 @@ p.nota-clas{margin:4px 0 10px}
   <nav class="nav" id="nav" aria-label="Vistas"></nav>
 </header>
 <div class="aviso-demo" id="aviso-demo"></div>
-<main id="principal" tabindex="-1"></main>
+<main id="principal" tabindex="-1" data-enlazar-codigos></main>
 <footer class="pie" id="pie"></footer>
 <dialog id="dlg" aria-labelledby="dlg-t"></dialog>
 <dialog id="dlg-legal" aria-labelledby="legal-t"></dialog>
@@ -276,7 +276,11 @@ const CAT = JSON.parse(document.getElementById('catalogo-criterios').textContent
 const DEMO_TXT = document.getElementById('datos-demo').textContent;
 /* Panel del consejo (T17): lo genera el conector t01_a_panel.py con el JSON completo de este registro. build_registro.ps1 comprueba que PANEL_DEMO existe. */
 const PANEL_DEMO = '../T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html', PANEL_T17 = '../T17_panel_consejo/index.html';
-const VERSION_ESQUEMA = '0.5';
+const VERSION_ESQUEMA = '0.6';
+/* D100: el registro es la fuente de verdad de las demás herramientas del sitio. Servidas desde el mismo origen comparten el almacenamiento local:
+   T11, T14 y T15 leen este registro (clave LS_DATOS) y devuelven aquí sus resultados (importes esperados de T11, madurez de T15).
+   Los enlaces con data-ir guardan el registro antes de abrir la otra herramienta, para que la lea aunque no se haya tocado nada. */
+const T11_CALC = '../T11_calculadora_valor/calculadora.html', T15_MADUREZ = '../T15_diagnostico_madurez/madurez.html';
 const T14_INDICE = '../T14_indice_transformacion/indice.html';
 const LS_DATOS = 'seveng-t01-datos-v1', LS_UI = 'seveng-t01-ui-v1';
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
@@ -363,6 +367,7 @@ const LB = {
   nc_tipo:{mayor:'mayor',menor:'menor'},
   /* datos para el panel del consejo (T17): bloque «panel» de la iniciativa y concepto de cada importe (esquema 0.2) */
   complejidad:{baja:'Baja',media:'Media',alta:'Alta'}, prioridad:{alta:'Alta',media:'Media',baja:'Baja'}, control:{hecho:'Hecho',pendiente:'Pendiente',no_aplica:'No aplica'},
+  nivel_madurez:{'0':'Inexistente','1':'Inicial','2':'En desarrollo','3':'Definido','4':'Gestionado','5':'Optimizado'}, modalidad_madurez:{autodiagnostico:'Autodiagnóstico (no vale para el consejo)',verificada:'Verificada',independiente:'Independiente'},
   alcance:{unidad:'De una unidad',transversal:'Transversal (varias unidades)',plataforma:'Plataforma habilitadora'}, despliegue:{previsto:'Previsto',piloto:'Piloto',en_uso:'En uso',retirado:'Retirado'},
   concepto_eficiencias:{personas:'Menor coste de personas o de externalización (materializado)',herramientas:'Herramientas o licencias retiradas',siniestros:'Fraude, recobros y sobrecostes evitados',operativo:'Otros costes operativos evitados',penalizaciones:'Errores y penalizaciones evitados'},
   concepto_retorno:{venta_nueva:'Venta nueva',venta_cruzada:'Venta cruzada',retencion:'Retención de clientes',precio_margen:'Precio y margen',cobros:'Cobros recuperados',otros:'Otro retorno'}
@@ -403,6 +408,7 @@ const LB = {
   organo_p:{oficina_ia:'AI Office',comite_ia:'AI Committee',consejo:'Board',segunda_linea:'Second line',tercera_linea:'Third line'},
   nc_tipo:{mayor:'major',menor:'minor'},
   complejidad:{baja:'Low',media:'Medium',alta:'High'}, prioridad:{alta:'High',media:'Medium',baja:'Low'}, control:{hecho:'Done',pendiente:'Pending',no_aplica:'Not applicable'},
+  nivel_madurez:{'0':'Non-existent','1':'Initial','2':'Developing','3':'Defined','4':'Managed','5':'Optimised'}, modalidad_madurez:{autodiagnostico:'Self-assessment (not valid for the board)',verificada:'Verified',independiente:'Independent'},
   alcance:{unidad:'Single unit',transversal:'Cross-unit (several units)',plataforma:'Enabling platform'}, despliegue:{previsto:'Planned',piloto:'Pilot',en_uso:'In use',retirado:'Retired'},
   concepto_eficiencias:{personas:'Lower staff or outsourcing cost (realised)',herramientas:'Tools or licences retired',siniestros:'Fraud, recoveries and overcharges avoided',operativo:'Other operating costs avoided',penalizaciones:'Errors and penalties avoided'},
   concepto_retorno:{venta_nueva:'New sales',venta_cruzada:'Cross-selling',retencion:'Customer retention',precio_margen:'Price and margin',cobros:'Collections recovered',otros:'Other return'}
@@ -442,8 +448,8 @@ function descargar(nombre, contenido, tipo){ const blob=new Blob([contenido],{ty
 
 /* ---------------- datos y persistencia ---------------- */
 let DB = null, M = null, GUARDADO = true;
-const OPCIONALES = ['sistemas','riesgos','no_conformidades','incidentes','proveedores','recomendaciones','decisiones_consejo'];
-function normalizar(d){ d.version_esquema=VERSION_ESQUEMA; /* 0.2, 0.3 y 0.4 solo añaden campos opcionales a 0.1 (0.2: bloque «panel» y concepto de los importes; 0.3: alcance de la iniciativa y unidad de cada importe; 0.4: valoración residual, controles, tratamiento y aceptación de cada riesgo, T06; 0.5: evidencia del índice de transformación por iniciativa, oferta habilitada por IA y decisiones del consejo, T14 y T18) */ OPCIONALES.forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); ['personas','iniciativas','eventos','decisiones_gate','condiciones','evidencias','valores'].forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); return d; }
+const OPCIONALES = ['sistemas','riesgos','no_conformidades','incidentes','proveedores','recomendaciones','decisiones_consejo','madurez'];
+function normalizar(d){ d.version_esquema=VERSION_ESQUEMA; /* 0.2 a 0.6 solo añaden campos opcionales a 0.1 (0.2: bloque «panel» y concepto de los importes; 0.3: alcance de la iniciativa y unidad de cada importe; 0.4: valoración residual, controles, tratamiento y aceptación de cada riesgo, T06; 0.5: evidencia del índice de transformación por iniciativa, oferta habilitada por IA y decisiones del consejo, T14 y T18; 0.6: resumen de los diagnósticos de madurez, madurez[], que escribe T15 y lee el panel T17) */ OPCIONALES.forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); ['personas','iniciativas','eventos','decisiones_gate','condiciones','evidencias','valores'].forEach(k=>{ if(!Array.isArray(d[k])) d[k]=[]; }); return d; }
 function cargar(){
   const u = lsGet(LS_UI); if(u){ try{ Object.assign(UI, JSON.parse(u)); }catch(e){} }
   const s = lsGet(LS_DATOS);
@@ -684,7 +690,7 @@ Object.assign(TX.es,{
  ok_decision:'Decisión registrada: {r}.', ok_guardado:'Cambios guardados y registrados como eventos.', ok_solicitud:'Gate solicitado.', ok_verif:'Verificación registrada.', sin_cambios:'No hay cambios que registrar.',
  cancelar:'Cancelar', guardar:'Guardar', cerrar:'Cerrar', trio_fecha:'Fecha del hecho', trio_autor:'Autor del registro', trio_motivo:'Motivo o comentario', cond_desc:'Descripción de la condición', c_evid:'Evidencia',
  c_id:'Condición', marcar_cumplida:'Marcar cumplida', anular:'Anular', registrar_venc:'Registrar vencimiento', sin_condiciones:'Sin condiciones.', cond_regla:'Las condiciones solo se imponen sobre criterios condicionables, con plazo y responsable, y se verifican como tarde en el siguiente gate. Una condición vencida convierte el resultado en Iterar.',
- anadir_valor:'Añadir importe', momento:'Momento', tipo:'Tipo', importe:'Importe', formula:'Fórmula', periodo:'Periodo', fuente:'Fuente', valor_reglas:'Todo importe tiene fórmula y estado (validado, declarado o estimado). La capacidad liberada no suma en el neto. Un importe vacío es «sin dato», nunca cero. Valor neto anual = eficiencias + retorno − coste recurrente.', importe_vacio:'Déjelo vacío si no hay dato.', sin_valores:'Sin importes registrados.',
+ anadir_valor:'Añadir importe', v_t11:'Calcular la hipótesis de valor con esta iniciativa (T11)', momento:'Momento', tipo:'Tipo', importe:'Importe', formula:'Fórmula', periodo:'Periodo', fuente:'Fuente', valor_reglas:'Todo importe tiene fórmula y estado (validado, declarado o estimado). La capacidad liberada no suma en el neto. Un importe vacío es «sin dato», nunca cero. Valor neto anual = eficiencias + retorno − coste recurrente.', importe_vacio:'Déjelo vacío si no hay dato.', sin_valores:'Sin importes registrados.',
  sin_eventos:'Sin eventos.', sin_decisiones:'Sin decisiones de gate.', ver_criterios:'Ver criterios', dias_decision:'Tiempo de decisión', pendiente:'Pendiente', solicitud:'Solicitud',
  dlg_alta:'Nueva iniciativa', dlg_editar:'Editar {id}', sin_asignar:'Sin asignar', e_nombre:'El nombre debe tener al menos 3 caracteres.', e_desc:'Describa qué es y para qué se usa (regla 10 de medición).', e_area:'Indique el área.', e_tec:'Seleccione al menos una tecnología.', e_roles:'Incompatibilidad de roles: {r}', inv_nota:'Importes en {m}; vacío = sin dato.', etiquetas_ayuda:'Separadas por comas.', intensidad_ayuda:'Use T04 para determinarla con los ocho criterios.', ok_alta:'Iniciativa {id} registrada.',
  dlg_t04:'Determinación de intensidad (T04)', t04_intro:'Basta con que se cumpla un criterio Enterprise para aplicar esa intensidad (01 §9.1). Se determina en la fase 0 y se revisa en G3 y en cada revisión de continuidad.', si:'Sí', no:'No', resultado_t:'Resultado', t04_prov:'Lite provisional: hay criterios sin dato.',
@@ -735,7 +741,7 @@ Object.assign(TX.en,{
  ok_decision:'Decision recorded: {r}.', ok_guardado:'Changes saved and recorded as events.', ok_solicitud:'Gate requested.', ok_verif:'Verification recorded.', sin_cambios:'There are no changes to record.',
  cancelar:'Cancel', guardar:'Save', cerrar:'Close', trio_fecha:'Date of the fact', trio_autor:'Recorded by', trio_motivo:'Reason or comment', cond_desc:'Condition description', c_evid:'Evidence',
  c_id:'Condition', marcar_cumplida:'Mark as met', anular:'Cancel', registrar_venc:'Record expiry', sin_condiciones:'No conditions.', cond_regla:'Conditions are only attached to conditionable criteria, with a deadline and an owner, and are verified at the latest at the next gate. An expired condition turns the outcome into Iterate.',
- anadir_valor:'Add amount', momento:'Timing', tipo:'Type', importe:'Amount', formula:'Formula', periodo:'Period', fuente:'Source', valor_reglas:'Every amount has a formula and a status (validated, declared or estimated). Released capacity does not add to net value. An empty amount means “no data”, never zero. Annual net value = efficiencies + return − recurring cost.', importe_vacio:'Leave empty if there is no data.', sin_valores:'No amounts recorded.',
+ anadir_valor:'Add amount', v_t11:'Calculate the value hypothesis with this initiative (T11)', momento:'Timing', tipo:'Type', importe:'Amount', formula:'Formula', periodo:'Period', fuente:'Source', valor_reglas:'Every amount has a formula and a status (validated, declared or estimated). Released capacity does not add to net value. An empty amount means “no data”, never zero. Annual net value = efficiencies + return − recurring cost.', importe_vacio:'Leave empty if there is no data.', sin_valores:'No amounts recorded.',
  sin_eventos:'No events.', sin_decisiones:'No gate decisions.', ver_criterios:'Show criteria', dias_decision:'Decision time', pendiente:'Pending', solicitud:'Request',
  dlg_alta:'New initiative', dlg_editar:'Edit {id}', sin_asignar:'Unassigned', e_nombre:'The name must have at least 3 characters.', e_desc:'Describe what it is and what it is used for (measurement rule 10).', e_area:'Enter the area.', e_tec:'Select at least one technology.', e_roles:'Role incompatibility: {r}', inv_nota:'Amounts in {m}; empty = no data.', etiquetas_ayuda:'Comma-separated.', intensidad_ayuda:'Use T04 to determine it with the eight criteria.', ok_alta:'Initiative {id} registered.',
  dlg_t04:'Intensity determination (T04)', t04_intro:'Meeting a single Enterprise criterion is enough to apply that intensity (01 §9.1). It is determined in phase 0 and reviewed at G3 and at every continuity review.', si:'Yes', no:'No', resultado_t:'Outcome', t04_prov:'Provisional Lite: some criteria have no data.',
@@ -1128,7 +1134,7 @@ function fichaCondiciones(I){
 function fichaValor(I,s){
   const vs=s.valor.lista;
   let h='<div class="kpis"><div class="kpi"><b>'+fE(s.valor.esperado)+'</b><span>'+esc(t('v_esperado'))+'</span></div><div class="kpi"><b>'+fE(s.valor.realizado)+'</b><span>'+esc(t('v_realizado'))+'</span></div><div class="kpi"><b>'+fP(s.valor.pctValidado)+'</b><span>'+esc(t('v_pct'))+'</span></div><div class="kpi"><b>'+fE(I.inversion&&I.inversion.realizada)+'</b><span>'+esc(t('inv_real'))+'</span></div></div>';
-  h+='<p class="ayuda">'+esc(t('valor_reglas'))+'</p>'+(cerrada(I)?'':'<div class="fila"><button type="button" data-acc="valor" data-id="'+esc(I.id)+'">'+esc(t('anadir_valor'))+'</button></div>');
+  h+='<p class="ayuda">'+esc(t('valor_reglas'))+'</p>'+(cerrada(I)?'':'<div class="fila"><button type="button" data-acc="valor" data-id="'+esc(I.id)+'">'+esc(t('anadir_valor'))+'</button><a class="enlace-btn" data-ir="t11" href="'+T11_CALC+'?desde=t01&iniciativa='+encodeURIComponent(I.id)+'">'+esc(t('v_t11'))+' →</a></div>');
   h+=fichaAlcance(I);
   if(!vs.length) return h+'<p>'+esc(t('sin_valores'))+'</p>';
   h+='<table class="tabla resp"><thead><tr><th scope="col">'+esc(t('momento'))+'</th><th scope="col">'+esc(t('tipo'))+'</th><th scope="col" class="num">'+esc(t('importe'))+'</th><th scope="col">'+esc(t('formula'))+'</th><th scope="col">'+esc(t('estado'))+'</th><th scope="col">'+esc(t('periodo'))+' · '+esc(t('fuente'))+'</th><th scope="col"><span class="oculto">'+esc(t('editar'))+'</span></th></tr></thead><tbody>';
@@ -1470,7 +1476,8 @@ Object.assign(TX.es,{
  dt_importar:'Importar JSON', dt_imp_ayuda:'Cargue uno o varios ficheros con el formato de esquema_registro.schema.json (por ejemplo, un registro por área o por periodo). «Validar e importar» sustituye los datos actuales por los ficheros; «Validar y fusionar» los añade a los datos actuales. Las entidades se unen por su código: si se repite, prevalece la del último fichero. Todo se valida antes de cargar.', dt_imp_btn:'Validar e importar',
  dt_fus_btn:'Validar y fusionar', dt_fusionar:'Fusionar JSON', dt_fus_conf:'Se fusionarán {n} fichero(s) con los datos actuales ({a} iniciativas); el registro resultante tendrá {b} iniciativas.',
  dt_panel:'Panel del consejo (T17)', dt_panel_txt:'Este registro es la entrada de datos del panel del consejo: cada iniciativa se da de alta aquí, como una oportunidad en un CRM, y el panel (completo y móvil) se genera a partir del JSON completo, sin volver a introducir nada. Las etapas del embudo del panel y sus fechas salen de las fases y los eventos del registro.',
- dt_panel_1:'Exporte el JSON completo (botón de arriba).', dt_panel_2:'En la carpeta T17_panel_consejo, ejecute el conector:', dt_panel_3:'Abra el panel generado. Umbrales de los indicadores, etapas del embudo y límites de días se configuran en config_panel.json.', dt_panel_t17:'Regenerar el panel del consejo (T17)', dt_imp_err:'El fichero no es válido:', dt_imp_ok:'Datos importados: {n} iniciativas.', dt_imp_avisos:'Avisos:', dt_imp_conf:'Se sustituirán los datos actuales ({a} iniciativas) por los del fichero ({b} iniciativas).', dt_sin_fichero:'Seleccione un fichero.', dt_json_mal:'No es un JSON válido: {e}',
+ dt_panel_1:'Exporte el JSON completo (botón de arriba).', dt_panel_2:'En la carpeta T17_panel_consejo, ejecute el conector:', dt_panel_3:'Abra el panel generado. Umbrales de los indicadores, etapas del embudo y límites de días se configuran en config_panel.json.', dt_panel_t17:'Regenerar el panel del consejo (T17)', dt_her:'Otras herramientas que leen este registro', dt_her_ayuda:'Este registro es la fuente de verdad. Servidas desde el sitio, T11, T14 y T15 leen el registro guardado en este navegador y muestran de dónde viene cada dato; lo que se corrige a mano en ellas no se pisa. Sus resultados vuelven aquí: los importes esperados de T11 y el resumen de madurez de T15 se incorporan con «Validar y fusionar» (ficheros exportados por esas herramientas) o directamente desde ellas.', dt_her_t11_ir:'Calcular hipótesis de valor (T11)',
+ dt_her_ok:'{n} resultado(s) de otras herramientas incorporados al registro:', dt_her_t11:'{n} importes esperados añadidos a la iniciativa {i}', dt_her_t15:'diagnóstico de madurez incorporado: {id}', dt_her_ini:'T11: la iniciativa {i} no existe en el registro.', dt_imp_err:'El fichero no es válido:', dt_imp_ok:'Datos importados: {n} iniciativas.', dt_imp_avisos:'Avisos:', dt_imp_conf:'Se sustituirán los datos actuales ({a} iniciativas) por los del fichero ({b} iniciativas).', dt_sin_fichero:'Seleccione un fichero.', dt_json_mal:'No es un JSON válido: {e}',
  dt_exportar:'Exportar', dt_exp_json:'JSON completo', dt_exp_csv:'CSV de iniciativas', dt_exp_ayuda:'El JSON completo es la copia de seguridad, el medio para compartir datos y la entrada del panel del consejo (T17); incluye el aviso legal. El CSV usa punto y coma y UTF-8 con BOM para hoja de cálculo; las celdas vacías significan «sin dato» y no incluye el aviso legal para no romper su formato.',
  dt_restaurar:'Restaurar datos de demostración', dt_borrar:'Borrar los datos guardados en este navegador', dt_conf_rest:'Se sustituirán los datos actuales por los de demostración. Exporte antes si quiere conservarlos.', dt_ok_rest:'Datos de demostración restaurados.',
  dt_config:'Plazos de referencia (aprobados en C2, recalibrados en C5)', dt_config_ayuda:'Días naturales por fase. La fase 6 no tiene plazo: se controla con la periodicidad de la revisión de continuidad.', dt_pl_dec:'Decisión de un gate (días hábiles)', dt_pl_rev:'Periodicidad de R6 (días)', dt_hist:'Historial mínimo para el valor ponderado', dt_guardar_conf:'Guardar configuración', dt_ok_conf:'Configuración guardada.',
@@ -1498,7 +1505,8 @@ Object.assign(TX.en,{
  dt_importar:'Import JSON', dt_imp_ayuda:'Load one or several files in the esquema_registro.schema.json format (for example, one register per area or per period). “Validate and import” replaces the current data with the files; “Validate and merge” adds them to the current data. Entities are joined by code: if a code is repeated, the one in the last file prevails. Everything is validated before loading.', dt_imp_btn:'Validate and import',
  dt_fus_btn:'Validate and merge', dt_fusionar:'Merge JSON', dt_fus_conf:'{n} file(s) will be merged into the current data ({a} initiatives); the resulting register will have {b} initiatives.',
  dt_panel:'Board dashboard (T17)', dt_panel_txt:'This register is the data entry point of the board dashboard: each initiative is entered here, like an opportunity in a CRM, and the dashboard (full and mobile) is generated from the full JSON, without re-entering anything. The dashboard funnel stages and their dates come from the phases and events of the register.',
- dt_panel_1:'Export the full JSON (button above).', dt_panel_2:'In the T17_panel_consejo folder, run the connector:', dt_panel_3:'Open the generated dashboard. Indicator thresholds, funnel stages and day limits are configured in config_panel.json.', dt_panel_t17:'Regenerate the board dashboard (T17)', dt_imp_err:'The file is not valid:', dt_imp_ok:'Data imported: {n} initiatives.', dt_imp_avisos:'Warnings:', dt_imp_conf:'The current data ({a} initiatives) will be replaced by the file ({b} initiatives).', dt_sin_fichero:'Select a file.', dt_json_mal:'Not valid JSON: {e}',
+ dt_panel_1:'Export the full JSON (button above).', dt_panel_2:'In the T17_panel_consejo folder, run the connector:', dt_panel_3:'Open the generated dashboard. Indicator thresholds, funnel stages and day limits are configured in config_panel.json.', dt_panel_t17:'Regenerate the board dashboard (T17)', dt_her:'Other tools that read this register', dt_her_ayuda:'This register is the source of truth. Served from the site, T11, T14 and T15 read the register saved in this browser and show where each figure comes from; whatever is corrected by hand in them is not overwritten. Their results come back here: the expected amounts of T11 and the maturity summary of T15 are incorporated with “Validate and merge” (files exported by those tools) or directly from them.', dt_her_t11_ir:'Calculate value hypothesis (T11)',
+ dt_her_ok:'{n} result(s) from other tools incorporated into the register:', dt_her_t11:'{n} expected amounts added to initiative {i}', dt_her_t15:'maturity assessment incorporated: {id}', dt_her_ini:'T11: initiative {i} does not exist in the register.', dt_imp_err:'The file is not valid:', dt_imp_ok:'Data imported: {n} initiatives.', dt_imp_avisos:'Warnings:', dt_imp_conf:'The current data ({a} initiatives) will be replaced by the file ({b} initiatives).', dt_sin_fichero:'Select a file.', dt_json_mal:'Not valid JSON: {e}',
  dt_exportar:'Export', dt_exp_json:'Full JSON', dt_exp_csv:'Initiatives CSV', dt_exp_ayuda:'The full JSON is the backup, the way to share data and the input of the board dashboard (T17); it includes the legal notice. The CSV uses semicolons and UTF-8 with BOM for spreadsheets; empty cells mean “no data” and it does not include the legal notice, so as not to break its format.',
  dt_restaurar:'Restore demo data', dt_borrar:'Delete the data saved in this browser', dt_conf_rest:'The current data will be replaced by the demo data. Export first if you want to keep it.', dt_ok_rest:'Demo data restored.',
  dt_config:'Reference time limits (approved in C2, recalibrated in C5)', dt_config_ayuda:'Calendar days per phase. Phase 6 has no limit: it is controlled through the continuity review frequency.', dt_pl_dec:'Gate decision (working days)', dt_pl_rev:'R6 frequency (days)', dt_hist:'Minimum history for weighted value', dt_guardar_conf:'Save configuration', dt_ok_conf:'Configuration saved.',
@@ -1993,7 +2001,7 @@ function validar(d){
   const FL=x(' fuera de la lista.',' not in the closed list.'), FNV=x(' no válida.',' is not a valid date.');
   const NOC=(es,en)=>x('id no cumple '+es+'.','id does not match '+en+'.');
   if(!d || typeof d!=='object' || Array.isArray(d)) return {errores:[x('El fichero no contiene un objeto JSON.','The file does not contain a JSON object.')],avisos:[]};
-  if(!['0.1','0.2','0.3','0.4','0.5'].includes(d.version_esquema)) A.push(x('version_esquema distinta de 0.1 a 0.5: ','version_esquema is not 0.1 to 0.5: ')+d.version_esquema);
+  if(!['0.1','0.2','0.3','0.4','0.5','0.6'].includes(d.version_esquema)) A.push(x('version_esquema distinta de 0.1 a 0.6: ','version_esquema is not 0.1 to 0.6: ')+d.version_esquema);
   if(d.aviso_legal!=null && typeof d.aviso_legal!=='string') err(x('aviso_legal debe ser un texto.','aviso_legal must be a string.'));
   const cf=d.meta&&d.meta.configuracion;
   if(!d.meta || typeof d.meta.organizacion!=='string') err(x('meta.organizacion es obligatorio.','meta.organizacion is required.'));
@@ -2052,8 +2060,34 @@ function validar(d){
   (d.sistemas||[]).forEach((s,i)=>{ if(!/^SIA-\d{4}-\d{3}$/.test(s.id||'')) err('sistemas['+i+']: '+NOC('SIA-AAAA-NNN','SIA-YYYY-NNN')); });
   if(d.riesgos!=null && !Array.isArray(d.riesgos)) err('riesgos'+x(' debe ser una lista.',' must be a list.')); else validarRiesgos(d, ini, err, A, x, FL, FNV);
   validarIndice(d, ini, err, x, FL, FNV);
+  validarMadurez(d, err, x, FNV);
   return {errores:E, avisos:A.slice(0,30)};
 }
+/* esquema 0.6: madurez[] (resumen de cada diagnóstico de T15; solo si existe) */
+function validarMadurez(d, err, x, FNV){
+  if(d.madurez==null) return; if(!Array.isArray(d.madurez)){ err('madurez'+x(' debe ser una lista.',' must be a list.')); return; }
+  const niv=v=>v==null || (Number.isInteger(v) && v>=0 && v<=5);
+  d.madurez.forEach((m,i)=>{ const w='madurez['+i+'] '+(m&&m.id||'')+': '; if(!m || typeof m!=='object'){ err(w+x('debe ser un objeto.','must be an object.')); return; }
+    if(!/^EM-\d{4}-\d{2}(-\d+)?$/.test(m.id||'')) err(w+x('id no cumple EM-AAAA-MM.','id does not match EM-YYYY-MM.')); if(!esFecha(m.fecha_corte)) err(w+'fecha_corte'+FNV);
+    if(m.modalidad!=null && !['autodiagnostico','verificada','independiente'].includes(m.modalidad)) err(w+'modalidad'+x(' fuera de la lista.',' not in the closed list.'));
+    if(!niv(m.nivel_global)) err(w+'nivel_global'+x(' debe ser un entero de 0 a 5 o nulo.',' must be an integer from 0 to 5 or null.'));
+    if(m.dimensiones!=null){ if(!Array.isArray(m.dimensiones)) err(w+'dimensiones'+x(' debe ser una lista.',' must be a list.')); else m.dimensiones.forEach(q=>{ if(!/^D[1-7]$/.test(q&&q.dimension||'')) err(w+'dimensiones.dimension'+x(' debe ser D1 a D7.',' must be D1 to D7.')); if(!niv(q&&q.nivel)) err(w+q.dimension+'.nivel'+x(' debe ser un entero de 0 a 5 o nulo.',' must be an integer from 0 to 5 or null.')); }); } });
+}
+/* D100: resultados que devuelven otras herramientas del sitio (ficheros exportados por T11 y T15) y que el registro incorpora */
+function esResultadoHerramienta(x){ return !!x && typeof x==='object' && ((x.herramienta==='T11' && Array.isArray(x.valores_t01)) || (x.herramienta==='T15' && x.madurez_t01!=null)); }
+function incorporarResultado(x, autor){
+  if(x.herramienta==='T11'){ const id=(x.iniciativa||{}).id||x.caso, I=M.ini.get(id); if(!I) return {error:t('dt_her_ini',{i:id||'?'})};
+    let n=0; const antes=DB.valores.filter(v=>v.iniciativa===I.id && v.momento==='esperado').length;
+    x.valores_t01.forEach(v=>{ if(!ENUM.tipo_imp.includes(v.tipo) || v.importe==null) return; DB.valores.push({id:nextId(DB.valores,'VAL-',4), iniciativa:I.id, momento:'esperado', tipo:v.tipo, importe:Number(v.importe), formula:v.formula||null, estado:ENUM.importe.includes(v.estado)?v.estado:'estimado', periodo:v.periodo||null, fecha:esFecha(v.fecha)?v.fecha:hoy(), fuente:v.fuente||('T11 · '+(x.exportado||hoy())), concepto:null}); n++; });
+    nuevoEvento({iniciativa:I.id, tipo:'edicion', autor, motivo:'T11 · '+t('dt_her_t11',{n, i:I.id}), campo:'valores.esperado', antes:antes, despues:antes+n, fase:I.ciclo.fase});
+    return {ok:t('dt_her_t11',{n, i:I.id})}; }
+  if(x.herramienta==='T15'){ const lista=Array.isArray(x.madurez_t01)?x.madurez_t01:[x.madurez_t01]; DB.madurez=DB.madurez||[]; const ids=[];
+    lista.forEach(m=>{ if(!m||!m.id) return; const k=DB.madurez.findIndex(y=>y.id===m.id); const e=Object.assign({}, m, {fuente:'T15', incorporado:hoy()}); if(k>=0) DB.madurez[k]=e; else DB.madurez.push(e); ids.push(m.id+' ('+fF(m.fecha_corte)+')'); });
+    DB.madurez.sort((a,b)=>String(a.fecha_corte)<String(b.fecha_corte)?-1:1);
+    return {ok:t('dt_her_t15',{id:ids.join(', ')||'—'})}; }
+  return {error:'?'};
+}
+function madurezUltima(){ const l=[...(DB.madurez||[])].sort((a,b)=>String(a.fecha_corte)<String(b.fecha_corte)?-1:1); return l.length? l[l.length-1] : null; }
 
 /* ---------------- exportaciones ---------------- */
 function csvCelda(v){ if(v==null) return ''; const s=Array.isArray(v)? v.join('|') : String(v); return /[;"\n\r]/.test(s)? '"'+s.replace(/"/g,'""')+'"' : s; }
@@ -2072,7 +2106,7 @@ function exportarCSV(){
 
 /* Fusión de dos registros completos: las entidades se unen por su código (si coincide, prevalece la del segundo); meta es la del primero, con las áreas de ambos.
    Permite cargar el registro en varios JSON (por ejemplo, uno por área o por periodo) y reconstruir con ellos el panel del consejo. */
-const LISTAS_REGISTRO = ['personas','iniciativas','sistemas','eventos','decisiones_gate','condiciones','evidencias','valores','riesgos','no_conformidades','incidentes','proveedores','recomendaciones','decisiones_consejo'];
+const LISTAS_REGISTRO = ['personas','iniciativas','sistemas','eventos','decisiones_gate','condiciones','evidencias','valores','riesgos','no_conformidades','incidentes','proveedores','recomendaciones','decisiones_consejo','madurez'];
 function fusionarRegistros(a, b){ const r=JSON.parse(JSON.stringify(a));
   LISTAS_REGISTRO.forEach(k=>{ const m=new Map((r[k]||[]).map(x=>[x.id,x])); (b[k]||[]).forEach(x=>m.set(x.id,x)); r[k]=[...m.values()].sort((x,y)=>String(x.id)<String(y.id)?-1:1); });
   r.meta=Object.assign({}, r.meta, {areas:[...new Set([...((r.meta||{}).areas||[]), ...((b.meta||{}).areas||[])])].sort()}); return r; }
@@ -2094,7 +2128,8 @@ function vistaDatos(){
     campo('pl-hist',t('dt_hist'),'<input type="number" min="1" id="pl-hist" name="pl-hist" value="'+(cf.historial_minimo_ponderado||5)+'" style="max-width:120px">')+'<div class="fila-fin"><button type="submit">'+esc(t('dt_guardar_conf'))+'</button></div></form>';
   h+='<h2>'+esc(t('dt_personas'))+'</h2><div class="fila"><button type="button" data-acc="persona">'+esc(t('nueva_persona'))+'</button></div>'+tablaSimple([t('codigo'),t('nombre'),t('cargo'),t('area'),t('organo_p')], DB.personas.map(p=>['<span class="mono">'+esc(p.id)+'</span>',esc(p.nombre),esc(p.cargo||''),esc(p.area||''),p.organo?esc(L('organo_p',p.organo)):'—']));
   h+='<h2>'+esc(t('dt_proveedores'))+'</h2><div class="fila"><button type="button" data-acc="proveedor">'+esc(t('nuevo_prov'))+'</button></div>'+tablaSimple([t('codigo'),t('nombre'),t('servicios'),t('exigencia')], DB.proveedores.map(p=>['<span class="mono">'+esc(p.id)+'</span>',esc(p.nombre),esc(p.servicios||''),esc(p.exigencia)]));
-  h+='<h2>'+esc(t('dt_modelo'))+'</h2>'+tablaSimple([t('entidad'),t('registros')], ['personas','iniciativas','sistemas','eventos','decisiones_gate','condiciones','evidencias','valores','riesgos','no_conformidades','incidentes','proveedores','recomendaciones','decisiones_consejo'].map(k=>['<span class="mono">'+k+'</span>',String(DB[k].length)]), [1]);
+  h+='<h2>'+esc(t('dt_modelo'))+'</h2>'+tablaSimple([t('entidad'),t('registros')], LISTAS_REGISTRO.map(k=>['<span class="mono">'+k+'</span>',String((DB[k]||[]).length)]), [1]);
+  h+='<h2>'+esc(t('dt_her'))+'</h2><p class="ayuda">'+esc(t('dt_her_ayuda'))+'</p><div class="fila"><a class="enlace-btn" data-ir="t11" href="'+T11_CALC+'?desde=t01">'+esc(t('dt_her_t11_ir'))+' →</a><a class="enlace-btn" data-ir="t14" href="'+T14_INDICE+'?desde=t01">'+esc(t('ix_t14'))+' →</a><a class="enlace-btn" data-ir="t15" href="'+T15_MADUREZ+'?desde=t01">'+esc(t('cj_t15'))+' →</a></div>';
   return h;
 }
 document.addEventListener('submit', e=>{
@@ -2118,6 +2153,12 @@ function onAccionExtra(acc, b){
     case 'importar': case 'fusionar': { const inp=$('#dt-fichero'); const out=$('#dt-imp-res'); const fs=[...(inp.files||[])]; if(!fs.length){ out.innerHTML='<p class="errores">'+esc(t('dt_sin_fichero'))+'</p>'; return; }
       const ko=m=>{ out.innerHTML='<p class="errores">'+esc(m)+'</p>'; };
       Promise.all(fs.map(x=>x.text().then(txt=>{ try{ return JSON.parse(txt); }catch(err){ throw new Error(x.name+': '+t('dt_json_mal',{e:err.message})); } }))).then(ds=>{
+        /* D100: los ficheros de resultados de T11 (importes esperados) y T15 (madurez) se incorporan al registro actual, sin sustituirlo */
+        const her=ds.filter(esResultadoHerramienta); ds=ds.filter(d=>!esResultadoHerramienta(d));
+        if(her.length){ const copia=JSON.parse(JSON.stringify({valores:DB.valores, eventos:DB.eventos, madurez:DB.madurez||[]})); const res=her.map(h=>incorporarResultado(h, UI.autor||t('oficina'))); const malos=res.filter(r=>r.error);
+          if(malos.length){ DB.valores=copia.valores; DB.eventos=copia.eventos; DB.madurez=copia.madurez; out.innerHTML='<div class="aviso ko"><b>'+esc(t('dt_imp_err'))+'</b><ul>'+malos.map(r=>'<li>'+esc(r.error)+'</li>').join('')+'</ul></div>'; return; }
+          guardar(); indexar(); render(); const out2=$('#dt-imp-res'); if(out2) out2.innerHTML='<div class="aviso ok"><b>'+esc(t('dt_her_ok',{n:res.length}))+'</b><ul>'+res.map(r=>'<li>'+esc(r.ok)+'</li>').join('')+'</ul></div>';
+          if(!ds.length) return; }
         /* cada fichero debe ser un registro válido por sí mismo; después se fusionan por código (el último fichero prevalece) y se valida el resultado */
         for(let i=0;i<ds.length;i++){ const v=validar(ds[i]); if(v.errores.length){ out.innerHTML='<div class="aviso ko"><b>'+esc(fs[i].name+' · '+t('dt_imp_err'))+'</b><ul>'+v.errores.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>'; return; } }
         let d = acc==='fusionar'? JSON.parse(JSON.stringify(DB)) : ds.shift(); ds.forEach(x=>{ d=fusionarRegistros(d,x); });
@@ -2158,6 +2199,7 @@ Object.assign(TX.es,{
  ix_e_reas:'Las horas reasignadas necesitan su actividad de destino (documento 12, señal 3).', ix_e_horas:'Las horas materializadas más las reasignadas no pueden superar las liberadas.', ix_e_ver:'Una verificación necesita gate, fecha y quién verificó.',
  va_oferta:'Oferta habilitada por IA (señal 6)', va_oferta_ayuda:'Solo retorno de una oferta, canal o servicio que la compañía no podría prestar sin el sistema de IA (prueba contrafactual del documento 12). Las mejoras de conversión o retención de la oferta existente no cuentan.',
  cj_titulo:'Consejo: decisiones y recomendaciones (T18)', cj_sub:'Registro de las decisiones del consejo o de su comisión (DEC) y de sus recomendaciones y encargos (REC), con los campos del documento 62. Alimenta la señal 8 y la condición IT-D1 del índice de transformación (documento 12).',
+ cj_madurez:'Madurez de la compañía (T15)', cj_mad_nivel:'Nivel global', cj_mad_fecha:'Diagnóstico', cj_mad_modalidad:'Modalidad', cj_mad_tope:'Limitado por D1 o D6', cj_mad_dims:'Nivel por dimensión', cj_mad_sin:'Sin diagnóstico de madurez incorporado. Se hace en T15 y se guarda en este registro desde la propia herramienta o importando su fichero de resumen.', cj_t15:'Diagnosticar la madurez con este registro (T15)',
  cj_compania:'Datos de la compañía para el índice', cj_ingresos:'Ingresos totales de la compañía (12 meses)', cj_ingresos_fecha:'Periodo o fecha de corte de los ingresos', cj_d3:'IT-D3 · Plan estratégico, informes al consejo u otras comunicaciones presentan la IA como transformación del negocio', cj_d3_ev:'Evidencia de IT-D3 (documentos y fechas)', cj_editar_comp:'Editar datos de la compañía',
  cj_senal8:'Lectura de la señal 8 (12 meses hasta la fecha de referencia)', cj_tesis:'Tesis de IA aprobada', cj_esferas_t:'Esferas con Transformar como ambición objetivo (IT-D1)', cj_apuestas:'Apuestas de Transformar aprobadas', cj_limite:'Con límite de inversión por etapa', cj_revisiones:'Revisiones de apuestas registradas', cj_etapas:'Decisiones de etapa basadas en hitos',
  cj_dec:'Decisiones del consejo (DEC)', cj_rec:'Recomendaciones y encargos (REC)', cj_nueva_dec:'Nueva decisión', cj_nueva_rec:'Nueva recomendación', cj_sin_dec:'No hay decisiones registradas.', cj_sin_rec:'No hay recomendaciones registradas.',
@@ -2172,6 +2214,7 @@ Object.assign(TX.en,{
  ix_e_reas:'Reassigned hours need their destination activity (document 12, signal 3).', ix_e_horas:'Materialised plus reassigned hours cannot exceed released hours.', ix_e_ver:'A verification needs a gate, a date and who verified it.',
  va_oferta:'AI-enabled offering (signal 6)', va_oferta_ayuda:'Only return from an offering, channel or service the company could not provide without the AI system (counterfactual test in document 12). Conversion or retention improvements of the existing offering do not count.',
  cj_titulo:'Board: decisions and recommendations (T18)', cj_sub:'Register of the decisions of the board or its committee (DEC) and of its recommendations and mandates (REC), with the fields of document 62. It feeds signal 8 and condition IT-D1 of the transformation index (document 12).',
+ cj_madurez:'Company maturity (T15)', cj_mad_nivel:'Overall level', cj_mad_fecha:'Assessment', cj_mad_modalidad:'Mode', cj_mad_tope:'Capped by D1 or D6', cj_mad_dims:'Level by dimension', cj_mad_sin:'No maturity assessment incorporated. It is done in T15 and saved into this register from the tool itself or by importing its summary file.', cj_t15:'Assess maturity with this register (T15)',
  cj_compania:'Company data for the index', cj_ingresos:'Total company revenue (12 months)', cj_ingresos_fecha:'Revenue period or cut-off date', cj_d3:'IT-D3 · The strategic plan, reports to the board or other communications present AI as business transformation', cj_d3_ev:'IT-D3 evidence (documents and dates)', cj_editar_comp:'Edit company data',
  cj_senal8:'Signal 8 reading (12 months to the reference date)', cj_tesis:'Approved AI thesis', cj_esferas_t:'Spheres with Transform as target ambition (IT-D1)', cj_apuestas:'Transform bets approved', cj_limite:'With an investment cap per stage', cj_revisiones:'Bet reviews recorded', cj_etapas:'Milestone-based stage decisions',
  cj_dec:'Board decisions (DEC)', cj_rec:'Recommendations and mandates (REC)', cj_nueva_dec:'New decision', cj_nueva_rec:'New recommendation', cj_sin_dec:'No decisions recorded.', cj_sin_rec:'No recommendations recorded.',
@@ -2246,8 +2289,12 @@ function listaIds(txt){ return (txt||'').split(/[,;\s]+/).map(x=>x.trim()).filte
 function vistaConsejo(){
   const Lc=lecturaConsejo(), mi=DB.meta.indice||{};
   let h='<div class="cab-ficha"><h1>'+esc(t('cj_titulo'))+'</h1><div class="fila"><button type="button" data-acc="cj-rec">'+esc(t('cj_nueva_rec'))+'</button><button type="button" class="primario" data-acc="cj-dec">'+esc(t('cj_nueva_dec'))+'</button></div></div><p class="ayuda">'+esc(t('cj_sub'))+'</p>';
-  h+='<div class="bloques"><section class="bloque"><h3>'+esc(t('cj_senal8'))+'</h3>'+dl([[t('cj_tesis'),Lc.tesis?'<span class="mono">'+esc(Lc.tesis.id)+'</span> · '+fF(Lc.tesis.fecha):(Lc.hayDecisiones?esc(t('no')):null)],[t('cj_esferas_t'),Lc.esferas.length?Lc.esferas.map(e=>esc(L('esfera',e))).join('<br>'):(Lc.tesis?esc(t('ninguna')):null)],[t('cj_apuestas'),String(Lc.apuestas)],[t('cj_limite'),esc(Lc.conLimite?t('si'):t('no'))],[t('cj_revisiones'),String(Lc.revisiones)],[t('cj_etapas'),String(Lc.etapas)]])+'<p class="ayuda" style="margin-top:6px"><a href="'+T14_INDICE+'">'+esc(t('ix_t14'))+' →</a></p></section>';
-  h+='<section class="bloque"><h3>'+esc(t('cj_compania'))+'</h3>'+dl([[t('cj_ingresos'),mi.ingresos_totales!=null?fE(mi.ingresos_totales):null],[t('cj_ingresos_fecha'),mi.periodo_ingresos?esc(mi.periodo_ingresos):null],[t('cj_d3'),mi.it_d3!=null?esc(mi.it_d3?t('si'):t('no')):null],[t('cj_d3_ev'),mi.it_d3_evidencia?esc(mi.it_d3_evidencia):null]])+'<button type="button" data-acc="cj-comp">'+esc(t('cj_editar_comp'))+'</button></section></div>';
+  h+='<div class="bloques"><section class="bloque"><h3>'+esc(t('cj_senal8'))+'</h3>'+dl([[t('cj_tesis'),Lc.tesis?'<span class="mono">'+esc(Lc.tesis.id)+'</span> · '+fF(Lc.tesis.fecha):(Lc.hayDecisiones?esc(t('no')):null)],[t('cj_esferas_t'),Lc.esferas.length?Lc.esferas.map(e=>esc(L('esfera',e))).join('<br>'):(Lc.tesis?esc(t('ninguna')):null)],[t('cj_apuestas'),String(Lc.apuestas)],[t('cj_limite'),esc(Lc.conLimite?t('si'):t('no'))],[t('cj_revisiones'),String(Lc.revisiones)],[t('cj_etapas'),String(Lc.etapas)]])+'<p class="ayuda" style="margin-top:6px"><a data-ir="t14" href="'+T14_INDICE+'?desde=t01">'+esc(t('ix_t14'))+' →</a></p></section>';
+  h+='<section class="bloque"><h3>'+esc(t('cj_compania'))+'</h3>'+dl([[t('cj_ingresos'),mi.ingresos_totales!=null?fE(mi.ingresos_totales):null],[t('cj_ingresos_fecha'),mi.periodo_ingresos?esc(mi.periodo_ingresos):null],[t('cj_d3'),mi.it_d3!=null?esc(mi.it_d3?t('si'):t('no')):null],[t('cj_d3_ev'),mi.it_d3_evidencia?esc(mi.it_d3_evidencia):null]])+'<button type="button" data-acc="cj-comp">'+esc(t('cj_editar_comp'))+'</button></section>';
+  const md=madurezUltima();
+  h+='<section class="bloque" id="cj-madurez" data-madurez="'+(md?esc(md.id):'')+'"><h3>'+esc(t('cj_madurez'))+'</h3>'+(md
+    ? dl([[t('cj_mad_nivel'),md.nivel_global!=null?'<b>'+md.nivel_global+'</b> · '+esc(L('nivel_madurez',String(md.nivel_global))):sd()],[t('cj_mad_fecha'),fF(md.fecha_corte)+' · <span class="mono">'+esc(md.id)+'</span>'],[t('cj_mad_modalidad'),md.modalidad?esc(L('modalidad_madurez',md.modalidad)):null],[t('cj_mad_tope'),md.tope_aplicado?esc((md.limitante||[]).join(', ')):esc(t('no'))],[t('cj_mad_dims'),(md.dimensiones||[]).map(q=>esc(q.dimension)+' <b>'+(q.nivel!=null?q.nivel:'—')+'</b>').join(' · ')||null]])
+    : '<p class="ayuda">'+esc(t('cj_mad_sin'))+'</p>')+'<p class="ayuda" style="margin-top:6px"><a data-ir="t15" href="'+T15_MADUREZ+'?desde=t01">'+esc(t('cj_t15'))+' →</a></p></section></div>';
   const dec=[...(DB.decisiones_consejo||[])].sort((a,b)=>a.fecha<b.fecha?1:-1);
   h+='<h2>'+esc(t('cj_dec'))+'</h2>'+(dec.length? tablaSimple([t('codigo'),t('fecha'),t('dc_asunto'),t('dc_resultado'),t('iniciativas'),t('dc_texto'),''], dec.map(d=>['<span class="mono">'+esc(d.id)+'</span>',fF(d.fecha),esc(L('dec_asunto',d.asunto))+(d.decision_etapa?'<br>'+et(L('dec_etapa',d.decision_etapa),'info'):'')+(d.limite_inversion_etapa!=null?'<br><span class="ayuda">'+esc(t('dc_limite'))+': '+fE(d.limite_inversion_etapa)+'</span>':''),d.resultado?esc(L('dec_resultado',d.resultado)):sd(),(d.iniciativas||[]).map(id=>M.ini.get(id)?'<a href="#/ficha/'+esc(id)+'">'+esc(id)+'</a>':esc(id)).join('<br>')||'—',esc(d.texto||''),'<button type="button" data-acc="cj-dec" data-dec="'+esc(d.id)+'">'+esc(t('editar'))+'</button>'])) : '<p class="ayuda">'+esc(t('cj_sin_dec'))+'</p>');
   const rec=[...(DB.recomendaciones||[])].sort((a,b)=>String(a.fecha)<String(b.fecha)?1:-1);
@@ -2387,6 +2434,7 @@ document.addEventListener('change', e=>{
 document.addEventListener('input', e=>{ const el=e.target; if(el.dataset && el.dataset.filtro==='q'){ UI.filtros.q=el.value; clearTimeout(render._q); render._q=setTimeout(()=>{ guardarUI(); render(); },250); } });
 document.addEventListener('toggle', e=>{ if(e.target.id==='det-filtros'){ UI.filtrosAbiertos=e.target.open; guardarUI(); } }, true);
 document.addEventListener('click', e=>{
+  const ir=e.target.closest('a[data-ir]'); if(ir){ guardar(); return; } /* D100: la otra herramienta lee el registro guardado en este navegador */
   const b=e.target.closest('[data-acc]'); if(!b) return;
   const acc=b.dataset.acc;
   if(acc==='limpiar-filtros'){ UI.filtros={}; guardarUI(); render(); return; }

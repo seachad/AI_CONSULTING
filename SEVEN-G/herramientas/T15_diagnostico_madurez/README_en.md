@@ -13,6 +13,7 @@ Applies **document 11** (Maturity model): questionnaire of the **84 questions** 
 5. **Evolution** compares all assessments; the report comparison is only made with the previous verified assessment with the same questionnaire version and warns if the weights do not match.
 6. **Interview guide**: reference view of 11 §4.4 to §4.6 (interviews, valid evidence, answers, sampling with a minimum sample size calculator) and of what is asked in each dimension.
 7. **Data**: export and import the T15 JSON (with the calculated results) and export the answers of the selected assessment as CSV (";" separator, UTF-8).
+8. **With the T01 register** (D100): the initiative register is the source of truth. Served from the site, the tools share the browser's local storage: T15 finds the register T01 has saved (it says so in the header), a freshly opened T15 with a real register takes its company, and from the assessment you can **propose a stratified sample** of initiatives from the register (Enterprise, in production, Augment or Transform, third party, generative AI or agents; 11 §4.6) and **take the profile of the latest T14 calculation** for the cross-reading. The **summary of each assessment** (overall level, average, cap by D1 or D6 and level by dimension; never the answers) is saved into the register with "Save the maturity summary into the T01 register" (list `madurez[]` of schema 0.6) or exported as a file to import in T01; the board dashboard (T17) shows it in the "Company maturity" card. `build_madurez.ps1 -Resumen <file.json>` writes that summary without opening the browser (it is what the demonstration register carries).
 
 Data is stored only in the browser used (local storage). Nothing is sent to third parties.
 
@@ -44,9 +45,8 @@ For the smoke test: `#nivel-global` carries `data-nivel` (in the example, `2`), 
 
 ## Pending
 
-- *Maturity assessment* and *Answer* entities in the data model in 03 §4 (proposal in 11 §10).
-- Publication of the overall level and the level by dimension in the board dashboard (T17) and transfer of the actions requested by the board to the register of recommendations (T18).
-- Reading the profile from a T14 JSON (it is currently recorded manually).
+- *Answer* entity in the data model in 03 §4 (proposal in 11 §10): the assessment summary is already there (schema 0.6, D100); the answers stay in T15 only.
+- Transfer of the actions requested by the board to the register of recommendations (T18).
 
 ---
 

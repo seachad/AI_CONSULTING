@@ -2,10 +2,10 @@
   "version_esquema": "0.1",
   "herramienta": "T14",
   "meta": {
-    "organizacion": "Compañía industrial de ejemplo (ficticia)",
+    "organizacion": "Compañía Ejemplo Industrial, S.A. (ficticia)",
     "moneda": "EUR",
     "datos_ilustrativos": true,
-    "nota": "Datos ilustrativos y ficticios. El cálculo formal de junio de 2026 reproduce el ejemplo completo del documento 12, sección 9; el cálculo de seguimiento de marzo de 2026 es una evolución inventada para mostrar la tendencia. Cualquier parecido con una compañía real es casual."
+    "nota": "Datos ilustrativos y ficticios de la misma compañía ficticia que el registro de demostración de T01. El cálculo de septiembre de 2026 está calculado desde ese registro (idéntico al que muestra el panel del consejo de ejemplo); el cálculo formal de junio de 2026 reproduce el ejemplo completo del documento 12, sección 9, y el de seguimiento de marzo de 2026 es una evolución inventada para mostrar la tendencia. Cualquier parecido con una compañía real es casual."
   },
   "umbrales": [
     {
@@ -15,17 +15,61 @@
       "aprobado_por": null,
       "nota": "Versión de referencia del marco. No procede de estudios de mercado.",
       "parametros": {
-        "base": { "b1_min": 80, "b2_min": 50, "b3_min": 5 },
-        "s1": { "sin_clasificar_max": 30, "t2": 20, "t3": 40, "transformar_min": 10 },
-        "s2": { "t2": 10, "t3": 30, "iniciativas_min": 2 },
-        "s3": { "t2": 30, "t3": 60, "reasignada_min": 50 },
-        "s4": { "t2": 15, "t3": 35, "sin_verificacion_max": 30 },
-        "s5": { "t2": 10, "t3": 25, "unidades_min": 1 },
-        "s6": { "t2": 0.5, "t3": 2 },
-        "s7": { "cr2": 0.5, "cr3": 0.8, "tr3_max": 2.0, "resultado_min": 3, "tasa_referencia": 0.6 },
-        "s8": { "revisiones_min": 2, "decisiones_min": 1 },
-        "perfil": { "suma_min": 14, "cobertura_min": 6, "d2_transformar_min": 10 },
-        "sobredeclaracion": { "cartera": 30, "transformar": 50 }
+        "base": {
+          "b1_min": 80,
+          "b2_min": 50,
+          "b3_min": 5
+        },
+        "s1": {
+          "sin_clasificar_max": 30,
+          "t2": 20,
+          "t3": 40,
+          "transformar_min": 10
+        },
+        "s2": {
+          "t2": 10,
+          "t3": 30,
+          "iniciativas_min": 2
+        },
+        "s3": {
+          "t2": 30,
+          "t3": 60,
+          "reasignada_min": 50
+        },
+        "s4": {
+          "t2": 15,
+          "t3": 35,
+          "sin_verificacion_max": 30
+        },
+        "s5": {
+          "t2": 10,
+          "t3": 25,
+          "unidades_min": 1
+        },
+        "s6": {
+          "t2": 0.5,
+          "t3": 2
+        },
+        "s7": {
+          "cr2": 0.5,
+          "cr3": 0.8,
+          "tr3_max": 2.0,
+          "resultado_min": 3,
+          "tasa_referencia": 0.6
+        },
+        "s8": {
+          "revisiones_min": 2,
+          "decisiones_min": 1
+        },
+        "perfil": {
+          "suma_min": 14,
+          "cobertura_min": 6,
+          "d2_transformar_min": 10
+        },
+        "sobredeclaracion": {
+          "cartera": 30,
+          "transformar": 50
+        }
       }
     }
   ],
@@ -37,17 +81,72 @@
       "version_umbrales": "0.1",
       "origen": "manual",
       "entradas": {
-        "base": { "activas": 16, "gobernadas": 13, "valor_validado": 1400000, "valor_total": 2900000, "en_produccion": 12, "produccion_con_valor": 10 },
-        "s1": { "coste_total": 3600000, "coste_aumentar": 650000, "coste_transformar": 150000, "coste_sin_clasificar": 0 },
-        "s2": { "eficiencias_validadas": 1300000, "retorno_validado": 100000, "iniciativas_con_retorno": 1 },
-        "s3": { "horas_liberadas": 52000, "horas_materializadas": 7000, "horas_reasignadas": 6000 },
-        "s4": { "itp2_verificada": 1, "sin_verificacion": 2 },
-        "s5": { "itp3_supervision": 1, "unidades_completas": 0, "sin_supervision": 0 },
-        "s6": { "ingresos_habilitados": null, "ingresos_totales": 400000000 },
-        "s7": { "hay_gates": true, "at_superaron_g2": 5, "at_con_resultado": 4, "at_en_produccion": 2, "opt_con_resultado": 12, "opt_en_produccion": 9, "mediana_at": 240, "mediana_opt": 125, "plazos_ref": null },
-        "s8": { "tesis_aprobada": true, "apuestas_transformar": 1, "con_limite_etapa": true, "revisiones": 0, "decisiones_etapa": 0 },
-        "declaracion": { "d1": true, "d3": true, "evidencia": "Tesis de IA aprobada en C2 con Transformar en la esfera 02; plan estratégico que describe la IA como palanca de transformación." },
-        "sobredeclaracion": { "real_registrada": 3, "real_inferior": 0, "transf_real_registrada": 0, "transf_real_inferior": 0 }
+        "base": {
+          "activas": 16,
+          "gobernadas": 13,
+          "valor_validado": 1400000,
+          "valor_total": 2900000,
+          "en_produccion": 12,
+          "produccion_con_valor": 10
+        },
+        "s1": {
+          "coste_total": 3600000,
+          "coste_aumentar": 650000,
+          "coste_transformar": 150000,
+          "coste_sin_clasificar": 0
+        },
+        "s2": {
+          "eficiencias_validadas": 1300000,
+          "retorno_validado": 100000,
+          "iniciativas_con_retorno": 1
+        },
+        "s3": {
+          "horas_liberadas": 52000,
+          "horas_materializadas": 7000,
+          "horas_reasignadas": 6000
+        },
+        "s4": {
+          "itp2_verificada": 1,
+          "sin_verificacion": 2
+        },
+        "s5": {
+          "itp3_supervision": 1,
+          "unidades_completas": 0,
+          "sin_supervision": 0
+        },
+        "s6": {
+          "ingresos_habilitados": null,
+          "ingresos_totales": 400000000
+        },
+        "s7": {
+          "hay_gates": true,
+          "at_superaron_g2": 5,
+          "at_con_resultado": 4,
+          "at_en_produccion": 2,
+          "opt_con_resultado": 12,
+          "opt_en_produccion": 9,
+          "mediana_at": 240,
+          "mediana_opt": 125,
+          "plazos_ref": null
+        },
+        "s8": {
+          "tesis_aprobada": true,
+          "apuestas_transformar": 1,
+          "con_limite_etapa": true,
+          "revisiones": 0,
+          "decisiones_etapa": 0
+        },
+        "declaracion": {
+          "d1": true,
+          "d3": true,
+          "evidencia": "Tesis de IA aprobada en C2 con Transformar en la esfera 02; plan estratégico que describe la IA como palanca de transformación."
+        },
+        "sobredeclaracion": {
+          "real_registrada": 3,
+          "real_inferior": 0,
+          "transf_real_registrada": 0,
+          "transf_real_inferior": 0
+        }
       },
       "notas": "Cálculo trimestral de seguimiento (C4). Los ingresos habilitados por IA aún no se medían.",
       "acciones": "Control de gestión: medir los ingresos del piloto comercial desde abril (responsable: dirección financiera)."
@@ -59,20 +158,224 @@
       "version_umbrales": "0.1",
       "origen": "manual",
       "entradas": {
-        "base": { "activas": 17, "gobernadas": 15, "valor_validado": 1960000, "valor_total": 3300000, "en_produccion": 14, "produccion_con_valor": 12 },
-        "s1": { "coste_total": 4000000, "coste_aumentar": 700000, "coste_transformar": 300000, "coste_sin_clasificar": 0 },
-        "s2": { "eficiencias_validadas": 1800000, "retorno_validado": 160000, "iniciativas_con_retorno": 2 },
-        "s3": { "horas_liberadas": 60000, "horas_materializadas": 9000, "horas_reasignadas": 12000 },
-        "s4": { "itp2_verificada": 2, "sin_verificacion": 0 },
-        "s5": { "itp3_supervision": 1, "unidades_completas": 0, "sin_supervision": 0 },
-        "s6": { "ingresos_habilitados": 40000, "ingresos_totales": 400000000 },
-        "s7": { "hay_gates": true, "at_superaron_g2": 6, "at_con_resultado": 5, "at_en_produccion": 2, "opt_con_resultado": 14, "opt_en_produccion": 10, "mediana_at": 230, "mediana_opt": 120, "plazos_ref": null },
-        "s8": { "tesis_aprobada": true, "apuestas_transformar": 1, "con_limite_etapa": true, "revisiones": 1, "decisiones_etapa": 0 },
-        "declaracion": { "d1": true, "d3": true, "evidencia": "Tesis de IA aprobada en C2 con Transformar en la esfera 02 (Producto y servicio); plan estratégico que describe la IA como «palanca de transformación»." },
-        "sobredeclaracion": { "real_registrada": 3, "real_inferior": 0, "transf_real_registrada": 0, "transf_real_inferior": 0 }
+        "base": {
+          "activas": 17,
+          "gobernadas": 15,
+          "valor_validado": 1960000,
+          "valor_total": 3300000,
+          "en_produccion": 14,
+          "produccion_con_valor": 12
+        },
+        "s1": {
+          "coste_total": 4000000,
+          "coste_aumentar": 700000,
+          "coste_transformar": 300000,
+          "coste_sin_clasificar": 0
+        },
+        "s2": {
+          "eficiencias_validadas": 1800000,
+          "retorno_validado": 160000,
+          "iniciativas_con_retorno": 2
+        },
+        "s3": {
+          "horas_liberadas": 60000,
+          "horas_materializadas": 9000,
+          "horas_reasignadas": 12000
+        },
+        "s4": {
+          "itp2_verificada": 2,
+          "sin_verificacion": 0
+        },
+        "s5": {
+          "itp3_supervision": 1,
+          "unidades_completas": 0,
+          "sin_supervision": 0
+        },
+        "s6": {
+          "ingresos_habilitados": 40000,
+          "ingresos_totales": 400000000
+        },
+        "s7": {
+          "hay_gates": true,
+          "at_superaron_g2": 6,
+          "at_con_resultado": 5,
+          "at_en_produccion": 2,
+          "opt_con_resultado": 14,
+          "opt_en_produccion": 10,
+          "mediana_at": 230,
+          "mediana_opt": 120,
+          "plazos_ref": null
+        },
+        "s8": {
+          "tesis_aprobada": true,
+          "apuestas_transformar": 1,
+          "con_limite_etapa": true,
+          "revisiones": 1,
+          "decisiones_etapa": 0
+        },
+        "declaracion": {
+          "d1": true,
+          "d3": true,
+          "evidencia": "Tesis de IA aprobada en C2 con Transformar en la esfera 02 (Producto y servicio); plan estratégico que describe la IA como «palanca de transformación»."
+        },
+        "sobredeclaracion": {
+          "real_registrada": 3,
+          "real_inferior": 0,
+          "transf_real_registrada": 0,
+          "transf_real_inferior": 0
+        }
       },
       "notas": "Ejemplo completo del documento 12, sección 9. Cálculo formal anual.",
       "acciones": "Revisión trimestral de la apuesta de Transformar por el consejo (secretaría del consejo). Verificar IT-P2 en las iniciativas de Aumentar en su próxima R6 (oficina de IA)."
+    },
+    {
+      "id": "IDX-2026-09",
+      "fecha_corte": "2026-09-16",
+      "tipo": "seguimiento",
+      "version_umbrales": "0.1",
+      "origen": "t01",
+      "entradas": {
+        "base": {
+          "activas": 13,
+          "gobernadas": 9,
+          "valor_validado": 2650000,
+          "valor_total": 7370000,
+          "en_produccion": 4,
+          "produccion_con_valor": 4
+        },
+        "s1": {
+          "coste_total": 8919000,
+          "coste_aumentar": 4570000,
+          "coste_transformar": 480000,
+          "coste_sin_clasificar": 0
+        },
+        "s2": {
+          "eficiencias_validadas": 2650000,
+          "retorno_validado": 0,
+          "iniciativas_con_retorno": 0
+        },
+        "s3": {
+          "horas_liberadas": 123600,
+          "horas_materializadas": 70000,
+          "horas_reasignadas": 18000
+        },
+        "s4": {
+          "itp2_verificada": 1,
+          "sin_verificacion": 0
+        },
+        "s5": {
+          "itp3_supervision": 1,
+          "unidades_completas": 0,
+          "sin_supervision": 0
+        },
+        "s6": {
+          "ingresos_habilitados": 0,
+          "ingresos_totales": 950000000
+        },
+        "s7": {
+          "hay_gates": true,
+          "at_superaron_g2": 3,
+          "at_con_resultado": 3,
+          "at_en_produccion": 1,
+          "opt_con_resultado": 4,
+          "opt_en_produccion": 4,
+          "mediana_at": 217,
+          "mediana_opt": 134,
+          "plazos_ref": 180
+        },
+        "s8": {
+          "tesis_aprobada": true,
+          "apuestas_transformar": 0,
+          "con_limite_etapa": false,
+          "revisiones": 0,
+          "decisiones_etapa": 0
+        },
+        "declaracion": {
+          "d1": true,
+          "d3": true,
+          "evidencia": "Plan estratégico 2026-2028, aprobado en diciembre de 2025, que presenta la IA como palanca de transformación del servicio industrial (ficticio)."
+        },
+        "sobredeclaracion": {
+          "real_registrada": 2,
+          "real_inferior": 0,
+          "transf_real_registrada": 0,
+          "transf_real_inferior": 0
+        }
+      },
+      "de_t01": {
+        "base": [
+          "activas",
+          "gobernadas",
+          "valor_validado",
+          "valor_total",
+          "en_produccion",
+          "produccion_con_valor"
+        ],
+        "s1": [
+          "coste_total",
+          "coste_aumentar",
+          "coste_transformar",
+          "coste_sin_clasificar"
+        ],
+        "s2": [
+          "eficiencias_validadas",
+          "retorno_validado",
+          "iniciativas_con_retorno"
+        ],
+        "s7": [
+          "hay_gates",
+          "at_superaron_g2",
+          "at_con_resultado",
+          "at_en_produccion",
+          "opt_con_resultado",
+          "opt_en_produccion",
+          "mediana_at",
+          "mediana_opt",
+          "plazos_ref"
+        ],
+        "sobredeclaracion": [
+          "real_registrada",
+          "real_inferior",
+          "transf_real_registrada",
+          "transf_real_inferior"
+        ],
+        "s3": [
+          "horas_liberadas",
+          "horas_materializadas",
+          "horas_reasignadas"
+        ],
+        "s4": [
+          "itp2_verificada",
+          "sin_verificacion"
+        ],
+        "s5": [
+          "itp3_supervision",
+          "unidades_completas",
+          "sin_supervision"
+        ],
+        "s6": [
+          "ingresos_habilitados",
+          "ingresos_totales"
+        ],
+        "s8": [
+          "tesis_aprobada",
+          "apuestas_transformar",
+          "con_limite_etapa",
+          "revisiones",
+          "decisiones_etapa"
+        ],
+        "declaracion": [
+          "d1",
+          "d3"
+        ]
+      },
+      "t01": {
+        "organizacion": "Compañía Ejemplo Industrial, S.A. (ficticia)",
+        "fecha": "2026-09-16",
+        "iniciativas": 15
+      },
+      "notas": "Calculado desde el registro de demostración de T01 (esquema 0.5), el mismo que alimenta el panel del consejo de ejemplo. Calculado desde el registro T01 a fecha 16-09-2026. Lo que el registro no contiene queda «sin dato» y se completa a mano; en registros anteriores al esquema 0.5 son la verificación de IT-P2 e IT-P3, las horas materializadas y reasignadas, los ingresos habilitados por IA, las decisiones del consejo e IT-D3. Importes realizados: el último de cada tipo por iniciativa en la ventana; inversión: la realizada acumulada de cada iniciativa (aproximación).",
+      "acciones": "Oficina de IA: completar la verificación de IT-P2 en las iniciativas de Aumentar en su próxima R6. Control de gestión: mantener la medición de la capacidad liberada y de los ingresos habilitados por IA (T20, T12)."
     }
   ]
 }

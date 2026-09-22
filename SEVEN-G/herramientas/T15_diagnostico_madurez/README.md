@@ -13,6 +13,7 @@ Aplica el **documento 11** (Modelo de madurez): cuestionario de las **84 pregunt
 5. **Evolución** compara todas las evaluaciones; la comparación del informe solo se hace con la evaluación verificada anterior de la misma versión del cuestionario y avisa si los pesos no coinciden.
 6. **Guía de entrevistas**: vista de consulta de 11 §4.4 a §4.6 (entrevistas, evidencias válidas, respuestas, muestreo con calculadora del tamaño mínimo) y de lo que se pregunta en cada dimensión.
 7. **Datos**: exportar e importar el JSON de T15 (con los resultados calculados) y exportar las respuestas de la evaluación seleccionada en CSV (separador «;», UTF-8).
+8. **Con el registro T01** (D100): el registro de iniciativas es la fuente de verdad. Servidas desde el sitio, las herramientas comparten el almacenamiento local del navegador: T15 encuentra el registro que T01 tiene guardado (lo dice en la cabecera), un T15 recién abierto con un registro real toma su compañía, y desde la evaluación se puede **proponer una muestra estratificada** de iniciativas del registro (Enterprise, en producción, Aumentar o Transformar, terceros, IA generativa o agentes; 11 §4.6) y **tomar el perfil del último cálculo de T14** para la lectura cruzada. El **resumen de cada diagnóstico** (nivel global, media, límite por D1 o D6 y nivel por dimensión; nunca las respuestas) se guarda en el registro con «Guardar el resumen de madurez en el registro T01» (lista `madurez[]` del esquema 0.6) o se exporta como fichero para importarlo en T01; el panel del consejo (T17) lo muestra en la tarjeta «Madurez de la compañía». `build_madurez.ps1 -Resumen <fichero.json>` escribe ese resumen sin abrir el navegador (es lo que lleva el registro de demostración).
 
 Los datos se guardan solo en el navegador que se usa (almacenamiento local). No se envía nada a terceros.
 
@@ -44,9 +45,8 @@ Para la prueba de humo: `#nivel-global` lleva `data-nivel` (en el ejemplo, `2`),
 
 ## Pendiente
 
-- Entidades *Evaluación de madurez* y *Respuesta* en el modelo de datos de 03 §4 (propuesta de 11 §10).
-- Publicación del nivel global y por dimensión en el panel del consejo (T17) y paso de las acciones pedidas por el consejo al registro de recomendaciones (T18).
-- Lectura del perfil desde un JSON de T14 (hoy se anota a mano).
+- Entidad *Respuesta* en el modelo de datos de 03 §4 (propuesta de 11 §10): el resumen del diagnóstico ya está (esquema 0.6, D100); las respuestas siguen solo en T15.
+- Paso de las acciones pedidas por el consejo al registro de recomendaciones (T18).
 
 ---
 
