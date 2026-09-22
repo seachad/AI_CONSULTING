@@ -36,7 +36,7 @@ This document serves two functions:
 | 3 | **Controlled taxonomy** | The main tags use closed lists defined in the framework, so that the portfolio can be filtered, compared and aggregated. Free tags are allowed as a complement. |
 | 4 | **Evidence linked, not copied** | The tools record the link, version and verification status of each piece of evidence; the document itself lives in the company's document repository. |
 | 5 | **Portability** | The reference tools work without a server, in HTML with data in JSON, and export to spreadsheet. The data model can be implemented in the CRM, risk management tool or project management platform that the company already uses. |
-| 6 | **The data belongs to the company** | The tools do not send data to third parties. Demonstrations always use fictitious data. |
+| 6 | **The data belongs to the company** | The tools do not send data to third parties: what is entered is stored only in the browser of whoever enters it, and the backup is the exported JSON. Demonstrations always use fictitious data. Where the data is, what leaves the browser and how to install the site on your own server: document 95. |
 | 7 | **"No data" is not zero** | A missing value is shown as missing and is never replaced by an undeclared estimate. |
 | 8 | **Every cited code is navigable** | When a tool or a dashboard names a document, a template, another tool, a gate or a criterion (document 40, P12, T06, G3.05…), that code is a link to where it is explained, with its tooltip, and the navigation bar offers "Go to code" and "Cited here", the list of everything that page or view names. The site's code index (`codigos.js`) does it, shared by documents, tools and dashboards; in the board dashboard it is enabled with `navegacion.codigos`. |
 

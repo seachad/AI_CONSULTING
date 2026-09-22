@@ -270,6 +270,7 @@ No es necesario pedir permiso para ningún uso que cumpla la licencia. Contactar
 | **34 · Mapeo regulatorio** | Alcance y responsabilidad del mapeo (sección 1); fechas de consulta y mantenimiento. |
 | **91 · Guía para consultores** | Uso del marco por terceros y del nombre SEVEN-G. |
 | **92 · Casos de aplicación** | Datos ficticios. |
+| **95 · Datos en local e instalación propia** | Descarga del repositorio público, instalación en un servidor propio y obras derivadas de consultoras y *partners*. |
 
 ---
 

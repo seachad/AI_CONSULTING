@@ -329,6 +329,7 @@ On completion of any model, the third party delivers: registers and data in an o
 | **61 · Board conversation guide** | Role of the director or adviser with AI experience (M4). |
 | **62 · Recommendations and decisions register** | Register of recommendations and independent assessment. |
 | **90 · Implementation guide** | Content of M2. |
+| **95 · Local data and self-hosting** | Where the data entered into the tools stays and how to set up a separate installation per client. |
 | **92 · Application cases** | Fictitious cases for training and explaining the framework. |
 | **93 · Licence, use by third parties and citation** | Terms of use and attribution. |
 
