@@ -1,4 +1,4 @@
-# T17 · Connector from the T01 register to the board dashboard
+# T17 · Regenerate the board dashboard
 
 ## Legal notice and disclaimer
 

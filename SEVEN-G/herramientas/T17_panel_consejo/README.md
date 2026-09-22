@@ -1,4 +1,4 @@
-# T17 · Conector del registro T01 al panel del consejo
+# T17 · Regenerar el panel del consejo
 
 ## Aviso legal y exención de responsabilidad
 
