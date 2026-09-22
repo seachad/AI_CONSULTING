@@ -166,6 +166,7 @@ Each document shows this same level in its "The essentials" box, with the minimu
 | 51 | [Data and knowledge for AI](51_SEVEN-G_Datos_y_conocimiento.html) | **Conditional** | Data, data protection |
 | 52 | [AI operations manual](52_SEVEN-G_Manual_de_operacion_de_IA.html) | **Always** | Operations owners |
 | 53 | [Building solutions with AI](53_SEVEN-G_Construccion_de_soluciones_con_IA.html) | **Conditional** | Technical owners |
+| 54 | [How a company organises itself for AI](54_SEVEN-G_Organizacion_de_la_compania_para_la_IA.html) | **Reference** | Board, senior management, AI Office |
 | 60 | [Board pack](60_SEVEN-G_Paquete_para_el_consejo.html) | **Always** | Board secretariat, AI Office |
 | 61 | [Board conversation guide](61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html) | **Recommended** | Directors, management |
 | 62 | [Recommendations and decisions register](62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html) | **Always** | Board secretariat, AI Office |

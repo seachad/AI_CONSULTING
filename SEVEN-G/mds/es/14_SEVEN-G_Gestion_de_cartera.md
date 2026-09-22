@@ -79,7 +79,7 @@ Este documento no constituye asesoramiento jurídico.
 
 ### 3.1 Canales
 
-Las iniciativas pueden proceder de las áreas de negocio, de retos planteados por el consejo o la dirección, de la oficina de IA o de propuestas de proveedores. **Toda iniciativa necesita un patrocinador de negocio**: una propuesta de un proveedor sin patrocinador interno no entra.
+Las iniciativas pueden proceder de las áreas de negocio, de retos planteados por el consejo o la dirección, de la oficina de IA o de propuestas de proveedores. **Toda iniciativa necesita un patrocinador de negocio**: una propuesta de un proveedor sin patrocinador interno no entra. El documento 54, sección 5, detalla las ocho fuentes de las que nacen los casos de uso, el sesgo típico de cada una y lo que le falta antes de entrar.
 
 ### 3.2 Ficha mínima de entrada
 
