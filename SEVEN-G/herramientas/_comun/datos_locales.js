@@ -1,5 +1,5 @@
 /* =========================================================
-   SEVEN-G · Datos locales por usuario o compañía (D101)
+   SEVEN-G · Datos locales por usuario o compañía (D103)
    Módulo común de las herramientas T01, T11, T14 y T15. No se carga como fichero aparte: cada build_*.ps1 lo incrusta en el HTML
    generado en el lugar de la marca __DATOS_LOCALES__, para que la herramienta siga siendo un solo fichero sin dependencias.
    Código MIT · © 2026 Fernando García Varela

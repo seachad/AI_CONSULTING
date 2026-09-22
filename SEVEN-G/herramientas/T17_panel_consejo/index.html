@@ -45,6 +45,7 @@
 <main>
   <header>
     <div class="marca">SEVEN-G · Herramientas · T17</div>
+    <span class="ir-codigo" data-ir-codigo></span>
     <div class="idioma" role="group" aria-label="Idioma / Language">
       <button type="button" id="btn-es" aria-pressed="true" onclick="idioma('es')">ES</button>
       <button type="button" id="btn-en" aria-pressed="false" onclick="idioma('en')">EN</button>
@@ -52,7 +53,7 @@
   </header>
 
   <!-- ================================================================ ES -->
-  <section id="es" lang="es">
+  <section id="es" lang="es" data-enlazar-codigos>
     <span class="demo">Demo · datos ficticios</span>
     <h1>T17 · Generador del panel del consejo<small>Convierte el registro de iniciativas T01 en el panel de IA para el Consejo y en el registro de recomendaciones (T18)</small></h1>
     <p class="que-es"><strong>Qué es T17, en una frase:</strong> es un <strong>generador</strong>, no una aplicación en la que se introducen datos. Las iniciativas se mantienen en el <a href="../T01_registro_iniciativas/registro.html" title="Herramienta T01 · Registro de iniciativas: donde se dan de alta y se actualizan los datos">registro T01</a>; T17 lee ese registro y <strong>genera —o vuelve a generar, cada vez que el registro cambia—</strong> el panel del consejo completo, su versión para el móvil y el registro de recomendaciones. <strong>Si solo quiere ver el resultado</strong>, abra el panel de ejemplo: <a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html" title="Panel completo del consejo, con la cartera ficticia de ejemplo">panel completo</a> · <a href="ejemplo/salida/t01_Dashboard_Movil_IA_v8.html" title="El mismo panel, en formato para el teléfono">panel para el móvil</a>. El resto de esta página explica cómo generarlo con sus propios datos.</p>
@@ -100,7 +101,7 @@
   </section>
 
   <!-- ================================================================ EN -->
-  <section id="en" lang="en" hidden>
+  <section id="en" lang="en" hidden data-enlazar-codigos>
     <span class="demo">Demo · fictitious data</span>
     <h1>T17 · Board dashboard generator<small>Turns the T01 initiative register into the AI dashboard for the board and the recommendations log (T18)</small></h1>
     <p class="que-es"><strong>What T17 is, in one sentence:</strong> it is a <strong>generator</strong>, not an application where data is entered. Initiatives are kept in the <a href="../T01_registro_iniciativas/registro.html" title="Tool T01 · Initiative register: where data is entered and updated">T01 register</a>; T17 reads that register and <strong>generates —or regenerates, every time the register changes—</strong> the full board dashboard, its mobile version and the recommendations log. <strong>If you only want to see the result</strong>, open the example dashboard (in Spanish): <a href="ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html" title="Full board dashboard, with the fictitious example portfolio">full dashboard</a> · <a href="ejemplo/salida/t01_Dashboard_Movil_IA_v8.html" title="The same dashboard, laid out for the phone">mobile dashboard</a>. The rest of this page explains how to generate it with your own data.</p>
@@ -158,11 +159,18 @@
     document.documentElement.lang = l;
     document.title = es ? 'T17 · Regenerar el panel del consejo · SEVEN-G' : 'T17 · Regenerate the board dashboard · SEVEN-G';
     try { localStorage.setItem('t17_idioma', l); } catch (e) {}
+    cargaCodigos(l);
+  }
+  // «Ir a código» y códigos citados (D99): índice del sitio en el idioma activo; cada código escrito en esta página enlaza a donde se explica
+  function cargaCodigos(l) {
+    if (window.sevengIrCodigo && window.sevengIrCodigo.lang === l) { window.sevengIrCodigo.iniciar(); return; }
+    var previo = document.getElementById('ir-codigo-js'); if (previo) previo.parentNode.removeChild(previo);
+    var sc = document.createElement('script'); sc.id = 'ir-codigo-js'; sc.src = '../../html/' + l + '/codigos.js'; document.head.appendChild(sc);
   }
   (function () {
     var guardado = null;
     try { guardado = localStorage.getItem('t17_idioma'); } catch (e) {}
-    if (guardado === 'en' || (!guardado && /^en\b/i.test(navigator.language || ''))) { idioma('en'); }
+    if (guardado === 'en' || (!guardado && /^en\b/i.test(navigator.language || ''))) { idioma('en'); } else { cargaCodigos('es'); }
   })();
 </script>
 </body>

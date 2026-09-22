@@ -1,5 +1,5 @@
 /* =========================================================
-   T17 · Conector del registro de iniciativas T01 al panel de IA del Consejo, en JavaScript (D101).
+   T17 · Conector del registro de iniciativas T01 al panel de IA del Consejo, en JavaScript (D103).
    © 2026 Fernando García Varela · Metodología SEVEN-G · Código MIT · Contenidos CC BY 4.0
 
    Es la MISMA correspondencia T01 → JSON del panel (motor/ESQUEMA.md) que t01_a_panel.py, escrita para el navegador: el panel del

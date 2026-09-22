@@ -84,6 +84,21 @@ Para proveedores, `proveedor_dora`: `en_registro`, `criticidad`, `estrategia_sal
 | `alertas[]`, `perfil_objetivo`, `mover[]` | Códigos de las alertas del documento 12 §5.3 y condiciones que moverían el perfil hacia el objetivo. |
 | `anterior` | El cálculo anterior con los mismos campos, para la tendencia; `null` si no lo hay. |
 
+## `madurez` (opcional)
+
+Diagnóstico de madurez de la compañía (documento 11 de SEVEN-G, diagnóstico T15), que el conector toma del registro T01 (esquema 0.6). Si falta, la tarjeta «Madurez de la compañía (D1–D7)» del panel completo y el bloque del móvil no se muestran. No depende de los filtros y el motor no recalcula nada: solo lee el bloque.
+
+| Campo | Contenido |
+|---|---|
+| `id`, `fecha_corte`, `ciclo`, `version_cuestionario` | Identificador del diagnóstico (`EM-AAAA-NN`), fecha de corte, ciclo corporativo en que se hizo (`C1`, `C5`…) y versión del cuestionario del documento 11. |
+| `modalidad`, `verificador`, `organo_aprobacion` | `autodiagnostico`, `verificada` o `independiente`; quién verificó y qué órgano aprobó el resultado. Un autodiagnóstico se muestra con el rótulo «autoevaluación no verificada: no vale para el consejo» (11 §4.1). |
+| `validez`, `declaracion_posible` | `auto` (autodiagnóstico), `pend` (verificación incompleta) u `ok`; y si procede la declaración de aplicación de SEVEN-G (11 §7.3). |
+| `nivel_global`, `nivel_minimo`, `media`, `tope`, `tope_aplicado`, `limitante[]` | Nivel global 0–5 (`null` si hay preguntas sin responder que bloquean el cálculo: se muestra «sin dato» y `nivel_minimo` como mínimo garantizado), media ponderada, tope min(D1, D6) + 1, si se aplicó y qué dimensiones lo imponen. |
+| `dimensiones[]` | Una por dimensión D1–D7: `dimension`, `nombre`, `nivel` (0–5 o `null`), `avance` (porcentaje hacia el nivel siguiente, o `null`) y `bloqueantes[]` (códigos de los criterios que impiden subir). |
+| `anterior` | El diagnóstico anterior (`id`, `fecha_corte`, `modalidad`, `nivel_global`, `dimensiones[]` con `dimension` y `nivel`) para la tendencia; `null` si no lo hay. |
+
+Niveles: 0 Inexistente · 1 Inicial · 2 En desarrollo · 3 Definido · 4 Gestionado · 5 Optimizado.
+
 ## `historico[]`
 
 Una foto por sesión (`snapshot.py`): `fecha`, `etiqueta`, `casos_por_estado`, `totales` y, por caso, estado, fecha de producción y cifras derivadas. El panel compara los datos de hoy con cualquier foto: variaciones, casos nuevos o puestos en producción, retiradas, cambios de estado y tendencia.

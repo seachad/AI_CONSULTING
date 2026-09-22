@@ -1,0 +1,105 @@
+{
+  "$comment": "SEVEN-G · Mapa de datos entre herramientas (D100). Qué lee y qué escribe cada herramienta en el registro T01, que es la fuente de verdad. Las rutas se escriben como en esquema_registro.schema.json de T01 (listas con []). verificar_coherencia.ps1 comprueba que todas existen en el esquema y que los datos de demostración de las herramientas son de la misma compañía que el registro. Documento 03 §4.1 (ES/EN) lo explica; si cambia este fichero se revisa esa sección.",
+  "version": "0.1",
+  "fuente_de_verdad": "T01",
+  "esquema": "T01_registro_iniciativas/esquema_registro.schema.json",
+  "reglas": [
+    "T01 es la fuente de verdad de la compañía: las demás herramientas derivan de él y marcan de dónde viene cada dato.",
+    "Un dato corregido a mano en otra herramienta deja de venir de T01 y no se pisa al actualizar desde el registro.",
+    "Nada se estima: lo que el registro no contiene queda «sin dato» y se completa a mano.",
+    "Servidas desde el mismo sitio, las herramientas comparten el almacenamiento local del navegador (clave del registro: seveng-t01-datos-v1); abiertas como ficheros sueltos (file://) no se comparte nada y se intercambia por ficheros JSON.",
+    "Lo que una herramienta devuelve a T01 entra siempre con su fuente (T11, T15) y, en los importes, como esperado, nunca validado."
+  ],
+  "herramientas": {
+    "T01": {
+      "nombre": "Registro de iniciativas",
+      "almacenamiento": "seveng-t01-datos-v1",
+      "propio": "todo el registro (esquema 0.6)",
+      "abre": {
+        "T11": "../T11_calculadora_valor/calculadora.html?desde=t01&iniciativa=<id>",
+        "T14": "../T14_indice_transformacion/indice.html?desde=t01",
+        "T15": "../T15_diagnostico_madurez/madurez.html?desde=t01",
+        "T17": "conector t01_a_panel.py (JSON completo exportado)"
+      },
+      "incorpora": {
+        "T11": "fichero de resultado del caso (valores_t01[]) o escritura directa desde T11 → valores[] (momento esperado, fuente T11) y un evento de edición",
+        "T15": "fichero de resumen (madurez_t01[]) o escritura directa desde T15 → madurez[] (se une por id)"
+      }
+    },
+    "T11": {
+      "nombre": "Lienzo y calculadora de hipótesis de valor (con T13, costes por caso)",
+      "almacenamiento": "seveng-t11-datos-v1",
+      "lee_de_t01": [
+        "meta.organizacion", "meta.moneda", "meta.fecha_referencia", "meta.datos_ilustrativos",
+        "iniciativas[].id", "iniciativas[].nombre", "iniciativas[].descripcion",
+        "iniciativas[].clasificacion.ambicion_confirmada", "iniciativas[].clasificacion.ambicion_propuesta", "iniciativas[].clasificacion.intensidad",
+        "iniciativas[].ciclo.fase", "iniciativas[].inversion.realizada", "iniciativas[].inversion.pendiente",
+        "valores[].iniciativa", "valores[].momento", "valores[].tipo", "valores[].importe", "valores[].formula", "valores[].estado", "valores[].fuente", "valores[].id"
+      ],
+      "escribe_en_t01": [
+        "valores[].id", "valores[].iniciativa", "valores[].momento", "valores[].tipo", "valores[].importe", "valores[].formula", "valores[].estado", "valores[].periodo", "valores[].fecha", "valores[].fuente", "valores[].concepto",
+        "eventos[].id", "eventos[].iniciativa", "eventos[].fecha", "eventos[].tipo", "eventos[].autor", "eventos[].motivo", "eventos[].campo", "eventos[].antes", "eventos[].despues", "eventos[].fase"
+      ],
+      "propio": ["parametros[] (horizonte, tasa, coste horario, umbrales del 40 y del 42)", "casos[] (líneas de valor descompuestas, rampa, criterios de parada, etapas, costes por caso, conciliación)"],
+      "actualiza_desde_t01": true,
+      "nota": "Las líneas importadas llegan sin descomponer en unidades × valor unitario y sin categoría de coste. Al actualizar desde el registro (D102) se renuevan la identificación, los importes que siguen «desde T01» (mismo importe y línea sin descomponer) y los importes nuevos; una línea corregida a mano o descompuesta se conserva y una retirada del registro se señala."
+    },
+    "T14": {
+      "nombre": "Calculadora del índice de transformación",
+      "almacenamiento": "seveng-t14-datos-v1",
+      "resumen_para_otras": "seveng-t14-resumen-v1 (perfil del último cálculo; lo lee T15 para la lectura cruzada del 11 §7.2)",
+      "lee_de_t01": [
+        "meta.organizacion", "meta.moneda", "meta.fecha_referencia", "meta.datos_ilustrativos", "meta.configuracion.plazos_fase",
+        "meta.indice.ingresos_totales", "meta.indice.it_d3", "meta.indice.it_d3_evidencia",
+        "iniciativas[].id", "iniciativas[].clasificacion.esfera_principal", "iniciativas[].clasificacion.intensidad",
+        "iniciativas[].clasificacion.ambicion_confirmada", "iniciativas[].clasificacion.ambicion_real", "iniciativas[].clasificacion_ambicion.respuestas",
+        "iniciativas[].ciclo.estado", "iniciativas[].inversion.realizada",
+        "iniciativas[].indice.itp2", "iniciativas[].indice.itp3", "iniciativas[].indice.unidad_completa", "iniciativas[].indice.capacidad",
+        "valores[].iniciativa", "valores[].momento", "valores[].tipo", "valores[].importe", "valores[].estado", "valores[].fecha", "valores[].area", "valores[].oferta_habilitada_ia",
+        "decisiones_gate[].iniciativa", "decisiones_gate[].gate", "decisiones_gate[].resultado", "decisiones_gate[].fecha_decision",
+        "decisiones_consejo[].fecha", "decisiones_consejo[].asunto", "decisiones_consejo[].resultado", "decisiones_consejo[].esferas_transformar", "decisiones_consejo[].limite_inversion_etapa", "decisiones_consejo[].decision_etapa"
+      ],
+      "escribe_en_t01": [],
+      "propio": ["umbrales[] (versiones)", "calculos[] (entradas con la marca de_t01 por campo, notas, acciones)"],
+      "actualiza_desde_t01": true,
+      "salida_hacia_t17": "JSON exportado (build_indice.ps1 -DesdeT01 … -Exportar …) → t01_a_panel.py --indice → bloque «indice» del panel"
+    },
+    "T15": {
+      "nombre": "Diagnóstico de madurez",
+      "almacenamiento": "seveng-t15-datos-v1",
+      "lee_de_t01": [
+        "meta.organizacion", "meta.fecha_referencia", "meta.datos_ilustrativos",
+        "iniciativas[].id", "iniciativas[].ciclo.estado", "iniciativas[].clasificacion.intensidad", "iniciativas[].clasificacion.ambicion_confirmada", "iniciativas[].clasificacion.ambicion_propuesta", "iniciativas[].clasificacion.tecnologia", "iniciativas[].sistemas",
+        "sistemas[].id", "sistemas[].proveedores"
+      ],
+      "lee_de_t14": ["perfil_asignado", "fecha_corte", "id"],
+      "escribe_en_t01": [
+        "madurez[].id", "madurez[].fecha_corte", "madurez[].ciclo", "madurez[].modalidad", "madurez[].version_cuestionario", "madurez[].verificador", "madurez[].organo_aprobacion", "madurez[].fecha_aprobacion",
+        "madurez[].nivel_global", "madurez[].nivel_minimo", "madurez[].media", "madurez[].tope", "madurez[].tope_aplicado", "madurez[].limitante", "madurez[].validez", "madurez[].declaracion_posible",
+        "madurez[].dimensiones[].dimension", "madurez[].dimensiones[].nombre", "madurez[].dimensiones[].nivel", "madurez[].dimensiones[].nivel_minimo", "madurez[].dimensiones[].avance", "madurez[].dimensiones[].bloqueantes",
+        "madurez[].fuente", "madurez[].exportado", "madurez[].incorporado"
+      ],
+      "propio": ["evaluaciones[] (respuestas, evidencias, verificación, entrevistas, muestras, pesos, objetivos, mensajes, acciones)"],
+      "actualiza_desde_t01": false,
+      "nota": "Las respuestas y las evidencias se quedan en T15; al registro solo va el resumen (nivel global, media, límite y nivel por dimensión). La muestra estratificada de iniciativas se propone desde el registro (11 §4.6) y la selecciona el equipo evaluador."
+    },
+    "T17": {
+      "nombre": "Panel de IA para el consejo (generador)",
+      "almacenamiento": "ninguno (genera ficheros)",
+      "lee_de_t01": [
+        "meta.organizacion", "meta.generado", "meta.fecha_referencia", "meta.moneda", "meta.datos_ilustrativos", "meta.configuracion.plazos_fase", "meta.panel.consejo_sigla",
+        "iniciativas[].id", "iniciativas[].nombre", "iniciativas[].descripcion", "iniciativas[].area", "iniciativas[].fecha_registro", "iniciativas[].responsables", "iniciativas[].clasificacion", "iniciativas[].ciclo", "iniciativas[].cierre", "iniciativas[].riesgo_residual_principal", "iniciativas[].evaluaciones_impacto", "iniciativas[].inversion", "iniciativas[].panel", "iniciativas[].alcance", "iniciativas[].etiquetas_libres",
+        "eventos[].iniciativa", "eventos[].fecha", "eventos[].tipo", "eventos[].motivo", "eventos[].autor", "eventos[].cifras",
+        "decisiones_gate[].iniciativa", "decisiones_gate[].gate", "decisiones_gate[].resultado", "decisiones_gate[].fecha_decision",
+        "valores[].iniciativa", "valores[].momento", "valores[].tipo", "valores[].importe", "valores[].estado", "valores[].fecha", "valores[].concepto", "valores[].area",
+        "incidentes[]", "recomendaciones[]", "madurez[]"
+      ],
+      "lee_de_t14": ["JSON exportado por la calculadora (--indice): perfil, señales, alertas y qué movería el perfil"],
+      "escribe_en_t01": [],
+      "propio": ["config_panel.json (umbrales, ciclo de vida, navegación)", "JSON del panel (motor/ESQUEMA.md), panel completo, móvil y registro de recomendaciones"],
+      "nota": "No lee riesgos[] (usa el riesgo residual principal de cada iniciativa) ni la evidencia del índice de las iniciativas (esa la calcula T14)."
+    },
+    "T06": { "nombre": "Matriz y registro de riesgos", "modulo_de": "T01", "propio": "riesgos[] del registro" },
+    "T18": { "nombre": "Registro de recomendaciones y decisiones del consejo", "modulo_de": "T01", "propio": "recomendaciones[] y decisiones_consejo[] del registro" }
+  }
+}

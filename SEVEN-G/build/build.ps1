@@ -688,12 +688,14 @@ $titulosReferencias = ObtenerTitulosReferencias $lang
 
     # ---- Tablas, componentes y Mermaid ----
     $body = $body -replace '<table>', '<div class="tabla"><table>' -replace '</table>', '</table></div>'
-    # ancla por fila en las tablas de códigos (D88): una fila cuya primera celda es un código en negrita —«T06», «G0–G5 · R6 · G7»,
-    # «RT-<CAT>-NN»— recibe id="cod-…", para que el control «Ir a código» lleve a la fila exacta y no solo a la sección
-    $body = [regex]::Replace($body, '<tr>(\s*<td[^>]*>\s*<strong>(?:<a [^>]*>)?)([A-Z][^<]{0,60}?(?:\d|NN|AAAA|&gt;)[^<]{0,40})((?:</a>)?</strong>)', {
+    # ancla por fila en las tablas de códigos (D88): una fila cuya primera celda es exactamente un código en negrita —«T06», «G0–G5 · R6 · G7»,
+    # «RT-<CAT>-NN»— recibe id="cod-…", para que el control «Ir a código» lleve a la fila exacta y no solo a la sección. Una celda con texto
+    # tras el código («**T17** (generador)», 03 §5) no la recibe: la fila que explica el código es la del catálogo, donde la celda es solo el código (D99)
+    $body = [regex]::Replace($body, '<tr>(\s*<td[^>]*>\s*<strong>(?:<a [^>]*>)?)([A-Z][^<]{0,60}?(?:\d|NN|AAAA|&gt;)[^<]{0,40})((?:</a>)?</strong>)(?=\s*</td>)', {
       param($f)
       $idFila = 'cod-' + (Slug ([Net.WebUtility]::HtmlDecode($f.Groups[2].Value)))
-      if ($usados.ContainsKey($idFila)) { return $f.Value }
+      # el mismo código en varias tablas (T14 en 03 §4.1 y en el catálogo §5): la primera fila conserva el id y las siguientes llevan sufijo, para que ninguna se quede sin ancla
+      if ($usados.ContainsKey($idFila)) { $n = 2; while ($usados.ContainsKey("$idFila-$n")) { $n++ }; $idFila = "$idFila-$n" }
       $usados[$idFila] = 1
       "<tr id=""$idFila"">$($f.Groups[1].Value)$($f.Groups[2].Value)$($f.Groups[3].Value)"
     })

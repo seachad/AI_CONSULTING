@@ -1,5 +1,5 @@
 <#
-  T17 · Conversión T01 → JSON del panel con el conector en JavaScript (t01_a_panel.js), sin Python (D101).
+  T17 · Conversión T01 → JSON del panel con el conector en JavaScript (t01_a_panel.js), sin Python (D103).
 
   Uso:   pwsh -File SEVEN-G/herramientas/T17_panel_consejo/conector_js.ps1 -T01 <registro.json> -Salida <dashboard_data.json> [-Config <config_panel.json>]
 

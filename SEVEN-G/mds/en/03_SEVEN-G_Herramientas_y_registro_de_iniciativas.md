@@ -38,6 +38,7 @@ This document serves two functions:
 | 5 | **Portability** | The reference tools work without a server, in HTML with data in JSON, and export to spreadsheet. The data model can be implemented in the CRM, risk management tool or project management platform that the company already uses. |
 | 6 | **The data belongs to the company** | The tools do not send data to third parties. Demonstrations always use fictitious data. |
 | 7 | **"No data" is not zero** | A missing value is shown as missing and is never replaced by an undeclared estimate. |
+| 8 | **Every cited code is navigable** | When a tool or a dashboard names a document, a template, another tool, a gate or a criterion (document 40, P12, T06, G3.05…), that code is a link to where it is explained, with its tooltip, and the navigation bar offers "Go to code" and "Cited here", the list of everything that page or view names. The site's code index (`codigos.js`) does it, shared by documents, tools and dashboards; in the board dashboard it is enabled with `navegacion.codigos`. |
 
 ### 2.1 Where the data of the tools lives
 
@@ -216,7 +217,7 @@ Phase 6 has no time limit; it is controlled through the frequency of the continu
 
 ## 4. Common data model
 
-The model is the foundation of all the tools. Its full specification (fields, types, lists and validation rules) will be published as a schema together with the first version of the register.
+The model is the foundation of all the tools. Its full specification (fields, types, closed lists and validation rules) is the JSON schema of the register, `herramientas/T01_registro_iniciativas/esquema_registro.schema.json` (version 0.6), published with tool T01; each version extends it with optional fields only, so a file from an earlier version remains valid.
 
 | Entity | What it represents | Related to |
 |---|---|---|
@@ -234,6 +235,21 @@ The model is the foundation of all the tools. Its full specification (fields, ty
 | **Supplier** | Third party, services, criticality, contract, assessment. | Systems, initiatives |
 | **Recommendation** | Board recommendation with persistent identifier, addressee, status and evidence. | Initiatives, systems |
 | **Board decision** | Decision of the board or its committee (DEC-YYYY-NNN) with body, type, subject, outcome, stage investment cap, stage decision, spheres with Transform as target and links (62 §10); schema 0.5. It is the source of signal 8 and condition IT-D1 of the index. | Initiatives, recommendations |
+| **Maturity assessment** | Summary of each maturity assessment (EM-YYYY-MM; document 11): cut-off date, mode, questionnaire version, overall level, weighted average, cap by D1 or D6 and level, progress and blocking criteria of each dimension. T15 writes it (answers and evidence stay in T15) and the board dashboard shows it; schema 0.6. | Company |
+
+### 4.1 What each tool reads and writes
+
+The T01 register is the company's **source of truth**: the other tools derive from it, show where each figure comes from and allow it to be corrected locally without the correction being lost when the register is read again. Nothing is estimated: whatever the register does not contain is left as "no data" and completed by hand. Served from the same site, the tools share the browser's local storage, so T11, T14 and T15 find the register by themselves and return their results to it; opened as standalone files, the exchange is done with the JSON files each one exports and imports. The field-by-field detail is in `herramientas/mapa_datos.json`, which the coherence checks contrast with the schema.
+
+| Tool | Reads from T01 | Returns to T01 | Own to the tool |
+|---|---|---|---|
+| **T11** (with T13) | Initiative (name, ambition, intensity, phase, spent and pending investment) and the expected amounts recorded. A use case created from the register is **refreshed** when it is read again: identification, the amounts still "from T01" and new amounts are renewed; a line corrected by hand or broken down into units × unit value is kept. | The expected amounts of the use case (efficiencies, return, released capacity, recurring cost and investment), as expected with source T11, plus an edit event. | Parameters (horizon, rate, hourly cost), broken-down value lines, ramp-up, stop criteria, stages, costs per use case and reconciliation. |
+| **T14** | Portfolio (phases, statuses, ambition, spheres, *gates*), realised and validated amounts, investment, index evidence of each initiative, company data (revenue, IT-D3) and board decisions. A calculation made from the register is **refreshed** when it is read again: only the figures still marked "from T01" are renewed. | Nothing. Its result goes to the board dashboard (T17) and it leaves the profile of the latest calculation for the cross-reading in T15. | Threshold versions, calculations with the origin mark of each figure, notes and actions. |
+| **T15** | Company and a stratified sample of initiatives (Enterprise, in production, Augment or Transform, third party, generative AI or agents; 11 §4.6). From T14, the profile of the latest calculation. | The summary of each assessment (`madurez[]`): overall level, average, cap by D1 or D6 and level by dimension; never the answers. | Answers, evidence, verification, interviews, samples, weights, targets, messages and improvement plan. |
+| **T17** (generator) | The full JSON of the register: initiatives, lifecycle, amounts, incidents, recommendations and the most recent maturity assessment; from T14, the exported index. | Nothing. | Dashboard configuration (thresholds, lifecycle, navigation) and the generated dashboards. |
+| **T06**, **T18** | They are views of the register itself. | — | — |
+
+**Why it matters.** Without a source of truth, each tool ends up with its own version of the company: the transformation index computed with one portfolio, the board dashboard with another and maturity with a third. Establishing that everything derives from T01, that each figure carries its origin and that manual corrections are not overwritten means the board, the AI Office and the consultant read the same company in every tool.
 
 ---
 

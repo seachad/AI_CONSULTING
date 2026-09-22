@@ -80,7 +80,7 @@ if ($html -match "const PANEL_DEMO = '([^']+)'") {
   if (-not (Test-Path $panelDemo)) { Write-Warning "El panel de ejemplo enlazado no existe: $($Matches[1]). Regenerarlo (uv run python t01_a_panel.py en T17_panel_consejo) o actualizar PANEL_DEMO en la plantilla." }
 } else { throw 'La plantilla no define PANEL_DEMO' }
 $html = $html.Replace('__CATALOGO_CRITERIOS__', (Compactar $catalogo)).Replace('__DATOS_DEMO__', (Compactar $Datos))
-# módulo común de datos locales y conector T01 → panel en JavaScript (D101): se incrustan para que la herramienta siga siendo un solo fichero
+# módulo común de datos locales y conector T01 → panel en JavaScript (D103): se incrustan para que la herramienta siga siendo un solo fichero
 $comun = Join-Path $aqui '..\_comun\datos_locales.js'
 $conector = Join-Path $aqui '..\T17_panel_consejo\t01_a_panel.js'
 $configPanel = Join-Path $aqui '..\T17_panel_consejo\config_panel.json'

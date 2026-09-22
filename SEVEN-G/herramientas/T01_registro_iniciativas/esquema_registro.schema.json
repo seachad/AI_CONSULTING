@@ -8,7 +8,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": { "type": "string" },
-    "version_esquema": { "enum": ["0.1", "0.2", "0.3", "0.4", "0.5"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para las iniciativas transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. 0.4 añade solo campos opcionales a riesgos[] para la matriz y registro de riesgos (T06, documento 33 §8.1): eje del impacto, controles y su eficacia, valoración residual objetivo o verificada, contingencia, estado, tendencia, próxima revisión y aceptación. 0.5 añade solo campos opcionales para el índice de transformación (T14, documento 12) y el registro del consejo (T18, documento 62): iniciativas[].indice (verificación de IT-P2 e IT-P3, supervisión humana verificada, unidad completa rediseñada y capacidad liberada, materializada y reasignada), valores[].oferta_habilitada_ia, meta.indice (ingresos totales e IT-D3) y decisiones_consejo[] (DEC). Un fichero 0.1 a 0.4 es un 0.5 válido." },
+    "version_esquema": { "enum": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6"], "description": "0.2 añade a 0.1 solo campos opcionales para el panel del consejo (T17): iniciativas[].panel, valores[].concepto y meta.panel. 0.3 añade solo campos opcionales para las iniciativas transversales y las plataformas habilitadoras (documento 40 §7.2): iniciativas[].alcance y valores[].area. 0.4 añade solo campos opcionales a riesgos[] para la matriz y registro de riesgos (T06, documento 33 §8.1): eje del impacto, controles y su eficacia, valoración residual objetivo o verificada, contingencia, estado, tendencia, próxima revisión y aceptación. 0.5 añade solo campos opcionales para el índice de transformación (T14, documento 12) y el registro del consejo (T18, documento 62): iniciativas[].indice (verificación de IT-P2 e IT-P3, supervisión humana verificada, unidad completa rediseñada y capacidad liberada, materializada y reasignada), valores[].oferta_habilitada_ia, meta.indice (ingresos totales e IT-D3) y decisiones_consejo[] (DEC). 0.6 añade solo la lista opcional madurez[] (resumen de cada diagnóstico de madurez, documento 11, que escribe T15 y lee el panel T17). Un fichero 0.1 a 0.5 es un 0.6 válido." },
     "aviso_legal": { "type": "string", "description": "Aviso legal y exención de responsabilidad de SEVEN-G y de la herramienta (en el idioma de la interfaz al exportar). Opcional al importar; la exportación del JSON completo siempre lo incluye." },
     "meta": { "$ref": "#/$defs/meta" },
     "personas": { "type": "array", "items": { "$ref": "#/$defs/persona" } },
@@ -24,7 +24,8 @@
     "incidentes": { "type": "array", "items": { "$ref": "#/$defs/incidente" } },
     "proveedores": { "type": "array", "items": { "$ref": "#/$defs/proveedor" } },
     "recomendaciones": { "type": "array", "items": { "$ref": "#/$defs/recomendacion" } },
-    "decisiones_consejo": { "type": "array", "items": { "$ref": "#/$defs/decision_consejo" }, "description": "Esquema 0.5. Decisiones del consejo o de su comisión delegada (documento 62 §10): fuente de la señal 8 y de la condición IT-D1 del índice de transformación." }
+    "decisiones_consejo": { "type": "array", "items": { "$ref": "#/$defs/decision_consejo" }, "description": "Esquema 0.5. Decisiones del consejo o de su comisión delegada (documento 62 §10): fuente de la señal 8 y de la condición IT-D1 del índice de transformación." },
+    "madurez": { "type": "array", "items": { "$ref": "#/$defs/madurez" }, "description": "Esquema 0.6. Resumen de cada diagnóstico de madurez (documento 11) tal como lo exporta T15 (respuestas y evidencias quedan en T15): nivel global, media, límite por D1 o D6 y nivel por dimensión. El más reciente alimenta la tarjeta de madurez del panel del consejo (T17)." }
   },
   "$defs": {
     "fecha": { "type": "string", "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$" },
@@ -652,6 +653,49 @@
         "vigencia": { "$ref": "#/$defs/fecha_o_nula" },
         "responsable": { "$ref": "#/$defs/id_persona_o_nula" },
         "recomendaciones": { "type": "array", "items": { "type": "string", "pattern": "^REC-\\d{4}-\\d{3}$" } }
+      }
+    },
+    "madurez": {
+      "type": "object",
+      "description": "Esquema 0.6. Resumen de un diagnóstico de madurez (T15, documento 11 §5). null en un nivel significa que hay preguntas sin responder que bloquean el cálculo.",
+      "required": ["id", "fecha_corte", "nivel_global", "dimensiones"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^EM-\\d{4}-\\d{2}(-\\d+)?$" },
+        "fecha_corte": { "$ref": "#/$defs/fecha" },
+        "ciclo": { "$ref": "#/$defs/texto_o_nulo", "description": "C1, C5 o seguimiento." },
+        "modalidad": { "enum": ["autodiagnostico", "verificada", "independiente", null], "description": "El autodiagnóstico no se usa en el panel del consejo (11 §4.1)." },
+        "version_cuestionario": { "$ref": "#/$defs/texto_o_nulo" },
+        "verificador": { "$ref": "#/$defs/texto_o_nulo" },
+        "organo_aprobacion": { "$ref": "#/$defs/texto_o_nulo" },
+        "fecha_aprobacion": { "$ref": "#/$defs/fecha_o_nula" },
+        "nivel_global": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 },
+        "nivel_minimo": { "type": ["integer", "null"], "minimum": 0, "maximum": 5, "description": "Nivel garantizado cuando el global no puede fijarse." },
+        "media": { "type": ["number", "null"], "description": "Media ponderada con dos decimales (11 §5.3)." },
+        "tope": { "type": ["integer", "null"], "description": "min(D1, D6) + 1." },
+        "tope_aplicado": { "type": ["boolean", "null"] },
+        "limitante": { "type": "array", "items": { "enum": ["D1", "D6"] } },
+        "validez": { "enum": ["auto", "pend", "ok", null], "description": "auto: autodiagnóstico; pend: verificación independiente incompleta (11 §4.6); ok: verificada." },
+        "declaracion_posible": { "type": ["boolean", "null"], "description": "Declaración de aplicación de SEVEN-G posible (11 §7.3)." },
+        "dimensiones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["dimension", "nivel"],
+            "additionalProperties": false,
+            "properties": {
+              "dimension": { "type": "string", "pattern": "^D[1-7]$" },
+              "nombre": { "$ref": "#/$defs/texto_o_nulo" },
+              "nivel": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 },
+              "nivel_minimo": { "type": ["integer", "null"], "minimum": 0, "maximum": 5 },
+              "avance": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "Porcentaje de avance hacia el nivel siguiente (11 §5.2)." },
+              "bloqueantes": { "type": "array", "items": { "type": "string", "pattern": "^D[1-7]\\.\\d{2}$" } }
+            }
+          }
+        },
+        "fuente": { "$ref": "#/$defs/texto_o_nulo", "description": "T15." },
+        "exportado": { "$ref": "#/$defs/fecha_o_nula" },
+        "incorporado": { "$ref": "#/$defs/fecha_o_nula" }
       }
     },
     "recomendacion": {

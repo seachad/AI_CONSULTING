@@ -14,7 +14,7 @@
                   de la API pública de GitHub y no permite enviar ni votar.
      umbralVotos  número de votos a partir del cual una petición se estudia; null = no se muestra ningún número. -->
 <script id="config">
-window.SEVENG_COMUNIDAD = { repo: 'seachad/seven-g-feedback', endpoint: 'https://seven-g-comunidad.pecomac.workers.dev', umbralVotos: null };
+window.SEVENG_COMUNIDAD = { repo: 'seachad/seven-g-feedback', endpoint: 'https://seven-g-comunidad.pecomac.workers.dev', umbralVotos: 50 };
 </script>
 
 <style>
@@ -135,6 +135,7 @@ dialog .acciones { display: flex; gap: 10px; justify-content: flex-end; margin-t
     <a class="barra-marca" href="../../../index.html" id="lnk-portada"><i></i>AI Consulting</a>
     <div class="barra-dcha">
       <a href="../../html/es/index.html" id="lnk-biblioteca" data-i18n="biblioteca"></a>
+      <span class="ir-codigo" data-ir-codigo></span>
       <label class="tema"><span class="oculto" data-i18n="tema"></span>
         <select id="tema" aria-label="Tema">
           <option value="salmon" data-i18n="tema_salmon"></option>
@@ -150,7 +151,7 @@ dialog .acciones { display: flex; gap: 10px; justify-content: flex-end; margin-t
   </div>
 </div>
 
-<main class="envoltura">
+<main class="envoltura" data-enlazar-codigos>
   <header class="cabecera">
     <p class="antetitulo" data-i18n="antetitulo"></p>
     <h1 data-i18n="titulo"></h1>
@@ -332,6 +333,15 @@ dialog .acciones { display: flex; gap: 10px; justify-content: flex-end; margin-t
     $('lnk-biblioteca').setAttribute('href', '../../html/' + idioma + '/index.html');
     $('fuente').innerHTML = REPO ? t('fuente', { url: 'https://github.com/' + REPO + '/issues', repo: REPO }) : '';
     pintaIdentidad(); pintaLista(); pintaEnvio();
+    cargaCodigos(idioma);
+  }
+  // «Ir a código» y códigos citados (D99): índice del sitio en el idioma activo (SEVEN-G/html/<idioma>/codigos.js), cargado con
+  // data-sin-medicion: esta página no mide visitas (D80, D90). Un código escrito en una incidencia («documento 21», «P12») pasa a ser
+  // un enlace a donde se explica; la dirección sale del índice del sitio, nunca del texto enviado.
+  function cargaCodigos(l) {
+    if (window.sevengIrCodigo && window.sevengIrCodigo.lang === l) { window.sevengIrCodigo.iniciar(); return; }
+    var previo = document.getElementById('ir-codigo-js'); if (previo) previo.parentNode.removeChild(previo);
+    var sc = document.createElement('script'); sc.id = 'ir-codigo-js'; sc.src = '../../html/' + l + '/codigos.js'; sc.setAttribute('data-sin-medicion', ''); document.head.appendChild(sc);
   }
   $('btn-es').addEventListener('click', function () { guardaLocal(K_IDIOMA, 'es'); ponIdioma('es'); });
   $('btn-en').addEventListener('click', function () { guardaLocal(K_IDIOMA, 'en'); ponIdioma('en'); });

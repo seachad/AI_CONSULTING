@@ -511,6 +511,11 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><strong>&quot;No data&quot; is not zero</strong></td>
 <td>A missing value is shown as missing and is never replaced by an undeclared estimate.</td>
 </tr>
+<tr>
+<td>8</td>
+<td><strong>Every cited code is navigable</strong></td>
+<td>When a tool or a dashboard names a document, a template, another tool, a gate or a criterion (<a href="40_SEVEN-G_Reglas_de_medicion_del_valor.html" title="Document 40 &#183; Value measurement rules">document 40</a>, <a href="plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html" title="Template P12 &#183; Risk matrix and register">P12</a>, <a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a>, G3.05…), that code is a link to where it is explained, with its tooltip, and the navigation bar offers &quot;Go to code&quot; and &quot;Cited here&quot;, the list of everything that page or view names. The site's code index (<code>codigos.js</code>) does it, shared by documents, tools and dashboards; in the board dashboard it is enabled with <code>navegacion.codigos</code>.</td>
+</tr>
 </tbody>
 </table></div>
 <h3 id="2-1-where-the-data-of-the-tools-lives">2.1 Where the data of the tools lives</h3>
@@ -1071,7 +1076,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <hr />
 <h2 id="common-data-model"><span class="antetitulo">04</span>Common data model</h2>
-<p>The model is the foundation of all the tools. Its full specification (fields, types, lists and validation rules) will be published as a schema together with the first version of the register.</p>
+<p>The model is the foundation of all the tools. Its full specification (fields, types, closed lists and validation rules) is the JSON schema of the register, <code>herramientas/T01_registro_iniciativas/esquema_registro.schema.json</code> (version 0.6), published with tool <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>; each version extends it with optional fields only, so a file from an earlier version remains valid.</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -1151,8 +1156,58 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Decision of the board or its committee (DEC-YYYY-NNN) with body, type, subject, outcome, stage investment cap, stage decision, spheres with Transform as target and links (62 §10); schema 0.5. It is the source of signal 8 and condition IT-D1 of the index.</td>
 <td>Initiatives, recommendations</td>
 </tr>
+<tr>
+<td><strong>Maturity assessment</strong></td>
+<td>Summary of each maturity assessment (EM-YYYY-MM; <a href="11_SEVEN-G_Modelo_de_madurez.html" title="Document 11 &#183; Maturity model">document 11</a>): cut-off date, mode, questionnaire version, overall level, weighted average, cap by D1 or D6 and level, progress and blocking criteria of each dimension. <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> writes it (answers and evidence stay in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>) and the board dashboard shows it; schema 0.6.</td>
+<td>Company</td>
+</tr>
 </tbody>
 </table></div>
+<h3 id="4-1-what-each-tool-reads-and-writes">4.1 What each tool reads and writes</h3>
+<p>The <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register is the company's <strong>source of truth</strong>: the other tools derive from it, show where each figure comes from and allow it to be corrected locally without the correction being lost when the register is read again. Nothing is estimated: whatever the register does not contain is left as &quot;no data&quot; and completed by hand. Served from the same site, the tools share the browser's local storage, so <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a> find the register by themselves and return their results to it; opened as standalone files, the exchange is done with the JSON files each one exports and imports. The field-by-field detail is in <code>herramientas/mapa_datos.json</code>, which the coherence checks contrast with the schema.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Reads from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></th>
+<th>Returns to <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a></th>
+<th>Own to the tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a></strong> (with <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>)</td>
+<td>Initiative (name, ambition, intensity, phase, spent and pending investment) and the expected amounts recorded. A use case created from the register is <strong>refreshed</strong> when it is read again: identification, the amounts still &quot;from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>&quot; and new amounts are renewed; a line corrected by hand or broken down into units × unit value is kept.</td>
+<td>The expected amounts of the use case (efficiencies, return, released capacity, recurring cost and investment), as expected with source <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, plus an edit event.</td>
+<td>Parameters (horizon, rate, hourly cost), broken-down value lines, ramp-up, stop criteria, stages, costs per use case and reconciliation.</td>
+</tr>
+<tr id="cod-t14">
+<td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></strong></td>
+<td>Portfolio (phases, statuses, ambition, spheres, <em>gates</em>), realised and validated amounts, investment, index evidence of each initiative, company data (revenue, IT-D3) and board decisions. A calculation made from the register is <strong>refreshed</strong> when it is read again: only the figures still marked &quot;from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>&quot; are renewed.</td>
+<td>Nothing. Its result goes to the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) and it leaves the profile of the latest calculation for the cross-reading in <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>.</td>
+<td>Threshold versions, calculations with the origin mark of each figure, notes and actions.</td>
+</tr>
+<tr id="cod-t15">
+<td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></strong></td>
+<td>Company and a stratified sample of initiatives (Enterprise, in production, Augment or Transform, third party, generative AI or agents; 11 §4.6). From <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, the profile of the latest calculation.</td>
+<td>The summary of each assessment (<code>madurez[]</code>): overall level, average, cap by D1 or D6 and level by dimension; never the answers.</td>
+<td>Answers, evidence, verification, interviews, samples, weights, targets, messages and improvement plan.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></strong> (generator)</td>
+<td>The full JSON of the register: initiatives, lifecycle, amounts, incidents, recommendations and the most recent maturity assessment; from <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, the exported index.</td>
+<td>Nothing.</td>
+<td>Dashboard configuration (thresholds, lifecycle, navigation) and the generated dashboards.</td>
+</tr>
+<tr>
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></strong>, <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
+<td>They are views of the register itself.</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Why it matters.</strong> Without a source of truth, each tool ends up with its own version of the company: the transformation index computed with one portfolio, the board dashboard with another and maturity with a third. Establishing that everything derives from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, that each figure carries its origin and that manual corrections are not overwritten means the board, the AI Office and the consultant read the same company in every tool.</p>
 <hr />
 <h2 id="tool-catalogue"><span class="antetitulo">05</span>Tool catalogue</h2>
 <p><strong>Priority:</strong> 1 = core, built first · 2 = needed for full governance · 3 = complement.
@@ -1336,7 +1391,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>3</td>
 <td>Available v0.1</td>
 </tr>
-<tr id="cod-t14">
+<tr id="cod-t14-2">
 <td><strong><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a></strong></td>
 <td>Transformation index calculator</td>
 <td>Baseline conditions, eight signals, company profile, alerts, coverage and evolution, with threshold version; starts from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register JSON, from which it calculates the eight signals when it holds the schema 0.5 evidence, and its result feeds the index card of the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>).</td>
@@ -1363,7 +1418,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr id="cod-t15">
+<tr id="cod-t15-2">
 <td><strong><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></strong></td>
 <td>Maturity diagnosis</td>
 <td>84-question questionnaire with evidence and verification; level by dimension and overall level capped by D1 and D6; comparison between assessments and report for the board. Template <a href="plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html" title="Template P34 &#183; Maturity questionnaire and report">P34</a>.</td>

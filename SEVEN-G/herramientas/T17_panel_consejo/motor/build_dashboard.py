@@ -99,6 +99,8 @@ header h1{font-family:var(--headfont)}
 .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .toolbar .pname{font-family:var(--headfont);font-size:17px;font-weight:700;margin-right:8px;white-space:nowrap}
 .toolbar .search{flex:1 1 200px;min-width:160px}
+/* control «Ir a código» y lista de citados (codigos.js, D99) con los colores del tema del panel */
+.ir-codigo-panel,.ir-codigo-lista{--papel:var(--surface);--papel-2:var(--grid);--tinta:var(--ink);--tinta-2:var(--ink2);--regla:var(--axis);--regla-2:var(--grid);--claret:var(--accent);--oxford:var(--accent);--negro:var(--ink);--sans:inherit}
 .toolbar .seg button{padding:7px 10px}.toolbar select{padding:7px 8px}.toolbar .search input{padding-top:7px;padding-bottom:7px}.toolbar .search svg{top:8px}
 .barinfo{display:flex;gap:4px 14px;flex-wrap:wrap;margin-top:4px;font-size:12px}
 [id^="secc-"]{scroll-margin-top:calc(var(--stickyh) + 12px)}
@@ -522,7 +524,7 @@ function applyFontScale(scale){
 const PAGINAS = {todo:"Todo", cartera:"Cartera y valor", embudo:"Embudo y ciclo de vida", historico:"Histórico y adopción", riesgo:"Riesgo y cumplimiento", inventario:"Inventario", glosario:"Glosario"};
 // navegación configurable (meta.navegacion, JSON general de configuración): pagina_todo (si es false, no existe la página "Todo"),
 // pagina_inicial (página que se abre al entrar) y desplegar_todo (al entrar en una página, todas sus tarjetas se muestran desplegadas)
-const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false, filtros_modal: false, sitio: null, sitio_titulo: "Sitio", tema_sitio: null}, META().navegacion || {});
+const NAV = Object.assign({pagina_todo: true, pagina_inicial: "todo", desplegar_todo: false, filtros_modal: false, sitio: null, sitio_titulo: "Sitio", tema_sitio: null, codigos: null}, META().navegacion || {});
 // integración opcional en un sitio: tema_sitio = clave de localStorage con el tema general del sitio (salmon, claro o noche), que el panel
 // sigue y actualiza; sitio = [{texto, href}], enlaces de vuelta al sitio que se añaden al menú lateral. Sin esas claves, nada cambia.
 const TEMA_SITIO = NAV.tema_sitio || null;
@@ -533,6 +535,14 @@ if (Array.isArray(NAV.sitio) && NAV.sitio.length){
     NAV.sitio.forEach(s=>{ if (!s || !s.href) return; const a = document.createElement('a'); a.className = 'page-item site-link'; a.href = s.href; a.title = s.texto || s.href;
       a.innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span class="txt"></span>'; a.querySelector('.txt').textContent = s.texto || s.href; hueco.before(a); });
   }
+}
+// códigos citados en el panel (D99): con navegacion.codigos (ruta al índice de códigos del sitio, codigos.js, relativa al panel), cada código
+// escrito (documento 40, T01, P12, G3.05…) pasa a ser un enlace a donde se explica y la barra ofrece «Ir a código» y «Citados aquí».
+// Se carga con data-sin-medicion: el panel no mide visitas (D90). Sin la clave, nada cambia (D53).
+if (NAV.codigos){
+  document.body.setAttribute('data-enlazar-codigos', '');
+  const tb = document.querySelector('#barra .toolbar'); if (tb){ const h = document.createElement('span'); h.setAttribute('data-ir-codigo', ''); h.className = 'ir-codigo-panel'; tb.appendChild(h); }
+  const s = document.createElement('script'); s.src = NAV.codigos; s.defer = true; s.setAttribute('data-sin-medicion', ''); document.head.appendChild(s);
 }
 if (!NAV.pagina_todo){ delete PAGINAS.todo; const bt = document.querySelector('.page-item[data-page="todo"]'); if (bt) bt.remove(); }
 const PAGINA_DEF = PAGINAS[NAV.pagina_inicial] ? NAV.pagina_inicial : (PAGINAS.todo ? "todo" : Object.keys(PAGINAS)[0]);
@@ -749,7 +759,7 @@ function renderEmbudoPreguntas(rows){
 function render(){
   buildFilters();
   const rows = CASES.filter(passes);
-  renderKPIs(rows); renderCharts(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
+  renderKPIs(rows); renderCharts(rows); renderEmbudo(rows); renderCdm(); renderIndice(); renderMadurez(); renderTransversales(rows); renderCartera(rows); renderRiesgo(rows); renderIaOfensiva(rows); renderAgentes(rows); renderAdopcion(); renderHistorico(rows);
   document.getElementById("cards").classList.toggle("hidden", state.view!=="cards");
   document.getElementById("table").classList.toggle("hidden", state.view!=="table");
   // agrupación (por compañía y unidad o sin agrupar) y presentación (tarjetas o tabla) son independientes
@@ -1024,6 +1034,38 @@ function renderIndice(){
     insight,
     `<div style="display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px">${cond("B1","cartera gobernada")}${cond("B2","valor validado")}${cond("B3","escala en producción")}</div>` +
     `<div class="tblx"><table class="mini"><thead><tr><th>Señal</th><th class="n">Valor medido</th><th>Puntuación (0–3)</th><th>Lectura</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` + alertas + mover);
+}
+
+// ---- madurez de la compañía (bloque «madurez», opcional; documento 11 de SEVEN-G, diagnóstico T15)
+// Es el diagnóstico de madurez de toda la compañía en una fecha de corte, calculado por T15 y guardado en el registro T01:
+// no depende de los filtros ni se recalcula aquí (el motor solo lee lo que trae el bloque). Sin bloque «madurez», la tarjeta no se muestra.
+const NIVEL_MD = ["Inexistente", "Inicial", "En desarrollo", "Definido", "Gestionado", "Optimizado"];
+const MODALIDAD_MD = {autodiagnostico:"autodiagnóstico", verificada:"verificada", independiente:"valoración independiente"};
+function renderMadurez(){
+  const x = DATA.madurez;
+  if (!x || !Array.isArray(x.dimensiones) || !x.dimensiones.length){ setCard("madurez", "", "", "", ""); return; }
+  const ant = x.anterior || null, prev = d => ant ? (ant.dimensiones||[]).find(a=>a.dimension===d) : null;
+  const nombreNivel = n => NIVEL_MD[n] || "";
+  const puntos = n => n == null ? '<span class="nd">sin dato</span>' : `<span style="letter-spacing:2px;color:var(--${n>=4?"s3":n>=2?"s1":"muted"})">${"●".repeat(n)}${"○".repeat(Math.max(0, 5-n))}</span> <b>${n}</b> <span class="nd">${nombreNivel(n)}</span>`;
+  const avance = p => p == null ? "—" : `<div style="display:flex;align-items:center;gap:6px"><div style="flex:1;min-width:70px;height:6px;background:var(--grid);border-radius:3px;overflow:hidden"><i style="display:block;height:100%;width:${Math.max(0, Math.min(100, p))}%;background:var(--s1)"></i></div><span class="nd" style="font-style:normal">${Math.round(p)} %</span></div>`;
+  const flecha = (n, a) => (n == null || a == null) ? "—" : n - a > 0 ? `<b style="color:var(--s3)">▲ +${n - a}</b>` : n - a < 0 ? `<b style="color:var(--critical)">▼ ${n - a}</b>` : "=";
+  const tend = d => { const a = prev(d.dimension); return a ? flecha(d.nivel, a.nivel) : "—"; };
+  const filas = x.dimensiones.map(d=>`<tr><td><b>${esc(d.dimension||"")}</b> · ${esc(d.nombre||"")}</td><td>${puntos(d.nivel)}</td><td>${avance(d.avance)}</td><td>${(d.bloqueantes||[]).length ? d.bloqueantes.map(esc).join(", ") : "—"}</td><td>${tend(d)}</td></tr>`).join("");
+  const media = x.media == null ? "" : ` (media ponderada ${Number(x.media).toLocaleString("es-ES", {minimumFractionDigits: 1, maximumFractionDigits: 2})})`;
+  const global = x.nivel_global == null
+    ? `Nivel global <b>sin dato</b>: hay preguntas sin responder que bloquean el cálculo${x.nivel_minimo != null ? ` · mínimo garantizado <b>${x.nivel_minimo} · ${nombreNivel(x.nivel_minimo)}</b>` : ""}`
+    : `Nivel global <b>${x.nivel_global} · ${nombreNivel(x.nivel_global)}</b>${media}`;
+  const limite = x.tope_aplicado ? ` · limitado por ${lista((x.limitante||[]).map(esc))} (sin control suficiente de esa dimensión la compañía no puede presentar una madurez mayor)` : "";
+  const aviso = x.modalidad === "autodiagnostico" ? ` · <b style="color:var(--critical)">autoevaluación no verificada: no vale para el consejo (11 §4.1)</b>`
+    : x.validez === "pend" ? ` · <b style="color:var(--warn)">verificación incompleta</b>` : "";
+  const antTxt = ant ? ` · el diagnóstico anterior (${fES(ant.fecha_corte)}) daba nivel <b>${ant.nivel_global == null ? "sin dato" : ant.nivel_global}</b> ${flecha(x.nivel_global, ant.nivel_global)}` : "";
+  const identidad = [x.id ? esc(x.id) : "", x.ciclo ? `ciclo ${esc(x.ciclo)}` : "", x.verificador ? `verifica ${esc(x.verificador)}` : "", x.organo_aprobacion ? `aprueba ${esc(x.organo_aprobacion)}` : ""].filter(Boolean).join(" · ");
+  const decl = `<div class="note" style="margin-top:10px">Declaración de aplicación de SEVEN-G: <b>${x.declaracion_posible ? "posible" : "no procede todavía"}</b> (11 §7.3)</div>`;
+  setCard("madurez", "Madurez de la compañía (D1–D7)",
+    `Diagnóstico de madurez T15 de SEVEN-G (documento 11) a ${fES(x.fecha_corte)} · cuestionario v${esc(x.version_cuestionario || "")} · ${MODALIDAD_MD[x.modalidad] || esc(x.modalidad || "")} · no depende de los filtros · el nivel global se limita a min(D1, D6) + 1`,
+    `${global}${limite}${aviso}${antTxt}.`,
+    `<div class="nd" style="margin:4px 0 8px">${identidad ? identidad + " · " : ""}Es el diagnóstico de la compañía en su conjunto, no de los casos de la cartera: los filtros no lo cambian.</div>` +
+    `<div class="tblx"><table class="mini"><thead><tr><th>Dimensión</th><th>Nivel (0–5)</th><th>Avance al nivel siguiente</th><th>Bloqueantes</th><th>Tendencia</th></tr></thead><tbody>${filas}</tbody></table></div>` + decl);
 }
 
 // ---- bloque 1: cartera (movimientos, tiempo a producción, agilidad)
@@ -1483,6 +1525,7 @@ HTML = """<!DOCTYPE html>
  </div>
  <details class="card cdet" id="cdm" style="margin-bottom:14px"></details>
  <details class="card cdet" id="indice" style="margin-bottom:14px"></details>
+ <details class="card cdet" id="madurez" style="margin-bottom:14px"></details>
  <details class="card cdet" id="transv" style="margin-bottom:14px"></details>
  <div class="grid2"><details class="card cdet" id="cart1"></details><details class="card cdet" id="cart2"></details></div>
  </section>
