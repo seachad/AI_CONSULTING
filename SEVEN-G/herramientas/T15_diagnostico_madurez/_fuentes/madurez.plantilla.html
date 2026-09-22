@@ -194,6 +194,7 @@ dialog::backdrop{background:rgba(26,24,23,.45)}
 <input type="file" id="f-t15" accept=".json,application/json" class="oculto" tabindex="-1" aria-hidden="true">
 <script type="application/json" id="cuestionario">__CUESTIONARIO__</script>
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
+<script>__DATOS_LOCALES__</script>
 <script>
 'use strict';
 /* =========================================================
@@ -216,7 +217,7 @@ es:{
  doc11:'Documento 11', doc11_href:'../../html/es/11_SEVEN-G_Modelo_de_madurez.html', p34:'Plantilla P34', p34_href:'../../html/es/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html', t14:'Índice T14',
  v_evaluacion:'Evaluación', v_cuestionario:'Cuestionario', v_informe:'Informe', v_evolucion:'Evolución', v_guia:'Guía de entrevistas', v_datos:'Datos',
  demo:'Datos ilustrativos y ficticios: dos evaluaciones verificadas de una compañía inventada. Las referencias de evidencia son inventadas.',
- pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador. No se envía nada a terceros.',
+ pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador o, si así se elige, en un fichero de su equipo. No se envía nada a terceros.',
  legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido',
  legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Un resultado de madurez no es una certificación, no sustituye a la auditoría del marco ni acredita el cumplimiento regulatorio; los pesos y los objetivos de referencia son iniciales y deben calibrarse. Cada organización que use la herramienta es la única responsable de sus datos, de las decisiones que adopte con ellos, de identificar la normativa que le aplica y de certificar su propio cumplimiento regulatorio. El autor no asume responsabilidad alguna por el uso de la herramienta. Los datos de demostración son ficticios.',
  tit_eval:'Madurez de la compañía para gobernar la IA', sub_eval:'Siete dimensiones, niveles 0 a 5 con la regla del documento 11 §5: nivel por dimensión acumulativo, nivel global como media ponderada redondeada hacia abajo y limitada al nivel de D1 o D6 más uno. Una pregunta sin responder es «sin dato»: nunca cuenta como cumplida ni se estima.',
@@ -276,7 +277,7 @@ en:{
  doc11:'Document 11', doc11_href:'../../html/en/11_SEVEN-G_Modelo_de_madurez.html', p34:'Template P34', p34_href:'../../html/en/plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html', t14:'T14 index',
  v_evaluacion:'Assessment', v_cuestionario:'Questionnaire', v_informe:'Report', v_evolucion:'Evolution', v_guia:'Interview guide', v_datos:'Data',
  demo:'Illustrative and fictitious data: two verified assessments of an invented company. The evidence references are invented.',
- pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology', pie_priv:'Data is stored only in this browser. Nothing is sent to third parties.',
+ pie_lic:'MIT code · CC BY 4.0 content · © 2026 Fernando García Varela · SEVEN-G methodology', pie_priv:'Data is stored only in this browser or, if you choose so, in a file on your computer. Nothing is sent to third parties.',
  legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'Understood',
  legal_txt:'SEVEN-G and this tool are provided "as is" and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. A maturity result is not a certification, does not replace the framework audit and does not evidence regulatory compliance; the weights and reference targets are initial values and must be calibrated. Each organisation using the tool is solely responsible for its data, for the decisions it takes with it, for identifying the regulations that apply to it and for certifying its own regulatory compliance. The author accepts no liability for the use of the tool. Demonstration data is fictitious.',
  tit_eval:'Company maturity to govern AI', sub_eval:'Seven dimensions, levels 0 to 5 with the rule in document 11 §5: cumulative level by dimension, overall level as the weighted average rounded down and capped at the level of D1 or D6 plus one. An unanswered question is "no data": it never counts as met and is never estimated.',
@@ -351,14 +352,14 @@ en:{
 }};
 
 /* ---------------- estado ---------------- */
-let D = null, UI = { lang:'es', tema:'auto', sel:null, dim:'D1', filtro:'todas' };
+let D = null, UI = { lang:'es', tema:'auto', sel:null, dim:'D1', filtro:'todas' }, CARGA_DEMO = false;
 let lang = 'es';
 function t(k, v){ let s = (TX[lang] && TX[lang][k]) ?? TX.es[k] ?? k; if(v) for(const x in v) s = s.split('{'+x+'}').join(v[x]); return s; }
 function L(o){ return o ? (o[lang] ?? o.es ?? '') : ''; }
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function clon(o){ return JSON.parse(JSON.stringify(o)); }
 function toast(m){ const e=document.getElementById('toast'); e.textContent=m; e.classList.add('ver'); clearTimeout(toast._t); toast._t=setTimeout(()=>e.classList.remove('ver'),3200); }
-function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); }
+function guardar(){ if(!lsSet(LS_DATOS, JSON.stringify(D))) toast(t('no_guardado')); lsSet(LS_UI, JSON.stringify(UI)); if(window.SevengDatos) SevengDatos.guardado(); }
 function cargarDemo(){ return JSON.parse(DEMO_TXT); }
 function valido(x){ return x && typeof x==='object' && Array.isArray(x.evaluaciones); }
 function nf(x, dec){ return new Intl.NumberFormat(lang==='en'?'en-GB':'es-ES',{maximumFractionDigits:dec??0, minimumFractionDigits:dec??0}).format(x); }
@@ -727,6 +728,7 @@ function render(){
   const m = document.getElementById('principal');
   m.innerHTML = v==='cuestionario' ? vistaCuestionario() : v==='informe' ? vistaInforme() : v==='evolucion' ? vistaEvolucion() : v==='guia' ? vistaGuia() : v==='datos' ? vistaDatos() : vistaEvaluacion();
   document.getElementById('pie').innerHTML = '<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+'</p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
+  if(window.SevengDatos) SevengDatos.refrescar();
   if(foco && render._mantener){ const e = document.getElementById(foco); if(e){ e.focus({preventScroll:true}); window.scrollTo(0, y); } }
   render._mantener = false;
 }
@@ -768,6 +770,11 @@ document.addEventListener('change', ev => {
   if(el.dataset.peso){ rerender(); return; }
 });
 function descargar(nombre, txt, tipo){ const blob=new Blob([txt],{type:tipo}), u=URL.createObjectURL(blob), l=document.createElement('a'); l.href=u; l.download=nombre; document.body.appendChild(l); l.click(); l.remove(); setTimeout(()=>URL.revokeObjectURL(u),1000); }
+/* el JSON completo del diagnóstico, con los resultados calculados: lo que descarga «Exportar» y lo que se escribe en el fichero del equipo (D101) */
+function datosExportables(){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T15'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt});
+  x.evaluaciones.forEach((cc,i)=>{ const r=calcular(D.evaluaciones[i]); cc.resultado={nivel_global:r.nivel, nivel_minimo:r.minimo, media:r.media, tope:r.tope, tope_aplicado:r.tope_aplicado, limitante:r.limitante, validez:r.validez, declaracion_posible:r.declara, s14_no_si:r.s14_fallan,
+    dimensiones:r.dims.map(d=>({dimension:d.codigo, nivel:d.nivel, nivel_minimo:d.minimo, avance:d.avance==null?null:Math.round(d.avance*10)/10, bloqueantes:d.bloqueantes.map(q=>q.codigo), adelantados:d.adelantados.map(q=>q.codigo), sin_dato:d.sd})), lecturas:r.lecturas}; });
+  return x; }
 function csvCelda(v){ if(v==null) return ''; const s=String(v); return /[;"\r\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; }
 document.addEventListener('click', ev => {
   const b = ev.target.closest('[data-acc]'); if(!b) return;
@@ -786,14 +793,11 @@ document.addEventListener('click', ev => {
   if(a==='anadir' && e){ const arr=b.dataset.arr; e[arr]=e[arr]||[]; e[arr].push(arr==='acciones'?{id:'AM-'+hoy().slice(0,4)+'-'+String(e.acciones.length+1).padStart(2,'0'), dimension:'D1', accion:'', responsable:'', plazo:'', criterio_cierre:'', t18:false, estado:'abierta'}:arr==='muestras'?{preguntas:'', poblacion:null, tamano:null, seleccion:''}:{rol:'', dimensiones:'', fecha:''}); guardar(); rerender(); return; }
   if(a==='quitar' && e){ e[b.dataset.arr].splice(Number(b.dataset.i),1); guardar(); rerender(); return; }
   if(a==='importar'){ document.getElementById('f-t15').click(); return; }
-  if(a==='exportar'){ const x=clon(D); x.version_esquema=VERSION_ESQUEMA; x.herramienta='T15'; x.meta=Object.assign({}, x.meta, {exportado:hoy(), aviso_legal:TX.es.legal_txt});
-    x.evaluaciones.forEach((cc,i)=>{ const r=calcular(D.evaluaciones[i]); cc.resultado={nivel_global:r.nivel, nivel_minimo:r.minimo, media:r.media, tope:r.tope, tope_aplicado:r.tope_aplicado, limitante:r.limitante, validez:r.validez, declaracion_posible:r.declara, s14_no_si:r.s14_fallan,
-      dimensiones:r.dims.map(d=>({dimension:d.codigo, nivel:d.nivel, nivel_minimo:d.minimo, avance:d.avance==null?null:Math.round(d.avance*10)/10, bloqueantes:d.bloqueantes.map(q=>q.codigo), adelantados:d.adelantados.map(q=>q.codigo), sin_dato:d.sd})), lecturas:r.lecturas}; });
-    descargar('t15_diagnostico_madurez_'+hoy()+'.json', JSON.stringify(x,null,2), 'application/json'); toast(t('ok_export')); return; }
+  if(a==='exportar'){ descargar('t15_diagnostico_madurez_'+hoy()+'.json', JSON.stringify(datosExportables(),null,2), 'application/json'); toast(t('ok_export')); return; }
   if(a==='csv' && e){ const cab=['evaluacion','fecha_corte','modalidad','version_cuestionario','dimension','codigo','nivel_pregunta','s14','si_aplica','pregunta','respuesta','tipo_no','evidencia','justificacion_no_aplica','verificacion','respuesta_original','nota_verificador'];
     const filas = Object.values(PREG).map(q=>{ const r=resp(e,q.codigo); return [e.id,e.fecha_corte,e.modalidad,e.version_cuestionario,q.dim,q.codigo,q.nivel,q.s14?1:0,q.si_aplica?1:0,L(q.texto),r.r||'',r.no_tipo||'',r.evidencia||'',r.na_just||'',r.verif||'sin_verificar',r.original||'',r.verif_nota||''].map(csvCelda).join(';'); });
     descargar('T15_respuestas_'+e.id+'_'+hoy()+'.csv', '﻿'+cab.join(';')+'\r\n'+filas.join('\r\n')+'\r\n', 'text/csv;charset=utf-8'); toast(t('ok_export')); return; }
-  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); UI.sel=null; guardar(); render(); return; }
+  if(a==='restaurar'){ if(!confirm(t('conf_restaurar'))) return; D=cargarDemo(); SevengDatos.reiniciar('demo'); UI.sel=null; guardar(); render(); return; }
   if(a==='vaciar'){ if(!confirm(t('conf_vaciar'))) return; D.evaluaciones=[]; D.meta=Object.assign({}, D.meta, {datos_ilustrativos:false}); UI.sel=null; guardar(); render(); return; }
 });
 document.getElementById('f-t15').addEventListener('change', ev => { const inp=ev.target, f=inp.files[0]; if(!f) return; const rd=new FileReader();
@@ -833,12 +837,17 @@ window.addEventListener('hashchange', render);
 (function(){
   try{ const u = JSON.parse(lsGet(LS_UI)||'null'); if(u) UI = Object.assign(UI, u); }catch(e){}
   try{ const d = JSON.parse(lsGet(LS_DATOS)||'null'); if(valido(d)) D = d; }catch(e){}
-  if(!D) D = cargarDemo();
+  if(!D){ D = cargarDemo(); CARGA_DEMO = true; }
   const q = new URLSearchParams(location.search);
   if(q.get('lang')==='en' || q.get('lang')==='es') UI.lang = q.get('lang');
   else if(!lsGet(LS_UI) && /^en\b/i.test(navigator.language||'')) UI.lang = 'en';
   lang = UI.lang==='en' ? 'en' : 'es';
   aplicarTema(); render();
+  /* D101: dónde viven los datos (este navegador, un fichero del equipo o la carpeta de datos de la copia de la compañía) */
+  SevengDatos.iniciar({codigo:'T15', ficheroServidor:'../datos/T15_madurez.json', cargadoDeDemo:CARGA_DEMO,
+    obtener:()=>D, exportar:datosExportables, aplicar:d=>{ d.evaluaciones.forEach(c=>{ delete c.resultado; c.respuestas=c.respuestas||{}; }); D=d; UI.sel=null; guardar(); render(); }, validar:valido,
+    esDemo:()=>!!(D.meta||{}).datos_ilustrativos, idioma:()=>lang, aviso:toast, nombreFichero:()=>'t15_diagnostico_madurez_'+hoy()+'.json',
+    ayudaHref:()=>'../../html/'+lang+'/03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html#'+(lang==='en'?'2-1-where-the-data-of-the-tools-lives':'2-1-donde-viven-los-datos-de-las-herramientas')});
 })();
 </script>
 </body>

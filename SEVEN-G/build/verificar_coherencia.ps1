@@ -26,6 +26,9 @@
     8. Registro de decisiones: numeración única y correlativa.
     10. Comunidad (D80): la página de incidencias y peticiones no pide correo ni datos de contacto, no carga recursos de terceros, no usa
         cookies, muestra la regla de los votos, está enlazada desde la portada (ES/EN) y en su carpeta no hay ningún token.
+    19. Datos por usuario o compañía (D101): el módulo herramientas/_comun/datos_locales.js está incrustado en T01, T11, T14 y T15 (botón
+        «Datos: …» y diálogo «Dónde están mis datos»), la carpeta herramientas/datos no contiene ningún JSON, el documento 03 §2.1 (ES/EN)
+        explica la copia de la compañía y los README de las cuatro herramientas la citan.
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -434,12 +437,13 @@ try {
   else {
     $salidaEj = Join-Path $t17 'ejemplo\salida'
     $pruebas = @(
-      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table'); que = 'registro T01' }
+      # D101: el botón «Datos: …» del módulo de datos locales se dibuja en las cuatro herramientas
+      @{ f = (Join-Path $t01 'registro.html'); debe = @('#nav a[href="#/embudo"]', '#nav a[href="#/riesgos"]', '#nav a[href="#/consejo"]', '#lnk-panel', '#principal table', '#btn-datos[data-estado="demo"]'); que = 'registro T01' }
       # el cálculo que se abre es el del documento 12 §9: suma 12, perfil subyacente Eficiencia a escala y asignado Transformación declarada, no evidenciada
-      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="escala"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="2"]', '#nav a[href="#/umbrales"]'); que = 'calculadora T14 (ejemplo del documento 12)' }
+      @{ f = (Join-Path $t14 'indice.html'); debe = @('#perfil[data-perfil="declarada"][data-evidenciado="escala"][data-suma="12"][data-cobertura="8"]', 'tr[data-senal="8"][data-punt="2"]', '#nav a[href="#/umbrales"]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T14 (ejemplo del documento 12)' }
       # T11: el caso de ejemplo IA-2026-001 da VAN 1.826.542 €, ROI 217,7 % y plazo 1,44 años (40 §8); T15: nivel global 2 limitado por D6 (11 §5)
-      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
-      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
+      @{ f = (Join-Path $t11 'calculadora.html'); debe = @('#resultado[data-van="1826542"][data-roi="217.7"][data-payback="1.44"]', '#nav a[href="#/costes"]', '#btn-datos[data-estado="demo"]'); que = 'calculadora T11/T13 (ejemplo IA-2026-001)' }
+      @{ f = (Join-Path $t15 'madurez.html'); debe = @('#nivel-global[data-nivel="2"][data-tope="2"][data-tope-aplicado="1"]', 'tr[data-dim="D6"][data-nivel="1"]', 'tr[data-dim="D3"][data-nivel="2"]', '#btn-datos[data-estado="demo"]'); que = 'diagnóstico T15 (ejemplo EM-2026-06)' }
       @{ f = (Get-ChildItem $salidaEj -Filter 't01_Dashboard_Casos_Uso_IA_v*.html' | Select-Object -First 1).FullName; debe = @('#indice tbody tr', '#kpis [data-kpi]', '#embudo .fun2-mid', '#embudo .fun-card.gan', '#embudo .fun-card li .pq', '#fbar #fopen, #filters .fgroup', '#transv table tbody tr'); que = 'panel completo' }
       # comunidad (D80): la página se dibuja aunque no haya intermediario configurado ni red (el texto lo pone el JavaScript)
       @{ f = (Join-Path $repo 'SEVEN-G\herramientas\comunidad\index.html'); debe = @('h1[data-i18n]:not(:empty)', '#form-envio', '#lista[data-estado]', '#btn-identidad:not(:empty)'); que = 'página de comunidad' }
@@ -617,6 +621,43 @@ try {
   if (-not [IO.File]::ReadAllText((Join-Path $sal 't01_Dashboard_Movil_IA_v8.html')).Contains('?completo=1')) { Mal 'panel móvil: no enlaza el panel completo con ?completo'; $malMov++ }
   if (-not ((Get-Content (Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo\config_panel.json') -Raw | ConvertFrom-Json).navegacion.redirigir_movil)) { Mal 'config_panel.json: navegacion.redirigir_movil debe ser true en el ejemplo'; $malMov++ }
   if (-not $malMov) { Ok 'barras ajustadas al móvil, panel completo con paso al móvil y vista estática sin JavaScript en los dos paneles' }
+
+  # ---- 19. datos por usuario o compañía (D101): módulo común incrustado en las cuatro herramientas, diálogo «Dónde están mis datos»,
+  # carpeta de datos de la copia de la compañía sin ningún JSON en el sitio público, procedimiento en el documento 03 §2.1 y README
+  Write-Host '19. Datos por usuario o compañía'
+  $malDat = 0
+  $modulo = Join-Path $repo 'SEVEN-G\herramientas\_comun\datos_locales.js'
+  if (-not (Test-Path $modulo)) { Mal 'falta el módulo común SEVEN-G/herramientas/_comun/datos_locales.js'; $malDat++ }
+  else {
+    $mj = [IO.File]::ReadAllText($modulo)
+    foreach ($req in 'window.SevengDatos', 'showSaveFilePicker', 'indexedDB', "'btn-datos'", "'dlg-datos'", 'herramientas/datos/', 'btn_demo:', 'op3_t:', 'ficheroServidor') { if (-not $mj.Contains($req)) { Mal "datos_locales.js: falta «$req»"; $malDat++ } }
+    if ($mj -match 'https?://') { Mal 'datos_locales.js: no debe cargar ni llamar a ninguna dirección externa'; $malDat++ }
+    if ($mj.Contains('</script')) { Mal 'datos_locales.js: contiene «</script», que rompería el HTML en el que se incrusta'; $malDat++ }
+  }
+  foreach ($h in @(@{ dir = 'T01_registro_iniciativas'; pl = '_fuentes\registro.plantilla.html'; html = 'registro.html'; f = 'T01_registro.json' }, @{ dir = 'T11_calculadora_valor'; pl = '_fuentes\calculadora.plantilla.html'; html = 'calculadora.html'; f = 'T11_calculadora.json' },
+                    @{ dir = 'T14_indice_transformacion'; pl = '_fuentes\indice.plantilla.html'; html = 'indice.html'; f = 'T14_indice.json' }, @{ dir = 'T15_diagnostico_madurez'; pl = '_fuentes\madurez.plantilla.html'; html = 'madurez.html'; f = 'T15_madurez.json' })) {
+    $pl = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$($h.dir)\$($h.pl)"))
+    if (-not $pl.Contains('<script>__DATOS_LOCALES__</script>')) { Mal "$($h.dir): la plantilla no incrusta el módulo (marca __DATOS_LOCALES__)"; $malDat++ }
+    if (-not $pl.Contains('SevengDatos.iniciar({') -or -not $pl.Contains("ficheroServidor:'../datos/$($h.f)'")) { Mal "$($h.dir): la plantilla no inicia el módulo con ../datos/$($h.f)"; $malDat++ }
+    if (-not $pl.Contains('SevengDatos.guardado()') -or -not $pl.Contains('SevengDatos.refrescar()') -or -not $pl.Contains("SevengDatos.reiniciar('demo')")) { Mal "$($h.dir): faltan los ganchos guardado/refrescar/reiniciar del módulo"; $malDat++ }
+    $gen = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$($h.dir)\$($h.html)"))
+    if ($gen.Contains('<script>__DATOS_LOCALES__</script>') -or -not $gen.Contains('window.SevengDatos')) { Mal "$($h.dir): $($h.html) no lleva el módulo incrustado (regenerar)"; $malDat++ }
+    foreach ($rd in 'README.md', 'README_en.md') { if (-not [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\herramientas\$($h.dir)\$rd")).Contains("herramientas/datos/$($h.f)")) { Mal "$($h.dir)/$rd`: no explica la carpeta de datos de la copia de la compañía"; $malDat++ } }
+  }
+  $carpetaDatos = Join-Path $repo 'SEVEN-G\herramientas\datos'
+  if (-not (Test-Path (Join-Path $carpetaDatos 'README.md'))) { Mal 'falta SEVEN-G/herramientas/datos/README.md'; $malDat++ }
+  $jsonDatos = @(Get-ChildItem $carpetaDatos -File -Filter *.json -ErrorAction SilentlyContinue) + @(& git -C $repo ls-files 'SEVEN-G/herramientas/datos/*.json')
+  if ($jsonDatos.Count) { Mal "SEVEN-G/herramientas/datos no puede contener ningún JSON en el sitio público: $(($jsonDatos | ForEach-Object { if ($_ -is [IO.FileInfo]) { $_.Name } else { $_ } }) -join ', ')"; $malDat++ }
+  foreach ($lang in 'es', 'en') {
+    $md03 = Join-Path $repo "SEVEN-G\mds\$lang\03_SEVEN-G_Herramientas_y_registro_de_iniciativas.md"
+    $tit = if ($lang -eq 'es') { '### 2.1 Dónde viven los datos de las herramientas' } else { '### 2.1 Where the data of the tools lives' }
+    $t03 = [IO.File]::ReadAllText($md03)
+    if (-not $t03.Contains($tit) -or -not $t03.Contains('herramientas/datos/') -or -not $t03.Contains('T01_registro.json')) { Mal "documento 03 ($lang): falta la sección 2.1 con el procedimiento de la copia de la compañía"; $malDat++ }
+    $ancla = if ($lang -eq 'es') { 'id="2-1-donde-viven-los-datos-de-las-herramientas"' } else { 'id="2-1-where-the-data-of-the-tools-lives"' }
+    $h03 = Join-Path $repo "SEVEN-G\html\$lang\03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html"
+    if (-not (Test-Path $h03) -or -not [IO.File]::ReadAllText($h03).Contains($ancla)) { Mal "documento 03 ($lang): el HTML no tiene el ancla de la sección 2.1 a la que enlaza el diálogo de las herramientas (regenerar)"; $malDat++ }
+  }
+  if (-not $malDat) { Ok 'módulo de datos locales incrustado en T01, T11, T14 y T15, carpeta de datos sin JSON, documento 03 §2.1 y README al día' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

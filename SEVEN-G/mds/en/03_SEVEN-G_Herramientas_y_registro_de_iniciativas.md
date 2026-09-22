@@ -39,6 +39,26 @@ This document serves two functions:
 | 6 | **The data belongs to the company** | The tools do not send data to third parties. Demonstrations always use fictitious data. |
 | 7 | **"No data" is not zero** | A missing value is shown as missing and is never replaced by an undeclared estimate. |
 
+### 2.1 Where the data of the tools lives
+
+The reference applications (T01, T11 with T13, T14 and T15) are published with **fictitious sample data that nobody can change on the site**: the site is static and has no application server or database. What each person enters is saved in one of three places, and the **"Data: …"** button in the bar of each tool says which one it is and opens the "Where my data is" dialog to change it:
+
+| Where | What it is for | What to know |
+|---|---|---|
+| **Only in the browser** (default) | Trying the tool with your own data without installing anything. | Every change is saved in the local storage of that browser on that computer; nobody else sees it. It is lost if the browser is cleared and it is not available from another computer. The first time something is changed, the tool says so. |
+| **A JSON file on the computer** | Real work by one person or a small team. | The tool rewrites the file with every change and reads it again when opened (Microsoft Edge or Google Chrome; in other browsers, export and import by hand). The file is the same one that "Export" downloads: it can be copied, shared, imported into another tool or used to regenerate the board dashboard (T17). It can live in a synchronised company folder. |
+| **A copy of the site on the company's server** | The whole company seeing the same version of the portfolio. | The whole site (documents, templates and tools) is copied to an internal server. If that copy has the folder `herramientas/datos/` with a tool's file, the tool loads it instead of the sample data. Changes are still saved in each browser or in a file; publishing a new version means replacing the file in the folder. |
+
+**Why it matters.** Without this rule, someone entering the public site could believe they are editing a shared portfolio, or fear that their data stays on the site. Neither happens: nothing entered leaves the computer of the person who enters it, and the only thing that can be shared is a JSON file that the company keeps wherever it decides. Principle 6 (the data belongs to the company) holds by construction.
+
+**How to set up the company copy.**
+
+1. Download the whole site (the published repository or its generated folder) and serve it **over http** from an internal server: any static file server will do; no database or application server is needed. HTML files opened directly (double click) work, but they do not consult the data folder.
+2. Create the folder `SEVEN-G/herramientas/datos/` and put in it the JSON files exported by the tools you use: `T01_registro.json` (initiative register), `T11_calculadora.json` (value hypothesis and costs), `T14_indice.json` (transformation index) and `T15_madurez.json` (maturity diagnosis).
+3. Regenerate the board dashboard with tool T17 (`t01_a_panel.py`, Python 3.11 and `uv`) from `T01_registro.json` and publish its output in the folder that the register and the home page of the copy link to; until then the sample dashboard is shown, with its fictitious-data notice.
+4. In each working session: export from the tool and replace the file in the folder. Whoever has changes in their browser or in their file keeps them; the "Where my data is" dialog shows them that the server holds a version and lets them load it.
+5. No data leaves the company: the copy sends nothing to third parties. The aggregated visit measurement (document 04 §6.2) only acts on the public site's domains, never on an internal domain.
+
 ---
 
 ## 3. The initiative register

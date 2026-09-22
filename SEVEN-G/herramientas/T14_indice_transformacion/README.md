@@ -12,7 +12,7 @@ Aplica el **documento 12** (Índice de transformación): calcula las condiciones
 4. Anote en «Acciones» el responsable y el plazo de cada condición de «Qué movería el perfil» y el plan de datos (documento 12, sección 10). «Imprimir informe» da la hoja para el consejo.
 5. «Datos» → «Exportar JSON de T14» guarda umbrales y cálculos, con sus resultados, para conservarlos o compartirlos.
 
-Los datos se guardan solo en el navegador que se usa (almacenamiento local). No se envía nada a terceros.
+Los datos se guardan solo en el navegador que se usa (almacenamiento local). No se envía nada a terceros. El botón **«Datos: …»** de la barra dice dónde están (ejemplo, este navegador, un fichero del equipo o el servidor de la compañía) y abre el diálogo «Dónde están mis datos» (documento 03 §2.1): guardado automático en un **fichero JSON del equipo** (Edge o Chrome; el mismo que descarga «Exportar») o, en una copia del sitio servida por http en la compañía, el fichero `herramientas/datos/T14_indice.json`, que sustituye a los datos de ejemplo.
 
 ## Qué calcula desde T01 y qué se completa a mano
 

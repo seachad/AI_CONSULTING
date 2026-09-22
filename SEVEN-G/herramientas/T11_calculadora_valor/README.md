@@ -12,7 +12,7 @@ Aplica el **documento 40** (Reglas de medición del valor) y el **documento 42**
 4. **Hoja de decisión**: resumen imprimible para el órgano del *gate*, con la respuesta propuesta en los formatos del consejo («Sí», «Sí, con una condición: …», «Todavía no, porque falta …», «No, porque …»).
 5. **Datos**: exportar o importar el JSON de T11; crear un caso desde el JSON completo de T01; exportar el resultado de un caso (JSON con los importes esperados en el formato de `valores[]` de T01) o el caso en **CSV**, que es la plantilla de hoja de cálculo de T11 y T13.
 
-Los datos se guardan solo en el navegador que se usa (almacenamiento local). No se envía nada a terceros.
+Los datos se guardan solo en el navegador que se usa (almacenamiento local). No se envía nada a terceros. El botón **«Datos: …»** de la barra dice dónde están (ejemplo, este navegador, un fichero del equipo o el servidor de la compañía) y abre el diálogo «Dónde están mis datos» (documento 03 §2.1): guardado automático en un **fichero JSON del equipo** (Edge o Chrome; el mismo que descarga «Exportar») o, en una copia del sitio servida por http en la compañía, el fichero `herramientas/datos/T11_calculadora.json`, que sustituye a los datos de ejemplo.
 
 ## Fórmulas que aplica
 

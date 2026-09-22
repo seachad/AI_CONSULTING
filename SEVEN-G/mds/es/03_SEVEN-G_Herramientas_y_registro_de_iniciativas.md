@@ -39,6 +39,26 @@ Este documento cumple dos funciones:
 | 6 | **Los datos son de la compañía** | Las herramientas no envían datos a terceros. Las demostraciones usan siempre datos ficticios. |
 | 7 | **"Sin dato" no es cero** | Un valor ausente se muestra como ausente y nunca se sustituye por una estimación no declarada. |
 
+### 2.1 Dónde viven los datos de las herramientas
+
+Las aplicaciones de referencia (T01, T11 con T13, T14 y T15) se publican con **datos de ejemplo ficticios que nadie puede cambiar en el sitio**: el sitio es estático y no tiene servidor de aplicaciones ni base de datos. Lo que cada persona introduce se guarda en uno de tres lugares, y el botón **«Datos: …»** de la barra de cada herramienta dice en cuál está y abre el diálogo «Dónde están mis datos» para cambiarlo:
+
+| Dónde | Para qué sirve | Qué hay que saber |
+|---|---|---|
+| **Solo en el navegador** (por defecto) | Probar la herramienta con datos propios sin instalar nada. | Cada cambio se guarda en el almacenamiento local de ese navegador y ese equipo; nadie más lo ve. Se pierde si se limpia el navegador y no está disponible desde otro equipo. La primera vez que se cambia algo, la herramienta lo avisa. |
+| **Un fichero JSON del equipo** | Trabajar en serio una persona o un equipo pequeño. | La herramienta reescribe el fichero con cada cambio y lo vuelve a leer al abrirla (Microsoft Edge o Google Chrome; en otros navegadores, exportar e importar a mano). El fichero es el mismo que descarga «Exportar»: se puede copiar, compartir, importar en otra herramienta o usar para regenerar el panel del consejo (T17). Puede estar en una carpeta sincronizada de la compañía. |
+| **Una copia del sitio en el servidor de la compañía** | Que toda la compañía vea la misma versión de la cartera. | El sitio entero (documentos, plantillas y herramientas) se copia a un servidor interno. Si en esa copia existe la carpeta `herramientas/datos/` con el fichero de una herramienta, esta lo carga en lugar de los datos de ejemplo. Los cambios se siguen guardando en cada navegador o en un fichero; publicar una versión nueva es sustituir el fichero de la carpeta. |
+
+**Por qué importa.** Sin esta regla, quien entra al sitio público podría creer que edita una cartera compartida, o temer que sus datos se quedan en el sitio. Ninguna de las dos cosas ocurre: nada de lo que se introduce sale del equipo de quien lo introduce, y lo único que puede compartirse es un fichero JSON que la compañía custodia donde decida. El principio 6 (los datos son de la compañía) se cumple por construcción.
+
+**Cómo montar la copia de la compañía.**
+
+1. Descargue el sitio completo (el repositorio publicado o su carpeta generada) y sírvalo **por http** desde un servidor interno: cualquier servidor de ficheros estáticos vale; no hace falta base de datos ni servidor de aplicaciones. Los HTML abiertos como ficheros sueltos (doble clic) funcionan, pero no consultan la carpeta de datos.
+2. Cree la carpeta `SEVEN-G/herramientas/datos/` y ponga en ella los JSON exportados por las herramientas que use: `T01_registro.json` (registro de iniciativas), `T11_calculadora.json` (hipótesis de valor y costes), `T14_indice.json` (índice de transformación) y `T15_madurez.json` (diagnóstico de madurez).
+3. Regenere el panel del consejo con la herramienta T17 (`t01_a_panel.py`, Python 3.11 y `uv`) a partir de `T01_registro.json` y publique su salida en la carpeta a la que enlazan el registro y la portada de la copia; hasta entonces se ve el panel de ejemplo, con su aviso de datos ficticios.
+4. En cada sesión de trabajo: exportar desde la herramienta y sustituir el fichero de la carpeta. Quien tenga cambios en su navegador o en su fichero los conserva; el diálogo «Dónde están mis datos» le muestra que en el servidor hay una versión y le permite cargarla.
+5. Ningún dato sale de la compañía: la copia no envía nada a terceros. La medición agregada de visitas (documento 04 §6.2) solo actúa en los dominios del sitio público, nunca en un dominio interno.
+
 ---
 
 ## 3. El registro de iniciativas

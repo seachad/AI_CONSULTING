@@ -14,7 +14,7 @@ Applies **document 11** (Maturity model): questionnaire of the **84 questions** 
 6. **Interview guide**: reference view of 11 §4.4 to §4.6 (interviews, valid evidence, answers, sampling with a minimum sample size calculator) and of what is asked in each dimension.
 7. **Data**: export and import the T15 JSON (with the calculated results) and export the answers of the selected assessment as CSV (";" separator, UTF-8).
 
-Data is stored only in the browser used (local storage). Nothing is sent to third parties.
+Data is stored only in the browser used (local storage). Nothing is sent to third parties. The **"Data: …"** button in the bar says where it is (sample, this browser, a file on the computer or the company's server) and opens the "Where my data is" dialog (document 03 §2.1): automatic saving to a **JSON file on the computer** (Edge or Chrome; the same one "Export" downloads) or, in a copy of the site served over http within the company, the file `herramientas/datos/T15_madurez.json`, which replaces the sample data.
 
 ## Calculation (document 11 §5)
 

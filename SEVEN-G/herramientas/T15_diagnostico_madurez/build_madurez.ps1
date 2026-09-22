@@ -161,6 +161,11 @@ if ($errores.Count) { throw "Fuentes de T15 incoherentes:`n  " + ($errores -join
 $html = [IO.File]::ReadAllText($plantilla)
 foreach ($m in '__CUESTIONARIO__', '__DATOS_DEMO__') { if (([regex]::Matches($html, $m)).Count -ne 1) { throw "La plantilla debe contener una sola vez la marca $m" } }
 $html = $html.Replace('__CUESTIONARIO__', (Compactar $rutaCuest)).Replace('__DATOS_DEMO__', (Compactar $Datos))
+# módulo común de datos locales (D101): se incrusta para que la herramienta siga siendo un solo fichero
+$comun = Join-Path $aqui '..\_comun\datos_locales.js'
+if (-not (Test-Path $comun)) { throw "No se encuentra $comun" }
+if (([regex]::Matches($html, '__DATOS_LOCALES__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __DATOS_LOCALES__' }
+$html = $html.Replace('__DATOS_LOCALES__', [IO.File]::ReadAllText($comun))
 $html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por build_madurez.ps1 desde _fuentes/madurez.plantilla.html, cuestionario.json y $(Split-Path $Datos -Leaf). No editar a mano. -->")
 [IO.File]::WriteAllText($Salida, $html, [Text.UTF8Encoding]::new($false))
 "madurez:      $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"

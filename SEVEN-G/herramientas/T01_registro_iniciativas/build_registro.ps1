@@ -80,6 +80,11 @@ if ($html -match "const PANEL_DEMO = '([^']+)'") {
   if (-not (Test-Path $panelDemo)) { Write-Warning "El panel de ejemplo enlazado no existe: $($Matches[1]). Regenerarlo (uv run python t01_a_panel.py en T17_panel_consejo) o actualizar PANEL_DEMO en la plantilla." }
 } else { throw 'La plantilla no define PANEL_DEMO' }
 $html = $html.Replace('__CATALOGO_CRITERIOS__', (Compactar $catalogo)).Replace('__DATOS_DEMO__', (Compactar $Datos))
+# módulo común de datos locales (D101): se incrusta para que la herramienta siga siendo un solo fichero
+$comun = Join-Path $aqui '..\_comun\datos_locales.js'
+if (-not (Test-Path $comun)) { throw "No se encuentra $comun" }
+if (([regex]::Matches($html, '__DATOS_LOCALES__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __DATOS_LOCALES__' }
+$html = $html.Replace('__DATOS_LOCALES__', [IO.File]::ReadAllText($comun))
 $html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por build_registro.ps1 desde _fuentes/registro.plantilla.html, catalogo_criterios.json y $(Split-Path $Datos -Leaf). No editar a mano. -->")
 [IO.File]::WriteAllText($Salida, $html, [Text.UTF8Encoding]::new($false))
 "registro:   $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"

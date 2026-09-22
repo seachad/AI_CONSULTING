@@ -14,7 +14,7 @@ Aplica el **documento 11** (Modelo de madurez): cuestionario de las **84 pregunt
 6. **Guía de entrevistas**: vista de consulta de 11 §4.4 a §4.6 (entrevistas, evidencias válidas, respuestas, muestreo con calculadora del tamaño mínimo) y de lo que se pregunta en cada dimensión.
 7. **Datos**: exportar e importar el JSON de T15 (con los resultados calculados) y exportar las respuestas de la evaluación seleccionada en CSV (separador «;», UTF-8).
 
-Los datos se guardan solo en el navegador que se usa (almacenamiento local). No se envía nada a terceros.
+Los datos se guardan solo en el navegador que se usa (almacenamiento local). No se envía nada a terceros. El botón **«Datos: …»** de la barra dice dónde están (ejemplo, este navegador, un fichero del equipo o el servidor de la compañía) y abre el diálogo «Dónde están mis datos» (documento 03 §2.1): guardado automático en un **fichero JSON del equipo** (Edge o Chrome; el mismo que descarga «Exportar») o, en una copia del sitio servida por http en la compañía, el fichero `herramientas/datos/T15_madurez.json`, que sustituye a los datos de ejemplo.
 
 ## Cálculo (documento 11 §5)
 
