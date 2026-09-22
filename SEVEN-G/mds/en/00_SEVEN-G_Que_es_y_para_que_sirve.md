@@ -22,6 +22,18 @@
 
 ## 0. Quick start
 
+**Motivation and vision**
+
+I have spent a long time watching the same pattern in companies of every size and sector: all of them are "doing something with artificial intelligence", yet almost none can answer three simple questions. How many AI initiatives does it have under way? How much do they cost, and how much are they really delivering? And, above all: is the company actually transforming itself, or is it just saving a little here and there and calling it "transformation" because it sounds better?
+
+The pattern repeats itself: many pilots and few that ever reach real use; no one with real authority to stop what is not working, so it piles up; savings that are claimed but never verified; and a board or a leadership team that receives a list of technical projects instead of business decisions they can weigh in on and decide. This is not a technology problem. It is a problem of order: of governance and of measurement.
+
+That is why I built SEVEN-G: a complete, free method that anyone can adapt, so that a company can do with its AI what it already does with its finances or its risks —keep a clear record of every initiative, place decision gates between each phase to decide whether to continue, correct or stop, and measure value in real money, not in promises. It does not replace what the company already does: it integrates with it. And there is no need to roll it all out at once: a company can start with just the register or with how it measures value, and grow from there.
+
+The underlying idea is simple: that any company, large or medium-sized, should be able to look at its AI portfolio and answer, with facts rather than intuition, the question that really matters: is this changing the company, or just making it a little cheaper?
+
+— Fernando García · SEACHAD
+
 **SEVEN-G** (*Seven-phase Enterprise Value & Governance*) is a complete method, **free of charge and modifiable**, that lets a company implement, govern and measure its artificial intelligence by itself —enterprise self-consulting supported by AI— and answer, with evidence, whether it is transforming itself or just becoming more efficient. This section takes five minutes to read and serves a single purpose: **deciding whether it is worth reading on**.
 
 **What it does, in four ideas**
