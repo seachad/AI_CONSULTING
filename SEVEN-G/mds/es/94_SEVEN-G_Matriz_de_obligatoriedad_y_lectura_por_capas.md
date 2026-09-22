@@ -174,6 +174,7 @@ Cada documento muestra este mismo nivel en su recuadro «Lo esencial», con la p
 | 92 | [Casos de aplicación](92_SEVEN-G_Casos_de_aplicacion.html) | **Consulta** | Todos |
 | 93 | [Licencia, uso por terceros y citación](93_SEVEN-G_Licencia_uso_y_citacion.html) | **Condicional** | Asesoría jurídica, consultores |
 | 94 | [Matriz de obligatoriedad y lectura por capas](94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html) | **Recomendado** | Todos |
+| 95 | [Dónde están sus datos y cómo instalar SEVEN-G en un servidor propio](95_SEVEN-G_Datos_en_local_e_instalacion_propia.html) | **Condicional** | Oficina de IA, TI y seguridad, consultores y *partners* |
 
 Que un documento sea *Siempre* no obliga a leerlo entero: diecinueve documentos tienen ese nivel, pero la lectura inicial de una compañía con alcance Lite se reduce a los documentos 00 y 01, la guía de implantación, la adaptación a organizaciones pequeñas del modelo de gobierno y la columna Lite de los criterios de puerta (documento 90, sección 2.4). El resto se abre cuando llega su momento del ciclo.
 
