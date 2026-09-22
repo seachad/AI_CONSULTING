@@ -12,7 +12,7 @@ Applies **document 40** (Value measurement rules) and **document 42** (AI costs)
 4. **Decision sheet**: printable summary for the *gate* body, with the proposed answer in the board formats ("Yes", "Yes, with one condition: …", "Not yet, because … is missing", "No, because …").
 5. **Data**: export or import the T11 JSON; create a use case from the full T01 JSON; export a use case result (JSON with the expected amounts in the format of T01 `valores[]`) or the use case as **CSV**, which is the T11 and T13 spreadsheet template.
 
-Data is stored only in the browser used (local storage). Nothing is sent to third parties.
+Data is stored only in the browser used (local storage). Nothing is sent to third parties. The **"Data: …"** button in the bar says where it is (sample, this browser, a file on the computer or the company's server) and opens the "Where my data is" dialog (document 03 §2.1): automatic saving to a **JSON file on the computer** (Edge or Chrome; the same one "Export" downloads) or, in a copy of the site served over http within the company, the file `herramientas/datos/T11_calculadora.json`, which replaces the sample data.
 
 ## Formulas applied
 

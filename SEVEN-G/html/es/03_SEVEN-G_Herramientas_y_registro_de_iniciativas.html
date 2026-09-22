@@ -210,7 +210,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .buscar { display: flex; align-items: center; gap: 4px; }
 .barra input[type=search] { width: 120px; font-weight: 500; }
 .buscar-cuenta { min-width: 36px; font-size: 12px; color: var(--tinta-2); text-align: right; }
-/* buscador de términos en esta página o en todo el sitio (D104): selector de ámbito y lista de resultados del sitio; el «Buscador de
+/* buscador de términos en esta página o en todo el sitio (D105): selector de ámbito y lista de resultados del sitio; el «Buscador de
    documentos» (control de códigos, codigos.js) toma el ancho justo de su rótulo para que la barra quepa a 1120 px sin desplazamiento */
 .barra .ir-codigo input { width: 176px; padding: 6px 6px; }
 .barra .ir-codigo { gap: 4px; }
@@ -543,6 +543,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<h3 id="2-1-donde-viven-los-datos-de-las-herramientas">2.1 Dónde viven los datos de las herramientas</h3>
+<p>Las aplicaciones de referencia (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> con <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>) se publican con <strong>datos de ejemplo ficticios que nadie puede cambiar en el sitio</strong>: el sitio es estático y no tiene servidor de aplicaciones ni base de datos. Lo que cada persona introduce se guarda en uno de tres lugares, y el botón <strong>«Datos: …»</strong> de la barra de cada herramienta dice en cuál está y abre el diálogo «Dónde están mis datos» para cambiarlo:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dónde</th>
+<th>Para qué sirve</th>
+<th>Qué hay que saber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solo en el navegador</strong> (por defecto)</td>
+<td>Probar la herramienta con datos propios sin instalar nada.</td>
+<td>Cada cambio se guarda en el almacenamiento local de ese navegador y ese equipo; nadie más lo ve. Se pierde si se limpia el navegador y no está disponible desde otro equipo. La primera vez que se cambia algo, la herramienta lo avisa.</td>
+</tr>
+<tr>
+<td><strong>Un fichero JSON del equipo</strong></td>
+<td>Trabajar en serio una persona o un equipo pequeño.</td>
+<td>La herramienta reescribe el fichero con cada cambio y lo vuelve a leer al abrirla (Microsoft Edge o Google Chrome; en otros navegadores, exportar e importar a mano). El fichero es el mismo que descarga «Exportar»: se puede copiar, compartir, importar en otra herramienta o usar para regenerar el panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>). Puede estar en una carpeta sincronizada de la compañía.</td>
+</tr>
+<tr>
+<td><strong>Una copia del sitio en el servidor de la compañía</strong></td>
+<td>Que toda la compañía vea la misma versión de la cartera.</td>
+<td>El sitio entero (documentos, plantillas y herramientas) se copia a un servidor interno. Si en esa copia existe la carpeta <code>herramientas/datos/</code> con el fichero de una herramienta, esta lo carga en lugar de los datos de ejemplo. Los cambios se siguen guardando en cada navegador o en un fichero; publicar una versión nueva es sustituir el fichero de la carpeta.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Por qué importa.</strong> Sin esta regla, quien entra al sitio público podría creer que edita una cartera compartida, o temer que sus datos se quedan en el sitio. Ninguna de las dos cosas ocurre: nada de lo que se introduce sale del equipo de quien lo introduce, y lo único que puede compartirse es un fichero JSON que la compañía custodia donde decida. El principio 6 (los datos son de la compañía) se cumple por construcción.</p>
+<p><strong>Cómo montar la copia de la compañía.</strong></p>
+<ol>
+<li>Descargue el sitio completo (el repositorio publicado o su carpeta generada) y sírvalo <strong>por http</strong> desde un servidor interno: cualquier servidor de ficheros estáticos vale; no hace falta base de datos ni servidor de aplicaciones. Los HTML abiertos como ficheros sueltos (doble clic) funcionan, pero no consultan la carpeta de datos.</li>
+<li>Cree la carpeta <code>SEVEN-G/herramientas/datos/</code> y ponga en ella los JSON exportados por las herramientas que use: <code>T01_registro.json</code> (registro de iniciativas), <code>T11_calculadora.json</code> (hipótesis de valor y costes), <code>T14_indice.json</code> (índice de transformación) y <code>T15_madurez.json</code> (diagnóstico de madurez).</li>
+<li>El panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>) <strong>se regenera solo en el navegador</strong>: lleva incrustado el conector y, servido por http, lee <code>T01_registro.json</code> de esa carpeta y lo muestra a toda la compañía; en cada navegador donde alguien trabaje con <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> muestra el registro de ese navegador. No hace falta Python ni instalar nada. Solo si la compañía quiere publicar el panel como ficheros estáticos (para enviarlos por correo, con la vista sin JavaScript) usa el generador <code>t01_a_panel.py</code> (Python 3.11 y <code>uv</code>, opcional).</li>
+<li>En cada sesión de trabajo: exportar desde la herramienta y sustituir el fichero de la carpeta. Quien tenga cambios en su navegador o en su fichero los conserva; el diálogo «Dónde están mis datos» le muestra que en el servidor hay una versión y le permite cargarla.</li>
+<li>Ningún dato sale de la compañía: la copia no envía nada a terceros. La medición agregada de visitas (<a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a> §6.2) solo actúa en los dominios del sitio público, nunca en un dominio interno.</li>
+</ol>
 <hr />
 <h2 id="el-registro-de-iniciativas"><span class="antetitulo">03</span>El registro de iniciativas</h2>
 <h3 id="3-1-la-analogia-con-un-crm">3.1 La analogía con un CRM</h3>
@@ -1187,9 +1224,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Nada.</td>
 <td>Configuración del panel (umbrales, ciclo de vida, navegación) y los paneles generados.</td>
 </tr>
-<tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></strong>, <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></strong></td>
-<td>Son vistas del propio registro.</td>
+<tr id="cod-t06">
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></strong></td>
+<td>Es una vista del propio registro. Para el <strong>Excel del caso</strong> (matriz, registro, plan de mitigación y plan de contingencia propuestos y riesgos tipo a considerar) lee, además de los riesgos de la iniciativa, su clasificación (tecnología, exposición, autonomía, clasificación regulatoria, ambición, intensidad y proveedores), sus evaluaciones de impacto, sus sistemas y sus responsables.</td>
+<td>Nada: el Excel es un fichero descargado con la fecha y hora de generación; lo que el equipo decida en él se registra en la pestaña «Riesgos».</td>
+<td>El catálogo de riesgos tipo con las reglas de aplicabilidad y las propuestas de mitigación y contingencia por código RT (<code>catalogo_riesgos.json</code>; el texto de cada riesgo tipo se lee del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a> §9 al generar la herramienta).</td>
+</tr>
+<tr id="cod-t18">
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></strong></td>
+<td>Es una vista del propio registro.</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -1282,10 +1325,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr id="cod-t06">
+<tr id="cod-t06-2">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Herramienta T06 &#183; Matriz y registro de riesgos">T06</a></strong></td>
 <td>Matriz y registro de riesgos</td>
-<td>Evaluación de probabilidad e impacto, mapa de calor, riesgo inherente y residual, controles y su eficacia, respuesta, contingencia y aceptación por el órgano de su nivel, con observaciones de la metodología (Crítico sin aprobación del consejo, Alto sin contingencia, aceptación caducada o por un órgano inferior, revisión vencida) y exportación CSV para hoja de cálculo.</td>
+<td>Evaluación de probabilidad e impacto, mapa de calor, riesgo inherente y residual, controles y su eficacia, respuesta, contingencia y aceptación por el órgano de su nivel, con observaciones de la metodología (Crítico sin aprobación del consejo, Alto sin contingencia, aceptación caducada o por un órgano inferior, revisión vencida), exportación CSV para hoja de cálculo y <strong>Excel del caso</strong>: matriz, registro, plan de mitigación y plan de contingencia propuestos a partir del catálogo de riesgos tipo del <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Documento 33 &#183; Metodolog&#237;a de riesgos de IA">documento 33</a> §9 y riesgos tipo aplicables no registrados, para incluir o descartar con motivo.</td>
 <td>Fase 3, fase 6, cartera</td>
 <td>Módulo de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> (vista «Riesgos» y pestaña de la ficha)</td>
 <td>33</td>
@@ -1436,7 +1479,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Disponible. Se alimenta de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> mediante el conector <code>herramientas/T17_panel_consejo</code>: registro (JSON) más <code>config_panel.json</code> (umbrales de los indicadores y ciclo de vida) → JSON del panel → panel completo y móvil, con embudo y tiempos por etapa como en un CRM</td>
 </tr>
-<tr id="cod-t18">
+<tr id="cod-t18-2">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Herramienta T18 &#183; Registro de recomendaciones del consejo">T18</a></strong></td>
 <td>Registro de recomendaciones del consejo</td>
 <td>Recomendaciones con identificador persistente, estado, evidencia y valoración.</td>
@@ -1780,7 +1823,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
   seccionActual();
 
-  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D104) ---------- */
+  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D105) ---------- */
   var entrada = document.getElementById('buscar');
   var cuenta = document.getElementById('buscar-cuenta');
   var ambito = document.getElementById('buscar-ambito');

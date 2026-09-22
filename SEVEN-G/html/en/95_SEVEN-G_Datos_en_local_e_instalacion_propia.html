@@ -210,7 +210,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .buscar { display: flex; align-items: center; gap: 4px; }
 .barra input[type=search] { width: 120px; font-weight: 500; }
 .buscar-cuenta { min-width: 36px; font-size: 12px; color: var(--tinta-2); text-align: right; }
-/* buscador de términos en esta página o en todo el sitio (D104): selector de ámbito y lista de resultados del sitio; el «Buscador de
+/* buscador de términos en esta página o en todo el sitio (D105): selector de ámbito y lista de resultados del sitio; el «Buscador de
    documentos» (control de códigos, codigos.js) toma el ancho justo de su rótulo para que la barra quepa a 1120 px sin desplazamiento */
 .barra .ir-codigo input { width: 176px; padding: 6px 6px; }
 .barra .ir-codigo { gap: 4px; }
@@ -519,19 +519,13 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Tools <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a></td>
 <td><strong>A single HTML file</strong> each, with the complete application and some fictitious demonstration data embedded.</td>
 <td>Entirely in the browser. They need no server: they also work when the file is opened from disk.</td>
-<td><strong>The data you enter, in your browser's local storage</strong> (section 3). They export and import JSON and CSV.</td>
+<td><strong>The data you enter, wherever you choose with the &quot;Datos: …&quot; button in their bar</strong>: only in your browser (default), in a JSON file on your computer or, in a copy of the site on the company's server, in the <code>herramientas/datos/</code> folder (section 3). They export and import JSON and CSV.</td>
 </tr>
 <tr>
-<td>Board dashboard generator (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</td>
-<td>A Python program that reads the JSON exported by <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> and <strong>generates</strong> the full dashboard, the mobile dashboard and the recommendations register as HTML files.</td>
-<td>On the computer of whoever runs it, with Python. It is not a web application.</td>
-<td>The files it generates, in the folder you indicate. Those files <strong>contain the data</strong>.</td>
-</tr>
-<tr>
-<td>Generated board dashboards</td>
-<td>HTML files with the data embedded, meant to be sent or hosted.</td>
-<td>In the browser; no server.</td>
-<td>Nothing new: they show what they carry inside.</td>
+<td>Board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</td>
+<td>The full dashboard, the mobile dashboard and the recommendations register, generated from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register. They carry the connector embedded in JavaScript and <strong>regenerate themselves in the browser</strong> from the register stored in it or from <code>herramientas/datos/T01_registro.json</code> in the company's copy. The Python generator (<code>t01_a_panel.py</code>) is optional: it produces the same dashboards as static files to send.</td>
+<td>In the browser; the Python generator, on the computer of whoever runs it.</td>
+<td>Nothing new in the browser. The files generated with Python <strong>contain the data</strong>.</td>
 </tr>
 <tr>
 <td>Community page</td>
@@ -559,12 +553,14 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   L --> N
   N -->|Export| J["JSON / CSV&lt;br>in the folder you choose"]
   J -->|Import| N
-  J --> T["T17 (Python, on your computer)"]
-  T --> P["HTML dashboards&lt;br>with the data inside"]
+  J --> D["herramientas/datos/&lt;br>in the company's copy&lt;br>(internal server)"]
+  D --> N
+  J --> T["T17 in Python (optional,&lt;br>on your computer)"]
+  T --> P["Static HTML dashboards&lt;br>with the data inside"]
   N -. nothing .-> S
   classDef fuera fill:#0d7680,stroke:#0d7680,color:#ffffff
   classDef local fill:#f2dfce,stroke:#807973,color:#1a1817
-  class L,J,P local
+  class L,J,D,P local
 </pre></div><div class="g-fuente">Source: SEVEN-G</div></figure>
 <blockquote>
 <p><strong>Why it matters.</strong> A tool that works without a server cannot lose data on the server, requires no subscription and does not force the company to trust a third party with the custody of its initiative portfolio. In exchange, custody is yours: if the data is only in a browser, the backup is made by whoever enters it (section 3.4).</p>
@@ -572,7 +568,35 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <hr />
 <h2 id="where-the-data-you-enter-is"><span class="antetitulo">03</span>Where the data you enter is</h2>
 <h3 id="3-1-in-the-browser-not-on-the-server">3.1 In the browser, not on the server</h3>
-<p>When you open a tool for the first time, the browser copies the demonstration data into its <strong>local storage</strong> (<em>localStorage</em>), an area each browser reserves per site on the computer itself. From then on, every change you make —a new initiative, a gate decision, a risk, a calculation— is saved there, instantly and without anything travelling over the network. Each tool uses its own key:</p>
+<p>When you open a tool for the first time, the browser copies the demonstration data into its <strong>local storage</strong> (<em>localStorage</em>), an area each browser reserves per site on the computer itself. From then on, every change you make —a new initiative, a gate decision, a risk, a calculation— is saved there, instantly and without anything travelling over the network.</p>
+<p>That is the first of three possible places. The <strong>&quot;Datos: …&quot;</strong> button in the bar of each tool says which one is in use and opens the <strong>&quot;Dónde están mis datos&quot;</strong> (Where is my data) dialog to change it (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> §2.1):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What for</th>
+<th>What to know</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Only in the browser</strong> (default)</td>
+<td>Trying it out with your own data without installing anything.</td>
+<td>What this section describes: one browser, one computer; lost when the browser is cleared.</td>
+</tr>
+<tr>
+<td><strong>A JSON file on your computer</strong></td>
+<td>Serious work by one person or a small team.</td>
+<td>The tool rewrites the file on every change and reads it again when opened (Microsoft Edge or Google Chrome). Same format as &quot;Export&quot;; it can live in a synchronised folder of the company.</td>
+</tr>
+<tr>
+<td><strong>The copy of the site on the company's server</strong></td>
+<td>So that the whole company sees the same version of the portfolio.</td>
+<td>The copy carries the <code>herramientas/datos/</code> folder with each tool's file, loaded instead of the demonstration data (section 4.3). Changes are still saved in each browser or in a file; publishing a new version means replacing the file.</td>
+</tr>
+</tbody>
+</table></div>
+<p>In the browser, each tool uses its own key:</p>
 <div class="tabla"><table>
 <thead>
 <tr>
@@ -612,7 +636,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>The data belongs to one browser and one computer.</strong></td>
-<td>What you enter in Edge is not seen by Chrome, and what you enter on your laptop does not appear on another computer. There is no synchronisation, because there is no server to synchronise. To take the register to another computer, export and import it (section 3.4).</td>
+<td>What you enter in Edge is not seen by Chrome, and what you enter on your laptop does not appear on another computer. There is no synchronisation, because there is no server to synchronise. To take the register to another computer, export and import it (section 3.4), keep it in a file on your computer or use the company's copy (section 3.1).</td>
 </tr>
 <tr>
 <td><strong>It depends on the web origin.</strong></td>
@@ -676,6 +700,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </table></div>
 <p>Nothing else. There are no accounts, contact forms, newsletters or tracking pixels, and the site never contacts anyone on its own initiative (<a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a> §6.2).</p>
 <h3 id="3-4-backup-and-moving-between-computers">3.4 Backup and moving between computers</h3>
+<p>The most convenient way, in Microsoft Edge or Google Chrome, is to choose <strong>&quot;A JSON file on your computer&quot;</strong> in the &quot;Where is my data&quot; dialog: the tool saves every change to that file and reads it again when opened, so the backup makes itself and the file can live in a synchronised folder of the company. In any browser, and to take the data to another computer:</p>
 <ol>
 <li>In the tool, go to <strong>Data → Export → Full JSON</strong> (in <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>) or the equivalent export button (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>). A JSON file with all the content is downloaded.</li>
 <li>Save it where the company keeps its documents: it is the backup, the means to share it and the input of the dashboard generator (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>).</li>
@@ -782,6 +807,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <li>Serve it with any static file server: IIS, nginx, Apache, static storage in the cloud, the corporate intranet or GitHub Pages of a fork (section 4.7). It requires no module, database or special configuration; the <code>.html</code>, <code>.js</code>, <code>.json</code>, <code>.pdf</code>, <code>.docx</code> and <code>.pptx</code> files should be served with their usual content types.</li>
 <li><strong>Serve it over <code>http</code> or <code>https</code>, not as loose files.</strong> Opening the HTML files by double-clicking works, but the browser isolates the local storage of each file: the theme is not shared, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a>/T14/T15 do not see the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register, the full dashboard does not hand over to the mobile one and the code index does not load. For a local test, <code>pwsh -File SEVEN-G/build/servidor.ps1</code> and open <code>http://localhost:8765/</code>.</li>
 <li>Check the home page, a document, the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register and the example dashboard. Links are relative: the site can live at the root of the domain or in a subfolder.</li>
+<li>So that the whole company sees the same portfolio, create in the copy the folder <code>SEVEN-G/herramientas/datos/</code> with the JSON files exported by the tools you use: <code>T01_registro.json</code>, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> and <code>T15_madurez.json</code>. Served over http, the tools load them instead of the demonstration data and <strong>the board dashboard regenerates itself in the browser</strong> from <code>T01_registro.json</code> (<code>datos_t01</code> key of <code>config_panel.json</code>, already set in the example). Publishing a new version of the portfolio means replacing the file (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Document 03 &#183; SEVEN-G tools and initiative register">document 03</a> §2.1).</li>
 </ol>
 <p>What happens with your own installation compared with the public site:</p>
 <ul>
@@ -816,8 +842,8 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td><code>pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1</code> and the equivalent <code>build_*.ps1</code> scripts.</td>
 </tr>
 <tr>
-<td>Dashboard generator (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>)</td>
-<td>Python 3.11 or later with <code>uv</code>.</td>
+<td>Dashboard generator (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>), only to publish the dashboard as static files (for example, to send them): on the site, the dashboard regenerates itself in the browser.</td>
+<td>Python 3.11 or later with <code>uv</code> (optional).</td>
 <td><code>uv run python t01_a_panel.py --t01 &lt;register.json&gt; --salida &lt;folder&gt;</code> from <code>SEVEN-G/herramientas/T17_panel_consejo</code>.</td>
 </tr>
 <tr>
@@ -847,12 +873,12 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>2</td>
-<td>A register that starts with the client's data and not with the demonstration: build <code>registro.html</code> from the client's JSON. With <code>meta.datos_ilustrativos</code> absent or <code>false</code>, the &quot;example initiatives&quot; band disappears.</td>
-<td><code>pwsh -File build_registro.ps1 -Datos &lt;client.json&gt; -Salida &lt;registro.html&gt;</code> in <code>SEVEN-G/herramientas/T01_registro_iniciativas</code>.</td>
+<td>A register that starts with the client's data and not with the demonstration: in the client's copy, the folder <code>SEVEN-G/herramientas/datos/</code> with its exported <code>T01_registro.json</code> (and, if used, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> and <code>T15_madurez.json</code>); the tools load them instead of the demonstration. Alternative without a data folder: build <code>registro.html</code> from the client's JSON; with <code>meta.datos_ilustrativos</code> absent or <code>false</code> the &quot;example initiatives&quot; band disappears.</td>
+<td><code>datos/</code> folder of the copy, or <code>pwsh -File build_registro.ps1 -Datos &lt;client.json&gt; -Salida &lt;registro.html&gt;</code> in <code>SEVEN-G/herramientas/T01_registro_iniciativas</code>.</td>
 </tr>
 <tr>
 <td>3</td>
-<td>The client's board dashboard: generate it with <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> from the exported JSON, with the client's name and acronym and its own copy of <code>config_panel.json</code> (thresholds, lifecycle, links back to the site, <code>codigos</code>).</td>
+<td>The client's board dashboard regenerates itself in the browser from that <code>T01_registro.json</code> (<code>datos_t01</code> key of <code>config_panel.json</code>) or from the register stored in the browser. Only if you want to publish it as static files to send, generate it with <a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a> in Python, with the client's name and acronym and its own copy of <code>config_panel.json</code> (thresholds, lifecycle, links back to the site, <code>codigos</code>).</td>
 <td><code>uv run python t01_a_panel.py --t01 &lt;client.json&gt; --salida &lt;folder&gt; --organizacion &quot;&lt;Client&gt;&quot; --sigla &lt;CA&gt;</code></td>
 </tr>
 <tr>
@@ -919,7 +945,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 <tr>
 <td>How does a team work on the same register?</td>
-<td>With the JSON: export, share through the company's usual channel and import (replace or merge by code). There is no simultaneous editing.</td>
+<td>With the JSON: a file on your computer in a synchronised folder (every change is saved to it), the <code>herramientas/datos/</code> folder of the company's copy, which everyone sees, or export and import (replace or merge by code). There is no simultaneous editing.</td>
 </tr>
 <tr>
 <td>Can I put the site on an intranet with no internet connection?</td>
@@ -955,7 +981,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tr>
 <td><a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a></td>
 <td>AI dashboard for the board</td>
-<td>Local generator in Python; its files contain the data.</td>
+<td>Regenerates itself in the browser from the <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> register; the Python generator is optional and its files contain the data.</td>
 </tr>
 <tr>
 <td><a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html" title="Template P70 &#183; Proposal and engagement letter">P70</a></td>
@@ -976,7 +1002,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <tbody>
 <tr>
 <td><strong>03 · Tools and initiative register</strong></td>
-<td>Tool design principles (§2: no server, the company's data, navigable codes) and data map between tools (§4.1).</td>
+<td>Tool design principles (§2: no server, the company's data, navigable codes), where the tools' data lives and how to set up the company's copy (§2.1) and data map between tools (§4.1).</td>
 </tr>
 <tr>
 <td><strong>04 · Where SEVEN-G comes from and why it is open</strong></td>
@@ -1197,7 +1223,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
   seccionActual();
 
-  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D104) ---------- */
+  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D105) ---------- */
   var entrada = document.getElementById('buscar');
   var cuenta = document.getElementById('buscar-cuenta');
   var ambito = document.getElementById('buscar-ambito');

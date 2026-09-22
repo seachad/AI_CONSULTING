@@ -172,6 +172,78 @@ def vista_sin_javascript(ruta, data, aviso, titulo):
     open(ruta, "w", encoding="utf-8").write(page)
     return True
 
+# ---- Conector en el navegador (D103) ----
+# El panel lleva incrustado el conector T01 -> panel en JavaScript (t01_a_panel.js, la misma correspondencia que este script) y un
+# arranque que, sin Python: (1) si en este navegador hay un registro T01 propio (mismo origen, clave de localStorage de T01), lo
+# convierte y lo muestra; (2) si no, servido por http, lee el fichero de la carpeta de datos de la copia de la compañia
+# (navegacion.datos_t01 de config_panel.json, ruta relativa al panel) y lo muestra; (3) «Cargar JSON» admite tambien un JSON de T01.
+# Sin nada de eso, el panel muestra los datos incrustados. La vista sin JavaScript y la huella siguen siendo las de los datos incrustados.
+MARCA_CONECTOR = "data-conector-t17"
+JS_ARRANQUE_CONECTOR = r"""
+(function(){
+  "use strict";
+  var CFG = __CONFIG__, MOVIL = __MOVIL__, RUTA_T01 = __RUTA_T01__;
+  var LS_T01 = "seveng-t01-datos-v1", LS_ORIGEN = "seveng-t01-datos-origen-v1", LS_T14 = "seveng-t14-datos-v1";
+  if (typeof SevengT17 === "undefined" || typeof DATA === "undefined") return;
+  var V = DATA.meta.version_panel, COMPLETO = DATA.meta.panel_completo, ORG0 = DATA.meta.organizacion || "", FECHA0 = DATA.meta.generado || "";
+  var setDataOriginal = (!MOVIL && typeof setData === "function") ? setData : null;
+  function ls(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function fecha(f){ return f ? String(f).split("-").reverse().join("-") : ""; }
+  function texto(el, de, a){ if (!el || !de) return; el.childNodes.forEach(function(n){ if (n.nodeType === 3 && n.nodeValue.indexOf(de) >= 0) n.nodeValue = n.nodeValue.split(de).join(a); else if (n.nodeType === 1) texto(n, de, a); }); }
+  function nota(etiqueta, d){
+    var n = document.getElementById("conector-t17-nota");
+    if (!n) { n = document.createElement("div"); n.id = "conector-t17-nota"; n.setAttribute("role", "status");
+      n.style.cssText = "margin:0;padding:8px 16px;font:600 13px/1.4 system-ui,'Segoe UI',Arial,sans-serif;background:#0d7680;color:#fff";
+      var h = document.querySelector("header"); if (h && h.parentNode) h.parentNode.insertBefore(n, h.nextSibling); else document.body.insertBefore(n, document.body.firstChild); }
+    n.textContent = "Panel regenerado en el navegador · " + etiqueta + " · corte " + fecha(d.meta.generado) + " · " + d.casos.length + " casos" + (d.meta.demo ? " · datos ficticios" : "");
+  }
+  function textos(d){
+    var org = d.meta.organizacion || "", tx = d.meta.textos || {};
+    if (ORG0 && org && ORG0 !== org) { document.title = document.title.split(ORG0).join(org); texto(document.querySelector("header"), ORG0, org); texto(document.querySelector(".brand"), ORG0, org); var b = document.querySelector(".brand"); if (b && b.title) b.title = org; }
+    if (!MOVIL) {
+      var ban = document.querySelector("details.banner"); if (ban && tx.aviso_previo) ban.innerHTML = ban.innerHTML.replace(/(<\/summary>)[\s\S]*?(?=<b>Aviso\.<\/b>)/, "$1" + tx.aviso_previo);
+      var f = document.querySelector("footer"); if (f && tx.pie) f.innerHTML = tx.pie;
+    } else { var al = document.getElementById("aviso-legal"); if (al) al.innerHTML = al.innerHTML.replace(/(<\/summary>)[\s\S]*$/, "$1" + (d.meta.demo ? SevengT17.AVISO_LEGAL : SevengT17.AVISO_LEGAL_DATOS_PROPIOS));
+      if (FECHA0 && d.meta.generado && FECHA0 !== d.meta.generado) texto(document.querySelector("header"), fecha(FECHA0), fecha(d.meta.generado)); }
+  }
+  function aplicar(t01, etiqueta){
+    var d = SevengT17.convertir(t01, {config: CFG});
+    try { var t14 = JSON.parse(ls(LS_T14) || "null"); var b = t14 && SevengT17.bloqueIndice(t14); if (b) d.indice = b; } catch (e) {}
+    try { var md = SevengT17.bloqueMadurez && SevengT17.bloqueMadurez(t01); if (md) d.madurez = md; } catch (e) {}
+    if (MOVIL) { DATA = normalize(d); DATA.meta.version_panel = DATA.meta.version_panel || V; DATA.meta.panel_completo = DATA.meta.panel_completo || COMPLETO; CASES = DATA.casos; RES = new WeakMap(); HIS = new WeakMap(); fillCompara(); render(); }
+    else if (setDataOriginal) setDataOriginal(d, "datos: " + etiqueta);
+    textos(d); nota(etiqueta, d);
+  }
+  if (setDataOriginal) { setData = function(obj, label){ if (SevengT17.esRegistroT01(obj)) { try { aplicar(obj, (label || "JSON de T01") + " (registro T01 convertido en el navegador)"); } catch (e) { alert("No se ha podido convertir el registro T01: " + e.message); } return; } setDataOriginal(obj, label); }; }
+  var origen = null, local = null;
+  try { origen = JSON.parse(ls(LS_ORIGEN) || "null"); } catch (e) {}
+  if (origen && origen.origen && origen.origen !== "demo") { try { local = JSON.parse(ls(LS_T01) || "null"); } catch (e) {} }
+  if (SevengT17.esRegistroT01(local)) {
+    try { aplicar(local, "registro T01 de este navegador (" + (origen.origen === "fichero" ? "fichero " + (origen.fichero || "") : origen.origen === "servidor" ? "versión de la compañía" : "guardado solo en este navegador") + ")"); return; } catch (e) { console.error(e); }
+  }
+  if (RUTA_T01 && /^https?:$/.test(location.protocol)) {
+    fetch(RUTA_T01, {cache: "no-store"}).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){ if (SevengT17.esRegistroT01(j)) aplicar(j, "registro T01 del servidor de la compañía (" + RUTA_T01.split("/").pop() + ")"); }).catch(function(){});
+  }
+})();
+"""
+
+
+def conector_en_navegador(ruta, js_conector, config, movil=False):
+    """Incrusta (o sustituye) en un panel ya generado el conector en JavaScript y su arranque. No cambia los datos ni la huella.
+    config: contenido de config_panel.json sin comentarios (navegacion.datos_t01 = ruta relativa al panel del registro T01 de la
+    copia de la compañia; sin esa clave, el panel solo se regenera desde el navegador o con «Cargar JSON»)."""
+    page = open(ruta, encoding="utf-8").read()
+    page = re.sub(r"<script " + MARCA_CONECTOR + r"(?:-arranque)?>.*?</script>\s*", "", page, flags=re.S)
+    ruta_t01 = ((config or {}).get("navegacion") or {}).get("datos_t01")
+    arranque = (JS_ARRANQUE_CONECTOR.replace("__CONFIG__", json.dumps(config or {}, ensure_ascii=False)).replace("__MOVIL__", "true" if movil else "false")
+                .replace("__RUTA_T01__", json.dumps(ruta_t01, ensure_ascii=False)))
+    bloque = f"<script {MARCA_CONECTOR}>\n{js_conector}\n</script>\n<script {MARCA_CONECTOR}-arranque>{arranque}</script>\n"
+    assert "</body>" in page, f"no se encuentra </body> en {ruta}"
+    page = page.replace("</body>", bloque + "</body>", 1)
+    open(ruta, "w", encoding="utf-8").write(page)
+    return True
+
+
 def pagina_registro(p, panel, anclas, footer_prefijo="", footer_sufijo="", footer=None):
     """HTML del registro de recomendaciones con la plantilla de demo_lib.
     p: dict con slug, industria, grupo, consejo, hoy_txt, sesiones[], recs[] (id, sesion, ambito, texto, destinatario, estado, fecha,

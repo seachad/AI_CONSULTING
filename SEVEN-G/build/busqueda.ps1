@@ -1,10 +1,10 @@
 <#
 .SYNOPSIS
-  Genera el índice de búsqueda de términos de todo el sitio (D104): SEVEN-G/html/<idioma>/busqueda.json
+  Genera el índice de búsqueda de términos de todo el sitio (D105): SEVEN-G/html/<idioma>/busqueda.json
 
 .DESCRIPTION
   El buscador de términos de la barra de cada página busca «en esta página» (sobre el propio documento, sin índice) o «en todas
-  las páginas» (D104). Para lo segundo hace falta el texto de todas las páginas publicadas: este script lo extrae, en cada
+  las páginas» (D105). Para lo segundo hace falta el texto de todas las páginas publicadas: este script lo extrae, en cada
   compilación, de los HTML ya generados de SEVEN-G, SPHERES y SPAD (documentos, plantillas, módulos del curso e índices de las
   bibliotecas; no las carpetas _trabajo ni _legacy, que no se publican, ni las páginas sin la barra de los documentos, como la
   entrada ligera o las herramientas), sección por sección (h2 y h3 con su id) y lo escribe en SEVEN-G/html/<idioma>/busqueda.json.

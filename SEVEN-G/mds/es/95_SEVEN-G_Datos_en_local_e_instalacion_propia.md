@@ -41,9 +41,8 @@ El sitio es un **conjunto de ficheros estáticos**: páginas HTML, PDF, plantill
 | Pieza | Qué es | Dónde se ejecuta | Qué guarda y dónde |
 |---|---|---|---|
 | Documentos, plantillas y curso | Páginas HTML generadas desde Markdown, con su PDF; plantillas también en Word. | En el navegador; los PDF y los Word se descargan. | Nada. Solo preferencias de lectura (tema, tamaño de texto, historial de páginas visitadas) en el almacenamiento local del navegador. |
-| Herramientas T01, T11, T14 y T15 | **Un solo fichero HTML** cada una, con la aplicación completa y unos datos de demostración ficticios incrustados. | Íntegramente en el navegador. No necesitan servidor: funcionan también abriendo el fichero desde el disco. | **Los datos que introduce, en el almacenamiento local de su navegador** (sección 3). Exportan e importan JSON y CSV. |
-| Generador del panel del consejo (T17) | Un programa en Python que lee el JSON exportado por T01 y **genera** el panel completo, el panel móvil y el registro de recomendaciones como ficheros HTML. | En el ordenador de quien lo ejecuta, con Python. No es una aplicación web. | Los ficheros que genera, en la carpeta que se le indique. Esos ficheros **contienen los datos**. |
-| Paneles del consejo generados | Ficheros HTML con los datos incrustados, pensados para enviarse o alojarse. | En el navegador; sin servidor. | Nada nuevo: muestran lo que llevan dentro. |
+| Herramientas T01, T11, T14 y T15 | **Un solo fichero HTML** cada una, con la aplicación completa y unos datos de demostración ficticios incrustados. | Íntegramente en el navegador. No necesitan servidor: funcionan también abriendo el fichero desde el disco. | **Los datos que introduce, donde usted elija con el botón «Datos: …» de su barra**: solo en su navegador (por defecto), en un fichero JSON de su equipo o, en una copia del sitio en el servidor de la compañía, en la carpeta `herramientas/datos/` (sección 3). Exportan e importan JSON y CSV. |
+| Panel del consejo (T17) | El panel completo, el panel móvil y el registro de recomendaciones, generados a partir del registro T01. Llevan incrustado el conector en JavaScript y **se regeneran solos en el navegador** con el registro guardado en él o con `herramientas/datos/T01_registro.json` de la copia de la compañía. El generador en Python (`t01_a_panel.py`) es opcional: produce los mismos paneles como ficheros estáticos para enviarlos. | En el navegador; el generador en Python, en el ordenador de quien lo ejecuta. | Nada nuevo en el navegador. Los ficheros generados con Python **contienen los datos**. |
 | Página de comunidad | Incidencias y peticiones de mejora del marco, con votos. | En el navegador; **es la única página que envía algo**: el texto que usted escribe, a un repositorio público de GitHub a través de un intermediario. | El identificador que elige, en su navegador. Lo enviado queda público en GitHub (sección 3.3). |
 | Índice de códigos («Buscador de documentos», «Citados aquí») | Un fichero JavaScript generado con los destinos de todos los códigos del marco. | En el navegador. | Nada. |
 | Índice de búsqueda de términos («Todo el sitio» en el buscador de la barra) | Un fichero JSON generado con el texto de todas las páginas publicadas, que el navegador descarga solo la primera vez que se elige buscar en todo el sitio. | En el navegador: la búsqueda se hace ahí. | Nada. |
@@ -56,12 +55,14 @@ flowchart LR
   L --> N
   N -->|Exportar| J["JSON / CSV<br>en la carpeta que elija"]
   J -->|Importar| N
-  J --> T["T17 (Python, en su equipo)"]
-  T --> P["Paneles HTML<br>con los datos dentro"]
+  J --> D["herramientas/datos/<br>en la copia de la compañía<br>(servidor interno)"]
+  D --> N
+  J --> T["T17 en Python (opcional,<br>en su equipo)"]
+  T --> P["Paneles HTML estáticos<br>con los datos dentro"]
   N -. nada .-> S
   classDef fuera fill:#0d7680,stroke:#0d7680,color:#ffffff
   classDef local fill:#f2dfce,stroke:#807973,color:#1a1817
-  class L,J,P local
+  class L,J,D,P local
 ```
 
 > **Por qué importa.** Una herramienta que funciona sin servidor no puede perder datos en el servidor, no exige contratar nada y no obliga a la compañía a fiarse de un tercero para custodiar su cartera de iniciativas. A cambio, la custodia es suya: si los datos solo están en un navegador, la copia de seguridad la hace quien los introduce (sección 3.4).
@@ -72,7 +73,17 @@ flowchart LR
 
 ### 3.1 En el navegador, no en el servidor
 
-Cuando abre una herramienta por primera vez, el navegador copia los datos de demostración a su **almacenamiento local** (*localStorage*), una zona que cada navegador reserva por sitio en el propio equipo. Desde ese momento, cada cambio que hace —una iniciativa nueva, una decisión de puerta, un riesgo, un cálculo— se guarda ahí, al instante y sin que nada viaje por la red. Cada herramienta usa su propia clave:
+Cuando abre una herramienta por primera vez, el navegador copia los datos de demostración a su **almacenamiento local** (*localStorage*), una zona que cada navegador reserva por sitio en el propio equipo. Desde ese momento, cada cambio que hace —una iniciativa nueva, una decisión de puerta, un riesgo, un cálculo— se guarda ahí, al instante y sin que nada viaje por la red.
+
+Ese es el primero de los tres lugares posibles. El botón **«Datos: …»** de la barra de cada herramienta dice cuál está en uso y abre el diálogo **«Dónde están mis datos»** para cambiarlo (documento 03 §2.1):
+
+| Dónde | Para qué | Qué hay que saber |
+|---|---|---|
+| **Solo en el navegador** (por defecto) | Probar con datos propios sin instalar nada. | Es lo que describe esta sección: un navegador, un equipo; se pierde al limpiar el navegador. |
+| **Un fichero JSON del equipo** | Trabajar en serio una persona o un equipo pequeño. | La herramienta reescribe el fichero con cada cambio y lo vuelve a leer al abrirla (Microsoft Edge o Google Chrome). Es el mismo formato que «Exportar»; puede estar en una carpeta sincronizada de la compañía. |
+| **La copia del sitio en el servidor de la compañía** | Que toda la compañía vea la misma versión de la cartera. | La copia lleva la carpeta `herramientas/datos/` con el fichero de cada herramienta, que se carga en lugar de los datos de ejemplo (sección 4.3). Los cambios se siguen guardando en cada navegador o en un fichero; publicar una versión nueva es sustituir el fichero. |
+
+En el navegador, cada herramienta usa su propia clave:
 
 | Herramienta | Clave del almacenamiento local |
 |---|---|
@@ -89,7 +100,7 @@ El servidor que aloja el sitio no tiene forma de recibir esos datos: no existe n
 
 | Consecuencia | Explicación |
 |---|---|
-| **Los datos son de un navegador y de un equipo.** | Lo que introduce en Edge no lo ve Chrome, y lo que introduce en su portátil no aparece en otro ordenador. No hay sincronización, porque no hay servidor que sincronice. Para llevar el registro a otro equipo, expórtelo e impórtelo (sección 3.4). |
+| **Los datos son de un navegador y de un equipo.** | Lo que introduce en Edge no lo ve Chrome, y lo que introduce en su portátil no aparece en otro ordenador. No hay sincronización, porque no hay servidor que sincronice. Para llevar el registro a otro equipo, expórtelo e impórtelo (sección 3.4), guárdelo en un fichero del equipo o use la copia de la compañía (sección 3.1). |
 | **Dependen del origen web.** | El almacenamiento local se separa por *origen* (protocolo, dominio y puerto). El registro guardado en `https://seachad.github.io` es distinto del guardado en su propia instalación, y un fichero abierto desde el disco (`file://`) tiene su propio almacenamiento, aislado. Es la razón por la que cada cliente necesita su propio origen (sección 4.5). |
 | **Borrar los datos del navegador los borra.** | Si limpia el historial y los datos de sitios, o usa una ventana privada, los datos desaparecen. La única copia duradera es el JSON exportado. |
 | **Varias personas, varios navegadores.** | Las herramientas son de un solo usuario por navegador. Un equipo que trabaja sobre el mismo registro lo hace por turnos con el JSON: una persona exporta, otra importa; T01 admite importar varios ficheros y **fusionarlos por código** (por ejemplo, un registro por área). |
@@ -110,6 +121,8 @@ Para que la afirmación anterior sea verificable, esta es la lista completa de l
 Nada más. No hay cuentas, formularios de contacto, boletines ni píxeles de seguimiento, y el sitio no contacta a nadie por iniciativa propia (documento 04 §6.2).
 
 ### 3.4 Copia de seguridad y traslado entre equipos
+
+La forma más cómoda, en Microsoft Edge o Google Chrome, es elegir **«Un fichero JSON del equipo»** en el diálogo «Dónde están mis datos»: la herramienta guarda cada cambio en ese fichero y lo vuelve a leer al abrirla, de modo que la copia de seguridad se hace sola y el fichero puede vivir en una carpeta sincronizada de la compañía. En cualquier navegador, y para llevar los datos a otro equipo:
 
 1. En la herramienta, vaya a **Datos → Exportar → JSON completo** (en T01) o al botón equivalente de exportación (T11, T14, T15). Se descarga un fichero JSON con todo el contenido.
 2. Guárdelo donde la compañía guarda sus documentos: es la copia de seguridad, el medio para compartirlo y la entrada del generador del panel (T17).
@@ -173,6 +186,7 @@ Es la opción para quien quiere el sitio en su servidor sin cambiar nada. No hac
 3. Sírvalo con cualquier servidor de ficheros estáticos: IIS, nginx, Apache, un almacenamiento estático en la nube, la intranet corporativa o GitHub Pages de un *fork* (sección 4.7). No requiere ningún módulo, base de datos ni configuración especial; conviene que los ficheros `.html`, `.js`, `.json`, `.pdf`, `.docx` y `.pptx` se sirvan con su tipo de contenido habitual.
 4. **Sírvalo por `http` o `https`, no como ficheros sueltos.** Abrir los HTML con doble clic funciona, pero el navegador aísla el almacenamiento local de cada fichero: el tema no se comparte, T11/T14/T15 no ven el registro de T01, el panel completo no cede el paso al móvil y el índice de códigos no se carga. Para probar en local basta `pwsh -File SEVEN-G/build/servidor.ps1` y abrir `http://localhost:8765/`.
 5. Compruebe la portada, un documento, el registro T01 y el panel de ejemplo. Los enlaces son relativos: el sitio puede vivir en la raíz del dominio o en una subcarpeta.
+6. Para que toda la compañía vea la misma cartera, cree en la copia la carpeta `SEVEN-G/herramientas/datos/` con los JSON exportados por las herramientas que use: `T01_registro.json`, `T11_calculadora.json`, `T14_indice.json` y `T15_madurez.json`. Servidas por http, las herramientas los cargan en lugar de los datos de ejemplo y **el panel del consejo se regenera solo en el navegador** con `T01_registro.json` (clave `datos_t01` de `config_panel.json`, ya puesta en el ejemplo). Publicar una versión nueva de la cartera es sustituir el fichero (documento 03 §2.1).
 
 Lo que ocurre con la instalación propia respecto al sitio público:
 
@@ -189,7 +203,7 @@ Para cambiar textos, añadir la marca de la consultora, traducir o adaptar plant
 | Documentos, plantillas, curso, índice de la biblioteca e índice de códigos (HTML, PDF, Word) | PowerShell 7 y Microsoft Edge. | `pwsh -File SEVEN-G/build/build.ps1` (todo) · `-Metodologias SEVEN-G` · `-Filter '03_*.md'` (un documento) · `-SinPdf` |
 | Cursos en presentación (PPTX) y su PDF | PowerShell 7; PowerPoint solo para exportar el PDF (opcional). | Lo ejecuta `build.ps1`. |
 | Herramientas T01, T11, T14 y T15 | PowerShell 7 (Edge para los cálculos desde T01 de T14 y T15). | `pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1` y los `build_*.ps1` equivalentes. |
-| Generador del panel (T17) | Python 3.11 o superior con `uv`. | `uv run python t01_a_panel.py --t01 <registro.json> --salida <carpeta>` desde `SEVEN-G/herramientas/T17_panel_consejo`. |
+| Generador del panel (T17), solo para publicar el panel como ficheros estáticos (por ejemplo, para enviarlos): en el sitio, el panel se regenera solo en el navegador. | Python 3.11 o superior con `uv` (opcional). | `uv run python t01_a_panel.py --t01 <registro.json> --salida <carpeta>` desde `SEVEN-G/herramientas/T17_panel_consejo`. |
 | Pruebas de coherencia antes de publicar | PowerShell 7, Edge; `uv` para comprobar el panel. | `pwsh -File SEVEN-G/build/verificar_coherencia.ps1` |
 
 Reglas del generador que conviene conocer: el Markdown es la fuente de verdad y los HTML, PDF y Word nunca se editan a mano; cada documento existe en español e inglés; las convenciones del Markdown (portada, cifras, figuras, Mermaid, recuadro «Lo esencial») están en la cabecera de `build.ps1`; y toda obra derivada debe indicar los cambios y conservar el aviso legal (documento 93 §8 y §11.9).
@@ -203,8 +217,8 @@ Lista de comprobación por cliente:
 | Paso | Qué hacer | Dónde |
 |---|---|---|
 | 1 | Un origen por cliente: subdominio, dominio o puerto propio. | Servidor web. |
-| 2 | Un registro que arranque con los datos del cliente y no con la demostración: construir `registro.html` a partir del JSON del cliente. Con `meta.datos_ilustrativos` ausente o `false`, desaparece la banda de «iniciativas de ejemplo». | `pwsh -File build_registro.ps1 -Datos <cliente.json> -Salida <registro.html>` en `SEVEN-G/herramientas/T01_registro_iniciativas`. |
-| 3 | El panel del consejo del cliente: generarlo con T17 desde el JSON exportado, con el nombre y las siglas del cliente y una copia propia de `config_panel.json` (umbrales, ciclo de vida, enlaces de vuelta al sitio, `codigos`). | `uv run python t01_a_panel.py --t01 <cliente.json> --salida <carpeta> --organizacion "<Cliente>" --sigla <CA>` |
+| 2 | Un registro que arranque con los datos del cliente y no con la demostración: en la copia del cliente, la carpeta `SEVEN-G/herramientas/datos/` con su `T01_registro.json` exportado (y, si los usa, `T11_calculadora.json`, `T14_indice.json` y `T15_madurez.json`); las herramientas los cargan en lugar de la demostración. Alternativa sin carpeta de datos: construir `registro.html` a partir del JSON del cliente; con `meta.datos_ilustrativos` ausente o `false` desaparece la banda de «iniciativas de ejemplo». | Carpeta `datos/` de la copia, o `pwsh -File build_registro.ps1 -Datos <cliente.json> -Salida <registro.html>` en `SEVEN-G/herramientas/T01_registro_iniciativas`. |
+| 3 | El panel del consejo del cliente se regenera solo en el navegador desde ese `T01_registro.json` (clave `datos_t01` de `config_panel.json`) o desde el registro guardado en el navegador. Solo si quiere publicarlo como ficheros estáticos para enviarlos, genérelo con T17 en Python, con el nombre y las siglas del cliente y una copia propia de `config_panel.json` (umbrales, ciclo de vida, enlaces de vuelta al sitio, `codigos`). | `uv run python t01_a_panel.py --t01 <cliente.json> --salida <carpeta> --organizacion "<Cliente>" --sigla <CA>` |
 | 4 | Los datos del cliente, fuera del repositorio y de la carpeta publicada: los JSON exportados y los paneles generados se guardan en el repositorio documental del cliente o de la consultora, con su control de acceso. | Gestión documental. |
 | 5 | Comunidad y medición: decidir si la página de comunidad sigue apuntando al proyecto público (recomendado) y no activar ninguna medición sobre los usuarios del cliente sin su consentimiento (sección 4.3). | `comunidad/index.html`, `analitica.json`. |
 | 6 | Marca y reconocimiento: puede añadir la marca de la consultora y su adaptación, indicando los cambios y conservando la autoría y el aviso legal (documento 93 §4 y §8); no puede presentar la instalación como certificada ni como «*partner* oficial» (documento 91 §6.2). | Portada y documentos adaptados. |
@@ -237,7 +251,7 @@ Un *partner* que quiera publicar su versión adaptada puede hacer un *fork* del 
 | ¿Y GitHub, que aloja el sitio público? | GitHub entrega los ficheros del sitio y registra las peticiones como cualquier servidor web; no recibe el contenido de las herramientas, que nunca sale del navegador. |
 | ¿Se cifran los datos en el navegador? | El almacenamiento local se guarda en el perfil del navegador, con las protecciones del sistema operativo (cifrado del disco, sesión de usuario). No añade cifrado propio; por eso la copia de seguridad y el control de acceso al equipo son suyos. |
 | ¿Puedo usar las herramientas sin conexión? | Sí. Una vez descargado el fichero HTML funciona sin red. Servido desde un servidor local (`servidor.ps1`) también. |
-| ¿Cómo trabaja un equipo sobre el mismo registro? | Con el JSON: exportar, compartir por el canal habitual de la compañía e importar (sustituir o fusionar por código). No hay edición simultánea. |
+| ¿Cómo trabaja un equipo sobre el mismo registro? | Con el JSON: un fichero del equipo en una carpeta sincronizada (cada cambio se guarda en él), la carpeta `herramientas/datos/` de la copia de la compañía, que todos ven, o exportar e importar (sustituir o fusionar por código). No hay edición simultánea. |
 | ¿Puedo poner el sitio en la intranet sin conexión a internet? | Sí, con la opción A. Solo dejarán de cargarse las tipografías externas (hay tipografías de reserva) y la página de comunidad no podrá enviar ni leer incidencias. |
 | ¿Qué pasa si el autor deja de publicar el sitio? | Lo descargado sigue funcionando y sigue bajo las mismas licencias: las versiones publicadas no se pueden revocar (documento 93 §10). |
 
@@ -249,7 +263,7 @@ Un *partner* que quiera publicar su versión adaptada puede hacer un *fork* del 
 |---|---|---|
 | T01 | Registro de iniciativas | Guarda los datos en el navegador; exporta e importa el JSON completo; construcción con datos propios (`build_registro.ps1 -Datos`). |
 | T11, T14, T15 | Calculadora de valor, índice de transformación y diagnóstico de madurez | Mismo funcionamiento; leen el registro T01 del mismo navegador. |
-| T17 | Panel de IA para el consejo | Generador local en Python; sus ficheros contienen los datos. |
+| T17 | Panel de IA para el consejo | Se regenera en el navegador desde el registro T01; el generador en Python es opcional y sus ficheros contienen los datos. |
 | P70 | Propuesta y carta de encargo | Donde una consultora deja constancia de dónde se alojan la instalación y los datos del cliente. |
 
 ---
@@ -258,7 +272,7 @@ Un *partner* que quiera publicar su versión adaptada puede hacer un *fork* del 
 
 | Documento | Relación |
 |---|---|
-| **03 · Herramientas y registro de iniciativas** | Principios de diseño de las herramientas (§2: sin servidor, datos de la compañía, códigos navegables) y mapa de datos entre herramientas (§4.1). |
+| **03 · Herramientas y registro de iniciativas** | Principios de diseño de las herramientas (§2: sin servidor, datos de la compañía, códigos navegables), dónde viven los datos de las herramientas y cómo montar la copia de la compañía (§2.1) y mapa de datos entre herramientas (§4.1). |
 | **04 · De dónde viene SEVEN-G y por qué es abierto** | Qué hace y qué no hace el sitio con quien lo visita (§6.2) y historial de versiones del marco (§2.3). |
 | **90 · Guía de implantación** | Requisitos previos y plan de 90 días de una compañía. |
 | **91 · Guía para consultores** | Uso del marco por terceros, independencia y uso del nombre. |

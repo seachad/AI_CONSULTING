@@ -84,6 +84,11 @@ if ($errores.Count) { throw "Datos de T11 incoherentes:`n  " + ($errores -join "
 $html = [IO.File]::ReadAllText($plantilla)
 if (([regex]::Matches($html, '__DATOS_DEMO__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __DATOS_DEMO__' }
 $html = $html.Replace('__DATOS_DEMO__', (Compactar $Datos))
+# módulo común de datos locales (D103): se incrusta para que la herramienta siga siendo un solo fichero
+$comun = Join-Path $aqui '..\_comun\datos_locales.js'
+if (-not (Test-Path $comun)) { throw "No se encuentra $comun" }
+if (([regex]::Matches($html, '__DATOS_LOCALES__')).Count -ne 1) { throw 'La plantilla debe contener una sola vez la marca __DATOS_LOCALES__' }
+$html = $html.Replace('__DATOS_LOCALES__', [IO.File]::ReadAllText($comun))
 $html = $html.Replace('<!doctype html>', "<!doctype html>`n<!-- GENERADO por build_calculadora.ps1 desde _fuentes/calculadora.plantilla.html y $(Split-Path $Datos -Leaf). No editar a mano. -->")
 [IO.File]::WriteAllText($Salida, $html, [Text.UTF8Encoding]::new($false))
 "calculadora: $Salida ($([math]::Round((Get-Item $Salida).Length / 1KB)) KB)"

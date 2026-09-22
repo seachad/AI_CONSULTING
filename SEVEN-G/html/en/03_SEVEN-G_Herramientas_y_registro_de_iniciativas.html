@@ -210,7 +210,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transpare
 .buscar { display: flex; align-items: center; gap: 4px; }
 .barra input[type=search] { width: 120px; font-weight: 500; }
 .buscar-cuenta { min-width: 36px; font-size: 12px; color: var(--tinta-2); text-align: right; }
-/* buscador de términos en esta página o en todo el sitio (D104): selector de ámbito y lista de resultados del sitio; el «Buscador de
+/* buscador de términos en esta página o en todo el sitio (D105): selector de ámbito y lista de resultados del sitio; el «Buscador de
    documentos» (control de códigos, codigos.js) toma el ancho justo de su rótulo para que la barra quepa a 1120 px sin desplazamiento */
 .barra .ir-codigo input { width: 176px; padding: 6px 6px; }
 .barra .ir-codigo { gap: 4px; }
@@ -543,6 +543,43 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </tbody>
 </table></div>
+<h3 id="2-1-where-the-data-of-the-tools-lives">2.1 Where the data of the tools lives</h3>
+<p>The reference applications (<a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Tool T11 &#183; Value hypothesis canvas and calculator">T11</a> with <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Tool T13 &#183; Cost calculator per use case">T13</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Tool T14 &#183; Transformation index calculator">T14</a> and <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Tool T15 &#183; Maturity diagnosis">T15</a>) are published with <strong>fictitious sample data that nobody can change on the site</strong>: the site is static and has no application server or database. What each person enters is saved in one of three places, and the <strong>&quot;Data: …&quot;</strong> button in the bar of each tool says which one it is and opens the &quot;Where my data is&quot; dialog to change it:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What it is for</th>
+<th>What to know</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Only in the browser</strong> (default)</td>
+<td>Trying the tool with your own data without installing anything.</td>
+<td>Every change is saved in the local storage of that browser on that computer; nobody else sees it. It is lost if the browser is cleared and it is not available from another computer. The first time something is changed, the tool says so.</td>
+</tr>
+<tr>
+<td><strong>A JSON file on the computer</strong></td>
+<td>Real work by one person or a small team.</td>
+<td>The tool rewrites the file with every change and reads it again when opened (Microsoft Edge or Google Chrome; in other browsers, export and import by hand). The file is the same one that &quot;Export&quot; downloads: it can be copied, shared, imported into another tool or used to regenerate the board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>). It can live in a synchronised company folder.</td>
+</tr>
+<tr>
+<td><strong>A copy of the site on the company's server</strong></td>
+<td>The whole company seeing the same version of the portfolio.</td>
+<td>The whole site (documents, templates and tools) is copied to an internal server. If that copy has the folder <code>herramientas/datos/</code> with a tool's file, the tool loads it instead of the sample data. Changes are still saved in each browser or in a file; publishing a new version means replacing the file in the folder.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Why it matters.</strong> Without this rule, someone entering the public site could believe they are editing a shared portfolio, or fear that their data stays on the site. Neither happens: nothing entered leaves the computer of the person who enters it, and the only thing that can be shared is a JSON file that the company keeps wherever it decides. Principle 6 (the data belongs to the company) holds by construction.</p>
+<p><strong>How to set up the company copy.</strong></p>
+<ol>
+<li>Download the whole site (the published repository or its generated folder) and serve it <strong>over http</strong> from an internal server: any static file server will do; no database or application server is needed. HTML files opened directly (double click) work, but they do not consult the data folder.</li>
+<li>Create the folder <code>SEVEN-G/herramientas/datos/</code> and put in it the JSON files exported by the tools you use: <code>T01_registro.json</code> (initiative register), <code>T11_calculadora.json</code> (value hypothesis and costs), <code>T14_indice.json</code> (transformation index) and <code>T15_madurez.json</code> (maturity diagnosis).</li>
+<li>The board dashboard (<a href="../../herramientas/T17_panel_consejo/index.html" title="Tool T17 &#183; Board AI dashboard">T17</a>) <strong>regenerates itself in the browser</strong>: it embeds the connector and, served over http, reads <code>T01_registro.json</code> from that folder and shows it to the whole company; in each browser where someone works with <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> it shows that browser's register. No Python and nothing to install. Only if the company wants to publish the dashboard as static files (to send them by e-mail, with the no-JavaScript view) does it use the <code>t01_a_panel.py</code> generator (Python 3.11 and <code>uv</code>, optional).</li>
+<li>In each working session: export from the tool and replace the file in the folder. Whoever has changes in their browser or in their file keeps them; the &quot;Where my data is&quot; dialog shows them that the server holds a version and lets them load it.</li>
+<li>No data leaves the company: the copy sends nothing to third parties. The aggregated visit measurement (<a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Document 04 &#183; Where SEVEN-G comes from, how it differs and why it is open">document 04</a> §6.2) only acts on the public site's domains, never on an internal domain.</li>
+</ol>
 <hr />
 <h2 id="the-initiative-register"><span class="antetitulo">03</span>The initiative register</h2>
 <h3 id="3-1-the-crm-analogy">3.1 The CRM analogy</h3>
@@ -1187,9 +1224,15 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>Nothing.</td>
 <td>Dashboard configuration (thresholds, lifecycle, navigation) and the generated dashboards.</td>
 </tr>
-<tr>
-<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></strong>, <strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
-<td>They are views of the register itself.</td>
+<tr id="cod-t06">
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></strong></td>
+<td>It is a view of the register itself. For the <strong>Excel of the use case</strong> (matrix, register, proposed mitigation and contingency plans and typical risks to consider) it reads, besides the initiative's risks, its classification (technology, exposure, autonomy, regulatory classification, ambition, intensity and providers), its impact assessments, its systems and its owners.</td>
+<td>Nothing: the Excel is a downloaded file with the generation date and time; whatever the team decides in it is recorded on the &quot;Risks&quot; tab.</td>
+<td>The catalogue of typical risks with the applicability rules and the mitigation and contingency proposals per RT code (<code>catalogo_riesgos.json</code>; the text of each typical risk is read from <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> §9 when the tool is generated).</td>
+</tr>
+<tr id="cod-t18">
+<td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
+<td>It is a view of the register itself.</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -1282,10 +1325,10 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 </tr>
 </thead>
 <tbody>
-<tr id="cod-t06">
+<tr id="cod-t06-2">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/riesgos" title="Tool T06 &#183; Risk matrix and register">T06</a></strong></td>
 <td>Risk matrix and register</td>
-<td>Probability and impact assessment, heat map, inherent and residual risk, controls and their effectiveness, response, contingency and acceptance by the body for its level, with observations from the methodology (Critical without board approval, High without contingency, acceptance expired or by a lower body, review overdue) and CSV export for spreadsheets.</td>
+<td>Probability and impact assessment, heat map, inherent and residual risk, controls and their effectiveness, response, contingency and acceptance by the body for its level, with observations from the methodology (Critical without board approval, High without contingency, acceptance expired or by a lower body, review overdue), CSV export for spreadsheets and <strong>Excel of the use case</strong>: matrix, register, mitigation and contingency plans proposed from the catalogue of typical risks in <a href="33_SEVEN-G_Metodologia_de_riesgos_de_IA.html" title="Document 33 &#183; AI risk methodology">document 33</a> §9 and applicable typical risks not registered, to include or discard with a reason.</td>
 <td>Phase 3, phase 6, portfolio</td>
 <td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> module (&quot;Risks&quot; view and record tab)</td>
 <td>33</td>
@@ -1436,7 +1479,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
 <td>1</td>
 <td>Available. Fed from <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Tool T01 &#183; Initiative register">T01</a> through the connector <code>herramientas/T17_panel_consejo</code>: register (JSON) plus <code>config_panel.json</code> (indicator thresholds and lifecycle) → dashboard JSON → full and mobile dashboard, with a funnel and time per stage as in a CRM</td>
 </tr>
-<tr id="cod-t18">
+<tr id="cod-t18-2">
 <td><strong><a href="../../herramientas/T01_registro_iniciativas/registro.html#/consejo" title="Tool T18 &#183; Board recommendations register">T18</a></strong></td>
 <td>Board recommendations register</td>
 <td>Recommendations with persistent identifier, status, evidence and assessment.</td>
@@ -1780,7 +1823,7 @@ ul.fuentes-externas li span { color: var(--tinta-2); }
   window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
   seccionActual();
 
-  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D104) ---------- */
+  /* ---------- Búsqueda de términos: en esta página o en todo el sitio (D105) ---------- */
   var entrada = document.getElementById('buscar');
   var cuenta = document.getElementById('buscar-cuenta');
   var ambito = document.getElementById('buscar-ambito');

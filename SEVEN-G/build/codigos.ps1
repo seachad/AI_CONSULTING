@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Genera el índice de códigos del sitio y el control «Ir a código» (D88), rotulado «Buscador de documentos» desde D104: SEVEN-G/html/<idioma>/codigos.js
+  Genera el índice de códigos del sitio y el control «Ir a código» (D88), rotulado «Buscador de documentos» desde D105: SEVEN-G/html/<idioma>/codigos.js
 
 .DESCRIPTION
   Los códigos del marco (documentos 00–94, plantillas Pnn, herramientas Tnn, módulos del curso Mnn, puertas G0–G7 y R6,
