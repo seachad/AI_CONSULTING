@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="salmon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D&#243;nde est&#225;n sus datos y c&#243;mo instalar SEVEN-G en un servidor propio</title>
+<script>
+  try { var t = localStorage.getItem('seveng-tema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* SEVEN-G · Estilo de periódico económico en tonos salmón
+   Temas: salmon (por defecto), claro (salmón claro), noche. El PDF usa siempre "salmon". */
+:root, :root[data-theme="salmon"] {
+  --papel: #fbe2cd;
+  --papel-2: #f3cfb2;
+  --papel-3: #eabd9a;
+  --tinta: #2f2b28;
+  --tinta-2: #564d47;
+  --tinta-3: #71645b;
+  --negro: #1a1817;
+  --regla: #c9a78d;
+  --regla-2: #e7c6ab;
+  --claret: #990f3d;
+  --oxford: #0f5499;
+  --teal: #0d7680;
+  --velvet: #593380;
+  --resaltado: #ffc35c;
+  --escala-texto: 1;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="claro"] {
+  --papel: #fff1e5; --papel-2: #f2dfce; --papel-3: #ead2bd;
+  --tinta: #33302e; --tinta-2: #5f5955; --tinta-3: #766d66; --negro: #1a1817;
+  --regla: #ccc1b7; --regla-2: #e3d3c4; --resaltado: #ffd27a;
+}
+:root[data-theme="noche"] {
+  --papel: #262a33; --papel-2: #30353f; --papel-3: #3a404b;
+  --tinta: #f2e6dc; --tinta-2: #cdbfb3; --tinta-3: #a3978d; --negro: #fff1e5;
+  --regla: #4c525d; --regla-2: #393e48;
+  --claret: #ff7a9e; --oxford: #6ea8ee; --teal: #4fc6c1; --velvet: #bb94e6; --resaltado: #a8741f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--papel); }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: calc(18px * var(--escala-texto));
+  line-height: 1.62;
+}
+a { color: var(--oxford); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ---------- Portada ---------- */
+.portada { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.cabecera {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 24px;
+  padding: 22px 0 12px; border-bottom: 4px solid var(--negro); position: relative;
+}
+.cabecera:after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; border-bottom: 1px solid var(--negro); }
+.marca { font: 800 30px/1 var(--serif); letter-spacing: .04em; color: var(--negro); display: flex; align-items: center; gap: 10px; }
+.marca i { width: 12px; height: 12px; background: var(--claret); display: inline-block; }
+.cabecera-dato { font: 500 13px/1.3 var(--sans); color: var(--tinta-2); text-align: right; }
+.portada-cuerpo { padding: 56px 0 40px; }
+.antetitulo { font: 700 13px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 16px; }
+.portada h1 { font: 600 clamp(38px, 6.4vw, 78px)/1.02 var(--serif); letter-spacing: -.015em; color: var(--negro); margin: 0 0 22px; max-width: 980px; }
+.entradilla { font: 400 clamp(19px, 2.2vw, 24px)/1.45 var(--sans); color: var(--tinta-2); max-width: 820px; margin: 0 0 26px; }
+.firma { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); display: flex; flex-wrap: wrap; gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--regla); max-width: 820px; }
+.firma b { color: var(--negro); font-weight: 700; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 44px 0 0; border-top: 1px solid var(--negro); }
+.cifra { padding: 16px 18px 6px 0; }
+.cifra + .cifra { padding-left: 18px; border-left: 1px solid var(--regla); }
+.cifra b { display: block; font: 600 clamp(44px, 5vw, 60px)/1 var(--serif); color: var(--claret); }
+.cifra:nth-child(2) b { color: var(--oxford); }
+.cifra:nth-child(3) b { color: var(--teal); }
+.cifra:nth-child(4) b { color: var(--velvet); }
+.cifra span { display: block; font: 500 14px/1.35 var(--sans); color: var(--tinta-2); margin-top: 8px; }
+@media (max-width: 560px) { .cifra + .cifra { padding-left: 0; border-left: 0; border-top: 1px solid var(--regla); } }
+
+/* ---------- Índice ---------- */
+.indice { max-width: 1120px; margin: 8px auto 0; padding: 0 16px; }
+.indice-in { border-top: 4px solid var(--negro); padding-top: 12px; }
+.indice h2 { all: unset; display: block; font: 700 13px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 12px; }
+.indice ol { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 40px; }
+.indice li { break-inside: avoid; border-bottom: 1px solid var(--regla-2); }
+.indice a { display: grid; grid-template-columns: 34px 1fr; padding: 8px 0; color: var(--tinta); text-decoration: none; font: 500 16px/1.35 var(--sans); }
+.indice a span { font: 600 17px/1.2 var(--serif); color: var(--claret); }
+.indice a:hover { color: var(--oxford); }
+
+/* ---------- Cuerpo ---------- */
+.contenido { display: grid; grid-template-columns: 1fr min(760px, calc(100% - 32px)) 1fr; padding-bottom: 72px; }
+.contenido > * { grid-column: 2; }
+.contenido > .tabla, .contenido > .grafico, .contenido > pre {
+  grid-column: 1 / -1; width: calc(100% - 32px); max-width: 1080px; justify-self: center;
+}
+h2 {
+  font: 600 clamp(28px, 3.4vw, 38px)/1.15 var(--serif); color: var(--negro); letter-spacing: -.01em;
+  margin: 72px 0 18px; padding-top: 14px; border-top: 4px solid var(--negro); scroll-margin-top: 16px;
+}
+h2 .antetitulo { display: block; font-size: 13px; margin: 0 0 10px; }
+h3 { font: 600 24px/1.25 var(--serif); color: var(--negro); margin: 40px 0 10px; }
+h4 { font: 700 15px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-2); margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--claret); }
+strong { font-weight: 700; color: var(--negro); }
+hr { display: none; }
+
+blockquote { margin: 28px 0 32px; padding: 4px 0 4px 26px; border-left: 4px solid var(--claret); }
+blockquote p {
+  font: 400 clamp(23px, 2.8vw, 31px)/1.28 var(--serif);
+  color: var(--negro);
+  margin: 0;
+}
+blockquote p strong {
+  font-weight: 700;
+  color: var(--negro);
+}
+
+code { font: 500 .85em/1 Consolas, "Cascadia Mono", monospace; background: var(--papel-2); padding: 2px 5px; }
+/* en pantallas estrechas, una URL o una fórmula larga se parte en vez de salirse de la página */
+main a, :not(pre) > code { overflow-wrap: anywhere; }
+:not(pre) > code { line-height: 1.5; }
+pre { background: var(--papel-2); padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.4; border-top: 1px solid var(--negro); }
+pre code { background: none; padding: 0; }
+
+/* Tablas */
+.tabla { overflow-x: auto; margin: 22px 0 30px; }
+table { border-collapse: collapse; width: 100%; font: 400 15.5px/1.45 var(--sans); }
+thead th {
+  text-align: left; vertical-align: bottom; font: 700 13px/1.3 var(--sans); color: var(--tinta-2);
+  padding: 10px 14px 8px 0; border-bottom: 2px solid var(--negro);
+}
+td { padding: 11px 14px 11px 0; border-bottom: 1px solid var(--regla); vertical-align: top; }
+tr:has(td:nth-child(3)) td:first-child { font-weight: 700; color: var(--negro); }
+tbody tr:hover td { background: color-mix(in srgb, var(--papel-2) 60%, transparent); }
+
+/* ---------- Gráficos ---------- */
+.grafico { margin: 34px 0 40px; border-top: 1px solid var(--negro); padding-top: 12px; }
+.g-titulo { font: 700 19px/1.3 var(--sans); color: var(--negro); margin: 0 0 2px; }
+.g-sub { font: 400 15px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 18px; }
+.g-fuente { font: 400 13px/1.4 var(--sans); color: var(--tinta-3); margin-top: 12px; }
+.g-lienzo { overflow-x: auto; }
+.g-lienzo svg { display: block; width: 100%; height: auto; }
+.g-lienzo.ancho svg { min-width: 720px; }
+.g-lienzo pre.mermaid { background: none; border: 0; padding: 0; display: flex; justify-content: center; min-width: 620px; margin: 0; }
+.g-lienzo pre.mermaid svg { width: auto; height: auto; max-width: 100%; max-height: 620px; }
+
+/* Clases para textos y trazos de SVG que dependen del tema */
+.sv-t { fill: var(--tinta); font-family: var(--sans); }
+.sv-t2 { fill: var(--tinta-2); font-family: var(--sans); }
+.sv-t3 { fill: var(--tinta-3); font-family: var(--sans); }
+.sv-serif { font-family: var(--serif); }
+.sv-panel { fill: var(--papel-2); }
+.sv-caja { fill: var(--papel); stroke: var(--oxford); }
+.sv-regla { stroke: var(--tinta-3); fill: none; }
+.sv-flecha { fill: var(--tinta-2); }
+.sv-blanco { fill: #fff; font-family: var(--sans); }
+
+/* Esferas: diagrama + leyenda */
+.dos { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 1fr; } }
+.leyenda { display: grid; gap: 14px; font-family: var(--sans); }
+.leyenda div { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--regla-2); }
+.leyenda i { width: 16px; height: 16px; margin-top: 3px; }
+.leyenda b { display: block; font-size: 16px; color: var(--negro); }
+.leyenda span { font-size: 14.5px; color: var(--tinta-2); line-height: 1.45; }
+
+/* Espectro */
+.espectro { font-family: var(--sans); }
+.espectro-in { min-width: 640px; }
+.eje { display: flex; justify-content: space-between; font: 700 12px/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); }
+.pista { height: 8px; margin: 40px 0 0; background: linear-gradient(90deg, #9bb5cf, var(--oxford) 28%, var(--teal) 60%, var(--velvet)); }
+.perfiles { position: relative; height: 110px; }
+.perfil { position: absolute; top: -16px; transform: translateX(-50%); width: 150px; text-align: center; }
+.perfil i { display: block; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; background: var(--papel); border: 5px solid var(--c); }
+.perfil b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--negro); }
+.perfil span { font-size: 13px; color: var(--tinta-3); }
+.falsa { margin-top: 10px; border-top: 2px solid var(--claret); background: color-mix(in srgb, var(--claret) 7%, transparent); padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.falsa .ic { width: 34px; height: 34px; background: var(--claret); color: #fff; display: grid; place-items: center; font: 800 18px/1 var(--serif); }
+.falsa b { color: var(--claret); font-size: 16px; }
+.falsa p { margin: 2px 0 0; font: 400 15px/1.45 var(--sans); color: var(--tinta-2); }
+:root[data-theme="noche"] .falsa .ic { color: #1a1817; }
+
+
+/* ---------- Barra de herramientas ---------- */
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.barra { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--regla); }
+.barra-in { position: relative; max-width: 1120px; margin: 0 auto; padding: 8px 16px; display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; font: 500 14px/1.2 var(--sans); white-space: nowrap; overflow-x: auto; }
+.barra-marca { display: flex; align-items: center; gap: 7px; font: 800 17px/1 var(--serif); letter-spacing: .04em; color: var(--negro); text-decoration: none; }
+.barra-marca i { width: 9px; height: 9px; background: var(--claret); }
+.barra-seccion { flex: 1 1 160px; min-width: 0; color: var(--tinta-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn, .barra select, .barra input[type=search], .panel-indice input {
+  font: 600 13px/1 var(--sans); color: var(--tinta); background: var(--papel); border: 1px solid var(--regla); border-radius: 2px; padding: 7px 10px; height: 32px;
+}
+.btn { cursor: pointer; }
+.btn-enlace { text-decoration: none; display: inline-flex; align-items: center; }
+.btn-nav { width: 32px; min-width: 32px; padding: 0; display: inline-grid; place-items: center; font-size: 15px; color: var(--tinta); }
+.btn-nav:disabled { opacity: .4; cursor: default; }
+.btn:hover, .barra select:hover { border-color: var(--tinta-2); }
+.btn:focus-visible, .barra select:focus-visible, .barra input:focus-visible, .panel-indice input:focus-visible, .idioma a:focus-visible { outline: 2px solid var(--oxford); outline-offset: 1px; }
+.btn-icono { width: 32px; padding: 0; }
+.buscar { display: flex; align-items: center; gap: 4px; }
+.barra input[type=search] { width: 150px; font-weight: 500; }
+.buscar-cuenta { min-width: 44px; font-size: 12px; color: var(--tinta-2); text-align: right; }
+.idioma { display: flex; border: 1px solid var(--regla); border-radius: 2px; overflow: hidden; }
+.idioma a, .idioma span { font: 700 12px/30px var(--sans); padding: 0 9px; color: var(--tinta-2); text-decoration: none; letter-spacing: .05em; }
+.idioma .activo { background: var(--negro); color: var(--papel); }
+.idioma span.no-disponible { opacity: .45; }
+@media (max-width: 760px) {
+  .barra-seccion { display: none; }
+  .barra input[type=search] { width: 112px; }
+  .buscar-cuenta { min-width: 30px; }
+  .idioma a, .idioma span { padding: 0 6px; }
+}
+mark.hallazgo { background: var(--resaltado); color: inherit; padding: 0 1px; border-radius: 2px; }
+mark.hallazgo.actual { background: var(--claret); color: #fff; }
+:root[data-theme="noche"] mark.hallazgo.actual { color: #1a1817; }
+
+/* ---------- Índice rápido ---------- */
+.velo { position: fixed; inset: 0; background: rgba(26, 24, 23, .35); z-index: 59; }
+/* los paneles laterales esperan fuera de la pantalla: sin este recorte ensanchan la página en el móvil y dejan un desplazamiento horizontal vacío.
+   «clip» (y no «hidden») para no anular la barra fija ni el desplazamiento vertical */
+html { overflow-x: clip; }
+.panel-indice { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); z-index: 60; background: var(--papel); border-left: 4px solid var(--negro);
+  transform: translateX(105%); transition: transform .2s ease; display: flex; flex-direction: column; font-family: var(--sans); visibility: hidden; }
+.panel-indice.abierto { transform: none; visibility: visible; }
+.panel-cab { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px 10px; font-size: 13px; letter-spacing: .09em; text-transform: uppercase; }
+.panel-indice input { margin: 0 16px 10px; font-weight: 500; }
+.panel-indice ol { list-style: none; margin: 0; padding: 0 16px 24px; overflow-y: auto; }
+.panel-indice li a { display: grid; grid-template-columns: 30px 1fr; gap: 4px; padding: 7px 0; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--regla-2); font-size: 15px; line-height: 1.3; }
+.panel-indice li a span { font: 600 15px/1.3 var(--serif); color: var(--claret); }
+.panel-indice li.n2 a { font-weight: 700; }
+.panel-indice li.n3 a { padding-left: 30px; grid-template-columns: 1fr; font-size: 14px; color: var(--tinta-2); }
+.panel-indice li.grupo { margin-top: 12px; padding: 7px 0; border-bottom: 1px solid var(--negro); font: 700 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.panel-indice li.vacio { font: 500 14px/1.4 var(--sans); color: var(--tinta-2); padding: 12px 0; }
+.panel-indice li small { display: block; margin: 4px 0 10px 34px; font: 500 12px/1.3 var(--sans); color: var(--tinta-3); }
+.panel-indice li a:hover, .panel-indice li a.actual { color: var(--oxford); }
+.panel-indice li a.actual { box-shadow: inset 3px 0 0 var(--oxford); padding-left: 8px; }
+.panel-indice li.n3 a.actual { padding-left: 38px; }
+.descargas-lista { padding: 14px 16px 20px; display: grid; gap: 10px; }
+.descarga-item { display: block; padding: 10px 12px; background: var(--papel-2); border: 1px solid var(--regla); text-decoration: none; color: var(--negro); font: 600 14px/1.35 var(--sans); }
+.descarga-item:hover { border-color: var(--oxford); color: var(--oxford); }
+.descarga-item span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-2); margin-bottom: 4px; }
+h2[id], h3[id] { scroll-margin-top: 64px; }
+/* fila de una tabla de códigos a la que lleva el control «Ir a código» (D88) */
+tr[id^="cod-"] { scroll-margin-top: 110px; }
+tr[id^="cod-"]:target > td { background: color-mix(in srgb, var(--oxford) 14%, transparent); box-shadow: inset 0 2px 0 var(--oxford), inset 0 -2px 0 var(--oxford); }
+h2[id]:target, h3[id]:target { box-shadow: -14px 0 0 -8px var(--claret); }
+/* ---------- Pie ---------- */
+.pie { max-width: 1120px; margin: 0 auto; padding: 0 16px 36px; }
+.pie div { border-top: 4px solid var(--negro); padding-top: 12px; font: 400 13px/1.5 var(--sans); color: var(--tinta-3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.pie-ia { margin: 10px 0 0; font: 500 12px/1.45 var(--sans); color: var(--tinta-3); }
+
+/* ---------- Impresión (coherente con pantalla) ---------- */
+@page {
+  size: A4; margin: 16mm 15mm 18mm; background: #fbe2cd;
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #71645b; }
+}
+@page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
+@media print {
+  :root, :root[data-theme] {
+    --papel: #fbe2cd; --papel-2: #f3cfb2; --papel-3: #eabd9a; --tinta: #2f2b28; --tinta-2: #564d47; --tinta-3: #71645b;
+    --negro: #1a1817; --regla: #c9a78d; --regla-2: #e7c6ab; --claret: #990f3d; --oxford: #0f5499; --teal: #0d7680; --velvet: #593380;
+  }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10.5pt; }
+  .portada, .indice, .pie { padding: 0; max-width: none; }
+  .portada { min-height: 262mm; display: flex; flex-direction: column; break-after: page; }
+  .portada-cuerpo { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0; }
+  .portada h1 { font-size: 46pt; }
+  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifra b { font-size: 34pt; }
+  .indice { margin: 0 0 4mm; }
+  .contenido { display: block; padding: 0; }
+  .contenido > .tabla, .contenido > .grafico, .contenido > pre { width: 100%; }
+  h2 { font-size: 22pt; margin-top: 12mm; break-after: avoid; break-inside: avoid; }
+  h3 { font-size: 14pt; break-after: avoid; }
+  h4, p:has(> strong:only-child) { break-after: avoid; }
+  blockquote p { font-size: 17pt; }
+  table { font-size: 9pt; }
+  thead { display: table-header-group; }
+  tr, .grafico, blockquote, .falsa, .leyenda div { break-inside: avoid; }
+  .g-lienzo.ancho svg, .espectro-in, .g-lienzo pre.mermaid { min-width: 0; }
+  .g-lienzo pre.mermaid svg { max-height: 120mm; }
+  .dos { grid-template-columns: 1.1fr 1fr; }
+  .pie, .barra, .panel-indice, .velo { display: none !important; }
+  mark.hallazgo { background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Aviso legal y exención de responsabilidad (primer bloque de cada documento) */
+blockquote.aviso-legal { margin: 8px 0 36px; padding: 12px 16px; border-left: 4px solid var(--claret); background: color-mix(in srgb, var(--claret) 6%, transparent); }
+blockquote.aviso-legal p { font: 400 14.5px/1.55 var(--sans); color: var(--tinta-2); margin: 0; }
+blockquote.aviso-legal strong { color: var(--negro); }
+@media print { blockquote.aviso-legal p { font-size: 8.5pt; } blockquote.aviso-legal { break-inside: avoid; } }
+/* Avisos plegados en pantalla (D93): una línea con su título; al pulsar se despliegan. En el PDF (print) van siempre completos. */
+@media screen {
+  blockquote.aviso-legal { cursor: pointer; position: relative; padding-right: 40px; }
+  blockquote.aviso-legal::after { content: "▾"; position: absolute; right: 14px; top: 10px; font: 700 15px/1.4 var(--sans); color: var(--claret); }
+  blockquote.aviso-legal.plegado::after { content: "▸"; }
+  blockquote.aviso-legal.plegado { margin-bottom: 10px; padding-top: 8px; padding-bottom: 8px; }
+  blockquote.aviso-legal.plegado + :not(blockquote.aviso-legal) { margin-top: 28px; }
+  blockquote.aviso-legal.plegado p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  blockquote.aviso-legal.plegado p:not(:first-child) { display: none; }
+  blockquote.aviso-legal:focus-visible { outline: 2px solid var(--oxford); outline-offset: 2px; }
+}
+
+/* ---------- Recuadro «Lo esencial» (D75): qué es obligatorio del documento, tras el aviso legal ---------- */
+.esencial { margin: 8px 0 40px; padding: 16px 20px 14px; border: 1px solid var(--regla); border-top: 4px solid var(--teal); background: var(--papel-2); }
+.esencial[data-capa="enterprise"] { border-top-color: var(--velvet); }
+.esencial[data-capa="condicional"] { border-top-color: var(--oxford); }
+.esencial[data-capa="recomendado"], .esencial[data-capa="consulta"] { border-top-color: var(--tinta-2); }
+.es-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 8px; }
+.es-rotulo { font: 800 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--negro); }
+.es-nivel { font: 700 12px/1 var(--sans); letter-spacing: .04em; color: #fff; background: var(--teal); padding: 5px 8px; }
+.esencial[data-capa="enterprise"] .es-nivel { background: var(--velvet); }
+.esencial[data-capa="condicional"] .es-nivel { background: var(--oxford); }
+.esencial[data-capa="recomendado"] .es-nivel, .esencial[data-capa="consulta"] .es-nivel { background: var(--tinta-2); }
+:root[data-theme="noche"] .es-nivel { color: #1a1817; }
+.esencial p { font: 400 16px/1.55 var(--sans); color: var(--tinta); margin: 0; }
+.esencial p.es-pie { margin-top: 10px; font-size: 13.5px; }
+@media print { .esencial { break-inside: avoid; margin-bottom: 18pt; } .esencial p { font-size: 9.5pt; } .esencial p.es-pie { font-size: 8pt; } .es-nivel { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+
+/* ---------- Zona de descargas y herramientas (bajo la portada) ---------- */
+.descargas-zona { max-width: 1120px; margin: 6px auto 30px; padding: 0 16px; }
+.dz-in { border-top: 4px solid var(--negro); border-bottom: 1px solid var(--regla); padding: 14px 0 16px; display: grid; gap: 14px 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .dz-in { grid-template-columns: auto 1fr; } }
+.dz-titulo { font: 700 13px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2); margin: 0 0 10px; }
+.dz-enlaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.dz-item { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; background: var(--papel-2); border: 1px solid var(--regla); color: var(--negro); text-decoration: none; font: 600 14px/1.25 var(--sans); }
+.dz-item:hover, .dz-item:focus-visible { border-color: var(--oxford); color: var(--oxford); outline: none; }
+.dz-tipo { font: 800 11px/1 var(--sans); letter-spacing: .06em; color: #fff; background: var(--claret); padding: 5px 6px; min-width: 34px; text-align: center; }
+.dz-tipo.html { background: var(--oxford); }
+.dz-tipo.tool { background: var(--teal); }
+:root[data-theme="noche"] .dz-tipo { color: #1a1817; }
+/* descargas agrupadas en tarjetas, una por perfil (D97): guía del curso */
+@media (min-width: 900px) { .dz-agrupada .dz-in { grid-template-columns: 1fr; } }
+.dz-cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+/* en pantalla ancha: los tres perfiles en una fila y, debajo, lo común a todos (nueve módulos y la propia guía) */
+@media (min-width: 900px) { .dz-cards { grid-template-columns: repeat(6, 1fr); } .dz-card { grid-column: span 2; } .dz-card[data-grupo="modulos"], .dz-card[data-grupo="guia"] { grid-column: span 3; } }
+.dz-card { display: flex; flex-direction: column; border: 1px solid var(--regla); border-top: 3px solid var(--claret); background: var(--papel-2); padding: 12px 14px 14px; }
+.dz-card[data-grupo="modulos"] { border-top-color: var(--oxford); }
+.dz-card[data-grupo="guia"] { border-top-color: var(--tinta-2); }
+.dz-card-rotulo { font: 700 11px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--claret); margin: 0 0 4px; }
+.dz-card[data-grupo="modulos"] .dz-card-rotulo { color: var(--oxford); }
+.dz-card[data-grupo="guia"] .dz-card-rotulo { color: var(--tinta-2); }
+.dz-card-titulo { font: 700 19px/1.2 var(--serif); color: var(--negro); margin: 0 0 6px; }
+.dz-card-texto { font: 400 13.5px/1.4 var(--sans); color: var(--tinta-2); margin: 0 0 12px; flex: 1; }
+.dz-card .dz-item { background: var(--papel); }
+.dz-grupo { font: 700 12px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); margin: 8px 0 -2px; padding-top: 10px; border-top: 1px solid var(--regla); }
+.dz-grupo:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+@media print { .descargas-zona { display: none !important; } }
+
+/* ---------- Enlaces a fuentes externas (D41) ---------- */
+a.ref-ext { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--oxford); text-underline-offset: 3px; }
+a.ref-ext::after { content: "↗"; font: 700 .7em/1 var(--sans); color: var(--oxford); margin-left: 2px; vertical-align: super; }
+a.ref-ext:hover { color: var(--oxford); text-decoration-style: solid; }
+.fuentes-nota { font: 400 14px/1.5 var(--sans); color: var(--tinta-2); }
+ul.fuentes-externas { list-style: none; padding: 0; margin: 12px 0 24px; font: 400 15px/1.45 var(--sans); }
+ul.fuentes-externas li { padding: 9px 0; border-bottom: 1px solid var(--regla-2); }
+ul.fuentes-externas li a { color: var(--negro); font-weight: 600; text-decoration-color: var(--oxford); }
+ul.fuentes-externas li span { color: var(--tinta-2); }
+@media print { a.ref-ext::after { content: ""; } ul.fuentes-externas li a::after { content: " · " attr(href); font-weight: 400; color: var(--tinta-2); word-break: break-all; } }
+
+/* Ilustraciones en imagen (p. ej., SPAD): ocupan el ancho del lienzo y conservan su proporción */
+.g-lienzo img { display: block; width: 100%; height: auto; border: 1px solid var(--regla-2); }
+.ilustracion .g-lienzo img[src*="ilusion_de_velocidad"] { max-width: 560px; margin: 0 auto; }
+@page { @bottom-left { content: "Dónde están sus datos y cómo instalar SEVEN-G en un servidor propio"; font: 8.5pt "Libre Franklin", "Segoe UI", sans-serif; color: #74675e; } }
+</style>
+</head>
+<body>
+<div class="barra" role="toolbar" aria-label="Herramientas del documento">
+  <div class="barra-in">
+    <a class="btn btn-icono btn-enlace btn-nav" href="../../../index.html" title="Ir a la portada de AI Consulting (todas las metodolog&#237;as)" aria-label="Ir a la portada de AI Consulting (todas las metodolog&#237;as)"><span aria-hidden="true">⌂</span><span class="oculto">Portada</span></a>
+    <a class="barra-marca" href="00_SEVEN-G_Que_es_y_para_que_sirve.html" title="Ir al documento 00: Qu&#233; es SEVEN-G y para qu&#233; sirve"><i></i>SEVEN-G</a>
+    <button class="btn btn-icono btn-nav" id="abrir-biblioteca" type="button" aria-controls="panel-biblioteca" aria-expanded="false" title="Abrir biblioteca de documentos del idioma actual" aria-label="Abrir biblioteca de documentos del idioma actual"><span aria-hidden="true">≣</span><span class="oculto">Biblioteca</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-descargas" type="button" aria-controls="panel-descargas" aria-expanded="false" title="Descargas" aria-label="Descargas"><span aria-hidden="true">↓</span><span class="oculto">Descargas</span></button>
+    <button class="btn btn-icono btn-nav" id="abrir-historial" type="button" aria-controls="panel-historial" aria-expanded="false" title="Ver historial de navegaci&#243;n de este idioma" aria-label="Ver historial de navegaci&#243;n de este idioma"><span aria-hidden="true">↺</span><span class="oculto">Historial</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-menos" type="button" title="Reducir tama&#241;o del texto" aria-label="Reducir tama&#241;o del texto"><span aria-hidden="true">A−</span></button>
+    <button class="btn btn-icono btn-nav" id="texto-mas" type="button" title="Aumentar tama&#241;o del texto" aria-label="Aumentar tama&#241;o del texto"><span aria-hidden="true">A+</span></button>
+    <span class="barra-seccion" id="barra-seccion"></span>
+    <span class="ir-codigo" data-ir-codigo></span>
+    <div class="buscar" role="search">
+      <input type="search" id="buscar" placeholder="Buscar en el documento" aria-label="Buscar en el documento" autocomplete="off">
+      <span class="buscar-cuenta" id="buscar-cuenta" aria-live="polite"></span>
+      <button class="btn btn-icono" id="buscar-ant" type="button" aria-label="Resultado anterior" title="Resultado anterior">↑</button>
+      <button class="btn btn-icono" id="buscar-sig" type="button" aria-label="Resultado siguiente" title="Resultado siguiente">↓</button>
+    </div>
+    <button class="btn btn-icono btn-nav" id="abrir-indice" type="button" aria-controls="panel-indice" aria-expanded="false" title="Abrir &#237;ndice de secciones del documento actual" aria-label="Abrir &#237;ndice de secciones del documento actual"><span aria-hidden="true">☰</span><span class="oculto">&#205;ndice</span></button>
+    <label class="tema"><span class="oculto">Tema</span>
+      <select id="tema" aria-label="Tema">
+        <option value="salmon">Salm&#243;n</option>
+        <option value="claro">Salm&#243;n claro</option>
+        <option value="noche">Noche</option>
+      </select>
+    </label>
+    <nav class="idioma" aria-label="Idioma"><span class="activo" aria-current="true">ES</span><a href="../en/95_SEVEN-G_Datos_en_local_e_instalacion_propia.html" hreflang="en" lang="en">EN</a></nav>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel-indice" id="panel-indice" aria-label="&#205;ndice" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>&#205;ndice</strong>
+    <button class="btn btn-icono" id="cerrar-indice" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <input type="search" id="filtro-indice" placeholder="Filtrar secciones" aria-label="Filtrar secciones" autocomplete="off">
+  <ol id="lista-indice"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-biblioteca" aria-label="Documentos" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Documentos</strong>
+    <button class="btn btn-icono" id="cerrar-biblioteca" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <input type="search" id="filtro-biblioteca" placeholder="Filtrar documentos" aria-label="Filtrar documentos" autocomplete="off">
+  <ol id="lista-biblioteca"></ol>
+</aside>
+
+<aside class="panel-indice" id="panel-historial" aria-label="Historial de navegaci&#243;n" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Historial de navegaci&#243;n</strong>
+    <button class="btn btn-icono" id="cerrar-historial" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <ol id="lista-historial"></ol>
+</aside>
+
+<aside class="panel-indice panel-descargas" id="panel-descargas" aria-label="Descargas" aria-hidden="true">
+  <div class="panel-cab">
+    <strong>Descargas</strong>
+    <button class="btn btn-icono" id="cerrar-descargas" type="button" aria-label="Cerrar panel">✕</button>
+  </div>
+  <div class="descargas-lista"><a class="dz-item" href="../../pdf/es/95_SEVEN-G_Datos_en_local_e_instalacion_propia.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/95_SEVEN-G_Datos_en_local_e_instalacion_propia.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/95_SEVEN-G_Datos_en_local_e_instalacion_propia.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerar el panel del consejo</b></a></div>
+</aside>
+
+<div id="top"></div>
+<header class="portada">
+  <div class="cabecera"><div class="marca"><i></i>SEVEN-G</div><div class="cabecera-dato">Documento 95 · 22-09-2026</div></div>
+  <div class="portada-cuerpo">
+    <p class="antetitulo">Documento 95 &#183; Datos en local e instalaci&#243;n propia</p>
+    <h1>D&#243;nde est&#225;n sus datos y c&#243;mo instalar SEVEN-G en un servidor propio</h1>
+    <p class="entradilla">C&#243;mo funciona el sitio, por qu&#233; lo que introduce nunca llega a un servidor y c&#243;mo descargar el proyecto para alojarlo usted mismo, con una instalaci&#243;n por cliente</p>
+    <div class="firma"><span><b>Fernando Garc&#237;a Varela</b></span><span>Versión 0.1 (borrador de trabajo)</span><span>22-09-2026</span><span>Borrador para revisi&#243;n</span></div>
+    <div class="cifras"><div class="cifra"><b>0</b><span>datos guardados en el servidor</span></div><div class="cifra"><b>1</b><span>fichero HTML por herramienta</span></div><div class="cifra"><b>2</b><span>formas de instalarlo</span></div><div class="cifra"><b>1</b><span>origen web por cliente</span></div></div>
+  </div>
+</header>
+<section class="descargas-zona" aria-label="Descargas y herramientas"><div class="dz-in"><div class="dz-bloque"><p class="dz-titulo">Descargas</p><div class="dz-enlaces"><a class="dz-item" href="../../pdf/es/95_SEVEN-G_Datos_en_local_e_instalacion_propia.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Este documento · español</b></a><a class="dz-item" href="../../pdf/en/95_SEVEN-G_Datos_en_local_e_instalacion_propia.pdf" target="_blank" rel="noopener"><span class="dz-tipo">PDF</span><b>Versión en inglés</b></a><a class="dz-item" href="../en/95_SEVEN-G_Datos_en_local_e_instalacion_propia.html" hreflang="en"><span class="dz-tipo html">HTML</span><b>Versión en inglés</b></a></div></div><div class="dz-bloque"><p class="dz-titulo">Herramientas relacionadas</p><div class="dz-enlaces"><a class="dz-item" href="../../herramientas/T01_registro_iniciativas/registro.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T01</span><b>Registro de iniciativas</b></a><a class="dz-item" href="../../herramientas/T11_calculadora_valor/calculadora.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T11</span><b>Calculadora de hip&#243;tesis de valor y costes por caso</b></a><a class="dz-item" href="../../herramientas/T14_indice_transformacion/indice.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T14</span><b>Calculadora del &#237;ndice de transformaci&#243;n</b></a><a class="dz-item" href="../../herramientas/T15_diagnostico_madurez/madurez.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T15</span><b>Diagn&#243;stico de madurez</b></a><a class="dz-item" href="../../herramientas/T17_panel_consejo/index.html" target="_blank" rel="noopener"><span class="dz-tipo tool">T17</span><b>Regenerar el panel del consejo</b></a></div></div></div></section>
+<nav class="indice"><div class="indice-in"><h2>En este documento</h2><ol><li><a href="#objeto-y-alcance"><span>01</span>Objeto y alcance</a></li><li><a href="#como-funciona-el-sitio"><span>02</span>Cómo funciona el sitio</a></li><li><a href="#donde-estan-los-datos-que-se-introducen"><span>03</span>Dónde están los datos que se introducen</a></li><li><a href="#instalar-seven-g-en-un-servidor-propio"><span>04</span>Instalar SEVEN-G en un servidor propio</a></li><li><a href="#preguntas-frecuentes"><span>05</span>Preguntas frecuentes</a></li><li><a href="#herramientas-y-plantillas-asociadas"><span>06</span>Herramientas y plantillas asociadas</a></li><li><a href="#documentos-relacionados"><span>07</span>Documentos relacionados</a></li><li><a href="#control-de-versiones"><span>08</span>Control de versiones</a></li></ol></div></nav>
+<main class="contenido" id="contenido">
+<blockquote class="aviso-legal plegado">
+<p><strong>Aviso legal y exención de responsabilidad.</strong> SEVEN-G es un marco metodológico de referencia que se ofrece «tal cual» y con fines exclusivamente informativos. No constituye asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantiza el cumplimiento de ninguna norma. Las referencias a regulación general (como el Reglamento Europeo de IA, el RGPD, DORA o NIS2), a normas técnicas y a regulación específica de cada sector o jurisdicción pueden ser incompletas, no aplicar a un caso concreto o quedar desactualizadas por cambios normativos, interpretaciones o criterios de las autoridades posteriores a su fecha de consulta. <strong>Cada organización que use SEVEN-G es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio</strong>, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso que se haga de este contenido ni por las decisiones que se adopten con él. Los datos, cifras, compañías y casos de los ejemplos son ficticios o ilustrativos.</p>
+</blockquote>
+<blockquote>
+<p><strong>Este documento describe el funcionamiento técnico del sitio, no sustituye la evaluación de la organización.</strong> Quien vaya a introducir datos reales de una compañía en las herramientas, o a alojar el sitio en un servidor propio, debe valorar con sus responsables de seguridad y protección de datos si ese uso cumple sus políticas. Lo que aquí se afirma sobre dónde se guardan los datos se puede comprobar en el código del repositorio, que es público.</p>
+</blockquote>
+<hr />
+<aside class="esencial" data-capa="condicional"><div class="es-cab"><span class="es-rotulo">Lo esencial</span><span class="es-nivel">Condicional: depende de un disparador</span></div><p>Disparador: se van a introducir datos reales de una compa&#241;&#237;a en las herramientas, o se va a instalar el sitio en un servidor propio (una consultora, un partner o un consultor independiente que trabaja para varios clientes). Regla que no se omite: los datos introducidos en las herramientas viven solo en el navegador de quien los introduce; la copia de seguridad es exportar el JSON; cada cliente necesita su propio origen web.</p><p class="es-pie"><a href="94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html">Matriz de obligatoriedad y lectura por capas (documento 94)</a></p></aside>
+<h2 id="objeto-y-alcance"><span class="antetitulo">01</span>Objeto y alcance</h2>
+<p>Este documento responde a tres preguntas que se hacen quienes empiezan a usar SEVEN-G con datos reales:</p>
+<ol>
+<li><strong>Cómo funciona el sitio</strong>: qué es cada pieza (documentos, plantillas, herramientas, generador del panel, comunidad) y dónde se ejecuta.</li>
+<li><strong>Dónde están los datos que se introducen</strong>: por qué nunca llegan a un servidor, dónde se guardan, qué sí sale del navegador y hacia dónde, y cómo se hace una copia de seguridad.</li>
+<li><strong>Cómo descargar el proyecto e instalarlo en un servidor propio</strong>: de dónde se descarga, qué se copia, qué hace falta para regenerarlo y cómo montar una instalación separada para cada cliente, que es lo que necesita una consultora, un <em>partner</em> o un consultor independiente.</li>
+</ol>
+<p>Se aplica al sitio publicado en <a href="https://seachad.github.io/AI_CONSULTING/">https://seachad.github.io/AI_CONSULTING/</a> y al repositorio público del que sale, <a href="https://github.com/seachad/AI_CONSULTING">https://github.com/seachad/AI_CONSULTING</a>. Las licencias (contenidos <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a>, código MIT) y las condiciones de uso por terceros están en el <a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a>; las reglas para consultores, en el 91.</p>
+<hr />
+<h2 id="como-funciona-el-sitio"><span class="antetitulo">02</span>Cómo funciona el sitio</h2>
+<p>El sitio es un <strong>conjunto de ficheros estáticos</strong>: páginas HTML, PDF, plantillas en Word y presentaciones, más las herramientas. No hay ninguna aplicación en el servidor, ninguna base de datos y ningún formulario que envíe datos al autor. El servidor solo entrega ficheros; todo lo que se calcula, se guarda o se dibuja ocurre en el navegador de quien lo usa.</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Qué es</th>
+<th>Dónde se ejecuta</th>
+<th>Qué guarda y dónde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentos, plantillas y curso</td>
+<td>Páginas HTML generadas desde Markdown, con su PDF; plantillas también en Word.</td>
+<td>En el navegador; los PDF y los Word se descargan.</td>
+<td>Nada. Solo preferencias de lectura (tema, tamaño de texto, historial de páginas visitadas) en el almacenamiento local del navegador.</td>
+</tr>
+<tr>
+<td>Herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
+<td><strong>Un solo fichero HTML</strong> cada una, con la aplicación completa y unos datos de demostración ficticios incrustados.</td>
+<td>Íntegramente en el navegador. No necesitan servidor: funcionan también abriendo el fichero desde el disco.</td>
+<td><strong>Los datos que introduce, donde usted elija con el botón «Datos: …» de su barra</strong>: solo en su navegador (por defecto), en un fichero JSON de su equipo o, en una copia del sitio en el servidor de la compañía, en la carpeta <code>herramientas/datos/</code> (sección 3). Exportan e importan JSON y CSV.</td>
+</tr>
+<tr>
+<td>Panel del consejo (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>)</td>
+<td>El panel completo, el panel móvil y el registro de recomendaciones, generados a partir del registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>. Llevan incrustado el conector en JavaScript y <strong>se regeneran solos en el navegador</strong> con el registro guardado en él o con <code>herramientas/datos/T01_registro.json</code> de la copia de la compañía. El generador en Python (<code>t01_a_panel.py</code>) es opcional: produce los mismos paneles como ficheros estáticos para enviarlos.</td>
+<td>En el navegador; el generador en Python, en el ordenador de quien lo ejecuta.</td>
+<td>Nada nuevo en el navegador. Los ficheros generados con Python <strong>contienen los datos</strong>.</td>
+</tr>
+<tr>
+<td>Página de comunidad</td>
+<td>Incidencias y peticiones de mejora del marco, con votos.</td>
+<td>En el navegador; <strong>es la única página que envía algo</strong>: el texto que usted escribe, a un repositorio público de GitHub a través de un intermediario.</td>
+<td>El identificador que elige, en su navegador. Lo enviado queda público en GitHub (sección 3.3).</td>
+</tr>
+<tr>
+<td>Índice de códigos («Ir a código», «Citados aquí»)</td>
+<td>Un fichero JavaScript generado con los destinos de todos los códigos del marco.</td>
+<td>En el navegador.</td>
+<td>Nada.</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="grafico"><div class="g-titulo">Flujo de los datos</div><div class="g-sub">Todo lo que se introduce se queda en el navegador o en ficheros que controla la organizaci&#243;n</div><div class="g-lienzo"><pre class="mermaid">flowchart LR
+  S["Servidor web&lt;br>(solo entrega ficheros)"] -->|HTML, PDF, JS| N["Navegador de quien usa el sitio"]
+  N --> L[("Almacenamiento local&lt;br>del navegador&lt;br>(por herramienta y por origen)")]
+  L --> N
+  N -->|Exportar| J["JSON / CSV&lt;br>en la carpeta que elija"]
+  J -->|Importar| N
+  J --> D["herramientas/datos/&lt;br>en la copia de la compañía&lt;br>(servidor interno)"]
+  D --> N
+  J --> T["T17 en Python (opcional,&lt;br>en su equipo)"]
+  T --> P["Paneles HTML estáticos&lt;br>con los datos dentro"]
+  N -. nada .-> S
+  classDef fuera fill:#0d7680,stroke:#0d7680,color:#ffffff
+  classDef local fill:#f2dfce,stroke:#807973,color:#1a1817
+  class L,J,D,P local
+</pre></div><div class="g-fuente">Fuente: SEVEN-G</div></figure>
+<blockquote>
+<p><strong>Por qué importa.</strong> Una herramienta que funciona sin servidor no puede perder datos en el servidor, no exige contratar nada y no obliga a la compañía a fiarse de un tercero para custodiar su cartera de iniciativas. A cambio, la custodia es suya: si los datos solo están en un navegador, la copia de seguridad la hace quien los introduce (sección 3.4).</p>
+</blockquote>
+<hr />
+<h2 id="donde-estan-los-datos-que-se-introducen"><span class="antetitulo">03</span>Dónde están los datos que se introducen</h2>
+<h3 id="3-1-en-el-navegador-no-en-el-servidor">3.1 En el navegador, no en el servidor</h3>
+<p>Cuando abre una herramienta por primera vez, el navegador copia los datos de demostración a su <strong>almacenamiento local</strong> (<em>localStorage</em>), una zona que cada navegador reserva por sitio en el propio equipo. Desde ese momento, cada cambio que hace —una iniciativa nueva, una decisión de puerta, un riesgo, un cálculo— se guarda ahí, al instante y sin que nada viaje por la red.</p>
+<p>Ese es el primero de los tres lugares posibles. El botón <strong>«Datos: …»</strong> de la barra de cada herramienta dice cuál está en uso y abre el diálogo <strong>«Dónde están mis datos»</strong> para cambiarlo (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §2.1):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Dónde</th>
+<th>Para qué</th>
+<th>Qué hay que saber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solo en el navegador</strong> (por defecto)</td>
+<td>Probar con datos propios sin instalar nada.</td>
+<td>Es lo que describe esta sección: un navegador, un equipo; se pierde al limpiar el navegador.</td>
+</tr>
+<tr>
+<td><strong>Un fichero JSON del equipo</strong></td>
+<td>Trabajar en serio una persona o un equipo pequeño.</td>
+<td>La herramienta reescribe el fichero con cada cambio y lo vuelve a leer al abrirla (Microsoft Edge o Google Chrome). Es el mismo formato que «Exportar»; puede estar en una carpeta sincronizada de la compañía.</td>
+</tr>
+<tr>
+<td><strong>La copia del sitio en el servidor de la compañía</strong></td>
+<td>Que toda la compañía vea la misma versión de la cartera.</td>
+<td>La copia lleva la carpeta <code>herramientas/datos/</code> con el fichero de cada herramienta, que se carga en lugar de los datos de ejemplo (sección 4.3). Los cambios se siguen guardando en cada navegador o en un fichero; publicar una versión nueva es sustituir el fichero.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En el navegador, cada herramienta usa su propia clave:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Clave del almacenamiento local</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> · Registro de iniciativas</td>
+<td><code>seveng-t01-datos-v1</code></td>
+</tr>
+<tr>
+<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a> · Calculadora de hipótesis de valor (con <a href="../../herramientas/T11_calculadora_valor/calculadora.html#/costes" title="Herramienta T13 &#183; Calculadora de costes por caso">T13</a>)</td>
+<td><code>seveng-t11-datos-v1</code></td>
+</tr>
+<tr>
+<td><a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> · Calculadora del índice de transformación</td>
+<td><code>seveng-t14-datos-v1</code></td>
+</tr>
+<tr>
+<td><a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> · Diagnóstico de madurez</td>
+<td><code>seveng-t15-datos-v1</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> leen además el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> guardado en el mismo navegador cuando se abren desde él (<code>?desde=t01</code>), y devuelven sus resultados al registro por importación: el registro es la fuente de verdad de las demás herramientas (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §4.1). Todo ello ocurre dentro del navegador.</p>
+<p>El servidor que aloja el sitio no tiene forma de recibir esos datos: no existe ningún punto de entrada que los acepte. Esto se puede comprobar en el código de cada herramienta, que es un único fichero HTML legible, y en la ausencia de cualquier programa en el servidor.</p>
+<h3 id="3-2-que-significa-en-la-practica">3.2 Qué significa en la práctica</h3>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Consecuencia</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Los datos son de un navegador y de un equipo.</strong></td>
+<td>Lo que introduce en Edge no lo ve Chrome, y lo que introduce en su portátil no aparece en otro ordenador. No hay sincronización, porque no hay servidor que sincronice. Para llevar el registro a otro equipo, expórtelo e impórtelo (sección 3.4), guárdelo en un fichero del equipo o use la copia de la compañía (sección 3.1).</td>
+</tr>
+<tr>
+<td><strong>Dependen del origen web.</strong></td>
+<td>El almacenamiento local se separa por <em>origen</em> (protocolo, dominio y puerto). El registro guardado en <code>https://seachad.github.io</code> es distinto del guardado en su propia instalación, y un fichero abierto desde el disco (<code>file://</code>) tiene su propio almacenamiento, aislado. Es la razón por la que cada cliente necesita su propio origen (sección 4.5).</td>
+</tr>
+<tr>
+<td><strong>Borrar los datos del navegador los borra.</strong></td>
+<td>Si limpia el historial y los datos de sitios, o usa una ventana privada, los datos desaparecen. La única copia duradera es el JSON exportado.</td>
+</tr>
+<tr>
+<td><strong>Varias personas, varios navegadores.</strong></td>
+<td>Las herramientas son de un solo usuario por navegador. Un equipo que trabaja sobre el mismo registro lo hace por turnos con el JSON: una persona exporta, otra importa; <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> admite importar varios ficheros y <strong>fusionarlos por código</strong> (por ejemplo, un registro por área).</td>
+</tr>
+<tr>
+<td><strong>Los ficheros generados llevan los datos.</strong></td>
+<td>Un JSON exportado, un CSV o un panel del consejo generado con <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> contienen la información de la compañía. Trátelos como cualquier documento confidencial: quien envía un panel por correo o mensajería envía sus datos.</td>
+</tr>
+<tr>
+<td><strong>El autor de SEVEN-G no puede ver sus datos.</strong></td>
+<td>Ni el sitio ni las herramientas se los mandan, y no hay ninguna cuenta con la que asociarlos.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-3-que-si-sale-del-navegador-y-hacia-donde">3.3 Qué sí sale del navegador, y hacia dónde</h3>
+<p>Para que la afirmación anterior sea verificable, esta es la lista completa de lo que el sitio envía o carga desde fuera:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Cuándo</th>
+<th>Adónde</th>
+<th>Qué contiene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Una incidencia, una petición o un voto</strong></td>
+<td>Solo si usted los envía desde la página de comunidad.</td>
+<td>A un intermediario del autor y de ahí a un repositorio <strong>público</strong> de GitHub, como <em>issue</em>.</td>
+<td>El título y el texto que escribe, y el identificador que eligió. <strong>Queda público</strong>: no escriba en él datos de clientes ni información interna. El intermediario no guarda registros de las peticiones.</td>
+</tr>
+<tr>
+<td><strong>Medición agregada de visitas</strong></td>
+<td>Solo en el sitio público <code>seachad.github.io</code>; nunca en <code>localhost</code>, en ficheros abiertos desde el disco ni en una instalación propia.</td>
+<td>A Umami, herramienta de código abierto.</td>
+<td>Página visitada, país y tipo de dispositivo, de forma agregada; sin <em>cookies</em>, sin dirección IP, sin datos personales; respeta la señal «No rastrear». No se mide la página de comunidad ni los paneles del consejo. Documento 04 §6.2.</td>
+</tr>
+<tr>
+<td><strong>Tipografías</strong></td>
+<td>Al abrir los documentos, la portada y la entrada del sitio. Las herramientas y los paneles <strong>no cargan ningún recurso externo</strong>.</td>
+<td>A los servidores de Google Fonts.</td>
+<td>La petición de la fuente tipográfica, que como toda petición web incluye la dirección IP de quien la hace. Ningún dato de las herramientas. En una instalación propia se puede quitar (sección 4.4).</td>
+</tr>
+<tr>
+<td><strong>Las peticiones de páginas</strong></td>
+<td>Siempre, como en cualquier sitio web.</td>
+<td>Al servidor que aloja el sitio (GitHub Pages en el sitio público; el suyo en una instalación propia).</td>
+<td>La página pedida y la dirección IP, en los registros del servidor, según la política de quien lo aloja. Nunca el contenido de las herramientas.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nada más. No hay cuentas, formularios de contacto, boletines ni píxeles de seguimiento, y el sitio no contacta a nadie por iniciativa propia (<a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a> §6.2).</p>
+<h3 id="3-4-copia-de-seguridad-y-traslado-entre-equipos">3.4 Copia de seguridad y traslado entre equipos</h3>
+<p>La forma más cómoda, en Microsoft Edge o Google Chrome, es elegir <strong>«Un fichero JSON del equipo»</strong> en el diálogo «Dónde están mis datos»: la herramienta guarda cada cambio en ese fichero y lo vuelve a leer al abrirla, de modo que la copia de seguridad se hace sola y el fichero puede vivir en una carpeta sincronizada de la compañía. En cualquier navegador, y para llevar los datos a otro equipo:</p>
+<ol>
+<li>En la herramienta, vaya a <strong>Datos → Exportar → JSON completo</strong> (en <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) o al botón equivalente de exportación (<a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>). Se descarga un fichero JSON con todo el contenido.</li>
+<li>Guárdelo donde la compañía guarda sus documentos: es la copia de seguridad, el medio para compartirlo y la entrada del generador del panel (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>).</li>
+<li>En otro equipo o navegador, <strong>Datos → Importar JSON</strong>. <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> valida el fichero antes de cargarlo y permite <strong>sustituir</strong> el registro actual o <strong>fusionar</strong> varios ficheros por código.</li>
+<li><strong>Restaurar datos de demostración</strong> y <strong>Borrar los datos guardados en este navegador</strong> (vista Datos de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>) piden confirmación y avisan de que exporte antes.</li>
+</ol>
+<p>Recomendación: exporte al final de cada sesión de trabajo relevante y antes de cualquier limpieza del navegador, y guarde los JSON con fecha.</p>
+<h3 id="3-5-antes-de-introducir-datos-reales">3.5 Antes de introducir datos reales</h3>
+<ul>
+<li>Decida con seguridad y protección de datos si el navegador y el equipo cumplen las políticas de la compañía (cifrado del disco, bloqueo de sesión, perfiles de navegador separados).</li>
+<li>Evite introducir datos personales innecesarios: el registro necesita responsables por rol, no datos privados de personas.</li>
+<li>Si trabaja para varios clientes, use un origen web distinto por cliente (sección 4.5) o, como mínimo, exporte y borre los datos locales al cambiar de cliente.</li>
+<li>No pegue datos de un cliente en la página de comunidad.</li>
+</ul>
+<blockquote>
+<p><strong>Por qué importa.</strong> La mayor parte de los incidentes con herramientas de este tipo no vienen de un ataque al servidor —aquí no hay servidor que atacar—, sino de un JSON compartido con quien no debía, un panel reenviado o un portátil compartido sin perfiles separados. Saber exactamente dónde están los datos permite aplicar las políticas de siempre de la compañía, sin inventar nada nuevo.</p>
+</blockquote>
+<hr />
+<h2 id="instalar-seven-g-en-un-servidor-propio"><span class="antetitulo">04</span>Instalar SEVEN-G en un servidor propio</h2>
+<h3 id="4-1-para-quien-y-por-que">4.1 Para quién y por qué</h3>
+<p>Cualquiera puede usar el sitio público tal cual. Una instalación propia tiene sentido cuando:</p>
+<ul>
+<li>una <strong>consultora, un <em>partner</em> o un consultor independiente</strong> trabaja con varios clientes y quiere una instalación separada por cliente, con sus datos y su panel;</li>
+<li>una <strong>compañía</strong> prefiere servir el marco desde su intranet, con su marca añadida y sin dependencias externas;</li>
+<li>se quiere <strong>adaptar</strong> documentos, plantillas o herramientas (obra derivada) y publicar la versión adaptada.</li>
+</ul>
+<p>En todos los casos aplican las licencias del <a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a>: reconocer la autoría, indicar los cambios, conservar el aviso legal y no presentar la instalación como certificada ni respaldada por el autor (<a href="91_SEVEN-G_Guia_para_consultores.html" title="Documento 91 &#183; Gu&#237;a para consultores y modelos de acompa&#241;amiento">documento 91</a> §6).</p>
+<h3 id="4-2-que-se-descarga-y-de-donde">4.2 Qué se descarga y de dónde</h3>
+<p>El proyecto completo está en el repositorio público <strong><a href="https://github.com/seachad/AI_CONSULTING">https://github.com/seachad/AI_CONSULTING</a></strong> (código MIT, contenidos <a class="ref-ext" href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener" title="Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)">CC BY 4.0</a>). Dos formas de obtenerlo:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Forma</th>
+<th>Cómo</th>
+<th>Cuándo conviene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Descarga en ZIP</strong></td>
+<td>Botón <em>Code → Download ZIP</em> del repositorio, o directamente <a href="https://github.com/seachad/AI_CONSULTING/archive/refs/heads/main.zip">https://github.com/seachad/AI_CONSULTING/archive/refs/heads/main.zip</a>.</td>
+<td>Para instalar una vez, sin herramientas de desarrollo.</td>
+</tr>
+<tr>
+<td><strong>Clonar con Git</strong></td>
+<td><code>git clone https://github.com/seachad/AI_CONSULTING.git</code></td>
+<td>Para actualizarse con <code>git pull</code>, hacer un <em>fork</em> con cambios propios o publicar con GitHub Pages.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Lo que contiene el repositorio:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Carpeta</th>
+<th>Contenido</th>
+<th>Hace falta en una instalación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index.html</code>, <code>en/index.html</code>, <code>LICENSE</code>, <code>LICENCIA_CONTENIDOS.md</code></td>
+<td>Portada del sitio en los dos idiomas y licencias.</td>
+<td>Sí.</td>
+</tr>
+<tr>
+<td><code>SEVEN-G/html</code>, <code>SEVEN-G/pdf</code>, <code>SEVEN-G/docx</code>, <code>SEVEN-G/pptx</code></td>
+<td>Documentos, plantillas y curso ya generados, en los dos idiomas, con el índice de códigos (<code>codigos.js</code>).</td>
+<td>Sí.</td>
+</tr>
+<tr>
+<td><code>SEVEN-G/herramientas</code></td>
+<td>Las herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a> (un HTML cada una, más sus fuentes y datos de demostración), el generador <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> con su motor, la página de comunidad y el mapa de datos.</td>
+<td>Sí.</td>
+</tr>
+<tr>
+<td><code>SPHERES/html</code>, <code>SPHERES/pdf</code>, <code>SPAD/html</code>, <code>SPAD/pdf</code></td>
+<td>Las metodologías de apoyo, ya generadas.</td>
+<td>Sí, si se quieren servir.</td>
+</tr>
+<tr>
+<td><code>SEVEN-G/mds</code>, <code>SPHERES/mds</code>, <code>SPAD/mds</code></td>
+<td>Las fuentes Markdown de todo lo anterior.</td>
+<td>Solo si se va a adaptar y regenerar.</td>
+</tr>
+<tr>
+<td><code>SEVEN-G/build</code></td>
+<td>El generador (<code>build.ps1</code>), la plantilla, los estilos, los componentes gráficos, el índice de códigos, el servidor local de revisión y las pruebas de coherencia.</td>
+<td>Solo si se va a regenerar.</td>
+</tr>
+<tr>
+<td>Carpetas cuyo nombre empieza por <code>_</code> o por <code>.</code></td>
+<td>Material de trabajo del autor, versiones no vigentes y configuración del repositorio.</td>
+<td>No; no se publican.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El repositorio <strong>no contiene datos de nadie</strong>: las herramientas llevan datos ficticios de demostración (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a> §9) y los datos reales nunca entran en él.</p>
+<h3 id="4-3-opcion-a-servir-el-sitio-tal-cual">4.3 Opción A · Servir el sitio tal cual</h3>
+<p>Es la opción para quien quiere el sitio en su servidor sin cambiar nada. No hace falta generar: los HTML, PDF y demás salidas ya están en el repositorio.</p>
+<ol>
+<li>Descargue o clone el repositorio (sección 4.2).</li>
+<li>Copie a la raíz del servidor <strong>solo lo publicable</strong>, que es exactamente lo que publica el flujo de GitHub Pages del repositorio (<code>.github/workflows/pages.yml</code>): <code>index.html</code>, <code>en/</code>, <code>LICENSE</code>, <code>LICENCIA_CONTENIDOS.md</code>, <code>SEVEN-G/html</code>, <code>SEVEN-G/pdf</code>, <code>SEVEN-G/docx</code>, <code>SEVEN-G/pptx</code>, <code>SEVEN-G/herramientas</code>, <code>SPHERES/html</code>, <code>SPHERES/pdf</code>, <code>SPAD/html</code> y <code>SPAD/pdf</code>, excluyendo cualquier carpeta cuyo nombre empiece por <code>_</code>. Con PowerShell 7, <code>pwsh -File SEVEN-G/build/publicar.ps1 -SinGenerar -Destino &lt;carpeta&gt;</code> prepara esa copia (avisa si no encuentra la lista privada de términos prohibidos del autor; en una instalación propia ese aviso puede ignorarse o sustituirse por su propia lista).</li>
+<li>Sírvalo con cualquier servidor de ficheros estáticos: IIS, nginx, Apache, un almacenamiento estático en la nube, la intranet corporativa o GitHub Pages de un <em>fork</em> (sección 4.7). No requiere ningún módulo, base de datos ni configuración especial; conviene que los ficheros <code>.html</code>, <code>.js</code>, <code>.json</code>, <code>.pdf</code>, <code>.docx</code> y <code>.pptx</code> se sirvan con su tipo de contenido habitual.</li>
+<li><strong>Sírvalo por <code>http</code> o <code>https</code>, no como ficheros sueltos.</strong> Abrir los HTML con doble clic funciona, pero el navegador aísla el almacenamiento local de cada fichero: el tema no se comparte, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>/T14/T15 no ven el registro de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, el panel completo no cede el paso al móvil y el índice de códigos no se carga. Para probar en local basta <code>pwsh -File SEVEN-G/build/servidor.ps1</code> y abrir <code>http://localhost:8765/</code>.</li>
+<li>Compruebe la portada, un documento, el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> y el panel de ejemplo. Los enlaces son relativos: el sitio puede vivir en la raíz del dominio o en una subcarpeta.</li>
+<li>Para que toda la compañía vea la misma cartera, cree en la copia la carpeta <code>SEVEN-G/herramientas/datos/</code> con los JSON exportados por las herramientas que use: <code>T01_registro.json</code>, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> y <code>T15_madurez.json</code>. Servidas por http, las herramientas los cargan en lugar de los datos de ejemplo y <strong>el panel del consejo se regenera solo en el navegador</strong> con <code>T01_registro.json</code> (clave <code>datos_t01</code> de <code>config_panel.json</code>, ya puesta en el ejemplo). Publicar una versión nueva de la cartera es sustituir el fichero (<a href="03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html" title="Documento 03 &#183; Herramientas de SEVEN-G y registro de iniciativas">documento 03</a> §2.1).</li>
+</ol>
+<p>Lo que ocurre con la instalación propia respecto al sitio público:</p>
+<ul>
+<li><strong>No se mide nada.</strong> La medición de visitas solo se activa en los dominios indicados en <code>SEVEN-G/build/analitica.json</code> (hoy, solo <code>seachad.github.io</code>); en cualquier otro dominio el índice de códigos no carga el script de Umami. Si quiere medir su propia instalación, ponga su propio identificador y dominio en ese fichero y regenere (sección 4.4).</li>
+<li><strong>La página de comunidad sigue apuntando al repositorio público del autor.</strong> Es lo deseable si quiere que sus usuarios puedan proponer mejoras del marco; si no, ponga <code>endpoint: ''</code> en el bloque <code>config</code> de <code>SEVEN-G/herramientas/comunidad/index.html</code> (queda en solo lectura) o retire la página y su botón de la portada.</li>
+<li><strong>Los documentos cargan las tipografías de Google Fonts.</strong> Si su política lo exige, quite el enlace <code>fonts.googleapis.com</code> de <code>SEVEN-G/build/plantilla.html</code> y de las portadas y regenere: el estilo tiene definidas tipografías de reserva.</li>
+</ul>
+<h3 id="4-4-opcion-b-adaptar-y-regenerar">4.4 Opción B · Adaptar y regenerar</h3>
+<p>Para cambiar textos, añadir la marca de la consultora, traducir o adaptar plantillas, se edita el Markdown y se regenera todo. Requisitos y comandos (Windows; el generador está escrito en PowerShell 7 y usa Microsoft Edge para los PDF, sin Node, Python ni pandoc):</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Requisito</th>
+<th>Comando</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentos, plantillas, curso, índice de la biblioteca e índice de códigos (HTML, PDF, Word)</td>
+<td>PowerShell 7 y Microsoft Edge.</td>
+<td><code>pwsh -File SEVEN-G/build/build.ps1</code> (todo) · <code>-Metodologias SEVEN-G</code> · <code>-Filter '03_*.md'</code> (un documento) · <code>-SinPdf</code></td>
+</tr>
+<tr>
+<td>Cursos en presentación (PPTX) y su PDF</td>
+<td>PowerShell 7; PowerPoint solo para exportar el PDF (opcional).</td>
+<td>Lo ejecuta <code>build.ps1</code>.</td>
+</tr>
+<tr>
+<td>Herramientas <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>, <a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
+<td>PowerShell 7 (Edge para los cálculos desde <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> de <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a> y <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a>).</td>
+<td><code>pwsh -File SEVEN-G/herramientas/T01_registro_iniciativas/build_registro.ps1</code> y los <code>build_*.ps1</code> equivalentes.</td>
+</tr>
+<tr>
+<td>Generador del panel (<a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a>), solo para publicar el panel como ficheros estáticos (por ejemplo, para enviarlos): en el sitio, el panel se regenera solo en el navegador.</td>
+<td>Python 3.11 o superior con <code>uv</code> (opcional).</td>
+<td><code>uv run python t01_a_panel.py --t01 &lt;registro.json&gt; --salida &lt;carpeta&gt;</code> desde <code>SEVEN-G/herramientas/T17_panel_consejo</code>.</td>
+</tr>
+<tr>
+<td>Pruebas de coherencia antes de publicar</td>
+<td>PowerShell 7, Edge; <code>uv</code> para comprobar el panel.</td>
+<td><code>pwsh -File SEVEN-G/build/verificar_coherencia.ps1</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Reglas del generador que conviene conocer: el Markdown es la fuente de verdad y los HTML, PDF y Word nunca se editan a mano; cada documento existe en español e inglés; las convenciones del Markdown (portada, cifras, figuras, Mermaid, recuadro «Lo esencial») están en la cabecera de <code>build.ps1</code>; y toda obra derivada debe indicar los cambios y conservar el aviso legal (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a> §8 y §11.9).</p>
+<h3 id="4-5-una-instalacion-por-cliente">4.5 Una instalación por cliente</h3>
+<p>Es el caso de una consultora, un <em>partner</em> o un consultor independiente. La regla central es sencilla: <strong>cada cliente necesita su propio origen web</strong>, porque el almacenamiento local del navegador se separa por origen y no por carpeta. Dos clientes servidos desde <code>https://consultora.example/cliente-a/</code> y <code>https://consultora.example/cliente-b/</code> <strong>compartirían</strong> el registro guardado en el navegador del consultor; servidos desde <code>https://cliente-a.consultora.example/</code> y <code>https://cliente-b.consultora.example/</code> (o desde puertos distintos en local), no.</p>
+<p>Lista de comprobación por cliente:</p>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Qué hacer</th>
+<th>Dónde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Un origen por cliente: subdominio, dominio o puerto propio.</td>
+<td>Servidor web.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Un registro que arranque con los datos del cliente y no con la demostración: en la copia del cliente, la carpeta <code>SEVEN-G/herramientas/datos/</code> con su <code>T01_registro.json</code> exportado (y, si los usa, <code>T11_calculadora.json</code>, <code>T14_indice.json</code> y <code>T15_madurez.json</code>); las herramientas los cargan en lugar de la demostración. Alternativa sin carpeta de datos: construir <code>registro.html</code> a partir del JSON del cliente; con <code>meta.datos_ilustrativos</code> ausente o <code>false</code> desaparece la banda de «iniciativas de ejemplo».</td>
+<td>Carpeta <code>datos/</code> de la copia, o <code>pwsh -File build_registro.ps1 -Datos &lt;cliente.json&gt; -Salida &lt;registro.html&gt;</code> en <code>SEVEN-G/herramientas/T01_registro_iniciativas</code>.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>El panel del consejo del cliente se regenera solo en el navegador desde ese <code>T01_registro.json</code> (clave <code>datos_t01</code> de <code>config_panel.json</code>) o desde el registro guardado en el navegador. Solo si quiere publicarlo como ficheros estáticos para enviarlos, genérelo con <a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a> en Python, con el nombre y las siglas del cliente y una copia propia de <code>config_panel.json</code> (umbrales, ciclo de vida, enlaces de vuelta al sitio, <code>codigos</code>).</td>
+<td><code>uv run python t01_a_panel.py --t01 &lt;cliente.json&gt; --salida &lt;carpeta&gt; --organizacion &quot;&lt;Cliente&gt;&quot; --sigla &lt;CA&gt;</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Los datos del cliente, fuera del repositorio y de la carpeta publicada: los JSON exportados y los paneles generados se guardan en el repositorio documental del cliente o de la consultora, con su control de acceso.</td>
+<td>Gestión documental.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Comunidad y medición: decidir si la página de comunidad sigue apuntando al proyecto público (recomendado) y no activar ninguna medición sobre los usuarios del cliente sin su consentimiento (sección 4.3).</td>
+<td><code>comunidad/index.html</code>, <code>analitica.json</code>.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Marca y reconocimiento: puede añadir la marca de la consultora y su adaptación, indicando los cambios y conservando la autoría y el aviso legal (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a> §4 y §8); no puede presentar la instalación como certificada ni como «<em>partner</em> oficial» (<a href="91_SEVEN-G_Guia_para_consultores.html" title="Documento 91 &#183; Gu&#237;a para consultores y modelos de acompa&#241;amiento">documento 91</a> §6.2).</td>
+<td>Portada y documentos adaptados.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Al cambiar de cliente en el mismo equipo, exportar y <strong>Borrar los datos guardados en este navegador</strong> en cada herramienta, o usar perfiles de navegador separados.</td>
+<td>Vista Datos de cada herramienta.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Con esto, cada cliente tiene su sitio, su registro, su panel y sus datos, sin que nada de un cliente pueda mezclarse con lo de otro y sin que nada llegue al autor de SEVEN-G.</p>
+<h3 id="4-6-actualizarse-a-una-version-nueva">4.6 Actualizarse a una versión nueva</h3>
+<p>El marco es un proyecto vivo. Para incorporar una versión nueva:</p>
+<ol>
+<li>Si clonó el repositorio, <code>git pull</code>; si lo descargó, descargue el ZIP de nuevo. Los datos no se pierden porque nunca están en el repositorio.</li>
+<li>Vuelva a copiar lo publicable (sección 4.3) o regenere (sección 4.4).</li>
+<li>Los registros exportados con una versión anterior del esquema de <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> <strong>siguen siendo válidos</strong>: las herramientas actualizan el esquema al importar y las versiones nuevas solo añaden campos opcionales (decisión D53 del proyecto).</li>
+<li>Revise el historial de versiones del <a href="04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html" title="Documento 04 &#183; De d&#243;nde viene SEVEN-G, en qu&#233; se diferencia y por qu&#233; es abierto">documento 04</a> §2.3 y el control de versiones de cada documento para saber qué ha cambiado.</li>
+</ol>
+<h3 id="4-7-fork-en-github-con-pages">4.7 Fork en GitHub con Pages</h3>
+<p>Un <em>partner</em> que quiera publicar su versión adaptada puede hacer un <em>fork</em> del repositorio en GitHub: el flujo <code>.github/workflows/pages.yml</code> ya está preparado y publica solo lo publicable en cada <em>push</em> a <code>main</code>. Basta activar en el <em>fork</em> <em>Settings → Pages → Source: GitHub Actions</em>. El sitio resultante es público; para una instalación privada por cliente, use la opción A en un servidor propio.</p>
+<blockquote>
+<p><strong>Por qué importa.</strong> Para una consultora, poder ofrecer a cada cliente una instalación separada, alojada donde el cliente decida y sin dependencia del autor, elimina la objeción más habitual —«¿dónde van mis datos?»— y convierte el marco en una herramienta de trabajo propia. Que el procedimiento esté documentado y sea repetible es lo que permite hacerlo para el segundo cliente igual que para el primero.</p>
+</blockquote>
+<hr />
+<h2 id="preguntas-frecuentes"><span class="antetitulo">05</span>Preguntas frecuentes</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Puede el autor de SEVEN-G ver lo que introduzco en las herramientas?</td>
+<td>No. Los datos se quedan en su navegador y no hay ningún servidor del autor que los reciba.</td>
+</tr>
+<tr>
+<td>¿Y GitHub, que aloja el sitio público?</td>
+<td>GitHub entrega los ficheros del sitio y registra las peticiones como cualquier servidor web; no recibe el contenido de las herramientas, que nunca sale del navegador.</td>
+</tr>
+<tr>
+<td>¿Se cifran los datos en el navegador?</td>
+<td>El almacenamiento local se guarda en el perfil del navegador, con las protecciones del sistema operativo (cifrado del disco, sesión de usuario). No añade cifrado propio; por eso la copia de seguridad y el control de acceso al equipo son suyos.</td>
+</tr>
+<tr>
+<td>¿Puedo usar las herramientas sin conexión?</td>
+<td>Sí. Una vez descargado el fichero HTML funciona sin red. Servido desde un servidor local (<code>servidor.ps1</code>) también.</td>
+</tr>
+<tr>
+<td>¿Cómo trabaja un equipo sobre el mismo registro?</td>
+<td>Con el JSON: un fichero del equipo en una carpeta sincronizada (cada cambio se guarda en él), la carpeta <code>herramientas/datos/</code> de la copia de la compañía, que todos ven, o exportar e importar (sustituir o fusionar por código). No hay edición simultánea.</td>
+</tr>
+<tr>
+<td>¿Puedo poner el sitio en la intranet sin conexión a internet?</td>
+<td>Sí, con la opción A. Solo dejarán de cargarse las tipografías externas (hay tipografías de reserva) y la página de comunidad no podrá enviar ni leer incidencias.</td>
+</tr>
+<tr>
+<td>¿Qué pasa si el autor deja de publicar el sitio?</td>
+<td>Lo descargado sigue funcionando y sigue bajo las mismas licencias: las versiones publicadas no se pueden revocar (<a href="93_SEVEN-G_Licencia_uso_y_citacion.html" title="Documento 93 &#183; Licencia, uso por terceros y citaci&#243;n">documento 93</a> §10).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="herramientas-y-plantillas-asociadas"><span class="antetitulo">06</span>Herramientas y plantillas asociadas</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre</th>
+<th>Relación con este documento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a></td>
+<td>Registro de iniciativas</td>
+<td>Guarda los datos en el navegador; exporta e importa el JSON completo; construcción con datos propios (<code>build_registro.ps1 -Datos</code>).</td>
+</tr>
+<tr>
+<td><a href="../../herramientas/T11_calculadora_valor/calculadora.html" title="Herramienta T11 &#183; Lienzo y calculadora de hip&#243;tesis de valor">T11</a>, <a href="../../herramientas/T14_indice_transformacion/indice.html" title="Herramienta T14 &#183; Calculadora del &#237;ndice de transformaci&#243;n">T14</a>, <a href="../../herramientas/T15_diagnostico_madurez/madurez.html" title="Herramienta T15 &#183; Diagn&#243;stico de madurez">T15</a></td>
+<td>Calculadora de valor, índice de transformación y diagnóstico de madurez</td>
+<td>Mismo funcionamiento; leen el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a> del mismo navegador.</td>
+</tr>
+<tr>
+<td><a href="../../herramientas/T17_panel_consejo/index.html" title="Herramienta T17 &#183; Panel de IA para el consejo">T17</a></td>
+<td>Panel de IA para el consejo</td>
+<td>Se regenera en el navegador desde el registro <a href="../../herramientas/T01_registro_iniciativas/registro.html" title="Herramienta T01 &#183; Registro de iniciativas">T01</a>; el generador en Python es opcional y sus ficheros contienen los datos.</td>
+</tr>
+<tr>
+<td><a href="plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html" title="Plantilla P70 &#183; Propuesta y carta de encargo">P70</a></td>
+<td>Propuesta y carta de encargo</td>
+<td>Donde una consultora deja constancia de dónde se alojan la instalación y los datos del cliente.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="documentos-relacionados"><span class="antetitulo">07</span>Documentos relacionados</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Relación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>03 · Herramientas y registro de iniciativas</strong></td>
+<td>Principios de diseño de las herramientas (§2: sin servidor, datos de la compañía, códigos navegables), dónde viven los datos de las herramientas y cómo montar la copia de la compañía (§2.1) y mapa de datos entre herramientas (§4.1).</td>
+</tr>
+<tr>
+<td><strong>04 · De dónde viene SEVEN-G y por qué es abierto</strong></td>
+<td>Qué hace y qué no hace el sitio con quien lo visita (§6.2) y historial de versiones del marco (§2.3).</td>
+</tr>
+<tr>
+<td><strong>90 · Guía de implantación</strong></td>
+<td>Requisitos previos y plan de 90 días de una compañía.</td>
+</tr>
+<tr>
+<td><strong>91 · Guía para consultores</strong></td>
+<td>Uso del marco por terceros, independencia y uso del nombre.</td>
+</tr>
+<tr>
+<td><strong>93 · Licencia, uso por terceros y citación</strong></td>
+<td>Licencias, obras derivadas, aviso que deben conservar, datos ficticios y permanencia de las versiones publicadas.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="control-de-versiones"><span class="antetitulo">08</span>Control de versiones</h2>
+<div class="tabla"><table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Fecha</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>22-09-2026</td>
+<td>Primera versión: cómo funciona el sitio, dónde se guardan los datos introducidos (solo en el navegador), qué sale del navegador y hacia dónde, copia de seguridad, e instalación en un servidor propio desde el repositorio público, con una instalación por cliente para consultoras, <em>partners</em> y consultores independientes.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="fuentes-externas">Fuentes externas citadas</h2><p class="fuentes-nota">Enlaces a la fuente oficial o primaria, comprobados antes de publicar. Verifique siempre la versión vigente en la fecha de uso.</p><ul class="fuentes-externas"><li><a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribuci&#243;n/Reconocimiento 4.0 Internacional (CC BY 4.0)</a><span> · Creative Commons</span></li></ul>
+</main>
+<footer class="pie"><div><span>© 2026 Fernando García Varela · Metodolog&#237;a SEVEN-G</span><span>Generado el 22-09-2026</span></div><p class="pie-ia">Contenido generado y maquetado con apoyo de IA bajo supervisi&#243;n editorial del autor.</p></footer>
+<script src="codigos.js" defer></script>
+
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var contenido = document.getElementById('contenido');
+  var navItems = [{"href":"00_SEVEN-G_Que_es_y_para_que_sirve.html","title":"Qué es SEVEN-G y para qué sirve","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"01_SEVEN-G_Metodologia_fundacional.html","title":"Metodología fundacional de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"02_SEVEN-G_Glosario_y_convenciones.html","title":"Glosario y convenciones de SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"03_SEVEN-G_Herramientas_y_registro_de_iniciativas.html","title":"Herramientas de SEVEN-G y registro de iniciativas","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"04_SEVEN-G_Origenes_diferencias_y_por_que_es_abierto.html","title":"De dónde viene SEVEN-G, en qué se diferencia y por qué es abierto","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"10_SEVEN-G_Mapa_de_esferas_y_niveles_de_ambicion.html","title":"Mapa de esferas y niveles de ambición","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"11_SEVEN-G_Modelo_de_madurez.html","title":"Modelo de madurez","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"12_SEVEN-G_Indice_de_transformacion.html","title":"Índice de transformación","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"13_SEVEN-G_Tesis_de_IA_ambicion_y_apetito_de_riesgo.html","title":"Tesis de IA, ambición y apetito de riesgo","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"14_SEVEN-G_Gestion_de_cartera.html","title":"Gestión de cartera","blockCode":"B","blockLabel":"B · Estrategia y cartera","active":false},{"href":"20_SEVEN-G_Manuales_de_fase.html","title":"Manuales de fase","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"21_SEVEN-G_Criterios_de_gate_y_auditoria.html","title":"Criterios de gate y de auditoría","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"22_SEVEN-G_Listas_de_verificacion_por_gate.html","title":"Listas de verificación por gate","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"23_SEVEN-G_Adopcion_y_cambio.html","title":"Adopción y cambio en la iniciativa","blockCode":"C","blockLabel":"C · Ciclo de vida de la iniciativa","active":false},{"href":"30_SEVEN-G_Modelo_de_gobierno.html","title":"Modelo de gobierno","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"31_SEVEN-G_Politica_corporativa_y_uso_aceptable.html","title":"Política corporativa de IA y política de uso aceptable","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"32_SEVEN-G_Inventario_y_clasificacion_regulatoria.html","title":"Inventario de sistemas de IA y clasificación regulatoria","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"33_SEVEN-G_Metodologia_de_riesgos_de_IA.html","title":"Metodología de riesgos de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"34_SEVEN-G_Mapeo_regulatorio.html","title":"Mapeo regulatorio","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"35_SEVEN-G_Seguridad_de_IA_y_agentes.html","title":"Seguridad de IA y agentes","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"36_SEVEN-G_Terceros_y_proveedores_de_IA.html","title":"Terceros y proveedores de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"37_SEVEN-G_No_conformidades_e_incidentes.html","title":"No conformidades, incidentes de IA y remediación","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"38_SEVEN-G_Marco_de_auditoria_de_IA.html","title":"Marco de auditoría de IA","blockCode":"D","blockLabel":"D · Gobierno, riesgo y cumplimiento","active":false},{"href":"40_SEVEN-G_Reglas_de_medicion_del_valor.html","title":"Reglas de medición del valor","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"41_SEVEN-G_Catalogo_de_indicadores.html","title":"Catálogo de indicadores","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"42_SEVEN-G_Costes_de_IA.html","title":"Costes de IA y reparto por caso","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"43_SEVEN-G_Realizacion_de_beneficios.html","title":"Realización de beneficios","blockCode":"E","blockLabel":"E · Medición y valor","active":false},{"href":"50_SEVEN-G_Personas_y_organizacion.html","title":"Personas y organización","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"51_SEVEN-G_Datos_y_conocimiento.html","title":"Datos y conocimiento para IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"52_SEVEN-G_Manual_de_operacion_de_IA.html","title":"Manual de operación de IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"53_SEVEN-G_Construccion_de_soluciones_con_IA.html","title":"Construcción de soluciones con IA","blockCode":"F","blockLabel":"F · Personas, datos y operación","active":false},{"href":"60_SEVEN-G_Paquete_para_el_consejo.html","title":"Paquete para el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"61_SEVEN-G_Guia_de_conversacion_con_el_consejo.html","title":"Guía de conversación con el consejo","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"62_SEVEN-G_Registro_de_recomendaciones_y_decisiones.html","title":"Registro de recomendaciones y decisiones","blockCode":"G","blockLabel":"G · Consejo","active":false},{"href":"90_SEVEN-G_Guia_de_implantacion.html","title":"Guía de implantación de SEVEN-G","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"91_SEVEN-G_Guia_para_consultores.html","title":"Guía para consultores y modelos de acompañamiento","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"92_SEVEN-G_Casos_de_aplicacion.html","title":"Casos de aplicación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"93_SEVEN-G_Licencia_uso_y_citacion.html","title":"Licencia, uso por terceros y citación","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html","title":"Matriz de obligatoriedad y lectura por capas","blockCode":"J","blockLabel":"J · Adopción del marco","active":false},{"href":"95_SEVEN-G_Datos_en_local_e_instalacion_propia.html","title":"Dónde están sus datos y cómo instalar SEVEN-G en un servidor propio","blockCode":"J","blockLabel":"J · Adopción del marco","active":true},{"href":"curso/M00_SEVEN-G_Curso_Guia_del_curso.html","title":"Curso de SEVEN-G · Guía del curso","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M01_SEVEN-G_Curso_Navegar_por_el_sitio.html","title":"Módulo 01 · Navegar por el sitio","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M02_SEVEN-G_Curso_Que_es_y_que_resuelve.html","title":"Módulo 02 · Qué es SEVEN-G y qué problema resuelve","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M03_SEVEN-G_Curso_Esferas_y_ambicion.html","title":"Módulo 03 · Esferas y niveles de ambición","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M04_SEVEN-G_Curso_Ciclo_de_vida_puertas_y_embudo.html","title":"Módulo 04 · Ciclo de vida, puertas y embudo","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M05_SEVEN-G_Curso_Gobierno_y_riesgo.html","title":"Módulo 05 · Gobierno y riesgo","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M06_SEVEN-G_Curso_Medir_el_valor.html","title":"Módulo 06 · Medir el valor","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M07_SEVEN-G_Curso_Transformacion_o_eficiencia.html","title":"Módulo 07 · Transformación o eficiencia","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M08_SEVEN-G_Curso_El_consejo.html","title":"Módulo 08 · El consejo","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"curso/M09_SEVEN-G_Curso_Implantar_por_capas.html","title":"Módulo 09 · Implantar por capas","blockCode":"K","blockLabel":"K · Curso","active":false},{"href":"index.html","title":"Biblioteca SEVEN-G","blockCode":"A","blockLabel":"A · Fundamentos","active":false},{"href":"plantillas/P01_SEVEN-G_Carta_de_la_iniciativa.html","title":"Carta de la iniciativa","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P02_SEVEN-G_Declaracion_de_contexto_y_restricciones.html","title":"Declaración de contexto y restricciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P03_SEVEN-G_Registro_de_asignacion_de_roles.html","title":"Registro de asignación de roles","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P04_SEVEN-G_Determinacion_de_intensidad.html","title":"Determinación de intensidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P05_SEVEN-G_Ficha_de_inventario_del_sistema_de_IA.html","title":"Ficha de inventario del sistema de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P06_SEVEN-G_Cartera_de_oportunidades_y_notas_de_filtrado.html","title":"Cartera de oportunidades y notas de filtrado","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P07_SEVEN-G_Clasificacion_de_esfera_y_ambicion.html","title":"Clasificación de esfera y ambición","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P08_SEVEN-G_Lienzo_de_hipotesis_de_valor.html","title":"Lienzo de hipótesis de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P09_SEVEN-G_Linea_base.html","title":"Línea base","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P10_SEVEN-G_Evaluacion_de_viabilidad.html","title":"Evaluación de viabilidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P11_SEVEN-G_Clasificacion_regulatoria_y_evaluaciones_de_impacto.html","title":"Clasificación regulatoria y evaluaciones de impacto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P12_SEVEN-G_Matriz_y_registro_de_riesgos.html","title":"Matriz y registro de riesgos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P13_SEVEN-G_Plan_de_mitigacion_y_contingencia.html","title":"Plan de mitigación y contingencia","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P14_SEVEN-G_Evaluacion_de_proveedor_de_IA.html","title":"Evaluación de proveedor de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P15_SEVEN-G_Registro_de_arquitectura.html","title":"Registro de arquitectura","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P16_SEVEN-G_Linaje_de_datos_y_modelos.html","title":"Linaje de datos y modelos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P17_SEVEN-G_Diseno_de_gobierno_y_supervision_humana.html","title":"Diseño de gobierno y supervisión humana","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P18_SEVEN-G_Diseno_de_seguridad.html","title":"Diseño de seguridad (incluye agentes)","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P19_SEVEN-G_Plan_de_reversion_y_prueba.html","title":"Plan de reversión y prueba","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P20_SEVEN-G_Plan_de_adopcion_y_capacidad.html","title":"Plan de adopción y capacidad","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P21_SEVEN-G_Informe_de_entrega.html","title":"Informe de entrega","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P22_SEVEN-G_Resultados_de_validacion_y_del_piloto.html","title":"Resultados de validación y del piloto","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P23_SEVEN-G_Firma_de_puesta_en_produccion.html","title":"Firma de puesta en producción","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P24_SEVEN-G_Manual_de_operacion.html","title":"Manual de operación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P25_SEVEN-G_Configuracion_de_monitorizacion_y_alertas.html","title":"Configuración de monitorización y alertas","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P26_SEVEN-G_Plan_de_respuesta_a_incidentes.html","title":"Plan de respuesta a incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P27_SEVEN-G_Registro_de_incidentes_y_cambios.html","title":"Registro de incidentes y cambios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P28_SEVEN-G_Seguimiento_de_realizacion_de_valor.html","title":"Seguimiento de realización de valor","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P29_SEVEN-G_Registro_de_decision_de_gate.html","title":"Registro de decisión de *gate*","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P30_SEVEN-G_Decision_de_escalado_o_retirada.html","title":"Decisión de escalado o retirada","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P31_SEVEN-G_Ficha_de_caso_de_uso.html","title":"Ficha de caso de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P32_SEVEN-G_Mandato_de_implantacion.html","title":"Mandato de implantación de SEVEN-G","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P33_SEVEN-G_Informe_de_diagnostico_C1.html","title":"Informe de diagnóstico C1","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P34_SEVEN-G_Cuestionario_e_informe_de_madurez.html","title":"Cuestionario e informe de madurez","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P35_SEVEN-G_Tesis_de_IA_y_apetito_de_riesgo.html","title":"Tesis de IA y apetito de riesgo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P36_SEVEN-G_Plan_de_cartera_C3.html","title":"Plan de cartera C3","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P37_SEVEN-G_Revision_anual_C5.html","title":"Revisión anual C5","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P38_SEVEN-G_Reglamento_de_los_organos_de_gobierno_de_IA.html","title":"Reglamento de los órganos de gobierno de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P39_SEVEN-G_Orden_del_dia_y_acta_de_organo_de_gobierno.html","title":"Orden del día y acta de órgano de gobierno","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P40_SEVEN-G_Solicitud_y_registro_de_excepciones.html","title":"Solicitud y registro de excepciones","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P41_SEVEN-G_Declaraciones_de_independencia_y_conflictos_de_interes.html","title":"Declaraciones de independencia y conflictos de interés","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P42_SEVEN-G_Informe_trimestral_de_segunda_linea.html","title":"Informe trimestral de segunda línea","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P43_SEVEN-G_Catalogo_de_herramientas_autorizadas_y_solicitudes.html","title":"Catálogo de herramientas autorizadas y solicitudes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P44_SEVEN-G_Encuesta_de_uso_y_percepcion_de_la_IA.html","title":"Encuesta de uso y percepción de la IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P45_SEVEN-G_Plan_y_registro_de_alfabetizacion_y_formacion.html","title":"Plan y registro de alfabetización y formación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P46_SEVEN-G_Informacion_a_los_trabajadores_y_a_su_representacion.html","title":"Información a los trabajadores y a su representación","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P47_SEVEN-G_Evaluacion_de_impacto_en_proteccion_de_datos.html","title":"Evaluación de impacto en protección de datos","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P48_SEVEN-G_Evaluacion_de_impacto_en_derechos_fundamentales.html","title":"Evaluación de impacto en derechos fundamentales","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P49_SEVEN-G_Avisos_de_transparencia_e_instrucciones_de_uso.html","title":"Avisos de transparencia e instrucciones de uso","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P50_SEVEN-G_Registro_de_no_conformidades.html","title":"Registro de no conformidades","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P51_SEVEN-G_Notificaciones_y_comunicaciones_de_incidentes.html","title":"Notificaciones y comunicaciones de incidentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P52_SEVEN-G_Analisis_de_causa_raiz_y_plan_de_accion_correctiva.html","title":"Análisis de causa raíz y plan de acción correctiva","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P53_SEVEN-G_Plan_e_informe_de_pruebas_adversarias.html","title":"Plan e informe de pruebas adversarias","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P54_SEVEN-G_Inventario_de_identidades_no_humanas_y_componentes.html","title":"Inventario de identidades no humanas y componentes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P55_SEVEN-G_Cuestionario_de_diligencia_debida_a_proveedores_de_IA.html","title":"Cuestionario de diligencia debida a proveedores de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P56_SEVEN-G_Clausulas_contractuales_tipo_de_IA.html","title":"Cláusulas contractuales tipo de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P57_SEVEN-G_Registro_de_proveedores_y_plan_de_salida.html","title":"Registro de proveedores y plan de salida","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P58_SEVEN-G_Plan_anual_de_auditoria_de_IA.html","title":"Plan anual de auditoría de IA","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P59_SEVEN-G_Papeles_de_auditoria.html","title":"Papeles de trabajo de auditoría","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P60_SEVEN-G_Informe_de_auditoria_y_fichas_de_hallazgo.html","title":"Informe de auditoría y fichas de hallazgo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P61_SEVEN-G_Declaracion_de_aplicacion_de_SEVEN-G.html","title":"Declaración de aplicación de SEVEN-G","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P62_SEVEN-G_Plan_de_realizacion_de_beneficios.html","title":"Plan de realización de beneficios","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P63_SEVEN-G_Presupuesto_de_consumo_y_conciliacion_de_costes.html","title":"Presupuesto de consumo y conciliación de costes","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P64_SEVEN-G_Ficha_de_conjunto_de_datos_e_inventario_de_fuentes_de_conocimiento.html","title":"Ficha de conjunto de datos e inventario de fuentes de conocimiento","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P65_SEVEN-G_Paquete_de_revision_de_continuidad_R6.html","title":"Paquete de revisión de continuidad R6","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P66_SEVEN-G_Anexos_de_construccion_con_SPAD.html","title":"Anexos de construcción con SPAD","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P67_SEVEN-G_Paquete_trimestral_para_el_consejo.html","title":"Paquete trimestral para el consejo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P68_SEVEN-G_Nota_previa_y_nota_de_conclusiones_de_la_sesion_del_consejo.html","title":"Nota previa y nota de conclusiones de la sesión del consejo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P69_SEVEN-G_Registro_de_decisiones_del_consejo.html","title":"Registro de decisiones del consejo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P70_SEVEN-G_Propuesta_y_carta_de_encargo.html","title":"Propuesta y carta de encargo","blockCode":"H","blockLabel":"H · Plantillas","active":false},{"href":"plantillas/P71_SEVEN-G_Plan_de_transferencia_y_nota_de_salida.html","title":"Plan de transferencia y nota de salida","blockCode":"H","blockLabel":"H · Plantillas","active":false}];
+
+  function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function asArray(v) { return Array.isArray(v) ? v : []; }
+
+  /* ---------- Tamaño de texto ---------- */
+  var escalaMin = 0.9;
+  var escalaMax = 1.2;
+  var escalaPaso = 0.05;
+  var escalaKey = 'seveng-text-scale';
+  var botonTextoMenos = document.getElementById('texto-menos');
+  var botonTextoMas = document.getElementById('texto-mas');
+  function leerEscala() {
+    var n = parseFloat(localStorage.getItem(escalaKey) || '1');
+    if (!isFinite(n)) return 1;
+    return Math.max(escalaMin, Math.min(escalaMax, n));
+  }
+  function aplicarEscala(v) {
+    var valor = Math.round(v * 100) / 100;
+    raiz.style.setProperty('--escala-texto', String(valor));
+    botonTextoMenos.disabled = valor <= escalaMin;
+    botonTextoMas.disabled = valor >= escalaMax;
+    try { localStorage.setItem(escalaKey, String(valor)); } catch (e) {}
+  }
+  aplicarEscala(leerEscala());
+  botonTextoMenos.addEventListener('click', function () { aplicarEscala(leerEscala() - escalaPaso); });
+  botonTextoMas.addEventListener('click', function () { aplicarEscala(leerEscala() + escalaPaso); });
+
+  /* ---------- Navegacion global ---------- */
+  var panelBiblioteca = document.getElementById('panel-biblioteca');
+  var listaBiblioteca = document.getElementById('lista-biblioteca');
+  var filtroBiblioteca = document.getElementById('filtro-biblioteca');
+  var botonBiblioteca = document.getElementById('abrir-biblioteca');
+  var panelDescargas = document.getElementById('panel-descargas');
+  var botonDescargas = document.getElementById('abrir-descargas');
+  var actualBloque = '';
+
+  function pintarBiblioteca() {
+    var q = norm(filtroBiblioteca.value.trim());
+    var html = '';
+    var bloque = '';
+    navItems.forEach(function (item) {
+      if (q && norm(item.title + ' ' + item.blockLabel).indexOf(q) === -1) return;
+      if (item.blockLabel !== bloque) {
+        bloque = item.blockLabel;
+        html += '<li class="grupo">' + bloque + '</li>';
+      }
+      html += '<li class="n2"><a href="' + item.href + '"' + (item.active ? ' class="actual" aria-current="page"' : '') + '><span>' + item.blockCode + '</span>' + item.title + '</a></li>';
+      if (item.active) actualBloque = item.blockLabel;
+    });
+    listaBiblioteca.innerHTML = html;
+  }
+  pintarBiblioteca();
+  filtroBiblioteca.addEventListener('input', pintarBiblioteca);
+
+  /* ---------- Historial de paginas ---------- */
+  var panelHistorial = document.getElementById('panel-historial');
+  var listaHistorial = document.getElementById('lista-historial');
+  var botonHistorial = document.getElementById('abrir-historial');
+  var historialKey = 'seveng-nav-history-' + (document.documentElement.lang || 'es');
+  var selfPath = location.pathname.replace(/\\/g, '/');
+
+  function leerHistorial() {
+    try { return asArray(JSON.parse(localStorage.getItem(historialKey) || '[]')); } catch (e) { return []; }
+  }
+  function guardarHistorial(items) {
+    try { localStorage.setItem(historialKey, JSON.stringify(items.slice(-80))); } catch (e) {}
+  }
+  function registrarPaginaActual() {
+    var now = new Date().toISOString();
+    var titulo = document.title || 'SEVEN-G';
+    var href = location.href.split('#')[0];
+    var items = leerHistorial().filter(function (x) { return x && x.href; });
+    if (items.length && items[items.length - 1].href === href) return;
+    items = items.filter(function (x) { return x.href !== href; });
+    items.push({ href: href, title: titulo, when: now });
+    guardarHistorial(items);
+  }
+  function pintarHistorial() {
+    var items = leerHistorial();
+    if (!items.length) {
+      listaHistorial.innerHTML = '<li class="n2 vacio">Todav&#237;a no hay navegaci&#243;n registrada.</li>';
+      return;
+    }
+    var html = '';
+    items.slice().reverse().forEach(function (item) {
+      var t = item.when ? new Date(item.when).toLocaleString() : '';
+      var u = item.href || '#';
+      var mismo = (u.indexOf(selfPath) !== -1);
+      html += '<li class="n2"><a href="' + u + '"' + (mismo ? ' class="actual"' : '') + '><span>•</span>' + (item.title || u) + '</a>' + (t ? '<small>Hora: ' + t + '</small>' : '') + '</li>';
+    });
+    listaHistorial.innerHTML = html;
+  }
+  registrarPaginaActual();
+  pintarHistorial();
+
+  /* ---------- Tema ---------- */
+  var selTema = document.getElementById('tema');
+  selTema.value = raiz.getAttribute('data-theme') || 'salmon';
+  selTema.addEventListener('change', function () {
+    raiz.setAttribute('data-theme', selTema.value);
+    try { localStorage.setItem('seveng-tema', selTema.value); } catch (e) {}
+    if (window.sevengDiagramas) window.sevengDiagramas();
+  });
+
+  /* ---------- Índice rápido ---------- */
+  var panel = document.getElementById('panel-indice');
+  var velo = document.getElementById('velo');
+  var botonIndice = document.getElementById('abrir-indice');
+  var lista = document.getElementById('lista-indice');
+  var filtro = document.getElementById('filtro-indice');
+  var titulos = Array.prototype.slice.call(contenido.querySelectorAll('h2[id], h3[id]'));
+  function textoTitulo(h) {
+    var c = h.cloneNode(true); var a = c.querySelector('.antetitulo'); if (a) a.remove(); return c.textContent.trim();
+  }
+  titulos.forEach(function (h) {
+    var li = document.createElement('li'); li.className = h.tagName === 'H2' ? 'n2' : 'n3';
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    var ante = h.querySelector('.antetitulo');
+    if (ante) { var s = document.createElement('span'); s.textContent = ante.textContent; a.appendChild(s); }
+    a.appendChild(document.createTextNode(textoTitulo(h)));
+    li.appendChild(a); lista.appendChild(li);
+    a.addEventListener('click', function () { cerrarIndice(); });
+  });
+  function cerrarTodosPaneles() {
+    [panel, panelBiblioteca, panelHistorial, panelDescargas].forEach(function (p) {
+      if (p) {
+        p.classList.remove('abierto');
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    [botonIndice, botonBiblioteca, botonHistorial, botonDescargas].forEach(function (b) {
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    velo.hidden = true;
+  }
+  function abrirPanel(panelObj, botonObj, focusObj) {
+    cerrarTodosPaneles();
+    panelObj.classList.add('abierto');
+    panelObj.setAttribute('aria-hidden', 'false');
+    botonObj.setAttribute('aria-expanded', 'true');
+    velo.hidden = false;
+    if (focusObj) focusObj.focus();
+  }
+  function abrirIndice() { abrirPanel(panel, botonIndice, filtro); }
+  function cerrarIndice() { cerrarTodosPaneles(); }
+  botonIndice.addEventListener('click', function () { panel.classList.contains('abierto') ? cerrarIndice() : abrirIndice(); });
+  document.getElementById('cerrar-indice').addEventListener('click', cerrarIndice);
+  botonBiblioteca.addEventListener('click', function () { panelBiblioteca.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelBiblioteca, botonBiblioteca, filtroBiblioteca); });
+  botonDescargas.addEventListener('click', function () { panelDescargas.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelDescargas, botonDescargas); });
+  botonHistorial.addEventListener('click', function () { pintarHistorial(); panelHistorial.classList.contains('abierto') ? cerrarTodosPaneles() : abrirPanel(panelHistorial, botonHistorial); });
+  document.getElementById('cerrar-biblioteca').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-historial').addEventListener('click', cerrarTodosPaneles);
+  document.getElementById('cerrar-descargas').addEventListener('click', cerrarTodosPaneles);
+  velo.addEventListener('click', cerrarTodosPaneles);
+  filtro.addEventListener('input', function () {
+    var q = norm(filtro.value.trim());
+    Array.prototype.forEach.call(lista.children, function (li) { li.hidden = q && norm(li.textContent).indexOf(q) === -1; });
+  });
+
+  /* Sección actual en la barra */
+  var etiqueta = document.getElementById('barra-seccion');
+  var enlaces = lista.querySelectorAll('a');
+  var pendiente = false;
+  function seccionActual() {
+    var actual = null;
+    for (var i = 0; i < titulos.length; i++) { if (titulos[i].getBoundingClientRect().top < 90) actual = titulos[i]; else break; }
+    etiqueta.textContent = actual ? textoTitulo(actual) : '';
+    Array.prototype.forEach.call(enlaces, function (a) { a.classList.toggle('actual', !!actual && a.getAttribute('href') === '#' + actual.id); });
+    pendiente = false;
+  }
+  window.addEventListener('scroll', function () { if (!pendiente) { pendiente = true; setTimeout(seccionActual, 100); } }, { passive: true });
+  seccionActual();
+
+  /* ---------- Búsqueda ---------- */
+  var entrada = document.getElementById('buscar');
+  var cuenta = document.getElementById('buscar-cuenta');
+  var marcas = []; var indice = -1; var espera = null;
+  function limpiar() {
+    marcas.forEach(function (m) { var p = m.parentNode; if (!p) return; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); });
+    marcas = []; indice = -1; cuenta.textContent = '';
+  }
+  function buscar() {
+    limpiar();
+    var q = norm(entrada.value.trim());
+    if (q.length < 2) return;
+    var recorrido = document.createTreeWalker(contenido, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p || p.closest('svg, script, style, pre.mermaid')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodos = []; while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    nodos.forEach(function (nodo) {
+      var texto = nodo.nodeValue, n = '', mapa = [];
+      for (var i = 0; i < texto.length; i++) { var c = norm(texto[i]); for (var k = 0; k < c.length; k++) { n += c[k]; mapa.push(i); } }
+      var pos = [], desde = 0, j;
+      while ((j = n.indexOf(q, desde)) !== -1) { pos.push([mapa[j], mapa[j + q.length - 1] + 1]); desde = j + q.length; }
+      for (var p = pos.length - 1; p >= 0; p--) {
+        var r = document.createRange(); r.setStart(nodo, pos[p][0]); r.setEnd(nodo, pos[p][1]);
+        var m = document.createElement('mark'); m.className = 'hallazgo'; r.surroundContents(m); marcas.unshift(m);
+      }
+    });
+    marcas.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+    if (!marcas.length) { cuenta.textContent = 'Sin resultados'; return; }
+    ir(0);
+  }
+  function ir(i) {
+    if (!marcas.length) return;
+    if (indice >= 0 && marcas[indice]) marcas[indice].classList.remove('actual');
+    indice = (i + marcas.length) % marcas.length;
+    marcas[indice].classList.add('actual');
+    marcas[indice].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    cuenta.textContent = (indice + 1) + ' / ' + marcas.length;
+  }
+  entrada.addEventListener('input', function () { clearTimeout(espera); espera = setTimeout(buscar, 250); });
+  entrada.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); if (!marcas.length) buscar(); else ir(indice + (e.shiftKey ? -1 : 1)); }
+    if (e.key === 'Escape') { entrada.value = ''; limpiar(); }
+  });
+  document.getElementById('buscar-sig').addEventListener('click', function () { ir(indice + 1); });
+  document.getElementById('buscar-ant').addEventListener('click', function () { ir(indice - 1); });
+  document.addEventListener('keydown', function (e) {
+    var escribiendo = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === '/' && !escribiendo) { e.preventDefault(); entrada.focus(); }
+    if (e.key === 'Escape') cerrarTodosPaneles();
+  });
+})();
+// Avisos plegados en pantalla (D93): se ve su título en una línea y se despliegan al pulsar. En el PDF van completos.
+(function () {
+  document.querySelectorAll('blockquote.aviso-legal').forEach(function (b) {
+    b.classList.add('plegado'); b.tabIndex = 0; b.setAttribute('role', 'button'); b.setAttribute('aria-expanded', 'false');
+    function alternar() { var plegado = b.classList.toggle('plegado'); b.setAttribute('aria-expanded', String(!plegado)); }
+    b.addEventListener('click', function (e) { if (e.target.closest('a') || String(window.getSelection())) return; alternar(); });
+    b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); } });
+  });
+})();
+</script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const bloques = [...document.querySelectorAll('pre.mermaid')];
+bloques.forEach(b => { b.dataset.fuente = b.textContent; });
+let ronda = 0;
+async function dibujar() {
+  const v = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'strict', theme: 'base',
+    flowchart: { curve: 'basis', padding: 14, nodeSpacing: 36, rankSpacing: 46 },
+    themeVariables: {
+      fontFamily: '"Libre Franklin","Segoe UI",sans-serif', fontSize: '15px',
+      background: v('--papel'), primaryColor: v('--papel-2'), primaryBorderColor: v('--oxford'), primaryTextColor: v('--tinta'),
+      secondaryColor: v('--papel-3'), tertiaryColor: v('--papel'), lineColor: v('--tinta-2'), textColor: v('--tinta'),
+      clusterBkg: v('--papel-2'), clusterBorder: v('--regla'), edgeLabelBackground: v('--papel'),
+      cScale0: v('--oxford'), cScaleLabel0: '#ffffff', cScale1: v('--teal'), cScaleLabel1: '#ffffff',
+      cScale2: v('--velvet'), cScaleLabel2: '#ffffff', cScale3: v('--claret'), cScaleLabel3: '#ffffff'
+    }
+  });
+  ronda++;
+  for (let i = 0; i < bloques.length; i++) {
+    const { svg } = await mermaid.render('diagrama-' + ronda + '-' + i, bloques[i].dataset.fuente);
+    bloques[i].innerHTML = svg;
+  }
+  document.body.dataset.diagramas = 'listos';
+}
+window.sevengDiagramas = dibujar;
+await dibujar();
+</script>
+</body>
+</html>

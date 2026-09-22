@@ -329,6 +329,7 @@ Al terminar cualquier modelo, el tercero entrega: registros y datos en formato a
 | **61 · Guía de conversación con el consejo** | Papel del consejero o asesor con experiencia en IA (M4). |
 | **62 · Registro de recomendaciones y decisiones** | Registro de recomendaciones y valoración independiente. |
 | **90 · Guía de implantación** | Contenido de M2. |
+| **95 · Datos en local e instalación propia** | Dónde quedan los datos que se introducen en las herramientas y cómo montar una instalación separada por cliente. |
 | **92 · Casos de aplicación** | Casos ficticios para formación y explicación del marco. |
 | **93 · Licencia, uso por terceros y citación** | Condiciones de uso y reconocimiento. |
 

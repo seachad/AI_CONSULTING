@@ -174,6 +174,7 @@ Each document shows this same level in its "The essentials" box, with the minimu
 | 92 | [Application cases](92_SEVEN-G_Casos_de_aplicacion.html) | **Reference** | Everyone |
 | 93 | [Licence, use by third parties and citation](93_SEVEN-G_Licencia_uso_y_citacion.html) | **Conditional** | Legal counsel, consultants |
 | 94 | [Obligation matrix and layered reading](94_SEVEN-G_Matriz_de_obligatoriedad_y_lectura_por_capas.html) | **Recommended** | Everyone |
+| 95 | [Where your data is and how to install SEVEN-G on your own server](95_SEVEN-G_Datos_en_local_e_instalacion_propia.html) | **Conditional** | AI Office, IT and security, consultants and partners |
 
 The fact that a document is *Always* does not mean it must be read in full: nineteen documents have that level, but the initial reading for a company with Lite scope comes down to documents 00 and 01, the implementation guide, the adaptation of the governance model to small organisations and the Lite column of the gate criteria (document 90, section 2.4). The rest is opened when its moment in the cycle arrives.
 

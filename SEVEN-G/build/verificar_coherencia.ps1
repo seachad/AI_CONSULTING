@@ -852,6 +852,37 @@ try {
     }
   }
   if (-not $malCon) { Ok 'conector T17 en el navegador incrustado en los dos paneles y en el registro T01, con la ruta del registro de la compañía configurada' }
+  # ---- 22. datos en local e instalación propia (D104): el documento 95 existe en ES y EN, apunta al repositorio público y a su ZIP, y lo enlazan
+  # la portada, la entrada, el README y el principio 6 del documento 03; los recuentos de documentos escritos a mano coinciden con la biblioteca
+  Write-Host '22. Datos en local e instalación propia'
+  $malInst = 0
+  $repoUrl = 'https://github.com/seachad/AI_CONSULTING'
+  foreach ($lang in 'es', 'en') {
+    $d95 = Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '95_*.md' | Select-Object -First 1
+    if (-not $d95) { Mal "falta el documento 95 [$lang] (D104)"; $malInst++; continue }
+    $t95 = [IO.File]::ReadAllText($d95.FullName)
+    foreach ($req in $repoUrl, "$repoUrl/archive/refs/heads/main.zip", 'https://seachad.github.io/AI_CONSULTING/', 'seveng-t01-datos-v1', 'publicar.ps1', 'build_registro.ps1', 't01_a_panel.py', 'pages.yml', 'analitica.json') {
+      if (-not $t95.Contains($req)) { Mal "documento 95 [$lang]: falta «$req»"; $malInst++ }
+    }
+    $d03 = [IO.File]::ReadAllText((Get-ChildItem (Join-Path $repo "SEVEN-G\mds\$lang") -Filter '03_*.md' | Select-Object -First 1).FullName)
+    if ($d03 -notmatch '(?m)^\| 6 \|.*(documento|document) 95') { Mal "documento 03 [$lang]: el principio 6 no remite al documento 95"; $malInst++ }
+    $ent = [IO.File]::ReadAllText((Join-Path $repo "SEVEN-G\build\entrada\$lang\index.html"))
+    if (-not $ent.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html')) { Mal "entrada [$lang]: no enlaza el documento 95"; $malInst++ }
+  }
+  $nDocs = @(Get-ChildItem (Join-Path $repo 'SEVEN-G\mds\es') -File -Filter '*.md' | Where-Object { $_.Name -match '^\d{2}_' }).Count
+  foreach ($p in @(@{ f = 'index.html'; l = 'es' }, @{ f = 'en\index.html'; l = 'en' }, @{ f = 'SEVEN-G\build\entrada\es\index.html'; l = 'es' }, @{ f = 'SEVEN-G\build\entrada\en\index.html'; l = 'en' })) {
+    $t = [IO.File]::ReadAllText((Join-Path $repo $p.f))
+    if ($p.f -like '*index.html' -and $p.f -notlike '*entrada*') {
+      if (-not ($t.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html') -and $t.Contains($repoUrl))) { Mal "$($p.f): la portada no enlaza el documento 95 y el repositorio"; $malInst++ }
+    }
+    $m = [regex]::Match($t, '<b>(\d+)</b><span>' + $(if ($p.l -eq 'en') { 'documents' } else { 'documentos' }))
+    if (-not $m.Success) { Mal "$($p.f): no se encuentra la cifra de documentos"; $malInst++ }
+    elseif ([int]$m.Groups[1].Value -ne $nDocs) { Mal "$($p.f): dice $($m.Groups[1].Value) documentos y la biblioteca tiene $nDocs"; $malInst++ }
+  }
+  $readme = [IO.File]::ReadAllText((Join-Path $repo 'README.md'))
+  if (-not ($readme.Contains('95_SEVEN-G_Datos_en_local_e_instalacion_propia.html') -and $readme.Contains("$repoUrl/archive/refs/heads/main.zip"))) { Mal 'README.md: no enlaza el documento 95 ni la descarga del repositorio'; $malInst++ }
+  if ($readme -match '(?i)repositorio es privado') { Mal 'README.md: sigue diciendo que el repositorio es privado'; $malInst++ }
+  if (-not $malInst) { Ok "documento 95 (ES/EN) con el repositorio y su ZIP, enlazado desde la portada, la entrada, el README y el documento 03; $nDocs documentos en las cifras de portada y entrada" }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

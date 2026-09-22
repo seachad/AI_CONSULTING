@@ -319,6 +319,7 @@ Las herramientas sin aplicación propia se aplican con la plantilla o el documen
 | **11 · Modelo de madurez** | Diagnóstico del mes 1 y acreditación de 01 §14. |
 | **14 · Gestión de cartera** | Primera cartera y regularización. |
 | **21, 22, 30, 31, 33, 34, 37, 40, 60, 62** | Contenido de la estructura de gobierno del mes 3. |
+| **95 · Datos en local e instalación propia** | Dónde quedan los datos de las herramientas y cómo alojar el sitio en la propia compañía. |
 | **91 · Guía para consultores** | Acompañamiento externo de la implantación. |
 
 ---

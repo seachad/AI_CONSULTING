@@ -270,6 +270,7 @@ It is not necessary to ask permission for any use that complies with the licence
 | **34 · Regulatory mapping** | Scope and responsibility of the mapping (section 1); consultation dates and maintenance. |
 | **91 · Guide for consultants** | Use of the framework and of the SEVEN-G name by third parties. |
 | **92 · Application cases** | Fictitious data. |
+| **95 · Local data and self-hosting** | Download from the public repository, installation on your own server and derivative works by consultancies and partners. |
 
 ---
 

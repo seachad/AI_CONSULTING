@@ -319,6 +319,7 @@ Tools without an application of their own are applied with the template or docum
 | **11 · Maturity model** | Month 1 diagnosis and substantiation of 01 §14. |
 | **14 · Portfolio management** | First portfolio and regularisation. |
 | **21, 22, 30, 31, 33, 34, 37, 40, 60, 62** | Content of the month 3 governance structure. |
+| **95 · Local data and self-hosting** | Where the tools' data stays and how to host the site within the company. |
 | **91 · Guide for consultants** | External support for the implementation. |
 
 ---
