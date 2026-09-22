@@ -248,7 +248,7 @@ p.nota-clas{margin:4px 0 10px}
   <div class="cab-in">
     <a class="marca" href="#/embudo"><i aria-hidden="true"></i>SEVEN-G <span id="txt-app">T01 · Registro de iniciativas</span></a>
     <div class="ajustes">
-      <a class="enlace-btn" id="lnk-panel" href="../T17_panel_consejo/index.html">Panel del consejo</a>
+      <a class="enlace-btn" id="lnk-panel" data-ir="panel" href="../T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html">Panel del consejo</a>
       <button type="button" class="enlace-btn" id="btn-legal" data-acc="aviso-legal" aria-haspopup="dialog">Aviso legal</button>
       <label class="oculto" for="sel-lang" id="lbl-lang">Idioma</label>
       <select id="sel-lang"><option value="es">ES</option><option value="en">EN</option></select>
@@ -267,6 +267,8 @@ p.nota-clas{margin:4px 0 10px}
 <script type="application/json" id="catalogo-criterios">__CATALOGO_CRITERIOS__</script>
 <script type="application/json" id="datos-demo">__DATOS_DEMO__</script>
 <script>__DATOS_LOCALES__</script>
+<script type="application/json" id="config-panel">__CONFIG_PANEL__</script>
+<script>__CONECTOR_T17__</script>
 <script>
 'use strict';
 /* =========================================================
@@ -274,6 +276,8 @@ p.nota-clas{margin:4px 0 10px}
    Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela
    ========================================================= */
 const CAT = JSON.parse(document.getElementById('catalogo-criterios').textContent);
+/* D101: configuración del panel del consejo (config_panel.json de T17) para convertir este registro al JSON del panel en el navegador (SevengT17) */
+const CONFIG_PANEL = JSON.parse(document.getElementById('config-panel').textContent);
 const DEMO_TXT = document.getElementById('datos-demo').textContent;
 /* Panel del consejo (T17): lo genera el conector t01_a_panel.py con el JSON completo de este registro. build_registro.ps1 comprueba que PANEL_DEMO existe. */
 const PANEL_DEMO = '../T17_panel_consejo/ejemplo/salida/t01_Dashboard_Casos_Uso_IA_v8.html', PANEL_T17 = '../T17_panel_consejo/index.html';
@@ -290,7 +294,7 @@ es:{
  app:'T01 · Registro de iniciativas', saltar:'Saltar al contenido', idioma:'Idioma', tema:'Tema', t_auto:'Auto', t_claro:'Claro', t_oscuro:'Oscuro', vistas:'Vistas',
  v_embudo:'Embudo', v_tablero:'Tablero', v_gates:'Gates pendientes', v_alertas:'Alertas', v_analisis:'Análisis', v_inventario:'Inventario (T02)', v_datos:'Datos', v_ficha:'Ficha',
  emb_clic:'Pulse la barra para ver en la tabla solo las iniciativas de esta fase; vuelva a pulsar para quitar el filtro.', emb_filtro:'· solo', emb_de:'de {n} con los filtros de arriba', emb_todas:'Mostrar todas',
- demo_tit:'Iniciativas de ejemplo.', demo_panel:'Ver el panel del consejo generado con estas iniciativas', lnk_panel_demo:'Panel del consejo (ejemplo)', lnk_panel:'Panel del consejo',
+ demo_tit:'Iniciativas de ejemplo.', demo_panel:'Ver el panel del consejo generado con estas iniciativas', lnk_panel_demo:'Panel del consejo (ejemplo)', lnk_panel:'Panel del consejo (con este registro)',
  demo:'Datos ilustrativos y ficticios. Fecha de referencia: {f}.', sin_dato:'Sin dato', pie_lic:'Código MIT · Contenidos CC BY 4.0 · © 2026 Fernando García Varela · Metodología SEVEN-G', pie_priv:'Los datos se guardan solo en este navegador o, si así se elige, en un fichero de su equipo. No se envía nada a terceros.',
  legal_tit:'Aviso legal y exención de responsabilidad', legal_link:'Aviso legal', legal_ok:'Entendido', legal_otro:'English',
  legal_txt:'SEVEN-G y esta herramienta se ofrecen «tal cual» y con fines exclusivamente informativos. No constituyen asesoramiento jurídico, regulatorio, financiero ni profesional, ni garantizan el cumplimiento de ninguna norma. Los criterios, clasificaciones y referencias a regulación general (Reglamento Europeo de IA, RGPD, DORA, NIS2…) o sectorial pueden ser incompletos, no aplicar a un caso concreto o quedar desactualizados por cambios normativos. Cada organización que use la herramienta es la única responsable de identificar la normativa que le aplica, verificar su vigencia y certificar su propio cumplimiento regulatorio, con el asesoramiento cualificado que corresponda. El autor no asume responsabilidad alguna por el uso de la herramienta ni por las decisiones adoptadas con ella. Los datos de demostración son ficticios.',
@@ -310,7 +314,7 @@ en:{
  app:'T01 · Initiative register', saltar:'Skip to content', idioma:'Language', tema:'Theme', t_auto:'Auto', t_claro:'Light', t_oscuro:'Dark', vistas:'Views',
  v_embudo:'Funnel', v_tablero:'Kanban board', v_gates:'Pending gates', v_alertas:'Alerts', v_analisis:'Analysis', v_inventario:'Inventory (T02)', v_datos:'Data', v_ficha:'Record',
  emb_clic:'Click the bar to show only the initiatives in this phase in the table; click again to remove the filter.', emb_filtro:'· only', emb_de:'of {n} with the filters above', emb_todas:'Show all',
- demo_tit:'Example initiatives.', demo_panel:'See the board dashboard generated from these initiatives', lnk_panel_demo:'Board dashboard (example)', lnk_panel:'Board dashboard',
+ demo_tit:'Example initiatives.', demo_panel:'See the board dashboard generated from these initiatives', lnk_panel_demo:'Board dashboard (example)', lnk_panel:'Board dashboard (with this register)',
  demo:'Illustrative, fictitious data. Reference date: {f}.', sin_dato:'No data', pie_lic:'Code MIT · Content CC BY 4.0 · © 2026 Fernando García Varela · SEVEN-G Methodology', pie_priv:'Data is stored only in this browser or, if you choose so, in a file on your computer. Nothing is sent to third parties.',
  legal_tit:'Legal notice and disclaimer', legal_link:'Legal notice', legal_ok:'I understand', legal_otro:'Español',
  legal_txt:'SEVEN-G and this tool are provided “as is” and for information purposes only. They do not constitute legal, regulatory, financial or professional advice, nor do they guarantee compliance with any regulation. The criteria, classifications and references to general regulation (EU AI Act, GDPR, DORA, NIS2…) or sector-specific regulation may be incomplete, may not apply to a specific case or may become outdated as a result of regulatory changes. Each organisation that uses the tool is solely responsible for identifying the regulation that applies to it, verifying that it is current and certifying its own regulatory compliance, with the appropriate qualified advice. The author accepts no liability whatsoever for the use of the tool or for decisions taken with it. The demo data is fictitious.',
@@ -1471,7 +1475,7 @@ Object.assign(TX.es,{
  dt_importar:'Importar JSON', dt_imp_ayuda:'Cargue uno o varios ficheros con el formato de esquema_registro.schema.json (por ejemplo, un registro por área o por periodo). «Validar e importar» sustituye los datos actuales por los ficheros; «Validar y fusionar» los añade a los datos actuales. Las entidades se unen por su código: si se repite, prevalece la del último fichero. Todo se valida antes de cargar.', dt_imp_btn:'Validar e importar',
  dt_fus_btn:'Validar y fusionar', dt_fusionar:'Fusionar JSON', dt_fus_conf:'Se fusionarán {n} fichero(s) con los datos actuales ({a} iniciativas); el registro resultante tendrá {b} iniciativas.',
  dt_panel:'Panel del consejo (T17)', dt_panel_txt:'Este registro es la entrada de datos del panel del consejo: cada iniciativa se da de alta aquí, como una oportunidad en un CRM, y el panel (completo y móvil) se genera a partir del JSON completo, sin volver a introducir nada. Las etapas del embudo del panel y sus fechas salen de las fases y los eventos del registro.',
- dt_panel_1:'Exporte el JSON completo (botón de arriba).', dt_panel_2:'En la carpeta T17_panel_consejo, ejecute el conector:', dt_panel_3:'Abra el panel generado. Umbrales de los indicadores, etapas del embudo y límites de días se configuran en config_panel.json.', dt_panel_t17:'Regenerar el panel del consejo (T17)', dt_imp_err:'El fichero no es válido:', dt_imp_ok:'Datos importados: {n} iniciativas.', dt_imp_avisos:'Avisos:', dt_imp_conf:'Se sustituirán los datos actuales ({a} iniciativas) por los del fichero ({b} iniciativas).', dt_sin_fichero:'Seleccione un fichero.', dt_json_mal:'No es un JSON válido: {e}',
+ dt_panel_auto:'El panel se regenera solo, en el navegador, con este registro: no hay que instalar ni ejecutar nada. Al abrirlo verá estas iniciativas (si son las de ejemplo, el panel de ejemplo). En una copia del sitio servida por la compañía, el panel lee además el fichero herramientas/datos/T01_registro.json. Los umbrales de los indicadores, las etapas del embudo y los límites de días se configuran en config_panel.json.', dt_panel_abrir:'Abrir el panel del consejo con este registro', dt_panel_json:'Descargar el JSON del panel (dashboard_data.json)', dt_panel_json_ayuda:'Es el mismo JSON que produce el conector T17. Sirve para «Cargar JSON» en un panel recibido como fichero o para publicar el panel como ficheros estáticos con el generador de T17 (Python, opcional).', dt_panel_t17:'Cómo se genera el panel (T17)', dt_imp_err:'El fichero no es válido:', dt_imp_ok:'Datos importados: {n} iniciativas.', dt_imp_avisos:'Avisos:', dt_imp_conf:'Se sustituirán los datos actuales ({a} iniciativas) por los del fichero ({b} iniciativas).', dt_sin_fichero:'Seleccione un fichero.', dt_json_mal:'No es un JSON válido: {e}',
  dt_exportar:'Exportar', dt_exp_json:'JSON completo', dt_exp_csv:'CSV de iniciativas', dt_exp_ayuda:'El JSON completo es la copia de seguridad, el medio para compartir datos y la entrada del panel del consejo (T17); incluye el aviso legal. El CSV usa punto y coma y UTF-8 con BOM para hoja de cálculo; las celdas vacías significan «sin dato» y no incluye el aviso legal para no romper su formato.',
  dt_restaurar:'Restaurar datos de demostración', dt_borrar:'Borrar los datos guardados en este navegador', dt_conf_rest:'Se sustituirán los datos actuales por los de demostración. Exporte antes si quiere conservarlos.', dt_ok_rest:'Datos de demostración restaurados.',
  dt_config:'Plazos de referencia (aprobados en C2, recalibrados en C5)', dt_config_ayuda:'Días naturales por fase. La fase 6 no tiene plazo: se controla con la periodicidad de la revisión de continuidad.', dt_pl_dec:'Decisión de un gate (días hábiles)', dt_pl_rev:'Periodicidad de R6 (días)', dt_hist:'Historial mínimo para el valor ponderado', dt_guardar_conf:'Guardar configuración', dt_ok_conf:'Configuración guardada.',
@@ -1499,7 +1503,7 @@ Object.assign(TX.en,{
  dt_importar:'Import JSON', dt_imp_ayuda:'Load one or several files in the esquema_registro.schema.json format (for example, one register per area or per period). “Validate and import” replaces the current data with the files; “Validate and merge” adds them to the current data. Entities are joined by code: if a code is repeated, the one in the last file prevails. Everything is validated before loading.', dt_imp_btn:'Validate and import',
  dt_fus_btn:'Validate and merge', dt_fusionar:'Merge JSON', dt_fus_conf:'{n} file(s) will be merged into the current data ({a} initiatives); the resulting register will have {b} initiatives.',
  dt_panel:'Board dashboard (T17)', dt_panel_txt:'This register is the data entry point of the board dashboard: each initiative is entered here, like an opportunity in a CRM, and the dashboard (full and mobile) is generated from the full JSON, without re-entering anything. The dashboard funnel stages and their dates come from the phases and events of the register.',
- dt_panel_1:'Export the full JSON (button above).', dt_panel_2:'In the T17_panel_consejo folder, run the connector:', dt_panel_3:'Open the generated dashboard. Indicator thresholds, funnel stages and day limits are configured in config_panel.json.', dt_panel_t17:'Regenerate the board dashboard (T17)', dt_imp_err:'The file is not valid:', dt_imp_ok:'Data imported: {n} initiatives.', dt_imp_avisos:'Warnings:', dt_imp_conf:'The current data ({a} initiatives) will be replaced by the file ({b} initiatives).', dt_sin_fichero:'Select a file.', dt_json_mal:'Not valid JSON: {e}',
+ dt_panel_auto:'The dashboard regenerates itself, in the browser, from this register: nothing to install or run. When you open it you will see these initiatives (if they are the sample ones, the sample dashboard). In a copy of the site served by the company, the dashboard also reads the file herramientas/datos/T01_registro.json. Indicator thresholds, funnel stages and day limits are configured in config_panel.json.', dt_panel_abrir:'Open the board dashboard with this register', dt_panel_json:'Download the dashboard JSON (dashboard_data.json)', dt_panel_json_ayuda:'It is the same JSON the T17 connector produces. Use it for "Cargar JSON" in a dashboard received as a file, or to publish the dashboard as static files with the T17 generator (Python, optional).', dt_panel_t17:'How the dashboard is generated (T17)', dt_imp_err:'The file is not valid:', dt_imp_ok:'Data imported: {n} initiatives.', dt_imp_avisos:'Warnings:', dt_imp_conf:'The current data ({a} initiatives) will be replaced by the file ({b} initiatives).', dt_sin_fichero:'Select a file.', dt_json_mal:'Not valid JSON: {e}',
  dt_exportar:'Export', dt_exp_json:'Full JSON', dt_exp_csv:'Initiatives CSV', dt_exp_ayuda:'The full JSON is the backup, the way to share data and the input of the board dashboard (T17); it includes the legal notice. The CSV uses semicolons and UTF-8 with BOM for spreadsheets; empty cells mean “no data” and it does not include the legal notice, so as not to break its format.',
  dt_restaurar:'Restore demo data', dt_borrar:'Delete the data saved in this browser', dt_conf_rest:'The current data will be replaced by the demo data. Export first if you want to keep it.', dt_ok_rest:'Demo data restored.',
  dt_config:'Reference time limits (approved in C2, recalibrated in C5)', dt_config_ayuda:'Calendar days per phase. Phase 6 has no limit: it is controlled through the continuity review frequency.', dt_pl_dec:'Gate decision (working days)', dt_pl_rev:'R6 frequency (days)', dt_hist:'Minimum history for weighted value', dt_guardar_conf:'Save configuration', dt_ok_conf:'Configuration saved.',
@@ -2068,8 +2072,8 @@ function exportarCSV(){
       tipoAlcance(I),alcanceDe(I)?(I.alcance.reparto||[]).filter(u=>u.estado==='en_uso').map(u=>u.area):null].map(csvCelda).join(';'); });
   descargar('T01_iniciativas_'+hoy()+'.csv', '﻿'+cab.join(';')+'\r\n'+filas.join('\r\n')+'\r\n', 'text/csv;charset=utf-8');
 }
-/* El JSON del panel del consejo (T17) no se construye aquí: lo genera el conector t01_a_panel.py a partir del JSON completo de este registro
-   (una sola correspondencia T01 → panel, documentada en el README de T17). El registro es la entrada de datos; el panel, su lectura para el consejo. */
+/* El JSON del panel del consejo (T17) se construye con una sola correspondencia T01 → panel, la del conector T17, documentada en el README de T17:
+   t01_a_panel.js (incrustado aquí y en los paneles, D101), idéntica a t01_a_panel.py. El registro es la entrada de datos; el panel, su lectura para el consejo. */
 
 /* Fusión de dos registros completos: las entidades se unen por su código (si coincide, prevalece la del segundo); meta es la del primero, con las áreas de ambos.
    Permite cargar el registro en varios JSON (por ejemplo, uno por área o por periodo) y reconstruir con ellos el panel del consejo. */
@@ -2085,7 +2089,7 @@ function vistaDatos(){
   h+='<h2>'+esc(t('dt_alm'))+'</h2><div class="aviso '+(lsOk&&GUARDADO?'ok':'ko')+'">'+esc(lsOk&&GUARDADO?t('dt_alm_ok'):t('dt_alm_ko'))+'</div>';
   h+='<form data-form-datos="pref" novalidate><div class="rejilla">'+campo('dt-ref',t('dt_ref'),'<input type="date" id="dt-ref" name="dt-ref" value="'+esc(DB.meta.fecha_referencia||'')+'">',t('dt_ref_ayuda'))+campo('dt-autor',t('dt_autor'),'<input type="text" id="dt-autor" name="dt-autor" value="'+esc(UI.autor||'')+'">')+'</div><div class="fila-fin"><button type="submit">'+esc(t('dt_guardar_pref'))+'</button></div></form>';
   h+='<h2>'+esc(t('dt_exportar'))+'</h2><div class="fila"><button type="button" class="primario" data-acc="exp-json">'+esc(t('dt_exp_json'))+'</button><button type="button" data-acc="exp-csv">'+esc(t('dt_exp_csv'))+'</button></div><p class="ayuda">'+esc(t('dt_exp_ayuda'))+'</p>';
-  h+='<h2>'+esc(t('dt_panel'))+'</h2><p>'+esc(t('dt_panel_txt'))+'</p><ol><li>'+esc(t('dt_panel_1'))+'</li><li>'+esc(t('dt_panel_2'))+' <code>uv run python t01_a_panel.py --t01 T01_registro.json --salida carpeta</code></li><li>'+esc(t('dt_panel_3'))+'</li></ol><div class="fila">'+(DB.meta.datos_ilustrativos?'<a class="enlace-btn" href="'+PANEL_DEMO+'">'+esc(t('demo_panel'))+' →</a>':'')+'<a class="enlace-btn" href="'+PANEL_T17+'">'+esc(t('dt_panel_t17'))+' →</a></div>';
+  h+='<h2>'+esc(t('dt_panel'))+'</h2><p>'+esc(t('dt_panel_txt'))+'</p><p>'+esc(t('dt_panel_auto'))+'</p><div class="fila"><a class="enlace-btn" data-ir="panel" href="'+PANEL_DEMO+'">'+esc(DB.meta.datos_ilustrativos? t('demo_panel') : t('dt_panel_abrir'))+' →</a><button type="button" data-acc="exp-panel">'+esc(t('dt_panel_json'))+'</button><a class="enlace-btn" href="'+PANEL_T17+'">'+esc(t('dt_panel_t17'))+' →</a></div><p class="ayuda">'+esc(t('dt_panel_json_ayuda'))+'</p>';
   h+='<h2>'+esc(t('dt_importar'))+'</h2><p class="ayuda">'+esc(t('dt_imp_ayuda'))+'</p><div class="fila"><label class="oculto" for="dt-fichero">'+esc(t('dt_importar'))+'</label><input type="file" id="dt-fichero" accept="application/json,.json" multiple><button type="button" data-acc="importar">'+esc(t('dt_imp_btn'))+'</button><button type="button" data-acc="fusionar">'+esc(t('dt_fus_btn'))+'</button></div><div id="dt-imp-res" role="status" aria-live="polite"></div>';
   h+='<div class="fila" style="margin-top:14px"><button type="button" class="peligro" data-acc="restaurar">'+esc(t('dt_restaurar'))+'</button><button type="button" class="peligro" data-acc="borrar-local">'+esc(t('dt_borrar'))+'</button></div>';
   h+='<h2>'+esc(t('dt_config'))+'</h2><p class="ayuda">'+esc(t('dt_config_ayuda'))+'</p><form data-form-datos="config" novalidate><table class="tabla resp"><thead><tr><th scope="col">'+esc(t('fase'))+'</th><th scope="col">Lite</th><th scope="col">Enterprise</th></tr></thead><tbody>'+
@@ -2111,6 +2115,8 @@ function onAccionExtra(acc, b){
   if(onAccionIndice(acc, b)) return;
   switch(acc){
     case 'exp-json': descargar('T01_registro_'+hoy()+'.json', JSON.stringify(conAvisoLegal(DB),null,2), 'application/json'); return;
+    /* D101: el JSON del panel con la misma correspondencia del conector T17 (t01_a_panel.js, incrustado) */
+    case 'exp-panel': try{ descargar('T01_dashboard_data_'+hoy()+'.json', JSON.stringify(SevengT17.convertir(DB, {config:CONFIG_PANEL}),null,1), 'application/json'); }catch(e){ toast(e.message); } return;
     case 'aviso-legal': abrirLegal(); return;
     case 'legal-cerrar': cerrarLegal(); return;
     case 'legal-lang': UI.lang = UI.lang==='en'? 'es' : 'en'; guardarUI(); render(); abrirLegal(); return;
@@ -2350,7 +2356,8 @@ function cabecera(r){
   $('#nav').innerHTML = VISTAS.map(v=>'<a href="#/'+v+'"'+(r.vista===v?' aria-current="page"':'')+'>'+esc(t('v_'+v))+(v==='alertas'&&nAl?'<span class="cuenta" aria-label="'+nAl+'">'+nAl+'</span>':'')+'</a>').join('');
   const demo=!!DB.meta.datos_ilustrativos;
   $('#aviso-demo').innerHTML = demo? '<div><b>'+esc(t('demo_tit'))+'</b> '+esc(t('demo',{f:fF(hoy()).replace(/<[^>]+>/g,'')}))+' '+esc(DB.meta.organizacion)+' · <a href="'+PANEL_DEMO+'">'+esc(t('demo_panel'))+'</a></div>' : '';
-  const lp=$('#lnk-panel'); lp.textContent=t(demo?'lnk_panel_demo':'lnk_panel'); lp.href=demo?PANEL_DEMO:PANEL_T17;
+  /* D101: el panel se regenera en el navegador con el registro guardado en él, así que el enlace lleva siempre al panel */
+  const lp=$('#lnk-panel'); lp.textContent=t(demo?'lnk_panel_demo':'lnk_panel'); lp.href=PANEL_DEMO;
   $('#btn-legal').textContent=t('legal_link');
   $('#pie').innerHTML='<p class="pie-legal"><b>'+esc(t('legal_tit'))+'.</b> '+esc(t('legal_txt'))+' <button type="button" class="enlace-btn" data-acc="aviso-legal" aria-haspopup="dialog">'+esc(t('legal_link'))+'</button></p><span>'+esc(t('pie_lic'))+'</span><span>'+esc(t('pie_priv'))+'</span>';
   if(window.SevengDatos) SevengDatos.refrescar();

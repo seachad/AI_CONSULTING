@@ -29,6 +29,8 @@
     19. Datos por usuario o compañía (D101): el módulo herramientas/_comun/datos_locales.js está incrustado en T01, T11, T14 y T15 (botón
         «Datos: …» y diálogo «Dónde están mis datos»), la carpeta herramientas/datos no contiene ningún JSON, el documento 03 §2.1 (ES/EN)
         explica la copia de la compañía y los README de las cuatro herramientas la citan.
+    19b. Conector del panel en el navegador (D101): t01_a_panel.js va incrustado en los dos paneles de ejemplo y en el registro T01,
+        config_panel.json tiene navegacion.datos_t01 y el conector en JavaScript produce el mismo JSON que t01_a_panel.py (requiere Edge).
 #>
 param([switch]$SinNavegador)
 $ErrorActionPreference = 'Stop'
@@ -658,6 +660,46 @@ try {
     if (-not (Test-Path $h03) -or -not [IO.File]::ReadAllText($h03).Contains($ancla)) { Mal "documento 03 ($lang): el HTML no tiene el ancla de la sección 2.1 a la que enlaza el diálogo de las herramientas (regenerar)"; $malDat++ }
   }
   if (-not $malDat) { Ok 'módulo de datos locales incrustado en T01, T11, T14 y T15, carpeta de datos sin JSON, documento 03 §2.1 y README al día' }
+
+  # conector T01 → panel en JavaScript (D101): incrustado en los dos paneles y en el registro T01, con la ruta del registro de la
+  # compañía en config_panel.json, y produce el mismo JSON que el conector en Python con los datos de demostración (única correspondencia, D43)
+  Write-Host '19b. Conector del panel en el navegador'
+  $malCon = 0
+  $t17dir = Join-Path $repo 'SEVEN-G\herramientas\T17_panel_consejo'
+  if (-not (Test-Path (Join-Path $t17dir 't01_a_panel.js'))) { Mal 'falta T17_panel_consejo/t01_a_panel.js'; $malCon++ }
+  if (-not (Test-Path (Join-Path $t17dir 'conector_js.ps1'))) { Mal 'falta T17_panel_consejo/conector_js.ps1'; $malCon++ }
+  if (-not ((Get-Content (Join-Path $t17dir 'config_panel.json') -Raw | ConvertFrom-Json).navegacion.datos_t01)) { Mal 'config_panel.json: falta navegacion.datos_t01 (ruta del registro T01 de la copia de la compañía)'; $malCon++ }
+  foreach ($f in 't01_Dashboard_Casos_Uso_IA_v8.html', 't01_Dashboard_Movil_IA_v8.html') {
+    $tp = [IO.File]::ReadAllText((Join-Path $t17dir "ejemplo\salida\$f"))
+    if (-not $tp.Contains('<script data-conector-t17>') -or -not $tp.Contains('data-conector-t17-arranque') -or -not $tp.Contains('SevengT17.convertir')) { Mal "$f`: no lleva el conector en el navegador (regenerar con t01_a_panel.py)"; $malCon++ }
+  }
+  $reg01 = [IO.File]::ReadAllText((Join-Path $t01 'registro.html'))
+  if (-not $reg01.Contains('window.SevengT17') -or -not $reg01.Contains('id="config-panel"') -or $reg01.Contains('__CONECTOR_T17__')) { Mal 'T01: registro.html no lleva el conector T17 en JavaScript ni la configuración del panel (regenerar)'; $malCon++ }
+  if (-not [IO.File]::ReadAllText((Join-Path $t17dir 'index.html')).Contains('sin Python')) { Mal 'T17: su página debe explicar que el panel se regenera en el navegador sin Python'; $malCon++ }
+  $edgeCon = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$env:ProgramFiles\Microsoft\Edge\Application\msedge.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  if ($SinNavegador -or -not $edgeCon) { Aviso 'sin navegador: no se comprueba la paridad del conector en JavaScript con el de Python' }
+  else {
+    function CanonJson($o) {
+      if ($null -eq $o) { return 'null' }
+      if ($o -is [string]) { return '"' + $o.Replace('\', '\\').Replace('"', '\"') + '"' }
+      if ($o -is [bool]) { return $o.ToString().ToLower() }
+      if ($o -is [ValueType]) { return ([double]$o).ToString('R', [Globalization.CultureInfo]::InvariantCulture) }
+      if ($o -is [Array] -or $o -is [Collections.IList]) { return '[' + (($o | ForEach-Object { CanonJson $_ }) -join ',') + ']' }
+      return '{' + ((@($o.PSObject.Properties.Name | Sort-Object) | ForEach-Object { '"' + $_ + '":' + (CanonJson $o.$_) }) -join ',') + '}'
+    }
+    $jsOut = Join-Path $tmp 't17_conector_js.json'
+    & pwsh -NoProfile -File (Join-Path $t17dir 'conector_js.ps1') -T01 (Join-Path $t01 'datos_demo.json') -Salida $jsOut | Out-Null
+    if ($LASTEXITCODE -or -not (Test-Path $jsOut)) { Mal 'conector_js.ps1 ha fallado (conector en JavaScript)'; $malCon++ }
+    else {
+      $py = Get-Content (Join-Path $t17dir 'ejemplo\salida\t01_dashboard_data.json') -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+      $js = Get-Content $jsOut -Raw -Encoding utf8 | ConvertFrom-Json -Depth 64
+      # lo que difiere por construcción: el bloque del índice (lo añade --indice), el pie (nombra al conector) y las claves que añade el motor al generar
+      foreach ($d in $py, $js) { $d.PSObject.Properties.Remove('indice'); $d.meta.textos.pie = $null; $d.meta.origen.conector = $null; foreach ($k in 'version_panel', 'panel_completo', 'panel_movil') { $d.meta.PSObject.Properties.Remove($k) } }
+      if ((CanonJson $py) -cne (CanonJson $js)) { Mal 'el conector en JavaScript (t01_a_panel.js) no produce el mismo JSON del panel que t01_a_panel.py con los datos de demostración'; $malCon++ }
+      else { Ok "conector en JavaScript idéntico al de Python con los datos de demostración ($($js.casos.Count) casos)" }
+    }
+  }
+  if (-not $malCon) { Ok 'conector T17 en el navegador incrustado en los dos paneles y en el registro T01, con la ruta del registro de la compañía configurada' }
 }
 finally { Remove-Item $tmp -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue }
 

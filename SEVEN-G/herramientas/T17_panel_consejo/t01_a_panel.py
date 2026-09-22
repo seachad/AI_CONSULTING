@@ -45,6 +45,9 @@ SALIDA_POR_DEFECTO = os.path.join(AQUI, "ejemplo", "salida")
 # (pwsh -File ../T14_indice_transformacion/build_indice.ps1 -DesdeT01 ../T01_registro_iniciativas/datos_demo.json -Exportar ejemplo/t14_indice.json)
 INDICE_POR_DEFECTO = os.path.join(AQUI, "ejemplo", "t14_indice.json")
 RUTA_CONECTOR = "SEVEN-G/herramientas/T17_panel_consejo/t01_a_panel.py"
+# la misma correspondencia en JavaScript (D101): se incrusta en los paneles generados y en el registro T01; verificar_coherencia.ps1
+# comprueba que produce el mismo JSON que este script con los datos de demostracion
+CONECTOR_JS = os.path.join(AQUI, "t01_a_panel.js")
 
 BD = ECO = PUB = None   # se cargan con cargar_motor()
 
@@ -672,6 +675,10 @@ def generar_desde_t01(t01, salida, sigla=None, organizacion=None, prefijo="t01_"
     # vista estática para visores sin JavaScript (un panel enviado por WhatsApp o correo suele abrirse en uno): D96
     for ruta_panel, titulo_panel in ((completo, "Casos de uso de IA · Panel del Consejo"), (movil, "IA · Panel móvil del Consejo")):
         PUB.vista_sin_javascript(ruta_panel, data, PUB.AVISO_LEGAL if ficticio else PUB.AVISO_LEGAL_DATOS_PROPIOS, titulo_panel)
+    # conector en el navegador (D101): el panel se regenera solo desde el registro T01 del navegador o de la copia de la compañia, sin Python
+    js_conector = open(CONECTOR_JS, encoding="utf-8").read()
+    for ruta_panel, es_movil in ((completo, False), (movil, True)):
+        PUB.conector_en_navegador(ruta_panel, js_conector, cargar_config_panel(), es_movil)
     ruta_json = os.path.join(salida, f"{prefijo}dashboard_data.json")
     json.dump(data, open(ruta_json, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     ruta_reg, nrecs = None, 0
@@ -702,7 +709,14 @@ def main(argv=None):
     ap.add_argument("--prefijo", default="t01_", help="prefijo de los ficheros generados (por defecto t01_)")
     ap.add_argument("--indice", default=None, help="opcional: JSON exportado por la calculadora del índice de transformación (T14) para añadir su tarjeta al panel "
                     "(por defecto, en el ejemplo, ./ejemplo/t14_indice.json si existe)")
+    ap.add_argument("--solo-json", default=None, help="opcional: escribe solo el JSON del panel (dashboard_data.json) en ese fichero, sin generar los HTML")
     a = ap.parse_args(argv)
+    if a.solo_json:
+        cargar_motor(a.panel)
+        t01 = json.load(open(a.t01, encoding="utf-8"))
+        json.dump(convertir(t01, a.sigla, a.organizacion, a.prefijo, "", None), open(a.solo_json, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        print(f"datos: {a.solo_json}")
+        return
     panel = cargar_motor(a.panel)
     if not os.path.exists(a.t01):
         sys.exit(f"error: no se encuentra el JSON de T01: {os.path.abspath(a.t01)}")
